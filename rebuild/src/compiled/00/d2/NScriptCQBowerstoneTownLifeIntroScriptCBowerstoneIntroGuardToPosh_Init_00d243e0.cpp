@@ -29,47 +29,18 @@ public:
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThing instance)
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CScriptThing : public CBaseClass {                 // 12 bytes, vtable 0x01238C8C (slot names: rtti-vtables.tsv / Ego_r.pdb)
-public:
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-    CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-    virtual ~CScriptThing();                              // 0x004AA840
-    virtual const CCharString& GetName() const;           // slot 1
-    virtual CCharString GetDefName() const;               // slot 2
-    virtual CCharString GetDataString() const;            // slot 3 (+0x0c)
-    virtual void SetDataString(const CCharString& data);  // slot 4
-    virtual void GetFocalPos() const;                     // slot 5 (signatures of 5, 7..17, 19 simplified: not called here)
-    virtual const C3DVector& GetPos() const;              // slot 6 (+0x18)
-    virtual void GetHomePos() const;                      // slot 7
-    virtual void GetCurrentMapName() const;               // slot 8
-    virtual void GetHomeMapName() const;                  // slot 9
-    virtual float GetAngleXY() const;                     // slot 10
-    virtual void GetPThing() const;                       // slot 11
-    virtual void GetPThingUniqueID() const;               // slot 12
-    virtual void GetCurrentStateGroupType() const;        // slot 13
-    virtual void GetCurrentScriptPriority() const;        // slot 14
-    virtual void IsSneaking() const;                      // slot 15
-    virtual void IsAwareOfHero() const;                   // slot 16
-    virtual void MsgIsTriggeredBy() const;                // slot 17
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
-    virtual void t019() const;                            // slot 19
-    virtual bool MsgIsUsedBy(const CCharString& user) const;       // slot 20 (+0x50)
-    CCountedPointer<CScriptThing> PImp;                   // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CEntityScriptBase {                             // Ego_r.pdb, 20 bytes
-public:
-    virtual ~CEntityScriptBase();
-private:
-    virtual void Init();                            // slot 2 (+0x8)
-public:
-    bool IsActiveThreadTerminating() const;              // 0x00F35B30
-    CGameScriptInterfaceBase* Game;                      // +0x04
-    CScriptThing              Me;                        // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData {
 public:

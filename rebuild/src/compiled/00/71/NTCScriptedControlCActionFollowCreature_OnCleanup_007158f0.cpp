@@ -106,7 +106,11 @@ class CTCScriptedControl { public:                     // a CTCBase
     virtual void v00();
     CThing* ParentThing;                        // +0x04
 };
-class CScriptThing { public: unsigned char _body[12]; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NTCScriptedControl {
 

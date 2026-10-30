@@ -12,13 +12,11 @@
 //   CIsThingAlive : CPredicateBase { CScriptThing Thing +0x04 } (16 bytes); CScriptThing {vptr, PImp_Data, PImp_Info}.
 // Shape: user-declared virtual destructors at every level, each destroying its right term then its left one; the four
 //   inline CPredicateBase destructors' vptr resets merge into one `mov eax,0x012C2FF4` and four stores (+0xC .. +0).
-class CScriptThing {                                     // 12 bytes
-public:
-    void* PImp_Data;                                     // +0x04
-    void* PImp_Info;                                     // +0x08
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 

@@ -73,11 +73,11 @@ template <class T> __forceinline bool GetTCOut(CThing* thing, long kind, T** out
     return false;
 }
 
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;              // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NEntityEvents {
     class CEventShotStruck { public:                      // Ego_r.pdb, 0x14 bytes
@@ -115,7 +115,7 @@ __declspec(noinline) bool CTCEntityEvents::GetEvent(TEvent** out, const TFilter&
 
 bool CGameScriptInterface::EntityGetShotStrikePos(const CScriptThing& entity, C3DVector& position) const
 {
-    CThing* thing = entity.GetThing();
+    CThing* thing = entity.GetPThing();
     CTCEntityEvents* events;
     if (thing && !thing->m_dead && GetTCOut(thing, 0x42, &events))
     {

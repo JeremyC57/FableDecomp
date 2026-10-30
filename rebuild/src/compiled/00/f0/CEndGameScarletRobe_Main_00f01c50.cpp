@@ -13,10 +13,11 @@
 //   inline (CBaseObject ctor, own vtable, PImp {0,0} as an embedded member object so the zero stores follow the vtable store);
 //   the `while (!Start(...)) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; } IsActiveThreadTerminating();` loop is rotated with &Me in edi.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                                  // 12 bytes
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 class CPredicateBase

@@ -8,13 +8,11 @@
 // Callees: operator new 0x00BFEA1A, CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90.
 // Layout: vptr, Left +0x04, Right after it; CIsThingAlive = {vptr 0x012C32F0, CScriptThing +4} (0x10 bytes).
 // Shape: the whole copy is inline: own vtable, the nested two-term predicate's vtable, then the three CIsThingAlive terms (vtable store + out-of-line CScriptThing copy each). The CPredicateBase vtable stores are dead. The copy constructor is `__forceinline`: with a plain inline one VC7.1 calls the nested copy out of line from Clone.
-class CScriptThing {                                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();
-    void* PImp_Data;
-    void* PImp_Info;
-    CScriptThing(const CScriptThing& other);         // 0x004ABE90 ??0CScriptThing@@QAE@ABV0@@Z
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase {
 public:

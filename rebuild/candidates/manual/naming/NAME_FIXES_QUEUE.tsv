@@ -1262,3 +1262,6 @@ mig6	008fcf90	?GetPPlayerManager@CAIStateGroup_MinionReactToApology@@QAEPAUCPlay
 592	CEaxContext/CEAXContext	?	both spellings exist in landed libpk rows: pick one (no PDB)	CEAXContext
 592	CAudioSound/CAudioObject	?	one object named CAudioSound by the voice rows and CAudioObject by its own 0x00C43xxx rows: pick one	CAudioSound
 592	00c54bd0	?	landed CAssistanceOwner::Reset is a voice-family ring.Clear(); m_pBuffer = 0 (misnamed)	CAssistanceOwner::Reset
+mig7	0x00CE1280	?Main@CTestGateSwitch@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ	Ego_r.pdb 0x00CC7CE0 + FableWin.pdb 0x035E86B0; the row leaf is UAE on an unqualified class since wave 7 (was QAE): nest the class in NScript::CPersonalScript_GlobalThingsScript and make Main private	?Main@CTestGateSwitch@@UAEXXZ; ?Main@CTestGateSwitch@@QAEXXZ
+mig7	0x00D51FC0	?Main@CPreMeleeDummy@CQ_GuildTrainingPreMeleeScript@NScript@@EAEXXZ	Ego_r.pdb 0x00D66940 + FableWin.pdb 0x037464F0; leaf UAE on an unqualified class since wave 7	?Main@CPreMeleeDummy@@UAEXXZ; ?Main@CPreMeleeDummy@@QAEXXZ
+mig7	0x00EF3200	?Main@CBeggar@CPersonalScript_EmptyScript@NScript@@EAEXXZ	Ego_r.pdb 0x00F6D740 + FableWin.pdb 0x03AF06C0; leaf UAE on an unqualified class since wave 7	?Main@CBeggar@@UAEXXZ; ?Main@CBeggar@@QAEXXZ

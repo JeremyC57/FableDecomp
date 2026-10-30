@@ -43,11 +43,9 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    unsigned char _body[0xc];
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    ~CScriptThing();                                     // 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 struct CIsThingConscious {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
     CScriptThing Thing;                                  // +0x04

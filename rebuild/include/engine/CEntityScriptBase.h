@@ -12,6 +12,9 @@
 // Layout (Ego_r.pdb, 0x14, also the retail Alloc sizes): Game +0x04, Me +0x08. SetPredicate 0x00F35B10 (calls slot 3 then
 // CScriptBase::SetPredicate 0x00CB7920), IsActiveThreadTerminating 0x00F35B30 (const: Ego_r ..QBE_NXZ).
 // Contract: CScriptThing comes from engine/CScriptThing.h, so the includer defines CCountedPointer<T> first.
+// The ctor is inline (wave 7): every entity-script Alloc expands it -- vtable 0x012C3224 store, Game +0x04 (the parent's
+// Game, `mov eax,[ebx+40h]`), then the out-of-line CScriptThing copy 0x004ABE90 into Me +0x08 (e.g. 0x00F1B800). Ego_r.pdb
+// (release) has no ??0CEntityScriptBase; FableWin.pdb (debug) lists it out of line (0x035E6BC0).
 #ifndef FABLE_RETAIL_NSCRIPT
 #error engine/CEntityScriptBase.h is the retail NScript model: define FABLE_RETAIL_NSCRIPT before including it
 #else
@@ -21,7 +24,7 @@ class CGameScriptInterfaceBase;
 
 class CEntityScriptBase {
 public:
-    CEntityScriptBase(CGameScriptInterfaceBase&, const CScriptThing&);
+    CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) : Game(&game), Me(me) {}
     virtual ~CEntityScriptBase();                                        // slot 0  0x00CDEBF0 (scalar deleting); 0x00F35B40
     virtual void Main() = 0;                                             // slot 1
     virtual void Init();                                                 // slot 2  0x00CDEBB0

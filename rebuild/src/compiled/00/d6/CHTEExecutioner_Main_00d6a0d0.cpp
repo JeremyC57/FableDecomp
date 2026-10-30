@@ -15,11 +15,11 @@
 // object, the address of Me stays in edi; `do { Update(); } while (!IsActiveThreadTerminating());` after the hand-over gives the
 // aligned loop head (`lea ebx,[ebx+0]`) with the test at the bottom.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    virtual ~CScriptThing();                          // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();                         // slot 7 (+0x1c)

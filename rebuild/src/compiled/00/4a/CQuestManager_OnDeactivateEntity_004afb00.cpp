@@ -15,10 +15,11 @@ class CCharString { public:
     void* PStringData;
     bool operator!=(const char* text) const;       // 0x0099E960
 };
-class CScriptThing { public:
-    unsigned char _body[12 - 4];
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CThing { public:
     unsigned char    _pad00[0x10];
     unsigned char    ThingType;                    // +0x10

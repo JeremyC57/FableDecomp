@@ -46,11 +46,10 @@ public:
     unsigned char      _pad[0x34];
     CEntityScriptBase* Script;                     // +0x34
 };
-class CScriptBase {
-public:
-    virtual void v00();
-    void DoEntityScriptPersist(CActiveEntityScriptBase& script, CCharString& data, bool saving);
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 void CScriptBase::DoEntityScriptPersist(CActiveEntityScriptBase& script, CCharString& data, bool saving)
 {

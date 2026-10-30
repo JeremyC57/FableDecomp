@@ -33,12 +33,11 @@ public:
 };
 CWideString __fastcall GFFloatToWideString(double value);   // 0x00486C40
 extern CWideString g_UnprovenWideString_0143E908;       // 0x0143E908 (landed descriptive spelling)
-class CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();
-    void* PImp_Data;
-    void* PImp_Info;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace std {
 struct __false_type { __false_type() { } };
 template <class _T1, class _T2> inline void _Construct(_T1* __p, const _T2& __val) { new (__p) _T1(__val); }

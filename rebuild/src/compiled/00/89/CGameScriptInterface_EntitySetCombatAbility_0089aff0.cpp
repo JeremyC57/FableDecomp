@@ -1,7 +1,7 @@
 // CGameScriptInterface::EntitySetCombatAbility(const CScriptThing& thing, float ability) const -- for a live thing with interface 0x30, forward the ability to that component
 // Leaf: ?EntitySetCombatAbility@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
 // Retail: Fable.exe @ 0x0089AFF0, 90 bytes, `ret 8`; Ego_r.pdb ?EntitySetCombatAbility@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z.
-// Body: t = thing.GetThing() (slot 11, +0x2c); if t, not dead (bit 0 of +0x91) and holding interface 0x30 (bit 16 of
+// Body: t = thing.GetPThing() (slot 11, +0x2c); if t, not dead (bit 0 of +0x91) and holding interface 0x30 (bit 16 of
 // UsingComponents +0x24), the component from the Components map (LowerBound 0x0040F020, key in the dead `thing` slot)
 // gets 0x00734210(ability, true). No IsValid call.
 // Layout: CThing as the matched 0x0089B0B0 / 0x0089D8B0 rows. The interface-0x30 component class and the callee name
@@ -67,31 +67,18 @@ public:
     enum { INTERFACE_TYPE = 0x30 };
     void SetCombatAbility(float ability, bool flag);     // 0x00734210 (name not confirmed)
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
-    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
-    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
-    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
-    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
-    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
-    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
-    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
-    virtual void v072(); virtual void v073(); virtual void v074();
-    virtual bool IsValid() const;                        // slot 75 (+0x12c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetCombatAbility(const CScriptThing& thing, float ability) const
 {
-    CThing* t = thing.GetThing();
+    CThing* t = thing.GetPThing();
     if (t && !t->IsDead())
     {
         CTCInterface30* tc;

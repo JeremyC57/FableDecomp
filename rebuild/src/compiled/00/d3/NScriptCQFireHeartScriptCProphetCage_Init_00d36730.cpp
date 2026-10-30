@@ -27,15 +27,11 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 for T = CScriptThing
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();                            // slot 0
-    virtual const CCharString& GetName() const;         // slot 1 0x004AA8B0
-    virtual CCharString GetDefName() const;             // slot 2 0x004AA8D0
-    virtual CCharString GetDataString() const;          // slot 3 (+0x0c) 0x004AA900
-    CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 namespace std {
 template <class T> class allocator { };
@@ -54,18 +50,8 @@ class CGameScriptInterfaceBase;
 #include "engine/CLevelScriptBase.h"
 class CScriptBase;
 class CPersistContext;
-class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)
-public:
-    virtual ~CEntityScriptBase();                       // slot 0
-    virtual void Main() = 0;                            // slot 1
-    virtual void Init();                                // slot 2
-    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    virtual void OnPredicateFail();                     // slot 5
-    virtual void OnInterrupted();                       // slot 6
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing              Me;                       // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

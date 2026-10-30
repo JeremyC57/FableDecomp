@@ -1,0 +1,921 @@
+00cdf260	DIFFER	250v250 grades=False sym=?Main@CKG_Gate@@UAEXXZ
+00cdfa10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CBSGateGuard' : cannot instantiate abstract class
+00cdf750	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker' : cannot instantiate abstract class
+00cdee10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CClickableDoor' : cannot instantiate abstract class
+00cdeed0	SAME	179b RELOCATION_MATCH->RELOCATION_MATCH
+00cdf360	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CDragonGate' : cannot instantiate abstract class
+00cdf570	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER' : cannot instantiate abstract class
+00cdf190	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CKG_Gate' : cannot instantiate abstract class
+00cdefb0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::COF_MainGates' : cannot instantiate abstract class
+00cdfd40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CTargetForKey' : cannot instantiate abstract class
+00cdf490	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CTeleportPoint' : cannot instantiate abstract class
+00cdf930	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CTestGateSwitch' : cannot instantiate abstract class
+00ce0150	DIFFER	269v269 grades=False sym=?Main@CLadyGreysBed@@UAEXXZ
+00ce1280	RELOC_RENAMED	leafsym ?Main@CTestGateSwitch@@QAEXXZ -> ?Main@CTestGateSwitch@@UAEXXZ
+00ce0280	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CInvisibleBarrier' : cannot instantiate abstract class
+00ce0090	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CLadyGreysBed' : cannot instantiate abstract class
+00ce0390	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CMK_HS2_SOUL' : cannot instantiate abstract class
+00ce0460	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CMK_HS3_SOUL' : cannot instantiate abstract class
+00ce0530	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_GlobalThingsScript::CMK_HSE_SOUL' : cannot instantiate abstract class
+00cfc990	DIFFER	198v198 grades=False sym=?Main@CChunkCollectionIndicator@@UAEXXZ
+00cf66e0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00cfde40	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00cf2a90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan' : cannot instantiate abstract class
+00cf0c40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2' : cannot instantiate abstract class
+00cf0b60	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard' : cannot instantiate abstract class
+00cf4df0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaHoldingScriptScript::CFanMarker' : cannot instantiate abstract class
+00cf3c40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan' : cannot instantiate abstract class
+00cf17f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaHoldingScriptScript::COakvaleFan' : cannot instantiate abstract class
+00cfd5d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CATO_MagicBarrier' : cannot instantiate abstract class
+00cfc8a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator' : cannot instantiate abstract class
+00cfc950	SAME	18b MATCH->MATCH
+00cfdca0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CFinalSummoner' : cannot instantiate abstract class
+00cfbc00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CFinalTabletSarcophagus' : cannot instantiate abstract class
+00cfc7d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger' : cannot instantiate abstract class
+00cfca60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CNecropolisEnemy' : cannot instantiate abstract class
+00cfc700	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CNecropolisGate' : cannot instantiate abstract class
+00cfbce0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CNecropolisGhost' : cannot instantiate abstract class
+00cfbb20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::COracleTablet' : cannot instantiate abstract class
+00cfcbd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CPretendGuard' : cannot instantiate abstract class
+00cfcdc0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AwakeningTheOracleScript::CScytheBeforeGettingTablets' : cannot instantiate abstract class
+00d0ec50	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d03160	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d00440	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+00d04990	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CAssassin1' : cannot instantiate abstract class
+00d05910	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CAssassin2' : cannot instantiate abstract class
+00d05fe0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CAssassin3' : cannot instantiate abstract class
+00d048c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CAssassinMarker' : cannot instantiate abstract class
+00d066b0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CBCGameMaster' : cannot instantiate abstract class
+00d0c2c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CBanditForger' : cannot instantiate abstract class
+00d0c390	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+00d0a700	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CBanditKing' : cannot instantiate abstract class
+00d0a7b0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00d08670	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CCampHostage2' : cannot instantiate abstract class
+00d08720	SAME	70b RELOCATION_MATCH->RELOCATION_MATCH
+00d08a70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor' : cannot instantiate abstract class
+00d08e50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard' : cannot instantiate abstract class
+00d08f00	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00d08fb0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00d07d20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CCampHostage' : cannot instantiate abstract class
+00d07dd0	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00d071f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CGate2Guard1' : cannot instantiate abstract class
+00d072c0	SAME	127b RELOCATION_MATCH->RELOCATION_MATCH
+00d07340	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampBossBattleScript::CGate3Guard' : cannot instantiate abstract class
+00d02a70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampScript::CGate1GuardInner' : cannot instantiate abstract class
+00d02b20	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00d014c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BanditCampScript::CGate1GuardOuter' : cannot instantiate abstract class
+00d01590	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d17180	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d15fc0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BountyHuntScript::CBH_GangDeputy1' : cannot instantiate abstract class
+00d161a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BountyHuntScript::CBH_GangDeputy2' : cannot instantiate abstract class
+00d153f0	SRC_FAIL	new.cpp(81): error C2259: 'NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn' : cannot instantiate abstract class
+00d154a0	SAME	23b RELOCATION_MATCH->RELOCATION_MATCH
+00d15940	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BountyHuntScript::CBH_GangGrunt' : cannot instantiate abstract class
+00d16380	SRC_FAIL	new.cpp(82): error C2259: 'NScript::CQ_BountyHuntScript::CBH_GangLeader' : cannot instantiate abstract class
+00d160b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BountyHuntScript::CBH_Hostage1' : cannot instantiate abstract class
+00d16290	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BountyHuntScript::CBH_Hostage2' : cannot instantiate abstract class
+00d1f510	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BreakSiegeScript::CBanditAttacker' : cannot instantiate abstract class
+00d1f5c0	SAME	24b MATCH->MATCH
+00d1f910	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BreakSiegeScript::CBanditFirstWave' : cannot instantiate abstract class
+00d1dcc0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_BreakSiegeScript::CBanditSiegeLeader' : cannot instantiate abstract class
+00d1fc30	SRC_FAIL	new.cpp(84): error C2259: 'NScript::CQ_BreakSiegeScript::CDisplacedTrader' : cannot instantiate abstract class
+00d1fce0	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+00d1e230	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BreakSiegeScript::CGuardHoldingBandit' : cannot instantiate abstract class
+00d1ea10	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_BreakSiegeScript::CGuardToHelpDefend' : cannot instantiate abstract class
+00d1e090	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader' : cannot instantiate abstract class
+00d1e1b0	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00d1e140	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+00d1dde0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege' : cannot instantiate abstract class
+00d1dea0	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+00d1df20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BreakSiegeScript::CKG_Sheriff' : cannot instantiate abstract class
+00d2fb20	DIFFER	222v222 grades=False sym=?Main@CEndGameJackOfBladesBoss@@UAEXXZ
+00d244b0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d20600	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d26000	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d2fea0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d2d570	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d29680	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d24330	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh' : cannot instantiate abstract class
+00d243e0	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00d24210	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard' : cannot instantiate abstract class
+00d242c0	SAME	44b MATCH->MATCH
+00d25c60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_DragonBossFightScript::CDBMinion' : cannot instantiate abstract class
+00d25e30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_DragonBossFightScript::CDBSummoner' : cannot instantiate abstract class
+00d257d0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_DragonBossFightScript::CDragon' : cannot instantiate abstract class
+00d2fa40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss' : cannot instantiate abstract class
+00d2fc00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameBossBattleScript::CEndGameSister' : cannot instantiate abstract class
+00d2fce0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameBossBattleScript::CSwordVoid' : cannot instantiate abstract class
+00d2fdc0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster' : cannot instantiate abstract class
+00d2c430	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CBattleGuard' : cannot instantiate abstract class
+00d2c340	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CBattleMinion' : cannot instantiate abstract class
+00d2c140	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CEndGameFocalSite' : cannot instantiate abstract class
+00d2c260	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades' : cannot instantiate abstract class
+00d2cf80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe' : cannot instantiate abstract class
+00d2c650	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CEndGameScythe' : cannot instantiate abstract class
+00d2c730	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameFocalSitesScript::CEndGameThunder' : cannot instantiate abstract class
+00d29230	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameScript::CGatewayUndead' : cannot instantiate abstract class
+00d293f0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d29320	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00d28f70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameScript::CHookCoastTeleporter' : cannot instantiate abstract class
+00d29020	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+00d29460	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameScript::CMK_GHC_HERO3' : cannot instantiate abstract class
+00d290a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameScript::CM_UndeadSpawn' : cannot instantiate abstract class
+00d29160	SAME	171b RELOCATION_MATCH->RELOCATION_MATCH
+00d29570	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_EndGameScript::CMazeJournal' : cannot instantiate abstract class
+00d29620	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+00d38b90	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d3a9b0	DIFFER	327v327 grades=False sym=?MakeRoundStartComment@CFH_Prisoner@@QAEXXZ
+00d362b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CDF_Fireheart' : cannot instantiate abstract class
+00d37240	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CFH_BriarRose' : cannot instantiate abstract class
+00d372f0	SRC_FAIL	new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->EntitySetAsKillable' must point to class/struct/union
+00d36790	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CFH_GuildMaster' : cannot instantiate abstract class
+00d37c30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CFH_MemorialCutsceneMarker' : cannot instantiate abstract class
+00d36540	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_FireHeartScript::CFH_Prisoner' : cannot instantiate abstract class
+00d36620	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00d37140	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CFH_Scythe' : cannot instantiate abstract class
+00d373d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CFH_Villager' : cannot instantiate abstract class
+00d374a0	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+00d36680	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_FireHeartScript::CProphetCage' : cannot instantiate abstract class
+00d36730	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+00d363a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CPuzzleBlockMoon' : cannot instantiate abstract class
+00d36470	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_FireHeartScript::CPuzzleBlockSun' : cannot instantiate abstract class
+00d3d060	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_GuildTrainingScript::CAppleGirl' : cannot instantiate abstract class
+00d3e1f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest' : cannot instantiate abstract class
+00d444c0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d42f40	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_GuildTrainingScript::CBirdKiller' : cannot instantiate abstract class
+00d41a30	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_GuildTrainingScript::CCombatApprentice' : cannot instantiate abstract class
+00d40b30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CHeroBed' : cannot instantiate abstract class
+00d43040	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CKillBird' : cannot instantiate abstract class
+00d43120	SAME	67b RELOCATION_MATCH->RELOCATION_MATCH
+00d40c10	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_GuildTrainingScript::CMeleeApprentice' : cannot instantiate abstract class
+00d40cc0	SRC_FAIL	CEntityScriptBase.h(35): error C2653: 'NScript' : is not a class or namespace name | CEntityScriptBase.h(35): error C2143: syntax error : missing ',' before '&'
+00d43cd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CPreMeleeMaze' : cannot instantiate abstract class
+00d409e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CRaceMarker' : cannot instantiate abstract class
+00d41b10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CSkillApprentice' : cannot instantiate abstract class
+00d41bf0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_GuildTrainingScript::CSkillTarget' : cannot instantiate abstract class
+00d43280	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CWillApprentice' : cannot instantiate abstract class
+00d43360	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingScript::CWillDummy' : cannot instantiate abstract class
+00d50ab0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d58300	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d52310	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d5acc0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d5dec0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d51fc0	RELOC_RENAMED	leafsym ?Main@CPreMeleeDummy@@QAEXXZ -> ?Main@CPreMeleeDummy@@UAEXXZ
+00d509d0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster' : cannot instantiate abstract class
+00d566a0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent' : cannot instantiate abstract class
+00d56750	SAME	22b MATCH->MATCH
+00d57fa0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder' : cannot instantiate abstract class
+00d565c0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster' : cannot instantiate abstract class
+00d51f00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy' : cannot instantiate abstract class
+00d52230	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper' : cannot instantiate abstract class
+00d51e20	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster' : cannot instantiate abstract class
+00d5abe0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster' : cannot instantiate abstract class
+00d5dde0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster' : cannot instantiate abstract class
+00d64210	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d670e0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d68d10	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d6b590	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a0d0	DIFFER	121v121 grades=False sym=?Main@CHTE_Executioner@@UAEXXZ
+00d69f50	DIFFER	121v121 grades=False sym=?Main@CHTE_Prisoner@@UAEXXZ
+00d62360	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief' : cannot instantiate abstract class
+00d62270	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze' : cannot instantiate abstract class
+00d63cc0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome' : cannot instantiate abstract class
+00d66ba0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome' : cannot instantiate abstract class
+00d68720	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper' : cannot instantiate abstract class
+00d6a150	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CGUARD1' : cannot instantiate abstract class
+00d6a220	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a290	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CGUARD2' : cannot instantiate abstract class
+00d6a360	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d69d50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CHTE_AmbushPoint' : cannot instantiate abstract class
+00d6ad70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard' : cannot instantiate abstract class
+00d6ae30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00d6b180	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CHTE_Audience' : cannot instantiate abstract class
+00d69fd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CHTE_Executioner' : cannot instantiate abstract class
+00d6a080	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a3d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter' : cannot instantiate abstract class
+00d6a480	SAME	107b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a4f0	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+00d69e30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner' : cannot instantiate abstract class
+00d69ee0	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+00d6fe50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointCond' : cannot instantiate abstract class
+00d6ff30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointRear' : cannot instantiate abstract class
+00d6fd70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPoint' : cannot instantiate abstract class
+00d729e0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d7fab0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d7fab0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d7fab0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d7a8a0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d7c2e0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d7c2e0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d7c2e0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d73ae0	DIFFER	386v386 grades=False sym=?Main@CHTG_AmbushPointRear@@UAEXXZ
+00d73610	DIFFER	146v146 grades=False sym=?Main@CHTG_AmbushPoint@@UAEXXZ
+00d7f110	DIFFER	142v142 grades=False sym=?Main@CHeroSoulsEnemy@@UAEXXZ
+00d70010	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointBackup' : cannot instantiate abstract class
+00d724d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_Boss' : cannot instantiate abstract class
+00d73220	SAME	67b RELOCATION_MATCH->RELOCATION_MATCH
+00d73280	SAME	23b MATCH->MATCH
+00d700e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter' : cannot instantiate abstract class
+00d70520	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_Guard' : cannot instantiate abstract class
+00d705d0	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+00d70650	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00d71980	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner' : cannot instantiate abstract class
+00d71a30	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00d71a70	SAME	182b RELOCATION_MATCH->RELOCATION_MATCH
+00d7de80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CArenaHeroGate' : cannot instantiate abstract class
+00d7f1a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance' : cannot instantiate abstract class
+00d7f380	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CDyingVillager' : cannot instantiate abstract class
+00d7dff0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CHOHGuard' : cannot instantiate abstract class
+00d7f7b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager' : cannot instantiate abstract class
+00d7f020	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CHeroSoulsEnemy' : cannot instantiate abstract class
+00d7dba0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CNotForODG' : cannot instantiate abstract class
+00d7dc50	SRC_FAIL	new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union
+00d7ebe0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CSummoner1' : cannot instantiate abstract class
+00d7ee00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CSummoner2' : cannot instantiate abstract class
+00d7dc90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsArenaScript::CSummonerToKill' : cannot instantiate abstract class
+00d7a290	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsScript::CEndBriarRose' : cannot instantiate abstract class
+00d79c80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsScript::CEndScythe' : cannot instantiate abstract class
+00d79b90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsScript::CNotForODG' : cannot instantiate abstract class
+00d79c40	SRC_FAIL	new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union
+00d7b400	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsThunderScript::CHeroThunder' : cannot instantiate abstract class
+00d82210	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d82210::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d82210::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d87140	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00d844a0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d844a0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d844a0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d89580	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d89580::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d89580::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d8a960	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d8a960::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d8a960::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d891f0	DIFFER	175v175 grades=False sym=?Main@CSUMMONED_CREATURE@@UAEXXZ
+00d88f90	DIFFER	265v265 grades=False sym=?Main@CUndeadSoldier@@UAEXXZ
+00d81750	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsBriarScript::CBRIAR_ROSE_IMPOSTER' : cannot instantiate abstract class
+00d81630	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsBriarScript::CBriarRose' : cannot instantiate abstract class
+00d81b60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsBriarScript::CHSB_MagicBarrier' : cannot instantiate abstract class
+00d86390	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods' : cannot instantiate abstract class
+00d85fa0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CGuardOutsideWoods' : cannot instantiate abstract class
+00d85a30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CGuildmaster_HS' : cannot instantiate abstract class
+00d86980	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker' : cannot instantiate abstract class
+00d86a30	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+00d86080	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CMuteGuardOutsideWoods' : cannot instantiate abstract class
+00d86b60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte' : cannot instantiate abstract class
+00d86560	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsGuildmasterScript::CWaitingGuardInWoods' : cannot instantiate abstract class
+00d83e60	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_HeroSoulsMotherScript::CHS_Screamer' : cannot instantiate abstract class
+00d83f10	SAME	11b MATCH->MATCH
+00d83cf0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsMotherScript::CSummonerToKill' : cannot instantiate abstract class
+00d885e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath' : cannot instantiate abstract class
+00d892a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsNostroScript::CNostro' : cannot instantiate abstract class
+00d89380	DIFFER	504v504 grades=False sym=?Main@CNostro@CQ_HeroSoulsNostroScript@NScript@@UAEXXZ
+00d890a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE' : cannot instantiate abstract class
+00d88420	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsNostroScript::CSummonerToKill' : cannot instantiate abstract class
+00d88ec0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HeroSoulsNostroScript::CUndeadSoldier' : cannot instantiate abstract class
+00d8a7f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HerosOldHouseScript::CExtraBooty' : cannot instantiate abstract class
+00d8a8a0	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a650	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_HerosOldHouseScript::CFishermansWife' : cannot instantiate abstract class
+00d8a700	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a770	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a4b0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_HerosOldHouseScript::CGhostFisherman' : cannot instantiate abstract class
+00d8a560	SAME	204b RELOCATION_MATCH->RELOCATION_MATCH
+00d8fc70	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_HobbeCaveScript::CGranny' : cannot instantiate abstract class
+00d8fd90	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f5e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CHobbeLarder' : cannot instantiate abstract class
+00d8f950	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CHobbeLeader' : cannot instantiate abstract class
+00d8f4f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CHobbeRoaming' : cannot instantiate abstract class
+00d8f310	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CHobbeSpawn' : cannot instantiate abstract class
+00d8f3f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CHobbeTorrent' : cannot instantiate abstract class
+00d8ffa0	SRC_FAIL	new.cpp(85): error C2259: 'NScript::CQ_HobbeCaveScript::CJames' : cannot instantiate abstract class
+00d8fe30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CNymph' : cannot instantiate abstract class
+00d8fef0	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00d915b0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d915b0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d915b0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d9d930	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d9d930::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d9d930::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d9ffd0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d9ffd0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d9ffd0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d9fd80	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d9c4a0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00d901b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CBanditCommentMarker' : cannot instantiate abstract class
+00d90ff0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CBanditInRoomSample' : cannot instantiate abstract class
+00d90e90	SRC_FAIL	new.cpp(83): error C2259: 'NScript::CQ_HobbeCaveScript::CBanditSacrifice' : cannot instantiate abstract class
+00d90f40	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00d90fa0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+00d91250	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CCheckTheSilverKeyChest' : cannot instantiate abstract class
+00d91470	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CInvisibleCage' : cannot instantiate abstract class
+00d90a50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CJamesCommentMarkerAdv' : cannot instantiate abstract class
+00d906d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeCaveScript::CJamesCommentMarker' : cannot instantiate abstract class
+00d900e0	SAME	198b RELOCATION_MATCH->RELOCATION_MATCH
+00d90050	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00d9c1d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::CDrinkersReactMarker' : cannot instantiate abstract class
+00d9be30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::CDrinkingHobbe' : cannot instantiate abstract class
+00d9c3c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::CHobbeBarrel' : cannot instantiate abstract class
+00d9c560	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer' : cannot instantiate abstract class
+00d9c610	SAME	70b RELOCATION_MATCH->RELOCATION_MATCH
+00d9b7c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::CQ_HobbeToothHobbe' : cannot instantiate abstract class
+00d9bdc0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d9cf60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::CQ_HobbeToothWhisper' : cannot instantiate abstract class
+00d9ce80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe' : cannot instantiate abstract class
+00d9f5b0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_MinionCampScript::CFadeinSummoner' : cannot instantiate abstract class
+00d9ea80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionCampScript::CMC_MinionGuard' : cannot instantiate abstract class
+00d9f0b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionCampScript::CMC_Minion' : cannot instantiate abstract class
+00d9ed50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionCampScript::CMC_SpawnPoint' : cannot instantiate abstract class
+00da2a20	SAME	638b RELOCATION_MATCH->RELOCATION_MATCH
+00da8320	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00da8320::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00da8320::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00da45c0	DIFFER	194v194 grades=False sym=?Main@CMinionEscort@@UAEXXZ
+00daebf0	DIFFER	109v109 grades=False sym=?GetVillagerSpeechIndex@CNOVI_Villager@@QAEJJ@Z
+00da0160	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+00da4b80	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard' : cannot instantiate abstract class
+00da5c90	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CCorneredGuard' : cannot instantiate abstract class
+00da6810	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CGuardNotThisWay' : cannot instantiate abstract class
+00da6560	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CGuardToLeadTheWay' : cannot instantiate abstract class
+00da57a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CInvisibleCage' : cannot instantiate abstract class
+00da6320	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CM_Guard' : cannot instantiate abstract class
+00da6170	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CM_Minion' : cannot instantiate abstract class
+00da6670	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CM_NotThisWay' : cannot instantiate abstract class
+00da53a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard' : cannot instantiate abstract class
+00da4d40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMagicBarrier' : cannot instantiate abstract class
+00da4250	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMapKeeper' : cannot instantiate abstract class
+00da4a30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionAttackingGuard' : cannot instantiate abstract class
+00da4b10	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00da4690	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionEscortEnd' : cannot instantiate abstract class
+00da4740	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da4490	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionEscort' : cannot instantiate abstract class
+00da4540	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00da4590	SAME	14b MATCH->MATCH
+00da5b40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator' : cannot instantiate abstract class
+00da60a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv' : cannot instantiate abstract class
+00da58b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionSpawner' : cannot instantiate abstract class
+00da5da0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner' : cannot instantiate abstract class
+00da4920	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard' : cannot instantiate abstract class
+00da5e70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_MinionClifftopChaseScript::CRockTroll' : cannot instantiate abstract class
+00daec60	SRC_FAIL	new.cpp(81): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_Bully' : cannot instantiate abstract class
+00dac580	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_Guard' : cannot instantiate abstract class
+00dac2c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather' : cannot instantiate abstract class
+00daef50	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl' : cannot instantiate abstract class
+00dac420	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa' : cannot instantiate abstract class
+00daede0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_Victim' : cannot instantiate abstract class
+00dade50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_Villager' : cannot instantiate abstract class
+00db8520	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00db8520::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00db8520::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00db7e10	DIFFER	476v476 grades=False sym=?Main@CNOVI_Barrel@@UAEXXZ
+00db80c0	DIFFER	232v232 grades=False sym=?Main@CNOVI_CreatedBeetle@@UAEXXZ
+00db0880	SRC_FAIL	new.cpp(80): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan' : cannot instantiate abstract class
+00db29a0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife' : cannot instantiate abstract class
+00db1db0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman' : cannot instantiate abstract class
+00db51b0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan' : cannot instantiate abstract class
+00db6b40	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug' : cannot instantiate abstract class
+00db7d00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel' : cannot instantiate abstract class
+00db3e30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader' : cannot instantiate abstract class
+00db7ff0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle' : cannot instantiate abstract class
+00db81b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_NewOakValeIntroScript::COVI_DeadFather' : cannot instantiate abstract class
+00db8290	SAME	100b RELOCATION_MATCH->RELOCATION_MATCH
+00dbfdd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit' : cannot instantiate abstract class
+00dcec70	DIFFER	157v157 grades=False sym=?GoOnPatrol@CCrateTeamMember@@QAEXXZ
+00dc0170	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dc0170::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dc0170::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00dc8700	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dc8700::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dc8700::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00dcf790	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dcf790::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dcf790::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00dcf4c0	DIFFER	119v119 grades=False sym=?Main@CVtable_012DB4B8@@UAEXXZ
+00dc0090	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker' : cannot instantiate abstract class
+00dc4520	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CCeremonialEffect' : cannot instantiate abstract class
+00dc3ee0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon' : cannot instantiate abstract class
+00dc7f50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageFirstGate' : cannot instantiate abstract class
+00dc83e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGate' : cannot instantiate abstract class
+00dc4aa0	SRC_FAIL	new.cpp(80): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper' : cannot instantiate abstract class
+00dc4b50	SAME	18b MATCH->MATCH
+00dc4b70	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00dc7360	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend' : cannot instantiate abstract class
+00dc4c40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan' : cannot instantiate abstract class
+00dc4420	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSarcophagos' : cannot instantiate abstract class
+00dc5e50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman' : cannot instantiate abstract class
+00dc84e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CSpeakingMarker' : cannot instantiate abstract class
+00dc7020	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CStartGravekeeperCutsceneMarker' : cannot instantiate abstract class
+00dc85c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadLieutenant' : cannot instantiate abstract class
+00dc71c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadSpawnCutscene' : cannot instantiate abstract class
+00dcdb80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OrchardFarmRaidScript::CArtefact' : cannot instantiate abstract class
+00dcfa10	SAME	76b RELOCATION_MATCH->RELOCATION_MATCH
+00dcf3d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance' : cannot instantiate abstract class
+00dcde20	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember' : cannot instantiate abstract class
+00dcded0	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+00dcf610	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2' : cannot instantiate abstract class
+00dcf540	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro' : cannot instantiate abstract class
+00dcef50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper' : cannot instantiate abstract class
+00dcf000	SAME	144b RELOCATION_MATCH->RELOCATION_MATCH
+00dd9300	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dd9300::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dd9300::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00ddc7d0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00ddc7d0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ddc7d0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00ddeee0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00ddeee0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ddeee0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00ddece0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00dd9180	DIFFER	302v302 grades=False sym=?Main@CPrisonKeyDoor@@UAEXXZ
+00dd8ba0	DIFFER	348v348 grades=False sym=?Main@CTortureDoorCourtyard@@UAEXXZ
+00dd8990	DIFFER	290v290 grades=False sym=?Main@CTortureDoorPassage@@UAEXXZ
+00ddc6c0	DIFFER	259v259 grades=False sym=?Main@CWaypointSpeedCheck@@UAEXXZ
+00dd8d20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero' : cannot instantiate abstract class
+00dd8f10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoor' : cannot instantiate abstract class
+00dd8fd0	SAME	207b RELOCATION_MATCH->RELOCATION_MATCH
+00dd83c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CGuardMotherEscape' : cannot instantiate abstract class
+00dd8790	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CInventoryChest' : cannot instantiate abstract class
+00dd8850	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+00dd68a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture' : cannot instantiate abstract class
+00dd6950	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00dd6330	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonEscapeGuard' : cannot instantiate abstract class
+00dd43d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard' : cannot instantiate abstract class
+00dd4480	SAME	20b MATCH->MATCH
+00dd90c0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonKeyDoor' : cannot instantiate abstract class
+00dd49a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice' : cannot instantiate abstract class
+00dd4a50	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00dd5940	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner' : cannot instantiate abstract class
+00dd8ae0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorCourtyard' : cannot instantiate abstract class
+00dd88d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorPassage' : cannot instantiate abstract class
+00ddb4a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonRaceScript::CPrisonRaceGuard' : cannot instantiate abstract class
+00ddc500	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard' : cannot instantiate abstract class
+00ddc2d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonRaceScript::CPrisonRaceWarden' : cannot instantiate abstract class
+00ddbf90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard' : cannot instantiate abstract class
+00ddc3e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonRaceScript::CPrisonRacer' : cannot instantiate abstract class
+00ddc490	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+00ddc5e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck' : cannot instantiate abstract class
+00ddedf0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonWardenGameScript::CDoNotTarget' : cannot instantiate abstract class
+00ddec30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonWardenGameScript::CExitWardensOffice' : cannot instantiate abstract class
+00dde630	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonWardenGameScript::CPrisonWarden' : cannot instantiate abstract class
+00dde720	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_PrisonWardenGameScript::CSecretBook' : cannot instantiate abstract class
+00dde7f0	SAME	330b RELOCATION_MATCH->RELOCATION_MATCH
+00dec5b0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dec5b0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dec5b0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00de4480	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00def220	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00def220::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00def220::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00dec4c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimChiefsHouseScript::CTest' : cannot instantiate abstract class
+00de3c00	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_RansomVictimScript::CNPCComment' : cannot instantiate abstract class
+00de2100	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CRandomAttacker' : cannot instantiate abstract class
+00de1d00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CRansomHelper' : cannot instantiate abstract class
+00de1e20	SRC_FAIL	new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union
+00de1db0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00de3760	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CRansomRevenge' : cannot instantiate abstract class
+00de1ba0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CRansommer' : cannot instantiate abstract class
+00de1cc0	SRC_FAIL	new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union
+00de1c50	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00de1a50	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_RansomVictimScript::CVictim' : cannot instantiate abstract class
+00de1b60	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+00de1fb0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CVictimsBrotherHelper' : cannot instantiate abstract class
+00de20c0	SRC_FAIL	new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union
+00de1e60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CVictimsBrother' : cannot instantiate abstract class
+00de1f70	SRC_FAIL	new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union
+00de2500	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_RansomVictimScript::CVictimsFatherGuard' : cannot instantiate abstract class
+00de25d0	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00de18e0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_RansomVictimScript::CVictimsFather' : cannot instantiate abstract class
+00def0f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CDoorToMothersTortureChamber' : cannot instantiate abstract class
+00dee1a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CMotherTorture' : cannot instantiate abstract class
+00dee250	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00ded450	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CSP_AmbushGuard' : cannot instantiate abstract class
+00dede40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CSP_DeskGuard' : cannot instantiate abstract class
+00deda90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CSP_InvestigatingGuard' : cannot instantiate abstract class
+00ded290	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CSP_NymphTrigger' : cannot instantiate abstract class
+00ded1a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CSP_ScreamerTrigger' : cannot instantiate abstract class
+00ded720	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CSP_SecretPassageGuard' : cannot instantiate abstract class
+00deef00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SecretPassageScript::CTortureDoorCourtyard' : cannot instantiate abstract class
+00df3550	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00df3550::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df3550::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00df4a50	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00df4a50::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df4a50::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00df99f0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00df99f0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df99f0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00dfc100	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dfc100::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dfc100::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00df2d30	DIFFER	349v349 grades=False sym=?Main@CFireHeartHolder@@UAEXXZ
+00df2ab0	DIFFER	354v354 grades=False sym=?Main@CSummonerMinion@@UAEXXZ
+00df2c20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SummoningTheShipScript::CFireHeartHolder' : cannot instantiate abstract class
+00df2e90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SummoningTheShipScript::CFireHeart' : cannot instantiate abstract class
+00df3460	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse' : cannot instantiate abstract class
+00df16b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SummoningTheShipScript::CSTS_BriarRose' : cannot instantiate abstract class
+00df21f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SummoningTheShipScript::CSummonerAttacker' : cannot instantiate abstract class
+00df2310	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+00df22a0	SAME	70b RELOCATION_MATCH->RELOCATION_MATCH
+00df2960	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_SummoningTheShipScript::CSummonerMinion' : cannot instantiate abstract class
+00df2a40	SAME	97b RELOCATION_MATCH->RELOCATION_MATCH
+00df4520	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TentacleKrakenBossFightScript::CKrakenMinion' : cannot instantiate abstract class
+00df4820	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TentacleKrakenBossFightScript::CM_Experience' : cannot instantiate abstract class
+00df4730	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TentacleKrakenBossFightScript::CTheKraken' : cannot instantiate abstract class
+00df9640	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictEvilScript::CIsAGuard' : cannot instantiate abstract class
+00df8890	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter' : cannot instantiate abstract class
+00df7f90	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower' : cannot instantiate abstract class
+00df7b20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint' : cannot instantiate abstract class
+00df90b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictEvilScript::CTC_Villager' : cannot instantiate abstract class
+00dfbde0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CBCGameMaster' : cannot instantiate abstract class
+00dfbe90	SRC_FAIL	new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union
+00dfbcf0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CBCMTrader' : cannot instantiate abstract class
+00dfbda0	SRC_FAIL	new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union
+00dfbed0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CBanditExtra' : cannot instantiate abstract class
+00dfbfa0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CCampHostageDoor' : cannot instantiate abstract class
+00dfc050	SAME	134b RELOCATION_MATCH->RELOCATION_MATCH
+00dfb250	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard' : cannot instantiate abstract class
+00dfb990	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper' : cannot instantiate abstract class
+00dfb050	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderConflictGoodScript::CTraderToRescue' : cannot instantiate abstract class
+00dfb1b0	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+00e05170	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00e05170::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00e05170::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00e0e5a0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e035e0	DIFFER	336v336 grades=False sym=?Main@CTE_BanditLeader@@UAEXXZ
+00e0a510	DIFFER	778v778 grades=False sym=?HandleTrader@CTraderScript@@QAEXJ@Z
+00e03730	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CBanditCronies' : cannot instantiate abstract class
+00e04890	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CDW5_Balv' : cannot instantiate abstract class
+00e046f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CDW5_Bandit' : cannot instantiate abstract class
+00e02d70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn' : cannot instantiate abstract class
+00e033a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader' : cannot instantiate abstract class
+00e03a50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CDarkwoodRockTroll' : cannot instantiate abstract class
+00e04a30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CEndTrader' : cannot instantiate abstract class
+00e04b50	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+00e04ae0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00e02390	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CFleshEatingBalverine' : cannot instantiate abstract class
+00e02870	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CInfectedBalverine' : cannot instantiate abstract class
+00e03e80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CMagicBarrier' : cannot instantiate abstract class
+00e03970	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CRockTrollTrigger' : cannot instantiate abstract class
+00e03500	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CTE_BanditLeader' : cannot instantiate abstract class
+00e02c90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_TraderEscortScript::CTraderComment' : cannot instantiate abstract class
+00e0d130	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_UndeadRisingScript::CUndeadRisingBoss' : cannot instantiate abstract class
+00e0d760	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_UndeadRisingScript::CUndeadRisingCentre' : cannot instantiate abstract class
+00e0c970	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly' : cannot instantiate abstract class
+00e0d590	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss' : cannot instantiate abstract class
+00e0cf20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker' : cannot instantiate abstract class
+00e0f400	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CFleeingWoman' : cannot instantiate abstract class
+00e0f7c0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_WaspBossScript::CWaspHelper' : cannot instantiate abstract class
+00e1f620	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e12170	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e18220	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e193d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e1bf60	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e1ed50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQR_EscortTraderScript::CAttackingBandit' : cannot instantiate abstract class
+00e1e880	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQR_EscortTraderScript::CM_BanditTrigger' : cannot instantiate abstract class
+00e1e7a0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CQR_EscortTraderScript::CTraderToEscort' : cannot instantiate abstract class
+00e109d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CGratefulVillagerSpawn' : cannot instantiate abstract class
+00e10a90	SAME	102b RELOCATION_MATCH->RELOCATION_MATCH
+00e11cd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CHornetDrone' : cannot instantiate abstract class
+00e11ad0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CQueenHornet' : cannot instantiate abstract class
+00e11380	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CWaspAttacker' : cannot instantiate abstract class
+00e10d70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CWaspChaseWoman' : cannot instantiate abstract class
+00e10e20	SAME	20b MATCH->MATCH
+00e10b20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CWaspChaser' : cannot instantiate abstract class
+00e11580	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WaspBossScript::CWaspVictim' : cannot instantiate abstract class
+00e11630	SAME	20b MATCH->MATCH
+00e17750	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief' : cannot instantiate abstract class
+00e16d10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1' : cannot instantiate abstract class
+00e17230	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2' : cannot instantiate abstract class
+00e16990	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager' : cannot instantiate abstract class
+00e16b50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager' : cannot instantiate abstract class
+00e15750	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine' : cannot instantiate abstract class
+00e192e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineWWScript::CKG_Chief' : cannot instantiate abstract class
+00e191e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine' : cannot instantiate abstract class
+00e190a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine' : cannot instantiate abstract class
+00e1ae50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WizardBattleScript::CChasingScreamer' : cannot instantiate abstract class
+00e1ba60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WizardBattleScript::CEndGameBarrier' : cannot instantiate abstract class
+00e1b950	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WizardBattleScript::CHKC_Maze' : cannot instantiate abstract class
+00e1b660	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WizardBattleScript::CHKC_ScreamerPoint' : cannot instantiate abstract class
+00e1b100	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer' : cannot instantiate abstract class
+00e1bb80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_WizardBattleScript::CInitialScreamerPoint' : cannot instantiate abstract class
+00e26c50	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e25d90	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e27cb0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e29110	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e2a170	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e2e900	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e26af0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern' : cannot instantiate abstract class
+00e26bd0	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00e25c70	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern' : cannot instantiate abstract class
+00e25d20	SAME	12b MATCH->MATCH
+00e25d30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00e27bb0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze' : cannot instantiate abstract class
+00e28f70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQS_MeetSisterScript::CMeetSisterMessenger' : cannot instantiate abstract class
+00e29040	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQS_MeetSisterScript::CMeetSisterSister' : cannot instantiate abstract class
+00e29e80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQS_ScytheInfoScript::CScytheMarker' : cannot instantiate abstract class
+00e2a020	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQS_ScytheInfoScript::CScytheNearOracle' : cannot instantiate abstract class
+00e2bb60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_AmbushScamScript::CAS_Ambusher' : cannot instantiate abstract class
+00e2bec0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_AmbushScamScript::CAS_Buddy' : cannot instantiate abstract class
+00e2bc90	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_AmbushScamScript::CAS_Trickster' : cannot instantiate abstract class
+00e369b0	DIFFER	748v748 grades=False sym=?Main@CAC_DummyStatic@@UAEXXZ
+00e37340	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e38bd0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b740	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e33d30	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving' : cannot instantiate abstract class
+00e33bc0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic' : cannot instantiate abstract class
+00e334c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ArcheryCompetitionScript::CAC_HighScorePost' : cannot instantiate abstract class
+00e335b0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_ArcheryCompetitionScript::CAC_Owner' : cannot instantiate abstract class
+00e33a20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ArcheryCompetitionScript::CM_AC_DummyMoving' : cannot instantiate abstract class
+00e33800	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ArcheryCompetitionScript::CM_AC_DummyStatic' : cannot instantiate abstract class
+00e388f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_AssassinAttacksScript::CAssassinChest' : cannot instantiate abstract class
+00e389e0	SAME	488b RELOCATION_MATCH->RELOCATION_MATCH
+00e382c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_AssassinAttacksScript::CAttackingAssassin' : cannot instantiate abstract class
+00e385d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_AssassinAttacksScript::CChestHidingAssassin' : cannot instantiate abstract class
+00e37d50	SRC_FAIL	new.cpp(83): error C2259: 'NScript::CV_AssassinAttacksScript::CM_AssassinTrigger' : cannot instantiate abstract class
+00e38d80	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b0f0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_BordelloScript::CBordelloClient' : cannot instantiate abstract class
+00e3b1a0	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b230	SAME	18b MATCH->MATCH
+00e3b3d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BordelloScript::CBordelloEntrance' : cannot instantiate abstract class
+00e3ae60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BordelloScript::CBordelloGuard' : cannot instantiate abstract class
+00e3af30	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00e3ab90	SRC_FAIL	new.cpp(89): error C2259: 'NScript::CV_BordelloScript::CBordelloLady' : cannot instantiate abstract class
+00e3ac70	SAME	482b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b270	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BordelloScript::CM_HeroDownstairs' : cannot instantiate abstract class
+00e3aab0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_BordelloScript::CMadame' : cannot instantiate abstract class
+00e3af90	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_BordelloScript::CMagicman' : cannot instantiate abstract class
+00e3b060	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e47610	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e4b1d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e4b010	DIFFER	359v359 grades=False sym=?Main@CGuildSealWarning@@UAEXXZ
+00e4a740	DIFFER	335v335 grades=False sym=?Main@CM_BanditLeader@@UAEXXZ
+00e47500	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditCampPathScript::CBCP_Bandit' : cannot instantiate abstract class
+00e475b0	SAME	20b MATCH->MATCH
+00e4a890	SRC_FAIL	new.cpp(84): error C2259: 'NScript::CV_BanditTollScript::CBanditLeader' : cannot instantiate abstract class
+00e4a940	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00e49850	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditTollScript::CBlockingBandit' : cannot instantiate abstract class
+00e49900	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00e4af50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditTollScript::CGuildSealWarning' : cannot instantiate abstract class
+00e4a660	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditTollScript::CM_BanditLeader' : cannot instantiate abstract class
+00e48d00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditTollScript::CM_TauntingBandit' : cannot instantiate abstract class
+00e48950	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditTollScript::CM_TollBandit' : cannot instantiate abstract class
+00e49f10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BanditTollScript::CReluctantTrader' : cannot instantiate abstract class
+00e4a190	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_BanditTollScript::CSafeTrader' : cannot instantiate abstract class
+00e48de0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_BanditTollScript::CTauntingBandit' : cannot instantiate abstract class
+00e48b40	SRC_FAIL	new.cpp(82): error C2259: 'NScript::CV_BanditTollScript::CTollBandit' : cannot instantiate abstract class
+00e540a0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e5cf20	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f000	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e546d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e507e0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan' : cannot instantiate abstract class
+00e50890	SAME	53b MATCH->MATCH
+00e58c60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BeggarAndChildScript::CLookoutPointBeggar' : cannot instantiate abstract class
+00e5de80	SAME	364b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f240	SAME	67b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f640	SAME	67b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f880	SAME	67b RELOCATION_MATCH->RELOCATION_MATCH
+00e5dff0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_BodyGuardScript::CM_BodyGuardRespawn' : cannot instantiate abstract class
+00e54580	SRC_FAIL	new.cpp(91): error C2259: 'NScript::CV_BookCollectingScript::CBS_Teacher' : cannot instantiate abstract class
+00e54630	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+00e6b240	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e64020	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e6a500	SRC_FAIL	new.cpp(81): error C2259: 'NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil' : cannot instantiate abstract class
+00e6a6e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ChapelOfEvilScript::CCOE_AltarEvil' : cannot instantiate abstract class
+00e6a600	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ChapelOfEvilScript::CCOE_Victim' : cannot instantiate abstract class
+00e634b0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_ChickenKickingScript::CChickenMaster' : cannot instantiate abstract class
+00e63560	SAME	15b MATCH->MATCH
+00e64d90	SAME	67b RELOCATION_MATCH->RELOCATION_MATCH
+00e68dc0	SAME	153b RELOCATION_MATCH->RELOCATION_MATCH
+00e63590	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ChickenKickingScript::CKickedChicken' : cannot instantiate abstract class
+00e63660	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ChickenKickingScript::CSpectator' : cannot instantiate abstract class
+00e6f640	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_CombatMult' : cannot instantiate abstract class
+00e6fb70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_Dragon' : cannot instantiate abstract class
+00e6e960	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_ShineLight' : cannot instantiate abstract class
+00e6f0f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_ThunderHelmet' : cannot instantiate abstract class
+00e74bc0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e774e0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e7c6b0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e7ed60	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e7bb30	DIFFER	162v162 grades=False sym=?Main@CFishermanWasp@@UAEXXZ
+00e70390	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_BeEvil' : cannot instantiate abstract class
+00e70af0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_DoDamage' : cannot instantiate abstract class
+00e71e40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_DressAsBandit' : cannot instantiate abstract class
+00e71380	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_EatPies' : cannot instantiate abstract class
+00e718b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_GiveGift' : cannot instantiate abstract class
+00e73ff0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_KeyHoarder' : cannot instantiate abstract class
+00e73340	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_MarryLadyGrey' : cannot instantiate abstract class
+00e73860	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_SexMad' : cannot instantiate abstract class
+00e72560	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_DemonDoorsScript::CDF_ThreeSuits' : cannot instantiate abstract class
+00e731f0	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00e730a0	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00e76730	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ExposeMayorScript::CEM_FlashLightPoint' : cannot instantiate abstract class
+00e765d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ExposeMayorScript::CEM_Rhodri' : cannot instantiate abstract class
+00e766a0	SAME	138b RELOCATION_MATCH->RELOCATION_MATCH
+00e76470	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_ExposeMayorScript::CEM_Sheriff' : cannot instantiate abstract class
+00e76360	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager' : cannot instantiate abstract class
+00e76410	SAME	49b MATCH->MATCH
+00e76800	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ExposeMayorScript::CHH_CellarDoor' : cannot instantiate abstract class
+00e7bbe0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FishermanScript::CFishermanBulletinBoard' : cannot instantiate abstract class
+00e7bca0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+00e7ba40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FishermanScript::CFishermanWasp' : cannot instantiate abstract class
+00e7b7b0	SRC_FAIL	new.cpp(81): error C2259: 'NScript::CV_FishermanScript::CFisherman' : cannot instantiate abstract class
+00e7b890	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FishermanScript::CM_FishermanWaspSpawn' : cannot instantiate abstract class
+00e7ec90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker' : cannot instantiate abstract class
+00e7e570	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FishingCompetitionScript::CFishCompCompetitor' : cannot instantiate abstract class
+00e83bc0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e8d0e0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e82870	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FisticuffsClubScript::CFisticuffsClubRing' : cannot instantiate abstract class
+00e83780	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_FisticuffsClubScript::CRingFighter' : cannot instantiate abstract class
+00e83570	SRC_FAIL	new.cpp(89): error C2259: 'NScript::CV_FisticuffsClubScript::CTyler' : cannot instantiate abstract class
+00e836f0	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00e8be10	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyDaughterInLaw' : cannot instantiate abstract class
+00e8bd30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace' : cannot instantiate abstract class
+00e8ca60	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon' : cannot instantiate abstract class
+00e90a30	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e95f80	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e98460	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e9a0e0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e93a60	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e9df30	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00e95e80	DIFFER	137v137 grades=False sym=?Main@CHHUndead@@UAEXXZ
+00e908d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_GuildMasterScript::CGuildMasterGameFlow' : cannot instantiate abstract class
+00e909a0	SAME	134b RELOCATION_MATCH->RELOCATION_MATCH
+00e95cd0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_HauntedHouseScript::CHHUndead' : cannot instantiate abstract class
+00e95dc0	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00e95bf0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_HauntedHouseScript::CM_HeroInsideHouse' : cannot instantiate abstract class
+00e955b0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_HauntedHouseScript::CM_QuestControl' : cannot instantiate abstract class
+00e95690	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_HauntedHouseScript::CM_UndeadHere' : cannot instantiate abstract class
+00e96fb0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_HeroDollsScript::CBS_Teacher' : cannot instantiate abstract class
+00e997e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_HeroDuelScript::CSpectator' : cannot instantiate abstract class
+00e996b0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_HeroDuelScript::CThunder' : cannot instantiate abstract class
+00e92f70	SRC_FAIL	new.cpp(87): error C2259: 'NScript::CV_HiddenBootyScript::CM_HiddenBooty' : cannot instantiate abstract class
+00e9d9d0	SRC_FAIL	new.cpp(81): error C2259: 'NScript::CV_IntroductionToTrophiesScript::CBriarRose' : cannot instantiate abstract class
+00e9d700	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_IntroductionToTrophiesScript::CTrophiesBriarTrophy' : cannot instantiate abstract class
+00e9d8e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroTable' : cannot instantiate abstract class
+00e9cee0	SRC_FAIL	new.cpp(83): error C2259: 'NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher' : cannot instantiate abstract class
+00e9ff70	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside' : cannot instantiate abstract class
+00ea0f00	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ea5780	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7ef0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ead860	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ea09f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine' : cannot instantiate abstract class
+00ea0030	SAME	29b MATCH->MATCH
+00ea5150	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_LostTraderScript::CLostTraderBanditSpawn' : cannot instantiate abstract class
+00ea50e0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00ea34f0	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_LostTraderScript::CLostTraderTrader' : cannot instantiate abstract class
+00ea35a0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7990	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MazeResearchScript::CEmptyGrave' : cannot instantiate abstract class
+00ea80f0	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7a60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MazeResearchScript::CHistoryBookcase' : cannot instantiate abstract class
+00eaee10	SAME	112b RELOCATION_MATCH->RELOCATION_MATCH
+00eac4e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend' : cannot instantiate abstract class
+00eacde0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend' : cannot instantiate abstract class
+00eaba10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistBrotherOlder' : cannot instantiate abstract class
+00eaae40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger' : cannot instantiate abstract class
+00eaaf10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistBrother' : cannot instantiate abstract class
+00ead730	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistBuriedGem' : cannot instantiate abstract class
+00eae820	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+00ea8e50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MurderTwistScript::CMurderTwistLeader' : cannot instantiate abstract class
+00ea8f00	SRC_FAIL	new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->EntitySetAsKillable' must point to class/struct/union
+00eb9710	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00eb6370	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ebebf0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00eb78b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MayorsInvitationScript::CLadyGrey' : cannot instantiate abstract class
+00eb8810	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_MayorsInvitationScript::CMI_InfoKeeper' : cannot instantiate abstract class
+00eb79f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_MayorsInvitationScript::CWiseVillager' : cannot instantiate abstract class
+00eb5450	SRC_FAIL	new.cpp(86): error C2259: 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard' : cannot instantiate abstract class
+00eb3c60	SRC_FAIL	new.cpp(88): error C2259: 'NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin' : cannot instantiate abstract class
+00eb3e40	SAME	247b RELOCATION_MATCH->RELOCATION_MATCH
+00eb2070	SAME	206b RELOCATION_MATCH->RELOCATION_MATCH
+00ebce80	SRC_FAIL	new.cpp(80): error C2259: 'NScript::CV_OracleScript::CVO_OracleMarker' : cannot instantiate abstract class
+00ebcf30	SAME	18b MATCH->MATCH
+00ebe540	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_OracleScript::CVO_Woman' : cannot instantiate abstract class
+00ebfb00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan' : cannot instantiate abstract class
+00ebfbb0	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1000	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ec15d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ec2860	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ec47c0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ecd600	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ecd530	DIFFER	145v145 grades=False sym=?Main@CSickChildFishingSpot@@UAEXXZ
+00ec0900	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ParanoidWhispersScript::CPW_NecklaceDiggingSpot' : cannot instantiate abstract class
+00ec09b0	SAME	20b MATCH->MATCH
+00ec0a50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend' : cannot instantiate abstract class
+00ec14e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_PicnicAreaAfterWaspBossScript::CPAAWB_Guard' : cannot instantiate abstract class
+00ec13f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_PicnicAreaAfterWaspBossScript::CPAAWB_Villager' : cannot instantiate abstract class
+00ec1b70	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature' : cannot instantiate abstract class
+00ec1c20	SAME	176b RELOCATION_MATCH->RELOCATION_MATCH
+00ec41f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger' : cannot instantiate abstract class
+00ec4490	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll' : cannot instantiate abstract class
+00ec45c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_RockTrollFirstEncounterScript::CRTFE_Sparrow' : cannot instantiate abstract class
+00ecafa0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_SickChildScript::CIngredientOwner' : cannot instantiate abstract class
+00ecb050	SAME	39b MATCH->MATCH
+00ec8160	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CV_SickChildScript::CManInLove' : cannot instantiate abstract class
+00ec8230	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00ec9c00	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SickChildScript::CMansLover' : cannot instantiate abstract class
+00ecd450	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SickChildScript::CSickChildFishingSpot' : cannot instantiate abstract class
+00ec5cd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SickChildScript::CSickChild' : cannot instantiate abstract class
+00ec5da0	SRC_FAIL	new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union
+00ec5bc0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SickChildScript::CSickChildsMother' : cannot instantiate abstract class
+00ec5c90	SRC_FAIL	new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union
+00ec67b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SickChildScript::CSickChildsSister' : cannot instantiate abstract class
+00ecbc80	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_SickChildScript::CTalkingTrader1' : cannot instantiate abstract class
+00ec7ff0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_SickChildScript::CWitch' : cannot instantiate abstract class
+00ecd2d0	SRC_FAIL	new.cpp(87): error C2259: 'NScript::CV_SickChildScript::CWomanToAttract' : cannot instantiate abstract class
+00ecd380	SAME	9b MATCH->MATCH
+00ed28c0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4890	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ed5340	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ed8210	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00edcea0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ed99d0	DIFFER	359v359 grades=False sym=?GetRandomSpeech@CTB_Bard@@QAE?AVCCharString@@XZ
+00ed1420	SRC_FAIL	new.cpp(79): error C2259: 'NScript::CV_SingingStonesScript::CSingingStone' : cannot instantiate abstract class
+00ed44c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_StatueMasterScript::CStatueMasterCellarDoors' : cannot instantiate abstract class
+00ed4770	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_StatueMasterScript::CStatueMasterChest' : cannot instantiate abstract class
+00ed40c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_StatueMasterScript::CStatueMasterStatue' : cannot instantiate abstract class
+00ed5260	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SwordInTheStoneScript::CSwordCrowd' : cannot instantiate abstract class
+00ed5130	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_SwordInTheStoneScript::CSwordOfStrength' : cannot instantiate abstract class
+00ed8050	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint' : cannot instantiate abstract class
+00eda490	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00edc1d0	SRC_FAIL	new.cpp(81): error C2259: 'NScript::CV_TempleOfLightScript::CTOL_AcolyteGood' : cannot instantiate abstract class
+00edc2d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TempleOfLightScript::CTOL_AltarGood' : cannot instantiate abstract class
+00edc390	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH
+00edf2b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_ThunderBoy' : cannot instantiate abstract class
+00edf910	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_ThunderGirl' : cannot instantiate abstract class
+00edff70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Thunder' : cannot instantiate abstract class
+00eeda40	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ee5570	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ee1c10	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ee7540	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00ee3ee0	DIFFER	224v224 grades=False sym=?Main@CTH_Trigger_Guild_Rose@@UAEXXZ
+00ee06b0	DIFFER	298v298 grades=False sym=?Main@CTH_Trigger_Oakvale_Gossip@@UAEXXZ
+00eed4d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_alextestScript::CBurningPerson' : cannot instantiate abstract class
+00eed5d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_alextestScript::CSignpost' : cannot instantiate abstract class
+00eed7d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_alextestScript::CStopDrawing' : cannot instantiate abstract class
+00ee4cf0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TourGuideScript::CTourGuideFollower' : cannot instantiate abstract class
+00ee4bb0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CV_TourGuideScript::CTourGuideGuide' : cannot instantiate abstract class
+00ee4c60	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00ee1400	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_MagicBarrier' : cannot instantiate abstract class
+00ee0060	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Maze' : cannot instantiate abstract class
+00ee0350	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00ee0b60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Bowerstone' : cannot instantiate abstract class
+00ee03e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze' : cannot instantiate abstract class
+00ee3b20	SAME	952b RELOCATION_MATCH->RELOCATION_MATCH
+00ee04d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose' : cannot instantiate abstract class
+00ee1af0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Trigger_NorthernWastes' : cannot instantiate abstract class
+00ee3fc0	SAME	219b RELOCATION_MATCH->RELOCATION_MATCH
+00ee05c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale_Gossip' : cannot instantiate abstract class
+00ee0930	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale' : cannot instantiate abstract class
+00ee0150	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TravellingHeroesScript::CTH_Whisper' : cannot instantiate abstract class
+00ee7430	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TrophyDealerScript::CDemonDoorFace' : cannot instantiate abstract class
+00ee74e0	SAME	63b MATCH->MATCH
+00ee7340	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CV_TrophyDealerScript::CTrophyDealerInCave' : cannot instantiate abstract class
+00ee73f0	SAME	24b MATCH->MATCH
+00ef3200	RELOC_RENAMED	leafsym ?Main@CBeggar@@QAEXXZ -> ?Main@CBeggar@@UAEXXZ
+00efe700	DIFFER	226v226 grades=False sym=?Main@CEndGameScarletRobe@@UAEXXZ
+00eff4d0	DIFFER	226v226 grades=False sym=?Main@CEndGameScarletRobe@@UAEXXZ
+00efee50	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00efbf80	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efbf80::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00efbf80::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00efb9c0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efb9c0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00efb9c0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00efda90	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efda90::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00efda90::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00ef5070	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00efb460	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00eff5c0	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00eff5c0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00eff5c0::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00efad80	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efad80::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00efad80::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00efa210	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'HenchmenBinding::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'HenchmenBinding::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00ef3840	DIFFER	372v372 grades=False sym=?Main@CTestPos@@UAEXXZ
+00efea80	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CBenTestScriptsScript::CBalvMarker' : cannot instantiate abstract class
+00efe620	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CBenTestScriptsScript::CDummy' : cannot instantiate abstract class
+00efe7f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CBenTestScriptsScript::CFader' : cannot instantiate abstract class
+00efbd40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CGuildSealTriggerTestScript::CGuildSealTrigger' : cannot instantiate abstract class
+00efb7e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CHitSwitchTestScript::CHitSwitch' : cannot instantiate abstract class
+00efd680	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CMarkTestScriptsScript::CGift' : cannot instantiate abstract class
+00efd9c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CMarkTestScriptsScript::CShopKeeper' : cannot instantiate abstract class
+00efcb70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CMarkTestScriptsScript::CTestMan' : cannot instantiate abstract class
+00ef2420	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CArcherMan' : cannot instantiate abstract class
+00ef1b70	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CBanditWalker' : cannot instantiate abstract class
+00ef3120	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CBeggar' : cannot instantiate abstract class
+00ef3c60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CChatter1' : cannot instantiate abstract class
+00ef3d40	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CChatter2' : cannot instantiate abstract class
+00ef1f90	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CCinemaMan' : cannot instantiate abstract class
+00ef1050	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CCrate1' : cannot instantiate abstract class
+00ef1130	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CCrate2' : cannot instantiate abstract class
+00ef1210	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CCrateDeathMarker' : cannot instantiate abstract class
+00ef2f20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CDoor' : cannot instantiate abstract class
+00ef4130	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CFollower' : cannot instantiate abstract class
+00ef44d0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CGhostDude' : cannot instantiate abstract class
+00ef2900	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CGoalChest' : cannot instantiate abstract class
+00ef2070	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CKillMan' : cannot instantiate abstract class
+00ef3e20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CLeader' : cannot instantiate abstract class
+00ef1c50	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CLookAtMe1' : cannot instantiate abstract class
+00ef4210	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CMeanBandit' : cannot instantiate abstract class
+00ef3660	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::COpinionMan' : cannot instantiate abstract class
+00ef2ac0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CScrumpyCrate' : cannot instantiate abstract class
+00ef2820	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CStealthGuard' : cannot instantiate abstract class
+00ef7600	SAME	500b RELOCATION_MATCH->RELOCATION_MATCH
+00ef21b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CSwordChest' : cannot instantiate abstract class
+00ef4a60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CTestPerson' : cannot instantiate abstract class
+00ef3740	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CPersonalScript_EmptyScript::CTestPos' : cannot instantiate abstract class
+00ef37f0	SAME	34b MATCH->MATCH
+00ef1d30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CTrappedMan' : cannot instantiate abstract class
+00ef2500	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CTriggerCrate' : cannot instantiate abstract class
+00ef33c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CUndeadDude' : cannot instantiate abstract class
+00ef47c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CUndeadFellow' : cannot instantiate abstract class
+00ef48a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CVillager' : cannot instantiate abstract class
+00ef39c0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CWalker' : cannot instantiate abstract class
+00ef15b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CPersonalScript_EmptyScript::CWhispie' : cannot instantiate abstract class
+00efb280	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CProximityPodiumTestScript::CProximityPodium' : cannot instantiate abstract class
+00eff3f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CTonyTestScriptsScript::CDummy' : cannot instantiate abstract class
+00efaa60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::Cbandit_level_cutsceneScript::Cwelcome_guy' : cannot instantiate abstract class
+00efa0b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::Cguy_scriptScript::Chenchmen' : cannot instantiate abstract class
+00efa160	SAME	115b RELOCATION_MATCH->RELOCATION_MATCH
+00f08c30	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00f08a30	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00f01c50	DIFFER	205v205 grades=False sym=?Main@CEndGameScarletRobe@@UAEXXZ
+00f01150	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00f01150::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00f01150::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00f09b10	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00f09b10::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00f09b10::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00f01d20	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00f01d20::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00f01d20::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00f00a10	SRC_FAIL	new.cpp(76): error C2259: 'NScript::COracleMinigameTestScript::CGamesmasterOracleMarker' : cannot instantiate abstract class
+00f00000	SRC_FAIL	new.cpp(76): error C2259: 'NScript::COracleMinigameTestScript::COracleGamesmaster' : cannot instantiate abstract class
+00f00bb0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::COracleMinigameTestScript::COracleSpectator' : cannot instantiate abstract class
+00f037a0	SRC_FAIL	new.cpp(90): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_BanditAlly' : cannot instantiate abstract class
+00f03850	SAME	29b MATCH->MATCH
+00f056a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_BanditContactEnd' : cannot instantiate abstract class
+00f057e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_BanditContact' : cannot instantiate abstract class
+00f04280	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_ConvoyMember' : cannot instantiate abstract class
+00f04360	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_ConvoySpy' : cannot instantiate abstract class
+00f04480	SAME	102b RELOCATION_MATCH->RELOCATION_MATCH
+00f03f20	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_Phase1Archer' : cannot instantiate abstract class
+00f038a0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_Phase1Guard' : cannot instantiate abstract class
+00f04bd0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_Phase3Archer' : cannot instantiate abstract class
+00f050e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_Phase3Guard' : cannot instantiate abstract class
+00f04510	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_AmbushTradersScript::CAT_Sentry' : cannot instantiate abstract class
+00f01b60	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_CinemaTestScript::CDummy' : cannot instantiate abstract class
+00f1cb50	SRC_FAIL	CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'ArenaBinding::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'ArenaBinding::CEntityScriptBase::CScriptBase' : missing storage-class or type specifiers
+00f19ab0	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_ArenaScript::CArenaCellDoorGuard2' : cannot instantiate abstract class
+00f17b70	SRC_FAIL	new.cpp(77): error C2259: 'NScript::CQ_ArenaScript::CArenaCellDoorGuard' : cannot instantiate abstract class
+00f1b8e0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CArenaCellExitGuard' : cannot instantiate abstract class
+00f1a810	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_ArenaScript::CArenaEnemy' : cannot instantiate abstract class
+00f1b5b0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CArenaSpawn' : cannot instantiate abstract class
+00f1ca30	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CCagedBalverine' : cannot instantiate abstract class
+00f16fe0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CCellWhisper' : cannot instantiate abstract class
+00f14670	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CCham' : cannot instantiate abstract class
+00f14980	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_ArenaScript::CFlick' : cannot instantiate abstract class
+00f15550	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_ArenaScript::CNeedle' : cannot instantiate abstract class
+00f14560	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_ArenaScript::CRoth' : cannot instantiate abstract class
+00f1b0f0	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CSUMMONED_CREATURE' : cannot instantiate abstract class
+00f1b1b0	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+00f161a0	SRC_FAIL	new.cpp(78): error C2259: 'NScript::CQ_ArenaScript::CShadow' : cannot instantiate abstract class
+00f1b800	SRC_FAIL	new.cpp(76): error C2259: 'NScript::CQ_ArenaScript::CWhisperAlly' : cannot instantiate abstract class
+00f35b40	SAME	73b RELOCATION_MATCH->RELOCATION_MATCH

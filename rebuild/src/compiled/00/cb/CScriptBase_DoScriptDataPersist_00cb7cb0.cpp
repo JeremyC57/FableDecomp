@@ -40,12 +40,10 @@ class CPersistContext { public:                           // retail 0x2c bytes, 
                     CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
-class CScriptBase {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void OnPersist(CPersistContext& context);   // slot 4 (+0x10)
-    void DoScriptDataPersist(CCharString& data, bool saving);
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 void CScriptBase::DoScriptDataPersist(CCharString& data, bool saving)
 {

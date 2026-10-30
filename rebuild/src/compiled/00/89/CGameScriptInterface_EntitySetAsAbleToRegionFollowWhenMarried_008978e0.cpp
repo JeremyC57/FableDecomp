@@ -5,7 +5,7 @@
 //   ?EntitySetAsAbleToRegionFollowWhenMarried@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z. Interface 0xd7 = CTCWife
 //   (vtable 0x0125ED5C slot 21 = landed 0x006D4540, returns 0xd7). Setter: FableWin.pdb
 //   ?SetAsPermittedToRegionFollow@CTCWife@@QAEX_N@Z, inline (byte +0x1c; member name descriptive).
-// Body: t = entity.GetThing() (slot 11); live t holding interface 0xd7 (UsingComponents word 6 bit 23): GetTC (non-const
+// Body: t = entity.GetPThing() (slot 11); live t holding interface 0xd7 (UsingComponents word 6 bit 23): GetTC (non-const
 //   LowerBound 0x0040F020) and store the flag.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -60,12 +60,11 @@ public:
         return true;
     }
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CTCWife {                                         // interface 0xd7
 public:
     enum { INTERFACE_TYPE = 0xd7 };
@@ -79,7 +78,7 @@ public:
 #include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetAsAbleToRegionFollowWhenMarried(const CScriptThing& entity, bool able) const
 {
-    CThing* t = entity.GetThing();
+    CThing* t = entity.GetPThing();
     CTCWife* wife;
     if (t && !t->IsDead() && t->GetTC(&wife))
         wife->SetAsPermittedToRegionFollow(able);

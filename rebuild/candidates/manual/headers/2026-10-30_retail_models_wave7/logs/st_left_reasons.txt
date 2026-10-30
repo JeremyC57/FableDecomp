@@ -1,0 +1,25 @@
+    120   item: CThing* m_pThing;
+     89   head
+     81   slot mismatch
+     80   item: CCountedPointer<CScriptThingIm
+     62   inline body: CThing* GetThing() const { ret
+     46   dtor not slot 0
+     41   item: CScriptThing* PImp_Data;
+     24   inline body: CScriptThing() { }
+     22   item: CThing_Retail* PImp_Data;
+     22   inline body: virtual void UnusedThingSlot1(
+     21   item: CCountedPointer PImp;
+     20   item: void* __vftable;
+     20   inline body: virtual bool IsAlive() const {
+     19   item: CCountedPointerWords PImp;
+     17   item: void* PImp[2];
+     15   item: CScriptThingPImp PImp;
+     15   inline body: virtual CThing* GetThing() con
+     13   item: CCountedScriptImp PImp;
+     12   pad used
+     12   item: CScriptThingImpl* PImp_Data;
+     12   inline body: virtual void UnknownSlot1(){}
+     12   CCountedPointer after the block
+     11   local CBaseClass
+     10   inline body: bool operator==(const CScriptT
+      9   ok - slots76 cpmin

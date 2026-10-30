@@ -11,11 +11,11 @@
 // Shape: the filter (vtable kept in ebx for its inline dtor) and the line's string are scoped frame objects sharing one
 //   slot; the conversation id stays in ebx; the wait is `while (!test) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }`.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    virtual ~CScriptThing();                          // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

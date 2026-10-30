@@ -9,11 +9,11 @@
 // Shape: as the landed CHTE_Prisoner::Main 0x00D69F50 (scoped filter, `do/while` wait); the target call is the
 // nested `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` (the outer vtable fetched before the inner call).
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

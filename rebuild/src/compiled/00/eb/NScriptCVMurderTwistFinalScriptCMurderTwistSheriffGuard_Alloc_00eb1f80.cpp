@@ -4,9 +4,6 @@
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
 // Proven original constructor revision: FableWin nameset ??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z declares public (unsignedlong,void(__fastcall*)(void*),void*); exact3-field constructor now used by ordinary new-expression. Earlier claim that no original controlblock ctor was proven was incorrect. This is not the prior unproven2arg signature. Own allocation and field stores corroborate argument roles; donor address used only asnameset.
 // Layout: actual entity20 Game/Me prefix +original parent/master fields and typed own members, PCsize56. True counted pointer8 and controlblock12 RefCount/fastcallDeleteFunc/Data; no invented constructor/helper signatures for controlblock. Source uses the original PDB-proven three-argument controlblock constructor with the observed field initialization order; no invented helper or constructor signature. Non-POD default/copy/dtor declarations preserve native class-return hidden result ABI; genuine original virtual Entity destructor and correct out-of-line constructor target. Parent typed level72/script64 prefix retained, unused parent suffix explicitly omitted. Shared handle headers aliased.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -15,7 +12,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 class CCharStringData;class CCharString{public:CCharString();CCharString(const CCharString&);CCharString(const char*,long=-1);~CCharString();CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(unsigned long refs,void(__fastcall *deleter)(void*),void* data):RefCount(refs),DeleteFunc(deleter),Data(data){}};template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();CCountedPointer& operator=(const CCountedPointer&);static void __fastcall DeleteData(void*);CCountedPointer(T* data):Data(data){if(Data)Info=new CCPPointerInfo(1,&DeleteData,Data);else Info=0;}};
 
@@ -39,18 +35,17 @@ class CPersistContext;class CBaseObjectPointer;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:CScriptBase();virtual ~CScriptBase();
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;
 
-class CScriptDataBase;template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;CLevelScriptBase(CScriptDataBase* data,CGameScriptInterfaceBase& game):Game(&game),MasterScriptData((T*)data){}};class CEntityScriptBase{public:CGameScriptInterfaceBase* Game;CScriptThing Me;CEntityScriptBase(CGameScriptInterfaceBase&,const CScriptThing&);virtual ~CEntityScriptBase();};class CWideString;
+class CScriptDataBase;class CEntityScriptBase{public:CGameScriptInterfaceBase* Game;CScriptThing Me;CEntityScriptBase(CGameScriptInterfaceBase&,const CScriptThing&);virtual ~CEntityScriptBase();};class CWideString;
 namespace NScript{class CV_MurderTwistFinalScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:CV_MurderTwistFinalScript(CScriptDataBase*,CGameScriptInterfaceBase&);class CMurderTwistSheriffGuard:public CEntityScriptBase{public:CV_MurderTwistFinalScript* ParentClass;CQ_SunnyvaleMasterData* PMasterData;CScriptGameResourceObjectScriptedThingBase MyEntityHandle;unsigned long NextLine,ID;CCharString Name;CMurderTwistSheriffGuard(CV_MurderTwistFinalScript&,CScriptDataBase*,const CScriptThing&);static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_MurderTwistFinalScript&,CScriptDataBase*,const CScriptThing&);};};CCountedPointer<CEntityScriptBase> __fastcall CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::Alloc(CV_MurderTwistFinalScript& parent,CScriptDataBase* data,const CScriptThing& me){return CCountedPointer<CEntityScriptBase>(new CMurderTwistSheriffGuard(parent,data,me));}}
 #ifdef _MSC_VER
 typedef char EntitySize[sizeof(NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard)==56?1:-1];typedef char InfoSize[sizeof(CCPPointerInfo)==12?1:-1];

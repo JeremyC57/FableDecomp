@@ -6,10 +6,10 @@
 // Callees: virtual GetParentScript() (slot 3, +0xC; pure in the CEntityScriptBase vtable 0x012C3224, derived bodies return
 // ParentClass +0x14), CScriptBase::IsActiveThreadTerminating 0x00CB7940 (Ego_r ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ,
 // non-const: `PActiveThread +0x2C ? PActiveThread->Terminating +5 : false`).
-class CScriptBase {
-public:
-    bool IsActiveThreadTerminating();                                // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 class CEntityScriptBase {
 public:

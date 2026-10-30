@@ -12,11 +12,11 @@
 // ParentClass +0x14, PMasterData +0x18, CurrentAIState +0x1c, PreviousAIState +0x20, TeamID +0x24, MemberState +0x28, MyTeam +0x2c,
 // ThingToPatrolTo +0x30; CCrateTeamManager (landed 0x00CDB360): StateCounter[6] at +0.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                       // 12 bytes: vptr + counted pointer
-    virtual void v00();
-    void* PImp_Data;
-    void* PImp_Info;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CCrateTeamManager {
     long StateCounter[6];                   // +0x00
     long MemberCount;                       // +0x18

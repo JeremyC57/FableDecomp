@@ -4,7 +4,7 @@
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 444 holds this body; slot 444 is
 //   ?EnableVillagerDefTypes@CGameScriptInterface@@UBEXABVCScriptThing@@_NABVCCharString@@@Z. Callee 0x0065B142 is
 //   ?EnableVillagerDefTypes@CTCVillage@@QAEX_NABVCCharString@@@Z (both PDBs; manifest agrees).
-// Body: t = thing.GetThing() (CScriptThing slot 11, +0x2c, no validity check); if t, not dead (+0x91 bit 0) and holding
+// Body: t = thing.GetPThing() (CScriptThing slot 11, +0x2c, no validity check); if t, not dead (+0x91 bit 0) and holding
 //   interface 0x22 (UsingComponents word 1 bit 2, `test byte [eax+24h],4`): GetTC through the non-const LowerBound
 //   0x0040F020 (key in the dead `thing` argument slot), then the CTCVillage call. `this` is unused.
 class CTCBase;
@@ -60,12 +60,11 @@ public:
         return true;
     }
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString;
 class CTCVillage {                                      // interface 0x22 (CTCVillage::GetInterfaceType not landed; the PDB names of the callee pin the class)
 public:
@@ -83,7 +82,7 @@ public:
 };
 void CGameScriptInterface::EnableVillagerDefTypes(const CScriptThing& village, bool enable, const CCharString& defType) const
 {
-    CThing* t = village.GetThing();
+    CThing* t = village.GetPThing();
     CTCVillage* tc;
     if (t && !t->IsDead() && t->GetTC(&tc))
         tc->EnableVillagerDefTypes(enable, defType);

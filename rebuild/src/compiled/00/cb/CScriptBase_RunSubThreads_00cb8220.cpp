@@ -8,13 +8,10 @@
 //   ?...@CScriptBase@@IAEXXZ in both PDBs; the RunEntityThreads row already names this tail call). The landed
 //   `void __fastcall Close(S*)` with by-address helpers is the same bytes as a free function.
 // Model: no engine/CScriptBase.h exists; only the three members are declared.
-class CScriptBase {
-protected:
-    void RunSpawnedFunctions();                     // 0x00CB7C40
-    void RunEntityThreads();                        // 0x00CB8170
-public:
-    void RunSubThreads();
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 void CScriptBase::RunSubThreads()
 {

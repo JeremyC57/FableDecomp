@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x00890990, 38 bytes, thiscall `ret 4` (the found path tail-jumps with the thing in the argument slot).
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 608 holds this body; slot 608 is
 //   ?EntityGetOpinionAttitudeToPlayer@CGameScriptInterface@@UBE?AW4EOpinionAttitudeType@@ABVCScriptThing@@@Z.
-// Body: t = entity.GetThing() (CScriptThing slot 11, +0x2c); if t: World (+0x04)->GetOpinionReactionManager() (inline,
+// Body: t = entity.GetPThing() (CScriptThing slot 11, +0x2c); if t: World (+0x04)->GetOpinionReactionManager() (inline,
 //   the pointer at CWorld +0x74; FableWin.pdb ?GetOpinionReactionManager@CWorld@@QAEAAVCOpinionReactionManager@@XZ)
 //   .GetThingAttitudeToPlayer(*t) (0x00701840, FableWin.pdb
 //   ?GetThingAttitudeToPlayer@COpinionReactionManager@@QBE?AW4EOpinionAttitudeType@@ABVCThing@@@Z; the manifest names
@@ -20,19 +20,18 @@ public:
     COpinionReactionManager* POpinionReactionManager;    // +0x74 (member name descriptive)
     COpinionReactionManager& GetOpinionReactionManager() { return *POpinionReactionManager; }
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 EOpinionAttitudeType CGameScriptInterface::EntityGetOpinionAttitudeToPlayer(const CScriptThing& entity) const
 {
-    CThing* t = entity.GetThing();
+    CThing* t = entity.GetPThing();
     if (t)
         return World->GetOpinionReactionManager().GetThingAttitudeToPlayer(*t);
     return (EOpinionAttitudeType)0;

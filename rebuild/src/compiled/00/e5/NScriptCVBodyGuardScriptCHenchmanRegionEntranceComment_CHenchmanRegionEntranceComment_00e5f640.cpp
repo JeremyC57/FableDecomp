@@ -9,30 +9,17 @@
 class CScriptDataBase;
 class CGameScriptInterfaceBase;
 class CWideString;
-class CScriptThing {                                    // 12 bytes (Ego_r): vptr, PImp
-public:
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();
-    void* PImpData;                                     // +0x04
-    void* PImpInfo;                                     // +0x08
-};
-class CEntityScriptBase {                               // 20 bytes (Ego_r), vtable 0x012C3224
-public:
-    CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) : Game(&game), Me(me) { }
-    virtual ~CEntityScriptBase();
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing Me;                                    // +0x08
-};
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];
-};
-class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    CScriptDataBase* MasterScriptData;                  // +0x44
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
@@ -55,7 +42,7 @@ public:
 }
 namespace NScript {
 class CQ_SunnyvaleMasterData;
-class CV_BodyGuardScript : public CLevelScriptBase {
+class CV_BodyGuardScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
 public:
     class CHenchmanRegionEntranceComment : public CEntityScriptBase {
     public:

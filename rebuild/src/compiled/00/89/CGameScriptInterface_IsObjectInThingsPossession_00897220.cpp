@@ -39,11 +39,11 @@ struct CThing_Retail {
 struct CTCInventoryBase { long GetNumberOfItemsOfTypeInInventory(long defIndex); };   // 0x005BDF08
 class CTCCarrying { public: bool IsCarryingThing(long defIndex); };                          // 0x006A10A0
 struct CTCHouseContents { bool ContainsItemOfType(long defIndex); };                  // 0x008ED010
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CDefinitionManager { public: public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };   // 0x009AD410
@@ -57,7 +57,7 @@ bool CGameScriptInterface::IsObjectInThingsPossession(const CCharString& objectD
 {
     long index = DefinitionManager->GetDefGlobalIndexFromName(objectDefName);
     if (index > 0) {
-        const CThing_Retail* thing = scriptThing.GetThing();
+        const CThing_Retail* thing = ((CThing_Retail*)scriptThing.GetPThing());
         if (thing) {
             if ((thing->HasInterface(0x11) && ((CTCInventoryBase*)thing->GetInterface(0x11))->GetNumberOfItemsOfTypeInInventory(index) > 0)
                 || (thing->HasInterface(0x46) && ((CTCCarrying*)thing->GetInterface(0x46))->IsCarryingThing(index))

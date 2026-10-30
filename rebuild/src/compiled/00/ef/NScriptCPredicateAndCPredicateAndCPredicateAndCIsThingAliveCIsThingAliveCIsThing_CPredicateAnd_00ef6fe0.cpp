@@ -12,10 +12,11 @@
 // which reproduces the retail call; this level is defined out of line so the TU emits it.
 // engine/CScriptThing.h (PDB): { vptr, PImp_Data, PImp_Info }, 12 bytes; modelled here as an opaque
 // 12-byte body because only its out-of-line copy constructor is used.
-class CScriptThing { public:
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);   // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 

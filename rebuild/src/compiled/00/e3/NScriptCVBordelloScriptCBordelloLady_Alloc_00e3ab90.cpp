@@ -42,12 +42,9 @@ public:
     }
 };
 
-class CScriptThing {                                    // 12 bytes (Ego_r): vptr, PImp
-public:
-    virtual ~CScriptThing();
-    CCountedPointer<CScriptThing> PImp;                 // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString {                                     // 4 bytes
 public:
     void* PStringData;
@@ -55,13 +52,8 @@ public:
     ~CCharString();
 };
 
-class CEntityScriptBase {                               // 20 bytes (Ego_r)
-public:
-    CEntityScriptBase(CGameScriptInterfaceBase& game, const CScriptThing& me) : Game(&game), Me(me) { }
-    virtual ~CEntityScriptBase();
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing Me;                                    // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
@@ -89,7 +81,11 @@ public:
         }
         virtual ~CBordelloLady();
         static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_BordelloScript& parent, CScriptDataBase* data, const CScriptThing& me);
-    };
+    private:
+    virtual void Main();                                 // PDB ?Main@<entity>@..@@EAEXXZ (slot 1)
+public:
+    virtual CScriptBase* GetParentScript() const;        // PDB ?GetParentScript@<entity>@..@@UBEPAVCScriptBase@@XZ (slot 3)
+};
 };
 
 CCountedPointer<CEntityScriptBase> __fastcall CV_BordelloScript::CBordelloLady::Alloc(CV_BordelloScript& parent, CScriptDataBase* data, const CScriptThing& me)

@@ -14,15 +14,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                           // slot 0 (out of line 0x004AA840)
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008();
-    virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016();
-    virtual void t017(); virtual void t018(); virtual void t019();
-    virtual bool MsgIsUsedBy(const CCharString& user) const;   // slot 20 (+0x50)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 extern "C" void free(void* p);                         // 0x00BFEA14 (MSVCR71)
 template <class T> inline void _Destroy(T* first, T* last)
 {
@@ -52,12 +48,8 @@ using std::vector;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CEntityScriptBase { public:                             // retail 0x14 bytes
-    virtual void e00();
-    CGameScriptInterface* Game;                        // +0x04
-    CScriptThing          Me;                          // +0x08
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CTestGateSwitch : CEntityScriptBase {
     void* ParentClass;                                 // +0x14 CPersonalScript_GlobalThingsScript*
     void* PMasterData;                                 // +0x18 CQ_SunnyvaleMasterData*

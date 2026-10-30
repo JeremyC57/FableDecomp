@@ -10,11 +10,11 @@
 //   flags 1/3, reverse-order destruction); the quest names are IMPLICIT CCharString conversions -- an explicit
 //   `CCharString("...")` argument pushes the ctor's eax and hoists the vtable load (GOTCHAS chunk 214).
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    virtual ~CScriptThing();                          // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

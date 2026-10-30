@@ -1,8 +1,9 @@
 #pragma optimize("t", on)
-class CScriptThing {
-public:
-    virtual ~CScriptThing();   // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 extern void __fastcall DestructFirstMember_0066a1c0(void* member);
 extern void __fastcall CActionFireProjectileWeapon_Destruct(void* action);
 void* __fastcall CActionFireProjectileWeapon_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)

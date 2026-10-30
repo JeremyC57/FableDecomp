@@ -16,11 +16,11 @@
 // inline (base ctor call, vtable, PImp zeroed by its own inline ctor) and destroyed out of line on both exits; the start
 // loop is BriarRose's rotated `while (!Start...) { yield; if (IsActiveThreadTerminating()) return; }` followed by a plain IsActiveThreadTerminating() call.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase
 {

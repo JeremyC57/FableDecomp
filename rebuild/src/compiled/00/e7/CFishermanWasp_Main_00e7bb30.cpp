@@ -16,11 +16,11 @@
 // `Game->GiveThingBestEnemyTarget(Me, Game->GetHero())` fetches the outer vtable before the inner call.
 
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

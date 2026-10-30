@@ -64,33 +64,19 @@ public:
         return PStringData->Data == text;
     }
 };
-class CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();                            // slot 0
-    virtual void t001() const;
-    virtual void t002() const;
-    virtual CCharString GetDataString() const;          // slot 3 (+0x0c) 0x004AA900
-    void* PImp_Data;
-    void* PImp_Info;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 class CScriptBase;
 class CPersistContext;
-class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)
-public:
-    virtual ~CEntityScriptBase();                       // slot 0
-    virtual void Main() = 0;                            // slot 1
-    virtual void Init();                                // slot 2
-    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    virtual void OnPredicateFail();                     // slot 5
-    virtual void OnInterrupted();                       // slot 6
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

@@ -3,9 +3,6 @@
 // Identity: proven; own RegisterAllScripts registration00cda044 literalGlobal_ToggleTimeDisplay ->factory00eed060 ->ownvtable012f57a0. Exact PDB Alloc/data pointer/Game reference and public constructor(Game&) namesets. Data argument ignored.
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
 // Layout: original typed CScriptBase64 (Threads list, EntityScripts/Bindings maps, runtime persist map) ->CLevelScriptNoMasterBase68 (Game+64), original own fields and PCsize72. No MasterScriptData here. Accepted main N228 shared typed prefix reused read-only; available handle headers aliased. Counted-pointer special members explicitly non-POD, original base ctor00cb8110/dtor00cbd510 external declarations. No fake flat vptr, extra callbacks or invented owner arguments.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -14,7 +11,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();CCountedPointer& operator=(const CCountedPointer&);};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
@@ -36,15 +32,14 @@ class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:CScriptBase();virtual ~CScriptBase();
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 class CGameScriptInterfaceBase;
 
 class CScriptDataBase;class CLevelScriptNoMasterBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;CLevelScriptNoMasterBase(CGameScriptInterfaceBase& game):Game(&game){}};

@@ -17,11 +17,9 @@ public:
     void* Info;                                              // +0x4 CCPPointerInfo*
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass {                    // RTTI vtable 0x01238C8C, 12 bytes
-public:
-    CCountedPointer<CScriptThing> PImp;                     // +0x04
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace std {
 

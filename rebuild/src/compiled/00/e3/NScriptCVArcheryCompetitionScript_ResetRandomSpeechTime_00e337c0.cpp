@@ -2,9 +2,6 @@
 // Leaf: ?ResetRandomSpeechTime@CV_ArcheryCompetitionScript@NScript@@QAEXXZ
 // Identity: original PDB member names, own callers00e3372f/00e34332/00e34a77/00e34b70/00e34d3e and distinct script-def field pairs; CTimer GetIndex is original long const accessor. Actual global game interface SetTimer slot89 and MSVCR71 rand thunk00bfeb16.
 // Layout: original typed script prefix through timer+112, unused suffix omitted. True CScriptDef : CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase; own constructor00f28f90 base initialization confirms packed parent57, first own long60, original typed vectors12. Def Max/Var+912/916. Only read prefix modeled, no complete owner/definition size claimed. Shared headers aliased.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -13,7 +10,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable(){}~CBaseClassNonCopyable(){}private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
@@ -36,17 +32,15 @@ class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;
-template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;};
 #ifndef _MSC_VER
 #define __cdecl
 #endif

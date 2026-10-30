@@ -18,11 +18,11 @@
 // Layout: Ego_r.pdb CTH_Trigger_Guild_Rose (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass
 //         +0x14 (CV_TravellingHeroesScript*), PMasterData +0x18 (CQ_SunnyvaleMasterData*: PostSavePosition +4).
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    ~CScriptThing();                          // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString {
 public:
     void* PStringData;

@@ -14,13 +14,11 @@
 //   vtable store 0x012C2FF4 at +0x14 and the And's own vtable store is scheduled first; with an implicit destructor VC7.1
 //   computes `lea ecx,[esi+4]` before the vtable store.
 void __cdecl operator delete(void* block);              // 0x00BFE9BC
-class CScriptThing {                                    // 12 bytes (Ego_r): vptr, PImp
-public:
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();
-    void* PImpData;                                     // +0x04
-    void* PImpInfo;                                     // +0x08
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase {                                  // vtable 0x012C2FF4
 public:

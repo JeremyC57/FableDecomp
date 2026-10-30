@@ -64,7 +64,9 @@ struct CRuntimeScriptedEntityPersist {
 class CScriptBase {
 public:
     virtual void v00();
-    void DoScriptDataPersist(CCharString& data, bool saving);   // 0x00CB7CB0
+protected:
+    void DoScriptDataPersist(CCharString& data, bool saving);   // 0x00CB7CB0 (protected in both PDBs: IAE)
+public:
     void LoadGameState(const CCharString& state);
 private:
     unsigned char _pad04[0x30 - 0x04];

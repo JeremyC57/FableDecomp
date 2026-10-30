@@ -57,13 +57,11 @@ class CCharString { public:
     }
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
-class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();
-    virtual void v01() const; virtual void v02() const;
-    virtual CCharString GetDataString() const;          // slot 3 (+0x0c)
-    void* PImp_Data;                                    // +0x04
-    void* PImp_Info;                                    // +0x08
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

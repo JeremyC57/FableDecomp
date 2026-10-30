@@ -15,35 +15,22 @@ class CScriptDataBase {
 public:
     virtual ~CScriptDataBase();
 };
+namespace NScript { class CQ_SunnyvaleMasterData; }
 class CGameScriptInterfaceBase;
 class CPersistContext;
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    CScriptBase();                                      // 0x00CB8110
-    virtual ~CScriptBase();
-protected:
-    virtual void RegisterMain();
-    virtual void Main();
-    virtual void Init();
-public:
-    virtual void OnPersist(CPersistContext& context);
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-};
-class CLevelScriptBase : public CScriptBase {           // PDB CLevelScriptBase<TData>
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    CScriptDataBase* MasterScriptData;                  // +0x44
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game) : Game(&game), MasterScriptData(data) {}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 namespace NScript {
-class CQ_GuildTrainingWoodsWillScript : public CLevelScriptBase {
+class CQ_GuildTrainingWoodsWillScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
 public:
     CQ_GuildTrainingWoodsWillScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
     virtual void RegisterMain();
     virtual void Main();
 };
 CQ_GuildTrainingWoodsWillScript::CQ_GuildTrainingWoodsWillScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
-    : CLevelScriptBase(data, game)
+    : CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>(data, game)
 {
 }
 }

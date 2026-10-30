@@ -9,13 +9,11 @@
 // Shape (family K067, representative 0x00D293F0): the landed CHTE_Prisoner::Main 0x00D69F50 without the hand-over: the
 //   predicate is a scoped 0x10-byte frame object; `NewScriptFrame(); while (!IsActiveThreadTerminating()) NewScriptFrame();`
 //   rotates into the test, the aligned loop head and the bottom test.
-class CScriptThing {                                    // 12 bytes (Ego_r): vptr, PImp
-public:
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                            // 0x004AA840
-    void* PImpData;                                     // +0x04
-    void* PImpInfo;                                     // +0x08
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -33,17 +31,8 @@ public:
 };
 }
 class CScriptBase;
-class CEntityScriptBase {                               // 20 bytes (Ego_r)
-public:
-    virtual ~CEntityScriptBase();
-private:
-    virtual void Main();                                // slot 1
-public:
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing Me;                                    // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_HangingTreeEvilScript {

@@ -30,10 +30,9 @@ public:
     CCPPointerInfo* Info;                                   // +0x04
 };
 
-class CScriptThing : public CBaseClass {                    // vtable 0x01238C8C
-public:
-    CCountedPointer<CScriptThing> PImp;                     // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace std {
 

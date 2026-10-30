@@ -11,10 +11,11 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" int __cdecl rand();                     // 0x00BFEB16
-class CScriptThing { public:
-    unsigned char _body[12];
-    CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CListNode_CScriptThing {
     CListNode_CScriptThing* _M_next;               // +0x00
     CListNode_CScriptThing* _M_prev;               // +0x04
@@ -27,9 +28,9 @@ struct CRetailList_CScriptThing {                  // STLport list<CScriptThing>
     CListNode_CScriptThing* begin() const { return _M_node->_M_next; }
     CListNode_CScriptThing* end() const { return _M_node; }
 };
-class CScriptBase { public:
-    bool IsActiveThreadTerminating();              // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_MinionCampScript : public CScriptBase {
 public:

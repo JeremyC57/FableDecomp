@@ -14,16 +14,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // vtable 0x01238C8C, 12 bytes
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
-    virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual bool MsgIsHitBy(const CCharString& attacker) const;   // slot 21 (+0x54) 0x004AAB30
-    virtual void s022(); virtual void s023();
-    virtual bool MsgIsHitByWithWeapon(const CCharString& attacker, const CCharString& weapon) const;   // slot 24 (+0x60) 0x004AAB90
-    void* PImp_Data;
-    void* PImp_Info;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -37,13 +32,8 @@ struct CQ_GuildTrainingPreMeleeScript {
     long PreMeleeMode;                                 // +0x4c
     long DummyHits;                                    // +0x50
 };
-class CEntityScriptBase { public:
-    virtual ~CEntityScriptBase();
-    CGameScriptInterface* Game;                        // +0x04
-    CScriptThing          Me;                          // +0x08
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CPreMeleeDummy : CEntityScriptBase {
     CQ_GuildTrainingPreMeleeScript* ParentClass;       // +0x14
     void*                           PMasterData;       // +0x18

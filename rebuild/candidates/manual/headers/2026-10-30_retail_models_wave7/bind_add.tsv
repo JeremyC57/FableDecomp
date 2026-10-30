@@ -1,0 +1,2 @@
+symbol	address	row	from
+# none: no wave 7 rewrite changed a relocation symbol (every RELOC_RENAMED is a leaf-symbol rename; see ROWS.tsv)

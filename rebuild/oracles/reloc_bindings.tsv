@@ -30086,9 +30086,9 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?erase@CMorphNameVector@@QAEPAVCCharString@@PAV2@0@Z	0043336a	00cb5b90
 ??$__adjust_heap@PAU?$pair@VCCharString@@VCScriptInfo@@@std@@HU12@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@std@@YIXPAU?$pair@VCCharString@@VCScriptInfo@@@0@HHU10@V?$CKeyPairCompareLess@VCCharString@@VCScriptInfo@@@@@Z	00cb68c0	00cb6bd0
 ?LowerBound@CScriptBindingMap@@QBEPBUSScriptBindingPair@@ABVCCharString@@@Z	00cba1f0	00cb7d60
-?DoEntityScriptPersist@CScriptBase@@QAEXAAVCActiveEntityScriptBase@@AAVCCharString@@_N@Z	00cb7da0	00cb7ee0
+?DoEntityScriptPersist@CScriptBase@@IAEXAAVCActiveEntityScriptBase@@AAVCCharString@@_N@Z	00cb7da0	00cb7ee0
 ?SetEntityPersistScript@CRuntimeScriptedEntityPersist@NScript@@QAEX_KABVCCharString@@@Z	00cb82f0	00cb83d0
-?DoScriptDataPersist@CScriptBase@@QAEXAAVCCharString@@_N@Z	00cb7cb0	00cb8690
+?DoScriptDataPersist@CScriptBase@@IAEXAAVCCharString@@_N@Z	00cb7cb0	00cb8690
 ?LoadFromGameStateScript@CRuntimeScriptedEntityPersist@NScript@@QAEXABVCCharString@@@Z	00cb8440	00cb8690
 ?SaveToGameStateScript@CRuntimeScriptedEntityPersist@NScript@@QAEXAAVCCharString@@@Z	00cb7a00	00cb8820
 ?LowerBound@CBindingMap@@QAEPAUSBindingEntry@@ABVCCharString@@@Z	00cba190	00cb8960

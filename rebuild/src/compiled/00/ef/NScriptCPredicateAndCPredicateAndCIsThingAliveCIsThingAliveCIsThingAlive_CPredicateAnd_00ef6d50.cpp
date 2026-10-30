@@ -12,13 +12,11 @@
 // Shape: user-declared virtual destructors at every And level; Predicate2 (+0x28) goes first, then the nested And's inline
 //   destructor (its vtable store at +0x04, its terms +0x18 and +0x08); the two inline CPredicateBase destructors reset
 //   +0x04 and +0x00 (two immediate stores).
-class CScriptThing {                                     // 12 bytes
-public:
-    void* PImp_Data;                                     // +0x04
-    void* PImp_Info;                                     // +0x08
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 

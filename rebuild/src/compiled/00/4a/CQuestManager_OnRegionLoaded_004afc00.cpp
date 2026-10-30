@@ -11,9 +11,10 @@ class CCharString { public:
     void* PStringData;
 };
 
-class CScriptBase { public:
-    void OnRegionLoaded(const CCharString& region);   // 0x00CB7B00
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct CActiveQuest {
     long          ID;                              // +0x00

@@ -4,7 +4,7 @@
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 589 holds this body; slot 589 is
 //   ?SetCreatureBrain@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z (ghidra_out/cgsi_slots_aligned.tsv).
 // Body: CDefPointer<const CBrainDef> brain (null); if DefinitionManager (+0x10)->GetDef<CBrainDef>(brainName, &brain)
-//   (0x006D3E80): t = creature.GetThing() (CScriptThing slot 11); if t and its type byte (+0x10) is 1:
+//   (0x006D3E80): t = creature.GetPThing() (CScriptThing slot 11); if t and its type byte (+0x10) is 1:
 //   ((CThingAICreature*)t)->SetNewBrain(brain) (0x00833010, the def pointer copied into its stack slot with an add-ref);
 //   then ~brain (release at +4, the def's virtual slot 1 at zero).
 // Callee names (PDB, both sets): 0x006D3E80 ??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCBrainDef@@@@@Z
@@ -60,12 +60,11 @@ class CThingAICreature : public CThing {
 public:
     void SetNewBrain(CDefPointer<const CBrainDef> brain);   // 0x00833010
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -75,7 +74,7 @@ void CGameScriptInterface::SetCreatureBrain(const CScriptThing& creature, const 
     CDefPointer<const CBrainDef> brain;
     if (DefinitionManager->GetDef(brainName, &brain))
     {
-        CThing* t = creature.GetThing();
+        CThing* t = creature.GetPThing();
         if (t && t->Type == 1)
             static_cast<CThingAICreature*>(t)->SetNewBrain(brain);
     }

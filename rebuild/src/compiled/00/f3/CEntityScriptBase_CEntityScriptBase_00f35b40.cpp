@@ -35,18 +35,14 @@ public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass {
-public:
-    CCountedPointer<CScriptThing> PImp;                  // +0x04
-    virtual ~CScriptThing() {}
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
 class CGameScriptInterfaceBase;
-class CEntityScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                      // +0x04
-    CScriptThing              Me;                        // +0x08
-    virtual ~CEntityScriptBase();
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 CEntityScriptBase::~CEntityScriptBase()
 {
 }

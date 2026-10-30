@@ -52,18 +52,11 @@ public:
     void ShareData(T* data, CCPPointerInfo* info);      // 0x00CE1040 (T = CEntityScriptBase)
     T* operator->() const { return Data; }
 };
-class CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();
-    void* PImpData;
-    void* PImpInfo;
-};
-class CEntityScriptBase {
-public:
-    virtual ~CEntityScriptBase();
-    virtual void Main() = 0;
-    virtual void Init();                                // slot 2 (+0x08)
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -91,17 +84,12 @@ class CScriptDataBase {
 public:
     virtual ~CScriptDataBase();
 };
+namespace NScript { class CQ_SunnyvaleMasterData : public CScriptDataBase { }; }   // PDB base only (Ego_r.pdb: the master data class derives from CScriptDataBase); its members are not used here
 class CGameScriptInterfaceBase;
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-};
-class CLevelScriptBase : public CScriptBase {           // PDB CLevelScriptBase<TData>
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    CScriptDataBase* MasterScriptData;                  // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class __declspec(novtable) CEntityScriptBindingBase {
 public:
     virtual const CCharString& GetEntityScriptName() const = 0;
@@ -132,7 +120,7 @@ CCountedPointer<CActiveEntityScriptBase> CEntityScriptBinding<T>::CreateActiveEn
     return CCountedPointer<CActiveEntityScriptBase>(new CActiveEntityScript<T>(thing, uid, PParentScript, Func, Flags));
 }
 namespace NScript {
-class CQS_MeetSisterScript : public CLevelScriptBase {
+class CQS_MeetSisterScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
 };
 }
 template class CEntityScriptBinding<NScript::CQS_MeetSisterScript>;

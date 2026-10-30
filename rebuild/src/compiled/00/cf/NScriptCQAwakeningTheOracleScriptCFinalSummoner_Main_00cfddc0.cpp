@@ -2,9 +2,6 @@
 // Leaf: ?Main@CFinalSummoner@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
 // Identity: own named registration/factory00cfb460->00cfdca0 stores vtable012c7d84 slot1; FableWin original nested Main signatures. Actual game API slots7/70/451 are NewScriptFrame const, GetHero mutable reference, GiveThingBestEnemyTarget const.
 // Layout: entity20 plus typed parent/master pointers; original CIsThingAlive16, Thing+4 and CPredicateBase slots0 predicate/1 Clone/2 dtor. CScriptThing shared header aliased to real CBaseClass/counting members. Outer declaration supplies nesting and original level base only.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -13,7 +10,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable(){}~CBaseClassNonCopyable(){}private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}CCharString(const char*,long=-1);~CCharString();bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
@@ -36,17 +32,15 @@ class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing();CScriptThing(const CScriptThing&);virtual ~CScriptThing();};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;
-template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;};
 class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
 namespace NScript{class CPredicateBase{public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};class CIsThingAlive:public CPredicateBase{public:CScriptThing Thing;CIsThingAlive(const CScriptThing& thing):Thing(thing){}virtual ~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;};}
 class CEntityScriptBase{public:virtual ~CEntityScriptBase(){}virtual void Main(){}CGameScriptInterfaceBase* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating()const;};

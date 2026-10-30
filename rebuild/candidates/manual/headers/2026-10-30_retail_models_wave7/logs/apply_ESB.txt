@@ -1,0 +1,1603 @@
+edit rebuild/src/compiled/00/cd/CKGGate_Main_00cdf260.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCBSGateGuard_Alloc_00cdfa10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Alloc_00cdf750.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Alloc_00cdee10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Main_00cdeed0.cpp ok slots2 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCDragonGate_Alloc_00cdf360.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_Alloc_00cdf570.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCKGGate_Alloc_00cdf190.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCOFMainGates_Alloc_00cdefb0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_Alloc_00cdfd40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTeleportPoint_Alloc_00cdf490.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTestGateSwitch_Alloc_00cdf930.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ce/CLadyGreysBed_Main_00ce0150.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ce/CTestGateSwitch_Main_00ce1280.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCInvisibleBarrier_Alloc_00ce0280.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCLadyGreysBed_Alloc_00ce0090.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS2SOUL_Alloc_00ce0390.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS3SOUL_Alloc_00ce0460.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHSESOUL_Alloc_00ce0530.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/CChunkCollectionIndicator_Main_00cfc990.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/cf/CEntityScriptBindingNScriptCQArenaHoldingScriptScript_CreateActiveEntityScript_00cf66e0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/cf/CEntityScriptBindingNScriptCQAwakeningTheOracleScript_CreateActiveEntityScript_00cfde40.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_Alloc_00cf2a90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard2_Alloc_00cf0c40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_Alloc_00cf0b60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCFanMarker_Alloc_00cf4df0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_Alloc_00cf3c40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_Alloc_00cf17f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCATOMagicBarrier_Alloc_00cfd5d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_Alloc_00cfc8a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_OnPredicateFail_00cfc950.cpp ok slots7 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Alloc_00cfdca0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalTabletSarcophagus_Alloc_00cfbc00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Alloc_00cfc7d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Alloc_00cfca60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGate_Alloc_00cfc700.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Alloc_00cfbce0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_Alloc_00cfbb20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_Alloc_00cfcbd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCScytheBeforeGettingTablets_Alloc_00cfcdc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/CEntityScriptBindingNScriptCQBanditCampBossBattleScript_CreateActiveEntityScript_00d0ec50.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d0/CEntityScriptBindingNScriptCQBanditCampScript_CreateActiveEntityScript_00d03160.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d0/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Main_00d00440.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Alloc_00d04990.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_Alloc_00d05910.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_Alloc_00d05fe0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassinMarker_Alloc_00d048c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_Alloc_00d066b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Alloc_00d0c2c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Init_00d0c390.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_Alloc_00d0a700.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_OnPredicateFail_00d0a7b0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Alloc_00d08670.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Init_00d08720.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageDoor_Alloc_00d08a70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Alloc_00d08e50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Init_00d08f00.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_OnPredicateFail_00d08fb0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Alloc_00d07d20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Init_00d07dd0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Alloc_00d071f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Init_00d072c0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Alloc_00d07340.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Alloc_00d02a70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Init_00d02b20.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_Alloc_00d014c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_Init_00d01590.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_CreateActiveEntityScript_00d17180.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_Alloc_00d15fc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Alloc_00d161a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Alloc_00d153f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Init_00d154a0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_Alloc_00d15940.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Alloc_00d16380.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Alloc_00d160b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Alloc_00d16290.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Alloc_00d1f510.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Init_00d1f5c0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditFirstWave_Alloc_00d1f910.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditSiegeLeader_Alloc_00d1dcc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Alloc_00d1fc30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Init_00d1fce0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_Alloc_00d1e230.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardToHelpDefend_Alloc_00d1ea10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Alloc_00d1e090.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Init_00d1e1b0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_OnPredicateFail_00d1e140.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_Alloc_00d1dde0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_OnPredicateFail_00d1dea0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGSheriff_Alloc_00d1df20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/CEndGameJackOfBladesBoss_Main_00d2fb20.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_CreateActiveEntityScript_00d244b0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQBreakSiegeScript_CreateActiveEntityScript_00d20600.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_CreateActiveEntityScript_00d26000.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_CreateActiveEntityScript_00d2fea0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQEndGameFocalSitesScript_CreateActiveEntityScript_00d2d570.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQEndGameScript_CreateActiveEntityScript_00d29680.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Alloc_00d24330.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Init_00d243e0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Alloc_00d24210.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Init_00d242c0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDBMinion_Alloc_00d25c60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDBSummoner_Alloc_00d25e30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDragon_Alloc_00d257d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCEndGameJackOfBladesBoss_Alloc_00d2fa40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCEndGameSister_Alloc_00d2fc00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCSwordVoid_Alloc_00d2fce0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Alloc_00d2fdc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_Alloc_00d2c430.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_Alloc_00d2c340.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameFocalSite_Alloc_00d2c140.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Alloc_00d2c260.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScarletRobe_Alloc_00d2cf80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Alloc_00d2c650.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameThunder_Alloc_00d2c730.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Alloc_00d29230.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Main_00d293f0.cpp ok slots2 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_OnPredicateFail_00d29320.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Alloc_00d28f70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Init_00d29020.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMKGHCHERO3_Alloc_00d29460.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMUndeadSpawn_Alloc_00d290a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMUndeadSpawn_Main_00d29160.cpp ok slots2 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMazeJournal_Alloc_00d29570.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMazeJournal_Init_00d29620.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d3/CEntityScriptBindingNScriptCQFireHeartScript_CreateActiveEntityScript_00d38b90.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d3/CFHPrisoner_MakeRoundStartComment_00d3a9b0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCDFFireheart_Alloc_00d362b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Alloc_00d37240.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Init_00d372f0.cpp ok slots3 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Alloc_00d36790.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHMemorialCutsceneMarker_Alloc_00d37c30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHPrisoner_Alloc_00d36540.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHPrisoner_Init_00d36620.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHScythe_Alloc_00d37140.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHVillager_Alloc_00d373d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHVillager_Init_00d374a0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCProphetCage_Alloc_00d36680.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCProphetCage_Init_00d36730.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Alloc_00d363a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Alloc_00d36470.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScriptCAppleGirl_Alloc_00d3d060.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_Alloc_00d3e1f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/CEntityScriptBindingNScriptCQGuildTrainingScript_CreateActiveEntityScript_00d444c0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCBirdKiller_Alloc_00d42f40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_Alloc_00d41a30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCHeroBed_Alloc_00d40b30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCKillBird_Alloc_00d43040.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCKillBird_OnPredicateFail_00d43120.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Alloc_00d40c10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Init_00d40cc0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCPreMeleeMaze_Alloc_00d43cd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCRaceMarker_Alloc_00d409e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillApprentice_Alloc_00d41b10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Alloc_00d41bf0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillApprentice_Alloc_00d43280.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_Alloc_00d43360.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_CreateActiveEntityScript_00d50ab0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_CreateActiveEntityScript_00d58300.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_CreateActiveEntityScript_00d52310.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_CreateActiveEntityScript_00d5acc0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_CreateActiveEntityScript_00d5dec0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d5/CPreMeleeDummy_Main_00d51fc0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Alloc_00d509d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Alloc_00d566a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Init_00d56750.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeThunder_Alloc_00d57fa0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_Alloc_00d565c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeDummy_Alloc_00d51f00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Alloc_00d52230.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Alloc_00d51e20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Alloc_00d5abe0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Alloc_00d5dde0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_CreateActiveEntityScript_00d64210.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_CreateActiveEntityScript_00d670e0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_CreateActiveEntityScript_00d68d10.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_CreateActiveEntityScript_00d6b590.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d6/CHTEExecutioner_Main_00d6a0d0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d6/CHTEPrisoner_Main_00d69f50.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Alloc_00d62360.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Alloc_00d62270.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_Alloc_00d63cc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_Alloc_00d66ba0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_Alloc_00d68720.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Alloc_00d6a150.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Main_00d6a220.cpp ok slots2 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Alloc_00d6a290.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Main_00d6a360.cpp ok slots2 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAmbushPoint_Alloc_00d69d50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_Alloc_00d6ad70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_OnPredicateFail_00d6ae30.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAudience_Alloc_00d6b180.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_Alloc_00d69fd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_OnPredicateFail_00d6a080.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Alloc_00d6a3d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Init_00d6a480.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_OnPredicateFail_00d6a4f0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_Alloc_00d69e30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_OnPredicateFail_00d69ee0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_Alloc_00d6fe50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointRear_Alloc_00d6ff30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPoint_Alloc_00d6fd70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHangingTreeGoodScript_CreateActiveEntityScript_00d729e0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_CreateActiveEntityScript_00d7fab0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_CreateActiveEntityScript_00d7a8a0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_CreateActiveEntityScript_00d7c2e0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d7/CHTGAmbushPointRear_Main_00d73ae0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d7/CHTGAmbushPoint_Main_00d73610.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_Alloc_00d70010.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGBoss_Alloc_00d724d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGExecutioner_CHTGExecutioner_00d73220.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGExecutioner_Init_00d73280.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGFreedomFighter_Alloc_00d700e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Alloc_00d70520.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Init_00d705d0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_OnPredicateFail_00d70650.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Alloc_00d71980.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Init_00d71a30.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_OnPredicateFail_00d71a70.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCArenaHeroGate_Alloc_00d7de80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCBlockedEntrance_Alloc_00d7f1a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_Alloc_00d7f380.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHOHGuard_Alloc_00d7dff0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHSAScreamingVillager_Alloc_00d7f7b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHeroSoulsEnemy_Alloc_00d7f020.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Alloc_00d7dba0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Main_00d7dc50.cpp ok slots3 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummoner1_Alloc_00d7ebe0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummoner2_Alloc_00d7ee00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Alloc_00d7dc90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCEndBriarRose_Alloc_00d7a290.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCEndScythe_Alloc_00d79c80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Alloc_00d79b90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Main_00d79c40.cpp ok slots3 mem
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_Alloc_00d7b400.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_CreateActiveEntityScript_00d82210.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_CreateActiveEntityScript_00d87140.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_CreateActiveEntityScript_00d844a0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_CreateActiveEntityScript_00d89580.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_CreateActiveEntityScript_00d8a960.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d8/CSUMMONEDCREATURE_Main_00d891f0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d8/CUndeadSoldier_Main_00d88f90.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCBRIARROSEIMPOSTER_Alloc_00d81750.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_Alloc_00d81630.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCHSBMagicBarrier_Alloc_00d81b60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_Alloc_00d86390.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardOutsideWoods_Alloc_00d85fa0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_Alloc_00d85a30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Alloc_00d86980.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Main_00d86a30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCMuteGuardOutsideWoods_Alloc_00d86080.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCSoulInfoAcolyte_Alloc_00d86b60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCWaitingGuardInWoods_Alloc_00d86560.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Alloc_00d83e60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Init_00d83f10.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCSummonerToKill_Alloc_00d83cf0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCGuardNearGraveyardPath_Alloc_00d885e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Alloc_00d892a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_Alloc_00d890a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_Alloc_00d88420.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCUndeadSoldier_Alloc_00d88ec0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_Alloc_00d8a7f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_Main_00d8a8a0.cpp ok slots2 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Alloc_00d8a650.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Init_00d8a700.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_OnPredicateFail_00d8a770.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Alloc_00d8a4b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Init_00d8a560.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_Alloc_00d8fc70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_Init_00d8fd90.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Alloc_00d8f5e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Alloc_00d8f950.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeRoaming_Alloc_00d8f4f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeSpawn_Alloc_00d8f310.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeTorrent_Alloc_00d8f3f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCJames_Alloc_00d8ffa0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCNymph_Alloc_00d8fe30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCNymph_OnPredicateFail_00d8fef0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQHobbeCaveScript_CreateActiveEntityScript_00d915b0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_CreateActiveEntityScript_00d9d930.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQMinionCampScript_CreateActiveEntityScript_00d9ffd0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/d9/CFadeinSummoner_PhaseMe_00d9fd80.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d9/NScriptCHobbeBarrel_Main_00d9c4a0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditCommentMarker_Alloc_00d901b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_Alloc_00d90ff0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Alloc_00d90e90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Init_00d90f40.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_OnPredicateFail_00d90fa0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Alloc_00d91250.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCInvisibleCage_Alloc_00d91470.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Alloc_00d90a50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Alloc_00d906d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJames_Init_00d900e0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJames_OnPredicateFail_00d90050.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkersReactMarker_Alloc_00d9c1d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_Alloc_00d9be30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCHobbeBarrel_Alloc_00d9c3c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Alloc_00d9c560.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Init_00d9c610.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Alloc_00d9b7c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Main_00d9bdc0.cpp ok slots2 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_Alloc_00d9cf60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_Alloc_00d9ce80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCFadeinSummoner_Alloc_00d9f5b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinionGuard_Alloc_00d9ea80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinion_Alloc_00d9f0b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_Alloc_00d9ed50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/CBriarRose_UpdateTarget_00da2a20.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_CreateActiveEntityScript_00da8320.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/da/CMinionEscort_Main_00da45c0.cpp ok slots1 nomem
+edit rebuild/src/compiled/00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScriptCMCSpawnPoint_Init_00da0160.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Alloc_00da4b80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Alloc_00da5c90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCGuardNotThisWay_Alloc_00da6810.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCGuardToLeadTheWay_Alloc_00da6560.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCInvisibleCage_Alloc_00da57a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMGuard_Alloc_00da6320.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMMinion_Alloc_00da6170.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMNotThisWay_Alloc_00da6670.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrierGraveyard_Alloc_00da53a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_Alloc_00da4d40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Alloc_00da4250.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Alloc_00da4a30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Main_00da4b10.cpp ok slots2 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_Alloc_00da4690.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_OnPredicateFail_00da4740.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_Alloc_00da4490.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_Init_00da4540.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_OnPredicateFail_00da4590.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Alloc_00da5b40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawnAdv_Alloc_00da60a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawner_Alloc_00da58b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_Alloc_00da5da0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Alloc_00da4920.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCRockTroll_Alloc_00da5e70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIBully_Alloc_00daec60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_Alloc_00dac580.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVILiveFather_Alloc_00dac2c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Alloc_00daef50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVITheresa_Alloc_00dac420.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVictim_Alloc_00daede0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_Alloc_00dade50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/CEntityScriptBindingNScriptCQNewOakValeIntroScript_CreateActiveEntityScript_00db8520.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/db/CNOVIBarrel_Main_00db7e10.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/db/CNOVICreatedBeetle_Main_00db80c0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Alloc_00db0880.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Alloc_00db29a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWoman_Alloc_00db1db0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Alloc_00db51b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Alloc_00db6b40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrel_Alloc_00db7d00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBookTrader_Alloc_00db3e30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVICreatedBeetle_Alloc_00db7ff0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Alloc_00db81b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Init_00db8290.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Alloc_00dbfdd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/CCrateTeamMember_GoOnPatrol_00dcec70.cpp ok slots1 nomem
+edit rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_CreateActiveEntityScript_00dc0170.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_CreateActiveEntityScript_00dc8700.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_CreateActiveEntityScript_00dcf790.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/dc/CVtable012DB4B8_Main_00dcf4c0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScriptCMRestartMarker_Alloc_00dc0090.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCCeremonialEffect_Alloc_00dc4520.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCGraveyardDemon_Alloc_00dc3ee0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageFirstGate_Alloc_00dc7f50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGate_Alloc_00dc83e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Alloc_00dc4aa0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Init_00dc4b50.cpp ok slots3 mem misplaced:GetParentScript
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_OnPredicateFail_00dc4b70.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_Alloc_00dc7360.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_Alloc_00dc4c40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSarcophagos_Alloc_00dc4420.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_Alloc_00dc5e50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSpeakingMarker_Alloc_00dc84e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCStartGravekeeperCutsceneMarker_Alloc_00dc7020.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_Alloc_00dc85c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadSpawnCutscene_Alloc_00dc71c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_Alloc_00dcdb80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_Init_00dcfa10.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCFarmRearEntrance_Alloc_00dcf3d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_Alloc_00dcde20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_OnPredicateFail_00dcded0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCMKOFIGWLLWHIS2_Alloc_00dcf610.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCMWhisperFarmRaidIntro_Alloc_00dcf540.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Alloc_00dcef50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Init_00dcf000.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_CreateActiveEntityScript_00dd9300.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_CreateActiveEntityScript_00ddc7d0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_CreateActiveEntityScript_00ddeee0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/dd/CExitWardensOffice_Main_00ddece0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dd/CPrisonKeyDoor_Main_00dd9180.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dd/CTortureDoorCourtyard_Main_00dd8ba0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dd/CTortureDoorPassage_Main_00dd8990.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dd/CWaypointSpeedCheck_Main_00ddc6c0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Alloc_00dd8d20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_Alloc_00dd8f10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_Main_00dd8fd0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_Alloc_00dd83c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Alloc_00dd8790.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Main_00dd8850.cpp ok slots2 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Alloc_00dd68a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Init_00dd6950.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonEscapeGuard_Alloc_00dd6330.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_Alloc_00dd43d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_Init_00dd4480.cpp ok slots3 mem gsi misplaced:GetParentScript
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonKeyDoor_Alloc_00dd90c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Alloc_00dd49a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Init_00dd4a50.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_Alloc_00dd5940.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorCourtyard_Alloc_00dd8ae0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorPassage_Alloc_00dd88d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Alloc_00ddb4a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceStartingGuard_Alloc_00ddc500.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_Alloc_00ddc2d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_Alloc_00ddbf90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_Alloc_00ddc3e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_Init_00ddc490.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCWaypointSpeedCheck_Alloc_00ddc5e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCDoNotTarget_Alloc_00ddedf0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCExitWardensOffice_Alloc_00ddec30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Alloc_00dde630.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Alloc_00dde720.cpp ok slots1 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Init_00dde7f0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_CreateActiveEntityScript_00dec5b0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQRansomVictimScript_CreateActiveEntityScript_00de4480.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQSecretPassageScript_CreateActiveEntityScript_00def220.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimChiefsHouseScriptCTest_Alloc_00dec4c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCNPCComment_Alloc_00de3c00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRandomAttacker_Alloc_00de2100.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Alloc_00de1d00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Init_00de1e20.cpp ok slots3 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_OnPredicateFail_00de1db0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomRevenge_Alloc_00de3760.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Alloc_00de1ba0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Init_00de1cc0.cpp ok slots3 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_OnPredicateFail_00de1c50.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictim_Alloc_00de1a50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictim_Init_00de1b60.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Alloc_00de1fb0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Init_00de20c0.cpp ok slots3 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Alloc_00de1e60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Init_00de1f70.cpp ok slots3 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Alloc_00de2500.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Init_00de25d0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFather_Alloc_00de18e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCDoorToMothersTortureChamber_Alloc_00def0f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCMotherTorture_Alloc_00dee1a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCMotherTorture_Init_00dee250.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_Alloc_00ded450.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPDeskGuard_Alloc_00dede40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_Alloc_00deda90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_Alloc_00ded290.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_Alloc_00ded1a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_Alloc_00ded720.cpp ok slots1 mem
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCTortureDoorCourtyard_Alloc_00deef00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_CreateActiveEntityScript_00df3550.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_CreateActiveEntityScript_00df4a50.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_CreateActiveEntityScript_00df99f0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_CreateActiveEntityScript_00dfc100.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/df/CSummonerMinion_Main_00df2ab0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCFireHeartHolder_Alloc_00df2c20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCFireHeart_Alloc_00df2e90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCMActivateLighthouse_Alloc_00df3460.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Alloc_00df16b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_Alloc_00df21f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_Init_00df2310.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_OnPredicateFail_00df22a0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_Alloc_00df2960.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_Init_00df2a40.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_Alloc_00df4520.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_Alloc_00df4820.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_Alloc_00df4730.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Alloc_00df9640.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_Alloc_00df8890.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Alloc_00df7f90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCGuardSpawnPoint_Alloc_00df7b20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Alloc_00df90b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Alloc_00dfbde0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Main_00dfbe90.cpp ok slots3 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Alloc_00dfbcf0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Main_00dfbda0.cpp ok slots3 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBanditExtra_Alloc_00dfbed0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_Alloc_00dfbfa0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_Main_00dfc050.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Alloc_00dfb250.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditHostageKeeper_Alloc_00dfb990.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Alloc_00dfb050.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Init_00dfb1b0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_CreateActiveEntityScript_00e05170.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_CreateActiveEntityScript_00e0e5a0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e0/CTEBanditLeader_Main_00e035e0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e0/CTraderScript_HandleTrader_00e0a510.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCBanditCronies_Alloc_00e03730.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDW5Balv_Alloc_00e04890.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDW5Bandit_Alloc_00e046f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodAssassinSpawn_Alloc_00e02d70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Alloc_00e033a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Alloc_00e03a50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Alloc_00e04a30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Init_00e04b50.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_OnPredicateFail_00e04ae0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCFleshEatingBalverine_Alloc_00e02390.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Alloc_00e02870.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCMagicBarrier_Alloc_00e03e80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCRockTrollTrigger_Alloc_00e03970.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTEBanditLeader_Alloc_00e03500.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTraderComment_Alloc_00e02c90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_Alloc_00e0d130.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingCentre_Alloc_00e0d760.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingFirefly_Alloc_00e0c970.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_Alloc_00e0d590.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttacker_Alloc_00e0cf20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScriptCFleeingWoman_Alloc_00e0f400.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScriptCWaspHelper_Alloc_00e0f7c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_CreateActiveEntityScript_00e1f620.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWaspBossScript_CreateActiveEntityScript_00e12170.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_CreateActiveEntityScript_00e18220.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_CreateActiveEntityScript_00e193d0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_CreateActiveEntityScript_00e1bf60.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCAttackingBandit_Alloc_00e1ed50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCMBanditTrigger_Alloc_00e1e880.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCTraderToEscort_Alloc_00e1e7a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Alloc_00e109d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Main_00e10a90.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCHornetDrone_Alloc_00e11cd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCQueenHornet_Alloc_00e11ad0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspAttacker_Alloc_00e11380.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Alloc_00e10d70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Init_00e10e20.cpp ok slots3 mem gsi misplaced:GetParentScript
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaser_Alloc_00e10b20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspVictim_Alloc_00e11580.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspVictim_Init_00e11630.cpp ok slots3 mem gsi misplaced:GetParentScript
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_Alloc_00e17750.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_Alloc_00e16d10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_Alloc_00e17230.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_Alloc_00e16990.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_Alloc_00e16b50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Alloc_00e15750.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Alloc_00e192e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_Alloc_00e191e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_Alloc_00e190a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCChasingScreamer_Alloc_00e1ae50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCEndGameBarrier_Alloc_00e1ba60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCMaze_Alloc_00e1b950.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_Alloc_00e1b660.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_Alloc_00e1b100.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Alloc_00e1bb80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CreateActiveEntityScript_00e26c50.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_CreateActiveEntityScript_00e25d90.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_CreateActiveEntityScript_00e27cb0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_CreateActiveEntityScript_00e29110.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_CreateActiveEntityScript_00e2a170.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_CreateActiveEntityScript_00e2e900.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Alloc_00e26af0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Init_00e26bd0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Alloc_00e25c70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Init_00e25d20.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_OnPredicateFail_00e25d30.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_Alloc_00e27bb0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_Alloc_00e28f70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Alloc_00e29040.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCQSScytheInfoScriptCScytheMarker_Alloc_00e29e80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCQSScytheInfoScriptCScytheNearOracle_Alloc_00e2a020.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASAmbusher_Alloc_00e2bb60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASBuddy_Alloc_00e2bec0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASTrickster_Alloc_00e2bc90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/CACDummyStatic_Main_00e369b0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_CreateActiveEntityScript_00e37340.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_CreateActiveEntityScript_00e38bd0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e3/CEntityScriptBindingNScriptCVBordelloScript_CreateActiveEntityScript_00e3b740.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_Alloc_00e33d30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyStatic_Alloc_00e33bc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_Alloc_00e334c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACOwner_Alloc_00e335b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyMoving_Alloc_00e33a20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_Alloc_00e33800.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Alloc_00e388f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Main_00e389e0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_Alloc_00e382c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Alloc_00e385d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Alloc_00e37d50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_OnPersist_00e38d80.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Alloc_00e3b0f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Init_00e3b1a0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_OnPredicateFail_00e3b230.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloEntrance_Alloc_00e3b3d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloGuard_Alloc_00e3ae60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloGuard_Init_00e3af30.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloLady_Alloc_00e3ab90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloLady_Init_00e3ac70.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMHeroDownstairs_Alloc_00e3b270.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMadame_Alloc_00e3aab0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMagicman_Alloc_00e3af90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMagicman_Init_00e3b060.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_CreateActiveEntityScript_00e47610.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e4/CEntityScriptBindingNScriptCVBanditTollScript_CreateActiveEntityScript_00e4b1d0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e4/CGuildSealWarning_Main_00e4b010.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e4/CMBanditLeader_Main_00e4a740.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScriptCBCPBandit_Alloc_00e47500.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScriptCBCPBandit_Init_00e475b0.cpp ok slots3 mem gsi misplaced:GetParentScript
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_Alloc_00e4a890.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_Init_00e4a940.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Alloc_00e49850.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Init_00e49900.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCGuildSealWarning_Alloc_00e4af50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMBanditLeader_Alloc_00e4a660.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTauntingBandit_Alloc_00e48d00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTollBandit_Alloc_00e48950.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCReluctantTrader_Alloc_00e49f10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCSafeTrader_Alloc_00e4a190.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTauntingBandit_Alloc_00e48de0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTollBandit_Alloc_00e48b40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_CreateActiveEntityScript_00e540a0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_CreateActiveEntityScript_00e5cf20.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_CreateActiveEntityScript_00e5f000.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_CreateActiveEntityScript_00e546d0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Alloc_00e507e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Init_00e50890.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Alloc_00e58c60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_Init_00e5de80.cpp ok slots7 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanComment_CHenchmanComment_00e5f240.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanRegionEntranceComment_CHenchmanRegionEntranceComment_00e5f640.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanRegionExitComment_CHenchmanRegionExitComment_00e5f880.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCMBodyGuardRespawn_Alloc_00e5dff0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_Alloc_00e54580.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_Init_00e54630.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_CreateActiveEntityScript_00e6b240.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_CreateActiveEntityScript_00e64020.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Alloc_00e6a500.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEAltarEvil_Alloc_00e6a6e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEVictim_Alloc_00e6a600.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenMaster_Alloc_00e634b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenMaster_Init_00e63560.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_CChickenSign_00e64d90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_Init_00e68dc0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCKickedChicken_Alloc_00e63590.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCSpectator_Alloc_00e63660.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFCombatMult_Alloc_00e6f640.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFDragon_Alloc_00e6fb70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFShineLight_Alloc_00e6e960.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFThunderHelmet_Alloc_00e6f0f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVDemonDoorsScript_CreateActiveEntityScript_00e74bc0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_CreateActiveEntityScript_00e774e0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVFishermanScript_CreateActiveEntityScript_00e7c6b0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_CreateActiveEntityScript_00e7ed60.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFBeEvil_Alloc_00e70390.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFDoDamage_Alloc_00e70af0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFDressAsBandit_Alloc_00e71e40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFEatPies_Alloc_00e71380.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFGiveGift_Alloc_00e718b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFKeyHoarder_Alloc_00e73ff0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFMarryLadyGrey_Alloc_00e73340.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFSexMad_Alloc_00e73860.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_Alloc_00e72560.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsEvilMage_00e731f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsGoodKnight_00e730a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMFlashLightPoint_Alloc_00e76730.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMRhodri_Alloc_00e765d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMRhodri_Init_00e766a0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSheriff_Alloc_00e76470.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Alloc_00e76360.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Init_00e76410.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCHHCellarDoor_Alloc_00e76800.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Alloc_00e7bbe0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Main_00e7bca0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanWasp_Alloc_00e7ba40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFisherman_Alloc_00e7b7b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCMFishermanWaspSpawn_Alloc_00e7b890.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScriptCBountyHuntActivationChecker_Alloc_00e7ec90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScriptCFishCompCompetitor_Alloc_00e7e570.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_CreateActiveEntityScript_00e83bc0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_CreateActiveEntityScript_00e8d0e0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_Alloc_00e82870.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Alloc_00e83780.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_Alloc_00e83570.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_Init_00e836f0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyDaughterInLaw_Alloc_00e8be10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Alloc_00e8bd30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Alloc_00e8ca60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_CreateActiveEntityScript_00e90a30.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_CreateActiveEntityScript_00e95f80.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_CreateActiveEntityScript_00e98460.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_CreateActiveEntityScript_00e9a0e0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_CreateActiveEntityScript_00e93a60.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_CreateActiveEntityScript_00e9df30.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Alloc_00e908d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Init_00e909a0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCHHUndead_Alloc_00e95cd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCHHUndead_OnPredicateFail_00e95dc0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMHeroInsideHouse_Alloc_00e95bf0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMQuestControl_Alloc_00e955b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMUndeadHere_Alloc_00e95690.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDollsScriptCBSTeacher_Alloc_00e96fb0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCSpectator_Alloc_00e997e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCThunder_Alloc_00e996b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Alloc_00e92f70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Alloc_00e9d9d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_Alloc_00e9d700.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroTable_Alloc_00e9d8e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Alloc_00e9cee0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e9/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Alloc_00e9ff70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_CreateActiveEntityScript_00ea0f00.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVLostTraderScript_CreateActiveEntityScript_00ea5780.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_CreateActiveEntityScript_00ea7ef0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_CreateActiveEntityScript_00ead860.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Alloc_00ea09f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Init_00ea0030.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_Alloc_00ea5150.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderBrother_OnPredicateFail_00ea50e0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Alloc_00ea34f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Init_00ea35a0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Alloc_00ea7990.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Init_00ea80f0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Alloc_00ea7a60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_OnPredicateFail_00eaee10.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Alloc_00eac4e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_Alloc_00eacde0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_Alloc_00eaba10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Alloc_00eaae40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_Alloc_00eaaf10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Alloc_00ead730.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Init_00eae820.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Alloc_00ea8e50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Init_00ea8f00.cpp ok slots3 mem
+edit rebuild/src/compiled/00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_CreateActiveEntityScript_00eb9710.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/eb/CEntityScriptBindingNScriptCVMurderTwistFinalScript_CreateActiveEntityScript_00eb6370.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/eb/CEntityScriptBindingNScriptCVOracleScript_CreateActiveEntityScript_00ebebf0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Alloc_00eb78b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_Alloc_00eb8810.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Alloc_00eb79f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_Alloc_00eb5450.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Alloc_00eb3c60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Init_00eb3e40.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Init_00eb2070.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOOracleMarker_Alloc_00ebce80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOOracleMarker_Init_00ebcf30.cpp ok slots3 mem misplaced:GetParentScript
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOWoman_Alloc_00ebe540.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_Alloc_00ebfb00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_Init_00ebfbb0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVParanoidWhispersScript_CreateActiveEntityScript_00ec1000.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_CreateActiveEntityScript_00ec15d0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_CreateActiveEntityScript_00ec2860.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_CreateActiveEntityScript_00ec47c0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVSickChildScript_CreateActiveEntityScript_00ecd600.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ec/CSickChildFishingSpot_Main_00ecd530.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_Alloc_00ec0900.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_Init_00ec09b0.cpp ok slots3 mem gsi misplaced:GetParentScript
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCSecretWhisperingFriend_Alloc_00ec0a50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBGuard_Alloc_00ec14e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBVillager_Alloc_00ec13f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Alloc_00ec1b70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_OnPredicateFail_00ec1c20.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_Alloc_00ec41f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Alloc_00ec4490.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_Alloc_00ec45c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCIngredientOwner_Alloc_00ecafa0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCIngredientOwner_Init_00ecb050.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_Alloc_00ec8160.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_OnPredicateFail_00ec8230.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCMansLover_Alloc_00ec9c00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildFishingSpot_Alloc_00ecd450.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Alloc_00ec5cd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Init_00ec5da0.cpp ok slots3 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Alloc_00ec5bc0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Init_00ec5c90.cpp ok slots3 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Alloc_00ec67b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Alloc_00ecbc80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWitch_Alloc_00ec7ff0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_Alloc_00ecd2d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_Init_00ecd380.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_CreateActiveEntityScript_00ed28c0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_CreateActiveEntityScript_00ed4890.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_CreateActiveEntityScript_00ed5340.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_CreateActiveEntityScript_00ed8210.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_CreateActiveEntityScript_00edcea0.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ed/CTBBard_GetRandomSpeech_00ed99d0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ed/NScriptCVSingingStonesScriptCSingingStone_Alloc_00ed1420.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterCellarDoors_Alloc_00ed44c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterChest_Alloc_00ed4770.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterStatue_Alloc_00ed40c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Alloc_00ed5260.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Alloc_00ed5130.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScriptCTBBardSpawnPoint_Alloc_00ed8050.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsApprentice_00eda490.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_Alloc_00edc1d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_Alloc_00edc2d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_Main_00edc390.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Alloc_00edf2b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Alloc_00edf910.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunder_Alloc_00edff70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_CreateActiveEntityScript_00eeda40.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCVTourGuideScript_CreateActiveEntityScript_00ee5570.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCVTravellingHeroesScript_CreateActiveEntityScript_00ee1c10.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_CreateActiveEntityScript_00ee7540.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ee/CTHTriggerGuildRose_Main_00ee3ee0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ee/CTHTriggerOakvaleGossip_Main_00ee06b0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_Alloc_00eed4d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCSignpost_Alloc_00eed5d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCStopDrawing_Alloc_00eed7d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideFollower_Alloc_00ee4cf0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Alloc_00ee4bb0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Init_00ee4c60.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Alloc_00ee1400.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMaze_Alloc_00ee0060.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_OnPredicateFail_00ee0350.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_Alloc_00ee0b60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Alloc_00ee03e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_Alloc_00ee04d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Alloc_00ee1af0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Main_00ee3fc0.cpp ok slots7 mem gsi
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_Alloc_00ee05c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_Alloc_00ee0930.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_Alloc_00ee0150.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Alloc_00ee7430.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Init_00ee74e0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Alloc_00ee7340.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Init_00ee73f0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/ef/CBeggar_Main_00ef3200.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_CreateActiveEntityScript_00efee50.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_CreateActiveEntityScript_00efbf80.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_CreateActiveEntityScript_00efb9c0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_CreateActiveEntityScript_00efda90.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_CreateActiveEntityScript_00ef5070.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_CreateActiveEntityScript_00efb460.cpp ok slots3 nomem
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_CreateActiveEntityScript_00eff5c0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_CreateActiveEntityScript_00efad80.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCguyscriptScript_CreateActiveEntityScript_00efa210.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/ef/CTestPos_Main_00ef3840.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCBalvMarker_Alloc_00efea80.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCDummy_Alloc_00efe620.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCFader_Alloc_00efe7f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCGuildSealTriggerTestScriptCGuildSealTrigger_Alloc_00efbd40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCHitSwitchTestScriptCHitSwitch_Alloc_00efb7e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCGift_Alloc_00efd680.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCShopKeeper_Alloc_00efd9c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCTestMan_Alloc_00efcb70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_Alloc_00ef2420.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCBanditWalker_Alloc_00ef1b70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCBeggar_Alloc_00ef3120.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_Alloc_00ef3c60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_Alloc_00ef3d40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCinemaMan_Alloc_00ef1f90.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_Alloc_00ef1050.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_Alloc_00ef1130.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrateDeathMarker_Alloc_00ef1210.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCDoor_Alloc_00ef2f20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCFollower_Alloc_00ef4130.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGhostDude_Alloc_00ef44d0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_Alloc_00ef2900.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCKillMan_Alloc_00ef2070.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Alloc_00ef3e20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Alloc_00ef1c50.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_Alloc_00ef4210.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCOpinionMan_Alloc_00ef3660.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCScrumpyCrate_Alloc_00ef2ac0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Alloc_00ef2820.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600.cpp ok slots7 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCSwordChest_Alloc_00ef21b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_Alloc_00ef4a60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_Alloc_00ef3740.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_Init_00ef37f0.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTrappedMan_Alloc_00ef1d30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTriggerCrate_Alloc_00ef2500.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadDude_Alloc_00ef33c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Alloc_00ef47c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Alloc_00ef48a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCWalker_Alloc_00ef39c0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_Alloc_00ef15b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCProximityPodiumTestScriptCProximityPodium_Alloc_00efb280.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCTonyTestScriptsScriptCDummy_Alloc_00eff3f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCbanditlevelcutsceneScriptCwelcomeguy_Alloc_00efaa60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScriptChenchmen_Alloc_00efa0b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScriptChenchmen_Init_00efa160.cpp ok slots2 mem misplaced:Init
+edit rebuild/src/compiled/00/f0/CATConvoyMember_Init_00f08c30.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/f0/CATPhase1Archer_Init_00f08a30.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCOracleMinigameTestScript_CreateActiveEntityScript_00f01150.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_CreateActiveEntityScript_00f09b10.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_CreateActiveEntityScript_00f01d20.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCGamesmasterOracleMarker_Alloc_00f00a10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_Alloc_00f00000.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_Alloc_00f00bb0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Alloc_00f037a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_OnPredicateFail_00f03850.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_Alloc_00f056a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditContact_Alloc_00f057e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Alloc_00f04280.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Alloc_00f04360.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_OnPredicateFail_00f04480.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_Alloc_00f03f20.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_Alloc_00f038a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_Alloc_00f04bd0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_Alloc_00f050e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATSentry_Alloc_00f04510.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f0/NScriptCQCinemaTestScriptCDummy_Alloc_00f01b60.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/CEntityScriptBindingNScriptCQArenaScript_CreateActiveEntityScript_00f1cb50.cpp ok slots3 nomem misplaced:Stop,Start->Init x1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard2_Alloc_00f19ab0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_Alloc_00f17b70.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellExitGuard_Alloc_00f1b8e0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaEnemy_Alloc_00f1a810.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaSpawn_Alloc_00f1b5b0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCagedBalverine_Alloc_00f1ca30.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCellWhisper_Alloc_00f16fe0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCham_Alloc_00f14670.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCFlick_Alloc_00f14980.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCNeedle_Alloc_00f15550.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCRoth_Alloc_00f14560.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_Alloc_00f1b0f0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_OnPredicateFail_00f1b1b0.cpp ok slots2 mem misplaced:OnPredicateFail
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCShadow_Alloc_00f161a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCWhisperAlly_Alloc_00f1b800.cpp ok slots1 mem
+edit rebuild/src/compiled/00/f3/CEntityScriptBase_CEntityScriptBase_00f35b40.cpp ok slots1 mem
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Alloc_00cdee10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCOFMainGates_Alloc_00cdefb0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCKGGate_Alloc_00cdf190.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/cd/CKGGate_Main_00cdf260.cpp derived models base words CKG_Gate
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCDragonGate_Alloc_00cdf360.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTeleportPoint_Alloc_00cdf490.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_Alloc_00cdf570.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Alloc_00cdf750.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTestGateSwitch_Alloc_00cdf930.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCBSGateGuard_Alloc_00cdfa10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_Alloc_00cdfd40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCLadyGreysBed_Alloc_00ce0090.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ce/CLadyGreysBed_Main_00ce0150.cpp derived models base words CLadyGreysBed
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCInvisibleBarrier_Alloc_00ce0280.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS2SOUL_Alloc_00ce0390.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS3SOUL_Alloc_00ce0460.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHSESOUL_Alloc_00ce0530.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_Alloc_00cf0b60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard2_Alloc_00cf0c40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_Alloc_00cf17f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_Alloc_00cf2a90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_Alloc_00cf3c40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCFanMarker_Alloc_00cf4df0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_Alloc_00cfbb20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalTabletSarcophagus_Alloc_00cfbc00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Alloc_00cfbce0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGate_Alloc_00cfc700.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Alloc_00cfc7d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_Alloc_00cfc8a0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/cf/CChunkCollectionIndicator_Main_00cfc990.cpp derived models base words CChunkCollectionIndicator
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Alloc_00cfca60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_Alloc_00cfcbd0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCScytheBeforeGettingTablets_Alloc_00cfcdc0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCATOMagicBarrier_Alloc_00cfd5d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Alloc_00cfdca0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_Alloc_00d014c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Alloc_00d02a70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassinMarker_Alloc_00d048c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Alloc_00d04990.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_Alloc_00d05910.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_Alloc_00d05fe0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_Alloc_00d066b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Alloc_00d071f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Alloc_00d07340.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Alloc_00d07d20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Alloc_00d08670.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageDoor_Alloc_00d08a70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Alloc_00d08e50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_Alloc_00d0a700.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Alloc_00d0c2c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Alloc_00d153f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_Alloc_00d15940.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_Alloc_00d15fc0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Alloc_00d160b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Alloc_00d161a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Alloc_00d16290.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Alloc_00d16380.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditSiegeLeader_Alloc_00d1dcc0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_Alloc_00d1dde0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGSheriff_Alloc_00d1df20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Alloc_00d1e090.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_Alloc_00d1e230.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardToHelpDefend_Alloc_00d1ea10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Alloc_00d1f510.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditFirstWave_Alloc_00d1f910.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Alloc_00d1fc30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Alloc_00d24210.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Alloc_00d24330.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDragon_Alloc_00d257d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDBMinion_Alloc_00d25c60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDBSummoner_Alloc_00d25e30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Alloc_00d28f70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMUndeadSpawn_Alloc_00d290a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Alloc_00d29230.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMKGHCHERO3_Alloc_00d29460.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMazeJournal_Alloc_00d29570.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameFocalSite_Alloc_00d2c140.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Alloc_00d2c260.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_Alloc_00d2c340.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_Alloc_00d2c430.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Alloc_00d2c650.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameThunder_Alloc_00d2c730.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScarletRobe_Alloc_00d2cf80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCEndGameJackOfBladesBoss_Alloc_00d2fa40.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d2/CEndGameJackOfBladesBoss_Main_00d2fb20.cpp derived models base words CEndGameJackOfBladesBoss
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCEndGameSister_Alloc_00d2fc00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCSwordVoid_Alloc_00d2fce0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Alloc_00d2fdc0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCDFFireheart_Alloc_00d362b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Alloc_00d363a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Alloc_00d36470.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHPrisoner_Alloc_00d36540.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCProphetCage_Alloc_00d36680.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Alloc_00d36790.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHScythe_Alloc_00d37140.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Alloc_00d37240.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Init_00d372f0.cpp block not at top level
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHVillager_Alloc_00d373d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHMemorialCutsceneMarker_Alloc_00d37c30.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d3/CFHPrisoner_MakeRoundStartComment_00d3a9b0.cpp derived models base words CFH_Prisoner
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScriptCAppleGirl_Alloc_00d3d060.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_Alloc_00d3e1f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCRaceMarker_Alloc_00d409e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCHeroBed_Alloc_00d40b30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Alloc_00d40c10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Init_00d40cc0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_Alloc_00d41a30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillApprentice_Alloc_00d41b10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Alloc_00d41bf0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCBirdKiller_Alloc_00d42f40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCKillBird_Alloc_00d43040.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillApprentice_Alloc_00d43280.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_Alloc_00d43360.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCPreMeleeMaze_Alloc_00d43cd0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Alloc_00d509d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Alloc_00d51e20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeDummy_Alloc_00d51f00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Alloc_00d52230.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_Alloc_00d565c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Alloc_00d566a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeThunder_Alloc_00d57fa0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Alloc_00d5abe0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Alloc_00d5dde0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Alloc_00d62270.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Alloc_00d62360.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_Alloc_00d63cc0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_Alloc_00d66ba0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_Alloc_00d68720.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAmbushPoint_Alloc_00d69d50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_Alloc_00d69e30.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d6/CHTEPrisoner_Main_00d69f50.cpp derived models base words CHTE_Prisoner
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_Alloc_00d69fd0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d6/CHTEExecutioner_Main_00d6a0d0.cpp derived models base words CHTE_Executioner
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Alloc_00d6a150.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Alloc_00d6a290.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Alloc_00d6a3d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_Alloc_00d6ad70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAudience_Alloc_00d6b180.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPoint_Alloc_00d6fd70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_Alloc_00d6fe50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointRear_Alloc_00d6ff30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_Alloc_00d70010.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGFreedomFighter_Alloc_00d700e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Alloc_00d70520.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Alloc_00d71980.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGBoss_Alloc_00d724d0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d7/CHTGAmbushPoint_Main_00d73610.cpp derived models base words CHTG_AmbushPoint
+skip rebuild/src/compiled/00/d7/CHTGAmbushPointRear_Main_00d73ae0.cpp derived models base words CHTG_AmbushPointRear
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Alloc_00d79b90.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Main_00d79c40.cpp block not at top level
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCEndScythe_Alloc_00d79c80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCEndBriarRose_Alloc_00d7a290.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_Alloc_00d7b400.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_CreateActiveEntityScript_00d7c2e0.cpp block not at top level
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Alloc_00d7dba0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Main_00d7dc50.cpp block not at top level
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Alloc_00d7dc90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCArenaHeroGate_Alloc_00d7de80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHOHGuard_Alloc_00d7dff0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummoner1_Alloc_00d7ebe0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummoner2_Alloc_00d7ee00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHeroSoulsEnemy_Alloc_00d7f020.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp derived models base words CHeroSoulsEnemy
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCBlockedEntrance_Alloc_00d7f1a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_Alloc_00d7f380.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHSAScreamingVillager_Alloc_00d7f7b0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_CreateActiveEntityScript_00d7fab0.cpp block not at top level
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_Alloc_00d81630.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCBRIARROSEIMPOSTER_Alloc_00d81750.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCHSBMagicBarrier_Alloc_00d81b60.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_CreateActiveEntityScript_00d82210.cpp block not at top level
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCSummonerToKill_Alloc_00d83cf0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Alloc_00d83e60.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_CreateActiveEntityScript_00d844a0.cpp block not at top level
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_Alloc_00d85a30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardOutsideWoods_Alloc_00d85fa0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCMuteGuardOutsideWoods_Alloc_00d86080.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_Alloc_00d86390.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCWaitingGuardInWoods_Alloc_00d86560.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Alloc_00d86980.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCSoulInfoAcolyte_Alloc_00d86b60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_Alloc_00d88420.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCGuardNearGraveyardPath_Alloc_00d885e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCUndeadSoldier_Alloc_00d88ec0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d8/CUndeadSoldier_Main_00d88f90.cpp derived models base words CUndeadSoldier
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_Alloc_00d890a0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d8/CSUMMONEDCREATURE_Main_00d891f0.cpp derived models base words CSUMMONED_CREATURE
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Alloc_00d892a0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp derived models base words CNostro
+skip rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_CreateActiveEntityScript_00d89580.cpp block not at top level
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Alloc_00d8a4b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Alloc_00d8a650.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_Alloc_00d8a7f0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_CreateActiveEntityScript_00d8a960.cpp block not at top level
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeSpawn_Alloc_00d8f310.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeTorrent_Alloc_00d8f3f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeRoaming_Alloc_00d8f4f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Alloc_00d8f5e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Alloc_00d8f950.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_Alloc_00d8fc70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCNymph_Alloc_00d8fe30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCJames_Alloc_00d8ffa0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditCommentMarker_Alloc_00d901b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Alloc_00d906d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Alloc_00d90a50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Alloc_00d90e90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_Alloc_00d90ff0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Alloc_00d91250.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCInvisibleCage_Alloc_00d91470.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQHobbeCaveScript_CreateActiveEntityScript_00d915b0.cpp block not at top level
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Alloc_00d9b7c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_Alloc_00d9be30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkersReactMarker_Alloc_00d9c1d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCHobbeBarrel_Alloc_00d9c3c0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d9/NScriptCHobbeBarrel_Main_00d9c4a0.cpp derived models base words CHobbeBarrel
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Alloc_00d9c560.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_Alloc_00d9ce80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_Alloc_00d9cf60.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_CreateActiveEntityScript_00d9d930.cpp block not at top level
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinionGuard_Alloc_00d9ea80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_Alloc_00d9ed50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinion_Alloc_00d9f0b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCFadeinSummoner_Alloc_00d9f5b0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/d9/CFadeinSummoner_PhaseMe_00d9fd80.cpp derived models base words CFadeinSummoner
+skip rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQMinionCampScript_CreateActiveEntityScript_00d9ffd0.cpp block not at top level
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Alloc_00da4250.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_Alloc_00da4490.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/da/CMinionEscort_Main_00da45c0.cpp derived models base words CMinionEscort
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_Alloc_00da4690.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Alloc_00da4920.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Alloc_00da4a30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Alloc_00da4b80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_Alloc_00da4d40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrierGraveyard_Alloc_00da53a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCInvisibleCage_Alloc_00da57a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawner_Alloc_00da58b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Alloc_00da5b40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Alloc_00da5c90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_Alloc_00da5da0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCRockTroll_Alloc_00da5e70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawnAdv_Alloc_00da60a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMMinion_Alloc_00da6170.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMGuard_Alloc_00da6320.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCGuardToLeadTheWay_Alloc_00da6560.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMNotThisWay_Alloc_00da6670.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCGuardNotThisWay_Alloc_00da6810.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_CreateActiveEntityScript_00da8320.cpp block not at top level
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVILiveFather_Alloc_00dac2c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVITheresa_Alloc_00dac420.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_Alloc_00dac580.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_Alloc_00dade50.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0.cpp derived models base words CNOVI_Villager
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIBully_Alloc_00daec60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVictim_Alloc_00daede0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Alloc_00daef50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Alloc_00db0880.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWoman_Alloc_00db1db0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Alloc_00db29a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBookTrader_Alloc_00db3e30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Alloc_00db51b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Alloc_00db6b40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrel_Alloc_00db7d00.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/db/CNOVIBarrel_Main_00db7e10.cpp derived models base words CNOVI_Barrel
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVICreatedBeetle_Alloc_00db7ff0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/db/CNOVICreatedBeetle_Main_00db80c0.cpp derived models base words CNOVI_CreatedBeetle
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Alloc_00db81b0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/db/CEntityScriptBindingNScriptCQNewOakValeIntroScript_CreateActiveEntityScript_00db8520.cpp block not at top level
+edit rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Alloc_00dbfdd0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScriptCMRestartMarker_Alloc_00dc0090.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_CreateActiveEntityScript_00dc0170.cpp block not at top level
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCGraveyardDemon_Alloc_00dc3ee0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSarcophagos_Alloc_00dc4420.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCCeremonialEffect_Alloc_00dc4520.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Alloc_00dc4aa0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_Alloc_00dc4c40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_Alloc_00dc5e50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCStartGravekeeperCutsceneMarker_Alloc_00dc7020.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadSpawnCutscene_Alloc_00dc71c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_Alloc_00dc7360.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageFirstGate_Alloc_00dc7f50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGate_Alloc_00dc83e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSpeakingMarker_Alloc_00dc84e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_Alloc_00dc85c0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_CreateActiveEntityScript_00dc8700.cpp block not at top level
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_Alloc_00dcdb80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_Alloc_00dcde20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/CCrateTeamMember_GoOnPatrol_00dcec70.cpp ok slots1 nomem
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Alloc_00dcef50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCFarmRearEntrance_Alloc_00dcf3d0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dc/CVtable012DB4B8_Main_00dcf4c0.cpp derived models base words CVtable_012DB4B8
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCMWhisperFarmRaidIntro_Alloc_00dcf540.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCMKOFIGWLLWHIS2_Alloc_00dcf610.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_CreateActiveEntityScript_00dcf790.cpp block not at top level
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_Alloc_00dd43d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Alloc_00dd49a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_Alloc_00dd5940.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonEscapeGuard_Alloc_00dd6330.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Alloc_00dd68a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_Alloc_00dd83c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Alloc_00dd8790.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorPassage_Alloc_00dd88d0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dd/CTortureDoorPassage_Main_00dd8990.cpp derived models base words CTortureDoorPassage
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorCourtyard_Alloc_00dd8ae0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dd/CTortureDoorCourtyard_Main_00dd8ba0.cpp derived models base words CTortureDoorCourtyard
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Alloc_00dd8d20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_Alloc_00dd8f10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonKeyDoor_Alloc_00dd90c0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dd/CPrisonKeyDoor_Main_00dd9180.cpp derived models base words CPrisonKeyDoor
+skip rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_CreateActiveEntityScript_00dd9300.cpp block not at top level
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Alloc_00ddb4a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_Alloc_00ddbf90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_Alloc_00ddc2d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_Alloc_00ddc3e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceStartingGuard_Alloc_00ddc500.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCWaypointSpeedCheck_Alloc_00ddc5e0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dd/CWaypointSpeedCheck_Main_00ddc6c0.cpp derived models base words CWaypointSpeedCheck
+skip rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_CreateActiveEntityScript_00ddc7d0.cpp block not at top level
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Alloc_00dde630.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Alloc_00dde720.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCExitWardensOffice_Alloc_00ddec30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/dd/CExitWardensOffice_Main_00ddece0.cpp ok slots0 nomem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCDoNotTarget_Alloc_00ddedf0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_CreateActiveEntityScript_00ddeee0.cpp block not at top level
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFather_Alloc_00de18e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictim_Alloc_00de1a50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Alloc_00de1ba0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Init_00de1cc0.cpp block not at top level
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Alloc_00de1d00.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Init_00de1e20.cpp block not at top level
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Alloc_00de1e60.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Init_00de1f70.cpp block not at top level
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Alloc_00de1fb0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Init_00de20c0.cpp block not at top level
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRandomAttacker_Alloc_00de2100.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Alloc_00de2500.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomRevenge_Alloc_00de3760.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCNPCComment_Alloc_00de3c00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimChiefsHouseScriptCTest_Alloc_00dec4c0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_CreateActiveEntityScript_00dec5b0.cpp block not at top level
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_Alloc_00ded1a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_Alloc_00ded290.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_Alloc_00ded450.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_Alloc_00ded720.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_Alloc_00deda90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPDeskGuard_Alloc_00dede40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCMotherTorture_Alloc_00dee1a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCTortureDoorCourtyard_Alloc_00deef00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCDoorToMothersTortureChamber_Alloc_00def0f0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQSecretPassageScript_CreateActiveEntityScript_00def220.cpp block not at top level
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Alloc_00df16b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_Alloc_00df21f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_Alloc_00df2960.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/CSummonerMinion_Main_00df2ab0.cpp derived models base words CSummonerMinion
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCFireHeartHolder_Alloc_00df2c20.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp derived models base words CFireHeartHolder
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCFireHeart_Alloc_00df2e90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCMActivateLighthouse_Alloc_00df3460.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_CreateActiveEntityScript_00df3550.cpp block not at top level
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_Alloc_00df4520.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_Alloc_00df4730.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_Alloc_00df4820.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_CreateActiveEntityScript_00df4a50.cpp block not at top level
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCGuardSpawnPoint_Alloc_00df7b20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Alloc_00df7f90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_Alloc_00df8890.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Alloc_00df90b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Alloc_00df9640.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_CreateActiveEntityScript_00df99f0.cpp block not at top level
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Alloc_00dfb050.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Alloc_00dfb250.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditHostageKeeper_Alloc_00dfb990.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Alloc_00dfbcf0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Main_00dfbda0.cpp block not at top level
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Alloc_00dfbde0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Main_00dfbe90.cpp block not at top level
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBanditExtra_Alloc_00dfbed0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_Alloc_00dfbfa0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_CreateActiveEntityScript_00dfc100.cpp block not at top level
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCFleshEatingBalverine_Alloc_00e02390.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Alloc_00e02870.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTraderComment_Alloc_00e02c90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodAssassinSpawn_Alloc_00e02d70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Alloc_00e033a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTEBanditLeader_Alloc_00e03500.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e0/CTEBanditLeader_Main_00e035e0.cpp derived models base words CTE_BanditLeader
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCBanditCronies_Alloc_00e03730.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCRockTrollTrigger_Alloc_00e03970.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Alloc_00e03a50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCMagicBarrier_Alloc_00e03e80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDW5Bandit_Alloc_00e046f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDW5Balv_Alloc_00e04890.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Alloc_00e04a30.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_CreateActiveEntityScript_00e05170.cpp block not at top level
+skip rebuild/src/compiled/00/e0/CTraderScript_HandleTrader_00e0a510.cpp derived models base words CTraderScript
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingFirefly_Alloc_00e0c970.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttacker_Alloc_00e0cf20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_Alloc_00e0d130.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_Alloc_00e0d590.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingCentre_Alloc_00e0d760.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScriptCFleeingWoman_Alloc_00e0f400.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScriptCWaspHelper_Alloc_00e0f7c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Alloc_00e109d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaser_Alloc_00e10b20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Alloc_00e10d70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspAttacker_Alloc_00e11380.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspVictim_Alloc_00e11580.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCQueenHornet_Alloc_00e11ad0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCHornetDrone_Alloc_00e11cd0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Alloc_00e15750.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_Alloc_00e16990.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_Alloc_00e16b50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_Alloc_00e16d10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_Alloc_00e17230.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_Alloc_00e17750.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_Alloc_00e190a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_Alloc_00e191e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Alloc_00e192e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCChasingScreamer_Alloc_00e1ae50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_Alloc_00e1b100.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_Alloc_00e1b660.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCMaze_Alloc_00e1b950.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCEndGameBarrier_Alloc_00e1ba60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Alloc_00e1bb80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCTraderToEscort_Alloc_00e1e7a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCMBanditTrigger_Alloc_00e1e880.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCAttackingBandit_Alloc_00e1ed50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Alloc_00e25c70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Alloc_00e26af0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_Alloc_00e27bb0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_Alloc_00e28f70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Alloc_00e29040.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSScytheInfoScriptCScytheMarker_Alloc_00e29e80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCQSScytheInfoScriptCScytheNearOracle_Alloc_00e2a020.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASAmbusher_Alloc_00e2bb60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASTrickster_Alloc_00e2bc90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASBuddy_Alloc_00e2bec0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_Alloc_00e334c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACOwner_Alloc_00e335b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_Alloc_00e33800.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyMoving_Alloc_00e33a20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyStatic_Alloc_00e33bc0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_Alloc_00e33d30.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e3/CACDummyStatic_Main_00e369b0.cpp derived models base words CAC_DummyStatic
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Alloc_00e37d50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_Alloc_00e382c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Alloc_00e385d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Alloc_00e388f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMadame_Alloc_00e3aab0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloLady_Alloc_00e3ab90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloGuard_Alloc_00e3ae60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMagicman_Alloc_00e3af90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Alloc_00e3b0f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMHeroDownstairs_Alloc_00e3b270.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloEntrance_Alloc_00e3b3d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScriptCBCPBandit_Alloc_00e47500.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTollBandit_Alloc_00e48950.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTollBandit_Alloc_00e48b40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTauntingBandit_Alloc_00e48d00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTauntingBandit_Alloc_00e48de0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Alloc_00e49850.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCReluctantTrader_Alloc_00e49f10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCSafeTrader_Alloc_00e4a190.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMBanditLeader_Alloc_00e4a660.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e4/CMBanditLeader_Main_00e4a740.cpp derived models base words CM_BanditLeader
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_Alloc_00e4a890.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCGuildSealWarning_Alloc_00e4af50.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e4/CGuildSealWarning_Main_00e4b010.cpp derived models base words CGuildSealWarning
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Alloc_00e507e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_Alloc_00e54580.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Alloc_00e58c60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCMBodyGuardRespawn_Alloc_00e5dff0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenMaster_Alloc_00e634b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCKickedChicken_Alloc_00e63590.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCSpectator_Alloc_00e63660.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Alloc_00e6a500.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEVictim_Alloc_00e6a600.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEAltarEvil_Alloc_00e6a6e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFShineLight_Alloc_00e6e960.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFThunderHelmet_Alloc_00e6f0f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFCombatMult_Alloc_00e6f640.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFDragon_Alloc_00e6fb70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFBeEvil_Alloc_00e70390.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFDoDamage_Alloc_00e70af0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFEatPies_Alloc_00e71380.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFGiveGift_Alloc_00e718b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFDressAsBandit_Alloc_00e71e40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_Alloc_00e72560.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFMarryLadyGrey_Alloc_00e73340.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFSexMad_Alloc_00e73860.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFKeyHoarder_Alloc_00e73ff0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Alloc_00e76360.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSheriff_Alloc_00e76470.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMRhodri_Alloc_00e765d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMFlashLightPoint_Alloc_00e76730.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCHHCellarDoor_Alloc_00e76800.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFisherman_Alloc_00e7b7b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCMFishermanWaspSpawn_Alloc_00e7b890.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanWasp_Alloc_00e7ba40.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp derived models base words CFishermanWasp
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Alloc_00e7bbe0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScriptCFishCompCompetitor_Alloc_00e7e570.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScriptCBountyHuntActivationChecker_Alloc_00e7ec90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_Alloc_00e82870.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_Alloc_00e83570.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Alloc_00e83780.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Alloc_00e8bd30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyDaughterInLaw_Alloc_00e8be10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Alloc_00e8ca60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Alloc_00e908d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Alloc_00e92f70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMQuestControl_Alloc_00e955b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMUndeadHere_Alloc_00e95690.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMHeroInsideHouse_Alloc_00e95bf0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCHHUndead_Alloc_00e95cd0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp derived models base words CHHUndead
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDollsScriptCBSTeacher_Alloc_00e96fb0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCThunder_Alloc_00e996b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCSpectator_Alloc_00e997e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Alloc_00e9cee0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_Alloc_00e9d700.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroTable_Alloc_00e9d8e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Alloc_00e9d9d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/e9/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Alloc_00e9ff70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Alloc_00ea09f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Alloc_00ea34f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_Alloc_00ea5150.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Alloc_00ea7990.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Alloc_00ea7a60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Alloc_00ea8e50.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Init_00ea8f00.cpp block not at top level
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Alloc_00eaae40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_Alloc_00eaaf10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_Alloc_00eaba10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Alloc_00eac4e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_Alloc_00eacde0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Alloc_00ead730.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Alloc_00eb3c60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_Alloc_00eb5450.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Alloc_00eb78b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Alloc_00eb79f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_Alloc_00eb8810.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOOracleMarker_Alloc_00ebce80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOWoman_Alloc_00ebe540.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_Alloc_00ebfb00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_Alloc_00ec0900.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCSecretWhisperingFriend_Alloc_00ec0a50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBVillager_Alloc_00ec13f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBGuard_Alloc_00ec14e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Alloc_00ec1b70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_Alloc_00ec41f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Alloc_00ec4490.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_Alloc_00ec45c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Alloc_00ec5bc0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Init_00ec5c90.cpp block not at top level
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Alloc_00ec5cd0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Init_00ec5da0.cpp block not at top level
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Alloc_00ec67b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWitch_Alloc_00ec7ff0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_Alloc_00ec8160.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCMansLover_Alloc_00ec9c00.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCIngredientOwner_Alloc_00ecafa0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Alloc_00ecbc80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_Alloc_00ecd2d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildFishingSpot_Alloc_00ecd450.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ec/CSickChildFishingSpot_Main_00ecd530.cpp derived models base words CSickChildFishingSpot
+edit rebuild/src/compiled/00/ed/NScriptCVSingingStonesScriptCSingingStone_Alloc_00ed1420.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterStatue_Alloc_00ed40c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterCellarDoors_Alloc_00ed44c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterChest_Alloc_00ed4770.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Alloc_00ed5130.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Alloc_00ed5260.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScriptCTBBardSpawnPoint_Alloc_00ed8050.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ed/CTBBard_GetRandomSpeech_00ed99d0.cpp derived models base words CTB_Bard
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_Alloc_00edc1d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_Alloc_00edc2d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Alloc_00edf2b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Alloc_00edf910.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunder_Alloc_00edff70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMaze_Alloc_00ee0060.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_Alloc_00ee0150.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Alloc_00ee03e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_Alloc_00ee04d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_Alloc_00ee05c0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ee/CTHTriggerOakvaleGossip_Main_00ee06b0.cpp derived models base words CTH_Trigger_Oakvale_Gossip
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_Alloc_00ee0930.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_Alloc_00ee0b60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Alloc_00ee1400.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Alloc_00ee1af0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ee/CTHTriggerGuildRose_Main_00ee3ee0.cpp derived models base words CTH_Trigger_Guild_Rose
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Alloc_00ee4bb0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideFollower_Alloc_00ee4cf0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Alloc_00ee7340.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Alloc_00ee7430.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_Alloc_00eed4d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCSignpost_Alloc_00eed5d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCStopDrawing_Alloc_00eed7d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_Alloc_00ef1050.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_Alloc_00ef1130.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrateDeathMarker_Alloc_00ef1210.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_Alloc_00ef15b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCBanditWalker_Alloc_00ef1b70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Alloc_00ef1c50.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTrappedMan_Alloc_00ef1d30.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCinemaMan_Alloc_00ef1f90.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCKillMan_Alloc_00ef2070.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCSwordChest_Alloc_00ef21b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_Alloc_00ef2420.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTriggerCrate_Alloc_00ef2500.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Alloc_00ef2820.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_Alloc_00ef2900.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCScrumpyCrate_Alloc_00ef2ac0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCDoor_Alloc_00ef2f20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCBeggar_Alloc_00ef3120.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadDude_Alloc_00ef33c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCOpinionMan_Alloc_00ef3660.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_Alloc_00ef3740.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CTestPos_Main_00ef3840.cpp derived models base words CTestPos
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCWalker_Alloc_00ef39c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_Alloc_00ef3c60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_Alloc_00ef3d40.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Alloc_00ef3e20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCFollower_Alloc_00ef4130.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_Alloc_00ef4210.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGhostDude_Alloc_00ef44d0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Alloc_00ef47c0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Alloc_00ef48a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_Alloc_00ef4a60.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScriptChenchmen_Alloc_00efa0b0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCguyscriptScript_CreateActiveEntityScript_00efa210.cpp block not at top level
+edit rebuild/src/compiled/00/ef/NScriptCbanditlevelcutsceneScriptCwelcomeguy_Alloc_00efaa60.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_CreateActiveEntityScript_00efad80.cpp block not at top level
+edit rebuild/src/compiled/00/ef/NScriptCProximityPodiumTestScriptCProximityPodium_Alloc_00efb280.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCHitSwitchTestScriptCHitSwitch_Alloc_00efb7e0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_CreateActiveEntityScript_00efb9c0.cpp block not at top level
+edit rebuild/src/compiled/00/ef/NScriptCGuildSealTriggerTestScriptCGuildSealTrigger_Alloc_00efbd40.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_CreateActiveEntityScript_00efbf80.cpp block not at top level
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCTestMan_Alloc_00efcb70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCGift_Alloc_00efd680.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCShopKeeper_Alloc_00efd9c0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_CreateActiveEntityScript_00efda90.cpp block not at top level
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCDummy_Alloc_00efe620.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp derived models base words CEndGameScarletRobe
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCFader_Alloc_00efe7f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCBalvMarker_Alloc_00efea80.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/ef/NScriptCTonyTestScriptsScriptCDummy_Alloc_00eff3f0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp derived models base words CEndGameScarletRobe
+skip rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_CreateActiveEntityScript_00eff5c0.cpp block not at top level
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_Alloc_00f00000.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCGamesmasterOracleMarker_Alloc_00f00a10.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_Alloc_00f00bb0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCOracleMinigameTestScript_CreateActiveEntityScript_00f01150.cpp block not at top level
+edit rebuild/src/compiled/00/f0/NScriptCQCinemaTestScriptCDummy_Alloc_00f01b60.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp derived models base words CEndGameScarletRobe
+skip rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_CreateActiveEntityScript_00f01d20.cpp block not at top level
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Alloc_00f037a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_Alloc_00f038a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_Alloc_00f03f20.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Alloc_00f04280.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Alloc_00f04360.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATSentry_Alloc_00f04510.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_Alloc_00f04bd0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_Alloc_00f050e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_Alloc_00f056a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditContact_Alloc_00f057e0.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/f0/CATPhase1Archer_Init_00f08a30.cpp derived models base words CAT_Phase1Archer
+skip rebuild/src/compiled/00/f0/CATConvoyMember_Init_00f08c30.cpp derived models base words CAT_ConvoyMember
+skip rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_CreateActiveEntityScript_00f09b10.cpp block not at top level
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCRoth_Alloc_00f14560.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCham_Alloc_00f14670.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCFlick_Alloc_00f14980.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCNeedle_Alloc_00f15550.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCShadow_Alloc_00f161a0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCellWhisper_Alloc_00f16fe0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_Alloc_00f17b70.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard2_Alloc_00f19ab0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaEnemy_Alloc_00f1a810.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_Alloc_00f1b0f0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaSpawn_Alloc_00f1b5b0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCWhisperAlly_Alloc_00f1b800.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellExitGuard_Alloc_00f1b8e0.cpp ok slots1 mem concrete1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCagedBalverine_Alloc_00f1ca30.cpp ok slots1 mem concrete1
+skip rebuild/src/compiled/00/f1/CEntityScriptBindingNScriptCQArenaScript_CreateActiveEntityScript_00f1cb50.cpp block not at top level

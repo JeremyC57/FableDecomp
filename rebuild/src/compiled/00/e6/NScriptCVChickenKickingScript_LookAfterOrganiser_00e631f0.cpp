@@ -19,13 +19,11 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing { public:                                   // 12 bytes: vtable 0x01238C8C + counted pointer
-    virtual ~CScriptThing();                            // 0x004AA840 (slot 0)
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
-    void* PImpData;
-    void* PImpInfo;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

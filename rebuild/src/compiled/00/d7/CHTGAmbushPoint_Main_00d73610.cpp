@@ -17,13 +17,11 @@ class CCharString { public:
     ~CCharString();
 };
 class C3DVector { public: float x, y, z; };
-class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
-    virtual void v000(); virtual void v001(); virtual void v002();
-    virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
-    virtual void v004(); virtual void v005();
-    virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
-    unsigned char _body[8];
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

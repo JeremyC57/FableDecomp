@@ -43,26 +43,12 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 class CPersistContext;
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-protected:
-    virtual void RegisterMain();
-    virtual void Main();                                // slot 2
-    virtual void Init();
-public:
-    virtual void OnPersist(CPersistContext& context);
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);   // 0x00CB8230
-    void PostAddScriptedEntities();                     // 0x00CB8930
-};
-class CLevelScriptBase : public CScriptBase {           // PDB CLevelScriptBase<TData>
-public:
-    CGameScriptInterface* Game;                         // +0x40
-    CScriptDataBase* MasterScriptData;                  // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
+namespace NScript { class Cjoss_test_scriptsData; }
 namespace NScript {
-class Cguy_scriptScript : public CLevelScriptBase {
+class Cguy_scriptScript : public CLevelScriptBase<NScript::Cjoss_test_scriptsData> {
 public:
     class Chenchmen { public: static CCountedPointer<CEntityScriptBase> __fastcall Alloc(Cguy_scriptScript& parent, CScriptDataBase* data, const CScriptThing& me); };   // 0x00EFA0B0
     virtual void Main();

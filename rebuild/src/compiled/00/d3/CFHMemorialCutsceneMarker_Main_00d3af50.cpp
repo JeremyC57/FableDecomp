@@ -12,7 +12,11 @@
 //   in the argument slot (`push ecx ; mov ecx,esp`) by a by-value CCharString with a user copy constructor; &Me is formed
 //   once for the last two calls.
 class CThing;
-class CScriptThing { public: unsigned char _body[12]; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 class CCharString { public:
     void* m_pData;

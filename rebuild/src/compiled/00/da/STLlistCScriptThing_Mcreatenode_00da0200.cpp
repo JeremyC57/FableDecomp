@@ -13,11 +13,11 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
-class CScriptThing {                                        // 12 bytes, vtable 0x01238C8C
-public:
-    unsigned char _body[12];
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace std {
 class __malloc_alloc {                                      // Fable's STLport node allocator: malloc

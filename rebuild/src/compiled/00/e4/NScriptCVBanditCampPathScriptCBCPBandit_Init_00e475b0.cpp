@@ -6,26 +6,17 @@
 // Callees: CGameScriptInterface::SetThingPersistent(const CScriptThing&, bool) const -- slot 477 (+0x774) of the interface at +4
 //   (ghidra_out/cgsi_slots_aligned.tsv).
 // Shape (family K069, representative 0x00DD4480): `this` copied to eax, Game loaded through it, the constant pushed, then &Me.
-class CScriptThing {                                    // 12 bytes (Ego_r): vptr, PImp
-public:
-    virtual ~CScriptThing();
-    void* PImpData;                                     // +0x04
-    void* PImpInfo;                                     // +0x08
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CEntityScriptBase {                               // 20 bytes (Ego_r)
-public:
-    virtual ~CEntityScriptBase();
-    virtual void GetParentScript() const;               // slot 1
-private:
-    virtual void Init();                                // slot 2
-public:
-    CGameScriptInterface* Game;                         // +0x04 (CGameScriptInterfaceBase* in the PDB; the derived interface here)
-    CScriptThing Me;                                    // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_BanditCampPathScript {

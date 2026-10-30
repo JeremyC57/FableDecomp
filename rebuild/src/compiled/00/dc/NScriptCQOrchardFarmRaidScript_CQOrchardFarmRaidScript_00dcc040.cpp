@@ -63,19 +63,9 @@ public:
     ~vector();
 };
 }
-class CScriptBase {                                     // retail 0x40 bytes (Ego_r.pdb 0x54 with Dinkumware containers)
-public:
-    CScriptBase();                                      // 0x00CB8110
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game)
-        : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    TData*                    MasterScriptData;         // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

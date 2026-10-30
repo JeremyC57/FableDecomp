@@ -60,12 +60,11 @@ class CCharString { public:
     }
 };
 
-class CScriptThing { public:                                   // vtable 0x01238C8C
-    virtual ~CScriptThing();                            // slot 0 (0x004AA840 is the out-of-line destructor)
-    virtual const CCharString& GetName() const;         // slot 1
-    void* PImp_Data;
-    void* PImp_Info;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CBaseObject;
 struct CThingRetail {
     enum { ThingTypeMask = 0 };

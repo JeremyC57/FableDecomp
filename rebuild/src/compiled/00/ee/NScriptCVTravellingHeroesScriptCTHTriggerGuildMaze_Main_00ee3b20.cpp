@@ -47,11 +47,11 @@ template <class T> class CCountedPointer { public:             // {Data, Info}
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThing>     PImp;            // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90 (the out-of-line copy)
-    ~CScriptThing() { }                                // out-of-line copy 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
 namespace NScript {
 class __declspec(novtable) CPredicateBase { public:
     virtual ~CPredicateBase();                         // Ego_r.pdb ??1CPredicateBase@NScript@@UAE@XZ
@@ -70,14 +70,8 @@ typedef long EGameflowPosition;
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 
-class CEntityScriptBase { public:                     // retail 0x14 bytes
-    virtual void e00();
-    CGameScriptInterfaceBase* Game;                                // +0x04
-    CScriptThing Me;                                   // +0x08
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:
     unsigned char _pad0[4];

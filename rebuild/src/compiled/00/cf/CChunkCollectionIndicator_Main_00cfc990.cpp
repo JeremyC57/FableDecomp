@@ -9,11 +9,11 @@
 // Layout = Ego_r.pdb CChunkCollectionIndicator (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //          (CQ_AwakeningTheOracleScript*, collected count at +0x4c), PMasterData +0x18, BarID +0x1c.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                          // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-    virtual ~CScriptThing();                          // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

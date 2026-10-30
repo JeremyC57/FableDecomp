@@ -2,9 +2,6 @@
 // Leaf: ?Alloc@CQ_EndGameBossBattleScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Identity: own script-info registration00cd5f68 literalQ_EndGameBossBattle -> factory -> constructor00d2f6b0/vtable012cc60c; exact original PDB signature.
 // Layout: real typed CScriptBase64/CLevelScriptBase72, original named fields and STLport containers; PC allocation108. Handle headers included under aliases to restore original inheritance. Constructor is external at00d2f6b0.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -13,7 +10,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable(){}~CBaseClassNonCopyable(){}private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
@@ -37,17 +33,15 @@ class CPersistContext;class CBaseObjectPointer;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:CScriptBase();
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;class CScriptDataBase;
-template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;CLevelScriptBase(CScriptDataBase* data,CGameScriptInterfaceBase& game):Game(&game),MasterScriptData((T*)data){} };
 class CTimer{public:long TimerIndex;};
 namespace NScript{class CQ_EndGameBossBattleScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:bool IntroFinished,FinalDecision,FinalDecisionMade,SisterNeededForCutscene,GuildmasterChat,FinalCutscenePlayed;CScriptGameResourceObjectScriptedThingBase seh_Jack;CScriptThing Jack;CQ_EndGameBossBattleScript(CScriptDataBase* data,CGameScriptInterfaceBase& game);virtual void RegisterMain();virtual void Main();virtual void Init();virtual void OnPersist(CPersistContext&);static CScriptBase* __fastcall Alloc(CScriptDataBase*,CGameScriptInterfaceBase&);};
 CScriptBase* __fastcall CQ_EndGameBossBattleScript::Alloc(CScriptDataBase* data,CGameScriptInterfaceBase& game){return new CQ_EndGameBossBattleScript(data,game);}

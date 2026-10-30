@@ -1,0 +1,8 @@
+    354   CScriptThing not shared
+     47   block not at top level
+     43   derived models base words
+     14   inline body: virtual ~CEntityScriptBas
+      5   item: void* __vftable;
+      1   ok slots7 mem
+      1   ok slots1 nomem
+      1   ok slots0 nomem

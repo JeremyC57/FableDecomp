@@ -11,10 +11,10 @@
 // Shape: the predicate argument is pushed before the virtual call that produces the object (arguments first).
 namespace NScript { class CPredicateBase; }
 
-class CScriptBase {
-public:
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00CB7920
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 class CEntityScriptBase {
 public:

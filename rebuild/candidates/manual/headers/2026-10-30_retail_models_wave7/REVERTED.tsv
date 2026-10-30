@@ -1,0 +1,124 @@
+addr	family	reason
+008ac140	ST	DIFFER 46v58 grades=False sym=?UninitCopy_CScriptThing_008ac140@@YIPAVCScriptThing@@PBV1@0PAV1@ABU__false_type@@@Z
+008ac2a0	ST	DIFFER 66v132 grades=False sym=??$__copy@PAVCScriptThing@@PAV1@H@std@@YIPAVCScriptThing@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+008ad5f0	ST	DIFFER 256v272 grades=False sym=?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+008adf90	ST	SRC_FAIL new.cpp(69): error C2976: 'std::vector' : too few template arguments | new.cpp(74): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(74): error C2039: '_M_insert_overflow' : is not a member of 'std::vector'
+00903ca0	ST	SRC_FAIL new.cpp(95): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00903d60	ST	SRC_FAIL new.cpp(95): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00903e20	ST	SRC_FAIL new.cpp(110): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+009041a0	ST	SRC_FAIL new.cpp(203): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+009046a0	ST	SRC_FAIL new.cpp(97): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904780	ST	SRC_FAIL new.cpp(97): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904860	ST	SRC_FAIL new.cpp(99): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904940	ST	SRC_FAIL new.cpp(98): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904cd0	ST	SRC_FAIL new.cpp(103): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00af69d0	ST	DIFFER 33v86 grades=False sym=??_GCThingPredicateRecord@@QAEPAXI@Z
+00cdf260	ESB	DIFFER 250v250 grades=False sym=?Main@CKG_Gate@@UAEXXZ  [row keeps its other family edit: ST]
+00ce0150	ESB	DIFFER 269v269 grades=False sym=?Main@CLadyGreysBed@@UAEXXZ  [row keeps its other family edit: ST]
+00ce6cb0	SB48	DIFFER 75v54 grades=False sym=??0CVtable_12c3fa4@@QAE@PAVCScriptBase@@J@Z
+00cfc990	ESB	DIFFER 198v198 grades=False sym=?Main@CChunkCollectionIndicator@@UAEXXZ  [row keeps its other family edit: ST]
+00d032f0	ST	SRC_FAIL new.cpp(99): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'ThingIDVector' to 'std::vector<T,A> &'
+00d25a00	ST	SRC_FAIL new.cpp(60): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(61): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(62): error C2371: 'EOpinion' : redefinition; different basic types
+00d292e0	ST	DIFFER
+00d2fb20	ESB	DIFFER 222v222 grades=False sym=?Main@CEndGameJackOfBladesBoss@@UAEXXZ  [row keeps its other family edit: ST]
+00d372f0	ESB	SRC_FAIL new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->EntitySetAsKillable' must point to class/struct/union  [row keeps its other family edit: ST]
+00d3a9b0	ESB	DIFFER 327v327 grades=False sym=?MakeRoundStartComment@CFH_Prisoner@@QAEXXZ  [row keeps its other family edit: ST]
+00d40cc0	ESB	SRC_FAIL CEntityScriptBase.h(35): error C2653: 'NScript' : is not a class or namespace name | CEntityScriptBase.h(35): error C2143: syntax error : missing ',' before '&'
+00d69f50	ESB	DIFFER 121v121 grades=False sym=?Main@CHTE_Prisoner@@UAEXXZ  [row keeps its other family edit: ST]
+00d6a0d0	ESB	DIFFER 121v121 grades=False sym=?Main@CHTE_Executioner@@UAEXXZ  [row keeps its other family edit: ST]
+00d73610	ESB	DIFFER 146v146 grades=False sym=?Main@CHTG_AmbushPoint@@UAEXXZ  [row keeps its other family edit: ST]
+00d73ae0	ESB	DIFFER 386v386 grades=False sym=?Main@CHTG_AmbushPointRear@@UAEXXZ  [row keeps its other family edit: ST]
+00d79c40	ESB	SRC_FAIL new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union  [row keeps its other family edit: ST]
+00d7c2e0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d7c2e0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d7
+00d7dc50	ESB	SRC_FAIL new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union  [row keeps its other family edit: ST]
+00d7f110	ESB	DIFFER 142v142 grades=False sym=?Main@CHeroSoulsEnemy@@UAEXXZ  [row keeps its other family edit: ST]
+00d7fab0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d7fab0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d7
+00d82210	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d82210::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d8
+00d844a0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d844a0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d8
+00d88f90	ESB	DIFFER 265v265 grades=False sym=?Main@CUndeadSoldier@@UAEXXZ  [row keeps its other family edit: ST]
+00d891f0	ESB	DIFFER 175v175 grades=False sym=?Main@CSUMMONED_CREATURE@@UAEXXZ  [row keeps its other family edit: ST]
+00d89380	ESB	DIFFER 504v504 grades=False sym=?Main@CNostro@CQ_HeroSoulsNostroScript@NScript@@UAEXXZ  [row keeps its other family edit: ST]
+00d89580	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d89580::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d8
+00d8a960	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d8a960::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d8
+00d915b0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d915b0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d9
+00d9c4a0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-clas
+00d9d930	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d9d930::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d9
+00d9ec50	SB48	DIFFER 156v147 grades=False sym=?IsAssignedAsHeroAttacker@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z
+00d9fd80	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-clas
+00d9ffd0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00d9ffd0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00d9
+00da0d90	ST	SRC_FAIL new.cpp(118): error C2976: 'std::list' : too few template arguments | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list
+00da45c0	ESB	DIFFER 194v194 grades=False sym=?Main@CMinionEscort@@UAEXXZ  [row keeps its other family edit: ST]
+00da8320	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00da8320::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00da
+00daebf0	ESB	DIFFER 109v109 grades=False sym=?GetVillagerSpeechIndex@CNOVI_Villager@@QAEJJ@Z  [row keeps its other family edit: ST]
+00db7e10	ESB	DIFFER 476v476 grades=False sym=?Main@CNOVI_Barrel@@UAEXXZ  [row keeps its other family edit: ST]
+00db80c0	ESB	DIFFER 232v232 grades=False sym=?Main@CNOVI_CreatedBeetle@@UAEXXZ  [row keeps its other family edit: ST]
+00db8520	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00db8520::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00db
+00dbf190	SB48	DIFFER 86v71 grades=False sym=??0CScript_012d9e18@@QAE@PAX0@Z
+00dc0170	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dc0170::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dc
+00dc0830	ST	SRC_FAIL new.cpp(57): error C2976: 'std::vector' : too few template arguments | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list
+00dc8700	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dc8700::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dc
+00dcec70	ESB	DIFFER 157v157 grades=False sym=?GoOnPatrol@CCrateTeamMember@@QAEXXZ  [row keeps its other family edit: ST]
+00dcf4c0	ESB	DIFFER 119v119 grades=False sym=?Main@CVtable_012DB4B8@@UAEXXZ  [row keeps its other family edit: ST]
+00dcf790	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dcf790::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dc
+00dd8990	ESB	DIFFER 290v290 grades=False sym=?Main@CTortureDoorPassage@@UAEXXZ  [row keeps its other family edit: ST]
+00dd8ba0	ESB	DIFFER 348v348 grades=False sym=?Main@CTortureDoorCourtyard@@UAEXXZ  [row keeps its other family edit: ST]
+00dd9180	ESB	DIFFER 302v302 grades=False sym=?Main@CPrisonKeyDoor@@UAEXXZ  [row keeps its other family edit: ST]
+00dd9300	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dd9300::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dd
+00ddc6c0	ESB	DIFFER 259v259 grades=False sym=?Main@CWaypointSpeedCheck@@UAEXXZ  [row keeps its other family edit: ST]
+00ddc7d0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00ddc7d0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dd
+00ddece0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-clas
+00ddeee0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00ddeee0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00dd
+00de1cc0	ESB	SRC_FAIL new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union  [row keeps its other family edit: ST]
+00de1e20	ESB	SRC_FAIL new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union  [row keeps its other family edit: ST]
+00de1f70	ESB	SRC_FAIL new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union  [row keeps its other family edit: ST]
+00de20c0	ESB	SRC_FAIL new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union  [row keeps its other family edit: ST]
+00dec5b0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dec5b0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00de
+00def220	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00def220::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00de
+00df2ab0	ESB	DIFFER 354v354 grades=False sym=?Main@CSummonerMinion@@UAEXXZ  [row keeps its other family edit: ST]
+00df2d30	ESB	DIFFER 349v349 grades=False sym=?Main@CFireHeartHolder@@UAEXXZ  [row keeps its other family edit: ST]
+00df3550	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00df3550::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df
+00df4a50	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00df4a50::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df
+00df99f0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00df99f0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df
+00dfbda0	ESB	SRC_FAIL new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union  [row keeps its other family edit: ST]
+00dfbe90	ESB	SRC_FAIL new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->RemoveThing' must point to class/struct/union  [row keeps its other family edit: ST]
+00dfc100	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00dfc100::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00df
+00dfc290	SB48	DIFFER 149v137 grades=False sym=?WatchForKilledPeople@CQ_TraderConflictGoodScript@NScript@@QAEXXZ
+00dfc290	ST	SRC_FAIL new.cpp(57): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'CRetailVector<T>' to 'std::vector<T,A> &'
+00dfc920	SB48	DIFFER 396v354 grades=False sym=?WatchForRegionTransitions@CQ_TraderConflictGoodScript@NScript@@QAEXXZ
+00e035e0	ESB	DIFFER 336v336 grades=False sym=?Main@CTE_BanditLeader@@UAEXXZ  [row keeps its other family edit: ST]
+00e05170	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00e05170::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00e0
+00e0a510	ESB	DIFFER 778v778 grades=False sym=?HandleTrader@CTraderScript@@QAEXJ@Z  [row keeps its other family edit: ST]
+00e0afe0	SB48	DIFFER 75v54 grades=False sym=??0CVtable_12dfd3c@@QAE@PAVCScriptBase@@J@Z
+00e369b0	ESB	DIFFER 748v748 grades=False sym=?Main@CAC_DummyStatic@@UAEXXZ  [row keeps its other family edit: ST]
+00e4a740	ESB	DIFFER 335v335 grades=False sym=?Main@CM_BanditLeader@@UAEXXZ  [row keeps its other family edit: ST]
+00e4b010	ESB	DIFFER 359v359 grades=False sym=?Main@CGuildSealWarning@@UAEXXZ  [row keeps its other family edit: ST]
+00e768b0	ST	DIFFER
+00e7bb30	ESB	DIFFER 162v162 grades=False sym=?Main@CFishermanWasp@@UAEXXZ  [row keeps its other family edit: ST]
+00e95d80	ST	DIFFER
+00e95e80	ESB	DIFFER 137v137 grades=False sym=?Main@CHHUndead@@UAEXXZ  [row keeps its other family edit: ST]
+00ea8f00	ESB	SRC_FAIL new.cpp(42): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(42): error C2227: left of '->EntitySetAsKillable' must point to class/struct/union  [row keeps its other family edit: ST]
+00ec09e0	ST	DIFFER
+00ec3bc0	SB48	DIFFER 60v57 grades=False sym=?Alloc_CVtable_012f12d8@@YIPAUCVtable_012f12d8@@PAX0@Z
+00ec5c90	ESB	SRC_FAIL new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union  [row keeps its other family edit: ST]
+00ec5da0	ESB	SRC_FAIL new.cpp(57): error C2027: use of undefined type 'NScript::CGameScriptInterfaceBase' | new.cpp(57): error C2227: left of '->SetIsPushableByHero' must point to class/struct/union  [row keeps its other family edit: ST]
+00ecd530	ESB	DIFFER 145v145 grades=False sym=?Main@CSickChildFishingSpot@@UAEXXZ  [row keeps its other family edit: ST]
+00ed99d0	ESB	DIFFER 359v359 grades=False sym=?GetRandomSpeech@CTB_Bard@@QAE?AVCCharString@@XZ  [row keeps its other family edit: ST]
+00ee06b0	ESB	DIFFER 298v298 grades=False sym=?Main@CTH_Trigger_Oakvale_Gossip@@UAEXXZ  [row keeps its other family edit: ST]
+00ee3ee0	ESB	DIFFER 224v224 grades=False sym=?Main@CTH_Trigger_Guild_Rose@@UAEXXZ  [row keeps its other family edit: ST]
+00ef3840	ESB	DIFFER 372v372 grades=False sym=?Main@CTestPos@@UAEXXZ  [row keeps its other family edit: ST]
+00efa210	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'HenchmenBinding::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'HenchmenBinding::CEntityScriptBase::C
+00efad80	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efad80::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ef
+00efb9c0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efb9c0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ef
+00efbf80	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efbf80::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ef
+00efda90	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00efda90::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ef
+00efe700	ESB	DIFFER 226v226 grades=False sym=?Main@CEndGameScarletRobe@@UAEXXZ  [row keeps its other family edit: ST]
+00eff4d0	ESB	DIFFER 226v226 grades=False sym=?Main@CEndGameScarletRobe@@UAEXXZ  [row keeps its other family edit: ST]
+00eff5c0	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00eff5c0::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00ef
+00f01150	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00f01150::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00f0
+00f01c50	ESB	DIFFER 205v205 grades=False sym=?Main@CEndGameScarletRobe@@UAEXXZ  [row keeps its other family edit: ST]
+00f01d20	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00f01d20::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00f0
+00f08a30	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-clas
+00f08c30	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'CEntityScriptBase::CScriptBase' : missing storage-clas
+00f09b10	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'EntityScriptBinding_00f09b10::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'EntityScriptBinding_00f0
+00f0b960	ST	SRC_FAIL new.cpp(33): error C2976: 'std::vector' : too few template arguments | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list
+00f1cb50	ESB	SRC_FAIL CEntityScriptBase.h(31): error C2143: syntax error : missing ';' before '*' | CEntityScriptBase.h(31): error C2433: 'ArenaBinding::CEntityScriptBase::CScriptBase' : 'virtual' not permitted on data declarations | CEntityScriptBase.h(31): error C2501: 'ArenaBinding::CEntityScriptBase::CScript

@@ -2,7 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF2090, length 96 bytes.
 // Leaf: Init
 // The chunk label (CNavQuadTreeNode::RemoveNeighbours) is propagated; named by address. Shape: the nested call form (the outer slot's vtable fetched into ebx before the inner call), the thing in edi, `ret 4`.
-class CScriptThing { public: unsigned char m_body[0xc]; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CGameCalls_00df2090 {
     virtual void v000();
     virtual void v001();

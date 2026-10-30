@@ -15,15 +15,15 @@ class CPersistContext {
 public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // bool 0x004045C0, long 0x00410BE0, float 0x00410620
 };
+class CGameScriptInterfaceBase;
+class CScriptDataBase;
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
+namespace NScript { class CQ_SunnyvaleMasterData; }
 namespace NScript {
-class CScriptBase {                                 // the quest-script base chain up to the first own member (retail 0x48 bytes)
-public:
-    virtual ~CScriptBase();                          // slot 0
-    virtual void v01(); virtual void v02(); virtual void v03();   // RegisterMain, Main, Init
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    unsigned char _base[0x48 - 4];
-};
-class CQ_HeroSoulsNostroScript : public CScriptBase {
+class CQ_HeroSoulsNostroScript : public CLevelScriptBase<NScript::CQ_SunnyvaleMasterData> {
 public:
     virtual void OnPersist(CPersistContext& context);
     long   SummonerCount;                     // +0x48

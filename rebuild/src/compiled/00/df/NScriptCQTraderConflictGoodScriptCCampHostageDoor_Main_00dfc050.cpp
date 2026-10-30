@@ -28,15 +28,9 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();                            // slot 0
-    virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05(); virtual void t06(); virtual void t07(); virtual void t08();
-    virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14(); virtual void t15(); virtual void t16();
-    virtual void t17(); virtual void t18(); virtual void t19();
-    virtual bool MsgIsUsedBy(const CCharString& user) const;   // slot 20 (+0x50)
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {   // STLport 4.6: start, finish, end of storage (0xC)
@@ -53,37 +47,12 @@ public:
 #include "engine/CGameScriptInterface.h"
 class CScriptBase;
 class CPersistContext;
-class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)
-public:
-    virtual ~CEntityScriptBase();                       // slot 0
-    virtual void Main() = 0;                            // slot 1
-    virtual void Init();                                // slot 2
-    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    virtual void OnPredicateFail();                     // slot 5
-    virtual void OnInterrupted();                       // slot 6
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 class CPersistContext;
-class CScriptBase {                                     // retail 0x40 bytes (Ego_r 0x54: debug containers)
-public:
-    virtual ~CScriptBase();                             // slot 0
-protected:
-    virtual void RegisterMain();                        // slot 1
-    virtual void Main();                                // slot 2
-    virtual void Init();                                // slot 3
-public:
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-    unsigned char _body[0x3c];
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterface* Game;                         // +0x40
-    TData*                MasterScriptData;             // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

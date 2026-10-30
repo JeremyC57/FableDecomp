@@ -67,13 +67,11 @@ public:
         return true;
     }
 };
-class CScriptThing {
-public:
-    virtual ~CScriptThing();
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual CThing* GetPThing() const;                   // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CTCTargetingBase {                                // interface 8 (class not confirmed)
 public:
     enum { INTERFACE_TYPE = 8 };

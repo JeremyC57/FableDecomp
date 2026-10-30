@@ -3,9 +3,6 @@
 // Identity: own literals/factory pointers TestMan->00efcb70,Gift->00efd680,ShopKeeper->00efd9c0 match original PDB nested owner names/static Alloc prototypes. Actual game PostAddScriptedEntities slot64. Original base data CQ_SunnyvaleMasterData comes from nested ParentClass/PMasterData donor fields, not donor addresses.
 // Model amendment: original protected CBaseClassNonCopyable ctor/dtor; genuine protected _List_base/rebound-node proxy and _Vector_base/end-storage proxy. Existing active vector APIs/bodies preserved verbatim; unused map/tree definitions removed.
 // Layout: accepted main N230 genuine binding28: abstract interface slot0 GetEntityScriptName/slot1 CreateActiveEntityScript (no destructor), CCharString+4,parent+8,memberfunctionpointer+12,fastcall class-return factory+16,bool20,Flags24. CCountedPointer explicitly non-POD copy/dtor identity retained. Full typed CScriptBase64/level72; unused parent suffix explicitly omitted, nested entity20 +original parent/master fields. Correct CCharString ctor(constchar*,long). Real compiler new-expression temporary lifetime; no fake allocation/helper callback. Shared handles aliased.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -14,7 +11,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
@@ -36,18 +32,16 @@ class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:CScriptBase();virtual ~CScriptBase();
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-void AddEntityScriptBinding(CEntityScriptBindingBase*);void PostAddScriptedEntities();virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;
-class CScriptDataBase;template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;CLevelScriptBase(CScriptDataBase* data,CGameScriptInterfaceBase& game):Game(&game),MasterScriptData((T*)data){} };
-class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
+class CScriptDataBase;class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
 class CEntityScriptBase{public:virtual ~CEntityScriptBase(){}CGameScriptInterfaceBase* Game;CScriptThing Me;};class CScriptDataBase;
 class CEntityScriptBindingBase{public:virtual const CCharString& GetEntityScriptName()const=0;protected:virtual CCountedPointer<CActiveEntityScriptBase> CreateActiveEntityScript(const CScriptThing&,RetailUID)=0;};
 template<class T>class CEntityScriptBinding:public CEntityScriptBindingBase{public:typedef CCountedPointer<CEntityScriptBase>(__fastcall *TAllocFunc)(T&,CScriptDataBase*,const CScriptThing&);CCharString EntityScriptName;T* PParentScript;void(T::*Func)(CScriptThing);TAllocFunc ClassAllocFunc;bool ClassAllocValid;unsigned long Flags;CEntityScriptBinding(const CCharString& name,T* parent,TAllocFunc alloc,unsigned long flags):EntityScriptName(name),PParentScript(parent),ClassAllocFunc(alloc),ClassAllocValid(true),Flags(flags){}virtual const CCharString& GetEntityScriptName()const{return EntityScriptName;}protected:virtual CCountedPointer<CActiveEntityScriptBase> CreateActiveEntityScript(const CScriptThing&,RetailUID);};

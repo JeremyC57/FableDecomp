@@ -1,0 +1,46 @@
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_Init_00e68fa0.cpp ok lsb
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_Init_00e628b0.cpp ok lsb
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_OnPersist_00e690f0.cpp ok lsb
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Init_00eb3e40.cpp ok lsb
+edit rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScript_Init_00ebeec0.cpp ok lsb
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_OnPersist_00ed85a0.cpp ok lsb
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Init_00e04b50.cpp ok lsb
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScript_WatchForRegionLoads_00e1e470.cpp ok lsb
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Main_00e10a90.cpp ok lsb
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDollsScript_Main_00e96f10.cpp ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCHHUndead_OnPredicateFail_00e95dc0.cpp ok lsb
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_Init_00e90780.cpp ok lsb
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_Init_00e986d0.cpp ok lsb
+edit rebuild/src/compiled/00/e9/NScriptCVKnotholeGladeGatesScript_WatchForTermination_00e9fef0.cpp ok lsb
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScript_Init_00e93d80.cpp ok lsb
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Init_00e9c3b0.cpp ok lsb
+edit rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScript_Init_00ec1810.cpp ok lsb
+edit rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_OnPredicateFail_00ec1c20.cpp ok lsb
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScript_Init_00ec3c50.cpp ok lsb
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScript_Init_00e8b880.cpp ok lsb
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Main_00e7bca0.cpp ok lsb
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScript_Init_00e2abc0.cpp ok lsb
+edit rebuild/src/compiled/00/e2/NScriptCQREscortTraderManagerScript_OnPersist_00e25750.cpp ok lsb
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_OnPredicateFail_00e25d30.cpp ok lsb
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_Main_00dfc050.cpp ok lsb
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_Init_00e323b0.cpp ok lsb
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Init_00e3b1a0.cpp ok lsb
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_OnPredicateFail_00e3b230.cpp ok lsb
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScript_OnPersist_00e39780.cpp ok lsb
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Main_00ee3fc0.cpp ok lsb
+edit rebuild/src/compiled/00/ee/NScriptCEmptyScript_Main_00eee800.cpp ok lsb spawn1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_ThunderChatter_00ee29d0.cpp ok lsb
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScript_Init_00e478d0.cpp ok lsb
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Init_00e57c00.cpp ok lsb
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPredicateFail_00e5fb80.cpp ok lsb
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_OnPredicateFail_00eae5a0.cpp ok lsb
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Init_00ea80f0.cpp ok lsb
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Init_00eae820.cpp ok lsb
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_Init_00ea8720.cpp ok lsb
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_OnPredicateFail_00eaee10.cpp ok lsb
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderBrother_OnPredicateFail_00ea50e0.cpp ok lsb
+edit rebuild/src/compiled/00/ef/NScriptCHitSwitchTestScript_Main_00efb740.cpp ok ok lsb T=CDanyalTestScriptsData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/ef/NScriptCGuildSealTriggerTestScript_Main_00efbca0.cpp ok ok lsb T=CDanyalTestScriptsData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScript_Main_00efa010.cpp ok ok lsb T=Cjoss_test_scriptsData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/ef/NScriptCHeroTurningDebuggerScript_Main_00efc260.cpp ok lsb spawn1
+edit rebuild/src/compiled/00/ef/NScriptCProximityPodiumTestScript_Main_00efb1e0.cpp ok ok lsb T=CDanyalTestScriptsData (pdb+reg) bases1 init0

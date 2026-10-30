@@ -14,13 +14,11 @@
 // Shape: the implicit copy constructors inlined: the and-predicate's vtable 0x012EA430 first, then CIsThingAlive's
 //   0x012C32F0 with the out-of-line Thing copy, then CIsVariableFalse's 0x012EA43C and Variable.
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
-class CScriptThing {                                    // 12 bytes, vtable 0x01238C8C
-public:
-    void* PImpData;                                     // +0x04
-    void* PImpInfo;                                     // +0x08
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace NScript {
 class CPredicateBase {                                  // vtable 0x012C2FF4

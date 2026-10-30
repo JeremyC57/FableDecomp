@@ -87,20 +87,11 @@ struct CThing_Retail {
         return it->component;
     }
 };
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
-    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-    virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
-    virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
-    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043();
-    virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051();
-    virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
-    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067();
-    virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual bool IsValid() const;                  // slot 75 (+0x12c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CTCTargetingAI : public CTCBase_Retail { public: void SetScriptTargetOverride(CThing_Retail* target); };   // 0x008ABBA0
 struct CTCEnemyList { void AddEnemy(CThing_Retail* enemy); };                                       // 0x0076D1B0
 struct CThingPlayerCreature_Retail { void OnBestEnemyTargetChanged(); };                            // 0x006D5AB0
@@ -111,10 +102,10 @@ struct CThingPlayerCreature_Retail { void OnBestEnemyTargetChanged(); };        
 
 void CGameScriptInterface::GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const
 {
-    if (!thing.IsValid())
+    if (!thing.IsAlive())
         return;
     CThing_Retail* previous = 0;
-    CThing_Retail* owner = thing.GetThing();
+    CThing_Retail* owner = ((CThing_Retail*)thing.GetPThing());
     if (owner->HasInterface(8)) {
         CTCBase_Retail* targeting = owner->GetInterface(8);
         bool isAI;
@@ -124,17 +115,17 @@ void CGameScriptInterface::GiveThingBestEnemyTarget(const CScriptThing& thing, c
         }
         if (isAI) {
             previous = targeting->GetCurrentTarget();
-            if (target.IsValid() && (target.GetThing()->m_flags & 8))
-                static_cast<CTCTargetingAI*>(targeting)->SetScriptTargetOverride(target.GetThing());
+            if (target.IsAlive() && (((CThing_Retail*)target.GetPThing())->m_flags & 8))
+                static_cast<CTCTargetingAI*>(targeting)->SetScriptTargetOverride(((CThing_Retail*)target.GetPThing()));
             else
                 static_cast<CTCTargetingAI*>(targeting)->SetScriptTargetOverride(0);
         }
     }
-    if (target.IsValid()) {
-        CThing_Retail* owner2 = thing.GetThing();
+    if (target.IsAlive()) {
+        CThing_Retail* owner2 = ((CThing_Retail*)thing.GetPThing());
         if (owner2->HasInterface(0x49))
-            ((CTCEnemyList*)owner2->GetInterface(0x49))->AddEnemy(target.GetThing());
+            ((CTCEnemyList*)owner2->GetInterface(0x49))->AddEnemy(((CThing_Retail*)target.GetPThing()));
     }
-    if (previous != target.GetThing() && thing.GetThing()->m_type == 1)
-        ((CThingPlayerCreature_Retail*)thing.GetThing())->OnBestEnemyTargetChanged();
+    if (previous != ((CThing_Retail*)target.GetPThing()) && ((CThing_Retail*)thing.GetPThing())->m_type == 1)
+        ((CThingPlayerCreature_Retail*)((CThing_Retail*)thing.GetPThing()))->OnBestEnemyTargetChanged();
 }

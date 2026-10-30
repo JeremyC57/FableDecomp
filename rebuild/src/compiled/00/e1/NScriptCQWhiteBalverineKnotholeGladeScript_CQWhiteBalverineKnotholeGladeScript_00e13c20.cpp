@@ -23,20 +23,10 @@ public:
     CCountedPointer<CScriptThing> PImp;                 // +0x04
     CScriptThing() { }
 };
-class CScriptBase {
-public:
-    CScriptBase();                                      // 0x00CB8110
-    virtual ~CScriptBase();
-    unsigned char _base[0x40 - 4];                      // Threads, EntityScripts, EntityScriptBindings, LastWorldUpdateFrame,
-                                                        // PActiveThread, RuntimeScriptedEntityPersist
-};
-template <class TMasterData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    TMasterData*              MasterScriptData;         // +0x44
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game)
-        : Game(&game), MasterScriptData((TMasterData*)data) { }
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_WhiteBalverineKnotholeGladeScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {

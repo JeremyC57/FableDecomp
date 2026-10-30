@@ -6,13 +6,11 @@
 //   thing; CIsThingAlive's vtable 0x012C32F0).
 // Shape (family L145): the base CPredicateBase vtable store is dead; the left copy is an out-of-line call, the right
 //   CIsThingAlive's implicit copy is inline around the out-of-line CScriptThing copy.
-class CScriptThing {                                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();
-    void* PImp_Data;
-    void* PImp_Info;
-    CScriptThing(const CScriptThing& other);         // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript {
 class CPredicateBase {
 public:

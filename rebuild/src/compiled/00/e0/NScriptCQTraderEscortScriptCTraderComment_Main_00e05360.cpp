@@ -17,24 +17,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
-    virtual ~CScriptThing();                            // slot 0, out of line 0x004AA840
-    virtual void t001() const; virtual void t002() const;
-    virtual CCharString GetDataString() const;          // slot 3 (+0x0c) 0x004AA900
-    virtual void t004() const; virtual void t005() const; virtual void t006() const; virtual void t007() const; virtual void t008() const; virtual void t009() const; virtual void t010() const; virtual void t011() const;
-    virtual void t012() const; virtual void t013() const; virtual void t014() const; virtual void t015() const; virtual void t016() const; virtual void t017() const; virtual void t018() const; virtual void t019() const;
-    virtual void t020() const; virtual void t021() const; virtual void t022() const; virtual void t023() const; virtual void t024() const; virtual void t025() const; virtual void t026() const; virtual void t027() const;
-    virtual void t028() const; virtual void t029() const; virtual void t030() const; virtual void t031() const; virtual void t032() const; virtual void t033() const; virtual void t034() const; virtual void t035() const;
-    virtual void t036() const; virtual void t037() const; virtual void t038() const; virtual void t039() const; virtual void t040() const; virtual void t041() const; virtual void t042() const; virtual void t043() const;
-    virtual void t044() const; virtual void t045() const; virtual void t046() const; virtual void t047() const; virtual void t048() const; virtual void t049() const; virtual void t050() const; virtual void t051() const;
-    virtual void t052() const; virtual void t053() const; virtual void t054() const; virtual void t055() const; virtual void t056() const; virtual void t057() const; virtual void t058() const; virtual void t059() const;
-    virtual void t060() const; virtual void t061() const; virtual void t062() const; virtual void t063() const; virtual void t064() const; virtual void t065() const; virtual void t066() const; virtual void t067() const;
-    virtual void t068() const; virtual void t069() const; virtual void t070() const; virtual void t071() const; virtual void t072() const; virtual void t073() const; virtual void t074() const;
-    virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
-    void* PImpData;
-    void* PImpInfo;
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern "C" void free(void* p);                          // 0x00BFEA14 (MSVCR71)
 template <class T> inline void _Destroy(T* first, T* last)

@@ -20,18 +20,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    virtual ~CScriptThing();
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void v07(); virtual void v08(); virtual void v09();
-    virtual float GetAngleXY() const;                    // slot 10 (+0x28) 0x004AAA40
-    virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();
-    virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22();
-    virtual void v23(); virtual void v24();
-    virtual bool MsgIsHitByWithProjectileWeapon(const CCharString& name, float& distance) const;   // slot 25 (+0x64) 0x004AABB0
-    void* PImpData;
-    void* PImpInfo;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

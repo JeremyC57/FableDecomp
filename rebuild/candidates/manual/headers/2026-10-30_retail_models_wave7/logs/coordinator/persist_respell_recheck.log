@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00cb8690   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb8690   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00cb8690   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb8690   RELOCATION_MATCH PASS   LoadGameState
+00cb7ee0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb7ee0   RELOCATION_MATCH PASS   LoadEntityScript
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cb7da0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb7da0   RELOCATION_MATCH PASS   DoEntityScriptPersist
+00cb7cb0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb7cb0   RELOCATION_MATCH PASS   DoScriptDataPersist
+
+WINS: 4
+  00cb8690 RELOCATION_MATCH CScriptBase::?LoadGameState@CScriptBase
+  00cb7ee0 RELOCATION_MATCH CScriptBase::LoadEntityScript
+  00cb7da0 RELOCATION_MATCH CScriptBase::DoEntityScriptPersist
+  00cb7cb0 RELOCATION_MATCH CScriptBase::DoScriptDataPersist

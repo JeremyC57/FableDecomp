@@ -1,7 +1,7 @@
 // CGameScriptInterface::EntitySetAttackThingImmediately(const CScriptThing& attacker, const CScriptThing& target, bool, bool) const -- when both things are alive and the attacker carries flag bit 3 of +0x6c, make an attack-thing action its current action
 // Leaf: ?EntitySetAttackThingImmediately@CGameScriptInterface@@UBEXABVCScriptThing@@0_N1@Z
 // Retail: Fable.exe @ 0x008A8EB0, 102 bytes, `ret 0x10`; Ego_r.pdb same symbol. The two bool arguments are not read.
-// Body: a = attacker.GetThing(), t = target.GetThing() (CScriptThing slot 11, both fetched first); if a alive (non-null,
+// Body: a = attacker.GetPThing(), t = target.GetPThing() (CScriptThing slot 11, both fetched first); if a alive (non-null,
 // bit 0 of +0x91 clear), t alive, and a's +0x6c bit 3: a->SetCurrentAction(<action>(a, t)) (0x006644F0) on a 0x118-byte
 // temporary built by 0x008AE160 (owner, target), destroyed by ~CCombatActionBase 0x0062E900.
 // Layout: CThing +0x6c flag byte / +0x91 dead bit and CCombatActionBase (retail 0x114 bytes) as the landed
@@ -30,20 +30,19 @@ struct CCreatureAction_AttackThing : CCombatActionBase {      // retail sizeof 0
     unsigned char _body[4];
     CCreatureAction_AttackThing(CThingCreatureBase* owner, CThing* target);   // 0x008AE160
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetAttackThingImmediately(const CScriptThing& attacker, const CScriptThing& target, bool, bool) const
 {
-    CThing* a = attacker.GetThing();
-    CThing* t = target.GetThing();
+    CThing* a = attacker.GetPThing();
+    CThing* t = target.GetPThing();
     if (IS_THING_ALIVE(a) && IS_THING_ALIVE(t) && (a->m_flags6c & 8))
     {
         CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(a);

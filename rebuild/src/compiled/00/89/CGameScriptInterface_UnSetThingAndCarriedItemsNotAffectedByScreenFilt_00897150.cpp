@@ -4,7 +4,7 @@
 // Identity (proven): retail CGameScriptInterface vtable 0x01260F0C slot 678 holds this body; slot 678 is
 //   ?UnSetThingAndCarriedItemsNotAffectedByScreenFilter@CGameScriptInterface@@UBEXAAVCScriptThing@@@Z (a non-const
 //   reference). Interface 0x46 = CTCCarrying (vtable 0x012433F4 slot 21 = landed 0x004E74C5, returns 0x46).
-// Body: t = thing.GetThing() (slot 11) with no null or dead test; if t holds interface 0x46 (UsingComponents word 2 bit 6):
+// Body: t = thing.GetPThing() (slot 11) with no null or dead test; if t holds interface 0x46 (UsingComponents word 2 bit 6):
 //   GetTC (non-const LowerBound 0x0040F020) and clear the byte at +0x1c. The inline that clears it is not named in the
 //   PDB sets (FableWin.pdb has CTCCarrying::UnSetAllCarriedThingsAsBypassFilter() but its body is not proven to be this
 //   store): descriptive member and inline.
@@ -61,12 +61,11 @@ public:
         return true;
     }
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CTCCarrying {                                     // interface 0x46
 public:
     enum { INTERFACE_TYPE = 0x46 };
@@ -80,7 +79,7 @@ public:
 #include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::UnSetThingAndCarriedItemsNotAffectedByScreenFilter(CScriptThing& thing) const
 {
-    CThing* t = thing.GetThing();
+    CThing* t = thing.GetPThing();
     CTCCarrying* tc;
     if (t->GetTC(&tc))
         tc->ClearBypassScreenFilter();

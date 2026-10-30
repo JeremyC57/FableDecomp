@@ -50,15 +50,11 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01238C8C
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing() {}                          // 0x004AA840 where it stays out of line
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
-    virtual void t007(); virtual void t008(); virtual void t009();
-    virtual float GetAngleXY() const;                   // slot 10 (+0x28)
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CScriptDef { public:
     unsigned char _pad[0x3a4];
@@ -71,19 +67,8 @@ extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C
 #include "engine/CGameScriptInterfaceBase.h"
 class CScriptBase;
 class CPersistContext;
-class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)
-public:
-    virtual ~CEntityScriptBase();                       // slot 0
-    virtual void Main() = 0;                            // slot 1
-    virtual void Init();                                // slot 2
-    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    virtual void OnPredicateFail();                     // slot 5
-    virtual void OnInterrupted();                       // slot 6
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

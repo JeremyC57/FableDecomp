@@ -15,10 +15,9 @@ public:
     T*              Data;
     CCPPointerInfo* Info;
 };
-class CScriptThing : public CBaseClass {               // 0x0C bytes, vtable 0x01238C8C
-public:
-    CCountedPointer<CScriptThing> PImp;                // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT

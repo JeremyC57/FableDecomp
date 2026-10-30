@@ -21,11 +21,12 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();                            // slot 0
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline void* operator new(unsigned int, void* where) { return where; }
 namespace std {
 struct __false_type { __false_type() { } };            // STLport type_traits tag (namespace std)
@@ -54,19 +55,8 @@ protected:
 #include "engine/CGameScriptInterface.h"
 class CScriptBase;
 class CPersistContext;
-class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)
-public:
-    virtual ~CEntityScriptBase();                       // slot 0
-    virtual void Main() = 0;                            // slot 1
-    virtual void Init();                                // slot 2
-    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    virtual void OnPredicateFail();                     // slot 5
-    virtual void OnInterrupted();                       // slot 6
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 class CPersistContext;
 class CScriptBase {                                     // retail 0x40 bytes (Ego_r 0x54: debug containers)
 public:

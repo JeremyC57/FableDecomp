@@ -11,10 +11,11 @@
 //   the null allocation; `add esp,4` after malloc = a speed TU (no pragma).
 extern "C" void* __cdecl malloc(unsigned int size);        // 0x00BFEA0E
 
-class CScriptThing {                                       // 12 bytes (vptr 0x01238C8C, counted-pointer Data/Info)
-public:
-    unsigned char _body[12];
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 namespace std {
 

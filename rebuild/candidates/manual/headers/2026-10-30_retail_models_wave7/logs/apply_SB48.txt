@@ -1,0 +1,31 @@
+edit rebuild/src/compiled/00/4a/CQuestManager_OnRegionLoaded_004afc00.cpp b ok sb
+edit rebuild/src/compiled/00/4a/CQuestManager_OnRegionUnloaded_004afc30.cpp b ok sb
+edit rebuild/src/compiled/00/cb/CScriptBase_DoEntityScriptPersist_00cb7da0.cpp b ok sb
+edit rebuild/src/compiled/00/cb/CScriptBase_DoScriptDataPersist_00cb7cb0.cpp b ok sb
+edit rebuild/src/compiled/00/cb/CScriptBase_RunSubThreads_00cb8220.cpp b ok sb
+edit rebuild/src/compiled/00/ce/CVtable012c3fa4_CVtable012c3fa4_00ce6cb0.cpp b ok sb
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_OnPersist_00d00a90.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScript_OnPersist_00d24660.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScript_OnPersist_00d29830.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScript_OnPersist_00d3bc10.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScript_OnPersist_00d84ce0.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (one+rows) bases1 init0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScript_OnPersist_00d87c60.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScript_OnPersist_00d8ab10.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_IsAssignedAsHeroAttacker_00d9ec50.cpp b ok sb
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_GetRandomSpawnPoint_00da0e40.cpp b ok sb
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_OnPersist_00da3460.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/db/CScript012d9e18_CScript012d9e18_00dbf190.cpp b ok sb
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_OnPersist_00dcc720.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (one+rows) bases1 init0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForKilledPeople_00dfc290.cpp b ok sb
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForRegionTransitions_00dfc920.cpp b ok sb
+edit rebuild/src/compiled/00/e0/CVtable012dfd3c_CVtable012dfd3c_00e0afe0.cpp b ok sb
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScript_OnPersist_00e0e9a0.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScript_OnPersist_00e4b380.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScript_OnPersist_00e7c890.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScript_OnPersist_00e8b960.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/e9/NScriptCVHiddenBootyScript_OnPersist_00e93c10.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (pdb+reg) bases1 init0
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScript_OnPersist_00eb6520.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (one+rows) bases1 init0
+edit rebuild/src/compiled/00/ec/global_AllocCVtable012f12d8_00ec3bc0.cpp b ok sb
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_OnPersist_00ee1dc0.cpp a ok ok lsb T=CQ_SunnyvaleMasterData (one+rows) bases1 init0
+edit rebuild/src/compiled/00/f3/CEntityScriptBase_IsActiveThreadTerminating_00f35b30.cpp b ok sb
+edit rebuild/src/compiled/00/f3/CEntityScriptBase_SetPredicate_00f35b10.cpp b ok sb

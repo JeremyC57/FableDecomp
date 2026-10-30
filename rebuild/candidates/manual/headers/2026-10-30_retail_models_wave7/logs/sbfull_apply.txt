@@ -1,0 +1,90 @@
+skip rebuild/src/compiled/00/cb/CScriptBase_CScriptBase_00cb8110.cpp bcnc shape
+skip rebuild/src/compiled/00/cb/CScriptBase_PostAddScriptedEntities_00cb8930.cpp partial members 3
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Main_00cfddc0.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Main_00cfcb50.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Init_00cfbd90.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_OnPersist_00d179b0.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage1Killed_00d16920.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScript_OnPersist_00d1cfc0.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScript_Init_00d2f710.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d3/NScriptCQEndGameBossBattleScript_Alloc_00d34410.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5ab40.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dd40.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_TeleportOutHero_00d64080.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_TeleportOutHero_00d66f50.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScript_Init_00d78500.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_Alloc_00d83300.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_OnPredicateFail_00d8fd20.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForGrannysRegion_00d8f040.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCGranny_OnPersist_00d91da0.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_OnPredicateFail_00d9bf10.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_OnPredicateFail_00d9b8a0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Init_00da4c30.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Init_00da5d40.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_OnPredicateFail_00da4300.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Init_00da5bf0.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Init_00da49d0.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Alloc_00daab70.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_CQMinionClifftopChaseScript_00da30b0.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_OnPredicateFail_00dc7420.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_OnPredicateFail_00dc4d00.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_OnPredicateFail_00dc5f10.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScript_OnPersist_00dd2c80.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_CQTraderConflictGoodScript_00dfa0b0.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/e0/NScriptCQTraderConflictGoodScript_Alloc_00e00610.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Main_00e03480.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_OnPersist_00e00ce0.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Init_00e19390.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_ResetRandomSpeechTime_00e337c0.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Init_00e38680.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/e3/NScriptCVBordelloScript_OnPersist_00e3b8f0.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScript_Alloc_00e477a0.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_ResetRandomSpeechTime_00e53c70.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Alloc_00e5d0b0.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_CVBeggarAndChildScript_00e57bb0.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_OnPersist_00e57d20.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPersist_00e5f190.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForTermination_00e69f00.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_OnPersist_00e629a0.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsEvilMage_00e731f0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsGoodKnight_00e730a0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_OnPersist_00e75790.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_OnPersist_00e8d2a0.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90830.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Alloc_00e9fb40.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_CVIntroductionToTrophiesScript_00e9c360.cpp ok lsb bcnc1 full slots lsbctor
+skip rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_OnPersist_00e9e110.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_OnPredicateFail_00ea3640.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Init_00eae790.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Init_00eae670.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_OnPredicateFail_00eadb60.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_Init_00eae700.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_OnPredicateFail_00eae550.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_OnPredicateFail_00eae620.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_Alloc_00eae890.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_CVMurderTwistScript_00ea86f0.cpp ok lsb bcnc1 full slots lsbctor
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Init_00eb7aa0.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_OnPersist_00eb98a0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Alloc_00eb1f80.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/eb/NScriptCVOracleScript_Main_00ebcd70.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScript_Main_00ec12e0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Init_00ec4540.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Init_00ec6860.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Init_00ecbd50.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader2_Init_00ecca30.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScript_OnPersist_00ecd7b0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Init_00ed51e0.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_OnPersist_00ed4c50.cpp ok lsb bcnc1 full slots
+skip rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsApprentice_00eda490.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForTermination_00edbc80.cpp mig_sb: CLevelScriptBase used, no block
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScript_Init_00edec50.cpp ok lsb bcnc1 full slots
+edit rebuild/src/compiled/00/ee/NScriptCExpressionFishScript_Alloc_00ee9f00.cpp ok sb bcnc0 full slots
+edit rebuild/src/compiled/00/ee/NScriptCExpressionPickpocketScript_Alloc_00eeb730.cpp ok sb bcnc0 full slots
+edit rebuild/src/compiled/00/ee/NScriptCGlobalToggleTimeDisplayScript_Alloc_00eed060.cpp ok sb bcnc0 full slots
+skip rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed360.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ee/NScriptCTestQuestCard2Script_Main_00eef5d0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ee/NScriptCTestQuestCard3Script_Main_00eef760.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_Alloc_00ee0240.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe4b0.cpp mig_sb: CLevelScriptBase used, no block
+skip rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efca00.cpp mig_sb: CLevelScriptBase used, no block

@@ -1,0 +1,11 @@
+CScriptBase 93
+CLevelScriptBase 6
+CScriptThing 1045
+CEntityScriptBase 466
+CIsThingConscious 40
+CIsThingAlive 235
+CPredicateBase 219
+CGameScriptInterface 220
+CGameScriptInterfaceBase 36
+CBaseClassNonCopyable 615
+CTimer 201

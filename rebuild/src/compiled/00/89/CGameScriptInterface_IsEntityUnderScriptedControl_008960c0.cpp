@@ -5,7 +5,7 @@
 //   ?IsEntityUnderScriptedControl@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z (ghidra_out/cgsi_slots_aligned.tsv).
 //   Interface 0x1f = CTCScriptedControl (its vtable 0x012658E4 slot 21 is 0x00719A40, which returns 0x1f). Getter:
 //   FableWin.pdb ?IsLocked@CTCScriptedControl@@QBE_NXZ, inline (Locked +0x18, as the landed CTCScriptedControl rows).
-// Body: t = entity.GetThing() (slot 11); live t holding interface 0x1f (the sign bit of UsingComponents word 0, `jns`):
+// Body: t = entity.GetPThing() (slot 11); live t holding interface 0x1f (the sign bit of UsingComponents word 0, `jns`):
 //   PeekTC (const LowerBound 0x004365B0) and return IsLocked().
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -60,12 +60,11 @@ public:
         return true;
     }
 };
-class CScriptThing {
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CTCScriptedControl {                              // interface 0x1f
 public:
     enum { INTERFACE_TYPE = 0x1f };
@@ -79,7 +78,7 @@ public:
 #include "engine/CGameScriptInterface.h"
 bool CGameScriptInterface::IsEntityUnderScriptedControl(const CScriptThing& entity) const
 {
-    const CThing* t = entity.GetThing();
+    const CThing* t = entity.GetPThing();
     if (t && !t->IsDead())
     {
         const CTCScriptedControl* tc;

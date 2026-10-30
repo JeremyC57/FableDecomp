@@ -25,11 +25,10 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();                            // slot 0
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};class CScriptGameResourceObjectScriptedThingBase {      // Ego_r.pdb, 16 bytes: vptr, base word, PImp
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+class CScriptGameResourceObjectScriptedThingBase {      // Ego_r.pdb, 16 bytes: vptr, base word, PImp
 public:
     virtual ~CScriptGameResourceObjectScriptedThingBase();
     long _base;                                         // +0x04 (unnamed in the PDB layout)
@@ -40,23 +39,9 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 class CPersistContext;
-class CScriptBase {                                     // retail 0x40 bytes (Ego_r 0x54: debug containers)
-public:
-    virtual ~CScriptBase();                             // slot 0
-protected:
-    virtual void RegisterMain();                        // slot 1
-    virtual void Main();                                // slot 2
-    virtual void Init();                                // slot 3
-public:
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-    unsigned char _body[0x3c];
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterface* Game;                         // +0x40
-    TData*                MasterScriptData;             // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

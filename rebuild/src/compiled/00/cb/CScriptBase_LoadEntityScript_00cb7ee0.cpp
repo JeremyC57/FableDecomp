@@ -59,7 +59,8 @@ class CScriptBase {
 public:
     virtual ~CScriptBase();
     void LoadEntityScript(unsigned __int64 entityID, CActiveEntityScriptBase& script);
-    void DoEntityScriptPersist(CActiveEntityScriptBase& script, CCharString& text, bool saving);   // 0x00CB7DA0
+protected:
+    void DoEntityScriptPersist(CActiveEntityScriptBase& script, CCharString& text, bool saving);   // 0x00CB7DA0 (protected in both PDBs: IAE)
 private:
     unsigned char _body[0x30 - 4];
     NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;   // +0x30 (retail)

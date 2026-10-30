@@ -2,7 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DB6BF0, length 80 bytes.
 // Leaf: Init
 // Shape: `this` in esi, the thing in edi, the game interface and its vtable reloaded for each call, `ret`.
-class CScriptThing { public: unsigned char m_body[0xc]; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CGameCalls_00db6bf0 {
     virtual void v000();
     virtual void v001();

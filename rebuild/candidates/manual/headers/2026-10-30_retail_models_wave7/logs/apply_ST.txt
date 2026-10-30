@@ -1,0 +1,1443 @@
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityDropGenericBox_0089d9d0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceToLookAtCamera_0089d8b0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceToLookAtNothing_0089d910.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetShotStrikePos_0089df70.cpp ok - slots12 GetThing->GetPThing x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityLeaveCombatStance_0089de50.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityResetAsPureAINarrator_0089b0b0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAllowBossPhaseChanges_0089dcd0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsAbleToRegionFollowWhenMarried_008978e0.cpp ok - slots12 GetThing->GetPThing x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsAbleToWalkThroughSolidObjects_0089dbb0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsDisplayingEmoteIcon_0089deb0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsLocked_0089dc10.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetBossPhase_0089dd90.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetCombatAbility_0089aff0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetDeathContainerAsEnabled_0089e880.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetExtendedSightRadius_0089d280.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetGiveUpChaseRadius_0089d2e0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetInFaction_0089c190.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetMaxNumberOfAttackers_0089e130.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionDeedMask_0089c290.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionDeedMask_0089c2e0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionReactionMask_0089c1f0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionReactionMask_0089c240.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetPersonalityOverride_0089c420.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetPersonalityOverride_0089c470.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetSightRadius_0089d220.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetSmellRadius_0089d1c0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetSoundRadius_0089d160.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetWillBeUsingNarrator_0089b050.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroExperience_00899000.cpp ok - slots76 GetThing->GetPThing x0 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsChestOpen_00896330.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsDiggingSpotEnabled_0089f1e0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsDiggingSpotHidden_0089f240.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityMarriable_00897a30.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityMarriedToHero_008979c0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityStealable_0089a330.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityUnderScriptedControl_008960c0.cpp ok - slots12 GetThing->GetPThing x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityWieldingWeapon_008974f0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerWieldingWeapon_00897480.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsTeleporterActive_0089ee60.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnTavernGameFinished_008941a0.cpp ok - slots12 GetThing->GetPThing x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_OpinionSourceSetAsAttentionGrabbing_0089c510.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveOpinionDeedStillSearchingForWitnesses_0089c850.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetCreatureBrain_00894b90.cpp ok - slots12 GetThing->GetPThing x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetCreatureGeneratorEnabled_0089ed20.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetDiggingSpotAsHidden_0089f2a0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAsWearing_0089b3f0.cpp ok - slots76 GetThing->GetPThing x0 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetMoralityChangingAsEnabled_0089ef30.cpp ok - slots76 GetThing->GetPThing x0 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetPlayerCreatureOnlyTarget_00899e10.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetTeleporterAsActive_0089ee00.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetThingAsUsable_008967f0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetTrophyAsMountable_00896790.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetVillageLimbo_00896060.cpp ok - slots12 GetThing->GetPThing x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UnSetThingAndCarriedItemsNotAffectedByScreenFilt_00897150.cpp ok - slots12 GetThing->GetPThing x2 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityClearRangedTarget_008a0540.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityDecapitate_008a8e40.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityEndScreamerSuperAttackThing_008a0950.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityFadeIn_008a07c0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityGetAppearanceSeed_008a0c10.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityGetStockItemPrice_008a01a0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAppearanceMorphSeed_008a0200.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAppearanceSeed_008a0bc0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAsForSale_008a00e0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAttackThingImmediately_008a8eb0.cpp ok - slots12 GetThing->GetPThing x4 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetLightAsOn_008a06c0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetStockItemPrice_008a0140.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetTargetingType_008a0600.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetStealDuration_008a1360.cpp ok - slots12 GetThing->GetPThing x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_RemoveCreatureScriptedMode_008a1ab0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_RepopulateVillage_008a1c50.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetBedAvailability_008a1bf0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetIsThingTurncoatable_008a1950.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetOwnedByHero_008a18f0.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetReadableObjectTextTag_008a0fd0.cpp ok - slots76 GetThing->GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetReadableObjectText_008a0f70.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetUseableByHero_008a1830.cpp ok - slots76 GetThing->GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/STL_copy_008ac2a0.cpp ok cp slots0
+edit rebuild/src/compiled/00/8a/STLvector_pushback_008adf90.cpp ok cp slots1
+edit rebuild/src/compiled/00/8a/global_UninitCopyCScriptThing008ac140_008ac140.cpp ok cp slots1
+edit rebuild/src/compiled/00/8a/stdvector_Minsertoverflow_008ad5f0.cpp ok cp slots0
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_AskHeroQuestion_00904860.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_FireProjectileWeaponAtTarget_00903d60.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_FollowThing_00904030.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_IsFollowActionRunning_009040f0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_MoveToAndPickUpGenericBox_00904cd0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_MoveToPosition_00903bc0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_MoveToThing_00903e20.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_PerformExpression_00904940.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_PlayCombatAnimation_00904af0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_Speak_009046a0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_Speak_00904780.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_StopFollowingThing_009041a0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_SummonerLightningOrbAttackTarget_00903ca0.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_UnsheatheWeapons_00904f60.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_WaitWhilePerformingTasks_00904380.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/90/NTCScriptedControlCActionPerformExpression_scalardeletingdestructor_00905440.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/90/NTCScriptedControlCActionWaitForThingToFinishPerformingTasks_scalardeletingdestructor_00905470.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/af/unattributed_ScalarDeletingDestructorLongCBaseClassCountedPoi_00af69d0.cpp ok cp slots0
+edit rebuild/src/compiled/00/cb/global_FoundMessageIsThingKnockedOutBy_00cbe10f.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_FoundMessageIsThingTriggeredBy_00cbe150.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_GetDistanceBetweenThingAndPosition_00cbe551.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_GetDistanceBetweenThings_00cbe512.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_Is2DDistanceBetweenThingsUnder_00cbe371.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_IsDistanceBetweenThingsOver_00cbe3ea.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_IsDistanceBetweenThingsUnder_00cbe2ff.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_IsDistanceFromThingToPositionOver_00cbe45c.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cb/global_IsDistanceFromThingToPositionUnder_00cbe4b7.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Alloc_00cdf750.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Alloc_00cdee10.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCDragonGate_Alloc_00cdf360.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCHEROGUILDTELEPORTMARKER_Alloc_00cdf570.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCKGGate_Alloc_00cdf190.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCOFMainGates_Alloc_00cdefb0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTargetForKey_Alloc_00cdfd40.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTeleportPoint_Alloc_00cdf490.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCTestGateSwitch_Alloc_00cdf930.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/stdListbase_clear_00cd4df0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cd/stdvectorCScriptThing_erase_00cd3152.cpp ok cp slots0
+edit rebuild/src/compiled/00/ce/CThingSwitch_vectordeletingdestructor_00ce1200.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ce/CThingSwitch_vectordeletingdestructor_00ce1250.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCInvisibleBarrier_Alloc_00ce0280.cpp ok cp slots1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCLadyGreysBed_Alloc_00ce0090.cpp ok cp slots1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS2SOUL_Alloc_00ce0390.cpp ok cp slots1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHS3SOUL_Alloc_00ce0460.cpp ok cp slots1
+edit rebuild/src/compiled/00/ce/NScriptCPersonalScriptGlobalThingsScriptCMKHSESOUL_Alloc_00ce0530.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/CThingSwitch_vectordeletingdestructor_00cf6860.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/cf/CThingSwitch_vectordeletingdestructor_00cfdfa0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCBowerstoneFan_Alloc_00cf2a90.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard2_Alloc_00cf0c40.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCEntranceGuard_Alloc_00cf0b60.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCFanMarker_Alloc_00cf4df0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCHookCoastFan_Alloc_00cf3c40.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQArenaHoldingScriptScriptCOakvaleFan_Alloc_00cf17f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCATOMagicBarrier_Alloc_00cfd5d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_Alloc_00cfc8a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Alloc_00cfdca0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalTabletSarcophagus_Alloc_00cfbc00.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Alloc_00cfc7d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Alloc_00cfca60.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGate_Alloc_00cfc700.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Alloc_00cfbce0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCOracleTablet_Alloc_00cfbb20.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCPretendGuard_Alloc_00cfcbd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCScytheBeforeGettingTablets_Alloc_00cfcdc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/CThingSwitch_vectordeletingdestructor_00d032c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d0/CThingSwitch_vectordeletingdestructor_00d0ede0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d0/CVChapelOfEvilScript_EndMission_00d04770.cpp ok cp slots0
+edit rebuild/src/compiled/00/d0/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Main_00d00440.cpp ok cp slots0
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Alloc_00d04990.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_Alloc_00d05910.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_Alloc_00d05fe0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassinMarker_Alloc_00d048c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBCGameMaster_Alloc_00d066b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Alloc_00d0c2c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_Alloc_00d0a700.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Alloc_00d08670.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageDoor_Alloc_00d08a70.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Alloc_00d08e50.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Alloc_00d07d20.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Alloc_00d071f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Alloc_00d07340.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Alloc_00d02a70.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_Alloc_00d014c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_CheckAnyBanditsKilled_00d032f0.cpp ok ww slots56 cpmin
+edit rebuild/src/compiled/00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d172e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d1/CEntityScriptBindingNScriptCQBountyHuntScript_CreateActiveEntityScript_00d17180.cpp ok ww slots1
+edit rebuild/src/compiled/00/d1/CThingSwitch_vectordeletingdestructor_00d17310.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy1_Alloc_00d15fc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangDeputy2_Alloc_00d161a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Alloc_00d153f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGrunt_Alloc_00d15940.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_Alloc_00d16380.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage1_Alloc_00d160b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHHostage2_Alloc_00d16290.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Alloc_00d1f510.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditFirstWave_Alloc_00d1f910.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditSiegeLeader_Alloc_00d1dcc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Alloc_00d1fc30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardHoldingBandit_Alloc_00d1e230.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCGuardToHelpDefend_Alloc_00d1ea10.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Alloc_00d1e090.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_Alloc_00d1dde0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGSheriff_Alloc_00d1df20.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/CDragon_Main_00d25a00.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d2/CEndGameJackOfBladesBoss_Main_00d2fb20.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d2/CEngineSubPrimitiveText_scalardeletingdestructor_00d2d6d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQBowerstoneTownLifeIntroScript_CreateActiveEntityScript_00d244b0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQBreakSiegeScript_CreateActiveEntityScript_00d20600.cpp ok ww slots1
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQDragonBossFightScript_CreateActiveEntityScript_00d26000.cpp ok ww slots1
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQEndGameBossBattleScript_CreateActiveEntityScript_00d2fea0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQEndGameFocalSitesScript_CreateActiveEntityScript_00d2d570.cpp ok ww slots1
+edit rebuild/src/compiled/00/d2/CEntityScriptBindingNScriptCQEndGameScript_CreateActiveEntityScript_00d29680.cpp ok ww slots1
+edit rebuild/src/compiled/00/d2/CThingSwitch_vectordeletingdestructor_00d20760.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d2/CThingSwitch_vectordeletingdestructor_00d24630.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d2/CThingSwitch_vectordeletingdestructor_00d26160.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d2/CThingSwitch_vectordeletingdestructor_00d29800.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d2/CThingSwitch_vectordeletingdestructor_00d2d700.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d2/CVChapelOfEvilScript_EndMission_00d27c00.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Alloc_00d24330.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Alloc_00d24210.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_SendBodyguardsToTheRightPlace_00d226e0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_WatchForWinLoseConditions_00d20790.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDBMinion_Alloc_00d25c60.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDBSummoner_Alloc_00d25e30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScriptCDragon_Alloc_00d257d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCEndGameJackOfBladesBoss_Alloc_00d2fa40.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCEndGameSister_Alloc_00d2fc00.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCSwordVoid_Alloc_00d2fce0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScriptCTheRealGuildmaster_Alloc_00d2fdc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_Alloc_00d2c430.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleMinion_Alloc_00d2c340.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameFocalSite_Alloc_00d2c140.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameJackOfBlades_Alloc_00d2c260.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScarletRobe_Alloc_00d2cf80.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameScythe_Alloc_00d2c650.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCEndGameThunder_Alloc_00d2c730.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Alloc_00d29230.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Main_00d293f0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Alloc_00d28f70.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMKGHCHERO3_Alloc_00d29460.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMUndeadSpawn_Alloc_00d290a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMazeJournal_Alloc_00d29570.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/CEntityScriptBindingNScriptCQFireHeartScript_CreateActiveEntityScript_00d38b90.cpp ok ww slots1
+edit rebuild/src/compiled/00/d3/CThingSwitch_vectordeletingdestructor_00d30000.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d3/CThingSwitch_vectordeletingdestructor_00d34440.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d3/CThingSwitch_vectordeletingdestructor_00d38cf0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d3/NScriptCQEndGameBossBattleScript_Alloc_00d34410.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCDFFireheart_Alloc_00d362b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Alloc_00d37240.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Init_00d372f0.cpp ok cp slots0
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHGuildMaster_Alloc_00d36790.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHMemorialCutsceneMarker_Alloc_00d37c30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHPrisoner_Alloc_00d36540.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHScythe_Alloc_00d37140.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHVillager_Alloc_00d373d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCProphetCage_Alloc_00d36680.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Alloc_00d363a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Alloc_00d36470.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScriptCAppleGirl_Alloc_00d3d060.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScriptCApprenticeSpeedTest_Alloc_00d3e1f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d3/stdvector_resize_00d34ac0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/d4/CEntityScriptBindingNScriptCQGuildTrainingScript_CreateActiveEntityScript_00d444c0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d4/CThingSwitch_vectordeletingdestructor_00d44620.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCBirdKiller_Alloc_00d42f40.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCCombatApprentice_Alloc_00d41a30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCHeroBed_Alloc_00d40b30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCKillBird_Alloc_00d43040.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Alloc_00d40c10.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCPreMeleeMaze_Alloc_00d43cd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCRaceMarker_Alloc_00d409e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillApprentice_Alloc_00d41b10.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Alloc_00d41bf0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillApprentice_Alloc_00d43280.cpp ok cp slots1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCWillDummy_Alloc_00d43360.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingDepartureScript_CreateActiveEntityScript_00d50ab0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingMeleeScript_CreateActiveEntityScript_00d58300.cpp ok ww slots1
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingPreMeleeScript_CreateActiveEntityScript_00d52310.cpp ok ww slots1
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingSkillScript_CreateActiveEntityScript_00d5acc0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d5/CEntityScriptBindingNScriptCQGuildTrainingWillScript_CreateActiveEntityScript_00d5dec0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d5/CThingSwitch_vectordeletingdestructor_00d50c30.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d5/CThingSwitch_vectordeletingdestructor_00d52470.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d5/CThingSwitch_vectordeletingdestructor_00d58460.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d5/CThingSwitch_vectordeletingdestructor_00d5ae40.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d5/CThingSwitch_vectordeletingdestructor_00d5e040.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Alloc_00d509d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Alloc_00d566a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeThunder_Alloc_00d57fa0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCTheRealGuildmaster_Alloc_00d565c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeDummy_Alloc_00d51f00.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCPreMeleeWhisper_Alloc_00d52230.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingPreMeleeScriptCTheRealGuildmaster_Alloc_00d51e20.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScriptCTheRealGuildmaster_Alloc_00d5abe0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5ab40.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScriptCTheRealGuildmaster_Alloc_00d5dde0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dd40.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/d6/CEngineSubPrimitiveText_scalardeletingdestructor_00d6b560.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsDepartureScript_CreateActiveEntityScript_00d64210.cpp ok ww slots1
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsMeleeScript_CreateActiveEntityScript_00d670e0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQGuildTrainingWoodsWillScript_CreateActiveEntityScript_00d68d10.cpp ok ww slots1
+edit rebuild/src/compiled/00/d6/CEntityScriptBindingNScriptCQHangingTreeEvilScript_CreateActiveEntityScript_00d6b590.cpp ok ww slots1
+edit rebuild/src/compiled/00/d6/CHTEExecutioner_Main_00d6a0d0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d6/CHTEPrisoner_Main_00d69f50.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d6/CThingSwitch_vectordeletingdestructor_00d64370.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d6/CThingSwitch_vectordeletingdestructor_00d67240.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d6/CThingSwitch_vectordeletingdestructor_00d68e70.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d6/CThingSwitch_vectordeletingdestructor_00d6b6f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCArtifactThief_Alloc_00d62360.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCFinalMaze_Alloc_00d62270.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_Alloc_00d63cc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_WatchForLeaving_00d64000.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_Alloc_00d66ba0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsWillScriptCWillWhisper_Alloc_00d68720.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsWillScript_WatchForLeaving_00d68c50.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Alloc_00d6a150.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Main_00d6a220.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Alloc_00d6a290.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Main_00d6a360.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAmbushPoint_Alloc_00d69d50.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_Alloc_00d6ad70.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAudience_Alloc_00d6b180.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_Alloc_00d69fd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Alloc_00d6a3d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_Alloc_00d69e30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorEnemies_00d6be20.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointCond_Alloc_00d6fe50.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPointRear_Alloc_00d6ff30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScriptCHTGAmbushPoint_Alloc_00d6fd70.cpp ok cp slots1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScript_RemoveDregs_00d6fd00.cpp ok ww slots76 cpmin
+edit rebuild/src/compiled/00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d728a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d7/CEngineSubPrimitiveText_scalardeletingdestructor_00d729b0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHangingTreeGoodScript_CreateActiveEntityScript_00d729e0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsScript_CreateActiveEntityScript_00d7a8a0.cpp ok ww slots1
+edit rebuild/src/compiled/00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d7/CThingSwitch_vectordeletingdestructor_00d72b40.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d7/CThingSwitch_vectordeletingdestructor_00d7aa00.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d7/CThingSwitch_vectordeletingdestructor_00d7c440.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d7/CThingSwitch_vectordeletingdestructor_00d7fc10.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGAmbushPointBackup_Alloc_00d70010.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGBoss_Alloc_00d724d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGExecutioner_CHTGExecutioner_00d73220.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGFreedomFighter_Alloc_00d700e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Alloc_00d70520.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Alloc_00d71980.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCArenaHeroGate_Alloc_00d7de80.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCBlockedEntrance_Alloc_00d7f1a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCDyingVillager_Alloc_00d7f380.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHOHGuard_Alloc_00d7dff0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHSAScreamingVillager_Alloc_00d7f7b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCHeroSoulsEnemy_Alloc_00d7f020.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Alloc_00d7dba0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Main_00d7dc50.cpp ok cp slots0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummoner1_Alloc_00d7ebe0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummoner2_Alloc_00d7ee00.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Alloc_00d7dc90.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCEndBriarRose_Alloc_00d7a290.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCEndScythe_Alloc_00d79c80.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Alloc_00d79b90.cpp ok cp slots1
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Main_00d79c40.cpp ok cp slots0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScript_Init_00d78500.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsThunderScriptCHeroThunder_Alloc_00d7b400.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/CEngineSubPrimitiveText_scalardeletingdestructor_00d84470.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsGuildmasterScript_CreateActiveEntityScript_00d87140.cpp ok ww slots1
+edit rebuild/src/compiled/00/d8/CSUMMONEDCREATURE_Main_00d891f0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d8/CThingSwitch_vectordeletingdestructor_00d82370.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d8/CThingSwitch_vectordeletingdestructor_00d84600.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d8/CThingSwitch_vectordeletingdestructor_00d872a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d8/CThingSwitch_vectordeletingdestructor_00d896e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d8/CThingSwitch_vectordeletingdestructor_00d8aae0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d8/CUndeadSoldier_Main_00d88f90.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCBRIARROSEIMPOSTER_Alloc_00d81750.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCBriarRose_Alloc_00d81630.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScriptCHSBMagicBarrier_Alloc_00d81b60.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_Alloc_00d83300.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardInWoods_Alloc_00d86390.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuardOutsideWoods_Alloc_00d85fa0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCGuildmasterHS_Alloc_00d85a30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Alloc_00d86980.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Main_00d86a30.cpp ok cp slots0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCMuteGuardOutsideWoods_Alloc_00d86080.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCSoulInfoAcolyte_Alloc_00d86b60.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCWaitingGuardInWoods_Alloc_00d86560.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Alloc_00d83e60.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCSummonerToKill_Alloc_00d83cf0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCGuardNearGraveyardPath_Alloc_00d885e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Alloc_00d892a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_Alloc_00d890a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_Alloc_00d88420.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCUndeadSoldier_Alloc_00d88ec0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_Alloc_00d8a7f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Alloc_00d8a650.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Alloc_00d8a4b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_Alloc_00d8fc70.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Alloc_00d8f5e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Alloc_00d8f950.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeRoaming_Alloc_00d8f4f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeSpawn_Alloc_00d8f310.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeTorrent_Alloc_00d8f3f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCJames_Alloc_00d8ffa0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCNymph_Alloc_00d8fe30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForHavingKey_00d8ee50.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d91580.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d973a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9da90.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9ffa0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d9/CThingSwitch_vectordeletingdestructor_00d91710.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d9/CThingSwitch_vectordeletingdestructor_00d9dac0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditCommentMarker_Alloc_00d901b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_Alloc_00d90ff0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Alloc_00d90e90.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Alloc_00d91250.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCGranny_OnPersist_00d91da0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCInvisibleCage_Alloc_00d91470.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Alloc_00d90a50.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Alloc_00d906d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkersReactMarker_Alloc_00d9c1d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_Alloc_00d9be30.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCHobbeBarrel_Alloc_00d9c3c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Alloc_00d9c560.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Alloc_00d9b7c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Main_00d9bdc0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_Alloc_00d9cf60.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCSpawnNewHobbe_Alloc_00d9ce80.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCFadeinSummoner_Alloc_00d9f5b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinionGuard_Alloc_00d9ea80.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinion_Alloc_00d9f0b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_Alloc_00d9ed50.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/CBriarRose_UpdateTarget_00da2a20.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da29f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da82f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da8480.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/da/CMinionEscort_Main_00da45c0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/da/CNOVITeddyGirl_Init_00daf000.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/da/CNOVIVillager_Init_00dadf00.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/da/CThingSwitch_vectordeletingdestructor_00da0130.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/da/CThingSwitch_vectordeletingdestructor_00da84b0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_FindFurthestSpawnPoint_00da0d90.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_GetRandomSpawnPoint_00da0e40.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunFirstWaveControl_00da0820.cpp ok ww slots78 cpmin
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Alloc_00da4b80.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Alloc_00da5c90.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCGuardNotThisWay_Alloc_00da6810.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCGuardToLeadTheWay_Alloc_00da6560.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCInvisibleCage_Alloc_00da57a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMGuard_Alloc_00da6320.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMMinion_Alloc_00da6170.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMNotThisWay_Alloc_00da6670.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrierGraveyard_Alloc_00da53a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMagicBarrier_Alloc_00da4d40.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_Alloc_00da4250.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Alloc_00da4a30.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Main_00da4b10.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_Alloc_00da4690.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_Alloc_00da4490.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Alloc_00da5b40.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawnAdv_Alloc_00da60a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionSpawner_Alloc_00da58b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionTrollSummoner_Alloc_00da5da0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Alloc_00da4920.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Init_00da49d0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCRockTroll_Alloc_00da5e70.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Alloc_00daab70.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_CQMinionClifftopChaseScript_00da30b0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIBully_Alloc_00daec60.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIGuard_Alloc_00dac580.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVILiveFather_Alloc_00dac2c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVITeddyGirl_Alloc_00daef50.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVITheresa_Alloc_00dac420.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVictim_Alloc_00daede0.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScriptCNOVIVillager_Alloc_00dade50.cpp ok cp slots1
+edit rebuild/src/compiled/00/da/STLlistCScriptThing_Mcreatenode_00da0200.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/da/STLlistCScriptThing_pushback_00da01e0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/db/CNOVIBarrelThug_Init_00db6bf0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/db/CNOVIBarrel_Main_00db7e10.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/db/CNOVIBully_GivenTeddy_00dbcd00.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/db/CNOVICreatedBeetle_Main_00db80c0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/db/CNOVITeddyGirl_GivenTeddy_00db0600.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/db/CThingSwitch_vectordeletingdestructor_00db8680.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairMan_Alloc_00db0880.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWife_Alloc_00db29a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIAffairWoman_Alloc_00db1db0.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelMan_Alloc_00db51b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrelThug_Alloc_00db6b40.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBarrel_Alloc_00db7d00.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVIBookTrader_Alloc_00db3e30.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCNOVICreatedBeetle_Alloc_00db7ff0.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Alloc_00db81b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Alloc_00dbfdd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/CCrateTeamMember_GoOnPatrol_00dcec70.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dca6a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dcf760.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dc/CThingSwitch_vectordeletingdestructor_00dc02d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dc/CThingSwitch_vectordeletingdestructor_00dc2540.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dc/CThingSwitch_vectordeletingdestructor_00dc8860.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dc/CThingSwitch_vectordeletingdestructor_00dcf8f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dc/CVtable012DB4B8_Main_00dcf4c0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScriptCMRestartMarker_Alloc_00dc0090.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScript_CanThingSeeAnythingInVector_00dc2170.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScript_DepopulateLevel_00dc0830.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCCeremonialEffect_Alloc_00dc4520.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCGraveyardDemon_Alloc_00dc3ee0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageFirstGate_Alloc_00dc7f50.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGate_Alloc_00dc83e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Alloc_00dc4aa0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_Init_00dc4b50.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_Alloc_00dc7360.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_Alloc_00dc4c40.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageSarcophagos_Alloc_00dc4420.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_Alloc_00dc5e50.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSpeakingMarker_Alloc_00dc84e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCStartGravekeeperCutsceneMarker_Alloc_00dc7020.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadLieutenant_Alloc_00dc85c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCUndeadSpawnCutscene_Alloc_00dc71c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_Alloc_00dcdb80.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCFarmRearEntrance_Alloc_00dcf3d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_Alloc_00dcde20.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCMKOFIGWLLWHIS2_Alloc_00dcf610.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCMWhisperFarmRaidIntro_Alloc_00dcf540.cpp ok cp slots1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Alloc_00dcef50.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/CEngineSubPrimitiveText_scalardeletingdestructor_00dd92d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dd/CThingSwitch_vectordeletingdestructor_00dd9460.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dd/CThingSwitch_vectordeletingdestructor_00ddc950.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dd/CThingSwitch_vectordeletingdestructor_00ddf060.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Alloc_00dd8d20.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_Alloc_00dd8f10.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCGuardMotherEscape_Alloc_00dd83c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Alloc_00dd8790.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Alloc_00dd68a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonEscapeGuard_Alloc_00dd6330.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_Alloc_00dd43d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonGuard_Init_00dd4480.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonKeyDoor_Alloc_00dd90c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Alloc_00dd49a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisoner_Alloc_00dd5940.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorCourtyard_Alloc_00dd8ae0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCTortureDoorPassage_Alloc_00dd88d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScript_OnPersist_00dd2c80.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Alloc_00ddb4a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceStartingGuard_Alloc_00ddc500.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWarden_Alloc_00ddc2d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRaceWinningPostGuard_Alloc_00ddbf90.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_Alloc_00ddc3e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCWaypointSpeedCheck_Alloc_00ddc5e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCDoNotTarget_Alloc_00ddedf0.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCExitWardensOffice_Alloc_00ddec30.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCPrisonWarden_Alloc_00dde630.cpp ok cp slots1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Alloc_00dde720.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de02f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de8340.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQRansomVictimScript_CreateActiveEntityScript_00de4480.cpp ok ww slots1
+edit rebuild/src/compiled/00/de/CThingSwitch_vectordeletingdestructor_00de45e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/de/CThingSwitch_vectordeletingdestructor_00dec730.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/de/CThingSwitch_vectordeletingdestructor_00def380.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/de/CThingSwitch_vectordeletingdestructor_00def730.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/de/CVChapelOfEvilScript_EndMission_00de1770.cpp ok cp slots0
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimChiefsHouseScriptCTest_Alloc_00dec4c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCNPCComment_Alloc_00de3c00.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRandomAttacker_Alloc_00de2100.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Alloc_00de1d00.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Init_00de1e20.cpp ok cp slots0
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomRevenge_Alloc_00de3760.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Alloc_00de1ba0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Init_00de1cc0.cpp ok cp slots0
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictim_Alloc_00de1a50.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Alloc_00de1fb0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Init_00de20c0.cpp ok cp slots0
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Alloc_00de1e60.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Init_00de1f70.cpp ok cp slots0
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Alloc_00de2500.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFather_Alloc_00de18e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_WatchForTermination_00de14a0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCDoorToMothersTortureChamber_Alloc_00def0f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCMotherTorture_Alloc_00dee1a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPAmbushGuard_Alloc_00ded450.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPDeskGuard_Alloc_00dede40.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPInvestigatingGuard_Alloc_00deda90.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPNymphTrigger_Alloc_00ded290.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPScreamerTrigger_Alloc_00ded1a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCSPSecretPassageGuard_Alloc_00ded720.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCTortureDoorCourtyard_Alloc_00deef00.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/CEngineSubPrimitiveText_scalardeletingdestructor_00df5c60.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp ok ww slots21 cpmin
+edit rebuild/src/compiled/00/df/CScript00df2090_Init_00df2090.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/df/CSummonerMinion_Main_00df2ab0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/df/CThingSwitch_vectordeletingdestructor_00df36b0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/df/CThingSwitch_vectordeletingdestructor_00df4bb0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/df/CThingSwitch_vectordeletingdestructor_00df9b50.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/df/CThingSwitch_vectordeletingdestructor_00dfc260.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_WatchForLeaving_00df0180.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCFireHeartHolder_Alloc_00df2c20.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCFireHeart_Alloc_00df2e90.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCMActivateLighthouse_Alloc_00df3460.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Alloc_00df16b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_Alloc_00df21f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_Alloc_00df2960.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCKrakenMinion_Alloc_00df4520.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_Alloc_00df4820.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScriptCTheKraken_Alloc_00df4730.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScript_WatchForLeaving_00df4f80.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Alloc_00df9640.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_Alloc_00df8890.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Alloc_00df7f90.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCGuardSpawnPoint_Alloc_00df7b20.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Alloc_00df90b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Alloc_00dfbde0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Main_00dfbe90.cpp ok cp slots0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Alloc_00dfbcf0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Main_00dfbda0.cpp ok cp slots0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBanditExtra_Alloc_00dfbed0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_Alloc_00dfbfa0.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Alloc_00dfb250.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditHostageKeeper_Alloc_00dfb990.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Alloc_00dfb050.cpp ok cp slots1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_CQTraderConflictGoodScript_00dfa0b0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForKilledPeople_00dfc290.cpp ok - slots56 cpmin
+edit rebuild/src/compiled/00/df/STLVectorbase_Vectorbase_00dfde90.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e052d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e0e700.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e0/CEntityScriptBindingNScriptCQUndeadRisingScript_CreateActiveEntityScript_00e0e5a0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e0/CTEBanditLeader_Main_00e035e0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/e0/CThingSwitch_vectordeletingdestructor_00e05300.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e0/CThingSwitch_vectordeletingdestructor_00e0e730.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e0/NScriptCQTraderConflictGoodScript_Alloc_00e00610.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCBanditCronies_Alloc_00e03730.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDW5Balv_Alloc_00e04890.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDW5Bandit_Alloc_00e046f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodAssassinSpawn_Alloc_00e02d70.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Alloc_00e033a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Alloc_00e03a50.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Alloc_00e04a30.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCFleshEatingBalverine_Alloc_00e02390.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Alloc_00e02870.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCMagicBarrier_Alloc_00e03e80.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCRockTrollTrigger_Alloc_00e03970.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTEBanditLeader_Alloc_00e03500.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTraderComment_Alloc_00e02c90.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCTraderComment_Main_00e05360.cpp ok ww slots76 cpmin
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_OnPersist_00e00ce0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_WatchForSurprisingBalverines_00e06050.cpp ok ww slots76 cpmin
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingBoss_Alloc_00e0d130.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingCentre_Alloc_00e0d760.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingFirefly_Alloc_00e0c970.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_Alloc_00e0d590.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttacker_Alloc_00e0cf20.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScriptCFleeingWoman_Alloc_00e0f400.cpp ok cp slots1
+edit rebuild/src/compiled/00/e0/NScriptCQWaspBossScriptCWaspHelper_Alloc_00e0f7c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e18410.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1a7d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1f780.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQREscortTraderScript_CreateActiveEntityScript_00e1f620.cpp ok ww slots1
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWaspBossScript_CreateActiveEntityScript_00e12170.cpp ok ww slots1
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWhiteBalverineKnotholeGladeScript_CreateActiveEntityScript_00e18220.cpp ok ww slots1
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWhiteBalverineWWScript_CreateActiveEntityScript_00e193d0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e1/CEntityScriptBindingNScriptCQWizardBattleScript_CreateActiveEntityScript_00e1bf60.cpp ok ww slots1
+edit rebuild/src/compiled/00/e1/CThingSwitch_vectordeletingdestructor_00e122d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CThingSwitch_vectordeletingdestructor_00e18380.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CThingSwitch_vectordeletingdestructor_00e19530.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CThingSwitch_vectordeletingdestructor_00e1c0c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/CThingSwitch_vectordeletingdestructor_00e1f7b0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCAttackingBandit_Alloc_00e1ed50.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCMBanditTrigger_Alloc_00e1e880.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQREscortTraderScriptCTraderToEscort_Alloc_00e1e7a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Alloc_00e109d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Main_00e10a90.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCHornetDrone_Alloc_00e11cd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCQueenHornet_Alloc_00e11ad0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspAttacker_Alloc_00e11380.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Alloc_00e10d70.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaseWoman_Init_00e10e20.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspChaser_Alloc_00e10b20.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspVictim_Alloc_00e11580.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCWaspVictim_Init_00e11630.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCKGChief_Alloc_00e17750.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard1_Alloc_00e16d10.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBGuard2_Alloc_00e17230.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBScaredVillager_Alloc_00e16990.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBVillager_Alloc_00e16b50.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Alloc_00e15750.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Alloc_00e192e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCWBWWSoldierBalverine_Alloc_00e191e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCWBWWWhiteBalverine_Alloc_00e190a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCChasingScreamer_Alloc_00e1ae50.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCEndGameBarrier_Alloc_00e1ba60.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCMaze_Alloc_00e1b950.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCScreamerPoint_Alloc_00e1b660.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCHKCVillagerScreamer_Alloc_00e1b100.cpp ok cp slots1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Alloc_00e1bb80.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/CEngineSubPrimitiveText_scalardeletingdestructor_00e2ea60.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfo2SisterInBanditCampScript_CreateActiveEntityScript_00e26c50.cpp ok ww slots1
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSGuardianSisterInfoScript_CreateActiveEntityScript_00e25d90.cpp ok ww slots1
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSGuardianTrophyDealerInfoScript_CreateActiveEntityScript_00e27cb0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSMeetSisterScript_CreateActiveEntityScript_00e29110.cpp ok ww slots1
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCQSScytheInfoScript_CreateActiveEntityScript_00e2a170.cpp ok ww slots1
+edit rebuild/src/compiled/00/e2/CEntityScriptBindingNScriptCVAmbushScamScript_CreateActiveEntityScript_00e2e900.cpp ok ww slots1
+edit rebuild/src/compiled/00/e2/CThingSwitch_vectordeletingdestructor_00e25f10.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/CThingSwitch_vectordeletingdestructor_00e26dd0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/CThingSwitch_vectordeletingdestructor_00e27e30.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/CThingSwitch_vectordeletingdestructor_00e29290.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/CThingSwitch_vectordeletingdestructor_00e2a2f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/CThingSwitch_vectordeletingdestructor_00e2ea90.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e2/NScriptCPredicateAndCIsThingAliveCIsThingAlive_Clone_00e247a0.cpp ok cp slots1 trio
+edit rebuild/src/compiled/00/e2/NScriptCPredicateAndCIsThingAliveCIsThingAlive_scalardeletingdestructor_00e245a0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Alloc_00e26af0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Alloc_00e25c70.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_Init_00e25d20.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_OnPredicateFail_00e25d30.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianTrophyDealerInfoScriptCGTDIMaze_Alloc_00e27bb0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterMessenger_Alloc_00e28f70.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Alloc_00e29040.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSScytheInfoScriptCScytheMarker_Alloc_00e29e80.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCQSScytheInfoScriptCScytheNearOracle_Alloc_00e2a020.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASAmbusher_Alloc_00e2bb60.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASBuddy_Alloc_00e2bec0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScriptCASTrickster_Alloc_00e2bc90.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e37310.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e374c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e39510.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e3/CEntityScriptBindingNScriptCVArcheryCompetitionScript_CreateActiveEntityScript_00e37340.cpp ok ww slots1
+edit rebuild/src/compiled/00/e3/CEntityScriptBindingNScriptCVAssassinAttacksScript_CreateActiveEntityScript_00e38bd0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e3/CEntityScriptBindingNScriptCVBordelloScript_CreateActiveEntityScript_00e3b740.cpp ok ww slots1
+edit rebuild/src/compiled/00/e3/CThingSwitch_vectordeletingdestructor_00e374f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e3/CThingSwitch_vectordeletingdestructor_00e38d50.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e3/CThingSwitch_vectordeletingdestructor_00e3b8c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyMoving_Alloc_00e33d30.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACDummyStatic_Alloc_00e33bc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACHighScorePost_Alloc_00e334c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCACOwner_Alloc_00e335b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyMoving_Alloc_00e33a20.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScriptCMACDummyStatic_Alloc_00e33800.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_ResetRandomSpeechTime_00e337c0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Alloc_00e388f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAttackingAssassin_Alloc_00e382c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Alloc_00e385d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_Alloc_00e37d50.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCMAssassinTrigger_OnPersist_00e38d80.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Alloc_00e3b0f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Init_00e3b1a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_OnPredicateFail_00e3b230.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloEntrance_Alloc_00e3b3d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloGuard_Alloc_00e3ae60.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloLady_Alloc_00e3ab90.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMHeroDownstairs_Alloc_00e3b270.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMadame_Alloc_00e3aab0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMagicman_Alloc_00e3af90.cpp ok cp slots1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScript_WatchForDeedStatus_00e3a150.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e4/CEngineSubPrimitiveText_scalardeletingdestructor_00e4b1a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e4/CEntityScriptBindingNScriptCVBanditCampPathScript_CreateActiveEntityScript_00e47610.cpp ok ww slots1
+edit rebuild/src/compiled/00/e4/CEntityScriptBindingNScriptCVBanditTollScript_CreateActiveEntityScript_00e4b1d0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e4/CGuildSealWarning_Main_00e4b010.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/e4/CThingSwitch_vectordeletingdestructor_00e47770.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e4/CThingSwitch_vectordeletingdestructor_00e4b350.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScriptCBCPBandit_Alloc_00e47500.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScriptCBCPBandit_Init_00e475b0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScript_Alloc_00e477a0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_Alloc_00e4a890.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_Init_00e4a940.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Alloc_00e49850.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Init_00e49900.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCGuildSealWarning_Alloc_00e4af50.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMBanditLeader_Alloc_00e4a660.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTauntingBandit_Alloc_00e48d00.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCMTollBandit_Alloc_00e48950.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCReluctantTrader_Alloc_00e49f10.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCSafeTrader_Alloc_00e4a190.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTauntingBandit_Alloc_00e48de0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCTollBandit_Alloc_00e48b40.cpp ok cp slots1
+edit rebuild/src/compiled/00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e54200.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBeardyBaldyScript_CreateActiveEntityScript_00e540a0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBeggarAndChildScript_CreateActiveEntityScript_00e5cf20.cpp ok ww slots1
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBodyGuardScript_CreateActiveEntityScript_00e5f000.cpp ok ww slots1
+edit rebuild/src/compiled/00/e5/CEntityScriptBindingNScriptCVBookCollectingScript_CreateActiveEntityScript_00e546d0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e5/CThingSwitch_vectordeletingdestructor_00e54230.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e5/CThingSwitch_vectordeletingdestructor_00e54850.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e5/CThingSwitch_vectordeletingdestructor_00e5d080.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e5/CThingSwitch_vectordeletingdestructor_00e5f160.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Alloc_00e507e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Init_00e50890.cpp ok cp slots1
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_ResetRandomSpeechTime_00e53c70.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScriptCLookoutPointBeggar_Alloc_00e58c60.cpp ok cp slots1
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Alloc_00e5d0b0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_CVBeggarAndChildScript_00e57bb0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_OnPersist_00e57d20.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanComment_CHenchmanComment_00e5f240.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanRegionEntranceComment_CHenchmanRegionEntranceComment_00e5f640.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCHenchmanRegionExitComment_CHenchmanRegionExitComment_00e5f880.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCMBodyGuardRespawn_Alloc_00e5dff0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_Alloc_00e54580.cpp ok cp slots1
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_Init_00e54630.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6b3a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e6/CEntityScriptBindingNScriptCVChapelOfEvilScript_CreateActiveEntityScript_00e6b240.cpp ok ww slots1
+edit rebuild/src/compiled/00/e6/CEntityScriptBindingNScriptCVChickenKickingScript_CreateActiveEntityScript_00e64020.cpp ok ww slots1
+edit rebuild/src/compiled/00/e6/CThingSwitch_vectordeletingdestructor_00e64180.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e6/CThingSwitch_vectordeletingdestructor_00e6b3d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEAcolyteEvil_Alloc_00e6a500.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEAltarEvil_Alloc_00e6a6e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScriptCCOEVictim_Alloc_00e6a600.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenMaster_Alloc_00e634b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenMaster_Init_00e63560.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_CChickenSign_00e64d90.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_Init_00e68dc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCKickedChicken_Alloc_00e63590.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCSpectator_Alloc_00e63660.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_OnPersist_00e629a0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFCombatMult_Alloc_00e6f640.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFDragon_Alloc_00e6fb70.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFShineLight_Alloc_00e6e960.cpp ok cp slots1
+edit rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScriptCDFThunderHelmet_Alloc_00e6f0f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7c830.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVDemonDoorsScript_CreateActiveEntityScript_00e74bc0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVExposeMayorScript_CreateActiveEntityScript_00e774e0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVFishermanScript_CreateActiveEntityScript_00e7c6b0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e7/CEntityScriptBindingNScriptCVFishingCompetitionScript_CreateActiveEntityScript_00e7ed60.cpp ok ww slots1
+edit rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/e7/CThingSwitch_vectordeletingdestructor_00e74d40.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e7/CThingSwitch_vectordeletingdestructor_00e77660.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e7/CThingSwitch_vectordeletingdestructor_00e7c860.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e7/CThingSwitch_vectordeletingdestructor_00e7eec0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e7/NScriptCIsVariableFalse_Clone_00e7dde0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e7/NScriptCIsVariableFalse_operator_00e7ddd0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e7/NScriptCPredicateAndCIsThingAliveCIsVariableFalse_scalardeletingdestructor_00e7dfe0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e7/NScriptCPredicateAnd_Clone_00e7e060.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFBeEvil_Alloc_00e70390.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFDoDamage_Alloc_00e70af0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFDressAsBandit_Alloc_00e71e40.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFEatPies_Alloc_00e71380.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFGiveGift_Alloc_00e718b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFKeyHoarder_Alloc_00e73ff0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFMarryLadyGrey_Alloc_00e73340.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFSexMad_Alloc_00e73860.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_Alloc_00e72560.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsEvilMage_00e731f0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsGoodKnight_00e730a0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMFlashLightPoint_Alloc_00e76730.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMRhodri_Alloc_00e765d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSheriff_Alloc_00e76470.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Alloc_00e76360.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Init_00e76410.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCHHCellarDoor_Alloc_00e76800.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_CheckLampSlot_00e76ca0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_OnPersist_00e75790.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Alloc_00e7bbe0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Main_00e7bca0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanWasp_Alloc_00e7ba40.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFisherman_Alloc_00e7b7b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCMFishermanWaspSpawn_Alloc_00e7b890.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScriptCBountyHuntActivationChecker_Alloc_00e7ec90.cpp ok cp slots1
+edit rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScriptCFishCompCompetitor_Alloc_00e7e570.cpp ok cp slots1
+edit rebuild/src/compiled/00/e8/CEngineSubPrimitiveText_scalardeletingdestructor_00e8d240.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e8/CEntityScriptBindingNScriptCVFisticuffsClubScript_CreateActiveEntityScript_00e83bc0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e8/CEntityScriptBindingNScriptCVGhostGrannyNecklaceScript_CreateActiveEntityScript_00e8d0e0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e8/CThingSwitch_vectordeletingdestructor_00e83d20.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e8/CThingSwitch_vectordeletingdestructor_00e8d270.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCFisticuffsClubRing_Alloc_00e82870.cpp ok cp slots1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Alloc_00e83780.cpp ok cp slots1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_Alloc_00e83570.cpp ok cp slots1
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyDaughterInLaw_Alloc_00e8be10.cpp ok cp slots1
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_Alloc_00e8bd30.cpp ok cp slots1
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannySon_Alloc_00e8ca60.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e98430.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9e0b0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVGuildMasterScript_CreateActiveEntityScript_00e90a30.cpp ok ww slots1
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHauntedHouseScript_CreateActiveEntityScript_00e95f80.cpp ok ww slots1
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHeroDollsScript_CreateActiveEntityScript_00e98460.cpp ok ww slots1
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHeroDuelScript_CreateActiveEntityScript_00e9a0e0.cpp ok ww slots1
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVHiddenBootyScript_CreateActiveEntityScript_00e93a60.cpp ok ww slots1
+edit rebuild/src/compiled/00/e9/CEntityScriptBindingNScriptCVIntroductionToTrophiesScript_CreateActiveEntityScript_00e9df30.cpp ok ww slots1
+edit rebuild/src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/e9/CNOVIScript00e99760_Init_00e99760.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/e9/CSpectator_Init_00e99890.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/e9/CThingSwitch_vectordeletingdestructor_00e90bb0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CThingSwitch_vectordeletingdestructor_00e93be0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CThingSwitch_vectordeletingdestructor_00e960e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CThingSwitch_vectordeletingdestructor_00e985e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CThingSwitch_vectordeletingdestructor_00e9a240.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/CThingSwitch_vectordeletingdestructor_00e9e0e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Alloc_00e908d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90830.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCHHUndead_Alloc_00e95cd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMHeroInsideHouse_Alloc_00e95bf0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMQuestControl_Alloc_00e955b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScriptCMUndeadHere_Alloc_00e95690.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScript_CheckRegionLeaving_00e953e0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDollsScriptCBSTeacher_Alloc_00e96fb0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCSpectator_Alloc_00e997e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCThunder_Alloc_00e996b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVHiddenBootyScriptCMHiddenBooty_Alloc_00e92f70.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCBriarRose_Alloc_00e9d9d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesBriarTrophy_Alloc_00e9d700.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroTable_Alloc_00e9d8e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScriptCTrophiesIntroWatcher_Alloc_00e9cee0.cpp ok cp slots1
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Alloc_00e9fb40.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_CVIntroductionToTrophiesScript_00e9c360.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/e9/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Alloc_00e9ff70.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea2cc0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea7650.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVKnotholeGladeGatesScript_CreateActiveEntityScript_00ea0f00.cpp ok ww slots1
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVLostTraderScript_CreateActiveEntityScript_00ea5780.cpp ok ww slots1
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVMazeResearchScript_CreateActiveEntityScript_00ea7ef0.cpp ok ww slots1
+edit rebuild/src/compiled/00/ea/CEntityScriptBindingNScriptCVMurderTwistScript_CreateActiveEntityScript_00ead860.cpp ok ww slots1
+edit rebuild/src/compiled/00/ea/CMurderTwistBrotherOlder_Init_00eabac0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ea/CMurderTwistBrotherOlder_Init_00eace90.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ea/CThingSwitch_vectordeletingdestructor_00ea1060.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/CThingSwitch_vectordeletingdestructor_00ea5900.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/CThingSwitch_vectordeletingdestructor_00ea8070.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/CThingSwitch_vectordeletingdestructor_00ea86c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/CThingSwitch_vectordeletingdestructor_00ead9c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Alloc_00ea09f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Init_00ea0030.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderBanditSpawn_Alloc_00ea5150.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Alloc_00ea34f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Init_00ea35a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Alloc_00ea7990.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCEmptyGrave_Init_00ea80f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Alloc_00ea7a60.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Alloc_00eac4e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlderFriend_Alloc_00eacde0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_Alloc_00eaba10.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Alloc_00eaae40.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_Alloc_00eaaf10.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Alloc_00ead730.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Init_00eae820.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Alloc_00ea8e50.cpp ok cp slots1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Init_00ea8f00.cpp ok cp slots0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_Alloc_00eae890.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_CVMurderTwistScript_00ea86f0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/eb/CEngineSubPrimitiveText_scalardeletingdestructor_00ebcc70.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/eb/CEntityScriptBindingNScriptCVMayorsInvitationScript_CreateActiveEntityScript_00eb9710.cpp ok ww slots1
+edit rebuild/src/compiled/00/eb/CEntityScriptBindingNScriptCVMurderTwistFinalScript_CreateActiveEntityScript_00eb6370.cpp ok ww slots1
+edit rebuild/src/compiled/00/eb/CEntityScriptBindingNScriptCVOracleScript_CreateActiveEntityScript_00ebebf0.cpp ok ww slots1
+edit rebuild/src/compiled/00/eb/CThingSwitch_vectordeletingdestructor_00eb64f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/eb/CThingSwitch_vectordeletingdestructor_00eb9870.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/eb/CThingSwitch_vectordeletingdestructor_00ebed70.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCLadyGrey_Alloc_00eb78b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCMIInfoKeeper_Alloc_00eb8810.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Alloc_00eb79f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Init_00eb7aa0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_OnPersist_00eb98a0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassinGuard_Alloc_00eb5450.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Alloc_00eb3c60.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Alloc_00eb1f80.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOOracleMarker_Alloc_00ebce80.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOOracleMarker_Init_00ebcf30.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScriptCVOWoman_Alloc_00ebe540.cpp ok cp slots1
+edit rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_Alloc_00ebfb00.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec2830.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec5330.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVParanoidWhispersScript_CreateActiveEntityScript_00ec1000.cpp ok ww slots1
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVPicnicAreaAfterWaspBossScript_CreateActiveEntityScript_00ec15d0.cpp ok ww slots1
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVRandomPopulationSimScript_CreateActiveEntityScript_00ec2860.cpp ok ww slots1
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVRockTrollFirstEncounterScript_CreateActiveEntityScript_00ec47c0.cpp ok ww slots1
+edit rebuild/src/compiled/00/ec/CEntityScriptBindingNScriptCVSickChildScript_CreateActiveEntityScript_00ecd600.cpp ok ww slots1
+edit rebuild/src/compiled/00/ec/CSickChildFishingSpot_Main_00ecd530.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ec/CThingSwitch_vectordeletingdestructor_00ec1180.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/CThingSwitch_vectordeletingdestructor_00ec1750.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/CThingSwitch_vectordeletingdestructor_00ec29c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/CThingSwitch_vectordeletingdestructor_00ec4940.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/CThingSwitch_vectordeletingdestructor_00ecd780.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_Alloc_00ec0900.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCPWNecklaceDiggingSpot_Init_00ec09b0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ec/NScriptCVParanoidWhispersScriptCSecretWhisperingFriend_Alloc_00ec0a50.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBGuard_Alloc_00ec14e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScriptCPAAWBVillager_Alloc_00ec13f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Alloc_00ec1b70.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCMRTFERockTrollTrigger_Alloc_00ec41f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Alloc_00ec4490.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFESparrow_Alloc_00ec45c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCIngredientOwner_Alloc_00ecafa0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCIngredientOwner_Init_00ecb050.cpp ok cp slots19
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_Alloc_00ec8160.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_OnPredicateFail_00ec8230.cpp ok cp slots19
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCMansLover_Alloc_00ec9c00.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildFishingSpot_Alloc_00ecd450.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Alloc_00ec5cd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Init_00ec5da0.cpp ok cp slots0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Alloc_00ec5bc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Init_00ec5c90.cpp ok cp slots0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Alloc_00ec67b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Alloc_00ecbc80.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWitch_Alloc_00ec7ff0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_Alloc_00ecd2d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_Init_00ecd380.cpp ok cp slots19
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScript_Init_00ec5420.cpp ok cp slots19
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScript_OnPersist_00ecd7b0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed2890.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed75c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed99a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edd000.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVSingingStonesScript_CreateActiveEntityScript_00ed28c0.cpp ok ww slots1
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVStatueMasterScript_CreateActiveEntityScript_00ed4890.cpp ok ww slots1
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVSwordInTheStoneScript_CreateActiveEntityScript_00ed5340.cpp ok ww slots1
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVTalentlessBardScript_CreateActiveEntityScript_00ed8210.cpp ok ww slots1
+edit rebuild/src/compiled/00/ed/CEntityScriptBindingNScriptCVTempleOfLightScript_CreateActiveEntityScript_00edcea0.cpp ok ww slots1
+edit rebuild/src/compiled/00/ed/CTBBard_GetRandomSpeech_00ed99d0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00ed2a20.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00ed4a10.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00ed54a0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00ed8390.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00edd030.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ed/NScriptCVSingingStonesScriptCSingingStone_Alloc_00ed1420.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVSingingStonesScript_WatchForRegionLeaving_00ed2a50.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterCellarDoors_Alloc_00ed44c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterChest_Alloc_00ed4770.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVStatueMasterScriptCStatueMasterStatue_Alloc_00ed40c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordCrowd_Alloc_00ed5260.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Alloc_00ed5130.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_OnPersist_00ed4c50.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScriptCTBBardSpawnPoint_Alloc_00ed8050.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsApprentice_00eda490.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_OnPersist_00ed85a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAcolyteGood_Alloc_00edc1d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_Alloc_00edc2d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_Init_00edae20.cpp ok cp slots19
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Alloc_00edf2b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Alloc_00edf910.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunder_Alloc_00edff70.cpp ok cp slots1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScript_Init_00edec50.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCPersonalScriptalextestScript_CreateActiveEntityScript_00eeda40.cpp ok ww slots1
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCVTourGuideScript_CreateActiveEntityScript_00ee5570.cpp ok ww slots1
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCVTravellingHeroesScript_CreateActiveEntityScript_00ee1c10.cpp ok ww slots1
+edit rebuild/src/compiled/00/ee/CEntityScriptBindingNScriptCVTrophyDealerScript_CreateActiveEntityScript_00ee7540.cpp ok ww slots1
+edit rebuild/src/compiled/00/ee/CTHTriggerGuildRose_Main_00ee3ee0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ee/CTHTriggerOakvaleGossip_Main_00ee06b0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ee/CThingSwitch_vectordeletingdestructor_00ee1d90.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ee/CThingSwitch_vectordeletingdestructor_00ee56f0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ee/CThingSwitch_vectordeletingdestructor_00ee76c0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ee/CThingSwitch_vectordeletingdestructor_00eedbc0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ee/CTrophyDealerInCave_Main_00ee76f0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ee/CVTrophyDealerScript_HilightGuildTeleporter_00ee71a0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ee/NScriptCExpressionFishScript_Alloc_00ee9f00.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ee/NScriptCExpressionPickpocketScript_Alloc_00eeb730.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ee/NScriptCGlobalToggleTimeDisplayScript_Alloc_00eed060.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ee/NScriptCGlobalToggleTimeDisplayScript_Main_00eecf20.cpp ok cp slots19
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCBurningPerson_Alloc_00eed4d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCSignpost_Alloc_00eed5d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScriptCStopDrawing_Alloc_00eed7d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed360.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideFollower_Alloc_00ee4cf0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Alloc_00ee4bb0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Init_00ee4c60.cpp ok cp slots19
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Alloc_00ee1400.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMaze_Alloc_00ee0060.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_Alloc_00ee0240.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_OnPredicateFail_00ee0350.cpp ok cp slots19
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_Alloc_00ee0b60.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Alloc_00ee03e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildRose_Alloc_00ee04d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Alloc_00ee1af0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Main_00ee3fc0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvaleGossip_Alloc_00ee05c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerOakvale_Alloc_00ee0930.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHWhisper_Alloc_00ee0150.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_ThunderChatter_00ee29d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Alloc_00ee7430.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Init_00ee74e0.cpp ok cp slots19
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Alloc_00ee7340.cpp ok cp slots1
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Init_00ee73f0.cpp ok cp slots19
+edit rebuild/src/compiled/00/ee/NScriptCalextestScript_Main_00eed0e0.cpp ok cp slots19
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef5040.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef8d00.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCBenTestScriptsScript_CreateActiveEntityScript_00efee50.cpp ok ww slots1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCPersonalScriptEmptyScript_CreateActiveEntityScript_00ef5070.cpp ok ww slots1
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCProximityPodiumTestScript_CreateActiveEntityScript_00efb460.cpp ok ww slots1
+edit rebuild/src/compiled/00/ef/CTestPos_Main_00ef3840.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00ef51d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efa390.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efaf00.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efb5e0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efbb40.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efc100.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efdc10.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00efefd0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/CThingSwitch_vectordeletingdestructor_00eff740.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCBalvMarker_Alloc_00efea80.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCDummy_Alloc_00efe620.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScriptCFader_Alloc_00efe7f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe4b0.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ef/NScriptCGuildSealTriggerTestScriptCGuildSealTrigger_Alloc_00efbd40.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCHitSwitchTestScriptCHitSwitch_Alloc_00efb7e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCGift_Alloc_00efd680.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCShopKeeper_Alloc_00efd9c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScriptCTestMan_Alloc_00efcb70.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efca00.cpp ok cp slots0 trio
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_Alloc_00ef2420.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCBanditWalker_Alloc_00ef1b70.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCBeggar_Alloc_00ef3120.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_Alloc_00ef3c60.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_Alloc_00ef3d40.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCinemaMan_Alloc_00ef1f90.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_Alloc_00ef1050.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_Alloc_00ef1130.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCCrateDeathMarker_Alloc_00ef1210.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCDoor_Alloc_00ef2f20.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCFollower_Alloc_00ef4130.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGhostDude_Alloc_00ef44d0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_Alloc_00ef2900.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCKillMan_Alloc_00ef2070.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Alloc_00ef3e20.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Alloc_00ef1c50.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCMeanBandit_Alloc_00ef4210.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCOpinionMan_Alloc_00ef3660.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCScrumpyCrate_Alloc_00ef2ac0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Alloc_00ef2820.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCSwordChest_Alloc_00ef21b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPerson_Alloc_00ef4a60.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_Alloc_00ef3740.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_Init_00ef37f0.cpp ok cp slots19
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTrappedMan_Alloc_00ef1d30.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTriggerCrate_Alloc_00ef2500.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadDude_Alloc_00ef33c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Alloc_00ef47c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Alloc_00ef48a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCWalker_Alloc_00ef39c0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCWhispie_Alloc_00ef15b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5b50.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5c00.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingAlive_CPredicateAnd_00ef7b50.cpp ok cp slots1 trio
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingAlive_Clone_00ef7b90.cpp ok cp slots1 trio
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingAlive_scalardeletingdestructor_00ef7b10.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingConscious_CPredicateAnd_00ef8740.cpp ok cp slots1 trio
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingConscious_Clone_00ef8780.cpp ok cp slots1 trio
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingConscious_scalardeletingdestructor_00ef8700.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5bc0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef6d50.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef6f40.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_scalardeletingdestructor_00ef5b80.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6d90.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6f00.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6fe0.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef6de0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef6fa0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef7060.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThing_CPredicateAnd_00ef7020.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThing_scalardeletingdestructor_00ef6ec0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef5c40.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef70b0.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef7100.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef7160.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_operator_00ef6cc0.cpp ok pad:8 slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_operator_00ef6cf0.cpp ok pad:8 slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_operator_00ef6d20.cpp ok pad:8 slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_operator_00ef7a80.cpp ok pad:8 slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_operator_00ef86d0.cpp ok pad:8 slots1 cpmin
+edit rebuild/src/compiled/00/ef/NScriptCProximityPodiumTestScriptCProximityPodium_Alloc_00efb280.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCTonyTestScriptsScriptCDummy_Alloc_00eff3f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCbanditlevelcutsceneScriptCwelcomeguy_Alloc_00efaa60.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScriptChenchmen_Alloc_00efa0b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScriptChenchmen_Init_00efa160.cpp ok cp slots19
+edit rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f09c70.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/f0/CThingSwitch_vectordeletingdestructor_00f012d0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/f0/CThingSwitch_vectordeletingdestructor_00f01e80.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/f0/CThingSwitch_vectordeletingdestructor_00f09ca0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCGamesmasterOracleMarker_Alloc_00f00a10.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCOracleGamesmaster_Alloc_00f00000.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCOracleMinigameTestScriptCOracleSpectator_Alloc_00f00bb0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Alloc_00f037a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_OnPredicateFail_00f03850.cpp ok cp slots19
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditContactEnd_Alloc_00f056a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditContact_Alloc_00f057e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoyMember_Alloc_00f04280.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_Alloc_00f04360.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_OnPredicateFail_00f04480.cpp ok cp slots19
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase1Archer_Alloc_00f03f20.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase1Guard_Alloc_00f038a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Archer_Alloc_00f04bd0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATPhase3Guard_Alloc_00f050e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATSentry_Alloc_00f04510.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditsDeath_00f0b960.cpp ok ww slots76 cpmin
+edit rebuild/src/compiled/00/f0/NScriptCQCinemaTestScriptCDummy_Alloc_00f01b60.cpp ok cp slots1
+edit rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_WatchForLeaving_00f02030.cpp ok - slots76 cpmin
+edit rebuild/src/compiled/00/f1/CThingSwitch_vectordeletingdestructor_00f1ccb0.cpp ok - slots1 cpmin
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard2_Alloc_00f19ab0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellDoorGuard_Alloc_00f17b70.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaCellExitGuard_Alloc_00f1b8e0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaEnemy_Alloc_00f1a810.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCArenaSpawn_Alloc_00f1b5b0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCagedBalverine_Alloc_00f1ca30.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCellWhisper_Alloc_00f16fe0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCCham_Alloc_00f14670.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCFlick_Alloc_00f14980.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCFlick_Init_00f14a30.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCNeedle_Alloc_00f15550.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCNeedle_Init_00f15600.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCRoth_Alloc_00f14560.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCRoth_Init_00f14610.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_Alloc_00f1b0f0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_OnPredicateFail_00f1b1b0.cpp ok cp slots19
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCShadow_Alloc_00f161a0.cpp ok cp slots1
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCShadow_Init_00f16250.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCWhisperAlly_Alloc_00f1b800.cpp ok cp slots1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Init_00de1e20.cpp ok cp slots0 inl3
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Init_00de1cc0.cpp ok cp slots0 inl3
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Init_00de20c0.cpp ok cp slots0 inl3
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Init_00de1f70.cpp ok cp slots0 inl3
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Init_00eae820.cpp ok cp slots1 inl2
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Init_00ec5da0.cpp ok cp slots0 inl3
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Init_00ec5c90.cpp ok cp slots0 inl3
+edit rebuild/src/compiled/00/4a/CWorld_TeleportHeroToHSP_004a0940.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/4b/CQuestManager_AttachExistingScriptedEntitiesToScript_004b26b0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/71/NTCScriptedControlCActionTalkBase_CActionTalkBase_0071a430.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CameraUseCameraPoint_008922f0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CameraUseCameraPoint_00892380.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Main_00cdeed0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/cf/NScriptCGameflowAssistanceScript_OnPersist_00cf0560.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/cf/NScriptCQArenaScript_OnPersist_00cfab10.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_OnPredicateFail_00cfc950.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScript_Init_00cfadd0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Init_00d04a60.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_Init_00d059e0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_Init_00d060b0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Init_00d0c390.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_OnPredicateFail_00d0a7b0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Init_00d08720.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Init_00d08f00.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_OnPredicateFail_00d08fb0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Init_00d07dd0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Init_00d072c0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Init_00d07410.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Init_00d02b20.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_Init_00d01590.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Init_00d154a0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Init_00d1f5c0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Init_00d1fce0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Init_00d1e1b0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_OnPredicateFail_00d1e140.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCKGChiefBreakSiege_OnPredicateFail_00d1dea0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Init_00d243e0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Init_00d242c0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScript_Init_00d2a8a0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_OnPredicateFail_00d29320.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Init_00d29020.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMUndeadSpawn_Main_00d29160.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMazeJournal_Init_00d29620.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHPrisoner_Init_00d36620.cpp ok cp slots4 inl1
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHVillager_Init_00d374a0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCProphetCage_Init_00d36730.cpp ok cp slots4 inl1
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCKillBird_OnPredicateFail_00d43120.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScriptCMeleeOpponent_Init_00d56750.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_Init_00d5aa80.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_Init_00d5dc80.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEAssaultGuard_OnPredicateFail_00d6ae30.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEExecutioner_OnPredicateFail_00d6a080.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Init_00d6a480.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_OnPredicateFail_00d6a4f0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEPrisoner_OnPredicateFail_00d69ee0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_DoMission_00d6bfa0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorBanditRegion_00d6ccc0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGExecutioner_Init_00d73280.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Init_00d705d0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_OnPredicateFail_00d70650.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Init_00d71a30.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_OnPredicateFail_00d71a70.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCHSScreamer_Init_00d83f10.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_Main_00d8a8a0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Init_00d8a700.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_OnPredicateFail_00d8a770.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Init_00d8a560.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_Init_00d8fd90.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCNymph_OnPredicateFail_00d8fef0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Init_00d90f40.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_OnPredicateFail_00d90fa0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJames_Init_00d900e0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJames_OnPredicateFail_00d90050.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Init_00d9c610.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScriptCMCSpawnPoint_Init_00da0160.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscortEnd_OnPredicateFail_00da4740.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_Init_00da4540.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_OnPredicateFail_00da4590.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Init_00db8290.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScript_Init_00dbf1e0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_OnPredicateFail_00dc4b70.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_Init_00dcfa10.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_OnPredicateFail_00dcded0.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Init_00dcf000.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/dd/CVChapelOfEvilScript_EndMission_00dd9900.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Main_00dd8850.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Init_00dd6950.cpp ok cp slots21 inl2
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Init_00dd4a50.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_Init_00ddc490.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScript_Init_00ddad60.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_OnPredicateFail_00de1db0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_OnPredicateFail_00de1c50.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictim_Init_00de1b60.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Init_00de25d0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCMotherTorture_Init_00dee250.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_EndMission_00df0a50.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_Init_00df2310.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerAttacker_OnPredicateFail_00df22a0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSummonerMinion_Init_00df2a40.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScript_Init_00df4130.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Init_00dfb1b0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Init_00e04b50.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_OnPredicateFail_00e04ae0.cpp ok cp slots19 inl1
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Init_00e15830.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CleanUp_00e1d690.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Init_00e26bd0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Main_00e389e0.cpp ok cp slots11 inl1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloGuard_Init_00e3af30.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMagicman_Init_00e3b060.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e4/CMBanditLeader_Main_00e4a740.cpp ok cp slots77 inl1
+edit rebuild/src/compiled/00/e4/CTollBandit_Init_00e48bf0.cpp ok cp slots75 inl2
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_Init_00e5de80.cpp ok cp slots8 inl1
+edit rebuild/src/compiled/00/e6/CVChapelOfEvilScript_DoMission_00e6a7f0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMRhodri_Init_00e766a0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_PhaseThree_00e7a9f0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_PhaseTwo_00e7a5c0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_Init_00e836f0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScript_InitialiseVariables_00e82650.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Init_00e909a0.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_Init_00eb6bd0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Init_00eb3e40.cpp ok cp slots68 inl1
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Init_00eb2070.cpp ok cp slots4 inl1
+edit rebuild/src/compiled/00/ed/CVChapelOfEvilScript_DoMission_00edc450.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600.cpp ok cp slots7 inl1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Init_00ef49a0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_ChangeAlpha_00ef8bc0.cpp ok cp slots0 inl1
+edit rebuild/src/compiled/00/f3/CEntityScriptBase_CEntityScriptBase_00f35b40.cpp ok cp slots1 inl1
+edit rebuild/src/compiled/00/88/CGameScriptInterface_ApplyScriptBrush_0088f480.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x0 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_ClearThingHasInformation_0088e480.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_CloseHouseDoors_0088e000.cpp ok ww slots76 GetThing->(CThingBuilding*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityBeginLoadingBasicAnimations_0088f530.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityEnableGravity_0088f4d0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityGetSex_0088ea50.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityResetMaxRunningSpeed_0088e810.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x4 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityResetMaxWalkingSpeed_0088e870.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x4 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsDamageable_0088ead0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsDrawable_0088e9f0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsHiddenOnMiniMap_0088e410.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsRemoveAllMovementBlockingModes_0088e8d0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsRespondToHit_0088ea90.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsUseMovementInActions_0088ec20.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetCutsceneBehaviour_0088ea20.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetMaxHealth_0088e1c0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetMaxRunningSpeed_0088e750.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x4 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetMaxWalkingSpeed_0088e7b0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x4 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetShotAccuracyPercentage_0088e5f0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_GetWanderingPopulationScriptDefNameInCurrentRegi_0088e390.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x0 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_IsEntityPickPocketable_0088e220.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_IsLevelLoaded_0088e2a0.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x0 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_MiniMapAllowRouteBetweenRegions_0088e3d0.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x0 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_OpenHouseDoors_0088dfd0.cpp ok ww slots76 GetThing->(CThingBuilding*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_OverrideAutomaticHouseLocking_0088e030.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_ResetToDefaultThemeAllInternals_0088ff80.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x0 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetCreatureNotReload_0088fd90.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetEntityAsFollowingHeroThroughTeleporters_0088f670.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetThingHasInformation_0088e440.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddItemToContainer_0089e780.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddNewConversation_008906c0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddPersonToConversation_00890710.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoBarHealth_00891ad0.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ApplyHeroPenaltyForDeath_008977f0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CancelUsingAbility_0089d750.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ChangeHeroHairstyle_0089b450.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_CloseDoor_00895de0.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorIsDestroyed_0089ea30.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorSetAlwaysCreateCreaturesOnTrigg_0089e950.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorSetGeneratedCreatureScriptName_0089eaa0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorSetNumTriggers_0089eb10.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorTrigger_0089e8e0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_DisableFishingSpot_00895950.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityAttachToVillage_0089d3a0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x4 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceMarriageToHero_00897940.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceToLookAtThing_0089d830.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x5 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetOpinionAttitudeToPlayerAsString_008909c0.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetOpinionOfPlayer_008909f0.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetStandingInsideBuilding_0089bc50.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetStandingOnThing_00892220.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityPlayObjectAnimation_0089bbc0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityPostOpinionDeedKeepSearchingForWitnesses_0089c7b0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityPostOpinionDeedToRecipientVillage_0089c710.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityPostOpinionDeedToRecipient_0089c670.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsAwareOfThing_0089d0e0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x2 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsCollidableToThings_00891120.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsOpinionSource_00890a20.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsOpinionSource_00890a50.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetFacingAngle_0089bdf0.cpp ok - slots76 GetPosition->GetPos x1 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetPerceptionVariables_0089bf80.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetThingAsWantingMoney_0089bb30.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_EntityUnsetAsOpinionSource_00890a80.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetNumberOfItemsOfTypeInInventory_00897190.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroItemsFromContainer_00898c40.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GiveThingHeroRewardItem_00898ac0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ImpSetEntityAsAllyOfThing_0089c100.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_InternalEndMovieSequence_0089b210.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsCreatureFlying_0089ed80.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_IsFishingSpotEnabled_008958f0.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsObjectInThingsPossession_00897220.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsRegionLoadedAndPreloaded_00890550.cpp ok - slots12 GetThing->(CThing_Retail*)GetPThing x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsWearingClothingItem_0089b2b0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsWearingHairstyle_0089b530.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_JamDoor_00895e10.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_MiniMapAddMarker_00891f50.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_MiniMapRemoveMarker_00891ff0.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_MiniMapSetMarkerGraphic_00891fa0.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_OpenDoor_00895db0.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_OpinionSourceSetAsExclusive_00894e60.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveItemFromContainer_0089e810.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_SetBuyableHouseAsScripted_00896000.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetCutsceneMode_0089d600.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_SetDoorTriggerType_00895e70.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroHandLampAsLit_00898ec0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetRegionEntranceAsActive_0089ef00.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetRegionExitAsActive_0089eec0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_SetThingHomeBuilding_00892e30.cpp item: CThing_Retail* PImp_Data;
+skip rebuild/src/compiled/00/89/CGameScriptInterface_SetTrapAsActive_00895130.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetVillageAttitude_0089fe20.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/89/CGameScriptInterface_UpdateFishWeight_008959b0.cpp item: CThing_Retail* PImp_Data;
+edit rebuild/src/compiled/00/89/CGameScriptInterface_boolIsReportedOrUnreportedCrimeKnown_008985a0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_boolIsThingOnFire_0089bd90.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_floatEntityGetHearingRadius_0089d340.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_longEntityGetBossPhase_0089dd30.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_voidEntityGiveGold_0089dc70.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_voidEntityResetForceToLookAt_0089d970.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_voidExtinguishFiresOnThing_0089bd30.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_voidSetFireToThing_0089bcd0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/89/CGameScriptInterface_voidSetLightColour_0089df10.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/8a/CGameScriptInterface_AddCreatureScriptedMode_008a1a10.cpp CCountedPointer after the block
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_CancelHeroTeleportEffects_008a0820.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_DeactivateBoastUi_008a0c60.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x0 IsValid->IsAlive x0 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityFadeOut_008a0720.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetRangedTarget_008a04c0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetSleepingPositionAndOrientationFromBed_008a1b10.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x3 IsValid->IsAlive x2 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GiveThingBestEnemyTarget_008a0260.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x8 IsValid->IsAlive x3 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_IsThingTurncoated_008a19b0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_PlayCriteriaSoundOnThing_008a09b0.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x2 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetResidency_008a1cc0.cpp ok ww slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetTavernTableAvailableForUse_008a1890.cpp ok - slots76 GetThing->(CThing_Retail*)GetPThing x1 IsValid->IsAlive x1 cpmin
+skip rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_SpawnMinions_00d26cc0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_SpawnSummoners_00d26e60.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d3/CFHVillager_Main_00d37530.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScript_RunArrivalCutscene_00d44cb0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_SpawnParty_00d6c4a0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d7/CHTGBoss_Main_00d72590.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d7/CHTGFreedomFighter_Main_00d701c0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d8/CHSBMagicBarrier_Main_00d81c50.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d8/CHSScreamer_Main_00d83fa0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScript_CreateScreamers_00d84630.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/dc/CSpeakingMarker_Main_00dc8890.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScript_PopulateLevel_00dc0300.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CheckDoor_00dc8c80.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/dd/CSecretBook_Main_00dde940.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/df/CSummonerAttacker_Main_00df2380.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/df/CTCGuardSpawnPoint_Main_00df7bf0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_BossBlockingPrisonPassage_00df0200.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e0/CUndeadRisingBoss_Main_00e0d210.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScript_LampChecker_00e0c4c0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseOne_00e1cfd0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseTwo_00e1c580.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e3/NScriptCVBordelloScript_CreateCustomers_00e3a350.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/e4/CMTollBandit_Main_00e48a30.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Main_00ec0ba0.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp slot 5 GetPos != GetFocalPos
+skip rebuild/src/compiled/00/ef/CGhostDude_Main_00ef45b0.cpp slot 5 GetPos != GetFocalPos

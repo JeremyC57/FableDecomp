@@ -2,13 +2,12 @@
 // Leaf: ?Clone@?$CPredicate_And@VCIsThingConscious@NScript@@V12@@NScript@@UBEPAVCPredicateBase@2@XZ
 // Identity: original NScript CPredicate_And and original CIsThingConscious/CIsThingConscious names in both PDB name sets; own aggregate vtable012f687c contains evaluation/Clone/destructor slots0/1/2, embedded tables012c2fe8/012c2fe8 identify separate operand types. Original CScriptThing(const CScriptThing&)004abe90.
 // Layout: active CScriptThing header aliased for actual CBaseClass inheritance and real counted pointer. Direct original CPredicateBase interface order is operator()/Clone/dtor (no invented CBaseClass root); nested Predicate1+4,Predicate2+20, each Thing+4. PC conjunction size36.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #include <new>
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing();CScriptThing(const CScriptThing&);virtual ~CScriptThing();};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{
 class CPredicateBase{public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase{public:CScriptThing Thing;virtual bool operator()()const;virtual CPredicateBase* Clone()const;};

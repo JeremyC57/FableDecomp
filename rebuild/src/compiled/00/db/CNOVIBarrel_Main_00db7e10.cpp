@@ -7,11 +7,11 @@
 //   7 NewScriptFrame, 40 MsgIsGameInfoClickedPast, 70 GetHero, 115 DisplayGameInfo (cgsi_slots_aligned.tsv).
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 whose game-info-shown bool is at +0x82.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public:                              // 12 bytes
-    unsigned char _body[12 - 4];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* Data;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0

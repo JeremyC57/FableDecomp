@@ -5,12 +5,11 @@
 // Callees: CGameScriptInterface (ghidra_out/cgsi_slots_aligned.tsv) slots 594 EntitySetOpinionReactionsEnabled(const CScriptThing&,
 //   bool) (+0x948) and 595 EntitySetDeedReactionsEnabled(const CScriptThing&, bool) (+0x94c).
 // Shape (family L146): the member clears are scheduled between the first call's argument pushes.
-class CScriptThing {                                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();
-    void* PImp_Data;
-    void* PImp_Info;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

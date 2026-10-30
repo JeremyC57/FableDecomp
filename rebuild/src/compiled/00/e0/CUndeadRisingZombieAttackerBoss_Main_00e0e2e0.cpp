@@ -21,12 +21,11 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
-    virtual ~CScriptThing();                            // 0x004AA840
-    void* PImpData;
-    void* PImpInfo;
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CPredicateBase {
     virtual bool IsTrue() = 0;
 };

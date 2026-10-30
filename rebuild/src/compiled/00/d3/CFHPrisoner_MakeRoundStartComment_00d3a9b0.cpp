@@ -9,7 +9,11 @@
 //   script +0x14 (its started counter +0x88, mood +0x184), the round counter +0x20.
 // Shape: every mood arm re-tests IsDone before appending; the callee-saved pushes for the conversation sit after the tests.
 namespace NScript { class CPredicateBase; }
-class CScriptThing { public: unsigned char _body[12]; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0

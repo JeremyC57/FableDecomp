@@ -18,16 +18,11 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
-    virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026();
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -50,14 +45,8 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 }
 using NScript::CIsThingAlive;
 
-class CEntityScriptBase { public:                             // retail 0x14 bytes
-    virtual void v00();
-    CGameScriptInterface* Game;                        // +0x04
-    CScriptThing          Me;                          // +0x08
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
-public:
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 struct CBeggar : CEntityScriptBase {
     void Main();

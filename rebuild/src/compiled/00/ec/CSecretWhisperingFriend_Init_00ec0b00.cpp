@@ -18,12 +18,11 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-class CScriptThing { public:                            // vtable 0x01238C8C
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual const C3DVector& GetPos() const;     // slot 6 (+0x18)
-    void* PImp_Data;                             // +0x04
-    void* PImp_Info;                             // +0x08
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 class CGameScriptInterfaceBase { public:                // only the slot used is typed
     SCRIPT_SLOTS10(0); SCRIPT_SLOTS10(1); SCRIPT_SLOTS10(2); SCRIPT_SLOTS10(3); SCRIPT_SLOTS10(4);

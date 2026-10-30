@@ -29,13 +29,9 @@ class CDefString { public:
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThing> PImp;                  // +0x04
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();                                     // 0x004AA840
-    virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
-    virtual const C3DVector& GetPos() const;             // slot 6 (+0x18)
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 #define VPAD1(a) virtual void a() const;

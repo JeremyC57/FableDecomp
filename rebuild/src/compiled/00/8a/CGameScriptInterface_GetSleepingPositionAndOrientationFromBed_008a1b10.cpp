@@ -11,7 +11,7 @@
 //   dead `sleeper` argument slot.
 // Shape: the tests are nested ifs ending in one `return false` (early returns duplicate the epilogue); the component is
 //   a named local (`mov esi,[eax+4]`) taken through the inlined HasTC + map find; the claim is a `__forceinline` helper
-//   whose locals (the axes and the index) live in the frame and the dead `sleeper` slot, with `user.GetThing()` evaluated
+//   whose locals (the axes and the index) live in the frame and the dead `sleeper` slot, with `((CThing_Retail*)user.GetPThing())` evaluated
 //   inside the GetFreeActionPoint argument list (after the other pushes); C3DVector has no user copy/assignment, so the
 //   forward axis copies as three dword moves.
 struct CTCBase_Retail;
@@ -55,25 +55,17 @@ struct CTCUserActionPointBase {
     bool GetFreeActionPoint(CThing_Retail* user, C3DVector* position, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
     void UseActionPoint(long index);               // 0x007FEF40
 };
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010();
-    virtual CThing_Retail* GetThing() const;       // slot 11 (+0x2c)
-    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021();
-    virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031();
-    virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
-    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051();
-    virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061();
-    virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
-    virtual void v072(); virtual void v073(); virtual void v074();
-    virtual bool IsValid() const;                  // slot 75 (+0x12c)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 __forceinline bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CScriptThing& user, C3DVector& position,
                                         C3DVector& orientation)
 {
     CRightHandedSet axes;
     long index;
-    if (points->GetFreeActionPoint(user.GetThing(), &position, &axes, &index)) {
+    if (points->GetFreeActionPoint(((CThing_Retail*)user.GetPThing()), &position, &axes, &index)) {
         orientation = axes.Forward;
         points->UseActionPoint(index);
         return true;
@@ -88,10 +80,10 @@ __forceinline bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CS
 bool CGameScriptInterface::GetSleepingPositionAndOrientationFromBed(const CScriptThing& sleeper, const CScriptThing& bed,
                                                                     C3DVector& position, C3DVector& orientation)
 {
-    if (sleeper.IsValid()) {
-        if (bed.IsValid()) {
+    if (sleeper.IsAlive()) {
+        if (bed.IsAlive()) {
             if (IsThingABed(bed)) {
-                CThing_Retail* bedThing = bed.GetThing();
+                CThing_Retail* bedThing = ((CThing_Retail*)bed.GetPThing());
                 if (bedThing->HasTC(0x2d)) {
                     CTCUserActionPointBase* points = (CTCUserActionPointBase*)bedThing->m_tcs.Find(0x2d);
                     if (ClaimFreeActionPoint(points, sleeper, position, orientation))

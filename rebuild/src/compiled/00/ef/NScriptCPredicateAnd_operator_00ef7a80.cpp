@@ -8,32 +8,15 @@
 //   only that assignment makes all four 16+16-byte instantiations members of the FableWin.pdb name set, which holds
 //   ??R?$CPredicate_And@VCIsThingConscious@NScript@@VCIsThingAlive@2@@NScript@@UBE_NXZ. Family G051 (8 CPredicate_And instantiations; the propagated five-deep label is right only for 0x00EF6D20).
 // Callees: the two sub-predicates' virtual operator() (slot 0) through their own vtables.
-class CScriptThing {                                 // retail 12 bytes
-public:
-    virtual ~CScriptThing();
-    unsigned char _data[8];
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase vtable slots operator() / Clone / ~; CIsThingAlive, CIsThingConscious: : CPredicateBase, CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+#include "engine/CIsThingConscious.h"
 namespace NScript {
-class CPredicateBase {
-public:
-    virtual bool operator()() const = 0;             // slot 0
-    virtual CPredicateBase* Clone() const = 0;       // slot 1
-    virtual ~CPredicateBase() { }                    // slot 2
-};
-class CIsThingAlive : public CPredicateBase {        // 0x10 bytes, vtable 0x012C32F0
-public:
-    CIsThingAlive(const CScriptThing& thing);
-    virtual bool operator()() const;
-    virtual CPredicateBase* Clone() const;
-    CScriptThing Thing;                              // +0x04
-};
-class CIsThingConscious : public CPredicateBase {    // 0x10 bytes, vtable 0x012C2FE8
-public:
-    CIsThingConscious(const CScriptThing& thing);
-    virtual bool operator()() const;
-    virtual CPredicateBase* Clone() const;
-    CScriptThing Thing;                              // +0x04
-};
 class CIsVariableFalse : public CPredicateBase {     // 8 bytes, vtable 0x012EA43C
 public:
     CIsVariableFalse(bool* variable);

@@ -2,9 +2,6 @@
 // Leaf: ?OnPersist@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEXAAVCPersistContext@@@Z
 // Identity: original PDB member signatures and unique persist field names; own vtable012db86c slot4, constructed at00dd26e0. Field strings and typed helper callsites independently identify this owner; donor addresses not used.
 // Layout: original field types after typed72-byte level-script base or20-byte entity base; PC owner size128. Shared handle headers aliased for true original bases. CPersistContext is an API-only projection, no storage used.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -13,7 +10,6 @@ typedef unsigned long RetailUID;
 typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable(){}~CBaseClassNonCopyable(){}private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
@@ -36,17 +32,15 @@ class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
-class CScriptBase:public CBaseClassNonCopyable{public:
-std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
-CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
-CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
-unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
-virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;
-template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;};
 class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
 namespace NScript{class CQ_PrisonEscapeRescueMotherScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:long CurrentTask,TasksDone[3],TargetNumber[3];bool HeroAgreesToTask,HeroHasFoundWeapons,MotherCellDoorOpen,MotherFollowing,MotherDied,WatchingHero,PrisonCutsceneFinished,RaceStarting;long YearsPassedInCell,PrisonerConversationIndex,ConversationIndex;bool HeroEscapedCell,AlarmSounded,MotherRescuedFromPrisonAutoSaveCheckPoint;CTimer RunningTimer;virtual void OnPersist(CPersistContext&);};void CQ_PrisonEscapeRescueMotherScript::OnPersist(CPersistContext& context){context.Transfer("CurrentTask",CurrentTask,0L);context.Transfer("HeroHasFoundWeapons",HeroHasFoundWeapons,false);context.Transfer("MotherRescuedFromPrisonAutoSaveCheckPoint",MotherRescuedFromPrisonAutoSaveCheckPoint,false);}}
 #ifdef _MSC_VER

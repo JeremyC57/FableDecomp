@@ -29,12 +29,11 @@ protected:
 };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CGameDefinitionManager; class CPlayerManager;
 class CThingSearchTools;
-class CScriptThing : public CBaseClass {          // Ego_r.pdb 12 bytes
-public:
-    CScriptThing();
-    virtual ~CScriptThing();                      // 0x004AA840
-    unsigned char _data[8];
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CGameScriptInterfaceBase : public CBaseClassNonCopyable { };
 class CGameScriptInterface : public CGameScriptInterfaceBase {
 public:

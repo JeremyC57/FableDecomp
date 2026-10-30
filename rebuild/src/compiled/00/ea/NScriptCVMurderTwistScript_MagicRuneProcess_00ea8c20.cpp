@@ -17,13 +17,11 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
-    virtual ~CScriptThing();                            // 0x004AA840
-    virtual void s01(); virtual void s02(); virtual void s03(); virtual void s04(); virtual void s05();
-    virtual const C3DVector& GetPosition() const;       // slot 6 (+0x18)
-    void* PImpData;
-    void* PImpInfo;
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 namespace std {
 template<class T> class allocator { };
@@ -92,7 +90,7 @@ void NScript::CV_MurderTwistScript::MagicRuneProcess()
                         return;
                     CScriptThing* start = MagicRuneRumbleList._M_start;
                     if (GetDistanceBetweenThings(Game->GetHero(), start[i]) < 15.0f)
-                        Game->CreateRumble(MagicRuneRumbleList[i].GetPosition(), 0.3f, 0.2f, "");
+                        Game->CreateRumble(MagicRuneRumbleList[i].GetPos(), 0.3f, 0.2f, "");
                 }
                 if (IsActiveThreadTerminating())
                     return;
