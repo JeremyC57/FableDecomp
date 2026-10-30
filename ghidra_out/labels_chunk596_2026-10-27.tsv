@@ -1,0 +1,10 @@
+address	name	evidence
+0x00C62A50	C16BitSamplePtr::C16BitSamplePtr	descriptive per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; libpk, class from the ".\C16BitSamplePtr.cpp" assert string)
+0x00AE3670	CParticleProgram::~CParticleProgram	proven per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; vtable 0x0129F0D8 + Ego_r.pdb)
+0x00B8F4E0	std::vector<CEngineOcclusionManager::COccluderFlareEntry>::_M_fill_insert	proven per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; STLport 4.6 + FrameStart/resize caller chain)
+0x00CA8B90	CBaseInputPin::Receive	proven per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; DirectShow BaseClasses amfilter.cpp)
+0x00C756C0	CReverbDiffuser::UpdateGain	descriptive per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; libpk, landed name kept)
+0x00C75820	CReverbDiffuser::UpdateGainRamped	descriptive per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; libpk, landed name kept)
+0x00AF7730	std::vector<std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>>::insert	proven per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; STLport + AddComponent caller + Ego_r types)
+0x00C8E580	vorbis_synthesis_headerin	proven per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; libvorbis 1.0.1 info.c)
+0x00CA3420	floor1_inverse2	proven per batch 2026-10-27_linux_hand596 NOTES.md (chunk 596; libvorbis 1.0.1 floor1.c, dB table 0x013ABE28)

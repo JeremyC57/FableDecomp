@@ -367860,6 +367860,72 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00cb3420_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae3670'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_CParticleProgram_00ae3670.cpp'
+        TestSource = '00/ae/CParticleProgram_CParticleProgram_00ae3670_test.cpp'
+        PassPattern = '00ae3670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af7730'
+        Module = 'std::vector'
+        Source = '00/af/stdvector_insert_00af7730.cpp'
+        TestSource = '00/af/stdvector_insert_00af7730_test.cpp'
+        PassPattern = '00af7730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8f4e0'
+        Module = 'std::vector'
+        Source = '00/b8/stdvector_Mfillinsert_00b8f4e0.cpp'
+        TestSource = '00/b8/stdvector_Mfillinsert_00b8f4e0_test.cpp'
+        PassPattern = '00b8f4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62a50'
+        Module = 'C16BitSamplePtr'
+        Source = '00/c6/C16BitSamplePtr_C16BitSamplePtr_00c62a50.cpp'
+        TestSource = '00/c6/C16BitSamplePtr_C16BitSamplePtr_00c62a50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c62a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c756c0'
+        Module = 'CReverbDiffuser'
+        Source = '00/c7/CReverbDiffuser_UpdateGain_00c756c0.cpp'
+        TestSource = '00/c7/CReverbDiffuser_UpdateGain_00c756c0_test.cpp'
+        PassPattern = '00c756c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75820'
+        Module = 'CReverbDiffuser'
+        Source = '00/c7/CReverbDiffuser_UpdateGainRamped_00c75820.cpp'
+        TestSource = '00/c7/CReverbDiffuser_UpdateGainRamped_00c75820_test.cpp'
+        PassPattern = '00c75820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8e580'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_vorbissynthesisheaderin_00c8e580.cpp'
+        TestSource = '00/c8/libvorbis_vorbissynthesisheaderin_00c8e580_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '00c8e580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3420'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_floor1inverse2_00ca3420.cpp'
+        TestSource = '00/ca/libvorbis_floor1inverse2_00ca3420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ca3420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8b90'
+        Module = 'CBaseInputPin'
+        Source = '00/ca/CBaseInputPin_Receive_00ca8b90.cpp'
+        TestSource = '00/ca/CBaseInputPin_Receive_00ca8b90_test.cpp'
+        PassPattern = '00ca8b90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

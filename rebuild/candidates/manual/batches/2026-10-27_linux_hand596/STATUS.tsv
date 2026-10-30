@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c62a50	RELOCATION_MATCH	337v337	PASS	C16BitSamplePtr::C16BitSamplePtr(short*,long) (libpk, descriptive): init list + two libpk assert blocks; /EHsc; 1 grade
+00ae3670	RELOCATION_MATCH	338v338	PASS	CParticleProgram::~CParticleProgram (vtable 0x0129F0D8): body Clear(); local member models (header flattened); 1 grade
+00b8f4e0	RELOCATION_MATCH	339v339	PASS	vector<CEngineOcclusionManager::COccluderFlareEntry>::_M_fill_insert (STLport); C3DVector memberwise copy ctor; 3 grades (3rd re-graded the corrected Leaf)
+00ca8b90	RELOCATION_MATCH	339v339	PASS	CBaseInputPin::Receive (DirectShow BaseClasses amfilter.cpp verbatim, NotifyEvent body in TU); 1 grade
+00b22f30	DIFFER	354v340	-	NParticleEngine::GFInterpolateArray<unsigned long> (Ego_r); register allocation residue; retail_asm fistp helper; 4 grades
+00c756c0	RELOCATION_MATCH	341v341	PASS	CReverbDiffuser::UpdateGain (libpk, descriptive); history param retyped CRingBuffer (NAME_FIX); 1 grade
+00c75820	RELOCATION_MATCH	343v343	PASS	CReverbDiffuser::UpdateGainRamped (libpk, descriptive); float conversion as named local; 1 grade
+00af7730	RELOCATION_MATCH	345v345	PASS	vector<pair<NParticleEngine::EPSCType,CComponentInstance>>::insert (STLport, Ego_r types); 1 grade
+00c8e580	RELOCATION_MATCH	347v347	PASS	libvorbis 1.0.1 info.c vorbis_synthesis_headerin; four statics same-TU; /Gr /GS; 1 grade
+00ca3420	RELOCATION_MATCH	347v347	PASS	libvorbis 1.0.1 floor1.c floor1_inverse2; render_line static body in TU gets retail's private convention; /Gr; 3 grades (all match)

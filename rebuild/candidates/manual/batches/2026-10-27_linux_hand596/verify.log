@@ -1,0 +1,42 @@
+addr       parity           behav  name
+00ae3670   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+00ae3670   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ae3670   RELOCATION_MATCH PASS   ~CParticleProgram
+00af7730   RELOCATION_MATCH PASS   insert
+00b8f4e0   WARN SHARED_HEADER_AVAILABLE CEngineOcclusionManager
+00b8f4e0   WARN RELOC_NAME: ??$__uninitialized_copy@PAUCOccluderFlareEntry@CEngineOcclusionManager@@PAU12@@std@@YIPAUCOccluderFlareEntry@CEngineOcclusionManager@@PAU12@00ABU__false_type@0@@Z -> 00b8eed0 labelled '_global::UninitCopy_SRecord1C_00b8eed0'
+00b8f4e0   RELOCATION_MATCH PASS   _M_fill_insert
+00c62a50   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c62a50   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c62a50   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c62a50   RELOCATION_MATCH PASS   C16BitSamplePtr
+00c756c0   RELOCATION_MATCH PASS   UpdateGain
+00c75820   RELOCATION_MATCH PASS   UpdateGainRamped
+00c8e580   WARN RELOC_NAME: __vorbis_unpack_books@8 -> 00c8e2e0 labelled 'C3DGenerator_ReadComplexMesh'
+00c8e580   WARN RELOC_NAME: __vorbis_unpack_comment@8 -> 00c8e200 labelled 'C3DGenerator_ReadAnimationData'
+00c8e580   RELOCATION_MATCH PASS   vorbis_synthesis_headerin
+00ca3420   RELOCATION_MATCH PASS   floor1_inverse2
+00ca8b90   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8b90   RELOCATION_MATCH PASS   Receive
+
+WINS: 9
+  00ae3670 RELOCATION_MATCH CParticleProgram::??1CParticleProgram@@UAE@XZ
+  00af7730 RELOCATION_MATCH std::vector::?insert@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@QAEPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@PAU32@ABU32@@Z
+  00b8f4e0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@UCOccluderFlareEntry@CEngineOcclusionManager@@V?$allocator@UCOccluderFlareEntry@CEngineOcclusionManager@@@std@@@std@@QAEXPAUCOccluderFlareEntry@CEngineOcclusionManager@@IABU34@@Z
+  00c62a50 RELOCATION_MATCH C16BitSamplePtr::??0C16BitSamplePtr@@QAE@PAFJ@Z
+  00c756c0 RELOCATION_MATCH CReverbDiffuser::?UpdateGain@CReverbDiffuser@@QAEXIPBUSDiffuserParams@@PBUCRingBuffer@@I@Z
+  00c75820 RELOCATION_MATCH CReverbDiffuser::?UpdateGainRamped@CReverbDiffuser@@QAEXIPAUSDiffuserParams@@PBU2@PAUCRingBuffer@@II@Z
+  00c8e580 RELOCATION_MATCH libvorbis::@vorbis_synthesis_headerin@12
+  00ca3420 RELOCATION_MATCH libvorbis::@floor1_inverse2@16
+  00ca8b90 RELOCATION_MATCH CBaseInputPin::?Receive@CBaseInputPin@@UAGJPAUIMediaSample@@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CParticleProgram_CParticleProgram_00ae3670
+  stdvector_insert_00af7730
+  stdvector_Mfillinsert_00b8f4e0
+  C16BitSamplePtr_C16BitSamplePtr_00c62a50
+  CReverbDiffuser_UpdateGain_00c756c0
+  CReverbDiffuser_UpdateGainRamped_00c75820
+  libvorbis_vorbissynthesisheaderin_00c8e580
+  libvorbis_floor1inverse2_00ca3420
+  CBaseInputPin_Receive_00ca8b90
