@@ -10,15 +10,17 @@
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 #pragma pack(push, 1)
-class CParentDefClassBase {
-public:
-    CParentDefClassBase(const CParentDefClassBase& other);                          // 0x0046EE98
-    virtual ~CParentDefClassBase();
-    unsigned char _base[0x39 - 4];
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class CCardDef : public CParentDefClassBase {
 public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CCardDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CCardDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CCardDef@@UAEKXZ
     __forceinline CCardDef(const CCardDef& other) : CParentDefClassBase(other), CardName(other.CardName), CardVal(other.CardVal) { }
     long CardName;                                        // +0x3c
     long CardVal;                                         // +0x40

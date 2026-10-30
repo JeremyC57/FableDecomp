@@ -15,11 +15,7 @@
 //   OldRenderTarget, destroyed before the viewport copy); CSurface has a user virtual dtor, CRenderTarget an implicit one.
 #include "engine/CEngineScreenEffectOutlineGlow.h"
 
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct IDirect3DSurface9;
 

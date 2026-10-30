@@ -29,11 +29,7 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-class CBaseClass {
-public:
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;                          // slot 3 (+0xc)

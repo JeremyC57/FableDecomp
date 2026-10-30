@@ -8,11 +8,11 @@
 // the dword before the vector, the vector by its copy constructor (this = &m_levels, the source
 // member's address pushed), then the dword after it. Retail CParentDefClassBase is 0x3c bytes
 // (local model, see 0046f1b4).
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x38];                                   // +0x04..+0x3c
-    CParentDefClassBase(const CParentDefClassBase& other);       // 0x0046EE98
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 struct CAbilityTrackLevelDefVector {                             // retail std::vector (12 bytes)
     void* m_first;

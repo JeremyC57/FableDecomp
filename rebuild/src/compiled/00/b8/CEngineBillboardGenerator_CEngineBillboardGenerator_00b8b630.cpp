@@ -118,10 +118,7 @@ class CEngineResourceManager { public:
     const CShaderResource* GetPShaderResource() const { return ShaderResourcePixel.Get(); }
 };
 extern CEngineResourceManager* g_pEngineResourceManager_01436e98;   // 0x01436E98
-class CBaseClass { public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                            // 0x0099A2F0

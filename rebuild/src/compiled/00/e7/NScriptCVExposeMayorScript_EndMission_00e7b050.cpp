@@ -51,10 +51,7 @@ template <class T> class CCountedPointer { public:
         return *this;
     }
 };
-class CBaseClass { public:                                      // vtable 0x01231710
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X, Y, Z; };
 extern C3DVector g_ZeroVector;                           // 0x0143E8E0
 struct CScriptThingImp {                                 // the game-side thing behind a CScriptThing

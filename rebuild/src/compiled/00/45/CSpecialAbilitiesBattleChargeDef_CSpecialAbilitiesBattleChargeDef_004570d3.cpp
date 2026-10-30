@@ -12,11 +12,11 @@
 // far vector once (`lea eax,[esi+90h]`, three short-displacement stores) while the near ones keep their
 // disp8 stores; eax is busy with that address, so the zero register is ecx.
 #pragma optimize("s", on)
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
-    CParentDefClassBase();                      // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 template <class T>
 struct CAllocProxy {                            // STLport _STLP_alloc_proxy: the end-of-storage pointer with its own ctor

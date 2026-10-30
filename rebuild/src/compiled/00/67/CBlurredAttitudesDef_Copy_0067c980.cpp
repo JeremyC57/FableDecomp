@@ -8,11 +8,9 @@
 // 0067c490 (vtable 0x01243A44 = CBlurredAttitudesDef; the manifest label CBlurredAttitudesDef is propagated):
 // +0x25 long, then the vector (+0x29) and its flag byte (+0x36) in one sub-object whose inline
 // assignment gives retail's `lea ebx/ebp` addressing, +0x3c a sub-object with its own operator=.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 #pragma pack(push, 1)
-class CDefClassBase { public:
-    unsigned char _body[0x25];
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
 
 struct CRetailVector_long {                     // VC6-era Dinkumware vector: first / last / end
     long* first;
@@ -39,12 +37,16 @@ struct CSubObject_00471e44 {
 };
 
 
+// def vtable 0x0125B8AC: slot 0 0x0067C520 (implicit inline dtor); real overrides from the def vtable scan
+// RTTI .?AVCBlurredAttitudesDef@@ : CParentDefClassBase: m_id / m_block are the CParentDefClassBase members InstantiationName
+// (+0x25) and SubDefInfoMap (+0x29), modelled here because retail expands the parent's implicit operator= inline in this
+// /O2 TU (engine/CParentDefClassBase.h declares it out of line for the size-TU callers of 0x00431ED0; wave 2 LESSONS).
 class CBlurredAttitudesDef : public CDefClassBase { public:
     long                m_id;                   // +0x25
     SAttitudeBlock      m_block;                // +0x29 (vector + flag)
     unsigned char       m_pad37[5];             // +0x37..+0x3b
     CSubObject_00471e44 m_tail;                 // +0x3c
-    void Copy(const CDefClassBase* source);
+    virtual void Copy(const CDefClassBase* source);           // slot 19 0x0067C980 (?Copy@CBlurredAttitudesDef@@UAEXPBVCDefClassBase@@@Z, both PDBs)
     CBlurredAttitudesDef& operator=(const CBlurredAttitudesDef& other)   // inline: expanded into Copy (the out-of-line copy is @ 0x0067C490)
     {
         CDefClassBase::operator=(other);
@@ -53,6 +55,8 @@ class CBlurredAttitudesDef : public CDefClassBase { public:
         m_tail = other.m_tail;
         return *this;
     }
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x0067CDB0
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0067C510
 };
 #pragma pack(pop)
 

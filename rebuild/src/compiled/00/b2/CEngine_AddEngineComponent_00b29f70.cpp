@@ -129,11 +129,7 @@ public:
     void SetupEnableConsoleVariable();                      // 0x00B59760
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                           // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                                // 0x0099A2F0

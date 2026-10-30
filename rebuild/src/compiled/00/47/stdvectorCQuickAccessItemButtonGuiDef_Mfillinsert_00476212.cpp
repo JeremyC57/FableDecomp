@@ -24,13 +24,16 @@ class C2DVector { public:
     float Y;
 };
 
-class CParentDefClassBase { public:
-    unsigned char _body[0x3c - 4];                           // +0x04
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);    // 0x00431ED0
-    virtual ~CParentDefClassBase();                          // 0x00430300 (identical-code folded)
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 class CQuickAccessItemButtonGuiDef : public CParentDefClassBase { public:  // vtable 0x012360A4, retail sizeof 0x50
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CQuickAccessItemButtonGuiDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CQuickAccessItemButtonGuiDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CQuickAccessItemButtonGuiDef@@UAEKXZ
     long      ButtonGraphic;                                 // +0x3c
     C2DVector Position;                                      // +0x40
     C2DVector Offset;                                        // +0x48

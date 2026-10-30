@@ -13,11 +13,7 @@
 //   state switch is an inline core method (early-out on an equal value, capture push, dirty-list push).
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct IDirect3DSurface9;
 

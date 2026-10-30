@@ -4,11 +4,11 @@
 // Callees: CParentDefClassBase::CParentDefClassBase @ 0x00430370. Vtable 0x01233D1C = CExpressionDef (rtti-vtables.tsv). Shape: the size-optimised module (`or eax,-1`
 // for the shared -1, `and dword ptr,0` for the clear); `this` is returned. Every store sits AFTER the vtable store, so the words are member objects with inline
 // constructors (an index defaulting to -1, a cleared link): plain scalar initialisers would be scheduled before the vtable store (wave 24i).
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _pad[0x38];                      // +0x04 .. +0x3c
-    CParentDefClassBase();                         // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 struct CIndex_00456964 { long m_value; CIndex_00456964() : m_value(-1) { } };   // an index defaulting to "none"
 struct CLink_00456964  { void* m_p;     CLink_00456964()  : m_p(0) { } };       // a cleared link

@@ -12,12 +12,11 @@
 // implicit copy moves float members through integer registers, eax/ecx/edx rotating).
 // It is emitted out of line by an assignment in a helper (retail's caller is the slot-19 stub).
 #pragma pack(push, 1)
-class CParentDefClassBase {                              // retail 0x39 bytes (CDefClassBase 0x25 + name + sub-def map)
-public:
-    virtual ~CParentDefClassBase();
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-    unsigned char _body[0x39 - 4];
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class CEngineDef : public CParentDefClassBase {
 public:

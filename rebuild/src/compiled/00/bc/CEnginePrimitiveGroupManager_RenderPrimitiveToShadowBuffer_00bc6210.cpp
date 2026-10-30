@@ -8,11 +8,7 @@
 //   CEnginePrimitiveTypeInfo global 0x01436E84 (PrimitiveManagers[Type] at +0x10, the persistent primitive's Type +8).
 // Layout (Ego_r.pdb): CEngineInternalPrimitiveGroup::Primitives CArray<CEnginePrimitiveHandle> at +0x50.
 // Shape: the Changer loop of 0x00BC5620 (count cached, handle IsNull()/GetData()) with a signed running maximum.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace std {
 template <class _Tp> class allocator { };

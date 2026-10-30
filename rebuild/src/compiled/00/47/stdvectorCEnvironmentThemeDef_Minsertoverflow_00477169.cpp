@@ -17,12 +17,16 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class CParentDefClassBase { public:
-    unsigned char _body[0x3c - 4];                  // +0x04
-    virtual ~CParentDefClassBase();
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 class CEnvironmentThemeDef : public CParentDefClassBase { public:                 // vtable 0x01236244, retail sizeof 0xC4
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CEnvironmentThemeDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CEnvironmentThemeDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CEnvironmentThemeDef@@UAEKXZ
     unsigned long Fields[(0xc4 - 0x3c) / 4];        // +0x3c
     CEnvironmentThemeDef(const CEnvironmentThemeDef& other);                          // 0x0047318D
 };

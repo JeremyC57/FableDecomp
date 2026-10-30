@@ -8,11 +8,11 @@
 //   `*this = *(const CCombatDialogueDef*)other;`; `optimize("s", on)` keeps every copy in eax/al (speed rotates eax/ecx/edx).
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-class CParentDefClassBase {
-public:
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-    unsigned char _base[0x39];
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CCombatDialogueDef : public CParentDefClassBase {
 public:
     void Copy(const CParentDefClassBase* other);

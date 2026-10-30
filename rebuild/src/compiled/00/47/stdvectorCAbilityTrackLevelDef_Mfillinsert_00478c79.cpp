@@ -14,14 +14,17 @@
 inline void* operator new(unsigned int, void* p) { return p; }
 
 #pragma pack(push, 1)
-class CParentDefClassBase {                             // retail 0x39 bytes, byte-packed (CDefClassBase 0x25, InstantiationName, SubDefInfoMap)
-public:
-    virtual ~CParentDefClassBase();                     // 0x00430300
-    unsigned char _body[0x35];                          // +0x04..+0x39 (not touched here)
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class CAbilityTrackLevelDef : public CParentDefClassBase {               // retail 0x48 bytes
 public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CAbilityTrackLevelDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CAbilityTrackLevelDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CAbilityTrackLevelDef@@UAEKXZ
     unsigned char _own[0xF];                       // +0x39 (not touched here)
     CAbilityTrackLevelDef(const CAbilityTrackLevelDef& other);                           // 0x004787F6
     CAbilityTrackLevelDef& operator=(const CAbilityTrackLevelDef& other);                // 0x00478876

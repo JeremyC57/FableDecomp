@@ -88,11 +88,7 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
         this->_M_header->_M_right = this->_M_header;
     }
 };
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp

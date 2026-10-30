@@ -1,0 +1,1137 @@
+addr       parity           behav  name
+0042b0a2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042b0a2   RELOCATION_MATCH PASS   GetSubDef<CAppearanceDef>
+0042b248   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042b248   RELOCATION_MATCH PASS   GetSubDef<CAugmentationDef>
+0042af9e   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042af9e   RELOCATION_MATCH PASS   GetSubDef<CObjectAugmentationsDef>
+0042b1a6   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042b1a6   RELOCATION_MATCH PASS   GetSubDef<CWeaponDef>
+00434370   RELOCATION_MATCH PASS   operator=
+00431e40   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00431e40   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00458573   RELOCATION_MATCH PASS   CTattooDef
+00459a6f   RELOCATION_MATCH PASS   CBrainDef
+0045d505   RELOCATION_MATCH PASS   operator=
+00456802   RELOCATION_MATCH PASS   CCameraManagerSetDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456851.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456851.obj; graded the largest function
+00456851   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456851   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0045654c   RELOCATION_MATCH PASS   CCameraModeDef
+0045d344   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456779.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456779.obj; graded the largest function
+00456779   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456779   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00456de3   RELOCATION_MATCH PASS   CCombatDialogueDef
+0045e55a   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456eed.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456eed.obj; graded the largest function
+00456eed   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456eed   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00455da3   RELOCATION_MATCH PASS   CCombatTypeDef
+  WARN leaf 'Copy' matches no symbol in 0045c2e8.obj; graded the largest function
+  WARN leaf 'Copy' matches no symbol in 0045c2e8.obj; graded the largest function
+0045c2e8   RELOCATION_MATCH PASS   Copy
+0045933d   RELOCATION_MATCH PASS   CCreatureAbilityDef
+0045c614   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00455cab.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00455cab.obj; graded the largest function
+00455cab   WARN RELOC_NAME: ?CMember_dtor_0045334a@@YIXPAUCMember@@@Z -> 0045334a labelled '_global::StdList_Dtor_0045334a'
+00455cab   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00455cab   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00459783   RELOCATION_MATCH PASS   CEngineThemeDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459a53.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459a53.obj; graded the largest function
+00459a53   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00459a53   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0045974e   RELOCATION_MATCH PASS   CEngineThemeGroupDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459767.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459767.obj; graded the largest function
+00459767   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00459767   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0045be2b   RELOCATION_MATCH PASS   operator=
+00456964   RELOCATION_MATCH PASS   CExpressionDef
+0045d63c   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456cc5.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456cc5.obj; graded the largest function
+00456cc5   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456cc5   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0045d2fc   RELOCATION_MATCH PASS   operator=
+0045604d   RELOCATION_MATCH PASS   CHeroAbilityDef
+0045cb1c   RELOCATION_MATCH PASS   operator=
+0045686d   RELOCATION_MATCH PASS   CHeroPostcardGeneratorDef
+0045d5d3   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456948.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456948.obj; graded the largest function
+00456948   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456948   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004560e1   RELOCATION_MATCH PASS   CHeroStatsDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045887f.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045887f.obj; graded the largest function
+0045887f   WARN RELOC_NAME: ?DestructMember_0044f3b2@@YIXPAX@Z -> 0044f3b2 labelled '_global::CCountedPointer_Release_0044f3b2'
+0045887f   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045887f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00455572   RELOCATION_MATCH PASS   CInventoryCategoryDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045569c.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045569c.obj; graded the largest function
+0045569c   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045569c   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004550ac   RELOCATION_MATCH PASS   CInventoryDef
+004588fb   RELOCATION_MATCH PASS   CLightningDef
+00455cd1   WARN RELOC_NAME: ??0CBlendedEffectsMap@@QAE@XZ -> 0045336d labelled 'std::map<T_0045336d>::map'
+00455cd1   RELOCATION_MATCH PASS   CMaterialDef
+0045c112   RELOCATION_MATCH PASS   operator=
+00458c19   WARN RELOC_NAME: ??0CHeroAbilityStatPackage@@QAE@XZ -> 0045324f labelled 'std::map<T_0045324f>::map'
+00458c19   RELOCATION_MATCH PASS   CMeleeCombatAbilityDef
+00458c87   RELOCATION_MATCH PASS   CMeleeCombatKnockdownEffects
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00458d23.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00458d23.obj; graded the largest function
+00458d23   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00458d23   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004556b8   RELOCATION_MATCH PASS   CMessageEventDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045585a.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045585a.obj; graded the largest function
+0045585a   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045585a   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00456d69   RELOCATION_MATCH PASS   COpinionDeedEffectsDef
+0045e187   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456d43.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456d43.obj; graded the largest function
+00456d43   WARN RELOC_NAME: ?MemberAt3C_dtor@@YIXPAX@Z -> 004519c2 labelled '_global::StdList_Dtor_004519c2'
+00456d43   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456d43   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00456f71   WARN RELOC_NAME: ??0CAttitudeEnabledMap@@QAE@XZ -> 004534a6 labelled 'std::map<T_004534a6>::map'
+00456f71   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+00456f71   RELOCATION_MATCH PASS   COpinionPersonalityDef
+  WARN leaf '??1COpinionPersonalityDef@' matches no symbol in 00456fd8.obj; graded the largest function
+  WARN leaf '??1COpinionPersonalityDef@' matches no symbol in 00456fd8.obj; graded the largest function
+00456fd8   WARN RELOC_NAME: ?member_dtor@@YIXPAX@Z -> 00451a03 labelled '_global::StdList_Dtor_00451a03'
+00456fd8   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456fd8   RELOCATION_MATCH PASS   ~COpinionPersonalityDef
+0045e660   RELOCATION_MATCH PASS   operator=
+0045dd05   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456cff.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456cff.obj; graded the largest function
+00456cff   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456cff   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00456ffe   WARN RELOC_NAME: ??0COpinionSet@@QAE@XZ -> 004538eb labelled 'NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::OnPersist'
+00456ffe   RELOCATION_MATCH PASS   CTattooDef
+0045ee9b   RELOCATION_MATCH PASS   operator=
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00455d44.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00455d44.obj; graded the largest function
+00455d44   WARN RELOC_NAME: ?CMember_dtor_0045185f@@YIXPAUCMember@@@Z -> 0045185f labelled '_global::StdList_Dtor_0045185f'
+00455d44   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00455d44   RELOCATION_MATCH PASS   ~CMaterialDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004560a9.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004560a9.obj; graded the largest function
+004560a9   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004560a9   RELOCATION_MATCH PASS   ~CHeroAbilityDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004567db.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004567db.obj; graded the largest function
+004567db   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004567db   RELOCATION_MATCH PASS   ~CCameraManagerDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457132.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457132.obj; graded the largest function
+00457132   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457132   RELOCATION_MATCH PASS   ~CSpecialAbilitiesBattleChargeDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 0045720a.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 0045720a.obj; graded the largest function
+0045720a   WARN RELOC_NAME: ?CSub_dtor@@YIXPAUCSub@@@Z -> 00414ea0 labelled 'std::vector<CCharString>::~vector'
+0045720a   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045720a   RELOCATION_MATCH PASS   ~CSpecialAbilitiesMultiStrikeDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004572a7.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004572a7.obj; graded the largest function
+004572a7   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004572a7   RELOCATION_MATCH PASS   ~CSpecialAbilitiesMultiArrowDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004576db.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004576db.obj; graded the largest function
+004576db   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004576db   RELOCATION_MATCH PASS   ~CSpecialAbilitiesForcePushDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004579c2.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 004579c2.obj; graded the largest function
+004579c2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004579c2   RELOCATION_MATCH PASS   ~CSpecialAbilitiesHealLifeDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457e03.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457e03.obj; graded the largest function
+00457e03   WARN RELOC_NAME: ?dtor@CMember@@QAIXXZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00457e03   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457e03   RELOCATION_MATCH PASS   ~CSpecialAbilitiesSummonSpellDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457ed6.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457ed6.obj; graded the largest function
+00457ed6   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457ed6   RELOCATION_MATCH PASS   ~CSpecialAbilitiesElectrocutedEffectDef
+0045956c   RELOCATION_MATCH PASS   CPlayerDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004595e3.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004595e3.obj; graded the largest function
+004595e3   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004595e3   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00459bb6   WARN RELOC_NAME: ??0CScriptSpriteMap@@QAE@XZ -> 00430345 labelled 'std::map<T_00430345>::map'
+00459bb6   WARN RELOC_NAME: ??0CGameActionMap@@QAE@XZ -> 00454aef labelled 'std::map<T_00454aef>::map'
+00459bb6   RELOCATION_MATCH PASS   CPlayerGuiDef
+004595ff   RELOCATION_MATCH PASS   CPlayerMovementDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004596d2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004596d2.obj; graded the largest function
+004596d2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004596d2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf 'operator=' matches no symbol in 0045ce48.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045ce48.obj; graded the largest function
+0045ce48   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045d2d1.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045d2d1.obj; graded the largest function
+0045d2d1   WARN RELOC_NAME: ?DestructMember_0045645d@@YIXPAX@Z -> 0045645d labelled '_global::StdList_Dtor_0045645d'
+0045d2d1   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045d2d1   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004596ee   RELOCATION_MATCH PASS   CSimBuildingDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459732.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459732.obj; graded the largest function
+00459732   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00459732   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c523.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0045c523.obj; graded the largest function
+0045c523   WARN RELOC_NAME: ?DestructMember_00455e59@@YIXPAX@Z -> 00455e59 labelled 'CSimVoice::~CSimVoice'
+0045c523   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045c523   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00455899.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00455899.obj; graded the largest function
+00455899   WARN RELOC_NAME: ?Sub_Dtor_00453327@@YIXPAX@Z -> 00453327 labelled '_global::StdList_Dtor_00453327'
+00455899   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00455899   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00458413   RELOCATION_MATCH PASS   CSoundDef
+0045c54e   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00455eca.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00455eca.obj; graded the largest function
+00455eca   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00455eca   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00457073   RELOCATION_MATCH PASS   CSpecialAbilitiesAssassinRushDef
+0045f58a   RELOCATION_MATCH PASS   operator=
+004570d3   RELOCATION_MATCH PASS   CSpecialAbilitiesBattleChargeDef
+0045f635   RELOCATION_MATCH PASS   operator=
+0045f854   RELOCATION_MATCH PASS   operator=
+0045fac1   RELOCATION_MATCH PASS   operator=
+00458033   RELOCATION_MATCH PASS   CSpecialAbilitiesDivineWrathDef
+004578de   RELOCATION_MATCH PASS   CSpecialAbilitiesDrainLifeDef
+00457efd   RELOCATION_MATCH PASS   CSpecialAbilitiesDrunkennessDef
+00457f13   RELOCATION_MATCH PASS   ?Transfer@CSpecialAbilitiesDrunkennessDef@@UAEXAAVCPersistContext@@@Z
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00457f57.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00457f57.obj; graded the largest function
+00457f57   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457f57   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00457716   RELOCATION_MATCH PASS   CSpecialAbilitiesEnflameDef
+0045fe2b   RELOCATION_MATCH PASS   operator=
+0045fd53   RELOCATION_MATCH PASS   operator=
+004579f7   RELOCATION_MATCH PASS   CSpecialAbilitiesGhostSwordDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00457a67.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00457a67.obj; graded the largest function
+00457a67   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457a67   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00457973   RELOCATION_MATCH PASS   CSpecialAbilitiesHealLifeDef
+  WARN leaf 'operator=' matches no symbol in 0045f7c7.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045f7c7.obj; graded the largest function
+0045f7c7   RELOCATION_MATCH PASS   operator=
+00457178   WARN RELOC_NAME: ??0CDefString@@QAE@XZ -> 0042d9d0 labelled 'Field_SetToMinusOne'
+00457178   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+00457178   RELOCATION_MATCH PASS   CSpecialAbilitiesMultiStrikeDef
+  WARN leaf 'operator=' matches no symbol in 0045f716.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0045f716.obj; graded the largest function
+0045f716   RELOCATION_MATCH PASS   operator=
+00457776   WARN RELOC_NAME: ??0CDefString@@QAE@XZ -> 0042d9d0 labelled 'Field_SetToMinusOne'
+00457776   WARN RELOC_NAME: ??_H@YGXPAXIHP6EPAX0@Z@Z -> 004038c0 labelled '`vector_constructor_iterator''
+00457776   RELOCATION_MATCH PASS   CSpecialAbilitiesPhysicalShieldDef
+0045fee3   RELOCATION_MATCH PASS   operator=
+00457da9   RELOCATION_MATCH PASS   CSpecialAbilitiesSummonSpellDef
+00457f73   RELOCATION_MATCH PASS   CCarriedReadableDef
+00457a83   RELOCATION_MATCH PASS   CSpecialAbilitiesTurncoatSpellDef
+004581f8   RELOCATION_MATCH PASS   CSpecialAbilitiesUnholyPowerDef
+0045704a   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0045704a   WARN RELOC_NAME: ?SubA_dtor@@YIXPAUSubA@@@Z -> 00451981 labelled '_global::StdList_Dtor_00451981'
+0045704a   WARN RELOC_NAME: ?SubB_dtor@@YIXPAUSubB@@@Z -> 00451a44 labelled '_global::StdList_Dtor_00451a44'
+0045704a   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045704a   RELOCATION_MATCH PASS   ~COpinionSourceDef
+004570b7   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+004570b7   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004570b7   RELOCATION_MATCH PASS   ~CSpecialAbilitiesAssassinRushDef
+0045775a   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0045775a   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045775a   RELOCATION_MATCH PASS   ~CSpecialAbilitiesEnflameDef
+00457b72   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00457b72   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457b72   RELOCATION_MATCH PASS   ~CSpecialAbilitiesFireballSpellDef
+00457e77   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00457e77   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457e77   RELOCATION_MATCH PASS   ~CSpecialAbilitiesBurntEffectDef
+004583fa   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+004583fa   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004583fa   RELOCATION_MATCH PASS   ~CSpecialAbilitiesCreatureTintDef
+00458504   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00458504   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00458504   RELOCATION_MATCH PASS   OnDie
+0045a133   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0045a133   WARN RELOC_NAME: ?Sub3c_Notify@@YIXPAUSub3c@@@Z -> 0045180f labelled 'std::list<T_0045180f>::~list'
+0045a133   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045a133   RELOCATION_MATCH PASS   ~CUILocaleGraphicsDef
+00459537   RELOCATION_MATCH PASS   CThingGroupDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459550.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00459550.obj; graded the largest function
+00459550   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00459550   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004590e6.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004590e6.obj; graded the largest function
+004590e6   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004590e6   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00456f09   RELOCATION_MATCH PASS   CCarriedReadableDef
+0045e620   RELOCATION_MATCH PASS   Copy
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456f55.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00456f55.obj; graded the largest function
+00456f55   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456f55   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf 'allocator<CMacro>,CMacro>' matches no symbol in 00456dc0.obj; graded the largest function
+  WARN leaf 'allocator<CMacro>,CMacro>' matches no symbol in 00456dc0.obj; graded the largest function
+00456dc0   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456dc0   RELOCATION_MATCH PASS   ~COpinionDeedEffectsDef
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in 00456531.obj; graded the largest function
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in 00456531.obj; graded the largest function
+00456531   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00456531   RELOCATION_MATCH PASS   ~CFactionDef
+  WARN leaf '??1CGlobalDef@' matches no symbol in 00458a4f.obj; graded the largest function
+  WARN leaf '??1CGlobalDef@' matches no symbol in 00458a4f.obj; graded the largest function
+00458a4f   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00458a4f   RELOCATION_MATCH PASS   ~CGlobalDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457ae4.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00457ae4.obj; graded the largest function
+00457ae4   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00457ae4   RELOCATION_MATCH PASS   ~CSpecialAbilitiesTurncoatSpellDef
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00458476.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in 00458476.obj; graded the largest function
+00458476   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00458476   RELOCATION_MATCH PASS   ~CSoundDef
+00458c66   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00458c66   RELOCATION_MATCH PASS   ~CMeleeCombatAbilityDef
+0045855a   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0045855a   WARN RELOC_ALIAS: _engine_free_0045855a -> 00bfea14 is the import thunk 'MSVCR71.DLL::free'
+0045855a   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045855a   RELOCATION_MATCH PASS   ~CObjectFamilyDef
+004588e2   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+004588e2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004588e2   RELOCATION_MATCH PASS   ~CCombatSequenceDef
+0046f1b4   RELOCATION_MATCH PASS   CAbilityButtonGuiDef
+0046f483   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0046f483.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0046f483.obj; graded the largest function
+0046f483   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0046f483   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004629fb   RELOCATION_MATCH PASS   operator=
+00465eb3   RELOCATION_MATCH PASS   operator=
+00461f7c   RELOCATION_MATCH PASS   operator=
+00461acd   RELOCATION_MATCH PASS   operator=
+0046f6dc   RELOCATION_MATCH PASS   CLensFlareElementDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0046f760.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0046f760.obj; graded the largest function
+0046f760   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0046f760   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00462451   RELOCATION_MATCH PASS   operator=
+004625fd   RELOCATION_MATCH PASS   operator=
+004628d0   RELOCATION_MATCH PASS   operator=
+0046ee2d   RELOCATION_MATCH PASS   CQuickAccessItemButtonGuiDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0046ef6b.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0046ef6b.obj; graded the largest function
+0046ef6b   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0046ef6b   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0046f4f0   RELOCATION_MATCH PASS   operator=
+00460a61   WARN RELOC_NAME: ??4CSoundBankEntryVector@@QAEAAU0@ABU0@@Z -> 00460aca labelled 'Vector<Record20_00460aca>::Assign'
+00460a61   RELOCATION_MATCH PASS   operator=
+004604cf   RELOCATION_MATCH PASS   operator=
+00460a19   RELOCATION_MATCH PASS   operator=
+004600cb   RELOCATION_MATCH PASS   operator=
+0046051d   RELOCATION_MATCH PASS   operator=
+00460256   RELOCATION_MATCH PASS   operator=
+00460185   RELOCATION_MATCH PASS   operator=
+00460131   RELOCATION_MATCH PASS   operator=
+004602a4   RELOCATION_MATCH PASS   operator=
+00460457   RELOCATION_MATCH PASS   operator=
+004605e5   RELOCATION_MATCH PASS   operator=
+004601ea   RELOCATION_MATCH PASS   operator=
+004608c6   RELOCATION_MATCH PASS   operator=
+00463950   RELOCATION_MATCH PASS   operator=
+  WARN leaf 'operator=' matches no symbol in 0046267d.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 0046267d.obj; graded the largest function
+0046267d   RELOCATION_MATCH PASS   operator=
+004786cf   RELOCATION_MATCH PASS   CAbilityTrackDef
+0047889d   WARN RELOC_NAME: ??4CAbilityTrackLevelDefVector@@QAEAAU0@ABU0@@Z -> 004788ca labelled 'Vector<CAbilityTrackLevelDef>::Assign'
+0047889d   RELOCATION_MATCH PASS   operator=
+004787f6   RELOCATION_MATCH PASS   CAbilityTrackLevelDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00478855.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00478855.obj; graded the largest function
+00478855   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00478855   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004784b3   RELOCATION_MATCH PASS   CAppearanceModifierScalingDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00478512.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00478512.obj; graded the largest function
+00478512   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00478512   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0047747c   WARN RELOC_NAME: ?ReleaseStorage@CObjectDefVector@@QAEXXZ -> 004774ab labelled 'std::_Vector_base<CEngineLocalDetailObjectDef>::~_Vector_base'
+0047747c   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0047747c   RELOCATION_MATCH PASS   ~CEngineLocalDetailLayerDef
+00477a8a   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00477943.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00477943.obj; graded the largest function
+00477943   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00477943   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00472e83   RELOCATION_MATCH PASS   operator=
+0047318d   RELOCATION_MATCH PASS   CEnvironmentThemeDef
+00473046   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00473496.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00473496.obj; graded the largest function
+00473496   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00473496   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00478132   WARN RELOC_NAME: ??4CAbilityTrackVector@@QAEAAU0@ABU0@@Z -> 0047857d labelled 'Vector<CAbilityTrackDef>::Assign'
+00478132   RELOCATION_MATCH PASS   operator=
+00471f60   WARN RELOC_NAME: ??0CAttitudeVector@@QAE@ABV0@@Z -> 00471f97 labelled 'std::vector<EOpinionAttitudeType>::vector'
+00471f60   RELOCATION_MATCH PASS   COpinionDeedReactionDef
+00479574   RELOCATION_MATCH PASS   COpinionDeedReactionDef
+00471e17   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0047200d.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 0047200d.obj; graded the largest function
+0047200d   WARN RELOC_NAME: ?COpinionDeedReactionDef_Member_dtor@@YIXPAUCOpinionDeedReactionDef_Member@@@Z -> 00472033 labelled '_global::TailJmp_OnReadFinished_00472033'
+0047200d   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0047200d   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+0047955b   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+0047955b   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0047955b   RELOCATION_MATCH PASS   Dtor_OnDieBase_0047955b
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in 00478722.obj; graded the largest function
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in 00478722.obj; graded the largest function
+00478722   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00478722   RELOCATION_MATCH PASS   ~CAbilityTrackDef
+0047a4a2   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCAbilityTrackDef@@IV1@@std@@YIPAVCAbilityTrackDef@@PAV1@IABV1@@Z -> 0047a6e7 labelled 'std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+0047a4a2   RELOCATION_MATCH PASS   insert
+00478c79   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCAbilityTrackLevelDef@@IV1@@std@@YIPAVCAbilityTrackLevelDef@@PAV1@IABV1@@Z -> 00478ebc labelled '_global::UninitFillN_CElement72_004787f6_00478ebc'
+00478c79   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00478c79   RELOCATION_MATCH PASS   insert
+0047a08c   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCAppearanceModifierScalingDef@@IV1@@std@@YIPAVCAppearanceModifierScalingDef@@PAV1@IABV1@@Z -> 0047a2cf labelled '_global::UninitFillN_CElement72_004784b3_0047a2cf'
+0047a08c   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0047a08c   RELOCATION_MATCH PASS   insert
+00477169   RELOCATION_MATCH PASS   _M_insert_overflow
+00479630   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCOpinionDeedReactionDef@@IV1@@std@@YIPAVCOpinionDeedReactionDef@@PAV1@IABV1@@Z -> 00479875 labelled 'std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+00479630   WARN RELOC_NAME: ??1COpinionDeedReactionDef@@UAE@XZ -> 0047955b labelled '_global::Dtor_OnDieBase_0047955b'
+00479630   RELOCATION_MATCH PASS   insert
+00476212   WARN RELOC_NAME: ?uninitialized_fill_n@std@@YIPAVCQuickAccessItemButtonGuiDef@@PAV2@IABV2@@Z -> 00476505 labelled 'std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+00476212   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00476212   RELOCATION_MATCH PASS   _M_fill_insert
+004766c2   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCAbilityButtonGuiDef@@IV1@@std@@YIPAVCAbilityButtonGuiDef@@PAV1@IABV1@@Z -> 004768f8 labelled '_global::UninitFillN_CAbilityButtonGuiDef_004768f8'
+004766c2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004766c2   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@IAEXPAVCAbilityButtonGuiDef@@ABV3@ABU__false_type@2@I_N@Z -> 00476816 labelled '_global::AbilityButton_AllocCopyInsert'
+004766c2   RELOCATION_MATCH PASS   _M_fill_insert
+00476b67   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCLensFlareElementDef@@IV1@@std@@YIPAVCLensFlareElementDef@@PAV1@IABV1@@Z -> 00476d9d labelled '_global::UninitFillN_CLensFlareElementDef_00476d9d'
+00476b67   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00476b67   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@IAEXPAVCLensFlareElementDef@@ABV3@ABU__false_type@2@I_N@Z -> 00476cbb labelled '_global::CLensFlareElementDef_vector_Reallocate'
+00476b67   RELOCATION_MATCH PASS   _M_fill_insert
+00476ff7   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCEnvironmentThemeDef@@IV1@@std@@YIPAVCEnvironmentThemeDef@@PAV1@IABV1@@Z -> 0047725f labelled '_global::UninitFillN_CEnvironmentThemeDef_0047725f'
+00476ff7   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00476ff7   RELOCATION_MATCH PASS   _M_fill_insert
+00477e8e   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCEngineLocalDetailObjectDef@@IV1@@std@@YIPAVCEngineLocalDetailObjectDef@@PAV1@IABV1@@Z -> 00478104 labelled '_global::UninitFillN_CEngineLocalDetailObjectDef_00478104'
+00477e8e   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00477e8e   RELOCATION_MATCH PASS   _M_fill_insert
+00485815   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00485815   RELOCATION_MATCH PASS   GetSubDef<CCreatureDef>
+0049e2c0   MATCH            PASS   SetAsLoadingRegion
+004a0940   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0940   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+004a0940   WARN SHARED_HEADER_AVAILABLE CWorld
+004a0940   WARN RELOC_CONFLICT: ??$CopyHolySites@USThingListIterator@@U?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@@@YI?AU?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@USThingListIterator@@0U0@@Z -> 004adcb0 here, 0048d5c0 in landed 00488b20
+004a0940   WARN RELOC_NAME: ??$CopyHolySites@USThingListIterator@@U?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@@@YI?AU?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@USThingListIterator@@0U0@@Z -> 004adcb0 labelled '_global::CopyIfFlagSet'
+004a0940   RELOCATION_MATCH PASS   TeleportHeroToHSP
+004bdb40   WARN RELOC_NAME: ?GetAllDummyObjectNames@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@@Z -> 00a35b30 labelled 'CMainGameComponent::BeginInputLoading'
+004bdb40   RELOCATION_MATCH PASS   GetAllDummyObjectNames
+004bda30   WARN RELOC_NAME: ?GetAllHelperPointNames@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@@Z -> 00a35af0 labelled 'CMainGameComponent::BeginInputLoading'
+004bda30   RELOCATION_MATCH PASS   GetAllHelperPointNames
+004bdd70   WARN RELOC_NAME: ?GetDummyObjectNamesStartingWith@C3DMeshObject@@QBEXAAU?$CStdVector@VCCharString@@@@ABVCCharString@@@Z -> 00a35b50 labelled 'NGameText::ConstructString'
+004bdd70   RELOCATION_MATCH PASS   GetDummyObjectNamesStartingWith
+004be000   RELOCATION_MATCH PASS   GetNoDummyObjects
+004bde90   RELOCATION_MATCH PASS   GetNoHelperPoints
+004bd200   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+004bd200   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004bd200   WARN SHARED_HEADER_AVAILABLE CWorld
+004bd200   WARN SHARED_HEADER_AVAILABLE CTCBase
+004bd200   RELOCATION_MATCH PASS   WasRenderedLastFrame
+004c3cd0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004dc858   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004dc858   RELOCATION_MATCH PASS   GetSubDef<CInterestingToVillagersDef>
+004e3f65   RELOCATION_MATCH PASS   CAreaOfEffectAttackDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3fb4.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3fb4.obj; graded the largest function
+004e3fb4   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3fb4   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e3c0e   RELOCATION_MATCH PASS   CBalverineBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3c52.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3c52.obj; graded the largest function
+004e3c52   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3c52   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004ec0d4.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004ec0d4.obj; graded the largest function
+004ec0d4   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004ec0d4   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004ebe96.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004ebe96.obj; graded the largest function
+004ebe96   WARN RELOC_NAME: ?DestructMember_00440d60@@YIXPAX@Z -> 00440d60 labelled '_unattributed::ReleaseFirstMember_00440d60'
+004ebe96   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004ebe96   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3f3f.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3f3f.obj; graded the largest function
+004e3f3f   WARN RELOC_NAME: ?DestructMember_004dd52b@@YIXPAX@Z -> 004dd52b labelled '_global::StdList_Dtor_004dd52b'
+004e3f3f   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3f3f   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e39ce   RELOCATION_MATCH PASS   CJackOfBladesBattleDef
+004e46cd   RELOCATION_MATCH PASS   operator=
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3aae.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3aae.obj; graded the largest function
+004e3aae   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3aae   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e382c   RELOCATION_MATCH PASS   CMazeBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e38b2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e38b2.obj; graded the largest function
+004e38b2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e38b2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e3aca   RELOCATION_MATCH PASS   CScorpionKingBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3b50.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3b50.obj; graded the largest function
+004e3b50   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3b50   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e38ce   RELOCATION_MATCH PASS   CThunderBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e391d.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e391d.obj; graded the largest function
+004e391d   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e391d   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e3b6c   RELOCATION_MATCH PASS   CTrollBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3bf2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3bf2.obj; graded the largest function
+004e3bf2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3bf2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e398c   RELOCATION_MATCH PASS   CWaspQueenBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e39b2.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e39b2.obj; graded the largest function
+004e39b2   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e39b2   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004e3939   RELOCATION_MATCH PASS   CWhisperBattleDef
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3970.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 004e3970.obj; graded the largest function
+004e3970   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004e3970   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+004ebdb0   RELOCATION_MATCH PASS   __copy_ptrs
+004ec10f   RELOCATION_MATCH PASS   _M_allocate_and_copy
+004ebf32   WARN RELOC_NAME: ??$__copy_ptrs@VCCardDef@@@std@@YIPAVCCardDef@@PBV1@0PAV1@ABU__false_type@0@@Z -> 004ec03f labelled '_global::VectorReallocateCopyConstruct'
+004ebf32   RELOCATION_MATCH PASS   operator=
+004ebca9   WARN RELOC_NAME: ?_M_allocate_and_copy@?$vector@VCCardPositionsDef@@@std@@QAEPAVCCardPositionsDef@@IPBV3@0@Z -> 004ebedb labelled '_global::Pair_CCharString_CArray_AllocateCopyConstruct'
+004ebca9   WARN RELOC_NAME: ??$_Construct@VCCardPositionsDef@@@std@@YIXPAVCCardPositionsDef@@ABV1@@Z -> 004ebdf1 labelled 'CCardPositionsDef::CCardPositionsDef'
+004ebca9   RELOCATION_MATCH PASS   operator=
+004ec08a   RELOCATION_MATCH PASS   _Construct
+004ec03f   RELOCATION_MATCH PASS   VectorReallocateCopyConstruct
+004f9cfc   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+004f9cfc   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004f9cfc   RELOCATION_MATCH PASS   Dtor_OnDieBase_004f9cfc
+004fa3e3   RELOCATION_MATCH PASS   __copy_backward_ptrs<CCardDef*,CCardDef*>
+004f9f62   RELOCATION_MATCH PASS   __copy_backward_ptrs<CCardPositionsDef*,CCardPositionsDef*>
+004f9db7   RELOCATION_MATCH PASS   __copy_ptrs<CCardPositionsDef*,CCardPositionsDef*>
+004fa22c   RELOCATION_MATCH PASS   Vector_CopyElements_Destroy
+004fa434   RELOCATION_MATCH PASS   _M_insert_overflow
+004f9fa3   WARN RELOC_NAME: ??$_Construct@VCCardPositionsDef@@V1@@std@@YIXPAVCCardPositionsDef@@ABV1@@Z -> 004ebdf1 labelled 'CCardPositionsDef::CCardPositionsDef'
+004f9fa3   RELOCATION_MATCH PASS   _M_insert_overflow
+005130a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005130a0   RELOCATION_MATCH PASS   GetSubDef<CShopDef>
+00512fe0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00512fe0   RELOCATION_MATCH PASS   GetSubDef<CVillagePeopleDef>
+0057ff92   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0057ff92   RELOCATION_MATCH PASS   GetSubDef<CAppearanceModifierDef>
+00580034   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00580034   RELOCATION_MATCH PASS   GetSubDef<CHeroDef>
+005936c2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005936c2   RELOCATION_MATCH PASS   GetSubDef<CAbilityDef>
+005933c8   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005933c8   RELOCATION_MATCH PASS   GetSubDef<CContextSensitiveItemDef>
+005935c4   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005935c4   RELOCATION_MATCH PASS   GetSubDef<CHeroSuitDef>
+0059346a   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0059346a   RELOCATION_MATCH PASS   GetSubDef<CLightDef>
+0059350c   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0059350c   RELOCATION_MATCH PASS   GetSubDef<CStockItemDef>
+005b1e5a   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005b1e5a   RELOCATION_MATCH PASS   GetSubDef<CHeroTitleDef>
+005bade1   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005bade1   RELOCATION_MATCH PASS   GetSubDef<CInventoryItemDef>
+005b1efc   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005b1efc   RELOCATION_MATCH PASS   GetSubDef<CTattooDef>
+005cc10e   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005cc10e   RELOCATION_MATCH PASS   GetSubDef<CCarryableDef>
+005c0cfb   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c0cfb   RELOCATION_MATCH PASS   GetSubDef<CResurrectionItemDef>
+005da3c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005da3c0   RELOCATION_MATCH PASS   GetSubDef<CCarriedReadableDef>
+005da240   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005da240   RELOCATION_MATCH PASS   GetSubDef<CExpressionSubDef>
+005da180   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005da180   RELOCATION_MATCH PASS   GetSubDef<CHairCardDef>
+005da300   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005da300   RELOCATION_MATCH PASS   GetSubDef<CTrophyDef>
+005ed4a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005ed4a0   RELOCATION_MATCH PASS   GetSubDef<CTavernGameDef>
+00625350   RELOCATION_MATCH PASS   operator=
+0065f7b4   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065f7b4   RELOCATION_MATCH PASS   GetSubDef<CCrateStackDef>
+00655d28   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00655d28   RELOCATION_MATCH PASS   GetSubDef<CDoorDef>
+0065f604   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065f604   RELOCATION_MATCH PASS   GetSubDef<CEntitySoundDef>
+0065f440   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065f440   RELOCATION_MATCH PASS   GetSubDef<CVillageDef>
+006696b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006696b0   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityUseProjectileWeaponDef>
+00669580   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00669580   RELOCATION_MATCH PASS   GetSubDef<CSpecialEffectsDef>
+0067c980   RELOCATION_MATCH PASS   Copy
+00670b90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00670b90   RELOCATION_MATCH PASS   GetSubDef<CCoopSpiritDef>
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00677360.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00677360.obj; graded the largest function
+00677360   WARN RELOC_NAME: ?DestructMember_00450ba0@@YIXPAX@Z -> 00450ba0 labelled 'CThingComponentSet::~CThingComponentSet'
+00677360   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00677360   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00685c00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00685c00   RELOCATION_MATCH PASS   GetSubDef<COpinionOfHeroDef>
+00686e10   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00686e10   RELOCATION_MATCH PASS   SerialiseLevelState
+00696130   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00696130   RELOCATION_MATCH PASS   GetSubDef<CCreatureStatsDef>
+006a2fa0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006a2fa0   RELOCATION_MATCH PASS   GetSubDef<CCarryingDef>
+006ae320   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006ae320   RELOCATION_MATCH PASS   GetSubDef<CGoldDef>
+006ae260   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006ae260   RELOCATION_MATCH PASS   GetSubDef<CKickableDef>
+006a6be0   MATCH            PASS   operator=
+006b0fa0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006b0fa0   RELOCATION_MATCH PASS   GetSubDef<CPhysicsDef>
+006c1b00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006c1b00   RELOCATION_MATCH PASS   GetSubDef<CBuyableHouseDef>
+006cd2f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006cd2f0   RELOCATION_MATCH PASS   GetSubDef<CCreatureNavigationDef>
+006c7720   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006c7720   RELOCATION_MATCH PASS   GetSubDef<CEnemyDef>
+006d3ef0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006d3ef0   RELOCATION_MATCH PASS   GetSubDef<CGiftDef>
+006daa90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006daa90   RELOCATION_MATCH PASS   GetSubDef<CHeroExperienceDef>
+006d3d00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006d3d00   RELOCATION_MATCH PASS   GetSubDef<CHeroMarriageDef>
+006d3dc0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006d3dc0   RELOCATION_MATCH PASS   GetSubDef<CWifeDef>
+006e1620   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+006e1620   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006e1620   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006e1620   WARN SHARED_HEADER_AVAILABLE CWorld
+006e1620   WARN RELOC_NAME: ?GetFrameSource@CTCDParticleEmitter@@QAEPAUCFrameSource@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+006e1620   WARN RELOC_NAME: ?SetHidden@CParticleEmitter@NParticleEngine@@QAEX_N@Z -> 006dfda0 labelled 'NParticleEngine::CParticleEmitter::SetParticleCreationDisabled'
+006e1620   RELOCATION_MATCH PASS   FrameUpdate
+006e0480   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+006e0480   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006e0480   RELOCATION_MATCH PASS   SetEmitterOrientation
+006e0500   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+006e0500   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006e0500   RELOCATION_MATCH PASS   SetEmitterPosition
+006f0f60   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006f0f60   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityStrafeDef>
+00702930   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00702930   RELOCATION_MATCH PASS   GetSubDef<CQuestCardDef>
+007086f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007086f0   RELOCATION_MATCH PASS   GetSubDef<CTextureReplacementDef>
+0071f930   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0071f930   RELOCATION_MATCH PASS   GetSubDef<CHeroMorphDef>
+0072ef60   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0072ef60   RELOCATION_MATCH PASS   GetSubDef<CBuyHouseDef>
+00722d30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00722d30   RELOCATION_MATCH PASS   GetSubDef<CSmokeGeneratorDef>
+00732bd0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00732bd0   RELOCATION_MATCH PASS   GetSubDef<CClockDef>
+00738430   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00738430   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityBlockCounterAttackDef>
+007382b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007382b0   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityBlockHeavyWeaponAttackDef>
+007381f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007381f0   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityBlockLightWeaponAttackDef>
+00738370   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00738370   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityBlockProjectileWeaponAttackDef>
+007380d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007380d0   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityBlockUnarmedAttackDef>
+007384f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007384f0   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityFlourishCounterAttackDef>
+007385b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007385b0   RELOCATION_MATCH PASS   GetSubDef<CCombatAbilityGetHitCounterAttackDef>
+0073dbe0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0073dbe0   RELOCATION_MATCH PASS   GetSubDef<CCreatureModeDef>
+007325d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007325d0   RELOCATION_MATCH PASS   GetSubDef<CSpotLightDef>
+00746c20   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00746c20   RELOCATION_MATCH PASS   GetSubDef<CBedDef>
+0074f7d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074f7d0   RELOCATION_MATCH PASS   GetSubDef<CChestDef>
+0074f6a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074f6a0   RELOCATION_MATCH PASS   GetSubDef<CContainerRewardHeroDef>
+0074d160   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074d160   RELOCATION_MATCH PASS   GetSubDef<CCreatureGeneratorDef>
+00746100   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00746100   RELOCATION_MATCH PASS   GetSubDef<CPerceivedThingDef>
+00748900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00748900   RELOCATION_MATCH PASS   GetSubDef<CStealthDef>
+007510d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007510d0   RELOCATION_MATCH PASS   GetSubDef<CExplodingObjectDef>
+00751190   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00751190   RELOCATION_MATCH PASS   GetSubDef<CExplosionDef>
+007550f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007550f0   RELOCATION_MATCH PASS   GetSubDef<CLookDef>
+00751bc0   WARN SHARED_HEADER_AVAILABLE CWorld
+00751bc0   WARN SHARED_HEADER_AVAILABLE CLookDef
+00751bc0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00751bc0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00751bc0   WARN RELOC_NAME: ?Distance2D@@YIMABVC2DVector@@0@Z -> 009e2460 labelled '_global::GFGet2DDistance'
+00751bc0   RELOCATION_MATCH PASS   IsInsideAnimationRange
+0077ac20   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0077ac20   RELOCATION_MATCH PASS   GetSubDef<CExperienceDef>
+0077e430   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0077e430   RELOCATION_MATCH PASS   GetSubDef<CHeroCentreDef>
+0077d080   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0077d080   RELOCATION_MATCH PASS   GetSubDef<CHighlightItemDef>
+00778900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00778900   RELOCATION_MATCH PASS   GetSubDef<CTimeAppearanceFadeDef>
+007815a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007815a0   RELOCATION_MATCH PASS   GetSubDef<CFlammableDef>
+00787ae0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00787ae0   RELOCATION_MATCH PASS   GetSubDef<CShipDef>
+00787060   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00787060   RELOCATION_MATCH PASS   GetSubDef<CSkeletalMorphDef>
+00785010   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00785010   RELOCATION_MATCH PASS   GetSubDef<CTCVolumeContainmentTrackerDef>
+00788e53   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00788e53   RELOCATION_MATCH PASS   GetSubDef<CTrapDef>
+0079c4b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0079c4b0   RELOCATION_MATCH PASS   GetSubDef<CSummonableCreatureDef>
+007ad9c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007ad9c0   RELOCATION_MATCH PASS   GetSubDef<CAIScratchpadDef>
+007afa90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007afa90   RELOCATION_MATCH PASS   GetSubDef<CBossDef>
+007a6ca0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007a6ca0   RELOCATION_MATCH PASS   GetSubDef<CReplaceableMeshDef>
+007a61d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007a61d0   RELOCATION_MATCH PASS   GetSubDef<CSpecialAbilitiesForcePushDataDef>
+007b5680   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b5680   RELOCATION_MATCH PASS   GetSubDef<CActivateQuestDef>
+007bb920   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007bb920   RELOCATION_MATCH PASS   GetSubDef<CDrunkennessDef>
+007be88c   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007be88c   RELOCATION_MATCH PASS   GetSubDef<CFireballSpellLevelDef>
+007b2600   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b2600   RELOCATION_MATCH PASS   GetSubDef<CFishDef>
+007b2540   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b2540   RELOCATION_MATCH PASS   GetSubDef<CFishingDef>
+007b44e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b44e0   RELOCATION_MATCH PASS   GetSubDef<CGuardDef>
+007b7f50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b7f50   RELOCATION_MATCH PASS   GetSubDef<COverheadDisplayDef>
+007b9700   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b9700   RELOCATION_MATCH PASS   GetSubDef<CTavernTableDef>
+007be92e   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007be92e   RELOCATION_MATCH PASS   GetSubDef<CThingDrainLifeShotDef>
+007be7ea   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007be7ea   RELOCATION_MATCH PASS   GetSubDef<CThingMultiArrowShotDef>
+007c3ad0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007c3ad0   RELOCATION_MATCH PASS   GetSubDef<CSpecialAbilitiesDrainLifeDataDef>
+007c8000   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007c8000   RELOCATION_MATCH PASS   GetSubDef<CTurncoatDef>
+007c25a0   RELOCATION_MATCH PASS   InitAttachedEffects
+007d4bd0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007d4bd0   RELOCATION_MATCH PASS   GetSubDef<CTavernGameCoinGolfDef>
+007d1260   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007d1260   RELOCATION_MATCH PASS   GetSubDef<CTavernGameShoveHaPennyDef>
+007d9a80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007d9a80   RELOCATION_MATCH PASS   GetSubDef<CTavernGameSpotTheAdditionDef>
+007df9e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007df9e0   RELOCATION_MATCH PASS   GetSubDef<CWallMountEffectsDef>
+007e1230   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e1230   RELOCATION_MATCH PASS   GetSubDef<CAICreatureWillPowerIndicatorDef>
+007eae40   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007eae40   RELOCATION_MATCH PASS   GetSubDef<CActionUseDef>
+007e5820   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e5820   RELOCATION_MATCH PASS   GetSubDef<CBettingDef>
+007e1d30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e1d30   RELOCATION_MATCH PASS   GetSubDef<CBonusItemDef>
+007e3290   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e3290   RELOCATION_MATCH PASS   GetSubDef<CCameraCollisionDef>
+007efc50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007efc50   RELOCATION_MATCH PASS   GetSubDef<CDecapitationDef>
+007e7d80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e7d80   RELOCATION_MATCH PASS   GetSubDef<CFireheartMinigameDef>
+007e2390   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e2390   RELOCATION_MATCH PASS   GetSubDef<CFishingRodDef>
+007e0a40   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e0a40   RELOCATION_MATCH PASS   GetSubDef<CHeroSpecialMovementDef>
+007e1400   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e1400   RELOCATION_MATCH PASS   GetSubDef<CMultiStaticMeshDef>
+007e6e00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e6e00   RELOCATION_MATCH PASS   GetSubDef<COracleMinigameDef>
+007e8200   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e8200   RELOCATION_MATCH PASS   GetSubDef<CReadableDef>
+007eeea0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007eeea0   RELOCATION_MATCH PASS   GetSubDef<CSmashableDef>
+
+WINS: 353
+  0042b0a2 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCAppearanceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceDef@@@@@Z
+  0042b248 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAugmentationDef@@@@@Z
+  0042af9e RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCObjectAugmentationsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCObjectAugmentationsDef@@@@@Z
+  0042b1a6 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWeaponDef@@@@@Z
+  00434370 RELOCATION_MATCH CEngineDef::??4CEngineDef@@QAEAAV0@ABV0@@Z
+  00431e40 RELOCATION_MATCH CFrontEndDef::??_GCFrontEndDef@@UAEPAXI@Z
+  00458573 RELOCATION_MATCH CArmourDef::??0CArmourDef@@QAE@XZ
+  00459a6f RELOCATION_MATCH CBrainDef::??0CBrainDef@@QAE@XZ
+  0045d505 RELOCATION_MATCH CCameraManagerDef::??4CCameraManagerDef@
+  00456802 RELOCATION_MATCH CCameraManagerSetDef::??0CCameraManagerSetDef@
+  00456851 RELOCATION_MATCH CCameraManagerSetDef::`scalar_deleting_destructor'
+  0045654c RELOCATION_MATCH CCameraModeDef::??0CCameraModeDef@
+  0045d344 RELOCATION_MATCH CCameraModeDef::??4CCameraModeDef@
+  00456779 RELOCATION_MATCH CCameraModeDef::`scalar_deleting_destructor'
+  00456de3 RELOCATION_MATCH CCombatDialogueDef::??0CCombatDialogueDef@
+  0045e55a RELOCATION_MATCH CCombatDialogueDef::??4CCombatDialogueDef@@QAEAAV0@ABV0@@Z
+  00456eed RELOCATION_MATCH CCombatDialogueDef::`scalar_deleting_destructor'
+  00455da3 RELOCATION_MATCH CCombatTypeDef::??0CCombatTypeDef@@QAE@XZ
+  0045c2e8 RELOCATION_MATCH CCombatTypeDef::Copy
+  0045933d RELOCATION_MATCH CCreatureAbilityDef::??0CCreatureAbilityDef@
+  0045c614 RELOCATION_MATCH CCreatureGenerationFamilyDef::??4CCreatureGenerationFamilyDef@
+  00455cab RELOCATION_MATCH CEngineLocalDetailGeneratorDef::`scalar_deleting_destructor'
+  00459783 RELOCATION_MATCH CEngineThemeDef::??0CEngineThemeDef@
+  00459a53 RELOCATION_MATCH CEngineThemeDef::`scalar_deleting_destructor'
+  0045974e RELOCATION_MATCH CEngineThemeGroupDef::??0CEngineThemeGroupDef@
+  00459767 RELOCATION_MATCH CEngineThemeGroupDef::`scalar_deleting_destructor'
+  0045be2b RELOCATION_MATCH CEnvironmentDef::??4CEnvironmentDef
+  00456964 RELOCATION_MATCH CExpressionDef::??0CExpressionDef@
+  0045d63c RELOCATION_MATCH CExpressionDef::??4CExpressionDef@
+  00456cc5 RELOCATION_MATCH CExpressionDef::`scalar_deleting_destructor'
+  0045d2fc RELOCATION_MATCH CFactionDef::??4CFactionDef@@QAEAAV0@ABV0@@Z
+  0045604d RELOCATION_MATCH CHeroAbilityDef::??0CHeroAbilityDef@@QAE@XZ
+  0045cb1c RELOCATION_MATCH CHeroAbilityDef::??4CHeroAbilityDef@
+  0045686d RELOCATION_MATCH CHeroPostcardGeneratorDef::??0CHeroPostcardGeneratorDef@
+  0045d5d3 RELOCATION_MATCH CHeroPostcardGeneratorDef::??4CHeroPostcardGeneratorDef@
+  00456948 RELOCATION_MATCH CHeroPostcardGeneratorDef::`scalar_deleting_destructor'
+  004560e1 RELOCATION_MATCH CHeroStatsDef::??0CHeroStatsDef
+  0045887f RELOCATION_MATCH CHitLocationDef::`scalar_deleting_destructor'
+  00455572 RELOCATION_MATCH CInventoryCategoryDef::??0CInventoryCategoryDef@
+  0045569c RELOCATION_MATCH CInventoryCategoryDef::`scalar_deleting_destructor'
+  004550ac RELOCATION_MATCH CInventoryDef::??0CInventoryDef@@QAE@XZ
+  004588fb RELOCATION_MATCH CLightningDef::??0CLightningDef@
+  00455cd1 RELOCATION_MATCH CMaterialDef::??0CMaterialDef@
+  0045c112 RELOCATION_MATCH CMaterialDef::??4CMaterialDef@
+  00458c19 RELOCATION_MATCH CMeleeCombatAbilityDef::??0CMeleeCombatAbilityDef
+  00458c87 RELOCATION_MATCH CMeleeCombatKnockdownEffects::??0CMeleeCombatKnockdownEffects@
+  00458d23 RELOCATION_MATCH CMeleeCombatKnockdownEffects::`scalar_deleting_destructor'
+  004556b8 RELOCATION_MATCH CMessageEventDef::??0CMessageEventDef@
+  0045585a RELOCATION_MATCH CMessageEventDef::`scalar_deleting_destructor'
+  00456d69 RELOCATION_MATCH COpinionDeedEffectsDef::??0COpinionDeedEffectsDef
+  0045e187 RELOCATION_MATCH COpinionDeedMaskDef::??4COpinionDeedMaskDef@
+  00456d43 RELOCATION_MATCH COpinionDeedMaskDef::`scalar_deleting_destructor'
+  00456f71 RELOCATION_MATCH COpinionPersonalityDef::??0COpinionPersonalityDef
+  00456fd8 RELOCATION_MATCH COpinionPersonalityDef::??1COpinionPersonalityDef@
+  0045e660 RELOCATION_MATCH COpinionPersonalityDef::??4COpinionPersonalityDef@
+  0045dd05 RELOCATION_MATCH COpinionReactionMaskDef::??4COpinionReactionMaskDef@
+  00456cff RELOCATION_MATCH COpinionReactionMaskDef::`scalar_deleting_destructor'
+  00456ffe RELOCATION_MATCH COpinionSourceDef::??0COpinionSourceDef@@QAE@XZ
+  0045ee9b RELOCATION_MATCH COpinionSourceDef::??4COpinionSourceDef@
+  00455d44 RELOCATION_MATCH CMaterialDef::??1CPatchTesselationEdgeStrip@
+  004560a9 RELOCATION_MATCH CHeroAbilityDef::??1CPatchTesselationEdgeStrip@
+  004567db RELOCATION_MATCH CCameraManagerDef::??1CPatchTesselationEdgeStrip@
+  00457132 RELOCATION_MATCH CSpecialAbilitiesBattleChargeDef::??1CPatchTesselationEdgeStrip@
+  0045720a RELOCATION_MATCH CSpecialAbilitiesMultiStrikeDef::??1CPatchTesselationEdgeStrip@
+  004572a7 RELOCATION_MATCH CSpecialAbilitiesMultiArrowDef::??1CPatchTesselationEdgeStrip@
+  004576db RELOCATION_MATCH CSpecialAbilitiesForcePushDef::??1CPatchTesselationEdgeStrip@
+  004579c2 RELOCATION_MATCH CSpecialAbilitiesHealLifeDef::??1CPatchTesselationEdgeStrip@
+  00457e03 RELOCATION_MATCH CSpecialAbilitiesSummonSpellDef::??1CPatchTesselationEdgeStrip@
+  00457ed6 RELOCATION_MATCH CSpecialAbilitiesElectrocutedEffectDef::??1CPatchTesselationEdgeStrip@
+  0045956c RELOCATION_MATCH CPlayerDef::??0CPlayerDef@
+  004595e3 RELOCATION_MATCH CPlayerDef::`scalar_deleting_destructor'
+  00459bb6 RELOCATION_MATCH CPlayerGuiDef::??0CPlayerGuiDef@
+  004595ff RELOCATION_MATCH CPlayerMovementDef::??0CPlayerMovementDef@
+  004596d2 RELOCATION_MATCH CPlayerMovementDef::`scalar_deleting_destructor'
+  0045ce48 RELOCATION_MATCH CRegionDef::operator=
+  0045d2d1 RELOCATION_MATCH CRegionDef::`scalar_deleting_destructor'
+  004596ee RELOCATION_MATCH CSimBuildingDef::??0CSimBuildingDef@
+  00459732 RELOCATION_MATCH CSimBuildingDef::`scalar_deleting_destructor'
+  0045c523 RELOCATION_MATCH CSimVoicesDef::`scalar_deleting_destructor'
+  00455899 RELOCATION_MATCH CSkyDef::`scalar_deleting_destructor'
+  00458413 RELOCATION_MATCH CSoundDef::??0CSoundDef@
+  0045c54e RELOCATION_MATCH CSoundThemeDef::??4CSoundThemeDef@
+  00455eca RELOCATION_MATCH CSoundThemeDef::`scalar_deleting_destructor'
+  00457073 RELOCATION_MATCH CSpecialAbilitiesAssassinRushDef::??0CSpecialAbilitiesAssassinRushDef@@QAE@XZ
+  0045f58a RELOCATION_MATCH CSpecialAbilitiesAssassinRushDef::??4CSpecialAbilitiesAssassinRushDef@
+  004570d3 RELOCATION_MATCH CSpecialAbilitiesBattleChargeDef::??0CSpecialAbilitiesBattleChargeDef@
+  0045f635 RELOCATION_MATCH CSpecialAbilitiesBattleChargeDef::??4CSpecialAbilitiesBattleChargeDef@
+  0045f854 RELOCATION_MATCH CSpecialAbilitiesBerserkDef::??4CSpecialAbilitiesBerserkDef
+  0045fac1 RELOCATION_MATCH CSpecialAbilitiesBulletTimeDef::??4CSpecialAbilitiesBulletTimeDef
+  00458033 RELOCATION_MATCH CSpecialAbilitiesDivineWrathDef::??0CSpecialAbilitiesDivineWrathDef@
+  004578de RELOCATION_MATCH CSpecialAbilitiesDrainLifeDef::??0CSpecialAbilitiesDrainLifeDef
+  00457efd RELOCATION_MATCH CSpecialAbilitiesDrunkennessDef::??0CSpecialAbilitiesDrunkennessDef@
+  00457f13 RELOCATION_MATCH CSpecialAbilitiesDrunkennessDef::?Transfer@CSpecialAbilitiesDrunkennessDef@@UAEXAAVCPersistContext@@@Z
+  00457f57 RELOCATION_MATCH CSpecialAbilitiesDrunkennessDef::`scalar_deleting_destructor'
+  00457716 RELOCATION_MATCH CSpecialAbilitiesEnflameDef::??0CSpecialAbilitiesEnflameDef@@QAE@XZ
+  0045fe2b RELOCATION_MATCH CSpecialAbilitiesEnflameDef::??4CSpecialAbilitiesEnflameDef@
+  0045fd53 RELOCATION_MATCH CSpecialAbilitiesForcePushDef::??4CSpecialAbilitiesForcePushDef@
+  004579f7 RELOCATION_MATCH CSpecialAbilitiesGhostSwordDef::??0CSpecialAbilitiesGhostSwordDef@
+  00457a67 RELOCATION_MATCH CSpecialAbilitiesGhostSwordDef::`scalar_deleting_destructor'
+  00457973 RELOCATION_MATCH CSpecialAbilitiesHealLifeDef::??0CSpecialAbilitiesHealLifeDef@@QAE@XZ
+  0045f7c7 RELOCATION_MATCH CSpecialAbilitiesMultiArrowDef::operator=
+  00457178 RELOCATION_MATCH CSpecialAbilitiesMultiStrikeDef::??0CSpecialAbilitiesMultiStrikeDef
+  0045f716 RELOCATION_MATCH CSpecialAbilitiesMultiStrikeDef::operator=
+  00457776 RELOCATION_MATCH CSpecialAbilitiesPhysicalShieldDef::??0CSpecialAbilitiesPhysicalShieldDef
+  0045fee3 RELOCATION_MATCH CSpecialAbilitiesPhysicalShieldDef::??4CSpecialAbilitiesPhysicalShieldDef@
+  00457da9 RELOCATION_MATCH CSpecialAbilitiesSummonSpellDef::??0CSpecialAbilitiesSummonSpellDef@
+  00457f73 RELOCATION_MATCH CSpecialAbilitiesThunderLightningStormDef::??0CSpecialAbilitiesThunderLightningStormDef@@QAE@XZ
+  00457a83 RELOCATION_MATCH CSpecialAbilitiesTurncoatSpellDef::??0CSpecialAbilitiesTurncoatSpellDef
+  004581f8 RELOCATION_MATCH CSpecialAbilitiesUnholyPowerDef::??0CSpecialAbilitiesUnholyPowerDef@
+  0045704a RELOCATION_MATCH COpinionSourceDef::OnDie
+  004570b7 RELOCATION_MATCH CSpecialAbilitiesAssassinRushDef::OnDie
+  0045775a RELOCATION_MATCH CSpecialAbilitiesEnflameDef::OnDie
+  00457b72 RELOCATION_MATCH CSpecialAbilitiesFireballSpellDef::OnDie
+  00457e77 RELOCATION_MATCH CSpecialAbilitiesBurntEffectDef::OnDie
+  004583fa RELOCATION_MATCH CSpecialAbilitiesCreatureTintDef::OnDie
+  00458504 RELOCATION_MATCH CTCInventoryItem::OnDie
+  0045a133 RELOCATION_MATCH NUISystem::CUILocaleGraphicsDef::OnDie
+  00459537 RELOCATION_MATCH CThingGroupDef::??0CThingGroupDef@
+  00459550 RELOCATION_MATCH CThingGroupDef::`scalar_deleting_destructor'
+  004590e6 RELOCATION_MATCH CThingShotDef::`scalar_deleting_destructor'
+  00456f09 RELOCATION_MATCH CVillagerInteractionsDef::??0CVillagerInteractionsDef@@QAE@XZ
+  0045e620 RELOCATION_MATCH CVillagerInteractionsDef::Copy
+  00456f55 RELOCATION_MATCH CVillagerInteractionsDef::`scalar_deleting_destructor'
+  00456dc0 RELOCATION_MATCH COpinionDeedEffectsDef::allocator<CMacro>,CMacro>
+  00456531 RELOCATION_MATCH CFactionDef::CSymbolInfo>_>
+  00458a4f RELOCATION_MATCH ::??1CGlobalDef@
+  00457ae4 RELOCATION_MATCH CSpecialAbilitiesTurncoatSpellDef::??1CPatchTesselationEdgeStrip@
+  00458476 RELOCATION_MATCH CSoundDef::??1CPatchTesselationEdgeStrip@
+  00458c66 RELOCATION_MATCH CMeleeCombatAbilityDef::FinishMove
+  0045855a RELOCATION_MATCH CObjectFamilyDef::OnDie
+  004588e2 RELOCATION_MATCH CCombatSequenceDef::OnDie
+  0046f1b4 RELOCATION_MATCH CAbilityButtonGuiDef::??0CAbilityButtonGuiDef@
+  0046f483 RELOCATION_MATCH CAbilityButtonGuiDef::`scalar_deleting_destructor'
+  004629fb RELOCATION_MATCH CEngineThemeDef::??4CEngineThemeDef@
+  00465eb3 RELOCATION_MATCH CGlobalDef::??4CGlobalDef
+  00461f7c RELOCATION_MATCH CHeroCombatDef::??4CHeroCombatDef
+  00461acd RELOCATION_MATCH CHitLocationDef::??4CHitLocationDef@
+  0046f6dc RELOCATION_MATCH CLensFlareElementDef::??0CLensFlareElementDef@@QAE@ABV0@@Z
+  0046f760 RELOCATION_MATCH CLensFlareElementDef::`scalar_deleting_destructor'
+  00462451 RELOCATION_MATCH CMeleeCombatAbilityDef::??4CMeleeCombatAbilityDef@
+  004625fd RELOCATION_MATCH CMeleeCombatKnockdownEffects::??4CMeleeCombatKnockdownEffects@@QAEAAV0@ABV0@@Z
+  004628d0 RELOCATION_MATCH CPlayerMovementDef::??4CPlayerMovementDef@
+  0046ee2d RELOCATION_MATCH CQuickAccessItemButtonGuiDef::??0CQuickAccessItemButtonGuiDef@
+  0046ef6b RELOCATION_MATCH CQuickAccessItemButtonGuiDef::`scalar_deleting_destructor'
+  0046f4f0 RELOCATION_MATCH CSkyDef::??4CSkyDef@
+  00460a61 RELOCATION_MATCH CSoundDef::??4CSoundDef@
+  004604cf RELOCATION_MATCH CSpecialAbilitiesBurntEffectDef::??4CSpecialAbilitiesBurntEffectDef@@QAEAAV0@ABV0@@Z
+  00460a19 RELOCATION_MATCH CSpecialAbilitiesCreatureTintDef::??4CSpecialAbilitiesCreatureTintDef@
+  004600cb RELOCATION_MATCH CSpecialAbilitiesDrainLifeDef::??4CSpecialAbilitiesDrainLifeDef@
+  0046051d RELOCATION_MATCH CSpecialAbilitiesElectrocutedEffectDef::??4CSpecialAbilitiesElectrocutedEffectDef@
+  00460256 RELOCATION_MATCH CSpecialAbilitiesFireballSpellDef::??4CSpecialAbilitiesFireballSpellDef@
+  00460185 RELOCATION_MATCH CSpecialAbilitiesGhostSwordDef::??4CSpecialAbilitiesGhostSwordDef@
+  00460131 RELOCATION_MATCH CSpecialAbilitiesHealLifeDef::??4CSpecialAbilitiesHealLifeDef@
+  004602a4 RELOCATION_MATCH CSpecialAbilitiesLightningSpellDef::??4CSpecialAbilitiesLightningSpellDef@
+  00460457 RELOCATION_MATCH CSpecialAbilitiesSummonSpellDef::??4CSpecialAbilitiesSummonSpellDef@
+  004605e5 RELOCATION_MATCH CSpecialAbilitiesThunderLightningStormDef::??4CSpecialAbilitiesThunderLightningStormDef@@QAEAAV0@ABV0@@Z
+  004601ea RELOCATION_MATCH CSpecialAbilitiesTurncoatSpellDef::??4CSpecialAbilitiesTurncoatSpellDef@
+  004608c6 RELOCATION_MATCH CSpecialAbilitiesUnholyPowerDef::??4CSpecialAbilitiesUnholyPowerDef@
+  00463950 RELOCATION_MATCH CThingBaseDef::??4CThingBaseDef
+  0046267d RELOCATION_MATCH CThingShotDef::operator=
+  004786cf RELOCATION_MATCH CAbilityTrackDef::??0CAbilityTrackDef@
+  0047889d RELOCATION_MATCH CAbilityTrackDef::??4CAbilityTrackDef@
+  004787f6 RELOCATION_MATCH CAbilityTrackLevelDef::??0CAbilityTrackLevelDef@
+  00478855 RELOCATION_MATCH CAbilityTrackLevelDef::`scalar_deleting_destructor'
+  004784b3 RELOCATION_MATCH CAppearanceModifierScalingDef::??0CAppearanceModifierScalingDef@
+  00478512 RELOCATION_MATCH CAppearanceModifierScalingDef::`scalar_deleting_destructor'
+  0047747c RELOCATION_MATCH CEngineLocalDetailLayerDef::??1CEngineLocalDetailLayerDef@@
+  00477a8a RELOCATION_MATCH CEngineLocalDetailLayerDef::??4CEngineLocalDetailLayerDef@@QAEAAV0@ABV0@@Z
+  00477943 RELOCATION_MATCH CEngineLocalDetailObjectDef::`scalar_deleting_destructor'
+  00472e83 RELOCATION_MATCH CEnvironmentThemeDaySetDef::??4CEnvironmentThemeDaySetDef
+  0047318d RELOCATION_MATCH CEnvironmentThemeDef::??0CEnvironmentThemeDef
+  00473046 RELOCATION_MATCH CEnvironmentThemeDef::??4CEnvironmentThemeDef
+  00473496 RELOCATION_MATCH CEnvironmentThemeDef::`scalar_deleting_destructor'
+  00478132 RELOCATION_MATCH CHeroStatsDef::??4CHeroStatsDef@
+  00471f60 RELOCATION_MATCH COpinionDeedReactionDef::??0COpinionDeedReactionDef
+  00479574 RELOCATION_MATCH COpinionDeedReactionDef::??0COpinionDeedReactionDef@@QAE@XZ
+  00471e17 RELOCATION_MATCH COpinionDeedReactionDef::??4COpinionDeedReactionDef
+  0047200d RELOCATION_MATCH COpinionDeedReactionDef::`scalar_deleting_destructor'
+  0047955b RELOCATION_MATCH _global::OnDie
+  00478722 RELOCATION_MATCH CAbilityTrackDef::CSymbolInfo>_>
+  0047a4a2 RELOCATION_MATCH std::vector<CAbilityTrackDef>::?_M_fill_insert@?$vector@VCAbilityTrackDef@@
+  00478c79 RELOCATION_MATCH std::vector<CAbilityTrackLevelDef>::?_M_fill_insert@?$vector@VCAbilityTrackLevelDef@@
+  0047a08c RELOCATION_MATCH std::vector<CAppearanceModifierScalingDef>::?_M_fill_insert@?$vector@VCAppearanceModifierScalingDef@@
+  00477169 RELOCATION_MATCH std::vector<CEnvironmentThemeDef>::?_M_insert_overflow@?$vector@VCEnvironmentThemeDef@@
+  00479630 RELOCATION_MATCH std::vector<COpinionDeedReactionDef>::?_M_fill_insert@?$vector@VCOpinionDeedReactionDef@@
+  00476212 RELOCATION_MATCH std::vector<CQuickAccessItemButtonGuiDef>::?_M_fill_insert@?$vector@VCQuickAccessItemButtonGuiDef@@
+  004766c2 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCAbilityButtonGuiDef@@V?$allocator@VCAbilityButtonGuiDef@@@std@@@std@@QAEXPAVCAbilityButtonGuiDef@@IABV3@@Z
+  00476b67 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCLensFlareElementDef@@V?$allocator@VCLensFlareElementDef@@@std@@@std@@QAEXPAVCLensFlareElementDef@@IABV3@@Z
+  00476ff7 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCEnvironmentThemeDef@@V?$allocator@VCEnvironmentThemeDef@@@std@@@std@@QAEXPAVCEnvironmentThemeDef@@IABV3@@Z
+  00477e8e RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAEXPAVCEngineLocalDetailObjectDef@@IABV3@@Z
+  00485815 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureDef@@@@@Z
+  0049e2c0 MATCH CWorld::SetAsLoadingRegion
+  004a0940 RELOCATION_MATCH CWorld::?TeleportHeroToHSP@CWorld@@
+  004bdb40 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetAllDummyObjectNames
+  004bda30 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetAllHelperPointNames
+  004bdd70 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetDummyObjectNamesStartingWith
+  004be000 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetNoDummyObjects
+  004bde90 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::GetNoHelperPoints
+  004bd200 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::WasRenderedLastFrame
+  004c3cd0 RELOCATION_MATCH C3DAnimationBlendState::??_GC3DAnimationBlendState
+  004dc858 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCInterestingToVillagersDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInterestingToVillagersDef@@@@@Z
+  004e3f65 RELOCATION_MATCH CAreaOfEffectAttackDef::??0CAreaOfEffectAttackDef@
+  004e3fb4 RELOCATION_MATCH CAreaOfEffectAttackDef::`scalar_deleting_destructor'
+  004e3c0e RELOCATION_MATCH CBalverineBattleDef::??0CBalverineBattleDef@
+  004e3c52 RELOCATION_MATCH CBalverineBattleDef::`scalar_deleting_destructor'
+  004ec0d4 RELOCATION_MATCH CCardDef::`scalar_deleting_destructor'
+  004ebe96 RELOCATION_MATCH CCardPositionsDef::`scalar_deleting_destructor'
+  004e3f3f RELOCATION_MATCH CIdleSchedulerDef::`scalar_deleting_destructor'
+  004e39ce RELOCATION_MATCH CJackOfBladesBattleDef::??0CJackOfBladesBattleDef@
+  004e46cd RELOCATION_MATCH CJackOfBladesBattleDef::??4CJackOfBladesBattleDef@
+  004e3aae RELOCATION_MATCH CJackOfBladesBattleDef::`scalar_deleting_destructor'
+  004e382c RELOCATION_MATCH CMazeBattleDef::??0CMazeBattleDef@
+  004e38b2 RELOCATION_MATCH CMazeBattleDef::`scalar_deleting_destructor'
+  004e3aca RELOCATION_MATCH CScorpionKingBattleDef::??0CScorpionKingBattleDef@
+  004e3b50 RELOCATION_MATCH CScorpionKingBattleDef::`scalar_deleting_destructor'
+  004e38ce RELOCATION_MATCH CThunderBattleDef::??0CThunderBattleDef@
+  004e391d RELOCATION_MATCH CThunderBattleDef::`scalar_deleting_destructor'
+  004e3b6c RELOCATION_MATCH CTrollBattleDef::??0CTrollBattleDef@
+  004e3bf2 RELOCATION_MATCH CTrollBattleDef::`scalar_deleting_destructor'
+  004e398c RELOCATION_MATCH CWaspQueenBattleDef::??0CWaspQueenBattleDef@
+  004e39b2 RELOCATION_MATCH CWaspQueenBattleDef::`scalar_deleting_destructor'
+  004e3939 RELOCATION_MATCH CWhisperBattleDef::??0CWhisperBattleDef@
+  004e3970 RELOCATION_MATCH CWhisperBattleDef::`scalar_deleting_destructor'
+  004ebdb0 RELOCATION_MATCH std::__copy_ptrs
+  004ec10f RELOCATION_MATCH std::vector<CCardDef>::_M_allocate_and_copy
+  004ebf32 RELOCATION_MATCH std::vector<CCardDef>::??4?$vector@
+  004ebca9 RELOCATION_MATCH std::vector<CCardPositionsDef>::??4?$vector@
+  004ec08a RELOCATION_MATCH std::??$_Construct@VCCardDef@@V1@@std@@YIXPAVCCardDef@@ABV1@@Z
+  004ec03f RELOCATION_MATCH std::??$__copy_ptrs@VCCardDef@@@std@@YI
+  004f9cfc RELOCATION_MATCH _global::OnDie
+  004fa3e3 RELOCATION_MATCH std::??$__copy_backward_ptrs@
+  004f9f62 RELOCATION_MATCH std::??$__copy_backward_ptrs@
+  004f9db7 RELOCATION_MATCH std::??$__copy_ptrs@
+  004fa22c RELOCATION_MATCH std::??$__copy_ptrs@PAVCCardDef@@PAV1@@std@@YI
+  004fa434 RELOCATION_MATCH std::vector<CCardDef,std::allocator<CCardDef> >::_M_insert_overflow
+  004f9fa3 RELOCATION_MATCH std::vector<CCardPositionsDef,std::allocator<CCardPositionsDef> >::_M_insert_overflow
+  005130a0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCShopDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShopDef@@@@@Z
+  00512fe0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCVillagePeopleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillagePeopleDef@@@@@Z
+  0057ff92 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCAppearanceModifierDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@Z
+  00580034 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroDef@@@@@Z
+  005936c2 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCAbilityDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAbilityDef@@@@@Z
+  005933c8 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCContextSensitiveItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@Z
+  005935c4 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroSuitDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSuitDef@@@@@Z
+  0059346a RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLightDef@@@@@Z
+  0059350c RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCStockItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStockItemDef@@@@@Z
+  005b1e5a RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroTitleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroTitleDef@@@@@Z
+  005bade1 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCInventoryItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCInventoryItemDef@@@@@Z
+  005b1efc RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTattooDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTattooDef@@@@@Z
+  005cc10e RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCarryableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryableDef@@@@@Z
+  005c0cfb RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCResurrectionItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCResurrectionItemDef@@@@@Z
+  005da3c0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCarriedReadableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarriedReadableDef@@@@@Z
+  005da240 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCExpressionSubDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExpressionSubDef@@@@@Z
+  005da180 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHairCardDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHairCardDef@@@@@Z
+  005da300 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTrophyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrophyDef@@@@@Z
+  005ed4a0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTavernGameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameDef@@@@@Z
+  00625350 RELOCATION_MATCH CConfigOptionsDefaultsDef::??4CConfigOptionsDefaultsDef
+  0065f7b4 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCrateStackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCrateStackDef@@@@@Z
+  00655d28 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCDoorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCDoorDef@@@@@Z
+  0065f604 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+  0065f440 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCVillageDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillageDef@@@@@Z
+  006696b0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityUseProjectileWeaponDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityUseProjectileWeaponDef@@@@@Z
+  00669580 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z
+  0067c980 RELOCATION_MATCH CBlurredAttitudesDef::Copy
+  00670b90 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCoopSpiritDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCoopSpiritDef@@@@@Z
+  00677360 RELOCATION_MATCH CThingBaseDef::`scalar_deleting_destructor'
+  00685c00 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCOpinionOfHeroDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOpinionOfHeroDef@@@@@Z
+  00686e10 RELOCATION_MATCH CTCBase::SerialiseLevelState
+  00696130 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCreatureStatsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureStatsDef@@@@@Z
+  006a2fa0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCarryingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCarryingDef@@@@@Z
+  006ae320 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCGoldDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGoldDef@@@@@Z
+  006ae260 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCKickableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCKickableDef@@@@@Z
+  006a6be0 MATCH CPhysicsMeshObject::??4CPhysicsMeshObject@@QAEAAV0@ABV0@@Z
+  006b0fa0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCPhysicsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCPhysicsDef@@@@@Z
+  006c1b00 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCBuyableHouseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBuyableHouseDef@@@@@Z
+  006cd2f0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCreatureNavigationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureNavigationDef@@@@@Z
+  006c7720 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCEnemyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEnemyDef@@@@@Z
+  006d3ef0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCGiftDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGiftDef@@@@@Z
+  006daa90 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroExperienceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroExperienceDef@@@@@Z
+  006d3d00 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroMarriageDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroMarriageDef@@@@@Z
+  006d3dc0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCWifeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWifeDef@@@@@Z
+  006e1620 RELOCATION_MATCH CTCDParticleEmitter::FrameUpdate
+  006e0480 RELOCATION_MATCH CTCDParticleEmitter::SetEmitterOrientation
+  006e0500 RELOCATION_MATCH CTCDParticleEmitter::SetEmitterPosition
+  006f0f60 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityStrafeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityStrafeDef@@@@@Z
+  00702930 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCQuestCardDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCQuestCardDef@@@@@Z
+  007086f0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTextureReplacementDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTextureReplacementDef@@@@@Z
+  0071f930 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroMorphDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroMorphDef@@@@@Z
+  0072ef60 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCBuyHouseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBuyHouseDef@@@@@Z
+  00722d30 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSmokeGeneratorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSmokeGeneratorDef@@@@@Z
+  00732bd0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCClockDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCClockDef@@@@@Z
+  00738430 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityBlockCounterAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityBlockCounterAttackDef@@@@@Z
+  007382b0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityBlockHeavyWeaponAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityBlockHeavyWeaponAttackDef@@@@@Z
+  007381f0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityBlockLightWeaponAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityBlockLightWeaponAttackDef@@@@@Z
+  00738370 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityBlockProjectileWeaponAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityBlockProjectileWeaponAttackDef@@@@@Z
+  007380d0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityBlockUnarmedAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityBlockUnarmedAttackDef@@@@@Z
+  007384f0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityFlourishCounterAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityFlourishCounterAttackDef@@@@@Z
+  007385b0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCombatAbilityGetHitCounterAttackDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCombatAbilityGetHitCounterAttackDef@@@@@Z
+  0073dbe0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCreatureModeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureModeDef@@@@@Z
+  007325d0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSpotLightDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpotLightDef@@@@@Z
+  00746c20 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCBedDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBedDef@@@@@Z
+  0074f7d0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCChestDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCChestDef@@@@@Z
+  0074f6a0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCContainerRewardHeroDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCContainerRewardHeroDef@@@@@Z
+  0074d160 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCreatureGeneratorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCreatureGeneratorDef@@@@@Z
+  00746100 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCPerceivedThingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCPerceivedThingDef@@@@@Z
+  00748900 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCStealthDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCStealthDef@@@@@Z
+  007510d0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCExplodingObjectDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExplodingObjectDef@@@@@Z
+  00751190 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCExplosionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExplosionDef@@@@@Z
+  007550f0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCLookDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCLookDef@@@@@Z
+  00751bc0 RELOCATION_MATCH CTCLook::IsInsideAnimationRange
+  0077ac20 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCExperienceDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCExperienceDef@@@@@Z
+  0077e430 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroCentreDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroCentreDef@@@@@Z
+  0077d080 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHighlightItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHighlightItemDef@@@@@Z
+  00778900 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTimeAppearanceFadeDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTimeAppearanceFadeDef@@@@@Z
+  007815a0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCFlammableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFlammableDef@@@@@Z
+  00787ae0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCShipDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCShipDef@@@@@Z
+  00787060 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSkeletalMorphDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSkeletalMorphDef@@@@@Z
+  00785010 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTCVolumeContainmentTrackerDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTCVolumeContainmentTrackerDef@@@@@Z
+  00788e53 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTrapDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrapDef@@@@@Z
+  0079c4b0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSummonableCreatureDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSummonableCreatureDef@@@@@Z
+  007ad9c0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCAIScratchpadDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAIScratchpadDef@@@@@Z
+  007afa90 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCBossDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBossDef@@@@@Z
+  007a6ca0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCReplaceableMeshDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCReplaceableMeshDef@@@@@Z
+  007a61d0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSpecialAbilitiesForcePushDataDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialAbilitiesForcePushDataDef@@@@@Z
+  007b5680 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCActivateQuestDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCActivateQuestDef@@@@@Z
+  007bb920 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCDrunkennessDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCDrunkennessDef@@@@@Z
+  007be88c RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCFireballSpellLevelDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFireballSpellLevelDef@@@@@Z
+  007b2600 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCFishDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z
+  007b2540 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCFishingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishingDef@@@@@Z
+  007b44e0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCGuardDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGuardDef@@@@@Z
+  007b7f50 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCOverheadDisplayDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOverheadDisplayDef@@@@@Z
+  007b9700 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTavernTableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernTableDef@@@@@Z
+  007be92e RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCThingDrainLifeShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingDrainLifeShotDef@@@@@Z
+  007be7ea RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCThingMultiArrowShotDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCThingMultiArrowShotDef@@@@@Z
+  007c3ad0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSpecialAbilitiesDrainLifeDataDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialAbilitiesDrainLifeDataDef@@@@@Z
+  007c8000 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTurncoatDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTurncoatDef@@@@@Z
+  007c25a0 RELOCATION_MATCH CTCShotDefinitionBase::InitAttachedEffects
+  007d4bd0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTavernGameCoinGolfDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameCoinGolfDef@@@@@Z
+  007d1260 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTavernGameShoveHaPennyDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameShoveHaPennyDef@@@@@Z
+  007d9a80 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCTavernGameSpotTheAdditionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTavernGameSpotTheAdditionDef@@@@@Z
+  007df9e0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCWallMountEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCWallMountEffectsDef@@@@@Z
+  007e1230 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCAICreatureWillPowerIndicatorDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCAICreatureWillPowerIndicatorDef@@@@@Z
+  007eae40 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCActionUseDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCActionUseDef@@@@@Z
+  007e5820 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCBettingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBettingDef@@@@@Z
+  007e1d30 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCBonusItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBonusItemDef@@@@@Z
+  007e3290 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCCameraCollisionDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCCameraCollisionDef@@@@@Z
+  007efc50 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCDecapitationDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCDecapitationDef@@@@@Z
+  007e7d80 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCFireheartMinigameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFireheartMinigameDef@@@@@Z
+  007e2390 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCFishingRodDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishingRodDef@@@@@Z
+  007e0a40 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCHeroSpecialMovementDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCHeroSpecialMovementDef@@@@@Z
+  007e1400 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCMultiStaticMeshDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCMultiStaticMeshDef@@@@@Z
+  007e6e00 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCOracleMinigameDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCOracleMinigameDef@@@@@Z
+  007e8200 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCReadableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCReadableDef@@@@@Z
+  007eeea0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCSmashableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSmashableDef@@@@@Z

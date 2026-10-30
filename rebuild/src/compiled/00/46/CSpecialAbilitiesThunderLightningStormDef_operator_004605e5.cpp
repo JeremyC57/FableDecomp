@@ -14,11 +14,11 @@ class CDefString {                                         // Ego_r.pdb, 4 bytes
 public:
     long TablePos;
 };
-class CParentDefClassBase {                                         // 57 bytes in retail
-public:
-    unsigned char _body[0x39];
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);        // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CSpecialAbilitiesThunderLightningStormDef : public CParentDefClassBase {                       // vtable 0x01234814
 public:
     long NumBeams;                                     // +0x3C (Ego_r +0x40)

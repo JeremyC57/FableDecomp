@@ -9,11 +9,7 @@
 // Layout (Ego_r.pdb): Destination map<unsigned long, unsigned long>* +0x04, Area C2DBoxF +0x08, StatIndex +0x18, StatFlags +0x1C.
 // Shape: four member initialisers in declaration order; Destination holds the reference's address; the box copied by C2DBoxF's
 //   memberwise user copy constructor (FableWin.pdb ??0C2DBoxF@@QAE@ABV0@@Z; the implicit one copies through `lea ecx`).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                         // 0x0099A2F0

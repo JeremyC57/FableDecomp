@@ -83,10 +83,7 @@ struct CScriptThingImp {                                // the implementation ob
     virtual bool IsAlive() const;                       // slot 75 (+0x12c)
 };
 
-class CBaseClass { public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingImp* PImpData;                          // +0x04 CCountedPointer Data

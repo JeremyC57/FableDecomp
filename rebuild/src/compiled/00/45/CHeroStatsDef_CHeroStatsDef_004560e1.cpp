@@ -12,11 +12,11 @@
 // `lea ecx` instead of three disp32 stores). The STLport _Vector_base + _STLP_alloc_proxy model (as the landed CTCMultiArrow 0x007CC7D0)
 // is the retail vector shape; one zero register; the first vector (+0x70, disp8) addressed off esi.
 #pragma optimize("s", on)
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x38];
-    CParentDefClassBase();                         // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 struct SAllocator { SAllocator() {} };              // empty allocator (user constructor: no zero fill of the temporary)
 template <class T> struct SAllocProxy : SAllocator { // STLport _STLP_alloc_proxy: the end-of-storage pointer over the allocator
     T* m_data;

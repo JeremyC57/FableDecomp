@@ -10,11 +10,11 @@
 // at retail +0x3c..+0x80 (retail base 0x39 bytes, vectors 12 bytes instead of 16).
 // Shape: memberwise assignment in declaration order, each vector through its own out-of-line operator=.
 #pragma pack(push, 1)
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _defClassBase[0x35];      // +0x04 CDefClassBase part, InstantiationName (+0x25), SubDefInfoMap (+0x29)
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 
 #define FABLE_RETAIL_VECTOR(Name) \

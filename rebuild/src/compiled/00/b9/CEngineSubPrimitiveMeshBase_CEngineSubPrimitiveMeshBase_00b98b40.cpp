@@ -9,11 +9,7 @@
 // Layout (Ego_r.pdb, retail offsets): CEngineSubPrimitiveBase 0x18 {Parent +0x0C, NextSubPrimitive +0x10}, MeshPrimitive
 //   +0x18, RenderMode +0x1C, IsCloth +0x20 (0x24 bytes).
 // Shape: CEngineSubPrimitiveBase's inline constructor (as landed 0x00BB1780) then the three member initialisers.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                         // 0x0099A2F0

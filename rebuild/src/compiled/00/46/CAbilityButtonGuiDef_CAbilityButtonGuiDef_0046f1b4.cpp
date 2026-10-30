@@ -9,11 +9,11 @@
 // memberwise shape of a user-written copy constructor (an implicit one would block-copy).
 // The retail CParentDefClassBase is 0x3c bytes (the PDB header says 0x3d because its Ego
 // CVectorMap is 4 bytes wider than the retail one), so the base is modelled locally.
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x38];                                   // +0x04..+0x3c
-    CParentDefClassBase(const CParentDefClassBase& other);       // 0x0046EE98
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 class CAbilityButtonGuiDef : public CParentDefClassBase { public:              // vtable 0x0123610C
     long m_buttonX;                                              // +0x3c

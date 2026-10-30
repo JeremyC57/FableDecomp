@@ -7,11 +7,7 @@
 inline void* operator new(unsigned int, void* where) { return where; }
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0 (vtable 0x01231710)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CCPInfo {
     long  References;
     void (__fastcall* Destroy)(void* object);

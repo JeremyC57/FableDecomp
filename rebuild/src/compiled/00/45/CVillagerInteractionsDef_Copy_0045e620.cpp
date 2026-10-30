@@ -6,11 +6,11 @@
 // Shape: no `mov eax,esi` -- the slot returns void (eax keeps the last copied word). Written as an explicit memberwise copy: the
 // compiler-generated operator= is emitted OUT of line under optimize("s") and this body becomes a `jmp` thunk (as CPlayerInventoryDef's slot 19).
 #pragma optimize("s", on)
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x38];                                            // +0x04..+0x3c
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CDefString { public: long TablePos; };
 class CVillagerInteractionsDef : public CParentDefClassBase { public:
     CDefString Animation1;      // +0x3c

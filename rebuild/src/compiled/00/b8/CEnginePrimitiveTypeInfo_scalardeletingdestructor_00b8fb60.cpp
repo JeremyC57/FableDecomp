@@ -10,11 +10,7 @@
 // Shape: no user destructor (no vptr store); the second base's destructor runs on `this ? this+0x0C : 0` (retail's null-
 //   tested adjust); bases are destroyed in reverse order. The vtable (and this ??_G) is emitted by the class's real
 //   constructor, the byte-exact 0x00B8FAA0 body.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                         // 0x0099A2F0

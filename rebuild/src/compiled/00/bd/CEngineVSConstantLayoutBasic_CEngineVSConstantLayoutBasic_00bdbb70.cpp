@@ -198,11 +198,7 @@ public:
     void push_back(const T& x) { std::vector<T>::push_back(x); }
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                          // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CShaderConstantRange : public CBaseClass {           // vtable 0x0129A04C
 public:

@@ -40,11 +40,7 @@ struct CCountedPointer {
     }
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                                // 0x0099A2D0
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DMeshInfo;
 class C3DMeshObject : public CBaseClass { public:                              // vtable 0x01239860, 0x78 bytes

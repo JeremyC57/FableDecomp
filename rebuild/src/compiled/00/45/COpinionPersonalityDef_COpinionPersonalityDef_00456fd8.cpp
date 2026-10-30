@@ -1,9 +1,10 @@
 #pragma optimize("s",on)
 // ~COpinionPersonalityDef
-class CParentDefClassBase {
-public:
-    virtual ~CParentDefClassBase();   // 0x00430300
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 void operator delete[](void*);   // call 0x7a7b44 (operator delete / free, __cdecl 1-arg)
 extern void __fastcall member_dtor(void* self);    // dtor of member at +0x44 (__fastcall)
 extern const int g_vtbl_01233f8c;                            // 0x1233f8c vtable

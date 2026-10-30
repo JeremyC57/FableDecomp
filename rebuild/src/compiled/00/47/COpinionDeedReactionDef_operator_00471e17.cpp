@@ -11,13 +11,11 @@
 #pragma optimize("s", on)
 enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE = 0 };
 
-class CParentDefClassBase {                        // 0x3C bytes in retail (vptr + def base)
-public:
-    virtual void v000();
-    unsigned char _body[0x38];
-    CParentDefClassBase(const CParentDefClassBase& other);               // 0x0046EE98
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);    // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 class CAttitudeVector {                            // retail std::vector<EOpinionAttitudeType>, 12 bytes
 public:

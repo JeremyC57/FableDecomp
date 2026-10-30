@@ -22,7 +22,7 @@ namespace std { template<class T> struct less; template<class T> class allocator
 enum EEnginePrimitiveStatIndex { PrimitiveStatCount = 0 };
 typedef std::map<unsigned long,unsigned long,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,unsigned long> > > PrimitiveStatsMap;
 class CEnginePrimitiveHandle;
-class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); }; // 0x0099A2E0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CIVCountedPointeeBase { public:
  virtual ~CIVCountedPointeeBase();
  virtual void Delete() const; // 0x0042D930

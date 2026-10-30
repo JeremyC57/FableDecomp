@@ -11,11 +11,11 @@
 // copy constructor out of line); CRGBColour's copy constructor is the channel-wise Set(R, G, B, A) as in the landed
 // CEnginePrimitiveParticleDecal ctor 0x00B1FE80 (four byte loads into al/bl/cl/dl, then the four stores).
 #pragma optimize("s", on)
-class CParentDefClassBase { public:                      // retail 0x3C bytes
-    CParentDefClassBase(const CParentDefClassBase& other);   // 0x0046EE98
-    virtual ~CParentDefClassBase();
-    unsigned char _pad04[0x38];
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CRGBColour { public:                               // the union's channel view: D3DCOLOR byte order
     unsigned char B, G, R, A;
     __forceinline void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }

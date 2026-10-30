@@ -9,11 +9,7 @@
 // Shape: as RenderPrimitiveToShadowBuffer 0x00BC6210, with a bool result OR-ed with each child's answer. The result is
 //   declared first: it then gets its own `push ecx` frame byte (declared after the group reference, VC7.1 homes it in the
 //   dead `primitive` argument slot).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace std {
 template <class _Tp> class allocator { };

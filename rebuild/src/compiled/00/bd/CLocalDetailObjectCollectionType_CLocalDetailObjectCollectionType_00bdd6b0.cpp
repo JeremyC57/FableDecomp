@@ -8,11 +8,7 @@
 // Layout: Ego_r.pdb CLocalDetailObjectCollectionType (84 bytes): vptr +0, Mesh +4, ZSpriteMesh +8, ShadowMesh +0xc; the
 //   rest (bank indices, PlainDataBlock) is left unset by this constructor. The base's own vptr store is dead and dropped.
 // Callee: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0.
-class CBaseClass {
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                             // 0x0099A2F0

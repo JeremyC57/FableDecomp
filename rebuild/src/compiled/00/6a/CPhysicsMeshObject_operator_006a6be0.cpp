@@ -39,10 +39,7 @@ class CMatrix3x4 { public:                         // 0x30 bytes
     float M[12];
 };
 
-class CBaseClass { public:                         // vtable 0x01231710
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CPhysicsMeshObject : public CBaseClass { public:   // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04

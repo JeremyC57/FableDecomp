@@ -25,11 +25,7 @@ public:
             ++Info->RefCount;
     }
 };
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass {               // 0x0C bytes, vtable 0x01238C8C
 public:
     CCountedPointer<CScriptThing> PImp;                 // +0x04

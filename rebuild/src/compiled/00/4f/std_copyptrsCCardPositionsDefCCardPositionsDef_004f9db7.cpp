@@ -65,11 +65,11 @@ OutputIter __fastcall __copy_ptrs(InputIter first, InputIter last, OutputIter re
 
 }
 
-class CParentDefClassBase {                         // local model, retail 0x39 bytes (the engine header carries the donor 0x3D)
-public:
-    unsigned char _body[0x39];
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 class CCardPositionsDef : public CParentDefClassBase {   // Ego_r.pdb, retail sizeof 0x48
 public:

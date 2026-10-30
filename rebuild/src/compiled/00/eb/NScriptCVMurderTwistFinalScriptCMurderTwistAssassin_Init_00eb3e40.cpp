@@ -19,11 +19,7 @@ public:
 extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
 enum ESheriffState { };
 enum EAssassinState { };
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass() { }
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0, implicit copy
 class CCPPointerInfo {
 public:
     unsigned long RefCount;
@@ -36,7 +32,7 @@ public:
 };
 class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
 public:
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     virtual ~CScriptThing();                            // slot 0
     virtual void t01(); virtual void t02(); virtual void t03(); virtual void t04(); virtual void t05(); virtual void t06(); virtual void t07(); virtual void t08();
     virtual void t09(); virtual void t10(); virtual void t11(); virtual void t12(); virtual void t13(); virtual void t14(); virtual void t15(); virtual void t16();

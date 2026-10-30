@@ -31,10 +31,7 @@ class CCharString { public:
     CCharString();                         // 0x0099E4B0
     ~CCharString();                        // 0x0099EAE0
 };
-class CBaseClass { public:
-    CBaseClass();
-    virtual ~CBaseClass();                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DMeshMaterial : public CBaseClass { public:
     long           m_flags;                // +0x04
     CCharString    m_name;                 // +0x08

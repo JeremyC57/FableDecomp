@@ -65,11 +65,7 @@ template <class T> struct _Vector_base {
 template <class T> struct CRetailVector : _Vector_base<T> {   // STLport vector<T>: three pointers (12 bytes in retail)
     CRetailVector() : _Vector_base<T>(allocator<T>()) { }
 };
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp

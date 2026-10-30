@@ -10,11 +10,7 @@
 // Shape: the inline CVertexBufferWin32 / CVertexBufferBase / CVertexCompressionParams constructors (the landed
 //   0x00BB63A0 element model) and PoolNext(0); every intermediate vptr store is dead, so the template's own vtable is
 //   stored last.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                         // 0x0099A2F0

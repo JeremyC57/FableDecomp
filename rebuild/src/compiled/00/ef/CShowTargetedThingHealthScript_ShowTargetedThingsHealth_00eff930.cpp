@@ -84,11 +84,7 @@ struct CScriptThingImp {
     virtual void i076() const; virtual void i077() const;
     virtual bool IsEqualTo(const CScriptThingImp* other) const;         // slot 78 (+0x138)
 };
-class CBaseClass {
-public:
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const;
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const;

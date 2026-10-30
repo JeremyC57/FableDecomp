@@ -8,11 +8,7 @@
 // Layout (Ego_r.pdb, 0x50): CLocalDetailPrimitiveBase 0x38, Objects +0x38, ZSpriteEntries +0x3C, ObjectCount +0x40,
 //   HasMeshPrimitiveHandles +0x44, ZSpriteHandle CEnginePrimitiveHandle +0x48.
 // Shape: the landed 0x00BFAA80 model; ObjectCount is left uninitialised (retail never stores +0x40).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CIVCountedPointeeBase;
 template <class T> class CIVCountedPointer {
 public:

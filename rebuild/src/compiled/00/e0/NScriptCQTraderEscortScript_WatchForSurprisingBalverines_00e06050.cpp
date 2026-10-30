@@ -17,10 +17,7 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_NONE };
 enum ETraderComment { TRADER_COMMENT_NONE };
 
-class CBaseClass { public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     void* PImpData;                                     // +0x04 CCountedPointer Data

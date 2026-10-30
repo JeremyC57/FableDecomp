@@ -14,10 +14,7 @@
 // p->Destroy(); m_p = 0; }` (`dec dword ptr [ecx+4] ; jne`); both it and the class destructor are `__forceinline` (a
 // generated destructor plus a forceinlined release is called out of line from the ??_G; a polymorphic derived class
 // with no destructor left the release out of line).
-class CBaseClass { public:
-    CBaseClass();
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CSharedData {
     virtual void v00();

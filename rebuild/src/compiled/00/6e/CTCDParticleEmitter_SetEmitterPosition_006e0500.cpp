@@ -16,11 +16,7 @@ class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-class CBaseClass {
-public:                                   // polymorphic root of the interpolators
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DOrientationInterpolator : public CBaseClass { public:     // 0x34 bytes
     CRightHandedSet Start;                      // +0x04
     CRightHandedSet End;                        // +0x1c

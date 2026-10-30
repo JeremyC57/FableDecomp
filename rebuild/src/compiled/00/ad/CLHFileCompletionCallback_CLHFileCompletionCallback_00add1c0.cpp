@@ -6,11 +6,7 @@
 //   constructor and store the arguments around the own vtable store; retail has no identical-code folding).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() 0x0099A2F0 (??0CBaseClassNonCopyable@@IAE@XZ, catalog-bound, PDB-confirmed).
 // Shape: the CThreadedFileCallback constructor is inline and its vtable store dead; VC7.1 schedules the +4 store before the own vtable store (the landed CLHFile::Read inline copy has the same order).
-class CBaseClass {
-public:
-    CBaseClass();                                               // 0x0099A2D0
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                                    // 0x0099A2F0

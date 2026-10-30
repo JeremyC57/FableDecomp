@@ -13,11 +13,7 @@
 //   held in ebx for both the unsigned compare and the bit-field `or`.
 // Header debt: the engine headers flatten the list, the handles and the bit-field byte, so the members used are
 //   modelled locally.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace std {
 template <class _Tp> class allocator { };

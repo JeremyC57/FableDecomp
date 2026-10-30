@@ -16,10 +16,11 @@
 // Model: no engine header for CCardDef (Ego_r.pdb gives 72 bytes, retail 0x44); local polymorphic model.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CParentDefClassBase { public:                               // retail 0x3C bytes
-    virtual void v00();
-    unsigned char _body[0x38];                              // +0x04 def-class base body
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CCardDef : public CParentDefClassBase {               // 0x44 bytes, vtable 0x01243A44
 public:
     long CardName;                                          // +0x3C

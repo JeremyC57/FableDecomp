@@ -8,11 +8,7 @@
 // inline: CBase, vtable, two embedded CSurface (vtable shared through eax, PD3DSurface/AllocationSource zeroed).
 // Model: PDB CSurfaceCompositor (0x30 bytes): +4 CurrentBlend, +8 StateCaptureBlock, +9 WasRendering, +0xC DestSurface,
 // +0x10 CCountedPointer<CRenderTarget> RenderTarget, +0x18 C2DBoxF OldWindow, +0x28 LayerCount, +0x2C AlphaTarget.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void* __cdecl operator new(unsigned int size);  // 0x00BFEA1A
 
 struct IDirect3DSurface9;

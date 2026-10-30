@@ -7,11 +7,7 @@
 // Shape (family K056, representative 0x00B98B10): CEngineSubPrimitiveBase's inline constructor (Ego_r.pdb members: Parent +0x0C,
 //   NextSubPrimitive +0x10 cleared; RenderFlags / Alpha / Manager left for the renderer); the base's own vptr store is dead
 //   and dropped, leaving only the derived one.
-class CBaseClass {
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                             // 0x0099A2F0

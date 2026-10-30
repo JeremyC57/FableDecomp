@@ -65,10 +65,7 @@ template <class T> class CCountedPointer { public:
 };
 
 struct CScriptThingImp;
-class CBaseClass { public:                                     // vtable 0x01231710
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThingImp> PImp;              // +0x04
     virtual ~CScriptThing() {}                          // out of line: 0x004AA840

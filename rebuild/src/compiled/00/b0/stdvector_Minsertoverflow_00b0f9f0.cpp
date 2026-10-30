@@ -20,11 +20,7 @@ extern "C" void __cdecl free(void* p);                // 0x00BFEA14
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CBaseClass {                                         // vtable 0x01231710
-public:
-    CBaseClass();                                         // 0x0099A2D0
-    virtual ~CBaseClass();                                // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 template <class T1, class T2> class CParticleUpdateParamCallback;

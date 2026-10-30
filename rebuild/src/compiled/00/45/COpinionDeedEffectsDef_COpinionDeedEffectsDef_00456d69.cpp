@@ -13,11 +13,11 @@
 // Shape: the list's default allocator argument is an empty temporary homed in the high byte of the
 // `push ecx` frame slot (`lea eax,[esp+7]`); the STLport vectors' inline constructors zero their three
 // words from one `xor eax,eax` after the list (members with inline constructors follow the vtable store).
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x38];                     // +0x04 .. +0x3c
-    CParentDefClassBase();                         // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 template <class T> struct allocator {
     allocator() { }

@@ -7,11 +7,11 @@
 // Shape: `xor eax,eax` scheduled before the vtable store, the vtable store before the fifteen
 // `mov [esi+N],eax`: each vector is a member object whose inline constructor zeroes its three pointers
 // (plain init-list scalars would sink the vtable store below them). The floats are left uninitialised.
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _base[0x38];                  // +0x04..+0x3b: the def root's own members
-    CParentDefClassBase();                      // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 template <class T>
 struct CRetailVector {                          // VC6-era Dinkumware vector: first / last / end

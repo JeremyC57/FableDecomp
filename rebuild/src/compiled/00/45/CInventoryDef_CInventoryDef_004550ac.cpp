@@ -34,11 +34,11 @@ struct CRetailVector {                                 // STLport vector (12 byt
     void* _M_end_of_storage;
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
-class CParentDefClassBase { public:
-    unsigned char _body[0x3c - 4];
-    CParentDefClassBase();                                    // 0x00430370
-    virtual ~CParentDefClassBase();
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CInventoryDef : public CParentDefClassBase { public:
     float                  InitialCategoryMovementRepeatDelay;   // PDB +0x40
     float                  ContinuedCategoryMovementRepeatDelay;   // PDB +0x44

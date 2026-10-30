@@ -15,11 +15,11 @@
 // copied with integer load/store pairs (plain assignment never touches the FPU).
 #pragma optimize("s", on)   // the def module is size-optimised: every copy pair goes through eax
 
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x38];                                            // +0x04..+0x3c
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);     // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 struct CEnvironmentThemeDefArray {                                        // retail CArray<CEnvironmentThemeDef> (12 bytes)
     void* m_pData;

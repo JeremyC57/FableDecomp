@@ -20,11 +20,7 @@
 //   operator[] as STLport's `*(begin() + n)` (with `_M_start + n` the element address is `mov edx,[ecx] ; add edx,ebp`),
 //   and the counted-pointer assignment reading other.Info before other.Data (`lea eax,&other.PImp ; mov eax,[eax]`;
 //   Data first loads [edx+ebp+4] into ecx, 351v350).
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                          // 0x00BFE9BC
 class CCPPointerInfo {                                  // 12 bytes
 public:

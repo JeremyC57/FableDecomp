@@ -23,11 +23,7 @@ struct IDirect3DVolumeTexture9 {
     virtual long __stdcall GetVolumeLevel(unsigned int level, IDirect3DVolume9** volume);   // slot 18 (+0x48)
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                                // 0x0099A2D0
-    virtual ~CBaseClass();                                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CVolume : public CBaseClass { public:                                    // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                            // +4

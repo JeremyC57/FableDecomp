@@ -10,11 +10,7 @@
 //   Matrix CMatrix3x4 +0x38, Scale +0x68, PrimitiveHandle CEnginePrimitiveHandle +0x6C (0x74 bytes).
 // Shape: CMovableResource's and the base's inline constructors (their vptr stores dead), C3DBoundingSphere's default
 //   constructor zeroing centre and radius; the handle's inline constructor (CBaseClass out of line, vtable, Data = 0).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CIVCountedPointeeBase;
 template <class T> class CIVCountedPointer {
 public:

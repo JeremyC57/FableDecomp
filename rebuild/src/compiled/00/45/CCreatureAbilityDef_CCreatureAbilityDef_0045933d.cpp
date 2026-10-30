@@ -8,10 +8,11 @@
 // constructor @ 0x00430370 runs, then the compiler stores this class's vtable (0x01234F24
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-class CParentDefClassBase { public:
-    virtual void v00();
-    CParentDefClassBase();                           // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 class CCreatureAbilityDef : public CParentDefClassBase { public:
     virtual void v00();                    // this class has its own vtable

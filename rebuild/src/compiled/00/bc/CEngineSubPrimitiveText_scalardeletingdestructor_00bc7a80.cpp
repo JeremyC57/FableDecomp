@@ -11,11 +11,7 @@
 //   NextSubPrimitive +0x10, Manager +0x14}, Pos +0x18, Scale +0x24, Colour +0x28, Text +0x2C, Font +0x30, Mask +0x34.
 // Shape: no user destructor in the chain (no vptr store); the vtable (and this ??_G) is emitted by the class's real
 //   constructor, written as retail 0x00BC7A50 (base inline ctor: Parent, NextSubPrimitive = 0; Text default-constructed).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                         // 0x0099A2F0

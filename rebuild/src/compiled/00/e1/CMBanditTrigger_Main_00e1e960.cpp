@@ -26,10 +26,7 @@ class CCharString { public:
     bool operator!=(const char* text) const;           // 0x0099E960
 };
 extern C3DVector g_ZeroVector;                          // 0x0143E8E0
-class CBaseClass { public:                                     // vtable 0x01231710
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
 struct CScriptThingPImp { CScriptThing* Data; void* Info; CScriptThingPImp() : Data(0), Info(0) {} };
 class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes

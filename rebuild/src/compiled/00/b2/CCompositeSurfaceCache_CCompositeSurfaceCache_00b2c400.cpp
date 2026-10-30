@@ -8,11 +8,7 @@
 //   Owner +0x1C, CurrentMorph +0x20, CachedMorph +0x34, MipmapLevel +0x48 (left alone), GraphicFrame +0x4C,
 //   ManagedTexture +0x50, BankFileIndex +0x58, LastUsedFrame +0x5C, TimeStamp +0x60 (left alone).
 // Header debt: no engine header models CResource / CEngineTextureMorph / CManagedTexture with constructors.
-class CBaseClass {
-public:
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CResourceList;
 class CResource {
 public:

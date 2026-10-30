@@ -10,10 +10,11 @@
 // owning a member with its own assignment, so the memberwise copy is written out: the seven words go
 // through eax/ecx/edx in order, the 16-byte POD record at +0x58 is one implicit record assignment
 // (`lea` of both ends + four moves), the +0x68 word is stored around the member call, the byte last.
-class CParentDefClassBase { public:
-    unsigned char _body[0x3c];
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 struct SRecord16 {
     long m_values[4];

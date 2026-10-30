@@ -12,10 +12,10 @@
 // Shape: the frame loop is `for (;;)` entered through a termination return and closed by one; its only other exit
 // is the `break` after the removal, which falls into the function's closing discarded IsActiveThreadTerminating()
 // (the tail `jmp` shared with the inactive-boast path); the quest-started wait is the rotated script idiom.
-class CGameScriptInterface { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:

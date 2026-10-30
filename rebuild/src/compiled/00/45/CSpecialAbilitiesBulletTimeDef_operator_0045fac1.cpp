@@ -11,11 +11,11 @@
 //   to +0x3C; derived members as in the def's Transfer (0x00464DB5): retail vectors are 12 bytes.
 #pragma optimize("s", on)
 #pragma pack(push, 1)
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _defClassBase[0x35];
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class CDefString { public: long m_index; };
 class C3DVector { public: float X, Y, Z; };

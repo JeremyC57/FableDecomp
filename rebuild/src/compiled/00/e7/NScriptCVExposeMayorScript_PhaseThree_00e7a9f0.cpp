@@ -41,10 +41,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CBaseClass { public:                                      // polymorphic root of the script handles
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing() {}                                   // out of line 0x004AA840

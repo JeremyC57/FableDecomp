@@ -10,10 +10,11 @@
 //   xor`), the last bit of a full byte via `and 7Fh`; the dwords alternate edx/eax/ecx.
 // Leaf: ??4CThingBaseDef
 #pragma pack(push, 1)
-class CParentDefClassBase { public:
-    unsigned char _body[0x39];                                   // +0x00 (vptr, def index, name, parent ...)
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 struct CThingComponentSetEntry;
 struct CSmallVectorComponentEntries {                            // CSmallVector<CThingComponentSet::CEntry,8>

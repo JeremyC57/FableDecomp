@@ -43,10 +43,10 @@ struct CV_TalentlessBardScript {
     void ProcessSongsClothes();                            // 0x00ED9BB0
     void ProcessSongsQuestComplete();                      // 0x00ED9B40
 };
-class CGameScriptInterface { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;                   // slot 7 (+0x1c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CScriptThing { public: unsigned char _body[12]; };
 struct CQ_SunnyvaleMasterData;
 

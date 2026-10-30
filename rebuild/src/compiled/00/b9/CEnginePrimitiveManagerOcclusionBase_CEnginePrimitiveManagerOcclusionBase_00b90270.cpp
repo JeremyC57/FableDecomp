@@ -38,10 +38,7 @@ enum EEnginePrimitiveType { EEnginePrimitiveTypeNativeView = 0 };
 enum ERenderPassType { ERenderPassTypeNativeView = 0 };
 enum ESubPrimitiveType { ESubPrimitiveTypeNativeView = 0 };
 
-class CBaseClass { public:
-    CBaseClass(); // native 0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
 protected:
     CBaseClassNonCopyable(); // native 0099A2F0

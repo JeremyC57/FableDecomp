@@ -60,10 +60,7 @@ struct CScriptThingImpl {                               // the game-side object 
     virtual void h064(); virtual void h065(); virtual void h066();
     virtual void SetFriendsWithEverythingFlag(bool on); // slot 67 (+0x10c)
 };
-class CBaseClass { public:                                     // vtable 0x01231710
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980

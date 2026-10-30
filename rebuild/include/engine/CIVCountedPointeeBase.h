@@ -8,6 +8,11 @@
 // Retail opt-in: define FABLE_RETAIL_DEF_CLASS_BASE before the include for the polymorphic retail class (vtable
 // 0x012354D0: slot 0 scalar deleting dtor 0x004664E0, slot 1 Delete 0x0042D930). The dtor is inline (0x004664E0 is only the
 // vtable store + conditional delete; ~CResource 0x009FC550 ends with the same store; only FableWin.pdb has the ??1 symbol).
+// The const reference-count accessors AddRef / Release (returns the new count, long) / GetRefCount are FableWin.pdb-only
+// (Ego_r and retail inline them everywhere; no retail body). Retail shapes: `inc [eax+4]`, `dec [ecx+4]; jne` and, for the
+// CDefPointer<CDefClassBase> temporary, `mov edi,[eax+4]; dec edi; mov [eax],edi` (engine/CDefPointer.h; landed GetSubDef<T>
+// rows, wave 2). Whether Lionhead wrote IVRefCount `mutable` or const_cast in the accessors is not visible in the bytes (the
+// two compile identically); `mutable` follows the landed local models.
 // The flattened layout below stays the
 // default so the landed includers are unchanged.
 #ifdef FABLE_RETAIL_DEF_CLASS_BASE
@@ -16,7 +21,10 @@ class CIVCountedPointeeBase {
 public:
     virtual ~CIVCountedPointeeBase() { }                                 // slot 0  0x004664E0 (scalar deleting; inline dtor)
     virtual void Delete() const;                                         // slot 1  0x0042D930
-    unsigned long IVRefCount;                                            // +0x04
+    void AddRef() const { ++IVRefCount; }                                // FableWin.pdb ?AddRef@CIVCountedPointeeBase@@QBEXXZ (inline)
+    long Release() const { return --IVRefCount; }                        // FableWin.pdb ?Release@CIVCountedPointeeBase@@QBEJXZ (inline)
+    long GetRefCount() const { return IVRefCount; }                      // FableWin.pdb ?GetRefCount@CIVCountedPointeeBase@@QBEJXZ (inline)
+    mutable unsigned long IVRefCount;                                    // +0x04 (mutable: the const accessors count; see above)
 };
 FABLE_STATIC_ASSERT(sizeof(CIVCountedPointeeBase) == 0x8);
 #else // flattened Ego_r layout (the landed default)

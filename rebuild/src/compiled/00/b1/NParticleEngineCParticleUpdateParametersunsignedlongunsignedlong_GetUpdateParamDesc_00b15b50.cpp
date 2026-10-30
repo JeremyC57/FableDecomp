@@ -13,11 +13,7 @@
 //   end, unsigned `jae`); the key is loaded once into ebx and reused after the LowerBound call, which VC7.1 only does when
 //   the TU holds LowerBound's body (same-TU noinline stand-in that only reads memory); the descriptor's implicit operator=
 //   copies Callback and Data (not the vptr).
-class CBaseClass {
-public:
-    CBaseClass();                                           // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DVector {
 public:

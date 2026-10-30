@@ -12,11 +12,7 @@
 //   the CRC stays in ebx.
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class CBaseClass {
-public:
-    CBaseClass();                                           // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace std {
 

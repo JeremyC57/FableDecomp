@@ -11,11 +11,7 @@
 //   the LowerBound call (same-TU noinline stand-in that only reads memory), the C3DVector copied as three dwords from
 //   `&it->second` (`add eax,4`).
 // Label: the catalog's `CVectorMap_LookupAndCopyVolume` is descriptive.
-class CBaseClass {
-public:
-    CBaseClass();                                           // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DVector {
 public:

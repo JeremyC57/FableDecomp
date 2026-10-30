@@ -44,11 +44,7 @@ struct __declspec(novtable) CEngineInternalPrimitiveMeshBase : CEngineInternalPr
         : CEngineInternalPrimitiveBase(type, flags), m_mesh(0), m_material(0), m_animation(0) { }
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DAnimationBlendState : public CBaseClass { public:            // vtable 0x01239838, 8 bytes
     class CSharedData;

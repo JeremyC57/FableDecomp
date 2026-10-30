@@ -17,14 +17,11 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;                        // +4
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->Count; }
 };
-class CBaseClass { public:                                   // vtable 0x01231710
-    CBaseClass() {}
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0, implicit copy
 struct CScriptThingImp;
 class CScriptThing : public CBaseClass { public:                    // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImp> PImp;       // +0x04
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) {}
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
     virtual ~CScriptThing();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016();

@@ -51,11 +51,7 @@ public:
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
 };
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:

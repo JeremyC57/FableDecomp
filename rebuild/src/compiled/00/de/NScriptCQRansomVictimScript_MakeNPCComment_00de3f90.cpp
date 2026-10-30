@@ -68,10 +68,7 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class CBaseClass { public:                                     // polymorphic root of the script handles
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl {
     virtual void i000();

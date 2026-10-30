@@ -60,10 +60,7 @@ template <class T> class CCountedPointer { public:
         return *this;
     }
 };
-class CBaseClass { public:                                      // polymorphic root of the script handles
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     virtual void t001() const; virtual void t002() const; virtual void t003() const; virtual void t004() const; virtual void t005() const; virtual void t006() const; virtual void t007() const; virtual void t008() const;
     virtual void t009() const;

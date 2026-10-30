@@ -15,14 +15,17 @@
 #pragma optimize("s", on)
 inline void* __cdecl operator new(unsigned int, void* p) { return p; }
 #pragma pack(push, 1)
-class CParentDefClassBase {
-public:
-    virtual ~CParentDefClassBase();                       // 0x00430300
-    unsigned char _base[0x39 - 4];
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class __declspec(novtable) CEngineLocalDetailObjectDef : public CParentDefClassBase {
 public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CEngineLocalDetailObjectDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CEngineLocalDetailObjectDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CEngineLocalDetailObjectDef@@UAEKXZ
     CEngineLocalDetailObjectDef(const CEngineLocalDetailObjectDef& other);                 // 0x0047756C
     CEngineLocalDetailObjectDef& operator=(const CEngineLocalDetailObjectDef& other);      // 0x00477964
     __forceinline virtual ~CEngineLocalDetailObjectDef() { }

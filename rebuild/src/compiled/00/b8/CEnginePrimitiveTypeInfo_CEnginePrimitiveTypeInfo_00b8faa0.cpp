@@ -9,11 +9,7 @@
 //   class is modelled locally with its RTTI bases (Header debt).
 // Shape: the two base constructors, then the slot array cleared by a counted loop, which VC7.1 turns into `rep stosd` (memset puts
 //   the `xor eax,eax` before the `lea edi`).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                         // 0x0099A2F0

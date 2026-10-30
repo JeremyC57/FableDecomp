@@ -9,11 +9,7 @@
 // Shape: the element count computed once into a local, an unsigned up-counting index, a reference to the element
 //   (retail keeps its dead `lea eax,[eax+edi*8]`), the call under the handle's inline IsNull() through GetData() (FableWin.pdb
 //   ?IsNull@CEnginePrimitiveHandle@@QBE_NXZ, ?GetData@CEnginePrimitiveHandle@@QBEAAVCEnginePersistentPrimitiveBase@@XZ).
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace std {
 template <class _Tp> class allocator { };

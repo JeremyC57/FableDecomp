@@ -22,10 +22,7 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right); // 0x0099F690 (hidden result in ecx)
 
-class CBaseClass { public:                                    // polymorphic root of the script handles
-    CBaseClass();                                      // 0x0099A2D0
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCPPointerInfo;
 

@@ -9,11 +9,7 @@
 //   PrimitiveHandle +0x58 (0x60 bytes).
 // Shape: as CLocalDetailPrimitiveMesh 0x00BDFB50, then the eight members cleared in the body (after the handle member is
 //   constructed), in retail's store order.
-class CBaseClass {
-public:
-    CBaseClass();                                    // 0x0099A2D0
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CIVCountedPointeeBase;
 template <class T> class CIVCountedPointer {
 public:

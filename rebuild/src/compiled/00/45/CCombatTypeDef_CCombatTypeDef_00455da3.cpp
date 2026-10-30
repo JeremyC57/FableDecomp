@@ -40,11 +40,11 @@ class map { public:                                      // STLport 4.6 map: one
     _Compare     _M_key_compare;
 };
 }
-class CParentDefClassBase { public:                      // retail 0x3C bytes (Ego_r 0x40: it holds one container)
-    CParentDefClassBase();                               // 0x00430370
-    virtual ~CParentDefClassBase();
-    unsigned char _pad04[0x38];
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CCharString { public:
     CCharString();                                       // 0x0099E4B0
     ~CCharString();

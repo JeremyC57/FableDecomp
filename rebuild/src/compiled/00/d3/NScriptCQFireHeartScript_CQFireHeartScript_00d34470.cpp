@@ -27,11 +27,7 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
     void* m_pData;                                   // +0x44
     CScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pData(data) { }
 };
-class CBaseClass {
-public:
-    CBaseClass();                                         // 0x0099A2D0
-    virtual ~CBaseClass();                                // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
 class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp

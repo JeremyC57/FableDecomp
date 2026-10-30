@@ -58,10 +58,7 @@ struct CScriptThingImpl {                               // the game-side object 
     virtual void t000(); virtual void t001(); SLOTS_2_74
     virtual bool IsAlive() const;                       // slot 75 (+0x12c)
 };
-class CBaseClass { public:                                     // vtable 0x01231710
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     virtual void t001(); SLOTS_2_74
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130

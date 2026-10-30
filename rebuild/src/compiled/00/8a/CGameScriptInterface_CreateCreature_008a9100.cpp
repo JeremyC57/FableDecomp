@@ -23,10 +23,7 @@ class CCharString { public:
 };
 class C3DVector { public: float X, Y, Z; };
 
-class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);

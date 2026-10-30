@@ -39,10 +39,7 @@ enum EVertexType { EVertexTypeNativeView = 0 };
 // WeaponTrails -> Manager -> RenderUtil -> NonCopyable -> BaseClass. The two
 // engine PDB headers flatten that ancestry; keep its real virtual destructors
 // and constructors here, with no synthetic members in these bases.
-class CBaseClass { public:
-    CBaseClass(); // FableWin PDB 03044700; retail native base initializer 0099A2D0/E0
-    virtual ~CBaseClass(); // FableWin PDB 03044720
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
 protected:
     CBaseClassNonCopyable(); // FableWin PDB 03044740; retail native base initializer 0099A2F0

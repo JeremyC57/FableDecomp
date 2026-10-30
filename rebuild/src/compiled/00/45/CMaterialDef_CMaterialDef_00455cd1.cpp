@@ -12,11 +12,11 @@ template<class T> struct CRetailVector {               // VC6-era Dinkumware vec
     T* first; T* last; T* end_of_storage;
     CRetailVector() : first(0), last(0), end_of_storage(0) {}
 };
-class CParentDefClassBase { public:
-    virtual void v0();
-    CParentDefClassBase();                             // 0x00430370
-    unsigned char _body[0x38];                         // +0x04 .. +0x3b (retail sizeof 0x3c; the PDB header says 0x3d)
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 
 struct CBlendedEffectsMap {                            // std::map<long, CBlendedParticleEffectSet>: header, count, comparator
     unsigned char _body[0x0c];

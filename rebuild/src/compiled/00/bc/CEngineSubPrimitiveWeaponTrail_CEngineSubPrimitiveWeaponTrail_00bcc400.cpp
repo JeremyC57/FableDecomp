@@ -5,11 +5,7 @@
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0.
 // Shape (family L116 = landed family K056, 0x00BB1780): CEngineSubPrimitiveBase's inline constructor (Ego_r.pdb Parent +0x0C,
 //   NextSubPrimitive +0x10 cleared); the base's own vptr store is dead and dropped, leaving only 0x012A6AD0.
-class CBaseClass {
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                             // 0x0099A2F0

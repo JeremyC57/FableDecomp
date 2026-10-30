@@ -15,16 +15,13 @@
 class CThing;
 struct SCount { long m_references; };
 
-class CBaseClass { public:
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0, implicit copy
 
 class CScriptThing : public CBaseClass { public:
     virtual void v00();
     CThing* m_pThing;                      // +4
     SCount* m_pCount;                      // +8
-    CScriptThing(const CScriptThing& other) : CBaseClass(), m_pThing(other.m_pThing), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), m_pThing(other.m_pThing), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
 
 struct CProcess {

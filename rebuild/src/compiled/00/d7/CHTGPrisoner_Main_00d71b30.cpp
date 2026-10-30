@@ -62,11 +62,7 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual void i071() const; virtual void i072() const; virtual void i073() const; virtual void i074() const;
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-class CBaseClass {
-public:                                           // vtable 0x01231710
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;

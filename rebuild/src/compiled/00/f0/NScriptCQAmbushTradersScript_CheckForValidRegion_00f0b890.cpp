@@ -13,11 +13,10 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CGameScriptInterface { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
-    virtual void v010(); virtual void v011();
-    virtual bool IsRegionLoaded(const CCharString& region) const;   // slot 12 (+0x30)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 namespace NScript {
 struct CScriptBase {                                    // retail 0x40 bytes (PDB 0x54: debug containers)

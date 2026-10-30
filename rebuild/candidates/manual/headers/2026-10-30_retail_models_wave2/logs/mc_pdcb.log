@@ -1,0 +1,376 @@
+00625350	SAME	115b RELOCATION_MATCH->RELOCATION_MATCH
+004f9cfc	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004f9db7	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+004f9f62	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+004f9fa3	SAME	228b RELOCATION_MATCH->RELOCATION_MATCH
+004fa22c	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+004fa434	SAME	226b RELOCATION_MATCH->RELOCATION_MATCH
+004fa3e3	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+00460256	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+0046f6dc	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00461f7c	SAME	621b RELOCATION_MATCH->RELOCATION_MATCH
+00463950	SAME	385b RELOCATION_MATCH->RELOCATION_MATCH
+0046051d	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+004628d0	SAME	117b RELOCATION_MATCH->RELOCATION_MATCH
+0046f4f0	SAME	117b RELOCATION_MATCH->RELOCATION_MATCH
+004604cf	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+00460a19	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+0046f1b4	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00460a61	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+00462451	SAME	117b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00461acd	SAME	143b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0046ef6b	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0046f483	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+004625fd	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+004608c6	SAME	309b RELOCATION_MATCH->RELOCATION_MATCH
+0046ee2d	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+004602a4	SAME	405b RELOCATION_MATCH->RELOCATION_MATCH
+004605e5	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'operator=' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00465eb3	SAME	671b RELOCATION_MATCH->RELOCATION_MATCH
+00460457	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in new.obj; graded the largest function
+0046267d	SAME	351b RELOCATION_MATCH->RELOCATION_MATCH
+0046f760	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+004629fb	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+004601ea	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+004600cb	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00460185	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00460131	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00677360	SAME	40b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00f29ce0	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+00434370	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+00431e40	SRC_FAIL	|         'void CDefClassBase::Copy(const CDefClassBase *)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\repo\rebuild\include\engine\CDefClassBase.h(64) : see declaration of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' | 
+00473046	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+004786cf	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004787f6	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00476212	SRC_FAIL	0-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00476212\new.cpp(120) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(std::vector<_Tp>::pointer,unsigned int,const _Tp &)' |         with |         [ |             _Tp=CQuickAccessItemButtonGuiDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00476212\new.cpp(116) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CQuickAccessItemButtonGuiDef |         ] | 
+00471e17	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+0047955b	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00478855	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00479630	SRC_FAIL	7-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00479630\new.cpp(137) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(std::vector<_Tp>::pointer,std::vector<_Tp>::size_type,const _Tp &)' |         with |         [ |             _Tp=COpinionDeedReactionDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00479630\new.cpp(135) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=COpinionDeedReactionDef |         ] | 
+00473496	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0047200d	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+0047747c	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00479574	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+00478512	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in new.obj; graded the largest function
+004784b3	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00478722	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+00472e83	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+004766c2	SRC_FAIL	\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004766c2\new.cpp(102) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(_Tp *,unsigned int,const _Tp &)' |         with |         [ |             _Tp=CAbilityButtonGuiDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004766c2\new.cpp(100) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CAbilityButtonGuiDef |         ] | 
+00471f60	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+00477a8a	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00478132	SAME	507b RELOCATION_MATCH->RELOCATION_MATCH
+0047a08c	SRC_FAIL	cb80dfb\scratchpad\mig2\work\mc\0047a08c\new.cpp(136) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(std::vector<_Tp>::pointer,std::vector<_Tp>::size_type,const _Tp &)' |         with |         [ |             _Tp=CAppearanceModifierScalingDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\0047a08c\new.cpp(134) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CAppearanceModifierScalingDef |         ] | 
+0047a4a2	SRC_FAIL	3f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\0047a4a2\new.cpp(137) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(std::vector<_Tp>::pointer,std::vector<_Tp>::size_type,const _Tp &)' |         with |         [ |             _Tp=CAbilityTrackDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\0047a4a2\new.cpp(135) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CAbilityTrackDef |         ] | 
+00476b67	SRC_FAIL	\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00476b67\new.cpp(102) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(_Tp *,unsigned int,const _Tp &)' |         with |         [ |             _Tp=CLensFlareElementDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00476b67\new.cpp(100) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CLensFlareElementDef |         ] | 
+00476ff7	SRC_FAIL	\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00476ff7\new.cpp(106) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(_Tp *,unsigned int,const _Tp &)' |         with |         [ |             _Tp=CEnvironmentThemeDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00476ff7\new.cpp(104) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CEnvironmentThemeDef |         ] | 
+0047318d	SAME	333b RELOCATION_MATCH->RELOCATION_MATCH
+004773f1	DIFFER	51v51 grades=False sym=??0CEngineLocalDetailLayerDef@@QAE@ABV0@@Z
+0047889d	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00478c79	SRC_FAIL	-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00478c79\new.cpp(136) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(std::vector<_Tp>::pointer,std::vector<_Tp>::size_type,const _Tp &)' |         with |         [ |             _Tp=CAbilityTrackLevelDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00478c79\new.cpp(134) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CAbilityTrackLevelDef |         ] | 
+00477e8e	SRC_FAIL	bleDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00477e8e\new.cpp(106) : while compiling class-template member function 'void std::vector<_Tp>::_M_fill_insert(_Tp *,unsigned int,const _Tp &)' |         with |         [ |             _Tp=CEngineLocalDetailObjectDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00477e8e\new.cpp(104) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CEngineLocalDetailObjectDef |         ] | 
+00477943	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00477169	SRC_FAIL	mp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00477169\new.cpp(93) : while compiling class-template member function 'void std::vector<T>::_M_insert_overflow(T *,const T &,const std::__false_type &,unsigned int,bool)' |         with |         [ |             T=CEnvironmentThemeDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\00477169\new.cpp(90) : see reference to class template instantiation 'std::vector<T>' being compiled |         with |         [ |             T=CEnvironmentThemeDef |         ] | 
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+00457e03	SAME	55b RELOCATION_MATCH->RELOCATION_MATCH
+0045784b	SRC_FAIL	440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\0045784b\new.cpp(33) : error C2079: 'CSpecialAbilitiesPhysicalShieldDef::LoopingSound' uses undefined class 'CDefString' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\0045784b\new.cpp(34) : error C2079: 'CSpecialAbilitiesPhysicalShieldDef::EndSound' uses undefined class 'CDefString' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\0045784b\new.cpp(62) : fatal error C1903: unable to recover from previous error(s); stopping compilation | 
+00456802	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004564b5	SRC_FAIL	undefined class 'CVectorMap' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004564b5\new.cpp(39) : error C2955: 'CVectorMap' : use of class template requires template argument list |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004564b5\new.cpp(29) : see declaration of 'CVectorMap' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004564b5\new.cpp(39) : error C2079: 'CSoundMap::CriteriaMap' uses undefined class 'CVectorMap' | 
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+0045e187	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+00457f13	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00457073	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00459767	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+004570b7	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+0045c54e	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+004583fa	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004585e0	DIFFER	26v26 grades=False sym=??0CHitLocationDef@@QAE@XZ
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf 'Copy' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0045887f	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+0045775a	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'Copy' matches no symbol in new.obj; graded the largest function
+0045c2e8	SAME	231b RELOCATION_MATCH->RELOCATION_MATCH
+00456d69	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+0045767e	DIFFER	47v59 grades=False sym=??0CSpecialAbilitiesForcePushDef@@QAE@XZ
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0045d2d1	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'operator=' matches no symbol in new.obj; graded the largest function
+0045f7c7	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+00457132	SAME	70b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'operator=' matches no symbol in old.obj; graded the largest function
+0045654c	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'operator=' matches no symbol in new.obj; graded the largest function
+0045ce48	SAME	357b RELOCATION_MATCH->RELOCATION_MATCH
+004550ac	SAME	1016b RELOCATION_MATCH->RELOCATION_MATCH
+00455cd1	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+0045dd05	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004596d2	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+0045a133	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+0045fe2b	SAME	154b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00457178	SAME	112b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00455eca	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+0045704a	SAME	41b RELOCATION_MATCH->RELOCATION_MATCH
+004595ff	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'allocator<CMacro>,CMacro>' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+004560a9	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00455da3	SAME	58b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'allocator<CMacro>,CMacro>' matches no symbol in new.obj; graded the largest function
+00456dc0	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+0045e660	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+00456f09	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+004567db	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+0045cb1c	SAME	177b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0045569c	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+0045d344	SAME	405b RELOCATION_MATCH->RELOCATION_MATCH
+00458d3f	DIFFER	42v42 grades=False sym=??0CThingShotDef@@QAE@XZ
+004570d3	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+00457f73	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+0045604d	SAME	58b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00459a6f	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+00457973	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004595e3	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+0045686d	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004596ee	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+00457b72	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0045c523	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00457a67	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00456779	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00457da9	SAME	58b RELOCATION_MATCH->RELOCATION_MATCH
+00455572	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+004576db	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00456ffe	SAME	42b RELOCATION_MATCH->RELOCATION_MATCH
+004575fc	SRC_FAIL	-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004575fc\new.cpp(46) : error C2079: 'CSpecialAbilitiesBulletTimeDef::InitSound' uses undefined class 'CDefString' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004575fc\new.cpp(47) : error C2079: 'CSpecialAbilitiesBulletTimeDef::LoopSound' uses undefined class 'CDefString' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004575fc\new.cpp(48) : error C2079: 'CSpecialAbilitiesBulletTimeDef::EndSound' uses undefined class 'CDefString' | 
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00459550	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00456cff	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+00459537	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+00457a83	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+00458033	SAME	188b RELOCATION_MATCH->RELOCATION_MATCH
+00457776	SAME	179b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in old.obj; graded the largest function
+00458c66	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf 'CSymbolInfo>_>' matches no symbol in new.obj; graded the largest function
+00456531	SAME	27b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004590e6	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'operator=' matches no symbol in old.obj; graded the largest function
+00458c19	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+004556b8	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in new.obj; graded the largest function
+0045f716	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00456eed	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004588e2	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+004579c2	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00459a53	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+00458504	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00458d23	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+004572a7	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+00459783	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00459732	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+00457ed6	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+004579f7	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+0045933d	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+00458994	DIFFER	141v153 grades=False sym=??0CGlobalDef@@QAE@XZ
+0045855a	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+00459e46	DIFFER	686v680 grades=False sym=??1CPlayerGuiDef@@UAE@XZ
+00459bb6	SAME	622b RELOCATION_MATCH->RELOCATION_MATCH
+00457e77	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+0045f58a	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+0045d5d3	SAME	64b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00455cab	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+00458b9d	DIFFER	130v124 grades=False sym=??1CHeroCombatDef@@UAE@XZ
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+00457ae4	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+0045fd53	SAME	186b RELOCATION_MATCH->RELOCATION_MATCH
+0045e620	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+0045fac1	SAME	628b RELOCATION_MATCH->RELOCATION_MATCH
+0045e55a	SAME	159b RELOCATION_MATCH->RELOCATION_MATCH
+00457716	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+0045fee3	SAME	458b RELOCATION_MATCH->RELOCATION_MATCH
+00456851	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+0045720a	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+0045956c	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00456948	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00457efd	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+0045974e	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+0045d63c	SAME	207b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00456d43	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+004588fb	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004581f8	SAME	188b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+0045a0ee	DIFFER	46v37 grades=False sym=??0CUILocaleGraphicsDef@NUISystem@@QAE@XZ
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+00455d44	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+004585bd	SRC_FAIL	|         'void CDefClassBase::Copy(const CDefClassBase *)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\repo\rebuild\include\engine\CDefClassBase.h(64) : see declaration of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' | 
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00456cc5	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00458c87	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+00456964	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+0045c112	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+0045d2fc	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00456f55	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00455899	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1CGlobalDef@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CPatchTesselationEdgeStrip@' matches no symbol in new.obj; graded the largest function
+00458476	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+0045ee9b	SAME	146b RELOCATION_MATCH->RELOCATION_MATCH
+0045f635	SAME	195b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1CGlobalDef@' matches no symbol in new.obj; graded the largest function
+00458a4f	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+00457f57	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+0045c614	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+0045f854	SAME	591b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf '??1COpinionPersonalityDef@' matches no symbol in old.obj; graded the largest function
+0045d505	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004560e1	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+0045585a	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??1COpinionPersonalityDef@' matches no symbol in new.obj; graded the largest function
+00456fd8	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+00458573	SAME	42b RELOCATION_MATCH->RELOCATION_MATCH
+004578de	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+0045be2b	SAME	669b RELOCATION_MATCH->RELOCATION_MATCH
+00456f71	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00456de3	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+00458413	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+004ec03f	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+004e46cd	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004e3b6c	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004e38ce	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e39b2	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004ebe96	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+004ec08a	SRC_FAIL	of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig2\work\mc\004ec08a\new.cpp(30) : see reference to function template instantiation 'void std::_Construct<CCardDef,CCardDef>(CCardDef *,const CCardDef &)' being compiled | 
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3b50	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004e3939	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3970	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3aae	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+004e398c	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004ec10f	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004e3c0e	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004e3f65	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3c52	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e38b2	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3bf2	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+004ebca9	SAME	228b RELOCATION_MATCH->RELOCATION_MATCH
+004ebf32	SAME	234b RELOCATION_MATCH->RELOCATION_MATCH
+004e3aca	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004e382c	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004e39ce	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+004ebdb0	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3f3f	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in old.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004ec0d4	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e3fb4	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in new.obj; graded the largest function
+004e391d	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
