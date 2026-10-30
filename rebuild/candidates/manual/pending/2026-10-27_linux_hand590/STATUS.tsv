@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c8a0a0	DIFFER	295v295	PASS	_fetch_headers (libvorbis vorbisfile.c static); private register convention lane gap (as 0x00C89D70); parked after 2 grades; test is differ/00c8a0a0.test.cpp

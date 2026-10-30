@@ -364906,6 +364906,72 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00caaca0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ab2e40'
+        Module = 'std::vector<N3DAnimationBuilder::CSequenceInfo>'
+        Source = '00/ab/stdvectorN3DAnimationBuilderCSequenceInfo_Mfillinsert_00ab2e40.cpp'
+        TestSource = '00/ab/stdvectorN3DAnimationBuilderCSequenceInfo_Mfillinsert_00ab2e40_test.cpp'
+        PassPattern = '00ab2e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7ffc0'
+        Module = 'std::vector<CTVertexWaterBackground>'
+        Source = '00/b7/stdvectorCTVertexWaterBackground_Minsertoverflow_00b7ffc0.cpp'
+        TestSource = '00/b7/stdvectorCTVertexWaterBackground_Minsertoverflow_00b7ffc0_test.cpp'
+        PassPattern = '00b7ffc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c2e7a0'
+        Module = 'CBankProcessor'
+        Source = '00/c2/CBankProcessor_AddEventTrigger_00c2e7a0.cpp'
+        TestSource = '00/c2/CBankProcessor_AddEventTrigger_00c2e7a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c2e7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4c080'
+        Module = 'CRACBuffer'
+        Source = '00/c4/CRACBuffer_CRACBuffer_00c4c080.cpp'
+        TestSource = '00/c4/CRACBuffer_CRACBuffer_00c4c080_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c4c080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c579c0'
+        Module = 'CVtable_012b8ed4'
+        Source = '00/c5/CVtable012b8ed4_ReleaseBuffer_00c579c0.cpp'
+        TestSource = '00/c5/CVtable012b8ed4_ReleaseBuffer_00c579c0_test.cpp'
+        PassPattern = '00c579c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f3b0'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_EncodeM16_00c5f3b0.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_EncodeM16_00c5f3b0_test.cpp'
+        PassPattern = '00c5f3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c74d30'
+        Module = 'CDspGain'
+        Source = '00/c7/CDspGain_Crossfade_00c74d30.cpp'
+        TestSource = '00/c7/CDspGain_Crossfade_00c74d30_test.cpp'
+        PassPattern = '00c74d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cab470'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_Connect_00cab470.cpp'
+        TestSource = '00/ca/CBasePin_Connect_00cab470_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00cab470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce5050'
+        Module = 'NScript::CHeroBoastsScript'
+        Source = '00/ce/NScriptCHeroBoastsScript_BoastBreakSiegeNoAssistance_00ce5050.cpp'
+        TestSource = '00/ce/NScriptCHeroBoastsScript_BoastBreakSiegeNoAssistance_00ce5050_test.cpp'
+        PassPattern = '00ce5050_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

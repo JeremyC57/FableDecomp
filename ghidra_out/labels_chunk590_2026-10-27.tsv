@@ -1,0 +1,14 @@
+address	name	evidence
+00ab2e40	std::vector<N3DAnimationBuilder::CSequenceInfo>::_M_fill_insert	chunk 590: STLport 4.6; resize 0x00AB3290 binding; 52-byte stride
+00b7ffc0	std::vector<CTVertexWaterBackground>::_M_insert_overflow	chunk 590: STLport; _M_clear 0x00B800F0 called out of line
+00c2e7a0	CBankProcessor::AddEventTrigger	chunk 590: spelling bound by landed AddEvent; /EHsc (no EH frame but a by-value class argument)
+00c4c080	CRACBuffer::CRACBuffer	chunk 590: DESCRIPTIVE libpk class (landed name); PKRACBuffer.cpp trace; /EHsc
+00c579c0	CVtable_012b8ed4::ReleaseBuffer	chunk 590: DESCRIPTIVE; slot 5 of the OpenAL source vtables
+00c5f3b0	CImaAdpcmCodec::EncodeM16	chunk 590: DirectX SDK imaadpcm.cpp; Initialize's converter table 0x012B9274; seven-argument converter (ret 14h)
+00c74d30	CDspGain::Crossfade	chunk 590: DESCRIPTIVE libpk DSP; two SRampState members
+00cab470	CBasePin::Connect	chunk 590: DirectShow strmbase; /EHsc
+00ce5050	NScript::CHeroBoastsScript::BoastBreakSiegeNoAssistance	chunk 590: Ego_r.pdb; ControlNewBoast 0x00CE2861 stores it next to its name string
+00c8a0a0	_fetch_headers	chunk 590 (parked DIFFER 295v295): libvorbis 1.0.1 vorbisfile.c static; register-convention lane gap (same as 0x00C89D70)
+00c8db10	ogg_stream_packetout	chunk 590: libogg; landed as std::_Dest_val<CFlash> (wrong); check ICF before renaming
+00c1eee0	CEventTriggerRef::CEventTriggerRef	chunk 590: the AddEvent* rows call it so; landed as CItemAction::CItemAction (wrong)
+0143bdb0	g_AudioContext	chunk 590: four other spellings bound

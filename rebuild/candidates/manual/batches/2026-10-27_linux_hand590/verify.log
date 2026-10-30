@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00ab2e40   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCSequenceInfo@N3DAnimationBuilder@@PAV12@@std@@YIPAVCSequenceInfo@N3DAnimationBuilder@@PAV12@00ABU__false_type@0@@Z -> 00ab13a0 labelled '_global::_Copy_impl<CActionInputControl*,CActionInputControl*>'
+00ab2e40   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCSequenceInfo@N3DAnimationBuilder@@IV12@@std@@YIPAVCSequenceInfo@N3DAnimationBuilder@@PAV12@IABV12@@Z -> 00ab1410 labelled '_global::UninitFillN_00ab1410'
+00ab2e40   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCSequenceInfo@N3DAnimationBuilder@@V?$allocator@VCSequenceInfo@N3DAnimationBuilder@@@std@@@std@@IAEXPAVCSequenceInfo@N3DAnimationBuilder@@ABV34@ABU__false_type@2@I_N@Z -> 00ab2ce0 labelled 'Vector_Reallocate_0x34Bytes'
+00ab2e40   RELOCATION_MATCH PASS   _M_fill_insert
+00b7ffc0   WARN RELOC_NAME: ?_M_clear@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@IAEXXZ -> 00b800f0 labelled '_unattributed::ReleaseFirstMember_00b800f0'
+00b7ffc0   RELOCATION_MATCH PASS   _M_insert_overflow
+00c2e7a0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c2e7a0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@ABVCString@@@Z -> 00c0dea0 labelled 'CString::operator<<'
+00c2e7a0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@K@Z -> 00c0df10 labelled 'CString::operator<<'
+00c2e7a0   WARN RELOC_NAME: ??0CEventTriggerRef@@QAE@PAUCItemDispatcher@@VCString@@_N@Z -> 00c1eee0 labelled 'CItemAction::CItemAction'
+00c2e7a0   WARN RELOC_NAME: ??A?$PKCAutoDeleteArray@K@@QAEAAKK@Z -> 00c2ebc0 labelled '_global::PKCAutoDeleteArray_RangeCheck_Abort'
+00c2e7a0   WARN RELOC_NAME: ?Find@CDriverMap@@QAEPAUCDriver@@K@Z -> 00c3abd0 labelled 'CIndexMap_00c3abd0::Get'
+00c2e7a0   WARN RELOC_NAME: ?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z -> 00c1f4e0 labelled 'CItemAction::Handle'
+00c2e7a0   RELOCATION_MATCH PASS   AddEventTrigger
+00c4c080   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c4c080   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c4c080   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<'
+00c4c080   RELOCATION_MATCH PASS   CRACBuffer
+00c579c0   RELOCATION_MATCH PASS   ReleaseBuffer
+00c5f3b0   RELOCATION_MATCH PASS   EncodeM16
+00c74d30   WARN RELOC_NAME: ?ApplyRamps@CDspGain@@QAEXPBM0PAM01HI@Z -> 00c74510 labelled 'Audio_IIRFilterProcess'
+00c74d30   RELOCATION_MATCH PASS   Crossfade
+00cab470   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cab470   RELOCATION_MATCH PASS   Connect
+00ce5050   RELOCATION_MATCH PASS   BoastBreakSiegeNoAssistance
+
+WINS: 9
+  00ab2e40 RELOCATION_MATCH std::vector<N3DAnimationBuilder::CSequenceInfo>::?_M_fill_insert@?$vector@VCSequenceInfo@N3DAnimationBuilder@@V?$allocator@VCSequenceInfo@N3DAnimationBuilder@@@std@@@std@@QAEXPAVCSequenceInfo@N3DAnimationBuilder@@IABV34@@Z
+  00b7ffc0 RELOCATION_MATCH std::vector<CTVertexWaterBackground>::?_M_insert_overflow@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@IAEXPAVCTVertexWaterBackground@@ABV3@ABU__false_type@2@I_N@Z
+  00c2e7a0 RELOCATION_MATCH CBankProcessor::?AddEventTrigger@CBankProcessor@@QAEXABUCEventRecord@@_N@Z
+  00c4c080 RELOCATION_MATCH CRACBuffer::??0CRACBuffer@@QAE@PAEKKK@Z
+  00c579c0 RELOCATION_MATCH CVtable_012b8ed4::?ReleaseBuffer@CVtable_012b8ed4@@UAEXXZ
+  00c5f3b0 RELOCATION_MATCH CImaAdpcmCodec::?EncodeM16@CImaAdpcmCodec@@SIHPAE0IIIPAH1@Z
+  00c74d30 RELOCATION_MATCH CDspGain::?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z
+  00cab470 RELOCATION_MATCH CBasePin::?Connect@CBasePin@@UAGJPAUIPin@@PBU_AMMediaType@@@Z
+  00ce5050 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastBreakSiegeNoAssistance@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  stdvectorN3DAnimationBuilderCSequenceInfo_Mfillinsert_00ab2e40
+  stdvectorCTVertexWaterBackground_Minsertoverflow_00b7ffc0
+  CBankProcessor_AddEventTrigger_00c2e7a0
+  CRACBuffer_CRACBuffer_00c4c080
+  CVtable012b8ed4_ReleaseBuffer_00c579c0
+  CImaAdpcmCodec_EncodeM16_00c5f3b0
+  CDspGain_Crossfade_00c74d30
+  CBasePin_Connect_00cab470
+  NScriptCHeroBoastsScript_BoastBreakSiegeNoAssistance_00ce5050

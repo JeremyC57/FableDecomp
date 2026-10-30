@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00ab2e40	RELOCATION_MATCH	296v296	PASS	std::vector<N3DAnimationBuilder::CSequenceInfo>::_M_fill_insert (STLport 4.6; C3DQuad2 twin 0x00AE6E60 model); 1 grade
+00b7ffc0	RELOCATION_MATCH	302v302	PASS	std::vector<CTVertexWaterBackground>::_M_insert_overflow (STLport 4.6, forceinline helpers); 1 grade
+00c2e7a0	RELOCATION_MATCH	297v297	PASS	CBankProcessor::AddEventTrigger; /EHsc (plain /O2 286v297); 2 grades
+00c4c080	RELOCATION_MATCH	294v294	PASS	CRACBuffer::CRACBuffer (libpk, descriptive class as landed; PKRACBuffer.cpp trace); /EHsc; 1 grade
+00c579c0	RELOCATION_MATCH	297v297	PASS	CVtable_012b8ed4::ReleaseBuffer (descriptive; OpenAL source slot 5); 1 grade
+00c5f3b0	RELOCATION_MATCH	300v300	PASS	CImaAdpcmCodec::EncodeM16 (DirectX SDK imaadpcm.cpp, 7-argument revision); 3 grades
+00c74d30	RELOCATION_MATCH	297v297	PASS	CDspGain::Crossfade (descriptive libpk DSP); two-float SRampState with user operator=; 4 grades
+00c8a0a0	DIFFER	295v295	PASS	_fetch_headers (libvorbis vorbisfile.c static); private register convention lane gap (as 0x00C89D70); parked after 2 grades; test is differ/00c8a0a0.test.cpp
+00cab470	RELOCATION_MATCH	258v258	PASS	CBasePin::Connect (DirectShow strmbase); /EHsc; 1 grade
+00ce5050	RELOCATION_MATCH	296v296	PASS	NScript::CHeroBoastsScript::BoastBreakSiegeNoAssistance (PDB name); 1 grade
