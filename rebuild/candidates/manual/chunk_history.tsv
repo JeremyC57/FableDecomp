@@ -24850,3 +24850,13 @@ chunk	address	module	name	length
 581	00e268c0	global	sub_00e268c0	534
 581	00f33ef0	global	vector_insert_impl_ThingBuildingDef_map	538
 581	00ec1cd0	global	sub_00ec1cd0	540
+582	00d34b30	global	std_vector_InsertRangeWithElement	480
+582	00eea020	global	sub_00eea020	543
+582	00d848d0	global	Main_InitializeFourierAnalysis_1	544
+582	00d872d0	global	Script_InitializeComponents	544
+582	00ed7a40	global	TalentlessBard_OnScript	546
+582	00e4f7f0	global	sub_00e4f7f0	549
+582	00d7c470	global	Main_InitializeFourierAnalysis	553
+582	00d6ca90	global	sub_00d6ca90	555
+582	00db4f70	global	Script_Guard_Duty	562
+582	00e1d7b0	global	DoMission_WizardBattleMazeDeath	573
