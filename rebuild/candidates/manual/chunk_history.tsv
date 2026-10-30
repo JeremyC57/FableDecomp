@@ -24870,3 +24870,13 @@ chunk	address	module	name	length
 583	00ee91e0	global	Script_MakeThingsSpeakNumbered	613
 583	00d2d1a0	global	Quest009_SpawnMonster_WithFade	620
 583	00eb7370	global	MayorsInvitation_OnEnter	625
+584	00da2ca0	global	Game_InitializeRoseCharacter	657
+584	00e68b20	global	Game_InitializeArena	666
+584	00e0e040	global	CScriptBase_HandleGraveyardSpawn	668
+584	00e9bbc0	global	DoMission_HeroDuelChallenge	670
+584	00e7bd60	global	CScriptGameResourceObjectScriptedThingBase_HandleFishermanNPCLogic	680
+584	00f3cf50	global	Mesh_CalcSectionScore	683
+584	00e7b4e0	global	sub_00e7b4e0	698
+584	00ef5840	global	sub_00ef5840	727
+584	00eda5e0	global	ProcessSongsClothes_ApplyDressCode	732
+584	00ec2520	global	CScriptBase_ProcessAlbionPopulationSim_Filter	778
