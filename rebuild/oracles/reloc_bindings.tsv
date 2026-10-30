@@ -35323,3 +35323,17 @@ _floor0_map_lazy_init@12	00ca36e0	00ca39c0
 ?g_bInsertMode@@3_NA	013ac749	00cb2710
 ?ImeUiCallback_DrawRect@@3P6IXHHHHK@ZA	0143cd64	00cb2820
 ?g_bCaretDraw@@3_NA	0143e8ac	00cb2820
+?AddStatUpdate@CMultiStatBar@NPlayerGui@@QAEXW4EStatUpdateType@@J@Z	00647457	0064a060
+?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z	006d6510	0064a060
+??_7CActionTalkBase@NTCScriptedControl@@6B@	012659a8	00717950
+?DefaultCameraTagsNeedInitialising@CActionTalkBase@NTCScriptedControl@@2_NA	01380fb9	00717950
+?InitialiseDefaultCameraTags@CActionTalkBase@NTCScriptedControl@@CIXXZ	007167e0	00717950
+?GetHeadSettingsSlowInFastOut@CTCLook@@ABEXAAM0MMMMM@Z	00751820	00752120
+?CalculateRadius@CTCPhysicsBase@@IBEMXZ	006afe20	0075a530
+?GetMatrixFromRHSet@@YIABVC3DMatrix@@AAV1@ABVCRightHandedSet@@@Z	00a358f0	0075a530
+?GetMesh@CPhysicsMeshInfo@@QBE?AV?$CIVCountedPointer@$$CBVCPhysicsMesh@@@@XZ	00a262b0	0075a530
+?GetScale@CTCGraphicAppearance@NGraphicAppearance@@QBEMXZ	004bbff0	0075a530
+?PeekPhysicsMeshInfo@CMeshDataBank@@QBEPBVCPhysicsMeshInfo@@K@Z	00a24250	0075a530
+?GetCarriedPositionInfo@CTCCarryable@@QBE_NAAVC3DVector@@AAVCRightHandedSet@@_NM@Z	007055d0	0076e2f0
+?GetHelperPointPositionStatic@C3DMeshObject@@QBE?AVC3DVector@@ABVCCharString@@J@Z	00a361a0	0076e2f0
+?GetRenderMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DMeshObject@@ABVC3DVector@@ABVCRightHandedSet@@@Z	004bc750	0076e2f0

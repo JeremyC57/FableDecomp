@@ -369024,6 +369024,50 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c6fc80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0064a060'
+        Module = 'NPlayerGui::CDrawStatUpdates'
+        Source = '00/64/NPlayerGuiCDrawStatUpdates_Update_0064a060.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawStatUpdates_Update_0064a060_test.cpp'
+        PassPattern = '0064a060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00717950'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_CActionTalkBase_00717950.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_CActionTalkBase_00717950_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Oa'
+        PassPattern = '00717950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00752120'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_ChangeHeadAngleXY_00752120.cpp'
+        TestSource = '00/75/CTCLook_ChangeHeadAngleXY_00752120_test.cpp'
+        PassPattern = '00752120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00752510'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_GetHeadCreatureAnimFrame_00752510.cpp'
+        TestSource = '00/75/CTCLook_GetHeadCreatureAnimFrame_00752510_test.cpp'
+        PassPattern = '00752510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075a530'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_SetPhysicsMeshBankIndex_0075a530.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_SetPhysicsMeshBankIndex_0075a530_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '0075a530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076e2f0'
+        Module = 'CTCWeaponTrail'
+        Source = '00/76/CTCWeaponTrail_CalculateInterpolatedWeaponHelpers_0076e2f0.cpp'
+        TestSource = '00/76/CTCWeaponTrail_CalculateInterpolatedWeaponHelpers_0076e2f0_test.cpp'
+        PassPattern = '0076e2f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,7 @@
+address	name	evidence
+0x0064A060	NPlayerGui::CDrawStatUpdates::Update	proven per batch 2026-10-30_parked_retry2_sec2 NOTES.md (parked-row sweep section 2; same-TU noinline callee body)
+0x00717950	NTCScriptedControl::CActionTalkBase::CActionTalkBase	proven per batch 2026-10-30_parked_retry2_sec2 NOTES.md (section 2; protected ctor (CThing&,bool,bool,bool), /Oa)
+0x00752120	CTCLook::ChangeHeadAngleXY	proven per batch 2026-10-30_parked_retry2_sec2 NOTES.md (section 2; PDB inline getter GetHeadTurnRangeXY)
+0x00752510	CTCLook::GetHeadCreatureAnimFrame	proven per batch 2026-10-30_parked_retry2_sec2 NOTES.md (section 2)
+0x0075A530	CTCPhysicsRigidBody::SetPhysicsMeshBankIndex	proven per batch 2026-10-30_parked_retry2_sec2 NOTES.md (section 2; /EHsc)
+0x0076E2F0	CTCWeaponTrail::CalculateInterpolatedWeaponHelpers	proven per batch 2026-10-30_parked_retry2_sec2 NOTES.md (section 2; same-TU noinline callee body)
