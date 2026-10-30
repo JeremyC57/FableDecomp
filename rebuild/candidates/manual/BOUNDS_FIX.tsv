@@ -58,7 +58,7 @@ address	pool	module	name	length	class	action	new_length	evidence
 00c21040	small	_global	Thiscall_CombatActionDebugFormat	752	OVERLONG	len	684	overlong: next body at 00c212f0 (+688, unlisted, refs=data_.rdata:1)
 00c28dc0	small	_global	std_vector_RaiseOverflowException	144	OVERLONG	len	112	overlong: next body at 00c28e40 (+128, unlisted, refs=none)
 00c28e50	small	_global	std_vector_RaiseOverflowException	133	OVERLONG	len	112	overlong: next body at 00c28ed0 (+128, unlisted, refs=none)
-00c298d0	small	_global	std_vector_InsertRange	352	TRUNCATED	keep	352	row ends at its own catch/SEH funclet (funclet convention)
+00c298d0	small	_global	std::vector<CHandleBasedMemoryPool::CHandleInfo>::_Insert_n	352	TRUNCATED	len	542	chunk 597: the body continues past the first `ret 0Ch` and the Catch@00c29a30 / Catch@00c29a3c funclets to 0x00C29AEE; graded over 542 bytes with /EHsc /Gr it is RELOCATION_MATCH (pending/2026-10-27_linux_hand597/differ/00c298d0.cpp). Re-cut the catalog row to 542 and merge the two Catch rows into it.
 00c29a3c	funclet	_global	Catch@00c29a3c	180	MIDSTART	skip	180	not a function start: inside 00c29a30 (Catch@00c29a30, extent 21, reaches 00c29a3c by fallthrough)
 00c29dc0	gapscan	_gapscan	sub_00c29dc0	240	OVERLONG	len	8	overlong: next body at 00c29dd0 (+16, unlisted, refs=data_.rdata:1)
 00c35460	gapscan	_gapscan	sub_00c35460	64	OVERLONG	len	5	overlong: next body at 00c35470 (+16, unlisted, refs=data_.rdata:1)

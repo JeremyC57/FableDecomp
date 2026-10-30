@@ -1,0 +1,9 @@
+address	name	evidence
+00ae3360	CParticleProgram::Clear	proven per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597)
+00b85660	std::__rotate<CEngineSubPrimitiveRenderer::CSortElement*,int,...>	proven per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597)
+00b9e750	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksDegenerateTriangles	proven per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597)
+00c00e60	zlib 1.2.1 longest_match	proven per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597)
+00cb3570	ImeUi_ToggleLanguageBar	proven per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597)
+00cd5170	LoadDataFromMarker	proven per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597)
+00c55da0	CAudioContext::GetPreferredDeviceName	descriptive per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597; libpk, retail_asm pushad/popad row)
+00c62530	CAmbientTrigger::Play	descriptive per batch 2026-10-27_linux_hand597 NOTES.md (chunk 597; libpk)

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c55da0	RELOCATION_MATCH	348v348	PASS	retail_asm/ (purity retail_asm): CAudioContext::GetPreferredDeviceName, descriptive (libpk OpenAL wrapper); retail `pushad`/`popad` around waveOutMessage + waveOutGetDevCapsA; /GS
+00cb3570	RELOCATION_MATCH	348v348	PASS	ImeUi_ToggleLanguageBar (DXUT ImeUi.cpp, __fastcall under /Gr); proven both PDBs
+00c298d0	DIFFER	352v542	PASS	differ/: vector<CHandleBasedMemoryPool::CHandleInfo>::_Insert_n (libpk Dinkumware); catalog extent stops 190 bytes short -- RELOCATION_MATCH over the true 542-byte function (/EHsc /Gr); re-cut the row with its two catch funclets
+00cd5170	RELOCATION_MATCH	352v352	PASS	LoadDataFromMarker; proven both PDBs + donor order
+00c62530	RELOCATION_MATCH	354v354	PASS	CAmbientTrigger::Play, descriptive (libpk ambient sound); same-TU stand-ins for 0x00C62350 / 0x00C62370 (esi-return static)
+00cbf13c	DIFFER	355v355	PASS	differ/: GetBestThingFromMarkerList (proven both PDBs); one callee-saved register tie (target edi / origin ebx swapped), 16 instructions differ by register name only
+00b85660	RELOCATION_MATCH	356v356	PASS	std::__rotate<CEngineSubPrimitiveRenderer::CSortElement*,int,...> (STLport random-access rotate, __gcd inline); manifest CNavigationPosition label wrong
+00c00e60	MATCH	359v359	PASS	zlib 1.2.1 longest_match (static, s in esi / cur_match in eax via a same-TU caller)
+00ae3360	RELOCATION_MATCH	360v360	PASS	CParticleProgram::Clear; proven both PDBs + landed ~CParticleProgram binding; manifest "construct" label wrong
+00b9e750	RELOCATION_MATCH	361v361	PASS	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksDegenerateTriangles; proven both PDBs; final local order found by compile-only probes after the 4th grade (gall.sh + vland confirm)

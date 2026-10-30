@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00c298d0	DIFFER	352v542	PASS	differ/: vector<CHandleBasedMemoryPool::CHandleInfo>::_Insert_n (libpk Dinkumware); catalog extent stops 190 bytes short -- RELOCATION_MATCH over the true 542-byte function (/EHsc /Gr); re-cut the row with its two catch funclets
+00cbf13c	DIFFER	355v355	PASS	differ/: GetBestThingFromMarkerList (proven both PDBs); one callee-saved register tie (target edi / origin ebx swapped), 16 instructions differ by register name only

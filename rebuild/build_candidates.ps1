@@ -367926,6 +367926,63 @@ $catalog = @(
         TestSource = '00/ca/CBaseInputPin_Receive_00ca8b90_test.cpp'
         PassPattern = '00ca8b90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae3360'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_Clear_00ae3360.cpp'
+        TestSource = '00/ae/CParticleProgram_Clear_00ae3360_test.cpp'
+        PassPattern = '00ae3360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b85660'
+        Module = 'std'
+        Source = '00/b8/std_rotate_00b85660.cpp'
+        TestSource = '00/b8/std_rotate_00b85660_test.cpp'
+        PassPattern = '00b85660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9e750'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/b9/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitiveBlocksDegenerateTriangles_00b9e750.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitiveBlocksDegenerateTriangles_00b9e750_test.cpp'
+        PassPattern = '00b9e750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c00e60'
+        Module = '_global'
+        Source = '00/c0/global_longestmatch_00c00e60.cpp'
+        TestSource = '00/c0/global_longestmatch_00c00e60_test.cpp'
+        PassPattern = '00c00e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c62530'
+        Module = 'CAmbientTrigger'
+        Source = '00/c6/CAmbientTrigger_Play_00c62530.cpp'
+        TestSource = '00/c6/CAmbientTrigger_Play_00c62530_test.cpp'
+        PassPattern = '00c62530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb3570'
+        Module = '_global'
+        Source = '00/cb/global_ImeUiToggleLanguageBar_00cb3570.cpp'
+        TestSource = '00/cb/global_ImeUiToggleLanguageBar_00cb3570_test.cpp'
+        PassPattern = '00cb3570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd5170'
+        Module = '_global'
+        Source = '00/cd/global_LoadDataFromMarker_00cd5170.cpp'
+        TestSource = '00/cd/global_LoadDataFromMarker_00cd5170_test.cpp'
+        PassPattern = '00cd5170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c55da0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_GetPreferredDeviceName_00c55da0.cpp'
+        TestSource = '00/c5/CAudioContext_GetPreferredDeviceName_00c55da0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c55da0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

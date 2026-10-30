@@ -1,0 +1,43 @@
+addr       parity           behav  name
+00ae3360   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool
+00ae3360   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+00ae3360   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ae3360   RELOCATION_MATCH PASS   Clear
+00b85660   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b85660   RELOCATION_MATCH PASS   __rotate
+00b9e750   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b9e750   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerStaticMeshesBase
+00b9e750   RELOCATION_MATCH PASS   RenderMeshPrimitiveBlocksDegenerateTriangles
+00c00e60   MATCH            PASS   longest_match
+00c62530   WARN RELOC_NAME: ?GetVolume@CAmbientSource@@QAEMXZ -> 00c46f40 labelled 'TurnToPointer'
+00c62530   WARN RELOC_NAME: ?GetMinimum@CUnprovenPackedParameterRange@@QBEMXZ -> 00c1ba60 labelled '_global::CTCInventoryItem_GetWeaponClass_Wrapper'
+00c62530   WARN RELOC_NAME: ?GetRandomPointInSphere@@YG?AVC3DVector@@M@Z -> 00c62370 labelled 'Quaternion_FromAxisAngle'
+00c62530   WARN RELOC_NAME: ?Set2_00c20480@CSoundPlayParams_00c37840@@QAEXM@Z -> 00c20480 labelled 'CBrainOutput::SetAsPumpCombatActions'
+00c62530   WARN RELOC_NAME: ?GetMaximum@CUnprovenPackedParameterRange@@QBEMXZ -> 00c1ba70 labelled '_global::Weapon_ExtractClassAndScale'
+00c62530   WARN RELOC_NAME: ?Set3_00c204a0@CSoundPlayParams_00c37840@@QAEXM@Z -> 00c204a0 labelled 'CBrainOutput::SetAsPumpCombatActions'
+00c62530   WARN RELOC_NAME: ?Set9_00c20420@CSoundPlayParams_00c37840@@QAEXM@Z -> 00c20420 labelled 'CBrainOutput::SetAsPumpCombatActions'
+00c62530   WARN RELOC_NAME: ?GetHandleTable@CAmbientTrigger@@QAEPAVCHandleTable@@PAVCAmbientSource@@@Z -> 00c62440 labelled 'CRegion::SetMiniMapRegionExitTextOffsetY'
+00c62530   WARN RELOC_NAME: ?Play_00c13140@CSoundSystem_00c37840@@QAEJJJPBUCSoundPlayParams_00c37840@@@Z -> 00c13140 labelled '_global::CTCHeroExperience_GetBlockParryReward'
+00c62530   RELOCATION_MATCH PASS   Play
+00cb3570   WARN RELOC_ALIAS: _ImmGetDefaultIMEWnd@4 -> 00cb5546 is the import thunk 'IMM32.DLL::ImmGetDefaultIMEWnd'
+00cb3570   RELOCATION_MATCH PASS   ImeUi_ToggleLanguageBar
+00cd5170   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCElement@CDataMarkerOutput@@V?$allocator@VCElement@CDataMarkerOutput@@@std@@@std@@IAEXPAVCElement@CDataMarkerOutput@@ABV34@ABU__false_type@2@I_N@Z -> 00cdbdc0 labelled '_global::CCombatWheel_ReinitializeUintVector'
+00cd5170   RELOCATION_MATCH PASS   LoadDataFromMarker
+
+WINS: 7
+  00ae3360 RELOCATION_MATCH CParticleProgram::?Clear@CParticleProgram@@QAEXXZ
+  00b85660 RELOCATION_MATCH std::??$__rotate@PAVCSortElement@CEngineSubPrimitiveRenderer@@HV12@@std@@YIPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@00PAH0@Z
+  00b9e750 RELOCATION_MATCH CEnginePrimitiveManagerStaticMeshesBase::?RenderMeshPrimitiveBlocksDegenerateTriangles@CEnginePrimitiveManagerStaticMeshesBase@@CIXAAVC3DPrimitive2@@ABVC3DTextureStages@@@Z
+  00c00e60 MATCH _global::_longest_match
+  00c62530 RELOCATION_MATCH CAmbientTrigger::?Play@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z
+  00cb3570 RELOCATION_MATCH _global::?ImeUi_ToggleLanguageBar@@YIXH@Z
+  00cd5170 RELOCATION_MATCH _global::?LoadDataFromMarker@@YIXABVCCharString@@AAVCDataMarkerOutput@@@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CParticleProgram_Clear_00ae3360
+  std_rotate_00b85660
+  CEnginePrimitiveManagerStaticMeshesBase_RenderMeshPrimitiveBlocksDegenerateTriangles_00b9e750
+  global_longestmatch_00c00e60
+  CAmbientTrigger_Play_00c62530
+  global_ImeUiToggleLanguageBar_00cb3570
+  global_LoadDataFromMarker_00cd5170
