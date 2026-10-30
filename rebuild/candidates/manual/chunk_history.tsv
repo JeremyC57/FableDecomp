@@ -24990,3 +24990,13 @@ chunk	address	module	name	length
 595	00c1b560	global	RedBlackTree_RemoveNodeVariant2	334
 595	00c568f0	global	CAudioContext_ConfigureListener	334
 595	00c18c00	global	RedBlackTree_RemoveNode	335
+596	00c62a50	global	C16BitSamplePtr_Initialize	337
+596	00ae3670	global	CLandscapeBackgroundPatch_destructor	338
+596	00b8f4e0	global	Vector_InsertWithCount_CameraTag	339
+596	00ca8b90	global	AudioFile_QueryCapabilities	339
+596	00b22f30	global	GFInterpolateArray<unsigned_long>	340
+596	00c756c0	global	Graphics_LoadTerrainChunk	341
+596	00c75820	global	Animation_InterpolateAndInsert	343
+596	00af7730	global	Vector_InsertSingle_Counted	345
+596	00c8e580	global	CreatureHitNotification_Construct	347
+596	00ca3420	global	Geometry_ScaleVertexArray	347
