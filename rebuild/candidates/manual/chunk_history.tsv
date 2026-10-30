@@ -25020,3 +25020,13 @@ chunk	address	module	name	length
 598	00c6e050	global	sub_00c6e050	369
 598	00c90d60	global	Debug_DumpMatlabFile	370
 598	00c42dd0	global	CTCHeroStats_InitializeShadowRenderer	373
+599	00c92ca0	global	Graphics_ConvertFloatToFixed	376
+599	00c5f150	global	Audio_ComputeEnergy	381
+599	00c76c20	global	Array_PartitionAndInsert	381
+599	00c322e0	global	sub_00c322e0	385
+599	00c72620	global	sub_00c72620	385
+599	00b99860	global	engine_copy_global_transform_to_array	386
+599	00ca1e80	global	CurveInterpolation_InterpolateFloats	388
+599	00b862c0	global	std_introsort_merge_operation	389
+599	00ae1730	global	ReadVectorArray	391
+599	00c17940	global	DeleteSelectedTrackNode_Implementation	393
