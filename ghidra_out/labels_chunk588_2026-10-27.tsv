@@ -1,0 +1,15 @@
+address	name	evidence
+00ae6e60	std::vector<C3DQuad2>::_M_fill_insert	proven per batch 2026-10-27_linux_hand588 NOTES.md (chunk 588)
+00ae7340	std::vector<pair<CCharString,unsigned long> >::_M_fill_insert	proven per batch 2026-10-27_linux_hand588 NOTES.md (chunk 588)
+00bbd950	std::vector<CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator>::_M_fill_insert	proven per batch 2026-10-27_linux_hand588 NOTES.md (chunk 588)
+00c02350	updatewindow	chunk 588: zlib 1.2.1 inflate.c static; caller z_inflateSetDictionary in the TU gives the register convention
+00c9c500	mdct_bitreverse	chunk 588: libvorbis 1.0.1 mdct.c static, next after mdct_clear; 0.5f constant 0x0122F59C checked
+00b94180	CEngineScene::RenderSceneOcclusion	chunk 588: Ego_r name set (3-arg signature, unique callee RenderCellClippedOcclusion, Render* source order); dead code in retail
+00c75ab0	CReverbDiffuser::ProcessRamped	chunk 588: DESCRIPTIVE (libpk, no PDB/RTTI); ramped twin of landed CReverbDiffuser::Process; dead code
+00caa290	CMemAllocator::SetProperties	chunk 588: strmbase, slot 3 of vtable 0x012BF810
+00cb37a0	CheckInputLocale	chunk 588: ImeUi.cpp ?CheckInputLocale@@YIXXZ; both PDB name sets + SDK body
+00c071b0	swd_accept	chunk 588 (parked DIFFER 279v279): LZO 1.08 static; prologue shrink-wrap order only
+0143e8c0	g_pszIndicatior	chunk 588: DESCRIPTIVE/UNCONFIRMED (ImeUi SDK source recollection, no PDB data symbol); landed placeholder g_scaled_0143e8c0
+013ac74c	g_aszIndicator	chunk 588: DESCRIPTIVE/UNCONFIRMED (ImeUi SDK source recollection, no PDB data symbol); landed placeholder g_013ac74c
+00b93f40	CEngineScene::RenderScene	chunk 588: Ego_r.pdb; landed as RenderLayerCells (wrong)
+00b94060	CEngineScene::RenderSceneShadowBuffer	chunk 588: Ego_r.pdb; landed as RenderLayerCellsShadow (wrong)

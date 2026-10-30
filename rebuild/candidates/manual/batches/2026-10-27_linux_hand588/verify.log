@@ -1,0 +1,44 @@
+addr       parity           behav  name
+00ae6e60   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DQuad2@@PAV1@@std@@YIPAVC3DQuad2@@PAV1@00ABU__false_type@0@@Z -> 00ae4d80 labelled '_global::UninitCopy_SElement8_00ae4d80'
+00ae6e60   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVC3DQuad2@@IV1@@std@@YIPAVC3DQuad2@@PAV1@IABV1@@Z -> 00ae4f90 labelled '_global::UninitFillN_00ae4f90'
+00ae6e60   RELOCATION_MATCH PASS   _M_fill_insert
+00ae7340   WARN RELOC_NAME: ??$__uninitialized_copy@PAU?$pair@VCCharString@@K@std@@PAU12@@std@@YIPAU?$pair@VCCharString@@K@0@PAU10@00ABU__false_type@0@@Z -> 009b2680 labelled '_global::UninitCopy_SPairCSecond_0099ec30Long_009b2680'
+00ae7340   WARN RELOC_NAME: ??$uninitialized_fill_n@PAU?$pair@VCCharString@@K@std@@IU12@@std@@YIPAU?$pair@VCCharString@@K@0@PAU10@IABU10@@Z -> 00ae5850 labelled '_global::UninitFillN_SPairCSecond_0099ec30Long_00ae5850'
+00ae7340   WARN RELOC_NAME: ??$fill@PAU?$pair@VCCharString@@K@std@@U12@@std@@YIXPAU?$pair@VCCharString@@K@0@0ABU10@@Z -> 00ae5820 labelled 'fill<std::pair<CCharString,long>*,std::fill<std::pair<CCharString,long>*,std::pair<class_CCharString,long>_>'
+00ae7340   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@K@2@ABU32@ABU__false_type@2@I_N@Z -> 009b71b0 labelled '_global::vector_insert'
+00ae7340   RELOCATION_MATCH PASS   _M_fill_insert
+00b94180   RELOCATION_MATCH PASS   RenderSceneOcclusion
+00bbd950   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveParticleGroup
+00bbd950   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@PAV12@@std@@YIPAVCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@PAV12@00ABU__false_type@0@@Z -> 00bbd520 labelled '_global::UninitCopy_PairByteLong_00bbd520'
+00bbd950   RELOCATION_MATCH PASS   _M_fill_insert
+00c02350   MATCH            PASS   updatewindow
+00c75ab0   WARN RELOC_NAME: ?UpdateGainRamped@CReverbDiffuser@@QAEXIPBUSDiffuserParams@@00II@Z -> 00c75820 labelled 'Animation_InterpolateAndInsert'
+00c75ab0   WARN RELOC_NAME: ?UpdateGain@CReverbDiffuser@@QAEXIPBUSDiffuserParams@@0I@Z -> 00c756c0 labelled 'Graphics_LoadTerrainChunk'
+00c75ab0   WARN RELOC_NAME: ?ProcessRamped@CReverbDiffuserStage@@QAEXPBUSDiffuserStageParams@@0PBUSDiffuserParams@@PAMPBMII@Z -> 00c89350 labelled 'Partition_ProcessAnimationData'
+00c75ab0   RELOCATION_MATCH PASS   ProcessRamped
+00c9c500   RELOCATION_MATCH PASS   mdct_bitreverse
+00caa290   RELOCATION_MATCH PASS   SetProperties
+00cb37a0   WARN RELOC_NAME: ?_strtoul@@YAKPBDPAPADH@Z -> 00cb21a0 labelled 'ParseIntFromString'
+00cb37a0   RELOCATION_MATCH PASS   CheckInputLocale
+
+WINS: 9
+  00ae6e60 RELOCATION_MATCH std::vector<C3DQuad2>::?_M_fill_insert@?$vector@VC3DQuad2@@V?$allocator@VC3DQuad2@@@std@@@std@@QAEXPAVC3DQuad2@@IABV3@@Z
+  00ae7340 RELOCATION_MATCH std::vector<pair<CCharString,unsigned long> >::?_M_fill_insert@?$vector@U?$pair@VCCharString@@K@std@@V?$allocator@U?$pair@VCCharString@@K@std@@@2@@std@@QAEXPAU?$pair@VCCharString@@K@2@IABU32@@Z
+  00b94180 RELOCATION_MATCH CEngineScene::?RenderSceneOcclusion@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@W4EEngineOcclusionLayer@@@Z
+  00bbd950 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@V?$allocator@VCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@@std@@@std@@QAEXPAVCPrimitiveIterator@CEngineInternalPrimitiveParticleGroup@@IABV34@@Z
+  00c02350 MATCH _global::_updatewindow
+  00c75ab0 RELOCATION_MATCH CReverbDiffuser::?ProcessRamped@CReverbDiffuser@@QAEXPAUSDiffuserParams@@PBU2@1PAMPBQBMIII@Z
+  00c9c500 RELOCATION_MATCH libvorbis::_mdct_bitreverse
+  00caa290 RELOCATION_MATCH CMemAllocator::?SetProperties@CMemAllocator@@UAGJPAUALLOCATOR_PROPERTIES@@0@Z
+  00cb37a0 RELOCATION_MATCH _global::?CheckInputLocale@@YIXXZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  stdvectorC3DQuad2_Mfillinsert_00ae6e60
+  stdvectorpairCCharStringunsignedlong_Mfillinsert_00ae7340
+  CEngineScene_RenderSceneOcclusion_00b94180
+  stdvector_Mfillinsert_00bbd950
+  global_updatewindow_00c02350
+  CReverbDiffuser_ProcessRamped_00c75ab0
+  libvorbis_mdctbitreverse_00c9c500
+  CMemAllocator_SetProperties_00caa290
+  global_CheckInputLocale_00cb37a0

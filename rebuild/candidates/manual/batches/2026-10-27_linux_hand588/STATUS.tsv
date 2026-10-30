@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c02350	MATCH	277v277	PASS	zlib 1.2.1 inflate.c updatewindow (static leaf _updatewindow; same-TU caller z_inflateSetDictionary); 1 grade
+00c75ab0	RELOCATION_MATCH	277v277	PASS	CReverbDiffuser::ProcessRamped (descriptive, libpk; dead code); 2 grades (channel = j % channels hoisted into a local)
+00ae7340	RELOCATION_MATCH	278v278	PASS	std::vector<pair<CCharString,unsigned long> >::_M_fill_insert; 1 grade (+1 bytes-neutral recompile: operator= declaration)
+00c071b0	DIFFER	279v279	PASS	LZO 1.08 swd_accept (static, s in eax / n in ecx): prologue order only (retail tests n before the pushes); 4 grades; parked differ/00c071b0.cpp + .test.cpp
+00bbd950	RELOCATION_MATCH	280v280	PASS	std::vector<CEngineInternalPrimitiveParticleGroup::CPrimitiveIterator>::_M_fill_insert; 2 grades (STLport _List_iterator user copy ctor -> memberwise element copy)
+00cb37a0	RELOCATION_MATCH	280v280	PASS	ImeUi.cpp CheckInputLocale (/GS, __fastcall /Gr TU; same-TU static _strtoul gets psz in edx); 1 grade
+00caa290	RELOCATION_MATCH	281v281	PASS	strmbase CMemAllocator::SetProperties (vtable 0x012BF810 slot 3); 1 grade (+1 bytes-neutral model trim)
+00c9c500	RELOCATION_MATCH	282v282	PASS	libvorbis 1.0.1 mdct.c mdct_bitreverse (static, init in eax / x in edx); 1 grade
+00b94180	RELOCATION_MATCH	283v283	PASS	CEngineScene::RenderSceneOcclusion (Ego_r PDB name; dead code); 3 grades (noinline same-TU STLport map::operator[] body)
+00ae6e60	RELOCATION_MATCH	292v292	PASS	std::vector<C3DQuad2>::_M_fill_insert (/GS: C3DQuad2 holds an array); 1 grade

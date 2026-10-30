@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c071b0	DIFFER	279v279	PASS	LZO 1.08 swd_accept (static, s in eax / n in ecx): prologue order only (retail tests n before the pushes); 4 grades; parked differ/00c071b0.cpp + .test.cpp

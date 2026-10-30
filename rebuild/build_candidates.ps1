@@ -364782,6 +364782,71 @@ $catalog = @(
         TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_OnPersist_00cfaf70_test.cpp'
         PassPattern = '00cfaf70_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae6e60'
+        Module = 'std::vector<C3DQuad2>'
+        Source = '00/ae/stdvectorC3DQuad2_Mfillinsert_00ae6e60.cpp'
+        TestSource = '00/ae/stdvectorC3DQuad2_Mfillinsert_00ae6e60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00ae6e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae7340'
+        Module = 'std::vector<pair<CCharString,unsigned long> >'
+        Source = '00/ae/stdvectorpairCCharStringunsignedlong_Mfillinsert_00ae7340.cpp'
+        TestSource = '00/ae/stdvectorpairCCharStringunsignedlong_Mfillinsert_00ae7340_test.cpp'
+        PassPattern = '00ae7340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b94180'
+        Module = 'CEngineScene'
+        Source = '00/b9/CEngineScene_RenderSceneOcclusion_00b94180.cpp'
+        TestSource = '00/b9/CEngineScene_RenderSceneOcclusion_00b94180_test.cpp'
+        PassPattern = '00b94180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbd950'
+        Module = 'std::vector'
+        Source = '00/bb/stdvector_Mfillinsert_00bbd950.cpp'
+        TestSource = '00/bb/stdvector_Mfillinsert_00bbd950_test.cpp'
+        PassPattern = '00bbd950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c02350'
+        Module = '_global'
+        Source = '00/c0/global_updatewindow_00c02350.cpp'
+        TestSource = '00/c0/global_updatewindow_00c02350_test.cpp'
+        PassPattern = '00c02350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75ab0'
+        Module = 'CReverbDiffuser'
+        Source = '00/c7/CReverbDiffuser_ProcessRamped_00c75ab0.cpp'
+        TestSource = '00/c7/CReverbDiffuser_ProcessRamped_00c75ab0_test.cpp'
+        PassPattern = '00c75ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9c500'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_mdctbitreverse_00c9c500.cpp'
+        TestSource = '00/c9/libvorbis_mdctbitreverse_00c9c500_test.cpp'
+        PassPattern = '00c9c500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa290'
+        Module = 'CMemAllocator'
+        Source = '00/ca/CMemAllocator_SetProperties_00caa290.cpp'
+        TestSource = '00/ca/CMemAllocator_SetProperties_00caa290_test.cpp'
+        PassPattern = '00caa290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb37a0'
+        Module = '_global'
+        Source = '00/cb/global_CheckInputLocale_00cb37a0.cpp'
+        TestSource = '00/cb/global_CheckInputLocale_00cb37a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00cb37a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
