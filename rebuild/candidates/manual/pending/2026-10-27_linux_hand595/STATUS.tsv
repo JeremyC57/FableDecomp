@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00c5f6a0	DIFFER	327v327	-	CImaAdpcmCodec::DecodeM16 (imaadpcm.cpp); block-head scheduling only (cBlocks temp edi vs ebx, lea placement)
+00c20580	DIFFER	332v330	-	CSoundPlayParameterOverride::ApplyTo (descriptive, libpk); register allocation in the fade-in/group mask merge
+00c5e4e0	DIFFER	336v332	-	CUnprovenKsDevice_012B9148::OpenByDirectSoundGuid (/GS); esi/edi swap + `setne` bool tail

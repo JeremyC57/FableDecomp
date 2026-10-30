@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c5f6a0	DIFFER	327v327	-	CImaAdpcmCodec::DecodeM16 (imaadpcm.cpp); block-head scheduling only (cBlocks temp edi vs ebx, lea placement)
+00c20580	DIFFER	332v330	-	CSoundPlayParameterOverride::ApplyTo (descriptive, libpk); register allocation in the fade-in/group mask merge
+00c131c0	RELOCATION_MATCH	332v332	PASS	CSoundSystem_00c131c0::PlaySoundList (descriptive, libpk); /EHsc scoped PKCProtectionInstance lock
+00c5e4e0	DIFFER	336v332	-	CUnprovenKsDevice_012B9148::OpenByDirectSoundGuid (/GS); esi/edi swap + `setne` bool tail
+00caed50	RELOCATION_MATCH	332v332	PASS	CDeferredCommand::Invoke (strmbase ctlutil.cpp), inlined CBaseDispatch::GetTypeInfo
+00b80400	RELOCATION_MATCH	333v333	PASS	std::vector<CTVertexSeaBackground>::_M_insert_overflow (STLport 4.6, __false_type)
+00cb3420	RELOCATION_MATCH	333v333	PASS	GetReadingWindowOrientation (DX SDK ImeUi.cpp static), /GS
+00c1b560	RELOCATION_MATCH	334v334	PASS	PKCTRRedblackMap::DeleteFixup (descriptive method, libpk)
+00c568f0	RELOCATION_MATCH	334v334	PASS	CAudioContext::InitialiseListener (descriptive method, libpk OpenAL/EAX)
+00c18c00	RELOCATION_MATCH	335v335	PASS	PKCTRRedblackTree::DeleteFixup (descriptive method, libpk)

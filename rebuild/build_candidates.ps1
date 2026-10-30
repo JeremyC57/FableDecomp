@@ -367809,6 +367809,57 @@ $catalog = @(
         Source = '00/f3/global_strrev_00f3fe1c.cpp'
         Grade = 'toolchain_library'
     }
+    [pscustomobject]@{
+        Address = '00b80400'
+        Module = 'std::vector'
+        Source = '00/b8/stdvector_Minsertoverflow_00b80400.cpp'
+        TestSource = '00/b8/stdvector_Minsertoverflow_00b80400_test.cpp'
+        PassPattern = '00b80400_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c131c0'
+        Module = 'CSoundSystem_00c131c0'
+        Source = '00/c1/CSoundSystem00c131c0_PlaySoundList_00c131c0.cpp'
+        TestSource = '00/c1/CSoundSystem00c131c0_PlaySoundList_00c131c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c131c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c18c00'
+        Module = 'PKCTRRedblackTree'
+        Source = '00/c1/PKCTRRedblackTree_DeleteFixup_00c18c00.cpp'
+        TestSource = '00/c1/PKCTRRedblackTree_DeleteFixup_00c18c00_test.cpp'
+        PassPattern = '00c18c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1b560'
+        Module = 'PKCTRRedblackMap'
+        Source = '00/c1/PKCTRRedblackMap_DeleteFixup_00c1b560.cpp'
+        TestSource = '00/c1/PKCTRRedblackMap_DeleteFixup_00c1b560_test.cpp'
+        PassPattern = '00c1b560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c568f0'
+        Module = 'CAudioContext'
+        Source = '00/c5/CAudioContext_InitialiseListener_00c568f0.cpp'
+        TestSource = '00/c5/CAudioContext_InitialiseListener_00c568f0_test.cpp'
+        PassPattern = '00c568f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caed50'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_Invoke_00caed50.cpp'
+        TestSource = '00/ca/CDeferredCommand_Invoke_00caed50_test.cpp'
+        PassPattern = '00caed50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb3420'
+        Module = '_global'
+        Source = '00/cb/global_GetReadingWindowOrientation_00cb3420.cpp'
+        TestSource = '00/cb/global_GetReadingWindowOrientation_00cb3420_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00cb3420_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,8 @@
+address	name	evidence
+0x00B80400	std::vector<CTVertexSeaBackground>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; STLport 4.6 _vector.c, RELOCATION_MATCH)
+0x00C131C0	CSoundSystem_00c131c0::PlaySoundList	descriptive per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; libpk, no PDB)
+0x00C18C00	PKCTRRedblackTree::DeleteFixup	proven per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; class string ".\PKCTRRedblackTree.cpp" 0x012B2E98, method descriptive)
+0x00C1B560	PKCTRRedblackMap::DeleteFixup	proven per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; naming wave 11 class spelling, method descriptive)
+0x00C568F0	CAudioContext::InitialiseListener	descriptive per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; libpk OpenAL/EAX)
+0x00CAED50	CDeferredCommand::Invoke	proven per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; DirectShow BaseClasses ctlutil.cpp)
+0x00CB3420	GetReadingWindowOrientation	proven per batch 2026-10-27_linux_hand595 NOTES.md (chunk 595; DX SDK ImeUi.cpp static, stdcall same-TU)

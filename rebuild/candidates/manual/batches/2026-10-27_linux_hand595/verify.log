@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00b80400   WARN RELOC_NAME: ?_M_clear@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@IAEXXZ -> 00b80550 labelled '_unattributed::ReleaseFirstMember_00b80550'
+00b80400   RELOCATION_MATCH PASS   _M_insert_overflow
+00c131c0   WARN RELOC_NAME: ?StartSound@CSoundSystem_00c131c0@@QAEPAUCSoundInstance_00c131c0@@PAX0PAUCSoundRequest_00c131c0@@J@Z -> 00c12cd0 labelled '_global::CombatBlockReward_ProcessWithExceptionHandler'
+00c131c0   WARN RELOC_NAME: ?Init@CSoundGroup_00c29ec0@@QAEXPAVCSoundSystem_00c131c0@@JPAUCSoundInstance_00c131c0@@@Z -> 00c29f70 labelled 'CTrailListener_00c29f70::Attach'
+00c131c0   WARN RELOC_NAME: ?AddMember@CSoundGroup_00c29ec0@@QAEXPAUCSoundInstance_00c131c0@@@Z -> 00c29ec0 labelled 'CSteeringGroup::AddAgent'
+00c131c0   RELOCATION_MATCH PASS   PlaySoundList
+00c18c00   RELOCATION_MATCH PASS   DeleteFixup
+00c1b560   RELOCATION_MATCH PASS   DeleteFixup
+00c568f0   RELOCATION_MATCH PASS   InitialiseListener
+00caed50   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caed50   RELOCATION_MATCH PASS   Invoke
+00cb3420   RELOCATION_MATCH PASS   GetReadingWindowOrientation
+
+WINS: 7
+  00b80400 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@IAEXPAVCTVertexSeaBackground@@ABV3@ABU__false_type@2@I_N@Z
+  00c131c0 RELOCATION_MATCH CSoundSystem_00c131c0::?PlaySoundList@CSoundSystem_00c131c0@@QAEJPAVISoundListSource_00c131c0@@PAUCSoundRequest_00c131c0@@@Z
+  00c18c00 RELOCATION_MATCH PKCTRRedblackTree::?DeleteFixup@PKCTRRedblackTree@@QAEXPAUPKCTRRedblackNode@@@Z
+  00c1b560 RELOCATION_MATCH PKCTRRedblackMap::?DeleteFixup@PKCTRRedblackMap@@QAEXPAUPKCTRRedblackMapNode@@@Z
+  00c568f0 RELOCATION_MATCH CAudioContext::?InitialiseListener@CAudioContext@@QAEXXZ
+  00caed50 RELOCATION_MATCH CDeferredCommand::?Invoke@CDeferredCommand@@QAEJXZ
+  00cb3420 RELOCATION_MATCH _global::?GetReadingWindowOrientation@@YGXK@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  stdvector_Minsertoverflow_00b80400
+  CSoundSystem00c131c0_PlaySoundList_00c131c0
+  PKCTRRedblackTree_DeleteFixup_00c18c00
+  PKCTRRedblackMap_DeleteFixup_00c1b560
+  CAudioContext_InitialiseListener_00c568f0
+  CDeferredCommand_Invoke_00caed50
+  global_GetReadingWindowOrientation_00cb3420

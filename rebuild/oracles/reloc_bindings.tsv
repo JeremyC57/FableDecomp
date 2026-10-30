@@ -35124,3 +35124,15 @@ __imp__SetCursorPos@8	014403a0	00ab4700
 __imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	0143ff9c	00c10940
 __imp_??1exception@@UAE@XZ	01440028	00c10940
 __imp_??0exception@@QAE@ABV0@@Z	0143fffc	00c13a00
+?_M_clear@?$vector@VCTVertexSeaBackground@@V?$allocator@VCTVertexSeaBackground@@@std@@@std@@IAEXXZ	00b80550	00b80400
+?AddMember@CSoundGroup_00c29ec0@@QAEXPAUCSoundInstance_00c131c0@@@Z	00c29ec0	00c131c0
+?Allocate@CSoundGroupPool_00c21f20@@QAEPAVCSoundGroup_00c29ec0@@XZ	00c21f20	00c131c0
+?Init@CSoundGroup_00c29ec0@@QAEXPAVCSoundSystem_00c131c0@@JPAUCSoundInstance_00c131c0@@@Z	00c29f70	00c131c0
+?StartSound@CSoundSystem_00c131c0@@QAEPAUCSoundInstance_00c131c0@@PAX0PAUCSoundRequest_00c131c0@@J@Z	00c12cd0	00c131c0
+?RotateLeft@PKCTRRedblackTree@@QAEXPAUPKCTRRedblackNode@@@Z	00c18a80	00c18c00
+?RotateRight@PKCTRRedblackTree@@QAEXPAUPKCTRRedblackNode@@@Z	00c18ad0	00c18c00
+?RotateLeft@PKCTRRedblackMap@@QAEXPAUPKCTRRedblackMapNode@@@Z	00c1b200	00c1b560
+?RotateRight@PKCTRRedblackMap@@QAEXPAUPKCTRRedblackMapNode@@@Z	00c1b250	00c1b560
+?g_bHorizontalReading@@3_NA	0143e8a1	00cb3420
+__imp__lstrcatA@8	0143fd84	00cb3420
+__imp__lstrcpyA@8	0143fd80	00cb3420
