@@ -15,14 +15,8 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 inline void* __cdecl operator new(unsigned int, void* where) throw() { return where; }
 
-class CDefClassBase {
-public:
-    class CSubDefInfo {                                     // Ego_r.pdb, 8 bytes
-    public:
-        long DefIndex;                                      // +0x0
-        long OriginalParentDefIndex;                        // +0x4
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 namespace std {
 struct __false_type { };

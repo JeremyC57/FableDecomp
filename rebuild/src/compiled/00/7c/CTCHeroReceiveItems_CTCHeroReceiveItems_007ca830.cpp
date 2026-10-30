@@ -71,11 +71,7 @@ struct CItemList {                                      // STLport list (retail:
 };
 class C2DBoxF { public: float X0, Y0, X1, Y1; C2DBoxF() { } };
 class CRightHandedSet { public: float M[6]; CRightHandedSet() { } };
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
 public:

@@ -26,7 +26,7 @@
 namespace std {
 template<class A,class R>struct unary_function {typedef A argument_type;typedef R result_type;};
 }
-class CBaseClass {public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseObject:public CBaseClass {
 protected:virtual~CBaseObject();
 private:unsigned char unobservedObjectState[4];

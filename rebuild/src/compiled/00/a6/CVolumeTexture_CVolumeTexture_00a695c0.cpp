@@ -8,17 +8,13 @@
 // untouched, then the derived vtable store (plain initialisers precede it).
 struct IDirect3DVolumeTexture9;
 
-class CBaseClass { public:                                         // vtable 0x01231710
-    CBaseClass();                                           // 0x0099A2D0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CVolumeTexture : public CBaseClass { public:                        // vtable 0x0129DC18
     IDirect3DVolumeTexture9* PD3DVolumeTexture;             // +0x04
     long                     ByteLength;                    // +0x08
     void*                    PData;                         // +0x0c
     CVolumeTexture();
-    virtual void v00();
 };
 
 CVolumeTexture::CVolumeTexture()

@@ -7,11 +7,7 @@
 //   3 GetParentScript, 4 OnPersist, 5 OnPredicateFail, 6 OnInterrupted.
 // Layout: Ego_r.pdb CBordelloClient (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18, members from +0x1c;
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass() { }
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo {
 public:
     unsigned long RefCount;

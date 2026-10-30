@@ -7,7 +7,7 @@ namespace NFactory006ac910 {
 struct C3DVector {float x,y,z;__forceinline C3DVector(float a,float b,float c):x(a),y(b),z(c){}};
 struct CRightHandedSet {C3DVector forward,up;__forceinline CRightHandedSet():forward(0,0,1),up(0,1,0){}};
 // Layout: 6a06e0 constructs a polymorphic 40-byte object: base vptr0, position4, axes16; base destructor99a300.
-struct CBaseClass {virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CTCParamsPhysicsBase:CBaseClass {C3DVector position;CRightHandedSet axes;CTCParamsPhysicsBase(const C3DVector&,const CRightHandedSet&);};
 struct Physics {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual void Set(const CTCParamsPhysicsBase&)=0;};
 void* __fastcall Allocate(unsigned charSize,bool);

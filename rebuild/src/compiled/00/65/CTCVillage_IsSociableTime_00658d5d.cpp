@@ -22,7 +22,8 @@
 #endif
 // Shared-header composites not used here retain their explicit data projections.
 // Their flattened identifiers are implementation projections, not retail names.
-class CBaseClass {public:virtual~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass {protected:virtual~CBaseClassNonCopyable();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+class CBaseClassNonCopyable:public CBaseClass {protected:virtual~CBaseClassNonCopyable();};
 class CIVCountedPointeeBase {public:virtual~CIVCountedPointeeBase();virtual void Delete()const;mutable unsigned long IVRefCount;__forceinline void AddRef()const{++IVRefCount;}__forceinline long Release()const{if(--IVRefCount==0){Delete();return 0;}return IVRefCount;}};
 class CResourceList;class CResource:public CIVCountedPointeeBase {public:CResourceList*ResourceList;CResource*PrevResource,*NextResource;unsigned long ResourceSize,LastUsedFrame;};class CDefPointeeBase:public CResource {};
 class CDefinitionManager;

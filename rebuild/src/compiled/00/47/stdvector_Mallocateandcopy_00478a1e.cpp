@@ -64,43 +64,22 @@ public:
     bool                     Dirty;                      // +0x0D
 };
 class CResourceList;
-class CResource {                                        // Ego_r.pdb 0x1C (CIVCountedPointeeBase: vptr, IVRefCount)
-public:
-    virtual ~CResource();                                // 0x009FC550
-    unsigned long  IVRefCount;                           // +0x04
-    CResourceList* ResourceList;                         // +0x08
-    CResource*     PrevResource;                         // +0x0C
-    CResource*     NextResource;                         // +0x10
-    unsigned long  ResourceSize;                         // +0x14
-    unsigned long  LastUsedFrame;                        // +0x18
-};
-class CDefPointeeBase : public CResource {               // vtable 0x01230BA0
-public:
-    virtual ~CDefPointeeBase() { }
-};
 class CDefinitionManager;
 #pragma pack(push, 1)
-class CDefClassBase : public CDefPointeeBase {           // vtable 0x01230BCC
-public:
-    class CSubDefInfo { public:
-        long DefIndex;
-        long OriginalParentDefIndex;
-    };
-    CDefinitionManager* PDefManager;                     // +0x1C
-    unsigned long       GlobalIndex;                     // +0x20
-    unsigned char       Setup : 1;                       // +0x24
-    unsigned char       Template : 1;
-    unsigned char       DefaultValsApplied : 1;
-};
-class CParentDefClassBase : public CDefClassBase {       // vtable 0x01230CBC, retail 0x39 (packed)
-public:
-    CDefString InstantiationName;                        // +0x25
-    CVectorMap<unsigned long, CDefClassBase::CSubDefInfo, CKeyPairCompareLess<unsigned long, CDefClassBase::CSubDefInfo> > SubDefInfoMap;   // +0x29
-};
+// Layout: the def chain is the retail one from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, vtable 0x01230CBC,
+//   0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98, operator= 0x00431ED0);
+//   FABLE_PDCB_TYPED_MEMBERS: InstantiationName / SubDefInfoMap are typed with this row's CDefString / CVectorMap.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_PDCB_TYPED_MEMBERS
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 enum EHeroAbility { };                                 // Ego_r.pdb (enumerators not needed)
 class CAbilityTrackLevelDef : public CParentDefClassBase {   // vtable 0x01236504, retail 0x48 bytes
 public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CAbilityTrackLevelDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CAbilityTrackLevelDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CAbilityTrackLevelDef@@UAEKXZ
     CAbilityTrackLevelDef(const CAbilityTrackLevelDef& other);   // 0x004787F6
     long ExperienceCost;                               // +0x3C (Ego_r +0x40)
     EHeroAbility AbilityUnlocked;                      // +0x40 (Ego_r +0x44)

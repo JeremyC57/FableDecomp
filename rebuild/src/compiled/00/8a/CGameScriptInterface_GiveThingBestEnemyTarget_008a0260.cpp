@@ -104,9 +104,10 @@ class CScriptThing { public:
 class CTCTargetingAI : public CTCBase_Retail { public: void SetScriptTargetOverride(CThing_Retail* target); };   // 0x008ABBA0
 struct CTCEnemyList { void AddEnemy(CThing_Retail* enemy); };                                       // 0x0076D1B0
 struct CThingPlayerCreature_Retail { void OnBestEnemyTargetChanged(); };                            // 0x006D5AB0
-class CGameScriptInterface { public:
-    virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 void CGameScriptInterface::GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const
 {

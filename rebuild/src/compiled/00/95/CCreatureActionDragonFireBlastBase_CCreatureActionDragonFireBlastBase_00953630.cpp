@@ -47,15 +47,10 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CBaseClass {
-public:                               // engine root object: vtable only
-    virtual void v00();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePrimitiveHandle : public CBaseClass { public:     // vtable 0x0122F598; 8 bytes
     long m_id;                              // +4, zero = no primitive
-    virtual void v00();
     CEnginePrimitiveHandle() : m_id(0) { }
 };
 

@@ -41,12 +41,7 @@ public:
     float M[12];
 };
 
-class CBaseClass {                              // vtable 0x01231710
-public:
-    virtual void v00();
-    CBaseClass();                               // 0x0099A2D0
-    ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CPhysicsMeshObject : public CBaseClass {  // vtable 0x0125D084, 0x40 bytes
 public:
@@ -54,7 +49,6 @@ public:
     CMatrix3x4 PositionMatrix;                  // +0x08
     float Scale;                                // +0x38
     float OO_Scale;                             // +0x3c
-    virtual void v00();
     virtual ~CPhysicsMeshObject();                      // 0x00A127D0
 };
 

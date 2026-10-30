@@ -18,15 +18,12 @@ class CCharString { public:
     const CCharString& operator=(const char* text);             // 0x0099EFE0
 };
 
-class CBaseClass { public:
-    virtual void v00();                                         // vtable 0x01231710
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CConsoleCommandLine : public CBaseClass { public:                       // vtable 0x0129C400 (16 bytes)
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08
     long        CursorPosition;                                 // +0x0c
-    virtual void v00();
     void Reset()                                                // an empty, non-user entry with the cursor at the start
     {
         CurrentEntry = "";                                      // the shared empty literal 0x0122D70E

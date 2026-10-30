@@ -37,7 +37,7 @@
 class CCharString { public: CCharStringData* Data; CCharString(); CCharString(const CCharString&); ~CCharString(); };
 class CGame;class CFontBank;class CLUA;class CGraphicDataBank;class CCPPointerInfo;
 namespace NGameText {class CDataBank;}
-class CBaseClass { public: CBaseClass(); virtual ~CBaseClass() {} };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CBaseClassNonCopyable : CBaseClass { protected: CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); /* 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (protected virtual; byte twin of ~CBaseClass 0x0099A2E0, its own vtable store is dead) */ private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
 class CDeviceResetCallback { public:CDeviceResetCallback();virtual void OnPreDeviceReset()=0;virtual bool OnPostDeviceReset()=0;};
 class CGameComponent : public CBaseClassNonCopyable,public CDeviceResetCallback { public:

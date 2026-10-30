@@ -8,7 +8,7 @@
 #endif
 class CCharStringData;
 class CCharString{public:CCharStringData*PStringData;CCharString(const CCharString&);~CCharString();};
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];};
 #pragma pack(push,1)
 class C3DVector{public:float X,Y,Z;};

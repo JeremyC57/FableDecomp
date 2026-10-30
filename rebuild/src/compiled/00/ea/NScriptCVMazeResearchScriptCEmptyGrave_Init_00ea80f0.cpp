@@ -27,11 +27,7 @@ public:                                                 // STLport 4.6 map: the 
     T& operator[](const K& key);                        // 0x008ADF10 for map<CCharString, bool>
 };
 }
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass() { }
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo {
 public:
     unsigned long RefCount;

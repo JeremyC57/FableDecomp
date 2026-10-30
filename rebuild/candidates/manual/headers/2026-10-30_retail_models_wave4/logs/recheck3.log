@@ -1,0 +1,898 @@
+addr       parity           behav  name
+00418b7a   WARN RELOC_NAME: ??1CMainGameComponentInit@@QAE@XZ -> 004131d0 labelled '_global::Dtor_CCharStringBase_004131d0'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@VCFontBank@@@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::Release'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@VCLUA@@@@QAE@XZ -> 004190b6 labelled 'CCountedPointer<CLUA>::Release'
+00418b7a   WARN RELOC_NAME: ??1?$CCountedPointer@VCDataBank@NGameText@@@@QAE@XZ -> 00403750 labelled 'CCountedPointer<NGameText::CDataBank>::Release'
+00418b7a   RELOCATION_MATCH PASS   ~CMainGameComponent
+0041b800   WARN RELOC_NAME: ??0CDraggableInto@NUISystem@@QAE@J@Z -> 0052cc50 labelled 'NUISystem::CChangingStateComponent::CChangingStateComponent'
+0041b800   RELOCATION_MATCH PASS   CSprite
+00434c00   RELOCATION_MATCH PASS   StartScreenFadeOut
+00440100   MATCH            PASS   fill<CEnginePrimitiveHandle*, CEnginePrimitiveHandle>
+00440260   MATCH            PASS   __copy<CEnginePrimitiveHandle*, CEnginePrimitiveHandle*, int>
+00440390   MATCH            PASS   __copy_backward<CEnginePrimitiveHandle*, CEnginePrimitiveHandle*, int>
+00454d9e   RELOCATION_MATCH PASS   CThingHolySiteDef
+00454df4   RELOCATION_MATCH PASS   CThingMarkerDef
+00454f32   RELOCATION_MATCH PASS   CThingVillageDef
+004564b5   RELOCATION_MATCH PASS   CRegionDef
+004575fc   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004575fc   RELOCATION_MATCH PASS   ~CSpecialAbilitiesBulletTimeDef
+0045767e   RELOCATION_MATCH PASS   CSpecialAbilitiesForcePushDef
+0045784b   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+0045784b   RELOCATION_MATCH PASS   ~CSpecialAbilitiesPhysicalShieldDef
+004585e0   RELOCATION_MATCH PASS   CHitLocationDef
+00458994   WARN RELOC_NAME: ??0CConversationCameraMap@@QAE@XZ -> 00454ad1 labelled 'std::map<T_00454ad1>::map'
+00458994   RELOCATION_MATCH PASS   CGlobalDef
+00458b9d   WARN RELOC_NAME: ??1CHeroAbilityStatPackage@@QAE@XZ -> 00451763 labelled '_global::StdList_Dtor_00451763'
+00458b9d   WARN RELOC_NAME: ??1CHeroAbilityStatWeight@@QAE@XZ -> 004517a4 labelled '_global::StdList_Dtor_004517a4'
+00458b9d   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00458b9d   RELOCATION_MATCH PASS   ~CHeroCombatDef
+00458d3f   RELOCATION_MATCH PASS   CThingShotDef
+00459102   RELOCATION_MATCH PASS   CThingObjectDef
+00459e46   WARN RELOC_NAME: ??1CStringLongMap@@QAE@XZ -> 004302cd labelled 'std::list<T_004302cd>::~list'
+00459e46   WARN RELOC_NAME: ??1CStringGameActionMap@@QAE@XZ -> 004543c6 labelled 'std::list<T_004543c6>::~list'
+00459e46   WARN RELOC_NAME: ??1CAbilityButtonGuiDefVector@@QAE@XZ -> 004532e6 labelled '_global::StdList_Dtor_004532e6'
+00459e46   WARN RELOC_NAME: ??1CQuickAccessItemButtonGuiDefVector@@QAE@XZ -> 004532c3 labelled '_global::StdList_Dtor_004532c3'
+00459e46   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+00459e46   RELOCATION_MATCH PASS   ~CPlayerGuiDef
+0045a0ee   WARN RELOC_NAME: ??0CMember12_00453309@@QAE@XZ -> 00453309 labelled 'std::map<T_00453309>::map'
+0045a0ee   RELOCATION_MATCH PASS   CUILocaleGraphicsDef
+0045bd42   RELOCATION_MATCH PASS   operator=
+00461ed8   RELOCATION_MATCH PASS   operator=
+0046296e   RELOCATION_MATCH PASS   operator=
+00463bff   RELOCATION_MATCH PASS   Transfer
+00464be9   RELOCATION_MATCH PASS   Transfer
+0046a178   RELOCATION_MATCH PASS   Transfer
+0046a260   RELOCATION_MATCH PASS   Transfer
+0046ef87   RELOCATION_MATCH PASS   Copy
+0046f020   RELOCATION_MATCH PASS   _M_allocate_and_copy
+0046f43e   RELOCATION_MATCH PASS   operator=
+0047204b   RELOCATION_MATCH PASS   _M_allocate_and_copy
+00472415   WARN RELOC_NAME: ?Transfer@CPersistContext@@QAEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 004331f9 labelled 'CCreatureAction_FireMissileWeapon::FrameUpdate'
+00472415   RELOCATION_MATCH PASS   Transfer
+0047616e   WARN RELOC_NAME: ??$__destroy_aux@VCQuickAccessItemButtonGuiDef@@@std@@YIXPAVCQuickAccessItemButtonGuiDef@@0ABU__false_type@0@@Z -> 00450a3c labelled '_global::DestroyRange_Elem0x50_00450a3c'
+0047616e   RELOCATION_MATCH PASS   erase
+004773f1   WARN RELOC_NAME: ??0CRetailLayerVector_00477428@@QAE@ABU0@@Z -> 00477428 labelled 'std::vector<void*>::vector'
+004773f1   WARN RELOC_NAME: ??0CRetailObjectDefVector_004774d6@@QAE@ABU0@@Z -> 004774d6 labelled 'std::vector<CEngineLocalDetailObjectDef>::vector'
+004773f1   RELOCATION_MATCH PASS   CEngineLocalDetailLayerDef
+0047848c   RELOCATION_MATCH PASS   operator=
+00478533   RELOCATION_MATCH PASS   _M_allocate_and_copy
+00478876   RELOCATION_MATCH PASS   operator=
+00478a1e   RELOCATION_MATCH PASS   _M_allocate_and_copy
+00478a6d   RELOCATION_MATCH PASS   _M_allocate_and_copy
+00485d30   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00485d30   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCEnginePrimitiveHandle@@IV1@@std@@YIPAVCEnginePrimitiveHandle@@PAV1@IABV1@ABU__false_type@0@@Z -> 0043f6c0 labelled 'std::_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>'
+00485d30   RELOCATION_MATCH PASS   vector
+004917b5   RELOCATION_MATCH PASS   FormatTextWithGameActionNames
+004b3760   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004b3760   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b3760   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b3760   RELOCATION_MATCH PASS   LoadMasterScriptDataFromGameState
+004b5080   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+004b5080   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b5080   RELOCATION_MATCH PASS   LoadFromGameStateScript
+004b6380   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+004b6380   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b6380   WARN RELOC_NAME: ??0CByteArray@N_00411910@@QAE@K@Z -> 00411910 labelled 'std::vector::vector'
+004b6380   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b6380   RELOCATION_MATCH PASS   LoadGameState
+004c0050   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004c0050   RELOCATION_MATCH PASS   AddPersistentPrimitive
+004c20d0   RELOCATION_MATCH PASS   C3DPositionInterpolator
+004c2110   RELOCATION_MATCH PASS   C3DOrientationInterpolator
+004c2e20   RELOCATION_MATCH PASS   C3DAnimationInterpolator
+004c5690   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004c5690   RELOCATION_MATCH PASS   clear
+004c6fb0   RELOCATION_MATCH PASS   CMessageBase
+004ca230   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+004ca230   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004ca230   RELOCATION_MATCH PASS   CreateTCsFromString
+004cb750   RELOCATION_MATCH PASS   CMessageClearPrimitives
+004cea60   RELOCATION_MATCH PASS   GetMessageFromTextIndex
+004dc737   WARN SHARED_HEADER_AVAILABLE CTCBase
+004dc737   RELOCATION_MATCH PASS   CTCStockItem
+004dc991   RELOCATION_MATCH PASS   CTCShotDefinitionProjectile
+004dc9d2   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004dc9d2   RELOCATION_MATCH PASS   ~CTCShotDefinitionProjectile
+004dd728   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004dd728   RELOCATION_MATCH PASS   ~pair
+004de44d   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004de44d   WARN SHARED_HEADER_AVAILABLE CTCBase
+004de44d   RELOCATION_MATCH PASS   ~CTCStockItem
+004df14b   WARN RELOC_NAME: ??0CTCDriverBase_Calls@@QAE@PAVCThing@@@Z -> 00771200 labelled 'CTCDriverBase::CTCDriverBase'
+004df14b   RELOCATION_MATCH PASS   CTCDPhysicalObstruction
+004e160c   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+004e160c   WARN SHARED_HEADER_AVAILABLE CTCBase
+004e160c   WARN RELOC_NAME: ??1CThingPointerVector@@QAE@XZ -> 004406d0 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+004e160c   RELOCATION_MATCH PASS   ~CTCDPhysicalObstruction
+004e4583   RELOCATION_MATCH PASS   operator=
+004e4774   RELOCATION_MATCH PASS   operator=
+004e47e8   RELOCATION_MATCH PASS   operator=
+004e485c   RELOCATION_MATCH PASS   operator=
+004f9d7b   RELOCATION_MATCH PASS   erase
+004fa1a8   RELOCATION_MATCH PASS   resize
+004fa1f0   WARN RELOC_NAME: ??$__copy_ptrs@PAVCCardDef@@PAV1@@std@@YIPAVCCardDef@@PAV1@00ABU__false_type@0@@Z -> 004fa22c labelled '_global::Vector_CopyElements_Destroy'
+004fa1f0   RELOCATION_MATCH PASS   erase
+004fa277   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCCardDef@@IV1@@std@@YIPAVCCardDef@@PAV1@IABV1@@Z -> 004fa516 labelled '_global::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+004fa277   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004fa277   RELOCATION_MATCH PASS   _M_fill_insert
+004fe2a0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+004fe2a0   WARN SHARED_HEADER_AVAILABLE CWorld
+004fe2a0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fe2a0   WARN RELOC_NAME: ?Init@CMemoryDataInputStream@@QAEXPBDJ@Z -> 009e93c0 labelled 'CMemoryFile::Open'
+004fe2a0   WARN RELOC_NAME: ?DeleteDataInputStream@@YIXPAX@Z -> 0050be40 labelled '_global::DeleteViaVtable0_0050be40'
+004fe2a0   WARN RELOC_NAME: ?LoadGlobalThingBatch@CThingManager@@QAEXUCDataInputStreamPointer@@J@Z -> 005223f0 labelled 'CThingManager::LoadLoadableGlobalThingsFromFile'
+004fe2a0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004fe2a0   RELOCATION_MATCH PASS   LoadAllLoadableGlobalThingsFromSingleFile
+005079c0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+005079c0   WARN SHARED_HEADER_AVAILABLE CRegion
+005079c0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005079c0   WARN RELOC_NAME: ?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z -> 009ba3e0 labelled 'CStringParser::ReadAsStringUntilString'
+005079c0   WARN RELOC_NAME: ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+005079c0   RELOCATION_MATCH PASS   LoadGameState
+00520570   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00520570   RELOCATION_MATCH PASS   LoadHeroStateScript
+00521ae0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00521ae0   RELOCATION_MATCH PASS   LoadFromFile
+0052ae10   MATCH            PASS   CompressAsImage
+0053fc90   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+0053fc90   MATCH            PASS   ClearHandle
+005482d0   WARN RELOC_NAME: ??0CDraggableInto@NUISystem@@QAE@J@Z -> 0052cc50 labelled 'NUISystem::CChangingStateComponent::CChangingStateComponent'
+005482d0   RELOCATION_MATCH PASS   CMovie
+00548350   WARN RELOC_NAME: ??0CDraggableInto@NUISystem@@QAE@ABV01@@Z -> 0052cca0 labelled 'NUISystem::CChangingStateComponent::CChangingStateComponent'
+00548350   RELOCATION_MATCH PASS   CMovie
+0054f5c0   WARN RELOC_NAME: ??0CDraggableInto@NUISystem@@QAE@J@Z -> 0052cc50 labelled 'NUISystem::CChangingStateComponent::CChangingStateComponent'
+0054f5c0   RELOCATION_MATCH PASS   CText
+00550190   WARN RELOC_NAME: ??0CDraggableInto@@QAE@PAX@Z -> 0052cc50 labelled 'NUISystem::CChangingStateComponent::CChangingStateComponent'
+00550190   RELOCATION_MATCH PASS   CMesh
+005508d0   RELOCATION_MATCH PASS   C3DOrientationInterpolator
+00550a20   RELOCATION_MATCH PASS   C3DAnimationInterpolator
+0056a8c0   WARN SHARED_HEADER_AVAILABLE CObserver
+0056a8c0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+0056a8c0   MATCH            PASS   DrawPreparePrimitivesForRendering
+005814e5   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+005814e5   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005814e5   WARN SHARED_HEADER_AVAILABLE CTCBase
+005814e5   WARN RELOC_NAME: ??1CMarriageList@@QAE@XZ -> 0057fdbd labelled 'std::list<T_0057fdbd>::~list'
+005814e5   WARN RELOC_NAME: ??1CCriminalStatusMap@@QAE@XZ -> 00580a64 labelled '_global::StdList_Dtor_00580a64'
+005814e5   RELOCATION_MATCH PASS   CIVCountedPointer_Assign_005814e5
+005bb32e   RELOCATION_MATCH PASS   CEnginePrimitiveHandle
+005bbfd6   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+005bbfd6   WARN RELOC_NAME: ?_M_lower_bound@?$map@JVCEnginePrimitiveHandle@@U?$less@J@std@@@std@@QBEPAU_Rb_tree_node_base@2@ABJ@Z -> 005bac98 labelled 'RBTree_FindNode'
+005bbfd6   RELOCATION_MATCH PASS   operator[]
+005bc1b0   RELOCATION_MATCH PASS   CEnginePrimitive2DMorphedAnimatingMesh
+005d8c90   RELOCATION_MATCH PASS   CMessageOnPickup
+005d8d50   RELOCATION_MATCH PASS   AddToInventory
+00642390   RELOCATION_MATCH PASS   CPrimitive
+0064a2db   WARN RELOC_NAME: ??$find@U?$_List_iterator@V?$CIntelligentPointer@$$CBVCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@PAVCThing@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@$$CBVCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@0@U10@0ABQAVCThing@@@Z -> 00655cdc labelled '_unattributed::CVector_00655cdc'
+0064a2db   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@$$CBVCThing@@@@V?$allocator@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@$$CBVCThing@@@@@Z -> 0065617d labelled 'Lua_CreateCClosure'
+0064a2db   RELOCATION_MATCH PASS   AddPerceivingThing
+00651a7e   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00651a7e   RELOCATION_MATCH PASS   CDrawAbilityButtons
+00652f0a   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00652f0a   WARN RELOC_NAME: ??0CFadeInFadeOutBase@NPlayerGui@@QAE@XZ -> 00436560 labelled 'CTCHeroStats::SoberUp'
+00652f0a   WARN RELOC_NAME: ?resize@CRetailCoordVector@NPlayerGui@@QAEXKABVC2DCoordI@@@Z -> 00656fab labelled 'CArray<std::pair<long,long>_>::push_back'
+00652f0a   RELOCATION_MATCH PASS   CDrawQuickAccessIcons
+00658d07   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00658d07   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00658d07   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00658d07   RELOCATION_MATCH PASS   IsNightTime
+00658d5d   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00658d5d   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00658d5d   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00658d5d   RELOCATION_MATCH PASS   IsSociableTime
+00658db3   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00658db3   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00658db3   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00658db3   RELOCATION_MATCH PASS   IsCurfewTime
+0065dce8   RELOCATION_MATCH PASS   CVillageTaskSecuritySweep
+00680840   RELOCATION_MATCH PASS   GetRandomSampleIndexVariation
+00692120   RELOCATION_MATCH PASS   CActionEventTriggerParticle
+00692230   RELOCATION_MATCH PASS   CActionEventExplosion
+00692270   RELOCATION_MATCH PASS   CActionEventAddObject
+006922c0   RELOCATION_MATCH PASS   CActionEventRemoveObject
+00695400   RELOCATION_MATCH PASS   CActionEventTriggerParticle
+006955f0   RELOCATION_MATCH PASS   CActionEventExplosion
+00695690   RELOCATION_MATCH PASS   CActionEventAddObject
+  WARN leaf 'vfunc_3' matches no symbol in 0069e980.obj; graded the largest function
+  WARN leaf 'vfunc_3' matches no symbol in 0069e980.obj; graded the largest function
+0069e980   WARN RELOC_NAME: ?PeekDisplayEngine@CViewBase@NDisplayView@@IBEABVCDisplayEngine@@XZ -> 00640020 labelled 'CViewBase::GetDisplayEngine'
+0069e980   WARN RELOC_NAME: ?GetWorld@CViewBase@NDisplayView@@IAEAAVCWorld@@XZ -> 00640000 labelled 'CViewBase::GetDisplayEngine'
+0069e980   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0069e980   WARN RELOC_NAME: ?DrawBettingHUD@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00437d00 labelled '_global::Forward_Draw_via0x210_00437d00'
+0069e980   WARN RELOC_NAME: ?DrawReceivedItems@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00437660 labelled '_global::Forward_Draw_via0x198_00437660'
+0069e980   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0069e980   WARN RELOC_NAME: ?Draw2DText@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00438000 labelled '_global::Forward_Draw_via0x238_00438000'
+0069e980   RELOCATION_MATCH PASS   vfunc_3
+006ac910   WARN RELOC_NAME: ?Allocate@NFactory006ac910@@YIPAXI_N@Z -> 004c7380 labelled 'CThing::operator new'
+006ac910   RELOCATION_MATCH PASS   Create
+006af570   RELOCATION_MATCH PASS   C3DPositionInterpolator
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+006ba8b0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+006ba8b0   RELOCATION_MATCH PASS   TransferBinaryIn
+006d8bf0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+006d8bf0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006d8bf0   RELOCATION_MATCH PASS   GetOnHitSound
+006e11f0   RELOCATION_MATCH PASS   Create
+006f95a0   RELOCATION_MATCH PASS   GetExtraEventsBetweenTimes
+006f96c0   RELOCATION_MATCH PASS   GetExtraEventTime
+00704a80   WARN SHARED_HEADER_AVAILABLE CGameScriptThing
+00704a80   WARN RELOC_NAME: ?DeleteData@@YIXPAVCGameScriptThing@@@Z -> 007044b0 labelled '_global::DeleteViaVtable0_007044b0'
+00704a80   WARN RELOC_NAME: ?SetImp@CScriptThing@@QAEXUCCountedPointer@@@Z -> 007046d0 labelled 'CMeshDataBank_007046d0::SetAnimationMemoryPool'
+00704a80   RELOCATION_MATCH PASS   CGameScriptThingManager
+00708a30   RELOCATION_MATCH PASS   ~CAnimationInterpolatorOwner_00708a30
+0070c590   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+0070c590   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+0070c590   WARN SHARED_HEADER_AVAILABLE CWorld
+0070c590   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0070c590   RELOCATION_MATCH PASS   PreloadAnims
+0071a850   RELOCATION_MATCH PASS   OnSetInLimbo
+0071afe0   RELOCATION_MATCH PASS   CTCEmoteIcon
+0071b800   RELOCATION_MATCH PASS   CMessageOnMorphChanged
+00727bf0   RELOCATION_MATCH PASS   OnAppearanceClear
+0072e290   RELOCATION_MATCH PASS   CreateChildThings
+0076e620   WARN SHARED_HEADER_AVAILABLE CTCBase
+0076e620   RELOCATION_MATCH PASS   CTCWeaponTrail
+00770e50   RELOCATION_MATCH PASS   CTCBed
+00778ae0   RELOCATION_MATCH PASS   CTCBed
+0077b250   RELOCATION_MATCH PASS   CTCGraphicAppearanceAnimatedMesh
+0077b2e0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@IAEXPAVCMeshInfo@NGraphicAppearance@@ABV34@ABU__false_type@2@I_N@Z -> 007091a0 labelled 'std::std::vector_insert_range_with_alloc'
+0077b2e0   RELOCATION_MATCH PASS   Vector_PushBackOrInsertWithProperties
+0077b9b0   RELOCATION_MATCH PASS   CTCGraphicAppearanceAnimatedMesh
+0077bc80   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@IAEXPAVCMeshInfo@NGraphicAppearance@@ABV34@ABU__false_type@2@I_N@Z -> 007091a0 labelled 'std::std::vector_insert_range_with_alloc'
+0077bc80   RELOCATION_MATCH PASS   Vector_PushBackOrInsertWithProperties
+0077be40   RELOCATION_MATCH PASS   CTCGraphicAppearanceAnimatedMesh
+0079d110   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+0079d110   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0079d110   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+0079d110   WARN SHARED_HEADER_AVAILABLE CWorld
+0079d110   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+0079d110   WARN SHARED_HEADER_AVAILABLE CTCBase
+0079d110   WARN RELOC_NAME: ?RemoveBulletTimeSlowdown@CBulletTimeManager@@QAEXK@Z -> 004c6140 labelled 'CTimeMultiplierController_004c6140::RemoveRequest'
+0079d110   WARN RELOC_NAME: ?StopSample@CTCSoundEmitter@@QAEXK@Z -> 0066add0 labelled 'CTCSoundPlayer::StopAttachedSound'
+0079d110   WARN RELOC_NAME: ?RemoveFilter_006b83f0@CEnvironmentSpellEffects@@QAEXJPAX@Z -> 006b83f0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+0079d110   RELOCATION_MATCH PASS   ~CTCBulletTime
+007a6650   RELOCATION_MATCH PASS   CMessageOnMeshReplaced
+007a69f0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007a69f0   RELOCATION_MATCH PASS   ReplaceMeshByIndex
+007a6ab0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@IAEXPAVCMeshInfo@NGraphicAppearance@@ABV34@ABU__false_type@2@I_N@Z -> 007091a0 labelled 'std::std::vector_insert_range_with_alloc'
+007a6ab0   RELOCATION_MATCH PASS   Vector_Insert_ETCEvent
+007c2480   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007c2480   RELOCATION_MATCH PASS   UpdateEffects
+007ca830   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ca830   RELOCATION_MATCH PASS   CTCHeroReceiveItems
+007ce390   WARN RELOC_NAME: ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bfae0 labelled 'NParticleEngine::CParticleSystem::Kill'
+007ce390   WARN RELOC_NAME: ?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bffc0 labelled '_global::TailJmp_ClearMeshEffect_004bffc0'
+007ce390   RELOCATION_MATCH PASS   FinalCleanup
+007ce3c0   WARN RELOC_NAME: ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bfae0 labelled 'NParticleEngine::CParticleSystem::Kill'
+007ce3c0   WARN RELOC_NAME: ?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bffc0 labelled '_global::TailJmp_ClearMeshEffect_004bffc0'
+007ce3c0   RELOCATION_MATCH PASS   FinalCleanup
+007ce3f0   WARN RELOC_NAME: ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bfae0 labelled 'NParticleEngine::CParticleSystem::Kill'
+007ce3f0   WARN RELOC_NAME: ?ClearHighlighted@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bffc0 labelled '_global::TailJmp_ClearMeshEffect_004bffc0'
+007ce3f0   RELOCATION_MATCH PASS   FinalCleanup
+007e1590   RELOCATION_MATCH PASS   vfunc_1
+007e71d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+007e71d0   RELOCATION_MATCH PASS   CActionMoveTo
+007e7490   RELOCATION_MATCH PASS   GetScriptThing
+0082d0d0   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+00830150   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+008385b0   RELOCATION_MATCH PASS   Create
+00891ca0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00891ca0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00891ca0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891ca0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00891ca0   RELOCATION_MATCH PASS   GetHero
+008cff60   RELOCATION_MATCH PASS   CGameScriptThing
+008d0250   RELOCATION_MATCH PASS   CGameScriptThing
+008d9ca0   WARN RELOC_NAME: ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z -> 00815820 labelled 'CTCHitLocations::GetPHitLocationFromName'
+008d9ca0   RELOCATION_MATCH PASS   OnDeactivate
+008de700   WARN RELOC_NAME: ?ForceAIReset@CThingAICreature@@QAEXXZ -> 006d5ab0 labelled '_global::Forward_ForceResetWithOutput_via0x1a8_006d5ab0'
+008de700   RELOCATION_MATCH PASS   Recover
+008fca40   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008fca40   RELOCATION_MATCH PASS   transform
+009051f0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009051f0   RELOCATION_MATCH PASS   CActionMoveTo
+00905290   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00905290   RELOCATION_MATCH PASS   CActionMoveTo
+00905360   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00905360   RELOCATION_MATCH PASS   CActionPerformExpression
+0090df60   RELOCATION_MATCH PASS   operator()
+0090dfb0   RELOCATION_MATCH PASS   operator()
+009126c0   RELOCATION_MATCH PASS   CAIStateGroup_FlyingThingBase
+00917380   RELOCATION_MATCH PASS   Update
+00929650   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00929650   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00929650   RELOCATION_MATCH PASS   IsRunnable
+00939180   RELOCATION_MATCH PASS   IsRunnable
+00953630   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBlastBase
+00987d50   RELOCATION_MATCH PASS   CShaderConstantRange
+0098dd90   RELOCATION_MATCH PASS   ~CShaderStats
+00993b10   RELOCATION_MATCH PASS   ~CDataStream
+0099f2e0   RELOCATION_MATCH PASS   LoadFromFile
+009a7ac0   RELOCATION_MATCH PASS   CBankFileManager
+009a7b70   WARN RELOC_NAME: ?Erase@CRetailTree_erase009aa880@@QAEXPAUnode@1@@Z -> 009aa880 labelled '_unattributed::FreeTree_CTreeOwner_009aa880'
+009a7b70   RELOCATION_MATCH PASS   ~CBankFileManager
+009bf5a0   RELOCATION_MATCH PASS   RemoveDeviceResetCallback
+009e2d00   RELOCATION_MATCH PASS   ~CFontManager
+009e45b0   WARN RELOC_NAME: ??0CEventRecord@@QAE@XZ -> 00a04410 labelled 'CInputEvent::CInputEvent'
+009e45b0   RELOCATION_MATCH PASS   CMaintainedEvent
+009ea2b0   RELOCATION_MATCH PASS   CConsoleCommandLine
+009ea2e0   RELOCATION_MATCH PASS   CConsoleCommandLine
+009ea5a0   RELOCATION_MATCH PASS   ResetCommandLineBuffers
+009ea660   RELOCATION_MATCH PASS   RevertToUserEntry
+009ea980   RELOCATION_MATCH PASS   PrevInHistory
+009ea9e0   RELOCATION_MATCH PASS   NextInHistory
+009eab80   RELOCATION_MATCH PASS   SetHistoryMode
+009eaf80   WARN RELOC_NAME: ?ResetHistory@CConsole@@AAEXXZ -> 009eac80 labelled 'CConsole::ScrollToHistoryBeginning'
+009eaf80   RELOCATION_MATCH PASS   AddCommandLineToHistory
+009eb0d0   WARN RELOC_NAME: ??ECInputIterator@@QAEAAU0@XZ -> 009ee470 labelled 'CRetailTreeIterator::Increment'
+009eb0d0   RELOCATION_MATCH PASS   NextCommandGuess
+009eb260   RELOCATION_MATCH PASS   SendMessageToUser
+009eb2c0   WARN RELOC_NAME: ?FindInput@CConsole_Retail@@QAEPAVCConsoleInputBase@@ABVCCharString@@@Z -> 009eb220 labelled 'CConsole::GetRegisteredConsoleInput'
+009eb2c0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009eb2c0   RELOCATION_MATCH PASS   SetHelpBarString
+009eb430   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009eb430   RELOCATION_MATCH PASS   RunCommandLine
+009ec430   WARN SHARED_HEADER_AVAILABLE CItem
+009ec430   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ec430   RELOCATION_MATCH PASS   ProcessCommandLine
+009ec710   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009ec710   RELOCATION_MATCH PASS   RunTextCommand
+009ecd80   RELOCATION_MATCH PASS   CConsole
+009eea10   RELOCATION_MATCH PASS   CConsoleCommandLine
+009f5390   RELOCATION_MATCH PASS   EmptyEventStore
+009f5c80   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009f5c80   WARN SHARED_HEADER_AVAILABLE CMouse
+009f5c80   WARN SHARED_HEADER_AVAILABLE CKeyboard
+009f5c80   WARN RELOC_NAME: ?Destroy_009f6750@@YIXPAUCJoystickPointer@@0ABUSAllocatorTag@@@Z -> 009f6750 labelled '_global::DestroyRange_CountedPointer_009f6750'
+009f5c80   RELOCATION_MATCH PASS   ~CInputManager
+009f83d0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z -> 00419036 labelled '_global::DeleteViaVtable0_00419036'
+009f83d0   RELOCATION_MATCH PASS   OpenGraphicBank
+009f9cd0   WARN SHARED_HEADER_AVAILABLE CSurface
+009f9cd0   RELOCATION_MATCH PASS   CRenderTarget
+009fa450   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+009fa450   RELOCATION_MATCH PASS   Lock
+009fd9b0   WARN RELOC_NAME: ?Swizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67440 labelled '_global::Nop_ret4_00a67440'
+009fd9b0   WARN RELOC_NAME: ?Uninitialise@CVolume@@QAEX_N@Z -> 00a67460 labelled 'CVolume::ReleaseVolume'
+009fd9b0   RELOCATION_MATCH PASS   LoadVolumeGraphic
+00a004d0   RELOCATION_MATCH PASS   __uninitialized_fill_n
+00a00750   RELOCATION_MATCH PASS   __uninitialized_copy
+00a00840   MATCH            PASS   __copy_backward
+00a009a0   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00a00a90   MATCH            PASS   fill
+00a00b20   MATCH            PASS   __copy
+00a013e0   MATCH            PASS   GetNoFramesInGraphic
+00a01430   MATCH            PASS   GetGraphicFrameWidth
+00a01480   MATCH            PASS   GetGraphicFrameHeight
+00a016f0   RELOCATION_MATCH PASS   resize
+00a09f20   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z -> 00428ae7 labelled '_global::DeleteViaVtable0_00428ae7'
+00a09f20   RELOCATION_MATCH PASS   OpenMeshBank
+00a0d6b0   MATCH            PASS   PreparePrimitivesForEngine
+00a10dc0   WARN SHARED_HEADER_AVAILABLE CSurface
+00a10dc0   RELOCATION_MATCH LINK_FAIL CRenderTarget
+00a127d0   RELOCATION_MATCH PASS   ~CPhysicsMeshObject
+00a12840   WARN RELOC_NAME: ?ForEach_ScaleElements@@YI?AUCScaleElements@@PAVC3DVector@@0U1@@Z -> 00a13440 labelled '_global::for_each<C3DVector*, CRescaleBy>'
+00a12840   RELOCATION_MATCH PASS   GetRigidBodyBoundingPoints
+00a128a0   RELOCATION_MATCH PASS   HasContainmentVolume
+00a12c90   WARN RELOC_NAME: ?HasNavigationLineListInfo@CPhysicsMesh@@QBE_NXZ -> 00a73ce0 labelled '_global::GetMember_byte0xc_00a73ce0'
+00a12c90   RELOCATION_MATCH PASS   HasNavigationLineListInfo
+00a12cc0   RELOCATION_MATCH PASS   CPhysicsMeshObject
+00a32af0   RELOCATION_MATCH PASS   `vector_deleting_destructor'
+00a33720   RELOCATION_MATCH PASS   pair<long,CCompositeSurfaceInfo>_>_>
+00a36e70   RELOCATION_MATCH PASS   C3DMeshObject
+00a3ae70   RELOCATION_MATCH PASS   CACompressor
+00a3aea0   RELOCATION_MATCH PASS   CACompressor
+00a48b50   RELOCATION_MATCH PASS   WriteToFile
+00a4e250   RELOCATION_MATCH PASS   GetRotationAtTime
+00a50bf0   RELOCATION_MATCH PASS   GetAllEvents
+00a5d800   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a5d800   WARN RELOC_NAME: ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a5d800   RELOCATION_MATCH PASS   ~CShaderResource
+00a5eb70   WARN RELOC_NAME: ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a5eb70   RELOCATION_MATCH PASS   ~CVertexShaderInput
+00a67530   MATCH            PASS   ReadOnlyLock
+00a677d0   MATCH            PASS   Lock
+00a685e0   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00a685e0   RELOCATION_MATCH PASS   Lock
+00a695c0   RELOCATION_MATCH PASS   CVolumeTexture
+00a6f960   RELOCATION_MATCH PASS   `vector_deleting_destructor'
+00a70e80   RELOCATION_MATCH PASS   pair<long,CCompositeSurfaceInfo>_>_>
+00a90fc0   WARN RELOC_NAME: ?GetVertexSize@CVertexStreamFormat@ExternalRetry_00a90fc0@@QAEHXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a90fc0   WARN RELOC_NAME: ??0CVertexStreamConverter@ExternalRetry_00a90fc0@@QAE@XZ -> 00ac44c0 labelled 'CFourierAnalysis::CFourierAnalysis'
+00a90fc0   WARN RELOC_NAME: ??$FUN_00a5e900@U__true_type@ExternalRetry_00a90fc0@@@ExternalRetry_00a90fc0@@YIXPAUCStreamInfo@CVertexShaderInput@0@0ABU__true_type@0@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a90fc0   RELOCATION_MATCH PASS   ConvertVertexStream_AnimatedToFormat
+00a91180   WARN RELOC_NAME: ?GetVertexSize@CVertexFormat@@QBEKXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a91180   WARN RELOC_NAME: ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a91180   WARN RELOC_NAME: ?ConvertAnimatedVertices@@YIXPBXKPAXKKAAVCVertexCompressionParams@@@Z -> 00a90fc0 labelled 'ConvertVertexStream_AnimatedToFormat'
+00a91180   RELOCATION_MATCH PASS   ConvertToVBFormatAnimated
+00a91390   WARN RELOC_NAME: ?GetVertexSize@CVertexStreamFormat@ExternalRetry_00a91390@@QAEHXZ -> 00ab37b0 labelled 'CVertexStreamFormat::CalculateVertexSize'
+00a91390   WARN RELOC_NAME: ??0CVertexStreamConverter@ExternalRetry_00a91390@@QAE@XZ -> 00ac44c0 labelled 'CFourierAnalysis::CFourierAnalysis'
+00a91390   WARN RELOC_NAME: ??$FUN_00a5e900@U__true_type@ExternalRetry_00a91390@@@ExternalRetry_00a91390@@YIXPAUCStreamInfo@CVertexShaderInput@0@0ABU__true_type@0@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a91390   RELOCATION_MATCH PASS   ConvertVertexStream_StaticToFormat
+00a98640   WARN RELOC_NAME: ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a98640   RELOCATION_MATCH PASS   ~CVertexShaderInputStatic
+00a986d0   WARN RELOC_NAME: ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00a986d0   RELOCATION_MATCH PASS   ~CVertexShaderInputAnimated
+00aab810   RELOCATION_MATCH PASS   CActiveSoundInfo
+00aab980   RELOCATION_MATCH PASS   CASoundEmitter
+00aac580   WARN RELOC_NAME: ?TakeNextEmitterNumber@CSoundManagerLH@@QAEJXZ -> 00a3e420 labelled 'CSoundManagerLH::GetNextEmitterID_00a3e420'
+00aac580   RELOCATION_MATCH PASS   CSoundEmitterLH
+00aacf40   RELOCATION_MATCH PASS   CASoundReceiver
+00aad020   RELOCATION_MATCH PASS   CSoundReceiverLH
+00ab37b0   RELOCATION_MATCH PASS   CalculateVertexSize
+00ab3810   RELOCATION_MATCH PASS   AddDataElement
+00ab3b10   RELOCATION_MATCH PASS   CVertexShaderInput
+00ab4540   WARN RELOC_NAME: ?UninitializedCopy@@YIPAVCStreamInfo@CVertexShaderInput@@PBV12@0PAV12@ABUTag_00ab4540@@@Z -> 00ab4450 labelled '_global::UninitCopy_CStreamInfo_00ab4450'
+00ab4540   WARN RELOC_NAME: ??0?$CArray@VCDataElement@CVertexStreamFormat@@@@QAE@ABV0@@Z -> 00a5e0a0 labelled 'std::vector::vector'
+00ab4540   WARN RELOC_NAME: ?DestroyRange@@YIXPAVCStreamInfo@CVertexShaderInput@@0ABUTag_00ab4540@@@Z -> 00a5e900 labelled 'std::__destroy_aux'
+00ab4540   RELOCATION_MATCH PASS   _M_insert_overflow
+00abbd70   RELOCATION_MATCH PASS   GetChunkInfo
+00abf6b0   RELOCATION_MATCH PASS   SaveBinary
+00abf7b0   RELOCATION_MATCH PASS   C3DMeshMaterial
+00abf840   WARN SHARED_HEADER_AVAILABLE CBankFile
+00abf840   WARN SHARED_HEADER_AVAILABLE C3DMeshFileEngineMaterialChunk
+00abf840   RELOCATION_MATCH PASS   InitialiseFromFileData
+00aca0c0   WARN SHARED_HEADER_AVAILABLE COptimisedPrimitive
+00aca0c0   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+00aca0c0   RELOCATION_MATCH PASS   RemoveBones
+00add130   MATCH            PASS   OnFileReadCompletion
+00add240   RELOCATION_MATCH PASS   Read
+00aeabe0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeabe0   RELOCATION_MATCH PASS   CreateDecalEmitter
+00aeb6d0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aeb6d0   WARN RELOC_NAME: ??0CEmitterPointer@@QAE@PAVCParticleEmitter@NParticleEngine@@@Z -> 00ae9450 labelled 'CCountedPointer_00ae91d0::CCountedPointer_00ae91d0'
+00aeb6d0   WARN RELOC_NAME: ??1CEmitterPointer@@QAE@XZ -> 00ae94a0 labelled '_global::CCountedPointer_Release_00ae94a0'
+00aeb6d0   RELOCATION_MATCH PASS   CreateEmitter
+00af10e0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00af10e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00af10e0   RELOCATION_MATCH PASS   ~CParticleEmitter
+00af6550   RELOCATION_MATCH PASS   CComponentInstance
+00af67b0   RELOCATION_MATCH PASS   pair
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in 00af69d0.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in 00af69d0.obj; graded the largest function
+00af69d0   RELOCATION_MATCH PASS   ScalarDeletingDestructor_LongCBaseClassCountedPointer
+00af7a10   RELOCATION_MATCH PASS   resize
+00af7b60   RELOCATION_MATCH PASS   ~CParticle
+00b0f310   RELOCATION_MATCH PASS   CParticleUpdateParamDesc
+00b19c20   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b19c20   MATCH            PASS   Kill
+00b1a640   RELOCATION_MATCH PASS   CPSCLight
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b1aeb0   RELOCATION_MATCH PASS   ~CPSCLight
+00b1ffc0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00b1ffc0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b1ffc0   RELOCATION_MATCH PASS   ~CPSCDecalRenderer
+00b32e90   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00b32e90   RELOCATION_MATCH PASS   AddPrimitive
+00b3acf0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00b3acf0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00b3acf0   RELOCATION_MATCH PASS   ~CEngineInternalAttachedPrimitive
+00b3eb90   WARN RELOC_NAME: ??1CLayoutBase@@QAE@XZ -> 0098d710 labelled 'CVertexShaderConstantLayout::~CVertexShaderConstantLayout'
+00b3eb90   RELOCATION_MATCH PASS   ~CShaderLayoutOwner_00b3eb90
+00b898d0   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b898d0   WARN SHARED_HEADER_AVAILABLE CSurface
+00b898d0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b898d0   RELOCATION_MATCH PASS   ~CEngineScreenEffectOutlineGlow
+00b935c0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00b935c0   RELOCATION_MATCH PASS   CEngineSceneGridCell
+00b93660   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00b93660   RELOCATION_MATCH PASS   ~CEngineSceneGridCell
+00b9ab30   WARN RELOC_NAME: ??0CEngineInternalPrimitiveNative@@QAE@JK@Z -> 00b8ff00 labelled 'CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase'
+00b9ab30   RELOCATION_MATCH PASS   CreatePrimitive
+00b9e8c0   RELOCATION_MATCH PASS   CreateInternalPrimitive
+00ba9300   RELOCATION_MATCH PASS   `vector_deleting_destructor'
+00ba9fd0   RELOCATION_MATCH PASS   pair<long,CCompositeSurfaceInfo>_>_>
+00baba70   WARN RELOC_NAME: ??0CEngineInternalPrimitiveNative@@QAE@JK@Z -> 00b8ff00 labelled 'CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase'
+00baba70   WARN RELOC_NAME: ?RegisterPrimitive@CEnginePrimitiveManagerRepeatedZSpritesMethods@@QAEXPAUCEngineInternalPrimitiveNative@@_N@Z -> 00bacdd0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00baba70   RELOCATION_MATCH PASS   CreatePrimitive
+00bae160   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00bae160   WARN RELOC_NAME: ?AddPrimitive@CEnginePrimitiveManager@@QAEXAAVCEngineInternalPrimitiveBase@@K@Z -> 00bacdd0 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00bae160   RELOCATION_MATCH PASS   AddSprite
+00bbcf70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bbcf70   RELOCATION_MATCH PASS   SetChildPrimitive
+00bbdcb0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00bbdcb0   RELOCATION_MATCH PASS   resize
+00bd9250   RELOCATION_MATCH PASS   ~CEngineInternalPrimitiveAnimatedMesh
+00bd92e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd92e0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveAnimatedMesh
+00bd94e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd94e0   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DAnimatedMesh
+00bd9710   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd9710   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DMorphedAnimatedMesh
+00bd9830   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd9830   RELOCATION_MATCH PASS   CEngineInternalPrimitiveAnimatedMeshFromFile
+00bd9940   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00bd9940   RELOCATION_MATCH PASS   CEngineInternalPrimitiveMorphedAnimatedMesh
+00bdaf80   RELOCATION_MATCH PASS   CShaderConstantRange
+00bdaff0   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutLights
+00bdaff0   RELOCATION_MATCH PASS   CEngineVSConstantLayoutParticles
+00bdb080   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00bdb080   WARN RELOC_NAME: ??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ -> 00bdbb70 labelled 'CEngineVSConstantLayoutBasic::CEngineVSConstantLayoutBasic'
+00bdb080   RELOCATION_MATCH PASS   CEngineVSConstantLayoutRepeatedMesh
+00bdb260   WARN SHARED_HEADER_AVAILABLE CEngineVSConstantLayoutLights
+00bdb260   RELOCATION_MATCH PASS   CEngineVSConstantLayoutLightsBones
+00bdb400   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00bdb400   WARN RELOC_NAME: ??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ -> 00bdbb70 labelled 'CEngineVSConstantLayoutBasic::CEngineVSConstantLayoutBasic'
+00bdb400   RELOCATION_MATCH PASS   CEngineVSConstantLayoutLights
+00bdfd80   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00bdfd80   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bdfd80   RELOCATION_MATCH PASS   ~CLocalDetailPrimitiveMesh
+00bed440   RELOCATION_MATCH PASS   CCompositeSurfaceInfo
+00bfbbc0   RELOCATION_MATCH PASS   CObject
+00bfbc80   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+  WARN leaf '?AllocArrayOfObjects@' matches no symbol in 00bfbc80.obj; graded the largest function
+  WARN leaf '?AllocArrayOfObjects@' matches no symbol in 00bfbc80.obj; graded the largest function
+00bfbc80   RELOCATION_MATCH PASS   AllocArrayOfObjects
+00cb7cb0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb7cb0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb7cb0   RELOCATION_MATCH PASS   DoScriptDataPersist
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb7da0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb7da0   RELOCATION_MATCH PASS   DoEntityScriptPersist
+00cb8440   WARN RELOC_NAME: ?erase@?$CVector@UCEntry@CRuntimeScriptedEntityPersist@NScript@@@CRuntimeScriptedEntityPersist@NScript@@QAEPAUCEntry@23@PAU423@0@Z -> 00cbbda0 labelled '_global::Container_MoveAndConstruct'
+00cb8440   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00cb8440   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb8440   RELOCATION_MATCH PASS   LoadFromGameStateScript
+00cb8690   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb8690   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00cb8690   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00cb8690   RELOCATION_MATCH PASS   LoadGameState
+00cdb360   WARN SHARED_HEADER_AVAILABLE CTimer
+00cdb360   RELOCATION_MATCH PASS   CCrateTeamManager
+00cdeed0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00cdeed0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cdeed0   RELOCATION_MATCH PASS   Main
+00cdf080   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00cdf080   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cdf080   RELOCATION_MATCH PASS   Main
+00cdfeb0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cdfeb0   RELOCATION_MATCH PASS   CEndGameBarrier
+  WARN leaf 'SuspendableProcess_00ce11b0' matches no symbol in 00ce11b0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ce11b0' matches no symbol in 00ce11b0.obj; graded the largest function
+00ce11b0   RELOCATION_MATCH PASS   SuspendableProcess_00ce11b0
+00cf0560   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00cf0560   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cf0560   RELOCATION_MATCH PASS   OnPersist
+  WARN leaf 'SuspendableProcess_00cf67f0' matches no symbol in 00cf67f0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00cf67f0' matches no symbol in 00cf67f0.obj; graded the largest function
+00cf67f0   RELOCATION_MATCH PASS   SuspendableProcess_00cf67f0
+00cf8a70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00cf8a70   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cf8a70   WARN RELOC_NAME: ??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00cf8a70   RELOCATION_MATCH PASS   Main
+00cfab10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00cfab10   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cfab10   RELOCATION_MATCH PASS   OnPersist
+00cfadd0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00cfadd0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cfadd0   RELOCATION_MATCH PASS   Init
+00cfc950   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00cfc950   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cfc950   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cfc950   MATCH            PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00cfdf50' matches no symbol in 00cfdf50.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00cfdf50' matches no symbol in 00cfdf50.obj; graded the largest function
+00cfdf50   RELOCATION_MATCH PASS   SuspendableProcess_00cfdf50
+00d01590   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d01590   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d01590   RELOCATION_MATCH PASS   Init
+00d02b20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d02b20   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d02b20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d02b20   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d03270' matches no symbol in 00d03270.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d03270' matches no symbol in 00d03270.obj; graded the largest function
+00d03270   RELOCATION_MATCH PASS   SuspendableProcess_00d03270
+00d04a60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d04a60   RELOCATION_MATCH PASS   Init
+
+WINS: 305
+  00418b7a RELOCATION_MATCH CMainGameComponent::??1CMainGameComponent@
+  0041b800 RELOCATION_MATCH NUISystem::CSprite::??0CSprite@NUISystem@@QAE@J@Z
+  00434c00 RELOCATION_MATCH CDisplayEngine::?StartScreenFadeOut@CDisplayEngine@@QAEXMMVCRGBColour@@M@Z
+  00440100 MATCH std::fill
+  00440260 MATCH std::__copy
+  00440390 MATCH std::__copy_backward
+  00454d9e RELOCATION_MATCH CThingHolySiteDef::??0CThingHolySiteDef@@QAE@XZ
+  00454df4 RELOCATION_MATCH CThingMarkerDef::??0CThingMarkerDef@@QAE@XZ
+  00454f32 RELOCATION_MATCH CThingVillageDef::??0CThingVillageDef@@QAE@XZ
+  004564b5 RELOCATION_MATCH CRegionDef::??0CRegionDef
+  004575fc RELOCATION_MATCH CSpecialAbilitiesBulletTimeDef::??1CSpecialAbilitiesBulletTimeDef
+  0045767e RELOCATION_MATCH CSpecialAbilitiesForcePushDef::??0CSpecialAbilitiesForcePushDef@
+  0045784b RELOCATION_MATCH CSpecialAbilitiesPhysicalShieldDef::??1CSpecialAbilitiesPhysicalShieldDef
+  004585e0 RELOCATION_MATCH CHitLocationDef::??0CHitLocationDef@
+  00458994 RELOCATION_MATCH CGlobalDef::??0CGlobalDef
+  00458b9d RELOCATION_MATCH CHeroCombatDef::??1CHeroCombatDef
+  00458d3f RELOCATION_MATCH CThingShotDef::??0CThingShotDef@
+  00459102 RELOCATION_MATCH CThingObjectDef::??0CThingObjectDef@@QAE@XZ
+  00459e46 RELOCATION_MATCH CPlayerGuiDef::??1CPlayerGuiDef
+  0045a0ee RELOCATION_MATCH NUISystem::CUILocaleGraphicsDef::??0CUILocaleGraphicsDef@
+  0045bd42 RELOCATION_MATCH CInventoryCategoryDef::??4CInventoryCategoryDef@@QAEAAV0@ABV0@@Z
+  00461ed8 RELOCATION_MATCH CLightningDef::??4CLightningDef@@QAEAAV0@ABV0@@Z
+  0046296e RELOCATION_MATCH CSimBuildingDef::??4CSimBuildingDef@@QAEAAV0@ABV0@@Z
+  00463bff RELOCATION_MATCH CMeleeCombatAbilityDef::?Transfer@CMeleeCombatAbilityDef@@UAEXAAVCPersistContext@@@Z
+  00464be9 RELOCATION_MATCH CSpecialAbilitiesAssassinRushDef::?Transfer@CSpecialAbilitiesAssassinRushDef@@UAEXAAVCPersistContext@@@Z
+  0046a178 RELOCATION_MATCH CSpecialAbilitiesBattleChargeDef::?Transfer@CSpecialAbilitiesBattleChargeDef@@UAEXAAVCPersistContext@@@Z
+  0046a260 RELOCATION_MATCH CSpecialAbilitiesMultiArrowDef::?Transfer@CSpecialAbilitiesMultiArrowDef@@UAEXAAVCPersistContext@@@Z
+  0046ef87 RELOCATION_MATCH CQuickAccessItemButtonGuiDef::Copy
+  0046f020 RELOCATION_MATCH std::vector::??$_M_allocate_and_copy@PBVCQuickAccessItemButtonGuiDef@@@?$vector@VCQuickAccessItemButtonGuiDef@@V?$allocator@VCQuickAccessItemButtonGuiDef@@@std@@@std@@IAEPAVCQuickAccessItemButtonGuiDef@@IPBV2@0@Z
+  0046f43e RELOCATION_MATCH CAbilityButtonGuiDef::??4CAbilityButtonGuiDef@@QAEAAV0@ABV0@@Z
+  0047204b RELOCATION_MATCH std::vector::??$_M_allocate_and_copy@PBVCOpinionDeedReactionDef@@@?$vector@VCOpinionDeedReactionDef@@V?$allocator@VCOpinionDeedReactionDef@@@std@@@std@@IAEPAVCOpinionDeedReactionDef@@IPBV2@0@Z
+  00472415 RELOCATION_MATCH CSpecialAbilitiesMultiStrikeDef::?Transfer@CSpecialAbilitiesMultiStrikeDef@@UAEXAAVCPersistContext@@@Z
+  0047616e RELOCATION_MATCH std::vector::?erase@?$vector@VCQuickAccessItemButtonGuiDef@@V?$allocator@VCQuickAccessItemButtonGuiDef@@@std@@@std@@QAEPAVCQuickAccessItemButtonGuiDef@@PAV3@0@Z
+  004773f1 RELOCATION_MATCH CEngineLocalDetailLayerDef::??0CEngineLocalDetailLayerDef@
+  0047848c RELOCATION_MATCH CAppearanceModifierScalingDef::??4CAppearanceModifierScalingDef@@QAEAAV0@ABV0@@Z
+  00478533 RELOCATION_MATCH std::vector::??$_M_allocate_and_copy@PBVCAppearanceModifierScalingDef@@@?$vector@VCAppearanceModifierScalingDef@@V?$allocator@VCAppearanceModifierScalingDef@@@std@@@std@@IAEPAVCAppearanceModifierScalingDef@@IPBV2@0@Z
+  00478876 RELOCATION_MATCH CAbilityTrackLevelDef::??4CAbilityTrackLevelDef@@QAEAAV0@ABV0@@Z
+  00478a1e RELOCATION_MATCH std::vector::??$_M_allocate_and_copy@PBVCAbilityTrackLevelDef@@@?$vector@VCAbilityTrackLevelDef@@V?$allocator@VCAbilityTrackLevelDef@@@std@@@std@@IAEPAVCAbilityTrackLevelDef@@IPBV2@0@Z
+  00478a6d RELOCATION_MATCH std::vector::??$_M_allocate_and_copy@PBVCAbilityTrackDef@@@?$vector@VCAbilityTrackDef@@V?$allocator@VCAbilityTrackDef@@@std@@@std@@IAEPAVCAbilityTrackDef@@IPBV2@0@Z
+  00485d30 RELOCATION_MATCH std::vector::??0?$vector@VCEnginePrimitiveHandle@@
+  004917b5 RELOCATION_MATCH CSubtitleRenderer::?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  004b3760 RELOCATION_MATCH CQuestManager::?LoadMasterScriptDataFromGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z
+  004b5080 RELOCATION_MATCH NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript
+  004b6380 RELOCATION_MATCH CQuestManager::?LoadGameState@CQuestManager@@QAEXAAVCPersistContext
+  004c0050 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::AddPersistentPrimitive
+  004c20d0 RELOCATION_MATCH C3DPositionInterpolator::??0C3DPositionInterpolator@
+  004c2110 RELOCATION_MATCH C3DOrientationInterpolator::??0C3DOrientationInterpolator@
+  004c2e20 RELOCATION_MATCH C3DAnimationInterpolator::??0C3DAnimationInterpolator@
+  004c5690 RELOCATION_MATCH std::_List_base<NGraphicAppearance::CPrimitive, allocator<NGraphicAppearance::CPrimitive> >::clear
+  004c6fb0 RELOCATION_MATCH CMessageBase::??0CMessageBase@
+  004ca230 RELOCATION_MATCH CThing::CreateTCsFromString
+  004cb750 RELOCATION_MATCH CMessageClearPrimitives::??0CMessageClearPrimitives@
+  004cea60 RELOCATION_MATCH CSubtitledMessage::?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z
+  004dc737 RELOCATION_MATCH CTCStockItem::??0CTCStockItem
+  004dc991 RELOCATION_MATCH NThingShot::CTCShotDefinitionProjectile::??0CTCShotDefinitionProjectile
+  004dc9d2 RELOCATION_MATCH NThingShot::CTCShotDefinitionProjectile::??1CTCShotDefinitionProjectile
+  004dd728 RELOCATION_MATCH std::pair<long const ,CEnginePrimitiveHandle>::??1?$pair@$$CBJVCEnginePrimitiveHandle@@@std@@QAE@XZ
+  004de44d RELOCATION_MATCH CTCStockItem::??1CTCStockItem
+  004df14b RELOCATION_MATCH CTCDPhysicalObstruction::??0CTCDPhysicalObstruction@
+  004e160c RELOCATION_MATCH CTCDPhysicalObstruction::??1CTCDPhysicalObstruction
+  004e4583 RELOCATION_MATCH CMazeBattleDef::??4CMazeBattleDef@@QAEAAV0@ABV0@@Z
+  004e4774 RELOCATION_MATCH CScorpionKingBattleDef::??4CScorpionKingBattleDef@@QAEAAV0@ABV0@@Z
+  004e47e8 RELOCATION_MATCH CTrollBattleDef::??4CTrollBattleDef@@QAEAAV0@ABV0@@Z
+  004e485c RELOCATION_MATCH CBalverineBattleDef::??4CBalverineBattleDef@@QAEAAV0@ABV0@@Z
+  004f9d7b RELOCATION_MATCH std::vector::?erase@?$vector@VCCardPositionsDef@@V?$allocator@VCCardPositionsDef@@@std@@@std@@QAEPAVCCardPositionsDef@@PAV3@0@Z
+  004fa1a8 RELOCATION_MATCH std::vector::?resize@?$vector@VCCardDef@@V?$allocator@VCCardDef@@@std@@@std@@QAEXIABVCCardDef@@@Z
+  004fa1f0 RELOCATION_MATCH std::vector::?erase@?$vector@VCCardDef@@V?$allocator@VCCardDef@@@std@@@std@@QAEPAVCCardDef@@PAV3@0@Z
+  004fa277 RELOCATION_MATCH std::vector<CCardDef>::?_M_fill_insert@
+  004fe2a0 RELOCATION_MATCH CWorldMap::?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@
+  005079c0 RELOCATION_MATCH CWorldMap::?LoadGameState@CWorldMap@@
+  00520570 RELOCATION_MATCH CThingManager::LoadHeroStateScript
+  00521ae0 RELOCATION_MATCH CThingManager::LoadFromFile
+  0052ae10 MATCH CCompressorZlib::CompressAsImage
+  0053fc90 MATCH NUISystem::CViewport::ClearHandle
+  005482d0 RELOCATION_MATCH NUISystem::CMovie::??0CMovie@NUISystem@@QAE@AAVCIEngine
+  00548350 RELOCATION_MATCH NUISystem::CMovie::??0CMovie@NUISystem@@QAE@ABV01
+  0054f5c0 RELOCATION_MATCH NUISystem::CText::??0CText@NUISystem@@QAE@J@Z
+  00550190 RELOCATION_MATCH NUISystem::CMesh::??0CMesh@
+  005508d0 RELOCATION_MATCH C3DOrientationInterpolator::??0C3DOrientationInterpolator
+  00550a20 RELOCATION_MATCH C3DAnimationInterpolator::??0C3DAnimationInterpolator@
+  0056a8c0 MATCH CTCBoastUI::?DrawPreparePrimitivesForRendering@CTCBoastUI@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  005814e5 RELOCATION_MATCH _global::??1CTCHeroStats
+  005bb32e RELOCATION_MATCH CEnginePrimitiveHandle::??0CEnginePrimitiveHandle@
+  005bbfd6 RELOCATION_MATCH std::map::??A?$map
+  005bc1b0 RELOCATION_MATCH CEnginePrimitive2DMorphedAnimatingMesh::??0CEnginePrimitive2DMorphedAnimatingMesh@@QAE@_KKABV?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@2@ABVC3DAnimationBlendState@@ABVC2DBoxF@@ABVC3DBoundingSphere@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z
+  005d8c90 RELOCATION_MATCH CMessageOnPickup::??0CMessageOnPickup@
+  005d8d50 RELOCATION_MATCH CTCInventoryItem::AddToInventory
+  00642390 RELOCATION_MATCH NGraphicAppearance::CPrimitive::??0CPrimitive
+  0064a2db RELOCATION_MATCH NPlayerGui::CDrawPerceivers::?AddPerceivingThing@CDrawPerceivers@NPlayerGui@@QAEXAAVCThing@@@Z
+  00651a7e RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::??0CDrawAbilityButtons@
+  00652f0a RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::??0CDrawQuickAccessIcons@
+  00658d07 RELOCATION_MATCH CTCVillage::?IsNightTime@CTCVillage@@QBE_NXZ
+  00658d5d RELOCATION_MATCH CTCVillage::?IsSociableTime@CTCVillage@@QBE_NXZ
+  00658db3 RELOCATION_MATCH CTCVillage::?IsCurfewTime@CTCVillage@@QBE_NXZ
+  0065dce8 RELOCATION_MATCH CVillageTaskSecuritySweep::??0CVillageTaskSecuritySweep@@QAE@ABVC3DVector@@M0M@Z
+  00680840 RELOCATION_MATCH CSimVoice::?GetRandomSampleIndexVariation@CSimVoice@@QBEJW4EReactionSpeechType@@AAK@Z
+  00692120 RELOCATION_MATCH NCreatureAction::CActionEventTriggerParticle::??0CActionEventTriggerParticle@
+  00692230 RELOCATION_MATCH NCreatureAction::CActionEventExplosion::??0CActionEventExplosion@
+  00692270 RELOCATION_MATCH NCreatureAction::CActionEventAddObject::??0CActionEventAddObject@
+  006922c0 RELOCATION_MATCH NCreatureAction::CActionEventRemoveObject::??0CActionEventRemoveObject@
+  00695400 RELOCATION_MATCH NCreatureAction::CActionEventTriggerParticle::??0CActionEventTriggerParticle@
+  006955f0 RELOCATION_MATCH NCreatureAction::CActionEventExplosion::??0CActionEventExplosion@
+  00695690 RELOCATION_MATCH NCreatureAction::CActionEventAddObject::??0CActionEventAddObject@
+  0069e980 RELOCATION_MATCH NDisplayView::CView3DBase::vfunc_3
+  006ac910 RELOCATION_MATCH _global::Create
+  006af570 RELOCATION_MATCH C3DPositionInterpolator::??0C3DPositionInterpolator@
+  006ba8b0 RELOCATION_MATCH CPersistTraits<CFaction>::?TransferBinaryIn@?$CPersistTraits@VCFaction@@
+  006d8bf0 RELOCATION_MATCH CTCHeroExperience::?GetOnHitSound@CTCHeroExperience@@QBE?AVCCharString@@XZ
+  006e11f0 RELOCATION_MATCH CTCDParticleEmitter::Create
+  006f95a0 RELOCATION_MATCH NAnimationEvents::CManager::?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@ABE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z
+  006f96c0 RELOCATION_MATCH NAnimationEvents::CManager::?GetExtraEventTime@CManager@NAnimationEvents@@ABEMKABVCCharString@@@Z
+  00704a80 RELOCATION_MATCH CGameScriptThingManager::??0CGameScriptThingManager
+  00708a30 RELOCATION_MATCH CAnimationInterpolatorOwner_00708a30::??1CAnimationInterpolatorOwner_00708a30@
+  0070c590 RELOCATION_MATCH CAnimateThing::PreloadAnims
+  0071a850 RELOCATION_MATCH CTCParticleAttachmentTracker::?OnSetInLimbo@CTCParticleAttachmentTracker@@UAEX_N@Z
+  0071afe0 RELOCATION_MATCH CTCEmoteIcon::??0CTCEmoteIcon@@QAE@PAVCThing@@@Z
+  0071b800 RELOCATION_MATCH CMessageOnMorphChanged::??0CMessageOnMorphChanged@
+  00727bf0 RELOCATION_MATCH CTCRandomAppearanceMorph::?OnAppearanceClear@CTCRandomAppearanceMorph@@UAEXXZ
+  0072e290 RELOCATION_MATCH CTCMeshAutomaticEntityCreator::CreateChildThings
+  0076e620 RELOCATION_MATCH CTCWeaponTrail::??0CTCWeaponTrail@@QAE@PAVCThing@@@Z
+  00770e50 RELOCATION_MATCH CTCSolidToThing::??0CTCSolidToThing@@QAE@AAVCThing@@@Z
+  00778ae0 RELOCATION_MATCH CTCFamilyMember::??0CTCFamilyMember@@QAE@AAVCThing@@@Z
+  0077b250 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::??0CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  0077b2e0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::?GetMeshesUsed@CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@UBEXAAV?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@@Z
+  0077b9b0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::??0CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  0077bc80 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::?GetMeshesUsed@CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@UBEXAAV?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@@Z
+  0077be40 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::??0CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  0079d110 RELOCATION_MATCH CTCBulletTime::??1CTCBulletTime
+  007a6650 RELOCATION_MATCH CMessageOnMeshReplaced::??0CMessageOnMeshReplaced@
+  007a69f0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::ReplaceMeshByIndex
+  007a6ab0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::?GetMeshesUsed@CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UBEXAAV?$vector@VCMeshInfo@NGraphicAppearance@@V?$allocator@VCMeshInfo@NGraphicAppearance@@@std@@@std@@@Z
+  007c2480 RELOCATION_MATCH CTCShotDefinitionBase::UpdateEffects
+  007ca830 RELOCATION_MATCH CTCHeroReceiveItems::??0CTCHeroReceiveItems
+  007ce390 RELOCATION_MATCH CTCElectrocutedEffect::?FinalCleanup@CTCElectrocutedEffect@@AAEXXZ
+  007ce3c0 RELOCATION_MATCH CTCElectrocutedEffect::?OnKill@CTCElectrocutedEffect@@UAEXXZ
+  007ce3f0 RELOCATION_MATCH CTCElectrocutedEffect::?OnRemove@CTCElectrocutedEffect@@UAEXXZ
+  007e1590 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::?OnAppearanceClear@CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@UAEXXZ
+  007e71d0 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::??0CActionMoveTo
+  007e7490 RELOCATION_MATCH CScriptGameResourceObjectScriptedThingBase::GetScriptThing
+  0082d0d0 RELOCATION_MATCH CThingBuilding::?DrawGetEditDrawInfo@CThingBuilding@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  00830150 RELOCATION_MATCH CThingAICreature::?DrawGetEditDrawInfo@CThingAICreature@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  008385b0 RELOCATION_MATCH CThingNoise::?Create@CThingNoise@@SIPAV1@JABVC3DVector@@M@Z
+  00891ca0 RELOCATION_MATCH CGameScriptInterface::?GetHero@CGameScriptInterface@@UAEAAVCScriptThing@@XZ
+  008cff60 RELOCATION_MATCH CGameScriptThing::??0CGameScriptThing
+  008d0250 RELOCATION_MATCH CGameScriptThing::??0CGameScriptThing
+  008d9ca0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?OnDeactivate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXXZ
+  008de700 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::?Recover@CModeRockTrollVulnerable@NCreatureMode@@AAEXXZ
+  008fca40 RELOCATION_MATCH std::??$transform@
+  009051f0 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::??0CActionMoveTo
+  00905290 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::??0CActionMoveTo
+  00905360 RELOCATION_MATCH NTCScriptedControl::CActionPerformExpression::??0CActionPerformExpression
+  0090df60 RELOCATION_MATCH CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>::??R?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@QBE_NABVCMessageEvent@@@Z
+  0090dfb0 RELOCATION_MATCH CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing>::??R?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNavLineOfSightToThing@@@@QBE_NABVCMessageEvent@@@Z
+  009126c0 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::??0CAIStateGroup_FlyingThingBase@
+  00917380 RELOCATION_MATCH CAIStateGroup_IdleAtHome::?Update@CAIStateGroup_IdleAtHome@@MAEXXZ
+  00929650 RELOCATION_MATCH CAIStateGroup_MinionGuardGreetPlayer::?IsRunnable@CAIStateGroup_MinionGuardGreetPlayer@@UAE_NXZ
+  00939180 RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::?IsRunnable@CAIStateGroup_MinionSitAtHome@@MAE_NXZ
+  00953630 RELOCATION_MATCH CCreatureAction_DragonFireBlastBase::??0CCreatureAction_DragonFireBlastBase@
+  00987d50 RELOCATION_MATCH CShaderConstantRange::??0CShaderConstantRange@
+  0098dd90 RELOCATION_MATCH CShaderStats::??1CShaderStats
+  00993b10 RELOCATION_MATCH CDataStream::??1CDataStream@@UAE@XZ
+  0099f2e0 RELOCATION_MATCH CCharString::?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z
+  009a7ac0 RELOCATION_MATCH CBankFileManager::??0CBankFileManager@@QAE@XZ
+  009a7b70 RELOCATION_MATCH CBankFileManager::??1CBankFileManager
+  009bf5a0 RELOCATION_MATCH CDisplayManager::?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+  009e2d00 RELOCATION_MATCH CFontManager::??1CFontManager@
+  009e45b0 RELOCATION_MATCH CMaintainedEvent::??0CMaintainedEvent@
+  009ea2b0 RELOCATION_MATCH CConsoleCommandLine::??0CConsoleCommandLine@
+  009ea2e0 RELOCATION_MATCH CConsoleCommandLine::??0CConsoleCommandLine
+  009ea5a0 RELOCATION_MATCH CConsole::ResetCommandLineBuffers
+  009ea660 RELOCATION_MATCH CConsole::RevertToUserEntry
+  009ea980 RELOCATION_MATCH CConsole::PrevInHistory
+  009ea9e0 RELOCATION_MATCH CConsole::NextInHistory
+  009eab80 RELOCATION_MATCH CConsole::SetHistoryMode
+  009eaf80 RELOCATION_MATCH CConsole::?AddCommandLineToHistory@CConsole@@AAEXABVCConsoleCommandLine@@@Z
+  009eb0d0 RELOCATION_MATCH CConsole::NextCommandGuess
+  009eb260 RELOCATION_MATCH CConsole::SendMessageToUser
+  009eb2c0 RELOCATION_MATCH CConsole::SetHelpBarString
+  009eb430 RELOCATION_MATCH CConsole::RunCommandLine
+  009ec430 RELOCATION_MATCH CConsoleVariable::?ProcessCommandLine@CConsoleVariable
+  009ec710 RELOCATION_MATCH CConsole::RunTextCommand
+  009ecd80 RELOCATION_MATCH CConsole::??0CConsole
+  009eea10 RELOCATION_MATCH CConsoleCommandLine::??0CConsoleCommandLine@
+  009f5390 RELOCATION_MATCH CInputManager::?EmptyEventStore@CInputManager@@IAEXXZ
+  009f5c80 RELOCATION_MATCH CInputManager::??1CInputManager
+  009f83d0 RELOCATION_MATCH CGraphicBankManager::?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z
+  009f9cd0 RELOCATION_MATCH CRenderTarget::??0CRenderTarget@
+  009fa450 RELOCATION_MATCH CTexture::?Lock@CTexture@@QAE?AVCSurfaceLockedRect@@KK@Z
+  009fd9b0 RELOCATION_MATCH CGraphicDataBank::?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z
+  00a004d0 RELOCATION_MATCH std::__uninitialized_fill_n
+  00a00750 RELOCATION_MATCH std::__uninitialized_copy
+  00a00840 MATCH std::__copy_backward
+  00a009a0 RELOCATION_MATCH CGraphicInfoFrame::??_GCGraphicInfoFrame
+  00a00a90 MATCH std::fill
+  00a00b20 MATCH std::__copy
+  00a013e0 MATCH CGraphicDataBank::?GetNoFramesInGraphic@CGraphicDataBank@@UBEKK@Z
+  00a01430 MATCH CGraphicDataBank::?GetGraphicFrameWidth@CGraphicDataBank@@UBEKKK@Z
+  00a01480 MATCH CGraphicDataBank::?GetGraphicFrameHeight@CGraphicDataBank@@UBEKKK@Z
+  00a016f0 RELOCATION_MATCH std::vector::?resize@?$vector@
+  00a09f20 RELOCATION_MATCH CMeshBankManager::?OpenMeshBank@CMeshBankManager@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@ABVCCharString@@_N@Z
+  00a0d6b0 MATCH CInputProcessManager::PreparePrimitivesForEngine
+  00a127d0 RELOCATION_MATCH CPhysicsMeshObject::??1CPhysicsMeshObject
+  00a12840 RELOCATION_MATCH CPhysicsMeshObject::GetRigidBodyBoundingPoints
+  00a128a0 RELOCATION_MATCH CPhysicsMeshObject::HasContainmentVolume
+  00a12c90 RELOCATION_MATCH CPhysicsMeshObject::HasNavigationLineListInfo
+  00a12cc0 RELOCATION_MATCH CPhysicsMeshObject::??0CPhysicsMeshObject
+  00a32af0 RELOCATION_MATCH std::pair::??_G?$pair@KVC3DMeshVolume@@@std@@QAEPAXI@Z
+  00a33720 RELOCATION_MATCH std::??$__destroy_aux@PAU?$pair@KVC3DMeshVolume@@@std@@@std@@YIXPAU?$pair@KVC3DMeshVolume@@@0@0ABU__false_type@0@@Z
+  00a36e70 RELOCATION_MATCH C3DMeshObject::??0C3DMeshObject@
+  00a3ae70 RELOCATION_MATCH CACompressor::??0CACompressor@
+  00a3aea0 RELOCATION_MATCH CACompressor::??0CACompressor
+  00a48b50 RELOCATION_MATCH CLipSyncPhonemeSample::?WriteToFile@CLipSyncPhonemeSample@@QBEXAAVCDataOutputStream@@@Z
+  00a4e250 RELOCATION_MATCH C3DAnimation2::?GetRotationAtTime@C3DAnimation2@@UBE?AVCQuaternion@@M@Z
+  00a50bf0 RELOCATION_MATCH C3DAnimationStats::?GetAllEvents@C3DAnimationStats@@QBEXAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z
+  00a5d800 RELOCATION_MATCH CShaderResource::??1CShaderResource
+  00a5eb70 RELOCATION_MATCH CVertexShaderInput::??1CVertexShaderInput
+  00a67530 MATCH CVolume::?ReadOnlyLock@CVolume@@QBE?AVCVolumeLockedBox@@K@Z
+  00a677d0 MATCH CVolume::?Lock@CVolume@@QAE?AVCVolumeLockedBox@@K@Z
+  00a685e0 RELOCATION_MATCH CVolumeTexture::?Lock@CVolumeTexture@@QAE?AVCVolumeLockedBox@@KK@Z
+  00a695c0 RELOCATION_MATCH CVolumeTexture::??0CVolumeTexture@
+  00a6f960 RELOCATION_MATCH std::pair::??_G?$pair@JVC3DMeshVolume@@@std@@QAEPAXI@Z
+  00a70e80 RELOCATION_MATCH std::??$__destroy_aux@PAU?$pair@JVC3DMeshVolume@@@std@@@std@@YIXPAU?$pair@JVC3DMeshVolume@@@0@0ABU__false_type@0@@Z
+  00a90fc0 RELOCATION_MATCH _global::?Convert@ExternalRetry_00a90fc0@@YIXHHHHHH@Z
+  00a91180 RELOCATION_MATCH C3DPrimitive2::ConvertToVBFormatAnimated
+  00a91390 RELOCATION_MATCH _global::?Convert@ExternalRetry_00a91390@@YIXHHHHHH@Z
+  00a98640 RELOCATION_MATCH N3DPrimitive::CVertexShaderInputStatic::??1CVertexShaderInputStatic@N3DPrimitive
+  00a986d0 RELOCATION_MATCH N3DPrimitive::CVertexShaderInputAnimated::??1CVertexShaderInputAnimated@N3DPrimitive
+  00aab810 RELOCATION_MATCH CActiveSoundInfo::??0CActiveSoundInfo@
+  00aab980 RELOCATION_MATCH CASoundEmitter::??0CASoundEmitter@
+  00aac580 RELOCATION_MATCH CSoundEmitterLH::??0CSoundEmitterLH@
+  00aacf40 RELOCATION_MATCH CASoundReceiver::??0CASoundReceiver@
+  00aad020 RELOCATION_MATCH CSoundReceiverLH::??0CSoundReceiverLH@
+  00ab37b0 RELOCATION_MATCH CVertexStreamFormat::?CalculateVertexSize@CVertexStreamFormat@@QBEKXZ
+  00ab3810 RELOCATION_MATCH CVertexStreamFormat::?AddDataElement@CVertexStreamFormat@@QAEXKW4EVertexStreamDataType@@@Z
+  00ab3b10 RELOCATION_MATCH CVertexShaderInput::??0CVertexShaderInput@
+  00ab4540 RELOCATION_MATCH std::vector<CVertexShaderInput::CStreamInfo>::InsertGrow
+  00abbd70 RELOCATION_MATCH C3DMeshFileVerticesChunk::?GetChunkInfo@C3DMeshFileVerticesChunk@@UBE?BVCCharString@@XZ
+  00abf6b0 RELOCATION_MATCH C3DMeshMaterial::SaveBinary
+  00abf7b0 RELOCATION_MATCH C3DMeshMaterial::??0C3DMeshMaterial@
+  00abf840 RELOCATION_MATCH C3DMeshMaterial::InitialiseFromFileData
+  00aca0c0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedMesh::?RemoveBones@COptimisedMesh@QuadricOptimiserInternals@@UAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z
+  00add130 MATCH CLHFileCompletionCallback::?OnFileReadCompletion@CLHFileCompletionCallback@@
+  00add240 RELOCATION_MATCH CLHFile::?Read@CLHFile@@
+  00aeabe0 RELOCATION_MATCH CParticleEmitterManager::CreateDecalEmitter
+  00aeb6d0 RELOCATION_MATCH CParticleEmitterManager::CreateEmitter
+  00af10e0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::??1CParticleEmitter
+  00af6550 RELOCATION_MATCH NParticleEngine::CComponentInstance::??0CComponentInstance@
+  00af67b0 RELOCATION_MATCH std::pair::??0?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@QAE@XZ
+  00af69d0 RELOCATION_MATCH _unattributed::ScalarDeletingDestructor_LongCBaseClassCountedPointer
+  00af7a10 RELOCATION_MATCH std::vector<std::pair<NParticleEngine::EPSCType, NParticleEngine::CComponentInstance> >::resize
+  00af7b60 RELOCATION_MATCH NParticleEngine::CParticle::??1CParticle@NParticleEngine@@UAE@XZ
+  00b0f310 RELOCATION_MATCH CParticleUpdateParamDesc::??0CParticleUpdateParamDesc@
+  00b19c20 MATCH NParticleEngine::CPSCLight::?Kill@CPSCLight@
+  00b1a640 RELOCATION_MATCH NParticleEngine::CPSCLight::??0CPSCLight
+  00b1aeb0 RELOCATION_MATCH NParticleEngine::CPSCLight::??1CPSCLight@
+  00b1ffc0 RELOCATION_MATCH CPSCDecalRenderer::??1CPSCDecalRenderer
+  00b32e90 RELOCATION_MATCH CEnginePrimitiveRenderer::AddPrimitive
+  00b3acf0 RELOCATION_MATCH CEngineInternalAttachedPrimitive::??1CEngineInternalAttachedPrimitive
+  00b3eb90 RELOCATION_MATCH CShaderLayoutOwner_00b3eb90::??1CShaderLayoutOwner_00b3eb90@
+  00b898d0 RELOCATION_MATCH CEngineScreenEffectOutlineGlow::??1CEngineScreenEffectOutlineGlow
+  00b935c0 RELOCATION_MATCH CEngineSceneGridCell::??0CEngineSceneGridCell
+  00b93660 RELOCATION_MATCH CEngineSceneGridCell::??1CEngineSceneGridCell
+  00b9ab30 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::CreatePrimitive
+  00b9e8c0 RELOCATION_MATCH CEnginePrimitiveManager2DStaticMeshes::CreateInternalPrimitive
+  00ba9300 RELOCATION_MATCH std::pair::??_G?$pair@JVCCompositeSurfaceInfo@@@std@@QAEPAXI@Z
+  00ba9fd0 RELOCATION_MATCH std::??$__destroy_aux@PAU?$pair@JVCCompositeSurfaceInfo@@@std@@@std@@YIXPAU?$pair@JVCCompositeSurfaceInfo@@@0@0ABU__false_type@0@@Z
+  00baba70 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::CreatePrimitive
+  00bae160 RELOCATION_MATCH CEnginePrimitiveManagerSprites::?AddSprite@CEnginePrimitiveManagerSprites@@QAE?AVCEnginePrimitiveHandle@@PAVCTexture@@ABVC3DVector@@MMMW4EEnginePrimitiveBlendMode@@E_N3MM3@Z
+  00bbcf70 RELOCATION_MATCH CEngineInternalPrimitiveParticleGroup::SetChildPrimitive
+  00bbdcb0 RELOCATION_MATCH CEnginePrimitiveHandleList::?resize@CEnginePrimitiveHandleList@@QAEXK@Z
+  00bd9250 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::??1CEngineInternalPrimitiveAnimatedMesh@@UAE@XZ
+  00bd92e0 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::??0CEngineInternalPrimitiveAnimatedMesh
+  00bd94e0 RELOCATION_MATCH CEngineInternalPrimitive2DAnimatedMesh::??0CEngineInternalPrimitive2DAnimatedMesh
+  00bd9710 RELOCATION_MATCH CEngineInternalPrimitive2DMorphedAnimatedMesh::??0CEngineInternalPrimitive2DMorphedAnimatedMesh
+  00bd9830 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMeshFromFile::??0CEngineInternalPrimitiveAnimatedMeshFromFile
+  00bd9940 RELOCATION_MATCH CEngineInternalPrimitiveMorphedAnimatedMesh::??0CEngineInternalPrimitiveMorphedAnimatedMesh
+  00bdaf80 RELOCATION_MATCH CShaderConstantRange::??0CShaderConstantRange@
+  00bdaff0 RELOCATION_MATCH CEngineVSConstantLayoutParticles::??0CEngineVSConstantLayoutParticles@
+  00bdb080 RELOCATION_MATCH CEngineVSConstantLayoutRepeatedMesh::??0CEngineVSConstantLayoutRepeatedMesh
+  00bdb260 RELOCATION_MATCH CEngineVSConstantLayoutLightsBones::??0CEngineVSConstantLayoutLightsBones
+  00bdb400 RELOCATION_MATCH CEngineVSConstantLayoutLights::??0CEngineVSConstantLayoutLights
+  00bdfd80 RELOCATION_MATCH CLocalDetailPrimitiveMesh::??1CLocalDetailPrimitiveMesh
+  00bed440 RELOCATION_MATCH CCompositeSurfaceInfo::??0CCompositeSurfaceInfo@
+  00bfbbc0 RELOCATION_MATCH CLocalDetailLayer::CObject::??0CObject
+  00bfbc80 RELOCATION_MATCH CEngineLandscapeMemoryManager::?AllocArrayOfObjects@
+  00cb7cb0 RELOCATION_MATCH CScriptBase::DoScriptDataPersist
+  00cb7da0 RELOCATION_MATCH CScriptBase::DoEntityScriptPersist
+  00cb8440 RELOCATION_MATCH NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript
+  00cb8690 RELOCATION_MATCH CScriptBase::?LoadGameState@CScriptBase
+  00cdb360 RELOCATION_MATCH CCrateTeamManager::??0CCrateTeamManager@
+  00cdeed0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CClickableDoor::?Main@CClickableDoor@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+  00cdf080 RELOCATION_MATCH COF_MainGates::?Main@COF_MainGates
+  00cdfeb0 RELOCATION_MATCH CEndGameBarrier::??0CEndGameBarrier
+  00ce11b0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ce11b0
+  00cf0560 RELOCATION_MATCH NScript::CGameflowAssistanceScript::?OnPersist@CGameflowAssistanceScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00cf67f0 RELOCATION_MATCH _unattributed::SuspendableProcess_00cf67f0
+  00cf8a70 RELOCATION_MATCH CLadyGreyWifeManagerScript::?Main@CLadyGreyWifeManagerScript@
+  00cfab10 RELOCATION_MATCH NScript::CQ_ArenaScript::?OnPersist@CQ_ArenaScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00cfadd0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::?Init@CQ_AwakeningTheOracleScript@NScript@@UAEXXZ
+  00cfc950 MATCH NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::?OnPredicateFail@CChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  00cfdf50 RELOCATION_MATCH _unattributed::SuspendableProcess_00cfdf50
+  00d01590 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardOuter::?Init@CGate1GuardOuter@CQ_BanditCampScript@NScript@@EAEXXZ
+  00d02b20 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardInner::?Init@CGate1GuardInner@CQ_BanditCampScript@NScript@@EAEXXZ
+  00d03270 RELOCATION_MATCH _unattributed::SuspendableProcess_00d03270
+  00d04a60 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin1::?Init@CAssassin1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+exit 0

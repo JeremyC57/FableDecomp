@@ -131,11 +131,7 @@ public:
 };
 }
 
-class CBaseClass {
-public:
-    CBaseClass();                                           // 0x0099A2D0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CBankFileManager : public CBaseClass {                // vtable 0x0129B018
 public:
@@ -155,7 +151,6 @@ public:
     std::set<CWideString>                                      CreatedRetailBanks;  // +0x28
     unsigned long                                               FileVersion;         // +0x34
     CBankFileManager();
-    virtual void v00();
 };
 
 CBankFileManager::CBankFileManager()

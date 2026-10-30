@@ -10,7 +10,8 @@
 #define __forceinline inline
 #endif
 // Layout: shared CBankFile header is flattened. Restore its proven CBaseClassNonCopyable base and retain every shared member. Retail CBankFile size272, CBankFileAsync356; RTTI CGraphicDataBank has CResourceBank at356, GraphicList at480. The async and resource payloads are opaque here and never accessed.
-class CBaseClass {public:virtual ~CBaseClass(){}};class CBaseClassNonCopyable:public CBaseClass{};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+class CBaseClassNonCopyable:public CBaseClass{};
 class CBankFileEntryDependencies;
 class CCPPointerInfo;
 class CCharStringData;

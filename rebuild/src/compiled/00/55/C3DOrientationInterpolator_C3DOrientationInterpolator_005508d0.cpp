@@ -15,14 +15,9 @@ class CRightHandedSet { public:                   // 24 bytes (PDB)
     C3DVector Forward;                     // +0x0c
 };
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                               // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class C3DOrientationInterpolator : public CBaseClass { public:
-    virtual void v00();                    // own vtable (0x01239824)
     CRightHandedSet StartOrientation;      // +0x04
     CRightHandedSet EndOrientation;        // +0x1c
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);

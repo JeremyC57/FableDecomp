@@ -25,10 +25,7 @@ struct CSharedPointer {
         }
     }
 };
-class CBaseClass { public:
-    virtual void v00();
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CGraphicInfoFrame { public:
     CBaseClass     m_base;                 // +0x00 (vptr)
     long           m_frame;                // +0x04

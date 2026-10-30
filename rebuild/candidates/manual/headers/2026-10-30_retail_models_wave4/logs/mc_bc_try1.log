@@ -1,0 +1,716 @@
+00418b7a	SAME	193b RELOCATION_MATCH->RELOCATION_MATCH
+0041b800	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+00434c00	SAME	144b RELOCATION_MATCH->RELOCATION_MATCH
+00440260	SAME	129b MATCH->MATCH
+00440390	SAME	137b MATCH->MATCH
+00440100	SAME	113b MATCH->MATCH
+00485d30	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+004917b5	SAME	797b RELOCATION_MATCH->RELOCATION_MATCH /Zc:wchar_t
+004b6380	SAME	348b RELOCATION_MATCH->RELOCATION_MATCH
+004b3760	SAME	173b RELOCATION_MATCH->RELOCATION_MATCH
+004b5080	SAME	1151b RELOCATION_MATCH->RELOCATION_MATCH
+004c2e20	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+004c2110	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004c20d0	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004c6fb0	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004cb750	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+004cea60	SAME	332b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+004ca230	SAME	349b RELOCATION_MATCH->RELOCATION_MATCH
+004c0050	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+004c5690	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+004df14b	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+004dc737	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+004de44d	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+004dc991	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+004dc9d2	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+004dd728	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+004e160c	SAME	278b RELOCATION_MATCH->RELOCATION_MATCH
+004fe2a0	RELOC_RENAMED	RELOCATION_MATCH ; 22e:??1CBaseClass@@QAE@XZ->??1CBaseClass@@UAE@XZ
+005079c0	SAME	612b RELOCATION_MATCH->RELOCATION_MATCH
+0052ae10	SAME	33b MATCH->MATCH
+00521ae0	SAME	518b RELOCATION_MATCH->RELOCATION_MATCH
+00520570	SAME	248b RELOCATION_MATCH->RELOCATION_MATCH
+0053fc90	SAME	64b MATCH->MATCH
+005482d0	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00548350	SAME	110b RELOCATION_MATCH->RELOCATION_MATCH
+0054f5c0	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00550a20	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+005508d0	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+00550190	SAME	78b RELOCATION_MATCH->RELOCATION_MATCH
+0056a8c0	SAME	104b MATCH->MATCH
+005814e5	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+005bc1b0	SAME	102b RELOCATION_MATCH->RELOCATION_MATCH /Os//Oy-
+005bb32e	SAME	24b RELOCATION_MATCH->RELOCATION_MATCH
+005bbfd6	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+005d8c90	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+005d8d50	SAME	197b RELOCATION_MATCH->RELOCATION_MATCH
+00642390	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+0064a2db	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH /O1//Oy-
+00658db3	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH /Os
+00658d07	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH /Os
+00658d5d	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH /Os
+0065dce8	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH /Os
+00651a7e	SAME	134b RELOCATION_MATCH->RELOCATION_MATCH
+00652f0a	SAME	154b RELOCATION_MATCH->RELOCATION_MATCH
+00680840	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+00692270	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+00695690	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+00692230	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+006955f0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+006922c0	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+00692120	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+00695400	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'vfunc_3' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'vfunc_3' matches no symbol in new.obj; graded the largest function
+0069e980	SAME	917b RELOCATION_MATCH->RELOCATION_MATCH
+006af570	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+006ac910	SAME	273b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+006ba8b0	SAME	394b RELOCATION_MATCH->RELOCATION_MATCH
+006d8bf0	SAME	172b RELOCATION_MATCH->RELOCATION_MATCH
+006e11f0	SAME	490b RELOCATION_MATCH->RELOCATION_MATCH
+006f96c0	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+006f95a0	SAME	151b RELOCATION_MATCH->RELOCATION_MATCH
+0070c590	SAME	478b RELOCATION_MATCH->RELOCATION_MATCH
+00708a30	SAME	58b RELOCATION_MATCH->RELOCATION_MATCH
+00704a80	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+0071b800	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+0071afe0	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+0071a850	SAME	78b RELOCATION_MATCH->RELOCATION_MATCH
+0072e290	SAME	550b RELOCATION_MATCH->RELOCATION_MATCH
+00727bf0	SAME	42b RELOCATION_MATCH->RELOCATION_MATCH
+0076e620	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00778ae0	SAME	36b RELOCATION_MATCH->RELOCATION_MATCH
+00770e50	SAME	36b RELOCATION_MATCH->RELOCATION_MATCH
+0077b250	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+0077b2e0	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+0077be40	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+0077b9b0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+0077bc80	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+0079d110	SAME	444b RELOCATION_MATCH->RELOCATION_MATCH
+007a6650	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+007a6ab0	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+007a69f0	SAME	183b RELOCATION_MATCH->RELOCATION_MATCH
+007ce390	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+007ce3c0	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+007ce3f0	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+007ca830	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+007c2480	SAME	284b RELOCATION_MATCH->RELOCATION_MATCH
+007e7490	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+007e1590	SAME	42b RELOCATION_MATCH->RELOCATION_MATCH
+007e71d0	SAME	162b RELOCATION_MATCH->RELOCATION_MATCH
+0082d0d0	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00830150	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+008385b0	SAME	303b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00891ca0	SAME	173b RELOCATION_MATCH->RELOCATION_MATCH
+008cff60	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+008d0250	SAME	107b RELOCATION_MATCH->RELOCATION_MATCH
+008de700	SAME	160b RELOCATION_MATCH->RELOCATION_MATCH
+008d9ca0	SAME	394b RELOCATION_MATCH->RELOCATION_MATCH
+008fca40	SAME	193b RELOCATION_MATCH->RELOCATION_MATCH
+008f7bd0	DIFFER	381v390 grades=False sym=?CreateFootEffectForCreature@NFoot008f7bd0@@YIXPAUCThingCreatureBase@1@JHHABUC3DVector@1@PAUCThingVector@1@@Z
+0090df60	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH /Ob2//GS-//GR-//EHsc
+0090dfb0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH /Ob2//GS-//GR-//EHsc
+009051f0	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH
+00905290	SAME	129b RELOCATION_MATCH->RELOCATION_MATCH
+00905360	SAME	190b RELOCATION_MATCH->RELOCATION_MATCH
+009126c0	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00917380	SAME	321b RELOCATION_MATCH->RELOCATION_MATCH
+00929650	SAME	452b RELOCATION_MATCH->RELOCATION_MATCH
+00939180	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+00953630	SAME	132b RELOCATION_MATCH->RELOCATION_MATCH
+00987d50	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in old.obj; graded the largest function
+0098dd90	RELOC_RENAMED	leafsym ??1CShaderStats@?A0x3ec472c9@@UAE@XZ -> ??1CShaderStats@?A0xe2b447b1@@UAE@XZ
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in new.obj; graded the largest function
+0099a470	DIFFER	24v31 grades=False sym=?MakeOne@@YAPAXXZ
+0099a430	DIFFER	56v56 grades=False sym=??1CBaseObject@@MAE@XZ
+0099a4d0	DIFFER	77v76 grades=False sym=??_GCBaseObject@@MAEPAXI@Z
+0099f2e0	SAME	164b RELOCATION_MATCH->RELOCATION_MATCH
+00993b10	SAME	11b RELOCATION_MATCH->RELOCATION_MATCH
+0099a310	DIFFER	28v19 grades=False sym=??0CInitBaseClass@@QAE@XZ
+0099a490	DIFFER	54v55 grades=False sym=??_GCInitBaseClass@@UAEPAXI@Z
+009a7ac0	SAME	172b RELOCATION_MATCH->RELOCATION_MATCH
+009a7b70	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+009bf5a0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+009ea2b0	SAME	41b RELOCATION_MATCH->RELOCATION_MATCH
+009ea2e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\009ea2e0\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+009eea10	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+009ec430	SAME	432b RELOCATION_MATCH->RELOCATION_MATCH
+009eaf80	SAME	107b RELOCATION_MATCH->RELOCATION_MATCH
+009ecd80	SAME	418b RELOCATION_MATCH->RELOCATION_MATCH
+009eb0d0	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+009ea9e0	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+009ea980	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+009ea5a0	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+009ea660	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+009eb430	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+009ec710	SAME	373b RELOCATION_MATCH->RELOCATION_MATCH
+009eb260	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+009eb2c0	SAME	368b RELOCATION_MATCH->RELOCATION_MATCH
+009eab80	SAME	82b RELOCATION_MATCH->RELOCATION_MATCH
+009e2d00	SAME	296b RELOCATION_MATCH->RELOCATION_MATCH
+009e45b0	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+009f83d0	SAME	693b RELOCATION_MATCH->RELOCATION_MATCH
+009fd9b0	SAME	462b RELOCATION_MATCH->RELOCATION_MATCH
+009f5c80	SAME	226b RELOCATION_MATCH->RELOCATION_MATCH
+009f5390	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+009f9cd0	SAME	43b RELOCATION_MATCH->RELOCATION_MATCH
+009fa450	SAME	138b RELOCATION_MATCH->RELOCATION_MATCH
+00a01480	SAME	68b MATCH->MATCH
+00a01430	SAME	68b MATCH->MATCH
+00a013e0	SAME	68b MATCH->MATCH
+00a009a0	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00a0d6b0	SAME	197b MATCH->MATCH
+00a09f20	SAME	485b RELOCATION_MATCH->RELOCATION_MATCH
+00a00b20	DIFFER	104v105 grades=False sym=?__copy@std@@YIPAVCGraphicInfoFrame@@PAV2@00ABUrandom_access_iterator_tag@1@PAH@Z
+00a00840	DIFFER	115v116 grades=False sym=?__copy_backward@std@@YIPAVCGraphicInfoFrame@@PAV2@00ABUrandom_access_iterator_tag@1@PAH@Z
+00a00a90	DIFFER	90v91 grades=False sym=?fill@std@@YIXPAVCGraphicInfoFrame@@0ABV2@@Z
+00a00750	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00a004d0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+00a016f0	DIFFER	148v149 grades=False sym=?resize@?$vector@VCGraphicInfoFrame@@V?$allocator@VCGraphicInfoFrame@@@std@@@std@@QAEXI@Z
+00a127d0	SAME	41b RELOCATION_MATCH->RELOCATION_MATCH
+00a12cc0	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00a12840	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00a128a0	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00a12c90	SAME	42b RELOCATION_MATCH->RELOCATION_MATCH
+00a10dc0	SAME	76b RELOCATION_MATCH->RELOCATION_MATCH
+00a36e70	SAME	72b RELOCATION_MATCH->RELOCATION_MATCH
+00a3ae70	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00a3aea0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00a33720	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00a32af0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00a4e250	SAME	171b RELOCATION_MATCH->RELOCATION_MATCH
+00a48b50	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+00a50bf0	SAME	48b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00a5d800	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+00a5eb70	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+00a695c0	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+00a685e0	SAME	167b RELOCATION_MATCH->RELOCATION_MATCH
+00a677d0	SAME	138b MATCH->MATCH
+00a67530	SAME	141b MATCH->MATCH
+00a6f960	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00a70e80	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00a91180	SAME	519b RELOCATION_MATCH->RELOCATION_MATCH
+00a986d0	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+00a98640	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+00a90fc0	SAME	278b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00a91390	SAME	278b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00aab980	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+00aacf40	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+00aab810	SAME	41b RELOCATION_MATCH->RELOCATION_MATCH
+00aac580	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00aad020	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+00abbd70	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH /GS
+00abf7b0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00abf840	SAME	521b RELOCATION_MATCH->RELOCATION_MATCH
+00abf6b0	SAME	250b RELOCATION_MATCH->RELOCATION_MATCH
+00ab3b10	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+00ab3810	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00ab37b0	SAME	58b RELOCATION_MATCH->RELOCATION_MATCH
+00ab4540	SAME	242b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00aca0c0	SAME	491b RELOCATION_MATCH->RELOCATION_MATCH
+00add130	SAME	36b MATCH->MATCH
+00add240	SAME	237b RELOCATION_MATCH->RELOCATION_MATCH
+00aeabe0	SAME	166b RELOCATION_MATCH->RELOCATION_MATCH
+00aeb6d0	SAME	192b RELOCATION_MATCH->RELOCATION_MATCH
+00af6550	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+00af10e0	SAME	178b RELOCATION_MATCH->RELOCATION_MATCH
+00af7b60	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+00af67b0	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in old.obj; graded the largest function
+00af7a10	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in new.obj; graded the largest function
+00af69d0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00b0f310	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+00b1ffc0	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00b1a640	SAME	192b RELOCATION_MATCH->RELOCATION_MATCH
+00b1aeb0	SAME	121b RELOCATION_MATCH->RELOCATION_MATCH
+00b19c20	SAME	58b MATCH->MATCH
+00b3acf0	SAME	203b RELOCATION_MATCH->RELOCATION_MATCH
+00b32e90	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00b3eb90	SAME	55b RELOCATION_MATCH->RELOCATION_MATCH
+00b898d0	SAME	336b RELOCATION_MATCH->RELOCATION_MATCH
+00b9e8c0	SAME	138b RELOCATION_MATCH->RELOCATION_MATCH
+00b9ab30	SAME	253b RELOCATION_MATCH->RELOCATION_MATCH
+00b935c0	SAME	153b RELOCATION_MATCH->RELOCATION_MATCH
+00b93660	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00baba70	SAME	224b RELOCATION_MATCH->RELOCATION_MATCH
+00bae160	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00bae160\new.cpp(63) : error C2437: 'CBaseClass' : already initialized | 
+00ba9fd0	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00ba9300	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00bbcf70	SAME	476b RELOCATION_MATCH->RELOCATION_MATCH
+00bbdcb0	SAME	132b RELOCATION_MATCH->RELOCATION_MATCH
+00bd94e0	SAME	253b RELOCATION_MATCH->RELOCATION_MATCH
+00bd9710	SAME	264b RELOCATION_MATCH->RELOCATION_MATCH
+00bd9830	SAME	226b RELOCATION_MATCH->RELOCATION_MATCH
+00bd9250	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00bd92e0	SAME	220b RELOCATION_MATCH->RELOCATION_MATCH
+00bd9940	SAME	237b RELOCATION_MATCH->RELOCATION_MATCH
+00bdb260	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+00bdb400	SAME	370b RELOCATION_MATCH->RELOCATION_MATCH
+00bdaff0	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00bdb080	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+00bdfd80	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+00bdaf80	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?AllocArrayOfObjects@' matches no symbol in old.obj; graded the largest function
+00bed440	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?AllocArrayOfObjects@' matches no symbol in new.obj; graded the largest function
+00bfbc80	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00bfbbc0	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+00cb7da0	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00cb7cb0	SAME	171b RELOCATION_MATCH->RELOCATION_MATCH
+00cb8690	SAME	396b RELOCATION_MATCH->RELOCATION_MATCH
+00cb8440	SAME	582b RELOCATION_MATCH->RELOCATION_MATCH
+00cdb360	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+00cdfeb0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00cdf080	SAME	157b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00ce11b0' matches no symbol in old.obj; graded the largest function
+00cdeed0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cdeed0\new.cpp(35) : error C2437: 'CBaseClass' : already initialized | 
+00ce11b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ce11b0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00cfd6c0	DIFFER	1499v1499 grades=False sym=?Main@CATO_MagicBarrier@@QAEXXZ
+00cffb60	SAME	1252b RELOCATION_MATCH->RELOCATION_MATCH
+00cf8a70	SAME	1679b RELOCATION_MATCH->RELOCATION_MATCH
+00cf0560	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cf0560\new.cpp(38) : error C2437: 'CBaseClass' : already initialized | 
+00cfab10	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cfab10\new.cpp(37) : error C2437: 'CBaseClass' : already initialized | 
+00cfc950	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cfc950\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00cfadd0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cfadd0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00cf67f0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00cfdf50' matches no symbol in old.obj; graded the largest function
+00cf67f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cf67f0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00cfdf50	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00cfdf50\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d04a60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d04a60\new.cpp(27) : error C2437: 'CBaseClass' : already initialized | 
+00d059e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d059e0\new.cpp(27) : error C2437: 'CBaseClass' : already initialized | 
+00d060b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d060b0\new.cpp(27) : error C2437: 'CBaseClass' : already initialized | 
+00d0c390	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d0c390\new.cpp(35) : error C2437: 'CBaseClass' : already initialized | 
+00d0a7b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d0a7b0\new.cpp(35) : error C2437: 'CBaseClass' : already initialized | 
+00d08720	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d08720\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00d08f00	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d08f00\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d08fb0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d08fb0\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00d07dd0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d07dd0\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00d072c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d072c0\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00d07410	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d07410\new.cpp(27) : error C2437: 'CBaseClass' : already initialized | 
+00d02b20	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d02b20\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00d01590	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d01590\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d03270' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d0ed60' matches no symbol in old.obj; graded the largest function
+00d03270	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d03270\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d0ed60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d0ed60\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d154a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d154a0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d16920	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00d16d00	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00d1f5c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d1f5c0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d1fce0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d1fce0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d1e310	DIFFER	197v196 grades=False sym=?Init@CGuardHoldingBandit@@QAEXXZ
+00d1e1b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d1e1b0\new.cpp(35) : error C2437: 'CBaseClass' : already initialized | 
+00d1e140	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d1e140\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d1dea0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d1dea0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d17290' matches no symbol in old.obj; graded the largest function
+00d17290	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d17290\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d2f6b0	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00d243e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d243e0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d242c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d242c0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d2a8a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d2a8a0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d29320	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d29320\new.cpp(35) : error C2437: 'CBaseClass' : already initialized | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d29320\new.cpp(104) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data | 
+00d29020	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d29020\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d29160	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d29160\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d29620	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d29620\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d245c0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d20710' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d26110' matches no symbol in old.obj; graded the largest function
+00d20710	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d20710\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d245c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d245c0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d26110	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d26110\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d29790' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d2d680' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d2ffb0' matches no symbol in old.obj; graded the largest function
+00d29790	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d29790\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d2d680	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d2d680\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d2ffb0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d2ffb0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d36860	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d36860\new.cpp(27) : error C2437: 'CBaseClass' : already initialized | 
+00d37530	SAME	1783b RELOCATION_MATCH->RELOCATION_MATCH
+00d36620	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00d38ca0' matches no symbol in old.obj; graded the largest function
+00d374a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d374a0\new.cpp(50) : error C2437: 'CBaseClass' : already initialized | 
+00d36730	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+00d38ca0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d38ca0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d445d0' matches no symbol in old.obj; graded the largest function
+00d43120	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d43120\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d445d0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d445d0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d50c60	DIFFER	1875v1882 grades=False sym=?Main@CTheRealGuildmaster@CQ_GuildTrainingDepartureScript@NScript@@QAEXXZ
+00d56750	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d56750\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00d5aa80	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d5aa80\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d50bc0' matches no symbol in old.obj; graded the largest function
+00d5dc80	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d5dc80\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d52420' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d58410' matches no symbol in old.obj; graded the largest function
+00d50bc0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d50bc0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d52420	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d52420\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d58410	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d58410\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d5add0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d5dfd0' matches no symbol in old.obj; graded the largest function
+00d5add0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d5add0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d5dfd0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d5dfd0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d64080	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d66f50	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d6ae30	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d6ae30\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d6a080	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d6a080\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d6a480	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d6a480\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00d6a4f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d6a4f0\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00d69ee0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d69ee0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d64320' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d671f0' matches no symbol in old.obj; graded the largest function
+00d6ccc0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d6ccc0\new.cpp(52) : error C2437: 'CBaseClass' : already initialized | 
+00d64320	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d64320\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d671f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d671f0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d73c70	SAME	707b RELOCATION_MATCH->RELOCATION_MATCH
+00d72160	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00d701c0	SAME	850b RELOCATION_MATCH->RELOCATION_MATCH
+00d73280	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d73280\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d705d0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d705d0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d70650	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d70650\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00d71a30	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d71a30\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d71a70	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d71a70\new.cpp(35) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d72af0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d7c3f0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d7a9b0' matches no symbol in old.obj; graded the largest function
+00d72af0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d72af0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d7fbc0' matches no symbol in old.obj; graded the largest function
+00d7a9b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d7a9b0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d7c3f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d7c3f0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d7fbc0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d7fbc0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d81c50	SAME	1464b RELOCATION_MATCH->RELOCATION_MATCH
+00d83fa0	SAME	1230b RELOCATION_MATCH->RELOCATION_MATCH
+00d83f10	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d83f10\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+00d8a8a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8a8a0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d8a700	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8a700\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d8a770	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8a770\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d8a560	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8a560\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00d8fd90	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8fd90\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00d8fef0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8fef0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d82320' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d845b0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d87250' matches no symbol in old.obj; graded the largest function
+00d82320	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d82320\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d845b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d845b0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d87250	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d87250\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d89690' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d8aa70' matches no symbol in old.obj; graded the largest function
+00d89690	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d89690\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d8aa70	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d8aa70\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d9e930	SAME	143b RELOCATION_MATCH->RELOCATION_MATCH
+00d9e9e0	SAME	157b RELOCATION_MATCH->RELOCATION_MATCH
+00d9c2b0	SAME	269b RELOCATION_MATCH->RELOCATION_MATCH
+00d90f40	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d90f40\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d90fa0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d90fa0\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00d900e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d900e0\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d916c0' matches no symbol in old.obj; graded the largest function
+00d90050	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d90050\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00d9da40' matches no symbol in old.obj; graded the largest function
+00d9c610	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d9c610\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00d916c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d916c0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00d9da40	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d9da40\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00da6240	SAME	224b RELOCATION_MATCH->RELOCATION_MATCH
+00da6740	SAME	201b RELOCATION_MATCH->RELOCATION_MATCH
+00daed30	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00daed30\new.cpp(22) : error C2437: 'CBaseClass' : already initialized | 
+00dac390	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dac390\new.cpp(22) : error C2437: 'CBaseClass' : already initialized | 
+00daeeb0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00daeeb0\new.cpp(23) : error C2437: 'CBaseClass' : already initialized | 
+00da0160	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00da0160\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00da4740	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00da4740\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00da4540	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00da4540\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00da4590	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00da4590\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00da8430' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00da00e0' matches no symbol in old.obj; graded the largest function
+00da00e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00da00e0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00da8430	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00da8430\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00db0950	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00db0950\new.cpp(22) : error C2437: 'CBaseClass' : already initialized | 
+00db1e80	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00db1e80\new.cpp(22) : error C2437: 'CBaseClass' : already initialized | 
+00db3f00	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00db3f00\new.cpp(22) : error C2437: 'CBaseClass' : already initialized | 
+00dbfea0	SAME	210b RELOCATION_MATCH->RELOCATION_MATCH
+00db8290	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00db8290\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00dbeb20	RELOC_RENAMED	RELOCATION_MATCH ; 86:??1CBaseClass@@QAE@XZ->??1CBaseClass@@UAE@XZ ; 116:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ ; 159:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ ; 3d2:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ ; 43c:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ
+00dbf1e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dbf1e0\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00db8630' matches no symbol in old.obj; graded the largest function
+00db8630	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00db8630\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00dcd160	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00dcd1d0	SAME	370b RELOCATION_MATCH->RELOCATION_MATCH
+00dc4b70	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dc4b70\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00dc3df0	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dcfa10	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dcfa10\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00dc0280' matches no symbol in old.obj; graded the largest function
+00dcded0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dcded0\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00dcf000	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dcf000\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00dc0280	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dc0280\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00dc8810' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dcf8a0' matches no symbol in old.obj; graded the largest function
+00dc8810	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dc8810\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00dcf8a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dcf8a0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00dd8fd0	SAME	207b RELOCATION_MATCH->RELOCATION_MATCH
+00dd8850	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dd8850\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00dd6950	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dd6950\new.cpp(34) : error C2437: 'CBaseClass' : already initialized | 
+00dd4a50	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dd4a50\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00dd9410' matches no symbol in old.obj; graded the largest function
+00ddc490	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ddc490\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00ddad60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ddad60\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+00dd9410	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dd9410\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ddc8e0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ddeff0' matches no symbol in old.obj; graded the largest function
+00ddc8e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ddc8e0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ddeff0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ddeff0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00def3b0	RELOC_RENAMED	RELOCATION_MATCH ; 13a:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ ; 1d0:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ ; 25c:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ
+00de19f0	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+00def6a0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+00de1db0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00de1db0\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00de1c50	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00de1c50\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00de1b60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00de1b60\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00de25d0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00de25d0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00dec6c0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00de4590' matches no symbol in old.obj; graded the largest function
+00dee250	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dee250\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00de4590	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00de4590\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00dec6c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dec6c0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00def330' matches no symbol in old.obj; graded the largest function
+00def330	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00def330\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00df2310	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df2310\new.cpp(61) : error C2437: 'CBaseClass' : already initialized | 
+00df22a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df22a0\new.cpp(31) : error C2437: 'CBaseClass' : already initialized | 
+00df2a40	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df2a40\new.cpp(61) : error C2437: 'CBaseClass' : already initialized | 
+00df4130	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df4130\new.cpp(30) : error C2437: 'CBaseClass' : already initialized | 
+00dfc050	SAME	134b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00df3660' matches no symbol in old.obj; graded the largest function
+00dfb1b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dfb1b0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00dfc920	SAME	354b RELOCATION_MATCH->RELOCATION_MATCH
+00df3660	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df3660\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00df4b60' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00df9b00' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dfc210' matches no symbol in old.obj; graded the largest function
+00df4b60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df4b60\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00df9b00	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df9b00\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00dfc210	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dfc210\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e01670	SAME	107b RELOCATION_MATCH->RELOCATION_MATCH
+00e0d850	SAME	545b RELOCATION_MATCH->RELOCATION_MATCH
+00e04b50	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e04b50\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00e04ae0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e04ae0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e05280' matches no symbol in old.obj; graded the largest function
+00e0dbb0	SAME	669b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e0e6b0' matches no symbol in old.obj; graded the largest function
+00e05280	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e05280\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e0e6b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e0e6b0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e1a800	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e12280' matches no symbol in old.obj; graded the largest function
+00e10a90	SAME	102b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e18330' matches no symbol in old.obj; graded the largest function
+00e12280	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e12280\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e194e0' matches no symbol in old.obj; graded the largest function
+00e18330	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e18330\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e1c070' matches no symbol in old.obj; graded the largest function
+00e194e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e194e0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e1f730' matches no symbol in old.obj; graded the largest function
+00e1c070	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e1c070\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e1f730	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e1f730\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e2bfa0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e2bfa0\new.cpp(37) : error C2437: 'CBaseClass' : already initialized | 
+00e2bd80	SAME	313b RELOCATION_MATCH->RELOCATION_MATCH
+00e2a0f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e2a0f0\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00e26bd0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e26bd0\new.cpp(33) : error C2437: 'CBaseClass' : already initialized | 
+00e25d20	SAME	12b MATCH->MATCH
+  WARN leaf 'SuspendableProcess_00e25ea0' matches no symbol in old.obj; graded the largest function
+00e25d30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e26d60' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e27dc0' matches no symbol in old.obj; graded the largest function
+00e25ea0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e25ea0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e26d60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e26d60\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e27dc0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e27dc0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e29220' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e2a280' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e2ea10' matches no symbol in old.obj; graded the largest function
+00e29220	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e29220\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e2a280	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e2a280\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e2ea10	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e2ea10\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e33b00	SAME	190b RELOCATION_MATCH->RELOCATION_MATCH
+00e38d80	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b1a0	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b230	SAME	18b MATCH->MATCH
+00e3af30	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e3af30\new.cpp(27) : error C2437: 'CBaseClass' : already initialized | 
+00e3b060	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e3b060\new.cpp(25) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e37450' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e38ce0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e3b850' matches no symbol in old.obj; graded the largest function
+00e37450	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e37450\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e38ce0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e38ce0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e3b850	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e3b850\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e48eb0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e48eb0\new.cpp(60) : error C2437: 'CBaseClass' : already initialized | 
+00e4a940	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00e49900	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e47720' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e4b2e0' matches no symbol in old.obj; graded the largest function
+00e47720	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e47720\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e4b2e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e4b2e0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e5f2b0	SAME	783b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f6b0	SAME	335b RELOCATION_MATCH->RELOCATION_MATCH
+00e50890	SAME	53b MATCH->MATCH
+00e53f60	SAME	249b RELOCATION_MATCH->RELOCATION_MATCH
+00e5dde0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+00e5de80	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e5de80\new.cpp(46) : error C2437: 'CBaseClass' : already initialized | 
+00e5fb80	SAME	232b RELOCATION_MATCH->RELOCATION_MATCH
+00e54630	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e541b0' matches no symbol in old.obj; graded the largest function
+00e566f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e566f0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e547e0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e5d030' matches no symbol in old.obj; graded the largest function
+00e541b0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e541b0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e547e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e547e0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e5f110' matches no symbol in old.obj; graded the largest function
+00e5d030	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e5d030\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e5f110	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e5f110\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e64130' matches no symbol in old.obj; graded the largest function
+00e6aac0	SAME	594b RELOCATION_MATCH->RELOCATION_MATCH
+00e63560	SAME	15b MATCH->MATCH
+00e68dc0	SAME	153b RELOCATION_MATCH->RELOCATION_MATCH
+00e64130	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e64130\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e6b350' matches no symbol in old.obj; graded the largest function
+00e6b350	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e6b350\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e76540	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e7e640	SAME	1604b RELOCATION_MATCH->RELOCATION_MATCH
+00e7ef70	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+00e7b970	SAME	198b RELOCATION_MATCH->RELOCATION_MATCH
+00e766a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e766a0\new.cpp(26) : error C2437: 'CBaseClass' : already initialized | 
+00e76410	SAME	49b MATCH->MATCH
+  WARN leaf 'SuspendableProcess_00e74cd0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e775f0' matches no symbol in old.obj; graded the largest function
+00e7bca0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+00e74cd0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e74cd0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e7c7c0' matches no symbol in old.obj; graded the largest function
+00e775f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e775f0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e7ee70' matches no symbol in old.obj; graded the largest function
+00e7c7c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e7c7c0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e7ee70	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e7ee70\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e81d10	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e81d10\new.cpp(28) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e83cd0' matches no symbol in old.obj; graded the largest function
+00e83920	SAME	89b RELOCATION_MATCH->RELOCATION_MATCH
+00e836f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e836f0\new.cpp(32) : error C2437: 'CBaseClass' : already initialized | 
+00e83cd0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e83cd0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e8d1f0' matches no symbol in old.obj; graded the largest function
+00e8d1f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e8d1f0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e9dac0	SAME	441b RELOCATION_MATCH->RELOCATION_MATCH
+00e909a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e909a0\new.cpp(25) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e90b40' matches no symbol in old.obj; graded the largest function
+00e95dc0	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00e9a5c0	SAME	943b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00e93b70' matches no symbol in old.obj; graded the largest function
+00e90b40	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e90b40\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e96090' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e98570' matches no symbol in old.obj; graded the largest function
+00e93b70	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e93b70\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e96090	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e96090\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00e9a1f0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e9e040' matches no symbol in old.obj; graded the largest function
+00e98570	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e98570\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e9a1f0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e9a1f0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00e9e040	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e9e040\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00eaed90	SAME	97b RELOCATION_MATCH->RELOCATION_MATCH
+00eaee80	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eaee80\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ea0030	SAME	29b MATCH->MATCH
+00ea50e0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00ea35a0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+00ea80f0	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+00eaee10	SAME	112b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00ea1010' matches no symbol in old.obj; graded the largest function
+00eae5a0	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00eae820	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+00ea1010	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ea1010\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ea5890' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ea8000' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ead970' matches no symbol in old.obj; graded the largest function
+00ea5890	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ea5890\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ea8000	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ea8000\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ead970	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ead970\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00eb5500	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eb5500\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00eb53a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eb53a0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00eb9820' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00eb6480' matches no symbol in old.obj; graded the largest function
+00ebfbb0	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+00eb6480	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eb6480\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00eb9820	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eb9820\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ebed00' matches no symbol in old.obj; graded the largest function
+00ebed00	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ebed00\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ec1ef0	SAME	836b RELOCATION_MATCH->RELOCATION_MATCH
+00ec0ba0	SAME	1114b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1c20	SAME	176b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00ec1110' matches no symbol in old.obj; graded the largest function
+00ec8230	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00ec80c0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ec80c0\new.cpp(28) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ec2970' matches no symbol in old.obj; graded the largest function
+00ec1110	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ec1110\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ec16e0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ec48d0' matches no symbol in old.obj; graded the largest function
+00ec16e0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ec16e0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ec2970	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ec2970\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ec48d0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ec48d0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ecd710' matches no symbol in old.obj; graded the largest function
+00ecd710	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ecd710\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00edc720	SAME	601b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4aa0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4b10	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00ed7d50	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+00ed85a0	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00edc390	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH
+00edf3a0	DIFFER	1377v1387 grades=False sym=?Main@CTH_ThunderBoy@CV_TravellingHeroesScript@NScript@@QAEXXZ
+  WARN leaf 'SuspendableProcess_00ed29d0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ed49a0' matches no symbol in old.obj; graded the largest function
+00edfa00	DIFFER	1377v1387 grades=False sym=?Main@CTH_ThunderGirl@CV_TravellingHeroesScript@NScript@@QAEXXZ
+00ed29d0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ed29d0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ed5450' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ed8320' matches no symbol in old.obj; graded the largest function
+00ed49a0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ed49a0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ed5450	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ed5450\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ed8320	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ed8320\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00edcfb0' matches no symbol in old.obj; graded the largest function
+00edcfb0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00edcfb0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ee36a0	SAME	1151b RELOCATION_MATCH->RELOCATION_MATCH
+00ee02c0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6850	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ee6850\new.cpp(72) : error C2437: 'CBaseClass' : already initialized | 
+00ee1500	SAME	1519b RELOCATION_MATCH->RELOCATION_MATCH
+00ee1e40	SAME	1603b RELOCATION_MATCH->RELOCATION_MATCH
+00ee0350	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00ee3b20	SAME	952b RELOCATION_MATCH->RELOCATION_MATCH
+00ee3fc0	SAME	219b RELOCATION_MATCH->RELOCATION_MATCH
+00ee29d0	SAME	164b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'SuspendableProcess_00ee5680' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ee1d20' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ee7650' matches no symbol in old.obj; graded the largest function
+00ee1d20	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ee1d20\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00ee5680	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ee5680\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00eedb50' matches no symbol in old.obj; graded the largest function
+00ee7650	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ee7650\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00eedb50	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eedb50\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00ef5180' matches no symbol in old.obj; graded the largest function
+00ef5200	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ef5200\new.cpp(67) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00efa320' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efae90' matches no symbol in old.obj; graded the largest function
+00ef5180	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ef5180\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00efa320	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efa320\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00efb570' matches no symbol in old.obj; graded the largest function
+00efae90	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efae90\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00efbad0' matches no symbol in old.obj; graded the largest function
+00efb570	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efb570\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00efc090' matches no symbol in old.obj; graded the largest function
+00efbad0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efbad0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00efc090	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efc090\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00efdba0' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efef60' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00eff6d0' matches no symbol in old.obj; graded the largest function
+00efdba0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efdba0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00efef60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00efef60\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00eff6d0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00eff6d0\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00f01260' matches no symbol in old.obj; graded the largest function
+00f04cc0	RELOC_RENAMED	RELOCATION_MATCH ; 3fb:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ ; 404:??1CScriptThing@@QAE@XZ->??1CScriptThing@@UAE@XZ
+  WARN leaf 'SuspendableProcess_00f01e30' matches no symbol in old.obj; graded the largest function
+00f083a0	SAME	481b RELOCATION_MATCH->RELOCATION_MATCH
+00f01260	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f01260\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+  WARN leaf 'SuspendableProcess_00f09c20' matches no symbol in old.obj; graded the largest function
+00f01e30	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f01e30\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00f09c20	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f09c20\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+00f1a990	DIFFER	1888v1888 grades=False sym=?Main@CArenaEnemy@@QAEXXZ
+  WARN leaf 'SuspendableProcess_00f1cc60' matches no symbol in old.obj; graded the largest function
+00f1ec70	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f1ec70\new.cpp(53) : error C2437: 'CBaseClass' : already initialized | 
+00f1cc60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f1cc60\new.cpp(24) : error C2437: 'CBaseClass' : already initialized | 
+01229060	SAME	40b RELOCATION_MATCH->RELOCATION_MATCH
+01229030	SAME	40b RELOCATION_MATCH->RELOCATION_MATCH

@@ -11,10 +11,7 @@
 // 0x01238C8C, then the counted pointer's copy constructor copies the two PImp words and bumps the count under the
 // null test); the implicit form reads the source words relative to `this` ([esi+0Ch]) like retail, a user copy
 // constructor reads them through the reference ([edi+4]). The 10000.0f literal is a pushed immediate.
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                 // CCountedPointer<CScriptThing>: {Data, Info}, the count word at Info+0
     void* Data;                               // +0x00
     long* Info;                               // +0x04
@@ -26,7 +23,6 @@ struct CCountedPointerWords {                 // CCountedPointer<CScriptThing>: 
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes; implicit (compiler-generated) copy constructor
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();

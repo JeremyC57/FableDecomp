@@ -76,11 +76,10 @@ public:
     unsigned char _pad00[0x44];
     long          MaxNumberOfDangerThings;                // +0x44 (Ego_r +0x48, minus 4 for the DangerThings vector)
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void EntitySetMaxNumberOfAttackers(const CScriptThing& thing, long count) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetMaxNumberOfAttackers(const CScriptThing& thing, long count) const
 {
     CThing* t = thing.GetThing();

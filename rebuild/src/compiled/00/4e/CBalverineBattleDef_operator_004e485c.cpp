@@ -15,37 +15,7 @@
 //   `#pragma optimize("s", on)` gives retail's one-register member copies (/O2 rotates eax/ecx/edx, graded).
 #pragma optimize("s", on)
 class CResourceList;
-class CResource {
-public:
-    unsigned long  IVRefCount;                           // +0x04
-    CResourceList* ResourceList;                         // +0x08
-    CResource*     PrevResource;                         // +0x0c
-    CResource*     NextResource;                         // +0x10
-    unsigned long  ResourceSize;                         // +0x14
-    unsigned long  LastUsedFrame;                        // +0x18
-    virtual ~CResource();                                // 0x009FC550
-};
-class CDefPointeeBase : public CResource {
-public:
-    virtual ~CDefPointeeBase() {}
-};
 class CDefinitionManager;
-#pragma pack(push, 1)
-class CDefClassBase : public CDefPointeeBase {
-public:
-    class CSubDefInfo { public:
-        long DefIndex;
-        long OriginalParentDefIndex;
-    };
-    virtual void Copy(const CDefClassBase* other);       // vtable slot 19
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10 (see Callees)
-    CDefinitionManager* PDefManager;                     // +0x1c
-    unsigned long       GlobalIndex;                     // +0x20
-    unsigned char       Setup : 1;                       // +0x24
-    unsigned char       Template : 1;
-    unsigned char       DefaultValsApplied : 1;
-};
-#pragma pack(pop)
 class CDefString {
 public:
     long TablePos;
@@ -66,14 +36,13 @@ public:
     C    Compare;                                        // +0x0c
     bool Dirty;                                          // +0x0d
 };
-#pragma pack(push, 1)
-class CParentDefClassBase : public CDefClassBase {
-public:
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0 (see Callees)
-    CDefString InstantiationName;                        // +0x25
-    CVectorMap<unsigned long, CDefClassBase::CSubDefInfo, CKeyPairCompareLess<unsigned long, CDefClassBase::CSubDefInfo> > SubDefInfoMap;   // +0x29
-};
-#pragma pack(pop)
+// Layout: the def chain is the retail one from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, vtable 0x01230CBC,
+//   0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98, operator= 0x00431ED0);
+//   FABLE_PDCB_TYPED_MEMBERS: InstantiationName / SubDefInfoMap are typed with this row's CDefString / CVectorMap.
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_PDCB_TYPED_MEMBERS
+#include "engine/CParentDefClassBase.h"
 
 class CBalverineBattleDef : public CParentDefClassBase {
 public:

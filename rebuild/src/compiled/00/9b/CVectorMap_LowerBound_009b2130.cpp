@@ -12,14 +12,8 @@
 // Layout (retail CVectorMap 0x10): CArray<pair<K, V> > Data +0 (STLport vector: _M_start, _M_finish, _M_end_of_storage),
 //   the empty comparator +0xC, Dirty +0xD.
 // Model: the landed 0x00447C80 body (J006) with an unsigned key.
-class CDefClassBase {
-public:
-    class CSubDefInfo {                                       // Ego_r.pdb, 8 bytes
-    public:
-        long DefIndex;                                        // +0x0
-        long OriginalParentDefIndex;                          // +0x4
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
 template <class _T1, class _T2> struct pair {
     typedef _T1 first_type;

@@ -9,14 +9,8 @@
 // Shape (family L073): as the landed CVectorMap::Add 0x0086F600, _M_insert_overflow and its helpers are same-TU noinline bodies
 //   (with only a declaration VC7.1 spills the pair temporary and reloads it instead of keeping it in ecx/edx/edi).
 // Layout (retail CVectorMap 0x10): CArray<pair<K, V> > Data +0 (STLport vector), the empty comparator +0xC, Dirty +0xD.
-class CDefClassBase {
-public:
-    class CSubDefInfo {                                    // Ego_r.pdb, 8 bytes
-    public:
-        long DefIndex;                                    // +0x00
-        long OriginalParentDefIndex;                      // +0x04
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (STLport <new>)
 
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E

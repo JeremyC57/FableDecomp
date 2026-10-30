@@ -7,7 +7,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];};
 class CClass:public CBaseObject{unsigned char pass9_unread_class[12];};
 class CThing:public CClass{};

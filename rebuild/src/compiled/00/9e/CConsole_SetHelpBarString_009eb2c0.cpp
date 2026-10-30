@@ -53,10 +53,7 @@ public:
 };
 extern CCharString g_CCharString_013caa48;  // 0x013CAA48 ("(")
 
-class CBaseClass { public:
-    virtual void v00();
-    virtual ~CBaseClass();                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CStringParserCommentList {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
     ~CStringParserCommentList();            // 0x004046B0

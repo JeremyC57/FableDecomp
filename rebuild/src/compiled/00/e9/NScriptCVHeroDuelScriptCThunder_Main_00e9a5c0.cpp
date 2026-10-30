@@ -16,9 +16,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class CBaseClass { public:                                         // vtable 0x01231710
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                          // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     void* PImpData;
     void* PImpInfo;

@@ -22,12 +22,7 @@ class CRightHandedSet { public:
 };
 enum EEngine2DLayer { ENGINE_2D_LAYER_DEFAULT = 0 };
 
-class CBaseClass {                                 // polymorphic root of the interpolators
-public:
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class C3DPositionInterpolator : public CBaseClass { public:      // 0x1c bytes
     C3DVector Start;                               // +0x04
     C3DVector End;                                 // +0x10

@@ -16,11 +16,7 @@
 // precedes the derived vtable (plain initialiser of the derived class); the three zero words follow it; the
 // default CScriptThing at +0x28 is an inline constructor over the out-of-line CBase; the argument is stored last
 // (a body assignment after the member constructors).
-class CBaseClass {
-public:
-    CBaseClass();                               // 0x0099A2D0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 // The two words of a CScriptThing are zeroed AFTER its vtable store: they are a member object (a counted
 // reference: object + count block) with its own inline constructor.
@@ -32,7 +28,6 @@ struct CScriptThingRef {
 
 class CScriptThing : public CBaseClass { public:              // vtable 0x01238C8C, 0x0C bytes
     CScriptThingRef m_ref;                 // +0x04
-    virtual void v00();
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);   // 0x004ABE90
 };

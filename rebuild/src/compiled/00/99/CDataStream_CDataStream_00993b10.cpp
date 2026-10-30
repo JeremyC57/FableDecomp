@@ -8,10 +8,7 @@
 //   from CBaseClassNonCopyable directly and has its own vtable).
 // Shape: an empty out-of-line virtual destructor; VC7.1 stores the class vtable and tail-calls the base destructor
 //   (~CBaseClass is inline: its store is dead and dropped).
-class CBaseClass {
-public:
-    virtual ~CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CBaseClassNonCopyable : public CBaseClass {
 protected:

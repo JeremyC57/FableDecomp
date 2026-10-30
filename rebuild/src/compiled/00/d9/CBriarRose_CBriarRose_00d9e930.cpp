@@ -13,10 +13,7 @@
 // constructor's last argument and a plain initialiser stored before the base vtable; ParentClass is a plain
 // initialiser stored before this class's vtable; the member objects follow (their zero words share ebx); the
 // timer's constructor calls the service; PMasterData is a body assignment stored last.
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                             // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                 // {Data, Info}: a member object so its zero stores follow the owner's vtable store
     void* Data;
     void* Info;
@@ -24,7 +21,6 @@ struct CCountedPointerWords {                 // {Data, Info}: a member object s
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
     CScriptThing() : CBaseClass(), PImp() { }
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };

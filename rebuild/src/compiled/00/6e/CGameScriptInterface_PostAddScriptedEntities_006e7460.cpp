@@ -26,10 +26,10 @@ public:
     void AttachExistingScriptedEntitiesToScript(CScriptBase& script);   // 0x004B26B0
 };
 extern CQuestManager* g_pQuestManager;                   // 0x013B89FC
-class CGameScriptInterface {
-public:
-    virtual void PostAddScriptedEntities() const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 void CGameScriptInterface::PostAddScriptedEntities() const
 {

@@ -18,11 +18,7 @@
 // 8-byte frame slot.
 class CPlayerGui;
 
-class CBaseClass {
-public:                                      // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CIVCountedPointeeBase;
 
@@ -33,7 +29,6 @@ struct CIVCountedPointer {                         // embedded member with an in
 
 class CEnginePrimitiveHandle : public CBaseClass { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4
-    virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }
 };
 

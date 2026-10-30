@@ -16,7 +16,8 @@ class C3DAnimationSequenceData{public:class C3DVectorWord;char*BoneName;float Sa
 };
 class C3DAnimationSequence{public:C3DAnimationSequenceData*Data;short ParentIndex;bool Shared;};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;T*Get()const{return Data;}T*operator->()const{return Data;}};
-class CBaseClass{public:virtual~CBaseClass();};class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer*IntelligentPointer;protected:CBaseObject();virtual~CBaseObject();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer*IntelligentPointer;protected:CBaseObject();virtual~CBaseObject();};
 // Layout: original statistics base and duration are restored; unread statistics and derived receiver state are opaque. Retail secondary-base displacement is44, unlike donor sizeof48.
 class C3DAnimationStats:public CBaseObject{unsigned char unreadType[4];public:float Duration;private:unsigned char unreadState[28];public:virtual~C3DAnimationStats();};class CMovableResource{public:virtual~CMovableResource();};
 class C3DAnimation2:public C3DAnimationStats,public CMovableResource{unsigned char unreadState[16];public:CCountedPointer<C3DAnimationSequence>MovementTrack;virtual CQuaternion GetRotationAtTime(float)const;};

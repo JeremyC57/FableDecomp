@@ -71,10 +71,10 @@ public:
     unsigned char _pad00[0x0C];
     bool Empty;                                    // +0x0C
 };
-class CGameScriptInterface {
-public:
-    virtual void SetBedAvailability(const CScriptThing& thing, bool value);
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::SetBedAvailability(const CScriptThing& thing, bool value)
 {
     if (thing.IsValid()) {

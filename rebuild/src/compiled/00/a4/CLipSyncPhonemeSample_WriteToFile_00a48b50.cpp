@@ -6,7 +6,7 @@
 #define CDataOutputStream CDataOutputStreamFields
 #include "engine/CDataOutputStream.h"
 #undef CDataOutputStream
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
 class CDataStream:public CBaseClassNonCopyable{public:virtual void SetPosition(unsigned long)=0;virtual unsigned long GetPosition()const=0;virtual void Close()=0;};
 class CDataOutputStream:public CDataStream{public:CCharString NewLine;virtual void Write(const void*,long)=0;void WriteULONG(unsigned long);};

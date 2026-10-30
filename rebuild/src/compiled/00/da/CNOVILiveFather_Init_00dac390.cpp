@@ -8,10 +8,7 @@
 class CThing;
 struct SCount { long m_references; };
 
-class CBaseClass { public:
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CCountedPointer_CThing {                  // CCountedPointer<CScriptThing::CImp>: object, count block
     CThing* m_pObject;
@@ -20,9 +17,8 @@ struct CCountedPointer_CThing {                  // CCountedPointer<CScriptThing
 };
 
 class CScriptThing : public CBaseClass { public:               // 12 bytes
-    virtual void v00();
     CCountedPointer_CThing PImp;                 // +4
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 };
 
 struct CGameScriptInterface_Calls {               // the game script interface (slots: ghidra_out/cgsi_slots_aligned.tsv)

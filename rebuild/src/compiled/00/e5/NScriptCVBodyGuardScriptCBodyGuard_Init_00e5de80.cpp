@@ -30,11 +30,7 @@ public:
     C3DVector() { }
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass() { }
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo {
 public:
     unsigned long RefCount;
@@ -47,7 +43,7 @@ public:
 };
 class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
 public:
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     virtual ~CScriptThing();                            // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual C3DVector GetHomePos() const;               // slot 7 (+0x1c)

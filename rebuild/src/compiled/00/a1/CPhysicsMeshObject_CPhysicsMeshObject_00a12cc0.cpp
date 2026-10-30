@@ -38,17 +38,13 @@ template <class T> class CIVCountedPointer { public:
     }
 };
 
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38
     float OO_Scale;                                // +0x3c
-    virtual void v00();
     CPhysicsMeshObject(const CIVCountedPointer<CPhysicsMesh>& mesh, const C3DVector& position, const CRightHandedSet& orientation, float scale);
     void SetPositionMatrix(const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00A114B0
 };

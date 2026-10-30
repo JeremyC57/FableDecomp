@@ -85,10 +85,10 @@ public:
     bool Opened;                                         // +0x1c (descriptive)
     bool IsOpen() const { return Opened; }
 };
-class CGameScriptInterface {
-public:
-    virtual bool IsChestOpen(const CScriptThing& chest) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 bool CGameScriptInterface::IsChestOpen(const CScriptThing& chest) const
 {
     if (chest.IsValid())

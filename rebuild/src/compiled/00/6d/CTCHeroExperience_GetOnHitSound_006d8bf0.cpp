@@ -7,7 +7,7 @@
 #define CDefClassBase CDefClassBaseLayout
 #include "engine/CDefClassBase.h"
 #undef CDefClassBase
-class CBaseClass{public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:virtual ~CBaseClassNonCopyable();};
 // Layout: retail CTCBase prefix12; this function never reads its reference or bool state.
 class CThing;class CTCBase:public CBaseClassNonCopyable{private:unsigned char unobservedComponentState[8];};

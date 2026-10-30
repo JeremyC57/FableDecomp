@@ -15,7 +15,8 @@ template<class T,class Alloc=allocator<T> > class vector { public: T* _M_start; 
 }
 template<class T> class CArray:public std::vector<T> {};
 class CThing; class CCPPointerInfo;
-class CBaseClass { public: virtual ~CBaseClass() {} }; class CBaseClassNonCopyable:public CBaseClass {};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+ class CBaseClassNonCopyable:public CBaseClass {};
 class CTCBase:public CBaseClassNonCopyable { public: CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 namespace NGraphicAppearance { class CPrimitive; class CAGraphicAppearanceComponent { public: virtual ~CAGraphicAppearanceComponent() {} virtual void OnAppearanceClear() {} }; }
 class CTCAppearanceMorphBase:public CTCBase { public: class CMeshMorphSet; };

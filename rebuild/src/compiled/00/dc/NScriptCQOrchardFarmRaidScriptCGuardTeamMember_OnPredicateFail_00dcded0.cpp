@@ -27,12 +27,7 @@ public:
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
     CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThing instance)
 };
-class CBaseClass {                                       // vtable 0x01231710
-public:
-    CBaseClass() { }
-    CBaseClass(const CBaseClass&) { }
-    virtual ~CBaseClass();                                // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass {                 // 12 bytes, vtable 0x01238C8C (slot names: rtti-vtables.tsv / Ego_r.pdb)
 public:
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }

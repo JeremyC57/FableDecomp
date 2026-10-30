@@ -10,12 +10,7 @@
 //   Data CIVCountedPointer<CFrameData> +8 (nulled by the default constructor), GraphicInfo +0xC.
 // Shape: STLport 4.x `resize(__new_size, __x)` inlined: `if (__new_size < size()) erase(begin() + __new_size, end());
 //   else insert(end(), __new_size - size(), __x);` (size() and end() re-read in the insert arm).
-class CBaseClass {                                  // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                   // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 template <class T>
 class CIVCountedPointer {

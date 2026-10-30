@@ -11,10 +11,7 @@
 class CThing;
 struct SCount { long m_references; };
 
-class CBaseClass { public:                            // vtable 0x01231710
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CCPPointerImp {                         // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
     CThing* Data;
@@ -22,7 +19,6 @@ struct CCPPointerImp {                         // CCPPointer<CScriptThingImp>: D
     CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
 };
 class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h: PImp_Data +4, PImp_Info +8)
-    virtual void v00();
     CCPPointerImp PImp;                        // +4
     // the copy constructor is the compiler-generated memberwise one
 };

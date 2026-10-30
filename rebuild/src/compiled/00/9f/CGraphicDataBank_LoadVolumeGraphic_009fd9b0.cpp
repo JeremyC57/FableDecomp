@@ -16,7 +16,7 @@
 #include "engine/CResource.h"
 #undef CResource
 // Layout: quarantine/raw headers are physical comparisons. The original bank and managed-data classes below restore their genuine RTTI bases and typed used members; unread state remains explicit storage.
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
 // Layout: unread original primary-bank fields retained as byte projections; only the bank receiver is used here.
 class CBankFile:public CBaseClassNonCopyable{unsigned char unread[0x10c];public:unsigned long GetEntryDataType(unsigned long)const;};

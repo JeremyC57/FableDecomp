@@ -42,11 +42,7 @@ struct CThingManager_Calls {
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                   // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CCountedPointer_Retail {               // CCountedPointer<CScriptThing>: Data / Info, both null
     void* Data;

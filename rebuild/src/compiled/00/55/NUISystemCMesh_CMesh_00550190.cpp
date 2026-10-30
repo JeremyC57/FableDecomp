@@ -15,11 +15,7 @@ struct CDraggableInto : IViewportPrimary_00550190, IViewportSecondaryA_00550190,
     unsigned char _pad1c[0x164 - 0x1c];
     CDraggableInto(void* def);                     // 0x0052CC50
 };
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct SRecordBody_00550190 { long m_4; SRecordBody_00550190() : m_4(0) { } };
 struct CBatchRecord_0122f598 : CBaseClass {             // vtable 0x0122F598
     virtual void v00();

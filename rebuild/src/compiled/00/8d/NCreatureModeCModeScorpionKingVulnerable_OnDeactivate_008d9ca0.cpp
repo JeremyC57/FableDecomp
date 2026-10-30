@@ -35,7 +35,7 @@
 class CCharStringData;
 class CCharString {protected:CCharStringData*PStringData;public:CCharString(const char*,long=-1);~CCharString();};
 class CBaseObjectPointer;class CTCBase;
-class CBaseClass {public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass {protected:virtual ~CBaseClassNonCopyable();};
 class CBaseObject:public CBaseClass {private:unsigned char unobservedObjectPointer[4];protected:virtual ~CBaseObject();};
 #pragma pack(push,1)

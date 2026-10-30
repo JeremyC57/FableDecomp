@@ -10,18 +10,10 @@
 // Shape: an if/else on the flag with one `if (call()) return true;` per arm and a shared `return false`: the interface
 //   and its vtable are loaded once above the flag branch (common to both arms), the two calls merge into one byte
 //   test and the early returns give `mov al,1` / `xor al,al` (a ternary of the two calls gives `setne al`, 37 v 41).
-class CGameScriptInterface { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
-    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
-    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
-    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
-    virtual bool MsgIsActionModeButtonPressed() const;   // slot 42 (+0xa8)
-    virtual void v043();
-    virtual bool MsgIsCutSceneSkipped() const;           // slot 44 (+0xb0)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 extern bool g_bSkipCutsceneWithActionButton;                  // 0x0143E8F4
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 

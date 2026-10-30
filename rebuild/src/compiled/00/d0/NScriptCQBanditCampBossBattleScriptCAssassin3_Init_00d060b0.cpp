@@ -14,10 +14,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CBaseClass { public:                              // vtable 0x01231710
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
     void* Data;
@@ -25,9 +22,8 @@ struct CCountedPointer {                                // CCountedPointer<CScri
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
 };
 class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01238C8C
-    virtual void v00();
     CCountedPointer PImp;                               // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     virtual ~CScriptThing();                            // 0x004AA840
 };
 class CGameScriptInterface {

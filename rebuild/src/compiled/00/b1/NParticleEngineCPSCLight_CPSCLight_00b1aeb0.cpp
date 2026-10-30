@@ -14,10 +14,7 @@
 // re-reading the pointer, then the out-of-line root destructor), and the root destructor as a tail jump.
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14
 
-class CBaseClass { public:
-    virtual void v00();
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePrimitiveHandle;
 
@@ -55,7 +52,6 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
 class CEnginePrimitiveHandle : public CBaseClass {   // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                  // +0x04
-    virtual void v00();
     __forceinline void Clear()
     {
         if (Data.GetRefCount() == 1)

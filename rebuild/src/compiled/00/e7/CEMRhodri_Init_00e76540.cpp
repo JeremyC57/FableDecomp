@@ -9,10 +9,7 @@
 // among the first call's pushes, the last flag is cleared after the calls (statement order). The by-value CScriptThing is built in the
 // argument area by its IMPLICIT inline copy constructor (CBaseClass vtable 0x01231710, then CScriptThing's 0x01238C8C, then the counted
 // pointer copy with the count bump under a null test) -- the CBriarRose::Init model.
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                 // CCountedPointer<CScriptThing>: {Data, Info}, the count word at Info+0
     void* Data;                               // +0x00
     long* Info;                               // +0x04
@@ -24,7 +21,6 @@ struct CCountedPointerWords {                 // CCountedPointer<CScriptThing>: 
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes; implicit (compiler-generated) copy constructor
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();

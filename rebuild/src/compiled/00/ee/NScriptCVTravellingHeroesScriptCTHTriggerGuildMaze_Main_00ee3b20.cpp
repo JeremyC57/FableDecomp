@@ -25,10 +25,7 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-class CBaseClass { public:                                    // vtable 0x01231710
-    CBaseClass() { }
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template <class T> class CCountedPointer { public:             // {Data, Info}
     T*              Data;
     CCPPointerInfo* Info;

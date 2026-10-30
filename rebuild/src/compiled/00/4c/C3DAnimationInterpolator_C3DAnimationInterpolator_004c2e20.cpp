@@ -3,10 +3,7 @@
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (stores vtable 0x01231710; rtti-vtables.tsv).
 // PDB layout: C3DAnimationInterpolator = {vptr, StartState +4, EndState +0xc} (0x14 bytes);
 // C3DAnimationBlendState = {vptr, CIVCountedPointer<CSharedData> Data +4} (8 bytes).
-class CBaseClass { public:                        // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                          // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CIVCountedPointeeBase;
 

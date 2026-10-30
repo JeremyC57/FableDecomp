@@ -77,11 +77,10 @@ public:
     void SetPersonalityOverride(const CCharString& defName, bool force);   // 0x006820E0
     void SetPersonalityOverride(long defIndex, bool force);                // 0x00681E60
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void EntitySetPersonalityOverride(const CScriptThing& thing, const CCharString& personality) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetPersonalityOverride(const CScriptThing& thing, const CCharString& personality) const
 {
     CThing* t = thing.GetThing();

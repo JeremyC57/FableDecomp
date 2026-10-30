@@ -21,11 +21,7 @@ protected:                                   // root of the scripted actions (vt
     CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-class CBaseClass {
-public:                             // root of CScriptThing (vtable 0x01231710)
-    virtual void v00();
-    CBaseClass();                              // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct SCountBlock;
 
@@ -36,7 +32,6 @@ struct CCountedPointer {
 };
 
 class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h layout)
-    virtual void v00();
     CCountedPointer PImp;                       // +0x04
     CScriptThing() : CBaseClass() { }
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer

@@ -6,16 +6,12 @@
 // Layout (Ego_r.pdb CShaderConstantRange, 12 bytes): vptr +0, Offset +4, Count +8.
 // Shape: base call, both members cleared from one zero register (plain initialisers scheduled before the
 // derived vtable store), then the vtable store.
-class CBaseClass { public:                                         // vtable 0x01231710
-    CBaseClass();                                           // 0x0099A2D0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CShaderConstantRange : public CBaseClass { public:                  // vtable 0x0129A04C
     long          Offset;                                   // +0x04
     unsigned long Count;                                    // +0x08
     CShaderConstantRange();
-    virtual void v00();
 };
 
 CShaderConstantRange::CShaderConstantRange()

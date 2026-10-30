@@ -7,16 +7,12 @@
 // BankIndex +0xc.
 // Shape: Type stored after the handle's `lea` (init-list order with scheduling), the handle's inline
 // constructor = base call + vtable + zeroed pointer, BankIndex last.
-class CBaseClass { public:                                         // vtable 0x01231710
-    CBaseClass();                                           // 0x0099A2D0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePersistentPrimitiveBase;
 class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598, 8 bytes
     CEnginePersistentPrimitiveBase* Data;                   // +0x04 (CIVCountedPointer)
     CEnginePrimitiveHandle() : Data(0) { }
-    virtual void v00();
 };
 
 namespace NGraphicAppearance {

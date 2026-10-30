@@ -17,11 +17,7 @@ protected:                                   // the action root
     CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-class CBaseClass {
-public:                             // CScriptThing's root (the manifest also calls it CBaseClassNonCopyable::CBaseClassNonCopyable)
-    virtual void v00();
-    CBaseClass();                              // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class C3DVector { public:
     float X, Y, Z;
@@ -37,7 +33,6 @@ template <class T> class CCountedPointer { public:      // the counted pointer r
 };
 
 class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes
-    virtual void v00();
     CCountedPointer<CScriptThing> PImp;         // +0x04 (Ego_r.pdb: CCountedPointer<CScriptThing> PImp -- object, count block)
     CScriptThing() : CBaseClass(), PImp() { }
 };

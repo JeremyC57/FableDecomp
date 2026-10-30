@@ -7,11 +7,11 @@ extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
 struct Tag_00ab4540 {Tag_00ab4540(){}};
 // Layout: RTTI vtable0129d578=CVertexStreamFormat, slot0 deleting dtor00a5e670; PDB struct_layouts_egor.tsv35420 ff has vptr+0 and DataElements+4. Retail array12 makes format16 and CStreamInfo20. CDataElement is8 (Register,DataType).
-class CBaseClass{public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template<class T>class CArray{ public:T* start;T* finish;T* end;CArray():start(0),finish(0),end(0){}CArray(const CArray&);~CArray(){if(start)free(start);}};
 class CVertexStreamFormat:public CBaseClass{
  public:class CDataElement{ public:unsigned int Register;int DataType;};CArray<CDataElement> DataElements;
- CVertexStreamFormat(){}__forceinline CVertexStreamFormat(const CVertexStreamFormat&o):DataElements(o.DataElements){}virtual ~CVertexStreamFormat(){}
+ CVertexStreamFormat(){}__forceinline CVertexStreamFormat(const CVertexStreamFormat&o): CBaseClass(o), DataElements(o.DataElements){}virtual ~CVertexStreamFormat(){}
 };
 class CVertexShaderInput{ public:class CStreamInfo{ public:unsigned int StreamIndex;CVertexStreamFormat StreamFormat;CStreamInfo(){}__forceinline CStreamInfo(const CStreamInfo&o):StreamIndex(o.StreamIndex),StreamFormat(o.StreamFormat){}};};
 typedef CVertexShaderInput::CStreamInfo Element_00ab4540;

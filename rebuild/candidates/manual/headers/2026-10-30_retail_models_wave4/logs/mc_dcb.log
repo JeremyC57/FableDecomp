@@ -1,0 +1,20 @@
+00431f90	SAME	397b RELOCATION_MATCH->RELOCATION_MATCH
+0043212b	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+00461d2c	SRC_FAIL	|         'void CDefClassBase::Copy(const CDefClassBase *)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\CDefClassBase.h(64) : see declaration of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' | 
+0046ef33	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+0046eecf	SAME	100b RELOCATION_MATCH->RELOCATION_MATCH
+004e1225	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\004e1225\new.cpp(16) : error C2535: 'void CDecapitationDef::Copy(const CDefClassBase *)' : member function already defined or declared |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\004e1225\new.cpp(14) : see declaration of 'CDecapitationDef::Copy' | 
+004e6f0b	SRC_FAIL	ndefined class 'CVectorMap' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\004e6f0b\new.cpp(50) : error C2955: 'CVectorMap' : use of class template requires template argument list |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\004e6f0b\new.cpp(40) : see declaration of 'CVectorMap' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\004e6f0b\new.cpp(50) : error C2079: 'CParticleMorphs::Morphs' uses undefined class 'CVectorMap' | 
+004e5f51	DIFFER	31v31 grades=False sym=?CReplaceableMeshDef_Copy@@YIXPAVCReplaceableMeshDef@@PAXPBVCDefClassBase@@@Z
+004e02f2	DIFFER	63v63 grades=False sym=??4CSpotLightDef@@QAEAAV0@ABV0@@Z
+00675c00	SRC_FAIL	C2628: 'CVectorMap<K,V,C>' followed by 'long' is illegal (did you forget a ';'?) |         with |         [ |             K=unsigned long, |             V=CDefClassBase::CSubDefInfo, |             C=CKeyPairCompareLess |         ] | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\CDefClassBase.h(69) : error C2059: syntax error : ',' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\CDefClassBase.h(70) : error C2238: unexpected token(s) preceding ';' | 
+009b20d0	SAME	82b MATCH->MATCH
+009b2130	SAME	82b MATCH->MATCH
+009b7930	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+009b5af0	SAME	179b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z' matches no symbol in old.obj; graded the largest function
+009b2550	SAME	53b MATCH->MATCH
+  WARN leaf '??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z' matches no symbol in new.obj; graded the largest function
+009b2780	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+009b60d0	SAME	274b RELOCATION_MATCH->RELOCATION_MATCH
+009b4d80	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH

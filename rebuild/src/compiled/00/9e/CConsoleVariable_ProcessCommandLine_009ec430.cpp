@@ -19,10 +19,7 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
-class CBaseClass { public:
-    virtual void v00();
-    virtual ~CBaseClass();                                    // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CStringParserCommentList {
     void* m_pHead;
     ~CStringParserCommentList();                      // 0x004046B0

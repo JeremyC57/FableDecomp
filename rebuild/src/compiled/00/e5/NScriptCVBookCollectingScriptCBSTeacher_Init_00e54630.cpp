@@ -20,11 +20,7 @@ public:
     float BooksMoralityReward;                          // +0x4f8
 };
 extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass() { }
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo {
 public:
     unsigned long RefCount;

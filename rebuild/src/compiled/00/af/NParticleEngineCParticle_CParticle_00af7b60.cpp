@@ -3,7 +3,7 @@
 // Flags:
 #include <stdlib.h>
 #include "rebuild_abi.h"
-class CBaseClass{public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{CBaseClassNonCopyable(const CBaseClassNonCopyable&);protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 // Layout: handle private counted-pointer storage is unobserved; destruction is external.
 class CEnginePrimitiveHandle:public CBaseClass{unsigned char unreadData[4];public:virtual ~CEnginePrimitiveHandle();};

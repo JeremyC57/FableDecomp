@@ -6,7 +6,7 @@
 #define __forceinline inline
 #endif
 extern "C" void __cdecl free(void*);
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCharStringData;
 class CCharString{public:CCharStringData*PStringData;};
 // Layout: original base4, CurrentEntry4, UserEntry8, CursorPosition12, size16.

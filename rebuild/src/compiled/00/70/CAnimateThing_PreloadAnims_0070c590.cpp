@@ -35,15 +35,9 @@ struct CIVCountedPointer {
         }
     }
 };
-class CBaseClass {                                 // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class C3DAnimationBlendState : public CBaseClass { public:       // vtable 0x01239838
     CIVCountedPointer Animation;
-    virtual void v000();
     C3DAnimationBlendState() { }
 };
 

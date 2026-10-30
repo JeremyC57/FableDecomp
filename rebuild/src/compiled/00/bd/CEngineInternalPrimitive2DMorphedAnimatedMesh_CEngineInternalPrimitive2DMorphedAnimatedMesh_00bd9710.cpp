@@ -10,11 +10,7 @@
 //   chunk 211's CEngineInternalPrimitiveMorphedAnimatedMesh (0x00BD9940) adds its out-of-line MorphInfo member.
 #include <stddef.h>
 extern "C" void* __cdecl malloc(size_t size);          // 0x00BFEA0E
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template <class T> class CIVCountedPointer {
 public:
     T* Object;

@@ -28,10 +28,7 @@ public:
     __forceinline void ReleaseRef() { if (Object) { Object->Release(); Object = 0; } }
     __forceinline CIVCountedPointer& operator=(int) { ReleaseRef(); Object = 0; return *this; }
 };
-class CBaseClass {                                 // vtable 0x01231710
-public:
-    virtual void v000();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598, 8 bytes
 public:
     CIVCountedPointer Data;                        // +0x04

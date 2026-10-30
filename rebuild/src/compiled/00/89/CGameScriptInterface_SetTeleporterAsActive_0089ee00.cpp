@@ -75,11 +75,10 @@ class CTCTeleporter {
 public:
     void SetAsActive(bool active);                         // 0x007DFEB0
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void SetTeleporterAsActive(const CScriptThing& thing, bool active) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::SetTeleporterAsActive(const CScriptThing& thing, bool active) const
 {
     if (thing.IsValid()) {

@@ -43,10 +43,7 @@ struct CScriptThingImpl {                              // the polymorphic implem
     virtual void i071(); virtual void i072(); virtual void i073(); virtual void i074();
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-class CBaseClass { public:                                    // vtable 0x01231710
-    CBaseClass() { }
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template <class T> class CCountedPointer { public:            // {Data, Info}
     T*              Data;
     CCPPointerInfo* Info;

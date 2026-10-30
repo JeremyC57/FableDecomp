@@ -43,11 +43,7 @@ struct CEngineInternalRepeatedStaticMeshNative : CEngineInternalPrimitiveOcclusi
     virtual ~CEngineInternalRepeatedStaticMeshNative();
     CEngineInternalRepeatedStaticMeshNative() : CEngineInternalPrimitiveOcclusionNative(0x2a, 8), BoundingSphere() {}
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();      // 0x0099A2E0
-    CBaseClass();               // 0x0099A2D0
-    CBaseClass(const CBaseClass&) {}
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CPrimitiveCountedPointerNative {
     CEngineInternalPrimitiveNative* Object;
     CPrimitiveCountedPointerNative(CEngineInternalPrimitiveNative* p) : Object(p) {}

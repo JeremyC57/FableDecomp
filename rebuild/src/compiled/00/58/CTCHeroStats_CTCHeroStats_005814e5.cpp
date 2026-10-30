@@ -19,11 +19,7 @@
 //   container destructors; ~CTCBase is a tail jump.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* block);          // 0x00BFEA14
-class CBaseClass { public:                                 // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                   // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase { public:
     virtual void v00();
@@ -51,7 +47,6 @@ template <class T> class CIVCountedPointer { public:       // intrusive counted 
 };
 class CEnginePrimitiveHandle : public CBaseClass { public:        // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
-    virtual void v00();
     CEnginePrimitiveHandle() { }
     __forceinline ~CEnginePrimitiveHandle()
     {

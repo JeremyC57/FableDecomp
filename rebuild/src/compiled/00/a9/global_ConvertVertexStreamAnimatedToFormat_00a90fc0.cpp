@@ -4,7 +4,7 @@
 #include <stdlib.h>
 namespace ExternalRetry_00a90fc0 {
 struct __true_type{__true_type(){}};
-struct CBaseClass {__declspec(noinline) CBaseClass(){}virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // Layout: CArray retains a three-pointer retail vector base; donor allocator bytes do not exist in retail.
 template<class T>struct CArray {T *first,*last,*end;__forceinline CArray():first(0),last(0),end(0){}__forceinline ~CArray();};
 struct _D3DVERTEXELEMENT9 {unsigned short Stream,Offset;unsigned char Type,Method,Usage,UsageIndex;};

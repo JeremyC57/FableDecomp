@@ -15,10 +15,7 @@
 class CCPPointerInfo { public: long References; };
 class C3DVector { public: float X, Y, Z; };
 
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void b00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                 // CCountedPointer<CScriptThing>: {Data, Info}
     void* Data;
     CCPPointerInfo* Info;

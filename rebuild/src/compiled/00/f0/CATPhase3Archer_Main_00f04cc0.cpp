@@ -34,9 +34,7 @@ struct CCountedPointer {
     CScriptThingImp* Data;
     void*            Info;
 };
-class CBaseClass { public:
-    virtual void b0();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90

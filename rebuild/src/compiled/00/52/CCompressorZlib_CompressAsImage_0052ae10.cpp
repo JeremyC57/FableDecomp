@@ -6,10 +6,7 @@
 // Decompress, SetQuality on non-const sources), 5-7 CCompressorZlib's const-source Compress/CompressAsImage/Decompress.
 // engine/CCompressorZlib.h carries data members only (no virtuals), so the polymorphic shell is local.
 class CCompressionInfo;
-class CBaseClass {
-public:
-    virtual ~CBaseClass() {}
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CACompressor : public CBaseClass {
 public:
     virtual void CompressAsImage(void* src, unsigned long src_size, void* dst, unsigned long dst_size, long width, long height, long bpp, CCompressionInfo& info);

@@ -18,14 +18,10 @@ class CEngineInternalPrimitiveBase { public:              // engine/CEngineInter
     CEngineInternalPrimitiveBase(long type, unsigned long flags);   // 0x00B8FF00
 };
 
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class C3DOrientationInterpolator : public CBaseClass { public:   // vtable 0x01239824
     unsigned char _body[0x30];
-    virtual void v00();
     __forceinline C3DOrientationInterpolator() { }
 };
 

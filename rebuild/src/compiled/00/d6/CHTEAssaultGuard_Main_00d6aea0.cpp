@@ -12,10 +12,7 @@
 // Shape: the attack loop's head test is the inline impl check `Data && Data->IsAlive()`; the inner wait calls the
 //   CScriptThing virtual; the reassignment goes through the inline CScriptThing copy-assign (PImp only).
 class CCharString;
-class CBaseClass { public:                                     // vtable 0x01231710
- virtual void v00();
- CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
  void* Data;
@@ -24,7 +21,6 @@ struct CCountedPointer {                                // CCountedPointer<CScri
  CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
 };
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v00();
  virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
  virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54) 0x004AAB30
  virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66();

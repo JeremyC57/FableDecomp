@@ -8,11 +8,7 @@
 // type disagrees by one dword, so the vector is modelled locally. The vtable store precedes the
 // vector's register-zeroed stores (an embedded member with an inline constructor), and the two
 // arguments are assigned in the body (init-list members would sink the vtable store below them).
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CRetailByteVector {                  // VC6-era vector<unsigned char>: three raw pointers
     unsigned char* first;
@@ -26,7 +22,6 @@ class CACompressor : public CBaseClass { public:               // vtable 0x0129B
     unsigned long     WorkspaceSize;        // +0x08
     bool              CompressionOn;        // +0x0c (not initialised here)
     CRetailByteVector OwnWorkspace;         // +0x10
-    virtual void v00();
     CACompressor(void* workspace, unsigned long workspaceSize);
 };
 

@@ -13,11 +13,7 @@
 //   their own), the root's inline virtual dtor stores its vtable at the end; each handle is the landed
 //   NParticleEngine::CParticleEmitter (0x00AF10E0) model: `__forceinline` dtor, `if (Data.GetRefCount() == 1)
 //   Data->OnLastHandleReleased(this); Data = 0;` over a CIVCountedPointer member whose own dtor releases again.
-class CBaseClass { public:                                    // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                      // 0x0099A2D0
-    virtual ~CBaseClass();                                     // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase { public:
@@ -48,7 +44,6 @@ template <class T> class CIVCountedPointer { public:          // intrusive count
 
 class CEnginePrimitiveHandle : public CBaseClass { public:           // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
-    virtual void v00();
     CEnginePrimitiveHandle() { }
     __forceinline ~CEnginePrimitiveHandle()
     {

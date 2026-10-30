@@ -14,11 +14,7 @@ public:
     long TH_ThunderConv_Length;                         // +0x928 (Ego_r +0x9ac; the landed DoConversation reads the vectors after it at +0x92c)
 };
 extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`)
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass() { }
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo {
 public:
     unsigned long RefCount;
@@ -39,11 +35,10 @@ public:
     long _base;                                         // +0x04 (unnamed in the PDB layout)
     CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
 };
-class CGameScriptInterface {                     // the script interface vtable (slot names: ghidra_out/cgsi_slots_aligned.tsv)
-public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;                                            // slot 7 (+0x1c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CPersistContext;
 class CScriptBase {                                     // retail 0x40 bytes (Ego_r 0x54: debug containers)
 public:

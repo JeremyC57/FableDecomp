@@ -45,7 +45,8 @@ protected: NOINLINE void _M_insert_overflow(pointer position,const T& value,cons
 public: void InvokeGrow(pointer p,const T& v,size_type n,bool atEnd) { _M_insert_overflow(p,v,__false_type(),n,atEnd); }
 }; }
 class CThing { public: virtual ~CThing() {} unsigned char _unmodeled04[0x60]; NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; };
-class CBaseClass { public: virtual ~CBaseClass() {} }; class CBaseClassNonCopyable:public CBaseClass {};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+ class CBaseClassNonCopyable:public CBaseClass {};
 class CTCBase:public CBaseClassNonCopyable { public: CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 namespace NGraphicAppearance { class CAGraphicAppearanceComponent { public: virtual ~CAGraphicAppearanceComponent() {} virtual void OnAppearanceClear() {} virtual void GetMeshesUsed(std::vector<CMeshInfo>&) const {} }; }
 namespace NGraphicAppearance { class CTCGraphicAppearanceStaticMesh:public CTCBase,public CAGraphicAppearanceComponent { public: virtual void GetMeshesUsed(std::vector<CMeshInfo>&) const; };

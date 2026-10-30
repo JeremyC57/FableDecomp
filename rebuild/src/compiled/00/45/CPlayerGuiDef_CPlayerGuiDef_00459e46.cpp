@@ -6,16 +6,17 @@
 // Label correction: the catalog "~CPatchTesselationEdgeStrip" is propagated over byte-similar def destructors.
 // Callees: free @ 0x00BFEA14 (inline STLport POD-vector destructors), CCharString::~CCharString @ 0x0099EAE0,
 // the out-of-line container destructors listed on each type, CParentDefClassBase::~CParentDefClassBase @ 0x00430300 (tail jump).
-// Layout: Ego_r.pdb CPlayerGuiDef with retail 12-byte STLport vectors/maps (PDB 16) and the retail 0x3c-byte base: every
+// Layout: Ego_r.pdb CPlayerGuiDef with retail 12-byte STLport vectors/maps (PDB 16) and the retail 0x39-byte packed base: every
 // later member drifts by 4 per container; offsets below are the retail ones the body touches.
-// Shape: empty user destructor (no vtable store: the model is non-polymorphic, as the landed 0x0045784B sibling),
+// Shape: empty user destructor (no vtable store of its own: `__declspec(novtable)` on the derived def, as 0x0047747C),
 // `__forceinline` POD-vector destructors.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
-    unsigned char m_baseData[0x3c];
-    ~CParentDefClassBase();                        // 0x00430300
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CRGBColour { public: unsigned char B, G, R, A; };
 class C3DVector { public: float X, Y, Z; };
 class C2DVector { public: float X, Y; };
@@ -67,7 +68,10 @@ struct CStringGameActionMap {                   // retail map<CCharString,EGameA
     void* m_words[3];
     ~CStringGameActionMap();                    // 0x004543C6
 };
-class CPlayerGuiDef : public CParentDefClassBase { public:
+class __declspec(novtable) CPlayerGuiDef : public CParentDefClassBase { public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CPlayerGuiDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CPlayerGuiDef@@UAEKXZ
     long                               InventoryNoMovementSound;                        // +0x3c
     float                              SecondsToFadeWholeGui;                           // +0x40
     float                              AlphaValueToFadeWholeGui;                        // +0x44

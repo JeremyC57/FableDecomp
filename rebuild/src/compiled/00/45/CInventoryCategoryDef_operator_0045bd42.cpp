@@ -9,17 +9,11 @@
 // Shape: implicit operator= copies each scalar member with integer moves (no x87 for the floats); `return *this` in eax.
 #pragma optimize("s", on)
 enum EInventoryCategoryIdentifier { EInventoryCategoryIdentifier_Force32 = 0x7fffffff };
-class CDefClassBase {                                      // retail 0x25 bytes (+ tail padding)
-public:
-    virtual ~CDefClassBase();
-    CDefClassBase& operator=(const CDefClassBase& other);  // 0x00431F10
-    unsigned char _body[0x25 - 4];
-};
-class CParentDefClassBase : public CDefClassBase {        // retail 0x3C bytes (InstantiationName, SubDefInfoMap, flag)
-public:
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);   // 0x00431ED0
-    unsigned char _body2[0x3c - 0x28];
-};
+// Layout: the def chain is the retail one from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, vtable 0x01230CBC,
+//   0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98, operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 class CInventoryCategoryDef : public CParentDefClassBase {
 public:
     virtual void Copy(const CDefClassBase* other);

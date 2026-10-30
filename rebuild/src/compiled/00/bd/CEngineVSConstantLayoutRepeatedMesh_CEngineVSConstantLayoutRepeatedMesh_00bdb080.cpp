@@ -10,16 +10,11 @@
 //   User (+0x10) is the base's user range. engine/CEngineVSConstantLayoutRepeatedMesh.h is a flattened pad: modelled locally.
 // Shape: the default range constructor zeroes both words after the base ctor; each assignment builds the stack temporary,
 //   copies its two words and runs the implicit derived destructor (out-of-line base dtor only).
-class CBaseClass { public:
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CShaderConstantRange : public CBaseClass { public:         // vtable 0x0129A04C: a register range {first register, register count}
     long m_firstRegister;                          // +0x04
     long m_registerCount;                          // +0x08
-    virtual void v00();
     CShaderConstantRange() : CBaseClass(), m_firstRegister(0), m_registerCount(0) { }
     CShaderConstantRange(long firstRegister, long registerCount) : CBaseClass(), m_firstRegister(firstRegister), m_registerCount(registerCount) { }
 };

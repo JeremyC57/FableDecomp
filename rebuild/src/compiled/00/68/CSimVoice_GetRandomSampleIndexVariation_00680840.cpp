@@ -3,7 +3,7 @@
 // Flags:
 #include <stddef.h>
 #include "rebuild_abi.h"
-class CBaseClass {public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CInitBaseClass:public CBaseClass {public:virtual~CInitBaseClass();virtual void Validate()const;bool Valid;};
 enum EReactionSpeechType {};
 long __fastcall GFROR13(unsigned long);

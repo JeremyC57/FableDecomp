@@ -5,10 +5,7 @@
 // The manifest label (C3DAnimationBlendState::C3DAnimationBlendState) is propagated; the stored
 // vtable is CEnginePrimitiveHandle's (rtti-vtables.tsv) and the PDB layout is {vptr,
 // CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}. Size-optimised TU (`and [m],0`).
-class CBaseClass { public:                        // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                          // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CIVCountedPointeeBase;
 

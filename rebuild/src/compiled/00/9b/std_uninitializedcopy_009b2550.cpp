@@ -6,14 +6,8 @@
 //   null-tests the destination; pair's user copy constructor copies the key and the 8-byte value through &first->second
 //   (`lea esi,[ecx+4]`).
 // Shape (family L070): byte twin of the landed 0x00673C60 (pair<unsigned long, CTextureMorph>).
-class CDefClassBase {
-public:
-    class CSubDefInfo {                                    // Ego_r.pdb, 8 bytes
-    public:
-        long DefIndex;                                    // +0x00
-        long OriginalParentDefIndex;                      // +0x04
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                            // +0x00

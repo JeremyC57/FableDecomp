@@ -265,7 +265,7 @@ public:
 class CObservable{public:virtual void SetEvent(EEvent);~CObservable();};
 class CManager:public CObservable{public:static CManager*__fastcall GetInstance();CComponent*CreateComponent(const CCharString&,bool);};
 }
-class CBaseClass{public:CBaseClass();virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable();virtual~CBaseClassNonCopyable();};
 class CThing;class CTCBase:public CBaseClassNonCopyable{public:virtual~CTCBase();CThing*ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;};
 namespace NInventory{class CTCInventoryBase:public CTCBase{};}

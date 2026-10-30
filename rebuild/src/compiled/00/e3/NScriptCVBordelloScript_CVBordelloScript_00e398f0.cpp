@@ -18,96 +18,10 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (already NScript). Same bytes.
-class CGameScriptInterface { public:
-    virtual ~CGameScriptInterface();                    // slot 0 (deleting destructor)
-    virtual void Error();
-    virtual void TraceMessage();
-    virtual void Validate();
-    virtual void SetDebugCameraType();
-    virtual void DeactivateBoastUi();
-    virtual void IsXbox();
-    virtual void NewScriptFrame();
-    virtual void StartScriptingEntity();
-    virtual void IsEntityUnderScriptedControl();
-    virtual void IsActiveThreadTerminating();
-    virtual void IsLevelLoaded();
-    virtual void IsRegionLoaded();
-    virtual void IsRegionLoadedAndPreloaded();
-    virtual void IsRegionDefLoaded();
-    virtual void GetRegionName();
-    virtual void MsgIsLevelLoaded();
-    virtual void MsgIsLevelUnloaded();
-    virtual void MsgOnLevelLoaded();
-    virtual void MsgOnLevelUnloaded();
-    virtual void MsgIsRegionLoaded();
-    virtual void MsgIsRegionUnloaded();
-    virtual void MsgOnRegionLoaded();
-    virtual void MsgOnRegionUnloaded();
-    virtual void MsgOnRegionPreunload();
-    virtual void MsgOnQuestCompleted();
-    virtual void MsgOnAnyQuestCompleted();
-    virtual void MsgOnQuestFailed();
-    virtual void MsgOnQuestCompletedBeforeScreenShown();
-    virtual void MsgOnQuestFailedBeforeScreenShown();
-    virtual void MsgOnQuestAccepted();
-    virtual void MsgOnFeatAccepted();
-    virtual void MsgIsBoastMade();
-    virtual void MsgOnBoastMade();
-    virtual void MsgOnBoastsMade();
-    virtual void RemoveBoastMessage();
-    virtual void IsQuestStartScreenActive();
-    virtual void MsgOnLeavingQuestStartScreen();
-    virtual void MsgOnLeavingExperienceSpendingScreen();
-    virtual void MsgIsQuestionAnsweredYesOrNo();
-    virtual void MsgIsGameInfoClickedPast();
-    virtual void MsgIsTutorialClickedPast();
-    virtual void MsgIsActionModeButtonPressed();
-    virtual void MsgOnExpressionPerformed();
-    virtual void MsgIsCutSceneSkipped();
-    virtual void RemoveAllCutSceneSkippedMessages();
-    virtual void MsgOnHeroHairTypeChanged();
-    virtual void MsgOnHeroUsedTeleporter();
-    virtual void MsgOnHeroUsedGuildSeal();
-    virtual void MsgOnGameSavedManually();
-    virtual void MsgOnHeroSlept();
-    virtual void MsgOnHeroFiredRangedWeapon();
-    virtual void MsgOnHeroCastSpell();
-    virtual void MsgOnHeroPickedPocket();
-    virtual void MsgOnHeroPickedLock();
-    virtual void MsgOnFishingGameFinished();
-    virtual void MsgOnTavernGameFinished();
-    virtual void MsgOnHeroRewardedWithItemsFrom();
-    virtual void MsgOnChestOpeningCancelled();
-    virtual void DontPopulateNextLoadedRegion();
-    virtual void GetWanderingPopulationScriptDefNameInCurrentRegion();
-    virtual void GetWanderingPopulationScriptDefNameInRegion();
-    virtual void IsHeroAllowedHenchmenInCurrentRegion();
-    virtual void IsHeroAllowedHenchmenInRegion();
-    virtual void PostAddScriptedEntities();
-    virtual void IsPlayerHoldingUnsheatheRangedWeaponButton();
-    virtual void IsPlayerHoldingLockTargetButton();
-    virtual void IsPlayerHoldingFireRangedWeaponButton();
-    virtual void IsPlayerHoldingFirstPersonTargetingButton();
-    virtual void IsHeroInProjectileWeaponMode();
-    virtual void GetHero();
-    virtual void GetHeroTargetedThing();
-    virtual void GetThingWithScriptName();
-    virtual void GetThingWithScriptName_2();
-    virtual void GetRandomThingWithScriptName();
-    virtual void GetAllThingsWithScriptName();
-    virtual void GetAllCreaturesInAreaWithScriptName();
-    virtual void GetNearestWithScriptName();
-    virtual void GetFurthestWithScriptName();
-    virtual void GetAllThingsWithDefNameByDistanceFrom();
-    virtual void GetAllThingsWithDefName();
-    virtual void GetNearestWithDefName();
-    virtual void GetFurthestWithDefName();
-    virtual void GetThingWithUID();
-    virtual void GetAllCreaturesExcludingHero();
-    virtual void GetAllThingsInLevel();
-    virtual void IsThingWithThisUIDAlive();
-    virtual long RegisterTimer();                       // slot 87 (+0x15c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();

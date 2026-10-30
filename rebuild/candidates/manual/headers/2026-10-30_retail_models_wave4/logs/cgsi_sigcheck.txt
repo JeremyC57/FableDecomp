@@ -1,0 +1,718 @@
+rebuild/src/compiled/00/6e/CGameScriptInterface_PostAddScriptedEntities_006e7460.cpp OK
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityClearMaxNumberOfAttackers_0088ec70.cpp OK
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetFacingAngleTowardsThing_0088e620.cpp OK
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityTeleportToThing_0088e540.cpp OK
+rebuild/src/compiled/00/88/CGameScriptInterface_GiveHeroTitle_0088e110.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceToLookAtNothing_0089d910.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetShotStrikePos_0089df70.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityLeaveCombatStance_0089de50.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAllowBossPhaseChanges_0089dcd0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsAbleToRegionFollowWhenMarried_008978e0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsAbleToWalkThroughSolidObjects_0089dbb0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsDisplayingEmoteIcon_0089deb0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsLocked_0089dc10.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetBossPhase_0089dd90.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetDeathContainerAsEnabled_0089e880.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetExtendedSightRadius_0089d280.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetFacingAngle_0089bdf0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetGiveUpChaseRadius_0089d2e0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetInFaction_0089c190.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetMaxNumberOfAttackers_0089e130.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionDeedMask_0089c290.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionDeedMask_0089c2e0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionReactionMask_0089c1f0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionReactionMask_0089c240.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetPersonalityOverride_0089c420.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetPersonalityOverride_0089c470.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetSightRadius_0089d220.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetSmellRadius_0089d1c0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetSoundRadius_0089d160.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetWillBeUsingNarrator_0089b050.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestEnabledDiggingSpot_0089ef90.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsChestOpen_00896330.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsDiggingSpotEnabled_0089f1e0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsDiggingSpotHidden_0089f240.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityUnderScriptedControl_008960c0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityWieldingWeapon_008974f0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerHoldingFireRangedWeaponButton_00890610.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerHoldingFirstPersonTargetingButton_00890640.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerHoldingLockTargetButton_008905e0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerHoldingUnsheatheRangedWeaponButton_008905b0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsQuestStartScreenActive_0089ad90.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_IsTeleporterActive_0089ee60.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_OpinionSourceSetAsAttentionGrabbing_0089c510.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_PlaySoundAtPos_00891170.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_RemoveOpinionDeedStillSearchingForWitnesses_0089c850.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetCreatureGeneratorEnabled_0089ed20.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetDiggingSpotAsHidden_0089f2a0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetQuestInfoName_00891940.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetQuestInfoText_00891a00.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetTeleporterAsActive_0089ee00.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetThingAsUsable_008967f0.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_SetTrophyAsMountable_00896790.cpp OK
+rebuild/src/compiled/00/89/CGameScriptInterface_UnSetThingAndCarriedItemsNotAffectedByScreenFilt_00897150.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityClearRangedTarget_008a0540.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityDecapitate_008a8e40.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityEndScreamerSuperAttackThing_008a0950.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityFadeIn_008a07c0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityGetAppearanceSeed_008a0c10.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityGetStockItemPrice_008a01a0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAppearanceMorphSeed_008a0200.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAppearanceSeed_008a0bc0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAsForSale_008a00e0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetAttackThingImmediately_008a8eb0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetLightAsOn_008a06c0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetStockItemPrice_008a0140.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetTargetingType_008a0600.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAction_008a42c0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetActiveGossipCategories_008a9760.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllowedToFollow_008a6390.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAvoidRegionExits_008a7430.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetFollowingEntityList_008a80f0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipFactions_008aa410.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipVillages_008aa1b0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossip_008a9f50.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetIsGossipForPlayer_008a9810.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetIsPushableByHero_008a6eb0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetKillSelfAndStealableItemAfterReachingDestinat_008a60d0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetLookForFiniteTime_008a7170.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetSeatName_008a6950.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetTableName_008a6680.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetTargetName_008a4840.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_GiveThingBestEnemyTarget_008a0260.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_RemoveCreatureScriptedMode_008a1ab0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetBedAvailability_008a1bf0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIsGossipForPlayer_008a96f0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIsGossipForPlayer_008a97d0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIsThingTurncoatable_008a1950.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetOwnedByHero_008a18f0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetReadableObjectTextTag_008a0fd0.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetReadableObjectText_008a0f70.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetThingAsConscious_008a9610.cpp OK
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetUseableByHero_008a1830.cpp OK
+rebuild/src/compiled/00/cb/global_AddLogbookStoryEntryString_00cbe960.cpp DIFF 308:AddLogBookEntry->AddLogBookEntry: void(const CWideString&,const CWideString&,const CWideString&,ECategory) -> void(const CWideString&,const CWideString&,const CWideString&,long) const
+rebuild/src/compiled/00/cb/global_AddLogbookStoryEntry_00cbe87f.cpp DIFF 308:AddLogBookEntry->AddLogBookEntry: void(const CWideString&,const CWideString&,const CWideString&,ECategory) -> void(const CWideString&,const CWideString&,const CWideString&,long) const
+rebuild/src/compiled/00/cb/global_AddLogbookTutorialEntryPC_00cbea81.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 308:AddLogBookEntry->AddLogBookEntry: void(const CWideString&,const CWideString&,const CWideString&,ECategory) -> void(const CWideString&,const CWideString&,const CWideString&,long) const
+rebuild/src/compiled/00/cb/global_AddLogbookTutorialEntry_00cbe9ee.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 308:AddLogBookEntry->AddLogBookEntry: void(const CWideString&,const CWideString&,const CWideString&,ECategory) -> void(const CWideString&,const CWideString&,const CWideString&,long) const
+rebuild/src/compiled/00/cb/global_CSFindThing_00cbf9de.cpp OK
+rebuild/src/compiled/00/cb/global_CreateAndFadeInCreature_00cbef30.cpp OK
+rebuild/src/compiled/00/cb/global_CreateAndFadeInObject_00cbefc1.cpp OK
+rebuild/src/compiled/00/cb/global_FadeInThing_00cbe7aa.cpp OK
+rebuild/src/compiled/00/cb/global_FadeOutAndKillEntity_00cbe716.cpp OK
+rebuild/src/compiled/00/cb/global_FadeOutThing_00cbe814.cpp OK
+rebuild/src/compiled/00/cb/global_IsCutsceneSkipped_00cbeb7e.cpp OK
+rebuild/src/compiled/00/cb/global_IsPlayerThreateningEntity_00cbeed2.cpp OK
+rebuild/src/compiled/00/cd/CArcheryCompetitionSignpost_Main_00cdec40.cpp DIFF 7:NewScriptFrame->NewScriptFrame: virtual void() -> void() const | 714:SetReadableObjectTextTag->SetReadableObjectTextTag: virtual void(const CScriptThing&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/cd/CBSGateGuard_Main_00cdfb00.cpp OK
+rebuild/src/compiled/00/cd/CKGGate_Main_00cdf260.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/ce/CGameflowAssistanceScript_TutorialCombatMultiplier_00cefcc0.cpp OK
+rebuild/src/compiled/00/ce/CGameflowScript_CheckBarrowFieldsGuards_00cef550.cpp OK
+rebuild/src/compiled/00/ce/CLadyGreysBed_Main_00ce0150.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/ce/CMKHS2SOUL_Main_00ce0920.cpp OK
+rebuild/src/compiled/00/ce/CMKHS2SOUL_Main_00ce0b00.cpp OK
+rebuild/src/compiled/00/ce/CMKHS2SOUL_Main_00ce0ce0.cpp OK
+rebuild/src/compiled/00/ce/CMagicBarrierGraveyard_Main_00ce0600.cpp OK
+rebuild/src/compiled/00/ce/CTargetForKey_Main_00ce15e0.cpp OK
+rebuild/src/compiled/00/ce/CTestGateSwitch_Main_00ce1280.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastArenaShowMercy_00ce5fc0.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastArenaShowNoMercy_00ce5ef0.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastBreakSiegeKilledLeader_00ce5180.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastTCETimeLimit_00ce6550.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastTCGTimeLimit_00ce63a0.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastUseNoHealthPotions_00ce4600.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastUseOnlyFryingPan_00ce40d0.cpp OK
+rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_Main_00ce1af0.cpp DIFF 34:MsgOnBoastsMade->MsgOnBoastsMade: void(BoastVector&) const -> bool(vector<pair<long,CCharString>,allocator<pair<long,CCharString> > >&) const
+rebuild/src/compiled/00/cf/CGameflowAssistanceScript_TutorialRenownLevelIncrease_00cf02a0.cpp OK
+rebuild/src/compiled/00/cf/CLadyGreyWifeManagerScript_Init_00cf8970.cpp OK
+rebuild/src/compiled/00/cf/NScriptCQArenaScript_Init_00cfa700.cpp OK
+rebuild/src/compiled/00/d0/CCampHostage2_Main_00d08790.cpp OK
+rebuild/src/compiled/00/d0/CGate1GuardInner_Main_00d02b80.cpp OK
+rebuild/src/compiled/00/d0/CVChapelOfEvilScript_EndMission_00d04770.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_CheckAnyBanditsKilled_00d032f0.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_Init_00d006d0.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_Main_00d00af0.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_WatchForCostume_00d00fd0.cpp OK
+rebuild/src/compiled/00/d1/CBHHostage1_Init_00d167c0.cpp DIFF 496:EntitySetAsScared->EntitySetAsScared: void(const CScriptThingRuntime&,bool) const -> void(const CScriptThing&,bool) const | 617:EntitySetOpinionReactionEnabled->EntitySetOpinionReactionEnabled: void(const CScriptThingRuntime&,long,bool) const -> void(const CScriptThing&,EOpinionReactionType,bool) const | 622:EntitySetAsOpinionSource->EntitySetAsOpinionSource: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/d1/CBHHostage2_Init_00d16bb0.cpp DIFF 496:EntitySetAsScared->EntitySetAsScared: void(const CScriptThingRuntime&,bool) const -> void(const CScriptThing&,bool) const | 617:EntitySetOpinionReactionEnabled->EntitySetOpinionReactionEnabled: void(const CScriptThingRuntime&,long,bool) const -> void(const CScriptThing&,EOpinionReactionType,bool) const | 622:EntitySetAsOpinionSource->EntitySetAsOpinionSource: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/d1/CBanditAttacker_Main_00d1f610.cpp OK
+rebuild/src/compiled/00/d1/CBanditFirstWave_Main_00d1fa00.cpp OK
+rebuild/src/compiled/00/d1/CGuardHoldingBandit_Main_00d1e3e0.cpp OK
+rebuild/src/compiled/00/d1/CKGSheriff_Init_00d1dff0.cpp OK
+rebuild/src/compiled/00/d1/CQBountyHuntScript_WatchForAllGruntsKilled_00d17340.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d1/CQBountyHuntScript_WatchForEnableFisherCreekHutDoor_00d151d0.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBanditCampHoldingScriptScript_Main_00d129c0.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_AddBoastQuestInfo_00d17ea0.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_Init_00d12d00.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_RemoveBoastQuestInfo_00d17e70.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy1GruntsKilled_00d18b20.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy1Killed_00d16570.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy2GruntsKilled_00d19af0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForLeaderGruntsKilled_00d1c9e0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForLeaderKilled_00d17090.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScript_Init_00d1cc40.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScript_WatchForTermination_00d1d7d0.cpp OK
+rebuild/src/compiled/00/d2/CDBSummoner_Main_00d25d80.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/d2/CDBSummoner_Main_00d25f50.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/d2/CEndGameJackOfBladesBoss_Main_00d2fb20.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d2/CHHUndead_Init_00d292e0.cpp OK
+rebuild/src/compiled/00/d2/CKGChiefBreakSiege_Main_00d22880.cpp OK
+rebuild/src/compiled/00/d2/CMKGHCHERO3_Main_00d29db0.cpp OK
+rebuild/src/compiled/00/d2/CMazeJournal_Main_00d2a180.cpp OK
+rebuild/src/compiled/00/d2/CPermanentBarrier_Main_00d2d830.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/d2/CVChapelOfEvilScript_EndMission_00d27c00.cpp OK
+rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_SendBodyguardsToTheRightPlace_00d226e0.cpp OK
+rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_WatchForWinLoseConditions_00d20790.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_JackTaunts_00d26a50.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&() | 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_SpawnMinions_00d26cc0.cpp OK
+rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_SpawnSummoners_00d26e60.cpp OK
+rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScript_Main_00d2f7f0.cpp OK
+rebuild/src/compiled/00/d2/NScriptCQEndGameScript_CheckRegionLeaving_00d27950.cpp OK
+rebuild/src/compiled/00/d3/CGameflowScript_DeclareGossipCategories_00d3b410.cpp DIFF 717:AddRumourCategory->AddRumourCategory: void(const CCharString&) -> void(const CCharString&) const | 718:AddNewRumourToCategory->AddNewRumourToCategory: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 721:AddGossipVillage->AddGossipVillage: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 722:AddGossipFactionToCategory->AddGossipFactionToCategory: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const
+rebuild/src/compiled/00/d3/CPuzzleBlockMoon_TurnIntoASunSign_00d38000.cpp OK
+rebuild/src/compiled/00/d3/CPuzzleBlockSun_TurnIntoAMoonSign_00d387a0.cpp OK
+rebuild/src/compiled/00/d3/CQGuildTrainingScript_KeepTabsOnWhisper_00d3cbd0.cpp OK
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_Init_00d347b0.cpp OK
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_RunThemeOverriding_00d35ed0.cpp DIFF 696:OverrideMusic->OverrideMusic: void(long,bool,bool) const -> void(EMusicSetType,bool,bool) const
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_SetupPuzzleBlocks_00d36140.cpp OK
+rebuild/src/compiled/00/d3/NScriptCQGuildTrainingScript_KeepBookcaseExitRemoved_00d3c8f0.cpp OK
+rebuild/src/compiled/00/d4/CHeroBed_Main_00d446d0.cpp OK
+rebuild/src/compiled/00/d4/CQGuildTrainingScript_RunCeremonyCutscene_00d49d50.cpp OK
+rebuild/src/compiled/00/d4/CQGuildTrainingScript_RunSaveXPCutscene2_00d49a20.cpp OK
+rebuild/src/compiled/00/d4/CRaceMarker_Main_00d40aa0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScript_RunArrivalCutscene_00d44cb0.cpp OK
+rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScript_RunSaveXPCutscene_00d496f0.cpp OK
+rebuild/src/compiled/00/d5/CMeleeThunder_Main_00d58080.cpp OK
+rebuild/src/compiled/00/d5/CPreMeleeDummy_Main_00d51fc0.cpp OK
+rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScript_Init_00d506b0.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 472:EntityTeleportToThing->EntityTeleportToThing: void(const CScriptThing&,const CScriptThing&,bool) -> void(const CScriptThing&,const CScriptThing&,bool) const
+rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp OK
+rebuild/src/compiled/00/d6/CQHangingTreeEvilScript_BanditYells_00d69cd0.cpp OK
+rebuild/src/compiled/00/d6/CWillWhisper_Main_00d68810.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_Main_00d643a0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_DoMission_00d63dc0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_Main_00d61d20.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_WatchForLeaving_00d64000.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_Main_00d67270.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_DoMission_00d66ca0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_EndMission_00d66ee0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_Main_00d66620.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_WatchForTermination_00d66880.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsWillScript_WatchForLeaving_00d68c50.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_CQHangingTreeEvilScript_00d68f00.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_CleanUp_00d6b720.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_DoMission_00d6bfa0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_Init_00d68ff0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorEnemies_00d6be20.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorRegionPresence_00d6cdc0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_SpawnParty_00d6c4a0.cpp OK
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeGoodScript_Init_00d6f020.cpp OK
+rebuild/src/compiled/00/d7/CHTGAmbushPointCond_Main_00d73970.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d7/CHTGAmbushPointRear_Main_00d73ae0.cpp OK
+rebuild/src/compiled/00/d7/CHTGAmbushPoint_Main_00d73610.cpp OK
+rebuild/src/compiled/00/d7/CHTGExecutioner_Main_00d73f40.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d7/CHTGPrisoner_Main_00d71b30.cpp OK
+rebuild/src/compiled/00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d7/CQHangingTreeGoodScript_MonitorRegionPresence_00d773e0.cpp OK
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_CleanUp_00d72b70.cpp OK
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_ReassignLeader_00d74f80.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_RemoveParty_00d732f0.cpp OK
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_SetGuardsHealth_00d766c0.cpp DIFF 264:GetHealth->GetHealth: float(const CScriptThing&) -> float(const CScriptThing&) const | 265:ModifyThingHealth->ModifyThingHealth: void(const CScriptThing&,float,bool) -> void(const CScriptThing&,float,bool) const
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_SpawnEnemies_00d736b0.cpp OK
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_WatchForHeroNearExit_00d76490.cpp OK
+rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Main_00d7dd80.cpp OK
+rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScript_WatchForAudioInArena_00d7d730.cpp DIFF 696:OverrideMusic->OverrideMusic: void(long,bool,bool) const -> void(EMusicSetType,bool,bool) const
+rebuild/src/compiled/00/d7/NScriptCQHeroSoulsThunderScript_Main_00d7ae80.cpp OK
+rebuild/src/compiled/00/d8/CBRIARROSEIMPOSTER_Main_00d81820.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d8/CGuardOutsideWoods_Main_00d874f0.cpp OK
+rebuild/src/compiled/00/d8/CGuildmasterHS_Main_00d85b40.cpp DIFF 844:SetIsPushableByHero->SetIsPushableByHero: void(CScriptThing,bool) const -> void(CScriptThing,bool)
+rebuild/src/compiled/00/d8/CHSScreamer_OnPredicateFail_00d83f20.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/d8/CMuteGuardOutsideWoods_Main_00d86150.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d8/CQHeroSoulsGuildmasterScript_Init_00d84bb0.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long) | 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const
+rebuild/src/compiled/00/d8/CQHobbeCaveScript_WatchForTermination_00d8e990.cpp OK
+rebuild/src/compiled/00/d8/CSUMMONEDCREATURE_Main_00d891f0.cpp OK
+rebuild/src/compiled/00/d8/CUndeadSoldier_Main_00d88f90.cpp OK
+rebuild/src/compiled/00/d8/CWaitingGuardInWoods_Main_00d86680.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsArenaScript_Alloc_00d80ba0.cpp OK
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_Init_00d80cc0.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long) | 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_Main_00d80e40.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_PlayCutscene_00d823a0.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScriptCSummonerToKill_Main_00d83dc0.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScript_CreateScreamers_00d84630.cpp OK
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScript_Init_00d83470.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long) | 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScript_Main_00d835d0.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp OK
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSUMMONEDCREATURE_OnPredicateFail_00d89160.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCSummonerToKill_Main_00d88540.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScript_Init_00d87b20.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long) | 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScript_Main_00d87cb0.cpp OK
+rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScript_WatchForNostroHit_00d88260.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&() | 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_Init_00d8d640.cpp OK
+rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForHavingKey_00d8ee50.cpp OK
+rebuild/src/compiled/00/d9/CFadeinSummoner_Main_00d9f6c0.cpp DIFF 844:SetIsPushableByHero->SetIsPushableByHero: void(CScriptThing,bool) const -> void(CScriptThing,bool)
+rebuild/src/compiled/00/d9/CQHobbeToothWhisper_Main_00d9d030.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority)
+rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCCheckTheSilverKeyChest_Main_00d91320.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_CheckJamesKilled_00d97170.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_MakeBanditComment_00d905c0.cpp DIFF 90:GetTimer->GetTimer: long(long) -> long(long) const | 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_RescuedBandit_00d91740.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_Init_00d9d4f0.cpp DIFF 360:SetThingHasInformation->SetThingHasInformation: void(const CScriptThingRuntime&,bool,bool,bool) const -> void(const CScriptThing&,bool,bool,bool) const | 517:EntitySetAsKillable->EntitySetAsKillable: void(const CScriptThingRuntime&,bool,bool) const -> void(const CScriptThing&,bool,bool) const | 523:EntitySetBossPhase->EntitySetBossPhase: void(const CScriptThingRuntime&,long) const -> void(const CScriptThing&,long) const | 601:EntitySetInFaction->EntitySetInFaction: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScript_DisplayTimer_00d9b420.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScript_HeroKilledHobbe_00d9b8f0.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScript_Init_00d99e80.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScript_WhisperKilledHobbe_00d9bb50.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinion_Main_00d9f270.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_CQMinionCampScript_00d9e210.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_Init_00d9e2e0.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_Main_00d9e5e0.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_OnMinionKilled_00d9f1b0.cpp OK
+rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_StartMinionSpawnTimer_00d9f200.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/da/CBriarRose_UpdateTarget_00da2a20.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/da/CGuardNotThisWay_Main_00da68e0.cpp OK
+rebuild/src/compiled/00/da/CGuardToLeadTheWay_Main_00da7d30.cpp OK
+rebuild/src/compiled/00/da/CMGuard_Main_00da63f0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/da/CMagicBarrierGraveyard_Main_00da5490.cpp OK
+rebuild/src/compiled/00/da/CMapKeeper_Init_00da4350.cpp OK
+rebuild/src/compiled/00/da/CMinionEscortEnd_Main_00da47a0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const | 625:OpinionSourceSetAsAttentionGrabbing->OpinionSourceSetAsAttentionGrabbing: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const
+rebuild/src/compiled/00/da/CMinionEscort_Main_00da45c0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const | 465:EntityAttachToScript->EntityAttachToScript: void(const CScriptThing&,const CCharString&) -> void(const CScriptThing&,const CCharString&) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/da/CMinionSpawner_Main_00da5980.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/da/CNOVIGuard_Init_00dac650.cpp DIFF 784:SetScriptingStateGroup->SetScriptingStateGroup: void(CScriptThing,long) -> void(CScriptThing,EScriptingStateGroups)
+rebuild/src/compiled/00/da/CNOVITheresa_Init_00dac4f0.cpp OK
+rebuild/src/compiled/00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/da/CQMinionCampScript_CheckBriarHit_00da2860.cpp OK
+rebuild/src/compiled/00/da/CQMinionClifftopChaseScript_ProcessMission_00da3f40.cpp OK
+rebuild/src/compiled/00/da/CQMinionClifftopChaseScript_ProcessMission_00da8510.cpp OK
+rebuild/src/compiled/00/da/CQNewOakValeIntroScript_CQNewOakValeIntroScript_00daac00.cpp OK
+rebuild/src/compiled/00/da/CRockTroll_Main_00da5f40.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_AddNewHeroAttacker_00da0b30.cpp DIFF 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_DoMission_00da0230.cpp OK
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_PhaseOne_00da05d0.cpp OK
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunFirstWaveControl_00da0820.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunSpawnPointControl_00da0c40.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_GuardComment_00da8970.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&() | 231:GetFollowingEntityList->GetFollowingEntityList: bool(const CScriptThing&,CScriptThingVector&) const -> bool(const CScriptThing&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Init_00da3100.cpp OK
+rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScript_AddBadDeed_00daea70.cpp OK
+rebuild/src/compiled/00/da/NScriptCQNewOakValeIntroScript_Main_00dabac0.cpp OK
+rebuild/src/compiled/00/db/CNOVIAffairWife_Init_00db2a70.cpp OK
+rebuild/src/compiled/00/db/CNOVIBarrelMan_Init_00db5260.cpp OK
+rebuild/src/compiled/00/db/CNOVIBarrel_Main_00db7e10.cpp OK
+rebuild/src/compiled/00/db/CNOVICreatedBeetle_Main_00db80c0.cpp OK
+rebuild/src/compiled/00/db/COakValeBanditRaidBandit_OnPredicateFail_00dbff80.cpp OK
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_AddGoodDeed_00db0660.cpp OK
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_AttackStuff_00dbe3c0.cpp DIFF 276:ActivateQuest->ActivateQuest: void(const CCharString&) -> void(const CCharString&) const | 280:DeactivateQuest->DeactivateQuest: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 296:SetQuestCardObjective->SetQuestCardObjective: void(const CCharString&,const CCharString&,const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&,const CCharString&,const CCharString&) const | 646:SetTimeOfDay->SetTimeOfDay: void(float) -> void(float) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const | 656:TransitionToTheme->TransitionToTheme: void(const CCharString&,float) -> void(const CCharString&,float) const
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_DoMission_00dbde40.cpp DIFF 696:OverrideMusic->OverrideMusic: void(long,bool,bool) const -> void(EMusicSetType,bool,bool) const | 698:CacheMusicSet->CacheMusicSet: void(long) const -> void(EMusicSetType) const
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_ManageQuestCoreMarkers_00dbe4e0.cpp OK
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_WatchForGotGold_00dbe2e0.cpp OK
+rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScript_Main_00dbf2d0.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority) | 118:DisplayTutorial->DisplayTutorial: bool(long) const -> bool(ETutorialCategory) const | 696:OverrideMusic->OverrideMusic: void(long,bool,bool) const -> void(EMusicSetType,bool,bool) const
+rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScript_WatchForWhistling_00dbf9e0.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/dc/CArtefact_Main_00dcdc50.cpp OK
+rebuild/src/compiled/00/dc/CCrateTeamMember_Init_00dcdf60.cpp OK
+rebuild/src/compiled/00/dc/CGraveyardDemon_Main_00dc3fc0.cpp OK
+rebuild/src/compiled/00/dc/CMRestartMarker_Main_00dc21f0.cpp DIFF 373:FadeScreenOut->FadeScreenOut: void(float,float,CRGBColour) -> bool(float,float,CRGBColour) | 376:Pause->Pause: void(float) -> void(float) const
+rebuild/src/compiled/00/dc/CQOrchardFarmRaidScript_WatchForExternalScriptDeactivation_00dccf30.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 281:DeactivateQuestLater->DeactivateQuestLater: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 284:IsQuestActive->IsQuestActive: bool(const CCharString&) -> bool(const CCharString&) const | 292:AddQuestCard->AddQuestCard: void(const CCharString&,const CCharString&,bool,bool) -> void(const CCharString&,const CCharString&,bool,bool) const
+rebuild/src/compiled/00/dc/CSecretPassageFirstGate_Main_00dc8030.cpp OK
+rebuild/src/compiled/00/dc/CSpeakingMarker_Main_00dc8890.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector<CScriptThing>&) const -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/dc/CStartGravekeeperCutsceneMarker_Main_00dc7100.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/dc/CUndeadSpawnCutscene_Main_00dc72a0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/dc/CVtable012DB4B8_Main_00dcf4c0.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 108:RemoveThing->RemoveThing: void(const CScriptThing&,bool,bool) -> void(const CScriptThing&,bool,bool) const
+rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScript_PopulateLevel_00dc0300.cpp OK
+rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CheckDoor_00dc8c80.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority)
+rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_WatchForArmour_00dc37f0.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_Init_00dcc140.cpp OK
+rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_Main_00dcc770.cpp OK
+rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_MakeTeamMemberComment_00dcda80.cpp DIFF 90:GetTimer->GetTimer: long(long) -> long(long) const | 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/dd/CPrisonEscapeGuard_Main_00dd6440.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/dd/CPrisonGuard_Main_00dd44c0.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/dd/CPrisonKeyDoor_Main_00dd9180.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 40:MsgIsGameInfoClickedPast->MsgIsGameInfoClickedPast: bool() -> bool() const | 115:DisplayGameInfo->DisplayGameInfo: void(const CCharString&) -> void(const CCharString&) const | 376:Pause->Pause: void(float) -> void(float) const | 518:EntitySetAsLocked->EntitySetAsLocked: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const
+rebuild/src/compiled/00/dd/CPrisonRacer_Main_00ddc980.cpp OK
+rebuild/src/compiled/00/dd/CQOrchardFarmRaidEvilScript_Init_00dd2020.cpp DIFF 276:ActivateQuest->ActivateQuest: void(const CCharString&) -> void(const CCharString&) const | 303:AddBoast->AddBoast: void(const CCharString&,long,long,long,bool,const CCharString&,long) -> void(const CCharString&,long,long,long,bool,const CCharString&,long) const
+rebuild/src/compiled/00/dd/CQPrisonEscapeRescueMotherScript_MakePrisonerComment_00dd5860.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const | 368:IsConversationActive->IsConversationActive: bool(long) -> bool(long) const
+rebuild/src/compiled/00/dd/CSecretBook_Main_00dde940.cpp OK
+rebuild/src/compiled/00/dd/CTortureDoorCourtyard_Main_00dd8ba0.cpp OK
+rebuild/src/compiled/00/dd/CTortureDoorPassage_Main_00dd8990.cpp OK
+rebuild/src/compiled/00/dd/CVChapelOfEvilScript_EndMission_00dd9900.cpp OK
+rebuild/src/compiled/00/dd/CWaypointSpeedCheck_Main_00ddc6c0.cpp OK
+rebuild/src/compiled/00/dd/NScriptCQOrchardFarmRaidGoodScript_Init_00dd23a0.cpp DIFF 276:ActivateQuest->ActivateQuest: void(const CCharString&) -> void(const CCharString&) const | 303:AddBoast->AddBoast: void(const CCharString&,long,long,long,bool,const CCharString&,long) -> void(const CCharString&,long,long,long,bool,const CCharString&,long) const
+rebuild/src/compiled/00/dd/NScriptCQOrchardFarmRaidScript_DoMultiplierCutscene_00dd1af0.cpp OK
+rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScript_Alloc_00ddacb0.cpp OK
+rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScript_Init_00dd2720.cpp OK
+rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScript_MakeRacerComment_00ddcf50.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const | 368:IsConversationActive->IsConversationActive: bool(long) -> bool(long) const
+rebuild/src/compiled/00/dd/NScriptCQPrisonWardenGameScript_WardenKeyMiniGame_00dde230.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/de/CSPAmbushGuard_Main_00ded540.cpp OK
+rebuild/src/compiled/00/de/CSPNymphTrigger_Main_00ded380.cpp OK
+rebuild/src/compiled/00/de/CVChapelOfEvilScript_EndMission_00de1770.cpp OK
+rebuild/src/compiled/00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp OK
+rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_CheckVictimHit_00de81b0.cpp OK
+rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_GossipSetup_00de1280.cpp OK
+rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_Init_00de03e0.cpp DIFF 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 303:AddBoast->AddBoast: void(const CCharString&,long,long,long,bool,const CCharString&,long) -> void(const CCharString&,long,long,long,bool,const CCharString&,long) const
+rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_MakeNPCComment_00de3f90.cpp OK
+rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_WatchForTermination_00de14a0.cpp OK
+rebuild/src/compiled/00/de/NScriptCQSecretPassageScript_DoMission_00deff60.cpp OK
+rebuild/src/compiled/00/de/NScriptCQSecretPassageScript_WatchForTermination_00ded0c0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 281:DeactivateQuestLater->DeactivateQuestLater: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 289:SetQuestAsFailed->SetQuestAsFailed: void(const CCharString&,bool,const CWideString&,bool) -> void(const CCharString&,bool,const CWideString&,bool) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/df/CFireHeart_Main_00df2f90.cpp OK
+rebuild/src/compiled/00/df/CKrakenMinion_Main_00df4610.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/df/CQSecretPassageScript_PrisonEscape_00df0b70.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority)
+rebuild/src/compiled/00/df/CSummonerAttacker_Main_00df2380.cpp OK
+rebuild/src/compiled/00/df/CSummonerMinion_Main_00df2ab0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/df/CTheKraken_Main_00df4be0.cpp OK
+rebuild/src/compiled/00/df/CTraderToRescue_OnPredicateFail_00dfb100.cpp OK
+rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_BossBlockingPrisonPassage_00df0200.cpp OK
+rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_EndMission_00df0a50.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 281:DeactivateQuestLater->DeactivateQuestLater: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 288:SetQuestAsCompleted->SetQuestAsCompleted: void(const CCharString&,bool,bool,bool) -> void(const CCharString&,bool,bool,bool) const | 472:EntityTeleportToThing->EntityTeleportToThing: void(const CScriptThing&,const CScriptThing&,bool) -> void(const CScriptThing&,const CScriptThing&,bool) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_MotherTortureThread_00df0750.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_WatchForLeaving_00df0180.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Init_00df1760.cpp DIFF 70:GetHero->GetHero: const CScriptThing*() const -> CScriptThing&()
+rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScript_DoMission_00df36e0.cpp DIFF 696:OverrideMusic->OverrideMusic: void(long,bool,bool) const -> void(EMusicSetType,bool,bool) const
+rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScript_MakeBriarRoseComment_00df20f0.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const | 368:IsConversationActive->IsConversationActive: bool(long) -> bool(long) const
+rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScript_DoMission_00df4e00.cpp OK
+rebuild/src/compiled/00/df/NScriptCQTentacleKrakenBossFightScript_WatchForLeaving_00df4f80.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScript_Alloc_00dfa020.cpp OK
+rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScript_Init_00df5cd0.cpp DIFF 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 303:AddBoast->AddBoast: void(const CCharString&,long,long,long,bool,const CCharString&,long) -> void(const CCharString&,long,long,long,bool,const CCharString&,long) const
+rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScript_UpdateLiveEnemies_00df9b80.cpp OK
+rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScript_WatchTimeLimit_00df7980.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 90:GetTimer->GetTimer: long(long) -> long(long) const | 321:DisplayQuestInfo->DisplayQuestInfo: void(bool) -> void(bool) const | 326:AddQuestInfoTimer->AddQuestInfoTimer: long(const CTimer&,const CCharString&,float) -> long(const CTimer&,const CCharString&,float) const | 338:RemoveQuestInfoElement->RemoveQuestInfoElement: void(long) -> void(long) const
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_Init_00dfa0e0.cpp DIFF 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 303:AddBoast->AddBoast: void(const CCharString&,long,long,long,bool,const CCharString&,long) -> void(const CCharString&,long,long,long,bool,const CCharString&,long) const
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForHittingEnemies_00dfc630.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForKilledPeople_00dfc290.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchTimeLimit_00dfaeb0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 90:GetTimer->GetTimer: long(long) -> long(long) const | 321:DisplayQuestInfo->DisplayQuestInfo: void(bool) -> void(bool) const | 326:AddQuestInfoTimer->AddQuestInfoTimer: long(const CTimer&,const CCharString&,float) -> long(const CTimer&,const CCharString&,float) const | 338:RemoveQuestInfoElement->RemoveQuestInfoElement: void(long) -> void(long) const
+rebuild/src/compiled/00/e0/CBanditCronies_Main_00e03810.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/e0/CDW5Balv_Main_00e047d0.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/e0/CDW5Balv_Main_00e04970.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/e0/CDarkwoodRockTroll_OnPredicateFail_00e03b00.cpp OK
+rebuild/src/compiled/00/e0/CTEBanditLeader_Main_00e035e0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/e0/CUndeadRisingZombieAttackerBoss_OnPredicateFail_00e0d6a0.cpp OK
+rebuild/src/compiled/00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0.cpp OK
+rebuild/src/compiled/00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_OnPredicateFail_00e01760.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_Alloc_00e0af60.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_Init_00e006d0.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_WatchForPickpocketing_00e04f10.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_WatchForSurprisingBalverines_00e06050.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&() | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const | 91:CreateCreature->CreateCreature: CScriptThing(const CCharString&,const C3DVector&,const CCharString&,bool) -> CScriptThing(const CCharString&,const C3DVector&,const CCharString&,bool) const | 451:GiveThingBestEnemyTarget->GiveThingBestEnemyTarget: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScript_Alloc_00e0e760.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScript_Init_00e0b020.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long) | 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const
+rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScript_LampChecker_00e0c4c0.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQWaspBossScript_Init_00e0e820.cpp DIFF 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 272:SetQuestWorldMapOffset->SetQuestWorldMapOffset: void(const CCharString&,const C2DCoordI&) -> void(const CCharString&,const C2DCoordI&) const
+rebuild/src/compiled/00/e0/NScriptCQWaspBossScript_Main_00e0ea40.cpp OK
+rebuild/src/compiled/00/e1/CAttackingBandit_Main_00e1ee30.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e1/CChasingScreamer_Main_00e1af30.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e1/CHKCScreamerPoint_Main_00e1b750.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e1/CHKCVillagerScreamer_Main_00e1b1f0.cpp OK
+rebuild/src/compiled/00/e1/CQREscortTraderScript_EndMission_00e1e670.cpp DIFF 161:GiveHeroRenownPoints->GiveHeroRenownPoints: void(long) -> void(long) const | 288:SetQuestAsCompleted->SetQuestAsCompleted: void(const CCharString&,bool,bool,bool) -> void(const CCharString&,bool,bool,bool) const | 289:SetQuestAsFailed->SetQuestAsFailed: void(const CCharString&,bool,const CWideString&,bool) -> void(const CCharString&,bool,const CWideString&,bool) const | 294:RemoveQuestCardFromHero->RemoveQuestCardFromHero: void(const CCharString&) -> void(const CCharString&) const | 354:MiniMapAllowRouteBetweenRegions->MiniMapAllowRouteBetweenRegions: void(const CCharString&,const CCharString&,bool) -> void(const CCharString&,const CCharString&,bool) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/e1/CQREscortTraderScript_WatchForExpressionFollow_00e1fcf0.cpp OK
+rebuild/src/compiled/00/e1/CQREscortTraderScript_WatchForExpressionWait_00e1fef0.cpp OK
+rebuild/src/compiled/00/e1/CVChapelOfEvilScript_WatchForLeaving_00e10bf0.cpp OK
+rebuild/src/compiled/00/e1/CWaspAttacker_Main_00e11450.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQREscortTraderScript_Main_00e1e110.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQREscortTraderScript_WatchForFailure_00e1f2d0.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQREscortTraderScript_WatchForRegionLoads_00e1e470.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_DoMission_00e12580.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_WaspIntro_00e12f20.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&() | 309:KickOffQuestStartScreen->KickOffQuestStartScreen: void(const CCharString&,bool,bool) -> void(const CCharString&,bool,bool) const
+rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Init_00e15830.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 696:OverrideMusic->OverrideMusic: void(long,bool,bool) -> void(EMusicSetType,bool,bool) const
+rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScript_Init_00e13c60.cpp DIFF 271:AddQuestRegion->AddQuestRegion: void(const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&) const | 303:AddBoast->AddBoast: void(const CCharString&,long,long,long,bool,const CCharString&,long) -> void(const CCharString&,long,long,long,bool,const CCharString&,long) const
+rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScript_MonitorBalverine_00e18eb0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 121:GiveHeroObject->GiveHeroObject: void(const CCharString&,long,bool) -> void(const CCharString&,long,bool) const | 296:SetQuestCardObjective->SetQuestCardObjective: void(const CCharString&,const CCharString&,const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&,const CCharString&,const CCharString&) const | 321:DisplayQuestInfo->DisplayQuestInfo: void(bool) -> void(bool) const | 325:AddQuestInfoBarHealth->AddQuestInfoBarHealth: long(const CScriptThing&,const CRGBColour&,const CCharString&,float) -> long(const CScriptThing&,const CRGBColour&,const CCharString&,float) const | 376:Pause->Pause: void(float) -> void(float) const | 558:SetCreatureGeneratorsEnabled->SetCreatureGeneratorsEnabled: void(const CCharString&,bool) -> void(const CCharString&,bool) const | 697:StopOverrideMusic->StopOverrideMusic: void(bool) -> void(bool) const
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CleanUp_00e1d690.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const | 108:RemoveThing->RemoveThing: void(const CScriptThing&,bool,bool) -> void(const CScriptThing&,bool,bool) const | 440:SetVillageLimbo->SetVillageLimbo: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const | 697:StopOverrideMusic->StopOverrideMusic: void(bool) -> void(bool) const
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CutsceneScreamers_00e1cd40.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_DoMission_00e1c0f0.cpp DIFF 296:SetQuestCardObjective->SetQuestCardObjective: void(const CCharString&,const CCharString&,const CCharString&,const CCharString&) -> void(const CCharString&,const CCharString&,const CCharString&,const CCharString&) const | 440:SetVillageLimbo->SetVillageLimbo: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_Main_00e1a990.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseOne_00e1cfd0.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority) | 696:OverrideMusic->OverrideMusic: void(long,bool,bool) const -> void(EMusicSetType,bool,bool) const
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseTwo_00e1c580.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_WatchForLeaving_00e1c4d0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_WatchForTermination_00e1ad60.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 281:DeactivateQuestLater->DeactivateQuestLater: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 289:SetQuestAsFailed->SetQuestAsFailed: void(const CCharString&,bool,const CWideString&,bool) -> void(const CCharString&,bool,const CWideString&,bool) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/e2/CASAmbusher_Main_00e2fd30.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/e2/CMeetSisterMessenger_Main_00e292c0.cpp DIFF 108:RemoveThing->RemoveThing: void(const CScriptThing&,bool,bool) -> void(const CScriptThing&,bool,bool) const
+rebuild/src/compiled/00/e2/CQREscortTraderManagerScript_Main_00e24e10.cpp OK
+rebuild/src/compiled/00/e2/CQREscortTraderScript_ExpressionEnableFollow_00e242d0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e2/CQREscortTraderScript_ExpressionEnableWait_00e24450.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e2/CQREscortTraderScript_ForceDisableFollow_00e24090.cpp DIFF 89:SetTimer->SetTimer: void(long,long) const -> void(long,long)
+rebuild/src/compiled/00/e2/CQSGuardianTrophyDealerInfoScript_WaitForPieceOver_00e27ac0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 281:DeactivateQuestLater->DeactivateQuestLater: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/e2/CScytheMarker_Main_00e29f50.cpp OK
+rebuild/src/compiled/00/e2/CScytheNearOracle_Main_00e2a320.cpp OK
+rebuild/src/compiled/00/e2/CVAmbushScamScript_AssignMoralityEtcForEvilEnding_00e2bac0.cpp OK
+rebuild/src/compiled/00/e2/CVAmbushScamScript_AssignMoralityEtcForEvilEnding_00e2bb10.cpp OK
+rebuild/src/compiled/00/e2/NScriptCQREscortTraderManagerScript_Activate_00e255d0.cpp OK
+rebuild/src/compiled/00/e2/NScriptCVAmbushScamScript_WatchForAllAmbushersDead_00e2fc50.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/e3/CACDummyMoving_Init_00e33e00.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&,long) const -> CScriptThing(const CCharString&) const | 475:EntitySetFacingAngleTowardsThing->EntitySetFacingAngleTowardsThing: void(const CScriptThing&,const CScriptThing&) const -> void(const CScriptThing&,const CScriptThing&,bool) const
+rebuild/src/compiled/00/e3/CACDummyStatic_Init_00e33c90.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&,long) const -> CScriptThing(const CCharString&) const | 475:EntitySetFacingAngleTowardsThing->EntitySetFacingAngleTowardsThing: void(const CScriptThing&,const CScriptThing&) const -> void(const CScriptThing&,const CScriptThing&,bool) const
+rebuild/src/compiled/00/e3/CACDummyStatic_Main_00e369b0.cpp OK
+rebuild/src/compiled/00/e3/CAttackingAssassin_Init_00e38f80.cpp DIFF 465:EntityAttachToScript->EntityAttachToScript: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const | 477:SetThingPersistent->SetThingPersistent: void(const CScriptThingRuntime&,bool) const -> void(const CScriptThing&,bool) const | 512:EntitySetCutsceneBehaviour->EntitySetCutsceneBehaviour: void(const CScriptThingRuntime&,long) const -> void(const CScriptThing&,ECutsceneBehaviour) const | 622:EntitySetAsOpinionSource->EntitySetAsOpinionSource: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/e3/CAttackingAssassin_Main_00e383a0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e3/CBordelloEntrance_Main_00e3b4a0.cpp OK
+rebuild/src/compiled/00/e3/CMACDummyStatic_Main_00e338e0.cpp OK
+rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e3/NScriptCVAmbushScamScript_WatchForTricksterComplete_00e32200.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 361:ClearThingHasInformation->ClearThingHasInformation: void(const CScriptThing&) -> void(const CScriptThing&) const
+rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_AddArcheryQuestInfo_00e33040.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_DoTimesUp_00e36590.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_RemoveArcheryQuestInfo_00e32ef0.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_UpdateHighScore_00e33000.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_WatchForAttack_00e36390.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloLady_Init_00e3ac70.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVBordelloScript_CVBordelloScript_00e398f0.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVBordelloScript_WatchForBordelloStatus_00e3a030.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 12:IsRegionLoaded->IsRegionLoaded: bool(const CCharString&) -> bool(const CCharString&) const
+rebuild/src/compiled/00/e3/NScriptCVBordelloScript_WatchForDeedStatus_00e3a150.cpp OK
+rebuild/src/compiled/00/e4/CGuildSealWarning_Main_00e4b010.cpp OK
+rebuild/src/compiled/00/e4/CMBanditLeader_Main_00e4a740.cpp OK
+rebuild/src/compiled/00/e4/CMTauntingBandit_Main_00e4b430.cpp OK
+rebuild/src/compiled/00/e4/CMTollBandit_Main_00e48a30.cpp OK
+rebuild/src/compiled/00/e4/CTollBandit_Init_00e48bf0.cpp OK
+rebuild/src/compiled/00/e4/CTollBandit_ShouldIFlee_00e4df20.cpp OK
+rebuild/src/compiled/00/e4/CVBordelloScript_IsHeroWearingTash_00e44cc0.cpp OK
+rebuild/src/compiled/00/e5/CMBodyGuardRespawn_Main_00e5e0c0.cpp OK
+rebuild/src/compiled/00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50650.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&()
+rebuild/src/compiled/00/e5/CVBeardyBaldyScript_GoTalkToBeardyBaldy_00e50e40.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&()
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_IsHeroWearingAnyOddHairdo_00e53ad0.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_IsHeroWearingAnyTash_00e538f0.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForAttack_00e53d90.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&()
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForBeardyBaldyDeath_00e503d0.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const
+rebuild/src/compiled/00/e5/NScriptCVBodyGuardScript_CVBodyGuardScript_00e5d140.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBodyGuardScript_HenchmanDeductWages_00e5d9a0.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBodyGuardScript_OnPersist_00e5d300.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_AddGossip_00e55c60.cpp OK
+rebuild/src/compiled/00/e6/CCOEVictim_Main_00e6b400.cpp OK
+rebuild/src/compiled/00/e6/CSpectator_Init_00e63730.cpp OK
+rebuild/src/compiled/00/e6/CVChapelOfEvilScript_DoMission_00e6a7f0.cpp OK
+rebuild/src/compiled/00/e6/CVChapelOfEvilScript_EndMission_00e6a9e0.cpp OK
+rebuild/src/compiled/00/e6/CVChapelOfEvilScript_WatchForWeaponUnsheathed_00e6a340.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_TortureVictim_00e6da80.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForExpressions_00e6a000.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForRegionEntry_00e6b750.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_Main_00e64df0.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_LookAfterOrganiser_00e631f0.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_Main_00e62a00.cpp OK
+rebuild/src/compiled/00/e6/NScriptCVDemonDoorsScript_FadeOutFaceAndOpenDoor_00e6f040.cpp OK
+rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_Main_00e7f410.cpp OK
+rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RemoveFishermen_00e7fb80.cpp OK
+rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RespawnFishermen_00e7f7f0.cpp OK
+rebuild/src/compiled/00/e7/CDFThreeSuits_DressedAsBandit_00e72f00.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 187:IsWearingClothingItem->IsWearingClothingItem: bool(const CScriptThing&,const CCharString&) -> bool(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/e7/CEMFlashLightPoint_Main_00e76920.cpp OK
+rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e7/CGameflowScript_DeclareGossipCategories_00e76040.cpp OK
+rebuild/src/compiled/00/e7/CHHCellarDoor_Main_00e768b0.cpp OK
+rebuild/src/compiled/00/e7/CQBanditCampScript_WatchForEndOfScript_00e75ef0.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_CheckLampSlot_00e76ca0.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_EndMission_00e7b050.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_Main_00e75ba0.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_PhaseFive_00e7a740.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_PhaseThree_00e7a9f0.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_PhaseTwo_00e7a5c0.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVFishingCompetitionScript_Main_00e7e370.cpp OK
+rebuild/src/compiled/00/e8/CFisticuffsClubRing_Main_00e82950.cpp OK
+rebuild/src/compiled/00/e8/CRingFighter_Main_00e8b020.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority)
+rebuild/src/compiled/00/e8/CVFisticuffsClubScript_IsKnotholeGladeNotAPunchClub_00e84a20.cpp OK
+rebuild/src/compiled/00/e8/CVGhostGrannyNecklaceScript_Main_00e8b9c0.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFishingCompetitionScript_Alloc_00e81eb0.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFishingCompetitionScript_SuspendCompetition_00e80c00.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 12:IsRegionLoaded->IsRegionLoaded: bool(const CCharString&) -> bool(const CCharString&) const
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScript_AddQuestInfo_00e8af70.cpp DIFF 321:DisplayQuestInfo->DisplayQuestInfo: void(bool) -> void(bool) const | 324:AddQuestInfoBar->AddQuestInfoBar: long(float,float,const CRGBColour&,const CRGBColour&,const CCharString&,const CCharString&,float) -> long(float,float,const CRGBColour&,const CRGBColour&,const CCharString&,const CCharString&,float) const
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScript_CVFisticuffsClubScript_00e81f60.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScript_FisticuffsChallenge_00e86e60.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScript_InitialiseVariables_00e82650.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScript_KeepVariablesUpToDate_00e824e0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScript_CheckBanditDead_00e8cf40.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScript_CreateBandit_00e8cb40.cpp OK
+rebuild/src/compiled/00/e9/CHHUndead_Init_00e95d80.cpp OK
+rebuild/src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp OK
+rebuild/src/compiled/00/e9/CMHeroInsideHouse_Main_00e96660.cpp OK
+rebuild/src/compiled/00/e9/CMHiddenBooty_Init_00e93080.cpp OK
+rebuild/src/compiled/00/e9/CSpectator_Main_00e998f0.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/e9/CTrophiesBriarTrophy_Main_00e9d800.cpp DIFF 7:Update->NewScriptFrame: void() -> void() const | 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 108:RemoveThing->RemoveThing: void(const CScriptThing&,bool,bool) -> void(const CScriptThing&,bool,bool) const
+rebuild/src/compiled/00/e9/CVHeroDuelScript_WatchForHeroEnteringCave_00e9a270.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScript_CheckRegionLeaving_00e953e0.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVHeroDollsScript_HeroHasAllDolls_00e97fd0.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVHeroDollsScript_HeroHasAnyDolls_00e98200.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_CleanUpHeroDuel_00e98fb0.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority) | 512:EntitySetCutsceneBehaviour->EntitySetCutsceneBehaviour: void(const CScriptThing&,long) const -> void(const CScriptThing&,ECutsceneBehaviour) const
+rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_ShowEnemyHealth_00e99470.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_WatchForAttack_00e9dc80.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20.cpp OK
+rebuild/src/compiled/00/e9/NScriptCVKnotholeGladeGatesScript_WatchForTermination_00e9fef0.cpp OK
+rebuild/src/compiled/00/ea/CLostTraderTrader_MakeRandomComment_00ea4de0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/ea/CMurderTwistSheriff_Main_00eaef30.cpp OK
+rebuild/src/compiled/00/ea/CVBeardyBaldyScript_WatchForQuestFinished_00ea3490.cpp OK
+rebuild/src/compiled/00/ea/CVLostTraderScript_WatchForQuestFailureState_00ea7460.cpp OK
+rebuild/src/compiled/00/ea/CVMurderTwistFinalScript_CVMurderTwistFinalScript_00eae910.cpp OK
+rebuild/src/compiled/00/ea/CVMurderTwistScript_Main_00ea8830.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScript_DoMission_00ea1090.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScript_DoPanicBanter_00ea1ec0.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScript_EndMission_00ea1360.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScript_WatchForGates_00ea12e0.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVMazeResearchScript_CVMazeResearchScript_00ea76e0.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_MagicRuneProcess_00ea8c20.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistAssassin_OnPredicateFail_00eb3d10.cpp DIFF 121:GiveHeroObject->GiveHeroObject: void(const CCharString&,long,bool) -> void(const CCharString&,long,bool) const | 156:GiveHeroMorality->GiveHeroMorality: void(float) -> void(float) const | 161:GiveHeroRenownPoints->GiveHeroRenownPoints: void(long) -> void(long) const
+rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistSheriff_Init_00eb1ec0.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistSheriff_Init_00eb6200.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_DoMission_00eb75f0.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_MonitorThunderHeroDuel_00eb70f0.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_WatchExposeMayorProgress_00eb94a0.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_Init_00eb3e40.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Init_00eb2070.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScript_DoesAssassinTrustHero_00eb03a0.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScript_WaitForEnflameReactionIfNecessary_00eb0700.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 90:GetTimer->GetTimer: long(long) -> long(long) const | 131:SetHeroWillAsUsable->SetHeroWillAsUsable: void(bool) -> void(bool) const
+rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScript_CheckForNecklaceAndQuit_00ebf1e0.cpp OK
+rebuild/src/compiled/00/ec/CMRTFERockTrollTrigger_Main_00ec42f0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/ec/CSickChildFishingSpot_Main_00ecd530.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVRandomPopulationSimScript_ProcessAlbionPopulationSim_00ec2240.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScript_Main_00ec3d40.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScript_WatchForRockTrollHit_00ec5140.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScript_WatchForRockTrollKilled_00ec5010.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_OnPredicateFail_00ecd390.cpp DIFF 121:GiveHeroObject->GiveHeroObject: void(const CCharString&,long,bool) -> void(const CCharString&,long,bool) const | 156:GiveHeroMorality->GiveHeroMorality: void(float) -> void(float) const
+rebuild/src/compiled/00/ed/CStatueMasterCellarDoors_Main_00ed45a0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 40:MsgIsGameInfoClickedPast->MsgIsGameInfoClickedPast: bool() -> bool() const | 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 115:DisplayGameInfo->DisplayGameInfo: void(const CCharString&) -> void(const CCharString&) const | 518:EntitySetAsLocked->EntitySetAsLocked: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const
+rebuild/src/compiled/00/ed/CStatueMasterChest_Main_00ed4830.cpp OK
+rebuild/src/compiled/00/ed/CStatueMasterStatue_Main_00ed41d0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const | 474:EntitySetFacingAngle->EntitySetFacingAngle: void(const CScriptThing&,float,bool) -> void(const CScriptThing&,float,bool) const | 512:EntitySetCutsceneBehaviour->EntitySetCutsceneBehaviour: void(const CScriptThing&,long) -> void(const CScriptThing&,ECutsceneBehaviour) const | 714:SetReadableObjectTextTag->SetReadableObjectTextTag: void(const CScriptThing&,const CCharString&) -> void(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/ed/CVChapelOfEvilScript_DoMission_00edc450.cpp OK
+rebuild/src/compiled/00/ed/CWomanToAttract_DoLeavingCutscene_00ed0b10.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/ed/NScriptCVSingingStonesScript_Main_00ed10a0.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVSingingStonesScript_WatchForRegionLeaving_00ed2a50.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_Main_00ed4d20.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInArmour_00ed9cf0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 187:IsWearingClothingItem->IsWearingClothingItem: bool(const CScriptThing&,const CCharString&) -> bool(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_IsHeroDressedInWillRobe_00eda0c0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() -> CScriptThing&() | 187:IsWearingClothingItem->IsWearingClothingItem: bool(const CScriptThing&,const CCharString&) -> bool(const CScriptThing&,const CCharString&) const
+rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_ProcessSongsMarriage_00edaba0.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_WatchForAttack_00ed9790.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_EndMission_00edc640.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteExit_00edd060.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForInsideTemple_00edbd80.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForWeaponUnsheathed_00edc010.cpp OK
+rebuild/src/compiled/00/ee/CCSOakValeRevisitedScript_OakValeFire_00ee8870.cpp OK
+rebuild/src/compiled/00/ee/CGlobalOpenChestScript_Main_00eec890.cpp DIFF 588:GetItemDefNamesFromContainer->GetItemDefNamesFromContainer: void(const CScriptThing&,CCharStringVector&) -> void(const CScriptThing&,vector<CCharString>&) const
+rebuild/src/compiled/00/ee/CStopDrawing_Main_00eed8b0.cpp OK
+rebuild/src/compiled/00/ee/CTHTriggerOakvaleGossip_Main_00ee06b0.cpp OK
+rebuild/src/compiled/00/ee/CTHTriggerOakvale_Main_00ee0a20.cpp OK
+rebuild/src/compiled/00/ee/CTestTheInventoryScript_Main_00eeea90.cpp OK
+rebuild/src/compiled/00/ee/CTestTheInventoryScript_TestForLampOff_00eeed20.cpp OK
+rebuild/src/compiled/00/ee/CTrophyDealerInCave_Main_00ee76f0.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&() | 281:DeactivateQuestLater->DeactivateQuestLater: void(const CCharString&,unsigned long) -> void(const CCharString&,unsigned long) const | 288:SetQuestAsCompleted->SetQuestAsCompleted: void(const CCharString&,bool,bool,bool) -> void(const CCharString&,bool,bool,bool) const | 558:SetCreatureGeneratorsEnabled->SetCreatureGeneratorsEnabled: void(const CCharString&,bool) -> void(const CCharString&,bool) const
+rebuild/src/compiled/00/ee/CVTrophyDealerScript_HilightGuildTeleporter_00ee71a0.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForGuideKilled_00ee4a70.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const
+rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForNoFollowers_00ee6a40.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,CScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_DoConversation_00ee2a80.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_GossipSetup_00ee07e0.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_PlayCutscene_00ee2db0.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority)
+rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp DIFF 91:CreateCreature->CreateCreature: CScriptThingLocal(const CCharString&,const C3DVector&,const CCharString&,bool) const -> CScriptThing(const CCharString&,const C3DVector&,const CCharString&,bool) const
+rebuild/src/compiled/00/ef/CBeggar_Main_00ef3200.cpp OK
+rebuild/src/compiled/00/ef/CCham_Main_00ef3aa0.cpp OK
+rebuild/src/compiled/00/ef/CCham_Main_00ef84d0.cpp OK
+rebuild/src/compiled/00/ef/CCrateDeathMarker_Main_00ef12f0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp OK
+rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp OK
+rebuild/src/compiled/00/ef/CGuildSealTrigger_Main_00efbe20.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/ef/CMRestartMarker_Main_00ef34a0.cpp OK
+rebuild/src/compiled/00/ef/CProximityPodium_Main_00efb360.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 376:Pause->Pause: void(float) -> void(float) const
+rebuild/src/compiled/00/ef/CShowTargetedThingHealthScript_ShowTargetedThingsHealth_00eff930.cpp OK
+rebuild/src/compiled/00/ef/CSwordChest_Main_00ef2290.cpp OK
+rebuild/src/compiled/00/ef/CTestPos_Main_00ef3840.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 508:EntityUnsheatheMeleeWeapon->EntityUnsheatheMeleeWeapon: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const | 509:EntityUnsheatheRangedWeapon->EntityUnsheatheRangedWeapon: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const
+rebuild/src/compiled/00/ef/CTonyTestScriptsScript_AddQuestsToGuild_00eff1c0.cpp DIFF 292:AddQuestCard->AddQuestCard: void(const CCharString&,const CCharString&,bool,bool) -> void(const CCharString&,const CCharString&,bool,bool) const
+rebuild/src/compiled/00/ef/CTrappedMan_Main_00ef1e10.cpp DIFF 112:AddScreenMessage->AddScreenMessage: void(const CCharString&,long) const -> void(const CCharString&,ETextGroupSelectionMethod) const
+rebuild/src/compiled/00/ef/NScriptCGuildSealTriggerTestScript_Main_00efbca0.cpp OK
+rebuild/src/compiled/00/ef/NScriptCHeroTurningDebuggerScript_Main_00efc260.cpp OK
+rebuild/src/compiled/00/ef/NScriptCHitSwitchTestScript_Main_00efb740.cpp OK
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThingLocal(const CCharString&) const -> CScriptThing(const CCharString&) const | 376:Pause->Pause: void(float) -> void(float) const
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Main_00ef5cb0.cpp OK
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Init_00ef49a0.cpp DIFF 72:GetThingWithScriptName->GetThingWithScriptName: CScriptThing(const CCharString&) -> CScriptThing(const CCharString&) const
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_ChangeAlpha_00ef8bc0.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const | 510:EntitySetAlpha->EntitySetAlpha: void(const CScriptThing&,float,bool) -> void(const CScriptThing&,float,bool) const | 654:GetConstantFPS->GetConstantFPS: long() -> long() const
+rebuild/src/compiled/00/ef/NScriptCProximityPodiumTestScript_Main_00efb1e0.cpp OK
+rebuild/src/compiled/00/ef/NScriptCguyscriptScript_Main_00efa010.cpp OK
+rebuild/src/compiled/00/f0/CATBanditAlly_SwitchBanditAllegience_00f079d0.cpp OK
+rebuild/src/compiled/00/f0/CATConvoyMember_Init_00f08c30.cpp DIFF 70:GetHero->GetHero: CScriptThingRuntime&() -> CScriptThing&() | 350:MiniMapAddMarker->MiniMapAddMarker: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const | 597:EntitySetThingAsEnemyOfThing->EntitySetThingAsEnemyOfThing: void(const CScriptThingRuntime&,const CScriptThingRuntime&) const -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/f0/CATPhase1Archer_Init_00f08a30.cpp DIFF 70:GetHero->GetHero: CScriptThingRuntime&() -> CScriptThing&() | 597:EntitySetThingAsEnemyOfThing->EntitySetThingAsEnemyOfThing: void(const CScriptThingRuntime&,const CScriptThingRuntime&) const -> void(const CScriptThing&,const CScriptThing&) const | 637:EntitySetAsAwareOfThing->EntitySetAsAwareOfThing: void(const CScriptThingRuntime&,const CScriptThingRuntime&) const -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp OK
+rebuild/src/compiled/00/f0/CQCinemaTestScript_EndMission_00f02100.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_AddBanditHealthBar_00f07a80.cpp DIFF 321:DisplayQuestInfo->DisplayQuestInfo: void(bool) -> void(bool) const | 325:AddQuestInfoBarHealth->AddQuestInfoBarHealth: long(const CScriptThing&,const CRGBColour&,const CCharString&,float) -> long(const CScriptThing&,const CRGBColour&,const CCharString&,float) const
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_AskBanditHireQuestion_00f07ed0.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_BanditHireSetup_00f081e0.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_DoQuest_00f0b130.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_Intro_00f0bb10.cpp DIFF 70:GetHero->GetHero: CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_PhaseOne_00f0b780.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_ProcessInitialSpyExtraction_00f0f680.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_SetBanditAllegiences_00f060d0.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,vector<CScriptThing>&) -> long(const CCharString&,vector<CScriptThing>&) const | 597:EntitySetThingAsEnemyOfThing->EntitySetThingAsEnemyOfThing: void(const CScriptThing&,const CScriptThing&) -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForArcherSpawnConditions_00f0f910.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditSpeechTimer_00f035e0.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditsDeath_00f0b960.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnBandit_00f061e0.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnContact_00f09950.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForHeroAttackOnSentry_00f09260.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForQuestSuccess_00f0a470.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForRegionChange_00f058d0.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForRegionClear_00f09cd0.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForSpySpeechMarkers_00f0ef60.cpp DIFF 364:AddNewConversation->AddNewConversation: long(const CScriptThing&,bool,bool) -> long(const CScriptThing&,bool,bool) const | 365:AddPersonToConversation->AddPersonToConversation: void(long,const CScriptThing&) -> void(long,const CScriptThing&) const | 366:AddLineToConversation->AddLineToConversation: void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) -> void(long,const CCharString&,bool,const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForSpySpeechTimer_00f036c0.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_DoMission_00f01eb0.cpp DIFF 268:GiveHeroNewQuestObjective->GiveHeroNewQuestObjective: void(const CCharString&,bool) const -> void(const CCharString&,unsigned long) const
+rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_PhaseOne_00f02170.cpp OK
+rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_WatchForLeaving_00f02030.cpp OK
+rebuild/src/compiled/00/f1/CArenaSpawn_Main_00f1b690.cpp DIFF 7:NewScriptFrame->NewScriptFrame: void() -> void() const
+rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp OK
+rebuild/src/compiled/00/f1/NScriptCQArenaScriptCFlick_Init_00f14a30.cpp OK
+rebuild/src/compiled/00/f1/NScriptCQArenaScriptCNeedle_Init_00f15600.cpp OK
+rebuild/src/compiled/00/f1/NScriptCQArenaScriptCRoth_Init_00f14610.cpp OK
+rebuild/src/compiled/00/f1/NScriptCQArenaScriptCShadow_Init_00f16250.cpp OK
+rebuild/src/compiled/00/f2/NScriptCQArenaScript_GivePrizeFund_00f21300.cpp OK
+rebuild/src/compiled/00/cf/CLadyGreyWifeManagerScript_Main_00cf8a70.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Init_00d04a60.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_Init_00d059e0.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_Init_00d060b0.cpp OK
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Init_00d07410.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangGruntSpawn_Init_00d154a0.cpp OK
+rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCDisplacedTrader_Init_00d1fce0.cpp OK
+rebuild/src/compiled/00/d7/CHTGAmbushPointBackup_Main_00d73c70.cpp OK
+rebuild/src/compiled/00/da/CNOVIBully_Init_00daed30.cpp OK
+rebuild/src/compiled/00/db/COakValeBanditRaidBandit_Init_00dbfea0.cpp OK
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_PostAttackStuff_00dbeb20.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority) | 698:CacheMusicSet->CacheMusicSet: void(long) const -> void(EMusicSetType) const
+rebuild/src/compiled/00/dc/CTeamSpawn_Init_00dcd1d0.cpp OK
+rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoor_Main_00dd8fd0.cpp OK
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCCampHostageDoor_Main_00dfc050.cpp OK
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTraderToRescue_Init_00dfb1b0.cpp OK
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForRegionTransitions_00dfc920.cpp DIFF 593:EntitySetSleepEnabled->EntitySetSleepEnabled: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCEndTrader_Init_00e04b50.cpp OK
+rebuild/src/compiled/00/e0/NScriptCQUndeadRisingScript_LookAfterHealth_00e0dbb0.cpp OK
+rebuild/src/compiled/00/e1/CQWizardBattleScript_CQWizardBattleScript_00e1a800.cpp OK
+rebuild/src/compiled/00/e1/NScriptCQWaspBossScriptCGratefulVillagerSpawn_Main_00e10a90.cpp OK
+rebuild/src/compiled/00/e2/CASBuddy_Init_00e2bfa0.cpp DIFF 784:SetScriptingStateGroup->SetScriptingStateGroup: void(CScriptThing,long) -> void(CScriptThing,EScriptingStateGroups)
+rebuild/src/compiled/00/e2/CASTrickster_Init_00e2bd80.cpp OK
+rebuild/src/compiled/00/e2/CScytheNearOracle_Init_00e2a0f0.cpp OK
+rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Init_00e26bd0.cpp OK
+rebuild/src/compiled/00/e2/NScriptCQSGuardianSisterInfoScriptCMazeAtTavern_OnPredicateFail_00e25d30.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloClient_Init_00e3b1a0.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCBordelloGuard_Init_00e3af30.cpp OK
+rebuild/src/compiled/00/e3/NScriptCVBordelloScriptCMagicman_Init_00e3b060.cpp OK
+rebuild/src/compiled/00/e4/CTauntingBandit_Init_00e48eb0.cpp OK
+rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBanditLeader_Init_00e4a940.cpp OK
+rebuild/src/compiled/00/e4/NScriptCVBanditTollScriptCBlockingBandit_Init_00e49900.cpp OK
+rebuild/src/compiled/00/e5/CHenchmanRegionEntranceComment_Main_00e5f6b0.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScriptCBBBeardyBaldyMan_Init_00e50890.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_SetWanderPointAndDistance_00e53f60.cpp DIFF 784:SetScriptingStateGroup->SetScriptingStateGroup: void(CScriptThing,long) -> void(CScriptThing,EScriptingStateGroups)
+rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_CBodyGuard_00e5dde0.cpp OK
+rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPredicateFail_00e5fb80.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMRhodri_Init_00e766a0.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScriptCEMSuspiciousVillager_Init_00e76410.cpp OK
+rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFishermanBulletinBoard_Main_00e7bca0.cpp OK
+rebuild/src/compiled/00/e8/CFishCompOrganiser_Initialize_00e81d10.cpp DIFF 360:SetThingHasInformation->SetThingHasInformation: void(const CScriptThing&,bool,bool,bool) -> void(const CScriptThing&,bool,bool,bool) const | 465:EntityAttachToScript->EntityAttachToScript: void(const CScriptThing&,const CCharString&) -> void(const CScriptThing&,const CCharString&) const | 477:SetThingPersistent->SetThingPersistent: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const | 529:EntitySetAsUseMovementInActions->EntitySetAsUseMovementInActions: void(const CScriptThing&,bool) -> void(const CScriptThing&,bool) const | 655:GetActiveQuestName->GetActiveQuestName: CCharString() -> CCharString() const
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_CFisticuffsMember_00e83920.cpp OK
+rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCTyler_Init_00e836f0.cpp OK
+rebuild/src/compiled/00/e9/NScriptCBriarRose_Init_00e9dac0.cpp DIFF 350:MiniMapAddMarker->MiniMapAddMarker: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const | 360:SetThingHasInformation->SetThingHasInformation: void(const CScriptThingRuntime&,bool,bool,bool) const -> void(const CScriptThing&,bool,bool,bool) const | 506:EntitySheatheWeapons->EntitySheatheWeapons: void(const CScriptThingRuntime&,bool) const -> void(const CScriptThing&,bool) const | 517:EntitySetAsKillable->EntitySetAsKillable: void(const CScriptThingRuntime&,bool,bool) const -> void(const CScriptThing&,bool,bool) const | 622:EntitySetAsOpinionSource->EntitySetAsOpinionSource: void(const CScriptThingRuntime&,const CCharString&) const -> void(const CScriptThing&,const CCharString&) const | 844:SetIsPushableByHero->SetIsPushableByHero: void(CScriptThingRuntime,bool) -> void(CScriptThing,bool)
+rebuild/src/compiled/00/e9/NScriptCVGuildMasterScriptCGuildMasterGameFlow_Init_00e909a0.cpp OK
+rebuild/src/compiled/00/ea/CMurderTwistSheriff_Init_00eaee80.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGVillagerOutside_Init_00ea0030.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_Init_00ea35a0.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVMurderTwistFinalScriptCMurderTwistSheriff_OnPredicateFail_00eaee10.cpp OK
+rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Init_00eae820.cpp OK
+rebuild/src/compiled/00/eb/CMurderTwistAssassinGuard_Init_00eb5500.cpp DIFF 70:GetHero->GetHero: const CScriptThing&() const -> CScriptThing&()
+rebuild/src/compiled/00/eb/CMurderTwistSheriff_Init_00eb53a0.cpp OK
+rebuild/src/compiled/00/eb/NScriptCVParanoidWhispersScriptCSecretWhisperingMan_Init_00ebfbb0.cpp OK
+rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Main_00ec0ba0.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_OnPredicateFail_00ec8230.cpp OK
+rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWitch_Init_00ec80c0.cpp OK
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScriptCTOLAltarGood_Main_00edc390.cpp OK
+rebuild/src/compiled/00/ee/CStopDrawing_Main_00ee36a0.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_MoveToNextWaypoint_00ee6850.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_OnPredicateFail_00ee0350.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Main_00ee3fc0.cpp OK
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_ThunderChatter_00ee29d0.cpp OK
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp OK
+rebuild/src/compiled/00/f0/CATPhase3Archer_Main_00f04cc0.cpp DIFF 8:StartScriptingEntity->StartScriptingEntity: bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,long) -> bool(const CScriptThing&,CScriptGameResourceObjectScriptedThingBase&,EScriptAIPriority)
+rebuild/src/compiled/00/f0/NScriptCATPhase1Guard_Init_00f083a0.cpp DIFF 70:GetHero->GetHero: const CScriptThingRuntime&() const -> CScriptThing&() | 597:EntitySetThingAsEnemyOfThing->EntitySetThingAsEnemyOfThing: void(const CScriptThingRuntime&,const CScriptThingRuntime&) const -> void(const CScriptThing&,const CScriptThing&) const
+rebuild/src/compiled/00/f1/NScriptCQArenaScript_AnimateCrowd_00f1ec70.cpp DIFF 75:GetAllThingsWithScriptName->GetAllThingsWithScriptName: long(const CCharString&,ScriptThingVector&) const -> long(const CCharString&,vector<CScriptThing>&) const

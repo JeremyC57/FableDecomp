@@ -21,13 +21,8 @@ class CCharString { public:
     CCharString();                                  // 0x0099E4B0
     CCharString(const char* text, long length);     // 0x0099EBF0
 };
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                        // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CConsoleCommandLine : public CBaseClass { public:                // vtable 0x0129C400
-    virtual void v00();
     CCharString CurrentEntry;                       // +0x04
     bool        UserEntry;                          // +0x08
     long        CursorPosition;                     // +0x0c

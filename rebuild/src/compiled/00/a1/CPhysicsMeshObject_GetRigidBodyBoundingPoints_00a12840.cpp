@@ -49,16 +49,13 @@ struct CScaleElements {
 };
 CScaleElements __fastcall ForEach_ScaleElements(C3DVector* first, C3DVector* last, CScaleElements f);   // 0x00A13440
 
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38
     float OO_Scale;                                // +0x3c
-    virtual void v00();
     void GetRigidBodyBoundingPoints(C3DVectorVector& points) const;
 };
 

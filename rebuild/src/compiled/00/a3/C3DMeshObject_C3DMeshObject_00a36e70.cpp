@@ -16,11 +16,7 @@ class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CMatrix3x4 { public: float m[12]; };
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                               // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CCountedPointer {
     void* m_pObject;                       // +0
@@ -29,7 +25,6 @@ struct CCountedPointer {
 };
 
 class C3DMeshObject : public CBaseClass { public:
-    virtual void v00();                    // own vtable (0x01239860)
     C3DMeshInfo*    MeshInfo;              // +0x4
     CCountedPointer Mesh;                  // +0x8
     CMatrix3x4      PositionMatrix;        // +0x10

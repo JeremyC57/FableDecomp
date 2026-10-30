@@ -8,16 +8,11 @@
 // CBaseClass-derived {first register, register count} range whose implicit assignment copies the two words interleaved
 // with the temporary's own stores, then the temporary's destructor. The ranges live in the base layout at +0xd4 and +0x10;
 // the engine header (engine/CEngineVSConstantLayoutLightsBones.h) is a flattened 0x150-byte pad, so they are modelled locally.
-class CBaseClass { public:
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CShaderConstantRange : public CBaseClass { public:         // vtable 0x0129A04C
     long m_firstRegister;                          // +0x04
     long m_registerCount;                          // +0x08
-    virtual void v00();
     CShaderConstantRange(long firstRegister, long registerCount) : CBaseClass(), m_firstRegister(firstRegister), m_registerCount(registerCount) { }
 };
 

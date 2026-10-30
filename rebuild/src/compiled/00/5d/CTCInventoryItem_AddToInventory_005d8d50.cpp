@@ -9,11 +9,7 @@
 // Shape: the owner thing is read into a local that dies at the call (so it is loaded into eax before the four pass-through
 // arguments are re-pushed as dwords through ecx), later uses re-read the member; the result rides in bl (`xor bl,bl` / `mov bl,1`);
 // both arms end in their own Kill + epilogue (the persistent arm falls out of the `if`, the other arms share the tail).
-class CBaseClass { public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace NTCMessages {
 class CMessageOnPickup : public CBaseClass { public:             // vtable 0x012554E0
     virtual void v01();                            // slot 1 @ 0x005D8CB0

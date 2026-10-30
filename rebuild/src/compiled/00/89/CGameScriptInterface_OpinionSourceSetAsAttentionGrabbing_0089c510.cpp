@@ -76,11 +76,10 @@ public:
     unsigned char _pad00[0x77];
     bool          ReactNonstopFlag;                       // +0x77 (Ego_r +0x7B, minus 4 for the DefStack vector)
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void OpinionSourceSetAsAttentionGrabbing(const CScriptThing& thing, bool grabbing) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::OpinionSourceSetAsAttentionGrabbing(const CScriptThing& thing, bool grabbing) const
 {
     CThing* t = thing.GetThing();

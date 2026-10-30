@@ -11,10 +11,7 @@
 // constructor: base call, vtable, and the data pointer as a CIVCountedPointer MEMBER OBJECT with its own inline
 // constructor (its zero store follows the vtable store; a plain `Data(0)` initialiser or body assignment of a raw
 // pointer is scheduled before it).
-class CBaseClass { public:                                         // vtable 0x01231710
-    CBaseClass();                                           // 0x0099A2D0
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer {                                  // CIVCountedPointer<CEnginePersistentPrimitiveBase>
@@ -25,7 +22,6 @@ struct CIVCountedPointer {                                  // CIVCountedPointer
 class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598, 8 bytes
     CIVCountedPointer Data;                                 // +0x04
     CEnginePrimitiveHandle() { }
-    virtual void v00();
 };
 
 class C3DVector { public:

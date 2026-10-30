@@ -21,7 +21,7 @@ struct CFontBufferArray {
  ~CFontBufferArray(){if(Begin)free(Begin);} //00bfea14 is MSVCR71 free
 };
 // Native RTTI129BA38: CFontManager -> CBaseClassNonCopyable -> CBaseClass.
-class CBaseClass { public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CBaseClassNonCopyable:CBaseClass {virtual ~CBaseClassNonCopyable();}; //0099A300
 class CFontManager:public CBaseClassNonCopyable { public:
  CFontManager(const CCharString&,const CCharString&); //fablewin124255,030A2F20

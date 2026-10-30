@@ -75,11 +75,10 @@ class CTCTargetingBase {
 public:
     void SetPScriptOverrideRangedTarget(CThing* target);   // 0x008ABB50
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void EntityClearRangedTarget(const CScriptThing& thing) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntityClearRangedTarget(const CScriptThing& thing) const
 {
     if (thing.IsValid()) {

@@ -11,7 +11,7 @@
 class C3DVector{public:float X,Y,Z;__forceinline C3DVector(const C3DVector&v):X(v.X),Y(v.Y),Z(v.Z){}};
 #pragma pack(pop)
 class CThing;
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];protected:CBaseObject();virtual~CBaseObject();public:virtual void Validate()const;};
 enum EVillageTaskType{};
 class CVillageTaskBase:public CBaseObject{public:

@@ -10,11 +10,7 @@
 // 10.0f constant (one `mov eax` for +0x1c/+0x20) above the vtable store; the source is a plain initialiser
 // list in declaration order. No engine header exists for this class; the layout is modelled locally on
 // CAIStateGroupBase (0x14 bytes).
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                    // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CCharString { public:
     CCharString();                              // 0x0099E4B0
@@ -28,7 +24,6 @@ class CAIStateGroupBase : public CBaseClass { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    virtual void v00();
     CAIStateGroupBase() : CBaseClass(), Name() { }   // inlined here (out-of-line copy @ 0x008FD255)
 };
 

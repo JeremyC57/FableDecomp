@@ -15,10 +15,7 @@
 //   ebx), the STLport map header cleared/allocated/self-linked, PMasterData a body assignment stored last.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                             // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                 // {Data, Info}
     void* Data;
     void* Info;
@@ -26,7 +23,6 @@ struct CCountedPointerWords {                 // {Data, Info}
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
 class CBaseObject { public:                          // CBaseIntelligentPointer root

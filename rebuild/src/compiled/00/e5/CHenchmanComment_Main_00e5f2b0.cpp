@@ -15,10 +15,7 @@
 //   serves both loops (a per-loop index swaps the index/offset frame words).
 class CCharString;
 class C3DVector;
-class CBaseClass { public:                                     // vtable 0x01231710
- virtual void v00();
- CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
  void* Data;
@@ -28,7 +25,6 @@ struct CCountedPointer {                                // CCountedPointer<CScri
  CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
 };
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v00();
  virtual void v01();
  virtual CCharString GetDefName() const;                 // slot 2 (+0x08) 0x004AA8D0
  virtual CCharString GetDataString() const;              // slot 3 (+0x0c) 0x004AA900

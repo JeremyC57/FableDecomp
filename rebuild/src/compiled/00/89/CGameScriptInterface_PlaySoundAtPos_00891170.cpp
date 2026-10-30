@@ -51,9 +51,10 @@ class CMainGameComponent { public:
 extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
 extern unsigned long g_InvalidSoundHandle;          // 0x0129D25C
 
-class CGameScriptInterface { public:
-    virtual unsigned long PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 unsigned long CGameScriptInterface::PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const
 {

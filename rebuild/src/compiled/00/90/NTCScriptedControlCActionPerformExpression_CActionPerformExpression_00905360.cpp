@@ -24,11 +24,7 @@ struct CBaseClassNonCopyable {                      // the action root
     CBaseClassNonCopyable();                        // 0x0099A2F0
 };
 
-class CBaseClass { public:                                 // CScriptThing's root
-    virtual void v00();
-    CBaseClass();                                   // 0x0099A2D0
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct SCountBlock {
     long  m_references;                             // +0
@@ -55,7 +51,6 @@ struct CScriptThingPImp {                           // CCountedPointer<CScriptTh
 };
 class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    virtual void v00();
     CScriptThing() { }
     __forceinline ~CScriptThing() { }
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980

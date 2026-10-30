@@ -24,10 +24,7 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
 };
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
-class CBaseClass { public:                                     // vtable 0x01231710
-    virtual void v00();
-    ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct SCountBlock {
     long  m_references;                                 // +0
     void (__fastcall* m_pfnDestroy)(void*);             // +4

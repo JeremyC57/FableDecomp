@@ -1,0 +1,167 @@
+addr       parity           behav  name
+00431f90   WARN RELOC_NAME: ?_M_clear@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@IAEXXZ -> 0043211d labelled '_unattributed::ReleaseFirstMember_0043211d'
+00431f90   RELOCATION_MATCH PASS   operator=
+0043212b   RELOCATION_MATCH PASS   _M_allocate_and_copy
+0046eecf   RELOCATION_MATCH PASS   vector
+0046ef33   RELOCATION_MATCH PASS   _Vector_base
+009b20d0   MATCH            PASS   LowerBound
+009b2130   MATCH            PASS   LowerBound
+009b2550   MATCH            PASS   __uninitialized_copy
+  WARN leaf '??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z' matches no symbol in 009b2780.obj; graded the largest function
+  WARN leaf '??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z' matches no symbol in 009b2780.obj; graded the largest function
+009b2780   RELOCATION_MATCH PASS   CSubDefInfo>*>
+009b4d80   WARN RELOC_NAME: ??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@IAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z -> 009b2780 labelled 'std::vector<std::pair<unsigned long,CDefClassBase::CSubDefInfo> >::_M_allocate_and_copy<const std::pair<unsigned long,CDefClassBase::CSubDefInfo>*>'
+009b4d80   RELOCATION_MATCH PASS   reserve
+009b5af0   WARN RELOC_NAME: ??$__adjust_heap@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@HU12@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@std@@YIXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@HHU10@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@Z -> 009b2f30 labelled '_Adjust_heap<std::pair<unsigned_long,CRandomAppearanceMorph::CTextureMorph>*,int,std::pair<unsigned_long,class_CRandomAppearanceMorph::CTextureMorph>,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::_Adjust_heap<std::pair<unsigned_long,CRandomAppearanceMorph::CTextureMorph>*,int,std::pair<unsigned_long,class_CRandomAppearanceMorph::CTextureMorph>,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>'
+009b5af0   RELOCATION_MATCH PASS   sort_heap
+009b60d0   RELOCATION_MATCH PASS   _M_insert_overflow
+009b7930   RELOCATION_MATCH PASS   Insert
+00a10dc0   WARN SHARED_HEADER_AVAILABLE CSurface
+00a10dc0   RELOCATION_MATCH LINK_FAIL CRenderTarget
+00cf8a70   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cf8a70   WARN RELOC_NAME: ??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00cf8a70   RELOCATION_MATCH PASS   Main
+00cfee30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00cfee30   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cfee30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cfee30   RELOCATION_MATCH PASS   RemoveCursedTablets
+00cffb60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00cffb60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cffb60   RELOCATION_MATCH PASS   Main
+00d37530   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d37530   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d37530   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d37530   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d37530   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00d37530   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d37530   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieFull@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase'
+00d37530   RELOCATION_MATCH PASS   Main
+00d6aea0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d6aea0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d6aea0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6aea0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d6aea0   WARN RELOC_NAME: ??4CCountedPointer@@QAEAAU0@ABU0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d6aea0   RELOCATION_MATCH PASS   Main
+00d6b240   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d6b240   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d6b240   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6b240   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d6b240   RELOCATION_MATCH PASS   Main
+00d701c0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d701c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d701c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d701c0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d701c0   RELOCATION_MATCH PASS   Main
+00d72200   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d72200   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d72200   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d72200   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d72200   RELOCATION_MATCH PASS   Main
+00d72590   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d72590   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d72590   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d72590   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d72590   RELOCATION_MATCH PASS   Main
+00d7f880   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d7f880   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d7f880   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d7f880   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d7f880   RELOCATION_MATCH PASS   Main
+00d81c50   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d81c50   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d81c50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d81c50   RELOCATION_MATCH PASS   Main
+00d83fa0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d83fa0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d83fa0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d83fa0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d83fa0   WARN RELOC_NAME: ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ -> 007e72a0 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d83fa0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00d83fa0   RELOCATION_MATCH PASS   Main
+00db8300   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00db8300   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00db8300   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00db8300   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00db8300   RELOCATION_MATCH PASS   Main
+00dcf0b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00dcf0b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00dcf0b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dcf0b0   RELOCATION_MATCH PASS   Main
+00dd84b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00dd84b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00dd84b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd84b0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00dd84b0   RELOCATION_MATCH PASS   Main
+00df7bf0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00df7bf0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00df7bf0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00df7bf0   RELOCATION_MATCH PASS   Main
+00dfba60   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00dfba60   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00dfba60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dfba60   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00dfba60   RELOCATION_MATCH PASS   Main
+00e7e640   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e7e640   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e7e640   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7e640   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00e7e640   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e7e640   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e7e640   RELOCATION_MATCH PASS   Main
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ee1e40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee1e40   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ee1e40   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00ee1e40   WARN RELOC_NAME: ??0CScriptGameResourceObjectMovieBase@@QAE@XZ -> 006e7b60 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00ee1e40   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieBase@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase'
+00ee1e40   RELOCATION_MATCH PASS   Main
+00eec410   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00eec410   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eec410   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00eec410   RELOCATION_MATCH PASS   Main
+00ef45b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef45b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ef45b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ef45b0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ef45b0   RELOCATION_MATCH PASS   Main
+00efd740   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00efd740   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00efd740   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00efd740   RELOCATION_MATCH PASS   Main
+
+WINS: 34
+  00431f90 RELOCATION_MATCH std::vector::??4?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEAAV01@ABV01@@Z
+  0043212b RELOCATION_MATCH std::vector<std::pair<unsigned long, CDefClassBase::CSubDefInfo> >::_M_allocate_and_copy
+  0046eecf RELOCATION_MATCH std::vector::??0?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@
+  0046ef33 RELOCATION_MATCH std::_Vector_base::??0?$_Vector_base@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@
+  009b20d0 MATCH CVectorMap::?LowerBound@?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@ABK@Z
+  009b2130 MATCH CVectorMap::?LowerBound@?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QBEPBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@ABK@Z
+  009b2550 MATCH std::??$__uninitialized_copy@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@PAU12@@std@@YIPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@PAU10@00ABU__false_type@0@@Z
+  009b2780 RELOCATION_MATCH std::vector<std::pair<unsigned long,CDefClassBase::CSubDefInfo> >::??$_M_allocate_and_copy@PBU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@QAEPAU?$pair@KVCSubDefInfo@CDefClassBase@@@1@IPBU21@0@Z
+  009b4d80 RELOCATION_MATCH std::vector<std::pair<unsigned long,CDefClassBase::CSubDefInfo> >::?reserve@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@
+  009b5af0 RELOCATION_MATCH std::??$sort_heap@PAU?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@std@@YIXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@0@0V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@Z
+  009b60d0 RELOCATION_MATCH std::vector<std::pair<unsigned long, CDefClassBase::CSubDefInfo>>::?_M_insert_overflow@?$vector@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@V?$allocator@U?$pair@KVCSubDefInfo@CDefClassBase@@@std@@@2@@std@@IAEXPAU?$pair@KVCSubDefInfo@CDefClassBase@@@2@ABU32@ABU__false_type@2@I_N@Z
+  009b7930 RELOCATION_MATCH CVectorMap<unsigned long, CDefClassBase::CSubDefInfo, CKeyPairCompareLess<unsigned long, CDefClassBase::CSubDefInfo> >::?Insert@?$CVectorMap@KVCSubDefInfo@CDefClassBase@@V?$CKeyPairCompareLess@KVCSubDefInfo@CDefClassBase@@@@@@QAEXABKABVCSubDefInfo@CDefClassBase@@@Z
+  00cf8a70 RELOCATION_MATCH CLadyGreyWifeManagerScript::?Main@CLadyGreyWifeManagerScript@
+  00cfee30 RELOCATION_MATCH COracleTablet::RemoveCursedTablets
+  00cffb60 RELOCATION_MATCH CFinalTabletSarcophagus::Main
+  00d37530 RELOCATION_MATCH CFH_Villager::Main
+  00d6aea0 RELOCATION_MATCH CHTE_AssaultGuard::Main
+  00d6b240 RELOCATION_MATCH CHTE_Audience::Main
+  00d701c0 RELOCATION_MATCH CHTG_FreedomFighter::Main
+  00d72200 RELOCATION_MATCH CHTG_Audience::Main
+  00d72590 RELOCATION_MATCH CHTG_Boss::Main
+  00d7f880 RELOCATION_MATCH CHSA_ScreamingVillager::?Main@CHSA_ScreamingVillager@@
+  00d81c50 RELOCATION_MATCH CHSB_MagicBarrier::Main
+  00d83fa0 RELOCATION_MATCH CHS_Screamer::?Main@CHS_Screamer@@
+  00db8300 RELOCATION_MATCH COVI_DeadFather::Main
+  00dcf0b0 RELOCATION_MATCH COrchardFarmWhisper::Main
+  00dd84b0 RELOCATION_MATCH CGuardMotherEscape::?Main@CGuardMotherEscape@@
+  00df7bf0 RELOCATION_MATCH CTC_GuardSpawnPoint::?Main@CTC_GuardSpawnPoint
+  00dfba60 RELOCATION_MATCH CTC_BanditHostageKeeper::?Main@CTC_BanditHostageKeeper
+  00e7e640 RELOCATION_MATCH CFishCompCompetitor::Main
+  00ee1e40 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Maze::Main
+  00eec410 RELOCATION_MATCH CGlobal_GiveHeroItemsFromRewardChestScript::Main
+  00ef45b0 RELOCATION_MATCH CGhostDude::Main
+  00efd740 RELOCATION_MATCH CGift::Main
+exit 0

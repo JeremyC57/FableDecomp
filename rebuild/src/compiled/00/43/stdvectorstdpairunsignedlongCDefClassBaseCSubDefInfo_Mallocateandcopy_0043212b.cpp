@@ -18,13 +18,8 @@
 #pragma optimize("s", on)
 #include <stdlib.h>
 #include <new>
-class CDefClassBase {
-public:
-    class CSubDefInfo { public:
-        long DefIndex;
-        long OriginalParentDefIndex;
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
 template <class T1, class T2> struct pair {
     T1 first;

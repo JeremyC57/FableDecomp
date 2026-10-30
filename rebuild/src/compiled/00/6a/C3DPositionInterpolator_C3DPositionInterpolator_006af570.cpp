@@ -13,14 +13,9 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                               // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class C3DPositionInterpolator : public CBaseClass { public:
-    virtual void v00();                    // own vtable (0x0123981C)
     C3DVector StartPosition;               // +0x4
     C3DVector EndPosition;                 // +0x10
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end);

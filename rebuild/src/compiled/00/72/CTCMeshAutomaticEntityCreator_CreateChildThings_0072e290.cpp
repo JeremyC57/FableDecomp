@@ -22,10 +22,7 @@ class CCharString { public:
     bool operator!=(const CCharString& other) const;    // 0x0099E900
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-class CBaseClass { public:                                     // the CStringParser root (polymorphic)
-    virtual void v00();
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCommentNode {
     CCommentNode* _M_next;
     CCommentNode* _M_prev;

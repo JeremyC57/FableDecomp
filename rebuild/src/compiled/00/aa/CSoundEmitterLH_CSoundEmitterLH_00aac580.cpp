@@ -16,11 +16,7 @@ struct CSoundManagerLH {
     long TakeNextEmitterNumber();                  // 0x00A3E420 (descriptive): return EmitterCounter++ (+0x50)
 };
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct SListNode_00aac580 { SListNode_00aac580* m_pNext; SListNode_00aac580* m_pPrev; long m_a; long m_b; };   // 16 bytes
 

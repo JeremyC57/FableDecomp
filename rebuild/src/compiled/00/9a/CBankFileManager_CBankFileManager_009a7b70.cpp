@@ -15,11 +15,7 @@
 // plus the inline header free.
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
-class CBaseClass {
-public:
-    virtual void v00();
-    virtual ~CBaseClass();                                          // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CWideString {
 public:

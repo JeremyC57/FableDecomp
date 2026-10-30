@@ -7,11 +7,7 @@
 // Shape: base ctor, own vtable, then the two embedded CSurface members at +4 and +0x14 constructed
 // inline (vtable, two null pointers each; the fourth dword of each surface is not initialised). The
 // scheduler shares one zero register and one vtable register across both. Member names are descriptive.
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                    // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CSurface { public:                               // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
@@ -24,7 +20,6 @@ class CSurface { public:                               // vtable 0x0122F84C, 0x1
 class CRenderTarget : public CBaseClass { public:
     CSurface m_colour;                          // +0x04
     CSurface m_depth;                           // +0x14
-    virtual void v00();
     CRenderTarget();
 };
 

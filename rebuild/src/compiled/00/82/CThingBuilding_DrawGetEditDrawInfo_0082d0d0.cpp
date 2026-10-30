@@ -25,7 +25,7 @@
 #define CThingAICreature CThingAICreature_Layout
 #include "engine/CThingAICreature.h"
 #undef CThingAICreature
-class CBaseClass { public:virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass { protected:virtual ~CBaseClassNonCopyable(); };
 class CBaseObject:public CBaseClass {
 private:unsigned char unobservedObjectPointer[4];

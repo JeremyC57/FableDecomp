@@ -9,10 +9,7 @@
 // Shape: the landed CMurderTwistSheriff constructor (0x00EAED90): Game (the parent's interface at +0x40) is a plain
 // initialiser stored before the base vtable 0x012C3224, the CScriptThing copy follows it, the derived vtable precedes
 // ParentClass, each CTimer's inline constructor asks the service for a timer, PMasterData is a body assignment stored last.
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                             // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {
     void* Data;
     void* Info;
@@ -20,7 +17,6 @@ struct CCountedPointerWords {
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
 struct CTimerManager {                        // the game-script timer service behind the global at 0x0143E8F8

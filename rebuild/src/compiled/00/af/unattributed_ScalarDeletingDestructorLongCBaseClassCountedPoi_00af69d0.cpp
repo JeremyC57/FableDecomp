@@ -36,11 +36,7 @@ template<class T> class CCountedPointer { public:
     void Reset()       { ReleaseInfo(); m_pInfo = 0; m_pData = 0; }
 };
 
-class CBaseClass { public:
-    virtual void v0();
-    CBaseClass();
-    virtual ~CBaseClass();                                        // 0x0099A2E0 (vtable store only)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                       // PDB: CBaseClass + CCountedPointer<CScriptThing> PImp (sizeof 0x0c)
     CCountedPointer<CScriptThing> PImp;                  // +0x04 of the member
 };

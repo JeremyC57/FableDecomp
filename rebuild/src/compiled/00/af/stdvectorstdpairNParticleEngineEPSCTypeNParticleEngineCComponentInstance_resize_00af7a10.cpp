@@ -33,12 +33,7 @@ template <class T> class CCountedPointer { public:
         m_pCount = 0;
     }
 };
-class CBaseClass {                              // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                               // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace NParticleEngine {
 enum EPSCType { PSC_NONE = 0 };
 class CPSCBase;
@@ -47,7 +42,6 @@ public:
     CCountedPointer<CPSCBase> Component;        // +0x04
     bool Enabled;                               // +0x0c
     unsigned long InstanceName;                 // +0x10
-    virtual void v000();
     CComponentInstance() : Enabled(true) { }
 };
 }

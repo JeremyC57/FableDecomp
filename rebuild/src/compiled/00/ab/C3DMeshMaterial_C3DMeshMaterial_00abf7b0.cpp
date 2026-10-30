@@ -12,10 +12,7 @@ class CCharString { public:
     void* m_pStringData;                                // CCharStringData*
 };
 
-class CBaseClass { public:
-    virtual void v0();
-    CBaseClass();                                  // 0x0099A2D0 (vtable store only)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CIVCountedPointeeBase;
 class C3DMeshMaterial : public CBaseClass { public:
     long                   MaterialIndex;            // +0x04

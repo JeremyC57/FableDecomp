@@ -6,7 +6,7 @@
 #define __declspec(x)
 #endif
 enum EVertexStreamDataType{};
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace std{
  template<class T>class allocator{};
  template<class P,class T,class A>class _STLP_alloc_proxy:public A{public:P _M_data;};

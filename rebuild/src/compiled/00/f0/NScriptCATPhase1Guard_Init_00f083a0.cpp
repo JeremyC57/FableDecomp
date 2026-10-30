@@ -28,10 +28,7 @@ struct CCountedScriptThingRuntime {
         if (Info) ++Info->References;
     }
 };
-class CBaseClass { public:                                   // vtable 0x01231710
-    CBaseClass() {}
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CScriptThingRuntime : CBaseClass {             // vtable 0x01238C8C
     virtual ~CScriptThingRuntime(); // CScriptThing RTTI slot 0, 0x004AB170
     CCountedScriptThingRuntime PImp;
@@ -53,7 +50,7 @@ struct CScriptThingRuntime : CBaseClass {             // vtable 0x01238C8C
     virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
     CScriptThingRuntime() : PImp() {}
-    CScriptThingRuntime(const CScriptThingRuntime& other) : CBaseClass(), PImp(other.PImp) {}
+    CScriptThingRuntime(const CScriptThingRuntime& other) : CBaseClass(other), PImp(other.PImp) {}
     CScriptThingRuntime(const struct CScriptThingStored& other);
 };
 

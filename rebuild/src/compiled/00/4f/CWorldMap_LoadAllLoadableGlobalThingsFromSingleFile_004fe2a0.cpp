@@ -37,10 +37,7 @@ class CCharString { public:
 };
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 
-class CBaseClass { public:                                    // the CStringParser root (polymorphic)
-    virtual void v00();
-    ~CBaseClass();                                     // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CStringParserCommentList {                      // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
     ~CStringParserCommentList();                       // 0x004046B0

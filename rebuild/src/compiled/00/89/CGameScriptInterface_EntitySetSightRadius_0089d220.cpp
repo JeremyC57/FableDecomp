@@ -61,11 +61,10 @@ class CTCPerceiveThing {
 public:
     void SetSightRadius(float radius);                              // 0x00744540
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void EntitySetSightRadius(const CScriptThing& thing, float radius) const;   // slot 213
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 void CGameScriptInterface::EntitySetSightRadius(const CScriptThing& thing, float radius) const
 {

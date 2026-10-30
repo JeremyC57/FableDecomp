@@ -56,11 +56,7 @@ template <class T> class CIVCountedPointer { public:
     }
     void Reset(T* object) { Release(); Object = object; }
 };
-class CBaseClass { public:
-    CBaseClass();                                      // 0x0099A2D0
-    CBaseClass(const CBaseClass&) { }
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass { public:   // vtable 0x0122F598
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;  // +0x04
     CEnginePrimitiveHandle() { }

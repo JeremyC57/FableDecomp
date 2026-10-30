@@ -75,11 +75,10 @@ class CTCFadeOutAndIn {
 public:
     void FadeIn(float seconds, bool immediately);          // 0x006C3BD0
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    virtual void EntityFadeIn(const CScriptThing& thing, float seconds) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntityFadeIn(const CScriptThing& thing, float seconds) const
 {
     if (thing.IsValid()) {

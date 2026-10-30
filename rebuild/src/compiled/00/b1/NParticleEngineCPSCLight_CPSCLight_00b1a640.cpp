@@ -13,11 +13,7 @@
 // into a B,G,R,A byte layout. The array constructor zeroes the three pointers and then clears; its third word
 // is STLport's alloc proxy (a member with its own constructor): with three plain pointers VC7.1 forwards the
 // zero stores into the __copy arguments, the proxy makes it re-load [esi+64h]/[esi+60h] as retail.
-class CBaseClass {
-public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual void v000();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePersistentPrimitiveBase;
 struct CIVCountedPointer { CEnginePersistentPrimitiveBase* Object; CIVCountedPointer() : Object(0) { } };

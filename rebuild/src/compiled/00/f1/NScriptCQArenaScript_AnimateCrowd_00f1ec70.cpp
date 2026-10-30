@@ -20,10 +20,7 @@ public:
 extern "C" int rand();                                 // 0x00BFEB16
 extern "C" void free(void* p);                         // 0x00BFEA14
 void operator delete(void* p);                         // 0x00BFE9BC
-class CBaseClass { public:
-    CBaseClass() { }
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo { public:                                // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
@@ -53,7 +50,7 @@ struct CCountedPointer {
 };
 class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     CCountedPointer PImp;
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
     virtual ~CScriptThing() { }
 };
 inline void _Destroy(CScriptThing* first, CScriptThing* last)

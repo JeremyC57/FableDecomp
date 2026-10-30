@@ -70,10 +70,7 @@ public:
 };
 }
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CBaseClassNonCopyable : public CBaseClass {
 protected:

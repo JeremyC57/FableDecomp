@@ -18,7 +18,8 @@ struct IDirect3DTexture9:public IDirect3DBaseTexture9{virtual long __stdcall Get
 #define CRenderStateManager CRenderStateManagerFields
 #include "engine/CRenderStateManager.h"
 #undef CRenderStateManager
-class CBaseClass{public:virtual~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};class CInitBaseClass:public CBaseClass{public:bool Valid;};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};class CInitBaseClass:public CBaseClass{public:bool Valid;};
 // Layout: all unread state of the proven original render-state base remains opaque; receiver-only derived declarations expose the original primary base chain.
 class CRenderStateManager:public CBaseClassNonCopyable{unsigned char unread[0x3a38];};
 class CRenderManagerCore:public CRenderStateManager{public:void WaitWhileResourceIsBusy(IDirect3DResource9*,float);};

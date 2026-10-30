@@ -9,11 +9,7 @@
 //   (CCountedPointer<CPSCBase>: data +4, count block +8), Enabled +0xC (true), InstanceName +0x10 (left unset).
 // Shape: STLport's `pair() : first(_T1()), second(_T2())`; the instance's inline constructor (base call, own vtable,
 //   counted pointer zeroed, Enabled = true) runs on `esi = &second`, and the enabled byte is stored after `mov eax,edi`.
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 template <class T> class CCountedPointer { public:
     T*    Data;                                         // +0x00
@@ -29,7 +25,6 @@ public:
     CCountedPointer<CPSCBase> Component;                // +0x04
     bool                      Enabled;                  // +0x0C
     unsigned long             InstanceName;             // +0x10
-    virtual void v000();
     CComponentInstance() : Enabled(true) {}
 };
 }

@@ -6,11 +6,7 @@
 // The chunk label "CEnginePrimitiveManager::CEnginePrimitiveManager" is propagated (the 0x0069xxxx module is game code).
 #include "fable_string.h"
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 namespace NCreatureAction {
 struct __declspec(novtable) CActionEventBase : CBaseClass {   // abstract: no vtable store of its own; it owns the flag and the three words

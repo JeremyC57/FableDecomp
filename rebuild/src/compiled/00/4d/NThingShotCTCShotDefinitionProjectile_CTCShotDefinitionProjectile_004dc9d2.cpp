@@ -48,11 +48,7 @@ public:
         return *this;
     }
 };
-class CBaseClass {                                 // vtable 0x01231710
-public:
-    virtual void v000();
-    virtual ~CBaseClass();                                 // 0x0099A2E0 (manifest "CBase::CBase" is propagated)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                        // +0x04

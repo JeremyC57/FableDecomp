@@ -13,12 +13,7 @@
 //   Data through CIVCountedPointer::operator= (self test, release + zero, assign, AddRef) and GraphicInfo.
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 
-class CBaseClass {                                  // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                   // 0x0099A2D0
-    ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 template <class T>
 class CIVCountedPointer {                           // intrusive: the object's RefCount at +4, virtual slot 1 frees it

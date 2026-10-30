@@ -72,7 +72,7 @@ class CWorld { public: virtual void v00(){}; virtual void v01(){}; virtual void 
 #undef CIEngine
 // RTTI012a0d24: CIEngine -> CInitBaseClass -> CBaseClass, all at offset0.
 // PDB36001: CInitBaseClass.Valid+4; CIEngine.Active+8.
-class CBaseClass { public: virtual ~CBaseClass() {} };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CInitBaseClass : public CBaseClass { public: bool Valid; unsigned char ValidPadding[3]; };
 class CIEngine : public CInitBaseClass { public:
     bool Active; unsigned char ActivePadding[3];

@@ -26,10 +26,7 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
-class CBaseClass { public:                                     // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace NParticleEngine {
 struct SVectorParam {                                   // pair<unsigned long, C3DVector>
     unsigned long m_key;

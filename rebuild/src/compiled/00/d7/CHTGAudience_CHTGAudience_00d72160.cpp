@@ -15,11 +15,7 @@
 // init list (before the derived vtable store), then the three CScriptThing members' inline default
 // constructors (CBase() out of line, the CScriptThing vtable, the PImp counted pointer zeroed from one ebx
 // zero register; CBase must own the vptr, else the members shift by 4), PMasterData a body assignment (stored last).
-class CBaseClass {
-public:                                   // polymorphic root (owns the vptr)
-    virtual void v00();
-    CBaseClass();                                    // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct SCountBlock;
 
@@ -30,7 +26,6 @@ struct CCountedPointer {
 };
 
 class CScriptThing : public CBaseClass { public:                   // vtable 0x01238C8C, 12 bytes
-    virtual void v00();
     CCountedPointer PImp;                       // +0x04
     CScriptThing() : CBaseClass() { }
     CScriptThing(const CScriptThing& other);    // 0x004ABE90

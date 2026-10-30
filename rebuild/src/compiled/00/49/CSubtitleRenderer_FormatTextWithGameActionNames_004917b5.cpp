@@ -39,7 +39,7 @@ public:
     void push_back(const T&);
 };
 }
-class CBaseClass {public:CBaseClass();virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass {protected:CBaseClassNonCopyable();~CBaseClassNonCopyable();};
 class C2DBoxF {public:float TLX,TLY,BRX,BRY;};
 class CRGBColour {public:unsigned char B,G,R,A;};

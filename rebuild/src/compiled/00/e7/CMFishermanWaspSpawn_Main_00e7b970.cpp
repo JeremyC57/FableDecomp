@@ -25,7 +25,7 @@ typedef unsigned long long ScriptUID;
 class C3DVector { public:float X,Y,Z;};
 class CScriptGameResourceObjectScriptedThingBase;
 class CCharString { public:char* Data; CCharString(const char*,long=-1); CCharString(const CCharString&); ~CCharString();}; // 0099EBF0/0099EAE0
-class CBaseClass { public:virtual ~CBaseClass();}; // 0099A2E0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo { public:unsigned long References;void (__fastcall *Delete)(void*);void* Data;};
 void operator delete(void*);
 class CScriptThing : public CBaseClass { public:

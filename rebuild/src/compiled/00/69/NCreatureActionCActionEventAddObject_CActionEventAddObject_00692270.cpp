@@ -7,11 +7,7 @@ class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
 };
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 namespace NCreatureAction {
 struct __declspec(novtable) CActionEventBase_00692270 : CBaseClass {   // the intermediate base: its inline constructor clears the flag byte at +4 (stored before the derived vtable)

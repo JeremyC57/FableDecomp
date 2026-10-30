@@ -11,12 +11,7 @@
 // Layout: retail = Ego_r.pdb minus 0x30 (retail CDraggableInto is 0x15C bytes): Value +0x15C, PFont +0x160 (Data) / +0x164
 //         (Info), Handle +0x168, HandleDropShadowBottomRight +0x170, Window (C2DBoxF) +0x178, ScaleText +0x188,
 //         Unavailable +0x189, NoRenderNextFrame +0x18A (PDB +0x18C/+0x190/+0x198/+0x1A0/+0x1A8/+0x1B8/+0x1B9/+0x1BA).
-class CBaseClass {                                 // vtable 0x01231710
-public:
-    virtual void v000();
-    CBaseClass();                                  // 0x0099A2D0
-    ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePersistentPrimitiveBase;
 class CIVCountedPointer {
 public:

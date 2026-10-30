@@ -23,15 +23,12 @@ class CScriptThing;
 class CScriptGameResourceObjectScriptedThingBase;
 typedef long EScriptAIPriority;
 class CCPPointerInfo { public: long RefCount; };
-class CBaseClass { public:                                      // vtable 0x01231710
-    virtual void v00();
-    CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
     virtual void v01();
     void* PImp_Data;
     CCPPointerInfo* PImp_Info;
-    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp_Data(other.PImp_Data), PImp_Info(other.PImp_Info)
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp_Data(other.PImp_Data), PImp_Info(other.PImp_Info)
     {
         if (PImp_Info)
             ++PImp_Info->RefCount;

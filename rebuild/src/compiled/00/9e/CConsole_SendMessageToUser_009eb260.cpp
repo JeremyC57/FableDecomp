@@ -26,17 +26,12 @@ class CCharString { public:
     }
 };
 
-class CBaseClass { public:
-    virtual void v00();                                         // vtable 0x01231710
-    CBaseClass();                                               // 0x0099A2D0
-    virtual ~CBaseClass();                                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CConsoleCommandLine : public CBaseClass { public:                       // vtable 0x0129C400
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08
     long        CursorPosition;                                 // +0x0c
-    virtual void v00();
     CConsoleCommandLine(const CCharString& text)
         : CBaseClass(), CurrentEntry(text), UserEntry(false), CursorPosition(text.GetLength())
     {

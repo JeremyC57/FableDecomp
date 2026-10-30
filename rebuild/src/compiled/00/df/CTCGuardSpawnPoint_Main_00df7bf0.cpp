@@ -13,10 +13,7 @@
 //   NextTimeToSpawnGuards +0x64.
 class CCharString;
 class C3DVector;
-class CBaseClass { public:                                     // vtable 0x01231710
- virtual void v00();
- CBaseClass() { }
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
  void* Data;
@@ -24,7 +21,6 @@ struct CCountedPointer {                                // CCountedPointer<CScri
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
 };
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v00();
  virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
  virtual const C3DVector& GetPos() const;               // slot 6 (+0x18) 0x004AA980
  virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();

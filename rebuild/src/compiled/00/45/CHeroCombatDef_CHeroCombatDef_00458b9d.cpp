@@ -11,13 +11,15 @@
 // Layout: Ego_r.pdb CHeroCombatDef (0x174) with retail containers: STLport maps 12 bytes (PDB 16), vectors 12 (PDB 16), the
 // PDB members 4 bytes lower from the start (retail 0x148, slot 20): stat weights at +0x54/+0x68/+0x78/+0x9C/+0xB0/+0xC4/+0xF8,
 // DefaultCombatAbilities +0x11C, ProjectileWeaponFirstPersonModeMaxFOVValues +0x128, HeavyWeapons +0x13C.
-// Shape: as the landed def dtors (0x0045784B): empty body, `__forceinline` POD-vector dtors, out-of-line map dtors.
+// Shape: as the landed def dtors (0x0045784B, 0x0047747C): empty body, `__forceinline` POD-vector dtors, out-of-line map
+// dtors; no vtable store of its own (`__declspec(novtable)` on the derived def, as 0x0047747C).
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
-    unsigned char m_baseData[0x3c];
-    ~CParentDefClassBase();                        // 0x00430300
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 template <class T> struct CPODVector {             // retail std::vector<T> (12 bytes)
     T* m_first;
     T* m_last;
@@ -34,7 +36,10 @@ class CHeroAbilityStatPackage { public:                   // map<EHeroTrainableS
     ~CHeroAbilityStatPackage();                    // 0x00451763
 };
 
-class CHeroCombatDef : public CParentDefClassBase { public:      // vtable 0x01234CF4, retail 0x148 bytes
+class __declspec(novtable) CHeroCombatDef : public CParentDefClassBase { public:   // vtable 0x01234CF4, retail 0x148 bytes
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CHeroCombatDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CHeroCombatDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CHeroCombatDef@@UAEKXZ
     CFloatRange RangedAccuracySecondsForMaximumWithSkill;      // +0x3c
     CFloatRange RangedAccuracyPercentFractionWithBuildup;      // +0x44
     CFloatRange RangedAccuracyPercentWithStats;                // +0x4c

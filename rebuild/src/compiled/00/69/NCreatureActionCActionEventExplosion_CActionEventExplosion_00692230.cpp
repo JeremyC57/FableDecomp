@@ -10,11 +10,7 @@
 // the name member at +0x14 is default-constructed out of line and `this` is returned.
 #include "fable_string.h"
 
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 namespace NCreatureAction {
 struct __declspec(novtable) CActionEventBase : CBaseClass {   // abstract: no vtable store of its own

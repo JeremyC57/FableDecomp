@@ -22,15 +22,10 @@ class C3DBoundingSphere { public:                                   // 0x10
 };
 class CMatrix3x4 { public: float E[12]; };                          // 0x30, no constructor
 
-class CBaseClass {
-public:
-    virtual void v000();
-    CBaseClass();                                            // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CEnginePrimitiveHandle : public CBaseClass {           // vtable 0x0122F598, 8 bytes
 public:
     unsigned long Handle;                                    // +0x04
-    virtual void v000();
     CEnginePrimitiveHandle() : Handle(0) { }
 };
 

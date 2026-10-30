@@ -28,11 +28,7 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class CBaseClass {
-public:
-    virtual void v00();
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace std {
 struct _List_node_base {
     _List_node_base* _M_next;

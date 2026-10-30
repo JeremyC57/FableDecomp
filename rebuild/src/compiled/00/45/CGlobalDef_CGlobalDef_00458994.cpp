@@ -37,12 +37,37 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 struct CDialogueLayerDef;
-class CParentDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x90 - 0x04];           // the def root and CGlobalDef's scalar members up to +0x8C
-    CParentDefClassBase();                      // 0x00430370
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
+// Members are Ego_r.pdb CGlobalDef's, 4 bytes lower (the retail def chain is 0x39 bytes packed, Ego_r's 0x3D).
 class CGlobalDef : public CParentDefClassBase { public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CGlobalDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CGlobalDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CGlobalDef@@UAEKXZ
+    long ControlSchemePC;                       // +0x3c
+    long ControlSchemePCAggressive;             // +0x40
+    long ControlSchemeXBOX;                     // +0x44
+    long ControlSchemeXBOXAggressive;           // +0x48
+    long PhysicsTexture;                        // +0x4c
+    long InvalidThemeStandin;                   // +0x50
+    long DefaultEngineThemeDef;                 // +0x54
+    float StaticMapGenerationEstimatedMaxCameraHeightAboveLandscape;   // +0x58
+    long GraphicWeaponTrail;                    // +0x5c
+    long GraphicWeaponTrail2;                   // +0x60
+    long GraphicWeaponTrailArrow;               // +0x64
+    long WeaponTrailAlpha;                      // +0x68
+    float WeaponTrailAlphaFadeOffTime;          // +0x6c
+    long WeaponTrailArrowAlpha;                 // +0x70
+    float WeaponTrailArrowAlphaFadeOffTime;     // +0x74
+    long WeaponTrialNumFramesToFadeOut;         // +0x78
+    long HealthPickupValue;                     // +0x7c
+    long RespawnDelay;                          // +0x80
+    long ScrabbleAngle;                         // +0x84
+    long SlideAngle;                            // +0x88
+    long MaxFollowers;                          // +0x8c
     CCharString PickupGoldSoundCriteria;        // +0x90
     CCharString PickupItemSoundCriteria;        // +0x94
     CCharString OnClickSoundCriteria;           // +0x98
@@ -66,7 +91,6 @@ class CGlobalDef : public CParentDefClassBase { public:
     CConversationCameraMap ConversationCameras; // +0xf4
     CRetailVector<CCharString> PermittedAINarrators;        // +0x100
     CRetailVector<CDialogueLayerDef> DialogueLayers;        // +0x10c
-    virtual void v01();
     CGlobalDef();
 };
 

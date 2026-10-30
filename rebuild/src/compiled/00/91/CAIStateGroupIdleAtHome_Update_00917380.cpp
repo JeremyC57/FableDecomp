@@ -37,7 +37,7 @@ public:float X,Y,Z;
 namespace std {
 template<class A,class R>struct unary_function {typedef A argument_type;typedef R result_type;};
 }
-class CBaseClass {public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseObject:public CBaseClass {
 public:virtual void Validate()const;
 protected:virtual~CBaseObject();

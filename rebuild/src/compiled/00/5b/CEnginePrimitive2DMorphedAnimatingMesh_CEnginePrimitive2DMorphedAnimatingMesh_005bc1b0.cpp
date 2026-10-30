@@ -15,7 +15,7 @@ class C3DVector {public:float X,Y,Z;};
 class C2DBoxF {public:float TLX,TLY,BRX,BRY;};
 class C3DBoundingSphere {public:C3DVector Center;float Radius;};
 class CRightHandedSet {public:C3DVector Up,Forward;};
-class CBaseClass {public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CIVCountedPointeeBase;
 template<class T>class CIVCountedPointer {public:CIVCountedPointeeBase*Object;~CIVCountedPointer();};
 class C3DAnimationBlendState:public CBaseClass {public:class CSharedData;CIVCountedPointer<CSharedData>Data;virtual~C3DAnimationBlendState();};

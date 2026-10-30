@@ -13,7 +13,8 @@ struct IDirect3DVolume9;struct IDirect3DVolumeTexture9:public IDirect3DBaseTextu
 #define CRenderStateManager CRenderStateManagerFields
 #include "engine/CRenderStateManager.h"
 #undef CRenderStateManager
-class CBaseClass{public:virtual~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};class CInitBaseClass:public CBaseClass{public:bool Valid;};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};class CInitBaseClass:public CBaseClass{public:bool Valid;};
 // Layout: receiver-only render declarations restore true primary bases; unread render-state storage is opaque and checked against its existing header.
 class CRenderStateManager:public CBaseClassNonCopyable{unsigned char unread[0x3a38];};class CRenderManagerCore:public CRenderStateManager{public:void WaitWhileResourceIsBusy(IDirect3DResource9*,float);};class CRenderManager2D:public CRenderManagerCore{};class CRenderManager:public CRenderManager2D{};
 namespace boost{template<class T>class scoped_ptr{T*ptr;public:T*operator->()const{return ptr;}};}

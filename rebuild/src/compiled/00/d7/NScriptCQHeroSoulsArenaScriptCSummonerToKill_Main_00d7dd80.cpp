@@ -21,12 +21,10 @@ class CScriptThing { public:                              // 12 bytes
 };
 class CScriptGameResourceObjectScriptedThingBase;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CGameScriptInterface { public:                      // vtable 0x01260F0C
-    virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
-    virtual void NewScriptFrame() const;                                     // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    virtual void v009() const; virtual void v010() const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CIsThingAlive { public:                             // vtable 0x012C32F0: a filter holding a script thing
     virtual void v00();

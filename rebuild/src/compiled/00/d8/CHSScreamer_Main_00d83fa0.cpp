@@ -47,11 +47,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-class CBaseClass {
-public:                                           // vtable 0x01231710
-    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class C3DVector { public: float X, Y, Z; };
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;

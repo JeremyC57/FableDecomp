@@ -56,7 +56,8 @@ namespace std{
  iterator insert(iterator pos,const T&x){_List_node<T>*n=_M_create_node(x);_List_node_base*prev=pos._M_node->_M_prev;n->_M_next=pos._M_node;n->_M_prev=prev;prev->_M_next=n;pos._M_node->_M_prev=n;return iterator(n);}void push_back(const T&x){insert(end(),x);}
  };
 }
-class CBaseClass{public:virtual~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
 #define CBankFile CBankFileFields
 #include "engine/CBankFile.h"
 #undef CBankFile

@@ -1,0 +1,125 @@
+addr	family	reason
+0089a6e0	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+0089ef90	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+008a80f0	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00ce1280	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d167c0	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00d16bb0	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00d17340	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d1cac0	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d18b20	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d19af0	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d1c9e0	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d20790	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d35ed0	CGSI	int argument to header enum parameter EMusicSetType
+00d36140	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d6be20	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d73f40	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d74f80	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d7d730	CGSI	int argument to header enum parameter EMusicSetType
+00d9d030	CGSI	int argument to header enum parameter EScriptAIPriority
+00d9d4f0	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00da2a20	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00dac650	CGSI	int argument to header enum parameter EScriptingStateGroups
+00da0820	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00da8970	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00dbde40	CGSI	int argument to header enum parameter EMusicSetType
+00dbf2d0	CGSI	int argument to header enum parameter EScriptAIPriority
+00dc8890	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00dc8c80	CGSI	int argument to header enum parameter EScriptAIPriority
+00ddc980	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00df0b70	CGSI	int argument to header enum parameter EScriptAIPriority
+00df1760	CGSI	other: | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00df1760\new.cpp(52) : error C2100: illegal indirection | 
+00df36e0	CGSI	int argument to header enum parameter EMusicSetType
+00e06050	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00e15830	CGSI	int argument to header enum parameter EMusicSetType
+00e1d690	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00e1a990	CGSI	int argument to header enum parameter EMusicSetType
+00e1cfd0	CGSI	int argument to header enum parameter EScriptAIPriority
+00e2fc50	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00e33e00	CGSI	row-local CCountedPointer template clashes with fable_nscript_forward.h
+00e33c90	CGSI	row-local CCountedPointer template clashes with fable_nscript_forward.h
+00e38f80	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00e4a740	CGSI	row-local CCountedPointer template clashes with fable_nscript_forward.h
+00e6b400	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00e7fb80	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00e7a740	CGSI	int argument to header enum parameter ETextGroupSelectionMethod
+00e8b020	CGSI	int argument to header enum parameter EScriptAIPriority
+00e9a270	CGSI	int argument to header enum parameter ECutsceneBehaviour
+00e9aeb0	CGSI	int argument to header enum parameter EScriptAIPriority
+00e9dc80	CGSI	int argument to header enum parameter ECrime
+00ea8830	CGSI	row-local typedef EMusicSetType clashes with fable_nscript_forward.h enum
+00eb03a0	CGSI	row-local typedef EMorality clashes with fable_nscript_forward.h enum
+00ed41d0	CGSI	int argument to header enum parameter ECutsceneBehaviour
+00ed7320	CGSI	int argument to header enum parameter EScriptAIPriority
+00edd060	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00ee8870	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00eec890	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00ee6a40	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00ee2db0	CGSI	int argument to header enum parameter EScriptAIPriority
+00efeb60	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00eff930	CGSI	row-local CCountedPointer template clashes with fable_nscript_forward.h
+00ef1e10	CGSI	int argument to header enum parameter ETextGroupSelectionMethod
+00efc500	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00f08c30	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00f08a30	CGSI	row-local CScriptThing stand-in type (CScriptThingRuntime/Local/Ref) passed to a header slot
+00f0b130	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00f060d0	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00f0b960	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00f0a470	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00f09cd0	CGSI	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot
+00d04a60	CGSI (BC kept)	row-local CCountedPointer (struct) clashes with fable_nscript_forward.h (class template); the row keeps its wave 4 BC edit
+00d059e0	CGSI (BC kept)	row-local CCountedPointer (struct) clashes with fable_nscript_forward.h (class template); the row keeps its wave 4 BC edit
+00d060b0	CGSI (BC kept)	row-local CCountedPointer (struct) clashes with fable_nscript_forward.h (class template); the row keeps its wave 4 BC edit
+00d07410	CGSI (BC kept)	row-local CCountedPointer (struct) clashes with fable_nscript_forward.h (class template); the row keeps its wave 4 BC edit
+00d73c70	CGSI (BC kept)	row-local CCountedPointer (struct) clashes with fable_nscript_forward.h (class template); the row keeps its wave 4 BC edit
+00dbeb20	CGSI (BC kept)	int argument to a header enum parameter; the row keeps its wave 4 BC edit
+00e2bfa0	CGSI (BC kept)	int argument to a header enum parameter; the row keeps its wave 4 BC edit
+00e53f60	CGSI (BC kept)	int argument to a header enum parameter; the row keeps its wave 4 BC edit
+00e9dac0	CGSI (BC kept)	row-local CScriptThing stand-in type passed to a header slot; the row keeps its wave 4 BC edit
+00ef5200	CGSI (BC kept)	int argument to a header enum parameter; the row keeps its wave 4 BC edit
+00f04cc0	CGSI (BC kept)	int argument to a header enum parameter; the row keeps its wave 4 BC edit
+00f083a0	CGSI (BC kept)	row-local CScriptThing stand-in type passed to a header slot; the row keeps its wave 4 BC edit
+00f1ec70	CGSI (BC kept)	local vector model (not std::vector<T,std::allocator<T> >) passed to a header slot; the row keeps its wave 4 BC edit
+0099a470	BC-v00	DIFFER 24v31: CBaseClass.cpp's own TU (CBaseObject / CInitBaseClass, 0x0099A2D0-0x0099A4D0): retail auto-inlines the out-of-line CBaseClass members there (wave 2 LESSONS item 2); the row keeps its local model
+0099a430	BC-v00	DIFFER 56v56: CBaseClass.cpp's own TU (~CBaseObject); same-TU auto-inlining of ~CBaseClass, local model kept
+0099a4d0	BC-v00	DIFFER 77v76: CBaseClass.cpp's own TU (CBaseObject deleting dtor); same-TU auto-inlining, local model kept
+0099a310	BC-v00	DIFFER 28v19: CBaseClass.cpp's own TU (CInitBaseClass ctor); same-TU auto-inlining of CBaseClass(), local model kept
+0099a490	BC-v00	DIFFER 54v55: CBaseClass.cpp's own TU (CInitBaseClass deleting dtor); same-TU auto-inlining, local model kept
+008f7bd0	BC	DIFFER 381v390: local `__declspec(noinline)` ctor/dtor model; the header's members change the body (not diagnosed)
+00cfd6c0	BC	DIFFER 1499v1499: local CBaseClass is EMPTY (no vptr); the row flattens the vptr into a derived member, so the polymorphic header shifts its layout; needs the derived chain re-modelled
+00f1a990	BC	DIFFER 1888v1888: local CBaseClass is EMPTY (no vptr), as 00cfd6c0
+00d9c2b0	BC	SRC_FAIL: a converting ctor ScriptMethods(const CScriptThing&) : CBaseClass() with the inline local ctor; the header makes it a call (retail has none); needs the CScriptThing chain modelled (mig_bc_v.py COPY regex now only rewrites true copy ctors)
+00d50c60	BC-other	DIFFER 1875v1882: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00d7f460	BC-other	DIFFER 820v836: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00e04bd0	BC-other	DIFFER 835v826: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00e83a20	BC-other	DIFFER 412v411: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00edf3a0	BC-other	DIFFER 1377v1387: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00edfa00	BC-other	DIFFER 1377v1387: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00f051d0	BC-other	DIFFER 1227v1224: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00f045e0	BC-other	DIFFER 1521v1520: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00f08e90	BC-other	DIFFER 995v961: the inline local `CBaseClass() { }` is used outside a copy ctor and that use reaches the leaf (retail constructs the base inline there; the header ctor is the out-of-line 0x0099A2D0)
+00a10dc0	BC-v00	LINK_FAIL (behaviour): mcheck SAME, but the row's behaviour harness (test_cpp) is written against the old local model. On the header, MSVC emits CRenderTarget's vtable in the ctor TU, and its ??_G needs ~CRenderTarget (or ~CBaseClass 0x0099A2E0 if the dtor stays implicit). The harness defines neither. An out-of-line `virtual ~CRenderTarget();` (FableWin.pdb ??1CRenderTarget@@UAE@XZ) does not help: MSVC has no key-function rule. Fix the harness (define the dtor stubs), then migrate
+004585bd	PDCB	SRC_FAIL (abstract def as a member): the row models CParentDefClassBase as the first MEMBER of an unattributed aggregate. Identified: 0x004585BD is ??1CArmourDef@@UAE@XZ (its only neighbour 0x004585A1 is CArmourDef`s scalar deleting dtor; Ego_r.pdb CArmourDef members AugmentationResponse +0x40 / DamageTypeResponse +0x50 / ArmourThresholds +0x60, retail +0x3C/+0x48/+0x54, 12-byte STLport maps). Rename the row (NAME_FIXES.tsv), then model it as a novtable derived def like 0x00458B9D
+004345a0	PDCB-typed	SRC_FAIL: one of the 5 /O2 expanders (LESSONS wave 3 item 1): keeps its row-local __forceinline chain
+004304a0	PDCB-typed	DIFFER 27v49: /O2 CControlsDef dtor inlines the implicit ~CParentDefClassBase (retail); the shared chain declares it out of line (0x00430300)
+00434450	PDCB-typed	SRC_FAIL: one of the 5 /O2 expanders: keeps its row-local __forceinline chain
+00432e60	PDCB-typed	SRC_FAIL: one of the 5 /O2 expanders: keeps its row-local __forceinline chain
+00430370	PDCB-typed	SRC_FAIL: the CParentDefClassBase ctor itself: the shared CDefClassBase has no default ctor to call inline (retail inlines it here, same TU)
+004303b0	PDCB-typed	SRC_FAIL: CParentDefClassBase::GetInstantiationName: the row has no CVectorMap, so the untyped header has no InstantiationName member; needs FABLE_PDCB_TYPED_MEMBERS with a local CVectorMap
+00432c70	PDCB-typed	SRC_FAIL: one of the 5 /O2 expanders: keeps its row-local __forceinline chain
+006250b0	PDCB-typed	SRC_FAIL: the row spells CKeyPairCompareLess / CVectorMap with a different arity
+0067ce50	PDCB-typed	SRC_FAIL: the row's local CVectorMap is a non-template class (the header types SubDefInfoMap with the 3-parameter template)
+0067ca70	PDCB-typed	SRC_FAIL: local non-template CKeyPairCompareLess clashes with the header template (0067c7e0 / 0067c8b0 / 0067c720 / 0067ca70 family)
+0067c7e0	PDCB-typed	DIFFER 79v194: CBlurredAttitudesDef copy loop; the row inlines the def-chain copy (expander family of 0x0067C980)
+0067c8b0	PDCB-typed	DIFFER 79v205: as 0067c7e0
+0067c720	PDCB-typed	DIFFER 50v177: as 0067c7e0
+007a9d60	PDCB-typed	SRC_FAIL: the row defines a local CDefPointer that names CDefPointeeBase (needs engine/CDefPointer.h)
+007d79c0	PDCB-typed	SRC_FAIL: local non-template CVectorMap (an /O2 operator= with its own expansion)
+004f9df8	PDCB-typed	RELOC_RENAMED ??1CCardPositionsDef@@QAE@XZ -> ??1CCardPositionsDef@@UAE@XZ (the class is polymorphic on the shared chain): 0x004F9CFC is bound only under the QAE spelling (catalog Dtor_OnDieBase_004f9cfc); its identity as an out-of-line ~CCardPositionsDef is not proven (the deleting dtor 0x004EBE96 inlines its own dtor body), so no binding change; revisit with the 0x004F9CFC row
+00461d2c	DCB	SRC_FAIL: abstract derived def (slot 19 Copy pure on the shared chain); add_def_overrides.py finds no PDB overrides for the row-local class name
+004e1225	DCB	SRC_FAIL: the row already declares a non-virtual CDecapitationDef::Copy; mig_dcb.py's override insertion duplicates it (needs a hand merge)
+004e6f0b	DCB	SRC_FAIL: local non-template CVectorMap against the header's 3-parameter template
+004e5f51	DCB	DIFFER 31v31: the local CDefClassBase was non-polymorphic (operator= only), so the derived members move by the vptr; needs the derived layout re-based
+004e02f2	DCB	DIFFER 63v63: CSpotLightDef::operator= over a local CSubDefClassBase with no members; the shared CSubDefClassBase changes the copy (not diagnosed)
+00675c00	DCB	SRC_FAIL: local CVectorMap / CKeyPairCompareLess arity differs from the header

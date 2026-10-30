@@ -12,7 +12,7 @@ namespace std{
   void clear(){erase(begin(),end());}
  };
 }
-class CBaseClass{public:virtual~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CInputManager:public CBaseClass{public:
  std::vector<CInputEvent>ProcessedEvents,EventStore;long NoStoredEvents;
  // Layout: unread remainder of the original 0x80-byte retail manager is opaque.

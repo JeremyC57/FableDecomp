@@ -16,9 +16,7 @@ struct CCountedPointer_CThing {
     CThing* m_pObject;
     SCount* m_pCount;
 };
-class CBaseClass { public:
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                // 12 bytes
     CCountedPointer_CThing PImp;                  // +4
     CScriptThing(const CScriptThing& other);      // 0x004ABE90

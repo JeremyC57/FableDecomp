@@ -55,10 +55,7 @@ struct CCountedPointer {
         return *this;
     }
 };
-class CBaseClass { public:                                 // polymorphic root (vptr at +0)
-    virtual void b0();                              // slot 0 (the scalar deleting destructor)
-    CBaseClass();                                   // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C
     CCountedPointer PImp;
     CScriptThing() { }

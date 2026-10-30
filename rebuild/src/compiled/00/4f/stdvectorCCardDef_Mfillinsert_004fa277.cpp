@@ -57,28 +57,18 @@ public:
     virtual void v00();
     ~CBase_009fc550();                               // 0x009FC550 (labelled "~CMemoryBlock")
 };
-class CDefPointeeBase : public CBase_009fc550 {      // vtable 0x01230BA0
-public:
-    virtual void v00();
-    ~CDefPointeeBase() { }
-};
 #pragma pack(push, 1)
-class CDefClassBase : public CDefPointeeBase {       // 0x25 bytes, byte-packed
-public:
-    unsigned char _body[0x21];                       // +0x04..+0x25
-    virtual void v00();
-};
-class CParentDefClassBase : public CDefClassBase {   // 0x39 bytes, byte-packed
-public:
-    unsigned char _pbody[0x14];                      // +0x25 InstantiationName, SubDefInfoMap
-    virtual void v00();
-    CParentDefClassBase(const CParentDefClassBase& other);                     // 0x0046EE98
-    CParentDefClassBase& operator=(const CParentDefClassBase& other);          // 0x00431ED0
-    virtual ~CParentDefClassBase();                                                    // 0x00430300
-};
+// Layout: the def chain is the retail one from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   CParentDefClassBase : CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, vtable 0x01230CBC,
+//   0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98, operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 #pragma pack(pop)
 class CCardDef : public CParentDefClassBase {        // vtable 0x01243A44, 0x44 bytes
 public:
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CCardDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CCardDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CCardDef@@UAEKXZ
     long CardName;                                   // +0x3c
     long CardVal;                                    // +0x40
     virtual void v00();

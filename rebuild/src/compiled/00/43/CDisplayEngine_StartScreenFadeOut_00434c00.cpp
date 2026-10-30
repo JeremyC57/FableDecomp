@@ -16,7 +16,7 @@ class CRGBColour { public:
  __forceinline void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a)
  {Components.R=r;Components.G=g;Components.B=b;Components.A=a;}
 };
-class CBaseClass{public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
 class CFadeInFadeOutBase {public:
  bool Active;float FadeInTime,FadeOutTime;bool Closing,Opening;

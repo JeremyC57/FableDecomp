@@ -40,10 +40,7 @@ struct CVertexElementArray {
     D3DVERTEXELEMENT9* end;
     ~CVertexElementArray() { if (first) free(first); }
 };
-class CBaseClass { public:
-    virtual void v00();
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CVertexShaderInput : public CBaseClass { public:           // vtable 0x0129EA08
     CStreamInfoArray    DataStreams;               // +0x04
     CVertexElementArray D3DDeclaration;            // +0x10

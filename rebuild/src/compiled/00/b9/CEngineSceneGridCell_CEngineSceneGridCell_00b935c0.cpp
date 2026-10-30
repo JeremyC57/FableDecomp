@@ -10,11 +10,7 @@
 // bit-field assignments merge into one `and 0E6h ; or 6` read-modify-write; the zero lives in ebx; the inline LCG
 // (`seed * 0x24A1 + 0x24DF`, stored, then rotated by GFROR13 and stored again) is reduced modulo the range unless the
 // range is 0 (the range is loaded before the call); the byte store is duplicated into both return paths.
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-    ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePrimitiveHandle;
 
@@ -46,7 +42,6 @@ template <class T> class CIVCountedPointer { public:      // intrusive counted p
 
 class CEnginePrimitiveHandle : public CBaseClass { public:       // vtable 0x0122F598, 8 bytes
     CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;   // +0x04
-    virtual void v00();
     CEnginePrimitiveHandle() { }
     ~CEnginePrimitiveHandle()
     {

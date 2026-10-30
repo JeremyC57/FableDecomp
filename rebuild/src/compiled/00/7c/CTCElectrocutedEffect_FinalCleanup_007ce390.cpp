@@ -6,7 +6,8 @@
 namespace NGraphicAppearance { class CAGraphicAppearanceComponent { public: CAGraphicAppearanceComponent() {} virtual ~CAGraphicAppearanceComponent() {} virtual void OnAppearanceClear() {} }; class CTCGraphicAppearance { public: void RegisterComponent(CAGraphicAppearanceComponent*); void RemoveTintColour(void*); void ClearHighlighted(void*); }; class CPrimitive; }
 class CThing { public: virtual ~CThing() {} unsigned char _unmodeled04[0x60]; NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; };
 class CThing;
-class CBaseClass { public: virtual ~CBaseClass() {} }; class CBaseClassNonCopyable:public CBaseClass {};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+ class CBaseClassNonCopyable:public CBaseClass {};
 class CTCBase:public CBaseClassNonCopyable { public: CTCBase(CThing&); CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 class CTCElectrocutedEffect:public CTCBase { private: void FinalCleanup(); public: void Invoke() { FinalCleanup(); } };
 void CTCElectrocutedEffect::FinalCleanup() { NGraphicAppearance::CTCGraphicAppearance* graphic=ParentThing->PTCGraphicAppearance; if(graphic) { graphic->RemoveTintColour(this); graphic->ClearHighlighted(this); } }

@@ -9,7 +9,7 @@
 #include <new>
 class C3DVector {public:float x,y,z;};
 class CRightHandedSet {public:float x,y,z,a,b,c;CRightHandedSet():x(0),y(0),z(1),a(0),b(1),c(0){}};
-class CBaseClass {public:CBaseClass();virtual ~CBaseClass();};                                        // 0x0099A2E0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass {protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};   // 0x0099A2F0 / 0x0099A300
 class CTCParamsBase:public CBaseClassNonCopyable {};
 class CTCParamsPhysicsBase:public CTCParamsBase {public:C3DVector position;CRightHandedSet axes;CTCParamsPhysicsBase(const C3DVector&,const CRightHandedSet&);};

@@ -33,16 +33,13 @@ template <class T> class CIVCountedPointer { public:
     T* operator->() const { return m_pObject; }
 };
 
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual void v00();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CPhysicsMeshObject : public CBaseClass { public:           // vtable 0x0125D084
     CIVCountedPointer<CPhysicsMesh> Mesh;          // +0x04
     float PositionMatrix[12];                      // +0x08 CMatrix3x4
     float Scale;                                   // +0x38
     float OO_Scale;                                // +0x3c
-    virtual void v00();
     bool HasContainmentVolume(const CCharString& name) const;
 };
 

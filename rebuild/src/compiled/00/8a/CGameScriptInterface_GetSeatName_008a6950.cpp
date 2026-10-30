@@ -95,10 +95,10 @@ public:
     unsigned char _pad00[0x74];
     CCharString   SeatName;                                   // +0x74
 };
-class CGameScriptInterface {
-public:
-    virtual CCharString GetSeatName(CScriptThing thing);
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 CCharString CGameScriptInterface::GetSeatName(CScriptThing thing)
 {
     if (thing.GetThing() == 0)

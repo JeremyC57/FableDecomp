@@ -10,11 +10,7 @@
 // Leaf: ??0CGameScriptThing
 class CThing;
 class CWorld;
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                      // the script thing's counted-pointer pair (+0x04 / +0x08)
     void* m_pObject;
     void* m_pCount;

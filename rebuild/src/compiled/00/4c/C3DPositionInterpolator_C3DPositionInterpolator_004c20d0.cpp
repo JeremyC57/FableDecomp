@@ -8,14 +8,9 @@
 // constructor @ 0x0099A2D0 runs, then the compiler stores this class's vtable (0x0123981C
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 57
 // bodies of this shape.
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class C3DPositionInterpolator : public CBaseClass { public:
-    virtual void v00();                    // this class has its own vtable
     C3DPositionInterpolator();
 };
 

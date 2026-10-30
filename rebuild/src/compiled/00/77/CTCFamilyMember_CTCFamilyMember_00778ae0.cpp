@@ -5,7 +5,8 @@
 // Layout: no target header; real polymorphic CTCBase12 retains ParentThing+4, flags+8 and vector+12.
 class CThing {}; template<class T> class CIntelligentPointer;
 class CThing;
-class CBaseClass { public: virtual ~CBaseClass() {} }; class CBaseClassNonCopyable:public CBaseClass {};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
+ class CBaseClassNonCopyable:public CBaseClass {};
 class CTCBase:public CBaseClassNonCopyable { public: CTCBase(CThing&); CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 namespace std {
 template<class T> class allocator {};

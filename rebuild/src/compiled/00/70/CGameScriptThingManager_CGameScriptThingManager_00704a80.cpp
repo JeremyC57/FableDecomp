@@ -65,10 +65,7 @@ struct CCountedPointer {                           // CCountedPointer<CGameScrip
     }
 };
 
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {                      // {Data, Info}
     void* Data;
     void* Info;
@@ -76,7 +73,6 @@ struct CCountedPointerWords {                      // {Data, Info}
 };
 class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes
     CCountedPointerWords PImp;                     // +0x04
-    virtual void v00();
     CScriptThing() : CBaseClass(), PImp() { }
     void SetImp(CCountedPointer imp);              // 0x007046D0
 };

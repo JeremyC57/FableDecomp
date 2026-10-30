@@ -1,0 +1,65 @@
+00cf8a70	SAME	1679b RELOCATION_MATCH->RELOCATION_MATCH
+00d04a60	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d04a60\new.cpp(19) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00d059e0	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d059e0\new.cpp(19) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00d060b0	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d060b0\new.cpp(19) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00d07410	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d07410\new.cpp(19) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00d154a0	SAME	23b RELOCATION_MATCH->RELOCATION_MATCH
+00d1fce0	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+00d73c70	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00d73c70\new.cpp(37) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00daed30	SAME	172b RELOCATION_MATCH->RELOCATION_MATCH
+00dbfea0	SAME	210b RELOCATION_MATCH->RELOCATION_MATCH
+00dbeb20	SRC_FAIL	0) : error C2664: 'CGameScriptInterface::CacheMusicSet' : cannot convert parameter 1 from 'int' to 'EMusicSetType' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00dbeb20\new.cpp(144) : error C2664: 'CGameScriptInterface::StartScriptingEntity' : cannot convert parameter 3 from 'int' to 'EScriptAIPriority' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00dcd1d0	SAME	370b RELOCATION_MATCH->RELOCATION_MATCH
+00dd8fd0	SAME	207b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc050	SAME	134b RELOCATION_MATCH->RELOCATION_MATCH
+00dfb1b0	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc920	SAME	354b RELOCATION_MATCH->RELOCATION_MATCH
+00e04b50	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+00e0dbb0	SAME	669b RELOCATION_MATCH->RELOCATION_MATCH
+00e1a800	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+00e10a90	SAME	102b RELOCATION_MATCH->RELOCATION_MATCH
+00e2bfa0	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e2bfa0\new.cpp(84) : error C2664: 'CGameScriptInterface::SetScriptingStateGroup' : cannot convert parameter 2 from 'int' to 'EScriptingStateGroups' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00e2bd80	SAME	313b RELOCATION_MATCH->RELOCATION_MATCH
+00e2a0f0	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00e26bd0	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00e25d30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b1a0	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+00e3af30	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b060	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e48eb0	SAME	356b RELOCATION_MATCH->RELOCATION_MATCH
+00e4a940	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00e49900	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f6b0	SAME	335b RELOCATION_MATCH->RELOCATION_MATCH
+00e50890	SAME	53b MATCH->MATCH
+00e53f60	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e53f60\new.cpp(70) : error C2664: 'CGameScriptInterface::SetScriptingStateGroup' : cannot convert parameter 2 from 'int' to 'EScriptingStateGroups' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00e5dde0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+00e5fb80	SAME	232b RELOCATION_MATCH->RELOCATION_MATCH
+00e766a0	SAME	138b RELOCATION_MATCH->RELOCATION_MATCH
+00e76410	SAME	49b MATCH->MATCH
+00e7bca0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+00e81d10	SAME	412b RELOCATION_MATCH->RELOCATION_MATCH
+00e83920	SAME	89b RELOCATION_MATCH->RELOCATION_MATCH
+00e836f0	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00e9dac0	SRC_FAIL	hing' |         No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00e9dac0\new.cpp(165) : error C2664: 'CGameScriptInterface::MiniMapAddMarker' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &' |         Reason: cannot convert from 'CScriptThingRuntime' to 'const CScriptThing' |         No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called | 
+00e909a0	SAME	134b RELOCATION_MATCH->RELOCATION_MATCH
+00eaee80	SAME	173b RELOCATION_MATCH->RELOCATION_MATCH
+00ea0030	SAME	29b MATCH->MATCH
+00ea35a0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+00eaee10	SAME	112b RELOCATION_MATCH->RELOCATION_MATCH
+00eae820	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+00eb5500	SAME	207b RELOCATION_MATCH->RELOCATION_MATCH
+00eb53a0	SAME	166b RELOCATION_MATCH->RELOCATION_MATCH
+00ebfbb0	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+00ec0ba0	SAME	1114b RELOCATION_MATCH->RELOCATION_MATCH
+00ec8230	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00ec80c0	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH
+00edc390	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH
+00ee36a0	SAME	1151b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6850	SAME	487b RELOCATION_MATCH->RELOCATION_MATCH
+00ee0350	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00ee3fc0	SAME	219b RELOCATION_MATCH->RELOCATION_MATCH
+00ee29d0	SAME	164b RELOCATION_MATCH->RELOCATION_MATCH
+00ef5200	SRC_FAIL	erator or constructor | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ef5200\new.cpp(132) : error C3861: 'killed': identifier not found, even with argument-dependent lookup | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00ef5200\new.cpp(137) : error C2664: 'CGameScriptInterface::AddScreenMessage' : cannot convert parameter 2 from 'int' to 'ETextGroupSelectionMethod' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00f04cc0	SRC_FAIL	er lists are not allowed | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f04cc0\new.cpp(147) : error C2664: 'CGameScriptInterface::StartScriptingEntity' : cannot convert parameter 3 from 'int' to 'EScriptAIPriority' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f04cc0\new.cpp(147) : fatal error C1903: unable to recover from previous error(s); stopping compilation | 
+00f083a0	SRC_FAIL	    No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f083a0\new.cpp(177) : error C2664: 'CGameScriptInterface::EntitySetThingAsEnemyOfThing' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &' |         Reason: cannot convert from 'CScriptThingRuntime' to 'const CScriptThing' |         No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called | 
+00f1ec70	SRC_FAIL	c-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f1ec70\new.cpp(93) : see reference to class template instantiation 'std::vector<T,A>' being compiled |         with |         [ |             T=CScriptThing, |             A=std::allocator<CScriptThing> |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig4\work\mc\00f1ec70\new.cpp(93) : see reference to class template instantiation 'std::vector<T,A>' being compiled |         with |         [ |             T=CScriptThing, |             A=std::allocator<CScriptThing> |         ] | 

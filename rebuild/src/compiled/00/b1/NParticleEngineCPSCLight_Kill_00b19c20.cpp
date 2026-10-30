@@ -9,10 +9,7 @@
 // Shape: the handle's inline Clear() from the landed destructor, verbatim: the null-safe `GetRefCount() == 1` test
 // (handle address formed in esi first), then `Data = 0` = the counted release plus the second unconditional zero
 // store. Plain `ret`.
-class CBaseClass { public:
-    virtual void v00();
-    ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CEnginePrimitiveHandle;
 
@@ -50,7 +47,6 @@ struct CIVCountedPointer {                   // the counted primitive pointer (a
 class CEnginePrimitiveHandle : public CBaseClass {   // vtable 0x0122F598
 public:
     CIVCountedPointer Data;                  // +0x04
-    virtual void v00();
     __forceinline void Clear()
     {
         if (Data.GetRefCount() == 1)

@@ -82,14 +82,8 @@ void vector<T, A>::reserve(size_type n)
 
 }
 
-class CDefClassBase {
-public:
-    class CSubDefInfo {                                     // Ego_r.pdb CDefClassBase::CSubDefInfo (8 bytes)
-    public:
-        long DefIndex;                                      // +0x00
-        long OriginalParentDefIndex;                        // +0x04
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                              // +0x00

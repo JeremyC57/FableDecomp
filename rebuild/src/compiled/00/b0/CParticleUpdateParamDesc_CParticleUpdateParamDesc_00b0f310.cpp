@@ -4,11 +4,7 @@
 // chunk label "CVertexShaderData::CVertexShaderData" is propagated over this byte-identical shell.
 // Shape: first argument stored at +4 before the vtable store (`__declspec(novtable)` argument base), the
 // second at +8 after it; `ret 8`.
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct __declspec(novtable) CParticleUpdateParamDescBase : CBaseClass {
     void* m_pName;                            // +0x04

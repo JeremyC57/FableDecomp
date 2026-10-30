@@ -16,10 +16,7 @@ class C3DVector { public:                                      // engine C3DVect
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
-class CBaseClass { public:                                     // vtable 0x01231710
-    CBaseClass() {}
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
@@ -37,7 +34,7 @@ struct CCountedScriptImp {
 };
 class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     CCountedScriptImp PImp;                             // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}
+    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
     virtual ~CScriptThing();                            // 0x004AA840
 };
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)

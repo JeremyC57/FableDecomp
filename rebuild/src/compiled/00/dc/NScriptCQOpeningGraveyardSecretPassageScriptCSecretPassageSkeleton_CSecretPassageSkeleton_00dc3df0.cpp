@@ -13,10 +13,7 @@
 //   stored last.
 class CGameScriptInterface;
 class CScriptDataBase;
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                             // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {
     void* Data;
     void* Info;
@@ -24,7 +21,6 @@ struct CCountedPointerWords {
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp Data +4, Info +8)
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
 class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes

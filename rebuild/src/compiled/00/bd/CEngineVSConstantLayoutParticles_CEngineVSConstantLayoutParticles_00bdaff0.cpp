@@ -7,16 +7,11 @@
 // temporary's own stores, before its destructor (inline: the dead derived vtable store, then the out-of-line CBaseClass destructor).
 // The range being assigned lives in the base layout at +0x10 (the base constructor builds the one at +0x104 the same way); the engine
 // header (CEngineVSConstantLayoutParticles.h) is a flattened 0x150-byte pad, so the members are modelled locally.
-class CBaseClass { public:
-    virtual void v00();
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 class CShaderConstantRange : public CBaseClass { public:         // vtable 0x0129A04C: a register range {first register, register count}
     long m_firstRegister;                          // +0x04
     long m_registerCount;                          // +0x08
-    virtual void v00();
     CShaderConstantRange(long firstRegister, long registerCount) : CBaseClass(), m_firstRegister(firstRegister), m_registerCount(registerCount) { }
 };
 

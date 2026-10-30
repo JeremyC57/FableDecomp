@@ -1,0 +1,1183 @@
+addr       parity           behav  name
+00d059e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d059e0   RELOCATION_MATCH PASS   Init
+00d060b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d060b0   RELOCATION_MATCH PASS   Init
+00d072c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d072c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d072c0   RELOCATION_MATCH PASS   Init
+00d07410   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d07410   RELOCATION_MATCH PASS   Init
+00d07dd0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d07dd0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d07dd0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d07dd0   RELOCATION_MATCH PASS   Init
+00d08720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d08720   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d08720   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d08720   RELOCATION_MATCH PASS   Init
+00d08f00   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d08f00   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d08f00   RELOCATION_MATCH PASS   Init
+00d08fb0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d08fb0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d08fb0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d08fb0   RELOCATION_MATCH PASS   OnPredicateFail
+00d0a7b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d0a7b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d0a7b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d0a7b0   RELOCATION_MATCH PASS   OnPredicateFail
+00d0c390   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d0c390   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d0c390   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d0c390   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d0ed60' matches no symbol in 00d0ed60.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d0ed60' matches no symbol in 00d0ed60.obj; graded the largest function
+00d0ed60   RELOCATION_MATCH PASS   SuspendableProcess_00d0ed60
+00d154a0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d154a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d154a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d154a0   RELOCATION_MATCH PASS   Init
+00d16920   RELOCATION_MATCH PASS   sub_00d16920
+00d16d00   RELOCATION_MATCH PASS   sub_00d16d00
+  WARN leaf 'SuspendableProcess_00d17290' matches no symbol in 00d17290.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d17290' matches no symbol in 00d17290.obj; graded the largest function
+00d17290   RELOCATION_MATCH PASS   SuspendableProcess_00d17290
+00d1dea0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d1dea0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1dea0   RELOCATION_MATCH PASS   OnPredicateFail
+00d1e140   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d1e140   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1e140   RELOCATION_MATCH PASS   OnPredicateFail
+00d1e1b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d1e1b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d1e1b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1e1b0   RELOCATION_MATCH PASS   Init
+00d1e310   RELOCATION_MATCH PASS   Init
+00d1f5c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d1f5c0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d1f5c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1f5c0   MATCH            PASS   Init
+00d1fce0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d1fce0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d1fce0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1fce0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d20710' matches no symbol in 00d20710.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d20710' matches no symbol in 00d20710.obj; graded the largest function
+00d20710   RELOCATION_MATCH PASS   SuspendableProcess_00d20710
+00d242c0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d242c0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d242c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d242c0   MATCH            PASS   Init
+00d243e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d243e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d243e0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d245c0' matches no symbol in 00d245c0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d245c0' matches no symbol in 00d245c0.obj; graded the largest function
+00d245c0   RELOCATION_MATCH PASS   SuspendableProcess_00d245c0
+  WARN leaf 'SuspendableProcess_00d26110' matches no symbol in 00d26110.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d26110' matches no symbol in 00d26110.obj; graded the largest function
+00d26110   RELOCATION_MATCH PASS   SuspendableProcess_00d26110
+00d29020   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d29020   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d29020   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d29020   RELOCATION_MATCH PASS   Init
+00d29160   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d29160   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d29160   RELOCATION_MATCH PASS   Main
+00d29320   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d29320   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d29320   RELOCATION_MATCH PASS   OnPredicateFail
+00d29620   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d29620   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d29620   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d29620   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d29790' matches no symbol in 00d29790.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d29790' matches no symbol in 00d29790.obj; graded the largest function
+00d29790   RELOCATION_MATCH PASS   SuspendableProcess_00d29790
+00d2a8a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d2a8a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d2a8a0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d2d680' matches no symbol in 00d2d680.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d2d680' matches no symbol in 00d2d680.obj; graded the largest function
+00d2d680   RELOCATION_MATCH PASS   SuspendableProcess_00d2d680
+00d2f6b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d2f6b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d2f6b0   RELOCATION_MATCH PASS   CVtable_012cc60c
+  WARN leaf 'SuspendableProcess_00d2ffb0' matches no symbol in 00d2ffb0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d2ffb0' matches no symbol in 00d2ffb0.obj; graded the largest function
+00d2ffb0   RELOCATION_MATCH PASS   SuspendableProcess_00d2ffb0
+00d36620   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d36620   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d36620   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d36620   RELOCATION_MATCH PASS   Init
+00d36730   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d36730   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d36730   RELOCATION_MATCH PASS   Init
+00d36860   RELOCATION_MATCH PASS   Init
+00d374a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d374a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d374a0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d374a0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d38ca0' matches no symbol in 00d38ca0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d38ca0' matches no symbol in 00d38ca0.obj; graded the largest function
+00d38ca0   RELOCATION_MATCH PASS   SuspendableProcess_00d38ca0
+00d43120   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d43120   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d43120   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00d445d0' matches no symbol in 00d445d0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d445d0' matches no symbol in 00d445d0.obj; graded the largest function
+00d445d0   RELOCATION_MATCH PASS   SuspendableProcess_00d445d0
+  WARN leaf 'SuspendableProcess_00d50bc0' matches no symbol in 00d50bc0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d50bc0' matches no symbol in 00d50bc0.obj; graded the largest function
+00d50bc0   RELOCATION_MATCH PASS   SuspendableProcess_00d50bc0
+  WARN leaf 'SuspendableProcess_00d52420' matches no symbol in 00d52420.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d52420' matches no symbol in 00d52420.obj; graded the largest function
+00d52420   RELOCATION_MATCH PASS   SuspendableProcess_00d52420
+00d56750   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d56750   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00d58410' matches no symbol in 00d58410.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d58410' matches no symbol in 00d58410.obj; graded the largest function
+00d58410   RELOCATION_MATCH PASS   SuspendableProcess_00d58410
+00d5aa80   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d5aa80   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00d5add0' matches no symbol in 00d5add0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d5add0' matches no symbol in 00d5add0.obj; graded the largest function
+00d5add0   RELOCATION_MATCH PASS   SuspendableProcess_00d5add0
+00d5dc80   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d5dc80   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00d5dfd0' matches no symbol in 00d5dfd0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d5dfd0' matches no symbol in 00d5dfd0.obj; graded the largest function
+00d5dfd0   RELOCATION_MATCH PASS   SuspendableProcess_00d5dfd0
+00d64080   RELOCATION_MATCH PASS   Quest_GuildWoods_Teleport_Exit_First
+  WARN leaf 'SuspendableProcess_00d64320' matches no symbol in 00d64320.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d64320' matches no symbol in 00d64320.obj; graded the largest function
+00d64320   RELOCATION_MATCH PASS   SuspendableProcess_00d64320
+00d66f50   RELOCATION_MATCH PASS   Quest_GuildWoods_Teleport_Exit_Additional
+  WARN leaf 'SuspendableProcess_00d671f0' matches no symbol in 00d671f0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d671f0' matches no symbol in 00d671f0.obj; graded the largest function
+00d671f0   RELOCATION_MATCH PASS   SuspendableProcess_00d671f0
+00d69ee0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d69ee0   RELOCATION_MATCH PASS   OnPredicateFail
+00d6a080   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6a080   RELOCATION_MATCH PASS   OnPredicateFail
+00d6a480   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d6a480   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6a480   RELOCATION_MATCH PASS   Init
+00d6a4f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6a4f0   RELOCATION_MATCH PASS   OnPredicateFail
+00d6ae30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6ae30   RELOCATION_MATCH PASS   OnPredicateFail
+00d6ccc0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d6ccc0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00d6ccc0   RELOCATION_MATCH PASS   MonitorBanditRegion
+00d705d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d705d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d705d0   RELOCATION_MATCH PASS   Init
+00d70650   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d70650   RELOCATION_MATCH PASS   OnPredicateFail
+00d71a30   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d71a30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d71a30   RELOCATION_MATCH PASS   Init
+00d71a70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d71a70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d71a70   RELOCATION_MATCH PASS   OnPredicateFail
+00d72160   RELOCATION_MATCH PASS   CHTG_Audience
+  WARN leaf 'SuspendableProcess_00d72af0' matches no symbol in 00d72af0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d72af0' matches no symbol in 00d72af0.obj; graded the largest function
+00d72af0   RELOCATION_MATCH PASS   SuspendableProcess_00d72af0
+00d73280   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d73280   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d73280   MATCH            PASS   Init
+00d73c70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d73c70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d73c70   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00d7a9b0' matches no symbol in 00d7a9b0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d7a9b0' matches no symbol in 00d7a9b0.obj; graded the largest function
+00d7a9b0   RELOCATION_MATCH PASS   SuspendableProcess_00d7a9b0
+  WARN leaf 'SuspendableProcess_00d7c3f0' matches no symbol in 00d7c3f0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d7c3f0' matches no symbol in 00d7c3f0.obj; graded the largest function
+00d7c3f0   RELOCATION_MATCH PASS   SuspendableProcess_00d7c3f0
+  WARN leaf 'SuspendableProcess_00d7fbc0' matches no symbol in 00d7fbc0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d7fbc0' matches no symbol in 00d7fbc0.obj; graded the largest function
+00d7fbc0   RELOCATION_MATCH PASS   SuspendableProcess_00d7fbc0
+  WARN leaf 'SuspendableProcess_00d82320' matches no symbol in 00d82320.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d82320' matches no symbol in 00d82320.obj; graded the largest function
+00d82320   RELOCATION_MATCH PASS   SuspendableProcess_00d82320
+00d83f10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d83f10   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00d845b0' matches no symbol in 00d845b0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d845b0' matches no symbol in 00d845b0.obj; graded the largest function
+00d845b0   RELOCATION_MATCH PASS   SuspendableProcess_00d845b0
+  WARN leaf 'SuspendableProcess_00d87250' matches no symbol in 00d87250.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d87250' matches no symbol in 00d87250.obj; graded the largest function
+00d87250   RELOCATION_MATCH PASS   SuspendableProcess_00d87250
+  WARN leaf 'SuspendableProcess_00d89690' matches no symbol in 00d89690.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d89690' matches no symbol in 00d89690.obj; graded the largest function
+00d89690   RELOCATION_MATCH PASS   SuspendableProcess_00d89690
+00d8a560   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d8a560   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8a560   RELOCATION_MATCH PASS   Init
+00d8a700   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d8a700   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8a700   RELOCATION_MATCH PASS   Init
+00d8a770   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d8a770   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8a770   RELOCATION_MATCH PASS   OnPredicateFail
+00d8a8a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d8a8a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8a8a0   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00d8aa70' matches no symbol in 00d8aa70.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d8aa70' matches no symbol in 00d8aa70.obj; graded the largest function
+00d8aa70   RELOCATION_MATCH PASS   SuspendableProcess_00d8aa70
+00d8fd90   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d8fd90   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8fd90   RELOCATION_MATCH PASS   Init
+00d8fef0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d8fef0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8fef0   RELOCATION_MATCH PASS   OnPredicateFail
+00d90050   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d90050   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d90050   RELOCATION_MATCH PASS   OnPredicateFail
+00d900e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d900e0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d900e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d900e0   RELOCATION_MATCH PASS   Init
+00d90f40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d90f40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d90f40   RELOCATION_MATCH PASS   Init
+00d90fa0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d90fa0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d90fa0   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00d916c0' matches no symbol in 00d916c0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d916c0' matches no symbol in 00d916c0.obj; graded the largest function
+00d916c0   RELOCATION_MATCH PASS   SuspendableProcess_00d916c0
+00d9c610   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00d9c610   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9c610   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00d9da40' matches no symbol in 00d9da40.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00d9da40' matches no symbol in 00d9da40.obj; graded the largest function
+00d9da40   RELOCATION_MATCH PASS   SuspendableProcess_00d9da40
+00d9e930   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d9e930   WARN SHARED_HEADER_AVAILABLE CTimer
+00d9e930   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9e930   RELOCATION_MATCH PASS   CBriarRose
+00d9e9e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d9e9e0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d9e9e0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00da00e0' matches no symbol in 00da00e0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00da00e0' matches no symbol in 00da00e0.obj; graded the largest function
+00da00e0   RELOCATION_MATCH PASS   SuspendableProcess_00da00e0
+00da0160   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da0160   RELOCATION_MATCH PASS   Init
+00da4540   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00da4540   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da4540   RELOCATION_MATCH PASS   Init
+00da4590   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da4590   MATCH            PASS   OnPredicateFail
+00da4740   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da4740   RELOCATION_MATCH PASS   OnPredicateFail
+00da6240   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da6240   RELOCATION_MATCH PASS   Main
+00da6740   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da6740   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00da8430' matches no symbol in 00da8430.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00da8430' matches no symbol in 00da8430.obj; graded the largest function
+00da8430   RELOCATION_MATCH PASS   SuspendableProcess_00da8430
+00dac390   RELOCATION_MATCH PASS   Init
+00daed30   RELOCATION_MATCH PASS   Init
+00daeeb0   RELOCATION_MATCH PASS   Init
+00db0950   RELOCATION_MATCH PASS   Init
+00db1e80   RELOCATION_MATCH PASS   Init
+00db3f00   RELOCATION_MATCH PASS   Init
+00db8290   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00db8290   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00db8290   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00db8630' matches no symbol in 00db8630.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00db8630' matches no symbol in 00db8630.obj; graded the largest function
+00db8630   RELOCATION_MATCH PASS   SuspendableProcess_00db8630
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00dbeb20   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00dbeb20   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00dbeb20   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectBase::~CScriptGameResourceObjectBase'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00dbeb20   RELOCATION_MATCH PASS   PostAttackStuff
+00dbf1e0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00dbf1e0   MATCH            PASS   Init
+00dbfea0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00dc0280' matches no symbol in 00dc0280.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dc0280' matches no symbol in 00dc0280.obj; graded the largest function
+00dc0280   RELOCATION_MATCH PASS   SuspendableProcess_00dc0280
+00dc3df0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc3df0   RELOCATION_MATCH PASS   CSecretPassageSkeleton
+00dc4b70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dc4b70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc4b70   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00dc8810' matches no symbol in 00dc8810.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dc8810' matches no symbol in 00dc8810.obj; graded the largest function
+00dc8810   RELOCATION_MATCH PASS   SuspendableProcess_00dc8810
+00dcd160   RELOCATION_MATCH PASS   CTeamSpawn
+00dcd1d0   RELOCATION_MATCH PASS   Init
+00dcded0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dcded0   WARN SHARED_HEADER_AVAILABLE CTimer
+00dcded0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dcded0   RELOCATION_MATCH PASS   OnPredicateFail
+00dcf000   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dcf000   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dcf000   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00dcf8a0' matches no symbol in 00dcf8a0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dcf8a0' matches no symbol in 00dcf8a0.obj; graded the largest function
+00dcf8a0   RELOCATION_MATCH PASS   SuspendableProcess_00dcf8a0
+00dcfa10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dcfa10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dcfa10   RELOCATION_MATCH PASS   Init
+00dd4a50   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dd4a50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd4a50   RELOCATION_MATCH PASS   Init
+00dd6950   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dd6950   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd6950   RELOCATION_MATCH PASS   Init
+00dd8850   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dd8850   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd8850   RELOCATION_MATCH PASS   Main
+00dd8fd0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd8fd0   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00dd9410' matches no symbol in 00dd9410.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dd9410' matches no symbol in 00dd9410.obj; graded the largest function
+00dd9410   RELOCATION_MATCH PASS   SuspendableProcess_00dd9410
+00ddad60   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ddad60   MATCH            PASS   Init
+00ddc490   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00ddc490   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ddc490   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00ddc8e0' matches no symbol in 00ddc8e0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ddc8e0' matches no symbol in 00ddc8e0.obj; graded the largest function
+00ddc8e0   RELOCATION_MATCH PASS   SuspendableProcess_00ddc8e0
+  WARN leaf 'SuspendableProcess_00ddeff0' matches no symbol in 00ddeff0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ddeff0' matches no symbol in 00ddeff0.obj; graded the largest function
+00ddeff0   RELOCATION_MATCH PASS   SuspendableProcess_00ddeff0
+00de19f0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00de19f0   RELOCATION_MATCH PASS   Init
+00de1b60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00de1b60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00de1b60   RELOCATION_MATCH PASS   Init
+00de1c50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00de1c50   RELOCATION_MATCH PASS   OnPredicateFail
+00de1db0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00de1db0   RELOCATION_MATCH PASS   OnPredicateFail
+00de25d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00de25d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00de25d0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00de4590' matches no symbol in 00de4590.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00de4590' matches no symbol in 00de4590.obj; graded the largest function
+00de4590   RELOCATION_MATCH PASS   SuspendableProcess_00de4590
+  WARN leaf 'SuspendableProcess_00dec6c0' matches no symbol in 00dec6c0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dec6c0' matches no symbol in 00dec6c0.obj; graded the largest function
+00dec6c0   RELOCATION_MATCH PASS   SuspendableProcess_00dec6c0
+00dee250   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00dee250   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dee250   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00def330' matches no symbol in 00def330.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00def330' matches no symbol in 00def330.obj; graded the largest function
+00def330   RELOCATION_MATCH PASS   SuspendableProcess_00def330
+00def3b0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00def3b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00def3b0   RELOCATION_MATCH PASS   Main
+00def6a0   RELOCATION_MATCH PASS   CVtable_012ddf3c
+00df22a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00df22a0   RELOCATION_MATCH PASS   OnPredicateFail
+00df2310   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00df2310   RELOCATION_MATCH PASS   Init
+00df2a40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00df2a40   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00df3660' matches no symbol in 00df3660.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00df3660' matches no symbol in 00df3660.obj; graded the largest function
+00df3660   RELOCATION_MATCH PASS   SuspendableProcess_00df3660
+00df4130   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00df4130   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00df4b60' matches no symbol in 00df4b60.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00df4b60' matches no symbol in 00df4b60.obj; graded the largest function
+00df4b60   RELOCATION_MATCH PASS   SuspendableProcess_00df4b60
+  WARN leaf 'SuspendableProcess_00df9b00' matches no symbol in 00df9b00.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00df9b00' matches no symbol in 00df9b00.obj; graded the largest function
+00df9b00   RELOCATION_MATCH PASS   SuspendableProcess_00df9b00
+00dfb1b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dfb1b0   RELOCATION_MATCH PASS   Init
+00dfc050   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dfc050   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00dfc050   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00dfc210' matches no symbol in 00dfc210.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00dfc210' matches no symbol in 00dfc210.obj; graded the largest function
+00dfc210   RELOCATION_MATCH PASS   SuspendableProcess_00dfc210
+00dfc920   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00dfc920   WARN RELOC_NAME: ?PrepareRegionCreatures@CQ_TraderConflictGoodScript@NScript@@QAEXXZ -> 00dfc320 labelled 'NScript::CQ_TraderConflictGoodScript::UpdateLiveEnemies'
+00dfc920   RELOCATION_MATCH PASS   WatchForRegionTransitions
+00e01670   WARN SHARED_HEADER_AVAILABLE CTimer
+00e01670   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e01670   RELOCATION_MATCH PASS   CDarkwoodTrader
+00e04ae0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e04ae0   RELOCATION_MATCH PASS   OnPredicateFail
+00e04b50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e04b50   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e04b50   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e05280' matches no symbol in 00e05280.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e05280' matches no symbol in 00e05280.obj; graded the largest function
+00e05280   RELOCATION_MATCH PASS   SuspendableProcess_00e05280
+00e0d850   WARN SHARED_HEADER_AVAILABLE CTimer
+00e0d850   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e0d850   RELOCATION_MATCH PASS   Main
+00e0dbb0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e0dbb0   RELOCATION_MATCH PASS   LookAfterHealth
+  WARN leaf 'SuspendableProcess_00e0e6b0' matches no symbol in 00e0e6b0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e0e6b0' matches no symbol in 00e0e6b0.obj; graded the largest function
+00e0e6b0   RELOCATION_MATCH PASS   SuspendableProcess_00e0e6b0
+00e10a90   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e10a90   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e10a90   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00e12280' matches no symbol in 00e12280.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e12280' matches no symbol in 00e12280.obj; graded the largest function
+00e12280   RELOCATION_MATCH PASS   SuspendableProcess_00e12280
+  WARN leaf 'SuspendableProcess_00e18330' matches no symbol in 00e18330.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e18330' matches no symbol in 00e18330.obj; graded the largest function
+00e18330   RELOCATION_MATCH PASS   SuspendableProcess_00e18330
+  WARN leaf 'SuspendableProcess_00e194e0' matches no symbol in 00e194e0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e194e0' matches no symbol in 00e194e0.obj; graded the largest function
+00e194e0   RELOCATION_MATCH PASS   SuspendableProcess_00e194e0
+00e1a800   WARN SHARED_HEADER_AVAILABLE CTimer
+00e1a800   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e1a800   RELOCATION_MATCH PASS   CQ_WizardBattleScript
+  WARN leaf 'SuspendableProcess_00e1c070' matches no symbol in 00e1c070.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e1c070' matches no symbol in 00e1c070.obj; graded the largest function
+00e1c070   RELOCATION_MATCH PASS   SuspendableProcess_00e1c070
+  WARN leaf 'SuspendableProcess_00e1f730' matches no symbol in 00e1f730.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e1f730' matches no symbol in 00e1f730.obj; graded the largest function
+00e1f730   RELOCATION_MATCH PASS   SuspendableProcess_00e1f730
+00e25d20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e25d20   MATCH            PASS   Init
+00e25d30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e25d30   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e25d30   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00e25ea0' matches no symbol in 00e25ea0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e25ea0' matches no symbol in 00e25ea0.obj; graded the largest function
+00e25ea0   RELOCATION_MATCH PASS   SuspendableProcess_00e25ea0
+00e26bd0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e26bd0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e26d60' matches no symbol in 00e26d60.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e26d60' matches no symbol in 00e26d60.obj; graded the largest function
+00e26d60   RELOCATION_MATCH PASS   SuspendableProcess_00e26d60
+  WARN leaf 'SuspendableProcess_00e27dc0' matches no symbol in 00e27dc0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e27dc0' matches no symbol in 00e27dc0.obj; graded the largest function
+00e27dc0   RELOCATION_MATCH PASS   SuspendableProcess_00e27dc0
+  WARN leaf 'SuspendableProcess_00e29220' matches no symbol in 00e29220.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e29220' matches no symbol in 00e29220.obj; graded the largest function
+00e29220   RELOCATION_MATCH PASS   SuspendableProcess_00e29220
+00e2a0f0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e2a280' matches no symbol in 00e2a280.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e2a280' matches no symbol in 00e2a280.obj; graded the largest function
+00e2a280   RELOCATION_MATCH PASS   SuspendableProcess_00e2a280
+00e2bd80   RELOCATION_MATCH PASS   Init
+00e2bfa0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e2bfa0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e2ea10' matches no symbol in 00e2ea10.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e2ea10' matches no symbol in 00e2ea10.obj; graded the largest function
+00e2ea10   RELOCATION_MATCH PASS   SuspendableProcess_00e2ea10
+00e33b00   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e33b00   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00e37450' matches no symbol in 00e37450.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e37450' matches no symbol in 00e37450.obj; graded the largest function
+00e37450   RELOCATION_MATCH PASS   SuspendableProcess_00e37450
+  WARN leaf 'SuspendableProcess_00e38ce0' matches no symbol in 00e38ce0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e38ce0' matches no symbol in 00e38ce0.obj; graded the largest function
+00e38ce0   RELOCATION_MATCH PASS   SuspendableProcess_00e38ce0
+00e38d80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e38d80   RELOCATION_MATCH PASS   OnPersist
+00e3af30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e3af30   RELOCATION_MATCH PASS   Init
+00e3b060   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e3b060   RELOCATION_MATCH PASS   Init
+00e3b1a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e3b1a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e3b1a0   RELOCATION_MATCH PASS   Init
+00e3b230   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e3b230   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e3b230   MATCH            PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00e3b850' matches no symbol in 00e3b850.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e3b850' matches no symbol in 00e3b850.obj; graded the largest function
+00e3b850   RELOCATION_MATCH PASS   SuspendableProcess_00e3b850
+  WARN leaf 'SuspendableProcess_00e47720' matches no symbol in 00e47720.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e47720' matches no symbol in 00e47720.obj; graded the largest function
+00e47720   RELOCATION_MATCH PASS   SuspendableProcess_00e47720
+00e48eb0   RELOCATION_MATCH PASS   Init
+00e49900   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e49900   RELOCATION_MATCH PASS   Init
+00e4a940   WARN SHARED_HEADER_AVAILABLE CTimer
+00e4a940   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e4a940   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e4b2e0' matches no symbol in 00e4b2e0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e4b2e0' matches no symbol in 00e4b2e0.obj; graded the largest function
+00e4b2e0   RELOCATION_MATCH PASS   SuspendableProcess_00e4b2e0
+00e50890   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e50890   MATCH            PASS   Init
+00e53f60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e53f60   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e53f60   RELOCATION_MATCH PASS   SetWanderPointAndDistance
+  WARN leaf 'SuspendableProcess_00e541b0' matches no symbol in 00e541b0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e541b0' matches no symbol in 00e541b0.obj; graded the largest function
+00e541b0   RELOCATION_MATCH PASS   SuspendableProcess_00e541b0
+00e54630   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e54630   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e547e0' matches no symbol in 00e547e0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e547e0' matches no symbol in 00e547e0.obj; graded the largest function
+00e547e0   RELOCATION_MATCH PASS   SuspendableProcess_00e547e0
+00e566f0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00e566f0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e566f0   RELOCATION_MATCH PASS   BookReaction
+  WARN leaf 'SuspendableProcess_00e5d030' matches no symbol in 00e5d030.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e5d030' matches no symbol in 00e5d030.obj; graded the largest function
+00e5d030   RELOCATION_MATCH PASS   SuspendableProcess_00e5d030
+00e5dde0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5dde0   WARN SHARED_HEADER_AVAILABLE CTimer
+00e5dde0   RELOCATION_MATCH PASS   CBodyGuard
+00e5de80   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00e5de80   WARN SHARED_HEADER_AVAILABLE CTimer
+00e5de80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5de80   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e5f110' matches no symbol in 00e5f110.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e5f110' matches no symbol in 00e5f110.obj; graded the largest function
+00e5f110   RELOCATION_MATCH PASS   SuspendableProcess_00e5f110
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e5f2b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5f2b0   RELOCATION_MATCH PASS   Main
+00e5f6b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5f6b0   RELOCATION_MATCH PASS   Main
+00e5fb80   WARN SHARED_HEADER_AVAILABLE CTimer
+00e5fb80   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5fb80   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e5fb80   WARN RELOC_NAME: ?GetGoldCost@CBodyGuard@CV_BodyGuardScript@NScript@@AAEJXZ -> 00e5fc70 labelled 'NScript::CV_BodyGuardScript::CBodyGuard::GetHenchmanGoldCost'
+00e5fb80   RELOCATION_MATCH PASS   OnPredicateFail
+00e63560   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e63560   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00e64130' matches no symbol in 00e64130.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e64130' matches no symbol in 00e64130.obj; graded the largest function
+00e64130   RELOCATION_MATCH PASS   SuspendableProcess_00e64130
+00e68dc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e68dc0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00e68dc0   RELOCATION_MATCH PASS   Init
+00e6aac0   WARN SHARED_HEADER_AVAILABLE CTimer
+00e6aac0   WARN RELOC_NAME: ??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z -> 00cdd450 labelled 'CSpawnedFuncBase::CSpawnedFuncBase'
+00e6aac0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e6aac0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e6aac0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e6b350' matches no symbol in 00e6b350.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e6b350' matches no symbol in 00e6b350.obj; graded the largest function
+00e6b350   RELOCATION_MATCH PASS   SuspendableProcess_00e6b350
+  WARN leaf 'SuspendableProcess_00e74cd0' matches no symbol in 00e74cd0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e74cd0' matches no symbol in 00e74cd0.obj; graded the largest function
+00e74cd0   RELOCATION_MATCH PASS   SuspendableProcess_00e74cd0
+00e76410   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e76410   MATCH            PASS   Init
+00e76540   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e76540   RELOCATION_MATCH PASS   Init
+00e766a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e766a0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e775f0' matches no symbol in 00e775f0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e775f0' matches no symbol in 00e775f0.obj; graded the largest function
+00e775f0   RELOCATION_MATCH PASS   SuspendableProcess_00e775f0
+00e7b970   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7b970   WARN RELOC_CONFLICT: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 here, 00415dd0 in landed 0071c7c0
+00e7b970   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00e7b970   RELOCATION_MATCH PASS   Main
+00e7bca0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7bca0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e7bca0   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00e7c7c0' matches no symbol in 00e7c7c0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e7c7c0' matches no symbol in 00e7c7c0.obj; graded the largest function
+00e7c7c0   RELOCATION_MATCH PASS   SuspendableProcess_00e7c7c0
+  WARN leaf 'SuspendableProcess_00e7ee70' matches no symbol in 00e7ee70.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e7ee70' matches no symbol in 00e7ee70.obj; graded the largest function
+00e7ee70   RELOCATION_MATCH PASS   SuspendableProcess_00e7ee70
+00e7ef70   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e7ef70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7ef70   RELOCATION_MATCH PASS   CFishCompOrganiser
+00e81d10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e81d10   WARN RELOC_NAME: ?resize@?$vector@VCCharString@@@@QAEXIABVCCharString@@@Z -> 0043332c labelled 'CArray<std::pair<long,long>_>::push_back'
+00e81d10   RELOCATION_MATCH PASS   Initialize
+00e836f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e836f0   RELOCATION_MATCH PASS   Init
+00e83920   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e83920   WARN SHARED_HEADER_AVAILABLE CTimer
+00e83920   RELOCATION_MATCH PASS   CFisticuffsMember
+  WARN leaf 'SuspendableProcess_00e83cd0' matches no symbol in 00e83cd0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e83cd0' matches no symbol in 00e83cd0.obj; graded the largest function
+00e83cd0   RELOCATION_MATCH PASS   SuspendableProcess_00e83cd0
+  WARN leaf 'SuspendableProcess_00e8d1f0' matches no symbol in 00e8d1f0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e8d1f0' matches no symbol in 00e8d1f0.obj; graded the largest function
+00e8d1f0   RELOCATION_MATCH PASS   SuspendableProcess_00e8d1f0
+00e909a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e909a0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e90b40' matches no symbol in 00e90b40.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e90b40' matches no symbol in 00e90b40.obj; graded the largest function
+00e90b40   RELOCATION_MATCH PASS   SuspendableProcess_00e90b40
+  WARN leaf 'SuspendableProcess_00e93b70' matches no symbol in 00e93b70.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e93b70' matches no symbol in 00e93b70.obj; graded the largest function
+00e93b70   RELOCATION_MATCH PASS   SuspendableProcess_00e93b70
+00e95dc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e95dc0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e95dc0   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00e96090' matches no symbol in 00e96090.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e96090' matches no symbol in 00e96090.obj; graded the largest function
+00e96090   RELOCATION_MATCH PASS   SuspendableProcess_00e96090
+  WARN leaf 'SuspendableProcess_00e98570' matches no symbol in 00e98570.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e98570' matches no symbol in 00e98570.obj; graded the largest function
+00e98570   RELOCATION_MATCH PASS   SuspendableProcess_00e98570
+  WARN leaf 'SuspendableProcess_00e9a1f0' matches no symbol in 00e9a1f0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e9a1f0' matches no symbol in 00e9a1f0.obj; graded the largest function
+00e9a1f0   RELOCATION_MATCH PASS   SuspendableProcess_00e9a1f0
+00e9a5c0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00e9a5c0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e9a5c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e9a5c0   WARN RELOC_NAME: ??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ -> 007e72a0 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00e9a5c0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00e9a5c0   RELOCATION_MATCH PASS   Main
+00e9dac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e9dac0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e9dac0   WARN RELOC_NAME: ??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z -> 00cdd450 labelled 'CSpawnedFuncBase::CSpawnedFuncBase'
+00e9dac0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e9dac0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e9dac0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00e9e040' matches no symbol in 00e9e040.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00e9e040' matches no symbol in 00e9e040.obj; graded the largest function
+00e9e040   RELOCATION_MATCH PASS   SuspendableProcess_00e9e040
+00ea0030   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ea0030   MATCH            PASS   Init
+  WARN leaf 'SuspendableProcess_00ea1010' matches no symbol in 00ea1010.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ea1010' matches no symbol in 00ea1010.obj; graded the largest function
+00ea1010   RELOCATION_MATCH PASS   SuspendableProcess_00ea1010
+00ea35a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ea35a0   RELOCATION_MATCH PASS   Init
+00ea50e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ea50e0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ea50e0   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00ea5890' matches no symbol in 00ea5890.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ea5890' matches no symbol in 00ea5890.obj; graded the largest function
+00ea5890   RELOCATION_MATCH PASS   SuspendableProcess_00ea5890
+  WARN leaf 'SuspendableProcess_00ea8000' matches no symbol in 00ea8000.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ea8000' matches no symbol in 00ea8000.obj; graded the largest function
+00ea8000   RELOCATION_MATCH PASS   SuspendableProcess_00ea8000
+00ea80f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ea80f0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ea80f0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00ead970' matches no symbol in 00ead970.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ead970' matches no symbol in 00ead970.obj; graded the largest function
+00ead970   RELOCATION_MATCH PASS   SuspendableProcess_00ead970
+00eae5a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eae5a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00eae5a0   RELOCATION_MATCH PASS   OnPredicateFail
+00eae820   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eae820   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00eae820   RELOCATION_MATCH PASS   Init
+00eaed90   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eaed90   WARN SHARED_HEADER_AVAILABLE CTimer
+00eaed90   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eaed90   RELOCATION_MATCH PASS   CMurderTwistSheriff
+00eaee10   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eaee10   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00eaee10   RELOCATION_MATCH PASS   OnPredicateFail
+00eaee80   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eaee80   WARN SHARED_HEADER_AVAILABLE CTimer
+00eaee80   RELOCATION_MATCH PASS   Init
+00eb53a0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb53a0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00eb53a0   RELOCATION_MATCH PASS   Init
+00eb5500   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb5500   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00eb6480' matches no symbol in 00eb6480.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00eb6480' matches no symbol in 00eb6480.obj; graded the largest function
+00eb6480   RELOCATION_MATCH PASS   SuspendableProcess_00eb6480
+  WARN leaf 'SuspendableProcess_00eb9820' matches no symbol in 00eb9820.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00eb9820' matches no symbol in 00eb9820.obj; graded the largest function
+00eb9820   RELOCATION_MATCH PASS   SuspendableProcess_00eb9820
+  WARN leaf 'SuspendableProcess_00ebed00' matches no symbol in 00ebed00.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ebed00' matches no symbol in 00ebed00.obj; graded the largest function
+00ebed00   RELOCATION_MATCH PASS   SuspendableProcess_00ebed00
+00ebfbb0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ebfbb0   RELOCATION_MATCH PASS   Init
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec0ba0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ec0ba0   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00ec1110' matches no symbol in 00ec1110.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ec1110' matches no symbol in 00ec1110.obj; graded the largest function
+00ec1110   RELOCATION_MATCH PASS   SuspendableProcess_00ec1110
+  WARN leaf 'SuspendableProcess_00ec16e0' matches no symbol in 00ec16e0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ec16e0' matches no symbol in 00ec16e0.obj; graded the largest function
+00ec16e0   RELOCATION_MATCH PASS   SuspendableProcess_00ec16e0
+00ec1c20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec1c20   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ec1c20   RELOCATION_MATCH PASS   OnPredicateFail
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec1ef0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ec1ef0   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00ec2970' matches no symbol in 00ec2970.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ec2970' matches no symbol in 00ec2970.obj; graded the largest function
+00ec2970   RELOCATION_MATCH PASS   SuspendableProcess_00ec2970
+  WARN leaf 'SuspendableProcess_00ec48d0' matches no symbol in 00ec48d0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ec48d0' matches no symbol in 00ec48d0.obj; graded the largest function
+00ec48d0   RELOCATION_MATCH PASS   SuspendableProcess_00ec48d0
+00ec80c0   RELOCATION_MATCH PASS   Init
+00ec8230   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec8230   WARN RELOC_NAME: ??BCDefString@@QAE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00ec8230   RELOCATION_MATCH PASS   OnPredicateFail
+  WARN leaf 'SuspendableProcess_00ecd710' matches no symbol in 00ecd710.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ecd710' matches no symbol in 00ecd710.obj; graded the largest function
+00ecd710   RELOCATION_MATCH PASS   SuspendableProcess_00ecd710
+  WARN leaf 'SuspendableProcess_00ed29d0' matches no symbol in 00ed29d0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ed29d0' matches no symbol in 00ed29d0.obj; graded the largest function
+00ed29d0   RELOCATION_MATCH PASS   SuspendableProcess_00ed29d0
+  WARN leaf 'SuspendableProcess_00ed49a0' matches no symbol in 00ed49a0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ed49a0' matches no symbol in 00ed49a0.obj; graded the largest function
+00ed49a0   RELOCATION_MATCH PASS   SuspendableProcess_00ed49a0
+00ed4aa0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ed4aa0   WARN SHARED_HEADER_AVAILABLE CTimer
+00ed4aa0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ed4aa0   RELOCATION_MATCH PASS   CV_SwordInTheStoneScript
+00ed4b10   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ed4b10   WARN SHARED_HEADER_AVAILABLE CTimer
+00ed4b10   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ed4b10   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00ed5450' matches no symbol in 00ed5450.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ed5450' matches no symbol in 00ed5450.obj; graded the largest function
+00ed5450   RELOCATION_MATCH PASS   SuspendableProcess_00ed5450
+00ed7d50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ed7d50   RELOCATION_MATCH PASS   CTB_Bard
+  WARN leaf 'SuspendableProcess_00ed8320' matches no symbol in 00ed8320.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ed8320' matches no symbol in 00ed8320.obj; graded the largest function
+00ed8320   RELOCATION_MATCH PASS   SuspendableProcess_00ed8320
+00ed85a0   WARN SHARED_HEADER_AVAILABLE CTimer
+00ed85a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ed85a0   RELOCATION_MATCH PASS   OnPersist
+00edc390   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00edc390   RELOCATION_MATCH PASS   Main
+00edc720   WARN SHARED_HEADER_AVAILABLE CTimer
+00edc720   WARN RELOC_NAME: ??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z -> 00cdd450 labelled 'CSpawnedFuncBase::CSpawnedFuncBase'
+00edc720   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00edc720   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00edc720   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00edcfb0' matches no symbol in 00edcfb0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00edcfb0' matches no symbol in 00edcfb0.obj; graded the largest function
+00edcfb0   RELOCATION_MATCH PASS   SuspendableProcess_00edcfb0
+00ee02c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee02c0   RELOCATION_MATCH PASS   CTH_SnowTroll
+00ee0350   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee0350   RELOCATION_MATCH PASS   OnPredicateFail
+00ee1500   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee1500   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00ee1d20' matches no symbol in 00ee1d20.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ee1d20' matches no symbol in 00ee1d20.obj; graded the largest function
+00ee1d20   RELOCATION_MATCH PASS   SuspendableProcess_00ee1d20
+00ee29d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00ee29d0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ee29d0   RELOCATION_MATCH PASS   ThunderChatter
+00ee36a0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ee36a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee36a0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ee36a0   RELOCATION_MATCH PASS   Main
+00ee3b20   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00ee3b20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee3b20   RELOCATION_MATCH PASS   Main
+00ee3fc0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ee3fc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee3fc0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ee3fc0   RELOCATION_MATCH PASS   Main
+  WARN leaf 'SuspendableProcess_00ee5680' matches no symbol in 00ee5680.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ee5680' matches no symbol in 00ee5680.obj; graded the largest function
+00ee5680   RELOCATION_MATCH PASS   SuspendableProcess_00ee5680
+00ee6850   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00ee6850   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ee6850   RELOCATION_MATCH PASS   MoveToNextWaypoint
+  WARN leaf 'SuspendableProcess_00ee7650' matches no symbol in 00ee7650.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ee7650' matches no symbol in 00ee7650.obj; graded the largest function
+00ee7650   RELOCATION_MATCH PASS   SuspendableProcess_00ee7650
+  WARN leaf 'SuspendableProcess_00eedb50' matches no symbol in 00eedb50.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00eedb50' matches no symbol in 00eedb50.obj; graded the largest function
+00eedb50   RELOCATION_MATCH PASS   SuspendableProcess_00eedb50
+  WARN leaf 'SuspendableProcess_00ef5180' matches no symbol in 00ef5180.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00ef5180' matches no symbol in 00ef5180.obj; graded the largest function
+00ef5180   RELOCATION_MATCH PASS   SuspendableProcess_00ef5180
+00ef5200   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ef5200   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ef5200   RELOCATION_MATCH PASS   CheckForHeroActions
+  WARN leaf 'SuspendableProcess_00efa320' matches no symbol in 00efa320.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efa320' matches no symbol in 00efa320.obj; graded the largest function
+00efa320   RELOCATION_MATCH PASS   SuspendableProcess_00efa320
+  WARN leaf 'SuspendableProcess_00efae90' matches no symbol in 00efae90.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efae90' matches no symbol in 00efae90.obj; graded the largest function
+00efae90   RELOCATION_MATCH PASS   SuspendableProcess_00efae90
+  WARN leaf 'SuspendableProcess_00efb570' matches no symbol in 00efb570.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efb570' matches no symbol in 00efb570.obj; graded the largest function
+00efb570   RELOCATION_MATCH PASS   SuspendableProcess_00efb570
+  WARN leaf 'SuspendableProcess_00efbad0' matches no symbol in 00efbad0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efbad0' matches no symbol in 00efbad0.obj; graded the largest function
+00efbad0   RELOCATION_MATCH PASS   SuspendableProcess_00efbad0
+  WARN leaf 'SuspendableProcess_00efc090' matches no symbol in 00efc090.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efc090' matches no symbol in 00efc090.obj; graded the largest function
+00efc090   RELOCATION_MATCH PASS   SuspendableProcess_00efc090
+  WARN leaf 'SuspendableProcess_00efdba0' matches no symbol in 00efdba0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efdba0' matches no symbol in 00efdba0.obj; graded the largest function
+00efdba0   RELOCATION_MATCH PASS   SuspendableProcess_00efdba0
+  WARN leaf 'SuspendableProcess_00efef60' matches no symbol in 00efef60.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00efef60' matches no symbol in 00efef60.obj; graded the largest function
+00efef60   RELOCATION_MATCH PASS   SuspendableProcess_00efef60
+  WARN leaf 'SuspendableProcess_00eff6d0' matches no symbol in 00eff6d0.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00eff6d0' matches no symbol in 00eff6d0.obj; graded the largest function
+00eff6d0   RELOCATION_MATCH PASS   SuspendableProcess_00eff6d0
+  WARN leaf 'SuspendableProcess_00f01260' matches no symbol in 00f01260.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00f01260' matches no symbol in 00f01260.obj; graded the largest function
+00f01260   RELOCATION_MATCH PASS   SuspendableProcess_00f01260
+  WARN leaf 'SuspendableProcess_00f01e30' matches no symbol in 00f01e30.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00f01e30' matches no symbol in 00f01e30.obj; graded the largest function
+00f01e30   RELOCATION_MATCH PASS   SuspendableProcess_00f01e30
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00f04cc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00f04cc0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00f04cc0   RELOCATION_MATCH PASS   Main
+00f083a0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00f083a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00f083a0   WARN RELOC_NAME: ??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z -> 00cdd450 labelled 'CSpawnedFuncBase::CSpawnedFuncBase'
+00f083a0   WARN RELOC_NAME: ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00f083a0   WARN RELOC_NAME: ??1CScriptThingRuntime@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00f083a0   RELOCATION_MATCH PASS   Init
+  WARN leaf 'SuspendableProcess_00f09c20' matches no symbol in 00f09c20.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00f09c20' matches no symbol in 00f09c20.obj; graded the largest function
+00f09c20   RELOCATION_MATCH PASS   SuspendableProcess_00f09c20
+  WARN leaf 'SuspendableProcess_00f1cc60' matches no symbol in 00f1cc60.obj; graded the largest function
+  WARN leaf 'SuspendableProcess_00f1cc60' matches no symbol in 00f1cc60.obj; graded the largest function
+00f1cc60   RELOCATION_MATCH PASS   SuspendableProcess_00f1cc60
+00f1ec70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00f1ec70   RELOCATION_MATCH PASS   AnimateCrowd
+01229030   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+01229030   WARN SHARED_HEADER_AVAILABLE CDefPointer
+01229030   RELOCATION_MATCH PASS   `dynamic_atexit_destructor_for_'DEFAULT_CAMERA_MODE_DEF''
+01229060   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+01229060   WARN SHARED_HEADER_AVAILABLE CDefPointer
+01229060   RELOCATION_MATCH PASS   `dynamic_atexit_destructor_for_'DEFAULT_CAMERA_MODE_DEF''
+
+WINS: 306
+  00d059e0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin2::?Init@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d060b0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin3::?Init@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d072c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::?Init@CGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d07410 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate3Guard::?Init@CGate3Guard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d07dd0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage::?Init@CCampHostage@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08720 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage2::?Init@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08f00 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?Init@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08fb0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?OnPredicateFail@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0a7b0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::?OnPredicateFail@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0c390 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditForger::?Init@CBanditForger@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0ed60 RELOCATION_MATCH _unattributed::SuspendableProcess_00d0ed60
+  00d154a0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::?Init@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00d16920 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d16d00 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d17290 RELOCATION_MATCH _unattributed::SuspendableProcess_00d17290
+  00d1dea0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::?OnPredicateFail@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e140 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?OnPredicateFail@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e1b0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?Init@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e310 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::Init
+  00d1f5c0 MATCH NScript::CQ_BreakSiegeScript::CBanditAttacker::?Init@CBanditAttacker@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1fce0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CDisplacedTrader::?Init@CDisplacedTrader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d20710 RELOCATION_MATCH _unattributed::SuspendableProcess_00d20710
+  00d242c0 MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard::?Init@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ
+  00d243e0 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh::?Init@CBowerstoneIntroGuardToPosh@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ
+  00d245c0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d245c0
+  00d26110 RELOCATION_MATCH _unattributed::SuspendableProcess_00d26110
+  00d29020 RELOCATION_MATCH NScript::CQ_EndGameScript::CHookCoastTeleporter::?Init@CHookCoastTeleporter@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29160 RELOCATION_MATCH NScript::CQ_EndGameScript::CM_UndeadSpawn::?Main@CM_UndeadSpawn@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29320 RELOCATION_MATCH NScript::CQ_EndGameScript::CGatewayUndead::?OnPredicateFail@CGatewayUndead@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29620 RELOCATION_MATCH NScript::CQ_EndGameScript::CMazeJournal::?Init@CMazeJournal@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29790 RELOCATION_MATCH _unattributed::SuspendableProcess_00d29790
+  00d2a8a0 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::?Init@CQ_EndGameFocalSitesScript@NScript@@UAEXXZ
+  00d2d680 RELOCATION_MATCH _unattributed::SuspendableProcess_00d2d680
+  00d2f6b0 RELOCATION_MATCH CVtable_012cc60c::??0CVtable_012cc60c@
+  00d2ffb0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d2ffb0
+  00d36620 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Prisoner::?Init@CFH_Prisoner@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d36730 RELOCATION_MATCH NScript::CQ_FireHeartScript::CProphetCage::?Init@CProphetCage@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d36860 RELOCATION_MATCH CFH_GuildMaster::Init
+  00d374a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Villager::?Init@CFH_Villager@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d38ca0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d38ca0
+  00d43120 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CKillBird::?OnPredicateFail@CKillBird@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d445d0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d445d0
+  00d50bc0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d50bc0
+  00d52420 RELOCATION_MATCH _unattributed::SuspendableProcess_00d52420
+  00d56750 MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::?Init@CMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ
+  00d58410 RELOCATION_MATCH _unattributed::SuspendableProcess_00d58410
+  00d5aa80 MATCH NScript::CQ_GuildTrainingSkillScript::?Init@CQ_GuildTrainingSkillScript@NScript@@UAEXXZ
+  00d5add0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d5add0
+  00d5dc80 MATCH NScript::CQ_GuildTrainingWillScript::?Init@CQ_GuildTrainingWillScript@NScript@@UAEXXZ
+  00d5dfd0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d5dfd0
+  00d64080 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::?TeleportOutHero@CQ_GuildTrainingWoodsDepartureScript@NScript@@QAEXXZ
+  00d64320 RELOCATION_MATCH _unattributed::SuspendableProcess_00d64320
+  00d66f50 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?TeleportOutHero@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+  00d671f0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d671f0
+  00d69ee0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner::?OnPredicateFail@CHTE_Prisoner@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a080 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Executioner::?OnPredicateFail@CHTE_Executioner@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a480 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?Init@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a4f0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?OnPredicateFail@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6ae30 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?OnPredicateFail@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6ccc0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?MonitorBanditRegion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00d705d0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?Init@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d70650 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?OnPredicateFail@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d71a30 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?Init@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d71a70 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?OnPredicateFail@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d72160 RELOCATION_MATCH CHTG_Audience::??0CHTG_Audience
+  00d72af0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d72af0
+  00d73280 MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::?Init@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d73c70 RELOCATION_MATCH CHTG_AmbushPointBackup::Main
+  00d7a9b0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d7a9b0
+  00d7c3f0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d7c3f0
+  00d7fbc0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d7fbc0
+  00d82320 RELOCATION_MATCH _unattributed::SuspendableProcess_00d82320
+  00d83f10 MATCH NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::?Init@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@EAEXXZ
+  00d845b0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d845b0
+  00d87250 RELOCATION_MATCH _unattributed::SuspendableProcess_00d87250
+  00d89690 RELOCATION_MATCH _unattributed::SuspendableProcess_00d89690
+  00d8a560 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CGhostFisherman::?Init@CGhostFisherman@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a700 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?Init@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a770 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?OnPredicateFail@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a8a0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CExtraBooty::?Main@CExtraBooty@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8aa70 RELOCATION_MATCH _unattributed::SuspendableProcess_00d8aa70
+  00d8fd90 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CGranny::?Init@CGranny@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d8fef0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CNymph::?OnPredicateFail@CNymph@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d90050 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJames::?OnPredicateFail@CJames@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d900e0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJames::?Init@CJames@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d90f40 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditSacrifice::?Init@CBanditSacrifice@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d90fa0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditSacrifice::?OnPredicateFail@CBanditSacrifice@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d916c0 RELOCATION_MATCH _unattributed::SuspendableProcess_00d916c0
+  00d9c610 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer::?Init@COrchardFarmFarmer@CQ_HobbeToothContestScript@NScript@@EAEXXZ
+  00d9da40 RELOCATION_MATCH _unattributed::SuspendableProcess_00d9da40
+  00d9e930 RELOCATION_MATCH CBriarRose::??0CBriarRose
+  00d9e9e0 RELOCATION_MATCH CBriarRose::Init
+  00da00e0 RELOCATION_MATCH _unattributed::SuspendableProcess_00da00e0
+  00da0160 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_SpawnPoint::?Init@CMC_SpawnPoint@CQ_MinionCampScript@NScript@@EAEXXZ
+  00da4540 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscort::?Init@CMinionEscort@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00da4590 MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscort::?OnPredicateFail@CMinionEscort@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00da4740 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscortEnd::?OnPredicateFail@CMinionEscortEnd@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ
+  00da6240 RELOCATION_MATCH CM_Minion::Main
+  00da6740 RELOCATION_MATCH CM_NotThisWay::Main
+  00da8430 RELOCATION_MATCH _unattributed::SuspendableProcess_00da8430
+  00dac390 RELOCATION_MATCH CNOVI_LiveFather::Init
+  00daed30 RELOCATION_MATCH CNOVI_Bully::Init
+  00daeeb0 RELOCATION_MATCH CNOVI_Victim::Init
+  00db0950 RELOCATION_MATCH CNOVI_AffairMan::Init
+  00db1e80 RELOCATION_MATCH CNOVI_AffairWoman::Init
+  00db3f00 RELOCATION_MATCH CNOVI_BookTrader::Init
+  00db8290 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::?Init@COVI_DeadFather@CQ_NewOakValeIntroScript@NScript@@EAEXXZ
+  00db8630 RELOCATION_MATCH _unattributed::SuspendableProcess_00db8630
+  00dbeb20 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::PostAttackStuff
+  00dbf1e0 MATCH NScript::CQ_OakValeBanditRaidScript::?Init@CQ_OakValeBanditRaidScript@NScript@@UAEXXZ
+  00dbfea0 RELOCATION_MATCH COakValeBanditRaidBandit::?Init@COakValeBanditRaidBandit@@
+  00dc0280 RELOCATION_MATCH _unattributed::SuspendableProcess_00dc0280
+  00dc3df0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSkeleton::??0CSecretPassageSkeleton@CQ_OpeningGraveyardSecretPassageScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00dc4b70 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper::?OnPredicateFail@CSecretPassageGraveyardKeeper@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+  00dc8810 RELOCATION_MATCH _unattributed::SuspendableProcess_00dc8810
+  00dcd160 RELOCATION_MATCH CTeamSpawn::??0CTeamSpawn
+  00dcd1d0 RELOCATION_MATCH CTeamSpawn::?Init@CTeamSpawn@@
+  00dcded0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CGuardTeamMember::?OnPredicateFail@CGuardTeamMember@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dcf000 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::?Init@COrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dcf8a0 RELOCATION_MATCH _unattributed::SuspendableProcess_00dcf8a0
+  00dcfa10 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CArtefact::?Init@CArtefact@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ
+  00dd4a50 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice::?Init@CPrisonerAccomplice@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dd6950 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::?Init@CMotherTorture@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dd8850 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CInventoryChest::?Main@CInventoryChest@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dd8fd0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoor::?Main@CCellDoor@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00dd9410 RELOCATION_MATCH _unattributed::SuspendableProcess_00dd9410
+  00ddad60 MATCH NScript::CQ_PrisonRaceScript::?Init@CQ_PrisonRaceScript@NScript@@UAEXXZ
+  00ddc490 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRacer::?Init@CPrisonRacer@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00ddc8e0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ddc8e0
+  00ddeff0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ddeff0
+  00de19f0 RELOCATION_MATCH CVictimsFather::Init
+  00de1b60 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictim::?Init@CVictim@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de1c50 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansommer::?OnPredicateFail@CRansommer@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de1db0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansomHelper::?OnPredicateFail@CRansomHelper@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de25d0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsFatherGuard::?Init@CVictimsFatherGuard@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00de4590 RELOCATION_MATCH _unattributed::SuspendableProcess_00de4590
+  00dec6c0 RELOCATION_MATCH _unattributed::SuspendableProcess_00dec6c0
+  00dee250 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CMotherTorture::?Init@CMotherTorture@CQ_SecretPassageScript@NScript@@EAEXXZ
+  00def330 RELOCATION_MATCH _unattributed::SuspendableProcess_00def330
+  00def3b0 RELOCATION_MATCH CSP_ScreamerTrigger::Main
+  00def6a0 RELOCATION_MATCH CVtable_012ddf3c::??0CVtable_012ddf3c
+  00df22a0 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::?OnPredicateFail@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df2310 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::?Init@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df2a40 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerMinion::?Init@CSummonerMinion@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00df3660 RELOCATION_MATCH _unattributed::SuspendableProcess_00df3660
+  00df4130 MATCH NScript::CQ_TentacleKrakenBossFightScript::?Init@CQ_TentacleKrakenBossFightScript@NScript@@UAEXXZ
+  00df4b60 RELOCATION_MATCH _unattributed::SuspendableProcess_00df4b60
+  00df9b00 RELOCATION_MATCH _unattributed::SuspendableProcess_00df9b00
+  00dfb1b0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTraderToRescue::?Init@CTraderToRescue@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+  00dfc050 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::?Main@CCampHostageDoor@CQ_TraderConflictGoodScript@NScript@@EAEXXZ
+  00dfc210 RELOCATION_MATCH _unattributed::SuspendableProcess_00dfc210
+  00dfc920 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::WatchForRegionTransitions
+  00e01670 RELOCATION_MATCH CDarkwoodTrader::??0CDarkwoodTrader
+  00e04ae0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CEndTrader::?OnPredicateFail@CEndTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e04b50 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CEndTrader::?Init@CEndTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e05280 RELOCATION_MATCH _unattributed::SuspendableProcess_00e05280
+  00e0d850 RELOCATION_MATCH CUndeadRisingCentre::Main
+  00e0dbb0 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::LookAfterHealth
+  00e0e6b0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e0e6b0
+  00e10a90 RELOCATION_MATCH NScript::CQ_WaspBossScript::CGratefulVillagerSpawn::?Main@CGratefulVillagerSpawn@CQ_WaspBossScript@NScript@@EAEXXZ
+  00e12280 RELOCATION_MATCH _unattributed::SuspendableProcess_00e12280
+  00e18330 RELOCATION_MATCH _unattributed::SuspendableProcess_00e18330
+  00e194e0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e194e0
+  00e1a800 RELOCATION_MATCH CQ_WizardBattleScript::??0CQ_WizardBattleScript
+  00e1c070 RELOCATION_MATCH _unattributed::SuspendableProcess_00e1c070
+  00e1f730 RELOCATION_MATCH _unattributed::SuspendableProcess_00e1f730
+  00e25d20 MATCH NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::?Init@CMazeAtTavern@CQS_GuardianSisterInfoScript@NScript@@EAEXXZ
+  00e25d30 RELOCATION_MATCH NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::?OnPredicateFail@CMazeAtTavern@CQS_GuardianSisterInfoScript@NScript@@EAEXXZ
+  00e25ea0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e25ea0
+  00e26bd0 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::?Init@CMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@EAEXXZ
+  00e26d60 RELOCATION_MATCH _unattributed::SuspendableProcess_00e26d60
+  00e27dc0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e27dc0
+  00e29220 RELOCATION_MATCH _unattributed::SuspendableProcess_00e29220
+  00e2a0f0 RELOCATION_MATCH CScytheNearOracle::Init
+  00e2a280 RELOCATION_MATCH _unattributed::SuspendableProcess_00e2a280
+  00e2bd80 RELOCATION_MATCH CAS_Trickster::?Init@CAS_Trickster
+  00e2bfa0 RELOCATION_MATCH CAS_Buddy::?Init@CAS_Buddy@@
+  00e2ea10 RELOCATION_MATCH _unattributed::SuspendableProcess_00e2ea10
+  00e33b00 RELOCATION_MATCH CM_AC_DummyMoving::Main
+  00e37450 RELOCATION_MATCH _unattributed::SuspendableProcess_00e37450
+  00e38ce0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e38ce0
+  00e38d80 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::?OnPersist@CM_AssassinTrigger@CV_AssassinAttacksScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00e3af30 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloGuard::?Init@CBordelloGuard@CV_BordelloScript@NScript@@EAEXXZ
+  00e3b060 RELOCATION_MATCH NScript::CV_BordelloScript::CMagicman::?Init@CMagicman@CV_BordelloScript@NScript@@EAEXXZ
+  00e3b1a0 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloClient::?Init@CBordelloClient@CV_BordelloScript@NScript@@EAEXXZ
+  00e3b230 MATCH NScript::CV_BordelloScript::CBordelloClient::?OnPredicateFail@CBordelloClient@CV_BordelloScript@NScript@@EAEXXZ
+  00e3b850 RELOCATION_MATCH _unattributed::SuspendableProcess_00e3b850
+  00e47720 RELOCATION_MATCH _unattributed::SuspendableProcess_00e47720
+  00e48eb0 RELOCATION_MATCH CTauntingBandit::?Init@CTauntingBandit@@
+  00e49900 RELOCATION_MATCH NScript::CV_BanditTollScript::CBlockingBandit::?Init@CBlockingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+  00e4a940 RELOCATION_MATCH NScript::CV_BanditTollScript::CBanditLeader::?Init@CBanditLeader@CV_BanditTollScript@NScript@@EAEXXZ
+  00e4b2e0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e4b2e0
+  00e50890 MATCH NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::?Init@CBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@EAEXXZ
+  00e53f60 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::?SetWanderPointAndDistance@CV_BeardyBaldyScript@NScript@@
+  00e541b0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e541b0
+  00e54630 RELOCATION_MATCH NScript::CV_BookCollectingScript::CBS_Teacher::?Init@CBS_Teacher@CV_BookCollectingScript@NScript@@EAEXXZ
+  00e547e0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e547e0
+  00e566f0 RELOCATION_MATCH NScript::CV_BookCollectingScript::?BookReaction@CV_BookCollectingScript@NScript@@
+  00e5d030 RELOCATION_MATCH _unattributed::SuspendableProcess_00e5d030
+  00e5dde0 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::??0CBodyGuard@CV_BodyGuardScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e5de80 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::?Init@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+  00e5f110 RELOCATION_MATCH _unattributed::SuspendableProcess_00e5f110
+  00e5f2b0 RELOCATION_MATCH CHenchmanComment::Main
+  00e5f6b0 RELOCATION_MATCH CHenchmanRegionEntranceComment::Main
+  00e5fb80 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::?OnPredicateFail@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+  00e63560 MATCH NScript::CV_ChickenKickingScript::CChickenMaster::?Init@CChickenMaster@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e64130 RELOCATION_MATCH _unattributed::SuspendableProcess_00e64130
+  00e68dc0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenSign::?Init@CChickenSign@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e6aac0 RELOCATION_MATCH CAT_BanditContact::Init
+  00e6b350 RELOCATION_MATCH _unattributed::SuspendableProcess_00e6b350
+  00e74cd0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e74cd0
+  00e76410 MATCH NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager::?Init@CEM_SuspiciousVillager@CV_ExposeMayorScript@NScript@@EAEXXZ
+  00e76540 RELOCATION_MATCH CEM_Rhodri::Init
+  00e766a0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_Rhodri::?Init@CEM_Rhodri@CV_ExposeMayorScript@NScript@@EAEXXZ
+  00e775f0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e775f0
+  00e7b970 RELOCATION_MATCH CM_FishermanWaspSpawn::Main
+  00e7bca0 RELOCATION_MATCH NScript::CV_FishermanScript::CFishermanBulletinBoard::?Main@CFishermanBulletinBoard@CV_FishermanScript@NScript@@EAEXXZ
+  00e7c7c0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e7c7c0
+  00e7ee70 RELOCATION_MATCH _unattributed::SuspendableProcess_00e7ee70
+  00e7ef70 RELOCATION_MATCH CFishCompOrganiser::??0CFishCompOrganiser
+  00e81d10 RELOCATION_MATCH CFishCompOrganiser::?Initialize@CFishCompOrganiser@@
+  00e836f0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::?Init@CTyler@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e83920 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CFisticuffsMember::??0CFisticuffsMember@CV_FisticuffsClubScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00e83cd0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e83cd0
+  00e8d1f0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e8d1f0
+  00e909a0 RELOCATION_MATCH NScript::CV_GuildMasterScript::CGuildMasterGameFlow::?Init@CGuildMasterGameFlow@CV_GuildMasterScript@NScript@@EAEXXZ
+  00e90b40 RELOCATION_MATCH _unattributed::SuspendableProcess_00e90b40
+  00e93b70 RELOCATION_MATCH _unattributed::SuspendableProcess_00e93b70
+  00e95dc0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::?OnPredicateFail@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ
+  00e96090 RELOCATION_MATCH _unattributed::SuspendableProcess_00e96090
+  00e98570 RELOCATION_MATCH _unattributed::SuspendableProcess_00e98570
+  00e9a1f0 RELOCATION_MATCH _unattributed::SuspendableProcess_00e9a1f0
+  00e9a5c0 RELOCATION_MATCH NScript::CV_HeroDuelScript::CThunder::Main
+  00e9dac0 RELOCATION_MATCH NScript::CBriarRose::Init
+  00e9e040 RELOCATION_MATCH _unattributed::SuspendableProcess_00e9e040
+  00ea0030 MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::?Init@CKGG_VillagerOutside@CV_KnotholeGladeGatesScript@NScript@@EAEXXZ
+  00ea1010 RELOCATION_MATCH _unattributed::SuspendableProcess_00ea1010
+  00ea35a0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::?Init@CLostTraderTrader@CV_LostTraderScript@NScript@@EAEXXZ
+  00ea50e0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderBrother::?OnPredicateFail@CLostTraderBrother@CV_LostTraderScript@NScript@@EAEXXZ
+  00ea5890 RELOCATION_MATCH _unattributed::SuspendableProcess_00ea5890
+  00ea8000 RELOCATION_MATCH _unattributed::SuspendableProcess_00ea8000
+  00ea80f0 RELOCATION_MATCH NScript::CV_MazeResearchScript::CEmptyGrave::?Init@CEmptyGrave@CV_MazeResearchScript@NScript@@EAEXXZ
+  00ead970 RELOCATION_MATCH _unattributed::SuspendableProcess_00ead970
+  00eae5a0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend::?OnPredicateFail@CMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@EAEXXZ
+  00eae820 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBuriedGem::?Init@CMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@EAEXXZ
+  00eaed90 RELOCATION_MATCH CMurderTwistSheriff::??0CMurderTwistSheriff
+  00eaee10 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::?OnPredicateFail@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@EAEXXZ
+  00eaee80 RELOCATION_MATCH CMurderTwistSheriff::Init
+  00eb53a0 RELOCATION_MATCH CMurderTwistSheriff::Init
+  00eb5500 RELOCATION_MATCH CMurderTwistAssassinGuard::Init
+  00eb6480 RELOCATION_MATCH _unattributed::SuspendableProcess_00eb6480
+  00eb9820 RELOCATION_MATCH _unattributed::SuspendableProcess_00eb9820
+  00ebed00 RELOCATION_MATCH _unattributed::SuspendableProcess_00ebed00
+  00ebfbb0 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::?Init@CSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@EAEXXZ
+  00ec0ba0 RELOCATION_MATCH CSecretWhisperingFriend::Main
+  00ec1110 RELOCATION_MATCH _unattributed::SuspendableProcess_00ec1110
+  00ec16e0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ec16e0
+  00ec1c20 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::?OnPredicateFail@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ
+  00ec1ef0 RELOCATION_MATCH CRandomPopulationCreature::Main
+  00ec2970 RELOCATION_MATCH _unattributed::SuspendableProcess_00ec2970
+  00ec48d0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ec48d0
+  00ec80c0 RELOCATION_MATCH NScript::CV_SickChildScript::CWitch::?Init@CWitch
+  00ec8230 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?OnPredicateFail@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+  00ecd710 RELOCATION_MATCH _unattributed::SuspendableProcess_00ecd710
+  00ed29d0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ed29d0
+  00ed49a0 RELOCATION_MATCH _unattributed::SuspendableProcess_00ed49a0
+  00ed4aa0 RELOCATION_MATCH CV_SwordInTheStoneScript::??0CV_SwordInTheStoneScript
+  00ed4b10 RELOCATION_MATCH CV_SwordInTheStoneScript::?Init@CV_SwordInTheStoneScript@@
+  00ed5450 RELOCATION_MATCH _unattributed::SuspendableProcess_00ed5450
+  00ed7d50 RELOCATION_MATCH NScript::CV_TalentlessBardScript::CTB_Bard::??0CTB_Bard@CV_TalentlessBardScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00ed8320 RELOCATION_MATCH _unattributed::SuspendableProcess_00ed8320
+  00ed85a0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?OnPersist@CV_TalentlessBardScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00edc390 RELOCATION_MATCH NScript::CV_TempleOfLightScript::CTOL_AltarGood::?Main@CTOL_AltarGood@CV_TempleOfLightScript@NScript@@EAEXXZ
+  00edc720 RELOCATION_MATCH CTOL_AcolyteGood::?Init@CTOL_AcolyteGood
+  00edcfb0 RELOCATION_MATCH _unattributed::SuspendableProcess_00edcfb0
+  00ee02c0 RELOCATION_MATCH CTH_SnowTroll::??0CTH_SnowTroll
+  00ee0350 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_SnowTroll::?OnPredicateFail@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00ee1500 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_MagicBarrier::Main
+  00ee1d20 RELOCATION_MATCH _unattributed::SuspendableProcess_00ee1d20
+  00ee29d0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::?ThunderChatter@CV_TravellingHeroesScript@NScript@@QAEXXZ
+  00ee36a0 RELOCATION_MATCH CStopDrawing::Main
+  00ee3b20 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze::?Main@CTH_Trigger_Guild_Maze@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00ee3fc0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_NorthernWastes::?Main@CTH_Trigger_NorthernWastes@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00ee5680 RELOCATION_MATCH _unattributed::SuspendableProcess_00ee5680
+  00ee6850 RELOCATION_MATCH NScript::CV_TourGuideScript::?MoveToNextWaypoint@CV_TourGuideScript@NScript@@
+  00ee7650 RELOCATION_MATCH _unattributed::SuspendableProcess_00ee7650
+  00eedb50 RELOCATION_MATCH _unattributed::SuspendableProcess_00eedb50
+  00ef5180 RELOCATION_MATCH _unattributed::SuspendableProcess_00ef5180
+  00ef5200 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CheckForHeroActions
+  00efa320 RELOCATION_MATCH _unattributed::SuspendableProcess_00efa320
+  00efae90 RELOCATION_MATCH _unattributed::SuspendableProcess_00efae90
+  00efb570 RELOCATION_MATCH _unattributed::SuspendableProcess_00efb570
+  00efbad0 RELOCATION_MATCH _unattributed::SuspendableProcess_00efbad0
+  00efc090 RELOCATION_MATCH _unattributed::SuspendableProcess_00efc090
+  00efdba0 RELOCATION_MATCH _unattributed::SuspendableProcess_00efdba0
+  00efef60 RELOCATION_MATCH _unattributed::SuspendableProcess_00efef60
+  00eff6d0 RELOCATION_MATCH _unattributed::SuspendableProcess_00eff6d0
+  00f01260 RELOCATION_MATCH _unattributed::SuspendableProcess_00f01260
+  00f01e30 RELOCATION_MATCH _unattributed::SuspendableProcess_00f01e30
+  00f04cc0 RELOCATION_MATCH CAT_Phase3Archer::Main
+  00f083a0 RELOCATION_MATCH NScript::CAT_Phase1Guard::Init
+  00f09c20 RELOCATION_MATCH _unattributed::SuspendableProcess_00f09c20
+  00f1cc60 RELOCATION_MATCH _unattributed::SuspendableProcess_00f1cc60
+  00f1ec70 RELOCATION_MATCH NScript::CQ_ArenaScript::AnimateCrowd
+  01229030 RELOCATION_MATCH StaticDestruction::_$E2
+  01229060 RELOCATION_MATCH StaticDestruction::_$E2
+exit 0

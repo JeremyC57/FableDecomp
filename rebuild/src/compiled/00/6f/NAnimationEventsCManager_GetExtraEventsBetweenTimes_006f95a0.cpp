@@ -4,7 +4,7 @@
 // Namespace CManager has no shared header; engine/CManager.h is NUISystem's unrelated type.
 // Layout: CSymbolMap restores CBaseClassNonCopyable; unread32byte payload is a projection. CManager has no bases, and slot0 is GetEvents (PDB64145, RTTI2112).
 class CCharString;                                        // 4-byte string handle (only passed by reference here)
-class CBaseClass{public:virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:virtual ~CBaseClassNonCopyable();};
 class CSymbolMap:public CBaseClassNonCopyable {                                        // retail 0x24 bytes
 public:

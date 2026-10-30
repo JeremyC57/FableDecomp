@@ -9,10 +9,7 @@
 // Entrance +0x1C, Exit +0x28.
 // Shape: the landed CDarkwoodTrader constructor (0x00E01670): Game is a plain initialiser stored before the base vtable, the
 // Me copy follows, the derived vtable precedes ParentClass, the two default CScriptThings, PMasterData a body assignment stored last.
-class CBaseClass { public:                           // vtable 0x01231710
-    virtual void v00();
-    CBaseClass();                             // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountedPointerWords {
     void* Data;
     void* Info;
@@ -20,7 +17,6 @@ struct CCountedPointerWords {
 };
 class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
     CCountedPointerWords PImp;                // +0x04
-    virtual void v00();
     CScriptThing() { }
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };

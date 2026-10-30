@@ -7,14 +7,8 @@
 // Shape (family L072): family L003's STLport 4.6 vector.c model: the head copy and the fill inline (pair's user copy
 //   constructor, placement new's null test), the tail copy out of line with its tag on the live atend slot, and _M_clear's
 //   _Destroy loop empty (pair is trivially destroyed), leaving only the free.
-class CDefClassBase {
-public:
-    class CSubDefInfo {                                    // Ego_r.pdb, 8 bytes
-    public:
-        long DefIndex;                                    // +0x00
-        long OriginalParentDefIndex;                      // +0x04
-    };
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
 template <class _T1, class _T2> struct pair {
     _T1 first;                                            // +0x00

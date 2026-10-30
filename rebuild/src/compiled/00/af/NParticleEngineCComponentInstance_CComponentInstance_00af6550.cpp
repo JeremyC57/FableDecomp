@@ -10,11 +10,7 @@
 // initialised in the mem-init list schedule after the vtable store (tried: DIFFER), so the pair is a
 // sub-object with its own inline zeroing constructor -- the engine's CCountedPointer {object, count
 // block}. Member names are descriptive (no PDB layout for this class in struct_layouts_egor.tsv).
-class CBaseClass {
-public:
-    virtual void v00();
-    CBaseClass();                               // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CCountedPointer {
     void* m_pObject;                       // +0
@@ -25,7 +21,6 @@ struct CCountedPointer {
 namespace NParticleEngine {
 
 class CComponentInstance : public CBaseClass { public:
-    virtual void v00();                    // this class has its own vtable (0x0129F478)
     CCountedPointer m_pDefinition;         // +0x4 .. +0x8
     bool            m_active;              // +0xC
     CComponentInstance();

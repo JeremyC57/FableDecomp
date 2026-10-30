@@ -14,19 +14,27 @@
 // in the landed 0x00459ABE the base is modelled without its vptr: the def vtable is not re-stored here.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* memory);        // 0x00BFEA14
-class CParentDefClassBase { public:                       // retail 0x3c bytes (with the CDefClassBase part)
-    unsigned char m_baseData[0x3c];
-    ~CParentDefClassBase();                        // 0x00430300
-};
+// Layout: CParentDefClassBase is the retail def chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   vtable 0x01230CBC, 0x39 bytes packed; ctor 0x00430370, ~CParentDefClassBase 0x00430300, copy 0x0046EE98,
+//   operator= 0x00431ED0).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CParentDefClassBase.h"
 struct CFloatVector {                              // retail std::vector<float> (12 bytes)
     float* m_first;
     float* m_last;
     float* m_end;
     __forceinline ~CFloatVector() { if (m_first) free(m_first); }
 };
-typedef long CDefString;                           // table position word
+// Model: the retail def chain from engine/CParentDefClassBase.h; the derived def is `__declspec(novtable)` (no vtable
+//   store of its own in the destructor, as 0x0047747C) and its CDefString members are the 4-byte TablePos class.
+class CDefString { public:                         // a def-name table position word (4 bytes)
+    long TablePos;
+};
 class C3DVector { public: float X, Y, Z; };
-class CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:   // vtable 0x01234264, retail 0x18c bytes
+class __declspec(novtable) CSpecialAbilitiesBulletTimeDef : public CParentDefClassBase { public:   // vtable 0x01234264, retail 0x18c bytes
+    virtual void Transfer(CPersistContext& context);              // ?Transfer@CSpecialAbilitiesBulletTimeDef@@UAEXAAVCPersistContext@@@Z
+    virtual void Copy(const CDefClassBase* other);                // ?Copy@CSpecialAbilitiesBulletTimeDef@@UAEXPBVCDefClassBase@@@Z
+    virtual unsigned long GetSizeofClass();                       // ?GetSizeofClass@CSpecialAbilitiesBulletTimeDef@@UAEKXZ
     float        SlowTimeDuration[4];              // +0x3c
     long         BulletTimeSlowdownMultiplier[4];  // +0x4c
     float        LevelUpTimings[3];                // +0x5c
