@@ -368945,6 +368945,85 @@ $catalog = @(
         TestSource = '00/cb/global_SetSupportLevel_00cb2d90_test.cpp'
         PassPattern = '00cb2d90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c5bef0'
+        Module = '_global'
+        Source = '00/c5/global_CUnprovenMixKernel00c5bef0_00c5bef0.cpp'
+        TestSource = '00/c5/global_CUnprovenMixKernel00c5bef0_00c5bef0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c5bef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d1f0'
+        Module = 'Row00c5d1f0'
+        Source = '00/c5/Row00c5d1f0_ScaleAccumulate16Ramp_00c5d1f0.cpp'
+        TestSource = '00/c5/Row00c5d1f0_ScaleAccumulate16Ramp_00c5d1f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c5d1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5d2e0'
+        Module = '_global'
+        Source = '00/c5/global_AccumulateFloatBlockSSE2_00c5d2e0.cpp'
+        TestSource = '00/c5/global_AccumulateFloatBlockSSE2_00c5d2e0_test.cpp'
+        PassPattern = '00c5d2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6aae0'
+        Module = '_global'
+        Source = '00/c6/global_CUnprovenMixKernel00c6aae0_00c6aae0.cpp'
+        TestSource = '00/c6/global_CUnprovenMixKernel00c6aae0_00c6aae0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6aae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6d410'
+        Module = '_global'
+        Source = '00/c6/global_MixSamplesRampSSE2_00c6d410.cpp'
+        TestSource = '00/c6/global_MixSamplesRampSSE2_00c6d410_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6d410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6e290'
+        Module = 'Row00c6e290'
+        Source = '00/c6/Row00c6e290_ScaleAccumulate16Ramp_00c6e290.cpp'
+        TestSource = '00/c6/Row00c6e290_ScaleAccumulate16Ramp_00c6e290_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6e290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6ed70'
+        Module = 'Row00c6ed70'
+        Source = '00/c6/Row00c6ed70_ScaleAccumulate16Ramp_00c6ed70.cpp'
+        TestSource = '00/c6/Row00c6ed70_ScaleAccumulate16Ramp_00c6ed70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6ed70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6f1a0'
+        Module = '_global'
+        Source = '00/c6/global_CUnprovenMixKernel00c6f1a0_00c6f1a0.cpp'
+        TestSource = '00/c6/global_CUnprovenMixKernel00c6f1a0_00c6f1a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6f1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6f800'
+        Module = '_global'
+        Source = '00/c6/global_CUnprovenMixKernel00c6f800_00c6f800.cpp'
+        TestSource = '00/c6/global_CUnprovenMixKernel00c6f800_00c6f800_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6f800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6fc80'
+        Module = '_global'
+        Source = '00/c6/global_CUnprovenMixKernel00c6fc80_00c6fc80.cpp'
+        TestSource = '00/c6/global_CUnprovenMixKernel00c6fc80_00c6fc80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6fc80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

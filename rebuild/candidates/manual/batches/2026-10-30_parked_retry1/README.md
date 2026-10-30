@@ -9,11 +9,11 @@ frndint/fscale block of 0x00C42FB0, the DX9 SDK wxutil.cpp `std / rep movsd` mem
 byte-checked by the coordinator), **46 improved** (better source in `../../pending/2026-10-30_parked_retry1/differ/` with the
 levers tried and the next step; 00b17bd0.cpp there carries a naked FloatToLong helper and is NOT landable as is), 61 differ
 unchanged, 11 confirmed gaps (each names the instruction pattern no source form produced), 2 HELD, 3 SKIP.
-**Held, owner decision needed:** `held_mmx_sse2/` (payload + oracle, 10 rows, all RELOCATION_MATCH + PASS, purity
-retail_asm): the GameCODA mixing kernels 0x00C5BEF0 / 0x00C5D1F0 / 0x00C5D2E0 / 0x00C6AAE0 / 0x00C6D410 / 0x00C6E290 /
+**Landed 2026-10-30 on the owner's decision (`held_mmx_sse2/`, payload + oracle, 10 rows, all RELOCATION_MATCH + PASS, purity
+retail_asm; 124 rows landed in all): the GameCODA mixing kernels 0x00C5BEF0 / 0x00C5D1F0 / 0x00C5D2E0 / 0x00C6AAE0 / 0x00C6D410 / 0x00C6E290 /
 0x00C6ED70 / 0x00C6F1A0 / 0x00C6F800 / 0x00C6FC80 run hand-written MMX / SSE2 loops (`pmulhw mm0,mm7`, `pmulhw xmm0,xmm7`,
 `cvtps2dq`). Retail ran inline asm there, but VC7.1 has MMX/SSE2 intrinsics, so "an instruction VC7.1 cannot emit" is
-arguable: land as retail_asm, or attempt an intrinsics reconstruction first. 0x00C6AC90 / 0x00C6AD10 (SKIP) depend on
+arguable; the owner ruled they land as retail_asm (retail ran hand-written asm, and hand-scheduled loops are not reproducible from intrinsics). 0x00C6AC90 / 0x00C6AD10 (SKIP) depend on
 0x00C6AAE0. HELD 0x00B05E10 / 0x00B1AD90: bytes match but they are per-TU triplicates of the landed
 `CPSCLight::SmoothFadeValue` 0x00AF9000 (one address = one name: needs the duplicate-static convention, queued with the
 libvorbis `@ilog2@4` triplicate 0x00C8DB60 / 0x00C8F060 / 0x00CA17A0 and the CDefString pair).
