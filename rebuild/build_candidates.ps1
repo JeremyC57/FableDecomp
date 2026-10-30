@@ -97,7 +97,7 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0040138c'; Module = '_global'; Source = '00/40/Global_SEHProlog_0040138c.cpp'
         TestSource = '00/40/Global_SEHProlog_0040138c_test.cpp'; PassPattern = 'GLOBAL_SEH_PROLOG_TEST PASS'
-        Grade = 'asm_bake'
+        Grade = 'toolchain_library'
     },
     [pscustomobject]@{
         Address = '00405ba0'; Module = '_global'; Source = '00/40/Global_StdMoveBackward_00405ba0.cpp'
@@ -140,7 +140,7 @@ $catalog = @(
         Source = '00/40/Global_SEHEpilog_004013c7.cpp'
         TestSource = '00/40/Global_SEHEpilog_004013c7_test.cpp'
         PassPattern = 'GLOBAL_SEH_EPILOG_TEST PASS'
-        Grade = 'asm_bake'
+        Grade = 'toolchain_library'
     },
     [pscustomobject]@{
         Address = '00401296'
@@ -41833,7 +41833,7 @@ $catalog = @(
         Source = '00/bf/global_securitycheckcookie_00bfe9f9.cpp'
         TestSource = '00/bf/global_securitycheckcookie_00bfe9f9_test.cpp'
         PassPattern = 'OK_00bfe9f9'
-        Grade = 'asm_bake'
+        Grade = 'toolchain_library'
     }
     [pscustomobject]@{
         Address = '00c09be0'
@@ -365189,6 +365189,14 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c11ac0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00401284'
+        Module = '_global'
+        Source = '00/40/Global_Exit_00401284.cpp'
+        TestSource = '00/40/Global_Exit_00401284_test.cpp'
+        PassPattern = 'FABLETLC_EXIT_THUNK_BEHAVIOR PASS'
+        Grade = 'toolchain_library'
+    }
 )
 
 $requestedAddresses = @(
@@ -365237,6 +365245,24 @@ try {
     foreach ($entry in $catalog) {
         $source = Join-Path $sourceRoot $entry.Source
         $addressKey = $entry.Address.ToLowerInvariant()
+        # Grade toolchain_library: the retail bytes are a VC7.1 library member's (msvcrt.lib sehprolg.obj /
+        # secchk.obj, or a linker import thunk), not Fable source. The source is a documentation stub with no
+        # body, so nothing is compiled or behaviour-tested here; the proof is
+        # tools/decomp_pipeline/libsig/lib_verify.py <address> (docs/pipeline/LIBRARY_SIGNATURES.md).
+        if ($entry.PSObject.Properties['Grade'] -and $entry.Grade -eq 'toolchain_library') {
+            $results += [pscustomobject]@{
+                address = $entry.Address
+                module = $entry.Module
+                compiler = 'VC7.1 toolchain library (linked, not compiled)'
+                status = 'LIBRARY'
+                behavior_test = 'LIBRARY'
+                source = $source
+                object = ''
+                log = ''
+                test_log = ''
+            }
+            continue
+        }
         $functionOutDir = Join-Path $outDir (
             Join-Path $addressKey.Substring(0, 2) (
                 Join-Path $addressKey.Substring(2, 2) $addressKey

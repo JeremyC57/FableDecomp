@@ -39,6 +39,8 @@ def main():
         n += 1; d = ents[a]
         if d.get("Grade") == "asm_bake":
             open(out, "a", encoding="utf-8").write(f"{a}\tASM_BAKE\t-\t0\n"); continue
+        if d.get("Grade") == "toolchain_library":   # library bytes, a stub with no body (libsig/lib_verify.py)
+            open(out, "a", encoding="utf-8").write(f"{a}\tLIBRARY\t-\t0\n"); continue
         src = (V.ROOT / "rebuild" / "src" / "compiled" / d["Source"]).read_text(encoding="utf-8", errors="replace")
         retail = bytes.fromhex(orc[a]["bytes"])
         m = re.search(r"^//\s*Leaf:\s*(\S+)", src, re.M)

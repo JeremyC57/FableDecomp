@@ -1,0 +1,31 @@
+library signature hits: 448
+  landed      26  coff_section 11, import_thunk 15
+  unlanded   110  coff_section 12, import_thunk 98
+  outside    312  coff_section 5, import_thunk 307
+landed rows:
+  00401067 coff_section _WinMainCRTStartup                       genuine           -                 00/40/global_WinMainCRTStartup_00401067.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  00401284 import_thunk _exit                                    toolchain_library toolchain_library 00/40/Global_Exit_00401284.cpp :: toolchain_library stub (linked library bytes, proof line)
+  00401296 coff_section __onexit                                 genuine           -                 00/40/Global_OnExit_00401296.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  004012bc coff_section _atexit                                  genuine           -                 00/40/global_atexit_004012bc.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  004012ce coff_section __RTC_Initialize                         genuine           -                 00/40/Global_RTCInitialize_004012ce.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  00401312 coff_section __RTC_Terminate                          genuine           -                 00/40/global_RTCTerminate_00401312.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  00401356 import_thunk __initterm                               genuine           -                 00/40/Global_InitTerm_00401356.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  0040135c coff_section __setdefaultprecision                    genuine           -                 00/40/Global_SetDefaultPrecision_0040135c.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  0040138c coff_section __SEH_prolog                             toolchain_library toolchain_library 00/40/Global_SEHProlog_0040138c.cpp :: toolchain_library stub (linked library bytes, proof line)
+  004013c7 coff_section __SEH_epilog                             toolchain_library toolchain_library 00/40/Global_SEHEpilog_004013c7.cpp :: toolchain_library stub (linked library bytes, proof line)
+  004013de import_thunk ___dllonexit                             genuine           -                 00/40/Global_DllOnExit_004013de.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfe9bc import_thunk ??3@YAXPAX@Z                             genuine           -                 00/bf/global_operatordelete_00bfe9bc.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfe9f9 coff_section @__security_check_cookie@4               toolchain_library toolchain_library 00/bf/global_securitycheckcookie_00bfe9f9.cpp :: toolchain_library stub (linked library bytes, proof line)
+  00bfea0e import_thunk _malloc                                  genuine           -                 00/bf/global_malloc_00bfea0e.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfea14 import_thunk _free                                    genuine           -                 00/bf/global_free_00bfea14.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfea1a import_thunk ??2@YAPAXI@Z                             genuine           -                 00/bf/global_operatornew_00bfea1a.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfeae6 import_thunk _memmove                                 genuine           -                 00/bf/global_memmove_00bfeae6.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfeaf2 import_thunk _puts                                    genuine           -                 00/bf/global_puts_00bfeaf2.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfeb1c import_thunk ??_V@YAXPAX@Z                            genuine           -                 00/bf/global_operatordelete_00bfeb1c.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfeb22 import_thunk ??_U@YAPAXI@Z                            genuine           -                 00/bf/global_operatornew_00bfeb22.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfeb3a import_thunk _strstr                                  genuine           -                 00/bf/global_strstr_00bfeb3a.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfed16 import_thunk _toupper                                 genuine           -                 00/bf/global_toupper_00bfed16.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfed40 import_thunk __wgetcwd                                genuine           -                 00/bf/global_wgetcwd_00bfed40.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfed4c import_thunk __wsplitpath                             genuine           -                 00/bf/global_wsplitpath_00bfed4c.cpp :: C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+  00bfee7a coff_section ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z        genuine           -                 00/bf/global_ArrayUnwind_00bfee7a.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+  00bfeed8 coff_section ??_M@YGXPAXIHP6EX0@Z@Z                   genuine           -                 00/bf/global_ehvectordestructoriterator_00bfeed8.cpp :: VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)

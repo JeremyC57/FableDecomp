@@ -1,0 +1,449 @@
+address	bucket	kind	symbol	lib	member	length	confidence	catalog_name	parked	source	purity	grade	verdict
+00401011	outside	coff_section	_check_managed_app	vs2003rtm/msvcrt.lib	build\intel\dll_obj\crtexew.obj	86	high						
+00401067	landed	coff_section	_WinMainCRTStartup	vs2003rtm/msvcrt.lib	build\intel\dll_obj\crtexew.obj	511	high	_global::WinMainCRTStartup		00/40/global_WinMainCRTStartup_00401067.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+00401266	outside	import_thunk	__c_exit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+0040126c	outside	import_thunk	__exit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00401272	outside	import_thunk	__XcptFilter	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00401278	outside	import_thunk	__ismbblead	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+0040127e	outside	import_thunk	__cexit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00401284	landed	import_thunk	_exit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::exit		00/40/Global_Exit_00401284.cpp	toolchain_library	toolchain_library	toolchain_library stub (linked library bytes, proof line)
+0040128a	unlanded	import_thunk	__amsg_exit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_amsg_exit					
+00401290	outside	import_thunk	___getmainargs	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00401296	landed	coff_section	__onexit	vs2003rtm/msvcrt.lib	build\intel\dll_obj\atonexit.obj	38	high	__onexit		00/40/Global_OnExit_00401296.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+004012bc	landed	coff_section	_atexit	vs2003rtm/msvcrt.lib	build\intel\dll_obj\atonexit.obj	18	high	_atexit		00/40/global_atexit_004012bc.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+004012ce	landed	coff_section	__RTC_Initialize	vs2003rtm/msvcrt.lib	..\build\intel\dll_obj\initsect.obj	68	high	__RTC_Initialize	yes	00/40/Global_RTCInitialize_004012ce.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+00401312	landed	coff_section	__RTC_Terminate	vs2003rtm/msvcrt.lib	..\build\intel\dll_obj\initsect.obj	68	high	_global::_RTC_Terminate	yes	00/40/global_RTCTerminate_00401312.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+00401356	landed	import_thunk	__initterm	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::initterm		00/40/Global_InitTerm_00401356.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+0040135c	landed	coff_section	__setdefaultprecision	vs2003rtm/msvcrt.lib	build\intel\dll_obj\fp8.obj	18	high	__setdefaultprecision		00/40/Global_SetDefaultPrecision_0040135c.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+0040136e	outside	import_thunk	___setusermatherr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+0040137a	outside	import_thunk	___p__commode	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00401380	outside	import_thunk	___p__fmode	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00401386	outside	import_thunk	___set_app_type	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+0040138c	landed	coff_section	__SEH_prolog	vs2003rtm/msvcrt.lib	build\intel\dll_obj\sehprolg.obj	59	high	__SEH_prolog	yes	00/40/Global_SEHProlog_0040138c.cpp	toolchain_library	toolchain_library	toolchain_library stub (linked library bytes, proof line)
+004013c7	landed	coff_section	__SEH_epilog	vs2003rtm/msvcrt.lib	build\intel\dll_obj\sehprolg.obj	17	high	__SEH_epilog	yes	00/40/Global_SEHEpilog_004013c7.cpp	toolchain_library	toolchain_library	toolchain_library stub (linked library bytes, proof line)
+004013d8	outside	import_thunk	__except_handler3	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+004013de	landed	import_thunk	___dllonexit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::__dllonexit		00/40/Global_DllOnExit_004013de.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+004013e4	unlanded	import_thunk	__controlfp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_controlfp					
+004013ea	outside	import_thunk	_GetModuleHandleA@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+004013f0	outside	import_thunk	_GetStartupInfoA@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00bfe94c	unlanded	import_thunk	_wcscmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcscmp					
+00bfe960	outside	coff_section	??0type_info@@AAE@ABV0@@Z	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ti_inst.obj	11	high						
+00bfe96b	outside	coff_section	??_Etype_info@@UAEPAXI@Z	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ti_inst.obj	75	high						
+00bfe9bc	landed	import_thunk	??3@YAXPAX@Z	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::operator_delete		00/bf/global_operatordelete_00bfe9bc.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfe9c2	unlanded	import_thunk	_strncpy	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	strncpy					
+00bfe9c8	unlanded	coff_section	_report_failure	vs2003rtm/msvcrt.lib	build\intel\dll_obj\secchk.obj	49	high	report_failure	yes				
+00bfe9f9	landed	coff_section	@__security_check_cookie@4	vs2003rtm/msvcrt.lib	build\intel\dll_obj\secchk.obj	14	high	__security_check_cookie	yes	00/bf/global_securitycheckcookie_00bfe9f9.cpp	toolchain_library	toolchain_library	toolchain_library stub (linked library bytes, proof line)
+00bfea08	unlanded	import_thunk	__purecall	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	CPersistContext_TransferableComponentGenericType::vfunc_0					
+00bfea0e	landed	import_thunk	_malloc	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::malloc		00/bf/global_malloc_00bfea0e.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfea14	landed	import_thunk	_free	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::free		00/bf/global_free_00bfea14.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfea1a	landed	import_thunk	??2@YAPAXI@Z	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::operator_new		00/bf/global_operatornew_00bfea1a.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfea20	unlanded	import_thunk	_fclose	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	fclose					
+00bfea26	unlanded	import_thunk	__wfopen	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_wfopen					
+00bfea30	unlanded	coff_section	__chkstk	vs2003rtm/msvcrt.lib	build\intel\dll_obj\chkstk.obj	61	high	__chkstk	yes				
+00bfea70	unlanded	coff_section	__ftol2	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ftol2.obj	117	high	__ftol2	yes				
+00bfeae6	landed	import_thunk	_memmove	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::memmove		00/bf/global_memmove_00bfeae6.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfeaec	unlanded	import_thunk	_abort	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	abort					
+00bfeaf2	landed	import_thunk	_puts	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::puts		00/bf/global_puts_00bfeaf2.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfeaf8	unlanded	import_thunk	_strncmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	strncmp					
+00bfeafe	unlanded	import_thunk	__wchdir	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_wchdir					
+00bfeb04	unlanded	import_thunk	_wcsncpy	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcsncpy					
+00bfeb0a	unlanded	import_thunk	_wcsncmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcsncmp					
+00bfeb10	unlanded	import_thunk	_sprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	sprintf					
+00bfeb16	unlanded	import_thunk	_rand	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	rand					
+00bfeb1c	landed	import_thunk	??_V@YAXPAX@Z	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::operator_delete[]		00/bf/global_operatordelete_00bfeb1c.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfeb22	landed	import_thunk	??_U@YAPAXI@Z	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::operator_new[]		00/bf/global_operatornew_00bfeb22.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfeb28	unlanded	import_thunk	__CIfmod	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_CIfmod					
+00bfeb2e	unlanded	import_thunk	_wcsstr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcsstr					
+00bfeb34	unlanded	import_thunk	___CxxFrameHandler	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	__CxxFrameHandler					
+00bfeb3a	landed	import_thunk	_strstr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::strstr		00/bf/global_strstr_00bfeb3a.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfeb40	unlanded	import_thunk	__CIpow	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_CIpow					
+00bfeb50	unlanded	coff_section	__allmul	vs2003rtm/msvcrt.lib	build\intel\dll_obj\llmul.obj	52	high	__allmul	yes				
+00bfeb84	unlanded	import_thunk	__CxxThrowException@8	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_CxxThrowException					
+00bfeb8a	unlanded	import_thunk	_floor	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	floor					
+00bfeb90	unlanded	import_thunk	_iswspace	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	iswspace					
+00bfeb96	unlanded	import_thunk	__snprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_snprintf					
+00bfeb9c	unlanded	import_thunk	_ceil	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	ceil					
+00bfeba2	unlanded	import_thunk	__CIacos	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_CIacos					
+00bfeba8	unlanded	import_thunk	__stricmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_stricmp					
+00bfebb0	unlanded	coff_section	__aullrem	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ullrem.obj	117	high	__aullrem	yes				
+00bfec26	unlanded	import_thunk	__isnan	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_isnan					
+00bfec30	unlanded	coff_section	__allrem	vs2003rtm/msvcrt.lib	build\intel\dll_obj\llrem.obj	178	high	__allrem	yes				
+00bfece2	unlanded	import_thunk	__CItanh	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_CItanh					
+00bfecf0	unlanded	coff_section	__aullshr	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ullshr.obj	31	high	__aullshr	yes				
+00bfed10	unlanded	import_thunk	_tolower	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	tolower					
+00bfed16	landed	import_thunk	_toupper	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::toupper		00/bf/global_toupper_00bfed16.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfed1c	unlanded	import_thunk	_sscanf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	sscanf					
+00bfed22	unlanded	import_thunk	_time	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	time					
+00bfed28	unlanded	import_thunk	_atoi	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	atoi					
+00bfed2e	unlanded	import_thunk	_atol	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	atol					
+00bfed34	unlanded	import_thunk	__itoa	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_itoa					
+00bfed3a	unlanded	import_thunk	__beginthread	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_beginthread					
+00bfed40	landed	import_thunk	__wgetcwd	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::_wgetcwd		00/bf/global_wgetcwd_00bfed40.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfed46	unlanded	import_thunk	__snwprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_snwprintf					
+00bfed4c	landed	import_thunk	__wsplitpath	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	MSVCR71.DLL::_wsplitpath		00/bf/global_wsplitpath_00bfed4c.cpp	genuine		C++ stand-in compiling to a linker import thunk (no source exists; candidate for toolchain_library)
+00bfed52	unlanded	import_thunk	__splitpath	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_splitpath					
+00bfed58	unlanded	import_thunk	__wmakepath	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_wmakepath					
+00bfed5e	unlanded	import_thunk	_wcscat	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcscat					
+00bfed64	unlanded	import_thunk	__wmkdir	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_wmkdir					
+00bfed6a	unlanded	import_thunk	__chdrive	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_chdrive					
+00bfed70	unlanded	import_thunk	__getdrive	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_getdrive					
+00bfed76	unlanded	import_thunk	_wcscpy	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcscpy					
+00bfed7c	unlanded	import_thunk	__wfindfirst	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wfindfirst					
+00bfed82	unlanded	import_thunk	__findclose	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_findclose					
+00bfed88	unlanded	import_thunk	__wfindnext	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wfindnext					
+00bfed8e	unlanded	import_thunk	_wcschr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcschr					
+00bfed94	unlanded	import_thunk	_wcslen	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcslen					
+00bfed9a	unlanded	import_thunk	__vsnwprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_vsnwprintf					
+00bfeda0	unlanded	import_thunk	_strchr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	strchr					
+00bfeda6	unlanded	import_thunk	_isdigit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	isdigit					
+00bfedac	unlanded	import_thunk	__vsnprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_vsnprintf					
+00bfedb2	unlanded	import_thunk	_wcsrchr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	wcsrchr					
+00bfedb8	unlanded	import_thunk	_isalpha	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	isalpha					
+00bfedbe	unlanded	import_thunk	_isspace	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	isspace					
+00bfedc4	unlanded	import_thunk	__CIasin	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_CIasin					
+00bfedca	unlanded	import_thunk	_qsort	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	qsort					
+00bfedd0	unlanded	import_thunk	_vsprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	vsprintf					
+00bfedd6	outside	import_thunk	_calloc	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00bfeddc	outside	import_thunk	_realloc	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00bfede2	unlanded	import_thunk	_iswdigit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	iswdigit					
+00bfede8	unlanded	import_thunk	_iswalpha	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	iswalpha					
+00bfedee	unlanded	import_thunk	__itow	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_itow					
+00bfedf4	unlanded	import_thunk	_fprintf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	fprintf					
+00bfedfa	unlanded	import_thunk	_fopen	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	fopen					
+00bfee00	unlanded	coff_section	__aulldiv	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ulldiv.obj	104	high	__aulldiv	yes				
+00bfee68	outside	coff_section	?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ehvecdtr.obj	18	high						
+00bfee7a	landed	coff_section	?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ehvecdtr.obj	94	high	__ArrayUnwind		00/bf/global_ArrayUnwind_00bfee7a.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+00bfeed8	landed	coff_section	??_M@YGXPAXIHP6EX0@Z@Z	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ehvecdtr.obj	96	high	`eh_vector_destructor_iterator'	yes	00/bf/global_ehvectordestructoriterator_00bfeed8.cpp	genuine		VC7.1 compile reproducing the CRT object's bytes (legitimate compile of CRT source; library bytes)
+00bfef38	unlanded	import_thunk	??1type_info@@UAE@XZ	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	~type_info					
+00bfef3e	outside	coff_section	___security_init_cookie	vs2003rtm/msvcrt.lib	build\intel\dll_obj\seccinit.obj	102	high						
+00bfefa4	unlanded	import_thunk	___security_error_handler	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	__security_error_handler					
+00bfefaa	outside	import_thunk	?terminate@@YAXXZ	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00bfefb0	unlanded	import_thunk	_Direct3DCreate9@4	implib/d3d9.lib	d3d9.dll	6	high	Direct3DCreate9					
+00bfefb6	unlanded	import_thunk	D3DXSaveSurfaceToFileW	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXSaveSurfaceToFileW					
+00bfefbc	unlanded	import_thunk	D3DXLoadSurfaceFromFileW	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXLoadSurfaceFromFileW					
+00bfefc2	unlanded	import_thunk	D3DXLoadSurfaceFromSurface	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXLoadSurfaceFromSurface					
+00bfefc8	unlanded	import_thunk	D3DXLoadSurfaceFromMemory	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXLoadSurfaceFromMemory					
+00bfefce	unlanded	import_thunk	D3DXFilterTexture	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXFilterTexture					
+00bfefd4	unlanded	import_thunk	D3DXCreateTextureFromFileExW	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXCreateTextureFromFileExW					
+00bfefda	unlanded	import_thunk	D3DXVec3Hermite	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXVec3Hermite					
+00bfefe0	unlanded	import_thunk	D3DXMatrixInverse	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXMatrixInverse					
+00bfefe6	outside	import_thunk	D3DXLoadVolumeFromMemory	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high						
+00bfefec	unlanded	import_thunk	D3DXLoadVolumeFromVolume	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXLoadVolumeFromVolume					
+00bfeff2	unlanded	import_thunk	D3DXCreateVolumeTexture	(not on disk) d3dx9_25.lib	d3dx9_25.dll	6	high	D3DXCreateVolumeTexture					
+00bfeff8	unlanded	import_thunk	_DirectInput8Create@20	implib/dinput8.lib	DINPUT8.dll	6	high	DirectInput8Create					
+00c003e0	outside	import_thunk	_timeGetTime@0	implib/winmm.lib	WINMM.dll	6	high						
+00c003e6	outside	import_thunk	_WSAStartup@8	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c003ec	unlanded	import_thunk	___WSAFDIsSet@8	implib/wsock32.lib	WSOCK32.dll	6	high	__WSAFDIsSet					
+00c003f2	outside	import_thunk	_select@20	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c003f8	outside	import_thunk	_ioctlsocket@12	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c003fe	outside	import_thunk	_send@16	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00404	outside	import_thunk	_gethostbyname@4	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c0040a	outside	import_thunk	_inet_addr@4	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00410	outside	import_thunk	_bind@12	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00416	outside	import_thunk	_htons@4	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c0041c	outside	import_thunk	_socket@12	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00422	outside	import_thunk	_WSAGetLastError@0	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00428	outside	import_thunk	_ntohs@4	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c0042e	outside	import_thunk	_inet_ntoa@4	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00434	outside	import_thunk	_closesocket@4	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c0043a	outside	import_thunk	_listen@8	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00440	outside	import_thunk	_setsockopt@20	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00446	outside	import_thunk	_accept@12	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c0044c	outside	import_thunk	_sendto@24	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00452	outside	import_thunk	_recv@16	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c00458	outside	import_thunk	_recvfrom@24	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c0045e	outside	import_thunk	_connect@12	implib/wsock32.lib	WSOCK32.dll	6	high						
+00c716c6	outside	import_thunk	_waveOutGetDevCapsA@12	implib/winmm.lib	WINMM.dll	6	high						
+00c716cc	outside	import_thunk	_waveOutMessage@16	implib/winmm.lib	WINMM.dll	6	high						
+00c73632	outside	import_thunk	_waveOutGetNumDevs@0	implib/winmm.lib	WINMM.dll	6	high						
+00c73638	outside	import_thunk	_waveOutClose@4	implib/winmm.lib	WINMM.dll	6	high						
+00c7363e	outside	import_thunk	_waveOutUnprepareHeader@12	implib/winmm.lib	WINMM.dll	6	high						
+00c73644	outside	import_thunk	_waveOutReset@4	implib/winmm.lib	WINMM.dll	6	high						
+00c7364a	outside	import_thunk	_waveOutWrite@12	implib/winmm.lib	WINMM.dll	6	high						
+00c73650	outside	import_thunk	_waveOutPrepareHeader@12	implib/winmm.lib	WINMM.dll	6	high						
+00c73656	outside	import_thunk	_waveOutOpen@24	implib/winmm.lib	WINMM.dll	6	high						
+00c87fd0	outside	import_thunk	_mixerGetControlDetailsA@12	implib/winmm.lib	WINMM.dll	6	high						
+00c87fd6	outside	import_thunk	_mixerGetLineControlsA@12	implib/winmm.lib	WINMM.dll	6	high						
+00c87fdc	outside	import_thunk	_mixerGetLineInfoA@12	implib/winmm.lib	WINMM.dll	6	high						
+00c87fe2	outside	import_thunk	_mixerOpen@20	implib/winmm.lib	WINMM.dll	6	high						
+00c87fe8	outside	import_thunk	_mixerGetDevCapsA@12	implib/winmm.lib	WINMM.dll	6	high						
+00c87fee	outside	import_thunk	_mixerGetNumDevs@0	implib/winmm.lib	WINMM.dll	6	high						
+00c87ff4	outside	import_thunk	_mixerClose@4	implib/winmm.lib	WINMM.dll	6	high						
+00c87ffa	outside	import_thunk	_mixerSetControlDetails@12	implib/winmm.lib	WINMM.dll	6	high						
+00cb0c10	unlanded	import_thunk	_timeSetEvent@20	implib/winmm.lib	WINMM.dll	6	high	timeSetEvent					
+00cb551c	unlanded	import_thunk	_ImmGetCandidateListA@16	implib/imm32.lib	IMM32.dll	6	high	ImmGetCandidateListA					
+00cb5522	unlanded	import_thunk	_ImmGetCompositionStringA@16	implib/imm32.lib	IMM32.dll	6	high	ImmGetCompositionStringA					
+00cb5528	unlanded	import_thunk	_ImmGetIMEFileNameA@12	implib/imm32.lib	IMM32.dll	6	high	ImmGetIMEFileNameA					
+00cb552e	unlanded	import_thunk	_ImmGetVirtualKey@4	implib/imm32.lib	IMM32.dll	6	high	ImmGetVirtualKey					
+00cb5534	unlanded	import_thunk	_ImmReleaseContext@8	implib/imm32.lib	IMM32.dll	6	high	ImmReleaseContext					
+00cb553a	unlanded	import_thunk	_ImmNotifyIME@16	implib/imm32.lib	IMM32.dll	6	high	ImmNotifyIME					
+00cb5540	unlanded	import_thunk	_ImmGetContext@4	implib/imm32.lib	IMM32.dll	6	high	ImmGetContext					
+00cb5546	unlanded	import_thunk	_ImmGetDefaultIMEWnd@4	implib/imm32.lib	IMM32.dll	6	high	ImmGetDefaultIMEWnd					
+00cb554c	unlanded	import_thunk	_ImmGetOpenStatus@4	implib/imm32.lib	IMM32.dll	6	high	ImmGetOpenStatus					
+00cb5552	unlanded	import_thunk	_ImmGetConversionStatus@12	implib/imm32.lib	IMM32.dll	6	high	ImmGetConversionStatus					
+00cb5558	unlanded	import_thunk	_ImmIsIME@4	implib/imm32.lib	IMM32.dll	6	high	ImmIsIME					
+00cb555e	unlanded	import_thunk	_ImmSetConversionStatus@12	implib/imm32.lib	IMM32.dll	6	high	ImmSetConversionStatus					
+00cb5564	unlanded	import_thunk	_ImmAssociateContext@8	implib/imm32.lib	IMM32.dll	6	high	ImmAssociateContext					
+00cb556a	outside	import_thunk	_ImmGetCandidateListW@16	implib/imm32.lib	IMM32.dll	6	high						
+00cb5570	outside	import_thunk	_ImmGetCompositionStringW@16	implib/imm32.lib	IMM32.dll	6	high						
+00cb5576	outside	import_thunk	_ImmSetOpenStatus@8	implib/imm32.lib	IMM32.dll	6	high						
+00cb557c	outside	import_thunk	_ImmSimulateHotKey@8	implib/imm32.lib	IMM32.dll	6	high						
+00cb5582	unlanded	import_thunk	_VerQueryValueA@16	implib/version.lib	VERSION.dll	6	high	VerQueryValueA					
+00cb5588	unlanded	import_thunk	_GetFileVersionInfoA@16	implib/version.lib	VERSION.dll	6	high	GetFileVersionInfoA					
+00cb558e	unlanded	import_thunk	_GetFileVersionInfoSizeA@8	implib/version.lib	VERSION.dll	6	high	GetFileVersionInfoSizeA					
+00cb5594	outside	import_thunk	_GetProcAddress@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb559a	outside	import_thunk	_LoadLibraryA@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55a0	outside	import_thunk	_FreeLibrary@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55a6	outside	import_thunk	_LoadLibraryW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55ac	outside	import_thunk	_DeleteFileW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55b2	outside	import_thunk	_CloseHandle@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55b8	outside	import_thunk	_CreateFileW@28	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55be	outside	import_thunk	_CreateMutexW@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55c4	outside	import_thunk	_OpenMutexW@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55ca	outside	import_thunk	_GlobalMemoryStatus@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55d0	outside	import_thunk	_Sleep@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55d6	outside	import_thunk	_GetSystemTime@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55dc	outside	import_thunk	_OutputDebugStringW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55e2	outside	import_thunk	_LeaveCriticalSection@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55e8	outside	import_thunk	_EnterCriticalSection@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55ee	outside	import_thunk	_WaitForSingleObjectEx@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55f4	outside	import_thunk	_QueryPerformanceFrequency@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb55fa	outside	import_thunk	_QueryPerformanceCounter@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5600	outside	import_thunk	_GetTickCount@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5606	outside	import_thunk	_GlobalFree@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb560c	outside	import_thunk	_ReadFileEx@20	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5612	outside	import_thunk	_GetFileSize@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5618	outside	import_thunk	_SetEndOfFile@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb561e	outside	import_thunk	_SetFilePointer@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5624	outside	import_thunk	_DeleteCriticalSection@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb562a	outside	import_thunk	_SetEvent@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5630	outside	import_thunk	_SleepEx@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5636	outside	import_thunk	_WriteFileEx@20	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb563c	outside	import_thunk	_GlobalAlloc@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5642	outside	import_thunk	_SetThreadPriority@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5648	outside	import_thunk	_GetCurrentThread@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb564e	outside	import_thunk	_CreateEventW@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5654	outside	import_thunk	_InitializeCriticalSection@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb565a	outside	import_thunk	_GetModuleFileNameW@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5660	outside	import_thunk	_GetFileAttributesW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5666	outside	import_thunk	_GetFileAttributesExW@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb566c	outside	import_thunk	_SetFileAttributesW@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5672	outside	import_thunk	_GetDiskFreeSpaceExW@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5678	outside	import_thunk	_GetFileInformationByHandle@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb567e	outside	import_thunk	_FlushFileBuffers@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5684	outside	import_thunk	_ReadFile@20	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb568a	outside	import_thunk	_WriteFile@20	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5690	outside	import_thunk	_OutputDebugStringA@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5696	outside	import_thunk	_EnumResourceNamesA@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb569c	outside	import_thunk	_WideCharToMultiByte@32	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56a2	outside	import_thunk	_LockResource@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56a8	outside	import_thunk	_LoadResource@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56ae	outside	import_thunk	_FindResourceExA@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56b4	outside	import_thunk	_lstrlenA@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56ba	outside	import_thunk	_lstrcatA@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56c0	outside	import_thunk	_lstrcpyA@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56c6	outside	import_thunk	_ExitProcess@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56cc	outside	import_thunk	_GetCurrentDirectoryA@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56d2	outside	import_thunk	_GetCommandLineW@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56d8	outside	import_thunk	_SetPriorityClass@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56de	outside	import_thunk	_GetCurrentProcess@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56e4	outside	import_thunk	_ConvertThreadToFiber@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56ea	outside	import_thunk	_SetFileTime@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56f0	outside	import_thunk	_GetFileTime@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56f6	outside	import_thunk	_GetFileSizeEx@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb56fc	outside	import_thunk	_GetLastError@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5702	outside	import_thunk	_RemoveDirectoryW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5708	outside	import_thunk	_FileTimeToSystemTime@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb570e	outside	import_thunk	_SystemTimeToFileTime@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5714	outside	import_thunk	_CreateFileA@28	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb571a	outside	import_thunk	_VirtualAlloc@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5720	outside	import_thunk	_VirtualFree@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5726	outside	import_thunk	_GetProcessHeap@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb572c	outside	import_thunk	_InterlockedDecrement@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5732	outside	import_thunk	_InterlockedIncrement@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5738	outside	import_thunk	_TryEnterCriticalSection@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb573e	outside	import_thunk	_GetTimeFormatW@24	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5744	outside	import_thunk	_GetDateFormatW@24	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb574a	outside	import_thunk	_GetUserDefaultLCID@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5750	outside	import_thunk	_FileTimeToLocalFileTime@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5756	outside	import_thunk	_GetSystemDefaultLangID@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb575c	outside	import_thunk	_GetCPInfoExA@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5762	outside	import_thunk	_GetVersionExA@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5768	outside	import_thunk	_MultiByteToWideChar@24	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb576e	outside	import_thunk	_LocalFree@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5774	outside	import_thunk	_FormatMessageW@28	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb577a	outside	import_thunk	_VirtualQuery@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5780	outside	import_thunk	_HeapSize@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5786	outside	import_thunk	_HeapAlloc@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb578c	outside	import_thunk	_HeapFree@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5792	outside	import_thunk	_GetCurrentThreadId@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5798	outside	import_thunk	_GetCurrentProcessId@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb579e	outside	import_thunk	_GetSystemTimeAsFileTime@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57a4	outside	import_thunk	_DebugBreak@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57aa	outside	import_thunk	_CreateThread@24	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57b0	outside	import_thunk	_CreateSemaphoreA@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57b6	outside	import_thunk	_WaitForSingleObject@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57bc	outside	import_thunk	_ReleaseSemaphore@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57c2	outside	import_thunk	_FindClose@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57c8	outside	import_thunk	_FindFirstFileA@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57ce	outside	import_thunk	_GetSystemDirectoryA@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57d4	outside	import_thunk	_DeviceIoControl@32	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57da	outside	import_thunk	_CreateEventA@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57e0	outside	import_thunk	_WaitForMultipleObjects@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57e6	outside	import_thunk	_GetVersion@0	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57ec	outside	import_thunk	_ResetEvent@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57f2	outside	import_thunk	_lstrcmpW@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57f8	outside	import_thunk	_lstrcpyW@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb57fe	outside	import_thunk	_MulDiv@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5804	outside	import_thunk	_lstrcpynW@12	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb580a	outside	import_thunk	_lstrlenW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5810	outside	import_thunk	_GetSystemInfo@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5816	outside	import_thunk	_DuplicateHandle@28	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb581c	outside	import_thunk	_CreateSemaphoreW@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5822	outside	import_thunk	_GetModuleHandleW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5828	outside	import_thunk	_lstrcmpiW@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb582e	outside	import_thunk	_InterlockedExchange@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5834	outside	import_thunk	_GetThreadPriority@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb583a	outside	import_thunk	_GetVersionExW@4	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5840	outside	import_thunk	_CompareStringA@24	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5846	outside	import_thunk	_IsDBCSLeadByteEx@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb584c	outside	import_thunk	_GetLocaleInfoA@16	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5852	outside	import_thunk	_lstrcatW@8	vs2003rtm/kernel32.lib	KERNEL32.dll	6	high						
+00cb5858	outside	import_thunk	_MessageBoxA@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb585e	outside	import_thunk	_MessageBoxW@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5864	outside	import_thunk	_GetAsyncKeyState@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb586a	outside	import_thunk	_wsprintfA	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5870	outside	import_thunk	_LoadStringA@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5876	outside	import_thunk	_DialogBoxIndirectParamA@20	ddk3790/user32.lib	USER32.dll	6	high						
+00cb587c	outside	import_thunk	_DialogBoxParamA@20	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5882	outside	import_thunk	_RemovePropA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5888	outside	import_thunk	_SetWindowLongA@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb588e	outside	import_thunk	_CallWindowProcA@20	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5894	outside	import_thunk	_GetPropA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb589a	outside	import_thunk	_SendMessageA@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58a0	outside	import_thunk	_SetCursor@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58a6	outside	import_thunk	_LoadCursorA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58ac	outside	import_thunk	_ReleaseCapture@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58b2	outside	import_thunk	_PtInRect@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58b8	outside	import_thunk	_ClientToScreen@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58be	outside	import_thunk	_GetWindowRect@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58c4	outside	import_thunk	_SetCapture@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58ca	outside	import_thunk	_InvalidateRect@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58d0	outside	import_thunk	_GetCapture@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58d6	outside	import_thunk	_GetWindowLongA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58dc	outside	import_thunk	_SetPropA@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58e2	outside	import_thunk	_GetParent@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58e8	outside	import_thunk	_EnableWindow@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58ee	outside	import_thunk	_GetDlgItem@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58f4	outside	import_thunk	_SetDlgItemTextA@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb58fa	outside	import_thunk	_SetWindowTextA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5900	outside	import_thunk	_MoveWindow@24	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5906	outside	import_thunk	_GetClientRect@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb590c	outside	import_thunk	_GetDesktopWindow@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5912	outside	import_thunk	_DestroyWindow@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5918	outside	import_thunk	_EndDialog@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb591e	outside	import_thunk	_IsDlgButtonChecked@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5924	outside	import_thunk	_UnregisterClassA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb592a	outside	import_thunk	_ShowCursor@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5930	outside	import_thunk	_ShowWindow@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5936	outside	import_thunk	_CreateWindowExA@48	ddk3790/user32.lib	USER32.dll	6	high						
+00cb593c	outside	import_thunk	_RegisterClassExA@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5942	outside	import_thunk	_LoadIconA@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5948	outside	import_thunk	_DefWindowProcA@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb594e	outside	import_thunk	_DispatchMessageW@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5954	outside	import_thunk	_TranslateMessage@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb595a	outside	import_thunk	_PeekMessageW@20	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5960	outside	import_thunk	_GetSysColor@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5966	outside	import_thunk	_GetForegroundWindow@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb596c	outside	import_thunk	_DefWindowProcW@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5972	outside	import_thunk	_WaitMessage@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5978	outside	import_thunk	_UpdateWindow@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb597e	outside	import_thunk	_CreateWindowExW@48	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5984	outside	import_thunk	_GetSystemMetrics@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb598a	outside	import_thunk	_RegisterClassExW@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5990	outside	import_thunk	_LoadIconW@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5996	outside	import_thunk	_LoadCursorW@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb599c	outside	import_thunk	_CharNextExA@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59a2	outside	import_thunk	_SetCursorPos@8	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59a8	outside	import_thunk	_OffsetRect@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59ae	outside	import_thunk	_GetCursorPos@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59b4	outside	import_thunk	_PostThreadMessageW@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59ba	outside	import_thunk	_GetQueueStatus@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59c0	outside	import_thunk	_MsgWaitForMultipleObjects@20	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59c6	outside	import_thunk	_wvsprintfW@12	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59cc	outside	import_thunk	_wsprintfW	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59d2	outside	import_thunk	_RegisterWindowMessageW@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59d8	outside	import_thunk	_GetKeyState@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59de	outside	import_thunk	_PostQuitMessage@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59e4	outside	import_thunk	_GetMessageA@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59ea	outside	import_thunk	_DispatchMessageA@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59f0	outside	import_thunk	_PeekMessageA@20	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59f6	outside	import_thunk	_GetKeyboardLayout@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb59fc	outside	import_thunk	_PostMessageA@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5a02	outside	import_thunk	_GetFocus@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5a08	outside	import_thunk	_GetCaretBlinkTime@0	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5a0e	outside	import_thunk	_SendMessageW@16	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5a14	outside	import_thunk	_IsWindowUnicode@4	ddk3790/user32.lib	USER32.dll	6	high						
+00cb5a1a	outside	import_thunk	_SetTextColor@8	implib/gdi32.lib	GDI32.dll	6	high						
+00cb5a20	outside	import_thunk	_DeleteObject@4	implib/gdi32.lib	GDI32.dll	6	high						
+00cb5a26	outside	import_thunk	_CreateFontIndirectA@4	implib/gdi32.lib	GDI32.dll	6	high						
+00cb5a2c	outside	import_thunk	_GetObjectA@12	implib/gdi32.lib	GDI32.dll	6	high						
+00cb5a32	outside	import_thunk	_GetStockObject@4	implib/gdi32.lib	GDI32.dll	6	high						
+00cb5a38	outside	import_thunk	_RegCreateKeyExW@36	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a3e	outside	import_thunk	_RegCloseKey@4	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a44	outside	import_thunk	_RegQueryValueExW@24	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a4a	outside	import_thunk	_RegSetValueExW@24	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a50	outside	import_thunk	_RegDeleteValueW@8	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a56	outside	import_thunk	_RegQueryValueExA@24	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a5c	outside	import_thunk	_RegOpenKeyExA@20	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a62	outside	import_thunk	_RegSetValueExA@24	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a68	outside	import_thunk	_RegCreateKeyExA@36	implib/advapi32.lib	ADVAPI32.dll	6	high						
+00cb5a6e	outside	import_thunk	_SHGetFolderPathW@20	implib/shell32.lib	SHELL32.dll	6	high						
+00cb5a74	outside	import_thunk	_ShellExecuteA@24	implib/shell32.lib	SHELL32.dll	6	high						
+00cb5a7a	outside	import_thunk	_CoInitialize@4	implib/ole32.lib	ole32.dll	6	high						
+00cb5a80	outside	import_thunk	_CoCreateInstance@20	implib/ole32.lib	ole32.dll	6	high						
+00cb5a86	outside	import_thunk	_CoUninitialize@0	implib/ole32.lib	ole32.dll	6	high						
+00cb5a8c	outside	import_thunk	_CoInitializeEx@8	implib/ole32.lib	ole32.dll	6	high						
+00cb5a92	outside	import_thunk	_CoTaskMemAlloc@4	implib/ole32.lib	ole32.dll	6	high						
+00cb5a98	outside	import_thunk	_CoFreeUnusedLibraries@0	implib/ole32.lib	ole32.dll	6	high						
+00cb5a9e	outside	import_thunk	_CoTaskMemFree@4	implib/ole32.lib	ole32.dll	6	high						
+00cb5aa4	outside	import_thunk	_SysAllocString@4	implib/oleaut32.lib	OLEAUT32.dll	6	high						
+00cb5aaa	outside	import_thunk	_SysFreeString@4	implib/oleaut32.lib	OLEAUT32.dll	6	high						
+00f3fb84	unlanded	import_thunk	__wcsicmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_wcsicmp					
+00f3fb8a	unlanded	import_thunk	__wcsupr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_wcsupr					
+00f3fb90	unlanded	import_thunk	__strnicmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	_strnicmp					
+00f3fb96	unlanded	coff_section	??_L@YGXPAXIHP6EX0@Z1@Z	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ehvecctr.obj	98	high	`eh_vector_constructor_iterator'	yes				
+00f3fbf8	outside	import_thunk	__mbschr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fbfe	outside	import_thunk	__mbscspn	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc04	outside	import_thunk	__mbspbrk	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc0a	outside	import_thunk	__mbsrchr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc10	outside	import_thunk	__mbsspn	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc16	outside	import_thunk	__mbsstr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc1c	outside	import_thunk	__mbsnbcmp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc22	outside	import_thunk	__mbsinc	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc28	outside	import_thunk	__mbclen	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc2e	outside	import_thunk	__ismbcdigit	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc34	outside	import_thunk	__ismbcspace	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc3a	outside	import_thunk	??1exception@@UAE@XZ	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc40	outside	import_thunk	??0exception@@QAE@XZ	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc46	outside	import_thunk	??0exception@@QAE@ABV0@@Z	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fc50	unlanded	coff_section	__alldiv	vs2003rtm/msvcrt.lib	build\intel\dll_obj\lldiv.obj	170	high	__alldiv	yes				
+00f3fcfa	unlanded	import_thunk	_strncat	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high	strncat					
+00f3fd00	outside	import_thunk	_printf	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fd06	outside	import_thunk	__errno	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fd10	unlanded	coff_section	__allshr	vs2003rtm/msvcrt.lib	build\intel\dll_obj\llshr.obj	33	high	__allshr	yes				
+00f3fd32	outside	import_thunk	_memchr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fd38	outside	import_thunk	_perror	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fd3e	outside	import_thunk	_ldexp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fd44	outside	import_thunk	_frexp	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fd50	unlanded	coff_section	__aulldvrm	vs2003rtm/msvcrt.lib	build\intel\dll_obj\ulldvrm.obj	149	high	__aulldvrm	yes				
+00f3fde6	outside	import_thunk	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z	vs2003rtm/msvcprt.lib	MSVCP71.dll	6	high						
+00f3fdec	outside	import_thunk	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	vs2003rtm/msvcprt.lib	MSVCP71.dll	6	high						
+00f3fdf2	outside	import_thunk	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z	vs2003rtm/msvcprt.lib	MSVCP71.dll	6	high						
+00f3fdf8	outside	import_thunk	_timeKillEvent@4	implib/winmm.lib	WINMM.dll	6	high						
+00f3fdfe	outside	import_thunk	_timeBeginPeriod@4	implib/winmm.lib	WINMM.dll	6	high						
+00f3fe04	outside	import_thunk	_timeEndPeriod@4	implib/winmm.lib	WINMM.dll	6	high						
+00f3fe0a	outside	import_thunk	_timeSetEvent@20	implib/winmm.lib	WINMM.dll	6	high						
+00f3fe10	outside	import_thunk	__strupr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fe16	outside	import_thunk	__strlwr	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						
+00f3fe1c	outside	import_thunk	__strrev	vs2003rtm/msvcrt.lib	MSVCR71.dll	6	high						

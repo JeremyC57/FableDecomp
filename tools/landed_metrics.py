@@ -12,7 +12,9 @@ Counts:
   known_functions         rows in rebuild/manifest/functions.tsv (catalog + gap-scan + boundary rows)
   original_functions      the original analysis catalog (agent_source not gapscan / boundary)
   landed_known / landed_original   catalog rows inside each denominator
-  genuine / retail_asm / asm_bake  purity class of each landed row's source (crawl/purity.py)
+  genuine / retail_asm / toolchain_library / asm_bake  purity class of each landed row's source (crawl/purity.py);
+                          retail_asm and toolchain_library (VC7.1 library bytes, docs/pipeline/LIBRARY_SIGNATURES.md)
+                          count with the genuine rows
   landed_genuine_known / landed_genuine_original
   matched_bytes / matched_bytes_genuine   retail bytes covered by landed rows (catalog row lengths)
   unlanded_bytes_estimate  known functions not landed, each sized as the gap to the next known function start
@@ -87,6 +89,7 @@ def main() -> int:
         "landed_genuine_original": len(genuine & original),
         "genuine": sum(1 for k in kinds.values() if k == "genuine"),
         "retail_asm": sum(1 for k in kinds.values() if k == "retail_asm"),
+        "toolchain_library": sum(1 for k in kinds.values() if k == "toolchain_library"),
         "asm_bake": sum(1 for k in kinds.values() if k in ("naked_asm", "emit_bake")),
         "missing_source": missing,
         "matched_bytes": sum(catalog.values()),

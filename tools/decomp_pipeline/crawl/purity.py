@@ -26,6 +26,17 @@ There is no instruction-count cap and branches inside the block are allowed (own
 cap is arbitrary when retail is proven to run a longer block). The old 8-instruction / no-branch rule
 excluded proven original code such as the 10-instruction fnstcw/fldcw ceil/floor block and the
 published DirectShow wxutil.h EnlargedUnsignedDivide.
+
+Second exception (owner, 2026-10-30): bytes the linker copied from a prebuilt toolchain library (a VC7.1 CRT
+object such as msvcrt.lib's sehprolg.obj, or the `jmp [__imp_X]` thunk it synthesises for an import-library
+member) are not Fable source at all; the project links the same library instead of reconstructing them. Such
+a landed file is `toolchain_library` when:
+  * it carries `// Toolchain-library: <lib>(<member>) <symbol> -- <n> bytes verified against Fable.exe 0x<ADDR>`
+    (reproduced by tools/decomp_pipeline/libsig/lib_verify.py; docs/pipeline/LIBRARY_SIGNATURES.md);
+  * it has no function body (no `{` outside comments and string literals: declarations only) and no
+    `__asm`, `naked` or `_emit` anywhere.
+It counts with the genuine rows (the bytes are the toolchain's, the build links them), and is checked before
+the asm rules so the two never overlap.
 """
 import re
 
@@ -65,8 +76,26 @@ def _retail_asm(text):
     return any(re.search(r"(?<![A-Za-z0-9_])" + re.escape(m) + r"(?![A-Za-z0-9_])", ev, re.I) for m in mnems)
 
 
+TOOLCHAIN_LIBRARY_TAG = "// Toolchain-library:"
+_TOOLCHAIN_CLAIM = re.compile(r"^//\s*Toolchain-library:\s*\S+?\(.+\)\s+\S+\s+--\s+\d+\s+bytes verified against "
+                              r"Fable\.exe\s+0x[0-9A-Fa-f]{8}\s*$", re.M)
+
+
+def _toolchain_library(text):
+    """A documentation stub for library bytes: the proof line, declarations only, no machine code."""
+    if not _TOOLCHAIN_CLAIM.search(text):
+        return False
+    if any(m in text for m in ("_emit", "naked", "__asm")):
+        return False
+    code = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
+    code = re.sub(r"//[^\n]*", "", code)
+    code = re.sub(r'"(?:\\.|[^"\\\n])*"', '""', code)
+    code = re.sub(r"'(?:\\.|[^'\\\n])*'", "''", code)
+    return "{" not in code and "}" not in code
+
+
 def is_genuine_kind(kind):
-    return kind in ("genuine", "retail_asm")
+    return kind in ("genuine", "retail_asm", "toolchain_library")
 
 
 def is_genuine(text):
@@ -74,6 +103,8 @@ def is_genuine(text):
 
 
 def classify(text):
+    if TOOLCHAIN_LIBRARY_TAG in text and _toolchain_library(text):
+        return "toolchain_library"
     if "_emit" in text:
         return "emit_bake"
     if "naked" in text or "__asm" in text:

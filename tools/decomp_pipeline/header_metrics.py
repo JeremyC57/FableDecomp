@@ -5,6 +5,7 @@ Counts that the coverage dashboard reports alongside function counts:
   landed_total              landed .cpp translation units (compiled_source set in the manifest)
   genuine                   real compiler input (no __asm / naked / _emit)
   naked_asm / emit_bake     hand-written machine code (asm_bake grade; not reconstruction)
+  retail_asm / toolchain_library   counted with genuine (retail's own inline asm; VC7.1 library bytes)
   includes_engine_header    TUs that #include "engine/<Class>.h" (typed onto the PDB layout)
   includes_any_header       TUs with any #include
   generic_struct_decls      local `struct T/Sub/Owner/...` throwaway declarations remaining
@@ -96,7 +97,7 @@ def main() -> int:
     eng = ROOT / "rebuild" / "include" / "engine"
     out = {k: m.get(k, 0) for k in ("landed_total", "files_on_disk", "files_not_in_manifest",
                                     "unmanifested_genuine", "unmanifested_naked_asm", "unmanifested_emit_bake",
-                                    "genuine", "retail_asm", "naked_asm", "emit_bake",
+                                    "genuine", "retail_asm", "toolchain_library", "naked_asm", "emit_bake",
                                     "includes_engine_header", "includes_any_header",
                                     "generic_struct_decls", "files_with_generic_struct", "gapscan",
                                     "mislabelled_family_files", "missing_file",

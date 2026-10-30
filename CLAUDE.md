@@ -38,6 +38,9 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   `// Retail-asm: <evidence>` line is grade `retail_asm` and lands (`crawl/purity.py`). The evidence line
   must cite a retail address and an instruction of the block; no `naked`/`_emit`, no `ret` inside the
   asm. No instruction-count cap (owner, 2026-10-27: a fixed cap is arbitrary when retail runs a longer block).
+  Bytes the linker copied from a VC7.1 library (CRT objects of VS 2003 `msvcrt.lib`, import thunks) are grade
+  `toolchain_library` (owner, 2026-10-30): a body-less stub with a `// Toolchain-library:` proof line that
+  `libsig/lib_verify.py` reproduces, counted as genuine (`docs/pipeline/LIBRARY_SIGNATURES.md`).
 - **Shared headers** — model `this` with `#include "engine/<Class>.h"`, never a local
   `struct T { char pad[0x1a8]; ... }` when a header exists (the verifier warns; strict mode rejects).
 - **Names right the first time** (owner, 2026-10-28) — every function, callee, global, class, member and script name

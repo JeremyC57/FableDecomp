@@ -139,7 +139,7 @@ def cmd_scan(args):
     with open(out, "a") as f:
         for a in addrs:
             if a in done or a not in catalog() or a not in oracle(): continue
-            if catalog()[a].get("Grade") == "asm_bake": continue
+            if catalog()[a].get("Grade") in ("asm_bake", "toolchain_library"): continue   # no compilable body
             p = src_root / catalog()[a]["Source"]
             if not p.exists(): continue
             r = compile_row(a, p.read_text(encoding="utf-8", errors="replace"), work / a[:4] / a, e)

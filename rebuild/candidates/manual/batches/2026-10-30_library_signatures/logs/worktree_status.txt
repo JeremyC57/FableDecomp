@@ -1,0 +1,25 @@
+ M CLAUDE.md
+ M README.md
+ M docs/INDEX.md
+ M docs/pipeline/GOTCHAS.md
+ M rebuild/COVERAGE.json
+ M rebuild/COVERAGE.md
+ M rebuild/build_bootstrap.ps1
+ M rebuild/build_candidates.ps1
+ M rebuild/manifest/landed_metrics.json
+ M rebuild/oracles/auto-re-candidates.tsv
+ M rebuild/src/compiled/00/40/Global_Exit_00401284.cpp
+ M rebuild/src/compiled/00/40/Global_SEHEpilog_004013c7.cpp
+ M rebuild/src/compiled/00/40/Global_SEHProlog_0040138c.cpp
+ M rebuild/src/compiled/00/bf/global_securitycheckcookie_00bfe9f9.cpp
+ M tools/decomp_pipeline/crawl/purity.py
+ M tools/decomp_pipeline/header_metrics.py
+ M tools/decomp_pipeline/reloc_audit.py
+ M tools/decomp_pipeline/reloc_rename.py
+ M tools/decomp_pipeline/verify_and_land.py
+ M tools/landed_metrics.py
+ M tools/update_readme_progress.py
+ M tools/write_decomp_dashboard.py
+?? docs/pipeline/LIBRARY_SIGNATURES.md
+?? rebuild/oracles/library_signatures.tsv
+?? tools/decomp_pipeline/libsig/

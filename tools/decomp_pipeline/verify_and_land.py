@@ -6,6 +6,8 @@ Env:   FABLE_ROOT, FABLE_VC71, FABLE_OBJDUMP override the Windows paths; FABLE_W
        VC7.1 tools through Wine (FABLE_VC71_LIB adds library directories, os.pathsep-separated).
        python verify_and_land.py --prune-fragment-report <report.md>
 Without --land: dry-run report only. With --land: writes src/tests/catalog/oracle for wins.
+A source graded toolchain_library (crawl/purity.py: a stub for VC7.1 library bytes) is never compiled or
+landed here: it prints LIBRARY_MATCH / LIBRARY_MISMATCH from libsig/lib_verify.py (docs/pipeline/LIBRARY_SIGNATURES.md).
 Candidates without an authoritative manifest function start are always rejected. The prune
 flag removes already-landed outside-manifest rows from this specific authoring payload. The
 report mode strictly validates and prunes a saved mid-function-fragment audit."""
@@ -362,6 +364,24 @@ BASE_FLAGS=["/O2","/Oy","/W3"]
 # (CompilerFlags) so the real build reproduces the exact retail bytes.
 EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"], ["/EHsc"]]   # /EHsc: a few retail modules (0x00C09000..) carry fs:[0] EH frames
 
+def library_proof(addr, src):
+    """LIBRARY_MATCH / LIBRARY_MISMATCH for a toolchain_library stub (tools/decomp_pipeline/libsig/lib_verify.py:
+    re-extract the library member, mask its relocations, compare with Fable.exe at FABLE_EXE)."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent / "libsig"))
+        import lib_verify
+        claim = lib_verify.parse_claim(src)
+        if not claim:
+            return "LIBRARY_MISMATCH", "no Toolchain-library claim line"
+        if claim["address"] != int(addr, 16):
+            return "LIBRARY_MISMATCH", f"claim names 0x{claim['address']:08X}, row is {addr}"
+        if not os.environ.get("FABLE_EXE"):
+            return "LIBRARY_UNVERIFIED", "FABLE_EXE unset (lib_verify.py needs the retail exe)"
+        ok, why = lib_verify.verify(claim)
+        return ("LIBRARY_MATCH" if ok else "LIBRARY_MISMATCH"), why
+    except Exception as ex:   # a missing library directory or exe is a failed proof, never a pass
+        return "LIBRARY_UNVERIFIED", f"{type(ex).__name__}: {ex}"
+
 def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, text_extractor=None):
     """Compile one TU and grade its .text against the retail oracle bytes.
 
@@ -475,6 +495,12 @@ def main():
         if not o: print(f"{addr:10} {'NO_ORACLE':16} {'-':6} {name}"); continue
         work=shard_directory(WORK_ROOT, addr, leaf=True); work.mkdir(parents=True, exist_ok=True)
         src0=vc71(c["source_cpp"]); tst=vc71(c["test_cpp"]); patt=c["pass_pattern"]; mod=c.get("module","_global")
+        # Grade toolchain_library: a documentation stub for bytes the linker copies from a VC7.1 library member
+        # (no body to compile). Re-prove it from the library instead and never land it from a payload.
+        if purity.classify(src0) == "toolchain_library":
+            st, why = library_proof(addr, src0)
+            print(f"{addr:10} {st:16} {'-':6} {name}  {why}")
+            continue
         # Purity gate: hand-written machine code is an oracle, not a reconstruction (CONTRIBUTING.md).
         if not purity.is_genuine(src0):
             print(f"{addr:10} {'NOT_GENUINE':16} {'-':6} {name}"); continue

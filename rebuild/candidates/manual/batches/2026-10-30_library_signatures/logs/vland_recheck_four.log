@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0040138c   LIBRARY_MATCH    -      __SEH_prolog  vs2003rtm/msvcrt.lib(build\intel\dll_obj\sehprolg.obj) section 1 .text 76 bytes at 0x0040138C, 4 masked relocation bytes, 1/1 relocations proven: +1:DIR32:__except_handler3=0x004013D8[ok]
+004013c7   LIBRARY_MATCH    -      __SEH_epilog  vs2003rtm/msvcrt.lib(build\intel\dll_obj\sehprolg.obj) section 1 .text 76 bytes at 0x0040138C, 4 masked relocation bytes, 1/1 relocations proven: +1:DIR32:__except_handler3=0x004013D8[ok]
+00bfe9f9   LIBRARY_MATCH    -      __security_check_cookie  vs2003rtm/msvcrt.lib(build\intel\dll_obj\secchk.obj) section 8 .text 14 bytes at 0x00BFE9F9, 8 masked relocation bytes, 2/2 relocations proven: +2:DIR32:___security_cookie=0x0139C8A8[ok:lib] +a:REL32:_report_failure=0x00BFE9C8[ok:lib]
+00401284   LIBRARY_MATCH    -      exit  jmp dword ptr [__imp__exit] ; IAT slot 0x014401A0 = MSVCR71.dll!exit (short import, CODE, NAME_NOPREFIX)
+
+WINS: 0

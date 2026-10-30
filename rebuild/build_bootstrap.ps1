@@ -1668,13 +1668,20 @@ try {
         -OutputStem 'system-manager-initialise' `
         -PassPattern $systemManagerInitialisePassPattern
 
-    Invoke-VerifiedLeaf `
-        -Address '00401284' `
-        -Description 'CRT process-exit import thunk' `
-        -Source $exitThunkSource `
-        -BehaviorSource $exitThunkBehaviorSource `
-        -OutputStem 'crt-exit-thunk' `
-        -PassPattern $exitThunkPassPattern
+    # 0x00401284 is the linker's `jmp dword ptr [__imp__exit]` thunk for msvcrt.lib's MSVCR71.dll short import
+    # record (grade toolchain_library): its bytes come from the import library at link time, so the leaf is
+    # proved by lib_verify.py (library member + IAT slot against Fable.exe) instead of a compile and behaviour
+    # fixture. It needs FABLE_EXE and the VS .NET 2003 Vc7\lib (FABLE_VS2003_LIB, default $vcRoot\lib);
+    # see docs/pipeline/LIBRARY_SIGNATURES.md.
+    if ($env:FABLE_EXE) {
+        if (-not $env:FABLE_VS2003_LIB) { $env:FABLE_VS2003_LIB = Join-Path $vcRoot 'lib' }
+        & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\libsig\lib_verify.py') '00401284'
+        if ($LASTEXITCODE -ne 0) {
+            throw 'CRT process-exit import thunk failed its library proof (lib_verify.py 00401284).'
+        }
+    } else {
+        Write-Output 'LIBRARY 00401284 CRT process-exit import thunk: toolchain_library, proof skipped (set FABLE_EXE to run lib_verify.py)'
+    }
 
     Invoke-VerifiedLeaf `
         -Address '00401fe0' `

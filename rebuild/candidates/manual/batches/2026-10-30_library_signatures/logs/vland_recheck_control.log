@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00401296   WARN RELOC_ALIAS: ___dllonexit -> 004013de is the import thunk 'MSVCR71.DLL::__dllonexit'
+00401296   RELOCATION_MATCH PASS   __onexit
+0040135c   RELOCATION_MATCH PASS   __setdefaultprecision
+004012bc   RELOCATION_MATCH PASS   _atexit
+
+WINS: 3
+  00401296 RELOCATION_MATCH _global::__onexit
+  0040135c RELOCATION_MATCH _global::__setdefaultprecision
+  004012bc RELOCATION_MATCH _global::_atexit
