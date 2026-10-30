@@ -17,10 +17,7 @@
 // Shape: two rotated script waits (`while (!cond) { NewScriptFrame(); if (IsActiveThreadTerminating()) return; }` then a
 //   termination test); the long range is converted with fild and stored straight into the float argument slot.
 class CCharString;
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template <class T> class CCountedPointer {
 public:
     T* Data;

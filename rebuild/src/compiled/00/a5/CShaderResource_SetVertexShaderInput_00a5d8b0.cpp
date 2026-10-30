@@ -24,9 +24,7 @@ template <class T> class CArray { public:              // retail CArray: first, 
     T* GetData() { return Size() > 0 ? m_pFirst : (T*)this; }
 };
 
-class CBaseClass { public:                             // vtable 0x01231710
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CVertexShaderInput : public CBaseClass { public:        // vtable 0x0129EA08, 0x1c bytes
     CArray<SStreamInput>       Streams;         // +0x04

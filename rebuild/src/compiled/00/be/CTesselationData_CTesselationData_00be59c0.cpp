@@ -9,11 +9,7 @@
 // derived constructor's own store is scheduled with the member stores.
 class CEngineMap;
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                    // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CTesselationData : public CBaseClass { public:               // vtable 0x012A800C
     long PatchWorldX;                           // +0x04

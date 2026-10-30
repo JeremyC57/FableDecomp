@@ -15,10 +15,7 @@
 //   implicit descriptor copy stores the vtable immediate), `*result = *first` is the implicit pair assignment (no vptr),
 //   the __adjust_heap value is built in the argument area by STLport's explicit pair copy constructor, and the frame
 //   copy's destructor reduces to the base destructor call.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 template <class TOwner, class TValue> class CParticleUpdateParamCallback;

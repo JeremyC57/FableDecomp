@@ -18,10 +18,7 @@
 //   implicit copy constructor stores the vptr), the pair's implicit assignment writes the root into the back slot (key,
 //   Callback, Index -- an implicit operator= never copies the vptr), the copy for __adjust_heap is built in the argument area
 //   by STLport's explicit pair copy constructor, and the temporary's implicit destructor reduces to the base destructor call.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace std {
 template <class T1, class T2> struct pair {             // STLport pair: explicit copy constructor

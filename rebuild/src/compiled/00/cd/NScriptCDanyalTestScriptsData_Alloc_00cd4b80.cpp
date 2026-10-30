@@ -6,7 +6,7 @@
 #ifndef _MSC_VER
 #define __fastcall
 #endif
-class CBaseClass{public:virtual ~CBaseClass(){}};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable:public CBaseClass{public:CBaseClassNonCopyable();};
 class CPersistContext;
 class CScriptDataBase:public CBaseClassNonCopyable{public:virtual void OnPersist(CPersistContext&)=0;virtual void Init()=0;};

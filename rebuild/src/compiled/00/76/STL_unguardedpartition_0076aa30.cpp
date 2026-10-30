@@ -11,10 +11,7 @@
 // Shape: STLport `__unguarded_partition(first, last, pivot, comp)`, /Gr (__fastcall: first in ecx, last in edx, pivot
 //   and comparator on the stack), both scans rotated; `iter_swap(first, last)` is inlined with a real frame
 //   temporary (`_Tp tmp = *a; *a = *b; *b = tmp;`, destroyed at the end of each swap).
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                               // 0x0099A2E0 (restores the CBase vtable)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 

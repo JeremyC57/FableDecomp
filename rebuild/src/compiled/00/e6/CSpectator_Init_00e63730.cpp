@@ -17,10 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SCountBlock {
     long  m_references;                            // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4

@@ -10,10 +10,7 @@
 // Shape: the animation interpolator is COPIED (both blend states add-ref their animation; no CBaseClass call: the base copy
 // is implicit); the lit flag is a one-bit init-list member (`xor ; and 1 ; xor` merge); one `xor ebx,ebx` zero register
 // serves the theme-channel bytes, the null tests and the empty MeshEffect.
-class CBaseClass { public:
-    virtual ~CBaseClass();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} };
 class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} };
 class C3DPositionInterpolator : public CBaseClass { public:      // vtable 0x0123981C

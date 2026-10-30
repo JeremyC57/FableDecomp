@@ -23,9 +23,7 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-class CBaseClass { public:                              // polymorphic root of the script handles
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01238C8C
     void*           PImp_Data;                          // +0x04 CCountedPointer<CScriptThing>
     CCPPointerInfo* PImp_Info;                          // +0x08

@@ -16,11 +16,7 @@ struct IUnknownLike {
     virtual unsigned long __stdcall Release();
 };
 struct IDirect3DVolume9 : IUnknownLike { };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:
     IDirect3DVolume9* m_pVolume;            // +0x04
     CVolume(IDirect3DVolume9* volume);

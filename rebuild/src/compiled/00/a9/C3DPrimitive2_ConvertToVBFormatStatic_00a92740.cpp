@@ -21,10 +21,7 @@ template<class T> class CArray { public:
     T* last;
     T* end;
 };
-class CBaseClass { public:
-    virtual ~CBaseClass(); // vtable 0x01231710, deleting destructor 0x004371F0
-    CBaseClass();           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVertexShaderInput : public CBaseClass { public: // vtable 0x0129EA08, size 0x1c
     CArray<CStreamInfo> DataStreams;               // +4
     CArray<D3DVERTEXELEMENT9> D3DDeclaration;      // +0x10

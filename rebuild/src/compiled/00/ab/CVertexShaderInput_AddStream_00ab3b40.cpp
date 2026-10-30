@@ -22,10 +22,7 @@ extern "C" void __cdecl free(void* p);             // 0x00BFEA14
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 template <class T> class CArray {                  // retail 12-byte array: start, finish, end of storage
 public:
@@ -40,7 +37,7 @@ class CVertexStreamFormat : public CBaseClass {    // vtable 0x0129D578, 16 byte
 public:
     class CDataElement { public: unsigned long Usage; long Type; };
     CArray<CDataElement> DataElements;             // +0x04
-    CVertexStreamFormat(const CVertexStreamFormat& other) : DataElements(other.DataElements) { }
+    CVertexStreamFormat(const CVertexStreamFormat& other) : CBaseClass(other), DataElements(other.DataElements) { }
 };
 
 namespace std {

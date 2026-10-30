@@ -9,10 +9,7 @@
 //   const CCountedPointer<CVillageTaskBase>& (Ego_r.pdb CIsTask {CVillageTaskBase* Task}) so each element is converted into a
 //   temporary, compared (`sete` into a frame byte) and released; erase's iterator is built in its argument slot.
 #pragma optimize("s", on)
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;
 class CBaseObject : public CBaseClass {
 public:

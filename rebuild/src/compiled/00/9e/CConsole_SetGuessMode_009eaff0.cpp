@@ -28,10 +28,7 @@ class CCharString { public:
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CConsoleCommandLine : public CBaseClass { public:
     CCharString Text;                                       // +0x04

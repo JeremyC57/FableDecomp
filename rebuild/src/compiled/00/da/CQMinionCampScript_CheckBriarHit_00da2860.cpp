@@ -25,9 +25,7 @@ class CCPPointerInfo { public:                                 // counted-pointe
     void* Data;                                         // +0x08
 };
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
 struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>

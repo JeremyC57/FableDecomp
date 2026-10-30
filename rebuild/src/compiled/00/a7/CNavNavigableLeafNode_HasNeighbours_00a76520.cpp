@@ -5,7 +5,7 @@
 // Layout: Ego_r.pdb CNavNavigableLeafNode (0x20): Neighbours +0x14 is CSmallVector<const CANavQuadTreeNode*,8>
 //   (Start +0, signed char Size +4), so the count byte is [ecx+18h]. engine/CNavNavigableLeafNode.h flattens the vptr into
 //   a data member, so the polymorphic class is a local model with the same offsets.
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 class C2DVector { public: float X, Y; };
 class CNavRegion;

@@ -13,10 +13,7 @@
 //   null test; /O2 loop-head pad. The inner helper needs `__forceinline` (a plain inline cdecl helper stays a call).
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePersistentPrimitiveBase {
 public:
     virtual void v000();

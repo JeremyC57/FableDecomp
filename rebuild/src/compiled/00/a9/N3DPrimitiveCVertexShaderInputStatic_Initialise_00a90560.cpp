@@ -14,9 +14,7 @@
 //   (`mov eax,13 ; je ; mov eax,2` -- a ternary compiles branchless with sbb); the optional colour is an if/else of
 //   two complete calls; `!b` is the `sete al` argument.
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-class CBaseClass { public:
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 enum EVertexStreamDataType {                       // values follow D3DDECLTYPE
     VSDT_FLOAT2 = 1, VSDT_FLOAT3 = 2, VSDT_FLOAT4 = 3, VSDT_D3DCOLOR = 4, VSDT_SHORT4 = 7,
     VSDT_USHORT2N = 11, VSDT_USHORT4N = 12, VSDT_UDEC3 = 13

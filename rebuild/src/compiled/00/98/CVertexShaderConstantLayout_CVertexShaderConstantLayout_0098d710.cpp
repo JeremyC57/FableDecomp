@@ -46,9 +46,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 };
 } // namespace std
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 template <class T> class CArray : public std::vector<T> { public:
 };

@@ -74,10 +74,7 @@ public:
         Info = 0;
     }
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThingImp;
 class CScriptThing : public CBaseClass {               // 12 bytes, vtable 0x01238C8C
 public:

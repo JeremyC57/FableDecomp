@@ -21,9 +21,7 @@ class CCharString { public:
 };
 class C3DVector { public: float X, Y, Z; };
 
-class CBaseClass { public:                                  // vtable 0x01231710
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CCountedItem { };
 struct SCountBlock {
     long m_references;                               // +0x00

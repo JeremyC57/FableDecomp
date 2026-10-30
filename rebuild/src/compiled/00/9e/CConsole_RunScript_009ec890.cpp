@@ -59,9 +59,7 @@ class CAFile { public:
 };
 void __fastcall GFRemoveComments(char* text, const char* start, const char* end);   // 0x00A60410
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                              // 0x0099A2E0 (Ego_r.pdb ??1CBaseClass@@UAE@XZ)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CStringParserCommentBoundaries;
 namespace std {
 template <class _Tp> class allocator;

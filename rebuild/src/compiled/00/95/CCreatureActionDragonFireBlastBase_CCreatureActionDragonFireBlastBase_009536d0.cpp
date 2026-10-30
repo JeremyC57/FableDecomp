@@ -15,9 +15,7 @@
 // Inlines: CEnginePrimitiveHandle::~CEnginePrimitiveHandle (vptr store, Clear(): `if (Data.GetRefCount() == 1)
 //   Data->NotifyReleased(*this); Data.Reset(0);`, then the CIVCountedPointer member dtor), as the landed handle ??_G 0x0041C500.
 // Shape: the implicit dtor is emitted through a qualified explicit call in a one-line helper (chunk 562 device).
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();

@@ -10,11 +10,7 @@
 //   model 0x006955F0); after the vtable store the Hand string is default-constructed out of line (landed default ctor 0x006922C0).
 #include "fable_string.h"
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CThingCreatureBase;
 class CGameCameraManager;

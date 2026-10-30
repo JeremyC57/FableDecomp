@@ -20,10 +20,7 @@ class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet Interpolate(const CRightHandedSet& other, float t) const;   // 0x00A23190
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DOrientationInterpolator : public CBaseClass { public:         // 0x34 bytes
     CRightHandedSet StartOrientation;               // +0x04
     CRightHandedSet EndOrientation;                 // +0x1c

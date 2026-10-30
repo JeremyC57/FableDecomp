@@ -53,10 +53,7 @@ public:
     }
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DMeshObject : public CBaseClass {                        // vtable 0x01239860, 0x78 bytes
 public:
     const C3DMeshInfo* MeshInfo;                            // +0x4

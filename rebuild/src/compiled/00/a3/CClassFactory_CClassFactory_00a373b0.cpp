@@ -14,7 +14,7 @@
 // node word, the header is malloc'd and linked to itself; NoAllocatedClasses is cleared in the body, before the resize.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();

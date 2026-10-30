@@ -13,10 +13,7 @@
 // external non-virtual __fastcall helpers; the harness masks the relocation
 // dwords so any consistent targets reproduce the bytes.
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCharString;
 struct SymbolPair;
 

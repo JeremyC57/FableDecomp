@@ -14,10 +14,7 @@
 class CCharString { public:
     void* PStringData;
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CSurface { public:                                           // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
     void*         PD3DSurface;                              // +0x04

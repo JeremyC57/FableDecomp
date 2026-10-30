@@ -24,7 +24,7 @@ template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{pu
 class CThing{public:unsigned char Prefix[32];unsigned int UsingComponents[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>__forceinline bool GetTC(T** out)const{if(!(UsingComponents[1]&8))return false;*out=(T*)Components.Get(TC_VILLAGE_MEMBER);return true;}};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{};
 class CTCVillage:public CTCVillage_HeaderLayout{public:bool IsEatTime()const;};class CTCVillageMember:public CTCBase{public:CTCVillage* GetPVillage()const;};
 // Layout: genuine state-group polymorphism replaces flat header vptr; PBrain+4. Other inherited owner fields are unused.
-class CBaseClass{public:virtual ~CBaseClass(){}};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase:public CBaseClass{public:CAIBrain* PBrain;unsigned char BaseFields[12];virtual void UnusedSlot01(){};virtual void UnusedSlot02(){};virtual void UnusedSlot03(){};virtual void UnusedSlot04(){};virtual void UnusedSlot05(){};virtual void UnusedSlot06(){};virtual void UnusedSlot07(){};virtual void UnusedSlot08(){};virtual void UnusedSlot09(){};virtual void UnusedSlot10(){};virtual void UnusedSlot11(){};virtual void UnusedSlot12(){};virtual void UnusedSlot13(){};};
 class CAIStateGroup_ServeFood:public CAIStateGroupBase{public:unsigned char RemainingFields[56]; protected:virtual bool IsTime()=0;};
 class CAIStateGroup_ServeFoodAtTavern:public CAIStateGroup_ServeFood{protected:virtual bool IsTime();friend struct TestAccess;};

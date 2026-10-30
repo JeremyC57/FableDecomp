@@ -21,11 +21,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-    CBaseClass();                                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DPositionInterpolator : public CBaseClass { public:                    // vtable 0x0123981C
     C3DVector StartPosition;                                // +0x04

@@ -28,10 +28,7 @@ public:
     bool operator!=(const char* text) const;            // 0x0099E960
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template <class T> class CCountedPointer {
 public:
     T* Data;

@@ -44,10 +44,7 @@ struct CScriptThingImpl {                               // the game-side thing b
     virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003();
     virtual void SetDataString(const CCharString& text);   // slot 4 (+0x10)
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003();
     virtual void SetDataString(const CCharString& text) { if (PImp_Data) PImp_Data->SetDataString(text); }   // slot 4 (+0x10)

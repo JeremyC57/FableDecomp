@@ -8,11 +8,7 @@
 // One-argument constructor: base CBaseClass() @ 0x0099A2D0, the argument kept at +0x4 and
 // this class's vtable (0x01270BF0, named through rtti-vtables.tsv). The argument type is not
 // recoverable from the body; `void*` models it. One of 15 bodies of this shape.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-    CBaseClass();                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CMessageOnSetThingOwner : CBaseClass {
     void* m_argument;                      // +0x4

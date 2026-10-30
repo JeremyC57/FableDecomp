@@ -6,11 +6,7 @@
 // Unlike most state groups this TU inlines CAIStateGroupBase's constructor (the base vtable
 // store between the CBase call and the Name construction), so the base is modelled with an
 // inline constructor here.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCharString { public:
     char* m_pData;

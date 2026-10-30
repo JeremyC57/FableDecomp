@@ -12,10 +12,7 @@
 //   CStringParser vptr (a user-written `~CStringParser() { }` adds `mov [esi],vftable`, 41 bytes vs 35), and it is a COMDAT
 //   placed in an early TU (Ego_r ??1/??_GCStringParser at 0x00403F20/0x00403F80), not in the CStringParser TU (0x009B9xxx).
 // Layout: retail 0x28 bytes (STLport list = one node pointer); engine/CStringParser.h is the Ego_r 0x30 layout (header debt).
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCharStringData;
 class CCharString {

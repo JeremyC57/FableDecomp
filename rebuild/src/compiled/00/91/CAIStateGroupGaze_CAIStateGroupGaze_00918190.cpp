@@ -30,11 +30,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CBaseObject;
 class CBaseObjectPointer;

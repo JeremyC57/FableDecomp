@@ -22,11 +22,7 @@ class CTCBase { public:
     void* ParentThing;                               // +0x04
     bool  ToBeRemoved;                               // +0x08
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                // 0x0099A2E0
-    CBaseClass();                                         // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NTCMessages {
 class CMessageClearPrimitives : public CBaseClass { public:             // vtable 0x01239A8C
     CMessageClearPrimitives() { }

@@ -10,10 +10,7 @@
 #include "fable_string.h"
 #include <stddef.h>
 
-class CBaseClass { public:
-    virtual ~CBaseClass(); // RTTI vtable 0x01231710 slot 0; constructor 0x0099A2D0
-    CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CBaseClassNonCopyable : CBaseClass {
     virtual ~CBaseClassNonCopyable(); // constructor 0x0099A2F0; its RTTI is present in sibling engine objects

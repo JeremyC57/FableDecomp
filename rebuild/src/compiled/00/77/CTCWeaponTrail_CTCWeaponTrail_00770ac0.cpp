@@ -18,9 +18,7 @@ extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 
 struct SScalarTag { SScalarTag() { } };
 
-class CBaseClass { public:                                    // vtable 0x01231710
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CEnginePrimitiveHandle;
 class CEnginePersistentPrimitiveBase { public:

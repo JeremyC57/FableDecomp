@@ -13,9 +13,7 @@
 //   inline in-place scale; the cases tail-return separately (retail duplicates the epilogue).
 class CCharString;
 enum ETCInterfaceType { };                                  // values not needed here
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { public:
 protected:
     virtual ~CBaseClassNonCopyable();                       // 0x0099A300

@@ -12,7 +12,8 @@
 #include "engine/C3DMeshFileXTriangleStripChunk.h"
 #undef C3DMeshFileXTriangleStripChunk
 #include <new>
-class CBaseClass{public:virtual ~CBaseClass(){}};class CBaseClassNonCopyable:public CBaseClass{};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseClassNonCopyable:public CBaseClass{};
 class CChunkedFileSuperChunk;class CChunkedFileChunk:public CBaseClassNonCopyable{public:char ChunkType[5];CChunkedFileSuperChunk* Parent;
 virtual void UnusedSlot01(){}
 virtual void UnusedSlot02(){}

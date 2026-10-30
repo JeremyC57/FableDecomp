@@ -42,9 +42,7 @@ class CCharString { public:
 enum EScriptAIPriority { };
 enum EAIActionReturn { };
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase : public CBaseClass { public:
     CAIBrain*           PBrain;                             // +0x04
     EScriptAIPriority   ScriptAIPriority;                   // +0x08

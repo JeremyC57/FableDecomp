@@ -25,7 +25,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class CBaseClass { public: virtual ~CBaseClass(); };                  // 0x0099A2E0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 class CDataStream : public CBaseClassNonCopyable { };                 // vptr +0x00
 class CDataInputStream : public CDataStream {            // Ego_r.pdb 0x18

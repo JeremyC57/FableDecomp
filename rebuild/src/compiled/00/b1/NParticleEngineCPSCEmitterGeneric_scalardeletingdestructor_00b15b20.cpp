@@ -1,8 +1,5 @@
 #pragma optimize("t", on)
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 extern void __fastcall DestructFirstMember_0075f2b0(void* member);
 extern void __fastcall CPSCEmitterGeneric_Destruct(void* emitter);
 void* __fastcall CPSCEmitterGeneric_CompositeScalarDeletingDestructor(void* emitter, int, unsigned int flags)

@@ -6,11 +6,7 @@
 // VC6-era Dinkumware std::list whose constructor zeroes the head pointer, allocates the head
 // node, links it to itself and stores it (the `add esp,4` lands before the final store); the
 // state long at +0x4 is assigned in the body afterwards.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCharString { public:
     char* m_pData;

@@ -33,10 +33,7 @@ class CMemoryAllocator { public:
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 extern unsigned long g_GraphicsMemoryBytes;        // 0x013CAAB0
 extern unsigned long g_VolumeTextureMemoryBytes;   // 0x013D28E0
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     ~CVolume() { ReleaseVolume(true); }

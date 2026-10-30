@@ -12,7 +12,7 @@
 class CEnginePrimitive;
 struct CEnginePrimitiveParticleDecalGroup;
 class CIEngine;
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePersistentPrimitiveBase;
 class CEnginePrimitiveHandle : public CBaseClass { public: CEnginePersistentPrimitiveBase* Data; };
 // Original enum types; only storage and conversions are consumed by this leaf.

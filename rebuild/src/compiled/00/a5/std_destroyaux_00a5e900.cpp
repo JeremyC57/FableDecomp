@@ -11,10 +11,7 @@
 // Shape: as 0x009B8070 -- the real STLport ~vector / ~_Vector_base chain gives the strength-reduced element pointer
 // (`lea esi,[edi+8]`, the base destructor at `[esi-4]`).
 extern "C" void __cdecl free(void* p);      // 0x00BFEA14
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                  // 0x0099A2E0 (stores the CBaseClass vtable 0x01231710)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace std {
 struct __true_type { };
 struct __false_type { };

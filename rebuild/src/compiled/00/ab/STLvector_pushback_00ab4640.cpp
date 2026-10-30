@@ -13,10 +13,7 @@
 //   is stored before the member copy call.
 inline void* operator new(unsigned int, void* p) { return p; }   // placement new (the null test on the destination)
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template <class T> class CArray {                   // retail CArray: the 12-byte STLport vector
 public:
     T* _M_start;

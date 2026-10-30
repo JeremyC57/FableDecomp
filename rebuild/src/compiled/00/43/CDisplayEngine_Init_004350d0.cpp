@@ -40,10 +40,7 @@ public:
     T*    Data;                                          // +0x00
     void* Info;                                          // +0x04
 };
-class CBaseClass {                                       // polymorphic root: vptr only (4-byte aligned)
-public:
-    virtual ~CBaseClass();                               // slot 0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CDisplayEngine : public CBaseClass {               // vtable 0x01231574
 protected:
     virtual bool InitEngine();                           // slot 1 (+0x04) 0x00435190

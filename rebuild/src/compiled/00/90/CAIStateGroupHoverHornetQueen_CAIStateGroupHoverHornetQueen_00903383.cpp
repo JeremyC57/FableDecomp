@@ -34,10 +34,7 @@ public:
     ~map();
 };
 }
-class CBaseClass {                                       // RTTI root, vtable 0x01231710
-public:
-    virtual ~CBaseClass();                               // 0x0099A2E0 (FableWin.pdb ??1CBaseClass@@UAE@XZ)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
 public:

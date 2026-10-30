@@ -14,10 +14,7 @@
 //   `mov` (grade 2, 43 bytes); retail has both the size-TU `and` and the inlined release. KillOne's explicit
 //   destructor call is a modelling device that makes VC7.1 emit the implicit destructor out of line.
 #pragma optimize("s", on)
-class CBaseClass {                                       // RTTI root
-public:
-    virtual ~CBaseClass();                               // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
 public:

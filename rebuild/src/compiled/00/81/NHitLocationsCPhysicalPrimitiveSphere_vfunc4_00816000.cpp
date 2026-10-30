@@ -28,7 +28,7 @@ public:
     }
 };
 class CPersistContext;
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };
 // Layout: donor CStringParser is0x30 with12B Comments; retail list is4B.
 // Retail parser is0x28: Comments14,ErrorCallback18,CursorPos1c.

@@ -11,10 +11,7 @@
 //   sentinel is re-read from `this` after every free.
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
-class CBaseClass {                                            // vtable 0x01231710
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle : public CBaseClass {           // vtable 0x0122F598, 8 bytes
 public:
     void* Data;                                              // +0x04 CIVCountedPointer

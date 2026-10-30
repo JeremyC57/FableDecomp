@@ -51,10 +51,7 @@ public:
     }
 };
 
-class CBaseClass {                                 // vtable 0x01231710
-public:
-    virtual ~CBaseClass();                         // 0x0099A2E0 ??1CBaseClass@@UAE@XZ (virtual: slot 0 of 0x01231710)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CEnginePrimitiveHandle : public CBaseClass { // vtable 0x0122F598
 public:

@@ -24,11 +24,7 @@ class CRightHandedSet { public:
     C3DVector Forward;
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-    CBaseClass();                                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DPositionInterpolator : public CBaseClass { public:                    // vtable 0x0123981C (Ego_r.pdb 0x1c)
     C3DVector StartPosition;                                // +0x04

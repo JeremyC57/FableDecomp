@@ -68,9 +68,7 @@ struct CComponentList {                                 // STLport list<CAGraphi
     CComponentListNode* m_head;
 };
 
-class CBaseClass { public:                              // vptr only; out-of-line destructor
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CRightHandedSet { public: float m[6]; };
 

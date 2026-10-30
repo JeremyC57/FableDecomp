@@ -5,7 +5,8 @@
 #define CSimpleMemoryPool CSimpleMemoryPool_HeaderEvidence
 #include "engine/CSimpleMemoryPool.h"
 #undef CSimpleMemoryPool
-class CBaseClass{public:CBaseClass();virtual ~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};enum CUnprovenAreaStatus_00A5C570{CUnprovenAreaStatus_DescriptiveZero=0};class CSimpleMemoryPool:public CBaseClassNonCopyable{public:class CMemoryBlock;class CArea{public:unsigned long Size;CArea* NextFreeArea;CUnprovenAreaStatus_00A5C570 Status;};CMemoryBlock* FirstMemoryBlock;unsigned long Capacity,GrowthGranularity;CArea Root;CSimpleMemoryPool(unsigned long,unsigned long);virtual ~CSimpleMemoryPool(){ClearMemoryBlocks();}private:void ClearMemoryBlocks();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};enum CUnprovenAreaStatus_00A5C570{CUnprovenAreaStatus_DescriptiveZero=0};class CSimpleMemoryPool:public CBaseClassNonCopyable{public:class CMemoryBlock;class CArea{public:unsigned long Size;CArea* NextFreeArea;CUnprovenAreaStatus_00A5C570 Status;};CMemoryBlock* FirstMemoryBlock;unsigned long Capacity,GrowthGranularity;CArea Root;CSimpleMemoryPool(unsigned long,unsigned long);virtual ~CSimpleMemoryPool(){ClearMemoryBlocks();}private:void ClearMemoryBlocks();};
 CSimpleMemoryPool GroupVectorBufferPool(0,0x1000);
 #ifdef _MSC_VER
 typedef char PoolSize[(sizeof(CSimpleMemoryPool)==28)?1:-1];

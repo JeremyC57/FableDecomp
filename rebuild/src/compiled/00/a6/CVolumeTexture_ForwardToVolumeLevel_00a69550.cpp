@@ -16,10 +16,7 @@
 // stores the CVolume vtable (0x0129C840), calls ReleaseVolume(true) and the out-of-line CBase destructor.
 struct IDirect3DVolume9;
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CVolume : public CBaseClass { public:                            // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                    // +0x04

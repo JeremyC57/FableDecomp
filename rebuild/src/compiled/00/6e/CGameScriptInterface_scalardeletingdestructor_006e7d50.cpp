@@ -21,10 +21,7 @@ public:
     ~map();
 };
 }
-class CBaseClass {                                // RTTI root, vtable 0x01231710
-public:
-    virtual ~CBaseClass();                        // 0x0099A2E0 (FableWin.pdb ??1CBaseClass@@UAE@XZ)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { // vtable 0x0129A7C4
 protected:
     CBaseClassNonCopyable();                      // 0x0099A2F0 (FableWin.pdb ??0CBaseClassNonCopyable@@IAE@XZ)

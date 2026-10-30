@@ -6,9 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041BE70, length 57 bytes.
 // Callees: the primitive's virtual slot 3 (+0xC) and, at zero count, its virtual destroy (slot 1, +4).
 // Layout as the landed constructor @ 0x005BB32E: {vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}.
-class CBaseClass { public:                                // vtable 0x01231710
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CEnginePrimitiveHandle;
 

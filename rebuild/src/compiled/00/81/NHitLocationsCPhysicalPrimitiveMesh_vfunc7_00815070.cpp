@@ -90,7 +90,7 @@ class CMeshIntersectionData { public:
     float DistanceSquared;                          // +0x18
 };
 // RTTI0125d084: CPhysicsMeshObject derives CBaseClass at offset0.
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #define CIVCountedPointeeBase CIVCountedPointeeBasePdb
 #include "engine/CIVCountedPointeeBase.h"
 #undef CIVCountedPointeeBase

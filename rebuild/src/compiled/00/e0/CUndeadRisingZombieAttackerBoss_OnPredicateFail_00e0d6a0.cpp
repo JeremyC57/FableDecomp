@@ -16,11 +16,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-    CBaseClass();                                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
     long m_references;                                      // +0
     void (__fastcall* m_pfnDestroy)(void*);                 // +4

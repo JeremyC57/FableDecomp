@@ -22,9 +22,7 @@ class CCPPointerInfo { public:                                 // counted-pointe
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
     void* Data;                                         // +0x08
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
 struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00

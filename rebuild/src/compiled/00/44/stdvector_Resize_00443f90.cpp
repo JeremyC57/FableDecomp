@@ -16,8 +16,7 @@ struct CPersistentPrimitiveMethods {
  long Type;
  __forceinline unsigned long RemoveReference(){return --IVRefCount;}
 };
-class CBaseClass {
-public: CBaseClass();virtual ~CBaseClass();}; //0099a2d0/0099a2e0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CHandlePointer {
  CPersistentPrimitiveMethods* Object;
  CHandlePointer():Object(0){}

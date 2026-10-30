@@ -23,9 +23,7 @@ class CCPPointerInfo { public:                                // CCountedPointer
     void* Data;
 };
 
-class CBaseClass { public:                                    // polymorphic root of the script handles
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 template <class T> class CCountedPointer { public:
     T*              Data;

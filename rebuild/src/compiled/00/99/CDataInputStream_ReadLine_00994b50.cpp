@@ -15,7 +15,7 @@ struct CStringReadResult : CCharString {
     CStringReadResult(const CStringReadResult&); //0099EC30 native CCharString copy constructor
     CCharString& AppendChar(char); //0099F180 native operator+=(char); return unused
 };
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass { virtual ~CBaseClassNonCopyable(); };
 struct CDataStream : CBaseClassNonCopyable {
     virtual ~CDataStream();

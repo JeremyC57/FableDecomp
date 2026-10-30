@@ -8,10 +8,7 @@
 // Layout: Ego_r.pdb CEntityScriptBase (0x14) {vptr, Game (CGameScriptInterfaceBase*) +4, Me (CScriptThing, 0x0C) +8};
 //   CBCMTrader (0x1C): ParentClass (CQ_TraderConflictGoodScript*) +0x14, PMasterData (CQ_SunnyvaleMasterData*) +0x18.
 // Shape: `mov eax, ecx`, the interface vptr through Game, the two bools pushed as immediates, `add eax, 8` for &Me.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo;
 template <class T> class CCountedPointer {
 public:

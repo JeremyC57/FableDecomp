@@ -4,9 +4,7 @@
 // the base CBaseClass::~CBaseClass @ 0x0099A2E0. __thiscall, this = ecx.
 // The +0x0 callee is a polymorphic class destructor, so this is a derived class's destructor body;
 // the class itself is not attributed and is named by address.
-class CBaseClass { public:                         // vtable 0x01231710 (.?AVCBaseClass@@)
-    virtual ~CBaseClass();                          // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCharString { public:                        // one word: CCharStringData*
     void* PStringData;
     ~CCharString();                         // 0x0099EAE0 (release @ 0x0099E9B0, instance count 0x013BD800)

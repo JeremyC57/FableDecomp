@@ -16,10 +16,7 @@ extern "C" void __cdecl free(void* p);                                          
 
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCPPointerInfo { public:                              // Ego_r.pdb, 12 bytes
     unsigned long RefCount;                                 // +0x00

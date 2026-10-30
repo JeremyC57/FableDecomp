@@ -72,9 +72,7 @@ template <class T> class CCountedPointer { public:
     __forceinline ~CCountedPointer() { ReleaseData(); Data = 0; Info = 0; }
 };
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { public:
 protected:
     virtual ~CBaseClassNonCopyable();                       // 0x0099A300

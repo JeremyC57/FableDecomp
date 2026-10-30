@@ -17,9 +17,7 @@
 //   (EmitImplicitDestructor, not a retail function; chunk 562 0x005EDA50). The inline virtual ~CEnginePrimitiveHandle stores the
 //   handle vtable 0x0122F598, runs Clear() (null-safe GetReferenceCount() == 1 test, NotifyReleased(*this), Data.Reset(0)), the
 //   CIVCountedPointer destructor and ~CBaseClass (the agent 561/562 CEnginePrimitiveHandle model).
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveHandle;
 class CIVCountedPointeeBase { public:
     virtual ~CIVCountedPointeeBase();

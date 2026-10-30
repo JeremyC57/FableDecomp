@@ -31,10 +31,7 @@ public:
 };
 extern const CWideString g_EmptyWideString;                 // 0x013BCA24
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                  // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 public:
     CBaseClassNonCopyable();                                // 0x0099A2F0

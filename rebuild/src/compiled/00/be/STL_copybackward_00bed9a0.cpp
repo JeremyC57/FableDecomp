@@ -22,10 +22,7 @@
 #include <stddef.h>
 
 // CBaseClass: the polymorphic engine root (out-of-line virtual destructor 0x0099A2E0, vtable 0x01231710).
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                          // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCPPointerInfo {                              // the shared count block of a CCountedPointer
 public:

@@ -7,10 +7,7 @@
 // Priority +0x11, Enabled +0x12. Callers reach it as the base destructor of their state groups (namepass D1).
 // Was modelled as `FableDestVal_008fd288` (inner/outer stand-ins). The destructor is written empty on a
 // __declspec(novtable) class, as for 0x0062E900 ~CCombatActionBase: VC7.1 then emits no vptr store, as the implicit one.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCharString {
 public:
     ~CCharString();                                // 0x0099EAE0

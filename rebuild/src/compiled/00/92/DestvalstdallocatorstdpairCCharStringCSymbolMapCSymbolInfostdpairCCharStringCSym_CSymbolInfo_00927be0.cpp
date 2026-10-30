@@ -7,10 +7,7 @@
 // destructible members (e.g. CCharStrings) at +0xc and +0x14 relative to
 // the pair base; the CCharString 'first' begins the pair. The three engine
 // destructors live at fixed addresses.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

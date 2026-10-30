@@ -6,10 +6,7 @@
 // tail-jumps to the base/next destructor with this in ecx. Shape:
 //   push esi; mov esi,ecx; lea ecx,[esi+0x4]; call member_dtor;
 //   mov ecx,esi; pop esi; jmp base_dtor.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct FableDestMember_009e45d0;
 struct FableDestHost_009e45d0;
 

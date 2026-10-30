@@ -11,7 +11,7 @@
 struct CharArray;
 // RTTI129C8CC/129C938: primary Async->BankFile->NonCopy->Base; secondary ResourceBank->NonCopy->Base.
 // Native BankFile110 (ctor9CD480 final ChecksumCacheF8..110), Async164 (ctor9D5F80); donor174/1D8.
-class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable:CBaseClass {CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 struct BankState;struct OutputStream;struct BankTypeCount;struct PointerInfo;
 template<class T>struct BankArrayView {T*First,*Last,*End;};

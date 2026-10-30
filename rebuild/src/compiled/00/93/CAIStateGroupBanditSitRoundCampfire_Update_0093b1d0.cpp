@@ -171,7 +171,7 @@ public:
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 enum ETCInterfaceType { TC_USER_ACTION_POINT = 0x2d, TC_CREATURE_NAVIGATION = 7 };
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObject : public CBaseClass { };
 class CClass : public CBaseObject { };
 class CTCBase;

@@ -9,10 +9,7 @@
 // Layout: Ego_r.pdb CEnginePrimitiveHandle (8 bytes: vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +0x04).
 // Shape: /O2 (`lea esp,[esp]` loop-head pad; first == last tested before entry).
 #include <new>
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePersistentPrimitiveBase {
 public:
     virtual void v000();

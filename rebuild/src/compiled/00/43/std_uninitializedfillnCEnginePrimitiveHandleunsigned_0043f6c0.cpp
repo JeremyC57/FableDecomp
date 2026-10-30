@@ -10,10 +10,7 @@
 // as the landed models of the class (vtable 0x0122F598).
 // Shape: /O2 (`lea ecx,[ecx]` loop-head pad); n is unsigned (`test edx,edx ; jbe`).
 #include <new>
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePersistentPrimitiveBase {
 public:
     virtual void v000();

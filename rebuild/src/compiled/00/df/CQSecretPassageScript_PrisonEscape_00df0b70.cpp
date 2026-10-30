@@ -60,9 +60,7 @@ class CRGBColour { public:                                     // D3DCOLOR byte 
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SScriptThingInfo {
     long m_references;
     void (__fastcall* m_pfnDestroy)(void*);

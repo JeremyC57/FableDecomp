@@ -103,10 +103,7 @@ struct CEngineGlobal_01436e98 {
 };
 extern CEngineGlobal_01436e98* g_pEngine_01436e98;     // 0x01436E98
 
-class CBaseClass { public:
-    virtual ~CBaseClass();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct IDirect3DSurface9;
 class CSurface { public:                                       // vtable 0x0122F84C, 0x10 bytes
     virtual ~CSurface();

@@ -53,7 +53,7 @@ namespace { bool __fastcall GetDataFromEventString(const CCharString& data, long
 class CCreatureActionBase;
 class CThingCreatureBase;
 class CGameCameraManager;
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // Original enum types; ordinal labels below are local descriptive labels.
 enum EQuakeStrength { QuakeStrengthWeak=0,QuakeStrengthMedium=1,QuakeStrengthStrong=2,QuakeStrengthMadness=3 };
 enum EQuakeLength { QuakeLengthShort=0,QuakeLengthMedium=1,QuakeLengthLong=2,QuakeLengthContinuous=3 };

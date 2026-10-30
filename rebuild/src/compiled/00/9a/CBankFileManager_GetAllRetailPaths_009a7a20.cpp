@@ -107,10 +107,7 @@ public:
 };
 }
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CBankFileManager : public CBaseClass {                // vtable 0x0129B018
 public:

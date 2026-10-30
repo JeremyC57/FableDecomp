@@ -9,11 +9,7 @@
 // through rtti-vtables.tsv), then the member object at +0xc is constructed out of line
 // @ 0x0099E4B0. Base and member class names come from unique manifest labels, else from the
 // callee address. One of 16 bodies of this shape.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-    CBaseClass();                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CMember_0099e4b0 {
     CMember_0099e4b0();                              // 0x0099E4B0

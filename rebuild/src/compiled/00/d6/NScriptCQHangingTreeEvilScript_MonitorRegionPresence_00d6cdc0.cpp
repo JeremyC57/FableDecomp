@@ -71,10 +71,7 @@ struct CCharStringVector {                      // std::vector<CCharString> (12 
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-    CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;

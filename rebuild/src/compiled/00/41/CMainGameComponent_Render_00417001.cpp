@@ -86,7 +86,7 @@ class CMainGameComponentInit { public:
     long _body[0x10 / 4];
     CMainGameComponentInit(const CMainGameComponentInit& other);                          // 0x00415E17
 };
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CComponentListEntry { virtual void v00(); };                                      // the +4 interface
 class CGameComponent : public CBaseClass, public CComponentListEntry { public:
     bool  m_b08;                                   // +0x08

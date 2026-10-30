@@ -13,11 +13,7 @@
 class CCharString { public:
     void* PStringData;
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-    CBaseClass();                                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
     long m_references;                                      // +0

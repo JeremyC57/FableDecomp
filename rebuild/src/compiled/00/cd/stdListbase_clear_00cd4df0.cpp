@@ -16,10 +16,7 @@ public:
     T*    Data;                                              // +0x0
     void* Info;                                              // +0x4 CCPPointerInfo*
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass {                    // RTTI vtable 0x01238C8C, 12 bytes
 public:
     CCountedPointer<CScriptThing> PImp;                     // +0x04

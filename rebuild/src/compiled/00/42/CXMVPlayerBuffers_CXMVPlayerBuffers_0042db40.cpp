@@ -8,10 +8,7 @@
 // Layout (Ego_r.pdb): vptr +0, InputBuffer +4, PlaybackBuffer +8, CurrentSize +0xC; size 0x10.
 // Shape: the base call, the three member zeroes (one `xor eax,eax`), then the vtable store (VC7.1 sinks it below the
 // member initialisers).
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CBaseClassNonCopyable : public CBaseClass {
 protected:

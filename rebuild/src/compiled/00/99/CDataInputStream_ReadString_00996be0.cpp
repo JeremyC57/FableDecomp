@@ -28,7 +28,7 @@ class CCharString { public:
     ~CCharString();                               // 0x0099EAE0
 };
 
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                      // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();             // 0x0099A300

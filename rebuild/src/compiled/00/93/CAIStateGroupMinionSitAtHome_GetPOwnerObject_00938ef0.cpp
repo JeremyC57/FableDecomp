@@ -47,6 +47,7 @@ CBaseObject* CBaseIntelligentPointer::GetPItem() const
 
 #pragma auto_inline(on)
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}};
-class CBaseClass{public:virtual ~CBaseClass(){} };class CAIStateGroupBase:public CBaseClass{public:CAIBrain* PBrain;};class CAIStateGroup_UsesSeat:public CAIStateGroupBase{};class CAIStateGroup_MinionSitOnSeatBase:public CAIStateGroup_UsesSeat{};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CAIStateGroupBase:public CBaseClass{public:CAIBrain* PBrain;};class CAIStateGroup_UsesSeat:public CAIStateGroupBase{};class CAIStateGroup_MinionSitOnSeatBase:public CAIStateGroup_UsesSeat{};
 class CAIStateGroup_MinionSitAtHome:public CAIStateGroup_MinionSitOnSeatBase{protected:virtual bool GetPOwnerObject(CThing**);};
 bool CAIStateGroup_MinionSitAtHome::GetPOwnerObject(CThing** out){CThing* owner=(CThing*)((CIntelligentPointer<CThingBuilding>&)PBrain->GetCreature().HomeBuilding).GetPItem();if(owner){*out=owner;return true;}return false;}

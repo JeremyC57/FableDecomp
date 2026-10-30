@@ -13,9 +13,7 @@
 
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                                                // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CObjectBuffer {                                                    // +0x04 in the record
     CBaseClass m_object;                                                  // +0x00 (vptr only)

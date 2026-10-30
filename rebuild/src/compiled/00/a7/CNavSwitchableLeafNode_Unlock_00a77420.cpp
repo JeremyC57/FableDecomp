@@ -15,7 +15,7 @@
 #define __forceinline inline
 #define __declspec(x)
 #endif
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable: public CBaseClass { protected: virtual ~CBaseClassNonCopyable(); };
 class C2DVector { public: float X,Y; };
 template<class T,int N> class CSmallVector;

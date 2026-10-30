@@ -10,7 +10,7 @@
 class C2DExtentsI { public:long X,Y;C2DExtentsI(long x,long y):X(x),Y(y){}};
 class C3DExtentsI { public:long X,Y,Z;C3DExtentsI(long x,long y,long z):X(x),Y(y),Z(z){}};
 class CTexture { public:static C2DExtentsI FABLE_FASTCALL GetNextValidDimensions(const C2DExtentsI&,const CPixelFormat&);}; //009FA620
-class CBaseClass { public:CBaseClass();virtual ~CBaseClass();}; //0099A2D0, baseVT01231710 slot0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 enum EVolumePool {VolumePoolManaged=1}; // Native value1; exact original enumerator spelling unestablished.
 class CVolumeTexture:public CBaseClass { public:
  void* PD3DVolumeTexture;long ByteLength;void* PData;

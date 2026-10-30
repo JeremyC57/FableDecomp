@@ -10,10 +10,7 @@
 // vtable + the null primitive (the landed CEngineInternalAttachedPrimitiveInfo constructor 0x00B3AAE0 model), then the attachment info's
 // inline constructor: Flags = 0 (stored before the first name's call) and the two string constructors.
 // Leaf: ??0CEngineInternalAttachedPrimitive
-class CBaseClass { public:
-    virtual ~CBaseClass();
-    CBaseClass();                            // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CEnginePrimitiveHandle : public CBaseClass { public:
     virtual void Release();                  // own vtable 0x0122F598

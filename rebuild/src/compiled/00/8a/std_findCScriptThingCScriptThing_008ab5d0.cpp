@@ -21,10 +21,7 @@ public:
     T* operator->() const { return Data; }
     T& operator*() const { return *Data; }
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                       // slot 0 (0x0099A2E0)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass {
 public:
     // slots 1-77: placeholders (not called here, names not modelled)

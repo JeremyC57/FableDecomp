@@ -8,8 +8,7 @@
 // the polymorphic local model supplies Initialise at slot 3 and Reset at slot 8.
 class CPersistContext;
 class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
-class CBaseClass {
-public:  virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail sentinel-only list, 4 bytes
 class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;

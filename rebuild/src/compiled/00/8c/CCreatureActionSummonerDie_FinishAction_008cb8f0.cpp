@@ -6,7 +6,8 @@
 #define CBaseObject CBaseObject_HeaderLayout
 #include "engine/CBaseObject.h"
 #undef CBaseObject
-class CBaseClass{public:virtual ~CBaseClass(){} };class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CClass:public CBaseObject{public:unsigned char _unmodeled08[0x14-8];};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CClass:public CBaseObject{public:unsigned char _unmodeled08[0x14-8];};
 namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};}
 template<class T>class CArray:public std::vector<T>{};
 enum ETCInterfaceType{TC_COMBAT=48,TC_CREATURE_MODE_MANAGER=49};

@@ -67,9 +67,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 
 } // namespace std
 
-class CBaseClass { public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { public:
 protected:
     virtual ~CBaseClassNonCopyable();

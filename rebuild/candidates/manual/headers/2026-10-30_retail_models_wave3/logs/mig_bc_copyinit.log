@@ -1,0 +1,5 @@
+edit rebuild/src/compiled/00/a5/global_UninitCopyCStreamInfo00a5e7f0_00a5e7f0.cpp ok copies=1
+edit rebuild/src/compiled/00/ab/CVertexShaderInput_AddStream_00ab3b40.cpp ok copies=1
+edit rebuild/src/compiled/00/ab/STL_uninitializedfilln_00ab4490.cpp ok copies=1
+edit rebuild/src/compiled/00/ab/global_UninitCopyCStreamInfo00ab4450_00ab4450.cpp ok copies=1
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_OnPredicateFail_00dcf920.cpp ok copies=1

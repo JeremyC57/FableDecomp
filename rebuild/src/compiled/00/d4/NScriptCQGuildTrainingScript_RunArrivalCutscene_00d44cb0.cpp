@@ -28,10 +28,7 @@ class CRGBColour { public:                                         // D3DCOLOR b
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
     __forceinline CRGBColour(const CRGBColour& o) { B = o.B; G = o.G; R = o.R; A = o.A; }
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-    CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;

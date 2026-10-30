@@ -6,7 +6,8 @@
 #include "engine/CScriptThing.h"
 #undef CScriptThing
 #include <new>
-class CBaseClass{public:virtual ~CBaseClass(){}};class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing();CScriptThing(const CScriptThing&);virtual ~CScriptThing();};
 namespace NScript{
 class CPredicateBase{public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};

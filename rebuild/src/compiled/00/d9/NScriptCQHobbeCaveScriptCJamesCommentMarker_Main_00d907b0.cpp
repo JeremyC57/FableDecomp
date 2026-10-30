@@ -43,9 +43,7 @@ template <class T> class CCountedPointer { public:
  }
  ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
-class CBaseClass { public:                                 // polymorphic root of the script handles
- virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
  virtual void v01(); virtual void v02();
  virtual CCharString GetDataString() const;     // slot 3 (+0x0c)

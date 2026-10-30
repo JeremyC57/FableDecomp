@@ -13,10 +13,7 @@
 //   resolves through the inline pointer dispatch to `__copy_backward(first, last, result, random_access_iterator_tag(),
 //   (ptrdiff_t*)0)`, the empty tag homed in the dead comparator slot (`lea eax,[esp+1Ch]`); `*first = val` copies
 //   key, Callback and Index. The else branch rebuilds `val` in the argument area for the unguarded insert.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                               // 0x0099A2E0 (restores the CBase vtable)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 

@@ -75,7 +75,7 @@ class CEngineScene;template<class T>class CArray;
 class CEngineSubPrimitiveBase;class CEngineSubPrimitiveChain;class CEnginePrimitiveTypeList;
 namespace NEngineShadowRenderer {class CShadowSceneContext;}
 enum EEnginePrimitiveType{PrimitiveTypeDefault=0};enum EEngineRenderLayer{LayerDefault=0};enum ERendered{RenderedDefault=0};enum ERenderPassType{RenderPassDefault=0};enum ESubPrimitiveType{SubPrimitiveDefault=0};
-class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();};
 struct CEnginePrimitiveRenderUtil:CBaseClassNonCopyable {CEnginePrimitiveRenderUtil();virtual ~CEnginePrimitiveRenderUtil();};
 class CEnginePrimitiveManager:public CEnginePrimitiveRenderUtil { public:

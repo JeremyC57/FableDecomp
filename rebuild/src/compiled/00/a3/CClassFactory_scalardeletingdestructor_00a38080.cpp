@@ -95,10 +95,7 @@ public:
 
 void __cdecl operator delete(void* block);                   // MSVCR71 import thunk 0x00BFE9BC
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 public:
     CBaseClassNonCopyable();                                // 0x0099A2F0

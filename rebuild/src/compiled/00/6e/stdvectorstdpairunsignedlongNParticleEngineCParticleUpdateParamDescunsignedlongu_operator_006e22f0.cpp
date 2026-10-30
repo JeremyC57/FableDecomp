@@ -17,10 +17,7 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);                                  // 0x00BFEA0E
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 template <class _Key, class _Value> class CParticleUpdateParamCallback;

@@ -36,10 +36,7 @@ public:
 };
 }   // namespace std
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;
 class CBaseObject : public CBaseClass {
 public:

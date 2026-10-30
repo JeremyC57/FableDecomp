@@ -13,10 +13,7 @@
 //   temporary is the 16-byte frame local (vptr immediate stored by the implicit copy ctor), the root goes to the back slot by
 //   the implicit pair assignment (three dwords, no vptr), the __adjust_heap value is built in the argument area by STLport's
 //   explicit pair copy constructor; `last - 1 - first` is kept as `-12 - first + esi` with esi = &(last - 1)->Index.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 template <class TOwner, class TValue> class CParticleUpdateParamCallback;

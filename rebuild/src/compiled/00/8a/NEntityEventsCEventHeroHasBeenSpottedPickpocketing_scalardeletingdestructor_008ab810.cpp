@@ -12,10 +12,7 @@
 //   .?AVCEventBase@NEntityEvents@@). The deleting destructor is emitted with the vtable in a TU that constructs the class:
 //   MakeOne is that construction (a modelling device; the constructor is J108's).
 // Model: local, as J108 (no engine headers for the event classes).
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;
 class CBaseObject : public CBaseClass {
 public:

@@ -5,7 +5,7 @@
 #define CParticleSystem CParticleSystem_HeaderFields
 #include "engine/_quarantine/CParticleSystem.h"
 #undef CParticleSystem
-class CBaseClass{public:virtual ~CBaseClass(){} };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector{public:float X,Y,Z;};class CMatrix3x4{public:C3DVector Rows[4];};class CIEngine;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};
 namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{};struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T,class Al=allocator<T> >class list{public:_List_node_base* _M_node;};}
 template<class T>class CArray:public std::vector<T>{};template<class K,class V>class CKeyPairCompareLess{};template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;CompareType Compare;bool Dirty;};

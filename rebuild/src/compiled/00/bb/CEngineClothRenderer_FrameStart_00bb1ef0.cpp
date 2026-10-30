@@ -53,10 +53,7 @@ public:
     void* Data[2];
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePrimitiveRenderUtil : public CBaseClass {
 public:
     virtual void FrameStart();

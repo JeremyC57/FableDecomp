@@ -6,10 +6,7 @@
 // Layout: engine/CFileDataInputStream.h / CDataInputStream.h are flat data-only headers; the destructor needs the
 // polymorphic hierarchy (rtti-vtables.tsv), so the classes are modelled locally with the PDB data members.
 class CAFile;
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                               // 0x0099A300 (folded body)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CDataStream : public CBaseClass {
 public:
     virtual ~CDataStream() {}

@@ -9,11 +9,7 @@ struct IDirect3DVolumeTexture9 {
     virtual unsigned long __stdcall AddRef();
     virtual unsigned long __stdcall Release();
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolumeTexture : public CBaseClass { public:             // vtable 0x0129DC18
     IDirect3DVolumeTexture9* m_pTexture;    // +0x04
     long                     m_format;      // +0x08

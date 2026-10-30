@@ -18,7 +18,7 @@ class C3DVector{public:float X,Y,Z;};
 #pragma pack(pop)
 class CThingPhysical{public:const C3DVector& PeekPos()const; /* 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate) */};class CThingCreatureBase:public CThingPhysical{};class CThingAICreature:public CThingCreatureBase{};class CAIBrain;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};enum EScriptAIPriority{ScriptPriorityDescriptiveZero=0};
 // Layout: shared owner headers flatten inheritance and StartPos. Real base20, FlyingThingBase36 and EnemyCreatureBase28; inherited PeekPos is CThingPhysical::PeekPos 006a4d00 (byte-identical to CThing::GetPos 004c73d0; identity by Ego_r donor order).
-class CBaseClass{public:virtual ~CBaseClass(){}};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase:public CBaseClass {public:CAIBrain* PBrain;EScriptAIPriority ScriptAIPriority;CCharString Name;bool Terminated;unsigned char Priority;bool Enabled;virtual void Initialise(CAIBrain&,CThingAICreature&,long,EScriptAIPriority,const CCharString&);};
 class CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}CBaseObjectPointer* PData;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
 class CAIStateGroup_FlyingThingBase:public CAIStateGroupBase{public:float MinHeightToKeepAboveGround,MinHeightToKeepAboveGroundInFlight,MaxHeightAboveGround,FlightRange;};

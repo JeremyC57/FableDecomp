@@ -42,10 +42,7 @@ struct CCountedPointerWords {                          // CCountedPointer<T> {Da
         Info = 0;
     }
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)

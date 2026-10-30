@@ -77,9 +77,7 @@ class CSurfaceLockedRect { public:                          // 16 bytes (Ego_r.p
     unsigned char* PMem;                                    // +0x0c
 };
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CVolume : public CBaseClass { public:                 // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                           // +0x04

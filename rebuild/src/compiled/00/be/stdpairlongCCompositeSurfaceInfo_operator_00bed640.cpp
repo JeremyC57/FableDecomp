@@ -43,10 +43,7 @@ public:
     }
 };
 // CBaseClass: the polymorphic engine root (out-of-line virtual destructor 0x0099A2E0).
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCompositeSurfaceCache;
 // Ego_r.pdb CCompositeSurfaceInfo (vtable 0x012A8154, 12 bytes): the implicit assignment copies Cache, never the vptr.
 class CCompositeSurfaceInfo : public CBaseClass {

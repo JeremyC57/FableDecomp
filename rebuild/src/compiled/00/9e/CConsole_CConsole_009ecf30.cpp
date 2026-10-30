@@ -187,10 +187,7 @@ public:
     bool operator<(const CCharString& other) const;
 };
 
-class CBaseClass {                                  // vtable 0x01231710
-public:
-    virtual ~CBaseClass();                          // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCPPointerInfo { public:
     unsigned long RefCount;                         // +0x00

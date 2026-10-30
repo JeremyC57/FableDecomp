@@ -47,10 +47,7 @@ public:
     }
 };
 
-class CBaseClass {                                      // the polymorphic root (vptr at +0)
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass {                // Ego_r.pdb, 12 bytes; vtable 0x01238C8C
 public:

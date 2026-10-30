@@ -19,9 +19,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public:
 };
 }
 template <class T> class CArray : public std::vector<T> { };
-class CBaseClass { public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CInitBaseClass : public CBaseClass { public:
     bool Valid;                                      // +0x04
 protected:

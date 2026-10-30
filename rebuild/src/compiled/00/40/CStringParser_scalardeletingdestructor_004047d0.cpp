@@ -11,10 +11,7 @@
 //
 // Matching: `flags` is the stack argument after the unused edx register; `flags & 1` is a `test ...,1`;
 // `operator delete` is the plain global one.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CInner { void* v; };
 extern void __fastcall Inner14_dtor(void* p);   // destructor of the sub-object at +0x14
 extern void __fastcall Inner_dtor(void* p);     // destructor of the sub-objects at +0x10 and +0x0C

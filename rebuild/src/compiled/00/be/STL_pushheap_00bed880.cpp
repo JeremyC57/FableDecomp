@@ -61,10 +61,7 @@ public:
     CCPPointerInfo* Info;                               // +0x4
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCompositeSurfaceCache;
 class CCompositeSurfaceInfo : public CBaseClass {       // Ego_r.pdb, 12 bytes; vtable 0x012A8154

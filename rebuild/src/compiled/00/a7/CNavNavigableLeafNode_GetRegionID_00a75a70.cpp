@@ -7,7 +7,7 @@
 //   +0x1C. CNavRegion::RegionID +0 (inline FableWin `?GetRegionID@CNavRegion@@QBEJXZ`). engine/CNavNavigableLeafNode.h
 //   flattens the vptr into a data member, so the polymorphic class is a local model with the same offsets.
 // Shape: the null region returns the zero already in eax (`jne ; ret`).
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 class C2DVector { public: float X, Y; };
 

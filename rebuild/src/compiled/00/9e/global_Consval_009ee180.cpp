@@ -18,10 +18,7 @@ public:
 };
 
 }   // the retail root is file scope
-class CBaseClass { public:
-    virtual ~CBaseClass();                                      // slot 0; vtable 0x01231710
-    CBaseClass();                                               // 0x0099A2D0 ??0CBaseClass@@QAE@XZ
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace FableCons_009ee180 {
 
 struct CConsoleCommandLine : CBaseClass {                       // vtable 0x0129C400 (16 bytes)

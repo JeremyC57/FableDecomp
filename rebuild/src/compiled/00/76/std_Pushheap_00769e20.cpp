@@ -12,9 +12,7 @@
 // ecx,[esp+18h]`). `ret 18h` = top + 16-byte pair + 4-byte empty comparator. The propagated label
 // pair<unsigned long, CRandomAppearanceMorph::CTextureMorph> is wrong: this body sits beside
 // 0x00769EA0 (the landed __copy_backward over the same 16-byte particle-desc pairs).
-class CBaseClass { public:
-    virtual ~CBaseClass();                                // 0x0099A2E0 ??1CBaseClass@@UAE@XZ (restores the base vtable)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace N00769e20 {
 namespace NParticleEngine {
 template<class A, class B> struct CParticleUpdateParamCallback;

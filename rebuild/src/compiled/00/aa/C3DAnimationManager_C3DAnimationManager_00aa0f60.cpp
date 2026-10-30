@@ -7,7 +7,7 @@
 //   long, unsigned long) @ 0x00A5C570 (twice, (0, 0x1000) as in the landed 0x0098AB00).
 // Layout (retail, 12-byte STLport vector; Ego_r.pdb's 16-byte one puts the pools 4 higher): MeshBank +0x04,
 //   BoneIndicesBuffer +0x08, MemoryPool +0x14, MemoryPool2 +0x30 (0x1C bytes each), size 0x4C.
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                                 // 0x0099A2F0

@@ -11,11 +11,7 @@
 // members belong to an embedded member object whose inline constructor is inlined here (a plain
 // init list or body assignment sinks the vtable store below them). Member types are not recoverable from the
 // body (any 4-byte scalar or pointer); `long` models them. One of 7 bodies.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-    CBaseClass();                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct SZeroed {                        // the zeroed block is one embedded member object
     long m_00;                          // +0x4

@@ -10,7 +10,8 @@
 #define __fastcall
 #endif
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString(const char*,long=-1);~CCharString();};class CDefinitionManager:public CDefinitionManager_HeaderFields{public:long GetDefGlobalIndexFromName(const CCharString&)const;};class CGameDefinitionManager:public CDefinitionManager{public:static CGameDefinitionManager& __fastcall Get();};
-class CBaseClass{public:virtual ~CBaseClass(){} };class CAIStateGroupBase:public CBaseClass{public:unsigned char _unmodeled04[16];};class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}void* PData;};class CThingGameObject;template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CAIStateGroupBase:public CBaseClass{public:unsigned char _unmodeled04[16];};class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}void* PData;};class CThingGameObject;template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
 class CAIStateGroup_Gaze:public CAIStateGroupBase{public:CIntelligentPointer<CThingGameObject> GazeMarker;float ChanceOfRunning,MinJourneyForRunning,MaxDistanceForCreaturesToLookAt;long PrimaryMarkerDef,SecondaryMarkerDef;CAIStateGroup_Gaze();};class CAIStateGroup_GazeAtWork:public CAIStateGroup_Gaze{public:CAIStateGroup_GazeAtWork();};
 class CAIStateGroup_GazeOutside:public CAIStateGroup_Gaze{public:CAIStateGroup_GazeOutside();};
 CAIStateGroup_GazeOutside::CAIStateGroup_GazeOutside(){ChanceOfRunning=0.3f;MinJourneyForRunning=10.0f;PrimaryMarkerDef=CGameDefinitionManager::Get().GetDefGlobalIndexFromName("GAZE_OUT_OF_BUILDING_MARKER");SecondaryMarkerDef=CGameDefinitionManager::Get().GetDefGlobalIndexFromName("GAZE_OUT_OF_BUILDING_MARKER");}

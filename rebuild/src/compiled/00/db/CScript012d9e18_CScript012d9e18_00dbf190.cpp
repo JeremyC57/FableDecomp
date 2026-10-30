@@ -12,10 +12,7 @@
 // counted pointer is a member object with an inline constructor (its zero stores follow the CScriptThing vtable).
 // engine/CScriptThing.h (vptr, PImp_Data, PImp_Info) is flat; the inlined constructor needs the polymorphic class with
 // the CCountedPointer<CScriptThing> PImp member it names, so CScriptThing is modelled locally on those members.
-class CBaseClass { public:                             // vtable 0x01231710
-    virtual ~CBaseClass();
-    CBaseClass();                               // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCPPointerInfo;
 

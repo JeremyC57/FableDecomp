@@ -11,10 +11,7 @@
 //   construction, nothing more. KillOne's qualified explicit destructor call makes VC7.1 define the implicit destructor
 //   before it generates the vtable's deleting destructor, which then inlines it (without it the deleting destructor
 //   calls an out-of-line ??1 whose body holds the inline free: 30 bytes against 48).
-class CBaseClass {                                            // RTTI root, vtable 0x01231710
-public:
-    virtual ~CBaseClass();                                    // 0x0099A2E0 (FableWin.pdb ??1CBaseClass@@UAE@XZ)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {             // vtable 0x0129A7C4
 protected:
     CBaseClassNonCopyable();                                  // 0x0099A2F0 (FableWin.pdb ??0CBaseClassNonCopyable@@IAE@XZ)

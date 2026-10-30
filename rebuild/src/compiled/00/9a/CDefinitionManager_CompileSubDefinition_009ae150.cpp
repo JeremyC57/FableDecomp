@@ -21,10 +21,7 @@ class CCharString { public:
 };
 typedef void (*TErrorCallback)(CCharString*);
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                        // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CStringParserCommentList {
     void* _M_node;
     ~CStringParserCommentList();                             // 0x004046B0

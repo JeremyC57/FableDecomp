@@ -12,10 +12,7 @@
 // Layout: retail CArtefact (PDB 0x1c): entity thing word +0x0c, ParentClass +0x14; retail CQ_OrchardFarmRaidScript CrateList
 // +0x54 (PDB +0x68, the usual -0x14 retail shift; STLport vector of 12-byte CScriptThing).
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SCountBlock {
     long  m_references;                            // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4
@@ -55,7 +52,7 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
 };
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    __forceinline CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}
+    __forceinline CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
     __forceinline ~CScriptThing() {}
     bool IsThing(void* thing) const { return PImp.Data->IsThing(thing); }
 };

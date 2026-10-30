@@ -19,11 +19,7 @@ struct IDirect3DVolume9 : IUnknownLike {
     virtual long __stdcall GetContainer(const void* iid, void** container);
     virtual long __stdcall GetDesc(D3DVOLUME_DESC* desc);             // slot 8 (+0x20)
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:
     IDirect3DVolume9* m_pVolume;
     CVolume(const CVolume& other);

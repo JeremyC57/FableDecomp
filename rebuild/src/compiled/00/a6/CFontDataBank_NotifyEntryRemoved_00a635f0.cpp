@@ -17,7 +17,8 @@ class CDiskFileWin32;
 struct CProgressCallback;
 class CWideStringData;
 
-class CBaseClass{public:virtual ~CBaseClass(){}};class CBaseClassNonCopyable:public CBaseClass{};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseClassNonCopyable:public CBaseClass{};
 #pragma pack(push,1)
 class CBankFile:public CBaseClassNonCopyable{public:
     unsigned long               Size;                        // +0x04

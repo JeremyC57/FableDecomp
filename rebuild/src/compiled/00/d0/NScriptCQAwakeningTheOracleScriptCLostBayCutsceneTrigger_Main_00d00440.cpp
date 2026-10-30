@@ -22,10 +22,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30 (declared: forces the in-slot build)
     ~CCharString();                                     // 0x0099EAE0
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template <class T> class CCountedPointer {
 public:
     T* Data;

@@ -17,10 +17,7 @@ class CSurface { public:                                  // vtable 0x0122F84C, 
     void Uninitialise();                           // 0x009F2E20
     virtual ~CSurface() { Uninitialise(); }
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct __declspec(novtable) CRenderTarget : CBaseClass {
     CSurface ColourSurface;                        // +0x04
     CSurface DepthSurface;                         // +0x14

@@ -63,10 +63,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-    CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImpl {                                   // the game-side thing behind PImp.Data (CScriptThing vtable layout)
     virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005(); virtual void i006(); virtual void i007();
     virtual void i008(); virtual void i009(); virtual void i010(); virtual void i011(); virtual void i012(); virtual void i013(); virtual void i014(); virtual void i015();

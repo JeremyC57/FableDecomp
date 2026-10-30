@@ -10,10 +10,7 @@
 // zeroing theme-channel ctor, member-wise copy ctors, CMeshTint::Set(r, g, b, a)). The animation interpolator is built from
 // one blend state (`StartState(s), EndState(s)`, each an add-ref'ing copy of the counted animation pointer) after its
 // out-of-line CBaseClass constructor; the orientation copy needs no base call (the base copy is implicit).
-class CBaseClass { public:
-    virtual ~CBaseClass();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X,Y,Z; C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){} C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} };
 class CRightHandedSet { public: C3DVector Up,Forward; CRightHandedSet(const CRightHandedSet& o):Up(o.Up),Forward(o.Forward){} };
 class C3DOrientationInterpolator : public CBaseClass { public:   // vtable 0x01239824

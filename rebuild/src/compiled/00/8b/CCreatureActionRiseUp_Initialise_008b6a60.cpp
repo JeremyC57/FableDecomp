@@ -5,7 +5,8 @@
 #define CBaseObject CBaseObject_HeaderLayout
 #include "engine/CBaseObject.h"
 #undef CBaseObject
-class CBaseClass{public:virtual ~CBaseClass(){} };class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
 class CThing:public CBaseObject{public:unsigned char _unmodeled08[8];unsigned char FastCastType;};class CThingCreatureBase:public CThing{};class CThingAICreature:public CThingCreatureBase{public:void SuspendAI(bool,void*);};
 class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}CBaseObjectPointer* PData;CBaseObject* GetPItem()const;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}};
 class CCreatureActionBase:public CBaseObject{public:CIntelligentPointer<CThingCreatureBase> PCreature;virtual void Initialise();};class CCombatActionBase:public CCreatureActionBase{public:virtual void Initialise();};

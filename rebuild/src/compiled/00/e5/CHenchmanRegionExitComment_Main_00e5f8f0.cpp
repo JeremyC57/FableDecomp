@@ -13,10 +13,7 @@
 class CCharString;
 class C3DVector;
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CBaseClass { public:                                     // vtable 0x01231710
- virtual ~CBaseClass();                                  // 0x0099A2E0
- CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CCountBlock { long References; void (__fastcall* DeleteFunc)(void* data); void* Data; };
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
  void* Data;

@@ -10,10 +10,7 @@
 //   compiler-generated destructor, which only calls CBaseClass::~CBaseClass 0x0099A2E0. Key compares are UNSIGNED.
 // Shape: STLport `__unguarded_linear_insert(last, val, comp)`, /Gr (__fastcall: last in ecx; val and the comparator
 //   on the stack). The copy loop strength-reduces a second pointer at next + 0xC for the two payload words.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                               // 0x0099A2E0 (restores the CBase vtable)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 

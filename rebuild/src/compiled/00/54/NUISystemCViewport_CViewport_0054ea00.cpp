@@ -30,10 +30,7 @@ class CChangingStateComponent : public CComponentRoot, public IComponentA, publi
 };
 
 }   // the retail root is file scope
-class CBaseClass { public:
-    virtual ~CBaseClass();                     // slot 0 (0x0099A2E0)
-    CBaseClass();                              // 0x0099A2D0 ??0CBaseClass@@QAE@XZ
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NUISystem {
 
 struct CEnginePrimitiveHandle : CBaseClass {   // vtable 0x0122F598

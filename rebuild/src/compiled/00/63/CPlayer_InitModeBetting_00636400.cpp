@@ -8,7 +8,8 @@
 #define CClass CClass_HeaderEvidence
 #include "engine/CClass.h"
 #undef CClass
-class CBaseClass{public:virtual ~CBaseClass(){}};class CBaseClassNonCopyable:public CBaseClass{};class CInitBaseClass:public CBaseClass{public:bool Valid;};class CBaseObject;struct CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;CBaseIntelligentPointer();CBaseObject* GetPItem()const;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return static_cast<T*>(CBaseIntelligentPointer::GetPItem());}T* operator->()const{return GetPItem();}operator bool()const{return GetPItem()!=0;}};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseClassNonCopyable:public CBaseClass{};class CInitBaseClass:public CBaseClass{public:bool Valid;};class CBaseObject;struct CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;CBaseIntelligentPointer();CBaseObject* GetPItem()const;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return static_cast<T*>(CBaseIntelligentPointer::GetPItem());}T* operator->()const{return GetPItem();}operator bool()const{return GetPItem()!=0;}};
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}~CCountedPointer();};
 namespace boost{template<class T>class scoped_ptr{T* px;public:explicit scoped_ptr(T* p=0):px(p){}~scoped_ptr();T* operator->()const{return px;}T* get()const{return px;}void reset(T* p=0);private:scoped_ptr(const scoped_ptr&);scoped_ptr& operator=(const scoped_ptr&);};}
 #pragma pack(push,1)

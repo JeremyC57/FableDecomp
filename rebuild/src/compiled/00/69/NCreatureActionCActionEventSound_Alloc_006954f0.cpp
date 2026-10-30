@@ -8,11 +8,7 @@
 // Shape: `new` with its null test, then the inlined (activationFrame, thing, camera) constructor: the base members are stored
 //   BEFORE this class's vtable store, so they belong to an inlined `__declspec(novtable)` CActionEventBase ctor (landed twin
 //   model 0x006955F0); the derived ctor only stores its vtable.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                       // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CThingCreatureBase;
 class CGameCameraManager;

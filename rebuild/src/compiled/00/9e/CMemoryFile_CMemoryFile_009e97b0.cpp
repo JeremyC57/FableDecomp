@@ -28,10 +28,7 @@ public:
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                            // 0x0099A2F0

@@ -1,8 +1,5 @@
 #pragma optimize("t", on)
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 extern void __fastcall DestructMember_0099eae0(void* member);
 void* __fastcall CActionEventExplosion_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {

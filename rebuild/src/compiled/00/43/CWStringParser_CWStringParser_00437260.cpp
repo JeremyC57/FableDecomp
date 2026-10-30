@@ -10,11 +10,7 @@
 // function @ 0x00A0C8E0 from the constructor body. One of 26 bodies of this shape.
 #include <stddef.h>      // wchar_t under VC7.1 (not a keyword without /Zc:wchar_t)
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();   // 0x0099A2E0
-    CBaseClass();                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CWStringParser : CBaseClass {
     CWStringParser(wchar_t* argument);

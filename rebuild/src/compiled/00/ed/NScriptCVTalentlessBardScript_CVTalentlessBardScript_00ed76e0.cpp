@@ -25,10 +25,7 @@ struct __declspec(novtable) CQuestScriptObjectNative : CScriptBaseNative {
     CQuestScriptObjectNative(CScriptDataBase* data,CGameScriptInterface* game)
         : CScriptBaseNative(),Game(game),Data(data) {}
 };
-class CBaseClass { public:
-    virtual ~CBaseClass(); // RTTI1231710 slot0, deleting destructor004371F0
-    CBaseClass(); // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImplementationPointer {
     CScriptThing* Data;
     CCPPointerInfo* Info;

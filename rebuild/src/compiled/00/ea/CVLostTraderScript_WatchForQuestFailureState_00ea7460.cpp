@@ -18,10 +18,7 @@ class CWideString { public:
     CWideString(const unsigned short* text);                    // 0x0099B6B0
     ~CWideString();                                         // 0x0099B510
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-    CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 class CCPPointerInfo { public:                                     // CCountedPointer's shared block
     long RefCount;

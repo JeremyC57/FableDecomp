@@ -13,7 +13,7 @@
 class CAIBrain;class CThingAICreature;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};enum EScriptAIPriority{ScriptPriorityDescriptiveZero=0};
 class CWorld{public:static long __fastcall GetFrame();};
 // Layout: shared state-group headers flatten the vptr and base fields. Genuine inheritance is needed for virtual Initialise and inherited GetWorld. PDB and retail agree base20 and MazeBase32; current-frame member+32.
-class CBaseClass{public:virtual ~CBaseClass(){}};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase:public CBaseClass {public:CAIBrain* PBrain;EScriptAIPriority ScriptAIPriority;CCharString Name;bool Terminated;unsigned char Priority;bool Enabled;virtual void Initialise(CAIBrain&,CThingAICreature&,long,EScriptAIPriority,const CCharString&);protected:CWorld& GetWorld()const;};
 class CThing;class CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}CBaseObjectPointer* PData;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
 class CAIStateGroup_MazeBase:public CAIStateGroupBase {public:CIntelligentPointer<CThing> PTargetThing;long EnemyKnockDownFrame;};

@@ -9,10 +9,7 @@
 //   The deleting destructor is emitted with the vtable, i.e. in a TU that constructs the class: MakeOne is that
 //   construction, nothing more.
 // Model: local -- no engine header for this class; the bases are sized to the retail layout.
-class CBaseClass {                                // RTTI root, vtable 0x01231710
-public:
-    virtual ~CBaseClass();                        // 0x0099A2E0 (FableWin.pdb ??1CBaseClass@@UAE@XZ)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { // vtable 0x0129A7C4
 protected:
     CBaseClassNonCopyable();                      // 0x0099A2F0 (FableWin.pdb ??0CBaseClassNonCopyable@@IAE@XZ)

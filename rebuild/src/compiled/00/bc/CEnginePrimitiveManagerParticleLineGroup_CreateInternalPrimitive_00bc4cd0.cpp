@@ -25,7 +25,8 @@ extern "C" void* __cdecl malloc(unsigned int);extern "C" void __cdecl free(void*
 #else
 #include <stdlib.h>
 #endif
-class CBaseClass{public:virtual ~CBaseClass(){} };class CBaseClassNonCopyable:public CBaseClass{};class CIVCountedPointeeBase{public:virtual ~CIVCountedPointeeBase(){}unsigned long IVRefCount;};class CEnginePersistentPrimitiveBase:public CIVCountedPointeeBase{public:long Type;};template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase* Object;};class CEnginePrimitiveHandle:public CBaseClass{public:CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseClassNonCopyable:public CBaseClass{};class CIVCountedPointeeBase{public:virtual ~CIVCountedPointeeBase(){}unsigned long IVRefCount;};class CEnginePersistentPrimitiveBase:public CIVCountedPointeeBase{public:long Type;};template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase* Object;};class CEnginePrimitiveHandle:public CBaseClass{public:CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;};
 class C3DVector{public:float X,Y,Z;C3DVector(){}C3DVector(float x,float y,float z):X(x),Y(y),Z(z){}};class C2DVector{public:float X,Y;};class C3DBoundingSphere{public:C3DVector Center;float Radius;C3DBoundingSphere():Center(0,0,0),Radius(0){}};class CMatrix3x4{public:C3DVector Rows[4];};class CRGBColour{public:unsigned char R,G,B,A;};class CRightHandedSet{public:C3DVector Up,Forward;};enum EEnginePrimitiveType{TYPE_SMALL=21,TYPE_GROUP=26};enum EEngineInterpolationSet{INTERPOLATION_UNNAMED};enum EEngineEffectWaterStage{WATER_STAGE_UNNAMED};enum EEnginePrimitiveBlendMode{BLEND_MODE_UNNAMED};enum EEnginePrimitiveBlendOp{BLEND_OP_UNNAMED};
 class CEngineSceneGridCell;class CEngineInternalPrimitiveBase:public CEnginePersistentPrimitiveBase{public:
     unsigned long                 EnginePrimitiveFlags;      // +0x0c

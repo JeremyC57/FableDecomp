@@ -13,10 +13,7 @@
 // Shape: as the C3DVector twin 0x0076BE30: inline `__median`, the pivot `_Tp(__median(..))` built in the argument area by
 //   STLport's explicit pair copy constructor (the descriptor's implicit copy stores its vtable immediate at +4 and copies
 //   the two members), the decremented depth stored back to its argument slot.
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 template <class TOwner, class TValue> class CParticleUpdateParamCallback;

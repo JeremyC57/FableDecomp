@@ -19,7 +19,7 @@
 // No engine header exists for CShaderRenderManager.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300

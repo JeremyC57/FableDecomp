@@ -15,10 +15,7 @@
 //   byte store (0x82 = Enabled | ScaleParticles).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-class CBaseClass { public:
-    virtual ~CBaseClass();
-    CBaseClass();                                  // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CCharString { public:
     void* m_pStringData;

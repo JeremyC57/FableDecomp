@@ -79,7 +79,7 @@ class CGameCameraManager : public CAIGameCameraBase { public:
  float ControlAngleXY;
  bool AngleChange,ControlNoControlMovement;
 };
-class CBaseClass { public:CBaseClass();virtual ~CBaseClass();};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable:CBaseClass {protected:CBaseClassNonCopyable();public:virtual ~CBaseClassNonCopyable();};
 class CLinkedListPosition { public:CBaseClass* Data;CLinkedListPosition* Next;CLinkedListPosition* Previous;};
 class CInputProcessManager;

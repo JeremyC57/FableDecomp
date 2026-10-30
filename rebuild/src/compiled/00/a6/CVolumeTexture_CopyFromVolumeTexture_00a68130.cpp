@@ -37,10 +37,7 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
     virtual long __stdcall UnlockBox(unsigned long level);                   // slot 20 (+0x50)
 };
 class C3DBoxI;
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolume : public CBaseClass { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     ~CVolume() { ReleaseVolume(true); }

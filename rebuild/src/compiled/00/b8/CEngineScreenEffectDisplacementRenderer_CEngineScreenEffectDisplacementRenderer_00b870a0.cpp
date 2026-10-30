@@ -24,10 +24,7 @@
 #include "engine/CRenderStateManager.h"
 #include "fable_render_capture.h"
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass(); // 0x0099A2E0; native vtable is 0x01231710
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CShaderBase { public:
     virtual ~CShaderBase(); // native shared shader-base vtable is 0x0129A030

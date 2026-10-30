@@ -13,11 +13,7 @@ class CRightHandedSet { public:
     C3DVector Up;                           // +0x00
     C3DVector Forward;                      // +0x0c
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-    CBaseClass();                                // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NParticleEngine {
 struct SVectorParam;                        // pair<unsigned long, C3DVector>
 struct SUpdateParam;                        // pair<unsigned long, CParticleUpdateParamDesc>

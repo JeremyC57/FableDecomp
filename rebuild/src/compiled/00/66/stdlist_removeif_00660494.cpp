@@ -19,10 +19,7 @@
 // Layout: STLport list (4 bytes: the sentinel pointer), node {next, prev, CCountedPointer<T> {Data, Info}}; the task chain is a
 //   local partial view (RTTI CVillageTaskSecuritySweep <- CVillageTaskBase <- CBaseObject <- CBaseClass).
 #pragma optimize("s", on)
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObject : public CBaseClass {
 public:
     virtual void Validate() const;                          // slot 1

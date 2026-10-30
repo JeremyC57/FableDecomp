@@ -124,7 +124,7 @@ class CTimer { public:                                         // a script timer
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
-class CBaseClass { public: virtual ~CBaseClass(); CBaseClass(); };   // 0x0099A2D0 (vtable 0x01231710 = CBaseClass)
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                 // +0x04

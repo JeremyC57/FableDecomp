@@ -39,8 +39,7 @@ public:
     }
 };
 class CPersistContext;
-class CBaseClass {
-public:  virtual ~CBaseClass(); };             // dtor 0x0099A2E0
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };   // 0x004046B0
 class CStringParser : public CBaseClass { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;

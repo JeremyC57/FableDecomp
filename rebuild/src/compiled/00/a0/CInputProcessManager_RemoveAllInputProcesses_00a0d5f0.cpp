@@ -12,7 +12,7 @@
 //   (0x00A0D6B0) one.
 // Shape: StartScanAtHead / ScanForward / RemoveScanInfo inline list members (the scan sits in the frame, Forwards and
 //   the 0xb0-byte inputs untouched), the loop runs while the position's Data is non-null.
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CLinkedListPosition { public: CBaseClass* Data; CLinkedListPosition* Next; CLinkedListPosition* Previous; };
 
 class CAInputProcess : public CBaseClass { public:

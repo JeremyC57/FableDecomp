@@ -15,7 +15,7 @@ class CCombatManager {public:void RegisterCombatant(CThingCreatureBase&,CThingCr
 class CAIBrain;class CThingAICreature;class CCharStringData;class CCharString{public:CCharStringData* PStringData;};enum EScriptAIPriority{ScriptPriorityDescriptiveZero=0};
 
 // Layout: shared state-group headers flatten the vptr and base fields. Genuine inheritance is needed for virtual Initialise and inherited GetWorld. PDB and retail agree base20 and MazeBase32; current-frame member+32.
-class CBaseClass{public:virtual ~CBaseClass(){}};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase:public CBaseClass {public:CAIBrain* PBrain;EScriptAIPriority ScriptAIPriority;CCharString Name;bool Terminated;unsigned char Priority;bool Enabled;virtual void Initialise(CAIBrain&,CThingAICreature&,long,EScriptAIPriority,const CCharString&);virtual void OnActivate(){};protected:CWorld& GetWorld()const;};
 class CBaseObject;class CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}CBaseObjectPointer* PData;CBaseObject* GetPItem()const;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}};
 class CAIStateGroup_MazeBase:public CAIStateGroupBase {public:CIntelligentPointer<CThing> PTargetThing;long EnemyKnockDownFrame;virtual void OnActivate();};

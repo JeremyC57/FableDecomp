@@ -12,10 +12,7 @@
 void* __cdecl operator new(unsigned int size);            // 0x00BFEA1A
 class CThingCreatureBase;
 class CGameCameraManager;
-class CBaseClass {                                         // vtable 0x01231710, RTTI .?AVCBaseClass@@
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NCreatureAction {
 class CActionEventBase : public CBaseClass {
 public:

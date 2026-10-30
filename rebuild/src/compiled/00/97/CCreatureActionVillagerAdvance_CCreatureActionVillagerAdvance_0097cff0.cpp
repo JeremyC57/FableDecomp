@@ -7,6 +7,7 @@
 #define __fastcall
 #endif
 class CThing{};class CThingCreatureBase:public CThing{};class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString(const char* =0,long=-1);~CCharString();};class CSoundPair{public:long FirstSound,LastSound;CSoundPair():FirstSound(0),LastSound(0){}};
-class CBaseClass{public:virtual ~CBaseClass(){} };class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObject{public:unsigned char _unmodeled08[0xa8-8];};class CCombatActionBase:public CCreatureActionBase{public:unsigned char _unmodeledA8[0x114-0xa8];CCombatActionBase(CThingCreatureBase&,CThing&,long,const CSoundPair&);protected:static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase&,const CCharString&);};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObject{public:unsigned char _unmodeled08[0xa8-8];};class CCombatActionBase:public CCreatureActionBase{public:unsigned char _unmodeledA8[0x114-0xa8];CCombatActionBase(CThingCreatureBase&,CThing&,long,const CSoundPair&);protected:static CSoundPair __fastcall GetSoundPair(const CThingCreatureBase&,const CCharString&);};
 class CCreatureAction_VillagerAdvance:public CCombatActionBase{public:CCreatureAction_VillagerAdvance(CThingCreatureBase&,CThingCreatureBase&);};
 CCreatureAction_VillagerAdvance::CCreatureAction_VillagerAdvance(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creature,enemy,50,GetSoundPair(creature,0)){}

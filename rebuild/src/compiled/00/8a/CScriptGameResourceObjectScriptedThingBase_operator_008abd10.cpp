@@ -34,10 +34,7 @@ public:
         return *this;
     }
 };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObject : public CBaseClass {
 protected:
     CBaseObject& operator=(const CBaseObject& other);      // 0x0099A3B0

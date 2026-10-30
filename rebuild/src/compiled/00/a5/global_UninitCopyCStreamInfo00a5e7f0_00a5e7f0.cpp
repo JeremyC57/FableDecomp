@@ -19,10 +19,7 @@ inline void* operator new(unsigned int, void* p) { return p; }   // placement ne
 
 struct __false_type { __false_type() { } };     // STLport empty tag; passed by const reference (one stack slot)
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 template <class T> class CArray { public:              // retail 12-byte array: start, finish, end of storage
     T* start;
@@ -38,7 +35,7 @@ public:
         int          DataType;
     };
     CArray<CDataElement> DataElements;          // +0x04
-    __forceinline CVertexStreamFormat(const CVertexStreamFormat& o) : DataElements(o.DataElements) { }
+    __forceinline CVertexStreamFormat(const CVertexStreamFormat& o) : CBaseClass(o), DataElements(o.DataElements) { }
     virtual ~CVertexStreamFormat() { }
 };
 

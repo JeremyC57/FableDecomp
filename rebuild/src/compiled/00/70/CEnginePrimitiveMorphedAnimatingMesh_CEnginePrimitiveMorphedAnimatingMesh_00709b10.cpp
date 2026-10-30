@@ -12,10 +12,7 @@
 // release keeps its zero store inside the null test (inline ReleaseTemporary()).
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                           // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct __declspec(novtable) C3DPositionInterpolator : CBaseClass {       // +0x1c, 0x1c bytes
     unsigned char _data[0x18];
 };

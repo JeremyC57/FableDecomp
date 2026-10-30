@@ -16,9 +16,12 @@
 // Dinkumware 0x14 vector). Out-of-line members: ctor 0x00430370 and ~CParentDefClassBase 0x00430300 (one TU: the deleting
 // dtor 0x004303F0 auto-inlines the dtor body; derived deleting dtors call 0x00430300), copy ctor 0x0046EE98 and operator=
 // 0x00431ED0 (both PDBs; bound in rebuild/oracles/reloc_bindings.tsv).
-// Unproven: whether the copy ctor / operator= are user-declared or the implicit ones (FableWin.pdb emits implicit members
-// too, and a few landed rows expand operator= inline); they are declared out of line here, which is what the out-of-line
-// callers need.
+// Copy members (class-model migration wave 3 experiment, that wave's LESSONS.md item 1): they
+// stay declared out of line. Undeclared (implicit) members over typed CDefString / CVectorMap models reproduce the 39 /Os
+// callers of 0x00431ED0 tested and the standalone 0x00431ED0 body, but at /O2 RTM 3077 then inlines operator= into the
+// callers retail makes call it (0x00434370 CEngineDef, 0x00625350) and still calls it from 0x00432E60 CFrontEndDef, which
+// retail expands; no declaration (implicit, explicit inline, out of line in TU order, inline_depth, QFE 4035) gives both.
+// The 5 /O2 expanders (0x00432C70, 0x00432E60, 0x00434450, 0x004345A0, 0x0067C980) keep row-local __forceinline models.
 // Members: CDefString / CVectorMap have no shared header. An includer that has the complete types (CDefString and
 // CVectorMap<K,V,C> defined before the include) defines FABLE_PDCB_TYPED_MEMBERS for the typed members; otherwise the two
 // members are opaque with the same offsets.

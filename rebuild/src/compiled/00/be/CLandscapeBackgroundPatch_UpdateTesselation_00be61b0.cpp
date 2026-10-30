@@ -14,11 +14,7 @@
 class CEngineMap { public: unsigned char _pad[0x60]; unsigned short OriginX, OriginY; };   // +0x60 / +0x62
 class CIndexBuffer;
 class CVertexBufferWin32;
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                               // 0x0099A2E0
-    CBaseClass();                                        // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CPatchTesselationEdgeStrip { public:                 // 0x2c bytes
     unsigned char _pad[0x28];
     bool          Tesselated;                       // +0x28

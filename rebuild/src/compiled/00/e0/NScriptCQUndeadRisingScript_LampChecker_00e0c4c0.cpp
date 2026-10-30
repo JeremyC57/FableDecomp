@@ -33,9 +33,7 @@ struct CScriptThingImp {
     virtual void i70(); virtual void i71(); virtual void i72(); virtual void i73(); virtual void i74();
     virtual bool IsAlive() const;                       // slot 75 (+0x12c)
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)

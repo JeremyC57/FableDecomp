@@ -13,9 +13,7 @@
 class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 { public: C3DVector XAxis, YAxis, ZAxis, Position; };
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                         // RTTI base vtable 0x01231710
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CBaseClassNonCopyable : CBaseClass {
     virtual ~CBaseClassNonCopyable();              // destructor restores CBaseClass vtable, 0x0099A300

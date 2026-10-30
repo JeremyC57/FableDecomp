@@ -22,10 +22,7 @@ public:
     CBaseObjectPointer* PData;                               // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CAIStateGroupBase : public CBaseClass {               // 0x14 bytes
 public:
     virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name);   // 0x008FCEC0

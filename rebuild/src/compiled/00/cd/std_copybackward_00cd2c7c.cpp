@@ -10,10 +10,7 @@
 // Shape: STLport 4.6 _algobase.h random-access __copy_backward verbatim; the count is a shift (0x10-byte elements) and the
 //   result pointer is decremented in its own stack slot (the J070 __copy model, backwards).
 #pragma optimize("s", on)
-class CBaseClass {                                       // RTTI root
-public:
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseObjectPointer;
 class CBaseObject : public CBaseClass {                  // Ego_r.pdb 8 bytes
 public:

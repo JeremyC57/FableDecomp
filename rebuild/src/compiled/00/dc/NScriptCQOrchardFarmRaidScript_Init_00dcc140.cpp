@@ -25,11 +25,7 @@ class CWideString { public:
     const CWideString& operator=(const unsigned short* text);        // 0x0099B800
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-    CBaseClass();                                            // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SScriptThingInfo {
     long m_references;
     void (__fastcall* m_pfnDestroy)(void*);

@@ -12,7 +12,7 @@ template <class _T1, class _T2> struct pair;
 template <class _Key, class _Tp, class _Compare, class _Alloc> class map;
 }
 
-class CBaseClass { public: virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 class C2DVector { public: float X, Y; };
 

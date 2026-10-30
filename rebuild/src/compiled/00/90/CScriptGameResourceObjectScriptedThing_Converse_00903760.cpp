@@ -34,10 +34,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CBaseClass {
-public:
-    virtual ~CBaseClass();                                // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThingImp;
 
