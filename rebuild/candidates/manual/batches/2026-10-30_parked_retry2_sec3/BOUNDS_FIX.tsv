@@ -1,0 +1,9 @@
+address	catalog_length	true_length	evidence
+0083b3e0	316 (manifest next-start extent; no catalog row)	240	retail ends `ret 8` at 0x0083B4CD (the false-return tail); 0x0083B4D0 starts the next function (push ecx; movzx edx,[ecx+8Ch] -- a DefGlobalIndex accessor)
+007d97e0	97 (manifest next-start extent; no catalog row)	81	retail `ret` at +81 followed by int3 padding; the bytes after the padding are the next (unlisted) function
+007d9a00	127 (manifest next-start extent; no catalog row)	81	retail `ret` at +81 followed by int3 padding; the bytes after the padding are the next (unlisted) function
+00806220	227 (manifest next-start extent; no catalog row)	81	retail `ret` at +81 followed by int3 padding; the bytes after the padding are the next (unlisted) function
+0085ae20	105 (manifest next-start extent; no catalog row)	59	retail `ret` at +59 followed by int3 padding; the bytes after the padding are the next (unlisted) function
+0085ed90	84 (manifest next-start extent; no catalog row)	36	retail `ret` at +36 followed by int3 padding; the bytes after the padding are the next (unlisted) function
+007a8be0	617 (catalog row)	576	code + `mov edi,edi` + the 4-entry jump table at 0x007A8E10 end at 0x007A8E1F; 0x007A8E20 starts `mov eax,ecx ; mov ecx,[esp+4] ; mov [eax],ecx ; ret 4` (then 0x007A8E30 `mov eax,[ecx] ; ret`, 0x007A8E40)
+00871a80	571 (manifest next-start extent; no catalog row)	547	retail `ret 4` at +544 (0x00871C9F), int3 padding to 0x00871CB0, which starts a separate `add ecx,0A8h ; jmp` adjustor thunk
