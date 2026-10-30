@@ -24940,3 +24940,13 @@ chunk	address	module	name	length
 590	00b7ffc0	global	Vector_PushBack_CActiveFile_14Elements	302
 590	00cab470	global	sub_00cab470	258
 590	00c4c080	global	CRABuffer_ctor	294
+591	00c172f0	global	Setup_ProcessGraphicsAndInventory	269
+591	00ca6450	global	CStreamContainer_GetData_CompressedInputStream	298
+591	00b988e0	global	std_map_find_or_insert_variant	302
+591	00c93e30	global	FFT_InitializeWaveform	302
+591	00cb2310	global	IME_GetCandidateListW	302
+591	00c75ff0	global	Array_InsertWrappedWithCallbacks	303
+591	00aafe50	global	Vector_InsertAt	305
+591	00b7c870	global	Vector_Reallocate	305
+591	00c6b490	global	FloatArrayRound_CPU	307
+591	00c8fa60	global	Audio_ProcessConvolutionBuffer	307
