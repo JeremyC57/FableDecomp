@@ -15,11 +15,10 @@
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
 
-class CGameScriptInterfaceBase {
-public:
-    VPAD256(a) VPAD64(b) VPAD32(c) VPAD16(d) VPAD8(e) VPAD2(f) VPAD1(g)   // slots 0..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                  // slot 379 (+0x5ec)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 
 class CWideScreenMagicPauseEntities {
 public:

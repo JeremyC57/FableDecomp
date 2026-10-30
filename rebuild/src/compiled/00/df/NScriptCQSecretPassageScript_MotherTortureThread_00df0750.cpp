@@ -109,12 +109,8 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     }
 };
 
-class CBaseObject { public:                                    // vtable 0x0129A7D8
-    void* IntelligentPointer;                           // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 struct CHandlePImp { void* Data; void* Info; CHandlePImp() : Data(0), Info(0) {} };
 

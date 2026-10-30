@@ -11,7 +11,8 @@
 //   operator==(const CIntelligentPointer<T>&, const CBaseObject*): *val is read into edi before each GetPItem. Frame-pointer size TU (the forwarders that call it carry the same pragmas).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-class CBaseObject { public: virtual ~CBaseObject(); };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 
 class CBaseIntelligentPointer {

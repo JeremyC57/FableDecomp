@@ -74,19 +74,10 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD2(qe)                              // slots 8..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD4(ra) VPAD2(rb)                                                              // slots 71..76
-    virtual CScriptThing GetNearestWithScriptName(const CScriptThing& from, const CCharString& name) const;   // slot 77 (+0x134)
-    VPAD8(sa) VPAD2(sb) VPAD1(sc)                                                    // slots 78..88
-    virtual void SetTimer(long timer, long time);                                    // slot 89 (+0x164)
-    virtual long GetTimer(long timer) const;                                         // slot 90 (+0x168)
-    VPAD256(ta) VPAD256(tb) VPAD64(tc) VPAD16(td) VPAD4(te) VPAD2(tf)             // slots 91..688
-    virtual unsigned long PlayCriteriaSoundOnThing(const CScriptThing& thing, const CCharString& criteria) const;   // slot 689 (+0xac4)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 class CTimer { public:                                        // a script timer: the interface's timer handle
     long Handle;

@@ -58,35 +58,16 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     virtual ~CScriptThing();                                    // 0x004AA840
 };
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() { }
-    // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-    void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
-};
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD256(ra) VPAD128(rb) VPAD16(rc) VPAD4(rd)                                     // slots 71..474
-    virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool instant) const;   // slot 475 (+0x76c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04
@@ -106,7 +87,7 @@ __forceinline float GetDistanceSquared2D(const C3DVector& a, const C3DVector& b)
 void Cwelcome_guy::Main()
 {
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

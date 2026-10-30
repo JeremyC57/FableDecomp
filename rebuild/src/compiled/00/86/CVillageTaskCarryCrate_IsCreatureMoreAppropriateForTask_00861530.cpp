@@ -10,7 +10,8 @@
 // Shape: the Torch/Horn twins' distance code with the assigned distance a named float (stored into the dead `creature`
 //   slot) and the candidate distance kept on the x87 stack; Pickup is re-read after the validity call, so both arms of
 //   the final comparison survive (`2.25 * c < a` via `test ah,5 ; jnp`, `c > a * 2.25` via `test ah,41h ; jne`).
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }

@@ -127,10 +127,10 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
     CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
     static CCharString NullString;                      // 0x0143E8EC
 };
-class CGameScriptInterfaceBase { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 class CScriptBase { public:                             // retail 0x40 bytes
     unsigned char _body[0x40];
     bool IsActiveThreadTerminating();                   // 0x00CB7940

@@ -39,13 +39,8 @@ public:
     CCharString();                                          // 0x0099E4B0
     CCharString(const CCharString& other);                  // 0x0099EC30
 };
-class CBaseObject {
-public:
-    void* IntelligentPointer;                               // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 namespace std {
 template <class T> class allocator {

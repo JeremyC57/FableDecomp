@@ -109,16 +109,10 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
 class CTCCreatureModeManager { public: public:
     bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };   // 0x0073A8A0
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent*         Component;         // +0x08
-    CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
-    CThingSearchTools*          ThingSearchTools;  // +0x18
-    virtual bool IsCreatureFlying(const CScriptThing& creature) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::IsCreatureFlying(const CScriptThing& creature) const
 {

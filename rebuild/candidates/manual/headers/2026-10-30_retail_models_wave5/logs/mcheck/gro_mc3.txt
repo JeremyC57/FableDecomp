@@ -1,0 +1,151 @@
+006e7b60	SRC_FAIL	GameResourceObjectBase.h(21) : error C2011: 'CScriptGameResourceObjectBase' : 'class' type redefinition |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\006e7b60\new.cpp(13) : see declaration of 'CScriptGameResourceObjectBase' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\006e7b60\new.cpp(27) : error C2600: 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase' : cannot define a compiler-generated special member function (must be declared in the class first) | 
+007e72a0	SRC_FAIL	ctBase.h(21) : error C2011: 'CScriptGameResourceObjectBase' : 'class' type redefinition |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\007e72a0\new.cpp(13) : see declaration of 'CScriptGameResourceObjectBase' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\007e72a0\new.cpp(27) : error C2600: 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase' : cannot define a compiler-generated special member function (must be declared in the class first) | 
+008abd10	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\008abd10\new.cpp(43) : error C2600: 'CScriptGameResourceObjectScriptedThingBase::operator`='' : cannot define a compiler-generated special member function (must be declared in the class first) | 
+00903ac0	DIFFER	218v256 grades=False sym=??1CScriptGameResourceObjectScriptedThing@@UAE@XZ
+00cd2c7c	SRC_FAIL	ctScriptedThingBase |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\CScriptGameResourceObjectScriptedThingBase.h(69) : see reference to class template instantiation 'CCountedPointer<T>' being compiled |         with |         [ |             T=CScriptGameResourceObjectScriptedThingBase |         ] | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\CScriptGameResourceObjectScriptedThingBase.h(71) : error C2118: negative subscript | 
+00cd3228	SAME	55b RELOCATION_MATCH->RELOCATION_MATCH
+00cfddc0	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00cfcb50	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00cfbd90	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00d179b0	SAME	194b RELOCATION_MATCH->RELOCATION_MATCH
+00d16920	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00d16d00	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00d1cfc0	SAME	319b RELOCATION_MATCH->RELOCATION_MATCH
+00d27050	DIFFER	439v489 grades=False sym=?PlayCutscene@CQ_DragonBossFightScript@NScript@@QAEXVCCharString@@@Z
+00d2f710	SRC_FAIL	440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d2f710\new.cpp(50) : error C2501: 'NScript::CQ_EndGameBossBattleScript::CScriptGameResourceObjectScriptedThingBase' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d2f710\new.cpp(50) : error C2501: 'NScript::CQ_EndGameBossBattleScript::seh_Jack' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d2f710\new.cpp(53) : error C2118: negative subscript | 
+00d34410	SRC_FAIL	440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d34410\new.cpp(51) : error C2501: 'NScript::CQ_EndGameBossBattleScript::CScriptGameResourceObjectScriptedThingBase' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d34410\new.cpp(51) : error C2501: 'NScript::CQ_EndGameBossBattleScript::seh_Jack' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d34410\new.cpp(55) : error C2118: negative subscript | 
+00d49a20	DIFFER	745v815 grades=False sym=?RunSaveXPCutscene2@CQ_GuildTrainingScript@NScript@@QAEXXZ
+00d44cb0	RELOC_RENAMED	RELOCATION_MATCH ; 114:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 198:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d496f0	DIFFER	745v815 grades=False sym=?RunSaveXPCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+00d58080	DIFFER	579v633 grades=False sym=?Main@CMeleeThunder@@QAEXXZ
+00d55e90	DIFFER	1751v1820 grades=False sym=?Main@CQ_GuildTrainingMeleeScript@NScript@@QAEXXZ
+00d5ab40	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00d5dd40	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00d64080	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d66f50	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d7a360	DIFFER	1361v1333 grades=False sym=?Main@CEndBriarRose@@QAEXXZ
+00d79d50	DIFFER	1361v1333 grades=False sym=?Main@CEndScythe@@QAEXXZ
+00d73f40	DIFFER	1088v1256 grades=False sym=?Main@CHTG_Executioner@@QAEXXZ
+00d71b30	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d71b30\new.cpp(214) : error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'int' to 'EScriptEntityMoveType' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00d7fc70	DIFFER	491v541 grades=False sym=?PlayCutscene@CQ_HeroSoulsArenaScript@NScript@@QAEXVCCharString@@@Z
+00d78500	SAME	21b MATCH->MATCH
+00d7aa30	DIFFER	491v541 grades=False sym=?PlayCutscene@CQ_HeroSoulsScript@NScript@@QAEXVCCharString@@@Z
+00d7c470	DIFFER	503v553 grades=False sym=?PlayCutscene@CQ_HeroSoulsThunderScript@NScript@@QAEXVCCharString@@@Z
+00d874f0	RELOC_RENAMED	RELOCATION_MATCH ; 75:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 23d:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 555:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d85b40	DIFFER	1112v1112 grades=False sym=?Main@CGuildmaster_HS@@QAEXXZ
+00d86c30	RELOC_RENAMED	RELOCATION_MATCH ; b5:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 216:?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z->?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z ; 3fa:?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z->?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00d83300	SRC_FAIL	d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d83300\new.cpp(59) : error C2501: 'NScript::CQ_HeroSoulsBriarScript::CScriptGameResourceObjectScriptedThingBase' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d83300\new.cpp(59) : error C2501: 'NScript::CQ_HeroSoulsBriarScript::seh_BriarRose' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d83300\new.cpp(63) : error C2118: negative subscript | 
+00d872d0	DIFFER	494v544 grades=False sym=?PlayCutscene@CQ_HeroSoulsGuildmasterScript@NScript@@QAEXVCCharString@@@Z
+00d848d0	DIFFER	494v544 grades=False sym=?PlayCutscene@CQ_HeroSoulsMotherScript@NScript@@QAEXVCCharString@@@Z
+00d89ad0	DIFFER	491v541 grades=False sym=?PlayCutscene@CQ_HeroSoulsNostroScript@NScript@@QAEXVCCharString@@@Z
+00d8fd20	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f040	SAME	705b RELOCATION_MATCH->RELOCATION_MATCH
+00d9f6c0	RELOC_RENAMED	RELOCATION_MATCH ; 73:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 24d:?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@J_N111111@Z->?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z ; 4e7:?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 627:?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@J_N111111@Z->?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z ; 65d:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d91da0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00d9bf10	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d9b8a0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00da68e0	RELOC_RENAMED	RELOCATION_MATCH ; 6f:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00da7d30	RELOC_RENAMED	RELOCATION_MATCH ; 2ce:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00daa260	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00daa260\new.cpp(180) : error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'int' to 'EScriptEntityMoveType' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00daa700	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00daa700\new.cpp(184) : error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'int' to 'EScriptEntityMoveType' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00da4c30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da5d40	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da4300	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00da5bf0	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00da49d0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00daab70	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00da30b0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00dbf2d0	DIFFER	1779v1785 grades=False sym=?Main@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+00dc7420	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dc4d00	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dc5f10	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dd6440	RELOC_RENAMED	RELOCATION_MATCH ; 1ac:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 252:?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@_N111111@Z->?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z ; 29e:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 2c2:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00dd44c0	SRC_FAIL	dThingBase::MoveToPosition' : cannot convert parameter 3 from 'int' to 'EScriptEntityMoveType' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00dd44c0\new.cpp(174) : error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'int' to 'EScriptEntityMoveType' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00dd1af0	DIFFER	895v959 grades=False sym=?DoMultiplierCutscene@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ
+00dd2c80	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00df3e50	DIFFER	491v541 grades=False sym=?PlayCutscene@CQ_SummoningTheShipScript@NScript@@QAEXVCCharString@@@Z
+00df9e00	DIFFER	491v541 grades=False sym=?PlayCutscene@CQ_TraderConflictEvilScript@NScript@@QAEXVCCharString@@@Z
+00dfa0b0	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00dfded0	DIFFER	491v541 grades=False sym=?PlayCutscene@CQ_TraderConflictGoodScript@NScript@@QAEXVCCharString@@@Z
+00e00610	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00e03480	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00e00ce0	SAME	194b RELOCATION_MATCH->RELOCATION_MATCH
+00e10bf0	DIFFER	384v384 grades=False sym=?WatchForLeaving@CV_ChapelOfEvilScript@@QAEXXZ
+00e19390	SAME	28b MATCH->MATCH
+00e1d7b0	DIFFER	523v573 grades=False sym=?CutsceneMazeDeath@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e1cd40	DIFFER	679v653 grades=False sym=?CutsceneScreamers@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e1c580	DIFFER	1276v1330 grades=False sym=?PhaseTwo@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e2a900	DIFFER	483v499 grades=False sym=?PlayCutscene@CQS_ScytheInfoScript@@QAEXVCCharString@@_N@Z
+00e386e0	RELOC_RENAMED	RELOCATION_MATCH ; 8c:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 15f:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00e337c0	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00e38680	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00e398f0	SAME	216b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b8f0	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00e477a0	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00e53c70	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00e5d0b0	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00e57bb0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00e57d20	SAME	319b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f190	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+00e6b400	DIFFER	794v842 grades=False sym=?Main@CCOE_Victim@@QAEXXZ
+00e6f710	DIFFER	1084v1107 grades=False sym=?Main@CDF_CombatMult@@QAEXXZ
+00e6ea30	DIFFER	1494v1549 grades=False sym=?Main@CDF_ShineLight@@QAEXXZ
+00e6f1c0	DIFFER	1121v1140 grades=False sym=?Main@CDF_ThunderHelmet@@QAEXXZ
+00e69f00	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e629a0	SRC_FAIL	-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e629a0\new.cpp(59) : error C2501: 'NScript::CV_ChickenKickingScript::seh_Chicken' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e629a0\new.cpp(59) : error C2501: 'NScript::CV_ChickenKickingScript::seh_ChickenMaster' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e629a0\new.cpp(61) : error C2118: negative subscript | 
+00e7f7f0	SAME	908b RELOCATION_MATCH->RELOCATION_MATCH
+00e71450	DIFFER	1086v1108 grades=False sym=?Main@CDF_EatPies@@QAEXXZ
+00e71980	DIFFER	1150v1205 grades=False sym=?Main@CDF_GiveGift@@QAEXXZ
+00e73410	DIFFER	1069v1091 grades=False sym=?Main@CDF_MarryLadyGrey@@QAEXXZ
+00e73930	DIFFER	1639v1725 grades=False sym=?Main@CDF_SexMad@@QAEXXZ
+00e731f0	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00e730a0	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00e75790	SRC_FAIL	laude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e75790\new.cpp(55) : error C2501: 'NScript::CV_ExposeMayorScript::seh_Sheriff' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e75790\new.cpp(55) : error C2501: 'NScript::CV_ExposeMayorScript::seh_Rhodri' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e75790\new.cpp(57) : error C2118: negative subscript | 
+00e8b020	DIFFER	1764v1748 grades=False sym=?Main@CRingFighter@@UAEXXZ
+00e8d2a0	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+00e90830	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00e9aeb0	DIFFER	882v903 grades=False sym=?SecondFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ
+00e9fb40	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00e9c360	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00e9e110	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00ea3640	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00eae790	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00eae670	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00eadb60	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae700	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00eae550	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae620	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae890	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00ea86f0	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00eb7aa0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00eb98a0	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+00eb1f80	SRC_FAIL	f80\new.cpp(53) : error C2501: 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::CScriptGameResourceObjectScriptedThingBase' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00eb1f80\new.cpp(53) : error C2501: 'NScript::CV_MurderTwistFinalScript::CMurderTwistSheriffGuard::MyEntityHandle' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00eb1f80\new.cpp(55) : error C2118: negative subscript | 
+00ebcd70	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00ec12e0	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00ec4540	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00ec6860	SAME	28b MATCH->MATCH
+00ecbd50	SAME	148b RELOCATION_MATCH->RELOCATION_MATCH
+00ecca30	SAME	148b RELOCATION_MATCH->RELOCATION_MATCH
+00ecd7b0	SRC_FAIL	\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00ecd7b0\new.cpp(55) : error C2501: 'NScript::CV_SickChildScript::seh_Mother' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00ecd7b0\new.cpp(55) : error C2501: 'NScript::CV_SickChildScript::seh_Witch' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00ecd7b0\new.cpp(57) : error C2118: negative subscript | 
+00ed51e0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4c50	SAME	194b RELOCATION_MATCH->RELOCATION_MATCH
+00ed7320	SRC_FAIL	definition; different basic types |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(65) : see declaration of 'EScriptAIPriority' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00ed7320\new.cpp(235) : error C2664: 'CGameScriptInterface::StartScriptingEntity' : cannot convert parameter 3 from 'int' to 'EScriptAIPriority' |         Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or function-style cast) | 
+00eda490	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00edbc80	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00edec50	SRC_FAIL	e-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00edec50\new.cpp(58) : error C2501: 'NScript::CV_TravellingHeroesScript::seh_Girl' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00edec50\new.cpp(58) : error C2501: 'NScript::CV_TravellingHeroesScript::seh_Boy' : missing storage-class or type specifiers | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00edec50\new.cpp(61) : error C2118: negative subscript | 
+00ee7a20	DIFFER	1604v1659 grades=False sym=?Main@CDemonDoorFace@@QAEXXZ
+00ee9f00	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00eea020	SAME	543b RELOCATION_MATCH->RELOCATION_MATCH
+00eeb730	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00eed060	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00eed360	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00eef5d0	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00eef760	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00ee0240	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00efab40	DIFFER	433v571 grades=False sym=?Main@Cwelcome_guy@@QAEXXZ
+00efe4b0	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00efc300	DIFFER	262v315 grades=False sym=?MoveHeroTest@CHeroTurningDebuggerScript@NScript@@QAEXXZ
+00efca00	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00ef87d0	RELOC_RENAMED	RELOCATION_MATCH ; 322:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00f01480	DIFFER	720v734 grades=False sym=?Main@CCS_PlayCutsceneScript@NScript@@QAEXXZ
+00f02210	DIFFER	523v586 grades=False sym=?ArenaIntroduction@CQ_CinemaTestScript@NScript@@QAEXXZ

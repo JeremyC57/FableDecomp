@@ -40,14 +40,7 @@ public:
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 
-template <class T> class CSpawnedFunc : public CSpawnedFuncBase {
-public:
-    void (T::*Func)();                                  // +0x34
-    T* PClass;                                          // +0x38
-    __forceinline CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)())
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) { }
-    virtual void SuspendableProcess() { (PClass->*Func)(); }
-};
+#include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

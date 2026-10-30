@@ -107,38 +107,12 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
-    void (T::*Func)();                                  // +0x34
-    T* PClass;                                          // +0x38
-    __forceinline CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)())
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
-    virtual void SuspendableProcess() { (PClass->*Func)(); }
-};
+#include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CGameScriptInterface { public:
-    VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
-    virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority); // slot 8 (+0x20)
-    VPAD32(p9_0) VPAD16(p9_1) VPAD8(p9_2) VPAD4(p9_3) VPAD1(p9_4)                // slots 9..69
-    virtual CScriptThing& GetHero();                                             // slot 70 (+0x118)
-    VPAD1(p71_0)                                                                 // slots 71..71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;  // slot 72 (+0x120)
-    VPAD128(p73_0) VPAD64(p73_1) VPAD16(p73_2)                                   // slots 73..280
-    virtual void DeactivateQuestLater(const CCharString& quest, unsigned long delay) const; // slot 281 (+0x464)
-    VPAD64(p282_0) VPAD4(p282_1)                                                 // slots 282..349
-    virtual void MiniMapAddMarker(const CScriptThing& thing, const CCharString& marker) const; // slot 350 (+0x578)
-    VPAD1(p351_0)                                                                // slots 351..351
-    virtual void MiniMapRemoveMarker(const CScriptThing& thing) const;           // slot 352 (+0x580)
-    VPAD16(p353_0) VPAD1(p353_1)                                                 // slots 353..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie); // slot 370 (+0x5c8)
-    virtual void FixMovieSequenceCamera(bool fix) const;                         // slot 371 (+0x5cc)
-    VPAD4(p372_0) VPAD2(p372_1) VPAD1(p372_2)                                    // slots 372..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                        // slot 379 (+0x5ec)
-    VPAD64(p380_0) VPAD8(p380_1) VPAD1(p380_2)                                   // slots 380..452
-    virtual void EntitySetInLimbo(const CScriptThing& thing, bool limbo, bool b) const; // slot 453 (+0x714)
-    VPAD128(p454_0) VPAD64(p454_1) VPAD8(p454_2) VPAD1(p454_3)                   // slots 454..654
-    virtual CCharString GetActiveQuestName() const;                              // slot 655 (+0xa3c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CV_MazeResearchScript {
     unsigned char    _pad[0x48];
     bool             SwordTaken;                        // +0x48 (PDB +0x5c)

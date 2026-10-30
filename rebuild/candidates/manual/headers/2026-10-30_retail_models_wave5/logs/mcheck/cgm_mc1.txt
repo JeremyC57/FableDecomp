@@ -1,0 +1,58 @@
+00e6f1c0	SAME	1140b RELOCATION_MATCH->RELOCATION_MATCH
+00e6ea30	SAME	1549b RELOCATION_MATCH->RELOCATION_MATCH
+00e6f710	SAME	1107b RELOCATION_MATCH->RELOCATION_MATCH
+00d86c30	RELOC_RENAMED	RELOCATION_MATCH ; b5:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 216:?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z->?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z ; 3fa:?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z->?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00d7a360	SAME	1333b RELOCATION_MATCH->RELOCATION_MATCH
+00d79d50	SAME	1333b RELOCATION_MATCH->RELOCATION_MATCH
+00ed8120	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4b10	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4420	SAME	157b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4aa0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00e0ad40	SAME	531b RELOCATION_MATCH->RELOCATION_MATCH
+00e02e50	SAME	1349b RELOCATION_MATCH->RELOCATION_MATCH
+00e0f4e0	SAME	723b RELOCATION_MATCH->RELOCATION_MATCH
+00d246c0	SAME	896b RELOCATION_MATCH->RELOCATION_MATCH
+00da7830	DIFFER	1270v1269 grades=False sym=?Main@CCorneredGuard@@QAEXXZ
+00da6d50	DIFFER	1162v1159 grades=False sym=?Main@CBalverineFightingGuard@@QAEXXZ
+00da9c70	SAME	1509b RELOCATION_MATCH->RELOCATION_MATCH
+00da4e30	SAME	1389b RELOCATION_MATCH->RELOCATION_MATCH
+00daa260	SAME	1172b RELOCATION_MATCH->RELOCATION_MATCH
+00daa700	RELOC_RENAMED	RELOCATION_MATCH ; 73:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 225:?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ->?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ; 2a5:?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXABVC3DVector@@MJ_N1@Z->?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z ; 2ae:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 2ce:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00de3830	SAME	972b RELOCATION_MATCH->RELOCATION_MATCH
+00dedb80	SAME	697b RELOCATION_MATCH->RELOCATION_MATCH
+00dedf30	SAME	623b RELOCATION_MATCH->RELOCATION_MATCH
+00def760	SRC_FAIL	d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00def760\new.cpp(159) : see reference to class template instantiation 'std::vector<T,A>' being compiled |         with |         [ |             T=CScriptThing, |             A=std::allocator<CScriptThing> |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00def760\new.cpp(159) : see reference to class template instantiation 'std::vector<T,A>' being compiled |         with |         [ |             T=CScriptThing, |             A=std::allocator<CScriptThing> |         ] | 
+00de21d0	SAME	809b RELOCATION_MATCH->RELOCATION_MATCH
+00ded810	SAME	639b RELOCATION_MATCH->RELOCATION_MATCH
+00def3b0	SRC_FAIL	d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00def3b0\new.cpp(127) : see reference to class template instantiation 'std::vector<T,A>' being compiled |         with |         [ |             T=CScriptThing, |             A=std::allocator<CScriptThing> |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00def3b0\new.cpp(127) : see reference to class template instantiation 'std::vector<T,A>' being compiled |         with |         [ |             T=CScriptThing, |             A=std::allocator<CScriptThing> |         ] | 
+008a1cc0	SAME	392b RELOCATION_MATCH->RELOCATION_MATCH
+008920c0	SAME	347b RELOCATION_MATCH->RELOCATION_MATCH
+008922f0	SAME	132b RELOCATION_MATCH->RELOCATION_MATCH
+00892380	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+00d3a9b0	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1ef0	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00ec1ef0\new.cpp(29) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00d15a40	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d15a40\new.cpp(34) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00f1b220	SAME	907b RELOCATION_MATCH->RELOCATION_MATCH
+00f01480	SAME	734b RELOCATION_MATCH->RELOCATION_MATCH
+00f02210	SAME	586b RELOCATION_MATCH->RELOCATION_MATCH
+00e73930	SAME	1725b RELOCATION_MATCH->RELOCATION_MATCH
+00e71450	SAME	1108b RELOCATION_MATCH->RELOCATION_MATCH
+00e71980	SAME	1205b RELOCATION_MATCH->RELOCATION_MATCH
+00e73410	SAME	1091b RELOCATION_MATCH->RELOCATION_MATCH
+00e2a900	SAME	499b RELOCATION_MATCH->RELOCATION_MATCH
+00df2d30	SAME	349b RELOCATION_MATCH->RELOCATION_MATCH
+00ee4a00	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6d60	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00eea460	RELOC_RENAMED	RELOCATION_MATCH ; 204:??1CBaseObject@@UAE@XZ->??1CBaseObject@@MAE@XZ
+00ee7a20	SAME	1659b RELOCATION_MATCH->RELOCATION_MATCH
+00eea7c0	SAME	1506b RELOCATION_MATCH->RELOCATION_MATCH
+00eeb7b0	SAME	1272b RELOCATION_MATCH->RELOCATION_MATCH
+00ddd030	SAME	1019b RELOCATION_MATCH->RELOCATION_MATCH
+00e49980	SRC_FAIL	40-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen using 'struct' now seen using 'class' |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e49980\new.cpp(33) : see declaration of 'CCountedPointer' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\rebuild\include\engine\fable_nscript_forward.h(33) : error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | 
+00e4a280	SAME	992b RELOCATION_MATCH->RELOCATION_MATCH
+00e4e0e0	SAME	1811b RELOCATION_MATCH->RELOCATION_MATCH
+00e57530	SAME	1197b RELOCATION_MATCH->RELOCATION_MATCH
+00e57020	SAME	1295b RELOCATION_MATCH->RELOCATION_MATCH
+00ea8130	SAME	1191b RELOCATION_MATCH->RELOCATION_MATCH
+00ef2ba0	SAME	882b RELOCATION_MATCH->RELOCATION_MATCH
+00efab40	RELOC_RENAMED	RELOCATION_MATCH ; 28:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; f5:?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z->?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z

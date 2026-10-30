@@ -34,13 +34,8 @@ class CIsThingAlive { public:                             // vtable 0x012C32F0: 
 };
 }
 using NScript::CIsThingAlive;
-class CBaseObject { public:                               // CBaseIntelligentPointer root
-    virtual void v00();
-    void* m_pIntelligentPointer;                   // +0x04
-protected:
-    CBaseObject();                                 // 0x0099A380
-public:
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
     void* Data;
     void* Info;
@@ -49,7 +44,6 @@ struct CCountedPointerWords {
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual void v00();
     virtual ~CScriptGameResourceObjectScriptedThingBase(); // 0x007E74D0
 };
 namespace NScript {

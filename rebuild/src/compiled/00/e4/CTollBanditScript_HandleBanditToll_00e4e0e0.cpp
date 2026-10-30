@@ -88,18 +88,10 @@ float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptTh
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:                              // vtable 0x01260F0C (cgsi_slots_aligned.tsv)
-    VPAD64(p0_0) VPAD4(p0_1) VPAD2(p0_2)                                         // slots 0..69
-    virtual CScriptThing& GetHero() const;                                       // slot 70 (+0x118)
-    VPAD1(p71_0)                                                                 // slots 71..71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;  // slot 72 (+0x120)
-    VPAD16(p73_0) VPAD2(p73_1)                                                   // slots 73..90
-    virtual CScriptThing CreateCreature(const CCharString& creature, const C3DVector& pos, const CCharString& scriptName, bool b) const; // slot 91 (+0x16c)
-    VPAD256(p92_0) VPAD64(p92_1) VPAD32(p92_2) VPAD16(p92_3) VPAD8(p92_4) VPAD4(p92_5) // slots 92..471
-    virtual void EntityTeleportToThing(const CScriptThing& entity, const CScriptThing& target, bool b) const; // slot 472 (+0x760)
-    VPAD1(p473_0)                                                                // slots 473..473
-    virtual void EntitySetFacingAngle(const CScriptThing& entity, float angle, bool b) const; // slot 474 (+0x768)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CEntityScriptBase
 {
 public:

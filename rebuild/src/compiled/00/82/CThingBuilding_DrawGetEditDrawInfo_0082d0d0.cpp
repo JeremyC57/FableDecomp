@@ -1,9 +1,6 @@
 // 0082d0d0 CThingBuilding::DrawGetEditDrawInfo -- editor label and original object colour
 // Leaf: ?DrawGetEditDrawInfo@CThingBuilding@@UBE_NMPAVCEditEngineDrawInfo@@@Z
 // Flags:
-#define CBaseObject CBaseObject_Layout
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #define CClass CClass_Layout
 #include "engine/CClass.h"
 #undef CClass
@@ -27,10 +24,8 @@
 #undef CThingAICreature
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass { protected:virtual ~CBaseClassNonCopyable(); };
-class CBaseObject:public CBaseClass {
-private:unsigned char unobservedObjectPointer[4];
-protected:virtual ~CBaseObject();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CFailedAllocationHandler { public:virtual ~CFailedAllocationHandler(); };
 class CResourceList:public CFailedAllocationHandler {
 public:unsigned char unobservedResourceListState[sizeof(CResourceList_Layout)-sizeof(CFailedAllocationHandler)];

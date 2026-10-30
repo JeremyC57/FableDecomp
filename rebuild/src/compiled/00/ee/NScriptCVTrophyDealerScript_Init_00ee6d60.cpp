@@ -17,17 +17,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-class CGameScriptInterface { public:                      // retail vtable @ 0x01260F0C
-    GSI_V100(0) GSI_V100(1)
-    GSI_V10(20) GSI_V10(21) GSI_V10(22) GSI_V10(23) GSI_V10(24) GSI_V10(25) GSI_V10(26) GSI_V10(27) GSI_V10(28)
-    virtual void v290(); virtual void v291(); virtual void v292(); virtual void v293(); virtual void v294(); virtual void v295();
-    virtual void SetQuestCardObjective(const CCharString& quest, const CCharString& text, const CCharString& region, const CCharString& extra) const;   // slot 296 (+0x4a0)
-    virtual void v297(); virtual void v298(); virtual void v299();
-    GSI_V100(3) GSI_V100(4) GSI_V100(5)
-    GSI_V10(60) GSI_V10(61) GSI_V10(62) GSI_V10(63) GSI_V10(64)
-    virtual void v650(); virtual void v651(); virtual void v652(); virtual void v653(); virtual void v654();
-    virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 extern const char g_trophyDealerObjective[];       // 0x012F5208 "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_..."
 class CScriptBase { public:
     virtual void v00();

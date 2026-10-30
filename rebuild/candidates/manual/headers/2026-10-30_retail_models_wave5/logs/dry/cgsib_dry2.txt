@@ -1,0 +1,44 @@
+skip rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_TeleportOutHero_00d66f50.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_TeleportOutHero_00d64080.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dd40.cpp slot 63 PostAddScriptedEntities not in header
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5ab40.cpp slot 63 PostAddScriptedEntities not in header
+skip rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForTermination_00e69f00.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForGrannysRegion_00d8f040.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Init_00eb7aa0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/eb/NScriptCVOracleScript_Main_00ebcd70.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_OnPredicateFail_00d9b8a0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_OnPredicateFail_00d9bf10.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForTermination_00edbc80.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Init_00ed51e0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Main_00e03480.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/6e/CGameScriptInterfaceBase_CGameScriptInterfaceBase_006e7150.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/6e/CGameScriptInterfaceBase_scalardeletingdestructor_006e7180.cpp non-virtual items
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Init_00da5bf0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Init_00da4c30.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Init_00da5d40.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Init_00da49d0.cpp slot 349 MiniMapAddMarker not in header
+skip rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Init_00e19390.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90830.cpp slot 63 PostAddScriptedEntities not in header
+skip rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_OnPersist_00e9e110.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Main_00cfddc0.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Init_00cfbd90.cpp slot 600 EntitySetInFaction not in header
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Main_00cfcb50.cpp slot 6 NewScriptFrame not in header
+edit rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Init_00ec0b00.cpp ok
+skip rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScript_Main_00ec12e0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Init_00ec4540.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Init_00ecbd50.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader2_Init_00ecca30.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Init_00ec6860.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_OnPersist_00e8d2a0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage1Killed_00d16920.cpp slot 6 NewScriptFrame not in header
+skip rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_ResetRandomSpeechTime_00e337c0.cpp slot 88 SetTimer not in header
+skip rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Init_00e38680.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/e3/NScriptCVBordelloScript_OnPersist_00e3b8f0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed360.cpp slot 63 PostAddScriptedEntities not in header
+skip rebuild/src/compiled/00/ee/NScriptCTestQuestCard3Script_Main_00eef760.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ee/NScriptCTestQuestCard2Script_Main_00eef5d0.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_ResetRandomSpeechTime_00e53c70.cpp slot 88 SetTimer not in header
+skip rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPersist_00e5f190.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe4b0.cpp slot 63 PostAddScriptedEntities not in header
+skip rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efca00.cpp slot 63 PostAddScriptedEntities not in header

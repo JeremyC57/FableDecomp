@@ -101,17 +101,10 @@ template<class T> class CCountedPointer { public:
     }
 };
 
-class CBaseObject { public:
-    void* IntelligentPointer;                        // +0x04
-protected:
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public: // vtable 0x0126008C
-    virtual ~CScriptGameResourceObjectBase() { }
-};
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08 / +0x0c
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
 struct CBaseIntelligentPointer {
     virtual void v00();

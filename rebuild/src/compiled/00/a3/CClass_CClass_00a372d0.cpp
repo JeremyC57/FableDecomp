@@ -10,12 +10,8 @@
 // register call. The vtable and Type stores are scheduled between the argument pushes.
 struct CClassFactory_Calls;
 
-class CBaseObject { public:
-    void* PData;                                            // +4
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 struct CClass_Calls : CBaseObject {
     void*         ClassListPos;                             // +0x08 list<CClass*>::iterator (node pointer)

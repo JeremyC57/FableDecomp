@@ -949,6 +949,13 @@ public:
     virtual void AddGossipFactions(CCharString);                                                         // 915 0x008AA590
 public:
     virtual void SetTrapAsActive(const CScriptThing&, bool) const;                                       // 917 0x00895130
+protected:
+    // Non-virtual frame-window helpers (wave 5). Both PDBs (Ego_r 0x00710770/0x007107A0, FableWin 0x024674E0/0x024676B0)
+    // list ?GetMinWorldFrameForMessages@CGameScriptInterface@@IBEJXZ then ?GetMaxWorldFrameForMessages@...@@IBEJXZ, 0x30
+    // apart; retail has the same twin pair 0x30 apart: 0x006E7510 reads the +0x18 frame word, 0x006E7530 the +0x1c one.
+    long GetMinWorldFrameForMessages() const;                                                            // 0x006E7510 (pairing by PDB order; landed rows call it GetCurrentWorldFrameForMessages: NAME_FIXES)
+    long GetMaxWorldFrameForMessages() const;                                                            // 0x006E7530
+public:
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
     CDisplayEngine*         DisplayEngine;                   // +0x0c

@@ -86,13 +86,10 @@ public:
     unsigned char _pad00[0x2C];
     bool          MoralityChangingEnabled;                // +0x2C (Ego_r +0x34, minus 8 for the OutstandingCrimes map and ExperienceSpentOn vector)
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    unsigned char   _pad04[0x10];
-    CPlayerManager* PlayerManager;                         // +0x14
-    virtual void SetMoralityChangingAsEnabled(bool enabled) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::SetMoralityChangingAsEnabled(bool enabled) const
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();

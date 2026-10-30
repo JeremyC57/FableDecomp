@@ -114,30 +114,10 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD4(ra) VPAD2(rb)                                                              // slots 71..76
-    virtual CScriptThing GetNearestWithScriptName(const CScriptThing& thing, const CCharString& name) const;   // slot 77 (+0x134)
-    VPAD256(sa) VPAD32(sb) VPAD4(sc)                                                 // slots 78..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    virtual void FixMovieSequenceCamera(bool fix) const;                             // slot 371 (+0x5cc)
-    VPAD4(ta) VPAD2(tb) VPAD1(tc)                                                    // slots 372..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5ec)
-    VPAD64(ua) VPAD16(ub) VPAD8(uc) VPAD4(ud)                                        // slots 380..471
-    virtual void EntityTeleportToThing(const CScriptThing& thing, const CScriptThing& target, bool a) const;   // slot 472 (+0x760)
-    VPAD1(va)                                                                        // slot 473
-    virtual void EntitySetFacingAngle(const CScriptThing& thing, float angle, bool a) const;   // slot 474 (+0x768)
-    VPAD16(wa) VPAD8(wb) VPAD1(wc)                                                   // slots 475..499
-    virtual void EntityForceToLookAtNothing(const CScriptThing& thing) const;        // slot 500 (+0x7d0)
-    VPAD4(xa) VPAD1(xb)                                                              // slots 501..505
-    virtual void EntitySheatheWeapons(const CScriptThing& thing, bool sheathe) const;   // slot 506 (+0x7e8)
-    VPAD128(ya) VPAD32(yb) VPAD16(yc) VPAD8(yd) VPAD4(ye) VPAD2(yf)                  // slots 507..696
-    virtual void StopOverrideMusic(bool a) const;                                    // slot 697 (+0xae4)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04

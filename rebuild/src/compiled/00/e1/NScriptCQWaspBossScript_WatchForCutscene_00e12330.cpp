@@ -74,13 +74,8 @@ class CScriptThing : public CBaseClass { public:               // 12 bytes, vtab
 };
 
 class CBaseObjectPointer;
-class CBaseObject { public:                                    // vtable 0x0129A7D8
-    CBaseObjectPointer* IntelligentPointer;             // +0x04
-protected:
-    CBaseObject();                                      // 0x0099A380
-    CBaseObject& operator=(const CBaseObject& other);   // 0x0099A3B0
-    virtual ~CBaseObject();                             // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };

@@ -38,13 +38,8 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 
-class CBaseObject { public:
-    void* IntelligentPointer;                              // +0x04
-protected:
-    CBaseObject();                                         // 0x0099A380
-public:
-    virtual ~CBaseObject();                                // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
@@ -86,28 +81,10 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                     // slots 0..6
-    virtual void NewScriptFrame() const;                                              // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                               // slots 9..69
-    virtual const CScriptThing& GetHero() const;                                      // slot 70 (+0x118)
-    VPAD128(ra) VPAD64(rb) VPAD8(rc) VPAD1(rd)                                        // slots 71..271
-    VPAD8(rf)                                                                         // slots 272..279
-    virtual void DeactivateQuest(const CCharString& name, unsigned long flags) const;        // slot 280 (+0x460)
-    virtual void DeactivateQuestLater(const CCharString& name, unsigned long flags) const;   // slot 281 (+0x464)
-    VPAD64(sa) VPAD16(sb) VPAD4(sc) VPAD4(sd)                                         // slots 282..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    VPAD2(ta)                                                                         // slots 371..372
-    virtual bool FadeScreenOut(float time, float hold, CRGBColour colour);            // slot 373 (+0x5d4)
-    virtual void FadeScreenIn();                                                      // slot 374 (+0x5d8)
-    VPAD1(ua)                                                                         // slot 375
-    virtual void Pause(float seconds) const;                                          // slot 376 (+0x5e0)
-    VPAD32(va) VPAD4(vb) VPAD2(vc) VPAD1(vd)                                          // slots 377..415
-    virtual void CameraDefault();                                                     // slot 416 (+0x680)
-    VPAD128(wa) VPAD64(wb) VPAD32(wc) VPAD8(wd) VPAD4(we) VPAD2(wf)                   // slots 417..654
-    virtual CCharString GetActiveQuestName() const;                                   // slot 655 (+0xa3c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 class CScriptBase { public:                                       // retail 0x40 bytes
     virtual void v00();

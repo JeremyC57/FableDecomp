@@ -116,13 +116,12 @@ class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60
 };
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld* World;                                 // +0x04
-    void RemoveAllCutSceneSkippedMessages();
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
-void CGameScriptInterface::RemoveAllCutSceneSkippedMessages()
+void CGameScriptInterface::RemoveAllCutSceneSkippedMessages() const
 {
     CMessageEventManager* manager = World->PMessageEventManager;
     CMessagePtrList found;

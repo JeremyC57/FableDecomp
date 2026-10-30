@@ -15,14 +15,8 @@ public:
     unsigned long refcount;                            // +0x04
 };
 
-class CBaseObject {                                    // vtable 0x0129A7D8
-public:
-    void ClearIntelligentPointers();                   // 0x0099A3C0
-protected:
-    virtual ~CBaseObject();                            // 0x0099A430
-public:
-    CBaseObjectPointer* IntelligentPointer;            // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 void CBaseObject::ClearIntelligentPointers()
 {

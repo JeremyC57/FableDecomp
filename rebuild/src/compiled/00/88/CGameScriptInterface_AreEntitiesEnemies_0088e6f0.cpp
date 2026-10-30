@@ -11,10 +11,10 @@ struct CScriptThingVTbl {
     bool (__fastcall* HasThing)(const void* self);
 };
 class CScriptThing { public: const CScriptThingVTbl* vftable; };
-class CGameScriptInterface {
-public:
-    bool AreEntitiesEnemies(const CScriptThing& entity1, const CScriptThing& entity2) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 bool CGameScriptInterface::AreEntitiesEnemies(const CScriptThing& entity1, const CScriptThing& entity2) const
 {
     if (entity1.vftable->HasThing(&entity1)) {

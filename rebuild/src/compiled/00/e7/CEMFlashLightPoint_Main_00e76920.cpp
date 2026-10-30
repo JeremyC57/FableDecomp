@@ -48,14 +48,7 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
     virtual void SuspendableProcess() { (PClass->*Func)(); }
 };
-template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {
-    void (T::*Func)(P1);                                // +0x34
-    T* PClass;                                          // +0x38
-    P1 Par1;                                            // +0x3c
-    CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), P1 par1)
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
-    virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
-};
+#include "engine/CSpawnedFunc1.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)

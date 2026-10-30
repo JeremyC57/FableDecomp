@@ -1,0 +1,7 @@
+?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7410	00d9f6c0	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7360	00d71b30	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	00d44cb0	?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ
+?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z	007e73f0	00d9f6c0	?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@J_N111111@Z
+?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	007e7390	00d86c30	?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ	008ac970	00d18b20	?Destroy@?$vector@VCScriptThing@@@@QAEXXZ
+?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00e1d690	?KillAllThingsInVector@@YIXPAVCGameScriptInterface@@PAU?$vector@VCScriptThing@@@@_N@Z

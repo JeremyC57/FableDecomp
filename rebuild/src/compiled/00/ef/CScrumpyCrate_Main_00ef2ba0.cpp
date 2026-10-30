@@ -58,19 +58,10 @@ enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_0 };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    VPAD64(qa)                                                                       // slots 8..71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;      // slot 72 (+0x120)
-    VPAD32(ra) VPAD4(rb) VPAD2(rc) VPAD1(rd)                                         // slots 73..111
-    virtual void AddScreenMessage(const CCharString& text, ETextGroupSelectionMethod method) const;   // slot 112 (+0x1c0)
-    VPAD256(sa) VPAD32(sb) VPAD16(sc) VPAD8(sd)                                      // slots 113..424
-    virtual void OpenDoor(const CScriptThing& door) const;                          // slot 425 (+0x6a4)
-    virtual void CloseDoor(const CScriptThing& door) const;                         // slot 426 (+0x6a8)
-    VPAD64(ta) VPAD16(tb) VPAD2(tc) VPAD1(td)                                        // slots 427..509
-    virtual void EntitySetAlpha(const CScriptThing& thing, float alpha, bool fade) const;   // slot 510 (+0x7f8)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04

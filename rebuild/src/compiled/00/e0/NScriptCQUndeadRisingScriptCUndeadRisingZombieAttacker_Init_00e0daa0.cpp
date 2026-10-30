@@ -37,15 +37,7 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-template <class T, class P1> class CSpawnedFunc1 : public CSpawnedFuncBase {
-public:
-    void (T::*Func)(P1);                                // +0x34
-    T* PClass;                                          // +0x38
-    P1 Par1;                                            // +0x3c
-    CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), P1 par1)
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
-    virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
-};
+#include "engine/CSpawnedFunc1.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptBase {
 public:
     virtual ~CScriptBase();

@@ -40,12 +40,8 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-class CBaseObject { public:                               // CBaseIntelligentPointer root
-    void* m_pIntelligentPointer;                   // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
     void* Data;
     void* Info;

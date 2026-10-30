@@ -12,7 +12,7 @@
 class CCharString;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
-struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
+template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
  void* Data;
  CCountBlock* Info;
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
@@ -23,7 +23,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54) 0x004AAB30
  virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64(); virtual void v65(); virtual void v66();
  virtual void SetFriendsWithEverythingFlag(bool on);       // slot 67 (+0x10c) 0x004AB060
- CCountedPointer PImp;                                  // +0x04 Data, +0x08 Info
+ CCountedPointer<CScriptThing> PImp;                                  // +0x04 Data, +0x08 Info
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
@@ -57,32 +57,8 @@ template<class T> class CArray;
 class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
-typedef long ECameraOp;
-typedef long EClothingCoversArea;
-typedef long ECreatureGroup;
-typedef long ECrime;
-typedef long ECutsceneBehaviour;
-typedef long EDoorTriggerType;
-typedef long EGameAction;
-typedef long EHeroAbility;
-typedef long EHeroTitle;
-typedef long EHeroTrainableStatType;
-typedef long EMiniGameType;
-typedef long EMorality;
-typedef long EMusicSetType;
-typedef long EOpinion;
-typedef long EOpinionAttitudeType;
-typedef long EOpinionDeedType;
-typedef long EOpinionPostDeedType;
-typedef long EOpinionReactionType;
-typedef long EScriptAIPriority;
-typedef long EScriptVillageAttitude;
-typedef long EScriptingStateGroups;
-typedef long ESex;
-typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
-typedef long ETutorialCategory;
-namespace NEntityEvents {typedef long EEventType;}
+#include "engine/fable_nscript_forward.h"   // the PDB enums (ECameraOp, EScriptAIPriority, ...)
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 struct GameCalls {virtual ~GameCalls();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
@@ -935,20 +911,10 @@ class CCharString { public:
  ~CCharString();                                    // 0x0099EAE0
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-class CBaseObject { public:
- void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
-};
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
- CCountedPointerWords PImp;
- CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
- virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
- void Release();                                    // 0x00CD2770
- void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
 class CEntityScriptBase
 {

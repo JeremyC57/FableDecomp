@@ -9,7 +9,8 @@
 class CCharStringData;
 class CCharString{public:CCharStringData*PStringData;CCharString(const CCharString&);~CCharString();};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push,1)
 class C3DVector{public:float X,Y,Z;};
 #pragma pack(pop)

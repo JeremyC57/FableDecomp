@@ -15,7 +15,8 @@
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
-class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CClass:public CBaseObject{unsigned char pass9_unread_class[12];};
 // Layout: header/RTTI true ancestry; donor Dead bit161 maps toretail145.
 class CThing:public CClass{unsigned char pass9_unread_thing[125];public:unsigned char Dead:1;__forceinline bool IsDead()const{return Dead!=0;}void SetInLimbo(bool);};

@@ -75,27 +75,11 @@ public:
 #include "engine/CGameScriptInterfaceBase.h"
 
 class CBaseObjectPointer;
-class CBaseObject : public CBaseClass {                 // vtable 0x0129A7D8 (RTTI .?AVCBaseObject@@)
-protected:
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
-    CBaseObject& operator=(const CBaseObject& other);   // 0x0099A3B0
-public:
-    CBaseObjectPointer* IntelligentPointer;             // +0x04
-};
-class CScriptGameResourceObjectBase : public CBaseObject {   // vtable 0x0126008C
-public:
-    CScriptGameResourceObjectBase() { }
-    virtual ~CScriptGameResourceObjectBase() { }
-};
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
-public:
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-};
-class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
-public:
-    CCountedPointer<CScriptGameResourceObjectMovieBase> PImp;   // +0x08
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CScriptGameResourceObjectMovieBase.h"
 template <> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();   // 0x006E7AB0 (out of line in retail)
 
 namespace std {

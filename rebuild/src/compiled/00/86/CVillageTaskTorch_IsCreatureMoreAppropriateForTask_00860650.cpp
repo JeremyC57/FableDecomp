@@ -11,7 +11,8 @@
 // Shape: the landed CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask (0x00860ED0) with the goal point taken
 //   from the Torch thing: all three positions are by-value copies (the candidate's X/Y kept on the x87 stack), the
 //   two deltas named locals, the candidate side of `<` evaluated first.
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }

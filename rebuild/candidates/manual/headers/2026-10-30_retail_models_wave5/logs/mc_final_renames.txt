@@ -1,0 +1,134 @@
+008091a0 OTHER leafsym ??RCThingFilter_IsTargetableBehind@?A0xf2e9ea24@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z -> ??RCThingFilter_IsTargetableBehind@?A0x2e99df5c@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z
+0088e6f0 OTHER leafsym ?AreEntitiesEnemies@CGameScriptInterface@@QBE_NABVCScriptThing@@0@Z -> ?AreEntitiesEnemies@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z
+0088e480 OTHER leafsym ?ClearThingHasInformation@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?ClearThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088f530 OTHER leafsym ?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088f4d0 OTHER leafsym ?EntityEnableGravity@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntityEnableGravity@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e810 OTHER leafsym ?EntityResetMaxRunningSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityResetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088e870 OTHER leafsym ?EntityResetMaxWalkingSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityResetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088e9f0 OTHER leafsym ?EntitySetAsDrawable@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsDrawable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e410 OTHER leafsym ?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088eb30 OTHER leafsym ?EntitySetAsKillable@CGameScriptInterface@@QBEXABVCScriptThing@@_N1@Z -> ?EntitySetAsKillable@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+0088e8d0 OTHER leafsym ?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@QBEXAAVCScriptThing@@@Z -> ?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@UBEXAAVCScriptThing@@@Z
+0088ea90 OTHER leafsym ?EntitySetAsRespondToHit@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsRespondToHit@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088ec20 OTHER leafsym ?EntitySetAsUseMovementInActions@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsUseMovementInActions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088ea20 OTHER leafsym ?EntitySetCutsceneBehaviour@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?EntitySetCutsceneBehaviour@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECutsceneBehaviour@@@Z
+0088fd00 OTHER leafsym ?EntitySetInLimbo@CGameScriptInterface@@QBEXABVCScriptThing@@_N1@Z -> ?EntitySetInLimbo@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+0088e1c0 OTHER leafsym ?EntitySetMaxHealth@CGameScriptInterface@@QBEXABVCScriptThing@@M_N@Z -> ?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+0088e750 OTHER leafsym ?EntitySetMaxRunningSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@M@Z -> ?EntitySetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+0088e7b0 OTHER leafsym ?EntitySetMaxWalkingSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@M@Z -> ?EntitySetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+0088e5f0 OTHER leafsym ?EntitySetShotAccuracyPercentage@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?EntitySetShotAccuracyPercentage@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+0088e220 OTHER leafsym ?IsEntityPickPocketable@CGameScriptInterface@@QBE_NABVCScriptThing@@@Z -> ?IsEntityPickPocketable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+0088e2a0 OTHER leafsym ?IsLevelLoaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsLevelLoaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+0088e030 OTHER leafsym ?OverrideAutomaticHouseLocking@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?OverrideAutomaticHouseLocking@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088f570 OTHER leafsym ?Play2DSound@CGameScriptInterface@@QBEJABVCCharString@@@Z -> ?Play2DSound@CGameScriptInterface@@UBEKABVCCharString@@@Z
+0088ff80 OTHER leafsym ?ResetToDefaultThemeAllInternals@CGameScriptInterface@@QBEXM@Z -> ?ResetToDefaultThemeAllInternals@CGameScriptInterface@@UBEXM@Z
+0088fd90 OTHER leafsym ?SetCreatureNotReload@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?SetCreatureNotReload@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088f670 OTHER leafsym ?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e440 OTHER leafsym ?SetThingHasInformation@CGameScriptInterface@@QBEXABVCScriptThing@@_N11@Z -> ?SetThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@_N11@Z
+008906c0 OTHER leafsym ?AddNewConversation@CGameScriptInterface@@QBEJABVCScriptThing@@_N1@Z -> ?AddNewConversation@CGameScriptInterface@@UBEJABVCScriptThing@@_N1@Z
+008946e0 OTHER leafsym ?CreateObjectOnEntity@CGameScriptInterface@@QBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z -> ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+00894820 OTHER leafsym ?CreateObject@CGameScriptInterface@@QBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z -> ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
+0089c7b0 OTHER leafsym ?EntityPostOpinionDeedKeepSearchingForWitnesses@CGameScriptInterface@@UBEJABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedKeepSearchingForWitnesses@CGameScriptInterface@@UBEJABVCScriptThing@@W4
+0089c710 OTHER leafsym ?EntityPostOpinionDeedToRecipientVillage@CGameScriptInterface@@UBEXABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedToRecipientVillage@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionDeedTy
+0089c670 OTHER leafsym ?EntityPostOpinionDeedToRecipient@CGameScriptInterface@@UBEXABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedToRecipient@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionDeedType@@0@Z
+00894dd0 OTHER leafsym ?EntitySetAsMarryable@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsMarryable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0089a390 OTHER leafsym ?EntitySetAsPickLocked@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsPickLocked@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00890470 OTHER leafsym ?EntitySetAsPickPocketed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsPickPocketed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00895010 OTHER leafsym ?EntitySetAsReceivingEvents@CGameScriptInterface@@QBE_NABVCScriptThing@@_N@Z -> ?EntitySetAsReceivingEvents@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+008904e0 OTHER leafsym ?EntitySetAsStolen@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsStolen@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00890ba0 OTHER leafsym ?EntitySheatheWeapons@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+00890c10 OTHER leafsym ?EntityUnsheatheWeapons@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntityUnsheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0089aa70 OTHER leafsym ?GetFurthestWithDefName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetFurthestWithDefName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+0089a880 OTHER leafsym ?GetNearestWithDefName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetNearestWithDefName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+0089a510 OTHER leafsym ?GetNearestWithScriptName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetNearestWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+008966c0 OTHER leafsym ?GetNumberOfKeysNeededToUnlockChest@CGameScriptInterface@@QBEJABVCScriptThing@@AAVCCharString@@@Z -> ?GetNumberOfKeysNeededToUnlockChest@CGameScriptInterface@@UBEJABVCScriptThing@@AAVCCharStri
+00891e30 OTHER leafsym ?GetWanderingPopulationScriptDefNameInRegion@CGameScriptInterface@@QBEXABVCCharString@@AAV2@@Z -> ?GetWanderingPopulationScriptDefNameInRegion@CGameScriptInterface@@UBEXABVCCharString@@AAV2@@Z
+0089e540 OTHER leafsym ?GiveHeroYesNoQuestion@CGameScriptInterface@@QBEXABVCCharString@@000_N@Z -> ?GiveHeroYesNoQuestion@CGameScriptInterface@@UBEXABVCCharString@@000_N@Z
+00892d80 OTHER leafsym ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00897220 OTHER leafsym ?IsObjectInThingsPossession@CGameScriptInterface@@QBE_NABVCCharString@@ABVCScriptThing@@@Z -> ?IsObjectInThingsPossession@CGameScriptInterface@@UBE_NABVCCharString@@ABVCScriptThing@@@Z
+008973a0 OTHER leafsym ?IsPlayerCarryingItemOfType@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsPlayerCarryingItemOfType@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00891db0 OTHER leafsym ?IsRegionDefLoaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsRegionDefLoaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00890550 OTHER leafsym ?IsRegionLoadedAndPreloaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsRegionLoadedAndPreloaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+0089af30 OTHER leafsym ?RemoveAllCutSceneSkippedMessages@CGameScriptInterface@@QAEXXZ -> ?RemoveAllCutSceneSkippedMessages@CGameScriptInterface@@UBEXXZ
+00892cf0 OTHER leafsym ?SetCreatureGeneratorsEnabled@CGameScriptInterface@@QBEXABVCCharString@@_N@Z -> ?SetCreatureGeneratorsEnabled@CGameScriptInterface@@UBEXABVCCharString@@_N@Z
+00898410 OTHER leafsym ?SetHeroWeaponsAsUsable@CGameScriptInterface@@QBEX_N@Z -> ?SetHeroWeaponsAsUsable@CGameScriptInterface@@UBEX_N@Z
+00898340 OTHER leafsym ?SetHeroWillAsUsable@CGameScriptInterface@@QBEX_N@Z -> ?SetHeroWillAsUsable@CGameScriptInterface@@UBEX_N@Z
+008a3d20 OTHER leafsym ?GetActionFrequency@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetActionFrequency@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a3500 OTHER leafsym ?GetBeerRequestPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetBeerRequestPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a2cf0 OTHER leafsym ?GetGossipCounter@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetGossipCounter@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a21e0 OTHER leafsym ?GetIgnoringPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetIgnoringPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a2fa0 OTHER leafsym ?GetMaxGossipPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetMaxGossipPhrase@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a1f30 OTHER leafsym ?GetThankingPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetThankingPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a5050 OTHER leafsym ?GetTimeToSpendHarassingHero@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetTimeToSpendHarassingHero@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a3250 OTHER leafsym ?GetWarningPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetWarningPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a40d0 OTHER leafsym ?ResetActionFrequencyVariation@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3e10 OTHER leafsym ?ResetActionFrequency@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6480 OTHER leafsym ?ResetAllowedToFollow@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4e90 OTHER leafsym ?ResetAttackHeroOnSight@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a7520 OTHER leafsym ?ResetAvoidRegionExits@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a35f0 OTHER leafsym ?ResetBeerRequestPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetBeerRequestPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a56c0 OTHER leafsym ?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5400 OTHER leafsym ?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6ce0 OTHER leafsym ?ResetDisableHeadLooking@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4650 OTHER leafsym ?ResetFaceHeroForAction@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4be0 OTHER leafsym ?ResetFollowDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2de0 OTHER leafsym ?ResetGossipCounter@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a22d0 OTHER leafsym ?ResetIgnoringPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6fa0 OTHER leafsym ?ResetIsPushableByHero@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetIsPushableByHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a61c0 OTHER leafsym ?ResetKillSelfAndStealableItemAfterReachingDestination@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetKillSelfAndStealableItemAfterReachingDestination@CGameScriptInterface@@UAEXVCScriptT
+008a7260 OTHER leafsym ?ResetLookForFiniteTime@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetLookForFiniteTime@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3090 OTHER leafsym ?ResetMaxGossipPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetMaxGossipPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3b60 OTHER leafsym ?ResetMaxHeroReactionDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5c40 OTHER leafsym ?ResetRecoverStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetRecoverStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a38a0 OTHER leafsym ?ResetScriptingStateGroup@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5980 OTHER leafsym ?ResetStealStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5f00 OTHER leafsym ?ResetTakeStealableItemToRandomDestination@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetTakeStealableItemToRandomDestination@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2020 OTHER leafsym ?ResetThankingPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetThankingPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5140 OTHER leafsym ?ResetTimeToSpendHarassingHero@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2b30 OTHER leafsym ?ResetWanderMaxDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2870 OTHER leafsym ?ResetWanderMinDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3340 OTHER leafsym ?ResetWarningPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWarningPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3c40 OTHER leafsym ?SetActionFrequency@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a62b0 OTHER leafsym ?SetAllowedToFollow@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a4cc0 OTHER leafsym ?SetAttackHeroOnSight@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a7350 OTHER leafsym ?SetAvoidRegionExits@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a3420 OTHER leafsym ?SetBeerRequestPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetBeerRequestPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a6b10 OTHER leafsym ?SetDisableHeadLooking@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a4480 OTHER leafsym ?SetFaceHeroForAction@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a2c10 OTHER leafsym ?SetGossipCounter@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a2100 OTHER leafsym ?SetIgnoringPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a6dd0 OTHER leafsym ?SetIsPushableByHero@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetIsPushableByHero@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a7090 OTHER leafsym ?SetLookForFiniteTime@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetLookForFiniteTime@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a2ec0 OTHER leafsym ?SetMaxGossipPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetMaxGossipPhrase@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a5a70 OTHER leafsym ?SetRecoverStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetRecoverStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a36d0 OTHER leafsym ?SetScriptingStateGroup@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@W4EScriptingStateGroups@@@Z
+008a57b0 OTHER leafsym ?SetStealStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a5d30 OTHER leafsym ?SetTakeStealableItemToRandomDestination@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetTakeStealableItemToRandomDestination@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a1e50 OTHER leafsym ?SetThankingPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetThankingPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a4f70 OTHER leafsym ?SetTimeToSpendHarassingHero@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a3170 OTHER leafsym ?SetWarningPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetWarningPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+LABEL	1	$L5229	$L5237			00d85b40
+LABEL	1	$L5232	$L5240			00d85b40
+LABEL	1	$L5235	$L5243			00d85b40
+LABEL	1	$L5238	$L5246			00d85b40
+LABEL	1	$L5241	$L5249			00d85b40
+LABEL	1	$L5244	$L5252			00d85b40
+LABEL	1	$L5469	$L5477			00d85b40
+SAMEADDR	8	??1?$vector@VCScriptThing@@@@QAE@XZ	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	008ac970	008ac970	00ce1280,00da2a20,00ddc980,00f0a470
+SAMEADDR	1	??1CBaseObject@@QAE@XZ	??1CBaseObject@@MAE@XZ	0099a430	0099a430	00af10e0
+OLDUNBOUND	1	??1CBaseObject@@UAE@XZ	??1CBaseObject@@MAE@XZ		0099a430	00eea460
+SAMEADDR	19	?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z	?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z	00cbed00	00cbed00	00d17340,00d18b20,00d19af0,00d1c9e0,00d6be20,00e2fc50,00edd060,00f09cd0
+SAMEADDR	1	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7410	007e7410	00d9f6c0
+SAMEADDR	6	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7360	007e7360	00d71b30
+SAMEADDR	5	?Destroy@?$vector@VCScriptThing@@@@QAEXXZ	?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ	008ac970	008ac970	00d18b20,00d19af0,00d1c9e0,00e2fc50,00edd060
+SAMEADDR	2	?FollowThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@M_N@Z	?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z	007e7320	007e7320	00d71b30
+SAMEADDR	5	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	007e7490	007e7490	00daa700,00dd44c0
+SAMEADDR	7	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	007e7450	007e7450	00d71b30,00daa700,00dd44c0
+SAMEADDR	19	?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	00cd23b9	00d44cb0,00d71b30,00d73f40,00d86c30,00d874f0,00d9f6c0,00da68e0,00da7d30,00daa700,00dd44c0,00e386e0,00ef87d0,00efab40
+SAMEADDR	1	?KillAllThingsInVector@@YIXPAVCGameScriptInterface@@PAU?$vector@VCScriptThing@@@@_N@Z	?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00cbed82	00e1d690
+SAMEADDR	4	?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXABVC3DVector@@MJ_N1@Z	?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z	007e72f0	007e72f0	00d71b30,00daa700,00dd44c0
+SAMEADDR	1	?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z	?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z	007e7300	007e7300	00efab40
+SAMEADDR	2	?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@J_N111111@Z	?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z	007e73f0	007e73f0	00d9f6c0
+SAMEADDR	2	?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	007e7390	007e7390	00d86c30
+SAMEADDR	1	?erase@?$vector@VCScriptThing@@@@QAEPAVCScriptThing@@PAV2@0@Z	?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z	008ac9d0	008ac9d0	00d6be20
+OLDUNBOUND	2	?resize@?$vector@UCScriptThing@N_006e7b40@@@@QAEXIABUCScriptThing@N_006e7b40@@@Z	?resize@?$vector@UCScriptThing@N_006e7b40@@V?$allocator@UCScriptThing@N_006e7b40@@@std@@@std@@QAEXIABUCScriptThing@N_006e7b40@@@Z			00ee8870

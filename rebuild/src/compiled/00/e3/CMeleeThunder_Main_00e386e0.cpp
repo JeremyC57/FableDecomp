@@ -54,28 +54,15 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
 };
-class CBaseObject { public:                                    // CBaseIntelligentPointer root
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
     void* Data;
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-public:
-    virtual void FollowThing(const CScriptThing&, float, bool);   // 0x007E7320
-    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
-    virtual void PlayCombatAnimation(const CCharString&, bool, bool, bool, bool, bool, bool);   // 0x007E73E0
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -121,7 +108,7 @@ void CMeleeThunder::Main()
         if (IsActiveThreadTerminating())
             return;
         HasJumped = true;
-        if (scripted.IsScripting())
+        if (scripted.IsValid())
             scripted.Release();
         while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();
@@ -139,7 +126,7 @@ void CMeleeThunder::Main()
         if (IsActiveThreadTerminating())
             return;
     }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();

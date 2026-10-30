@@ -85,13 +85,10 @@ class CTCHeroExperience {
 public:
     void AddExperience(long amount);                       // 0x006D77C0
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    unsigned char   _pad04[0x10];
-    CPlayerManager* PlayerManager;                         // +0x14
-    virtual void GiveHeroExperience(long amount) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::GiveHeroExperience(long amount) const
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();

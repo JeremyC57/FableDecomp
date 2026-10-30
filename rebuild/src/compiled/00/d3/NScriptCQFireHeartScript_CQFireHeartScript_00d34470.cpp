@@ -44,23 +44,15 @@ class CCharString { public:
     void* PStringData;
     CCharString();                                   // 0x0099E4B0
 };
-class CBaseObject { public:                                 // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
-    virtual void b00();
-    void* m_pIntelligentPointer;                     // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-struct CCountedPointerWords {
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+template <class T> class CCountedPointer { public:
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                       // +0x08
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 template <class P> struct CAllocProxy {                 // STLport _STLP_alloc_proxy<P, ...> over an empty allocator
     P _M_data;
     CAllocProxy(P p) : _M_data(p) { }

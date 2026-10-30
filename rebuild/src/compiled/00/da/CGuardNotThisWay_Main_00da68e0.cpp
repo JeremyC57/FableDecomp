@@ -55,16 +55,10 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     ~CScriptThing();                                    // 0x004AA840
 };
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 namespace NScript {
@@ -82,16 +76,6 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() { }
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-public:
-    virtual bool IsPerformingScriptTask() const;   // 0x007E7450
-    virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
-};
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -130,7 +114,7 @@ void CGuardNotThisWay::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase guard;
-    if (guard.IsScripting())
+    if (guard.IsValid())
         guard.Release();
     while (!Game->StartScriptingEntity(Me, guard, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

@@ -66,12 +66,8 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     virtual ~CScriptThing();                                   // 0x004AA840
 };
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
@@ -99,49 +95,16 @@ struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CGameScriptInterface { public:
-    VPAD4(g0_0) VPAD2(g0_1) VPAD1(g0_2)   // slots 0..6
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD2(g1_0) VPAD1(g1_1)   // slots 9..11
-    virtual bool IsRegionLoaded(const CCharString& region) const;   // slot 12 (+0x30)
-    VPAD32(g2_0) VPAD16(g2_1) VPAD8(g2_2) VPAD1(g2_3)   // slots 13..69
-    virtual const CScriptThing& GetHero() const;   // slot 70 (+0x118)
-    VPAD32(g3_0) VPAD4(g3_1) VPAD1(g3_2)   // slots 71..107
-    virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
-    VPAD64(g4_0) VPAD32(g4_1) VPAD16(g4_2) VPAD8(g4_3)   // slots 109..228
-    virtual void EntityFollowThing(const CScriptThing& thing, const CScriptThing& target, float distance, bool a) const;   // slot 229 (+0x394)
-    VPAD64(g5_0) VPAD2(g5_1)   // slots 230..295
-    virtual void SetQuestCardObjective(const CCharString& quest, const CCharString& text, const CCharString& region1, const CCharString& region2) const;   // slot 296 (+0x4a0)
-    VPAD8(g6_0) VPAD4(g6_1)   // slots 297..308
-    virtual void KickOffQuestStartScreen(const CCharString& quest, bool a, bool b) const;   // slot 309 (+0x4d4)
-    VPAD8(g7_0) VPAD2(g7_1) VPAD1(g7_2)   // slots 310..320
-    virtual void DisplayQuestInfo(bool show) const;   // slot 321 (+0x504)
-    VPAD2(g8_0) VPAD1(g8_1)   // slots 322..324
-    virtual long AddQuestInfoBarHealth(const CScriptThing& thing, const CRGBColour& colour, const CCharString& icon, float a) const;   // slot 325 (+0x514)
-    VPAD32(g9_0) VPAD8(g9_1) VPAD4(g9_2)   // slots 326..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    virtual void FixMovieSequenceCamera(bool fix) const;   // slot 371 (+0x5cc)
-    VPAD4(g10_0) VPAD2(g10_1) VPAD1(g10_2)   // slots 372..378
-    virtual void PauseAllNonScriptedEntities(bool pause);   // slot 379 (+0x5ec)
-    VPAD64(g11_0) VPAD32(g11_1) VPAD4(g11_2)   // slots 380..479
-    virtual void SetEntityAsRegionFollowing(const CScriptThing& thing, const CScriptThing& leader, bool follow) const;   // slot 480 (+0x780)
-    VPAD128(g12_0) VPAD32(g12_1) VPAD8(g12_2) VPAD4(g12_3) VPAD2(g12_4)   // slots 481..654
-    virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48 bytes
-    void (T::*Func)(P1);                               // +0x34
-    T* PClass;                                         // +0x38
-    P1 Par1;                                           // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), const P1 par1)
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
-    virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
-};
+#include "engine/CSpawnedFunc1.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptBase { public:                                   // retail 0x40 bytes
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50

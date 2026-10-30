@@ -154,13 +154,7 @@ bool __fastcall AreAllThingsInVectorDead(const std::vector<CScriptThing>& things
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
-    void (T::*Func)();                                  // +0x34
-    T* PClass;                                          // +0x38
-    __forceinline CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)())
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
-    virtual void SuspendableProcess() { (PClass->*Func)(); }
-};
+#include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

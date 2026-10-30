@@ -83,15 +83,10 @@ public:
     long GetTrainableStatLevel(EHeroTrainableStatType stat) const;               // 0x006D6520
     long GetTrainableStatMaxLevel(EHeroTrainableStatType stat) const;            // 0x006D6770
 };
-class CGameScriptInterface {
-public:
-    virtual long GetHeroWillLevel() const;
-    void*           World;                               // +0x04
-    void*           Component;                           // +0x08
-    void*           DisplayEngine;                       // +0x0c
-    void*           DefinitionManager;                   // +0x10
-    CPlayerManager* PlayerManager;                       // +0x14
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 long CGameScriptInterface::GetHeroWillLevel() const
 {

@@ -56,12 +56,8 @@ using NScript::CIsThingAlive;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_0 };
 struct CCountedPointerWords { void* Data; void* Info; };
-class CBaseObject { public:
-    void* m_pIntelligentPointer;
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
@@ -92,21 +88,10 @@ extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD1(ra)                                                                        // slot 71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;      // slot 72 (+0x120)
-    VPAD256(sa) VPAD32(sb) VPAD2(sc) VPAD1(sd)                                       // slots 73..363
-    virtual long AddNewConversation(const CScriptThing& speaker, bool a, bool b) const;   // slot 364 (+0x5b0)
-    virtual void AddPersonToConversation(long conversation, const CScriptThing& person) const;   // slot 365 (+0x5b4)
-    virtual void AddLineToConversation(long conversation, const CCharString& text, bool a, const CScriptThing& speaker, const CScriptThing& listener) const;   // slot 366 (+0x5b8)
-    VPAD128(ta) VPAD1(tb)                                                            // slots 367..495
-    virtual void EntitySetAsScared(const CScriptThing& thing, bool scared) const;    // slot 496 (+0x7c0)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CV_BanditTollScript {
     unsigned char _pad[0x4d];
     bool SafeTraderWarnedHero;                         // +0x4D

@@ -62,12 +62,10 @@ public:
     unsigned char      _pad00[0x34];
     CAIGameCameraBase* PCurrentGameCamera;               // +0x34
 };
-class CGameScriptInterface {
-public:
-    virtual void CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2, const C3DVector& lookTo1,
-        const C3DVector& lookTo2, float time) const;
-    CWorld* World;                                       // +0x04
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::CameraMoveBetweenLookFromAndLookTo(const C3DVector& lookFrom1, const C3DVector& lookFrom2,
     const C3DVector& lookTo1, const C3DVector& lookTo2, float time) const
 {

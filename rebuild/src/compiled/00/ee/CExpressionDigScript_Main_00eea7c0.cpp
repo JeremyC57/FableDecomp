@@ -44,12 +44,8 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 
-class CBaseObject { public:
-    void* IntelligentPointer;                              // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
@@ -91,56 +87,10 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(p9_0) VPAD16(p9_1) VPAD8(p9_2) VPAD4(p9_3) VPAD1(p9_4)
-    virtual const CScriptThing& GetHero() const;   // slot 70 (+0x118)
-    VPAD32(p71_0) VPAD16(p71_1) VPAD4(p71_2) VPAD1(p71_3)
-    virtual void GiveHeroItemsFromContainer(const CScriptThing& container, bool flag);   // slot 124 (+0x1f0)
-    VPAD4(p125_0) VPAD1(p125_1)
-    virtual void SheatheHeroWeapons();   // slot 130 (+0x208)
-    VPAD8(p131_0) VPAD4(p131_1)
-    virtual void MakeHeroCarryItemInHand(const CCharString& name);   // slot 143 (+0x23c)
-    VPAD32(p144_0) VPAD16(p144_1) VPAD4(p144_2) VPAD1(p144_3)
-    virtual bool IsEntityWieldingMeleeWeapon(const CScriptThing& thing);   // slot 197 (+0x314)
-    virtual bool IsEntityWieldingRangedWeapon(const CScriptThing& thing);   // slot 198 (+0x318)
-    VPAD32(p199_0) VPAD16(p199_1) VPAD2(p199_2)
-    virtual void HeroGoDigging();   // slot 249 (+0x3e4)
-    virtual void HeroStopDigging();   // slot 250 (+0x3e8)
-    VPAD16(p251_0) VPAD8(p251_1) VPAD4(p251_2) VPAD2(p251_3)
-    virtual void DeactivateQuestLater(const CCharString& name, unsigned long flags) const;   // slot 281 (+0x464)
-    VPAD8(p282_0)
-    virtual void SetQuestAsPersistent(const CCharString& name, bool persistent);   // slot 290 (+0x488)
-    VPAD64(p291_0) VPAD8(p291_1) VPAD4(p291_2) VPAD2(p291_3) VPAD1(p291_4)
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    VPAD2(p371_0)
-    virtual bool FadeScreenOut(float time, float hold, CRGBColour colour);   // slot 373 (+0x5d4)
-    virtual void FadeScreenIn();   // slot 374 (+0x5d8)
-    VPAD1(p375_0)
-    virtual void Pause(float seconds) const;   // slot 376 (+0x5e0)
-    VPAD2(p377_0) VPAD1(p377_1)
-    virtual void PauseAllEntities(bool pause);   // slot 380 (+0x5f0)
-    VPAD4(p381_0)
-    virtual void SetCutsceneMode(bool on, bool restore);   // slot 385 (+0x604)
-    VPAD8(p386_0)
-    virtual bool IsHeroControlledByPlayer() const;   // slot 394 (+0x628)
-    VPAD16(p395_0) VPAD4(p395_1) VPAD1(p395_2)
-    virtual void CameraDefault();   // slot 416 (+0x680)
-    VPAD32(p417_0) VPAD16(p417_1) VPAD8(p417_2) VPAD2(p417_3)
-    virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool instant);   // slot 475 (+0x76c)
-    VPAD16(p476_0) VPAD8(p476_1)
-    virtual void EntityForceToLookAtNothing(const CScriptThing& thing);   // slot 500 (+0x7d0)
-    virtual void EntityResetForceToLookAt(const CScriptThing& thing);   // slot 501 (+0x7d4)
-    VPAD4(p502_0) VPAD2(p502_1)
-    virtual void EntityUnsheatheMeleeWeapon(const CScriptThing& thing, bool instant);   // slot 508 (+0x7f0)
-    virtual void EntityUnsheatheRangedWeapon(const CScriptThing& thing, bool instant);   // slot 509 (+0x7f4)
-    VPAD64(p510_0) VPAD1(p510_1)
-    virtual CScriptThing GetNearestEnabledDiggingSpot(const CScriptThing& thing);   // slot 575 (+0x8fc)
-    VPAD64(p576_0) VPAD8(p576_1) VPAD4(p576_2) VPAD2(p576_3) VPAD1(p576_4)
-    virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 class CScriptBase { public:                                       // retail 0x40 bytes
     virtual void v00();

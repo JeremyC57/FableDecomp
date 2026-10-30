@@ -93,14 +93,10 @@ class CThingObject : public CThing { public:
                                            const CCharString& scriptName);   // 0x00703210
 };
 
-class CGameScriptInterface { public:
-    void*                   _vptr;                      // +0x00
-    void*                   World;                      // +0x04
-    void*                   Component;                  // +0x08
-    void*                   DisplayEngine;              // +0x0c
-    CGameDefinitionManager* DefinitionManager;          // +0x10
-    CScriptThing CreateObject(const CCharString& defName, const C3DVector& position, const CCharString& scriptName) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 CScriptThing CGameScriptInterface::CreateObject(const CCharString& defName, const C3DVector& position,
                                                 const CCharString& scriptName) const

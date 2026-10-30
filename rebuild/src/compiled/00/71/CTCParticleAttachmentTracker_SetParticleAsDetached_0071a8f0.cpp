@@ -14,10 +14,8 @@
 //   call of the base destructor, no vtable reset); no EH frame (the module is built without /GX).
 // Model: local -- retail STLport lists are 4 bytes and vectors 12 (the generated engine headers carry Ego_r's 12/16-byte
 //   Dinkumware containers and no member functions), so the class is laid out here at its retail offsets.
-class CBaseObject {
-public:
-    virtual ~CBaseObject();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {

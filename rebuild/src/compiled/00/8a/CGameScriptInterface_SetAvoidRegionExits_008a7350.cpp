@@ -38,7 +38,7 @@ struct CScriptEntity {
     virtual CThing* GetThing();            // slot 11 (vtable offset 0x2c)
 };
 
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     CScriptEntity* m_pData;                // +0
     SCountBlock* m_pInfo;                  // +4
     ~CCountedPointer()
@@ -58,7 +58,7 @@ struct CCountedPointer {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
-    CCountedPointer PImp;                  // +4 Data / +8 Info
+    CCountedPointer<CScriptThing> PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
 };
@@ -101,11 +101,12 @@ struct STC_7b {
     unsigned char m_7b;              // +0x7b
 };
 
-class CGameScriptInterface { public:
-    void SetAvoidRegionExits(CScriptThing thing, unsigned char value);
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
-void CGameScriptInterface::SetAvoidRegionExits(CScriptThing thing, unsigned char value)
+void CGameScriptInterface::SetAvoidRegionExits(CScriptThing thing, bool value)
 {
     if (!thing.GetThing())
         return;                            // the parameter's destructor is inlined here too

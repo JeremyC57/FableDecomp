@@ -112,16 +112,10 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
 class CTCLight { public: public:
     void SetActive(bool);   // 0x006412B0
 };   // 0x006412B0
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent*         Component;         // +0x08
-    CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager*      PlayerManager;     // +0x14
-    CThingSearchTools*          ThingSearchTools;  // +0x18
-    virtual void SetHeroHandLampAsLit(bool lit) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 void CGameScriptInterface::SetHeroHandLampAsLit(bool lit) const
 {

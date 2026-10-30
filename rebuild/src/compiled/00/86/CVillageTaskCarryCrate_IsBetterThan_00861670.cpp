@@ -12,7 +12,8 @@
 // Shape: labelled exits (fail on the drop arm return, avail before IsTaskAvailable) reproduce retail block order:
 //   the two tail-duplicated false epilogues and the priority test after them. Distance code as the landed
 //   CVillageTaskPickCrops::IsBetterThan (0x00860D00).
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }

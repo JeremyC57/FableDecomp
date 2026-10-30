@@ -29759,7 +29759,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AddVertexBlend@C3DGroup2@@QAEXABVC3DVertexBlend2@@@Z	00ac4110	00ae37d0
 ?push_back@?$CArray@VC3DGroup2@@@@QAEXABVC3DGroup2@@@Z	00ae83d0	00ae37d0
 ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z	00ae3920	00ae3a30
-??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z	00ae7480	00ae80f0
 ?_M_clear@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@IAEXXZ	00ae7fa0	00ae80f0
 ??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z	00ae7480	00ae81f0
 ??$__uninitialized_fill_n@PAVC3DGroup2@@IV1@@std@@YIPAVC3DGroup2@@PAV1@IABV1@ABU__false_type@0@@Z	00ae74c0	00ae81f0
@@ -35205,6 +35204,8 @@ _icomp	00ca1bc0	00ca1be0
 ?Alloc@CTourGuideGuide@CV_TourGuideScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ee4bb0	00ee47b0
 ?WatchForClosingTime@CV_TourGuideScript@NScript@@QAEXXZ	00ee4a00	00ee47b0
 ?WatchForGuideKilled@CV_TourGuideScript@NScript@@QAEXXZ	00ee4a70	00ee47b0
+
+??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z	00ae7480	00ae80f0
 ??_7?$CEntityScriptBinding@VCV_FishermanScript@NScript@@@@6B@	012ea0ac	00e7b4e0
 ?Alloc@CFisherman@CV_FishermanScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e7b7b0	00e7b4e0
 ?Alloc@CFishermanBulletinBoard@CV_FishermanScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e7bbe0	00e7b4e0
@@ -35220,3 +35221,10 @@ _icomp	00ca1bc0	00ca1be0
 ??$__uninitialized_fill_n@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@IU12@@std@@YIPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@PAU10@IABU10@ABU__false_type@0@@Z	00af6980	00af7460
 ??$__uninitialized_copy@PAV?$CArray@VC3DVector@@@@PAV1@@std@@YIPAV?$CArray@VC3DVector@@@@PAV1@00ABU__false_type@0@@Z	00bcd8a0	00bcdb70
 ?_M_clear@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@IAEXXZ	00bcda90	00bcdb70
+?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7410	00d9f6c0
+?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	007e7360	00d71b30
+?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	00d44cb0
+?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z	007e73f0	00d9f6c0
+?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	007e7390	00d86c30
+?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ	008ac970	00d18b20
+?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00e1d690

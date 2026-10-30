@@ -59,12 +59,8 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
     virtual bool operator()() const;
 };
 
-class CBaseObject { public:
-    void* IntelligentPointer;                              // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:       // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() { }
@@ -93,46 +89,10 @@ enum EHeroTrainableStatType { HERO_STAT_SKILL = 5 };
 enum EMiniGameType { MINI_GAME_PICKLOCK = 4 };
 enum EOpinionDeedType { OPINION_DEED_PICKLOCK = 4 };
 
-class CGameScriptInterface { public:
-    VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    VPAD32(p8_0) VPAD16(p8_1) VPAD8(p8_2) VPAD4(p8_3) VPAD2(p8_4)
-    virtual const CScriptThing& GetHero() const;   // slot 70 (+0x118)
-    virtual CScriptThing GetHeroTargetedThing() const;   // slot 71 (+0x11c)
-    VPAD64(p72_0) VPAD16(p72_1) VPAD8(p72_2)
-    virtual void ChangeHeroMoralityDueToPicklock() const;   // slot 160 (+0x280)
-    VPAD4(p161_0) VPAD2(p161_1) VPAD1(p161_2)
-    virtual long GetHeroStatLevel(EHeroTrainableStatType stat) const;   // slot 168 (+0x2a0)
-    virtual long GetHeroStatMax(EHeroTrainableStatType stat) const;   // slot 169 (+0x2a4)
-    VPAD32(p170_0) VPAD16(p170_1) VPAD8(p170_2) VPAD2(p170_3)
-    virtual bool IsDPadButtonHeldForExpression(const CCharString& name) const;   // slot 228 (+0x390)
-    VPAD32(p229_0) VPAD16(p229_1) VPAD4(p229_2)
-    virtual void DeactivateQuestLater(const CCharString& name, unsigned long flags) const;   // slot 281 (+0x464)
-    VPAD8(p282_0)
-    virtual void SetQuestAsPersistent(const CCharString& name, bool persistent);   // slot 290 (+0x488)
-    VPAD32(p291_0) VPAD16(p291_1) VPAD2(p291_2) VPAD1(p291_3)
-    virtual void DisplayMiniGameInfo(bool show, EMiniGameType type) const;   // slot 342 (+0x558)
-    virtual void UpdateMiniGameInfoBar(float value) const;   // slot 343 (+0x55c)
-    VPAD1(p344_0)
-    virtual bool IsEntityPickLockable(const CScriptThing& thing) const;   // slot 345 (+0x564)
-    VPAD2(p346_0)
-    virtual void EntitySetAsPickLocked(const CScriptThing& thing) const;   // slot 348 (+0x570)
-    VPAD16(p349_0) VPAD4(p349_1) VPAD1(p349_2)
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    VPAD16(p371_0) VPAD8(p371_1)
-    virtual bool IsInMovieSequence() const;   // slot 395 (+0x62c)
-    VPAD64(p396_0) VPAD8(p396_1) VPAD4(p396_2) VPAD2(p396_3) VPAD1(p396_4)
-    virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool instant);   // slot 475 (+0x76c)
-    VPAD128(p476_0) VPAD16(p476_1) VPAD8(p476_2) VPAD1(p476_3)
-    virtual long EntityPostOpinionDeedKeepSearchingForWitnesses(const CScriptThing& thing, EOpinionDeedType deed, const CScriptThing& target) const;   // slot 629 (+0x9d4)
-    virtual void RemoveOpinionDeedStillSearchingForWitnesses(const CScriptThing& thing, long deed) const;   // slot 630 (+0x9d8)
-    virtual bool IsDeedWitnessed(long deed) const;   // slot 631 (+0x9dc)
-    VPAD16(p632_0) VPAD4(p632_1) VPAD2(p632_2)
-    virtual long GetConstantFPS() const;   // slot 654 (+0xa38)
-    virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c)
-    VPAD64(p656_0) VPAD16(p656_1) VPAD2(p656_2) VPAD1(p656_3)
-    virtual void StartSneaking() const;   // slot 739 (+0xb8c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 class CScriptBase { public:                                       // retail 0x40 bytes
     virtual void v00();

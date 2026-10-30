@@ -5,14 +5,8 @@
 //   FableWin.pdb ?Validate@CBaseObject@@UBEXXZ (public virtual const; InternalValidate is the protected worker).
 class CBaseObjectPointer;
 
-class CBaseObject {                                    // vtable 0x0129A7D8
-public:
-    virtual void Validate() const;                     // 0x0099A400
-protected:
-    virtual ~CBaseObject();                            // 0x0099A430
-public:
-    CBaseObjectPointer* IntelligentPointer;            // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 void CBaseObject::Validate() const
 {

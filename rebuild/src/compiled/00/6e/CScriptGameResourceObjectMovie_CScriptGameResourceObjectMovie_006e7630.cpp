@@ -34,12 +34,8 @@ struct CCountedPointerRetail {                 // {object, count block}
     CCountedPointerRetail() : m_pObject(0), m_pCount(0) {}
 };
 
-class CBaseObject { public:               // the intelligent-pointer target root (8 bytes)
-    void* m_pReferences;                       // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     virtual void v00();

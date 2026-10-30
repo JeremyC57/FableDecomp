@@ -1,0 +1,32 @@
+rebuild/src/compiled/00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestEnabledDiggingSpot_0089ef90.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetFollowingEntityList_008a80f0.cpp nofix  | error C2511: 'bool CGameScriptInterface::GetFollowingEntityList(const CScriptThingRef &,CScriptThingVector &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/ce/CTestGateSwitch_Main_00ce1280.cpp nofix  
+rebuild/src/compiled/00/d1/CQBountyHuntScript_WatchForAllGruntsKilled_00d17340.cpp nofix  
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy1GruntsKilled_00d18b20.cpp nofix  
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy2GruntsKilled_00d19af0.cpp nofix  
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForLeaderGruntsKilled_00d1c9e0.cpp nofix  
+rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_WatchForWinLoseConditions_00d20790.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_SetupPuzzleBlocks_00d36140.cpp nofix  | error C2976: 'std::vector' : too few template arguments
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorEnemies_00d6be20.cpp nofix  
+rebuild/src/compiled/00/d7/CHTGExecutioner_Main_00d73f40.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_ReassignLeader_00d74f80.cpp nofix  
+rebuild/src/compiled/00/da/CBriarRose_UpdateTarget_00da2a20.cpp nofix  
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunFirstWaveControl_00da0820.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_GuardComment_00da8970.cpp nofix  | error C2664: 'CGameScriptInterface::GetFollowingEntityList' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/dc/CSpeakingMarker_Main_00dc8890.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector<T>' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/dd/CPrisonRacer_Main_00ddc980.cpp nofix  
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_WatchForSurprisingBalverines_00e06050.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CleanUp_00e1d690.cpp nofix  
+rebuild/src/compiled/00/e2/NScriptCVAmbushScamScript_WatchForAllAmbushersDead_00e2fc50.cpp nofix  
+rebuild/src/compiled/00/e6/CCOEVictim_Main_00e6b400.cpp nofix  
+rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RemoveFishermen_00e7fb80.cpp nofix  
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteExit_00edd060.cpp nofix  
+rebuild/src/compiled/00/ee/CCSOakValeRevisitedScript_OakValeFire_00ee8870.cpp nofix  
+rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForNoFollowers_00ee6a40.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_DoQuest_00f0b130.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_SetBanditAllegiences_00f060d0.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditsDeath_00f0b960.cpp nofix  | error C2976: 'std::vector' : too few template arguments
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForQuestSuccess_00f0a470.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForRegionClear_00f09cd0.cpp nofix  

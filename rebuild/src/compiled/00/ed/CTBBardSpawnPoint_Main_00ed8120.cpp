@@ -74,12 +74,10 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
 
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
-class CGameScriptInterface { public:                            // retail vtable 0x01260F0C
-    VF10(00) VF10(01) VF10(02) VF10(03) VF10(04) VF10(05) VF10(06) VF10(07) VF10(08)
-    VF(090)
-    virtual CScriptThing CreateCreature(const CCharString& defName, const C3DVector& position,
-                                        const CCharString& scriptName, bool persistent) const;  // slot 91 (+0x16C) 0x008A9100
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 struct CV_TalentlessBardScript {
     unsigned char _base[0x54];                           // quest script base and earlier members

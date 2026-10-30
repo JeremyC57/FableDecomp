@@ -5,9 +5,6 @@
 #include "fable_string.h"
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
-#define CBaseObject CBaseObject_PDB
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #define CScriptGameResourceObjectScriptedThingBase CScriptedThingResource_PDB
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 #undef CScriptGameResourceObjectScriptedThingBase
@@ -21,7 +18,8 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
 }
-class CBaseObject { public:protected: CBaseObject(); public:virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CCPPointerInfo;
 enum EScriptEntityMoveType { ScriptMoveDefault=0 };enum ETextGroupSelectionMethod { TextGroupDefault=0 };
 class CScriptGameResourceObjectBase:public CBaseObject{ public:virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8

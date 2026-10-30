@@ -6,7 +6,8 @@
 // placed after the shared `xor al,al` fall-through. GetPItem's result is on the left of `==` (`cmp eax,ebx`).
 // Layout = Ego_r.pdb CTCRegionFollower (0x18) with the retail one-pointer list: Followers
 // (list<CIntelligentPointer<CThing>>, node = next, prev, 8-byte pointer) at +0x0c. No engine header; modelled locally.
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { public: };
 
 #pragma pack(push, 1)

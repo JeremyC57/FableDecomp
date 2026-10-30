@@ -6,13 +6,8 @@
 // operator=. The row was a placeholder (`C0099a3b0::M`, Leaf ??0CFourierAnalysis@) under a propagated label.
 class CBaseObjectPointer;
 
-class CBaseObject {                                    // vtable 0x0129A7D8
-protected:
-    CBaseObject& operator=(const CBaseObject& other);  // 0x0099A3B0
-    virtual ~CBaseObject();                            // 0x0099A430
-public:
-    CBaseObjectPointer* IntelligentPointer;            // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 CBaseObject& CBaseObject::operator=(const CBaseObject& other)
 {

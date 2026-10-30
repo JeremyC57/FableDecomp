@@ -37,7 +37,8 @@ class CCharString {protected:CCharStringData*PStringData;public:CCharString(cons
 class CBaseObjectPointer;class CTCBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CBaseClassNonCopyable:public CBaseClass {protected:virtual ~CBaseClassNonCopyable();};
-class CBaseObject:public CBaseClass {private:unsigned char unobservedObjectPointer[4];protected:virtual ~CBaseObject();};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push,1)
 class CClass:public CBaseObject {
 public:

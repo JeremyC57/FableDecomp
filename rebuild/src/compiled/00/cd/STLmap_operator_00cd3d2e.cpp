@@ -40,11 +40,8 @@ public:
     }
 };
 
-class CBaseObject {                                      // polymorphic base (vtable reset 0x0126008C in the dtor)
-public:
-    virtual ~CBaseObject();
-    void* BaseWord;                                      // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject {   // vtable 0x0127094C, 0x10 bytes
 public:

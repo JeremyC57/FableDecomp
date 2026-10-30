@@ -82,43 +82,16 @@ public:
     virtual ~CScriptThing() { }                         // out-of-line copy 0x004AA840
 };
 class CBaseObjectPointer;
-class CBaseObject : public CBaseClass {                 // vtable 0x0129A7D8
-protected:
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
-public:
-    CBaseObjectPointer* IntelligentPointer;             // +0x04
-};
-class CScriptGameResourceObjectBase : public CBaseObject {   // vtable 0x0126008C
-public:
-    CScriptGameResourceObjectBase() { }
-    virtual ~CScriptGameResourceObjectBase() { }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum EScriptAIPriority { };
 enum EScriptEntityMoveType { };
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {   // vtable 0x0127094C, 0x10 bytes
-public:
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-    virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a4, bool a5,
-                             bool a6, bool a7);         // 0x007E7300 (called direct on the exact-type local)
-};
-class CGameScriptInterfaceBase {        // the interface CGameScriptInterface (vtable 0x01260F0C) implements
-public:
-    virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
-    virtual void NewScriptFrame() const;                                                                 // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority); // slot 8 (+0x20)
-    virtual void g009(); virtual void g010(); virtual void g011(); virtual void g012(); virtual void g013(); virtual void g014(); virtual void g015(); virtual void g016();
-    virtual void g017(); virtual void g018(); virtual void g019(); virtual void g020(); virtual void g021(); virtual void g022(); virtual void g023(); virtual void g024();
-    virtual void g025(); virtual void g026(); virtual void g027(); virtual void g028(); virtual void g029(); virtual void g030(); virtual void g031(); virtual void g032();
-    virtual void g033(); virtual void g034(); virtual void g035(); virtual void g036(); virtual void g037(); virtual void g038(); virtual void g039(); virtual void g040();
-    virtual void g041(); virtual void g042(); virtual void g043(); virtual void g044(); virtual void g045(); virtual void g046(); virtual void g047(); virtual void g048();
-    virtual void g049(); virtual void g050(); virtual void g051(); virtual void g052(); virtual void g053(); virtual void g054(); virtual void g055(); virtual void g056();
-    virtual void g057(); virtual void g058(); virtual void g059(); virtual void g060(); virtual void g061(); virtual void g062(); virtual void g063(); virtual void g064();
-    virtual void g065(); virtual void g066(); virtual void g067(); virtual void g068(); virtual void g069(); virtual void g070(); virtual void g071();
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;                          // slot 72 (+0x120)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 namespace NScript {
 class CPredicateBase {                                  // vtable 0x012C2FF4
 public:
@@ -150,15 +123,7 @@ template <class A, class B> inline CPredicate_And<A, B> operator&&(const A& firs
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-template <class T, class P1> class CSpawnedFunc1 : public CSpawnedFuncBase {   // vtable 0x012F6888 for <CPersonalScript_EmptyScript, CScriptThing>
-public:
-    void (T::*Func)(P1);                                // +0x34
-    T* PClass;                                          // +0x38
-    P1 Par1;                                            // +0x3c
-    __forceinline CSpawnedFunc1(const CCharString& name, unsigned long id, T* pclass, void (T::*func)(P1), const P1 par1)
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) { }
-    virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
-};
+#include "engine/CSpawnedFunc1.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptBase {                                     // retail 0x40 bytes
 public:
     virtual ~CScriptBase();
@@ -212,7 +177,7 @@ void CPersonalScript_EmptyScript::CUndeadFellow::Main()
                                         &CPersonalScript_EmptyScript::ChangeAlpha, Me),
                                     CCharString(""));
     CScriptGameResourceObjectScriptedThingBase object;
-    if (object.IsScripting())
+    if (object.IsValid())
         object.Release();
     while (!Game->StartScriptingEntity(Me, object, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

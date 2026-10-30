@@ -17,12 +17,8 @@ class C3DVector { public:                                      // the engine vec
 };
 enum EMessageEventType { EMessageEventType_Force32 = 0x7fffffff };
 enum EReactionSpeechType { EReactionSpeechType_Force32 = 0x7fffffff };
-class CBaseObject { public:
-    CBaseObjectPointer* IntelligentPointer;             // +0x04
-protected:
-    CBaseObject(const CBaseObject& other);               // 0x0099A390
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     CBaseObjectPointer* PData;                          // +0x04

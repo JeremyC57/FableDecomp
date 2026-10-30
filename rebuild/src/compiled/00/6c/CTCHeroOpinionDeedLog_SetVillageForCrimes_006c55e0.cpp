@@ -14,10 +14,8 @@
 //   vtable is CIntelligentPointer<CThing> 0x01238C6C.
 // Shape: `VillageForCrimes = &village;` -- a CIntelligentPointer<CThing> temporary built from the thing, then operator=
 //   (SetPItem(other.GetPItem())), then the temporary destroyed.
-class CBaseObject {
-public:
-    virtual ~CBaseObject();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {

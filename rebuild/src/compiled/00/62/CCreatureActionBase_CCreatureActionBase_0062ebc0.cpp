@@ -18,12 +18,8 @@ class CThingCreatureBase;
 class CAnimationEntry;
 
 struct CBaseObjectPointer;
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    CBaseObjectPointer* IntelligentPointer; // +0x04
-protected:
-    CBaseObject(const CBaseObject& other);               // 0x0099A390
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                          // +0x04

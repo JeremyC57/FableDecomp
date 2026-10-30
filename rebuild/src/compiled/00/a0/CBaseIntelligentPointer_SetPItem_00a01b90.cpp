@@ -10,12 +10,8 @@ public:
     CBaseObject*  object;                              // +0x00 the observed object, 0 once it died
     unsigned long refcount;                            // +0x04 intelligent pointers sharing this record
 };
-class CBaseObject {                                    // vtable 0x0129A7D8
-protected:
-    virtual ~CBaseObject();                            // 0x0099A430
-public:
-    CBaseObjectPointer* IntelligentPointer;            // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CBaseIntelligentPointer {                        // vtable 0x0129C95C
 public:
     virtual ~CBaseIntelligentPointer();                // 0x00A01C10

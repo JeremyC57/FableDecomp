@@ -1,0 +1,67 @@
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetWarningPhrase_008a3340.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetKillSelfAndStealableItemAfterReachingDestin_008a61c0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetMaxHeroReactionDistance_008a3b60.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetScriptingStateGroup_008a38a0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIgnoringPhrase_008a2100.cpp nofix  | error C2511: 'void CGameScriptInterface::SetIgnoringPhrase(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetDisableHeadLooking_008a6b10.cpp nofix  | error C2511: 'void CGameScriptInterface::SetDisableHeadLooking(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetAvoidRegionExits_008a7520.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetAllowedToFollow_008a6480.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetScriptingStateGroup_008a37b0.cpp nofix  | error C2556: 'unsigned long CGameScriptInterface::GetScriptingStateGroup(CScriptThing)' : overloaded function differs only by return type from 'EScriptingStateGroups CGameScriptInterface::GetScriptingStateGroup(CS
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIsPushableByHero_008a6dd0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetIsPushableByHero(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetLookForFiniteTime_008a7090.cpp nofix  | error C2511: 'void CGameScriptInterface::SetLookForFiniteTime(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetMaxGossipPhrase_008a3090.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetGossipCounter_008a2de0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetRecoverStealableItems_008a5c40.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetTakeStealableItemToRandomDestination_008a5d30.cpp nofix  | error C2511: 'void CGameScriptInterface::SetTakeStealableItemToRandomDestination(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetCombatNearbyEnemyFleeingBreakOffRange_008a5400.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetFollowDistance_008a4be0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetTargetingDistanceOffset_008a7610.cpp nofix  | error C2511: 'void CGameScriptInterface::SetTargetingDistanceOffset(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetThankingPhrase_008a2020.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetActionFrequencyVariation_008a40d0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetWanderMinDistance_008a2690.cpp nofix  | error C2511: 'void CGameScriptInterface::SetWanderMinDistance(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetThankingPhrase_008a1f30.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetWanderMinDistance_008a2870.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetScriptingStateGroup_008a36d0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetScriptingStateGroup(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetDisableHeadLooking_008a6ce0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetBeerRequestPhrase_008a35f0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetFollowDistance_008a4a00.cpp nofix  | error C2511: 'void CGameScriptInterface::SetFollowDistance(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetWarningPhrase_008a3170.cpp nofix  | error C2511: 'void CGameScriptInterface::SetWarningPhrase(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetStealStealableItems_008a5980.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetCombatNearbyEnemyFleeingBreakOffRange_008a5220.cpp nofix  | error C2511: 'void CGameScriptInterface::SetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetMaxGossipPhrase_008a2ec0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetGossipCounter_008a2c10.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetActionFrequency_008a3d20.cpp nofix  | error C2556: 'unsigned long CGameScriptInterface::GetActionFrequency(CScriptThing)' : overloaded function differs only by return type from 'long CGameScriptInterface::GetActionFrequency(CScriptThing)'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetCombatNearbyBreakOffRange_008a56c0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetAvoidRegionExits_008a7350.cpp nofix  | error C2511: 'void CGameScriptInterface::SetAvoidRegionExits(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetTimeToSpendHarassingHero_008a5140.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetTimeToSpendHarassingHero_008a4f70.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetFaceHeroForAction_008a4480.cpp nofix  | error C2511: 'void CGameScriptInterface::SetFaceHeroForAction(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetLookForFiniteTime_008a7260.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetActionFrequencyVariation_008a3ef0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetActionFrequencyVariation(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetActionFrequency_008a3e10.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetBeerRequestPhrase_008a3500.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipCounter_008a2cf0.cpp nofix  | error C2556: 'unsigned long CGameScriptInterface::GetGossipCounter(CScriptThing)' : overloaded function differs only by return type from 'long CGameScriptInterface::GetGossipCounter(CScriptThing)'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetThankingPhrase_008a1e50.cpp nofix  | error C2511: 'void CGameScriptInterface::SetThankingPhrase(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetTakeStealableItemToRandomDestination_008a5f00.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetKillSelfAndStealableItemAfterReachingDestinat_008a5ff0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetKillSelfAndStealableItemAfterReachingDestination(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetIgnoringPhrase_008a22d0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetActionFrequency_008a3c40.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetBeerRequestPhrase_008a3420.cpp nofix  | error C2511: 'void CGameScriptInterface::SetBeerRequestPhrase(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetAttackHeroOnSight_008a4e90.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetRecoverStealableItems_008a5a70.cpp nofix  | error C2511: 'void CGameScriptInterface::SetRecoverStealableItems(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetMaxGossipPhrase_008a2fa0.cpp nofix  | error C2556: 'unsigned long CGameScriptInterface::GetMaxGossipPhrase(CScriptThing)' : overloaded function differs only by return type from 'long CGameScriptInterface::GetMaxGossipPhrase(CScriptThing)'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetWanderMaxDistance_008a2b30.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetTimeToSpendHarassingHero_008a5050.cpp nofix  | error C2556: 'unsigned long CGameScriptInterface::GetTimeToSpendHarassingHero(CScriptThing)' : overloaded function differs only by return type from 'long CGameScriptInterface::GetTimeToSpendHarassingHero(CScriptTh
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetIsPushableByHero_008a6fa0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetFaceHeroForAction_008a4650.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetWarningPhrase_008a3250.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetWanderMaxDistance_008a2950.cpp nofix  | error C2511: 'void CGameScriptInterface::SetWanderMaxDistance(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetAllowedToFollow_008a62b0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetAllowedToFollow(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetStealStealableItems_008a57b0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetStealStealableItems(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetAttackHeroOnSight_008a4cc0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetAttackHeroOnSight(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetIgnoringPhrase_008a21e0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetCombatNearbyBreakOffRange_008a54e0.cpp nofix  | error C2511: 'void CGameScriptInterface::SetCombatNearbyBreakOffRange(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetMaxHeroReactionDistance_008a3980.cpp nofix  | error C2511: 'void CGameScriptInterface::SetMaxHeroReactionDistance(CScriptThing,long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_GetFurthestWithDefName_0089aa70.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestWithDefName_0089a880.cpp nofix  

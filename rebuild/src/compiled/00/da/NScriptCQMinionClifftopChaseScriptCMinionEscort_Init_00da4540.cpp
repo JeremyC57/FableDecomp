@@ -51,13 +51,10 @@ public:
     virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
     CCountedPointer<CScriptThing> PImp;                   // +0x04 Data, +0x08 Info
 };
-class CGameScriptInterfaceBase {                     // the script interface (vtable of CGameScriptInterface 0x01260F0C;
-public:                                               //   named slots: ghidra_out/cgsi_slots_aligned.tsv, the rest are fillers)
-    virtual ~CGameScriptInterfaceBase();
-    virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
-    virtual void v009(); virtual void v010(); virtual void v011();
-    virtual bool IsRegionLoaded(const CCharString& region) const;   // slot 12 (+0x30)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 class CEntityScriptBase {                             // Ego_r.pdb, 20 bytes
 public:
     virtual ~CEntityScriptBase();

@@ -37,6 +37,7 @@ class CDefinitionManager {
 public:
     template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x006D3E80 <CBrainDef>
 };
+class CGameDefinitionManager : public CDefinitionManager { };
 // Same-TU stand-in body for the out-of-line GetDef (the landed 0x008338D0 idiom): it writes the out slot only, so VC7.1
 // knows the def pointer's address does not escape and keeps brain.Object in esi across the calls, as retail does.
 const void* FindDef_SetCreatureBrain_StandIn(const CCharString& name);   // stand-in callee of the stand-in body
@@ -65,14 +66,10 @@ public:
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
     virtual CThing* GetThing() const;                    // slot 11 (+0x2c)
 };
-class CGameScriptInterface {
-public:
-    virtual void SetCreatureBrain(const CScriptThing& creature, const CCharString& brainName) const;
-    void*               World;                           // +0x04
-    void*               Component;                       // +0x08
-    void*               DisplayEngine;                   // +0x0c
-    CDefinitionManager* DefinitionManager;               // +0x10
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::SetCreatureBrain(const CScriptThing& creature, const CCharString& brainName) const
 {
     CDefPointer<const CBrainDef> brain;

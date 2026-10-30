@@ -22,13 +22,8 @@ class CScriptThing { public:                                   // vtable 0x01238
     void* PImpInfo;
     virtual ~CScriptThing();                                    // 0x004AA840
 };
-class CBaseObject { public:                                    // vtable 0x0129A7D8
-protected:
-    CBaseObject();                                      // 0x0099A380
-public:
-    virtual ~CBaseObject();                             // 0x0099A430
-    void* IntelligentPointer;                           // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c

@@ -11,13 +11,10 @@
 // g_pGameScriptInterface load as retail; three plain member stores let VC7.1 hoist the Index load above them.
 #define GSI_V10(p) virtual void v##p##0(); virtual void v##p##1(); virtual void v##p##2(); virtual void v##p##3(); virtual void v##p##4(); virtual void v##p##5(); virtual void v##p##6(); virtual void v##p##7(); virtual void v##p##8(); virtual void v##p##9();
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-class CGameScriptInterface { public:                      // retail vtable @ 0x01260F0C
-    GSI_V10(0) GSI_V10(1) GSI_V10(2) GSI_V10(3) GSI_V10(4) GSI_V10(5) GSI_V10(6) GSI_V10(7)
-    virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084(); virtual void v085(); virtual void v086();
-    virtual long RegisterTimer();                  // slot 87 (+0x15c)
-    virtual void v088();
-    virtual void SetTimer(long timer, long time) const;   // slot 89 (+0x164)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 class CTimer { public:
     long Index;

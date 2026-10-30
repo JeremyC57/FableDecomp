@@ -74,15 +74,10 @@ public:
     enum { INTERFACE_TYPE = 4 };
     void AddMoney(long amount, bool flag);              // 0x0057B327
 };
-class CGameScriptInterface {
-public:
-    void*           World;                               // +0x04
-    void*           Component;                           // +0x08
-    void*           DisplayEngine;                       // +0x0c
-    void*           DefinitionManager;                   // +0x10
-    CPlayerManager* PlayerManager;                       // +0x14
-    virtual void GiveHeroGold(long amount) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::GiveHeroGold(long amount) const
 {
     CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();

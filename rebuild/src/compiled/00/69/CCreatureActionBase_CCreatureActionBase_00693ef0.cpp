@@ -40,12 +40,8 @@ template <class T> class CCountedPointer { public:
 };
 
 class CBaseObjectPointer;
-class CBaseObject {
-public:
-    CBaseObjectPointer* IntelligentPointer;             // +0x04
-protected:
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10

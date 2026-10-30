@@ -17,23 +17,10 @@ public:
     virtual ~CScriptThing();
     void* PImp[2];                                      // +0x04 CCountedPointer<CScriptThingImpl>
 };
-class CGameScriptInterfaceBase {
-public:
-    virtual ~CGameScriptInterfaceBase();
-    virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
-    virtual void v007() const; virtual void v008() const; virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const;
-    virtual void v013() const; virtual void v014() const; virtual void v015() const; virtual void v016() const; virtual void v017() const; virtual void v018() const;
-    virtual void v019() const; virtual void v020() const; virtual void v021() const; virtual void v022() const; virtual void v023() const; virtual void v024() const;
-    virtual void v025() const; virtual void v026() const; virtual void v027() const; virtual void v028() const; virtual void v029() const; virtual void v030() const;
-    virtual void v031() const; virtual void v032() const; virtual void v033() const; virtual void v034() const; virtual void v035() const; virtual void v036() const;
-    virtual void v037() const; virtual void v038() const; virtual void v039() const; virtual void v040() const; virtual void v041() const; virtual void v042() const;
-    virtual void v043() const; virtual void v044() const; virtual void v045() const; virtual void v046() const; virtual void v047() const; virtual void v048() const;
-    virtual void v049() const; virtual void v050() const; virtual void v051() const; virtual void v052() const; virtual void v053() const; virtual void v054() const;
-    virtual void v055() const; virtual void v056() const; virtual void v057() const; virtual void v058() const; virtual void v059() const; virtual void v060() const;
-    virtual void v061() const; virtual void v062() const; virtual void v063() const; virtual void v064() const; virtual void v065() const; virtual void v066() const;
-    virtual void v067() const; virtual void v068() const; virtual void v069() const;
-    virtual CScriptThing& GetHero();                    // slot 70 (+0x118)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 int __fastcall IsPlayerThreateningEntity(const CScriptThing& thing);                         // 0x00CBEED2
 float __fastcall GetSquaredDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b); // 0x00CBE583
 class CEntityScriptBase {

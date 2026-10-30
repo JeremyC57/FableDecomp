@@ -6,7 +6,8 @@ class CThing{};class CThingCreatureBase:public CThing{};class CThingPlayerCreatu
 class CSoundPair{public:long FirstSound,LastSound;CSoundPair():FirstSound(0),LastSound(0){}};
 class CBaseObject;class CBaseObjectPointer;class CBaseIntelligentPointer{public:CBaseIntelligentPointer();virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;void SetPItem(CBaseObject*);};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem((CBaseObject*)p);}};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CCreatureActionBase:public CBaseObject{public:unsigned char _unmodeled08[0xa8-8];CCreatureActionBase(CThingCreatureBase&,const CSoundPair&,long,long);};
 class CCreatureAction_UseWallMount:public CCreatureActionBase{public:CIntelligentPointer<CThing> PObjectToUse;CCreatureAction_UseWallMount(CThingCreatureBase&,CThing&);};
 CCreatureAction_UseWallMount::CCreatureAction_UseWallMount(CThingCreatureBase& creature,CThing& target):CCreatureActionBase(creature,CSoundPair(),0,0),PObjectToUse(&target){}

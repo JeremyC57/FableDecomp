@@ -1,0 +1,176 @@
+edit rebuild/src/compiled/00/d6/CHTEAssaultGuard_Main_00d6aea0.cpp ok criptedThingBase alias=0 isvalid=1
+edit rebuild/src/compiled/00/d6/CHTEAudience_Main_00d6b240.cpp ok criptedThingBase alias=0 isvalid=3
+edit rebuild/src/compiled/00/d6/CWillWhisper_Main_00d68810.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_CVChickenKickingScript_00e62830.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/d8/CMuteGuardOutsideWoods_Main_00d86150.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Main_00d8fa30.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_CQHeroSoulsBriarScript_00d80c30.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/d8/CWaitingGuardInWoods_Main_00d86680.cpp ok criptedThingBase alias=0 isvalid=2
+skip rebuild/src/compiled/00/d8/CBRIARROSEIMPOSTER_Main_00d81820.cpp item criptedThingBase: virtual void v000();
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Main_00d8f6d0.cpp ok criptedThingBase alias=0 isvalid=1
+edit rebuild/src/compiled/00/d7/CHSAScreamingVillager_Main_00d7f880.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/d7/CDyingVillager_Main_00d7f460.cpp bo: local CBaseClass
+edit rebuild/src/compiled/00/d7/CHTGBoss_Main_00d72590.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/d7/CHTGAudience_Main_00d72200.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Main_00d7dd80.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/d7/CHTGFreedomFighter_Main_00d701c0.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CVSwordInTheStoneScript_Init_00eb6a00.cpp no CBaseObject model
+skip rebuild/src/compiled/00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/eb/CVtable012efee8_CVtable012efee8_00eb2000.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/d9/CDrinkingHobbe_Main_00d9bf60.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/d9/CQHobbeToothWhisper_Main_00d9d030.cpp ok criptedThingBase alias=0 isvalid=3
+skip rebuild/src/compiled/00/d9/CBriarRose_CBriarRose_00d9e930.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/ed/CThingSwitch_vectordeletingdestructor_00ed0e30.cpp no CBaseObject model
+skip rebuild/src/compiled/00/e0/CRockTrollTrigger_Main_00e0ad40.cpp no CBaseObject model
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02470.cpp ok criptedThingBase alias=0 isvalid=1
+edit rebuild/src/compiled/00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp ok criptedThingBase alias=0 isvalid=1
+edit rebuild/src/compiled/00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/e0/CFleeingWoman_Main_00e0f4e0.cpp item criptedThingBase: void* PImpData;
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/6e/CScriptGameResourceObjectMovie_CScriptGameResourceObjectMovie_006e7630.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/6e/CScriptGameResourceObjectBase_CScriptGameResourceObjectBase_006e7a60.cpp item ase: virtual void v00();
+skip rebuild/src/compiled/00/6e/CScriptGameResourceObjectBase_ScalarDeletingDestructor_006e70a0.cpp bo: no member
+skip rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_Main_00d2c530.cpp item criptedThingBase: CScriptGameResourceObjectScriptedThingBase* PImp_Data;
+skip rebuild/src/compiled/00/d2/CBowerstoneIntroGuard_Main_00d246c0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/d2/CVtable012cc60c_CVtable012cc60c_00d2f6b0.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/da/CRockTroll_Main_00da5f40.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/da/CMinionEscortEnd_Main_00da47a0.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/da/CMinionWarningGuard_Main_00da9c70.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/da/NScriptCQMinionCampScript_DoMission_00da0230.cpp no CBaseObject model
+skip rebuild/src/compiled/00/ce/CTargetForKey_Main_00ce15e0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp no CCountedPointer template
+edit rebuild/src/compiled/00/de/CSPInvestigatingGuard_Main_00dedb80.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/de/CSPDeskGuard_Main_00dedf30.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/de/CSPAmbushGuard_Main_00ded540.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/de/CSPSecretPassageGuard_Main_00ded810.cpp ok criptedThingBase alias=0 isvalid=2
+skip rebuild/src/compiled/00/de/NScriptCQSecretPassageScript_CQSecretPassageScript_00dec7f0.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/cb/global_CSFindThing_00cbf9de.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cb/global_MoveAllThingsInVectorToPosition_00cbf679.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/e1/CWaspAttacker_Main_00e11450.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/e1/CAttackingBandit_Main_00e1ee30.cpp item criptedThingBase: virtual void v000();
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCSummoner1_Main_00e11dc0.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/e1/CChasingScreamer_Main_00e1af30.cpp item criptedThingBase: virtual void v000();
+edit rebuild/src/compiled/00/e1/CHKCScreamerPoint_Main_00e1b750.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/e9/CSpectator_Main_00e998f0.cpp item criptedThingBase: void* PImpData;
+skip rebuild/src/compiled/00/e9/NScriptCVHeroDuelScriptCThunder_Main_00e9a5c0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/6a/CCreatureActionSheatheItemToInventoryForUnholyPower_Clone_006a0cf0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/6a/CCreatureActionSheatheItemToInventoryForEnflame_Clone_006a0c90.cpp no CBaseObject model
+skip rebuild/src/compiled/00/6a/CCreatureActionSheatheItemToInventoryForDivineWrath_Clone_006a0cc0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_Init_00d347b0.cpp no CBaseObject model
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d34470.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/d3/CFHBriarRose_Main_00d37330.cpp no CBaseObject model
+skip rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_CScriptGameResourceObjectScriptedThing_009039d0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_CScriptGameResourceObjectScriptedThing_00903710.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_00905330.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScript_CQAwakeningTheOracleScript_00cfad30.cpp no CBaseObject model
+edit rebuild/src/compiled/00/cf/COracleTablet_RemoveCursedTablets_00cfee30.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/d0/NScriptCQAwakeningTheOracleScriptCNecropolisGate_Main_00d00050.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/d0/CCampHostage2_Main_00d08790.cpp item criptedThingBase: virtual void s001();
+edit rebuild/src/compiled/00/ec/CRandomPopulationCreature_Main_00ec1ef0.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/ec/CVtable012f17dc_CVtable012f17dc_00ec53c0.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/e8/global_CTCCarryableInitialize_00e80d60.cpp no CBaseObject model
+skip rebuild/src/compiled/00/d1/CBHGangGruntSpawn_Main_00d15510.cpp item criptedThingBase: VPAD2(s0) VPAD1(s1) virtual void MoveToPosition(const C3DVector& pos, 
+skip rebuild/src/compiled/00/d1/CBHGangGrunt_Main_00d15a40.cpp item criptedThingBase: VPAD2(s0) VPAD1(s1) virtual void MoveToPosition(const C3DVector& pos, 
+skip rebuild/src/compiled/00/6d/CCreatureActionSheatheTrophy_Clone_006dfce0.cpp no CBaseObject model
+edit rebuild/src/compiled/00/dc/COrchardFarmWhisper_Main_00dcf0b0.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/d4/CQGuildTrainingScript_RunCeremonyCutscene_00d49d50.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_ProcessInitialSpyExtraction_00f0f680.cpp no CBaseObject model
+skip rebuild/src/compiled/00/f0/CATPhase3Guard_Main_00f051d0.cpp bo: local CBaseClass
+skip rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_CVExposeMayorScript_00e755f0.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_Main_00e7f410.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/e7/CFishCompOrganiser_CFishCompOrganiser_00e7ef70.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/e2/CQREscortTraderScript_ExpressionEnableFollow_00e242d0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/e2/CQREscortTraderScript_ExpressionEnableWait_00e24450.cpp no CBaseObject model
+skip rebuild/src/compiled/00/e2/CScytheNearOracle_Main_00e2a320.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/df/CQSecretPassageScript_PrisonEscape_00df0b70.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Main_00df80b0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/df/CTheKraken_Main_00df4be0.cpp item ovieBase: virtual void m001();
+edit rebuild/src/compiled/00/df/CTCBanditHostageKeeper_Main_00dfba60.cpp ok criptedThingBase alias=0 isvalid=2
+edit rebuild/src/compiled/00/df/CTCGuardSpawnPoint_Main_00df7bf0.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Main_00dfb320.cpp ok criptedThingBase alias=0 isvalid=2
+skip rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_MotherTortureThread_00df0750.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/df/CKrakenMinion_Main_00df4610.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Main_00df9710.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_DoTimesUp_00e36590.cpp no CBaseObject model
+skip rebuild/src/compiled/00/e3/CAttackingAssassin_Main_00e383a0.cpp item criptedThingBase: virtual void v000();
+edit rebuild/src/compiled/00/e3/CBordelloEntrance_Main_00e3b4a0.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/ee/CGlobalGiveHeroItemsFromRewardChestScript_Main_00eec410.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/ee/CExpressionWaitScript_Main_00eea460.cpp item criptedThingBase: virtual void v01();
+skip rebuild/src/compiled/00/ee/CCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8100.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/ee/CExpressionDigScript_Main_00eea7c0.cpp item criptedThingBase: virtual void v01();
+skip rebuild/src/compiled/00/ee/CExpressionPicklockScript_Main_00eeb7b0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/ee/CTrophyDealerInCave_Main_00ee76f0.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_PlayCombatAnimation_007e73e0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CTCFireheartMinigame_CTCFireheartMinigame_007e7640.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_Speak_007e7390.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_PlayLoopingAnimation_007e73f0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToAndPickUpGenericBox_007e7420.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_DropGenericBox_007e7430.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_ClearAllActions_007e7400.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_IsFollowingThing_007e7460.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_UnsheatheWeapons_007e7440.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_IsFollowActionRunning_007e7340.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_ClearAllActionsIncludingLoopingAnimations_007e7410.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_PerformExpression_007e73c0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CTCFireheartMinigame_SetHeroPos_007e7760.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToPosition_007e72f0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_PlayAnimation_007e73d0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_IsPerformingScriptTask_007e7450.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_SummonerLightningOrbAttackTarget_007e72d0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_Speak_007e7380.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_StopFollowingThing_007e7330.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_MoveToThing_007e7300.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_FollowThing_007e7320.cpp no CBaseObject model
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_FollowPreCalculatedRoute_007e7310.cpp no CBaseObject model
+edit rebuild/src/compiled/00/7e/CTCFireheartMinigame_CTCFireheartMinigame_007e7ed0.cpp ok ase+criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_ClearCommands_007e7360.cpp no CBaseObject model
+edit rebuild/src/compiled/00/dd/CGuardMotherEscape_Main_00dd84b0.cpp ok criptedThingBase alias=0 isvalid=2
+skip rebuild/src/compiled/00/dd/CPrisonRaceWarden_Main_00ddd030.cpp item criptedThingBase: virtual void s001();
+skip rebuild/src/compiled/00/e4/CBlockingBandit_Main_00e49980.cpp item criptedThingBase: VPAD1(s0) VPAD1(s1) virtual void MoveToPosition(const C3DVector& pos, 
+edit rebuild/src/compiled/00/e4/NScriptCVBeardyBaldyScript_CVBeardyBaldyScript_00e4f5b0.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/e4/CSafeTrader_Main_00e4a280.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/e4/CTollBandit_ShouldIFlee_00e4df20.cpp no CBaseObject model
+edit rebuild/src/compiled/00/db/COVIDeadFather_Main_00db8300.cpp ok criptedThingBase alias=0 isvalid=1
+skip rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_PostAttackStuff_00dbeb20.cpp no CCountedPointer template
+edit rebuild/src/compiled/00/e5/CHenchmanRegionExitComment_Main_00e5f8f0.cpp ok criptedThingBase alias=0 isvalid=0
+edit rebuild/src/compiled/00/e5/CHenchmanComment_Main_00e5f2b0.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/e5/CBSTeacher_LookForBook_00e57530.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_OnPersist_00e54880.cpp item criptedThingBase: void* PImp_Data;
+skip rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_DoConversation_00e569d0.cpp no CBaseObject model
+skip rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_CVBookCollectingScript_00e54310.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_BookReaction_00e566f0.cpp no CBaseObject model
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Main_00ea7b40.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/ea/CMurderTwistSheriff_CMurderTwistSheriff_00eaed90.cpp item criptedThingBase: virtual void v00();
+skip rebuild/src/compiled/00/ea/CMurderTwistSheriff_Main_00eaef30.cpp no CBaseObject model
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScript_CVMazeResearchScript_00ea76e0.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/ea/CVMurderTwistFinalScript_CVMurderTwistFinalScript_00eae910.cpp item criptedThingBase: virtual void v00();
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Main_00ea0b10.cpp ok criptedThingBase alias=0 isvalid=2
+skip rebuild/src/compiled/00/cd/std_copy_00cd2bf1.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/cd/CBSGateGuard_Main_00cdfb00.cpp item criptedThingBase: virtual void s000();
+skip rebuild/src/compiled/00/cd/CScriptGameResourceObjectScriptedThingBase_IsValid_00cd23b9.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/cd/stdpair_pair_00cd27c7.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cd/Rbtree_Merase_00cd344a.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cd/stdRbtreeCCharStringpairconstCCharStringCScriptGameResourceObjectScriptedThingBa_Mfind_00cd2b86.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cd/stdpair_pair_00cd2cab.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/cd/global_Destval_00cd27b4.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cd/STLmap_operator_00cd3d2e.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/cd/vectorCScriptGameResourceObjectScriptedThingBase_Mfillinsert_00cd378d.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cd/stdvectorCScriptGameResourceObjectScriptedThingBase_Minsertoverflow_00cd36df.cpp no CBaseObject model
+skip rebuild/src/compiled/00/cd/stdvectorCScriptGameResourceObjectScriptedThingBase_resize_00cd3ccb.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp no CCountedPointer template
+skip rebuild/src/compiled/00/ef/CMRestartMarker_Main_00ef34a0.cpp item criptedThingBase: virtual void v000();
+skip rebuild/src/compiled/00/ef/CCham_Main_00ef3aa0.cpp item criptedThingBase: virtual void v000();
+skip rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp no CCountedPointer template
+edit rebuild/src/compiled/00/ef/CGhostDude_Main_00ef45b0.cpp ok criptedThingBase alias=0 isvalid=1
+edit rebuild/src/compiled/00/ef/CGift_Main_00efd740.cpp ok criptedThingBase alias=0 isvalid=0
+skip rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp no CCountedPointer template

@@ -124,11 +124,8 @@ inline bool CScriptThing::IsAlive() const { return PImp_Data && PImp_Data->IsAli
 
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 
-class CBaseObject { public:                                   // CBaseIntelligentPointer root
-    virtual void v00();
-    void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
     void* Data;
     void* Info;

@@ -27,11 +27,10 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02();
     virtual CThingManager& GetThingManager();            // slot 3 (+0x0c)
 };
-class CGameScriptInterface {
-public:
-    virtual bool IsThingWithThisUIDAlive(unsigned __int64 uid) const;
-    CWorld* World;                                       // +0x04
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 bool CGameScriptInterface::IsThingWithThisUIDAlive(unsigned __int64 uid) const
 {
     CThing* t = World->GetThingManager().GetPThingWithUID(uid);

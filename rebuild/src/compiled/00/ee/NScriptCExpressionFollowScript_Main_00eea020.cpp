@@ -56,13 +56,8 @@ public:
 #include "engine/CSpawnedFuncBase.h"
 
 class CBaseObjectPointer;
-class CBaseObject : public CBaseClass {                 // vtable 0x0129A7D8 (RTTI .?AVCBaseObject@@)
-protected:
-    CBaseObject();                                      // 0x0099A380
-    virtual ~CBaseObject();                             // 0x0099A430
-public:
-    CBaseObjectPointer* IntelligentPointer;             // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject {   // vtable 0x0126008C
 public:
     CScriptGameResourceObjectBase() { }
@@ -79,24 +74,12 @@ public:
 };
 template <> CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer();   // 0x006E7AB0 (out of line in retail)
 
-template <class T> class CSpawnedFunc : public CSpawnedFuncBase {
-public:
-    void (T::*Func)();                                  // +0x34
-    T* PClass;                                          // +0x38
-    __forceinline CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)())
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) { }
-    virtual void SuspendableProcess() { (PClass->*Func)(); }
-};
+#include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 
+#include "engine/CIsThingConscious.h"                 // vtable 0x012C2FE8: operator() / Clone / ~ (slots 0-2)
 namespace NScript {
-class CIsThingConscious : public CPredicateBase {       // vtable 0x012C2FE8 (no RTTI), 0x10 bytes
-public:
-    CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
-    virtual bool operator()() const;                    // slot 0  0x00CDDAB0
-    virtual CPredicateBase* Clone() const;              // slot 1  0x00CDDAE0
-    virtual ~CIsThingConscious() { }                    // slot 2  0x00CDDB10 (scalar deleting)
-    CScriptThing Thing;                                 // +0x04
-};
+inline CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }   // inline here (retail expands it)
+inline CIsThingConscious::~CIsThingConscious() { }      // inline here; out of line 0x00EF7AB0
 class CQ_SunnyvaleMasterData;
 class CExpression_FollowScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:

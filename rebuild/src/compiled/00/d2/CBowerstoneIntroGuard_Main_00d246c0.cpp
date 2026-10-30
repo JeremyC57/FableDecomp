@@ -123,18 +123,10 @@ void __fastcall AddLogbookTutorialEntry(const CCharString& tag);   // 0x00CBE9EE
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD256(ra) VPAD32(rb) VPAD8(rc) VPAD2(rd) VPAD1(re)                             // slots 71..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5C8)
-    virtual void FixMovieSequenceCamera(bool fix) const;                             // slot 371 (+0x5CC)
-    VPAD4(sa) VPAD2(sb) VPAD1(sc)                                                    // slots 372..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5EC)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase
 {

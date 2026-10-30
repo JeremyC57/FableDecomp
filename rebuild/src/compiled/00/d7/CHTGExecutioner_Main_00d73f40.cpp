@@ -63,16 +63,10 @@ class CScriptThing : public CBase { public:                           // vtable 
     CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
     virtual ~CScriptThing();                                    // 0x004AA840
 };
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 struct CScriptThingVector {                             // std::vector<CScriptThing> (STLport, 12 bytes)
@@ -99,13 +93,6 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() { }
-    // implicit destructor; out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-};
 class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
@@ -274,7 +261,7 @@ void CHTG_Executioner::Main()
             return;
 #pragma inline_depth()
         }
-    if (executioner.IsScripting())
+    if (executioner.IsValid())
         executioner.Release();
     for (;;) {
         if (IsActiveThreadTerminating())

@@ -80,12 +80,8 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
@@ -108,43 +104,10 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD1(r0)                                                                        // slot 71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;      // slot 72 (+0x120)
-    VPAD8(ra)                                                                        // slots 73..80
-    virtual CScriptThing GetNearestWithDefName(const CScriptThing& thing, const CCharString& defName) const;   // slot 81 (+0x144)
-    VPAD64(sa) VPAD2(sb) VPAD1(sc)                                                   // slots 82..148
-    VPAD32(ta) VPAD2(tb) VPAD1(tc) VPAD1(td)                                         // slots 149..184
-    virtual bool IsHeroHandLampLit() const;                                          // slot 185 (+0x2e4)
-    VPAD64(te) VPAD8(tf) VPAD4(tg) VPAD2(th)                                         // slots 186..263
-    virtual float GetHealth(const CScriptThing& thing) const;                        // slot 264 (+0x420)
-    VPAD64(ua) VPAD32(ub) VPAD8(uc) VPAD1(ud)                                        // slots 265..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    virtual void FixMovieSequenceCamera(bool fix) const;                             // slot 371 (+0x5cc)
-    VPAD4(va) VPAD2(vb) VPAD1(vc)                                                    // slots 372..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5ec)
-    VPAD32(wa)                                                                       // slots 380..412
-    VPAD1(wa0)
-    virtual void CameraUseCameraPoint(const CScriptThing& point, const CScriptThing& target, float time, long a, long b) const;   // slot 413 (+0x674)
-    VPAD32(wb) VPAD16(wc) VPAD8(wd) VPAD2(we)                                        // slots 414..471
-    virtual void EntityTeleportToThing(const CScriptThing& thing, const CScriptThing& target, bool a) const;   // slot 472 (+0x760)
-    VPAD4(wf)                                                                        // slots 473..476
-    virtual void SetThingPersistent(const CScriptThing& thing, bool persistent) const;   // slot 477 (+0x774)
-    VPAD32(xa) VPAD1(xb)                                                             // slots 478..510
-    virtual void EntitySetAsDrawable(const CScriptThing& thing, bool drawable) const;   // slot 511 (+0x7fc)
-    VPAD4(xc)                                                                        // slots 512..515
-    virtual void EntitySetAsDamageable(const CScriptThing& thing, bool damageable) const;   // slot 516 (+0x810)
-    virtual void EntitySetAsKillable(const CScriptThing& thing, bool killable, bool b) const;   // slot 517 (+0x814)
-    VPAD8(ya)                                                                        // slots 518..525
-    virtual void EntitySetAsToAddToComboMultiplierWhenHit(const CScriptThing& thing, bool add) const;   // slot 526 (+0x838)
-    VPAD32(za) VPAD8(zb)                                                             // slots 527..566
-    virtual void SetRegionExitAsActive(const CScriptThing& exit, bool active) const; // slot 567 (+0x8dc)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CScriptDef { public:
     unsigned char _pad[0x1064];
     float DemonDoor_ShineLight_TriggerDistance;         // +0x1064

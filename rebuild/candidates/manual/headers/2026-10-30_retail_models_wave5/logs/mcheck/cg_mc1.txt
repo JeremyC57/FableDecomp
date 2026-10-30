@@ -1,0 +1,39 @@
+0089ef90	SAME	587b RELOCATION_MATCH->RELOCATION_MATCH
+00ce1280	RELOC_RENAMED	RELOCATION_MATCH ; 16e:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00d17340	RELOC_RENAMED	RELOCATION_MATCH ; 65:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+00d18b20	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00d19af0	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00d1c9e0	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00d35ed0	SAME	519b RELOCATION_MATCH->RELOCATION_MATCH
+00d6be20	RELOC_RENAMED	RELOCATION_MATCH ; 1a:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 3f:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 9f:?erase@?$vector@VCScriptThing@@@@QAEPAVCScriptThing@@PAV2@0@Z->?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z ; d4:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+00d74f80	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00d7d730	SAME	397b RELOCATION_MATCH->RELOCATION_MATCH
+00d9d030	SAME	1213b RELOCATION_MATCH->RELOCATION_MATCH
+00da2a20	RELOC_RENAMED	RELOCATION_MATCH ; 6c:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 227:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 25d:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 270:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00dac650	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00dbde40	SAME	1172b RELOCATION_MATCH->RELOCATION_MATCH
+00dbf2d0	SAME	1785b RELOCATION_MATCH->RELOCATION_MATCH
+00dc8c80	SAME	1901b RELOCATION_MATCH->RELOCATION_MATCH
+00ddc980	RELOC_RENAMED	RELOCATION_MATCH ; 533:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 58c:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00df0b70	SAME	1281b RELOCATION_MATCH->RELOCATION_MATCH
+00df36e0	SAME	1899b RELOCATION_MATCH->RELOCATION_MATCH
+00e15830	SAME	182b RELOCATION_MATCH->RELOCATION_MATCH
+00e1d690	RELOC_RENAMED	RELOCATION_MATCH ; 4c:?KillAllThingsInVector@@YIXPAVCGameScriptInterface@@PAU?$vector@VCScriptThing@@@@_N@Z->?KillAllThingsInVector@@YIXPAVCGameScriptInterface@@PAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
+00e1cfd0	SAME	1638b RELOCATION_MATCH->RELOCATION_MATCH
+00e2fc50	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00e6b400	SAME	842b RELOCATION_MATCH->RELOCATION_MATCH
+00e7fb80	SAME	456b RELOCATION_MATCH->RELOCATION_MATCH
+00e8b020	SAME	1748b RELOCATION_MATCH->RELOCATION_MATCH
+00e9aeb0	SAME	903b RELOCATION_MATCH->RELOCATION_MATCH
+00ed41d0	SAME	505b RELOCATION_MATCH->RELOCATION_MATCH
+00edd060	RELOC_RENAMED	RELOCATION_MATCH ; 95:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 105:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00ee8870	RELOC_RENAMED	RELOCATION_MATCH ; eb:?resize@?$vector@UCScriptThing@N_006e7b40@@@@QAEXIABUCScriptThing@N_006e7b40@@@Z->?resize@?$vector@UCScriptThing@N_006e7b40@@V?$allocator@UCScriptThing@N_006e7b40@@@std@@@std@@QAEXIABUCScriptThing@N_006e7b40@@@Z ; 2eb:?resize@?$vector@UCScriptThing@N_006e7b40@@@@QAEXIABUCScriptThing@N_006e7b40@@@Z->?resize@?$vector@UCScriptThing@N_006e7b40@@V?$allocator@UCScriptThing@N_006e7b40@@@std@@@std@@QAEXIABUCScriptThing@N_006e7b40@@@Z
+00ee2db0	SAME	902b RELOCATION_MATCH->RELOCATION_MATCH
+00ef1e10	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+00f0b130	SAME	1606b RELOCATION_MATCH->RELOCATION_MATCH
+00f060d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00f0a470	RELOC_RENAMED	RELOCATION_MATCH ; 452:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00f09cd0	RELOC_RENAMED	RELOCATION_MATCH ; 1bc:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1c9:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1d6:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1e3:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1f0:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1fd:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NPAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+00dbeb20	SAME	1095b RELOCATION_MATCH->RELOCATION_MATCH
+00e2bfa0	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00e53f60	SAME	249b RELOCATION_MATCH->RELOCATION_MATCH

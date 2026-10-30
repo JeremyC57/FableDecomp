@@ -60,11 +60,8 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 
-class CBaseObject { public:                               // vtable 0x0129A7D8 (the intelligent-pointer target base)
-    virtual void v00();
-    void* m_pLink;                                 // +0x04
-    ~CBaseObject();                                // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 namespace NParticleEngine {
 

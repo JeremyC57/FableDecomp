@@ -31,12 +31,8 @@ struct CVtable_012c3224 {                          // vtable 0x012C3224
     CVtable_012c3224(const CScriptThing& thing, void* iface) : m_pInterface(iface), m_thing(thing) { }   // (thing, iface): the interface argument is evaluated first (right to left)
 };
 
-class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
-    void* m_pIntelligentPointer;                   // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 struct CCountedPointerWords {                     // {Data, Info}: a member object so its zero stores follow the owner's vtable store
     void* Data;

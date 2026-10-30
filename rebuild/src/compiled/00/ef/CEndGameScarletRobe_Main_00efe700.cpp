@@ -34,12 +34,8 @@ struct CIsThingAliveEndGame : public NScript::CPredicateBase {                  
     CIsThingAliveEndGame(const CScriptThing& thing) : m_thing(thing) { }
     ~CIsThingAliveEndGame();                       // 0x00EF7AB0
 };
-class CBaseObject { public:
-    long IntelligentPointer;                                     // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct SCountedImp {
     void* Data;
     void* Info;

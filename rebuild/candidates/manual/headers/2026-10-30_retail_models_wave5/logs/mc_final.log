@@ -1,0 +1,1133 @@
+004c8310	SAME	412b RELOCATION_MATCH->RELOCATION_MATCH
+0062ebc0	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+0062dd80	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+0062de60	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+0062dad0	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+0062dbc0	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+0062dca0	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+0062e020	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+0062df40	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+00636400	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+006349b0	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+0064a2db	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH /O1//Oy-
+006585ba	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0065a053	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+006584f9	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0065a00f	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+0065852d	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+00658586	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0065a031	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+006584c5	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+00659fed	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+00658301	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+0065eff4	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+0065edba	SAME	50b RELOCATION_MATCH->RELOCATION_MATCH
+0065ee0c	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+0065eebc	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+0065eeff	SAME	50b RELOCATION_MATCH->RELOCATION_MATCH
+0065ef51	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+0065dce8	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH /Os
+0065dd4a	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+0065ed08	SAME	50b RELOCATION_MATCH->RELOCATION_MATCH
+0065ed59	SAME	33b RELOCATION_MATCH->RELOCATION_MATCH
+0065575f	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+0065e6b8	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+0065e6ed	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+0065e722	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+0065e757	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+0065e78c	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+0065e7c1	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00660787	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00660894	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+0066090a	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00660980	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+006609f6	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00660a6c	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00669300	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+00669360	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+00660348	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00660298	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+006602f0	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00660240	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+006603a0	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+006603dd	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+0066041a	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+00660457	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+00660494	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+00687270	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+00687310	SAME	189b RELOCATION_MATCH->RELOCATION_MATCH
+00693b30	SAME	305b RELOCATION_MATCH->RELOCATION_MATCH
+00693c70	SAME	321b RELOCATION_MATCH->RELOCATION_MATCH
+00693dc0	SAME	299b RELOCATION_MATCH->RELOCATION_MATCH
+00693ef0	SAME	289b RELOCATION_MATCH->RELOCATION_MATCH
+00692f30	SAME	244b RELOCATION_MATCH->RELOCATION_MATCH
+006aedc0	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+006aeb60	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+006aeba0	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+006a0750	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+006c55e0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+006e7920	SAME	182b RELOCATION_MATCH->RELOCATION_MATCH
+006e7820	SAME	243b RELOCATION_MATCH->RELOCATION_MATCH
+006e7a60	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+006e7b60	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+006e7bd0	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+006e7630	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00717e60	SAME	18b RELOCATION_MATCH->RELOCATION_MATCH
+0071a850	SAME	78b RELOCATION_MATCH->RELOCATION_MATCH
+0071a940	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+0071a8f0	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+0071b300	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+0071b1b0	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+0076d270	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+0076c850	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+0076d7b0	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+007cd930	SAME	78b RELOCATION_MATCH->RELOCATION_MATCH
+007cf040	SAME	78b RELOCATION_MATCH->RELOCATION_MATCH
+007c0fb0	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+007eb030	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+007eb490	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+007ee010	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+007e72a0	SAME	26b RELOCATION_MATCH->RELOCATION_MATCH
+007e7520	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+007e7640	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+007e7ed0	SAME	163b RELOCATION_MATCH->RELOCATION_MATCH
+007fb1c0	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+0080ccf0	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+0080cbf0	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+008091a0	RELOC_RENAMED	leafsym ??RCThingFilter_IsTargetableBehind@?A0xf2e9ea24@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z -> ??RCThingFilter_IsTargetableBehind@?A0x2e99df5c@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z
+00827040	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+0082e600	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+0082e6e0	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+0082e500	SAME	183b RELOCATION_MATCH->RELOCATION_MATCH
+0082d0d0	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+0082c6e0	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+0082c770	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+0082f5c0	SAME	111b MATCH->MATCH /Gr
+00830150	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+0083cf20	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+00843700	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+00844140	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+008441d0	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+00843670	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+0084a290	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+0084a2f0	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+008435b0	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH
+00843610	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH
+0084b080	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0084aee0	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+0084b100	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0084af90	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0085aa90	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00861670	SAME	329b RELOCATION_MATCH->RELOCATION_MATCH
+00861530	SAME	313b RELOCATION_MATCH->RELOCATION_MATCH
+00860840	SAME	247b RELOCATION_MATCH->RELOCATION_MATCH
+00860950	SAME	162b RELOCATION_MATCH->RELOCATION_MATCH
+00860d00	SAME	282b RELOCATION_MATCH->RELOCATION_MATCH
+00860430	SAME	206b RELOCATION_MATCH->RELOCATION_MATCH
+00860ed0	SAME	205b RELOCATION_MATCH->RELOCATION_MATCH
+00860650	SAME	247b RELOCATION_MATCH->RELOCATION_MATCH
+0087fed0	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0088e6f0	RELOC_RENAMED	leafsym ?AreEntitiesEnemies@CGameScriptInterface@@QBE_NABVCScriptThing@@0@Z -> ?AreEntitiesEnemies@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z
+  WARN leaf '?ClearThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+0088e480	RELOC_RENAMED	leafsym ?ClearThingHasInformation@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?ClearThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088f530	RELOC_RENAMED	leafsym ?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  WARN leaf '?EntityResetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?EntityEnableGravity@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+0088f4d0	RELOC_RENAMED	leafsym ?EntityEnableGravity@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntityEnableGravity@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e810	RELOC_RENAMED	leafsym ?EntityResetMaxRunningSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityResetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  WARN leaf '?EntityResetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?EntitySetAsDrawable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+0088e870	RELOC_RENAMED	leafsym ?EntityResetMaxWalkingSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityResetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088e9f0	RELOC_RENAMED	leafsym ?EntitySetAsDrawable@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsDrawable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  WARN leaf '?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+0088e410	RELOC_RENAMED	leafsym ?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  WARN leaf '?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@UBEXAAVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+0088eb30	RELOC_RENAMED	leafsym ?EntitySetAsKillable@CGameScriptInterface@@QBEXABVCScriptThing@@_N1@Z -> ?EntitySetAsKillable@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+  WARN leaf '?EntitySetAsRespondToHit@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+0088e8d0	RELOC_RENAMED	leafsym ?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@QBEXAAVCScriptThing@@@Z -> ?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@UBEXAAVCScriptThing@@@Z
+0088ea90	RELOC_RENAMED	leafsym ?EntitySetAsRespondToHit@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsRespondToHit@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  WARN leaf '?EntitySetAsUseMovementInActions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?EntitySetCutsceneBehaviour@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECutsceneBehaviour@@@Z' matches no symbol in old.obj; graded the largest function
+0088ec20	RELOC_RENAMED	leafsym ?EntitySetAsUseMovementInActions@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsUseMovementInActions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088ea20	RELOC_RENAMED	leafsym ?EntitySetCutsceneBehaviour@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?EntitySetCutsceneBehaviour@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECutsceneBehaviour@@@Z
+  WARN leaf '?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z' matches no symbol in old.obj; graded the largest function
+0088fd00	RELOC_RENAMED	leafsym ?EntitySetInLimbo@CGameScriptInterface@@QBEXABVCScriptThing@@_N1@Z -> ?EntitySetInLimbo@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+0088e1c0	RELOC_RENAMED	leafsym ?EntitySetMaxHealth@CGameScriptInterface@@QBEXABVCScriptThing@@M_N@Z -> ?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  WARN leaf '?EntitySetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?EntitySetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z' matches no symbol in old.obj; graded the largest function
+0088e750	RELOC_RENAMED	leafsym ?EntitySetMaxRunningSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@M@Z -> ?EntitySetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+0088e7b0	RELOC_RENAMED	leafsym ?EntitySetMaxWalkingSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@M@Z -> ?EntitySetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+  WARN leaf '?EntitySetShotAccuracyPercentage@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?IsEntityPickPocketable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+0088e5f0	RELOC_RENAMED	leafsym ?EntitySetShotAccuracyPercentage@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?EntitySetShotAccuracyPercentage@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+0088e220	RELOC_RENAMED	leafsym ?IsEntityPickPocketable@CGameScriptInterface@@QBE_NABVCScriptThing@@@Z -> ?IsEntityPickPocketable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+0088e2a0	RELOC_RENAMED	leafsym ?IsLevelLoaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsLevelLoaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+  WARN leaf '?OverrideAutomaticHouseLocking@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+0088e260	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0088e030	RELOC_RENAMED	leafsym ?OverrideAutomaticHouseLocking@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?OverrideAutomaticHouseLocking@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  WARN leaf '?ResetToDefaultThemeAllInternals@CGameScriptInterface@@UBEXM@Z' matches no symbol in old.obj; graded the largest function
+0088f570	RELOC_RENAMED	leafsym ?Play2DSound@CGameScriptInterface@@QBEJABVCCharString@@@Z -> ?Play2DSound@CGameScriptInterface@@UBEKABVCCharString@@@Z
+0088ff80	RELOC_RENAMED	leafsym ?ResetToDefaultThemeAllInternals@CGameScriptInterface@@QBEXM@Z -> ?ResetToDefaultThemeAllInternals@CGameScriptInterface@@UBEXM@Z
+  WARN leaf '?SetCreatureNotReload@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z' matches no symbol in old.obj; graded the largest function
+0088fd90	RELOC_RENAMED	leafsym ?SetCreatureNotReload@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?SetCreatureNotReload@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088f670	RELOC_RENAMED	leafsym ?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  WARN leaf '?SetThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@_N11@Z' matches no symbol in old.obj; graded the largest function
+0088e440	RELOC_RENAMED	leafsym ?SetThingHasInformation@CGameScriptInterface@@QBEXABVCScriptThing@@_N11@Z -> ?SetThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@_N11@Z
+0088e5a0	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?AddNewConversation@CGameScriptInterface@@UBEJABVCScriptThing@@_N1@Z' matches no symbol in old.obj; graded the largest function
+0089e780	SAME	140b RELOCATION_MATCH->RELOCATION_MATCH
+008906c0	RELOC_RENAMED	leafsym ?AddNewConversation@CGameScriptInterface@@QBEJABVCScriptThing@@_N1@Z -> ?AddNewConversation@CGameScriptInterface@@UBEJABVCScriptThing@@_N1@Z
+008981c0	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+008977f0	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+00892c20	SAME	204b RELOCATION_MATCH->RELOCATION_MATCH
+00892b50	SAME	197b RELOCATION_MATCH->RELOCATION_MATCH
+00892610	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00892530	SAME	211b RELOCATION_MATCH->RELOCATION_MATCH
+008926d0	SAME	167b RELOCATION_MATCH->RELOCATION_MATCH
+00892410	SAME	153b RELOCATION_MATCH->RELOCATION_MATCH
+008924b0	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+008922f0	SAME	132b RELOCATION_MATCH->RELOCATION_MATCH
+00892380	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+0089b450	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+0089fc80	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+008946e0	RELOC_RENAMED	leafsym ?CreateObjectOnEntity@CGameScriptInterface@@QBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z -> ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+  WARN leaf '?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z' matches no symbol in old.obj; graded the largest function
+00894820	RELOC_RENAMED	leafsym ?CreateObject@CGameScriptInterface@@QBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z -> ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
+00894950	SAME	324b RELOCATION_MATCH->RELOCATION_MATCH
+0089fd20	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+0089fda0	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+0089ea30	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+0089e950	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+0089eaa0	SAME	112b RELOCATION_MATCH->RELOCATION_MATCH
+0089eb10	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+0089e8e0	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+0089e710	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+0089d3a0	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+0089d9d0	SAME	156b RELOCATION_MATCH->RELOCATION_MATCH
+00897940	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+0089d8b0	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+0089d830	SAME	121b RELOCATION_MATCH->RELOCATION_MATCH
+00890990	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+0089bc50	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+0089bbc0	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+0089c7b0	RELOC_RENAMED	leafsym ?EntityPostOpinionDeedKeepSearchingForWitnesses@CGameScriptInterface@@UBEJABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedKeepSearchingForWitnesses@CGameScriptInterface@@UBEJABVCScriptThing@@W4EOpinionDeedType@@0@Z
+0089c710	RELOC_RENAMED	leafsym ?EntityPostOpinionDeedToRecipientVillage@CGameScriptInterface@@UBEXABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedToRecipientVillage@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionDeedType@@0@Z
+0089c670	RELOC_RENAMED	leafsym ?EntityPostOpinionDeedToRecipient@CGameScriptInterface@@UBEXABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedToRecipient@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionDeedType@@0@Z
+0089b0b0	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+0089d0e0	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?EntitySetAsPickLocked@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+00894dd0	RELOC_RENAMED	leafsym ?EntitySetAsMarryable@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsMarryable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0089a390	RELOC_RENAMED	leafsym ?EntitySetAsPickLocked@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsPickLocked@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00890470	RELOC_RENAMED	leafsym ?EntitySetAsPickPocketed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsPickPocketed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00895010	RELOC_RENAMED	leafsym ?EntitySetAsReceivingEvents@CGameScriptInterface@@QBE_NABVCScriptThing@@_N@Z -> ?EntitySetAsReceivingEvents@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+008904e0	RELOC_RENAMED	leafsym ?EntitySetAsStolen@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsStolen@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0089aff0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+0089bf80	SAME	115b RELOCATION_MATCH->RELOCATION_MATCH
+0089bb30	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00890ba0	RELOC_RENAMED	leafsym ?EntitySheatheWeapons@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+00890c10	RELOC_RENAMED	leafsym ?EntityUnsheatheWeapons@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntityUnsheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+00896ee0	SAME	125b RELOCATION_MATCH->RELOCATION_MATCH
+00899700	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+0089aa70	RELOC_RENAMED	leafsym ?GetFurthestWithDefName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetFurthestWithDefName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+00899560	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+00899930	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+008997e0	SAME	97b RELOCATION_MATCH->RELOCATION_MATCH
+00899850	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+00898fa0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00897bd0	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+00897b10	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00897b70	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+00897aa0	SAME	100b RELOCATION_MATCH->RELOCATION_MATCH
+00897c30	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+0089a000	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+00899f90	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+00899140	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00899770	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+008998c0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00899400	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+00899290	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00899310	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00899390	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+0089a490	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+00897880	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+008999a0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+0089a1b0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+0089a150	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00899470	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+0089ef90	SAME	587b RELOCATION_MATCH->RELOCATION_MATCH
+0089a880	RELOC_RENAMED	leafsym ?GetNearestWithDefName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetNearestWithDefName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+0089a510	RELOC_RENAMED	leafsym ?GetNearestWithScriptName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetNearestWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+008966c0	RELOC_RENAMED	leafsym ?GetNumberOfKeysNeededToUnlockChest@CGameScriptInterface@@QBEJABVCScriptThing@@AAVCCharString@@@Z -> ?GetNumberOfKeysNeededToUnlockChest@CGameScriptInterface@@UBEJABVCScriptThing@@AAVCCharString@@@Z
+00897c90	SAME	89b RELOCATION_MATCH->RELOCATION_MATCH
+00897560	SAME	199b RELOCATION_MATCH->RELOCATION_MATCH
+008920c0	SAME	347b RELOCATION_MATCH->RELOCATION_MATCH
+00891e30	RELOC_RENAMED	leafsym ?GetWanderingPopulationScriptDefNameInRegion@CGameScriptInterface@@QBEXABVCCharString@@AAV2@@Z -> ?GetWanderingPopulationScriptDefNameInRegion@CGameScriptInterface@@UBEXABVCCharString@@AAV2@@Z
+00899000	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00898f40	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00898c40	SAME	355b RELOCATION_MATCH->RELOCATION_MATCH
+008968c0	SAME	366b RELOCATION_MATCH->RELOCATION_MATCH
+008990c0	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00898a50	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+0089e540	RELOC_RENAMED	leafsym ?GiveHeroYesNoQuestion@CGameScriptInterface@@QBEXABVCCharString@@000_N@Z -> ?GiveHeroYesNoQuestion@CGameScriptInterface@@UBEXABVCCharString@@000_N@Z
+00898ac0	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+00899220	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+0089ed80	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00892d80	RELOC_RENAMED	leafsym ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00897a30	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+008979c0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+0089a330	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+00891ea0	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+00891ef0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+00898e60	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+008991a0	SAME	125b RELOCATION_MATCH->RELOCATION_MATCH
+00897220	RELOC_RENAMED	leafsym ?IsObjectInThingsPossession@CGameScriptInterface@@QBE_NABVCCharString@@ABVCScriptThing@@@Z -> ?IsObjectInThingsPossession@CGameScriptInterface@@UBE_NABVCCharString@@ABVCScriptThing@@@Z
+008973a0	RELOC_RENAMED	leafsym ?IsPlayerCarryingItemOfType@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsPlayerCarryingItemOfType@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00897480	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+00899b10	SAME	140b RELOCATION_MATCH->RELOCATION_MATCH
+00891db0	RELOC_RENAMED	leafsym ?IsRegionDefLoaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsRegionDefLoaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00890550	RELOC_RENAMED	leafsym ?IsRegionLoadedAndPreloaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsRegionLoadedAndPreloaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+0089b2b0	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+0089b530	SAME	117b RELOCATION_MATCH->RELOCATION_MATCH
+0089af30	RELOC_RENAMED	leafsym ?RemoveAllCutSceneSkippedMessages@CGameScriptInterface@@QAEXXZ -> ?RemoveAllCutSceneSkippedMessages@CGameScriptInterface@@UBEXXZ
+00894490	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+0089b4d0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+0089e810	SAME	110b RELOCATION_MATCH->RELOCATION_MATCH
+00899e90	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+0089d7c0	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+00894b90	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00892cf0	RELOC_RENAMED	leafsym ?SetCreatureGeneratorsEnabled@CGameScriptInterface@@QBEXABVCCharString@@_N@Z -> ?SetCreatureGeneratorsEnabled@CGameScriptInterface@@UBEXABVCCharString@@_N@Z
+0089d600	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00899060	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+008994e0	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00899680	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00897db0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+00897d50	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+008995d0	SAME	176b RELOCATION_MATCH->RELOCATION_MATCH
+0089b3f0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00898ec0	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+00898410	RELOC_RENAMED	leafsym ?SetHeroWeaponsAsUsable@CGameScriptInterface@@QBEX_N@Z -> ?SetHeroWeaponsAsUsable@CGameScriptInterface@@UBEX_N@Z
+00898340	RELOC_RENAMED	leafsym ?SetHeroWillAsUsable@CGameScriptInterface@@QBEX_N@Z -> ?SetHeroWillAsUsable@CGameScriptInterface@@UBEX_N@Z
+00899a90	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00899a10	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+0089ef30	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00897cf0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+00899e10	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+0089fe20	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+0089f4a0	SAME	1134b RELOCATION_MATCH->RELOCATION_MATCH
+008a1a10	SAME	159b RELOCATION_MATCH->RELOCATION_MATCH
+008aa590	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+008aa0d0	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+008a9dd0	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+008a9100	SAME	532b RELOCATION_MATCH->RELOCATION_MATCH
+008a0720	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+008a04c0	SAME	127b RELOCATION_MATCH->RELOCATION_MATCH
+008a3d20	RELOC_RENAMED	leafsym ?GetActionFrequency@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetActionFrequency@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a3500	RELOC_RENAMED	leafsym ?GetBeerRequestPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetBeerRequestPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a2cf0	RELOC_RENAMED	leafsym ?GetGossipCounter@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetGossipCounter@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a21e0	RELOC_RENAMED	leafsym ?GetIgnoringPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetIgnoringPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a2fa0	RELOC_RENAMED	leafsym ?GetMaxGossipPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetMaxGossipPhrase@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a1b10	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a1360	SAME	553b RELOCATION_MATCH->RELOCATION_MATCH
+008a1f30	RELOC_RENAMED	leafsym ?GetThankingPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetThankingPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a5050	RELOC_RENAMED	leafsym ?GetTimeToSpendHarassingHero@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetTimeToSpendHarassingHero@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a3250	RELOC_RENAMED	leafsym ?GetWarningPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetWarningPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a09b0	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+008a1c50	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+008a40d0	RELOC_RENAMED	leafsym ?ResetActionFrequencyVariation@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3e10	RELOC_RENAMED	leafsym ?ResetActionFrequency@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6480	RELOC_RENAMED	leafsym ?ResetAllowedToFollow@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4e90	RELOC_RENAMED	leafsym ?ResetAttackHeroOnSight@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a7520	RELOC_RENAMED	leafsym ?ResetAvoidRegionExits@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a35f0	RELOC_RENAMED	leafsym ?ResetBeerRequestPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetBeerRequestPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a56c0	RELOC_RENAMED	leafsym ?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5400	RELOC_RENAMED	leafsym ?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6ce0	RELOC_RENAMED	leafsym ?ResetDisableHeadLooking@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4650	RELOC_RENAMED	leafsym ?ResetFaceHeroForAction@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4be0	RELOC_RENAMED	leafsym ?ResetFollowDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2de0	RELOC_RENAMED	leafsym ?ResetGossipCounter@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a22d0	RELOC_RENAMED	leafsym ?ResetIgnoringPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6fa0	RELOC_RENAMED	leafsym ?ResetIsPushableByHero@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetIsPushableByHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a61c0	RELOC_RENAMED	leafsym ?ResetKillSelfAndStealableItemAfterReachingDestination@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetKillSelfAndStealableItemAfterReachingDestination@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a7260	RELOC_RENAMED	leafsym ?ResetLookForFiniteTime@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetLookForFiniteTime@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3090	RELOC_RENAMED	leafsym ?ResetMaxGossipPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetMaxGossipPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3b60	RELOC_RENAMED	leafsym ?ResetMaxHeroReactionDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5c40	RELOC_RENAMED	leafsym ?ResetRecoverStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetRecoverStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a38a0	RELOC_RENAMED	leafsym ?ResetScriptingStateGroup@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5980	RELOC_RENAMED	leafsym ?ResetStealStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5f00	RELOC_RENAMED	leafsym ?ResetTakeStealableItemToRandomDestination@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetTakeStealableItemToRandomDestination@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2020	RELOC_RENAMED	leafsym ?ResetThankingPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetThankingPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5140	RELOC_RENAMED	leafsym ?ResetTimeToSpendHarassingHero@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2b30	RELOC_RENAMED	leafsym ?ResetWanderMaxDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2870	RELOC_RENAMED	leafsym ?ResetWanderMinDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3340	RELOC_RENAMED	leafsym ?ResetWarningPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWarningPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3c40	RELOC_RENAMED	leafsym ?SetActionFrequency@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a62b0	RELOC_RENAMED	leafsym ?SetAllowedToFollow@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a4cc0	RELOC_RENAMED	leafsym ?SetAttackHeroOnSight@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a7350	RELOC_RENAMED	leafsym ?SetAvoidRegionExits@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a3420	RELOC_RENAMED	leafsym ?SetBeerRequestPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetBeerRequestPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a6b10	RELOC_RENAMED	leafsym ?SetDisableHeadLooking@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a4480	RELOC_RENAMED	leafsym ?SetFaceHeroForAction@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a2c10	RELOC_RENAMED	leafsym ?SetGossipCounter@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a2100	RELOC_RENAMED	leafsym ?SetIgnoringPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a6dd0	RELOC_RENAMED	leafsym ?SetIsPushableByHero@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetIsPushableByHero@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a7090	RELOC_RENAMED	leafsym ?SetLookForFiniteTime@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetLookForFiniteTime@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a2ec0	RELOC_RENAMED	leafsym ?SetMaxGossipPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetMaxGossipPhrase@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a5a70	RELOC_RENAMED	leafsym ?SetRecoverStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetRecoverStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a1cc0	SAME	392b RELOCATION_MATCH->RELOCATION_MATCH
+008a36d0	RELOC_RENAMED	leafsym ?SetScriptingStateGroup@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@W4EScriptingStateGroups@@@Z
+008a57b0	RELOC_RENAMED	leafsym ?SetStealStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a5d30	RELOC_RENAMED	leafsym ?SetTakeStealableItemToRandomDestination@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetTakeStealableItemToRandomDestination@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a1e50	RELOC_RENAMED	leafsym ?SetThankingPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetThankingPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a4f70	RELOC_RENAMED	leafsym ?SetTimeToSpendHarassingHero@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a3170	RELOC_RENAMED	leafsym ?SetWarningPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetWarningPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a1240	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+008abd10	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+008ab840	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+008ab8a0	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+008ab7b0	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+008ab810	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+008ab8d0	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH
+008ab930	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH
+008b69f0	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+008b75e0	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+008b6a60	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+008bfe20	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+008cb8f0	SAME	78b RELOCATION_MATCH->RELOCATION_MATCH
+008de700	SAME	160b RELOCATION_MATCH->RELOCATION_MATCH
+008d9ca0	SAME	394b RELOCATION_MATCH->RELOCATION_MATCH
+008ed770	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+008e6d90	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+0090f7d0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+0090df60	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH /Ob2//GS-//GR-//EHsc
+0090dfb0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH /Ob2//GS-//GR-//EHsc
+00905330	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00903710	SAME	73b RELOCATION_MATCH->RELOCATION_MATCH
+009039d0	SAME	234b RELOCATION_MATCH->RELOCATION_MATCH
+00903ac0	SAME	256b RELOCATION_MATCH->RELOCATION_MATCH
+00903810	SAME	178b RELOCATION_MATCH->RELOCATION_MATCH
+00914600	SAME	65b RELOCATION_MATCH->RELOCATION_MATCH
+00917380	SAME	321b RELOCATION_MATCH->RELOCATION_MATCH
+00910c30	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH
+009156c0	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+009112a0	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+009170b0	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH
+00917050	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH
+00929650	SAME	452b RELOCATION_MATCH->RELOCATION_MATCH
+0092edc0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+00939180	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+00933f10	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+009405f0	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+0094bfc0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+009652c0	SAME	83b RELOCATION_MATCH->RELOCATION_MATCH
+00982150	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+0099a3c0	SAME	44b RELOCATION_MATCH->RELOCATION_MATCH
+0099a400	SAME	1b MATCH->MATCH
+0099a3b0	SAME	5b MATCH->MATCH
+00a01b90	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??0CClass@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??0CClass@' matches no symbol in new.obj; graded the largest function
+00a372d0	SAME	43b RELOCATION_MATCH->RELOCATION_MATCH
+00a4eb00	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00a50bf0	SAME	48b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00af0380	SAME	656b RELOCATION_MATCH->RELOCATION_MATCH
+00af10e0	RELOC_RENAMED	RELOCATION_MATCH ; aa:??1CBaseObject@@QAE@XZ->??1CBaseObject@@MAE@XZ
+00cbe09a	SAME	25b MATCH->MATCH
+00cbed82	SAME	56b MATCH->MATCH
+00cdfb00	SAME	563b RELOCATION_MATCH->RELOCATION_MATCH
+00cdd5f0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cdeed0	SAME	179b RELOCATION_MATCH->RELOCATION_MATCH
+00cde380	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cddbf0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cdd380	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cd3d2e	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00cd2c7c	SAME	47b RELOCATION_MATCH->RELOCATION_MATCH /Gr
+00cd3228	SAME	55b RELOCATION_MATCH->RELOCATION_MATCH
+00ce1280	RELOC_RENAMED	RELOCATION_MATCH ; 16e:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00cefa20	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ce75b0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ce6970	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce67d0	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce68a0	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce6700	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce6630	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce6480	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce62d0	SAME	196b RELOCATION_MATCH->RELOCATION_MATCH
+00ce1a30	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cfee30	SAME	733b RELOCATION_MATCH->RELOCATION_MATCH
+00cf0560	SAME	219b RELOCATION_MATCH->RELOCATION_MATCH
+00cf9100	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cf9550	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cf06f0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cfab10	SAME	215b RELOCATION_MATCH->RELOCATION_MATCH
+00cfaa50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00cfc950	SAME	18b MATCH->MATCH
+00cfddc0	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00cfcb50	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00cfbd90	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00cfadd0	SAME	209b RELOCATION_MATCH->RELOCATION_MATCH
+00cfaeb0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d08790	SAME	730b RELOCATION_MATCH->RELOCATION_MATCH
+00d02b80	SAME	1489b RELOCATION_MATCH->RELOCATION_MATCH
+00d00440	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+00d00050	SAME	1002b RELOCATION_MATCH->RELOCATION_MATCH
+00d04a60	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00d059e0	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00d060b0	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00d0c390	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+00d0a7b0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00d08720	SAME	70b RELOCATION_MATCH->RELOCATION_MATCH
+00d08f00	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00d08fb0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00d07dd0	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00d072c0	SAME	127b RELOCATION_MATCH->RELOCATION_MATCH
+00d07410	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00d03820	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d04260	SAME	305b RELOCATION_MATCH->RELOCATION_MATCH
+00d02b20	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00d01590	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d00af0	SAME	1234b RELOCATION_MATCH->RELOCATION_MATCH
+00d009d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d01290	SAME	265b RELOCATION_MATCH->RELOCATION_MATCH
+00d15510	SAME	1058b RELOCATION_MATCH->RELOCATION_MATCH
+00d15a40	SAME	1395b RELOCATION_MATCH->RELOCATION_MATCH
+00d1f610	SAME	757b RELOCATION_MATCH->RELOCATION_MATCH
+00d1fa00	SAME	557b RELOCATION_MATCH->RELOCATION_MATCH
+00d1e3e0	SAME	1584b RELOCATION_MATCH->RELOCATION_MATCH
+00d17340	RELOC_RENAMED	RELOCATION_MATCH ; 65:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+00d12b60	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d16460	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+00d179b0	SAME	194b RELOCATION_MATCH->RELOCATION_MATCH
+00d13070	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d18b20	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00d19af0	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00d16920	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00d16d00	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00d1c9e0	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00d1f5c0	SAME	24b MATCH->MATCH
+00d1e1b0	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00d1cfc0	SAME	319b RELOCATION_MATCH->RELOCATION_MATCH
+00d1cf00	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d246c0	SAME	896b RELOCATION_MATCH->RELOCATION_MATCH
+00d2c810	SAME	1901b RELOCATION_MATCH->RELOCATION_MATCH
+00d2f6b0	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00d243e0	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00d242c0	SAME	44b MATCH->MATCH
+00d23d20	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d255e0	SAME	468b RELOCATION_MATCH->RELOCATION_MATCH
+00d27050	SAME	489b RELOCATION_MATCH->RELOCATION_MATCH
+00d25520	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d2f710	SAME	21b MATCH->MATCH
+  WARN leaf '?Main@CQ_EndGameBossBattleScript@NScript@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?Main@CQ_EndGameBossBattleScript@NScript@@UAEXXZ' matches no symbol in new.obj; graded the largest function
+00d2f7f0	SAME	572b RELOCATION_MATCH->RELOCATION_MATCH
+00d2f730	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d2c530	SAME	273b RELOCATION_MATCH->RELOCATION_MATCH
+00d2a8a0	SAME	168b RELOCATION_MATCH->RELOCATION_MATCH
+00d2a950	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d293f0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d29320	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00d29020	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+00d29160	SAME	171b RELOCATION_MATCH->RELOCATION_MATCH
+00d29620	SAME	62b RELOCATION_MATCH->RELOCATION_MATCH
+00d273c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d3a9b0	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+00d37530	SAME	1783b RELOCATION_MATCH->RELOCATION_MATCH
+00d34410	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00d372f0	SAME	22b MATCH->MATCH
+00d374a0	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+00d37d00	SAME	753b RELOCATION_MATCH->RELOCATION_MATCH
+00d384a0	SAME	753b RELOCATION_MATCH->RELOCATION_MATCH
+00d34470	SAME	489b RELOCATION_MATCH->RELOCATION_MATCH
+00d34660	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d35ed0	SAME	519b RELOCATION_MATCH->RELOCATION_MATCH
+00d3bb50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d49d50	SAME	1304b RELOCATION_MATCH->RELOCATION_MATCH
+00d49a20	SAME	815b RELOCATION_MATCH->RELOCATION_MATCH
+00d44cb0	RELOC_RENAMED	RELOCATION_MATCH ; 114:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 198:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d496f0	SAME	815b RELOCATION_MATCH->RELOCATION_MATCH
+00d58080	SAME	633b RELOCATION_MATCH->RELOCATION_MATCH
+00d50760	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d55e90	SAME	1820b RELOCATION_MATCH->RELOCATION_MATCH
+00d55dd0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d51460	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d5aaa0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d5ab40	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00d5dca0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d5dd40	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00d6aea0	SAME	721b RELOCATION_MATCH->RELOCATION_MATCH
+00d6b240	SAME	785b RELOCATION_MATCH->RELOCATION_MATCH
+00d68810	SAME	719b RELOCATION_MATCH->RELOCATION_MATCH
+00d63dc0	SAME	569b RELOCATION_MATCH->RELOCATION_MATCH
+00d61d20	SAME	1047b RELOCATION_MATCH->RELOCATION_MATCH
+00d61c60	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d64080	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d62140	SAME	280b RELOCATION_MATCH->RELOCATION_MATCH
+00d66ca0	SAME	487b RELOCATION_MATCH->RELOCATION_MATCH
+00d66620	SAME	591b RELOCATION_MATCH->RELOCATION_MATCH
+00d66560	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d66f50	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d677d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d68600	SAME	267b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a220	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a360	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a480	SAME	107b RELOCATION_MATCH->RELOCATION_MATCH
+00d6bfa0	SAME	1023b RELOCATION_MATCH->RELOCATION_MATCH
+00d6ccc0	SAME	247b RELOCATION_MATCH->RELOCATION_MATCH
+00d6be20	RELOC_RENAMED	RELOCATION_MATCH ; 1a:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 3f:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 9f:?erase@?$vector@VCScriptThing@@@@QAEPAVCScriptThing@@PAV2@0@Z->?erase@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@PAV3@0@Z ; d4:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+00d69390	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d6c4a0	SAME	909b RELOCATION_MATCH->RELOCATION_MATCH
+00d6f3c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d7a360	SAME	1333b RELOCATION_MATCH->RELOCATION_MATCH
+00d79d50	SAME	1333b RELOCATION_MATCH->RELOCATION_MATCH
+00d7f880	SAME	554b RELOCATION_MATCH->RELOCATION_MATCH
+00d73c70	SAME	707b RELOCATION_MATCH->RELOCATION_MATCH
+00d72200	SAME	714b RELOCATION_MATCH->RELOCATION_MATCH
+00d72590	SAME	784b RELOCATION_MATCH->RELOCATION_MATCH
+00d73f40	RELOC_RENAMED	RELOCATION_MATCH ; 265:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d701c0	SAME	850b RELOCATION_MATCH->RELOCATION_MATCH
+00d71b30	RELOC_RENAMED	RELOCATION_MATCH ; 6e:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 1a8:?FollowThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@M_N@Z->?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z ; 23d:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 35d:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 387:?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXABVC3DVector@@MJ_N1@Z->?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z ; 422:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 439:?FollowThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@M_N@Z->?FollowThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@M_N@Z ; 4c4:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 4f2:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 50a:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 560:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 569:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d73280	SAME	23b MATCH->MATCH
+00d705d0	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+00d71a30	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00d71a70	SAME	182b RELOCATION_MATCH->RELOCATION_MATCH
+00d74f80	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00d7dc50	SAME	22b MATCH->MATCH
+00d7dd80	SAME	253b RELOCATION_MATCH->RELOCATION_MATCH
+00d7fc70	SAME	541b RELOCATION_MATCH->RELOCATION_MATCH
+00d7c740	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d7d730	SAME	397b RELOCATION_MATCH->RELOCATION_MATCH
+00d79c40	SAME	22b MATCH->MATCH
+00d78500	SAME	21b MATCH->MATCH
+00d7aa30	SAME	541b RELOCATION_MATCH->RELOCATION_MATCH
+00d78520	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d7ae80	SAME	1388b RELOCATION_MATCH->RELOCATION_MATCH
+00d7c470	SAME	553b RELOCATION_MATCH->RELOCATION_MATCH
+00d7ad70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d81820	SAME	822b RELOCATION_MATCH->RELOCATION_MATCH
+00d874f0	RELOC_RENAMED	RELOCATION_MATCH ; 75:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 23d:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 555:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d85b40	RELOC_RENAMED	RELOCATION_MATCH ; 1d8:$L5469->$L5477 ; 440:$L5229->$L5237 ; 444:$L5232->$L5240 ; 448:$L5235->$L5243 ; 44c:$L5238->$L5246 ; 450:$L5241->$L5249 ; 454:$L5244->$L5252
+00d86150	SAME	563b RELOCATION_MATCH->RELOCATION_MATCH
+00d8e990	SAME	1188b RELOCATION_MATCH->RELOCATION_MATCH
+00d86c30	RELOC_RENAMED	RELOCATION_MATCH ; b5:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 216:?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z->?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z ; 3fa:?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z->?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z
+00d86680	SAME	762b RELOCATION_MATCH->RELOCATION_MATCH
+00d83300	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00d80c30	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+00d80e40	SAME	2012b RELOCATION_MATCH->RELOCATION_MATCH
+00d823a0	SAME	669b RELOCATION_MATCH->RELOCATION_MATCH
+00d80d50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d86a30	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+00d872d0	SAME	544b RELOCATION_MATCH->RELOCATION_MATCH
+00d84c20	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d835d0	SAME	1808b RELOCATION_MATCH->RELOCATION_MATCH
+00d848d0	SAME	544b RELOCATION_MATCH->RELOCATION_MATCH
+00d834e0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d87cb0	SAME	1432b RELOCATION_MATCH->RELOCATION_MATCH
+00d89ad0	SAME	541b RELOCATION_MATCH->RELOCATION_MATCH
+00d87ba0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a8a0	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a700	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a770	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+00d8a560	SAME	204b RELOCATION_MATCH->RELOCATION_MATCH
+00d89dc0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d8fd90	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d8fd20	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f6d0	SAME	636b RELOCATION_MATCH->RELOCATION_MATCH
+00d8fa30	SAME	574b RELOCATION_MATCH->RELOCATION_MATCH
+00d8fef0	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00d8dc00	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f040	SAME	705b RELOCATION_MATCH->RELOCATION_MATCH
+00d9e930	SAME	143b RELOCATION_MATCH->RELOCATION_MATCH
+00d9bf60	SAME	613b RELOCATION_MATCH->RELOCATION_MATCH
+00d9f6c0	RELOC_RENAMED	RELOCATION_MATCH ; 73:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 24d:?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@J_N111111@Z->?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z ; 4e7:?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ; 627:?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@J_N111111@Z->?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z ; 65d:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00d9d030	SAME	1213b RELOCATION_MATCH->RELOCATION_MATCH
+00d90f40	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00d90fa0	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+00d91da0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00d90b30	SAME	855b RELOCATION_MATCH->RELOCATION_MATCH
+00d907b0	SAME	659b RELOCATION_MATCH->RELOCATION_MATCH
+00d900e0	SAME	198b RELOCATION_MATCH->RELOCATION_MATCH
+00d90050	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00d99a30	SAME	911b RELOCATION_MATCH->RELOCATION_MATCH
+00d9bf10	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d9c610	SAME	70b RELOCATION_MATCH->RELOCATION_MATCH
+00d9bdc0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00d9b8a0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d9a0a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00d9b2f0	SAME	278b RELOCATION_MATCH->RELOCATION_MATCH
+00d9f160	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00d9e5e0	SAME	701b RELOCATION_MATCH->RELOCATION_MATCH
+00d9e520	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00da2a20	RELOC_RENAMED	RELOCATION_MATCH ; 6c:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 227:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 25d:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 270:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00da68e0	RELOC_RENAMED	RELOCATION_MATCH ; 6f:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00da7d30	RELOC_RENAMED	RELOCATION_MATCH ; 2ce:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00da4e30	SAME	1389b RELOCATION_MATCH->RELOCATION_MATCH
+00da47a0	SAME	371b RELOCATION_MATCH->RELOCATION_MATCH
+00daa260	SAME	1172b RELOCATION_MATCH->RELOCATION_MATCH
+00daa700	RELOC_RENAMED	RELOCATION_MATCH ; 73:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 225:?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ->?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ; 2a5:?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXABVC3DVector@@MJ_N1@Z->?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z ; 2ae:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 2ce:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ
+00da9c70	SAME	1509b RELOCATION_MATCH->RELOCATION_MATCH
+00dac650	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00da8510	SAME	1110b RELOCATION_MATCH->RELOCATION_MATCH
+00da5f40	SAME	337b RELOCATION_MATCH->RELOCATION_MATCH
+00da0230	SAME	925b RELOCATION_MATCH->RELOCATION_MATCH
+00da05d0	SAME	585b RELOCATION_MATCH->RELOCATION_MATCH
+00da24f0	SAME	276b RELOCATION_MATCH->RELOCATION_MATCH
+00da4c30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da5d40	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da4300	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00da4b10	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00da4540	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00da5bf0	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00da49d0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00daab70	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00da30b0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00da33a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dabac0	SAME	2018b RELOCATION_MATCH->RELOCATION_MATCH
+00daace0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00db8300	SAME	534b RELOCATION_MATCH->RELOCATION_MATCH
+00db8290	SAME	100b RELOCATION_MATCH->RELOCATION_MATCH
+00dbde40	SAME	1172b RELOCATION_MATCH->RELOCATION_MATCH
+00dbeb20	SAME	1095b RELOCATION_MATCH->RELOCATION_MATCH
+00dbf2d0	SAME	1785b RELOCATION_MATCH->RELOCATION_MATCH
+00dbf210	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dc3fc0	SAME	1111b RELOCATION_MATCH->RELOCATION_MATCH
+00dcf0b0	SAME	789b RELOCATION_MATCH->RELOCATION_MATCH
+00dc4b70	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00dc7420	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dc4d00	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dc5f10	SAME	79b RELOCATION_MATCH->RELOCATION_MATCH
+00dc8c80	SAME	1901b RELOCATION_MATCH->RELOCATION_MATCH
+00dc26b0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dc3bd0	SAME	265b RELOCATION_MATCH->RELOCATION_MATCH
+00dcfa10	SAME	76b RELOCATION_MATCH->RELOCATION_MATCH
+00dcded0	SAME	137b RELOCATION_MATCH->RELOCATION_MATCH
+00dcf000	SAME	144b RELOCATION_MATCH->RELOCATION_MATCH
+00dcc040	SAME	242b RELOCATION_MATCH->RELOCATION_MATCH
+00dcc770	SAME	1981b RELOCATION_MATCH->RELOCATION_MATCH
+00dcc660	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dd84b0	SAME	733b RELOCATION_MATCH->RELOCATION_MATCH
+00dd6440	SAME	1116b RELOCATION_MATCH->RELOCATION_MATCH
+00dd44c0	RELOC_RENAMED	RELOCATION_MATCH ; b5:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 1bb:?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ->?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ; 206:?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXABVC3DVector@@MJ_N1@Z->?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z ; 20f:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 233:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 259:?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ->?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ; 2a6:?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ->?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ ; 2ee:?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@QAEXABVC3DVector@@MJ_N1@Z->?MoveToPosition@CScriptGameResourceObjectScriptedThingBase@@UAEXABVC3DVector@@MW4EScriptEntityMoveType@@_N2@Z ; 2f7:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 31c:?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ->?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ ; 342:?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ->?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ
+00ddd030	SAME	1019b RELOCATION_MATCH->RELOCATION_MATCH
+00ddc980	RELOC_RENAMED	RELOCATION_MATCH ; 533:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ ; 58c:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00dd2240	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dd25c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dd1af0	SAME	959b RELOCATION_MATCH->RELOCATION_MATCH
+00dd8de0	SAME	259b RELOCATION_MATCH->RELOCATION_MATCH
+00dd8850	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+00dd6950	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00dd4a50	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00dd2c80	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00dd2bc0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ddc490	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+00ddada0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dddd80	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00de21d0	SAME	809b RELOCATION_MATCH->RELOCATION_MATCH
+00de3830	SAME	972b RELOCATION_MATCH->RELOCATION_MATCH
+00ded540	SAME	470b RELOCATION_MATCH->RELOCATION_MATCH
+00dedf30	SAME	623b RELOCATION_MATCH->RELOCATION_MATCH
+00dedb80	SAME	697b RELOCATION_MATCH->RELOCATION_MATCH
+00ded810	SAME	639b RELOCATION_MATCH->RELOCATION_MATCH
+00def760	SAME	932b RELOCATION_MATCH->RELOCATION_MATCH
+00debe50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00de1e20	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00de1cc0	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00de1b60	SAME	61b RELOCATION_MATCH->RELOCATION_MATCH
+00de20c0	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00de1f70	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00de25d0	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00de0320	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+00de0790	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dee250	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00dec7f0	SAME	175b RELOCATION_MATCH->RELOCATION_MATCH
+00deff60	SAME	531b RELOCATION_MATCH->RELOCATION_MATCH
+00dec8a0	SAME	366b RELOCATION_MATCH->RELOCATION_MATCH
+00deca10	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00df2d30	SAME	349b RELOCATION_MATCH->RELOCATION_MATCH
+00df4610	SAME	281b RELOCATION_MATCH->RELOCATION_MATCH
+00df0b70	SAME	1281b RELOCATION_MATCH->RELOCATION_MATCH
+00df2380	SAME	1494b RELOCATION_MATCH->RELOCATION_MATCH
+00dfba60	SAME	643b RELOCATION_MATCH->RELOCATION_MATCH
+00df7bf0	SAME	917b RELOCATION_MATCH->RELOCATION_MATCH
+00df0200	SAME	1174b RELOCATION_MATCH->RELOCATION_MATCH
+00df0750	SAME	755b RELOCATION_MATCH->RELOCATION_MATCH
+00df06a0	SAME	162b RELOCATION_MATCH->RELOCATION_MATCH
+00df36e0	SAME	1899b RELOCATION_MATCH->RELOCATION_MATCH
+00df13a0	SAME	759b RELOCATION_MATCH->RELOCATION_MATCH
+00df3e50	SAME	541b RELOCATION_MATCH->RELOCATION_MATCH
+00df12e0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00df4e00	SAME	370b RELOCATION_MATCH->RELOCATION_MATCH
+00df4240	SAME	588b RELOCATION_MATCH->RELOCATION_MATCH
+00df4150	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00df9710	SAME	722b RELOCATION_MATCH->RELOCATION_MATCH
+00df80b0	SAME	2004b RELOCATION_MATCH->RELOCATION_MATCH
+00df9e00	SAME	541b RELOCATION_MATCH->RELOCATION_MATCH
+00df5f50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dfbe90	SAME	22b MATCH->MATCH
+00dfbda0	SAME	22b MATCH->MATCH
+00dfb320	SAME	1637b RELOCATION_MATCH->RELOCATION_MATCH
+00dfa0b0	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00dfded0	SAME	541b RELOCATION_MATCH->RELOCATION_MATCH
+00dfa390	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc320	SAME	777b RELOCATION_MATCH->RELOCATION_MATCH
+00e02e50	SAME	1349b RELOCATION_MATCH->RELOCATION_MATCH
+00e0f4e0	SAME	723b RELOCATION_MATCH->RELOCATION_MATCH
+00e0ad40	SAME	531b RELOCATION_MATCH->RELOCATION_MATCH
+00e0e2e0	SAME	698b RELOCATION_MATCH->RELOCATION_MATCH
+00e0cff0	SAME	312b RELOCATION_MATCH->RELOCATION_MATCH
+00e0de90	SAME	428b RELOCATION_MATCH->RELOCATION_MATCH
+00e00610	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00e03480	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00e02470	SAME	1022b RELOCATION_MATCH->RELOCATION_MATCH
+00e02950	SAME	820b RELOCATION_MATCH->RELOCATION_MATCH
+00e00ce0	SAME	194b RELOCATION_MATCH->RELOCATION_MATCH
+00e00c20	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e0daa0	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+00e0b0a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e0ea40	SAME	1919b RELOCATION_MATCH->RELOCATION_MATCH
+00e0e8e0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e1ee30	SAME	656b RELOCATION_MATCH->RELOCATION_MATCH
+00e1af30	SAME	452b RELOCATION_MATCH->RELOCATION_MATCH
+00e1b750	SAME	499b RELOCATION_MATCH->RELOCATION_MATCH
+00e1b1f0	SAME	1131b RELOCATION_MATCH->RELOCATION_MATCH
+00e10bf0	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+00e16a80	SAME	199b RELOCATION_MATCH->RELOCATION_MATCH
+00e16c40	SAME	199b RELOCATION_MATCH->RELOCATION_MATCH
+00e11450	SAME	291b RELOCATION_MATCH->RELOCATION_MATCH
+00e1f0c0	SAME	525b RELOCATION_MATCH->RELOCATION_MATCH
+00e1e110	SAME	853b RELOCATION_MATCH->RELOCATION_MATCH
+00e1dc30	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e12580	SAME	1446b RELOCATION_MATCH->RELOCATION_MATCH
+00e12b30	SAME	993b RELOCATION_MATCH->RELOCATION_MATCH
+00e12f20	SAME	1002b RELOCATION_MATCH->RELOCATION_MATCH
+00e12330	SAME	586b RELOCATION_MATCH->RELOCATION_MATCH
+00e15830	SAME	182b RELOCATION_MATCH->RELOCATION_MATCH
+00e13e20	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e19390	SAME	28b MATCH->MATCH
+00e18570	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e11dc0	SAME	942b RELOCATION_MATCH->RELOCATION_MATCH
+00e1d690	RELOC_RENAMED	RELOCATION_MATCH ; 4c:?KillAllThingsInVector@@YIXPAVCGameScriptInterface@@PAU?$vector@VCScriptThing@@@@_N@Z->?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
+00e1d7b0	SAME	573b RELOCATION_MATCH->RELOCATION_MATCH
+00e1cd40	SAME	653b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?Main@CQ_WizardBattleScript@NScript@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?Main@CQ_WizardBattleScript@NScript@@UAEXXZ' matches no symbol in new.obj; graded the largest function
+00e1c0f0	SAME	987b RELOCATION_MATCH->RELOCATION_MATCH
+00e1a990	SAME	919b RELOCATION_MATCH->RELOCATION_MATCH
+00e1cfd0	SAME	1638b RELOCATION_MATCH->RELOCATION_MATCH
+00e1c580	SAME	1330b RELOCATION_MATCH->RELOCATION_MATCH
+00e1a8d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e2bfa0	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00e2a900	SAME	499b RELOCATION_MATCH->RELOCATION_MATCH
+00e2a320	SAME	1503b RELOCATION_MATCH->RELOCATION_MATCH
+00e25690	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e26820	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e25a10	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e27920	SAME	390b RELOCATION_MATCH->RELOCATION_MATCH
+00e27880	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e295e0	SAME	940b RELOCATION_MATCH->RELOCATION_MATCH
+00e28de0	SAME	370b RELOCATION_MATCH->RELOCATION_MATCH
+00e28d40	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e29a80	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e2ac90	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e2fc50	RELOC_RENAMED	RELOCATION_MATCH ; 51:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 78:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 94:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00e383a0	SAME	547b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b4a0	SAME	671b RELOCATION_MATCH->RELOCATION_MATCH
+00e386e0	RELOC_RENAMED	RELOCATION_MATCH ; 8c:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; 15f:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00e324a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e337c0	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00e389e0	SAME	488b RELOCATION_MATCH->RELOCATION_MATCH
+00e38680	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00e37730	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e39140	SAME	967b RELOCATION_MATCH->RELOCATION_MATCH
+00e398f0	SAME	216b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b8f0	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00e3e720	SAME	995b RELOCATION_MATCH->RELOCATION_MATCH
+00e39aa0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e49980	SAME	1413b RELOCATION_MATCH->RELOCATION_MATCH
+00e4a740	SAME	335b RELOCATION_MATCH->RELOCATION_MATCH
+00e4a280	SAME	992b RELOCATION_MATCH->RELOCATION_MATCH
+00e4e0e0	SAME	1811b RELOCATION_MATCH->RELOCATION_MATCH
+00e477a0	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00e46c40	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e47910	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e4f5b0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00e4f730	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e57020	SAME	1295b RELOCATION_MATCH->RELOCATION_MATCH
+00e57530	SAME	1197b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f2b0	SAME	783b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f8f0	SAME	649b RELOCATION_MATCH->RELOCATION_MATCH
+00e53c70	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00e53f60	SAME	249b RELOCATION_MATCH->RELOCATION_MATCH
+00e5d0b0	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00e57bb0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00e57d20	SAME	319b RELOCATION_MATCH->RELOCATION_MATCH
+00e57c60	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e5de80	SAME	364b RELOCATION_MATCH->RELOCATION_MATCH
+00e5f190	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+00e5d4f0	SAME	1024b RELOCATION_MATCH->RELOCATION_MATCH
+00e5d240	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e56d10	SAME	745b RELOCATION_MATCH->RELOCATION_MATCH
+00e54310	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00e54450	SAME	282b RELOCATION_MATCH->RELOCATION_MATCH
+00e54880	SAME	269b RELOCATION_MATCH->RELOCATION_MATCH
+00e543b0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e6b400	SAME	842b RELOCATION_MATCH->RELOCATION_MATCH
+00e6f710	SAME	1107b RELOCATION_MATCH->RELOCATION_MATCH
+00e6ea30	SAME	1549b RELOCATION_MATCH->RELOCATION_MATCH
+00e6f1c0	SAME	1140b RELOCATION_MATCH->RELOCATION_MATCH
+00e6a7f0	SAME	324b RELOCATION_MATCH->RELOCATION_MATCH
+00e69030	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e6da80	SAME	905b RELOCATION_MATCH->RELOCATION_MATCH
+00e69f00	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e62830	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+00e62a00	SAME	839b RELOCATION_MATCH->RELOCATION_MATCH
+00e629a0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+00e628e0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e6e2e0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e7f410	SAME	786b RELOCATION_MATCH->RELOCATION_MATCH
+00e7fb80	SAME	456b RELOCATION_MATCH->RELOCATION_MATCH
+00e7f7f0	SAME	908b RELOCATION_MATCH->RELOCATION_MATCH
+00e71450	SAME	1108b RELOCATION_MATCH->RELOCATION_MATCH
+00e71980	SAME	1205b RELOCATION_MATCH->RELOCATION_MATCH
+00e73410	SAME	1091b RELOCATION_MATCH->RELOCATION_MATCH
+00e73930	SAME	1725b RELOCATION_MATCH->RELOCATION_MATCH
+00e76920	SAME	851b RELOCATION_MATCH->RELOCATION_MATCH
+00e7e640	SAME	1604b RELOCATION_MATCH->RELOCATION_MATCH
+00e7ef70	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+00e7bb30	SAME	162b RELOCATION_MATCH->RELOCATION_MATCH
+00e731f0	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00e730a0	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00e755f0	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e7a410	SAME	355b RELOCATION_MATCH->RELOCATION_MATCH
+00e75ba0	SAME	841b RELOCATION_MATCH->RELOCATION_MATCH
+00e75790	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+00e7a740	SAME	687b RELOCATION_MATCH->RELOCATION_MATCH
+00e756d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e7b440	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e7e150	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e8b020	SAME	1748b RELOCATION_MATCH->RELOCATION_MATCH
+00e8b9c0	SAME	861b RELOCATION_MATCH->RELOCATION_MATCH
+00e82220	SAME	683b RELOCATION_MATCH->RELOCATION_MATCH
+00e820d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e8d2a0	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+00e8b8a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e998f0	SAME	2019b RELOCATION_MATCH->RELOCATION_MATCH
+00e9a270	SAME	838b RELOCATION_MATCH->RELOCATION_MATCH
+00e90790	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e90830	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00e93da0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e96c30	SAME	413b RELOCATION_MATCH->RELOCATION_MATCH
+00e96e70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e98700	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e9aeb0	SAME	903b RELOCATION_MATCH->RELOCATION_MATCH
+00e929b0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e9fb40	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00e9c360	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00e9c4b0	SAME	926b RELOCATION_MATCH->RELOCATION_MATCH
+00e9e110	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00e9c410	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00e9dc80	SAME	610b RELOCATION_MATCH->RELOCATION_MATCH
+00e9fcd0	SAME	493b RELOCATION_MATCH->RELOCATION_MATCH
+00e9fc10	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ea8130	SAME	1191b RELOCATION_MATCH->RELOCATION_MATCH
+00eaed90	SAME	97b RELOCATION_MATCH->RELOCATION_MATCH
+00eae910	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+00ea8830	SAME	986b RELOCATION_MATCH->RELOCATION_MATCH
+00ea0b10	SAME	997b RELOCATION_MATCH->RELOCATION_MATCH
+00ea1090	SAME	585b RELOCATION_MATCH->RELOCATION_MATCH
+00ea1630	SAME	232b RELOCATION_MATCH->RELOCATION_MATCH
+00ea3640	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00ea2de0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7b40	SAME	938b RELOCATION_MATCH->RELOCATION_MATCH
+00ea76e0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7800	SAME	374b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7760	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eaea20	SAME	732b RELOCATION_MATCH->RELOCATION_MATCH
+00eae980	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eae790	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00eae670	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00eadb60	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae700	SAME	136b RELOCATION_MATCH->RELOCATION_MATCH
+00eae550	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae620	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00ea8f00	SAME	22b MATCH->MATCH
+00eae890	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00ea86f0	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00ea8740	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eb2000	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+00eb7aa0	SAME	59b RELOCATION_MATCH->RELOCATION_MATCH
+00eb75f0	SAME	703b RELOCATION_MATCH->RELOCATION_MATCH
+00eb6d70	SAME	875b RELOCATION_MATCH->RELOCATION_MATCH
+00eb98a0	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+00eb6cb0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eb94a0	SAME	610b RELOCATION_MATCH->RELOCATION_MATCH
+00eb4710	SAME	76b RELOCATION_MATCH->RELOCATION_MATCH
+00eb1f80	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00eb03a0	SAME	852b RELOCATION_MATCH->RELOCATION_MATCH
+00ebcd70	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00ebccd0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ebef80	SAME	588b RELOCATION_MATCH->RELOCATION_MATCH
+00ebeee0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1ef0	SAME	836b RELOCATION_MATCH->RELOCATION_MATCH
+00ec0ba0	SAME	1114b RELOCATION_MATCH->RELOCATION_MATCH
+00ec53c0	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00ec12e0	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1240	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1910	SAME	588b RELOCATION_MATCH->RELOCATION_MATCH
+00ec1850	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ec4540	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00ec3d40	SAME	994b RELOCATION_MATCH->RELOCATION_MATCH
+00ec3ca0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ecb050	SAME	39b MATCH->MATCH
+00ec5da0	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00ec5c90	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00ec6860	SAME	28b MATCH->MATCH
+00ecbd50	SAME	148b RELOCATION_MATCH->RELOCATION_MATCH
+00ecca30	SAME	148b RELOCATION_MATCH->RELOCATION_MATCH
+00ecd380	SAME	9b MATCH->MATCH
+00ec5420	SAME	22b MATCH->MATCH
+00ecd7b0	SAME	169b RELOCATION_MATCH->RELOCATION_MATCH
+00ece460	SAME	908b RELOCATION_MATCH->RELOCATION_MATCH
+00ec5440	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ed41d0	SAME	505b RELOCATION_MATCH->RELOCATION_MATCH
+00ed8120	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+00edc450	SAME	324b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4aa0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4b10	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00ed0b10	SAME	747b RELOCATION_MATCH->RELOCATION_MATCH
+00ed10a0	SAME	761b RELOCATION_MATCH->RELOCATION_MATCH
+00ed0f50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4420	SAME	157b RELOCATION_MATCH->RELOCATION_MATCH
+00ed3a90	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ed51e0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4d20	SAME	1010b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4c50	SAME	194b RELOCATION_MATCH->RELOCATION_MATCH
+00ed4b90	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ed7320	SAME	600b RELOCATION_MATCH->RELOCATION_MATCH
+00eda490	SAME	326b RELOCATION_MATCH->RELOCATION_MATCH
+00ed7830	SAME	497b RELOCATION_MATCH->RELOCATION_MATCH
+00ed7790	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00edae20	SAME	72b MATCH->MATCH
+00edae70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00edd060	RELOC_RENAMED	RELOCATION_MATCH ; 95:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 105:?Destroy@?$vector@VCScriptThing@@@@QAEXXZ->?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ
+00edbc80	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00edeba0	SAME	163b RELOCATION_MATCH->RELOCATION_MATCH
+00edec50	SAME	21b MATCH->MATCH
+00edec70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ee8100	SAME	266b RELOCATION_MATCH->RELOCATION_MATCH
+00ee8870	RELOC_RENAMED	RELOCATION_MATCH ; eb:?resize@?$vector@UCScriptThing@N_006e7b40@@@@QAEXIABUCScriptThing@N_006e7b40@@@Z->?resize@?$vector@UCScriptThing@N_006e7b40@@V?$allocator@UCScriptThing@N_006e7b40@@@std@@@std@@QAEXIABUCScriptThing@N_006e7b40@@@Z ; 2eb:?resize@?$vector@UCScriptThing@N_006e7b40@@@@QAEXIABUCScriptThing@N_006e7b40@@@Z->?resize@?$vector@UCScriptThing@N_006e7b40@@V?$allocator@UCScriptThing@N_006e7b40@@@std@@@std@@QAEXIABUCScriptThing@N_006e7b40@@@Z
+00ee7a20	SAME	1659b RELOCATION_MATCH->RELOCATION_MATCH
+00eea7c0	SAME	1506b RELOCATION_MATCH->RELOCATION_MATCH
+00eeb7b0	SAME	1272b RELOCATION_MATCH->RELOCATION_MATCH
+00eea460	RELOC_RENAMED	RELOCATION_MATCH ; 204:??1CBaseObject@@UAE@XZ->??1CBaseObject@@MAE@XZ
+00eec410	SAME	629b RELOCATION_MATCH->RELOCATION_MATCH
+00ee76f0	SAME	813b RELOCATION_MATCH->RELOCATION_MATCH
+00ee8210	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eee800	SAME	170b RELOCATION_MATCH->RELOCATION_MATCH
+00eee760	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eeadb0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ee9f00	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00ee94d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eea020	SAME	543b RELOCATION_MATCH->RELOCATION_MATCH
+00ee9f80	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eebcb0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eeb730	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00eeb670	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eec2d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eea680	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ee9120	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eec690	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eec7d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eed060	SAME	46b RELOCATION_MATCH->RELOCATION_MATCH
+00eecf20	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+00eecf70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ee8f50	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ee8eb0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eeffd0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eed2c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eed360	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00eef900	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eefa60	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eefbc0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eefd20	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eefe80	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eeeed0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eef5d0	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00eef610	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eef760	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00eef7a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eee9d0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eeec00	SAME	274b RELOCATION_MATCH->RELOCATION_MATCH
+00ee4c60	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00ee47b0	SAME	576b RELOCATION_MATCH->RELOCATION_MATCH
+00ee4710	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ee4a00	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+00ee1e40	SAME	1603b RELOCATION_MATCH->RELOCATION_MATCH
+00ee0240	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00ee3b20	SAME	952b RELOCATION_MATCH->RELOCATION_MATCH
+00ee2db0	SAME	902b RELOCATION_MATCH->RELOCATION_MATCH
+00ee74e0	SAME	63b MATCH->MATCH
+00ee73f0	SAME	24b MATCH->MATCH
+00ee6d60	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6e90	SAME	767b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6df0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eed0e0	SAME	127b RELOCATION_MATCH->RELOCATION_MATCH
+00eed160	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ef3aa0	SAME	444b RELOCATION_MATCH->RELOCATION_MATCH
+00ef84d0	SAME	499b RELOCATION_MATCH->RELOCATION_MATCH
+00efe700	SAME	226b RELOCATION_MATCH->RELOCATION_MATCH
+00eff4d0	SAME	226b RELOCATION_MATCH->RELOCATION_MATCH
+00ef45b0	SAME	518b RELOCATION_MATCH->RELOCATION_MATCH
+00efd740	SAME	594b RELOCATION_MATCH->RELOCATION_MATCH
+00ef34a0	SAME	441b RELOCATION_MATCH->RELOCATION_MATCH
+00ef2ba0	SAME	882b RELOCATION_MATCH->RELOCATION_MATCH
+00eff930	SAME	893b RELOCATION_MATCH->RELOCATION_MATCH
+00ef1e10	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+00efab40	RELOC_RENAMED	RELOCATION_MATCH ; 28:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ ; f5:?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z->?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z
+00efe410	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efe4b0	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00efaff0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efbc00	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efc260	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+00efc300	SAME	315b RELOCATION_MATCH->RELOCATION_MATCH
+00efc1c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efb6a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efc960	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efca00	SAME	345b RELOCATION_MATCH->RELOCATION_MATCH
+00effd70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efc7e0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ef7600	SAME	500b RELOCATION_MATCH->RELOCATION_MATCH
+00ef37f0	SAME	34b MATCH->MATCH
+00ef87d0	RELOC_RENAMED	RELOCATION_MATCH ; 322:?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ->?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00efb140	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eff8a0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eff800	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00eff090	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efa450	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00efa160	SAME	115b RELOCATION_MATCH->RELOCATION_MATCH
+00ef9f70	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00ef91c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00f04cc0	SAME	1049b RELOCATION_MATCH->RELOCATION_MATCH
+00f01c50	SAME	205b RELOCATION_MATCH->RELOCATION_MATCH
+00f01480	SAME	734b RELOCATION_MATCH->RELOCATION_MATCH
+00f013c0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00f03850	SAME	29b MATCH->MATCH
+00f04480	SAME	102b RELOCATION_MATCH->RELOCATION_MATCH
+00f09420	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+00f09530	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+00f0b130	SAME	1606b RELOCATION_MATCH->RELOCATION_MATCH
+00f0bb10	SAME	1579b RELOCATION_MATCH->RELOCATION_MATCH
+00f0f680	SAME	644b RELOCATION_MATCH->RELOCATION_MATCH
+00f060d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00f033f0	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00f08590	SAME	839b RELOCATION_MATCH->RELOCATION_MATCH
+00f0a470	RELOC_RENAMED	RELOCATION_MATCH ; 452:??1?$vector@VCScriptThing@@@@QAE@XZ->??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ
+00f09cd0	RELOC_RENAMED	RELOCATION_MATCH ; 1bc:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1c9:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1d6:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1e3:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1f0:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z ; 1fd:?AreAllThingsInVectorDead@@YI_NPAU?$vector@VCScriptThing@@@@@Z->?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+00f02210	SAME	586b RELOCATION_MATCH->RELOCATION_MATCH
+00f01eb0	SAME	372b RELOCATION_MATCH->RELOCATION_MATCH
+00f018b0	SAME	389b RELOCATION_MATCH->RELOCATION_MATCH
+00f017f0	SAME	139b RELOCATION_MATCH->RELOCATION_MATCH
+00f01a40	SAME	265b RELOCATION_MATCH->RELOCATION_MATCH
+00f1b220	SAME	907b RELOCATION_MATCH->RELOCATION_MATCH
+00f1b1b0	SAME	80b RELOCATION_MATCH->RELOCATION_MATCH

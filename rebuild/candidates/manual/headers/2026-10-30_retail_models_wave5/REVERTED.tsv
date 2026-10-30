@@ -1,0 +1,182 @@
+addr	family	reason
+0099a380	BO	DIFFER 25v16 grades=False sym=??0CBaseObject@@IAE@XZ
+0099a390	BO	DIFFER 27v18 grades=False sym=??0CBaseObject@@IAE@ABV0@@Z
+00d732f0	BO	DIFFER 801v789 grades=False sym=?RemoveParty@CQ_HangingTreeGoodScript@NScript@@QAEX_N@Z
+00eb3740	BO	DIFFER 1142v1108 grades=False sym=?DoSayingThankYouToHero@CMurderTwistSheriffGuard@@QAEXXZ
+00eb5d50	BO	DIFFER 1228v1185 grades=False sym=?DoSayingThankYouToHero@CMurderTwistAssassinGuard@@QAEXXZ
+00eb23e0	BO	DIFFER 1328v1298 grades=False sym=?DoAskingHeroToSpeakToBoss@CMurderTwistSheriffGuard@@QAEXXZ
+00eb15c0	BO	DIFFER 1055v1010 grades=False sym=?DoRemindingHeroToKillSheriff@CMurderTwistSheriff@@QAEXXZ
+00eb4f80	BO	DIFFER 1078v1044 grades=False sym=?DoRemindingHeroToKillSheriff@CMurderTwistAssassin@@QAEXXZ
+00eb10c0	BO	DIFFER 1303v1274 grades=False sym=?DoBecomingSuspiciousOfHero@CMurderTwistSheriff@@QAEXXZ
+00eb19c0	BO	DIFFER 1303v1274 grades=False sym=?DoSuspicious@CMurderTwistSheriff@@QAEXXZ
+00d2a180	BO	DIFFER 1597v1592 grades=False sym=?Main@CMazeJournal@@QAEXXZ
+00d29db0	BO	DIFFER 972v963 grades=False sym=?Main@CMK_GHC_HERO3@@QAEXXZ
+00d22880	BO	DIFFER 1720v1711 grades=False sym=?Main@CKG_ChiefBreakSiege@@QAEXXZ
+00d246c0	BO	DIFFER 954v896 grades=False sym=?Main@CBowerstoneIntroGuard@@QAEXXZ [row keeps an earlier wave 5 migration: CGSI-macros]
+00ce15e0	BO	DIFFER 963v954 grades=False sym=?Main@CTargetForKey@@QAEXXZ
+00deb000	BO	DIFFER 663v636 grades=False sym=?DealWithHeroHittingMe@CVictimsBrother@@QAEXXZ
+00e1bc70	BO	DIFFER 751v751 grades=False sym=?Main@CInitialScreamerPoint@@QAEXXZ
+00e96660	BO	DIFFER 1491v1482 grades=False sym=?Main@CM_HeroInsideHouse@@QAEXXZ
+00dc21f0	BO	DIFFER 768v750 grades=False sym=?Main@CM_RestartMarker@@QAEXXZ
+00f14770	BO	DIFFER 545v527 grades=False sym=?Main@CCham@@QAEXXZ
+00e292c0	BO	DIFFER 800v791 grades=False sym=?Main@CMeetSisterMessenger@@QAEXXZ
+00df4be0	BO	DIFFER 535v531 grades=False sym=?Main@CTheKraken@@QAEXXZ
+00ddd030	BO	DIFFER 1021v1019 grades=False sym=?Main@CPrisonRaceWarden@@QAEXXZ [row keeps an earlier wave 5 migration: CGSI-macros]
+00efeb60	BO	DIFFER 778v751 grades=False sym=?Main@CBalvMarker@@QAEXXZ
+00ef3f00	BO	DIFFER 574v547 grades=False sym=?Main@CLeader@@QAEXXZ
+00efc500	BO	DIFFER 757v721 grades=False sym=?Main@CPersonalScript_AardvarkScript@NScript@@QAEXXZ
+006e70a0	BO-loose	DIFFER 38v36 grades=False sym=?MakeOne@@YAPAXXZ
+006eb390	BO-loose	DIFFER 622v622 grades=False sym=?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+00939e70	BO-loose	DIFFER 90v90 grades=False sym=?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ
+0093b1d0	BO-loose	DIFFER 1011v1011 grades=False sym=?Update@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ
+00ce1110	BO-loose	DIFFER 166v153 grades=False sym=??0CActiveEntityScriptBase@@QAE@ABVCScriptThing@@_KK@Z
+007f6cb0	BO-loose	DIFFER 179v179 grades=False sym=??$GetCompareValueForThing@VCThingCreatureBase@@@CThingCompare_BestCreatureToAttack@@QBEMPAVCThingCreatureBase@@@Z
+007f6bf0	BO-loose	DIFFER 179v179 grades=False sym=??$GetCompareValueForThing@VCThingAICreature@@@CThingCompare_BestCreatureToAttack@@QBEMPAVCThingAICreature@@@Z
+00cabfd0	BO-loose	DIFFER 156v156 grades=False sym=?Clone@CEnumMediaTypes@@UAGJPAPAUIEnumMediaTypes@@@Z
+00cabed0	BO-loose	DIFFER 156v156 grades=False sym=?Clone@CEnumPins@@UAGJPAPAUIEnumPins@@@Z
+00cafce0	BO-loose	DIFFER 138v124 grades=False sym=??0CRendererPosPassThru@@QAE@PBDPAUIUnknown_@@PAJPAUIPin@@@Z
+00cacd00	BO-loose	DIFFER 31v31 grades=False sym=?NonDelegatingAddRef@CUnknown@@UAGKXZ
+00713180	BO-loose	DIFFER 117v117 grades=False sym=??0CActionSummonerLightningAttackTarget@NTCScriptedControl@@QAE@PAVCThing@@@Z
+00958770	BO-loose	DIFFER 95v95 grades=False sym=?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z
+00958f00	BO-loose	DIFFER 91v91 grades=False sym=?IsRunnable@CAIStateGroup_MinionReactToCrimeFromSleep@@UAE_NXZ
+0090eec0	BO-loose	DIFFER 515v515 grades=False sym=?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ
+006df8c0	BO-loose	DIFFER 54v54 grades=False sym=??_GCCreatureAction_ShowToSheatheTrophy@@UAEPAXI@Z
+00855100	BO-loose	DIFFER 54v54 grades=False sym=??_GCCreatureAction_SpiritAttack@@UAEPAXI@Z
+0094c010	BO-loose	DIFFER 63v63 grades=False sym=?IsRunnable@CAIStateGroup_SellToBuyer@@UAE_NXZ
+00961c50	BO-loose	DIFFER 70v70 grades=False sym=?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@ABE_NXZ
+005840a6	BO-loose	DIFFER 177v177 grades=False sym=?UseQuickAccessItem@CTCInventory@@QAEXJ@Z
+00ca53f0	BO-loose	by design: DirectShow strmbase CBaseObject (CUnknown base), not the Fable RTTI class
+006e7b60	GRO	SRC_FAIL GameResourceObjectBase.h(21) : error C2011: 'CScriptGameResourceObjectBase' : 'class' type redefinition |         Z:\tmp\claude-0\-home-user [row keeps an earlier wave 5 migration: BO]
+007e72a0	GRO	SRC_FAIL ctBase.h(21) : error C2011: 'CScriptGameResourceObjectBase' : 'class' type redefinition |         Z:\tmp\claude-0\-home-user-FableDecomp\a01 [row keeps an earlier wave 5 migration: BO]
+008abd10	GRO	SRC_FAIL new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\008abd10\new.cpp(43) : error C [row keeps an earlier wave 5 migration: BO]
+00cd2c7c	GRO	SRC_FAIL ctScriptedThingBase |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo\r [row keeps an earlier wave 5 migration: BO]
+00d49a20	GRO	DIFFER 798v815 grades=False sym=?RunSaveXPCutscene2@CQ_GuildTrainingScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00d496f0	GRO	DIFFER 798v815 grades=False sym=?RunSaveXPCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00d58080	GRO	DIFFER 580v633 grades=False sym=?Main@CMeleeThunder@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00d55e90	GRO	DIFFER 1804v1820 grades=False sym=?Main@CQ_GuildTrainingMeleeScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00d7a360	GRO	DIFFER 1361v1333 grades=False sym=?Main@CEndBriarRose@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00d79d50	GRO	DIFFER 1361v1333 grades=False sym=?Main@CEndScythe@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00d85b40	GRO	DIFFER 1104v1112 grades=False sym=?Main@CGuildmaster_HS@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00daa260	GRO	DIFFER 1149v1172 grades=False sym=?Main@CMinionFieldGenerator@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00dbf2d0	GRO	DIFFER 1786v1785 grades=False sym=?Main@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO+SF+CGSI-w4rev]
+00dd6440	GRO	DIFFER 1212v1116 grades=False sym=?Main@CPrisonEscapeGuard@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00dd1af0	GRO	DIFFER 895v959 grades=False sym=?DoMultiplierCutscene@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00e10bf0	GRO	DIFFER 384v384 grades=False sym=?WatchForLeaving@CV_ChapelOfEvilScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00e1cd40	GRO	DIFFER 729v653 grades=False sym=?CutsceneScreamers@CQ_WizardBattleScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00e1c580	GRO	DIFFER 1283v1330 grades=False sym=?PhaseTwo@CQ_WizardBattleScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO]
+00e2a900	GRO	DIFFER 537v499 grades=False sym=?PlayCutscene@CQS_ScytheInfoScript@@QAEXVCCharString@@_N@Z [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e6f710	GRO	DIFFER 1116v1107 grades=False sym=?Main@CDF_CombatMult@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e6ea30	GRO	DIFFER 1510v1549 grades=False sym=?Main@CDF_ShineLight@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e6f1c0	GRO	DIFFER 1148v1140 grades=False sym=?Main@CDF_ThunderHelmet@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e71450	GRO	DIFFER 1116v1108 grades=False sym=?Main@CDF_EatPies@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e71980	GRO	DIFFER 1166v1205 grades=False sym=?Main@CDF_GiveGift@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e73410	GRO	DIFFER 1100v1091 grades=False sym=?Main@CDF_MarryLadyGrey@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e73930	GRO	DIFFER 1687v1725 grades=False sym=?Main@CDF_SexMad@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e8b020	GRO	DIFFER 1815v1748 grades=False sym=?Main@CRingFighter@@UAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-w4rev]
+00e9aeb0	GRO	DIFFER 939v903 grades=False sym=?SecondFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-w4rev]
+00ed7320	GRO	SRC_FAIL definition; different basic types |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\repo [row keeps an earlier wave 5 migration: BO+CGSI-w4rev]
+00ee7a20	GRO	DIFFER 1627v1659 grades=False sym=?Main@CDemonDoorFace@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00eea020	GRO	DIFFER 582v543 grades=False sym=?Main@CExpression_FollowScript@NScript@@UAEXXZ [row keeps an earlier wave 5 migration: BO+SF+CITC]
+00f01480	GRO	DIFFER 770v734 grades=False sym=?Main@CCS_PlayCutsceneScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00f02210	GRO	DIFFER 622v586 grades=False sym=?ArenaIntroduction@CQ_CinemaTestScript@NScript@@QAEXXZ [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00da6d50	SF	DIFFER 1177v1159 grades=False sym=?Main@CBalverineFightingGuard@@QAEXXZ
+00da7830	SF	DIFFER 1285v1269 grades=False sym=?Main@CCorneredGuard@@QAEXXZ
+0089a6e0	CGSI-w4rev	SRC_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\0089a6e0\new.cpp(163) : see reference to class template instantiation 'std::vector<T,A>'
+008a80f0	CGSI-w4rev	SRC_FAIL error C2511: 'bool CGameScriptInterface::GetFollowingEntityList(const CScriptThingRef &,CScriptThingVector &) const' : overloaded member fun
+00d167c0	CGSI-w4rev	SRC_FAIL error C2664: 'void CGameScriptInterface::EntitySetAsOpinionSource(const CScriptThing &,const CCharString &) const' : cannot convert paramete
+00d16bb0	CGSI-w4rev	SRC_FAIL error C2664: 'void CGameScriptInterface::EntitySetAsOpinionSource(const CScriptThing &,const CCharString &) const' : cannot convert paramete
+00d1cac0	CGSI-w4rev	SRC_FAIL c-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d1cac0\new.cpp(78) : see reference to class template instantiation 'std::vector<T,A>
+00d20790	CGSI-w4rev	SRC_FAIL c-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d20790\new.cpp(91) : see reference to class template instantiation 'std::vector<T,A>
+00d36140	CGSI-w4rev	SRC_FAIL error C2109: subscript requires array or pointer type | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchp
+00d73f40	CGSI-w4rev	SRC_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00d73f40\new.cpp(135) : see reference to class template instantiation 'std::vector<T,A>' [row keeps an earlier wave 5 migration: BO+GRO]
+00d9d4f0	CGSI-w4rev	SRC_FAIL error C2664: 'CGameScriptInterface::SetThingHasInformation' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &
+00da0820	CGSI-w4rev	SRC_FAIL c-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00da0820\new.cpp(95) : see reference to class template instantiation 'std::vector<T,A>
+00da8970	CGSI-w4rev	SRC_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00da8970\new.cpp(100) : see reference to class template instantiation 'std::vector<T,A>'
+00dc8890	CGSI-w4rev	SRC_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00dc8890\new.cpp(109) : see reference to class template instantiation 'std::vector<T,A>'
+00df1760	CGSI-w4rev	SRC_FAIL error C2100: illegal indirection | 
+00e06050	CGSI-w4rev	SRC_FAIL d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00e06050\new.cpp(106) : see reference to class template instantiation 'std::vector<T,A>'
+00e33e00	CGSI-w4rev	SRC_FAIL error C2660: 'CGameScriptInterface::EntitySetFacingAngleTowardsThing' : function does not take 2 arguments | 
+00e33c90	CGSI-w4rev	SRC_FAIL error C2660: 'CGameScriptInterface::EntitySetFacingAngleTowardsThing' : function does not take 2 arguments | 
+00e38f80	CGSI-w4rev	SRC_FAIL error C2664: 'CGameScriptInterface::EntitySetCutsceneBehaviour' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThi
+00eec890	CGSI-w4rev	SRC_FAIL 3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00eec890\new.cpp(183) : see reference to class template instantiation 'std::vector<T
+00ee6a40	CGSI-w4rev	SRC_FAIL c-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00ee6a40\new.cpp(98) : see reference to class template instantiation 'std::vector<T,A>
+00efeb60	CGSI-w4rev	SRC_FAIL error C2440: 'initializing' : cannot convert from 'CScriptThing' to 'CScriptThingLocal' |         No constructor could take the source type,
+00efc500	CGSI-w4rev	SRC_FAIL error C2440: 'initializing' : cannot convert from 'CScriptThing' to 'CScriptThingLocal' |         No constructor could take the source type,
+00f08c30	CGSI-w4rev	SRC_FAIL error C2664: 'CGameScriptInterface::MiniMapAddMarker' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &' |   
+00f08a30	CGSI-w4rev	SRC_FAIL error C2664: 'CGameScriptInterface::EntitySetAsAwareOfThing' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing 
+00f0b960	CGSI-w4rev	SRC_FAIL error C2109: subscript requires array or pointer type | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchp
+00e9dac0	CGSI-w4rev	SRC_FAIL error C2664: 'CGameScriptInterface::MiniMapAddMarker' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &' |   
+00ef5200	CGSI-w4rev	SRC_FAIL error C2662: 'std::vector<T>::size' : cannot convert 'this' pointer from 'std::vector' to 'const std::vector<T> &' |         Reason: cannot 
+00f083a0	CGSI-w4rev	SRC_FAIL error C2664: 'CGameScriptInterface::EntitySetThingAsEnemyOfThing' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptT
+00f1ec70	CGSI-w4rev	SRC_FAIL c-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig5\work\mc\00f1ec70\new.cpp(93) : see reference to class template instantiation 'std::vector<T,A>
+00da7830	CGSI-macro	DIFFER 1270v1269 grades=False sym=?Main@CCorneredGuard@@QAEXXZ
+00da6d50	CGSI-macro	DIFFER 1162v1159 grades=False sym=?Main@CBalverineFightingGuard@@QAEXXZ
+00def760	CGSI-macro	SRC_FAIL d440-5b47-87a1-ed975cb80dfbscratchpadmig5workmc00def760new.cpp(159) : see reference to class template instantiation 'std::vector<T,A>' being compiled  [row keeps an earlier wave 5 migration: SF]
+00def3b0	CGSI-macro	SRC_FAIL d440-5b47-87a1-ed975cb80dfbscratchpadmig5workmc00def3b0new.cpp(127) : see reference to class template instantiation 'std::vector<T,A>' being compiled 
+00ec1ef0	CGSI-macro	SRC_FAIL 40-5b47-87a1-ed975cb80dfbscratchpadmig5reporebuildincludeenginefable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen u [row keeps an earlier wave 5 migration: BO]
+00d15a40	CGSI-macro	SRC_FAIL 40-5b47-87a1-ed975cb80dfbscratchpadmig5reporebuildincludeenginefable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen u [row keeps an earlier wave 5 migration: BO]
+00e49980	CGSI-macro	SRC_FAIL 40-5b47-87a1-ed975cb80dfbscratchpadmig5reporebuildincludeenginefable_nscript_forward.h(33) : warning C4099: 'CCountedPointer' : type name first seen u [row keeps an earlier wave 5 migration: BO]
+008a7610	CGSI-members	DIFFER 176v218 grades=False sym=?SetTargetingDi: header slot takes float (PDB), the row's body stores a long
+008a2690	CGSI-members	DIFFER 176v218 grades=False sym=?SetWanderMinDi: header slot takes float (PDB), the row's body stores a long
+008a4a00	CGSI-members	DIFFER 176v218 grades=False sym=?SetFollowDista: header slot takes float (PDB), the row's body stores a long
+008a5220	CGSI-members	DIFFER 176v218 grades=False sym=?SetCombatNearb: header slot takes float (PDB), the row's body stores a long
+008a3ef0	CGSI-members	DIFFER 176v218 grades=False sym=?SetActionFrequ: header slot takes float (PDB), the row's body stores a long
+008a2950	CGSI-members	DIFFER 176v218 grades=False sym=?SetWanderMaxDi: header slot takes float (PDB), the row's body stores a long
+008a54e0	CGSI-members	DIFFER 176v218 grades=False sym=?SetCombatNearb: header slot takes float (PDB), the row's body stores a long
+008a3980	CGSI-members	DIFFER 176v218 grades=False sym=?SetMaxHeroReac: header slot takes float (PDB), the row's body stores a long
+00c308a0	CGSI-members	SRC_FAIL error C2511: 'void CGameScriptInterface::EntitySetAsOpinionSource(long)' : overloaded member function not found in 'CGameScriptInterface'
+008a89d0	CGSI-members	SRC_FAIL error C2027: use of undefined type 'std::vector<T,A>'
+008a37b0	CGSI-members	SRC_FAIL error C2440: 'return' : cannot convert from 'int' to 'EScriptingStateGroups'
+008a9c40	CGSI-members	SRC_FAIL error C2027: use of undefined type 'std::vector<T,A>'
+008a86c0	CGSI-members	SRC_FAIL error C2027: use of undefined type 'std::vector<T,A>'
+008a0cb0	CGSI-members	SRC_FAIL error C2027: use of undefined type 'std::set<K,C,A>'
+008a5ff0	CGSI-members	SRC_FAIL error C2511: 'void CGameScriptInterface::SetKillSelfAndStealableItemAfterReachingDestination(CScriptThing,unsigned char)' : overloaded member function
+0089b780	CGSI-members	SRC_FAIL error C3861: 'SetThingHeading': identifier not found, even with argument-dependent lookup
+00895a90	CGSI-members	SRC_FAIL error C2664: 'CTCFishing_Retail::GoFishing' : cannot convert parameter 1 from 'bool' to 'const CScriptThing &'
+00897e10	CGSI-members	SRC_FAIL error C3861: 'MakeHeroCarryScriptThingInHand': identifier not found, even with argument-dependent lookup
+00895430	CGSI-members	SRC_FAIL error C2664: 'CTCInventory_Retail::IsButtonHeldForExpression' : cannot convert parameter 1 from 'const CCharString' to 'long'
+0088e390	CGSI-members	SRC_FAIL error C3861: 'GetWanderingPopulationScriptDefName': identifier not found, even with argument-dependent lookup
+0088e3d0	CGSI-members	SRC_FAIL error C2664: 'CWorldMap_Retail::SetRegionsAsConnectedInGraph' : cannot convert parameter 1 from 'const CCharString' to 'long'
+0088fe00	CGSI-members	SRC_FAIL error C2664: 'CHeroLogBook_Retail::AddLogEntry' : cannot convert parameter 1 from 'const CWideString' to 'long'
+0088ead0	CGSI-members	SRC_FAIL error C3861: 'OnEntityDamageableChanged': identifier not found, even with argument-dependent lookup
+0088ea50	CGSI-members	SRC_FAIL error C2440: 'return' : cannot convert from 'long' to 'ESex'
+008953a0	CGSI-members	RELOC_RENAMED to an unbound invented spelling ?GetPlayer@CPlayerManager@@ (0x00449970 is CPlayerManager::GetMainPlayer, PDB AAV): respell the call first
+008955c0	CGSI-members	RELOC_RENAMED to an unbound invented spelling ?GetPlayer@CPlayerManager@@ (0x00449970 is CPlayerManager::GetMainPlayer, PDB AAV): respell the call first
+00895bc0	CGSI-members	RELOC_RENAMED to an unbound invented spelling ?GetPlayer@CPlayerManager@@ (0x00449970 is CPlayerManager::GetMainPlayer, PDB AAV): respell the call first
+0088e980	CGSI-members	RELOC_RENAMED to an unbound invented spelling ?GetPlayer@CPlayerManager@@ (0x00449970 is CPlayerManager::GetMainPlayer, PDB AAV): respell the call first
+00d68810	GRO-cp	DIFFER 727v719 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d86150	GRO-cp	DIFFER 555v563 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d8fa30	GRO-cp	DIFFER 597v574 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d86680	GRO-cp	DIFFER 755v762 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d8f6d0	GRO-cp	DIFFER 612v636 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d7dd80	GRO-cp	DIFFER 273v253 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d9bf60	GRO-cp	DIFFER 621v613 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d9d030	GRO-cp	DIFFER 1207v1213 gr: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO+CGSI-w4rev]
+00e02470	GRO-cp	DIFFER 1030v1022 gr: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00e0cff0	GRO-cp	DIFFER 320v312 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00e02950	GRO-cp	DIFFER 828v820 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00da5f40	GRO-cp	DIFFER 345v337 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00da47a0	GRO-cp	DIFFER 379v371 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00dedb80	GRO-cp	DIFFER 693v697 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00dedf30	GRO-cp	DIFFER 626v623 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00ded540	GRO-cp	DIFFER 478v470 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00ded810	GRO-cp	DIFFER 642v639 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00e11dc0	GRO-cp	DIFFER 937v942 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00e1b750	GRO-cp	DIFFER 492v499 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00ec1ef0	GRO-cp	DIFFER 824v836 grad: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00dfb320	GRO-cp	DIFFER 1645v1637 gr: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00e4a280	GRO-cp	DIFFER 1002v992 gra: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO+CGSI-macros]
+00ea0b10	GRO-cp	DIFFER 1015v997 gra: the row calls the out-of-line STB dtor 0x007E74D0 where the header's implicit dtor inlines (mixed inlining) [row keeps an earlier wave 5 migration: BO]
+00d6aea0	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00d6b240	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00d7f880	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00d72590	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00d72200	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00d701c0	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00e0e2e0	GRO-cp	SRC_FAIL error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'float' to 'EScriptEntityMoveTyp [row keeps an earlier wave 5 migration: BO]
+00dfba60	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00dd84b0	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00db8300	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00ef45b0	GRO-cp	SRC_FAIL error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available [row keeps an earlier wave 5 migration: BO]
+00da0d90	CGSIB	SRC_FAIL error C2976: 'std::list' : too few template arguments
+00dc0830	CGSIB	SRC_FAIL error C2977: 'std::vector' : too many template arguments

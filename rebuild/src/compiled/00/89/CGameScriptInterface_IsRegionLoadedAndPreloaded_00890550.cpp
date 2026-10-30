@@ -137,17 +137,10 @@ struct CEngine_00890550 {
     CEngineDevice_00890550* m_pDevice;             // +0x28
 };
 extern CEngine_00890550* g_pEngine_013b86a0;       // 0x013B86A0
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
-    long                    Component;
-    CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
-    long                    DefinitionManager;
-    CPlayerManager_Retail*  PlayerManager;                   // +0x14
-    unsigned char           _pad18[0x15];
-    bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d
-    bool IsRegionLoadedAndPreloaded(const CCharString& name) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::IsRegionLoadedAndPreloaded(const CCharString& name) const
 {

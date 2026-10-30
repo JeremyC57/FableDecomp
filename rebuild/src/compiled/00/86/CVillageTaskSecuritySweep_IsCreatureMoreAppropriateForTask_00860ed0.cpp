@@ -8,7 +8,8 @@
 // Shape: both positions are by-value copies of the const references (the assigned one fully copied through integer
 //   registers, the candidate's X/Y kept on the x87 stack); the deltas are named locals; the candidate side of the
 //   `<` is evaluated first (left operand), as in the IsBetterThan twin 0x00860430.
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }

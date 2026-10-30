@@ -1,0 +1,23 @@
+1103 edited rows; 181 reverted entries; no family: []
+279 BO
+229 CGSI-members
+224 SF
+128 CGSIB
+121 BO+GRO
+39 CGSI-w4rev
+23 CGSI-macros
+23 BO+CGSI-macros
+8 BO+GRO+CGSIB
+8 BO+CGSI-w4rev
+5 SF+CGSI-w4rev
+5 SF+CGSIB
+3 BO+GRO+CGSI-macros
+2 BO+CGSIB
+1 BO+SF+CGSI-macros
+1 BO+SF+CGSI-w4rev
+1 BO+GRO+CGSI-w4rev
+1 SF+CGSI-macros
+1 BO+SF+CITC
+1 BO+GRO+SF+CGSIB
+Counter({'RELOCATION_MATCH PASS': 1066, 'MATCH PASS': 37})
+Counter({'SAME': 964, 'RELOC_RENAMED': 139})

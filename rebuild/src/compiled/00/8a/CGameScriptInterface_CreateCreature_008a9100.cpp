@@ -115,17 +115,10 @@ struct CCreatureActionAppear {                          // 0x114-byte creature a
 };
 
 class CWorld; class CMainGameComponent; class CDisplayEngine;
-class CGameScriptInterface { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void NewScriptFrame();                      // slot 7 (+0x1C)
-    CWorld*                 World;                      // +0x04
-    CMainGameComponent*     Component;                  // +0x08
-    CDisplayEngine*         DisplayEngine;              // +0x0c
-    CGameDefinitionManager* DefinitionManager;          // +0x10
-    unsigned char           _pad14[0x4c - 0x14];
-    long                    CreateCreatureDelayFrames;  // +0x4C
-    virtual CScriptThing CreateCreature(const CCharString& defName, const C3DVector& position, const CCharString& scriptName, bool appear) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 CScriptThing CGameScriptInterface::CreateCreature(const CCharString& defName, const C3DVector& position,
                                                   const CCharString& scriptName, bool appear) const

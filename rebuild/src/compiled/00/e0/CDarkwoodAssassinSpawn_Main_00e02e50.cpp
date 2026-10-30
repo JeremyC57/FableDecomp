@@ -47,34 +47,10 @@ bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScript
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:                              // vtable 0x01260F0C (cgsi_slots_aligned.tsv)
-    VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
-    virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
-    VPAD32(p8_0) VPAD16(p8_1) VPAD8(p8_2) VPAD4(p8_3) VPAD2(p8_4)                // slots 8..69
-    virtual CScriptThing& GetHero();                                             // slot 70 (+0x118)
-    VPAD4(p71_0) VPAD2(p71_1)                                                    // slots 71..76
-    virtual CScriptThing GetNearestWithScriptName(const CScriptThing& thing, const CCharString& name) const; // slot 77 (+0x134)
-    VPAD8(p78_0) VPAD1(p78_1)                                                    // slots 78..86
-    virtual long RegisterTimer();                                                // slot 87 (+0x15c)
-    virtual void DeregisterTimer(long timer);                                    // slot 88 (+0x160)
-    virtual void SetTimer(long timer, long time);                                // slot 89 (+0x164)
-    virtual long GetTimer(long timer) const;                                     // slot 90 (+0x168)
-    virtual CScriptThing CreateCreature(const CCharString& def, const C3DVector& pos, const CCharString& scriptName, bool b) const; // slot 91 (+0x16c)
-    VPAD16(p92_0)                                                                // slots 92..107
-    virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
-    VPAD256(p109_0) VPAD32(p109_1) VPAD16(p109_2) VPAD8(p109_3)                  // slots 109..420
-    virtual bool IsCameraPosOnScreen(const C3DVector& pos) const;                // slot 421 (+0x694)
-    VPAD16(p422_0) VPAD8(p422_1) VPAD4(p422_2) VPAD1(p422_3)                     // slots 422..450
-    virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const; // slot 451 (+0x70c)
-    VPAD8(p452_0) VPAD4(p452_1) VPAD1(p452_2)                                    // slots 452..464
-    virtual void EntityAttachToScript(const CScriptThing& thing, const CCharString& script) const; // slot 465 (+0x744)
-    VPAD8(p466_0) VPAD2(p466_1) VPAD1(p466_2)                                    // slots 466..476
-    virtual void SetThingPersistent(const CScriptThing& thing, bool persistent) const; // slot 477 (+0x774)
-    VPAD128(p478_0) VPAD32(p478_1) VPAD16(p478_2) VPAD1(p478_3)                  // slots 478..654
-    virtual CCharString GetActiveQuestName() const;                              // slot 655 (+0xa3c)
-    VPAD32(p656_0) VPAD2(p656_1)                                                 // slots 656..689
-    virtual unsigned long PlaySoundOnThing(const CScriptThing& thing, const CCharString& sound) const; // slot 690 (+0xac8)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 class CTimer { public:                                          // 4 bytes: an index into the global script timers
     long TimerIndex;

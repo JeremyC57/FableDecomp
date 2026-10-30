@@ -52,12 +52,8 @@ struct CTimingEventMultimap {                           // STLport multimap<CCha
     }
 };
 
-class CBaseObject { public:
-    void* m_pFirstPointer;                              // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 enum EAnimationType { ANIMATION_TYPE_NONE = 0 };
 

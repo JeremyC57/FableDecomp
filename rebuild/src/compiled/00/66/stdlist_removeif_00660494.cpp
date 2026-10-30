@@ -20,10 +20,8 @@
 //   local partial view (RTTI CVillageTaskSecuritySweep <- CVillageTaskBase <- CBaseObject <- CBaseClass).
 #pragma optimize("s", on)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject : public CBaseClass {
-public:
-    virtual void Validate() const;                          // slot 1
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 enum EVillageTaskType { EVillageTaskType_Force32 = 0x7fffffff };   // enumerators not needed
 class CVillageTaskBase : public CBaseObject {
 public:

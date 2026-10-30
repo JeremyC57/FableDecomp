@@ -78,7 +78,8 @@ public:
     bool ToBeRemoved;                                     // +0x08
     bool IsInGlobalUpdateTCs;                             // +0x09
 };
-class CBaseObject { };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CTCRegionFollower : public CTCBase {
 public:

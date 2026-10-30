@@ -45,17 +45,10 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     CScriptThing() : CBaseClass(), PImp() { }
     virtual ~CScriptThing();
 };
-class CBaseObject { public:                                    // CBaseIntelligentPointer root, vtable 0x0129A7D8
-    void* IntelligentPointer;                           // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // 16 bytes, vtable 0x0127094C
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual ~CScriptGameResourceObjectScriptedThingBase();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 struct _Rb_tree_node_base { char _M_color; _Rb_tree_node_base* _M_parent; _Rb_tree_node_base* _M_left; _Rb_tree_node_base* _M_right; };
 template<unsigned int NodeSize> struct _Rb_tree_base {
     _Rb_tree_node_base* _M_header;

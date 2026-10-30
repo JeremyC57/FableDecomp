@@ -52,13 +52,8 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 }
 using NScript::CIsThingAlive;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    virtual void b000();
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c

@@ -21,7 +21,10 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CScriptThing { public: unsigned char _body[12]; };
-template <class T> struct vector {                      // STLport vector (retail 12 bytes)
+namespace std {
+template <class T> class allocator;
+template <class T, class A = allocator<T> > class vector {
+public:                      // STLport vector (retail 12 bytes)
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -30,7 +33,9 @@ template <class T> struct vector {                      // STLport vector (retai
     T* erase(T* first, T* last);                        // 0x008AC9D0 for CScriptThing
     void clear() { erase(begin(), end()); }
 };
-bool __fastcall AreAllThingsInVectorDead(vector<CScriptThing>* things);   // 0x00CBED00
+}
+using std::vector;
+bool __fastcall AreAllThingsInVectorDead(const vector<CScriptThing>& things);   // 0x00CBED00
 
 void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
@@ -38,28 +43,12 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
-    void (T::*Func)();                                  // +0x34
-    T* PClass;                                          // +0x38
-    __forceinline CSpawnedFunc(const CCharString& name, unsigned long id, T* pclass, void (T::*func)())
-        : CSpawnedFuncBase(name, id), Func(func), PClass(pclass) {}
-    virtual void SuspendableProcess() { (PClass->*Func)(); }
-};
+#include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 
-class CGameScriptInterface { public:                          // vtable 0x01260F0C
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
-    virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
-    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031();
-    virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
-    virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
-    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055();
-    virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063();
-    virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
-    virtual void v072(); virtual void v073(); virtual void v074();
-    virtual long GetAllThingsWithScriptName(const CCharString& name, vector<CScriptThing>& things) const;   // slot 75 (+0x12c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
@@ -85,7 +74,7 @@ public:
 void CQ_HangingTreeEvilScript::MonitorEnemies()
 {
     AllEnemiesDead = false;
-    while (!AreAllThingsInVectorDead(&CurrentEnemyVector)) {
+    while (!AreAllThingsInVectorDead(CurrentEnemyVector)) {
         GSI->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
@@ -102,7 +91,7 @@ void CQ_HangingTreeEvilScript::MonitorEnemies()
             CurrentEnemyVector.clear();
             AllEnemiesDead = true;
             GSI->GetAllThingsWithScriptName("HTE_AssaultGuard", CurrentEnemyVector);
-            if (AreAllThingsInVectorDead(&CurrentEnemyVector))
+            if (AreAllThingsInVectorDead(CurrentEnemyVector))
                 return;
             if (IsActiveThreadTerminating())
                 return;

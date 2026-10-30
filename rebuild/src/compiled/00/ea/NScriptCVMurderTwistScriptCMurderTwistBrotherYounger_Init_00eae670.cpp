@@ -6,9 +6,6 @@
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
-#define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBase_HeaderLayout
-#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-#undef CScriptGameResourceObjectScriptedThingBase
 #ifndef _MSC_VER
 typedef __SIZE_TYPE__ PlacementSize;
 #else
@@ -42,9 +39,9 @@ template<class V>class CCompareString{public:bool operator()(const std::pair<CCh
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
-class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
-class CScriptGameResourceObjectBase:public CBaseObject{};
-class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase{public:CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
 class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;bool operator==(const CScriptThing& other)const{return PImp.Data->IsEqualTo(*other.PImp.Data);}protected:virtual void UnknownThingSlot1(){}virtual void UnknownThingSlot2(){}virtual void UnknownThingSlot3(){}virtual void UnknownThingSlot4(){}virtual void UnknownThingSlot5(){}virtual void UnknownThingSlot6(){}virtual void UnknownThingSlot7(){}virtual void UnknownThingSlot8(){}virtual void UnknownThingSlot9(){}virtual void UnknownThingSlot10(){}virtual void UnknownThingSlot11(){}virtual void UnknownThingSlot12(){}virtual void UnknownThingSlot13(){}virtual void UnknownThingSlot14(){}virtual void UnknownThingSlot15(){}virtual void UnknownThingSlot16(){}virtual void UnknownThingSlot17(){}virtual void UnknownThingSlot18(){}virtual void UnknownThingSlot19(){}virtual void UnknownThingSlot20(){}virtual void UnknownThingSlot21(){}virtual void UnknownThingSlot22(){}virtual void UnknownThingSlot23(){}virtual void UnknownThingSlot24(){}virtual void UnknownThingSlot25(){}virtual void UnknownThingSlot26(){}virtual void UnknownThingSlot27(){}virtual void UnknownThingSlot28(){}virtual void UnknownThingSlot29(){}virtual void UnknownThingSlot30(){}virtual void UnknownThingSlot31(){}virtual void UnknownThingSlot32(){}virtual void UnknownThingSlot33(){}virtual void UnknownThingSlot34(){}virtual void UnknownThingSlot35(){}virtual void UnknownThingSlot36(){}virtual void UnknownThingSlot37(){}virtual void UnknownThingSlot38(){}virtual void UnknownThingSlot39(){}virtual void UnknownThingSlot40(){}virtual void UnknownThingSlot41(){}virtual void UnknownThingSlot42(){}virtual void UnknownThingSlot43(){}virtual void UnknownThingSlot44(){}virtual void UnknownThingSlot45(){}virtual void UnknownThingSlot46(){}virtual void UnknownThingSlot47(){}virtual void UnknownThingSlot48(){}virtual void UnknownThingSlot49(){}virtual void UnknownThingSlot50(){}virtual void UnknownThingSlot51(){}virtual void UnknownThingSlot52(){}virtual void UnknownThingSlot53(){}virtual void UnknownThingSlot54(){}virtual void UnknownThingSlot55(){}virtual void UnknownThingSlot56(){}virtual void UnknownThingSlot57(){}virtual void UnknownThingSlot58(){}virtual void UnknownThingSlot59(){}virtual void UnknownThingSlot60(){}virtual void UnknownThingSlot61(){}virtual void UnknownThingSlot62(){}virtual void UnknownThingSlot63(){}virtual void UnknownThingSlot64(){}virtual void UnknownThingSlot65(){}virtual void UnknownThingSlot66(){}virtual void UnknownThingSlot67(){}virtual void UnknownThingSlot68(){}virtual void UnknownThingSlot69(){}virtual void UnknownThingSlot70(){}virtual void UnknownThingSlot71(){}virtual void UnknownThingSlot72(){}virtual void UnknownThingSlot73(){}virtual void UnknownThingSlot74(){}virtual void UnknownThingSlot75(){}virtual void UnknownThingSlot76(){}virtual void UnknownThingSlot77(){}virtual bool IsEqualTo(const CScriptThing&)const{return false;}};
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
 class CScriptBase:public CBaseClassNonCopyable{public:CScriptBase();virtual ~CScriptBase();

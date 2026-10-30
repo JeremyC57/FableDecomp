@@ -1,0 +1,82 @@
+rebuild/src/compiled/00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestEnabledDiggingSpot_0089ef90.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetFollowingEntityList_008a80f0.cpp nofix  | error C2511: 'bool CGameScriptInterface::GetFollowingEntityList(const CScriptThingRef &,CScriptThingVector &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/ce/CTestGateSwitch_Main_00ce1280.cpp nofix  
+rebuild/src/compiled/00/d1/CBHHostage1_Init_00d167c0.cpp nofix  | error C2664: 'CGameScriptInterface::EntitySetOpinionReactionEnabled' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/d1/CBHHostage2_Init_00d16bb0.cpp nofix  | error C2664: 'CGameScriptInterface::EntitySetOpinionReactionEnabled' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/d1/CQBountyHuntScript_WatchForAllGruntsKilled_00d17340.cpp nofix  
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy1GruntsKilled_00d18b20.cpp nofix  
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForDeputy2GruntsKilled_00d19af0.cpp nofix  
+rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForLeaderGruntsKilled_00d1c9e0.cpp nofix  
+rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_WatchForWinLoseConditions_00d20790.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_RunThemeOverriding_00d35ed0.cpp nofix  
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_SetupPuzzleBlocks_00d36140.cpp nofix  | error C2976: 'std::vector' : too few template arguments
+rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorEnemies_00d6be20.cpp nofix  
+rebuild/src/compiled/00/d7/CHTGExecutioner_Main_00d73f40.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_ReassignLeader_00d74f80.cpp nofix  
+rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScript_WatchForAudioInArena_00d7d730.cpp nofix  
+rebuild/src/compiled/00/d9/CQHobbeToothWhisper_Main_00d9d030.cpp nofix  
+rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_Init_00d9d4f0.cpp nofix  | error C2664: 'CGameScriptInterface::EntitySetInFaction' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/da/CBriarRose_UpdateTarget_00da2a20.cpp nofix  
+rebuild/src/compiled/00/da/CNOVIGuard_Init_00dac650.cpp nofix  
+rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunFirstWaveControl_00da0820.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_GuardComment_00da8970.cpp nofix  | error C2664: 'CGameScriptInterface::GetFollowingEntityList' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_DoMission_00dbde40.cpp nofix  
+rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScript_Main_00dbf2d0.cpp nofix  
+rebuild/src/compiled/00/dc/CSpeakingMarker_Main_00dc8890.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector<T>' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_CheckDoor_00dc8c80.cpp nofix  
+rebuild/src/compiled/00/dd/CPrisonRacer_Main_00ddc980.cpp nofix  
+rebuild/src/compiled/00/df/CQSecretPassageScript_PrisonEscape_00df0b70.cpp nofix  
+rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Init_00df1760.cpp nofix  | error C2100: illegal indirection
+rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScript_DoMission_00df36e0.cpp nofix  
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_WatchForSurprisingBalverines_00e06050.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineKnotholeGladeScriptCWBWhiteBalverine_Init_00e15830.cpp nofix  
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CleanUp_00e1d690.cpp nofix  
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_Main_00e1a990.cpp nofix  | error C2371: 'EMusicSetType' : redefinition; different basic types
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseOne_00e1cfd0.cpp nofix  
+rebuild/src/compiled/00/e2/NScriptCVAmbushScamScript_WatchForAllAmbushersDead_00e2fc50.cpp nofix  
+rebuild/src/compiled/00/e3/CACDummyMoving_Init_00e33e00.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/e3/CACDummyStatic_Init_00e33c90.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/e3/CAttackingAssassin_Init_00e38f80.cpp nofix  | error C2664: 'CGameScriptInterface::EntityAttachToScript' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/e4/CMBanditLeader_Main_00e4a740.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/e6/CCOEVictim_Main_00e6b400.cpp nofix  
+rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RemoveFishermen_00e7fb80.cpp nofix  
+rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_PhaseFive_00e7a740.cpp nofix  | error C2371: 'ETextGroupSelectionMethod' : redefinition; different basic types
+rebuild/src/compiled/00/e8/CRingFighter_Main_00e8b020.cpp nofix  
+rebuild/src/compiled/00/e9/CVHeroDuelScript_WatchForHeroEnteringCave_00e9a270.cpp nofix  | error C2371: 'ECutsceneBehaviour' : redefinition; different basic types
+rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp nofix  
+rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_WatchForAttack_00e9dc80.cpp nofix  | error C2371: 'ECrime' : redefinition; different basic types
+rebuild/src/compiled/00/ea/CVMurderTwistScript_Main_00ea8830.cpp nofix  | error C2371: 'EMusicSetType' : redefinition; different basic types
+rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScript_DoesAssassinTrustHero_00eb03a0.cpp nofix  | error C2371: 'EMorality' : redefinition; different basic types
+rebuild/src/compiled/00/ed/CStatueMasterStatue_Main_00ed41d0.cpp nofix  
+rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320.cpp nofix  | error C2371: 'EScriptAIPriority' : redefinition; different basic types
+rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteExit_00edd060.cpp nofix  
+rebuild/src/compiled/00/ee/CCSOakValeRevisitedScript_OakValeFire_00ee8870.cpp nofix  
+rebuild/src/compiled/00/ee/CGlobalOpenChestScript_Main_00eec890.cpp nofix  | error C2664: 'CGameScriptInterface::GetItemDefNamesFromContainer' : cannot convert parameter 2 from 'CCharStringVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForNoFollowers_00ee6a40.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'CScriptThingVector' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_PlayCutscene_00ee2db0.cpp nofix  
+rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp nofix  | error C2440: 'initializing' : cannot convert from 'CScriptThing' to 'CScriptThingLocal'
+rebuild/src/compiled/00/ef/CShowTargetedThingHealthScript_ShowTargetedThingsHealth_00eff930.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/ef/CTrappedMan_Main_00ef1e10.cpp nofix  
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp nofix  | error C2440: 'initializing' : cannot convert from 'CScriptThing' to 'CScriptThingLocal'
+rebuild/src/compiled/00/f0/CATConvoyMember_Init_00f08c30.cpp nofix  | error C2664: 'CGameScriptInterface::EntitySetThingAsEnemyOfThing' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/f0/CATPhase1Archer_Init_00f08a30.cpp nofix  | error C2664: 'CGameScriptInterface::EntitySetThingAsEnemyOfThing' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_DoQuest_00f0b130.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_SetBanditAllegiences_00f060d0.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditsDeath_00f0b960.cpp nofix  | error C2976: 'std::vector' : too few template arguments
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForQuestSuccess_00f0a470.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForRegionClear_00f09cd0.cpp nofix  
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin1_Init_00d04a60.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin2_Init_00d059e0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCAssassin3_Init_00d060b0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate3Guard_Init_00d07410.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/d7/CHTGAmbushPointBackup_Main_00d73c70.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_PostAttackStuff_00dbeb20.cpp nofix  
+rebuild/src/compiled/00/e2/CASBuddy_Init_00e2bfa0.cpp nofix  
+rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_SetWanderPointAndDistance_00e53f60.cpp nofix  
+rebuild/src/compiled/00/e9/NScriptCBriarRose_Init_00e9dac0.cpp nofix  | error C2664: 'CGameScriptInterface::SetThingHasInformation' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp nofix  | error C2977: 'std::vector' : too many template arguments
+rebuild/src/compiled/00/f0/CATPhase3Archer_Main_00f04cc0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/f0/NScriptCATPhase1Guard_Init_00f083a0.cpp nofix  | error C2664: 'CGameScriptInterface::EntitySetThingAsEnemyOfThing' : cannot convert parameter 1 from 'CScriptThingRuntime' to 'const CScriptThing &'
+rebuild/src/compiled/00/f1/NScriptCQArenaScript_AnimateCrowd_00f1ec70.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class

@@ -64,27 +64,11 @@ class CScriptThing : public CBaseClass { public:               // 12 bytes, vtab
 };
 
 class CBaseObjectPointer;
-class CBaseObject { public:                                     // vtable 0x0129A7D8
-    CBaseObjectPointer* IntelligentPointer;                     // +0x04
-protected:
-    CBaseObject();                                              // 0x0099A380
-    virtual ~CBaseObject();                                     // 0x0099A430
-public:
-    virtual void Validate() const;                              // slot 1 (Ego_r ?Validate@CBaseObject@@UBEXXZ)
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum EScriptEntityMoveType { SCRIPT_MOVE_DEFAULT };
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08 Data, +0x0c Info (the game-side handle)
-    CScriptGameResourceObjectScriptedThingBase() { }
-    // implicit destructor (stores no vptr of its own); out-of-line copy 0x007E74D0
-    virtual void SummonerLightningOrbAttackTarget(const CScriptThing& target);   // slot 2 0x007E72D0
-    virtual void FireProjectileWeaponAtTarget(const CScriptThing& target);       // slot 3 0x007E72E0
-    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10) 0x007E72F0
-};
 
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD1(a) virtual void a();
@@ -96,18 +80,10 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterfaceBase { public:                        // the script interface (Ego_r CLevelScriptBase::Game); slots as
-                                                                // the CGameScriptInterface vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                       // slots 0..6
-    virtual void NewScriptFrame() const = 0;                                            // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority) = 0;   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                                 // slots 9..69
-    virtual CScriptThing& GetHero() = 0;                                                // slot 70 (+0x118)
-    VPAD1(r071)                                                                         // slot 71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const = 0;     // slot 72 (+0x120)
-    VPAD256(sa) VPAD32(sb) VPAD8(sc) VPAD4(sd) VPAD2(sf) VPAD1(se)                      // slots 73..375
-    virtual void Pause(float seconds) const = 0;                                        // slot 376 (+0x5e0)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 
 class CScriptDataBase;
 class CPersistContext;

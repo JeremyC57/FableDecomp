@@ -1,0 +1,203 @@
+skip rebuild/src/compiled/00/83/CThingGameObject_UpdateStandingOnThing_00838aa0.cpp item unsigned char _pad00[0x60];
+skip rebuild/src/compiled/00/8c/CCreatureActionTrollAngryGroundPound_PerformAction_008c63a0.cpp item unsigned char padding[0x1c8];
+skip rebuild/src/compiled/00/8c/CGameScriptThing_InitFromThing_008cffe0.cpp parse
+skip rebuild/src/compiled/00/8c/CCreatureActionWhisperSommersaultForward_PerformAction_008c0b40.cpp item unsigned char _pad[0x28];
+skip rebuild/src/compiled/00/8c/CCreatureActionNymphSummonInto_Initialise_008c9df0.cpp parse
+skip rebuild/src/compiled/00/7a/CBaseObjectPropertyForwarder_NotifyOwnerProperty150_007a5420.cpp item void OnPropertyChanged(int propertyId);
+skip rebuild/src/compiled/00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Clear_00646709.cpp parse
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp local CBaseClass
+skip rebuild/src/compiled/00/7c/CBaseObjectPropertyForwarder_NotifyOwnerProperty136_007cbee0.cpp item void OnPropertyChanged(int propertyId);
+edit rebuild/src/compiled/00/99/CBaseObject_CBaseObject_0099a380.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/99/CBaseObject_CBaseObject_0099a430.cpp local CBaseClass
+edit rebuild/src/compiled/00/99/CBaseObject_CBaseObject_0099a390.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/99/CBaseObject_ScalarDeletingDestructor_0099a4d0.cpp local CBaseClass
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_RemoveParty_00d732f0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/d7/CDyingVillager_Main_00d7f460.cpp local CBaseClass
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Main_00edf3a0.cpp local CBaseClass
+skip rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Main_00edfa00.cpp local CBaseClass
+edit rebuild/src/compiled/00/6e/CScriptGameResourceObjectBase_ScalarDeletingDestructor_006e70a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/6e/CCombatManager_SetupNextSequenceForAttacker_006eb390.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d2/CMazeJournal_Main_00d2a180.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d2/CMKGHCHERO3_Main_00d29db0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d2/CKGChiefBreakSiege_Main_00d22880.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d2/CBowerstoneIntroGuard_Main_00d246c0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/93/CAIStateGroupMinionGuardReactToPlayerWithWeapon_IsPlayerCarryingWeapon_00939e70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/93/CAIStateGroupBanditSitRoundCampfire_Update_0093b1d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/93/CAIStateGroupVillageTaskSecuritySweep_IsStillValid_0093fad0.cpp item virtual void v01();
+edit rebuild/src/compiled/00/ce/CTargetForKey_Main_00ce15e0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/ce/CActiveEntityScriptBase_CActiveEntityScriptBase_00ce1110.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/7f/CThingCompareBestCreatureToAttack_GetCompareValueForThingCThingCreatureBase_007f6cb0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=v00 mirrors=0
+edit rebuild/src/compiled/00/7f/CThingCompareBestCreatureToAttack_GetCompareValueForThingCThingAICreature_007f6bf0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=v00 mirrors=0
+skip rebuild/src/compiled/00/cb/CAMMsgEvent_WaitMsg_00cb01c0.cpp dshow
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/ca/CMediaSample_SetActualDataLength_00ca9390.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_CBaseAllocator_00cac570.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_GetDeliveryBuffer_00ca87c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_Release_00ca9080.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_CheckStreaming_00ca8ed0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryPinInfo_00ca8420.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_EndFlush_00ca8e40.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putCurrentPosition_00cad8f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_SetRate_00cad810.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_GetBuffer_00ca9f20.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_IsSyncPoint_00ca9290.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_CBasePin_00cac070.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_CheckCapabilities_00cad500.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Refresh_00ca7b60.cpp dshow
+skip rebuild/src/compiled/00/ca/CDeferredCommand_NonDelegatingQueryInterface_00caec30.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_ReceiveMultiple_00ca8cf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_Block_00cac920.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_AddRef_00ca9700.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putStopTime_00cad970.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaPosition_Invoke_00cad300.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_SetTime_00ca91a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryAccept_00ca84c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetProperties_00ca9450.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetCapabilities_00cad4c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CCmdQueue_CheckTime_00cae170.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPeer_00cad400.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetCurrentPosition_00caf090.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_CUnknown_00cacc80.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_CBaseAllocator_00cabae0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_SetMediaTime_00ca9250.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_NonDelegatingQueryInterface_00ca89a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_CanSeekForward_00cadae0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDeferredCommand_Postpone_00caecf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_QueryPreferredFormat_00cad580.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_NonDelegatingQueryInterface_00ca9d70.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Reset_00ca7b30.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_ConnectionMediaType_00ca8370.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_Disconnect_00cab580.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_CompleteConnect_00ca9c80.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetRate_00cad7d0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_GetProperties_00ca9ec0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_NewSegment_00ca85a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseObject_CBaseObject_00cacaf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_Initialize_00cac300.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_SetNotify_00ca9fc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_CDynamicOutputPin_00cab770.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_Commit_00caa0a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_NonDelegatingQueryInterface_00caccb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_NotifyAllocator_00ca8ac0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPeerSeeking_00cad460.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPreroll_00caf160.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetTime_00ca9130.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_SetTimeFormat_00cad5c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_Clone_00cabfd0.cpp dshow
+skip rebuild/src/compiled/00/ca/CCmdQueue_SetTimeAdvise_00caf750.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetDuration_00caf120.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_Notify_00ca8e70.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getDuration_00cad870.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_CheckConnect_00ca80c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_CUnknown_00cacb80.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putRate_00cada80.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetStopPosition_00caf0e0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_IsPreroll_00ca9330.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_Skip_00cab2b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDispParams_CDispParams_00caebb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseDispatch_GetTypeInfo_00cacd90.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_AgreeMediaType_00ca7fb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetMediaTime_00ca9210.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_CanSeekBackward_00cadb50.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_CEntryConstructor_00cab370.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_SetMediaType_00ca93f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_NonDelegatingQueryInterface_00ca7ce0.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Clone_00cabed0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaPosition_GetTypeInfoCount_00cad290.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetTimeFormat_00cad600.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetMediaType_00ca93b0.cpp dshow
+skip rebuild/src/compiled/00/ca/global_LoadOLEAut32_00cacb20.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetPointer_00ca9100.cpp dshow
+skip rebuild/src/compiled/00/ca/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00cafce0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDeferredCommand_GetHResult_00caecc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_IsFormatSupported_00cad540.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_InitAllocator_00ca86b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaPosition_GetTypeInfo_00cad2b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getRate_00cada40.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_NonDelegatingQueryInterface_00cad380.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_DeliverNewSegment_00ca88f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_Deliver_00ca87f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_DeliverEndOfStream_00ca8820.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getStopTime_00cad930.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererInputPin_Receive_00ca7210.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_IsUsingTimeFormat_00cad640.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_Decommit_00caa160.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getCurrentPosition_00cad8b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_AttemptConnection_00ca7dc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseVideoRenderer_OnStartStreaming_00ca5360.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_GetFreeCount_00caa040.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_ConnectedTo_00ca8340.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_TryMediaTypes_00ca7e90.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_ConvertTimeFormat_00cad680.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_Release_00ca7c30.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_SetSink_00ca8560.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_UnblockOutputPin_00ca9860.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetAvailable_00cad790.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererPosPassThru_EOS_00caddf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererPosPassThru_RegisterMediaTime_00cadcc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_StopUsingOutputPin_00ca9a00.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryId_00ca84b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getPrerollTime_00cad9c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseFilter_FindPin_00caadb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_CheckConnect_00ca8610.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_SetPositions_00cad6d0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_DecideAllocator_00ca86d0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_GetAllocator_00ca89f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_ReleaseBuffer_00cabb70.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putPrerollTime_00cada00.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryDirection_00ca8490.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_ChangeMediaTypeHelper_00ca9b70.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_QueryInterface_00ca9000.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_BeginFlush_00ca8e10.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_AddRef_00ca53f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererInputPin_CompleteConnect_00ca5190.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_Releaseadjustor148_00caa770.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPositions_00cad720.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_NonDelegatingAddRef_00cacd00.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Skip_00cab0e0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_IsDiscontinuity_00ca92e0.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_CEnumMediaTypes_00cabf70.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_ReceiveCanBlock_00ca8d50.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_EnumMediaTypes_00cac170.cpp dshow
+edit rebuild/src/compiled/00/e9/CMHeroInsideHouse_Main_00e96660.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/8d/CModeThunderLightningStorm_OnDeactivate_008df680.cpp parse
+skip rebuild/src/compiled/00/4b/CQuestManager_IsAnyQuestActive_004b1080.cpp parse
+skip rebuild/src/compiled/00/71/NTCScriptedControlCActionTalkBase_OnAdd_00714d30.cpp uses member Info
+edit rebuild/src/compiled/00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_CActionSummonerLightningAttackTarget_00713180.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/95/cleanup1_GetSomeoneElseGettingHelpMessage_00958770.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/95/CAIStateGroupMinionReactToCrimeFromSleep_IsRunnable_00958f00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/68/CMessageEvent_scalardeletingdestructor_006872b0.cpp item void* IntelligentPointer;
+skip rebuild/src/compiled/00/90/CMessageEventManager_FindMostRecentMessageCFilterBind3CMessageEventFi_0090e090.cpp item unsigned char _pad[0x6c];
+edit rebuild/src/compiled/00/90/CAIStateGroupMinionKidCalledToMother_Update_0090eec0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/6d/CCreatureActionShowToSheatheTrophy_scalardeletingdestructor_006df8c0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/85/NCameraModesCScriptModuleThingLookAtFace_Update_00852b70.cpp parse
+edit rebuild/src/compiled/00/85/CCreatureActionSpiritAttack_scalardeletingdestructor_00855100.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/85/CCombatActionBase_IsBlockable_00857220.cpp item unsigned char _pad[0x30];
+edit rebuild/src/compiled/00/94/CAIStateGroupSellToBuyer_IsRunnable_0094c010.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/CTCVillage_IsReportedOrUnreportedCrimeKnown_0065bffa.cpp item unsigned char _pad00[0x20];
+skip rebuild/src/compiled/00/65/CTCVillage_TryToRespawnDefNamed_0065b349.cpp parse
+skip rebuild/src/compiled/00/65/CTCVillage_EnableGuards_0065c45a.cpp parse
+skip rebuild/src/compiled/00/65/CTCVillage_DetachFromDummyVillager_0065b2c4.cpp parse
+edit rebuild/src/compiled/00/dc/CMRestartMarker_Main_00dc21f0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/f0/CATSentry_Main_00f045e0.cpp local CBaseClass
+skip rebuild/src/compiled/00/f0/CATPhase3Guard_Main_00f051d0.cpp local CBaseClass
+edit rebuild/src/compiled/00/e2/CMeetSisterMessenger_Main_00e292c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/df/CTheKraken_Main_00df4be0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=v00 mirrors=1
+skip rebuild/src/compiled/00/e3/CATConvoySpy_Init_00e33720.cpp parse
+edit rebuild/src/compiled/00/dd/CPrisonRaceWarden_Main_00ddd030.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/96/CAIStateGroupIceTrollPoundGroundAttack_IsStillRunnable_00961c50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/5e/CTCGamePlayer_GetGame_005edc90.cpp item unsigned char _pad_0x00[0x91];
+skip rebuild/src/compiled/00/91/CAIStateGroupKidHurtSelfRunToMother_Cleanup_00915190.cpp parse
+edit rebuild/src/compiled/00/58/CTCInventory_UseQuickAccessItem_005840a6.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0

@@ -29,21 +29,15 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
     void*                 Data;                    // +0x44 (first argument, the script data)
     CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
 };
-struct CCountedPointerWords {                     // {Data, Info}
+template <class T> class CCountedPointer { public:                     // {Data, Info}
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
-class CBaseObject { public:                               // CBaseIntelligentPointer root
-    virtual void v00();
-    void* m_pIntelligentPointer;                   // +0x04
-    CBaseObject();                                 // 0x0099A380
-};
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual void v00();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 template <class T> struct allocator { allocator() { } };
 template <class T, class A> struct _STLP_alloc_proxy : A {
     T _M_data;

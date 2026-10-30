@@ -67,11 +67,8 @@ class CScriptThing : public CBaseClass { public:                           // vt
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
-class CBaseObject { public:
-    virtual void b00();
-    void* m_pIntelligentPointer;                       // +0x04
-    CBaseObject();                                     // 0x0099A380
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
     void* Data;
     void* Info;

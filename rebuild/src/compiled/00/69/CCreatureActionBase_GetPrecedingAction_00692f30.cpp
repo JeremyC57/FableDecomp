@@ -5,9 +5,6 @@
 #define CCreatureActionBase CCreatureActionBase_PDB
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
-#define CBaseObject CBaseObject_PDB
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #include "fable_string.h"
 #include <stdlib.h>
 #include <new>
@@ -42,12 +39,8 @@ class CThingCreatureBase { public:
   return false;
  }
 };
-class CBaseObject { public:
- virtual ~CBaseObject(); // ordinary 0x0099A430, deleting0x0099A4D0
- virtual void Validate()const; //0x0099A400
- CBaseObjectPointer* IntelligentPointer;
- CBaseObject(); //0x0099A380
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //0x00A01C10
  void* PData;

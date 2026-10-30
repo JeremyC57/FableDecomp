@@ -61,34 +61,17 @@ class CScriptThing : public CBaseClass { public:                          // vta
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     ~CScriptThing() {}                                      // out of line 0x004AA840
 };
-class CBaseObject { public:                                        // CBaseIntelligentPointer root (vtable 0x0129A7D8)
-    virtual void b000();
-    void* m_pIntelligentPointer;                            // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:        // vtable 0x0126008C
-    virtual ~CScriptGameResourceObjectBase() {}
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CScriptGameResourceObjectMovieBase.h"
 struct CScriptThingImp;
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<CScriptThingImp> PImp;                  // +0x08
-    bool IsScripting();                                     // 0x00CD23B9
-    void Release();                                         // 0x00CD2770
-    CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    ~CScriptGameResourceObjectScriptedThingBase();          // 0x007E74D0
-};
 struct CMovieImpPointer {
     void* Data;
     void* Info;
     CMovieImpPointer() : Data(0), Info(0) {}
     ~CMovieImpPointer();                                    // 0x006E7AB0
-};
-class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
-    CMovieImpPointer PImp;                                  // +0x08
-    CScriptGameResourceObjectMovieBase();                   // 0x006E7B60
-    ~CScriptGameResourceObjectMovieBase();                  // 0x006E7B80
 };
 struct CCutsceneCastMap {                                   // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
     void* _body[3];
@@ -126,7 +109,7 @@ void CQ_GuildTrainingScript::RunArrivalCutscene()
     CScriptThing rival = Game->CreateCreature("CREATURE_RIVAL_HERO_MAZE_CUTSCENE", Game->GetThingWithScriptName("MK_GTA_MAZE1").GetPos(), "CutsceneMaze", false);
     {
         CScriptGameResourceObjectScriptedThingBase maze;
-        if (maze.IsScripting())
+        if (maze.IsValid())
             maze.Release();
         while (!Game->StartScriptingEntity(rival, maze, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();
@@ -136,7 +119,7 @@ void CQ_GuildTrainingScript::RunArrivalCutscene()
         if (IsActiveThreadTerminating())
             return;
         CScriptGameResourceObjectScriptedThingBase hero;
-        if (hero.IsScripting())
+        if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

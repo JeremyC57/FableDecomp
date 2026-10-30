@@ -1,0 +1,652 @@
+skip rebuild/src/compiled/00/83/CThingGameObject_UpdateStandingOnThing_00838aa0.cpp item unsigned char _pad00[0x60];
+skip rebuild/src/compiled/00/83/NEntityEventsCEventTriggered_CEventTriggered_0083cf20.cpp no member
+skip rebuild/src/compiled/00/83/CThingAICreature_DrawGetEditDrawInfo_00830150.cpp other CBaseObject.h include
+skip rebuild/src/compiled/00/8c/CCreatureActionTrollAngryGroundPound_PerformAction_008c63a0.cpp item unsigned char padding[0x1c8];
+skip rebuild/src/compiled/00/8c/CGameScriptThing_InitFromThing_008cffe0.cpp parse
+skip rebuild/src/compiled/00/8c/CCreatureActionWhisperSommersaultForward_PerformAction_008c0b40.cpp item unsigned char _pad[0x28];
+skip rebuild/src/compiled/00/8c/CCreatureActionNymphSummonInto_Initialise_008c9df0.cpp parse
+edit rebuild/src/compiled/00/8c/CCreatureActionSummonerDie_FinishAction_008cb8f0.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+skip rebuild/src/compiled/00/84/CCreatureActionPickUpGenericBox_CCreatureActionPickUpGenericBox_00843700.cpp no member
+edit rebuild/src/compiled/00/84/CCreatureActionStartFillingTankard_PerformAction_0084a290.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+edit rebuild/src/compiled/00/84/NEntityEventsCEventShownItem_CEventShownItem_0084aee0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/84/NEntityEventsCEventOpenedChest_CEventOpenedChest_0084b080.cpp no member
+skip rebuild/src/compiled/00/84/CCreatureActionPutDownJugFromFilling_CCreatureActionPutDownJugFromFilling_008441d0.cpp no member
+skip rebuild/src/compiled/00/84/CCreatureActionPickUpJugToFill_CCreatureActionPickUpJugToFill_00844140.cpp no member
+skip rebuild/src/compiled/00/84/CCreatureActionShopkeeperPutAway_CCreatureActionShopkeeperPutAway_00843670.cpp no member
+edit rebuild/src/compiled/00/84/CCreatureActionUseWallMount_CCreatureActionUseWallMount_00843610.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/84/CCreatureActionStopFillingTankard_PerformAction_0084a2f0.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+edit rebuild/src/compiled/00/84/CCreatureActionUseLamp_CCreatureActionUseLamp_008435b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/84/NEntityEventsCEventTalkedTo_CEventTalkedTo_0084af90.cpp no member
+skip rebuild/src/compiled/00/84/NEntityEventsCEventTalkedToAnyone_CEventTalkedToAnyone_0084b100.cpp no member
+skip rebuild/src/compiled/00/7a/CBaseObjectPropertyForwarder_NotifyOwnerProperty150_007a5420.cpp item void OnPropertyChanged(int propertyId);
+skip rebuild/src/compiled/00/87/NEntityEventsCEventKillLocked_CEventKillLocked_0087fed0.cpp no member
+edit rebuild/src/compiled/00/d6/CHTEAssaultGuard_Main_00d6aea0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d6/CHTEAudience_Main_00d6b240.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_TeleportOutHero_00d66f50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_TeleportOutHero_00d64080.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d6/CWillWhisper_Main_00d68810.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/64/NPlayerGuiCDrawPerceivers_AddPerceivingThing_0064a2db.cpp ok mem=pass9_unread_pointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/64/NPlayerGuiCDrawHighlightingTargetingCursor_Clear_00646709.cpp parse
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dd40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5ab40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp local CBaseClass
+edit rebuild/src/compiled/00/d5/CMeleeThunder_Main_00d58080.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/7c/CTCBurntEffect_FinalCleanup_007cd930.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/7c/CTCCreatureTintEffect_FinalCleanup_007cf040.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/7c/CTCShotDefinitionBase_AddHitThing_007c0fb0.cpp no member
+skip rebuild/src/compiled/00/7c/CBaseObjectPropertyForwarder_NotifyOwnerProperty136_007cbee0.cpp item void OnPropertyChanged(int propertyId);
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_TortureVictim_00e6da80.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/CDFThunderHelmet_Main_00e6f1c0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_OnPersist_00e629a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScript_CVChickenKickingScript_00e62830.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/CDFShineLight_Main_00e6ea30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/CDFCombatMult_Main_00e6f710.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForTermination_00e69f00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e6/CCOEVictim_Main_00e6b400.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/69/CCreatureActionBase_CCreatureActionBase_00693c70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/69/CCreatureActionBase_CCreatureActionBase_00693ef0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/69/CCreatureActionBase_GetPrecedingAction_00692f30.cpp other CBaseObject.h include
+skip rebuild/src/compiled/00/69/CCreatureActionBase_CCreatureActionBase_00693b30.cpp other CBaseObject.h include
+skip rebuild/src/compiled/00/69/CCreatureActionBase_CCreatureActionBase_00693dc0.cpp other CBaseObject.h include
+edit rebuild/src/compiled/00/d8/CMuteGuardOutsideWoods_Main_00d86150.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScript_PlayCutscene_00d848d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForGrannysRegion_00d8f040.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScript_PlayCutscene_00d89ad0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/CSoulInfoAcolyte_Main_00d86c30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScript_PlayCutscene_00d872d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/CGuardOutsideWoods_Main_00d874f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_OnPredicateFail_00d8fd20.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Main_00d8fa30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_PlayCutscene_00d823a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_CQHeroSoulsBriarScript_00d80c30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/CWaitingGuardInWoods_Main_00d86680.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/d8/CBRIARROSEIMPOSTER_Main_00d81820.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=v00 mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Main_00d8f6d0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/CGuildmasterHS_Main_00d85b40.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_Alloc_00d83300.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/8e/CTCBerserk_AddDependentThing_008e6d90.cpp no member
+edit rebuild/src/compiled/00/8e/CCreatureActionDie_Initialise_008ed770.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+edit rebuild/src/compiled/00/99/CBaseObject_CBaseObject_0099a380.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/99/CBaseObject_ClearIntelligentPointers_0099a3c0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/99/CBaseObject_CBaseObject_0099a430.cpp local CBaseClass
+edit rebuild/src/compiled/00/99/CBaseObject_operator_0099a3b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/99/CBaseObject_CBaseObject_0099a390.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/99/CBaseObject_ScalarDeletingDestructor_0099a4d0.cpp local CBaseClass
+edit rebuild/src/compiled/00/99/CBaseObject_Validate_0099a400.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScript_RemoveParty_00d732f0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScript_Init_00d78500.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/CEndBriarRose_Main_00d7a360.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/CEndScythe_Main_00d79d50.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/CHSAScreamingVillager_Main_00d7f880.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/CHTGPrisoner_Main_00d71b30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/d7/CDyingVillager_Main_00d7f460.cpp local CBaseClass
+edit rebuild/src/compiled/00/d7/CHTGBoss_Main_00d72590.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScript_PlayCutscene_00d7aa30.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/CHTGAudience_Main_00d72200.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Main_00d7dd80.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/d7/CHTGExecutioner_Main_00d73f40.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/CHTGFreedomFighter_Main_00d701c0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsThunderScript_PlayCutscene_00d7c470.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScript_PlayCutscene_00d7fc70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScript_OnPersist_00eb98a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Init_00eb7aa0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistSheriffGuard_Alloc_00eb1f80.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScript_Main_00ebcd70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/eb/CVtable012efee8_CVtable012efee8_00eb2000.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_OnPredicateFail_00d9b8a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_OnPredicateFail_00d9bf10.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Main_00d90b30.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Main_00d907b0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCGranny_OnPersist_00d91da0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/CDrinkingHobbe_Main_00d9bf60.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/CQHobbeToothWhisper_Main_00d9d030.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/CFadeinSummoner_Main_00d9f6c0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d9/CBriarRose_CBriarRose_00d9e930.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/af/NParticleEngineCParticleEmitter_CParticleEmitter_00af10e0.cpp ok mem=m_pLink ren=0 alias=0 stand=v00 mirrors=0
+edit rebuild/src/compiled/00/af/NParticleEngineCParticleEmitter_CParticleEmitter_00af0380.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_OnPersist_00ed4c50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForTermination_00edbc80.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderBoy_Main_00edf3a0.cpp local CBaseClass
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScript_Init_00edec50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScriptCTHThunderGirl_Main_00edfa00.cpp local CBaseClass
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Init_00ed51e0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ed/CWomanToAttract_DoLeavingCutscene_00ed0b10.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsApprentice_00eda490.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScript_CVTravellingHeroesScript_00edeba0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Main_00e03480.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02470.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_OnPersist_00e00ce0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/NScriptCQTraderConflictGoodScript_Alloc_00e00610.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e0/CFleeingWoman_Main_00e0f4e0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/6e/CScriptGameResourceObjectMovie_CScriptGameResourceObjectMovie_006e7630.cpp ok mem=m_pReferences ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/6e/CScriptGameResourceObjectMovieBase_scalardeletingdestructor_006e7bd0.cpp ok mem=m_pReferences ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/6e/CScriptGameResourceObjectBase_CScriptGameResourceObjectBase_006e7a60.cpp no member
+skip rebuild/src/compiled/00/6e/CScriptGameResourceObjectBase_ScalarDeletingDestructor_006e70a0.cpp no member
+skip rebuild/src/compiled/00/6e/CCombatManager_SetupNextSequenceForAttacker_006eb390.cpp not polymorphic
+edit rebuild/src/compiled/00/6e/CScriptGameResourceObjectMovieBase_CScriptGameResourceObjectMovieBase_006e7b60.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d2/CMazeJournal_Main_00d2a180.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d2/CMKGHCHERO3_Main_00d29db0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d2/CKGChiefBreakSiege_Main_00d22880.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScriptCBattleGuard_Main_00d2c530.cpp other CBaseObject.h include
+edit rebuild/src/compiled/00/d2/CBowerstoneIntroGuard_Main_00d246c0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d2/CEndGameThunder_Main_00d2c810.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameBossBattleScript_Init_00d2f710.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_PlayCutscene_00d27050.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d2/CVtable012cc60c_CVtable012cc60c_00d2f6b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/93/CCreatureActionKickCreature_CCreatureActionKickCreature_00933f10.cpp no member
+skip rebuild/src/compiled/00/93/CAIStateGroupMinionGuardReactToPlayerWithWeapon_IsPlayerCarryingWeapon_00939e70.cpp no member
+edit rebuild/src/compiled/00/93/CAIStateGroupMinionSitAtHome_IsRunnable_00939180.cpp ok mem=unobservedObjectState ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/93/CAIStateGroupBanditSitRoundCampfire_Update_0093b1d0.cpp no member
+skip rebuild/src/compiled/00/93/CAIStateGroupVillageTaskSecuritySweep_IsStillValid_0093fad0.cpp item virtual void v01();
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Init_00da5bf0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CRockTroll_Main_00da5f40.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Init_00da4c30.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Init_00da5d40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CMinionEscortEnd_Main_00da47a0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CMinionWarningGuard_Main_00da9c70.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CGuardToLeadTheWay_Main_00da7d30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CMinionFieldGenerator_Main_00daa260.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_CQMinionClifftopChaseScript_00da30b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CMinionTrollSummoner_Main_00daa700.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/CGuardNotThisWay_Main_00da68e0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Alloc_00daab70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Init_00da49d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_OnPredicateFail_00da4300.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ce/CTargetForKey_Main_00ce15e0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+skip rebuild/src/compiled/00/ce/CActiveEntityScriptBase_CActiveEntityScriptBase_00ce1110.cpp no member
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_CQRansomVictimScript_00de0320.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/de/CSPInvestigatingGuard_Main_00dedb80.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/de/CSPDeskGuard_Main_00dedf30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/de/CSPAmbushGuard_Main_00ded540.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/de/CSPSecretPassageGuard_Main_00ded810.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScript_CQSecretPassageScript_00dec7f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/7f/CTCKraken_KillTentacles_007fb1c0.cpp not polymorphic
+skip rebuild/src/compiled/00/7f/CThingCompareBestCreatureToAttack_GetCompareValueForThingCThingCreatureBase_007f6cb0.cpp no member
+skip rebuild/src/compiled/00/7f/CThingCompareBestCreatureToAttack_GetCompareValueForThingCThingAICreature_007f6bf0.cpp no member
+skip rebuild/src/compiled/00/62/CCreatureActionTalk_CCreatureActionTalk_0062e020.cpp no member
+edit rebuild/src/compiled/00/62/CCreatureActionBase_CCreatureActionBase_0062ebc0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/62/CCreatureActionPlayerInteractionThreaten_CCreatureActionPlayerInteractionThreaten_0062dca0.cpp no member
+skip rebuild/src/compiled/00/62/CCreatureActionPlayerInteractionInsult_CCreatureActionPlayerInteractionInsult_0062dbc0.cpp no member
+skip rebuild/src/compiled/00/62/CCreatureActionTavernGameMasterInteraction_CCreatureActionTavernGameMasterInteraction_0062df40.cpp no member
+skip rebuild/src/compiled/00/62/CCreatureActionPlayerInteractionGreet_CCreatureActionPlayerInteractionGreet_0062dad0.cpp no member
+skip rebuild/src/compiled/00/62/CCreatureActionPlayerInteractionBribe_CCreatureActionPlayerInteractionBribe_0062dd80.cpp no member
+skip rebuild/src/compiled/00/62/CCreatureActionPlayerInteractionFlirt_CCreatureActionPlayerInteractionFlirt_0062de60.cpp no member
+skip rebuild/src/compiled/00/cb/CAMMsgEvent_WaitMsg_00cb01c0.cpp dshow
+skip rebuild/src/compiled/00/98/CCreatureActionMagicBlast_CCreatureActionMagicBlast_00982150.cpp no member
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CutsceneScreamers_00e1cd40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Init_00e19390.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CWBVillager_Main_00e16c40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CHKCVillagerScreamer_Main_00e1b1f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CWaspAttacker_Main_00e11450.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CAttackingBandit_Main_00e1ee30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_CutsceneMazeDeath_00e1d7b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCSummoner1_Main_00e11dc0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseTwo_00e1c580.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CWBScaredVillager_Main_00e16a80.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_WaspIntro_00e12f20.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CChasingScreamer_Main_00e1af30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CHKCScreamerPoint_Main_00e1b750.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e1/CVChapelOfEvilScript_WatchForLeaving_00e10bf0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/ca/CMediaSample_SetActualDataLength_00ca9390.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_CBaseAllocator_00cac570.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_GetDeliveryBuffer_00ca87c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_Release_00ca9080.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_CheckStreaming_00ca8ed0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryPinInfo_00ca8420.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_EndFlush_00ca8e40.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putCurrentPosition_00cad8f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_SetRate_00cad810.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_GetBuffer_00ca9f20.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_IsSyncPoint_00ca9290.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_CBasePin_00cac070.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_CheckCapabilities_00cad500.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Refresh_00ca7b60.cpp dshow
+skip rebuild/src/compiled/00/ca/CDeferredCommand_NonDelegatingQueryInterface_00caec30.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_ReceiveMultiple_00ca8cf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_Block_00cac920.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_AddRef_00ca9700.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putStopTime_00cad970.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaPosition_Invoke_00cad300.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_SetTime_00ca91a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryAccept_00ca84c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetProperties_00ca9450.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetCapabilities_00cad4c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CCmdQueue_CheckTime_00cae170.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPeer_00cad400.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetCurrentPosition_00caf090.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_CUnknown_00cacc80.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_CBaseAllocator_00cabae0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_SetMediaTime_00ca9250.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_NonDelegatingQueryInterface_00ca89a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_CanSeekForward_00cadae0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDeferredCommand_Postpone_00caecf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_QueryPreferredFormat_00cad580.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_NonDelegatingQueryInterface_00ca9d70.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Reset_00ca7b30.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_ConnectionMediaType_00ca8370.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_Disconnect_00cab580.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_CompleteConnect_00ca9c80.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetRate_00cad7d0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_GetProperties_00ca9ec0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_NewSegment_00ca85a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseObject_CBaseObject_00cacaf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_Initialize_00cac300.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_SetNotify_00ca9fc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_CDynamicOutputPin_00cab770.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_Commit_00caa0a0.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_NonDelegatingQueryInterface_00caccb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_NotifyAllocator_00ca8ac0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPeerSeeking_00cad460.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPreroll_00caf160.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetTime_00ca9130.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_SetTimeFormat_00cad5c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_Clone_00cabfd0.cpp not polymorphic
+skip rebuild/src/compiled/00/ca/CCmdQueue_SetTimeAdvise_00caf750.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetDuration_00caf120.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_Notify_00ca8e70.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getDuration_00cad870.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_CheckConnect_00ca80c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_CUnknown_00cacb80.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putRate_00cada80.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetStopPosition_00caf0e0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_IsPreroll_00ca9330.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_Skip_00cab2b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDispParams_CDispParams_00caebb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseDispatch_GetTypeInfo_00cacd90.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_AgreeMediaType_00ca7fb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetMediaTime_00ca9210.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_CanSeekBackward_00cadb50.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_CEntryConstructor_00cab370.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_SetMediaType_00ca93f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_NonDelegatingQueryInterface_00ca7ce0.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumPins_Clone_00cabed0.cpp not polymorphic
+skip rebuild/src/compiled/00/ca/CMediaPosition_GetTypeInfoCount_00cad290.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetTimeFormat_00cad600.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetMediaType_00ca93b0.cpp dshow
+skip rebuild/src/compiled/00/ca/global_LoadOLEAut32_00cacb20.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_GetPointer_00ca9100.cpp dshow
+skip rebuild/src/compiled/00/ca/CCompressedMemoryDataInputStream_CCompressedMemoryDataInputStream_00cafce0.cpp not polymorphic
+skip rebuild/src/compiled/00/ca/CDeferredCommand_GetHResult_00caecc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_IsFormatSupported_00cad540.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_InitAllocator_00ca86b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaPosition_GetTypeInfo_00cad2b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getRate_00cada40.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_NonDelegatingQueryInterface_00cad380.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_DeliverNewSegment_00ca88f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_Deliver_00ca87f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_DeliverEndOfStream_00ca8820.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getStopTime_00cad930.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererInputPin_Receive_00ca7210.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_IsUsingTimeFormat_00cad640.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_Decommit_00caa160.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getCurrentPosition_00cad8b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_AttemptConnection_00ca7dc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseVideoRenderer_OnStartStreaming_00ca5360.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_GetFreeCount_00caa040.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_ConnectedTo_00ca8340.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_TryMediaTypes_00ca7e90.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_ConvertTimeFormat_00cad680.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_Release_00ca7c30.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_SetSink_00ca8560.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_UnblockOutputPin_00ca9860.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetAvailable_00cad790.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererPosPassThru_EOS_00caddf0.cpp dshow
+skip rebuild/src/compiled/00/ca/CRendererPosPassThru_RegisterMediaTime_00cadcc0.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_StopUsingOutputPin_00ca9a00.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryId_00ca84b0.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_getPrerollTime_00cad9c0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseFilter_FindPin_00caadb0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_CheckConnect_00ca8610.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_SetPositions_00cad6d0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseOutputPin_DecideAllocator_00ca86d0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_GetAllocator_00ca89f0.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseAllocator_ReleaseBuffer_00cabb70.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_putPrerollTime_00cada00.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_QueryDirection_00ca8490.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_ChangeMediaTypeHelper_00ca9b70.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_QueryInterface_00ca9000.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_BeginFlush_00ca8e10.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_AddRef_00ca53f0.cpp not polymorphic
+skip rebuild/src/compiled/00/ca/CRendererInputPin_CompleteConnect_00ca5190.cpp dshow
+skip rebuild/src/compiled/00/ca/CDynamicOutputPin_Releaseadjustor148_00caa770.cpp dshow
+skip rebuild/src/compiled/00/ca/CPosPassThru_GetPositions_00cad720.cpp dshow
+skip rebuild/src/compiled/00/ca/CUnknown_NonDelegatingAddRef_00cacd00.cpp not polymorphic
+skip rebuild/src/compiled/00/ca/CEnumPins_Skip_00cab0e0.cpp dshow
+skip rebuild/src/compiled/00/ca/CMediaSample_IsDiscontinuity_00ca92e0.cpp dshow
+skip rebuild/src/compiled/00/ca/CEnumMediaTypes_CEnumMediaTypes_00cabf70.cpp dshow
+skip rebuild/src/compiled/00/ca/CBaseInputPin_ReceiveCanBlock_00ca8d50.cpp dshow
+skip rebuild/src/compiled/00/ca/CBasePin_EnumMediaTypes_00cac170.cpp dshow
+skip rebuild/src/compiled/00/76/CTCEnemy_RemoveAllyThing_0076c850.cpp no member
+skip rebuild/src/compiled/00/76/STLlistCIntelligentPointerCThing_remove_0076d7b0.cpp not polymorphic
+skip rebuild/src/compiled/00/76/CTCEnemy_AddAllyThing_0076d270.cpp not polymorphic
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Alloc_00e9fb40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e9/CMHeroInsideHouse_Main_00e96660.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/e9/CSpectator_Main_00e998f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90830.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_CVIntroductionToTrophiesScript_00e9c360.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_OnPersist_00e9e110.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/a4/C3DAnimationStats_C3DAnimationStats_00a4eb00.cpp ok mem=m_pFirstPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8d/NCreatureModeCModeScorpionKingVulnerable_OnDeactivate_008d9ca0.cpp ok mem=unobservedObjectPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/8d/CModeThunderLightningStorm_OnDeactivate_008df680.cpp parse
+edit rebuild/src/compiled/00/8d/NCreatureModeCModeRockTrollVulnerable_Recover_008de700.cpp ok mem=unobservedObjectPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/6a/CTCRegionFollower_IsRegionFollower_006aeb60.cpp not polymorphic
+skip rebuild/src/compiled/00/6a/CTCRegionFollower_RemoveFollower_006aeba0.cpp no member
+skip rebuild/src/compiled/00/6a/NEntityEventsCEventItemUsed_CEventItemUsed_006a0750.cpp no member
+skip rebuild/src/compiled/00/6a/CTCRegionFollower_AddFollower_006aedc0.cpp not polymorphic
+edit rebuild/src/compiled/00/63/CPlayer_InitModeFreezeControls_006349b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/63/CPlayer_InitModeBetting_00636400.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/NEntityEventsCEventHeroHasBeenSpottedPickingLock_scalardeletingdestructor_008ab8a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/NEntityEventsCEventHeroHasBeenSpottedPickpocketing_scalardeletingdestructor_008ab810.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/NEntityEventsCEventHeroHasBeenSpottedPickpocketing_CEventHeroHasBeenSpottedPickpocketing_008ab7b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/NEntityEventsCEventHeroHasBeenSpottedStealing_scalardeletingdestructor_008ab930.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/NEntityEventsCEventHeroHasBeenSpottedPickingLock_CEventHeroHasBeenSpottedPickingLock_008ab840.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/CScriptGameResourceObjectScriptedThingBase_operator_008abd10.cpp ok mem=PPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/8a/NEntityEventsCEventHeroHasBeenSpottedStealing_CEventHeroHasBeenSpottedStealing_008ab8d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/4b/CQuestManager_IsAnyQuestActive_004b1080.cpp parse
+skip rebuild/src/compiled/00/71/CScriptConversation_CScriptConversation_00717e60.cpp no member
+edit rebuild/src/compiled/00/71/CTCParticleAttachmentTracker_OnSetInLimbo_0071a850.cpp ok mem=pass9_unread_pointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/71/CTCParticleAttachmentTracker_SetParticleAsDetached_0071a8f0.cpp no member
+skip rebuild/src/compiled/00/71/CTCThingOwner_RemoveOwnedObject_0071b1b0.cpp no member
+skip rebuild/src/compiled/00/71/NTCScriptedControlCActionTalkBase_OnAdd_00714d30.cpp uses member Info
+skip rebuild/src/compiled/00/71/CTCThingOwner_AddOwnedObject_0071b300.cpp not polymorphic
+skip rebuild/src/compiled/00/71/CTCParticleAttachmentTracker_SetParticleAsAttached_0071a940.cpp not polymorphic
+skip rebuild/src/compiled/00/71/NTCScriptedControlCActionSummonerLightningAttackTarget_CActionSummonerLightningAttackTarget_00713180.cpp no member
+skip rebuild/src/compiled/00/95/cleanup1_GetSomeoneElseGettingHelpMessage_00958770.cpp no member
+skip rebuild/src/compiled/00/95/CAIStateGroupMinionReactToCrimeFromSleep_IsRunnable_00958f00.cpp no member
+edit rebuild/src/compiled/00/68/CMessageEvent_CMessageEvent_00687310.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/68/CMessageEvent_scalardeletingdestructor_006872b0.cpp item void* IntelligentPointer;
+edit rebuild/src/compiled/00/68/CMessageEvent_CMessageEvent_00687270.cpp ok mem=m_refCount ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d34470.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/d3/NScriptCQEndGameBossBattleScript_Alloc_00d34410.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d3/CFHVillager_Main_00d37530.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_CScriptGameResourceObjectScriptedThing_009039d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_CreateNullHandle_00903810.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_CScriptGameResourceObjectScriptedThing_00903710.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/90/CMessageEventManager_FindMostRecentMessageCFilterBind3CMessageEventFi_0090e090.cpp item unsigned char _pad[0x6c];
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThing_CScriptGameResourceObjectScriptedThing_00903ac0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/90/CAIStateGroupMinionKidCalledToMother_Update_0090eec0.cpp no member
+edit rebuild/src/compiled/00/90/CMessageEventFilterThingSearchFilterCThingFilterIn2DRange_operator_0090df60.cpp ok mem=unobservedObjectState ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/90/CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_00905330.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/90/CAIStateGroupMinionSitAtSchool_AllocChairSittingMode_0090f7d0.cpp no member
+edit rebuild/src/compiled/00/90/CMessageEventFilterThingSearchFilterCThingFilterIsNavLineOfSightToThing_operator_0090dfb0.cpp ok mem=unobservedObjectState ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Main_00cfddc0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Init_00cfbd90.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Main_00cfcb50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cf/COracleTablet_RemoveCursedTablets_00cfee30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d0/NScriptCQAwakeningTheOracleScriptCNecropolisGate_Main_00d00050.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d0/CCampHostage2_Main_00d08790.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/d0/CGate1GuardInner_Main_00d02b80.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScript_Main_00ec12e0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/CRandomPopulationCreature_Main_00ec1ef0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Init_00ec4540.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Main_00ec0ba0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScript_PlayCutscene_00ece460.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/CVtable012f17dc_CVtable012f17dc_00ec53c0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Init_00ecbd50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScript_OnPersist_00ecd7b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader2_Init_00ecca30.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Init_00ec6860.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e8/CRingFighter_Main_00e8b020.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_OnPersist_00e8d2a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/CBHGangGruntSpawn_Main_00d15510.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/CBanditAttacker_Main_00d1f610.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/d1/CGuardHoldingBandit_Main_00d1e3e0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_OnPersist_00d179b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScript_OnPersist_00d1cfc0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage1Killed_00d16920.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d1/CBanditFirstWave_Main_00d1fa00.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/d1/CBHGangGrunt_Main_00d15a40.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/6d/CCreatureActionShowToSheatheTrophy_scalardeletingdestructor_006df8c0.cpp no member
+skip rebuild/src/compiled/00/85/NCameraModesCScriptModuleThingLookAtFace_Update_00852b70.cpp parse
+skip rebuild/src/compiled/00/85/CCreatureActionSpiritAttack_scalardeletingdestructor_00855100.cpp no member
+skip rebuild/src/compiled/00/85/CCombatActionBase_SetTarget_0085aa90.cpp not polymorphic
+skip rebuild/src/compiled/00/85/CCombatActionBase_IsBlockable_00857220.cpp item unsigned char _pad[0x30];
+skip rebuild/src/compiled/00/94/CCreatureActionPickCrop_CCreatureActionPickCrop_009405f0.cpp no member
+skip rebuild/src/compiled/00/94/cleanup1_GetBuyersOrder_0094bfc0.cpp no member
+skip rebuild/src/compiled/00/94/CAIStateGroupSellToBuyer_IsRunnable_0094c010.cpp no member
+skip rebuild/src/compiled/00/80/CTCDExplosion_SetThingAsImmune_0080cbf0.cpp no member
+skip rebuild/src/compiled/00/80/CTCDExplosion_SetSpecificThingToHit_0080ccf0.cpp no member
+skip rebuild/src/compiled/00/80/CThingFilterIsTargetableBehind_operator_008091a0.cpp other CBaseObject.h include
+skip rebuild/src/compiled/00/65/std_find_0065575f.cpp no member
+edit rebuild/src/compiled/00/65/CTCVillage_SetSecuritySweepTaskAsCompleted_0065a031.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/65/CTCVillage_SetCrateTaskAsCompleted_0065a053.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/CTCVillage_SetSecuritySweepTaskAsAcceptedByThing_00658586.cpp no member
+skip rebuild/src/compiled/00/65/CTCVillage_SetTorchTaskAsAcceptedByThing_006584c5.cpp no member
+edit rebuild/src/compiled/00/65/CVillageTaskPatrol_CVillageTaskPatrol_0065eebc.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/std_find_0065e722.cpp no member
+skip rebuild/src/compiled/00/65/CTCVillage_SetHornTaskAsAcceptedByThing_006584f9.cpp no member
+skip rebuild/src/compiled/00/65/std_find_0065e78c.cpp no member
+skip rebuild/src/compiled/00/65/CTCVillage_IsReportedOrUnreportedCrimeKnown_0065bffa.cpp item unsigned char _pad00[0x20];
+skip rebuild/src/compiled/00/65/CTCVillage_TryToRespawnDefNamed_0065b349.cpp parse
+skip rebuild/src/compiled/00/65/std_find_0065e6b8.cpp no member
+edit rebuild/src/compiled/00/65/CVillageTaskHorn_CVillageTaskHorn_0065ee0c.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/CTCVillage_SetCrateTaskAsAcceptedByThing_006585ba.cpp no member
+skip rebuild/src/compiled/00/65/std_find_0065e6ed.cpp no member
+edit rebuild/src/compiled/00/65/CVillageTaskTorch_CVillageTaskTorch_0065ed59.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/65/CVillageTaskSecuritySweep_scalardeletingdestructor_0065dd4a.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/65/CTCVillage_SetHornTaskAsCompleted_0065a00f.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/65/CTCVillage_SetTorchTaskAsCompleted_00659fed.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/CVillageTaskBase_CVillageTaskBase_00658301.cpp no member
+edit rebuild/src/compiled/00/65/CVillageTaskTorch_CVillageTaskTorch_0065ed08.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/65/CVillageTaskPickCrops_CVillageTaskPickCrops_0065ef51.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/CTCVillage_EnableGuards_0065c45a.cpp parse
+edit rebuild/src/compiled/00/65/CVillageTaskCarryCrate_CVillageTaskCarryCrate_0065eff4.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/std_find_0065e7c1.cpp no member
+edit rebuild/src/compiled/00/65/CVillageTaskSecuritySweep_CVillageTaskSecuritySweep_0065dce8.cpp ok mem=pass9_unread_pointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/65/CVillageTaskHorn_CVillageTaskHorn_0065edba.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/std_find_0065e757.cpp no member
+skip rebuild/src/compiled/00/65/CTCVillage_DetachFromDummyVillager_0065b2c4.cpp parse
+edit rebuild/src/compiled/00/65/CVillageTaskPickCrops_CVillageTaskPickCrops_0065eeff.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/65/CTCVillage_SetPatrolTaskAsAcceptedByThing_0065852d.cpp no member
+edit rebuild/src/compiled/00/dc/CMRestartMarker_Main_00dc21f0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_OnPredicateFail_00dc5f10.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dc/COrchardFarmWhisper_Main_00dcf0b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_OnPredicateFail_00dc7420.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dc/CGraveyardDemon_Main_00dc3fc0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_OnPredicateFail_00dc4d00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d4/CQGuildTrainingScript_RunSaveXPCutscene2_00d49a20.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScript_RunArrivalCutscene_00d44cb0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/d4/CQGuildTrainingScript_RunCeremonyCutscene_00d49d50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScript_RunSaveXPCutscene_00d496f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/f0/NScriptCCSPlayCutsceneScript_Main_00f01480.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_Intro_00f0bb10.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/f0/CATSentry_Main_00f045e0.cpp local CBaseClass
+edit rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_ArenaIntroduction_00f02210.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/f0/CATPhase3Guard_Main_00f051d0.cpp local CBaseClass
+edit rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/f0/CATPhase3Archer_Main_00f04cc0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/6c/CTCHeroOpinionDeedLog_SetVillageForCrimes_006c55e0.cpp no member
+edit rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_RespawnFishermen_00e7f7f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_CVExposeMayorScript_00e755f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CDFSexMad_Main_00e73930.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_OnPersist_00e75790.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_Main_00e7f410.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/e7/CDFEatPies_Main_00e71450.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsGoodKnight_00e730a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CFishCompCompetitor_Main_00e7e640.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CFishCompOrganiser_CFishCompOrganiser_00e7ef70.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/NScriptCVDemonDoorsScriptCDFThreeSuits_DressedAsEvilMage_00e731f0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CDFGiveGift_Main_00e71980.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e7/CDFMarryLadyGrey_Main_00e73410.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e2/CQSScytheInfoScript_PlayCutscene_00e2a900.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e2/CScytheNearOracle_Main_00e2a320.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e2/CMeetSisterMessenger_Main_00e292c0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp ok mem=m_pReferences ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CQSecretPassageScript_PrisonEscape_00df0b70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Main_00df80b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CSummonerAttacker_Main_00df2380.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CTheKraken_Main_00df4be0.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_CQTraderConflictGoodScript_00dfa0b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CTCBanditHostageKeeper_Main_00dfba60.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_PlayCutscene_00dfded0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CTCGuardSpawnPoint_Main_00df7bf0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Main_00dfb320.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_MotherTortureThread_00df0750.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScript_PlayCutscene_00df3e50.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScript_PlayCutscene_00df9e00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/CKrakenMinion_Main_00df4610.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_PhaseOne_00df06a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Main_00df9710.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/e3/CATConvoySpy_Init_00e33720.cpp parse
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_ResetRandomSpeechTime_00e337c0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScript_CVBordelloScript_00e398f0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e3/CAttackingAssassin_Main_00e383a0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Init_00e38680.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScript_PlayCutscene_00e3e720.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e3/CBordelloEntrance_Main_00e3b4a0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScript_OnPersist_00e3b8f0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCExpressionFollowScript_Main_00eea020.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed360.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCTestQuestCard3Script_Main_00eef760.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CGlobalGiveHeroItemsFromRewardChestScript_Main_00eec410.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CExpressionWaitScript_Main_00eea460.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CDemonDoorFace_Main_00ee7a20.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCExpressionFishScript_Alloc_00ee9f00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScript_PlayCutscene_00ee2db0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8100.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCExpressionPickpocketScript_Alloc_00eeb730.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CExpressionDigScript_Main_00eea7c0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMaze_Main_00ee1e40.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CExpressionPicklockScript_Main_00eeb7b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCGlobalToggleTimeDisplayScript_Alloc_00eed060.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/CTrophyDealerInCave_Main_00ee76f0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCTestQuestCard2Script_Main_00eef5d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHSnowTroll_Alloc_00ee0240.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/a0/CBaseIntelligentPointer_SetPItem_00a01b90.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/66/stdlistCCountedPointerCVillageTaskCarryCrate_removeifCIsTask_00660348.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/66/NEntityEventsCEventDied_CEventDied_00669300.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/66/stdlist_removeif_00660457.cpp no member
+skip rebuild/src/compiled/00/66/CTCVillage_RemoveThingFromTaskList_00660980.cpp item virtual void Validate();
+edit rebuild/src/compiled/00/66/stdlistCCountedPointerCVillageTaskHorn_removeifCIsTask_00660298.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/66/stdlist_removeif_006603dd.cpp no member
+skip rebuild/src/compiled/00/66/CTCVillage_RemoveThingFromTaskList_00660787.cpp item virtual void Validate();
+skip rebuild/src/compiled/00/66/stdlist_removeif_00660494.cpp no member
+skip rebuild/src/compiled/00/66/CTCVillage_RemoveThingFromTaskList_00660a6c.cpp item virtual void Validate();
+edit rebuild/src/compiled/00/66/NEntityEventsCEventDied_scalardeletingdestructor_00669360.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/66/stdlistCCountedPointerCVillageTaskSecuritySweep_removeifCIsTask_006602f0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/66/CTCVillage_RemoveThingFromTaskList_00660894.cpp item virtual void Validate();
+skip rebuild/src/compiled/00/66/CTCVillage_RemoveThingFromTaskList_006609f6.cpp item virtual void Validate();
+edit rebuild/src/compiled/00/66/stdlistCCountedPointerCVillageTaskTorch_removeifCIsTask_00660240.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/66/stdlist_removeif_006603a0.cpp no member
+skip rebuild/src/compiled/00/66/CTCVillage_RemoveThingFromTaskList_0066090a.cpp item virtual void Validate();
+skip rebuild/src/compiled/00/66/stdlist_removeif_0066041a.cpp no member
+edit rebuild/src/compiled/00/7e/CTCFireheartMinigame_CTCFireheartMinigame_007e7640.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_007e72a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/7e/CCreatureActionUseSwitch_CCreatureActionUseSwitch_007ee010.cpp no member
+edit rebuild/src/compiled/00/7e/CScriptGameResourceObjectScriptedThingBase_scalardeletingdestructor_007e7520.cpp ok mem=m_pReferences ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/7e/CCreatureActionPlayerInteractionViewQuests_CCreatureActionPlayerInteractionViewQuests_007eb490.cpp no member
+skip rebuild/src/compiled/00/7e/CCreatureActionPickupGameObject_CCreatureActionPickupGameObject_007eb030.cpp no member
+edit rebuild/src/compiled/00/7e/CTCFireheartMinigame_CTCFireheartMinigame_007e7ed0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dd/CGuardMotherEscape_Main_00dd84b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dd/CPrisonRaceWarden_Main_00ddd030.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/dd/CPrisonEscapeGuard_Main_00dd6440.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScript_OnPersist_00dd2c80.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dd/NScriptCQOrchardFarmRaidScript_DoMultiplierCutscene_00dd1af0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dd/CPrisonRacer_Main_00ddc980.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/dd/CPrisonGuard_Main_00dd44c0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e4/CBlockingBandit_Main_00e49980.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e4/NScriptCVBeardyBaldyScript_CVBeardyBaldyScript_00e4f5b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/e4/NScriptCVBanditCampPathScript_Alloc_00e477a0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e4/CSafeTrader_Main_00e4a280.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/db/COVIDeadFather_Main_00db8300.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/db/NScriptCQOakValeBanditRaidScript_Main_00dbf2d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/96/cleanup1_FindPTargetPoint_009652c0.cpp no member
+skip rebuild/src/compiled/00/96/CAIStateGroupIceTrollPoundGroundAttack_IsStillRunnable_00961c50.cpp not polymorphic
+skip rebuild/src/compiled/00/5e/CTCGamePlayer_GetGame_005edc90.cpp item unsigned char _pad_0x00[0x91];
+edit rebuild/src/compiled/00/e5/CHenchmanRegionExitComment_Main_00e5f8f0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_ResetRandomSpeechTime_00e53c70.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/CHenchmanComment_Main_00e5f2b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_OnPersist_00e54880.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPersist_00e5f190.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_OnPersist_00e57d20.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_CVBookCollectingScript_00e54310.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_CVBeggarAndChildScript_00e57bb0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Alloc_00e5d0b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Main_00ea7b40.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/CMurderTwistSheriff_CMurderTwistSheriff_00eaed90.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_OnPredicateFail_00eadb60.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Init_00eae790.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScript_CVMazeResearchScript_00ea76e0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_CVMurderTwistScript_00ea86f0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_Init_00eae700.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_OnPredicateFail_00eae550.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Init_00eae670.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_OnPredicateFail_00ea3640.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/CVMurderTwistFinalScript_CVMurderTwistFinalScript_00eae910.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScript_Alloc_00eae890.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_OnPredicateFail_00eae620.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Main_00ea0b10.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/91/cleanup1_GetPNearestFreeLogPile_00917050.cpp no member
+edit rebuild/src/compiled/00/91/CCreatureActionDeclarePlayerACriminal_CCreatureActionDeclarePlayerACriminal_00910c30.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/91/cleanup1_FindBodyFoundEvent_009112a0.cpp no member
+skip rebuild/src/compiled/00/91/cleanup1_GetPNearestBonfire_009170b0.cpp no member
+skip rebuild/src/compiled/00/91/CAIStateGroupBirdStartled_Update_00914600.cpp no member
+skip rebuild/src/compiled/00/91/CAIStateGroupKidHurtSelfRunToMother_Cleanup_00915190.cpp parse
+skip rebuild/src/compiled/00/91/NEntityEventsCEventChildHurtGoToMother_CEventChildHurtGoToMother_009156c0.cpp no member
+edit rebuild/src/compiled/00/91/CAIStateGroupIdleAtHome_Update_00917380.cpp ok mem=unobservedObjectState ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/58/CTCInventory_UseQuickAccessItem_005840a6.cpp not polymorphic
+edit rebuild/src/compiled/00/a3/CClass_CClass_00a372d0.cpp ok mem=PData ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/86/CVillageTaskHorn_IsCreatureMoreAppropriateForTask_00860840.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskPickCrops_IsBetterThan_00860d00.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskTorch_IsCreatureMoreAppropriateForTask_00860650.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskCarryCrate_IsBetterThan_00861670.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskPatrol_RemoveThingFromTask_00860950.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskSecuritySweep_IsBetterThan_00860430.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskSecuritySweep_IsCreatureMoreAppropriateForTask_00860ed0.cpp not polymorphic
+skip rebuild/src/compiled/00/86/CVillageTaskCarryCrate_IsCreatureMoreAppropriateForTask_00861530.cpp not polymorphic
+edit rebuild/src/compiled/00/a5/C3DAnimationStats_GetAllEvents_00a50bf0.cpp ok mem=pass9_unread_pointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cd/CBSGateGuard_Main_00cdfb00.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=b00 mirrors=0
+edit rebuild/src/compiled/00/cd/std_copybackward_00cd2c7c.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cd/STLmap_operator_00cd3d2e.cpp ok mem=BaseWord ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/cd/stdvector_erase_00cd3228.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/92/CAIStateGroupMinionGuardGreetPlayer_IsRunnable_00929650.cpp ok mem=unobservedObjectState ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/92/cleanup1_FindPlayerInteractionEvent_0092edc0.cpp no member
+edit rebuild/src/compiled/00/8b/CCreatureActionGoUnderground_Initialise_008b69f0.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+skip rebuild/src/compiled/00/8b/NEntityEventsCEventFiredShot_CEventFiredShot_008bfe20.cpp no member
+edit rebuild/src/compiled/00/8b/CCreatureActionRiseUp_Initialise_008b6a60.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+edit rebuild/src/compiled/00/8b/CCreatureActionGoUnderground_PerformAction_008b75e0.cpp ok mem=IntelligentPointer ren=0 alias=1 stand=- mirrors=0
+edit rebuild/src/compiled/00/4c/CThing_CThing_004c8310.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/82/STLlist_removeif_0082c770.cpp not polymorphic
+skip rebuild/src/compiled/00/82/STLlist_removeif_0082c6e0.cpp not polymorphic
+edit rebuild/src/compiled/00/82/CScriptedMapBrush_RemoveThing_0082e500.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=v00 mirrors=1
+edit rebuild/src/compiled/00/82/CScriptedMapBrush_CScriptedMapBrush_00827040.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/82/CScriptedMapBrush_CScriptedMapBrush_0082e6e0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+skip rebuild/src/compiled/00/82/std_CThingPosAndOrientation_0082f5c0.cpp other CBaseObject.h include
+skip rebuild/src/compiled/00/82/CThingBuilding_DrawGetEditDrawInfo_0082d0d0.cpp other CBaseObject.h include
+edit rebuild/src/compiled/00/82/CScriptedMapBrush_CScriptedMapBrush_0082e600.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CCham_Main_00ef84d0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CMRestartMarker_Main_00ef34a0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CCham_Main_00ef3aa0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Main_00ef87d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe4b0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CGhostDude_Main_00ef45b0.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CGift_Main_00efd740.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efca00.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp ok mem=IntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/Cwelcomeguy_Main_00efab40.cpp ok mem=m_pIntelligentPointer ren=0 alias=0 stand=- mirrors=0
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp ok mem=m_pIntelligentPointer ren=1 alias=0 stand=b000 mirrors=0

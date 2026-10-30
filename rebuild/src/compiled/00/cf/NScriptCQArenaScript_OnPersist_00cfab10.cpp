@@ -59,12 +59,10 @@ public:
     virtual bool MsgIsUsedBy(const CCharString& user) const;       // slot 20 (+0x50)
     CCountedPointer<CScriptThing> PImp;                   // +0x04 Data, +0x08 Info
 };
-class CGameScriptInterfaceBase {                     // the script interface (vtable of CGameScriptInterface 0x01260F0C;
-public:                                               //   named slots: ghidra_out/cgsi_slots_aligned.tsv, the rest are fillers)
-    virtual ~CGameScriptInterfaceBase();
-    virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 class CPersistContext;
 class CScriptBase {                                      // retail 0x40 bytes (Ego_r.pdb 0x54 with Dinkumware containers)
 public:

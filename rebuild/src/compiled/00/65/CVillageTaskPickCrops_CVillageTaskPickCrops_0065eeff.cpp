@@ -9,13 +9,8 @@
 // Shape (family M181, representative 0x0065ED08): base, vptr, then the members in declaration order. Size TU (`push [esp+0Ch]`).
 #pragma optimize("s", on)
 class CBaseObjectPointer;
-class CBaseObject {
-protected:
-    CBaseObject();                                        // 0x0099A380
-    virtual ~CBaseObject();
-public:
-    CBaseObjectPointer* IntelligentPointer;               // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CBaseIntelligentPointer {
 public:
     CBaseIntelligentPointer();                            // 0x00A01B10

@@ -12,7 +12,7 @@ class CCharString;
 class C3DVector;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CCountBlock { long References; };
-struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
+template <class T> class CCountedPointer { public:                                // CCountedPointer<CScriptThing>: {Data, Info}
  void* Data;
  CCountBlock* Info;
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
@@ -29,7 +29,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  virtual void SetFriendsWithEverythingFlag(bool on);       // slot 67 (+0x10c) 0x004AB060
  virtual void v68(); virtual void v69(); virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74();
  virtual bool IsAlive() const;                            // slot 75 (+0x12c) 0x004AB130
- CCountedPointer PImp;                                  // +0x04 Data, +0x08 Info
+ CCountedPointer<CScriptThing> PImp;                                  // +0x04 Data, +0x08 Info
  struct InlineCopy { };                                 // tag: the inline copy retail expands at by-value call sites
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
@@ -63,32 +63,8 @@ template<class T> class CArray;
 class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
-typedef long ECameraOp;
-typedef long EClothingCoversArea;
-typedef long ECreatureGroup;
-typedef long ECrime;
-typedef long ECutsceneBehaviour;
-typedef long EDoorTriggerType;
-typedef long EGameAction;
-typedef long EHeroAbility;
-typedef long EHeroTitle;
-typedef long EHeroTrainableStatType;
-typedef long EMiniGameType;
-typedef long EMorality;
-typedef long EMusicSetType;
-typedef long EOpinion;
-typedef long EOpinionAttitudeType;
-typedef long EOpinionDeedType;
-typedef long EOpinionPostDeedType;
-typedef long EOpinionReactionType;
-typedef long EScriptAIPriority;
-typedef long EScriptVillageAttitude;
-typedef long EScriptingStateGroups;
-typedef long ESex;
-typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
-typedef long ETutorialCategory;
-namespace NEntityEvents {typedef long EEventType;}
+#include "engine/fable_nscript_forward.h"   // the PDB enums (ECameraOp, EScriptAIPriority, ...)
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 struct GameCalls {virtual ~GameCalls();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
@@ -941,25 +917,10 @@ class CCharString { public:
  ~CCharString();                                    // 0x0099EAE0
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-class CBaseObject { public:
- void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
-};
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
- CCountedPointerWords PImp;
- CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
- virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
- void Release();                                    // 0x00CD2770
- void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
- void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
- bool IsPerformingScriptTask() const;               // 0x007E7450
- CScriptThing GetScriptThing() const;              // 0x007E7490
- void FollowThing(const CScriptThing& thing, float distance, bool run);   // 0x007E7320
- void ClearCommands();                              // 0x007E7360
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
@@ -985,13 +946,13 @@ void CGift::Main()
    shown = true;
    if (Game->IsGiftRomantic(Me.GetDefName())) {
     if (IsActiveThreadTerminating()) return;
-    Game->AddScreenMessage(Me.GetDefName() + CCharString(" is a romantic gift"), 0);
+    Game->AddScreenMessage(Me.GetDefName() + CCharString(" is a romantic gift"), (ETextGroupSelectionMethod)0);
    } else if (Game->IsGiftFriendly(Me.GetDefName())) {
     if (IsActiveThreadTerminating()) return;
-    Game->AddScreenMessage(Me.GetDefName() + CCharString(" is a friendly gift"), 0);
+    Game->AddScreenMessage(Me.GetDefName() + CCharString(" is a friendly gift"), (ETextGroupSelectionMethod)0);
    } else if (Game->IsGiftOffensive(Me.GetDefName())) {
     if (IsActiveThreadTerminating()) return;
-    Game->AddScreenMessage(Me.GetDefName() + CCharString(" is an offensive gift"), 0);
+    Game->AddScreenMessage(Me.GetDefName() + CCharString(" is an offensive gift"), (ETextGroupSelectionMethod)0);
    }
   }
   if (IsDistanceBetweenThingsOver(Me, Game->GetHero(), 2.0f)) {

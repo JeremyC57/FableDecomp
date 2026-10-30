@@ -60,13 +60,8 @@ template <class T> class CCountedPointer { public:
     }
 };
 class CScriptThing;
-class CBaseObject { public:
-    void* m_pIntelligentPointer;
-protected:
-    CBaseObject();                                       // 0x0099A380
-    CBaseObject& operator=(const CBaseObject& other);    // 0x0099A3B0
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}
 };
@@ -94,18 +89,10 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD4(pa) VPAD2(pb) VPAD1(pc)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(qa) VPAD16(qb) VPAD8(qc) VPAD4(qd) VPAD1(qe)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD256(ra) VPAD32(rb) VPAD8(rc) VPAD2(rd) VPAD1(re)                             // slots 71..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5C8)
-    virtual void FixMovieSequenceCamera(bool fix) const;                             // slot 371 (+0x5CC)
-    VPAD4(sa) VPAD2(sb) VPAD1(sc)                                                    // slots 372..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5EC)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CCutsceneCastMap {                              // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (retail STLport, 12 bytes)
     struct node { unsigned char colour; unsigned char _pad[3]; node* parent; node* left; node* right; unsigned char value[0x24 - 16]; };
     node*         head;

@@ -31,11 +31,8 @@ template<class T> class CDefPointer { public:
         }
     }
 };
-class CBaseObject { public:
-    void* IntelligentPointer;                   // +0x04
-protected:
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CScriptThingImp {                        // complete before the member pointer: single-inheritance 4-byte form
     void DestroySelf();
 };
@@ -44,7 +41,7 @@ struct SCountBlock {                            // the counted pointer's shared 
     void (CScriptThingImp::*Destroy)();         // +0x04
     CScriptThingImp* Object;                    // +0x08
 };
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     CScriptThingImp* Data;                      // +0x00
     SCountBlock*     Info;                      // +0x04
     __forceinline ~CCountedPointer()
@@ -60,12 +57,8 @@ struct CCountedPointer {
         Info = 0;
     }
 };
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    ~CScriptGameResourceObjectBase() { }
-};
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, implicit dtor
-    CCountedPointer PImp;                       // +0x08
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 class CEnginePrimitiveHandle { public:                 // 8 bytes, virtual destructor
     virtual ~CEnginePrimitiveHandle();
     void* Data;

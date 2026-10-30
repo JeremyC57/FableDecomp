@@ -36,12 +36,8 @@ class CCharString { public:
     CCharString();                                     // 0x0099E4B0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject { public:
-    void* m_pIntelligentPointer;
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 template <class T> struct CAllocProxy {               // STLport _STLP_alloc_proxy<T*, T, allocator<T> >
     T* _M_data;
     CAllocProxy(T* p) : _M_data(p) {}

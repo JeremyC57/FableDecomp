@@ -102,16 +102,10 @@ namespace N_006e7b40 { struct CScriptThing : CBaseClass {                       
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
     CScriptThing();                                     // 0x006E7B40
 }; } using N_006e7b40::CScriptThing;
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 CCharString __fastcall operator+(const char* left, const CCharString& right);          // 0x0099F690
@@ -136,13 +130,6 @@ using NScript::CIsThingAlive;
 #pragma inline_depth(0)
 inline CIsThingAlive::~CIsThingAlive() { }
 #pragma inline_depth()
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() { }
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-};
 class CRGBColour { public:                                     // B,G,R,A bytes
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
@@ -231,7 +218,7 @@ void CGuardToLeadTheWay::Main()
         if (IsActiveThreadTerminating())
             return;
     }
-    if (guard.IsScripting())
+    if (guard.IsValid())
         guard.Release();
     while (!Game->StartScriptingEntity(Me, guard, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();

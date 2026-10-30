@@ -27,20 +27,10 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CGameScriptInterface { public:
-    VPAD64(pa) VPAD4(pb) VPAD2(pc)                                                   // slots 0..69
-    virtual const CScriptThing& GetHero();                                           // slot 70 (+0x118)
-    VPAD16(qa) VPAD2(qb)                                                             // slots 71..88
-    virtual void SetTimer(long timer, long time);                                    // slot 89 (+0x164)
-    virtual long GetTimer(long timer) const;                                         // slot 90 (+0x168)
-    VPAD256(ra) VPAD8(rb) VPAD4(rc)                                                  // slots 91..358
-    virtual CCharString GetValidTextEntryNameWithAttitude(const CScriptThing& thing, const CCharString& baseName) const;   // slot 359
-    VPAD4(sa)                                                                        // slots 360..363
-    virtual long AddNewConversation(const CScriptThing& speaker, bool a, bool b) const;   // slot 364 (+0x5B0)
-    virtual void AddPersonToConversation(long conversation, const CScriptThing& person) const;   // slot 365 (+0x5B4)
-    virtual void AddLineToConversation(long conversation, const CCharString& text, bool b, const CScriptThing& speaker,
-                                       const CScriptThing& listener) const;          // slot 366 (+0x5B8)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CQuestScript_Retail {
     unsigned char _pad000[0x88];
     long          RoundsStarted;                        // +0x88

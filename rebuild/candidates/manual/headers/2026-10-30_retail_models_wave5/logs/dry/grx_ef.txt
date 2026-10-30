@@ -1,0 +1,50 @@
+rebuild/src/compiled/00/d6/CHTEAssaultGuard_Main_00d6aea0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d6/CHTEAudience_Main_00d6b240.cpp fixed L1011 MoveToPosition arg3 -> (EScriptEntityMoveType) | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d6/CWillWhisper_Main_00d68810.cpp nofix  
+rebuild/src/compiled/00/d8/CMuteGuardOutsideWoods_Main_00d86150.cpp nofix  
+rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Main_00d8fa30.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d8/CWaitingGuardInWoods_Main_00d86680.cpp nofix  
+rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLarder_Main_00d8f6d0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d7/CHSAScreamingVillager_Main_00d7f880.cpp fixed L996 MoveToPosition arg3 -> (EScriptEntityMoveType) | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d7/CHTGBoss_Main_00d72590.cpp fixed L1001 MoveToPosition arg3 -> (EScriptEntityMoveType) | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d7/CHTGAudience_Main_00d72200.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCSummonerToKill_Main_00d7dd80.cpp nofix  
+rebuild/src/compiled/00/d7/CHTGFreedomFighter_Main_00d701c0.cpp fixed L1047 MoveToPosition arg3 -> (EScriptEntityMoveType) | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d9/CDrinkingHobbe_Main_00d9bf60.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d9/CQHobbeToothWhisper_Main_00d9d030.cpp fixed L121 MoveToThing arg3 -> (EScriptEntityMoveType); L143 MoveToThing arg3 -> (EScriptEntityMoveType) 
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02470.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp nofix  | error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'float' to 'EScriptEntityMoveType'
+rebuild/src/compiled/00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0.cpp nofix  
+rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCInfectedBalverine_Main_00e02950.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/da/CRockTroll_Main_00da5f40.cpp nofix  
+rebuild/src/compiled/00/da/CMinionEscortEnd_Main_00da47a0.cpp nofix  
+rebuild/src/compiled/00/de/CSPInvestigatingGuard_Main_00dedb80.cpp fixed L105 MoveToPosition arg3 -> (EScriptEntityMoveType) 
+rebuild/src/compiled/00/de/CSPDeskGuard_Main_00dedf30.cpp nofix  
+rebuild/src/compiled/00/de/CSPAmbushGuard_Main_00ded540.cpp nofix  
+rebuild/src/compiled/00/de/CSPSecretPassageGuard_Main_00ded810.cpp nofix  
+rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCSummoner1_Main_00e11dc0.cpp fixed L1046 MoveToThing arg3 -> (EScriptEntityMoveType) | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e1/CHKCScreamerPoint_Main_00e1b750.cpp nofix  
+rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d34470.cpp nofix  
+rebuild/src/compiled/00/cf/COracleTablet_RemoveCursedTablets_00cfee30.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/d0/NScriptCQAwakeningTheOracleScriptCNecropolisGate_Main_00d00050.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/ec/CRandomPopulationCreature_Main_00ec1ef0.cpp fixed L175 MoveToPosition arg3 -> (EScriptEntityMoveType) 
+rebuild/src/compiled/00/dc/COrchardFarmWhisper_Main_00dcf0b0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e7/CBountyHuntActivationChecker_Main_00e7f410.cpp nofix  
+rebuild/src/compiled/00/df/CTCBanditHostageKeeper_Main_00dfba60.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/df/CTCGuardSpawnPoint_Main_00df7bf0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Main_00dfb320.cpp fixed L157 StartScriptingEntity arg3 -> (EScriptAIPriority) | error C2371: 'EScriptAIPriority' : redefinition; different basic types
+rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCIsAGuard_Main_00df9710.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e3/CBordelloEntrance_Main_00e3b4a0.cpp nofix  
+rebuild/src/compiled/00/ee/CGlobalGiveHeroItemsFromRewardChestScript_Main_00eec410.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/7e/CTCFireheartMinigame_CTCFireheartMinigame_007e7ed0.cpp nofix  
+rebuild/src/compiled/00/dd/CGuardMotherEscape_Main_00dd84b0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e4/NScriptCVBeardyBaldyScript_CVBeardyBaldyScript_00e4f5b0.cpp nofix  
+rebuild/src/compiled/00/e4/CSafeTrader_Main_00e4a280.cpp nofix  
+rebuild/src/compiled/00/db/COVIDeadFather_Main_00db8300.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e5/CHenchmanRegionExitComment_Main_00e5f8f0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/e5/CHenchmanComment_Main_00e5f2b0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/ea/NScriptCVMazeResearchScriptCHistoryBookcase_Main_00ea7b40.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/ea/NScriptCVMazeResearchScript_CVMazeResearchScript_00ea76e0.cpp nofix  
+rebuild/src/compiled/00/ea/NScriptCVKnotholeGladeGatesScriptCKGGSurpriseBalverine_Main_00ea0b10.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/ef/CGhostDude_Main_00ef45b0.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types
+rebuild/src/compiled/00/ef/CGift_Main_00efd740.cpp nofix  | error C2371: 'ECameraOp' : redefinition; different basic types

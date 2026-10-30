@@ -1,0 +1,229 @@
+006e7820	SAME	243b RELOCATION_MATCH->RELOCATION_MATCH
+006e7920	SAME	182b RELOCATION_MATCH->RELOCATION_MATCH
+008a3340	RELOC_RENAMED	leafsym ?ResetWarningPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWarningPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a61c0	RELOC_RENAMED	leafsym ?ResetKillSelfAndStealableItemAfterReachingDestination@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetKillSelfAndStealableItemAfterReachingDestination@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008aa590	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+008a3b60	RELOC_RENAMED	leafsym ?ResetMaxHeroReactionDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a38a0	RELOC_RENAMED	leafsym ?ResetScriptingStateGroup@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2100	RELOC_RENAMED	leafsym ?SetIgnoringPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a6b10	RELOC_RENAMED	leafsym ?SetDisableHeadLooking@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a7520	RELOC_RENAMED	leafsym ?ResetAvoidRegionExits@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6480	RELOC_RENAMED	leafsym ?ResetAllowedToFollow@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a6dd0	RELOC_RENAMED	leafsym ?SetIsPushableByHero@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetIsPushableByHero@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a7090	RELOC_RENAMED	leafsym ?SetLookForFiniteTime@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetLookForFiniteTime@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008aa0d0	SAME	30b RELOCATION_MATCH->RELOCATION_MATCH
+008a3090	RELOC_RENAMED	leafsym ?ResetMaxGossipPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetMaxGossipPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2de0	RELOC_RENAMED	leafsym ?ResetGossipCounter@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a1240	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+008a5c40	RELOC_RENAMED	leafsym ?ResetRecoverStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetRecoverStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5d30	RELOC_RENAMED	leafsym ?SetTakeStealableItemToRandomDestination@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetTakeStealableItemToRandomDestination@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a5400	RELOC_RENAMED	leafsym ?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a9100	SAME	532b RELOCATION_MATCH->RELOCATION_MATCH
+008a4be0	RELOC_RENAMED	leafsym ?ResetFollowDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2020	RELOC_RENAMED	leafsym ?ResetThankingPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetThankingPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a04c0	SAME	127b RELOCATION_MATCH->RELOCATION_MATCH
+008a40d0	RELOC_RENAMED	leafsym ?ResetActionFrequencyVariation@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a1f30	RELOC_RENAMED	leafsym ?GetThankingPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetThankingPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a1b10	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a2870	RELOC_RENAMED	leafsym ?ResetWanderMinDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a36d0	RELOC_RENAMED	leafsym ?SetScriptingStateGroup@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@W4EScriptingStateGroups@@@Z
+008a6ce0	RELOC_RENAMED	leafsym ?ResetDisableHeadLooking@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a35f0	RELOC_RENAMED	leafsym ?ResetBeerRequestPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetBeerRequestPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a1c50	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+008a3170	RELOC_RENAMED	leafsym ?SetWarningPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetWarningPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a5980	RELOC_RENAMED	leafsym ?ResetStealStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a2ec0	RELOC_RENAMED	leafsym ?SetMaxGossipPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetMaxGossipPhrase@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a2c10	RELOC_RENAMED	leafsym ?SetGossipCounter@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a0720	SAME	155b RELOCATION_MATCH->RELOCATION_MATCH
+008a3d20	RELOC_RENAMED	leafsym ?GetActionFrequency@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetActionFrequency@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a56c0	RELOC_RENAMED	leafsym ?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a7350	RELOC_RENAMED	leafsym ?SetAvoidRegionExits@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a5140	RELOC_RENAMED	leafsym ?ResetTimeToSpendHarassingHero@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a1360	SAME	553b RELOCATION_MATCH->RELOCATION_MATCH
+008a4f70	RELOC_RENAMED	leafsym ?SetTimeToSpendHarassingHero@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a4480	RELOC_RENAMED	leafsym ?SetFaceHeroForAction@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a9dd0	SAME	34b RELOCATION_MATCH->RELOCATION_MATCH
+008a7260	RELOC_RENAMED	leafsym ?ResetLookForFiniteTime@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetLookForFiniteTime@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3e10	RELOC_RENAMED	leafsym ?ResetActionFrequency@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3500	RELOC_RENAMED	leafsym ?GetBeerRequestPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetBeerRequestPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a2cf0	RELOC_RENAMED	leafsym ?GetGossipCounter@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetGossipCounter@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a1e50	RELOC_RENAMED	leafsym ?SetThankingPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetThankingPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a5f00	RELOC_RENAMED	leafsym ?ResetTakeStealableItemToRandomDestination@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetTakeStealableItemToRandomDestination@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a22d0	RELOC_RENAMED	leafsym ?ResetIgnoringPhrase@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3c40	RELOC_RENAMED	leafsym ?SetActionFrequency@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@J@Z
+008a3420	RELOC_RENAMED	leafsym ?SetBeerRequestPhrase@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetBeerRequestPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z
+008a4e90	RELOC_RENAMED	leafsym ?ResetAttackHeroOnSight@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a5a70	RELOC_RENAMED	leafsym ?SetRecoverStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetRecoverStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a2fa0	RELOC_RENAMED	leafsym ?GetMaxGossipPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetMaxGossipPhrase@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a2b30	RELOC_RENAMED	leafsym ?ResetWanderMaxDistance@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a1a10	SAME	159b RELOCATION_MATCH->RELOCATION_MATCH
+008a09b0	SAME	108b RELOCATION_MATCH->RELOCATION_MATCH
+008a5050	RELOC_RENAMED	leafsym ?GetTimeToSpendHarassingHero@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetTimeToSpendHarassingHero@CGameScriptInterface@@UAEJVCScriptThing@@@Z
+008a6fa0	RELOC_RENAMED	leafsym ?ResetIsPushableByHero@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetIsPushableByHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a4650	RELOC_RENAMED	leafsym ?ResetFaceHeroForAction@CGameScriptInterface@@QAEXVCScriptThing@@@Z -> ?ResetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+008a3250	RELOC_RENAMED	leafsym ?GetWarningPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetWarningPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+008a62b0	RELOC_RENAMED	leafsym ?SetAllowedToFollow@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a57b0	RELOC_RENAMED	leafsym ?SetStealStealableItems@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a4cc0	RELOC_RENAMED	leafsym ?SetAttackHeroOnSight@CGameScriptInterface@@QAEXVCScriptThing@@E@Z -> ?SetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z
+008a21e0	RELOC_RENAMED	leafsym ?GetIgnoringPhrase@CGameScriptInterface@@QAEKVCScriptThing@@@Z -> ?GetIgnoringPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z
+00898ec0	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+00899060	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+0089a1b0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+0089eaa0	SAME	112b RELOCATION_MATCH->RELOCATION_MATCH
+0089c7b0	RELOC_RENAMED	leafsym ?EntityPostOpinionDeedKeepSearchingForWitnesses@CGameScriptInterface@@UBEJABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedKeepSearchingForWitnesses@CGameScriptInterface@@UBEJABVCScriptThing@@W4EOpinionDeedType@@0@Z
+0089a150	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00892b50	SAME	197b RELOCATION_MATCH->RELOCATION_MATCH
+008966c0	RELOC_RENAMED	leafsym ?GetNumberOfKeysNeededToUnlockChest@CGameScriptInterface@@QBEJABVCScriptThing@@AAVCCharString@@@Z -> ?GetNumberOfKeysNeededToUnlockChest@CGameScriptInterface@@UBEJABVCScriptThing@@AAVCCharString@@@Z
+00899390	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+00895010	RELOC_RENAMED	leafsym ?EntitySetAsReceivingEvents@CGameScriptInterface@@QBE_NABVCScriptThing@@_N@Z -> ?EntitySetAsReceivingEvents@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+00890ba0	RELOC_RENAMED	leafsym ?EntitySheatheWeapons@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0089b3f0	SAME	96b RELOCATION_MATCH->RELOCATION_MATCH
+0089b450	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00899400	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+0089aff0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+00890990	SAME	38b RELOCATION_MATCH->RELOCATION_MATCH
+0089fd20	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+00899850	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+00894490	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+0089a390	RELOC_RENAMED	leafsym ?EntitySetAsPickLocked@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsPickLocked@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00894820	RELOC_RENAMED	leafsym ?CreateObject@CGameScriptInterface@@QBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z -> ?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0@Z
+00898e60	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00892c20	SAME	204b RELOCATION_MATCH->RELOCATION_MATCH
+00899b10	SAME	140b RELOCATION_MATCH->RELOCATION_MATCH
+008990c0	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00891db0	RELOC_RENAMED	leafsym ?IsRegionDefLoaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsRegionDefLoaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00892cf0	RELOC_RENAMED	leafsym ?SetCreatureGeneratorsEnabled@CGameScriptInterface@@QBEXABVCCharString@@_N@Z -> ?SetCreatureGeneratorsEnabled@CGameScriptInterface@@UBEXABVCCharString@@_N@Z
+008994e0	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00890470	RELOC_RENAMED	leafsym ?EntitySetAsPickPocketed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsPickPocketed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00894950	SAME	324b RELOCATION_MATCH->RELOCATION_MATCH
+0089c670	RELOC_RENAMED	leafsym ?EntityPostOpinionDeedToRecipient@CGameScriptInterface@@UBEXABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedToRecipient@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionDeedType@@0@Z
+0089d7c0	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+00898ac0	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+0089e780	SAME	140b RELOCATION_MATCH->RELOCATION_MATCH
+00899470	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+00898a50	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+008997e0	SAME	97b RELOCATION_MATCH->RELOCATION_MATCH
+00897c90	SAME	89b RELOCATION_MATCH->RELOCATION_MATCH
+00897880	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+0089a490	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+008998c0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+0089b2b0	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+00897b70	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+00899290	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+00897c30	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+008995d0	SAME	176b RELOCATION_MATCH->RELOCATION_MATCH
+0089d600	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00897a30	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00899310	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+0089eb10	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+0089f4a0	SAME	1134b RELOCATION_MATCH->RELOCATION_MATCH
+00897b10	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+0089aa70	RELOC_RENAMED	leafsym ?GetFurthestWithDefName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetFurthestWithDefName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+00899e90	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+00892d80	RELOC_RENAMED	leafsym ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsCreatureGenerationEnabledForRegion@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+00898f40	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+0089bf80	SAME	115b RELOCATION_MATCH->RELOCATION_MATCH
+00897940	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+0089fc80	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00897560	SAME	199b RELOCATION_MATCH->RELOCATION_MATCH
+0089af30	RELOC_RENAMED	leafsym ?RemoveAllCutSceneSkippedMessages@CGameScriptInterface@@QAEXXZ -> ?RemoveAllCutSceneSkippedMessages@CGameScriptInterface@@UBEXXZ
+0089d9d0	SAME	156b RELOCATION_MATCH->RELOCATION_MATCH
+00897480	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+00898410	RELOC_RENAMED	leafsym ?SetHeroWeaponsAsUsable@CGameScriptInterface@@QBEX_N@Z -> ?SetHeroWeaponsAsUsable@CGameScriptInterface@@UBEX_N@Z
+00897220	RELOC_RENAMED	leafsym ?IsObjectInThingsPossession@CGameScriptInterface@@QBE_NABVCCharString@@ABVCScriptThing@@@Z -> ?IsObjectInThingsPossession@CGameScriptInterface@@UBE_NABVCCharString@@ABVCScriptThing@@@Z
+0089c710	RELOC_RENAMED	leafsym ?EntityPostOpinionDeedToRecipientVillage@CGameScriptInterface@@UBEXABVCScriptThing@@J0@Z -> ?EntityPostOpinionDeedToRecipientVillage@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionDeedType@@0@Z
+0089e710	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+0089bc50	SAME	122b RELOCATION_MATCH->RELOCATION_MATCH
+008981c0	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+008924b0	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00899000	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00891ef0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+008946e0	RELOC_RENAMED	leafsym ?CreateObjectOnEntity@CGameScriptInterface@@QBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z -> ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+0089bbc0	SAME	130b RELOCATION_MATCH->RELOCATION_MATCH
+0089d0e0	SAME	126b RELOCATION_MATCH->RELOCATION_MATCH
+0089a330	SAME	94b RELOCATION_MATCH->RELOCATION_MATCH
+0089fe20	SAME	133b RELOCATION_MATCH->RELOCATION_MATCH
+00897cf0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+00899220	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+00899700	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+008906c0	RELOC_RENAMED	leafsym ?AddNewConversation@CGameScriptInterface@@QBEJABVCScriptThing@@_N1@Z -> ?AddNewConversation@CGameScriptInterface@@UBEJABVCScriptThing@@_N1@Z
+00899680	SAME	116b RELOCATION_MATCH->RELOCATION_MATCH
+00899930	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+00898fa0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+0089d3a0	SAME	124b RELOCATION_MATCH->RELOCATION_MATCH
+00892530	SAME	211b RELOCATION_MATCH->RELOCATION_MATCH
+0089ea30	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+00899f90	SAME	106b RELOCATION_MATCH->RELOCATION_MATCH
+0089d8b0	SAME	85b RELOCATION_MATCH->RELOCATION_MATCH
+00897bd0	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+00898340	RELOC_RENAMED	leafsym ?SetHeroWillAsUsable@CGameScriptInterface@@QBEX_N@Z -> ?SetHeroWillAsUsable@CGameScriptInterface@@UBEX_N@Z
+008904e0	RELOC_RENAMED	leafsym ?EntitySetAsStolen@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntitySetAsStolen@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+00899a90	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+00899770	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00891e30	RELOC_RENAMED	leafsym ?GetWanderingPopulationScriptDefNameInRegion@CGameScriptInterface@@QBEXABVCCharString@@AAV2@@Z -> ?GetWanderingPopulationScriptDefNameInRegion@CGameScriptInterface@@UBEXABVCCharString@@AAV2@@Z
+00898c40	SAME	355b RELOCATION_MATCH->RELOCATION_MATCH
+00891ea0	SAME	77b RELOCATION_MATCH->RELOCATION_MATCH
+00897d50	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+008973a0	RELOC_RENAMED	leafsym ?IsPlayerCarryingItemOfType@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsPlayerCarryingItemOfType@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+0089ef30	SAME	88b RELOCATION_MATCH->RELOCATION_MATCH
+008991a0	SAME	125b RELOCATION_MATCH->RELOCATION_MATCH
+00896ee0	SAME	125b RELOCATION_MATCH->RELOCATION_MATCH
+0089e810	SAME	110b RELOCATION_MATCH->RELOCATION_MATCH
+0089b530	SAME	117b RELOCATION_MATCH->RELOCATION_MATCH
+008999a0	SAME	104b RELOCATION_MATCH->RELOCATION_MATCH
+0089a510	RELOC_RENAMED	leafsym ?GetNearestWithScriptName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetNearestWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+00890c10	RELOC_RENAMED	leafsym ?EntityUnsheatheWeapons@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntityUnsheatheWeapons@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0089e540	RELOC_RENAMED	leafsym ?GiveHeroYesNoQuestion@CGameScriptInterface@@QBEXABVCCharString@@000_N@Z -> ?GiveHeroYesNoQuestion@CGameScriptInterface@@UBEXABVCCharString@@000_N@Z
+00890550	RELOC_RENAMED	leafsym ?IsRegionLoadedAndPreloaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsRegionLoadedAndPreloaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+0089a000	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+0089e950	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+008968c0	SAME	366b RELOCATION_MATCH->RELOCATION_MATCH
+00899560	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+0089d830	SAME	121b RELOCATION_MATCH->RELOCATION_MATCH
+00894dd0	RELOC_RENAMED	leafsym ?EntitySetAsMarryable@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsMarryable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+00892410	SAME	153b RELOCATION_MATCH->RELOCATION_MATCH
+00892610	SAME	184b RELOCATION_MATCH->RELOCATION_MATCH
+0089e8e0	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+00899a10	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+008979c0	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+00897db0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+0089a880	RELOC_RENAMED	leafsym ?GetNearestWithDefName@CGameScriptInterface@@QBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z -> ?GetNearestWithDefName@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+0089b4d0	SAME	91b RELOCATION_MATCH->RELOCATION_MATCH
+008926d0	SAME	167b RELOCATION_MATCH->RELOCATION_MATCH
+0089bb30	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00899140	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+00899e10	SAME	123b RELOCATION_MATCH->RELOCATION_MATCH
+0089fda0	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00897aa0	SAME	100b RELOCATION_MATCH->RELOCATION_MATCH
+008977f0	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+0089ed80	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+0089b0b0	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+00894b90	SAME	95b RELOCATION_MATCH->RELOCATION_MATCH
+0088e7b0	RELOC_RENAMED	leafsym ?EntitySetMaxWalkingSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@M@Z -> ?EntitySetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+0088e260	SAME	52b RELOCATION_MATCH->RELOCATION_MATCH
+0088e5a0	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+0088f4d0	RELOC_RENAMED	leafsym ?EntityEnableGravity@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntityEnableGravity@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e750	RELOC_RENAMED	leafsym ?EntitySetMaxRunningSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@M@Z -> ?EntitySetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+0088e6f0	RELOC_RENAMED	leafsym ?AreEntitiesEnemies@CGameScriptInterface@@QBE_NABVCScriptThing@@0@Z -> ?AreEntitiesEnemies@CGameScriptInterface@@UBE_NABVCScriptThing@@0@Z
+0088e480	RELOC_RENAMED	leafsym ?ClearThingHasInformation@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?ClearThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088e220	RELOC_RENAMED	leafsym ?IsEntityPickPocketable@CGameScriptInterface@@QBE_NABVCScriptThing@@@Z -> ?IsEntityPickPocketable@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+0088e030	RELOC_RENAMED	leafsym ?OverrideAutomaticHouseLocking@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?OverrideAutomaticHouseLocking@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e9f0	RELOC_RENAMED	leafsym ?EntitySetAsDrawable@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsDrawable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e5f0	RELOC_RENAMED	leafsym ?EntitySetShotAccuracyPercentage@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?EntitySetShotAccuracyPercentage@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+0088ff80	RELOC_RENAMED	leafsym ?ResetToDefaultThemeAllInternals@CGameScriptInterface@@QBEXM@Z -> ?ResetToDefaultThemeAllInternals@CGameScriptInterface@@UBEXM@Z
+0088f570	RELOC_RENAMED	leafsym ?Play2DSound@CGameScriptInterface@@QBEJABVCCharString@@@Z -> ?Play2DSound@CGameScriptInterface@@UBEKABVCCharString@@@Z
+0088e1c0	RELOC_RENAMED	leafsym ?EntitySetMaxHealth@CGameScriptInterface@@QBEXABVCScriptThing@@M_N@Z -> ?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+0088e410	RELOC_RENAMED	leafsym ?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsHiddenOnMiniMap@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088e810	RELOC_RENAMED	leafsym ?EntityResetMaxRunningSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityResetMaxRunningSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088ec20	RELOC_RENAMED	leafsym ?EntitySetAsUseMovementInActions@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsUseMovementInActions@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088ea90	RELOC_RENAMED	leafsym ?EntitySetAsRespondToHit@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?EntitySetAsRespondToHit@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088ea20	RELOC_RENAMED	leafsym ?EntitySetCutsceneBehaviour@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?EntitySetCutsceneBehaviour@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECutsceneBehaviour@@@Z
+0088e870	RELOC_RENAMED	leafsym ?EntityResetMaxWalkingSpeed@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityResetMaxWalkingSpeed@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088eb30	RELOC_RENAMED	leafsym ?EntitySetAsKillable@CGameScriptInterface@@QBEXABVCScriptThing@@_N1@Z -> ?EntitySetAsKillable@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+0088e8d0	RELOC_RENAMED	leafsym ?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@QBEXAAVCScriptThing@@@Z -> ?EntitySetAsRemoveAllMovementBlockingModes@CGameScriptInterface@@UBEXAAVCScriptThing@@@Z
+0088f670	RELOC_RENAMED	leafsym ?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@QBEXABVCScriptThing@@_N@Z -> ?SetEntityAsFollowingHeroThroughTeleporters@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+0088fd00	RELOC_RENAMED	leafsym ?EntitySetInLimbo@CGameScriptInterface@@QBEXABVCScriptThing@@_N1@Z -> ?EntitySetInLimbo@CGameScriptInterface@@UBEXABVCScriptThing@@_N1@Z
+0088fd90	RELOC_RENAMED	leafsym ?SetCreatureNotReload@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?SetCreatureNotReload@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+0088e2a0	RELOC_RENAMED	leafsym ?IsLevelLoaded@CGameScriptInterface@@QBE_NABVCCharString@@@Z -> ?IsLevelLoaded@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+0088e440	RELOC_RENAMED	leafsym ?SetThingHasInformation@CGameScriptInterface@@QBEXABVCScriptThing@@_N11@Z -> ?SetThingHasInformation@CGameScriptInterface@@UBEXABVCScriptThing@@_N11@Z
+0088f530	RELOC_RENAMED	leafsym ?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@QBEXABVCScriptThing@@@Z -> ?EntityBeginLoadingBasicAnimations@CGameScriptInterface@@UBEXABVCScriptThing@@@Z

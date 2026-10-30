@@ -939,12 +939,8 @@ class CCharString { public:
  ~CCharString();                                    // 0x0099EAE0
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-class CBaseObject { public:
- void* m_pIntelligentPointer;
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }

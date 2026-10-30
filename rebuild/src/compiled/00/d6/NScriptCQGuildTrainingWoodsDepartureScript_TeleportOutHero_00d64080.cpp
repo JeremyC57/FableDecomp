@@ -5,9 +5,6 @@
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
-#define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBase_HeaderLayout
-#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-#undef CScriptGameResourceObjectScriptedThingBase
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -36,9 +33,9 @@ template<class V>class CCompareString{public:bool operator()(const std::pair<CCh
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
-class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
-class CScriptGameResourceObjectBase:public CBaseObject{};
-class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase{public:CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
 class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing(){}CScriptThing(const CScriptThing& s): CBaseClass(s), PImp(s.PImp){}virtual ~CScriptThing(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){}virtual void UnknownSlot10(){}virtual void UnknownSlot11(){}virtual void UnknownSlot12(){}virtual void UnknownSlot13(){}virtual void UnknownSlot14(){}virtual void UnknownSlot15(){}virtual void UnknownSlot16(){}virtual void UnknownSlot17(){}virtual bool MsgIsKilledBy(const CCharString& who)const{if(!PImp.Data)return false;return PImp->MsgIsKilledBy(who);}};
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
 class CScriptBase:public CBaseClassNonCopyable{public:bool IsActiveThreadTerminating();

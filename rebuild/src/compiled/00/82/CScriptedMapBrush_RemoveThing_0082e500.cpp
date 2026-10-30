@@ -39,12 +39,8 @@ public:
     CCharString();                                          // 0x0099E4B0
     CCharString(const CCharString& other);                  // 0x0099EC30
 };
-class CBaseObject {
-public:
-    virtual void v00();
-    void* IntelligentPointer;                               // +0x04
-    CBaseObject();                                          // 0x0099A380
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 namespace std {
 template <class T> class allocator {
@@ -199,7 +195,6 @@ public:
     CCharString                                                      BrushName;             // +0x48
     float                                                            CreationTimeSeconds;   // +0x4c
     long                                                             CreationPattern;       // +0x50
-    virtual void v00();
     CScriptedMapBrush();
     CScriptedMapBrush(const CScriptedMapBrushInit& init);
     void RemoveThing(unsigned __int64 uid);

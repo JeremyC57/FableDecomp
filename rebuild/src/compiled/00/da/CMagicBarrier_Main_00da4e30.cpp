@@ -95,18 +95,10 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
     VPAD64(t11_0)                                                                                        // slots 11..74
     virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c), out of line 0x004AB130
 };
-class CGameScriptInterface { public:                              // vtable 0x01260F0C
-    VPAD4(p0_0) VPAD2(p0_1) VPAD1(p0_2)                                          // slots 0..6
-    virtual void NewScriptFrame() const;                                         // slot 7 (+0x1c)
-    VPAD64(p8_0) VPAD16(p8_1) VPAD8(p8_2) VPAD4(p8_3)                            // slots 8..99
-    virtual CScriptThing CreateEffect(const CCharString& name, const C3DVector& pos, const CCharString& bone, float angle, bool b1, bool b2) const;   // slot 100 (+0x190)
-    VPAD4(p101_0) VPAD2(p101_1) VPAD1(p101_2)                                    // slots 101..107
-    virtual void RemoveThing(const CScriptThing& thing, bool unused, bool fade) const;   // slot 108 (+0x1b0)
-    VPAD128(p109_0) VPAD32(p109_1) VPAD4(p109_2) VPAD1(p109_3)                   // slots 109..273
-    virtual void HeroReceiveMessageFromGuildMaster(const CCharString& text, const CCharString& sound, bool important, bool blocking) const;   // slot 274 (+0x448)
-    VPAD128(p275_0) VPAD64(p275_1) VPAD4(p275_2) VPAD2(p275_3) VPAD1(p275_4)     // slots 275..473
-    virtual void EntitySetFacingAngle(const CScriptThing& entity, float angle, bool b) const;   // slot 474 (+0x768)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 namespace NScript {
 class CPredicateBase { public: virtual bool operator()() const = 0; virtual CPredicateBase* Clone() const = 0; };
 class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0

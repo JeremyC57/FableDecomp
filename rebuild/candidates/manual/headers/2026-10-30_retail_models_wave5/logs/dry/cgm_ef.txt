@@ -1,0 +1,58 @@
+rebuild/src/compiled/00/e6/CDFThunderHelmet_Main_00e6f1c0.cpp nofix  
+rebuild/src/compiled/00/e6/CDFShineLight_Main_00e6ea30.cpp nofix  
+rebuild/src/compiled/00/e6/CDFCombatMult_Main_00e6f710.cpp nofix  
+rebuild/src/compiled/00/d8/CSoulInfoAcolyte_Main_00d86c30.cpp nofix  
+rebuild/src/compiled/00/d7/CEndBriarRose_Main_00d7a360.cpp nofix  
+rebuild/src/compiled/00/d7/CEndScythe_Main_00d79d50.cpp nofix  
+rebuild/src/compiled/00/ed/CTBBardSpawnPoint_Main_00ed8120.cpp nofix  
+rebuild/src/compiled/00/ed/CVSwordInTheStoneScript_Init_00ed4b10.cpp nofix  
+rebuild/src/compiled/00/ed/NScriptCVStatueMasterScript_GetStatuePointingPosition_00ed4420.cpp nofix  
+rebuild/src/compiled/00/ed/CVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0.cpp nofix  
+rebuild/src/compiled/00/e0/CRockTrollTrigger_Main_00e0ad40.cpp nofix  
+rebuild/src/compiled/00/e0/CDarkwoodAssassinSpawn_Main_00e02e50.cpp nofix  
+rebuild/src/compiled/00/e0/CFleeingWoman_Main_00e0f4e0.cpp nofix  
+rebuild/src/compiled/00/d2/CBowerstoneIntroGuard_Main_00d246c0.cpp nofix  
+rebuild/src/compiled/00/da/CCorneredGuard_Main_00da7830.cpp nofix  
+rebuild/src/compiled/00/da/CBalverineFightingGuard_Main_00da6d50.cpp nofix  
+rebuild/src/compiled/00/da/CMinionWarningGuard_Main_00da9c70.cpp nofix  
+rebuild/src/compiled/00/da/CMagicBarrier_Main_00da4e30.cpp nofix  
+rebuild/src/compiled/00/da/CMinionFieldGenerator_Main_00daa260.cpp nofix  
+rebuild/src/compiled/00/da/CMinionTrollSummoner_Main_00daa700.cpp nofix  
+rebuild/src/compiled/00/de/CRansomRevenge_Main_00de3830.cpp nofix  
+rebuild/src/compiled/00/de/CSPInvestigatingGuard_Main_00dedb80.cpp nofix  
+rebuild/src/compiled/00/de/CSPDeskGuard_Main_00dedf30.cpp nofix  
+rebuild/src/compiled/00/de/CSPUndeadTrigger_Main_00def760.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/de/CRandomAttacker_Main_00de21d0.cpp nofix  
+rebuild/src/compiled/00/de/CSPSecretPassageGuard_Main_00ded810.cpp nofix  
+rebuild/src/compiled/00/de/CSPScreamerTrigger_Main_00def3b0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetResidency_008a1cc0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetValidTextEntryNameWithAttitude_008920c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraUseCameraPoint_008922f0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraUseCameraPoint_00892380.cpp nofix  
+rebuild/src/compiled/00/d3/CFHPrisoner_MakeRoundStartComment_00d3a9b0.cpp nofix  
+rebuild/src/compiled/00/ec/CRandomPopulationCreature_Main_00ec1ef0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/d1/CBHGangGrunt_Main_00d15a40.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/f1/CSUMMONEDCREATURE_Main_00f1b220.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCCSPlayCutsceneScript_Main_00f01480.cpp nofix  
+rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_ArenaIntroduction_00f02210.cpp nofix  
+rebuild/src/compiled/00/e7/CDFSexMad_Main_00e73930.cpp nofix  
+rebuild/src/compiled/00/e7/CDFEatPies_Main_00e71450.cpp nofix  
+rebuild/src/compiled/00/e7/CDFGiveGift_Main_00e71980.cpp nofix  
+rebuild/src/compiled/00/e7/CDFMarryLadyGrey_Main_00e73410.cpp nofix  
+rebuild/src/compiled/00/e2/CQSScytheInfoScript_PlayCutscene_00e2a900.cpp nofix  
+rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp nofix  
+rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForClosingTime_00ee4a00.cpp nofix  
+rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScript_Init_00ee6d60.cpp nofix  
+rebuild/src/compiled/00/ee/CExpressionWaitScript_Main_00eea460.cpp nofix  
+rebuild/src/compiled/00/ee/CDemonDoorFace_Main_00ee7a20.cpp nofix  
+rebuild/src/compiled/00/ee/CExpressionDigScript_Main_00eea7c0.cpp nofix  
+rebuild/src/compiled/00/ee/CExpressionPicklockScript_Main_00eeb7b0.cpp nofix  
+rebuild/src/compiled/00/dd/CPrisonRaceWarden_Main_00ddd030.cpp nofix  
+rebuild/src/compiled/00/e4/CBlockingBandit_Main_00e49980.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/e4/CSafeTrader_Main_00e4a280.cpp nofix  
+rebuild/src/compiled/00/e4/CTollBanditScript_HandleBanditToll_00e4e0e0.cpp nofix  
+rebuild/src/compiled/00/e5/CBSTeacher_LookForBook_00e57530.cpp nofix  
+rebuild/src/compiled/00/e5/CBSTeacher_GetBookSpecificArgs_00e57020.cpp nofix  
+rebuild/src/compiled/00/ea/CEmptyGrave_Main_00ea8130.cpp nofix  
+rebuild/src/compiled/00/ef/CScrumpyCrate_Main_00ef2ba0.cpp nofix  
+rebuild/src/compiled/00/ef/Cwelcomeguy_Main_00efab40.cpp nofix  

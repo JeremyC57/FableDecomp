@@ -56,12 +56,8 @@ struct CIsThingConscious {                               // NScript predicate, v
     virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
 };
 
-class CBaseObject { public:                                     // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
-    void* IntelligentPointer;                            // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectBase : public CBaseObject { public:     // vtable 0x0126008C
     virtual ~CScriptGameResourceObjectBase() {}

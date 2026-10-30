@@ -22,11 +22,8 @@
 #pragma optimize("s", on)
 class CThing;
 class CCPPointerInfo;
-class CBaseObject {
-public:
-    virtual ~CBaseObject();
-    virtual void Validate();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CVillageTaskBase : public CBaseObject {
 public:
     virtual long GetTaskType() const;

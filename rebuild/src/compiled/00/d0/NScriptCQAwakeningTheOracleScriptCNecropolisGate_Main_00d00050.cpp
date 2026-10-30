@@ -135,32 +135,8 @@ template<class T> class CArray;
 class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
-typedef long ECameraOp;
-typedef long EClothingCoversArea;
-typedef long ECreatureGroup;
-typedef long ECrime;
-typedef long ECutsceneBehaviour;
-typedef long EDoorTriggerType;
-typedef long EGameAction;
-typedef long EHeroAbility;
-typedef long EHeroTitle;
-typedef long EHeroTrainableStatType;
-typedef long EMiniGameType;
-typedef long EMorality;
-typedef long EMusicSetType;
-typedef long EOpinion;
-typedef long EOpinionAttitudeType;
-typedef long EOpinionDeedType;
-typedef long EOpinionPostDeedType;
-typedef long EOpinionReactionType;
-typedef long EScriptAIPriority;
-typedef long EScriptVillageAttitude;
-typedef long EScriptingStateGroups;
-typedef long ESex;
-typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
-typedef long ETutorialCategory;
-namespace NEntityEvents {typedef long EEventType;}
+#include "engine/fable_nscript_forward.h"   // the PDB enums (ECameraOp, EScriptAIPriority, ...)
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 struct GameCalls {virtual ~GameCalls();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
@@ -1012,19 +988,11 @@ class CCharString { public:
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  ~CCharString();                                    // 0x0099EAE0
 };
-struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
-class CBaseObject { public:
- void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
- virtual ~CBaseObject();
-};
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
- CCountedPointerWords PImp;
- CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
- virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
- void Release();                                    // 0x00CD2770
-};
+template <class T> class CCountedPointer { public: void* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 class CTimer { public:                                     // 4 bytes: an index into the global script timers
  long TimerIndex;

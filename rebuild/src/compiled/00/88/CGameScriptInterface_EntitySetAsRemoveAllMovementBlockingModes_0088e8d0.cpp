@@ -75,17 +75,10 @@ class CScriptThing { public:
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                 World;                           // +0x04 (engine/CGameScriptInterface.h)
-    long                    Component;
-    CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
-    long                    DefinitionManager;
-    CPlayerManager_Retail*  PlayerManager;                   // +0x14
-    unsigned char           _pad18[0x15];
-    bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d
-    void EntitySetAsRemoveAllMovementBlockingModes(CScriptThing& thing) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 void CGameScriptInterface::EntitySetAsRemoveAllMovementBlockingModes(CScriptThing& thing) const
 {

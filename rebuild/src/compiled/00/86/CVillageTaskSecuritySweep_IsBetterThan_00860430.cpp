@@ -7,7 +7,8 @@
 // Shape: the thing's position is a by-value copy (X/Y kept on the x87 stack, Z copied through ecx); the two deltas
 //   are named locals (this one spilled, the rival's mostly on the stack); `myDist < rivalDist` evaluates left first
 //   (`fcompp ; test ah,41h ; jne`).
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }

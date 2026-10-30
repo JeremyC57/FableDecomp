@@ -6,12 +6,8 @@
 // Vtable 0x0125BE8C is CMessageEvent (rtti-vtables.tsv); the manifest label
 // (CAIStateGroup_BalverineCornered ctor) is propagated garbage. Each pointer member's address
 // is kept in edi across its base constructor call.
-class CBaseObject { public:                        // 8 bytes: vptr + the reference count zeroed by the ctor
-    long m_refCount;                        // +4
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

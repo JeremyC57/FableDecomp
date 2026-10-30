@@ -9,7 +9,8 @@
 //   temporary's compiler-generated destructor runs the base destructor (landed AssignCreatureToTask 0x00860A00 model).
 //   The start pointer's address (edi) is reused as `this` of its SetPItem.
 // Layout (engine/CVillageTaskPatrol.h): PatrolStart +0x08, CreatureAssignedToTask +0x10, TaskLocked +0x18.
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { public: };
 class CThingTrackNode : public CThing { public: };
 struct CBaseIntelligentPointer {

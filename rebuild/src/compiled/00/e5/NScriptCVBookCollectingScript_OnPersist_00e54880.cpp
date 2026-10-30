@@ -34,11 +34,8 @@ public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool>, 0x00410BE0 <long>
     template <class T> void TransferVector(const char* name, std::vector<T>& value);         // 0x00CDCF80 <bool>
 };
-class CBaseObject {                                     // CBaseIntelligentPointer root
-public:
-    virtual ~CBaseObject();                             // 0x0099A430
-    void* m_pIntelligentPointer;                        // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject {   // vtable 0x0127094C, 0x10 bytes
 public:
     void* PImp_Data;                                    // +0x08

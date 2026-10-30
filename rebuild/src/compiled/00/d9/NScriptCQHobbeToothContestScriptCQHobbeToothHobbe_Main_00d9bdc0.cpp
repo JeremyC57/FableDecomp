@@ -16,12 +16,10 @@ public:
     void* PImpData;                                     // +0x04
     void* PImpInfo;                                     // +0x08
 };
-class CGameScriptInterfaceBase {
-public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void NewScriptFrame() const;                // slot 7 (+0x1C)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 namespace NScript {
 class CPredicateBase {
 public:

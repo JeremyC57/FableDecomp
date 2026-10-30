@@ -23,7 +23,8 @@ public:
     CCharStringData* PStringData;
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject : public CBaseClass { };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10

@@ -11,10 +11,8 @@
 //   vtable), so WorldFrame lands before the class vptr. The member's inline (T*) constructor runs the out-of-line base
 //   constructor, stores its own vtable, then SetPItem.
 // Model: local -- the generated engine headers flatten the vptr into a word, which cannot carry these vtables.
-class CBaseObject {
-public:
-    virtual ~CBaseObject();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject { };
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {

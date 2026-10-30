@@ -2,19 +2,12 @@
 // Leaf: ??$__default_constructed@VCThingPosAndOrientation@CScriptedMapBrush@@@std@@YI?AVCThingPosAndOrientation@CScriptedMapBrush@@PAV12@@Z
 // Flags: /Gr
 // Layout: imported raw layouts are implementation projections; true bases are restored below. The outer object is never instantiated here.
-#define CBaseObject CBaseObject_Layout
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #define CScriptedMapBrush CScriptedMapBrush_Layout
 #include "engine/CScriptedMapBrush.h"
 #undef CScriptedMapBrush
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject : public CBaseClass {
-public:
-    CBaseObjectPointer* IntelligentPointer;
-protected:
-    virtual ~CBaseObject();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push, 1)
 class C3DVector {
 public:

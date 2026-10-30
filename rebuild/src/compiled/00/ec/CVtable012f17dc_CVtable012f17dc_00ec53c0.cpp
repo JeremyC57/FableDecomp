@@ -27,12 +27,8 @@ struct CCountedPointerWords {                     // {Data, Info}: a member obje
     CCountedPointerWords() : Data(0), Info(0) { }
 };
 
-class CBaseObject { public:                               // CBaseIntelligentPointer root (vtable 0x0129A7D8, +4 nulled)
-    void* m_pIntelligentPointer;                   // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes (engine header: PImp_Data +8, PImp_Info +0xc)
     CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info

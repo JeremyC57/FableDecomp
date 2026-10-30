@@ -3,11 +3,10 @@
 // Identity: proven; own RTTI class/method slot and both PDB method declaration; real tracked PCreature+8 GetPItem00A01B50; TC bitset+0x20 and map+0x44 LowerBound0040F020; AddMode argument42.
 // Layout: original RTTI CBaseClass/CBaseObject/CCreatureActionBase chain explicit, plus actual CClass/Thing/Physical/GameObject/Creature chain; shared CBaseObject data header included unchanged under alias. GoUnderground immediate base is CCombatActionBase.  shared CTCBase header included unchanged; own component storage is CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> > over CArray/std::vector. Original Components donor+0x48 becomes retail+0x44; Compare/Dirty follow three-pointer data. Both PDB LowerBound template name sets confirm enum and real component base.  generated action/base headers flatten polymorphic inheritance and tracked-pointer APIs; minimal real base/PCreature chain retained. CThing header lacks usable template GetTC and bitset/map APIs, so named projection models actual bitset9 and sorted map. No false-branch pointer initialization invented; N091 requires its TC to exist.
 #include "engine/CTCBase.h"
-#define CBaseObject CBaseObject_HeaderLayout
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CClass:public CBaseObject{public:unsigned char _unmodeled08[0x14-8];};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+class CClass:public CBaseObject{public:unsigned char _unmodeled08[0x14-8];};
 namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};}
 template<class T>class CArray:public std::vector<T>{};
 enum ETCInterfaceType{TC_COMBAT=48,TC_CREATURE_MODE_MANAGER=49};

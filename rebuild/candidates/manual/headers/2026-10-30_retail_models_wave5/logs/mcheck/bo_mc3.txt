@@ -1,0 +1,35 @@
+00830150	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00692f30	SAME	244b RELOCATION_MATCH->RELOCATION_MATCH
+00693b30	SAME	305b RELOCATION_MATCH->RELOCATION_MATCH
+00693dc0	SAME	299b RELOCATION_MATCH->RELOCATION_MATCH
+006e70a0	DIFFER	38v36 grades=False sym=?MakeOne@@YAPAXXZ
+006eb390	DIFFER	622v622 grades=False sym=?SetupNextSequenceForAttacker@CCombatManager@@QAEXAAUCCombatantInfo@@@Z
+00d2c530	SAME	273b RELOCATION_MATCH->RELOCATION_MATCH
+00939e70	DIFFER	90v90 grades=False sym=?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ
+0093b1d0	DIFFER	1011v1011 grades=False sym=?Update@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ
+00ce1110	DIFFER	166v153 grades=False sym=??0CActiveEntityScriptBase@@QAE@ABVCScriptThing@@_KK@Z
+007f6cb0	DIFFER	179v179 grades=False sym=??$GetCompareValueForThing@VCThingCreatureBase@@@CThingCompare_BestCreatureToAttack@@QBEMPAVCThingCreatureBase@@@Z
+007f6bf0	DIFFER	179v179 grades=False sym=??$GetCompareValueForThing@VCThingAICreature@@@CThingCompare_BestCreatureToAttack@@QBEMPAVCThingAICreature@@@Z
+00cabfd0	DIFFER	156v156 grades=False sym=?Clone@CEnumMediaTypes@@UAGJPAPAUIEnumMediaTypes@@@Z
+00cabed0	DIFFER	156v156 grades=False sym=?Clone@CEnumPins@@UAGJPAPAUIEnumPins@@@Z
+00cafce0	DIFFER	138v124 grades=False sym=??0CRendererPosPassThru@@QAE@PBDPAUIUnknown_@@PAJPAUIPin@@@Z
+00ca53f0	SAME	16b MATCH->MATCH
+00cacd00	DIFFER	31v31 grades=False sym=?NonDelegatingAddRef@CUnknown@@UAGKXZ
+00713180	DIFFER	117v117 grades=False sym=??0CActionSummonerLightningAttackTarget@NTCScriptedControl@@QAE@PAVCThing@@@Z
+00958770	DIFFER	95v95 grades=False sym=?GetSomeoneElseGettingHelpMessage@CAIStateGroup_MinionReactToCrime@@AAEPBVCMessageEvent@@J@Z
+00958f00	DIFFER	91v91 grades=False sym=?IsRunnable@CAIStateGroup_MinionReactToCrimeFromSleep@@UAE_NXZ
+0090eec0	DIFFER	515v515 grades=False sym=?Update@CAIStateGroup_MinionKidCalledToMother@@UAEXXZ
+006df8c0	DIFFER	54v54 grades=False sym=??_GCCreatureAction_ShowToSheatheTrophy@@UAEPAXI@Z
+00855100	DIFFER	54v54 grades=False sym=??_GCCreatureAction_SpiritAttack@@UAEPAXI@Z
+0094c010	DIFFER	63v63 grades=False sym=?IsRunnable@CAIStateGroup_SellToBuyer@@UAE_NXZ
+008091a0	RELOC_RENAMED	leafsym ??RCThingFilter_IsTargetableBehind@?A0xf2e9ea24@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z -> ??RCThingFilter_IsTargetableBehind@?A0x2e99df5c@@QBE_NABVCTargetPoint@NPlayerTargeting@@@Z
+00660980	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00660787	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00660a6c	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00660894	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+006609f6	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+0066090a	SAME	118b RELOCATION_MATCH->RELOCATION_MATCH
+00961c50	DIFFER	70v70 grades=False sym=?IsStillRunnable@CAIStateGroup_IceTrollPoundGroundAttack@@ABE_NXZ
+005840a6	DIFFER	177v177 grades=False sym=?UseQuickAccessItem@CTCInventory@@QAEXJ@Z
+0082f5c0	SAME	111b MATCH->MATCH /Gr
+0082d0d0	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH

@@ -39,16 +39,10 @@ class CGameDefinitionManager : public CDefinitionManager_Retail { public: static
 class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
 CThing_Retail* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos, const C3DVector& dir);   // 0x0080C500
 CThing_Retail* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos);                         // 0x0080C460
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent*         Component;         // +0x08
-    CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
-    CThingSearchTools*          ThingSearchTools;  // +0x18
-    virtual CScriptThing CreateExplosion(const CCharString& defName, const C3DVector& pos, const C3DVector* dir, CCharString scriptName) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 CScriptThing CGameScriptInterface::CreateExplosion(const CCharString& defName, const C3DVector& pos, const C3DVector* dir, CCharString scriptName) const
 {

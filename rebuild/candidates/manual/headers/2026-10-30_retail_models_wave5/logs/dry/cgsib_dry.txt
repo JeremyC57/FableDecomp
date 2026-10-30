@@ -1,0 +1,202 @@
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScript_MonitorBanditRegion_00d6ccc0.cpp ok
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_WatchForTermination_00d62140.cpp ok
+skip rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScript_TeleportOutHero_00d66f50.cpp non-virtual items
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCHTEFreedomFighter_Init_00d6a480.cpp ok
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Main_00d6a360.cpp ok
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Main_00d6a220.cpp ok
+skip rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_TeleportOutHero_00d64080.cpp non-virtual items
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsWillScript_WatchForTermination_00d68600.cpp ok
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dd40.cpp non-virtual items
+skip rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5ab40.cpp non-virtual items
+skip rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForTermination_00e69f00.cpp non-virtual items
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCExtraBooty_Main_00d8a8a0.cpp ok
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_OnPredicateFail_00d8a770.cpp ok
+skip rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForGrannysRegion_00d8f040.cpp non-virtual items
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScript_PlayCutscene_00d89ad0.cpp ok
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCNymph_OnPredicateFail_00d8fef0.cpp ok
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCFishermansWife_Init_00d8a700.cpp ok
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_Init_00d8fd90.cpp ok
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Main_00d86a30.cpp ok
+edit rebuild/src/compiled/00/d8/NScriptCQHerosOldHouseScriptCGhostFisherman_Init_00d8a560.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Main_00d7dc50.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_Init_00d71a30.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGGuard_Init_00d705d0.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScript_PlayCutscene_00d7aa30.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Main_00d79c40.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGExecutioner_Init_00d73280.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScript_PlayCutscene_00d7fc70.cpp ok
+edit rebuild/src/compiled/00/d7/NScriptCQHangingTreeGoodScriptCHTGPrisoner_OnPredicateFail_00d71a70.cpp ok
+edit rebuild/src/compiled/00/eb/NScriptCVMurderTwistFinalScriptCMurderTwistAssassin_IsFeelingThreatened_00eb4710.cpp ok
+skip rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Init_00eb7aa0.cpp non-virtual items
+skip rebuild/src/compiled/00/eb/NScriptCVOracleScript_Main_00ebcd70.cpp non-virtual items
+skip rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_OnPredicateFail_00d9b8a0.cpp non-virtual items
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScript_WatchForTermination_00d9b2f0.cpp ok
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJames_OnPredicateFail_00d90050.cpp ok
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Main_00d9bdc0.cpp ok
+skip rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_OnPredicateFail_00d9bf10.cpp non-virtual items
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinion_Init_00d9f160.cpp ok
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJames_Init_00d900e0.cpp ok +derived
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_Init_00d90f40.cpp ok
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30.cpp ok
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCBanditSacrifice_OnPredicateFail_00d90fa0.cpp ok
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCOrchardFarmFarmer_Init_00d9c610.cpp ok
+skip rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForTermination_00edbc80.cpp non-virtual items
+edit rebuild/src/compiled/00/ed/NScriptCVTalentlessBardScript_Main_00ed7830.cpp ok +derived
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_Init_00edae20.cpp ok
+skip rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Init_00ed51e0.cpp non-virtual items
+skip rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Main_00e03480.cpp non-virtual items
+skip rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Init_00e04bd0.cpp local CBaseClass
+skip rebuild/src/compiled/00/6e/CGameScriptInterfaceBase_CGameScriptInterfaceBase_006e7150.cpp non-virtual items
+skip rebuild/src/compiled/00/6e/CGameScriptInterface_scalardeletingdestructor_006e7d50.cpp local CBaseClassNonCopyable
+skip rebuild/src/compiled/00/6e/CGameScriptInterfaceBase_scalardeletingdestructor_006e7180.cpp non-virtual items
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_OnPredicateFail_00d29320.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuard_Init_00d242c0.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCHookCoastTeleporter_Init_00d29020.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameFocalSitesScript_Init_00d2a8a0.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMazeJournal_Init_00d29620.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQDragonBossFightScript_PlayCutscene_00d27050.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQBowerstoneTownLifeIntroScriptCBowerstoneIntroGuardToPosh_Init_00d243e0.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Main_00d293f0.cpp ok
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCMUndeadSpawn_Main_00d29160.cpp ok
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Init_00da5bf0.cpp non-virtual items
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionEscort_Init_00da4540.cpp ok
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Init_00da4c30.cpp non-virtual items
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Init_00da5d40.cpp non-virtual items
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunChantTimer_00da24f0.cpp ok +derived
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Main_00da4b10.cpp ok
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_CQMinionClifftopChaseScript_00da30b0.cpp already
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_Alloc_00daab70.cpp already
+skip rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Init_00da49d0.cpp non-virtual items
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_FindFurthestSpawnPoint_00da0d90.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastMinionCampBriarNoDamage_00ce6970.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastRansomVictimVictimNoDamage_00ce6630.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastRansomVictimSaveVictim_00ce6700.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastRansomVictimHaveVictimKilled_00ce67d0.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastTCGDontKillAnyone_00ce62d0.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastTCEKeepBanditFollowerAlive_00ce6480.cpp ok
+edit rebuild/src/compiled/00/ce/NScriptCHeroBoastsScript_BoastRansomVictimKidnappersKilled_00ce68a0.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScriptCMotherTorture_Init_00dee250.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictim_Init_00de1b60.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsFatherGuard_Init_00de25d0.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQSecretPassageScript_Init_00dec8a0.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Init_00de1e20.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Init_00de1cc0.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Init_00de20c0.cpp ok
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Init_00de1f70.cpp ok
+edit rebuild/src/compiled/00/cb/global_KillAllThingsInVector_00cbed82.cpp ok
+edit rebuild/src/compiled/00/cb/CWideScreenMagicPauseEntities_CWideScreenMagicPauseEntities_00cbe09a.cpp ok
+skip rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Init_00e19390.cpp non-virtual items
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_GuildmasterHelp_00e12b30.cpp ok
+skip rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Alloc_00e9fb40.cpp already
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_Main_00e9c4b0.cpp ok +derived
+skip rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90830.cpp non-virtual items
+edit rebuild/src/compiled/00/e9/NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30.cpp ok +derived
+skip rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_CVIntroductionToTrophiesScript_00e9c360.cpp already
+skip rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_OnPersist_00e9e110.cpp non-virtual items
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Main_00d384a0.cpp ok
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Main_00d37d00.cpp ok
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Init_00d372f0.cpp ok
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHVillager_Init_00d374a0.cpp ok
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCChunkCollectionIndicator_OnPredicateFail_00cfc950.cpp ok
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Main_00cfddc0.cpp non-virtual items
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScript_Init_00cfadd0.cpp ok
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Init_00cfbd90.cpp non-virtual items
+edit rebuild/src/compiled/00/cf/NScriptCQArenaScript_OnPersist_00cfab10.cpp ok
+skip rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Main_00cfcb50.cpp non-virtual items
+edit rebuild/src/compiled/00/cf/NScriptCGameflowAssistanceScript_OnPersist_00cf0560.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardOuter_Init_00d01590.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCGate2Guard1_Init_00d072c0.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScriptCGate1GuardInner_Init_00d02b20.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScript_WatchForTermination_00d04260.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_OnPredicateFail_00d08fb0.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostageGuard_Init_00d08f00.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_WatchForTermination_00d01290.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditKing_OnPredicateFail_00d0a7b0.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage2_Init_00d08720.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCBanditForger_Init_00d0c390.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Main_00d00440.cpp ok
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampBossBattleScriptCCampHostage_Init_00d07dd0.cpp ok
+skip rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Init_00ec0b00.cpp non-virtual items
+skip rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScript_Main_00ec12e0.cpp non-virtual items
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Init_00ec5c90.cpp ok
+skip rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Init_00ec4540.cpp non-virtual items
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCIngredientOwner_Init_00ecb050.cpp ok
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScript_PlayCutscene_00ece460.cpp ok
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Init_00ecbd50.cpp non-virtual items
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCWomanToAttract_Init_00ecd380.cpp ok
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_Init_00ec8210.cpp head
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Init_00ec5da0.cpp ok
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader2_Init_00ecca30.cpp non-virtual items
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScript_Init_00ec5420.cpp ok
+skip rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Init_00ec6860.cpp non-virtual items
+skip rebuild/src/compiled/00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Init_00e83a20.cpp local CBaseClass
+skip rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_OnPersist_00e8d2a0.cpp non-virtual items
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCBanditAttacker_Init_00d1f5c0.cpp ok
+skip rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00.cpp non-virtual items
+skip rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage1Killed_00d16920.cpp non-virtual items
+edit rebuild/src/compiled/00/d1/NScriptCQBreakSiegeScriptCImprisonedBanditLeader_Init_00d1e1b0.cpp ok
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCArtefact_Init_00dcfa10.cpp ok
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScript_DepopulateLevel_00dc0830.cpp ok
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_CQOrchardFarmRaidScript_00dcc040.cpp ok +derived
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCOrchardFarmWhisper_Init_00dcf000.cpp ok
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCGuardTeamMember_OnPredicateFail_00dcded0.cpp ok
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScript_WatchForTermination_00dc3bd0.cpp ok
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageGraveyardKeeper_OnPredicateFail_00dc4b70.cpp ok
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScriptCSUMMONEDCREATURE_OnPredicateFail_00f1b1b0.cpp ok
+skip rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCBirdKiller_Init_00d42ff0.cpp head
+edit rebuild/src/compiled/00/f0/NScriptCQCinemaTestScript_WatchForTermination_00f01a40.cpp ok
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590.cpp ok
+skip rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATSentry_Init_00f08e90.cpp local CBaseClass
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_OnPredicateFail_00f03850.cpp ok
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForAllGuardsDead_00f033f0.cpp ok
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScriptCATConvoySpy_OnPredicateFail_00f04480.cpp ok
+edit rebuild/src/compiled/00/e7/NScriptCVExposeMayorScript_DoMission_00e7a410.cpp ok
+edit rebuild/src/compiled/00/e2/NScriptCQSGuardianTrophyDealerInfoScript_Main_00e27920.cpp ok +derived
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScript_Main_00e28de0.cpp ok +derived
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0.cpp ok
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Main_00dfbe90.cpp ok
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Main_00dfbda0.cpp ok
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_UpdateLiveEnemies_00dfc320.cpp ok +derived
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_PlayCutscene_00dfded0.cpp ok
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScript_PlayCutscene_00df3e50.cpp ok
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScript_PlayCutscene_00df9e00.cpp ok
+skip rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_ResetRandomSpeechTime_00e337c0.cpp non-virtual items
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Main_00e389e0.cpp ok
+skip rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Init_00e38680.cpp non-virtual items
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140.cpp ok
+skip rebuild/src/compiled/00/e3/NScriptCVBordelloScript_OnPersist_00e3b8f0.cpp non-virtual items
+skip rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed360.cpp non-virtual items
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Init_00ee73f0.cpp ok
+skip rebuild/src/compiled/00/ee/NScriptCTestQuestCard3Script_Main_00eef760.cpp non-virtual items
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScriptCTourGuideGuide_Init_00ee4c60.cpp ok
+edit rebuild/src/compiled/00/ee/NScriptCGlobalToggleTimeDisplayScript_Main_00eecf20.cpp ok
+edit rebuild/src/compiled/00/ee/NScriptCalextestScript_Main_00eed0e0.cpp ok
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScript_Main_00ee6e90.cpp ok +derived
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20.cpp ok
+edit rebuild/src/compiled/00/ee/NScriptCTestTheInventoryScript_TestForLampOn_00eeec00.cpp ok
+edit rebuild/src/compiled/00/ee/NScriptCVTrophyDealerScriptCDemonDoorFace_Init_00ee74e0.cpp ok
+skip rebuild/src/compiled/00/ee/NScriptCTestQuestCard2Script_Main_00eef5d0.cpp non-virtual items
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonRaceScriptCPrisonRacer_Init_00ddc490.cpp ok
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Main_00dd8de0.cpp ok
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCMotherTorture_Init_00dd6950.cpp ok
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCPrisonerAccomplice_Init_00dd4a50.cpp ok
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCInventoryChest_Main_00dd8850.cpp ok
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScriptCOVIDeadFather_Init_00db8290.cpp ok
+skip rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_ResetRandomSpeechTime_00e53c70.cpp non-virtual items
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScript_Main_00e54450.cpp ok
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_AdjustHeroReputation_00e56d10.cpp ok
+skip rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPersist_00e5f190.cpp non-virtual items
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_Init_00e5de80.cpp ok +derived
+skip rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_CVBeggarAndChildScript_00e57bb0.cpp already
+skip rebuild/src/compiled/00/e5/NScriptCVBeggarAndChildScript_Alloc_00e5d0b0.cpp already
+edit rebuild/src/compiled/00/ea/NScriptCVMazeResearchScript_Main_00ea7800.cpp ok +derived
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistFinalScript_Main_00eaea20.cpp ok +derived
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Init_00ea8f00.cpp ok
+edit rebuild/src/compiled/00/cd/NScriptCPersonalScriptGlobalThingsScriptCClickableDoor_Main_00cdeed0.cpp ok
+edit rebuild/src/compiled/00/ef/NScriptCguyscriptScriptChenchmen_Init_00efa160.cpp ok
+edit rebuild/src/compiled/00/ef/NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300.cpp ok
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Main_00ef87d0.cpp ok
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCTestPos_Init_00ef37f0.cpp ok
+skip rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe4b0.cpp non-virtual items
+skip rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efca00.cpp non-virtual items
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600.cpp ok

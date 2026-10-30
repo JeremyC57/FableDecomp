@@ -82,12 +82,10 @@ public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                      // +0x1c (scoped_ptr)
 };
-class CGameScriptInterface {
-public:
-    virtual void ResetPlayerCreatureOnlyTarget() const;
-    void*               World;                           // +0x04
-    CMainGameComponent* Component;                       // +0x08
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::ResetPlayerCreatureOnlyTarget() const
 {
     CThing* hero = Component->PPlayerManager->GetMainPlayer().GetPControlledCreature();

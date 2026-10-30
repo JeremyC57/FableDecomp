@@ -8,11 +8,8 @@
 // constructor @ 0x0099A380 runs, then the compiler stores this class's vtable (0x01265520
 // -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
 // bodies of this shape.
-class CBaseObject { public:
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CScriptConversation : public CBaseObject { public:
     virtual void v00();                    // this class has its own vtable

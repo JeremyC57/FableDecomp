@@ -53,11 +53,10 @@ struct CTextArgMap {                                   // std::map<CCharString, 
 #define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
-class CGameScriptInterface { public:
-    VPAD128(p0) VPAD32(p1) VPAD16(p2) VPAD2(p3)        // slots 0..177
-    virtual float GetHeroScariness() const;            // slot 178 (+0x2c8)
-    virtual float GetHeroAttractiveness() const;       // slot 179 (+0x2cc)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CQ_SunnyvaleMasterData {
     long        _pad0;
     long        PostSavePosition;                      // +0x04

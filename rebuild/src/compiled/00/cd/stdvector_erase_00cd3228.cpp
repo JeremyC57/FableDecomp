@@ -20,17 +20,10 @@ public:
     ~CCountedPointer();
 };
 class CBaseObjectPointer;
-class CBaseObject {                                          // vtable 0x0129A7D8, 8 bytes
-public:
-    virtual ~CBaseObject();
-    CBaseObjectPointer* IntelligentPointer;                  // +0x04
-};
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject {   // vtable 0x0127094C, 0x10 bytes
-public:
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;    // +0x08
-    virtual ~CScriptGameResourceObjectScriptedThingBase();
-    CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
 namespace std {
 

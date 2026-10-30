@@ -42,14 +42,8 @@ public:
         Info = 0;
     }
 };
-class CBaseObject {
-public:
-    void* IntelligentPointer;                            // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    CBaseObject(const CBaseObject& other);               // 0x0099A390
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject {
 public:
     CScriptGameResourceObjectBase() {}

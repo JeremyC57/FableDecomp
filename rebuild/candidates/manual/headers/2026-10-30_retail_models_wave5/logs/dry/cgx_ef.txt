@@ -1,0 +1,257 @@
+rebuild/src/compiled/00/6e/CGameScriptInterface_WaitForCameraMessage_006e7820.cpp nofix  
+rebuild/src/compiled/00/6e/CGameScriptInterface_CheckForCameraMessage_006e7920.cpp nofix  
+rebuild/src/compiled/00/c3/CGameScriptInterface_EntitySetAsOpinionSource_00c308a0.cpp nofix  | error C2511: 'void CGameScriptInterface::EntitySetAsOpinionSource(long)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetWarningPhrase_008a3340.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0.cpp nofix  | error C2511: 'long CGameScriptInterface::GetAllCreaturesExcludingHero(CScriptThingVector &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetKillSelfAndStealableItemAfterReachingDestin_008a61c0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossipFactions_008aa590.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetMaxHeroReactionDistance_008a3b60.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetScriptingStateGroup_008a38a0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIgnoringPhrase_008a2100.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetDisableHeadLooking_008a6b10.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetAvoidRegionExits_008a7520.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetAllowedToFollow_008a6480.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetScriptingStateGroup_008a37b0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetIsPushableByHero_008a6dd0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetLookForFiniteTime_008a7090.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossip_008aa0d0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetMaxGossipPhrase_008a3090.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetGossipCounter_008a2de0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_UpdateScoreFishingCompetition_008a1240.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetRecoverStealableItems_008a5c40.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40.cpp nofix  | error C2511: 'long CGameScriptInterface::GetAllThingsWithDefNameByDistanceFrom(const CScriptThingFrom &,const CCharString &,CScriptThingVector &) const' : overloaded member function not found in 'CGameScriptInterf
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0.cpp nofix  | error C2511: 'long CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString &,const C3DVector &,float,CScriptThingVector &) const' : overloaded member function not found in 'CGameScriptInterface
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetTakeStealableItemToRandomDestination_008a5d30.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetCombatNearbyEnemyFleeingBreakOffRange_008a5400.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_CreateCreature_008a9100.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetFollowDistance_008a4be0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetTargetingDistanceOffset_008a7610.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetThankingPhrase_008a2020.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetRangedTarget_008a04c0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetActionFrequencyVariation_008a40d0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetWanderMinDistance_008a2690.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetThankingPhrase_008a1f30.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetSleepingPositionAndOrientationFromBed_008a1b10.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetWanderMinDistance_008a2870.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetScriptingStateGroup_008a36d0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetDisableHeadLooking_008a6ce0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetBeerRequestPhrase_008a35f0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetFollowDistance_008a4a00.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_RepopulateVillage_008a1c50.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetWarningPhrase_008a3170.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetStealStealableItems_008a5980.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetCombatNearbyEnemyFleeingBreakOffRange_008a5220.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0.cpp nofix  | error C2511: 'void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetMaxGossipPhrase_008a2ec0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetGossipCounter_008a2c10.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_EntityFadeOut_008a0720.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetActionFrequency_008a3d20.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetCombatNearbyBreakOffRange_008a56c0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetAvoidRegionExits_008a7350.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetTimeToSpendHarassingHero_008a5140.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetStealDuration_008a1360.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetTimeToSpendHarassingHero_008a4f70.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetFaceHeroForAction_008a4480.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_AddNewRumourToCategory_008a9dd0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetLookForFiniteTime_008a7260.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetActionFrequencyVariation_008a3ef0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetActionFrequency_008a3e10.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetBeerRequestPhrase_008a3500.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipCounter_008a2cf0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetThankingPhrase_008a1e50.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetTakeStealableItemToRandomDestination_008a5f00.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetKillSelfAndStealableItemAfterReachingDestinat_008a5ff0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetIgnoringPhrase_008a22d0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetActionFrequency_008a3c40.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetBeerRequestPhrase_008a3420.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetAttackHeroOnSight_008a4e90.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetRecoverStealableItems_008a5a70.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetMaxGossipPhrase_008a2fa0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetWanderMaxDistance_008a2b30.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_AddCreatureScriptedMode_008a1a10.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_PlayCriteriaSoundOnThing_008a09b0.cpp nofix  
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetTimeToSpendHarassingHero_008a5050.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetIsPushableByHero_008a6fa0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_ResetFaceHeroForAction_008a4650.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetWarningPhrase_008a3250.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetWanderMaxDistance_008a2950.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetAllowedToFollow_008a62b0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetStealStealableItems_008a57b0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetAttackHeroOnSight_008a4cc0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetIgnoringPhrase_008a21e0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetCombatNearbyBreakOffRange_008a54e0.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/8a/CGameScriptInterface_SetMaxHeroReactionDistance_008a3980.cpp nofix  | error C2989: 'CCountedPointer' : template class has already been defined as a non-template class
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroHandLampAsLit_00898ec0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAbleToGainExperience_00899060.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroWillEnergyMax_0089a1b0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorSetGeneratedCreatureScriptName_0089eaa0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityPostOpinionDeedKeepSearchingForWitnesses_0089c7b0.cpp nofix  | error C2511: 'long CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses(const CScriptThing &,long,const CScriptThing &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroWillEnergy_0089a150.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroPerformingExpression_008953a0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraCircleAroundThing_00892b50.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroPlayingOracleMinigame_00895bc0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNumberOfKeysNeededToUnlockChest_008966c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroStrengthLevel_00899390.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsReceivingEvents_00895010.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySheatheWeapons_00890ba0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAsWearing_0089b3f0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_ChangeHeroHairstyle_0089b450.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroSkillLevel_00899400.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetCombatAbility_0089aff0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetOpinionAttitudeToPlayer_00890990.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityTeleportToPosition_0089b780.cpp nofix  | error C3861: 'SetThingHeading': identifier not found, even with argument-dependent lookup
+rebuild/src/compiled/00/89/CGameScriptInterface_CreatePhysicalBarrier_0089fd20.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroFatness_00899850.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_RemoveDeadCreature_00894490.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsPickLocked_0089a390.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreateObject_00894820.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroHandLampLit_00898e60.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraCircleAroundPos_00892c20.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerZTargetingThing_00899b10.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroRenownPoints_008990c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsRegionDefLoaded_00891db0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetCreatureGeneratorsEnabled_00892cf0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAge_008994e0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_HeroGoFishing_00895a90.cpp nofix  | error C2511: 'void CGameScriptInterface::HeroGoFishing(const CScriptThing &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsPickPocketed_00890470.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreateObject_00894950.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityPostOpinionDeedToRecipient_0089c670.cpp nofix  | error C2511: 'void CGameScriptInterface::EntityPostOpinionDeedToRecipient(const CScriptThing &,long,const CScriptThing &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_SetAbilityAvailability_0089d7c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveThingHeroRewardItem_00898ac0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_AddItemToContainer_0089e780.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroWillLevel_00899470.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroTutorial_00898a50.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroExperienceAvailableToSpend_008997e0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNumberOfTimesHeroHasHadSex_00897c90.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroTitle_00897880.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroTargetedThing_0089a490.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroScariness_008998c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsWearingClothingItem_0089b2b0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHasDivorcedMarriage_00897b70.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroStatLevel_00899290.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHasMurderedWife_00897c30.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAsTeenager_008995d0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetCutsceneMode_0089d600.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityMarriable_00897a30.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroStatMax_00899310.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorSetNumTriggers_0089eb10.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityFollowingHero_008955c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_TurnCreatureInto_0089f4a0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHasCurrentMarriage_00897b10.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetFurthestWithDefName_0089aa70.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithDefName' : cannot convert parameter 2 from 'vector<T>' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/89/CGameScriptInterface_ResetPlayerCreatureOnlyTarget_00899e90.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsCreatureGenerationEnabledForRegion_00892d80.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroGold_00898f40.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetPerceptionVariables_0089bf80.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceMarriageToHero_00897940.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_MakeHeroCarryItemInHand_00897e10.cpp nofix  | error C3861: 'MakeHeroCarryScriptThingInHand': identifier not found, even with argument-dependent lookup
+rebuild/src/compiled/00/89/CGameScriptInterface_IsDPadButtonHeldForExpression_00895430.cpp nofix  | error C2511: 'bool CGameScriptInterface::IsDPadButtonHeldForExpression(long) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_CreateExplosion_0089fc80.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetPreviouslyWieldedMeleeWeaponName_00897560.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_RemoveAllCutSceneSkippedMessages_0089af30.cpp nofix  | error C2511: 'void CGameScriptInterface::RemoveAllCutSceneSkippedMessages(void)' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityDropGenericBox_0089d9d0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerWieldingWeapon_00897480.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroWeaponsAsUsable_00898410.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsObjectInThingsPossession_00897220.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityPostOpinionDeedToRecipientVillage_0089c710.cpp nofix  | error C2511: 'void CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage(const CScriptThing &,long,const CScriptThing &) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/89/CGameScriptInterface_DisplayTutorial_0089e710.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetStandingInsideBuilding_0089bc50.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_AddTattooToHero_008981c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraMoveToPosAndLookAtThing_008924b0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroExperience_00899000.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroAllowedHenchmenInRegion_00891ef0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreateObjectOnEntity_008946e0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityPlayObjectAnimation_0089bbc0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsAwareOfThing_0089d0e0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityStealable_0089a330.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetVillageAttitude_0089fe20.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetNumberOfTimesHeroHasHadSex_00897cf0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IncreaseHeroRenownLevel_00899220.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetDistanceHeroCanBeHeardFrom_00899700.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_AddNewConversation_008906c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAsApprentice_00899680.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroAttractiveness_00899930.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroGold_00898fa0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityAttachToVillage_0089d3a0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraMoveBetweenLookingAt_00892530.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorIsDestroyed_0089ea30.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroMorality_00899f90.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceToLookAtCamera_0089d8b0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHasChildren_00897bd0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroWillAsUsable_00898340.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsStolen_008904e0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroWillEnergyAsAbleToRefill_00899a90.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroRoughExperienceLevel_00899770.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetWanderingPopulationScriptDefNameInRegion_00891e30.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroItemsFromContainer_00898c40.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroAllowedHenchmenInCurrentRegion_00891ea0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAsHavingHadSex_00897d50.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsPlayerCarryingItemOfType_008973a0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetMoralityChangingAsEnabled_0089ef30.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroRenownLevelFull_008991a0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetDeathRecoveryMarkerName_00896ee0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_RemoveItemFromContainer_0089e810.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsWearingHairstyle_0089b530.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroWillEnergyLevel_008999a0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestWithScriptName_0089a510.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithScriptName' : cannot convert parameter 2 from 'vector<T>' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityUnsheatheWeapons_00890c10.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroYesNoQuestion_0089e540.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsRegionLoadedAndPreloaded_00890550.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroMoralityCategory_0089a000.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorSetAlwaysCreateCreaturesOnTrigg_0089e950.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroQuestCardDirectly_008968c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroAge_00899560.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityForceToLookAtThing_0089d830.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsMarryable_00894dd0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraMoveToPosAndLookAtPos_00892410.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraMoveBetweenLookFromAndLookTo_00892610.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorTrigger_0089e8e0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroWillEnergyLevel_00899a10.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityMarriedToHero_008979c0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetHeroAsHavingHadGaySex_00897db0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetNearestWithDefName_0089a880.cpp nofix  | error C2664: 'CGameScriptInterface::GetAllThingsWithDefName' : cannot convert parameter 2 from 'vector<T>' to 'std::vector<T,A> &'
+rebuild/src/compiled/00/89/CGameScriptInterface_RemoveHeroHairstyle_0089b4d0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CameraMoveBetweenLookingAt_008926d0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetThingAsWantingMoney_0089bb30.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroRenownLevel_00899140.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetPlayerCreatureOnlyTarget_00899e10.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_CreateRumble_0089fda0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroHasMarried_00897aa0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_ApplyHeroPenaltyForDeath_008977f0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_IsCreatureFlying_0089ed80.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_EntityResetAsPureAINarrator_0089b0b0.cpp nofix  
+rebuild/src/compiled/00/89/CGameScriptInterface_SetCreatureBrain_00894b90.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetMaxWalkingSpeed_0088e7b0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_IsThingWithThisUIDAlive_0088e260.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_SetThingPersistent_0088e5a0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityEnableGravity_0088f4d0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetMaxRunningSpeed_0088e750.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_IsHeroControlledByPlayer_0088e980.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_AreEntitiesEnemies_0088e6f0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_ClearThingHasInformation_0088e480.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_IsEntityPickPocketable_0088e220.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_OverrideAutomaticHouseLocking_0088e030.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsDrawable_0088e9f0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetShotAccuracyPercentage_0088e5f0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_GetWanderingPopulationScriptDefNameInCurrentRegi_0088e390.cpp nofix  | error C3861: 'GetWanderingPopulationScriptDefName': identifier not found, even with argument-dependent lookup
+rebuild/src/compiled/00/88/CGameScriptInterface_ResetToDefaultThemeAllInternals_0088ff80.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_Play2DSound_0088f570.cpp nofix  | error C2556: 'long CGameScriptInterface::Play2DSound(const CCharString &) const' : overloaded function differs only by return type from 'unsigned long CGameScriptInterface::Play2DSound(const CCharString &) const'
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetMaxHealth_0088e1c0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsHiddenOnMiniMap_0088e410.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityResetMaxRunningSpeed_0088e810.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsUseMovementInActions_0088ec20.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsRespondToHit_0088ea90.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetCutsceneBehaviour_0088ea20.cpp nofix  | error C2511: 'void CGameScriptInterface::EntitySetCutsceneBehaviour(const CScriptThing &,long) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/88/CGameScriptInterface_MiniMapAllowRouteBetweenRegions_0088e3d0.cpp nofix  | error C2511: 'void CGameScriptInterface::MiniMapAllowRouteBetweenRegions(long,long,long) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/88/CGameScriptInterface_AddLogBookEntry_0088fe00.cpp nofix  | error C2511: 'void CGameScriptInterface::AddLogBookEntry(long,long,long,long) const' : overloaded member function not found in 'CGameScriptInterface'
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityResetMaxWalkingSpeed_0088e870.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsDamageable_0088ead0.cpp nofix  | error C3861: 'OnEntityDamageableChanged': identifier not found, even with argument-dependent lookup
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsKillable_0088eb30.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsRemoveAllMovementBlockingModes_0088e8d0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityGetSex_0088ea50.cpp nofix  | error C2556: 'long CGameScriptInterface::EntityGetSex(const CScriptThing &) const' : overloaded function differs only by return type from 'ESex CGameScriptInterface::EntityGetSex(const CScriptThing &) const'
+rebuild/src/compiled/00/88/CGameScriptInterface_SetEntityAsFollowingHeroThroughTeleporters_0088f670.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetInLimbo_0088fd00.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_SetCreatureNotReload_0088fd90.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_IsLevelLoaded_0088e2a0.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_SetThingHasInformation_0088e440.cpp nofix  
+rebuild/src/compiled/00/88/CGameScriptInterface_EntityBeginLoadingBasicAnimations_0088f530.cpp nofix  

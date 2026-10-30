@@ -1054,13 +1054,10 @@ class CCharString { public:
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
  ~CCharString();                                    // 0x0099EAE0
 };
-class CBaseObject { public:                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
- virtual void b000();
- void* m_pIntelligentPointer;
- CBaseObject();                                     // 0x0099A380
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CBaseObjectDtor {                               // the same root, as its destructor sees it
- void* m_pIntelligentPointer;
+ void* IntelligentPointer;
  virtual ~CBaseObjectDtor();                        // 0x0099A430
 };
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C

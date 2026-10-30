@@ -7,9 +7,6 @@
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
-#define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBase_HeaderLayout
-#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
-#undef CScriptGameResourceObjectScriptedThingBase
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -38,9 +35,10 @@ template<class V>class CCompareString{public:bool operator()(const std::pair<CCh
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
 
 class CPersistContext;class CBaseObjectPointer;
-class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
-class CScriptGameResourceObjectBase:public CBaseObject{};
-class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase{public:CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;};
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
 class CScriptBase:public CBaseClassNonCopyable{public:CScriptBase();virtual ~CScriptBase();

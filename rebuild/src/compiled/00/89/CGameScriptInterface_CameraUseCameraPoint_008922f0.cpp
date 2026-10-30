@@ -44,58 +44,10 @@ public:
 };
 #define V10(p) virtual void p##0(); virtual void p##1(); virtual void p##2(); virtual void p##3(); virtual void p##4(); \
                virtual void p##5(); virtual void p##6(); virtual void p##7(); virtual void p##8(); virtual void p##9();
-class CGameScriptInterface {
-public:
-    V10(_s000)
-    V10(_s001)
-    V10(_s002)
-    V10(_s003)
-    V10(_s004)
-    V10(_s005)
-    V10(_s006)
-    virtual void _v070(); virtual void _v071();
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;          // slot 72 (+0x120)
-    virtual void _v073(); virtual void _v074(); virtual void _v075(); virtual void _v076(); virtual void _v077();
-    virtual void _v078(); virtual void _v079();
-    V10(_s008)
-    V10(_s009)
-    V10(_s010)
-    V10(_s011)
-    V10(_s012)
-    V10(_s013)
-    V10(_s014)
-    V10(_s015)
-    V10(_s016)
-    V10(_s017)
-    V10(_s018)
-    V10(_s019)
-    V10(_s020)
-    V10(_s021)
-    V10(_s022)
-    V10(_s023)
-    V10(_s024)
-    V10(_s025)
-    V10(_s026)
-    V10(_s027)
-    V10(_s028)
-    V10(_s029)
-    V10(_s030)
-    V10(_s031)
-    V10(_s032)
-    V10(_s033)
-    V10(_s034)
-    V10(_s035)
-    V10(_s036)
-    V10(_s037)
-    V10(_s038)
-    V10(_s039)
-    V10(_s040)
-    virtual void _v410(); virtual void _v411(); virtual void _v412();
-    virtual void CameraUseCameraPoint(const CCharString& name, const CScriptThing& target, float time,
-                                      long mode1, long mode2) const;                       // slot 414 (+0x678)
-    virtual void CameraUseCameraPoint(const CScriptThing& point, const CScriptThing& target, float time,
-                                      long mode1, long mode2) const;                       // slot 413 (+0x674)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 void CGameScriptInterface::CameraUseCameraPoint(const CCharString& name, const CScriptThing& target, float time,
                                                 long mode1, long mode2) const

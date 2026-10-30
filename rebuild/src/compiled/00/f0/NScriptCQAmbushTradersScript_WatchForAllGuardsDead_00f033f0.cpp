@@ -18,12 +18,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CGameScriptInterfaceBase { public:                // slots: ghidra_out/cgsi_slots_aligned.tsv (CGameScriptInterface vtable 0x01260F0C)
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual bool IsRegionLoaded(const CCharString& name) const;   // slot 12 (+0x30)
-};
+// CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
+//   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterfaceBase.h"
 class CPersistContext;
 class CScriptBase {                                     // retail 0x40 bytes (Ego_r 0x54: debug containers)
 public:

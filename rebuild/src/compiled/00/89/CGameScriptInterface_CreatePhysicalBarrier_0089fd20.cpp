@@ -42,16 +42,10 @@ class CTCDPhysicalObstruction {
 public:
     static CThing* __fastcall Create(const C3DVector&, const C3DVector&, float);   // 0x007FD4B0
 };   // 0x007FD4B0
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent*         Component;         // +0x08
-    CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
-    CThingSearchTools*          ThingSearchTools;  // +0x18
-    virtual CScriptThing CreatePhysicalBarrier(float radius, const C3DVector& start, const C3DVector* end, CCharString scriptName) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 CScriptThing CGameScriptInterface::CreatePhysicalBarrier(float radius, const C3DVector& start, const C3DVector* end, CCharString scriptName) const
 {

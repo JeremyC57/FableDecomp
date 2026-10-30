@@ -12,12 +12,8 @@
 // (retail: Cells +0x08, ThingsToDelete +0x14, ThingsToMove +0x20, ThingsToAdd +0x2c, GameArea +0x38,
 // BrushName +0x48, CreationTimeSeconds +0x4c, CreationPattern +0x50; sizeof 0x54). Modelled locally with
 // the header's member names.
-class CBaseObject { public:
-    void* IntelligentPointer;                         // +0x04
-protected:
-    CBaseObject(const CBaseObject& other);               // 0x0099A390
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
 class CCharString { public:
     void* PStringData;

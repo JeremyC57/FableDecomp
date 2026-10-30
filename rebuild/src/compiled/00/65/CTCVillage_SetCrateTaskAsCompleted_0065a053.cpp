@@ -38,10 +38,8 @@ public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;
-class CBaseObject : public CBaseClass {
-public:
-    CBaseObjectPointer* IntelligentPointer;                 // +0x04
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CVillageTaskBase : public CBaseObject { };            // partial view
 class CVillageTaskCarryCrate : public CVillageTaskBase { };   // partial view
 class CCPPointerInfo;

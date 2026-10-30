@@ -14,9 +14,6 @@
 // Layout: the imported native header's unread UID uses an MSVC integer spelling. GNU observes only this152byte opaque raw-layout alias.
 class CThing_Layout { unsigned char unobservedNativeThingLayout[0x98]; };
 #endif
-#define CBaseObject CBaseObject_Layout
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #define CClass CClass_Layout
 #include "engine/CClass.h"
 #undef CClass
@@ -25,10 +22,8 @@ class CThing_Layout { unsigned char unobservedNativeThingLayout[0x98]; };
 #undef CTCBase
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable:public CBaseClass { protected: virtual ~CBaseClassNonCopyable(); };
-class CBaseObject:public CBaseClass {
-public:CBaseObjectPointer* IntelligentPointer;
-protected:virtual ~CBaseObject();
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push,1)
 class CClass:public CBaseObject {
 public:

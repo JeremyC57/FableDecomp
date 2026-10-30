@@ -75,6 +75,7 @@ class CDefinitionManager { public:
 public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
+class CGameDefinitionManager : public CDefinitionManager { };
 class CWorld; class CMainGameComponent; class CDisplayEngine; class CThingSearchTools;
 __forceinline CTCBase_Retail* GetTCIfPresent(CThing_Retail* thing, long kind)
 {
@@ -117,16 +118,10 @@ __forceinline bool IsThingAlive(CScriptThing& thing)
     CThing_Retail* t = thing.GetThing();
     return t && !t->m_dead;
 }
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;             // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent*         Component;         // +0x08
-    CDisplayEngine*             DisplayEngine;     // +0x0c
-    CDefinitionManager*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
-    CThingSearchTools*          ThingSearchTools;  // +0x18
-    virtual bool IsWearingHairstyle(CScriptThing& thing, const CCharString& defName) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::IsWearingHairstyle(CScriptThing& thing, const CCharString& defName) const
 {

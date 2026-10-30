@@ -42,16 +42,10 @@ class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x012709
     virtual bool IsPerformingScriptTask() const;       // slot 26 (+0x68)
     void* _body[3];
 };
-class CGameScriptInterface { public:
-    VPAD4(p0) VPAD2(p1) VPAD1(p2)                      // slots 0..6
-    virtual void NewScriptFrame() const;               // slot 7 (+0x1c)
-    VPAD32(q0) VPAD16(q1) VPAD8(q2) VPAD4(q3) VPAD2(q4)   // slots 8..69
-    virtual const CScriptThing& GetHero() const;       // slot 70 (+0x118)
-    VPAD64(r0) VPAD32(r1) VPAD16(r2) VPAD1(r3)            // slots 71..183
-    virtual bool IsObjectInThingsPossession(const CCharString& def, const CScriptThing& thing) const;   // slot 184 (+0x2e0)
-    VPAD64(s0) VPAD8(s1) VPAD4(s2) VPAD2(s3) VPAD1(s4) // slots 185..263
-    virtual float GetHealth(const CScriptThing& thing) const;   // slot 264 (+0x420)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CV_BookCollectingScript {
     unsigned char _pad[0x8c];
     long         LastBookRequested;                    // +0x8c

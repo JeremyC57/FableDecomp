@@ -8,7 +8,8 @@
 #define __declspec(x)
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CBaseObject:public CBaseClass{unsigned char pass9_unread_pointer[4];};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CClass:public CBaseObject{unsigned char pass9_unread_class[12];};
 class CThing:public CClass{};
 class CBaseIntelligentPointer{public:virtual~CBaseIntelligentPointer();unsigned char PData[4];CBaseObject*GetPItem()const;};

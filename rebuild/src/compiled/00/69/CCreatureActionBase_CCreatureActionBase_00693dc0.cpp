@@ -5,22 +5,14 @@
 #define CCreatureActionBase CCreatureActionBase_PDB
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
-#define CBaseObject CBaseObject_PDB
-#include "engine/CBaseObject.h"
-#undef CBaseObject
 #include "fable_string.h"
 #include <stdlib.h>
 class CTCWeaponTrail;
 class C3DVector { public:float X,Y,Z;};
 class CThing;
 class CThingCreatureBase;
-class CBaseObject { public:
- virtual void Validate()const; //0x0099A400
- CBaseObjectPointer* IntelligentPointer;
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //0x00A01C10
  void* PData;

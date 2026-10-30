@@ -7,7 +7,8 @@
 // Layout (Ego_r.pdb = retail): Crop +0x08, CreatureAssignedToTask +0x10.
 // Shape: the landed CVillageTaskSecuritySweep::IsBetterThan (0x00860430) with both goal points taken from the crop
 //   things: by-value position copies, named deltas, `myDist < rivalDist` evaluated left first.
-class CBaseObject { public: };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }

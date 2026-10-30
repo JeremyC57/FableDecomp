@@ -13,7 +13,8 @@
 //   pop_back = `erase(--end())` with the STLport erase body (prev/next relink, _Destroy, deallocate).
 extern "C" void __cdecl free(void* p);                          // 0x00BFEA14
 
-class CBaseObject { };
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CThing : public CBaseObject {
 public:
     void Kill(bool immediately);                                // 0x004C9B80

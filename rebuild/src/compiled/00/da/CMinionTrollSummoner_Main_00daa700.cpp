@@ -86,32 +86,11 @@ class CIsThingAlive : public CPredicateBase { public:                // vtable 0
 inline CIsThingAlive::~CIsThingAlive() { }
 #pragma inline_depth()
 }
-class CBaseObject { public:                        // vtable 0x0129A7D8
-    void* m_pIntelligentPointer;                        // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    virtual ~CBaseObject();                              // 0x0099A430
-};
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
-};
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() { }
-    // implicit destructor; out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-    CScriptThing GetScriptThing() const;                // 0x007E7490
-    void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
-    bool IsPerformingScriptTask() const;                // 0x007E7450
-    CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-};
-class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectMovieBase();               // 0x006E7B60
-    ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CScriptGameResourceObjectMovieBase.h"
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
     void* _body[3];
     CCutsceneCastMap();                                 // 0x00CDBF70
@@ -124,21 +103,10 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
-class CGameScriptInterface { public:
-    VPAD4(p0) VPAD2(p1) VPAD1(p2)                                                    // slots 0..6
-    virtual void NewScriptFrame() const;                                             // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(q0) VPAD16(q1) VPAD8(q2) VPAD4(q3) VPAD1(q4)                              // slots 9..69
-    virtual CScriptThing& GetHero();                                                 // slot 70 (+0x118)
-    VPAD1(r0)                                                                        // slot 71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;      // slot 72 (+0x120)
-    VPAD256(s0) VPAD32(s1) VPAD8(s2) VPAD1(s3)                                       // slots 73..369
-    virtual void StartMovieSequence(const CCharString& name, CScriptGameResourceObjectMovieBase& movie);   // slot 370 (+0x5c8)
-    VPAD8(u0)                                                                        // slots 371..378
-    virtual void PauseAllNonScriptedEntities(bool pause);                            // slot 379 (+0x5ec)
-    VPAD64(w0) VPAD16(w1) VPAD8(w2) VPAD4(w3) VPAD2(w4) VPAD1(w5)                    // slots 380..474
-    virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool b) const;   // slot 475 (+0x76c)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 struct CMinionQuestScript {
     unsigned char _pad[0x54];
     bool          ShownTrollCutscene;                   // +0x54 (descriptive)
@@ -165,7 +133,7 @@ void CMinionTrollSummoner::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
     CScriptGameResourceObjectScriptedThingBase summoner;
-    if (summoner.IsScripting())
+    if (summoner.IsValid())
         summoner.Release();
     while (!Game->StartScriptingEntity(Me, summoner, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -202,7 +170,7 @@ void CMinionTrollSummoner::Main()
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
-        summoner.MoveToPosition(runOffPos, 0.0f, 1, false, true);
+        summoner.MoveToPosition(runOffPos, 0.0f, (EScriptEntityMoveType)1, false, true);
         while (summoner.IsPerformingScriptTask()) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())

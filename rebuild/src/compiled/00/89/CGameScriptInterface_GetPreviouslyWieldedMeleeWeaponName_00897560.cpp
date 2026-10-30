@@ -36,6 +36,7 @@ class CDefinitionManager { public:
 public:
     CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
+class CGameDefinitionManager : public CDefinitionManager { };
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -88,15 +89,10 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();             // 0x00449970 (the non-const overload; 0x00449960 is the const one)
 };
 
-class CGameScriptInterface { public:
-    virtual void v000();
-    void* World;                          // +0x04
-    void* Component;                      // +0x08
-    void* DisplayEngine;                  // +0x0c
-    CDefinitionManager* DefinitionManager;    // +0x10
-    CPlayerManager* PlayerManager;        // +0x14
-    virtual bool GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const
 {

@@ -65,13 +65,8 @@ class CScriptThing { public:                                   // 12 bytes, vtab
     virtual CCharString GetDefName() const;             // slot 2 (+0x08)
     CCountedPointer<CScriptThingImp> PImp;              // +0x04
 };
-class CBaseObject { public:                                    // vtable 0x0129A7D8
-    void* IntelligentPointer;                           // +0x04
-protected:
-    CBaseObject();                                       // 0x0099A380
-    CBaseObject& operator=(const CBaseObject& other);    // 0x0099A3B0
-    virtual ~CBaseObject();                              // 0x0099A430
-};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C

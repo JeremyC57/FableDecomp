@@ -31,7 +31,8 @@ class CProcessedInput;enum EPlayerMode{EPlayerMode_DescriptiveFixture=0};
 #endif
 class CInputProcessFreezeControls:public CInputProcessGameBase{};class CInputProcessBetting:public CInputProcessGameBase{};
 namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};template<class T>struct _List_iterator{_List_node_base* _M_node;};template<class T,class A>class _List_base{protected:_STLP_alloc_proxy<_List_node<T>*,_List_node<T>,allocator<_List_node<T> > > _M_node;};template<class T,class A=allocator<T> >class list:public _List_base<T,A>{};template<unsigned int N>struct _Base_bitset{unsigned long _M_w[N];};template<unsigned int N>class bitset:public _Base_bitset<(N+31)/32>{public:bool test(unsigned int n)const{return (this->_M_w[n/32]&(1UL<<(n%32)))?true:false;}};}
-class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
+#define FABLE_RETAIL_BASE_OBJECT
+#include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #pragma pack(push,1)
 class CClass:public CBaseObject{public:std::_List_iterator<CClass*> ClassListPos,TypeListPos;unsigned char Type;};
 #pragma pack(pop)
