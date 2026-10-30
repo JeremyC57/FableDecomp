@@ -1,0 +1,33 @@
+addr       parity           behav  name
+00c01090   RELOCATION_MATCH PASS   fill_window
+00c20ce0   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c20ce0   WARN RELOC_NAME: ?Stop@CSoundChannel@@QAEXPAUCSoundEventManager@@J@Z -> 00c26480 labelled 'CStreamBuffer::RemoveUsers'
+00c20ce0   WARN RELOC_NAME: ?Start@CSoundChannel@@QAEXPAUCSoundEventManager@@J@Z -> 00c26410 labelled 'CStreamBuffer::AddUsers'
+00c20ce0   RELOCATION_MATCH PASS   SetPriority
+00c27890   WARN RELOC_NAME: _CODA_IsSourcePlaying@4 -> 00c35ca0 labelled 'CEngine::Is3DSceneRenderingEnabled'
+00c27890   WARN RELOC_NAME: ??1PKCProtectionInstance@@QAE@XZ -> 00c0ffe0 labelled 'EventQueue_ProcessWithTimeout'
+00c27890   RELOCATION_MATCH PASS   GetPlayProgress
+00c5db40   RELOCATION_MATCH PASS   FindDeviceInterface
+00c72930   WARN RELOC_NAME: ?Initialise@CVtable_012B5C10@@UAEJPAUCAudioSound@@@Z -> 00c596e0 labelled 'CEnvironmentSpellEffectInterface::ClearScreenFilter'
+00c72930   RELOCATION_MATCH PASS   Initialise
+00c96320   WARN RELOC_NAME: _bitreverse -> 00c962b0 labelled 'Util_BitReversalPermutation'
+00c96320   RELOCATION_MATCH PASS   decode_packed_entry_number
+00cdf800   RELOCATION_MATCH PASS   Main
+
+WINS: 7
+  00c01090 RELOCATION_MATCH _global::_fill_window
+  00c20ce0 RELOCATION_MATCH CSoundEvent::?SetPriority@CSoundEvent@@
+  00c27890 RELOCATION_MATCH CCodaPlayback::?GetPlayProgress@CCodaPlayback@@
+  00c5db40 RELOCATION_MATCH CDSoundAccelerationQuery::?FindDeviceInterface@CDSoundAccelerationQuery@@
+  00c72930 RELOCATION_MATCH CAudioSource::?Initialise@CAudioSource@@
+  00c96320 RELOCATION_MATCH _global::_decode_packed_entry_number@8
+  00cdf800 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker::?Main@CBowerstoneTeleportPointMarker@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  global_fillwindow_00c01090
+  CSoundEvent_SetPriority_00c20ce0
+  CCodaPlayback_GetPlayProgress_00c27890
+  CDSoundAccelerationQuery_FindDeviceInterface_00c5db40
+  CAudioSource_Initialise_00c72930
+  global_decodepackedentrynumber_00c96320
+  NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Main_00cdf800

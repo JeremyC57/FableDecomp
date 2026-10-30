@@ -364681,6 +364681,57 @@ $catalog = @(
         TestSource = '00/c9/libvorbis_mdctbutterflyfirst_00c9c1e0_test.cpp'
         PassPattern = '00c9c1e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c01090'
+        Module = '_global'
+        Source = '00/c0/global_fillwindow_00c01090.cpp'
+        TestSource = '00/c0/global_fillwindow_00c01090_test.cpp'
+        PassPattern = '00c01090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c20ce0'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_SetPriority_00c20ce0.cpp'
+        TestSource = '00/c2/CSoundEvent_SetPriority_00c20ce0_test.cpp'
+        PassPattern = '00c20ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c27890'
+        Module = 'CCodaPlayback'
+        Source = '00/c2/CCodaPlayback_GetPlayProgress_00c27890.cpp'
+        TestSource = '00/c2/CCodaPlayback_GetPlayProgress_00c27890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c27890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5db40'
+        Module = 'CDSoundAccelerationQuery'
+        Source = '00/c5/CDSoundAccelerationQuery_FindDeviceInterface_00c5db40.cpp'
+        TestSource = '00/c5/CDSoundAccelerationQuery_FindDeviceInterface_00c5db40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c5db40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c72930'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_Initialise_00c72930.cpp'
+        TestSource = '00/c7/CAudioSource_Initialise_00c72930_test.cpp'
+        PassPattern = '00c72930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c96320'
+        Module = '_global'
+        Source = '00/c9/global_decodepackedentrynumber_00c96320.cpp'
+        TestSource = '00/c9/global_decodepackedentrynumber_00c96320_test.cpp'
+        PassPattern = '00c96320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdf800'
+        Module = 'NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker'
+        Source = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Main_00cdf800.cpp'
+        TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Main_00cdf800_test.cpp'
+        PassPattern = '00cdf800_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

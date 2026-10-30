@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c72930	RELOCATION_MATCH	259v259	PASS	CAudioSource::Initialise (OpenAL source slot 1); 1 grade
+00c20ce0	RELOCATION_MATCH	261v261	PASS	CSoundEvent::SetPriority (bound spelling); 1 grade
+00c5db40	RELOCATION_MATCH	261v261	PASS	CDSoundAccelerationQuery::FindDeviceInterface /GS; 1 grade + 1 rename regrade (module zero GUID)
+00c73660	DIFFER	260v262	PASS	DetectWindowsVersion /GS; 4 grades; NT switch copies major to eax in retail; differ/00c73660.test.cpp PASS g++ and VC
+00c62790	DIFFER	269v264	PASS	CPKDecompressedStream::Read /EHsc; 4 grades; one RMW add [esi+8],eax; differ/00c62790.test.cpp PASS g++ and VC
+00c96320	RELOCATION_MATCH	268v268	PASS	libvorbis decode_packed_entry_number (bound _decode_packed_entry_number@8); 2 grades (2nd: C linkage for the bitreverse static)
+00cdf800	RELOCATION_MATCH	268v268	PASS	CBowerstoneTeleportPointMarker::Main (PDB); 2 grades + 1 regrade on the shared NScript headers
+00c01090	RELOCATION_MATCH	269v269	PASS	zlib 1.2.1 fill_window; 1 grade + 1 regrade (C linkage for read_buf)
+00c6b9d0	DIFFER	269v269	PASS	CStateVariableFilter::FilterWithGain; retail_asm grade; 4 grades; one x87 operand order; differ/00c6b9d0.test.cpp PASS g++ and VC
+00c27890	RELOCATION_MATCH	257v257	PASS	CCodaPlayback::GetPlayProgress /EHsc; 2 grades

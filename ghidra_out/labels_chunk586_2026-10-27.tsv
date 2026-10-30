@@ -1,0 +1,16 @@
+address	name	evidence
+00c01090	fill_window	chunk 586: zlib 1.2.1 deflate.c body + version string; PDB name sets (static in retail)
+00c96320	decode_packed_entry_number	chunk 586: libvorbis codebook.c verbatim (_decode_packed_entry_number@8)
+00cdf800	NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker::Main	chunk 586: PDB; slot 1 of vtable 0x012C33A4 stored by landed Alloc 0x00CDF750; "Hook_BowerstoneTeleportTutorial"
+00c20ce0	CSoundEvent::SetPriority	chunk 586: DESCRIPTIVE (libpk, no PDB); bound spelling
+00c27890	CCodaPlayback::GetPlayProgress	chunk 586: DESCRIPTIVE (libpk); slot 2 of vtable 0x012B4034; /EHsc
+00c5db40	CDSoundAccelerationQuery::FindDeviceInterface	chunk 586: DESCRIPTIVE; DirectSoundPrivate enumerate recipe; /GS
+00c72930	CAudioSource::Initialise	chunk 586: DESCRIPTIVE; slot 1 of the three OpenAL source vtables
+00c73660	DetectWindowsVersion	chunk 586 (parked DIFFER 260v262): DESCRIPTIVE; MSDN OS-version recipe
+00c62790	CPKDecompressedStream::Read	chunk 586 (parked DIFFER 269v264): DESCRIPTIVE; cursor class C16BitSamplePtr proven by its ctor's trace string
+00c6b9d0	CStateVariableFilter::FilterWithGain	chunk 586 (parked DIFFER 269v269, retail_asm fistp 0x00C6BAA7): DESCRIPTIVE
+00c35ca0	CODA_IsSourcePlaying	chunk 586: _CODA_IsSourcePlaying@4; "CODA reports source IS playing" string gates on it; landed Is3DSceneRenderingEnabled / IsPlaying_* are wrong
+0143bafc	g_soundLock	chunk 586: PKCCriticalSection; 11 bound spellings in landed rows
+00c0ffc0	PKCProtectionInstance::PKCProtectionInstance	chunk 586: trace string; landed rows use per-address CScopedLock_<addr> inventions
+00c0ffe0	PKCProtectionInstance::~PKCProtectionInstance	chunk 586: trace string; same
+00c962b0	bitreverse	chunk 586: libvorbis codebook.c static

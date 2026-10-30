@@ -35227,4 +35227,16 @@ _icomp	00ca1bc0	00ca1be0
 ?PlayLoopingAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@J_N111111@Z	007e73f0	00d9f6c0
 ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	007e7390	00d86c30
 ?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ	008ac970	00d18b20
-?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00e1d690
+?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z	00cbed82	00e1d690_read_buf	00c00d50	00c01090
+?g_soundLock@@3VPKCCriticalSection@@A	0143bafc	00c27890
+_CODA_IsSourcePlaying@4	00c35ca0	00c27890
+?FindDeviceInterfaceCallback@CDSoundAccelerationQuery@@SGHPAUDSPROPERTY_DIRECTSOUNDDEVICE_DESCRIPTION_A_DATA@@PAX@Z	00c5daa0	00c5db40
+?g_anyDeviceGuid@@3U_GUID@@B	012b8ff4	00c5db40
+_CLSID_DirectSoundPrivate	012beec0	00c5db40
+_DSPROPSETID_DirectSoundDevice	012beeb0	00c5db40
+_IID_IClassFactory	012c06a4	00c5db40
+_IID_IKsPropertySet	012a9714	00c5db40
+?Initialise@CVtable_012B5C10@@UAEJPAUCAudioSound@@@Z	00c596e0	00c72930
+@oggpack_adv@8	00c91530	00c96320
+@oggpack_look@8	00c913a0	00c96320
+_bitreverse	00c962b0	00c96320

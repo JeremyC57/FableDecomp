@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00c73660	DIFFER	260v262	PASS	DetectWindowsVersion /GS; 4 grades; NT switch copies major to eax in retail; differ/00c73660.test.cpp PASS g++ and VC
+00c62790	DIFFER	269v264	PASS	CPKDecompressedStream::Read /EHsc; 4 grades; one RMW add [esi+8],eax; differ/00c62790.test.cpp PASS g++ and VC
+00c6b9d0	DIFFER	269v269	PASS	CStateVariableFilter::FilterWithGain; retail_asm grade; 4 grades; one x87 operand order; differ/00c6b9d0.test.cpp PASS g++ and VC
