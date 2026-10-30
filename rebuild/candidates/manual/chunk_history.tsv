@@ -24960,3 +24960,13 @@ chunk	address	module	name	length
 592	00ab2ce0	global	Vector_Reallocate_0x34Bytes	310
 592	00af2640	global	Particle_AddToBoundingSphere	313
 592	00b7cab0	global	Vector_InsertWithCount	314
+593	00bdff50	global	std_vector_insert_fill_at_16byte	316
+593	00aeb190	global	List_InsertSorted_ByVisibility	318
+593	00af2010	global	Vector_ResizeN	318
+593	00b85b90	global	IntroSortInner	319
+593	00b85cd0	global	Merge_RotateElements	320
+593	00c11ac0	global	Combat_IterateAnimationsForCombo	320
+593	00c1a870	global	FileManager_CloseHandleOnException	321
+593	00c06f30	global	swd_init	326
+593	00b4a2c0	global	Vector_Resize_Struct0x70	327
+593	00af7570	global	Vector_InsertRangeResize	328
