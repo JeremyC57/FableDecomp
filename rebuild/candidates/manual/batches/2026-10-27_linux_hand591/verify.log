@@ -1,0 +1,42 @@
+addr       parity           behav  name
+00aafe50   RELOCATION_MATCH PASS   _M_insert_overflow
+00b7c870   RELOCATION_MATCH PASS   _M_insert_overflow
+00b988e0   RELOCATION_MATCH PASS   operator[]
+00c172f0   WARN RELOC_NAME: ??0PKCAutoFile@@QAE@PAX@Z -> 00c31d80 labelled '__EH_epilog3'
+00c172f0   WARN RELOC_NAME: ??0CLoadLog@@QAE@XZ -> 00c308f0 labelled 'CThingGraphicByPassFlagState::CThingGraphicByPassFlagState'
+00c172f0   WARN RELOC_NAME: ?SetSourceName@CLoadLog@@QAEXPBD@Z -> 00c308a0 labelled 'CVtable_012b4c28::CVtable_012b4c28'
+00c172f0   WARN RELOC_NAME: ??1CLoadLog@@QAE@XZ -> 00c30940 labelled '_global::Destructor_IterateDelete_Cleanup'
+00c172f0   WARN RELOC_NAME: ??1PKCAutoFile@@QAE@XZ -> 00c31d90 labelled 'NUISystem::CChangingStateComponent::AddChildDynamically'
+00c172f0   RELOCATION_MATCH PASS   Process_00c172f0
+00c75ff0   RELOCATION_MATCH PASS   Process
+00c8fa60   WARN RELOC_NAME: __preextrapolate_helper -> 00c8f960 labelled 'Audio_ConvolutionStep'
+00c8fa60   RELOCATION_MATCH PASS   vorbis_analysis_wrote
+00c93e30   WARN RELOC_NAME: _seed_loop@24 -> 00c92e20 labelled 'Graphics_ApplyConversion'
+00c93e30   WARN RELOC_NAME: _max_seeds@12 -> 00c93080 labelled 'UnknownMath_Process'
+00c93e30   RELOCATION_MATCH PASS   _vp_tonemask
+00ca6450   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca6450   WARN RELOC_NAME: ??0CRendererPosPassThru@@QAE@PBGPAUIUnknown@@PAJPAUIPin@@@Z -> 00cafce0 labelled 'CVtable_012bf994::CVtable_012bf994'
+00ca6450   RELOCATION_MATCH PASS   GetMediaPositionInterface
+00cb2310   RELOCATION_MATCH PASS   WA_GetCandidateList
+
+WINS: 9
+  00aafe50 RELOCATION_MATCH std::vector<CMatrix3x4>::?_M_insert_overflow@?$vector@VCMatrix3x4@@V?$allocator@VCMatrix3x4@@@std@@@std@@IAEXPAVCMatrix3x4@@ABV3@ABU__false_type@2@I_N@Z
+  00b7c870 RELOCATION_MATCH std::vector<CPreTransposedBoneMatrix>::?_M_insert_overflow@?$vector@UCPreTransposedBoneMatrix@@V?$allocator@UCPreTransposedBoneMatrix@@@std@@@std@@IAEXPAUCPreTransposedBoneMatrix@@ABU3@ABU__false_type@2@I_N@Z
+  00b988e0 RELOCATION_MATCH std::map::??A?$map@JV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@QAEAAV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@1@ABJ@Z
+  00c172f0 RELOCATION_MATCH _global::?Process_00c172f0@@YI_NPAUCProcessor_00c09110@@PAX1PAUCRequest_00c09110@@@Z
+  00c75ff0 RELOCATION_MATCH CCombFilter::?Process@CCombFilter@@QAEXPBUSCombSettings@@PAUCRingBuffer@@PAMPBMK@Z
+  00c8fa60 RELOCATION_MATCH libvorbis::@vorbis_analysis_wrote@8
+  00c93e30 RELOCATION_MATCH libvorbis::@_vp_tonemask@20
+  00ca6450 RELOCATION_MATCH CBaseRenderer::?GetMediaPositionInterface@CBaseRenderer@@UAEJABU_GUID@@PAPAX@Z
+  00cb2310 RELOCATION_MATCH _global::?WA_GetCandidateList@@YIKPAUHIMC__@@KPAPAUtagCANDIDATELIST@@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  stdvectorCMatrix3x4_Minsertoverflow_00aafe50
+  stdvectorCPreTransposedBoneMatrix_Minsertoverflow_00b7c870
+  stdmap_operator_00b988e0
+  global_Process00c172f0_00c172f0
+  CCombFilter_Process_00c75ff0
+  libvorbis_vorbisanalysiswrote_00c8fa60
+  libvorbis_vptonemask_00c93e30
+  CBaseRenderer_GetMediaPositionInterface_00ca6450
+  global_WAGetCandidateList_00cb2310

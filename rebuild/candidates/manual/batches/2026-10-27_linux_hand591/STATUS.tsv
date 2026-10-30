@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00aafe50	RELOCATION_MATCH	305v305	PASS	std::vector<CMatrix3x4>::_M_insert_overflow (STLport 4.6, __false_type); 1 grade
+00b7c870	RELOCATION_MATCH	305v305	PASS	std::vector<CPreTransposedBoneMatrix>::_M_insert_overflow; byte twin of 00aafe50; 1 grade
+00b988e0	RELOCATION_MATCH	302v302	PASS	std::map<long, map<long, CCountedPointer<CEngineSceneMap>>>::operator[] (CEngineScene::MapList); 1 grade
+00c172f0	RELOCATION_MATCH	269v269	PASS	Process_00c172f0 (libpk bank-file load; bound caller spelling kept, descriptive); /EHsc /GS; same-TU __stdcall static LoadBank (log in esi); 3 grades
+00c6b490	RELOCATION_MATCH	307v307	PASS	retail_asm (retail_asm/): ConvertFloat128BlockToIntInPlace (libpk SSE2/MMX rounding loops under MXCSR; descriptive); 1 grade
+00c75ff0	RELOCATION_MATCH	303v303	PASS	CCombFilter::Process (libpk reverb comb; descriptive); advance written on members; 2 grades
+00c8fa60	RELOCATION_MATCH	307v307	PASS	libvorbis vorbis_analysis_wrote (block.c, __fastcall) + same-TU static _preextrapolate_helper (v in esi); 1 grade
+00c93e30	RELOCATION_MATCH	302v302	PASS	libvorbis _vp_tonemask (psy.c, __fastcall) + same-TU __stdcall statics seed_loop (p in ebx) / max_seeds (p in edi); 3 grades
+00ca6450	RELOCATION_MATCH	298v298	PASS	strmbase CBaseRenderer::GetMediaPositionInterface (renbase.cpp); /EHsc; 2 grades (first SRC_FAIL: NULL)
+00cb2310	RELOCATION_MATCH	302v302	PASS	DXUT ImeUi.cpp WA_GetCandidateList (__fastcall); 1 grade

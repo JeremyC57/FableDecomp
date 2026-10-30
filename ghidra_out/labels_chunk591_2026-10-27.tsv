@@ -1,0 +1,16 @@
+address	name	evidence
+00aafe50	std::vector<CMatrix3x4>::_M_insert_overflow	chunk 591: PDB C3DAnimFileSequenceChunk::Matrices is CArray<CMatrix3x4>; callers 0x00AAF800 / 0x00AAF850; STLport body
+00b7c870	std::vector<CPreTransposedBoneMatrix>::_M_insert_overflow	chunk 591: byte twin of 0x00AAFE50; only caller _M_fill_insert 0x00B7CAB0
+00b988e0	std::map<long,std::map<long,CCountedPointer<CEngineSceneMap> > >::operator[]	chunk 591: mangled name in the Ego_r set; only caller CEngineScene::GetMapAt 0x00B94BF0
+00c172f0	Process_00c172f0	chunk 591: DESCRIPTIVE libpk bank-file load (the landed caller's spelling); /EHsc /GS; same-TU static LoadBank 0x00C17260 __stdcall
+00c6b490	ConvertFloat128BlockToIntInPlace	chunk 591: DESCRIPTIVE libpk; retail_asm (stmxcsr/ldmxcsr, cvtps2dq, cvtps2pi, emms at 0x00C6B4AB..0x00C6B522)
+00c75ff0	CCombFilter::Process	chunk 591: DESCRIPTIVE libpk DSP; landed CDspOps / CRingBuffer family
+00c8fa60	vorbis_analysis_wrote	chunk 591: libvorbis block.c verbatim (__fastcall); same-TU static _preextrapolate_helper 0x00C8F960
+00c93e30	_vp_tonemask	chunk 591: libvorbis psy.c verbatim; seed_loop / max_seeds static __stdcall; catalog said FFT_InitializeWaveform
+00ca6450	CBaseRenderer::GetMediaPositionInterface	chunk 591: strmbase renbase.cpp (UNICODE), /EHsc; model from landed 0x00CAD810
+00cb2310	WA_GetCandidateList	chunk 591: DXUT ImeUi.cpp verbatim (__fastcall)
+00aaf800	C3DAnimFileSequenceChunk::AddMatrix	chunk 591: landed as CRecordOwner_00aaf800::AddRecord (wrong)
+00c31d80	PKCAutoFile::PKCAutoFile	chunk 591: landed as T::Assign / __EH_epilog3 (wrong)
+00c31d90	PKCAutoFile::~PKCAutoFile	chunk 591: landed as CChangingStateComponent::AddChildDynamically (wrong)
+00c308f0	CLoadLog::CLoadLog	chunk 591: landed as CThingGraphicByPassFlagState (wrong)
+00c30940	CLoadLog::~CLoadLog	chunk 591: landed as CTypedContainer_00c30940 (wrong)

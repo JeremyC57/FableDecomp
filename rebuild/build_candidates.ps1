@@ -364972,6 +364972,78 @@ $catalog = @(
         TestSource = '00/ce/NScriptCHeroBoastsScript_BoastBreakSiegeNoAssistance_00ce5050_test.cpp'
         PassPattern = '00ce5050_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aafe50'
+        Module = 'std::vector<CMatrix3x4>'
+        Source = '00/aa/stdvectorCMatrix3x4_Minsertoverflow_00aafe50.cpp'
+        TestSource = '00/aa/stdvectorCMatrix3x4_Minsertoverflow_00aafe50_test.cpp'
+        PassPattern = '00aafe50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7c870'
+        Module = 'std::vector<CPreTransposedBoneMatrix>'
+        Source = '00/b7/stdvectorCPreTransposedBoneMatrix_Minsertoverflow_00b7c870.cpp'
+        TestSource = '00/b7/stdvectorCPreTransposedBoneMatrix_Minsertoverflow_00b7c870_test.cpp'
+        PassPattern = '00b7c870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b988e0'
+        Module = 'std::map'
+        Source = '00/b9/stdmap_operator_00b988e0.cpp'
+        TestSource = '00/b9/stdmap_operator_00b988e0_test.cpp'
+        PassPattern = '00b988e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c172f0'
+        Module = '_global'
+        Source = '00/c1/global_Process00c172f0_00c172f0.cpp'
+        TestSource = '00/c1/global_Process00c172f0_00c172f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc /GS'
+        PassPattern = '00c172f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75ff0'
+        Module = 'CCombFilter'
+        Source = '00/c7/CCombFilter_Process_00c75ff0.cpp'
+        TestSource = '00/c7/CCombFilter_Process_00c75ff0_test.cpp'
+        PassPattern = '00c75ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8fa60'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_vorbisanalysiswrote_00c8fa60.cpp'
+        TestSource = '00/c8/libvorbis_vorbisanalysiswrote_00c8fa60_test.cpp'
+        PassPattern = '00c8fa60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c93e30'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_vptonemask_00c93e30.cpp'
+        TestSource = '00/c9/libvorbis_vptonemask_00c93e30_test.cpp'
+        PassPattern = '00c93e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6450'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_GetMediaPositionInterface_00ca6450.cpp'
+        TestSource = '00/ca/CBaseRenderer_GetMediaPositionInterface_00ca6450_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca6450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb2310'
+        Module = '_global'
+        Source = '00/cb/global_WAGetCandidateList_00cb2310.cpp'
+        TestSource = '00/cb/global_WAGetCandidateList_00cb2310_test.cpp'
+        PassPattern = '00cb2310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6b490'
+        Module = '_global'
+        Source = '00/c6/global_ConvertFloat128BlockToIntInPlace_00c6b490.cpp'
+        TestSource = '00/c6/global_ConvertFloat128BlockToIntInPlace_00c6b490_test.cpp'
+        PassPattern = '00c6b490_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
