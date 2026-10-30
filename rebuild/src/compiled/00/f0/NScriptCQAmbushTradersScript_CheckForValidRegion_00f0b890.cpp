@@ -19,10 +19,9 @@ class CCharString { public:
 #include "engine/CGameScriptInterface.h"
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes (PDB 0x54: debug containers)
-    virtual void v00();
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 
 class CQ_AmbushTradersScript : public CScriptBase { public:
     CGameScriptInterface* GSI;                          // +0x40

@@ -1002,11 +1002,10 @@ class CIsThingConscious : public CPredicateBase { public:          // vtable 0x0
  ~CIsThingConscious() { }
 };
 }
-class CScriptBase { public:                                 // retail 0x40 bytes
- unsigned char _body[0x40];
- void SetPredicate(const NScript::CPredicateBase&); // 0x00CB7920
- bool IsActiveThreadTerminating();                  // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 struct CGlobal_GiveHeroItemsFromRewardChestScript : CScriptBase {
  GameCalls* GSI;                                     // +0x40
  void Main();

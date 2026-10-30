@@ -1,0 +1,5 @@
+symbol	target	row	change
+?GetScriptSpriteBySymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z	006e77f0	008918c0	added (header spelling of 0x006E77F0; replaces ?GetTextIDFromSymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z in the migrated rows; the old spelling stays bound for 00891340 / 00892810, NAME_FIXES)
+?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ	00449970	00895ed0	retired (no row emits it: the 14 accessor rows call ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ, already bound)
+?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ	00449970	00896d20	retired (same)
+?GetMainPlayer@CPlayerManagerView@@QAEPAVCPlayer@@XZ	00449970	00927c80	retired (same)

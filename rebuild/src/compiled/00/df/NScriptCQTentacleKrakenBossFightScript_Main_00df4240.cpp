@@ -55,14 +55,9 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_TentacleKrakenBossFightScript : public CScriptBase { public:
     struct CKrakenMinion {
@@ -87,7 +82,7 @@ void CQ_TentacleKrakenBossFightScript::Main()
     AddEntityScriptBinding(new CEntityScriptBinding<CQ_TentacleKrakenBossFightScript>("TheKraken", this, &CTheKraken::Alloc, 1));
     PostAddScriptedEntities();
     GSI->PostAddScriptedEntities();
-    SpawnFunction(new CSpawnedFunc<CQ_TentacleKrakenBossFightScript>("WatchForTermination", 0, this, &CQ_TentacleKrakenBossFightScript::WatchForTermination));
-    SpawnFunction(new CSpawnedFunc<CQ_TentacleKrakenBossFightScript>("DoMission", 0, this, &CQ_TentacleKrakenBossFightScript::DoMission));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_TentacleKrakenBossFightScript>("WatchForTermination", 0, this, &CQ_TentacleKrakenBossFightScript::WatchForTermination), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_TentacleKrakenBossFightScript>("DoMission", 0, this, &CQ_TentacleKrakenBossFightScript::DoMission), CCharString(""));
 }
 }

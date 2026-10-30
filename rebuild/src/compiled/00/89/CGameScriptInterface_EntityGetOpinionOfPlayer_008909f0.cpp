@@ -139,22 +139,12 @@ class CWorld { public:
     COpinionReactionManager_Retail* GetOpinionReactionManager() { return POpinionReactionManager_Data; }
 };
 extern const float g_fNoOpinion_0122dedc;        // 0x0122DEDC (0.0f in .rdata)
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent_Retail*  Component;          // +0x08
-    CDisplayEngine_Retail*      DisplayEngine;      // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager;  // +0x10
-    CPlayerManager_Retail*      PlayerManager;      // +0x14
-    long GetTextIDFromSymbol(const CCharString& symbol) const;   // 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` is unused)
-protected:
-    long GetMinWorldFrameForMessages() const;   // 0x006E7510
-    long GetMaxWorldFrameForMessages() const;       // 0x006E7530
-public:
-    float EntityGetOpinionOfPlayer(const CScriptThing& thing, long opinion) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
-float CGameScriptInterface::EntityGetOpinionOfPlayer(const CScriptThing& thing, long opinion) const
+float CGameScriptInterface::EntityGetOpinionOfPlayer(const CScriptThing& thing, EOpinion opinion) const
 {
     CThing_Retail* t = thing.GetThing();
     if (t) {

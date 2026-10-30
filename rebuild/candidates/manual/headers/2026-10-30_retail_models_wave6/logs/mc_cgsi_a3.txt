@@ -1,0 +1,34 @@
+  WARN leaf '?EntityGetSex@CGameScriptInterface@@UBE?AW4ESex@@ABVCScriptThing@@@Z' matches no symbol in old.obj; graded the largest function
+0088fe00	SRC_FAIL	new.cpp(25): error C2664: 'CHeroLogBook_Retail::AddLogEntry' : cannot convert parameter 1 from 'const CWideString' to 'long'
+0088ea50	SRC_FAIL	new.cpp(88): error C2440: 'return' : cannot convert from 'long' to 'ESex' | new.cpp(90): error C2440: 'return' : cannot convert from 'int' to 'ESex'
+0088e3d0	SRC_FAIL	new.cpp(126): error C2664: 'CWorldMap_Retail::SetRegionsAsConnectedInGraph' : cannot convert parameter 1 from 'const CCharString' to 'long'
+008909f0	RELOC_RENAMED	leafsym ?EntityGetOpinionOfPlayer@CGameScriptInterface@@QBEMABVCScriptThing@@J@Z -> ?EntityGetOpinionOfPlayer@CGameScriptInterface@@UBEMABVCScriptThing@@W4EOpinion@@@Z
+00891340	SRC_FAIL	new.cpp(54): error C2664: 'ConstructString' : cannot convert parameter 2 from 'const std::vector<T,A> *' to 'CWideStringVector_Retail *'
+00895a90	SRC_FAIL	new.cpp(149): error C2664: 'CTCFishing_Retail::GoFishing' : cannot convert parameter 1 from 'bool' to 'const CScriptThing &'
+00895430	SRC_FAIL	new.cpp(147): error C2664: 'CTCInventory_Retail::IsButtonHeldForExpression' : cannot convert parameter 1 from 'const CCharString' to 'long'
+00896df0	RELOC_RENAMED	leafsym ?KickOffCreditsScreen@CGameScriptInterface@@QAEXAAVCCharString@@@Z -> ?KickOffCreditsScreen@CGameScriptInterface@@UBEXAAVCCharString@@@Z
+  WARN leaf '?MsgOnLevelLoaded@CGameScriptInterface@@UBE_NAAV?$list@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z' matches no symbol in old.obj; graded the largest function
+0089ac10	SRC_FAIL	new.cpp(71): error C2665: 'CGameScriptInterface_MsgOnLevelLoaded_Callback::CGameScriptInterface_MsgOnLevelLoaded_Callback' : none of the 2 overloads can convert parameter 2 from type 'std::list<T,A>' | new.cpp(72): error C2027: use of undefined type 'std::list<T,A>' | new.cpp(72): error C2228: left of '.begin' must have class/struct/union type
+0089ac80	SRC_FAIL	new.cpp(165): error C2027: use of undefined type 'std::list<T,A>' | new.cpp(165): error C2228: left of '.push_back' must have class/struct/union type | new.cpp(167): error C2027: use of undefined type 'std::list<T,A>'
+008907c0	SRC_FAIL	new.cpp(33): error C2511: 'void CGameScriptInterface::RemoveConversation(void *,long,bool) const' : overloaded member function not found in 'CGameScriptInterface'
+00895e70	RELOC_RENAMED	leafsym ?SetDoorTriggerType@CGameScriptInterface@@QBEXABVCScriptThing@@J@Z -> ?SetDoorTriggerType@CGameScriptInterface@@UBEXABVCScriptThing@@W4EDoorTriggerType@@@Z
+  WARN leaf '?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?GetAllThingsWithDefNameByDistanceFrom@CGameScriptInterface@@UBEJABVCScriptThing@@ABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z' matches no symbol in old.obj; graded the largest function
+008a0cb0	SRC_FAIL	new.cpp(133): error C2027: use of undefined type 'std::set<K,C,A>' | new.cpp(133): error C2228: left of '._M_node_count' must have class/struct/union type | new.cpp(134): error C2664: 'CTextDataBank::GetAllTextEntriesForNarrator' : cannot convert parameter 2 from 'std::set<K,C,A>' to 'CStringSet &'
+008a89d0	SRC_FAIL	new.cpp(108): error C2027: use of undefined type 'std::vector<T,A>' | new.cpp(108): error C2228: left of '.reserve' must have class/struct/union type | new.cpp(110): error C2027: use of undefined type 'std::vector<T,A>'
+008a86c0	SRC_FAIL	new.cpp(171): error C2027: use of undefined type 'std::vector<T,A>' | new.cpp(171): error C2228: left of '.reserve' must have class/struct/union type | new.cpp(174): error C2027: use of undefined type 'std::vector<T,A>'
+008a9c40	SRC_FAIL	new.cpp(148): error C2027: use of undefined type 'std::vector<T,A>' | new.cpp(148): error C2228: left of '.reserve' must have class/struct/union type | new.cpp(149): error C2039: 'GetPos' : is not a member of 'CScriptThing'
+  WARN leaf '?GetFollowingEntityList@CGameScriptInterface@@UBE_NABVCScriptThing@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z' matches no symbol in old.obj; graded the largest function
+008a80f0	SRC_FAIL	new.cpp(135): error C2039: 'GetThing' : is not a member of 'CScriptThing' | new.cpp(142): error C2027: use of undefined type 'std::vector<T,A>' | new.cpp(142): error C2228: left of '.begin' must have class/struct/union type
+008a37b0	SRC_FAIL	fable_nscript_forward.h(33): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | fable_nscript_forward.h(33): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(110): error C2440: 'return' : cannot convert from 'int' to 'EScriptingStateGroups'
+008a9ae0	SRC_FAIL	new.cpp(136): error C2027: use of undefined type 'std::vector<T,A>' | new.cpp(136): error C2228: left of '.push_back' must have class/struct/union type
+008a3ef0	DIFFER	176v218 grades=False sym=?SetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a54e0	DIFFER	176v218 grades=False sym=?SetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a5220	DIFFER	176v218 grades=False sym=?SetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a4a00	DIFFER	176v218 grades=False sym=?SetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a5ff0	SRC_FAIL	new.cpp(110): error C2511: 'void CGameScriptInterface::SetKillSelfAndStealableItemAfterReachingDestination(CScriptThing,unsigned char)' : overloaded member function not found in 'CGameScriptInterface'
+008a3980	DIFFER	176v218 grades=False sym=?SetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a7610	DIFFER	176v218 grades=False sym=?SetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a2950	DIFFER	176v218 grades=False sym=?SetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a2690	DIFFER	176v218 grades=False sym=?SetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+00c308a0	SRC_FAIL	new.cpp(20): error C2511: 'void CGameScriptInterface::EntitySetAsOpinionSource(long)' : overloaded member function not found in 'CGameScriptInterface'

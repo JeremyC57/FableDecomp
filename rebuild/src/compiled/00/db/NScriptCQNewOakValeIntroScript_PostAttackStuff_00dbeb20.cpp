@@ -88,10 +88,9 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 #include "engine/CGameScriptInterface.h"
 void __fastcall AddLogbookStoryEntry(long entry);       // 0x00CBE87F
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_NewOakValeIntroScript : public CScriptBase {
 public:

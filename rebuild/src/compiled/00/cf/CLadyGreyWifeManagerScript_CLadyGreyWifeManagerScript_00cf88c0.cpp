@@ -8,11 +8,10 @@
 // (CQ_HangingTreeEvilScript 0x00D68F00): the two argument stores before the vtable store are the inlined `__declspec(novtable)`
 // argument-carrying intermediate base; each CScriptThing is CBaseClass + vtable 0x01238C8C + an embedded zeroed CCountedPointer.
 class CGameScriptInterface;
-class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04..+0x3f
-    CScriptBase();                                      // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
     CGameScriptInterface* Game;                         // +0x40 (second argument)
     void*                 Data;                         // +0x44 (first argument, the script data)

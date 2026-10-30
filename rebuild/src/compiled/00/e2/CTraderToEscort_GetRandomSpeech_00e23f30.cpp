@@ -23,12 +23,10 @@ class CCharString
 
 extern "C" int __cdecl rand();                      // 0x00BFEB16 (MSVCR71)
 
-class CGameScriptInterface
-{ public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06();
-    virtual void NewScriptFrame();                  // slot 7 (+0x1c): yield one frame
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 enum EscortTraderQuestStage { ESCORT_STAGE_FOLLOW = 2, ESCORT_STAGE_WAIT = 3 };
 

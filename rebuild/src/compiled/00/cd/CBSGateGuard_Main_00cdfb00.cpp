@@ -26,25 +26,31 @@ enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-struct CCountedPointerWords {
-    void* Data;
-    void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+class CCPPointerInfo { public:                         // CCountedPointer's shared block (Ego_r.pdb CCPPointerInfo)
+    long RefCount;                                     // +0
+    void (__fastcall* DeleteFunc)(void* data);         // +4 destroys the pointee
+    void* Data;                                        // +8
 };
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                         // +0x08
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003();
-    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10)
-    virtual void s005(); virtual void s006(); virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011();
-    virtual CScriptThing GetScriptThing() const;   // slot 12 (+0x30)
-    virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual void s021(); virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025();
-    virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68)
-    bool IsValid() const;                                // 0x00CD23B9
-    void Release();                                    // 0x00CD2770
+void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
+template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
+    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
+    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
+    CCountedPointer() : Data(0), Info(0) {}            // from this size)
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
 };
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

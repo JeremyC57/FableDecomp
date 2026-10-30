@@ -60,18 +60,10 @@ public:
     unsigned char         _pad04[0x5C];
     CMessageEventManager* PMessageEventManager_Data;       // +0x60 (CCountedPointer<CMessageEventManager>::Data)
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    CWorld* World;                                         // +0x04
-protected:
-    long GetMinWorldFrameForMessages() const;          // 0x006E7510
-public:
-protected:
-    long GetMaxWorldFrameForMessages() const;              // 0x006E7530
-public:
-    virtual bool MsgIsRegionLoaded(const CCharString& name) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 bool CGameScriptInterface::MsgIsRegionLoaded(const CCharString& name) const
 {
     long number = World->PeekWorldMap().GetRegionNumberFromName(name);

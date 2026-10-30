@@ -63,16 +63,10 @@ public:
     CScriptThing Me;                                    // +0x08
 };
 
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    TData* MasterScriptData;                            // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

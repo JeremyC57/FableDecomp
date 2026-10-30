@@ -51,14 +51,9 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 void __fastcall AddLogbookStoryEntryString(const CCharString& text);   // 0x00CBE960
 struct CNostroMasterData {
     unsigned char _pad[0x68];
@@ -105,8 +100,8 @@ void NScript::CQ_HeroSoulsNostroScript::Main()
     Game->KickOffQuestStartScreen(Game->GetActiveQuestName(), true, false);
     QuestStartScreenShown = true;
     Game->SetQuestCardObjective("Q_HeroSouls", "TEXT_QUEST_HERO_SOULS_OBJECTIVE_13", "GraveyardCircle", "Graveyard");
-    SpawnFunction(new CSpawnedFunc<CQ_HeroSoulsNostroScript>("DealWithCreatureGeneration", 0, this, &NScript::CQ_HeroSoulsNostroScript::DealWithCreatureGeneration));
-    SpawnFunction(new CSpawnedFunc<CQ_HeroSoulsNostroScript>("WatchForNostroHit", 0, this, &NScript::CQ_HeroSoulsNostroScript::WatchForNostroHit));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HeroSoulsNostroScript>("DealWithCreatureGeneration", 0, this, &NScript::CQ_HeroSoulsNostroScript::DealWithCreatureGeneration), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HeroSoulsNostroScript>("WatchForNostroHit", 0, this, &NScript::CQ_HeroSoulsNostroScript::WatchForNostroHit), CCharString(""));
     Game->FadeScreenIn();
     while (!PMasterData->NostroDefeated) {
         Game->NewScriptFrame();

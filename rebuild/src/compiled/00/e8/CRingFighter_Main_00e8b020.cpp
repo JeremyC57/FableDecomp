@@ -31,10 +31,22 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
+template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
+    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
+    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
+    CCountedPointer() : Data(0), Info(0) {}            // from this size)
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
 };
 class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl {
@@ -91,26 +103,11 @@ struct CAndPredicate : CScriptPredicate {               // vtable 0x012EA430
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
-    virtual ~CScriptGameResourceObjectBase() {}
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CScriptGameResourceObjectMovieBase.h"
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 enum EScriptEntityMoveType { MOVE_TYPE_WALK };
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
-    CCountedPointerWords PImp;
-    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsValid() const;                                 // 0x00CD23B9
-    void Release();                                     // 0x00CD2770
-    CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    virtual bool IsPerformingScriptTask() const;        // 0x007E7450
-    virtual CScriptThing GetScriptThing() const;        // 0x007E7490
-    virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType type, bool a, bool b, bool c, bool d);   // 0x007E7300
-    virtual void MoveToPosition(const C3DVector& pos, float distance, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0
-};
-class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
-    CCountedPointerWords PImp;
-    ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
-};
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase>
     void* _body[3];
     CCutsceneCastMap();                                 // 0x00CDBF70

@@ -44,11 +44,9 @@ struct CScriptThingVector {                        // STLport vector<CScriptThin
     CScriptThing* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
 };
-class CScriptBase { public:
-    unsigned char _body[0x40];
-public:
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_BodyGuardScript : public CScriptBase {
 public:

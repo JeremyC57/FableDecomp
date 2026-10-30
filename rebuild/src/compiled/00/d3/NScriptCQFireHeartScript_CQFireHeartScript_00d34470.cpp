@@ -17,11 +17,10 @@
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 class CGameScriptInterface;
 
-class CScriptBase { public:
-    virtual void v00();
-    unsigned char _body[0x3c];                       // +0x04..+0x40
-    CScriptBase();                                   // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 struct __declspec(novtable) CScriptObject : CScriptBase {
     CGameScriptInterface* m_pGame;                   // +0x40
     void* m_pData;                                   // +0x44

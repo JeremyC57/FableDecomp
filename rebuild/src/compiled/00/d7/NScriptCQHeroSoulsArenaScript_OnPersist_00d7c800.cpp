@@ -9,17 +9,10 @@ class CPersistContext {
 public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-protected:
-    virtual void RegisterMain();
-    virtual void Main();
-    virtual void Init();
-public:
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_HeroSoulsArenaScript : public CScriptBase {
 public:

@@ -54,14 +54,9 @@ class CGameScriptInterface;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_MayorsInvitationScript : public CScriptBase {
 public:
@@ -101,14 +96,14 @@ void NScript::CV_MayorsInvitationScript::Main()
     if (WhichQuest == 5 && !HeroHasDefeatedThunder && !HeroHasLostToThunder) {
         if (IsActiveThreadTerminating())
             return;
-        SpawnFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("MonitorThunderHeroDuel", 0, this, &NScript::CV_MayorsInvitationScript::MonitorThunderHeroDuel));
+        AddSpawnedFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("MonitorThunderHeroDuel", 0, this, &NScript::CV_MayorsInvitationScript::MonitorThunderHeroDuel), CCharString(""));
     }
     AddEntityScriptBinding(new CEntityScriptBinding<CV_MayorsInvitationScript>("LadyGrey", this, &CLadyGrey::Alloc, 0));
     AddEntityScriptBinding(new CEntityScriptBinding<CV_MayorsInvitationScript>("WiseVillager", this, &CWiseVillager::Alloc, 0));
     AddEntityScriptBinding(new CEntityScriptBinding<CV_MayorsInvitationScript>("MI_InfoKeeper", this, &CMI_InfoKeeper::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
-    SpawnFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("WatchForTermination", 0, this, &NScript::CV_MayorsInvitationScript::WatchForTermination));
-    SpawnFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("WatchExposeMayorProgress", 0, this, &NScript::CV_MayorsInvitationScript::WatchExposeMayorProgress));
-    SpawnFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("DoMission", 0, this, &NScript::CV_MayorsInvitationScript::DoMission));
+    AddSpawnedFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("WatchForTermination", 0, this, &NScript::CV_MayorsInvitationScript::WatchForTermination), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("WatchExposeMayorProgress", 0, this, &NScript::CV_MayorsInvitationScript::WatchExposeMayorProgress), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("DoMission", 0, this, &NScript::CV_MayorsInvitationScript::DoMission), CCharString(""));
 }

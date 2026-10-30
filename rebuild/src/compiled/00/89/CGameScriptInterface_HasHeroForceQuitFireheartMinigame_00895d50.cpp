@@ -80,20 +80,10 @@ struct CTCFireheartMinigame_Retail {          // interface type 0x108
     void PlayGame();                             // 0x007E78E0 (CTCFireheartMinigame::PlayGame)
     void Quit();                                 // 0x007E7A40 (CTCFireheartMinigame::Quit)
 };
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
-    CMainGameComponent_Retail*  Component;          // +0x08
-    CDisplayEngine_Retail*      DisplayEngine;      // +0x0c
-    CDefinitionManager_Retail*  DefinitionManager;  // +0x10
-    CPlayerManager*      PlayerManager;      // +0x14
-    long GetTextIDFromSymbol(const CCharString& symbol) const;   // 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` is unused)
-protected:
-    long GetMinWorldFrameForMessages() const;   // 0x006E7510
-    long GetMaxWorldFrameForMessages() const;       // 0x006E7530
-public:
-    bool HasHeroForceQuitFireheartMinigame() const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::HasHeroForceQuitFireheartMinigame() const
 {

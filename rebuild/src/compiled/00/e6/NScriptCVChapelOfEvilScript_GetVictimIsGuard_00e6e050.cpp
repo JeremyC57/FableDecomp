@@ -24,10 +24,10 @@ class CCharString { public:
 };
 extern "C" char* __cdecl strstr(const char* text, const char* pattern);   // 0x00BFEB3A
 
-class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                       // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 __forceinline bool NameContains(const CCharString& name, const char* text)
 {

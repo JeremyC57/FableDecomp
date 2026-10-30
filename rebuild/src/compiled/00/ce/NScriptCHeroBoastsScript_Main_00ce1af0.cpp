@@ -62,13 +62,9 @@ template <class T, class A1, class A2> struct CSpawnedFunc2 : CSpawnedFuncBase {
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    virtual void v00();
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CHeroBoastsScript : public CScriptBase { public:
     CGameScriptInterface*   GSI;                        // +0x40

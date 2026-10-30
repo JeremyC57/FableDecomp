@@ -53,10 +53,9 @@ class CTimer { public:
     long Index;
 };
 
-class CScriptBase { public:
-    virtual void v00();
-    unsigned char _body[0x3c];                       // +0x04 .. +0x40
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 
 namespace NScript {
 class CQ_SummoningTheShipScript : public CScriptBase {

@@ -131,11 +131,9 @@ struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 extern CCharString GlobalConsoleCutsceneName;          // 0x0143E91C
 extern bool GlobalConsolePlayCutscene;                 // 0x0143E8FC
-class CScriptBase { public:                                   // retail 0x40 bytes
-    virtual void v00();
-    unsigned char _body[0x3c];
-    bool IsActiveThreadTerminating();                  // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* Game;                        // +0x40
     unsigned char _pad44[4];

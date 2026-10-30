@@ -17,7 +17,6 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct PlayerManagerMethods:CPlayerManager{CPlayer* GetMainPlayer();}; //00449970
 
 #define CTCBoastUI CTCBoastUILayout
 #include "engine/CTCBoastUI.h"
@@ -45,7 +44,7 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{
 FABLE_STATIC_ASSERT(sizeof(CGameScriptInterfaceMethods::ConstVoidMethod)==4);
 FABLE_STATIC_ASSERT(sizeof(MovieResource)==24);
 void CGameScriptInterfaceMethods::StartMovieSequence(const CCharString& name,MovieResourceHandle& output){
- CThingPlayerCreature* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)&&(hero->UsingComponents[7]&0x100)){
+ CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)&&(hero->UsingComponents[7]&0x100)){
  GetBoast(hero)->AllowUIToOpen(false);}
  while(InMovieSequence)NewScriptFrame();while(g_MovieTransitionState->Busy)NewScriptFrame();
  InMovieSequence=true;StartLetterBox(0.0f,0.5f,1.7777778f);CancelAbilitiesForCutscene();output.Reset(new MovieResource(this,true));g_MovieCameraID=-1;g_MovieState=0;

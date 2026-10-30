@@ -37,11 +37,10 @@ public:
     void __fastcall Activate(CCharString screenName);
 };
 
-class CGameScriptInterface
-{
-public:
-    void KickOffCreditsScreen(CCharString& screenName);
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 typedef CVectorMap<
     ETCInterfaceType,
@@ -74,8 +73,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 
 class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
-void CGameScriptInterface::KickOffCreditsScreen(
-    CCharString& screenName)
+void CGameScriptInterface::KickOffCreditsScreen(CCharString& screenName) const
 {
     const CGameScriptInterfaceOverlay* self =
         (const CGameScriptInterfaceOverlay*)this;

@@ -9,11 +9,10 @@
 // inlined `__declspec(novtable)` intermediate base; the three zero stores after it come from an embedded state member's inline constructor (plain
 // init-list zeros hoist the `xor eax,eax` above the vtable store);
 // the body registers the timer into +0x6c; `ret 8`, `this` in eax.
-class CScriptBase { public:                               // 0x40 bytes, the quest-script root (landed 0x00CB8110)
-    virtual void v00();
-    unsigned char _body[0x3c];                     // +0x04..+0x3f
-    CScriptBase();                                 // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CScriptObject : CScriptBase {   // the argument-carrying intermediate base: both words stored before the derived vtable
     void* m_pInterface;                            // +0x40 (second argument, CGameScriptInterfaceBase*)

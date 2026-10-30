@@ -29,10 +29,9 @@ struct CGameflowMasterData {
     unsigned char _pad[0x67];
     bool          StopAssistance;                           // +0x67
 };
-class CScriptBase { public:
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                       // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CGameflowAssistanceScript : CScriptBase {
     CGameScriptInterface* GSI;                              // +0x40
     CGameflowMasterData*  PMasterData;                      // +0x44

@@ -1,9 +1,6 @@
 // CGameScriptInterface::EntitySetAsScared(const CScriptThing& thing,bool value) const -- Forward the creature request under retail lifetime and type checks.
 // Leaf: ?EntitySetAsScared@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
 // Identity: original PDB virtual const signature; direct mode/generator calls independently named.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -119,5 +116,8 @@ class CTCCreatureModeManager:public CTCBase {public:class CModeBase{public:virtu
 class CTCCreatureGenerator:public CTCCreatureGenerator_HeaderLayout {public:bool IsDepleted()const;long GetNumGeneratedCreatures()const;bool AreAllCreaturesAlive()const;};
 __forceinline bool IsThingAlive(const CScriptThing& script){CThing* p=script.GetPThing();return p && !p->Dead;}
 // Layout: shared script header retained as evidence; genuine virtual declaration, owner fields untouched.
-class CGameScriptInterface {public:virtual void EntitySetAsScared(const CScriptThing& thing,bool value)const;unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetAsScared(const CScriptThing& thing,bool value)const{if(thing.IsAlive() && (thing.GetPThing()->ThingTypeFlags&8)){CTCCreatureModeManager* component;thing.GetPThing()->GetTC((ETCInterfaceType)49,&component);if(value){if(component->GetCurrentMode().GetType()!=15)component->AddMode(15);}else component->RemoveMode(15);}}

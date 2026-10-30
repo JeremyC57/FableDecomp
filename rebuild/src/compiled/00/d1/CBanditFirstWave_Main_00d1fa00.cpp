@@ -73,19 +73,8 @@ struct CCountedPointerWords {
     void* Info;
     CCountedPointerWords() : Data(0), Info(0) { }
 };
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                         // +0x08
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
-    virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004();
-    virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
-    virtual void s006(); virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013();
-    virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020(); virtual void s021();
-    virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025();
-    virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68)
-    bool IsValid() const;                                // 0x00CD23B9
-    void Release();                                    // 0x00CD2770
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

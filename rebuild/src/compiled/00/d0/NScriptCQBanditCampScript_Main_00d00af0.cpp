@@ -59,15 +59,9 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_BanditCampScript : public CScriptBase {
 public:
@@ -100,10 +94,10 @@ void CQ_BanditCampScript::Main()
         GSI->ActivateQuest("Q_OakValeBanditRaid");
         ActivatedBanditRaid = true;
     }
-    SpawnFunction(new CSpawnedFunc<CQ_BanditCampScript>("WatchForTermination", 0, this, &CQ_BanditCampScript::WatchForTermination));
-    SpawnFunction(new CSpawnedFunc<CQ_BanditCampScript>("WatchForCostume", 0, this, &CQ_BanditCampScript::WatchForCostume));
-    SpawnFunction(new CSpawnedFunc<CQ_BanditCampScript>("CheckAnyBanditsKilled", 0, this, &CQ_BanditCampScript::CheckAnyBanditsKilled));
-    SpawnFunction(new CSpawnedFunc<CQ_BanditCampScript>("WatchForEndOfScript", 0, this, &CQ_BanditCampScript::WatchForEndOfScript));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_BanditCampScript>("WatchForTermination", 0, this, &CQ_BanditCampScript::WatchForTermination), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_BanditCampScript>("WatchForCostume", 0, this, &CQ_BanditCampScript::WatchForCostume), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_BanditCampScript>("CheckAnyBanditsKilled", 0, this, &CQ_BanditCampScript::CheckAnyBanditsKilled), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_BanditCampScript>("WatchForEndOfScript", 0, this, &CQ_BanditCampScript::WatchForEndOfScript), CCharString(""));
     if (!Gate1Open) {
         if (IsActiveThreadTerminating())
             return;

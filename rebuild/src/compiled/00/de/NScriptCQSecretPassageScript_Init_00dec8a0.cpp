@@ -21,16 +21,9 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
 class CPersistContext;
-class CScriptBase { public:                             // retail 0x40 bytes (Ego_r 0x54: debug containers)
-    virtual ~CScriptBase();                             // slot 0
-protected:
-    virtual void RegisterMain();                        // slot 1
-    virtual void Main();                                // slot 2
-    virtual void Init();                                // slot 3
-public:
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 
 namespace NScript {
 class CQ_SecretPassageScript : public CScriptBase {

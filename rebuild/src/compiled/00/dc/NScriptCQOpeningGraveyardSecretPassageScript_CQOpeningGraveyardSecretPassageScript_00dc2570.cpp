@@ -16,11 +16,10 @@
 //   the long are left uninitialised.
 class CGameScriptInterface;
 
-class CScriptBase { public:                                    // 0x40 bytes in retail, the quest-script root
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04..+0x3f
-    CScriptBase();                                      // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base (landed model)
     CGameScriptInterface* Game;                         // +0x40 (second argument)

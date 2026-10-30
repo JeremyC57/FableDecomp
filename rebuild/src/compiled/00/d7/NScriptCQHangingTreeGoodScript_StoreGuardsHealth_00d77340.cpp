@@ -80,11 +80,10 @@ template <class T> struct CRetailVector {        // retail vector: begin, end, c
     void push_back(const T& value);              // 0x00568850 (float instance)
 };
 
-class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
-    virtual void v00();
-    unsigned char _body[0x3c];
-    bool IsActiveThreadTerminating();                       // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct CQuestScriptBase : CScriptBase {                     // retail 0x48 bytes
     CGameScriptInterface_Calls* GSI;                        // +0x40

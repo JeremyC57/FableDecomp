@@ -6,7 +6,7 @@
 //   allocators 0x00ED1420 / 0x00ED16E0; threads WatchForCompleteTune 0x00ED2BB0, WatchForSpokenToDemonDoors 0x00ED13B0,
 //   WatchForRegionLeaving 0x00ED2A50; CGameScriptInterface slots 7 NewScriptFrame, 12 IsRegionLoaded, 64 PostAddScriptedEntities.
 // Shape: translator WAIT_UNTIL loop, then the CQ_GuildTrainingWoodsMeleeScript::Main 0x00D66620 binding model; the spawns
-//   use the inline SpawnFunction (region temporary built after operator new).
+//   use the inline AddSpawnedFunction(region temporary built after operator new, CCharString("")).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
@@ -50,14 +50,9 @@ class CGameScriptInterface;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_SingingStonesScript : public CScriptBase {
 public:
@@ -90,7 +85,7 @@ void NScript::CV_SingingStonesScript::Main()
     AddEntityScriptBinding(new CEntityScriptBinding<CV_SingingStonesScript>("ManWithDoorName", this, &CManWithDoorName::Alloc, 0));
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
-    SpawnFunction(new CSpawnedFunc<CV_SingingStonesScript>("WatchForCompleteTune", 0, this, &NScript::CV_SingingStonesScript::WatchForCompleteTune));
-    SpawnFunction(new CSpawnedFunc<CV_SingingStonesScript>("WatchForSpokenToDemonDoors", 0, this, &NScript::CV_SingingStonesScript::WatchForSpokenToDemonDoors));
-    SpawnFunction(new CSpawnedFunc<CV_SingingStonesScript>("WatchForRegionLeaving", 0, this, &NScript::CV_SingingStonesScript::WatchForRegionLeaving));
+    AddSpawnedFunction(new CSpawnedFunc<CV_SingingStonesScript>("WatchForCompleteTune", 0, this, &NScript::CV_SingingStonesScript::WatchForCompleteTune), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CV_SingingStonesScript>("WatchForSpokenToDemonDoors", 0, this, &NScript::CV_SingingStonesScript::WatchForSpokenToDemonDoors), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CV_SingingStonesScript>("WatchForRegionLeaving", 0, this, &NScript::CV_SingingStonesScript::WatchForRegionLeaving), CCharString(""));
 }

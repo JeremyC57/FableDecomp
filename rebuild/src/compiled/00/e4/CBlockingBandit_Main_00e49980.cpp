@@ -30,7 +30,7 @@ class CCPPointerInfo { public:
     void* Data;                                        // +8
 };
 class CScriptThing;
-struct CCountedPointer {                               // {Data, Info}
+template <class T> class CCountedPointer { public:                               // {Data, Info}
     CScriptThing*   Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -71,7 +71,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
     VPAD32(p4x0)   // slots 43..74
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
-    CCountedPointer PImp;                              // +0x04
+    CCountedPointer<CScriptThing> PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     virtual ~CScriptThing();                                   // 0x004AA840
 };
@@ -108,19 +108,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual bool IsPerformingScriptTask() const;               // 0x007E7450
     virtual CScriptThing GetScriptThing() const;               // 0x007E7490
 };
-class CGameScriptInterface { public:
-    VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(p1x0) VPAD16(p1x1) VPAD8(p1x2) VPAD4(p1x3) VPAD1(p1x4)   // slots 9..69
-    virtual const CScriptThing& GetHero() const;   // slot 70 (+0x118)
-    VPAD1(p2x0)   // slots 71..71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;   // slot 72 (+0x120)
-    VPAD256(p3x0) VPAD256(p3x1) VPAD16(p3x2)   // slots 73..600
-    virtual void EntitySetInFaction(const CScriptThing& thing, const CCharString& faction) const;   // slot 601 (+0x964)
-    VPAD32(p4x0) VPAD2(p4x1)   // slots 602..635
-    virtual bool IsThingAwareOfOtherThingInAnyWay(const CScriptThing& thing, const CScriptThing& other) const;   // slot 636 (+0x9f0)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 struct CV_BanditTollScript {
     unsigned char _pad[0x48];

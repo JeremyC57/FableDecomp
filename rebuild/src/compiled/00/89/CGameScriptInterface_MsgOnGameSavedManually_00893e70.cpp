@@ -46,16 +46,10 @@ public:
     unsigned char _pad_0x00[0x60];                       // vptr .. PScriptInfoManager (not touched here)
     CCountedPointer<CMessageEventManager> PMessageEventManager;   // +0x60 (PDB +96)
 };
-class CGameScriptInterface {                             // Ego_r.pdb 84 bytes
-public:
-    virtual ~CGameScriptInterface();
-protected:
-    long GetMinWorldFrameForMessages() const;        // 0x006E7510
-    long GetMaxWorldFrameForMessages() const;            // 0x006E7530
-public:
-    virtual bool MsgOnGameSavedManually() const;
-    CWorld* World;                                       // +0x04
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::MsgOnGameSavedManually() const
 {

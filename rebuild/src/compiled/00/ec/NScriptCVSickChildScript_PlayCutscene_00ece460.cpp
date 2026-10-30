@@ -203,10 +203,9 @@ void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, 
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CScriptBase {
-public:
-    unsigned char _body[0x40];                          // retail 0x40 bytes
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_SickChildScript : public CScriptBase {
 public:

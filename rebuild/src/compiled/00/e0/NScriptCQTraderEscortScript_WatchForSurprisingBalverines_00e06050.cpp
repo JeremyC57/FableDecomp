@@ -152,11 +152,10 @@ class CTimer { public:                                         // a script timer
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-public:
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 
 class CQ_TraderEscortScript : public CScriptBase {

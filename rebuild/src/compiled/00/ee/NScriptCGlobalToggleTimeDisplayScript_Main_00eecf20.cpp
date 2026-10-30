@@ -54,15 +54,9 @@ public:
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CScriptBase {                                      // retail 0x40 bytes (Ego_r.pdb 0x54 with Dinkumware containers)
-public:
-    virtual ~CScriptBase();
-    virtual void RegisterMain();                          // slot 1
-    virtual void Main();                                  // slot 2 (+0x08)
-    virtual void Init();                                  // slot 3 (+0x0c)
-    bool IsActiveThreadTerminating();                     // 0x00CB7940 ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CGlobal_ToggleTimeDisplayScript : public CScriptBase {

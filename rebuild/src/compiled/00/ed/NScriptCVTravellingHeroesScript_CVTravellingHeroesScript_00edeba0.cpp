@@ -61,14 +61,9 @@ struct CIsThingConscious {                               // NScript predicate, v
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
-class CScriptGameResourceObjectBase : public CBaseObject { public:     // vtable 0x0126008C
-    virtual ~CScriptGameResourceObjectBase() {}
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    virtual void v01();                                  // slot 1 (0x007E72C0)
-};
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E (MSVCR71)
 
 struct _Rb_tree_node_base {
@@ -99,11 +94,9 @@ template <unsigned int NodeSize> struct map : _Rb_tree_base<NodeSize> {   // STL
 #include "engine/CGameScriptInterface.h"
 class CScriptDataBase;
 
-class CScriptBase { public:                                     // retail 0x40 bytes (PDB 0x54: debug containers), vtable 0x012C1648
-    virtual void v00();
-    unsigned char _body[0x3c];                           // +0x04 .. +0x40
-    CScriptBase();                                       // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CQuestScriptBase : CScriptBase {   // the argument pair stored before the derived vtable
     CGameScriptInterface* GSI;                           // +0x40

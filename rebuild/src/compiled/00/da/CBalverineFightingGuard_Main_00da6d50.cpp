@@ -104,10 +104,10 @@ template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48
         : CSpawnedFuncBase(name, id), Func(func), PClass(pclass), Par1(par1) {}
     virtual void SuspendableProcess() { (PClass->*Func)(Par1); }
 };
-class CScriptBase { public:                                   // retail 0x40 bytes
-    unsigned char _body[0x40];
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 struct CQ_MinionClifftopChaseScript : CScriptBase {
     unsigned char _pad40[0x49 - 0x40];
     bool MissionFailed;                                // +0x49

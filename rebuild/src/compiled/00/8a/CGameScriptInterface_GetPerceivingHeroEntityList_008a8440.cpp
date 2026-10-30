@@ -119,14 +119,13 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 #include "engine/CTCPerceiveThing.h"
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct PlayerManagerMethods:CPlayerManager{CPlayer* GetMainPlayer();}; //00449970
 struct ThingVector{CThingNative **Start,**Finish,**Capacity;ThingVector():Start(0),Finish(0),Capacity(0){}~ThingVector(){if(Start)free(Start);}};
 struct ScriptVector{ScriptMethods *Start,*Finish,*Capacity;ScriptMethods* Erase(ScriptMethods*,ScriptMethods*);void PushBack(const ScriptMethods&);}; //008AC9D0 returns first iterator in EAX at008ACA0F;008ADF90
 struct HeroPerceptionManager{void GetPerceivingThings(ThingVector&)const;}; //00437910 ->0064D3A5 via manager+1B8
 extern HeroPerceptionManager* g_HeroPerceptionManager; //013B8790
 struct CGameScriptInterfaceMethods:CGameScriptInterface{bool GetPerceivingHeroEntityList(ScriptVector&)const;};
 bool CGameScriptInterfaceMethods::GetPerceivingHeroEntityList(ScriptVector& output)const{
- bool found=false;output.Erase(output.Start,output.Finish);CThingPlayerCreature* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)){
+ bool found=false;output.Erase(output.Start,output.Finish);CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)){
  ThingVector things;g_HeroPerceptionManager->GetPerceivingThings(things);for(CThingNative** it=things.Start;it!=things.Finish;++it){CThingNative* thing=*it;if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[1]&0x100000)){
  const ComponentMap* map=&thing->Components;const ComponentEntry* entry=map->LowerBound((ETCInterfaceType)52);const ComponentEntry* end=map->Finish;const CTCPerceiveThing* perceive=static_cast<CTCPerceiveThing*>(((void*)(entry==end||entry->first>52?end:entry)->second));if(perceive->LineOfSight||perceive->AwarenessTimer!=0.0f||perceive->ExtendedLineOfSight){output.PushBack(thing->GetScriptThing());found=true;}
  }}

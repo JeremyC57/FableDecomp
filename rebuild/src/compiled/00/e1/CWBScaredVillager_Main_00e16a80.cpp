@@ -59,14 +59,9 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
-class CScriptGameResourceObjectBase : public CBaseObject { public:     // vtable 0x0126008C
-    virtual ~CScriptGameResourceObjectBase() {}
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // 16 bytes, vtable 0x0127094C
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;   // +0x08
-    virtual void v01();                                  // slot 1 (0x007E72C0)
-};
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

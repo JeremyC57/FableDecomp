@@ -206,11 +206,10 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v256(); virtual void v257(); virtual void v258(); virtual void v259(); virtual void v260(); virtual void v261(); virtual void v262(); virtual void v263();
  virtual float GetHealth(CScriptThing const &) const; //slot264 0x00890400
 };
-class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
-    virtual void v00();
-    unsigned char _body[0x3c];                              // +0x04 .. +0x40
-    bool IsActiveThreadTerminating();                       // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_AmbushScamScript : public CScriptBase {
 public:

@@ -16,14 +16,10 @@ struct CGSIUpdateQuestInfoCounter_GuiOwner
     NPlayerGui::CDrawQuestInfo* m_QuestInfo;
 };
 
-class CGameScriptInterface
-{
-public:
-    virtual void UpdateQuestInfoCounter(
-        long questId,
-        long value,
-        long maximum) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 extern CGSIUpdateQuestInfoCounter_GuiOwner*
     CGSIUpdateQuestInfoCounter_Gui;

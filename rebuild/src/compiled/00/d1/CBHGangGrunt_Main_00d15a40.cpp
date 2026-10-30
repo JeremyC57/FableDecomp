@@ -31,7 +31,7 @@ class CCPPointerInfo { public:
     void* Data;                                        // +8
 };
 class CScriptThing;
-struct CCountedPointer {                               // {Data, Info}
+template <class T> class CCountedPointer { public:                               // {Data, Info}
     CScriptThing*   Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
@@ -73,7 +73,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
     VPAD32(p4x0)   // slots 43..74
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
-    CCountedPointer PImp;                              // +0x04
+    CCountedPointer<CScriptThing> PImp;                              // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     virtual ~CScriptThing();                                   // 0x004AA840
 };
@@ -100,40 +100,17 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0
     ~CScriptGameResourceObjectBase() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 16 bytes
-    CCountedPointer PImp;                              // +0x08
+    CCountedPointer<CScriptThing> PImp;                              // +0x08
     VPAD2(s0) VPAD1(s1)                                // slots 1..3
     virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // slot 4 (+0x10), 0x007E72F0
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     virtual void ClearCommands();                              // 0x007E7360
 };
-class CGameScriptInterface { public:
-    VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
-    virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
-    virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
-    VPAD32(p1x0) VPAD16(p1x1) VPAD8(p1x2) VPAD4(p1x3) VPAD1(p1x4)   // slots 9..69
-    virtual const CScriptThing& GetHero() const;   // slot 70 (+0x118)
-    VPAD1(p2x0)   // slots 71..71
-    virtual CScriptThing GetThingWithScriptName(const CCharString& name) const;   // slot 72 (+0x120)
-    VPAD32(p3x0) VPAD2(p3x1) VPAD1(p3x2)   // slots 73..107
-    virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
-    VPAD128(p4x0) VPAD64(p4x1) VPAD32(p4x2) VPAD16(p4x3) VPAD8(p4x4) VPAD4(p4x5) VPAD2(p4x6) VPAD1(p4x7)   // slots 109..363
-    virtual long AddNewConversation(const CScriptThing& thing, bool a, bool b) const;   // slot 364 (+0x5b0)
-    virtual void AddPersonToConversation(long conversation, const CScriptThing& person) const;   // slot 365 (+0x5b4)
-    virtual void AddLineToConversation(long conversation, const CCharString& line, bool a, const CScriptThing& speaker, const CScriptThing& listener) const;   // slot 366 (+0x5b8)
-    VPAD64(p5x0) VPAD16(p5x1) VPAD4(p5x2)   // slots 367..450
-    virtual void GiveThingBestEnemyTarget(const CScriptThing& thing, const CScriptThing& target) const;   // slot 451 (+0x70c)
-    VPAD16(p6x0) VPAD4(p6x1) VPAD2(p6x2) VPAD1(p6x3)   // slots 452..474
-    virtual void EntitySetFacingAngleTowardsThing(const CScriptThing& thing, const CScriptThing& target, bool a) const;   // slot 475 (+0x76c)
-    VPAD256(p7x0) VPAD16(p7x1) VPAD8(p7x2) VPAD4(p7x3) VPAD2(p7x4) VPAD1(p7x5)   // slots 476..762
-    virtual void SetWanderCentrePoint(CScriptThing thing, C3DVector centre);   // slot 763 (+0xbec)
-    VPAD2(p8x0)   // slots 764..765
-    virtual void SetWanderMinDistance(CScriptThing thing, float distance);   // slot 766 (+0xbf8)
-    VPAD2(p9x0)   // slots 767..768
-    virtual void SetWanderMaxDistance(CScriptThing thing, float distance);   // slot 769 (+0xc04)
-    VPAD8(p10x0) VPAD4(p10x1) VPAD2(p10x2)   // slots 770..783
-    virtual void SetScriptingStateGroup(CScriptThing thing, EScriptingStateGroups group);   // slot 784 (+0xc40)
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 struct CQ_BountyHuntScript {
     unsigned char _pad[0x6f];

@@ -67,14 +67,9 @@ struct CQ_SunnyvaleMasterData {
 };
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_HeroSoulsMotherScript : public CScriptBase {
 public:
@@ -141,7 +136,7 @@ void CQ_HeroSoulsMotherScript::Main()
     Game->KickOffQuestStartScreen(Game->GetActiveQuestName(), true, false);
     QuestStartScreened = true;
     Game->SetQuestCardObjective("Q_HeroSouls", "TEXT_QUEST_HERO_SOULS_OBJECTIVE_09", "OakvaleMemorialGarden", "OakBay");
-    SpawnFunction(new CSpawnedFunc<CQ_HeroSoulsMotherScript>("CreateScreamers", 0, this, &CQ_HeroSoulsMotherScript::CreateScreamers));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HeroSoulsMotherScript>("CreateScreamers", 0, this, &CQ_HeroSoulsMotherScript::CreateScreamers), CCharString(""));
     Game->FadeScreenIn();
     while (!PMasterData->CollectedSoulFromMother) {
         Game->NewScriptFrame();

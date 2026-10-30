@@ -1,0 +1,14 @@
+008986d0	RELOC_RENAMED	RELOCATION_MATCH ; 6:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00898840	RELOC_RENAMED	RELOCATION_MATCH ; 5:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00898940	RELOC_RENAMED	RELOCATION_MATCH ; 6:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00895ed0	RELOC_RENAMED	RELOCATION_MATCH ; 82:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00896a30	RELOC_RENAMED	RELOCATION_MATCH ; a5:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+0089b110	RELOC_RENAMED	RELOCATION_MATCH ; 8:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00897630	RELOC_RENAMED	RELOCATION_MATCH ; b:?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00896d20	RELOC_RENAMED	RELOCATION_MATCH ; b:?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00898600	RELOC_RENAMED	RELOCATION_MATCH ; 7:?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00898db0	RELOC_RENAMED	RELOCATION_MATCH ; 2d:?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+008a7980	RELOC_RENAMED	RELOCATION_MATCH ; 28:?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+008a8440	RELOC_RENAMED	RELOCATION_MATCH ; 25:?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+0091d190	RELOC_RENAMED	RELOCATION_MATCH ; 76:?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00927c80	RELOC_RENAMED	RELOCATION_MATCH ; 87:?GetMainPlayer@CPlayerManagerView@@QAEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ

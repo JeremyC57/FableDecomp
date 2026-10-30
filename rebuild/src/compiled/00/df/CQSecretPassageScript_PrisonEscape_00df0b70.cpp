@@ -124,10 +124,9 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x0c];
     long HenchmanOverrideState;                         // +0x0c
 };
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQ_SecretPassageScript : CScriptBase {
     CGameScriptInterface*   Game;                       // +0x40
     CQ_SunnyvaleMasterData* PMasterData;                // +0x44

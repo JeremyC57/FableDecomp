@@ -12,11 +12,10 @@
 // Then the vtable is stored and the name at +0x48 is default-constructed out of line.
 #include "fable_string.h"
 
-class CScriptBase { public:
-    virtual void v00();
-    unsigned char _body[0x3c];              // +0x04..+0x40
-    CScriptBase();                          // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CScriptObject : CScriptBase {   // abstract: no vtable store of its own
     void* m_pThing;                         // +0x40

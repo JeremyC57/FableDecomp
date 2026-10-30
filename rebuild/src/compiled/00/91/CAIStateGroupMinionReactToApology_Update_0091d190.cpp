@@ -44,7 +44,7 @@ struct CTCEntityEventsMethods : CTCEntityEvents { bool GetApology(const CEventAp
  const CEventApologyReceived* GetApology() { const CEventApologyReceived* event=0; GetApology(&event,CEventFilter_None()); return event; } };
 class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-struct CPlayerManagerMethods : CPlayerManager { CPlayer* GetMainPlayer(); };
+struct CPlayerManagerMethods : CPlayerManager { };   // only the (invented) GetPPlayerManager return type; GetMainPlayer is engine/CPlayerManager.h's 0x00449970
 struct CBaseIntelligentPointer { void* Handle; CBaseIntelligentPointer(); virtual ~CBaseIntelligentPointer(); void SetPItem(CThing*); CThing* GetPItem() const; };
 struct CIntelligentConstThing : CBaseIntelligentPointer { CIntelligentConstThing(CThing* p) { SetPItem(p); } CIntelligentConstThing(const CIntelligentConstThing& p) { SetPItem(p.GetPItem()); } };
 struct CIntelligentCreature : CBaseIntelligentPointer { CIntelligentCreature(CThing* p) { SetPItem(p); } CIntelligentCreature(const CIntelligentCreature& p) { SetPItem(p.GetPItem()); } };
@@ -61,7 +61,7 @@ void CAIStateGroup_MinionReactToApology::Update() {
  if(hasEvents) {
   const CEventApologyReceived* apology=events->GetApology();
   if(apology) {
-   CThing* hero=GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+   CThing* hero=GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
    if(apology->Accepted) AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,g_ApologyAccepted,true,0x93);
    else AIAction_SpeakAISpeechToTarget(1,(CThing*)PBrain->Creature,hero,g_ApologyRejected,true,0x93);
   }

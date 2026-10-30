@@ -53,11 +53,10 @@ public:
     CScriptThing WrapForScript() const;
 };
 
-class CGameScriptInterface
-{
-public:
-    virtual CScriptThing GetThingWithUID(unsigned __int64 uid) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 CScriptThing CGameScriptInterface::GetThingWithUID(
     unsigned __int64 uid) const

@@ -3,9 +3,6 @@
 #define CScriptThing CScriptThingDonor
 #include "engine/CScriptThing.h"
 #undef CScriptThing
-#define CGameScriptInterface CGameScriptInterfaceDonor
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #define CCharString CCharStringDonor
 #include "fable_string.h"
 #undef CCharString
@@ -117,108 +114,10 @@ virtual bool IsEqualTo(const CScriptThing&) const; //slot78 0x004AA8A0
 };
 // Native CGameScriptInterface virtual prefix: all100 entries use recovered PDB
 // signatures and native raw VT01260F0C order. No fabricated padding slots.
-class CGameScriptInterface { public:
-virtual ~CGameScriptInterface(); // slot0 0x006e7d50
-virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; // slot1 0x0088de00
-virtual void TraceMessage(CCharString const &) const; // slot2 0x006e7d20
-virtual void Validate(void) const; // slot3 0x006e72a0
-virtual void SetDebugCameraType(long) const; // slot4 0x0088e0f0
-virtual void DeactivateBoastUi(void) const; // slot5 0x008a0c60
-virtual bool IsXbox(void) const; // slot6 0x0088e100
-virtual void NewScriptFrame(void) const; // slot7 0x006e7410
-virtual bool StartScriptingEntity(CScriptThing const &, CScriptGameResourceObjectScriptedThingBase &, enum EScriptAIPriority); // slot8 0x0089b5b0
-virtual bool IsEntityUnderScriptedControl(CScriptThing const &) const; // slot9 0x008960c0
-virtual bool IsActiveThreadTerminating(void) const; // slot10 0x006e71b0
-virtual bool IsLevelLoaded(CCharString const &) const; // slot11 0x0088e2a0
-virtual bool IsRegionLoaded(CCharString const &) const; // slot12 0x0088e300
-virtual bool IsRegionLoadedAndPreloaded(CCharString const &) const; // slot13 0x00890550
-virtual bool IsRegionDefLoaded(CCharString const &) const; // slot14 0x00891db0
-virtual CCharString const & GetRegionName(void) const; // slot15 0x0088e340
-virtual bool MsgIsLevelLoaded(CCharString const &) const; // slot16 0x008931b0
-virtual bool MsgIsLevelUnloaded(CCharString const &) const; // slot17 0x00893240
-virtual bool MsgOnLevelLoaded(std::list<CCharString, std::allocator<CCharString> > &) const; // slot18 0x0089ac10
-virtual bool MsgOnLevelUnloaded(std::list<CCharString, std::allocator<CCharString> > &) const; // slot19 0x0089ac80
-virtual bool MsgIsRegionLoaded(CCharString const &) const; // slot20 0x008932d0
-virtual bool MsgIsRegionUnloaded(CCharString const &) const; // slot21 0x00893360
-virtual bool MsgOnRegionLoaded(CCharString &) const; // slot22 0x008933f0
-virtual bool MsgOnRegionUnloaded(CCharString &) const; // slot23 0x00893470
-virtual bool MsgOnRegionPreunload(CCharString &) const; // slot24 0x008934f0
-virtual bool MsgOnQuestCompleted(CCharString const &) const; // slot25 0x00893570
-virtual bool MsgOnAnyQuestCompleted(CCharString &) const; // slot26 0x00893610
-virtual bool MsgOnQuestFailed(CCharString const &) const; // slot27 0x00893690
-virtual bool MsgOnQuestCompletedBeforeScreenShown(CCharString const &) const; // slot28 0x00893730
-virtual bool MsgOnQuestFailedBeforeScreenShown(CCharString const &) const; // slot29 0x008937d0
-virtual bool MsgOnQuestAccepted(CCharString &) const; // slot30 0x00893870
-virtual bool MsgOnFeatAccepted(long &) const; // slot31 0x008938f0
-virtual bool MsgIsBoastMade(long) const; // slot32 0x00893960
-virtual bool MsgOnBoastMade(long &, CCharString &) const; // slot33 0x008939d0
-virtual bool MsgOnBoastsMade(std::vector<std::pair<long, CCharString>, std::allocator<std::pair<long, CCharString> > > &) const; // slot34 0x008a9ae0
-virtual void RemoveBoastMessage(void) const; // slot35 0x00893a50
-virtual bool IsQuestStartScreenActive(CCharString &) const; // slot36 0x0089ad90
-virtual bool MsgOnLeavingQuestStartScreen(CCharString &) const; // slot37 0x0089ae30
-virtual bool MsgOnLeavingExperienceSpendingScreen(void) const; // slot38 0x00893ab0
-virtual long MsgIsQuestionAnsweredYesOrNo(void) const; // slot39 0x00894300
-virtual bool MsgIsGameInfoClickedPast(void) const; // slot40 0x00894370
-virtual bool MsgIsTutorialClickedPast(void) const; // slot41 0x008943c0
-virtual bool MsgIsActionModeButtonPressed(void) const; // slot42 0x00894440
-virtual bool MsgOnExpressionPerformed(CCharString &) const; // slot43 0x00893b00
-virtual bool MsgIsCutSceneSkipped(void) const; // slot44 0x00893ba0
-virtual void RemoveAllCutSceneSkippedMessages(void) const; // slot45 0x0089af30
-virtual bool MsgOnHeroHairTypeChanged(enum EClothingCoversArea, CCharString &) const; // slot46 0x00893c00
-virtual bool MsgOnHeroUsedTeleporter(CCharString &) const; // slot47 0x00893d80
-virtual bool MsgOnHeroUsedGuildSeal(void) const; // slot48 0x00893e20
-virtual bool MsgOnGameSavedManually(void) const; // slot49 0x00893e70
-virtual bool MsgOnHeroSlept(bool &) const; // slot50 0x00893ec0
-virtual bool MsgOnHeroFiredRangedWeapon(void) const; // slot51 0x00893f30
-virtual bool MsgOnHeroCastSpell(enum EHeroAbility &) const; // slot52 0x00893f80
-virtual bool MsgOnHeroPickedPocket(CScriptThing &) const; // slot53 0x00893ff0
-virtual bool MsgOnHeroPickedLock(CScriptThing &) const; // slot54 0x00894080
-virtual bool MsgOnFishingGameFinished(CScriptThing &) const; // slot55 0x00894110
-virtual bool MsgOnTavernGameFinished(CScriptThing const &) const; // slot56 0x008941a0
-virtual bool MsgOnHeroRewardedWithItemsFrom(CCharString &) const; // slot57 0x00894250
-virtual bool MsgOnChestOpeningCancelled(void) const; // slot58 0x008942c0
-virtual void DontPopulateNextLoadedRegion(void) const; // slot59 0x0088e380
-virtual void GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString &) const; // slot60 0x0088e390
-virtual void GetWanderingPopulationScriptDefNameInRegion(CCharString const &, CCharString &) const; // slot61 0x00891e30
-virtual bool IsHeroAllowedHenchmenInCurrentRegion(void) const; // slot62 0x00891ea0
-virtual bool IsHeroAllowedHenchmenInRegion(CCharString const &) const; // slot63 0x00891ef0
-virtual void PostAddScriptedEntities(void) const; // slot64 0x006e7460
-virtual bool IsPlayerHoldingUnsheatheRangedWeaponButton(void) const; // slot65 0x008905b0
-virtual bool IsPlayerHoldingLockTargetButton(void) const; // slot66 0x008905e0
-virtual bool IsPlayerHoldingFireRangedWeaponButton(void) const; // slot67 0x00890610
-virtual bool IsPlayerHoldingFirstPersonTargetingButton(void) const; // slot68 0x00890640
-virtual bool IsHeroInProjectileWeaponMode(void) const; // slot69 0x00890670
-virtual CScriptThing & GetHero(void); // slot70 0x00891ca0
-virtual CScriptThing GetHeroTargetedThing(void) const; // slot71 0x0089a490
-virtual CScriptThing GetThingWithScriptName(CCharString const &, CCharString const &) const; // slot73 0x008930f0
-virtual CScriptThing GetThingWithScriptName(CCharString const &) const; // slot72 0x008a7d60
-virtual CScriptThing GetRandomThingWithScriptName(CCharString const &) const; // slot74 0x008a7e00
-virtual long GetAllThingsWithScriptName(CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const; // slot75 0x008a8570
-virtual long GetAllCreaturesInAreaWithScriptName(CCharString const &, C3DVector const &, float, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const; // slot76 0x008a86c0
-virtual CScriptThing GetNearestWithScriptName(CScriptThing const &, CCharString const &) const; // slot77 0x0089a510
-virtual CScriptThing GetFurthestWithScriptName(CScriptThing const &, CCharString const &) const; // slot78 0x0089a6e0
-virtual long GetAllThingsWithDefNameByDistanceFrom(CScriptThing const &, CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const; // slot79 0x008a9c40
-virtual long GetAllThingsWithDefName(CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const; // slot80 0x008a8890
-virtual CScriptThing GetNearestWithDefName(CScriptThing const &, CCharString const &) const; // slot81 0x0089a880
-virtual CScriptThing GetFurthestWithDefName(CScriptThing const &, CCharString const &) const; // slot82 0x0089aa70
-virtual CScriptThing GetThingWithUID(ScriptUID) const; // slot83 0x00891d50
-virtual long GetAllCreaturesExcludingHero(std::vector<CScriptThing, std::allocator<CScriptThing> > &) const; // slot84 0x008a89d0
-virtual long GetAllThingsInLevel(CCharString const &, std::vector<CScriptThing, std::allocator<CScriptThing> > &) const; // slot85 0x008a8af0
-virtual bool IsThingWithThisUIDAlive(ScriptUID) const; // slot86 0x0088e260
-virtual long RegisterTimer(void); // slot87 0x006e79e0
-virtual void DeregisterTimer(long); // slot88 0x006e7690
-virtual void SetTimer(long, long); // slot89 0x006e76e0
-virtual long GetTimer(long) const; // slot90 0x006e7710
-virtual CScriptThing CreateCreature(CCharString const &, C3DVector const &, CCharString const &, bool) const; // slot91 0x008a9100
-virtual CScriptThing CreateCreatureNearby(CCharString const &, C3DVector const &, float, CCharString const &, bool) const; // slot92 0x0089f300
-virtual CScriptThing CreateCreatureOnEntity(CCharString const &, CScriptThing const &, CCharString const &) const; // slot93 0x00894500
-virtual CScriptThing TurnCreatureInto(CScriptThing const &, CCharString const &) const; // slot94 0x0089f4a0
-virtual void SetCreatureCreationDelayFrames(long); // slot95 0x006e7d30
-virtual void ResetCreatureCreationDelayFrames(void); // slot96 0x006e7d40
-virtual CScriptThing CreateObject(CCharString const &, C3DVector const &, CCharString const &) const; // slot98 0x00894820
-virtual CScriptThing CreateObject(CCharString const &, C3DVector const &, float, CCharString const &) const; // slot97 0x00894950
-virtual CScriptThing CreateObjectOnEntity(CCharString const &, CScriptThing const &, CCharString const &) const; // slot99 0x008946e0
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 class CScriptBase; class CPersistContext;
 class CEntityScriptBase { public:
  virtual ~CEntityScriptBase();

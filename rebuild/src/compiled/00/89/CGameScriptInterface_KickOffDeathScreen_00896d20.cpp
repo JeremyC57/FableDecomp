@@ -25,7 +25,6 @@ struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned long UsingCo
 };
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct CPlayerManagerMethods:CPlayerManager {CPlayer* GetMainPlayer();}; //00449970
 struct CGameScriptInterfaceMethods:CGameScriptInterface {void KickOffDeathScreen()const;};
 union InterfaceSlot {void* Native;bool(CGameScriptInterfaceMethods::*IsHeroControlledByPlayer)()const;void(CGameScriptInterfaceMethods::*NewScriptFrame)()const;};
 FABLE_STATIC_ASSERT(sizeof(InterfaceSlot)==4);
@@ -33,7 +32,7 @@ FABLE_STATIC_ASSERT(offsetof(CThingNative,Components)==0x44);
 FABLE_STATIC_ASSERT(sizeof(ComponentMap)==8);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUIMethods,Active)==0x0c);
 void CGameScriptInterfaceMethods::KickOffDeathScreen()const{
- CTCQuestCompletionUIMethods* ui;CThingNative* hero=static_cast<CPlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();
+ CTCQuestCompletionUIMethods* ui;CThingNative* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();
  if(hero->UsingComponents[7]&0x10000000){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)252);ComponentEntry* end=map->Finish;ui=static_cast<CTCQuestCompletionUIMethods*>(((void*)(it==end||it->first>252?end:it)->second));}
  {CWideString summary(L"");CCharString name("",-1);ui->Activate(3,name,true,summary,true);}
  if((this->*reinterpret_cast<InterfaceSlot*>(__vftable)[394].IsHeroControlledByPlayer)())while(ui->Active)(this->*reinterpret_cast<InterfaceSlot*>(__vftable)[7].NewScriptFrame)();

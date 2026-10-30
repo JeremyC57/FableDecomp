@@ -37,16 +37,9 @@ public:
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CScriptBase {                                     // retail 0x40 bytes (Ego_r 0x54: debug containers)
-public:
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    TData*                    MasterScriptData;         // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
 class CScriptBase;
 class CPersistContext;
 class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)

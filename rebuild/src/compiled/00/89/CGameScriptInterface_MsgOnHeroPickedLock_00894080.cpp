@@ -57,19 +57,10 @@ class CWorld { public:
     unsigned char                _pad04[0x5c];
     CMessageEventManager_Retail* PMessageEventManager_Data;   // +0x60 (engine/CWorld.h)
 };
-class CGameScriptInterface { public:
-    virtual void v000();
-    CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
-    void*   Component;                              // +0x08
-    void*   DisplayEngine;                          // +0x0c
-    CDefinitionManager_Retail* DefinitionManager;   // +0x10
-    CPlayerManager_Retail*     PlayerManager;       // +0x14
-protected:
-    long GetMinWorldFrameForMessages() const;   // 0x006E7510
-    long GetMaxWorldFrameForMessages() const;       // 0x006E7530
-public:
-    bool MsgOnHeroPickedLock(CScriptThing& out) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
 bool CGameScriptInterface::MsgOnHeroPickedLock(CScriptThing& out) const
 {

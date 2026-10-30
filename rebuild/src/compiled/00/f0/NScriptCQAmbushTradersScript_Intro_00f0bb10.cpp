@@ -148,9 +148,9 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 #include "engine/CGameScriptInterface.h"
 
 namespace NScript {
-struct CScriptBase {                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 class CQ_AmbushTradersScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                         // +0x40

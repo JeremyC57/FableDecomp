@@ -1,0 +1,32 @@
+00cdd5f0	SRC_FAIL	new.cpp(45): error C2661: 'CCharString::CCharString' : no overloaded function takes 3 arguments | new.cpp(45): error C2660: 'CSpawnedFunc<T>::CSpawnedFunc' : function does not take 2 arguments | new.cpp(45): error C2660: 'CScriptBase::AddSpawnedFunction' : function does not take 1 arguments
+00ce0390	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d05910	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d17e70	SAME	40b MATCH->MATCH
+00d27050	SAME	489b RELOCATION_MATCH->RELOCATION_MATCH
+00d36540	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d496f0	SAME	815b RELOCATION_MATCH->RELOCATION_MATCH
+00d6a290	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d7f380	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00d83400	SAME	103b RELOCATION_MATCH->RELOCATION_MATCH
+00d9c3c0	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00da6670	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00dbfdd0	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00dd23a0	RELOC_RENAMED	leafsym ?Init@CQ_OrchardFarmRaidGoodScript@NScript@@QAEXXZ -> ?Init@CQ_OrchardFarmRaidGoodScript@NScript@@UAEXXZ
+00de1d00	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00df36e0	SAME	1899b RELOCATION_MATCH->RELOCATION_MATCH
+00e04890	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00e1f2d0	SAME	198b RELOCATION_MATCH->RELOCATION_MATCH
+00e24e10	RELOC_RENAMED	leafsym ?Main@CQR_EscortTrader_ManagerScript@NScript@@QAEXXZ -> ?Main@CQR_EscortTrader_ManagerScript@NScript@@UAEXXZ
+00e33a20	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00e48950	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00e6a340	SAME	447b RELOCATION_MATCH->RELOCATION_MATCH
+00e76730	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00e82190	SAME	131b RELOCATION_MATCH->RELOCATION_MATCH
+00e9fc10	SRC_FAIL	new.cpp(45): error C2661: 'CCharString::CCharString' : no overloaded function takes 3 arguments | new.cpp(45): error C2660: 'CSpawnedFunc<T>::CSpawnedFunc' : function does not take 2 arguments | new.cpp(45): error C2660: 'CScriptBase::AddSpawnedFunction' : function does not take 1 arguments
+00eb0700	SAME	197b RELOCATION_MATCH->RELOCATION_MATCH
+00ed1420	SAME	153b RELOCATION_MATCH->RELOCATION_MATCH
+00eea460	SRC_FAIL	new.cpp(105): error C2664: 'CScriptBase::SetPredicate' : cannot convert parameter 1 from 'CIsThingConscious' to 'const NScript::CPredicateBase &'
+00ee4710	SRC_FAIL	new.cpp(45): error C2661: 'CCharString::CCharString' : no overloaded function takes 3 arguments | new.cpp(45): error C2660: 'CSpawnedFunc<T>::CSpawnedFunc' : function does not take 2 arguments | new.cpp(45): error C2660: 'CScriptBase::AddSpawnedFunction' : function does not take 1 arguments
+00efc7e0	SRC_FAIL	new.cpp(45): error C2661: 'CCharString::CCharString' : no overloaded function takes 3 arguments | new.cpp(45): error C2660: 'CSpawnedFunc<T>::CSpawnedFunc' : function does not take 2 arguments | new.cpp(45): error C2660: 'CScriptBase::AddSpawnedFunction' : function does not take 1 arguments
+00efa0b0	SAME	145b RELOCATION_MATCH->RELOCATION_MATCH
+00f09cd0	SAME	1942b RELOCATION_MATCH->RELOCATION_MATCH

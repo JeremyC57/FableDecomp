@@ -72,10 +72,9 @@ class CScriptDef { public:
     long MinionChaseEscapeTime;                         // +0xd54
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQ_MinionClifftopChaseScript : CScriptBase {
     CGameScriptInterface* Game;                         // +0x40
     void* PMasterData;                                  // +0x44

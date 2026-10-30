@@ -104,14 +104,9 @@ struct CCrateTeamManager {                              // 0x40 bytes
 };
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_OrchardFarmRaidScript : public CScriptBase {
 public:
@@ -161,10 +156,10 @@ void CQ_OrchardFarmRaidScript::Main()
     Teams[1].CrateDropPos = Game->GetThingWithScriptName("BanditTeamCrateDrop");
     Teams[0].CrateDropPos = Game->GetThingWithScriptName("GuardTeamCrateDrop");
     if (HeroTeam == 1)
-        SpawnFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("ProcessGameRulesEvil", 0, this, &CQ_OrchardFarmRaidScript::ProcessGameRulesEvil));
+        AddSpawnedFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("ProcessGameRulesEvil", 0, this, &CQ_OrchardFarmRaidScript::ProcessGameRulesEvil), CCharString(""));
     else
-        SpawnFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("ProcessGameRulesGood", 0, this, &CQ_OrchardFarmRaidScript::ProcessGameRulesGood));
-    SpawnFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("DoCutsceneIfRequired", 0, this, &CQ_OrchardFarmRaidScript::DoCutsceneIfRequired));
-    SpawnFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("WatchForExternalScriptDeactivation", 0, this, &CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation));
+        AddSpawnedFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("ProcessGameRulesGood", 0, this, &CQ_OrchardFarmRaidScript::ProcessGameRulesGood), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("DoCutsceneIfRequired", 0, this, &CQ_OrchardFarmRaidScript::DoCutsceneIfRequired), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_OrchardFarmRaidScript>("WatchForExternalScriptDeactivation", 0, this, &CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation), CCharString(""));
 }
 }

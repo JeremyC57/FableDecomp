@@ -47,11 +47,10 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {   // vtable 0x012EA
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];                          // vptr + script state (PActiveThread +0x2c)
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_FishingCompetitionScript : public CScriptBase { public:
     void* GSI;                                          // +0x40

@@ -26,20 +26,33 @@ class CScriptThing { public:                          // 12 bytes, polymorphic
     virtual ~CScriptThing();                          // 0x004AA840
 };
 
-struct CCountedPointerWords {                  // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+class CCPPointerInfo { public:                         // CCountedPointer's shared block (Ego_r.pdb CCPPointerInfo)
+    long RefCount;                                     // +0
+    void (__fastcall* DeleteFunc)(void* data);         // +4 destroys the pointee
+    void* Data;                                        // +8
+};
+void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
+template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
+    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
+    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
+    CCountedPointer() : Data(0), Info(0) {}            // from this size)
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsValid() const;                        // 0x00CD23B9
-    void Release();                            // 0x00CD2770
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:

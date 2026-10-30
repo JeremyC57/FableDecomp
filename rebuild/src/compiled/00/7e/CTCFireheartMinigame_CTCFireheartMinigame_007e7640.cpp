@@ -31,18 +31,33 @@ class CThing { public:
     CDefPointer<CDefClassBase> PDef;                        // +0x70
 };
 
-struct CCountedPointerWords {                               // {Data, Info}
-    void* Data;
-    void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+class CCPPointerInfo { public:                         // CCountedPointer's shared block (Ego_r.pdb CCPPointerInfo)
+    long RefCount;                                     // +0
+    void (__fastcall* DeleteFunc)(void* data);         // +4 destroys the pointee
+    void* Data;                                        // +8
+};
+void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
+template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
+    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
+    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
+    CCountedPointer() : Data(0), Info(0) {}            // from this size)
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointerWords PImp;                              // +0x08
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-    virtual void v00();
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
 template <class T> struct SRetailAllocProxy {
     T* _M_data;

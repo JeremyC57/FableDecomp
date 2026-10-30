@@ -40,12 +40,9 @@ template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptBase { public:                                    // retail 0x40 bytes (PDB 0x54: debug containers)
-    virtual void v00();
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40 (PActiveThread at +0x2c)
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CTestTheInventoryScript : CScriptBase {
     CGameScriptInterface* GSI;                          // +0x40
     void TestForLampOff();

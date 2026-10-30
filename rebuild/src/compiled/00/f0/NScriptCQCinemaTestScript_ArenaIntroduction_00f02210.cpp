@@ -127,9 +127,9 @@ struct CCutsceneFlagMap;
 struct CCutsceneArgMap;
 void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast, CCutsceneFlagMap* flags, CCutsceneArgMap* args, bool a5, bool a6);   // 0x00CBFB7D
 namespace NScript {
-struct CScriptBase {                                   // retail 0x40 bytes
-    unsigned char _body[0x40];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 class CQ_CinemaTestScript : public CScriptBase {
 public:
     CGameScriptInterface* Game;                        // +0x40

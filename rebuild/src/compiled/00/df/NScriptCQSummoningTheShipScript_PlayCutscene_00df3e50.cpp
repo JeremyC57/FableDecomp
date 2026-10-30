@@ -184,17 +184,9 @@ void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, 
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
 class CScriptDataBase;
-class CScriptBase {
-public:
-    virtual ~CScriptBase();
-    unsigned char _base[0x40 - 4];                      // Threads, EntityScripts, EntityScriptBindings, LastWorldUpdateFrame,
-                                                        // PActiveThread, RuntimeScriptedEntityPersist
-};
-template <class TMasterData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    TMasterData*              MasterScriptData;         // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_SummoningTheShipScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {

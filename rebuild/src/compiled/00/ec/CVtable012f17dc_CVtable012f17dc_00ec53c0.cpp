@@ -9,11 +9,10 @@
 // the two member objects: each base constructor is called on `lea edi,[esi+N]`, the member vtable stored, and
 // the two counted-pointer words zeroed from ebx by the inline constructor of an embedded {Data, Info} member object
 // (plain init-list zeros would hoist the `xor` above the vtable store); `ret 8`, `this` in eax.
-class CScriptBase { public:                               // 0x40 bytes, the quest-script root (landed 0x00CB8110)
-    virtual void v00();
-    unsigned char _body[0x3c];                     // +0x04..+0x3f
-    CScriptBase();                                 // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CScriptObject : CScriptBase {   // the argument-carrying intermediate base: both words stored before the derived vtable
     void* m_pInterface;                            // +0x40 (second argument, CGameScriptInterfaceBase*)
@@ -21,20 +20,35 @@ struct __declspec(novtable) CScriptObject : CScriptBase {   // the argument-carr
     CScriptObject(void* data, void* iface) : CScriptBase(), m_pInterface(iface), m_pData(data) { }
 };
 
-struct CCountedPointerWords {                     // {Data, Info}: a member object so its zero stores follow the owner's vtable store
-    void* Data;
-    void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+class CCPPointerInfo { public:                         // CCountedPointer's shared block (Ego_r.pdb CCPPointerInfo)
+    long RefCount;                                     // +0
+    void (__fastcall* DeleteFunc)(void* data);         // +4 destroys the pointee
+    void* Data;                                        // +8
+};
+void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
+template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
+    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
+    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
+    CCountedPointer() : Data(0), Info(0) {}            // from this size)
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
 };
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes (engine header: PImp_Data +8, PImp_Info +0xc)
-    CCountedPointerWords PImp;                     // +0x08 Data, +0x0c Info
-    virtual void v00();
-    CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 
 struct CVtable_012f17dc : CScriptObject {          // vtable 0x012F17DC
     CScriptGameResourceObjectScriptedThingBase m_first;    // +0x48

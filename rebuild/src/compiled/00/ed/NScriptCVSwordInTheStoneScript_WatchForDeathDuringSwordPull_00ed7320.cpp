@@ -133,15 +133,8 @@ class CIsThingAlive : public NScript::CPredicateBase { public:            // vta
 using NScript::CIsThingAlive;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
-    CScriptGameResourceObjectBase() { }
-};
-class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
-    CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectScriptedThingBase() { }
-    ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    void ClearCommands();                               // 0x007E7360
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -152,12 +145,9 @@ class CTimer { public:                                         // a script timer
     __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
 };
 extern "C" int __cdecl rand();                          // 0x00BFEB16
-class CScriptBase { public:                                    // retail 0x40 bytes
-    virtual void v00();
-    unsigned char _body[0x3c];
-    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00CB7920
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_SwordInTheStoneScript : public CScriptBase {
 public:

@@ -111,12 +111,9 @@ using std::vector;
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                                                 // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_AmbushTradersScript : public CScriptBase {
 public:
@@ -187,10 +184,10 @@ void CQ_AmbushTradersScript::DoQuest()
 #pragma inline_depth()
         }
     Game->ActivateQuest("Q_AmbushTraders_ActivatePhase1");
-    SpawnFunction(new CSpawnedFunc<CQ_AmbushTradersScript>("WatchForRegionLeaving", 0, this, &CQ_AmbushTradersScript::WatchForRegionLeaving));
-    SpawnFunction(new CSpawnedFunc<CQ_AmbushTradersScript>("WatchForBanditsDeath", 0, this, &CQ_AmbushTradersScript::WatchForBanditsDeath));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_AmbushTradersScript>("WatchForRegionLeaving", 0, this, &CQ_AmbushTradersScript::WatchForRegionLeaving), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_AmbushTradersScript>("WatchForBanditsDeath", 0, this, &CQ_AmbushTradersScript::WatchForBanditsDeath), CCharString(""));
     Game->GetAllThingsWithScriptName("AT_BanditAlly", AllBandits);
-    SpawnFunction(new CSpawnedFunc<CQ_AmbushTradersScript>("IntroPart2Checker", 0, this, &CQ_AmbushTradersScript::IntroPart2Checker));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_AmbushTradersScript>("IntroPart2Checker", 0, this, &CQ_AmbushTradersScript::IntroPart2Checker), CCharString(""));
     Intro();
     Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_AMBUSH_TRADERS_OBJECTIVE_03", "DesertedFarm", "BowerstoneSlums");
     Game->KickOffQuestStartScreen(Game->GetActiveQuestName(), true, false);

@@ -85,11 +85,10 @@ public:
     iterator erase(iterator __position);                // 0x004B8770 for CCharString
 };
 }
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQR_EscortTraderScript : public CScriptBase {
 public:

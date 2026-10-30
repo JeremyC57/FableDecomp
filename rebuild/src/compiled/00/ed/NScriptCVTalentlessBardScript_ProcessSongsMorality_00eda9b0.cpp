@@ -27,10 +27,9 @@ struct CCharStringVector {                              // STLport vector<CCharS
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CScriptBase { public:
-    virtual void v00();
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQuestScriptObject : CScriptBase {
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44

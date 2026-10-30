@@ -56,12 +56,9 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
-class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                    // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CV_ChapelOfEvilScript : CScriptBase {
     CGameScriptInterface* GSI;                           // +0x40
     void*                 Owner;                         // +0x44
@@ -79,7 +76,7 @@ void CV_ChapelOfEvilScript::DoMission()
     }
     if (IsActiveThreadTerminating())
         return;
-    SpawnFunction(new CSpawnedFunc<CV_ChapelOfEvilScript>("WatchForLeaving", 0, this, &CV_ChapelOfEvilScript::WatchForLeaving));
+    AddSpawnedFunction(new CSpawnedFunc<CV_ChapelOfEvilScript>("WatchForLeaving", 0, this, &CV_ChapelOfEvilScript::WatchForLeaving), CCharString(""));
     GSI->DisplayQuestInfo(false);
     GSI->NewScriptFrame();
     if (IsActiveThreadTerminating())

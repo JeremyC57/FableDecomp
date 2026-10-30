@@ -6020,7 +6020,6 @@ _GetTheme@4	0044c6b0	0088ffb0
 ?PlayGame@CTCFireheartMinigame_Retail@@QAEXXZ	007e78e0	00895c90
 ??RCOpenDoor_Retail@@QAEXPAUCThing_Retail@@@Z	008ad530	00895db0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00895ed0
-?GetMainPlayer@PlayerManagerMethods@@QAEPAVCPlayer@@XZ	00449970	00895ed0
 ?SetOwnedByPlayer@BuyableHouseMethods@@QAEX_N@Z	006c17b0	00895ed0
 ?SetRented@BuyableHouseMethods@@QAEX_N@Z	006c1150	00895ed0
 @Map_LowerBound@8	004365b0	00896210
@@ -6034,7 +6033,6 @@ _GetTheme@4	0044c6b0	0088ffb0
 ?g_QuestManager@@3PAUQuestManagerMethods@@A	013b89fc	00896a30
 ?Activate@CTCQuestCompletionUIMethods@@QAEXJABVCCharString@@_NABVCWideString@@1@Z	005e4740	00896d20
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00896d20
-?GetMainPlayer@CPlayerManagerMethods@@QAEPAVCPlayer@@XZ	00449970	00896d20
 ?Activate@CTCCreditsUI@@QAIXVCCharString@@@Z	007e4b60	00896df0
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00896df0
 ?AddContextSensitivePreferredItem@Inventory896e60@@QAEXABUCharString896e60@@JH@Z	0058502d	00896e60
@@ -28494,7 +28492,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?__unguarded_linear_insert@std@@YIXPAV?$CIntelligentPointer@$$CBVCThing@@@@V2@P6I_N11@Z@Z	009265c0	009267a0
 ?FindFreeGazePos@CAIStateGroup_ShopkeeperWatchPlayer@@QAEPAVCThing@@XZ	00918880	00927c80
 ?GetHeroThing@CPlayerView@@QAEPAVCThing@@XZ	00487dc0	00927c80
-?GetMainPlayer@CPlayerManagerView@@QAEPAVCPlayer@@XZ	00449970	00927c80
 ?GetPPlayerManager@CAIStateGroup_ShopkeeperWatchPlayer@@QAEPAVCPlayerManager@@XZ	008fcf90	00927c80
 ?GetPosition@CThingView@@QAEPAVC3DVector@@XZ	004c73d0	00927c80
 ?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@PAVCCreatureActionBase@@_N@Z	0097db70	009285d0
@@ -35151,3 +35148,4 @@ __imp__IsDBCSLeadByteEx@8	0143fef0	00cb37a0
 ?m_asNextStep@CImaAdpcmCodec@@1QBFB	012b91a0	00c5f3b0
 ?m_asStep@CImaAdpcmCodec@@1QBFB	012b91c0	00c5f3b0
 ?AgreeMediaType@CBasePin@@IAEJPAUIPin@@PBVCMediaType@@@Z	00ca7fb0	00cab470
+?GetScriptSpriteBySymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z	006e77f0	008918c0

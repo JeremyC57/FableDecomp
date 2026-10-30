@@ -1,9 +1,6 @@
 // CGameScriptInterface::SetGossipFactions(CCharString name,CCharString value,long index) -- Set one gossip entry.
 // Leaf: ?SetGossipFactions@CGameScriptInterface@@UAEXVCCharString@@0J@Z
 // Identity: original virtual API and FableWin static CTCAIScratchpad overload; category013bae5c.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #ifndef _MSC_VER
 #define __fastcall
 #endif
@@ -81,5 +78,8 @@ public:
 // Layout: static CTCAIScratchpad category only; no object used.
 class CTCAIScratchpad {public:static std::map<CCharString,std::vector<CCharString> > GossipFactions;
 static void __fastcall SetGossipFactions(CCharString name,CCharString value,long index){GossipFactions[name][index]=value;}};
-class CGameScriptInterface {public:virtual void SetGossipFactions(CCharString name,CCharString value,long index);unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::SetGossipFactions(CCharString name,CCharString value,long index){CTCAIScratchpad::SetGossipFactions(name,value,index);}

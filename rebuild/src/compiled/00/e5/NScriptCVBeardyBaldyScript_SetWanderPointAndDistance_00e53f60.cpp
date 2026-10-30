@@ -47,10 +47,9 @@ class CScriptDef { public:                                     // the global scr
     float WanderMaxDistance;                            // +0x44c
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-class CScriptBase { public:
-    virtual void v00();
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* GSI;                          // +0x40
     void*                 Owner;                        // +0x44

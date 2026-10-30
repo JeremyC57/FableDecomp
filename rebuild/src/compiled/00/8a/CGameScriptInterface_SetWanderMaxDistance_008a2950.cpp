@@ -1,4 +1,4 @@
-// CGameScriptInterface::SetWanderMaxDistance(CScriptThing, long) -- GetThing through the counted pointer, TC 0xaa from the thing's TC map (+0x44, inlined find), store the argument at +0x24; CScriptThing destroyed inline
+// CGameScriptInterface::SetWanderMaxDistance(CScriptThing, float) -- GetThing through the counted pointer, TC 0xaa from the thing's TC map (+0x44, inlined find), store the argument at +0x24; CScriptThing destroyed inline
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A2950, oracle length 218 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -38,7 +38,7 @@ struct CScriptEntity {
     virtual CThing* GetThing();            // slot 11 (vtable offset 0x2c)
 };
 
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     CScriptEntity* m_pData;                // +0
     SCountBlock* m_pInfo;                  // +4
     ~CCountedPointer()
@@ -58,7 +58,7 @@ struct CCountedPointer {
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
-    CCountedPointer PImp;                  // +4 Data / +8 Info
+    CCountedPointer<CScriptThing> PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
 };
@@ -98,14 +98,15 @@ class CThing { public:
 
 struct STC_24 {
     unsigned char _pad[0x24];
-    long m_24;                          // +0x24
+    float m_24;                          // +0x24 (float: the PDB setter's parameter type; retail copies the raw dword)
 };
 
-class CGameScriptInterface { public:
-    void SetWanderMaxDistance(CScriptThing thing, long value);
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 
-void CGameScriptInterface::SetWanderMaxDistance(CScriptThing thing, long value)
+void CGameScriptInterface::SetWanderMaxDistance(CScriptThing thing, float value)
 {
     if (!thing.GetThing())
         return;                            // the parameter's destructor is inlined here too

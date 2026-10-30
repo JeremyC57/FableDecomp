@@ -65,17 +65,13 @@ public:
     enum EOnlineScoreboardActivity { EOnlineScoreboardActivity_FIRST };
     void UpdateScoreForActivity(EOnlineScoreboardActivity activity, float score, bool flag);   // 0x0055F3B0
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    unsigned char   _pad04[0x10];
-    CPlayerManager* PlayerManager;                         // +0x14
-    CPlayerManager& GetPlayerManager() const { return *PlayerManager; }   // inline accessor (spelling unproven: emits no symbol); selects the non-const GetMainPlayer
-    virtual void UpdateOnlineScore_Archery(float score) const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::UpdateOnlineScore_Archery(float score) const
 {
     CTCHeroOnlineScoreboard* scoreboard;
-    GetPlayerManager().GetMainPlayer().GetPControlledCreature()->GetInterface(&scoreboard, (ETCInterfaceType)0x10D);
+    PlayerManager->GetMainPlayer().GetPControlledCreature()->GetInterface(&scoreboard, (ETCInterfaceType)0x10D);
     scoreboard->UpdateScoreForActivity((CTCHeroOnlineScoreboard::EOnlineScoreboardActivity)0x8, score, false);
 }

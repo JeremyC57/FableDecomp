@@ -65,17 +65,13 @@ public:
     unsigned char _pad00[0x188];
     float         BestScoreCoinGolfSnowSpire;                                   // +0x188
 };
-class CGameScriptInterface {
-public:
-    virtual ~CGameScriptInterface();
-    unsigned char   _pad04[0x10];
-    CPlayerManager* PlayerManager;                         // +0x14
-    CPlayerManager& GetPlayerManager() const { return *PlayerManager; }   // inline accessor (spelling unproven: emits no symbol); selects the non-const GetMainPlayer
-    virtual long GetBestScoreCoinGolfSnowSpire() const;
-};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 long CGameScriptInterface::GetBestScoreCoinGolfSnowSpire() const
 {
-    const CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().PeekPControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     const CTCHeroStats* stats;
     if (hero && !(hero->Flags91 & 1) && hero->GetInterface(&stats, (ETCInterfaceType)4))
         return (long)stats->BestScoreCoinGolfSnowSpire;

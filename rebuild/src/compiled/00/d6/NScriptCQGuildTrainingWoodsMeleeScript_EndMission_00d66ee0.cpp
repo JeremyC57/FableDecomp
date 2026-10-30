@@ -21,11 +21,9 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
-    virtual void v00();
-    unsigned char _body[0x3c];                              // +0x04 .. +0x40
-    bool IsActiveThreadTerminating();                       // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 
 struct CQuestScriptBase : CScriptBase {                     // retail 0x48 bytes
     CGameScriptInterface* GSI;                              // +0x40

@@ -59,10 +59,9 @@ class CTimer { public:                                         // a script timer
     long GetTime() { const long& index = Index; return g_pGameScriptInterface->GetTimer(index); }
 };
 int __cdecl rand();                                     // 0x00BFEB16
-class CScriptBase { public:                                    // retail 0x40 bytes
-    virtual void v00();
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQuestScriptBase : CScriptBase {
     CGameScriptInterface* Game;                         // +0x40
     void*                 Data;                         // +0x44

@@ -9,7 +9,7 @@
 // Layout: the landed CQ_MinionCampScript ctor 0x00D9E210 (retail = Ego_r.pdb - 0x14); handle / map / movie classes as
 //   the landed CMK_GHC_HERO3::Main 0x00D29DB0, with every constructor and destructor out of line in this TU.
 // Shape: retail zeroes a temporary-construction flag at entry (the dead store to [esp+0x14] beside the first "Darkwood_5"
-//   string) but never tests it: a spawn the optimiser removed. A constant-false `if (false) SpawnFunction(new CSpawnedFunc(...))`
+//   string) but never tests it: a spawn the optimiser removed. A constant-false `if (false) AddSpawnedFunction(new CSpawnedFunc(...), CCharString(""))`
 //   reproduces it exactly (and the loop alignment padding that follows); the dead thread's name and target are unknown
 //   (the Kraken / CinemaTest DoMission template spawns WatchForLeaving there).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
@@ -64,12 +64,9 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_MinionCampScript : public CScriptBase {
 public:
@@ -105,7 +102,7 @@ void CQ_MinionCampScript::DoMission()
     if (IsActiveThreadTerminating())
         return;
     if (false)
-        SpawnFunction(new CSpawnedFunc<CQ_MinionCampScript>("WatchForLeaving", 0, this, &CQ_MinionCampScript::WatchForLeaving));
+        AddSpawnedFunction(new CSpawnedFunc<CQ_MinionCampScript>("WatchForLeaving", 0, this, &CQ_MinionCampScript::WatchForLeaving), CCharString(""));
     CurrentStage = 1;
     while (!IntroDone) {
         Game->NewScriptFrame();

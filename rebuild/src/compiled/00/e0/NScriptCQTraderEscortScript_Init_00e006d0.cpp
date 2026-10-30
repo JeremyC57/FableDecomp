@@ -47,9 +47,9 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad10c[0x120 - 0x10c];
     long DarkwoodPickpocketedAllTraders;                // +0x120
 };
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_TraderEscortScript : public CScriptBase {
 public:

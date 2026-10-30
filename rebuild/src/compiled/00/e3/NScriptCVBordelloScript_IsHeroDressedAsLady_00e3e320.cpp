@@ -44,10 +44,10 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v183(); virtual void v184(); virtual void v185(); virtual void v186();
  virtual bool IsWearingClothingItem(CScriptThing const &, CCharString const &) const; //slot187 0x0089b2b0
 };
-class CScriptBase { public:                                     // retail 0x40 bytes
-    virtual void v00();
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_BordelloScript : public CScriptBase {
 public:

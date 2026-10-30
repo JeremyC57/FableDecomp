@@ -35,13 +35,9 @@ class CTimer { public:                                         // a script timer
 };
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_MinionCampScript : public CScriptBase {
 public:
@@ -77,7 +73,7 @@ void CQ_MinionCampScript::PhaseOne()
     if (IsActiveThreadTerminating())
         return;
     CurrentStage = 2;
-    SpawnFunction(new CSpawnedFunc<CQ_MinionCampScript>("RunFirstWaveControl", 0, this, &CQ_MinionCampScript::RunFirstWaveControl));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_MinionCampScript>("RunFirstWaveControl", 0, this, &CQ_MinionCampScript::RunFirstWaveControl), CCharString(""));
     while (!BriarRoseAtAltar && !PortalSealed && !MissionFailed) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
@@ -89,7 +85,7 @@ void CQ_MinionCampScript::PhaseOne()
         if (IsActiveThreadTerminating())
             return;
         CurrentStage = 3;
-        SpawnFunction(new CSpawnedFunc<CQ_MinionCampScript>("RunSpawnPointControl", 0, this, &CQ_MinionCampScript::RunSpawnPointControl));
+        AddSpawnedFunction(new CSpawnedFunc<CQ_MinionCampScript>("RunSpawnPointControl", 0, this, &CQ_MinionCampScript::RunSpawnPointControl), CCharString(""));
     }
     while (!PortalSealed && !MissionFailed) {
         Game->NewScriptFrame();

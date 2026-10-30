@@ -1,0 +1,257 @@
+edit rebuild/src/compiled/00/6e/006e79e0.pre.cpp ok 
+edit rebuild/src/compiled/00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7530.cpp ok 
+edit rebuild/src/compiled/00/6e/CGameScriptInterface_GetMinWorldFrameForMessages_006e7510.cpp ok 
+edit rebuild/src/compiled/00/6e/CGameScriptInterface_RegisterTimer_006e79e0.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_AddLogBookEntry_0088fe00.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityBeginLoadingAnimation_0088f500.cpp ok alias
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntityGetSex_0088ea50.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsDamageable_0088ead0.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsToAddToComboMultiplierWhenHit_0088ebc0.cpp ok alias
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetAsToAddToStatChangesWhenHit_0088ebf0.cpp ok alias
+edit rebuild/src/compiled/00/88/CGameScriptInterface_EntitySetCombatEnabled_0088f710.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_GetGuildSealRecallPos_0088f9b0.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_GetWanderingPopulationScriptDefNameInCurrentRegi_0088e390.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_GetWaterHeightAtPosition_0088df60.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_GiveHeroWeapon_0088e130.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_GiveThingItemInHand_0088de10.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_HeroHasExpression_0088fc90.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_IsHeroControlledByPlayer_0088e980.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_IsSoundPlaying_0088f610.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_MiniMapAllowRouteBetweenRegions_0088e3d0.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_RespawnHero_0088e150.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetCreatureGeneratorsCreatureGroupAsEnabled_0088f400.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetGuildMasterMessages_0088e200.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetIsThingEpicSpellable_0088fa50.cpp ok alias
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetIsThingForcePushable_0088f9f0.cpp ok alias
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetIsThingLightningable_0088fa20.cpp ok alias
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetSoundThemesAsEnabledForRegion_0088e0b0.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_SetTimeOfDay_0088fdc0.cpp ok 
+edit rebuild/src/compiled/00/88/CGameScriptInterface_TransitionToThemeAllInternals_0088ff30.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoBarHealth_00891ad0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoBar_00891ac0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoCounterList_00891b50.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoCounter_00891b30.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoCounter_00891b40.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoTick_00891b60.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoTick_00891b70.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_AddQuestInfoTimer_00891b20.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ChangeQuestInfoBarColour_00891ba0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CloseChest_00896660.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CloseDoor_00895de0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorAreAllCreaturesAlive_0089ebf0.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorGetNumGeneratedCreatures_0089eb80.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_CreatureGeneratorIsDepleted_0089e9c0.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_DisableFishingSpot_00895950.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_DisplayLockedChestMessage_00896730.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetOpinionAttitudeToPlayerAsString_008909c0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetOpinionOfPlayer_008909f0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityGetStandingOnThing_00892220.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityResetCreatureMode_0089ddf0.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsCollidableToThings_00891120.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsDrunk_0089d560.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsHavingBoundHands_0089d420.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsMirroringHeroEnemyRelationsWhileFollo_00895650.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsOpinionSource_00890a20.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsOpinionSource_00890a50.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetAsScared_0089d4c0.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionAttitudeEnabled_0089c380.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionDeedTypeEnabled_0089c330.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetOpinionReactionEnabled_0089c3d0.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntitySetThingAsEnemyOfThing_0089c000.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityTeleportToPosition_0089b780.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityUnsetAsOpinionSource_00890a80.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_EntityUnsetThingAsEnemyOfThing_0089c080.cpp ok alias
+edit rebuild/src/compiled/00/89/CGameScriptInterface_FadeScreenOutUntilNextCallToFadeScreenIn_008907e0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetExclusiveQuestScriptName_00893030.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetFormattedString_00891340.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetFurthestWithScriptName_0089a6e0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetHeroFishingLevel_00895b00.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetMostRecentValidUsedTarget_00891610.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GetThingWithUID_00891d50.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_GiveHeroNewQuestObjective_008917f0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_HasHeroForceQuitFireheartMinigame_00895d50.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_HasHeroWonOracleMinigame_00895c30.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_HeroGoFishing_00895a90.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_HeroPlayFireheartMinigame_00895c90.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_HeroQuitFireheartMinigame_00895cf0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_HeroReceiveMessageFromGuildMaster_008918c0.cpp ok sprite1
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsDPadButtonHeldForExpression_00895430.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsEntityFollowingHero_008955c0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsFishingSpotEnabled_008958f0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroPerformingExpression_008953a0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_IsHeroPlayingOracleMinigame_00895bc0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_JamDoor_00895e10.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_KickOffCreditsScreen_00896df0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MakeHeroCarryItemInHand_00897e10.cpp ok DefMgr
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MiniMapAddMarker_00891f50.cpp ok sprite1
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MiniMapRemoveMarker_00891ff0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MiniMapSetMarkerGraphic_00891fa0.cpp ok sprite1
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsActionModeButtonPressed_00894440.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsBoastMade_00893960.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsCutSceneSkipped_00893ba0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsLevelLoaded_008931b0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsLevelUnloaded_00893240.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsRegionLoaded_008932d0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsRegionUnloaded_00893360.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgIsTutorialClickedPast_008943c0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnAnyQuestCompleted_00893610.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnBoastMade_008939d0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnExpressionPerformed_00893b00.cpp ok DefMgr
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnFeatAccepted_008938f0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnFishingGameFinished_00894110.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnGameSavedManually_00893e70.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroFiredRangedWeapon_00893f30.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroPickedLock_00894080.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroPickedPocket_00893ff0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroRewardedWithItemsFrom_00894250.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroUsedGuildSeal_00893e20.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnHeroUsedTeleporter_00893d80.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnLeavingExperienceSpendingScreen_00893ab0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnLeavingQuestStartScreen_0089ae30.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnLevelLoaded_0089ac10.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnLevelUnloaded_0089ac80.cpp ok acc:GetWorld0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnQuestAccepted_00893870.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnQuestCompletedBeforeScreenShown_00893730.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnQuestCompleted_00893570.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnQuestFailedBeforeScreenShown_008937d0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnQuestFailed_00893690.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnRegionLoaded_008933f0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnRegionPreunload_008934f0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnRegionUnloaded_00893470.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_MsgOnTavernGameFinished_008941a0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_OpenDoor_00895db0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_OpinionSourceSetAsExclusive_00894e60.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_PauseAllEntities_00890b00.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_PauseAllNonScriptedEntities_00890ab0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveBoastMessage_00893a50.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveConversation_008907c0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveQuestCardFromHero_008914e0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveQuestInfoElement_00891c10.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_RemoveThing_008910d0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ScreenFilterFadeOut_00890200.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetBoastAsCompleted_008915e0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetBoastAsFailed_008915b0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetBuyableHouseAsScripted_00896000.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetCreatureGeneratorsEnabledDuringScript_00892d70.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetCutsceneSkippableWhilePaused_008922a0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetCutsceneSkippable_00892280.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetDoorTriggerType_00895e70.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetEnvironmentThemeWeightAllInternals_00890040.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetScreenMessagesEnabled_008922d0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetThingHomeBuilding_00892e30.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SetTrapAsActive_00895130.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_SheatheHeroWeapons_008916a0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ShowOnScreenMessage_00892780.cpp ok sprite0,CMainGameComponent
+edit rebuild/src/compiled/00/89/CGameScriptInterface_ShowOnScreenMessage_008927b0.cpp ok sprite0,CMainGameComponent
+edit rebuild/src/compiled/00/89/CGameScriptInterface_TextEntryExists_00892070.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UpdateFishWeight_008959b0.cpp ok sprite0
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UpdateQuestInfoBar_00891b80.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UpdateQuestInfoCounterList_00891be0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UpdateQuestInfoCounter_00891bd0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UpdateQuestInfoTick_00891bf0.cpp ok 
+edit rebuild/src/compiled/00/89/CGameScriptInterface_UpdateQuestInfoTimer_00891bb0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossipFactionToCategory_008a9e60.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossipFactions_008aa550.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossipVillage_008a9e30.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossipVillages_008aa2f0.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_AddGossip_008aa090.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_CancelHeroTeleportEffects_008a0820.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_ClearGossip_008aa010.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityCastForcePush_008a9320.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetTargetable_008a05a0.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntitySetTargetingValidTargetWithoutLOS_008a0660.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_EntityUnsetThingAsAllyOfThing_008a7ee0.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0.cpp ok CWorld
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0.cpp ok CWorld
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40.cpp ok CWorld
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetBestScoreBlackjack_008a1650.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetBestScoreCoinGolfOakVale_008a16b0.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetBestScoreCoinGolfSnowSpire_008a1710.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetBestScoreShoveHaPenny_008a1770.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetFollowingEntityList_008a80f0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipFactionsSize_008aa480.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipFactions_008aa3c0.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossipVillages_008aa160.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetGossip_008a9f00.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_GetScriptingStateGroup_008a37b0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_MsgOnBoastsMade_008a9ae0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetActionFrequencyVariation_008a3ef0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetCombatNearbyBreakOffRange_008a54e0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetCombatNearbyEnemyFleeingBreakOffRange_008a5220.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetFollowDistance_008a4a00.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetGossipFactions_008aa350.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetGossipVillages_008aa0f0.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetGossip_008a9e90.cpp ok alias
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetKillSelfAndStealableItemAfterReachingDestinat_008a5ff0.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetMaxHeroReactionDistance_008a3980.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetTargetingDistanceOffset_008a7610.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetWanderMaxDistance_008a2950.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_SetWanderMinDistance_008a2690.cpp ok 
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_UpdateOnlineScoreArchery_008a1040.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_UpdateOnlineScoreChapelOrTemple_008a1140.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_UpdateOnlineScoreChickenKick_008a10c0.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_UpdateOnlineScoreFishingCompo_008a11c0.cpp ok acc:GetPlayerManager1
+edit rebuild/src/compiled/00/c3/CGameScriptInterface_EntitySetAsOpinionSource_00c308a0.cpp ok 
+edit rebuild/src/compiled/00/cd/CCounter_CCounter_00cd4490.cpp ok 
+edit rebuild/src/compiled/00/cf/CFinalTabletSarcophagus_Main_00cffb60.cpp ok 
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_CheckForSecondAreaDoorHelp_00d043a0.cpp ok 
+edit rebuild/src/compiled/00/d1/CBHGangGrunt_Main_00d15a40.cpp ok 
+edit rebuild/src/compiled/00/d1/CBHHostage1_Init_00d167c0.cpp ok 
+edit rebuild/src/compiled/00/d1/CBHHostage2_Init_00d16bb0.cpp ok 
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0.cpp ok 
+edit rebuild/src/compiled/00/d2/NScriptCQBreakSiegeScript_WatchForWinLoseConditions_00d20790.cpp ok 
+edit rebuild/src/compiled/00/d3/CFHVillager_Main_00d37530.cpp ok 
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScript_SetupPuzzleBlocks_00d36140.cpp ok 
+edit rebuild/src/compiled/00/d7/CHTGExecutioner_Main_00d73f40.cpp ok 
+edit rebuild/src/compiled/00/d8/CHSBMagicBarrier_Main_00d81c50.cpp ok 
+edit rebuild/src/compiled/00/d8/CHSScreamer_Main_00d83fa0.cpp ok 
+edit rebuild/src/compiled/00/d9/CFadeinSummoner_GetAlphaChange_00d9fe40.cpp ok 
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothWhisper_Init_00d9d4f0.cpp ok 
+edit rebuild/src/compiled/00/da/CBalverineFightingGuard_Main_00da6d50.cpp ok 
+edit rebuild/src/compiled/00/da/CBriarRose_DoOnHitSpeech_00da26b0.cpp ok 
+edit rebuild/src/compiled/00/da/CBriarRose_DoOnSpeakToSpeech_00da27b0.cpp ok 
+edit rebuild/src/compiled/00/da/CCorneredGuard_Main_00da7830.cpp ok 
+edit rebuild/src/compiled/00/da/CMMinion_Main_00da6240.cpp ok alias
+edit rebuild/src/compiled/00/da/CMNotThisWay_Main_00da6740.cpp ok alias
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_RunFirstWaveControl_00da0820.cpp ok 
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScript_GuardComment_00da8970.cpp ok 
+edit rebuild/src/compiled/00/dc/CSpeakingMarker_Main_00dc8890.cpp ok 
+edit rebuild/src/compiled/00/de/CSPScreamerTrigger_Main_00def3b0.cpp ok 
+edit rebuild/src/compiled/00/de/CSPUndeadTrigger_Main_00def760.cpp ok 
+edit rebuild/src/compiled/00/df/NScriptCQSummoningTheShipScriptCSTSBriarRose_Init_00df1760.cpp ok 
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Main_00df9180.cpp ok 
+edit rebuild/src/compiled/00/e0/CTraderScript_HandleTrader_00e0a510.cpp ok 
+edit rebuild/src/compiled/00/e0/CUndeadRisingCentre_Main_00e0d850.cpp ok 
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScript_WatchForSurprisingBalverines_00e06050.cpp ok 
+edit rebuild/src/compiled/00/e1/CMBanditTrigger_Main_00e1e960.cpp ok 
+edit rebuild/src/compiled/00/e1/global_CScriptGameResourceObjectScriptedThingBaseHandle_00e15500.cpp ok 
+edit rebuild/src/compiled/00/e1/global_CScriptGameResourceObjectScriptedThingBaseHandle_00e1e530.cpp ok 
+edit rebuild/src/compiled/00/e2/CACOwner_GetRandomSpeech_00e2e440.cpp ok 
+edit rebuild/src/compiled/00/e2/CTraderToEscort_GetRandomSpeech_00e23f30.cpp ok 
+edit rebuild/src/compiled/00/e3/CACDummyMoving_Init_00e33e00.cpp ok 
+edit rebuild/src/compiled/00/e3/CACDummyStatic_Init_00e33c90.cpp ok 
+edit rebuild/src/compiled/00/e3/CACOwner_GetRandomSpeech_00e362b0.cpp ok 
+edit rebuild/src/compiled/00/e3/CAttackingAssassin_Init_00e38f80.cpp ok 
+edit rebuild/src/compiled/00/e3/CMACDummyMoving_Main_00e33b00.cpp ok alias
+edit rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_WatchForOwnerKilled_00e331f0.cpp ok 
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScript_CreateCustomers_00e3a350.cpp ok 
+edit rebuild/src/compiled/00/e4/CBlockingBandit_Main_00e49980.cpp ok 
+edit rebuild/src/compiled/00/e5/CACOwner_GetRandomSpeech_00e53cb0.cpp ok 
+edit rebuild/src/compiled/00/e6/CATBanditContact_Init_00e6aac0.cpp ok 
+edit rebuild/src/compiled/00/e7/CFishCompCompetitor_Main_00e7e640.cpp ok 
+edit rebuild/src/compiled/00/e7/CMFishermanWaspSpawn_Main_00e7b970.cpp ok alias
+edit rebuild/src/compiled/00/e9/NScriptCBriarRose_Init_00e9dac0.cpp ok 
+edit rebuild/src/compiled/00/ec/CRandomPopulationCreature_Main_00ec1ef0.cpp ok 
+edit rebuild/src/compiled/00/ed/CTOLAcolyteGood_Init_00edc720.cpp ok 
+edit rebuild/src/compiled/00/ee/CGlobalOpenChestScript_Main_00eec890.cpp ok 
+edit rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForNoFollowers_00ee6a40.cpp ok 
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_IsNightTime_00ee13b0.cpp ok 
+edit rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp ok 
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp ok 
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp ok 
+edit rebuild/src/compiled/00/f0/CATConvoyMember_Init_00f08c30.cpp ok 
+edit rebuild/src/compiled/00/f0/CATPhase1Archer_Init_00f08a30.cpp ok 
+edit rebuild/src/compiled/00/f0/NScriptCATPhase1Guard_Init_00f083a0.cpp ok 
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditsDeath_00f0b960.cpp ok 
+edit rebuild/src/compiled/00/f1/NScriptCQArenaScript_AnimateCrowd_00f1ec70.cpp ok 

@@ -1,9 +1,6 @@
 // CGameScriptInterface::GetGossip(CCharString name,long index) -- Forward the gossip request with its by-value strings.
 // Leaf: ?GetGossip@CGameScriptInterface@@UAE?AVCCharString@@V2@J@Z
 // Identity: original PDB exact virtual signature and CTCAIScratchpad static API; own 013bae44 identifies category.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #ifndef _MSC_VER
 #define __fastcall
 #endif
@@ -82,5 +79,8 @@ class CTCAIScratchpad {public:
 static std::map<CCharString,std::vector<CCharString> > Gossip;
 static CCharString __fastcall GetGossip(CCharString name,long index){return Gossip[name][index];}
 };
-class CGameScriptInterface {public:virtual CCharString GetGossip(CCharString name,long index);unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 CCharString CGameScriptInterface::GetGossip(CCharString name,long index){return CTCAIScratchpad::GetGossip(name,index);}

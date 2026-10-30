@@ -26,11 +26,10 @@ class CCharString { public:
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->m_pData; }   // "" = 0x0129AAF4
     long Length() const { return PStringData == 0 ? 0 : PStringData->m_length; }
 };
-class CScriptBase { public:
-    unsigned char _body[0x40];
-public:
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CV_ChapelOfEvilScript : public CScriptBase {
 public:

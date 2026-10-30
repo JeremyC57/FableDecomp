@@ -13,7 +13,6 @@ struct CTCInventoryWeaponsNative;
 struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;__forceinline bool GetInventory(CTCInventoryWeaponsNative** out);};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct CPlayerManagerMethods:CPlayerManager {CPlayer* GetMainPlayer();}; //00449970
 struct CTCInventoryWeaponsNative {unsigned char Base[0x168];long PreviouslyWieldedMeleeWeaponDefIndex,PreviouslyWieldedRangedWeaponDefIndex; __forceinline long GetPreviousRanged()const{return PreviouslyWieldedRangedWeaponDefIndex;}}; // donor184/188; native168/16c
 class CDefString { public:long TablePos;CDefString(){} CDefString(const CDefString& x):TablePos(x.TablePos){}};
 struct CDefinitionManagerMethods {CDefString GetDefNameFromGlobalIndex(long);}; //009ACCC0
@@ -26,7 +25,7 @@ __forceinline bool CThingNative::GetInventory(CTCInventoryWeaponsNative** out){
 __forceinline long GetPrevious(CTCInventoryWeaponsNative* inventory){return inventory->PreviouslyWieldedRangedWeaponDefIndex;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface {bool GetPreviouslyWieldedRangedWeaponName(CCharString&)const;};
 bool CGameScriptInterfaceMethods::GetPreviouslyWieldedRangedWeaponName(CCharString& result)const{
- CTCInventoryWeaponsNative* inventory;CThingPlayerCreature* hero=static_cast<CPlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();
+ CTCInventoryWeaponsNative* inventory;CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();
  if(hero && !(hero->LifeFlags&1) && hero->GetInventory(&inventory)) {
 
  long index=inventory->PreviouslyWieldedRangedWeaponDefIndex;

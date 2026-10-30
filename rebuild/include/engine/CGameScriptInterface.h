@@ -14,7 +14,7 @@
 // rebuild/oracles/reloc_bindings.tsv); the ~CGameScriptInterface body address is not proven (only the deleting dtor is).
 // Size 0x50: members are the generated #else model's (Ego_r names, retail STLport sizes); HeroSThing / ScriptTimers stay
 // opaque (CScriptThing needs the includer's CCountedPointer; std::map<long,long> is STLport 0xc). Slot 308's nested-enum
-// stand-in is inherited from CGameScriptInterfaceBase.h. Non-virtual members of the PDB class are not declared here yet.
+// stand-in is inherited from CGameScriptInterfaceBase.h. Non-virtual members: only those proven by landed callers (below).
 #ifdef FABLE_RETAIL_NSCRIPT
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -953,9 +953,17 @@ protected:
     // Non-virtual frame-window helpers (wave 5). Both PDBs (Ego_r 0x00710770/0x007107A0, FableWin 0x024674E0/0x024676B0)
     // list ?GetMinWorldFrameForMessages@CGameScriptInterface@@IBEJXZ then ?GetMaxWorldFrameForMessages@...@@IBEJXZ, 0x30
     // apart; retail has the same twin pair 0x30 apart: 0x006E7510 reads the +0x18 frame word, 0x006E7530 the +0x1c one.
-    long GetMinWorldFrameForMessages() const;                                                            // 0x006E7510 (pairing by PDB order; landed rows call it GetCurrentWorldFrameForMessages: NAME_FIXES)
+    long GetMinWorldFrameForMessages() const;                                                            // 0x006E7510 (pairing by PDB order; landed rows respelled by naming wave 10)
     long GetMaxWorldFrameForMessages() const;                                                            // 0x006E7530
 public:
+    // Wave 6. 0x006E77F0 never touches `this`: it takes the PLAYER_GUI_PC definition (0x00438570, the lazily cached
+    // CPlayerGuiDef* at 0x013B878C), finds the CCharString key in the map at def+0x934 and returns the node's long (+0x14)
+    // or 0. Retail's CPlayerGuiDef binder (0x00474C8F..0x00474C9D) registers def+0x934 under the member-name string
+    // "ScriptSprites" (0x012362CC; Ego_r.pdb: CPlayerGuiDef::ScriptSprites, map<CCharString,long>). Both PDBs have exactly
+    // one CGameScriptInterface method of this shape, ?GetScriptSpriteBySymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z
+    // (Ego_r 0x007109B0, FableWin 0x024678F0); NPlayerGui::CDrawQuestInfo has a same-named lookup (0x0064A37B). Landed rows
+    // called it GetTextIDFromSymbol (an invented name from Ghidra's LTextSystem::GetIDFromSymbol label).
+    long GetScriptSpriteBySymbol(const CCharString& symbol) const;                                       // 0x006E77F0
     CWorld*                 World;                           // +0x04
     CMainGameComponent*     Component;                       // +0x08
     CDisplayEngine*         DisplayEngine;                   // +0x0c

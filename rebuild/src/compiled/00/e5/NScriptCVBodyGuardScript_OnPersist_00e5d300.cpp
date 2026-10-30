@@ -31,10 +31,9 @@ struct CScriptThingVector {                                 // std::vector<CScri
     void* _M_finish;
     void* _M_end_of_storage;
 };
-class CScriptBase { public:                                        // retail 0x40 bytes
-    virtual void v00();
-    unsigned char _body[0x3c];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQuestScriptBase : CScriptBase {
     void* Game;                                             // +0x40
     void* Data;                                             // +0x44

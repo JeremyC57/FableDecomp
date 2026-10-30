@@ -48,15 +48,9 @@ template <class T> struct CEntityScriptBinding : CEntityScriptBindingBase {
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQR_EscortTraderScript : public CScriptBase { public:
     struct CM_BanditTrigger {
@@ -84,9 +78,9 @@ void CQR_EscortTraderScript::Main()
     PostAddScriptedEntities();
     Game->PostAddScriptedEntities();
     Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_ORCHARD_FARM_ESCORT_OBJECTIVE_01", "LookoutPoint", "HeroGuildComplexInside");
-    SpawnFunction(new CSpawnedFunc<CQR_EscortTraderScript>("WatchForTermination", 0, this, &CQR_EscortTraderScript::WatchForTermination));
-    SpawnFunction(new CSpawnedFunc<CQR_EscortTraderScript>("DoMission", 0, this, &CQR_EscortTraderScript::DoMission));
-    SpawnFunction(new CSpawnedFunc<CQR_EscortTraderScript>("WatchForRegionLoads", 0, this, &CQR_EscortTraderScript::WatchForRegionLoads));
+    AddSpawnedFunction(new CSpawnedFunc<CQR_EscortTraderScript>("WatchForTermination", 0, this, &CQR_EscortTraderScript::WatchForTermination), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQR_EscortTraderScript>("DoMission", 0, this, &CQR_EscortTraderScript::DoMission), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQR_EscortTraderScript>("WatchForRegionLoads", 0, this, &CQR_EscortTraderScript::WatchForRegionLoads), CCharString(""));
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
 }

@@ -55,19 +55,33 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 using NScript::CIsThingAlive;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_0 };
-struct CCountedPointerWords { void* Data; void* Info; };
+class CCPPointerInfo { public:                         // CCountedPointer's shared block (Ego_r.pdb CCPPointerInfo)
+    long RefCount;                                     // +0
+    void (__fastcall* DeleteFunc)(void* data);         // +4 destroys the pointee
+    void* Data;                                        // +8
+};
+void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
+template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
+    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
+    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
+    CCountedPointer() : Data(0), Info(0) {}            // from this size)
+    ~CCountedPointer()
+    {
+        if (Info) {
+            --Info->RefCount;
+            if (Info->RefCount == 0) {
+                Info->DeleteFunc(Info->Data);
+                delete Info;
+            }
+        }
+        Data = 0;
+        Info = 0;
+    }
+};
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
-    CCountedPointerWords PImp;
-    CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
-    virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsValid() const;                                // 0x00CD23B9
-    void Release();                                    // 0x00CD2770
-    virtual void MoveToThing(const CScriptThing&, float, EScriptEntityMoveType, bool, bool, bool, bool);   // 0x007E7300
-    virtual void FollowPreCalculatedRoute(const CScriptThing&, EScriptEntityMoveType, bool, bool);   // 0x007E7310
-    virtual bool IsPerformingScriptTask() const;               // 0x007E7450
-};
+#include "engine/CScriptGameResourceObjectBase.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);  // 0x00CBE716

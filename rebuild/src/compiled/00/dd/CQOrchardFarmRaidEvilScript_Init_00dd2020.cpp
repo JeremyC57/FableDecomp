@@ -33,9 +33,9 @@ class CScriptDef { public:
     long OFE_NoBanditsDieBoastReward;   // +0xD84
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct CQ_OrchardFarmRaidEvilScript : CScriptBase {
     CGameScriptInterface* Game;                         // +0x40
     void Init();

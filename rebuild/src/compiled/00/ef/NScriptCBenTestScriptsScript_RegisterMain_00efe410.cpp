@@ -30,19 +30,10 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CPersistContext;
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-protected:
-    virtual void RegisterMain();
-    virtual void Main();
-    virtual void Init();
-public:
-    virtual void OnPersist(CPersistContext& context);
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CBenTestScriptsScript : public CScriptBase {
 public:
@@ -51,6 +42,6 @@ public:
 };
 void CBenTestScriptsScript::RegisterMain()
 {
-    SpawnFunction(new CSpawnedFunc<CBenTestScriptsScript>("Main", 0, this, &CBenTestScriptsScript::Main));
+    AddSpawnedFunction(new CSpawnedFunc<CBenTestScriptsScript>("Main", 0, this, &CBenTestScriptsScript::Main), CCharString(""));
 }
 }

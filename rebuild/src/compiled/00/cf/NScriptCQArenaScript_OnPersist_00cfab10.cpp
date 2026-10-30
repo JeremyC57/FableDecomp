@@ -64,23 +64,9 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
 class CPersistContext;
-class CScriptBase {                                      // retail 0x40 bytes (Ego_r.pdb 0x54 with Dinkumware containers)
-public:
-    virtual ~CScriptBase();                               // slot 0
-protected:
-    virtual void RegisterMain();                          // slot 1
-    virtual void Main();                                  // slot 2
-    virtual void Init();                                  // slot 3 (+0x0c)
-public:
-    virtual void OnPersist(CPersistContext& context);     // slot 4 (+0x10)
-    bool IsActiveThreadTerminating();                     // 0x00CB7940
-    unsigned char _body[0x3c];
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                       // +0x40
-    TData*                    MasterScriptData;           // +0x44
-};
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
+#include "engine/CLevelScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_ArenaScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {

@@ -98,15 +98,9 @@ class CTimer { public:                                         // 4 bytes: an in
 };
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    void AddEntityScriptBinding(CEntityScriptBindingBase* binding);                   // 0x00CB8230
-    void PostAddScriptedEntities();                                                   // 0x00CB8930
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_WaspBossScript : public CScriptBase {
 public:
@@ -163,8 +157,8 @@ void CQ_WaspBossScript::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->OverrideMusic((EMusicSetType)23, false, false);
-    SpawnFunction(new CSpawnedFunc<CQ_WaspBossScript>("WatchForTermination", 0, this, &CQ_WaspBossScript::WatchForTermination));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_WaspBossScript>("WatchForTermination", 0, this, &CQ_WaspBossScript::WatchForTermination), CCharString(""));
     AddSpawnedFunction(new CSpawnedFunc<CQ_WaspBossScript>("DoMission", 0, this, &CQ_WaspBossScript::DoMission), "PicnicArea");
-    SpawnFunction(new CSpawnedFunc<CQ_WaspBossScript>("WatchForCutscene", 0, this, &CQ_WaspBossScript::WatchForCutscene));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_WaspBossScript>("WatchForCutscene", 0, this, &CQ_WaspBossScript::WatchForCutscene), CCharString(""));
 }
 }

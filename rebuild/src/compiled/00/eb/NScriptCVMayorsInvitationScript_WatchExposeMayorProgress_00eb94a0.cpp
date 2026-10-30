@@ -4,7 +4,7 @@
 //   operator new 0x00BFEA1A, CSpawnedFuncBase(const CCharString&, unsigned long) 0x00CDD450 (CSpawnedFunc<CV_MayorsInvitationScript>
 //   vtable 0x012F0548, MonitorThunderHeroDuel 0x00EB70F0), AddSpawnedFunction 0x00CB7E50; CGameScriptInterface slots 7
 //   NewScriptFrame, 295 GiveHeroQuestCardDirectly, 296 SetQuestCardObjective, 655 GetActiveQuestName.
-// Shape: the spawn uses the inline `SpawnFunction(func, const char* region = "")` (region temporary built after new, the
+// Shape: the spawn uses the inline `AddSpawnedFunction(func, CCharString(const char* region = ""))` (region temporary built after new, the
 //   thread name guarded by a flag in ebx); QuestCardGiven is set at the end of both arms.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, the shared master data +0x44 (its +0x63 and +0xd5 are unnamed flags:
 //   the hero duel is done / the bribe path was taken, cf. PhaseFive 0x00E7A740), QuestCardGiven +0x50.
@@ -84,12 +84,10 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
-class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                    // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -142,7 +140,7 @@ void NScript::CV_MayorsInvitationScript::WatchExposeMayorProgress()
         if (IsActiveThreadTerminating())
             return;
         Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_MAYORS_INVITATION_OBJECTIVE_07", "", "");
-        SpawnFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("MonitorThunderHeroDuel", 0, this, &NScript::CV_MayorsInvitationScript::MonitorThunderHeroDuel));
+        AddSpawnedFunction(new CSpawnedFunc<CV_MayorsInvitationScript>("MonitorThunderHeroDuel", 0, this, &NScript::CV_MayorsInvitationScript::MonitorThunderHeroDuel), CCharString(""));
     }
     QuestCardGiven = true;
 }

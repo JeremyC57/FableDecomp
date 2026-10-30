@@ -81,13 +81,9 @@ class CScriptDef { public:
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_HangingTreeEvilScript : public CScriptBase {
 public:
@@ -120,8 +116,8 @@ public:
 };
 void CQ_HangingTreeEvilScript::DoMission()
 {
-    SpawnFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("WatchForMissionEnd", 0, this, &CQ_HangingTreeEvilScript::WatchForMissionEnd));
-    SpawnFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("MonitorRegionPresence", 0, this, &CQ_HangingTreeEvilScript::MonitorRegionPresence));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("WatchForMissionEnd", 0, this, &CQ_HangingTreeEvilScript::WatchForMissionEnd), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("MonitorRegionPresence", 0, this, &CQ_HangingTreeEvilScript::MonitorRegionPresence), CCharString(""));
     while (!Game->IsLevelLoaded("BowerstoneJail")) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())

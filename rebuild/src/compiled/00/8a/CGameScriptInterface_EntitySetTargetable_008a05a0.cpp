@@ -1,9 +1,6 @@
 // CGameScriptInterface::EntitySetTargetable(const CScriptThing& thing,bool value) -- Update the component flag when the script thing is alive and owns it.
 // Leaf: ?EntitySetTargetable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
 // Identity: PDB exact virtual const API; component kind9 and original CTCTargeted::Targetable field agree with retail.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -111,5 +108,8 @@ class CScriptThing {public:
  CScriptThing* PImp_Data;CCPPointerInfo* PImp_Info;
 };
 // Layout: script owner header flattened; genuine virtual API required, owner fields untouched.
-class CGameScriptInterface {public:virtual void EntitySetTargetable(const CScriptThing& thing,bool value)const;unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetTargetable(const CScriptThing& thing,bool value)const{if(thing.IsAlive()){CThing* p=thing.GetPThing();CTCTargeted* component;if(p->GetTC(TC_TARGETED,&component))component->Targetable=value;}}

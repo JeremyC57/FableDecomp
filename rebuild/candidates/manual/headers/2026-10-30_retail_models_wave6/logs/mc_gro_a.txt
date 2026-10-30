@@ -1,0 +1,69 @@
+006e7b60	SRC_FAIL	CScriptGameResourceObjectBase.h(21): error C2011: 'CScriptGameResourceObjectBase' : 'class' type redefinition | new.cpp(44): error C2600: 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase' : cannot define a compiler-generated special member function (must be declared in the class first)
+007e72a0	SRC_FAIL	CScriptGameResourceObjectBase.h(21): error C2011: 'CScriptGameResourceObjectBase' : 'class' type redefinition | new.cpp(44): error C2600: 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase' : cannot define a compiler-generated special member function (must be declared in the class first)
+00cd2c7c	SRC_FAIL	CScriptGameResourceObjectScriptedThingBase.h(71): error C2079: 'CScriptGameResourceObjectScriptedThingBase::PImp' uses undefined class 'CCountedPointer<T>' | CScriptGameResourceObjectScriptedThingBase.h(73): error C2118: negative subscript | new.cpp(25): error C2373: 'operator delete' : redefinition; different type modifiers
+00d49a20	DIFFER	798v815 grades=False sym=?RunSaveXPCutscene2@CQ_GuildTrainingScript@NScript@@QAEXXZ
+00d496f0	DIFFER	798v815 grades=False sym=?RunSaveXPCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+00d58080	DIFFER	580v633 grades=False sym=?Main@CMeleeThunder@@QAEXXZ
+00d55e90	DIFFER	1804v1820 grades=False sym=?Main@CQ_GuildTrainingMeleeScript@NScript@@QAEXXZ
+00d6aea0	SRC_FAIL	new.cpp(963): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(947): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(950): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00d6b240	SRC_FAIL	new.cpp(961): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(945): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(948): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00d68810	SAME	719b RELOCATION_MATCH->RELOCATION_MATCH
+00d7a360	DIFFER	1361v1333 grades=False sym=?Main@CEndBriarRose@@QAEXXZ
+00d79d50	DIFFER	1361v1333 grades=False sym=?Main@CEndScythe@@QAEXXZ
+00d7f880	SRC_FAIL	new.cpp(961): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(945): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(948): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00d72200	SRC_FAIL	new.cpp(961): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(945): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(948): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00d72590	SRC_FAIL	new.cpp(966): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(950): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(953): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00d701c0	SRC_FAIL	new.cpp(984): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(968): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(971): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00d7dd80	SAME	253b RELOCATION_MATCH->RELOCATION_MATCH
+00d85b40	DIFFER	1104v1112 grades=False sym=?Main@CGuildmaster_HS@@QAEXXZ
+00d86150	SAME	563b RELOCATION_MATCH->RELOCATION_MATCH
+00d86680	SAME	762b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f6d0	SRC_FAIL	fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types | fable_nscript_forward.h(60): error C2371: 'EOpinion' : redefinition; different basic types
+00d8fa30	SRC_FAIL	fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types | fable_nscript_forward.h(60): error C2371: 'EOpinion' : redefinition; different basic types
+00d9bf60	SRC_FAIL	fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types | fable_nscript_forward.h(60): error C2371: 'EOpinion' : redefinition; different basic types
+00d9d030	SAME	1213b RELOCATION_MATCH->RELOCATION_MATCH
+00da47a0	SAME	371b RELOCATION_MATCH->RELOCATION_MATCH
+00daa260	SRC_FAIL	new.cpp(167): error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'int' to 'EScriptEntityMoveType'
+00da5f40	SAME	337b RELOCATION_MATCH->RELOCATION_MATCH
+00db8300	SRC_FAIL	new.cpp(964): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(948): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(951): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00dbf2d0	DIFFER	1768v1785 grades=False sym=?Main@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
+00dd84b0	SRC_FAIL	new.cpp(968): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(952): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(955): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00dd6440	DIFFER	1212v1116 grades=False sym=?Main@CPrisonEscapeGuard@@QAEXXZ
+00dd1af0	DIFFER	895v959 grades=False sym=?DoMultiplierCutscene@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ
+00ded540	SAME	470b RELOCATION_MATCH->RELOCATION_MATCH
+00dedf30	SAME	623b RELOCATION_MATCH->RELOCATION_MATCH
+00dedb80	SAME	697b RELOCATION_MATCH->RELOCATION_MATCH
+00ded810	SAME	639b RELOCATION_MATCH->RELOCATION_MATCH
+00df2d30	DIFFER	385v349 grades=False sym=?Main@CFireHeartHolder@@QAEXXZ
+00df0b70	SRC_FAIL	CScriptGameResourceObjectScriptedThingBase.h(71): error C2079: 'CScriptGameResourceObjectScriptedThingBase::PImp' uses undefined class 'CCountedPointer<T>' | CScriptGameResourceObjectScriptedThingBase.h(73): error C2118: negative subscript | CScriptGameResourceObjectMovieBase.h(28): error C2079: 'CScriptGameResourceObjectMovieBase::PImp' uses undefined class 'CCountedPointer<T>'
+00dfba60	SRC_FAIL	new.cpp(957): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(941): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(944): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00dfb320	SRC_FAIL	new.cpp(58): error C2371: 'EScriptAIPriority' : redefinition; different basic types | new.cpp(175): error C2664: 'GameCalls::StartScriptingEntity' : cannot convert parameter 3 from 'int' to 'EScriptAIPriority' | new.cpp(175): fatal error C1903: unable to recover from previous error(s); stopping compilation
+00e0e2e0	SRC_FAIL	new.cpp(194): error C2664: 'CScriptGameResourceObjectScriptedThingBase::MoveToPosition' : cannot convert parameter 3 from 'float' to 'EScriptEntityMoveType'
+00e0cff0	SAME	312b RELOCATION_MATCH->RELOCATION_MATCH
+00e02470	SRC_FAIL	fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types | fable_nscript_forward.h(60): error C2371: 'EOpinion' : redefinition; different basic types
+00e02950	SRC_FAIL	fable_nscript_forward.h(57): error C2371: 'EMiniGameType' : redefinition; different basic types | fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types
+00e1b750	SAME	499b RELOCATION_MATCH->RELOCATION_MATCH
+00e10bf0	DIFFER	384v384 grades=False sym=?WatchForLeaving@CV_ChapelOfEvilScript@@QAEXXZ
+00e11dc0	SRC_FAIL	fable_nscript_forward.h(57): error C2371: 'EMiniGameType' : redefinition; different basic types | fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types
+00e1cd40	DIFFER	729v653 grades=False sym=?CutsceneScreamers@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e1c580	DIFFER	1283v1330 grades=False sym=?PhaseTwo@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e2a900	DIFFER	537v499 grades=False sym=?PlayCutscene@CQS_ScytheInfoScript@@QAEXVCCharString@@_N@Z
+00e4a280	SAME	992b RELOCATION_MATCH->RELOCATION_MATCH
+00e6f710	DIFFER	1116v1107 grades=False sym=?Main@CDF_CombatMult@@QAEXXZ
+00e6ea30	DIFFER	1510v1549 grades=False sym=?Main@CDF_ShineLight@@QAEXXZ
+00e6f1c0	DIFFER	1148v1140 grades=False sym=?Main@CDF_ThunderHelmet@@QAEXXZ
+00e71450	DIFFER	1116v1108 grades=False sym=?Main@CDF_EatPies@@QAEXXZ
+00e71980	DIFFER	1166v1205 grades=False sym=?Main@CDF_GiveGift@@QAEXXZ
+00e73410	DIFFER	1100v1091 grades=False sym=?Main@CDF_MarryLadyGrey@@QAEXXZ
+00e73930	DIFFER	1687v1725 grades=False sym=?Main@CDF_SexMad@@QAEXXZ
+00e8b020	SAME	1748b RELOCATION_MATCH->RELOCATION_MATCH
+00e9aeb0	DIFFER	939v903 grades=False sym=?SecondFleeCutscene@CV_HeroDuelScript@NScript@@QAEXXZ
+00ea0b10	SRC_FAIL	fable_nscript_forward.h(57): error C2371: 'EMiniGameType' : redefinition; different basic types | fable_nscript_forward.h(58): error C2371: 'EMorality' : redefinition; different basic types | fable_nscript_forward.h(59): error C2371: 'EMusicSetType' : redefinition; different basic types
+00ec1ef0	DIFFER	824v836 grades=False sym=?Main@CRandomPopulationCreature@@QAEXXZ
+00ed7320	RELOC_RENAMED	RELOCATION_MATCH ; 1c5:?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ->?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ
+00ee7a20	DIFFER	1627v1659 grades=False sym=?Main@CDemonDoorFace@@QAEXXZ
+00eea020	DIFFER	582v543 grades=False sym=?Main@CExpression_FollowScript@NScript@@UAEXXZ
+00ef45b0	SRC_FAIL	new.cpp(963): error C2989: 'CCountedPointer' : template class has already been defined as a non-template class | new.cpp(947): error C3857: 'CCountedPointer': multiple template parameter lists are not allowed | new.cpp(950): error C2327: 'CArray<T>::Data' : is not a type name, static, or enumerator
+00f04cc0	SRC_FAIL	new.cpp(62): error C2039: 'GetPosition' : is not a member of 'CScriptThing'
+00f01480	DIFFER	770v734 grades=False sym=?Main@CCS_PlayCutsceneScript@NScript@@QAEXXZ
+00f02210	DIFFER	622v586 grades=False sym=?ArenaIntroduction@CQ_CinemaTestScript@NScript@@QAEXXZ

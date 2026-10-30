@@ -30,12 +30,9 @@ class CCharString { public:                                     // 4 bytes: the 
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
-class CScriptBase { public:                                     // retail 0x40 bytes
-    unsigned char _body[0x40];
-    bool IsActiveThreadTerminating();                    // 0x00CB7940
-    void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_GuildTrainingWoodsMeleeScript : public CScriptBase {
 public:
@@ -61,8 +58,8 @@ void NScript::CQ_GuildTrainingWoodsMeleeScript::DoMission()
     }
     if (IsActiveThreadTerminating())
         return;
-    SpawnFunction(new CSpawnedFunc<CQ_GuildTrainingWoodsMeleeScript>("WatchForLeaving", 0, this, &NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForLeaving));
-    SpawnFunction(new CSpawnedFunc<CQ_GuildTrainingWoodsMeleeScript>("TeleportOutHero", 0, this, &NScript::CQ_GuildTrainingWoodsMeleeScript::TeleportOutHero));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_GuildTrainingWoodsMeleeScript>("WatchForLeaving", 0, this, &NScript::CQ_GuildTrainingWoodsMeleeScript::WatchForLeaving), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_GuildTrainingWoodsMeleeScript>("TeleportOutHero", 0, this, &NScript::CQ_GuildTrainingWoodsMeleeScript::TeleportOutHero), CCharString(""));
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;

@@ -32,8 +32,6 @@ struct CThingLifeStateRetailView {
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-struct CPlayerManagerView : CPlayerManager { CPlayer* GetMainPlayer(); // 0x00449970
-};
 struct CWorldView;
 extern float ShopkeeperWatchRadius; // 0x0138cb60
 struct CAIStateGroup_ShopkeeperWatchPlayer : CAIStateGroupBase {
@@ -60,7 +58,7 @@ bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
             else
                 open = 0;
 
-            CPlayer* mainPlayer = ((CPlayerManagerView*)GetPPlayerManager())->GetMainPlayer();
+            CPlayer* mainPlayer = &GetPPlayerManager()->GetMainPlayer();
             CThing* hero = mainPlayer->GetPControlledCreature();
             if (open) {
                 if (hero != 0 && (((CThingLifeStateRetailView*)hero)->AliveFlags & 1) == 0) {

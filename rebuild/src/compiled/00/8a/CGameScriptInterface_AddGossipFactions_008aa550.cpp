@@ -1,9 +1,6 @@
 // CGameScriptInterface::AddGossipFactions(CCharString name,CCharString value) -- Forward the gossip request with its by-value strings.
 // Leaf: ?AddGossipFactions@CGameScriptInterface@@UAEXVCCharString@@0@Z
 // Identity: original PDB exact virtual signature and CTCAIScratchpad static API; own 008aea40 identifies category.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #ifndef _MSC_VER
 #define __fastcall
 #endif
@@ -81,5 +78,8 @@ public:
 class CTCAIScratchpad {public:
 static void __fastcall AddGossipFactions(CCharString name,CCharString value);
 };
-class CGameScriptInterface {public:virtual void AddGossipFactions(CCharString name,CCharString value);unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::AddGossipFactions(CCharString name,CCharString value){CTCAIScratchpad::AddGossipFactions(name,value);}

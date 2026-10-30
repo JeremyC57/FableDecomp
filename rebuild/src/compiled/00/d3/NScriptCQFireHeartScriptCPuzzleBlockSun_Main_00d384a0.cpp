@@ -64,11 +64,9 @@ public:
     _Tp& operator[](unsigned int n) { return *(_M_start + n); }
 };
 }
-class CScriptBase {                                     // retail 0x40 bytes
-public:
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];                          // +0x04 .. +0x40
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_FireHeartScript : public CScriptBase {

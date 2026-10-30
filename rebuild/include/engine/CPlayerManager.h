@@ -6,11 +6,14 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+// Retail override (hand-added, retail class-model migration wave 6): the PDB accessor methods below, so landed rows call
+// the real members instead of row-local accessor classes. Layout untouched (declarations only).
 #include <stddef.h>
 #include "rebuild_abi.h"
 
 class CGameDefinitionManager;
 class CMainGameComponent;
+class CPlayer;
 
 #pragma pack(push, 1)
 class CPlayerManager {
@@ -22,6 +25,19 @@ public:
     long                    PlayerNeutral;                   // +0x18
     long                    MainPlayer;                      // +0x1c
     unsigned char           HeroSwapPlayerScriptNames[0xc];  // +0x20 vector<CCharString,std::allocator<CCharString>_>
+    // Methods (both PDBs spell all five; retail bodies read the members above):
+    //   GetPlayer(n) 0x004498C0 / const 0x00449910: scan Players (+0x0c..+0x10) for the CPlayer whose +0x28 number is n,
+    //     else Players[PlayerNeutral (+0x18)]; ret 4. The two bodies are byte-identical.
+    //   GetMainPlayer() 0x00449970 / const 0x00449960: `mov eax,[ecx+0x1c]; push eax; call GetPlayer` (MainPlayer +0x1c);
+    //     0x00449970 calls 0x004498C0 and 0x00449960 calls 0x00449910. Const/non-const pairing: Ego_r.pdb lists the five in
+    //     retail address order (GetMainPlayerNumber 0x00444EE0, GetPlayer QAE 0x00444FE0, QBE 0x00445030, GetMainPlayer
+    //     QBE 0x004450A0, QAE 0x004450F0), and the landed bindings agree (QAEAAV -> 0x00449970, QBEABV -> 0x00449960).
+    //   GetMainPlayerNumber() const 0x00449700: `mov eax,[ecx+0x1c]; ret`.
+    CPlayer&       GetPlayer(long number);                   // 0x004498C0 ?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+    const CPlayer& GetPlayer(long number) const;             // 0x00449910 ?GetPlayer@CPlayerManager@@QBEABVCPlayer@@J@Z
+    CPlayer&       GetMainPlayer();                          // 0x00449970 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+    const CPlayer& GetMainPlayer() const;                    // 0x00449960 ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ
+    long           GetMainPlayerNumber() const;              // 0x00449700 ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ
 };
 #pragma pack(pop)
 

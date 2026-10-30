@@ -1,0 +1,8 @@
+008a3ef0	RELOC_RENAMED	leafsym ?SetActionFrequencyVariation@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a54e0	RELOC_RENAMED	leafsym ?SetCombatNearbyBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a5220	RELOC_RENAMED	leafsym ?SetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a3980	RELOC_RENAMED	leafsym ?SetMaxHeroReactionDistance@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a7610	RELOC_RENAMED	leafsym ?SetTargetingDistanceOffset@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a2950	RELOC_RENAMED	leafsym ?SetWanderMaxDistance@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a2690	RELOC_RENAMED	leafsym ?SetWanderMinDistance@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z
+008a4a00	RELOC_RENAMED	leafsym ?SetFollowDistance@CGameScriptInterface@@QAEXVCScriptThing@@J@Z -> ?SetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z

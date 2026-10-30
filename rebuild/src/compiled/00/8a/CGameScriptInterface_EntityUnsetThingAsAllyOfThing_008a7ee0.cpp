@@ -1,9 +1,6 @@
 // CGameScriptInterface::EntityUnsetThingAsAllyOfThing(const CScriptThing& thing,const CScriptThing& other) -- Forward to the owned component after checking script lifetime.
 // Leaf: ?EntityUnsetThingAsAllyOfThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
 // Identity: PDB exact virtual const signature; own interface kind73 and external callee0076c850 CTCEnemy::RemoveAllyThing.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -114,5 +111,8 @@ class CScriptThing {public:
 class CTCChest:public CTCBase {public:void Close();void DisplayLockedMessage()const;};
 class CTCCreatureModeManager:public CTCBase {public:void ResetModes();};
 // Layout: shared script header flattened; genuine virtual API below, no owner fields touched.
-class CGameScriptInterface {public:virtual void EntityUnsetThingAsAllyOfThing(const CScriptThing& thing,const CScriptThing& other)const;unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntityUnsetThingAsAllyOfThing(const CScriptThing& thing,const CScriptThing& other)const{if(thing.IsAlive() && other.IsAlive()){CThing* p=thing.GetPThing();CTCEnemy* component;if(p->GetTC((ETCInterfaceType)73,&component))component->RemoveAllyThing(*other.GetPThing());}}

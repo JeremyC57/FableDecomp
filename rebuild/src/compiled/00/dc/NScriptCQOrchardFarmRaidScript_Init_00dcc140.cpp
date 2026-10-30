@@ -93,9 +93,9 @@ struct CCrateTeamManager {                              // 0x40 bytes
     CScriptThing TeamCrateCarrier;                      // +0x30
     CCrateTeamManager* EnemyTeam;                       // +0x3c
 };
-class CScriptBase { public:
-    unsigned char _body[0x40];
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_OrchardFarmRaidScript : public CScriptBase {
 public:

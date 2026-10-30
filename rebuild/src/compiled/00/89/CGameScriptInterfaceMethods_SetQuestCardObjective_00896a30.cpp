@@ -18,7 +18,6 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
-struct PlayerManagerMethods:CPlayerManager{CPlayer* GetMainPlayer();}; //00449970
 
 #include "engine/CQuestManager.h"
 #include "engine/CTCQuestCard.h"
@@ -37,7 +36,7 @@ void CGameScriptInterfaceMethods::SetQuestCardObjective(const CCharString& quest
  if(g_QuestManager->SetQuestCardObjective(quest,objective,region,extra)&&g_QuestManager->IsQuestCardActive(quest)){
  CThingNative* card=g_QuestManager->GetActiveQuestCardFromScriptName(quest);if(card&&!(card->DeletedFlags&1)&&(card->UsingComponents[3]&0x1000)){
  ComponentMap* map=&card->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)108);ComponentEntry* end=map->Finish;QuestCardMethods* tc=static_cast<QuestCardMethods*>(((void*)(it==end||it->first>108?end:it)->second));if(!tc->IsVignette()){
- CThingPlayerCreature* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();if(IS_THING_ALIVE(hero)&&(hero->UsingComponents[0]&0x10000)){
+ CThingPlayerCreature* hero=PlayerManager->GetMainPlayer().GetPControlledCreature();if(IS_THING_ALIVE(hero)&&(hero->UsingComponents[0]&0x10000)){
  ComponentMap* soundMap=&hero->Components;ComponentEntry* soundIt=soundMap->LowerBound((ETCInterfaceType)16);ComponentEntry* soundEnd=soundMap->Finish;SoundPlayerMethods* sound=static_cast<SoundPlayerMethods*>(((void*)(soundIt==soundEnd||soundIt->first>16?soundEnd:soundIt)->second));PlayLogCue(sound);
  }}}}
 }

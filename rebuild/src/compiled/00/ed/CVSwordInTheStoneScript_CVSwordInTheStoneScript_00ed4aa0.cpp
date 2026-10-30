@@ -18,11 +18,9 @@ class CTimer { public:
     long Index;
     CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
 };
-class CScriptBase { public:                               // 0x40 bytes (vtable 0x012C1648)
-    virtual void v00();
-    unsigned char _body[0x3c];
-    CScriptBase();                                 // 0x00CB8110
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {
     CGameScriptInterface* Game;                    // +0x40 (second argument)
     void*                 Data;                    // +0x44 (first argument)

@@ -1,9 +1,6 @@
 // CGameScriptInterface::EntityBeginLoadingAnimation(const CScriptThing& thing, Value value) -- Forward the script request after the retail lifetime and type checks.
 // Leaf: ?EntityBeginLoadingAnimation@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
 // Identity: PDB exact virtual const API; script slot11 GetPThing and75 IsAlive are independently named retail004aaa60/004ab130; own callee006631c0 is CThingCreatureBase::PreloadAnimation.
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -96,5 +93,8 @@ class CScriptThing {public:
 // Layout: CThingCreatureBase is used only as an external method receiver at base offset0; no derived fields accessed.
 class CThingCreatureBase:public CThing {public:void PreloadAnimation(const CCharString&);};
 // Layout: shared CGameScriptInterface is a flattened vptr POD; real virtual declaration below preserves calling convention. No owner fields are accessed; body reserves retail0x50 bytes.
-class CGameScriptInterface {public:virtual void EntityBeginLoadingAnimation(const CScriptThing& thing,const CCharString& value)const;unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntityBeginLoadingAnimation(const CScriptThing& thing,const CCharString& value)const{if(thing.IsAlive()){CThing* p=thing.GetPThing();if(p->ThingTypeFlags&8)((CThingCreatureBase*)p)->PreloadAnimation(value);}}

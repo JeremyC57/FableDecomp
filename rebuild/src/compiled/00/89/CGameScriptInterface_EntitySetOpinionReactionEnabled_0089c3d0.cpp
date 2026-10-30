@@ -1,9 +1,6 @@
 // CGameScriptInterface::EntitySetOpinionReactionEnabled(const CScriptThing& thing,EOpinionReactionType type,bool enabled) const -- Set one opinion mask flag.
 // Leaf: ?EntitySetOpinionReactionEnabled@CGameScriptInterface@@UBEXABVCScriptThing@@W4EOpinionReactionType@@_N@Z
 // Identity: PDB exact enum/virtual const API; original ReactionMask shared-header member. Retail is a12-byte vector of byte bools, not a packed-bit specialization (indexed byte store).
-#define CGameScriptInterface CGameScriptInterface_HeaderLayout
-#include "engine/CGameScriptInterface.h"
-#undef CGameScriptInterface
 #define CScriptThing CScriptThing_HeaderLayout
 #include "engine/CScriptThing.h"
 #undef CScriptThing
@@ -113,5 +110,8 @@ class CScriptThing {public:
 #include "engine/CTCCreatureOpinionOfHero.h"
 enum EOpinionDeedType {OPINION_DEED_TEST=1};enum EOpinionAttitudeType{OPINION_ATTITUDE_TEST=1};enum EOpinionReactionType{OPINION_REACTION_TEST=1};
 // Layout: use shared opinion header opaque container storage via its actual STLport vector<bool> type; offsets+0x24,+0x30,+0x3c are confirmed directly. Script owner fields unused, real virtual declaration restores API.
-class CGameScriptInterface {public:virtual void EntitySetOpinionReactionEnabled(const CScriptThing& thing,EOpinionReactionType type,bool enabled)const;unsigned char OwnerFields[0x4c];};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
 void CGameScriptInterface::EntitySetOpinionReactionEnabled(const CScriptThing& thing,EOpinionReactionType type,bool enabled)const{CThing* p=thing.GetPThing();if(p){CTCCreatureOpinionOfHero* component;if(p->GetTC((ETCInterfaceType)79,&component))(*reinterpret_cast<std::vector<bool>*>(component->ReactionMask))[type]=enabled;}}

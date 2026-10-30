@@ -70,13 +70,9 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 #include "engine/CGameScriptInterface.h"
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
-class CScriptBase { public:                                    // retail 0x40 bytes
-    unsigned char _body[0x40];
-    __forceinline void SpawnFunction(CSpawnedFuncBase* func, const char* regionName = "") { AddSpawnedFunction(func, CCharString(regionName)); }
-public:
-    void AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&);   // 0x00CB7E50
-    bool IsActiveThreadTerminating();   // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#include "engine/CScriptBase.h"
 namespace NScript {
 class CQ_HangingTreeEvilScript : public CScriptBase {
 public:
@@ -112,8 +108,8 @@ void CQ_HangingTreeEvilScript::SpawnParty(long count, const CScriptThing& spawnP
     }
     if (IsActiveThreadTerminating())
         return;
-    SpawnFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("WatchForHeroNearExit", 0, this, &CQ_HangingTreeEvilScript::WatchForHeroNearExit));
-    SpawnFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("MonitorBanditRegion", 0, this, &CQ_HangingTreeEvilScript::MonitorBanditRegion));
-    SpawnFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("CheckBanditFollowStatus", 0, this, &CQ_HangingTreeEvilScript::CheckBanditFollowStatus));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("WatchForHeroNearExit", 0, this, &CQ_HangingTreeEvilScript::WatchForHeroNearExit), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("MonitorBanditRegion", 0, this, &CQ_HangingTreeEvilScript::MonitorBanditRegion), CCharString(""));
+    AddSpawnedFunction(new CSpawnedFunc<CQ_HangingTreeEvilScript>("CheckBanditFollowStatus", 0, this, &CQ_HangingTreeEvilScript::CheckBanditFollowStatus), CCharString(""));
 }
 }

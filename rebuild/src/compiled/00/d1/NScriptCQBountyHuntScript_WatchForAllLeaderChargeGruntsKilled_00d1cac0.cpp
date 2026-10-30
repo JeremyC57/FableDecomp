@@ -58,11 +58,10 @@ class CGameScriptInterface { public:                       // CGameScriptInterfa
     virtual long GetAllThingsWithScriptName(const CCharString& name, CScriptThingVector& things) const;   // slot 75 (+0x12c) CGameScriptInterface::GetAllThingsWithScriptName @ 0x008A8570
 };
 
-class CScriptBase { public:                                        // retail 0x40 bytes (PDB 0x54: debug containers)
-    virtual void v00();
-    unsigned char _body[0x3c];
-    bool IsActiveThreadTerminating();                       // 0x00CB7940
-};
+// CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"
 
 struct CQuestScriptBase : CScriptBase {                     // retail 0x48 bytes
     CGameScriptInterface* GSI;                              // +0x40
