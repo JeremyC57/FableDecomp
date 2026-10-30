@@ -365937,6 +365937,1878 @@ $catalog = @(
         TestSource = '00/cb/std_unguardedpartition_00cbb710_test.cpp'
         PassPattern = '00cbb710_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00401011'
+        Module = '_global'
+        Source = '00/40/global_check_managed_app_00401011.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00401266'
+        Module = '_global'
+        Source = '00/40/global_cexit_00401266.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '0040126c'
+        Module = '_global'
+        Source = '00/40/global_exit_0040126c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00401272'
+        Module = '_global'
+        Source = '00/40/global_XcptFilter_00401272.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00401278'
+        Module = '_global'
+        Source = '00/40/global_ismbblead_00401278.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '0040127e'
+        Module = '_global'
+        Source = '00/40/global_cexit_0040127e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00401290'
+        Module = '_global'
+        Source = '00/40/global_getmainargs_00401290.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '0040136e'
+        Module = '_global'
+        Source = '00/40/global_setusermatherr_0040136e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '0040137a'
+        Module = '_global'
+        Source = '00/40/global_pcommode_0040137a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00401380'
+        Module = '_global'
+        Source = '00/40/global_pfmode_00401380.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00401386'
+        Module = '_global'
+        Source = '00/40/global_setapptype_00401386.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '004013d8'
+        Module = '_global'
+        Source = '00/40/global_excepthandler3_004013d8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '004013ea'
+        Module = '_global'
+        Source = '00/40/global_GetModuleHandleA_004013ea.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '004013f0'
+        Module = '_global'
+        Source = '00/40/global_GetStartupInfoA_004013f0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfe960'
+        Module = '_global'
+        Source = '00/bf/global_typeinfo_00bfe960.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfe96b'
+        Module = '_global'
+        Source = '00/bf/global_typeinfovectordeletingdestructor_00bfe96b.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfedd6'
+        Module = '_global'
+        Source = '00/bf/global_calloc_00bfedd6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfeddc'
+        Module = '_global'
+        Source = '00/bf/global_realloc_00bfeddc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfee68'
+        Module = '_global'
+        Source = '00/bf/global_ArrayUnwindFilter_00bfee68.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfef3e'
+        Module = '_global'
+        Source = '00/bf/global_securityinitcookie_00bfef3e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfefaa'
+        Module = '_global'
+        Source = '00/bf/global_terminateYAXXZ_00bfefaa.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00bfefe6'
+        Module = '_global'
+        Source = '00/bf/global_D3DXLoadVolumeFromMemory_00bfefe6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c003e0'
+        Module = '_global'
+        Source = '00/c0/global_timeGetTime_00c003e0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c003e6'
+        Module = '_global'
+        Source = '00/c0/global_115_00c003e6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c003f2'
+        Module = '_global'
+        Source = '00/c0/global_18_00c003f2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c003f8'
+        Module = '_global'
+        Source = '00/c0/global_12_00c003f8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c003fe'
+        Module = '_global'
+        Source = '00/c0/global_19_00c003fe.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00404'
+        Module = '_global'
+        Source = '00/c0/global_52_00c00404.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c0040a'
+        Module = '_global'
+        Source = '00/c0/global_10_00c0040a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00410'
+        Module = '_global'
+        Source = '00/c0/global_2_00c00410.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00416'
+        Module = '_global'
+        Source = '00/c0/global_9_00c00416.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c0041c'
+        Module = '_global'
+        Source = '00/c0/global_23_00c0041c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00422'
+        Module = '_global'
+        Source = '00/c0/global_111_00c00422.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00428'
+        Module = '_global'
+        Source = '00/c0/global_15_00c00428.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c0042e'
+        Module = '_global'
+        Source = '00/c0/global_11_00c0042e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00434'
+        Module = '_global'
+        Source = '00/c0/global_3_00c00434.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c0043a'
+        Module = '_global'
+        Source = '00/c0/global_13_00c0043a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00440'
+        Module = '_global'
+        Source = '00/c0/global_21_00c00440.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00446'
+        Module = '_global'
+        Source = '00/c0/global_1_00c00446.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c0044c'
+        Module = '_global'
+        Source = '00/c0/global_20_00c0044c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00452'
+        Module = '_global'
+        Source = '00/c0/global_16_00c00452.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c00458'
+        Module = '_global'
+        Source = '00/c0/global_17_00c00458.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c0045e'
+        Module = '_global'
+        Source = '00/c0/global_4_00c0045e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c716c6'
+        Module = '_global'
+        Source = '00/c7/global_waveOutGetDevCapsA_00c716c6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c716cc'
+        Module = '_global'
+        Source = '00/c7/global_waveOutMessage_00c716cc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c73632'
+        Module = '_global'
+        Source = '00/c7/global_waveOutGetNumDevs_00c73632.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c73638'
+        Module = '_global'
+        Source = '00/c7/global_waveOutClose_00c73638.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c7363e'
+        Module = '_global'
+        Source = '00/c7/global_waveOutUnprepareHeader_00c7363e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c73644'
+        Module = '_global'
+        Source = '00/c7/global_waveOutReset_00c73644.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c7364a'
+        Module = '_global'
+        Source = '00/c7/global_waveOutWrite_00c7364a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c73650'
+        Module = '_global'
+        Source = '00/c7/global_waveOutPrepareHeader_00c73650.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c73656'
+        Module = '_global'
+        Source = '00/c7/global_waveOutOpen_00c73656.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87fd0'
+        Module = '_global'
+        Source = '00/c8/global_mixerGetControlDetailsA_00c87fd0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87fd6'
+        Module = '_global'
+        Source = '00/c8/global_mixerGetLineControlsA_00c87fd6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87fdc'
+        Module = '_global'
+        Source = '00/c8/global_mixerGetLineInfoA_00c87fdc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87fe2'
+        Module = '_global'
+        Source = '00/c8/global_mixerOpen_00c87fe2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87fe8'
+        Module = '_global'
+        Source = '00/c8/global_mixerGetDevCapsA_00c87fe8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87fee'
+        Module = '_global'
+        Source = '00/c8/global_mixerGetNumDevs_00c87fee.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87ff4'
+        Module = '_global'
+        Source = '00/c8/global_mixerClose_00c87ff4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00c87ffa'
+        Module = '_global'
+        Source = '00/c8/global_mixerSetControlDetails_00c87ffa.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb556a'
+        Module = '_global'
+        Source = '00/cb/global_ImmGetCandidateListW_00cb556a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5570'
+        Module = '_global'
+        Source = '00/cb/global_ImmGetCompositionStringW_00cb5570.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5576'
+        Module = '_global'
+        Source = '00/cb/global_ImmSetOpenStatus_00cb5576.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb557c'
+        Module = '_global'
+        Source = '00/cb/global_ImmSimulateHotKey_00cb557c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5594'
+        Module = '_global'
+        Source = '00/cb/global_GetProcAddress_00cb5594.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb559a'
+        Module = '_global'
+        Source = '00/cb/global_LoadLibraryA_00cb559a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55a0'
+        Module = '_global'
+        Source = '00/cb/global_FreeLibrary_00cb55a0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55a6'
+        Module = '_global'
+        Source = '00/cb/global_LoadLibraryW_00cb55a6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55ac'
+        Module = '_global'
+        Source = '00/cb/global_DeleteFileW_00cb55ac.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55b2'
+        Module = '_global'
+        Source = '00/cb/global_CloseHandle_00cb55b2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55b8'
+        Module = '_global'
+        Source = '00/cb/global_CreateFileW_00cb55b8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55be'
+        Module = '_global'
+        Source = '00/cb/global_CreateMutexW_00cb55be.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55c4'
+        Module = '_global'
+        Source = '00/cb/global_OpenMutexW_00cb55c4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55ca'
+        Module = '_global'
+        Source = '00/cb/global_GlobalMemoryStatus_00cb55ca.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55d0'
+        Module = '_global'
+        Source = '00/cb/global_Sleep_00cb55d0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55d6'
+        Module = '_global'
+        Source = '00/cb/global_GetSystemTime_00cb55d6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55dc'
+        Module = '_global'
+        Source = '00/cb/global_OutputDebugStringW_00cb55dc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55e2'
+        Module = '_global'
+        Source = '00/cb/global_LeaveCriticalSection_00cb55e2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55e8'
+        Module = '_global'
+        Source = '00/cb/global_EnterCriticalSection_00cb55e8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55ee'
+        Module = '_global'
+        Source = '00/cb/global_WaitForSingleObjectEx_00cb55ee.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55f4'
+        Module = '_global'
+        Source = '00/cb/global_QueryPerformanceFrequency_00cb55f4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb55fa'
+        Module = '_global'
+        Source = '00/cb/global_QueryPerformanceCounter_00cb55fa.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5600'
+        Module = '_global'
+        Source = '00/cb/global_GetTickCount_00cb5600.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5606'
+        Module = '_global'
+        Source = '00/cb/global_GlobalFree_00cb5606.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb560c'
+        Module = '_global'
+        Source = '00/cb/global_ReadFileEx_00cb560c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5612'
+        Module = '_global'
+        Source = '00/cb/global_GetFileSize_00cb5612.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5618'
+        Module = '_global'
+        Source = '00/cb/global_SetEndOfFile_00cb5618.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb561e'
+        Module = '_global'
+        Source = '00/cb/global_SetFilePointer_00cb561e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5624'
+        Module = '_global'
+        Source = '00/cb/global_DeleteCriticalSection_00cb5624.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb562a'
+        Module = '_global'
+        Source = '00/cb/global_SetEvent_00cb562a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5630'
+        Module = '_global'
+        Source = '00/cb/global_SleepEx_00cb5630.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5636'
+        Module = '_global'
+        Source = '00/cb/global_WriteFileEx_00cb5636.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb563c'
+        Module = '_global'
+        Source = '00/cb/global_GlobalAlloc_00cb563c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5642'
+        Module = '_global'
+        Source = '00/cb/global_SetThreadPriority_00cb5642.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5648'
+        Module = '_global'
+        Source = '00/cb/global_GetCurrentThread_00cb5648.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb564e'
+        Module = '_global'
+        Source = '00/cb/global_CreateEventW_00cb564e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5654'
+        Module = '_global'
+        Source = '00/cb/global_InitializeCriticalSection_00cb5654.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb565a'
+        Module = '_global'
+        Source = '00/cb/global_GetModuleFileNameW_00cb565a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5660'
+        Module = '_global'
+        Source = '00/cb/global_GetFileAttributesW_00cb5660.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5666'
+        Module = '_global'
+        Source = '00/cb/global_GetFileAttributesExW_00cb5666.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb566c'
+        Module = '_global'
+        Source = '00/cb/global_SetFileAttributesW_00cb566c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5672'
+        Module = '_global'
+        Source = '00/cb/global_GetDiskFreeSpaceExW_00cb5672.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5678'
+        Module = '_global'
+        Source = '00/cb/global_GetFileInformationByHandle_00cb5678.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb567e'
+        Module = '_global'
+        Source = '00/cb/global_FlushFileBuffers_00cb567e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5684'
+        Module = '_global'
+        Source = '00/cb/global_ReadFile_00cb5684.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb568a'
+        Module = '_global'
+        Source = '00/cb/global_WriteFile_00cb568a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5690'
+        Module = '_global'
+        Source = '00/cb/global_OutputDebugStringA_00cb5690.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5696'
+        Module = '_global'
+        Source = '00/cb/global_EnumResourceNamesA_00cb5696.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb569c'
+        Module = '_global'
+        Source = '00/cb/global_WideCharToMultiByte_00cb569c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56a2'
+        Module = '_global'
+        Source = '00/cb/global_LockResource_00cb56a2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56a8'
+        Module = '_global'
+        Source = '00/cb/global_LoadResource_00cb56a8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56ae'
+        Module = '_global'
+        Source = '00/cb/global_FindResourceExA_00cb56ae.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56b4'
+        Module = '_global'
+        Source = '00/cb/global_lstrlenA_00cb56b4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56ba'
+        Module = '_global'
+        Source = '00/cb/global_lstrcatA_00cb56ba.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56c0'
+        Module = '_global'
+        Source = '00/cb/global_lstrcpyA_00cb56c0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56c6'
+        Module = '_global'
+        Source = '00/cb/global_ExitProcess_00cb56c6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56cc'
+        Module = '_global'
+        Source = '00/cb/global_GetCurrentDirectoryA_00cb56cc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56d2'
+        Module = '_global'
+        Source = '00/cb/global_GetCommandLineW_00cb56d2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56d8'
+        Module = '_global'
+        Source = '00/cb/global_SetPriorityClass_00cb56d8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56de'
+        Module = '_global'
+        Source = '00/cb/global_GetCurrentProcess_00cb56de.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56e4'
+        Module = '_global'
+        Source = '00/cb/global_ConvertThreadToFiber_00cb56e4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56ea'
+        Module = '_global'
+        Source = '00/cb/global_SetFileTime_00cb56ea.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56f0'
+        Module = '_global'
+        Source = '00/cb/global_GetFileTime_00cb56f0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56f6'
+        Module = '_global'
+        Source = '00/cb/global_GetFileSizeEx_00cb56f6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb56fc'
+        Module = '_global'
+        Source = '00/cb/global_GetLastError_00cb56fc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5702'
+        Module = '_global'
+        Source = '00/cb/global_RemoveDirectoryW_00cb5702.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5708'
+        Module = '_global'
+        Source = '00/cb/global_FileTimeToSystemTime_00cb5708.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb570e'
+        Module = '_global'
+        Source = '00/cb/global_SystemTimeToFileTime_00cb570e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5714'
+        Module = '_global'
+        Source = '00/cb/global_CreateFileA_00cb5714.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb571a'
+        Module = '_global'
+        Source = '00/cb/global_VirtualAlloc_00cb571a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5720'
+        Module = '_global'
+        Source = '00/cb/global_VirtualFree_00cb5720.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5726'
+        Module = '_global'
+        Source = '00/cb/global_GetProcessHeap_00cb5726.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb572c'
+        Module = '_global'
+        Source = '00/cb/global_InterlockedDecrement_00cb572c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5732'
+        Module = '_global'
+        Source = '00/cb/global_InterlockedIncrement_00cb5732.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5738'
+        Module = '_global'
+        Source = '00/cb/global_TryEnterCriticalSection_00cb5738.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb573e'
+        Module = '_global'
+        Source = '00/cb/global_GetTimeFormatW_00cb573e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5744'
+        Module = '_global'
+        Source = '00/cb/global_GetDateFormatW_00cb5744.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb574a'
+        Module = '_global'
+        Source = '00/cb/global_GetUserDefaultLCID_00cb574a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5750'
+        Module = '_global'
+        Source = '00/cb/global_FileTimeToLocalFileTime_00cb5750.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5756'
+        Module = '_global'
+        Source = '00/cb/global_GetSystemDefaultLangID_00cb5756.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb575c'
+        Module = '_global'
+        Source = '00/cb/global_GetCPInfoExA_00cb575c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5762'
+        Module = '_global'
+        Source = '00/cb/global_GetVersionExA_00cb5762.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5768'
+        Module = '_global'
+        Source = '00/cb/global_MultiByteToWideChar_00cb5768.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb576e'
+        Module = '_global'
+        Source = '00/cb/global_LocalFree_00cb576e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5774'
+        Module = '_global'
+        Source = '00/cb/global_FormatMessageW_00cb5774.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb577a'
+        Module = '_global'
+        Source = '00/cb/global_VirtualQuery_00cb577a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5780'
+        Module = '_global'
+        Source = '00/cb/global_HeapSize_00cb5780.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5786'
+        Module = '_global'
+        Source = '00/cb/global_HeapAlloc_00cb5786.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb578c'
+        Module = '_global'
+        Source = '00/cb/global_HeapFree_00cb578c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5792'
+        Module = '_global'
+        Source = '00/cb/global_GetCurrentThreadId_00cb5792.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5798'
+        Module = '_global'
+        Source = '00/cb/global_GetCurrentProcessId_00cb5798.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb579e'
+        Module = '_global'
+        Source = '00/cb/global_GetSystemTimeAsFileTime_00cb579e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57a4'
+        Module = '_global'
+        Source = '00/cb/global_DebugBreak_00cb57a4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57aa'
+        Module = '_global'
+        Source = '00/cb/global_CreateThread_00cb57aa.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57b0'
+        Module = '_global'
+        Source = '00/cb/global_CreateSemaphoreA_00cb57b0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57b6'
+        Module = '_global'
+        Source = '00/cb/global_WaitForSingleObject_00cb57b6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57bc'
+        Module = '_global'
+        Source = '00/cb/global_ReleaseSemaphore_00cb57bc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57c2'
+        Module = '_global'
+        Source = '00/cb/global_FindClose_00cb57c2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57c8'
+        Module = '_global'
+        Source = '00/cb/global_FindFirstFileA_00cb57c8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57ce'
+        Module = '_global'
+        Source = '00/cb/global_GetSystemDirectoryA_00cb57ce.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57d4'
+        Module = '_global'
+        Source = '00/cb/global_DeviceIoControl_00cb57d4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57da'
+        Module = '_global'
+        Source = '00/cb/global_CreateEventA_00cb57da.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57e0'
+        Module = '_global'
+        Source = '00/cb/global_WaitForMultipleObjects_00cb57e0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57e6'
+        Module = '_global'
+        Source = '00/cb/global_GetVersion_00cb57e6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57ec'
+        Module = '_global'
+        Source = '00/cb/global_ResetEvent_00cb57ec.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57f2'
+        Module = '_global'
+        Source = '00/cb/global_lstrcmpW_00cb57f2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57f8'
+        Module = '_global'
+        Source = '00/cb/global_lstrcpyW_00cb57f8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb57fe'
+        Module = '_global'
+        Source = '00/cb/global_MulDiv_00cb57fe.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5804'
+        Module = '_global'
+        Source = '00/cb/global_lstrcpynW_00cb5804.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb580a'
+        Module = '_global'
+        Source = '00/cb/global_lstrlenW_00cb580a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5810'
+        Module = '_global'
+        Source = '00/cb/global_GetSystemInfo_00cb5810.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5816'
+        Module = '_global'
+        Source = '00/cb/global_DuplicateHandle_00cb5816.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb581c'
+        Module = '_global'
+        Source = '00/cb/global_CreateSemaphoreW_00cb581c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5822'
+        Module = '_global'
+        Source = '00/cb/global_GetModuleHandleW_00cb5822.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5828'
+        Module = '_global'
+        Source = '00/cb/global_lstrcmpiW_00cb5828.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb582e'
+        Module = '_global'
+        Source = '00/cb/global_InterlockedExchange_00cb582e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5834'
+        Module = '_global'
+        Source = '00/cb/global_GetThreadPriority_00cb5834.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb583a'
+        Module = '_global'
+        Source = '00/cb/global_GetVersionExW_00cb583a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5840'
+        Module = '_global'
+        Source = '00/cb/global_CompareStringA_00cb5840.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5846'
+        Module = '_global'
+        Source = '00/cb/global_IsDBCSLeadByteEx_00cb5846.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb584c'
+        Module = '_global'
+        Source = '00/cb/global_GetLocaleInfoA_00cb584c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5852'
+        Module = '_global'
+        Source = '00/cb/global_lstrcatW_00cb5852.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5858'
+        Module = '_global'
+        Source = '00/cb/global_MessageBoxA_00cb5858.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb585e'
+        Module = '_global'
+        Source = '00/cb/global_MessageBoxW_00cb585e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5864'
+        Module = '_global'
+        Source = '00/cb/global_GetAsyncKeyState_00cb5864.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb586a'
+        Module = '_global'
+        Source = '00/cb/global_wsprintfA_00cb586a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5870'
+        Module = '_global'
+        Source = '00/cb/global_LoadStringA_00cb5870.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5876'
+        Module = '_global'
+        Source = '00/cb/global_DialogBoxIndirectParamA_00cb5876.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb587c'
+        Module = '_global'
+        Source = '00/cb/global_DialogBoxParamA_00cb587c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5882'
+        Module = '_global'
+        Source = '00/cb/global_RemovePropA_00cb5882.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5888'
+        Module = '_global'
+        Source = '00/cb/global_SetWindowLongA_00cb5888.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb588e'
+        Module = '_global'
+        Source = '00/cb/global_CallWindowProcA_00cb588e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5894'
+        Module = '_global'
+        Source = '00/cb/global_GetPropA_00cb5894.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb589a'
+        Module = '_global'
+        Source = '00/cb/global_SendMessageA_00cb589a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58a0'
+        Module = '_global'
+        Source = '00/cb/global_SetCursor_00cb58a0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58a6'
+        Module = '_global'
+        Source = '00/cb/global_LoadCursorA_00cb58a6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58ac'
+        Module = '_global'
+        Source = '00/cb/global_ReleaseCapture_00cb58ac.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58b2'
+        Module = '_global'
+        Source = '00/cb/global_PtInRect_00cb58b2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58b8'
+        Module = '_global'
+        Source = '00/cb/global_ClientToScreen_00cb58b8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58be'
+        Module = '_global'
+        Source = '00/cb/global_GetWindowRect_00cb58be.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58c4'
+        Module = '_global'
+        Source = '00/cb/global_SetCapture_00cb58c4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58ca'
+        Module = '_global'
+        Source = '00/cb/global_InvalidateRect_00cb58ca.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58d0'
+        Module = '_global'
+        Source = '00/cb/global_GetCapture_00cb58d0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58d6'
+        Module = '_global'
+        Source = '00/cb/global_GetWindowLongA_00cb58d6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58dc'
+        Module = '_global'
+        Source = '00/cb/global_SetPropA_00cb58dc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58e2'
+        Module = '_global'
+        Source = '00/cb/global_GetParent_00cb58e2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58e8'
+        Module = '_global'
+        Source = '00/cb/global_EnableWindow_00cb58e8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58ee'
+        Module = '_global'
+        Source = '00/cb/global_GetDlgItem_00cb58ee.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58f4'
+        Module = '_global'
+        Source = '00/cb/global_SetDlgItemTextA_00cb58f4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb58fa'
+        Module = '_global'
+        Source = '00/cb/global_SetWindowTextA_00cb58fa.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5900'
+        Module = '_global'
+        Source = '00/cb/global_MoveWindow_00cb5900.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5906'
+        Module = '_global'
+        Source = '00/cb/global_GetClientRect_00cb5906.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb590c'
+        Module = '_global'
+        Source = '00/cb/global_GetDesktopWindow_00cb590c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5912'
+        Module = '_global'
+        Source = '00/cb/global_DestroyWindow_00cb5912.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5918'
+        Module = '_global'
+        Source = '00/cb/global_EndDialog_00cb5918.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb591e'
+        Module = '_global'
+        Source = '00/cb/global_IsDlgButtonChecked_00cb591e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5924'
+        Module = '_global'
+        Source = '00/cb/global_UnregisterClassA_00cb5924.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb592a'
+        Module = '_global'
+        Source = '00/cb/global_ShowCursor_00cb592a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5930'
+        Module = '_global'
+        Source = '00/cb/global_ShowWindow_00cb5930.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5936'
+        Module = '_global'
+        Source = '00/cb/global_CreateWindowExA_00cb5936.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb593c'
+        Module = '_global'
+        Source = '00/cb/global_RegisterClassExA_00cb593c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5942'
+        Module = '_global'
+        Source = '00/cb/global_LoadIconA_00cb5942.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5948'
+        Module = '_global'
+        Source = '00/cb/global_DefWindowProcA_00cb5948.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb594e'
+        Module = '_global'
+        Source = '00/cb/global_DispatchMessageW_00cb594e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5954'
+        Module = '_global'
+        Source = '00/cb/global_TranslateMessage_00cb5954.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb595a'
+        Module = '_global'
+        Source = '00/cb/global_PeekMessageW_00cb595a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5960'
+        Module = '_global'
+        Source = '00/cb/global_GetSysColor_00cb5960.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5966'
+        Module = '_global'
+        Source = '00/cb/global_GetForegroundWindow_00cb5966.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb596c'
+        Module = '_global'
+        Source = '00/cb/global_DefWindowProcW_00cb596c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5972'
+        Module = '_global'
+        Source = '00/cb/global_WaitMessage_00cb5972.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5978'
+        Module = '_global'
+        Source = '00/cb/global_UpdateWindow_00cb5978.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb597e'
+        Module = '_global'
+        Source = '00/cb/global_CreateWindowExW_00cb597e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5984'
+        Module = '_global'
+        Source = '00/cb/global_GetSystemMetrics_00cb5984.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb598a'
+        Module = '_global'
+        Source = '00/cb/global_RegisterClassExW_00cb598a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5990'
+        Module = '_global'
+        Source = '00/cb/global_LoadIconW_00cb5990.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5996'
+        Module = '_global'
+        Source = '00/cb/global_LoadCursorW_00cb5996.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb599c'
+        Module = '_global'
+        Source = '00/cb/global_CharNextExA_00cb599c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59a2'
+        Module = '_global'
+        Source = '00/cb/global_SetCursorPos_00cb59a2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59a8'
+        Module = '_global'
+        Source = '00/cb/global_OffsetRect_00cb59a8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59ae'
+        Module = '_global'
+        Source = '00/cb/global_GetCursorPos_00cb59ae.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59b4'
+        Module = '_global'
+        Source = '00/cb/global_PostThreadMessageW_00cb59b4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59ba'
+        Module = '_global'
+        Source = '00/cb/global_GetQueueStatus_00cb59ba.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59c0'
+        Module = '_global'
+        Source = '00/cb/global_MsgWaitForMultipleObjects_00cb59c0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59c6'
+        Module = '_global'
+        Source = '00/cb/global_wvsprintfW_00cb59c6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59cc'
+        Module = '_global'
+        Source = '00/cb/global_wsprintfW_00cb59cc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59d2'
+        Module = '_global'
+        Source = '00/cb/global_RegisterWindowMessageW_00cb59d2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59d8'
+        Module = '_global'
+        Source = '00/cb/global_GetKeyState_00cb59d8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59de'
+        Module = '_global'
+        Source = '00/cb/global_PostQuitMessage_00cb59de.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59e4'
+        Module = '_global'
+        Source = '00/cb/global_GetMessageA_00cb59e4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59ea'
+        Module = '_global'
+        Source = '00/cb/global_DispatchMessageA_00cb59ea.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59f0'
+        Module = '_global'
+        Source = '00/cb/global_PeekMessageA_00cb59f0.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59f6'
+        Module = '_global'
+        Source = '00/cb/global_GetKeyboardLayout_00cb59f6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb59fc'
+        Module = '_global'
+        Source = '00/cb/global_PostMessageA_00cb59fc.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a02'
+        Module = '_global'
+        Source = '00/cb/global_GetFocus_00cb5a02.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a08'
+        Module = '_global'
+        Source = '00/cb/global_GetCaretBlinkTime_00cb5a08.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a0e'
+        Module = '_global'
+        Source = '00/cb/global_SendMessageW_00cb5a0e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a14'
+        Module = '_global'
+        Source = '00/cb/global_IsWindowUnicode_00cb5a14.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a1a'
+        Module = '_global'
+        Source = '00/cb/global_SetTextColor_00cb5a1a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a20'
+        Module = '_global'
+        Source = '00/cb/global_DeleteObject_00cb5a20.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a26'
+        Module = '_global'
+        Source = '00/cb/global_CreateFontIndirectA_00cb5a26.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a2c'
+        Module = '_global'
+        Source = '00/cb/global_GetObjectA_00cb5a2c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a32'
+        Module = '_global'
+        Source = '00/cb/global_GetStockObject_00cb5a32.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a38'
+        Module = '_global'
+        Source = '00/cb/global_RegCreateKeyExW_00cb5a38.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a3e'
+        Module = '_global'
+        Source = '00/cb/global_RegCloseKey_00cb5a3e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a44'
+        Module = '_global'
+        Source = '00/cb/global_RegQueryValueExW_00cb5a44.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a4a'
+        Module = '_global'
+        Source = '00/cb/global_RegSetValueExW_00cb5a4a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a50'
+        Module = '_global'
+        Source = '00/cb/global_RegDeleteValueW_00cb5a50.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a56'
+        Module = '_global'
+        Source = '00/cb/global_RegQueryValueExA_00cb5a56.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a5c'
+        Module = '_global'
+        Source = '00/cb/global_RegOpenKeyExA_00cb5a5c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a62'
+        Module = '_global'
+        Source = '00/cb/global_RegSetValueExA_00cb5a62.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a68'
+        Module = '_global'
+        Source = '00/cb/global_RegCreateKeyExA_00cb5a68.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a6e'
+        Module = '_global'
+        Source = '00/cb/global_SHGetFolderPathW_00cb5a6e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a74'
+        Module = '_global'
+        Source = '00/cb/global_ShellExecuteA_00cb5a74.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a7a'
+        Module = '_global'
+        Source = '00/cb/global_CoInitialize_00cb5a7a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a80'
+        Module = '_global'
+        Source = '00/cb/global_CoCreateInstance_00cb5a80.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a86'
+        Module = '_global'
+        Source = '00/cb/global_CoUninitialize_00cb5a86.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a8c'
+        Module = '_global'
+        Source = '00/cb/global_CoInitializeEx_00cb5a8c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a92'
+        Module = '_global'
+        Source = '00/cb/global_CoTaskMemAlloc_00cb5a92.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a98'
+        Module = '_global'
+        Source = '00/cb/global_CoFreeUnusedLibraries_00cb5a98.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5a9e'
+        Module = '_global'
+        Source = '00/cb/global_CoTaskMemFree_00cb5a9e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5aa4'
+        Module = '_global'
+        Source = '00/cb/global_2_00cb5aa4.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00cb5aaa'
+        Module = '_global'
+        Source = '00/cb/global_6_00cb5aaa.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fbf8'
+        Module = '_global'
+        Source = '00/f3/global_mbschr_00f3fbf8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fbfe'
+        Module = '_global'
+        Source = '00/f3/global_mbscspn_00f3fbfe.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc04'
+        Module = '_global'
+        Source = '00/f3/global_mbspbrk_00f3fc04.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc0a'
+        Module = '_global'
+        Source = '00/f3/global_mbsrchr_00f3fc0a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc10'
+        Module = '_global'
+        Source = '00/f3/global_mbsspn_00f3fc10.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc16'
+        Module = '_global'
+        Source = '00/f3/global_mbsstr_00f3fc16.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc1c'
+        Module = '_global'
+        Source = '00/f3/global_mbsnbcmp_00f3fc1c.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc22'
+        Module = '_global'
+        Source = '00/f3/global_mbsinc_00f3fc22.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc28'
+        Module = '_global'
+        Source = '00/f3/global_mbclen_00f3fc28.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc2e'
+        Module = '_global'
+        Source = '00/f3/global_ismbcdigit_00f3fc2e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc34'
+        Module = '_global'
+        Source = '00/f3/global_ismbcspace_00f3fc34.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc3a'
+        Module = '_global'
+        Source = '00/f3/global_1exceptionUAEXZ_00f3fc3a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc40'
+        Module = '_global'
+        Source = '00/f3/global_0exceptionQAEXZ_00f3fc40.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fc46'
+        Module = '_global'
+        Source = '00/f3/global_0exceptionQAEABV0Z_00f3fc46.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fd00'
+        Module = '_global'
+        Source = '00/f3/global_printf_00f3fd00.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fd06'
+        Module = '_global'
+        Source = '00/f3/global_errno_00f3fd06.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fd32'
+        Module = '_global'
+        Source = '00/f3/global_memchr_00f3fd32.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fd38'
+        Module = '_global'
+        Source = '00/f3/global_perror_00f3fd38.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fd3e'
+        Module = '_global'
+        Source = '00/f3/global_ldexp_00f3fd3e.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fd44'
+        Module = '_global'
+        Source = '00/f3/global_frexp_00f3fd44.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fde6'
+        Module = '_global'
+        Source = '00/f3/global_0basicstringDUchartraitsDstdVallocatorD2_00f3fde6.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fdec'
+        Module = '_global'
+        Source = '00/f3/global_1basicstringDUchartraitsDstdVallocatorD2_00f3fdec.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fdf2'
+        Module = '_global'
+        Source = '00/f3/global_0basicstringDUchartraitsDstdVallocatorD2_00f3fdf2.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fdf8'
+        Module = '_global'
+        Source = '00/f3/global_timeKillEvent_00f3fdf8.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fdfe'
+        Module = '_global'
+        Source = '00/f3/global_timeBeginPeriod_00f3fdfe.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fe04'
+        Module = '_global'
+        Source = '00/f3/global_timeEndPeriod_00f3fe04.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fe0a'
+        Module = '_global'
+        Source = '00/f3/global_timeSetEvent_00f3fe0a.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fe10'
+        Module = '_global'
+        Source = '00/f3/global_strupr_00f3fe10.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fe16'
+        Module = '_global'
+        Source = '00/f3/global_strlwr_00f3fe16.cpp'
+        Grade = 'toolchain_library'
+    }
+    [pscustomobject]@{
+        Address = '00f3fe1c'
+        Module = '_global'
+        Source = '00/f3/global_strrev_00f3fe1c.cpp'
+        Grade = 'toolchain_library'
+    }
 )
 
 $requestedAddresses = @(

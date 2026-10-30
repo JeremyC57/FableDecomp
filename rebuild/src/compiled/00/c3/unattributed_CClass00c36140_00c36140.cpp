@@ -5,8 +5,8 @@
 //
 // Retail bytes:  mov eax, dword ptr [ecx] ; push eax ; call dword ptr [0x143fe30] ; ret 
 // Tiny-body shape `DtorReleaseImport`: a destructor that passes its one handle member to a
-// `__stdcall` import (callee cleans the slot). The import's identity is a relocation; names are descriptive.
-extern "C" __declspec(dllimport) long __stdcall Import_0143fe30(void*);   // IAT slot 0x0143FE30
+// `__stdcall` import (callee cleans the slot): IAT slot 0x0143FE30 = KERNEL32.dll!CloseHandle. The class names are descriptive.
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void*);   // IAT slot 0x0143FE30
 
 struct CClass_00c36140 {
     void* m_handle;                        // +0
@@ -15,5 +15,5 @@ struct CClass_00c36140 {
 
 CClass_00c36140::~CClass_00c36140()
 {
-    Import_0143fe30(m_handle);
+    CloseHandle(m_handle);
 }

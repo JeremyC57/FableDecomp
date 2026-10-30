@@ -1,0 +1,21 @@
+Fable.exe: Rich @ 0x80-0x118 key=0xa78520e5
+ prodID  build   objs  tool / note
+0x001c   9178      1  Utc13_C
+0x005d   3077      5  Implib710 (import descriptor objects) RTM
+0x000f   3077     12  Masm710 RTM
+0x005f   2179      5  Utc1310_C
+0x0019   9210      2  Implib700
+0x005d   2067      2  Implib710 (import descriptor objects)
+0x0000      0      1  Unknown (unstamped)
+0x005f   3077     51  Utc1310_C RTM
+0x0069   2067      8  data-import objects (msvcrt.lib sdknames)
+0x005d   2179     18  Implib710 (import descriptor objects)
+0x005f   4035      4  Utc1310_C QFE-4035 <==
+0x0060   4035      1  Utc1310_CPP QFE-4035 <==
+0x005d   4035      6  Implib710 (import descriptor objects) QFE-4035 <==
+0x0001      0    422  Import0 (import-library short records)
+0x0060   3077   1369  Utc1310_CPP RTM
+0x005e   3052      1  Cvtres710 3052 (VS 2003 cvtres; the Toolkit 2003 cl is pre-RTM 3052)
+0x005a   3077      1  Linker710 RTM
+
+Objects compiled (C/C++) by build 13.10.4035 (QFE): 5; other 4035 objects (import descriptors): 6

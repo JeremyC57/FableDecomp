@@ -1,18 +1,32 @@
 address	name	module	calling_convention	return_type	parameter_count	parameter_types	prototype_complete	clean_decompile	naming_quality	agent_verdict	agent_source	lift_grade	lift_source	agent_source_path	compiled_status	behavior_test	retail_parity	compiled_source
+00401011	_check_managed_app	msvcrt.lib(crtexew.obj)	unknown	undefined	0		0			discovered	boundary							
 00401067	entry	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00401067_global_entry.cpp				
+00401266	__c_exit	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+0040126c	__exit	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00401272	__XcptFilter	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00401278	__ismbblead	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+0040127e	__cexit	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00401284	exit	_global	__cdecl	void	1	int	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_Exit_00401284.cpp
 0040128a	_amsg_exit	_global	__cdecl	void	1	int	1	yes	accepted									
+00401290	___getmainargs	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00401296	__onexit	_global	__cdecl	void	1	_onexit_t	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00401296_global_onexit.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_OnExit_00401296.cpp
 004012bc	_atexit	_global	__cdecl	int	1	_func_4879 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\global_atexit_004012bc.cpp
 004012ce	__RTC_Initialize	_global	__cdecl	void	0		1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x004012CE_global_RTC_Initialize.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_RTCInitialize_004012ce.cpp
 00401312	Init_CallFunctionPointers	_global	unknown	undefined	0		0	unmeasured	accepted									
 00401356	initterm	_global	__cdecl	void	2	void *,void *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00401356_MSVCR71.DLL_initterm.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\global_initterm_00401356.cpp
 0040135c	__setdefaultprecision	_global	__cdecl	void	0		1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x0040135C_global_setdefaultprecision.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_SetDefaultPrecision_0040135c.cpp
+0040136e	___setusermatherr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00401377	AddChildPrimitive	CEngineInternalPrimitiveBase	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CEngineInternalPrimitiveBase_AddChildPrimitive_00401377.cpp
+0040137a	___p__commode	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00401380	___p__fmode	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00401386	___set_app_type	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 0040138c	__SEH_prolog	_global	__cdecl	void	2	ulong,long	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x0040138C_global_SEH_prolog.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_SEHProlog_0040138c.cpp
 004013c7	__SEH_epilog	_global	__cdecl	void	0		1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x004013C7_global_SEH_epilog.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_SEHEpilog_004013c7.cpp
+004013d8	__except_handler3	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 004013de	__dllonexit	_global	__cdecl	_onexit_t	3	_onexit_t,_onexit_t **,_onexit_t **	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x004013DE_MSVCR71.DLL_dllonexit.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\global_dllonexit_004013de.cpp
 004013e4	_controlfp	_global	__cdecl	uint	2	uint,uint	1	yes	accepted									
+004013ea	_GetModuleHandleA@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+004013f0	_GetStartupInfoA@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
 00401400	`vector_constructor_iterator'	_global	__stdcall	void	4	void *,uint,int,_func_void_ptr_void_ptr *	1	yes	accepted									
 00401490	PeekWaterHasType	CEngineMap	__thiscall	bool	4	CEngineMap *,long,long,EWaterType	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\CEngineMap_PeekWaterHasType_00401490.cpp
 004014a0	Calc	_global	__fastcall	ulong	3	ulong,void *,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\40\Global_CCRC_Calc_004014a0.cpp
@@ -43356,6 +43370,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bfe050	LoadForeground	CLandscapeLayerMesh	__thiscall	bool	3	CLandscapeLayerMesh *,CDataInputStream *,CEngineTexturePalette *	1	yes	accepted	PASS	retry			D:\Documents\FableTLC\lift\reports\retry\code\00\bf\0x00BFE050_CLandscapeLayerMesh_LoadForeground.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\bf\CLandscapeLayerMesh_LoadForeground_00bfe050.cpp
 00bfe900	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 00bfe94c	wcscmp	_global	__cdecl	int	2	wchar_t *,wchar_t *	1	yes	accepted									
+00bfe960	??0type_info@@AAE@ABV0@@Z	msvcrt.lib(ti_inst.obj)	unknown	undefined	0		0			discovered	boundary							
+00bfe96b	??_Etype_info@@UAEPAXI@Z	msvcrt.lib(ti_inst.obj)	unknown	undefined	0		0			discovered	boundary							
 00bfe9bc	operator_delete	_global	__cdecl	void	1	void *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bf\global_operatordelete_00bfe9bc.cpp
 00bfe9c2	strncpy	_global	__cdecl	char *	3	char *,char *,size_t	1	yes	accepted									
 00bfe9c8	report_failure	_global	__cdecl	undefined	0		0	yes	accepted									
@@ -43430,18 +43446,23 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bfedc4	_CIasin	_global	unknown	undefined	0		0	yes	accepted									
 00bfedca	qsort	_global	__cdecl	void	4	void *,size_t,size_t,_PtFuncCompare *	1	yes	accepted									
 00bfedd0	vsprintf	_global	__cdecl	int	3	char *,char *,va_list	1	yes	accepted									
+00bfedd6	_calloc	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00bfeddc	_realloc	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00bfede2	iswdigit	_global	__cdecl	int	1	wint_t	1	yes	accepted									
 00bfede8	iswalpha	_global	__cdecl	int	1	wint_t	1	yes	accepted									
 00bfedee	_itow	_global	__cdecl	wchar_t *	3	int,wchar_t *,int	1	yes	accepted									
 00bfedf4	fprintf	_global	__cdecl	int	2	FILE *,char *	1	yes	accepted									
 00bfedfa	fopen	_global	__cdecl	FILE *	2	char *,char *	1	yes	accepted									
 00bfee00	__aulldiv	_global	unknown	undefined	0		0	yes	accepted									
+00bfee68	?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z	msvcrt.lib(ehvecdtr.obj)	unknown	undefined	0		0			discovered	boundary							
 00bfee7a	__ArrayUnwind	_global	__stdcall	void	4	void *,uint,int,_func_void_void_ptr *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\bf\global_ArrayUnwind_00bfee7a.cpp
 00bfeea9	sub_00bfeea9	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00bfeed8	`eh_vector_destructor_iterator'	_global	__stdcall	void	4	void *,uint,int,_func_void_void_ptr *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bf\global_ehvectordestructoriterator_00bfeed8.cpp
 00bfef20	ReleaseTexture	CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
 00bfef38	~type_info	type_info	__thiscall	void	1	type_info *	1	yes	accepted									
+00bfef3e	___security_init_cookie	msvcrt.lib(seccinit.obj)	unknown	undefined	0		0			discovered	boundary							
 00bfefa4	__security_error_handler	_global	unknown	undefined	0		0	yes	accepted									
+00bfefaa	?terminate@@YAXXZ	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00bfefb0	Direct3DCreate9	_global	unknown	undefined	0		0	yes	accepted									
 00bfefb6	D3DXSaveSurfaceToFileW	_global	unknown	undefined	0		0	yes	accepted									
 00bfefbc	D3DXLoadSurfaceFromFileW	_global	unknown	undefined	0		0	yes	accepted									
@@ -43451,10 +43472,32 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bfefd4	D3DXCreateTextureFromFileExW	_global	unknown	undefined	0		0	yes	accepted									
 00bfefda	D3DXVec3Hermite	_global	unknown	undefined	0		0	yes	accepted									
 00bfefe0	D3DXMatrixInverse	_global	unknown	undefined	0		0	yes	accepted									
+00bfefe6	_D3DXLoadVolumeFromMemory@44	d3dx9_25.dll	unknown	undefined	0		0			discovered	boundary							
 00bfefec	D3DXLoadVolumeFromVolume	_global	unknown	undefined	0		0	yes	accepted									
 00bfeff2	D3DXCreateVolumeTexture	_global	unknown	undefined	0		0	yes	accepted									
 00bfeff8	DirectInput8Create	_global	unknown	undefined	0		0	yes	accepted									
+00c003e0	_timeGetTime@0	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c003e6	_WSAStartup@8	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
 00c003ec	__WSAFDIsSet	_global	__stdcall	int	2	SOCKET,fd_set *	1	yes	accepted									
+00c003f2	_select@20	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c003f8	_ioctlsocket@12	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c003fe	_send@16	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00404	_gethostbyname@4	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c0040a	_inet_addr@4	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00410	_bind@12	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00416	_htons@4	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c0041c	_socket@12	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00422	_WSAGetLastError@0	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00428	_ntohs@4	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c0042e	_inet_ntoa@4	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00434	_closesocket@4	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c0043a	_listen@8	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00440	_setsockopt@20	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00446	_accept@12	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c0044c	_sendto@24	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00452	_recv@16	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c00458	_recvfrom@24	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
+00c0045e	_connect@12	WSOCK32.dll	unknown	undefined	0		0			discovered	boundary							
 00c00600	putShortMSB	_global	unknown	undefined	0		0	yes	accepted									
 00c00630	flush_pending	_global	unknown	undefined	0		0	yes	accepted									
 00c006a0	z_deflate	_global	__cdecl	undefined	0		0	yes	accepted									
@@ -47316,6 +47359,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c715d0	CAudioMixer::CloseAndCleanup	CAudioMixer	unknown	undefined	0		0	yes	accepted									
 00c71640	make_pair<CSkeletalMorphs::CEntry,float&>	make_pair<CSkeletalMorphs	__fastcall	pair<CSkeletalMorphs::CEntry,float>	2	CEntry *,float *	1	yes	accepted									
 00c716c0	Audio_MixerHandle_Close	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\global_AudioMixerHandleClose_00c716c0.cpp
+00c716c6	_waveOutGetDevCapsA@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c716cc	_waveOutMessage@16	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
 00c71710	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c71730	sub_00c71730	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c71740	sub_00c71740	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -47352,6 +47397,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c73340	CAudioSoundBuffer_GetPosition	_global	unknown	undefined	0		0	yes	accepted									
 00c73380	GetWaterGenerator	CEngineWaterRenderer	__thiscall	CWaterGenerator *	1	CEngineWaterRenderer *	1	yes	accepted									
 00c733d0	Audio_ApplyEffectProperties	_global	unknown	undefined	0		0	yes	accepted									
+00c73632	_waveOutGetNumDevs@0	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c73638	_waveOutClose@4	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c7363e	_waveOutUnprepareHeader@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c73644	_waveOutReset@4	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c7364a	_waveOutWrite@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c73650	_waveOutPrepareHeader@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c73656	_waveOutOpen@24	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
 00c73660	Sys_DetectOSVersion	_global	unknown	undefined	0		0	yes	accepted									
 00c73770	SetDefaultString	CDefString	__thiscall	void	2	CDefString *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CDefString_SetDefaultString_00c73770.cpp
 00c73790	CBaseIntelligentPointer	CBaseIntelligentPointer	__thiscall	undefined	1	CBaseIntelligentPointer *	0	yes	accepted									
@@ -47495,6 +47547,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c7e420	Audio_ConvolveFilter_LongVariant	_global	unknown	undefined	0		0	yes	accepted									
 00c812f0	Audio_ConvolveFilter_LongComplex	_global	unknown	undefined	0		0	yes	accepted									
 00c843f0	Audio_ConvolveFilter_LongFull	_global	unknown	undefined	0		0	yes	accepted									
+00c87fd0	_mixerGetControlDetailsA@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87fd6	_mixerGetLineControlsA@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87fdc	_mixerGetLineInfoA@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87fe2	_mixerOpen@20	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87fe8	_mixerGetDevCapsA@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87fee	_mixerGetNumDevs@0	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87ff4	_mixerClose@4	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00c87ffa	_mixerSetControlDetails@12	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
 00c88050	CAudioSource_LazyLoadAlSourcefv	_global	unknown	undefined	0		0	yes	accepted									
 00c880a0	Audio_GetProcAddress_Wrapper	_global	unknown	undefined	0		0	yes	accepted									
 00c885c0	~CAInputProcess	CAInputProcess	__thiscall	void	1	CAInputProcess *	1	yes	accepted									
@@ -48289,9 +48349,231 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cb5558	ImmIsIME	_global	__stdcall	BOOL	1	HKL	1	yes	accepted									
 00cb555e	ImmSetConversionStatus	_global	__stdcall	BOOL	3	HIMC,DWORD,DWORD	1	yes	accepted									
 00cb5564	ImmAssociateContext	_global	__stdcall	HIMC	2	HWND,HIMC	1	yes	accepted									
+00cb556a	_ImmGetCandidateListW@16	IMM32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5570	_ImmGetCompositionStringW@16	IMM32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5576	_ImmSetOpenStatus@8	IMM32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb557c	_ImmSimulateHotKey@8	IMM32.dll	unknown	undefined	0		0			discovered	boundary							
 00cb5582	VerQueryValueA	_global	__stdcall	BOOL	4	LPCVOID,LPCSTR,LPVOID *,PUINT	1	yes	accepted									
 00cb5588	GetFileVersionInfoA	_global	__stdcall	BOOL	4	LPCSTR,DWORD,DWORD,LPVOID	1	yes	accepted									
 00cb558e	GetFileVersionInfoSizeA	_global	__stdcall	DWORD	2	LPCSTR,LPDWORD	1	yes	accepted									
+00cb5594	_GetProcAddress@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb559a	_LoadLibraryA@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55a0	_FreeLibrary@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55a6	_LoadLibraryW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55ac	_DeleteFileW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55b2	_CloseHandle@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55b8	_CreateFileW@28	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55be	_CreateMutexW@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55c4	_OpenMutexW@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55ca	_GlobalMemoryStatus@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55d0	_Sleep@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55d6	_GetSystemTime@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55dc	_OutputDebugStringW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55e2	_LeaveCriticalSection@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55e8	_EnterCriticalSection@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55ee	_WaitForSingleObjectEx@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55f4	_QueryPerformanceFrequency@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb55fa	_QueryPerformanceCounter@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5600	_GetTickCount@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5606	_GlobalFree@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb560c	_ReadFileEx@20	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5612	_GetFileSize@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5618	_SetEndOfFile@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb561e	_SetFilePointer@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5624	_DeleteCriticalSection@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb562a	_SetEvent@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5630	_SleepEx@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5636	_WriteFileEx@20	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb563c	_GlobalAlloc@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5642	_SetThreadPriority@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5648	_GetCurrentThread@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb564e	_CreateEventW@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5654	_InitializeCriticalSection@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb565a	_GetModuleFileNameW@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5660	_GetFileAttributesW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5666	_GetFileAttributesExW@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb566c	_SetFileAttributesW@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5672	_GetDiskFreeSpaceExW@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5678	_GetFileInformationByHandle@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb567e	_FlushFileBuffers@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5684	_ReadFile@20	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb568a	_WriteFile@20	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5690	_OutputDebugStringA@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5696	_EnumResourceNamesA@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb569c	_WideCharToMultiByte@32	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56a2	_LockResource@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56a8	_LoadResource@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56ae	_FindResourceExA@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56b4	_lstrlenA@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56ba	_lstrcatA@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56c0	_lstrcpyA@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56c6	_ExitProcess@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56cc	_GetCurrentDirectoryA@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56d2	_GetCommandLineW@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56d8	_SetPriorityClass@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56de	_GetCurrentProcess@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56e4	_ConvertThreadToFiber@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56ea	_SetFileTime@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56f0	_GetFileTime@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56f6	_GetFileSizeEx@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb56fc	_GetLastError@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5702	_RemoveDirectoryW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5708	_FileTimeToSystemTime@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb570e	_SystemTimeToFileTime@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5714	_CreateFileA@28	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb571a	_VirtualAlloc@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5720	_VirtualFree@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5726	_GetProcessHeap@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb572c	_InterlockedDecrement@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5732	_InterlockedIncrement@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5738	_TryEnterCriticalSection@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb573e	_GetTimeFormatW@24	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5744	_GetDateFormatW@24	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb574a	_GetUserDefaultLCID@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5750	_FileTimeToLocalFileTime@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5756	_GetSystemDefaultLangID@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb575c	_GetCPInfoExA@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5762	_GetVersionExA@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5768	_MultiByteToWideChar@24	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb576e	_LocalFree@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5774	_FormatMessageW@28	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb577a	_VirtualQuery@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5780	_HeapSize@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5786	_HeapAlloc@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb578c	_HeapFree@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5792	_GetCurrentThreadId@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5798	_GetCurrentProcessId@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb579e	_GetSystemTimeAsFileTime@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57a4	_DebugBreak@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57aa	_CreateThread@24	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57b0	_CreateSemaphoreA@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57b6	_WaitForSingleObject@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57bc	_ReleaseSemaphore@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57c2	_FindClose@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57c8	_FindFirstFileA@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57ce	_GetSystemDirectoryA@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57d4	_DeviceIoControl@32	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57da	_CreateEventA@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57e0	_WaitForMultipleObjects@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57e6	_GetVersion@0	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57ec	_ResetEvent@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57f2	_lstrcmpW@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57f8	_lstrcpyW@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb57fe	_MulDiv@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5804	_lstrcpynW@12	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb580a	_lstrlenW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5810	_GetSystemInfo@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5816	_DuplicateHandle@28	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb581c	_CreateSemaphoreW@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5822	_GetModuleHandleW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5828	_lstrcmpiW@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb582e	_InterlockedExchange@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5834	_GetThreadPriority@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb583a	_GetVersionExW@4	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5840	_CompareStringA@24	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5846	_IsDBCSLeadByteEx@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb584c	_GetLocaleInfoA@16	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5852	_lstrcatW@8	KERNEL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5858	_MessageBoxA@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb585e	_MessageBoxW@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5864	_GetAsyncKeyState@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb586a	_wsprintfA	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5870	_LoadStringA@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5876	_DialogBoxIndirectParamA@20	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb587c	_DialogBoxParamA@20	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5882	_RemovePropA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5888	_SetWindowLongA@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb588e	_CallWindowProcA@20	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5894	_GetPropA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb589a	_SendMessageA@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58a0	_SetCursor@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58a6	_LoadCursorA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58ac	_ReleaseCapture@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58b2	_PtInRect@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58b8	_ClientToScreen@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58be	_GetWindowRect@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58c4	_SetCapture@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58ca	_InvalidateRect@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58d0	_GetCapture@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58d6	_GetWindowLongA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58dc	_SetPropA@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58e2	_GetParent@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58e8	_EnableWindow@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58ee	_GetDlgItem@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58f4	_SetDlgItemTextA@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb58fa	_SetWindowTextA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5900	_MoveWindow@24	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5906	_GetClientRect@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb590c	_GetDesktopWindow@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5912	_DestroyWindow@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5918	_EndDialog@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb591e	_IsDlgButtonChecked@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5924	_UnregisterClassA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb592a	_ShowCursor@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5930	_ShowWindow@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5936	_CreateWindowExA@48	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb593c	_RegisterClassExA@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5942	_LoadIconA@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5948	_DefWindowProcA@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb594e	_DispatchMessageW@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5954	_TranslateMessage@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb595a	_PeekMessageW@20	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5960	_GetSysColor@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5966	_GetForegroundWindow@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb596c	_DefWindowProcW@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5972	_WaitMessage@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5978	_UpdateWindow@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb597e	_CreateWindowExW@48	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5984	_GetSystemMetrics@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb598a	_RegisterClassExW@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5990	_LoadIconW@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5996	_LoadCursorW@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb599c	_CharNextExA@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59a2	_SetCursorPos@8	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59a8	_OffsetRect@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59ae	_GetCursorPos@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59b4	_PostThreadMessageW@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59ba	_GetQueueStatus@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59c0	_MsgWaitForMultipleObjects@20	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59c6	_wvsprintfW@12	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59cc	_wsprintfW	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59d2	_RegisterWindowMessageW@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59d8	_GetKeyState@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59de	_PostQuitMessage@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59e4	_GetMessageA@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59ea	_DispatchMessageA@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59f0	_PeekMessageA@20	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59f6	_GetKeyboardLayout@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb59fc	_PostMessageA@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a02	_GetFocus@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a08	_GetCaretBlinkTime@0	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a0e	_SendMessageW@16	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a14	_IsWindowUnicode@4	USER32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a1a	_SetTextColor@8	GDI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a20	_DeleteObject@4	GDI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a26	_CreateFontIndirectA@4	GDI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a2c	_GetObjectA@12	GDI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a32	_GetStockObject@4	GDI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a38	_RegCreateKeyExW@36	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a3e	_RegCloseKey@4	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a44	_RegQueryValueExW@24	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a4a	_RegSetValueExW@24	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a50	_RegDeleteValueW@8	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a56	_RegQueryValueExA@24	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a5c	_RegOpenKeyExA@20	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a62	_RegSetValueExA@24	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a68	_RegCreateKeyExA@36	ADVAPI32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a6e	_SHGetFolderPathW@20	SHELL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a74	_ShellExecuteA@24	SHELL32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a7a	_CoInitialize@4	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a80	_CoCreateInstance@20	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a86	_CoUninitialize@0	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a8c	_CoInitializeEx@8	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a92	_CoTaskMemAlloc@4	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a98	_CoFreeUnusedLibraries@0	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5a9e	_CoTaskMemFree@4	ole32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5aa4	_SysAllocString@4	OLEAUT32.dll	unknown	undefined	0		0			discovered	boundary							
+00cb5aaa	_SysFreeString@4	OLEAUT32.dll	unknown	undefined	0		0			discovered	boundary							
 00cb5ac0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\std_Consvalpairmorphi_00cb5ac0.cpp
 00cb5ad0	QuestPersist_FindInfoByName	_global	unknown	undefined	0		0	yes	accepted									
 00cb5b90	CActiveEntity::ResetParticleMorphs	CActiveEntity	unknown	undefined	0		0	yes	accepted									
@@ -55008,10 +55290,40 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f3fb90	_strnicmp	_global	__cdecl	int	3	char *,char *,size_t	1	yes	accepted									
 00f3fb96	`eh_vector_constructor_iterator'	_global	__stdcall	void	5	void *,uint,int,_func_void_void_ptr *,_func_void_void_ptr *	1	yes	accepted									
 00f3fbe0	ReleaseTexture	CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
+00f3fbf8	__mbschr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fbfe	__mbscspn	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc04	__mbspbrk	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc0a	__mbsrchr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc10	__mbsspn	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc16	__mbsstr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc1c	__mbsnbcmp	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc22	__mbsinc	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc28	__mbclen	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc2e	__ismbcdigit	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc34	__ismbcspace	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc3a	??1exception@@UAE@XZ	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc40	??0exception@@QAE@XZ	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fc46	??0exception@@QAE@ABV0@@Z	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00f3fc50	__alldiv	_global	unknown	undefined	0		0	yes	accepted									
 00f3fcfa	strncat	_global	__cdecl	char *	3	char *,char *,size_t	1	yes	accepted									
+00f3fd00	_printf	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fd06	__errno	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00f3fd10	__allshr	_global	unknown	undefined	0		0	yes	accepted									
+00f3fd32	_memchr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fd38	_perror	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fd3e	_ldexp	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fd44	_frexp	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 00f3fd50	__aulldvrm	_global	unknown	undefined	0		0	yes	accepted									
+00f3fde6	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z	MSVCP71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fdec	??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	MSVCP71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fdf2	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z	MSVCP71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fdf8	_timeKillEvent@4	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fdfe	_timeBeginPeriod@4	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fe04	_timeEndPeriod@4	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fe0a	_timeSetEvent@20	WINMM.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fe10	__strupr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fe16	__strlwr	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
+00f3fe1c	__strrev	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
 01210a00	Unwind@01210a00	_global	unknown	undefined	0		0	yes	accepted									
 01210a12	Unwind@01210a12	_global	unknown	undefined	0		0	yes	accepted									
 01210a24	Unwind@01210a24	_global	unknown	undefined	0		0	yes	accepted									

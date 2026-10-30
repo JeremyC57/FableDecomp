@@ -3,8 +3,8 @@
 
 struct Tex;
 
-// imported free-like callee via IAT [0x143fe30]; single arg, callee cleans stack
-extern void (__stdcall *g_freeTex)(Tex*);
+// IAT [0x143fe30] = KERNEL32.dll!CloseHandle (__imp__CloseHandle@4); single arg, callee cleans stack
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void*);
 
 class CLandscapeBackgroundPatch { public:
     void* vtbl;   // +0
@@ -16,7 +16,7 @@ void __fastcall ClearTextures(CLandscapeBackgroundPatch* self)
     Tex* t = self->tex;
     self->vtbl = (void*)0x12b90e8;
     if (t) {
-        g_freeTex(t);
+        CloseHandle(t);
         self->tex = 0;
     }
 }

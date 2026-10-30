@@ -1,6 +1,5 @@
 struct CRIT { int x; };
-typedef void (__stdcall *LEAVEFN)(void*);
-LEAVEFN g_leave;
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void*);   // IAT 0x0143FE10 = KERNEL32.dll!LeaveCriticalSection
 
 class CHandleBasedMemoryPool { public:
     char pad[0x24];
@@ -12,6 +11,6 @@ class CHandleBasedMemoryPool { public:
 void __fastcall EndCritical(CHandleBasedMemoryPool* self)
 {
     if (self->flag) {
-        g_leave(&self->cs);
+        LeaveCriticalSection(&self->cs);
     }
 }

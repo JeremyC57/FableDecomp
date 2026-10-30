@@ -1,3 +1,2 @@
-typedef void (__stdcall* Fn)(void*);
-extern Fn g_pred_fn;
-void* __fastcall op_and(void* self){ g_pred_fn(self); return self; }
+extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(void*);   // IAT 0x0143FEE4 = KERNEL32.dll!InitializeCriticalSection
+void* __fastcall op_and(void* self){ InitializeCriticalSection(self); return self; }

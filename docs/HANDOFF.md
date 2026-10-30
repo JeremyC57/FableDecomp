@@ -6,9 +6,10 @@ Fresh container: lane setup in `docs/pipeline/FRESH_SESSION_HANDOFF.md`; coordin
 
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed; no agents running.
-- **51,642 of 57,267 known functions (90.2%)**, 44,687 of the original 49,568 (90.1%); 38.1% of function bytes, 34.0% of
+- **52,222 of 57,579 known functions (90.7%)**, 44,903 of the original 49,568 (90.6%); 49.8% of function bytes, 34.4% of
   .text (`rebuild/COVERAGE.md`, `tools/landed_metrics.py`; never hand-edit). The functions left are the large ones.
-- Retail compiler: cl 13.10.3077 (Rich header: 1,369 objects; 11 by QFE 4035; linker 3052). Lane default 3077, `--qfe` 4035.
+- Retail compiler: cl 13.10.3077 (Rich header: 1,369 C++ objects; 5 compiled by QFE 4035 plus 6 import descriptors; link 3077,
+  cvtres 3052). Lane default 3077, `--qfe` 4035.
 
 ## Done 2026-10-28/29 (details in the session handoff and `docs/journal/FINDINGS_LOG.md`)
 - Chunks 561-574 (never-tried and released pass 9 rows; 568-574 were ~1-2 KB rows): quest-script rows landed 20 of 21.

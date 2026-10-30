@@ -1,9 +1,9 @@
 // CLandscapeBackgroundPatch::ClearTextures  @ retail 0x00c5e3d0
 // void __fastcall (modeled as __fastcall self in ecx)
 
-// Global function pointer released via call dword ptr [0x143fe30].
+// call dword ptr [0x143fe30] = KERNEL32.dll!CloseHandle (__imp__CloseHandle@4).
 // push eax; call [mem]; no stack cleanup at call site -> callee cleans up (stdcall).
-extern void (__stdcall *g_ReleaseTexture)(int handle);
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);
 
 class CLandscapeBackgroundPatch
 { public:
@@ -18,7 +18,7 @@ void CLandscapeBackgroundPatch::ClearTextures()
     int h = this->textureHandle;
     if (h != -1)
     {
-        g_ReleaseTexture(h);
+        CloseHandle((void*)h);
         this->textureHandle = -1;
     }
 }

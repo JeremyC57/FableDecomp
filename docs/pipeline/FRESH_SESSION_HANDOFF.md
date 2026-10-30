@@ -48,7 +48,7 @@ objdump -i | grep -q pe-i386 && echo objdump-ok          # objdump must handle p
 which llvm-undname || ls /usr/lib/llvm-*/bin/llvm-undname # used by tools/decomp_pipeline/pdb_class_keys.py (FABLE_UNDNAME)
 # (a) DDK 3790.1830 (cl 13.10.4035, the --qfe compiler) + CRT headers/libs: sparse clone from GitHub
 bash tools/decomp_pipeline/linux_lane/setup_vc71_wine.sh $S/wine      # clones https://github.com/9176324/winddk
-# (b) RTM cl 13.10.3077 = the retail compiler (1,369 of 1,380 objects) and the lane default
+# (b) RTM cl 13.10.3077 = the retail compiler (1,369 of 1,370 C++ objects) and the lane default
 #     https://archive.org/details/visual-studio-2003-unpacked  file VisualStudio2003.zip
 #     SHA-1 298398e607a8e6033abe261987b94cab8fb57c24 (verify it)
 mkdir -p $S/vs2003 && cd $S/vs2003 && curl -L -o VisualStudio2003.zip \

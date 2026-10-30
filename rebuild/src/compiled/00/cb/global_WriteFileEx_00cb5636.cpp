@@ -1,0 +1,11 @@
+// WriteFileEx import thunk: linker-synthesised from an import-library record, not Fable source (grade toolchain_library).
+// Toolchain-library: kernel32.lib(KERNEL32.dll) _WriteFileEx@20 -- 6 bytes verified against Fable.exe 0x00CB5636
+//
+// Retail 0x00CB5636 is `jmp dword ptr [__imp__WriteFileEx@20]` (FF 25 D8 FD 43 01). The IAT slot 0x0143FDD8 is
+// KERNEL32.dll!WriteFileEx in the retail import directory. The VS .NET 2003 Vc7/lib/kernel32.lib member
+// `KERNEL32.dll` that defines _WriteFileEx@20 is a short import record (CODE, NAME_UNDECORATE): the linker emits
+// this thunk for it whenever a caller references _WriteFileEx@20 rather than __imp__WriteFileEx@20. The address
+// was outside the function manifest until the 2026-10-30 boundary pass added it (agent_source boundary).
+// The build links kernel32.lib for these bytes; nothing here is compiled and there is no body to write.
+// Proof: python3 tools/decomp_pipeline/libsig/lib_verify.py 00cb5636 -> MATCH;
+// oracle row in rebuild/oracles/library_signatures.tsv; docs/pipeline/LIBRARY_SIGNATURES.md.

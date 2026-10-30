@@ -4,7 +4,7 @@
 // Callees: CMouse::GetPos (virtual slot 2, +8; CMouseDX's is `lea eax,[ecx+3414h]` @ 0x00AB5F00), CInputEvent::GetType @ 0x00A03B40
 //          (labelled "CWorld::DrawGetEnvironment", propagated), CInputEvent::GetMousePos @ 0x00A04380 (C2DVector of +0x18/+0x1c by hidden
 //          pointer; labelled "CMessageEventFilter_IsOriginatedByThing", propagated), CInputEvent::SetAsLeft/Right/MiddleMouseButtonHeld
-//          @ 0x00A03D10 / 0x00A03DC0 / 0x00A03E70, SetAsExtraMouseButtonHeld @ 0x00A03F20, timeGetTime (import 0x0143FDFC, held in ebx).
+//          @ 0x00A03D10 / 0x00A03DC0 / 0x00A03E70, SetAsExtraMouseButtonHeld @ 0x00A03F20, GetTickCount (import 0x0143FDFC = KERNEL32.dll!GetTickCount, held in ebx).
 // Globals: 4294967296.0f @ 0x0122DCB4, 0.001f @ 0x01266300.
 // Layout: as the landed CKeyboard::UpdateMaintainedEvents 0x00A66880: the list head pointer at +0x340c, node {next, prev, CMaintainedEvent}
 //   with the CInputEvent at node+0xc; CInputEvent (PDB 0x34): Type +0x28, CurrentTime +0x2c, StartTime +0x30.
@@ -56,7 +56,7 @@ struct SMaintainedEventNode {
     SMaintainedEventNode* m_pPrev;
     CMaintainedEvent      m_value;                 // +0x08 (the event at +0x0c)
 };
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);   // import 0x0143FDFC
+extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);   // import 0x0143FDFC = KERNEL32.dll!GetTickCount
 
 class CMouse {
 public:
@@ -86,21 +86,21 @@ void CMouse::UpdateMaintainedEvents()
             movement.X = pos.X - startPos.X;
             movement.Y = pos.Y - startPos.Y;
             startTime = node->m_value.Event.StartTime;
-            event.SetAsLeftMouseButtonHeld(pos, movement, startTime, (float)timeGetTime() * 0.001f);
+            event.SetAsLeftMouseButtonHeld(pos, movement, startTime, (float)GetTickCount() * 0.001f);
             break;
         case INPUT_EVENT_RMB_HELD:
             startPos = event.GetMousePos();
             movement.X = pos.X - startPos.X;
             movement.Y = pos.Y - startPos.Y;
             startTime = node->m_value.Event.StartTime;
-            event.SetAsRightMouseButtonHeld(pos, movement, startTime, (float)timeGetTime() * 0.001f);
+            event.SetAsRightMouseButtonHeld(pos, movement, startTime, (float)GetTickCount() * 0.001f);
             break;
         case INPUT_EVENT_MMB_HELD:
             startPos = event.GetMousePos();
             movement.X = pos.X - startPos.X;
             movement.Y = pos.Y - startPos.Y;
             startTime = node->m_value.Event.StartTime;
-            event.SetAsMiddleMouseButtonHeld(pos, movement, startTime, (float)timeGetTime() * 0.001f);
+            event.SetAsMiddleMouseButtonHeld(pos, movement, startTime, (float)GetTickCount() * 0.001f);
             break;
         case INPUT_EVENT_EXTRA_BUTTON_HELD_0:
         case INPUT_EVENT_EXTRA_BUTTON_HELD_1:
@@ -111,7 +111,7 @@ void CMouse::UpdateMaintainedEvents()
             movement.X = pos.X - startPos.X;
             movement.Y = pos.Y - startPos.Y;
             startTime = node->m_value.Event.StartTime;
-            event.SetAsExtraMouseButtonHeld(pos, movement, startTime, (float)timeGetTime() * 0.001f, event.GetType() - INPUT_EVENT_EXTRA_BUTTON_HELD_0);
+            event.SetAsExtraMouseButtonHeld(pos, movement, startTime, (float)GetTickCount() * 0.001f, event.GetType() - INPUT_EVENT_EXTRA_BUTTON_HELD_0);
             break;
         }
     }

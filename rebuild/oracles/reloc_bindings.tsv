@@ -6642,7 +6642,6 @@ _kName	012786ac	008b34d0
 ?CheckAndTrigger@CTimedTrigger_008f9e60@@QAEXXZ	008f9ca0	008f9e60
 __imp__GetTickCount@0	0143fdfc	008f9e60
 ?CheckAndTrigger@CMusicTimer_008fa000@@QAEXXZ	008f9ca0	008fa000
-?g_pfnGetTickCount@@3P6AJXZA	0143fdfc	008fa000
 ?Method@CClass_008fa2f0@@QAEXJ@Z	008fa280	008fa2f0
 ?Method@CClass_008fa300@@QAEXJ@Z	008fa280	008fa300
 ?OnStateGroupRemoved@CTCBase@@QAEXXZ	006cb6b0	008fd050
@@ -7456,7 +7455,6 @@ __imp__GlobalFree@4	0143fdf8	0098eb20
 @FableWideStringConstruct_0099AED0@8	0099aed0	00999230
 @FableWideStringDestroy_0099B510@8	0099b510	00999230
 @FableWideStringGetBuffer_0099AF00@8	0099af00	00999230
-_g_FableGetFileAttributesW_0143FDBC	0143fdbc	00999230
 ?FreeTree_CTreeOwner_00999e50@CTreeOwner_00999e50@@QAEXPAUSNode@@@Z	00999e50	00999e50
 ?Erase@CRetailTree_erase00999e50@@QAEXPAUnode@1@@Z	00999e50	0099a020
 ??_7CInitBaseClass@@6B@	0129a7cc	0099a310
@@ -7470,7 +7468,6 @@ __imp__SetFilePointer@16	0143fde8	0099a560
 __imp__FlushFileBuffers@4	0143fda8	0099a920
 ??0CStringFileArgument@@QAE@ABU0@@Z	0099ec30	0099aa90
 ?DebugMessage@@3P6IXPBD@ZA	013bca00	0099aa90
-?WriteFileImport@@3P6GHPAXPBXKPAK0@ZA	0143fda4	0099aa90
 __TI2?AVCBBBFileException@@	01369380	0099aa90
 _CDiskFileWin32_SetFilePointerIAT_0099abd0	0143fde8	0099abd0
 ?g_EmptyCharString_0129A8E0@@3PADA	0129a8e0	0099af00
@@ -7913,8 +7910,6 @@ _atexit	004012bc	009f0240
 ?Erase@CNameToHandleMap@@QAEXPAUCSectionMapNode@@@Z	00579435	009f1560
 ?Erase@CSectionDescriptorMap@@QAEXPAUCSectionMapNode@@@Z	009f0d40	009f1560
 ??0CGameEvent@@QAE@XZ	004159a0	009f1a80
-?g_delete_fn@@3P6GXPAXHH@ZA	0143fd40	009f1f90
-___imp__DestroyFlashObj	0143fe0c	009f2000
 _g_flashInstance_013caa70	013caa70	009f2000
 ?g_fableSharedLock@@3UFableCriticalSection@@A	013caa70	009f2010
 ?ReleaseAllocator@@YIXPAUCMemoryAllocatorBase@@@Z	00a66750	009f2310
@@ -8034,7 +8029,6 @@ _Helper_9fc540@4	009fc170	009fc540
 ?Destroy_00a018d0@@YIXPAX@Z	00a018d0	00a01aa0
 ?InsertFreeArea@CHandleBasedMemoryPool_Methods@@QAEXPAUCHeader@@@Z	00a01da0	00a01e40
 __imp__TryEnterCriticalSection@4	0143fd30	00a02140
-?g_leave@@3P6GXPAX@ZA	0143fe10	00a02170
 ?InsertFreeArea@CHandleBasedMemoryPool@@QAEXPAUCHeader@@@Z	00a01da0	00a02370
 ?CombineAreas@CHandleBasedMemoryPool_Methods@@QAEXPAUCHeader@@0@Z	00a01e40	00a02470
 ?Uninitialise@CHandleBasedMemoryPool@@QAEXXZ	00a02190	00a02570
@@ -8398,7 +8392,6 @@ __imp__HeapFree@12	0143fe8c	00a66160
 ?NewChunk@FixedSizeAllocator@@QAEPAUCMemoryAreaChunk@@XZ	00a663d0	00a66450
 ??_7CMemoryAllocatorFixedSize@@6B@	0129db64	00a66600
 ?ReleaseAllocator_00a66750@@YIXPAX@Z	00a66750	00a66600
-?g_vp@@3P6GPAXHIHH@ZA	0143fd44	00a66730
 ?Clear@MemberBuffer@@QAEXXZ	009e4710	00a66860
 ?g_timeScale_01266300@@3MB	01266300	00a66880
 _D3DXLoadVolumeFromVolume@32	00bfefec	00a67670
@@ -9724,7 +9717,6 @@ __imp__memmove	01440144	00c0d970
 ??_7CParam_012b2438@@6B@	012b2438	00c0fae0
 ??_7CVtable_012b2560@@6B@	012b2560	00c0fdf0
 ?MethodC1C830@HelperArg@@QAEXXZ	00c1c830	00c0ffc0
-?g_TimerFnPtr@@3P6AHXZA	0143fdfc	00c0ffc0
 ??_7CClickVisitor_00c102b0@@6B@	012b262c	00c102b0
 ??_7CReleaseVisitor_00c102b0@@6B@	012b2634	00c102b0
 ??1CNode_00c10320@@QAE@XZ	00c17b10	00c10320
@@ -9732,11 +9724,7 @@ __imp__memmove	01440144	00c0d970
 ??_7CContainerB_00c10320@@6B@	012b1b78	00c10320
 ??_7CRoot_00c10320@@6B@	012b1ab0	00c10320
 ??_7CVtable_012b260c@@6B@	012b260c	00c10740
-__imp_??0CImportedDefBase_00c108e0@@QAE@XZ	0143fff8	00c108e0
-__imp_??0CImportedPositions_00c108e0@@QAE@PAX@Z	0143ffa0	00c108e0
 ??_7CCardPositionsDef_00c10940@@6B@	012b263c	00c10940
-__imp_??1CImportedDefBase_00c10940@@QAE@XZ	01440028	00c10940
-__imp_??1CImportedPositions_00c10940@@QAE@XZ	0143ff9c	00c10940
 ?FableVtbl_CChunkedFileChunk_c10a10@@3PAPAXA	012b2644	00c10a10
 @FableBaseDtor_c10a10@4	00c10940	00c10a10
 ??0CMessageListOwner@@QAE@XZ	00c203a0	00c10a30
@@ -9842,8 +9830,6 @@ __imp_??1CImportedPositions_00c10940@@QAE@XZ	0143ff9c	00c10940
 ??1CString_00c13700@@QAE@XZ	00c0ba40	00c13700
 ?AppendNumber@CString_00c13700@@QAIPAU1@J@Z	00c0df00	00c13700
 ??_7CCardPositionsDef_00c13a00@@6B@	012b263c	00c13a00
-__imp_??0CImportedDefBase_00c13a00@@QAE@ABU0@@Z	0143fffc	00c13a00
-__imp_??0CImportedPositions_00c13a00@@QAE@ABU0@@Z	0143ffa0	00c13a00
 ??_7CVtable_012b2644@@6B@	012b2644	00c13d20
 ??_7CVtable_012b27e0@@6B@	012b27e0	00c14780
 ??_7CVtable_012b2828@@6B@	012b2828	00c147b0
@@ -10040,10 +10026,6 @@ _Flush_00c336a0	00c336a0	00c1c110
 ?LibNotifyWorldState@@YG_NJJ@Z	00c335c0	00c1c620
 ?Refresh@CWorld@@QAEXXZ	00c1c460	00c1c620
 ?Step@CTCInventoryMagic_00c1c6a0@@QAEXXZ	00c1c460	00c1c6a0
-?g_pred_fn@@3P6GXPAX@ZA	0143fee4	00c1c810
-__imp__Import_0143fde4@4	0143fde4	00c1c820
-__imp__Import_0143fe0c@4	0143fe0c	00c1c830
-__imp__Import_0143fe10@4	0143fe10	00c1c840
 ?Atan2@@YGMMM@Z	00c1cab0	00c1cc10
 ?RotateA@CMatrix3x4@@QAEXM@Z	00c1c990	00c1cc10
 ?RotateB@CMatrix3x4@@QAEXM@Z	00c1c900	00c1cc10
@@ -10226,7 +10208,6 @@ __imp__Import_0143fe10@4	0143fe10	00c1c840
 ?_Insert_n@CVector_ulong_00c29c30@@QAEXUiterator@1@IABK@Z	00c298d0	00c29c30
 ?_Uninitialized_fill_n@@YIXPAKIABKAAUallocator_ulong@@U_Scalar_ptr_iterator_tag@@@Z	00c294b0	00c29c30
 ?Update@CTrailListener_00c29f70@@QAEXJ@Z	00c29ec0	00c29f70
-__imp__Import_0143fe30@4	0143fe30	00c29fb0
 ??0CSemaphore@@QAE@JJ@Z	00c36120	00c2a230
 ??_7CVtable_012b4148@@6B@	012b4148	00c2a230
 ?AsyncThreadProc@@YGKPAX@Z	00c2a210	00c2a270
@@ -10465,8 +10446,6 @@ _Callback_00C3E260	00c3e260	00c33470
 ??_7CProfile@@6B@	012b4fbc	00c34aa0
 ??1CMember_00c354a0@@QAE@XZ	00c29fb0	00c354a0
 ?Clear@CMember_00c354a0@@QAEXXZ	00c2a090	00c354a0
-__imp__ReleaseHandle_00c354a0@4	0143fe30	00c354a0
-__imp__SetState_00c354a0@4	0143fe1c	00c354a0
 ??0CTrace_00c35510@@QAE@XZ	00c16750	00c35510
 ??1CLogLine_00c35510@@QAE@XZ	00c0ba40	00c35510
 ?Append@CLogLine_00c35510@@QAIPAU1@PBD@Z	00c0dec0	00c35510
@@ -11021,7 +11000,6 @@ __imp__FreeLibrary@4	0143fe3c	00c56370
 ??_7CDerived_00c56cd0@@6B@	012b8d48	00c56cd0
 ??_7CDisplayManager@@6B@	012b8df8	00c57310
 ??_7CDisplayManagerBase_00c57310@@6B@	012b5868	00c57310
-__imp__ShutdownDisplay_00c57310@0	01440648	00c57310
 ??_7CVtable_012b8ed4@@6B@	012b8ed4	00c57780
 ??_7CActionParamBase_00c577b0@@6B@	012b5868	00c577b0
 ??_7CActionParamCountedPointer_00c577b0@@6B@	012b8ed4	00c577b0
@@ -11056,9 +11034,6 @@ __imp__waveOutWrite@12	01440488	00c5d6b0
 ??_7CActionBase_00c5d790@@6B@	012b5868	00c5d790
 ??_7CSectionHolder_00c5d790@@6B@	012b8fc8	00c5d790
 __imp__DeviceIoControl@32	0143fec0	00c5e050
-?g_ReleaseTexture@@3P6GXH@ZA	0143fe30	00c5e3d0
-?g_freeTex@@3P6GXPAUTex@@@ZA	0143fe30	00c5e420
-?g_ReleaseTex@@3P6GXPAX@ZA	0143fe30	00c5e480
 ??_7CVtable_012b90d4_00c5ebd0@@6B@	012b90d4	00c5ebd0
 ??_7CVtable_012b90d4_00c5ec50@@6B@	012b90d4	00c5ec50
 ??_7CEvent_00c5eca0@@6B@	012b90e8	00c5ed90
@@ -11175,9 +11150,7 @@ __imp__mixerSetControlDetails@12	014404c8	00c715d0
 ??0C3DAnimationBlendState@@QAE@XZ	00c59ba0	00c72600
 ?g_eaxSourcePropertySetGuid_012beea0@@3QBEB	012beea0	00c73380
 _g_defStringInit	0143ccc0	00c73770
-?g_freeFn@@3P6GXPAX@ZA	0143fbfc	00c73800
 ?CLandscapeBackgroundPatch_vtbl@@3QAXA	012befb0	00c739a0
-__imp__ReleaseTexture@4	0143fbfc	00c739a0
 ?g_flag_0143ccd8@@3_NA	0143ccd8	00c73a00
 ??_7CVtable_012beffc@@6B@	012beffc	00c73e70
 ??_7CVtable_012bf014@@6B@	012bf014	00c73ef0
@@ -11234,8 +11207,6 @@ __imp__malloc	01440158	00c90f10
 __imp__ResetEvent@4	0143fed4	00ca4a70
 ?Issue@CAudioStream_00ca4cc0@@QAEJJPAX0@Z	00ca7930	00ca4cc0
 ?Stop@CSource_00ca4cc0@@QAEXXZ	00caddf0	00ca4cc0
-?g_releaseTexture@@3P6GXPAX@ZA	014404b0	00ca4d60
-__imp__NotifyShutdown_00ca4e30@4	014404a8	00ca4e30
 ??0CEnginePrimitiveTypeInfo@@QAE@JPAUCOwnerBlock@@PAXJJ@Z	00cac260	00ca4f40
 ??_7CEnginePrimitiveTypeInfoDerived_00ca4f40@@6BIPrimitiveType0@@@	012bf408	00ca4f40
 ??_7CEnginePrimitiveTypeInfoDerived_00ca4f40@@6BIPrimitiveType1@@@	012bf3c0	00ca4f40
@@ -11344,9 +11315,7 @@ __imp__WaitForSingleObject@8	0143feac	00caf8f0
 ?RemoveAt@CNodeList_00caff70@@QAEXPAX@Z	00cb13f0	00caff70
 ?Rebuild@CRenderEffectHolder_00cb0040@@QAEXXZ	00caf750	00cb0040
 __imp__CreateEventW@16	0143fdc8	00cb0190
-?g_orf_fn@@3P6GXPAX@ZA	0143fe30	00cb01b0
 __imp__InterlockedExchange@8	0143ff00	00cb0d20
-?g_import_cb0e90@@3P6GXPAXH@ZA	0143feac	00cb0e90
 ??1CNodeList_00cb0f10@@QAE@XZ	00cb1890	00cb0f10
 ?Clear@CNodeList_00cb0f10@@QAEXXZ	00cb1340	00cb0f10
 ?Remove@CNodeList_00cb0f10@@QAEPAUCNode_00cb0f10@@PAPAU2@@Z	00cb1380	00cb0f10
@@ -12126,7 +12095,6 @@ _rand	00bfeb16	00d2c530
 ??0CStatic_00c5d0a0@@QAE@XZ	00c5d0a0	01224be0
 ?g_CStatic_00c5d0a0_0143bf88@@3UCStatic_00c5d0a0@@A	0143bf88	01224be0
 ?g_CStatic_00c5d0a0_0143bf68@@3UCStatic_00c5d0a0@@A	0143bf68	01224c00
-?g_014402f0@@3JA	014402f0	01224c30
 ?g_scaled_0143e8c4@@3JA	0143e8c4	01224c30
 ?g_013ac74c@@3JA	013ac74c	01224c40
 ?g_scaled_0143e8c0@@3JA	0143e8c0	01224c40
@@ -35151,3 +35119,8 @@ __ov_splice@32	00c8bf90	00c8c580
 _seed_chase@12	00c92f10	00c93080
 ?Pause@CBaseFilter@@UAGJXZ	00caabe0	00ca67b0
 ?Run@CBaseFilter@@UAGJ_J@Z	00caaca0	00ca68f0
+__imp__WriteFile@20	0143fda4	0099aa90
+__imp__SetCursorPos@8	014403a0	00ab4700
+__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	0143ff9c	00c10940
+__imp_??1exception@@UAE@XZ	01440028	00c10940
+__imp_??0exception@@QAE@ABV0@@Z	0143fffc	00c13a00

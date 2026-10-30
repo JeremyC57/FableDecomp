@@ -1,0 +1,22 @@
+{
+  "catalog_rows": 52267,
+  "known_functions": 57579,
+  "original_functions": 49568,
+  "landed_known": 52235,
+  "landed_original": 44916,
+  "landed_genuine_known": 52222,
+  "landed_genuine_original": 44903,
+  "genuine": 51677,
+  "retail_asm": 137,
+  "toolchain_library": 440,
+  "asm_bake": 13,
+  "library_source": 8,
+  "missing_source": 0,
+  "matched_bytes": 5117805,
+  "matched_bytes_genuine": 5113936,
+  "unlanded_bytes_estimate": 5156291,
+  "unlanded_gap_cap": 65536,
+  "unlanded_gaps_capped": 1,
+  "text_bytes": 14858408
+}
+wrote /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/libsig3/repo/rebuild/COVERAGE.md

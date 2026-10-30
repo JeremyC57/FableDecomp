@@ -5,8 +5,8 @@
 //
 // Retail bytes:  mov eax, dword ptr [ecx] ; push eax ; call dword ptr [0x143fe10] ; ret 
 // Tiny-body shape `DtorReleaseImport`: a destructor that passes its one handle member to a
-// `__stdcall` import (callee cleans the slot). The import's identity is a relocation; names are descriptive.
-extern "C" __declspec(dllimport) long __stdcall Import_0143fe10(void*);   // IAT slot 0x0143FE10
+// `__stdcall` import (callee cleans the slot): IAT slot 0x0143FE10 = KERNEL32.dll!LeaveCriticalSection. The class names are descriptive.
+extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(void*);   // IAT slot 0x0143FE10
 
 struct CClass_00ca48c0 {
     void* m_handle;                        // +0
@@ -15,5 +15,5 @@ struct CClass_00ca48c0 {
 
 CClass_00ca48c0::~CClass_00ca48c0()
 {
-    Import_0143fe10(m_handle);
+    LeaveCriticalSection(m_handle);
 }

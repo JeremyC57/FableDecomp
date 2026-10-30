@@ -1,0 +1,10 @@
+Probe (2026-10-30, $S/libsig3/work/richprobe): the lane's VS .NET 2003 toolset ($FABLE_VC71/bin, cl/link 7.10.3077, cvtres 7.10.3052)
+  cl /c c_obj.c    -> @comp.id 0x5f/3077
+  cl /c cpp_obj.cpp-> @comp.id 0x60/3077
+  ml /c /coff m.asm-> @comp.id 0x0f/3077
+  rc r.rc ; link /NODEFAULTLIB c_obj cpp_obj m r.res -> p.exe Rich: (0x5f,3077,1) (0x60,3077,1) (0x0f,3077,1) (0x5e,3052,1) (0x5a,3077,1)
+VS .NET 2003 Vc7/lib objects (coff_lib.py comp_ids): msvcrt.lib code 0x5f/3077 x27 (seccook.obj...), 0x60/3077 x25 (bintree.obj...),
+  0x0f/3077 x16 (ullshr.obj...), 0x69/2067 x101 (sdknames\_argc.obj: __imp____argc data imports), import descriptor objects 0x5d/3077 x3;
+  kernel32.lib import descriptors 0x5d/2179; msvcprt.lib import descriptors 0x5d/3077.
+WinDDK 3790.1830 lib/wnet/i386: winmm/wsock32/imm32/user32/advapi32/d3d9/dinput8/version import descriptors 0x5d/4035;
+  uuid.lib 0x5f/4035 x157 + 0x60/4035 x1; dxguid.lib 0x60/4035 x2; dinput8.lib 0x5f/4035 x5.

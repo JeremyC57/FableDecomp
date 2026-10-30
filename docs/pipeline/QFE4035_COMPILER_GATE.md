@@ -76,6 +76,12 @@ build fingerprint). On retail Fable.exe:
 | **0x5d** | **Utc1310_C (QFE)**   | **4035 (QFE)** | **6**  |
 | …      | (older 2067/2179/3052 from linked static libs) | | |
 
+> **Label correction (2026-10-30):** the tool column above is the old `rich_header.py` table. The VS .NET 2003
+> toolset's own stamps (`rich_header.py` comment) give 0x60 = C++, 0x5F = C, 0x0F = MASM 7.10, 0x5D = the import
+> descriptor objects lib.exe writes into an import library, 0x5A = the linker (3077) and 0x5E = cvtres (3052). So 4035
+> stamps 4 C objects, 1 C++ object and 6 import descriptors (the WinDDK 3790.1830 import libraries are 0x5D/4035), and
+> the 0x0F/3077 row is 12 MASM objects, not a linker.
+
 **11 objects were compiled with build 13.10.4035**; everything else with **13.10.3077
 (RTM)**. Our toolchain (`D:\Tools\vc71`, `cl.exe` banner = 13.10.3077) is the RTM build,
 so it reproduces the 3077 objects byte-exact but *cannot* reproduce the codegen of the 11
@@ -156,7 +162,7 @@ Ref: github.com/isledecomp/isle CONTRIBUTING.md; github.com/isledecomp/reccmp.
 ## Addendum 2026-10-20: RTM 3077 on the Linux lane
 
 The Rich header of retail `Fable.exe` (decoded with `tools/decomp_pipeline/rich_header.py`) gives cl 13.10.3077 for 1,369
-C++ objects, 4035 for 11 (4 C, 1 C++, 6 MASM) and linker 3052. The Linux lane, which had graded everything with the DDK
+C++ objects, 4035 for 4 C and 1 C++ objects plus 6 import descriptors, and link 3077 (corrected 2026-10-30: 3052 is cvtres). The Linux lane, which had graded everything with the DDK
 4035 build, now has the genuine 3077 (`$S/wine/vc71rtm`, see BUILDING.md). Differences found between the two on our
 sources: the `/GS` stack-cookie prologue (3077 reproduces retail's for the five parked /GS rows, 4035 does not; two landed
 /GS rows 009cdf50 and 00c7b8f0 go the other way and belong to the QFE objects); nothing else in the parked set or the

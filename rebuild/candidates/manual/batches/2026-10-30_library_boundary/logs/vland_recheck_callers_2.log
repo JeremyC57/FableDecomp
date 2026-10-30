@@ -1,0 +1,87 @@
+addr       parity           behav  name
+0099aa90   WARN RELOC_NAME: ??0CStringFileArgument@@QAE@ABU0@@Z -> 0099ec30 labelled 'CCharString::CCharString'
+0099aa90   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+0099aa90   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+0099aa90   RELOCATION_MATCH PASS   Write
+009f1f90   RELOCATION_MATCH PASS   operator_delete
+  WARN leaf 'CFlash>' matches no symbol in 009f2000.obj; graded the largest function
+  WARN leaf 'CFlash>' matches no symbol in 009f2000.obj; graded the largest function
+009f2000   RELOCATION_MATCH PASS   CFlash>
+009f26d0   RELOCATION_MATCH PASS   ClearPerformanceStats
+00a02170   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+00a02170   RELOCATION_MATCH PASS   EndCritical
+  WARN leaf 'operator_new' matches no symbol in 00a66730.obj; graded the largest function
+  WARN leaf 'operator_new' matches no symbol in 00a66730.obj; graded the largest function
+00a66730   RELOCATION_MATCH PASS   operator_new
+00a66750   RELOCATION_MATCH PASS   operator_delete
+00a66c20   WARN SHARED_HEADER_AVAILABLE CMouse
+00a66c20   WARN RELOC_NAME: ?SetAsRightMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03dc0 labelled 'CInputEvent::SetAsLeftMouseButtonHeld'
+00a66c20   WARN RELOC_NAME: ?SetAsMiddleMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03e70 labelled 'CInputEvent::SetAsLeftMouseButtonHeld'
+00a66c20   RELOCATION_MATCH PASS   UpdateMaintainedEvents
+00ab4700   WARN RELOC_NAME: _ResolveMouseWindowOwner -> 009a4ec0 labelled 'GFGetSystemManager'
+00ab4700   RELOCATION_MATCH PASS   SetPos
+00c108e0   RELOCATION_MATCH PASS   CVtable_012b263c
+00c10940   RELOCATION_MATCH PASS   ~CCardPositionsDef_00c10940
+00c13a00   RELOCATION_MATCH PASS   CCardPositionsDef_00c13a00
+00c354a0   WARN RELOC_NAME: ?Clear@CMember_00c354a0@@QAEXXZ -> 00c2a090 labelled 'PKCSemaphore::Wait'
+00c354a0   WARN RELOC_NAME: ??1CMember_00c354a0@@QAE@XZ -> 00c29fb0 labelled 'PKCSemaphore::~PKCSemaphore'
+00c354a0   RELOCATION_MATCH PASS   ~CScriptModule_00c354a0
+00c36140   RELOCATION_MATCH PASS   ~CClass_00c36140
+00c57310   RELOCATION_MATCH PASS   ~CDisplayManager
+00c5e3d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+00c5e3d0   RELOCATION_MATCH PASS   ClearTextures
+00c5e420   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+00c5e420   RELOCATION_MATCH PASS   CVtable_012b90e8
+00c5e480   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+00c5e480   RELOCATION_MATCH PASS   CVtable_012b90ec
+  WARN leaf 'CIsThingAlive>' matches no symbol in 00ca4860.obj; graded the largest function
+  WARN leaf 'CIsThingAlive>' matches no symbol in 00ca4860.obj; graded the largest function
+00ca4860   RELOCATION_MATCH PASS   CIsThingAlive>
+00ca4870   RELOCATION_MATCH PASS   operator_new_00ca4870
+00ca48c0   RELOCATION_MATCH PASS   ~CClass_00ca48c0
+00ca4d60   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+00ca4d60   RELOCATION_MATCH PASS   ClearTextures
+00cb01b0   WARN GENERIC_STRUCT module=CActiveFile (use engine/CActiveFile.h)
+00cb01b0   RELOCATION_MATCH PASS   OnReadFinished
+00cb0e90   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00cb0e90   RELOCATION_MATCH PASS   PrepareForLoad
+  WARN leaf 'g_scaled_0143e8c4' matches no symbol in 01224c30.obj; graded the largest function
+  WARN leaf 'g_scaled_0143e8c4' matches no symbol in 01224c30.obj; graded the largest function
+01224c30   RELOCATION_MATCH PASS   g_scaled_0143e8c4
+01211400   RELOCATION_MATCH PASS   Unwind@01211400
+01211420   RELOCATION_MATCH PASS   Unwind@01211420
+012118c0   RELOCATION_MATCH PASS   Unwind@012118c0
+012143c0   RELOCATION_MATCH PASS   Unwind@012143c0
+012162b0   RELOCATION_MATCH PASS   Unwind@012162b0
+
+WINS: 30
+  0099aa90 RELOCATION_MATCH CDiskFileWin32::Write
+  009f1f90 RELOCATION_MATCH _global::operator_delete
+  009f2000 RELOCATION_MATCH std::CFlash>
+  009f26d0 RELOCATION_MATCH CMemoryAllocator::ClearPerformanceStats
+  00a02170 RELOCATION_MATCH CHandleBasedMemoryPool::EndCritical
+  00a66730 RELOCATION_MATCH _global::operator_new
+  00a66750 RELOCATION_MATCH _global::operator_delete
+  00a66c20 RELOCATION_MATCH CMouse::UpdateMaintainedEvents
+  00ab4700 RELOCATION_MATCH CMouseDX::SetPos
+  00c108e0 RELOCATION_MATCH CVtable_012b263c::??0CCardPositionsDef@
+  00c10940 RELOCATION_MATCH _unattributed::??1CCardPositionsDef_00c10940@
+  00c13a00 RELOCATION_MATCH _unattributed::CCardPositionsDef_00c13a00
+  00c354a0 RELOCATION_MATCH _unattributed::??1CScriptModule_00c354a0@
+  00c36140 RELOCATION_MATCH _unattributed::??1CClass_00c36140@
+  00c57310 RELOCATION_MATCH CDisplayManager::??1CDisplayManager@
+  00c5e3d0 RELOCATION_MATCH CLandscapeBackgroundPatch::ClearTextures
+  00c5e420 RELOCATION_MATCH CVtable_012b90e8::ClearTextures
+  00c5e480 RELOCATION_MATCH CVtable_012b90ec::ClearTextures
+  00ca4860 RELOCATION_MATCH _global::CIsThingAlive>
+  00ca4870 RELOCATION_MATCH _global::operator_new_00ca4870
+  00ca48c0 RELOCATION_MATCH _unattributed::??1CClass_00ca48c0@
+  00ca4d60 RELOCATION_MATCH CLandscapeBackgroundPatch::ClearTextures
+  00cb01b0 RELOCATION_MATCH CActiveFile::OnReadFinished
+  00cb0e90 RELOCATION_MATCH CWorldMap::PrepareForLoad
+  01224c30 RELOCATION_MATCH _static_init::g_scaled_0143e8c4
+  01211400 RELOCATION_MATCH _global::Unwind@01211400
+  01211420 RELOCATION_MATCH _global::Unwind@01211420
+  012118c0 RELOCATION_MATCH _global::Unwind@012118c0
+  012143c0 RELOCATION_MATCH _global::Unwind@012143c0
+  012162b0 RELOCATION_MATCH _global::Unwind@012162b0

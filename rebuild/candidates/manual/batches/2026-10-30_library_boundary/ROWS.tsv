@@ -1,0 +1,346 @@
+addr	kind	catalog_name	lib/member/symbol	source	action	lib_verify	recheck
+00401011	coff_section	_check_managed_app	msvcrt.lib(build\intel\dll_obj\crtexew.obj) _check_managed_app	00/40/global_check_managed_app_00401011.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00401266	import_thunk	MSVCR71.DLL::_c_exit	msvcrt.lib(MSVCR71.dll) __c_exit	00/40/global_cexit_00401266.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+0040126c	import_thunk	MSVCR71.DLL::_exit	msvcrt.lib(MSVCR71.dll) __exit	00/40/global_exit_0040126c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00401272	import_thunk	MSVCR71.DLL::_XcptFilter	msvcrt.lib(MSVCR71.dll) __XcptFilter	00/40/global_XcptFilter_00401272.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00401278	import_thunk	MSVCR71.DLL::_ismbblead	msvcrt.lib(MSVCR71.dll) __ismbblead	00/40/global_ismbblead_00401278.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+0040127e	import_thunk	MSVCR71.DLL::_cexit	msvcrt.lib(MSVCR71.dll) __cexit	00/40/global_cexit_0040127e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00401290	import_thunk	MSVCR71.DLL::__getmainargs	msvcrt.lib(MSVCR71.dll) ___getmainargs	00/40/global_getmainargs_00401290.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+0040136e	import_thunk	MSVCR71.DLL::__setusermatherr	msvcrt.lib(MSVCR71.dll) ___setusermatherr	00/40/global_setusermatherr_0040136e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+0040137a	import_thunk	MSVCR71.DLL::__p__commode	msvcrt.lib(MSVCR71.dll) ___p__commode	00/40/global_pcommode_0040137a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00401380	import_thunk	MSVCR71.DLL::__p__fmode	msvcrt.lib(MSVCR71.dll) ___p__fmode	00/40/global_pfmode_00401380.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00401386	import_thunk	MSVCR71.DLL::__set_app_type	msvcrt.lib(MSVCR71.dll) ___set_app_type	00/40/global_setapptype_00401386.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+004013d8	import_thunk	MSVCR71.DLL::_except_handler3	msvcrt.lib(MSVCR71.dll) __except_handler3	00/40/global_excepthandler3_004013d8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+004013ea	import_thunk	KERNEL32.DLL::GetModuleHandleA	kernel32.lib(KERNEL32.dll) _GetModuleHandleA@4	00/40/global_GetModuleHandleA_004013ea.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+004013f0	import_thunk	KERNEL32.DLL::GetStartupInfoA	kernel32.lib(KERNEL32.dll) _GetStartupInfoA@4	00/40/global_GetStartupInfoA_004013f0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfe960	coff_section	type_info::type_info	msvcrt.lib(build\intel\dll_obj\ti_inst.obj) ??0type_info@@AAE@ABV0@@Z	00/bf/global_typeinfo_00bfe960.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfe96b	coff_section	type_info::`vector_deleting_destructor'	msvcrt.lib(build\intel\dll_obj\ti_inst.obj) ??_Etype_info@@UAEPAXI@Z	00/bf/global_typeinfovectordeletingdestructor_00bfe96b.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfedd6	import_thunk	MSVCR71.DLL::calloc	msvcrt.lib(MSVCR71.dll) _calloc	00/bf/global_calloc_00bfedd6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfeddc	import_thunk	MSVCR71.DLL::realloc	msvcrt.lib(MSVCR71.dll) _realloc	00/bf/global_realloc_00bfeddc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfee68	coff_section	ArrayUnwindFilter	msvcrt.lib(build\intel\dll_obj\ehvecdtr.obj) ?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z	00/bf/global_ArrayUnwindFilter_00bfee68.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfef3e	coff_section	___security_init_cookie	msvcrt.lib(build\intel\dll_obj\seccinit.obj) ___security_init_cookie	00/bf/global_securityinitcookie_00bfef3e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfefaa	import_thunk	MSVCR71.DLL::?terminate@@YAXXZ	msvcrt.lib(MSVCR71.dll) ?terminate@@YAXXZ	00/bf/global_terminateYAXXZ_00bfefaa.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00bfefe6	import_thunk	D3DX9_25.DLL::D3DXLoadVolumeFromMemory	d3dx9.lib(d3dx9_25.dll) _D3DXLoadVolumeFromMemory@44	00/bf/global_D3DXLoadVolumeFromMemory_00bfefe6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c003e0	import_thunk	WINMM.DLL::timeGetTime	winmm.lib(WINMM.dll) _timeGetTime@0	00/c0/global_timeGetTime_00c003e0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c003e6	import_thunk	WSOCK32.DLL::#115	wsock32.lib(WSOCK32.dll) _WSAStartup@8	00/c0/global_115_00c003e6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c003f2	import_thunk	WSOCK32.DLL::#18	wsock32.lib(WSOCK32.dll) _select@20	00/c0/global_18_00c003f2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c003f8	import_thunk	WSOCK32.DLL::#12	wsock32.lib(WSOCK32.dll) _ioctlsocket@12	00/c0/global_12_00c003f8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c003fe	import_thunk	WSOCK32.DLL::#19	wsock32.lib(WSOCK32.dll) _send@16	00/c0/global_19_00c003fe.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00404	import_thunk	WSOCK32.DLL::#52	wsock32.lib(WSOCK32.dll) _gethostbyname@4	00/c0/global_52_00c00404.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c0040a	import_thunk	WSOCK32.DLL::#10	wsock32.lib(WSOCK32.dll) _inet_addr@4	00/c0/global_10_00c0040a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00410	import_thunk	WSOCK32.DLL::#2	wsock32.lib(WSOCK32.dll) _bind@12	00/c0/global_2_00c00410.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00416	import_thunk	WSOCK32.DLL::#9	wsock32.lib(WSOCK32.dll) _htons@4	00/c0/global_9_00c00416.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c0041c	import_thunk	WSOCK32.DLL::#23	wsock32.lib(WSOCK32.dll) _socket@12	00/c0/global_23_00c0041c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00422	import_thunk	WSOCK32.DLL::#111	wsock32.lib(WSOCK32.dll) _WSAGetLastError@0	00/c0/global_111_00c00422.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00428	import_thunk	WSOCK32.DLL::#15	wsock32.lib(WSOCK32.dll) _ntohs@4	00/c0/global_15_00c00428.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c0042e	import_thunk	WSOCK32.DLL::#11	wsock32.lib(WSOCK32.dll) _inet_ntoa@4	00/c0/global_11_00c0042e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00434	import_thunk	WSOCK32.DLL::#3	wsock32.lib(WSOCK32.dll) _closesocket@4	00/c0/global_3_00c00434.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c0043a	import_thunk	WSOCK32.DLL::#13	wsock32.lib(WSOCK32.dll) _listen@8	00/c0/global_13_00c0043a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00440	import_thunk	WSOCK32.DLL::#21	wsock32.lib(WSOCK32.dll) _setsockopt@20	00/c0/global_21_00c00440.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00446	import_thunk	WSOCK32.DLL::#1	wsock32.lib(WSOCK32.dll) _accept@12	00/c0/global_1_00c00446.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c0044c	import_thunk	WSOCK32.DLL::#20	wsock32.lib(WSOCK32.dll) _sendto@24	00/c0/global_20_00c0044c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00452	import_thunk	WSOCK32.DLL::#16	wsock32.lib(WSOCK32.dll) _recv@16	00/c0/global_16_00c00452.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c00458	import_thunk	WSOCK32.DLL::#17	wsock32.lib(WSOCK32.dll) _recvfrom@24	00/c0/global_17_00c00458.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c0045e	import_thunk	WSOCK32.DLL::#4	wsock32.lib(WSOCK32.dll) _connect@12	00/c0/global_4_00c0045e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c716c6	import_thunk	WINMM.DLL::waveOutGetDevCapsA	winmm.lib(WINMM.dll) _waveOutGetDevCapsA@12	00/c7/global_waveOutGetDevCapsA_00c716c6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c716cc	import_thunk	WINMM.DLL::waveOutMessage	winmm.lib(WINMM.dll) _waveOutMessage@16	00/c7/global_waveOutMessage_00c716cc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c73632	import_thunk	WINMM.DLL::waveOutGetNumDevs	winmm.lib(WINMM.dll) _waveOutGetNumDevs@0	00/c7/global_waveOutGetNumDevs_00c73632.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c73638	import_thunk	WINMM.DLL::waveOutClose	winmm.lib(WINMM.dll) _waveOutClose@4	00/c7/global_waveOutClose_00c73638.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c7363e	import_thunk	WINMM.DLL::waveOutUnprepareHeader	winmm.lib(WINMM.dll) _waveOutUnprepareHeader@12	00/c7/global_waveOutUnprepareHeader_00c7363e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c73644	import_thunk	WINMM.DLL::waveOutReset	winmm.lib(WINMM.dll) _waveOutReset@4	00/c7/global_waveOutReset_00c73644.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c7364a	import_thunk	WINMM.DLL::waveOutWrite	winmm.lib(WINMM.dll) _waveOutWrite@12	00/c7/global_waveOutWrite_00c7364a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c73650	import_thunk	WINMM.DLL::waveOutPrepareHeader	winmm.lib(WINMM.dll) _waveOutPrepareHeader@12	00/c7/global_waveOutPrepareHeader_00c73650.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c73656	import_thunk	WINMM.DLL::waveOutOpen	winmm.lib(WINMM.dll) _waveOutOpen@24	00/c7/global_waveOutOpen_00c73656.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87fd0	import_thunk	WINMM.DLL::mixerGetControlDetailsA	winmm.lib(WINMM.dll) _mixerGetControlDetailsA@12	00/c8/global_mixerGetControlDetailsA_00c87fd0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87fd6	import_thunk	WINMM.DLL::mixerGetLineControlsA	winmm.lib(WINMM.dll) _mixerGetLineControlsA@12	00/c8/global_mixerGetLineControlsA_00c87fd6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87fdc	import_thunk	WINMM.DLL::mixerGetLineInfoA	winmm.lib(WINMM.dll) _mixerGetLineInfoA@12	00/c8/global_mixerGetLineInfoA_00c87fdc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87fe2	import_thunk	WINMM.DLL::mixerOpen	winmm.lib(WINMM.dll) _mixerOpen@20	00/c8/global_mixerOpen_00c87fe2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87fe8	import_thunk	WINMM.DLL::mixerGetDevCapsA	winmm.lib(WINMM.dll) _mixerGetDevCapsA@12	00/c8/global_mixerGetDevCapsA_00c87fe8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87fee	import_thunk	WINMM.DLL::mixerGetNumDevs	winmm.lib(WINMM.dll) _mixerGetNumDevs@0	00/c8/global_mixerGetNumDevs_00c87fee.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87ff4	import_thunk	WINMM.DLL::mixerClose	winmm.lib(WINMM.dll) _mixerClose@4	00/c8/global_mixerClose_00c87ff4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00c87ffa	import_thunk	WINMM.DLL::mixerSetControlDetails	winmm.lib(WINMM.dll) _mixerSetControlDetails@12	00/c8/global_mixerSetControlDetails_00c87ffa.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb556a	import_thunk	IMM32.DLL::ImmGetCandidateListW	imm32.lib(IMM32.dll) _ImmGetCandidateListW@16	00/cb/global_ImmGetCandidateListW_00cb556a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5570	import_thunk	IMM32.DLL::ImmGetCompositionStringW	imm32.lib(IMM32.dll) _ImmGetCompositionStringW@16	00/cb/global_ImmGetCompositionStringW_00cb5570.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5576	import_thunk	IMM32.DLL::ImmSetOpenStatus	imm32.lib(IMM32.dll) _ImmSetOpenStatus@8	00/cb/global_ImmSetOpenStatus_00cb5576.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb557c	import_thunk	IMM32.DLL::ImmSimulateHotKey	imm32.lib(IMM32.dll) _ImmSimulateHotKey@8	00/cb/global_ImmSimulateHotKey_00cb557c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5594	import_thunk	KERNEL32.DLL::GetProcAddress	kernel32.lib(KERNEL32.dll) _GetProcAddress@8	00/cb/global_GetProcAddress_00cb5594.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb559a	import_thunk	KERNEL32.DLL::LoadLibraryA	kernel32.lib(KERNEL32.dll) _LoadLibraryA@4	00/cb/global_LoadLibraryA_00cb559a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55a0	import_thunk	KERNEL32.DLL::FreeLibrary	kernel32.lib(KERNEL32.dll) _FreeLibrary@4	00/cb/global_FreeLibrary_00cb55a0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55a6	import_thunk	KERNEL32.DLL::LoadLibraryW	kernel32.lib(KERNEL32.dll) _LoadLibraryW@4	00/cb/global_LoadLibraryW_00cb55a6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55ac	import_thunk	KERNEL32.DLL::DeleteFileW	kernel32.lib(KERNEL32.dll) _DeleteFileW@4	00/cb/global_DeleteFileW_00cb55ac.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55b2	import_thunk	KERNEL32.DLL::CloseHandle	kernel32.lib(KERNEL32.dll) _CloseHandle@4	00/cb/global_CloseHandle_00cb55b2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55b8	import_thunk	KERNEL32.DLL::CreateFileW	kernel32.lib(KERNEL32.dll) _CreateFileW@28	00/cb/global_CreateFileW_00cb55b8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55be	import_thunk	KERNEL32.DLL::CreateMutexW	kernel32.lib(KERNEL32.dll) _CreateMutexW@12	00/cb/global_CreateMutexW_00cb55be.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55c4	import_thunk	KERNEL32.DLL::OpenMutexW	kernel32.lib(KERNEL32.dll) _OpenMutexW@12	00/cb/global_OpenMutexW_00cb55c4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55ca	import_thunk	KERNEL32.DLL::GlobalMemoryStatus	kernel32.lib(KERNEL32.dll) _GlobalMemoryStatus@4	00/cb/global_GlobalMemoryStatus_00cb55ca.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55d0	import_thunk	KERNEL32.DLL::Sleep	kernel32.lib(KERNEL32.dll) _Sleep@4	00/cb/global_Sleep_00cb55d0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55d6	import_thunk	KERNEL32.DLL::GetSystemTime	kernel32.lib(KERNEL32.dll) _GetSystemTime@4	00/cb/global_GetSystemTime_00cb55d6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55dc	import_thunk	KERNEL32.DLL::OutputDebugStringW	kernel32.lib(KERNEL32.dll) _OutputDebugStringW@4	00/cb/global_OutputDebugStringW_00cb55dc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55e2	import_thunk	KERNEL32.DLL::LeaveCriticalSection	kernel32.lib(KERNEL32.dll) _LeaveCriticalSection@4	00/cb/global_LeaveCriticalSection_00cb55e2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55e8	import_thunk	KERNEL32.DLL::EnterCriticalSection	kernel32.lib(KERNEL32.dll) _EnterCriticalSection@4	00/cb/global_EnterCriticalSection_00cb55e8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55ee	import_thunk	KERNEL32.DLL::WaitForSingleObjectEx	kernel32.lib(KERNEL32.dll) _WaitForSingleObjectEx@12	00/cb/global_WaitForSingleObjectEx_00cb55ee.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55f4	import_thunk	KERNEL32.DLL::QueryPerformanceFrequency	kernel32.lib(KERNEL32.dll) _QueryPerformanceFrequency@4	00/cb/global_QueryPerformanceFrequency_00cb55f4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb55fa	import_thunk	KERNEL32.DLL::QueryPerformanceCounter	kernel32.lib(KERNEL32.dll) _QueryPerformanceCounter@4	00/cb/global_QueryPerformanceCounter_00cb55fa.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5600	import_thunk	KERNEL32.DLL::GetTickCount	kernel32.lib(KERNEL32.dll) _GetTickCount@0	00/cb/global_GetTickCount_00cb5600.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5606	import_thunk	KERNEL32.DLL::GlobalFree	kernel32.lib(KERNEL32.dll) _GlobalFree@4	00/cb/global_GlobalFree_00cb5606.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb560c	import_thunk	KERNEL32.DLL::ReadFileEx	kernel32.lib(KERNEL32.dll) _ReadFileEx@20	00/cb/global_ReadFileEx_00cb560c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5612	import_thunk	KERNEL32.DLL::GetFileSize	kernel32.lib(KERNEL32.dll) _GetFileSize@8	00/cb/global_GetFileSize_00cb5612.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5618	import_thunk	KERNEL32.DLL::SetEndOfFile	kernel32.lib(KERNEL32.dll) _SetEndOfFile@4	00/cb/global_SetEndOfFile_00cb5618.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb561e	import_thunk	KERNEL32.DLL::SetFilePointer	kernel32.lib(KERNEL32.dll) _SetFilePointer@16	00/cb/global_SetFilePointer_00cb561e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5624	import_thunk	KERNEL32.DLL::DeleteCriticalSection	kernel32.lib(KERNEL32.dll) _DeleteCriticalSection@4	00/cb/global_DeleteCriticalSection_00cb5624.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb562a	import_thunk	KERNEL32.DLL::SetEvent	kernel32.lib(KERNEL32.dll) _SetEvent@4	00/cb/global_SetEvent_00cb562a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5630	import_thunk	KERNEL32.DLL::SleepEx	kernel32.lib(KERNEL32.dll) _SleepEx@8	00/cb/global_SleepEx_00cb5630.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5636	import_thunk	KERNEL32.DLL::WriteFileEx	kernel32.lib(KERNEL32.dll) _WriteFileEx@20	00/cb/global_WriteFileEx_00cb5636.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb563c	import_thunk	KERNEL32.DLL::GlobalAlloc	kernel32.lib(KERNEL32.dll) _GlobalAlloc@8	00/cb/global_GlobalAlloc_00cb563c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5642	import_thunk	KERNEL32.DLL::SetThreadPriority	kernel32.lib(KERNEL32.dll) _SetThreadPriority@8	00/cb/global_SetThreadPriority_00cb5642.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5648	import_thunk	KERNEL32.DLL::GetCurrentThread	kernel32.lib(KERNEL32.dll) _GetCurrentThread@0	00/cb/global_GetCurrentThread_00cb5648.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb564e	import_thunk	KERNEL32.DLL::CreateEventW	kernel32.lib(KERNEL32.dll) _CreateEventW@16	00/cb/global_CreateEventW_00cb564e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5654	import_thunk	KERNEL32.DLL::InitializeCriticalSection	kernel32.lib(KERNEL32.dll) _InitializeCriticalSection@4	00/cb/global_InitializeCriticalSection_00cb5654.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb565a	import_thunk	KERNEL32.DLL::GetModuleFileNameW	kernel32.lib(KERNEL32.dll) _GetModuleFileNameW@12	00/cb/global_GetModuleFileNameW_00cb565a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5660	import_thunk	KERNEL32.DLL::GetFileAttributesW	kernel32.lib(KERNEL32.dll) _GetFileAttributesW@4	00/cb/global_GetFileAttributesW_00cb5660.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5666	import_thunk	KERNEL32.DLL::GetFileAttributesExW	kernel32.lib(KERNEL32.dll) _GetFileAttributesExW@12	00/cb/global_GetFileAttributesExW_00cb5666.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb566c	import_thunk	KERNEL32.DLL::SetFileAttributesW	kernel32.lib(KERNEL32.dll) _SetFileAttributesW@8	00/cb/global_SetFileAttributesW_00cb566c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5672	import_thunk	KERNEL32.DLL::GetDiskFreeSpaceExW	kernel32.lib(KERNEL32.dll) _GetDiskFreeSpaceExW@16	00/cb/global_GetDiskFreeSpaceExW_00cb5672.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5678	import_thunk	KERNEL32.DLL::GetFileInformationByHandle	kernel32.lib(KERNEL32.dll) _GetFileInformationByHandle@8	00/cb/global_GetFileInformationByHandle_00cb5678.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb567e	import_thunk	KERNEL32.DLL::FlushFileBuffers	kernel32.lib(KERNEL32.dll) _FlushFileBuffers@4	00/cb/global_FlushFileBuffers_00cb567e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5684	import_thunk	KERNEL32.DLL::ReadFile	kernel32.lib(KERNEL32.dll) _ReadFile@20	00/cb/global_ReadFile_00cb5684.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb568a	import_thunk	KERNEL32.DLL::WriteFile	kernel32.lib(KERNEL32.dll) _WriteFile@20	00/cb/global_WriteFile_00cb568a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5690	import_thunk	KERNEL32.DLL::OutputDebugStringA	kernel32.lib(KERNEL32.dll) _OutputDebugStringA@4	00/cb/global_OutputDebugStringA_00cb5690.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5696	import_thunk	KERNEL32.DLL::EnumResourceNamesA	kernel32.lib(KERNEL32.dll) _EnumResourceNamesA@16	00/cb/global_EnumResourceNamesA_00cb5696.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb569c	import_thunk	KERNEL32.DLL::WideCharToMultiByte	kernel32.lib(KERNEL32.dll) _WideCharToMultiByte@32	00/cb/global_WideCharToMultiByte_00cb569c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56a2	import_thunk	KERNEL32.DLL::LockResource	kernel32.lib(KERNEL32.dll) _LockResource@4	00/cb/global_LockResource_00cb56a2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56a8	import_thunk	KERNEL32.DLL::LoadResource	kernel32.lib(KERNEL32.dll) _LoadResource@8	00/cb/global_LoadResource_00cb56a8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56ae	import_thunk	KERNEL32.DLL::FindResourceExA	kernel32.lib(KERNEL32.dll) _FindResourceExA@16	00/cb/global_FindResourceExA_00cb56ae.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56b4	import_thunk	KERNEL32.DLL::lstrlenA	kernel32.lib(KERNEL32.dll) _lstrlenA@4	00/cb/global_lstrlenA_00cb56b4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56ba	import_thunk	KERNEL32.DLL::lstrcatA	kernel32.lib(KERNEL32.dll) _lstrcatA@8	00/cb/global_lstrcatA_00cb56ba.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56c0	import_thunk	KERNEL32.DLL::lstrcpyA	kernel32.lib(KERNEL32.dll) _lstrcpyA@8	00/cb/global_lstrcpyA_00cb56c0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56c6	import_thunk	KERNEL32.DLL::ExitProcess	kernel32.lib(KERNEL32.dll) _ExitProcess@4	00/cb/global_ExitProcess_00cb56c6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56cc	import_thunk	KERNEL32.DLL::GetCurrentDirectoryA	kernel32.lib(KERNEL32.dll) _GetCurrentDirectoryA@8	00/cb/global_GetCurrentDirectoryA_00cb56cc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56d2	import_thunk	KERNEL32.DLL::GetCommandLineW	kernel32.lib(KERNEL32.dll) _GetCommandLineW@0	00/cb/global_GetCommandLineW_00cb56d2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56d8	import_thunk	KERNEL32.DLL::SetPriorityClass	kernel32.lib(KERNEL32.dll) _SetPriorityClass@8	00/cb/global_SetPriorityClass_00cb56d8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56de	import_thunk	KERNEL32.DLL::GetCurrentProcess	kernel32.lib(KERNEL32.dll) _GetCurrentProcess@0	00/cb/global_GetCurrentProcess_00cb56de.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56e4	import_thunk	KERNEL32.DLL::ConvertThreadToFiber	kernel32.lib(KERNEL32.dll) _ConvertThreadToFiber@4	00/cb/global_ConvertThreadToFiber_00cb56e4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56ea	import_thunk	KERNEL32.DLL::SetFileTime	kernel32.lib(KERNEL32.dll) _SetFileTime@16	00/cb/global_SetFileTime_00cb56ea.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56f0	import_thunk	KERNEL32.DLL::GetFileTime	kernel32.lib(KERNEL32.dll) _GetFileTime@16	00/cb/global_GetFileTime_00cb56f0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56f6	import_thunk	KERNEL32.DLL::GetFileSizeEx	kernel32.lib(KERNEL32.dll) _GetFileSizeEx@8	00/cb/global_GetFileSizeEx_00cb56f6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb56fc	import_thunk	KERNEL32.DLL::GetLastError	kernel32.lib(KERNEL32.dll) _GetLastError@0	00/cb/global_GetLastError_00cb56fc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5702	import_thunk	KERNEL32.DLL::RemoveDirectoryW	kernel32.lib(KERNEL32.dll) _RemoveDirectoryW@4	00/cb/global_RemoveDirectoryW_00cb5702.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5708	import_thunk	KERNEL32.DLL::FileTimeToSystemTime	kernel32.lib(KERNEL32.dll) _FileTimeToSystemTime@8	00/cb/global_FileTimeToSystemTime_00cb5708.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb570e	import_thunk	KERNEL32.DLL::SystemTimeToFileTime	kernel32.lib(KERNEL32.dll) _SystemTimeToFileTime@8	00/cb/global_SystemTimeToFileTime_00cb570e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5714	import_thunk	KERNEL32.DLL::CreateFileA	kernel32.lib(KERNEL32.dll) _CreateFileA@28	00/cb/global_CreateFileA_00cb5714.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb571a	import_thunk	KERNEL32.DLL::VirtualAlloc	kernel32.lib(KERNEL32.dll) _VirtualAlloc@16	00/cb/global_VirtualAlloc_00cb571a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5720	import_thunk	KERNEL32.DLL::VirtualFree	kernel32.lib(KERNEL32.dll) _VirtualFree@12	00/cb/global_VirtualFree_00cb5720.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5726	import_thunk	KERNEL32.DLL::GetProcessHeap	kernel32.lib(KERNEL32.dll) _GetProcessHeap@0	00/cb/global_GetProcessHeap_00cb5726.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb572c	import_thunk	KERNEL32.DLL::InterlockedDecrement	kernel32.lib(KERNEL32.dll) _InterlockedDecrement@4	00/cb/global_InterlockedDecrement_00cb572c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5732	import_thunk	KERNEL32.DLL::InterlockedIncrement	kernel32.lib(KERNEL32.dll) _InterlockedIncrement@4	00/cb/global_InterlockedIncrement_00cb5732.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5738	import_thunk	KERNEL32.DLL::TryEnterCriticalSection	kernel32.lib(KERNEL32.dll) _TryEnterCriticalSection@4	00/cb/global_TryEnterCriticalSection_00cb5738.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb573e	import_thunk	KERNEL32.DLL::GetTimeFormatW	kernel32.lib(KERNEL32.dll) _GetTimeFormatW@24	00/cb/global_GetTimeFormatW_00cb573e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5744	import_thunk	KERNEL32.DLL::GetDateFormatW	kernel32.lib(KERNEL32.dll) _GetDateFormatW@24	00/cb/global_GetDateFormatW_00cb5744.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb574a	import_thunk	KERNEL32.DLL::GetUserDefaultLCID	kernel32.lib(KERNEL32.dll) _GetUserDefaultLCID@0	00/cb/global_GetUserDefaultLCID_00cb574a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5750	import_thunk	KERNEL32.DLL::FileTimeToLocalFileTime	kernel32.lib(KERNEL32.dll) _FileTimeToLocalFileTime@8	00/cb/global_FileTimeToLocalFileTime_00cb5750.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5756	import_thunk	KERNEL32.DLL::GetSystemDefaultLangID	kernel32.lib(KERNEL32.dll) _GetSystemDefaultLangID@0	00/cb/global_GetSystemDefaultLangID_00cb5756.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb575c	import_thunk	KERNEL32.DLL::GetCPInfoExA	kernel32.lib(KERNEL32.dll) _GetCPInfoExA@12	00/cb/global_GetCPInfoExA_00cb575c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5762	import_thunk	KERNEL32.DLL::GetVersionExA	kernel32.lib(KERNEL32.dll) _GetVersionExA@4	00/cb/global_GetVersionExA_00cb5762.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5768	import_thunk	KERNEL32.DLL::MultiByteToWideChar	kernel32.lib(KERNEL32.dll) _MultiByteToWideChar@24	00/cb/global_MultiByteToWideChar_00cb5768.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb576e	import_thunk	KERNEL32.DLL::LocalFree	kernel32.lib(KERNEL32.dll) _LocalFree@4	00/cb/global_LocalFree_00cb576e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5774	import_thunk	KERNEL32.DLL::FormatMessageW	kernel32.lib(KERNEL32.dll) _FormatMessageW@28	00/cb/global_FormatMessageW_00cb5774.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb577a	import_thunk	KERNEL32.DLL::VirtualQuery	kernel32.lib(KERNEL32.dll) _VirtualQuery@12	00/cb/global_VirtualQuery_00cb577a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5780	import_thunk	KERNEL32.DLL::HeapSize	kernel32.lib(KERNEL32.dll) _HeapSize@12	00/cb/global_HeapSize_00cb5780.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5786	import_thunk	KERNEL32.DLL::HeapAlloc	kernel32.lib(KERNEL32.dll) _HeapAlloc@12	00/cb/global_HeapAlloc_00cb5786.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb578c	import_thunk	KERNEL32.DLL::HeapFree	kernel32.lib(KERNEL32.dll) _HeapFree@12	00/cb/global_HeapFree_00cb578c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5792	import_thunk	KERNEL32.DLL::GetCurrentThreadId	kernel32.lib(KERNEL32.dll) _GetCurrentThreadId@0	00/cb/global_GetCurrentThreadId_00cb5792.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5798	import_thunk	KERNEL32.DLL::GetCurrentProcessId	kernel32.lib(KERNEL32.dll) _GetCurrentProcessId@0	00/cb/global_GetCurrentProcessId_00cb5798.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb579e	import_thunk	KERNEL32.DLL::GetSystemTimeAsFileTime	kernel32.lib(KERNEL32.dll) _GetSystemTimeAsFileTime@4	00/cb/global_GetSystemTimeAsFileTime_00cb579e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57a4	import_thunk	KERNEL32.DLL::DebugBreak	kernel32.lib(KERNEL32.dll) _DebugBreak@0	00/cb/global_DebugBreak_00cb57a4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57aa	import_thunk	KERNEL32.DLL::CreateThread	kernel32.lib(KERNEL32.dll) _CreateThread@24	00/cb/global_CreateThread_00cb57aa.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57b0	import_thunk	KERNEL32.DLL::CreateSemaphoreA	kernel32.lib(KERNEL32.dll) _CreateSemaphoreA@16	00/cb/global_CreateSemaphoreA_00cb57b0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57b6	import_thunk	KERNEL32.DLL::WaitForSingleObject	kernel32.lib(KERNEL32.dll) _WaitForSingleObject@8	00/cb/global_WaitForSingleObject_00cb57b6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57bc	import_thunk	KERNEL32.DLL::ReleaseSemaphore	kernel32.lib(KERNEL32.dll) _ReleaseSemaphore@12	00/cb/global_ReleaseSemaphore_00cb57bc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57c2	import_thunk	KERNEL32.DLL::FindClose	kernel32.lib(KERNEL32.dll) _FindClose@4	00/cb/global_FindClose_00cb57c2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57c8	import_thunk	KERNEL32.DLL::FindFirstFileA	kernel32.lib(KERNEL32.dll) _FindFirstFileA@8	00/cb/global_FindFirstFileA_00cb57c8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57ce	import_thunk	KERNEL32.DLL::GetSystemDirectoryA	kernel32.lib(KERNEL32.dll) _GetSystemDirectoryA@8	00/cb/global_GetSystemDirectoryA_00cb57ce.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57d4	import_thunk	KERNEL32.DLL::DeviceIoControl	kernel32.lib(KERNEL32.dll) _DeviceIoControl@32	00/cb/global_DeviceIoControl_00cb57d4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57da	import_thunk	KERNEL32.DLL::CreateEventA	kernel32.lib(KERNEL32.dll) _CreateEventA@16	00/cb/global_CreateEventA_00cb57da.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57e0	import_thunk	KERNEL32.DLL::WaitForMultipleObjects	kernel32.lib(KERNEL32.dll) _WaitForMultipleObjects@16	00/cb/global_WaitForMultipleObjects_00cb57e0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57e6	import_thunk	KERNEL32.DLL::GetVersion	kernel32.lib(KERNEL32.dll) _GetVersion@0	00/cb/global_GetVersion_00cb57e6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57ec	import_thunk	KERNEL32.DLL::ResetEvent	kernel32.lib(KERNEL32.dll) _ResetEvent@4	00/cb/global_ResetEvent_00cb57ec.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57f2	import_thunk	KERNEL32.DLL::lstrcmpW	kernel32.lib(KERNEL32.dll) _lstrcmpW@8	00/cb/global_lstrcmpW_00cb57f2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57f8	import_thunk	KERNEL32.DLL::lstrcpyW	kernel32.lib(KERNEL32.dll) _lstrcpyW@8	00/cb/global_lstrcpyW_00cb57f8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb57fe	import_thunk	KERNEL32.DLL::MulDiv	kernel32.lib(KERNEL32.dll) _MulDiv@12	00/cb/global_MulDiv_00cb57fe.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5804	import_thunk	KERNEL32.DLL::lstrcpynW	kernel32.lib(KERNEL32.dll) _lstrcpynW@12	00/cb/global_lstrcpynW_00cb5804.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb580a	import_thunk	KERNEL32.DLL::lstrlenW	kernel32.lib(KERNEL32.dll) _lstrlenW@4	00/cb/global_lstrlenW_00cb580a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5810	import_thunk	KERNEL32.DLL::GetSystemInfo	kernel32.lib(KERNEL32.dll) _GetSystemInfo@4	00/cb/global_GetSystemInfo_00cb5810.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5816	import_thunk	KERNEL32.DLL::DuplicateHandle	kernel32.lib(KERNEL32.dll) _DuplicateHandle@28	00/cb/global_DuplicateHandle_00cb5816.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb581c	import_thunk	KERNEL32.DLL::CreateSemaphoreW	kernel32.lib(KERNEL32.dll) _CreateSemaphoreW@16	00/cb/global_CreateSemaphoreW_00cb581c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5822	import_thunk	KERNEL32.DLL::GetModuleHandleW	kernel32.lib(KERNEL32.dll) _GetModuleHandleW@4	00/cb/global_GetModuleHandleW_00cb5822.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5828	import_thunk	KERNEL32.DLL::lstrcmpiW	kernel32.lib(KERNEL32.dll) _lstrcmpiW@8	00/cb/global_lstrcmpiW_00cb5828.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb582e	import_thunk	KERNEL32.DLL::InterlockedExchange	kernel32.lib(KERNEL32.dll) _InterlockedExchange@8	00/cb/global_InterlockedExchange_00cb582e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5834	import_thunk	KERNEL32.DLL::GetThreadPriority	kernel32.lib(KERNEL32.dll) _GetThreadPriority@4	00/cb/global_GetThreadPriority_00cb5834.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb583a	import_thunk	KERNEL32.DLL::GetVersionExW	kernel32.lib(KERNEL32.dll) _GetVersionExW@4	00/cb/global_GetVersionExW_00cb583a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5840	import_thunk	KERNEL32.DLL::CompareStringA	kernel32.lib(KERNEL32.dll) _CompareStringA@24	00/cb/global_CompareStringA_00cb5840.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5846	import_thunk	KERNEL32.DLL::IsDBCSLeadByteEx	kernel32.lib(KERNEL32.dll) _IsDBCSLeadByteEx@8	00/cb/global_IsDBCSLeadByteEx_00cb5846.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb584c	import_thunk	KERNEL32.DLL::GetLocaleInfoA	kernel32.lib(KERNEL32.dll) _GetLocaleInfoA@16	00/cb/global_GetLocaleInfoA_00cb584c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5852	import_thunk	KERNEL32.DLL::lstrcatW	kernel32.lib(KERNEL32.dll) _lstrcatW@8	00/cb/global_lstrcatW_00cb5852.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5858	import_thunk	USER32.DLL::MessageBoxA	user32.lib(USER32.dll) _MessageBoxA@16	00/cb/global_MessageBoxA_00cb5858.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb585e	import_thunk	USER32.DLL::MessageBoxW	user32.lib(USER32.dll) _MessageBoxW@16	00/cb/global_MessageBoxW_00cb585e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5864	import_thunk	USER32.DLL::GetAsyncKeyState	user32.lib(USER32.dll) _GetAsyncKeyState@4	00/cb/global_GetAsyncKeyState_00cb5864.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb586a	import_thunk	USER32.DLL::wsprintfA	user32.lib(USER32.dll) _wsprintfA	00/cb/global_wsprintfA_00cb586a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5870	import_thunk	USER32.DLL::LoadStringA	user32.lib(USER32.dll) _LoadStringA@16	00/cb/global_LoadStringA_00cb5870.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5876	import_thunk	USER32.DLL::DialogBoxIndirectParamA	user32.lib(USER32.dll) _DialogBoxIndirectParamA@20	00/cb/global_DialogBoxIndirectParamA_00cb5876.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb587c	import_thunk	USER32.DLL::DialogBoxParamA	user32.lib(USER32.dll) _DialogBoxParamA@20	00/cb/global_DialogBoxParamA_00cb587c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5882	import_thunk	USER32.DLL::RemovePropA	user32.lib(USER32.dll) _RemovePropA@8	00/cb/global_RemovePropA_00cb5882.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5888	import_thunk	USER32.DLL::SetWindowLongA	user32.lib(USER32.dll) _SetWindowLongA@12	00/cb/global_SetWindowLongA_00cb5888.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb588e	import_thunk	USER32.DLL::CallWindowProcA	user32.lib(USER32.dll) _CallWindowProcA@20	00/cb/global_CallWindowProcA_00cb588e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5894	import_thunk	USER32.DLL::GetPropA	user32.lib(USER32.dll) _GetPropA@8	00/cb/global_GetPropA_00cb5894.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb589a	import_thunk	USER32.DLL::SendMessageA	user32.lib(USER32.dll) _SendMessageA@16	00/cb/global_SendMessageA_00cb589a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58a0	import_thunk	USER32.DLL::SetCursor	user32.lib(USER32.dll) _SetCursor@4	00/cb/global_SetCursor_00cb58a0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58a6	import_thunk	USER32.DLL::LoadCursorA	user32.lib(USER32.dll) _LoadCursorA@8	00/cb/global_LoadCursorA_00cb58a6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58ac	import_thunk	USER32.DLL::ReleaseCapture	user32.lib(USER32.dll) _ReleaseCapture@0	00/cb/global_ReleaseCapture_00cb58ac.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58b2	import_thunk	USER32.DLL::PtInRect	user32.lib(USER32.dll) _PtInRect@12	00/cb/global_PtInRect_00cb58b2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58b8	import_thunk	USER32.DLL::ClientToScreen	user32.lib(USER32.dll) _ClientToScreen@8	00/cb/global_ClientToScreen_00cb58b8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58be	import_thunk	USER32.DLL::GetWindowRect	user32.lib(USER32.dll) _GetWindowRect@8	00/cb/global_GetWindowRect_00cb58be.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58c4	import_thunk	USER32.DLL::SetCapture	user32.lib(USER32.dll) _SetCapture@4	00/cb/global_SetCapture_00cb58c4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58ca	import_thunk	USER32.DLL::InvalidateRect	user32.lib(USER32.dll) _InvalidateRect@12	00/cb/global_InvalidateRect_00cb58ca.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58d0	import_thunk	USER32.DLL::GetCapture	user32.lib(USER32.dll) _GetCapture@0	00/cb/global_GetCapture_00cb58d0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58d6	import_thunk	USER32.DLL::GetWindowLongA	user32.lib(USER32.dll) _GetWindowLongA@8	00/cb/global_GetWindowLongA_00cb58d6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58dc	import_thunk	USER32.DLL::SetPropA	user32.lib(USER32.dll) _SetPropA@12	00/cb/global_SetPropA_00cb58dc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58e2	import_thunk	USER32.DLL::GetParent	user32.lib(USER32.dll) _GetParent@4	00/cb/global_GetParent_00cb58e2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58e8	import_thunk	USER32.DLL::EnableWindow	user32.lib(USER32.dll) _EnableWindow@8	00/cb/global_EnableWindow_00cb58e8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58ee	import_thunk	USER32.DLL::GetDlgItem	user32.lib(USER32.dll) _GetDlgItem@8	00/cb/global_GetDlgItem_00cb58ee.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58f4	import_thunk	USER32.DLL::SetDlgItemTextA	user32.lib(USER32.dll) _SetDlgItemTextA@12	00/cb/global_SetDlgItemTextA_00cb58f4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb58fa	import_thunk	USER32.DLL::SetWindowTextA	user32.lib(USER32.dll) _SetWindowTextA@8	00/cb/global_SetWindowTextA_00cb58fa.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5900	import_thunk	USER32.DLL::MoveWindow	user32.lib(USER32.dll) _MoveWindow@24	00/cb/global_MoveWindow_00cb5900.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5906	import_thunk	USER32.DLL::GetClientRect	user32.lib(USER32.dll) _GetClientRect@8	00/cb/global_GetClientRect_00cb5906.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb590c	import_thunk	USER32.DLL::GetDesktopWindow	user32.lib(USER32.dll) _GetDesktopWindow@0	00/cb/global_GetDesktopWindow_00cb590c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5912	import_thunk	USER32.DLL::DestroyWindow	user32.lib(USER32.dll) _DestroyWindow@4	00/cb/global_DestroyWindow_00cb5912.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5918	import_thunk	USER32.DLL::EndDialog	user32.lib(USER32.dll) _EndDialog@8	00/cb/global_EndDialog_00cb5918.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb591e	import_thunk	USER32.DLL::IsDlgButtonChecked	user32.lib(USER32.dll) _IsDlgButtonChecked@8	00/cb/global_IsDlgButtonChecked_00cb591e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5924	import_thunk	USER32.DLL::UnregisterClassA	user32.lib(USER32.dll) _UnregisterClassA@8	00/cb/global_UnregisterClassA_00cb5924.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb592a	import_thunk	USER32.DLL::ShowCursor	user32.lib(USER32.dll) _ShowCursor@4	00/cb/global_ShowCursor_00cb592a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5930	import_thunk	USER32.DLL::ShowWindow	user32.lib(USER32.dll) _ShowWindow@8	00/cb/global_ShowWindow_00cb5930.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5936	import_thunk	USER32.DLL::CreateWindowExA	user32.lib(USER32.dll) _CreateWindowExA@48	00/cb/global_CreateWindowExA_00cb5936.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb593c	import_thunk	USER32.DLL::RegisterClassExA	user32.lib(USER32.dll) _RegisterClassExA@4	00/cb/global_RegisterClassExA_00cb593c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5942	import_thunk	USER32.DLL::LoadIconA	user32.lib(USER32.dll) _LoadIconA@8	00/cb/global_LoadIconA_00cb5942.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5948	import_thunk	USER32.DLL::DefWindowProcA	user32.lib(USER32.dll) _DefWindowProcA@16	00/cb/global_DefWindowProcA_00cb5948.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb594e	import_thunk	USER32.DLL::DispatchMessageW	user32.lib(USER32.dll) _DispatchMessageW@4	00/cb/global_DispatchMessageW_00cb594e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5954	import_thunk	USER32.DLL::TranslateMessage	user32.lib(USER32.dll) _TranslateMessage@4	00/cb/global_TranslateMessage_00cb5954.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb595a	import_thunk	USER32.DLL::PeekMessageW	user32.lib(USER32.dll) _PeekMessageW@20	00/cb/global_PeekMessageW_00cb595a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5960	import_thunk	USER32.DLL::GetSysColor	user32.lib(USER32.dll) _GetSysColor@4	00/cb/global_GetSysColor_00cb5960.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5966	import_thunk	USER32.DLL::GetForegroundWindow	user32.lib(USER32.dll) _GetForegroundWindow@0	00/cb/global_GetForegroundWindow_00cb5966.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb596c	import_thunk	USER32.DLL::DefWindowProcW	user32.lib(USER32.dll) _DefWindowProcW@16	00/cb/global_DefWindowProcW_00cb596c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5972	import_thunk	USER32.DLL::WaitMessage	user32.lib(USER32.dll) _WaitMessage@0	00/cb/global_WaitMessage_00cb5972.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5978	import_thunk	USER32.DLL::UpdateWindow	user32.lib(USER32.dll) _UpdateWindow@4	00/cb/global_UpdateWindow_00cb5978.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb597e	import_thunk	USER32.DLL::CreateWindowExW	user32.lib(USER32.dll) _CreateWindowExW@48	00/cb/global_CreateWindowExW_00cb597e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5984	import_thunk	USER32.DLL::GetSystemMetrics	user32.lib(USER32.dll) _GetSystemMetrics@4	00/cb/global_GetSystemMetrics_00cb5984.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb598a	import_thunk	USER32.DLL::RegisterClassExW	user32.lib(USER32.dll) _RegisterClassExW@4	00/cb/global_RegisterClassExW_00cb598a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5990	import_thunk	USER32.DLL::LoadIconW	user32.lib(USER32.dll) _LoadIconW@8	00/cb/global_LoadIconW_00cb5990.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5996	import_thunk	USER32.DLL::LoadCursorW	user32.lib(USER32.dll) _LoadCursorW@8	00/cb/global_LoadCursorW_00cb5996.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb599c	import_thunk	USER32.DLL::CharNextExA	user32.lib(USER32.dll) _CharNextExA@12	00/cb/global_CharNextExA_00cb599c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59a2	import_thunk	USER32.DLL::SetCursorPos	user32.lib(USER32.dll) _SetCursorPos@8	00/cb/global_SetCursorPos_00cb59a2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59a8	import_thunk	USER32.DLL::OffsetRect	user32.lib(USER32.dll) _OffsetRect@12	00/cb/global_OffsetRect_00cb59a8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59ae	import_thunk	USER32.DLL::GetCursorPos	user32.lib(USER32.dll) _GetCursorPos@4	00/cb/global_GetCursorPos_00cb59ae.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59b4	import_thunk	USER32.DLL::PostThreadMessageW	user32.lib(USER32.dll) _PostThreadMessageW@16	00/cb/global_PostThreadMessageW_00cb59b4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59ba	import_thunk	USER32.DLL::GetQueueStatus	user32.lib(USER32.dll) _GetQueueStatus@4	00/cb/global_GetQueueStatus_00cb59ba.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59c0	import_thunk	USER32.DLL::MsgWaitForMultipleObjects	user32.lib(USER32.dll) _MsgWaitForMultipleObjects@20	00/cb/global_MsgWaitForMultipleObjects_00cb59c0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59c6	import_thunk	USER32.DLL::wvsprintfW	user32.lib(USER32.dll) _wvsprintfW@12	00/cb/global_wvsprintfW_00cb59c6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59cc	import_thunk	USER32.DLL::wsprintfW	user32.lib(USER32.dll) _wsprintfW	00/cb/global_wsprintfW_00cb59cc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59d2	import_thunk	USER32.DLL::RegisterWindowMessageW	user32.lib(USER32.dll) _RegisterWindowMessageW@4	00/cb/global_RegisterWindowMessageW_00cb59d2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59d8	import_thunk	USER32.DLL::GetKeyState	user32.lib(USER32.dll) _GetKeyState@4	00/cb/global_GetKeyState_00cb59d8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59de	import_thunk	USER32.DLL::PostQuitMessage	user32.lib(USER32.dll) _PostQuitMessage@4	00/cb/global_PostQuitMessage_00cb59de.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59e4	import_thunk	USER32.DLL::GetMessageA	user32.lib(USER32.dll) _GetMessageA@16	00/cb/global_GetMessageA_00cb59e4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59ea	import_thunk	USER32.DLL::DispatchMessageA	user32.lib(USER32.dll) _DispatchMessageA@4	00/cb/global_DispatchMessageA_00cb59ea.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59f0	import_thunk	USER32.DLL::PeekMessageA	user32.lib(USER32.dll) _PeekMessageA@20	00/cb/global_PeekMessageA_00cb59f0.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59f6	import_thunk	USER32.DLL::GetKeyboardLayout	user32.lib(USER32.dll) _GetKeyboardLayout@4	00/cb/global_GetKeyboardLayout_00cb59f6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb59fc	import_thunk	USER32.DLL::PostMessageA	user32.lib(USER32.dll) _PostMessageA@16	00/cb/global_PostMessageA_00cb59fc.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a02	import_thunk	USER32.DLL::GetFocus	user32.lib(USER32.dll) _GetFocus@0	00/cb/global_GetFocus_00cb5a02.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a08	import_thunk	USER32.DLL::GetCaretBlinkTime	user32.lib(USER32.dll) _GetCaretBlinkTime@0	00/cb/global_GetCaretBlinkTime_00cb5a08.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a0e	import_thunk	USER32.DLL::SendMessageW	user32.lib(USER32.dll) _SendMessageW@16	00/cb/global_SendMessageW_00cb5a0e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a14	import_thunk	USER32.DLL::IsWindowUnicode	user32.lib(USER32.dll) _IsWindowUnicode@4	00/cb/global_IsWindowUnicode_00cb5a14.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a1a	import_thunk	GDI32.DLL::SetTextColor	gdi32.lib(GDI32.dll) _SetTextColor@8	00/cb/global_SetTextColor_00cb5a1a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a20	import_thunk	GDI32.DLL::DeleteObject	gdi32.lib(GDI32.dll) _DeleteObject@4	00/cb/global_DeleteObject_00cb5a20.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a26	import_thunk	GDI32.DLL::CreateFontIndirectA	gdi32.lib(GDI32.dll) _CreateFontIndirectA@4	00/cb/global_CreateFontIndirectA_00cb5a26.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a2c	import_thunk	GDI32.DLL::GetObjectA	gdi32.lib(GDI32.dll) _GetObjectA@12	00/cb/global_GetObjectA_00cb5a2c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a32	import_thunk	GDI32.DLL::GetStockObject	gdi32.lib(GDI32.dll) _GetStockObject@4	00/cb/global_GetStockObject_00cb5a32.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a38	import_thunk	ADVAPI32.DLL::RegCreateKeyExW	advapi32.lib(ADVAPI32.dll) _RegCreateKeyExW@36	00/cb/global_RegCreateKeyExW_00cb5a38.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a3e	import_thunk	ADVAPI32.DLL::RegCloseKey	advapi32.lib(ADVAPI32.dll) _RegCloseKey@4	00/cb/global_RegCloseKey_00cb5a3e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a44	import_thunk	ADVAPI32.DLL::RegQueryValueExW	advapi32.lib(ADVAPI32.dll) _RegQueryValueExW@24	00/cb/global_RegQueryValueExW_00cb5a44.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a4a	import_thunk	ADVAPI32.DLL::RegSetValueExW	advapi32.lib(ADVAPI32.dll) _RegSetValueExW@24	00/cb/global_RegSetValueExW_00cb5a4a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a50	import_thunk	ADVAPI32.DLL::RegDeleteValueW	advapi32.lib(ADVAPI32.dll) _RegDeleteValueW@8	00/cb/global_RegDeleteValueW_00cb5a50.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a56	import_thunk	ADVAPI32.DLL::RegQueryValueExA	advapi32.lib(ADVAPI32.dll) _RegQueryValueExA@24	00/cb/global_RegQueryValueExA_00cb5a56.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a5c	import_thunk	ADVAPI32.DLL::RegOpenKeyExA	advapi32.lib(ADVAPI32.dll) _RegOpenKeyExA@20	00/cb/global_RegOpenKeyExA_00cb5a5c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a62	import_thunk	ADVAPI32.DLL::RegSetValueExA	advapi32.lib(ADVAPI32.dll) _RegSetValueExA@24	00/cb/global_RegSetValueExA_00cb5a62.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a68	import_thunk	ADVAPI32.DLL::RegCreateKeyExA	advapi32.lib(ADVAPI32.dll) _RegCreateKeyExA@36	00/cb/global_RegCreateKeyExA_00cb5a68.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a6e	import_thunk	SHELL32.DLL::SHGetFolderPathW	shell32.lib(SHELL32.dll) _SHGetFolderPathW@20	00/cb/global_SHGetFolderPathW_00cb5a6e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a74	import_thunk	SHELL32.DLL::ShellExecuteA	shell32.lib(SHELL32.dll) _ShellExecuteA@24	00/cb/global_ShellExecuteA_00cb5a74.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a7a	import_thunk	OLE32.DLL::CoInitialize	ole32.lib(ole32.dll) _CoInitialize@4	00/cb/global_CoInitialize_00cb5a7a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a80	import_thunk	OLE32.DLL::CoCreateInstance	ole32.lib(ole32.dll) _CoCreateInstance@20	00/cb/global_CoCreateInstance_00cb5a80.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a86	import_thunk	OLE32.DLL::CoUninitialize	ole32.lib(ole32.dll) _CoUninitialize@0	00/cb/global_CoUninitialize_00cb5a86.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a8c	import_thunk	OLE32.DLL::CoInitializeEx	ole32.lib(ole32.dll) _CoInitializeEx@8	00/cb/global_CoInitializeEx_00cb5a8c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a92	import_thunk	OLE32.DLL::CoTaskMemAlloc	ole32.lib(ole32.dll) _CoTaskMemAlloc@4	00/cb/global_CoTaskMemAlloc_00cb5a92.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a98	import_thunk	OLE32.DLL::CoFreeUnusedLibraries	ole32.lib(ole32.dll) _CoFreeUnusedLibraries@0	00/cb/global_CoFreeUnusedLibraries_00cb5a98.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5a9e	import_thunk	OLE32.DLL::CoTaskMemFree	ole32.lib(ole32.dll) _CoTaskMemFree@4	00/cb/global_CoTaskMemFree_00cb5a9e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5aa4	import_thunk	OLEAUT32.DLL::#2	oleaut32.lib(OLEAUT32.dll) _SysAllocString@4	00/cb/global_2_00cb5aa4.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00cb5aaa	import_thunk	OLEAUT32.DLL::#6	oleaut32.lib(OLEAUT32.dll) _SysFreeString@4	00/cb/global_6_00cb5aaa.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fbf8	import_thunk	MSVCR71.DLL::_mbschr	msvcrt.lib(MSVCR71.dll) __mbschr	00/f3/global_mbschr_00f3fbf8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fbfe	import_thunk	MSVCR71.DLL::_mbscspn	msvcrt.lib(MSVCR71.dll) __mbscspn	00/f3/global_mbscspn_00f3fbfe.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc04	import_thunk	MSVCR71.DLL::_mbspbrk	msvcrt.lib(MSVCR71.dll) __mbspbrk	00/f3/global_mbspbrk_00f3fc04.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc0a	import_thunk	MSVCR71.DLL::_mbsrchr	msvcrt.lib(MSVCR71.dll) __mbsrchr	00/f3/global_mbsrchr_00f3fc0a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc10	import_thunk	MSVCR71.DLL::_mbsspn	msvcrt.lib(MSVCR71.dll) __mbsspn	00/f3/global_mbsspn_00f3fc10.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc16	import_thunk	MSVCR71.DLL::_mbsstr	msvcrt.lib(MSVCR71.dll) __mbsstr	00/f3/global_mbsstr_00f3fc16.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc1c	import_thunk	MSVCR71.DLL::_mbsnbcmp	msvcrt.lib(MSVCR71.dll) __mbsnbcmp	00/f3/global_mbsnbcmp_00f3fc1c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc22	import_thunk	MSVCR71.DLL::_mbsinc	msvcrt.lib(MSVCR71.dll) __mbsinc	00/f3/global_mbsinc_00f3fc22.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc28	import_thunk	MSVCR71.DLL::_mbclen	msvcrt.lib(MSVCR71.dll) __mbclen	00/f3/global_mbclen_00f3fc28.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc2e	import_thunk	MSVCR71.DLL::_ismbcdigit	msvcrt.lib(MSVCR71.dll) __ismbcdigit	00/f3/global_ismbcdigit_00f3fc2e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc34	import_thunk	MSVCR71.DLL::_ismbcspace	msvcrt.lib(MSVCR71.dll) __ismbcspace	00/f3/global_ismbcspace_00f3fc34.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc3a	import_thunk	MSVCR71.DLL::??1exception@@UAE@XZ	msvcrt.lib(MSVCR71.dll) ??1exception@@UAE@XZ	00/f3/global_1exceptionUAEXZ_00f3fc3a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc40	import_thunk	MSVCR71.DLL::??0exception@@QAE@XZ	msvcrt.lib(MSVCR71.dll) ??0exception@@QAE@XZ	00/f3/global_0exceptionQAEXZ_00f3fc40.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fc46	import_thunk	MSVCR71.DLL::??0exception@@QAE@ABV0@@Z	msvcrt.lib(MSVCR71.dll) ??0exception@@QAE@ABV0@@Z	00/f3/global_0exceptionQAEABV0Z_00f3fc46.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fd00	import_thunk	MSVCR71.DLL::printf	msvcrt.lib(MSVCR71.dll) _printf	00/f3/global_printf_00f3fd00.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fd06	import_thunk	MSVCR71.DLL::_errno	msvcrt.lib(MSVCR71.dll) __errno	00/f3/global_errno_00f3fd06.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fd32	import_thunk	MSVCR71.DLL::memchr	msvcrt.lib(MSVCR71.dll) _memchr	00/f3/global_memchr_00f3fd32.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fd38	import_thunk	MSVCR71.DLL::perror	msvcrt.lib(MSVCR71.dll) _perror	00/f3/global_perror_00f3fd38.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fd3e	import_thunk	MSVCR71.DLL::ldexp	msvcrt.lib(MSVCR71.dll) _ldexp	00/f3/global_ldexp_00f3fd3e.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fd44	import_thunk	MSVCR71.DLL::frexp	msvcrt.lib(MSVCR71.dll) _frexp	00/f3/global_frexp_00f3fd44.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fde6	import_thunk	MSVCP71.DLL::??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z	msvcprt.lib(MSVCP71.dll) ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z	00/f3/global_0basicstringDUchartraitsDstdVallocatorD2_00f3fde6.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fdec	import_thunk	MSVCP71.DLL::??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	msvcprt.lib(MSVCP71.dll) ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	00/f3/global_1basicstringDUchartraitsDstdVallocatorD2_00f3fdec.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fdf2	import_thunk	MSVCP71.DLL::??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z	msvcprt.lib(MSVCP71.dll) ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z	00/f3/global_0basicstringDUchartraitsDstdVallocatorD2_00f3fdf2.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fdf8	import_thunk	WINMM.DLL::timeKillEvent	winmm.lib(WINMM.dll) _timeKillEvent@4	00/f3/global_timeKillEvent_00f3fdf8.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fdfe	import_thunk	WINMM.DLL::timeBeginPeriod	winmm.lib(WINMM.dll) _timeBeginPeriod@4	00/f3/global_timeBeginPeriod_00f3fdfe.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fe04	import_thunk	WINMM.DLL::timeEndPeriod	winmm.lib(WINMM.dll) _timeEndPeriod@4	00/f3/global_timeEndPeriod_00f3fe04.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fe0a	import_thunk	WINMM.DLL::timeSetEvent	winmm.lib(WINMM.dll) _timeSetEvent@20	00/f3/global_timeSetEvent_00f3fe0a.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fe10	import_thunk	MSVCR71.DLL::_strupr	msvcrt.lib(MSVCR71.dll) __strupr	00/f3/global_strupr_00f3fe10.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fe16	import_thunk	MSVCR71.DLL::_strlwr	msvcrt.lib(MSVCR71.dll) __strlwr	00/f3/global_strlwr_00f3fe16.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+00f3fe1c	import_thunk	MSVCR71.DLL::_strrev	msvcrt.lib(MSVCR71.dll) __strrev	00/f3/global_strrev_00f3fe1c.cpp	landed (manifest boundary row added)	MATCH	LIBRARY_MATCH
+0099aa90	caller_respell	-	WriteFileImport -> WriteFile	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+009f1f90	caller_respell	-	g_delete_fn -> VirtualFree	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+009f2000	caller_respell	-	__imp__DestroyFlashObj -> EnterCriticalSection	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+009f26d0	caller_respell	-	g_clearFn0/g_clearFn1 -> EnterCriticalSection/LeaveCriticalSection	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00a02170	caller_respell	-	g_leave -> LeaveCriticalSection	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00a66730	caller_respell	-	g_vp -> VirtualAlloc	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00a66750	caller_respell	-	g_delete_fn -> VirtualFree	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00a66c20	caller_respell	-	timeGetTime -> GetTickCount	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00ab4700	caller_respell	-	Fable* fn ptrs -> ClientToScreen/GetClientRect/OffsetRect/SetCursorPos	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c108e0	caller_respell	-	CImportedDefBase/CImportedPositions -> dllimport exception + std::basic_string<char>	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c10940	caller_respell	-	CImportedDefBase/CImportedPositions -> dllimport exception + std::basic_string<char>	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c13a00	caller_respell	-	CImportedDefBase/CImportedPositions -> dllimport exception + std::basic_string<char>	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c354a0	caller_respell	-	SetState/ReleaseHandle -> Sleep/CloseHandle	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c36140	caller_respell	-	Import_0143fe30 -> CloseHandle	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c57310	caller_respell	-	ShutdownDisplay -> CoUninitialize	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c5e3d0	caller_respell	-	stand-in -> CloseHandle	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c5e420	caller_respell	-	stand-in -> CloseHandle	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00c5e480	caller_respell	-	stand-in -> CloseHandle	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00ca4860	caller_respell	-	g_pred_fn -> InitializeCriticalSection	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00ca4870	caller_respell	-	Import_0143fde4 -> DeleteCriticalSection	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00ca48c0	caller_respell	-	Import_0143fe10 -> LeaveCriticalSection	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00ca4d60	caller_respell	-	g_releaseTexture -> timeKillEvent	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00cb01b0	caller_respell	-	g_orf_fn -> CloseHandle	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+00cb0e90	caller_respell	-	g_import_cb0e90 -> WaitForSingleObject	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+01224c30	caller_respell	-	g_014402f0 -> SendMessageA (address of dllimport)	-	respelled (stand-in IAT global -> real dllimport API)	-	RELOCATION_MATCH PASS
+01211400	funclet_recheck	-	-	-	rechecked (EH funclet of a respelled parent; source unchanged)	-	RELOCATION_MATCH PASS
+01211420	funclet_recheck	-	-	-	rechecked (EH funclet of a respelled parent; source unchanged)	-	RELOCATION_MATCH PASS
+012118c0	funclet_recheck	-	-	-	rechecked (EH funclet of a respelled parent; source unchanged)	-	RELOCATION_MATCH PASS
+012143c0	funclet_recheck	-	-	-	rechecked (EH funclet of a respelled parent; source unchanged)	-	RELOCATION_MATCH PASS
+012162b0	funclet_recheck	-	-	-	rechecked (EH funclet of a respelled parent; source unchanged)	-	RELOCATION_MATCH PASS
+0099abd0	caller_not_respelled	-	CDiskFileWin32_SetFilePointerIAT_0099abd0 (__imp__SetFilePointer@16)	-	kept: test links the row object and fakes the import through the stand-in global; needs a test rewrite	-	unchanged
+009f26b0	caller_not_respelled	-	g_clearFn0/g_clearFn1 (__imp__EnterCriticalSection@4/__imp__LeaveCriticalSection@4)	-	kept: test links the row object and fakes the import through the stand-in global; needs a test rewrite	-	unchanged
+00c36150	caller_not_respelled	-	g_cmp (__imp__WaitForSingleObject@8)	-	kept: test links the row object and fakes the import through the stand-in global; needs a test rewrite	-	unchanged

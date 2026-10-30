@@ -124,8 +124,10 @@ the list of landed rows that name the wrong callee, global or float pool.
 
 ## The RTM compiler on the Linux lane (cl 13.10.3077)
 
-Retail `Fable.exe` was compiled by cl 13.10.3077 (1,369 C++ objects) plus five objects by the 4035 QFE and linked by
-linker 3052 (Rich header, FINDINGS_LOG 2026-10-20). The Linux lane originally had only the DDK 4035 build; the free
+Retail `Fable.exe` was compiled by cl 13.10.3077 (1,369 C++ and 51 C objects) plus five objects (4 C, 1 C++) by the 4035
+QFE and linked by link.exe 7.10.3077 (Rich header, FINDINGS_LOG 2026-10-20; prodid labels corrected 2026-10-30 in
+`tools/decomp_pipeline/rich_header.py`: 0x5A/3077 is the linker, 0x5E/3052 is cvtres 7.10.3052 for the `.res` object, and
+the six 0x5D/4035 stamps are import descriptors of 4035-built import libraries, not compiled objects). The Linux lane originally had only the DDK 4035 build; the free
 "Visual C++ Toolkit 2003" turned out to be a pre-RTM 13.10.3052 (tested and discarded). The real 3077 comes from the
 VS .NET 2003 disc (archive.org item `visual-studio-2003-unpacked`, `VisualStudio2003.zip`, SHA-1
 `298398e607a8e6033abe261987b94cab8fb57c24`, already unpacked): copy `Vc7/bin` to `$S/wine/vc71rtm/bin`, add

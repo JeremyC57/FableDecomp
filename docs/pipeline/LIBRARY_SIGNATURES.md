@@ -51,7 +51,7 @@ python3 -I tools/decomp_pipeline/libsig/libsig_scan.py --log $S/libsig/logs/scan
 python3 -I tools/decomp_pipeline/libsig/libsig_cross.py
 python3 -I tools/decomp_pipeline/libsig/lib_verify.py $(awk -F"'" '/Grade = .toolchain_library./{print a} /Address = /{a=$2}' rebuild/build_candidates.ps1)
 ```
-(the awk lists every `toolchain_library` catalog row: 128 since 2026-10-30, all MATCH.)
+(the awk lists every `toolchain_library` catalog row: 440 since the 2026-10-30 boundary pass, all MATCH.)
 
 ## How the scan works
 
@@ -95,7 +95,10 @@ python3 -I tools/decomp_pipeline/libsig/lib_verify.py $(awk -F"'" '/Grade = .too
 |---|---:|---:|---|
 | landed rows | 11 | 15 | vendor bytes the catalog landed: 3 sections + 15 thunks are now `toolchain_library`, 8 sections stay genuine CRT-source compiles (`// Library:` line) |
 | unlanded manifest functions | 12 | 98 | link work, not reconstruction: all 110 landed as `toolchain_library` 2026-10-30 |
-| outside the manifest | 5 | 307 | not catalogued as functions |
+| outside the manifest | 5 | 307 | added to the manifest as boundary rows and landed as `toolchain_library` 2026-10-30 (boundary pass) |
+
+Since the boundary pass every oracle row is a manifest function and a landed row (`libsig_cross.py`: 448 landed, 440
+`toolchain_library` + 8 `library_source`): the manifest's coverage of the oracle is complete.
 
 Sections: `msvcrt.lib` `crtexew.obj` (`check_managed_app`, `_WinMainCRTStartup`), `atonexit.obj` (`__onexit`,
 `_atexit`), `initsect.obj` (`__RTC_Initialize`, `__RTC_Terminate`), `fp8.obj`, `sehprolg.obj` (`__SEH_prolog`,
@@ -128,8 +131,8 @@ bytes are the toolchain's and the build links that library. The stub is document
 * **Dashboard:** "Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`)"; the asm-bake
   line no longer counts them.
 
-Landed under the grade (2026-10-30): **128 rows**, every one `lib_verify.py` MATCH and `vland.py --recheck-landed`
-LIBRARY_MATCH (landing-pass hand-back: `lib_verify_all.log`, `vland_recheck_library.log`).
+Landed under the grade (2026-10-30): **440 rows**, every one `lib_verify.py` MATCH and `vland.py --recheck-landed`
+LIBRARY_MATCH (landing-pass and boundary-pass hand-backs: `lib_verify_all.log`, `vland_recheck_library.log`).
 
 * First pass (4): 0x0040138C `__SEH_prolog` (59), 0x004013C7 `__SEH_epilog` (17) from `sehprolg.obj`; 0x00BFE9F9
   `@__security_check_cookie@4` (14) from `secchk.obj` (both relocations proven: `___security_cookie` 0x0139C8A8 holds
@@ -145,8 +148,17 @@ LIBRARY_MATCH (landing-pass hand-back: `lib_verify_all.log`, `vland_recheck_libr
   section includes its `__finally` funclet, so the manifest row 0x00F3FBE0 is that funclet), `__alldiv`, `__allshr`,
   `__aulldvrm`; parked copies removed) and the 98 catalogued import thunks (68 MSVCR71, 13 imm32, 10 d3dx9_25, 3
   version, d3d9, dinput8, winmm, wsock32).
-* Not landed: the 312 oracle rows outside the manifest (5 CRT functions, 307 thunks) wait for a manifest boundary
-  pass; the proposed names and stub paths are in the landing-pass hand-back `OUTSIDE_CATALOG.tsv`.
+* Boundary pass (312): the oracle rows that were outside the function manifest are now `rebuild/manifest/functions.tsv`
+  rows with `agent_source = boundary` (name = the decorated library symbol, module = the DLL or `msvcrt.lib(<member>)`;
+  provenance in `rebuild/manifest/boundary-starts.tsv`, added with `crawl/manifest_add_boundaries.py --write`) and landed
+  stubs: 307 import thunks (kernel32 120, user32 75, MSVCR71 37, winmm 22, wsock32 20, advapi32 9, ole32 7, gdi32 5,
+  imm32 4, MSVCP71 3, shell32 2, oleaut32 2, d3dx9_25 1) and 5 CRT sections: `check_managed_app` 0x00401011 (unreferenced:
+  `_WinMainCRTStartup` inlines the check), the `type_info` copy constructor 0x00BFE960 (of 149 identical copies only it
+  stores vftable 0x012A8370, whose Complete Object Locator names `.?AVtype_info@@` and whose slot 0 is 0x00BFE96B),
+  `??_Etype_info@@UAEPAXI@Z` 0x00BFE96B, `ArrayUnwindFilter` 0x00BFEE68 and `__security_init_cookie` 0x00BFEF3E (called
+  through the `__xc_a..__xc_z` initializer table). `_D3DXLoadVolumeFromMemory@44`: 11 SDK arguments and 11 pushes at the
+  call site 0x00A6765B. No landed row's bytes cover one of them; the new starts end three unlanded rows' spans
+  (0x00F3FBE0, 0x00C843F0, 0x00C733D0), and 0x00401011 is now the first manifest function.
 
 The 8 genuine VC7.1 compiles of CRT source (WinMainCRTStartup, `_onexit`, `atexit`, the two RTC walkers,
 `_setdefaultprecision`, `__ArrayUnwind`, `eh vector destructor iterator`) keep grade `genuine` and carry a provenance
@@ -169,6 +181,16 @@ Callers respelled in the landing pass (one retail address, one name): 133 landed
   `?floor@@YAMM@Z`.
 * `reloc_bindings.tsv`: 69 invented spellings retired, 9 library spellings added; `bindings_multi_check.py` prints 0.
 
+Callers respelled in the boundary pass: no landed row called one of the 312 thunks under a stand-in name (only
+`__XcptFilter` and `terminate` are called directly, both already spelled right). Their **IAT slots** were another
+matter: 25 landed rows (+5 EH funclets that include them) bound a slot under an invented function-pointer global or
+dllimport name (`g_delete_fn`, `Import_0143fe30`, `CImportedDefBase_00c108e0`, `timeGetTime` for GetTickCount's slot,
+...); they now declare the real `dllimport` API (`__imp__VirtualFree@12`, `__imp__CloseHandle@4`, `__imp_??1exception@@UAE@XZ`,
+the MSVCP71 `std::string` members, ...) and recheck RELOCATION_MATCH + PASS. Three rows keep their stand-ins because
+their behaviour tests link the row object and fake the import through that global (0x0099ABD0, 0x009F26B0,
+0x00C36150; boundary-pass `NAME_FIXES.tsv`). `reloc_bindings.tsv`: 32 slot stand-ins retired, 5 library spellings
+added; multi-check 0.
+
 Library spellings that stay different, with the reason:
 
 | Address | Library symbol | Landed spelling | Why |
@@ -176,6 +198,7 @@ Library spellings that stay different, with the reason:
 | 0x00BFEA30 | `__chkstk` | `__alloca_probe` (12 callers) | `chkstk.obj` defines both labels at offset 0; VC7.1 emits `__alloca_probe` for `_alloca` |
 | 0x00BFEE7A | `?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z` | `___ArrayUnwind@16` | the `__thiscall` destructor pointer cannot be spelled: VC7.1 rejects `__thiscall` on a non-member pointer (C4234), and `vc71()` rewrites it to `__fastcall` |
 | 0x00BFEC30 | `__allrem` | `__aullrem` (0x00785B40) | the row's modulo is unsigned; it should be signed `__int64`. The row carries a `retail_asm` block, so it is left for the coordinator (`NAME_FIXES.tsv`) |
+| 0x00F3FE0A | `_timeSetEvent@20` | `_timeSetEvent@20` also on 0x00CB0C10 | the linker thunk is 0x00F3FE0A (a run of ten thunks); 0x00CB0C10 is DirectShow `CompatibleTimeSetEvent` (CC-padded, 16-byte aligned, called by `CBaseRenderer::SendEndOfStream` 0x00CA6F90), which the landing pass graded as a thunk and whose caller it respelled. Left for the coordinator (boundary-pass `NAME_FIXES.tsv`) |
 
 ### Landing a future oracle row
 

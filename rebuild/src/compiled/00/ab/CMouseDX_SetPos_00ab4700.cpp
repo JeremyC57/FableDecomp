@@ -26,11 +26,11 @@ struct CMouseWindowOwner
 // owner whose +0x94 field is the OS window handle used for coordinate mapping.
 extern "C" CMouseWindowOwner* __cdecl ResolveMouseWindowOwner(void);
 
-// Engine import-table globals (retail: `call DWORD PTR ds:0x14403xx`).
-extern int (__stdcall *FableClientToScreen)(void*, CMousePoint*); // ds:0x1440304
-extern int (__stdcall *FableGetClientRect)(void*, CMouseRect*);   // ds:0x1440338
-extern int (__stdcall *FableOffsetRect)(CMouseRect*, int, int);   // ds:0x14403a4
-extern int (__stdcall *FableSetCursorPos)(int, int);              // ds:0x14403a0
+// USER32 imports (retail: `call DWORD PTR ds:0x14403xx`, the IAT slots of the dllimport declarations).
+extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void*, CMousePoint*); // ds:0x1440304 = USER32.dll!ClientToScreen
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(void*, CMouseRect*);   // ds:0x1440338 = USER32.dll!GetClientRect
+extern "C" __declspec(dllimport) int __stdcall OffsetRect(CMouseRect*, int, int);   // ds:0x14403a4 = USER32.dll!OffsetRect
+extern "C" __declspec(dllimport) int __stdcall SetCursorPos(int, int);              // ds:0x14403a0 = USER32.dll!SetCursorPos
 
 struct CMouseDX
 {
@@ -59,13 +59,13 @@ void __fastcall CMouseDX_SetPos(CMouseDX* mouseDX, void* /*edx*/, const C2DVecto
     CMousePoint pt;
     pt.x = 0;
     pt.y = 0;
-    FableClientToScreen(window, &pt);
+    ClientToScreen(window, &pt);
 
     CMouseRect rect;
-    FableGetClientRect(window, &rect);
-    FableOffsetRect(&rect, pt.x, pt.y);
+    GetClientRect(window, &rect);
+    OffsetRect(&rect, pt.x, pt.y);
 
     const int& x = (int)((float)rect.left + mouseDX->PositionX);
     const int& y = (int)((float)rect.top + mouseDX->PositionY);
-    FableSetCursorPos(x, y);
+    SetCursorPos(x, y);
 }

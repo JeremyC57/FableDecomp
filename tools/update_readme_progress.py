@@ -193,6 +193,15 @@ def main() -> int:
     }
 
     text = readme.read_text(encoding="utf-8")
+    # The known-function count is part of one row's label: respell it from COVERAGE.json first, so a manifest that
+    # grows (gap-scan or boundary rows, e.g. the 312 library rows of 2026-10-30) does not orphan the row.
+    text, count = re.subn(
+        r"(Landed byte-matching genuine C\+\+, all )\d{1,3}(?:,\d{3})*( known functions)",
+        rf"\g<1>{int(coverage['landed_known_functions']):,}\g<2>",
+        text,
+    )
+    if count != 1:
+        raise RuntimeError("known-functions row label not found exactly once")
     for label, value in snapshot_values.items():
         text = replace_snapshot_row(text, label, value)
     for label, value in values.items():

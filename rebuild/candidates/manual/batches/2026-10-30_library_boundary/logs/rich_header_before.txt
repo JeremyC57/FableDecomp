@@ -1,0 +1,21 @@
+Fable.exe: Rich @ 0x80-0x118 key=0xa78520e5
+ prodID  build   objs  tool / note
+0x001c   9178      1
+0x005d   3077      5  Utc1310_C (QFE frontend) RTM
+0x000f   3077     12  Linker RTM
+0x005f   2179      5  Utc1310_CPP
+0x0019   9210      2  Masm
+0x005d   2067      2  Utc1310_C (QFE frontend)
+0x0000      0      1  Unknown
+0x005f   3077     51  Utc1310_CPP RTM
+0x0069   2067      8  Import
+0x005d   2179     18  Utc1310_C (QFE frontend)
+0x005f   4035      4  Utc1310_CPP QFE-4035 <==
+0x0060   4035      1  Utc1310_CPP (QFE frontend) QFE-4035 <==
+0x005d   4035      6  Utc1310_C (QFE frontend) QFE-4035 <==
+0x0001      0    422  Import
+0x0060   3077   1369  Utc1310_CPP (QFE frontend) RTM
+0x005e   3052      1  Utc1310_C beta2
+0x005a   3077      1  Utc1310_LTCG_C RTM
+
+Total objects built with build 13.10.4035 (QFE): 11

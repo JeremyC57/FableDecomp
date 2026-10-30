@@ -20,7 +20,8 @@ Repo: `JeremyC57/FableDecomp` (branch `FullDecomp`). Read `docs/ARCHITECTURE.md`
 ## 2. Compiler
 
 - **Microsoft Visual C++ 7.1 (Visual Studio .NET 2003), `cl` 13.10.3077 (RTM).** The retail Rich header names it for
-  1,369 of 1,380 C++ objects. Eleven objects used the QFE build 13.10.4035 (DDK 2003), and two catalog rows need it.
+  1,369 of 1,370 C++ objects (and 51 of 60 C objects). Five objects (4 C, 1 C++) used the QFE build 13.10.4035 (DDK 2003),
+  and two catalog rows need it; the other six 4035 stamps are import descriptors of 4035-built import libraries.
 - Where the maintainers got it: archive.org item **`visual-studio-2003-unpacked`**, file `VisualStudio2003.zip`
   (SHA-1 `298398e607a8e6033abe261987b94cab8fb57c24`) — <https://archive.org/details/visual-studio-2003-unpacked>.
   - Use `Vc7/bin` (cl.exe, c1xx.dll, c2.dll, link.exe) plus `mspdb71.dll` and `msobj71.dll` from `Common7/IDE`.

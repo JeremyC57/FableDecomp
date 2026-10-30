@@ -1,0 +1,42 @@
+action	symbol	target	by_row	note
+RETIRE	?g_pfnGetTickCount@@3P6AJXZA	0143fdfc	008fa000	libsig3: IAT slot of __imp__GetTickCount@0; no landed row links this spelling at 0143fdfc any more
+RETIRE	_g_FableGetFileAttributesW_0143FDBC	0143fdbc	00999230	libsig3: IAT slot of __imp__GetFileAttributesW@4; no landed row links this spelling at 0143fdbc any more
+RETIRE	?WriteFileImport@@3P6GHPAXPBXKPAK0@ZA	0143fda4	0099aa90	libsig3: IAT slot of __imp__WriteFile@20; no landed row links this spelling at 0143fda4 any more
+KEEP	_CDiskFileWin32_SetFilePointerIAT_0099abd0	0143fde8	0099abd0	libsig3: still linked by 0099abd0 (its behaviour test fakes the import through this global; NAME_FIXES)
+RETIRE	?g_delete_fn@@3P6GXPAXHH@ZA	0143fd40	009f1f90	libsig3: IAT slot of __imp__VirtualFree@12; no landed row links this spelling at 0143fd40 any more
+RETIRE	___imp__DestroyFlashObj	0143fe0c	009f2000	libsig3: IAT slot of __imp__EnterCriticalSection@4; no landed row links this spelling at 0143fe0c any more
+KEEP	?g_clearFn0@@3P6GXPAX@ZA	0143fe0c	009f26b0	libsig3: still linked by 009f26b0 (its behaviour test fakes the import through this global; NAME_FIXES)
+KEEP	?g_clearFn1@@3P6GXPAX@ZA	0143fe10	009f26b0	libsig3: still linked by 009f26b0 (its behaviour test fakes the import through this global; NAME_FIXES)
+RETIRE	?g_leave@@3P6GXPAX@ZA	0143fe10	00a02170	libsig3: IAT slot of __imp__LeaveCriticalSection@4; no landed row links this spelling at 0143fe10 any more
+RETIRE	?g_vp@@3P6GPAXHIHH@ZA	0143fd44	00a66730	libsig3: IAT slot of __imp__VirtualAlloc@16; no landed row links this spelling at 0143fd44 any more
+RETIRE	?g_TimerFnPtr@@3P6AHXZA	0143fdfc	00c0ffc0	libsig3: IAT slot of __imp__GetTickCount@0; no landed row links this spelling at 0143fdfc any more
+RETIRE	__imp_??0CImportedDefBase_00c108e0@@QAE@XZ	0143fff8	00c108e0	libsig3: IAT slot of __imp_??0exception@@QAE@XZ; no landed row links this spelling at 0143fff8 any more
+RETIRE	__imp_??0CImportedPositions_00c108e0@@QAE@PAX@Z	0143ffa0	00c108e0	libsig3: IAT slot of __imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z; no landed row links this spelling at 0143ffa0 any more
+RETIRE	__imp_??1CImportedDefBase_00c10940@@QAE@XZ	01440028	00c10940	libsig3: IAT slot of __imp_??1exception@@UAE@XZ; no landed row links this spelling at 01440028 any more
+RETIRE	__imp_??1CImportedPositions_00c10940@@QAE@XZ	0143ff9c	00c10940	libsig3: IAT slot of __imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ; no landed row links this spelling at 0143ff9c any more
+RETIRE	__imp_??0CImportedDefBase_00c13a00@@QAE@ABU0@@Z	0143fffc	00c13a00	libsig3: IAT slot of __imp_??0exception@@QAE@ABV0@@Z; no landed row links this spelling at 0143fffc any more
+RETIRE	__imp_??0CImportedPositions_00c13a00@@QAE@ABU0@@Z	0143ffa0	00c13a00	libsig3: IAT slot of __imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z; no landed row links this spelling at 0143ffa0 any more
+RETIRE	?g_pred_fn@@3P6GXPAX@ZA	0143fee4	00c1c810	libsig3: IAT slot of __imp__InitializeCriticalSection@4; no landed row links this spelling at 0143fee4 any more
+RETIRE	__imp__Import_0143fde4@4	0143fde4	00c1c820	libsig3: IAT slot of __imp__DeleteCriticalSection@4; no landed row links this spelling at 0143fde4 any more
+RETIRE	__imp__Import_0143fe0c@4	0143fe0c	00c1c830	libsig3: IAT slot of __imp__EnterCriticalSection@4; no landed row links this spelling at 0143fe0c any more
+RETIRE	__imp__Import_0143fe10@4	0143fe10	00c1c840	libsig3: IAT slot of __imp__LeaveCriticalSection@4; no landed row links this spelling at 0143fe10 any more
+RETIRE	__imp__Import_0143fe30@4	0143fe30	00c29fb0	libsig3: IAT slot of __imp__CloseHandle@4; no landed row links this spelling at 0143fe30 any more
+RETIRE	__imp__ReleaseHandle_00c354a0@4	0143fe30	00c354a0	libsig3: IAT slot of __imp__CloseHandle@4; no landed row links this spelling at 0143fe30 any more
+RETIRE	__imp__SetState_00c354a0@4	0143fe1c	00c354a0	libsig3: IAT slot of __imp__Sleep@4; no landed row links this spelling at 0143fe1c any more
+KEEP	?g_cmp@@3P6GHPAD0@ZA	0143feac	00c36150	libsig3: still linked by 00c36150 (its behaviour test fakes the import through this global; NAME_FIXES)
+RETIRE	__imp__ShutdownDisplay_00c57310@0	01440648	00c57310	libsig3: IAT slot of __imp__CoUninitialize@0; no landed row links this spelling at 01440648 any more
+RETIRE	?g_ReleaseTexture@@3P6GXH@ZA	0143fe30	00c5e3d0	libsig3: IAT slot of __imp__CloseHandle@4; no landed row links this spelling at 0143fe30 any more
+RETIRE	?g_freeTex@@3P6GXPAUTex@@@ZA	0143fe30	00c5e420	libsig3: IAT slot of __imp__CloseHandle@4; no landed row links this spelling at 0143fe30 any more
+RETIRE	?g_ReleaseTex@@3P6GXPAX@ZA	0143fe30	00c5e480	libsig3: IAT slot of __imp__CloseHandle@4; no landed row links this spelling at 0143fe30 any more
+RETIRE	?g_freeFn@@3P6GXPAX@ZA	0143fbfc	00c73800	libsig3: IAT slot of __imp__RegCloseKey@4; no landed row links this spelling at 0143fbfc any more
+RETIRE	__imp__ReleaseTexture@4	0143fbfc	00c739a0	libsig3: IAT slot of __imp__RegCloseKey@4; no landed row links this spelling at 0143fbfc any more
+RETIRE	?g_releaseTexture@@3P6GXPAX@ZA	014404b0	00ca4d60	libsig3: IAT slot of __imp__timeKillEvent@4; no landed row links this spelling at 014404b0 any more
+RETIRE	__imp__NotifyShutdown_00ca4e30@4	014404a8	00ca4e30	libsig3: IAT slot of __imp__timeEndPeriod@4; no landed row links this spelling at 014404a8 any more
+RETIRE	?g_orf_fn@@3P6GXPAX@ZA	0143fe30	00cb01b0	libsig3: IAT slot of __imp__CloseHandle@4; no landed row links this spelling at 0143fe30 any more
+RETIRE	?g_import_cb0e90@@3P6GXPAXH@ZA	0143feac	00cb0e90	libsig3: IAT slot of __imp__WaitForSingleObject@8; no landed row links this spelling at 0143feac any more
+RETIRE	?g_014402f0@@3JA	014402f0	01224c30	libsig3: IAT slot of __imp__SendMessageA@16; no landed row links this spelling at 014402f0 any more
+ADD	__imp__WriteFile@20	0143fda4	0099aa90	libsig3: KERNEL32.dll!WriteFile import slot, spelled by the respelled caller
+ADD	__imp__SetCursorPos@8	014403a0	00ab4700	libsig3: USER32.dll!SetCursorPos import slot, spelled by the respelled caller
+ADD	__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ	0143ff9c	00c10940	libsig3: MSVCP71.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ import slot, spelled by the respelled caller
+ADD	__imp_??1exception@@UAE@XZ	01440028	00c10940	libsig3: MSVCR71.dll!??1exception@@UAE@XZ import slot, spelled by the respelled caller
+ADD	__imp_??0exception@@QAE@ABV0@@Z	0143fffc	00c13a00	libsig3: MSVCR71.dll!??0exception@@QAE@ABV0@@Z import slot, spelled by the respelled caller

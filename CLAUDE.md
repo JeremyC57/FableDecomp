@@ -62,7 +62,7 @@ reconstruction that must compile under VC7.1 to the retail bytes.
 
 ## Toolchain
 Ghidra **12.1** at `D:\Subuwu\tools\ghidra-public` + GhidraMCP (port 8089). Era compiler MSVC 2003 /
-VC7.1 **RTM cl 13.10.3077** at `D:\Tools\vc71` (the build the retail Rich header names for 1,369 of 1,380 C++ objects;
-QFE-4035 toolset at `D:\Tools\vc71-qfe4035` for the 11 QFE objects). The Linux lane has both since 2026-10-20
+VC7.1 **RTM cl 13.10.3077** at `D:\Tools\vc71` (the build the retail Rich header names for 1,369 of the 1,380 compiled C/C++ objects; linker 3077, cvtres 3052;
+QFE-4035 toolset at `D:\Tools\vc71-qfe4035` for the 5 compiled 4035 objects, which may be WinDDK GUID library objects; the other 6 "QFE" entries are import descriptors). The Linux lane has both since 2026-10-20
 (`$S/wine/vc71rtm`, `$S/wine/vc71`; `docs/BUILDING.md`). Ghidra scripts
 in `tools/ghidra_scripts/`; pipeline in `tools/decomp_pipeline/`; commands in `docs/BUILDING.md`.
