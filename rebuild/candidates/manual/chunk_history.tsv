@@ -24980,3 +24980,13 @@ chunk	address	module	name	length
 594	00c8c580	global	WorldMap_ProcessWithCallback	325
 594	00c93080	global	FFT_ComputeWaveformEnvelope	328
 594	00c4d070	global	CCombatSequenceManager_ProcessAction	328
+595	00c5f6a0	global	Audio_ExpandADPCM_Mono	327
+595	00c20580	global	CTCHero_ProcessInventoryFlagMask	330
+595	00c131c0	global	CEnginePrimitive_UpdateParticleTrail	332
+595	00c5e4e0	global	sub_00c5e4e0	332
+595	00caed50	global	COM_InitializeTypeLibrary	332
+595	00b80400	global	Vector_PushBack_CActiveFile_3Floats	333
+595	00cb3420	global	GetReadingWindowOrientation	333
+595	00c1b560	global	RedBlackTree_RemoveNodeVariant2	334
+595	00c568f0	global	CAudioContext_ConfigureListener	334
+595	00c18c00	global	RedBlackTree_RemoveNode	335
