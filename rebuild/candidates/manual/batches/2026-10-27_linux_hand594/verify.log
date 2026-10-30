@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00c21a50   WARN RELOC_NAME: ?CheckState@CSoundEvent@@QAEXJ@Z -> 00c20720 labelled 'EmptyStub'
+00c21a50   WARN RELOC_NAME: ?UpdateTrackedParameters@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z -> 00c213c0 labelled 'Thiscall_CreatureOpinionUpdate'
+00c21a50   WARN RELOC_NAME: ?GetRecord@CSoundParams@@QBE?AUSEventRecord@@XZ -> 00c34600 labelled 'CQuadHolder::GetValue'
+00c21a50   WARN RELOC_NAME: ?GetDistance@CSoundParams@@QAEMXZ -> 00c345f0 labelled '_global::GetMember_float0x28_00c345f0'
+00c21a50   WARN RELOC_NAME: ?IsPlayingVirtual@CSoundEvent@@QAEJXZ -> 00c207a0 labelled '_global::Thiscall_CheckEquipped'
+00c21a50   WARN RELOC_NAME: ?Play@CSoundEvent@@QAEXPAUCSoundEventManager@@@Z -> 00c21780 labelled 'CInputProcessRebootGame_HandleInputEvent'
+00c21a50   RELOCATION_MATCH PASS   Update
+00c4d070   RELOCATION_MATCH PASS   ReleaseVoice
+00c599c0   WARN RELOC_NAME: ?GetOutputMode@CCodaSystem@@QAEJXZ -> 00c3ea60 labelled 'CGuiControlListBox::GetCurrentSelectedEntryData'
+00c599c0   RELOCATION_MATCH PASS   ComputeAzimuthElevation
+00c8c580   WARN RELOC_NAME: __ov_initset -> 00c8c1d0 labelled 'CreatureHitNotification_WaitForCompletion'
+00c8c580   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c8c580   WARN RELOC_NAME: __ov_getlap@20 -> 00c8c240 labelled 'VertexBuffer_FillData'
+00c8c580   WARN RELOC_NAME: __ov_initprime -> 00c8c200 labelled 'VertexBuffer_WaitAndAllocate'
+00c8c580   WARN RELOC_NAME: __ov_splice@32 -> 00c8bf90 labelled 'Audio_ConvolveChannels'
+00c8c580   RELOCATION_MATCH PASS   _ov_64_seek_lap
+00c93080   RELOCATION_MATCH PASS   max_seeds
+00ca67b0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca67b0   WARN RELOC_NAME: ?Pause@CBaseFilter@@UAGJXZ -> 00caabe0 labelled '_global::CAudioBank_ResumeAllSounds'
+00ca67b0   RELOCATION_MATCH PASS   Pause
+00ca68f0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca68f0   RELOCATION_MATCH PASS   Run
+00cab160   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cab160   RELOCATION_MATCH PASS   Next
+00cbb710   RELOCATION_MATCH PASS   __unguarded_partition
+
+WINS: 9
+  00c21a50 RELOCATION_MATCH CSoundEvent::?Update@CSoundEvent@@QAEXPAUCSoundEventManager@@K@Z
+  00c4d070 RELOCATION_MATCH CAudioPlatform::?ReleaseVoice@CAudioPlatform@@QAEXPAVCCodaVoice@@@Z
+  00c599c0 RELOCATION_MATCH _global::?ComputeAzimuthElevation@@YAXPAM0PBVC3DVector@@@Z
+  00c8c580 RELOCATION_MATCH libvorbis::__ov_64_seek_lap@16
+  00c93080 RELOCATION_MATCH libvorbis::_max_seeds@12
+  00ca67b0 RELOCATION_MATCH CBaseRenderer::?Pause@CBaseRenderer@@UAGJXZ
+  00ca68f0 RELOCATION_MATCH CBaseRenderer::?Run@CBaseRenderer@@UAGJ_J@Z
+  00cab160 RELOCATION_MATCH CEnumMediaTypes::?Next@CEnumMediaTypes
+  00cbb710 RELOCATION_MATCH std::??$__unguarded_partition@
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CSoundEvent_Update_00c21a50
+  CAudioPlatform_ReleaseVoice_00c4d070
+  global_ComputeAzimuthElevation_00c599c0
+  libvorbis_ov64seeklap_00c8c580
+  libvorbis_maxseeds_00c93080
+  CBaseRenderer_Pause_00ca67b0
+  CBaseRenderer_Run_00ca68f0
+  CEnumMediaTypes_Next_00cab160
+  std_unguardedpartition_00cbb710

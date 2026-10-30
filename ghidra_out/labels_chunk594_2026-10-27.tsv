@@ -1,0 +1,10 @@
+address	name	evidence
+0x00CA67B0	CBaseRenderer::Pause	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00CA68F0	CBaseRenderer::Run	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00CAB160	CEnumMediaTypes::Next	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00CBB710	std::__unguarded_partition	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00C599C0	_global::ComputeAzimuthElevation	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00C21A50	CSoundEvent::Update	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00C8C580	libvorbis::_ov_64_seek_lap	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00C93080	libvorbis::max_seeds	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)
+0x00C4D070	CAudioPlatform::ReleaseVoice	proven per batch 2026-10-27_linux_hand594 NOTES.md (chunk 594)

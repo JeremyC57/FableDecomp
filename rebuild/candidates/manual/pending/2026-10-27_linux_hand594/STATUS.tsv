@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c6b260	DIFFER	315v315	-	ConvertFloat128BlockToInt (retail_asm candidate): scalar fallback loads the pushed float into ecx, ours eax; 4 grades, parked in differ/

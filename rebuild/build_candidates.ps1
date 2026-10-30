@@ -365871,6 +365871,72 @@ $catalog = @(
         Source = '00/f3/global_aulldvrm_00f3fd50.cpp'
         Grade = 'toolchain_library'
     }
+    [pscustomobject]@{
+        Address = '00c21a50'
+        Module = 'CSoundEvent'
+        Source = '00/c2/CSoundEvent_Update_00c21a50.cpp'
+        TestSource = '00/c2/CSoundEvent_Update_00c21a50_test.cpp'
+        PassPattern = '00c21a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4d070'
+        Module = 'CAudioPlatform'
+        Source = '00/c4/CAudioPlatform_ReleaseVoice_00c4d070.cpp'
+        TestSource = '00/c4/CAudioPlatform_ReleaseVoice_00c4d070_test.cpp'
+        PassPattern = '00c4d070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c599c0'
+        Module = '_global'
+        Source = '00/c5/global_ComputeAzimuthElevation_00c599c0.cpp'
+        TestSource = '00/c5/global_ComputeAzimuthElevation_00c599c0_test.cpp'
+        PassPattern = '00c599c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8c580'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ov64seeklap_00c8c580.cpp'
+        TestSource = '00/c8/libvorbis_ov64seeklap_00c8c580_test.cpp'
+        PassPattern = '00c8c580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c93080'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_maxseeds_00c93080.cpp'
+        TestSource = '00/c9/libvorbis_maxseeds_00c93080_test.cpp'
+        PassPattern = '00c93080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca67b0'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_Pause_00ca67b0.cpp'
+        TestSource = '00/ca/CBaseRenderer_Pause_00ca67b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca67b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca68f0'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_Run_00ca68f0.cpp'
+        TestSource = '00/ca/CBaseRenderer_Run_00ca68f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca68f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cab160'
+        Module = 'CEnumMediaTypes'
+        Source = '00/ca/CEnumMediaTypes_Next_00cab160.cpp'
+        TestSource = '00/ca/CEnumMediaTypes_Next_00cab160_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc /GS'
+        PassPattern = '00cab160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbb710'
+        Module = 'std'
+        Source = '00/cb/std_unguardedpartition_00cbb710.cpp'
+        TestSource = '00/cb/std_unguardedpartition_00cbb710_test.cpp'
+        PassPattern = '00cbb710_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

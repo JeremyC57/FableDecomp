@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00ca67b0	RELOCATION_MATCH	312v312	PASS	CBaseRenderer::Pause (strmbase renbase.cpp) /EHsc; 1 grade
+00ca68f0	RELOCATION_MATCH	313v313	PASS	CBaseRenderer::Run (strmbase renbase.cpp) /EHsc; 1 grade
+00c6b260	DIFFER	315v315	-	ConvertFloat128BlockToInt (retail_asm candidate): scalar fallback loads the pushed float into ecx, ours eax; 4 grades, parked in differ/
+00cbb710	RELOCATION_MATCH	315v315	PASS	std::__unguarded_partition<pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase>>> (bound spelling); 1 grade
+00c599c0	RELOCATION_MATCH	318v318	PASS	ComputeAzimuthElevation (GameCODA, descriptive); 2 grades
+00cab160	RELOCATION_MATCH	322v322	PASS	CEnumMediaTypes::Next (strmbase amfilter.cpp) /EHsc /GS; 1 grade
+00c21a50	RELOCATION_MATCH	325v325	PASS	CSoundEvent::Update (libpk, descriptive); 1 grade + 1 regrade after a name-only fix
+00c8c580	RELOCATION_MATCH	325v325	PASS	libvorbis vorbisfile.c _ov_64_seek_lap (static, vf in eax); 2 grades
+00c93080	RELOCATION_MATCH	328v328	PASS	libvorbis psy.c max_seeds (static __stdcall, p in edi); reopened chunk-447 row; 2 grades
+00c4d070	RELOCATION_MATCH	328v328	PASS	CAudioPlatform::ReleaseVoice (libpk, descriptive); 3 grades
