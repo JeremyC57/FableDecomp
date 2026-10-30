@@ -24860,3 +24860,13 @@ chunk	address	module	name	length
 582	00d6ca90	global	sub_00d6ca90	555
 582	00db4f70	global	Script_Guard_Duty	562
 582	00e1d7b0	global	DoMission_WizardBattleMazeDeath	573
+583	00ee47b0	global	sub_00ee47b0	576
+583	00e9c8d0	global	sub_00e9c8d0	582
+583	00ed7e00	global	sub_00ed7e00	584
+583	00ebef80	global	sub_00ebef80	588
+583	00edaf30	global	sub_00edaf30	594
+583	00f14300	global	Script_Arena_Teleport_Thread	594
+583	00e1dcf0	global	sub_00e1dcf0	603
+583	00ee91e0	global	Script_MakeThingsSpeakNumbered	613
+583	00d2d1a0	global	Quest009_SpawnMonster_WithFade	620
+583	00eb7370	global	MayorsInvitation_OnEnter	625
