@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x00EFF130	RELOCATION_MATCH	144v144	PASS	NScript::CTonyTestScriptsScript::Main (quest vtable 0x012F6F90 slot 2); shared NScript headers
+0x00F34660	RELOCATION_MATCH	455v455	PASS	std::vector<CFeatDef>::_M_fill_insert (caller resize 0x00F34580)
+0x00F26570	RELOCATION_MATCH	456v456	PASS	std::vector<CArenaCreatureDef>::_M_fill_insert (caller resize 0x00F26490); label CParticleMorphs wrong
+0x00F281E0	DIFFER	558v481	-	std::vector<CArenaWaveDef>::_M_fill_insert; parked: VC7.1 inlines the implicit copy ctor in the raw-end loops too, retail calls 0x00F25C60 there
+0x00F277F0	DIFFER	601v493	-	std::vector<CHeroSoulsCreatureDef>::_M_fill_insert; parked: same residue (retail calls 0x00F27060 in the loops)
+0x00E99260	RELOCATION_MATCH	519v519	PASS	NScript::CV_HeroDuelScript::WatchForLeaving (spawned from Main 0x00E987C0); goto-finished loop
+0x00E1F0C0	RELOCATION_MATCH	525v525	PASS	NScript::CQR_EscortTraderScript::DoMission (spawned from Main 0x00E1E110); __forceinline GetPos after the shared header
+0x00E268C0	RELOCATION_MATCH	534v534	PASS	NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::Main (vtable 0x012E1F08 slot 2)
+0x00F33EF0	RELOCATION_MATCH	538v538	PASS	std::vector<CFireHeartPatternDef>::_M_fill_insert (caller resize 0x00F33DE0); needs CDefClassBase::operator= declared (wave 1 header)
+0x00EC1CD0	RELOCATION_MATCH	540v540	PASS	NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::Init (entity vtable 0x012F1390 slot 2)

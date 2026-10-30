@@ -1,0 +1,15 @@
+address	name	evidence
+00eff130	NScript::CTonyTestScriptsScript::Main	chunk 581: slot 2 of quest vtable 0x012F6F90 (landed ctor 0x00EFF060); Ego_r.pdb
+00f34660	std::vector<CFeatDef>::_M_fill_insert	chunk 581: 0x64 stride; landed CFeatDef copy/op=/overflow callees; caller resize 0x00F34580
+00f26570	std::vector<CArenaCreatureDef>::_M_fill_insert	chunk 581: 0x38 stride; copy 0x00F25DD0 / op= 0x00F25F10; caller in bound resize 0x00F26490; catalog said CParticleMorphs
+00e99260	NScript::CV_HeroDuelScript::WatchForLeaving	chunk 581: spawned from Main 0x00E987C0 (Func store 0x00E98DE1 next to its literal); Ego_r.pdb
+00e1f0c0	NScript::CQR_EscortTraderScript::DoMission	chunk 581: spawned as "DoMission" by landed Main 0x00E1E110 (0x00E1E399); Ego_r.pdb
+00e268c0	NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::Main	chunk 581: slot 2 of vtable 0x012E1F08; Ego_r.pdb
+00f33ef0	std::vector<CFireHeartPatternDef>::_M_fill_insert	chunk 581: landed overflow 0x00F34160 and __copy_backward_ptrs 0x00F34110 name its call sites; catalog said ThingBuildingDef_map
+00ec1cd0	NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::Init	chunk 581: slot 2 of entity vtable 0x012F1390 (landed Alloc 0x00EC1B70); Ego_r order Alloc/OnPredicateFail/Init/Main = retail order
+00f281e0	std::vector<CArenaWaveDef>::_M_fill_insert	chunk 581 (parked DIFFER 558v481): element copy ctor 0x00F25C60; catalog said CParentDefClassBase
+00f277f0	std::vector<CHeroSoulsCreatureDef>::_M_fill_insert	chunk 581 (parked DIFFER 601v493): element copy ctor 0x00F27060; catalog said pair_CSymbolInfo
+00f25dd0	CArenaCreatureDef::CArenaCreatureDef	chunk 581: copy ctor called by 0x00F26570 (vland RELOC_NAME)
+00f25f10	CArenaCreatureDef::operator=	chunk 581: called by 0x00F26570 (vland RELOC_NAME)
+00f34860	std::vector<CFeatDef>::_M_insert_overflow	chunk 581: called by 0x00F34660 (vland RELOC_NAME)
+00462e78	std::vector<bool>::operator=	chunk 581: vland RELOC_NAME on the CFireHeartPatternDef rows

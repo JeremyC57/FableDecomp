@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00e1f0c0   RELOCATION_MATCH PASS   DoMission
+00e268c0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e268c0   RELOCATION_MATCH PASS   Main
+00e99260   RELOCATION_MATCH PASS   WatchForLeaving
+00ec1cd0   RELOCATION_MATCH PASS   Init
+00eff130   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00eff130   RELOCATION_MATCH PASS   Main
+00f26570   WARN RELOC_NAME: ??0CArenaCreatureDef@@QAE@ABV0@@Z -> 00f25dd0 labelled 'CVtable_012fb358::CVtable_012fb358'
+00f26570   WARN RELOC_NAME: ??4CArenaCreatureDef@@QAEAAV0@ABV0@@Z -> 00f25f10 labelled 'CArenaCreatureDef::Copy'
+00f26570   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCArenaCreatureDef@@IV1@@std@@YIPAVCArenaCreatureDef@@PAV1@IABV1@@Z -> 00f26740 labelled '_global::UninitFillN_CElement56_00f25dd0_00f26740'
+00f26570   RELOCATION_MATCH PASS   _M_fill_insert
+00f33ef0   WARN RELOC_NAME: ??4?$vector@_NV?$allocator@_N@std@@@std@@QAEAAV01@ABV01@@Z -> 00462e78 labelled 'CSimpleMemoryPool_AssignFrom'
+00f33ef0   RELOCATION_MATCH PASS   _M_fill_insert
+00f34660   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCFeatDef@@IV1@@std@@YIPAVCFeatDef@@PAV1@IABV1@@Z -> 00f34830 labelled '_global::UninitFillN_CFeatDef_00f34830'
+00f34660   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@IAEXPAVCFeatDef@@ABV3@ABU__false_type@2@I_N@Z -> 00f34860 labelled '_global::vector_reallocate_insert_CFeatDef'
+00f34660   RELOCATION_MATCH PASS   _M_fill_insert
+
+WINS: 8
+  00e1f0c0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?DoMission@CQR_EscortTraderScript@NScript@@QAEXXZ
+  00e268c0 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::?Main@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@UAEXXZ
+  00e99260 RELOCATION_MATCH NScript::CV_HeroDuelScript::?WatchForLeaving@CV_HeroDuelScript@NScript@@QAEXXZ
+  00ec1cd0 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::?Init@CRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@EAEXXZ
+  00eff130 RELOCATION_MATCH NScript::CTonyTestScriptsScript::?Main@CTonyTestScriptsScript@NScript@@UAEXXZ
+  00f26570 RELOCATION_MATCH std::vector<CArenaCreatureDef>::?_M_fill_insert@?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@QAEXPAVCArenaCreatureDef@@IABV3@@Z
+  00f33ef0 RELOCATION_MATCH std::vector<CFireHeartPatternDef>::?_M_fill_insert@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEXPAVCFireHeartPatternDef@@IABV3@@Z
+  00f34660 RELOCATION_MATCH std::vector<CFeatDef>::?_M_fill_insert@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEXPAVCFeatDef@@IABV3@@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  NScriptCQREscortTraderScript_DoMission_00e1f0c0
+  NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_Main_00e268c0
+  NScriptCVHeroDuelScript_WatchForLeaving_00e99260
+  NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Init_00ec1cd0
+  NScriptCTonyTestScriptsScript_Main_00eff130
+  stdvectorCArenaCreatureDef_Mfillinsert_00f26570
+  stdvectorCFireHeartPatternDef_Mfillinsert_00f33ef0
+  stdvectorCFeatDef_Mfillinsert_00f34660

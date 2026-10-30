@@ -364394,6 +364394,62 @@ $catalog = @(
         TestSource = '00/f3/CRangeCompressor_Compress_00f3ae50_test.cpp'
         PassPattern = '00f3ae50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e1f0c0'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e1/NScriptCQREscortTraderScript_DoMission_00e1f0c0.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScript_DoMission_00e1f0c0_test.cpp'
+        PassPattern = '00e1f0c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e268c0'
+        Module = 'NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_Main_00e268c0.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfo2SisterInBanditCampScript_Main_00e268c0_test.cpp'
+        PassPattern = '00e268c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e99260'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_WatchForLeaving_00e99260.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_WatchForLeaving_00e99260_test.cpp'
+        PassPattern = '00e99260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec1cd0'
+        Module = 'NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature'
+        Source = '00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Init_00ec1cd0.cpp'
+        TestSource = '00/ec/NScriptCVRandomPopulationSimScriptCRandomPopulationCreature_Init_00ec1cd0_test.cpp'
+        PassPattern = '00ec1cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eff130'
+        Module = 'NScript::CTonyTestScriptsScript'
+        Source = '00/ef/NScriptCTonyTestScriptsScript_Main_00eff130.cpp'
+        TestSource = '00/ef/NScriptCTonyTestScriptsScript_Main_00eff130_test.cpp'
+        PassPattern = '00eff130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f26570'
+        Module = 'std::vector<CArenaCreatureDef>'
+        Source = '00/f2/stdvectorCArenaCreatureDef_Mfillinsert_00f26570.cpp'
+        TestSource = '00/f2/stdvectorCArenaCreatureDef_Mfillinsert_00f26570_test.cpp'
+        PassPattern = '00f26570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33ef0'
+        Module = 'std::vector<CFireHeartPatternDef>'
+        Source = '00/f3/stdvectorCFireHeartPatternDef_Mfillinsert_00f33ef0.cpp'
+        TestSource = '00/f3/stdvectorCFireHeartPatternDef_Mfillinsert_00f33ef0_test.cpp'
+        PassPattern = '00f33ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34660'
+        Module = 'std::vector<CFeatDef>'
+        Source = '00/f3/stdvectorCFeatDef_Mfillinsert_00f34660.cpp'
+        TestSource = '00/f3/stdvectorCFeatDef_Mfillinsert_00f34660_test.cpp'
+        PassPattern = '00f34660_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

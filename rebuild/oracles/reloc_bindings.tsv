@@ -35175,3 +35175,17 @@ _icomp	00ca1bc0	00ca1be0
 ?Compress@CRangeCompressor@@AAEJPBEJJPAEABV?$CArray@UCScriptEntry@CRangeCompressor@@@@@Z	00f3a2e0	00f3ae50
 ?g_RangeCompressBytesIn@@3JA	0143e980	00f3ae50
 ?g_RangeCompressBytesOut@@3JA	0143e97c	00f3ae50
+?EscortTrader@CQR_EscortTraderScript@NScript@@QAEXXZ	00e1f3a0	00e1f0c0
+?WatchForFailure@CQR_EscortTraderScript@NScript@@QAEXXZ	00e1f2d0	00e1f0c0
+??_7?$CEntityScriptBinding@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@6B@	012e1f6c	00e268c0
+?Alloc@CMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e26af0	00e268c0
+?CleanUpHeroDuel@CV_HeroDuelScript@NScript@@QAEXXZ	00e98fb0	00e99260
+??_7?$CEntityScriptBinding@VCTonyTestScriptsScript@NScript@@@@6B@	012f6fc0	00eff130
+?AddQuestsToGuild@CTonyTestScriptsScript@NScript@@QAEXXZ	00eff1c0	00eff130
+?Alloc@CDummy@CTonyTestScriptsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eff3f0	00eff130
+??$uninitialized_fill_n@PAVCArenaCreatureDef@@IV1@@std@@YIPAVCArenaCreatureDef@@PAV1@IABV1@@Z	00f26740	00f26570
+?_M_insert_overflow@?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@IAEXPAVCArenaCreatureDef@@ABV3@ABU__false_type@2@I_N@Z	00f26770	00f26570
+??$__copy_backward_ptrs@PAVCFireHeartPatternDef@@PAV1@@std@@YIPAVCFireHeartPatternDef@@PAV1@00ABU__false_type@0@@Z	00f34110	00f33ef0
+?_M_insert_overflow@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@IAEXPAVCFireHeartPatternDef@@ABV3@ABU__false_type@2@I_N@Z	00f34160	00f33ef0
+??$uninitialized_fill_n@PAVCFeatDef@@IV1@@std@@YIPAVCFeatDef@@PAV1@IABV1@@Z	00f34830	00f34660
+?_M_insert_overflow@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@IAEXPAVCFeatDef@@ABV3@ABU__false_type@2@I_N@Z	00f34860	00f34660

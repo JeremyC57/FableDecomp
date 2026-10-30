@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+0x00F281E0	DIFFER	558v481	-	std::vector<CArenaWaveDef>::_M_fill_insert; parked: VC7.1 inlines the implicit copy ctor in the raw-end loops too, retail calls 0x00F25C60 there
+0x00F277F0	DIFFER	601v493	-	std::vector<CHeroSoulsCreatureDef>::_M_fill_insert; parked: same residue (retail calls 0x00F27060 in the loops)

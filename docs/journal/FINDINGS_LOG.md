@@ -871,5 +871,6 @@ Chunk 574 (agent574; batches/2026-10-27_linux_hand574): 6 of 6 quest-script-rang
 - 2026-10-29 chunk 578: 9/10 quest-script rows; local CSpawnedFuncBase stand-ins replaced at landing by the new retail opt-in FABLE_RETAIL_SUSPENDABLE_PROCESS (shared headers); 0x00EB55D0 parked.
 - 2026-10-29 chunk 579: 10/10 quest-script rows (Init, Main, OnPredicateFail, Transfer, WatchForSpyDeath, two vector rows); all catalog labels wrong; first chunk written on the retail opt-in headers from the start.
 - 2026-10-29 chunk 580: 9/10 rows, five 0x00F3xxxx engine rows (STLport vectors, NFractal, CRangeCompressor) + four quest-script rows; 0x00F3D200 parked (285v284 regalloc, name probable).
+- 2026-10-30 chunk 581: 8/10 rows (five quest-script members, three STLport _M_fill_insert), first chunk entirely on the retail NScript headers; two _M_fill_insert rows parked on the implicit-copy-ctor inlining gap.
 - 2026-10-29 naming wave 9: 456 rows respelled (0x0099EFB0 const& operator= settled, 5 renames, 95 bindings retired / 17 added); full recheck 456/456 pass.
 - 2026-10-30 retail class-model migration wave 1: 613 landed rows moved from local polymorphic stand-ins onto shared retail headers (12 new headers, CDefClassBase corrected to 0x25 packed), bytes unchanged, 75-row independent spot regrade all pass; 8 reverted with reasons.
