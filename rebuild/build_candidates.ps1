@@ -37,8 +37,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00536b4f'; Module = 'CList'; Source = '00/53/CList_InitialiseOffsets_00536b4f.cpp'
-        TestSource = '00/53/CList_InitialiseOffsets_00536b4f_test.cpp'; PassPattern = 'CList_InitialiseOffsets_00536b4f_test PASS'
-        Grade = 'asm_bake'
+        TestSource = '00/53/CList_InitialiseOffsets_00536b4f_test.cpp'; PassPattern = '00536b4f_TEST PASS'
     },
     [pscustomobject]@{
         Address = '0053c332'; Module = 'CList'; Source = '00/53/CList_DoRecomputeOffsets_0053c332.cpp'
@@ -52,8 +51,7 @@ $catalog = @(
     },
     [pscustomobject]@{
         Address = '0042e204'; Module = 'CNewFrontendGameComponent'; Source = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204.cpp'
-        TestSource = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204_test.cpp'; PassPattern = 'INITIALISE_ENGINE_0042E204_TEST PASS'
-        Grade = 'asm_bake'
+        TestSource = '00/42/CNewFrontendGameComponent_InitialiseEngine_0042e204_test.cpp'; PassPattern = '0042e204_TEST PASS'
     },
     [pscustomobject]@{
         Address = '00551340'; Module = 'CTable'; Source = '00/55/CTable_GetDataFromDef_00551340.cpp'
@@ -2859,8 +2857,7 @@ $catalog = @(
         Module = 'CNewFrontendGameComponent'
         Source = '00/42/CNewFrontendGameComponent_InitialiseDefs_0042f722.cpp'
         TestSource = '00/42/CNewFrontendGameComponent_InitialiseDefs_0042f722_test.cpp'
-        PassPattern = 'PASS_0042f722'
-        Grade = 'asm_bake'
+        PassPattern = '0042f722_TEST PASS'
     }
     [pscustomobject]@{
         Address = '004456d0'
@@ -32836,11 +32833,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c8db10'
-        Module = 'std'
-        Source = '00/c8/std_DestvalCFlasha_00c8db10.cpp'
-        TestSource = '00/c8/std_DestvalCFlasha_00c8db10_test.cpp'
-        PassPattern = 'DEST_VAL_CFLASH_OK'
-        Grade = 'asm_bake'
+        Module = 'libogg'
+        Source = '00/c8/ogg_stream_packetout_00c8db10.cpp'
+        TestSource = '00/c8/ogg_stream_packetout_00c8db10_test.cpp'
+        PassPattern = '00c8db10_TEST PASS'
+        CompilerFlags = '/Gr'
     }
     [pscustomobject]@{
         Address = '00cb5ac0'
@@ -46301,8 +46298,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/a5/global_GFInitVectorMath_00a5b850.cpp'
         TestSource = '00/a5/global_GFInitVectorMath_00a5b850_test.cpp'
-        PassPattern = 'VECTORMATH_SSE_OK'
-        Grade = 'asm_bake'
+        PassPattern = '00a5b850_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00a5ee20'
@@ -365107,6 +365103,27 @@ $catalog = @(
         Source = '00/cb/global_GiveGameInfo_00cbf6dc.cpp'
         TestSource = '00/cb/global_GiveGameInfo_00cbf6dc_test.cpp'
         PassPattern = '00cbf6dc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099bf30'
+        Module = '_global'
+        Source = '00/99/global_operator_0099bf30.cpp'
+        TestSource = '00/99/global_operator_0099bf30_test.cpp'
+        PassPattern = '0099bf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099be70'
+        Module = '_global'
+        Source = '00/99/global_operator_0099be70.cpp'
+        TestSource = '00/99/global_operator_0099be70_test.cpp'
+        PassPattern = '0099be70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00413c50'
+        Module = '_global'
+        Source = '00/41/global_InitialiseConsoleVariables_00413c50.cpp'
+        TestSource = '00/41/global_InitialiseConsoleVariables_00413c50_test.cpp'
+        PassPattern = '00413c50_TEST PASS'
     }
 )
 

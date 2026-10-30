@@ -1,0 +1,15 @@
+{
+ "result": {
+  "authored": [
+   {
+    "address": "00a5b850",
+    "module": "NVectorMath",
+    "name": "GFInitVectorMath",
+    "source_cpp": "// NVectorMath::GFInitVectorMath() -- detect SSE with CPUID (leaf 1, EDX bit 25) and set the g_SSEAvailable byte\n// Leaf: ?GFInitVectorMath@NVectorMath@@YAXXZ\n// Retail: Fable.exe 0x00A5B850, 25 bytes: push ebx ; mov eax,1 ; cpuid ; test edx,2000000h ; je ; mov byte [0x013D2880],1 ;\n//   pop ebx ; ret. Name: both PDBs `?GFInitVectorMath@NVectorMath@@YAXXZ`, first in the NVectorMath block (GFClear4DVectors,\n//   GFNormalise3DVectors, GFInterpolateVectors x3, GFFinishPartialSlerp follow it); g_SSEAvailable is the byte the landed\n//   SSE kernels test (binding ?g_SSEAvailable@@3_NA from 0x00A5C300).\n// Retail-asm: 0x00A5B856 `cpuid` -- VC7.1 has no __cpuid intrinsic (it arrived with VC8's intrin.h) and no C++ form emits the\n//   instruction; the `push ebx`/`pop ebx` pair is the compiler saving ebx because the asm block's cpuid clobbers it.\nextern bool g_SSEAvailable;                                 // 0x013D2880\n\nnamespace NVectorMath\n{\n    void GFInitVectorMath()\n    {\n        __asm\n        {\n            mov     eax, 1\n            cpuid\n            test    edx, 0x2000000\n            je      no_sse\n            mov     byte ptr [g_SSEAvailable], 1\n        no_sse:\n        }\n    }\n}\n",
+    "test_cpp": "// Behaviour test for 0x00a5b850 NVectorMath::GFInitVectorMath: links against the candidate's object (the source's cpuid\n// block stays in the source; this test only declares the function) and checks the SSE flag it sets.\n#include <stdio.h>\nstatic int g_ok = 1;\n#define CHECK(c) do { if (!(c)) { g_ok = 0; printf(\"check failed line %d\\n\", __LINE__); } } while (0)\nnamespace NVectorMath { void GFInitVectorMath(); }\nbool g_SSEAvailable = false;                        // 0x013D2880 in retail; defined here for the linked candidate object\nint main()\n{\n    NVectorMath::GFInitVectorMath();\n    CHECK(g_SSEAvailable == true);                  // every CPU this test runs on reports SSE (cpuid 1, edx bit 25)\n    NVectorMath::GFInitVectorMath();                // the flag is only ever set, never cleared\n    CHECK(g_SSEAvailable == true);\n    if (g_ok) printf(\"00a5b850_TEST PASS\\n\");\n    return g_ok ? 0 : 1;\n}\n",
+    "pass_pattern": "00a5b850_TEST PASS",
+    "leaf": "?GFInitVectorMath@NVectorMath@@YAXXZ"
+   }
+  ]
+ }
+}

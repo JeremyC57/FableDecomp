@@ -71,7 +71,7 @@ class CWorld { public:
 class CConsole {
 public:
     static CConsole* Get();                        // 0x00414C90
-    void ExecuteConfigFile(const CWideString& path);   // 0x009EC890
+    void RunScript(const CWideString& path);   // 0x009EC890
 };
 
 class CTCBase
@@ -121,7 +121,7 @@ void CTCInventoryQuests::ActivateSelectedTestQuest()
     if (quest.IniFile != "") {
         CWideString path = ("Data\\Levels\\Ini\\" + quest.IniFile).ToWideString();
         if (CAFile::PathExists(path))
-            CConsole::Get()->ExecuteConfigFile(path);
+            CConsole::Get()->RunScript(path);
     }
     g_pQuestManager->DeactivateQuest(quest.QuestName, 0);
     g_pQuestManager->ClearQuestPersistScript(quest.QuestName);

@@ -1,0 +1,28 @@
+addr	status	grades	best_residue
+00c8db10	RELOCATION_MATCH	1	src/00c8db10.cpp: libogg ogg_stream_packetout (/Gr), same-TU static _packetout + packetpeek; vland PASS
+0099bf30	RELOCATION_MATCH	2	src/0099bf30.cpp: operator+(const CWideString&, const unsigned short*), landed sibling 0x0099BFF0 model; vland PASS
+0099be70	RELOCATION_MATCH	2	src/0099be70.cpp: operator+(const CWideString&, const CWideString&); vland PASS
+0042f722	RELOCATION_MATCH	4	src/0042f722.cpp: GetDef by pointer + CStartupDefinitionManager::Get() returning a reference; vland PASS
+0042e204	RELOCATION_MATCH	5	src/0042e204.cpp: same-TU GetDef<CEngineDef> body, CEngineDef "ENGINE", Get() by reference; vland PASS
+009c85a0	RELOCATION_MATCH	1	src/009c85a0.cpp = the already-landed C++ duplicate (rebuild/src/compiled/00/9c/NGameTextCDataBank_CDataBank_009c85a0.cpp) and its landed test; vland PASS. Retire the asm twin NGameText_CDataBank_Constructor_009c85a0.cpp
+00536b4f	RELOCATION_MATCH	5	src/00536b4f.cpp: alpha named as `1.0f - GetAlphaOffset() * half`; PDB names (LoadAndReturnDef, CUIDef::PCStyle); vland PASS
+00413c50	RELOCATION_MATCH	3	src/00413c50.cpp: 25 AddInput(new ...) registrations through the inlined CTBaseSingleton<CConsole>::Get(), implicit L"" -> CWideString temps; vland PASS
+00a5b850	RETAIL_ASM_RELOCATION_MATCH	1	retail_asm/00a5b850.cpp: `__asm { mov eax,1; cpuid; test edx,2000000h; je; mov byte ptr [g_SSEAvailable],1 }`, purity retail_asm; vland PASS
+0042df9e	DIFFER(478v478)	6	differ/0042df9e.cpp (retail_asm candidate: fnstcw/fldcw in the body, optimize y-off + s): one spill-order residue in the second inlined SetDesiredState (`mov esi,ecx` vs `mov [ebp+8],edx` order; BookmarkMask in edx vs edi)
+005bd993	DIFFER(30v31)	5	differ/005bd993.cpp: retail `xor eax,eax ; cmp [ecx+esi+4],eax` (start in esi, offset in ecx); VC7.1 folds base+offset
+00899ef0	DIFFER(154v150)	4	differ/00899ef0.cpp: frame only, retail `push ecx` shares one word for key / fild temp / ROUND result; ours `sub esp,8`
+007022c0	DIFFER(22v22)	3	differ/007022c0.cpp: exit-block order (retail `jne F` with the `mov al,1` exit falling through)
+009bef80	DIFFER(478v479)	4	differ/009bef80.cpp: class keys fixed (leaf binds); retail caches W/H in edi/ebx, zero in ebp, `left` in its own frame word
+0053c332	DIFFER(1119v1111)	4	differ/0053c332.cpp: PDefPositionOffset through `lea eax,[esi+1F0h]` in retail; Y step operand order (fld [+1A8h] ; fadd [+194h])
+00551340	DIFFER(431v431)	2	differ/00551340.cpp: frame only (retail `sub esp,10h`, ours 0Ch)
+005dacf0	DIFFER(19v22)	3	differ/005dacf0.cpp: setne/neg vs retail's two `ret 0Ch` exits
+00597bf2	DIFFER(517v517)	4	differ/00597bf2.cpp: map stand-in fixed the [ebp+8] spills; left: back() deref timing + key-store order, tail PlaySound push scheduling
+004167a7	DIFFER(33v33)	4	differ/004167a7.cpp: x87 dead-operand pop placement (`fstp st(1)` after fdivr vs `fstp st(0)` before ret); RTM and QFE alike -- lane gap candidate
+0066ff20	DIFFER(175v175)	4	differ/0066ff20.cpp (debakeB2 source): register picks only; the real-name model probe/0066ff20_a.cpp is 177v175
+009a8840	NOT_ATTEMPTED	0	CBankFileManager::OpenRetailBank (1565 bytes, inline CMemoryDataInputStream reads with the 64-bit position guard, disk file / retail bank / threaded file objects): analysed, not attempted for time; asm file stays the oracle
+009a8170	NOT_ATTEMPTED	0	CBankFileManager::OpenIniFile (1732 bytes): not attempted for time; asm file stays the oracle
+00c8c730	NOT_ATTEMPTED	0	vorbisfile _ov_d_seek_lap: its callees _ov_initset / _ov_initprime take vf in esi with no save (LTCG private convention) -- lane gap; asm file stays the oracle
+00bfe9f9	CRT_LIBRARY	2	differ/00bfe9f9.cpp DIFFER(14v14): CRT secchk.c __security_check_cookie (hand asm in the VC7.1 CRT): every C++ form makes the report tail call the fall-through. Should come from the CRT library
+004013c7	CRT_LIBRARY	1	differ/004013c7.cpp DIFFER(23v17): CRT sehprolg.asm __SEH_epilog (fs:[0] unlink, `leave ; push ecx ; ret`); a C++ body adds ebx/esi/edi saves. Should come from the CRT library
+0040138c	CRT_LIBRARY	0	CRT sehprolg.asm __SEH_prolog (builds the caller's frame and moves esp; installs fs:[0]): not expressible as a non-naked C++ body. Should come from the CRT library
+00401284	CRT_LIBRARY	0	linker import thunk `jmp dword ptr [__imp__exit]` (0x014401A0, msvcr71 import library): no compiler-emitted body exists. Should come from the import library, not reconstruction

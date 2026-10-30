@@ -1265,3 +1265,25 @@ mig6	008fcf90	?GetPPlayerManager@CAIStateGroup_MinionReactToApology@@QAEPAUCPlay
 mig7	0x00CE1280	?Main@CTestGateSwitch@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ	Ego_r.pdb 0x00CC7CE0 + FableWin.pdb 0x035E86B0; the row leaf is UAE on an unqualified class since wave 7 (was QAE): nest the class in NScript::CPersonalScript_GlobalThingsScript and make Main private	?Main@CTestGateSwitch@@UAEXXZ; ?Main@CTestGateSwitch@@QAEXXZ
 mig7	0x00D51FC0	?Main@CPreMeleeDummy@CQ_GuildTrainingPreMeleeScript@NScript@@EAEXXZ	Ego_r.pdb 0x00D66940 + FableWin.pdb 0x037464F0; leaf UAE on an unqualified class since wave 7	?Main@CPreMeleeDummy@@UAEXXZ; ?Main@CPreMeleeDummy@@QAEXXZ
 mig7	0x00EF3200	?Main@CBeggar@CPersonalScript_EmptyScript@NScript@@EAEXXZ	Ego_r.pdb 0x00F6D740 + FableWin.pdb 0x03AF06C0; leaf UAE on an unqualified class since wave 7	?Main@CBeggar@@UAEXXZ; ?Main@CBeggar@@QAEXXZ
+asmre	0x0042F70B	?CompileDefs@CNewFrontendGameComponent@@SIXXZ	Ego_r.pdb + FableWin.pdb (static __fastcall member)	
+asmre	0x0043368D	?Get@CStartupDefinitionManager@@SIAAV1@XZ	Ego_r.pdb + FableWin.pdb (static __fastcall returning a reference; body `mov eax,[0x013B8760] ; ret`)	
+asmre	0x004300FB	??$GetDef@VCFrontEndDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCFrontEndDef@@@@@Z	FableWin.pdb GetDef<T> instantiation (def BY POINTER); the call pushes &m_pFrontEndDef	
+asmre	0x00430096	??$GetDef@VCEngineDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCEngineDef@@@@@Z	FableWin.pdb GetDef<CEngineDef>; "ENGINE" def; CEngineInit::EngineDef is CEngineDef*	
+asmre	0x00B26340	?GFAllocEngine@@YIPAVCIEngine@@XZ	Ego_r.pdb + FableWin.pdb; body is `new CEngine` (0x178 bytes)	
+asmre	0x0041A100	?GetGraphicBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	Ego_r.pdb + FableWin.pdb NResourceDirectoryNames block (0x0041A100..0x0041A220)	
+asmre	0x0041A1E0	?GetShaderBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	as above	
+asmre	0x0042F7C1	??1CEngineInit@@QAE@XZ	Ego_r.pdb CEngineInit; destroys the five CWideString paths	
+asmre	0x0099B940	??YCWideString@@QAEABV0@PBG@Z	FableWin.pdb CWideString::operator+=(const wchar_t*) (wide text spelled unsigned short); called by operator+ 0x0099BF30	
+asmre	0x005BD993	?GetHighlightedItemMaxInCategory@CCategory@NInventory@@QBEJXZ	Ego_r.pdb + FableWin.pdb; body reads the highlighted slot's item maximum	
+asmre	0x005BD931	?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ	Ego_r.pdb + FableWin.pdb	
+asmre	0x00416231	?GetCurrentGameTime@CMainGameComponent@@IBENXZ	Ego_r.pdb + FableWin.pdb (protected const, returns double)	
+asmre	0x0066FF20	?SwapToHero@CTCCoopSpirit@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private)	
+asmre	0x00686D40	?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ	Ego_r.pdb + FableWin.pdb (protected, returns a reference)	
+asmre	0x00414C90	?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ	FableWin.pdb; the inlined body in 0x00413C50 is the create-on-first-use singleton	
+asmre	0x00413800	GConsoleSetLevel	Ego_r.pdb + FableWin.pdb plain names (GConsole* handler block); registered as "SetLevel"	
+asmre	0x00413840	GConsoleSetStartingHolySite	Ego_r.pdb + FableWin.pdb; registered as "SetStartingHolySite"	
+asmre	0x00413880	GConsoleEnableCodeSectionLoading	Ego_r.pdb + FableWin.pdb; registered as "EnableCodeSectionLoading"	
+asmre	0x009EBB30	??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z	Ego_r.pdb CConsoleCommandParameters(EGenericVarType); called with 5 / 4	
+asmre	0x00595582	?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ	Ego_r.pdb; 0x0042DF9E pushes Draw's arguments before this no-argument call (VC evaluates the object expression after the arguments)	
+asmre	0x00595222	?Draw@CFrontEndManager@NUISystem@@QAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@@Z	Ego_r.pdb; called with (*m_pEngine, 0) on GetInstance()'s result	
+asmre	0x00404A80	?Get@CIME@NUISystem@@SIAAV12@XZ	Ego_r.pdb; result used as `this` of CIME::Render 0x00404C00	

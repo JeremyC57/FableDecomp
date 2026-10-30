@@ -3,10 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009ECB70, 255 bytes, public static `__fastcall` (console in ecx, args in edx), `ret`.
 // Identity (proven): CConsole::Initialise 0x009ED190 registers this handler (`mov [edi+18h],9ECB70h`) beside the landed
 //   ConsoleAddKeyBinding 0x009ECC70 (same `SIXAAV1@ABV?$vector@VCGenericVar@@...` static-handler signature); of the PDB's
-//   static handlers only ConsoleRunScript fits a body that hands a file name to CConsole::ExecuteConfigFile.
+//   static handlers only ConsoleRunScript fits a body that hands a file name to CConsole::RunScript.
 // Callees: CCharString copy ctor 0x0099EC30 (through CGenericVar::GetString), CCharString(const char*, long) 0x0099EBF0,
 //   CCharString::ToLower() const 0x0099ED10, CCharString::operator+=(const char*) 0x0099F100, CCharString::ToWideString()
-//   const 0x0099E480, CConsole::ExecuteConfigFile(const CWideString&) 0x009EC890, ~CWideString 0x0099B510, ~CCharString
+//   const 0x0099E480, CConsole::RunScript(const CWideString&) 0x009EC890, ~CWideString 0x0099B510, ~CCharString
 //   0x0099EAE0. Data: ".ini" 0x0129C5F4 (both uses), the empty string 0x0129AAF4.
 // Shape: the inline CCharString EndsWith of the landed 0x008EA500 / 0x005955AB (offset = Length() - suffix.Length(); a
 //   negative offset is false; else intrinsic strcmp == 0) applied to the ToLower() temporary. The ".ini" suffix is a named
@@ -76,7 +76,7 @@ class CConsole {
 public:
     virtual ~CConsole();
     static void __fastcall ConsoleRunScript(CConsole& console, const std::vector<CGenericVar>& args);
-    void ExecuteConfigFile(const CWideString& fileName); // 0x009EC890
+    void RunScript(const CWideString& fileName); // 0x009EC890
 };
 
 void __fastcall CConsole::ConsoleRunScript(CConsole& console, const std::vector<CGenericVar>& args)
@@ -89,5 +89,5 @@ void __fastcall CConsole::ConsoleRunScript(CConsole& console, const std::vector<
     }
     if (!hasExtension)
         fileName += ".ini";
-    console.ExecuteConfigFile(fileName.ToWideString());
+    console.RunScript(fileName.ToWideString());
 }

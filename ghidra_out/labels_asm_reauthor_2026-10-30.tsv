@@ -1,0 +1,11 @@
+address	name	evidence
+0x00C8DB10	ogg_stream_packetout	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x0099BF30	operator+(const CWideString&,const unsigned short*)	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x0099BE70	operator+(const CWideString&,const CWideString&)	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x0042F722	CNewFrontendGameComponent::InitialiseDefs	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x0042E204	CNewFrontendGameComponent::InitialiseEngine	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x00536B4F	NUISystem::CList::InitialiseOffsets	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x00413C50	InitialiseConsoleVariables	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x00A5B850	NVectorMath::GFInitVectorMath	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x009EC890	CConsole::RunScript	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)
+0x00C8D9D0	_packetout	proven per batch 2026-10-30_asm_reauthor NOTES.md and NAME_FIXES.tsv (two PDB sources)

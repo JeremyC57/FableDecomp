@@ -66,7 +66,7 @@ extern bool g_bQuestFinishScreensEnabled;          // 0x01375741 (descriptive)
 class CConsole {
 public:
     static CConsole* Get();                        // 0x00414C90
-    void ExecuteConfigFile(const CWideString& path);   // 0x009EC890
+    void RunScript(const CWideString& path);   // 0x009EC890
 };
 
 class CTCInventoryQuests { public:
@@ -108,6 +108,6 @@ void CTCInventoryQuests::DeactivateSelectedTestQuest()
     if (quest.OutiFile != "") {
         CWideString path = ("Data\\Levels\\Ini\\" + quest.OutiFile).ToWideString();
         if (CAFile::PathExists(path))
-            CConsole::Get()->ExecuteConfigFile(path);
+            CConsole::Get()->RunScript(path);
     }
 }

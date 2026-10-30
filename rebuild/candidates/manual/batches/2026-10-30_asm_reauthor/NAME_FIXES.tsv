@@ -1,0 +1,28 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00C8DB10	@ogg_stream_packetout@8	libogg 1.1 framing.c body (`return _packetout(os,op,1)`, twin ogg_stream_packetpeek 0x00C8DB20 pushes 0); callers are vorbisfile (`lea ecx,[vf+78h]` = &vf->os); RELOCATION_MATCH under /Gr	std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash> (catalog / landed file std_DestvalCFlasha_00c8db10.cpp)
+0x00C8D9D0	_packetout (libogg framing.c file-static; ?_packetout@@YIHPAUogg_stream_state@@PAUogg_packet@@H@Z in this TU)	libogg framing.c; the only callee of ogg_stream_packetout / packetpeek	Notification_ProcessState (catalog label)
+0x0042F70B	?CompileDefs@CNewFrontendGameComponent@@SIXXZ	Ego_r.pdb + FableWin.pdb (static __fastcall member)	?CompileDefs@@YIXXZ
+0x0042F722	?InitialiseDefs@CNewFrontendGameComponent@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private)	?InitialiseDefs@CNewFrontendGameComponent@@QAEXXZ
+0x0043368D	?Get@CStartupDefinitionManager@@SIAAV1@XZ	Ego_r.pdb + FableWin.pdb (static __fastcall returning a reference; body `mov eax,[0x013B8760] ; ret`)	descriptive pointer-returning GetDefinitionManager models in the landed asm rows
+0x004300FB	??$GetDef@VCFrontEndDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCFrontEndDef@@@@@Z	FableWin.pdb GetDef<T> instantiation (def BY POINTER); the call pushes &m_pFrontEndDef	by-reference GetDef models
+0x00430096	??$GetDef@VCEngineDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCEngineDef@@@@@Z	FableWin.pdb GetDef<CEngineDef>; "ENGINE" def; CEngineInit::EngineDef is CEngineDef*	GetDef<CEnvironmentDef>
+0x00B26340	?GFAllocEngine@@YIPAVCIEngine@@XZ	Ego_r.pdb + FableWin.pdb; body is `new CEngine` (0x178 bytes)	CEnginePrimitive2DViewportManager::CreateInternalPrimitive (catalog label)
+0x0042E204	?InitialiseEngine@CNewFrontendGameComponent@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private)	?InitialiseEngine@CNewFrontendGameComponent@@QAEXXZ (landed asm declaration)
+0x0041A100	?GetGraphicBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	Ego_r.pdb + FableWin.pdb NResourceDirectoryNames block (0x0041A100..0x0041A220)	CUserProfileManager::GetAutoSaveFileName (catalog label)
+0x0041A1E0	?GetShaderBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	as above	CUserProfileManager::GetAutoSaveFileName (catalog label)
+0x0042F7C1	??1CEngineInit@@QAE@XZ	Ego_r.pdb CEngineInit; destroys the five CWideString paths	CWideStringQuintet_0042f7c1::~CWideStringQuintet_0042f7c1 (catalog label)
+0x0099B940	??YCWideString@@QAEABV0@PBG@Z	FableWin.pdb CWideString::operator+=(const wchar_t*) (wide text spelled unsigned short); called by operator+ 0x0099BF30	CCharString::SetFromUnicodeString (catalog label)
+0x005BD993	?GetHighlightedItemMaxInCategory@CCategory@NInventory@@QBEJXZ	Ego_r.pdb + FableWin.pdb; body reads the highlighted slot's item maximum	NInventory::CCategory::GetMaxItemsPerSlot (landed file NInventoryCCategory_GetMaxItemsPerSlot_005bd993.cpp)
+0x005BD931	?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ	Ego_r.pdb + FableWin.pdb	?GetMaximumNumberOfItems@CItem@@QAEJXZ
+0x00416231	?GetCurrentGameTime@CMainGameComponent@@IBENXZ	Ego_r.pdb + FableWin.pdb (protected const, returns double)	?GetCurrentGameTime@CMainGameComponent@@QAENXZ
+0x0066FF20	?SwapToHero@CTCCoopSpirit@@AAEXXZ	Ego_r.pdb + FableWin.pdb (private)	?SwapToHero@CTCCoopSpirit@@QAEXXZ
+0x00686D40	?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ	Ego_r.pdb + FableWin.pdb (protected, returns a reference)	pointer-returning models
+0x009EC890	?RunScript@CConsole@@QAEXABVCWideString@@@Z	Ego_r.pdb + FableWin.pdb (CConsole::RunScript; called with default_userst.ini / userst.ini)	?ExecuteConfigFile@CConsole@@QAEXABVCWideString@@@Z (reloc_bindings)
+0x00414C90	?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ	FableWin.pdb; the inlined body in 0x00413C50 is the create-on-first-use singleton	?Get@CConsole@@SIPAV1@XZ, ?Get@CConsole@@SAPAV1@XZ (reloc_bindings)
+0x00413800	GConsoleSetLevel	Ego_r.pdb + FableWin.pdb plain names (GConsole* handler block); registered as "SetLevel"	(unnamed)
+0x00413840	GConsoleSetStartingHolySite	Ego_r.pdb + FableWin.pdb; registered as "SetStartingHolySite"	(unnamed)
+0x00413880	GConsoleEnableCodeSectionLoading	Ego_r.pdb + FableWin.pdb; registered as "EnableCodeSectionLoading"	(unnamed)
+0x009EBB30	??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z	Ego_r.pdb CConsoleCommandParameters(EGenericVarType); called with 5 / 4	??0CConsoleCommandParameters@@QAE@J@Z, ??0CConsoleCommandParameters_Retail@@QAE@J@Z (reloc_bindings)
+0x00595582	?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ	Ego_r.pdb; 0x0042DF9E pushes Draw's arguments before this no-argument call (VC evaluates the object expression after the arguments)	@FableFrontEndManagerConstructInstance@4 (reloc_bindings)
+0x00595222	?Draw@CFrontEndManager@NUISystem@@QAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@@Z	Ego_r.pdb; called with (*m_pEngine, 0) on GetInstance()'s result	?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z (reloc_bindings)
+0x00404A80	?Get@CIME@NUISystem@@SIAAV12@XZ	Ego_r.pdb; result used as `this` of CIME::Render 0x00404C00	?GFGetIME@@YAPAUCIME@@XZ, ?GetInstance@CIME@@SIPAV1@XZ (reloc_bindings)

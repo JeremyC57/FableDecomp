@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00c8db10   WARN RELOC_NAME: ?_packetout@@YIHPAUogg_stream_state@@PAUogg_packet@@H@Z -> 00c8d9d0 labelled 'Notification_ProcessState'
+00c8db10   RELOCATION_MATCH PASS   ogg_stream_packetout
+
+WINS: 1
+  00c8db10 RELOCATION_MATCH libogg::@ogg_stream_packetout@8

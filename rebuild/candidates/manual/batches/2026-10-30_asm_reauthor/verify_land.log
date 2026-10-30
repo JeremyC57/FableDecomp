@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0099bf30   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+0099bf30   RELOCATION_MATCH PASS   operator+
+0099be70   RELOCATION_MATCH PASS   operator+
+00413c50   RELOCATION_MATCH PASS   InitialiseConsoleVariables
+
+WINS: 3
+  0099bf30 RELOCATION_MATCH _global::??H@YI?AVCWideString@@ABV0@PBG@Z
+  0099be70 RELOCATION_MATCH _global::??H@YI?AVCWideString@@ABV0@0@Z
+  00413c50 RELOCATION_MATCH _global::?InitialiseConsoleVariables@@YIXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  global_operator_0099bf30
+  global_operator_0099be70
+  global_InitialiseConsoleVariables_00413c50
+land rc=0

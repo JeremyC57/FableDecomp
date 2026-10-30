@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00536b4f   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00536b4f   RELOCATION_MATCH PASS   InitialiseOffsets
+0042e204   WARN RELOC_NAME: ?GFAllocEngine@@YIPAVCIEngine@@XZ -> 00b26340 labelled 'CEnginePrimitive2DViewportManager::CreateInternalPrimitive'
+0042e204   WARN RELOC_NAME: ?GetGraphicBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ -> 0041a100 labelled 'CUserProfileManager::GetAutoSaveFileName'
+0042e204   WARN RELOC_NAME: ?GetShaderBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ -> 0041a1e0 labelled 'CUserProfileManager::GetAutoSaveFileName'
+0042e204   WARN RELOC_NAME: ??1CEngineInit@@QAE@XZ -> 0042f7c1 labelled 'CWideStringQuintet_0042f7c1::~CWideStringQuintet_0042f7c1'
+0042e204   RELOCATION_MATCH PASS   InitialiseEngine
+0042f722   RELOCATION_MATCH PASS   InitialiseDefs
+00a5b850   RELOCATION_MATCH PASS   GFInitVectorMath
+00c8db10   DIFFER(15v12)    PASS   CFlash>
+009ecb70   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+009ecb70   RELOCATION_MATCH PASS   ConsoleRunScript
+0061ab30   WARN SHARED_HEADER_AVAILABLE CQuestManager
+0061ab30   WARN SHARED_HEADER_AVAILABLE CWorld
+0061ab30   WARN SHARED_HEADER_AVAILABLE CTCBase
+0061ab30   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0061ab30   WARN RELOC_NAME: ?LoadQuestHSP@CWorld@@QAEXABVCCharString@@@Z -> 004a0940 labelled 'CWorld::TeleportHeroToHSP'
+0061ab30   RELOCATION_MATCH PASS   ActivateSelectedTestQuest
+0061ac60   WARN SHARED_HEADER_AVAILABLE CQuestManager
+0061ac60   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0061ac60   RELOCATION_MATCH PASS   DeactivateSelectedTestQuest
+
+WINS: 7
+  00536b4f RELOCATION_MATCH CList::?InitialiseOffsets@CList@NUISystem@@UAEXK@Z
+  0042e204 RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseEngine@CNewFrontendGameComponent@@AAEXXZ
+  0042f722 RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseDefs@CNewFrontendGameComponent@@AAEXXZ
+  00a5b850 RELOCATION_MATCH _global::?GFInitVectorMath@NVectorMath@@YAXXZ
+  009ecb70 RELOCATION_MATCH CConsole::?ConsoleRunScript@CConsole@@SIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  0061ab30 RELOCATION_MATCH CTCInventoryQuests::ActivateSelectedTestQuest
+  0061ac60 RELOCATION_MATCH CTCInventoryQuests::DeactivateSelectedTestQuest

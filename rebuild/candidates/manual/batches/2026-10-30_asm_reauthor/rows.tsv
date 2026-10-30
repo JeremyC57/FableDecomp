@@ -1,0 +1,28 @@
+address	module	name	length	source	test	group
+0099bf30	?	?		?	?	reauthor
+0099be70	?	?		?	?	reauthor
+0042df9e	?	CNewFrontendGameComponent::Draw	478	?	?	reauthor
+0042e204	?	CNewFrontendGameComponent::InitialiseEngine	458	?	?	reauthor
+0042f722	CNewFrontendGameComponent	CNewFrontendGameComponent::InitialiseDefs	60	00/42/CNewFrontendGameComponent_InitialiseDefs_0042f722.cpp	00/42/CNewFrontendGameComponent_InitialiseDefs_0042f722_test.cpp	reauthor
+005bd993	NInventory::CCategory	NInventory::CCategory::GetMaxItemsPerSlot	31	00/5b/NInventoryCCategory_GetMaxItemsPerSlot_005bd993.cpp	00/5b/NInventoryCCategory_GetMaxItemsPerSlot_005bd993_test.cpp	reauthor
+00899ef0	?	CGameScriptInterface::GiveHeroMorality	150	?	?	reauthor
+007022c0	CTCQuestCard	CTCQuestCard::IsOptional	22	00/70/CTCQuestCard_IsOptional_007022c0.cpp	00/70/CTCQuestCard_IsOptional_007022c0_test.cpp	reauthor
+00bfe9f9	_global	__security_check_cookie	14	00/bf/global_securitycheckcookie_00bfe9f9.cpp	00/bf/global_securitycheckcookie_00bfe9f9_test.cpp	crt_or_cpuid
+009bef80	CDisplayManager	CDisplayManager::SetViewport	479	00/9b/CDisplayManager_SetViewportInteger_009bef80.cpp	00/9b/CDisplayManager_SetViewportInteger_009bef80_test.cpp	reauthor
+009a8840	?	?		?	?	reauthor
+009a8170	?	?		?	?	reauthor
+00536b4f	?	NUISystem::CList::InitialiseOffsets	277	?	?	reauthor
+0053c332	?	NUISystem::CList::DoRecomputeOffsets	1111	?	?	reauthor
+00551340	?	NUISystem::CTable::GetDataFromDef	428	?	?	reauthor
+005dacf0	CTCWeapon	CTCWeapon::IsAbleToBeUsedToBlock	22	00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0.cpp	00/5d/CTCWeapon_IsAbleToBeUsedToBlock_005dacf0_test.cpp	reauthor
+00597bf2	CFrontEndManager	NUISystem::CFrontEndManager::GotoPreviousScreen	517	00/59/CFrontEndManager_GotoPreviousScreen_00597bf2.cpp	00/59/CFrontEndManager_GotoPreviousScreen_00597bf2_test.cpp	reauthor
+009c85a0	?	NGameText::CDataBank::CDataBank	141	?	?	reauthor
+004167a7	CMainGameComponent	CMainGameComponent::GetFrameDifferenceFromCurrent	33	00/41/CMainGameComponent_GetFrameDifferenceFromCurrent_004167a7.cpp	00/41/CMainGameComponent_GetFrameDifferenceFromCurrent_004167a7_test.cpp	reauthor
+00413c50	?	?		?	?	reauthor
+0066ff20	CTCCoopSpirit	CTCCoopSpirit::SwapToHero	175	00/66/CTCCoopSpirit_SwapToHero_0066ff20.cpp	00/66/CTCCoopSpirit_SwapToHero_0066ff20_test.cpp	reauthor
+00c8c730	_global	Batch_InvokeWithStackArgs_c8c730	326	00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730.cpp	00/c8/global_BatchInvokeWithStackArgsc8c730_00c8c730_test.cpp	reauthor
+00c8db10	std	std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>	12	00/c8/std_DestvalCFlasha_00c8db10.cpp	00/c8/std_DestvalCFlasha_00c8db10_test.cpp	reauthor
+004013c7	_global	__SEH_epilog	17	00/40/Global_SEHEpilog_004013c7.cpp	00/40/Global_SEHEpilog_004013c7_test.cpp	crt_or_cpuid
+0040138c	?	__SEH_prolog	59	?	?	crt_or_cpuid
+00401284	?	?		?	?	crt_or_cpuid
+00a5b850	_global	NVectorMath::GFInitVectorMath	25	00/a5/global_GFInitVectorMath_00a5b850.cpp	00/a5/global_GFInitVectorMath_00a5b850_test.cpp	crt_or_cpuid
