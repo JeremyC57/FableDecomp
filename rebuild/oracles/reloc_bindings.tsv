@@ -35337,3 +35337,12 @@ _floor0_map_lazy_init@12	00ca36e0	00ca39c0
 ?GetCarriedPositionInfo@CTCCarryable@@QBE_NAAVC3DVector@@AAVCRightHandedSet@@_NM@Z	007055d0	0076e2f0
 ?GetHelperPointPositionStatic@C3DMeshObject@@QBE?AVC3DVector@@ABVCCharString@@J@Z	00a361a0	0076e2f0
 ?GetRenderMeshObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NAAVC3DMeshObject@@ABVC3DVector@@ABVCRightHandedSet@@@Z	004bc750	0076e2f0
+??_7?$CPersistContext_TransferableComponent@E@@6B@	0122dcd4	00405a60
+?TransferBinaryIn@?$CPersistTraits@E@@QAEXAAVCMemoryDataInputStream@@AAE@Z	00405940	00405a60
+??_7?$CPersistContext_TransferableComponent@_K@@6B@	01231c80	0044bb00
+??$insert@U?$_List_iterator@U?$pair@JJ@std@@U?$_Const_traits@U?$pair@JJ@std@@@2@@std@@@?$list@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAEXU?$_List_iterator@U?$pair@JJ@std@@U?$_Nonconst_traits@U?$pair@JJ@std@@@2@@1@U?$_List_iterator@U?$pair@JJ@std@@U?$_Const_traits@U?$pair@JJ@std@@@2@@1@1@Z	0053cb02	0053cb20
+??0?$_List_base@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAE@ABV?$allocator@U?$pair@JJ@std@@@1@@Z	0053c94a	0053cb20
+?GetInstance@CFrontEndManager@NUISystem@@SIPAV12@XZ	0041e5f2	005820e7
+??4CWideString@@QAEAAV0@ABV0@@Z	0099b7d0	005c3444
+?GetDetails@CTCInventoryItem@@SI?AVCWideString@@J@Z	005d9630	005c3444
+?g_NewLineWideString@@3VCWideString@@B	013b8ba8	005c3444

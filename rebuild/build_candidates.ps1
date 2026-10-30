@@ -369068,6 +369068,104 @@ $catalog = @(
         TestSource = '00/76/CTCWeaponTrail_CalculateInterpolatedWeaponHelpers_0076e2f0_test.cpp'
         PassPattern = '0076e2f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00404d20'
+        Module = 'NUISystem::CIMEFont'
+        Source = '00/40/NUISystemCIMEFont_SetColor_00404d20.cpp'
+        TestSource = '00/40/NUISystemCIMEFont_SetColor_00404d20_test.cpp'
+        PassPattern = '00404d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00405a60'
+        Module = 'CPersistContext'
+        Source = '00/40/CPersistContext_Transferunsignedchar_00405a60.cpp'
+        TestSource = '00/40/CPersistContext_Transferunsignedchar_00405a60_test.cpp'
+        PassPattern = '00405a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044bb00'
+        Module = 'CPersistContext'
+        Source = '00/44/CPersistContext_Transferunsignedint64_0044bb00.cpp'
+        TestSource = '00/44/CPersistContext_Transferunsignedint64_0044bb00_test.cpp'
+        PassPattern = '0044bb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004afc60'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_IsCreatureGenerationEnabled_004afc60.cpp'
+        TestSource = '00/4a/CQuestManager_IsCreatureGenerationEnabled_004afc60_test.cpp'
+        PassPattern = '004afc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005361d3'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_SetNonScrollingChildrenStates_005361d3.cpp'
+        TestSource = '00/53/NUISystemCList_SetNonScrollingChildrenStates_005361d3_test.cpp'
+        PassPattern = '005361d3_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053cb20'
+        Module = 'std::list'
+        Source = '00/53/stdlist_list_0053cb20.cpp'
+        TestSource = '00/53/stdlist_list_0053cb20_test.cpp'
+        PassPattern = '0053cb20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00543b10'
+        Module = 'NUISystem::CIconText'
+        Source = '00/54/NUISystemCIconText_GetAlignment_00543b10.cpp'
+        TestSource = '00/54/NUISystemCIconText_GetAlignment_00543b10_test.cpp'
+        PassPattern = '00543b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005820e7'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_CreateMenuDesc_005820e7.cpp'
+        TestSource = '00/58/CTCInventory_CreateMenuDesc_005820e7_test.cpp'
+        PassPattern = '005820e7_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00582673'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_CreateMenuDescPC_00582673.cpp'
+        TestSource = '00/58/CTCInventory_CreateMenuDescPC_00582673_test.cpp'
+        PassPattern = '00582673_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b358c'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_CreateMenuDesc_005b358c.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_CreateMenuDesc_005b358c_test.cpp'
+        PassPattern = '005b358c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005b3613'
+        Module = 'CTCInventoryClothing'
+        Source = '00/5b/CTCInventoryClothing_CreateMenuDescPC_005b3613.cpp'
+        TestSource = '00/5b/CTCInventoryClothing_CreateMenuDescPC_005b3613_test.cpp'
+        PassPattern = '005b3613_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c323a'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructWieldEntry_005c323a.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructWieldEntry_005c323a_test.cpp'
+        PassPattern = '005c323a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005c3444'
+        Module = 'CTCInventoryWeapons'
+        Source = '00/5c/CTCInventoryWeapons_ConstructWieldEntryPC_005c3444.cpp'
+        TestSource = '00/5c/CTCInventoryWeapons_ConstructWieldEntryPC_005c3444_test.cpp'
+        PassPattern = '005c3444_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005db5f0'
+        Module = 'CAnimComponentStrikeResponseAnim'
+        Source = '00/5d/CAnimComponentStrikeResponseAnim_TransferBinaryOut_005db5f0.cpp'
+        TestSource = '00/5d/CAnimComponentStrikeResponseAnim_TransferBinaryOut_005db5f0_test.cpp'
+        PassPattern = '005db5f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

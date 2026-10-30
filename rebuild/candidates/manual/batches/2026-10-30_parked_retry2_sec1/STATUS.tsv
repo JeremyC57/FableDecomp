@@ -1,0 +1,111 @@
+address	status	grades	lever	residue
+0047042a	HELD	2	element access spellings: (Start+i)->, *(Start+index) operator[], CDefString& local, Start[i], long index, entry pointer local, scaled-cast index (8 forms, all identical)	716v716: one SIB order lea ecx,[eax+ecx+4] (retail) vs [ecx+eax+4] for CDefString::TransferBinaryIn this; key store [eax+ecx] already matches
+005bb190	HELD	2	value wrapper with implicit dtor (plain / __forceinline member dtor): calls ??1 of the wrapper or of CDefPointer, never ??_G(0)	49v51: retail push 0 ; call ??_G 0x005BAA41 (explicit _Destroy through the scalar deleting dtor); ours calls the dtor directly. Next: find the /Os condition for ??_G(0) (0x005799DE pair case works with a declared-only member dtor)
+0051d870	HELD	3	STLport _Vector_base/vector dtor split (+ same-TU __destroy_aux<CSwitchableBlockage*> body with the landed list model)	104v104: parked named-first-local form keeps the one ecx/edi load swap; the real STLport split reloads _M_start after the call (13 lines). Identity: vector<CNavigationAreaUpdate::CNavigationLayerUpdate>::resize(unsigned int) (FableWin), not CRecord24Vector
+00405a60	MATCHED	1	over-span: grade over the true extent (208 of 308; oracle_extra.tsv)	RELOCATION_MATCH ; -
+0044bb00	MATCHED	1	over-span: grade over the true extent (224 of 261; oracle_extra.tsv)	RELOCATION_MATCH ; -
+004084b0	HELD	1	shared engine/CDefPointer.h + CDefClassBase.h retail model (FABLE_RETAIL_DEF_CLASS_BASE), !IsNull form	84v67: retail shares the 4-byte def slot with the float result (push ecx frame) and releases as dec eax/mov/jne (flags from dec); VC7.1 gives a separate result slot (sub esp,8) and dec/test; family K072
+00408500	HELD	1	shared engine/CDefPointer.h + CDefClassBase.h retail model (FABLE_RETAIL_DEF_CLASS_BASE), !IsNull form	84v67: retail shares the 4-byte def slot with the float result (push ecx frame) and releases as dec eax/mov/jne (flags from dec); VC7.1 gives a separate result slot (sub esp,8) and dec/test; family K072
+00408550	HELD	1	shared engine/CDefPointer.h + CDefClassBase.h retail model (FABLE_RETAIL_DEF_CLASS_BASE), !IsNull form	84v67: retail shares the 4-byte def slot with the float result (push ecx frame) and releases as dec eax/mov/jne (flags from dec); VC7.1 gives a separate result slot (sub esp,8) and dec/test; family K072
+004085a0	HELD	1	shared engine/CDefPointer.h + CDefClassBase.h retail model (FABLE_RETAIL_DEF_CLASS_BASE), !IsNull form	84v67: retail shares the 4-byte def slot with the float result (push ecx frame) and releases as dec eax/mov/jne (flags from dec); VC7.1 gives a separate result slot (sub esp,8) and dec/test; family K072
+005db5f0	MATCHED	3	CCharString inline accessor statement form: two returns (not a ternary) keeps the null diamond	RELOCATION_MATCH ; -
+00547050	HELD	2	C2DVector operator+= / operator+ (both orders) / fused expression; float locals in declaration order (moves the zoom multiply instead)	261v261: X parent offset loads ParentPosition.X first (retail fld RenderPosition.X ; fadd ParentPosition.X); Y matches
+0058301a	IMPROVED	3	box local placement (4 forms); shared engine/CCountedPointer.h replaces the local pointer model (bytes unchanged)	321v321: CEditBox* home-slot store scheduled before the vtable load
+004ff920	HELD	2	callback local scope: function scope (parked) vs loop-body scope (stores every pass from ebx)	319v319: retail stores the callback once after the loop guard (preheader); ours before the guard
+005e3f00	HELD	0	none tried (scheduling only: PBlack load vs fstp qword LastRenderTime; no lever matches)	295v295
+00543b10	MATCHED	2	landed twin's shape (CText::GetAlignment 0x0054FFF0): two if tests over inline bool accessors	MATCH ; -
+005361d3	MATCHED	2	size test spelling: unsigned size() > 0 keeps the sar (size()/!=0/!empty() fold to test mask)	MATCH ; -
+004430f0	HELD	2	implicit owner/base dtors (called out of line, 30v78), user __forceinline owner dtor (vptr store + loop pad), plain-inline ~vector	87v78: user dtor gives the extra vptr store and a 3-byte loop alignment pad; retail expands the chain with neither
+00442d50	HELD	0	same family as 004430f0 (CDrawDamage)	40v78: parked inline_depth(0) form calls the implicit dtor out of line; 004430f0's form leaves vptr store + loop pad
+00619560	HELD	3	traits with T DefaultVal (POD and ctor T), named T() value in its own block, forceinline resize(n) with named value	180v180: block-scoped empty traits homed on the count word ([esp+18h]) where retail overlays the dead T() temporary ([esp+1Ch])
+004ecf6e	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+004ed953	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+004ede2b	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+00479466	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+004798ab	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+0047a2f5	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+004f9c07	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+00476024	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+0047652b	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+004769d0	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+00478ae5	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+00479ef4	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+004fa0a9	HELD	0	family of 00479466 (agent535: ~150 forms/flags compile-only); no wave-2 lever addresses the cdq/idiv-driven lo/hi register swap in the inline Read	1 byte: inline CDataInputStream::Read new position add eax,4/xor edx,edx (ours) vs lea edx,[eax+4]/xor eax,eax (retail)
+00625160	HELD	0	same blocker as 004430f0: an implicit dtor chain is called (not inlined) from the compiler ??_G; user dtors add vptr stores; the landed 0x00624DC0 only matched with a __declspec(novtable) stand-in (not allowed for a retail-vtable class)	30v70
+0053848f	IMPROVED	4	inline list ctor over the out-of-line _List_base ctor (callee 0x00535140) + its same-TU noinline body (tag on the dead arg slot); /EHsc and throw() variants	73v78 (was 67v78): dead push ecx / and [ebp-4],0 / leave
+005384dd	IMPROVED	1	0x0053848F's form	73v78 (was 67v78): same dead EH-state-like store
+005e38c0	HELD	4	retail CIVCountedPointeeBase header + CDefPointer-style Release (local pointee); long IVRefCount; nested-if release; same-TU noinline STLport push_back body (makes the dec RMW but Object is still re-read after it); local copy + push_back body (non-RMW again)	104v95: the temporary's release re-reads Object after dec [eax+4] (retail keeps it in ecx: mov ecx,[esp+14h] ; test ; dec [ecx+4] ; jne)
+005dc340	HELD	3	dead end() local before/after the find, __assume(it != end) in the loop, __assume(0) end guard	56v66: retail keeps a dead this in edi across the call (4 saved regs, index in ebp) and aligns the loop (6-byte lea pad)
+0053dcd0	HELD	1	/EHsc (and a C++-linkage throwing malloc under /EHsc: full EH frame); parked: list ctor / alloc_proxy / allocator / __stl_alloc_create forms	112v122: dead dword 0 into a push-ecx frame word at entry (family with 0x0053848F / 0x005384DD)
+0053dd50	HELD	1	/EHsc (and a C++-linkage throwing malloc under /EHsc: full EH frame); parked: list ctor / alloc_proxy / allocator / __stl_alloc_create forms	112v122: dead dword 0 into a push-ecx frame word at entry (family with 0x0053848F / 0x005384DD)
+004bfc50	HELD	3	if-assign map->last then it->component; named CTCBase* found local (ternary and if forms)	144v144: the found component loads into ecx (mov ecx,[eax+4] ; mov [ebp+24h],ecx), retail eax; all three forms give the same code
+0045cfad	HELD	2	/G7 and /G5 scheduling flags (parked: explicit/implicit/void inner operator=, optimize s)	49v49: the second Dirty byte goes through cl and is stored after the pops; retail stores it through al before the epilogue
+005820e7	MATCHED	1	shared engine/CCountedPointer.h replaces the local declared-only CCountedPointer	RELOCATION_MATCH
+00582673	MATCHED	1	shared engine/CCountedPointer.h replaces the local declared-only CCountedPointer	RELOCATION_MATCH
+005b358c	MATCHED	1	shared engine/CCountedPointer.h replaces the local declared-only CCountedPointer	RELOCATION_MATCH
+005b3613	MATCHED	1	shared engine/CCountedPointer.h replaces the local declared-only CCountedPointer	RELOCATION_MATCH
+004b3ce0	IMPROVED	1	shared engine/CCountedPointer.h	DIFFER(1293v1285)	(144, 438) (ndiff was 304)
+00625af0	IMPROVED	1	shared engine/CCountedPointer.h	DIFFER(976v989)	(131, 320) (ndiff was 188)
+00627400	IMPROVED	1	shared engine/CCountedPointer.h	DIFFER(742v742)	(13, 237) (ndiff was 42)
+004afc60	MATCHED	2	guarded do-while, element pointer declared inside the guard	RELOCATION_MATCH
+00493ac2	HELD	2	header as a base-class ctor (init list and body-assignment forms) with the working colour form (parked: non-polymorphic base, flattened members, body colour, trailing body assignments)	153v153 scheduling: lea ecx,[esi+0Ch] for the bounds formed right after mov esi,ecx (retail after the +4 store); mov eax,[ebp+40h] before the and [esi+40h],0
+005c323a	MATCHED	1	shared engine/CCountedPointer.h (m_pObject -> Data)	RELOCATION_MATCH
+005c3444	MATCHED	1	shared engine/CCountedPointer.h (m_pObject -> Data)	RELOCATION_MATCH
+00404d20	MATCHED	4	four-argument CRGBColour ctor from a high = colour >> 8 local (plus shared CCountedPointer.h for the TU context)	RELOCATION_MATCH
+004c5890	HELD	3	implicit iterator copy ctor; user iterator operator=; return straight from the insert result (parked: copy-ctor iterator form)	130v132: retail homes the CRGBColour default temporary and the insert result in the dead key slot, sinks the bl/bh stores past the hidden-return push and re-reads the result iterator from that slot
+0053cb20	MATCHED	1	same-TU noinline _List_base(const allocator&) body (tag never read)	RELOCATION_MATCH
+00492ed1	HELD	2	const CWideString return of ToWideString; declared CWideString copy ctor	152v152: the ToWideString argument temporary is homed in the dead pauseGame slot [ebp+1Ch] (retail a frame slot [ebp-14h], sub esp,14h)
+004bc030	HELD	2	source bit read into a named local first; != 0 bool conversion (parked: plain copy, bool:1, getter, explicit byte merge)	94v91: the first bit-field copy loads source into dl and destination into al and reloads the destination for the final xor (retail al=src, dl=dst, keeps dl)
+004bd3c0	HELD	2	named bound-thing local; early return on a null holder (parked: HasTC + pointer FindTC, inline holder test, out-param GetInterface)	93v91: the found component lands in eax and the holder in ecx (retail component in ecx, holder in eax; ours adds mov ecx,eax)
+0047d296	HELD	3	/G7, /G5, /G6 (parked: named y local, single-statement position, temporary in the call)	482v482: the depth float slot push ecx lands before the X fsubp (retail after); family 0047dd9d 0047e651 0047e9ae 0047f30f 00576c4f 00576ed1 share it
+00542780	HELD	4	named width/height locals (long, unsigned short, both orders); C2DVector ctor assignment	682v682: retail loads FrameWidth and FrameHeight back to back and reuses one conversion slot; locals give both loads early but two slots and height first
+0040b790	HELD	2	two-return CCharString length accessor (long and unsigned long)	938v918 unchanged: parked residue stands (see the parked Grade line)
+00497b60	HELD	2	two-return CCharString length accessor (long and unsigned long)	1060v1052 unchanged: parked residue stands (see the parked Grade line)
+004ce550	HELD	2	two-return CCharString length accessor (long and unsigned long)	1128v1281 unchanged: parked residue stands (see the parked Grade line)
+004cebb0	HELD	2	two-return CCharString length accessor (long and unsigned long)	771v771 unchanged: parked residue stands (see the parked Grade line)
+005c0a98	HELD	1	two-return CCharString length accessor (long and unsigned long)	365v369 unchanged: parked residue stands (see the parked Grade line)
+005dcb00	HELD	1	two-return CCharString length accessor (long and unsigned long)	253v255 unchanged: parked residue stands (see the parked Grade line)
+005fa990	HELD	4	implicit copy; reversed body-assignment copy ctor (gives retail's Z,Y,X loads); reversed body-assignment 3-float ctor; swapped magnitude terms	111v111: with the reversed copy ctor the loads match but the squares start from Y (fld st(1)) where retail squares X first (fld st(0)); parked form kept (4 diffs)
+004feec0	HELD	1	shared engine/CCountedPointer.h (Clear -> ReleaseData; the same-TU Reset stand-in replaced by the header's inline Reset)	444v444 residue unchanged (header-only; source in hdr/)
+00500eb0	HELD	1	shared engine/CCountedPointer.h (Clear -> ReleaseData; the same-TU Reset stand-in replaced by the header's inline Reset)	684v670 residue unchanged (header-only; source in hdr/)
+00501990	HELD	1	shared engine/CCountedPointer.h (Clear -> ReleaseData; the same-TU Reset stand-in replaced by the header's inline Reset)	936v920 residue unchanged (header-only; source in hdr/)
+00502620	HELD	1	shared engine/CCountedPointer.h (Clear -> ReleaseData; the same-TU Reset stand-in replaced by the header's inline Reset)	561v559 residue unchanged (header-only; source in hdr/)
+004c5b90	HELD	2	dtor through a local object pointer; inline Release() returning --RefCount (parked: retail-shape release forms)	173v161 / parked 170v161: after dec [Object+4] VC7.1 re-reads the value_type temporary's pointer from its slot (its address escaped to insert_unique 0x004C5480); retail keeps it in ecx. Next: a real same-TU insert_unique body (callee mod-ref lever)
+00632b90	HELD	0	none new (parked: swapped declaration order, key traits as a temporary)	253v253 frame slots: the empty key traits gets its own slot; retail overlays it on the value traits
+0044c6c2	IMPROVED	2	member objects with an inline null constructor in place of void* members zeroed in the init list	RELOCATION_MATCH with a local CDefPointer-like stand-in; landing needs the CDefPointer(ENullDef) ctor in engine/CDefPointer.h
+0057de57	HELD	2	named found bool (with and without a block-scoped marker)	parked 308v302 stands: the named bool form costs a frame word and reorders the filter temporaries (305v302, 57 diffs)
+0047ed76	HELD	2	named y local (fsubp/push order still ours); named halfHeight + scaleY/scaleX vector locals	366v366 one x87/push swap (family of 0x0047D296); named y alone shrinks the frame (the two GetUIScale temporaries share a slot), named scale locals read the frame copy instead of [eax+4]
+00554030	HELD	1	probe: same-TU noinline insert_unique stand-in (callee mod-ref) -- VC7.1 then proves the empty pair temporary unchanged and drops its release (123v150), so a faithful STLport body is needed	155v150: the pair temporary's counted-pointer release takes the escaped-local form (dec [eax] ; cmp [esi],0) where retail decrements with flags (dec [esi] ; jne); zero stores before the pushes
+0047dd9d	HELD	2	/O1 /Oy- build flags in place of the optimize pragmas; /Gs	493v493: the depth float slot push ecx before the X fsubp (family 0x0047D296; GOTCHAS open family)
+005dac50	HELD	2	if/else with the analogue test first; inverted condition with the -1 arm first	156v156 block placement: the AimingTime=-1 arm is laid right after the loaded test (jne over it); retail lays it last (je into it)
+005458a0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(669v621) unchanged (parked residue stands)
+0040cec0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(981v977) unchanged (parked residue stands)
+005542f0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(727v727) unchanged (parked residue stands)
+0041726d	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(189v189) unchanged (parked residue stands)
+00555a90	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(595v595) unchanged (parked residue stands)
+00436d60	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(583v583) unchanged (parked residue stands)
+00560bb0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(322v321) unchanged (parked residue stands)
+00446d10	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(496v473) unchanged (parked residue stands)
+00560d00	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(1844v1860) unchanged (parked residue stands)
+00462e78	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(169v167) unchanged (parked residue stands)
+004900f5	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(906v927) unchanged (parked residue stands)
+00563480	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(1178v1178) unchanged (parked residue stands)
+0056f30b	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(396v396) unchanged (parked residue stands)
+00490494	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(1097v1094) unchanged (parked residue stands)
+005be8f3	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(483v482) unchanged (parked residue stands)
+00493281	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(370v357) unchanged (parked residue stands)
+005dcd10	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(659v608) unchanged (parked residue stands)
+004ff150	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(437v436) unchanged (parked residue stands)
+005f64dd	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(510v508) unchanged (parked residue stands)
+00507650	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(908v875) unchanged (parked residue stands)
+005f6793	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(440v442) unchanged (parked residue stands)
+005f6bd6	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(588v618) unchanged (parked residue stands)
+00518340	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(686v686) unchanged (parked residue stands)
+0051eda0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(485v501) unchanged (parked residue stands)
+005fcbe0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(649v637) unchanged (parked residue stands)
+00521cf0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(448v446) unchanged (parked residue stands)
+006379d0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(52v53) unchanged (parked residue stands)
+005223f0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(306v306) unchanged (parked residue stands)
+0063fd40	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(661v661) unchanged (parked residue stands)
+00523cf0	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(785v799) unchanged (parked residue stands)
+00531090	HELD	1	batch: every inline ternary accessor rewritten as two returns	DIFFER(1216v1227) unchanged (parked residue stands)

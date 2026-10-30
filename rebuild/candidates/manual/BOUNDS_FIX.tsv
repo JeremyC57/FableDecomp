@@ -89,3 +89,5 @@ address	pool	module	name	length	class	action	new_length	evidence
 00f29ff0	gapscan	_gapscan	sub_00f29ff0	224	OVERLONG	len	5	overlong: next body at 00f2a000 (+16, unlisted, refs=jmp:1)
 00f3fb96	small	_global	`eh_vector_constructor_iterator'	74	TRUNCATED	keep	74	row ends at its own catch/SEH funclet (funclet convention)
 0077fde0	small	_global	parked row	240	OVERLONG	len	208	section 2 (2026-10-30): the true extent is 208 bytes (byte-exact per the parked note); the extra 32 bytes are the 2-argument Transfer<EHeroCentreDoorType> starting at 0x0077FEB0. Re-split the catalog row there.
+00405a60	small	_global	CPersistContext::Transfer	308	OVERLONG	len	208	section 1 (2026-10-30): CPersistContext::Transfer<unsigned char> ends at the 5-entry jump table 0x00405B1C; 0x00405B30 starts the next function; landed RELOCATION_MATCH over 208
+0044bb00	small	_global	CPersistContext::Transfer	261	OVERLONG	len	224	section 1 (2026-10-30): Transfer<unsigned __int64> ends at its jump table; 0x0044BBE0 is the two-argument Transfer<unsigned __int64>; landed RELOCATION_MATCH over 224
