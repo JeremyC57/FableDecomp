@@ -27,8 +27,8 @@ end of `docs/journal/FINDINGS_LOG.md`. Fresh container: `docs/pipeline/FRESH_SES
   asm re-author (9 of 27); vendor-library signature, landing and manifest-boundary passes (448 oracle rows, all landed).
 
 ## Next
-1. Land the parked-row retry sweep (`$S/retry1/`, 2,362 parked/skipped rows retested with the current levers) and run wave 2.
-2. Chunk 596 (queued) then 597+ from `pending/2026-10-29_chatgpt_pass9/UNTOUCHED_RESERVED.tsv` engine remainder (68 rows left).
+1. Parked-row retry sweep: wave 1 landed 114 of 237 (`batches/2026-10-30_parked_retry1/`; 10 MMX/SSE2 kernel rows held for the owner's retail_asm decision). Wave 2 runs the 2,121 untouched rows as six address sections (`$S/retry/sec1..6`, split.py + BRIEF_TEMPLATE.md), two agents at a time; land each section as it reports.
+2. Chunks 596-599 landed (36 of 40). Chunk 600+ from `pending/2026-10-29_chatgpt_pass9/UNTOUCHED_RESERVED.tsv` engine remainder (`$S/w29/rem599.txt`, 38 rows) once the sweep sections leave a slot.
 3. Migration wave 10 per `headers/2026-10-30_retail_models_wave9/NEXT.md` (1,317 proven CP rows first).
-4. Naming wave 12: queue rows 594, 595, libsig, libsig2, libsig3, mig9; 0x00CB0C10 CompatibleTimeSetEvent; EAX GUID linkage.
+4. Naming wave 12: queue rows 594-599, libsig/libsig2/libsig3, mig9, retry1 (~130 rows); the duplicate per-TU static convention (ilog2 x3, SmoothFadeValue x3, CDefString x2); 0x00CB0C10 CompatibleTimeSetEvent; EAX GUID linkage; CDspGain::Apply two spellings.
 5. Older open work: `docs/ROADMAP.md`.

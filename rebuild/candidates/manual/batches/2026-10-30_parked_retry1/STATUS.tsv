@@ -1,0 +1,248 @@
+address	status	grades	lever	residue
+004c7870	DIFFER	2	&& form (bool tail call)	15v15: retail preloads xor al,al before test ecx; ours after the tail jmp (&& gives 27 bytes). Name still descriptive (CThing slot 22 -> driver slot 23)
+005bc58f	DIFFER	3	names+class keys; ref-local; copy ctor model	35v35 dest/src register roles swapped (lea eax dest first in retail)
+00660ae2	DIFFER	3	same-TU noinline find_if/erase (real STLport bodies); erase(find_if()) one expression; it=erase(it)	123v123: erase's dead result temp homed at [ebp+14h] (dead tasks slot) where retail reuses the it slot [ebp+10h]; VC7.1 picks the later dead arg slot for the hidden-return temp
+00660b5d	DIFFER	0	family of 00660ae2 (same template, same residue)	123v123 lea eax,[ebp+10h] vs [ebp+14h] erase hidden-result slot
+00660bd8	DIFFER	0	family of 00660ae2 (same template, same residue)	123v123 lea eax,[ebp+10h] vs [ebp+14h] erase hidden-result slot
+00660c53	DIFFER	0	family of 00660ae2 (same template, same residue)	123v123 lea eax,[ebp+10h] vs [ebp+14h] erase hidden-result slot
+00660cce	DIFFER	0	family of 00660ae2 (same template, same residue)	123v123 lea eax,[ebp+10h] vs [ebp+14h] erase hidden-result slot
+00660d49	DIFFER	0	family of 00660ae2 (same template, same residue)	123v123 lea eax,[ebp+10h] vs [ebp+14h] erase hidden-result slot
+009e1960	DIFFER	0	read diff: jump-threading	74v74 retail zero-length je lands on cmp al,1 (not threaded); ours threads to mov eax,edi; no lever in list
+009e1a80	DIFFER	0	twin of 009e1960 (wide)	75v75 same unthreaded je
+0041db1d	DIFFER	1	/O2 frame variant (drop optimize s)	71v71 push eax / mov ecx,esi order before CreateComponent(long); /O2 gives 73 bytes; header debt NUISystem::CManager
+00c91a40	MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00ca1e50	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c8dd30	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall tagcompare + real callers	-
+00c8dd90	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall tagcompare + real callers	-
+00c8de50	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall tagcompare + real callers	-
+00c954f0	MATCH	1	same-TU extern C static noinline + caller	-
+00c962b0	MATCH	1	same-TU extern C static noinline + caller	-
+00c9beb0	MATCH	1	same-TU extern C static noinline + real caller mdct_butterfly_16	-
+00ca39c0	RELOCATION_MATCH	1	same-TU static callee body (floor0_map_lazy_init) extern C static noinline __stdcall	-
+00c05530	RELOCATION_MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+009e1dd0	DIFFER	3	(float)g_Double * x; system/display named locals	49v49 improved: only fstp [esp+10h] / mov ecx,eax order left
+009e21d0	DIFFER	2	(float)g_Double * x; named system/display/scaled locals	106v106 improved: only fstp/mov ecx,eax order in the Y half
+009e2020	DIFFER	2	(float)g_Double * x; named locals; y *= form	199v199 improved: only fstp/mov ecx,eax order in the two Y halves
+00a17620	DIFFER	1	inline const accessor + compound add	99v99 fld param; fadd member order (retail member first); member/param tie order unchanged by accessor/+=/local forms
+0046313e	DIFFER	0	read diff: needs same-TU STLport vector::operator= body (0x00463169, 225 bytes) -- not attempted	43v43 flag byte copy via dl sunk after pop edi (retail al before pop)
+00c03f50	MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c04260	MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c05040	MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c050c0	MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c05130	RELOCATION_MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c05230	RELOCATION_MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c054c0	RELOCATION_MATCH	2	whole trees.c TU: same-TU extern C static noinline statics + /GS	-
+00c06de0	MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00c06e50	MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00c075c0	RELOCATION_MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00c8f960	RELOCATION_MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00c8db20	RELOCATION_MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00cb21a0	MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00c00d50	RELOCATION_MATCH	1	landed host TU already holds the static body (same-TU static lever)	-
+00c00600	MATCH	1	same-TU extern C static noinline + caller	-
+00c00630	MATCH	1	same-TU extern C static noinline + caller	-
+00c00fd0	MATCH	1	same-TU extern C static noinline + caller	-
+00c039f0	MATCH	1	same-TU extern C static noinline + caller	-
+00c01b60	RELOCATION_MATCH	1	same-TU static callee body (lm_init)	-
+00c05fd0	RELOCATION_MATCH	1	same-TU static callee bodies (crc32_little/big)	-
+00c071b0	DIFFER	3	same-TU static; if(n)do / early-return forms; graded inside the full find_match TU	prologue: retail tests n in ecx before push ebx/push esi; VC7.1 moves n to esi first (and HEAD2 index [ecx+eax] order)
+00c07090	MATCH	1	same-TU extern C static noinline + caller	-
+00c072d0	MATCH	1	same-TU extern C static noinline + caller	-
+00c073c0	MATCH	1	same-TU extern C static noinline + caller	-
+00c07980	MATCH	1	same-TU extern C static noinline + caller	-
+00c07890	MATCH	1	same-TU extern C static noinline + caller	-
+00c07a60	MATCH	1	same-TU extern C static noinline + caller	-
+00c07610	RELOCATION_MATCH	3	same-TU static callee bodies (swd_accept/findbest/getbyte) + static find_match + caller; swd_remove_node __forceinline	-
+006d63a0	DIFFER	2	x87 operand order: int 1 literal; CDefPointer operator-> on PDef	fld 1.0 ; fdiv [def+64h] vs retail fld [def+64h] ; fdivr [1.0]
+006817f0	DIFFER	3	switch normalisation: QFE-4035 compiler; /Os; explicit switch(x-2)	add eax,-2 vs retail sub eax,2: VC7.1 RTM and QFE canonicalise every switch bias (even an explicit x-2) to add eax,-N
+00771d50	DIFFER	3	dead-slot frame: slot local; named vector local; inline by-value helper with index arg	sub esp,10h vs ours 0Ch: retail frame has 4 dead bytes above the 12-byte zero temporary
+00c9cc60	DIFFER	3	same-TU static: stdcall/plain + dummy and looping callers	retail bm in EBX never saved (whole-program register allocation), 20-byte frame; VC7.1 keeps bm/limit on the stack and saves ebx
+00ca1e00	MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00ca2010	MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00c95910	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00ca26a0	MATCH	1	same-TU extern C static noinline + caller	-
+00ca3a40	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c918c0	MATCH	1	same-TU extern C static noinline + caller	-
+00c91980	MATCH	1	same-TU extern C static noinline + caller	-
+00c8cef0	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c8cf20	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c8db80	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c8dbb0	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c942b0	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00c9cb80	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00c911f0	RELOCATION_MATCH	1	same-TU extern C static noinline __stdcall + caller	-
+00c8e120	RELOCATION_MATCH	1	same-TU extern C static noinline + caller	-
+00c8e200	RELOCATION_MATCH	2	same-TU static __stdcall + callee _v_readstring body in TU	-
+00c8e6e0	RELOCATION_MATCH	1	same-TU static + callee _v_writestring body in TU	-
+00c8f200	RELOCATION_MATCH	1	same-TU static __stdcall _vds_shared_init + its two real callers (block.c TU)	-
+00c8f5f0	RELOCATION_MATCH	1	same-TU static __stdcall _vds_shared_init + its two real callers (block.c TU)	-
+00c8ff00	RELOCATION_MATCH	1	same-TU static __stdcall _vds_shared_init + its two real callers (block.c TU)	-
+00c95580	IMPROVED	1	same-TU static bitreverse body (x in eax)	901v910: frame-slot colouring of the codes/codep loop; needs the full sharedbook.c TU (_make_words/_book_unquantize statics)
+00c9c400	RELOCATION_MATCH	2	same-TU static bodies of all mdct.c butterfly callees (generic __stdcall) + caller	-
+00ca1310	RELOCATION_MATCH	1	same-TU static __stdcall callee body (_2class)	-
+00c92e20	RELOCATION_MATCH	1	same-TU static __stdcall pair (seed_loop + seed_curve body) + caller	-
+00c9bc10	IMPROVED	2	same-TU static __stdcall drftf1 body	30v30: drftf1 gets c in ESI / ifac in EDX vs retail EDI / ECX; needs dradf2/4/g bodies in the TU
+00a10390	DIFFER	3	word-wrap TU: static ax helpers + CanBreakLineAt + FindNonWhiteSpace bodies; /Ob2; inline helpers	315v458: retail (LTCG) inlines WordWrap_CanBreakLineAt and one FindNonWhiteSpaceBackward site into the overflow loop; VC7.1 in one TU keeps both as calls even when declared inline
+00a10a60	IMPROVED	1	same-TU static ax helpers (IsEastAsianChar/IsNonBeginningChar/IsNonEndingChar bodies)	281v281 (was 301v281): prologue register colouring, tokens in ebp vs eax
+00a10b80	IMPROVED	1	same-TU static ax helpers	458v450 (was 476): this/length register colouring ebx<->esi
+00a0fe80	RELOCATION_MATCH	1	same-TU static noinline C++ helper (char in ax) + real caller	-
+00a10170	RELOCATION_MATCH	1	same-TU static noinline C++ helper (char in ax) + real caller	-
+00a10240	RELOCATION_MATCH	1	same-TU static noinline C++ helper (char in ax) + real caller	-
+00a102b0	RELOCATION_MATCH	2	same-TU static helper bodies + single &&/|| return expression	-
+00a10720	RELOCATION_MATCH	2	same-TU static helpers + inline CanBreakLineAt + local declaration order	-
+00cb2590	DIFFER	1	same-TU static + loop caller	106v87: retail's caller passes the transformed arguments (index+g_iCandListIndexBase in EAX, &g_szCandidate[index] in ECX) -- an interprocedural argument rewrite VC7.1 does not do for a same-TU static
+00cb26b0	RELOCATION_MATCH	1	same-TU static noinline C++ file static + caller	-
+00cb2710	RELOCATION_MATCH	1	same-TU static noinline C++ file static + caller	-
+00cb2820	RELOCATION_MATCH	1	same-TU static noinline C++ file static + caller	-
+00cb2d90	RELOCATION_MATCH	1	same-TU static noinline C++ file static + caller	-
+009c33a0	IMPROVED	3	same-TU static + real caller (result in ESI); implicit L"" temporaries	313v315: L"." temporary homed in a frame slot vs retail's dead path-argument slot
+009c38c0	IMPROVED	1	same-TU static callee GetMarkerFileName (result in ESI)	409v409: GetFileTime/SetFileTime argument scheduling
+00c74ee0	IMPROVED	3	same-TU static beside its caller (n in EBX) + retail_asm fistp RoundToLong + float sqrt	96v95: shared return-true block placement
+00c75050	DIFFER	1	same-TU static IsPrime (n in EBX)	218v232: the call convention now matches but the two-line set-up loop shape differs from the parked body (retail keeps rate/pMemory in edi/ebx and peels both lines)
+00c6ac90	SKIP	0	-	dependency: the callee 0x00C6AAE0 is an MMX inline-asm IIR routine (gain in ecx, four caller-cleaned stack args) whose body is not reconstructed; the same-TU static lever needs it
+00c6ad10	SKIP	0	-	dependency: same callee 0x00C6AAE0 (MMX inline-asm, not reconstructed)
+00c30e90	RELOCATION_MATCH	1	same-TU static noinline C++ helper + caller	-
+00c62370	IMPROVED	3	same-TU static __stdcall + static RandomUnit + caller; double r	124v118: r spilled to the dead radius slot vs kept on the x87 stack
+00a3df30	RELOCATION_MATCH	2	same-TU static __stdcall callee body (md5_process, big-endian storage form)	-
+00c37c40	RELOCATION_MATCH	1	same-TU callee body defined first (VC7.1 tracks callee register use)	-
+00c42fb0	RELOCATION_MATCH	1	same-TU callee body defined first (VC7.1 tracks callee register use)	-
+00a5b650	DIFFER	3	STLport __copy_trivial ternary + __fastcall std::__copy declaration	186v184: result temp in a push-ecx slot vs retail's dead other-arg slot
+00752b00	DIFFER	3	same-TU noinline callee body (register tracking) + absXY local	750v757: fabs(angleXY) stored at entry vs retail's per-arm store into dead includeEyes slot
+0093dae0	DIFFER	3	same-TU noinline GetWorld body; QFE compiler	48v48: creature arg loaded via edx (mov edx,[ecx+18h]) vs retail ecx chain
+00b53f60	DIFFER	1	same-TU callee body (UpdateBoxPositions); needs RebuildBoxes 0x00B51AD0 body too	418v411: this in esi, since the unknown RebuildBoxes clobbers ecx
+00c8e790	RELOCATION_MATCH	2	same-TU statics: __stdcall static + earlier-defined _v_writestring static	-
+00c1c3f0	MATCH	1	file-static + same-TU caller (private convention)	-
+00c89c80	RELOCATION_MATCH	1	static __stdcall + same-TU caller (private convention)	-
+00c89c10	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c89cb0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c89d70	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8a0a0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8a8b0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8c1d0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8c200	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8c8c0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8c9a0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8ca90	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8cae0	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c8cb20	RELOCATION_MATCH	1	one vorbisfile.c TU: same-TU statics (private conventions) + callee register tracking	-
+00c89e80	RELOCATION_MATCH_NEW	1	new row (callee the vorbisfile TU needed), extra oracle row	-
+00c8a1d0	RELOCATION_MATCH_NEW	1	new row (callee the vorbisfile TU needed), extra oracle row	-
+00c8a4b0	RELOCATION_MATCH_NEW	1	new row (callee the vorbisfile TU needed), extra oracle row	-
+00c8a520	RELOCATION_MATCH_NEW	1	new row (callee the vorbisfile TU needed), extra oracle row	-
+00c8a540	RELOCATION_MATCH_NEW	1	new row (callee the vorbisfile TU needed), extra oracle row	-
+009fc170	DIFFER	2	same-TU noinline ListRemove body; ListInsert spelling	155v149: ListInsert prev copy (mov ecx,eax) and inc [edi+38h] memory form
+00aabf60	DIFFER	1	same-TU noinline FindFirstSetBit body (636v620, worse)	625v620 kept: retail hoists the loop-invariant FindFirstSetBit(mask=0,16) call out of the second loop -- call hoisting needs pure-function knowledge VC7.1 /O2 does not derive from a same-TU body (confirmed gap)
+00ac7750	IMPROVED	3	same-TU noinline callee bodies (register tracking) + PDB member names	497v495: commutative operand order in 2 determinant products + temporaries' frame slots
+00c6b260	DIFFER	2	same-TU FtoL body already present; *src++ spelling (320v315, worse)	315v315: the pushed float temp lands in eax (retail ecx) in the scalar FtoL loop
+00c6be60	IMPROVED	3	same-TU callee body (landed retail_asm GetFrequencyTableEntry) + early-return layout	226v226: only the column -= 20 placement relative to the call
+0057aeb4	SKIP	0	not graded: needs GetDef/GetSubDef (landed under /Oy- size pragmas, each calling unknown 0x009AD9E0/0x009ADA10) merged into this TU	427v427: the def-pointer slot is spilled to the frame (escape of &slot), retail keeps it in edi -- an escape-analysis effect, not callee register use
+007af940	DIFFER	3	same-TU base ctor body; STLport _Construct; QFE compiler	62v62: x/n callee-saved register tie (x in ebx, n in edi; retail edi/ebx) -- no source form or compiler build moves it
+00722bd0	DIFFER	1	/Gr TU flag instead of explicit __fastcall (STLport __uninitialized_fill_n family)	same length: cursor/value callee-saved tie (retail cur ebx, x edi) unchanged -- family with 007af940
+00792550	DIFFER	1	/Gr TU flag instead of explicit __fastcall (STLport __uninitialized_fill_n family)	same length: cursor/value callee-saved tie (retail cur ebx, x edi) unchanged -- family with 007af940
+007979b0	DIFFER	1	/Gr TU flag instead of explicit __fastcall (STLport __uninitialized_fill_n family)	same length: cursor/value callee-saved tie (retail cur ebx, x edi) unchanged -- family with 007af940
+00806c80	DIFFER	1	/Gr TU flag instead of explicit __fastcall (STLport __uninitialized_fill_n family)	same length: cursor/value callee-saved tie (retail cur ebx, x edi) unchanged -- family with 007af940
+009d5a30	IMPROVED	3	extern __find + category helper (reload matches); body before/after caller	89v89: empty tag in its own frame byte vs retail homed on the bank arg slot
+00c17260	RELOCATION_MATCH	2	file-static __stdcall + same-TU caller (owner in esi); loader takes the owner as a 4th argument	-
+00c17400	RELOCATION_MATCH	3	same-TU static __stdcall loader (settings in esi) + same-TU GetChecked body (mod-ref) + hoisted local	-
+00c16ce0	RELOCATION_MATCH_NEW	1	same TU as 00c17400: VC7.1 gives the static the ecx/edx/stack/esi convention	-
+00a5a9d0	IMPROVED	3	C2DVector trivial copy (no user copy ctor); ctor-return forms worse (Y evaluated first)	209v203: the X dot product still lands in a separate local r (frame 0x14 v 0x0c); retail builds it in the push_back temporary
+00c20720	DIFFER	1	#pragma optimize("g", off) + ("y", on): no ebp-less form and the switch is gone even unoptimized	confirmed gap: VC7.1 front end drops an all-empty switch before c2 (even with /Og off only the movzx survives); a 7-entry byte-index table to one `ret 4` needs non-empty case bodies that vanish after lowering (LTCG cross-module removal)
+0063e6f0	DIFFER	2	same-TU GetAllThingsInRoughArea 0x0063FAE0 body (RELOCATION_MATCH in-TU) + same-TU IsNot::operator() and GetMapsInArea forwarder	599v599 unchanged: the list head is still reloaded after the search call (no esi caching, manager in esi not ebx); the callee still reaches malloc / 0x006384B0 / GetCellExtents, so VC7.1 cannot prove the address-taken list head survives -- needs whole-program knowledge
+00780d80	DIFFER	3	full-expression CCharString temp (535, worse); named conversion local (556); SetDynamicCast-shaped same-TU GetSubDef stand-in (539 unchanged)	539v539: the PlaySound conversion temporary reuses the dead fire-name slot ([esp+0x10]) where retail reuses the sound-def pointer's slot ([esp+0x14], dead once the def sits in ebx); slot packing only. Note 0x0065F604 is landed as GetSubDef<CEntitySoundDef> (the parked CSoundDef model)
+00978b90	DIFFER	3	anonymous-namespace template family (VC all-stack convention, 140); /Gr same-TU _Push_heap/_Adjust_heap/_Pop_heap templates; bottom case on idx	142v142: only the 16-byte comparator copy into the _Push_heap argument area rotates registers (retail pointer eax, temps ecx/edx, then first in ecx; ours pointer ecx, temps edx/eax) -- same with an extern or same-TU callee, so not callee knowledge
+0097af70	IMPROVED	3	user copy ctor on the comparator (memberwise; also as C2DVector members, either side user-declared)	142v142: the argument-area pointer is now eax as retail; one residue: retail loads words 0 and 1 (ecx, edx) before sub esp,10h, ours loads word 1 after the first store
+005e1210	DIFFER	2	user copy ctor on pair; same-TU /Gr _Push_heap 0x005E0940 body	221v221: esi/edi tie throughout (retail first=esi, idx=edi; ours reverse) -- unchanged by copy shape or callee knowledge
+00c16d90	RELOCATION_MATCH_NEW	1	same-TU static __stdcall (VC7.1 gives settings ecx + log edi) in the RunProcessor/DeleteTrackNodeCommand TU	-
+00c16c10	RELOCATION_MATCH_NEW	1	same-TU static + same-TU caller: file in esi	-
+00c969b0	RELOCATION_MATCH	1	smallft.c TU (C linkage, /Gr): static fdrffti + static __stdcall drfti1 + exported drft_init; VC7.1 gives fdrffti n/eax, wsave/edx, ifac/ecx	-
+00c9bc50	RELOCATION_MATCH_NEW	1	same smallft.c TU as 00c969b0 (drft_init, /Gr fastcall, tail jmp to the static)	-
+00c1bf00	IMPROVED	3	same-TU static + caller passing locals by address (matrix now in esi, up/forward in edi/ebx, ret 8); inline SetIdentity instead of placement new (no null test); reversed identity store order	172v174: up and forward swap edi/ebx (retail up=edi); the two 1.0 diagonal stores go before the [0] store (retail after)
+00c1c330	IMPROVED	3	same-TU static with the matched 00c1c3f0 TU and a same-TU caller (VC7.1 gives a/eax, point/ecx, b/edx, result/esi as retail); inline helper not inlined (102), __forceinline (246, struct spills), scalar x/y/z locals (192)	192v192: only the x87 stack order in the second transform: ours keeps y on top after the mirror test (fld st(0) for the Row[1] terms), retail z (fld st(1)); the term-pair adds then pair differently
+0041db84	IMPROVED	3	same-TU static __stdcall GetTextBySymbol 0x0041CFB2 body (VC7.1 gives retail's call: result pointer in edi via lea edi,[ebp+8], callee pops); one-expression branches (257, worse)	276v281: frame 4 v 0xc -- the three CCharString temporaries (dialog name, child name, text symbol) share one frame word [ebp-4] where retail gives each its own (-4/-8/-0xc)
+0041cfb2	RELOCATION_MATCH_NEW	1	same-TU static __stdcall next to its caller ShowErrorMessage (result pointer in edi)	-
+00c9cb40	MATCH	2	libvorbis bitrate.c static BINBYTES as a same-TU static + caller (/Gr C TU): VC7.1 gives bm/eax, bin/edx, pos on the stack	-
+00c90d40	RELOCATION_MATCH	2	libvorbis scales.h static todB as a same-TU static + caller (/Gr C TU; x in eax); pre-union pointer-cast body	-
+00c9dd40	RELOCATION_MATCH	2	libvorbis scales.h static todB as a same-TU static + caller (/Gr C TU; x in eax); pre-union pointer-cast body	-
+00c9ef70	RELOCATION_MATCH	2	libvorbis scales.h static todB as a same-TU static + caller (/Gr C TU; x in eax); pre-union pointer-cast body	-
+00c5d1f0	RELOCATION_MATCH	4	same-TU static + caller (initial in ecx, caller cleans: the ABI gap disproved) + parameter declaration order initial-before-step (fixes the canonical SIB operand order); retail_asm SIMD block. 4th compile = the family fix proven on 00c6e290	-
+00c6e290	RELOCATION_MATCH	2	same as 00c5d1f0: same-TU static; initial declared before step	-
+00c6ed70	RELOCATION_MATCH	1	family fix from 00c6e290 (same body)	-
+006d8300	DIFFER	2	operator[] as *(n + begin()) (canonicalised, unchanged); reference local for the += access (177, worse)	173v173: one SIB order -- retail lea eax,[ecx+edx] (index*4 + begin), ours [edx+ecx]; the operands are a member load and a parameter, so the declaration-order lever (00c6e290) does not apply
+00c720c0	DIFFER	2	0.0f != (float)length (the parked next step); inverted == test with swapped arms	111v111: x87 compare order unchanged (retail fld [0.0f] scheduled above the tick store then fld st(1); ours fld st(0) ; fld [0.0f]) -- source order of the compare operands and arm order are canonicalised
+009b9e00	DIFFER	2	&String[pos + n] and pos + String + n for the quote-scan end (both canonicalised to the same tree)	219v219: the loop-rotated copy of the end pointer loads String first (mov edx,[esi+4] ; add edx,edi) where retail starts from pos (mov edx,edi ; add edx,[esi+4]); source order of the sum does not reach it
+00c5bef0	RELOCATION_MATCH	1	same-TU static (initial in ecx, caller cleans) + retail_asm MMX loop in a C shell (the SSE2 ramp's shape); initial before step	-
+00c6aae0	RELOCATION_MATCH	1	family of 00c5bef0 (byte-identical copy, own namespace)	-
+00c6f1a0	RELOCATION_MATCH	1	family of 00c5bef0 (byte-identical copy, own namespace)	-
+00c6f800	RELOCATION_MATCH	1	family of 00c5bef0 (byte-identical copy, own namespace)	-
+00c6fc80	RELOCATION_MATCH	1	family of 00c5bef0 (byte-identical copy, own namespace)	-
+00c6d410	RELOCATION_MATCH	2	the SSE2 ramp shape (same-TU static, startGain in ecx) with movdqu source; parameters used directly in the asm (copying them to locals added a frame)	-
+00c5d2e0	MATCH	2	retail_asm: the cvtps2dq loop as inline asm, MXCSR save/round/restore as _mm_getcsr/_mm_setcsr intrinsics; mask folded into the saved-bits initializer (else VC7.1 sinks the and past the asm)	-
+00c755b0	IMPROVED	2	retail_asm: the landed FloatToLong / FloatToLongTruncate helpers (bare fistp dword) replace the _ftol cast -- the stage-length block now matches; explicit stage-pointer loop (no change)	178v178: callee-saved colouring only -- retail keeps this in edi (reused as the stage pointer, add edi,40h) and config in ebp, counters in ebx; ours this in ecx (spilled), config in ebx, counters edi/ebp
+00c76ab0	IMPROVED	1	retail_asm: the landed FloatToLong / FloatToLongTruncate helpers (bare fistp dword) replace the _ftol cast	DIFFER(171v175): the truncation block now matches; left is callee-saved colouring around the inline memset (retail keeps pMemory in ebx from before the if and length*4 in ebp; ours reloads pMemory and keeps length*4 in ebx)
+00c76dd0	IMPROVED	1	retail_asm: the landed FloatToLong / FloatToLongTruncate helpers (bare fistp dword) replace the _ftol cast	DIFFER(182v186): the truncation block now matches; left is callee-saved colouring around the inline memset (retail keeps pMemory in ebx from before the if and length*4 in ebp; ours reloads pMemory and keeps length*4 in ebx)
+00c6ebe0	IMPROVED	3	retail_asm fistp helper (inline asm FloatToLong); tried local ramp select, SGainRamp member helper	106v106: ramp pointer colour ecx (retail) vs esi (ours) in both arms + the two stores; member-function helper not inlined (88v106)
+00c77b30	IMPROVED	3	retail_asm FloatToLongTruncate helper (165->188); unsigned loop index (->190); flat float-table index (no change)	190v193: retail keeps params in ebp (extra push ebp) and runs two pointer IVs esi/edi over state+0x38/+0x3c with the table offset from 4; VC7.1 here keeps params in ebx and one IV edx
+00c6b7c0	RELOCATION_MATCH	2	named (1-t) local shared by the three lerps (x87 stack order)	-
+00cb0310	MATCH	2	retail_asm: the original wxutil.cpp __asm blocks (rep movsd / std)	-
+00b84720	IMPROVED	3	retail_asm FloatToLong (fld/fistp result) replaces __ftol; tried ctor-less __false_type (151), user copy ctor on CSortElement (145)	146v142: fistp block now byte-equal; residue: sub esp,8 scheduled after the first fld in retail, push_back copy reloads SubPrimitive from the escaped frame temp (retail stores esi), manager through eax (retail ecx), __false_type temp slot +0x20 vs +0x24 (retail homes it in the dead distance slot)
+00b05e10	HELD	1	landed 0x00AF9000 retail_asm body (lane gap disproved)	bytes RELOCATION_MATCH; held: per-TU triplicate of landed CPSCLight::SmoothFadeValue 0x00AF9000 -- one mangled name cannot bind three addresses (owner decision (2) in the findings log)
+00b1ad90	HELD	1	landed 0x00AF9000 retail_asm body (lane gap disproved)	bytes RELOCATION_MATCH; held: per-TU triplicate of landed CPSCLight::SmoothFadeValue 0x00AF9000 -- one mangled name cannot bind three addresses (owner decision (2) in the findings log)
+006378e0	IMPROVED	3	retail_asm landed FloorToLong (0x006A68F0) replaces the _ftol stand-in -- the fistp block and frame now byte-equal; loop forms: pointer walk, bare infinite for, counted for	108v106: only the level search -- retail loads g_NoMapwhoLevels into edx and runs an unrotated loop with no bound compare (cmp esi,[ecx] ; jl ; inc ; add ; jmp); every C form rotates it or keeps the bound test
+0057b26f	IMPROVED	3	retail_asm FloatToLong in place of __ftol2 + landed sibling ModifyStaminaBy model; tried initialised listener, product passed straight to the helper (worse)	156v156: only the GetInterface key slot -- retail homes it in the dead fraction slot [ebp+8], VC7.1 here in the helper result / 0.0f temp slot [ebp-8] (frame-slot sharing order)
+00b947e0	IMPROVED	3	retail_asm FloatToLong in place of __ftol2; tried span folded into one expression, span unsigned	251v246: the fistp block is byte-equal; residue: retail holds span in esi from the helper read (push esi in the prologue, inc esi in place for HighestSetBit), VC7.1 here keeps span in eax and pushes esi on the slow branch (frame offsets shift by 4)
+00c462e0	DIFFER	3	x87 load order: reference-param Interp, aggregate-initialised edge + one-line corner decls, by-value BilinearInterp(c0..c3,u,v) inline	51v51 unchanged (53v51 for the by-value helper): VC7.1 delays fld c1 to the top lerp; retail loads all four corners up front -- no source order/aggregate/by-value form hoists the c1 load (13 forms in total)
+00c0b420	RELOCATION_MATCH	3	callee parameter declaration order (value first) -- after same-TU body tries	-
+00c0b130	RELOCATION_MATCH	2	callee parameter declaration order (value first)	-
+00c0acc0	DIFFER	3	value-first signature (consistent with the GetPitch call site), result local copy, index-counted loop	74v74: retail moves the factor pointer to esi and counts in ecx (mov esi,ecx ; mov ecx,[esp+0Ch]); VC7.1 keeps the pointer in ecx and the count in esi (the twin 0x00C0B180 has ours in retail)
+009fd3a0	DIFFER	3	clamp spellings: x > 0 ? x : 0, if-assign (55v59), clamp written in place of the getter	59v59: the setle/dec/and select lands as and edx,eax (mask register as destination) and the ReduceSizeFrameDelay load+push are hoisted above the store; retail and eax,edx then store then load -- no spelling of the select moves the destination
+00cbe583	DIFFER	2	sum spellings Y*Y + X*X + Z*Z and X*X + (Y*Y + Z*Z)	61v61 unchanged: VC7.1 canonicalises the squared-length sum (Z, Y, X order whatever the spelling; retail Z, X, Y) and fetches the second vptr into edx before mov esi,eax (retail reuses eax after the copy)
+0099bb80	DIFFER	3	size spellings (0x1000 + wcslen, unsigned size + cast compare); stand-in callee body removed (239v197, the same-TU body is load-bearing)	199v197: mov esi,eax ; add esi,1000h where retail lea esi,[eax+1000h] -- the two-address form survives every spelling; note the _M_fill_insert stand-in is a guessed same-TU body (not retail's 0x005149F0)
+0072aaf0	DIFFER	3	PDB AddTC spelling (const CTCParamsBase*, class types); explicit CCharString temporary (62v66); captured result	66v66: retail loads ParentThing into ecx straight after the name ctor, before the 0/1/&name pushes; VC7.1 here pushes first and loads ecx last -- the thiscall object load is always scheduled after the stack arguments in every form
+0085fb30	DIFFER	3	return-tail spellings: && return (148v135), positive if/return true, HasTC early return	135v135: the merged return-true block is laid before the false block (je false after the 0x51 compare); retail falls through into xor al,al and jumps to the shared true tail -- block order follows the shared 'return true' whatever the spelling
+0085fa00	DIFFER	2	return-tail spellings: negated && with return false first, || returned as a value (171v154)	154v154: VC7.1 lays the merged shared return-false block right after the last test and jumps over it to true; retail lays the local true tail first -- confirmed block-placement gap (mirror of 0x0085FB30)
+00516830	RELOCATION_MATCH	2	retail_asm landed CeilToLong + area box grown in place (statement shape)	-
+00516200	RELOCATION_MATCH	1	retail_asm landed CeilToLong + area box grown in place	-
+005115e0	RELOCATION_MATCH	2	retail_asm landed CeilToLong + in-place area box + the by-reference Bind3 model (identity from the inlined copy in 0x00516200)	-
+00511a10	RELOCATION_MATCH	2	retail_asm landed CeilToLong + in-place area box + the by-reference Bind2 model (identity from the inlined copy in 0x00516830)	-
+007e2df0	IMPROVED	3	retail_asm landed CeilToLong (lane gap disproved); chained assignment; explicit CRightHandedSet copy/assign	252v257: the asm tail and frame now match; residue: retail assigns ParentRHSet through a pointer copy (lea ecx,[esi+0Ch] ; mov edx,ecx ; six dword moves through edi, push edi) and then reads the set copy through ecx; VC7.1 here stores straight to [esi+0Ch..] without edi
+00f36540	IMPROVED	3	retail_asm landed FloorToLong (x2); hash statements reordered to retail's order (h0 row then h1 row); iy + Perm operand order (no change)	321v321: both floor blocks and the frame match; residue: the hash sum's register roles -- retail lea edx,[eax+edi] keeps h0 in edx and masks a copy in eax (inc edx in place for the +1 corner), VC7.1 here add eax,edi and masks a copy in edx
+00b94bf0	IMPROVED	3	retail_asm landed FloorToLong (x2); named float operands; long results assigned to the key afterwards	297v311: the floor blocks now assemble, but VC7.1 packs the first expansion's slots differently (retail: value [ebp-0Ch], result in the dead position slot [ebp+8]; ours half at [ebp-0Ch], result [ebp-4]) and the area box arithmetic is an x87 chain (fst/fld st(1)/fadd st(2)) in retail where ours spills each corner
+00b328c0	DIFFER	1	retail_asm landed FloorToLong in place of the C stand-in	501v517: the floor block assembles but the rest of the model is rough -- frame 0x248 v 0x260, the draw-distance lerp is an x87 chain over [ebx+84h] in retail (ours spills), params in ebx v edi; needs a fuller rewrite, not a lever
+00b84580	IMPROVED	3	retail_asm FloatToLong for both sort keys; PDB-shaped std::vector<CSortElement>::_M_insert_overflow(..., const __false_type&, ...) (binding spelling); STLport _Construct placement new	349v340: both fistp blocks byte-equal; residue (shared with 0x00B84720): push_back's element copy reloads SubPrimitive from the escaped frame temporary (retail stores esi), the __false_type temp slot, and eax/edx rotation in the opaque branch
+00b1bc80	IMPROVED	3	retail_asm FloatToLong + the landed RoundToDecimalPlaces 0x005CC530 body inlined (fastcall argument order); the unpacked fraction as a named local (keeps retail's separate *20 multiply)	282v280: code shape now retail's (loop, two fistp blocks, both multiplies); residue: frame 0x14 v 0x10 -- retail homes the fistp result at [esp] and reuses slots, VC7.1 here gives the result its own word
+00b18820	IMPROVED	2	retail_asm FloatToLong (replaces the fcom/fadd/__ftol2 stand-in); timer-first product spelling (no change)	297v304: the fistp block matches; residue: the early-return block laid at the end in retail (je far) vs inline here, LightLifeTimer kept in ecx (retail) v edi + push edi, and retail's fild timer ; fmul st(1) with the interval kept on the stack (ours fimul)
+005ee77c	IMPROVED	3	retail_asm FloatToLong; GetInterface select written found = last ; if (it != last && !(wanted < it->type)) found = it (fixes the jg hit test); named long morality (no change)	259v267: fistp and the interface hit test now match; residue: retail converts Morality through eax into the dead ability slot (mov eax,[ecx+28h] ; mov [ebp+8],eax ; fild [ebp+8]) where VC7.1 here filds the member directly, and the fistp result slot ([ebp+0Ch] v [ebp+8]) follows from it
+006b2960	IMPROVED	1	retail_asm FloatToLong + landed FloorToLong; the no-argument slot-13 call modelled through a second interface (CNavRegionSource::GetNavRegion) before the slot-17 region lookup	250v250 (from 231v250): every instruction now in retail's order; residue: frame 0x38 v 0x30 -- retail homes the first two helper values in the dead box slot [ebp+8] and the floor helpers' 1.0f there too, VC7.1 here gives them frame words (slot packing)
+00654438	IMPROVED	2	landed CeilToLong declaration order (long result; float one; float half; float back) fixes the helper's slot permutation; pos.X + size.X (canonicalised)	347v347: one x87 operand choice left -- retail duplicates the width (fld st(1) ; fadd [pos.X]) for the box's right edge, VC7.1 here loads pos.X (fld [pos.X] ; fadd st(2)) whatever the sum order
+00a4b670	DIFFER	2	Normalise scale: by-reference operator*=(const float&) (no change), r as a reference into the estimate word (316v314, worse)	312v314: retail re-reads the Newton result from memory for each component (fstp [r] ; fxch ; fmul [r] x3); VC7.1 keeps r on the x87 stack (fst [r] ; fmul st(2)) unless r aliases the estimate word, which then costs extra loads -- no aliasing form reproduces the plain spill
+00b17bd0	DIFFER	1	retail_asm FloatToLong in place of the __ftol2 cast	946v926 (from 930v926): the helper expands, but VC7.1 then reallocates the whole body (params in esi/ebp v retail edi/ebx, frame 0x2c v 0x30) -- the fall-off conversion is not the only gap; needs a fuller register-model pass
+00c6da40	DIFFER	3	unrolled-loop IV order: &accumulator[i] pointer local, read-then-store accumulator, explicit ++accumulator/++source (126v139, not unrolled) -- on 0x00C6DA40, the family shares the shape	139v139: VC7.1 orders the biased-pointer steps source-first (add edx,8 ; add eax,10h); retail accumulator-first -- no statement or pointer form changes the induction-variable creation order (confirmed gap for all four ramp mixers)
+00c6dad0	DIFFER	0	unrolled-loop IV order: &accumulator[i] pointer local, read-then-store accumulator, explicit ++accumulator/++source (126v139, not unrolled) -- on 0x00C6DA40, the family shares the shape	139v139: VC7.1 orders the biased-pointer steps source-first (add edx,8 ; add eax,10h); retail accumulator-first -- no statement or pointer form changes the induction-variable creation order (confirmed gap for all four ramp mixers)
+00c6e790	DIFFER	0	unrolled-loop IV order: &accumulator[i] pointer local, read-then-store accumulator, explicit ++accumulator/++source (126v139, not unrolled) -- on 0x00C6DA40, the family shares the shape	139v139: VC7.1 orders the biased-pointer steps source-first (add edx,8 ; add eax,10h); retail accumulator-first -- no statement or pointer form changes the induction-variable creation order (confirmed gap for all four ramp mixers)
+00c6e820	DIFFER	0	unrolled-loop IV order: &accumulator[i] pointer local, read-then-store accumulator, explicit ++accumulator/++source (126v139, not unrolled) -- on 0x00C6DA40, the family shares the shape	139v139: VC7.1 orders the biased-pointer steps source-first (add edx,8 ; add eax,10h); retail accumulator-first -- no statement or pointer form changes the induction-variable creation order (confirmed gap for all four ramp mixers)
+009d8650	GAP	1	retail_asm stack-switch block	42v36: VC saves ebx/esi/edi around any __asm that names them, and the retail pops/ret run on the other stack; needs naked or ret-in-asm (both forbidden)
+0066cd50	IMPROVED	3	landed FloatToLong (retail_asm) + PDB CRGBColour copy-ctor/union op= model	382v423: fistp block and colour shuffles now match; left: retail keeps two size slots (inner-loop guard) and recomputes the cell index after the __ftol2 calls, ours CSEs both (same as w3 with width/height locals)
+00439bb0	IMPROVED	3	landed FloatToLong (retail_asm) + named CCharString local before the PlaySound pushes	592v592: frame and fistp match; left: eax/edx/ecx rotation of the PMoney/PeekGuiDef loads in the UpdateStat args and the uninitialised-bar stores (unnamed float conversion changes nothing)
+00a48ba0	DIFFER	1	landed FloatToLong (retail_asm)	881v875 (base 873v875 kept): the helper brings an 8-aligned ebp frame (and esp,-8) into this map-holding body; the dominant residue stays the STLport map header (lane <map> is not STLport: malloc 0x18 + inline _M_erase)
+00a567a0	DIFFER	2	landed FloorToLong already in place; next as unsigned modulo	683v766: the floor block itself is not the residue (already the landed helper); retail routes the empty-spline zero through the p1 frame vector ([ebp-4Ch]) and keeps a per-return epilogue, ours is 83 bytes shorter; needs a structural rewrite of the return paths
+00b51ad0	IMPROVED	3	landed FloorToLong (retail_asm) + in-place SnapToGrid(long&) + (float)j*BoxSizeY+CentreY unrolled form	965v969: the three floor blocks, the snap (two stores) and the unrolled 9-entry fill match; left: retail runs the outer loop on a separate down counter (edx=9, row pointer +0x20C, column in [ebp-4] via edi) and keeps ebx/esi/edi to the end, ours compares the column to 4 and pops early
+009fd660	GAP	2	explicit mask clamp freeMemory & ((freeMemory<=0)-1), both operand orders	91v91: same select-destination residue as 009fd3a0: retail and eax,edx (value register keeps the result) then the store, then the ReduceSizeFrameDelay load into eax; every spelling (ternary, if-assign, explicit mask either order) gives and edx,eax and hoists the load
+0085fbc0	GAP	3	return-false layout: split first test, one compound condition, a single textual return false reached by goto	142v142: retail lays the shared xor al,al/ret block right after the first flags test and jumps back to it; VC7.1 lays it after the 0x51 compare in every spelling, even with one textual return false (goto) -- confirmed block-placement gap (0x0085FB30 family)
+009fdba0	GAP	3	bool local for IsVolumeTexture (70v61), bank local with inline compare (61v61, worse), GetHeader accessor (56v61)	61v61 (base kept): retail reloads GraphicInfo for the header before the mipmapLevel load and takes sete dl; every spelling loads mipmapLevel first and sets al -- argument-load order inside one call is not source-steerable here
+00a2ea20	GAP	3	end()-first compare (67v63), plain bool compare (67v63), Find on &Elements[Size] vs end() Elements+Size (63v63 same)	63v63: the second end() computes into the Size register in ours (lea ecx,[ecx*5]; lea ecx,[edx+ecx*4]) where retail swaps (Size in edx, Elements in ecx); the ternary form is needed for setne and no end spelling moves the registers
+00d259a0	GAP	3	direct member store, const-ref setter, ParentClass hoisted to a local (66v64)	64v64: retail loads ParentClass over this (mov esi,[esi+14h]; mov [esi+48h],4), ours into eax; setter shape and direct store give the same eax choice -- a dead-this register reuse no spelling selects
+00c52c40	GAP	3	case 6 before case 5, nested switch on Model (eax but sub/je chain), explicit else-return	75v75: retail compares Model in eax with cmp in the family-5 block (ecx in family 6); if-chains load into ecx, only a nested switch picks eax and that emits sub/je instead of cmp/jne -- cmp-chain-in-eax not reachable
+005e9b20	GAP	2	single shared LeaveGame tail (66v74, not tail-duplicated), return LeaveGame() in the 47 arm (74v74 same)	74v74: the 47 arm's vtable fetch lands in edx because the lane keeps state (eax) live into the arm; retail reuses eax. Shared-tail spelling is not duplicated by VC7.1, so the two-copy layout needs two LeaveGame statements, which always give edx
+00bc9b30	GAP	3	tail-recursive FindNode (VC turns it into the same loop), mask-first operand order, open-coded index with a shift local	66v66: retail colours key=esi, index=edx; every form (loop shapes, recursion, operand order, locals) gives key=edx, index=esi -- a register colouring swap of two loop-invariant/temporary values
+0056ef2d	IMPROVED	3	vector operator[]/size() on the member (reference local 68v66, direct member 66v66), max-first compare	66v66: list address in eax and first in esi now match; left: retail loads statIndicatorMax into edi right after the first compare and reuses eax for setl, the lane loads it late into eax and takes ebx for setl
+00be1e20	GAP	2	C4DVector ctor assigning in the body, named zero local copied by implicit operator=	77v77: the block copy of the zero temporary into AlphaMaskPositionFactors alternates edx/eax in the lane and schedules lea ecx,[esi+14h] before mov edx,eax; retail forwards all four dwords through edx -- copy-register choice of VC's struct-assignment expansion, no source spelling found (with the parked forms: copy-construct, user operator=, implicit assign)
+006b5890	GAP	3	local copy of val (91v76), float-field locals in operator<, if-chain operator<	76v76: retail hoists val.second into st(0) above the loop (fcom [middle+4], fstp st(0) at exit) though the float compare is conditional; the lane hoists only val.first and reloads val.second on the equal-key path in every operator< spelling -- conditional x87 load hoisting not reachable
+004385f0	IMPROVED	3	landed FloatToLong (retail_asm; its result is dead but the block stays) + steps as UpdateStat's third argument + PDB names (CTCVillage fines API, SetFine, SetNormalisedTimeLeft) + the PDB GetCrime() accessor for the setter object	379v379: the GetCrime() accessor pins the bar pointer in ebp before GetNormalisedTimeLeftOnFines as retail; left: the same one-step eax/edx/ecx rotation as 0x00439BB0 in the UpdateStat argument loads and the initialise branch (next lever: model PCrime as the PDB CCountedPointer with inline operator->)
+00f36010	IMPROVED	3	landed FloorToLong (retail_asm) + retail statement order (sx early, sy inline at the return) + gradient copies (12-byte copies 474v442; reference g00 and 2D copies 444v442)	444v442 (mnemonic similarity 0.17 -> 0.55): both floor blocks match; left: frame packing (0x24 v 0x38, an ebx push) and the hash/gradient load interleave -- retail copies only X/Y of g10/g01/g11 and fetches g00 through a pointer, the exact copy form is unknown
+00a88d10	IMPROVED	3	landed FloatToLong (retail_asm) + half-angle named local (keeps the two fmuls) + __forceinline TableCos (inert)	182v196: the fistp blocks and both multiplies match; left: the lane merges TableCos's position parameter with the caller's local and CSEs position-0.5 across the two calls; retail keeps the parameter as its own frame word (copied before the second call) and recomputes -- next lever: a TableCos that writes its parameter (position -= i) so the copy cannot be propagated
+00774610	MATCH	2	landed CeilToLong (retail_asm) + STLport _Rb_tree ctor _M_key_compare(_Compare())	RELOCATION_MATCH; map copy ctor bound out of line to 0x00778100 (??0?$map@JJ...)
+007727e0	IMPROVED	1	landed CeilToLong (retail_asm) for the stock level	467v433 (base 497v433; mnemonic similarity 0.27 -> 0.35): the ceil block is reproducible; residue is the def-pointer handling -- retail holds the thing def as a raw counted pointer in ebx with inline release paths and an early return per failure, the parked CDefPointer model differs (rewrite needed)
+00a76e00	IMPROVED	3	landed FloorToLong x2 + FloatToLong (retail_asm), relY local (inert), C2DVector operator- arithmetic for the corner and the map-relative cell	298v298: every instruction matches; left: frame packing only -- retail reserves 0x28 (corner.Y at [ebp-24h], rel.X at [ebp-18h]), the lane 0x20 ([ebp-14h]/[ebp-20h]); the vector temporaries' frame homes differ
+00914650	IMPROVED	3	landed CeilToLong (retail_asm), success-path if with return true and a shared return false, GetTC through a CInterfaceMap::Find member (keeps &m_interfaces in edi as retail)	341v340 (mnemonic similarity 0.75 -> 0.84): the ceil block, the interface select and the tail match; left: frame 0x38 v 0x30 (CeilToLong's locals one slot lower) and the order of the four box stores
+00b16220	IMPROVED	3	FloatToLong (retail_asm) for CentreParam, array indexing in place of the o/p references (IV set as retail), if-form selects (346v372, worse)	372v372 (mnemonic similarity 0.75 -> 0.92): fistp, both pointer IVs and every lerp but one match; left: the Type select's address is [edx+edi] (retail [edi+edx]) and the Radius lerp evaluates this*s before other*t (retail other*t first, as for every other field)
+006cc800	IMPROVED	3	landed CeilToLong (retail_asm), the landed frame-stagger form (__int64 uid local before CWorld::GetFrame(), as 0x00937C20) in an inline helper, NearbyThings.clear() as STLport erase(begin(),end()) with memmove	373v399 (mnemonic similarity 0.48 -> 0.74): the ceil block and the first stagger match; left: retail keeps clear()'s erase alive (cmp eax,eax on two loads of _M_finish, then memmove) where the lane folds last == _M_finish and drops the call, plus register roles in the second stagger and frame 0x30 v 0x28
