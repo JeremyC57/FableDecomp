@@ -1,0 +1,33 @@
+addr       parity           behav  name
+00ae7fe0   RELOCATION_MATCH PASS   operator=
+00af7460   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@IU12@@std@@YIPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00af6980 labelled 'std::__uninitialized_fill_n<std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>*,unsigned int,std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance> >'
+00af7460   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@std@@YIXPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@0ABU__false_type@0@@Z -> 00af6f90 labelled 'std::_Destroy_range'
+00af7460   RELOCATION_MATCH PASS   _M_insert_overflow
+00b177c0   RELOCATION_MATCH PASS   GetSplinePosition
+00bcdb70   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$CArray@VC3DVector@@@@PAV1@@std@@YIPAV?$CArray@VC3DVector@@@@PAV1@00ABU__false_type@0@@Z -> 00bcd8a0 labelled '_global::UninitCopy_CElement12_006f0810_00bcd8a0'
+00bcdb70   WARN RELOC_NAME: ?_M_clear@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@IAEXXZ -> 00bcda90 labelled 'CRetailVector_SBufferEntry12::~CRetailVector_SBufferEntry12'
+00bcdb70   RELOCATION_MATCH PASS   _M_insert_overflow
+00c1d0b0   RELOCATION_MATCH PASS   SetFromVectorAndAngle
+00c8b770   RELOCATION_MATCH PASS   ov_time_seek
+00c8b880   RELOCATION_MATCH PASS   ov_time_seek_page
+00c9c1e0   MATCH            PASS   mdct_butterfly_first
+
+WINS: 8
+  00ae7fe0 RELOCATION_MATCH std::vector<C3DGroup2>::??4?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00af7460 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@IAEXPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@ABU32@ABU__false_type@2@I_N@Z
+  00b177c0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::COrbitState::?GetSplinePosition@COrbitState@CPSCOrbit@NParticleEngine@@QBE?AVC3DVector@@M@Z
+  00bcdb70 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@IAEXPAV?$CArray@VC3DVector@@@@ABV3@ABU__false_type@2@I_N@Z
+  00c1d0b0 RELOCATION_MATCH CMatrix3x4::?SetFromVectorAndAngle@CMatrix3x4@@QAIXABVC3DVector@@M@Z
+  00c8b770 RELOCATION_MATCH libvorbis::@ov_time_seek@12
+  00c8b880 RELOCATION_MATCH libvorbis::@ov_time_seek_page@12
+  00c9c1e0 MATCH libvorbis::_mdct_butterfly_first
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  stdvectorC3DGroup2_operator_00ae7fe0
+  stdvector_Minsertoverflow_00af7460
+  NParticleEngineCPSCOrbitCOrbitState_GetSplinePosition_00b177c0
+  stdvector_Minsertoverflow_00bcdb70
+  CMatrix3x4_SetFromVectorAndAngle_00c1d0b0
+  libvorbis_ovtimeseek_00c8b770
+  libvorbis_ovtimeseekpage_00c8b880
+  libvorbis_mdctbutterflyfirst_00c9c1e0

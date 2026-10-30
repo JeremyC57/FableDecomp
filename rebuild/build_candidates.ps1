@@ -364625,6 +364625,62 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsAWoman_00eda5e0_test.cpp'
         PassPattern = '00eda5e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae7fe0'
+        Module = 'std::vector<C3DGroup2>'
+        Source = '00/ae/stdvectorC3DGroup2_operator_00ae7fe0.cpp'
+        TestSource = '00/ae/stdvectorC3DGroup2_operator_00ae7fe0_test.cpp'
+        PassPattern = '00ae7fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af7460'
+        Module = 'std::vector'
+        Source = '00/af/stdvector_Minsertoverflow_00af7460.cpp'
+        TestSource = '00/af/stdvector_Minsertoverflow_00af7460_test.cpp'
+        PassPattern = '00af7460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b177c0'
+        Module = 'NParticleEngine::CPSCOrbit::COrbitState'
+        Source = '00/b1/NParticleEngineCPSCOrbitCOrbitState_GetSplinePosition_00b177c0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCOrbitCOrbitState_GetSplinePosition_00b177c0_test.cpp'
+        PassPattern = '00b177c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcdb70'
+        Module = 'std::vector'
+        Source = '00/bc/stdvector_Minsertoverflow_00bcdb70.cpp'
+        TestSource = '00/bc/stdvector_Minsertoverflow_00bcdb70_test.cpp'
+        PassPattern = '00bcdb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1d0b0'
+        Module = 'CMatrix3x4'
+        Source = '00/c1/CMatrix3x4_SetFromVectorAndAngle_00c1d0b0.cpp'
+        TestSource = '00/c1/CMatrix3x4_SetFromVectorAndAngle_00c1d0b0_test.cpp'
+        PassPattern = '00c1d0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8b770'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovtimeseek_00c8b770.cpp'
+        TestSource = '00/c8/libvorbis_ovtimeseek_00c8b770_test.cpp'
+        PassPattern = '00c8b770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8b880'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovtimeseekpage_00c8b880.cpp'
+        TestSource = '00/c8/libvorbis_ovtimeseekpage_00c8b880_test.cpp'
+        PassPattern = '00c8b880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9c1e0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_mdctbutterflyfirst_00c9c1e0.cpp'
+        TestSource = '00/c9/libvorbis_mdctbutterflyfirst_00c9c1e0_test.cpp'
+        PassPattern = '00c9c1e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

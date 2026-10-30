@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00ae7fe0	RELOCATION_MATCH	257v257	PASS	std::vector<C3DGroup2>::operator= (STLport 4.6; proven by its landed element helpers); first grade
+00bebaa0	DIFFER	255v257	PASS	CEngineInternalPrimitiveMeshBase::CalcObjectMatrix (PDB SIX static); parked: VC7.1 shrink-wraps esi (early pop esi); differ/
+00c1d0b0	RELOCATION_MATCH	257v257	PASS	CMatrix3x4::SetFromVectorAndAngle (Ego_r + FableWin PDB); __fastcall member QAI like landed PreMultiply/PostMultiply
+00c8b770	RELOCATION_MATCH	257v257	PASS	libvorbis ov_time_seek (vorbisfile 1.0.x verbatim); same-TU ov_time_total body as landed ov_time_tell
+00c8b880	RELOCATION_MATCH	257v257	PASS	libvorbis ov_time_seek_page (vorbisfile 1.0.x verbatim)
+00c77c80	DIFFER	259v259	PASS	CReverbProcessor::UpdateLineAndTapLengths (descriptive, libpk, retail_asm grade); parked: esi/edx swap in tap loop; differ/
+00c9c1e0	MATCH	259v259	PASS	libvorbis mdct_butterfly_first (Xiph mdct.c, static); TU-local noinline static gets a custom register convention at plain /O2
+00af7460	RELOCATION_MATCH	260v260	PASS	std::vector<pair<EPSCType,CComponentInstance>>::_M_insert_overflow (STLport 4.6)
+00bcdb70	RELOCATION_MATCH	263v263	PASS	std::vector<CArray<C3DVector>>::_M_insert_overflow (WeaponTrail::Trail; STLport 4.6)
+00b177c0	RELOCATION_MATCH	265v265	PASS	NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition (FableWin PDB); named result local (no NRVO)

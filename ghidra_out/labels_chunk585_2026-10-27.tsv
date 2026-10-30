@@ -1,0 +1,17 @@
+address	name	evidence
+00b177c0	NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition	proven per batch 2026-10-27_linux_hand585 NOTES.md (chunk 585)
+00bcdb70	std::vector<CArray<C3DVector>>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand585 NOTES.md (chunk 585)
+00c1d0b0	CMatrix3x4::SetFromVectorAndAngle	proven per batch 2026-10-27_linux_hand585 NOTES.md (chunk 585)
+00c8b770	libvorbis ov_time_seek	proven per batch 2026-10-27_linux_hand585 NOTES.md (chunk 585)
+00c8b880	libvorbis ov_time_seek_page	proven per batch 2026-10-27_linux_hand585 NOTES.md (chunk 585)
+00c9c1e0	libvorbis mdct_butterfly_first	proven per batch 2026-10-27_linux_hand585 NOTES.md (chunk 585)
+00c1d0b0	CMatrix3x4::SetFromVectorAndAngle	chunk 585: both PDBs; axis-angle rotation body; retail calling convention is __fastcall (QAI, as landed PreMultiply/PostMultiply), PDB spells QAE
+00c8b770	ov_time_seek	chunk 585: vorbisfile 1.0.x verbatim, bound callee names (@ov_time_seek@12)
+00c8b880	ov_time_seek_page	chunk 585: vorbisfile 1.0.x verbatim, same callees (@ov_time_seek_page@12)
+00c9c1e0	mdct_butterfly_first	chunk 585: static, Xiph mdct.c body; call order of caller mdct_butterflies 0x00C9C400
+00b177c0	NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition	chunk 585: FableWin.pdb + COrbitState member offsets
+00bebaa0	CEngineInternalPrimitiveMeshBase::CalcObjectMatrix	chunk 585 (parked DIFFER 255v257): PDB static signature SIX matches registers, ret 8; five wrong spellings bound
+00c77c80	CReverbProcessor::UpdateLineAndTapLengths	chunk 585 (parked DIFFER 259v259; DESCRIPTIVE: libpk has no PDB); retail_asm candidate (fistp 0x00C77CEF / 0x00C77D55)
+00c9c000	mdct_butterfly_32	chunk 585: Xiph mdct.c; catalog said C3DBoundingBox::TransformByRotation
+00c8b9d0	ov_time_tell	chunk 585: landed as ov_time_tell; label still carries the old Audio_* name
+00ae7480	std::__uninitialized_copy<C3DGroup2*,C3DGroup2*>	chunk 585 review: the NON-const instance (reserve 0x00AE80F0 copies from _M_start, a _Tp*; landed 0x00AE81F0 binds it so); const instance is 0x00AE7530

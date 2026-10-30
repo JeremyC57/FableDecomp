@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE80F0, 163 bytes, __fastcall `ret 4`.
 // Callers: CVectorPairOwner::ReserveBoth 0x00AE3330 (landed; the program's SimGroups / NonSimGroups) and the program loader
 //   0x00AE3948.
-// Callees: malloc 0x00BFEA0E (allocator::allocate), __uninitialized_copy 0x00AE7480 (landed), _M_clear 0x00AE7FA0.
+// Callees: malloc 0x00BFEA0E (allocator::allocate), __uninitialized_copy<C3DGroup2*> 0x00AE7480 (landed; the non-const instance -- reserve copies from _M_start, a _Tp*; the const instance is 0x00AE7530), _M_clear 0x00AE7FA0.
 // Layout: retail CArray<T> is an STLport vector {_M_start, _M_finish, _M_end_of_storage}; C3DGroup2 is {long BoneIndex,
 //   CArray<C3DVertexBlend2> VertexBlends} = 16 bytes.
 // Label: catalog "Container_Reserve" is descriptive.
@@ -70,7 +70,7 @@ public:
     public:
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
     protected:
-    pointer _M_allocate_and_copy(size_type __n, const _Tp* __first, const _Tp* __last)
+    pointer _M_allocate_and_copy(size_type __n, _Tp* __first, _Tp* __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, __false_type());

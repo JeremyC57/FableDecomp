@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00bebaa0	DIFFER	255v257	PASS	CEngineInternalPrimitiveMeshBase::CalcObjectMatrix (PDB SIX static); parked: VC7.1 shrink-wraps esi (early pop esi); differ/
+00c77c80	DIFFER	259v259	PASS	CReverbProcessor::UpdateLineAndTapLengths (descriptive, libpk, retail_asm grade); parked: esi/edx swap in tap loop; differ/

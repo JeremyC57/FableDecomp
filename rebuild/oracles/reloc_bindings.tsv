@@ -29759,7 +29759,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AddVertexBlend@C3DGroup2@@QAEXABVC3DVertexBlend2@@@Z	00ac4110	00ae37d0
 ?push_back@?$CArray@VC3DGroup2@@@@QAEXABVC3DGroup2@@@Z	00ae83d0	00ae37d0
 ?RemapBoneIndices@CParticleProgram@@CIXAAV?$map@KKU?$less@K@std@@U?$allocator@U?$pair@$$CBKK@std@@@2@@std@@AAV?$CArray@VC3DGroup2@@@@@Z	00ae3920	00ae3a30
-??$__uninitialized_copy@PBVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PBV1@0PAV1@ABU__false_type@0@@Z	00ae7480	00ae80f0
+??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z	00ae7480	00ae80f0
 ?_M_clear@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@IAEXXZ	00ae7fa0	00ae80f0
 ??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z	00ae7480	00ae81f0
 ??$__uninitialized_fill_n@PAVC3DGroup2@@IV1@@std@@YIPAVC3DGroup2@@PAV1@IABV1@ABU__false_type@0@@Z	00ae74c0	00ae81f0
@@ -35213,3 +35213,10 @@ _icomp	00ca1bc0	00ca1be0
 ??_7?$CSpawnedFunc1@VCV_FishermanScript@NScript@@VCScriptThing@@@@6B@	012ea164	00e7bd60
 ?NPCAttitudeProcess@CV_FishermanScript@NScript@@QAEXVCScriptThing@@@Z	00e7c010	00e7bd60
 ?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	00e9bbc0
+??$_Destroy@PAVC3DGroup2@@@std@@YIXPAVC3DGroup2@@0@Z	00ae7ec0	00ae7fe0
+??$__copy@PBVC3DGroup2@@PAV1@H@std@@YIPAVC3DGroup2@@PBV1@0PAV1@ABUrandom_access_iterator_tag@0@PAH@Z	00ae7660	00ae7fe0
+??$__uninitialized_copy@PBVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PBV1@0PAV1@ABU__false_type@0@@Z	00ae7530	00ae7fe0
+??$__uninitialized_copy@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@PAU12@@std@@YIPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@PAU10@00ABU__false_type@0@@Z	00af6920	00af7460
+??$__uninitialized_fill_n@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@IU12@@std@@YIPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@PAU10@IABU10@ABU__false_type@0@@Z	00af6980	00af7460
+??$__uninitialized_copy@PAV?$CArray@VC3DVector@@@@PAV1@@std@@YIPAV?$CArray@VC3DVector@@@@PAV1@00ABU__false_type@0@@Z	00bcd8a0	00bcdb70
+?_M_clear@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@IAEXXZ	00bcda90	00bcdb70
