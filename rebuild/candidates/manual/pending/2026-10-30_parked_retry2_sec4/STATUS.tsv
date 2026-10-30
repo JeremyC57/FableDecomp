@@ -1,0 +1,355 @@
+address	status	grades	lever	residue
+0091c0d0	HELD	2	STLport bitset::test HasTC (82v81 worse); reference GetCreature() const accessor (no change)	81v81 register colouring: retail threads PBrain->Creature through eax and loads AddTC this after the pushes
+00891070	MATCH	4	shared NScript headers (neutral) + named argument locals in source order through the PDB GetPhysicsTC accessor	-
+008c6160	HELD	4	implicit const char* conversion; reference local; function-scope local (named-local lever)	87v87 this/&PCreature esi<->edi swap whenever the creature is a named local; without it the second GetPItem runs after the pushes
+0090bbf0	HELD	3	shared def headers CDefClassBase/CDefPointer (neutral, hdr/); PDB callee PeekPSimDefinition; bool HasTC + no creature local; FableWin GetCreature accessor chain (CAIStateGroupBase -> CAIBrain)	100v100 scratch registers: retail re-reads the creature through ecx->ecx, hidden slot in edx, Delete vtable in eax
+0095d4c0	HELD	2	named filter locals (each takes its own dword, 28 lines worse); free template operator&& (landed Bind2 model, unchanged)	130v130 one lea: the first empty filter temporary is homed in the dead out-argument slot ([esp+34h]) where retail packs both filters into the frame dword (+6/+7)
+0093cab0	HELD	2	reference local for PNode declared first; if/assign control-flow variant	104v104 esi/edi swap: retail &PNode in esi, next in edi
+008d7930	RELOCATION_MATCH	3	#pragma optimize("s",on) (sweep pre-screen; size-optimised TU) + PDB respelling (global CThing::Kill, CBaseIntelligentPointer::GetPItem -> CBaseObject*, CTCCreatureModeManager::CModeBase); earlier: inline base OnDeactivate inline base CModeBase::OnDeactivate() { Active = false; } called at the end	109v109 esi/edi swap (retail this in edi, member address in esi; the landed 0x008D7730 twin without the Active store matches)
+009395f0	IMPROVED	3	PDB names (leaf was _Methods), Ego_r CIsNearCampfireWithSpace/CThingCompare_Nearest layouts, implicit C3DVector copy, body-assigned DistanceSq	122v122 (32->14 difflines) store scheduling of the position copies
+008e8ff0	HELD	6	inline PDB accessors GetPosition/GetLastPosition as reference locals (parked had tried 4 operator- forms); retry: operator- movement (14), all-in-call (19), movement local + facing in call (25), physics reference, thing.PhysicsTC-> each read (both =)	135v135 the physics vtable load (mov eax,[ecx]) scheduled after the first fld in retail, before the call in ours
+009578a0	HELD	3	inverted tail test; while(cond) loop with in-loop return (deferred-block rule); nested break-first (164v148 worse)	148v148 tail block order: retail falls through to the shared xor al,al block and jumps forward to TurnToFace
+00959380	HELD	4	index spellings: (level + LevelInfo)->Width, char-offset Width, reference info + row locals, long level parameter (148 lines worse)	576v576 / 583v583 one SIB operand order [ecx+eax+4] (retail base = level*20) vs [eax+ecx+4]
+008adcc0	HELD	1	index spellings: (level + LevelInfo)->Width, char-offset Width, reference info + row locals, long level parameter (148 lines worse)	576v576 / 583v583 one SIB operand order [ecx+eax+4] (retail base = level*20) vs [eax+ecx+4]
+0095c7c0	HELD	1	index spellings: (level + LevelInfo)->Width, char-offset Width, reference info + row locals, long level parameter (148 lines worse)	576v576 / 583v583 one SIB operand order [ecx+eax+4] (retail base = level*20) vs [eax+ecx+4]
+00978250	HELD	1	index spellings: (level + LevelInfo)->Width, char-offset Width, reference info + row locals, long level parameter (148 lines worse)	576v576 / 583v583 one SIB operand order [ecx+eax+4] (retail base = level*20) vs [eax+ecx+4]
+009350c0	HELD	4	declaration order scale-first (slots right, statement order wrong); upfront declarations; unnamed (1+v) temporary; scale declared first/assigned after	159v159 frame slots: retail homes the variation copy at [esp+8], 1+variation at [esp+0Ch], variation loaded before push ecx
+00968460	HELD	4	PDB filter classes (IsTargettedAtThing/IsOriginatedByThing) + AIAction_WaitForMessageCallback template; left-grouped chain (170v172); member Bind2::operator&& (ambiguous)	172v172 &PPayee esi/edi/ebx colouring with the sunk ebx push (names fixed, differ/)
+00968510	HELD	1	PDB filter classes (IsTargettedAtThing/IsOriginatedByThing) + AIAction_WaitForMessageCallback template; left-grouped chain (170v172); member Bind2::operator&& (ambiguous)	172v172 &PPayee esi/edi/ebx colouring with the sunk ebx push (names fixed, differ/)
+008bf1c0	HELD	3	named position + angle locals (181v178); position local only (unchanged)	178v178 the position-interface vtable load (ebp) right after the second creature GetPItem in retail; ours after GetPos (ebx/ebp swap)
+00943c20	HELD	2	non-const HasTC; raw bit-test expression (no inline member)	206v206 scratch colouring: retail tests the villager bit through eax (eax->eax chain), ours ecx
+008f99a0	HELD	5	string ctor through a local block pointer (parked: verbatim STLport, zero-free base, 4.6 base-allocating ctor); retry: end-of-storage before finish, chained start/finish, scalars before ServerName (42), named end pointer in operator= (all others =)	207v207 scheduling: retail pushes the first "" before the end-of-storage store and sinks start/finish stores below the second push
+0090bc60	HELD	3	list-ref local; end() iterator local (SRC_FAIL type); _Vector_base ctor body stores	scheduling: vector zero-stores before ObjectList head load / &benches push (nd 8)
+00943b40	HELD	2	PTaskThing reference local; creature local first (35 lines, worse)	215v215 pure ebx/ebp colouring (retail ebp=this, ebx=&PTaskThing)
+00945bd0	IMPROVED	4	early-return exits written in full; bool HasTC; inline GetCreature accessor	219v219 creature chain in ecx (retail eax->eax)
+00924b90	HELD	4	def load after ++ (loopNum local; LoopNum++ statement; lookup inside the compare 223v219; loopNum+roarLoops locals)	219v219 this esi/edi swap + retail 'mov eax,esi; cmp eax,edx' compare copy (def load after the ++ store) not reproduced
+0092e130	HELD	3	fast-track test inline (276v229); single-exit nested form (228v229); early-return fast-track form (=base)	229v229 this esi/edi swap (retail this=esi, sleep=edi pushed after HasTC)
+0091ea70	HELD	3	inline GetCreature accessor (first test; both); unsigned-long HasTC	240v240 HasTC creature chain in ecx/edx (retail eax->eax chain) + lea/push scratch eax/edx/ecx rotation
+00938280	HELD	3	Random seed store/reload form (=); supervision-first early return (244v248); if/else shared return (208v248)	248v248 mode ebx vs esi + seed esi vs ebx swap, ctor arg via ecx pushed first (retail edx), supervision block placed after the cases (block order)
+00903f30	HELD	3	movementType declared at top (=); isRoute reference dropped (246v254); if-chain movement mapping (253v254)	254v254 callee-saved ebx/ebp swap (routeThing vs mapped movement type)
+00946190	HELD	3	free operator+; C3DVector ctor body stores; position call inline in the argument (28 lines)	259v259 LookAtPos by-value slot pointer in ecx (retail eax, this loaded before the last fadd)
+008c7280	HELD	4	named value local; named CMultiplierEntry local (both 18 lines, frame 0x10); insert_result ctor; iterator copy ctor (=base)	268v268 the range float shares the key word (frame+0) instead of the inserted pair's first word (frame+4)
+00927910	HELD	2	iterator declared before make_heap (=); named _Tp value local (325v276)	276v276 esi/edi swap throughout (first vs copy temporaries/comparator)
+00934f20	HELD	4	return-a/return-b in the nearestB block; reversed <= compare (23); named bool closer; flattened early returns	281v281 the final return-a/return-b pair is if-converted into a select (retail jne back to the shared return-b block)
+0090c540	IMPROVED	3	reached declared late (=); oneSecond inlined (297v299); reached declared first (slot fixed)	299v299 this esi/edi colouring
+0093c2f0	IMPROVED	3	filter at top (=); same-TU LowerBound stand-in (frame fixed); + GetCreature accessor (worse)	303v303 scratch eax/ecx/edx rotation in the brain loads, key pushes, vector copy
+008bd3f0	HELD	2	target position first, no target local (308v312); named TeleportIn action local (316v312)	312v312 this ebx/edi swap (target pointer / position temps)
+008a8890	HELD	4	def index named local (=); filter before found (14); filter ctor body store (=); found reference local (=)	317v317 the filter store scheduled after lea &found (retail before)
+00961640	HELD	3	named player GetPItem local (326v323); direct Brain()->PCreature argument (=); PBrain direct (SRC_FAIL: model has no PBrain member)	323v323 creature load for the throw ctor before the target GetPItem (edi) vs retail after (ecx); idle-loop test eax/ecx
+0091b190	IMPROVED	3	lower_bound len-before-it (fixed esi copy); first local (=); direct pad-cast brain reads (30)	332v332 loop-head chain eax/eax/ecx vs ecx/eax/edx; UseObject arg load order
+009852c0	HELD	3	direct pad-cast brain read at the lookup (=); direct read for the first creature (=); named movement local (42)	337v337 navigation-lookup chain eax/eax/ecx (retail ecx/eax/edx); run in dl not bl
+008f8540	HELD	4	tv_sec first (6); chained zero assignment (345v344); exceptSet before set; exceptSet between set and FD_ZERO (=)	344v344 exceptSet zero stored from ebx (readSet) not ebp; mov eax,edx before xor ebp
+00933db0	IMPROVED	3	direct pad-cast brain read (22); named CAIBrain* local (10); + target-bounds local (16)	347v347 bounds chain eax/eax (retail ecx/eax), target bounds ecx (retail eax)
+0090c900	HELD	2	if-declaration faction (=); PFaction member reads (340v345)	345v345 gossipee esi/edi swap (retail thing=edi loaded right after push edi)
+00986ed0	HELD	16	all 16 operand orders of the Y/Z cross-product multiplies (VC7.1 canonicalises: identical bytes)	353v353 x87 operand order of three cross-product fmuls
+00956e70	HELD	2	out slot declared before the def local (=); def local in its own block (=)	363v363 def holder in ebx (pushed up front) vs retail edi reuse, ebx pushed mid-function
+009677a0	HELD	2	point pointer local (=); forward copy folded (370v392)	392v392 this/point esi/edi swap
+0097f870	IMPROVED	3	building local (=); navigation = 0 (colouring fixed, 395v397); navigation declared at top (=)	395v397 miss path xor ebx,ebx instead of the uninitialised home-slot read
+008aac50	HELD	4	dx/dy float locals; Radius*Radius inline; radius local first; radiusSquared local (all =)	411v411 first inlined predicate copy squares dy before dx (x87 stack order)
+008bf500	HELD	2	named GetPItem local in the loop (=); raw _M_start[i] / _M_start+i forms (=)	412v412 i*8 CSE'd into esi with esi/edi swap (retail re-forms [base+i*8])
+008e5d40	HELD	2	oldPosition default + assign with area block (443v441); position reference copy (=)	441v441 vector / old-position frame-slot swap
+0095b820	HELD	3	position before filter (14); creature reuse local for the 0xad lookup (=); map local in GetInterface (=)	445v445 filter index store after PCreature load; 0xad lookup map lea edi,[eax+44h] vs retail mov edi/add edi,44h
+0089b5b0	HELD	2	moved onto engine/CCountedPointer.h (hdr/, neutral); named null-thing local (458v454)	454v454 count block reloaded into ecx (retail eax) for operator delete
+00984d90	HELD	3	named creature local for the lookup (=); self copy for the map address (=); HasTC member test (460v455)	455v455 creature lea esi,[eax+44h] vs retail mov esi/add esi,44h
+00920dc0	IMPROVED	3	Position ref local (=); 008E5D40 Normalise form (79); body local before Normalise (62 lines, 457v455)	455v455 this/position esi/edi; early body load and r kept in memory
+008a8c60	HELD	2	same-TU const LowerBound stand-in (=); named ST_SIT_ON_FLOOR string in a block (464v472)	472v472 name temp packed into the key slot (retail shares the counted-pointer slot)
+008f5970	HELD	2	/Op (558v465); line.Dot(point-lineStart) operand order (=)	465v465 x87: projection parameter popped and reloaded (retail fst + fstp st(2))
+00910df0	HELD	4	(x&m)==m with long flags (and/cmp al); unsigned-char xor cast (17); !((x&m)^m) (folds to not); out-of-class static const mask + xor form (folds to not)	500v500 inlined originator type test not eax vs retail xor eax,0fh; brain load ecx/ecx vs eax
+008d55a0	HELD	2	creature lookup via PCreature directly (=); target position inline without the target local (484v486, 23 lines)	486v486 &PTarget edi (pushed at entry) vs ours esi
+008fa800	HELD	2	const float& operator* (473v496); const float& scalar-left operator* only (483v496)	496v496 frame 0x5c v 0x50 (extra 12-byte vector temp), falloff exp stored twice
+0093c030	HELD	2	member LowerBound by pointer key (508v505); len-before-it inline lower_bound (=)	505v505 this esi/edi; lower_bound first via eax copy; mov ecx,this hoist
+00919240	HELD	2	filter declared inside the area block (=); count before total (34)	508v508 register permutations in the weighting loops; filter store one load early
+009718f0	IMPROVED	4	008E5D40 Normalise form (16); XY sum Y-first (22 alone, 16 combined); x-first Normalise sum (20)	510v510 path XY squares in swapped spill slots
+009711d0	HELD	2	modes = 0 (512v516); declaration before the TimingCritical store (=)	516v516 this esi/edi swap throughout
+00897fa0	HELD	2	added flag declared before object (=); const carryable (SRC_FAIL: GetCarrySlot non-const)	541v541 object/item ebx/ebp swap
+008daa80	HELD	4	named name string (=); named thing pointer (550v551); string then pointer locals (=)	551v551 AddTC object load sunk below the arg pushes
+008bf800	HELD	3	named end iterator (562v570); reversed != operands (20 lines, same bytes otherwise); begin() via end() (=)	570v570 loop entry header/begin eax/ecx swapped
+00941fc0	HELD	4	y+=r before x+=r; C2DCoordI(x+r,y+r); y = r + y; bottom local (all =)	578v578 add eax,edi vs retail add edi,eax (y register)
+00957db0	IMPROVED	4	if(result==2){lookat}else Terminate (=); creature local dropped (118); for-loop with breaks (=); three separate exits each with Terminate (52)	266v266 this/component esi/edi swap
+0096cd70	HELD	2	has flag declared first (=); def pointer as an unnamed temporary (=)	578v578 frame 0xc0 v 0xbc: flag byte/key/table/string/counted pointer slot packing
+00947110	RELOCATION_MATCH	1	same-TU noinline LowerBound stand-in	-
+0093afc0	RELOCATION_MATCH	3	Random(): range read into a local after GFROR13, before the seed store	-
+00979f70	RELOCATION_MATCH	2	aim-path || exit split into two exits each with Terminate (parked 'lane gap' wrong) + PDB respell	-
+00917e30	RELOCATION_MATCH	1	same-TU noinline LowerBound stand-in	-
+0096bcb0	IMPROVED	4	found pointer built before the filter test (spill slot fixed); reversed exit compare (16); maps->_M_finish (126); it declared early (=)	outer-loop exit reload order (it before this)
+00919780	IMPROVED	4	found pointer built before the filter test (spill slot fixed); reversed exit compare (16); maps->_M_finish (126); it declared early (=)	outer-loop exit reload order (it before this)
+00954f40	HELD	2	pos declared before text (=); name as a temporary in the call (600v604)	604v604 frame slot order (pos/found/filter/name)
+00966030	HELD	4	crate local before the point declaration (=); retry: IsDead accessor (=), creature local before the PickUp test (581, worse), named PCrate reference (=)	597v597 this ebx / &PCrate ebp swap
+009871c0	HELD	a=14 b=81 c=20 d=14 e=18 f=118	leaf fix; it!=maps->_M_finish; it=AreaMaps._M_start; it hoisted; reversed compare; map load order	2 lines: outer-loop latch reload of ebx(it) placed after ebp/esi reloads (retail first); size equal 614
+008bf280	HELD	a=62 b=62 c=62 e=62 f=62	weapon declared early; accuracy declared early; both; long temp then float; implicit conversion	62 lines: weapon in esi vs retail edi (push edi at the carrying join), this spill slot +4, float accuracy shares int temp slot (retail own slot); size equal 638
+00920200	HELD	b=4 c=4 d=14 e=6 f=18	++cell,++x; ++cell in body; Height/Width test order; 4-arg C2DBoxI ctor in GetMapwhoArea; BRY-first helper	2 lines (+1 reloc pair): node-loop exit reload order of spilled box bounds (retail edi first, ours esi,edx,edi); size equal 640
+00911300	HELD	a=62 b=7 c=62 d=62 e=7 f=67 g=62	flags by-value getter bound to const& helper; cast rvalue; named flags local; named const& flags; const& thing; drop C3DVector copy ctor; reversed compare	7 lines: retail stores ThingTypeFlags (not the thing ptr) before xor al,al. Named flags local + const unsigned long& helper (variant c) reproduces the flags store but VC then picks cl and reorders the bodyPos copy (62). Size equal 666
+00965640	IMPROVED	70->50 (a=77 b=70 c=70 d=70 cp=50 v3=50 v5=50)	CCountedPointer PCurrentAction (win); stand-in removal; aliases	50: this/&PStealableItem ebx/ebp swap
+009644f0	IMPROVED	76->56 (cp=56)	CCountedPointer PCurrentAction	56: this/&PStealableItem ebx/ebp swap (twin of 00965640)
+008f9320	RELOCATION_MATCH	a=20 b=0 c=22	named char* buffer local before recv (win); (int)size cast; socket local	-
+008f0bd0	HELD	a=4 b=4 c=4 e=10 f=4	named C3DVector; init-list ctor; z local; member-wise to; ctor store order	2 lines: Move target X store scheduled after push 0 (retail before); size equal 722
+008c4fd0	IMPROVED	103->61 (a=118 b=103 c=133 d=61 e=61 f=106 g=106)	scoped named CCharString (win); decl order; tools inline	61: frame word shift of familyIndex/tools/family, +1 byte
+008b7040	HELD	a=103 b=51	target position ref local; target expression inline	18 (6 real): target/&PCreature ebp/ebx swap; size equal 770
+0095b9e0	HELD	a=54 b=8	diveTo declared at assignment; named xyLength	2 lines + relocs: diveTo.Z integer copy scheduled before the GetXYLength fld (retail after); size equal 782
+008f3310	HELD	a=12 b=12 c=12	named delta; target pos ref; member operator-	2 lines + relocs: mov ecx,edi hoisted above fsub after the target GetPosition call; size equal 796
+00912840	HELD	a=143 b=50 c=41	drop C3DVector copy ctor; explicit CBezierCurve copy ctor; push_back by assignment	30 (10 real): push_back curve copy not software-pipelined as retail; size equal 860
+00915350	HELD	a=44 b=59	unscoped mode-manager block; failed declared before the get-up scope	44: frame packing (interface-present byte own word +0x13 in retail; names/loop counter/key slots shifted 4); size equal 867
+008fc430	HELD	a=156 c=29	point reset on no-intersection; push via (*it).second	26 (8 real): ring.end()/malloc-size pair scheduled two adds later than retail; size equal 876
+00934410	HELD	a=93 b=121 c=121 d=96	Y-first GetLengthSquared; 2D taggerPos; both; 3D subtract then 2D	93: x87 shape of planar distances (retail spills delta X to memory, squares Y first) + frame 0xc smaller; size equal 922
+0095bcf0	HELD	a=51 b=4	008E5D40 Normalise form; r*=0.5f split in FastInvSqrt	2 lines + relocs: next GetPItem's mov ecx,edi scheduled 4 x87 ops later than retail; size equal 948
+00972f30	IMPROVED	SRC_FAIL->174 (b=174 c=SRC_FAIL n32=128(frame+8) n40=128)	rebase onto current engine header; decl order; name buffer size	174: frame slot layout (name buffer placement)
+009289b0	IMPROVED	129->122 (r=129 a=122 c=122 d=129)	PDB respell CWorld::GetFrame; inline Random(range) order (div before call)	122: endFrame ebx vs ebp; ebx=2 constant register lost (+2 bytes)
+009482a0	IMPROVED	35->31 (a=31 b=31 c=31 d=31 e=31)	LowerBound stand-in (win); GFRandom source order; ?: index; RandomIndex helper	31: random index edx vs eax; bool result after pops
+00923070	IMPROVED	38->22 (lb=22 a=22 b=22 c=22)	LowerBound stand-in (win); side/comp decl placement	22: 0xb8 key vs side slot swap
+009658b0	HELD	a=126 b=9(1283v1276)	PDB respell AlertToPlayer(CThingAICreature&) + typed GetCreature; named scoped action	126: pure esi/edi swap (this esi vs retail edi). Named action fixes the swap but pushes 0 after the ctor (+7 bytes)
+00927f30	IMPROVED	120->18 (lb=18 a=258 d=18)	LowerBound stand-in (win); place pointer local; reached at top	18: reached byte slot + retry count register
+0090e5d0	HELD	a=284 b=284 c=303 d=314 e=314	gossip if/else; gossip ?:; message-query block scope (frame 0x168); partial scopes	284: frame 0x178 v 0x170 + own gossip component in ebp (retail frame) + xor ebx zero register + query locals order
+0095e430	RELOCATION_MATCH	a=17 b=3 c=17 d=22 e=3 f=17 g=17 h=3 i=0	CThing::IsDead() const bool accessor (PDB) + nested if-return-true (win)	-
+00946330	RELOCATION_MATCH	a=12 b=14 c=12 d=8 e=0	CThing::IsDead() const bool accessor (PDB) in the && chain (win)	-
+00919ae0	IMPROVED	40->19 (cp=40 a=40 b=40 d=19 e=21 f=19)	CCountedPointer header (neutral); CThing::IsDead() accessor (win); participant locals	19: participant loop *it register (ebx vs ecx->ebx), pad shift
+008f7860	HELD	a=27 b=25 c=27 d=49	Dead bit-field IsDead (PDB); split true exits; ?: IsDead; nested enabled block	25-27: exit layout (retail movie-sequence true in its own block, constants 2/1 in cl/al)
+008f58c0	RELOCATION_MATCH	a=18 b=4 c=8 e=18 f=4 g=4 i=0 j=16	corner copies of the centre adjusted in place, BR stored first (win)	-
+008dd7e0	HELD	a=36 b=43 c=12 i=8 j=8	corner-ctor box; direct box exprs; box(lower,upper); in-place corner copies (x2)	2 lines: box MinX store scheduled after add ebp,eax (retail right after mov edx,esi); size equal 744
+00924880	RELOCATION_MATCH	a=0 b=0	CThing::IsDead() const bool accessor (PDB) in IsTargetAlive (win)	-
+008b96a0	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+008b9740	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+008b98d0	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+008b9a60	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+008b9bf0	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+008b7350	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+009647c0	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+00954220	RELOCATION_MATCH	id=0	CThing::IsDead() const bool accessor (PDB) for the +0x91 dead test (win)	-
+008d90b0	RELOCATION_MATCH	lb=40 a=52 b=40 c=0 e=SRC_FAIL	LowerBound stand-in + kick distance block scope + named brain def index (win)	-
+008cad50	IMPROVED	20->8 (id=8 a=8 b=8 c=8 d=8 e=8 f=46)	CThing::IsDead() (win); cross operand orders; sequenced cross; decl order	8: cross-product fmul operand order
+009713e0	IMPROVED	40->18 (id=18)	CThing::IsDead() (win); block-scoped CDefPointer local for the speech fetch	18: see differ grade
+008cdd40	IMPROVED	52->26 (id=26)	CThing::IsDead() (win); same-TU LowerBound stand-in, non-const and const copies (=)	26: see differ grade
+008e16a0	IMPROVED	64->42 (id=42)	CThing::IsDead() (win); end SVectorParam built as a named local before the parameters ctor (554v552)	42: see differ grade
+0096ec10	IMPROVED	23->18 (a=18 b=23 c=23 d=23 e=21)	LowerBound count-before-first (win); first-relative count; start copy; diameter inline/range local	18: diameter fmul scheduling + temp regs
+008c61c0	HELD	a=146 b=146 c=145(492v457) d=163	C3DVector copy ctor; difference local; named-return Normalised (two forms)	146: frame 0x40 v 0x4c (retail gives difference/normalised temp/direction separate slots) + register allocation
+00894500	HELD	cp=137 a=141 b=139	local CCountedPointer moved onto engine/CCountedPointer.h (neutral, hdr/); def before init; player local	137: frame 0x3c v 0x34, edi push not shrink-wrapped (retail pushes edi inside the IsAlive branch), default-arg CCharString temps homed in dead slots
+00929020	IMPROVED	43->9 (r=43 a=9 b=48 c=9 d=13 e=9)	CWorld::GetFrame respell; cages reference (win); GetInterface ternary; length-squared orders	9: villager eax->ecx copy (+2 bytes), x87 sum order
+00940310	HELD	lb=30 a=42 b=42 c=30	LowerBound stand-in (=); reached at top; if-form GetInterface	30: villager component eax->ecx copy missing, crop/key frame slot sharing
+00949380	HELD	lb=56 id=56 a=59(511v498) b=56	LowerBound stand-in, IsDead (pre-screens, =); no creature local; scratchpad declared early	56: register permutation (creature esi vs edi, talk edi vs ebp, edi push placement); size 497v498
+00929340	IMPROVED	77->63 (a=63 b=108 c=59(510v507) d=SRC_FAIL)	LookAt sum operand order (win); orientation ref; players load/store	63: frame 0x110 v 0x120, inc folding, temps
+008cb250	HELD	lb=132 id=132 a=132 b=132	LowerBound stand-in, IsDead (pre-screens); named condition bool; ?: condition	132: condition bool bl vs CDefPointer temp flag (memory), +0x31 key frame word, frame 0x34 v 0x38
+00973dc0	HELD	lb=51 id=51 a=53 b=53	LowerBound stand-in, IsDead (pre-screens); 008E5D40 Normalise form; pointer-add operator[]	51: Pillars[i] address add vs lea, squared-length order, dead Z scale, SetPosition vcall register
+008c12d0	IMPROVED	172->134 (id=134 813v808; a=174)	CThing::IsDead() (lines win, +5 bytes); def before boss	134: register allocation + frame 0x38 v 0x3c
+008af990	HELD	a=84	events zeroed by a separate store	84: flags/zero register pair (al/ecx vs cl/eax) and following temp registers; ~30 earlier variants
+009582d0	HELD	id=10 b=58 c=10 d=10 e=10	IsDead accessor (pre-screen); approach assigned before the loop; ==0 test; uchar mask; bitfield IsDead via union	10 (4 real): VC hoists mov bl,1 (approach) and reuses bl for the home dead test (retail test byte ptr [eax+91h],1); size 1097v1098
+009552c0	HELD	a=200 b=186(861v861)	def used directly (no d copy); proximity from the spellRange local (size equal, =lines)	185: def frame word reuse for the jittered proximity, move-result test placement, register plan
+0093fcd0	HELD	lb=181 id=181 a=181 b=215	LowerBound stand-in, IsDead (pre-screens); result declared after seen; task pointer local	181: esi/edi task vs village/perception swap, frame 0x178 v 0x180, task position copies via add eax,10h, looks-loop shape
+008edc70	HELD	a=21(68v85) b=23 c=29	merged bool test; ?: condition; early-return form (all merge the duplicated tails)	9: Index loaded into ecx before the bool test then mov eax,ecx (position copy) in retail; size 83v85
+008eebe0	HELD	a=3 b=25	named angular limit; if-form FrictionScale (plus ~12 earlier forms)	3 (1 real): dead-spin cleanup fstp st(1) vs retail fxch st(1); fstp st(0); size 129v131
+0092f240	HELD	lb=47 a=50 b=50 fs(/Oa)=148(193v193)	LowerBound stand-in (pre-screen); named filters (both orders)	47: filter build scheduling (Bind2.PFirst before the IsOriginatedByThing ctor), message in edi, bitset base eax vs ecx; size 195v193
+0090c670	HELD	lb=7 id=7 a=7 c=7 d=7	ternary GetInterfaceV; bool-returning GetInterfaceV; byte has-bit form	7 (2 real): the villager lookup merges into eax then mov ecx,eax for the fastcall (retail merges into ecx) -- same pattern as 00929020, inverse of 00940310
+008fcc60	IMPROVED	25->24 (a=25 b=24 c=27 d=36)	memberwise target copy (size fix); copy-init; sequenced length; float-local copies	24: copy load/store pairing, length order
+0095d0e0	HELD	lb=13 id=13 a=13 b=13	pre-screens; member-first store; chained assignment	13: in the shot loop the creation frame in edx + eax copy, filter temp stored after both pushes (retail); size 283v285
+00924930	RELOCATION_MATCH	lb=27 id=18 a=0	CThing::IsDead() + LowerBound stand-in (win)	-
+0093d270	HELD	lb=5 id=5 a=35 b=5	pre-screens; operator= via item local; __forceinline operator=	5 (2 real): &PEnemy lea hoisted above the temporary's GetPItem (retail lea ecx after); size 297v295
+008b6ad0	IMPROVED	25->17 (a=21 b=17 c=17 d=17)	r*=0.5f split (win); sequenced sum; product forms	17: Y product operand form, pop placement; 342v344
+009397e0	HELD	base7 cp7 a7 b52 c7 d7 e7	cpmove,GetFrame-respell,operand-order,split-local	sit-delay minimum folded as memory operand (retail ecx load after call)
+00946400	IMPROVED	base64 a58 b64 c64 d93 e84 f97	named-local-in-operator=,scoped-temp,IsDead,return-form	ebx/ebp swap; arg load order
+008d9b00	HELD	base45 a45 b45 c45 d51 e46 f45 g45	fp-helper-inline,const-ref-param,double-div,float-locals,compound-div	fps fild+fdivp vs folded fidiv; 0xc frame dead slot
+0095e0b0	IMPROVED	base61 a57 b57 c57	retail-sizeof,IsDead,named-ref	esi/edi swap
+00935580	HELD	base14 a14 b14 c14 d14 e14	008E5D40-normalise-form,r*=0.5-split,Dot-arg-order,Z=r*Z,Dot-Z-operand-order	x87 r kept on stack (fst/fmul st2) vs stored; Dot Z operand order (canonicalised)
+00985440	IMPROVED	base13 a13 b10 c10 d10 e10 f10 g10 h10	named-creature-local,decl-order,split-init	hero zero store scheduled before presence load (4 bytes)
+008db810	HELD	base71 a75 b75 c71 d71	decl-placement,direction-temp-inline,source-local	beam end/hit pos frame slot swap; eax->ecx copy of the tools source
+008f18c0	IMPROVED	base285 a285 b285 c-fail d127 e135 f285 g139 h152	cross-member-alias-form,operand-order,pointer-form,ToLocal-order	cross-term fld order; slot homes
+008e03b0	HELD	base31 a66 b66 c88	no-guard-local(*it reload),late-guard-local,named-push-temp	guard hoisted into esi vs retail *it reloads; fixing it re-caches &SpeedTargets in ebx
+0089da70	IMPROVED	base70 a50 b70 c70 d50 f50	no-byte-local-CSE,split-init,IsDead,appearance-local	loop eax/ecx roles
+00971ed0	IMPROVED	base121 a98 b131 c67 d10 e10 f10 g10	copy-ctor-member-init,pos-local,forceinline-random,IsDead,Random-split	frame 0x1c v 0x18 dead slot
+0091c220	HELD	base97 a134 b97 c134 d129 e136 f134	filter-temp-forms,decl-order,local-copies	IsNot homes: retail creature temp in dead param slot, target copied to frame local
+00935c40	HELD	base52 a52 b52 c50	named-filter/compare,scoped-search,named-compare-only	frame slot order of search temps vs well; well reloaded from slot in retail
+008da410	HELD	base49 a49 b102	IsDead,if-form-GetSubDef	this/effect register roles (ebp/edi) and vtable in ebx
+00922010	IMPROVED	base261 a217 b217	lb-standin,brain-local	this/brain/walk register homes; frame
+00977e00	IMPROVED	base139 a139 b133 c133	retail-sizeof,scoped-boss	def zero store order; key/boss slots
+00949580	IMPROVED	base122 a77 b122 c122 d71 e86 f77	HasTC-word-local,named-forward-copy,assign-form,NRV-op+	frame +4, look slots
+0092b900	IMPROVED	base57 i29 a23 b23 c17 d16 e16 f16	IsDead,lb-standin,retail-sizeof,normalise-accumulate,forward-ref,Dot-order	dot term schedule; atan2 operand base reg
+0092d1f0	IMPROVED	base57 a55 ib55 b55 c55 d44	pad-from-sizeof,if-else-tail,forward-copy-forms,IsDead	forward copy x87 form; reg swaps
+0093f3c0	HELD	base177 a177 b225 c225	by-value-scale,facing-ref	ebx/ebp role swap; frame 0x160 v 0x150
+0096ae50	IMPROVED	base25 cp22 d22 g20(251) h42	cpmove,IsDead,target-local,named-action	arg scheduling of the counted pointer copy
+00987040	HELD	base22 a22 b30 c22 d23(376) e25(357) f21(380)	normalise-split/accumulate/x*r,return-forms	x87 schedule of scaled dot (retail keeps r, pops last); return block order
+008d5300	HELD	base94 b73(388) c96	no-creature-local,inline-owner	&PCreature hoisted into ebp (retail spills this, re-forms this+8)
+0092ace0	HELD	base42 a42 b42 c53(385) d44	named-move-result,scale-operand-order,one-expression-scale,nested-success	fail-block layout; in-place scale schedule
+008e8e50	HELD	base15 a15 b15	magnitude-local,const-speed (+~50 earlier)	fsqrt result stored at once and reloaded vs retail kept under dead loads
+009486d0	HELD	base42 a42 c116 d42	store-order,chained-store,IsDead	-1 hoisted into ebp (3 uses)
+009363d0	HELD	base10 a10 b10 c93 d10	it-copy-after-len,first-local,STLport-distance/advance forms	lower_bound first loaded to eax then copied to esi (coalesced in ours)
+0092ea90	HELD	base71 a68(448) b71 c71 d71 e86	normalise-sum-orders,free-operator-,component-refs	direction computed X,Y,Z vs retail Z,Y,X (X left on x87)
+00963880	IMPROVED	base30 a20 b30 c30 e24 f28 g32	normalise-008E5D40-form,r*=0.5,mantissa-local,sum-orders	x87 term order in 2nd normalise
+00971cd0	HELD	base19 a87 b87 c19	decl-order-me-first,GetLength-order	Jack/target register homes (ebp/ebx shrink-wrap)
+008d7f10	HELD	base43 a43 b43 c47	scoped-flash-slot,decl-orders	flash sub-def slot 18h vs retail 14h; emitter edi/ebx
+0096e830	IMPROVED	base42 a38 b47 c43 d37(550) e37(550)	normalise-form,no-combat-local,radius-doubling	r kept on x87 in Z=0 normalise; eax->ecx
+00918b90	HELD	base164 a164(814) b161(815)	fps-local-before-call,no-null-check-def-release	frame 0x38 v 0x34; def release null check; size grows with fps local
+00929f10	MATCH	base9 cp9 a0	cpmove,HasTC-byte-mask-locals	-
+00939dd0	HELD	base27 a27 b27 c27	pragma-optimize-a,Bind2-ctor-body-order,named-type-filter	invariant &IsOfType store hoisted above loop in retail (cmdline /Oa reproduces; pragma does not)
+0093dfc0	MATCH	base4 a10 b0	flat-early-returns	-
+0096eb40	MATCH	base4 b8 c18 d8 e0	flat-early-returns,scoped-filter-block	-
+00958b20	IMPROVED	base79 a74 b79 c57 d57	named-local-decrement,IsThingOfType-0x744D00-shape,IsDead	esi/edi role swap
+0096a260	IMPROVED	base8 a11 b11 c6 d6 e6 f6	bool-ternary,!=0,named-filter,decl-order	shot/filter slot swap
+00914d80	HELD	base68 a82 b82 c82 d82	no-init-IsNot-ctor,decl-placements	frame +4 (empty isChild/kid slot); ebx/ebp roles
+0091b570	IMPROVED	base113 a112(499) b170	named-iterators,xy-locals	this edi/esi; frame +4; sentinel reload
+00895190	HELD	base74 a74 b74	defName-ref-local,this-local	this kept in ebp vs retail spilled (push ecx) with &itemDefName in ebp
+009104d0	HELD	base44 a58(165) b58(165)	random-inline-forms,size-in-condition	esi/edi/ebp role rotation for zero/count/first
+00926690	MATCH	base32 a32 b0	named-item-local-in-copy-ctor-and-operator=	-
+008e28f0	HELD	base9 a11 b12(371) c9	inverted-compare,reversed-compare,const-duration	duration subtraction sunk below the elapsed test
+0094fc00	HELD	base33 a87 b41 c41 ni33 id33	facing-local,const-ref-operator+,explicit-copy,named-item,IsDead	GetFacing return temp copy (fld x,y + z dword) into the sum operand slot
+0093ab70	HELD	base138 a138 b138	HasTC-word-local,IsDead	hasMember byte spill + frame 0x30; best/head register roles
+0089ce70	HELD	base112 a144(607) b102(626) c134(623) d112 e112	split-validity-exits,normalise-form,LengthSquared-orders	x87 schedule of squares/normalise; shared false exit
+0097bb30	IMPROVED	base103 ni77 a85 b93	named-item-local,traps-decl-placement	name slot; trap count/TrapThings registers
+00920a00	HELD	base121 a121 b121 c121 ni121	IsDead-bitfield/byte-models,named-item	constant 1 hoisted into bl for the dead tests; frame packing 0x40 v 0x34
+00936c70	HELD	base214 a220 b211(1029) id210(1043) idlb218 ni214	box-xy-order,no-end-local,IsDead,lb,named-item	list end/iterator and this/&PCorpse register roles; frame +4
+009756b0	HELD	base214 cp214 b226 id232	cpmove,no-def-alias,IsDead	register roles; frame +8
+008efb00	HELD	base116 a128 b124 lb136 ni116	copy-ctor,cross-alias-form,lb,named-item	node/def frame+ebx roles; position copy form
+00984f60	HELD	base142 a141(852) b142 lb169	nav-zero-init,creature-local,lb	nav register-promoted (retail homes at [esp+14h])
+0091f140	HELD	base185 a215(952) b185	visited-decl-placement	zero register rematerialised at loop head; frame slot homes
+0094dd90	IMPROVED	base331 a323 b331	retail-sizeof-PlayCombatAnimation,StabThing-sizeof	block placement; x87 slots
+0090f110	MATCH	base21 a0	IsThingOfType-0x744D00-shape	-
+0091c6a0	IMPROVED	base116 a76 b76 c127 d126	lb-standin,IsDead,summon-chain-forms	slot order; BeenHit register; size +10
+0089f300	HELD	base87 cp87 a98 b87	cpmove,thing-reuse,const-thing	this/handle register roles
+00896b60	HELD	base2 a2 b2 c99(454)	if-else,tutorial-return,showScreen-first	block layout (retail shared epilogue after quest-card path, long jumps)
+0095fb40	HELD	base22 a44 b44 c44 d67	named-item op=,scoped IP local,both,key-by-param	frame slot sharing (key/IP temp/loop offset in one slot; 0x24 vs 0x20)
+00935e40	HELD	base20 a22 b150(396)	named CSoundPair local,optimize-s	lower_bound eax->esi copy; zero args in a shared xor ecx register (retail) vs push 0 immediates
+0089feb0	HELD	base88 a98(560) b98(560)	preloaded-zero criminalThing,decl order	register allocation: lane caches victim in ebx + zero reg in ebp, retail re-reads victim, lazy pushes
+0092cda0	HELD	base54 a54 b54 c54	decl order modes-first,sleep/modes adjacent,scoped bed lookup	frame slot order (lookup key homes +4 vs retail) and fallback operator= order
+0094d020	MATCH	base23 a23 b14 c14 d7 e7 f4 g0	out-param-GetInterface,named-call-result,shared-tail-continue,named-item-op=	-
+0095ef80	HELD	base191 a326 b SRC_FAIL c190(1516)	inline distance terms,functor scope,named candidate item	frame 0x38 v 0x30 (8 extra bytes), this register in second half (ebx v ebp), 0x20000 mask not CSEd, reaction loop register roles
+00922860	HELD	base375 a376 b375	named delta vector,decl order	frame 0x100 v 0xf0: retail shares TestTC bools/key/best-distance slots
+0088bf30	IMPROVED	base41 a41 b41 c30(550) d30	nested-length-test,ternary,SameText-helper,non-inline-helper	disabled-path dtor sharing; Dirty=true tail-duplication into both push_back arms
+00951070	HELD	base69 h69 a81 b81 c131(968)	cpmove(neutral),no-bool-local,success-first,marker-copy	frame +12 bytes in retail, success tail after terminate return (own route free + def release), first virtual call ecx load
+0096df50	HELD	base305 a305 b345	decl-order modes/targeting first,no creature local	creature in ebx v edi (register roles), frame slot order, early-exit path shape
+0096dbc0	IMPROVED	base61 id57 h372 i263 a57 b122	IsDead,cpmove(ctor inlines),inline_depth0,ternary-new,lookup-late	register roles this/map/&PTarget; first-arm new spill to 2nd frame word
+008fa660	HELD	base33 a33 b54 c61 d33	user copy ctor,assign-after-default,named first force,free operator-	x87 scheduling: retail first negated force temp with Z copied through frame, X/Y kept on FPU stack
+00958840	IMPROVED	base69 a71 b66(723) c69 d112	raw-bit+lookup,out-param-unchecked,byte-present GetInterface,no-copy-ctor	0x4F present byte to frame with out var in eax; argument register picks
+00974770	HELD	base53 a74(813) b118(811) c53	temp IP assign,uninit out-pointers,scoped CalcAndLookup string	frame-slot packing (+8 bytes): retail shares +0x10/+0x14 slots across strings/def-out/emitter/keys/item
+00950cf0	IMPROVED	base75 a69 b124 c68(892)	per-arm GetPItem ternary,if-else select,offset-first	prologue pushes, frame 0x34 v 0x38, fst heading, marker register pair
+009334f0	HELD	base329 a329 b329	drop unused present bool,fps/lastReact order	register roles (&PHero edi, bribe window ebx/ebp) and one extra frame slot
+008c2ad0	HELD	base20 a31 b20(379) c31 d31	header-shape release,no fx local,both,object-side Release	GetSubDef result into esi directly (ours eax/mem), def release register ecx v eax
+008c6860	IMPROVED	base144 a142(489) b142 c142	ability out-handle manual release,scoped shot/melee,load-dec-store release	shot def in ebp with its out slot reused (frame 0x10 v 0x18)
+00918640	HELD	base88 a104 b88 c88	vector after building,forceinline ctor/dtor,operator delete free	early-return vector free test not folded; this esi v ebx; zero reg
+00972cc0	IMPROVED	base151 id83 h83 a83 b69(611)	IsDead,cpmove,named item,no align(8)	zero reg + vptr reg materialised inside the loop; OR 0x20/4 forms swapped
+00972990	IMPROVED	base97 a97 b SRC_FAIL c89	shield-first decl,shield test outside,function-scope second search	frame 0x2c v 0x30 slot sharing
+008956b0	HELD	base51 a51 b51 c51	hero decl first,target decl early,reversed delta	register allocation this/thing/hero (edi/ebx/edi) and lazy ebx push; XY delta load order
+0094f480	HELD	base76 f81(/Oa,435) a76 b76	/Oa flag,named creature local,explicit compares	register colouring this=ebp/creature=ebx swapped; duplicated first early-out epilogue
+009392a0	HELD	base80 a80 b80 c80	derived virtual dtor,derived user ctor,both	dropped CAnimFilterBase vtable reset of the filter temporary; frame 4 bytes smaller (cpmove not applied: retail calls CCountedPointer<CModeSitBase> ctor/copy/dtor out of line, the header inlines them)
+008ef520	IMPROVED	base247 a247 b242(999) c238(978) d236(979)	scalar-right product,per-component integrate,C2DVector copy ctor,both	frame 0x44 v 0x34 (contact temporaries), coin-pair loop registers
+0091ec30	HELD	base83 a83 b95 c83	named creature in unsheath arm,positive carrying test,bool decl order	PBrain load hoisted above the carrying branch (retail re-reads per arm); flag byte slots swapped
+00948880	IMPROVED	base113 a63(1185) b113 c113	direct return of the || chain,?true:false flag,function-scope flag	shout flag byte + sete in retail; action temporary slot; register picks
+00955620	IMPROVED	base337 h337 a335(1644) b337 c335	cpmove,named creature def before CDefPointer,named creature for 0xce,byte-ref present	0xce present byte slot + creature register; lower_bound register roles; x87 pop order
+0096a3c0	IMPROVED	base200 l162 m162(820) a176(812)	lb stand-in,IsDead+lb,navigation lookup per try	register allocation; navigation pointer frame reload per try; 52 bytes short
+0093b9f0	IMPROVED	base288 a222(1083) b239(1056) c228(1067)	C3DVector copy ctor,const& targets,bool decl order	loop entry duplication, perceive/target slots, speech-set accessor form
+0094a3b0	IMPROVED	base96 m62 a64 b60(810) c60	lb stand-in,drink label,sitIdle label,label at first site	register roles, 0xcf key frame slot, exit block sharing
+00969e70	IMPROVED	base124 a124 b124 c100	vector-after-pos,alloc proxy,named creature first	zero register for the vector; position components loaded first
+00951d60	IMPROVED	base124 a149 b113 c111(613)	GetSubDef out-param,forceinline op+,return-ctor op+	zero register, def second frame home, frame size
+00896390	IMPROVED	base134 a105(709) b105	shared fail label,PDB CTCOwnedEntity pack(1)	this/owner register roles, hoisted 0x80000 mask, action temporary slot
+008f6050	HELD	base27 a27 b27 c27	0.0f height,post-increment loops+cast,integer height store	constant register choice (retail zero in ecx for guards and stores, 0xff immediate; lane hoists 0xff into cl)
+008f45f0	HELD	base37 a37 b51 c51	CrossProduct alias form,set body assignment forward-first,both	x87: retail keeps the cross product components on the stack (up Z through a reused temp slot); ours stores each through the frame
+00938380	IMPROVED	base173 h112 a112 b108(489)	cpmove,shift test,seat flag local	local slot order/frame, filter vtable placement, creature per branch, release shape
+00940960	IMPROVED	base79 a75 b71 c63(432)	retail sizeof UseObject,owner accessor,forceinline IsTaskValid	register roles &PTask/village/result
+008a8260	IMPROVED	base85 a83(457) b119 c76(473)	bool& helper raw ptr,both blocks,IP const& helper list loop	found homed in frame byte in summoner block; list loop shape
+0093ef30	IMPROVED	base188 a184(1175) b188	implicit C3DVector copy,body-assigned compare pos	frame 0x74 v 0x6c slot layout
+009663a0	HELD	base121 a121 b121 c119	orientation-first decl,claim decl first,flag store before look copy	frame layout (flag/key/claim/temp-dtor flags/look vector slots), 0xf8 v 0x100
+009101c0	HELD	base169 a169 b169 c169	explicit string block,scoped search,CrossProduct alias form	frame 0x50 v 0x4c (retail reuses the CCharString slot for marker), move loop shape
+00956060	HELD	base202 a259(804) b202 c306	Random(size()),for-break loop,pointer empty tests	argument evaluation order, radius spill, Random range test dropped (retail keeps test edi,edi), nav reload
+00926ed0	HELD	base165 a164 b165 c165	== 0 long ternary,explicit compares,done-flag loop	this ebx v ebp (whole-function roles), first dead exit placement, wait condition neg/sbb/inc form
+0091b3a0	IMPROVED	base118 m112(472) a117(463) b112	lb stand-in,unnamed action temp,decl order	register roles this/map, late edi push, frame slots
+008a7a70	IMPROVED	base117 f96(738,/Oa) a108 b96	/Oa flag,unnamed hero 2D,const& source copy	frame 0x38 v 0x30 (one extra slot)
+0094f180	IMPROVED	base119 a93(738) b90(736)	shared fail label,inline attacker accessor	frame +4 (one extra local), vector math slots
+009341c0	IMPROVED	base81 m81 a73(567) b101 c79	IsDead,!(<=) compare,target by ref,component delta	frame +4; first reach test FPU spill
+009692c0	HELD	base41 a41 b41 c44(419)	positive condition,flat if,goto into first fail block	block placement: retail keeps the first fail block (own epilogue, before the late ebx/ebp/edi pushes) as fall-through; VC7.1 sinks it
+008f0eb0	HELD	base105 a110(492) b110 c110	object-side Release,local-copy release,scoped body	separate release+ret for the early return (ours merges into the common tail), def in ebp and its slot reused for height
+008f70f0	IMPROVED	base137 a57(144) b61 c78(114)	index-first decl,continue form,result+break	cursor/index registers (eax/edx + mov al,dl), duplicated store tails
+008dc720	HELD	base111 ni109 a119 b111	named item (pre-screen),effects decl late,effectType first	zero register in ebp (lane) v immediates (retail), def pointer cached in ebp
+009735d0	IMPROVED	base128 h137(604) i137 a126 b113(684)	cpmove(not neutral),xyz named squares,yzx named squares	x87 spill slots of squares; header move not neutral
+0092a3f0	HELD	base244 a261 b274	proximity local,named dummy position	pairing loop block placement (first-to-arrive block sunk), Random%10+10 folding, s_pWaitingApprentice register
+00980bd0	HELD	base86 a86 b86	goto cold return labels,for-break block	cross-jumped cold return blocks (retail) v inline epilogues; second-half register roles
+00932b50	HELD	base233 a233 b233	forceinline vector ops,unnamed away+pos sum	frame 0x68 v 0x48 (vector temporaries), x87 2D-length/normalise schedule, fps*5 folding
+008cf7d0	HELD	base55 a67 b63 c68(282)	fps local,nested Interrupt test,def+fps locals before test	Interrupt compared with a shared ebx zero, fps/def read after the Interrupt test and before the frame call (next: nested if with fps/def locals inside, one OutOf tail)
+0097d6f0	HELD	base47 a47 c47 h47	user operator=,ternary init,cpmove(neutral)	tail-merged position copies; creature re-read before setg
+00986210	IMPROVED	r495,r2 451,s496,t454/166,u451	retail_asm,/Oy-,fail-label	frame slot packing 0x5c vs 0x70; radius in memory vs edi
+009130d0	HELD	a976/178,b985/244,c976/182	named size local,iterator operator-	register roles: retail this in edi, keeps start/finish._M_cur in ebp/esi and hoists path.size() (spill [esp+0x20]) out of the t loop; ours recomputes per step and enters outer loop via jmp
+00929fc0	HELD	a265/60,b265/60,c265/60	named found,forceinline clear,unfolded GFRandom	retail inlines ~list at the scope end but calls 0x006FE660 out of line on the found path (inline budget site choice); GFRandom's zero-range arm folded (xor edx before test); ebx shrink-wrap
+00947eb0	HELD	e265/60,f208/58	expanded GFRandom,do-while pick	~list site choice: for-form inlines both sites, do-while form calls 0x00792240 at both; retail inlines only the scope end (also 00929fc0 STLport _List_base layering: no change)
+00966af0	IMPROVED	a506/137,b506/137,c506/137	inline dtor body	~list site choice (retail inlines only first exit)
+0090cc40	IMPROVED	a974/257,b989/55,c997/14,d997/10,e1001/76,f999/11,g999/11	scoped block,named manager,named fps,temp binder arg	3 scheduling spots (10 bytes)
+00971b60	HELD	a392/49,b392/47,c392/47,d392/47,e392/47,f392/47,g416/63	in-memory r,operator*=,named products,ctor assign	x87: retail pops the Newton reciprocal to [esp+0xc] and multiplies x/y/z from memory, ours fst+fmul st(1); *20+centre products spilled
+0096b100	HELD	a1293/179,b1293/179,c1293/179	bool out-param GetInterface,decl order	frame slots (retail shares the 0xad key with boss at [esp+0xc]), ebx/ebp role swap, x87 fstp placement
+0096cb40	IMPROVED	a560/29,b541/30,c560/29	implicit conversion temp,split early returns,if/else body	pre-push exit placement; def pointer register
+00930480	IMPROVED	a1489/232,b1497/230,c1489/292,d1487/171	scoped named filter+manager	register roles; TestTC narrowing; x87
+0092ee10	IMPROVED	n1030/160,a SRC_FAIL(manager reused by RemoveMessage),b1030/160	named item,filter-first order	register roles: this edi v ebp, 0x10 in ebp, manager spill
+0092bf50	IMPROVED	a289/68,b289/68,c289/68,d289/68	C3DVector user copy ctor,scoped named filter,named away	spill slot sharing (frame 0x28 v 0x24); building in edi
+0093ea90	IMPROVED	a421/110,b421/106,c471/64,d471/68,e452/30,f452/30,g SRC_FAIL	inline owner accessor,named creature,forceinline IsTaskValid,AIAction result statement	scheduling: GetDummyObject this load, 2 reg picks
+00959800	HELD	a625/98,c625/96	list/filter declaration order	retail caches customers/nodes _M_start in edi/ebx across the random + IP calls (ours reloads from the frame: +30 bytes); slot order customers/nodes/area
+00959f80	IMPROVED	a812/235,b811/147,c747/117,d747/117	vector-algebra rotation,user copy ctor,do-while !(<)	x87 operand order; dead and-store; push placement
+00959bf0	IMPROVED	a736/163,b752/309,c736/163	vector-algebra rotation,user copy ctor,named movement	x87 temp slots; loop arg scheduling
+008fac30	IMPROVED	a481/129,b481/129,c335/99,d371/53,e371/53,f369/44,g370/36,h380/39,i370/31,j372/26,k372/12,l372/12,m382/25	vector operators,Length z-y-x,index loop,node-first ctor,named result,named manager	pos copy store scheduling vs malloc cleanup
+00909a00	HELD	a136/90,b136/90,c298/57,d136/90,e298/57	empty if,bool||true,goto arms,ternary,else arm	retail keeps a dead dot+fcomp/fnstsw (both arms return true) after the branch was merged late; every C++ form lets VC7.1 drop it; Newton r popped to memory
+00940bf0	IMPROVED	a1520/364,b1520/358	named length-squared in Length	register roles, slot offset +4, scheduling
+009810b0	HELD	a569/88,b569/78,c567/87,d569/78	Release() dtor,&& dtor,named def &&,unsigned DecRef	by-value CDefPointer release never gives retail's dec [ecx+4]; jne (reloads the param or load/dec/store); +46 bytes
+0097e380	HELD	h1240/299,a1240/299,b SRC_FAIL	CCountedPointer header move (neutral),decl order	register roles; navigation shares trackInteresting's frame word
+008fc050	HELD	a939/241,b935/230	implicit C3DVector copy,user dtor on intersection data	frame 0xC0 v 0xA8 (retail keeps more vector temporaries), this in esi without spill
+00955c90	HELD	a915/189,b934/203	zone switch,callee-destroyed IP param	register save placement (retail pushes ebp/edi before the early exit), look-at IP construction slot, nulling style release on both terminate paths
+008f10b0	IMPROVED	a466/177,b466/177,c438/172	scoped layout copy,assign-form copy ctor,in-place offset add	refcount register form; frame word sharing
+00941690	HELD	a550 b550 c550	address-taken has flag GetInterface; retry: __forceinline GetInterface, LowerBound key by const reference (both 550: the dead lookup is still deleted)	retail keeps a dead board GetInterface (has byte store + inline lower_bound loop, result unused); VC7.1 drops it in every form (dead-code family with 0x00909A00)
+0094d780	HELD	a SRC_FAIL(goto past init),b487/170	scoped weapon def,scoped perception	arg-slot homing: retail keeps every local in the dead argument slots with a fifth callee-saved register; VC7.1 RTM does not reproduce from this source
+00963a50	IMPROVED	a1633/314	C3DVector user copy ctor	frame slot order; block layout; register picks
+00962d50	IMPROVED	h1611/410(header neutral),c1567/333	CCountedPointer header move,C3DVector user copy ctor	x87 squared-term order; temporaries; block layout
+00943cf0	IMPROVED	a1575/202	if/else arms + shared false tail	this register (ebx v ebp + spill); list node slot
+0097c5e0	MATCHED	x RELOCATION_MATCH(308, true extent)	over-span true extent	-
+00988e80	IMPROVED	r952/229,s952/229	retail_asm SSE block,operand decl order	frame slot sharing; x87 fallback term order
+008b0b60	HELD	h505/244,f489/238,a368/171	CCPPointerInfo count block,full CCountedPointer header move,copy-init action	header move not neutral (retail calls the T* ctor 0x006EF6F0 out of line; local operator= model); this in esi v edi, zero hoisted into ebx, enum loop rotation
+008f1e30	IMPROVED	a677/134,d679/143,e676/140,c671/155	named card value local	ebx=0 constant register in retail (float zero stores via ebx, loop counter in frame) vs ours ebx=def/Suit; frame 0x38 v 0x34
+009456a0	IMPROVED	a953/170,b SRC_FAIL(dup vptr)	__forceinline Random	and esp,-8 aligned frame (8-aligned local unidentified); IP vtable constant CSE'd into ebx in retail
+008db030	RELOCATION_MATCH	1	graded over the true extent (166 bytes, ext.py); parked source unchanged	-
+0090ebe0	HELD	1	while/for loop shapes, event declared before the loop, faithful STLport _List_iterator_base (tried on twin 0090e3d0: 9 variants)	208v208: only the spill reload order at the loop's next-node join (retail reloads it [esp+10h] then this [esp+14h]; ours this first)
+00934e50	HELD	1	while/for loop shapes, event declared before the loop, faithful STLport _List_iterator_base (tried on twin 0090e3d0: 9 variants)	208v208: only the spill reload order at the loop's next-node join (retail reloads it [esp+10h] then this [esp+14h]; ours this first)
+0090e3d0	HELD	9	loop shapes (for/while/it++/hoisted it/event local/result+break), reversed compare, STLport 4.6 _List_iterator_base with free operator!=	208v208: only the spill reload order at the next-node join (retail esi=it then edi=this; ours edi then esi); everything else byte-equal
+0090f770	RELOCATION_MATCH	7	inline GetCreature() const accessor (lea from the loaded creature)	-
+0096ac20	HELD	3	memberwise __forceinline C3DVector copy ctor; named GetForward() local; offset folded into the landing expression	557v557: one scheduling move -- retail loads PBrain ([esi+4]) for the facing test between the 2nd and 3rd fstp of landing, ours right after the GetPosition call (the [eax*4] table load is a masked relocation)
+00978790	HELD	3	compare spellings (a > b inline, two named heuristics, ternary)	286v286: two scheduling moves -- retail loads b (ecx) before the fstp of heuristic A and pops esi before fnstsw; ours after
+0097abf0	HELD	2	named float result in GetHeuristic; named long exponent (twin 00978790: compare spellings)	286v286: same two scheduling moves as twin 0x00978790 (b loaded before the fstp; pop esi before fnstsw)
+0092d6f0	IMPROVED	10	PDB CWorld::GetFrame static + GetWorld; inline FramesSince(since, world) argument-order helper (fixed residue 1); two-success-block / else-if / !&& shapes; __forceinline IS_THING_ALIVE	198v198 (was 196v198): only mov ecx,edi above jne (hoist); the two-block form that hoists swaps esi/edi
+008eea80	MATCH	6	perpendicular of the (point - Pos) temporary instead of a named r local (x87 lifetime)	-
+008eeb40	IMPROVED	6	perp of the (point - Pos) temporary (dot product fixed); named arm/r locals in both orders; one-expression return	140v146 (was 144v146): the second arm is formed and spilled before the dot product in retail, after it in ours
+00894ec0	HELD	5	filter ctor body-assign / __forceinline / named filter locals; declared-only TC stand-ins (worse); user filter copy ctor	335v335: the 0x69 / 0xCC filter-type stores land after push &filter and after the ThingSearchTools load in ours (retail stores between lea and push); 2 masked literal pushes
+008a8af0	HELD	3	filter ctor body-assign; filter temporary in the call; filter declared before the found vector	366v366: the filter's map-number store and the ThingSearchTools load trade places around the found-vector push (same family as 0x00894EC0); 2 masked vtable stores
+00941900	HELD	3	__forceinline memberwise C3DVector copy ctor / operator= / both (all worse: 37-104 diff lines)	529v529: only the edx copy loads of the GetRight() temporary into HopscotchRightVec sit one x87 op later in retail (fstp tmp; fld; mov edx,tmp)
+00954740	HELD	4	inline GetCreature() const (named / repeated); split ifs; positive && form (+ earlier: template IS_THING_ALIVE, IsStillValid helper)	136v136: this/&PTargetThing colour swap (retail this=edi, &PTargetThing=esi) -- same family as 0x0095A420 and 0x0092D6F0's two-block form
+008af6e0	IMPROVED	6	?: true/false result (setne fixed, size now 150); goto-shared fail label; || guard; positive nesting	150v150 (was 145v150): block placement only -- retail keeps the first fail block inline after the first test
+00918a40	HELD	5	|| and ==false guards, ?: and if/return bool tails, HasTC+GetTC (named keeper and chained) instead of the out-param GetInterface	114v116: the keeper component goes through eax (mov eax,[eax+4] ; pop esi ; mov ecx,eax) and the shared xor al,al tail is placed at the end in retail
+0095c0b0	HELD	3	local declaration order (current before boss); named marker reference; STLport vector struct with size()/operator[]	307v307: register rotation only -- the loop-carried current boss gets esi in ours (retail edi) and the circle-marker start edi (retail esi)
+008e7f80	HELD	2	index declared at function scope; named element pointer (earlier: signed/unsigned index, named reference)	223v223: second loop index/element register swap (ours edi/ebp, retail ebp/edi)
+008b9dd0	HELD	5	named PCreature reference; inline HasTC member; this copy; pShield at function scope; early-return/implicit-temp form	125v125: this/&PCreature esi-edi colour swap (retail this=edi, &PCreature=esi)
+00935ad0	RELOCATION_MATCH	6	CThing::IsDead() const accessor inside IS_THING_ALIVE	
+008ef200	HELD	7	Radius member vs radius param in either/both statements; inline Sqr(float) / Sqr(const float&) in either/both	223v231: retail loads r,d up front (fld st(1); fmul st(2)) and reloads r*r for AIMass; VC7.1 here CSEs r*r (fdivrp)
+008da7a0	HELD	5	IsDead() accessor; ParentThing re-read (no local); named PDrainer reference; GetParentThing accessor; state not in a local (earlier: if/else-if, switch)	227v227: this/&PDrainer ebx-edi colour swap, retail pushes edi after the state test
+00926060	HELD	5	for(;;) break/return; while(Play==2){if(DoNothing!=4)...}; for(;;) with continue; inline SpeakAndWait helper (worse 350); earlier goto do-while	387v386: retail speech loop not rotated (one PlayAISpeech at aligned head, private Terminate tail); lane rotates it
+0096a8b0	HELD	7	IsDead accessor; traps[i] re-indexed (reproduces retail's edx test + mov ebx,edx copy but re-colours the frame, 556); reference operator[]; IS_THING_ALIVE(const CThing*); GetCreature accessor; filter after pos	536v542: loop element held in ebx directly (retail tests in edx, copies to ebx; je near); filter-index store scheduled after PCreature load
+0092afe0	RELOCATION_MATCH	8	function-local static for the 0x013BB6B4 radius; tail as if(!=2) return false; return true	
+009210a0	HELD	6	GetCreature accessor; IsDead accessor; creature local dropped (this->edi right but creature not preloaded, 282); CThing* helper; creature declared at function scope; named enemy position	290v290: this/creature ebx-edi colour swap (retail this=edi, creature=ebx pushed in-branch)
+00911a90	HELD	5	locals declared before the creature; GetInterfaceT on m_interfaces direct (385, worse); last cached; GetCreature accessor; radius local (397)	391v391: creature/interface-map esi-edi colour swap in the first half (retail creature=esi)
+008a8010	HELD	5	box stores in memory order; r+x commuted; in-place x+=r/y+=r; C2DBoxI(C2DCoordI centre, halfSize) ctor; named centre coord (earlier: ctor box, body box, one-ternary find)	219v218: box arithmetic scheduling (retail add in place, MinY store after first push)
+0093aa40	HELD	7	const _M_node; named sentinel; /Oa (304); named first node; hand-inlined count loop; direct AutoPlaceNear return	306v298: retail keeps the list sentinel in esi copy-to-free (seed in ebp); ours rematerialises it (creature takes esi)
+00968fa0	HELD	5	tapName before search (60); named filter (54); named centre; for-scoped draws; deadline/tapAnimation decl order	788v788: frame slots 0x14/0x18 swapped (retail: filter/key/draws low, tapName/string temps high)
+008930f0	HELD	5	failure-first return; IsDead accessor; both; IS_THING_ALIVE(const CThing*) helper; nested alive if	186v186: result blocks in opposite order (retail found-block last) + filter-setup register rotation (edx v ecx)
+008a9880	IMPROVED	7	named record local fixes the frame alignment (45->31); index-only, while form, named thing, pack(1) on the pointer only	347v363: zero constant register (edi v ebx) and unaligned loop head
+0090bd40	IMPROVED	6	named look-target local (50->26); index/pos decl first; member-wise operator+ (109); reached at top; points before bench	399v399: frame slot order of the spilled presence bool / points / key-index / reached
+009216e0	HELD	3	const GetInterface(T**) out-pointer for the hero lookup; *&followed assignment; plain-inline template (357, not inlined)	382v394: followed preset is enregistered (xor edi) where retail keeps it in the shared key slot; this esi v edi
+00970df0	IMPROVED	6	IsCoverFrom away by const reference (70->44); named filter local (64, frame 0x44); named away (92); NRVO operator-; direct Bind2 ctor	307v307: frame 0x58 v 0x50, Bind2 pair not sharing the away temporary slot
+009122a0	HELD	2	operator*(const float&) (390v390 but scalars hoisted, nd 149); ungrouped (1-t)(1-t) (414) (earlier: NRVO/ctor operators, named (1-t), by-ref factor)	358v390: retail spills (1-t)^2 to the dead t slot and reloads (1-t) for the P1 term; ours keeps both on the x87 stack
+0092cb30	HELD	3	IsDead accessor + nested IS_THING_ALIVE; GetTC for the trespass flag; unsigned char flags	610v610: scratch register choice (retail eax/cl for component+flag, ecx/al ours; ecx v edx for the brain reload)
+008af500	HELD	3	named iterator (236); TSpeechGroupInfo& reference (234); operator* form (no change)	235v235: &PCurrentTalker/&CurrentTalkerTextGroupIndex esi-edi swap; iterator node loaded early into ebx (retail reads the hidden-pointer temp after _ftol)
+00944300	HELD	5	crate as pointer; PCrate direct; villager scoped in loop; && loop condition; for(;;) break	344v354: retail hoists &PCrate into ebp (this spilled) and aligns both loop heads; lane re-forms lea [ebp+1Ch]
+009478a0	IMPROVED	6	runnable = !near fall-through (74->37); int near; return !(cmp); runnable = !(cmp); if/return; null return runnable	386v399: near-test epilogues and the PFoodHall-null exit placement
+0091e270	IMPROVED	4	enemy before creature (71); range*range < distSq (67); no named locals (135); !(<=)	497v513: register rotation, Normalise scheduling, distSq vs range call order
+00931200	IMPROVED	7	named home local (85->30); operator-> on the hero site (24); operator-> everywhere (56); loop site variants (56/61)	372v387: guard-loop site object-first order needs the this spill (retail ebp reload)
+00939670	IMPROVED	3	IsDead accessor (tail now byte-identical, 355->358 size match); cached last; direct brain read	358v358: this/map esi-edi colour swap only
+00961ca0	HELD	1	IsDead accessor (no change)	356v355: retail keeps 0 in edi (tracker/holder zero stores, enemy test) with this in ebx; ours this in edi, immediates
+00968650	HELD	1	IsDead accessor (no change)	368v346: local STLport list head kept in memory; push_back/iteration register plan differs
+00957c30	HELD	2	?true:false message bool (no change); template IS_THING_ALIVE<CThing*> declaration (name fix, bytes same)	373v384: this edi v ebp, message bool folded, frame 0x10 v 0xc
+009673b0	HELD	2	IsDead accessor; named PJug reference	657v657: this/&PJug esi-edi colour swap throughout
+0091ddd0	IMPROVED	2	GFROR13 respell + IsDead (=); rotated offset vector (135->124)	515v626: 8-aligned frame (double angle temp in memory) and the fcos/fsin schedule
+0089c910	HELD	2	cos(FOV) into a named double before the heading dot (334); cos-first compare spelling (226 v 224)	1136v1016: shared false tail / ebp push plan; whole-sum CSE flips the sight compares; cos(FOV) ordering
+00921990	IMPROVED	1	IsDead accessor (432->390)	1781v1651: frame size, bool spills, &PFollowee register
+008bc1a0	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008c6db0	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008d5aa0	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008dcc80	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008de7a0	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008de080	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008e8060	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft
+008dd0f0	NOT_ATTEMPTED	0	none this session (authoring-scale: parked 1-5 byte skeleton or no draft, 1083-1784 retail bytes)	needs a first full draft

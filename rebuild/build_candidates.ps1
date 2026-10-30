@@ -369166,6 +369166,238 @@ $catalog = @(
         TestSource = '00/5d/CAnimComponentStrikeResponseAnim_TransferBinaryOut_005db5f0_test.cpp'
         PassPattern = '005db5f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00891070'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_CameraUseCameraPoint_00891070.cpp'
+        TestSource = '00/89/CGameScriptInterface_CameraUseCameraPoint_00891070_test.cpp'
+        PassPattern = '00891070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b7350'
+        Module = 'CCreatureAction_FodderPrimaryAttack'
+        Source = '00/8b/CCreatureActionFodderPrimaryAttack_Initialise_008b7350.cpp'
+        TestSource = '00/8b/CCreatureActionFodderPrimaryAttack_Initialise_008b7350_test.cpp'
+        PassPattern = '008b7350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b96a0'
+        Module = 'CCreatureAction_FinishWillTurncoatSpell'
+        Source = '00/8b/CCreatureActionFinishWillTurncoatSpell_FinishAction_008b96a0.cpp'
+        TestSource = '00/8b/CCreatureActionFinishWillTurncoatSpell_FinishAction_008b96a0_test.cpp'
+        PassPattern = '008b96a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b9740'
+        Module = 'CCreatureAction_FinishDrainLifeSpell'
+        Source = '00/8b/CCreatureActionFinishDrainLifeSpell_FinishAction_008b9740.cpp'
+        TestSource = '00/8b/CCreatureActionFinishDrainLifeSpell_FinishAction_008b9740_test.cpp'
+        PassPattern = '008b9740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b98d0'
+        Module = 'CCreatureAction_FinishHealLifeSpell'
+        Source = '00/8b/CCreatureActionFinishHealLifeSpell_FinishAction_008b98d0.cpp'
+        TestSource = '00/8b/CCreatureActionFinishHealLifeSpell_FinishAction_008b98d0_test.cpp'
+        PassPattern = '008b98d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b9a60'
+        Module = 'CCreatureAction_FinishGhostSwordSpell'
+        Source = '00/8b/CCreatureActionFinishGhostSwordSpell_FinishAction_008b9a60.cpp'
+        TestSource = '00/8b/CCreatureActionFinishGhostSwordSpell_FinishAction_008b9a60_test.cpp'
+        PassPattern = '008b9a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b9bf0'
+        Module = 'CCreatureAction_ReleaseWillSummonSpell'
+        Source = '00/8b/CCreatureActionReleaseWillSummonSpell_FinishAction_008b9bf0.cpp'
+        TestSource = '00/8b/CCreatureActionReleaseWillSummonSpell_FinishAction_008b9bf0_test.cpp'
+        PassPattern = '008b9bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d7930'
+        Module = 'NCreatureMode::CModeScorpionKingTailPlunge'
+        Source = '00/8d/NCreatureModeCModeScorpionKingTailPlunge_OnDeactivate_008d7930.cpp'
+        TestSource = '00/8d/NCreatureModeCModeScorpionKingTailPlunge_OnDeactivate_008d7930_test.cpp'
+        PassPattern = '008d7930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d90b0'
+        Module = 'NCreatureMode::CModeCreatureIsProjectile'
+        Source = '00/8d/NCreatureModeCModeCreatureIsProjectile_OnDeactivate_008d90b0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeCreatureIsProjectile_OnDeactivate_008d90b0_test.cpp'
+        PassPattern = '008d90b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008db030'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpHeal'
+        Source = '00/8d/NCreatureModeCModeGuildmasterPowerUpHeal_CModeGuildmasterPowerUpHeal_008db030.cpp'
+        TestSource = '00/8d/NCreatureModeCModeGuildmasterPowerUpHeal_CModeGuildmasterPowerUpHeal_008db030_test.cpp'
+        PassPattern = '008db030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008eea80'
+        Module = 'Mass'
+        Source = '00/8e/Mass_ApplyImpulse_008eea80.cpp'
+        TestSource = '00/8e/Mass_ApplyImpulse_008eea80_test.cpp'
+        PassPattern = '008eea80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f58c0'
+        Module = 'NPhysicsHelpers'
+        Source = '00/8f/NPhysicsHelpers_GetLineThingSearchArea_008f58c0.cpp'
+        TestSource = '00/8f/NPhysicsHelpers_GetLineThingSearchArea_008f58c0_test.cpp'
+        PassPattern = '008f58c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f9320'
+        Module = 'LSocket'
+        Source = '00/8f/LSocket_Receive_008f9320.cpp'
+        TestSource = '00/8f/LSocket_Receive_008f9320_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '008f9320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090f110'
+        Module = 'CAIStateGroup_MinionReactToAlert'
+        Source = '00/90/CAIStateGroupMinionReactToAlert_FindAlertEvent_0090f110.cpp'
+        TestSource = '00/90/CAIStateGroupMinionReactToAlert_FindAlertEvent_0090f110_test.cpp'
+        PassPattern = '0090f110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090f770'
+        Module = 'CAIStateGroup_MinionSitAtWork'
+        Source = '00/90/CAIStateGroupMinionSitAtWork_GetPOwnerObject_0090f770.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitAtWork_GetPOwnerObject_0090f770_test.cpp'
+        PassPattern = '0090f770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00917e30'
+        Module = 'CAIStateGroup_Clean'
+        Source = '00/91/CAIStateGroupClean_GetBench_00917e30.cpp'
+        TestSource = '00/91/CAIStateGroupClean_GetBench_00917e30_test.cpp'
+        PassPattern = '00917e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00924880'
+        Module = 'CCreatureAction_KrakenLowPoseInto'
+        Source = '00/92/CCreatureActionKrakenLowPoseInto_FinishAction_00924880.cpp'
+        TestSource = '00/92/CCreatureActionKrakenLowPoseInto_FinishAction_00924880_test.cpp'
+        PassPattern = '00924880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00924930'
+        Module = 'CCreatureAction_KrakenHighAttackLoop'
+        Source = '00/92/CCreatureActionKrakenHighAttackLoop_FinishAction_00924930.cpp'
+        TestSource = '00/92/CCreatureActionKrakenHighAttackLoop_FinishAction_00924930_test.cpp'
+        PassPattern = '00924930_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00926690'
+        Module = 'std'
+        Source = '00/92/std_pushheap_00926690.cpp'
+        TestSource = '00/92/std_pushheap_00926690_test.cpp'
+        PassPattern = '00926690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00929f10'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/92/CAIStateGroupApprenticeHero_IsRunnable_00929f10.cpp'
+        TestSource = '00/92/CAIStateGroupApprenticeHero_IsRunnable_00929f10_test.cpp'
+        PassPattern = '00929f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092afe0'
+        Module = 'CAIStateGroup_ApprenticeHero'
+        Source = '00/92/CAIStateGroupApprenticeHero_LookAtMap_0092afe0.cpp'
+        TestSource = '00/92/CAIStateGroupApprenticeHero_LookAtMap_0092afe0_test.cpp'
+        PassPattern = '0092afe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00935ad0'
+        Module = 'CAIStateGroup_MinionPutOutFires'
+        Source = '00/93/CAIStateGroupMinionPutOutFires_IsRunnable_00935ad0.cpp'
+        TestSource = '00/93/CAIStateGroupMinionPutOutFires_IsRunnable_00935ad0_test.cpp'
+        PassPattern = '00935ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093afc0'
+        Module = 'CAIStateGroup_BanditSitRoundCampfire'
+        Source = '00/93/CAIStateGroupBanditSitRoundCampfire_OnReplace_0093afc0.cpp'
+        TestSource = '00/93/CAIStateGroupBanditSitRoundCampfire_OnReplace_0093afc0_test.cpp'
+        PassPattern = '0093afc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093dfc0'
+        Module = 'CAIStateGroup_MeleeCombatNearby2'
+        Source = '00/93/CAIStateGroupMeleeCombatNearby2_AlertAlliesInVicinity_0093dfc0.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearby2_AlertAlliesInVicinity_0093dfc0_test.cpp'
+        PassPattern = '0093dfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00946330'
+        Module = 'CAIStateGroup_PrepareMeal'
+        Source = '00/94/CAIStateGroupPrepareMeal_IsStillRunnable_00946330.cpp'
+        TestSource = '00/94/CAIStateGroupPrepareMeal_IsStillRunnable_00946330_test.cpp'
+        PassPattern = '00946330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00947110'
+        Module = 'CAIStateGroup_WanderAroundShops'
+        Source = '00/94/CAIStateGroupWanderAroundShops_FindPrettyThingInShop_00947110.cpp'
+        TestSource = '00/94/CAIStateGroupWanderAroundShops_FindPrettyThingInShop_00947110_test.cpp'
+        PassPattern = '00947110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094d020'
+        Module = 'CAIStateGroup_GameMaster'
+        Source = '00/94/CAIStateGroupGameMaster_Update_0094d020.cpp'
+        TestSource = '00/94/CAIStateGroupGameMaster_Update_0094d020_test.cpp'
+        PassPattern = '0094d020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00954220'
+        Module = 'CAIStateGroup_MazeRangedCombat'
+        Source = '00/95/CAIStateGroupMazeRangedCombat_IsStillRunnable_00954220.cpp'
+        TestSource = '00/95/CAIStateGroupMazeRangedCombat_IsStillRunnable_00954220_test.cpp'
+        PassPattern = '00954220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095e430'
+        Module = 'CAIStateGroup_ReactToDeadLeader'
+        Source = '00/95/CAIStateGroupReactToDeadLeader_IsStillRunnable_0095e430.cpp'
+        TestSource = '00/95/CAIStateGroupReactToDeadLeader_IsStillRunnable_0095e430_test.cpp'
+        PassPattern = '0095e430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009647c0'
+        Module = 'CAIStateGroup_StealStealableItem'
+        Source = '00/96/CAIStateGroupStealStealableItem_Update_009647c0.cpp'
+        TestSource = '00/96/CAIStateGroupStealStealableItem_Update_009647c0_test.cpp'
+        PassPattern = '009647c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096eb40'
+        Module = 'CAIStateGroup_MeleeCombatNearby'
+        Source = '00/96/CAIStateGroupMeleeCombatNearby_AlertAlliesInVicinity_0096eb40.cpp'
+        TestSource = '00/96/CAIStateGroupMeleeCombatNearby_AlertAlliesInVicinity_0096eb40_test.cpp'
+        PassPattern = '0096eb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00979f70'
+        Module = 'CAIStateGroup_CreatureTakeCover'
+        Source = '00/97/CAIStateGroupCreatureTakeCover_AttackTargetThing_00979f70.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureTakeCover_AttackTargetThing_00979f70_test.cpp'
+        PassPattern = '00979f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0097c5e0'
+        Module = 'CAIStateGroup_ScorpionKing'
+        Source = '00/97/CAIStateGroupScorpionKing_Update_0097c5e0.cpp'
+        TestSource = '00/97/CAIStateGroupScorpionKing_Update_0097c5e0_test.cpp'
+        PassPattern = '0097c5e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
