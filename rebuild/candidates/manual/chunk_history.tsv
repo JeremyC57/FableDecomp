@@ -25158,3 +25158,13 @@ chunk	address	module	name	length
 612	00aa39a0	CQuaternion	ToMatrix	332
 612	00c3db80	CTCHeroStats	CTCHeroStats::CreateIceTrollIcicleAction	335
 612	009852c0	CAIStateGroup_OpinionReactionRoot	FollowUpdate	337
+613	0063e590	CWorldMap	GetNavigationLayerAt	340
+613	00760c40	CTrack	GetTrackPosAtLengthFraction	342
+613	007bc004	CTCShotDefinitionNymphFun	InitMovement	342
+613	007bee40	NThingShot::CTCShotDefinitionThrow	NThingShot::CTCShotDefinitionThrow::vfunc_36	344
+613	00654438	CDrawQuestInfo	Draw	347
+613	00744b50	CTCPerceiveThing	UpdateSmell	349
+613	007fe990	global	CTCGraphicAppearance_InitDummyObjects	351
+613	00744fb0	CTCPerceiveThing	UpdateHearing	355
+613	00ead9f0	CV_MurderTwistScript	GemsFoundProcess	356
+613	00939670	CAIStateGroup_SitRoundCampfire	?IsRunnable@CAIStateGroup_SitRoundCampfire@@UAE_NXZ	358
