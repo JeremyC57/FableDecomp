@@ -25060,3 +25060,11 @@ chunk	address	module	name	length
 602	00c069d0	global	LZSS_Decompress	447
 602	00c1e300	global	PathFinding_CompressAndQuery	450
 602	00c076c0	global	code_match	451
+603	00ca8120	global	sub_00ca8120	400
+603	00c59e20	global	CAudioSource_UpdateTimeOffset	405
+603	00c8c3e0	global	WorldMap_CompareAndBlend	416
+603	00c593c0	global	AudioStream_ProcessAudioSamples	432
+603	00c75ce0	global	Audio_ProcessTriggerActivations	432
+603	00ae3a60	global	ReadGroups	456
+603	00c54510	global	Audio_InitializeParameters	456
+603	00ca6c40	global	CEngine_InitializeRender_WithSurface	460
