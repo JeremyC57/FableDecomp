@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00c07420   RELOCATION_MATCH PASS   swd_findbest
+00c104f0   WARN RELOC_NAME: ??0CListImpl@@QAE@J@Z -> 00c185b0 labelled 'CCombatAbilityStrafeDef::CCombatAbilityStrafeDef::Initialize'
+00c104f0   WARN RELOC_NAME: ??1CListImpl@@QAE@XZ -> 00c17b10 labelled 'CPixelShaderData::~CPixelShaderData'
+00c104f0   RELOCATION_MATCH PASS   Handle
+00c17be0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c17be0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c17be0   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c17be0   RELOCATION_MATCH PASS   MorphToTree
+00c18870   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c18870   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c18870   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c18870   WARN RELOC_NAME: ??0PKCTRArray@@QAE@I@Z -> 00c32ba0 labelled 'CVtable_012b4e80::CVtable_012b4e80'
+00c18870   RELOCATION_MATCH PASS   MorphToArray
+00cac640   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cac640   RELOCATION_MATCH PASS   Alloc
+
+WINS: 5
+  00c07420 RELOCATION_MATCH _global::_swd_findbest
+  00c104f0 RELOCATION_MATCH CMemberHandler_00c08940::?Handle@CMemberHandler_00c08940@@QAEXPAUCEvent_00c08940@@@Z
+  00c17be0 RELOCATION_MATCH PKCTRMorphable::?MorphToTree@PKCTRMorphable@@UAEXPAX@Z
+  00c18870 RELOCATION_MATCH PKCTRMorphable::?MorphToArray@PKCTRMorphable@@UAEXPAX@Z
+  00cac640 RELOCATION_MATCH CMemAllocator::?Alloc@CMemAllocator@@MAEJXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  global_swdfindbest_00c07420
+  CMemberHandler00c08940_Handle_00c104f0
+  PKCTRMorphable_MorphToTree_00c17be0
+  PKCTRMorphable_MorphToArray_00c18870
+  CMemAllocator_Alloc_00cac640

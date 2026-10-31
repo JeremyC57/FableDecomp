@@ -35579,3 +35579,13 @@ _lzo1x_decompress	00c06b90	00996610
 ?CreateMoreBlocks@?$CDynamicObjectHeap@$0JM@$0IDE@@@AAEXXZ	00af88f0	00af86c0
 ?CreateMoreBlocks@?$CDynamicObjectHeap@$0HE@$0CBB@@@AAEXXZ	00af8c00	00af8b00
 ?Initialise@CPSCSplineBase@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	00b215a0	00b094b0
+@swd_remove_node@8	00c07140	00c07420
+_swd_search	00c072d0	00c07420
+_swd_search2	00c073c0	00c07420
+??_7CCollectFreeMatchesA@@6B@	012b2614	00c104f0
+??_7CCollectFreeMatchesB@@6B@	012b261c	00c104f0
+??0PKCTRRedblackTree@@QAE@PAVPKCTRAllocator@@@Z	00c194f0	00c17be0
+?MoveAllItems@@YIXPAXPAVPKCContainer_00c17b70@@1@Z	00c17b70	00c17be0
+??0PKCTRArray@@QAE@I@Z	00c32ba0	00c18870
+??_7CMediaSample@@6B@	012bf6e0	00cac640
+?ReallyFree@CMemAllocator@@IAEXXZ	00caa3c0	00cac640

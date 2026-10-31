@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c313c0	RELOCATION_MATCH	412v412	PASS	CSampleTableReader::OnRecord (descriptive): LHAudioBankSampleTable record -> sample map entry; twin of landed CWaveDataReader::OnRecord; 2 grades
+00c07420	RELOCATION_MATCH	413v413	PASS	LZO 1.08 swd_findbest (proven, bound _swd_findbest): landed find_match TU with swd_remove_node out of line (__fastcall decl); 1 grade
+00cac640	RELOCATION_MATCH	414v414	PASS	CMemAllocator::Alloc (strmbase DX9 text, proven): inline CBaseAllocator::Alloc + CMediaSample ctor; 1 grade
+00c213c0	DIFFER	413v415	-	CSoundEvent::UpdateTrackedParameters (bound): first GetRecord copy goes through eax instead of the frame temp; 4 grades
+00c49470	DIFFER	415v415	-	CCodaFrameStreamer::SubmitFrame (class from trace file): frame 0x28 v 0x2c (CDebugBreak slot) + descriptor store order; 4 grades
+00c19340	DIFFER	419v419	-	PKCTRRedblackTree::RemoveValue (class from trace file): frame-slot packing only (dead comparator slot); 4 grades
+00c18870	RELOCATION_MATCH	424v424	PASS	PKCTRMorphable::MorphToArray (class from trace file, method descriptive); 1 grade
+00c17be0	RELOCATION_MATCH	425v425	PASS	PKCTRMorphable::MorphToTree (class from trace file, method descriptive); 1 grade
+00c64420	DIFFER	424v426	-	CEaxContext::SetPrimaryFXSlotID (EAX 4.0 SDK property): dirty-mask local in ebp v esi->ebx; 4 grades
+00c104f0	RELOCATION_MATCH	427v427	PASS	CMemberHandler_00c08940::Handle (bound): twin of landed CItemDispatcher::RunAllItems run twice; 1 grade

@@ -370088,6 +370088,45 @@ $catalog = @(
         TestSource = '00/b0/NParticleEngineCPSCSingleSprite_Initialise_00b094b0_test.cpp'
         PassPattern = '00b094b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c07420'
+        Module = '_global'
+        Source = '00/c0/global_swdfindbest_00c07420.cpp'
+        TestSource = '00/c0/global_swdfindbest_00c07420_test.cpp'
+        PassPattern = '00c07420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c104f0'
+        Module = 'CMemberHandler_00c08940'
+        Source = '00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp'
+        TestSource = '00/c1/CMemberHandler00c08940_Handle_00c104f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c104f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c17be0'
+        Module = 'PKCTRMorphable'
+        Source = '00/c1/PKCTRMorphable_MorphToTree_00c17be0.cpp'
+        TestSource = '00/c1/PKCTRMorphable_MorphToTree_00c17be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c17be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c18870'
+        Module = 'PKCTRMorphable'
+        Source = '00/c1/PKCTRMorphable_MorphToArray_00c18870.cpp'
+        TestSource = '00/c1/PKCTRMorphable_MorphToArray_00c18870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c18870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cac640'
+        Module = 'CMemAllocator'
+        Source = '00/ca/CMemAllocator_Alloc_00cac640.cpp'
+        TestSource = '00/ca/CMemAllocator_Alloc_00cac640_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00cac640_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

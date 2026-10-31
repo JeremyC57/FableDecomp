@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00c213c0	DIFFER	413v415	-	CSoundEvent::UpdateTrackedParameters (bound): first GetRecord copy goes through eax instead of the frame temp; 4 grades
+00c49470	DIFFER	415v415	-	CCodaFrameStreamer::SubmitFrame (class from trace file): frame 0x28 v 0x2c (CDebugBreak slot) + descriptor store order; 4 grades
+00c19340	DIFFER	419v419	-	PKCTRRedblackTree::RemoveValue (class from trace file): frame-slot packing only (dead comparator slot); 4 grades
+00c64420	DIFFER	424v426	-	CEaxContext::SetPrimaryFXSlotID (EAX 4.0 SDK property): dirty-mask local in ebp v esi->ebx; 4 grades
