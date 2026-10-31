@@ -25498,3 +25498,13 @@ chunk	address	module	name	length
 646	008539c0	CScriptModuleUseLamp	OnInitLeaf	475
 646	00687730	CMessageEventManager	AddMessage	477
 646	00537776	CList	CanMove	480
+647	005a887d	global	PC_PopulateBuyList	480
+647	0047d296	CTCInGameMenu	PCSetQuitToFrontEnd	482
+647	007e8a40	CTCFlourishTarget	ProcessActionMovementDelta	482
+647	0062bef0	CWorld	EAUseProjectileWeapon	483
+647	00687540	CMessageEventManager	AddMessage	486
+647	0047dd9d	CTCInGameMenu	PCSetToLoad	493
+647	006d68d0	CTCHeroExperience	IsBlockRecoilAnimToConserveAnimationComboChain	495
+647	006d6cb0	CTCHeroExperience	IsBlockRecoilAnimToConserveAnimationComboChain	495
+647	00a90260	C3DPrimitive2	CreateDegenerateTriangleIndexBuffer	496
+647	00b396e0	CEngineInternalAttachedPrimitive	Update	497
