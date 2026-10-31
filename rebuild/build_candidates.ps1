@@ -371107,6 +371107,13 @@ $catalog = @(
         TestSource = '00/a1/CNavigatorAStar_IsNavLineOfSightClear_00a1af00_test.cpp'
         PassPattern = '00a1af00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c74ab0'
+        Module = 'CEffectFilter'
+        Source = '00/c7/CEffectFilter_SetLowPass_00c74ab0.cpp'
+        TestSource = '00/c7/CEffectFilter_SetLowPass_00c74ab0_test.cpp'
+        PassPattern = '00c74ab0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -18,10 +18,10 @@ struct SVoiceEffectParameters {
     unsigned long Flags;                           // +0x00 dirty bits
     long          Level;                           // +0x04 millibels
     long          HighPassAttenuation;             // +0x08 (millibels; 0x00C74BB0 fild's it)
-    float         ShelfFrequency;                  // +0x0c
+    long          LowPassCutoff;                   // +0x0c (cents; 0x00C74AB0 fild's it)
     unsigned char _pad10[0x1c - 0x10];
     float         HighPassReference;               // +0x1c
-    float         ShelfGain;                       // +0x20
+    float         LowPassReference;                // +0x20
     unsigned char _pad24[0x44 - 0x24];
     float         RateScale;                       // +0x44
     unsigned char _pad48[0x4c - 0x48];
@@ -34,11 +34,11 @@ struct CMixContext {
 };
 struct CEffectFilter {
     float Gain;                                    // +0x00
-    void SetShelf(float frequency, float gain, unsigned long sampleRate);   // 0x00C74AB0
+    void SetLowPass(long cutoff, float reference, unsigned long sampleRate);          // 0x00C74AB0
     void SetHighPass(long attenuation, float reference, unsigned long sampleRate);    // 0x00C74BB0
 };
 struct CVoiceEffect {
-    CEffectFilter Shelf;                           // +0x00
+    CEffectFilter LowPass;                         // +0x00
     unsigned char _pad04[0x1c - 0x04];
     CEffectFilter Peak;                            // +0x1c
     unsigned char _pad20[0x220 - 0x20];
@@ -85,7 +85,7 @@ void CEffectPart260::Configure(CVoiceEffect* owner, SVoiceEffectParameters* para
         owner->Peak.SetHighPass(parameters->HighPassAttenuation, parameters->HighPassReference, Context->SampleRate);
     }
     if (parameters->Flags & 0x90)
-        owner->Shelf.SetShelf(parameters->ShelfFrequency, parameters->ShelfGain, Context->SampleRate);
+        owner->LowPass.SetLowPass(parameters->LowPassCutoff, parameters->LowPassReference, Context->SampleRate);
     if (parameters->Flags & 0x20000) {
         Stage_00c77fc0(owner, parameters);
         parameters->Flags |= 0x100;
@@ -113,6 +113,6 @@ void CEffectPart260::Configure(CVoiceEffect* owner, SVoiceEffectParameters* para
     if (parameters->Flags & 0xc000)
         Stage_00c77c00(owner, parameters);
     if (parameters->Flags & 0x20)
-        owner->Shelf.Gain = MillibelsToGain_00c77700(parameters->Level);
+        owner->LowPass.Gain = MillibelsToGain_00c77700(parameters->Level);
     parameters->Flags = 0;
 }

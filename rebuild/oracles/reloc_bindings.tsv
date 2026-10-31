@@ -35536,7 +35536,7 @@ _s_jpgMask	0124fed0	00581b33
 ??$__unguarded_partition@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@U12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@PAU10@0U10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z	00beec60	00befa20
 ?Remove@PKCTRRedblackMap@@QAEJPBK@Z	00c1b7d0	00c1a370
 ?MillibelsToGain_00c77700@@YAMJ@Z	00c77700	00c783f0
-?SetShelf@CEffectFilter@@QAEXMMK@Z	00c74ab0	00c783f0
+?SetLowPass@CEffectFilter@@QAEXJMK@Z	00c74ab0	00c783f0
 ?Stage_00c77800@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z	00c77800	00c783f0
 ?Stage_00c77ae0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z	00c77ae0	00c783f0
 ?Stage_00c77b30@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z	00c77b30	00c783f0

@@ -1,0 +1,10 @@
+address	status	bytes	test	note
+00c14f90	DIFFER	248v248	-	PKCPlaybackTemplate::~PKCPlaybackTemplate (catalog CTCDiceGame propagated): real member model fixed the +0x0c zero store; left: lea ebx,[esi+40h] two slots early
+006afaf0	DIFFER	249v249	-	CTCPhysicsBase::ImpulseRespondToCollisonWithImpassableObject (PDB refs, const): dot spill fixed; left: XY sum operand order (newer vs older product) + Y*=r fxch form
+0076e4d0	DIFFER	253v253	-	CTCWeaponTrail::GetLastWeaponTrailPoints: push_back in-place pair copy load/store paired (retail pipelined)
+0076c8a0	DIFFER	254v254	-	CTCEnemy::CTCEnemy(CThing&): now on CDefPointer.h + real GetDef/GetSubDef bodies (stand-ins gone), same ebp/edi swap
+00ac7200	DIFFER	255v255	-	QuadricOptimiserInternals::COptimisedPrimitive::MakeOrthogonal: dot z term scheduled second (VC7.1 canonicalised sum)
+00c72d00	DIFFER	256v256	-	CAudioSource::BindSound (descriptive, gap-scan sub_00c72d00): callee-saved colouring (IAT ebp / zero ebx in retail)
+00946190	DIFFER	259v259	-	CAIStateGroup_PrepareMeal::Update (PDB respelled): LookAtPos slot pointer ecx vs eax (this loaded late)
+00a55f90	DIFFER	259v259	-	CMatrix3x4::SetFromVectorAndAngle: xy/xz product operand order (canonicalised) + Position zero-store placement
+00547050	DIFFER	261v261	-	NUISystem::CScrollingComponent::UpdatePosition: X parent-offset add loads ParentPosition.X first

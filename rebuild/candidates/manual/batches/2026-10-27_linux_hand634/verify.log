@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00c74ab0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c74ab0   RELOCATION_MATCH PASS   SetLowPass
+
+WINS: 1
+  00c74ab0 RELOCATION_MATCH CEffectFilter::?SetLowPass@CEffectFilter@@QAEXJMK@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEffectFilter_SetLowPass_00c74ab0
