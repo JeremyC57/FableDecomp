@@ -124,7 +124,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                         // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                         // 0x006A1440
 };
 class CThing {
 public:

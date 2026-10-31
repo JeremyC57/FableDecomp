@@ -97,7 +97,9 @@ class CAIStateGroupBase { public:
     unsigned long& GetPWorldSeed();             // 0x008FCFD0
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     void Terminate();                           // 0x008FCF40
+protected:
     EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float tolerance);   // 0x0097D580
+public:
 };
 struct CAIStateGroup_HoverMovementBase : CAIStateGroupBase {
     EAIActionReturn AIAction_MoveToPosProximityAndFacePos(EAIActionRepeat repeat, const C3DVector& pos, float proximity,

@@ -120,7 +120,7 @@ class CWorld { public:
 
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CMode {
     virtual void v00();
@@ -181,7 +181,7 @@ bool CAIStateGroup_MinionSleep::IsStillValid() const
 {
     CTCVillager* villager;
     PBrain->PCreature->GetInterface(&villager, 0x23);
-    if (GFGetPVillageInterface(villager) != 0) {
+    if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
         CThing* creature = PBrain->PCreature;
         if (PeekWorld().GetPMessageManager()->FindMostRecentMessage(
                 CMessageEventFilter_IsOfType(4) && CMessageEventFilter_IsOriginatedByThing(creature)) != 0)

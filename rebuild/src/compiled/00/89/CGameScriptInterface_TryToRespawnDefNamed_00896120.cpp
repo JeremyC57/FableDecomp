@@ -5,7 +5,7 @@
 // CThing::GetScriptThing @ 0x004C7E50 (into the hidden result), CBaseClass::CBaseClass @ 0x0099A2D0 then the CScriptThing vtable @ 0x01238C8C and two zero words (the inline default ctor).
 // Leaf: TryToRespawnDefNamed
 #include <string.h>
-struct CThing_Retail;
+class CThing;
 class CScriptThing;
 // CCharString (Ego_r.pdb layout, as the landed CCharString::operator!= 0x0099E960): a 4-byte handle on a 17-byte block.
 #pragma pack(push, 1)
@@ -35,12 +35,12 @@ public:
     }
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
-struct CThing_Retail;
+class CThing;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
      virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010();
-    virtual CThing_Retail* GetThing() const;   // slot 11 (+0x2c)
+    virtual CThing* GetThing() const;   // slot 11 (+0x2c)
     virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019();
     virtual void s020(); virtual void s021(); virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026(); virtual void s027();
     virtual void s028(); virtual void s029(); virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035();
@@ -67,7 +67,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
-struct CThing_Retail {
+class CThing { public:
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
     virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023();
@@ -98,7 +98,7 @@ struct CThing_Retail {
     unsigned char         m_marryable : 1;          //        bit 3
     unsigned char         m_marryableToHero : 1;    //        bit 4
     unsigned char         m_1c9_5 : 3;
-    CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
+    CScriptThing GetScriptThing() const;                  // 0x004C7E50 (by value through the hidden result pointer)
     CTCBase_Retail* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
@@ -128,7 +128,7 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-class CThingPlayerCreature : public CThing_Retail { };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0 (label propagated)
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0 (label propagated)
@@ -138,7 +138,7 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 struct CTCVillage_Retail {                          // interface type 0x22
-    CThing_Retail* TryToRespawnDefNamed(const CCharString& defName, long count);   // 0x0065B349
+    CThing* TryToRespawnDefNamed(const CCharString& defName, long count);   // 0x0065B349
 };
 class CWorld;
 struct CDefinitionManager_Retail;
@@ -154,11 +154,11 @@ class CGameScriptInterface { public:
 
 CScriptThing CGameScriptInterface::TryToRespawnDefNamed(const CScriptThing& village, const CCharString& defName, long count) const
 {
-    CThing_Retail* thing = village.GetThing();
+    CThing* thing = village.GetThing();
     if (thing && !thing->m_dead) {
         if (thing->HasInterface(0x22)) {
             CTCVillage_Retail* component = thing->GetTC<CTCVillage_Retail>(0x22);
-            CThing_Retail* creature = component->TryToRespawnDefNamed(defName, count);
+            CThing* creature = component->TryToRespawnDefNamed(defName, count);
             if (creature)
                 return creature->GetScriptThing();
         }

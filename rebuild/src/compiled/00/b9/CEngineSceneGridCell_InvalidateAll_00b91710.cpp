@@ -13,7 +13,9 @@ class CEngineSceneGridCell { public:
     CEngineSceneGridCell* Parent;               // +0x00 (PDB)
     unsigned char         _pad_0x04[0x40];      // +0x04 bounding box, counts, masks (PDB)
     unsigned char         Flags;                // +0x44 (PDB bitfield, see above)
+private:
     void InvalidateAll();
+public:
 };
 
 #define CELL_VALID_MASK 0x07   // BoundingBoxValid | TotalCountValid | RenderMaskValid

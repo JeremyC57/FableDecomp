@@ -100,7 +100,7 @@ class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 class CTCCarrying { public:                            // interface 0x46
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
     void RemoveThingFromPrimarySlot(bool b);    // 0x006A1E00
 };
 class CTCTavernTankard { public:                       // interface 0xba

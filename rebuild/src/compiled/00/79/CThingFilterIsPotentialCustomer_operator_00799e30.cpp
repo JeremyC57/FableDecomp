@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799E30, length 384 bytes, `ret 4`.
 //   Name from Ego_r.pdb (`??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z`).
 // Callees: CThingCreatureBase::GetCreatureType @ 0x00662000, the const CVectorMap LowerBound @ 0x004365B0,
-//   CTCVillageMember::GetPVillage @ 0x007EE540, CVillage::IsVillagerPerformingVillageTask @ 0x00659104,
+//   CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::IsVillagerPerformingVillageTask @ 0x00659104,
 //   CTCShopKeeper::HasBeenCustomer @ 0x00798DD0, the opinion manager's GetOpinionAttitudeToPlayer @ 0x00701840
 //   (reached through [[0x013B8A1C]+0x24]+0x74), CIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos
 //   const @ 0x004C73D0; 6.0f @ 0x0126C11C.
@@ -64,11 +64,11 @@ class CThingCreatureBase : public CThing { public:
     long GetCreatureType() const;                       // 0x00662000
 };
 
-struct CVillage {
+class CTCVillage { public:
     bool IsVillagerPerformingVillageTask(const CThing* thing) const;   // 0x00659104
 };
 class CTCVillageMember : public CTCBase { public:
-    CVillage* GetPVillage() const;                      // 0x007EE540
+    CTCVillage* GetPVillage() const;                      // 0x007EE540
 };
 class CTCShopKeeper : public CTCBase { public:
     bool HasBeenCustomer(const CThing* thing) const;    // 0x00798DD0

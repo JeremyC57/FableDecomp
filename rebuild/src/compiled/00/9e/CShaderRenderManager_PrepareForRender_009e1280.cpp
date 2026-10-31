@@ -34,7 +34,9 @@ class CShaderRenderManager { public:
     unsigned long DirtyFlags;                      // +0x3d8
     void UpdateFlag20State();                      // 0x0098A8E0 (manifest label C3DMeshFileXUVTangentChunk::WriteToFile, propagated)
     void UpdateWorldSpaceTextureTransform();       // 0x009894B0
+private:
     void UpdateObjectSpaceTextureTransform();      // 0x00989230
+public:
     void UpdateObjectSpaceFogTransform();          // 0x00989540
     void UpdateObjectSpaceLighting(unsigned long renderFlags);   // 0x00989CB0
     void UpdateLocalisedSphereMapping();           // 0x00988E80

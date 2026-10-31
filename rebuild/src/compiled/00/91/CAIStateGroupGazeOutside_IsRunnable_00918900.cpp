@@ -160,7 +160,7 @@ class CTCVillage { public:
     bool IsCurfewTime();                        // 0x00658D5D
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CThingGameObject;
 struct CAIStateGroup_Gaze : CAIStateGroupBase {
@@ -184,7 +184,7 @@ bool CAIStateGroup_GazeOutside::IsRunnable()
         return false;
     CTCVillager* villager;
     return PBrain->PCreature->GetInterface(&villager, 0x23)
-        && GFGetPVillageInterface(villager) != 0
-        && GFGetPVillageInterface(villager)->IsCurfewTime()
+        && ((CTCVillageMember*)villager)->GetPVillage() != 0
+        && ((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime()
         && FindFreeGazePos() != 0;
 }

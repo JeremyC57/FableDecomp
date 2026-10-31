@@ -74,7 +74,9 @@ class CTCInventoryExperience { public:
     unsigned char _pad14c[0x21c - 0x14c];
     bool          DestroyEverything;                 // +0x21c
     void SaveExperienceValuesForCountDown();         // 0x00570161
+private:
     CTCHeroExperience* GetTCHeroExperience();        // 0x0056FF3D
+public:
     void BuyStat(EHeroTrainableStatType stat, long amount);
 };
 void CTCInventoryExperience::BuyStat(EHeroTrainableStatType stat, long amount)

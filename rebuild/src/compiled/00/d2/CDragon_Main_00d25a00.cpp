@@ -904,7 +904,10 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;   // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 enum EDragonState { DS_HIGH_HEALTH, DS_MEDIUM_HEALTH, DS_LOW_HEALTH, DS_VERY_LOW_HEALTH, DS_DEAD };
-struct CQ_DragonBossFightScript {
+class CScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating();   // 0x00CB7940 (Ego_r.pdb CScriptBase)
+};
+struct CQ_DragonBossFightScript : public CScriptBase {
  unsigned char BaseState[0x48];
  EDragonState DragonState;          // +0x48
  unsigned char MinionSpawnPoints[0xc];   // +0x4c
@@ -912,7 +915,6 @@ struct CQ_DragonBossFightScript {
  long NextSummonerSpawnPoint;       // +0x64
  long TargetNumMinions;             // +0x68
  long TargetNumSummoners;           // +0x6c
- bool IsActiveThreadTerminating();  // 0x00CB7940 CScriptBase
  void SpawnEnemies();               // 0x00D25C20
 };
 class CEntityScriptBase

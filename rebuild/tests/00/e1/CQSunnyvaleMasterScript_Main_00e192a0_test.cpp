@@ -13,7 +13,7 @@ struct CQ_SunnyvaleMasterScript {
     IVObj* f4;
 };
 
-extern "C" bool __fastcall SunnyvaleHelper_f35b30(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
 
 void __fastcall CQ_SunnyvaleMasterScript_Main(CQ_SunnyvaleMasterScript* self);
 
@@ -22,7 +22,7 @@ static int g_helper_calls = 0;
 
 static void __fastcall fake_slot(IVObj*) { g_vcalls++; }
 
-extern "C" bool __fastcall SunnyvaleHelper_f35b30(CQ_SunnyvaleMasterScript*) {
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
     g_helper_calls++;
     return (g_helper_calls >= 3); // false, false, true -> loop exits on true
 }

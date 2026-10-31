@@ -43,7 +43,9 @@ struct CTCGraphicAppearance {
 class CThing { public:
     unsigned char _pad[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64
+protected:
     const CWorld& PeekWorld() const;           // 0x004C7AB0
+public:
 };
 class CThingCreatureBase : public CThing { public:
     C3DVector GetAnimMovementVector(long animIndex);

@@ -26,7 +26,7 @@ class CThingCreatureBase { public:
     CCombatActionBase* CurrentAction;                      // +0x100
     unsigned char      _pad104[0x138 - 0x104];
     long               LastActionHandedness;               // +0x138
-    bool IsPerformingAnyAction();                          // 0x006622A0
+    bool IsPerformingAnyAction() const;                          // 0x006622A0
     void SetLastActionHandedness(long handedness);         // 0x006619F0
 };
 class CCombatAbilityData { public:

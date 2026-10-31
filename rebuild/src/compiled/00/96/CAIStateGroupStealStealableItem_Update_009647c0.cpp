@@ -108,7 +108,7 @@ struct CTCStealable {                           // interface 0x47
     void* POwnerAction;                         // +0x10
 };
 class CTCCarrying { public:                            // interface 0x46
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
     void RemoveThingFromPrimarySlot(bool drop); // 0x006A1E00
     bool IsCarryingThing(CThing* thing);        // 0x006A1060
 };

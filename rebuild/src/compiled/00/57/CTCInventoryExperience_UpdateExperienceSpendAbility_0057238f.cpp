@@ -44,7 +44,7 @@ struct CSpendInfoVector {                          // vector<ExperienceSpendInfo
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 enum EHeroExperienceStatCategory { EHeroExperienceStatCategory_Force32 = 0x7fffffff };
 class CTCInventoryAbilities { public:
-    EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability);   // 0x005EDEEB
+    EHeroExperienceStatCategory GetAbilityStatType(EHeroAbility ability) const;   // 0x005EDEEB
     bool IsAbilityAvailable(EHeroAbility ability);                          // 0x005EDF08
 };
 
@@ -59,7 +59,9 @@ class CTCInventoryExperience { public:
     CSpendInfoVector ExperienceSpendValuesAbility; // +0x1f8
     long ExperienceSpendMagnitude;                 // +0x204
     EHeroAbility GetHeroTrainableAbilityType(long index);           // 0x0056E674
+private:
     CTCInventoryAbilities* GetTCInventoryAbilities();               // 0x0056FFC5
+public:
     void UpdateExperienceSpendPool(EHeroExperienceStatCategory category, long amount);   // 0x0056EF6F
     void UpdateExperienceSpendAbility();
 };

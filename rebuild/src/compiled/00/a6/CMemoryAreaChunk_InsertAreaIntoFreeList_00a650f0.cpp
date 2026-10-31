@@ -6,8 +6,18 @@
 // PPreviousArea +0x08, DataSize +0x18; CMemoryAllocatorVariableSize::PTreeRoot +0xC34. No engine header for these classes.
 // Shape: an empty list takes the area as first and last; otherwise a walk that inserts before the first larger area or appends at the
 // tail (both exits `break` out of the loop, the tail store shared with the empty case).
-struct CMemoryAreaChunk;
-struct CMemoryArea {
+// Nested (naming wave 12): Ego_r.pdb nests CMemoryArea / CMemoryAreaChunk in CMemoryAllocatorVariableSize.
+class CMemoryAllocatorVariableSize { public:
+    class CMemoryArea;
+    class CMemoryAreaChunk;
+    friend class CMemoryAreaChunk;
+    unsigned char _base[0xc34];
+    CMemoryArea*  PTreeRoot;                    // +0xc34
+protected:
+    void InsertIntoTree(CMemoryArea* root, CMemoryArea* area);   // 0x00A64E70
+public:
+};
+class CMemoryAllocatorVariableSize::CMemoryArea { public:
     CMemoryArea*      PNextArea;                // +0x00
     CMemoryArea*      PRightChild;              // +0x04
     CMemoryArea*      PPreviousArea;            // +0x08
@@ -18,12 +28,7 @@ struct CMemoryArea {
     unsigned char     Colour;                   // +0x1c
     unsigned char     ID;                       // +0x1d
 };
-class CMemoryAllocatorVariableSize { public:
-    unsigned char _base[0xc34];
-    CMemoryArea*  PTreeRoot;                    // +0xc34
-    void InsertIntoTree(CMemoryArea* root, CMemoryArea* area);   // 0x00A64E70
-};
-struct CMemoryAreaChunk {
+class CMemoryAllocatorVariableSize::CMemoryAreaChunk { public:
     long                          TotalDataSize;        // +0x00
     long                          NoFreeAreas;          // +0x04
     long                          NoAllocatedAreas;     // +0x08
@@ -38,8 +43,12 @@ struct CMemoryAreaChunk {
     CMemoryArea*                  PFirstFreeArea;       // +0x28
     CMemoryArea*                  PLastFreeArea;        // +0x2c
     CMemoryArea*                  PFirstAllocatedArea;  // +0x30
+protected:
     void InsertAreaIntoFreeList(CMemoryArea* area);
+public:
 };
+typedef CMemoryAllocatorVariableSize::CMemoryArea CMemoryArea;
+typedef CMemoryAllocatorVariableSize::CMemoryAreaChunk CMemoryAreaChunk;
 
 void CMemoryAreaChunk::InsertAreaIntoFreeList(CMemoryArea* area)
 {

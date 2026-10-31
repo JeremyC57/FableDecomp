@@ -1,0 +1,24 @@
+addr       parity           behav  name
+005fad40   WARN SHARED_HEADER_AVAILABLE CPlayer
+005fad40   WARN SHARED_HEADER_AVAILABLE CWorld
+005fad40   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fad40   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005fad40   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005fad40   RELOCATION_MATCH PASS   CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+005fbd90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005fbd90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005fbd90   WARN SHARED_HEADER_AVAILABLE CWorld
+005fbd90   WARN SHARED_HEADER_AVAILABLE CPlayer
+005fbd90   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fbd90   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005fbd90   WARN RELOC_NAME: ?GetAllThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$list@PAVCThing@@@@@Z -> 00617860 labelled 'CThingSearchTools::GetAllLeafThings'
+005fbd90   WARN RELOC_NAME: ??1?$list@PAVCThing@@@@QAE@XZ -> 006153c0 labelled '_global::StdList_Clear_006153c0'
+005fbd90   RELOCATION_MATCH PASS   CTCInventoryMap::TeleportHeroToGuild
+00a6cbb0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveBase::AddChildPrimitive
+00b38ed0   MATCH            PASS   CEnginePrimitiveAttachmentManager::IsVisible
+
+WINS: 4
+  005fad40 RELOCATION_MATCH CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+  005fbd90 RELOCATION_MATCH CTCInventoryMap::TeleportHeroToGuild
+  00a6cbb0 RELOCATION_MATCH CEngineInternalPrimitive::?GetSingleInstanceCollisionSet@CPhysicsMesh@@ABEAAV?$vector@JV?$allocator@J@std@@@std@@XZ
+  00b38ed0 MATCH CEnginePrimitiveAttachmentManager::IsVisible

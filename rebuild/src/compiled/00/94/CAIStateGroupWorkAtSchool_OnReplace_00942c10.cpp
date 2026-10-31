@@ -15,7 +15,7 @@ class CTCVillage { public:
     bool m_teacherPresent;                      // +0xbc
 };
 
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CTCVillager;
 
@@ -75,7 +75,7 @@ void CAIStateGroup_WorkAtSchool::OnReplace()
 {
     CTCVillager* villager;
     if (PBrain->Creature->GetInterface(0x23, &villager)) {
-        if (GFGetPVillageInterface(villager) != 0)
-            GFGetPVillageInterface(villager)->m_teacherPresent = false;
+        if (((CTCVillageMember*)villager)->GetPVillage() != 0)
+            ((CTCVillageMember*)villager)->GetPVillage()->m_teacherPresent = false;
     }
 }

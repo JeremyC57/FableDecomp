@@ -154,7 +154,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 class CTCVillage;
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CTCLight { public:                               // interface 0x27
     unsigned char _pad[0x1c];
@@ -170,7 +170,7 @@ bool CAIStateGroup_LightHomeCandle::IsCandleInNeedOfChanging(CThing* candle)
 {
     CTCVillager* villager;
     PBrain->PCreature->GetInterface(&villager, 0x23);
-    if (GFGetPVillageInterface(villager)) {
+    if (((CTCVillageMember*)villager)->GetPVillage()) {
         CTCLight* light;
         candle->GetInterface(&light, 0x27);
         if (ShouldBeLit())

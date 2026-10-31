@@ -24,10 +24,12 @@ class CCPPointerInfo;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-struct CV_TrophyDealerScript {
+class CScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating();   // 0x00CB7940 (Ego_r.pdb CScriptBase)
+};
+struct CV_TrophyDealerScript : public CScriptBase {
     unsigned char _base[0x40];                              // CScriptBase
     CGameScriptInterface* Game;                             // +0x40
-    bool IsActiveThreadTerminating();                       // 0x00CB7940 (CScriptBase)
     void HilightGuildTeleporter();
 };
 void CV_TrophyDealerScript::HilightGuildTeleporter()

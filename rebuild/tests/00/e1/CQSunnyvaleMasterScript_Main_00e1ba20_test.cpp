@@ -13,11 +13,11 @@ static int g_calls = 0;
 static int g_advance_left = 3;
 
 void __fastcall CQ_SunnyvaleMasterScript_Advance_impl(CQ_SunnyvaleMasterScript*);
-bool __fastcall CQ_SunnyvaleMasterScript_Advance(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
 
 static void __fastcall step_fn(IStep*) { g_calls++; }
 
-bool __fastcall CQ_SunnyvaleMasterScript_Advance(CQ_SunnyvaleMasterScript*) {
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
     // return false, false, true  -> loop exits after 3rd body run
     return --g_advance_left <= 0;
 }

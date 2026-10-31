@@ -55,7 +55,7 @@ class CThingCreatureBase : public CThing { public:
     unsigned char _pad4c[0x100 - 0x4c];
     CCreatureActionQueue* PActionQueue;         // +0x100
     void FinishCurrentAction();                 // 0x00662650
-    bool IsPerformingAnyAction();               // 0x006622A0
+    bool IsPerformingAnyAction() const;               // 0x006622A0
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
 };
 class CBaseObject;

@@ -48,9 +48,11 @@ struct GameCalls:CGameScriptInterface {
 };
 // Parent flag meaning remains inferred/unknown; only its native offset is asserted.
 struct NativeParent {unsigned char UnrecoveredPrefix[0x4a];bool ScriptFlag;unsigned char UnrecoveredByte;bool ResultFlag;};
-struct CVtable012E4EF8 {void* VTable;GameCalls* Game;CScriptThing Me;NativeParent* Parent;void* Master;
+class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
+struct CVtable012E4EF8 : public CEntityScriptBase {void* VTable;GameCalls* Game;CScriptThing Me;NativeParent* Parent;void* Master;
  void SetPredicate(const NScript::CPredicateBase&); //00F35B10
- bool IsActiveThreadTerminating(); //00F35B30
  void Main();
 };
 #ifdef _MSC_VER

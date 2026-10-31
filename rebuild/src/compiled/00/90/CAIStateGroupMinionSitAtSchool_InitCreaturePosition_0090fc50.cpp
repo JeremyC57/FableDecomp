@@ -141,7 +141,7 @@ struct CTCVillager;
 class CTCVillage { public:
     bool IsSchoolTime();                        // 0x00658A35
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CThingBuilding;
 struct CThingCreatureHome {
@@ -162,7 +162,7 @@ __forceinline bool PlaceNearHome(CThingCreatureHome* creature)
 bool CAIStateGroup_MinionSitAtSchool::InitCreaturePosition()
 {
     if (PBrain->PCreature->HasTC(0x23)) {
-        return GFGetPVillageInterface(PBrain->PCreature->FindTC<CTCVillager>(0x23))->IsSchoolTime()
+        return ((CTCVillageMember*)(PBrain->PCreature->FindTC<CTCVillager>(0x23)))->GetPVillage()->IsSchoolTime()
             && PlaceNearHome((CThingCreatureHome*)PBrain->PCreature);
     }
     return false;

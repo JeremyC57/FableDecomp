@@ -13,7 +13,7 @@ struct CQ_SunnyvaleMasterScript {
     IStep* f4;
 };
 
-extern "C" bool __fastcall SunnyvaleMasterHelper(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
 
 void __fastcall CQ_SunnyvaleMasterScript__Main(CQ_SunnyvaleMasterScript* self);
 
@@ -22,8 +22,7 @@ static int g_helperCalls = 0;
 
 void __fastcall step7(IStep*) { g_stepCalls++; }
 
-extern "C" bool __fastcall SunnyvaleMasterHelper(CQ_SunnyvaleMasterScript*)
-{
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
     g_helperCalls++;
     return g_helperCalls >= 3; // returns true (stop) on 3rd call; loop runs 3 times
 }

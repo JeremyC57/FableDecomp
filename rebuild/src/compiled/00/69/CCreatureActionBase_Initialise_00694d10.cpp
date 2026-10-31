@@ -30,7 +30,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsAnimCombinationAnim(long animation); // 0x00662820 (CThingCreatureBase)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -46,6 +45,9 @@ class CThing { public:
     }
 };
 
+class CThingCreatureBase : public CThing { public:   // the creature the action belongs to (Ego_r.pdb CThingCreatureBase derives from CThing)
+    bool IsAnimCombinationAnim(long animation) const;   // 0x00662820 (Ego_r.pdb, const)
+};
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -167,7 +169,7 @@ void CCreatureActionBase::Initialise()
     Initialised = true;
     if (entry) {
         CThing* creature = PCreature.GetPItem();
-        if (!creature->IsAnimCombinationAnim(entry->Animation)) {
+        if (!static_cast<CThingCreatureBase*>(creature)->IsAnimCombinationAnim(entry->Animation)) {
             CTCInterface5A* controller;
             if (PCreature.GetPItem()->GetInterface(&controller, 0x5a)) {
                 CControlFlags* flags = controller->GetControlFlags();

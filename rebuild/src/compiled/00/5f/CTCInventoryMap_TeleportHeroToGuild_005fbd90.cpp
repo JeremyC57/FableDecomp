@@ -1,4 +1,4 @@
-// CTCInventoryMap::TeleportHeroToGuild() -- while the hero creature is alive, find the guild teleport marker among the world's teleporters and send the hero through it
+// CTCInventoryMap::TeleportHeroToGuild() const -- while the hero creature is alive, find the guild teleport marker among the world's teleporters and send the hero through it
 // Leaf: TeleportHeroToGuild
 // Retail 0x005FBD90, 272 bytes (+ int3), esp frame (speed TU).
 // Callees: CTCBase::PeekPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960,
@@ -129,16 +129,16 @@ public:
 }
 
 class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
-    void TeleportHeroToTeleporter(CThing* teleporter);   // 0x005FBD20
-    void TeleportHeroToGuild();
-    __forceinline void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things)
+    void TeleportHeroToTeleporter(CThing& teleporter) const;   // 0x005FBD20 (Ego_r.pdb: const, by reference)
+    void TeleportHeroToGuild() const;                          // Ego_r.pdb: const
+    __forceinline void GetAllThings(const CThingFilter_HasTC& filter, list<CThing*>& things) const
     {
         CWorld* world = (&GetWorld());
         world->ThingSearchTools->GetAllThings(filter, things);
     }
 };
 
-void CTCInventoryMap::TeleportHeroToGuild()
+void CTCInventoryMap::TeleportHeroToGuild() const
 {
     const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead) {
@@ -149,7 +149,7 @@ void CTCInventoryMap::TeleportHeroToGuild()
             bool isGuild = teleporter->DefIndex ==
                 CGameDefinitionManager::Get().GetDefGlobalIndexFromName("HERO_GUILD_TELEPORT_MARKER");
             if (isGuild) {
-                TeleportHeroToTeleporter(teleporter);
+                TeleportHeroToTeleporter(*teleporter);
                 return;
             }
         }

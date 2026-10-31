@@ -121,7 +121,7 @@ class CTCVillage { public:
     CCharString GetWarningStringForCurrentCrimes(long crime, bool& isFine, long& amount) const;   // 0x0065A075
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CTCPerceiveThing { public:                       // interface 0x34
     CThing* GetPerceivedThing();                // 0x007446A0
@@ -154,7 +154,7 @@ bool CAIStateGroup_MinionGuardReactToCriminal::IsRunnable()
 {
     CTCVillager* villager;
     PBrain->PCreature->GetInterface(&villager, 0x23);
-    CTCVillage* village = GFGetPVillageInterface(villager);
+    CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
     if (village != 0 && village->IsHeroCriminal()) {
         const CThing* creature = PBrain->PCreature;
         if (creature->HasTC(0x34)) {

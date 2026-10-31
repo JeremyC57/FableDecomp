@@ -10,7 +10,7 @@
 //          float on the stack), rand @ 0x00BFEB16 (MSVCR71), CDefString::operator CCharString @ 0x00415D70, ~CCharString
 //          @ 0x0099EAE0, ~CScriptThing @ 0x004AA840; data: pGlobalScriptDef @ 0x0143E90C (sound-name vector +0x2c0/+0x2c4,
 //          ambush distance +0x2cc).
-// Shape: the trickster is a frame local destroyed at both exits; the early `if (IsDone()) return;` sits before the rest of
+// Shape: the trickster is a frame local destroyed at both exits; the early `if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) return;` sits before the rest of
 //          the body, which lives in a __forceinline helper so VC7.1 pushes/pops ebx (the address of Me) inside that region
 //          only; the two wait loops are rotated whiles (`while (!near) { frame; if done return; }`, then
 //          `do frame while (!done)`); the sound index is `rand() % size()` with the vector size as a pointer difference.
@@ -55,6 +55,9 @@ struct CV_AmbushScamScript {
 };
 struct CQ_SunnyvaleMasterData;
 
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 struct CAS_Ambusher {
     virtual ~CAS_Ambusher();
     virtual void Main();                                 // slot 1
@@ -62,7 +65,6 @@ struct CAS_Ambusher {
     CScriptThing Me;                                     // +0x08
     CV_AmbushScamScript* ParentClass;                    // +0x14
     CQ_SunnyvaleMasterData* PMasterData;                 // +0x18
-    bool IsDone();                                       // 0x00F35B30
     __forceinline void RunAmbush();
 };
 
@@ -72,10 +74,10 @@ __forceinline void CAS_Ambusher::RunAmbush()
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->AS_AmbushDistance)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     unsigned long count = pGlobalScriptDef->AS_AmbushSoundsEnd - pGlobalScriptDef->AS_AmbushSoundsBegin;
     unsigned long index = rand() % count;
@@ -85,14 +87,14 @@ __forceinline void CAS_Ambusher::RunAmbush()
     }
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating());
 }
 
 void CAS_Ambusher::Main()
 {
     CScriptThing trickster = ParentClass->GetTrickster();
     if (trickster.IsAlive()) {
-        if (IsDone())
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
         Game->EntitySetThingAsAllyOfThing(Me, trickster);
         Game->EntitySetThingAsAllyOfThing(trickster, Me);

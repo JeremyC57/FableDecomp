@@ -153,7 +153,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     CWorld* GetPWorld() const;                  // 0x008FCFC0
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   protected: // 0x0097DB70
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200

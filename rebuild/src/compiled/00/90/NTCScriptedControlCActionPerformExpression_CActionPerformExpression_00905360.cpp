@@ -60,7 +60,7 @@ inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other)
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    CScriptThing GetScriptThing();                  // 0x004C7E50
+    CScriptThing GetScriptThing() const;                  // 0x004C7E50
 };
 
 struct __declspec(novtable) CAction : CBaseClassNonCopyable {       // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead

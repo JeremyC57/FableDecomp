@@ -34,7 +34,7 @@ class CThing { public:
     unsigned char    KillOnLevelUnload : 1;        // +0x93 bit 2
     unsigned char    ActivatedScript : 1;          // +0x93 bit 3
     unsigned char    _93_4 : 4;
-    CScriptThing GetScriptThing();                 // 0x004C7E50
+    CScriptThing GetScriptThing() const;                 // 0x004C7E50
 };
 class CScriptBase { public:
     bool BindsEntityScript(const CCharString& name);                              // 0x00CB7D60

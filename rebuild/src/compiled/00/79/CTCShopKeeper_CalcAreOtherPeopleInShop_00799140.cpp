@@ -4,7 +4,7 @@
 //   CThing::GetPos 0x004C73D0, CThingBuilding::IsPointInside 0x0082D000, CThingBuilding::IsDoorBlockedBy 0x0082D9C0,
 //   CTCBase::GetPlayerManager 0x00686D40, CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0.
 // Layout (retail CThing, 0x10 below the PDB): state byte +0x10, TC bitset +0x20 (bit 0x23 = village member at +0x24 bit 3,
-//   bit 0x75 at +0x2c bit 21), interface map +0x44, Dead +0x91 bit 0, home building pointer +0x170; CVillage villager list
+//   bit 0x75 at +0x2c bit 21), interface map +0x44, Dead +0x91 bit 0, home building pointer +0x170; CTCVillage villager list
 //   header +0x2c (node data at +0x08); TC 0x75's building pointer +0x0c.
 // Shape: the two TC lookups are the out-parameter GetInterface (bit test, key local, map pointer, one end/hit ternary on
 //   the constant type), which lets the village pointer's spill share the key's frame word (sub esp,0xc); the building test
@@ -60,11 +60,11 @@ class CThingBuilding : public CThing { public:
 };
 __forceinline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }
 struct CVillagerNode { CVillagerNode* _M_next; CVillagerNode* _M_prev; CBaseIntelligentPointer Villager; };
-struct CVillage {
+class CTCVillage { public:
     unsigned char _pad00[0x2c];
     CVillagerNode* Villagers;                       // +0x2c (list header)
 };
-class CTCVillageMember { public: CVillage* GetPVillage(); };   // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540
 struct CTCHeroBuilding { unsigned char _pad00[0x0c]; CBaseIntelligentPointer Building; };   // TC 0x75, +0x0c
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -95,7 +95,7 @@ bool CTCShopKeeper::CalcAreOtherPeopleInShop()
     CTCVillageMember* member;
     if (owner->GetInterface(0x23, &member))
     {
-        CVillage* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         if (village)
         {
             for (CVillagerNode* node = village->Villagers->_M_next; node != village->Villagers; node = node->_M_next)

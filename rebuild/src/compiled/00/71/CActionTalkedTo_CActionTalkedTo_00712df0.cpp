@@ -20,7 +20,7 @@ class CScriptThing { public:                       // engine/CScriptThing.h layo
 };
 
 class CThing { public:
-    CScriptThing GetScriptThing();          // 0x004C7E50
+    CScriptThing GetScriptThing() const;          // 0x004C7E50
 };
 
 class CBaseObjectPointer;

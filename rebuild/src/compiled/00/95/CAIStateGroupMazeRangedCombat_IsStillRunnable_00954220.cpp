@@ -47,7 +47,9 @@ class CAIStateGroupBase { public:
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
 };
 
 class CAIStateGroup_MazeRangedCombat : public CAIStateGroupBase {

@@ -43,6 +43,7 @@ class CAnimFrameInfo { public:
     CAnimFrameInfo() : A(0.0f), B(0.0f) {}
     CAnimFrameInfo(const CAnimFrameInfo& o) : A(o.A), B(o.B) {}
 };
+enum EAnimUpdateMode { ANIM_UPDATE_MODE_0, ANIM_UPDATE_MODE_1, ANIM_UPDATE_MODE_2 };   // Ego_r.pdb enum (the Init parameter type)
 class CAnimInit { public:
     long           UpdateMode;                      // +0x00
     unsigned char  Type;                            // +0x04
@@ -55,10 +56,10 @@ class CAnimInit { public:
     unsigned long  Flags;                           // +0x20
     unsigned long  TypeFlags;                       // +0x24
     long           Priority;                        // +0x28
-    void Set(unsigned char type, long mode, long anim, long a, bool b, unsigned long flags, long priority);   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 (Ego_r.pdb CAnimInit::Init)
     CAnimInit(unsigned char type, long mode, long anim, long a, bool b, unsigned long flags, long priority)
     {
-        Set(type, mode, anim, a, b, flags, priority);
+        Init(type, mode, anim, (EAnimUpdateMode)a, b, flags, priority);
     }
 };
 class CAnimateThing { public:

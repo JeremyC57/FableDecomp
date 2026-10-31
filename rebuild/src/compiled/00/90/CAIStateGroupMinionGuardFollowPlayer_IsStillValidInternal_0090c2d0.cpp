@@ -111,12 +111,12 @@ struct CTCBuildingGuarded {                             // interface 0xd5 (descr
     unsigned char _pad[0x11];
     bool Guarded;                                       // +0x11
 };
-struct CVillage {
+class CTCVillage { public:
     unsigned char _pad[0xc8];
     long NextFollowFrame;                               // +0xc8 (descriptive)
 };
 class CTCVillageMember { public:                               // interface 0x23
-    CVillage* GetPVillage() const;                      // 0x007EE540
+    CTCVillage* GetPVillage() const;                      // 0x007EE540
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                            // 0x00487DC0
@@ -154,7 +154,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool)
             CThingBuilding* building = (CThingBuilding*)inside->PBuilding.GetPItem();
             CTCVillageMember* member;
             if (building->ThingType == 3 && GetCreature()->GetInterface(&member, 0x23) && member->GetPVillage()) {
-                CVillage* village = member->GetPVillage();
+                CTCVillage* village = member->GetPVillage();
                 CTCShopSign* sign;
                 if (building->GetInterface(&sign, 0xbd) && sign->m_closed) {
                     if (!building->HasTC(0x53))

@@ -55,7 +55,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x0c];                   // +0x08..+0x13
     CWorld* GetPWorld();                        protected: // 0x008FCFC0
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                           // 0x008FCF40
 };
 

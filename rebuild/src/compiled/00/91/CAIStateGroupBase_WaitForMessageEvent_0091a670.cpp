@@ -32,7 +32,9 @@ class CAIStateGroupBase {
 public:
     void*   __vftable;                        // +0x00
     CBrain* PBrain;                           // +0x04
-    bool IsStopping();                        // 0x008FD010
+protected:
+    bool IsStopping() const;                        // 0x008FD010 (Ego_r.pdb protected const)
+public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0 (PBrain->+0x1c->+0x24)
 public:

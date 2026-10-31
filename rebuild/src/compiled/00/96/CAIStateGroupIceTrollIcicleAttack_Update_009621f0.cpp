@@ -59,7 +59,7 @@ class CThing { public:
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
-    bool IsPerformingAnyAction();               // 0x006622A0
+    bool IsPerformingAnyAction() const;               // 0x006622A0
 };
 class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
@@ -171,7 +171,8 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    bool IsStopping();                          protected: // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   protected: // 0x0097D6F0

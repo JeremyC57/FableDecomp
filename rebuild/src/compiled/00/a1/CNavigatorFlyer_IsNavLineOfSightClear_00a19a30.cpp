@@ -7,12 +7,12 @@ class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
 };
-struct CANavQuadTreeNode_00a19a30 {
+class CANavQuadTreeNode { public:
     unsigned char _pad00[0xf];
     bool          m_switchedOff;                   // +0x0f
 };
 class CNavigatorManager { public:
-    CANavQuadTreeNode_00a19a30* GetNodeAt(const C2DVector& position, bool layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 
 class CNavigatorFlyer { public:

@@ -52,6 +52,9 @@ class CQ_HeroSoulsArenaScript { public:
     class CSummonerToKill;
 };
 }
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 class NScript::CQ_HeroSoulsArenaScript::CSummonerToKill {
 public:
     void*                             __vftable;   // +0x00
@@ -60,7 +63,6 @@ public:
     NScript::CQ_HeroSoulsArenaScript* ParentClass; // +0x14
     void*                             PMasterData; // +0x18
     void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -71,22 +73,22 @@ void NScript::CQ_HeroSoulsArenaScript::CSummonerToKill::Main()
         RegisterFilter(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     if (!ParentClass->PlayedArenaCS) {
-        if (IsDone())
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
         CScriptGameResourceObjectScriptedThingBase scripted;
         Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4);
         while (!ParentClass->FirstWaveAttack) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
     }
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating());
 }

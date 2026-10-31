@@ -37,7 +37,7 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                              // +0x91 bit 0
     bool IsDead() const { return Dead; }
-    CScriptThing GetScriptThing();                       // 0x004C7E50 (by value through the hidden result pointer)
+    CScriptThing GetScriptThing() const;                       // 0x004C7E50 (by value through the hidden result pointer)
     bool HasTC(long type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))

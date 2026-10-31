@@ -33,7 +33,7 @@ class CWideString { public:
     CWideString(const CWideString& other);              // 0x0099B5F0
     ~CWideString();                                     // 0x0099B510
 };
-CWideString __fastcall IntToWideString(long value);                                 // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);                               // 0x00405F00 (Ego_r.pdb)
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right); // 0x0099BE70
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
@@ -207,7 +207,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
     list->SetSelectedIndex(0);
     list->AddEntry(sellEntry);
     if (count > 10) {
-        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + IntToWideString(10);
+        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + GFIntToWideString(10);
         CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
@@ -217,7 +217,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
         list->AddEntry(entry);
     }
     if (count > 50) {
-        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + IntToWideString(50);
+        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL") + CWideString(L" ") + GFIntToWideString(50);
         CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);
@@ -227,7 +227,7 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
         list->AddEntry(entry);
     }
     if (count > 1) {
-        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL_ALL") + CWideString(L" (") + IntToWideString(count) + CWideString(L")");
+        CWideString label = bank->GetTextBySymbol("TEXT_GUI_MENU_SELL_ALL") + CWideString(L" (") + GFIntToWideString(count) + CWideString(L")");
         CCountedPointer<CComponentBase> entry(fe->CreateMenuEntryComponent(label, 25.0f, 0.66666f, "UI_WEAPON_MENU_ENTRY_ACTION_TEMPLATE_NEW",
                                                                           0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
         CCountedPointer<CAction> action(new CAction);

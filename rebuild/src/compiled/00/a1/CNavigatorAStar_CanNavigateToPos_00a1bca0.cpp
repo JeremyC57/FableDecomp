@@ -34,7 +34,7 @@ class CANavQuadTreeNode { public:
     bool          Blocked;                         // +0x0f
 };
 class CNavigatorManager { public:
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 class CNavigatorExternalInterface { public:
     virtual void v00();
@@ -76,7 +76,7 @@ class CNavigatorAStar : public CNavigatorBase { public:
 bool CNavigatorAStar::CanNavigateToPos(const C3DVector& from, const C3DVector& to, float radius, bool useLastNavigable) const
 {
     C2DVector from2d(from.X, from.Y);
-    CANavQuadTreeNode* startNode = NavigationManager->GetNodeAt(from2d, PInterface->GetNavLayer(from));
+    CANavQuadTreeNode* startNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(from2d, PInterface->GetNavLayer(from));
     if (!startNode)
         return false;
     if (startNode->Blocked) {
@@ -88,7 +88,7 @@ bool CNavigatorAStar::CanNavigateToPos(const C3DVector& from, const C3DVector& t
             return false;
     }
     C2DVector to2d(to.X, to.Y);
-    CANavQuadTreeNode* endNode = NavigationManager->GetNodeAt(to2d, PInterface->GetNavLayer(to));
+    CANavQuadTreeNode* endNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(to2d, PInterface->GetNavLayer(to));
     if (!endNode)
         return false;
     if (endNode->Blocked) {

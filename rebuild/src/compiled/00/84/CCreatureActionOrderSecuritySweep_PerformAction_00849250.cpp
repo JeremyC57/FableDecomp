@@ -53,7 +53,7 @@ struct CTCVillager;
 class CTCVillage { public:
     void RecalculateSecuritySweep(long flags);   // 0x00659C32
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CCreatureAction_OrderSecuritySweep { public:
     virtual void v00(); virtual void v01(); virtual void v02();
@@ -66,7 +66,7 @@ void CCreatureAction_OrderSecuritySweep::PerformAction()
 {
     CTCVillager* pVillager;
     PCreature.GetPItem()->GetInterface(&pVillager, 0x23);
-    CTCVillage* pVillage = GFGetPVillageInterface(pVillager);
+    CTCVillage* pVillage = ((CTCVillageMember*)pVillager)->GetPVillage();
     if (pVillage)
         pVillage->RecalculateSecuritySweep(0);
 }

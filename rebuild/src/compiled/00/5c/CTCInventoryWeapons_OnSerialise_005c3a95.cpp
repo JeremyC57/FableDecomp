@@ -26,10 +26,12 @@ namespace N_00415dd0 { struct CDefString {
     CDefString(const CDefString& other);
     operator CCharString() const;                       // 0x00415DD0
 }; } using N_00415dd0::CDefString;
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CThing { public:
     unsigned short _pad[0x46];

@@ -31,7 +31,7 @@ public:
 };
 class CNavigatorManager {
 public:
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, bool layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 class CNavigatorExternalInterface {
 public:
@@ -61,7 +61,7 @@ public:
 
 bool CNavigatorAStar::GetNearestNavigablePosTo(const C3DVector& pos, float radius, C3DVector& out) const
 {
-    CANavQuadTreeNode* node = NavigationManager->GetNodeAt(pos, PInterface->GetLayerAt(pos));
+    CANavQuadTreeNode* node = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(pos, PInterface->GetLayerAt(pos));
     if (node) {
         if (!node->Blocked) {
             out = pos;

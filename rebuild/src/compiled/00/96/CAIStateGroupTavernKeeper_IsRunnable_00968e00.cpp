@@ -76,7 +76,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 class CTCVillage;
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class CTCTavernBar { public:                           // interface 0xb9
     unsigned char _pad[0x18];
     CIntelligentPointerCreature PKeeper;        // +0x18
@@ -108,7 +108,7 @@ bool CAIStateGroup_TavernKeeper::IsRunnable()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        CTCVillage* village = GFGetPVillageInterface(villager);
+        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (!IS_THING_ALIVE(PPub))
             PPub = CIntelligentPointerBuilding(((CThing*)((CThingAICreature*)GetCreature())->PWorkplace.GetPItem()));
         if (IS_THING_ALIVE(PPub) && village != 0 && (IS_THING_ALIVE(PBar) || GetBar())) {

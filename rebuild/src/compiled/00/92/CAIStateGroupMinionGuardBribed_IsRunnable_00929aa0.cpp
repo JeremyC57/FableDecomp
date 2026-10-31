@@ -107,14 +107,14 @@ class CTCVillage { public:
     unsigned char _pad[0xa8];
     long m_frameBribeEnds;                      // +0xa8
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
     virtual bool IsRunnable();
     bool IsStillBribed(CTCVillager* villager)
     {
         GetPWorld();
-        return CWorld::GetFrame() < GFGetPVillageInterface(villager)->m_frameBribeEnds;
+        return CWorld::GetFrame() < ((CTCVillageMember*)villager)->GetPVillage()->m_frameBribeEnds;
     }
 };
 
@@ -122,6 +122,6 @@ bool CAIStateGroup_MinionGuardBribed::IsRunnable()
 {
     CTCVillager* villager;
     return PBrain->PCreature->GetInterface(&villager, 0x23)
-        && GFGetPVillageInterface(villager) != 0
+        && ((CTCVillageMember*)villager)->GetPVillage() != 0
         && IsStillBribed(villager);
 }

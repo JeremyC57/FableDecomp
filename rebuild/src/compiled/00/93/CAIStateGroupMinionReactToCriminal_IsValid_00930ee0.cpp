@@ -226,7 +226,7 @@ class CTCVillage { public:
     unsigned char _pad7d[0x88 - 0x7d];
     void* m_pGuardPost;                         // +0x88 (descriptive)
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class COpinionDeedFilter_IsCrimeToRunAndFindAGuard { public:
     COpinionDeedFilter_IsCrimeToRunAndFindAGuard() { }
 };
@@ -256,7 +256,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsValid()
         if (PBrain->PCreature->GetInterfaceX(&villager, 0x23)) {
             CTCCreatureOpinionOfHero* opinion;
             if (PBrain->PCreature->GetInterfaceX(&opinion, 0x4f)) {
-                CTCVillage* village = GFGetPVillageInterface(villager);
+                CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
                 if (village) {
                     long deedIndex = -1;
                     if (village->m_crimeReported || !village->m_pGuardPost

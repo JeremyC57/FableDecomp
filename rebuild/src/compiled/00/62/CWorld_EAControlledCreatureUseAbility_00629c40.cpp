@@ -38,7 +38,7 @@ public:
 class CThingPlayerCreature : public CThingCreatureBase { };
 enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
-    bool HasMode(EPlayerMode mode);                // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                // 0x00634160
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared

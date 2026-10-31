@@ -47,7 +47,9 @@ extern long g_framesPerSecond;                 // 0x01375550
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];          // +0x20 bitset<274>
+protected:
     const CWorld& PeekWorld() const;           // 0x004C7AB0
+public:
 };
 
 class CThingCreatureBase : public CThing { public:

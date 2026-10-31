@@ -143,7 +143,9 @@ class CTCInventoryExperience : public CTCInventoryBase { public:
     long            PreviousScreenType;                      // +0x220
     unsigned char   _pad224[0x258 - 0x224];
     NUISystem::CMousePointer* PMousePointer;                 // +0x258
+private:
     CTCHeroExperience* GetTCHeroExperience();                // 0x0056FF3D
+public:
     CTCHeroStats*      GetTCHeroStats();                     // 0x0056FF81
     CTCHeroAbilities*  GetTCHeroAbilities();                 // 0x0056FFC5
     void vfunc_90(bool undo);

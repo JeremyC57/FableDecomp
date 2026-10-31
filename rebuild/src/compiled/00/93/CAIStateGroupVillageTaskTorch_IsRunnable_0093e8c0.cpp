@@ -51,7 +51,7 @@ class CTCVillageMember;
 class CTCVillage { public:
     CVillageTaskTorch* GetTorchTask(CThingAICreature* creature);   // 0x006590C4
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillageMember* member);   // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
@@ -76,7 +76,7 @@ struct CAIStateGroup_VillageTaskTorch : CAIStateGroupBase {
 bool CAIStateGroup_VillageTaskTorch::IsRunnable()
 {
     PTask = 0;
-    CTCVillage* village = GFGetPVillageInterface(PTCVillageMember);
+    CTCVillage* village = ((CTCVillageMember*)PTCVillageMember)->GetPVillage();
     if (village) {
         PTask = village->GetTorchTask(GetCreature());
         if (PTask.GetTask()) {

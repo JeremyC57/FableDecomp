@@ -13,7 +13,8 @@ static int g_vcalls = 0;
 static char __fastcall thing_slot1c(IThing*) { g_vcalls++; return 0; }
 
 static int g_helper_calls = 0;
-extern "C" char __fastcall SunnyvaleMasterHelper(CQ_SunnyvaleMasterScript*) {
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
     g_helper_calls++;
     // return nonzero on 3rd call so loop runs 3 iterations
     return (g_helper_calls >= 3) ? 1 : 0;

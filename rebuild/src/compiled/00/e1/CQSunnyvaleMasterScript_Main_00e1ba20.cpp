@@ -10,7 +10,7 @@ struct CQ_SunnyvaleMasterScript {
 };
 
 // helper 0xf35b30 : __fastcall bool(CQ_SunnyvaleMasterScript*)
-extern bool __fastcall CQ_SunnyvaleMasterScript_Advance(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
 
 void __fastcall Main(CQ_SunnyvaleMasterScript* self)
 {
@@ -18,5 +18,5 @@ void __fastcall Main(CQ_SunnyvaleMasterScript* self)
         IStep* s = self->field4;
         // vtbl slot at +0x1c => index 7
         (*(void (__fastcall **)(IStep*))((char*)s->vtbl + 0x1c))(s);
-    } while (!CQ_SunnyvaleMasterScript_Advance(self));
+    } while (!((const CEntityScriptBase*)self)->IsActiveThreadTerminating());
 }

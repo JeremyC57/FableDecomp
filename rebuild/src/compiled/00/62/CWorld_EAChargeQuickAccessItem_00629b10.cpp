@@ -39,7 +39,7 @@ public:
 class CThingPlayerCreature : public CThingCreatureBase { };
 enum EPlayerMode { PLAYER_MODE_CHARGING_QUICK_ACCESS = 0x1c, PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
-    bool HasMode(EPlayerMode mode);                // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                // 0x00634160
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
     EPlayerMode GetCurrentMode() const;            // 0x00633BE0
     void AddMode(EPlayerMode mode, bool b);        // 0x006345C0

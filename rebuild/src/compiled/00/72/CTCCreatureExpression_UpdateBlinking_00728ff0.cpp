@@ -38,12 +38,13 @@ class CAnimInit { public:                                      // 0x2c bytes
     unsigned char _body[0x2c];
     CAnimInit(long animType, long arg24, long animIndex, long mode, bool flag05, unsigned long flags, long percent);   // 0x005B33F4
 };
+class CAnimSet;
 struct CCombinationAnim {
     unsigned char _pad00[0x51];
     unsigned char Flags51;                              // +0x51 bit 1: finished
 };
 class CAnimateThing { public:
-    CCombinationAnim* FindCombinationAnim(long type);   // 0x0070C4E0
+    CAnimSet* GetFirstCombinationAnimFromType(long type);   // 0x0070C4E0 (Ego_r.pdb)
     void AddCombinationAnim(const CAnimInit& init, long a, long b, bool c, bool d);   // 0x0070D780
     void RemoveCombinationAnim(CCombinationAnim* anim); // 0x0070D8E0
 };
@@ -89,7 +90,7 @@ void CTCCreatureExpression::UpdateBlinking(CAnimateThing& animate, long)
         }
     }
     if (Blinking) {
-        CCombinationAnim* blink = animate.FindCombinationAnim(0xd);
+        CCombinationAnim* blink = (CCombinationAnim*)animate.GetFirstCombinationAnimFromType(0xd);
         if (blink) {
             if (!(blink->Flags51 & 2))
                 return;

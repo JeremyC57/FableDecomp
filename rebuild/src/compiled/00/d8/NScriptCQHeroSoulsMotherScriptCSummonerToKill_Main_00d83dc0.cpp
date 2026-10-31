@@ -34,6 +34,9 @@ class CQ_HeroSoulsMotherScript { public:
     class CSummonerToKill;
 };
 }
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 class NScript::CQ_HeroSoulsMotherScript::CSummonerToKill {
 public:
     void*                             __vftable;   // +0x00
@@ -42,7 +45,6 @@ public:
     NScript::CQ_HeroSoulsMotherScript*  ParentClass; // +0x14
     void*                             PMasterData; // +0x18
     void RegisterFilter(CIsThingAlive& filter);    // 0x00F35B10
-    bool IsDone();                                 // 0x00F35B30
     void Main();
 };
 
@@ -53,14 +55,14 @@ void NScript::CQ_HeroSoulsMotherScript::CSummonerToKill::Main()
         RegisterFilter(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     while (!ParentClass->QuestStartScreened) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     Game->RemoveThing(Me, false, true);
 }

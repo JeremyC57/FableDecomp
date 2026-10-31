@@ -108,7 +108,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                         // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                         // 0x006A1440
     void RemoveThing(CThing* thing);                         // 0x006A19B0
     bool IsCarryingThing(CThing* thing);                     // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool drop);           // 0x006A1E00

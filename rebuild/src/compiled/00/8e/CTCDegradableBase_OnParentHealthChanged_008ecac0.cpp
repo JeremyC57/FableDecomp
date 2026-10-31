@@ -51,7 +51,7 @@ class CThing { public:
 class CThingPhysical { public:
     unsigned char _pad0[0xbc];
     unsigned char Hittable : 1;                             // +0xbc bit 0
-    float GetHealthPercentage();                            // 0x006A4E40
+    float GetHealthPercentage() const;                      // 0x006A4E40 (Ego_r.pdb, const)
 };
 class CEngineGraphic { public: unsigned char _body[0x10]; };
 class CDegradableInfo { public:                                    // 0x1c bytes

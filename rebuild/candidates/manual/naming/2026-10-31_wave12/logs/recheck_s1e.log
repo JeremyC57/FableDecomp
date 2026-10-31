@@ -1,0 +1,69 @@
+addr       parity           behav  name
+00cd2b78   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00cd2b78   RELOCATION_MATCH PASS   _unattributed::CClass_00cd2b78
+00cd2e2d   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00cd2e2d   RELOCATION_MATCH PASS   _unattributed::CStringOwner_00cd2e2d
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d34440.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d34440.obj; graded the largest function
+00d34440   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d34440   RELOCATION_MATCH PASS   CVtable_012cc60c::`scalar deleting destructor'
+00da6d50   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da6d50   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da6d50   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00da6d50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da6d50   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00da6d50   RELOCATION_MATCH PASS   CBalverineFightingGuard::Main
+00da7830   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da7830   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da7830   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00da7830   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da7830   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00da7830   RELOCATION_MATCH PASS   CCorneredGuard::Main
+00da7d30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00da7d30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da7d30   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00da7d30   RELOCATION_MATCH PASS   CGuardToLeadTheWay::Main
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e546a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e546a0.obj; graded the largest function
+00e546a0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00e546a0   RELOCATION_MATCH PASS   CVtable_012e5f40::`scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62b0.obj; graded the largest function
+00eb62b0   WARN RELOC_NAME: ?AutoTinyFirstMemberDestructor_00cd4470@@YIXPAX@Z -> 00cd4470 labelled 'CTimer::~CTimer'
+00eb62b0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00eb62b0   RELOCATION_MATCH PASS   CVtable_012efa0c::`scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62e0.obj; graded the largest function
+00eb62e0   WARN RELOC_NAME: ?AutoTinyFirstMemberDestructor_0099eae0@@YIXPAX@Z -> 0099eae0 labelled 'CCharString::~CCharString'
+00eb62e0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00eb62e0   RELOCATION_MATCH PASS   CVtable_012efee8::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6310.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6310.obj; graded the largest function
+00eb6310   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00eb6310   RELOCATION_MATCH PASS   CVtable_012f00bc::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6340.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6340.obj; graded the largest function
+00eb6340   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00eb6340   RELOCATION_MATCH PASS   CVtable_012f036c::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ecd5d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ecd5d0.obj; graded the largest function
+00ecd5d0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00ecd5d0   RELOCATION_MATCH PASS   CVtable_012f2404::`scalar deleting destructor'
+00ee8870   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ee8870   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00ee8870   RELOCATION_MATCH PASS   CCS_OakValeRevisitedScript::OakValeFire
+
+WINS: 13
+  00cd2b78 RELOCATION_MATCH _unattributed::CClass_00cd2b78
+  00cd2e2d RELOCATION_MATCH _unattributed::CStringOwner_00cd2e2d
+  00d34440 RELOCATION_MATCH CVtable_012cc60c::`vector_deleting_destructor'
+  00da6d50 RELOCATION_MATCH CBalverineFightingGuard::?Main@CBalverineFightingGuard@@
+  00da7830 RELOCATION_MATCH CCorneredGuard::?Main@CCorneredGuard@@
+  00da7d30 RELOCATION_MATCH CGuardToLeadTheWay::Main
+  00e546a0 RELOCATION_MATCH CVtable_012e5f40::`scalar_deleting_destructor'
+  00eb62b0 RELOCATION_MATCH CVtable_012efa0c::`vector_deleting_destructor'
+  00eb62e0 RELOCATION_MATCH CVtable_012efee8::`vector_deleting_destructor'
+  00eb6310 RELOCATION_MATCH CVtable_012f00bc::`scalar_deleting_destructor'
+  00eb6340 RELOCATION_MATCH CVtable_012f036c::`scalar_deleting_destructor'
+  00ecd5d0 RELOCATION_MATCH CVtable_012f2404::`scalar_deleting_destructor'
+  00ee8870 RELOCATION_MATCH CCS_OakValeRevisitedScript::OakValeFire

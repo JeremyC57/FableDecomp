@@ -85,7 +85,9 @@ __declspec(noinline) CPreloadDeadAnimation __fastcall ForEachAnimation(SAnimatio
 class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PBaseDef;                    // +0x70
+protected:
     const CWorld& PeekWorld() const;            // 0x004C7AB0
+public:
 };
 
 class CThingDeadCreature : public CThing { public:

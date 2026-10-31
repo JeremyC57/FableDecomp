@@ -105,7 +105,7 @@ struct CTCVillager;
 class CTCVillage { public:
     CThing* FindNearestBuildingWithProperty(const C3DVector& pos, long property);   // 0x00658E38
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CInterfaceMapB {                         // the same vector map, this module's LowerBound instantiation
     struct SEntry { long type; CTCBase* component; };
@@ -141,7 +141,7 @@ bool CAIStateGroup_MinionSitAtInn::GetPOwnerObject(CThing** ppOwner)
 {
     CTCVillager* villager;
     if (((CThingB*)PBrain->PCreature)->GetInterface(&villager, 0x23)) {
-        CTCVillage* village = GFGetPVillageInterface(villager);
+        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (village != 0) {
             CThing* inn = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPos(), 0x20);
             if (inn != 0) {

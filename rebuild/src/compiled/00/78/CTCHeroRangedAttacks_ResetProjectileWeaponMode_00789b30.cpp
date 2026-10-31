@@ -11,7 +11,7 @@ enum EPlayerMode { PLAYER_MODE_NONE };
 class CPlayer {
 public:
     void RemoveMode(EPlayerMode mode);              // 0x00634190
-    bool HasMode(EPlayerMode mode);                 // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                 // 0x00634160
     void AddMode(EPlayerMode mode, bool b);         // 0x006345C0
 };
 class CThing {

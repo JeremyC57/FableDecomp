@@ -73,11 +73,11 @@ class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
     void RemoveDeed(long data);                 // 0x006C59E0 (descriptive)
 };
-struct CVillage {
+class CTCVillage { public:
     bool IsDeedHandled(long handle);            // 0x0065914B (descriptive)
 };
 class CTCVillageMember { public:                       // interface 0x23
-    CVillage* GetPVillage() const;              // 0x007EE540
+    CTCVillage* GetPVillage() const;              // 0x007EE540
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
@@ -105,7 +105,7 @@ bool CAIStateGroupMinionReactToCrimeMethods::IsRunnable()
 {
     CTCVillageMember* member;
     if (((const CThing*)GetCreature())->GetInterfaceX(&member, 0x23)) {
-        CVillage* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         CTCCreatureOpinionOfHero* opinion;
         if (village && ((const CThing*)GetCreature())->GetInterfaceX(&opinion, 0x4f)) {
             COpinionDeed* deed = opinion->FindMostRecentDeed(COpinionDeedFilter_IsCrimeToRunAndFindAGuard(),

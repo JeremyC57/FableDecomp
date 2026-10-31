@@ -33,7 +33,7 @@ public:
 };
 class CNavigatorManager {
 public:
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, bool layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 class CNavigatorExternalInterface {
 public:
@@ -67,7 +67,7 @@ void CNavigatorAStar::UpdateLastPosition(const C3DVector& pos)
 {
     if (!Interrupted && LastNavigableNodeVisited && LastNavigableNodeVisited->GetAreaCovering().ContainsPoint(pos))
         return;
-    CANavQuadTreeNode* node = NavigationManager->GetNodeAt(pos, PInterface->GetLayerAt(pos));
+    CANavQuadTreeNode* node = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(pos, PInterface->GetLayerAt(pos));
     if (node && node != LastNavigableNodeVisited) {
         if (!node->Blocked) {
             LastNavigableNodeVisited = node;

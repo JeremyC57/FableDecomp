@@ -24,7 +24,7 @@ class CRGBColour { public:
     __forceinline CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
 class CCPPointerInfo { public: long References; };
-namespace N_006e7b40 { struct CScriptThing; } using N_006e7b40::CScriptThing;
+class CScriptThing;
 struct CCPPointerImp {                                 // CCountedPointer<CScriptThingImp>: Data, Info
     CScriptThing*   Data;
     CCPPointerInfo* Info;
@@ -39,8 +39,9 @@ struct CCPPointerImp {                                 // CCountedPointer<CScrip
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-namespace N_006e7b40 { struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
-    VPAD16(ta) VPAD4(tb) VPAD1(tc)                     // slots 0..20
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
+    virtual ~CScriptThing();                           // slot 0, 0x004AA840
+    VPAD16(ta) VPAD4(tb)                               // slots 1..20
     virtual bool MsgIsHitBy(const CCharString& name) const   // slot 21 (+0x54), 0x004AAB30
     {
         if (!PImp.Data)
@@ -58,8 +59,7 @@ namespace N_006e7b40 { struct CScriptThing {                                  //
     CScriptThing();                                    // 0x006E7B40
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     __forceinline CScriptThing(CScriptThing& other) : PImp(other.PImp) { }   // the inline copy of a non-const thing
-    ~CScriptThing();                                   // 0x004AA840
-}; } using N_006e7b40::CScriptThing;
+};
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 struct CScriptThingView {
     void* vptr; void* Data; void* Info;

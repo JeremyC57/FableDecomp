@@ -117,6 +117,8 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -162,7 +164,6 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     bool LastRunWasTryAndLook;                  // +0x88
     bool ReactingToPlayer;                      // +0x89
     bool AllowSpeechOnNonPureAISpeaker;         // +0x8a
-    bool IsStopping();                          // 0x008FD010 (CAIStateGroupBase)
     virtual void Update();
 };
 #pragma pack(pop)

@@ -11,7 +11,7 @@
 //   resident list (STLport list of CIntelligentPointer<CThing>) at +0x2C.
 // Shape: the member pointers are reached through inline accessors (`lea ecx,[eax+N]`); a null or dead resident `continue`s without advancing (as retail: the iterator is only advanced on the
 //   non-matching path, and reset to begin() after each kill).
-class CThing_Retail;
+class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -31,7 +31,7 @@ public:
 struct SResidentNode {
     SResidentNode*          _M_next;
     SResidentNode*          _M_prev;
-    CIntelligentPointer<CThing_Retail> _M_data;                    // +0x08
+    CIntelligentPointer<CThing> _M_data;                    // +0x08
 };
 struct CResidentList {
     SResidentNode* _M_node;
@@ -55,7 +55,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
 class CScriptThing;
-class CThing_Retail { public:
+class CThing { public:
     unsigned char           _pad00[0x20];
     unsigned long           m_presentBits[9];       // +0x20
     CInterfaceMap_Retail    m_interfaces;           // +0x44
@@ -65,8 +65,8 @@ class CThing_Retail { public:
     unsigned char           m_dead : 1;             // +0x91 bit 0
     unsigned char           m_91_1 : 7;
     unsigned char           _pad92[0xd6];
-    CIntelligentPointer<CThing_Retail> HomeBuilding;           // +0x168
-    CIntelligentPointer<CThing_Retail> OtherResidence;         // +0x170
+    CIntelligentPointer<CThing> HomeBuilding;           // +0x168
+    CIntelligentPointer<CThing> OtherResidence;         // +0x170
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     __forceinline CTCBase_Retail* GetInterface(long interfaceType)
     {
@@ -77,11 +77,11 @@ class CThing_Retail { public:
             it = map->last;
         return ((CTCBase_Retail*)it->second);
     }
-    CIntelligentPointer<CThing_Retail>& GetHomeBuilding() { return HomeBuilding; }
-    CIntelligentPointer<CThing_Retail>& GetOtherResidence() { return OtherResidence; }
+    CIntelligentPointer<CThing>& GetHomeBuilding() { return HomeBuilding; }
+    CIntelligentPointer<CThing>& GetOtherResidence() { return OtherResidence; }
     void SetIsAvailableForResidency(bool available);    // 0x0082E090
     void Kill(bool flag);                               // 0x004C9B80
-    CScriptThing GetScriptThing();                      // 0x004C7E50
+    CScriptThing GetScriptThing() const;                      // 0x004C7E50
 };
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
@@ -109,9 +109,9 @@ public:
 
 CScriptThing CGameScriptInterface::SetResidency(const CScriptThing& building, bool resident)
 {
-    CThing_Retail* evictedTo = 0;
+    CThing* evictedTo = 0;
     if (building.IsAlive()) {
-        CThing_Retail* house = ((CThing_Retail*)building.GetPThing());
+        CThing* house = ((CThing*)building.GetPThing());
         if (house->m_flags & 0x40) {
             OverrideAutomaticHouseLocking(building, !resident);
             house->SetIsAvailableForResidency(resident);
@@ -119,7 +119,7 @@ CScriptThing CGameScriptInterface::SetResidency(const CScriptThing& building, bo
                 CResidentList& residents = ((CTCVillageMember_Retail*)house->GetInterface(0x23))->GetVillage()->Residents;
                 SResidentNode* it = residents._M_node->_M_next;
                 while (it != residents._M_node) {
-                    CIntelligentPointer<CThing_Retail>& resident = it->_M_data;
+                    CIntelligentPointer<CThing>& resident = it->_M_data;
                     if (!resident.GetPItem() || resident.GetPItem()->m_dead)
                         continue;
                     if (resident.GetPItem()->GetHomeBuilding().GetPItem() == house) {

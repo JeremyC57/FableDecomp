@@ -67,7 +67,7 @@ class CThing { public:
     unsigned char    InLimbo : 1;                        // bit 5
     unsigned char    KillLocked : 1;
     unsigned char    CreatedBySerialisation : 1;
-    CScriptThing GetScriptThing();                       // 0x004C7E50
+    CScriptThing GetScriptThing() const;                       // 0x004C7E50
 };
 
 struct SThingNode {                                      // STLport _List_node<CThing*>

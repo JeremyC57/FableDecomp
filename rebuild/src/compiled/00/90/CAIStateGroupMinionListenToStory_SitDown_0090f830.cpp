@@ -128,7 +128,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];
     CThing* GetCreature() const { return PBrain->PCreature; }
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
 CModeSitListen::CModeSitListen(const CAIStateGroupBase* group, const CCharString& anim)

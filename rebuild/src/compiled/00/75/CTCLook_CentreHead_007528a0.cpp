@@ -57,7 +57,9 @@ class CTCLook { public:
     long  TimeToStopLooking;                    // +0xb4 (PDB +0xb8)
     bool  OneFrameDelay;                        // +0xb8 (PDB +0xbc)
     void GetHeadSettingsSlowInFastOut(float* angle, float* velocity, float acceleration, float maxSpeed, float target, float minAngle, float maxAngle);   // 0x00751820
+private:
     void ChangeHeadAngleXY(float targetAngle, float time);   // 0x00752120
+public:
     void ChangeHeadAngleYZ(float targetAngle, float time);   // 0x00752190
     void CentreHead();
 };

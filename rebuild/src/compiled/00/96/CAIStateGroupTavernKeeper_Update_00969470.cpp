@@ -100,7 +100,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
-    bool IsStopping();                          protected: // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* arrived, long movement, bool b1,
         bool b2, bool b3, CThing* faceThing, bool b4, float f);    // 0x0097E890

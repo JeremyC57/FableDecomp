@@ -7,7 +7,7 @@
 // The class is a script-module action whose vtable (0x012E84A0, no RTTI in that module: slot 0 the
 // deleting destructor, slot 1 this Main) names it; the manifest's "CCOE_AltarEvil::Main" label is
 // propagated over the byte-identical bodies of the whole family. The loop is a plain `while
-// (!IsFinished())` -- rotated by the compiler into test + do/while with the 4-byte `lea esp,[esp]`
+// (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating())` -- rotated by the compiler into test + do/while with the 4-byte `lea esp,[esp]`
 // alignment pad before the loop head.
 struct CGameScriptInterface_Calls {
     virtual void v000();
@@ -20,15 +20,17 @@ struct CGameScriptInterface_Calls {
     virtual void Pump();                                    // slot 7 (+0x1c)
 };
 
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 struct CVtable_012e84a0 {
     virtual void v00();
     CGameScriptInterface_Calls* m_pInterface;               // +0x04
-    unsigned char IsFinished();                             // 0x00F35B30
     void Main();
 };
 
 void CVtable_012e84a0::Main()
 {
-    while (!IsFinished())
+    while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         m_pInterface->Pump();
 }

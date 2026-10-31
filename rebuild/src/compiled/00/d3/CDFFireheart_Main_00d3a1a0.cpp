@@ -127,13 +127,15 @@ struct CQ_FireHeartScript {
     bool          DemonDoorCreated;                    // +0x1a0
     void PlayCutscene(CCharString name);               // 0x00D39330
 };
-struct CDF_Fireheart {
+class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
+struct CDF_Fireheart : public CEntityScriptBase {
     void*                       __vftable;             // +0x00
     CGameScriptInterface_Calls* Game;                  // +0x04
     CScriptThing                Me;                    // +0x08
     CQ_FireHeartScript*         ParentClass;           // +0x14
     void SetupThing(const CScriptThingHolder& thing);  // 0x00F35B10
-    bool IsInterrupted();                              // 0x00F35B30
     void Main();
 };
 
@@ -141,10 +143,10 @@ void CDF_Fireheart::Main()
 {
     SetupThing(CScriptThingHolder(Me));
     Game->NewScriptFrame();
-    if (IsInterrupted())
+    if (IsActiveThreadTerminating())
         return;
     if (!ParentClass->DemonDoorCreated) {
-        if (IsInterrupted())
+        if (IsActiveThreadTerminating())
             return;
         CScriptThing placeholder = Game->GetThingWithScriptName("DD_FireheartUnused");
         C3DVector position = placeholder.GetPosition();
@@ -163,10 +165,10 @@ void CDF_Fireheart::Main()
     Game->MiniMapAddMarker(Game->GetThingWithScriptName("DD_Fireheart"), "HUD_ORB_QUEST_CORE");
     while (!Me.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
         Game->NewScriptFrame();
-        if (IsInterrupted())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsInterrupted())
+    if (IsActiveThreadTerminating())
         return;
     ParentClass->PlayCutscene(CCharString("CS_FIREHEART_DEMONDOOR"));
     Game->RemoveThing(Me, false, true);

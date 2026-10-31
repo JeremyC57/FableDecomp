@@ -8,7 +8,7 @@
 // Shape: one zero register (ebx) for every byte compare and store; each flag re-read after a store or call.
 class CCamera { public:
     unsigned char _body[0x38];
-    float GetAngleXY();                                     // 0x00A0C380
+    float GetAngleXY() const;                                     // 0x00A0C380
 };
 
 class CWorld {

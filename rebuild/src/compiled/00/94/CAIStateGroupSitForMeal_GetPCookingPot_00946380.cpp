@@ -160,10 +160,12 @@ struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
     long ActionPointIndex;                      // +0x3c
     bool HoldingBowl;                           // +0x40
     long DayLastAte;                            // +0x44
-    CThing* GetPCookingPot();
+private:
+    CThing* GetPCookingPot() const;
+public:
 };
 
-CThing* CAIStateGroup_SitForMeal::GetPCookingPot()
+CThing* CAIStateGroup_SitForMeal::GetPCookingPot() const
 {
     CThing* home = PBrain->PCreature->GetPHome();
     CTCBuildingContents* contents;

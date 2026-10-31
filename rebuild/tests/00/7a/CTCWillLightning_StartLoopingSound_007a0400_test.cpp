@@ -7,8 +7,8 @@ static long g_played_id = -1;
 static int g_plays, g_dtors;
 class CCharString { public: void* PStringData; ~CCharString(); };
 CCharString::~CCharString() { ++g_dtors; }
-struct CDefStringTable { CCharString GetString(long id); };
-CCharString CDefStringTable::GetString(long id) { CCharString s; s.PStringData = (void*)id; return s; }
+struct CDefStringTable { CCharString GetString(long id) const; };
+CCharString CDefStringTable::GetString(long id) const { CCharString s; s.PStringData = (void*)id; return s; }
 CDefStringTable g_DefStringTable;
 unsigned long g_InvalidSoundHandle = 0xffffffffUL;
 class CTCBase;

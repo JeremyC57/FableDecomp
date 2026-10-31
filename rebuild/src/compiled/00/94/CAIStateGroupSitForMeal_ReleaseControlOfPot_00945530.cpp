@@ -119,7 +119,9 @@ struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
     long ActionPointIndex;                      // +0x3c
     bool HoldingBowl;                           // +0x40
     long DayLastAte;                            // +0x44
+private:
     void ReleaseControlOfPot();
+public:
     void Cleanup();
 };
 

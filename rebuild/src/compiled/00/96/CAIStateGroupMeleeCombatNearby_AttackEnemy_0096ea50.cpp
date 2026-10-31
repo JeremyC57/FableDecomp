@@ -113,6 +113,8 @@ protected:
 public:
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
 
@@ -185,7 +187,6 @@ class CCombatManager { public:
 struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                                // +0x1c (engine header)
-    bool IsStopping();                          // 0x008FD010
     EAIActionReturn AIAction_PumpCombatActions();   // 0x0097D980
     bool IsEnemyCreatureNearCombatPosition();   // 0x0096E830
     void AttackEnemy();

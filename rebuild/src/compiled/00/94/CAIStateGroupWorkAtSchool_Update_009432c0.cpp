@@ -80,13 +80,13 @@ class CThingCreatureBase : public CThing { public:
     unsigned char _pad91[0x170 - 0x68];
     CBaseIntelligentPointer Workplace;          // +0x170
 };
-struct CVillage {
+class CTCVillage { public:
     unsigned char _pad[0xbc];
     bool LessonOn;                              // +0xBC
     bool GetSchoolTimes(float* start, float* end);   // 0x00658ACB
 };
 class CTCVillageMember { public:
-    CVillage* GetPVillage();                    // 0x007EE540
+    CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
 struct CTimeOfDay {
     unsigned char _pad[0x08];

@@ -58,11 +58,11 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     CScriptThing* end() { return _M_finish; }
     void push_back(const CScriptThing& x);              // 0x008ADF90 (out of line here)
 };
-struct CThing_Retail;
+class CThing;
 struct CThingVector {                                   // STLport vector<CThing*> (malloc allocator)
-    CThing_Retail** _M_start;
-    CThing_Retail** _M_finish;
-    CThing_Retail** _M_end_of_storage;
+    CThing** _M_start;
+    CThing** _M_finish;
+    CThing** _M_end_of_storage;
     CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~CThingVector() { if (_M_start) free(_M_start); }
     bool empty() const { return _M_start == _M_finish; }
@@ -104,7 +104,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
-struct CThing_Retail {
+class CThing { public:
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
     CInterfaceMap_Retail  m_interfaces;             // +0x44
@@ -119,13 +119,13 @@ struct CThing_Retail {
         CInterfaceMap_Retail::SEntry* it = map->LowerBound(type);
         return ((CTCBase_Retail*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
     }
-    CScriptThing GetScriptThing();                      // 0x004C7E50
+    CScriptThing GetScriptThing() const;                      // 0x004C7E50
 };
 struct CTCFollowed_Retail { void GetFollowers(CThingVector& out); };   // 0x006D5850
 struct CScriptThingRef {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
+    virtual CThing* GetThing() const;        // slot 11 (+0x2c)
 };
 class CGameScriptInterface { public:
     virtual bool GetFollowingEntityList(const CScriptThingRef& leader, CScriptThingVector& followers) const;
@@ -134,13 +134,13 @@ class CGameScriptInterface { public:
 bool CGameScriptInterface::GetFollowingEntityList(const CScriptThingRef& leader, CScriptThingVector& followers) const
 {
     bool added = false;
-    CThing_Retail* thing = leader.GetThing();
+    CThing* thing = leader.GetThing();
     if (thing && !thing->m_dead && thing->HasInterface(0xbc)) {
         CTCFollowed_Retail* followed = (CTCFollowed_Retail*)thing->GetInterface(0xbc);
         CThingVector found;
         followed->GetFollowers(found);
-        for (CThing_Retail** it = found._M_start; it != found._M_finish; ++it) {
-            CThing_Retail* follower = *it;
+        for (CThing** it = found._M_start; it != found._M_finish; ++it) {
+            CThing* follower = *it;
             if (find(followers.begin(), followers.end(), follower->GetScriptThing()) == followers.end()) {
                 followers.push_back(follower->GetScriptThing());
                 added = true;

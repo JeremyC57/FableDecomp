@@ -108,7 +108,9 @@ class CAIStateGroupBase { public:
     CWorld* GetPWorld();                        protected: // 0x008FCFC0
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
 };
 #pragma pack(push, 1)
 struct CAIStateGroup_JackDragon : CAIStateGroupBase {

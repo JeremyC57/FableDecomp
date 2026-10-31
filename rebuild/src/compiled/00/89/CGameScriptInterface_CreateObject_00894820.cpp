@@ -86,7 +86,7 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long globalIndex, CDefP
 }
 #pragma auto_inline(on)
 class CThing { public:
-    CScriptThing GetScriptThing();                      // 0x004C7E50
+    CScriptThing GetScriptThing() const;                      // 0x004C7E50
 };
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,

@@ -9,7 +9,7 @@
 //          451 GiveThingBestEnemyTarget, 690 PlaySoundOnThing (cgsi_slots_aligned.tsv), IsDistanceBetweenThingsUnder
 //          @ 0x00CBE2FF (__fastcall), rand @ 0x00BFEB16, CDefString::operator CCharString @ 0x00415D70, CCharString copy
 //          ctor @ 0x0099EC30, ~CCharString @ 0x0099EAE0; data: pGlobalScriptDef @ 0x0143E90C (sound-name vector +0x3ac/+0x3b0).
-// Shape: the alive filter is a scoped 16-byte frame object (landed CHTEPrisoner::Main model); `NewScriptFrame; if (IsDone())
+// Shape: the alive filter is a scoped 16-byte frame object (landed CHTEPrisoner::Main model); `NewScriptFrame; if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
 //          return;` precedes the rotated `while (!near) { frame; if done return; }`; the sound is a CCharString LOCAL (operator
 //          CCharString temp + copy ctor), destroyed after the final `do frame while (!done)` loop; ebx = &Me for the whole body.
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}; CScriptThing per the landed script model (12 bytes).
@@ -56,13 +56,15 @@ namespace NScript {
 }
 using NScript::CIsThingAlive;
 
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 struct CBanditCronies {
     virtual ~CBanditCronies();
     virtual void Main();                                 // slot 1
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing Me;                                     // +0x08
     void RegisterFilter(CIsThingAlive& filter);          // 0x00F35B10 (CEntityScriptBase::SetPredicate)
-    bool IsDone();                                       // 0x00F35B30
 };
 
 void CBanditCronies::Main()
@@ -72,14 +74,14 @@ void CBanditCronies::Main()
         RegisterFilter(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     while (!IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 13.0f)) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     unsigned long count = pGlobalScriptDef->BC_ShoutSoundsEnd - pGlobalScriptDef->BC_ShoutSoundsBegin;
     unsigned long index = rand() % count;
@@ -88,5 +90,5 @@ void CBanditCronies::Main()
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {
         Game->NewScriptFrame();
-    } while (!IsDone());
+    } while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating());
 }

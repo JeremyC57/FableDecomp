@@ -236,7 +236,7 @@ struct CThingPos : CThing {
 };
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 struct CThingSchoolKid : CThing {
     unsigned char _pad94[0x170 - 0x94];
     CBaseIntelligentPointer PSchool;            // +0x170 CIntelligentPointer<CThingBuilding>
@@ -262,7 +262,7 @@ bool CAIStateGroup_StayNearSchool::IsRunnable()
     CThingBuilding* school = (CThingBuilding*)GetCreature()->PSchool.GetPItem();
     if (school && GetCreature()->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)GetCreature()->FindEntry(0x23)->second;
-        if (GFGetPVillageInterface(villager) && IsInSchoolHours()) {
+        if (((CTCVillageMember*)villager)->GetPVillage() && IsInSchoolHours()) {
             CDefPointer<CMaterialDef> material = school->PeekPMaterial();
             if (material.Object) {
                 if (material->Flags & 4) {

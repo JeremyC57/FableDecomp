@@ -107,7 +107,8 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                               // 0x008FCFC0
-    bool IsStopping();                                 protected: // 0x008FD010
+protected:
+    bool IsStopping() const;                                 // 0x008FD010 (Ego_r.pdb protected const)
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
 };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {

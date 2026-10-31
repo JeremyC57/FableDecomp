@@ -1,0 +1,63 @@
+addr       parity           behav  name
+00cdec40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cdec40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cdec40   RELOCATION_MATCH PASS   CArcheryCompetitionSignpost::Main
+00ce0350   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ce0350   RELOCATION_MATCH PASS   CVtable_012c34c0::vfunc_1
+00d91540   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d91540   RELOCATION_MATCH PASS   CVtable_012d5b54::vfunc_1
+00da5870   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da5870   RELOCATION_MATCH PASS   CVtable_012d752c::vfunc_1
+00dc44e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc44e0   RELOCATION_MATCH PASS   CVtable_012da5d4::vfunc_1
+00dc84a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc84a0   RELOCATION_MATCH PASS   CVtable_012da9e4::vfunc_1
+00dc86c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc86c0   RELOCATION_MATCH PASS   CVtable_012daa1c::vfunc_1
+00dec570   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dec570   RELOCATION_MATCH PASS   CVtable_012ddbe8::vfunc_1
+00e03810   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e03810   WARN RELOC_NAME: ?RegisterFilter@CBanditCronies@@QAEXAAVCIsThingAlive@NScript@@@Z -> 00f35b10 labelled 'CEntityScriptBase::SetPredicate'
+00e03810   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e03810   WARN RELOC_CONFLICT: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 here, 00415dd0 in landed 0071c7c0
+00e03810   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00e03810   RELOCATION_MATCH PASS   CBanditCronies::Main
+00e191a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e191a0   RELOCATION_MATCH PASS   CVtable_012e0e30::vfunc_1
+00e192a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e192a0   RELOCATION_MATCH PASS   CVtable_012e0e4c::vfunc_1
+00e1ba20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e1ba20   RELOCATION_MATCH PASS   CVtable_012e1094::vfunc_1
+00e2fd30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e2fd30   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e2fd30   WARN RELOC_CONFLICT: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 here, 00415dd0 in landed 0071c7c0
+00e2fd30   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00e2fd30   RELOCATION_MATCH PASS   CAS_Ambusher::Main
+00e6a7a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e6a7a0   RELOCATION_MATCH PASS   CVtable_012e84a0::Main
+00ead800   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00ead800   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ead800   WARN RELOC_NAME: ??0CScriptThing_Calls@@QAE@ABU0@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ead800   WARN RELOC_NAME: ?WaitFor@CVtable_012ef7c8@@QAEXPAVCIsThingAlive@NScript@@@Z -> 00f35b10 labelled 'CEntityScriptBase::SetPredicate'
+00ead800   RELOCATION_MATCH PASS   CVtable_012ef7c8::Main
+00f1b690   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f1b690   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00f1b690   RELOCATION_MATCH PASS   CArenaSpawn::Main
+
+WINS: 16
+  00cdec40 RELOCATION_MATCH CArcheryCompetitionSignpost::Main
+  00ce0350 RELOCATION_MATCH CVtable_012c34c0::Main
+  00d91540 RELOCATION_MATCH CVtable_012d5b54::Main
+  00da5870 RELOCATION_MATCH CVtable_012d752c::Main
+  00dc44e0 RELOCATION_MATCH CVtable_012da5d4::Main
+  00dc84a0 RELOCATION_MATCH CVtable_012da9e4::Main
+  00dc86c0 RELOCATION_MATCH CVtable_012daa1c::Main
+  00dec570 RELOCATION_MATCH CVtable_012ddbe8::Main
+  00e03810 RELOCATION_MATCH CBanditCronies::?Main@CBanditCronies@@
+  00e191a0 RELOCATION_MATCH CVtable_012e0e30::Main
+  00e192a0 RELOCATION_MATCH CVtable_012e0e4c::Main
+  00e1ba20 RELOCATION_MATCH CVtable_012e1094::Main
+  00e2fd30 RELOCATION_MATCH CAS_Ambusher::?Main@CAS_Ambusher@@
+  00e6a7a0 RELOCATION_MATCH CVtable_012e84a0::Main
+  00ead800 RELOCATION_MATCH CVtable_012ef7c8::Main
+  00f1b690 RELOCATION_MATCH CArenaSpawn::Main

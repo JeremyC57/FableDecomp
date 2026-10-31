@@ -31,6 +31,7 @@ class CAnimFrameInfo { public:                    // 8 bytes, zeroed by its inli
     CAnimFrameInfo() : m_frame(0), m_subFrame(0) { }
 };
 
+enum EAnimUpdateMode { ANIM_UPDATE_MODE_0, ANIM_UPDATE_MODE_1, ANIM_UPDATE_MODE_2 };   // Ego_r.pdb enum (the Init parameter type)
 class CAnimInit { public:                         // Ego_r.pdb CAnimInit (0x2c)
     long           UpdateMode;             // +0x00
     unsigned char  Type;                   // +0x04
@@ -45,9 +46,9 @@ class CAnimInit { public:                         // Ego_r.pdb CAnimInit (0x2c)
     long           Priority;               // +0x28
     CAnimInit(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority)
     {
-        Set(type, typeFlags, anim, updateMode, looping, flags, priority);
+        Init(type, typeFlags, anim, (EAnimUpdateMode)updateMode, looping, flags, priority);
     }
-    void Set(unsigned char type, unsigned long typeFlags, long anim, long updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050
+    void Init(unsigned char type, unsigned long typeFlags, long anim, EAnimUpdateMode updateMode, bool looping, unsigned long flags, long priority);   // 0x0070C050 (Ego_r.pdb CAnimInit::Init)
 };
 
 class CAnimateThing { public:                     // starts with CCompleteAnimation::MainAnimSet (retail CAnimSet, 12-byte vectors)

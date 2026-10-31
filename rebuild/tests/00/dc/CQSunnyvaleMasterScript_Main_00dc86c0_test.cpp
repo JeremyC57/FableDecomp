@@ -27,8 +27,9 @@ static int g_helper_calls = 0;
 
 void __fastcall test_slot7(CObjWithVtbl*) { g_slot7_calls++; }
 
-extern "C" char __fastcall SunnyvaleMasterHelper(CQ_SunnyvaleMasterScript* self)
-{
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
+    CQ_SunnyvaleMasterScript* self = (CQ_SunnyvaleMasterScript*)this;
     g_helper_calls++;
     // return nonzero on 3rd call -> loop runs 3 times
     return (g_helper_calls >= 3) ? (char)1 : (char)0;

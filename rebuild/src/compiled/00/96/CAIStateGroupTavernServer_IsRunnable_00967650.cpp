@@ -44,9 +44,9 @@ class CThing { public:
         return false;
     }
 };
-struct CVillage;
+class CTCVillage;
 class CTCVillageMember { public:                       // interface 0x23
-    CVillage* GetPVillage() const;              // 0x007EE540
+    CTCVillage* GetPVillage() const;              // 0x007EE540
 };
 
 class CBaseObject;
@@ -107,7 +107,7 @@ bool CAIStateGroupTavernServerMethods::IsRunnable()
         return true;
     CTCVillageMember* member;
     if (GetCreature()->GetInterface(&member, 0x23)) {
-        CVillage* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         if (!((CThing*)Pub().GetPItem()))
             Pub() = CIntelligentPointerThing(((CThing*)((CThingAICreature*)GetCreature())->PWorkplace.GetPItem()));
         if (IS_THING_ALIVE(Pub()) && village

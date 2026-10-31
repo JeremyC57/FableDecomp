@@ -47,7 +47,7 @@ public:
     }
 };
 struct CDefStringTable {
-    CCharString GetString(long index);                 // 0x009D49B0
+    CCharString GetString(long index) const;                 // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;               // 0x013CA828
 

@@ -224,7 +224,7 @@ struct CTCVillager;
 class CTCVillage { public:
     CThing* FindNearestBuildingWithProperty(const C3DVector& pos, long property);   // 0x00658E38
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class CTCGatherPointBase { public:                     // interface 0x7B on the pub
     bool AddAsUser(CThing* user);               // 0x007FFEB0
 };
@@ -235,7 +235,9 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
     CBaseIntelligentPointer PSeat;              // +0x14 CIntelligentPointer<CThing>
     unsigned char _pad1c[0x34 - 0x1c];
     CThingObject* GetRandomFreeSeatInBuilding(CThing* building);   // 0x00938BF0
+protected:
     void SetSeat(CThingObject* seat);           // 0x009106E0
+public:
     bool IsSeatValid();                         // 0x00938580
 };
 struct CAIStateGroup_SitInPub : CAIStateGroup_UsesSeat {
@@ -248,7 +250,7 @@ bool CAIStateGroup_SitInPub::IsRunnable()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        CTCVillage* village = GFGetPVillageInterface(villager);
+        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (village) {
             CThing* pub = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPos(), 0x20);
             if (pub && pub->HasTC(0x7b)) {

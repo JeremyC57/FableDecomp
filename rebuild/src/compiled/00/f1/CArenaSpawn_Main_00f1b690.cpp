@@ -50,30 +50,32 @@ struct CQ_ArenaScript {
     bool SpawnFlags[1];                                  // +0xe2 [slot]
 };
 
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 struct CArenaSpawn {
     virtual ~CArenaSpawn();
     virtual void Main();                                 // slot 1
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing Me;                                     // +0x08
     CQ_ArenaScript* ParentClass;                         // +0x14
-    bool IsDone();                                       // 0x00F35B30
 };
 
 void CArenaSpawn::Main()
 {
     long slot = GFCharStringToInt(Me.GetDataString());
     long timer = g_pGameScriptInterface->RegisterTimer();
-    while (!IsDone()) {
+    while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
         while (!ParentClass->SpawnFlags[slot]) {
             Game->NewScriptFrame();
-            if (IsDone()) goto stop;
+            if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) goto stop;
         }
-        if (IsDone()) {
+        if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
             g_pGameScriptInterface->DeregisterTimer(timer);
             return;
         }
         if (ParentClass->ArenaState != 3) {
-            if (IsDone()) goto stop;
+            if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) goto stop;
             CScriptThing effect = Game->CreateEffect("SUMMON_ARENA", Me.GetPos(), "", 0.0f, false, false);
         }
         ParentClass->SpawnFlags[slot] = false;

@@ -4,7 +4,6 @@
 // Globals 0x013D28D4 alignment, 0x013D28D8 shift; calls 0x00A65060 unlink and 0x00A650F0 reinsert.
 #include <stddef.h>
 #include "rebuild_abi.h"
-struct CMemoryAreaChunk;
 class CMemoryAllocatorVariableSize;
 
 // Process-wide copies of the active allocator's alignment, refreshed on entry to the allocator's
@@ -15,7 +14,12 @@ extern unsigned long g_CurrentAlignmentShift;   // 0x013D28D8
 // Round a header size up to the current alignment: ((size + align - 1) >> shift) << shift.
 #define ALIGNED_SIZE(size) ((((size) + g_CurrentAlignment - 1) >> g_CurrentAlignmentShift) << g_CurrentAlignmentShift)
 
-struct CMemoryArea {                            // PDB: 32 bytes
+// Nested (naming wave 12): Ego_r.pdb nests CMemoryArea / CMemoryAreaChunk in CMemoryAllocatorVariableSize.
+class CMemoryAllocatorVariableSize { public:
+    class CMemoryArea;
+    class CMemoryAreaChunk;
+};
+class CMemoryAllocatorVariableSize::CMemoryArea { public:                            // PDB: 32 bytes
     CMemoryArea*      PNextArea;                // +0x00
     CMemoryArea*      PRightChild;              // +0x04
     CMemoryArea*      PPreviousArea;            // +0x08
@@ -30,8 +34,7 @@ struct CMemoryArea {                            // PDB: 32 bytes
         Colour=0; PParentChunk=owner; DataSize=size;
     }
 };
-
-struct CMemoryAreaChunk {                       // PDB: 52 bytes
+class CMemoryAllocatorVariableSize::CMemoryAreaChunk { public:                       // PDB: 52 bytes
     long              TotalDataSize;            // +0x00
     long              NoFreeAreas;              // +0x04
     long              NoAllocatedAreas;         // +0x08
@@ -47,9 +50,14 @@ struct CMemoryAreaChunk {                       // PDB: 52 bytes
     CMemoryArea*      PLastFreeArea;            // +0x2c
     CMemoryArea*      PFirstAllocatedArea;      // +0x30
     void ConsolidateAdjacentFreeAreas(CMemoryArea* area);
+protected:
     void RemoveAreaFromFreeList(CMemoryArea* area); // 0x00A65060
     void InsertAreaIntoFreeList(CMemoryArea* area);   // 0x00A650F0
+public:
 };
+typedef CMemoryAllocatorVariableSize::CMemoryArea CMemoryArea;
+typedef CMemoryAllocatorVariableSize::CMemoryAreaChunk CMemoryAreaChunk;
+
 
 
 FABLE_STATIC_ASSERT(sizeof(CMemoryArea)==32);

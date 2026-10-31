@@ -103,7 +103,7 @@ class CThing { public:
     unsigned char _pad00[0x60];
     CAttachmentHolder* Attachments;                     // +0x60
     CThingVirtuals* GetTargetAttachments() const { return (CThingVirtuals*)Attachments; }
-    CScriptThing GetScriptThing();                      // 0x004C7E50
+    CScriptThing GetScriptThing() const;                      // 0x004C7E50
 };
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,

@@ -166,7 +166,9 @@ public:
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 class CPlayer : public CPlayerPdb {
 private:
+public:
     void RemoveMode(EPlayerMode mode);                     // 0x00634190
+private:
     void UninitModeViewHero(EPlayerMode mode, CProcessedInput* input);
 };
 

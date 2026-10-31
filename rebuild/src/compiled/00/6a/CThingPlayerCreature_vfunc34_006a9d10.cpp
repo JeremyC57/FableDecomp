@@ -52,12 +52,12 @@ struct CThingHighlightInfo {
     bool Enabled;                               // +0x10
 };
 
-class CThingPlayerCreature {
+class CThingPhysical { public: float GetHealthPercentage() const; };   // 0x006A4E40 (Ego_r.pdb CThingPhysical, const)
+class CThingPlayerCreature : public CThingPhysical {   // (the thing is a CThingPhysical: the health fraction is its base accessor)
 public:
     unsigned char _pad00[0x90];
     signed char PlayerNumber;                   // +0x90
     CPlayerManager* GetPlayerManager_004c79f0();   // 0x004C79F0
-    float GetNormalisedValue_006a4e40();        // 0x006A4E40
     bool vfunc_34(CThingHighlightInfo* info);
 };
 
@@ -71,7 +71,7 @@ bool CThingPlayerCreature::vfunc_34(CThingHighlightInfo* info)
     } else {
         colour = CRGBColour(0, 0, 0, 255);
     }
-    float value = GetNormalisedValue_006a4e40();
+    float value = GetHealthPercentage();
     info->Value = value;
     if (value < 0.0f)
         info->Value = 0.0f;

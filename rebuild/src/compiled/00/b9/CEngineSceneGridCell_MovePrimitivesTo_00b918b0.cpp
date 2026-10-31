@@ -28,7 +28,9 @@ class CEngineSceneGridCell { public:
     long                          LocalCount;      // +0x34
     unsigned char                 _pad38[0xc];     // +0x38 total count, render mask, occluded layers
     unsigned char                 Flags;           // +0x44 (bits 0-2: the cached-value validity bits)
+private:
     void InvalidateAll();                          // 0x00B91710
+public:
     void Invalidate()
     {
         if (Flags & 7) {

@@ -97,7 +97,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:

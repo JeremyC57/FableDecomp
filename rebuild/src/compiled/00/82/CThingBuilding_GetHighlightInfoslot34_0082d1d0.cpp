@@ -47,11 +47,11 @@ struct SThingHighlightInfo {                         // descriptive
     CRGBColour Colour;                               // +0x0c
     bool       Valid;                                // +0x10
 };
-class CThingBuilding { public:
+class CThingPhysical { public: float GetHealthPercentage() const; };   // 0x006A4E40 (Ego_r.pdb CThingPhysical, const)
+class CThingBuilding : public CThingPhysical { public:   // (the building is a CThingPhysical: the health fraction is its base accessor)
     unsigned char _pad00[0x90];
     signed char   PlayerNumber;                      // +0x90
     CPlayerManager* GetPlayerManager();              // 0x004C79F0
-    float GetNormalisedTime();                       // 0x006A4E40 (manifest label propagated)
     bool GetHighlightInfo_slot34(SThingHighlightInfo* info);
 };
 bool CThingBuilding::GetHighlightInfo_slot34(SThingHighlightInfo* info)
@@ -64,7 +64,7 @@ bool CThingBuilding::GetHighlightInfo_slot34(SThingHighlightInfo* info)
     } else {
         colour = CRGBColour(0, 0, 0, 255);
     }
-    float time = GetNormalisedTime();
+    float time = GetHealthPercentage();
     info->Alpha = time;
     if (time < 0.0f)
         info->Alpha = 0.0f;

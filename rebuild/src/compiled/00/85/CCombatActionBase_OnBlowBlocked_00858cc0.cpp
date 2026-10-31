@@ -43,7 +43,7 @@ class CThing { public:
     }
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();             // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;             // 0x006A1440
 };
 class CCombatTypeDef { public:
     unsigned char _pad[0x98];

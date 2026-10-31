@@ -152,8 +152,10 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
+protected:
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& moving, EMovementType anim, bool b1,
                                        bool b2, const CThing* target, bool b3, float f);   // 0x0097EC00
+public:
     EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointerConstThing thing, float proximity,
                                                  bool& moving, EMovementType anim, bool b1, bool b2, bool b3, bool b4,
                                                  float f);   // 0x0097E380

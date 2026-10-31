@@ -111,7 +111,7 @@ struct CTCVillager;
 class CTCVillage { public:
     bool IsTimeToGoToSchool(CThing* creature, CWorld* world, bool flag);   // 0x0065A8EE
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
@@ -127,7 +127,7 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase {
     __forceinline bool IsTimeForSchool(CTCVillager* villager)
     {
         CThing* creature = PBrain->PCreature;
-        return GFGetPVillageInterface(villager)->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), true);
+        return ((CTCVillageMember*)villager)->GetPVillage()->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), true);
     }
 };
 
@@ -135,7 +135,7 @@ bool CAIStateGroup_MinionSitAtSchool::IsRunnable()
 {
     CTCVillager* villager;
     return PBrain->PCreature->GetInterface(&villager, 0x23)
-        && GFGetPVillageInterface(villager) != 0
+        && ((CTCVillageMember*)villager)->GetPVillage() != 0
         && IsTimeForSchool(villager)
         && CAIStateGroup_MinionSitOnSeatBase::IsRunnable();
 }

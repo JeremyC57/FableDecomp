@@ -98,7 +98,7 @@ template <class T> template <class Tag> __declspec(noinline) void vector<T>::_M_
     _M_end_of_storage = ns + len;
 }
 class CTCCarrying { public:                            // interface 0x46
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;    // 0x009AD410

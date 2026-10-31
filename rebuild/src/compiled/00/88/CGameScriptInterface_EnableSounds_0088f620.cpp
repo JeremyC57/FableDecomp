@@ -1,8 +1,8 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 struct CSoundMgr {
     void** vtbl;
-    void SetMute(int muted);
 };
+class CFlaggedObject_Retail { public: void func_00991620(bool muted); };   // 0x00991620 (landed definer spelling; bool parameter)
 
 extern CSoundMgr* g_soundMgr;
 extern unsigned char g_soundsEnabledFlag;
@@ -16,11 +16,11 @@ void __fastcall CGameScriptInterface_EnableSounds(CGameScriptInterface* self, vo
     if (mgr == 0)
         return;
     if (enable) {
-        mgr->SetMute(1);
+        ((CFlaggedObject_Retail*)mgr)->func_00991620(true);
         g_soundsEnabledFlag = 1;
         return;
     }
     (*(StopFn*)((char*)mgr->vtbl + 0x40))(mgr);
-    g_soundMgr->SetMute(0);
+    ((CFlaggedObject_Retail*)g_soundMgr)->func_00991620(false);
     g_soundsEnabledFlag = 0;
 }

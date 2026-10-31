@@ -136,7 +136,7 @@ struct CTCVillager;
 class CTCVillage { public:
     bool IsCookTime();                          // 0x00658A80
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
@@ -161,6 +161,6 @@ bool CAIStateGroup_MinionListenToStory::IsRunnable()
     }
     CThingFilter_HasDefGlobalIndex filter;
     CTCVillager* villager;
-    return PBrain->PCreature->GetInterface(&villager, 0x23) && GFGetPVillageInterface(villager) != 0
-        && GFGetPVillageInterface(villager)->IsCookTime() && FindMarker(filter, markerIndex);
+    return PBrain->PCreature->GetInterface(&villager, 0x23) && ((CTCVillageMember*)villager)->GetPVillage() != 0
+        && ((CTCVillageMember*)villager)->GetPVillage()->IsCookTime() && FindMarker(filter, markerIndex);
 }

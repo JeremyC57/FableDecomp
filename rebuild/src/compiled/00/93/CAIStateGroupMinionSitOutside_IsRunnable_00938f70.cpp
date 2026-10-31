@@ -128,7 +128,7 @@ struct CTCVillager;
 class CTCVillage { public:
     bool IsSitOutsideTime();                    // 0x00658D5D
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBase {
     unsigned char _seat[0x2c];                  // +0x14..+0x3f UsesSeat / SitOnSeatBase members
@@ -151,8 +151,8 @@ bool CAIStateGroup_MinionSitOutside::IsRunnable()
     }
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        if (GFGetPVillageInterface(villager) != 0) {
-            if (!GFGetPVillageInterface(villager)->IsSitOutsideTime())
+        if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
+            if (!((CTCVillageMember*)villager)->GetPVillage()->IsSitOutsideTime())
                 return false;
         }
     }

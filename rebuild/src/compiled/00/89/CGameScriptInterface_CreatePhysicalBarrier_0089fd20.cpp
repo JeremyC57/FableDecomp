@@ -33,7 +33,7 @@ class CThing { public:
     unsigned char  _pad78[0x91 - 0x78];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    CScriptThing GetScriptThing();                 // 0x004C7E50 (manifest "GFPredicateAnd<...>" is propagated)
+    CScriptThing GetScriptThing() const;                 // 0x004C7E50 (manifest "GFPredicateAnd<...>" is propagated)
 };
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410

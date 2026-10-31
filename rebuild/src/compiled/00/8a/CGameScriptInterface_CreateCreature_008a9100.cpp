@@ -67,8 +67,10 @@ struct CDefPointerThingCreatureDef {
     CDefPointerThingCreatureDef() : Object(0) {}
     ~CDefPointerThingCreatureDef() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);                     // 0x009AD410
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     bool GetDef(long globalIndex, CDefPointerThingCreatureDef* out);             // 0x00513160
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();

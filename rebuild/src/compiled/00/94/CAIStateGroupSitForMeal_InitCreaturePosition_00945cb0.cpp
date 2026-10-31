@@ -43,7 +43,9 @@ class CAIStateGroupBase { public:
 
 struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
     bool InitCreaturePosition();
-    CThing* GetPCookingPot();                   // 0x00945A90
+private:
+    CThing* GetPCookingPot() const;                   // 0x00945A90
+public:
     __forceinline bool PlaceCreatureNear(CThing* pot)
     {
         CThingAICreature* creature = PBrain->Creature;

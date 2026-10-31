@@ -33,7 +33,7 @@ public:
 CWideString __fastcall GFIntToWideString(long value);  // 0x00405F00
 class CFontBank {
 public:
-    float GetStringWidth(const CWideString& text);  // 0x0048DA62
+    float GetStringWidth(const CWideString& text) const;  // 0x0048DA62
 };
 class CRGBColour { public:
     unsigned char B, G, R, A;

@@ -124,6 +124,8 @@ public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
 
@@ -238,7 +240,6 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     long GoLeft;                                // +0x60
     CWorldFrame* GetPFrameWorld();              // 0x008FCFC0 (GetPWorld)
     long AIAction_DoNothing();                  // 0x0097E200
-    bool IsStopping();                          // 0x008FD010
     void Terminate();                           // 0x008FCF40
     long ChooseHoverOrStrafeState();
     void WaitForAnimLoop(float seconds);

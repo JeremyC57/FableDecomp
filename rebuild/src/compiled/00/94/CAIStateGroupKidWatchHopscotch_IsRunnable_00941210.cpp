@@ -127,7 +127,9 @@ class CAIStateGroupBase { public:
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
+protected:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000
+public:
 };
 
 struct CAIStateGroup_KidWatchHopscotch : CAIStateGroupBase {

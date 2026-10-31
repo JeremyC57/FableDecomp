@@ -6,7 +6,6 @@
 // alignment globals 0x013D28D4/0x013D28D8); TotalDataSize takes that size, FreeDataSize is 0 until
 // InsertAreaIntoFreeList (0x00A650F0) adds the area. Layouts from the PDB (CMemoryAreaChunk 52 bytes,
 // CMemoryArea 32 bytes).
-struct CMemoryAreaChunk;
 class CMemoryAllocatorVariableSize;
 
 // Process-wide copies of the active allocator's alignment, refreshed on entry to the allocator's
@@ -17,7 +16,26 @@ extern unsigned long g_CurrentAlignmentShift;   // 0x013D28D8
 // Round a header size up to the current alignment: ((size + align - 1) >> shift) << shift.
 #define ALIGNED_SIZE(size) ((((size) + g_CurrentAlignment - 1) >> g_CurrentAlignmentShift) << g_CurrentAlignmentShift)
 
-struct CMemoryArea {                            // PDB: 32 bytes
+// Nested (naming wave 12): Ego_r.pdb nests CMemoryArea / CMemoryAreaChunk in CMemoryAllocatorVariableSize.
+struct CMemoryAllocatorBase {                   // PDB: 3100 bytes
+    virtual void v00();
+    unsigned char     PerformanceStats[0xc10];  // +0x04 CPerformanceStats
+    unsigned long     Alignment;                // +0xc14
+    unsigned long     AlignmentShift;           // +0xc18
+};
+class CMemoryAllocatorVariableSize : public CMemoryAllocatorBase { public:   // PDB: 3128 bytes, vtable 0x0129DB1C
+    class CMemoryArea;
+    class CMemoryAreaChunk;
+    friend class CMemoryAreaChunk;
+    CMemoryAreaChunk* PFirstChunk;              // +0xc1c
+    long              MinChunkSize;             // +0xc20
+    long              NoFreesSinceConsolidation;// +0xc24
+    unsigned long     Flags;                    // +0xc28
+    unsigned long     InternalFlags;            // +0xc2c
+    unsigned long     ExtraMemUsedByOS;         // +0xc30
+    CMemoryArea*      PTreeRoot;                // +0xc34
+};
+class CMemoryAllocatorVariableSize::CMemoryArea { public:                            // PDB: 32 bytes
     CMemoryArea*      PNextArea;                // +0x00
     CMemoryArea*      PRightChild;              // +0x04
     CMemoryArea*      PPreviousArea;            // +0x08
@@ -28,8 +46,7 @@ struct CMemoryArea {                            // PDB: 32 bytes
     unsigned char     Colour;                   // +0x1c
     unsigned char     ID;                       // +0x1d
 };
-
-struct CMemoryAreaChunk {                       // PDB: 52 bytes
+class CMemoryAllocatorVariableSize::CMemoryAreaChunk { public:                       // PDB: 52 bytes
     long              TotalDataSize;            // +0x00
     long              NoFreeAreas;              // +0x04
     long              NoAllocatedAreas;         // +0x08
@@ -45,25 +62,15 @@ struct CMemoryAreaChunk {                       // PDB: 52 bytes
     CMemoryArea*      PLastFreeArea;            // +0x2c
     CMemoryArea*      PFirstAllocatedArea;      // +0x30
     void Init(void* memory, long size, CMemoryAllocatorVariableSize* parent);
+protected:
     void InsertAreaIntoFreeList(CMemoryArea* area);   // 0x00A650F0
+public:
 };
+typedef CMemoryAllocatorVariableSize::CMemoryArea CMemoryArea;
+typedef CMemoryAllocatorVariableSize::CMemoryAreaChunk CMemoryAreaChunk;
 
-struct CMemoryAllocatorBase {                   // PDB: 3100 bytes
-    virtual void v00();
-    unsigned char     PerformanceStats[0xc10];  // +0x04 CPerformanceStats
-    unsigned long     Alignment;                // +0xc14
-    unsigned long     AlignmentShift;           // +0xc18
-};
 
-class CMemoryAllocatorVariableSize : public CMemoryAllocatorBase { public:   // PDB: 3128 bytes, vtable 0x0129DB1C
-    CMemoryAreaChunk* PFirstChunk;              // +0xc1c
-    long              MinChunkSize;             // +0xc20
-    long              NoFreesSinceConsolidation;// +0xc24
-    unsigned long     Flags;                    // +0xc28
-    unsigned long     InternalFlags;            // +0xc2c
-    unsigned long     ExtraMemUsedByOS;         // +0xc30
-    CMemoryArea*      PTreeRoot;                // +0xc34
-};
+
 
 void CMemoryAreaChunk::Init(void* memory, long size, CMemoryAllocatorVariableSize* parent)
 {

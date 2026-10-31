@@ -11,7 +11,7 @@
 // of line once the wait is registered. The action's own CScriptThing is at +8. The vtable
 // 0x012EF7C8 (script module, no RTTI; slot 1 = this Main) names the class; the manifest's
 // "CCOE_AltarEvil::Main" label is propagated. The first Pump is unconditional; the loop after it is a
-// rotated `while (!IsFinished())`.
+// rotated `while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating())`.
 struct CGameScriptInterface_Calls {
     virtual void v000();
     virtual void v001();
@@ -40,12 +40,14 @@ class CIsThingAlive { public:                                      // vtable 0x0
 }
 using NScript::CIsThingAlive;
 
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 struct CVtable_012ef7c8 {
     virtual void v00();
     CGameScriptInterface_Calls* m_pInterface;               // +0x04
     CScriptThing_Calls          m_thing;                    // +0x08
     void WaitFor(CIsThingAlive* condition);                 // 0x00F35B10
-    unsigned char IsFinished();                             // 0x00F35B30
     void Main();
 };
 
@@ -56,6 +58,6 @@ void CVtable_012ef7c8::Main()
         WaitFor(&condition);
     }
     m_pInterface->Pump();
-    while (!IsFinished())
+    while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
         m_pInterface->Pump();
 }

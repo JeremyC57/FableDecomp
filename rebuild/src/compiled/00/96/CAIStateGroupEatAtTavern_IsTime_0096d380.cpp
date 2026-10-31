@@ -174,7 +174,7 @@ class CTCVillage { public:
     bool IsTimeBetween(void* times, long time); // 0x00658620
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_EatAtTavern : CAIStateGroupBaseW {
     unsigned char _pad14[0x34];
@@ -189,6 +189,6 @@ bool CAIStateGroup_EatAtTavern::IsTime()
     if (!IsStaffed())
         return false;
     return PBrain->PCreature->GetInterface(&villager, 0x23)
-        && GFGetPVillageInterface(villager) != 0
-        && GFGetPVillageInterface(villager)->IsTimeBetween(GFGetPVillageInterface(villager)->GetDef()->m_eatingTimes, (long)m_time);
+        && ((CTCVillageMember*)villager)->GetPVillage() != 0
+        && ((CTCVillageMember*)villager)->GetPVillage()->IsTimeBetween(((CTCVillageMember*)villager)->GetPVillage()->GetDef()->m_eatingTimes, (long)m_time);
 }

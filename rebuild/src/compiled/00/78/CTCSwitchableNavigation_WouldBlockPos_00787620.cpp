@@ -23,7 +23,7 @@ class CANavQuadTreeNode { public:
     virtual bool WouldBeBlockedBy(__int64 thingUID);   // slot 10 (+0x28)
 };
 class CNavigatorManager { public:
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 class CWorld { public:
     unsigned char _pad00[0x48];
@@ -51,7 +51,7 @@ bool CTCSwitchableNavigation::WouldBlockPos(const C3DVector& pos)
 {
     C2DVector p(pos.X, pos.Y);
     CNavigatorManager* navigator = GetWorld().NavigatorManager;
-    CANavQuadTreeNode* node = navigator->GetNodeAt(p, (unsigned char)PeekWorldMap().GetNavigationLayerAt(pos, 0));
+    CANavQuadTreeNode* node = (CANavQuadTreeNode*)navigator->GetNodeAt(p, (unsigned char)PeekWorldMap().GetNavigationLayerAt(pos, 0));
     if (node)
         return node->WouldBeBlockedBy(GetParentUID());
     return false;

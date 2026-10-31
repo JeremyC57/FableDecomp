@@ -49,7 +49,7 @@ class CTCVillage { public:
     CThingBuilding* AIStateGroup_FindNearestBuildingWithProperty(const C3DVector& position, unsigned long property);   // 0x00658E38
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -75,8 +75,8 @@ CThingBuilding* CAIStateGroup_EatAtTavern::GetBuilding()
 {
     CTCVillager* villager;
     if (PBrain->Creature->GetInterface(&villager, 0x23)) {
-        if (GFGetPVillageInterface(villager) != 0)
-            return GFGetPVillageInterface(villager)->AIStateGroup_FindNearestBuildingWithProperty(PBrain->Creature->GetPos(), 0x20);
+        if (((CTCVillageMember*)villager)->GetPVillage() != 0)
+            return ((CTCVillageMember*)villager)->GetPVillage()->AIStateGroup_FindNearestBuildingWithProperty(PBrain->Creature->GetPos(), 0x20);
     }
     return 0;
 }

@@ -137,7 +137,7 @@ enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
     unsigned char _pad00[0xc];
     CGamePlayerInterface* PlayerInterface;         // +0xC
-    bool HasMode(EPlayerMode mode);                // 0x00634160
+    bool HasMode(EPlayerMode mode) const;                // 0x00634160
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
     const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };

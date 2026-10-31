@@ -58,7 +58,9 @@ enum EAIActionResult { AI_ACTION_FINISHED = 1, AI_ACTION_CONTINUE = 4 };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     EAIActionResult AIAction_DoNothing();
 };
 

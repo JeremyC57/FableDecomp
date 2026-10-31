@@ -31,7 +31,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
                                      bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890

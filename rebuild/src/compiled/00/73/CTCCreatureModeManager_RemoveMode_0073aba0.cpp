@@ -1,7 +1,7 @@
 // CTCCreatureModeManager::RemoveMode(unsigned long modeType) -- remove every mode of the type; when the current (front) mode was one of them it is told it is leaving and the new front mode is resumed (and the thing's look component re-picks its turning anims); the next idle mode is due in 30 seconds
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073ABA0, 170 bytes (`ret 4`).
-// Callees: the mode's virtual slots 1 GetModeType, 6 OnLeave (+0x18, as the landed ClearModes 0x0073AE70) and 5 (+0x14, the
-// resume hook; named descriptively), list<CCountedPointer<CModeBase>>::remove_if<CModeBase::CIsType> @ 0x0073E790 (the predicate
+// Callees: the mode's virtual slots 1 GetModeType, 6 OnDeactivate (+0x18, as the landed ClearModes 0x0073AE70) and 5 OnActivate (+0x14,
+// vtable 0x012673CC: the landed 0x0073AAC0), list<CCountedPointer<CModeBase>>::remove_if<CModeBase::CIsType> @ 0x0073E790 (the predicate
 // by value: one dword), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CTCLook::UpdateTurningAnims @ 0x00754050,
 // __ftol2 @ 0x00BFEA70, CWorld::GetWorldFrame() @ 0x0049D870 (static). Globals: g_framesPerSecond @ 0x01375550, 30.0f @ 0x012673C4.
 // Layout: Ego_r.pdb CTCCreatureModeManager with the retail 4-byte STLport list: PModes +0x0c (sentinel node pointer; node
@@ -48,8 +48,8 @@ struct CModeBase {                                      // CTCCreatureModeManage
     virtual void v00();
     virtual unsigned long GetModeType();                // slot 1
     virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void OnResume();                            // slot 5 (+0x14)
-    virtual void OnLeave();                             // slot 6 (+0x18)
+    virtual void OnActivate();                          // slot 5 (+0x14) 0x0073AAC0
+    virtual void OnDeactivate();                        // slot 6 (+0x18) 0x00739E60
     struct CIsType {                                    // remove_if predicate
         unsigned long Type;
         CIsType(unsigned long type) : Type(type) { }
@@ -87,11 +87,11 @@ void CTCCreatureModeManager::RemoveMode(unsigned long modeType)
     bool removingCurrent = false;
     if (!PModes.empty() && PModes.front()->GetModeType() == modeType) {
         removingCurrent = true;
-        PModes.front()->OnLeave();
+        PModes.front()->OnDeactivate();
     }
     PModes.remove_if(CModeBase::CIsType(modeType));
     if (removingCurrent && !PModes.empty()) {
-        PModes.front()->OnResume();
+        PModes.front()->OnActivate();
         if (ParentThing->HasTC(0x43))
             ((CTCLook*)ParentThing->GetTC(0x43))->UpdateTurningAnims();
     }

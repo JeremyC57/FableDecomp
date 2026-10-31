@@ -26,7 +26,9 @@ public:
     unsigned char _pad178 : 5;
     unsigned char _pad179[0x180 - 0x179];
     C3DVector MovementAcceleration;             // +0x180
-    float GetCurrentMaxMovementSpeed();         // 0x006AB5D0
+protected:
+    float GetCurrentMaxMovementSpeed() const;         // 0x006AB5D0
+public:
     void ResolveMovementAcceleration();
 };
 

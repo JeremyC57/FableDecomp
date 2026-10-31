@@ -130,7 +130,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
 };

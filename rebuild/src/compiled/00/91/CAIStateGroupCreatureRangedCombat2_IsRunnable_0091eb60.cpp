@@ -140,7 +140,9 @@ struct CAIStateGroup_CreatureRangedCombat2
     unsigned char _pad08[0x0c];                     // +0x08
     CBaseIntelligentPointer PTargetThing;           // +0x14 CIntelligentPointer<CThingCreatureBase>
     CWorld* GetPWorld();                            // 0x008FCFC0
-    bool IsAbleToFire();                            // 0x0091EA70
+private:
+    bool IsAbleToFire() const;                      // 0x0091EA70 (Ego_r.pdb: private const)
+public:
     bool IsRunnable();
 };
 

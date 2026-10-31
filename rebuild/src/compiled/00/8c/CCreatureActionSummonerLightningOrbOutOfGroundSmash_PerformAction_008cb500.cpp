@@ -65,9 +65,11 @@ class CCharString { public:
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                         // 0x0099EAE0
 };
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
 
 class CBaseObject;

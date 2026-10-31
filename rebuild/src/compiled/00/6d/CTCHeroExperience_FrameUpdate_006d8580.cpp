@@ -96,7 +96,9 @@ public:
     CRetailList<SAttack> AttackHistory;                     // +0x50
     CHeroExperienceDef* PDef;                               // +0x54
 
+private:
     const CComboMultiplierData& GetActiveComboMultiplierData() const;   // 0x006D72D0
+public:
     long GetExperiencePickupMultiplierForParam(float param) const
     {
         long multiplier = (long)(param / PDef->ExperienceMultiplierParamPerUnitComboMultiplier + 1.0);

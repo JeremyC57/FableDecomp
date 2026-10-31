@@ -43,7 +43,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
 };
 
 struct CAIStateGroup_JackOfBladesBase : CAIStateGroupBase {

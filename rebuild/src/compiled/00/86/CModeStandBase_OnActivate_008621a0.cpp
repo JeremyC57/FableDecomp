@@ -58,7 +58,7 @@ class CThingCreatureBase { public:
         return false;
     }
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
-    bool IsPerformingAnyAction();                      // 0x006622A0
+    bool IsPerformingAnyAction() const;                      // 0x006622A0
 };
 class CThingPlayerCreature : public CThingCreatureBase { public: void InitialiseMovementSpeeds(); };   // 0x006A9A00
 struct CAnimBank;

@@ -77,7 +77,9 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_MinionWorkInInn : CAIStateGroupBase {
+private:
     void CleanBench();                          // 0x0090BD40
+public:
     void Update();
 };
 

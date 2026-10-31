@@ -14,7 +14,7 @@
 class CTCBase;
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540 (manifest IS_THING_ALIVE label propagated)
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -113,7 +113,7 @@ void CAIStateGroup_VillageTaskPickCrops::Cleanup()
     if (((CThing*)PTaskThing.GetPItem()) != 0) {
         bool hasVillager = PBrain->PCreature->HasTC(0x23);
         if (hasVillager) {
-            CTCVillage* village = GFGetPVillageInterface((CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second);
+            CTCVillage* village = ((CTCVillageMember*)((CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second))->GetPVillage();
             CThing* creature = PBrain->PCreature;
             village->RemoveThingFromTask(PTaskThing, creature);
         }

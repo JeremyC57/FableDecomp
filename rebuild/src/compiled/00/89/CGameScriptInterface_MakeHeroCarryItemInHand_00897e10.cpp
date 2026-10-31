@@ -78,7 +78,7 @@ class CThing { public:
         }
         return false;
     }
-    CScriptThing GetScriptThing();                  // 0x004C7E50
+    CScriptThing GetScriptThing() const;                  // 0x004C7E50
 };
 class CThingPlayerCreature : public CThing { };
 class CCPPointerInfo;

@@ -112,6 +112,8 @@ public:
 protected:
     CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 public:
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
 
@@ -190,7 +192,6 @@ class CCombatManager { public:
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
     CBaseIntelligentPointer PEnemy;             // +0x14 CIntelligentPointer<CThingCreatureBase>
     bool Archer;                                // +0x1c
-    bool IsStopping();                          // 0x008FD010
     CThingCreatureBase* GetPEnemy() const { return (CThingCreatureBase*)PEnemy.GetPItem(); }
     bool ShouldGoStraightIntoStrafe();
 };

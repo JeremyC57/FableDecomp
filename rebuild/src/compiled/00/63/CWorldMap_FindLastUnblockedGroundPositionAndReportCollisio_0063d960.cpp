@@ -66,8 +66,10 @@ public:
 
     bool CreateLineSegment(const C3DVector* start, const C3DVector* end, C3DVector* next, C3DVector* cell) const;   // 0x0063B3F0
     float FindMaxGroundZInCell(const C3DVector* cell) const;                                                        // 0x0063B750
+protected:
     bool FindGroundCollisionPointWithinCell(const C3DVector* start, const C3DVector* end, const C3DVector* cell,
                                             C3DVector* direction, C3DVector* collision) const;                     // 0x0063D0A0
+public:
     bool FindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) const;
 };
 

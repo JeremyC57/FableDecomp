@@ -5,8 +5,8 @@
 // Callees: CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF2B0, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (x2),
 // CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, IsOriginatedByThing>> @ 0x0090DEE0,
 // CMessageEventManager::RemoveMessage @ 0x00493B5B, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0xC1 =
-// CTCGossip bit 1 of +0x38, 0x31 = CTCModes bit 17 of +0x24), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
-// (temporary vtable 0x0123E7E0), CTCModes::RemoveMode @ 0x0073ABA0, CWorld::GetFrame @ 0x0049D870.
+// CTCGossip bit 1 of +0x38, 0x31 = CTCCreatureModeManager bit 17 of +0x24), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
+// (temporary vtable 0x0123E7E0), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CWorld::GetFrame @ 0x0049D870.
 // Shape: the landed message-filter chain (`IsOfType(0x2C) && IsOriginatedByThing(creature)` bound by pointers, the
 // bound filter passed by const reference); both components used unconditionally (miss arms read the key slot);
 // the gossip target cleared through a CIntelligentPointer temporary of null.
@@ -201,7 +201,7 @@ class CTCGossip { public:                              // interface 0xC1
     unsigned char _pad[0x0c];
     CIntelligentPointerGossip PGossipTarget;    // +0x0c
 };
-struct CTCModes {                               // interface 0x31
+class CTCCreatureModeManager { public:         // interface 0x31 (Ego_r.pdb class name)
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 
@@ -225,7 +225,7 @@ void CAIStateGroup_MinionGossip::OnReplace()
     CTCGossip* gossip;
     PBrain->PCreature->GetInterfaceV(&gossip, 0xc1);
     gossip->PGossipTarget = CIntelligentPointerGossip(0);
-    CTCModes* modes;
+    CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterfaceV(&modes, 0x31);
     modes->RemoveMode(0x1b);
     FrameOfLastGossip = CWorld::GetFrame();

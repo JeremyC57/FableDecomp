@@ -138,7 +138,10 @@ struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_Unde
     virtual void SuspendableProcess();
 };
 void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A
-struct CUndeadRisingZombieAttackerBoss {
+class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
+struct CUndeadRisingZombieAttackerBoss : public CEntityScriptBase {
     void*                  VTable;
     GameCalls*             Game;                        // +0x04
     CScriptThing           Me;                          // +0x08
@@ -147,7 +150,6 @@ struct CUndeadRisingZombieAttackerBoss {
     C3DVector              StartPos;                    // +0x1c
     float                  MaxHealth;                   // +0x28
     void SetPredicate(const CPredicateBase& predicate); // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

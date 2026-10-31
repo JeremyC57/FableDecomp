@@ -1,45 +1,34 @@
-
 #include <stdio.h>
 #include <string.h>
+#include <new>
 
-struct CGameEventT {
-    void* p;
-    unsigned char b4;
-    char pad[0x25-5];
-    unsigned char b25;
-    unsigned char b26;
-    unsigned char b27;
+/* model under test: the CGameEvent(long) initialiser-list ctor of the source */
+class CGameEvent {
+public:
+    long          Type;
+    signed char   Player;
+    unsigned char Data[32];
+    unsigned char EndPos;
+    bool          Valid;
+    bool          Replacement;
+    CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
-
-/* function under test: same convention as source (this=ecx via __fastcall, arg on stack) */
-CGameEventT* __fastcall CGameEvent_ut(CGameEventT* self, int edx_dummy, void* arg)
-{
-    self->p = arg;
-    self->b4 = 0xff;
-    self->b25 = 0;
-    self->b26 = 1;
-    self->b27 = 0;
-    return self;
-}
 
 int main()
 {
-    CGameEventT ev;
-    memset(&ev, 0xAA, sizeof(ev));
-    int marker = 0x12345678;
-
-    CGameEventT* ret = CGameEvent_ut(&ev, 0, &marker);
-
+    unsigned char buf[sizeof(CGameEvent)];
+    memset(buf, 0xAA, sizeof(buf));
+    CGameEvent* ev = new (buf) CGameEvent(0x12345678);
     int ok = 1;
-    if (ret != &ev) ok = 0;   /* ctor returns this */
-    if (ev.p != &marker) ok = 0;
-    if (ev.b4 != 0xff) ok = 0;
-    if (ev.b25 != 0) ok = 0;
-    if (ev.b26 != 1) ok = 0;
-    if (ev.b27 != 0) ok = 0;
-
-    if (ok) { printf("OK_0x004159b0\n"); return 0; }
-    printf("FAIL p=%p b4=%02x b25=%02x b26=%02x b27=%02x\n",
-           ev.p, ev.b4, ev.b25, ev.b26, ev.b27);
-    return 1;
+    if ((void*)ev != (void*)buf) ok = 0;
+    if (sizeof(CGameEvent) != 0x28) ok = 0;
+    if (ev->Type != 0x12345678) ok = 0;
+    if (ev->Player != -1) ok = 0;
+    if (ev->EndPos != 0) ok = 0;
+    if (ev->Valid != true) ok = 0;
+    if (ev->Replacement != false) ok = 0;
+    if (ev->Data[0] != 0xAA) ok = 0;   /* data left untouched */
+    if (ok) printf("OK_0x004159b0\n");
+    else printf("FAIL_0x004159b0\n");
+    return ok ? 0 : 1;
 }

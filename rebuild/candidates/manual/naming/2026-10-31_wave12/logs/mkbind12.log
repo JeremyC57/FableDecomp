@@ -1,0 +1,32 @@
+Counter({'RETIRE': 129, 'ADD': 34, 'KEEP': 20}) removed lines 129 added 34
+NEWDEF 004159b0 ??0CGameEvent@@QAE@J@Z
+NEWDEF 005fad40 ?TeleportHeroToGuildSealRecallLocation@CTCInventoryMap@@QBEXXZ
+NEWDEF 005fbd90 ?GetAllThings@CTCInventoryMap@@QBEXABVCThingFilter_HasTC@@AAU?$list@PAVCThing@@@@@Z ?TeleportHeroToGuild@CTCInventoryMap@@QBEXXZ
+NEWDEF 0063d960 ?FindGroundCollisionPointWithinCell@CWorldMap@@IBE_NPBVC3DVector@@00PAV2@1@Z
+NEWDEF 0065f116 ??RCIsHornTaskWithThisHorn@@QBE_NV?$CCountedPointer@VCVillageTaskHorn@@@@@Z
+NEWDEF 00692a20 ?GetPItem@?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ
+NEWDEF 006a1440 ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ
+NEWDEF 00896120 ??$GetTC@UCTCVillage_Retail@@@CThing@@QAEPAUCTCVillage_Retail@@J@Z ?HasInterface@CThing@@QBEKJ@Z
+NEWDEF 008a1cc0 ?GetHomeBuilding@CThing@@QAEAAV?$CIntelligentPointer@VCThing@@@@XZ ?GetInterface@CThing@@QAEPAUCTCBase_Retail@@J@Z ?GetOtherResidence@CThing@@QAEAAV?$CIntelligentPointer@VCThing@@@@XZ ?GetPItem@?$CIntelligentPointer@VCThing@@@@QBEPAVCThing@@XZ ?HasInterface@CThing@@QBEKJ@Z
+NEWDEF 008a80f0 ?GetInterface@CThing@@QAEPAUCTCBase_Retail@@J@Z ?HasInterface@CThing@@QBEKJ@Z
+NEWDEF 008df3a0 ??$GetTC@VCTCCreatureModeManager@@@CThing@NCreatureMode@@QAEPAVCTCCreatureModeManager@@J@Z ??$GetTCIfPresent@VCTCCreatureModeManager@@@CThing@NCreatureMode@@QAEPAVCTCCreatureModeManager@@J@Z
+NEWDEF 008e9a30 ??$GetInterface@VCTCAnimationComplex@@@ThingNative@@QAE_NAAPAVCTCAnimationComplex@@H@Z
+NEWDEF 0090ca60 ??$GetInterfaceV@VCTCCreatureModeManager@@@CThing@@QAEXPAPAVCTCCreatureModeManager@@J@Z
+NEWDEF 00945530 ?ReleaseControlOfPot@CAIStateGroup_SitForMeal@@AAEXXZ
+NEWDEF 00945a90 ?GetPCookingPot@CAIStateGroup_SitForMeal@@ABEPAVCThing@@XZ
+NEWDEF 00946380 ?GetPCookingPot@CAIStateGroup_SitForMeal@@ABEPAVCThing@@XZ
+NEWDEF 0097d580 ?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z
+NEWDEF 0097ec00 ?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z
+NEWDEF 00a65060 ?RemoveAreaFromFreeList@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@2@@Z
+NEWDEF 00a650f0 ?InsertAreaIntoFreeList@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@2@@Z
+NEWDEF 00a65410 ?Init@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEXPAXJPAV2@@Z
+NEWDEF 00a65590 ?ConsolidateAdjacentFreeAreas@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEXPAVCMemoryArea@2@@Z ?Init@CMemoryArea@CMemoryAllocatorVariableSize@@QAEXPAVCMemoryAreaChunk@2@J@Z
+NEWDEF 00a65830 ?NewChunkDemandPaged@CMemoryAllocatorVariableSize@@IAEPAVCMemoryAreaChunk@1@PAXJ@Z
+NEWDEF 00a658e0 ?FreeArea@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEXPAVCMemoryArea@2@@Z
+NEWDEF 00a6cbb0 ?GetSingleInstanceCollisionSet@CPhysicsMesh@@ABEAAV?$vector@JV?$allocator@J@std@@@std@@XZ ?clear@?$vector@JV?$allocator@J@std@@@std@@QAEXXZ
+NEWDEF 00b38ed0 ?IsVisible@CEnginePrimitiveAttachmentManager@@ABE_NABVC3DBoundingSphere@@MABV?$CArray@PAVCEngineCamera@@@@@Z ?begin@?$CArray@PAVCEngineCamera@@@@QBEPBQAVCEngineCamera@@XZ ?end@?$CArray@PAVCEngineCamera@@@@QBEPBQAVCEngineCamera@@XZ
+NEWDEF 00b91710 ?InvalidateAll@CEngineSceneGridCell@@AAEXXZ
+NEWDEF 00da6d50 ??0?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAUCQ_MinionClifftopChaseScript@@P82@AEXVCScriptThing@@@ZV3@@Z ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z ??0CScriptThing@@QAE@AAV0@@Z ??_7?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@6B@ ??_7CScriptThing@@6B@ ??_G?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@UAEPAXI@
+NEWDEF 00da7830 ??0?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAUCQ_MinionClifftopChaseScript@@P82@AEXVCScriptThing@@@ZV3@@Z ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z ??0CScriptThing@@QAE@AAV0@@Z ??_7?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@6B@ ??_7CScriptThing@@6B@ ??_G?$CSpawnedFunc1@UCQ_MinionClifftopChaseScript@@VCScriptThing@@@@UAEPAXI@
+NEWDEF 00da7d30 ??0CIsThingAlive@NScript@@QAE@ABVCScriptThing@@@Z ??0CSpawnedFunc1@@QAE@ABVCCharString@@KP8CQ_MinionClifftopChaseScript@@AEXVCScriptThing@@@ZPAU2@1@Z ??1CScriptThing@@UAE@XZ ??4CScriptThing@@QAEAAV0@ABV0@@Z ??_7CScriptThing@@6B@ ??_GCScriptThing@@UAEPAXI@Z ?IsAlive@CScriptThing@@UBE_NXZ ?IsDead@CScriptThing@@UBE_NXZ
+NEWDEF 00ee8870 ??4CScriptThing@@QAEAAV0@ABV0@@Z ??A?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEAAVCScriptThing@@I@Z ?begin@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEPAVCScriptThing@@XZ ?resize@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXI@Z ?size@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QBEIXZ

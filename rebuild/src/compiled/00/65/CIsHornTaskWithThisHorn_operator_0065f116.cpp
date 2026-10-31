@@ -1,30 +1,35 @@
-// CIsHornTaskWithThisHorn::operator()(CCountedPointer<CTask> task) -- this functor is an intelligent pointer to a horn: true when the task's horn pointer (+8 of the task) is the same thing; the by-value counted task is released at the end (0x0065D5A0, `__fastcall`)
+// CIsHornTaskWithThisHorn::operator()(CCountedPointer<CVillageTaskHorn> task) const -- the functor holds an intelligent pointer to a horn (PHorn): true when the task's horn pointer (CVillageTaskHorn::PHorn, +8 of the task) is the same thing; the by-value counted task is released at the end (~CCountedPointer<CVillageTaskHorn> 0x0065D5A0)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065F116, length 42 bytes.
-// Shape: GetPItem (0x00A01B50) on `this` then on the task, `sete bl`, the parameter destroyed last, `mov al,bl`, `ret 8`.
+// Shape: GetPItem (0x00A01B50) on PHorn then on the task's PHorn, `sete bl`, the parameter destroyed last, `mov al,bl`, `ret 8`.
+// Names: FableWin.pdb ??RCIsHornTaskWithThisHorn@@QBE_NV?$CCountedPointer@VCVillageTaskHorn@@@@@Z (const); Ego_r.pdb layout
+//   CIsHornTaskWithThisHorn {CIntelligentPointer<CThing> PHorn +0}; CBaseIntelligentPointer::GetPItem() const returns CBaseObject*
+//   (Ego_r + FableWin); the parameter's dtor is the CCountedPointer<CVillageTaskHorn> COMDAT 0x0065D5A0 (called out of line, so the
+//   template is declared here without the inline bodies of engine/CCountedPointer.h).
+// Layout: engine/CVillageTaskHorn.h (flattens the vptr and keeps PHorn as a byte image at +0x08).
 #pragma optimize("s", on)
-struct CBaseIntelligentPointer {
+#include "engine/CVillageTaskHorn.h"
+class CBaseObject;
+class CThing;
+class CCPPointerInfo;
+class CBaseIntelligentPointer { public:
     virtual void v00();
-    void* m_pItem;
-    void* GetPItem() const;                        // 0x00A01B50
+    CBaseObject* PItem;                            // +0x04
+    CBaseObject* GetPItem() const;                 // 0x00A01B50
 };
-struct CTask_0065f116 {
-    unsigned char           _pad[8];
-    CBaseIntelligentPointer m_horn;                // +0x08
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };
+template <class T> class CCountedPointer { public:
+    T*              Data;                          // +0x00
+    CCPPointerInfo* Info;                          // +0x04
+    ~CCountedPointer();                            // 0x0065D5A0 for CVillageTaskHorn
 };
-struct CCountedPointer_0065f116 {                  // 8 bytes: the task and its count block
-    CTask_0065f116* m_pObject;
-    void*           m_pCount;
-    ~CCountedPointer_0065f116();
-};
-void __fastcall DestroyCountedPointer_0065d5a0(CCountedPointer_0065f116* pointer);   // 0x0065D5A0 (labelled "_Dest_val<...>")
-__forceinline CCountedPointer_0065f116::~CCountedPointer_0065f116() { DestroyCountedPointer_0065d5a0(this); }
-class CIsHornTaskWithThisHorn : public CBaseIntelligentPointer { public:
-    bool operator()(CCountedPointer_0065f116 task);
+class CIsHornTaskWithThisHorn { public:
+    CIntelligentPointer<CThing> PHorn;             // +0x00
+    bool operator()(CCountedPointer<CVillageTaskHorn> task) const;
 };
 
-bool CIsHornTaskWithThisHorn::operator()(CCountedPointer_0065f116 task)
+bool CIsHornTaskWithThisHorn::operator()(CCountedPointer<CVillageTaskHorn> task) const
 {
-    void* horn = GetPItem();
-    bool same = task.m_pObject->m_horn.GetPItem() == horn;
+    CBaseObject* horn = PHorn.GetPItem();
+    bool same = ((const CBaseIntelligentPointer*)task.Data->PHorn)->GetPItem() == horn;
     return same;
 }

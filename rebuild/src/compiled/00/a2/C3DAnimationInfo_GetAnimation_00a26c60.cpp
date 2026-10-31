@@ -118,7 +118,9 @@ class C3DAnimationInfo { public:                  // engine/C3DAnimationInfo.h o
     void* Bank;                            // +4
     unsigned long Index;                   // +8
     CAnimationData* Data;                  // +0xc
+private:
     CCountedPointer<C3DAnimation2> BuildAnimationInstance(const C3DMesh2& mesh) const;   // 0x00A26AD0
+public:
     CCountedPointer<const C3DAnimation2> GetAnimation(const C3DMesh2& mesh) const;
 };
 

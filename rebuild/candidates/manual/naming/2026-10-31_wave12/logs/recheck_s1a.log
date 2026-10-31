@@ -1,0 +1,105 @@
+addr       parity           behav  name
+00692a20   RELOCATION_MATCH PASS   CCreatureActionBase::IsPreventingNormalMovement
+00694d10   WARN RELOC_NAME: ?GetControlFlags@CTCInterface5A@@QAEPAUCControlFlags@@XZ -> 0070b460 labelled 'CTCAnimationComplex::GetAnimation'
+00694d10   WARN RELOC_NAME: ?DisableFlag@CControlFlags@@QAEXJ@Z -> 0070d8c0 labelled 'CTCAnimation::RemoveCombinationAnimsOfType'
+00694d10   RELOCATION_MATCH PASS   CCreatureActionBase::Initialise
+006a9d10   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006a9d10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006a9d10   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+006a9d10   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+006a9d10   WARN RELOC_NAME: ?GetPlayerManager_004c79f0@CThingPlayerCreature@@QAEPAVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+006a9d10   WARN RELOC_NAME: ?IsInitialised@CInitBaseClass@@QAE_NXZ -> 0099a330 labelled '_global::GetMember_byte0x4_0099a330'
+006a9d10   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+006a9d10   RELOCATION_MATCH PASS   CThingPlayerCreature::vfunc_34
+00728ff0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00728ff0   WARN RELOC_NAME: ?GetGameSubsystem@CTCCreatureExpression@@QAEPAVCMainGameComponent@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+00728ff0   WARN RELOC_NAME: ?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z -> 0070c4e0 labelled 'CTCAnimation::FindCombinationAnim'
+00728ff0   RELOCATION_MATCH PASS   CTCCreatureExpression::UpdateBlinking
+00787620   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00787620   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00787620   WARN SHARED_HEADER_AVAILABLE CWorld
+00787620   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00787620   WARN SHARED_HEADER_AVAILABLE CTCBase
+00787620   RELOCATION_MATCH PASS   CTCSwitchableNavigation::WouldBlockPos
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0082d1d0   WARN RELOC_NAME: ?GetPlayerManager@CThingBuilding@@QAEPAVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+0082d1d0   WARN RELOC_NAME: ?IsLocal@CPlayer@@QAE_NXZ -> 0099a330 labelled '_global::GetMember_byte0x4_0099a330'
+0082d1d0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+0082d1d0   RELOCATION_MATCH PASS   CThingBuilding::GetHighlightInfo_slot34
+008903d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008903d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+008903d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008903d0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008903d0   RELOCATION_MATCH PASS   CGameScriptInterface::GetHeroHealthPercentage
+008e9710   WARN RELOC_NAME: ?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z -> 0070c4e0 labelled 'CTCAnimation::FindCombinationAnim'
+008e9710   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::ClearStrafingCombinationAnims
+008e9a30   WARN RELOC_NAME: ?GetFirstCombinationAnimFromType@CAnimateThing@@QAEPAVCAnimSet@@J@Z -> 0070c4e0 labelled 'CTCAnimation::FindCombinationAnim'
+008e9a30   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::OnActivate
+008ecac0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+008ecac0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008ecac0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008ecac0   RELOCATION_MATCH PASS   CTCDegradableBase::OnParentHealthChanged
+00a199f0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a199f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a199f0   WARN SHARED_HEADER_AVAILABLE CNavigatorFlyer
+00a199f0   RELOCATION_MATCH PASS   CNavigatorFlyer::CanNavigateToPos
+00a19a30   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a19a30   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a19a30   WARN SHARED_HEADER_AVAILABLE CNavigatorFlyer
+00a19a30   RELOCATION_MATCH PASS   CNavigatorFlyer::IsNavLineOfSightClear
+00a1a1d0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1a1d0   RELOCATION_MATCH PASS   CNavigatorAStar::GetMyNodeAt
+00a1a210   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a1a210   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1a210   RELOCATION_MATCH PASS   CNavigatorAStar::IsNavigableAt
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1ab40   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+00a1ab40   RELOCATION_MATCH PASS   CNavigatorAStar::GetNearestNavigablePosTo
+00a1aec0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1aec0   RELOCATION_MATCH PASS   CNavigatorAStar::GetMyNodeAt
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1bca0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+00a1bca0   WARN RELOC_NAME: ?IsConnectedTo@CNavRegion@@QBE_NPBV1@@Z -> 00a77780 labelled 'NavigationGraph_BreadthFirstSearch'
+00a1bca0   RELOCATION_MATCH PASS   CNavigatorAStar::CanNavigateToPos
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1bee0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+00a1bee0   RELOCATION_MATCH PASS   CNavigatorAStar::UpdateLastPosition
+00a1df60   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a1df60   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1df60   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+00a1df60   RELOCATION_MATCH PASS   CNavigatorAStar::CalculateNavigableWidthOfLine
+00a1e370   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1e370   RELOCATION_MATCH PASS   CNavigatorAStar::InitialiseFromPreCalculatedRoute
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a472f0   WARN RELOC_NAME: ?GetSmallestNodeSize@@YAMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a472f0   RELOCATION_MATCH PASS   CNavigatorBase::GetNextNeighbour
+
+WINS: 21
+  00692a20 RELOCATION_MATCH CCreatureActionBase::IsPreventingNormalMovement
+  00694d10 RELOCATION_MATCH CCreatureActionBase::Initialise
+  006a9d10 RELOCATION_MATCH CThingPlayerCreature::vfunc_34
+  00728ff0 RELOCATION_MATCH CTCCreatureExpression::UpdateBlinking
+  00787620 RELOCATION_MATCH CTCSwitchableNavigation::WouldBlockPos
+  0082d1d0 RELOCATION_MATCH CThingBuilding::GetHighlightInfo_slot34
+  008903d0 RELOCATION_MATCH CGameScriptInterface::GetHeroHealthPercentage
+  008e9710 RELOCATION_MATCH NCreatureMode::CModeStrafe::ClearStrafingCombinationAnims
+  008e9a30 RELOCATION_MATCH NCreatureMode::CModeStrafe::OnActivate
+  008ecac0 RELOCATION_MATCH CTCDegradableBase::OnParentHealthChanged
+  00a199f0 RELOCATION_MATCH CNavigatorFlyer::?CanNavigateToPos@CNavigatorFlyer@@UBE_NABVC3DVector@@0M_N@Z
+  00a19a30 RELOCATION_MATCH CNavigatorFlyer::?IsNavLineOfSightClear@CNavigatorFlyer@@UBE_NABVC3DVector@@0@Z
+  00a1a1d0 RELOCATION_MATCH CNavigatorAStar::GetMyNodeAt
+  00a1a210 RELOCATION_MATCH CNavigatorAStar::IsNavigableAt
+  00a1ab40 RELOCATION_MATCH CNavigatorAStar::?GetNearestNavigablePosTo@CNavigatorAStar
+  00a1aec0 RELOCATION_MATCH CNavigatorAStar::GetMyNodeAt
+  00a1bca0 RELOCATION_MATCH CNavigatorAStar::?CanNavigateToPos@CNavigatorAStar@@UBE_NABVC3DVector@@0M_N@Z
+  00a1bee0 RELOCATION_MATCH CNavigatorAStar::UpdateLastPosition
+  00a1df60 RELOCATION_MATCH CNavigatorAStar::?CalculateNavigableWidthOfLine@CNavigatorAStar@@UAEXABVC3DVector@@0AAM1@Z
+  00a1e370 RELOCATION_MATCH CNavigatorAStar::?InitialiseFromPreCalculatedRoute@CNavigatorAStar@@
+  00a472f0 RELOCATION_MATCH CNavigatorBase::GetNextNeighbour

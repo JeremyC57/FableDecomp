@@ -54,7 +54,7 @@ class CThing;
 class CTCBase { };
 class CTCCarrying : public CTCBase {
 public:
-    CThing* GetThingInPrimarySlot();                     // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                     // 0x006A1440
 };
 struct CTCEntry { long Type; CTCBase* TC; };
 struct CTCMap {

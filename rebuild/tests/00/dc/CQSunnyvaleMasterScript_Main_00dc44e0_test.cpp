@@ -5,7 +5,7 @@ struct F4Vtbl { void (__fastcall *slot[8])(F4*); };
 struct F4 { F4Vtbl* vtbl; };
 struct CQ_SunnyvaleMasterScript { void* f0; F4* f4; };
 
-extern "C" char __fastcall helper_f35b30(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
 
 void __fastcall Main(CQ_SunnyvaleMasterScript* self);
 
@@ -14,8 +14,8 @@ static int g_helper_calls = 0;
 
 void __fastcall slot7_impl(F4* /*p*/) { g_slot7_calls++; }
 
-extern "C" char __fastcall helper_f35b30(CQ_SunnyvaleMasterScript* /*self*/)
-{
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
+    CQ_SunnyvaleMasterScript* self = (CQ_SunnyvaleMasterScript*)this;
     g_helper_calls++;
     // loop-while-zero: return zero for first 2 iters, nonzero on 3rd to exit
     return (char)(g_helper_calls < 3 ? 0 : 1);

@@ -65,12 +65,12 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public: };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
-struct CVillage {
+class CTCVillage { public:
     unsigned char _pad[0xac];
     long NextGreetFrame;                        // +0xAC
 };
 class CTCVillageMember { public:
-    CVillage* GetPVillage();                    // 0x007EE540
+    CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
 class CTCHeroStats { public:
     unsigned char _pad[0x114];
@@ -151,7 +151,7 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
         CTCVillageMember* member;
         GetCreature()->GetInterface(&member, 0x23);
         float next = (float)(CWorld::GetFrame() + 120);
-        CVillage* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         village->NextGreetFrame = (long)next;
         unsigned long speech;
         const CTCHeroStats* stats;

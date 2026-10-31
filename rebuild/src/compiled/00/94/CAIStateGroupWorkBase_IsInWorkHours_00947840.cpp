@@ -48,7 +48,7 @@ class CTCVillage { public:
 };
 
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* component);     // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -74,7 +74,7 @@ bool CAIStateGroup_WorkBase::IsInWorkHours()
 {
     CTCVillager* pComponent;
     if (PBrain->Creature->GetInterface(&pComponent, 0x23)) {
-        CTCVillage* pOwner = GFGetPVillageInterface(pComponent);
+        CTCVillage* pOwner = ((CTCVillageMember*)pComponent)->GetPVillage();
         if (pOwner != 0) {
             if (pOwner->IsCookTime_00658bb9())
                 return true;

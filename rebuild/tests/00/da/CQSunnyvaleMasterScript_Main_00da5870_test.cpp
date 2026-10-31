@@ -24,7 +24,8 @@ static int g_limit = 3;
 
 static void __fastcall tick(F4*) { g_ticks++; }
 
-extern "C" char __fastcall helper_f35b30(CQ_SunnyvaleMasterScript*) {
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
     // return 0 => keep looping (matches retail: while(!helper))
     return (g_ticks < g_limit) ? (char)0 : (char)1;
 }

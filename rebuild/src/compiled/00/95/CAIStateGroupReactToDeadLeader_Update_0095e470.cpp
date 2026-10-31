@@ -109,7 +109,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                           // 0x008FCF40
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
         bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890

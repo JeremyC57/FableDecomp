@@ -17,7 +17,7 @@ class CTCVillage { public:
 };
 
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -64,7 +64,7 @@ struct CAIStateGroup_VillageTaskPatrol : CAIStateGroupBase {
 
 bool CAIStateGroup_VillageTaskPatrol::IsRunnable()
 {
-    CTCVillage* village = GFGetPVillageInterface(PVillager);
+    CTCVillage* village = ((CTCVillageMember*)PVillager)->GetPVillage();
     if (village != 0) {
         if (PTaskThing.GetPItem() != 0)
             OnTaskThingFound();

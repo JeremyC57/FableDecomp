@@ -253,7 +253,7 @@ struct CThingPos : CThing {
 };
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 struct CThingSchoolKid : CThing {
     unsigned char _pad94[0x170 - 0x94];
     CBaseIntelligentPointer PSchool;            // +0x170 CIntelligentPointer<CThingBuilding>
@@ -272,14 +272,14 @@ bool CAIStateGroup_WorkAtSchool::IsRunnable()
     CThingBuilding* school = (CThingBuilding*)GetCreature()->PSchool.GetPItem();
     if (school && GetCreature()->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)GetCreature()->FindEntryC(0x23)->second;
-        if (GFGetPVillageInterface(villager)) {
+        if (((CTCVillageMember*)villager)->GetPVillage()) {
             CDefPointer<CSimBuildingDef> simDef = school->PeekPSimDefinition();
             if (simDef.Object) {
                 if ((simDef->Property & 4) && school->HasTC(0x23)) {
                     CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->second;
-                    if (GFGetPVillageInterface(schoolVillager)) {
+                    if (((CTCVillageMember*)schoolVillager)->GetPVillage()) {
                         CThingAICreature* creature = (CThingAICreature*)PBrain->PCreature;
-                        bool result = GFGetPVillageInterface(schoolVillager)->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), false);
+                        bool result = ((CTCVillageMember*)schoolVillager)->GetPVillage()->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), false);
                         return result;
                     }
                 }

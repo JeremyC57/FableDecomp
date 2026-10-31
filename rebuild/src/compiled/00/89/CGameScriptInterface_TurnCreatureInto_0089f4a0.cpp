@@ -81,8 +81,10 @@ template<class T> class CDefPointer { public:
     }
 };
 class CThingCreatureDef : public CDefPointeeBase { public: };
-class CGameDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);             // 0x009AD410
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     bool GetDef(long index, CDefPointer<CThingCreatureDef>& out);        // 0x00513160 (GetDef<CThingCreatureDef>)
 };
 void* FindDef_CGameDefinitionManager_GetDef_F4A0();
@@ -147,7 +149,7 @@ public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     bool IsGameStatePersisted() const;                  // 0x004C8280
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
-    CScriptThing GetScriptThing();                      // 0x004C7E50
+    CScriptThing GetScriptThing() const;                      // 0x004C7E50
     void AddAndCopyTC(const CTCBase* tc, bool a);       // 0x004C9F60
     void CopyTCIfExists(const CTCBase* tc);             // 0x004C8FB0
     void Kill(bool immediately);                        // 0x004C9B80

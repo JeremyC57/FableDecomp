@@ -44,15 +44,15 @@ struct CCPPointerImp {                                 // CCountedPointer<CScrip
 #define VPAD32(a) VPAD16(a##0) VPAD16(a##1)
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
-namespace N_006e7b40 { struct CScriptThing {                                  // 12 bytes, vtable 0x01238C8C
-    VPAD64(ta) VPAD8(tb) VPAD2(tc) VPAD1(td)           // slots 0..74
+class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
+    virtual ~CScriptThing();                           // slot 0, 0x004AA840
+    VPAD64(ta) VPAD8(tb) VPAD2(tc)                     // slots 1..74
     virtual bool IsAlive() const;                      // slot 75 (+0x12c)
     CCPPointerImp PImp;                                // +0x04
     CScriptThing();                                    // 0x006E7B40
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     __forceinline CScriptThing(CScriptThing& other) : PImp(other.PImp) { }   // the inline copy of a non-const thing
-    ~CScriptThing();                                   // 0x004AA840
-}; } using N_006e7b40::CScriptThing;
+};
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CScriptThingView {
     void* vptr; void* Data; void* Info;

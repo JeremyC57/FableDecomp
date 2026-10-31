@@ -78,11 +78,11 @@ struct CActionBase {
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad2[0x100 - 0x64];
     CActionBase* PCurrentAction;                // +0x100
-    bool IsPerformingAnyAction();               // 0x006622A0
+    bool IsPerformingAnyAction() const;               // 0x006622A0
     void FinishCurrentAction();                 // 0x00662650
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
     CThing* RemoveThingFromPrimarySlot(bool b); // 0x006A1E00
 };
 struct CTCGoods {                               // interface 0x47

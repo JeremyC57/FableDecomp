@@ -95,7 +95,9 @@ class CAIStateGroupBase { public:
     protected:
     unsigned long* GetPWorldSeed() const;                  // 0x008FCFD0
     public:
-    bool IsStopping();                               // 0x008FD010
+protected:
+    bool IsStopping() const;                               // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                                // 0x008FCF40
     unsigned long Random(unsigned long range)
     {

@@ -127,9 +127,11 @@ class CThing { public:
         return false;
     }
 };
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);            // 0x009AD410
 };
 class CWorld { public: static long __fastcall GetFrame(); };                                        // 0x0049D870
 CThing* __fastcall CreateExplosionObject(long defIndex, const C3DVector* position);   // 0x0080C460

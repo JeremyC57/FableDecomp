@@ -1,0 +1,10 @@
+addr       parity           behav  name
+004159b0   MATCH            PASS   CGameEvent::CGameEvent
+  WARN leaf 'operator' matches no symbol in 0065f116.obj; graded the largest function
+  WARN leaf 'operator' matches no symbol in 0065f116.obj; graded the largest function
+0065f116   WARN RELOC_NAME: ??1?$CCountedPointer@VCVillageTaskHorn@@@@QAE@XZ -> 0065d5a0 labelled '_global::CCountedPointer_Release_0065d5a0'
+0065f116   RELOCATION_MATCH PASS   CIsHornTaskWithThisHorn::operator
+
+WINS: 2
+  004159b0 MATCH CGameEvent::??0CGameEvent@@QAE@J@Z
+  0065f116 RELOCATION_MATCH CIsHornTaskWithThisHorn::operator

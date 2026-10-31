@@ -28,21 +28,21 @@ inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-struct CThing_Retail {
+class CThing { public:
     unsigned char  _pad00[0x74];
     CCharString    ScriptName;                     // +0x74
     unsigned char  _pad78[0x91 - 0x78];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
-    CScriptThing GetScriptThing();                 // 0x004C7E50 (manifest "GFPredicateAnd<...>" is propagated)
+    CScriptThing GetScriptThing() const;                 // 0x004C7E50 (manifest "GFPredicateAnd<...>" is propagated)
 };
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
-CThing_Retail* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos, const C3DVector& dir);   // 0x0080C500
-CThing_Retail* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos);                         // 0x0080C460
+CThing* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos, const C3DVector& dir);   // 0x0080C500
+CThing* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos);                         // 0x0080C460
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -52,7 +52,7 @@ CScriptThing CGameScriptInterface::CreateExplosion(const CCharString& defName, c
 {
     long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(defName);
     if (defIndex > 0) {
-        CThing_Retail* t = dir ? CreateExplosionThing(defIndex, pos, *dir) : CreateExplosionThing(defIndex, pos);
+        CThing* t = dir ? CreateExplosionThing(defIndex, pos, *dir) : CreateExplosionThing(defIndex, pos);
         if (t && !t->m_dead) {
             t->ScriptName = scriptName;
             return t->GetScriptThing();

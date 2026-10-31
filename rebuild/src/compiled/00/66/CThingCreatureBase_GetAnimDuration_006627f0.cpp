@@ -24,7 +24,9 @@ class CWorld { public:
 };
 
 class CThing { public:
+protected:
     const CWorld& PeekWorld() const;           // 0x004C7AB0
+public:
 };
 
 class CThingCreatureBase : public CThing { public:

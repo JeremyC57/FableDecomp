@@ -117,7 +117,7 @@ class CTCVillage { public:
     CIntelligentPointer<CThing> PCriminalHandler;   // +0xdc the guard assigned to the current criminal
     void SetCriminalHandler(CThing* guard);     // 0x00933280
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_MinionGuardReactToCriminal : CAIStateGroupBase {
     CIntelligentPointer<CThing> PHero;              // +0x14
@@ -128,7 +128,7 @@ void CAIStateGroup_MinionGuardReactToCriminal::OnReplace()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        CTCVillage* village = GFGetPVillageInterface(villager);
+        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (village != 0) {
             CThing* creature = PBrain->PCreature;
             if (village->PCriminalHandler.GetPItem() == creature)

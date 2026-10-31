@@ -1,0 +1,60 @@
+addr       parity           behav  name
+0073aba0   WARN SHARED_HEADER_AVAILABLE CWorld
+0073aba0   RELOCATION_MATCH PASS   CTCCreatureModeManager::RemoveMode
+0088f620   WARN RELOC_NAME: ?g_soundMgr@@3PAUCSoundMgr@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0088f620   RELOCATION_MATCH PASS   CGameScriptInterface::EnableSounds
+008df3a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '?Recover@CModeScorpionKingVulnerable@NCreatureMode@@AAEXXZ' matches no symbol in 008df3a0.obj; graded the largest function
+  WARN leaf '?Recover@CModeScorpionKingVulnerable@NCreatureMode@@AAEXXZ' matches no symbol in 008df3a0.obj; graded the largest function
+008df3a0   WARN RELOC_NAME: ?ClearQueuedAnims@CAnimateThing@NCreatureMode@@QAEXXZ -> 0070d510 labelled 'CAnimateThing::ClearQueues'
+008df3a0   RELOCATION_MATCH PASS   NCreatureMode::CModeScorpionKingVulnerable::Recover
+0091eb60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091eb60   WARN SHARED_HEADER_AVAILABLE CAIStateGroup_CreatureRangedCombat2
+0091eb60   WARN RELOC_NAME: ?GetPWorld@CAIStateGroup_CreatureRangedCombat2@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0091eb60   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PBVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0091eb60   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombat2::IsRunnable
+00a65060   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorBase
+00a65060   RELOCATION_MATCH PASS   CMemoryAreaChunk::RemoveAreaFromFreeList
+00a65410   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorBase
+00a65410   RELOCATION_MATCH PASS   CMemoryAreaChunk::Init
+00a65830   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorBase
+00a65830   RELOCATION_MATCH PASS   CMemoryAllocatorVariableSize::NewChunkDemandPaged
+00a65930   WARN SHARED_HEADER_AVAILABLE CMemoryAllocatorBase
+00a65930   RELOCATION_MATCH PASS   CMemoryAllocatorVariableSize::CMemoryAllocatorVariableSize
+
+WINS: 8
+  0073aba0 RELOCATION_MATCH CTCCreatureModeManager::RemoveMode
+  0088f620 RELOCATION_MATCH CGameScriptInterface::EnableSounds
+  008df3a0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?Recover@CModeScorpionKingVulnerable@NCreatureMode@@AAEXXZ
+  0091eb60 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::IsRunnable
+  00a65060 RELOCATION_MATCH CMemoryAreaChunk::RemoveAreaFromFreeList
+  00a65410 RELOCATION_MATCH CMemoryAreaChunk::Init
+  00a65830 RELOCATION_MATCH CMemoryAllocatorVariableSize::NewChunkDemandPaged
+  00a65930 RELOCATION_MATCH CMemoryAllocatorVariableSize::CMemoryAllocatorVariableSize
+addr       parity           behav  name
+0073ae70   RELOCATION_MATCH PASS   CTCCreatureModeManager::ClearModes
+008da890   RELOCATION_MATCH PASS   NCreatureMode::CModeDrained::FrameUpdate
+0090ca60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0090ca60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0090ca60   WARN SHARED_HEADER_AVAILABLE CWorld
+0090ca60   WARN RELOC_NAME: ?GetPWorld@CAIStateGroup_MinionGossip@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0090ca60   WARN RELOC_NAME: ?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@N_006af2b0@@@@@Z -> 0090dee0 labelled 'CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType,CMessageEventFilter_CanBeSeenOrHeard>_>'
+0090ca60   RELOCATION_MATCH PASS   CAIStateGroup_MinionGossip::OnReplace
+0093afc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0093afc0   WARN SHARED_HEADER_AVAILABLE CWorld
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093afc0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0093afc0   RELOCATION_MATCH PASS   CAIStateGroup_BanditSitRoundCampfire::OnReplace
+00a650f0   RELOCATION_MATCH PASS   CMemoryAreaChunk::InsertAreaIntoFreeList
+00a65590   RELOCATION_MATCH PASS   ConsolidateAdjacentFreeAreas
+00a658e0   RELOCATION_MATCH PASS   CMemoryAreaChunk::RemoveAreaFromFreeList
+
+WINS: 7
+  0073ae70 RELOCATION_MATCH CTCCreatureModeManager::ClearModes
+  008da890 RELOCATION_MATCH NCreatureMode::CModeDrained::FrameUpdate
+  0090ca60 RELOCATION_MATCH CAIStateGroup_MinionGossip::OnReplace
+  0093afc0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::OnReplace
+  00a650f0 RELOCATION_MATCH CMemoryAreaChunk::InsertAreaIntoFreeList
+  00a65590 RELOCATION_MATCH CMemoryAreaChunk::ConsolidateAdjacentFreeAreas
+  00a658e0 RELOCATION_MATCH CMemoryAreaChunk::?FreeArea@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEXPAVCMemoryArea@2@@Z

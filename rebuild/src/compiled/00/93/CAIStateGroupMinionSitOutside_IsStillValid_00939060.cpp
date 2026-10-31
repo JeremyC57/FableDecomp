@@ -102,7 +102,7 @@ struct CTCVillager;
 class CTCVillage { public:
     bool IsCurfewTime_00658db3();                        // 0x00658DB3
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_MinionSitOutside : CAIStateGroupBase {
     unsigned char _seat[0x2c];                  // +0x14..+0x3f UsesSeat / SitOnSeatBase / SitOnSeat members
@@ -114,8 +114,8 @@ unsigned char CAIStateGroup_MinionSitOutside::IsStillValid()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        if (GFGetPVillageInterface(villager) != 0) {
-            if (GFGetPVillageInterface(villager)->IsCurfewTime_00658db3())
+        if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
+            if (((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime_00658db3())
                 return false;
         }
     }

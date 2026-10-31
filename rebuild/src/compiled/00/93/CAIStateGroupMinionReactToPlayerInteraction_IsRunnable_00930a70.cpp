@@ -81,13 +81,13 @@ COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(const COpinionDeedFil
     return deed;
 }
 #pragma auto_inline(on)
-struct CVillage {
+class CTCVillage { public:
     unsigned char _pad[0x88];
     long GuardCount;                                    // +0x88 (descriptive)
     bool IsDeedHandled(long handle);                    // 0x0065914B (descriptive)
 };
 class CTCVillageMember { public:                               // interface 0x23
-    CVillage* GetPVillage() const;                      // 0x007EE540
+    CTCVillage* GetPVillage() const;                      // 0x007EE540
 };
 class CTCWife { public:                                        // interface 0xd7
     bool IsMarriedToThePlayer() const;                  // 0x006CEC80
@@ -140,7 +140,7 @@ bool CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable()
         return false;
     CTCVillageMember* member;
     if (static_cast<const CThing*>(GetCreature())->GetInterface(&member, 0x23)) {
-        CVillage* village = member->GetPVillage();
+        CTCVillage* village = member->GetPVillage();
         CTCCreatureOpinionOfHero* opinion;
         if (village && static_cast<const CThing*>(GetCreature())->GetInterface(&opinion, 0x4f)) {
             long handle;

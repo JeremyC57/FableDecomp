@@ -32,7 +32,9 @@ struct CAIStateGroup_SitForMeal : CAIStateGroup_WorkBase {
     unsigned char _pad2[0x30];                  // +0x14..+0x43 seat / pot pointers
     long DayLastAte;                            // +0x44
     virtual bool IsRunnable();
-    CThing* GetPCookingPot();                   // 0x00945A90
+private:
+    CThing* GetPCookingPot() const;                   // 0x00945A90
+public:
 };
 
 bool CAIStateGroup_SitForMeal::IsRunnable()

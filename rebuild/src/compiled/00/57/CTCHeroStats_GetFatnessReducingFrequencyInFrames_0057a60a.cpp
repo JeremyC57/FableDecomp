@@ -20,7 +20,9 @@ class CTCBase {
 public:
     virtual ~CTCBase();
     class CThing* ParentThing;                  // +0x04
+protected:
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+public:
 };
 class CTCHeroStats : public CTCBase {
 public:

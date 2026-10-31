@@ -74,7 +74,9 @@ public:
     }
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) const;   // 0x006D73D0
     long GetExperienceFallbackMultiplier() const { return GetExperienceFallbackMultiplierForMultiplier(GetExperiencePickUpMultiplier()); }
+private:
     const CComboMultiplierData& GetActiveComboMultiplierData() const;   // 0x006D72D0
+public:
     void OnComboMultiplierDecrease();                       // 0x006D7E70
     void SetAsHit();
 };

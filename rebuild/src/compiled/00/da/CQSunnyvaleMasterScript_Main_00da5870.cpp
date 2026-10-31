@@ -20,12 +20,12 @@ struct CQ_SunnyvaleMasterScript {
     F4*   f4;    // +4
 };
 
-extern "C" char __fastcall helper_f35b30(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
 
 void __fastcall Main(CQ_SunnyvaleMasterScript* self)
 {
     do {
         F4* p = self->f4;
         p->vtbl->slot7(p);
-    } while (!helper_f35b30(self));
+    } while (!((char)((const CEntityScriptBase*)self)->IsActiveThreadTerminating()));
 }

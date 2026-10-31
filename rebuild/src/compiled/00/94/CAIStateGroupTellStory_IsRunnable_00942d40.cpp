@@ -263,7 +263,7 @@ struct CThingPos : CThing {
 };
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 struct CThingVillagerBase : CThing {
     unsigned char _pad94[0x170 - 0x94];
     CBaseIntelligentPointer PWorkplace;         // +0x170
@@ -276,9 +276,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
 class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
@@ -311,12 +313,12 @@ bool CAIStateGroup_TellStory::IsRunnable()
     CThingBuilding* home = (CThingBuilding*)GetCreature()->PWorkplace.GetPItem();
     if (home && GetCreature()->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)GetCreature()->FindEntryC(0x23)->second;
-        if (GFGetPVillageInterface(villager)) {
+        if (((CTCVillageMember*)villager)->GetPVillage()) {
             CDefPointer<CMaterialDef> material = home->PeekPMaterial();
             if (material.Object) {
                 if ((material->Flags & 4) && home->HasTC(0x23)) {
                     CTCVillager* homeVillager = (CTCVillager*)home->FindEntry(0x23)->second;
-                    if (GFGetPVillageInterface(homeVillager) && GFGetPVillageInterface(homeVillager)->IsCookTime()) {
+                    if (((CTCVillageMember*)homeVillager)->GetPVillage() && ((CTCVillageMember*)homeVillager)->GetPVillage()->IsCookTime()) {
                         long index;
                         {
                             CCharString name("STORY_PLACE_MARKER");

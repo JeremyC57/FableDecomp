@@ -12,7 +12,7 @@
 class CCreatureActionBase;
 
 class CThingCreatureBase { public:
-    bool IsPerformingAnyAction();          // 0x006622A0
+    bool IsPerformingAnyAction() const;          // 0x006622A0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 

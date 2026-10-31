@@ -25,7 +25,7 @@ class CCharString { public:
 class CAnimationEntry;
 
 class CThingCreatureBase : public CThing { public:
-    bool IsPerformingAnyAction();          // 0x006622A0
+    bool IsPerformingAnyAction() const;          // 0x006622A0
     CAnimationEntry* GetRandomLoadedAnimFromName(const CCharString& name, bool loadedOnly);   // 0x00662FA0
 };
 

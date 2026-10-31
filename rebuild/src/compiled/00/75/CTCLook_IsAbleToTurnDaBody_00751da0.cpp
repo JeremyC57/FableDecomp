@@ -28,7 +28,7 @@ class CThingCreatureBase { public:
     unsigned char      _pad_0x92[0x100 - 0x92];
     CActionController* m_pActionController;      // +0x100
     bool IsDead() const { return (m_thingFlags & 1) != 0; }
-    bool IsPerformingAnyAction();                // 0x006622A0
+    bool IsPerformingAnyAction() const;                // 0x006622A0
 };
 
 template <class T> inline bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && !thing->IsDead(); }   // inline here (out-of-line copies e.g. 0x00428F60)

@@ -21,7 +21,7 @@ struct CAIStateGroup_StayNearFoodHall : CAIStateGroupBase {
     long AIAction_MoveToPosProximity(long, C3DVector, float, bool*, long, bool, bool, bool, CThing*, bool, float);
     void Terminate();
 };
-CTCVillage* __fastcall GFGetVillage(CTCVillager*); // 0x007ee540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 void CAIStateGroup_StayNearFoodHall::Update()
 {
     CThing* foodHall;
@@ -47,7 +47,7 @@ void CAIStateGroup_StayNearFoodHall::Update()
         map = &creature->interfaces;
         it = map->LowerBound(&key);
         if (it == map->last || it->type > 0x23) it = map->last;
-        village = GFGetVillage((CTCVillager*)it->component);
+        village = ((CTCVillageMember*)((CTCVillager*)it->component))->GetPVillage();
         if (!village || !village->IsCookTime_00658bb9()) goto done;
     } while (result == 4);
 done:

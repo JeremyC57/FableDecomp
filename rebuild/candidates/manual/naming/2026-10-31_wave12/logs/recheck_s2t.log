@@ -1,0 +1,7 @@
+addr       parity           behav  name
+007a0400   WARN SHARED_HEADER_AVAILABLE CTCWillLightning
+007a0400   WARN RELOC_NAME: ?PlaySound@CTCSound@@QAEKABVCCharString@@_NJJJ@Z -> 0066bd00 labelled 'CTCSoundPlayer::PlayAttachedCriteria'
+007a0400   RELOCATION_MATCH PASS   CTCWillLightning::StartLoopingSound
+
+WINS: 1
+  007a0400 RELOCATION_MATCH CTCWillLightning::?StartLoopingSound@CTCWillLightning@@QAEXXZ

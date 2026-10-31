@@ -14,7 +14,7 @@
 class CTCBase;
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540 (manifest IS_THING_ALIVE label propagated)
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -88,7 +88,7 @@ __forceinline CTCVillager* GetVillagerTC(CThing* creature)
 {
     CTCVillager* villager;
     if (creature->GetInterface(&villager, 0x23))
-        GFGetPVillageInterface(villager);
+        ((CTCVillageMember*)villager)->GetPVillage();
     return villager;
 }
 
@@ -105,7 +105,7 @@ bool CAIStateGroup_VillageTaskPickCrops::IsRunnable()
 {
     if (IsInSchoolHours()) {
         CTCVillager* villager = GetVillagerTC(PBrain->PCreature);
-        CThing* field = GFGetPVillageInterface(villager)->GetCropField(PBrain->PCreature);
+        CThing* field = ((CTCVillageMember*)villager)->GetPVillage()->GetCropField(PBrain->PCreature);
         if (field != 0) {
             PTaskThing = field;
             return true;

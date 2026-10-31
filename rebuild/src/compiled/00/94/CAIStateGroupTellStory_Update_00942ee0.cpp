@@ -79,15 +79,17 @@ struct CTCVillager;
 class CTCVillage { public:
     bool IsCookTime();                          // 0x00658A80
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb CDefinitionManager, const)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                 // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name);        // 0x009AD410
 };
 class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
@@ -157,7 +159,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
@@ -209,7 +213,7 @@ void CAIStateGroup_TellStory::Update()
             villager = (CTCVillager*)it->second;
         }
     }
-    while (GFGetPVillageInterface(villager)->IsCookTime()) {
+    while (((CTCVillageMember*)villager)->GetPVillage()->IsCookTime()) {
         if (IsStopping())
             break;
         CThingPtrVector listeners;

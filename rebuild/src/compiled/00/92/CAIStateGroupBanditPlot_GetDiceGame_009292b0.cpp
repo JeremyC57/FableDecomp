@@ -48,7 +48,7 @@ class CTCVillage { public:
 };
 struct CTCVillager;
 class CTCDiceGame;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -74,8 +74,8 @@ CTCDiceGame* CAIStateGroup_BanditPlot::GetDiceGame()
 {
     CTCVillager* villager;
     if (PBrain->Creature->GetInterface(&villager, 0x23)) {
-        if (GFGetPVillageInterface(villager) != 0) {
-            CThing* villageThing = GFGetPVillageInterface(villager)->Owner;
+        if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
+            CThing* villageThing = ((CTCVillageMember*)villager)->GetPVillage()->Owner;
             CTCDiceGame* game;
             if (villageThing->GetInterface(&game, 0xf1))
                 return game;

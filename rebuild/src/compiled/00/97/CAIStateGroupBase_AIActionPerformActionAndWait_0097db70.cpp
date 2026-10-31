@@ -80,7 +80,7 @@ class CThingCreatureBase
     unsigned char _pad[0x100];
     CCreatureActionBase* CurrentAction;             // +0x100
     bool IsFreeToPerformAction(const CCreatureActionBase* action);   // 0x00662210
-    bool IsPerformingAnyAction();                   // 0x006622A0
+    bool IsPerformingAnyAction() const;                   // 0x006622A0
 };
 
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2 };
@@ -90,7 +90,9 @@ class CAIStateGroupBase
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    bool IsStopping();                              // 0x008FD010
+protected:
+    bool IsStopping() const;                              // 0x008FD010 (Ego_r.pdb protected const)
+public:
 protected:
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& actionRef, bool stopWhenReplaced);
 };

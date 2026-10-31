@@ -82,7 +82,7 @@ public:
     unsigned long         Frame;                   // +0x1613c
     unsigned char         _pad16140[0x16170 - 0x16140];
     bool                  Loading;                 // +0x16170
-    unsigned long PeekWorldChecksum();             // 0x00416392
+    unsigned long PeekWorldChecksum() const;             // 0x00416392
     void AddGameEvent(const CGameEvent* event);    // 0x0041649C
     bool EventIsSystemEvent(const CGameEvent* event);   // 0x00415FF2
     void ProcessEvent(const CGameEvent* event);    // 0x00415FE0

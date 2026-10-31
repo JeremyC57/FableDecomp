@@ -129,7 +129,9 @@ class CAIStateGroupBase { public:
     unsigned char Terminated;                                 // +0x10
     unsigned char Priority;                                   // +0x11
     unsigned char Enabled;                                    // +0x12
-    bool IsStopping();                                        // 0x008FD010
+protected:
+    bool IsStopping() const;                                        // 0x008FD010 (Ego_r.pdb protected const)
+public:
 };
 class CAIStateGroup_Guildmaster : public CAIStateGroupBase {
 protected:

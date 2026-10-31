@@ -155,7 +155,7 @@ extern unsigned long g_SitDelayRange;           // 0x013BB710
 struct CCreatureMode { virtual void v00(); virtual long GetType() const; };
 class CTCCreatureModeManager { public:
     CCreatureMode* GetCurrentMode();            // 0x0073A6E0
-    void RemoveMode(long type);                 // 0x0073ABA0
+    void RemoveMode(unsigned long type);        // 0x0073ABA0 (Ego_r.pdb: unsigned long)
 };
 struct CTCUserActionPointBase {
     void FreeActionPoint(long index);           // 0x007FEF40

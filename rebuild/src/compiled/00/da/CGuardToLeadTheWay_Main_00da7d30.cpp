@@ -37,7 +37,7 @@ struct CScriptThingImpl {                              // the game-side thing be
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X, Y, Z; };
-namespace N_006e7b40 { struct CScriptThing : CBaseClass {                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const;
@@ -60,7 +60,7 @@ namespace N_006e7b40 { struct CScriptThing : CBaseClass {                       
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
     CScriptThing();                                     // 0x006E7B40
-}; } using N_006e7b40::CScriptThing;
+};
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"

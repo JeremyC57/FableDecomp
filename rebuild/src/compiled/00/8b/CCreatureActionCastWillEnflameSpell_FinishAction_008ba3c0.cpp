@@ -166,7 +166,7 @@ class CTCCarrying;
 void __fastcall DropWeapon(CThing* weapon, CTCCarrying* carrying, CThing* owner);   // 0x00845CE0
 class CTCCarrying { public:
     bool IsPrimarySlotEmpty();                        // 0x006A1270
-    CThing* GetThingInPrimarySlot();                  // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
     void RemoveThing(CThing* thing);                  // 0x006A19B0
     bool IsCarryingThing(CThing* thing);              // 0x006A1060
     CThing* RemoveThingFromPrimarySlot(bool unused);  // 0x006A1E00

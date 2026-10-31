@@ -70,7 +70,8 @@ union ModeIdSlot {void*Native;unsigned long(ModeInterface::*GetType)()const;unsi
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(ModeIdSlot)==4);
 #endif
-struct ModeManager {ModeInterface&GetCurrentMode()const;void RemoveMode(unsigned long);}; //73A6E0 real method; 73ABA0 actual removes matching modeID and reactivates next
+struct ModeManager {ModeInterface&GetCurrentMode()const;};
+class CTCCreatureModeManager { public: void RemoveMode(unsigned long); };   // 0x0073ABA0 (Ego_r.pdb) //73A6E0 real method; 73ABA0 actual removes matching modeID and reactivates next
 struct ModeDrained:ModeStandNative {
  AnimationGroupFilter Filter;IntelligentThingPointer PDrainer;long DrainerMode;
  void FrameUpdate();void BaseFrameUpdate(); //73AC50
@@ -85,7 +86,7 @@ void ModeDrained::FrameUpdate(){
    ModeInterface&mode=manager->GetCurrentMode();
    if((mode.*static_cast<ModeIdSlot*>(mode.VTable)[1].GetType)()!=DrainerMode){
     PDrainer=IntelligentThingPointer(0);
-    if(ParentThing->GetInterface(manager,49))manager->RemoveMode((this->*static_cast<ModeIdSlot*>(VTable)[1].OwnType)());
+    if(ParentThing->GetInterface(manager,49))((CTCCreatureModeManager*)manager)->RemoveMode((this->*static_cast<ModeIdSlot*>(VTable)[1].OwnType)());
    }
   }
  }

@@ -36,7 +36,7 @@ class C3DVector { public:
 };
 
 class CThing { public:
-    CScriptThing GetScriptThing();              // 0x004C7E50
+    CScriptThing GetScriptThing() const;              // 0x004C7E50
     const C3DVector& GetPos() const;    // 0x004C73D0
 };
 

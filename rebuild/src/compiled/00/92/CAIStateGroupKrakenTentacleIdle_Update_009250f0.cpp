@@ -46,7 +46,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-    bool IsStopping();                              // 0x008FD010
+protected:
+    bool IsStopping() const;                              // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                               // 0x008FCF40
 };
 

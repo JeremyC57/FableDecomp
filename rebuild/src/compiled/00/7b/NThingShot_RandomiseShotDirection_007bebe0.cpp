@@ -17,7 +17,7 @@ public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
-    void Normalise();                                   // 0x00A14440
+    C3DVector& AccurateNormalise();                     // 0x00A14440 (Ego_r.pdb; the sqrt form)
 };
 inline C3DVector CrossProduct(const C3DVector& a, const C3DVector& b)
 {
@@ -43,7 +43,7 @@ C3DVector __fastcall RandomiseShotDirection(const C3DVector& direction, long acc
         axis = CrossProduct(result, C3DVector(result.Y, -result.X, 0.0f));
         float spin = GFFloatRandom(1.0f, seed);
         axis.Rotate(result, spin);
-        axis.Normalise();
+        axis.AccurateNormalise();
         float tilt = GFFloatRandom(1.0f, seed) * (1.0f / 48.0f) + 1.0f / 144.0f;
         result.Rotate(axis, tilt);
     }

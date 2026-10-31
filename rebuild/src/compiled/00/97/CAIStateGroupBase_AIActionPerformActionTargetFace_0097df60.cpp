@@ -134,7 +134,9 @@ class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     EAIActionReturn AIAction_PerformActionTargetFace(CCreatureActionBase* action, CIntelligentPointerConstThing target);
 };
 

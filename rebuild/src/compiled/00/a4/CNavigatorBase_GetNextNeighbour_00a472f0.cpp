@@ -21,7 +21,7 @@ class CANavQuadTreeNode : public CANavQuadTreeNodeLayout { public:
     float GetSize() const;                                                   // 0x00A75B30
 };
 class CNavigatorManager { public:
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 float GetSmallestNodeSize();                                                 // 0x00A76320
 void __fastcall SetBlockedNode(long layer, long level, C2DVector position);   // 0x00A76340
@@ -74,7 +74,7 @@ CANavQuadTreeNode* CNavigatorBase::GetNextNeighbour(const CANavQuadTreeNode* nod
             }
         }
     }
-    CANavQuadTreeNode* found = NavigationManager->GetNodeAt(pos, node->NavLayer);
+    CANavQuadTreeNode* found = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(pos, node->NavLayer);
     if (found == 0) {
         found = &g_BlockedNode;
         SetBlockedNode(node->NavLayer, 6, pos);

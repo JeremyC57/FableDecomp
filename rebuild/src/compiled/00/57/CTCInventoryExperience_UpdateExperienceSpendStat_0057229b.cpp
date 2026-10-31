@@ -58,7 +58,9 @@ class CTCInventoryExperience { public:
     unsigned char _pad_1f8[0x204 - 0x1f8];
     long ExperienceSpendMagnitude;                 // +0x204
     EHeroTrainableStatType GetHeroTrainableStatType(long index);    // 0x0056E632
+private:
     CTCHeroExperience* GetTCHeroExperience();                       // 0x0056FF3D
+public:
     void UpdateExperienceSpendPool(EHeroExperienceStatCategory category, long amount);   // 0x0056EF6F
     void UpdateExperienceSpendStat();
 };

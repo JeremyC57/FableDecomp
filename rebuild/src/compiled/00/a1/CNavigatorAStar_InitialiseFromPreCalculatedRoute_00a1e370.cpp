@@ -145,7 +145,7 @@ struct CNavigatorList {
 class CNavigatorManager { public:
     unsigned char  _pad00[0x2c];
     CNavigatorList Navigators;                     // +0x2c
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, long layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 class CNavigatorExternalInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -214,7 +214,7 @@ void CNavigatorAStar::InitialiseFromPreCalculatedRoute(const C3DVector& from, co
     LastWayPointVisited = route[0].first;
     {
         C2DVector to2D(to);
-        GoalNode = NavigationManager->GetNodeAt(to2D, PInterface->GetLayerAt(to));
+        GoalNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(to2D, PInterface->GetLayerAt(to));
     }
     GoalPosition = to;
     NodeAskedToGetTo = GoalNode;

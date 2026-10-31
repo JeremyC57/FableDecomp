@@ -37,7 +37,7 @@ inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 class CThing { public:
-    CScriptThing GetScriptThing();              // 0x004C7E50
+    CScriptThing GetScriptThing() const;              // 0x004C7E50
 };
 
 class C3DVector { public:

@@ -89,7 +89,7 @@ class CCreatureActionBase { public:
 class CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CCreatureActionBase* CurrentAction;             // +0x100
-    bool IsPerformingAnyAction();                   // 0x006622A0
+    bool IsPerformingAnyAction() const;                   // 0x006622A0
 };
 
 class CAIBrain { public:

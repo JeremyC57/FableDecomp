@@ -113,6 +113,8 @@ protected:
 public:
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
 
@@ -189,7 +191,6 @@ struct CAIStateGroup_MazeTutorialBattleRespondToLightning : CAIStateGroupBase {
     CBaseIntelligentPointer PTarget;            // +0x14 CIntelligentPointer<CThing>
     unsigned char _pad1c[4];
     long FrameOfLastHit;                        // +0x20 (engine header)
-    bool IsStopping();                          // 0x008FD010
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointerConstThing target, long frames, float speed);   // 0x0097D6F0
     EAIActionReturn AIAction_PerformActionAndWait(CCreatureActionBase& action, bool interruptible);   // 0x0097DB70
     virtual void Update();

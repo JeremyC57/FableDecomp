@@ -132,7 +132,9 @@ class CTCInventoryExperience : public CTCInventoryBase { public:
     bool            OpenedExperienceSpending;                // +0x1A0
     unsigned char   _pad1a1[0x220 - 0x1a1];
     long            PreviousScreenType;                      // +0x220
+private:
     CTCHeroExperience* GetTCHeroExperience();                // 0x0056FF3D
+public:
     CTCHeroStats*      GetTCHeroStats();                     // 0x0056FF81
     CTCHeroAbilities*  GetTCHeroAbilities();                 // 0x0056FFC5
     void vfunc_89(bool undo);

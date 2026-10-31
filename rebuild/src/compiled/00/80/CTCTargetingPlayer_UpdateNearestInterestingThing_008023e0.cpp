@@ -20,7 +20,9 @@ class CTCTargetingBase { public:
     virtual CThing* GetPTargetedThing();     // slot 33 (+0x84)
     virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38();
     virtual void UpdateNearestInterestingThing();   // slot 39 (+0x9c), base body 0x007F5AE0
+protected:
     void SetPNearestInterestingThing(CThing* thing);   // 0x007F5810
+public:
 };
 
 class CTCTargetingPlayer : public CTCTargetingBase { public:

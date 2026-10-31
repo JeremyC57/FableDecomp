@@ -64,7 +64,7 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0x1c8 - 0x94];
     unsigned char CreatureFlags1c8;             // +0x1c8 bit 1: busy (retail)
-    bool IsPerformingAnyAction();               // 0x006622A0
+    bool IsPerformingAnyAction() const;               // 0x006622A0
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -89,7 +89,7 @@ class CTCStealth { public:                             // interface 0x36
     void SetAsInDanger(CThing* source, long status);   // 0x00747B80
 };
 class CTCCarrying { public:                            // interface 0x46
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
 class CCreatureActionBase { public:
     virtual void v00();

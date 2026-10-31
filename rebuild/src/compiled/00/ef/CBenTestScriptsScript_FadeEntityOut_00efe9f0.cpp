@@ -86,12 +86,14 @@ struct CQuestCalls {
     virtual void SetThingAlpha(const CScriptThing* thing, float alpha, bool immediate);     // slot 510 (+0x7F8)
 };
 
-class CBenTestScriptsScript {
+class CScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating();   // 0x00CB7940 (Ego_r.pdb CScriptBase)
+};
+class CBenTestScriptsScript : public CScriptBase {
 public:
     void* __vftable;                                    // +0x00
     unsigned char _base[0x3c];                          // +0x04 (CScriptBase)
     CQuestCalls* PQuest;                                // +0x40
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
     void FadeEntityOut(const CScriptThing* thing, bool hideAtEnd);
 };
 

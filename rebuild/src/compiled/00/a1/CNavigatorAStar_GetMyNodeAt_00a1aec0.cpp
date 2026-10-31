@@ -7,12 +7,13 @@ class C2DVector { public:
     float X, Y;
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }   // the conversion temporary: two dwords copied into the frame
 };
+class CANavQuadTreeNode;                        // Ego_r.pdb node class (GetNodeAt 0x00A14F70 returns it)
 struct CANavQuadTreeNode_00a1aec0 {
     unsigned char _pad00[0xf];
     bool          m_switchedOff;                   // +0x0f
 };
 class CNavigatorManager { public:
-    CANavQuadTreeNode_00a1aec0* GetNodeAt(const C2DVector& position, bool layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 struct CNavigatorOwner_00a1aec0 {
     virtual void v000();
@@ -44,5 +45,5 @@ class CNavigatorAStar { public:
 
 CANavQuadTreeNode_00a1aec0* CNavigatorAStar::GetMyNodeAt(const C3DVector* position)
 {
-    return m_pManager->GetNodeAt(*position, m_pOwner->GetLayerAt(position));
+    return (CANavQuadTreeNode_00a1aec0*)m_pManager->GetNodeAt(*position, m_pOwner->GetLayerAt(position));
 }

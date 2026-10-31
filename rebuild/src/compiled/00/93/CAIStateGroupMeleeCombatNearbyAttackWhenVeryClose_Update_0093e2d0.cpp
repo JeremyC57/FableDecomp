@@ -181,7 +181,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {

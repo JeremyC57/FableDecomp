@@ -59,7 +59,7 @@ class CAnimSet { public:                           // retail layout (12-byte vec
 };
 
 class CAnimateThing { public:
-    CAnimSet* FindCombinationAnim(long type);   // 0x0070C4E0
+    CAnimSet* GetFirstCombinationAnimFromType(long type);   // 0x0070C4E0 (Ego_r.pdb)
 };
 class CTCAnimationComplex { public:
     CAnimateThing& GetAnimation();          // 0x0070B460
@@ -78,10 +78,10 @@ void CModeStrafe::ClearStrafingCombinationAnims(bool immediately)
     CTCAnimationComplex* animation;
     if (ParentThing && !ParentThing->m_dead && ParentThing->GetInterface(&animation, 0x5a)) {
         CAnimateThing& animator = animation->GetAnimation();
-        CAnimSet* set = animator.FindCombinationAnim(0x1b);
+        CAnimSet* set = animator.GetFirstCombinationAnimFromType(0x1b);
         if (set)
             set->FadeOut();
-        set = animator.FindCombinationAnim(0x19);
+        set = animator.GetFirstCombinationAnimFromType(0x19);
         if (set)
             set->FadeOut();
     }

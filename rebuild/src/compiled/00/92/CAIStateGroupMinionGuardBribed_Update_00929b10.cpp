@@ -83,12 +83,12 @@ public:
     void StopAttachedSound(unsigned long);   // 0x0066ADD0
     unsigned long PlayAttachedCriteria(const CCharString&, bool, bool, bool, long);   // 0x0066BD00
 };
-struct CVillage {
+class CTCVillage { public:
     unsigned char _pad[0xa8];
     long BribedFrame;                           // +0xA8
 };
 class CTCVillageMember { public:                       // interface 0x23
-    CVillage* GetPVillage();                    // 0x007EE540
+    CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {

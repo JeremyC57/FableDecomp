@@ -30,13 +30,15 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CProximityPodium {
+class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
+class CProximityPodium : public CEntityScriptBase {
 public:
     void*                 __vftable;                 // +0x00
     CGameScriptInterface* Game;                      // +0x04
     CScriptThing          Me;                        // +0x08
     void SetPredicate(CIsThingAlive& predicate);     // 0x00F35B10
-    bool IsActiveThreadTerminating();                // 0x00F35B30
     void Main();
 };
 

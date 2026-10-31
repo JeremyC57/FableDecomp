@@ -49,7 +49,7 @@ class CThing { public:
 class CThingAICreature;
 class CTCVillage;
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 template<class T> struct allocator { allocator() { } };
 template<class T> struct list_node { list_node* _M_next; list_node* _M_prev; T _M_data; };
 template<class T> struct list {
@@ -105,7 +105,7 @@ bool CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        CTCVillage* village = GFGetPVillageInterface(villager);
+        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (village != 0 && CommentAboutHeroIsRunnable()) {
             CTCHeroStats* stats;
             if (((CIntelligentPointer<CThing>*)ThingReactingTo)->GetPItem()->GetInterface(&stats, 4) && !stats->Wives.empty()) {
@@ -116,7 +116,7 @@ bool CAIStateGroup_OpinionReactionRoot::MarriageCommentIsRunnable()
                     CTCVillager* wifeVillager;
                     if (node->_M_data != 0 && !(((const CThing*)node->_M_data)->m_flags91 & 1)
                         && ((const CThing*)node->_M_data)->GetInterface(&wifeVillager, 0x23)
-                        && GFGetPVillageInterface(wifeVillager) == village) {
+                        && ((CTCVillageMember*)wifeVillager)->GetPVillage() == village) {
                         CHeroMarriageInfo info;
                         if (stats->PeekMarriageInfo(((const CThing*)node->_M_data)->GetUID(), &info)) {
                             bool married = false;

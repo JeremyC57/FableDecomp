@@ -45,7 +45,7 @@ class CTCVillage { public:
 };
 
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -73,7 +73,7 @@ struct CAIStateGroup_VillageTaskSecuritySweep : CAIStateGroupBase {
 bool CAIStateGroup_VillageTaskSecuritySweep::IsRunnable()
 {
     PTaskThing = 0;
-    CTCVillage* village = GFGetPVillageInterface(PVillager);
+    CTCVillage* village = ((CTCVillageMember*)PVillager)->GetPVillage();
     if (village != 0 && GetCreature()->HasTC(0x34))
         PTaskThing = village->GetSecuritySweepThing(GetCreature());
     return ((CThing*)PTaskThing.GetPItem()) != 0;

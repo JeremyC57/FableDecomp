@@ -64,7 +64,7 @@ class CTCVillage { public:
     bool IsCrimeHandled(long handle);                        // 0x0065914B
     void ReportCrime(long handle);                           // 0x0065CB6B
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);   // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 class CThingAICreature;
 class CThingFilter_AICreatureHasProperty { public:
     long Property;
@@ -144,9 +144,9 @@ void CTCCreatureOpinionOfHero::ReportAllCrimes(CTCCreatureOpinionOfHero* informe
     CTCVillager* villager;
     if (!Thing->GetInterface(&villager, 0x23))
         return;
-    if (!GFGetPVillageInterface(villager))
+    if (!((CTCVillageMember*)villager)->GetPVillage())
         return;
-    CTCVillage* village = GFGetPVillageInterface(villager);
+    CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
     {
         CThingAICreature* guard;
         if (!PeekThingSearchTools().GetPFirstLeafThing(CThingFilter_AICreatureHasProperty(3), &guard))

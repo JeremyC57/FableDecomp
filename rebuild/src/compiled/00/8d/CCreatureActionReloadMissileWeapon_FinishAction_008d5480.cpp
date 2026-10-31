@@ -77,7 +77,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 class CTCCarrying { public:                                  // interface type 0x46
     void RemoveThing(CThing* thing);                  // 0x006A19B0
-    CThing* GetThingInPrimarySlot();                  // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                  // 0x006A1440
 };
 class CTCWeapon { public:                                    // interface type 0x48
     void SetProjectileWeaponLoaded(bool loaded, CThing* projectile);   // 0x005DAC50

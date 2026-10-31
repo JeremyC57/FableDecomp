@@ -35088,8 +35088,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a6cbb0'
         Module = 'CEngineInternalPrimitive'
-        Source = '00/a6/CEngineInternalPrimitive_AddChildPrimitive_00a6cbb0.cpp'
-        TestSource = '00/a6/CEngineInternalPrimitive_AddChildPrimitive_00a6cbb0_test.cpp'
+        Source = '00/a6/CPhysicsMesh_GetSingleInstanceCollisionSet_00a6cbb0.cpp'
+        TestSource = '00/a6/CPhysicsMesh_GetSingleInstanceCollisionSet_00a6cbb0_test.cpp'
         PassPattern = '00a6cbb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -204993,8 +204993,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a658e0'
         Module = 'CMemoryAreaChunk'
-        Source = '00/a6/CMemoryAreaChunk_RemoveAreaFromFreeList_00a658e0.cpp'
-        TestSource = '00/a6/CMemoryAreaChunk_RemoveAreaFromFreeList_00a658e0_test.cpp'
+        Source = '00/a6/CMemoryAreaChunk_FreeArea_00a658e0.cpp'
+        TestSource = '00/a6/CMemoryAreaChunk_FreeArea_00a658e0_test.cpp'
         PassPattern = '00a658e0_TEST PASS'
     }
     [pscustomobject]@{

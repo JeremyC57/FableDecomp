@@ -51,7 +51,7 @@ class CCreatureActionBase { public:
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* CurrentAction;         // +0x100
-    bool IsPerformingAnyAction();               // 0x006622A0
+    bool IsPerformingAnyAction() const;               // 0x006622A0
 };
 void __fastcall CountedDestroy(void* object);   // 0x00668610
 struct SCountBlock {
@@ -133,7 +133,9 @@ class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     EAIActionReturn AIAction_PerformActionTargetFaceAndWait(const CCreatureActionBase& action,
                                                             CIntelligentPointerConstThing target, bool stopWhenReplaced);
 };

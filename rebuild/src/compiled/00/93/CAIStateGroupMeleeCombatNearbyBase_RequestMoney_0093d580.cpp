@@ -87,7 +87,7 @@ class CTCVillage { public:
     long GetFineAmountForCurrentCrimes();       // 0x0065A41C
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CTCFineDialogue { public:                        // interface 0xF3
     bool IsAllowed();                           // 0x007E2790
@@ -141,8 +141,8 @@ void CAIStateGroup_MeleeCombatNearbyBase::RequestMoney()
             CThing* creature = PBrain->PCreature;
             if (creature->HasTC(0x23)) {
                 CTCVillager* villager = creature->GetTC<CTCVillager>(0x23);
-                if (GFGetPVillageInterface(villager) != 0) {
-                    CTCVillage* village = GFGetPVillageInterface(villager);
+                if (((CTCVillageMember*)villager)->GetPVillage() != 0) {
+                    CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
                     long amount = village->GetFineAmountForCurrentCrimes();
                     if (amount > 0) {
                         long heroAmount = 0;

@@ -15,7 +15,7 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
-    C3DVector& Normalise();                       // 0x00A14440
+    C3DVector& AccurateNormalise();               // 0x00A14440 (Ego_r.pdb; the sqrt form)
     const C3DVector Cross(const C3DVector& v) const
     {
         return C3DVector(Y * v.Z - Z * v.Y, Z * v.X - X * v.Z, X * v.Y - Y * v.X);
@@ -37,9 +37,9 @@ bool CIsPointFinalLinkInTriangleWithMatchingCirculation::operator()(const C3DVec
     const C3DVector& a = *PointA;
     const C3DVector& b = *PointB;
     C3DVector link1(b.X - a.X, b.Y - a.Y, 0.0f);
-    link1.Normalise();
+    link1.AccurateNormalise();
     C3DVector link2(point.X - PointB->X, point.Y - PointB->Y, 0.0f);
-    link2.Normalise();
+    link2.AccurateNormalise();
     return link1.Cross(UpDirection).Dot(link2) > 0.0f;
 }
 }

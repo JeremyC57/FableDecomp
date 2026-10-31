@@ -53,7 +53,7 @@ class CThingCreatureBase {
 public:
     unsigned char        _pad00[0x100];
     CCreatureActionBase* PCurrentAction;           // +0x100 (retail)
-    bool IsPerformingAnyAction();                  // 0x006622A0
+    bool IsPerformingAnyAction() const;                  // 0x006622A0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

@@ -23,7 +23,9 @@ class CGameCameraManager { public:
  void PromotePendingScriptAndResetPreloadFlags(); //00697C60
  void UpdateHeightLimits(); //00699670
  void UpdateCreatureControlAngleXY(); //00697760
+private:
  void UpdateRightStickLookAround(); //00697CC0
+public:
  void UpdateEarthQuakes(); //00698540
  void CameraValidationCheck(); //0069AB80
  void Update();

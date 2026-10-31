@@ -45,10 +45,10 @@ class CTCCarrying { public:
     virtual void v00();
     unsigned char _pad_0x04[0x24 - 0x04];
     CThingList    ThingsInPrimarySlots;             // +0x24 (PDB +0x28)
-    CThing* GetThingInPrimarySlot();
+    CThing* GetThingInPrimarySlot() const;
 };
 
-CThing* CTCCarrying::GetThingInPrimarySlot()
+CThing* CTCCarrying::GetThingInPrimarySlot() const
 {
     CThing* result = 0;
     for (SThingListNode* node = ThingsInPrimarySlots._M_node->_M_next; node != ThingsInPrimarySlots._M_node; node = node->_M_next) {

@@ -6,7 +6,7 @@
 //          "TEXT_QST_004_SIGNPOST_COME_BACK_LATER" 0x012C327C, "TEXT_QST_004_SIGNPOST_OPEN" 0x012C3260,
 //          "TEXT_QST_004_SIGNPOST_CLOSED" 0x012C3240.
 // Shape: the tag temporaries are implicit const char* -> CCharString conversions; the state dispatch is an if / else-if chain
-//          over a named copy of the shown state, in the order 0, 2, 1 (three temp slots); the frame loop is a rotated `while (!IsDone()) { ...; NewScriptFrame(); }`.
+//          over a named copy of the shown state, in the order 0, 2, 1 (three temp slots); the frame loop is a rotated `while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) { ...; NewScriptFrame(); }`.
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18; the master data's
 //          shown state +0x3c and competition state +0x40 (descriptive names).
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
@@ -40,6 +40,9 @@ struct CQ_ArcheryCompetitionMasterData {
 };
 struct CQ_ArcheryCompetitionScript;
 
+class CEntityScriptBase { public:   // the PDB class the accessor belongs to
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+};
 struct CArcheryCompetitionSignpost {
     virtual ~CArcheryCompetitionSignpost();
     virtual void Main();                                 // slot 1
@@ -47,29 +50,28 @@ struct CArcheryCompetitionSignpost {
     CScriptThing Me;                                     // +0x08
     CQ_ArcheryCompetitionScript* ParentClass;            // +0x14
     CQ_ArcheryCompetitionMasterData* PMasterData;        // +0x18
-    bool IsDone();                                       // 0x00F35B30
 };
 
 void CArcheryCompetitionSignpost::Main()
 {
     Game->SetReadableObjectTextTag(Me, "TEXT_QST_004_SIGNPOST_COME_BACK_LATER");
     PMasterData->CompetitionState = 2;
-    while (!IsDone()) {
+    while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
         if (PMasterData->ShownState != PMasterData->CompetitionState) {
-            if (IsDone())
+            if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             PMasterData->ShownState = PMasterData->CompetitionState;
             long state = PMasterData->ShownState;
             if (state == 0) {
-                if (IsDone())
+                if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
                     return;
                 Game->SetReadableObjectTextTag(Me, "TEXT_QST_004_SIGNPOST_OPEN");
             } else if (state == 2) {
-                if (IsDone())
+                if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
                     return;
                 Game->SetReadableObjectTextTag(Me, "TEXT_QST_004_SIGNPOST_COME_BACK_LATER");
             } else if (state == 1) {
-                if (IsDone())
+                if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating())
                     return;
                 Game->SetReadableObjectTextTag(Me, "TEXT_QST_004_SIGNPOST_CLOSED");
             }

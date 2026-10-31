@@ -108,7 +108,9 @@ class CAIStateGroupBase { public:
     protected:
     CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
     public:
-    bool IsStopping();                          // 0x008FD010
+protected:
+    bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
+public:
     void Terminate();                           // 0x008FCF40
 };
 

@@ -129,7 +129,7 @@ class CThingCreatureBase : public CThing { public:
     bool IsCombatant();                            // 0x00662430
 };
 class CTCCarrying { public:                               // interface 0x46
-    CThing* GetThingInPrimarySlot();               // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;               // 0x006A1440
 };
 class CTCWeapon { public:                                 // interface 0x48
     bool IsProjectileWeapon();                     // 0x005DAA40

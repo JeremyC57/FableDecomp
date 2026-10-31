@@ -237,7 +237,7 @@ struct CThingPos : CThing {
 };
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);  // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 struct CThingSchoolKid : CThing {
     unsigned char _pad94[0x170 - 0x94];
     CBaseIntelligentPointer PSchool;            // +0x170 CIntelligentPointer<CThingBuilding>
@@ -280,8 +280,8 @@ void CAIStateGroup_StayNearSchool::Update()
             CThing* current = ((CThing*)GetCreature()->PSchool.GetPItem());
             CTCVillager* villager;
             if (!current || (current->m_flags91 & 1) || !GetCreature()->GetInterfaceT(&villager, 0x23)
-                    || !GFGetPVillageInterface(villager)
-                    || !((CTCVillageS*)GFGetPVillageInterface(villager))->IsCookTime()) {
+                    || !((CTCVillageMember*)villager)->GetPVillage()
+                    || !((CTCVillageS*)((CTCVillageMember*)villager)->GetPVillage())->IsCookTime()) {
                 self->Terminate();
                 return;
             }

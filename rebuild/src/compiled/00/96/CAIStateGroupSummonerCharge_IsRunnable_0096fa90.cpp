@@ -85,7 +85,7 @@ class CCombatManager { public:
     bool CheckSummonerChargeable(CThing* summoner);   // 0x006EA050
 };
 class CTCCarrying { public:                            // interface 0x46
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
 class CTCStealth { public:                             // interface 0x36
     unsigned char _pad[0x30];

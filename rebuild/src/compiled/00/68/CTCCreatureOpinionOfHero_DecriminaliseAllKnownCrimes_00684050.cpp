@@ -51,7 +51,7 @@ class CPlayer { public:
 #include "engine/CPlayerManager.h"
 struct CTCVillager;
 class CTCVillage;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);   // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class COpinionDeed { public:
     long          Type;                             // +0x00 EOpinionDeedType
@@ -124,9 +124,9 @@ void CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes()
     CTCVillager* villager;
     if (!Thing->GetInterface(&villager, 0x23))
         return;
-    if (!GFGetPVillageInterface(villager))
+    if (!((CTCVillageMember*)villager)->GetPVillage())
         return;
-    CTCVillage* village = GFGetPVillageInterface(villager);
+    CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
     CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero)
         return;

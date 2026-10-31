@@ -80,7 +80,7 @@ extern long g_framesPerSecond;                  // 0x01375550
 
 class CTCVillage;
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 class CTCPerceiveThing { public:                       // interface 0x34
     bool IsPlayerExtendedLineOfSight() const;   // 0x00744830
@@ -121,7 +121,7 @@ public:
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
 {
     CThing* creature = PBrain->PCreature;
-    if (creature->HasTC(0x23) && GFGetPVillageInterface(creature->GetTC<CTCVillager>(0x23)) != 0) {
+    if (creature->HasTC(0x23) && ((CTCVillageMember*)(creature->GetTC<CTCVillager>(0x23)))->GetPVillage() != 0) {
         if (((CThing*)Player.GetPItem()) == 0) {
             NumberOfTimesPlayerTold = 0;
             FrameLastToldPlayer = 0;

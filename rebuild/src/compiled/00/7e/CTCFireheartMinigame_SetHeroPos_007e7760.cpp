@@ -54,7 +54,7 @@ public:
     unsigned char _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     const C3DVector& GetPos() const;       // 0x004C73D0
-    CScriptThing GetScriptThing();              // 0x004C7E50
+    CScriptThing GetScriptThing() const;              // 0x004C7E50
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

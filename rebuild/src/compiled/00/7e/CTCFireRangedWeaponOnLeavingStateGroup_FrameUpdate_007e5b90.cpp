@@ -71,12 +71,12 @@ public:
 class CThingCreatureBase : public CThing {
 public:
     bool IsRegisteredCombatant();               // 0x00662410
-    bool IsPerformingAnyAction();               // 0x006622A0
+    bool IsPerformingAnyAction() const;               // 0x006622A0
     bool SetCurrentAction(CCombatActionBase* action);   // 0x006644F0
 };
 
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 };
 class CTCWeapon { public:
     bool IsProjectileWeapon();                  // 0x005DAA40

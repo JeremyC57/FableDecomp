@@ -17,8 +17,8 @@ static int g_helpercalls = 0;
 void __fastcall slot7_impl(Sub*) { ++g_vcalls; }
 
 // helper returns false twice, then true -> loop body runs 3 times
-extern "C" bool __fastcall Q_Sunnyvale_helper_f35b30(CQ_SunnyvaleMasterScript*)
-{
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (the row calls it so)
+bool CEntityScriptBase::IsActiveThreadTerminating() const {
     ++g_helpercalls;
     return g_helpercalls >= 3;
 }

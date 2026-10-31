@@ -7,7 +7,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
-extern float __fastcall Sub_GetHealthPct(CThingPlayerCreature* hero);
+class CThingPhysical { public: float GetHealthPercentage() const; };   // 0x006A4E40 (Ego_r.pdb CThingPhysical, const)
 extern float g_defaultHealthPct;
 
 float __fastcall CGameScriptInterface_GetHeroHealthPercentage(CGameScriptInterface* self)
@@ -15,7 +15,7 @@ float __fastcall CGameScriptInterface_GetHeroHealthPercentage(CGameScriptInterfa
     void* mgr = self->PlayerManager;
     CThingPlayerCreature* hero = (&((CPlayerManager*)mgr)->GetMainPlayer())->GetPControlledCreature();
     if (hero != 0 && (*(unsigned char*)((char*)hero + 0x91) & 0x1) == 0) {
-        float v = Sub_GetHealthPct(hero);
+        float v = ((CThingPhysical*)hero)->GetHealthPercentage();
         return v;
     }
     return g_defaultHealthPct;

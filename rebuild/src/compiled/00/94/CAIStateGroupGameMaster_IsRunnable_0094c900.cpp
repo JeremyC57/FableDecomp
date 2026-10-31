@@ -85,9 +85,9 @@ class CTCFollowed { public:                            // interface 0xbc
 class CTCRegionFollower { public:                      // interface 0x7a
     bool IsRegionFollower(CThing* thing);       // 0x006AEB60
 };
-struct CVillage;
+class CTCVillage;
 class CTCVillageMember { public:                       // interface 0x23
-    CVillage* GetPVillage();                    // 0x007EE540
+    CTCVillage* GetPVillage() const;                    // 0x007EE540
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0

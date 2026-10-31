@@ -183,7 +183,7 @@ class CTCVillage { public:
     bool IsCurfewTime();                        // 0x00658D5D
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     long FrameToLook;                           // +0x14 (engine header)
@@ -204,8 +204,8 @@ bool CAIStateGroup_LookAtInterestingThings::InitCreaturePosition()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)
-        && GFGetPVillageInterface(villager) != 0
-        && !GFGetPVillageInterface(villager)->IsCurfewTime())
+        && ((CTCVillageMember*)villager)->GetPVillage() != 0
+        && !((CTCVillageMember*)villager)->GetPVillage()->IsCurfewTime())
         return false;
     return FindInterestingThing() != 0
         && WorldRandomRange(*GetPWorldSeed(), 100) < 20

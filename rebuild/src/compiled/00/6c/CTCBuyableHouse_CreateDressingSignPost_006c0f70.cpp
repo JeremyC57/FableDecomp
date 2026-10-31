@@ -47,7 +47,9 @@ class CTCBuyableHouse
     CIntelligentPointer<CThing> MainSignPost;       // +0x24
     CIntelligentPointer<CThing> DressingSignPost;   // +0x2c
 
+private:
     CThing* CreateSignPost(const CCharString& defName, bool mainSign);   // 0x006C0970
+public:
     void CreateDressingSignPost();
 };
 #pragma pack(pop)

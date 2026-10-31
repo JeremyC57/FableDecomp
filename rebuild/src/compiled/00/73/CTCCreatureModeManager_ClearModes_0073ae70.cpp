@@ -5,7 +5,7 @@
 // before the test and reused for the clear. The chunk label "CEnginePrimitiveRenderer::ClearAllChildPrimitives" is propagated (the 0x0073xxxx module is game code).
 struct CCreatureMode_0073ae70 {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void OnLeave();                        // slot 6 (+0x18)
+    virtual void OnDeactivate();                   // slot 6 (+0x18) 0x00739E60 (vtable 0x012673CC)
 };
 
 struct SModeNode {
@@ -31,7 +31,7 @@ public:
 void CTCCreatureModeManager::ClearModes()
 {
     if (m_modes.m_pHead->m_pNext != m_modes.m_pHead)
-        m_modes.m_pHead->m_pNext->m_pMode->OnLeave();
+        m_modes.m_pHead->m_pNext->m_pMode->OnDeactivate();
     m_modes.clear();
     AddMode(0);
 }

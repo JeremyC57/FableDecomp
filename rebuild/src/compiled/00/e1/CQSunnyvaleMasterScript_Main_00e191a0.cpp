@@ -22,11 +22,11 @@ struct CQ_SunnyvaleMasterScript {
 };
 
 // helper at 0xf35b30, thiscall (this in ecx), returns bool in al
-extern "C" char __fastcall SunnyvaleMasterHelper(CQ_SunnyvaleMasterScript* self);
+class CEntityScriptBase { public: bool IsActiveThreadTerminating() const; };   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
 
 void __fastcall CQ_SunnyvaleMasterScript__Main(CQ_SunnyvaleMasterScript* self)
 {
     do {
         self->field4->vtbl->slot1c(self->field4);
-    } while (SunnyvaleMasterHelper(self) == 0);
+    } while (((char)((const CEntityScriptBase*)self)->IsActiveThreadTerminating()) == 0);
 }

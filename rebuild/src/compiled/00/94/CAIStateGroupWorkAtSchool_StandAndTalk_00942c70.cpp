@@ -62,6 +62,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
 extern long g_FramesPerSecond;                  // 0x01375550
@@ -77,7 +79,6 @@ class CTCCreatureModeManager { public:                 // interface 0x31
 
 struct CAIStateGroupBaseA : CAIStateGroupBase {
     long AIAction_DoNothing();                  // 0x0097E200
-    bool IsStopping();                          // 0x008FD010
 };
 
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBaseA {

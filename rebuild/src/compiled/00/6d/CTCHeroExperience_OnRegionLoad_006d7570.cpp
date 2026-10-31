@@ -221,7 +221,9 @@ public:
     long GetShotAccuracyPercentage() const;
     float GetAttackVariationMultiplier() const;
     void OnRegionLoad();
+private:
     const CComboMultiplierData& GetActiveComboMultiplierData() const;   // 0x006D72D0
+public:
     long GetExperienceFallbackMultiplierForMultiplier(long multiplier) const;   // 0x006D73D0
     long GetExperiencePickupMultiplierForParam(float param) const
     {

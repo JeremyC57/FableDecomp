@@ -18,13 +18,13 @@ struct CInterfaceMap_Retail {                 // CVectorMap<ETCInterfaceType, CT
     SEntry* LowerBound(const long* type);   // 0x0040F020 (a second copy of the same body sits at 0x004365B0)
 };
 struct CThingPhysics_Retail;
-struct CThing_Retail {
+class CThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
     virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
     virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031();
     virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037();
-    virtual CThing_Retail* GetStandingOnThing();    // slot 38 (+0x98)
+    virtual CThing* GetStandingOnThing();    // slot 38 (+0x98)
     unsigned char         _pad04[0xc];              // +0x04 .. +0x10
     unsigned char         m_type;                   // +0x10 (1 = the player creature, 2 = an AI creature, 3 = a building)
     unsigned char         _pad11[0xf];
@@ -43,8 +43,8 @@ struct CThing_Retail {
     unsigned char         m_killedByScript : 1;     //       bit 1
     unsigned char         m_93_2 : 6;
     void Kill(bool flag);                           // 0x004C9B80 (CThing::Kill)
-    CScriptThing GetScriptThing();                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
-    void AssignHomeBuilding(CThing_Retail* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
+    CScriptThing GetScriptThing() const;                  // 0x004C7E50 (CThing::GetScriptThing, by value through the hidden result pointer)
+    void AssignHomeBuilding(CThing* building);   // 0x00512210 (landed as AssignTarget_00512210; the label "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated)
     void SetNewBrain(CDefPointer_Retail brain);     // 0x00833010 (CThingAICreature::SetNewBrain, the counted def pointer by value)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -78,7 +78,7 @@ public:
 CScriptThing CGameScriptInterface::EntityGetStandingOnThing(const CScriptThing& thing) const
 {
     if (thing.IsAlive()) {
-        CThing_Retail* on = ((CThing_Retail*)thing.GetPThing())->GetStandingOnThing();
+        CThing* on = ((CThing*)thing.GetPThing())->GetStandingOnThing();
         if (on)
             return on->GetScriptThing();
     }

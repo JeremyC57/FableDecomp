@@ -90,9 +90,11 @@ struct CAnimateThing {
 struct CTCAnimationComplex {                    // interface type 0x5A
     CAnimateThing& GetAnimation();              // 0x0070B460
 };
-struct CTCCreatureModeManager {                 // interface type 0x31
+}   // namespace NCreatureMode -- CTCCreatureModeManager is a global class (Ego_r.pdb ?RemoveMode@CTCCreatureModeManager@@QAEXK@Z)
+class CTCCreatureModeManager { public:          // interface type 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
+namespace NCreatureMode {
 struct CHitLocation {
     void SetEnabled(bool enabled);              // 0x00816390
 };

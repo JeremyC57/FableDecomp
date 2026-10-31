@@ -28,7 +28,7 @@ public:
 };
 class CNavigatorManager {
 public:
-    CANavQuadTreeNode* GetNodeAt(const C2DVector& position, bool layer);   // 0x00A14F70
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, unsigned char layer) const;   // 0x00A14F70 (Ego_r.pdb, const)
 };
 class CNavigatorExternalInterface {
 public:
@@ -64,10 +64,10 @@ void CNavigatorAStar::CalculateNavigableWidthOfLine(const C3DVector& from, const
 {
     long fromLayer = 0;
     long toLayer = 0;
-    CANavQuadTreeNode* fromNode = NavigationManager->GetNodeAt(from, PInterface->GetLayerAt(from));
+    CANavQuadTreeNode* fromNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(from, PInterface->GetLayerAt(from));
     if (fromNode)
         fromLayer = fromNode->NavLayer;
-    CANavQuadTreeNode* toNode = NavigationManager->GetNodeAt(to, PInterface->GetLayerAt(to));
+    CANavQuadTreeNode* toNode = (CANavQuadTreeNode*)NavigationManager->GetNodeAt(to, PInterface->GetLayerAt(to));
     if (toNode)
         toLayer = toNode->NavLayer;
     {

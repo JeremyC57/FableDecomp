@@ -150,6 +150,8 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
     virtual void v00();
@@ -164,7 +166,6 @@ struct CAIStateGroup_SleepOnFloor : CAIStateGroupBase {
         long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     long AIAction_DoNothing();                  // 0x0097E200
-    bool IsStopping();                          // 0x008FD010
     virtual void Update();
 };
 

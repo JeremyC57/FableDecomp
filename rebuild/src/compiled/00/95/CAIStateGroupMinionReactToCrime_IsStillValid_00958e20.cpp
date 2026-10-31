@@ -118,7 +118,7 @@ class CTCVillage { public:
 public:
     bool HasCrimeBeenReported(long);   // 0x0065914B
 };
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_MinionReactToCrime : CAIStateGroupBase {
     long OpinionDeedHandle;                     // +0x14
@@ -132,7 +132,7 @@ struct CAIStateGroup_MinionReactToCrime : CAIStateGroupBase {
 bool CAIStateGroup_MinionReactToCrime::IsStillValid()
 {
     if (PBrain->PCreature->HasTC(0x23)) {
-        CTCVillage* village = GFGetPVillageInterface((CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second);
+        CTCVillage* village = ((CTCVillageMember*)((CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second))->GetPVillage();
         CTCCreatureOpinionOfHero* opinion;
         if (village != 0 && PBrain->PCreature->GetInterface(&opinion, 0x4f)) {
             COpinionDeedFilter_IsCrimeToRunAndFindAGuard filter;

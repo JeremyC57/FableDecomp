@@ -37,8 +37,8 @@ class CScriptThing { public:
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
     virtual ~CScriptThing();                                // 0x004AA840 (the label "~C3DClothPrimitive" is propagated)
 };
-struct CThing_Retail {
-    CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
+class CThing { public:
+    CScriptThing GetScriptThing() const;                  // 0x004C7E50 (by value through the hidden result pointer)
 };
 struct CWorldMap_Retail;
 struct CDefinitionManager_Retail;
@@ -69,7 +69,7 @@ bool CGameScriptInterface::MsgOnHeroPickedLock(CScriptThing& out) const
     CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
     CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x46) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
     if (message) {
-        CThing_Retail* thing = (CThing_Retail*)message->m_extraData;
+        CThing* thing = (CThing*)message->m_extraData;
         if (thing)
             out = thing->GetScriptThing();
         return true;

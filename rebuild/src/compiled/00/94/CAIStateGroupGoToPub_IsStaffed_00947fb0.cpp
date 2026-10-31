@@ -178,7 +178,7 @@ class CTCVillage { public:
     unsigned long m_size;                       // +0x30 _Mysize
 };
 struct CTCVillager;
-CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007EE540 (Ego_r.pdb CTCVillageMember::GetPVillage, const)
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CBaseIntelligentPointer PPub;               // +0x14 CIntelligentPointer<CThing>
@@ -189,7 +189,7 @@ bool CAIStateGroup_GoToPub::IsStaffed()
 {
     CTCVillager* villager;
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
-        CTCVillage* village = GFGetPVillageInterface(villager);
+        CTCVillage* village = ((CTCVillageMember*)villager)->GetPVillage();
         if (village) {
             for (CListNode* node = village->m_head->next; node != village->m_head; node = node->next) {
                 if (IS_THING_ALIVE(node->value)

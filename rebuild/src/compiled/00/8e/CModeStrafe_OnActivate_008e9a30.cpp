@@ -58,8 +58,8 @@ enum EMovementType {MovementWalk=0};
 NativeStringValue __fastcall GetStrafingAnimationName(const ThingNative&,EMovementType); //8E8FF0 hidden resultECX,parentEDX,movementstack
 bool __fastcall GetAnimDistanceAndIndexFromAnimName(const ThingNative&,const CCharString&,long&,float&); //8E9080, donor90F530
 class CAnimSet;
-struct AnimateThingMethods {CAnimSet*GetFirstCombinationAnimFromType(long);void RemoveCombinationAnimsOfType(long);}; //70C4E0,70D8C0
-struct AnimationComponentMethods {AnimateThingMethods&GetAnimation();}; //70B460, actual CTCAnimationComplex +C
+class CAnimateThing { public: CAnimSet* GetFirstCombinationAnimFromType(long); void RemoveCombinationAnimsOfType(long); }; //70C4E0,70D8C0 (Ego_r.pdb CAnimateThing)
+class CTCAnimationComplex { public: CAnimateThing& GetAnimation(); }; //70B460 (Ego_r.pdb CTCAnimationComplex), +C
 // Native CModeBase prefix from PDB and actual CModeStandBase offsets; no generated CModeBase/Strafe header.
 struct BaseModeNative {void*VTable;ThingNative*ParentThing;AnimationGroupFilter WeaponFilter;long FramesBeforeRemovingSelf;bool Active;unsigned char Pad19[3];void OnActivate();}; //73AAC0
 struct CModeStrafe:BaseModeNative {
@@ -85,9 +85,9 @@ void CModeStrafe::OnActivate(){
  ThingNative*parent=ParentThing;
  StrafeAnimName=name;
  GetAnimDistanceAndIndexFromAnimName(*parent,name,AnimIndex,AnimMovementDistance);
- AnimationComponentMethods*component;
+ CTCAnimationComplex*component;
  ParentThing->GetInterface(component,90); //required TC90 precondition, exactly native unchecked out-parameter
- AnimateThingMethods&animation=component->GetAnimation();
+ CAnimateThing&animation=component->GetAnimation();
  if(animation.GetFirstCombinationAnimFromType(0x24))ForceAnimNoBlendIn=true;
  animation.RemoveCombinationAnimsOfType(0x23);
  animation.RemoveCombinationAnimsOfType(0x24);

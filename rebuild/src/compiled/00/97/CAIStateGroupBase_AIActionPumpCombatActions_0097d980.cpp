@@ -73,7 +73,9 @@ class CAIStateGroupBase
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    bool IsStopping();                              // 0x008FD010
+protected:
+    bool IsStopping() const;                              // 0x008FD010 (Ego_r.pdb protected const)
+public:
     long AIAction_PumpCombatActions();
 };
 

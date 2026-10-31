@@ -93,7 +93,7 @@ class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector& position);     // 0x0063E480
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();                         // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;                         // 0x006A1440
     void RemoveThingFromPrimarySlot(bool drop);              // 0x006A1E00
 };
 class CBaseObject;

@@ -111,7 +111,7 @@ struct CTCTable {                               // the interface-0xB8 component
     void ReleasePlace(long placeIndex);         // 0x007B9090
 };
 class CTCCarrying { public:
-    CThing* GetThingInPrimarySlot();            // 0x006A1440
+    CThing* GetThingInPrimarySlot() const;            // 0x006A1440
 public:
     CThing* RemoveThingFromPrimarySlot(bool);   // 0x006A1E00
 };
