@@ -25218,3 +25218,13 @@ chunk	address	module	name	length
 618	007993f0	CTCShopKeeper	WitnessedCrime	698
 618	009644f0	CAIStateGroup_StealStealableItem	?OnReplace@CAIStateGroup_StealStealableItem@@UAEXXZ	709
 618	00849700	CCreatureAction_StealThingFromShop	PerformAction	719
+619	008c4fd0	CCreatureAction_ScorpionSummon	CreateBabies	722
+619	0066a1e0	ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_PhysicsFlagsSolidToThing,CThingFilter_OverlappingCircle>,_anon_EFF05290	ForEachInRoughArea<CThingPhysical,CFilter_Bind3<CThingFilter_SolidToThing,CThingFilter_PhysicsFlagsSolidToThing,CThingFilter_OverlappingCircle>,_anon_EFF05290::CThingFindHeightZBelowAt>	725
+619	005542f0	CMorphingSprite	GetDataFromDef	727
+619	009ce5e0	CBankFile	AddEntryMultipleFiles	741
+619	00a42470	CPlane	GetIntersectionWithTriangle	750
+619	0047e651	CTCInGameMenu	VideoOptionsChanged	752
+619	005d8978	CPersistContext	TransferMap<long,long>	754
+619	0055d180	CTCPhotojournalCapture	TakeQuickScreenshot	772
+619	007b0360	CTCFishingSpot	FrameUpdate	773
+619	00a18b50	global	Collision_TestTriangleSphere	783
