@@ -25318,3 +25318,13 @@ chunk	address	module	name	length
 628	00c11520	global	Inventory_ProcessNavigationItem	163
 628	009f18f0	global	CircularBuffer_Read	166
 628	0061a9d0	CTCInventoryQuests	MoveToNextTestQuest	168
+629	006d8300	CTCHeroExperience	AddTrainableStatExperience	173
+629	009d5d30	CBankFileAsyncData	CBankFileAsyncData	179
+629	00619560	global	GFSerialiseVectorBinaryIn<CBrainUpdateZone>	180
+629	009d5df0	CBankFileAsyncData	CBankFileAsyncData	183
+629	00699130	CGameCameraManager	ResetFlags	183
+629	00408820	CUserProfileManager	ResetAssignedInputsWASD	185
+629	00a358f0	global	GetPositionMatrixFromRHSet	185
+629	008930f0	CGameScriptInterface	?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@0@Z	186
+629	00ad8af0	global	TreeNodes_HaveIntersection	188
+629	0041726d	CMainGameComponent	UpdateFromEventPackageSet	189
