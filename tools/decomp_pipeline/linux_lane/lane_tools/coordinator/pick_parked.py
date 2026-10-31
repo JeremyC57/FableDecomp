@@ -9,6 +9,7 @@ def A(a): return a.lower().replace('0x','').rjust(8,'0')
 landed={A(m.group(1)) for m in re.finditer(r"Address = '([0-9a-fA-F]{8})'",open(f'{R}/rebuild/build_candidates.ps1',errors='ignore').read())}
 res=set()
 # Codex parked-50 reservation released 2026-10-31 (RETURNED.tsv); its 39 differs are in the pool
+for r in csv.DictReader(open(f'{R}/rebuild/candidates/manual/pending/2026-10-31_chatgpt_pass10/RESERVED.tsv'),delimiter='\t'): res.add(A(r['address']))
 for r in csv.DictReader(open(f'{S}/retry/sec6b/WORKLIST.tsv'),delimiter='\t'): res.add(A(r['address']))
 for line in open(f'{R}/rebuild/candidates/manual/chunk_history.tsv'):
     f=line.split('\t')
