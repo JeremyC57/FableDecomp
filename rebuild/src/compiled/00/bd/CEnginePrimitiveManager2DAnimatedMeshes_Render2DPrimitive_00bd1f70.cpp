@@ -64,12 +64,12 @@ struct CByteVector {                               // STLport vector<unsigned ch
     bool empty() const { return _M_start == _M_finish; }
     unsigned char* GetData() { return _M_finish - _M_start ? _M_start : (unsigned char*)this; }
 };
-struct CEngineMeshVisibility {
+struct CEngineInternalPrimitiveMorphInfo {
     unsigned char _pad00[0x24];
     void*         Def;                             // +0x24
     unsigned char _pad28[4];
     CByteVector   HiddenMaterials;                 // +0x2c
-    void UpdateVisibilityVector(C3DMesh2* mesh);   // 0x00BEC8D0
+    void InitialiseHiddenMaterials(const C3DMesh2& mesh);   // 0x00BEC8D0 (PDB)
 };
 class CEngineInternalPrimitive2DAnimatedMesh { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -102,7 +102,7 @@ class CEngineInternalPrimitive2DAnimatedMesh { public:
     long           Layer;                          // +0x12c
     float          ScreenTLX, ScreenTLY, ScreenBRX, ScreenBRY;   // +0x130
     unsigned char  _pad140[0x10];
-    CEngineMeshVisibility Visibility;              // +0x150
+    CEngineInternalPrimitiveMorphInfo Visibility;              // +0x150
     void Initialise();                             // 0x00BCF4F0
     bool SetupMesh2D();                            // 0x00BCF430
     bool IsSimulationRunning(unsigned long subMesh);   // 0x00BEBBB0
@@ -220,12 +220,12 @@ void CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive(CEngineInternalP
     unsigned char* hidden = 0;
     const long& primitiveType = mesh.Type;
     if (primitiveType == 0x26) {
-        CEngineMeshVisibility& visibility = mesh.Visibility;
+        CEngineInternalPrimitiveMorphInfo& visibility = mesh.Visibility;
         if (!visibility.Def)
             hidden = 0;
         else {
             if (visibility.HiddenMaterials.empty())
-                visibility.UpdateVisibilityVector(data);
+                visibility.InitialiseHiddenMaterials(*data);
             hidden = visibility.HiddenMaterials.GetData();
         }
     }

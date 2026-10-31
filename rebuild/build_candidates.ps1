@@ -371135,6 +371135,20 @@ $catalog = @(
         TestSource = '00/d3/NScriptCQFireHeartScriptCFHScythe_Main_00d3ae40_test.cpp'
         PassPattern = '00d3ae40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a0c450'
+        Module = 'CCamera'
+        Source = '00/a0/CCamera_GetAngleXZ_00a0c450.cpp'
+        TestSource = '00/a0/CCamera_GetAngleXZ_00a0c450_test.cpp'
+        PassPattern = '00a0c450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba6dc0'
+        Module = 'CEnginePrimitiveManagerStaticMeshesBase'
+        Source = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DrawImmediately_00ba6dc0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DrawImmediately_00ba6dc0_test.cpp'
+        PassPattern = '00ba6dc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

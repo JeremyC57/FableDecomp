@@ -36,8 +36,11 @@ class CEngineSubPrimitiveBase { public:
     bool                                       m_cloth;         // +0x20
 };
 
+class CEngineSubPrimitiveStaticMesh : public CEngineSubPrimitiveBase { };   // PDB: the static-mesh sub-primitive (single base at +0)
+enum ERenderPassType { };
+
 struct CEnginePrimitiveManagerStaticMeshesBase {
-    void RenderMeshPrimitive(CEngineSubPrimitiveBase& sub, long pass);   // 0x00BA5260
+    void RenderMeshPrimitive(CEngineSubPrimitiveStaticMesh& sub, ERenderPassType pass);   // 0x00BA5260 (PDB signature)
     void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, long pass);
 };
 
@@ -52,6 +55,6 @@ void CEnginePrimitiveManagerStaticMeshesBase::RenderSubPrimitive(CEngineSubPrimi
                 simulation->Render(renderer, sub, pass);
         }
     } else {
-        RenderMeshPrimitive(sub, pass);
+        RenderMeshPrimitive(static_cast<CEngineSubPrimitiveStaticMesh&>(sub), (ERenderPassType)pass);
     }
 }

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00b39fb0	DIFFER	284v284	-	x87 scheduling: MaxDrawDistance loads / fadd before the IsVisible pushes, fstp after the sphere lea (6 grades; PDB callee respell kept)
+006a3a70	DIFFER	285v285	-	ebx<->edi colouring of fill_len/destroy cursor v new_finish (3 grades; QFE 4035 identical)
+00978790	DIFFER	286v286	-	scheduling: b loaded before the first-score fstp, pop esi before fnstsw (6 grades; PDB respell + real C2DVector kept)
+0097abf0	DIFFER	286v286	-	twin of 00978790, same residue (1 grade)
+00a0c450	RELOCATION_MATCH	288v288	PASS	CCamera::GetAngleXZ: inline C3DVector::InitialiseFromAngles(heading, pitch, 1.0f) (named float cosYZ) gives retail's cos(pitch) copy/consume
+00d9eb30	DIFFER	288v288	-	one push order at SetTarget (`mov ecx,esi` between lea and push in retail) (5 grades; shared NScript headers + PDB names kept)
+00a198c0	DIFFER	289v289	-	x87 canonical operand order of the height-probe sum (Y/Z lanes) (4 grades; PDB signatures kept)
+00405220	DIFFER	290v290	-	return packing: retail dword load + movzx ch/cl for G/B (4 grades)
+009210a0	DIFFER	290v290	-	this/creature edi-ebx colour swap (4 grades; PDB respell kept)
+00ba6dc0	RELOCATION_MATCH	291v291	PASS	PDB signature set: private DrawImmediately(CEngineInternalPrimitiveStaticMesh&), inline GetHiddenMaterials(const C3DMesh2&) returning 0 early

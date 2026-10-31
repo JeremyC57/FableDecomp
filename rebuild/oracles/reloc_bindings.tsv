@@ -29727,7 +29727,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?g_pPrimitiveRenderer_01436e80@@3PAVCEnginePrimitiveRenderer@@A	01436e80	00b9e950
 ?SetName@CEnginePrimitiveManagerStaticMeshes@@QAEXABVCCharString@@@Z	00bacd80	00ba1a70
 ?Render@CEngineClothSimulationStaticMesh@@QAEXPAXAAVCEngineSubPrimitiveBase@@J@Z	00b812f0	00ba6fa0
-?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveBase@@J@Z	00ba5260	00ba6fa0
+?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z	00ba5260	00ba6fa0
 ?RenderSubPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveBase@@J@Z	00ba6fa0	00ba77b0
 ?AllocateDepthBufferSurface@CGPUScratchBufferTextureManager@@QAEJJABVC2DCoordI@@PBVCPixelFormat@@J@Z	00f37390	00babb50
 ?AllocateTexture@CGPUScratchBufferTextureManager@@QAEJJABVC2DCoordI@@JPBVCPixelFormat@@JJ@Z	00f37440	00babb50
@@ -29760,7 +29760,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CEngineClothSimulation2DAnimatedMesh@@QAE@PBVC3DMeshInfo@@IPAVCEngineInternalPrimitiveAnimatedMesh@@@Z	00b81f00	00bcfde0
 ??0CEngineSubPrimitiveAnimatedMesh@@QAE@PAVCEngineInternalPrimitive2DAnimatedMesh@@PAUCSubMesh@@J_N@Z	00bce740	00bd1f70
 ?AddGeneratedObjects@CEnginePrimitiveManager2DAnimatedMeshes@@QAEXPAVCEngineInternalPrimitive2DAnimatedMesh@@PAVCMatrix3x4@@@Z	00bf18b0	00bd1f70
-?UpdateVisibilityVector@CEngineMeshVisibility@@QAEXPAVC3DMesh2@@@Z	00bec8d0	00bd1f70
+?InitialiseHiddenMaterials@CEngineInternalPrimitiveMorphInfo@@QAEXABVC3DMesh2@@@Z	00bec8d0	00bd1f70
 ?RenderSubPrimitive@CEnginePrimitiveManagerAnimatedMeshesBase@@QAEXAAVCEngineSubPrimitiveBase@@J@Z	00bd7110	00bd7a00
 ?DiscardAsyncData@@YIXPAV?$CCountedPointer@VCBankFileAsyncData@@@@@Z	009d68a0	00bdc3c0
 ??0CEngineTexturePalette@@QAE@PAVCGraphicDataBank@@_NK@Z	00bf90a0	00bdd2f0
@@ -35775,3 +35775,6 @@ _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
 ?IsAnimCombinationAnim@CThingCreatureBase@@QBE_NJ@Z	00662820	00693140
 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAUSEntry@1@ABW4ETCInterfaceType@@@Z	0040f020	00693140
 ?_M_insert_overflow@?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@IAEXPAPAVCAnimSet@@ABQAV3@ABU__true_type@2@I_N@Z	0066c3f0	00693140
+?g_twoPi@@3NB	0124f2b8	00a0c450
+?InitialiseHiddenMaterials@CEngineInternalPrimitiveMorphInfo@@QAEXABVC3DMesh2@@@Z	00bec8d0	00ba6dc0
+?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z	00ba5260	00ba6dc0
