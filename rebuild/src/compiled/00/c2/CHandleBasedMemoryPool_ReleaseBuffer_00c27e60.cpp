@@ -1,8 +1,8 @@
-// CHandleBasedMemoryPool::ReleaseBuffer() -- free the pool's unaligned buffer (if any) and clear the buffer/size words, then reset the allocation statistics
+// CHandleBasedMemoryPool_012b4098::ReleaseBuffer() -- free the pool's unaligned buffer (if any) and clear the buffer/size words, then reset the allocation statistics
 // Leaf: ReleaseBuffer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C27E60, 42 bytes.
-// Callers: CHandleBasedMemoryPool::Initialize @ 0x00C28240 (first thing it does, before allocating a
-// new buffer) and ~CHandleBasedMemoryPool @ 0x00C287E0 (landed; it calls this as its out-of-line
+// Callers: CHandleBasedMemoryPool_012b4098::Initialize @ 0x00C28240 (first thing it does, before allocating a
+// new buffer) and ~CHandleBasedMemoryPool_012b4098 @ 0x00C287E0 (landed; it calls this as its out-of-line
 // "Cleanup").  The manifest label Stack<unsigned long,64>::~Stack is propagated; the PDB keeps no
 // name for this helper, so it is named for what it does.
 // Callee: 0x00C16680, the engine allocator's free (__fastcall, block in ecx: it forwards to the

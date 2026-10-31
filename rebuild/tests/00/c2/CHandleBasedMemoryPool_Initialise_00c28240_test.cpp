@@ -1,4 +1,4 @@
-// behaviour test for 0x00C28240 CHandleBasedMemoryPool::Initialise: release, allocate size + 16, align to 16, one free area
+// behaviour test for 0x00C28240 CHandleBasedMemoryPool_012b4098::Initialise: release, allocate size + 16, align to 16, one free area
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-// behaviour test for 0x00C28580 CHandleBasedMemoryPool::MoveArea: move the bytes, resize the target, transfer the header, repoint the handle
+// behaviour test for 0x00C28580 CHandleBasedMemoryPool_012b4098::MoveArea: move the bytes, resize the target, transfer the header, repoint the handle
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>

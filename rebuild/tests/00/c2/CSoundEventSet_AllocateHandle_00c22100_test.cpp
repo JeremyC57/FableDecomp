@@ -21,7 +21,7 @@ struct CDefaultFailedAllocationHandler : CFailedAllocationHandler {
     virtual long OnAllocationFailed(long) { return 0; }
 };
 
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     CDefaultFailedAllocationHandler m_defaultHandler;
     CFailedAllocationHandler*       m_pFailureHandler;
     long m_free;
@@ -48,7 +48,7 @@ class CHandleBasedMemoryPool { public:
 };
 
 struct CSoundEventSet {
-    CHandleBasedMemoryPool m_pool;
+    CHandleBasedMemoryPool_012b4098 m_pool;
     long AllocateHandle(CSoundEventManager* manager, long size, long key);
 };
 

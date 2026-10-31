@@ -1,4 +1,4 @@
-// behaviour test for 0x00C27EA0 CHandleBasedMemoryPool::CreateArea: header words and both neighbour links
+// behaviour test for 0x00C27EA0 CHandleBasedMemoryPool_012b4098::CreateArea: header words and both neighbour links
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>

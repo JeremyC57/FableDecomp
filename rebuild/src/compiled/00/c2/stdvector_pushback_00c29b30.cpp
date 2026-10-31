@@ -1,18 +1,18 @@
 // std::vector::push_back(const _Ty& _Val) -- VC7.1 Dinkumware vector<CHeader*>::push_back, the pool's defragment block list: store in place below capacity (_Ufill -> the scalar fill_n, inline), else insert(end(), _Val) -> _Insert_n(end(), 1, _Val)
-// Leaf: ?push_back@?$vector@PAVCHeader@CHandleBasedMemoryPool@@V?$allocator@PAVCHeader@CHandleBasedMemoryPool@@@std@@@std@@QAEXABQAVCHeader@CHandleBasedMemoryPool@@@Z
+// Leaf: ?push_back@?$vector@PAVCHeader@CHandleBasedMemoryPool_012b4098@@V?$allocator@PAVCHeader@CHandleBasedMemoryPool_012b4098@@@std@@@std@@QAEXABQAVCHeader@CHandleBasedMemoryPool_012b4098@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C29B30, length 77 bytes, thiscall, `ret 4`.
-// Identity: the only caller is the libpk CHandleBasedMemoryPool::PartialDefragment @ 0x00C28870 (call 0x00C289F8; Ego_r.pdb
-//   ?PartialDefragment@CHandleBasedMemoryPool@@QAE_NJ@Z), which walks the free lists (pool+0x3C, Ego_r FreeLists
+// Identity: the only caller is the libpk CHandleBasedMemoryPool_012b4098::PartialDefragment @ 0x00C28870 (call 0x00C289F8; Ego_r.pdb
+//   ?PartialDefragment@CHandleBasedMemoryPool_012b4098@@QAE_NJ@Z), which walks the free lists (pool+0x3C, Ego_r FreeLists
 //   CHeader*[256]), searches its local vector (+0x24 allocator, +0x28/+0x2C/+0x30) for the header pointer and pushes the
 //   header when absent. The scalar element type is why the fill is an inline store (no placement-new null test, unlike the
-//   CHandleInfo twin @ 0x00C29C30). Ego_r.pdb's name set carries the vector<CHandleBasedMemoryPool::CHeader*> instantiations
+//   CHandleInfo twin @ 0x00C29C30). Ego_r.pdb's name set carries the vector<CHandleBasedMemoryPool_012b4098::CHeader*> instantiations
 //   (_Umove, _Ptr_cat -> _Scalar_ptr_iterator_tag, _Uninit_fill_n); its _Xlen is the landed 0x00C28E50.
 // Callees: vector::_Insert_n(iterator, size_type, const _Ty&) @ 0x00C295B0 (thiscall, `ret 0Ch`; it calls _Xlen 0x00C28E50).
 // Shape: the size (null first -> 0) in edx, the capacity (null first -> the slow path) in eax, an unsigned compare; the VC7.1
 //   vector iterator is one pointer with no user copy constructor, pushed as a plain word.
 // Label correction: the catalog's "CMirroredTextureHighlightsChunk::AddVertexIndex" is propagated; the landed name was by
 //   address (CVector_ulong_00c29b30, element type unknown).
-class CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool_012b4098 {
 public:
     class CHeader;                         // a pool block header (32 bytes)
 };
@@ -127,4 +127,4 @@ protected:
 };
 }
 
-template void std::vector<CHandleBasedMemoryPool::CHeader*>::push_back(CHandleBasedMemoryPool::CHeader* const&);
+template void std::vector<CHandleBasedMemoryPool_012b4098::CHeader*>::push_back(CHandleBasedMemoryPool_012b4098::CHeader* const&);

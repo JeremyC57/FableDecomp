@@ -1,4 +1,4 @@
-// CHandleBasedMemoryPool::FindLargestFreeArea() -- walk the free list of the bucket holding the largest-free-area size (+0x1c; bucket = size >> 9 capped at 255) and return the first area of exactly that size; null when none
+// CHandleBasedMemoryPool_012b4098::FindLargestFreeArea() -- walk the free list of the bucket holding the largest-free-area size (+0x1c; bucket = size >> 9 capped at 255) and return the first area of exactly that size; null when none
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C28050, length 48 bytes.
 // Shape: `shr eax,9 ; cmp eax,0FFh ; jb`, the aligned loop over `[eax+14h]`, `xor eax,eax`.
 struct SFreeArea_00c28050 {                           // a pool area record: resource word, size, padding, the free-list links
@@ -12,7 +12,7 @@ struct SFreeArea_00c28050 {                           // a pool area record: res
     SFreeArea_00c28050*  m_pNext;                     // +0x14
 };
 
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     unsigned char       _pad[0x1c];
     long                m_largestFreeArea;         // +0x1c
     unsigned char       _pad20[0x1c];
@@ -20,7 +20,7 @@ class CHandleBasedMemoryPool { public:
     SFreeArea_00c28050* FindLargestFreeArea();
 };
 
-SFreeArea_00c28050* CHandleBasedMemoryPool::FindLargestFreeArea()
+SFreeArea_00c28050* CHandleBasedMemoryPool_012b4098::FindLargestFreeArea()
 {
     long size = m_largestFreeArea;
     unsigned long bucket = (unsigned long)size >> 9;

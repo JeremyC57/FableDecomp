@@ -1,13 +1,13 @@
-// CHandleBasedMemoryPool::ResizeArea(CHeader* area, long newSize) -- shrink an area to newSize: more than a header's worth of spare bytes becomes a new free area after it, otherwise the spare is kept as the area's padding
+// CHandleBasedMemoryPool_012b4098::ResizeArea(CHeader* area, long newSize) -- shrink an area to newSize: more than a header's worth of spare bytes becomes a new free area after it, otherwise the spare is kept as the area's padding
 // Leaf: ?ResizeArea@CHandleBasedMemoryPool_Methods@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C28290, 71 bytes (`ret 8`). The libpk build of the engine's
-//   CHandleBasedMemoryPool::ResizeArea (engine copy 0x00A02410: an unsigned spare test and the header built inline);
+//   CHandleBasedMemoryPool_012b4098::ResizeArea (engine copy 0x00A02410: an unsigned spare test and the header built inline);
 //   the manifest's "Thiscall_BlockAllocationShrink" is propagated.
 // Callees: CreateArea @ 0x00C27EA0 (at `area + newSize + 0x20`, the spare bytes, between the area and its physical
 //   successor), InsertFreeArea @ 0x00C27EF0.
 // Shape: the spare is SIGNED here (`cmp eax,20h ; jle`); each arm stores the new size and has its own epilogue, the
 //   small-spare arm then the padding word.
-struct CHeader {                                // CHandleBasedMemoryPool::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
+struct CHeader {                                // CHandleBasedMemoryPool_012b4098::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
     void*          Resource;                    // +0x00
     long           Handle;                      // +0x04
     long           Size;                        // +0x08

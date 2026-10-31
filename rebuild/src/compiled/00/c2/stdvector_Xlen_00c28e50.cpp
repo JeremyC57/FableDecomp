@@ -4,13 +4,13 @@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C28E50, 112 bytes + the int3 after the noreturn call, __fastcall
 //   (`this` unused), EH-framed (handler 0x01213482).
-// Identity: vector<CHandleBasedMemoryPool::CHeader*> -- the defragment block stack (Ego_r CArray<CHandleBasedMemoryPool::CHeader*>): its _Buy
+// Identity: vector<CHandleBasedMemoryPool_012b4098::CHeader*> -- the defragment block stack (Ego_r CArray<CHandleBasedMemoryPool_012b4098::CHeader*>): its _Buy
 //   @ 0x00C29400 and _Insert_n @ 0x00C295B0 (called from push_back @ 0x00C29B30, which PartialDefragment 0x00C28870 calls) are the
 //   only callers.
 //   The libpk library uses VC7.1's own Dinkumware STL (MSVCP71 basic_string imports 0x0143FF98 `basic_string(const char*)`
 //   and 0x0143FFA0 `basic_string(const basic_string&)`, MSVCR71 `exception::exception()` 0x0143FFF8); the logic_error /
 //   length_error vtables 0x012B263C / 0x012B2644 and the ThrowInfo 0x0136AA24 are shared with the byte-identical
-//   0x00C13840 / 0x00C138F0 (chunk 433). Twin: 0x00C28DC0 (vector<CHandleBasedMemoryPool::CHandleInfo>).
+//   0x00C13840 / 0x00C138F0 (chunk 433). Twin: 0x00C28DC0 (vector<CHandleBasedMemoryPool_012b4098::CHandleInfo>).
 // Shape: EH state 0 = the message string, 1 = the exception base built (the logic_error vtable store), back to 0 with
 //   the length_error vtable store before the throw; the string temporary lives at esp+0, the 0x28-byte length_error at
 //   esp+0x1c.
@@ -74,8 +74,8 @@ template<class _Ty, class _Ax> void vector<_Ty, _Ax>::_Xlen() const
 }
 }
 
-class CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool_012b4098 {
 public:
     class CHeader;                             // a pool block header (32 bytes)
 };
-template class std::vector<CHandleBasedMemoryPool::CHeader*>;
+template class std::vector<CHandleBasedMemoryPool_012b4098::CHeader*>;

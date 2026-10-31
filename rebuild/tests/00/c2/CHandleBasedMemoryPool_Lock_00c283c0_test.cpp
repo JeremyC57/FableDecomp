@@ -1,12 +1,12 @@
 #include <stdio.h>
 struct CHeader { unsigned char _pad00[0xf]; unsigned char Locked; };
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     unsigned char _pad00[0x18]; long LockCount; unsigned char _pad1c[0x440 - 0x1c]; CHeader** Handles;
     void Lock(long handle) { CHeader** slot = &Handles[handle]; if ((*slot)->Locked == 0) { (*slot)->Locked = 1; LockCount++; } }
 };
 int main()
 {
-    CHandleBasedMemoryPool pool;
+    CHandleBasedMemoryPool_012b4098 pool;
     for (int i = 0; i < (int)sizeof(pool); ++i) ((char*)&pool)[i] = 0;
     CHeader e0, e1; e0.Locked = 0; e1.Locked = 0;
     CHeader* tbl[4] = { &e0, &e1, &e0, &e1 };

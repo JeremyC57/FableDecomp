@@ -1,7 +1,7 @@
-// CHandleBasedMemoryPool::Initialise(long poolSize, long maxBlocksToTry) -- drop any previous buffer, allocate the pool plus 16 bytes, align the buffer to 16 and make the whole pool one free area
+// CHandleBasedMemoryPool_012b4098::Initialise(long poolSize, long maxBlocksToTry) -- drop any previous buffer, allocate the pool plus 16 bytes, align the buffer to 16 and make the whole pool one free area
 // Leaf: ?Initialise@CHandleBasedMemoryPool_Methods@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C28240, 73 bytes (`ret 8`). The libpk build of the engine's
-//   CHandleBasedMemoryPool::Initialise (engine copy 0x00A02570 takes (size, multiThreaded, memoryFlags) and inlines the
+//   CHandleBasedMemoryPool_012b4098::Initialise (engine copy 0x00A02570 takes (size, multiThreaded, memoryFlags) and inlines the
 //   free-area setup); the manifest's "CHandleBasedMemoryPool_Initialize" is descriptive.
 // Callees: ReleaseBuffer @ 0x00C27E60 (landed), the audio allocator's alloc @ 0x00C16670 (`__fastcall`, size in ecx;
 //   ReleaseBuffer frees through its partner 0x00C16680), CreateArea @ 0x00C27EA0, InsertFreeArea @ 0x00C27EF0.
@@ -10,7 +10,7 @@
 //   ahead of the +0x0C one (the maximum assigned first loads it alone through eax); the allocation size comes from
 //   the argument register, PoolSize is re-read (edx) for CreateArea; the alignment is `(p + 15) / 16 * 16`
 //   (`add eax,0Fh ; shr eax,4 ; shl eax,4`).
-struct CHeader {                                // CHandleBasedMemoryPool::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
+struct CHeader {                                // CHandleBasedMemoryPool_012b4098::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
     void*          Resource;                    // +0x00
     long           Handle;                      // +0x04
     long           Size;                        // +0x08

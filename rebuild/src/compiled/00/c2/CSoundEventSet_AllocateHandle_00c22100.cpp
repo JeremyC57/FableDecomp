@@ -10,11 +10,11 @@
 //   Callers 0x00C12FAD and 0x00C21874 call it on the manager's event set (`lea ecx,[edi+2Ch]`) with the manager as the
 //   first argument and test the result with `jl`.
 // Callees: CSoundEventFailedAllocationHandler::CSoundEventFailedAllocationHandler(manager, key) @ 0x00C22060 (vtable 0x012B3850,
-//   slot 1 = OnAllocationFailed 0x00C22080), CHandleBasedMemoryPool::Allocate(long* handle, long size) @ 0x00C28C20.
+//   slot 1 = OnAllocationFailed 0x00C22080), CHandleBasedMemoryPool_012b4098::Allocate(long* handle, long size) @ 0x00C28C20.
 // Layout: the event set's pool sits at +0x334 (manager +0x360, the pool the stream buffers Lock/Unlock); this
 //   library's pool variant keeps an embedded default handler (one vptr) at +0x34 and the current handler pointer
-//   at +0x38, one word above the engine's CHandleBasedMemoryPool (FailureHandler +0x34 in engine/
-//   CHandleBasedMemoryPool.h), so the pool is modelled locally.
+//   at +0x38, one word above the engine's CHandleBasedMemoryPool_012b4098 (FailureHandler +0x34 in engine/
+//   CHandleBasedMemoryPool_012b4098.h), so the pool is modelled locally.
 // Shape: the handler is a polymorphic stack object with an empty inline virtual destructor: EH state 0 before the
 //   allocation and no destructor code (or -1 store) on the normal paths. The handle is a local homed in the dead
 //   `key` argument slot (`lea ecx,[esp+2Ch]`); the default handler is restored right after the call (inline
@@ -40,7 +40,7 @@ struct CDefaultFailedAllocationHandler : CFailedAllocationHandler {
     virtual long OnAllocationFailed(long size);
 };
 
-class CHandleBasedMemoryPool { public:                 // this library's pool variant (see Layout)
+class CHandleBasedMemoryPool_012b4098 { public:                 // this library's pool variant (see Layout)
     unsigned char                   _pad00[0x34];
     CDefaultFailedAllocationHandler m_defaultHandler;    // +0x34
     CFailedAllocationHandler*       m_pFailureHandler;   // +0x38
@@ -56,7 +56,7 @@ class CHandleBasedMemoryPool { public:                 // this library's pool va
 
 struct CSoundEventSet {                          // +0x2C of the manager
     unsigned char          _pad000[0x334];
-    CHandleBasedMemoryPool m_pool;              // +0x334
+    CHandleBasedMemoryPool_012b4098 m_pool;              // +0x334
     long AllocateHandle(CSoundEventManager* manager, long size, long key);
 };
 

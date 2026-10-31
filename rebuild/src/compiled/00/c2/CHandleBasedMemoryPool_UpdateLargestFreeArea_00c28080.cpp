@@ -1,4 +1,4 @@
-// CHandleBasedMemoryPool::UpdateLargestFreeArea() -- find the highest non-empty free-list bucket at or below the one of the current largest size (+0x1c) and set the largest-free-area word to the biggest size on that list; zero when every bucket down to 0 is empty
+// CHandleBasedMemoryPool_012b4098::UpdateLargestFreeArea() -- find the highest non-empty free-list bucket at or below the one of the current largest size (+0x1c) and set the largest-free-area word to the biggest size on that list; zero when every bucket down to 0 is empty
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C28080, length 96 bytes.
 // Shape: the bucket scan downwards by `sub edx,4`, then the max scan over `[eax+8]` in esi.
 struct SFreeArea_00c28080 {                           // a pool area record: resource word, size, padding, the free-list links
@@ -12,7 +12,7 @@ struct SFreeArea_00c28080 {                           // a pool area record: res
     SFreeArea_00c28080*  m_pNext;                     // +0x14
 };
 
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     unsigned char       _pad[0x1c];
     long                m_largestFreeArea;         // +0x1c
     unsigned char       _pad20[0x1c];
@@ -20,7 +20,7 @@ class CHandleBasedMemoryPool { public:
     void UpdateLargestFreeArea();
 };
 
-void CHandleBasedMemoryPool::UpdateLargestFreeArea()
+void CHandleBasedMemoryPool_012b4098::UpdateLargestFreeArea()
 {
     unsigned long cap = (unsigned long)m_largestFreeArea >> 9;
     if (cap >= 0xff)

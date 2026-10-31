@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Behaviour model of CHandleBasedMemoryPool::ValidateLargestFreeArea (0x00C280E0): the walk finds the highest non-empty
+// Behaviour model of CHandleBasedMemoryPool_012b4098::ValidateLargestFreeArea (0x00C280E0): the walk finds the highest non-empty
 // bucket and its largest area (the retail check against the cached size is compiled out; the model returns it).
 struct Header { int Size; Header* NextAvailable; };
 struct Pool {

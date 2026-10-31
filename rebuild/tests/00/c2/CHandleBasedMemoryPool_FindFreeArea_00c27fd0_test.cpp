@@ -1,11 +1,11 @@
 // Behaviour test for 00c27fd0: src/00c27fd0.cpp copied verbatim (the function body and its same-TU stand-ins), the remaining
-// declared callees stubbed below so calls and arguments are observable. CHandleBasedMemoryPool::FindFreeArea(long size)
+// declared callees stubbed below so calls and arguments are observable. CHandleBasedMemoryPool_012b4098::FindFreeArea(long size)
 #include <cstdio>
 #include <cstring>
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 // ---- source (verbatim) ----
-// CHandleBasedMemoryPool::FindFreeArea(long size) -- best-fit search (second pool build): walk the free lists from the size's bucket (size >> 9, capped at 255) upwards and return the smallest free area that holds `size`, stopping early on an exact fit; null when none
+// CHandleBasedMemoryPool_012b4098::FindFreeArea(long size) -- best-fit search (second pool build): walk the free lists from the size's bucket (size >> 9, capped at 255) upwards and return the smallest free area that holds `size`, stopping early on an exact fit; null when none
 // Leaf: FindFreeArea
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C27FD0, length 116 bytes. No callees.
 // This is the 0x00C27xxx-0x00C28xxx copy of the pool (FindLargestFreeArea 0x00C28050, InsertFreeArea 0x00C27EF0
@@ -23,13 +23,13 @@ struct SFreeArea_00c27fd0 {                        // a pool area record (as lan
     SFreeArea_00c27fd0** m_pPrevLink;              // +0x10
     SFreeArea_00c27fd0*  m_pNext;                  // +0x14
 };
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     unsigned char       _pad[0x3c];
     SFreeArea_00c27fd0* m_freeLists[256];          // +0x3c
     SFreeArea_00c27fd0* FindFreeArea(long size);
 };
 
-SFreeArea_00c27fd0* CHandleBasedMemoryPool::FindFreeArea(long size)
+SFreeArea_00c27fd0* CHandleBasedMemoryPool_012b4098::FindFreeArea(long size)
 {
     SFreeArea_00c27fd0* best = 0;
     long bestSize = 0x7fffffff;
@@ -49,7 +49,7 @@ SFreeArea_00c27fd0* CHandleBasedMemoryPool::FindFreeArea(long size)
 // ---- stubs and driver ----
 
 static SFreeArea_00c27fd0 g_area[8];
-static CHandleBasedMemoryPool g_pool;
+static CHandleBasedMemoryPool_012b4098 g_pool;
 static void Link(int bucket, int a, long size, int next)
 {
     g_area[a].m_size = size; g_area[a].m_pNext = next >= 0 ? &g_area[next] : 0;

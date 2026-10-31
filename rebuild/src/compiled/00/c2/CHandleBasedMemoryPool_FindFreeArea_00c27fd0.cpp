@@ -1,4 +1,4 @@
-// CHandleBasedMemoryPool::FindFreeArea(long size) -- best-fit search (second pool build): walk the free lists from the size's bucket (size >> 9, capped at 255) upwards and return the smallest free area that holds `size`, stopping early on an exact fit; null when none
+// CHandleBasedMemoryPool_012b4098::FindFreeArea(long size) -- best-fit search (second pool build): walk the free lists from the size's bucket (size >> 9, capped at 255) upwards and return the smallest free area that holds `size`, stopping early on an exact fit; null when none
 // Leaf: FindFreeArea
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C27FD0, length 116 bytes. No callees.
 // This is the 0x00C27xxx-0x00C28xxx copy of the pool (FindLargestFreeArea 0x00C28050, InsertFreeArea 0x00C27EF0
@@ -16,13 +16,13 @@ struct SFreeArea_00c27fd0 {                        // a pool area record (as lan
     SFreeArea_00c27fd0** m_pPrevLink;              // +0x10
     SFreeArea_00c27fd0*  m_pNext;                  // +0x14
 };
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     unsigned char       _pad[0x3c];
     SFreeArea_00c27fd0* m_freeLists[256];          // +0x3c
     SFreeArea_00c27fd0* FindFreeArea(long size);
 };
 
-SFreeArea_00c27fd0* CHandleBasedMemoryPool::FindFreeArea(long size)
+SFreeArea_00c27fd0* CHandleBasedMemoryPool_012b4098::FindFreeArea(long size)
 {
     SFreeArea_00c27fd0* best = 0;
     long bestSize = 0x7fffffff;

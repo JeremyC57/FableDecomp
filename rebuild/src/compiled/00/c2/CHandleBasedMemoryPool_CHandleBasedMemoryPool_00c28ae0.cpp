@@ -1,10 +1,10 @@
-// CHandleBasedMemoryPool::CHandleBasedMemoryPool() -- pool ctor: zero the buffer/size/count words +4..+0x18, the default failure handler at +0x34, clear the 256 free lists (ClearFreeLists), an empty handle vector at +0x440, FirstUnusedHandle = -1, the name string from the nil string 0x0139C900, then point FailureHandler at the default handler and set the four defrag/size defaults
+// CHandleBasedMemoryPool_012b4098::CHandleBasedMemoryPool_012b4098() -- pool ctor: zero the buffer/size/count words +4..+0x18, the default failure handler at +0x34, clear the 256 free lists (ClearFreeLists), an empty handle vector at +0x440, FirstUnusedHandle = -1, the name string from the nil string 0x0139C900, then point FailureHandler at the default handler and set the four defrag/size defaults
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C28AE0, length 158 bytes. Callees: ClearFreeLists @ 0x00C28200 (rep stosd of 0x100 dwords at +0x3c).
-// Label: the catalog's "CSoundDef::CSoundDef" is propagated. The class is this copy of CHandleBasedMemoryPool (0x00C27EF0..0x00C28A80):
-//   the callee 0x00C28200 is CHandleBasedMemoryPool::ClearFreeLists (labels_chunk223_corrections), the landed neighbours
+// Label: the catalog's "CSoundDef::CSoundDef" is propagated. The class is this copy of CHandleBasedMemoryPool_012b4098 (0x00C27EF0..0x00C28A80):
+//   the callee 0x00C28200 is CHandleBasedMemoryPool_012b4098::ClearFreeLists (labels_chunk223_corrections), the landed neighbours
 //   Lock 0x00C283C0 / FreeHandle 0x00C28610 / InternalAllocateHandle 0x00C28A80 / FindLargestFreeArea 0x00C28050 read the same
 //   retail layout (free lists +0x3c, handle table +0x440, FirstUnusedHandle +0x44c), and the dtor 0x00C287E0 (landed as
-//   "CHandleBasedMemoryPool") stores the same vtable 0x012B4098.
+//   "CHandleBasedMemoryPool_012b4098") stores the same vtable 0x012B4098.
 // Layout: local retail view. Retail provably differs from engine/CHandleBasedMemoryPool.h (Ego_r: FailureHandler +0x34,
 //   FreeLists +0x38, FirstUnusedHandle +0x448, Name +0x44c): this ctor stores a vptr at +0x34 (an embedded default handler,
 //   vtable 0x012B37FC), sets +0x38 = &(+0x34), and ClearFreeLists zeroes +0x3c..+0x43c; +0x44c = -1 and +0x450 = the nil string.
@@ -48,7 +48,7 @@ struct CPoolName {                  // +0x450
     ~CPoolName();                          // 0x00C0BA40
 };
 
-class CHandleBasedMemoryPool { public:              // vtable 0x012B4098
+class CHandleBasedMemoryPool_012b4098 { public:              // vtable 0x012B4098
     virtual void v00();
     void* Buffer;                          // +0x04
     void* UnalignedBuffer;                 // +0x08
@@ -67,11 +67,11 @@ class CHandleBasedMemoryPool { public:              // vtable 0x012B4098
     long                FirstUnusedHandle;             // +0x44c
     CPoolName    Name;          // +0x450
     void ClearFreeLists() throw();         // 0x00C28200 (rep stosd over FreeLists)
-    CHandleBasedMemoryPool();
-    ~CHandleBasedMemoryPool();
+    CHandleBasedMemoryPool_012b4098();
+    ~CHandleBasedMemoryPool_012b4098();
 };
 
-CHandleBasedMemoryPool::CHandleBasedMemoryPool()
+CHandleBasedMemoryPool_012b4098::CHandleBasedMemoryPool_012b4098()
     : Buffer(0), UnalignedBuffer(0), PoolSize(0), AllocatedSize(0), NumAllocations(0), LockCount(0),
       FailureHandler(0),
       FirstUnusedHandle(-1)

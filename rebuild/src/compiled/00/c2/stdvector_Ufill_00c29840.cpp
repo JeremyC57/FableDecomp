@@ -1,17 +1,17 @@
-// std::vector::_Ufill(CHandleBasedMemoryPool::CHandleInfo* _Ptr, unsigned int _Count, const CHandleBasedMemoryPool::CHandleInfo& _Val) -- VC7.1 Dinkumware vector helper: copy-construct _Count copies of _Val into raw storage at _Ptr through the allocator and return _Ptr + _Count
+// std::vector::_Ufill(CHandleBasedMemoryPool_012b4098::CHandleInfo* _Ptr, unsigned int _Count, const CHandleBasedMemoryPool_012b4098::CHandleInfo& _Val) -- VC7.1 Dinkumware vector helper: copy-construct _Count copies of _Val into raw storage at _Ptr through the allocator and return _Ptr + _Count
 // Leaf: ?_Ufill@?$vector@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C29840, 38 bytes, thiscall `ret 0Ch` (libpk middleware: Dinkumware STL in namespace std).
 // Callees: _Uninit_fill_n(_First, _Count, _Val, _Al, _Nonscalar_ptr_iterator_tag) 0x00C294B0 (landed; __fastcall: _First ecx,
 //   _Count edx, the rest on the stack).
-// Identity: the landed 0x00C294B0 names this caller vector<CHandleBasedMemoryPool::CHandleInfo>::_Ufill; Ego_r.pdb
-//   CHandleBasedMemoryPool::CHandleInfo is a 4-byte union of the block header pointer and the free-handle link. The catalog
+// Identity: the landed 0x00C294B0 names this caller vector<CHandleBasedMemoryPool_012b4098::CHandleInfo>::_Ufill; Ego_r.pdb
+//   CHandleBasedMemoryPool_012b4098::CHandleInfo is a 4-byte union of the block header pointer and the free-handle link. The catalog
 //   label "vector<unsigned int>::_Ufill" carries the right member name with a propagated element type.
 // Shape: Dinkumware `_Ufill(_Ptr, _Count, _Val) { _Uninitialized_fill_n(_Ptr, _Count, _Val, this->_Alval); return (_Ptr +
 //   _Count); }` with the `_Uninitialized_fill_n` front end inline (`_Uninit_fill_n(..., _Ptr_cat(_First, _First))`): the
 //   allocator is the vector's first word (ecx itself), the empty tag is pushed from whatever register holds a value.
 inline void* __cdecl operator new(unsigned int, void* _Where) throw() { return (_Where); }
 
-class CHandleBasedMemoryPool {
+class CHandleBasedMemoryPool_012b4098 {
 public:
     class CHeader;
     class CHandleInfo { public:                        // Ego_r.pdb: 4 bytes
@@ -63,6 +63,6 @@ public:
     }
 };
 
-template CHandleBasedMemoryPool::CHandleInfo* vector<CHandleBasedMemoryPool::CHandleInfo>::_Ufill(
-    CHandleBasedMemoryPool::CHandleInfo*, unsigned int, const CHandleBasedMemoryPool::CHandleInfo&);
+template CHandleBasedMemoryPool_012b4098::CHandleInfo* vector<CHandleBasedMemoryPool_012b4098::CHandleInfo>::_Ufill(
+    CHandleBasedMemoryPool_012b4098::CHandleInfo*, unsigned int, const CHandleBasedMemoryPool_012b4098::CHandleInfo&);
 }

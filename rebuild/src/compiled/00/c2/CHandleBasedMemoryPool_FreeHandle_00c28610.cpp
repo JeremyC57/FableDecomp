@@ -1,7 +1,7 @@
-// CHandleBasedMemoryPool::FreeHandle(long handle) -- clears a released handle's slot and pushes the handle onto the free-handle chain
+// CHandleBasedMemoryPool_012b4098::FreeHandle(long handle) -- clears a released handle's slot and pushes the handle onto the free-handle chain
 // Leaf: FreeHandle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C28610, length 38 bytes (+10 int3 padding). The catalog label
-// "CTCInventoryBase::GetCategoryWithIndex" is propagated and wrong: the only caller is CHandleBasedMemoryPool::FreeAllocation
+// "CTCInventoryBase::GetCategoryWithIndex" is propagated and wrong: the only caller is CHandleBasedMemoryPool_012b4098::FreeAllocation
 // (0x00C28690, which reads the header pointer from the same table at +0x440 before calling this), so the body is the pool's
 // handle release; the leaf name is descriptive.
 // Model: engine/CHandleBasedMemoryPool.h (PDB) puts the Handles CArray at +0x438 (16 bytes) and FirstUnusedHandle at +0x448;

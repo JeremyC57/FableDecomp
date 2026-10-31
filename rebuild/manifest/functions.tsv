@@ -44958,32 +44958,32 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c27d80	Navigator_UpdateState	_global	unknown	undefined	0		0	yes	accepted									
 00c27e60	Stack<unsigned_long,64>::~Stack<unsigned_long,64>	Stack<unsigned_long,64>	unknown	undefined	0		0	yes	accepted									
 00c27ea0	WordWrap_SetCallback	_global	__fastcall	void	2	_func_uint_wchar_t *,_func_uint *	1	yes	accepted									
-00c27ef0	InsertFreeArea	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,CHeader *	1	yes	accepted									
+00c27ef0	InsertFreeArea	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,CHeader *	1	yes	accepted									
 00c27f50	Stack<unsigned_long,64>::~Stack<unsigned_long,64>	Stack<unsigned_long,64>	unknown	undefined	0		0	yes	accepted									
 00c27f80	CHandleBasedMemoryPool_MergeBlocks	_global	unknown	undefined	0		0	yes	accepted									
-00c27fd0	FindFreeArea	CHandleBasedMemoryPool	__thiscall	CHeader *	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
-00c28050	FindLargestFreeArea	CHandleBasedMemoryPool	__thiscall	CHeader *	1	CHandleBasedMemoryPool *	1	yes	accepted									
-00c28080	UpdateLargestFreeArea	CHandleBasedMemoryPool	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
+00c27fd0	FindFreeArea	CHandleBasedMemoryPool_012b4098	__thiscall	CHeader *	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
+00c28050	FindLargestFreeArea	CHandleBasedMemoryPool_012b4098	__thiscall	CHeader *	1	CHandleBasedMemoryPool *	1	yes	accepted									
+00c28080	UpdateLargestFreeArea	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
 00c280e0	sub_00c280e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00c28120	TestIfAreaIsGrowable	CHandleBasedMemoryPool	__thiscall	bool	3	CHandleBasedMemoryPool *,CHeader *,long	1	yes	accepted									
+00c28120	TestIfAreaIsGrowable	CHandleBasedMemoryPool_012b4098	__thiscall	bool	3	CHandleBasedMemoryPool *,CHeader *,long	1	yes	accepted									
 00c28200	$E1	_global	unknown	undefined	0		0	yes	accepted									
 00c28220	sub_00c28220	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c28240	CHandleBasedMemoryPool_Initialize	_global	unknown	undefined	0		0	yes	accepted									
 00c28290	Thiscall_BlockAllocationShrink	_global	unknown	undefined	0		0	yes	accepted									
 00c282e0	OnPostRelocation	CLandscapeLayerMesh	__thiscall	void	1	CLandscapeLayerMesh *	1	yes	accepted									
-00c28380	GetPointerFromHandle	CHandleBasedMemoryPool	__thiscall	void *	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
+00c28380	GetPointerFromHandle	CHandleBasedMemoryPool_012b4098	__thiscall	void *	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
 00c283a0	sub_00c283a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00c283c0	Lock	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Lock_00c283c0.cpp
-00c283e0	Unlock	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Unlock_00c283e0.cpp
-00c28400	Defragment	CHandleBasedMemoryPool	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
+00c283c0	Lock	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Lock_00c283c0.cpp
+00c283e0	Unlock	CHandleBasedMemoryPool_012b4098	__thiscall	void	2	CHandleBasedMemoryPool *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CHandleBasedMemoryPool_Unlock_00c283e0.cpp
+00c28400	Defragment	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
 00c28580	Thiscall_BlockDefragmentCopy	_global	unknown	undefined	0		0	yes	accepted									
 00c28610	GetCategoryWithIndex	CTCInventoryBase	__thiscall	CCategory *	2	CTCInventoryBase *,long	1	yes	accepted									
-00c28640	ValidateResources	CHandleBasedMemoryPool	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
-00c28690	CHandleBasedMemoryPool::FreeAllocation	CHandleBasedMemoryPool	unknown	undefined	0		0	yes	accepted									
-00c286f0	CHandleBasedMemoryPool::PartialDefragment	CHandleBasedMemoryPool	unknown	undefined	0		0	yes	accepted									
+00c28640	ValidateResources	CHandleBasedMemoryPool_012b4098	__thiscall	void	1	CHandleBasedMemoryPool *	1	yes	accepted									
+00c28690	CHandleBasedMemoryPool_012b4098::FreeAllocation	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0	yes	accepted									
+00c286f0	CHandleBasedMemoryPool_012b4098::PartialDefragment	CHandleBasedMemoryPool_012b4098	unknown	undefined	0		0	yes	accepted									
 00c287e0	Stack<unsigned_long,64>::~Stack<unsigned_long,64>	Stack<unsigned_long,64>	unknown	undefined	0		0	yes	accepted									
-00c28870	PartialDefragment	CHandleBasedMemoryPool	__thiscall	bool	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
-00c28a80	InternalAllocateHandle	CHandleBasedMemoryPool	__thiscall	long	1	CHandleBasedMemoryPool *	1	yes	accepted									
+00c28870	PartialDefragment	CHandleBasedMemoryPool_012b4098	__thiscall	bool	2	CHandleBasedMemoryPool *,long	1	yes	accepted									
+00c28a80	InternalAllocateHandle	CHandleBasedMemoryPool_012b4098	__thiscall	long	1	CHandleBasedMemoryPool *	1	yes	accepted									
 00c28ae0	CSoundDef	CSoundDef	__thiscall	undefined	1	CSoundDef *	0	yes	accepted									
 00c28b80	CHandleBasedMemoryPool_AllocateHandleFromFreeArea	_global	unknown	undefined	0		0	yes	accepted									
 00c28c20	CHandleBasedMemoryPool_Allocate	_global	unknown	undefined	0		0	yes	accepted									

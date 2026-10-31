@@ -64043,14 +64043,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c283c0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_Lock_00c283c0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_Lock_00c283c0_test.cpp'
         PassPattern = 'LOCK_OK'
     }
     [pscustomobject]@{
         Address = '00c283e0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_Unlock_00c283e0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_Unlock_00c283e0_test.cpp'
         PassPattern = 'UNLOCK_OK'
@@ -202962,28 +202962,28 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27ef0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_InsertFreeArea_00c27ef0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_InsertFreeArea_00c27ef0_test.cpp'
         PassPattern = '00c27ef0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28050'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_FindLargestFreeArea_00c28050.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_FindLargestFreeArea_00c28050_test.cpp'
         PassPattern = '00c28050_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28080'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_UpdateLargestFreeArea_00c28080.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_UpdateLargestFreeArea_00c28080_test.cpp'
         PassPattern = '00c28080_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28a80'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_InternalAllocateHandle_00c28a80.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_InternalAllocateHandle_00c28a80_test.cpp'
         PassPattern = '00c28a80_TEST PASS'
@@ -214408,7 +214408,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c28610'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_FreeHandle_00c28610.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_FreeHandle_00c28610_test.cpp'
         PassPattern = '00c28610_TEST PASS'
@@ -239670,14 +239670,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c28120'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_TestIfAreaIsGrowable_00c28120.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_TestIfAreaIsGrowable_00c28120_test.cpp'
         PassPattern = '00c28120_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c286f0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_PartialDefragment_00c286f0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_PartialDefragment_00c286f0_test.cpp'
         PassPattern = '00c286f0_TEST PASS'
@@ -253171,7 +253171,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27fd0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_FindFreeArea_00c27fd0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_FindFreeArea_00c27fd0_test.cpp'
         PassPattern = '00c27fd0_TEST PASS'
@@ -282860,14 +282860,14 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27e60'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_ReleaseBuffer_00c27e60.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_ReleaseBuffer_00c27e60_test.cpp'
         PassPattern = '00c27e60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c27f50'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_RemoveFreeArea_00c27f50.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_RemoveFreeArea_00c27f50_test.cpp'
         PassPattern = '00c27f50_TEST PASS'
@@ -305643,7 +305643,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c28c20'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_Allocate_00c28c20.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_Allocate_00c28c20_test.cpp'
         PassPattern = '00c28c20_TEST PASS'
@@ -306151,42 +306151,42 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27ea0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_CreateArea_00c27ea0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_CreateArea_00c27ea0_test.cpp'
         PassPattern = '00c27ea0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c27f80'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_CombineAreas_00c27f80.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_CombineAreas_00c27f80_test.cpp'
         PassPattern = '00c27f80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28200'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_ClearFreeLists_00c28200.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_ClearFreeLists_00c28200_test.cpp'
         PassPattern = '00c28200_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28240'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_Initialise_00c28240.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_Initialise_00c28240_test.cpp'
         PassPattern = '00c28240_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28290'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_ResizeArea_00c28290.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_ResizeArea_00c28290_test.cpp'
         PassPattern = '00c28290_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28580'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_MoveArea_00c28580.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_MoveArea_00c28580_test.cpp'
         PassPattern = '00c28580_TEST PASS'
@@ -314459,7 +314459,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c28b80'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_InternalAllocate_00c28b80.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_InternalAllocate_00c28b80_test.cpp'
         PassPattern = '00c28b80_TEST PASS'
@@ -348964,21 +348964,21 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c280e0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_ValidateLargestFreeArea_00c280e0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_ValidateLargestFreeArea_00c280e0_test.cpp'
         PassPattern = '00c280e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c28220'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_MoveResource_00c28220.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_MoveResource_00c28220_test.cpp'
         PassPattern = '00c28220_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c283a0'
-        Module = 'CHandleBasedMemoryPool'
+        Module = 'CHandleBasedMemoryPool_012b4098'
         Source = '00/c2/CHandleBasedMemoryPool_GetSizeFromHandle_00c283a0.cpp'
         TestSource = '00/c2/CHandleBasedMemoryPool_GetSizeFromHandle_00c283a0_test.cpp'
         PassPattern = '00c283a0_TEST PASS'
@@ -370175,6 +370175,13 @@ $catalog = @(
         Source = '00/cf/NScriptCQAwakeningTheOracleScript_PlayCutscene_00cff9a0.cpp'
         TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_PlayCutscene_00cff9a0_test.cpp'
         PassPattern = '00cff9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c26090'
+        Module = 'CStreamBuffer'
+        Source = '00/c2/CStreamBuffer_FinishLoading_00c26090.cpp'
+        TestSource = '00/c2/CStreamBuffer_FinishLoading_00c26090_test.cpp'
+        PassPattern = '00c26090_TEST PASS'
     }
 )
 

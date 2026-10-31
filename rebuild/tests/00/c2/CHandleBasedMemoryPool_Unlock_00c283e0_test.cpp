@@ -6,7 +6,7 @@ struct PoolEntry {
     uchar locked;   // +0xf
 };
 
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     char pad0[0x18];
     int lockCount;          // +0x18
     char pad1[0x440 - 0x1c];
@@ -15,7 +15,7 @@ class CHandleBasedMemoryPool { public:
     void Unlock(long handle);
 };
 
-void CHandleBasedMemoryPool::Unlock(long handle)
+void CHandleBasedMemoryPool_012b4098::Unlock(long handle)
 {
     PoolEntry** slot = &this->entries[handle];
     if ((*slot)->locked != 0) {
@@ -26,7 +26,7 @@ void CHandleBasedMemoryPool::Unlock(long handle)
 
 int main()
 {
-    CHandleBasedMemoryPool pool;
+    CHandleBasedMemoryPool_012b4098 pool;
     pool.lockCount = 5;
     PoolEntry e0, e1, e2;
     e0.locked = 1; e1.locked = 0; e2.locked = 7;

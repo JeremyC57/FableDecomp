@@ -1,4 +1,4 @@
-// behaviour test for 0x00C28290 CHandleBasedMemoryPool::ResizeArea: split off a free tail, or keep a small spare as padding
+// behaviour test for 0x00C28290 CHandleBasedMemoryPool_012b4098::ResizeArea: split off a free tail, or keep a small spare as padding
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>

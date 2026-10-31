@@ -1,4 +1,4 @@
-// behaviour test for 0x00C27F80 CHandleBasedMemoryPool::CombineAreas: unlink both, splice, grow, re-insert
+// behaviour test for 0x00C27F80 CHandleBasedMemoryPool_012b4098::CombineAreas: unlink both, splice, grow, re-insert
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>

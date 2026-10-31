@@ -1,12 +1,12 @@
-// CHandleBasedMemoryPool::CombineAreas(CHeader* first, CHeader* second) -- merge two physically adjacent free areas: take both off the free lists, splice the second out of the physical chain, grow the first by the second's size plus its header, mark it free, re-insert it and return it
+// CHandleBasedMemoryPool_012b4098::CombineAreas(CHeader* first, CHeader* second) -- merge two physically adjacent free areas: take both off the free lists, splice the second out of the physical chain, grow the first by the second's size plus its header, mark it free, re-insert it and return it
 // Leaf: ?CombineAreas@CHandleBasedMemoryPool_Methods@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27F80, 74 bytes (`ret 8`). The libpk build of the engine's
-//   CHandleBasedMemoryPool::CombineAreas (engine copy 0x00A01E40, which returns void and inlines the free-list unlink);
+//   CHandleBasedMemoryPool_012b4098::CombineAreas (engine copy 0x00A01E40, which returns void and inlines the free-list unlink);
 //   the manifest's "CHandleBasedMemoryPool_MergeBlocks" is descriptive.
 // Callees: RemoveFreeArea @ 0x00C27F50 (out of line here, landed), InsertFreeArea @ 0x00C27EF0 (landed).
 // Shape: `this` in edi with `mov ecx,edi` before each call; the size grows by `second->Size + sizeof(CHeader)`
 //   (the 0x20 added to the second size first); the 'N' store sits between the push and the InsertFreeArea call.
-struct CHeader {                                // CHandleBasedMemoryPool::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
+struct CHeader {                                // CHandleBasedMemoryPool_012b4098::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
     void*          Resource;                    // +0x00
     long           Handle;                      // +0x04
     long           Size;                        // +0x08

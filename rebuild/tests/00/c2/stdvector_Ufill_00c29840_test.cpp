@@ -1,4 +1,4 @@
-// Behaviour test for 00c29840 (Dinkumware std::vector<CHandleBasedMemoryPool::CHandleInfo>::_Ufill): count copies of the value
+// Behaviour test for 00c29840 (Dinkumware std::vector<CHandleBasedMemoryPool_012b4098::CHandleInfo>::_Ufill): count copies of the value
 // are constructed at ptr through _Uninitialized_fill_n / _Uninit_fill_n, and ptr + count comes back.
 #include <cstdio>
 #include <new>

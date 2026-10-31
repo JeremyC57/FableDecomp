@@ -10154,7 +10154,7 @@ _Flush_00c336a0	00c336a0	00c1c110
 ?DecrementLifetimer@CLifetimedObject@@QAEXXZ	00c1ea40	00c26060
 ?Compute@SubObjectAt360@@QAEHH@Z	00c28380	00c26240
 ?Deactivate@CPooledResource@@QAEXPAUCPooledResourceManager@@@Z	00c26580	00c265b0
-?FreeAllocation@CHandleBasedMemoryPool@@QAEXJ@Z	00c28690	00c265b0
+?FreeAllocation@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z	00c28690	00c265b0
 ?IsActive@CPooledResource@@QAEJXZ	00c265a0	00c265b0
 ??_7CNavigationTask_012b3fdc@@6B@	012b3fdc	00c266e0
 ??0CWorker_00c26c10@@QAE@PAUCLink_012b4018@@@Z	00c26c10	00c26a30
@@ -10195,10 +10195,10 @@ _Flush_00c336a0	00c336a0	00c1c110
 ?Remove@CRegistry_00c27a60@@QAEXPAUCInventoryItem_00c27a60@@@Z	00c21ea0	00c27a60
 ?call@SubObj@@QAEPAFPAF@Z	00c1bbe0	00c27ba0
 ?MergeBlocks@CLandscapeFreeAreaList_00c282e0@@QAEPAUSFreeArea_00c282e0@@PAU2@0@Z	00c27f80	00c282e0
-?CombineAdjacentAreas@CHandleBasedMemoryPool@@QAEPAUCHeader@@PAU2@@Z	00c282e0	00c286f0
-?FindFreeArea@CHandleBasedMemoryPool@@QAEPAUCHeader@@H@Z	00c27fd0	00c286f0
-?MoveArea@CHandleBasedMemoryPool@@QAEXPAUCHeader@@0@Z	00c28580	00c286f0
-?RemoveFreeArea@CHandleBasedMemoryPool@@QAEXPAUCHeader@@@Z	00c27f50	00c286f0
+?CombineAdjacentAreas@CHandleBasedMemoryPool_012b4098@@QAEPAUCHeader@@PAU2@@Z	00c282e0	00c286f0
+?FindFreeArea@CHandleBasedMemoryPool_012b4098@@QAEPAUCHeader@@H@Z	00c27fd0	00c286f0
+?MoveArea@CHandleBasedMemoryPool_012b4098@@QAEXPAUCHeader@@0@Z	00c28580	00c286f0
+?RemoveFreeArea@CHandleBasedMemoryPool_012b4098@@QAEXPAUCHeader@@@Z	00c27f50	00c286f0
 ??1CMember_00c287e0@@QAE@XZ	00c0ba40	00c287e0
 ??_7CListener_00c287e0@@6B@	012b37fc	00c287e0
 ??_7CStackOwner_00c287e0@@6B@	012b4098	00c287e0
@@ -14395,7 +14395,7 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?IsSitOutsideTime@CTCVillage@@QAE_NXZ	00658d5d	00938f70
 ?ClearAppearanceChangedNoticed@CTCWife@@QAEXPBJ@Z	006cecd0	00985f40
 ?GetAppearanceChangedNoticed@CTCWife@@QAE_NPAJ@Z	006ced50	00985f40
-?ClearFreeLists@CHandleBasedMemoryPool@@QAEXXZ	00c28200	00c28ae0
+?ClearFreeLists@CHandleBasedMemoryPool_012b4098@@QAEXXZ	00c28200	00c28ae0
 ?g_pchNil@@3JA	0139c900	00c28ae0
 ?GetNoHelperPoints@C3DMeshObject@@QBEJABVCCharString@@@Z	00a36140	004bde90
 ?GetNoDummyObjects@C3DMeshObject@@QBEJABVCCharString@@@Z	00a36480	004be000
@@ -21107,8 +21107,8 @@ __imp_??0exception@@QAE@XZ	0143fff8	00c13840
 ?DeallocateMemory@?$CArray@VC3DVector@@@@QAEXXZ	00a71f40	00a725d0
 ??$_M_range_insert@PAVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@00ABUforward_iterator_tag@1@@Z	00a70cb0	00a725d0
 ?reserve@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z	00920ff0	00a725d0
-?InternalAllocate@CHandleBasedMemoryPool@@QAEHPAJJ@Z	00c28b80	00c28c20
-?PartialDefragment@CHandleBasedMemoryPool@@QAEHJ@Z	00c28870	00c28c20
+?InternalAllocate@CHandleBasedMemoryPool_012b4098@@QAEHPAJJ@Z	00c28b80	00c28c20
+?PartialDefragment@CHandleBasedMemoryPool_012b4098@@QAEHJ@Z	00c28870	00c28c20
 ?AddGroup@CSteeringGroupList@@QAEXPAUCSteeringGroup@@@Z	00c222b0	00c29ee0
 ?Release@CSemaphoreHandle@@QAEXXZ	00c36170	00c2a210
 ??0CSharedEntry@@QAE@PAVCSharedEntryTable@@PAX@Z	00c37770	00c2a3d0
@@ -21161,7 +21161,7 @@ __imp_??0exception@@QAE@XZ	0143fff8	00c13840
 ?LeaveState6@CPanelItem@@QAEPAXPAUCPanel@@@Z	00c20b50	00c21560
 ?EnterState4@CPanelItem@@QAEPAXPAUCPanel@@@Z	00c20880	00c21700
 ??0CPanelFailedAllocationHandler@@QAE@PAUCPanel@@J@Z	00c22060	00c22100
-?Allocate@CHandleBasedMemoryPool@@QAEJPAJJ@Z	00c28c20	00c22100
+?Allocate@CHandleBasedMemoryPool_012b4098@@QAEJPAJJ@Z	00c28c20	00c22100
 ?Append@CString@@QAIPAV1@PBD@Z	00c0dec0	00c22b40
 ?AppendNumber@CString@@QAIPAV1@J@Z	00c0df00	00c22b40
 ?g_pchEmptyString@@3PADA	0139c900	00c22b40
@@ -29886,7 +29886,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Method@SubObj@@QAEXPAVCPersistContext@@@Z	00c1bb20	00c203c0
 ?CWorldMap_helper@@YIJPAVCWorldMap@@@Z	00c23c00	00c23be0
 ?CWorldMap_ComputeIndex@@YIJPAVCWorldMap@@@Z	00c242a0	00c24280
-??$_Uninit_fill_n@PAVCHandleInfo@CHandleBasedMemoryPool@@IV12@V?$allocator@VCHandleInfo@CHandleBasedMemoryPool@@@std@@@std@@YIXPAVCHandleInfo@CHandleBasedMemoryPool@@IABV12@AAV?$allocator@VCHandleInfo@CHandleBasedMemoryPool@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z	00c294b0	00c29840
+??$_Uninit_fill_n@PAVCHandleInfo@CHandleBasedMemoryPool_012b4098@@IV12@V?$allocator@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@@std@@@std@@YIXPAVCHandleInfo@CHandleBasedMemoryPool_012b4098@@IABV12@AAV?$allocator@VCHandleInfo@CHandleBasedMemoryPool_012b4098@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z	00c294b0	00c29840
 ?SetOrientationVectors@CRightHandedSet@@QAEXABVC3DVector@@0@Z	00c404f0	00c33920
 ?GetPositionImpl@CSequenceKey@@QBE?AVC3DVector@@XZ	00c46eb0	00c36ea0
 ?Play@CSequenceTrack@@QAEXABVC3DVector@@M@Z	00c36220	00c36ea0
@@ -35598,3 +35598,9 @@ _lzo1x_decompress_asm_fast	00c069d0	00be8920
 ?ReadChunkExtent_00c347b0@@YIJPAX0PAJ1@Z	00c347b0	00c1e300
 ?ReadRing@CDspOps@@QAEXPAMPBUCRingBuffer@@II@Z	00c763e0	00c891a0
 ?clear@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEXXZ	00cd3699	00cff9a0
+?AllocateHandle@CSoundEventSet@@QAEJPAUCSoundEventManager@@JJ@Z	00c22100	00c26090
+?CheckPlayable@CSoundFormat@@QAEJXZ	00c2d7b0	00c26090
+?Free@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z	00c28690	00c26090
+?GetPointerFromHandle@CHandleBasedMemoryPool_012b4098@@QAEPAXJ@Z	00c28380	00c26090
+?Lock@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z	00c283c0	00c26090
+?Unlock@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z	00c283e0	00c26090

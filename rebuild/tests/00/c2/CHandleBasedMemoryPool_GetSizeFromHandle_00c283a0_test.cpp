@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Behaviour model of CHandleBasedMemoryPool::GetSizeFromHandle (0x00C283A0): the size of the handle's area header.
+// Behaviour model of CHandleBasedMemoryPool_012b4098::GetSizeFromHandle (0x00C283A0): the size of the handle's area header.
 struct Header { int Resource; int Handle; int Size; };
 struct Pool { Header** Handles; unsigned int GetSizeFromHandle(int h) { return Handles[h]->Size; } };
 

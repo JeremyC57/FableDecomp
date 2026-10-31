@@ -1,4 +1,4 @@
-// behaviour test for 00c27f50: CHandleBasedMemoryPool::RemoveFreeArea -- unlink a header from its
+// behaviour test for 00c27f50: CHandleBasedMemoryPool_012b4098::RemoveFreeArea -- unlink a header from its
 // free list through its back-link, repoint the successor's back-link, clear status and links.
 #include <cstdio>
 struct CHeader {

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00c26090   WARN RELOC_NAME: ?ReadChunkExtent_00c347b0@@YIJPAX0PAJ1@Z -> 00c347b0 labelled '_global::Fastcall_WADSegmentDecompress'
+00c26090   WARN RELOC_NAME: ?CheckPlayable@CSoundFormat@@QAEJXZ -> 00c2d7b0 labelled 'CTCInventory_CheckSlotTypeNegative'
+00c26090   WARN RELOC_NAME: ?DecodeSoundData_00c34630@@YIJPAUCSoundFormat@@PAX1K@Z -> 00c34630 labelled 'Thiscall_HeroExperienceBlockParry'
+00c26090   RELOCATION_MATCH PASS   CStreamBuffer::FinishLoading
+
+WINS: 1
+  00c26090 RELOCATION_MATCH CStreamBuffer::?FinishLoading@CStreamBuffer@@QAEJPAUCSoundEventManager@@J@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CStreamBuffer_FinishLoading_00c26090

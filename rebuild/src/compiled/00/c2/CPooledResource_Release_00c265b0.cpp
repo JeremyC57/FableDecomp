@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C265B0, 47 bytes (+1 int3). Callers: 0x00C130C7, 0x00C269E8.
 // Callees: the entry's "is active" test @ 0x00C265A0 (`xor eax,eax ; cmp word ptr [ecx+74h],1 ; sete al`), its deactivate
 //          @ 0x00C26580 (state 2, then the manager's +0x2C list slot 8 with the entry; its twin 0x00C26560 sets state 1
-//          and uses slot 9), CHandleBasedMemoryPool::FreeAllocation @ 0x00C28690 on the manager's pool at +0x360.
+//          and uses slot 9), CHandleBasedMemoryPool_012b4098::FreeAllocation @ 0x00C28690 on the manager's pool at +0x360.
 //
 // LABEL CORRECTION: "CTCInventoryWeapons::ReturnAllConfiscatedItems" is propagated; nothing here touches the weapons
 // screen. The class names are DESCRIPTIVE (an unnamed late module: a handle-pool resource entry with a short state at
@@ -15,12 +15,12 @@
 // (`xor eax,eax ; sete al`, tested with `test eax,eax`). The handle is a named local (esi is reused for it after the
 // last use of `this`), tested signed (`jl`).
 struct CPooledResource;
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     void FreeAllocation(long handle);         // 0x00C28690
 };
 struct CPooledResourceManager {
     unsigned char _pad_0x00[0x360];
-    CHandleBasedMemoryPool m_pool;            // +0x360
+    CHandleBasedMemoryPool_012b4098 m_pool;            // +0x360
 };
 struct CPooledResource {
     void* __vftable;

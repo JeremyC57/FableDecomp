@@ -1,4 +1,4 @@
-// behaviour test for 0x00C28200 CHandleBasedMemoryPool::ClearFreeLists: all 256 buckets emptied
+// behaviour test for 0x00C28200 CHandleBasedMemoryPool_012b4098::ClearFreeLists: all 256 buckets emptied
 #include <cstdio>
 #include <string.h>
 #include <stdlib.h>

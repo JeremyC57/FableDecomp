@@ -1,1 +1,2 @@
 address	name	evidence
+00c26090	CStreamBuffer::FinishLoading	descriptive libpk audio name (agent 602); landed 2026-10-31 after the pool callees took the CHandleBasedMemoryPool_012b4098 spelling

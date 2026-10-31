@@ -1,4 +1,4 @@
-// Behaviour test for CHandleBasedMemoryPool::Allocate @ 0x00C28C20 (copy of the model and logic; callees are fakes).
+// Behaviour test for CHandleBasedMemoryPool_012b4098::Allocate @ 0x00C28C20 (copy of the model and logic; callees are fakes).
 #include <cstdio>
 
 class CFailedAllocationHandler { public:

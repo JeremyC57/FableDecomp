@@ -1,12 +1,12 @@
-// CHandleBasedMemoryPool::CreateArea(void* address, unsigned long size, CHeader* prev, CHeader* next) -- build a free area header at the address covering size bytes (header included), link it between its physical neighbours and return it
+// CHandleBasedMemoryPool_012b4098::CreateArea(void* address, unsigned long size, CHeader* prev, CHeader* next) -- build a free area header at the address covering size bytes (header included), link it between its physical neighbours and return it
 // Leaf: ?CreateArea@CHandleBasedMemoryPool_Methods@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27EA0, 65 bytes (`ret 10h`; `this` is not used). The libpk build of the engine's
-//   CHandleBasedMemoryPool (the Ego_r.pdb name set holds `CreateArea(void*, unsigned long, CHeader*, CHeader*)`
+//   CHandleBasedMemoryPool_012b4098 (the Ego_r.pdb name set holds `CreateArea(void*, unsigned long, CHeader*, CHeader*)`
 //   returning CHeader*); the manifest's "WordWrap_SetCallback" is propagated. Callers: Initialise 0x00C28240 (the
 //   whole buffer, no neighbours), ResizeArea 0x00C28290 (the spare tail after an area).
 // Shape: the header words are stored in the engine's CreateInitialFreeArea order (size - 0x20, padding, 'N' status,
 //   lock flag, both physical links, the resource last), then each non-null neighbour is pointed back at the area.
-struct CHeader {                                // CHandleBasedMemoryPool::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
+struct CHeader {                                // CHandleBasedMemoryPool_012b4098::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
     void*          Resource;                    // +0x00
     long           Handle;                      // +0x04
     long           Size;                        // +0x08

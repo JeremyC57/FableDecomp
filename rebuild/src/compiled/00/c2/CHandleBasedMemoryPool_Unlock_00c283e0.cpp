@@ -1,4 +1,4 @@
-// CHandleBasedMemoryPool::Unlock  (0x00c283e0)
+// CHandleBasedMemoryPool_012b4098::Unlock  (0x00c283e0)
 typedef unsigned char uchar;
 
 struct PoolEntry {
@@ -6,7 +6,7 @@ struct PoolEntry {
     uchar locked;   // +0xf
 };
 
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     char pad0[0x18];
     int lockCount;          // +0x18
     char pad1[0x440 - 0x1c];
@@ -15,7 +15,7 @@ class CHandleBasedMemoryPool { public:
     void Unlock(long handle);
 };
 
-void CHandleBasedMemoryPool::Unlock(long handle)
+void CHandleBasedMemoryPool_012b4098::Unlock(long handle)
 {
     PoolEntry** slot = &this->entries[handle];
     if ((*slot)->locked != 0) {

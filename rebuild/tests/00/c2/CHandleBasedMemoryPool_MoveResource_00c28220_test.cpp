@@ -1,6 +1,6 @@
 #include <cstdio>
 
-// Behaviour model of CHandleBasedMemoryPool::MoveResource (0x00C28220): memmove(destination, source, size).
+// Behaviour model of CHandleBasedMemoryPool_012b4098::MoveResource (0x00C28220): memmove(destination, source, size).
 #include <cstring>
 struct Pool { void MoveResource(void*, int, void* source, void* destination, unsigned int size) { std::memmove(destination, source, size); } };
 

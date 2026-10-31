@@ -1,10 +1,10 @@
-// behaviour test for 00c27e60: CHandleBasedMemoryPool::ReleaseBuffer -- frees the unaligned buffer
+// behaviour test for 00c27e60: CHandleBasedMemoryPool_012b4098::ReleaseBuffer -- frees the unaligned buffer
 // and clears buffer/size only when one exists; the statistics are always reset.
 #include <cstdio>
 #include <cstdlib>
 static int g_frees = 0;
 static void PoolFree(void* block) { ++g_frees; std::free(block); }
-class CHandleBasedMemoryPool { public:
+class CHandleBasedMemoryPool_012b4098 { public:
     void* Buffer;
     void* UnalignedBuffer;
     long PoolSize;
@@ -30,7 +30,7 @@ class CHandleBasedMemoryPool { public:
 int main()
 {
     int ok = 1;
-    CHandleBasedMemoryPool pool;
+    CHandleBasedMemoryPool_012b4098 pool;
     pool.UnalignedBuffer = std::malloc(64);
     pool.Buffer = (char*)pool.UnalignedBuffer + 8;
     pool.PoolSize = 48;

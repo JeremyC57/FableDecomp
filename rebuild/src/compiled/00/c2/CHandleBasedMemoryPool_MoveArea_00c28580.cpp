@@ -1,7 +1,7 @@
-// CHandleBasedMemoryPool::MoveArea(CHeader* from, CHeader* to) -- defragment step: have the owner move the resource's bytes into the free area, cut that area down to the moved size, hand it the resource, handle and lock flag, repoint the handle table, account the padding change and free the old area
-// Leaf: ?MoveArea@CHandleBasedMemoryPool@@
+// CHandleBasedMemoryPool_012b4098::MoveArea(CHeader* from, CHeader* to) -- defragment step: have the owner move the resource's bytes into the free area, cut that area down to the moved size, hand it the resource, handle and lock flag, repoint the handle table, account the padding change and free the old area
+// Leaf: ?MoveArea@CHandleBasedMemoryPool_012b4098@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C28580, 129 bytes (`ret 8`). The libpk build of the engine's
-//   CHandleBasedMemoryPool::MoveArea (engine copy 0x00A028F0; Ego_r.pdb name set `MoveArea(CHeader*, CHeader*)` and the
+//   CHandleBasedMemoryPool_012b4098::MoveArea (engine copy 0x00A028F0; Ego_r.pdb name set `MoveArea(CHeader*, CHeader*)` and the
 //   virtual `MoveResource(void*, long, void*, void*, unsigned long)`); the manifest's "Thiscall_BlockDefragmentCopy" is
 //   propagated.
 // Callees: the pool's virtual slot 0 MoveResource(resource, handle, from data, to data, size), RemoveFreeArea
@@ -13,7 +13,7 @@
 //   `operator+` built on a `_Tmp += _Off` copy: that keeps the slot address in its own register
 //   (`lea eax,[edx+ecx*4] ; mov [eax],ebx`); a plain `_Myfirst[_Pos]` folds into `mov [edx+ecx*4],ebx`. The handle
 //   is re-read after the header copy (the stores through `to` may alias `from`).
-struct CHeader {                                // CHandleBasedMemoryPool::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
+struct CHeader {                                // CHandleBasedMemoryPool_012b4098::CHeader, 32 bytes in front of every area (landed 0x00C27F50 names)
     void*          Resource;                    // +0x00
     long           Handle;                      // +0x04
     long           Size;                        // +0x08
@@ -51,7 +51,7 @@ public:
 };
 }
 
-class CHandleBasedMemoryPool { public:                 // this library's pool variant (see Layout)
+class CHandleBasedMemoryPool_012b4098 { public:                 // this library's pool variant (see Layout)
     virtual void MoveResource(void* resource, long handle, void* from, void* to, unsigned long size);   // slot 0
     void*                 Buffer;               // +0x04
     void*                 UnalignedBuffer;      // +0x08
@@ -71,7 +71,7 @@ class CHandleBasedMemoryPool { public:                 // this library's pool va
     void MoveArea(CHeader* from, CHeader* to);
 };
 
-void CHandleBasedMemoryPool::MoveArea(CHeader* from, CHeader* to)
+void CHandleBasedMemoryPool_012b4098::MoveArea(CHeader* from, CHeader* to)
 {
     long size = from->Size;
     MoveResource(from->Resource, from->Handle, (char*)from + sizeof(CHeader), (char*)to + sizeof(CHeader), size);

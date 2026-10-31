@@ -1,4 +1,4 @@
-// Behaviour test for 0x00C28B80 CHandleBasedMemoryPool::InternalAllocate: round the size up to 16, take the fitting free
+// Behaviour test for 0x00C28B80 CHandleBasedMemoryPool_012b4098::InternalAllocate: round the size up to 16, take the fitting free
 // area, unlink it, mark it 'T', trim it, count the allocation (size + padding + 32), refresh the largest-free cache only
 // when the taken area was the largest, hand out a handle, link slot -> area and area -> handle; 0 when nothing fits.
 #include <cstdio>
