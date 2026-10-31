@@ -371318,6 +371318,13 @@ $catalog = @(
         TestSource = '00/a8/CSBAgents_Process_00a873e0_test.cpp'
         PassPattern = '00a873e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a618d0'
+        Module = 'CBusyResourceManager'
+        Source = '00/a6/CBusyResourceManager_OnPostSwapScreens_00a618d0.cpp'
+        TestSource = '00/a6/CBusyResourceManager_OnPostSwapScreens_00a618d0_test.cpp'
+        PassPattern = '00a618d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a618d0   RELOCATION_MATCH PASS   OnPostSwapScreens
+
+WINS: 1
+  00a618d0 RELOCATION_MATCH CBusyResourceManager::?OnPostSwapScreens@CBusyResourceManager@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CBusyResourceManager_OnPostSwapScreens_00a618d0

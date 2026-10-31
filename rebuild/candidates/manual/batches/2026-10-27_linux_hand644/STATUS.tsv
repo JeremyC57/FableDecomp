@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+007751a0	DIFFER	419v419	-	ParentThing->HasTC(0xab) eax/ecx swap; a bitset reference operator[] gets retail's registers plus a dead add (422v419); 11 grades
+00b4b8b0	DIFFER	421v421	-	x87 canonical operand order in side.Y + result-copy scheduling; PDB operator^ cross product worse
+00a618d0	RELOCATION_MATCH	421v421	PASS	CBusyResourceManager::OnPostSwapScreens; STLport size() as distance(begin(), end())
+009a3460	DIFFER	424v424	-	resize-temporary register colouring per branch (eax/ecx v edx/eax); reused length, default-argument resize: no change
+006e94d0	DIFFER	426v426	-	frame 0x1c v 0x24: second find key not packed with the first; four scope/declaration levers: no change
+0057aeb4	DIFFER	421v427	-	same-TU GetDef/GetSubDef stand-ins fixed the frame (0x28); thing def not cached in edi; CCharString arg via eax v lea
+00b9d730	DIFFER	429v429	-	one fmul operand order (radius v scale) and its home slot; PDB signature byte-neutral
+006aeea0	DIFFER	429v429	-	scratch rotation around the GetDefName hidden pointer; PDB helper chain / reference signature byte-neutral
+00b81820	DIFFER	433v433	-	saved-frame store scheduled among the callee-saved pushes; g_twoPi byte-neutral
+00a10560	DIFFER	433v433	-	cmp eax,esi (CSE'd zero) v test eax,eax after MultiByteToWideChar; named result: no change
