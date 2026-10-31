@@ -1,0 +1,39 @@
+addr       parity           behav  name
+0041a980   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0041a980   WARN SHARED_HEADER_AVAILABLE CManager
+0041a980   WARN RELOC_CONFLICT: ?GFAYToVY@@YIMM@Z -> 009e1dd0 here, 009e1e40 in landed 009db700
+0041a980   RELOCATION_MATCH PASS   CSprite::DrawWithRenderManager
+0048dbc3   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+0048dbc3   RELOCATION_MATCH PASS   CSubtitleRenderer::GetBlackBarHeight
+0048f1f4   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+0048f1f4   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0048f1f4   RELOCATION_MATCH PASS   CSubtitleRenderer::Draw2DText
+00644424   WARN RELOC_NAME: ?GetSpiritScoreText@PlayerManagerMethods@@QBE_NJAAVCWideString@@@Z -> 0044a2a0 labelled 'CPlayerManager::DrawGetEnvironmentInfo'
+00644424   RELOCATION_MATCH PASS   Draw
+00646010   WARN SHARED_HEADER_AVAILABLE CFontBank
+00646010   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00646010   WARN RELOC_NAME: ?LongToWideString@@YI?AVCWideString@@J@Z -> 00405f00 labelled '_global::GFIntToWideString'
+00646010   RELOCATION_MATCH PASS   NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft
+00787f29   WARN SHARED_HEADER_AVAILABLE CManager
+00787f29   WARN SHARED_HEADER_AVAILABLE CWorld
+00787f29   WARN SHARED_HEADER_AVAILABLE CTCBase
+00787f29   WARN RELOC_NAME: ?GetGameEventManager@NAnimationEvents@@YIAAVCManager@1@XZ -> 006f90b0 labelled '_global::GetGlobal_013babb4_006f90b0'
+00787f29   WARN RELOC_NAME: ?GetEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 006f9b20 labelled 'CRenderHelper_006f9b20::Render'
+00787f29   WARN RELOC_NAME: ?Query@CAnimationBank@@QBEJJ@Z -> 00a242c0 labelled 'CMeshDataBank::PeekAnimation'
+00787f29   WARN RELOC_ALIAS: _strncmp -> 00bfeaf8 is the import thunk 'MSVCR71.DLL::strncmp'
+00787f29   RELOCATION_MATCH PASS   CTCMeleeTrap::InitialiseStrikeAnimation
+009db700   WARN SHARED_HEADER_AVAILABLE CTexture
+009db700   WARN RELOC_NAME: ?GetViewportBoxFloat@CRenderManager2D@@QBEABVC2DBoxF@@XZ -> 00a0aaa0 labelled 'CVertexBufferWin32::DoSizeof'
+009db700   RELOCATION_MATCH PASS   CRenderManager2D::AddText
+009de140   WARN RELOC_CONFLICT: ?GFAYToVY@@YIMM@Z -> 009e1dd0 here, 009e1e40 in landed 009db700
+009de140   RELOCATION_MATCH PASS   CRenderManager2D::Draw2DBoxOutline
+
+WINS: 8
+  0041a980 RELOCATION_MATCH CSprite::DrawWithRenderManager
+  0048dbc3 RELOCATION_MATCH CSubtitleRenderer::GetBlackBarHeight
+  0048f1f4 RELOCATION_MATCH CSubtitleRenderer::Draw2DText
+  00644424 RELOCATION_MATCH NPlayerGui_CDrawSpiritScores::Draw
+  00646010 RELOCATION_MATCH NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft@CCrimeStatBar
+  00787f29 RELOCATION_MATCH CTCMeleeTrap::InitialiseStrikeAnimation
+  009db700 RELOCATION_MATCH CRenderManager2D::AddText
+  009de140 RELOCATION_MATCH CRenderManager2D::Draw2DBoxOutline

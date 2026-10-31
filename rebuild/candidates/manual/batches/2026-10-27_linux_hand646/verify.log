@@ -1,0 +1,24 @@
+addr       parity           behav  name
+006572a0   WARN RELOC_CONFLICT: ?GFAYToVY@@YIMM@Z -> 009e1dd0 here, 009e1e40 in landed 009db700
+006572a0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+006572a0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+006572a0   RELOCATION_MATCH PASS   Draw
+006946c0   WARN SHARED_HEADER_AVAILABLE CManager
+006946c0   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+006946c0   WARN SHARED_HEADER_AVAILABLE CWorld
+006946c0   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+006946c0   WARN RELOC_NAME: ?GetGameEventManager@NAnimationEvents@@YIAAVCManager@1@XZ -> 006f90b0 labelled '_global::GetGlobal_013babb4_006f90b0'
+006946c0   WARN RELOC_NAME: ?GetEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 006f9b20 labelled 'CRenderHelper_006f9b20::Render'
+006946c0   RELOCATION_MATCH PASS   InitialiseActionEvents
+00712e40   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00712e40   RELOCATION_MATCH PASS   GetNextCameraTagIndex
+
+WINS: 3
+  006572a0 RELOCATION_MATCH NPlayerGui::CDrawNPCName::?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  006946c0 RELOCATION_MATCH CCreatureActionBase::?InitialiseActionEvents@CCreatureActionBase@@AAEXXZ
+  00712e40 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::?GetNextCameraTagIndex@CActionTalkBase@NTCScriptedControl@@IAEJJ@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawNPCName_Draw_006572a0
+  CCreatureActionBase_InitialiseActionEvents_006946c0
+  NTCScriptedControlCActionTalkBase_GetNextCameraTagIndex_00712e40

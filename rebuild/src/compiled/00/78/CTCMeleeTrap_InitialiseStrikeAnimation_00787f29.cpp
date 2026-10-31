@@ -80,17 +80,25 @@ extern CCharString g_CombatStop;                            // 0x013BAC7C
 extern CCharString g_CombatStrikeEvent2;                    // 0x013BAC80
 extern CCharString g_CombatStop2;                           // 0x013BAC84
 
-struct CStringVector {                                      // STLport vector<CCharString> (12 bytes)
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    CStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CStringVector();                                       // 0x00414EA0
+namespace std {
+template <class T> class allocator { };
+template <class T, class A> class vector {                  // STLport vector<CCharString> (12 bytes)
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~vector();                                              // 0x00414EA0
 };
-struct CAnimationManager {
-    void GetEventNames(long animation, CStringVector& names);   // 0x006F9B20
+}
+typedef std::vector<CCharString, std::allocator<CCharString> > CStringVector;
+namespace NAnimationEvents {
+class CManager {
+public:
+    void GetEventNames(unsigned long animation, std::vector<CCharString, std::allocator<CCharString> >& names) const;   // 0x006F9B20
 };
-CAnimationManager* GetAnimationManager();                   // 0x006F90B0
+CManager& __fastcall GetGameEventManager();                 // 0x006F90B0
+}
 struct CAnimationBank {
     long Query(long animation) const;                       // 0x00A242C0
 };
@@ -121,9 +129,9 @@ struct CTCMeleeTrap : public CTCTrapBase {
 void CTCMeleeTrap::InitialiseStrikeAnimation(const CAnimationEntry& entry)
 {
     long animation = entry.Animation;
-    CAnimationManager* manager = GetAnimationManager();
+    NAnimationEvents::CManager& manager = NAnimationEvents::GetGameEventManager();
     CStringVector names;
-    manager->GetEventNames(animation, names);
+    manager.GetEventNames(animation, names);
     StrikeAnimation = false;
     CWorld* world = (&GetWorld());
     world->PAnimationBank->Query(entry.Animation);

@@ -371402,6 +371402,27 @@ $catalog = @(
         TestSource = '00/8b/CCreatureActionUnblockableMidAttack_Initialise_008bf1c0_test.cpp'
         PassPattern = '008bf1c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006572a0'
+        Module = 'NPlayerGui::CDrawNPCName'
+        Source = '00/65/NPlayerGuiCDrawNPCName_Draw_006572a0.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawNPCName_Draw_006572a0_test.cpp'
+        PassPattern = '006572a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006946c0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_InitialiseActionEvents_006946c0.cpp'
+        TestSource = '00/69/CCreatureActionBase_InitialiseActionEvents_006946c0_test.cpp'
+        PassPattern = '006946c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00712e40'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_GetNextCameraTagIndex_00712e40.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_GetNextCameraTagIndex_00712e40_test.cpp'
+        PassPattern = '00712e40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

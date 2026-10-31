@@ -6,7 +6,7 @@
 // Signature: Ego_r.pdb ?DrawStatBarOnLeft@CCrimeStatBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z.
 // Callees: CDisplayManager::GetRenderTargetDimensions 0x009BEDC0, CWideString from long 0x00405F00 (__fastcall), __ftol2,
 //   DrawStatBox (virtual slot 2), ~CWideString 0x0099B510, CFontBank::GetStringWidth 0x0048DA62, GFACoordToVCoord 0x009E21D0,
-//   CGameUI text draw 0x00438010.  Float pool: 0.5f @ 0x0122F59C.
+//   CPlayerGui::Draw2DText 0x00438010 (Ego_r).  Float pool: 0.5f @ 0x0122F59C.
 // Layout: as the sibling CStatBar::DrawStatBarOnLeft 0x00646762 TU (retail = Ego_r.pdb CStatBar minus 8); CCrimeStatBar adds the
 //   text-colour flag at +0x68 and its def the text colour at +0x424.
 #pragma optimize("y", off)
@@ -61,10 +61,11 @@ class C2DExtentsI { public: long Width, Height; };
 class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
 extern CDisplayManager* g_pDisplayManager_013b8390;                    // 0x013B8390
 class CFontBank { public: float GetStringWidth(const CWideString& text) const; };   // 0x0048DA62
-struct CGameUI {
-    void DrawText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour, float scale, long layer, bool flag);   // 0x00438010
+enum EEngine2DLayer { ENGINE_2D_LAYER_SUBTITLE = 0x43 };
+struct CPlayerGui {
+    void Draw2DText(const C2DVector& pos, const CWideString& text, const CFontBank& font, const CRGBColour& colour, float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
-extern CGameUI* g_pGameUI;                                              // 0x013B8790
+extern CPlayerGui* g_pGameUI;                                              // 0x013B8790
 struct CCrimeStatBarDef {
     unsigned char   _pad000[0x424];
     CRGBColour      TextColour;                                         // +0x424
@@ -108,7 +109,7 @@ void CCrimeStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, c
     textPos.X = (width - Font->GetStringWidth(LongToWideString((long)Value))) * 0.5f;
     C2DVector screen;
     GFACoordToVCoord(textPos, screen);
-    CGameUI* gameUI = g_pGameUI;
-    gameUI->DrawText(screen, LongToWideString((long)Value), Font, CRGBColour(textColour.R, textColour.G, textColour.B, alpha), 1.0f, 0x43, false);
+    CPlayerGui* gameUI = g_pGameUI;
+    gameUI->Draw2DText(screen, LongToWideString((long)Value), *Font, CRGBColour(textColour.R, textColour.G, textColour.B, alpha), 1.0f, ENGINE_2D_LAYER_SUBTITLE, false);
 }
 }

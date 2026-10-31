@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00868e50	DIFFER	456v456	-	one x87 commutation (total_weight += weighting); k-sweep x3 placements, double, (void) reads, accessor/pointer spellings inert
+00649e8b	DIFFER	469v469	-	sibling-TU model fixed hero/key/strain slot; two CCharString temps still share a slot (frame 0x14 v 0x18) + colour B/A store order
+009c8c00	DIFFER	469v469	-	global scratch-register rotation (eax/ecx/edx); push_back stand-ins, CIVCountedPointer dtor, k-sweep inert
+00697490	DIFFER	475v475	-	pos pointer load after the last fstp (retail before); PDB signature kept; 7 shape variants
+008539c0	DIFFER	475v475	-	two scheduling pairs (AxisY temp reload, unsigned side store vs test); 7 variants incl. 3 stand-ins
+00687730	DIFFER	477v477	-	GetTC key homed in dead def slot (retail dead pos slot); PDB reference signature kept; LowerBound body etc inert
+00537776	DIFFER	480v480	-	frame 0x3c v 0x48 (retail separate slots for top / hidden results); named results inert

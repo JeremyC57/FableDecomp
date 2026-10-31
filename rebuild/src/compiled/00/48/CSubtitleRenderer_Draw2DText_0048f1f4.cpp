@@ -1,6 +1,6 @@
 // CSubtitleRenderer::Draw2DText(const C2DVector&, const CWideString&, CFontBank*, const CRGBColour&, bool, float, float, bool) -- draws text through the game UI on layer 0x43 (0x40 with display flag 0x800), one layer higher when asked
 // Leaf: Draw2DText
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0048F1F4, 60 bytes. Callee: CGameUI::Draw2DText @ 0x00438010 (forwards to
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0048F1F4, 60 bytes. Callee: CPlayerGui::Draw2DText @ 0x00438010 (forwards to
 // CDraw2DText::AddText through +0x238). Global: the game UI pointer @ 0x013B8790. The sixth argument is unused.
 // Layout: engine/CSubtitleRenderer.h is the PDB view (Ego_r: 16-byte vectors, a 0x18-byte deque); retail has the VC6
 // containers (0x28-byte deque, 12-byte vectors), so DisplayFlags sits at +0x7C (PDB +0x6C) and the cutscene bools at
@@ -81,11 +81,11 @@ public:
 
 enum EEngine2DLayer { ENGINE_2D_LAYER_SUBTITLE = 0x43 };
 
-struct CGameUI {
-    void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
+struct CPlayerGui {                                // the game UI object; Ego_r CPlayerGui::Draw2DText
+    void Draw2DText(const C2DVector& pos, const CWideString& text, const CFontBank& font, const CRGBColour& colour,
                     float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
-extern CGameUI* g_pGameUI;                         // 0x013B8790
+extern CPlayerGui* g_pGameUI;                         // 0x013B8790
 
 void CSubtitleRenderer::Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
                                    bool flag, float unused, float scale, bool raiseLayer)
@@ -95,5 +95,5 @@ void CSubtitleRenderer::Draw2DText(const C2DVector& pos, const CWideString& text
         layer = 0x40;
     if (raiseLayer)
         --layer;
-    g_pGameUI->Draw2DText(pos, text, font, colour, scale, (EEngine2DLayer)layer, flag);
+    g_pGameUI->Draw2DText(pos, text, *font, colour, scale, (EEngine2DLayer)layer, flag);
 }

@@ -13,7 +13,7 @@ class C2DVector { public:
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CRGBColour { public: unsigned char B, G, R, A; };
 float __fastcall GFAXToVX(float);                 // 0x009E1DA0
-float __stdcall GFVYToAY(float y);                 // 0x009E1DD0
+float __fastcall GFAYToVY(float y);                // 0x009E1DD0
 
 struct CRenderManager2D {
     bool Draw2DLine(const C2DVector& from, const C2DVector& to, const CRGBColour& colour, unsigned long flags);   // 0x009DD960
@@ -25,7 +25,7 @@ bool CRenderManager2D::Draw2DBoxOutline(const C2DBoxF& box, const CRGBColour& co
     long top = (long)box.TLY;
     long left = (long)box.TLX;
     long right = (long)(box.BRX - GFAXToVX(1.0f));
-    long bottom = (long)(box.BRY - GFVYToAY(1.0f));
+    long bottom = (long)(box.BRY - GFAYToVY(1.0f));
     if (Draw2DLine(C2DVector((float)left, (float)top), C2DVector((float)right, (float)top), colour, flags) == true
         && Draw2DLine(C2DVector((float)right, (float)top), C2DVector((float)right, (float)bottom), colour, flags) == true
         && Draw2DLine(C2DVector((float)right, (float)bottom), C2DVector((float)left, (float)bottom), colour, flags) == true

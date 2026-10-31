@@ -12,7 +12,9 @@
 // Leaf: Draw
 #pragma optimize("y",off)
 #pragma optimize("s",on)
+#define CPlayerGui CPlayerGuiLayout   // the header has no Draw2DText; the class below adds it under the Ego_r class name
 #include "engine/CPlayerGui.h"
+#undef CPlayerGui
 #include "engine/CPlayerManager.h"
 #include "engine/CPlayer.h"
 #include "engine/CFontBank.h"
@@ -22,10 +24,10 @@ class C2DVector { public:float X,Y;C2DVector(){}C2DVector(float x,float y):X(x),
 class CRGBColour { public:unsigned char Blue,Green,Red,Alpha;CRGBColour(unsigned char r,unsigned char g,unsigned char b,unsigned char a=255){Red=r;Green=g;Blue=b;Alpha=a;}};
 enum EEngine2DLayer {NativeLayer67=67};
 struct PlayerManagerMethods:CPlayerManager {CPlayer&GetPlayer(long);bool GetSpiritScoreText(long,CWideString&)const;CRGBColour GetMultiplayerColour(long)const;};
-struct PlayerGuiMethods:CPlayerGui {void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);};
+class CPlayerGui:public CPlayerGuiLayout {public:void Draw2DText(const C2DVector&,const CWideString&,const CFontBank&,const CRGBColour&,float,EEngine2DLayer,bool);};   // 0x00438010 (Ego_r)
 struct MainComponentFontView {unsigned char UnrecoveredPrefix[0x1614c];CFontBank* Font;const CFontBank&GetFont()const{return *Font;}};
 extern double g_CoordinateWidth,g_CoordinateHeight;
-struct DrawSpiritScoresNative {void*VTable;PlayerGuiMethods*PlayerGui;PlayerManagerMethods*PlayerManager;void*World;MainComponentFontView*Component;void*Bank;bool Drawing;void Draw(const CEnginePrimitivePrepareInfo&);};
+struct DrawSpiritScoresNative {void*VTable;CPlayerGui*PlayerGui;PlayerManagerMethods*PlayerManager;void*World;MainComponentFontView*Component;void*Bank;bool Drawing;void Draw(const CEnginePrimitivePrepareInfo&);};
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(CRGBColour)==4);
 FABLE_STATIC_ASSERT(offsetof(MainComponentFontView,Font)==0x1614c);

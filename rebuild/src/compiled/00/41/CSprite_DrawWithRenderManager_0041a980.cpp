@@ -1,7 +1,7 @@
 // CSprite::DrawWithRenderManager() -- draw the sprite's graphic scaled into its render box (optionally centred) through the 2D render manager
 // Leaf: DrawWithRenderManager
 // Retail 0x0041A980, 377 bytes. Callees: the sprite's virtual IsCentred (slot 106, +0x1A8), GFAXToVX 0x009E1DA0 /
-// GFAYToVY 0x009E1DD0 (__stdcall float), NUISystem::CManager::GetInstance 0x0041E5F2 (graphic bank counted pointer at +0x10),
+// GFAYToVY 0x009E1DD0 (Ego_r __fastcall float), NUISystem::CManager::GetInstance 0x0041E5F2 (graphic bank counted pointer at +0x10),
 // GFGetSystemManager 0x009A4EC0 (render manager +0x60, 2D manager +8), CRenderManager2D::Draw2DScaledGraphic 0x009DD210,
 // operator delete 0x00BFE9BC (bank copy release). Pools: 2^32 0x0122DCB4 (unsigned to float), 0.5f 0x0122F59C.
 // Layout: engine/CSprite.h is PDB padding with Width at +0x198; retail sits 0x30 lower (as the landed CSlider rows):
@@ -50,7 +50,7 @@ template <class T> class CCountedPointer { public:
 };
 class CGraphicDataBank;
 float __fastcall GFAXToVX(float);                 // 0x009E1DA0
-float __stdcall GFAYToVY_009e1dd0(float y);                 // 0x009E1DD0
+float __fastcall GFAYToVY(float y);                 // 0x009E1DD0
 struct CRenderManager2D {
     bool Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic,
                              unsigned long a, unsigned long b);   // 0x009DD210
@@ -107,9 +107,9 @@ void CSprite::DrawWithRenderManager()
     if (IsCentred())
         box.MoveTo(C2DVector(pos.X - dim.X * 0.5f, pos.Y - dim.Y * 0.5f));
     box.TLX = GFAXToVX(box.TLX);
-    box.TLY = GFAYToVY_009e1dd0(box.TLY);
+    box.TLY = GFAYToVY(box.TLY);
     box.BRX = GFAXToVX(box.BRX);
-    box.BRY = GFAYToVY_009e1dd0(box.BRY);
+    box.BRY = GFAYToVY(box.BRY);
     CCountedPointer<CGraphicDataBank> bank = NUISystem::CManager::GetInstance()->PGraphicBank;
     CSystemManager* system = GFGetSystemManager();
     system->RenderManager->RenderManager2D->Draw2DScaledGraphic(box, bank.Data, GraphicIndex, 0, 0);

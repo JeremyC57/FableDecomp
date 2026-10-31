@@ -4,7 +4,7 @@
 // ?AddText@CRenderManager2D@@AAEXABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z (the font by reference; the
 // landed caller Draw3DScaledText 0x009DBFF0 declares it as a pointer, same code, kept here for one symbol spelling).
 // Callees: CWideString::CWideString() @ 0x0099AED0, CRenderManagerCore::GetViewportBoxFloat @ 0x00A0AAA0 (`&DisplayManager->
-// ViewportBoxFloat`; manifest "CVertexBufferWin32::DoSizeof"), GFAXToVX / GFAYToVY @ 0x009E1E10 / 0x009E1E40 (`__fastcall`
+// ViewportBoxFloat`; manifest "CVertexBufferWin32::DoSizeof"), GFVXToAX / GFVYToAY @ 0x009E1E10 / 0x009E1E40 (`__fastcall`
 // float(float)), CWideString::operator= @ 0x0099B7D0, CQuickDrawTriInfo copy ctor @ 0x009DE890 (landed), the vector's
 // _M_insert_overflow @ 0x009E1750, CTexture::Uninitialise @ 0x009F9F70 (the inline ~CTexture), ~CWideString @ 0x0099B510.
 // Layout: engine/CRenderManagerCore.h agrees on DisplayManager +0x3a3c (CDisplayManager: ViewportOffscreen +0x1d8,
@@ -22,8 +22,8 @@ struct __true_type { __true_type() { } };
 
 inline void* operator new(unsigned int, void* where) { return where; }
 
-float __fastcall GFAXToVX_009e1e10(float x);                     // 0x009E1E10
-float __fastcall GFAYToVY(float y);                     // 0x009E1E40
+float __fastcall GFVXToAX(float x);                     // 0x009E1E10
+float __fastcall GFVYToAY(float y);                     // 0x009E1E40
 
 class C2DBoxF { public:
     float TLX, TLY, BRX, BRY;
@@ -106,8 +106,8 @@ void CRenderManager2D::AddText(const C3DVector& position, float scale, const CWi
     info.Window = GetViewportBoxFloat();
     info.Line = false;
     info.IsText = true;
-    info.StringX = GFAXToVX_009e1e10(position.X);
-    info.StringY = GFAYToVY(position.Y);
+    info.StringX = GFVXToAX(position.X);
+    info.StringY = GFVYToAY(position.Y);
     info.StringZ = position.Z;
     info.String = text;
     info.PFont = font;

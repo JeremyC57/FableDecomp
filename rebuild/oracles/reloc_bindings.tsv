@@ -1187,8 +1187,8 @@ _helper_486189@8	00486189	004861df
 ?GetCharacters@CCharString@@QBEPBDJ@Z	0099af10	0048da62
 N_0099af10	0099af10	0048daa2
 ??9CWideString@@QBE_NPBG@Z	0099b150	0048db98
-?GFAXToVX@@YGMM@Z	009e1e10	0048dbc3
-?GFAYToVY@@YGMM@Z	009e1e40	0048dbc3
+?GFVXToAX@@YIMM@Z	009e1e10	0048dbc3
+?GFVYToAY@@YIMM@Z	009e1e40	0048dbc3
 ?g_screenHeight@@3NA	013961f0	0048dbc3
 ?g_screenWidth@@3NA	013961e8	0048dbc3
 ?g_pGameComponent@@3PAUCGameComponent_0048de44@@A	013b86a0	0048de44
@@ -14184,7 +14184,7 @@ __imp__WaitMessage@0	01440380	009a6370
 ??0CActionPickUpGenericBox@NTCScriptedControl@@QAE@PAUCThing_Retail@@@Z	00713200	00904cd0
 ?AddAction@CTCScriptedControl@@QAEXPAX@Z	007137d0	00904cd0
 ?g_ScreenRHW@@3MA	0139652c	009ddff0
-?GFVYToAY@@YGMM@Z	009e1dd0	009de140
+?GFAYToVY@@YIMM@Z	009e1dd0	009de140
 __CIasin	00bfedc4	009de2a0
 ?g_MinGoalDistance@@3MA	013d2d64	00a87580
 ?g_SteeringDisabled@@3_NA	013d2d55	00a87580
@@ -14510,10 +14510,10 @@ __imp__UpdateWindow@4	01440384	009a64b0
 ?push_back@CItemVector@@QAEXABU?$pair@JJ@@@Z	005947b6	005c69aa
 ?RenderUIBackdropQuad@CTCInventoryBase@@QAEXM@Z	005bc6d6	0061b3c0
 ?GetNoDummyObjects@CTCGraphicAppearance@@QAEJABVCCharString@@M@Z	004be000	0072e130
-??1CStringVector@@QAE@XZ	00414ea0	00787f29
+??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ	00414ea0	00787f29
 ??8?$CBasicString@D@@QBE_NABV0@@Z	004a93c0	00787f29
-?GetAnimationManager@@YAPAUCAnimationManager@@XZ	006f90b0	00787f29
-?GetEventNames@CAnimationManager@@QAEXJAAUCStringVector@@@Z	006f9b20	00787f29
+?GetGameEventManager@NAnimationEvents@@YIAAVCManager@1@XZ	006f90b0	00787f29
+?GetEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	006f9b20	00787f29
 ?Query@CAnimationBank@@QBEJJ@Z	00a242c0	00787f29
 ?GetCurrentMode@CTCModeOwner@@QAEPAUCMode@@XZ	0073a6e0	00789e60
 ?g_bHeroRunOption@@3_NA	013756ea	007e0750
@@ -14873,8 +14873,8 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ?ClearQueuedAnims@CTCAnimatingObject@@QAEXXZ	007f8be0	007f90b0
 ?PlayAnimation@CTCAnimatingObject@@QAEXJJ_N@Z	007f9010	007f90b0
 ?for_each@@YI?AUCGetActiveStrikeEventThatIsFirstToFinish@@UCStrikeListConstIterator@@0U1@@Z	0085a960	00856f00
-?GFAXToVX_009e1e10@@YIMM@Z	009e1e10	009db700
-?GFAYToVY@@YIMM@Z	009e1e40	009db700
+?GFVXToAX@@YIMM@Z	009e1e10	009db700
+?GFVYToAY@@YIMM@Z	009e1e40	009db700
 ?InsertN@?$CArray@K@@QAEXPAKKABK@Z	004649a3	00f3a5d0
 ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAUCHeroInfoScreensManager@@XZ	00437cd0	00490927
 ?IsInSpecialMode@CWorld@@QAE_NXZ	0048db13	00490927
@@ -24717,7 +24717,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetDef@CGameDefinitionManager@@QAE_NJPAV?$CDefPointer@VCPlayerDef@@@@@Z	0044ba90	0048a210
 ??$?R$$CBVCThingVillage@@@CThingCompare_Nearest@@QBEPBVCThingVillage@@PBV1@0@Z	0048b220	0048cbd0
 ?CTCMapwho_helper@@YIXPAVCTCMapwho@@@Z	0048d7c0	0048d890
-?Draw2DText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	0048f1f4
+?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	0048f1f4
 ??0CEnginePrimitive2DSprite@@QAE@_KABVC2DVector@@JKKJJMMEEEEK11@Z	00493ac2	0048f230
 ?GetTextOffsetFromEmbeddedTagGraphic@CSubtitleRenderer@@QBEABVC2DVector@@J@Z	0048dc3c	0048f230
 ?WordWrapText@CSubtitleRenderer@@QBE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z	0048dc8b	0048f50c
@@ -25743,7 +25743,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?CreateEmitter@CParticleEmitterManager@NParticleEngine@@QAEPAVCParticleEmitter@2@JABVC3DVector@@_NABVCRightHandedSet@@@Z	00aeb6d0	00643d8c
 ?Method_0082b7c0@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ	0082b7c0	00643e9a
 ?DrawBox@@YIXPAVCEnginePrimitivePrepareInfo@@PAUCRetailHandleVector@@ABVC2DBoxF@@W4EEngine2DLayer@@@Z	0048e0a2	00643eb2
-?Draw2DText@PlayerGuiMethods@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	00644424
+?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	00644424
 ?GetMultiplayerColour@PlayerManagerMethods@@QBE?AVCRGBColour@@J@Z	00449b60	00644424
 ?GetPlayer@PlayerManagerMethods@@QAEAAVCPlayer@@J@Z	004498c0	00644424
 ?Method_006445ba@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ	006445ba	00644644
@@ -30284,7 +30284,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SetSuspendAnimation@CThingAnimatable@@QAEX_NJ@Z	00833a10	007986a0
 ?AddNewCoin@CTCTavernGameCoinBase@@QAEXABVC3DVector@@@Z	008efa00	007d2ef0
 ??_7?$CPersistContext_TransferableComponent@J@@6B@	0122df38	00410be0
-?GFAYToVY_009e1dd0@@YGMM@Z	009e1dd0	0041a980
+?GFAYToVY@@YIMM@Z	009e1dd0	0041a980
 ?Fill_004311df@Handle@@QAEXPAXPAUCtx@@@Z	004311df	0043119e
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	00438cb0
 ?Fill_00452d8e@Handle@@QAEXPAXPAUCtx@@@Z	00452d8e	00452d4d
@@ -35490,7 +35490,7 @@ _s_jpgMask	0124fed0	00581b33
 ?clear@?$vector@KV?$allocator@K@std@@@std@@QAEXXZ	005156d0	005e9840
 ?Reset@?$CCountedPointer@VCLightInfo@CTCLight@@@@QAEXPAVCLightInfo@CTCLight@@@Z	00641eb0	00641020
 ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z	00643d5d	00645099
-?DrawText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MJ_N@Z	00438010	00646010
+?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	00646010
 ?GetStringWidth@CFontBank@@QBEMABVCWideString@@@Z	0048da62	00646010
 ?LongToWideString@@YI?AVCWideString@@J@Z	00405f00	00646010
 ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@@@QAEPAUvalue_type@1@ABW4ETCInterfaceType@@@Z	0040f020	006cf3b0
@@ -35826,3 +35826,15 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?PlayAnimation@CTCAnimatingObject@@AAEXABVCAnimInit@@J@Z	007f8dc0	007f9010
 ?IsKnockedDown@NCreatureMode@@YI_NABVCThing@@@Z	0085f010	0085fb30
 ?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z	00661540	008bf1c0
+?$S1@?4??Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z@4IA	013ba868	006572a0
+?Draw2DText@CPlayerGui@@QAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@MW4EEngine2DLayer@@_N@Z	00438010	006572a0
+?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ	004167c8	006572a0
+?colour@?4??Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z@4VCRGBColour@@A	013ba864	006572a0
+?Find@CRegisteredActionEventMap@@QAEPAUSRegisteredActionEventNode@@ABVCCharString@@@Z	00696340	006946c0
+?GetEventNames@CManager@NAnimationEvents@@QBEXKAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	006f9b20	006946c0
+?GetGameEventManager@NAnimationEvents@@YIAAVCManager@1@XZ	006f90b0	006946c0
+?RegisteredActionEvents@CCreatureActionBase@@2UCRegisteredActionEventMap@@A	013ba8bc	006946c0
+?Reset@?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@QAEXPAVCActionEventBase@NCreatureAction@@@Z	00695a00	006946c0
+?push_back@CActionEventVector@@QAEXABV?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@Z	00696fe0	006946c0
+?g_ConversationCameraSide@@3JA	013bad00	00712e40
+?g_UseConversationCameraTags@@3_NA	01380c30	00712e40

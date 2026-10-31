@@ -1,7 +1,7 @@
 // CSubtitleRenderer::GetBlackBarHeight() const -- half the gap between the virtual screen height and a 16:9 band of the virtual screen width: (VY(height) - VX(width) * 0.5625) * 0.5
 // Leaf: GetBlackBarHeight
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0048DBC3, 54 bytes. Callees: GFAYToVY(float) @ 0x009E1E40 and
-// GFAXToVX(float) @ 0x009E1E10 (float in a stack slot, callee-popped: __stdcall), the screen size doubles @ 0x013961F0
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0048DBC3, 54 bytes. Callees: GFVYToAY(float) @ 0x009E1E40 and
+// GFVXToAX(float) @ 0x009E1E10 (Ego_r __fastcall float(float); the float travels in a stack slot, callee-popped), the screen size doubles @ 0x013961F0
 // (height) / 0x013961E8 (width) narrowed to float, the constants 0.5625f @ 0x01238110 and 0.5f @ 0x0122F59C.
 // Layout: engine/CSubtitleRenderer.h is the PDB view (Ego_r: 16-byte vectors, a 0x18-byte deque); retail has the VC6
 // containers (0x28-byte deque, 12-byte vectors), so DisplayFlags sits at +0x7C (PDB +0x6C) and the cutscene bools at
@@ -80,13 +80,13 @@ public:
     float GetBlackBarHeight() const;
 };
 
-float __stdcall GFAYToVY(float y);                 // 0x009E1E40
-float __stdcall GFAXToVX(float x);                 // 0x009E1E10
+float __fastcall GFVYToAY(float y);                 // 0x009E1E40
+float __fastcall GFVXToAX(float x);                 // 0x009E1E10
 extern double g_screenHeight;                      // 0x013961F0
 extern double g_screenWidth;                       // 0x013961E8
 
 float CSubtitleRenderer::GetBlackBarHeight() const
 {
-    float height = GFAYToVY((float)g_screenHeight);
-    return (height - GFAXToVX((float)g_screenWidth) * 0.5625f) * 0.5f;
+    float height = GFVYToAY((float)g_screenHeight);
+    return (height - GFVXToAX((float)g_screenWidth) * 0.5625f) * 0.5f;
 }
