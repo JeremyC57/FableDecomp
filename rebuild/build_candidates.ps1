@@ -371213,6 +371213,20 @@ $catalog = @(
         TestSource = '00/f3/CPerlinNoise_Initialise_00f35ed0_test.cpp'
         PassPattern = '00f35ed0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ff920'
+        Module = 'CWorldMap'
+        Source = '00/4f/CWorldMap_Update_004ff920.cpp'
+        TestSource = '00/4f/CWorldMap_Update_004ff920_test.cpp'
+        PassPattern = '004ff920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a8890'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetAllThingsWithDefName_008a8890.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetAllThingsWithDefName_008a8890_test.cpp'
+        PassPattern = '008a8890_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,4 @@
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllCreaturesExcludingHero_008a89d0.cpp
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllCreaturesInAreaWithScriptName_008a86c0.cpp
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllThingsWithDefNameByDistanceFrom_008a9c40.cpp
+rebuild/src/compiled/00/8a/CGameScriptInterface_GetAllThingsWithScriptName_008a8570.cpp

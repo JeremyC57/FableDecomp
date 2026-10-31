@@ -1,5 +1,9 @@
 // CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, std::vector<CScriptThing>& things) const -- script: collect the AI creatures in the square of half-size radius around position (all of them when the script name is empty, else those with that script name) and append their script things; returns the output vector's size (0 without touching it when none match)
 // Leaf: ?GetAllCreaturesInAreaWithScriptName@CGameScriptInterface@@UBEJABVCCharString@@ABVC3DVector@@MAAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+// Respell (chunk 638 follow-up, 2026-10-31): PDB spellings shared with the landed 0x008A8890 -- std::vector<CScriptThing> /
+//   std::vector<T*> STLport specialisations (reserve 0x008ACD30, protected _M_insert_overflow 0x008AD5F0), the const
+//   CThingSearchTools template members, CThing::GetScriptThing() const 0x004C7E50, engine/CCountedPointer.h, engine/CWorld.h,
+//   engine/CGameScriptInterface.h (the slot declaration now carries the leaf's mangled name).
 // Retail: Fable.exe @ 0x008A86C0, 452 bytes, `ret 10h`.
 // Body: centre = C2DCoordI((long) position.X, (long) position.Y), r = (long) radius (_ftol 0x00BFEA70);
 // box = C2DBoxI(centre, centre) grown by r on every side;
@@ -9,7 +13,7 @@
 // sibling GetAllThingsWithScriptName: empty -> 0; reserve (0x008ACD30); push_back(creature->GetScriptThing()) per
 // creature (0x004C7E50); return things.size().
 // Layout: models of the landed sibling GetAllThingsWithScriptName 0x008A8570 and the de-bake 0x008A9C40 (CScriptThing,
-// counted PImp, vector<CThingAICreature*> over malloc, World +0x04, ThingSearchTools +0x20); C2DBoxI {TopLeft, BottomRight}.
+// counted PImp, vector<CThingAICreature*> over malloc, World +0x04, PThingSearchTools_ptr +0x20); C2DBoxI {TopLeft, BottomRight}.
 // Shape: write-only same-TU stand-ins for both search templates keep the found vector unescaped and pass the box and
 // filter addresses on (escape, as 0x008A9C40); both filters live in the dead `position` argument slot; the CCharString
 // compare is the landed 0x008EDA90 model. The box is built from the centre twice and expanded in place (an inline
@@ -20,29 +24,7 @@ void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 inline void* operator new(unsigned int, void* where) { return where; }
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo { public:
-    unsigned long RefCount;
-    void (__fastcall* DeleteFunc)(void*);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:                              // CCountedPointer<CScriptThingImp>
-    void* Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"                    // CCountedPointer<T> retail model (PImp of CScriptThing)
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
@@ -51,15 +33,16 @@ inline CScriptThing::CScriptThing() {}
 inline CScriptThing::~CScriptThing() {}
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+namespace std {
 struct __false_type { __false_type() {} };
-struct CScriptThingVector {                             // STLport vector<CScriptThing> (12-byte elements)
+// STLport 4.6 vector<CScriptThing> (12-byte elements): the members and the two out-of-line instantiations this row calls.
+template <> class vector<CScriptThing, allocator<CScriptThing> > {
+public:
     CScriptThing* _M_start;
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
-    long size() const { return _M_finish - _M_start; }
-    void reserve(unsigned long n);                      // 0x008ACD30
-    void _M_insert_overflow(CScriptThing* position, const CScriptThing& x, const __false_type&,
-                            unsigned long fill_len, bool atend);   // 0x008AD5F0
+    unsigned int size() const { return _M_finish - _M_start; }
+    void reserve(unsigned int n);                       // 0x008ACD30
     void push_back(const CScriptThing& x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -69,17 +52,23 @@ struct CScriptThingVector {                             // STLport vector<CScrip
         else
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
+protected:
+    void _M_insert_overflow(CScriptThing* position, const CScriptThing& x, const __false_type&,
+                            unsigned int fill_len, bool atend);   // 0x008AD5F0
 };
-struct CThing_Retail;
-struct CThingVector {                                   // STLport vector<CThingAICreature*> (malloc allocator)
-    CThing_Retail** _M_start;
-    CThing_Retail** _M_finish;
-    CThing_Retail** _M_end_of_storage;
-    CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CThingVector() { if (_M_start) free(_M_start); }
+// STLport 4.6 vector<T*> (malloc-backed storage, freed with free()).
+template <class T> class vector<T*, allocator<T*> > {
+public:
+    T** _M_start;
+    T** _M_finish;
+    T** _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~vector() { if (_M_start) free(_M_start); }
     bool empty() const { return _M_start == _M_finish; }
-    unsigned long size() const { return _M_finish - _M_start; }
+    unsigned int size() const { return _M_finish - _M_start; }
+    T* operator[](unsigned int n) const { return _M_start[n]; }
 };
+}
 #pragma pack(push, 1)
 template <class T> class CBasicString { public:                               // CBasicString<char>, 13 bytes
     char*         PData;
@@ -122,58 +111,61 @@ class CThingFilter_None { public:
     CThingFilter_None() {}
 };
 class CThingFilter_HasScriptName { public:
-    CCharString m_name;
-    CThingFilter_HasScriptName(const CCharString& name) : m_name(name) {}
+    CCharString Name;                                   // +0x00 (Ego_r.pdb)
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) {}
 };
-struct CThing_Retail {
-    CScriptThing GetScriptThing();                      // 0x004C7E50
+class CThing { public:
+    CScriptThing GetScriptThing() const;                // 0x004C7E50
 };
-CThing_Retail** FindThings_None(const C2DBoxI* box, const CThingFilter_None* filter, CThing_Retail** capacity);
-CThing_Retail** FindThings_HasScriptName(const C2DBoxI* box, const CThingFilter_HasScriptName* filter, CThing_Retail** capacity);
+class CThingAICreature : public CThing { };             // (CThingAICreature's bases above CThing sit at offset 0)
+typedef std::vector<CThingAICreature*, std::allocator<CThingAICreature*> > CThingAICreaturePtrVector;   // (local typedef only)
+CThingAICreature** FindThings_None(const C2DBoxI* box, const CThingFilter_None* filter, CThingAICreature** capacity);
+CThingAICreature** FindThings_HasScriptName(const C2DBoxI* box, const CThingFilter_HasScriptName* filter, CThingAICreature** capacity);
 class CThingSearchTools { public:
-    void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_None& filter, CThingVector& out);            // 0x008AD710
-    void GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_HasScriptName& filter, CThingVector& out);   // 0x008AD950
+    template <class T, class TVector, class TFilter>
+    void GetAllThingsInRoughArea(const C2DBoxI& box, const TFilter& filter, TVector& out) const;   // 0x008AD710 (None) / 0x008AD950 (HasScriptName)
 };
 // Same-TU stand-ins (see the sibling): read the box and only write the output vector's words.
 #pragma auto_inline(off)
-void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_None& filter, CThingVector& out)
+template <>
+void CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature, CThingAICreaturePtrVector, CThingFilter_None>(
+    const C2DBoxI& box, const CThingFilter_None& filter, CThingAICreaturePtrVector& out) const
 {
-    CThing_Retail** p = FindThings_None(&box, &filter, out._M_end_of_storage);
+    CThingAICreature** p = FindThings_None(&box, &filter, out._M_end_of_storage);
     out._M_start = p;
     out._M_finish = p;
 }
-void CThingSearchTools::GetAllThingsInRoughArea(const C2DBoxI& box, const CThingFilter_HasScriptName& filter, CThingVector& out)
+template <>
+void CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature, CThingAICreaturePtrVector, CThingFilter_HasScriptName>(
+    const C2DBoxI& box, const CThingFilter_HasScriptName& filter, CThingAICreaturePtrVector& out) const
 {
-    CThing_Retail** p = FindThings_HasScriptName(&box, &filter, out._M_end_of_storage);
+    CThingAICreature** p = FindThings_HasScriptName(&box, &filter, out._M_end_of_storage);
     out._M_start = p;
     out._M_finish = p;
 }
 #pragma auto_inline(on)
-struct CWorld_Retail {
-    unsigned char      _pad00[0x20];
-    CThingSearchTools* ThingSearchTools;                // +0x20
-};
-class CGameScriptInterface { public:
-    virtual long GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, CScriptThingVector& things) const;
-    CWorld_Retail*   World;                             // +0x04 (engine/CGameScriptInterface.h)
-};
+#include "engine/CWorld.h"                             // PThingSearchTools_ptr (scoped_ptr<CThingSearchTools>) +0x20
+#define CThingSearchTools CThingSearchToolsLayout
+#include "engine/CThingSearchTools.h"
+#undef CThingSearchTools
+#include "engine/CGameScriptInterface.h"               // FABLE_RETAIL_NSCRIPT: World +0x04 and the GetAll* slots
 
-long CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, CScriptThingVector& things) const
+long CGameScriptInterface::GetAllCreaturesInAreaWithScriptName(const CCharString& scriptName, const C3DVector& position, float radius, std::vector<CScriptThing, std::allocator<CScriptThing> >& things) const
 {
     C2DCoordI centre((long)position.X, (long)position.Y);
     long r = (long)radius;
     C2DBoxI box(centre, centre);
     box.Expand(r);
-    CThingVector found;
+    CThingAICreaturePtrVector found;
     if (scriptName == "")
-        World->ThingSearchTools->GetAllThingsInRoughArea(box, CThingFilter_None(), found);
+        World->PThingSearchTools_ptr->GetAllThingsInRoughArea<CThingAICreature>(box, CThingFilter_None(), found);
     else
-        World->ThingSearchTools->GetAllThingsInRoughArea(box, CThingFilter_HasScriptName(scriptName), found);
+        World->PThingSearchTools_ptr->GetAllThingsInRoughArea<CThingAICreature>(box, CThingFilter_HasScriptName(scriptName), found);
     if (found.empty())
         return 0;
     things.reserve(found.size());
-    for (CThing_Retail** it = found._M_start; it != found._M_finish; ++it) {
-        CThing_Retail* creature = *it;
+    for (CThingAICreature** it = found._M_start; it != found._M_finish; ++it) {
+        CThingAICreature* creature = *it;
         things.push_back(creature->GetScriptThing());
     }
     return things.size();

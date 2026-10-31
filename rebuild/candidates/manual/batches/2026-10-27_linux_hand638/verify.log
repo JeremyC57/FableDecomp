@@ -1,0 +1,12 @@
+addr       parity           behav  name
+004ff920   RELOCATION_MATCH PASS   Update
+008a8890   WARN RELOC_NAME: ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 008adba0 labelled 'GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>'
+008a8890   RELOCATION_MATCH PASS   GetAllThingsWithDefName
+
+WINS: 2
+  004ff920 RELOCATION_MATCH CWorldMap::?Update@CWorldMap@@UAEXXZ
+  008a8890 RELOCATION_MATCH CGameScriptInterface::?GetAllThingsWithDefName@CGameScriptInterface
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_Update_004ff920
+  CGameScriptInterface_GetAllThingsWithDefName_008a8890

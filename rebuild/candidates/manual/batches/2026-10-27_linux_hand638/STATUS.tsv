@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006c06d0	DIFFER	312v312	-	x87 canonical operand order: retail `fld [Forward.Y] ; fmul st(2)`, ours `fld st(1) ; fmul [Forward.Y]` (GetSignPostPos/Rotate respelled to the PDB)
+00a112f0	DIFFER	316v316	-	x87 allocation/frame 0x24 v 0x1c (normal copy / rotated temporary / renormalised normal share one slot in retail); callee respelled AccurateNormalise
+008a8890	RELOCATION_MATCH	317v317	PASS	sibling 0x008A9C40 model: same-TU search stand-in takes &filter (filter stored before &found); PDB-respelled std::vector specialisations, CThing, engine/CWorld.h + CGameScriptInterface.h
+007175d0	DIFFER	318v318	-	register colouring: retail block-2 creature in ebx (ebx pushed at head), ours ebp + shrink-wrapped ebx (mode-manager callees respelled to the PDB)
+007729a0	DIFFER	319v319	-	register colouring tie: list node edi / &item esi in retail, swapped in ours
+004ff920	RELOCATION_MATCH	319v319	PASS	callback as the const& temporary per call + same-TU ForEachInRoughArea stand-in (store hoisted to the preheader); PDB respell (const bool template, virtual Update)
+006d8830	DIFFER	321v321	-	scheduling: retail `fst [esp+10h]` of |damage| before UpdateComboMultiplier's `push 1`, ours after (access/const respelled)
+006061b0	DIFFER	322v322	-	register colouring tie: list node edi / card pointer esi in retail, swapped in ours (same as 0x007729A0)
+00a1abf0	DIFFER	324v324	-	scheduling: retail `mov eax,[esi+78h] ; cmp edi,eax` before the reach-radius fadd, ours after (agent633 GetNodeAt respell kept)
+00773950	DIFFER	324v324	-	register: retail `lea ecx,[esp+18h]` key address before `lea esi,[eax+44h]`, ours eax after (GetPVillage/IsOpeningHours const respelled)
