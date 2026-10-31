@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00870e00	DIFFER	438v438	-	NCreatureAction::CActionEventTriggerParticle::SetDataFromString: PDB-respelled; named CBasicString<char>* in the non-null arm moved the copy into the arm; load register esi v ecx remains
+00ba50a0	DIFFER	441v441	-	CEnginePrimitiveManagerStaticMeshesBase::SetupStaticBlocks: failed=false store position v byte-slot swap (failed takes the dead mesh slot when defined after the first mesh load)
+004888c0	DIFFER	443v443	-	CPlayer::SwitchPlayerCharactersWith: named number locals fixed the Number loads; this ebx v ebp swap remains
+00b847d0	DIFFER	444v444	-	CEngineSubPrimitiveRenderer::RadixSort: named radix + counts[radix]=counts[radix]+1 fixed both loops; one xor ebx,ebx position left
+004feec0	DIFFER	444v444	-	CWorldMap::UnloadRegion: region ebx v ebp swap (lea v add); named pointer / begin()+n neutral
+0095b820	DIFFER	445v445	-	CAIStateGroup_HoverHornetQueen::Spawn: filter store scheduling + lea edi v mov/add edi; reproduced
+00853670	DIFFER	445v445	-	NCameraModes::CScriptModuleOpenChest::OnInitLeaf: two store/reload scheduling slips; named temporaries worse
+00872110	DIFFER	447v447	-	NCameraModes::CStringAndCageBase::UpdateAutoGoBehind: one canonical x87 operand pair (behind.X*dir.Y)
+00838ec0	DIFFER	448v448	-	CThingGameObject::GetShotHitParameters: PDB-respelled (CHitLocation*, CThing&, const); dead-slot choice + copy register rotation remain
+0087bd70	DIFFER	451v451	-	NCameraModes::CRotateAround::Update: frame 0x44 v 0x40 temp packing; split statements worse
