@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+005b690b	DIFFER	290v290	-	second pass node/component edi/ebx swap (equal-use colouring); names re-proven (FindAllChildren, CText::SetValue, GetItemDescription const, STLport list/map); tried 6 forms
+00c74bb0	RELOCATION_MATCH	293v293	PASS	`frequency = pow(..); frequency *= reference;` + named 2pi product; CEffectFilter::SetHighPass (descriptive, NAME_FIX for the SetPeak binding)
+0087ba90	DIFFER	294v294	-	module vtable load register (edx v retail eax after the store) rotates later eax/ecx/edx; names fixed (OnInit UAE, CBase::GetObservedThingCurrentMeshHeight qualified, NCameraModes::SetCameraRoll); 5 forms inert
+007bbc9f	DIFFER	295v299	-	94 -> 28 lines: s/c kept double (frame matches); residue: second x87 copy of sin(A) and velocity operand order; names fixed (InitMovement MAE, GetShootAtPos, CTCPhysicsBase::SetVelocity)
+007805d0	DIFFER	299v299	-	effects.Object cached in edi across the && and reused by the release; temps 4 lower; shared CDefPointer.h tried (302-303v299); GetPos respelt
+00793370	DIFFER	300v300	-	this esi/edi swap (shrink-wrapped push edi); landed CBaseIntelligentPointer model + init form inert; LTCG-family
+007981b0	DIFFER	300v300	-	byte twin of 0x00793370, same residue
+00860ad0	DIFFER	302v302	-	copy load/store scheduling of the first two GetPos copies + fnstsw after the dead pops; names fixed (GetPos, const GetNearestNode, header layout); 9 forms
+007afe20	DIFFER	302v302	-	pos/elems_after ebp/ebx swap; old_finish-first worse (288); LTCG-family
+007b9b40	DIFFER	302v302	-	byte twin of 0x007AFE20; const x_copy inert

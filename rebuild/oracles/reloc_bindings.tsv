@@ -35544,7 +35544,6 @@ _s_jpgMask	0124fed0	00581b33
 ??$__unguarded_partition@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@U12@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@PAU10@0U10@V?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z	00beec60	00befa20
 ?Remove@PKCTRRedblackMap@@QAEJPBK@Z	00c1b7d0	00c1a370
 ?MillibelsToGain_00c77700@@YAMJ@Z	00c77700	00c783f0
-?SetPeak@CEffectFilter@@QAEXMMK@Z	00c74bb0	00c783f0
 ?SetShelf@CEffectFilter@@QAEXMMK@Z	00c74ab0	00c783f0
 ?Stage_00c77800@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z	00c77800	00c783f0
 ?Stage_00c77ae0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z	00c77ae0	00c783f0
@@ -35702,3 +35701,4 @@ _drftf1@20	00c98e80	00c9bc10
 ?SpendExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z	006d6590	005785b3
 ?find@CAbilityUndoMap@@QAEPAUSAbilityUndoNode@@ABW4EHeroAbility@@@Z	0057914c	005785b3
 ?insert@CAbilityUndoMap@@QAE?AUSInsertResult@1@ABU?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@Z	0057a1aa	005785b3
+?SetHighPass@CEffectFilter@@QAEXJMK@Z	00c74bb0	00c783f0

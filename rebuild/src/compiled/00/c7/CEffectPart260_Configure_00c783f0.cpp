@@ -17,10 +17,10 @@
 struct SVoiceEffectParameters {
     unsigned long Flags;                           // +0x00 dirty bits
     long          Level;                           // +0x04 millibels
-    float         PeakFrequency;                   // +0x08
+    long          HighPassAttenuation;             // +0x08 (millibels; 0x00C74BB0 fild's it)
     float         ShelfFrequency;                  // +0x0c
     unsigned char _pad10[0x1c - 0x10];
-    float         PeakGain;                        // +0x1c
+    float         HighPassReference;               // +0x1c
     float         ShelfGain;                       // +0x20
     unsigned char _pad24[0x44 - 0x24];
     float         RateScale;                       // +0x44
@@ -35,7 +35,7 @@ struct CMixContext {
 struct CEffectFilter {
     float Gain;                                    // +0x00
     void SetShelf(float frequency, float gain, unsigned long sampleRate);   // 0x00C74AB0
-    void SetPeak(float frequency, float gain, unsigned long sampleRate);    // 0x00C74BB0
+    void SetHighPass(long attenuation, float reference, unsigned long sampleRate);    // 0x00C74BB0
 };
 struct CVoiceEffect {
     CEffectFilter Shelf;                           // +0x00
@@ -82,7 +82,7 @@ void CEffectPart260::Configure(CVoiceEffect* owner, SVoiceEffectParameters* para
     }
     if (parameters->Flags & 0x48) {
         owner->Peak.Gain = 1.0f;
-        owner->Peak.SetPeak(parameters->PeakFrequency, parameters->PeakGain, Context->SampleRate);
+        owner->Peak.SetHighPass(parameters->HighPassAttenuation, parameters->HighPassReference, Context->SampleRate);
     }
     if (parameters->Flags & 0x90)
         owner->Shelf.SetShelf(parameters->ShelfFrequency, parameters->ShelfGain, Context->SampleRate);

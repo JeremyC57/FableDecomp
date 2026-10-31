@@ -370685,6 +370685,13 @@ $catalog = @(
         TestSource = '00/80/NExplosiveTrailHelpers_RandomiseThingOrientationAroundDirection_0080ffb0_test.cpp'
         PassPattern = '0080ffb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c74bb0'
+        Module = 'CEffectFilter'
+        Source = '00/c7/CEffectFilter_SetHighPass_00c74bb0.cpp'
+        TestSource = '00/c7/CEffectFilter_SetHighPass_00c74bb0_test.cpp'
+        PassPattern = '00c74bb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
