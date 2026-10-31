@@ -25298,3 +25298,13 @@ chunk	address	module	name	length
 626	008e8ff0	global	GetStrafingAnimationName	135
 626	00954740	CAIStateGroup_MazeShieldedChase	IsStillRunnable	136
 626	00688260	CInputProcessControlCreatureActivateZTarget	?ProcessInput@CInputProcessControlCreatureActivateZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	137
+627	009f7050	CVsyncCallbackTimer	GetInfo	138
+627	00994a80	CCompressedMemoryDataInputStream	?SetPosition@CCompressedMemoryDataInputStream@@UAEXK@Z	141
+627	0049dcc0	CWorld	ResetToFrontEnd	142
+627	00978b90	_Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A	_Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A::CThingCompare_InDirectionOfAndNearestToHeuristicBitch>	142
+627	0085fbc0	global	IsAbleToBeEngagedInCombat	142
+627	004bfc50	NGraphicAppearance::CTCGraphicAppearance	NGraphicAppearance::CTCGraphicAppearance::vfunc_4	144
+627	00beeda0	_Cons_val<std::allocator<std::pair<CCharString,C3DVector>_>,std::pair<CCharString,C3DVector>,std	_Cons_val<std::allocator<std::pair<CCharString,C3DVector>_>,std::pair<CCharString,C3DVector>,std::pair<class_CCharString,class_C3DVector>_>	147
+627	00492ed1	CSubtitleRenderer	SetText	152
+627	00475dfa	global	GFSerialiseVectorBinaryIn<C2DVector>	152
+627	007723f0	CTCShop	IsShopKeeperNearerThan	153
