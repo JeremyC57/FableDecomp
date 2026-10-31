@@ -369848,6 +369848,20 @@ $catalog = @(
         TestSource = '00/64/NPlayerGuiCCrimeStatBar_DrawStatBarOnLeft_00646010_test.cpp'
         PassPattern = '00646010_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006cf3b0'
+        Module = 'CTCWife'
+        Source = '00/6c/CTCWife_InitWifeAtEndOfMarriageFrescoStartFadeIn_006cf3b0.cpp'
+        TestSource = '00/6c/CTCWife_InitWifeAtEndOfMarriageFrescoStartFadeIn_006cf3b0_test.cpp'
+        PassPattern = '006cf3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747da0'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_FrameUpdate_00747da0.cpp'
+        TestSource = '00/74/CTCStealth_FrameUpdate_00747da0_test.cpp'
+        PassPattern = '00747da0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

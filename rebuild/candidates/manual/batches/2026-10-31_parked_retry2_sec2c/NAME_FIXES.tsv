@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0049D870	CWorld::GetFrame (static __fastcall, ?GetFrame@CWorld@@SIJXZ)	Ego_r.pdb ?GetFrame@CWorld@@SIJXZ + reloc_bindings + catalog CWorld::GetFrame	CWorld::GetCurrentFrame (54 landed files), CWorld::GetWorldFrame (9 landed files)
+0x00487DC0	CPlayer::GetPControlledCreature() const (?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ)	Ego_r.pdb symbol + 65 reloc_bindings rows	CPlayer::GetHeroCreature (landed 0x0089ED80; catalog label), CPlayer::GetHeroThing (comment in landed 0x00449CB0, parked drafts)

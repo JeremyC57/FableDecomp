@@ -35504,3 +35504,15 @@ _s_jpgMask	0124fed0	00581b33
 ?DrawText@CGameUI@@QAEXABVC2DVector@@ABVCWideString@@PAVCFontBank@@ABVCRGBColour@@MJ_N@Z	00438010	00646010
 ?GetStringWidth@CFontBank@@QBEMABVCWideString@@@Z	0048da62	00646010
 ?LongToWideString@@YI?AVCWideString@@J@Z	00405f00	00646010
+?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@@@QAEPAUvalue_type@1@ABW4ETCInterfaceType@@@Z	0040f020	006cf3b0
+?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z	006d5180	006cf3b0
+?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z	006aeba0	006cf3b0
+?IsPerformingASneakingIncompatibleAction@CThingCreatureBase@@QBE_NXZ	00662620	00747da0
+?IsRunning@CScriptTask@@QAE_NXZ	007122c0	00747da0
+?IsToggleSneak@CGamePlayerInterface@@QBE_NXZ	00445ba0	00747da0
+?LowerBound2@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z	004365b0	00747da0
+?PostDeed@CTCHeroOpinionDeedLog@@QAEJJABVC3DVector@@PAVCThing@@1J_N2PAX2J@Z	006c6990	00747da0
+?UpdateDangerInfo@CTCStealth@@AAEXXZ	00747c70	00747da0
+?UpdateHearability@CTCStealth@@AAEXXZ	007479b0	00747da0
+?UpdateViewability@CTCStealth@@AAEXXZ	00747480	00747da0
+?g_sneakToggleOption@@3_NA	01375749	00747da0
