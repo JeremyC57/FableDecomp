@@ -25338,3 +25338,13 @@ chunk	address	module	name	length
 630	00a872f0	CSB	GetDistanceBetweenAgents	196
 630	00632830	CPersistTraits<std::list<COpinionTransientOffset	TransferBinaryIn	196
 630	0072b260	CTCSpecialAbilities	SetupDrainLifeSpell	198
+631	00725b70	CTCPhysicsControlled	UpdateAdditionalImpulse	201
+631	00aeb600	CParticleEmitterManager	CreateInterpolatedEmitter	202
+631	00943c20	CAIStateGroup_WorkInWarehouse	?IsRunnable@CAIStateGroup_WorkInWarehouse@@UAE_NXZ	206
+631	00c56d70	_gapscan	sub_00c56d70	206
+631	008f99a0	global	LSocket_ReceiveWithTimeout	207
+631	009bbbf0	CPersistContext	CheckUnknownSymbols	207
+631	00a57960	C2DLineF	GetInfiniteLineLineIntersection	210
+631	00c59c60	global	GraphicalElement_ComputeAnimationTransform	210
+631	00a5d000	CMatrix4x4	SetInverseOfUniformScaleRotationTranslation	211
+631	00c351b0	CWeaponDrawState	CWeaponDrawState::Initialize	211
