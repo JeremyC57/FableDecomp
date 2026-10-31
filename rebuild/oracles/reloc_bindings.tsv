@@ -9672,7 +9672,6 @@ __imp___mbsinc	0143ffe4	00c0d7c0
 __imp__memmove	01440144	00c0d970
 ?JenkinsHashBuffer@@YIKPBDKK@Z	00c1d500	00c0dbb0
 ?SafeStringLength@@YGKPBD@Z	00c0bcc0	00c0dbb0
-?ConsumeMapBrush@CWorldMap@@QAEXPAX@Z	00c0c270	00c0dd40
 ?ResolveMapBrush@@YGPAXPAUCScriptedMapBrush@@0@Z	00c0bcc0	00c0dd40
 ?And_00c0dd40@Pred@@QAEXPAU1@@Z	00c0dd40	00c0dec0
 ?helper_c0dd60@@YIXPAUObj@@N@Z	00c0dd60	00c0ded0
@@ -35686,3 +35685,6 @@ _strncat	00f3fcfa	00c5dc60
 ??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z	0069f230	0091b190
 ??$__find@PAPAVCBankFileAsync@@PAV1@@std@@YIPAPAVCBankFileAsync@@PAPAV1@0ABQAV1@ABUrandom_access_iterator_tag@0@@Z	009d6e80	009d5a30
 _drftf1@20	00c98e80	00c9bc10
+?ConcatCopy@CString@@QAEXHPBDH0@Z	00c0c220	00c0c270
+?GetData@CString@@QBEPAUCStringData@@XZ	00c0b8c0	00c0c270
+?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	00b46280	00b46a30

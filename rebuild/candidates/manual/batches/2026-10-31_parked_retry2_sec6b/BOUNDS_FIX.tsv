@@ -1,0 +1,9 @@
+address	catalog_length	true_length	evidence
+00b49810	319	282	ret 4 at 0x00B49927, int3 padding, next body 0x00B49930 (16-byte copy, ret 4); RELOCATION_MATCH over 282
+00b9c500	328	286	ret 4 at 0x00B9C61B, int3 padding, next body 0x00B9C620 (ctor, ret 8); RELOCATION_MATCH over 286
+00c72200	770	741	ret 10h at 0x00C724A5, case table 0x00C724A8 (7 dwords) + byte index table to 0x00C724E4, int3 padding, next getter 0x00C724F0
+00c17640	250	203	ret 8 at 0x00C17708, int3 padding 0x00C1770B..0x00C1770F, next body 0x00C17710 (mov edx,[ecx]; setne al; ret); DIFFER(203v203) over the true extent
+00f36d30	419	385	ret at 0x00F36EB0, int3 padding from 0x00F36EB1; graded over 385
+00b5c120	821	580	body ends b0 01 5e 83 c4 14 c3 at +0x23d; int3 pad + the next setters follow (header says length 0x244)
+00becde0	551	346	ret 4 (c2 04 00) at +0x157, int3 padding follows
+00f37660	776	206	ret 8 (c2 08 00) at +0xcb, int3 padding follows (header length 206)

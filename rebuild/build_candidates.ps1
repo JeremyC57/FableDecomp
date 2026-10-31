@@ -370587,6 +370587,55 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00c9bc10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c0c270'
+        Module = 'CString'
+        Source = '00/c0/CString_ConcatInPlace_00c0c270.cpp'
+        TestSource = '00/c0/CString_ConcatInPlace_00c0c270_test.cpp'
+        PassPattern = '00c0c270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b46a30'
+        Module = 'CEngineLightingManager'
+        Source = '00/b4/CEngineLightingManager_LookupSmallObjectLightCache_00b46a30.cpp'
+        TestSource = '00/b4/CEngineLightingManager_LookupSmallObjectLightCache_00b46a30_test.cpp'
+        PassPattern = '00b46a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b49810'
+        Module = 'C3DBoundingBox'
+        Source = '00/b4/C3DBoundingBox_CalcShortestDistanceToPointSquared_00b49810.cpp'
+        TestSource = '00/b4/C3DBoundingBox_CalcShortestDistanceToPointSquared_00b49810_test.cpp'
+        PassPattern = '00b49810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4ced0'
+        Module = 'CShadowClipVolume'
+        Source = '00/b4/CShadowClipVolume_ClipBoundingBox_00b4ced0.cpp'
+        TestSource = '00/b4/CShadowClipVolume_ClipBoundingBox_00b4ced0_test.cpp'
+        PassPattern = '00b4ced0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b99bb0'
+        Module = 'CEngineInternalPrimitiveRepeatedStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_IsInsideFrustum_00b99bb0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitiveRepeatedStaticMesh_IsInsideFrustum_00b99bb0_test.cpp'
+        PassPattern = '00b99bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9c2e0'
+        Module = 'CShadowClipVolume'
+        Source = '00/b9/CShadowClipVolume_ClipBoundingBox_00b9c2e0.cpp'
+        TestSource = '00/b9/CShadowClipVolume_ClipBoundingBox_00b9c2e0_test.cpp'
+        PassPattern = '00b9c2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9c500'
+        Module = 'C3DBoundingBox'
+        Source = '00/b9/C3DBoundingBox_CalcShortestDistanceToPoint_00b9c500.cpp'
+        TestSource = '00/b9/C3DBoundingBox_CalcShortestDistanceToPoint_00b9c500_test.cpp'
+        PassPattern = '00b9c500_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

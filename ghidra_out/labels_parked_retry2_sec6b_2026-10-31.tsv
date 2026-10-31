@@ -1,0 +1,8 @@
+address	name	evidence
+00c0c270	?ConcatInPlace@CString@@QAEXHPBD@Z	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
+00b46a30	?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
+00b49810	?CalcShortestDistanceToPointSquared@C3DBoundingBox@@QBEMABVC3DVector@@@Z	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
+00b4ced0	?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
+00b99bb0	CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
+00b9c2e0	CShadowClipVolume::ClipBoundingBox	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
+00b9c500	?CalcShortestDistanceToPoint@C3DBoundingBox@@QBEMABVC3DVector@@@Z	parked-row retry sweep section 6b, landed 2026-10-31 (vland RELOCATION_MATCH + PASS)
