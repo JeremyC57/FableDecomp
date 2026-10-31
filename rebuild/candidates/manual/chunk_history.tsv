@@ -25388,3 +25388,13 @@ chunk	address	module	name	length
 635	00b84470	NHeroInformationScreens::CBase	NHeroInformationScreens::CBase::CBase	270
 635	0055c6f0	NUISystem::CMouseCursor	NUISystem::CMouseCursor::vfunc_1	276
 635	00a146c0	global	GetRandomPointWithinUnitSphere	278
+636	00b39fb0	CEnginePrimitiveAttachmentManager	UpdatePrimitives	284
+636	006a3a70	global	Vector_ReserveAndFill	285
+636	00978790	CThingCompare_InDirectionOfAndNearestToHeuristicBitch	operator()	286
+636	0097abf0	CThingCompare_InDirectionOfAndNearestToHeuristicBitch	operator()	286
+636	00a0c450	global	Math_ComputeSphericalCoordinate	288
+636	00d9eb30	CMC_MinionGuard	Main	288
+636	00a198c0	CNavigatorFlyer	?GetRandomNavigablePos@CNavigatorFlyer@@UBE?AVC3DVector@@ABV2@MABVC2DVector@@M@Z	289
+636	00405220	global	TransferIMEColour	290
+636	009210a0	CAIStateGroup_BeetleToggleHover	?IsRunnable@CAIStateGroup_BeetleToggleHover@@MAE_NXZ	290
+636	00ba6dc0	CEnginePrimitiveManagerStaticMeshesBase	DrawImmediately	291
