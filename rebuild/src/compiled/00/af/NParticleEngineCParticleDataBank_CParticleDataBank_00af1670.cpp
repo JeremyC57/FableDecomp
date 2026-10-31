@@ -2,14 +2,14 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF1670, length 103 bytes (padded to 112).
 // Leaf: ??0CParticleDataBank
 // Callees: CBankFile::CBankFile() @ 0x009D5F80, CResourceBank::CResourceBank() @ 0x009FC5F0, CSymbolMap::CSymbolMap()
-// @ 0x009E5200 (x2; manifest label "CParticleUpdateParameters" is propagated), CResourceList::SetMaxSize(unsigned long)
+// @ 0x009E5200 (x2; manifest label "CParticleUpdateParameters" is propagated), CResourceList::SetMaximumMemory(unsigned long)
 // @ 0x009FC520 (stores +0x28 and tail-calls the trim at 0x009FC210).
 // Layout: retail CBankFile is 0x164 bytes (PDB 0x174), so the CResourceBank base sits at +0x164 (secondary vtable
 // 0x0129F380, 0x7c bytes as in the PDB: ResourceList +4, LoadingQueue +0x40); ParticleEmitters (12-byte CArray)
 // +0x1e0, GraphicSymbols +0x1ec, MeshSymbols +0x210 (CSymbolMap 0x24 bytes in retail). Primary vtable 0x0129F38C.
 // Shape: two bases (both ctors out of line; the secondary vtable is stored before the primary), the CArray modelled as
 // STLport _Vector_base with the _STLP_alloc_proxy end member (puts the `lea ecx` before the third zero store), its inline
-// zeroing ctor, then the body: ResourceList's +0x34 word cleared and SetMaxSize(0x10000).
+// zeroing ctor, then the body: ResourceList's +0x34 word cleared and SetMaximumMemory(0x10000).
 namespace N_009d5f80 { struct CBankFile {
     virtual void v00();
     unsigned char _bankFile[0x160];         // +0x004
@@ -21,7 +21,7 @@ class CResourceList { public:
     unsigned char _list2[0x08];             // +0x2c
     unsigned long m_usedSize;               // +0x34
     unsigned char _list3[0x04];             // +0x38
-    void SetMaxSize(unsigned long size);    // 0x009FC520
+    void SetMaximumMemory(unsigned long size);    // 0x009FC520
 };
 class CResourceBank { public:
     virtual void v00();
@@ -56,6 +56,6 @@ class CParticleDataBank : public CBankFile, public CResourceBank { public:   // 
 CParticleDataBank::CParticleDataBank()
 {
     ResourceList.m_usedSize = 0;
-    ResourceList.SetMaxSize(0x10000);
+    ResourceList.SetMaximumMemory(0x10000);
 }
 }

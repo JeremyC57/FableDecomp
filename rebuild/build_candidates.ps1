@@ -371325,6 +371325,83 @@ $catalog = @(
         TestSource = '00/a6/CBusyResourceManager_OnPostSwapScreens_00a618d0_test.cpp'
         PassPattern = '00a618d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006f50b0'
+        Module = 'std::_Rb_tree'
+        Source = '00/6f/stdRbtree_erase_006f50b0.cpp'
+        TestSource = '00/6f/stdRbtree_erase_006f50b0_test.cpp'
+        PassPattern = '006f50b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00845b10'
+        Module = 'CCreatureAction_TavernGameMasterInteraction'
+        Source = '00/84/CCreatureActionTavernGameMasterInteraction_Initialise_00845b10.cpp'
+        TestSource = '00/84/CCreatureActionTavernGameMasterInteraction_Initialise_00845b10_test.cpp'
+        PassPattern = '00845b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cbf60'
+        Module = 'CTCMultiArrow'
+        Source = '00/7c/CTCMultiArrow_CTCMultiArrow_007cbf60.cpp'
+        TestSource = '00/7c/CTCMultiArrow_CTCMultiArrow_007cbf60_test.cpp'
+        PassPattern = '007cbf60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0acc0'
+        Module = 'global'
+        Source = '00/c0/global_MultiplyMaskedFactors_00c0acc0.cpp'
+        TestSource = '00/c0/global_MultiplyMaskedFactors_00c0acc0_test.cpp'
+        PassPattern = '00c0acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c6160'
+        Module = 'CCreatureAction_RockTrollFallToDeath'
+        Source = '00/8c/CCreatureActionRockTrollFallToDeath_Initialise_008c6160.cpp'
+        TestSource = '00/8c/CCreatureActionRockTrollFallToDeath_Initialise_008c6160_test.cpp'
+        PassPattern = '008c6160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0044c6c2'
+        Module = 'CGameDefinitionManager'
+        Source = '00/44/CGameDefinitionManager_CGameDefinitionManager_0044c6c2.cpp'
+        TestSource = '00/44/CGameDefinitionManager_CGameDefinitionManager_0044c6c2_test.cpp'
+        PassPattern = '0044c6c2_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006772d0'
+        Module = 'CThingBaseDef'
+        Source = '00/67/CThingBaseDef_CThingBaseDef_006772d0.cpp'
+        TestSource = '00/67/CThingBaseDef_CThingBaseDef_006772d0_test.cpp'
+        PassPattern = '006772d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009395f0'
+        Module = 'CAIStateGroup_SitRoundCampfire'
+        Source = '00/93/CAIStateGroupSitRoundCampfire_GetPNearCampfire_009395f0.cpp'
+        TestSource = '00/93/CAIStateGroupSitRoundCampfire_GetPNearCampfire_009395f0_test.cpp'
+        PassPattern = '009395f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f9010'
+        Module = 'CTCAnimatingObject'
+        Source = '00/7f/CTCAnimatingObject_PlayAnimation_007f9010.cpp'
+        TestSource = '00/7f/CTCAnimatingObject_PlayAnimation_007f9010_test.cpp'
+        PassPattern = '007f9010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085fb30'
+        Module = 'NCreatureMode'
+        Source = '00/85/NCreatureMode_IsAbleToBeAttacked_0085fb30.cpp'
+        TestSource = '00/85/NCreatureMode_IsAbleToBeAttacked_0085fb30_test.cpp'
+        PassPattern = '0085fb30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008bf1c0'
+        Module = 'CCreatureAction_UnblockableMidAttack'
+        Source = '00/8b/CCreatureActionUnblockableMidAttack_Initialise_008bf1c0.cpp'
+        TestSource = '00/8b/CCreatureActionUnblockableMidAttack_Initialise_008bf1c0_test.cpp'
+        PassPattern = '008bf1c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

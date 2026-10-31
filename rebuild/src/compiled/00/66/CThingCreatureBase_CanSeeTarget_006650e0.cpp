@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006650E0, length 171 bytes, `ret 10h`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0, CTCLook::IsPosInViewRange(const C3DVector&, float, bool, bool)
 //   @ 0x007534B0, CTCPhysicsBase::GetFacingAngleXY (slot 63, +0xFC), CThingCreatureBase::GetHeadPos(bool) @ 0x00661B40
-//   (C3DVector by hidden pointer), AngleBetweenPositions(from, to) @ 0x00661540 (`__fastcall`, float), AngleDifference(a, b)
+//   (C3DVector by hidden pointer), GFGetAngleXYTo(from, to) @ 0x00661540 (`__fastcall`, float), AngleDifference(a, b)
 //   @ 0x00A441E0 (`__stdcall`, `ret 8`, float).
 // Layout: retail CThing interface bitset +0x20 (TC 0x43 = word +0x28 bit 3), interface map +0x44, PhysicsTC +0x60.
 // Shape: HasTC is the raw bitset test and GetTC the inline const lookup forwarding all four arguments; the facing is a
@@ -44,7 +44,7 @@ class CTCLook { public:
     bool IsPosInViewRange(const C3DVector& position, float fieldOfView, bool checkRange, bool checkObstruction);   // 0x007534B0
 };
 
-float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00661540
+float __fastcall GFGetAngleXYTo(const C3DVector& from, const C3DVector& to);   // 0x00661540
 float __stdcall AngleDifference(float a, float b);                                    // 0x00A441E0
 
 class CThing {
@@ -77,7 +77,7 @@ bool CThingCreatureBase::CanSeeTarget(const C3DVector& position, float fieldOfVi
     if (UsingComponents[0x43 >> 5] & (1UL << (0x43 & 31)))
         return GetTC<CTCLook>(0x43)->IsPosInViewRange(position, fieldOfView, checkRange, checkObstruction);
     float facing = PhysicsTC->GetFacingAngleXY();
-    if (fabs(AngleDifference(facing, AngleBetweenPositions(GetHeadPos(true), position))) * 2.0f <= fieldOfView)
+    if (fabs(AngleDifference(facing, GFGetAngleXYTo(GetHeadPos(true), position))) * 2.0f <= fieldOfView)
         return true;
     return false;
 }

@@ -1,7 +1,7 @@
 // CCombatManager::IsDefenderDueForAttack(const CCombatantInfo&) const -- a defender may be attacked now only when it is attackable, none of its other attackers is already running a melee or ranged sequence, and its attack pattern's current entry is an attack; each refusal builds (and drops) a "<def name> - not attack - based on : ..." trace string
 // Leaf: ?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E97F0, 358 bytes (368 with padding). `ret 4`.
-// Callees: `__fastcall` IsAbleToBeAttacked(const CThingCreatureBase&) 0x0085FB30; CThing::GetDefName 0x004C7CC0
+// Callees: `__fastcall` NCreatureMode::IsAbleToBeAttacked(const CThing&) 0x0085FB30; CThing::GetDefName 0x004C7CC0
 //          (CDefString by hidden pointer), CDefStringTable::GetString 0x009D49B0 on the table 0x013CA828,
 //          `__fastcall` operator+(const CCharString&, const char*) 0x0099F600, ~CCharString 0x0099EAE0; the attacker
 //          map's out-of-line iterator increment 0x006EF790 and the combatant map's find 0x006F0250; the sequence's
@@ -51,7 +51,7 @@ class CThingCreatureBase : public CThingGameObject { public:
     unsigned __int64 UniqueID;                     // +0x18
     unsigned __int64 GetUID() const { return UniqueID; }
 };
-bool __fastcall IsAbleToBeAttacked(const CThingCreatureBase& creature);   // 0x0085FB30
+namespace NCreatureMode { bool __fastcall IsAbleToBeAttacked(const CThing& thing); }   // 0x0085FB30
 
 class CCombatSequenceBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -152,7 +152,7 @@ class CCombatManager { public:
 
 bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
 {
-    if (!IsAbleToBeAttacked(*info.Parent)) {
+    if (!NCreatureMode::IsAbleToBeAttacked(*info.Parent)) {
         {
             CCharString name = g_DefStringTable.GetString(info.Parent->GetDefName());
             CCharString message = name + " - not attack - based on : mode";

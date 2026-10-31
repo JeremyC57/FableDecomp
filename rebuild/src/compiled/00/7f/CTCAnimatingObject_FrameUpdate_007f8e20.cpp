@@ -125,7 +125,9 @@ public:
     bool                   Animating;           // +0x0c
     long                   CurrentAnimationPriority;   // +0x10
     CRetailList<CAnimInit> QueuedAnims;         // +0x14
-    void PlayAnimation(const CAnimInit& init, long priority);   // 0x007F8DC0
+private:
+    void PlayAnimation(const CAnimInit& init, long priority);   // 0x007F8DC0 (Ego_r: private)
+public:
     __forceinline CTCAnimationComplex* GetAnimationComplex() const
     {
         CTCAnimationComplex* complex;

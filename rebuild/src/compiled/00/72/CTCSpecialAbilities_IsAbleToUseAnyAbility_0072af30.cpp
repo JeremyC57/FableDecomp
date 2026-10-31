@@ -1,7 +1,7 @@
 // CTCSpecialAbilities::IsAbleToUseAnyAbility(EHeroAbility ability) const -- the hero may use an ability unless the abilities are locked, he is in bed or knocked down, or his interface-0x29 component disallows it; a carried weapon must also be usable by him (ability 8 exempt)
 // Leaf: IsAbleToUseAnyAbility
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072AF30, 254 bytes, `ret 4`.
-// Callees: IsKnockedDown(CThing*) @ 0x0085F010 (`__fastcall`), the const interface LowerBound @ 0x004365B0 (interfaces 0x29,
+// Callees: NCreatureMode::IsKnockedDown(const CThing&) @ 0x0085F010 (`__fastcall`), the const interface LowerBound @ 0x004365B0 (interfaces 0x29,
 //   0x46 = CTCCarrying, 0x48 = CTCWeapon), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::IsUsableBy(const
 //   CThing&) const @ 0x005DAB10.
 // Layout: Ego_r.pdb CTCSpecialAbilities AbilityMutexLock +0x0C, UsingBed +0x0D; retail CThing interface bitset +0x20
@@ -38,7 +38,7 @@ public:
         return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
 };
-bool __fastcall IsKnockedDown(CThing* thing);           // 0x0085F010
+namespace NCreatureMode { bool __fastcall IsKnockedDown(const CThing& thing); }   // 0x0085F010
 struct CTCAbilityPermissions {                          // interface 0x29 (named descriptively)
     unsigned char _pad00[0x0d];
     bool          AbilitiesAllowed;                     // +0x0d
@@ -64,7 +64,7 @@ class CTCSpecialAbilities { public:
 __forceinline bool IsWeaponUsableBy(CTCWeapon* weapon, const CThing& user) { return weapon->IsUsableBy(user); }
 bool CTCSpecialAbilities::IsAbleToUseAnyAbility(EHeroAbility ability) const
 {
-    if (!AbilityMutexLock && !UsingBed && !IsKnockedDown(ParentThing)) {
+    if (!AbilityMutexLock && !UsingBed && !NCreatureMode::IsKnockedDown(*ParentThing)) {
         const CThing* thing = ParentThing;
         CTCAbilityPermissions* permissions = 0;
         if (thing->HasTC(0x29))

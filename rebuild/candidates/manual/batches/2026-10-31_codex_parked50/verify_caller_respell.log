@@ -1,0 +1,45 @@
+addr       parity           behav  name
+00433693   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00433693   WARN RELOC_NAME: ?ErrorCallback@CStartupDefinitionManager@@KIXABVCCharString@@@Z -> 0043368c labelled 'Stub_ReturnVoid_0043368c'
+00433693   RELOCATION_MATCH PASS   CStartupDefinitionManager::CStartupDefinitionManager
+006650e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006650e0   RELOCATION_MATCH PASS   CThingCreatureBase::CanSeeTarget
+006e97f0   WARN RELOC_NAME: ??ECAttackerIterator@@QAEAAU0@XZ -> 006ef790 labelled 'CRetailTreeIterator::Increment'
+006e97f0   RELOCATION_MATCH PASS   CCombatManager::IsDefenderDueForAttack
+006eabb0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006eabb0   RELOCATION_MATCH PASS   CCombatManager::UpdateAttackingCombatantSequenceResets
+006ebdd0   RELOCATION_MATCH PASS   CreatureUnsheathWeapon
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006ed8c0   RELOCATION_MATCH PASS   CCombatManager::DeregisterAttackedCombatant
+0072af30   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0072af30   RELOCATION_MATCH PASS   CTCSpecialAbilities::IsAbleToUseAnyAbility
+007f8e20   WARN SHARED_HEADER_AVAILABLE CWorld
+007f8e20   WARN SHARED_HEADER_AVAILABLE CTCBase
+007f8e20   WARN RELOC_NAME: ?GetTimeScale@CBulletTime@@QAEMXZ -> 004c5fa0 labelled 'CBulletTimeManager::GetBulletTimeSlowdownMultiplier'
+007f8e20   RELOCATION_MATCH PASS   CTCAnimatingObject::FrameUpdate
+00af1670   WARN SHARED_HEADER_AVAILABLE CBankFile
+00af1670   WARN SHARED_HEADER_AVAILABLE CResourceList
+00af1670   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+00af1670   RELOCATION_MATCH PASS   NParticleEngine::CParticleDataBank::CParticleDataBank
+00b3b240   WARN SHARED_HEADER_AVAILABLE CResourceList
+00b3b240   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b3b240   WARN RELOC_NAME: ??0CMemoryPool@@QAE@XZ -> 00a62e20 labelled 'CMovableResourceMemoryPool::CMovableResourceMemoryPool'
+00b3b240   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+00b3b240   WARN RELOC_NAME: ??0CPoolAllocator@@QAE@XZ -> 009d5eb0 labelled 'CLoadingMemoryFailureHandler::CLoadingMemoryFailureHandler'
+00b3b240   RELOCATION_MATCH PASS   CEngineResourceManager::AllocatePools
+00cd3f00   WARN RELOC_NAME: ?ErrorCallback@CScriptDefinitionManager@@KIXABVCCharString@@@Z -> 00cd3ee0 labelled 'NullFunction'
+00cd3f00   RELOCATION_MATCH PASS   CScriptDefinitionManager::CScriptDefinitionManager
+
+WINS: 11
+  00433693 RELOCATION_MATCH CStartupDefinitionManager::??0CStartupDefinitionManager
+  006650e0 RELOCATION_MATCH CThingCreatureBase::CanSeeTarget
+  006e97f0 RELOCATION_MATCH CCombatManager::?IsDefenderDueForAttack@CCombatManager@@QBE_NABUCCombatantInfo@@@Z
+  006eabb0 RELOCATION_MATCH CCombatManager::UpdateAttackingCombatantSequenceResets
+  006ebdd0 RELOCATION_MATCH CCombatManager::CreatureUnsheathWeapon
+  006ed8c0 RELOCATION_MATCH CCombatManager::?DeregisterAttackedCombatant@CCombatManager
+  0072af30 RELOCATION_MATCH CTCSpecialAbilities::IsAbleToUseAnyAbility
+  007f8e20 RELOCATION_MATCH CTCAnimatingObject::FrameUpdate
+  00af1670 RELOCATION_MATCH NParticleEngine::CParticleDataBank::??0CParticleDataBank
+  00b3b240 RELOCATION_MATCH CEngineResourceManager::AllocatePools
+  00cd3f00 RELOCATION_MATCH CScriptDefinitionManager::??0CScriptDefinitionManager

@@ -19,7 +19,7 @@ public:
     bool IsPerformingAnyAction() const;   // 0x006622A0
 };
 
-bool __fastcall IsAbleToBeAttacked(CThing* thing);   // 0x0085FB30
+namespace NCreatureMode { bool __fastcall IsAbleToBeAttacked(const CThing& thing); }   // 0x0085FB30
 
 class CCombatSequenceBase { public:
     virtual void v000();
@@ -66,7 +66,7 @@ void CCombatManager::UpdateAttackingCombatantSequenceResets(CCombatantInfo* info
             parent->FinishCurrentAction();
         return;
     }
-    if (sequence->IsResetOnTargetLost() && sequence->IsReadyToReset() && !IsAbleToBeAttacked(attacked)) {
+    if (sequence->IsResetOnTargetLost() && sequence->IsReadyToReset() && !NCreatureMode::IsAbleToBeAttacked(*attacked)) {
         PerformSequenceReset(parent);
         UpdateCurrentAction(parent);
     }

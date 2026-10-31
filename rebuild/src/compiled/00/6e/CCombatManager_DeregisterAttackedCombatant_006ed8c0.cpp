@@ -1,7 +1,7 @@
 // CCombatManager::DeregisterAttackedCombatant(CThingCreatureBase* attacked) -- look the creature's combatant record up; while it still has attackers, deregister each (the record goes once the last attacker leaves, so the function returns then); with none, clear its last attacker, attack pattern and index, drop its being-attacked bit and, when it is no longer a registered combatant, erase its record
 // Leaf: ?DeregisterAttackedCombatant@CCombatManager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006ED8C0, length 242 bytes (`ret 4`).
-// Callees: Combatants.find 0x006F0250 / erase(key) 0x006F50B0 (STLport map<unsigned __int64, CCombatantInfo>),
+// Callees: Combatants._M_find 0x006F0250 / erase(key) 0x006F50B0 (STLport map<unsigned __int64, CCombatantInfo>),
 //          DeregisterAttackingCombatant 0x006ED510, CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor (PLastAttacker = 0
 //          through a CIntelligentPointer<CThing> temporary, vtable 0x01238C6C), the attack-pattern def's slot 1,
 //          CThingCreatureBase::IsInMeleeAsAttacker 0x00662410.
@@ -90,41 +90,44 @@ struct CCombatantInfo {
     unsigned char       AttackerInfo[0x30];            // +0x04 CAttackingCombatantInfo (retail 0x30)
     CDefendingCombatantInfo DefenderInfo;              // +0x34
 };
-struct SCombatantNode {
-    char             _M_color;
-    SCombatantNode*  _M_parent;
-    SCombatantNode*  _M_left;
-    SCombatantNode*  _M_right;
-    unsigned __int64 first;                            // +0x10
-    CCombatantInfo   second;                           // +0x18
+namespace std {
+template <class K, class V> struct pair { K first; V second; };
+template <class P> struct _Select1st { };
+template <class K> struct less { };
+template <class T> class allocator { };
+template <class V> struct _Rb_tree_node {
+    char           _M_color;
+    _Rb_tree_node* _M_parent;
+    _Rb_tree_node* _M_left;
+    _Rb_tree_node* _M_right;
+    V              _M_value_field;                     // first +0x10, second +0x18
 };
-struct CCombatantMap {
-    SCombatantNode* _M_header;
-    unsigned long   _M_node_count;
-    unsigned long   _M_key_compare;
-    SCombatantNode* find(const unsigned __int64& key);     // 0x006F0250
-    void erase(const unsigned __int64& key);               // 0x006F50B0
-};
+}
 long TmplSink_s7_1(const void* self, long seen);   // stand-in: the work erase does (outside the bytes graded here)
-#pragma auto_inline(off)
-// Same-TU stand-in for the erase instantiation (template bodies are compiled in the caller's TU): reads the const-reference
-// arguments (not the empty tags), stores the out pointers, lets no argument escape.
-__declspec(noinline) void CCombatantMap::erase(const unsigned __int64& key)
-{
-    long r = TmplSink_s7_1(this, 0 + *(const long*)&key);
-    (void)r;
+long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work _M_find does (outside the bytes graded here)
+namespace std {
+// STLport 4.6 map<unsigned __int64, CCombatantInfo> tree (Combatants). The two members used here are same-TU stand-ins: template
+// bodies are compiled in the caller's TU; each reads the key, stores nothing, lets no argument escape.
+template <class K, class V, class KoV, class C, class A> class _Rb_tree {
+public:
+    _Rb_tree_node<V>* _M_header;
+    unsigned long     _M_node_count;
+    unsigned long     _M_key_compare;
+    __declspec(noinline) _Rb_tree_node<V>* _M_find(const K& key) const      // 0x006F0250
+    {
+        long r = TmplSink_s7_0(this, 0 + *(const long*)&key);
+        return (_Rb_tree_node<V>*)r;
+    }
+    __declspec(noinline) unsigned int erase(const K& key)                   // 0x006F50B0
+    {
+        long r = TmplSink_s7_1(this, 0 + *(const long*)&key);
+        return (unsigned int)r;
+    }
+};
 }
-#pragma auto_inline(on)
-long TmplSink_s7_0(const void* self, long seen);   // stand-in: the work find does (outside the bytes graded here)
-#pragma auto_inline(off)
-// Same-TU stand-in for the find instantiation (template bodies are compiled in the caller's TU): reads the const-reference
-// arguments (not the empty tags), stores the out pointers, lets no argument escape.
-__declspec(noinline) SCombatantNode* CCombatantMap::find(const unsigned __int64& key)
-{
-    long r = TmplSink_s7_0(this, 0 + *(const long*)&key);
-    return (SCombatantNode*)r;
-}
-#pragma auto_inline(on)
+typedef std::pair<const unsigned __int64, CCombatantInfo> SCombatantPair;
+typedef std::_Rb_tree<unsigned __int64, SCombatantPair, std::_Select1st<SCombatantPair>, std::less<unsigned __int64>,
+                      std::allocator<SCombatantPair> > CCombatantMap;
 class CCombatManager {
 public:
     virtual void v00();
@@ -145,7 +148,7 @@ __declspec(noinline) void CCombatManager::DeregisterAttackingCombatant(CThingCre
 
 void CCombatManager::DeregisterAttackedCombatant(CThingCreatureBase* attacked)
 {
-    CCombatantInfo* info = &Combatants.find(attacked->GetUID())->second;
+    CCombatantInfo* info = &Combatants._M_find(attacked->GetUID())->_M_value_field.second;
     long count = info->DefenderInfo.Attackers.size();
     while (count > 0) {
         DeregisterAttackingCombatant(info->DefenderInfo.Attackers.begin()->second);

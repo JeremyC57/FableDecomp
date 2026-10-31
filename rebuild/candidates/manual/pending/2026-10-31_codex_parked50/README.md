@@ -6,3 +6,7 @@
 `rebuild/include`, `reloc_bindings.tsv`, handoff docs; no retail bytes, no links). README_CODEX.md is the brief it shipped with.
 Reserved until 2026-11-03: chunk cuts and sweep agents skip these addresses (`$S/w29/extent.py` / cut.sh callers: exclude
 RESERVED.tsv). Returned rows are regraded with vland.py like ChatGPT passes 8/9 (`batches/2026-10-29_chatgpt_pass9/README.md`).
+
+## Returned 2026-10-31
+Regraded and landed: 11 of 50 (`batches/2026-10-31_codex_parked50/README.md`). The 39 parked best attempts are in `differ/` (STATUS.tsv);
+the reservation is released (RESERVED.tsv -> RETURNED.tsv) and the rows re-enter the chunk pool.

@@ -14,20 +14,21 @@ class CCharString;
 
 class CDefinitionManager {
 public:
-    typedef void (*TErrorCallback)(CCharString* message);
+    typedef void (__fastcall* TErrorCallback)(const CCharString& message);
     CDefinitionManager(const CWideString& definitionsFile, TErrorCallback errorCallback);   // 0x009B0470
     virtual ~CDefinitionManager();
     unsigned char _body[0xEC];
 };
 
 class CStartupDefinitionManager : public CDefinitionManager {
+protected:
+    static void __fastcall ErrorCallback(const CCharString& message);    // 0x0043368C (empty; Ego_r ?ErrorCallback@CStartupDefinitionManager@@KIXABVCCharString@@@Z)
 public:
-    static void StartupErrorCallback(CCharString* message);    // 0x0043368C (empty)
     CStartupDefinitionManager(const CWideString& definitionsFile);
     virtual ~CStartupDefinitionManager();
 };
 
 CStartupDefinitionManager::CStartupDefinitionManager(const CWideString& definitionsFile)
-    : CDefinitionManager(definitionsFile, StartupErrorCallback)
+    : CDefinitionManager(definitionsFile, ErrorCallback)
 {
 }

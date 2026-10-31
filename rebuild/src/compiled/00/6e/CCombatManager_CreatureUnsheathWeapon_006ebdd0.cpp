@@ -156,7 +156,8 @@ class CCombatActionBase : public CCreatureActionBase { public:
     CCombatActionBase(CThingCreatureBase& owner, CThing& target, long actionCode, const CSoundPair& sounds); // 0x00857F30
 };
 
-class CThingCreatureBase { public:
+class CThing { };
+class CThingCreatureBase : public CThing { public:
     unsigned char _nativeBeforeUsingComponents[0x20];
     unsigned long UsingComponents[9];
     CInterfaceMap Components;
@@ -174,7 +175,7 @@ class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
 FABLE_STATIC_ASSERT(sizeof(CCreatureAction_UnsheatheWeapons)==0x118);
 extern bool FABLE_FASTCALL ShouldPlayUnsheatheWeaponAction(CThingCreatureBase*,long,bool*,bool*); //008B7CF0
 extern bool FABLE_FASTCALL IsIncapacitated(CThingCreatureBase*); //0085F0C0
-extern bool FABLE_FASTCALL IsKnockedDown(CThingCreatureBase*); //0085F010
+namespace NCreatureMode { bool FABLE_FASTCALL IsKnockedDown(const CThing&); } //0085F010
 class CCombatManager { public:void CreatureUnsheathWeapon(CThingCreatureBase*,long);};
 void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long weapon)
 {
@@ -183,7 +184,7 @@ void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long we
     if(!ShouldPlayUnsheatheWeaponAction(creature,weapon,&animate,&secondary)) return;
     if(IsIncapacitated(creature)) return;
     if(((signed char)creature->UsingComponents[4] & 0x80) != 0) return;
-    if(IsKnockedDown(creature)) return;
+    if(NCreatureMode::IsKnockedDown(*creature)) return;
     if(!(creature->UsingComponents[1]&0x10000)) return;
     CInterfaceMap* map=&creature->Components;
     ETCInterfaceType type = (ETCInterfaceType)(0x30);

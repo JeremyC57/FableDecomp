@@ -1,0 +1,40 @@
+addr       parity           behav  name
+006f50b0   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 006f0350 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_006f0350,CUnprovenTraits_006f0350<CUnprovenValue_006f0350> > >'
+006f50b0   RELOCATION_MATCH PASS   erase
+00845b10   RELOCATION_MATCH PASS   Initialise
+007cbf60   RELOCATION_MATCH PASS   ~CTCMultiArrow
+00c0acc0   RELOCATION_MATCH PASS   MultiplyMaskedFactors
+008c6160   RELOCATION_MATCH PASS   Initialise
+0044c6c2   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+0044c6c2   RELOCATION_MATCH PASS   CGameDefinitionManager
+006772d0   RELOCATION_MATCH PASS   CThingBaseDef
+009395f0   RELOCATION_MATCH PASS   GetPNearCampfire
+007f9010   RELOCATION_MATCH PASS   PlayAnimation
+0085fb30   RELOCATION_MATCH PASS   IsAbleToBeAttacked
+008bf1c0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 11
+  006f50b0 RELOCATION_MATCH std::_Rb_tree::?erase@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@QAEIAB_K@Z
+  00845b10 RELOCATION_MATCH CCreatureAction_TavernGameMasterInteraction::?Initialise@CCreatureAction_TavernGameMasterInteraction@@UAEXXZ
+  007cbf60 RELOCATION_MATCH CTCMultiArrow::??1CTCMultiArrow@@UAE@XZ
+  00c0acc0 RELOCATION_MATCH global::?MultiplyMaskedFactors@@YIMMPBMKK@Z
+  008c6160 RELOCATION_MATCH CCreatureAction_RockTrollFallToDeath::?Initialise@CCreatureAction_RockTrollFallToDeath@@UAEXXZ
+  0044c6c2 RELOCATION_MATCH CGameDefinitionManager::??0CGameDefinitionManager@@QAE@XZ
+  006772d0 RELOCATION_MATCH CThingBaseDef::??0CThingBaseDef@@QAE@XZ
+  009395f0 RELOCATION_MATCH CAIStateGroup_SitRoundCampfire::?GetPNearCampfire@CAIStateGroup_SitRoundCampfire@@ABEPAVCThingObject@@XZ
+  007f9010 RELOCATION_MATCH CTCAnimatingObject::?PlayAnimation@CTCAnimatingObject@@QAEXJJ_N@Z
+  0085fb30 RELOCATION_MATCH NCreatureMode::?IsAbleToBeAttacked@NCreatureMode@@YI_NABVCThing@@@Z
+  008bf1c0 RELOCATION_MATCH CCreatureAction_UnblockableMidAttack::?Initialise@CCreatureAction_UnblockableMidAttack@@UAEXXZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  stdRbtree_erase_006f50b0
+  CCreatureActionTavernGameMasterInteraction_Initialise_00845b10
+  CTCMultiArrow_CTCMultiArrow_007cbf60
+  global_MultiplyMaskedFactors_00c0acc0
+  CCreatureActionRockTrollFallToDeath_Initialise_008c6160
+  CGameDefinitionManager_CGameDefinitionManager_0044c6c2
+  CThingBaseDef_CThingBaseDef_006772d0
+  CAIStateGroupSitRoundCampfire_GetPNearCampfire_009395f0
+  CTCAnimatingObject_PlayAnimation_007f9010
+  NCreatureMode_IsAbleToBeAttacked_0085fb30
+  CCreatureActionUnblockableMidAttack_Initialise_008bf1c0

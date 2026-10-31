@@ -35,16 +35,16 @@ struct CMemoryPool {
 struct CPoolAllocator { unsigned char _pad[0x28]; CPoolAllocator(); };   // 0x009D5EB0
 struct CMemoryPoolPointer { CMemoryPool* m_pObject; void* m_pCount; void Reset(CMemoryPool* pool); };          // 0x00B3E4A0
 struct CAllocatorPointer { CPoolAllocator* m_pObject; void* m_pCount; void Reset(CPoolAllocator* alloc); };     // 0x00B3E510
-struct CDeviceBudget { void Set(long bytes); };   // 0x009FC520
+struct CResourceList { void SetMaximumMemory(unsigned long bytes); };   // 0x009FC520 (MaximumMemory +0x28; Ego_r CResourceList)
 struct CRenderDeviceBudgets {
     unsigned char _pad000[0x174];
-    CDeviceBudget TextureBudget;               // +0x174
+    CResourceList TextureBudget;               // +0x174
     unsigned char _pad175[0x1f0 - 0x175];
-    CDeviceBudget VertexBudget;                // +0x1f0
+    CResourceList VertexBudget;                // +0x1f0
     unsigned char _pad1f1[0x26c - 0x1f1];
-    CDeviceBudget StaticBudget;                // +0x26c
+    CResourceList StaticBudget;                // +0x26c
     unsigned char _pad26d[0x2e8 - 0x26d];
-    CDeviceBudget DynamicBudget;               // +0x2e8
+    CResourceList DynamicBudget;               // +0x2e8
 };
 struct CEngineResourcePoolSizes {
     unsigned char _pad00[0xc];
@@ -92,10 +92,10 @@ void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResour
             IndexPool.m_pObject->Name = name;
         }
         IndexPool.m_pObject->Initialise(sizes.IndexKB << 10, false, false);
-        Budgets->TextureBudget.Set(sizes.TextureKB << 10);
-        Budgets->VertexBudget.Set(sizes.VertexKB << 10);
-        Budgets->StaticBudget.Set(sizes.StaticKB << 10);
-        Budgets->DynamicBudget.Set(sizes.DynamicKB << 10);
+        Budgets->TextureBudget.SetMaximumMemory(sizes.TextureKB << 10);
+        Budgets->VertexBudget.SetMaximumMemory(sizes.VertexKB << 10);
+        Budgets->StaticBudget.SetMaximumMemory(sizes.StaticKB << 10);
+        Budgets->DynamicBudget.SetMaximumMemory(sizes.DynamicKB << 10);
     }
     GeneralPool.Reset(new CMemoryPool());
     GeneralPool.m_pObject->Initialise(0x400000, true, false);
