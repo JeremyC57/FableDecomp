@@ -18,7 +18,11 @@
 // Forced inline: retail never calls a CDefPointer member out of line (no relocation binding names one; the four
 // out-of-line operator= bodies, e.g. 0x00592844, are unreferenced COMDATs), size-optimised TUs included (landed GetSubDef<T>
 // rows 0x007BE88C / 0x007BE92E: plain `inline` is called out of line there, 112 vs 162 bytes); __forceinline reproduces that.
-// Unproven / not declared: the ENullDef constructor (the enumerator's name is in neither PDB name list); Reset's body.
+// ENullDef constructor (added 2026-10-31, owner request): FableWin.pdb's ??0?$CDefPointer@..@@QAE@W4ENullDef@@@Z (332
+// instantiations) is the null constructor; no ??0..@@QAE@XZ default constructor exists in either PDB although classes
+// default-construct CDefPointer members, so the enum parameter carries a default argument (inferred from that absence).
+// The enumerator's name is in neither PDB name list: NULL_DEF is a placeholder spelling (naming queue), the enum's type
+// name ENullDef is the PDB's. Retail bytes: `and/mov dword ptr [..], 0` — the body is `Object = 0`. Unproven: Reset's body.
 #ifndef FABLE_RETAIL_DEF_CLASS_BASE
 #error engine/CDefPointer.h is the retail def model: define FABLE_RETAIL_DEF_CLASS_BASE before including it
 #else
@@ -30,8 +34,11 @@
 #define FABLE_DEFPTR_INLINE inline
 #endif
 
+enum ENullDef { NULL_DEF };                                          // W4ENullDef@@ (global); enumerator name unproven
+
 template <class T> class CDefPointer {
 public:
+    FABLE_DEFPTR_INLINE CDefPointer(ENullDef = NULL_DEF) : Object(0) {}             // ??0..QAE@W4ENullDef@@@Z
     FABLE_DEFPTR_INLINE CDefPointer(const CDefPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
     template <class U> FABLE_DEFPTR_INLINE CDefPointer(const CDefPointer<U>& other) : Object(other.InternalGetObject())
     {

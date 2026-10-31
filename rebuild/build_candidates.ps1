@@ -369862,6 +369862,48 @@ $catalog = @(
         TestSource = '00/74/CTCStealth_FrameUpdate_00747da0_test.cpp'
         PassPattern = '00747da0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0071d940'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_AddTattoo_0071d940.cpp'
+        TestSource = '00/71/CTCHeroMorph_AddTattoo_0071d940_test.cpp'
+        PassPattern = '0071d940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00659c7e'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_AddCrateTasksFromAndTo_00659c7e.cpp'
+        TestSource = '00/65/CTCVillage_AddCrateTasksFromAndTo_00659c7e_test.cpp'
+        PassPattern = '00659c7e_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071d3b0'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_UpdateTattoos_0071d3b0.cpp'
+        TestSource = '00/71/CTCHeroMorph_UpdateTattoos_0071d3b0_test.cpp'
+        PassPattern = '0071d3b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00698a30'
+        Module = '_global'
+        Source = '00/69/global_PlayCameraSoundThroughObservedThing_00698a30.cpp'
+        TestSource = '00/69/global_PlayCameraSoundThroughObservedThing_00698a30_test.cpp'
+        PassPattern = '00698a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cf7e0'
+        Module = 'CTCTavernGameShoveHaPenny'
+        Source = '00/7c/CTCTavernGameShoveHaPenny_NewRound_007cf7e0.cpp'
+        TestSource = '00/7c/CTCTavernGameShoveHaPenny_NewRound_007cf7e0_test.cpp'
+        PassPattern = '007cf7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00802d10'
+        Module = 'NPlayerTargeting'
+        Source = '00/80/NPlayerTargeting_IsThingInTargetingRangeForTargetType_00802d10.cpp'
+        TestSource = '00/80/NPlayerTargeting_IsThingInTargetingRangeForTargetType_00802d10_test.cpp'
+        PassPattern = '00802d10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

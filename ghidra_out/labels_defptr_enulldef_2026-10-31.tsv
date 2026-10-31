@@ -1,0 +1,7 @@
+address	name	evidence
+0x0071D940	CTCHeroMorph::AddTattoo	proven per batch 2026-10-31_defptr_enulldef README.md (ENullDef ctor landed; sections 2b/2c/3 PENDING_HEADER rows)
+0x00659C7E	CTCVillage::AddCrateTasksFromAndTo	proven per batch 2026-10-31_defptr_enulldef README.md (ENullDef ctor landed; sections 2b/2c/3 PENDING_HEADER rows)
+0x0071D3B0	CTCHeroMorph::UpdateTattoos	proven per batch 2026-10-31_defptr_enulldef README.md (ENullDef ctor landed; sections 2b/2c/3 PENDING_HEADER rows)
+0x00698A30	PlayCameraSoundThroughObservedThing	proven per batch 2026-10-31_defptr_enulldef README.md (ENullDef ctor landed; sections 2b/2c/3 PENDING_HEADER rows)
+0x007CF7E0	CTCTavernGameShoveHaPenny::NewRound	proven per batch 2026-10-31_defptr_enulldef README.md (ENullDef ctor landed; sections 2b/2c/3 PENDING_HEADER rows)
+0x00802D10	NPlayerTargeting::IsThingInTargetingRangeForTargetType	proven per batch 2026-10-31_defptr_enulldef README.md (ENullDef ctor landed; sections 2b/2c/3 PENDING_HEADER rows)

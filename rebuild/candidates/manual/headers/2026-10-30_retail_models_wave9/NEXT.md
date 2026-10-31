@@ -83,3 +83,9 @@ Counts come from `scripts/count.py` (rows that define `class|struct <X> {` at a 
 - The warning is the debt signal and does not change a grade. With `LANDVERIFY_STRICT_HEADERS=1` such a row would be
   refused, so new chunk rows should include engine/CCountedPointer.h. The CreateActiveEntityScript shape is the known
   exception (item 4).
+
+## Item 0 (added 2026-10-31): CDefPointer(ENullDef) is in the header
+`engine/CDefPointer.h` now has `enum ENullDef { NULL_DEF }` + `CDefPointer(ENullDef = NULL_DEF)`; 154 landed includers rechecked
+154/154 (`batches/2026-10-31_defptr_enulldef/`). Wave 10 should move the 76 landed sources with a local `enum ENullDef` /
+CDefPointer null-ctor model onto the header (grep `enum ENullDef` under rebuild/src/compiled), then regrade the sections' hdr/
+copies that still carry a local def model.
