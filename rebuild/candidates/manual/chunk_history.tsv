@@ -25238,3 +25238,13 @@ chunk	address	module	name	length
 620	0057df85	CTCHeroStats	KickHeroToMostRecentSafeRegion	876
 620	00622a00	CTCInventoryQuests	OpenInventory	877
 620	0058f649	CTCInventory	OpenPCInventory	883
+621	00aeeba0	CParticleEmitter	StartFrame	890
+621	00a8a220	C3DMesh2	?GetDummyObjectTransformAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAVCMatrix3x4@@ABVC3DAnimationBlendState@@AAVC3DAnimationManager@@_N@Z	965
+621	0088b0c0	global	GFLoadSkeletalMorphTargetFromFile	971
+621	00a8a5f0	C3DMesh2	?GetDummyObjectTransformAnimated@C3DMesh2@@UBEXABVC3DDummyObject@@AAVCMatrix3x4@@ABVC3DAnimationBlendState@@2MAAVC3DAnimationManager@@_N@Z	981
+621	0063d0a0	CWorldMap	FindGroundCollisionPointWithinCell	1017
+621	0063d4a0	CWorldMap	FindGroundCollisionPointWithinCell	1017
+621	00972f30	CAIStateGroup_JackOfBladesStage2	?SetupArena@CAIStateGroup_JackOfBladesStage2@@MAEXXZ	1026
+621	009482a0	CAIStateGroup_GoToPub	GetSeat	1072
+621	00756d00	CPersistContext	TransferMap<CObjectAugmentationParticleSet,EObjectAugmentationType>	1116
+621	009289b0	CAIStateGroup_BanditPlot	?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ	1131
