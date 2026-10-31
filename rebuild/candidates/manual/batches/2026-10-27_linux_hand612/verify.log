@@ -1,0 +1,16 @@
+addr       parity           behav  name
+007d9d70   WARN RELOC_NAME: ??$__uninitialized_copy@PAUKnickKnack@@PAU1@@std@@YIPAUKnickKnack@@PAU1@00ABU__false_type@0@@Z -> 007d98c0 labelled '_global::UninitCopy_SElement16_007d98c0'
+007d9d70   RELOCATION_MATCH PASS   _M_fill_insert
+0093c2f0   WARN RELOC_NAME: ?IsThingValidTarget@CTCTargetingAI@@QBE_NABVCThing@@@Z -> 007f6170 labelled 'CTCTargetingAI::IsThingAttackable'
+0093c2f0   RELOCATION_MATCH PASS   IsRunnable
+009852c0   RELOCATION_MATCH PASS   FollowUpdate
+
+WINS: 3
+  007d9d70 RELOCATION_MATCH std::vector<KnickKnack>::?_M_fill_insert@?$vector@UKnickKnack@@V?$allocator@UKnickKnack@@@std@@@std@@QAEXPAUKnickKnack@@IABU3@@Z
+  0093c2f0 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::?IsRunnable@CAIStateGroup_StealthSeekEnemy@@UAE_NXZ
+  009852c0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::?FollowUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NM_N@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  stdvectorKnickKnack_Mfillinsert_007d9d70
+  CAIStateGroupStealthSeekEnemy_IsRunnable_0093c2f0
+  CAIStateGroupOpinionReactionRoot_FollowUpdate_009852c0

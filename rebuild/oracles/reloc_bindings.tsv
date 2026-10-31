@@ -35705,3 +35705,9 @@ _drftf1@20	00c98e80	00c9bc10
 ?IsEastAsianChar@@YA_N_W@Z	00a10240	00a10a60
 ?IsNonBeginningChar@@YA_N_W@Z	00a0fe80	00a10a60
 ?IsNonEndingChar@@YA_N_W@Z	00a10170	00a10a60
+??$__copy_backward@PAUKnickKnack@@PAU1@H@std@@YIPAUKnickKnack@@PAU1@00ABUrandom_access_iterator_tag@0@PAH@Z	007d9790	007d9d70
+??$fill@PAUKnickKnack@@U1@@std@@YIXPAUKnickKnack@@0ABU1@@Z	007d96f0	007d9d70
+?IsThingValidTarget@CTCTargetingAI@@QBE_NABVCThing@@@Z	007f6170	0093c2f0
+?IsWillingToAttackTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z	008648a0	0093c2f0
+?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	006cb6e0	009852c0
+?TurnToFace@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	0095edf0	009852c0

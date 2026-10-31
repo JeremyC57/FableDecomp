@@ -370728,6 +370728,27 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVMurderTwistScript_GemsFoundProcess_00ead9f0_test.cpp'
         PassPattern = '00ead9f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007d9d70'
+        Module = 'std::vector<KnickKnack>'
+        Source = '00/7d/stdvectorKnickKnack_Mfillinsert_007d9d70.cpp'
+        TestSource = '00/7d/stdvectorKnickKnack_Mfillinsert_007d9d70_test.cpp'
+        PassPattern = '007d9d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093c2f0'
+        Module = 'CAIStateGroup_StealthSeekEnemy'
+        Source = '00/93/CAIStateGroupStealthSeekEnemy_IsRunnable_0093c2f0.cpp'
+        TestSource = '00/93/CAIStateGroupStealthSeekEnemy_IsRunnable_0093c2f0_test.cpp'
+        PassPattern = '0093c2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009852c0'
+        Module = 'CAIStateGroup_OpinionReactionRoot'
+        Source = '00/98/CAIStateGroupOpinionReactionRoot_FollowUpdate_009852c0.cpp'
+        TestSource = '00/98/CAIStateGroupOpinionReactionRoot_FollowUpdate_009852c0_test.cpp'
+        PassPattern = '009852c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
