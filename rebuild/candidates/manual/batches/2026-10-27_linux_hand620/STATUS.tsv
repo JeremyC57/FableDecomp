@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+009fb750	DIFFER	789v789	-	register allocation: stream in ebx (retail ebp), row/total in ebp (retail ebx); lane gap
+00489d40	DIFFER	815v815	-	frame slots of three C3DVector temporaries only; lane gap
+00a17f80	DIFFER	818v818	-	scheduling only (add esi,edx slot, plane-copy load, fld/fmul pair, fst/fstp destinations); twin of 00a177a0
+005726a0	DIFFER	824v824	-	CDeletion Method=1 store scheduled above the vtable load (2 sites, 4 lines); real name RecheckAvailabilities
+00a177a0	DIFFER	840v840	-	scheduling only: one mov ecx,[esp+28h] a slot late (4 lines)
+0085c470	DIFFER	857v857	-	eax/ecx/edx rotation in the tail (ground add, SetGoToPosition push, LookAt copy)
+0047e9ae	DIFFER	860v860	-	push ecx / fsubp swap before ChangePosition (2 lines); shared with 0x0047E651 / 0x0047F30F
+0057df85	DIFFER	876v876	-	one frame-slot rotation of three CCharString temporaries
+00622a00	DIFFER	877v877	-	global zero cache in ebx (retail: local xor edi/ebp, things._M_finish in ebp, component in ebx)
+0058f649	DIFFER	883v883	-	frame-slot swap (manager v name temps), list-address scheduling, action.first store above vtable load
