@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0057f70f   RELOCATION_MATCH PASS   TransferOut
+00c88cd0   MATCH            PASS   Add
+
+WINS: 2
+  0057f70f RELOCATION_MATCH CPersistContext_TransferableVector::?TransferOut@?$CPersistContext_TransferableVector@J@@EAEXAAVCPersistContext@@AAVCCharString@@J@Z
+  00c88cd0 MATCH CMixKernelsSSE::Add
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CPersistContextTransferableVector_TransferOut_0057f70f
+  CMixKernelsSSE_Add_00c88cd0

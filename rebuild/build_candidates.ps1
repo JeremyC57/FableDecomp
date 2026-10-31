@@ -370636,6 +370636,20 @@ $catalog = @(
         TestSource = '00/b9/C3DBoundingBox_CalcShortestDistanceToPoint_00b9c500_test.cpp'
         PassPattern = '00b9c500_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0057f70f'
+        Module = 'CPersistContext_TransferableVector'
+        Source = '00/57/CPersistContextTransferableVector_TransferOut_0057f70f.cpp'
+        TestSource = '00/57/CPersistContextTransferableVector_TransferOut_0057f70f_test.cpp'
+        PassPattern = '0057f70f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c88cd0'
+        Module = 'CMixKernelsSSE'
+        Source = '00/c8/CMixKernelsSSE_Add_00c88cd0.cpp'
+        TestSource = '00/c8/CMixKernelsSSE_Add_00c88cd0_test.cpp'
+        PassPattern = '00c88cd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
