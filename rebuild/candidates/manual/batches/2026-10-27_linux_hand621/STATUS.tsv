@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00aeeba0	DIFFER	890v890	-	CParticleEmitter::StartFrame: cofactor product operand order (VC canonical), Set store schedule; alias lever inert
+00a8a220	DIFFER	965v965	-	C3DMesh2::GetDummyObjectTransformAnimated: retail row-sum order now exact (sequenced sums, 268->202); product fld/fmul order canonicalised
+0088b0c0	DIFFER	971v971	-	GFLoadSkeletalMorphTargetFromFile: user inline ~CStringParser vptr reset (vtable in edi); generated dtor never inlines (970v971)
+00a8a5f0	DIFFER	981v981	-	C3DMesh2::GetDummyObjectTransformAnimated (blended overload): twin of 00a8a220 (256->204)
+0063d0a0	DIFFER	1017v1017	-	CWorldMap::FindGroundCollisionPointWithinCell: scheduling only (fld before push esi; pointer-load order)
+0063d4a0	DIFFER	1017v1017	-	CWorldMap::FindThemeCollisionPointWithinCell (catalog name wrong, NAME_FIXES): twin of 0063d0a0
+00972f30	DIFFER	1026v1026	-	CAIStateGroup_JackOfBladesStage2::SetupArena: /GS frame-slot layout 4-12 bytes lower; stand-in class name debt
+009482a0	DIFFER	1072v1072	-	CAIStateGroup_GoToPub::GetSeat: random index edx v eax; al set after the pops
+00756d00	RELOCATION_MATCH	1116v1116	PASS	CPersistContext::TransferMap<pair<long,long>, CCharString>: respelled to the real template member over std::map (PDB callee spellings); PDB 8-byte value traits transferred in place; vland RELOCATION_MATCH PASS (jump table)
+009289b0	DIFFER	1133v1131	-	CAIStateGroup_BanditPlot::Act: endFrame coalesced with wait in ebx (retail ebp), loses the ebx=2 constant
