@@ -25128,3 +25128,13 @@ chunk	address	module	name	length
 609	00a42170	CPlane	Initialise	269
 609	00c6b9d0	global	Audio_FilterSamples_2ndOrder	269
 609	0067e290	CDegradableDef	CDegradableDef::Transfer	273
+610	0080db70	global	CTCPhysicsBase_ApplyExplosiveImpulseFromPoint	275
+610	004b1a80	CQuestManager	SetBoastAsMade	277
+610	00c071b0	global	swd_accept	279
+610	0062b7c0	CTCHeroRangedAttacks	CTCHeroRangedAttacks::OnWeaponSwitch	280
+610	00934f20	CThingCompare_NearestGroupByMember	operator()<CThing>	281
+610	00a10a60	WordWrap_String	TokenizeW	281
+610	005b6767	CTCInventoryClothing	GetItemDescriptionArmourRating	282
+610	00ab7b00	CStaticFontBank	CStaticFontBank::GetStringExtents	287
+610	00637c80	CThingMapManager	DebugDraw	288
+610	00733cf0	global	TCCombat_ApplyBlockResponse	288
