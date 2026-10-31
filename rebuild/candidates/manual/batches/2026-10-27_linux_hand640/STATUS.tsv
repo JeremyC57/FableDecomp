@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+004fec80	DIFFER	337v337	-	count/index ebx/ebp colouring tie (PDB respell, local-order forms inert)
+00aa3af0	RELOCATION_MATCH	346v346	PASS	C3DKeyframe::ToMatrix(CMatrix4x4&, bool): elements written through the FableWin inline float& CMatrix4x4::operator()(int,int)
+00697cc0	DIFFER	346v346	-	scheduling: lea/push of the first Rotate arg one x87 slot late (PDB accessors/respell inert)
+00c1d1c0	DIFFER	347v347	-	x87 operand order of 7 commutative fmul pairs; respelled CMatrix3x4::SetInverse (fastcall member for the LTCG convention)
+00df48f0	RELOCATION_MATCH	348v348	PASS	shared NScript headers (CEntityScriptBase, CIsThingConscious : CPredicateBase) put &Me in edi; ~CScriptThing out of line
+00986ed0	DIFFER	353v353	-	x87 operand order of three cross-product fmuls (inline GetRight forms worse)
+00be1c10	DIFFER	353v353	-	scheduling: factor X/Y copy before the Z term in retail
+00a22e10	DIFFER	358v358	-	scheduling: one mov esi,17Ch after fmul st(4) (GFFastOneOverSqrt helper inert)
+00688d40	DIFFER	362v360	-	this/def-pointer edi/ebp colouring tie; rest of the structure now matches
+00f36a30	DIFFER	361v361	-	scheduling: loop counter load before the first fmul in retail (QFE, i++ in index inert)

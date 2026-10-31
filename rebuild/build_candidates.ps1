@@ -371227,6 +371227,20 @@ $catalog = @(
         TestSource = '00/8a/CGameScriptInterface_GetAllThingsWithDefName_008a8890_test.cpp'
         PassPattern = '008a8890_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aa3af0'
+        Module = 'C3DKeyframe'
+        Source = '00/aa/C3DKeyframe_ToMatrix_00aa3af0.cpp'
+        TestSource = '00/aa/C3DKeyframe_ToMatrix_00aa3af0_test.cpp'
+        PassPattern = '00aa3af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df48f0'
+        Module = 'NScript::CQ_TentacleKrakenBossFightScript::CM_Experience'
+        Source = '00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_Main_00df48f0.cpp'
+        TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_Main_00df48f0_test.cpp'
+        PassPattern = '00df48f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

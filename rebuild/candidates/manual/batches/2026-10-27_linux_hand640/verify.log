@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00aa3af0   RELOCATION_MATCH PASS   ToMatrix
+00df48f0   RELOCATION_MATCH PASS   Main
+
+WINS: 2
+  00aa3af0 RELOCATION_MATCH C3DKeyframe::?ToMatrix@C3DKeyframe@@QBEXAAVCMatrix4x4@@_N@Z
+  00df48f0 RELOCATION_MATCH NScript::CQ_TentacleKrakenBossFightScript::CM_Experience::?Main@CM_Experience@CQ_TentacleKrakenBossFightScript@NScript@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  C3DKeyframe_ToMatrix_00aa3af0
+  NScriptCQTentacleKrakenBossFightScriptCMExperience_Main_00df48f0
