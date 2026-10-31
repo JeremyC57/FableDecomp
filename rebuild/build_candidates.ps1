@@ -370714,6 +370714,20 @@ $catalog = @(
         TestSource = '00/c0/global_swdaccept_00c071b0_test.cpp'
         PassPattern = '00c071b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00760c40'
+        Module = 'NShape::CTrack'
+        Source = '00/76/NShapeCTrack_GetTrackPosAtLengthFraction_00760c40.cpp'
+        TestSource = '00/76/NShapeCTrack_GetTrackPosAtLengthFraction_00760c40_test.cpp'
+        PassPattern = '00760c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ead9f0'
+        Module = 'NScript::CV_MurderTwistScript'
+        Source = '00/ea/NScriptCVMurderTwistScript_GemsFoundProcess_00ead9f0.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistScript_GemsFoundProcess_00ead9f0_test.cpp'
+        PassPattern = '00ead9f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

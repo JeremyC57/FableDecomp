@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00760c40   RELOCATION_MATCH PASS   GetTrackPosAtLengthFraction
+00ead9f0   RELOCATION_MATCH PASS   GemsFoundProcess
+
+WINS: 2
+  00760c40 RELOCATION_MATCH NShape::CTrack::?GetTrackPosAtLengthFraction@CTrack@NShape@@QBE?AVC3DVector@@M@Z
+  00ead9f0 RELOCATION_MATCH NScript::CV_MurderTwistScript::?GemsFoundProcess@CV_MurderTwistScript@NScript@@QAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NShapeCTrack_GetTrackPosAtLengthFraction_00760c40
+  NScriptCVMurderTwistScript_GemsFoundProcess_00ead9f0

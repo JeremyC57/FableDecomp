@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0063e590	DIFFER	340v340	-	one Bind3 F3 store one instruction early; tried Bind3 body-assign, named tools/IsNot/overlap, QBE ForEachInRoughArea + const finder, PDB F1..F3 members, branch swap; names fixed (CMainGameComponent::IsEditorActive slot 9, class keys)
+00760c40	RELOCATION_MATCH	342v342	PASS	C3DVector user copy ctor + named first/prev vectors (covered declared between), operator/ rescales its own parameter; PDB NShape::CTrack : CShape, STLport vector
+007bc004	DIFFER	342v342	-	frame 0x50 v 0x5c (RHSet temp packed over the RandomiseShotDirection temp); named/const& result fixes the frame but lea esi v mov esi,eax (343v342, 2 lines); names fixed (NThingShot, UAE, GetPos, GetWorldSeed, ApplyAcceleration, AccurateNormalise)
+007bee40	DIFFER	344v344	-	x87 commutative operand order in two sums; 8 spellings canonicalised; identity corrected to CTCShotDefinitionBase::UpdateFacingDirection (MAE, base slot 36)
+00654438	DIFFER	347v347	-	retail_asm row (inline ceil); retail fld st(1);fadd [pos.X] v ours fld [pos.X];fadd st(2); C2DExtentsF box ctor, named floats, compound, operator+: inert/worse; file in retail_asm/differ/
+00744b50	DIFFER	353v349	-	user C3DVector copy ctor fixes the frame (21 lines, 4 bytes longer; the 349v349 parked form is 37 lines); r kept on x87 stack v retail fstp r/fmul [r]; FastInvSqrt helper, address-taken r, param rescale, Dot order: inert
+007fe990	DIFFER	351v351	-	esi/edi swap throughout (this v count/end/dtor iterator); while-loop form inert
+00744fb0	DIFFER	355v355	-	empty comparator temp gets its own frame byte (retail: Bind2 address) shifting key/noise/radius 4-8; implicit ctor (360), filter temps (frame 0x28) worse
+00ead9f0	RELOCATION_MATCH	356v356	PASS	landed sibling MagicRuneProcess 0x00EA8C20 model: NScript namespace, retail CScriptThing/CGameScriptInterface/CScriptBase headers, operator== = PImp->IsEqualTo(*other.PImp)
+00939670	DIFFER	358v358	-	this esi / map edi (retail edi/esi); rewritten on the landed Bandit sibling with PDB names (IsSociableTime, GetPVillage const, private GetPNearCampfire); nested-if + creature local inert
