@@ -1,0 +1,2 @@
+address	name	evidence
+0080ffb0	MATCHED: named physics pointer local read before the call	proven per batch 2026-10-27_linux_hand608 NOTES.md (chunk 608)

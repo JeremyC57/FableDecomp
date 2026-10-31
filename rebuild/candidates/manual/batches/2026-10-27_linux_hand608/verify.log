@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0080ffb0   RELOCATION_MATCH PASS   RandomiseThingOrientationAroundDirection
+
+WINS: 1
+  0080ffb0 RELOCATION_MATCH NExplosiveTrailHelpers::?RandomiseThingOrientationAroundDirection@NExplosiveTrailHelpers@@YIXAAVCThing@@ABVC3DVector@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NExplosiveTrailHelpers_RandomiseThingOrientationAroundDirection_0080ffb0
