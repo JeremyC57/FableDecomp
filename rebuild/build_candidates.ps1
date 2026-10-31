@@ -370657,6 +370657,13 @@ $catalog = @(
         TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_DuckBehindCover_009713e0_test.cpp'
         PassPattern = '009713e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c1b7d0'
+        Module = 'PKCTRRedblackMap'
+        Source = '00/c1/PKCTRRedblackMap_Remove_00c1b7d0.cpp'
+        TestSource = '00/c1/PKCTRRedblackMap_Remove_00c1b7d0_test.cpp'
+        PassPattern = '00c1b7d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

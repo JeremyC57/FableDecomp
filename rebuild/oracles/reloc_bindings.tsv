@@ -35689,3 +35689,5 @@ _drftf1@20	00c98e80	00c9bc10
 ?GetData@CString@@QBEPAUCStringData@@XZ	00c0b8c0	00c0c270
 ?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	00b46280	00b46a30
 ??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0_N@Z	008b8260	009713e0
+?DeleteFixup@PKCTRRedblackMap@@QAEXPAUPKCTRRedblackMapNode@@@Z	00c1b560	00c1b7d0
+?Release@CMapNodeAllocator@@QAEXPAPAUPKCTRRedblackNode@@@Z	00c1b1e0	00c1b7d0
