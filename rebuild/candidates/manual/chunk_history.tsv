@@ -25188,3 +25188,13 @@ chunk	address	module	name	length
 615	006a9690	CThingPlayerCreature	ResolveRelativeMovementAcceleration	450
 615	00b17410	NParticleEngine::CPSCOrbit	NParticleEngine::CPSCOrbit::vfunc_10	459
 615	00867010	CCombatAction_GenericResponseToDecapitation	?Initialise@CCombatAction_GenericResponseToDecapitation@@UAEXXZ	481
+616	00910df0	CAIStateGroup_MinionGuardHeardYellForHelp	?Update@CAIStateGroup_MinionGuardHeardYellForHelp@@UAEXXZ	500
+616	0077c960	CTCHighlightItem	DoMovement	502
+616	0070d580	CAnimateThing	SetMainAnim	504
+616	00c11d00	CTCHero	CTCHero::Initialize	507
+616	009718f0	CAIStateGroup_JackOfBladesBase	GetIsEnemyInJacksWay	510
+616	007d5070	CTCTavernGameCardSorting	CardsMainGame	539
+616	007f5ae0	CTCTargetingBase	UpdateNearestInterestingThing	544
+616	00871a80	CActionEventTriggerParticle	Dispatch	547
+616	00589a30	CTCInventory	OpenPCMapMenu	549
+616	004a34f0	CWorld	AutoLoadRegionLeaving	564
