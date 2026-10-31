@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-10-31T23:22:56+00:00`
+Generated: `2026-10-31T23:37:22+00:00`
 
 ## Landed reconstruction (live)
 
@@ -9,7 +9,7 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 | Measure | Landed | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
 | Original catalog functions landed, genuine C++ | 45,384 | 49,568 | 91.559% | Byte-matching C++ (no hand-written asm bake; `retail_asm` and `toolchain_library` rows included) for the original analysis catalog |
-| All known functions landed, genuine C++ | 52,742 | 57,579 | 91.599% | Adds the gap-scan and boundary functions found later |
+| All known functions landed, genuine C++ | 52,774 | 57,611 | 91.604% | Adds the gap-scan and boundary functions found later |
 | Retail function bytes reproduced, genuine C++ | 5,259,288 | 10,251,743 | 51.301% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
 | Retail `.text` bytes reproduced, genuine C++ | 5,259,288 | 14,858,408 | 35.396% | Against the whole `.text` section (includes padding and inline data) |
 | Landed rows using retail inline asm (grade `retail_asm`) | 174 | 52,787 | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |

@@ -95,7 +95,7 @@ parity, coverage, and naming reports:
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
 | Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **52,787** |
 | Reconstruction | Landed byte-matching genuine C++, original catalog | **45,384** (91.56%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,579 known functions | 52,742 (91.60%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,611 known functions | 52,774 (91.60%) |
 | Reconstruction | Retail function bytes reproduced by genuine C++ | 5,259,288 (51.30%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 174 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |

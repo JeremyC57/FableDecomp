@@ -1,10 +1,10 @@
 {
   "catalog_rows": 52787,
-  "known_functions": 57579,
+  "known_functions": 57611,
   "original_functions": 49568,
-  "landed_known": 52755,
+  "landed_known": 52787,
   "landed_original": 45397,
-  "landed_genuine_known": 52742,
+  "landed_genuine_known": 52774,
   "landed_genuine_original": 45384,
   "genuine": 52159,
   "retail_asm": 174,
