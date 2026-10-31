@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00725b70	DIFFER	201v201	-	frame slots only: same-TU noinline GetAllThingsInRoughArea stand-in fixed 205->201 (start in edi); retail 0x28 frame overlaps the first for_each result temp with the dead vector
+00aeb600	DIFFER	202v202	-	register allocation: clone loaded into ecx then copied to esi (retail straight to esi, argument in ecx); PDB respell + shared CCountedPointer header neutral
+00943c20	DIFFER	206v206	-	scratch colouring of the first block (retail eax chain, ours ecx); PDB respell (PTask, GetBestCrateTaskForThing, template IsInWorkHours) neutral
+008f99a0	DIFFER	207v207	-	scheduling only (string ctor pushes vs stores); LSocket::Receive(vector<char>&) PDB owner re-proved
+009bbbf0	DIFFER	207v207	-	frame 0x38 v 0x40 (8 unused retail bytes); PersistError respelled
+00a5d000	DIFFER	211v211	-	scheduling only (xor eax,eax 3 slots late); raw float pointer s[3] fixed both x87 operand orders
+00c351b0	DIFFER	211v211	-	callee-saved swap edi/ebx (&source->Info vs intro); identity CVirtualPlayer::Start (landed callers)

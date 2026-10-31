@@ -371072,6 +371072,27 @@ $catalog = @(
         TestSource = '00/a8/CSB_GetDistanceBetweenAgents_00a872f0_test.cpp'
         PassPattern = '00a872f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a57960'
+        Module = 'C2DLineF'
+        Source = '00/a5/C2DLineF_GetInfiniteLineLineIntersection_00a57960.cpp'
+        TestSource = '00/a5/C2DLineF_GetInfiniteLineLineIntersection_00a57960_test.cpp'
+        PassPattern = '00a57960_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c56d70'
+        Module = 'CDSoundStreamBuffer'
+        Source = '00/c5/CDSoundStreamBuffer_CreateLoopingBuffer_00c56d70.cpp'
+        TestSource = '00/c5/CDSoundStreamBuffer_CreateLoopingBuffer_00c56d70_test.cpp'
+        PassPattern = '00c56d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c59c60'
+        Module = 'CCodaVoice'
+        Source = '00/c5/CCodaVoice_SetVibrato_00c59c60.cpp'
+        TestSource = '00/c5/CCodaVoice_SetVibrato_00c59c60_test.cpp'
+        PassPattern = '00c59c60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

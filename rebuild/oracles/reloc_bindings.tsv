@@ -11004,7 +11004,7 @@ __imp__FreeLibrary@4	0143fe3c	00c56370
 ?Forward_00c51f00@CService@@QAEJJJJJ@Z	00c51f00	00c597e0
 ?g_pService@@3PAUCService@@A	0143bb70	00c597e0
 ??_7CVtable_012b5c10@@6B@	012b5c10	00c59ba0
-?ApplyStageTransform@CMaterialState_00c59fc0@@QAEXPAUSStageDesc@@@Z	00c59c60	00c59fc0
+?SetVibrato@CCodaVoice@@QAEXPBUSVibratoParams@@@Z	00c59c60	00c59fc0
 ?ConvertStageFrames@@YAJJ@Z	00c59b00	00c59fc0
 ??0CElement_00c5b1a0@@QAE@XZ	00c6b9a0	00c5b1a0
 ??0CSoundInit_00c5b1a0@@QAE@XZ	00c5d0a0	00c5b1a0
@@ -35768,3 +35768,4 @@ _ActiveThread	013ca894	009d87f0
 ?g_VsyncGPUTimeRecords@@3PAUSVsyncGPUTimeRecord@@A	013cb4b0	009f7050
 ?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z	00768210	005dac50
 ?Normalise@CPKVector3_00c402e0@@QAEMXZ	00c402e0	00c418f0
+_IID_IDirectSound3DBuffer	012ac5e4	00c56d70

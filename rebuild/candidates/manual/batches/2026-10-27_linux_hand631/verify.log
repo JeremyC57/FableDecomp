@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00a57960   RELOCATION_MATCH PASS   GetInfiniteLineLineIntersection
+00c56d70   RELOCATION_MATCH PASS   CreateLoopingBuffer
+00c59c60   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00c59c60   RELOCATION_MATCH PASS   SetVibrato
+
+WINS: 3
+  00a57960 RELOCATION_MATCH C2DLineF::?GetInfiniteLineLineIntersection@C2DLineF@@QBE_NABV1@AAVC2DVector@@@Z
+  00c56d70 RELOCATION_MATCH CDSoundStreamBuffer::?CreateLoopingBuffer@CDSoundStreamBuffer@@UAE_NK@Z
+  00c59c60 RELOCATION_MATCH CCodaVoice::?SetVibrato@CCodaVoice@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  C2DLineF_GetInfiniteLineLineIntersection_00a57960
+  CDSoundStreamBuffer_CreateLoopingBuffer_00c56d70
+  CCodaVoice_SetVibrato_00c59c60
