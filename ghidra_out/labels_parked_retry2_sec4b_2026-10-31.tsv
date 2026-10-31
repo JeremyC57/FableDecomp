@@ -1,0 +1,3 @@
+address	name	evidence
+0x008BC1A0	CCreatureAction_CastWillRaiseDeadSpell::PerformAction	proven per batch 2026-10-31_parked_retry2_sec4b NOTES.md (parked-row sweep section 4b)
+0x008C6DB0	CCreatureAction_IceTrollIcicleAttack::PerformAction	proven per batch 2026-10-31_parked_retry2_sec4b NOTES.md (parked-row sweep section 4b)

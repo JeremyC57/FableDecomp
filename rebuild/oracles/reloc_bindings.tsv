@@ -35535,3 +35535,11 @@ _s_jpgMask	0124fed0	00581b33
 ??$GetSubDef@VCTargetingDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTargetingDef@@@@@Z	007ea960	00802d10
 ?GetTargetingRangeForTargetType@@YIMKABVCTargetingDef@@ABVCThing@@PBV2@@Z	008028d0	00802d10
 ?LowerBound@CTCMap@@QBEPAUCTCEntry@@ABK@Z	004365b0	00802d10
+??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCBrainDef@@@@@Z	0079bd80	008bc1a0
+??0CCreatureAction_RiseUp@@QAE@AAVCThingCreatureBase@@@Z	008bd880	008bc1a0
+?GetValidPositions@NCreatureHiding@@YIXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z	0074a5d0	008bc1a0
+?PeekThingSearchTools@CCreatureActionBase@@IBEABVCThingSearchTools@@XZ	00692990	008bc1a0
+??$GetComponent@VCAnimComponentCombatHandedness@@@CAnimationEntry@@QAEXPAPAVCAnimComponentCombatHandedness@@@Z	008c7b30	008c6db0
+??$GetSubDef@VCSnowTrollDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSnowTrollDef@@@@@Z	008c7a70	008c6db0
+?AddThingToIgnore@CTCDExplosiveTrail@@QAEXAAVCThing@@@Z	00810970	008c6db0
+?Create@CTCDExplosiveTrail@@SIPAVCThing@@JABVC3DVector@@0PBV2@@Z	008100d0	008c6db0

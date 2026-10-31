@@ -1,0 +1,9 @@
+address	residue_bytes	retail_len	ours_len	best_source	range
+008bc1a0	1082	1083	1	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/008bc1a0.cpp	engine
+008c6db0	1089	1090	1	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/008c6db0.cpp	engine
+008d5aa0	1125	1126	1	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/008d5aa0.cpp	engine
+008dcc80	1135	1136	1	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/008dcc80.cpp	engine
+008de7a0	1234	1239	5	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/008de7a0.cpp	engine
+008de080	1432	1437	5	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/008de080.cpp	engine
+008e8060	1779	1784	5	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/008e8060.cpp	engine
+008dd0f0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/008dd0f0.cpp	engine

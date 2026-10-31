@@ -369904,6 +369904,20 @@ $catalog = @(
         TestSource = '00/80/NPlayerTargeting_IsThingInTargetingRangeForTargetType_00802d10_test.cpp'
         PassPattern = '00802d10_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008bc1a0'
+        Module = 'CCreatureAction_CastWillRaiseDeadSpell'
+        Source = '00/8b/CCreatureActionCastWillRaiseDeadSpell_PerformAction_008bc1a0.cpp'
+        TestSource = '00/8b/CCreatureActionCastWillRaiseDeadSpell_PerformAction_008bc1a0_test.cpp'
+        PassPattern = '008bc1a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c6db0'
+        Module = 'CCreatureAction_IceTrollIcicleAttack'
+        Source = '00/8c/CCreatureActionIceTrollIcicleAttack_PerformAction_008c6db0.cpp'
+        TestSource = '00/8c/CCreatureActionIceTrollIcicleAttack_PerformAction_008c6db0_test.cpp'
+        PassPattern = '008c6db0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

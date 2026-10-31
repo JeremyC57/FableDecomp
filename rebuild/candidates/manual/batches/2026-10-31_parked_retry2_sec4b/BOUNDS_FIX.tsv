@@ -1,0 +1,2 @@
+address	catalog_length	true_length	evidence
+008dd0f0		1513	extent.py: aligned frame (push ebp; mov ebp,esp; and esp,-8) closes with mov esp,ebp; pop ebp; ret (the ret byte at 0x008DD6D8), then 7 int3 pad bytes to the next function start 0x008DD6E0; catalog row had no length
