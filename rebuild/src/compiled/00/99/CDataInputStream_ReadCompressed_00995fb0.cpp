@@ -3,7 +3,7 @@
 // (Ego_r.pdb ?ReadCompressed@CDataInputStream@@UAEXPAXJ@Z is virtual; modelled non-virtually through CDataInputStream_Methods as the landed ReadZlibCompressed)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00995FB0, length 629 bytes (+ int3 padding), `ret 8` (virtual).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow(unsigned char*, long) @ 0x00993CA0 (landed),
-//          vector<unsigned char>(n) @ 0x00514E20, LZSS_Decompress(src, srcLen, dst, &dstLen, work) @ 0x00C069D0
+//          vector<unsigned char>(n) @ 0x00514E20, lzo1x_decompress_asm_fast(src, srcLen, dst, &dstLen, work) @ 0x00C069D0
 //          (cdecl), g_pfnAssertionFailed @ 0x013BC9FC (installed debug hook), free @ 0x00BFEA14.
 // Layout: engine/CDataInputStream.h (StreamPos +4, CurrentSourcePtr +0x0c, SourceChunkBytesRemaining +0x14).
 // Shape: the CByteArray / inline Read / ReadLong models of the landed ReadZlibCompressed 0x00996230; the short count
@@ -16,7 +16,7 @@ extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC
-extern "C" int __cdecl LZSS_Decompress(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
+extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
 struct CByteArray {
@@ -59,7 +59,7 @@ void CDataInputStream_Methods::ReadCompressed(void* data, long size)
             CByteArray buffer(compressedSize);
             Read(buffer.GetData(), compressedSize);
             unsigned int written = size;
-            LZSS_Decompress(buffer.GetData(), compressedSize, (unsigned char*)data, &written, 0);
+            lzo1x_decompress_asm_fast(buffer.GetData(), compressedSize, (unsigned char*)data, &written, 0);
             if (written != (unsigned int)(size - 3)) {
                 if (g_pfnAssertionFailed != 0)
                     g_pfnAssertionFailed();

@@ -370127,6 +370127,12 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00cac640_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c069d0'
+        Module = '_global'
+        Source = '00/c0/global_lzo1x_decompress_asm_fast_00c069d0.cpp'
+        Grade = 'toolchain_library'
+    }
 )
 
 $requestedAddresses = @(

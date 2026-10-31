@@ -1,0 +1,2 @@
+address	name	evidence
+00c069d0	_global::lzo1x_decompress_asm_fast	LZO 1.08 src/i386/d_asm2/lzo1x_f1.asm db table == retail 447/447, ML 7.10 object @comp.id 0x000F/3077 (lib_verify.py MATCH); was LZSS_Decompress / lzo1x_decompress_safe (the real lzo1x_decompress_safe is 0x00C08170)

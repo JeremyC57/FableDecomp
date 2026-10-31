@@ -59,7 +59,7 @@ bool CLandscapeBackgroundPatch::LoadCompressed(
         }
     }
 
-    LZSS_Decompress(
+    lzo1x_decompress_asm_fast(
         compressedSource,
         compressedSize,
         output.Data,

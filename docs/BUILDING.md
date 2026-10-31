@@ -140,3 +140,7 @@ parked `/GS` rows whose stack-cookie prologue 4035 could not reproduce now match
 `batches/2026-10-20_linux_gs_rtm3077` and `_b`); the inventory frame-slot
 and zero-register rows, the inline-once destructor band and the biased /GS frame (00581b33) do not change, so those are
 source-formulation questions, not compiler-build ones.
+
+## Third-party source trees
+
+`bash tools/decomp_pipeline/libsig/fetch_lzo108.sh` (LZO 1.08, public) puts the vendor .asm that `lib_verify.py` proves 0x00C069D0 from under `$S/thirdparty/lzo/lzo-1.08`; `FABLE_THIRDPARTY` overrides the directory. `docs/pipeline/LIBRARY_SIGNATURES.md`.

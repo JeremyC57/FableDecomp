@@ -52,7 +52,7 @@ struct CTemporaryBuffer {
 };
 
 static const unsigned char* g_lzSrc = 0; static unsigned long g_lzLen = 0; static unsigned char* g_lzDst = 0; static unsigned long g_lzOut = 0;
-int lzo1x_decompress_safe(const unsigned char* src, unsigned long src_len, unsigned char* dst, unsigned long* dst_len, void*)
+int lzo1x_decompress_asm_fast(const unsigned char* src, unsigned long src_len, unsigned char* dst, unsigned long* dst_len, void*)
 {
     g_lzSrc = src; g_lzLen = src_len; g_lzDst = dst; g_lzOut = *dst_len; return 0;
 }
@@ -81,7 +81,7 @@ CCountedPointer<C3DMeshFile> C3DMeshFileLoader::LoadMeshFileCompressed(const voi
     CTemporaryBuffer buffer(decompressedSize + 3, &pool, &g_ScratchBuffer);
     unsigned char* dst = (unsigned char*)buffer.Data;
     unsigned long outLength = decompressedSize;
-    lzo1x_decompress_safe((const unsigned char*)data + 4, size - 4, dst, &outLength, 0);
+    lzo1x_decompress_asm_fast((const unsigned char*)data + 4, size - 4, dst, &outLength, 0);
     CMemoryDataInputStream stream(dst, decompressedSize);
     CCountedPointer<C3DMeshFile> file = LoadMeshFile(stream);
     return file;

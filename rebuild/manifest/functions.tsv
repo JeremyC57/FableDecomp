@@ -43549,7 +43549,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c06050	operator_new	_global	__fastcall	void *	1	uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\global_operatornew_00c06050.cpp
 00c06060	inflate_fast	_global	__cdecl	undefined	0		0	yes	accepted									
 00c064d0	inflate_table	_global	__cdecl	undefined	0		0	yes	accepted									
-00c069d0	LZSS_Decompress	_global	unknown	undefined	0		0	yes	accepted									
+00c069d0	_lzo1x_decompress_asm_fast	lzo-1.08(src/i386/d_asm2/lzo1x_f1.asm)	unknown	undefined	0		0	yes	accepted									
 00c06b90	lzo1x_decompress	_global	__cdecl	undefined	0		0	yes	accepted									
 00c06de0	swd_initdict	_global	unknown	undefined	0		0	yes	accepted									
 00c06e50	swd_insertdict	_global	unknown	undefined	0		0	yes	accepted									

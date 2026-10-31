@@ -191,6 +191,33 @@ their behaviour tests link the row object and fake the import through that globa
 0x00C36150; boundary-pass `NAME_FIXES.tsv`). `reloc_bindings.tsv`: 32 slot stand-ins retired, 5 library spellings
 added; multi-check 0.
 
+## Third-party assembled objects (owner decision 2026-10-31)
+
+Some retail bytes came from a vendor's shipped assembler source, not from any C or C++ compile: LZO 1.08 ships its
+i386 decompressors as generated MASM `db` tables (`src/i386/d_asm2/*.asm`) that its `B/win32` build scripts
+assemble, and retail 0x00C069D0 (447 bytes, catalogued as "LZSS_Decompress") is `src/i386/d_asm2/lzo1x_f1.asm`
+`_lzo1x_decompress_asm_fast` byte for byte. Such a row cannot be reconstructed as C++ (the assembler carries no C++
+shape) and must not be baked as inline asm (grade `asm_bake`). The owner's rule: "if that is the only way to do it how
+retail does it then that is how we should do it" -- the build assembles the same vendor file with ML, and the row lands
+as `toolchain_library` with a claim naming the source tree and file:
+
+```
+// Toolchain-library: lzo-1.08(src/i386/d_asm2/lzo1x_f1.asm) _lzo1x_decompress_asm_fast -- 447 bytes verified against Fable.exe 0x00C069D0
+```
+
+`lib_verify.py` finds `<lib>/<member>` in the third-party source directories (`FABLE_THIRDPARTY`, pathsep-separated;
+default `$S/thirdparty`, one level deep, so `$S/thirdparty/lzo/lzo-1.08`) and proves it twice: the file's `db` table
+must be exactly the claimed length and equal retail at the address, and when the lane's `$FABLE_VC71/bin/ml.exe` (ML
+7.10, under wine) is present the file is assembled and the object's code section defining the symbol must equal the
+table with no relocations (the printed reason names which proofs ran; without ML only the table proof runs). The LZO
+object stamps `@comp.id` 0x000F build 3077: retail's Rich header lists twelve 0x000F/3077 (MASM 7.10) objects, eleven of
+them the msvcrt.lib members above, so this is the twelfth. The source tree is public (GPL,
+`tools/decomp_pipeline/libsig/fetch_lzo108.sh`, SHA-256 checked) and is never committed. `lzo1y_f1.asm` matches only
+the head of the row; the other LZO rows of the exe (`lzo1x_decompress` 0x00C06B90, `lzo1x_decompress_safe` 0x00C08170,
+the 999 compressor) are C compiles and stay genuine rows. Landed 2026-10-31: 0x00C069D0 (six callers respelled from
+`LZSS_Decompress` / `lzo1x_decompress_safe`, all six rechecked RELOCATION_MATCH + PASS except the pre-existing lane
+DIFFER of 0x00BE8920, see FINDINGS_LOG).
+
 Library spellings that stay different, with the reason:
 
 | Address | Library symbol | Landed spelling | Why |

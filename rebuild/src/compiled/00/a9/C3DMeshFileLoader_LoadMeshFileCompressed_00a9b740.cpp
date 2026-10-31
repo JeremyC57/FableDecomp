@@ -4,7 +4,7 @@
 // Ego_r.pdb: ?LoadMeshFileCompressed@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VC3DMeshFile@@@@PBXKAAVCHandleBasedMemoryPool@@@Z.
 // Callees: CMemoryDataInputStream(void*, long) 0x00994930 / ~CMemoryDataInputStream 0x00993B10,
 // C3DMeshFileLoader::LoadMeshFile(CDataInputStream&) 0x00A9B640, CTemporaryBuffer(size, pool, scratch) 0x00A98860 /
-// ~CTemporaryBuffer 0x00A98910, lzo1x_decompress_safe 0x00C069D0 (cdecl), operator delete 0x00BFE9BC;
+// ~CTemporaryBuffer 0x00A98910, lzo1x_decompress_asm_fast 0x00C069D0 (cdecl), operator delete 0x00BFE9BC;
 // the shared scratch buffer global 0x013CB498, the 4-byte ">>>>" tag 0x0129E454.
 // Shape: a ">>>>" tag (4-byte memcmp intrinsic: `mov eax,offset ; mov edx,[eax] ; cmp`) marks an uncompressed
 // image read in place (`return LoadMeshFile(stream)` builds straight into the result). Otherwise the first dword is
@@ -73,7 +73,7 @@ struct CTemporaryBuffer {                            // 0x18 bytes (Ego_r.pdb)
     long                    AllocateType;            // +0x14
 };
 
-extern "C" int lzo1x_decompress_safe(const unsigned char* src, unsigned long src_len,
+extern "C" int lzo1x_decompress_asm_fast(const unsigned char* src, unsigned long src_len,
                                      unsigned char* dst, unsigned long* dst_len, void* wrkmem);   // 0x00C069D0
 
 class CChunkedFileChunk { public:
@@ -132,7 +132,7 @@ CCountedPointer<C3DMeshFile> C3DMeshFileLoader::LoadMeshFileCompressed(const voi
     CTemporaryBuffer buffer(decompressedSize + 3, &pool, &g_ScratchBuffer);
     unsigned char* dst = (unsigned char*)buffer.Data;
     unsigned long outLength = decompressedSize;
-    lzo1x_decompress_safe((const unsigned char*)data + 4, size - 4, dst, &outLength, 0);
+    lzo1x_decompress_asm_fast((const unsigned char*)data + 4, size - 4, dst, &outLength, 0);
     CMemoryDataInputStream stream(dst, decompressedSize);
     CCountedPointer<C3DMeshFile> file = LoadMeshFile(stream);
     return file;

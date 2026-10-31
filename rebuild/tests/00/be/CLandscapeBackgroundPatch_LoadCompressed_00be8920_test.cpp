@@ -73,7 +73,7 @@ CTemporaryBuffer::CTemporaryBuffer(unsigned long size, void* pool, void* tag)
 
 CTemporaryBuffer::~CTemporaryBuffer() { delete[] Data; }
 
-void LZSS_Decompress(
+void lzo1x_decompress_asm_fast(
     fable_i32 source,
     fable_i32 compressedSize,
     unsigned char* destination,

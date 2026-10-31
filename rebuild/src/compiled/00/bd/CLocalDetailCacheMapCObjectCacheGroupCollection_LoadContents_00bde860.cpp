@@ -15,7 +15,7 @@
 // Callees: CEngineStaticMapFileBlockManager AddRequest 0x00BE06B0, IsBlockLoaded 0x00BE0480, GetBlockData 0x00BE04C0,
 //   ReleaseRequest 0x00BE0400; CMemoryDataInputStream(data, size) 0x00994930 / dtor 0x00993B10, CDataInputStream
 //   ReadWithSrcChunkOverflow 0x00993CA0 and SetPositionAssumeWithinSourceChunk 0x00993C10, virtual GetPosition (slot 2);
-//   CTemporaryBuffer(size, pool, scratch) 0x00A98860 / dtor 0x00A98910, LZSS_Decompress 0x00C069D0 (cdecl); the movable
+//   CTemporaryBuffer(size, pool, scratch) 0x00A98860 / dtor 0x00A98910, lzo1x_decompress_asm_fast 0x00C069D0 (cdecl); the movable
 //   resource pool's Allocate 0x00BD9AF0 (CObjectTypeCollection's class operator new), CObjectTypeCollection::Load
 //   0x00BDE680, UnloadContents 0x00BDD9A0; the engine global 0x01436EA8 (+0x6B0 the local-detail pool), the shared
 //   scratch buffer 0x013CB498, CObjectTypeCollection vtable 0x012A7D9C.
@@ -24,7 +24,7 @@
 //   CObjectTypeCollection (retail 0x18): Type +4, Primitives +8, Next +0xc, Map +0x10, RenderUpdateNeeded +0x14.
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
-extern "C" int __cdecl LZSS_Decompress(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
+extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
 class CDataInputStream {
@@ -159,7 +159,7 @@ bool CLocalDetailCacheMap::CObjectCacheGroupCollection::LoadContents(CEngineStat
         long compressedSize = stream.ReadLong();
         CTemporaryBuffer buffer(uncompressedSize + 3, g_pEngineGlobals_01436ea8->LocalDetailPool->HandlePool, &g_ScratchBuffer);
         unsigned int written = uncompressedSize + 3;
-        LZSS_Decompress(stream.GetDataAndSkip(compressedSize), compressedSize, buffer.GetData(), &written, 0);
+        lzo1x_decompress_asm_fast(stream.GetDataAndSkip(compressedSize), compressedSize, buffer.GetData(), &written, 0);
         CMemoryDataInputStream contents(buffer.GetData(), uncompressedSize);
         long typeCount = contents.ReadLong();
         for (long i = 0; i < typeCount; ++i) {

@@ -13008,7 +13008,6 @@ __wsplitpath	00bfed4c	00999850
 _wcscat	00bfed5e	00999850
 _wcscpy	00bfed76	00999850
 ??1CTemporaryBuffer@@QAE@XZ	00a98910	00a99510
-_lzo1x_decompress_safe	00c069d0	00a99510
 ??_7C3DAnimationStateAlpha@@6B@	01265128	00a9f0d0
 ?SetCategory@CSoundPlayParameters@@QAEXJ@Z	00c1bc00	00c35770
 ?SetDelay@CSoundPlayParameters@@QAEXF@Z	00c1bbd0	00c35770
@@ -16040,7 +16039,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?GetWeaponHand@CCombatTC@@QAEXPAPAUSWeaponHand@@@Z	00669cb0	008c64f0
 ?SetVisibleFlag@CTCGraphicAppearance@@QAEXE@Z	004bfac0	008c64f0
 ??0CDateAndTime@@QAE@JKKKKKK@Z	009e9a70	00995770
-_LZSS_Decompress	00c069d0	00995fb0
 ?FrameEnd@CResourceList@@QAEXXZ	009fc150	009ad6e0
 ?Error@CDefinitionManager@@QAEXABVCStringParser@@ABVCCharString@@@Z	009ac9f0	009ade90
 ?Init@CStringParser@@QAEXPBDP6AXPAVCCharString@@@ZABV2@J@Z	009b9530	009ade90
@@ -35589,3 +35587,9 @@ _swd_search2	00c073c0	00c07420
 ??0PKCTRArray@@QAE@I@Z	00c32ba0	00c18870
 ??_7CMediaSample@@6B@	012bf6e0	00cac640
 ?ReallyFree@CMemAllocator@@IAEXXZ	00caa3c0	00cac640
+_lzo1x_decompress_asm_fast	00c069d0	00995fb0
+_lzo1x_decompress_asm_fast	00c069d0	00995b10
+_lzo1x_decompress_asm_fast	00c069d0	00a9b740
+_lzo1x_decompress_asm_fast	00c069d0	00a99510
+_lzo1x_decompress_asm_fast	00c069d0	00bde860
+_lzo1x_decompress_asm_fast	00c069d0	00be8920

@@ -2,7 +2,7 @@
 // Leaf: ?ReadCompressed@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00995B10, length 544 bytes (+ int3 padding), `ret 8` (virtual).
 // Callees: virtual GetPosition (slot 2, +8), CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0,
-//   LZSS_Decompress(src, srcLen, dst, &dstLen, work) 0x00C069D0 (cdecl), g_pfnAssertionFailed 0x013BC9FC (debug hook).
+//   lzo1x_decompress_asm_fast(src, srcLen, dst, &dstLen, work) 0x00C069D0 (cdecl), g_pfnAssertionFailed 0x013BC9FC (debug hook).
 // Layout: engine/CMemoryDataInputStream.h (+4 position, +0xc chunk pointer, +0x14 chunk bytes left, +0x18 StreamSource);
 //   the header is flattened (`void* __vftable`), so a local polymorphic model carries the GetPosition slot.
 // Shape: the landed CDataInputStream::ReadCompressed 0x00995FB0 with its scratch vector replaced by an inline
@@ -11,7 +11,7 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC
-extern "C" int __cdecl LZSS_Decompress(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
+extern "C" int __cdecl lzo1x_decompress_asm_fast(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
 class CDataInputStream { friend class CMemoryDataInputStream;
@@ -76,7 +76,7 @@ void CMemoryDataInputStream::ReadCompressed(void* data, long size)
         if (compressedSize > 0) {
             const unsigned char* source = GetDataAndSkip(compressedSize);
             unsigned int written = size;
-            LZSS_Decompress(source, compressedSize, (unsigned char*)data, &written, 0);
+            lzo1x_decompress_asm_fast(source, compressedSize, (unsigned char*)data, &written, 0);
             if (written != (unsigned int)(size - 3)) {
                 if (g_pfnAssertionFailed != 0)
                     g_pfnAssertionFailed();

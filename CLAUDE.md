@@ -40,7 +40,10 @@ reconstruction that must compile under VC7.1 to the retail bytes.
   asm. No instruction-count cap (owner, 2026-10-27: a fixed cap is arbitrary when retail runs a longer block).
   Bytes the linker copied from a VC7.1 library (CRT objects of VS 2003 `msvcrt.lib`, import thunks) are grade
   `toolchain_library` (owner, 2026-10-30): a body-less stub with a `// Toolchain-library:` proof line that
-  `libsig/lib_verify.py` reproduces, counted as genuine (`docs/pipeline/LIBRARY_SIGNATURES.md`).
+  `libsig/lib_verify.py` reproduces, counted as genuine (`docs/pipeline/LIBRARY_SIGNATURES.md`). Same grade and proof for bytes retail got by
+  assembling a vendor's shipped `.asm` (owner, 2026-10-31: "if that is the only way to do it how retail does it then that is
+  how we should do it"): the build assembles the same file with ML, `lib_verify.py` proves it from the vendor tree
+  (`FABLE_THIRDPARTY`; LZO 1.08 `lzo1x_f1.asm` = 0x00C069D0). Never rewritten as C++, never baked as inline asm.
 - **Shared headers** — model `this` with `#include "engine/<Class>.h"`, never a local
   `struct T { char pad[0x1a8]; ... }` when a header exists (the verifier warns; strict mode rejects).
 - **Names right the first time** (owner, 2026-10-28) — every function, callee, global, class, member and script name

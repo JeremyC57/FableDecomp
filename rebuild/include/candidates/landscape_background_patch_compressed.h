@@ -51,7 +51,7 @@ FABLE_STATIC_ASSERT(offsetof(CTemporaryBuffer, Data) == 0x04);
 extern fable_u8* DAT_01436ea8;
 extern fable_u8 DAT_013cb498;
 
-void LZSS_Decompress(
+void lzo1x_decompress_asm_fast(
     fable_i32 source,
     fable_i32 compressedSize,
     unsigned char* destination,

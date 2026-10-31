@@ -22,14 +22,25 @@ An import library that is not on disk (NOT_ON_DISK: the DirectX SDK April 2005 d
 show its import record, so its thunk claim is checked against the retail import directory alone: `FF 25 <slot>`
 where <slot> is <member>!<export> and <export> is the claim symbol without its `_` / `@N` decoration. The printed
 reason says so; every other missing library is a MISMATCH.
+A third-party assembled-source claim (<lib> is a source tree such as `lzo-1.08`, <member> a MASM file inside it such as
+`src/i386/d_asm2/lzo1x_f1.asm`; owner decision 2026-10-31: bytes retail got by assembling a vendor's shipped .asm are
+landed the retail way, proof-verified like a library member) is checked from the third-party source directories
+(FABLE_THIRDPARTY, pathsep-separated; default $S/thirdparty, searched one level deep: $S/thirdparty/lzo/lzo-1.08): the
+file's `db` byte table must be exactly the claimed <n> bytes and equal retail at the address, and when the lane's
+MASM (`$FABLE_VC71/bin/ml.exe`, ML 7.10 under wine) is available the file is assembled and the object's code section
+that defines <symbol> must hold the same bytes with no relocations. The reason names which of the two proofs ran.
 """
 from __future__ import annotations
 
 import csv
+import glob
 import os
 import re
+import shutil
 import struct
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -79,6 +90,92 @@ def catalog_source(addr):
 # Import libraries the build links that are not on the lane's disk; their thunks are proven from the retail
 # import directory only (verify_import_iat).
 NOT_ON_DISK = {"d3dx9.lib": "DirectX SDK (April 2005) import library for d3dx9_25.dll"}
+
+
+def default_thirdparty_dirs():
+    env = os.environ.get("FABLE_THIRDPARTY")
+    if env:
+        return [Path(p) for p in env.split(os.pathsep) if p and Path(p).is_dir()]
+    out = []
+    if os.environ.get("S"):
+        out.append(Path(os.environ["S"]) / "thirdparty")
+    return [d for d in out if d.is_dir()]
+
+
+def find_thirdparty_source(claim):
+    """<dir>/<lib>/<member> or <dir>/*/<lib>/<member> in the third-party source directories."""
+    for d in default_thirdparty_dirs():
+        for cand in [d / claim["lib"] / claim["member"]] + \
+                [Path(x) / claim["member"] for x in glob.glob(str(d / "*" / claim["lib"]))]:
+            if cand.is_file():
+                return cand
+    return None
+
+
+def asm_db_bytes(text):
+    """The bytes of every `db` statement of a MASM file, in file order (decimal or trailing-h hex operands)."""
+    out = bytearray()
+    for line in text.splitlines():
+        s = line.split(";", 1)[0].strip()
+        if not s.lower().startswith("db "):
+            continue
+        for tok in s[3:].split(","):
+            tok = tok.strip().lower()
+            out.append(int(tok[:-1], 16) if tok.endswith("h") else int(tok, 0))
+    return bytes(out)
+
+
+def assemble_masm(asm_path, workdir):
+    """Assemble with the lane's ML 7.10 (`$FABLE_VC71/bin/ml.exe`, through wine off Windows). (obj path, reason)."""
+    vc = os.environ.get("FABLE_VC71")
+    ml = Path(vc) / "bin" / "ml.exe" if vc else None
+    if not ml or not ml.is_file():
+        return None, "ML unavailable (no $FABLE_VC71/bin/ml.exe)"
+    src = Path(workdir) / asm_path.name
+    shutil.copy(asm_path, src)
+    obj = Path(workdir) / (asm_path.stem + ".obj")
+    cmd = [str(ml), "/nologo", "/c", "/Fo", obj.name, src.name]
+    if os.name != "nt":
+        cmd = [os.environ.get("FABLE_WINE", "wine")] + cmd
+    try:
+        r = subprocess.run(cmd, cwd=str(workdir), capture_output=True, text=True, timeout=300)
+    except Exception as ex:  # wine missing, timeout
+        return None, f"ML not run ({type(ex).__name__})"
+    if r.returncode or not obj.is_file():
+        return None, "ML failed: " + (r.stdout + r.stderr).strip().replace("\n", " ")[:200]
+    return obj, "assembled"
+
+
+def verify_thirdparty_asm(pe, claim, src_path):
+    """A vendor .asm whose assembled bytes retail links: db table == retail, and (when ML runs) the object agrees."""
+    text = src_path.read_text(encoding="utf-8", errors="ignore")
+    if not re.search(r"^\s*public\s+" + re.escape(claim["symbol"]) + r"\s*$", text, re.M) or \
+            not re.search(r"^\s*" + re.escape(claim["symbol"]) + r"\s*:", text, re.M):
+        return False, f"{claim['symbol']} is not a public label of {src_path.name}"
+    db = asm_db_bytes(text)
+    if len(db) != claim["length"]:
+        return False, f"db table is {len(db)} bytes, claim says {claim['length']}"
+    o = claim["address"] - pe.text_va
+    retail = pe.text[o:o + len(db)]
+    diff = [i for i in range(len(db)) if db[i] != retail[i]]
+    if diff:
+        return False, f"{len(diff)} byte(s) differ, first +0x{diff[0]:x} (asm {db[diff[0]]:02x} retail {retail[diff[0]]:02x})"
+    with tempfile.TemporaryDirectory() as wd:
+        obj, why = assemble_masm(src_path, wd)
+        if obj is None:
+            return True, f"third-party {claim['lib']}/{claim['member']} db table {len(db)} bytes == retail; {why}"
+        co = C.CoffObject(obj.read_bytes())
+        for cs in co.code_sections():
+            off = next((o_ for o_, n, _ in cs.symbols if n == claim["symbol"]), None)
+            if off is None:
+                continue
+            if cs.relocs:
+                return False, f"assembled section has {len(cs.relocs)} relocations; the claim allows none"
+            if off != 0 or len(cs.data) != len(db) or bytes(cs.data) != db:
+                return False, f"assembled section ({len(cs.data)} bytes at +{off}) differs from the db table"
+            return True, (f"third-party {claim['lib']}/{claim['member']} assembled by ML ({obj.name} @comp.id "
+                          f"{co.comp_ids()}): section {cs.index} {cs.name} {len(cs.data)} bytes == db table == retail, 0 relocations")
+        return False, f"{claim['symbol']} is not defined in a code section of the assembled object"
 
 
 def find_libs(name):
@@ -226,7 +323,11 @@ def verify(claim, pe=None):
     if not libs and claim["lib"] in NOT_ON_DISK and claim["member"].lower().endswith(".dll"):
         return verify_import_iat(pe, claim)
     if not libs:
-        return False, f"{claim['lib']} is not in any library directory ({LS.default_libdirs()})"
+        src = find_thirdparty_source(claim)
+        if src is not None and src.suffix.lower() == ".asm":
+            return verify_thirdparty_asm(pe, claim, src)
+        return False, (f"{claim['lib']} is not in any library directory ({LS.default_libdirs()}) "
+                       f"or third-party source directory ({default_thirdparty_dirs()})")
     tried = []
     for tag, p in libs:
         if claim["member"].lower().endswith(".dll"):
