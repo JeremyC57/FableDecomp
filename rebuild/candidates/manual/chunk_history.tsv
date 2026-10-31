@@ -25228,3 +25228,13 @@ chunk	address	module	name	length
 619	0055d180	CTCPhotojournalCapture	TakeQuickScreenshot	772
 619	007b0360	CTCFishingSpot	FrameUpdate	773
 619	00a18b50	global	Collision_TestTriangleSphere	783
+620	009fb750	CTexture	LoadFromDataStreamToPreallocatedSurface	789
+620	00489d40	CPlayer	CreateCharacter	815
+620	00a17f80	CPhysicsMesh	GetPointIntersectionFromToUsingFullCollision	818
+620	005726a0	CTCInventoryExperience	CTCInventoryExperience::UpdateAbilityDisplay	824
+620	00a177a0	CPhysicsMesh	GetPointIntersectionFromToUsingSegmentation	840
+620	0085c470	CMoveOnCylinder	Update	857
+620	0047e9ae	CTCInGameMenu	GlobalUpdate	860
+620	0057df85	CTCHeroStats	KickHeroToMostRecentSafeRegion	876
+620	00622a00	CTCInventoryQuests	OpenInventory	877
+620	0058f649	CTCInventory	OpenPCInventory	883
