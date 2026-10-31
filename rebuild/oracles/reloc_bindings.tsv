@@ -35683,3 +35683,6 @@ _strncat	00f3fcfa	00c5dc60
 ?Receive@CBaseInputPin@@UAGJPAUIMediaSample@@@Z	00ca8b90	00ca6c40
 ?RegisterMediaTime@CRendererPosPassThru@@QAEJPAUIMediaSample@@@Z	00cadc10	00ca6c40
 ?UpdateEnvelope@CLimiter@@QAEXXZ	00c592f0	00c593c0
+??0CCreatureAction_UseObject@@QAE@AAVCThingCreatureBase@@AAVCThing@@_N@Z	0069f230	0091b190
+??$__find@PAPAVCBankFileAsync@@PAV1@@std@@YIPAPAVCBankFileAsync@@PAPAV1@0ABQAV1@ABUrandom_access_iterator_tag@0@@Z	009d6e80	009d5a30
+_drftf1@20	00c98e80	00c9bc10

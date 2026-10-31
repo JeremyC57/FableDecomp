@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0091b190   WARN RELOC_NAME: ?IsWorkTime@CTCVillage@@QBE_NXZ -> 00658b20 labelled 'CTCVillage::IsCookTime'
+0091b190   RELOCATION_MATCH PASS   Update
+009bb0d0   RELOCATION_MATCH PASS   CleanOutLine
+009d5a30   RELOCATION_MATCH PASS   UnregisterBank
+00c9bc10   WARN RELOC_NAME: _drftf1@20 -> 00c98e80 labelled 'FFT_2D_DispatchByRadix'
+00c9bc10   RELOCATION_MATCH PASS   drft_forward
+
+WINS: 4
+  0091b190 RELOCATION_MATCH CAIStateGroup_HandyMan::?Update@CAIStateGroup_HandyMan@@UAEXXZ
+  009bb0d0 RELOCATION_MATCH CPersistContext::?CleanOutLine@CPersistContext@@IAEXJJ@Z
+  009d5a30 RELOCATION_MATCH CLoadingMemoryFailureHandler::?UnregisterBank@CLoadingMemoryFailureHandler@@QAEXPAVCBankFileAsync@@@Z
+  00c9bc10 RELOCATION_MATCH libvorbis::@drft_forward@8
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupHandyMan_Update_0091b190
+  CPersistContext_CleanOutLine_009bb0d0
+  CLoadingMemoryFailureHandler_UnregisterBank_009d5a30
+  libvorbis_drftforward_00c9bc10

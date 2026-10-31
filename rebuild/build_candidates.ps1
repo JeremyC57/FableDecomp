@@ -370558,6 +370558,35 @@ $catalog = @(
         TestSource = '00/c5/CLimiter_Process_00c593c0_test.cpp'
         PassPattern = '00c593c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0091b190'
+        Module = 'CAIStateGroup_HandyMan'
+        Source = '00/91/CAIStateGroupHandyMan_Update_0091b190.cpp'
+        TestSource = '00/91/CAIStateGroupHandyMan_Update_0091b190_test.cpp'
+        PassPattern = '0091b190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bb0d0'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_CleanOutLine_009bb0d0.cpp'
+        TestSource = '00/9b/CPersistContext_CleanOutLine_009bb0d0_test.cpp'
+        PassPattern = '009bb0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d5a30'
+        Module = 'CLoadingMemoryFailureHandler'
+        Source = '00/9d/CLoadingMemoryFailureHandler_UnregisterBank_009d5a30.cpp'
+        TestSource = '00/9d/CLoadingMemoryFailureHandler_UnregisterBank_009d5a30_test.cpp'
+        PassPattern = '009d5a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9bc10'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_drftforward_00c9bc10.cpp'
+        TestSource = '00/c9/libvorbis_drftforward_00c9bc10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c9bc10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
