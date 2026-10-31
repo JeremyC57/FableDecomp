@@ -35845,3 +35845,6 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	006e97a0	0093dae0
 ?VIRTUAL_SCREEN_HEIGHT@@3NA	013961f0	009e21d0
 ?VIRTUAL_SCREEN_WIDTH@@3NA	013961e8	009e21d0
+??$__push_heap@PAPAVCThing@@HPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xfee291d5@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xfee291d5@@@Z	0097adf0	0097af70
+??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xfee291d5@@QBE_NPAVCThing@@0@Z	0097abf0	0097af70
+?RotateLeft@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@@Z	00a646e0	00a64910

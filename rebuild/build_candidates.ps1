@@ -371451,6 +371451,20 @@ $catalog = @(
         TestSource = '00/9e/global_GFAYToVY_009e1dd0_test.cpp'
         PassPattern = '009e1dd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0097af70'
+        Module = 'std'
+        Source = '00/97/std_adjustheap_0097af70.cpp'
+        TestSource = '00/97/std_adjustheap_0097af70_test.cpp'
+        PassPattern = '0097af70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a64910'
+        Module = 'CMemoryAllocatorVariableSize'
+        Source = '00/a6/CMemoryAllocatorVariableSize_RemoveFromTreeFixup_00a64910.cpp'
+        TestSource = '00/a6/CMemoryAllocatorVariableSize_RemoveFromTreeFixup_00a64910_test.cpp'
+        PassPattern = '00a64910_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

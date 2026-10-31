@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0097af70   RELOCATION_MATCH PASS   __adjust_heap
+00a64910   RELOCATION_MATCH PASS   RemoveFromTreeFixup
+
+WINS: 2
+  0097af70 RELOCATION_MATCH std::??$__adjust_heap@
+  00a64910 RELOCATION_MATCH CMemoryAllocatorVariableSize::?RemoveFromTreeFixup@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@PBVCDeletedNodeChildInfo@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  std_adjustheap_0097af70
+  CMemoryAllocatorVariableSize_RemoveFromTreeFixup_00a64910

@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+00af56e0	DIFFER	138v138	-	bottom iterator store from ebx vs edi; 11 probes, no movement (stopped by owner)
+007e4530	DIFFER	159v159	-	CTCTargeted pointer edx vs eax; 6 probes, no movement (stopped by owner)
+00973dc0	DIFFER	-	-	untouched (stopped by owner); brief best attempt copied unchanged
+00f38ff0	DIFFER	1841v1842	-	untouched (stopped by owner); brief best attempt copied unchanged
+008de080	DIFFER	1438v1437	-	untouched (stopped by owner); brief best attempt copied unchanged
+008e03b0	DIFFER	-	-	untouched (stopped by owner); brief best attempt copied unchanged
+00e83230	DIFFER	818v820	-	untouched (stopped by owner); brief best attempt copied unchanged
+006a03a0	DIFFER	827v825	-	untouched (stopped by owner); brief best attempt copied unchanged
