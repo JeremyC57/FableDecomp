@@ -1,0 +1,27 @@
+addr       parity           behav  name
+006ab5d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006ab5d0   WARN RELOC_NAME: ?GetSneakingSpeed@CTCStealth@@QBEMXZ -> 00747020 labelled '_global::GetMember_float0x18_00747020'
+006ab5d0   RELOCATION_MATCH PASS   GetCurrentMaxMovementSpeed
+00820840   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+00820840   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00820840   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00820840   WARN SHARED_HEADER_AVAILABLE CWorld
+00820840   WARN RELOC_NAME: ?GetThingsMovement@CScriptedMapBrush@@QBEABVCThingPosAndOrientation@1@_K@Z -> 0082e4e0 labelled 'CSurface::GetHeight'
+00820840   RELOCATION_MATCH PASS   ScriptedMapBrushMoveThings
+0085b5b0   RELOCATION_MATCH PASS   GetAllThings
+0090bd40   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0090bd40   WARN RELOC_NAME: ?GetFreeBench@CAIStateGroup_MinionWorkInInn@@AAEPAVCThing@@XZ -> 0090bc60 labelled 'CAIStateGroup_MinionWorkInInn::GetBench'
+0090bd40   WARN RELOC_NAME: ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z -> 007fef40 labelled 'CTCUserActionPointBase::FreeActionPoint'
+0090bd40   RELOCATION_MATCH PASS   CleanBench
+
+WINS: 4
+  006ab5d0 RELOCATION_MATCH CThingPlayerCreature::?GetCurrentMaxMovementSpeed@CThingPlayerCreature@@IBEMXZ
+  00820840 RELOCATION_MATCH CMap::?ScriptedMapBrushMoveThings@CMap@@MAEXABVCScriptedMapBrush@@@Z
+  0085b5b0 RELOCATION_MATCH CThingSearchTools::??$GetAllThings@VCThingGameObject@@V?$list@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@V?$CFilter_Bind4@VCThingFilter_IsNot@@VCThingFilter_CombatIsStrikeToStrike@?A0x
+  0090bd40 RELOCATION_MATCH CAIStateGroup_MinionWorkInInn::?CleanBench@CAIStateGroup_MinionWorkInInn@@AAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CThingPlayerCreature_GetCurrentMaxMovementSpeed_006ab5d0
+  CMap_ScriptedMapBrushMoveThings_00820840
+  CThingSearchTools_GetAllThings_0085b5b0
+  CAIStateGroupMinionWorkInInn_CleanBench_0090bd40

@@ -370749,6 +370749,34 @@ $catalog = @(
         TestSource = '00/98/CAIStateGroupOpinionReactionRoot_FollowUpdate_009852c0_test.cpp'
         PassPattern = '009852c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ab5d0'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_GetCurrentMaxMovementSpeed_006ab5d0.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_GetCurrentMaxMovementSpeed_006ab5d0_test.cpp'
+        PassPattern = '006ab5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00820840'
+        Module = 'CMap'
+        Source = '00/82/CMap_ScriptedMapBrushMoveThings_00820840.cpp'
+        TestSource = '00/82/CMap_ScriptedMapBrushMoveThings_00820840_test.cpp'
+        PassPattern = '00820840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085b5b0'
+        Module = 'CThingSearchTools'
+        Source = '00/85/CThingSearchTools_GetAllThings_0085b5b0.cpp'
+        TestSource = '00/85/CThingSearchTools_GetAllThings_0085b5b0_test.cpp'
+        PassPattern = '0085b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090bd40'
+        Module = 'CAIStateGroup_MinionWorkInInn'
+        Source = '00/90/CAIStateGroupMinionWorkInInn_CleanBench_0090bd40.cpp'
+        TestSource = '00/90/CAIStateGroupMinionWorkInInn_CleanBench_0090bd40_test.cpp'
+        PassPattern = '0090bd40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

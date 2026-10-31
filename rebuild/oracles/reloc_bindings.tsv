@@ -35711,3 +35711,13 @@ _drftf1@20	00c98e80	00c9bc10
 ?IsWillingToAttackTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z	008648a0	0093c2f0
 ?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	006cb6e0	009852c0
 ?TurnToFace@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ	0095edf0	009852c0
+?GetSneakingSpeed@CTCStealth@@QBEMXZ	00747020	006ab5d0
+?LowerBound@CTCMap@@QBEPAUSTCEntry@@ABK@Z	004365b0	006ab5d0
+?g_bSneakSpeedOption@@3_NA	01375749	006ab5d0
+?ConvertLocalCoordsToWorldMapCoords@CWorldMap@@QBE?AVC3DVector@@JABV2@@Z	004fc4a0	00820840
+?GetThingsMovement@CScriptedMapBrush@@QBEABVCThingPosAndOrientation@1@_K@Z	0082e4e0	00820840
+?GetThingsToMove@CScriptedMapBrush@@QBEXAAV?$list@_KV?$allocator@_K@std@@@std@@@Z	0082e860	00820840
+??RCThingFilter_CombatCanCollideOrInteractWithThing@?A0x4e24b117@@QBE_NABVCThing@@@Z	00857250	0085b5b0
+??RCThingFilter_CombatIsStrikeToStrike@?A0x4e24b117@@QBE_NABVCThing@@@Z	008565e0	0085b5b0
+?LowerBound@CTCInterfaceMap@@QBEPAUCTCInterfaceEntry@@ABJ@Z	004365b0	0085b5b0
+?GetFreeBench@CAIStateGroup_MinionWorkInInn@@AAEPAVCThing@@XZ	0090bc60	0090bd40

@@ -1,0 +1,5 @@
+address	name	evidence
+006ab5d0	CThingPlayerCreature::GetCurrentMaxMovementSpeed	proven per batch 2026-10-27_linux_hand614 NOTES.md (chunk 614)
+00820840	CMap::ScriptedMapBrushMoveThings	proven per batch 2026-10-27_linux_hand614 NOTES.md (chunk 614)
+0085b5b0	CThingSearchTools::GetAllThings<CThingGameObject,list,CFilter_Bind4<..>> const	proven per batch 2026-10-27_linux_hand614 NOTES.md (chunk 614)
+0090bd40	CAIStateGroup_MinionWorkInInn::CleanBench	proven per batch 2026-10-27_linux_hand614 NOTES.md (chunk 614)

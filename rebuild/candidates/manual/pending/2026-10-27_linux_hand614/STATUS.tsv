@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00854180	DIFFER	364v364	-	NCameraModes::CScriptModuleSpline::Update (UAE, vtable 0x01275A6C slot 1); 69->30 diff lines (same-TU LowerBound body + PDB inline setters); left: GetTC key frame slot not shared with roll (0x30 v 0x2c)
+00b9e120	DIFFER	365v365	-	CEngineInternalPrimitive2DStaticMesh::Initialise; parked file unchanged: WorldPos temp copy uses eax ptr/edx data v retail edx ptr/eax data; inline SetWorldPos and member-wise stores (376) tried
+00a26ad0	DIFFER	383v383	-	C3DAnimationInfo::BuildAnimationInstance (private const ABE; parked spelled Methods class / pointer / public); left: eax/ecx/edx rotation, sete cl v al, InitialiseAnimationInstance copies swapped
+009c5890	DIFFER	389v389	-	CFileInstaller::CFileInstaller; STLport 4.6 container models fixed push edi; left: CreateEventW pushes v flag stores and the .biz push / PauseFinishEvent store order
+00783a30	DIFFER	392v393	-	CTCBoastingCrowdControl::GetCrowd (private AAE, CThing& hero; parked spelled QAE CThing*); left: ebx/ebp this-v-map swap, definition-manager load (1 byte), UID copy registers
+009c38c0	DIFFER	406v409	-	CFileInstaller::CActiveFile::OnWriteFinished (nested; parked spelled non-nested); stdcall static GetMarkerFileName fixes ESI result + ret 4; left: dead `mov al,[eax+7Ah]` dropped, GetFileSize/GetFileTime/SetFileTime register rotation
