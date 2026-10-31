@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c1d320	DIFFER	440v440	-	CMatrix3x4::Invert (descriptive); first cofactor block scheduled c1,c2,c0 vs retail c2,c1,c0 (28 diff lines)

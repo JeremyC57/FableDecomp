@@ -370133,6 +370133,49 @@ $catalog = @(
         Source = '00/c0/global_lzo1x_decompress_asm_fast_00c069d0.cpp'
         Grade = 'toolchain_library'
     }
+    [pscustomobject]@{
+        Address = '00ae18c0'
+        Module = 'CParticleSimulation'
+        Source = '00/ae/CParticleSimulation_WriteVectorArray_00ae18c0.cpp'
+        TestSource = '00/ae/CParticleSimulation_WriteVectorArray_00ae18c0_test.cpp'
+        PassPattern = '00ae18c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c076c0'
+        Module = '_global'
+        Source = '00/c0/global_codematch_00c076c0.cpp'
+        TestSource = '00/c0/global_codematch_00c076c0_test.cpp'
+        PassPattern = '00c076c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1e300'
+        Module = 'CVtable_012b33f0'
+        Source = '00/c1/CVtable012b33f0_Read_00c1e300.cpp'
+        TestSource = '00/c1/CVtable012b33f0_Read_00c1e300_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1e300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f4e0'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_EncodeS16_00c5f4e0.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_EncodeS16_00c5f4e0_test.cpp'
+        PassPattern = '00c5f4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c891a0'
+        Module = 'CReverbDiffuserStage'
+        Source = '00/c8/CReverbDiffuserStage_Process_00c891a0.cpp'
+        TestSource = '00/c8/CReverbDiffuserStage_Process_00c891a0_test.cpp'
+        PassPattern = '00c891a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cff9a0'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScript_PlayCutscene_00cff9a0.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_PlayCutscene_00cff9a0_test.cpp'
+        PassPattern = '00cff9a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

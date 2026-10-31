@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c891a0	RELOCATION_MATCH	428v428	PASS	CReverbDiffuserStage::Process (descriptive, libpk reverb); CRingBuffer inline Advance frees ebx for the loop index
+00c26090	RELOCATION_MATCH	431v431	PASS	CStreamBuffer::FinishLoading (descriptive, libpk audio); chunk source as a named local
+00ae18c0	RELOCATION_MATCH	436v436	PASS	CParticleSimulation::WriteVectorArray (PDB-proven); ReadVectorArray reversed
+00c5f4e0	RELOCATION_MATCH	438v438	PASS	CImaAdpcmCodec::EncodeS16 (DirectX SDK upstream name); EncodeM16 model
+00c1d320	DIFFER	440v440	-	CMatrix3x4::Invert (descriptive); first cofactor block scheduled c1,c2,c0 vs retail c2,c1,c0 (28 diff lines)
+00cff9a0	RELOCATION_MATCH	443v443	PASS	NScript::CQ_AwakeningTheOracleScript::PlayCutscene (PDB-proven); DragonBossFight TU + ScytheInfo body
+00c1c460	SKIP	-v445	-	libpk 3D-sound source-position update; needs three same-TU custom-convention helpers (edi/ebx/esi and eax/ecx/edx/esi) and ~10 conflicting callee spellings; not attempted
+00c069d0	SKIP	-v447	-	handled by the coordinator: LZO 1.08 lzo1x_f1.asm (lzo1x_decompress_asm_fast), toolchain_library
+00c1e300	RELOCATION_MATCH	450v450	PASS	CVtable_012b33f0::Read (descriptive, libpk sample reader slot 1); /EHsc; operator new[] declared for ??_U
+00c076c0	MATCH	451v451	PASS	code_match (LZO 1.08 lzo1x_9x.c upstream name); same-TU static + caller

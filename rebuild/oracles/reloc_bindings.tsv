@@ -35593,3 +35593,8 @@ _lzo1x_decompress_asm_fast	00c069d0	00a9b740
 _lzo1x_decompress_asm_fast	00c069d0	00a99510
 _lzo1x_decompress_asm_fast	00c069d0	00bde860
 _lzo1x_decompress_asm_fast	00c069d0	00be8920
+?DecodeSoundData_00c34630@@YIJPAUCSoundFormat@@PAX1K@Z	00c34630	00c1e300
+?GetPCMBufferSize@CSoundFormat@@QAEKXZ	00c2d920	00c1e300
+?ReadChunkExtent_00c347b0@@YIJPAX0PAJ1@Z	00c347b0	00c1e300
+?ReadRing@CDspOps@@QAEXPAMPBUCRingBuffer@@II@Z	00c763e0	00c891a0
+?clear@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEXXZ	00cd3699	00cff9a0

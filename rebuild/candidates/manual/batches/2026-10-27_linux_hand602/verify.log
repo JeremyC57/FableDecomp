@@ -1,0 +1,29 @@
+addr       parity           behav  name
+00ae18c0   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@K@Z -> 007c2ab0 labelled 'CSTLportVector<C3DVector>::CSTLportVector'
+00ae18c0   RELOCATION_MATCH PASS   WriteVectorArray
+00c076c0   MATCH            PASS   code_match
+00c1e300   WARN RELOC_NAME: ?GetDataSize@CSoundSample@@QAEJXZ -> 00c1e9c0 labelled 'CSequenceClient00c1e9f0::GetSequencePhase'
+00c1e300   WARN RELOC_NAME: ?ReadChunkExtent_00c347b0@@YIJPAX0PAJ1@Z -> 00c347b0 labelled '_global::Fastcall_WADSegmentDecompress'
+00c1e300   WARN RELOC_NAME: ?DecodeSoundData_00c34630@@YIJPAUCSoundFormat@@PAX1K@Z -> 00c34630 labelled 'Thiscall_HeroExperienceBlockParry'
+00c1e300   RELOCATION_MATCH PASS   Read
+00c5f4e0   RELOCATION_MATCH PASS   EncodeS16
+00c891a0   RELOCATION_MATCH PASS   Process
+00cff9a0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00cff9a0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00cff9a0   RELOCATION_MATCH PASS   PlayCutscene
+
+WINS: 6
+  00ae18c0 RELOCATION_MATCH CParticleSimulation::?WriteVectorArray@CParticleSimulation@@KIXPBVC4DVector@@KAAVCDataOutputStream@@@Z
+  00c076c0 MATCH _global::_code_match
+  00c1e300 RELOCATION_MATCH CVtable_012b33f0::?Read@CVtable_012b33f0@@UAEJPAXPAJ1@Z
+  00c5f4e0 RELOCATION_MATCH CImaAdpcmCodec::?EncodeS16@CImaAdpcmCodec@@SIHPAE0IIIPAH1@Z
+  00c891a0 RELOCATION_MATCH CReverbDiffuserStage::?Process@CReverbDiffuserStage@@QAEXPBUSDiffuserStageParams@@PBUCRingBuffer@@PAM2I@Z
+  00cff9a0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::?PlayCutscene@CQ_AwakeningTheOracleScript@NScript@@QAEXVCCharString@@_N@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CParticleSimulation_WriteVectorArray_00ae18c0
+  global_codematch_00c076c0
+  CVtable012b33f0_Read_00c1e300
+  CImaAdpcmCodec_EncodeS16_00c5f4e0
+  CReverbDiffuserStage_Process_00c891a0
+  NScriptCQAwakeningTheOracleScript_PlayCutscene_00cff9a0
