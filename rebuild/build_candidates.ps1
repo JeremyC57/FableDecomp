@@ -370904,6 +370904,48 @@ $catalog = @(
         TestSource = '00/75/CPersistContext_TransferMappairlonglongCCharString_00756d00_test.cpp'
         PassPattern = '00756d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00722bd0'
+        Module = 'std'
+        Source = '00/72/std_uninitializedfilln_00722bd0.cpp'
+        TestSource = '00/72/std_uninitializedfilln_00722bd0_test.cpp'
+        PassPattern = '00722bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771d50'
+        Module = 'CTCHeroPodium'
+        Source = '00/77/CTCHeroPodium_GetCrowdPos_00771d50.cpp'
+        TestSource = '00/77/CTCHeroPodium_GetCrowdPos_00771d50_test.cpp'
+        PassPattern = '00771d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00792550'
+        Module = 'std'
+        Source = '00/79/std_uninitializedfilln_00792550.cpp'
+        TestSource = '00/79/std_uninitializedfilln_00792550_test.cpp'
+        PassPattern = '00792550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007979b0'
+        Module = 'std'
+        Source = '00/79/std_uninitializedfilln_007979b0.cpp'
+        TestSource = '00/79/std_uninitializedfilln_007979b0_test.cpp'
+        PassPattern = '007979b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00806c80'
+        Module = 'std'
+        Source = '00/80/std_uninitializedfilln_00806c80.cpp'
+        TestSource = '00/80/std_uninitializedfilln_00806c80_test.cpp'
+        PassPattern = '00806c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd660'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_FrameEnd_009fd660.cpp'
+        TestSource = '00/9f/CGraphicDataBank_FrameEnd_009fd660_test.cpp'
+        PassPattern = '009fd660_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

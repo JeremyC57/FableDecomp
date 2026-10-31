@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00722bd0   RELOCATION_MATCH PASS   __uninitialized_fill_n
+00771d50   MATCH            PASS   GetCrowdPos
+00792550   RELOCATION_MATCH PASS   __uninitialized_fill_n
+007979b0   RELOCATION_MATCH PASS   __uninitialized_fill_n
+00806c80   RELOCATION_MATCH PASS   __uninitialized_fill_n
+009fd660   RELOCATION_MATCH PASS   FrameEnd
+
+WINS: 6
+  00722bd0 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAVCGenerationPos@CTCSmokeGenerator@@IV12@@std@@YIPAVCGenerationPos@CTCSmokeGenerator@@PAV12@IABV12@ABU__false_type@0@@Z
+  00771d50 MATCH CTCHeroPodium::?GetCrowdPos@CTCHeroPodium@@QAE_NABVC3DVector@@AAV2@@Z
+  00792550 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAUPerEffectInfo@CTCDivineWrath@@IU12@@std@@YIPAUPerEffectInfo@CTCDivineWrath@@PAU12@IABU12@ABU__false_type@0@@Z
+  007979b0 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAUPerEffectInfo@CTCUnholyPower@@IU12@@std@@YIPAUPerEffectInfo@CTCUnholyPower@@PAU12@IABU12@ABU__false_type@0@@Z
+  00806c80 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAVCTargetPoint@NPlayerTargeting@@IV12@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@IABV12@ABU__false_type@0@@Z
+  009fd660 RELOCATION_MATCH CGraphicDataBank::?FrameEnd@CGraphicDataBank@@QAEXXZ
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  std_uninitializedfilln_00722bd0
+  CTCHeroPodium_GetCrowdPos_00771d50
+  std_uninitializedfilln_00792550
+  std_uninitializedfilln_007979b0
+  std_uninitializedfilln_00806c80
+  CGraphicDataBank_FrameEnd_009fd660

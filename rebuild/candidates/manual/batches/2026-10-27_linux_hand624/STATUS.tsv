@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006817f0	DIFFER	84v84	-	switch bias only: retail sub eax,2, ours add eax,-2 (compiler/TU gap; /GL untestable)
+00771d50	MATCH	85v85	PASS	inlined GetBestVacantPositionForThisPos pair<C3DVector,long> + C3DVector user copy ctor gives the 16-byte frame
+00722bd0	RELOCATION_MATCH	86v86	PASS	std::__uninitialized_fill_n<CTCSmokeGenerator::CGenerationPos*>; named item in CIntelligentPointer copy ctor fixes cur/x registers
+00792550	RELOCATION_MATCH	86v86	PASS	std::__uninitialized_fill_n<CTCDivineWrath::PerEffectInfo*>; same lever
+007979b0	RELOCATION_MATCH	86v86	PASS	std::__uninitialized_fill_n<CTCUnholyPower::PerEffectInfo*>; same lever
+00bba3e0	DIFFER	87v87	-	x87 scheduling only: faddp/fsqrt one integer move later than retail
+009fd660	RELOCATION_MATCH	91v91	PASS	by-value Max(GetFreeMemory(), 0L) clamp + const GetUnloadableMemory
+004310a7	DIFFER	91v91	-	Transfer<CWideString>: [ebp-4]/[ebp-8] slot swap of traits default vs read temporary
+00431143	DIFFER	91v91	-	Transfer<CCharString>: [ebp-4]/[ebp-8] slot swap of traits default vs read temporary
+00806c80	RELOCATION_MATCH	98v98	PASS	std::__uninitialized_fill_n<NPlayerTargeting::CTargetPoint*> (bound spelling); same lever

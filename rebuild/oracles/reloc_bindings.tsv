@@ -7953,7 +7953,7 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ??0iterator@CRetailListOd_009f7940@@QAE@PAUSNode@1@@Z	0041c780	009f7940
 ?Clear@CRetailListOd_009f7aa0@@QAEXXZ	009f7830	009f7aa0
 ?Clear@CRetailListOd_009f7ce0@@QAEXXZ	009f7830	009f7ce0
-?FrameEnd@CGraphicDataBank_009f8200@@QAEXXZ	009fd660	009f8200
+?FrameEnd@CGraphicDataBank@@QAEXXZ	009fd660	009f8200
 ?ProcessLoading@CResourceList_009f8230@@QAEXJN@Z	009fc410	009f8230
 ?StepLoading@CGraphicDataBank_009f8200@@QAEXXZ	009d68b0	009f8230
 ?Sizeof@CGraphicDataBank_009f8200@@QAEJXZ	009fd8d0	009f8380
@@ -35747,3 +35747,4 @@ _drftf1@20	00c98e80	00c9bc10
 ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@ABVCCharString@@@Z	00756350	00756d00
 ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEXXZ	007563e0	00756d00
 ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEIABVCCharString@@@Z	00756c60	00756d00
+?GetUnloadableMemory@CResourceList@@QBEKK@Z	009fc070	009fd660

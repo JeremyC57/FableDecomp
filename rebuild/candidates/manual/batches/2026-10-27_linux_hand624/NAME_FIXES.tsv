@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+009fc070	?GetUnloadableMemory@CResourceList@@QBEKK@Z	Ego_r.pdb 0x00B6BF20 and FableWin.pdb 0x03177C50 (const member); 0x009FD660 FrameEnd matches calling it as const	?GetUnloadableMemory@CResourceList@@QAEKK@Z (landed 0x009FC070 own symbol, non-const; its caller 0x009FC450 CResource_SetAsLRU)
+009fd660	?FrameEnd@CGraphicDataBank@@QAEXXZ	Ego_r.pdb ?FrameEnd@CGraphicDataBank@@QAEXXZ (donor 0x00B56DF0); binding from 0x00B2B820; matched here under this symbol	?FrameEnd@CGraphicDataBank_009f8200@@QAEXXZ (reloc_bindings from 0x009F8200)
+00806c80	??$__uninitialized_fill_n@PAVCTargetPoint@NPlayerTargeting@@IV12@@std@@YIPAVCTargetPoint@NPlayerTargeting@@PAV12@IABV12@ABU__false_type@0@@Z	reloc_bindings (from 0x008092D0) + matched here with exactly this symbol; Ego_r.pdb NPlayerTargeting::CTargetPoint layout	catalog fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha> (propagated label only)

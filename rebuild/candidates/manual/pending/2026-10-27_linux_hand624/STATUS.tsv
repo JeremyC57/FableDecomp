@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+006817f0	DIFFER	84v84	-	switch bias only: retail sub eax,2, ours add eax,-2 (compiler/TU gap; /GL untestable)
+00bba3e0	DIFFER	87v87	-	x87 scheduling only: faddp/fsqrt one integer move later than retail
+004310a7	DIFFER	91v91	-	Transfer<CWideString>: [ebp-4]/[ebp-8] slot swap of traits default vs read temporary
+00431143	DIFFER	91v91	-	Transfer<CCharString>: [ebp-4]/[ebp-8] slot swap of traits default vs read temporary
