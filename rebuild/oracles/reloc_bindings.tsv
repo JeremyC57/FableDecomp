@@ -35448,3 +35448,11 @@ __imp__recvfrom@24	01440518	008f9320
 ?LookupStandAnim@@YI?AV?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ABVCCharString@@PAVCThingCreatureBase@@JPAUCAnimBank@@@Z	00861e60	008621a0
 ?Reset@?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@QAEXPAVCAnimEntryLite@NAnimationEntryBodge@@@Z	00863090	008621a0
 ?RemoveThingNotSolidTo@CTCSolidToThing@@QAEXPBVCThing@@@Z	00770f20	0087ebd0
+??0CModeConversation@NCreatureMode@@QAE@AAVCThing@@W4EConversationAttitude@@@Z	008d92c0	00717710
+?GetAttitude@CTCTalk@@QBE?AW4EConversationAttitude@@XZ	006e3180	00717710
+?IsAbleToUseConversationAnimations@NCreatureMode@@YI_NABVCThing@@@Z	0085f180	00717710
+?SetUpTextAndSpeech@CActionTalkBase@NTCScriptedControl@@QAEXXZ	00716b30	00717710
+?AttemptToStartParticle@CTCCombat@@AAEXPAVCThing@@@Z	00735fd0	00736760
+?Normalise@C3DVector@@QAEAAV1@XZ	00a14440	0075fe30
+??_7?$CPersistContext_TransferableComponent@W4EHeroCentreDoorType@@@@6B@	0126b038	0077fde0
+?TransferBinaryIn@?$CPersistTraits@W4EHeroCentreDoorType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EHeroCentreDoorType@@@Z	0077fd10	0077fde0

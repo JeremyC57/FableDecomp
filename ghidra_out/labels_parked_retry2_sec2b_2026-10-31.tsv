@@ -1,0 +1,13 @@
+address	name	evidence
+0x006AFF40	CTCPhysicsBase::GetTurnSpeedAngleXY	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x006B0020	CTCPhysicsBase::GetTurnSpeedAngleYZ	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x006D7080	CAttackHistoryCombo::IsComboSuccess	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x006E2E60	CTCTalk::StopCurrentSpeech	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x00717710	NTCScriptedControl::CActionTalkBase::OnActivate	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x007197C0	CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::vector<CThingCreatureBase*>, CThingFilter_None>	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x0072ABD0	CTCSpecialAbilities::FadeOrKillEffect	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x00736760	CTCCombat::UpdateFlourishParticles	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x00751DA0	CTCLook::IsAbleToTurnDaBody	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x00752300	CTCLook::ImplementBodySettings	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x0075FE30	NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation::operator()	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)
+0x0077FDE0	CPersistContext::Transfer<EHeroCentreDoorType>	proven per batch 2026-10-30_parked_retry2_sec2b NOTES.md (parked-row sweep section 2b)

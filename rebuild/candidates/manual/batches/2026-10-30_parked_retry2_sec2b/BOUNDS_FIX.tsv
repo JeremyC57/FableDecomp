@@ -1,0 +1,2 @@
+address	catalog_length	true_length	evidence
+0077fde0	240	208	body sub esp,8 .. end of its 5-entry jump table at 0x0077FEB0; 0x0077FEB0 (32 bytes) is the separate 2-argument Transfer<EHeroCentreDoorType> (Ego_r ??$Transfer@W4EHeroCentreDoorType@@@CPersistContext@@QAEXPBDAAW4EHeroCentreDoorType@@@Z) that calls this one; re-split at 0x0077FEB0

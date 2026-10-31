@@ -369623,6 +369623,90 @@ $catalog = @(
         TestSource = '00/87/CCombatActionKickThingOnGround_FinishAction_0087ebd0_test.cpp'
         PassPattern = '0087ebd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006aff40'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6a/CTCPhysicsBase_GetTurnSpeedAngleXY_006aff40.cpp'
+        TestSource = '00/6a/CTCPhysicsBase_GetTurnSpeedAngleXY_006aff40_test.cpp'
+        PassPattern = '006aff40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006b0020'
+        Module = 'CTCPhysicsBase'
+        Source = '00/6b/CTCPhysicsBase_GetTurnSpeedAngleYZ_006b0020.cpp'
+        TestSource = '00/6b/CTCPhysicsBase_GetTurnSpeedAngleYZ_006b0020_test.cpp'
+        PassPattern = '006b0020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d7080'
+        Module = 'CAttackHistoryCombo'
+        Source = '00/6d/CAttackHistoryCombo_IsComboSuccess_006d7080.cpp'
+        TestSource = '00/6d/CAttackHistoryCombo_IsComboSuccess_006d7080_test.cpp'
+        PassPattern = '006d7080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e2e60'
+        Module = 'CTCTalk'
+        Source = '00/6e/CTCTalk_StopCurrentSpeech_006e2e60.cpp'
+        TestSource = '00/6e/CTCTalk_StopCurrentSpeech_006e2e60_test.cpp'
+        PassPattern = '006e2e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00717710'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_OnActivate_00717710.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_OnActivate_00717710_test.cpp'
+        PassPattern = '00717710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007197c0'
+        Module = 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std'
+        Source = '00/71/CThingSearchToolsGetAllThingsInRoughAreaCThingCreatureBasestd_vectorCThingCreatureBaseCThingFilterNone_007197c0.cpp'
+        TestSource = '00/71/CThingSearchToolsGetAllThingsInRoughAreaCThingCreatureBasestd_vectorCThingCreatureBaseCThingFilterNone_007197c0_test.cpp'
+        PassPattern = '007197c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072abd0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_FadeOrKillEffect_0072abd0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_FadeOrKillEffect_0072abd0_test.cpp'
+        PassPattern = '0072abd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00736760'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_UpdateFlourishParticles_00736760.cpp'
+        TestSource = '00/73/CTCCombat_UpdateFlourishParticles_00736760_test.cpp'
+        PassPattern = '00736760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00751da0'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_IsAbleToTurnDaBody_00751da0.cpp'
+        TestSource = '00/75/CTCLook_IsAbleToTurnDaBody_00751da0_test.cpp'
+        PassPattern = '00751da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00752300'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_ImplementBodySettings_00752300.cpp'
+        TestSource = '00/75/CTCLook_ImplementBodySettings_00752300_test.cpp'
+        PassPattern = '00752300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075fe30'
+        Module = 'NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation'
+        Source = '00/75/NShapeCIsPointFinalLinkInTriangleWithMatchingCirculation_operator_0075fe30.cpp'
+        TestSource = '00/75/NShapeCIsPointFinalLinkInTriangleWithMatchingCirculation_operator_0075fe30_test.cpp'
+        PassPattern = '0075fe30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077fde0'
+        Module = 'CPersistContext'
+        Source = '00/77/CPersistContext_TransferEHeroCentreDoorType_0077fde0.cpp'
+        TestSource = '00/77/CPersistContext_TransferEHeroCentreDoorType_0077fde0_test.cpp'
+        PassPattern = '0077fde0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
