@@ -35691,3 +35691,14 @@ _drftf1@20	00c98e80	00c9bc10
 ??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0_N@Z	008b8260	009713e0
 ?DeleteFixup@PKCTRRedblackMap@@QAEXPAUPKCTRRedblackMapNode@@@Z	00c1b560	00c1b7d0
 ?Release@CMapNodeAllocator@@QAEXPAPAUPKCTRRedblackNode@@@Z	00c1b1e0	00c1b7d0
+?Draw2DText@CSubtitleRenderer@@AAEXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@_NMM4@Z	0048f1f4	0048f40a
+?GFVXToAX@@YIMM@Z	009e1e10	0048f40a
+?GFVYToAY@@YIMM@Z	009e1e40	0048f40a
+??$?0W4EHeroAbility@@USExpSpendUndo@@@?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroAbility@@USExpSpendUndo@@@1@@Z	00579e1b	005785b3
+?GetAbilityStatType@CTCInventoryAbilities@@QBE?AW4EHeroExperienceStatCategory@@W4EHeroAbility@@@Z	005edeeb	005785b3
+?GetTCHeroExperience@CTCInventoryExperience@@AAEPAVCTCHeroExperience@@XZ	0056ff3d	005785b3
+?GetTCInventoryAbilities@CTCInventoryExperience@@AAEPAVCTCInventoryAbilities@@XZ	0056ffc5	005785b3
+?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z	005ee01a	005785b3
+?SpendExperience@CTCHeroExperience@@QAEXW4EHeroExperienceStatCategory@@J@Z	006d6590	005785b3
+?find@CAbilityUndoMap@@QAEPAUSAbilityUndoNode@@ABW4EHeroAbility@@@Z	0057914c	005785b3
+?insert@CAbilityUndoMap@@QAE?AUSInsertResult@1@ABU?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@Z	0057a1aa	005785b3

@@ -370664,6 +370664,20 @@ $catalog = @(
         TestSource = '00/c1/PKCTRRedblackMap_Remove_00c1b7d0_test.cpp'
         PassPattern = '00c1b7d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0048f40a'
+        Module = 'CSubtitleRenderer'
+        Source = '00/48/CSubtitleRenderer_DrawTextEmbeddedHighlights_0048f40a.cpp'
+        TestSource = '00/48/CSubtitleRenderer_DrawTextEmbeddedHighlights_0048f40a_test.cpp'
+        PassPattern = '0048f40a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005785b3'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_BuyAbility_005785b3.cpp'
+        TestSource = '00/57/CTCInventoryExperience_BuyAbility_005785b3_test.cpp'
+        PassPattern = '005785b3_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

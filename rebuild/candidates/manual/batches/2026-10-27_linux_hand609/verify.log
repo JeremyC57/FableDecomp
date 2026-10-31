@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0048f40a   RELOCATION_MATCH PASS   DrawTextEmbeddedHighlights
+005785b3   WARN RELOC_NAME: ??0SExpSpendUndo@@QAE@XZ -> 005797a4 labelled 'CHeroExperienceDef::CHeroExperienceDef'
+005785b3   WARN RELOC_NAME: ??$?0W4EHeroAbility@@USExpSpendUndo@@@?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@QAE@ABU?$pair@W4EHeroAbility@@USExpSpendUndo@@@1@@Z -> 00579e1b labelled '_unattributed::SPairLongCSecond_00579c35'
+005785b3   WARN RELOC_NAME: ?SetAbilityLevelTo@CTCInventoryAbilities@@QAEXW4EHeroAbility@@J@Z -> 005ee01a labelled 'CEngineLandscapeRenderer::OnRegistedZSortingPatchRelocation'
+005785b3   RELOCATION_MATCH PASS   BuyAbility
+
+WINS: 2
+  0048f40a RELOCATION_MATCH CSubtitleRenderer::?DrawTextEmbeddedHighlights@CSubtitleRenderer@@AAEXABVCEnginePrimitivePrepareInfo@@ABVC2DBoxF@@@Z
+  005785b3 RELOCATION_MATCH CTCInventoryExperience::?BuyAbility@CTCInventoryExperience@@QAEXW4EHeroAbility@@J@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CSubtitleRenderer_DrawTextEmbeddedHighlights_0048f40a
+  CTCInventoryExperience_BuyAbility_005785b3

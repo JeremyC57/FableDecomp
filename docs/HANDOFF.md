@@ -33,9 +33,9 @@ end of `docs/journal/FINDINGS_LOG.md`. Fresh container: `docs/pipeline/FRESH_SES
    now have a landed precedent (sec6b's five kernels, 0x00BF7DF0 form) -- owner call to land them the same way; name_review rows (sec3 x3, sec2b x4, sec6 00f3fb60).
 2. Chunks 596-604 landed (596-599: 36 of 40; 600: 6 of 10; 601: 5 of 10 + 1 held for naming; 602: 7 of 10, the libpk pool copy is
    `CHandleBasedMemoryPool_012b4098`, GOTCHAS 2026-10-31; 603: 8 of 8, the last engine-remainder rows; 604: 4 of 10, the first chunk
-   cut from the sweep's parked rows; 605: 2 of 10; 606: 1 of 10; 607: 1 of 10). Chunks now come from the sweep's parked rows: `$S/w30/pick.py` ranks them (closest residue,
+   cut from the sweep's parked rows; 605: 2 of 10; 606: 1 of 10; 607: 1 of 10; 609: 2 of 10). Chunks now come from the sweep's parked rows: `$S/w30/pick.py` ranks them (closest residue,
    shortest first) into `$S/w30/ranked.tsv`, `$S/w30/cutp.sh N addrs` cuts a chunk (agent dir `$S/w22/agentN`, CHUNK_BRIEF.md,
-   `rebuild/candidates/manual/chunk_history.tsv`). Running: 608 (`$S/w22/agent608`) and 609 (`$S/w22/agent609`). Cut and queued, not launched: 610.
+   `rebuild/candidates/manual/chunk_history.tsv`). Running: 610 (`$S/w22/agent610`); 608 reported, landing. Cut and queued, not launched: 611.
    Land each as it reports (`coordinator/land_chunk.sh N`, `records.py N`); re-run pick.py before cutting 609+.
 3. Migration wave 10 per `headers/2026-10-30_retail_models_wave9/NEXT.md` (item 0: the CDefPointer(ENullDef) ctor is in the header since 2026-10-31 — migrate the 76 local `enum ENullDef` models; then the 1,317 proven CP rows).
 4. Naming wave 12: queue rows 594-599, libsig/libsig2/libsig3, mig9, retry1, sec1-4 (~180 rows); the duplicate per-TU static / unfolded-COMDAT convention (owner decision open: ilog2 x3, SmoothFadeValue x3, CDefString x2, IS_THING_ALIVE<CIntelligentPointer<const CThing>> x2, LowerBound 0x004365B0/0x0040F020); three byte-matching sec3 bodies in `pending/2026-10-30_parked_retry2_sec3/name_review/` land once named; 0x00CB0C10 CompatibleTimeSetEvent; EAX GUID linkage; CDspGain::Apply two spellings; ScaleAccumulate16Ramp x3 (different bodies, distinct names).
