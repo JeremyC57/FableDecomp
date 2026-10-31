@@ -29410,7 +29410,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GFInterpolateVectors@@YAXPAVC4DVector@@KPBV1@KKM@Z	00a5b870	00ae1260
 ?GFInterpolateVectors_00a5bba0@@YAXPAVC4DVector@@KPBV1@K1KKM@Z	00a5bba0	00ae1260
 ?GetGroupVectorBuffer@@YIPAVC4DVector@@K@Z	00ae0540	00ae1260
-?TransformVertices@CParticleProgram@@QAEXPAVC4DVector@@PBV2@KPBVCMatrix4x4@@PBV?$CArray@VC3DGroup2@@@@@Z	00ae0e60	00ae1260
+?TransformVertices@CParticleProgram@@ABEXPAVC4DVector@@PBV2@KPBVCMatrix4x4@@ABV?$CArray@VC3DGroup2@@@@@Z	00ae0e60	00ae1260
 ?GetUsedBones@CParticleProgram@@CIXAAV?$CArray@_N@@ABV?$CArray@VC3DGroup2@@@@@Z	00ae1210	00ae15d0
 ?WriteVectors_00ae18c0@@YIXPBVC4DVector@@KAAVCDataOutputStream@@@Z	00ae18c0	00ae2050
 ?WriteGroups@@YIXAAVCDataOutputStream@@PBV?$CArray@VC3DGroup2@@@@@Z	00ae0680	00ae2230
@@ -35743,3 +35743,5 @@ _drftf1@20	00c98e80	00c9bc10
 ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z	005bf2ed	00849700
 ?PeekComponent@CThing@@QAEPAVCMainGameComponent@@XZ	004c7a70	00849700
 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	00492ed1	00849700
+?GFClear4DVectors@NVectorMath@@YAXPAVC4DVector@@KABV2@@Z	00a5c300	00ae0e60
+?GetGroupVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z	00ae05a0	00ae0e60

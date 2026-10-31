@@ -370848,6 +370848,20 @@ $catalog = @(
         TestSource = '00/84/CCreatureActionStealThingFromShop_PerformAction_00849700_test.cpp'
         PassPattern = '00849700_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a5cee0'
+        Module = 'CMatrix4x4'
+        Source = '00/a5/CMatrix4x4_AlignedSetInterpolate_00a5cee0.cpp'
+        TestSource = '00/a5/CMatrix4x4_AlignedSetInterpolate_00a5cee0_test.cpp'
+        PassPattern = '00a5cee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae0e60'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_TransformVertices_00ae0e60.cpp'
+        TestSource = '00/ae/CParticleProgram_TransformVertices_00ae0e60_test.cpp'
+        PassPattern = '00ae0e60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

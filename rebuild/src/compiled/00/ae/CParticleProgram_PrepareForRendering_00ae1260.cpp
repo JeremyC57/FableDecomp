@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1260, length 192 bytes (`ret 2Ch`; the 11-argument overload).
 // Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
 // Callees: CParticleProgram::TransformVertices(C4DVector*, const C4DVector*, ulong, const CMatrix4x4*, const
-//          CArray<C3DGroup2>*) @ 0x00AE0E60 (x2), GetGroupVectorBuffer(ulong) @ 0x00AE0540 (__fastcall), the 8-argument
+//          CArray<C3DGroup2>&) const @ 0x00AE0E60 (x2, the Ego_r.pdb spelling), GetGroupVectorBuffer(ulong) @ 0x00AE0540 (__fastcall), the 8-argument
 //          vector interpolation @ 0x00A5BBA0 and GFInterpolateVectors @ 0x00A5B870. Global: 1e-4f @ 0x0129BA3C.
 // Layout: as the 4-argument overload 0x00AE1600 (retail 12-byte containers); only the matrix of the animation
 // arguments is used.
@@ -76,7 +76,7 @@ public:
     CArray<C3DGroup2>   SimGroups;                 // +0xfc
     CArray<C3DGroup2>   NonSimGroups;              // +0x108
     void TransformVertices(C4DVector* out, const C4DVector* in, unsigned long count, const CMatrix4x4* matrix,
-                           const CArray<C3DGroup2>* groups);                                                         // 0x00AE0E60
+                           const CArray<C3DGroup2>& groups) const;                                                   // 0x00AE0E60
     void PrepareForRendering(C4DVector* vertices, CParticleSimulation* simulation, float simulationInterpolate, float initialBlend,
                              C3DAnimationBlendState* blendState, C3DAnimationBlendState* lastBlendState, float animationInterpolate,
                              C3DAnimationManager* animationManager, C3DVector* position, CMatrix4x4* matrix, C3DMesh2* mesh);
@@ -88,12 +88,12 @@ void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulat
                                            C3DAnimationBlendState* blendState, C3DAnimationBlendState* lastBlendState, float animationInterpolate,
                                            C3DAnimationManager* animationManager, C3DVector* position, CMatrix4x4* matrix, C3DMesh2* mesh)
 {
-    TransformVertices(vertices, NonSimPositions, NonSimCount, matrix, &NonSimGroups);
+    TransformVertices(vertices, NonSimPositions, NonSimCount, matrix, NonSimGroups);
     GFInterpolateVectors_00a5bba0(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
                                   simulation->Positions, sizeof(C4DVector), simulation->Size, simulationInterpolate);
     if (initialBlend > g_MinimumMorphBlend) {
         C4DVector* initial = GetGroupVectorBuffer(simulation->Size);
-        TransformVertices(initial, InitialSimulation.Positions, simulation->Size, matrix, &SimGroups);
+        TransformVertices(initial, InitialSimulation.Positions, simulation->Size, matrix, SimGroups);
         GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), initial, sizeof(C4DVector), simulation->Size, initialBlend);
     }
 }

@@ -29,8 +29,9 @@ end of `docs/journal/FINDINGS_LOG.md`. Fresh container: `docs/pipeline/FRESH_SES
 ## Next
 1. Parked-row retry sweep COMPLETE 2026-10-31: wave 1 landed 114 of 237 (`batches/2026-10-30_parked_retry1/`), wave 2 landed 169 of 2,121 over
    sections 1, 1b, 2, 2b, 2c, 3, 4, 4b, 5, 5b, 6, 6b (`batches/2026-10-3*_parked_retry2_sec*/`; each README has the counts). Remaining pending
-   differ/ rows are the chunk pool (item 2). Open from the sweep: sec5b's six SSE rows in `pending/2026-10-31_parked_retry2_sec5b/retail_asm_review/`
-   now have a landed precedent (sec6b's five kernels, 0x00BF7DF0 form) -- owner call to land them the same way; name_review rows (sec3 x3, sec2b x4, sec6 00f3fb60).
+   differ/ rows are the chunk pool (item 2). Owner call 2026-10-31: SSE rows land as retail_asm when retail itself ran inline asm (0x00BF7DF0 form, claim verified from
+   the retail bytes); sec5b's two byte-exact SSE rows landed (0x00A5CEE0, 0x00AE0E60; sec5b 7 of 39), the seven DIFFER ones stay in
+   `pending/2026-10-31_parked_retry2_sec5b/retail_asm_review/`. Open: name_review rows (sec3 x3, sec2b x4, sec6 00f3fb60).
 2. Chunks 596-604 landed (596-599: 36 of 40; 600: 6 of 10; 601: 5 of 10 + 1 held for naming; 602: 7 of 10, the libpk pool copy is
    `CHandleBasedMemoryPool_012b4098`, GOTCHAS 2026-10-31; 603: 8 of 8, the last engine-remainder rows; 604: 4 of 10, the first chunk
    cut from the sweep's parked rows; 605: 2 of 10; 606: 1 of 10; 607: 1 of 10; 608: 1 of 10; 609: 2 of 10; 610: 3 of 10; 611: 1 of 10; 612: 3 of 10; 613: 2 of 10; 614: 4 of 10; 615: 4 of 10; 616: 2 of 10; 617: 2 of 10; 618: 2 of 10). Chunks now come from the sweep's parked rows: `$S/w30/pick.py` ranks them (closest residue,
