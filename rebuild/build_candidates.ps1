@@ -369962,6 +369962,132 @@ $catalog = @(
         TestSource = '00/ce/NScriptCHeroBoastsScript_BoastHobbeCaveInnocentSacrificed_00ce4c50_test.cpp'
         PassPattern = '00ce4c50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00994b10'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/99/CMemoryDataOutputStream_SetPosition_00994b10.cpp'
+        TestSource = '00/99/CMemoryDataOutputStream_SetPosition_00994b10_test.cpp'
+        PassPattern = '00994b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00996610'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteCompressed_00996610.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteCompressed_00996610_test.cpp'
+        PassPattern = '00996610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099c7e0'
+        Module = 'std::basic_string<wchar_t>'
+        Source = '00/99/stdbasicstringwchart_appendconstwchart_0099c7e0.cpp'
+        TestSource = '00/99/stdbasicstringwchart_appendconstwchart_0099c7e0_test.cpp'
+        PassPattern = '0099c7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ace90'
+        Module = 'CDefClassBase'
+        Source = '00/9a/CDefClassBase_UnloadResource_009ace90.cpp'
+        TestSource = '00/9a/CDefClassBase_UnloadResource_009ace90_test.cpp'
+        PassPattern = '009ace90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bae70'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_ReadSection_009bae70.cpp'
+        TestSource = '00/9b/CPersistContext_ReadSection_009bae70_test.cpp'
+        PassPattern = '009bae70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c05c0'
+        Module = 'CDisplayManager'
+        Source = '00/9c/CDisplayManager_EnumerateAntiAliasingModes_009c05c0.cpp'
+        TestSource = '00/9c/CDisplayManager_EnumerateAntiAliasingModes_009c05c0_test.cpp'
+        PassPattern = '009c05c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ce050'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_InitEntry_009ce050.cpp'
+        TestSource = '00/9c/CBankFile_InitEntry_009ce050_test.cpp'
+        PassPattern = '009ce050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0db60'
+        Module = '_global'
+        Source = '00/a0/global_GFInitMaths_00a0db60.cpp'
+        TestSource = '00/a0/global_GFInitMaths_00a0db60_test.cpp'
+        PassPattern = '00a0db60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0dcd0'
+        Module = 'CJoystickPositionTracker'
+        Source = '00/a0/CJoystickPositionTracker_HasPerformed360ClockwiseMove_00a0dcd0.cpp'
+        TestSource = '00/a0/CJoystickPositionTracker_HasPerformed360ClockwiseMove_00a0dcd0_test.cpp'
+        PassPattern = '00a0dcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6bfc0'
+        Module = 'CPreallocTexturePool'
+        Source = '00/a6/CPreallocTexturePool_scalardeletingdestructor_00a6bfc0.cpp'
+        TestSource = '00/a6/CPreallocTexturePool_scalardeletingdestructor_00a6bfc0_test.cpp'
+        PassPattern = '00a6bfc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8a9d0'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_CalculateBoneKeyframes_00a8a9d0.cpp'
+        TestSource = '00/a8/C3DMesh2_CalculateBoneKeyframes_00a8a9d0_test.cpp'
+        PassPattern = '00a8a9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a98760'
+        Module = 'N3DPrimitive::CVertexShaderInputStatic'
+        Source = '00/a9/N3DPrimitiveCVertexShaderInputStatic_scalardeletingdestructor_00a98760.cpp'
+        TestSource = '00/a9/N3DPrimitiveCVertexShaderInputStatic_scalardeletingdestructor_00a98760_test.cpp'
+        PassPattern = '00a98760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a987b0'
+        Module = 'N3DPrimitive::CVertexShaderInputAnimated'
+        Source = '00/a9/N3DPrimitiveCVertexShaderInputAnimated_scalardeletingdestructor_00a987b0.cpp'
+        TestSource = '00/a9/N3DPrimitiveCVertexShaderInputAnimated_scalardeletingdestructor_00a987b0_test.cpp'
+        PassPattern = '00a987b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac09a0'
+        Module = 'C3DMeshFileMaterialListChunk'
+        Source = '00/ac/C3DMeshFileMaterialListChunk_FindNextEngineMaterial_00ac09a0.cpp'
+        TestSource = '00/ac/C3DMeshFileMaterialListChunk_FindNextEngineMaterial_00ac09a0_test.cpp'
+        PassPattern = '00ac09a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af8680'
+        Module = 'NParticleEngine::CRandomAcceleration'
+        Source = '00/af/NParticleEngineCRandomAcceleration_operatornew_00af8680.cpp'
+        TestSource = '00/af/NParticleEngineCRandomAcceleration_operatornew_00af8680_test.cpp'
+        PassPattern = '00af8680_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af86c0'
+        Module = 'NParticleEngine::CParticle'
+        Source = '00/af/NParticleEngineCParticle_operatornew_00af86c0.cpp'
+        TestSource = '00/af/NParticleEngineCParticle_operatornew_00af86c0_test.cpp'
+        PassPattern = '00af86c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af8b00'
+        Module = 'NParticleEngine::CDecal'
+        Source = '00/af/NParticleEngineCDecal_operatornew_00af8b00.cpp'
+        TestSource = '00/af/NParticleEngineCDecal_operatornew_00af8b00_test.cpp'
+        PassPattern = '00af8b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b094b0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_Initialise_00b094b0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_Initialise_00b094b0_test.cpp'
+        PassPattern = '00b094b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

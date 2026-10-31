@@ -1,0 +1,8 @@
+address	catalog_length	true_length	evidence
+00994b10	45	46	retail 0x00994B3D is the int3 VC7.1 emits after the noreturn _CxxThrowException call (the function ends there; 0x00994B3E.. is padding); built bytes match all 46 -- dry verify_and_land RELOCATION_MATCH + PASS
+0099c7e0	334	306	retail 0x0099C911 is the int3 VC7.1 emits after the noreturn call at 0x0099C90C (the function ends there; 0x0099C912.. is padding and 0x0099C920 starts the next function); built bytes match all 306
+009fd700	227	126	retail 0x009FD77B is `ret 0Ch` (the constructor ends there; 0x009FD77E/7F int3 padding, 0x009FD780 starts an uncatalogued function: the header default constructor body); not matched yet (push scheduling residue)
+00af2200	71	36	retail 0x00AF2221 is `ret 4` (resize(n) ends there; 0x00AF2224.. int3 padding up to the next function); not matched yet
+00a69c20	381	186	retail 0x00A69CD7 is the `ret 1Ch` that ends AllocateVolumeTexture; 0x00A69CDA.. is int3 padding and 0x00A69CE0 starts an uncatalogued function (push ecx / push ebx), so the catalog extent swallowed it
+0099e690	344	180	retail 0x0099E743 is the `ret` that ends GFCharStringToFloat; 0x0099E744.. is int3 padding and 0x0099E750 starts an uncatalogued function (push esi / mov esi,[ecx])
+009c5890	710	389	retail 0x009C5A14 is the `ret` that ends CFileInstaller::CFileInstaller; 0x009C5A15.. is int3 padding and 0x009C5A20 starts an uncatalogued function (vptr store / ret)

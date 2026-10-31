@@ -1,0 +1,355 @@
+address	residue_bytes	retail_len	ours_len	best_source	range
+009ace90	0	68	68	rebuild/candidates/manual/pending/2026-10-27_linux_hand517/differ/009ace90.cpp	engine
+009bee40	0	101	101	rebuild/candidates/manual/pending/2026-10-15_linux_hand132/differ/009bee40.cpp	engine
+009f40a0	0	120	120	rebuild/candidates/manual/pending/2026-10-16_linux_retry5/differ/009f40a0.cpp	engine
+009d87f0	0	124	124	rebuild/candidates/manual/pending/2026-10-24_linux_hand412/differ/009d87f0.cpp	engine
+00af56e0	0	138	138	rebuild/candidates/manual/pending/2026-10-27_linux_hand993_fable_test/differ/00af56e0.cpp	engine
+009f7050	0	138	138	rebuild/candidates/manual/pending/2026-10-15_linux_hand177/differ/009f7050.cpp	engine
+00a659c0	0	140	140	rebuild/candidates/manual/pending/2026-10-15_linux_hand147/differ/00a659c0.cpp	engine
+00af12a0	0	144	144	rebuild/candidates/manual/pending/2026-10-15_linux_hand133/differ/00af12a0.cpp	engine
+009ba650	0	154	154	rebuild/candidates/manual/pending/2026-10-15_linux_hand159/differ/009ba650.cpp	engine
+009f18f0	0	166	166	rebuild/candidates/manual/pending/2026-10-24_linux_hand413/differ/009f18f0.cpp	engine
+009d5d30	0	179	179	rebuild/candidates/manual/pending/2026-10-15_linux_hand185/differ/009d5d30.cpp	engine
+009e4cb0	0	179	179	rebuild/candidates/manual/pending/2026-10-19_linux_hand191/differ/009e4cb0.cpp	engine
+009d5df0	0	183	183	rebuild/candidates/manual/pending/2026-10-15_linux_hand185/differ/009d5df0.cpp	engine
+00a358f0	0	185	185	rebuild/candidates/manual/pending/2026-10-24_linux_hand417/differ/00a358f0.cpp	engine
+00ad8af0	0	188	188	rebuild/candidates/manual/pending/2026-10-24_linux_hand425/differ/00ad8af0.cpp	engine
+00ac82a0	0	192	192	rebuild/candidates/manual/pending/2026-10-19_linux_hand197/differ/00ac82a0.cpp	engine
+00a872f0	0	196	196	rebuild/candidates/manual/pending/2026-10-20_linux_hand203/differ/00a872f0.cpp	engine
+00aeb600	0	202	202	rebuild/candidates/manual/pending/2026-10-19_linux_hand198/differ/00aeb600.cpp	engine
+00a57960	0	210	210	rebuild/candidates/manual/pending/2026-10-15_linux_hand180/differ/00a57960.cpp	engine
+00a5d000	0	211	211	rebuild/candidates/manual/pending/2026-10-19_linux_hand195/differ/00a5d000.cpp	engine
+00ac7eb0	0	215	215	rebuild/candidates/manual/pending/2026-10-19_linux_hand197/differ/00ac7eb0.cpp	engine
+00a1af00	0	227	227	rebuild/candidates/manual/pending/2026-10-19_linux_hand197/differ/00a1af00.cpp	engine
+009ad5f0	0	231	231	rebuild/candidates/manual/pending/2026-10-19_linux_hand199/differ/009ad5f0.cpp	engine
+00a3f250	0	236	236	rebuild/candidates/manual/pending/2026-10-20_linux_hand204/differ/00a3f250.cpp	engine
+00ac7200	0	255	255	rebuild/candidates/manual/pending/2026-10-27_linux_hand504/differ/00ac7200.cpp	engine
+00a0dcd0	0	256	256	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0dcd0.cpp	engine
+00a82be0	0	258	258	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00a82be0.cpp	engine
+00a55f90	0	259	259	rebuild/candidates/manual/pending/2026-10-27_linux_hand511/differ/00a55f90.cpp	engine
+00a17690	0	262	262	rebuild/candidates/manual/pending/2026-10-20_linux_hand226/differ/00a17690.cpp	engine
+0099ba70	0	265	265	rebuild/candidates/manual/pending/2026-10-20_linux_hand220/differ/0099ba70.cpp	engine
+00a42170	0	269	269	rebuild/candidates/manual/pending/2026-10-20_linux_hand226/differ/00a42170.cpp	engine
+00a146c0	0	278	278	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/00a146c0.cpp	engine
+00ab7b00	0	287	287	rebuild/candidates/manual/pending/2026-10-20_linux_hand229/differ/00ab7b00.cpp	engine
+00a0c450	0	288	288	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0c450.cpp	engine
+00a198c0	0	289	289	rebuild/candidates/manual/pending/2026-10-20_linux_hand225/differ/00a198c0.cpp	engine
+009e4da0	0	294	294	rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/009e4da0.cpp	engine
+00a56670	0	295	295	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00a56670.cpp	engine
+00a1de30	0	298	298	rebuild/candidates/manual/pending/2026-10-20_linux_hand225/differ/00a1de30.cpp	engine
+00aeb060	0	301	301	rebuild/candidates/manual/pending/2026-10-20_linux_hand225/differ/00aeb060.cpp	engine
+00a112f0	0	316	316	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a112f0.cpp	engine
+00a1abf0	0	324	324	rebuild/candidates/manual/pending/2026-10-21_linux_hand247/differ/00a1abf0.cpp	engine
+00a60050	0	333	333	rebuild/candidates/manual/pending/2026-10-21_linux_hand246/differ/00a60050.cpp	engine
+00ab5030	0	342	342	rebuild/candidates/manual/pending/2026-10-21_linux_hand247/differ/00ab5030.cpp	engine
+00aa3af0	0	346	346	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00aa3af0.cpp	engine
+00a22ca0	0	368	368	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/00a22ca0.cpp	engine
+00a1ad40	0	370	370	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/00a1ad40.cpp	engine
+009e5c90	0	373	373	rebuild/candidates/manual/pending/2026-10-21_linux_hand250/differ/009e5c90.cpp	engine
+00a26ad0	0	383	383	rebuild/candidates/manual/pending/2026-10-27_linux_hand993_fable_test/differ/00a26ad0.cpp	engine
+00acd960	0	383	383	rebuild/candidates/manual/pending/2026-10-21_linux_hand247/differ/00acd960.cpp	engine
+00a873e0	0	404	404	rebuild/candidates/manual/pending/2026-10-21_linux_hand268/differ/00a873e0.cpp	engine
+009faf70	0	407	407	rebuild/candidates/manual/pending/2026-10-22_linux_hand273/differ/009faf70.cpp	engine
+00a618d0	0	421	421	rebuild/candidates/manual/pending/2026-10-27_linux_hand511/differ/00a618d0.cpp	engine
+009a3460	0	424	424	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/009a3460.cpp	engine
+00a3bf10	0	432	432	rebuild/candidates/manual/pending/2026-10-27_linux_hand528/differ/00a3bf10.cpp	engine
+00a10560	0	433	433	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a10560.cpp	engine
+009c8c00	0	469	469	rebuild/candidates/manual/pending/2026-10-24_linux_hand470/differ/009c8c00.cpp	engine
+00a90260	0	496	496	rebuild/candidates/manual/pending/2026-10-21_linux_hand257/differ/00a90260.cpp	engine
+00a0bf20	0	517	517	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/00a0bf20.cpp	engine
+00a22f80	0	523	523	rebuild/candidates/manual/pending/2026-10-22_linux_hand290/differ/00a22f80.cpp	engine
+00a87700	0	603	603	rebuild/candidates/manual/pending/2026-10-22_linux_hand297/differ/00a87700.cpp	engine
+009c8990	0	604	604	rebuild/candidates/manual/pending/2026-10-22_linux_hand283/differ/009c8990.cpp	engine
+00a50c20	0	611	611	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a50c20.cpp	engine
+00a1cc30	0	632	632	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a1cc30.cpp	engine
+00a614b0	0	634	634	rebuild/candidates/manual/pending/2026-10-27_linux_hand534/differ/00a614b0.cpp	engine
+00a1ba10	0	642	642	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a1ba10.cpp	engine
+00ab3870	0	668	668	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/00ab3870.cpp	engine
+00a78b20	0	678	678	rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a78b20.cpp	engine
+009c05c0	0	699	699	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/009c05c0.cpp	engine
+00a42470	0	750	750	rebuild/candidates/manual/pending/2026-10-22_linux_hand294/differ/00a42470.cpp	engine
+00a3c3b0	0	777	777	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a3c3b0.cpp	engine
+00a18b50	0	783	783	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a18b50.cpp	engine
+009fb750	0	789	789	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/009fb750.cpp	engine
+00aede60	0	796	796	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00aede60.cpp	engine
+00a1d290	0	817	817	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a1d290.cpp	engine
+009ddc60	0	899	899	rebuild/candidates/manual/pending/2026-10-22_linux_hand297/differ/009ddc60.cpp	engine
+00a66fd0	0	963	963	rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a66fd0.cpp	engine
+00a89a70	0	970	970	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a89a70.cpp	engine
+00a89e40	0	986	986	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a89e40.cpp	engine
+00a1ceb0	0	992	992	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a1ceb0.cpp	engine
+009af7a0	0	1007	1007	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009af7a0.cpp	engine
+00ae1bc0	0	1158	1158	rebuild/candidates/manual/pending/2026-10-23_linux_hand321/differ/00ae1bc0.cpp	engine
+009a3c20	0	1298	1298	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009a3c20.cpp	engine
+00a8ad40	0	1621	1621	rebuild/candidates/manual/pending/2026-10-23_linux_hand312/differ/00a8ad40.cpp	engine
+009df730	0	1633	1633	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009df730.cpp	engine
+009dfda0	0	1633	1633	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009dfda0.cpp	engine
+009e0ae0	0	1635	1635	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e0ae0.cpp	engine
+009e0410	0	1738	1738	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e0410.cpp	engine
+00994b10	1	45	46	rebuild/candidates/manual/pending/2026-10-27_linux_hand517/differ/00994b10.cpp	engine
+00989830	1	99	98	rebuild/candidates/manual/pending/2026-10-15_linux_hand157/differ/00989830.cpp	engine
+009bce70	1	120	119	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/009bce70.cpp	engine
+009bcef0	1	120	119	rebuild/candidates/manual/pending/2026-10-27_linux_hand956/differ/009bcef0.cpp	engine
+009b9c60	1	124	125	rebuild/candidates/manual/pending/2026-10-15_linux_hand159/differ/009b9c60.cpp	engine
+009a4160	1	142	143	rebuild/candidates/manual/pending/2026-10-15_linux_hand159/differ/009a4160.cpp	engine
+00a3f340	1	184	183	rebuild/candidates/manual/pending/2026-10-24_linux_hand418/differ/00a3f340.cpp	engine
+00a1e030	1	217	216	rebuild/candidates/manual/pending/2026-10-24_linux_hand416/differ/00a1e030.cpp	engine
+009c9170	1	268	269	rebuild/candidates/manual/pending/2026-10-20_linux_hand222/differ/009c9170.cpp	engine
+00a60fb0	1	411	412	rebuild/candidates/manual/pending/2026-10-21_linux_hand260/differ/00a60fb0.cpp	engine
+00a24d70	1	414	413	rebuild/candidates/manual/pending/2026-10-21_linux_hand260/differ/00a24d70.cpp	engine
+00ad9980	1	416	415	rebuild/candidates/manual/pending/2026-10-21_linux_hand274/differ/00ad9980.cpp	engine
+009c5690	1	469	468	rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/009c5690.cpp	engine
+00aabd50	1	515	514	rebuild/candidates/manual/pending/2026-10-22_linux_hand286/differ/00aabd50.cpp	engine
+00a5b370	1	534	533	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/00a5b370.cpp	engine
+0099c1e0	1	609	610	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/0099c1e0.cpp	engine
+00a8f770	1	616	617	rebuild/candidates/manual/pending/2026-10-22_linux_hand277/differ/00a8f770.cpp	engine
+00a571a0	1	654	653	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a571a0.cpp	engine
+00a64910	1	757	756	rebuild/candidates/manual/pending/2026-10-22_linux_hand290/differ/00a64910.cpp	engine
+00a8a220	1	965	966	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a8a220.cpp	engine
+00a8a5f0	1	981	982	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a8a5f0.cpp	engine
+00a0be30	2	68	70	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a0be30.cpp	engine
+00a533f0	2	80	82	rebuild/candidates/manual/pending/2026-10-15_linux_hand75/differ/00a533f0.cpp	engine
+00a24cd0	2	80	82	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a24cd0.cpp	engine
+00a62ae0	2	130	132	rebuild/candidates/manual/pending/2026-10-15_linux_hand150/differ/00a62ae0.cpp	engine
+00a65ff0	2	169	167	rebuild/candidates/manual/pending/2026-10-19_linux_hand195/differ/00a65ff0.cpp	engine
+00ac09a0	2	209	207	rebuild/candidates/manual/pending/2026-10-15_linux_hand180/differ/00ac09a0.cpp	engine
+009dd960	2	229	227	rebuild/candidates/manual/pending/2026-10-20_linux_hand203/differ/009dd960.cpp	engine
+00a780b0	2	238	236	rebuild/candidates/manual/pending/2026-10-19_linux_hand197/differ/00a780b0.cpp	engine
+009f5690	2	262	264	rebuild/candidates/manual/pending/2026-10-20_linux_hand223/differ/009f5690.cpp	engine
+00a0db60	2	290	288	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0db60.cpp	engine
+00996610	2	449	451	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/00996610.cpp	engine
+009f20b0	2	598	596	rebuild/candidates/manual/pending/2026-10-22_linux_hand290/differ/009f20b0.cpp	engine
+009ce370	2	620	622	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/009ce370.cpp	engine
+00a60d40	2	623	621	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/00a60d40.cpp	engine
+00add690	2	648	646	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00add690.cpp	engine
+00a229e0	2	689	691	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a229e0.cpp	engine
+00a36a80	2	747	745	rebuild/candidates/manual/pending/2026-10-22_linux_hand277/differ/00a36a80.cpp	engine
+00a177a0	2	840	838	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00a177a0.cpp	engine
+00a24520	2	847	849	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a24520.cpp	engine
+00a8a9d0	2	874	876	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a8a9d0.cpp	engine
+00aeeba0	2	890	892	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00aeeba0.cpp	engine
+00a18fc0	2	1125	1123	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a18fc0.cpp	engine
+009c37a0	3	128	125	rebuild/candidates/manual/pending/2026-10-24_linux_hand411/differ/009c37a0.cpp	engine
+00994a80	3	141	138	rebuild/candidates/manual/pending/2026-10-15_linux_hand126/differ/00994a80.cpp	engine
+009c3820	3	151	148	rebuild/candidates/manual/pending/2026-10-24_linux_hand411/differ/009c3820.cpp	engine
+00a0cdd0	3	178	175	rebuild/candidates/manual/pending/2026-10-20_linux_hand216/differ/00a0cdd0.cpp	engine
+00ad8dd0	3	243	240	rebuild/candidates/manual/pending/2026-10-20_linux_hand238/differ/00ad8dd0.cpp	engine
+00a0c6f0	3	315	318	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0c6f0.cpp	engine
+00a76770	3	321	318	rebuild/candidates/manual/pending/2026-10-21_linux_hand247/differ/00a76770.cpp	engine
+00a6c640	3	517	514	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00a6c640.cpp	engine
+00a364e0	3	700	703	rebuild/candidates/manual/pending/2026-10-22_linux_hand277/differ/00a364e0.cpp	engine
+00b094b0	3	732	729	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/00b094b0.cpp	engine
+00a87260	4	137	133	rebuild/candidates/manual/pending/2026-10-15_linux_hand156/differ/00a87260.cpp	engine
+00997880	4	168	172	rebuild/candidates/manual/pending/2026-10-19_linux_hand199/differ/00997880.cpp	engine
+009b9770	4	181	177	rebuild/candidates/manual/pending/2026-10-19_linux_hand198/differ/009b9770.cpp	engine
+00ae3920	4	270	266	rebuild/candidates/manual/pending/2026-10-27_linux_hand587/differ/00ae3920.cpp	engine
+00a77780	4	298	302	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00a77780.cpp	engine
+009a01c0	4	316	312	rebuild/candidates/manual/pending/2026-10-27_linux_hand526/differ/009a01c0.cpp	engine
+009e3640	4	328	332	rebuild/candidates/manual/pending/2026-10-21_linux_hand248/differ/009e3640.cpp	engine
+00a04200	4	382	386	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a04200.cpp	engine
+009ff220	4	540	536	rebuild/candidates/manual/pending/2026-10-22_linux_hand287/differ/009ff220.cpp	engine
+009bae70	4	593	589	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/009bae70.cpp	engine
+00a17f80	4	818	822	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00a17f80.cpp	engine
+009cfbc0	4	1969	1973	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009cfbc0.cpp	engine
+00a11c20	5	103	108	rebuild/candidates/manual/pending/2026-10-15_linux_hand134/differ/00a11c20.cpp	engine
+00ac8a60	5	121	126	rebuild/candidates/manual/pending/2026-10-15_linux_hand150/differ/00ac8a60.cpp	engine
+009b9d70	5	132	127	rebuild/candidates/manual/pending/2026-10-15_linux_hand159/differ/009b9d70.cpp	engine
+009ba5b0	5	155	150	rebuild/candidates/manual/pending/2026-10-15_linux_hand159/differ/009ba5b0.cpp	engine
+009d6350	5	196	191	rebuild/candidates/manual/pending/2026-10-15_linux_hand185/differ/009d6350.cpp	engine
+009c4f20	5	490	485	rebuild/candidates/manual/pending/2026-10-21_linux_hand264/differ/009c4f20.cpp	engine
+009ae390	5	600	595	rebuild/candidates/manual/pending/2026-10-22_linux_hand285/differ/009ae390.cpp	engine
+00a1e110	5	601	596	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a1e110.cpp	engine
+00aac5e0	6	136	130	rebuild/candidates/manual/pending/2026-10-15_linux_hand148/differ/00aac5e0.cpp	engine
+009f3010	6	144	138	rebuild/candidates/manual/pending/2026-10-15_linux_hand159/differ/009f3010.cpp	engine
+00a0c1b0	6	152	158	rebuild/candidates/manual/pending/2026-10-15_linux_hand124/differ/00a0c1b0.cpp	engine
+00a887b0	6	211	217	rebuild/candidates/manual/pending/2026-10-27_linux_hand993_fable_test/differ/00a887b0.cpp	engine
+00ac70f0	6	237	231	rebuild/candidates/manual/pending/2026-10-20_linux_hand202/differ/00ac70f0.cpp	engine
+009c3660	6	305	299	rebuild/candidates/manual/pending/2026-10-20_linux_hand223/differ/009c3660.cpp	engine
+009c5170	6	410	416	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009c5170.cpp	engine
+00aeb790	7	171	178	rebuild/candidates/manual/pending/2026-10-19_linux_hand198/differ/00aeb790.cpp	engine
+00a3c1a0	7	189	182	rebuild/candidates/manual/pending/2026-10-15_linux_hand180/differ/00a3c1a0.cpp	engine
+00a0c570	7	373	380	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/00a0c570.cpp	engine
+009c8de0	7	452	459	rebuild/candidates/manual/pending/2026-10-22_linux_hand273/differ/009c8de0.cpp	engine
+009f4390	7	507	500	rebuild/candidates/manual/pending/2026-10-21_linux_hand269/differ/009f4390.cpp	engine
+009f3da0	7	582	589	rebuild/candidates/manual/pending/2026-10-23_linux_hand299/differ/009f3da0.cpp	engine
+00acd0e0	7	1041	1048	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00acd0e0.cpp	engine
+00a57140	8	90	82	rebuild/candidates/manual/pending/2026-10-27_linux_hand518/differ/00a57140.cpp	engine
+009b00d0	8	155	163	rebuild/candidates/manual/pending/2026-10-15_linux_hand151/differ/009b00d0.cpp	engine
+009ce050	8	302	294	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009ce050.cpp	engine
+009fe780	8	343	351	rebuild/candidates/manual/pending/2026-10-21_linux_hand245/differ/009fe780.cpp	engine
+00a58790	8	707	699	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00a58790.cpp	engine
+009f73c0	8	732	724	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/009f73c0.cpp	engine
+00a53440	9	116	125	rebuild/candidates/manual/pending/2026-10-15_linux_hand158/differ/00a53440.cpp	engine
+00a6bcd0	9	276	285	rebuild/candidates/manual/pending/2026-10-27_linux_hand511/differ/00a6bcd0.cpp	engine
+009d5bf0	9	314	305	rebuild/candidates/manual/pending/2026-10-20_linux_hand220/differ/009d5bf0.cpp	engine
+00a898d0	9	402	393	rebuild/candidates/manual/pending/2026-10-21_linux_hand257/differ/00a898d0.cpp	engine
+00a44f40	9	525	516	rebuild/candidates/manual/pending/2026-10-22_linux_hand277/differ/00a44f40.cpp	engine
+00a90ae0	9	629	620	rebuild/candidates/manual/pending/2026-10-22_linux_hand280/differ/00a90ae0.cpp	engine
+0098ecd0	9	786	777	rebuild/candidates/manual/pending/2026-10-23_linux_hand309/differ/0098ecd0.cpp	engine
+00a852b0	10	143	153	rebuild/candidates/manual/pending/2026-10-24_linux_hand423/differ/00a852b0.cpp	engine
+009e3f60	10	189	179	rebuild/candidates/manual/pending/2026-10-24_linux_hand413/differ/009e3f60.cpp	engine
+00a44420	10	424	414	rebuild/candidates/manual/pending/2026-10-27_linux_hand528/differ/00a44420.cpp	engine
+00b08530	10	654	664	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00b08530.cpp	engine
+00a35b70	10	1022	1012	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a35b70.cpp	engine
+00a0ca90	11	187	176	rebuild/candidates/manual/pending/2026-10-20_linux_hand216/differ/00a0ca90.cpp	engine
+00b131e0	11	839	850	rebuild/candidates/manual/pending/2026-10-24_linux_hand471/differ/00b131e0.cpp	engine
+009b9700	12	103	91	rebuild/candidates/manual/pending/2026-10-15_linux_hand151/differ/009b9700.cpp	engine
+00ad9770	12	280	292	rebuild/candidates/manual/pending/2026-10-20_linux_hand238/differ/00ad9770.cpp	engine
+00a43cd0	12	288	300	rebuild/candidates/manual/pending/2026-10-27_linux_hand528/differ/00a43cd0.cpp	engine
+00a47d10	13	97	110	rebuild/candidates/manual/pending/2026-10-24_linux_hand419/differ/00a47d10.cpp	engine
+00a38c20	13	551	564	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/00a38c20.cpp	engine
+00ab1740	13	592	605	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00ab1740.cpp	engine
+00a56270	13	693	706	rebuild/candidates/manual/pending/2026-10-22_linux_hand290/differ/00a56270.cpp	engine
+00a8ff50	14	231	217	rebuild/candidates/manual/pending/2026-10-15_linux_hand185/differ/00a8ff50.cpp	engine
+00a12d20	14	438	452	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/00a12d20.cpp	engine
+00af2640	15	313	298	rebuild/candidates/manual/pending/2026-10-27_linux_hand592/differ/00af2640.cpp	engine
+009fa620	15	351	336	rebuild/candidates/manual/pending/2026-10-24_linux_hand483/differ/009fa620.cpp	engine
+009adc90	15	382	367	rebuild/candidates/manual/pending/2026-10-21_linux_hand243/differ/009adc90.cpp	engine
+009adae0	15	417	402	rebuild/candidates/manual/pending/2026-10-21_linux_hand262/differ/009adae0.cpp	engine
+009ce5e0	15	741	726	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/009ce5e0.cpp	engine
+00a1aff0	15	1140	1155	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/00a1aff0.cpp	engine
+009e55a0	15	1317	1332	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/009e55a0.cpp	engine
+00ac7cb0	16	350	334	rebuild/candidates/manual/pending/2026-10-21_linux_hand247/differ/00ac7cb0.cpp	engine
+00ae0e60	16	457	441	rebuild/candidates/manual/pending/2026-10-21_linux_hand266/differ/00ae0e60.cpp	engine
+00a90900	16	471	487	rebuild/candidates/manual/pending/2026-10-21_linux_hand262/differ/00a90900.cpp	engine
+009c4440	16	609	625	rebuild/candidates/manual/pending/2026-10-22_linux_hand287/differ/009c4440.cpp	engine
+00a8f9e0	16	773	789	rebuild/candidates/manual/pending/2026-10-22_linux_hand277/differ/00a8f9e0.cpp	engine
+00ac7300	16	1091	1075	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00ac7300.cpp	engine
+009a8840	16	1565	1581	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009a8840.cpp	engine
+00a60410	17	245	262	rebuild/candidates/manual/pending/2026-10-27_linux_hand504/differ/00a60410.cpp	engine
+00a74180	17	472	489	rebuild/candidates/manual/pending/2026-10-27_linux_hand512/differ/00a74180.cpp	engine
+00a98760	18	80	62	rebuild/candidates/manual/pending/2026-10-24_diag/differ/00a98760.cpp	engine
+00a987b0	18	80	62	rebuild/candidates/manual/pending/2026-10-24_diag/differ/00a987b0.cpp	engine
+00a114b0	19	338	319	rebuild/candidates/manual/pending/2026-10-21_linux_hand248/differ/00a114b0.cpp	engine
+00a90040	19	403	384	rebuild/candidates/manual/pending/2026-10-21_linux_hand260/differ/00a90040.cpp	engine
+00ad9f10	20	806	826	rebuild/candidates/manual/pending/2026-10-23_linux_hand310/differ/00ad9f10.cpp	engine
+00ac8ae0	21	409	388	rebuild/candidates/manual/pending/2026-10-21_linux_hand266/differ/00ac8ae0.cpp	engine
+00b08250	21	724	745	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00b08250.cpp	engine
+00a9d580	22	221	199	rebuild/candidates/manual/pending/2026-10-19_linux_hand195/differ/00a9d580.cpp	engine
+009a23e0	22	495	473	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/009a23e0.cpp	engine
+009bf7e0	22	846	824	rebuild/candidates/manual/pending/2026-10-22_linux_hand284/differ/009bf7e0.cpp	engine
+009a2000	22	982	1004	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/009a2000.cpp	engine
+009a8170	24	1732	1708	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009a8170.cpp	engine
+0099c7e0	28	334	306	rebuild/candidates/manual/pending/2026-10-27_linux_hand526/differ/0099c7e0.cpp	engine
+009ccef0	28	592	620	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/009ccef0.cpp	engine
+009f3b00	28	664	636	rebuild/candidates/manual/pending/2026-10-23_linux_hand299/differ/009f3b00.cpp	engine
+00aad340	29	584	613	rebuild/candidates/manual/pending/2026-10-23_linux_hand311/differ/00aad340.cpp	engine
+00aa8830	29	889	918	rebuild/candidates/manual/pending/2026-10-22_linux_hand281/differ/00aa8830.cpp	engine
+009f39a0	31	346	377	rebuild/candidates/manual/pending/2026-10-27_linux_hand527/differ/009f39a0.cpp	engine
+00a90d60	32	413	445	rebuild/candidates/manual/pending/2026-10-27_linux_hand529/differ/00a90d60.cpp	engine
+009c3c20	32	909	877	rebuild/candidates/manual/pending/2026-10-22_linux_hand287/differ/009c3c20.cpp	engine
+009a08b0	33	491	458	rebuild/candidates/manual/pending/2026-10-21_linux_hand260/differ/009a08b0.cpp	engine
+00a1a7e0	33	862	895	rebuild/candidates/manual/pending/2026-10-27_linux_hand533/differ/00a1a7e0.cpp	engine
+00a6bfc0	34	64	30	rebuild/candidates/manual/pending/2026-10-24_linux_hand421/differ/00a6bfc0.cpp	engine
+00a48f10	34	811	845	rebuild/candidates/manual/pending/2026-10-22_linux_hand289/differ/00a48f10.cpp	engine
+00a5c360	35	421	386	rebuild/candidates/manual/pending/2026-10-27_linux_hand511/differ/00a5c360.cpp	engine
+00af5430	35	607	572	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00af5430.cpp	engine
+0099fb60	38	428	390	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0099fb60.cpp	engine
+00af5090	38	657	619	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00af5090.cpp	engine
+00a89740	41	389	348	rebuild/candidates/manual/pending/2026-10-21_linux_hand239/differ/00a89740.cpp	engine
+009ebdd0	41	1625	1584	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009ebdd0.cpp	engine
+0098e7d0	43	840	883	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/0098e7d0.cpp	engine
+009a1140	47	918	871	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/009a1140.cpp	engine
+00a25040	48	990	942	rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a25040.cpp	engine
+009e3df0	49	354	305	rebuild/candidates/manual/pending/2026-10-21_linux_hand248/differ/009e3df0.cpp	engine
+009e81e0	49	750	701	rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/009e81e0.cpp	engine
+009e84d0	50	917	867	rebuild/candidates/manual/pending/2026-10-24_linux_hand469/differ/009e84d0.cpp	engine
+00a19430	50	1165	1215	rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a19430.cpp	engine
+00ac53f0	52	755	703	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00ac53f0.cpp	engine
+009f4590	52	864	916	rebuild/candidates/manual/pending/2026-10-23_linux_hand299/differ/009f4590.cpp	engine
+00a6d0e0	54	984	930	rebuild/candidates/manual/pending/2026-10-22_linux_hand294/differ/00a6d0e0.cpp	engine
+00a9d750	59	551	492	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a9d750.cpp	engine
+00a11f20	63	428	491	rebuild/candidates/manual/pending/2026-10-21_linux_hand267/differ/00a11f20.cpp	engine
+00aaf1e0	65	904	839	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00aaf1e0.cpp	engine
+009d0880	65	1635	1570	rebuild/candidates/manual/pending/2026-10-23_linux_hand314/differ/009d0880.cpp	engine
+00a11d10	69	422	491	rebuild/candidates/manual/pending/2026-10-21_linux_hand267/differ/00a11d10.cpp	engine
+00a12ab0	71	468	539	rebuild/candidates/manual/pending/2026-10-21_linux_hand267/differ/00a12ab0.cpp	engine
+00a6d670	71	969	898	rebuild/candidates/manual/pending/2026-10-22_linux_hand294/differ/00a6d670.cpp	engine
+00a128e0	74	464	538	rebuild/candidates/manual/pending/2026-10-21_linux_hand267/differ/00a128e0.cpp	engine
+00a69f70	74	955	881	rebuild/candidates/manual/pending/2026-10-23_linux_hand307/differ/00a69f70.cpp	engine
+009919c0	79	579	500	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/009919c0.cpp	engine
+009e3b60	81	280	199	rebuild/candidates/manual/pending/2026-10-20_linux_hand226/differ/009e3b60.cpp	engine
+00a52760	82	1004	922	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a52760.cpp	engine
+00a53860	83	1005	922	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a53860.cpp	engine
+00a4c1f0	84	1006	922	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00a4c1f0.cpp	engine
+00a793d0	85	678	593	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a793d0.cpp	engine
+00a79680	85	678	593	rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00a79680.cpp	engine
+00989230	101	636	535	rebuild/candidates/manual/pending/2026-10-22_linux_hand298/differ/00989230.cpp	engine
+00a12450	101	870	971	rebuild/candidates/manual/pending/2026-10-22_linux_hand294/differ/00a12450.cpp	engine
+00a120d0	101	886	987	rebuild/candidates/manual/pending/2026-10-22_linux_hand294/differ/00a120d0.cpp	engine
+00991c10	105	338	233	rebuild/candidates/manual/pending/2026-10-24_linux_hand482/differ/00991c10.cpp	engine
+00aa3c50	109	671	562	rebuild/candidates/manual/pending/2026-10-22_linux_hand297/differ/00aa3c50.cpp	engine
+00a770b0	125	533	408	rebuild/candidates/manual/pending/2026-10-22_linux_hand291/differ/00a770b0.cpp	engine
+00ab7c20	127	1910	1783	rebuild/candidates/manual/pending/2026-10-23_linux_hand323/differ/00ab7c20.cpp	engine
+00ab2160	137	960	1097	rebuild/candidates/manual/pending/2026-10-22_linux_hand276/differ/00ab2160.cpp	engine
+00b05c60	152	429	277	rebuild/candidates/manual/pending/2026-10-21_linux_hand266/differ/00b05c60.cpp	engine
+00adf960	300	766	466	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00adf960.cpp	engine
+00ae29d0	304	726	422	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00ae29d0.cpp	engine
+00ae1320	305	681	376	rebuild/candidates/manual/pending/2026-10-22_linux_hand293/differ/00ae1320.cpp	engine
+00a4d770	331	420	89	rebuild/candidates/manual/pending/2026-10-21_linux_hand257/differ/00a4d770.cpp	engine
+00addbe0	710	414	1124	rebuild/candidates/manual/pending/2026-10-21_linux_hand257/differ/00addbe0.cpp	engine
+009f57a0	984	1072	88	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/009f57a0.cpp	engine
+00a23190	1142	1508	366	rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/00a23190.cpp	engine
+00a495f0	1214	1261	47	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/00a495f0.cpp	engine
+00a276d0	1293	1330	37	rebuild/candidates/manual/pending/2026-10-23_linux_hand319/differ/00a276d0.cpp	engine
+009afb90	1341	1344	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/009afb90.cpp	engine
+009ae7c0	1453	1456	3	rebuild/candidates/manual/pending/2026-10-23_linux_hand315/differ/009ae7c0.cpp	engine
+00a880c0	1653	1768	115	rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/00a880c0.cpp	engine
+00a87960	1709	1824	115	rebuild/candidates/manual/pending/2026-10-23_linux_hand322/differ/00a87960.cpp	engine
+009fd700				rebuild/candidates/manual/pending/2026-10-15_linux_hand142/differ/009fd700.cpp	engine
+009bb0d0				rebuild/candidates/manual/pending/2026-10-24_retry12/differ/009bb0d0_v2.cpp	engine
+009c3590				rebuild/candidates/manual/pending/2026-10-19_linux_hand193/differ/009c3590.cpp	engine
+009fe460				rebuild/candidates/manual/pending/2026-10-19_linux_hand193/differ/009fe460.cpp	engine
+009fc950				rebuild/candidates/manual/pending/2026-10-19_linux_hand194/differ/009fc950.cpp	engine
+009fca40				rebuild/candidates/manual/pending/2026-10-27_linux_retail_asm_rasm2/differ/009fca40.cpp	engine
+009bbbf0				rebuild/candidates/manual/pending/2026-10-19_linux_hand200/differ/009bbbf0.cpp	engine
+00a11ae0				rebuild/candidates/manual/pending/2026-10-19_linux_hand200/differ/00a11ae0.cpp	engine
+00a69b70				rebuild/candidates/manual/pending/2026-10-20_linux_hand213/differ/00a69b70.cpp	engine
+00a69c20				rebuild/candidates/manual/pending/2026-10-20_linux_hand213/differ/00a69c20.cpp	engine
+00a357b0				rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/00a357b0.cpp	engine
+00a57030				rebuild/candidates/manual/pending/2026-10-20_linux_hand218/differ/00a57030.cpp	engine
+00a5cee0				rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00a5cee0.cpp	engine
+00a64ef0				rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00a64ef0.cpp	engine
+00a65480				rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00a65480.cpp	engine
+00a65720				rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00a65720.cpp	engine
+00a9d480				rebuild/candidates/manual/pending/2026-10-20_linux_hand224/differ/00a9d480.cpp	engine
+009c3fb0				rebuild/candidates/manual/pending/2026-10-21_linux_hand245/differ/009c3fb0.cpp	engine
+009c5890				rebuild/candidates/manual/pending/2026-10-21_linux_hand245/differ/009c5890.cpp	engine
+009dc6e0				rebuild/candidates/manual/pending/2026-10-21_linux_hand249/differ/009dc6e0.cpp	engine
+00a22e10				rebuild/candidates/manual/pending/2026-10-21_linux_hand249/differ/00a22e10.cpp	engine
+00aa39a0				rebuild/candidates/manual/pending/2026-10-21_linux_hand249/differ/00aa39a0.cpp	engine
+009aed70				rebuild/candidates/manual/pending/2026-10-21_linux_hand266/differ/009aed70.cpp	engine
+009acee0				rebuild/candidates/manual/pending/2026-10-22_linux_hand283/differ/009acee0.cpp	engine
+009c9280				rebuild/candidates/manual/pending/2026-10-22_linux_hand283/differ/009c9280.cpp	engine
+00af90c0				rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00af90c0.cpp	engine
+00b075d0				rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b075d0.cpp	engine
+00b0fbf0				rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b0fbf0.cpp	engine
+00b0ffc0				rebuild/candidates/manual/pending/2026-10-22_linux_hand292/differ/00b0ffc0.cpp	engine
+009bd460				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/009bd460.cpp	engine
+00a1a260				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a1a260.cpp	engine
+00a1b5a0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a1b5a0.cpp	engine
+00a1d6e0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a1d6e0.cpp	engine
+00a475c0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a475c0.cpp	engine
+00a781a0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a781a0.cpp	engine
+00a79b30				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a79b30.cpp	engine
+00a7a8d0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00a7a8d0.cpp	engine
+00ab4bb0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00ab4bb0.cpp	engine
+00acc490				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00acc490.cpp	engine
+00ace600				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00ace600.cpp	engine
+00afb7c0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00afb7c0.cpp	engine
+00b00db0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b00db0.cpp	engine
+00b012e0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b012e0.cpp	engine
+00b079b0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b079b0.cpp	engine
+00b103f0				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b103f0.cpp	engine
+00b16410				rebuild/candidates/manual/pending/2026-10-23_linux_hand320/differ/00b16410.cpp	engine
+0099e690				rebuild/candidates/manual/pending/2026-10-24_linux_hand409/differ/0099e690.cpp	engine
+00a68690				rebuild/candidates/manual/pending/2026-10-27_linux_hand534/differ/00a68690.cpp	engine
+00a868c0				rebuild/candidates/manual/pending/2026-10-27_linux_hand534/differ/00a868c0.cpp	engine
+00ab1cc0				rebuild/candidates/manual/pending/2026-10-27_linux_hand534/differ/00ab1cc0.cpp	engine
+0099f570				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f570.cpp	engine
+0099f600				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f600.cpp	engine
+0099f7a0				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/0099f7a0.cpp	engine
+00af2200				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00af2200.cpp	engine
+00af8680				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00af8680.cpp	engine
+00af86c0				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00af86c0.cpp	engine
+00af8b00				rebuild/candidates/manual/pending/2026-10-28_chatgpt_pass8/differ/00af8b00.cpp	engine

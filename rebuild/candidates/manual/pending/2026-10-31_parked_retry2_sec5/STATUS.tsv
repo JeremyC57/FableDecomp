@@ -1,0 +1,355 @@
+address	status	grades	lever	residue
+009ace90	MATCH	6	inline null-safe count getter in an inverted if (block placement); shared CDefClassBase/CDefPointer headers	-
+009bee40	HELD	5	ternary per member (105 worse); named x local sunk to join (7 lines, closer: one register); X=Y chain; size declared first; caps & 2	101v101 Y load register edx (retail ecx) in the else arm; with named x the store schedule matches, only ecx/edx
+009f40a0	HELD	5	named depth local (edi load moves after the imuls as retail, but VC re-associates to X*Y*depth in every order: 3 lines); inline ZeroBytes helper; re-associated product	120v120 imul operand order (named depth) or edi load placement (inline product)
+009d87f0	HELD	4	active-thread store first / after saved / image+size locals before the store / function-local ref	124v124 active-thread store scheduled before the pushes (ours) vs after (retail); every reorder grows to 126
+00af56e0	HELD	4	for-loop with current=it as increment (1 line, same); current declared first (139); guarded do-while (7); iterator copy at the body top (130, loop aligned)	138v138 one operand: bottom iterator store from ebx (ours) vs edi after mov edi,ebx (retail)
+009f7050	HELD	4	info at function scope (no block); split record declaration; whole-file /Od; /GS	138v138 /Od frame order: retail homes info above the record pointer (info -0x30, record -0x34), ours record at -4 + 4 pad; needs info declared before record but its ctor runs after InterlockedIncrement
+00a659c0	HELD	4	landed model + callee names (hdr/); Align operand orders; named shift; named rounded sum	140v140 reload order Alignment(edx)/AlignmentShift(ecx) after the global stores
+00af12a0	HELD	3	shared CCountedPointer.h (hdr/, neutral); operator-> object; named emitter local; reference local to the counted pointer (worse)	144v144 object load after the stream push; delete arg ecx/edx
+009ba650	HELD	3	named long value local; explicit (float)(long) cast; float-first if chain (worse)	154v154 integer arm: retail spills the int and filds after the item dtor, ours filds first and spills the float; error arm eax/edx
+009f18f0	HELD	3	buffer pointer local; unsigned size > sizeof - start (175); named n copy of size + Length = Length - n	166v166 callee-saved permutation: retail this=ebx size=ebp StartPos=edx; ours size=ebx this=edx StartPos=esi
+009d5d30	HELD	3	CBaseClassNonCopyable header (hdr/, neutral); two flags in the init list; section pointer local between the flag pairs	179v179 flag-store scheduling around the lock argument
+00a358f0	HELD	4	landed CrossProduct ((float)(double), worse); b.Y*a.X; (float)(double) z; b.X*a.Y	185v185 one x87 operand order in the z product (Up.Y loaded before Forward.X)
+009e4cb0	IMPROVED	3	start-preset for loop over start==-1 (unfolds retail's cmp -1, 24->22); while/else --j (181); indexed outer loop (24)	179v179 register colouring in both scans
+009d5df0	HELD	2	CBaseClassNonCopyable header (hdr/, neutral); chained flag assignment (worse)	183v183 flag-store scheduling around the lock argument (twin of 009d5d30)
+00ad8af0	HELD	3	other iterator declared first; reference local to other's map; end-iterator locals	188v188 this/other map headers swap ebx/ebp
+00ac82a0	HELD	3	vertices pointer local; named index locals; *(first+n) operator[]	192v192 prologue: this spilled between the two pushes (ours) vs after both
+00a872f0	HELD	3	inverted relative test (worse); ternary return; named length local	196v196 scheduling: relative byte load before (retail) / after the fadd
+00aeb600	HELD	3	CBaseClass header (hdr/, neutral); sibling's emitter-> calls (216); result assigned before the calls	202v202 clone register ecx->esi copy vs direct esi
+00a57960	HELD	2	Point2/other.Point2 by-value C2DVector copies (220); with memberwise copy ctor (212)	210v210 frame 0x14 v 0x20: retail homes y2/x4 in 8-byte pair slots
+00a5d000	HELD	2	swapped operands of the two m[0][3] products; single-expression rows	211v211 two x87 product operand orders (canonicalised by VC7.1)
+00ac7eb0	HELD	3	Dot x term operands swapped (canonicalised); squared-normal compound assignment in/out of the expression (worse)	215v215 x87 operand order of the Dot x term and the n*n*w schedule
+00a1af00	HELD	3	explicit C2DVector(to) temporary; named layer local (235); explicit temporaries in both calls	227v227 one lea scheduled before push eax (second GetNodeAt temporary)
+00ac7200	HELD	2	const float member Dot; named dot local (253)	255v255 Dot z-term scheduling
+009ad5f0	HELD	2	count before compressedSize; blockOffset before blockFirst	231v231 ebx/ebp swap of block offset and next first-index
+00a3f250	HELD	1	named CSoundKey local (225, worse)	236v236 register naming of the soundName push and &entry (descriptive name vfunc_39)
+00a17690	HELD	3	Max+Min (flips both lanes: X right, Y wrong); per-lane mixed sum (316); += operator+ (333)	262v262 one x87 commutation in the centre X lane
+00a0dcd0	RELOCATION_MATCH	2	x87 compare spelling if(!(len > k)) + stepwise dot sum	-
+00a55f90	HELD	2	X-first products; split xy declaration	259v259 two product operand orders (xy, xz) + scheduling
+00a82be0	HELD	2	same-TU noinline __push_heap body (landed 0x00A820E0); (flag pre-screen /Gr kept)	258v258 val-copy scheduling before the __push_heap call
+00a42170	HELD	3	leaf fix (struct->class C3DVector, differ/); forceinline copy ctor; user operator= (225)	269v269 copy-load scheduling of the cross temporary
+00a146c0	HELD	1	landed GFFloatRandom 0x004978A0 body shape inline (scaled *= 65536 after the seed step, > test first)	278v278 next seed update scheduled before the fmul in retail
+00ab7b00	IMPROVED	3	float local declaration order (width first: 77->59; others 71)	287v287 frame 0x10 v 0x14 + ebx/ebp shrink-wrap
+00a198c0	HELD	1	target + offset operand swap (no change at all: VC7.1 picks the x87 operand order)	289v289 x87 operand order of the offset sum (X, Y lanes)
+009e4da0	HELD	2	compound -= '@'; (wchar16)(x - 0x40) before _getdrive (20 lines)	294v294 this/driveNumber esi/edi swap + 16-bit add imm16 vs retail imm8
+00a0c450	HELD	2	named double cos(pitch); swapped product operands	288v288 x87 stack choice for the cos(pitch) products
+00a56670	HELD	2	named result local then copy; right-nested sum (279)	295v295 final result-copy scheduling
+00a1de30	HELD	2	owner pointer local (295); if-clamp instead of ternary	298v298 owner reload register ecx vs eax + pop edi scheduling
+00a1abf0	HELD	2	radius += reach; named reach local	324v324 scheduling of the size compare vs fadd
+00a112f0	HELD	3	rotated temporary normalised in place via reference (288); normal by reference (312); forceinline copy ctor (same)	316v316 x87 allocation/frame 0x24 v 0x1c
+00aeb060	HELD	2	shared CCountedPointer.h (hdr/, neutral); distance-shaped size()	301v301 size-loop copy scheduling
+00a60050	HELD	3	shared CCountedPointer.h (hdr/, neutral); named joystick local (348)	333v333 one register in the count-block delete reload
+00ab5030	HELD	3	declaration orders (client first / origin first); double pos copy via named relative	334v342 retail keeps two pos copies (+8 bytes) and a different frame slot order
+00aa3af0	HELD	3	chained last-row zeros; reversed zero-store order; named pos local	346v346 VC hoists the six integer stores to after E11, retail after E33; scheduling only
+00a22ca0	HELD	3	stepwise z term; negated swapped difference; unary-minus split	368v368 Cross Z term operand swap (fld [ecx+0Ch]; fmul [ecx+4]) VC canonicalised
+009e5c90	HELD	3	buffer[length-1]; integer-sum address both orders	373v373 [eax+esi] vs [esi+eax] base/index order of the terminator store
+00a1ad40	HELD	3	step.X + current.X operand order; last declared first; inverted distance exit	370v370 prologue ebx push placement, frame slot order, cold exit block
+00acd960	HELD	1	shared engine/CCountedPointer.h in place of the local model (worse 39->47 lines, reverted)	383v383 esi/edi swap for the copied pointer's Data/Info
+00a26ad0	HELD	2	animation declared before the compressed flag; const flag + long attempt	383v383 sete cl/al and edx/ecx register naming; first call arg load order
+00a873e0	HELD	2	away built inside the cutoff branch; memberwise force accumulate + const ignored	404v404 frame order of away/force and vcall temp registers (variants 400 bytes)
+009a3460	HELD	2	else-branch resize(count+1); explicit zero fill argument	424v424 eax/ecx vs edx/eax for the resize temporaries in two branches
+00a618d0	HELD	2	dead size() walks swapped; named const oldest reference	421v421 edi/ebx swap of free-list sentinel and node payload in the move block
+009faf70	HELD	2	direct-index ++size with mask *= 2; mask shift before the size increment	407v407 edi/ebx and edx/ebp register assignment
+00a10560	HELD	5	compare with the zero local, <= 0, logical not; API return typed unsigned/long	433v433 retail cmp eax,esi (zero register) vs our test eax,eax after MultiByteToWideChar
+00a3bf10	HELD	2	named progress temporary; named end local	432v432 dead-start fstp st(0) one instruction late (scheduling)
+009c8c00	HELD	2	ctor-body NarratorIndex store; named entry temporary	469v469 pushed-address register (ecx v eax) and narrator store placement
+00a90260	HELD	2	direct StaticBlocks[i] in copy/clear loops; blockSizes before totalIndices	496v496 ebx/edi swap and bl-loaded degenerate flag
+00a22f80	HELD	4	operand swaps of each Up-X product; reversed temp declaration order	523v523 one commuted fmul (fld mem; fmul st(4)) VC-canonicalised
+009c8990	HELD	4	no speaker local in group loop; named value local; Add/insert swaps	604v604 frame 0x28 v 0x24 (insert pair temp not overlapped)
+00a0bf20	HELD	1	componentwise up with a named dot (481 bytes, reverted)	517v517 mov esi,0x17c scheduled after fld up.Y
+00a87700	HELD	2	iterator declared before owner; owner fetched before the MoveBeforeOrientation store	603v603 this/iterator edi/esi colouring swap
+00a1ba10	HELD	2	ahead copied from pos then summed; const ahead	642v642 three height-offset fadds take operands in the opposite order (VC canonical)
+00a614b0	HELD	3	_S_key via _Base_ptr; pointer-deref _M_rightmost; reversed end() compare	634v634 mov ecx,[eax+0Ch]; add ecx,10h vs ours mov eax/lea ecx (one register choice)
+00a1cc30	HELD	2	swapped statistics compare; double-returning GetRadius with separate assignment	632v632 radius fstp not sunk below the statistics compare (scheduling)
+00a50c20	HELD	2	return of the assignment; shared result local	611v611 failure-exit xor al/store vs pops interleave (scheduling)
+00a42470	IMPROVED	7	stepwise Z-first sum for dc (product order fixed)	750v750 first product load order c.Z v Normal.Z (16->14 diff lines)
+00ab3870	HELD	2	UsageIndex stored first; reversed D3DDECL_END field stores	668v668 edx/ecx element pointer, cl/dl UsageIndex, END dword store order
+00a78b20	HELD	1	functor ctor body memberwise MapPos copy (646 bytes, reverted)	678v678 functor built after the MapPos loads; layer count register/store order
+009c05c0	RELOCATION_MATCH	2	named local for the multisample-type call argument	-
+00a18b50	HELD	4	leaf fix (private access); step declared first; to from step; reversed accumulate	783v783 frame slot order of step/to/edge1/edge2 (leaf-fixed source in differ/)
+009fb750	HELD	2	leaf fix (class key); row loop from height local	789v789 ebp/ebx swap and src/dst pair (leaf-fixed source in differ/)
+00aede60	HELD	1	cross Z term operands swapped	796v796 VC-canonical fmul operand order in inlined SetInverseNoTranslate
+00a3c3b0	HELD	2	Lerp as (b-a)*t+a; by-reference forceinline Lerp	777v777 dead fstp st(0) placement in the blend loop (scheduling)
+009ddc60	HELD	2	screen C2DBoxF local; plain declaration-initialised edges	899v899 top/right frame slots swapped
+00a66fd0	HELD	2	direct-initialised pos; movement before pos in the extra-button arm	963v963 iterator/pos/double frame slot layout
+00a1d290	HELD	1	budget exit through a shared tail label	817v817 frame-slot packing, budget-exit block placement, goal pointer registers
+00a89a70	HELD	2	bone local stored to out first; bone read inside the branch	970v970 x87 operand/term order in both inlined 3x4 multiplies; bone index register
+00a89e40	HELD	1	twin lever of 00a89a70 (bone local first)	986v986 x87 operand order in both inlined 3x4 multiplies (twin of 00a89a70)
+00ae1bc0	HELD	4	nested-if ReadArray; early-return overflow ReadArray; named gravity temp; sizeof(float) count	1158v1158 mov eax/lea ecx vs mov ecx/add ecx for the first read after the array (register at the join)
+00a1ceb0	HELD	2	total cost set before SetOnOpen; named cost local	992v992 TotalCost fstp one slot later (scheduling)
+009af7a0	HELD	2	firstDef zeroed before the clears; clears before the locals	1007v1007 this/stream ebx/ebp swap and &CompressedOffsets cached in edi
+009df730	HELD	2	capture-mask loads swapped (worse); commuted mask test/or (inert)	DIFFER(1633v1633) esi/edx register tie in the later capture blocks (state-block family)
+009dfda0	HELD	2	capture-mask loads swapped (worse); commuted mask test/or (inert)	DIFFER(1633v1633) esi/edx register tie in the later capture blocks (state-block family)
+009e0ae0	HELD	2	capture-mask loads swapped (worse); commuted mask test/or (inert)	DIFFER(1635v1635) esi/edx register tie in the later capture blocks (state-block family)
+009e0410	HELD	2	capture-mask loads swapped (worse); commuted mask test/or (inert)	DIFFER(1738v1738) esi/edx register tie in the later capture blocks (state-block family)
+009a3c20	HELD	2	for-break first search; condition-only for loops	1298v1298 loop bound hoist/alignment, zero register, glyph loop registers
+00a8ad40	HELD	1	ushort-typed count locals (1605 bytes)	1621v1621 count/size register allocation and spill choice
+0099ba70	HELD	2	vector declared before wcslen; plus #pragma intrinsic(wcslen)	265v265 zero-word stores placement around wcslen and known-zero insert position
+00994b10	RELOCATION_MATCH	1	bounds: oracle extent 46 incl. the int3 after the noreturn throw	-
+009a4160	HELD	11	IsCompressed as word/byte masks, unsigned/int returns, bitfield struct, direct tests, size hoisted	143v142 mov cl/test cl,cl/jns vs retail test byte ptr [eax+1],80h/je (word forms give 139)
+009b9c60	HELD	4	count from a recomputed start; stepwise count; &String[pos]; while-form loop	125v124 entry mov al/test vs lea esi + cmp byte ptr [esi],0
+009bce70	HELD	6	result into extent.X (frame 0xC fixed, 123 bytes); scoped text with width/extent outside; split x/y copies	119v120 retail shares the dead extent.X slot for the width yet converts after the string dtor; font pointer via eax then esi
+009bcef0	HELD	6	result into extent.X (frame 0xC fixed, 123 bytes); scoped text with width/extent outside; split x/y copies	119v120 retail shares the dead extent.X slot for the width yet converts after the string dtor; font pointer via eax then esi
+009c5690	HELD	1	named read local after != 0 test	468v469 retail re-reads PCompletedRead from memory (volatile-qualified member in retail; purity forbids volatile)
+009c9170	HELD	1	named group pointer for the members walk (263 bytes)	269v268 this/index ebp/ebx colouring and add eax,4 vs lea edx release form
+00a1e030	HELD	4	inline GetNavigatorInterface (value / const-ref); SteeringAgent member read; static radius helper	216v217 retail copies the agent (mov eax,edi) before the interface load
+00a3f340	HELD	1	clear through raw _M_start/_M_finish	183v184 end/result edi/ebp swap in the inline NameMap erase
+00a571a0	IMPROVED	6	stepwise length square; ternary bool store	652v654 p/before esi/edx swap (39->30 diff lines)
+00a24d70	IMPROVED	5	named decoder local; retry loop as switch with hoisted AnimInfo	414v414 PeekData arg load order and hidden-result slot (45->22 diff lines)
+00a5b370	HELD	1	byte-pointer destination local (536 bytes)	533v534 size/destination ebx/ebp swap and throw-path temporary slots
+00a60fb0	HELD	1	single modified-time read before the date test (356 bytes)	412v411 register permutation (edi/ebp v ebx/esi)
+00a8f770	HELD	4	i + rep*count index; per-rep destination pointer; MatrixIndex first; signed i	617v616 unrolled output pointer bias +0x38 v retail +0x2c
+00a64910	HELD	1	if/else parent pick (inert)	756v757 this/info/nephew register allocation (ebp/edx/edi), 4 v 3 callee-saved pushes
+00a8a220	IMPROVED	3	bone record reference named before the call	965v965 x87 operand/term order of the inlined 3x4 multiply (318->139 diff lines)
+00a8a5f0	IMPROVED	1	bone record reference named before the call (twin of 00a8a220)	981v981 x87 operand/term order (304->133 diff lines)
+00aabd50	HELD	1	ternary emitter-position flag (inert)	514v515 params/bool eax/ecx and sample/vtable ebx/edi swaps
+00ad9980	HELD	1	unnamed Blocks[i] reads (417 bytes)	415v416 filtered finish pointer kept in memory; inner index in ebp v dead arg slot
+0099c1e0	HELD	1	prefix as an Append temporary (606 bytes)	610v609 result/prefix register and frame allocation (frame 0x10 v 8)
+00989830	IMPROVED	8	component index declared before the block pointer	98v99 retail rematerialises lea ecx,[ebx-1] where ours copies mov ecx,eax (9->2 diff lines)
+00a533f0	HELD	4	reversed constant compare; 64-bit typed constants; high-dword shift test (78 bytes)	82v80 dead jb after test edx,edx; ja in the unsigned 64-bit size guard
+00a24cd0	HELD	5	element-wise and loop LODErrors zero (74 bytes); memset spellings	82v80 retail zeroes LODErrors through esi offsets, ours via lea edx,[esi+40h]
+00a0be30	HELD	4	RHSet.Init inline; named set reference; user operator= on C3DVector (65/64 bytes)	70v68 vector copies through edx/edi v retail ecx copies of esi=&RHSet
+009dd960	HELD	4	RHW from the global twice; named rhw; RHW pair moved; integer reinterpret (231)	227v229 RHW copy through the FPU v retail integer edx/eax copies
+00a65ff0	HELD	1	chained zero assignments (inert)	167v169 fresh xor ecx zero v retail ebx-held zero across the shift
+00a62ae0	HELD	2	loop counter in the dead bits argument; count-down on count	132v130 retail homes counter/mask in dead argument slots, ours opens a push ecx frame word
+00ac09a0	RELOCATION_MATCH	4	shared CCountedPointer.h SetStaticCast + real const callee FindNextSubChunkOfType; identity fix to FindNextEngineMaterial const	-
+009f5690	HELD	2	swapped push_back branches; same-TU noinline growth stand-in	264v262 end_of_storage loaded to eax v retail cmp ecx,[esi+8]; edi push placement
+00a177a0	IMPROVED	8	stepwise Y,Z,X dot with the direction	840v840 one integer load scheduled a slot late (15->8 diff lines)
+00a17f80	IMPROVED	4	stepwise Y,Z,X dot (twin lever); nearest stored first	818v818 scheduling (add esi slot, plane-copy load, distance store fst/fstp destinations)
+00a0db60	MATCH	6	union in/out (two unions) for the bit-pattern float round trip: separate in/out slots	-
+00a780b0	HELD	4	begin()/end()+erase_unordered helpers (75-80 worse); end local built from data copy; &data[size]	236v238 register colouring: retail Neighbour1 ebx / data ebp, end built as mov edx,ebp;lea; ours node ebp/data ebx (2-byte lea form)
+00996610	MATCH	5	STLport _Vector_base ctor order (start, finish=start, end=start+n, fill from _M_start returning first+n) kept with the zeroing init list	-
+009f20b0	HELD	3	i/fixedSize hoisted (same); compare against MemoryAllocated (612 worse); const zero local	596v598 register choice: retail zero in ebx + heap re-read from its arg slot (frame 8, fixedSize byte spill); ours heap in ebx, immediates
+009ce370	HELD	4	leaf fix: class key CBankFile + private (parked differ/); record reference (627 worse); declaration order; end hoisted	624v620 frame: retail separate zeroed offset-temp slot (0x2c frame), ours seeds from i (0x28)
+00add690	HELD	4	signed j<count (10); != (unroll lost, 366); unsigned n local (same); pointer walk (630)	646v648 compiler-generated 4x-unroll remainder counter: retail copies the remainder into esi (the main counter), ours counts ebx down
+00a60d40	HELD	3	named CCharString temp (623v623, 34 worse); named version local (same); Entries[name] reference (600)	621v623 register allocation: retail caches the CDiskFileWin32 vptr in esi and 4 in edi; ours vptr immediate, 4 in esi; CCharString temp slot order
+00a229e0	HELD	4	s*axis temps sx/sy/sz (701); s-term first (same 691); inline axis-angle CMatrix3x4 ctor (721); up before matrix (713)	691v689 frame 0x50 v 0x4c: retail homes up.X in the dead angles arg slot and evaluates s*z before (xy-xy*c); x87 spill order
+00a36a80	HELD	3	direct up/forward = RotateRow (144); mesh local (747v747, 143); entry reference (750, 141)	first draft: frame 0x40-0x4c v 0x78 -- retail gives every inline temp (GetPosition, rotated axes, normalise) its own slot; structural rework needed
+00a24520	HELD	3	index before bank; ok declared at use; signed loop counter (all identical)	849v847 register colouring: bank esi/index edi swapped (ours edi/esi) through the body; pool/global store schedule
+00a8a9d0	MATCH	8	named record reference + stepwise sums in retail emitted term order + cofactor expression repeated instead of a named local (CSE temp dies at last use)	-
+00aeeba0	IMPROVED	6	cofactor repeated instead of named local (890v890, 42 lines); nested-scope a11 / folded inv (892); GetInverseNoTranslate member form (same 42); mirrored source operands (identical)	890v890 x87 operand order of cofactor products by value numbering (mirrored), Set store schedule, length tail fstp st(3)
+00a18fc0	HELD	4	left-to-right Normalise sum (CSE swallows it, 1111); probe from delta+pos (1119); distanceSquared reassociated Z-first (1105) / X+(Y+Z) (1119)	1123v1125 frame 0x34 v 0x30, this ebp (retail edi), retail keeps the three squares in spilled slots and re-adds them in Normalise; ours stepwise Z-first
+009c37a0	HELD	3	ExitThread | error (load kept but or bl,1 + ebx: 132/155); ternary ExitThread ? true : error (same); local copy then || (drops the load)	dead mov cl,[eax+7Ah] load of ExitThread survives in retail (cv-qualified flag; every unqualified spelling drops it or keeps the or) + lock/SetEvent register rotation
+009c3820	HELD	3	ExitThread | error (load kept but or bl,1 + ebx: 132/155); ternary ExitThread ? true : error (same); local copy then || (drops the load)	dead mov cl,[eax+7Ah] load of ExitThread survives in retail (cv-qualified flag; every unqualified spelling drops it or keeps the or) + lock/SetEvent register rotation
+00994a80	HELD	6	chunk scoped in loop (same); pointer advance as += (141v141, store order off); offset local stored after StreamPos (140v141, tmp/p/ck2.cpp: retail's sub/add advance form); StreamPos-first chunkEnd; combos	140v141 register colouring: position edi / chunk ebp swapped (ebp saved up front), chunkEnd add vs lea; NOTE class modelled as *_Retail (headers declare vptr as void*)
+00a0cdd0	IMPROVED	6	character local scoped in the loop (registers fixed, 27 lines); base tail with c in for-init (39); pos/Line order (37); continue-form tail (27)	164v178 retail duplicates the next-char load on each back edge + Line load/inc/store; ours one top load
+00ad8dd0	HELD	3	count hoisted (31 worse); newGroups/n order (same); while-form inner loop	240v243 outer-loop register allocation: retail input count in ebp with i/block spilled around the find loop; ours count in a frame word
+00a0c6f0	HELD	6	cos(yz) repeated instead of named cosYZ (320, 49); all-inline angles (302); GetVectorFromAngles helper / CRightHandedSet::SetAngles inline member (gets retail's add esi,0Ch but 302 -- angleXY stays on the x87 stack); named angleXY with those (302)	318v315 &RHSet.Forward CSE'd in edi vs retail recompute off advanced esi; cosYZ copy/consume (fld st(2); fmulp) vs ours fmul st(n) + fstp st(0)
+00a76770	HELD	4	unsigned index cast; GetCellSize(long) helper; level stored then ++ (all identical); Position locals	318v321 QuadTreeLevel byte CSE'd in dl across the four blocked branches (retail reloads per branch and tail-calls the child GetLeafNodeAt; ours saves esi for pos, no tail calls)
+00a6c640	HELD	4	sphere radius sum Z-first / stepwise (identical); C2DVector(const C3DVector&) for the circle centre (identical)	514v517 frame 0x38 v 0x44: retail keeps centre.Z and the minus temporaries in distinct slots (ours reuses one), pops edi/esi later
+00997880	IMPROVED	5	scan for(;;) with return-false at terminator + backward search without the -1 init (22 lines); c hoisted (same); goto-found scan (23); base backward loop (54); while(start==-1) (28)	178v168 i/c register pair swapped (ecx/ax v eax/cx); backward loop rotated vs retail's top test + jmp
+009a01c0	HELD	3	reuse the length parameter for the new length (identical); string_length read before ClearStringEnd (66 worse); DataLength stored before PData	312v316 register allocation: retail keeps the new buffer in ebp and spills the length; VC7.1 the reverse
+009b9770	IMPROVED	8	volatile dropped; char preloaded + text[++i] increment (rotated loop matches, 33 lines); bool order; divisor first; (float) casts on the digit and divisor update (identical); preload + c = text[i+1] at loop end (482)	171v181 divisor enregistered on x87 (retail homes it in memory), whole-part fiadd v fild/fxch, bl/cl flags swapped
+009cfbc0	HELD	1	entry-index copy order swapped (no change in slot assignment)	1973v1969 register/slot assignment only (this spill, flag temp slots, index/infoSize dead-arg slots, esi/ebx); NOTE class key CBankFile_Retail -> PDB CBankFile at landing (009ce370 shows the private/class-key fix)
+009e3640	HELD	2	shared found label after case 1 (goto from cases 1/2; identical); found label at switch end (see grade)	332v328 block layout: retail places the merged found-store tail of cases 1/2 right after case 1 (case 2 loop head unaligned), ours after case 2 with padding; class modelled as CPixelFormat_Methods (shared CPixelFormat header exists)
+00a04200	HELD	3	implicit sqrt conversion (same); X/Y locals (36); extra result local (see grade)	386v382 length homed and reloaded for the epsilon compare (8-byte frame); retail keeps it on x87 with fst into a 0xc frame
+009ff220	HELD	3	call arguments inlined (521, 142); data declared first (544, 46); base order kept	536v540 volume-arm register allocation (file data ebx / mip level arg slot / bank frame word / &LoadingManagedTexture ebp in retail; ours swapped); local CCountedPointer model could try the shared header
+00a87260	HELD	3	WantsToAvoid as one || expression; as early-return chain; via a result flag (all fold the second +0x60 test)	133v137 retail re-tests the already-loaded AvoidAgents (+0x60) byte inside the inlined WantsToAvoid; VC7.1 folds it in every spelling tried
+00a77780	HELD	2	RegionID test inverted around the search (shared true tail, 304: still shrink-wraps ebx/ebp later); base	302v298 prologue shrink-wrap: VC defers ebx/ebp/esi pushes past the RegionID early return; retail pushes all four at entry
+00ae3920	HELD	2	named key local for find + operator[] (store placed before find as retail, but 273v270 with ebx/edi swapped, 45 lines); const key for find only (same as base)	266v270 key temporary store placement + array destructor keeps _M_start in ebx v reload; named-key variant tmp/p/cz0.cpp fixes the first at the cost of a register swap
+00b094b0	MATCH	4	loop-invariant temporary as a named local in a guarded scope + do/while with i = 0 hoisted before the guard ('lane gap' label retested and beaten)	-
+00b131e0	HELD	2	zero point scoped inside the Spline guard (177 v base 176); temporary in the push_back (858)	850v839 bitfield destination words reloaded after each same-base store (retail forwards them in registers); 'lane gap' label stands after the retest
+00a364e0	HELD	3	named position temporary (same); normalise before the stores (700v700 but 244 lines); base	first draft: frame 0x48 v 0x6c (retail keeps every inline temporary in its own slot), sibling of 00a36a80
+009ba5b0	HELD	3	landed MoveStringPos form (pos cached before the call: 166); InQuotes stored after the advance (4 lines); base	150v155 cursor advance: retail mov/add/mov of [edi+20h], ours add dword ptr [edi+20h],esi in every spelling
+009b9d70	HELD	3	StringPos + String operand order (same); p first then start copy (19); char-local scan loop	127v132 entry: retail String in edx with start in esi and p copied to eax (no ebx); ours String in ebx with the first load folded
+009c4f20	HELD	1	byte-count add through a named size local (unchanged)	485v490 retail re-reads PCompletedRead after the test and adds NoTotalBytesWritten via load/add/store (cv-qualified thread-shared members: volatile is banned)
+009d6350	HELD	6	result declared before the lock (39); result from an erase||cancel chain + if(result) block (13 lines but drops the ThreadedFileUID = 0 store: semantically wrong, not parked); else-if / nested forms with the store and an inline cancel helper (all 39)	191v196 control-flow: retail result in bl with one shared lock-dtor tail and Aborted = 1 immediate; ours zero-registers ebx up front
+00a11c20	IMPROVED	4	three-float Rotate overload (frame 4, 104v103); named edge vector (108); named half + overload, row sum reordered (104)	104v103 fst/fxch keep of the half extent vs fstp/fld
+00a0c1b0	HELD	3	named right vector in the free arm (17); arms swapped (45); base	158v152 x87 operand order of the cross-product products in the free arm (value numbering), so the common first product is not hoisted above the HeightLocked test
+009c3660	HELD	2	ExitThread copied then | error (keeps the load but adds the or + a register)	299v305 dead ExitThread byte load between the Get() calls in both inlined SetDirtyDiscError copies (cv-qualified flag; volatile banned)
+009c5170	HELD	3	&CriticalSection as a named reference for the lock and DeleteCriticalSection; == false flag tests (both unchanged)	416v410 retail zero register ebx from the prologue (push ebx for false/Sleep(0), cmp byte [esi+78h],bl) and &CriticalSection in ebp, 0x10 frame; ours immediates
+009f3010	HELD	3	Pitch/PMem assigned in the ctor body; named zero extents; base	138v144 failure-arm zero/store order (retail xor eax ; mov edx,eax ; result pointer, +8/+0xc before the extents) and success-arm result-pointer load placement
+00ac8a60	HELD	1	shared engine/CCountedPointer.h (132v121, 29 lines: the release reloads Info each step; local model kept)	126v121 contraction ref edi v esi, ListIterator store after the pair release, release dec/cmp vs dec/jne
+009ae390	HELD	2	this through a named self pointer for the tail (identical); operator[] index form (CIndexVector has none)	595v600 this held in ebp (retail spills to [esp+0x20]), slot order this/compressedSize, fill-char byte slot, memset count copy register
+00ac70f0	HELD	4	cofactors written out (no named locals: 48); E31 through a named float (48); cofactor declaration orders c33-first (50) / c23-first (40)	231v237 x87 operand order (AB/BC in c23, BB/AA in E33) and E31 parked through a frame float + integer copy to E13
+00a57140	IMPROVED	6	stepwise Y-first sums in the inline Dot/GetSquaredMagnitude (13 lines); plain Y-first expressions (25); named offset / scaled / both (13)	80v90 retail spills point.X-Point1.X and d.X*t to [esp]; ours keeps them on x87
+00a58790	HELD	3	a named before the epsilon test (27); separate lengthSquared then a = copy (27); base	699v707 |dir|^2 homed in a compiler temp (fst; fxch; fcompp) with an integer copy to a; ours keeps it on x87
+00a887b0	HELD	4	start/end hoisted with Z = 0 outside the loop (249); guarded do/while with hoisted vectors (249) / with per-iteration vectors (215)	217v211 retail LICM hoists both z = 0 stores above the loop and forwards zero from ebx into push_back's in-place copy; ours re-stores per iteration
+00aac5e0	HELD	2	record word through a named local; out hoisted into a local before the loop (both identical)	130v136 retail hoists out into ebp before the loop (node ebx, no loop alignment) and parks the record's third word in the dead third-argument slot
+009b00d0	HELD	6	pair temporary straight into push_back (5); user copy ctor on CSubDefInfo (159, 32) / on the pair (5); Add taking a CSubDefInfo built at the call (15); combined (32)	163v155 retail loads def/parent into edi/ebx before the CRC call and stores them straight into the frame pair and the placement copy; ours reads second back from the frame
+009ce050	MATCH	1	named lower-cased local in its own block (temporary lifetime ends at the statement)	-
+009f73c0	HELD	2	frame-stamp reference (697, 70); dead size locals dropped (656 -- they are load-bearing for the frame)	724v732 frame 0x1b8 v 0x1bc: retail gives the ++FrameCount address temporary its own slot and orders the size locals differently
+009fe780	HELD	2	float sizes precomputed before the loop (380); guarded do/while with floats + an incremental row end (367)	351v343 first-pass model: retail precomputes the float sizes after the count guard, row end in ebx, x/y/index in frame words (0x24 frame)
+00a3c1a0	HELD	2	out-of-class inline null-safe GetDataRefCount (unchanged); first test through GetDataRefCount() == 0 (188v189, 10 lines)	182v189 retail re-reads Data and re-tests null in the else arm before the count compare; VC7.1 folds the known-non-null test
+00aeb790	HELD	3	block && --count == 0 in one condition (180); unsigned count (same); base	178v171 the inlined null-tested release compares dec [esi] ; cmp [esi],0 (retail reuses the dec flags) + result load/copy register
+009c8de0	HELD	3	tag reference read in place (443, 77); Read straight into Tags[i].Position (471, 73); base	459v452 temporaries in the dead param slot, count cached and index address CSE'd where retail reloads
+00a0c570	HELD	2	sin/cos(xy) repeated instead of named doubles (376, 50); cos(yz) repeated too (382, 55)	380v373 &RHSet.Forward CSE'd into edi; spilled sin/cos(xy) multiplied after both are computed (fmul st(1) + trailing fstp st(0)); same family as 00a0c6f0
+00a1e110	HELD	1	max-speed selection as an if over a local (103 v 99)	596v601 esi/edi swapped (retail esi=pos, edi=this), delta-block scheduling, width-temporary load order
+009f4390	HELD	1	srcSize initialised from dstSize then overridden (502v507, same 131 lines)	500v507 extents register allocation (retail dstBox ebx / srcBox edi, widths spilled to the dead box arg slots; ours edi/ebx + ebp)
+00acd0e0	HELD	2	retail-order stepwise final dots (dots match, side SafeNormalise sum shifts: 31 v 27); first dot only (38)	1048v1041 FindVertex -1 threaded into second lookup; side-plane scaling x87 order
+00a53440	HELD	3	ternary inverted (== 0 || > max); named 64-bit bytes with !(>); constant-first >= ; all 2 lines	125v116 64-bit compare keeps jb between halves (+2) and a 7-byte loop pad
+00a852b0	IMPROVED	3	STLport list base ctor form (110, pair ctor out-of-line); explicit sentinel begin (151); + no proxy zero store (143v143)	143v143 sentinel _M_data store placement (4 lines)
+009bb0d0	HELD	4	direct text[i]; i+text; i[text]; per-iteration accessor (72); char temp; parameter as index	50v50 SIB base/index order [ecx+eax] vs retail [eax+ecx] (2 instructions)
+00a22e10	HELD	3	member-wise subtract; refinement factor order; unnamed projection temp (all unchanged)	358v358 one mov esi,0x17C scheduled after fmul st(4) (retail before)
+00ab1cc0	HELD	3	roots after clear (17); mesh via local reference (same); bones via local reference (same)	612v612 two empty tag temporaries homed one arg slot later than retail
+0099f570	IMPROVED	4	IncRef order variants (18/9/15); sibling operator= form result;result=left (130v130 register-only)	130v130 data pointer in ecx vs retail edx (4 instructions)
+0099f7a0	HELD	4	this!=&other; GetStringData accessor; plain +1 (126); inline AssignData(d); data local; copy-ctor forms (134)	130v130 data pointer in ecx vs retail edx (shared with 0099f570/0099f600)
+0099f600	HELD	2	copy-ctor result(left) with refs data local (134); with other.PStringData (134)	130v130 data pointer in eax/ecx vs retail edx
+00a6bcd0	HELD	4	local pointee (288); split dec/test (285); !--count (285); landed Release()/Object=0 model (288)	285v276 __x_copy dtor reloads Object and IVRefCount after the dec (+9); retail uses dec flags
+00af8680	MATCHED	1	heap pop: early entry local, if(!entry){if(grow){create;reload}else return 0;}	-
+00af86c0	MATCHED	1	heap pop: early entry local, if(!entry){if(grow){create;reload}else return 0;}	-
+00af8b00	MATCHED	1	heap pop: early entry local, if(!entry){if(grow){create;reload}else return 0;}	-
+00a43cd0	HELD	3	Release if/return form; void Release; Release()==0 then Delete in dtor (302)	300v288 x_copy IVRefCount release emitted load/dec/store (+12); retail dec mem + jne (same family as 00a6bcd0)
+00aa39a0	IMPROVED	4	SetRow 4-arg (14); SetRow 3-arg + separate end store (10 from 18); row 0 plain (10); row 3 plain (18); row structs (478)	332v332 row 0 zero store hoisted; m[14] store placement
+00a6bfc0	MATCHED	7	implicit dtor inlined into ??_G by destroying a local object elsewhere in the TU	-
+00a98760	MATCHED	1	drop novtable/explicit dtors; implicit dtor inlined via a local object in the TU (also fixes the leaf warn)	-
+00a987b0	MATCHED	2	sibling of 00a98760 (own model lacked the real-body range destroy; copied)	-
+009bae70	MATCHED	3	explicit CCharString("") argument instead of the forceinline wrapper's default argument	-
+009fe460	HELD	3	threshold inline in the compare (16); ==0 flag test (same); named texture manager (same)	231v231 eax/ecx/edx rotation in the threshold chain and the ReduceMipmapLevel pushes
+009fa620	HELD	4	result-variable power helper (23); ternary helper (14); plain inline helper (out of line, 59); named caps local (14)	336v351 caps test folded to test byte [..],2 and zero side store dropped (retail xor eax/mov edi,eax)
+009fca40	HELD	4	x before rounded; unnamed products; separate tlx/tly (24); helper (value, result) order	218v218 retail_asm row: frame slots of x / rounded / helper pointer permuted (x 0x10 vs 0x24)
+009b9700	HELD	3	c = text[++i] increment (17 v 18); (text+1)[i] (18); plain negative test (90)	91v103 retail threads the zero-length path into a separate Type=3 exit (+12); SIB order
+00a65480	HELD	3	size + header order; named header local; 64-bit sum first (31)	265v265 header computed in esi with size preloaded in edx (retail eax + lea); second Init size reload register
+00a65720	HELD	2	regionSize = 0 at the loop top (269v269 length match, 20 lines same); zero after VirtualAlloc (C2660 typo, n/a)	268v269 minSize kept in ebp (retail re-reads it; ebp = regionSize/null)
+0099c7e0	MATCHED	1	extent fix: true 306-byte extent (oracle_extra + BOUNDS_FIX); body unchanged	-
+009bbbf0	HELD	3	explicit CCharString literal (no ctor in model, C2440); named message local (36); second unused string (23)	207v207 frame 0x38 v 0x40: retail has 8 unused bytes between message temporaries and the spare string
+00a44420	IMPROVED	5	stepwise dot in retail x,z,y order (12 from 27, 418v424); plain sum xzy (27); grouped (14); named crosses (12); member-wise cross (12)	418v424 two dead x87 copies retail pops with fstp st(0) in the cross products
+00a11ae0	HELD	5	named centre in GetCentre (29); named sum (29); assigned centre local (38); implicit copy ctor (100/124)	168v185 retail's extra halved-centre copy (int move of X, 0x20 frame) not produced
+009ce5e0	IMPROVED	4	class key CBankFile (leaf warn fixed, 30); renamed else filename (30); first-branch block (741v741, 31); both blocks (56)	741v741 ebx/ebp swap; else-branch filename and resize temporaries swap frame words
+009a8840	HELD	1	disk.Data used directly instead of the file local (34 v 31, 1590)	1581v1565 esi/edi swap for bank pointer, map and down-counter; inline dtor loads Info via eax
+00ac7cb0	IMPROVED	6	named squares (34); stepwise lengthSquared from named squares (27); squares z,x,y (23 from 31, 346v350); y,z,x (27); swapped cross operands (23); member-wise cross (109)	346v350 cross-term operand load order; final scale x87 form
+00a0ca90	HELD	3	divisor declared first (34); float *= (32); flag declaration swap (32)	176v187 retail keeps the divisor in a frame word (fld/fmul/fstp per digit); bl/cl flag swap
+00a60410	HELD	1	while ((s = strstr(p, start)) != 0) head (same 34)	262v245 VC7.1 inverts the strstr loop (second strstr duplicated at the bottom)
+009c3590	IMPROVED	5	volatile removed (|| true form 191v194, register fixed); plain store (186); landed SetDirtyDiscError body inline (same) + name g_installerReadFailed -> CFileInstaller::DirtyDiscError	191v194 dead load of ExitThread after the folded || true missing (3 bytes)
+009c4440	HELD	2	landed names + landed SetDirtyDiscError body (bytes same, 35); (names parked in differ/)	625v609 dead ExitThread load; spill words swapped; edi not kept for &SizeCheckedExtensions
+00a57030	HELD	2	IsSame called on other's points (63); this through a local reference (37)	271v265 this/other register swap (edx/esi) and first OnLeft pair block layout
+00a9d580	HELD	0	not attempted beyond review: SSE arm is original inline asm of instructions VC7.1 can emit via intrinsics (movaps/mulps), so not retail_asm-eligible; intrinsics give compiler-allocated xmm (parked)	199v221 SSE arm register/frame form
+00a68690	HELD	4	C3DExtentsI as a temporary argument (frame now 0x58 like retail, but this/textures swap esi/edi: 38 v 36); scoped extents block (38); ! tests (38); self local (38)	626v626 frame overlap of extents/scratch CTexture fixable via temporary, then esi/edi swap
+009dc6e0	HELD	1	vertex copy chain v[n] = v[n-1] then edits (319, 70)	384v388 zero-constant register choice (eax zero for Specular/Z) and copy scheduling
+00ac7300	HELD	2	named Newton factor (42); single-expression refinement (42)	1075v1091 x87 spills to the dead t1 slot, dead duplicate in the third cross component
+009aed70	HELD	2	function-scope storedCount (46); count-down loop (46)	499v492 retail keeps OriginalParentDefIndex in edi from the shared dead stream-arg slot (frame 0x1c)
+00a47d10	HELD	2	i = erase(i) then --i (41); erase(i--) (41)	110v97 pos+1 strength-reduced into a fifth register; agent spilled; --_M_finish load/add/store
+009fd700	HELD	1	GetTextureType through the members (127, 50); extent fixed in BOUNDS_FIX (true 126)	126v126 push ebp/edi scheduling against the header zero stores
+00af2200	HELD	2	direct resize(n, T()) temporary (same); counted dtor with Object=0 reset (same); BOUNDS_FIX true extent 36	72v71 retail builds the zero T() with one xor eax and emits no destructor; ours stores immediates and runs ~CIVCountedPointer
+009adae0	HELD	1	info declared in the if condition (same 43)	402v417 class info spilled to the dead className slot in retail (frame 8 v 0x10); push order
+00a69b70	HELD	2	landed Reset form with if(Object) ++count (43); explicit load/+1/store on tex (43)	170v176 callee-saved colouring (this/index/tex) and add-ref folded to inc mem
+009e3f60	HELD	3	array value (44); byte scale-shift accessors x2 (44)	179v189 retail re-reads the bit counts per channel (no CSE)
+009d5bf0	HELD	1	iterator declared before the lock (same 47)	305v314 register allocation (this esi vs ebp, count ebp vs edi), lock frame position; model uses *_Retail class keys (CCriticalSectionLock)
+009fc950	HELD	1	shared engine/CCountedPointer.h instead of the local model (bytes same, 47; parked in differ/ for the header)	224v230 source Data word in ebx vs retail spill into the dead texture slot; dimension compare folding
+00ae0e60	HELD	0	not edited: the SSE arm is original inline asm of intrinsic-emittable SSE (movaps/mulps), not retail_asm-eligible; parked intrinsics model kept	441v457 SSE arm frame slots / fixed xmm registers
+00a74180	HELD	2	helper by const reference (57); Find positive-test form (73)	489v472 select register form in the second inline Find; 0xffff hoisted to ebp vs retail per-iteration reload
+00b08530	HELD	1	key value cached in find (key now held in a register as retail but colouring differs: 67 v 50)	664v654 key reload after LowerBound; E21*y/E31*z order in the inline transform
+00a8ff50	HELD	2	3-float ctor getters + vertex by value (303); 3-float ctor getters only (264, 50 v 51)	217v231 retail copies X/Y through the FPU and Z as a dword via a frame temporary
+00a25040	HELD	1	length local before the CRC call (same 52)	974v990 CRC in ebx vs retail edi; string chars register order
+00a9d480	HELD	0	not edited: SSE path is original inline asm of intrinsic-emittable SSE (asm_bake family, not retail_asm-eligible)	83v243 SSE arm absent
+009c3fb0	IMPROVED	2	pending write by value (22 from 55); + landed SetDirtyDiscError inline and landed names (21, 358v359)	358v359 write-copy register colouring; memset zero register; dead ExitThread load
+00a357b0	IMPROVED	2	ScaleAxes(const float&) method (55); scale loop over the nine floats (20 from 55, 307v318)	307v318 cross-product operand order and translate copy scheduling
+00a5c360	HELD	0	not edited: SSE block is inline asm of intrinsic-emittable SSE; residue is the aligned-frame prologue (retail_asm cannot carry a prologue)	386v421 aligned-frame prologue form
+00a12d20	HELD	2	end transformed in place (514); both in place (594)	452v438 retail holds no C2DLineF temporary; push_back copy straight from the vector slots
+00b05c60	IMPROVED	4	retail_asm fld/fistp in inline Quantise (out of line: 277); __forceinline (430v429, 46 from 63); FloatToLong helper (46); braced asm (46)	430v429 one extra frame slot (push ecx) for the step; retail uses dead arg slots
+00a48f10	IMPROVED	4	landed FloorToLong retail_asm helper (129 from 214); frame-pointer pragma (129); helper local orders x3 (129)	815v811 one extra frame word and helper slot order
+00aad340	IMPROVED	1	landed FloorToLong retail_asm helper (136 from 217)	606v584 helper expansion frame slots / scheduling
+00a4c1f0	IMPROVED	1	landed FloatToLong retail_asm helper in FastAcos/FastSin (224 from 338)	968v1006 slerp x87 scheduling / frame
+00a52760	IMPROVED	1	landed FloatToLong retail_asm helper in FastAcos/FastSin (231 from 338)	968v1004 slerp x87 scheduling / frame
+00a53860	IMPROVED	1	landed FloatToLong retail_asm helper in FastAcos/FastSin (200 from 339)	966v1005 slerp x87 scheduling / frame
+00aa3c50	IMPROVED	1	landed retail_asm float-to-long/floor helper (137 from 176)	422v671 surrounding scheduling / frame / inlining
+00a4d770	IMPROVED	1	landed retail_asm float-to-long/floor helper (91 from 113)	434v420 surrounding scheduling / frame / inlining
+00a770b0	IMPROVED	1	landed retail_asm float-to-long/floor helper (105 from 165)	496v533 surrounding scheduling / frame / inlining
+00a868c0	HELD	1	inline_depth(0) around the 2nd/3rd push_back (601, 87 v 60: affects the whole body)	652v620 retail inlines only the first push_back
+00991c10	IMPROVED	2	__forceinline Add/Sort (15 from 65); implicit literal conversion for DisplayProgress (7, 333v338)	333v338 NeedsSort store/re-read (volatile-only)
+00af2640	HELD	1	rows stored in place into x/y/z with old x/y copies (302, 84 v 65)	298v313 row stores into x/y home slots with FPU-preloaded x/y; result temp copy before pos =
+00ad9770	HELD	1	inner bound re-read each pass (313, 79 v 66)	292v280 loop register allocation (ebp walks Blocks / kept finish, edi index)
+00a64ef0	HELD	1	info.Colour select as if/else (same 66)	309v357 register assignment (area ebp vs edi) and child-colour store tail join
+009f39a0	HELD	1	top/bottom-only locals (323, 73 v 67)	377v346 copy rectangle shape: retail keeps TLY/BRY live, TLX/BRX spilled to frame words reused by the locked rect
+009f3da0	HELD	1	colour by reference instead of copy (534, 100 v 67)	589v582 frame 0x84 v 0x78 and s[0]/s[2] load order
+00ab1740	HELD	1	source accessed through the counted pointer each pass (607, 86 v 67)	605v592 register allocation: retail reloads source into esi after the prefix loop
+00b08250	HELD	1	swapped product operand order z*m.E31 (same 72)	745v724 matrix-element-first loads in the inline transform; system kept in ebp
+00a898d0	HELD	1	named copy of helper position before the bone product (same 91)	393v402 frame 0x54 vs 0x58: retail fld/fst copies the helper position into a dead slot; x87 schedule of the two products
+00a44f40	HELD	2	t declared before i (same 126); body-assigned forceinline ctor CRC=0 (same 126)	516v525 esi/edi role swap (cursor vs vector) and retail's kept CRC zero store
+00a90ae0	HELD	2	shared==false (same 119); explicit zero local compare (same 119)	620v629 ebx/ebp role swap; retail zeroes ebx early and compares cmp dl,bl
+0098ecd0	HELD	1	cached section pointer local for all Enter/Leave (same 120)	777v786 retail 8-aligned ebp frame homing double now; esi caches &CriticalSection
+00a35b70	HELD	2	fromRight products Forward-first (same 88); plus toRight Forward-first (same 88)	1012v1022 mem x mem operand order and cofactor order inside inline SetInverse
+00a38c20	HELD	1	read the count directly (worse 75 v 62)	564v551 retail caches 0 (esi) and 4 (ebp) across the body; frame 0x48 vs 0x4c
+00a56270	IMPROVED	3	copy y before normalising x (293->218); component ctors (same); y-then-x copy (292)	720v693 x87 schedule of Normalise and the two cross products
+009adc90	HELD	2	classSlot before globalIndex (130 v 131, noise); owner alias (same)	367v382 retail spills the class info to the frame, counts in ebx/edi
+00a1aff0	HELD	1	scoped the position copy in a block (117 v 115)	1155v1140 frame 0x18 vs 0x10: retail reuses the dead position slot for distance and later position
+009e55a0	HELD	2	goto-merged all error returns (1189 bytes, over-merged); merged last two errors (278 v 257 worse)	1332v1317 retail tail-merges error pushes into a shared call; operator==(const char*) sete materialised, 1 kept in esi
+00a90900	HELD	1	triangles fetched inside the copy loop (worse 109 v 87)	487v471 register allocation + frame 0x1c vs 0x20
+00a8f9e0	HELD	1	usage/pool as conditional args (worse 200 v 188)	789v773 register assignment: retail indices in ebx, block in esi, dynamic slot reused for the offset
+00a114b0	IMPROVED	2	cross from the copies (130); forward-then-up copies + cross from copies (128 v 149)	329v338 x87 schedule of the axis copies (retail Z words through the frame)
+00a90040	HELD	1	position/normal copied through named locals (same 129)	384v403 retail copies through stack temporaries (frame 0x2c, ebx count, edx cursor)
+00ad9f10	HELD	1	cached list head local in the count loop (147 v 146)	826v806 register allocation: retail hoisted zero in ebp, block cursor in ebx
+009bf7e0	HELD	2	format local hoisted to function scope (same 90); named depth-format local (91)	824v846 retail frame 0x18 with CPixelFormat temporaries in the dead params slot (vs 0x28)
+00ac8ae0	HELD	1	unique-vertex indices cached in six locals (worse 161 v 113)	388v409 retail keeps faceA vertex 0 in ebx, spills &faceB and its vertex 1 (frame 0x1c vs 0x14)
+009a23e0	HELD	1	dest from the global before the bytes-per-pixel local (same 91)	473v495 retail destination in ebp, pixel size in edx, column early in ebp
+009a2000	HELD	1	glyph index loaded before the fresh entry (same 82)	1004v982 fresh-entry load order and mip-loop register roles (scale in a frame slot), one slot larger
+009a8170	HELD	1	header local in inline map clear (worse 276 v 247)	1708v1732 this in ebx (ours esi) and frame-slot layout of the loop temporaries (CBankInfo temp at 0x68)
+009f3b00	HELD	1	pixel format via GetPixelFormat (same 189)	636v664 retail frame 0x9c vs 0x8c and zero in ebx; register residue
+00a90d60	HELD	2	explicit zero temporary to resize (same 112); shared engine/CCountedPointer.h (same 112, neutral)	445v413 retail elides the zero temporary's release, &Groups in ebp
+009ccef0	HELD	1	inverted skip test inline in the if (worse 117 v 112)	620v592 this in ebp, node index in edi homed for push_back; class key CBankFile_Retail needs CBankFile at landing
+00aa8830	IMPROVED	1	removed dead {0} init of type[5] (296->267)	913v889 zero cached in ebp/edi, frame 0x38 vs 0x28, growth temporaries not sharing slots
+009a08b0	HELD	1	single Format on a selected double (worse 157 v 145)	458v491 retail 0 in ebp, block in esi, cross-jumped Format pushes, block release inlined twice
+00a1a7e0	IMPROVED	2	named first point in the 4 straight returns (118->87); both named (same 87)	871v862 return construction in the gradient branches
+00af5090	HELD	1	validity materialised in a bool local (126 v 129, marginal)	635v657 retail 8-aligned ebp frame, unrotated loops, group index/offset in frame slots
+00af5430	HELD	1	validity materialised in a bool local (122 v 124, marginal)	572v607 ClearParticle twin: 8-aligned ebp frame, unrotated loops
+0099fb60	HELD	1	UnassignString body defined after the function (462 bytes, partial inlining; 79 v 77)	390v428 retail inlines UnassignString only into result's final destructor; lead: body-after-use gives partial inlining
+00a89740	HELD	1	named copy of the helper position before the localization product (worse 89 v 74)	348v389 retail spills the copied helper position (x to a dead arg slot) and reloads per product; frame 0x58
+009e3df0	HELD	1	R-channel shift hoisted to a local (83 v 82)	305v354 retail reloads the format fields after the inline memcpy (no CSE across rep movs); CPixelFormat_Methods key at landing
+009ebdd0	HELD	1	error flag declared first (610 v 609)	1584v1625 error flag in memory sharing the push_back tag slot, ok in bl; bracket char dword copy; frame 0x8c v 0x78
+009e81e0	HELD	2	operator== non-null arm first (150 worse); conditional-expression form (156 worse)	701v750 retail jump-threads the member-name null test into two chains, PStringData in esi
+009e84d0	HELD	2	operator== non-null arm first (203 worse); conditional form (210 worse)	867v917 as 009E81E0: jump-threaded member-name null test
+009f4590	IMPROVED	2	pixel loops count down y>0/x>0 (167->123); !=0 form (127)	900v864 frame 0xb8 vs 0xa0, 0 kept in ebp, ebx pushed late
+00a9d750	HELD	0	none: SSE inline-asm block (intrinsic-emittable, not retail_asm-eligible)	492v551 SSE asm row; frame 0x2c vs 0x18
+00a19430	HELD	1	clamped target through a named local (same 270)	1215v1165 frame 0x3c vs 0x40, dead pos slot reuse, int copies of temporaries, x87 clamp order
+00a6d0e0	IMPROVED	1	root chunk pointer local (439->381)	930v984 frame 0xfc vs 0xf4, this in edi, entry temporaries
+00a6d670	HELD	1	user-declared C3DMeshVolume copy ctor (same 316)	898v969 ours gets an 8-aligned ebp frame (retail plain 0x54); volume loop temporaries, 71 bytes short
+00a11d10	IMPROVED	2	in-place SetInverse into a named matrix (125->89); cofactor operand swaps (same 89)	426v422 cofactor x87 schedule, invDet homing
+00a11f20	IMPROVED	2	in-place SetInverse into a named matrix (206->87, length 428v428); cofactor operand swaps (same 87)	428v428 retail homes invDet in the dead radius slot (fstp/fmul mem); cofactor schedule
+00a128e0	IMPROVED	1	in-place SetInverse into a named matrix (175->69)	470v464 cofactor x87 schedule, invDet homing
+00a12ab0	IMPROVED	1	in-place SetInverse into a named matrix (178->74)	474v468 cofactor x87 schedule, invDet homing
+00a120d0	HELD	1	out-param GetInverse rewritten as in-place SetInverse (same 243)	987v886 cofactor operand order and larger spill frame 0x58 vs 0x4c
+00a12450	HELD	1	out-param GetInverse rewritten as in-place SetInverse (same 220)	971v870 cofactor operand order, frame 0x58 vs 0x4c
+00a793d0	HELD	2	user dtor on C2DVector (same 156); user copy ctor (155)	593v678 8-aligned ebp frame forced by the C2DVector GetNodeAt temporaries (retail plain 0x44)
+00a79680	HELD	1	user dtor on C2DVector (same 156)	593v678 twin of 00A793D0: aligned frame from the C2DVector GetNodeAt temporaries
+009919c0	HELD	1	record declared first (worse 156 v 107)	500v579 retail stores NeedsSort=1 and re-reads it (volatile-only); frame 0x48 vs 0x24
+009e3b60	HELD	2	sequential channel stores (82 v 93 but 180 bytes, further from 280); fully inline table-field expressions (90)	199v280 retail re-reads every table field per use, evaluates the alpha channel first, value homed in frame (no CSE)
+00a69c20	IMPROVED	4	extent fix 381->186 (oracle_extra+BOUNDS_FIX); named size local (43->4); ++Object->IVRefCount / AddRef() / ++base (all 4)	180v186 unfolded add-ref load/inc/store through esi (ours inc [ebx+4]); same gap as 00A69B70
+009c3c20	HELD	3	landed names + in-class SetDirtyDiscError not forced (222 but calls it; retail inlines); ||-form (222); forceinline landed body (231, names-only park)	877v909 finished flag and read size in the dead arg slot, rotated decompress loop; parked with landed names
+00a69f70	HELD	1	failure path stores false literal (same 124)	881v955 inlined CManagedTexture release/assign shapes; retail duplicates the failure-path epilogue
+009a1140	HELD	1	fallback loop unrolled into two HasGlyph tests (worse 171 v 132)	871v918 ch kept in its param slot, this in ebx spilled, BigChar via shr/js
+009d0880	HELD	1	id declared before magic (same 157)	1570v1635 one extra frame word (0x50 v 0x4c), message temps not reusing the dead param slot, invalid-file throw layout
+00aaf1e0	IMPROVED	2	position through a local C4DVector (215->124); scaling too (173 worse)	910v904 quaternion product spills, ebx/ebp roles
+00ab2160	HELD	1	named empty pointer for the forced push_back (same 280)	1097v960 AssignAnimation result in edi not the frame, counted-pointer copy schedule, inlined array dtors larger
+00ab7c20	HELD	1	UV passed by value to MakeVertex (546 v 521 worse, 1856 closer)	1783v1910 ours 8-aligned ebp frame 0x1b4 vs esp 0x15c (8-byte float UV temporaries); retail rep-movsd vertex copies
+00ac53f0	HELD	1	next texture through a named local (worse 274 v 211)	703v755 retail and esp,-8 ebp frame (material in edi, immediate zero stores); ours plain frame
+00adf960	HELD	0	none: hand-written SSE inline-asm block (movaps/shufps; intrinsic-emittable, not retail_asm-eligible)	SSE asm row; non-SSE path only modelled
+00ae1320	HELD	0	none: hand-written SSE inline-asm block (movaps/shufps; intrinsic-emittable, not retail_asm-eligible)	SSE asm row; non-SSE path only modelled
+00ae29d0	HELD	0	none: hand-written SSE inline-asm block (movaps/shufps; intrinsic-emittable, not retail_asm-eligible)	SSE asm row; non-SSE path only modelled
+00a5cee0	HELD	0	none: SSE inline-asm lerp path (intrinsic-emittable, not retail_asm-eligible)	SSE asm row; x87 path only
+00addbe0	IMPROVED	2	down-counting for (still unrolled, 327); guarded do/while(--i) down-counter keeps it rolled (332->80, 430v414)	430v414 frame 0x24 vs 0x14, x87 compare scheduling
+00989230	HELD	0	none: hand-written SSE inline-asm branch (intrinsic-emittable, not retail_asm-eligible)	535v636 SSE asm row
+0098e7d0	HELD	1	section pointer local for Enter/Leave (same 152)	883v840 this in ebx spilled, &CriticalSection in edi; frame 0x20 vs 0x1c
+009c5890	IMPROVED	2	extent fix 710->389 (oracle_extra+BOUNDS_FIX; 260->18 diff lines); flags before InitializeCriticalSection (25 worse)	389v389 scheduling only: push edi placement, CreateEventW push ebx interleaved with flag stores
+0099e690	IMPROVED	3	extent fix 344->180 (134->56); divisor declared first (47); float multiply (56)	176v180 retail keeps the divisor in a frame word (ours on the x87 stack)
+009c9280	HELD	1	group entry pointer local in the speaker loop (174 v 183 but 952 bytes, further from 861)	923v861 frame 0x18 v 0x20, retail reloads found from its arg slot, speaker table register
+009acee0	HELD	1	separator data pointer cached before the chain with an inline '=' strcmp (worse 280 v 109)	1030v1017 retail caches separator.PStringData in edi across the out-of-line operator== call; name/separator frame words swapped
+00af90c0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b075d0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b0fbf0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b0ffc0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00a781a0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00afb7c0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b00db0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b012e0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b103f0	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+00b16410	HELD	0	none (budget): body-less 588-1040-byte draft; retail_asm candidate with the landed FloatToLong/FloorToLong __forceinline helpers	body-less: bare dword fistp rounding sites; whole body still to author
+009bd460	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00a1a260	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00a1b5a0	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00a1d6e0	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00a475c0	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00a79b30	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00a7a8d0	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00ab4bb0	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00acc490	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00ace600	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+00b079b0	HELD	0	none (budget): triage-only draft without a body (1.1-1.4 KB)	body-less triage draft; whole body still to author
+009ae7c0	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+009afb90	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+009f57a0	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+00a23190	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+00a276d0	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+00a495f0	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+00a87960	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
+00a880c0	HELD	0	none (budget): park skeleton modelling only an early-out (1-1.8 KB retail)	skeleton draft; most of the body still to author
