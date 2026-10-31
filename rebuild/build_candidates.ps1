@@ -371093,6 +371093,13 @@ $catalog = @(
         TestSource = '00/c5/CCodaVoice_SetVibrato_00c59c60_test.cpp'
         PassPattern = '00c59c60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00943b40'
+        Module = 'CAIStateGroup_WorkInWarehouse'
+        Source = '00/94/CAIStateGroupWorkInWarehouse_Cleanup_00943b40.cpp'
+        TestSource = '00/94/CAIStateGroupWorkInWarehouse_Cleanup_00943b40_test.cpp'
+        PassPattern = '00943b40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

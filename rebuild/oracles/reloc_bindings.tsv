@@ -35769,3 +35769,5 @@ _ActiveThread	013ca894	009d87f0
 ?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z	00768210	005dac50
 ?Normalise@CPKVector3_00c402e0@@QAEMXZ	00c402e0	00c418f0
 _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
+??_7?$CIntelligentPointer@VCVillageTaskCarryCrate@@@@6B@	0128b0b0	00943b40
+?Cleanup@CAIStateGroup_MoveGoodsBase@@UAEXXZ	009162f0	00943b40

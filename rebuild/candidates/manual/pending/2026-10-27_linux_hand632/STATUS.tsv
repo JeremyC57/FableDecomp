@@ -1,0 +1,10 @@
+address	status	bytes	test	note
+0090bc60	DIFFER	211v211	-	CAIStateGroup_MinionWorkInInn::GetFreeBench: one register (edx vs eax) with an end()-local form; natural form leaves the vector zero stores before the node load
+00ac7eb0	DIFFER	215v215	-	COptimisedPrimitive::ComputeSelfContraction: x87 operand order (n*n*w emitted n*w*n; Dot x term)
+006b0b30	DIFFER	217v217	-	CTCPhysicsBase::InitialActivate: one x87 operand order in the second sum (PlaceInMapwho Y)
+00c590e0	DIFFER	217v217	-	CMixBuffer::WriteChannel (descriptive, renamed from WriteChannel16/gapscan): esi/edi swap
+00e7f330	DIFFER	218v218	-	NScript::CV_FishingCompetitionScript::Init: scheduling of two stores around faddp/fstp
+009b9e00	DIFFER	219v219	-	CStringParser::SkipPastNextItemIfIs: operand order of the rotated loop-end pointer
+006a7fb0	DIFFER	220v220	-	CThingFilter_BoundingBoxOverlapsMap::operator(): frame slots of the coordinate copy
+005e1210	DIFFER	221v221	-	std::_Adjust_heap<pair<EAnimComponent,CIVCountedPointer<..>>*,..>: esi/edi swap throughout
+008e7f80	DIFFER	223v223	-	NCreatureMode::CModeBriarRoseConcentrate::GetRandomImposter const: second-loop index/element register swap
