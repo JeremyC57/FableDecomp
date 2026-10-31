@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+00ca8120	RELOCATION_MATCH	400v400	PASS	CBasePin::ReceiveConnection (strmbase amfilter.cpp verbatim; IPin slot 4 of both pin tables); first grade, landed Connect 0x00CAB470 model
+00c59e20	RELOCATION_MATCH	405v405	PASS	CCodaVoice::UpdateEnvelopeStages (bound by landed caller 0x00C5A480); switch on flags&0x5E with delay->attack / hold->decay fallthroughs; 405 includes the 25-byte case tables
+00c8c3e0	RELOCATION_MATCH	416v416	PASS	libvorbis ov_crosslap (vorbisfile.c 20030909 CVS verbatim incl. pcmL/pcmR _analysis_output_always) in the landed _ov_64_seek_lap TU
+00c593c0	RELOCATION_MATCH	432v432	PASS	retail_asm/: CLimiter::Process (bound by landed caller 0x00C591C0); libpk fld/fistp-dword FloatToLong; named gain local fixes x87 operand order
+00c75ce0	RELOCATION_MATCH	432v432	PASS	CReverbStage94::Process (bound by landed caller 0x00C6A180); store states[i] before params[i] in the SIMD loop
+00ae3a60	RELOCATION_MATCH	456v456	PASS	CParticleProgram::ReadGroups (Ego_r PDB + callers in ReadFromFile); inline CDataInputStream Read helper
+00c54510	RELOCATION_MATCH	456v456	PASS	CDecodedStream::Initialise (bound by landed caller Open 0x00C547A0); the five inline dirty-flag setters go through an inline accessor returning &m_pending (about 8 grades)
+00ca6c40	RELOCATION_MATCH	460v460	PASS	CBaseRenderer::PrepareReceive (renbase.cpp verbatim; renderer primary slot 38, called by landed Receive 0x00CA6E10); first grade

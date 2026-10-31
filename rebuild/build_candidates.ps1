@@ -370499,6 +370499,58 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
         PassPattern = '00b0ffc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae3a60'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_ReadGroups_00ae3a60.cpp'
+        TestSource = '00/ae/CParticleProgram_ReadGroups_00ae3a60_test.cpp'
+        PassPattern = '00ae3a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c54510'
+        Module = 'CDecodedStream'
+        Source = '00/c5/CDecodedStream_Initialise_00c54510.cpp'
+        TestSource = '00/c5/CDecodedStream_Initialise_00c54510_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c54510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c59e20'
+        Module = 'CCodaVoice'
+        Source = '00/c5/CCodaVoice_UpdateEnvelopeStages_00c59e20.cpp'
+        TestSource = '00/c5/CCodaVoice_UpdateEnvelopeStages_00c59e20_test.cpp'
+        PassPattern = '00c59e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75ce0'
+        Module = 'CReverbStage94'
+        Source = '00/c7/CReverbStage94_Process_00c75ce0.cpp'
+        TestSource = '00/c7/CReverbStage94_Process_00c75ce0_test.cpp'
+        PassPattern = '00c75ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8c3e0'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovcrosslap_00c8c3e0.cpp'
+        TestSource = '00/c8/libvorbis_ovcrosslap_00c8c3e0_test.cpp'
+        PassPattern = '00c8c3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca6c40'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_PrepareReceive_00ca6c40.cpp'
+        TestSource = '00/ca/CBaseRenderer_PrepareReceive_00ca6c40_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca6c40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca8120'
+        Module = 'CBasePin'
+        Source = '00/ca/CBasePin_ReceiveConnection_00ca8120.cpp'
+        TestSource = '00/ca/CBasePin_ReceiveConnection_00ca8120_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca8120_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

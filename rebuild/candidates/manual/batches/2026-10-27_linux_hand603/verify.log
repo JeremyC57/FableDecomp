@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00ae3a60   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae3a60   WARN RELOC_NAME: ?GetVertexBlends@C3DGroup2@@QAEPAVC3DVertexBlend2@@XZ -> 00ac4080 labelled 'C3DMeshFileGroupChunk::GetList'
+00ae3a60   RELOCATION_MATCH PASS   ReadGroups
+00c54510   WARN RELOC_NAME: ?Initialise@CVoiceEffect@@QAE_NPAUCVtable_012b89c4@@@Z -> 00c6b050 labelled 'CTCHeroStats::InitializeAudioEffects'
+00c54510   WARN RELOC_NAME: ?SetClamped28@CUnprovenReverbParameters@@QAEXM@Z -> 00c535c0 labelled '_global::Attribute_SetClamped_Index10'
+00c54510   WARN RELOC_NAME: ?SetClamped30@CUnprovenReverbParameters@@QAEXM@Z -> 00c536b0 labelled '_global::Attribute_SetClamped_Index12'
+00c54510   WARN RELOC_NAME: ?SetClamped64@CUnprovenReverbParameters@@QAEXM@Z -> 00c53a40 labelled '_global::Attribute_SetClamped_Index25'
+00c54510   RELOCATION_MATCH PASS   Initialise
+00c59e20   RELOCATION_MATCH PASS   UpdateEnvelopeStages
+00c75ce0   WARN RELOC_NAME: ?ReadRing@CReverbFilterTap@@QAEXPAMI@Z -> 00c89b40 labelled 'CTCActivationReceptorBase::AddTrigger'
+00c75ce0   WARN RELOC_NAME: ?FilterGain4@CDspOps@@QAEXPAY0IA@M0PBQAMPBQBUSGainParams@@I@Z -> 00c88e60 labelled 'UnknownUtility_NoCalls'
+00c75ce0   RELOCATION_MATCH PASS   Process
+00c8c3e0   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c8c3e0   WARN RELOC_NAME: __ov_splice@32 -> 00c8bf90 labelled 'Audio_ConvolveChannels'
+00c8c3e0   RELOCATION_MATCH PASS   ov_crosslap
+00ca6c40   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca6c40   WARN RELOC_NAME: ?RegisterMediaTime@CRendererPosPassThru@@QAEJPAUIMediaSample@@@Z -> 00cadc10 labelled '_global::COM_InitializeFromDispatch'
+00ca6c40   RELOCATION_MATCH PASS   PrepareReceive
+00ca8120   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca8120   RELOCATION_MATCH PASS   ReceiveConnection
+
+WINS: 7
+  00ae3a60 RELOCATION_MATCH CParticleProgram::?ReadGroups@CParticleProgram@@CIXAAVCDataInputStream@@AAV?$CArray@VC3DGroup2@@@@@Z
+  00c54510 RELOCATION_MATCH CDecodedStream::?Initialise@CDecodedStream@@QAE_NXZ
+  00c59e20 RELOCATION_MATCH CCodaVoice::?UpdateEnvelopeStages@CCodaVoice@@QAE_NPBUSEnvelopeParams@@_N@Z
+  00c75ce0 RELOCATION_MATCH CReverbStage94::?Process@CReverbStage94@@QAEXPBUSStageSettings94@@PAUCDelayLine@@PAMPBQBMK@Z
+  00c8c3e0 RELOCATION_MATCH libvorbis::@ov_crosslap@8
+  00ca6c40 RELOCATION_MATCH CBaseRenderer::?PrepareReceive@CBaseRenderer@@UAEJPAUIMediaSample@@@Z
+  00ca8120 RELOCATION_MATCH CBasePin::?ReceiveConnection@CBasePin@@UAGJPAUIPin@@PBU_AMMediaType@@@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CParticleProgram_ReadGroups_00ae3a60
+  CDecodedStream_Initialise_00c54510
+  CCodaVoice_UpdateEnvelopeStages_00c59e20
+  CReverbStage94_Process_00c75ce0
+  libvorbis_ovcrosslap_00c8c3e0
+  CBaseRenderer_PrepareReceive_00ca6c40
+  CBasePin_ReceiveConnection_00ca8120
+=== retail_asm payload ===
+oracle TSV is missing required columns: address, bytes, length, name
