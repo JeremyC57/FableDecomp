@@ -1,11 +1,14 @@
-// CGraphicDataBank::UpdateAvailableMemory() -- AvailableMemory = max(free memory, 0) + the resource list's unloadable memory for ReduceSizeFrameDelay
-// Grade: RELOCATION_MATCH (chunk 624 probe, retry1 parked row, not this chunk) -- by-value Max(GetFreeMemory(), 0L) clamp; leaf ?UpdateAvailableMemory@ (PDB ?UpdateAvailableMemory@CGraphicDataBank@@AAEXXZ: make it private at landing and add a test).
-// Leaf: ?FrameEnd@CGraphicDataBank@@QAEXXZ
-// Retail: Fable.exe (TLC, VC7.1) @ 0x009FD660, 91 bytes. Name: Ego_r.pdb ?FrameEnd@CGraphicDataBank@@QAEXXZ, the binding of its
-//   caller 0x00B2B820. Callees: CResourceBank::FrameEnd @ 0x009FC430 (the base at +0x164), CTextureManager::FrameEnd @
-//   0x00A698B0 (through the CCountedPointer at +0x280), CResourceList::GetUnloadableMemory @ 0x009FC070 (inlined
-//   UpdateAvailableMemory, out of line at 0x009FD3A0).
-// Layout: see 0x009FD3A0 (same model).
+// CGraphicDataBank::UpdateAvailableMemory() -- AvailableMemory = max(free memory, 0) + the resource list's unloadable memory after ReduceSizeFrameDelay frames
+// Grade: RELOCATION_MATCH (chunk 626 extra; chunk 624 retry1 probe) -- private as the PDB has it.
+// Leaf: ?UpdateAvailableMemory@CGraphicDataBank@@AAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009FD3A0, 59 bytes (+5 int3). Name: Ego_r.pdb ?UpdateAvailableMemory@CGraphicDataBank@@AAEXXZ
+//   (donor 0x00B56B40; private -> AAE); no code xrefs (inlined into CGraphicDataBank::FrameEnd 0x009FD660, out-of-line copy kept).
+// Callee: CResourceList::GetUnloadableMemory(unsigned long) const @ 0x009FC070 (PDB ?GetUnloadableMemory@CResourceList@@QBEKK@Z).
+// Shape: the by-value Max(x, 0L) clamp gives "xor edx,edx ; test ; setle dl ; dec edx ; and eax,edx" with the store kept before
+//   the ReduceSizeFrameDelay load; GetFreeMemory (MaximumMemory - AllocatedMemory, +0x28 - +0x24 of the list at +0x168) is an
+//   inline accessor (no PDB body). The second statement is a read-modify-write "add [esi+278h],eax".
+// Layout: CResourceList from engine/CResourceList.h via the #define ...Layout include pattern (0x3C bytes); CResourceBank sits at
+//   +0x164 (RTTI second base of CGraphicDataBank), so ResourceList is at +0x168. No engine/CGraphicDataBank.h exists.
 #define CResourceList CResourceListLayout
 #include "engine/CResourceList.h"
 #undef CResourceList

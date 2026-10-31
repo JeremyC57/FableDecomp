@@ -370967,6 +370967,41 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupNonVillageGuardPatrol_FindNextGuardPatrolPosition_0093cab0_test.cpp'
         PassPattern = '0093cab0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00692aa0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_UpdateActionMovement_00692aa0.cpp'
+        TestSource = '00/69/CCreatureActionBase_UpdateActionMovement_00692aa0_test.cpp'
+        PassPattern = '00692aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007881ad'
+        Module = 'CTCTrapBase'
+        Source = '00/78/CTCTrapBase_UpdateTriggerThings_007881ad.cpp'
+        TestSource = '00/78/CTCTrapBase_UpdateTriggerThings_007881ad_test.cpp'
+        PassPattern = '007881ad_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007af940'
+        Module = 'std'
+        Source = '00/7a/std_uninitializedfilln_007af940.cpp'
+        TestSource = '00/7a/std_uninitializedfilln_007af940_test.cpp'
+        PassPattern = '007af940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d87f0'
+        Module = 'MicroThread'
+        Source = '00/9d/MicroThread_SwitchToMicroThread_009d87f0.cpp'
+        TestSource = '00/9d/MicroThread_SwitchToMicroThread_009d87f0_test.cpp'
+        PassPattern = '009d87f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fd3a0'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_UpdateAvailableMemory_009fd3a0.cpp'
+        TestSource = '00/9f/CGraphicDataBank_UpdateAvailableMemory_009fd3a0_test.cpp'
+        PassPattern = '009fd3a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

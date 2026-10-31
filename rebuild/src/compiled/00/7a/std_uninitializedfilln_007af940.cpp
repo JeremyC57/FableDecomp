@@ -1,5 +1,5 @@
 // std::__uninitialized_fill_n(CIntelligentPointer<CThingAICreature>* first, unsigned int n, const CIntelligentPointer<CThingAICreature>& x, const __false_type&) -- STLport fill-construct n AI-creature intelligent pointers from x
-// Grade: RELOCATION_MATCH (chunk 624 probe, not this chunk's row) -- chunk 622's parked 007af940 source with ONE change: the copy constructor names its item (`CBaseObject* item = other.GetPItem(); SetPItem(item);`), which fixes the x/n register tie. Leaf ??$__uninitialized_fill_n@. Needs its test from chunk 622.
+// Grade: RELOCATION_MATCH (chunk 626 extra; chunk 622 parked source + chunk 624 fix) -- the copy constructor names its item (CBaseObject* item = other.GetPItem(); SetPItem(item);), which fixes the x/n register tie.
 // Leaf: ??$__uninitialized_fill_n@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AF940, 62 bytes (+2 int3), `ret 8` (/Gr: first in ecx, n in edx, x and the
 //   __false_type tag reference on the stack).

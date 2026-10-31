@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+007881ad	RELOCATION_MATCH	124v124	PASS	CTCTrapBase::UpdateTriggerThings (protected; label was CTCCombatBase_UpdateEngageable): C2DCoordI((long)x,(long)y) temporary inside the call expression
+009d87f0	RELOCATION_MATCH	124v124	PASS	MicroThread::SwitchToMicroThread: TU-static ActiveThread global (store does not kill the vector reads) + inline static RestoreStack/PreserveStack
+008b9dd0	DIFFER	125v125	-	CCreatureAction_CastPhysicalShieldSpell::Initialise: this/&PCreature esi-edi colour swap only (2 grades this session)
+009fd700	DIFFER	126v126	-	CGraphicInfo ctor (nested CGraphicDataBank::CGraphicHeader spelling): push ebp/edi prologue scheduling vs the header stores (4 grades)
+0095d4c0	DIFFER	130v130	-	GetFirePointList(std::vector<CThing*>&) with the FableWin GFFilter_Bind2/not1/C2DBoxF model: one lea, first filter homed in the dead arg slot (4 grades)
+00c2cbd0	DIFFER	132v132	-	libpk CEventScript ctor (catalog label wrong): owner arg load scheduled before push esi (2 grades, scheduling only)
+00692aa0	RELOCATION_MATCH	132v132	PASS	CCreatureActionBase::UpdateActionMovement (protected): bool IsMovementUsingPhysics() argument + inline CThing::GetPhysicsTC()
+008e8ff0	DIFFER	135v135	-	NCreatureMode::GetStrafingAnimationName: physics vtable load scheduled before the call instead of after the first fld (4 grades)
+00954740	DIFFER	136v136	-	CAIStateGroup_MazeShieldedChase::IsStillRunnable (protected): this/&PTargetThing colour swap only (3 grades)
+00688260	DIFFER	137v137	-	CInputProcessControlCreatureActivateZTarget::ProcessInput: inlined CGameEvent zero bytes immediates vs retail shared xor al,al (2 grades)
+007af940	RELOCATION_MATCH	62v62	PASS	EXTRA (chunk 622/624): std::__uninitialized_fill_n over CIntelligentPointer<CThingAICreature>
+009fd3a0	RELOCATION_MATCH	59v59	PASS	EXTRA (chunk 624 retry1): CGraphicDataBank::UpdateAvailableMemory, private (AAE) as Ego_r.pdb; leaf fixed (was ?FrameEnd@...)

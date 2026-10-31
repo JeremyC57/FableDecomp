@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00692aa0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00692aa0   RELOCATION_MATCH PASS   UpdateActionMovement
+007881ad   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007881ad   WARN SHARED_HEADER_AVAILABLE CTCBase
+007881ad   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007881ad   WARN RELOC_NAME: ??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_IsThingAbleToBeEngagedInCombat@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_IsThingAbleToBeEngagedInCombat@@@@AAV?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z -> 0078954d labelled 'GetAllThingsInRoughArea<CThingCreatureBase,std::vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>,CFilter_Bind2<CThingFilter_None,CThingFilter_IsThingAbleToBeEngagedInCombat>_>'
+007881ad   RELOCATION_MATCH PASS   UpdateTriggerThings
+007af940   RELOCATION_MATCH PASS   __uninitialized_fill_n
+009d87f0   RELOCATION_MATCH PASS   SwitchToMicroThread
+009fd3a0   WARN SHARED_HEADER_AVAILABLE CTextureManager
+009fd3a0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009fd3a0   RELOCATION_MATCH PASS   UpdateAvailableMemory
+
+WINS: 5
+  00692aa0 RELOCATION_MATCH CCreatureActionBase::?UpdateActionMovement@CCreatureActionBase@@IAEXXZ
+  007881ad RELOCATION_MATCH CTCTrapBase::?UpdateTriggerThings@CTCTrapBase@@IAEXXZ
+  007af940 RELOCATION_MATCH std::??$__uninitialized_fill_n@
+  009d87f0 RELOCATION_MATCH MicroThread::?SwitchToMicroThread@MicroThread@@YI_NPAVMicroThreadInfo@1@@Z
+  009fd3a0 RELOCATION_MATCH CGraphicDataBank::?UpdateAvailableMemory@CGraphicDataBank@@AAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionBase_UpdateActionMovement_00692aa0
+  CTCTrapBase_UpdateTriggerThings_007881ad
+  std_uninitializedfilln_007af940
+  MicroThread_SwitchToMicroThread_009d87f0
+  CGraphicDataBank_UpdateAvailableMemory_009fd3a0

@@ -35752,3 +35752,8 @@ _drftf1@20	00c98e80	00c9bc10
 ?g_MainSignPostDefName@@3VCCharString@@B	013baaf8	006c0f00
 ?g_OwnedSignPostDefName@@3VCCharString@@B	013bab00	006c0f00
 ?g_RentSignPostDefName@@3VCCharString@@B	013bab04	006c0f00
+??$GetAllThingsInRoughArea@VCThingCreatureBase@@V?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_IsThingAbleToBeEngagedInCombat@@@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_IsThingAbleToBeEngagedInCombat@@@@AAV?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@@Z	0078954d	007881ad
+??0C2DBoxI@@QAE@ABVC2DCoordI@@J@Z	00434740	007881ad
+?SavedStackPointer@MicroThread@@3PAEA	013ca898	009d87f0
+?StackTop@MicroThread@@3PAEA	013ca8a0	009d87f0
+_ActiveThread	013ca894	009d87f0
