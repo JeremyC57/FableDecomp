@@ -35702,3 +35702,6 @@ _drftf1@20	00c98e80	00c9bc10
 ?find@CAbilityUndoMap@@QAEPAUSAbilityUndoNode@@ABW4EHeroAbility@@@Z	0057914c	005785b3
 ?insert@CAbilityUndoMap@@QAE?AUSInsertResult@1@ABU?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@Z	0057a1aa	005785b3
 ?SetHighPass@CEffectFilter@@QAEXJMK@Z	00c74bb0	00c783f0
+?IsEastAsianChar@@YA_N_W@Z	00a10240	00a10a60
+?IsNonBeginningChar@@YA_N_W@Z	00a0fe80	00a10a60
+?IsNonEndingChar@@YA_N_W@Z	00a10170	00a10a60

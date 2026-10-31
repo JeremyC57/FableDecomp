@@ -370692,6 +370692,28 @@ $catalog = @(
         TestSource = '00/c7/CEffectFilter_SetHighPass_00c74bb0_test.cpp'
         PassPattern = '00c74bb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0062b7c0'
+        Module = 'CWorld'
+        Source = '00/62/CWorld_EAControlledCreatureSheatheWeapon_0062b7c0.cpp'
+        TestSource = '00/62/CWorld_EAControlledCreatureSheatheWeapon_0062b7c0_test.cpp'
+        PassPattern = '0062b7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a10a60'
+        Module = 'WordWrap_String'
+        Source = '00/a1/WordWrapString_TokenizeW_00a10a60.cpp'
+        TestSource = '00/a1/WordWrapString_TokenizeW_00a10a60_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        PassPattern = '00a10a60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c071b0'
+        Module = '_global'
+        Source = '00/c0/global_swdaccept_00c071b0.cpp'
+        TestSource = '00/c0/global_swdaccept_00c071b0_test.cpp'
+        PassPattern = '00c071b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

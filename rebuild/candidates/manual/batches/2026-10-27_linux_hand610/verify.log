@@ -1,0 +1,18 @@
+addr       parity           behav  name
+0062b7c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0062b7c0   WARN RELOC_NAME: ??1CCreatureAction_SheatheItemToInventory@@UAE@XZ -> 0048c950 labelled '_unattributed::~CPhysicsMeshInfo_Derived_0048c950'
+0062b7c0   RELOCATION_MATCH PASS   EAControlledCreatureSheatheWeapon
+00a10a60   WARN RELOC_ALIAS: _wcslen -> 00bfed94 is the import thunk 'MSVCR71.DLL::wcslen'
+00a10a60   WARN RELOC_ALIAS: _wcsncpy -> 00bfeb04 is the import thunk 'MSVCR71.DLL::wcsncpy'
+00a10a60   RELOCATION_MATCH PASS   TokenizeW
+00c071b0   RELOCATION_MATCH PASS   swd_accept
+
+WINS: 3
+  0062b7c0 RELOCATION_MATCH CWorld::?EAControlledCreatureSheatheWeapon@CWorld@@QAEXPBVCGameEvent@@@Z
+  00a10a60 RELOCATION_MATCH WordWrap_String::?TokenizeW@WordWrap_String@@QAEHPAPA_W@Z
+  00c071b0 RELOCATION_MATCH _global::_swd_accept
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CWorld_EAControlledCreatureSheatheWeapon_0062b7c0
+  WordWrapString_TokenizeW_00a10a60
+  global_swdaccept_00c071b0
