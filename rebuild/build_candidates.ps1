@@ -370551,6 +370551,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca8120_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c593c0'
+        Module = 'CLimiter'
+        Source = '00/c5/CLimiter_Process_00c593c0.cpp'
+        TestSource = '00/c5/CLimiter_Process_00c593c0_test.cpp'
+        PassPattern = '00c593c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

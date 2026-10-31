@@ -1,1 +1,8 @@
-oracle TSV is missing required columns: address, bytes, length, name
+addr       parity           behav  name
+00c593c0   RELOCATION_MATCH PASS   CLimiter::Process
+
+WINS: 1
+  00c593c0 RELOCATION_MATCH CLimiter::?Process@CLimiter@@QAEXPAFKPBJJ@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CLimiter_Process_00c593c0

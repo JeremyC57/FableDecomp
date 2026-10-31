@@ -35682,3 +35682,4 @@ _strncat	00f3fcfa	00c5dc60
 @_analysis_output_always@32	00c90d60	00c8c3e0
 ?Receive@CBaseInputPin@@UAGJPAUIMediaSample@@@Z	00ca8b90	00ca6c40
 ?RegisterMediaTime@CRendererPosPassThru@@QAEJPAUIMediaSample@@@Z	00cadc10	00ca6c40
+?UpdateEnvelope@CLimiter@@QAEXXZ	00c592f0	00c593c0
