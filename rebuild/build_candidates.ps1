@@ -371149,6 +371149,70 @@ $catalog = @(
         TestSource = '00/ba/CEnginePrimitiveManagerStaticMeshesBase_DrawImmediately_00ba6dc0_test.cpp'
         PassPattern = '00ba6dc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005223f0'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadLoadableGlobalThingsFromFile_005223f0.cpp'
+        TestSource = '00/52/CThingManager_LoadLoadableGlobalThingsFromFile_005223f0_test.cpp'
+        PassPattern = '005223f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056eb48'
+        Module = 'CSliderAnimator'
+        Source = '00/56/CSliderAnimator_Update_0056eb48.cpp'
+        TestSource = '00/56/CSliderAnimator_Update_0056eb48_test.cpp'
+        PassPattern = '0056eb48_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071bcd0'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_CreateAlphaChannel_0071bcd0.cpp'
+        TestSource = '00/71/CTCHeroMorph_CreateAlphaChannel_0071bcd0_test.cpp'
+        PassPattern = '0071bcd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0095c0b0'
+        Module = 'CAIStateGroup_HoverHornetQueen'
+        Source = '00/95/CAIStateGroupHoverHornetQueen_WaitWhileBabiesFight_0095c0b0.cpp'
+        TestSource = '00/95/CAIStateGroupHoverHornetQueen_WaitWhileBabiesFight_0095c0b0_test.cpp'
+        PassPattern = '0095c0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4da0'
+        Module = 'CDriveManager'
+        Source = '00/9e/CDriveManager_CreateDirectoryW_009e4da0.cpp'
+        TestSource = '00/9e/CDriveManager_CreateDirectoryW_009e4da0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '009e4da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1de30'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CalcWayPointWidths_00a1de30.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CalcWayPointWidths_00a1de30_test.cpp'
+        PassPattern = '00a1de30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeb060'
+        Module = 'NParticleEngine::CParticleEmitterList'
+        Source = '00/ae/NParticleEngineCParticleEmitterList_Insert_00aeb060.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterList_Insert_00aeb060_test.cpp'
+        PassPattern = '00aeb060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be5e70'
+        Module = 'CLandscapeBackgroundPatch'
+        Source = '00/be/CLandscapeBackgroundPatch_CLandscapeBackgroundPatch_00be5e70.cpp'
+        TestSource = '00/be/CLandscapeBackgroundPatch_CLandscapeBackgroundPatch_00be5e70_test.cpp'
+        PassPattern = '00be5e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f35ed0'
+        Module = 'CPerlinNoise'
+        Source = '00/f3/CPerlinNoise_Initialise_00f35ed0.cpp'
+        TestSource = '00/f3/CPerlinNoise_Initialise_00f35ed0_test.cpp'
+        PassPattern = '00f35ed0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

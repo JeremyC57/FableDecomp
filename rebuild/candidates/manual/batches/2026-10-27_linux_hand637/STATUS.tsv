@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x009E4DA0	RELOCATION_MATCH	294v294	PASS	CDriveManager::CreateDirectoryW (/GS); PDB private inline ConvertDriveLetterToNumber + convert-before-_getdrive order + result declared before fullPath
+0x00A1DE30	RELOCATION_MATCH	298v298	PASS	CNavigatorAStar::CalcWayPointWidths; Ego_d CSteeringAgent inline accessors + PDB reference params of CalculateNavigableWidthOfLine
+0x0071BCD0	RELOCATION_MATCH	298v298	PASS	CTCHeroMorph::CreateAlphaChannel; C2DExtentsI user ctors (Lock temporaries pack, frame 0x20) + Ego_d CTexture::GetWidth/GetHeight inlines
+0x00AEB060	RELOCATION_MATCH	301v301	PASS	NParticleEngine::CParticleEmitterList::Insert; STLport distance() size with __distance iterator copy + `--it; insert(it, x)`
+0x00BE5E70	RELOCATION_MATCH	302v302	PASS	CLandscapeBackgroundPatch ctor (15-arg); body order derived backwards from VC7.1's pairwise parameter-copy swap
+0x0056EB48	RELOCATION_MATCH	305v305	PASS	CSliderAnimator::Update; <math.h> float fabs overload places the fstp after the by-value argument slot setup
+0x005223F0	RELOCATION_MATCH	306v306	PASS	CThingManager::LoadLoadableGlobalThingsFromFile (catalog "LoadGlobalThingBatch"); named worldMap local + vector in a nested block
+0x00F35ED0	RELOCATION_MATCH	307v307	PASS	CPerlinNoise::Initialise; inline GFFloatRandom with named double fmod result (agent635 lever)
+0x0095C0B0	RELOCATION_MATCH	307v307	PASS	CAIStateGroup_HoverHornetQueen::WaitWhileBabiesFight; loop condition = the landed IsStillRunnable body as an inline member (named CircleMarkers[0] reference)
+0x007471F0	DIFFER	308v308	-	CTCStealth::DrawPreparePrimitivesForRendering (manifest vfunc_11, vtable 0x012689EC slot 11); ToWideString temp homed in the dead info arg slot (frame 0x40 vs retail 0x44)

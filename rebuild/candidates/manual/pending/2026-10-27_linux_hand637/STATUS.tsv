@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0x007471F0	DIFFER	308v308	-	CTCStealth::DrawPreparePrimitivesForRendering (manifest vfunc_11, vtable 0x012689EC slot 11); ToWideString temp homed in the dead info arg slot (frame 0x40 vs retail 0x44)

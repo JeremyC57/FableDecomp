@@ -1,0 +1,45 @@
+addr       parity           behav  name
+005223f0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005223f0   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+005223f0   RELOCATION_MATCH PASS   LoadLoadableGlobalThingsFromFile
+0056eb48   RELOCATION_MATCH PASS   Update
+0071bcd0   WARN SHARED_HEADER_AVAILABLE CTexture
+0071bcd0   RELOCATION_MATCH PASS   CreateAlphaChannel
+0095c0b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095c0b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095c0b0   WARN RELOC_NAME: ?CountLivingHelpers@CTCBoss@@QAEJXZ -> 007aeec0 labelled 'CTCBoss::CountLivingHelperCreatures'
+0095c0b0   RELOCATION_MATCH PASS   WaitWhileBabiesFight
+009e4da0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+009e4da0   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+009e4da0   WARN RELOC_ALIAS: __getdrive -> 00bfed70 is the import thunk 'MSVCR71.DLL::_getdrive'
+009e4da0   WARN RELOC_ALIAS: __chdrive -> 00bfed6a is the import thunk 'MSVCR71.DLL::_chdrive'
+009e4da0   WARN RELOC_ALIAS: __wchdir -> 00bfeafe is the import thunk 'MSVCR71.DLL::_wchdir'
+009e4da0   WARN RELOC_ALIAS: __wmkdir -> 00bfed64 is the import thunk 'MSVCR71.DLL::_wmkdir'
+009e4da0   RELOCATION_MATCH PASS   CreateDirectoryW
+00a1de30   RELOCATION_MATCH PASS   CalcWayPointWidths
+00aeb060   RELOCATION_MATCH PASS   Insert
+00be5e70   RELOCATION_MATCH PASS   CLandscapeBackgroundPatch
+00f35ed0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00f35ed0   RELOCATION_MATCH PASS   Initialise
+
+WINS: 9
+  005223f0 RELOCATION_MATCH CThingManager::?LoadLoadableGlobalThingsFromFile@
+  0056eb48 RELOCATION_MATCH CSliderAnimator::?Update@CSliderAnimator@@QAEXXZ
+  0071bcd0 RELOCATION_MATCH CTCHeroMorph::CreateAlphaChannel
+  0095c0b0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::WaitWhileBabiesFight@CAIStateGroup_HoverHornetQueen
+  009e4da0 RELOCATION_MATCH CDriveManager::?CreateDirectoryW@CDriveManager@@
+  00a1de30 RELOCATION_MATCH CNavigatorAStar::?CalcWayPointWidths@CNavigatorAStar@@
+  00aeb060 RELOCATION_MATCH NParticleEngine::CParticleEmitterList::?Insert@CParticleEmitterList@NParticleEngine@@QAE
+  00be5e70 RELOCATION_MATCH CLandscapeBackgroundPatch::??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MM
+  00f35ed0 RELOCATION_MATCH CPerlinNoise::?Initialise@CPerlinNoise@@
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CThingManager_LoadLoadableGlobalThingsFromFile_005223f0
+  CSliderAnimator_Update_0056eb48
+  CTCHeroMorph_CreateAlphaChannel_0071bcd0
+  CAIStateGroupHoverHornetQueen_WaitWhileBabiesFight_0095c0b0
+  CDriveManager_CreateDirectoryW_009e4da0
+  CNavigatorAStar_CalcWayPointWidths_00a1de30
+  NParticleEngineCParticleEmitterList_Insert_00aeb060
+  CLandscapeBackgroundPatch_CLandscapeBackgroundPatch_00be5e70
+  CPerlinNoise_Initialise_00f35ed0

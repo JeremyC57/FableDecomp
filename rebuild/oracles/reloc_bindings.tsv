@@ -18723,7 +18723,7 @@ __imp__accept@12	01440524	008f8ea0
 ?OnActivate@CModeDragonFlying@NCreatureMode@@QAEXXZ	008dbb30	008dc6c0
 ?EndBeamEffect@CModeDragonStrafeBurninate@NCreatureMode@@QAEXXZ	008d7bb0	008dcb00
 ?OnDeactivate@CModeDragonFlying@NCreatureMode@@QAEXXZ	008dc590	008dcb00
-?CountLivingHelperCreatures@CTCBoss@@QBEJXZ	007aeec0	008dffd0
+?CountLivingHelpers@CTCBoss@@QAEJXZ	007aeec0	008dffd0
 ?FrameUpdate@CModeDragonHover@NCreatureMode@@QAEXXZ	008db460	008e0780
 ?StartBeamEffect@CModeDragonFireBeam@NCreatureMode@@QAEXXZ	008db620	008e0780
 ?UpdateBeam@CModeDragonFireBeam@NCreatureMode@@QAEXXZ	008db810	008e0780
@@ -35778,3 +35778,13 @@ _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
 ?g_twoPi@@3NB	0124f2b8	00a0c450
 ?InitialiseHiddenMaterials@CEngineInternalPrimitiveMorphInfo@@QAEXABVC3DMesh2@@@Z	00bec8d0	00ba6dc0
 ?RenderMeshPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@QAEXAAVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z	00ba5260	00ba6dc0
+?ActivateThings@CThingManager@@QAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	0051e2f0	005223f0
+?LoadFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@JV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@PAVCASuspendableProcess@@H@Z	00521ae0	005223f0
+?ExtractParenthesis@CSliderAnimator@@QAE?AVCWideString@@PAVCText@NUISystem@@@Z	0056ead6	0056eb48
+?CountLivingHelpers@CTCBoss@@QAEJXZ	007aeec0	0095c0b0
+?KeepOutOfWay@CAIStateGroup_HoverHornetQueen@@IAE?AW4EAIActionReturn@@XZ	0095b6f0	0095c0b0
+?DriveExists@CDriveManager@@QAE?AW4EDriveReturn@@G@Z	009e4ae0	009e4da0
+?GetItemFromPath@CDriveManager@@AAE_NPBGKPAG@Z	009e4cb0	009e4da0
+?insert@?$list@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@2@U32@ABV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z	00aec6f0	00aeb060
+?push_back@?$list@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z	00aec780	00aeb060
+?push_front@?$list@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z	00aec740	00aeb060

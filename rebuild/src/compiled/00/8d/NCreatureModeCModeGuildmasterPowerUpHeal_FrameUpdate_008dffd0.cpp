@@ -2,7 +2,7 @@
 // Leaf: ?FrameUpdate@CModeGuildmasterPowerUpHeal
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DFFD0, 140 bytes (+ int3 padding), `ret`; vtable 0x012685BC slot 3.
 // Callees: CModeBase::FrameUpdate @ 0x0073AC50 (qualified), CVectorMap::LowerBound @ 0x0040F020 (inlined out-parameter
-//   GetInterface, type 0xad = bit 13 of the +0x34 dword = CTCBoss), CTCBoss::CountLivingHelperCreatures @ 0x007AEEC0 (landed;
+//   GetInterface, type 0xad = bit 13 of the +0x34 dword = CTCBoss), CTCBoss::CountLivingHelpers @ 0x007AEEC0 (landed;
 //   manifest "CountEffects" is propagated), CCombatAction_Guildmaster_HealFollowersRelease(CThingCreatureBase*) @ 0x008E4860
 //   (the manifest label "...HealFollowersInto" is propagated: the ctor stores vtable 0x012869BC =
 //   CCombatAction_Guildmaster_HealFollowersRelease), CThingCreatureBase::SetCurrentAction @ 0x006644F0, ~CCombatActionBase
@@ -47,7 +47,7 @@ class CThingCreatureBase { public:
 };
 
 class CTCBoss { public:                           // interface type 0xad
-    long CountLivingHelperCreatures() const;   // 0x007AEEC0
+    long CountLivingHelpers();   // 0x007AEEC0
 };
 
 class CCreatureActionBase { public:               // retail sizeof 0xa8
@@ -86,7 +86,7 @@ void NCreatureMode::CModeGuildmasterPowerUpHeal::FrameUpdate()
     long remaining = --Timer;
     CTCBoss* boss;
     ParentThing->GetInterface(&boss, 0xad);
-    if (remaining <= 0 || boss->CountLivingHelperCreatures() == 0) {
+    if (remaining <= 0 || boss->CountLivingHelpers() == 0) {
         CThingCreatureBase* creature = ParentThing;
         creature->SetCurrentAction(CCombatAction_Guildmaster_HealFollowersRelease(creature));
     }
