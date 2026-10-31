@@ -371304,6 +371304,20 @@ $catalog = @(
         TestSource = '00/b4/CEngineMap_PeekInterpolatedWaterDepth_00b41c30_test.cpp'
         PassPattern = '00b41c30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008aac50'
+        Module = 'std'
+        Source = '00/8a/std_findif_008aac50.cpp'
+        TestSource = '00/8a/std_findif_008aac50_test.cpp'
+        PassPattern = '008aac50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a873e0'
+        Module = 'CSBAgents'
+        Source = '00/a8/CSBAgents_Process_00a873e0.cpp'
+        TestSource = '00/a8/CSBAgents_Process_00a873e0_test.cpp'
+        PassPattern = '00a873e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

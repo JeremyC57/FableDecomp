@@ -1,0 +1,11 @@
+addr       parity           behav  name
+008aac50   RELOCATION_MATCH PASS   __find_if
+00a873e0   RELOCATION_MATCH PASS   Process
+
+WINS: 2
+  008aac50 RELOCATION_MATCH std::??$__find_if@PAVC3DVector@@V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@@std@@YIPAVC3DVector@@PAV1@0V?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@0@ABUrandom_access_iterator_tag@0@@Z
+  00a873e0 RELOCATION_MATCH CSBAgents::?Process@CSBAgents@@UAE_NPBVCSteeringAgent@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  std_findif_008aac50
+  CSBAgents_Process_00a873e0

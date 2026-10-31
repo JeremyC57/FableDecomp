@@ -35811,3 +35811,7 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_InMap@@@CThingSearchTools@@QBEXABVCThingFilter_InMap@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	008adc30	008a8af0
 ?PeekHasWaterFast@CEngineMap@@QBE_NJJ@Z	00b40260	00b41c30
 ?PeekWaterDepth@CEngineMap@@QBEMJJ@Z	00b40bd0	00b41c30
+??R?$unary_negate@VCVectorFilter_FurtherFromPointThan@@@std@@QBE_NABVC3DVector@@@Z	008aabc0	008aac50
+?GetDistanceBetweenAgents@CSB@@QAEMPBVCSteeringAgent@@0_N@Z	00a872f0	00a873e0
+?ShouldIgnoreAgent@CSB@@QAE_NPBVCSteeringAgent@@00@Z	00a87260	00a873e0
+?g_SBAgentsDisabled_013d2d54@@3_NA	013d2d54	00a873e0

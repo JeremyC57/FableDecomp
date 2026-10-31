@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0056f30b	DIFFER	396v396	-	CTCInventoryExperience::CloseInventory: zero-register (ebx) web v manager spill; reproduced, parked
+00a873e0	RELOCATION_MATCH	404v404	PASS	CSBAgents::Process: PDB respell (agent by pointer, CSteeringAgent inline accessors) + early-out builds its own zero kinematic
+00b50370	DIFFER	406v406	-	CEngineShadowRenderer ctor (catalog CPSCOrbit is propagated): constant register promotion 1.0/8.0/0.1
+009faf70	DIFFER	407v407	-	CTexture::GenerateMipmapsWithGPU: PDB-respelled; edi/ebx + edx/ebp colouring tie
+00871290	DIFFER	408v408	-	NCreatureAction::CActionEventExplosion::SetDataFromString: PDB-respelled; PStringData loaded ecx->esi (one register)
+00c3d470	DIFFER	408v408	-	UpdateRenderState (label propagated, identity unproven): push of the change mask before the vtable read
+008aac50	RELOCATION_MATCH	411v411	PASS	std::__find_if<C3DVector*, unary_negate<CVectorFilter_FurtherFromPointThan> >: predicate in PDB vocabulary (C2DVector(pos - CentrePos).GetSquaredMagnitude())
+008bf500	DIFFER	412v412	-	CCreatureAction_GenericFireProjectileWeapon::FinishAction: loop fixed by STLport begin(); &type temp register in the two interface lookups
+00bbcc70	DIFFER	411v415	-	CEnginePrimitiveManagerParticleGroup::SetupPixelShader: SetState register pressure (scoped ebp temp in retail)
+00774730	DIFFER	419v419	-	CTCShop::SellItem: esi/edi colouring tie in the building-contents loop
