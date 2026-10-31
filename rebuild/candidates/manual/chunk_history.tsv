@@ -25268,3 +25268,13 @@ chunk	address	module	name	length
 623	006d63a0	CEngine	GetEditorAnimation	77
 623	007447e0	CTCPerceiveThing	UpdateDistanceFromPerceivedThing	77
 623	00521a90	CThingManager	SetNameForThing	78
+624	006817f0	CTCCreatureOpinionOfHero	IsWillingToAttackHeroOnOpinion	84
+624	00771d50	CTCHeroPodium	GetCrowdPos	85
+624	00722bd0	global	Vector_Fill_CountedPtr_Pairs	86
+624	00792550	global	Vector_CopyConstruct_CBaseIntelligentPointer	86
+624	007979b0	global	CopyArray_CBaseIntelligentPointer	86
+624	00bba3e0	CEngineInternalPrimitiveDecal	?GetBoundingSphereWorldSpace@CEngineInternalPrimitiveDecal@@UAE_NAAVC3DBoundingSphere@@@Z	87
+624	009fd660	CGraphicDataBank	FrameEnd	91
+624	004310a7	CPersistContext	CPersistContext::TransferWideString	91
+624	00431143	CPersistContext	CPersistContext::TransferString	91
+624	00806c80	global	fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>	98
