@@ -25358,3 +25358,13 @@ chunk	address	module	name	length
 632	006a7fb0	CThingFilter_BoundingBoxOverlapsMap	operator()	220
 632	005e1210	_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std	_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std::pair<enum_EAnimComponent,class_CIVCountedPointer<class_CAnimComponentBase>_>,CKeyPairCompareLess<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>	221
 632	008e7f80	CModeBriarRoseConcentrate	GetRandomImposter	223
+633	00752f30	CTCLook	UpdateHeadCreatureAnim	226
+633	00a1af00	CNavigatorAStar	?IsNavLineOfSightClear@CNavigatorAStar@@UBE_NABVC3DVector@@0@Z	227
+633	004c10e0	global	CTCGraphicAppearance_UpdateHelperPointOffset	227
+633	008da7a0	CModeDrained	OnDeactivate	227
+633	009fe460	CFrameData	FreeTextureMemory	231
+633	008af500	CombatDialogueManager	AttemptToSpeak	235
+633	00a3f250	CSoundManagerLH	CSoundManagerLH::vfunc_39	236
+633	0091ea70	CAIStateGroup_CreatureRangedCombat2	IsAbleToFire	240
+633	00c11230	global	CTCHero_OnActionInterrupt	242
+633	0074e140	global	Projectile_CalculateTrajectory	245
