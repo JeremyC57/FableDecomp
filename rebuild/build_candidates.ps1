@@ -369707,6 +369707,147 @@ $catalog = @(
         TestSource = '00/77/CPersistContext_TransferEHeroCentreDoorType_0077fde0_test.cpp'
         PassPattern = '0077fde0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0040e710'
+        Module = 'CPersistTraits<CWideString>'
+        Source = '00/40/CPersistTraitsCWideString_TransferIn_0040e710.cpp'
+        TestSource = '00/40/CPersistTraitsCWideString_TransferIn_0040e710_test.cpp'
+        PassPattern = '0040e710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00412210'
+        Module = 'std::deque<ETutorialCategory>'
+        Source = '00/41/stddequeETutorialCategory_deque_00412210.cpp'
+        TestSource = '00/41/stddequeETutorialCategory_deque_00412210_test.cpp'
+        PassPattern = '00412210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cb10'
+        Module = 'NUISystem::CYesNo'
+        Source = '00/41/NUISystemCYesNo_ProcessEvent_0041cb10.cpp'
+        TestSource = '00/41/NUISystemCYesNo_ProcessEvent_0041cb10_test.cpp'
+        PassPattern = '0041cb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004978a0'
+        Module = '_global'
+        Source = '00/49/global_GFFloatRandom_004978a0.cpp'
+        TestSource = '00/49/global_GFFloatRandom_004978a0_test.cpp'
+        PassPattern = '004978a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004afbb0'
+        Module = 'CQuestManager'
+        Source = '00/4a/CQuestManager_OnEntityInterrupted_004afbb0.cpp'
+        TestSource = '00/4a/CQuestManager_OnEntityInterrupted_004afbb0_test.cpp'
+        PassPattern = '004afbb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004fab40'
+        Module = 'C2DBoxI'
+        Source = '00/4f/C2DBoxI_Overlapping_004fab40.cpp'
+        TestSource = '00/4f/C2DBoxI_Overlapping_004fab40_test.cpp'
+        PassPattern = '004fab40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054b4b0'
+        Module = 'NUISystem::CSlider'
+        Source = '00/54/NUISystemCSlider_GetDataFromDef_0054b4b0.cpp'
+        TestSource = '00/54/NUISystemCSlider_GetDataFromDef_0054b4b0_test.cpp'
+        PassPattern = '0054b4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0054df50'
+        Module = 'NUISystem::CFrontEndButton'
+        Source = '00/54/NUISystemCFrontEndButton_GetDataFromDef_0054df50.cpp'
+        TestSource = '00/54/NUISystemCFrontEndButton_GetDataFromDef_0054df50_test.cpp'
+        PassPattern = '0054df50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558770'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_Initialise_00558770.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_Initialise_00558770_test.cpp'
+        PassPattern = '00558770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055a5d0'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_OnLeftClicked_0055a5d0.cpp'
+        TestSource = '00/55/NUISystemCDraggable_OnLeftClicked_0055a5d0_test.cpp'
+        PassPattern = '0055a5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005786b5'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_BuyStat_005786b5.cpp'
+        TestSource = '00/57/CTCInventoryExperience_BuyStat_005786b5_test.cpp'
+        PassPattern = '005786b5_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00581b33'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_HasScreenshots_00581b33.cpp'
+        TestSource = '00/58/CTCInventory_HasScreenshots_00581b33_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00581b33_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a45f6'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructSellActionsList_005a45f6.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructSellActionsList_005a45f6_test.cpp'
+        PassPattern = '005a45f6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005a731f'
+        Module = 'CTCInventoryTrade'
+        Source = '00/5a/CTCInventoryTrade_ConstructSellActionsListPC_005a731f.cpp'
+        TestSource = '00/5a/CTCInventoryTrade_ConstructSellActionsListPC_005a731f_test.cpp'
+        PassPattern = '005a731f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005cdd86'
+        Module = 'CTCInventoryStats'
+        Source = '00/5c/CTCInventoryStats_CreateExperienceSliders_005cdd86.cpp'
+        TestSource = '00/5c/CTCInventoryStats_CreateExperienceSliders_005cdd86_test.cpp'
+        PassPattern = '005cdd86_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dd090'
+        Module = 'CAnimationEntry'
+        Source = '00/5d/CAnimationEntry_TransferBinaryIn_005dd090.cpp'
+        TestSource = '00/5d/CAnimationEntry_TransferBinaryIn_005dd090_test.cpp'
+        PassPattern = '005dd090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e9840'
+        Module = 'CPersistContext'
+        Source = '00/5e/CPersistContext_TransferVectorunsignedlong_005e9840.cpp'
+        TestSource = '00/5e/CPersistContext_TransferVectorunsignedlong_005e9840_test.cpp'
+        PassPattern = '005e9840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00641020'
+        Module = 'CTCLight'
+        Source = '00/64/CTCLight_OnSerialise_00641020.cpp'
+        TestSource = '00/64/CTCLight_OnSerialise_00641020_test.cpp'
+        PassPattern = '00641020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00645099'
+        Module = 'NPlayerGui::CDrawAbilityButtons'
+        Source = '00/64/NPlayerGuiCDrawAbilityButtons_DrawButton_00645099.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_DrawButton_00645099_test.cpp'
+        PassPattern = '00645099_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00646010'
+        Module = 'NPlayerGui::CCrimeStatBar'
+        Source = '00/64/NPlayerGuiCCrimeStatBar_DrawStatBarOnLeft_00646010.cpp'
+        TestSource = '00/64/NPlayerGuiCCrimeStatBar_DrawStatBarOnLeft_00646010_test.cpp'
+        PassPattern = '00646010_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

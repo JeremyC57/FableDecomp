@@ -1,0 +1,5 @@
+address	catalog_length	true_length	evidence
+005e9840	533	180	sub esp,8 .. ret 8, mov edi,edi and the five-entry jump table 0x005E98E0..0x005E98F3; 0x005E9900 starts the separate 3-float vector-length helper; RELOCATION_MATCH over 180
+0055a5d0	697	82	ends at the ret 0x0055A621 (int3 padding to 0x0055A630); 0x0055A630 / 0x0055A660 / 0x0055A740 / 0x0055A7C0 are CScrollBar vtable 0x0124B7E4 overrides; RELOCATION_MATCH over 82
+0054eac0	395	243	ends at the tail call jmp 0x0052CCF0 (~CComponent) at 0x0054EBAE..0x0054EBB2; int3 padding 0x0054EBB3..0x0054EBBF; 0x0054EBC0 starts a separate function (mov eax,ecx ... ret 34h at 0x0054EC50)
+0057f70f	54	36	ends at ret 0Ch 0x0057F730..0x0057F732; 0x0057F733 starts the next (size-TU, unpadded) function: mov eax,ecx; vtable 0x0124F350 store; ret 4 (a TransferableVector ctor)
