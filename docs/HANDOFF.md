@@ -35,7 +35,7 @@ end of `docs/journal/FINDINGS_LOG.md`. Fresh container: `docs/pipeline/FRESH_SES
    `CHandleBasedMemoryPool_012b4098`, GOTCHAS 2026-10-31; 603: 8 of 8, the last engine-remainder rows; 604: 4 of 10, the first chunk
    cut from the sweep's parked rows). Chunks now come from the sweep's parked rows: `$S/w30/pick.py` ranks them (closest residue,
    shortest first) into `$S/w30/ranked.tsv`, `$S/w30/cutp.sh N addrs` cuts a chunk (agent dir `$S/w22/agentN`, CHUNK_BRIEF.md,
-   `rebuild/candidates/manual/chunk_history.tsv`). Running: 605 (`$S/w22/agent605`). Cut and queued, not launched: 606, 607, 608.
+   `rebuild/candidates/manual/chunk_history.tsv`). Running: 605 (`$S/w22/agent605`) and 606 (`$S/w22/agent606`). Cut and queued, not launched: 607, 608.
    Land each as it reports (`coordinator/land_chunk.sh N`, `records.py N`); re-run pick.py before cutting 609+.
 3. Migration wave 10 per `headers/2026-10-30_retail_models_wave9/NEXT.md` (item 0: the CDefPointer(ENullDef) ctor is in the header since 2026-10-31 — migrate the 76 local `enum ENullDef` models; then the 1,317 proven CP rows).
 4. Naming wave 12: queue rows 594-599, libsig/libsig2/libsig3, mig9, retry1, sec1-4 (~180 rows); the duplicate per-TU static / unfolded-COMDAT convention (owner decision open: ilog2 x3, SmoothFadeValue x3, CDefString x2, IS_THING_ALIVE<CIntelligentPointer<const CThing>> x2, LowerBound 0x004365B0/0x0040F020); three byte-matching sec3 bodies in `pending/2026-10-30_parked_retry2_sec3/name_review/` land once named; 0x00CB0C10 CompatibleTimeSetEvent; EAX GUID linkage; CDspGain::Apply two spellings; ScaleAccumulate16Ramp x3 (different bodies, distinct names).
