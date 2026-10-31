@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0093dae0   RELOCATION_MATCH PASS   IsCombatSequenceActionPending
+009e21d0   RELOCATION_MATCH PASS   GFACoordToVCoord
+
+WINS: 2
+  0093dae0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::?IsCombatSequenceActionPending@CAIStateGroup_MeleeCombatNearby2@@ABE_NXZ
+  009e21d0 RELOCATION_MATCH _global::?GFACoordToVCoord@@YIXABVC2DVector@@AAV1@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupMeleeCombatNearby2_IsCombatSequenceActionPending_0093dae0
+  global_GFACoordToVCoord_009e21d0

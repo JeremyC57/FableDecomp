@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009e1dd0   RELOCATION_MATCH PASS   GFAYToVY
+
+WINS: 1
+  009e1dd0 RELOCATION_MATCH global::?GFAYToVY@@YIMM@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  global_GFAYToVY_009e1dd0

@@ -29012,7 +29012,7 @@ $catalog = @(
         Module = '_global'
         Source = '00/9e/Global_GFAXToVX_009e1da0.cpp'
         TestSource = '00/9e/Global_GFAXToVX_009e1da0_test.cpp'
-        PassPattern = 'FABLETLC_GFAX_TO_VX_BEHAVIOR PASS'
+        PassPattern = '009e1da0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00497f80'
@@ -371429,6 +371429,27 @@ $catalog = @(
         Source = '00/6b/CAtmosProcess_UpdateInsideBuildings_006b1f30.cpp'
         TestSource = '00/6b/CAtmosProcess_UpdateInsideBuildings_006b1f30_test.cpp'
         PassPattern = '006b1f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093dae0'
+        Module = 'CAIStateGroup_MeleeCombatNearby2'
+        Source = '00/93/CAIStateGroupMeleeCombatNearby2_IsCombatSequenceActionPending_0093dae0.cpp'
+        TestSource = '00/93/CAIStateGroupMeleeCombatNearby2_IsCombatSequenceActionPending_0093dae0_test.cpp'
+        PassPattern = '0093dae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e21d0'
+        Module = '_global'
+        Source = '00/9e/global_GFACoordToVCoord_009e21d0.cpp'
+        TestSource = '00/9e/global_GFACoordToVCoord_009e21d0_test.cpp'
+        PassPattern = '009e21d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1dd0'
+        Module = 'global'
+        Source = '00/9e/global_GFAYToVY_009e1dd0.cpp'
+        TestSource = '00/9e/global_GFAYToVY_009e1dd0_test.cpp'
+        PassPattern = '009e1dd0_TEST PASS'
     }
 )
 

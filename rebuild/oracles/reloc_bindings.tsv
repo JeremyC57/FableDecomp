@@ -7841,7 +7841,7 @@ __imp__timeGetTime@0	014404b4	009e1cb0
 ?g_FableVirtualWidth_013961E8@@3NA	013961e8	009e1d00
 ?g_FableVirtualHeight_013961F0@@3NA	013961f0	009e1d50
 ?GFGetSystemManager@@YIPAUCSystemManagerCoordinateView@@XZ	009a4ec0	009e1da0
-?g_FableVirtualWidth_013961E8@@3NC	013961e8	009e1da0
+?VIRTUAL_SCREEN_WIDTH@@3NA	013961e8	009e1da0
 ??_7CVertexBufferBase@@6B@	0129ba08	009e27e0
 ??_7CVertexBufferWin32_Retail@@6B@	0129ba20	009e2830
 ?Initialise@CVertexBufferWin32_Retail@@QAE_NJJJKJ@Z	00a63150	009e2830
@@ -35842,3 +35842,6 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z	006b25e0	006b1f30
 ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ	006b1600	006b1f30
 ?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z	0082d8c0	006b1f30
+?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z	006e97a0	0093dae0
+?VIRTUAL_SCREEN_HEIGHT@@3NA	013961f0	009e21d0
+?VIRTUAL_SCREEN_WIDTH@@3NA	013961e8	009e21d0

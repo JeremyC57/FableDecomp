@@ -1,0 +1,5 @@
+addr       parity           behav  name
+009e1da0   RELOCATION_MATCH PASS   GFAXToVX
+
+WINS: 1
+  009e1da0 RELOCATION_MATCH _global::?GFAXToVX@@YIMM@Z

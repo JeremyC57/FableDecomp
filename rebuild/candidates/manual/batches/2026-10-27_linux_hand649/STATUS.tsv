@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00587bff	DIFFER	1150v1150	-	frame 0x20 v 0x1c: loop counter slot not shared with the CreateComponent CCharString temp; scope/declaration-order levers inert
+00563480	DIFFER	1178v1178	-	pending copy reproduces with frame-slot drift (43 hunks), not the one-residue version its header describes; not reworked
+005f45b5	DIFFER	1233v1233	-	global register assignment (items cached in ebx vs reloaded per block); not reworked
+0086bfb0	DIFFER	1307v1307	-	one jump target: erase arm does not skip the temp CBodyPartMesh free check; STLport insert/begin/end layer and default-arg forms inert
+00bf01e0	DIFFER	1374v1374	-	StencilFunc block test/or operand roles; temp-count tie: matches with 3 dead effect loads (lever_dead_loads/, owner decision)
+00b5e0f0	DIFFER	1547v1547	-	DitherEnable block test/or operand roles; same tie: matches with 5 dead member loads (lever_dead_loads/, owner decision)
+00d39960	DIFFER	1774v1774	-	post-loop termination cleanup copy placed inline (je) vs after the shared epilogue (jne); final return and nested scope inert
+00b6fa40	DIFFER	2019v2019	-	three sampler blocks test/or operand roles; same tie but needs FEWER temps; dead loads only worsen
+0093dae0	RELOCATION_MATCH	48v48	PASS	PDB inline accessors GetCreature (CAIStateGroupBase -> CAIBrain, Ego_d.pdb) + named CCombatManager& from GetCombatManager() -> CWorld::GetCombatManager()
+009e21d0	RELOCATION_MATCH	106v106	PASS	Y half written (float)((float)VIRTUAL_SCREEN_HEIGHT * y) / dims.Y: the truncated product spills into y's slot between push ecx and mov ecx,eax
