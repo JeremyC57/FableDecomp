@@ -25328,3 +25328,13 @@ chunk	address	module	name	length
 629	008930f0	CGameScriptInterface	?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@0@Z	186
 629	00ad8af0	global	TreeNodes_HaveIntersection	188
 629	0041726d	CMainGameComponent	UpdateFromEventPackageSet	189
+630	0053e0c0	CMenuEntry	MakeUnavailable	190
+630	00ac82a0	COptimisedPrimitive	ComputeSubContractionCost	192
+630	0078c150	CTCBerserk	PlayHitEffectAtPos	192
+630	0084d7e0	global	CTCGraphicAppearance_UpdateHeightInterpolation	193
+630	0092f240	CAIStateGroup_MinionReactToPlayerInteraction	InteractionFailed	193
+630	00488620	CPlayer	GetPNearestTCVillage	196
+630	004886f0	CPlayer	GetPNearestTCVillage	196
+630	00a872f0	CSB	GetDistanceBetweenAgents	196
+630	00632830	CPersistTraits<std::list<COpinionTransientOffset	TransferBinaryIn	196
+630	0072b260	CTCSpecialAbilities	SetupDrainLifeSpell	198
