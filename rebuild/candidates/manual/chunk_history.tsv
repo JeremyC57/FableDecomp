@@ -25528,3 +25528,13 @@ chunk	address	module	name	length
 649	00b6fa40	CEngineWaterRenderer	RenderSeaMidground	2019
 649	0093dae0	CAIStateGroup_MeleeCombatNearby2	IsCombatSequenceActionPending	48
 649	009e21d0	global	GFACoordToVCoord	106
+650	00af56e0	CParticleSystem	DeleteAllParticles	138
+650	0097af70	_Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A	_Adjust_heap<CThing**,int,CThing*,_anon_FFAB493A::CThingCompare_InDirectionOfAndNearestToHeuristicBitch>	142
+650	007e4530	global	IsThingLightningable	159
+650	00a64910	CMemoryAllocatorVariableSize	RemoveFromTreeFixup	757
+650	00973dc0	CAIStateGroup_JackOfBladesBase	SummonPillars	833
+650	00f38ff0	CSurfaceCompositor	SetBaseBlendModes	1842
+650	008de080	CModeDragonStrafeBurninate	FrameUpdate	1437
+650	008e03b0	CModeGuildmasterPowerUpSpeed	OnActivate	811
+650	00e83230	CCreatureAction_TrollWhackGroundBase	CCreatureAction_TrollWhackGroundBase::HandleVillageSelection	820
+650	006a03a0	CCreatureAction_UseObject	CCreatureAction_UseObject::Initialise	825
