@@ -25378,3 +25378,13 @@ chunk	address	module	name	length
 634	00946190	CAIStateGroup_PrepareMeal	?Update@CAIStateGroup_PrepareMeal@@MAEXXZ	259
 634	00a55f90	global	Matrix_RotationAroundAxis	259
 634	00547050	CScrollingComponent	UpdatePosition	261
+635	00a17690	CPhysicsMesh	HasBoundingBoxIntersectedFromTo	262
+635	00d3ae40	CFH_Scythe	Main	264
+635	0099ba70	CCharString	CCharString::SetFromFormatV	265
+635	00a65480	CMemoryAreaChunk	AllocAreaFromArea	265
+635	008c7280	CCreatureAction_TrollGroundPound	?Initialise@CCreatureAction_TrollGroundPound@@UAEXXZ	268
+635	00693140	global	GetActionAnimSetList	269
+635	00a65720	CMemoryAllocatorVariableSize	NewChunk	269
+635	00b84470	NHeroInformationScreens::CBase	NHeroInformationScreens::CBase::CBase	270
+635	0055c6f0	NUISystem::CMouseCursor	NUISystem::CMouseCursor::vfunc_1	276
+635	00a146c0	global	GetRandomPointWithinUnitSphere	278
