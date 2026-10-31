@@ -25348,3 +25348,13 @@ chunk	address	module	name	length
 631	00c59c60	global	GraphicalElement_ComputeAnimationTransform	210
 631	00a5d000	CMatrix4x4	SetInverseOfUniformScaleRotationTranslation	211
 631	00c351b0	CWeaponDrawState	CWeaponDrawState::Initialize	211
+632	0090bc60	global	CleanBench_PickRandomMarker	211
+632	00943b40	CAIStateGroup_WorkInWarehouse	?Cleanup@CAIStateGroup_WorkInWarehouse@@UAEXXZ	215
+632	00ac7eb0	COptimisedPrimitive	ComputeSelfContraction	215
+632	006b0b30	CTCPhysicsBase	InitialActivate	217
+632	00c590e0	_gapscan	sub_00c590e0	217
+632	00e7f330	CV_FishingCompetitionScript	Init	218
+632	009b9e00	CStringParser	SkipPastNextItemIfIs	219
+632	006a7fb0	CThingFilter_BoundingBoxOverlapsMap	operator()	220
+632	005e1210	_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std	_Adjust_heap<std::pair<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>*,int,std::pair<enum_EAnimComponent,class_CIVCountedPointer<class_CAnimComponentBase>_>,CKeyPairCompareLess<EAnimComponent,CIVCountedPointer<CAnimComponentBase>_>_>	221
+632	008e7f80	CModeBriarRoseConcentrate	GetRandomImposter	223
