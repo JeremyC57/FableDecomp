@@ -25538,3 +25538,13 @@ chunk	address	module	name	length
 650	008e03b0	CModeGuildmasterPowerUpSpeed	OnActivate	811
 650	00e83230	CCreatureAction_TrollWhackGroundBase	CCreatureAction_TrollWhackGroundBase::HandleVillageSelection	820
 650	006a03a0	CCreatureAction_UseObject	CCreatureAction_UseObject::Initialise	825
+651	00f39730	CSurfaceCompositor	StartComposition	796
+651	00d259a0	_gapscan	sub_00d259a0	64
+651	006817c0	CTCCreatureOpinionOfHero	TransformForcedOpinion	43
+651	00490494	CSubtitleRenderer	DrawPreparePrimitivesForEngine	1094
+651	007c7c40	CTCTurncoat	FrameUpdate	744
+651	00446330	CGamePlayerInterface	GetInputProcessEvent	1002
+651	0078a690	CTCHeroRangedAttacks	FrameUpdate	1097
+651	0070bf50	global	IsAnimationStateBaseValid	104
+651	00e1cae0	CQ_WizardBattleScript	MonitorMazePhases	568
+651	00918b90	CAIStateGroup_Gaze	?Update@CAIStateGroup_Gaze@@MAEXXZ	802
