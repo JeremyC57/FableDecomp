@@ -25148,3 +25148,13 @@ chunk	address	module	name	length
 611	00860ad0	CVillageTaskPatrol	IsCreatureMoreAppropriateForTask	302
 611	007afe20	global	Vector_InsertRange_CBaseIntelligentPointer	302
 611	007b9b40	global	vector_Insert_Pair_SmartPtr	302
+612	0093c2f0	CAIStateGroup_StealthSeekEnemy	?IsRunnable@CAIStateGroup_StealthSeekEnemy@@UAE_NXZ	303
+612	00970df0	CAIStateGroup_CreatureUseCoverBase	?GetCoverThingList@CAIStateGroup_CreatureUseCoverBase@@MAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	307
+612	00c71f80	CAudioSource	CAudioSource::ComputePitchScale	311
+612	007d9d70	global	vector_Insert_16byte_Fill	316
+612	0058301a	CTCInventory	CreateEditBoxActions	321
+612	0085c7d0	CMoveOnCylinder	OnInit	332
+612	00760a70	CSubdivisionTriangle	GetUpDirection	332
+612	00aa39a0	CQuaternion	ToMatrix	332
+612	00c3db80	CTCHeroStats	CTCHeroStats::CreateIceTrollIcicleAction	335
+612	009852c0	CAIStateGroup_OpinionReactionRoot	FollowUpdate	337
