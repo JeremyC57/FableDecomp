@@ -35737,3 +35737,9 @@ _drftf1@20	00c98e80	00c9bc10
 ??0CVtable_012b4030@@QAE@PAX@Z	00c26e90	00c11d00
 ??_7CSoundEventManager@@6B@	012b2748	00c11d00
 ?GetDefaultRateRatio@CAudioDevice@@QAEMXZ	00c1c0b0	00c11d00
+?AddToInventory@CTCInventoryItem@@QAE_NAAVCTCInventoryBase@NInventory@@_N1J11@Z	005d8d50	00849700
+?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ	005d9030	00849700
+?GetMaxNumberOfItems@CTCInventoryItem@@QBEJXZ	005d9050	00849700
+?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z	005bf2ed	00849700
+?PeekComponent@CThing@@QAEPAVCMainGameComponent@@XZ	004c7a70	00849700
+?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	00492ed1	00849700

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0071ba60	RELOCATION_MATCH	624v624	PASS (g++ + VC7.1)	CTCHeroMorph::GetMorphStrength; lever: case 9 `GFLimitReturn(difference = GetMorphStrength(8) - Fatness, 0.0f, 1.0f)` (block-local difference); vland RELOCATION_MATCH PASS, no jump-table warnings
+00849700	RELOCATION_MATCH	719v719	PASS (g++ + VC7.1)	CCreatureAction_StealThingFromShop::PerformAction; landed-sibling CreateThingAt shape (0x00849380) + named component/manager locals + CThingObject::Create PDB spelling; callees respelled IsSpaceInInventoryForItem / GetMaxNumberOfItems; vland PASS
+007993f0	DIFFER	698v698	-	CTCShopKeeper::WitnessedCrime(const COpinionDeed&, long); residue: hidden-return CDefPointer homed in the dead deed slot (retail F+4 key word)
+006668a0	DIFFER	673v673	-	CThingCreatureBase::GetPossibleCombatAnimations; 686v673/81 lines -> 673v673/4 lines (same-TU GetSubDef<CAppearanceDef> body); residue: DEFAULT fallback homed in the name slot
+009644f0	DIFFER	709v709	-	CAIStateGroup_StealStealableItem::OnReplace; 76 -> 56 diff lines; residue: this / &PStealableItem ebx/ebp swap
+005c71aa	DIFFER	680v680	-	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight; 12 -> 10 lines (same-TU noinline vector::resize body threads the early return); residue: none-text block scheduling
+00542780	DIFFER	682v682	-	NUISystem::CIconText::AddIcon; residue: FrameWidth/FrameHeight load order (7 forms tried, orig still best)
+0047f30f	DIFFER	636v636	-	CTCInGameMenu::VideoOptionsNotAccepted; shared push ecx / fsubp lane gap
+00576c4f	DIFFER	642v642	-	CTCInventoryExperience::UndoBuyAbility; shared push ecx / fsubp lane gap
+00576ed1	DIFFER	622v622	-	CTCInventoryExperience::UndoBuyStat; push ecx / fsubp lane gap + one load-order swap

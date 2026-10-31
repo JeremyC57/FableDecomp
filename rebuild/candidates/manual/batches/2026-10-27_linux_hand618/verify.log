@@ -1,0 +1,20 @@
+addr       parity           behav  name
+0071ba60   RELOCATION_MATCH PASS   GetMorphStrength
+00849700   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00849700   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00849700   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00849700   WARN SHARED_HEADER_AVAILABLE CWorld
+00849700   WARN RELOC_NAME: ?GetInventoryType@CTCInventoryItem@@QBE?AW4ETCInterfaceType@@XZ -> 005d9030 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00849700   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+00849700   WARN RELOC_ALIAS: _abort -> 00bfeaec is the import thunk 'MSVCR71.DLL::abort'
+00849700   WARN RELOC_NAME: ?IsSpaceInInventoryForItem@CTCInventoryBase@NInventory@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+00849700   WARN RELOC_NAME: ?GetMaxNumberOfItems@CTCInventoryItem@@QBEJXZ -> 005d9050 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+00849700   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 2
+  0071ba60 RELOCATION_MATCH CTCHeroMorph::?GetMorphStrength@CTCHeroMorph@@QBEMW4EHeroMorphType@@@Z
+  00849700 RELOCATION_MATCH CCreatureAction_StealThingFromShop::?PerformAction@CCreatureAction_StealThingFromShop@@UAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCHeroMorph_GetMorphStrength_0071ba60
+  CCreatureActionStealThingFromShop_PerformAction_00849700

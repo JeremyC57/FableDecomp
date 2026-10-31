@@ -370834,6 +370834,20 @@ $catalog = @(
         TestSource = '00/96/CThingSearchTools_GetAllThingsInRoughArea_0096bcb0_test.cpp'
         PassPattern = '0096bcb0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0071ba60'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_GetMorphStrength_0071ba60.cpp'
+        TestSource = '00/71/CTCHeroMorph_GetMorphStrength_0071ba60_test.cpp'
+        PassPattern = '0071ba60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00849700'
+        Module = 'CCreatureAction_StealThingFromShop'
+        Source = '00/84/CCreatureActionStealThingFromShop_PerformAction_00849700.cpp'
+        TestSource = '00/84/CCreatureActionStealThingFromShop_PerformAction_00849700_test.cpp'
+        PassPattern = '00849700_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
