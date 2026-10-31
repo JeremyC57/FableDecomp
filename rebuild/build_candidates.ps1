@@ -371276,6 +371276,27 @@ $catalog = @(
         TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Main_00e03d30_test.cpp'
         PassPattern = '00e03d30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0051e630'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_DebugVerifyUniqueIDs_0051e630.cpp'
+        TestSource = '00/51/CThingManager_DebugVerifyUniqueIDs_0051e630_test.cpp'
+        PassPattern = '0051e630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008a8af0'
+        Module = 'CGameScriptInterface'
+        Source = '00/8a/CGameScriptInterface_GetAllThingsInLevel_008a8af0.cpp'
+        TestSource = '00/8a/CGameScriptInterface_GetAllThingsInLevel_008a8af0_test.cpp'
+        PassPattern = '008a8af0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d910b0'
+        Module = 'NScript::CQ_HobbeCaveScript::CBanditInRoomSample'
+        Source = '00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_Main_00d910b0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_Main_00d910b0_test.cpp'
+        PassPattern = '00d910b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

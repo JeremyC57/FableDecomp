@@ -35807,3 +35807,5 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00d3a050
 ?resize@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXIABVCScriptThing@@@Z	00d34ac0	00eb6a00
 ??0CScriptThing@@QAE@XZ	006e7b40	00eb6a00
+?CheckUID@CThing@@IBEXXZ	004c7bc0	0051e630
+??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_InMap@@@CThingSearchTools@@QBEXABVCThingFilter_InMap@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	008adc30	008a8af0

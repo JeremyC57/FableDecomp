@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00712900	DIFFER	362v362	-	played-path creature read eax/ecx vs retail ecx/ecx (register choice); PDB accessor respells kept
+00956e70	DIFFER	363v363	-	sub-def ebx vs retail edi reuse (register colouring tie); sibling 0x00956FE0 form kept
+006d4e60	DIFFER	363v363	-	key-address temp eax/ecx/edx rotation (register choice); PDB signature respelled
+0047ed76	DIFFER	366v366	-	push ecx / fsubp swap (open GOTCHAS family); GetUIScale const respelled
+00a22ca0	DIFFER	368v368	-	one x87 operand swap in the Cross Z term (tail order fixed by a named angle local)
+00a1ad40	DIFFER	370v370	-	two x87 operand swaps in last+offset (prologue/frame/hoist fixed by a duplicated return)
+009e5c90	DIFFER	373v373	-	SIB base/index order [eax+esi] vs [esi+eax] (lane gap per GOTCHAS, 8 more forms)

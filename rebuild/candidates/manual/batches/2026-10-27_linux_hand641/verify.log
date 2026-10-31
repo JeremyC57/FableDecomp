@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0051e630   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0051e630   RELOCATION_MATCH PASS   DebugVerifyUniqueIDs
+008a8af0   WARN RELOC_NAME: ??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_InMap@@@CThingSearchTools@@QBEXABVCThingFilter_InMap@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 008adc30 labelled 'GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>'
+008a8af0   RELOCATION_MATCH PASS   GetAllThingsInLevel
+00d910b0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  0051e630 RELOCATION_MATCH CThingManager::?DebugVerifyUniqueIDs@CThingManager@@AAEXABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+  008a8af0 RELOCATION_MATCH CGameScriptInterface::?GetAllThingsInLevel@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
+  00d910b0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditInRoomSample::?Main@CBanditInRoomSample@CQ_HobbeCaveScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CThingManager_DebugVerifyUniqueIDs_0051e630
+  CGameScriptInterface_GetAllThingsInLevel_008a8af0
+  NScriptCQHobbeCaveScriptCBanditInRoomSample_Main_00d910b0
