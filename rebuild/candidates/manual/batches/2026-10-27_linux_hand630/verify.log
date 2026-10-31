@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0084d7e0   WARN RELOC_NAME: ?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z -> 004c1060 labelled 'CTCGraphicAppearance::GetHelperPointOr'
+0084d7e0   WARN RELOC_ALIAS: __CItanh -> 00bfece2 is the import thunk 'MSVCR71.DLL::_CItanh'
+0084d7e0   RELOCATION_MATCH PASS   UpdateRaiseUp
+0092f240   RELOCATION_MATCH PASS   InteractionFailed
+00a872f0   MATCH            PASS   GetDistanceBetweenAgents
+
+WINS: 3
+  0084d7e0 RELOCATION_MATCH NCameraModes::CBase::?UpdateRaiseUp@CBase@NCameraModes@@IBEXAAVC3DVector@@@Z
+  0092f240 RELOCATION_MATCH CAIStateGroup_MinionReactToPlayerInteraction::?InteractionFailed@CAIStateGroup_MinionReactToPlayerInteraction@@AAEXXZ
+  00a872f0 MATCH CSB::?GetDistanceBetweenAgents@CSB@@QAEMPBVCSteeringAgent@@0_N@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCBase_UpdateRaiseUp_0084d7e0
+  CAIStateGroupMinionReactToPlayerInteraction_InteractionFailed_0092f240
+  CSB_GetDistanceBetweenAgents_00a872f0

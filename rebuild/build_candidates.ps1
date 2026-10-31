@@ -371051,6 +371051,27 @@ $catalog = @(
         TestSource = '00/c4/CLibpkObject1D8_NormaliseCopy_00c418f0_test.cpp'
         PassPattern = '00c418f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0084d7e0'
+        Module = 'NCameraModes::CBase'
+        Source = '00/84/NCameraModesCBase_UpdateRaiseUp_0084d7e0.cpp'
+        TestSource = '00/84/NCameraModesCBase_UpdateRaiseUp_0084d7e0_test.cpp'
+        PassPattern = '0084d7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092f240'
+        Module = 'CAIStateGroup_MinionReactToPlayerInteraction'
+        Source = '00/92/CAIStateGroupMinionReactToPlayerInteraction_InteractionFailed_0092f240.cpp'
+        TestSource = '00/92/CAIStateGroupMinionReactToPlayerInteraction_InteractionFailed_0092f240_test.cpp'
+        PassPattern = '0092f240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a872f0'
+        Module = 'CSB'
+        Source = '00/a8/CSB_GetDistanceBetweenAgents_00a872f0.cpp'
+        TestSource = '00/a8/CSB_GetDistanceBetweenAgents_00a872f0_test.cpp'
+        PassPattern = '00a872f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

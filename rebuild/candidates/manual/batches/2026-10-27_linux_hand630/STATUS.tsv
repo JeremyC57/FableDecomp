@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0053e0c0	DIFFER	190v190	-	one register: slot-97 vptr in edx v retail eax (10 forms over two sweeps)
+00ac82a0	DIFFER	192v192	-	prologue schedule: this spilled between the pushes; v2-first fixes the schedule but swaps ebx/ebp
+0078c150	DIFFER	192v192	-	release fixed (function-scope out slot); frame 0xc v 8 (name temp does not reuse the dead out slot) + pop ebx placement
+0084d7e0	RELOCATION_MATCH	193v193	PASS	NCameraModes::CBase::UpdateRaiseUp; `offset.Z = GetFocalPos(1.0f).Z - z` on an unused C3DVector + manager inline accessor
+0092f240	RELOCATION_MATCH	193v193	PASS	IsOfType && IsTargettedAtThing filter (not IsOriginatedByThing) + same-TU noinline FindMostRecentMessage template body + named criteria string
+00488620	DIFFER	196v196	-	argument scheduling + key/out word at frame+4 v retail frame+0
+004886f0	DIFFER	196v196	-	twin of 00488620 (const overload)
+00a872f0	MATCH	196v196	PASS	named length + named other radius locals move the relative byte load before the fadd
+00632830	DIFFER	196v196	-	GFSerialiseMapBinaryIn<long,ETableSprites> (catalog label wrong); frame packing: hole at L+0, traits share +0xC
+0072b260	DIFFER	198v198	-	AddTC this-load/name-address register choice (eax v ecx); PDB respelling did not move it
