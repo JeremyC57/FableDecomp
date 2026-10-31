@@ -7,6 +7,10 @@
 //   ~CScriptThing 0x004AA840, vector<CScriptThing>::resize 0x00D34AC0, scripted-thing handle ctor 0x007E72A0 / dtor
 //   0x007E74D0, vector<CScriptGameResourceObjectScriptedThingBase>::resize 0x00CD3CCB; through the interface (+0x40):
 //   GetHeroMorality (157), AddQuestRegion (271), GetActiveQuestName (655).
+// Respell (chunk 639, same bytes): the vectors are the STLport std::vector<CScriptThing> / std::vector<CScriptGameResourceObjectScriptedThingBase>
+//   specialisations (resize 0x00D34AC0 / 0x00CD3CCB, spelled as in CQ_FireHeartScript::DisableFollowers 0x00D3A050) and CScriptThing is the
+//   global polymorphic class (engine/CScriptThing.h: ctor 0x006E7B40, virtual ~CScriptThing 0x004AA840); the former
+//   CScriptThingVector / CScriptedThingVector / N_006e7b40::CScriptThing stand-in spellings are gone.
 // Data: pGlobalScriptDef 0x0143E90C FHSunPadFX +0xC04, FHMoonPadFX +0xC08, FHPadRadius +0xC10, FHNumberOfPads +0xC14,
 //   FHNumberOfProphets +0xC18, FHNumberOfPatterns +0xC1C, FHNumberOfRounds +0xC20, FHNumberOfSunsEvil +0xC24,
 //   FHNumberOfSunsGood +0xC28, FHPatterns +0xC2C, FHNumberOfVillagers +0xC48, FHMoralityChangeOnKilled +0xC50,
@@ -23,13 +27,12 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-namespace N_006e7b40 { struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
-    void* _vfptr;
-    void* PImp_Data;
-    void* PImp_Info;
+class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C (RTTI CScriptThing : CBaseClass)
+    void* PImp_Data;                                    // +0x04
+    void* PImp_Info;                                    // +0x08
     CScriptThing();                                     // 0x006E7B40
-    ~CScriptThing();                                    // 0x004AA840
-}; } using N_006e7b40::CScriptThing;
+    virtual ~CScriptThing();                            // 0x004AA840
+};
 class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes, vtable 0x0127094C
     unsigned char _body[0x10 - 4];
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
@@ -44,16 +47,26 @@ struct CBoolVector {                                    // vector<bool> (retail:
     bool* _M_start; bool* _M_finish; bool* _M_end_of_storage;
     void resize(unsigned int n, const bool& x);         // 0x00467686
 };
-struct CScriptThingVector {                             // vector<CScriptThing> (retail 12 bytes)
-    CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
-    void resize(unsigned int n, const CScriptThing& x); // 0x00D34AC0
-    void resize(unsigned int n) { resize(n, CScriptThing()); }
+namespace std {
+template <class T> class allocator;
+template <class T, class A> class vector;
+template <> class vector<CScriptThing, allocator<CScriptThing> > {                 // retail 12 bytes
+public:
+    CScriptThing* _M_start;
+    CScriptThing* _M_finish;
+    CScriptThing* _M_end_of_storage;
+    void resize(unsigned int new_size, const CScriptThing& x);                      // 0x00D34AC0
+    void resize(unsigned int new_size) { resize(new_size, CScriptThing()); }       // STLport 4.6 inline
 };
-struct CScriptedThingVector {                           // vector<CScriptGameResourceObjectScriptedThingBase> (retail 12 bytes)
-    void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    void resize(unsigned int n, const CScriptGameResourceObjectScriptedThingBase& x);   // 0x00CD3CCB
-    void resize(unsigned int n) { resize(n, CScriptGameResourceObjectScriptedThingBase()); }
+template <> class vector<CScriptGameResourceObjectScriptedThingBase, allocator<CScriptGameResourceObjectScriptedThingBase> > {   // retail 12 bytes
+public:
+    CScriptGameResourceObjectScriptedThingBase* _M_start;
+    CScriptGameResourceObjectScriptedThingBase* _M_finish;
+    CScriptGameResourceObjectScriptedThingBase* _M_end_of_storage;
+    void resize(unsigned int new_size, const CScriptGameResourceObjectScriptedThingBase& x);   // 0x00CD3CCB
+    void resize(unsigned int new_size) { resize(new_size, CScriptGameResourceObjectScriptedThingBase()); }   // STLport 4.6 inline
 };
+}
 struct CCutsceneFlagMap {                               // map<CCharString, bool> (retail 12 bytes)
     void* _body[3];
     bool& operator[](const CCharString& key);           // 0x008ADF10
@@ -129,14 +142,14 @@ public:
     CBoolVector ShouldProphetSpeak;                     // +0xe0
     CBoolVector ShouldVillagerSpeak;                    // +0xec
     CBoolVector CommentGivenThisRound;                  // +0xf8
-    CScriptThingVector Prophets;                        // +0x104
-    CScriptThingVector Villagers;                       // +0x110
-    CScriptThingVector Followers;                       // +0x11c
-    CScriptedThingVector FollowerHandles;               // +0x128
+    std::vector<CScriptThing, std::allocator<CScriptThing> > Prophets;                        // +0x104
+    std::vector<CScriptThing, std::allocator<CScriptThing> > Villagers;                       // +0x110
+    std::vector<CScriptThing, std::allocator<CScriptThing> > Followers;                       // +0x11c
+    std::vector<CScriptGameResourceObjectScriptedThingBase, std::allocator<CScriptGameResourceObjectScriptedThingBase> > FollowerHandles;               // +0x128
     CFireHeartPatternVector Pattern;                    // +0x134
     long Guest;                                         // +0x140
     long ProphetsScripted;                              // +0x144
-    CScriptedThingVector seh_Prophet;                   // +0x148
+    std::vector<CScriptGameResourceObjectScriptedThingBase, std::allocator<CScriptGameResourceObjectScriptedThingBase> > seh_Prophet;                   // +0x148
     CScriptGameResourceObjectScriptedThingBase seh_BriarRose;     // +0x154
     CScriptGameResourceObjectScriptedThingBase seh_Scythe;        // +0x164
     CScriptGameResourceObjectScriptedThingBase seh_GuildMaster;   // +0x174

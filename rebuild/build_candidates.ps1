@@ -207662,9 +207662,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cd3da4'
-        Module = 'CThingRefVector'
-        Source = '00/cd/CThingRefVector_Resize_00cd3da4.cpp'
-        TestSource = '00/cd/CThingRefVector_Resize_00cd3da4_test.cpp'
+        Module = 'std::vector<CScriptGameResourceObjectScriptedThingBase>'
+        Source = '00/cd/stdvectorCScriptGameResourceObjectScriptedThingBase_resize_00cd3da4.cpp'
+        TestSource = '00/cd/stdvectorCScriptGameResourceObjectScriptedThingBase_resize_00cd3da4_test.cpp'
         PassPattern = '00cd3da4_TEST PASS'
     }
     [pscustomobject]@{

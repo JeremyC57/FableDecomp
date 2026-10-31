@@ -11398,9 +11398,9 @@ __imp__CoTaskMemFree@4	01440630	00cb1cc0
 ?Helper@CForwarder_00cd36c2@@QAE?AUSResult@@USHandle@@PAX@Z	00cd34c5	00cd36c2
 ?InsertGrow@CRetailVector_CElement16_00905330@@QAEXPAUCElement16_00905330@@ABU2@ABUSScalarTag@@K_N@Z	00cd36df	00cd3a79
 ?Helper@CForwarder_00cd3cae@@QAE?AUSResult@@USHandle@@PAX@Z	00cd3ab6	00cd3cae
-??0CThingRef@@QAE@XZ	007e72a0	00cd3da4
-??1CThingRef@@QAE@XZ	007e74d0	00cd3da4
-?Resize@CThingRefVector@@QAEXKABUCThingRef@@@Z	00cd3ccb	00cd3da4
+??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	007e72a0	00cd3da4
+??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	00cd3da4
+?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00cd3da4
 ?Allocate@CFixedAllocator@@QAEPAXI@Z	00cd43a0	00cd3f40
 ?Destroy_00cd42e0@@YIXPAX@Z	00cd42e0	00cd43a0
 @FableBaseDtor_00cd44e0@4	0099eae0	00cd44e0
@@ -30078,7 +30078,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@NScript@@QAE_NABVCScriptThing@@@Z	00eb07d0	00eb0700
 ?WaitForEnflameReactionIfNecessary@CV_MurderTwistFinalScript@@QAEXABVCScriptThing@@@Z	00eb0700	00eb15c0
 ?HasHeroEnflamedEntity@CV_MurderTwistFinalScript@@QAE_NABVCScriptThing@@@Z	00eb07d0	00eb23e0
-?resize@CScriptedThingVector@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00eb6a00
+?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00eb6a00
 ??_7?$CEntityScriptBinding@VCV_RandomPopulationSimScript@NScript@@@@6B@	012f136c	00ec1910
 ?ToUpper@CCharString@@QAE?AV1@XZ	0099ee20	00ec2240
 ?SetPredicate@CVtable012F16E0@@QAEXABVCPredicateBase@NScript@@@Z	00f35b10	00ec46b0
@@ -31089,7 +31089,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??1CPatchTesselationEdgeStrip@@QAE@XZ	00baa2b0	00baa380
 ??0CVertexShaderConstantLayout@N_00bdbb70@@QAE@XZ	00bdbb70	00bdb080
 ?g_pEngineGlobals_01436ea8@@3PAUCEngineGlobals@@A	01436ea8	00bde860
-?resize@CScriptThingVector@@QAEXIABUCScriptThing@N_006e7b40@@@Z	00d34ac0	00d347b0
+?resize@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXIABVCScriptThing@@@Z	00d34ac0	00d347b0
 ??_7?$CEntityScriptBinding@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@6B@	012d16a8	00d61d20
 ?Alloc@CArtifactThief@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d62360	00d61d20
 ?Alloc@CFinalMaze@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d62270	00d61d20
@@ -35805,3 +35805,5 @@ _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
 _DirectInput8Create@20	00bfeff8	00a60050
 _IID_IDirectInput8W	012acbf4	00a60050
 ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00d3a050
+?resize@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXIABVCScriptThing@@@Z	00d34ac0	00eb6a00
+??0CScriptThing@@QAE@XZ	006e7b40	00eb6a00
