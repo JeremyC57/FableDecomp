@@ -25488,3 +25488,13 @@ chunk	address	module	name	length
 645	00872110	CStringAndCageBase	UpdateAutoGoBehind	447
 645	00838ec0	CThingGameObject	GetShotHitParameters	448
 645	0087bd70	CRotateAround	Update	451
+646	006946c0	CCreatureActionBase	InitialiseActionEvents	455
+646	00868e50	global	GetArmourWeightsFromThing	456
+646	006572a0	CDrawNPCName	Draw	462
+646	00712e40	CActionTalkBase	GetNextCameraTagIndex	464
+646	00649e8b	CDrawFishingGame	Draw	469
+646	009c8c00	NGameText::CDataBank	NGameText::CDataBank::vfunc_12	469
+646	00697490	CGameCameraManager	IsPosCameraInsideThing	475
+646	008539c0	CScriptModuleUseLamp	OnInitLeaf	475
+646	00687730	CMessageEventManager	AddMessage	477
+646	00537776	CList	CanMove	480
