@@ -45,7 +45,9 @@ public:
     ~vector() { _Alloc().deallocate(_M_start, _M_end_of_storage - _M_start); }
     iterator begin() { return _M_start; }
     iterator end() { return _M_finish; }
+protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __true_type&, unsigned int __fill_len, bool __atend);   // 0x0066C3F0
+public:
     void push_back(const _Tp& __x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -140,7 +142,7 @@ public:
 
 class CThingCreatureBase : public CThing {
 public:
-    bool IsAnimCombinationAnim(long action);                // 0x00662820
+    bool IsAnimCombinationAnim(long action) const;          // 0x00662820 (PDB: const)
 };
 
 namespace {

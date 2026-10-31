@@ -1,0 +1,17 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0099BA70	?Sprintf@CWideString@@QAAXPBGZZ	Ego_r.pdb CWideString Sprintf/SprintfDynamic declaration order = retail 0x0099BA70/0x0099BB80; landed 0x004945B0 caller binds the same body; body is wide (_vsnwprintf, wcslen)	_FmtWide_0099ba70; ?Format@CWideString@NGameText@@QAAXPBGZZ; catalog CCharString::SetFromFormatV
+0x0099BB80	?SprintfDynamic@CWideString@@QAAXPBGZZ	Ego_r.pdb order next to Sprintf; catalog label	CCharString_FromWideFormatted
+0x00A65480	?AllocAreaFromArea@CMemoryAreaChunk@CMemoryAllocatorVariableSize@@QAEPAVCMemoryArea@2@PAV32@J@Z	Ego_r.pdb nests CMemoryAreaChunk/CMemoryArea in CMemoryAllocatorVariableSize; body matches the member set	flat ?AllocAreaFromArea@CMemoryAreaChunk@@... in landed siblings
+0x00A65060	CMemoryAllocatorVariableSize::CMemoryAreaChunk::RemoveAreaFromFreeList (IAE, nested)	Ego_r.pdb nested class + protected access	flat QAE CMemoryAreaChunk binding
+0x00A650F0	CMemoryAllocatorVariableSize::CMemoryAreaChunk::InsertAreaIntoFreeList (IAE, nested)	Ego_r.pdb nested class + protected access	flat QAE CMemoryAreaChunk binding
+0x00A65410	CMemoryAllocatorVariableSize::CMemoryAreaChunk::Init (QAE, nested)	Ego_r.pdb nested class	flat CMemoryAreaChunk binding
+0x00A65720	?NewChunk@CMemoryAllocatorVariableSize@@IAEPAVCMemoryAreaChunk@1@J@Z	Ego_r.pdb (protected, nested return type); catalog NewChunk	-
+0x00662820	CThingCreatureBase::IsAnimCombinationAnim(long) const (QBE)	Ego_r.pdb const member; caller passes const this	non-const QAE bindings
+0x006A4E40	?GetHealthPercentage@CThingPhysical@@QBEMXZ	Ego_r.pdb CThingPhysical name set; body = Health(+0xb4)/MaxHealth(+0xb0) float divide	CParticleSystem_GetNormalisedTime; GetNormalisedValue_006a4e40
+0x008C78F0	??$GetSubDef@VCTrollBattleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCTrollBattleDef@@@@@Z	landed rebuild/src/compiled/00/8c/CDefClassBase_GetSubDefCTrollBattleDef_008c78f0.cpp + Ego_r template	local stand-ins (non-const GetSubDef(CDefPointer<CTrollBattleDef>*))
+0x00B84470	??0CEngineSubPrimitiveRenderer@@QAE@XZ	stores vtables 0x012A3A60/0x012A3A28 = CEngineSubPrimitiveRenderer (rtti-vtables.tsv); fills exactly Ego_r CEngineSubPrimitiveRenderer members	catalog NHeroInformationScreens::CBase::CBase
+0x0055C6F0	?ProcessEvent@CMouseCursor@NUISystem@@UAEXW4EEvent@2@@Z	slot 1 of vtable 0x0124C208 (CMouseCursor event-observer base, rtti-vtables.tsv); Ego_r.pdb name	catalog NUISystem::CMouseCursor::vfunc_1
+0x00B59710	CEngineComponent::CEngineComponent	vptr/GlobalPointerAddress/RenderEnabled/KeepAlive stores = Ego_r CEngineComponent	manifest label CNavigationLayer (propagated)
+0x013D28D4	g_CurrentAlignment (descriptive)	written by the alignment publish code; read as alignment by NewChunk	g_LastAllocatorUsage_013d28d4
+0x013D28D8	g_CurrentAlignmentShift (descriptive)	paired shift of the alignment above	g_LastAllocatorChunkCounter_013d28d8
+0x00A146C0	?GetRandomPointWithinUnitSphere@C3DVector@@SI?AV1@PAK@Z	Ego_r.pdb static C3DVector member (__fastcall, hidden result); graded RELOCATION_MATCH with that leaf	catalog module "global"

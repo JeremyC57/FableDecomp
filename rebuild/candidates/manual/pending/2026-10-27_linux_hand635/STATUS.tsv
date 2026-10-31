@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00a17690	DIFFER	262v262	-	one x87 commutation (centre X lane loads MinCoord.X first; VC orders both lanes alike)
+0099ba70	DIFFER	265v265	-	really CWideString::Sprintf; two scratch rotations (resize count reg, _vsnwprintf arg regs)
+00a65480	DIFFER	265v265	-	nested Ego_r classes; header/size register choice + list-load rotations
+008c7280	DIFFER	268v268	-	range float homed at frame+0xc instead of retail +0x10
+00a65720	DIFFER	269v269	-	one register: minSize temp ebp (ours) vs edi (retail)
+00b84470	DIFFER	270v270	-	really CEngineSubPrimitiveRenderer ctor; RenderPass=2 stores grouped
+0055c6f0	DIFFER	276v276	-	really CMouseCursor::ProcessEvent; frame-slot packing of hidden-result temps

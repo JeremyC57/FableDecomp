@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00693140   RELOCATION_MATCH PASS   GetActionAnimSetList
+00a146c0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a146c0   RELOCATION_MATCH PASS   GetRandomPointWithinUnitSphere
+00d3ae40   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00693140 RELOCATION_MATCH _global::?GetActionAnimSetList@
+  00a146c0 RELOCATION_MATCH C3DVector::?GetRandomPointWithinUnitSphere@C3DVector@@SI?AV1@PAK@Z
+  00d3ae40 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Scythe::?Main@CFH_Scythe@CQ_FireHeartScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  global_GetActionAnimSetList_00693140
+  C3DVector_GetRandomPointWithinUnitSphere_00a146c0
+  NScriptCQFireHeartScriptCFHScythe_Main_00d3ae40

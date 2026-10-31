@@ -23271,8 +23271,8 @@ _atol	00bfed2e	00840b60
 ?GetCardDef@CTCTavernGameCardBase@@QAEXPAV?$CDefPointer@$$CBVCTavernGameCardBaseDef@@@@@Z	008f0b20	008f2280
 ?GetAllCombinationAnimsFromType@CAnimateThing@@QAEXJAAV?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@@Z	0070d0a0	008f4990
 ?GetAnimation@CTCAnimationComplex@@QAEAAVCAnimateThing@@XZ	0070b460	008f4990
-?IsAnimCombinationAnim@CThingCreatureBase@@QAE_NJ@Z	00662820	008f4990
-?_M_insert_overflow@?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@QAEXPAPAVCAnimSet@@ABQAV3@ABU__true_type@2@I_N@Z	0066c3f0	008f4990
+?IsAnimCombinationAnim@CThingCreatureBase@@QBE_NJ@Z	00662820	008f4990
+?_M_insert_overflow@?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@IAEXPAPAVCAnimSet@@ABQAV3@ABU__true_type@2@I_N@Z	0066c3f0	008f4990
 ?push_back@?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@QAEXABQAVCAnimSet@@@Z	0066c4d0	008f4990
 ?ApplyValues@CUserProfileManager@@IAEXXZ	00407370	0040b2d0
 ??$__uninitialized_copy@PBVCDisplayModeDesc@@PAV1@@std@@YIPAVCDisplayModeDesc@@PBV1@0PAV1@ABU__false_type@0@@Z	0040f5e0	00410460
@@ -35772,3 +35772,6 @@ _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
 ??_7?$CIntelligentPointer@VCVillageTaskCarryCrate@@@@6B@	0128b0b0	00943b40
 ?Cleanup@CAIStateGroup_MoveGoodsBase@@UAEXXZ	009162f0	00943b40
 ?IsRouteClear@CNavigatorAStar@@ABE_NABVCNavWayPoint@@0_N@Z	00a1a260	00a1af00
+?IsAnimCombinationAnim@CThingCreatureBase@@QBE_NJ@Z	00662820	00693140
+?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAUSEntry@1@ABW4ETCInterfaceType@@@Z	0040f020	00693140
+?_M_insert_overflow@?$vector@PAVCAnimSet@@V?$allocator@PAVCAnimSet@@@std@@@std@@IAEXPAPAVCAnimSet@@ABQAV3@ABU__true_type@2@I_N@Z	0066c3f0	00693140

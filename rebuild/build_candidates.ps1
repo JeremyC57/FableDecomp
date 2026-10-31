@@ -371114,6 +371114,27 @@ $catalog = @(
         TestSource = '00/c7/CEffectFilter_SetLowPass_00c74ab0_test.cpp'
         PassPattern = '00c74ab0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00693140'
+        Module = '_global'
+        Source = '00/69/global_GetActionAnimSetList_00693140.cpp'
+        TestSource = '00/69/global_GetActionAnimSetList_00693140_test.cpp'
+        PassPattern = '00693140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a146c0'
+        Module = 'C3DVector'
+        Source = '00/a1/C3DVector_GetRandomPointWithinUnitSphere_00a146c0.cpp'
+        TestSource = '00/a1/C3DVector_GetRandomPointWithinUnitSphere_00a146c0_test.cpp'
+        PassPattern = '00a146c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3ae40'
+        Module = 'NScript::CQ_FireHeartScript::CFH_Scythe'
+        Source = '00/d3/NScriptCQFireHeartScriptCFHScythe_Main_00d3ae40.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCFHScythe_Main_00d3ae40_test.cpp'
+        PassPattern = '00d3ae40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
