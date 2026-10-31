@@ -35721,3 +35721,11 @@ _drftf1@20	00c98e80	00c9bc10
 ??RCThingFilter_CombatIsStrikeToStrike@?A0x4e24b117@@QBE_NABVCThing@@@Z	008565e0	0085b5b0
 ?LowerBound@CTCInterfaceMap@@QBEPAUCTCInterfaceEntry@@ABJ@Z	004365b0	0085b5b0
 ?GetFreeBench@CAIStateGroup_MinionWorkInInn@@AAEPAVCThing@@XZ	0090bc60	0090bd40
+?FrameUpdate@CCreatureActionBase@@MAEXXZ	00694020	00849be0
+?GetNextNavPosOnRoute@CTCCreatureNavigation@@QAE?AVCCreatureNavOutput@1@ABVCNavigationInput@@_N1111@Z	006cbac0	00849be0
+?SetMoveToPos@CCreatureActionBase@@IAEXABVC3DVector@@@Z	006929e0	00849be0
+??$GetComponent@VCAnimComponentFollowingOnAnimFilter@@@CAnimationEntry@@QAEXPAPAVCAnimComponentFollowingOnAnimFilter@@@Z	00867f60	00867010
+??_7CModeKnockedDown@NCreatureMode@@6B@	01267e78	00867010
+?Decapitate@CTCDecapitation@@QAEXXZ	007ef710	00867010
+?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z	007180b0	00867010
+?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0051e210	0088ae40

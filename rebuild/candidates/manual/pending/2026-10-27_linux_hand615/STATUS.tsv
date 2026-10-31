@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00a24d70	DIFFER	414v414	-	C3DAnimationInfo::CAnimationData::BuildSharedAnimation: PDB respell (LoadAnimFileCompressed(GetData, GetLength, pool), RecoverAnimationMemory, ReleaseData, AddResource) took it from 39 to 7 masked lines; left: AnimInfo->Bank vs ->Index load order before GetEntryDataType
+00a11f20	DIFFER	434v428	-	CPhysicsMeshObject::IsSpherePartContainedInBoundingBox: proven callee CPhysicsMesh::HasBoundingBoxIntersectedFromTo makes it 6 bytes long; inline affine-inverse x87 schedule (GOTCHAS chunk 293 lane gap); parked 428v428 used a guessed callee
+008cdd40	DIFFER	430v430	-	CCreatureAction_ReleaseTimeSpell::FinishAction: PDB respell (GetWorld, GetTC/const GetTC, SetActionSpeedMultiplier inline) same 32 lines; frame 0xd0 v 0xd4 (retail keeps camera pointer, haste pair and insert result in separate slots)
+00680050	DIFFER	439v439	-	CThingObjectDef::Validate: not beaten (parked best, 5 masked lines): one swapped pair after SetNameCRC; stand-in GetSubDef body still in the TU
+006a9690	DIFFER	450v450	-	CThingPlayerCreature::ResolveRelativeMovementAcceleration: respelled with PDB names at the parked 5 lines; RotateXY this-lea scheduled before the angle reload
+00b17410	DIFFER	459v459	-	NParticleEngine::CPSCOrbit::CollectUpdateParameters: not beaten (4 probes); secondary descriptor destructor placement

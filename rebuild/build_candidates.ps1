@@ -370777,6 +370777,34 @@ $catalog = @(
         TestSource = '00/90/CAIStateGroupMinionWorkInInn_CleanBench_0090bd40_test.cpp'
         PassPattern = '0090bd40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00849be0'
+        Module = 'CCreatureAction_NavToPos'
+        Source = '00/84/CCreatureActionNavToPos_FrameUpdate_00849be0.cpp'
+        TestSource = '00/84/CCreatureActionNavToPos_FrameUpdate_00849be0_test.cpp'
+        PassPattern = '00849be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00867010'
+        Module = 'CCombatAction_GenericResponseToDecapitation'
+        Source = '00/86/CCombatActionGenericResponseToDecapitation_Initialise_00867010.cpp'
+        TestSource = '00/86/CCombatActionGenericResponseToDecapitation_Initialise_00867010_test.cpp'
+        PassPattern = '00867010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088ae40'
+        Module = '_global'
+        Source = '00/88/global_GFSerialisePointer_0088ae40.cpp'
+        TestSource = '00/88/global_GFSerialisePointer_0088ae40_test.cpp'
+        PassPattern = '0088ae40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cad50'
+        Module = 'CCreatureAction_SummonerLightningOrbInto'
+        Source = '00/8c/CCreatureActionSummonerLightningOrbInto_FrameUpdate_008cad50.cpp'
+        TestSource = '00/8c/CCreatureActionSummonerLightningOrbInto_FrameUpdate_008cad50_test.cpp'
+        PassPattern = '008cad50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

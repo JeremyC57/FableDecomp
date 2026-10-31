@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00849be0   RELOCATION_MATCH PASS   FrameUpdate
+00867010   WARN SHARED_HEADER_AVAILABLE CAnimComponentFollowingOnAnimFilter
+00867010   RELOCATION_MATCH PASS   Initialise
+0088ae40   WARN SHARED_HEADER_AVAILABLE CBaseObject
+0088ae40   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0088ae40   WARN SHARED_HEADER_AVAILABLE CWorld
+0088ae40   WARN RELOC_NAME: ??$Transfer@_K@CPersistContext@@QAEXPBDAA_KAB_K@Z -> 0044bb00 labelled 'global::parked_0044bb00'
+0088ae40   RELOCATION_MATCH PASS   GFSerialisePointer
+008cad50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008cad50   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+008cad50   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 4
+  00849be0 RELOCATION_MATCH CCreatureAction_NavToPos::?FrameUpdate@CCreatureAction_NavToPos@@UAEXXZ
+  00867010 RELOCATION_MATCH CCombatAction_GenericResponseToDecapitation::?Initialise@CCombatAction_GenericResponseToDecapitation@@UAEXXZ
+  0088ae40 RELOCATION_MATCH _global::?GFSerialisePointer@@YIXAAVCPersistContext@@PBDAAV?$CIntelligentPointer@VCThing@@@@K@Z
+  008cad50 RELOCATION_MATCH CCreatureAction_SummonerLightningOrbInto::?FrameUpdate@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionNavToPos_FrameUpdate_00849be0
+  CCombatActionGenericResponseToDecapitation_Initialise_00867010
+  global_GFSerialisePointer_0088ae40
+  CCreatureActionSummonerLightningOrbInto_FrameUpdate_008cad50
