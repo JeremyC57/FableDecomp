@@ -25288,3 +25288,13 @@ chunk	address	module	name	length
 625	005c8101	CTCInventoryWeapons	PutWeaponsInSheathes	117
 625	00bddf30	CQuadTreeElement	CQuadTreeElement	119
 625	00ec3270	CV_RandomPopulationSimScript	GetCurrentPopulationLevel	123
+626	007881ad	global	CTCCombatBase_UpdateEngageable	124
+626	009d87f0	global	SwitchToMicroThread	124
+626	008b9dd0	CCreatureAction_CastPhysicalShieldSpell	CCreatureAction_CastPhysicalShieldSpell::Initialise	125
+626	009fd700	CGraphicInfo	CGraphicInfo	126
+626	0095d4c0	CAIStateGroup_RangedCombatUsePreferredFirePoint	GetFirePointList	130
+626	00c2cbd0	global	CQ_GuildTrainingPreMeleeScript_Initialize	132
+626	00692aa0	CCreatureActionBase	UpdateActionMovement	132
+626	008e8ff0	global	GetStrafingAnimationName	135
+626	00954740	CAIStateGroup_MazeShieldedChase	IsStillRunnable	136
+626	00688260	CInputProcessControlCreatureActivateZTarget	?ProcessInput@CInputProcessControlCreatureActivateZTarget@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	137
