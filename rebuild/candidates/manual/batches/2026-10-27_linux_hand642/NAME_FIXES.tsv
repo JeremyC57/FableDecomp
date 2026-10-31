@@ -1,0 +1,17 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00ACD960	?Optimise@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXM@Z	no PDB has "SimplifyByVertexPairs"; only caller 0x00ACDAE0 (COptimisedMesh::Optimise, called from C3DQuadricBasedMeshOptimiser::OptimiseMesh 0x00AA41E0 with quality*quality before CollapseSegments(quality*2) 0x00AC8680) calls it per primitive with the float; Ego_r COptimisedPrimitive float members are only Optimise / CollapseSegments	catalog COptimisedPrimitive::SimplifyByVertexPairs
+0x00661540	?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z	Ego_r name set (fastcall float of two const C3DVector&); body = fpatan(to.Y-from.Y, to.X-from.X)*k wrapped to [0,1)	?AngleBetweenPositions@@YIMABVC3DVector@@0@Z
+0x00A441E0	?GFGetSignedAngleDifference@@YIMMM@Z	Ego_r name set + existing binding; two stack floats, callee pop (fastcall with float args), signed wrap body	?AngleDifference@@YGMMM@Z
+0x0049EAF0	?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z	Ego_r name set (const CGameEvent&)	?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXPBVCGameEvent@@@Z ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXPAVCGameEvent@@@Z
+0x013B86A0	?g_pMainGameComponent@@3PAVCMainGameComponent@@A	GOTCHAS chunk 200; Ego_r CMainGameComponent PPlayerManager scoped_ptr at +0x1C read as [g+1Ch] -> GetMainPlayerNumber	?g_pEngine@@3PAVCEngine@@A (landed 0x005FAD40) and ~30 other descriptive spellings
+0x005FAD40	?TeleportHeroToGuildSealRecallLocation@CTCInventoryMap@@QBEXXZ	Ego_r name set (const)	?TeleportHeroToGuildSealRecallLocation@CTCInventoryMap@@QAEXXZ (landed row symbol)
+0x005FBD90	?TeleportHeroToGuild@CTCInventoryMap@@QBEXXZ	Ego_r name set (const)	?TeleportHeroToGuild@CTCInventoryMap@@QAEXXZ (landed row symbol)
+0x005FB4B0	?TeleportHeroToBoastingArea@CTCInventoryMap@@QBEXXZ	Ego_r name set (const)	inherited best attempt QAEXXZ (not landed)
+0x00487DD0	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	Ego_r name set; 19 landed bindings	?GetControlledCreature@CPlayer@@QAEPAVCThing@@XZ ?GetPlayerCharacter@CPlayerManager@@QAEPAVCThing@@XZ
+0x00449960	?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ	Ego_r name set; engine/CPlayerManager.h	?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ ?GetPMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ
+0x00449700	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	Ego_r name set; engine/CPlayerManager.h	?GetMainPlayerID@CPlayerManager@@QAEJXZ ?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ
+0x006CB6E0	?GetNearbyWanderPosition@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@_N@Z	Ego_r name set (const, C3DVector& result)	?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NABVC3DVector@@MPAV2@_N@Z ?GetNearbyWanderPosition@CTCCreatureNavigation@@QAE_NPBVC3DVector@@MPAV2@_N@Z
+0x0072F750	?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@AAVCTCVillage@@ABVC3DVector@@_N@Z	Ego_r name set (CTCVillage&)	?CreateVillager@CTCDummyVillager@@QAEPAVCThingAICreature@@PAVCTCVillage@@ABVC3DVector@@_N@Z
+0x00497890	?GFROR13@@YIJK@Z	Ego_r name set; 3 landed bindings	?GFROR13@@YIKK@Z
+0x00A01B50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	Ego_r name set (returns CBaseObject*)	?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ
+0x0086B900	?AddSkeletalMorphToMorphSet@CRandomAppearanceMorph@@IBEXAAKABVCSkeletalMorph@1@AAVCMorphSet@1@@Z	Ego_r name set (the only (ulong&, const CSkeletalMorph&, CMorphSet&) member); called per chosen entry from GetRandomSkeletalMorph	inherited best attempt CreateRandomMorphEntry (not landed)

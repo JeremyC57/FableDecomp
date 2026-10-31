@@ -371297,6 +371297,13 @@ $catalog = @(
         TestSource = '00/d9/NScriptCQHobbeCaveScriptCBanditInRoomSample_Main_00d910b0_test.cpp'
         PassPattern = '00d910b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b41c30'
+        Module = 'CEngineMap'
+        Source = '00/b4/CEngineMap_PeekInterpolatedWaterDepth_00b41c30.cpp'
+        TestSource = '00/b4/CEngineMap_PeekInterpolatedWaterDepth_00b41c30_test.cpp'
+        PassPattern = '00b41c30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,10 @@
+address	status	bytes	test	note
+005fb4b0	DIFFER	379v379	-	filter temp / marker frame slots swapped (+0x10/+0xC); PDB respells, block/scope forms tried
+00acd960	DIFFER	383v383	-	esi/edi colour swap (Data/Info of the copied counted pointer); real name Optimise(float)
+007534b0	DIFFER	384v384	-	from-copy schedule (ld x, ld y, st x, ld z...); inherited best had wrong null-creature flow, fixed
+0065b142	DIFFER	386v386	-	ParentThing load scheduled after push eax instead of before the pushes
+0086b9d0	DIFFER	389v389	-	this/map ebp/ebx colour swap, end spilled in retail; PDB respell + GFRandom byte-equal
+009122a0	DIFFER	358v390	-	x87 CSE placement of (1-t) / (1-t)^2 spill in the Point2 term
+00911a90	DIFFER	391v391	-	creature/map-pointer esi/edi colour swap in the first half
+005cb128	DIFFER	392v392	-	this/weapon-address esi/edi colour swap; pack pragma stripped
+00713d50	DIFFER	395v395	-	scratch-register rotation in the sneaking-on arm
