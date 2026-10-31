@@ -25248,3 +25248,13 @@ chunk	address	module	name	length
 621	009482a0	CAIStateGroup_GoToPub	GetSeat	1072
 621	00756d00	CPersistContext	TransferMap<CObjectAugmentationParticleSet,EObjectAugmentationType>	1116
 621	009289b0	CAIStateGroup_BanditPlot	?Act@CAIStateGroup_BanditPlot@@MAE?AW4EAIActionReturn@@XZ	1131
+622	00923070	CAIStateGroup_ServeFood	CAIStateGroup_ServeFood::IsRunnable	1184
+622	008de7a0	CModeIceTrollGroundSmashIcicleAssault	FrameUpdate	1239
+622	006c2170	CObject	Load	1329
+622	00927f30	CAIStateGroup_SetupWares	CAIStateGroup_SetupWares::Update	1331
+622	00590235	CTCInventory	GetItemsListUIComponent	1393
+622	007b3120	CTCGuard	FrameUpdate	1592
+622	004c7870	CThing	CThing::vfunc_22	15
+622	0046313e	CSimVoice	operator=	43
+622	0045cfad	CSoundMap	CSoundMap	49
+622	007af940	global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	62
