@@ -371423,6 +371423,13 @@ $catalog = @(
         TestSource = '00/71/NTCScriptedControlCActionTalkBase_GetNextCameraTagIndex_00712e40_test.cpp'
         PassPattern = '00712e40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b1f30'
+        Module = 'CAtmosProcess'
+        Source = '00/6b/CAtmosProcess_UpdateInsideBuildings_006b1f30.cpp'
+        TestSource = '00/6b/CAtmosProcess_UpdateInsideBuildings_006b1f30_test.cpp'
+        PassPattern = '006b1f30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

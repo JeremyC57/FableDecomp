@@ -1,0 +1,10 @@
+addr       parity           behav  name
+006b1960   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006b1960   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006b1960   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006b1960   WARN RELOC_NAME: ?g_pSoundSystem@@3PAVCSoundSystem@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1960   WARN RELOC_NAME: ?LoadThemes_006b16b0@CAtmosProcess@@QAEXXZ -> 006b16b0 labelled 'SoundTheme_LoadDefinitions'
+006b1960   RELOCATION_MATCH PASS   CAtmosProcess::CAtmosProcess
+
+WINS: 1
+  006b1960 RELOCATION_MATCH CAtmosProcess::??0CAtmosProcess

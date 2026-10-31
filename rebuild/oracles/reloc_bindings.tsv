@@ -12886,7 +12886,7 @@ _s_oneOver360	01238e00	00878ce0
 ?GetCurrentMaxMovementSpeed@CThingPlayerCreature@@QAEMXZ	006ab5d0	006ab770
 ??_7?$CIntelligentPointer@VCThingMarker@@@@6B@	0125a860	006b1960
 ??_7CMyAtmosMap@@6B@	0125d47c	006b1960
-?LoadMainTheme_006b1600@CAtmosProcess@@QAEXXZ	006b1600	006b1960
+?ApplyReverbSettings@CAtmosProcess@@AAEXXZ	006b1600	006b1960
 ?LoadThemes_006b16b0@CAtmosProcess@@QAEXXZ	006b16b0	006b1960
 ?g_pSoundSystem@@3PAVCSoundSystem@@A	013b8394	006b1960
 ?GetRandomSeed_004c7ae0@CThing@@QAEPAKXZ	004c7ae0	007038d0
@@ -35838,3 +35838,7 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?push_back@CActionEventVector@@QAEXABV?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@Z	00696fe0	006946c0
 ?g_ConversationCameraSide@@3JA	013bad00	00712e40
 ?g_UseConversationCameraTags@@3_NA	01380c30	00712e40
+??$GetAllThingsInRoughArea@$$CBVCThingBuilding@@V?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_None@@AAV?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z	006b2720	006b1f30
+??$GetDef@VCSoundThemeDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCSoundThemeDef@@@@@Z	006b25e0	006b1f30
+?ApplyReverbSettings@CAtmosProcess@@AAEXXZ	006b1600	006b1f30
+?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z	0082d8c0	006b1f30

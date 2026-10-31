@@ -8,7 +8,7 @@
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, CCharString(const char*, long) @ 0x0099EBF0 /
 //   ~CCharString @ 0x0099EAE0, CDefinitionManager::Get @ 0x0044C6B0 (static `__fastcall`), CDefinitionManager::
 //   GetDef<const CSoundDef> @ 0x004196B2, the sound system's virtual slot 36 (+0x90: atmos map, damping min, damping
-//   range, flags 0x8010; name unproven), two CAtmosProcess theme loaders @ 0x006B16B0 / 0x006B1600 (names unproven),
+//   range, flags 0x8010; name unproven), a CAtmosProcess theme loader @ 0x006B16B0 (name unproven) and ApplyReverbSettings @ 0x006B1600,
 //   the def's virtual Destroy (slot 1).
 // Globals: g_pSoundSystem @ 0x013B8394; literal "MAIN_SOUND_SETUP" @ 0x0122EF98.
 // Layout: Ego_r.pdb CAtmosProcess is 28 bytes without the map; retail inserts the 4-byte CMyAtmosMap at +4, so
@@ -90,7 +90,9 @@ public:
     float ReverbLevel;                          // +0x1c
     CAtmosProcess();
     void LoadThemes_006b16b0();                 // 0x006B16B0
-    void LoadMainTheme_006b1600();              // 0x006B1600
+private:
+    void ApplyReverbSettings();                 // 0x006B1600 (Ego_r ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ)
+public:
 };
 
 CAtmosProcess::CAtmosProcess()
@@ -105,7 +107,7 @@ CAtmosProcess::CAtmosProcess()
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
         g_pSoundSystem->SetAtmosMap_slot36(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);
         LoadThemes_006b16b0();
-        LoadMainTheme_006b1600();
+        ApplyReverbSettings();
         if (--def->RefCount == 0)
             def->Destroy();
     }

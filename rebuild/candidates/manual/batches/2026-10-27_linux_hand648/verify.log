@@ -1,0 +1,10 @@
+addr       parity           behav  name
+006b1f30   WARN RELOC_NAME: ?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z -> 0082d8c0 labelled 'CThingBuilding::GetReverbEnvironment'
+006b1f30   WARN RELOC_NAME: ?g_pSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1f30   RELOCATION_MATCH PASS   UpdateInsideBuildings
+
+WINS: 1
+  006b1f30 RELOCATION_MATCH CAtmosProcess::?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAtmosProcess_UpdateInsideBuildings_006b1f30

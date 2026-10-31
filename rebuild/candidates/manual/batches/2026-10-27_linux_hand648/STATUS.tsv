@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006b1f30	RELOCATION_MATCH	811v811	PASS	CAtmosProcess::UpdateInsideBuildings: CCamera-returning GetRenderCamera (0x7c frame), non-reading filter stand-in, GetDef stand-in
+00912840	DIFFER	860v860	-	CAIStateGroup_FlyingThingBase::AddRandomBezierCurveToPath: push_back curve copy not software-pipelined
+009552c0	DIFFER	868v861	-	CAIStateGroup_MazeShieldedChase::Update: CDefPointer object fixed early def; PDef register/field order left
+00881c90	DIFFER	874v874	-	NScreenEffect::CScreenEffectPriorityStack::InsertScreenFilterEntry: loop registers + store order
+0079c880	DIFFER	933v933	-	CTCBulletTime::FrameUpdate: parent/emitter-temporary frame slots swapped
+00b17030	DIFFER	991v991	-	NParticleEngine::CPSCOrbit::DatabaseSerialise: CCharString name not in dead context arg slot; GetCRC register
+00bf0740	DIFFER	992v992	-	CEnginePrimitiveRenderUtil::SetupOutlineStencilStates: prologue push edi / mov ecx order
+007d00f0	DIFFER	1016v1016	-	CTCTavernGameShoveHaPenny::FrameUpdate: frame 0x28 v 0x2c (angle/vector slots)
+00ea5230	DIFFER	1117v1117	-	CLostTraderBanditSpawn::Main: lea ecx,[attacker] not hoisted above terminate jne
+00e95770	DIFFER	1144v1144	-	CM_UndeadHere::Main: AXE arm edx/eax roles for Game vtable loads
