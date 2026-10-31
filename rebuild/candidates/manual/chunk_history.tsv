@@ -25030,3 +25030,13 @@ chunk	address	module	name	length
 599	00b862c0	global	std_introsort_merge_operation	389
 599	00ae1730	global	ReadVectorArray	391
 599	00c17940	global	DeleteSelectedTrackNode_Implementation	393
+600	00cb7f60	global	Quest_DeactivateAllProcesses	394
+600	00b33390	global	ProcessMorphStats	396
+600	00bca510	global	CEngineVertexBufferPool_AllocateBuffer	398
+600	00b9e5b0	global	RenderMeshPrimitiveBlocksIndexBuffer	402
+600	00ba9cb0	global	ComputeParticleVisibilityDistance	403
+600	00c1a370	global	FileManager_CloseHandle	404
+600	00ce4c50	global	sub_00ce4c50	404
+600	00befa20	global	std_make_heap_build_loop	405
+600	00c783f0	global	CAudioChannel_ProcessEffects	405
+600	00c8c240	global	VertexBuffer_FillData	406
