@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+008c4fd0	DIFFER	723v722	-	CCreatureAction_ScorpionSummon::CreateBabies (private AAE): frame-word rotation of family/tools/familyIndex + default-arg temporaries, +1 byte; callee spellings not yet PDB
+0066a1e0	DIFFER	725v725	-	CThingSearchTools::ForEachInRoughArea<...CThingFindHeightZBelowAt> const: loop-exit spill reload order only (2 moved loads, ND 4 excl. masked reloc)
+005542f0	DIFFER	727v727	-	NUISystem::CMorphingSprite::GetDataFromDef: pair-temporary store scheduling + scratch-register colouring in inlined CResource::Touch (ND 40)
+009ce5e0	DIFFER	741v741	-	CBankFile::AddEntryMultipleFiles: symbol ebp/index ebx (retail ebx/ebp) + rotated temporaries' frame words
+00a42470	RELOCATION_MATCH	750v750	PASS	CPlane::GetIntersectionWithTriangle const: dc via a const C3DVector& alias of Normal, stepwise Z-first sum
+0047e651	DIFFER	752v752	-	CTCInGameMenu::VideoOptionsChanged: one scheduling swap (ChangePosition float-slot push ecx before the X fsubp); lane gap shared with twins 0x0047E9AE/0x0047F30F
+005d8978	DIFFER	754v754	-	CPersistContext::TransferMap<long,unsigned long>: frame-slot rotation (insert result/value/';' temp/start) and traits slot (PD 8)
+0055d180	DIFFER	772v772	-	CTCPhotojournalCapture::TakeQuickScreenshot (/GS): PlaySound CCharString temporary shares a slot, frame 0x270 v 0x274
+007b0360	DIFFER	773v773	-	CTCFishingSpot::FrameUpdate (virtual): block 2 only swaps esi/ebx (particle pointer / Create result), PD 11
+00a18b50	DIFFER	783v783	-	CPhysicsMesh::HasCollidedWithTriangleAt (private ABE; catalog global Collision_TestTriangleSphere): frame-slot order of step/to/edge vectors

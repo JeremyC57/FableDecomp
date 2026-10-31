@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a42470   RELOCATION_MATCH PASS   GetIntersectionWithTriangle
+
+WINS: 1
+  00a42470 RELOCATION_MATCH CPlane::?GetIntersectionWithTriangle@CPlane@@QBE_NABVC3DVector@@00AAV2@1@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CPlane_GetIntersectionWithTriangle_00a42470

@@ -370862,6 +370862,13 @@ $catalog = @(
         TestSource = '00/ae/CParticleProgram_TransformVertices_00ae0e60_test.cpp'
         PassPattern = '00ae0e60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a42470'
+        Module = 'CPlane'
+        Source = '00/a4/CPlane_GetIntersectionWithTriangle_00a42470.cpp'
+        TestSource = '00/a4/CPlane_GetIntersectionWithTriangle_00a42470_test.cpp'
+        PassPattern = '00a42470_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
