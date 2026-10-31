@@ -25138,3 +25138,13 @@ chunk	address	module	name	length
 610	00ab7b00	CStaticFontBank	CStaticFontBank::GetStringExtents	287
 610	00637c80	CThingMapManager	DebugDraw	288
 610	00733cf0	global	TCCombat_ApplyBlockResponse	288
+611	005b690b	CTCInventoryClothing	RefreshDescriptions	290
+611	00c74bb0	global	CAudioChannel_ComputePeakFilterCoefficients	293
+611	0087ba90	CScriptedControl	OnInit	294
+611	007bbc9f	global	CTCPhysicsRigidBody_ApplyForce	299
+611	007805d0	_gapscan	sub_007805d0	299
+611	00793370	global	Vector_InsertRange_CBaseIntelligentPointer	300
+611	007981b0	global	StdVector_ExpandAndCopy_CBaseIntelligentPointer	300
+611	00860ad0	CVillageTaskPatrol	IsCreatureMoreAppropriateForTask	302
+611	007afe20	global	Vector_InsertRange_CBaseIntelligentPointer	302
+611	007b9b40	global	vector_Insert_Pair_SmartPtr	302
