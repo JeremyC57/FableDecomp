@@ -25398,3 +25398,13 @@ chunk	address	module	name	length
 636	00405220	global	TransferIMEColour	290
 636	009210a0	CAIStateGroup_BeetleToggleHover	?IsRunnable@CAIStateGroup_BeetleToggleHover@@MAE_NXZ	290
 636	00ba6dc0	CEnginePrimitiveManagerStaticMeshesBase	DrawImmediately	291
+637	009e4da0	CDriveManager	CreateDirectoryW	294
+637	00a1de30	CNavigatorAStar	CNavigatorAStar::CalcWayPointWidths	298
+637	0071bcd0	CTCHeroMorph	CreateAlphaChannel	298
+637	00aeb060	CParticleEmitterList	Insert	301
+637	00be5e70	CLandscapeBackgroundPatch	CLandscapeBackgroundPatch::CLandscapeBackgroundPatch	302
+637	0056eb48	CSliderAnimator	Update	305
+637	005223f0	global	LoadGlobalThingBatch	306
+637	00f35ed0	CPerlinNoise	Initialise	307
+637	0095c0b0	CAIStateGroup_HoverHornetQueen	WaitWhileBabiesFight	307
+637	007471f0	CTCStealth	CTCStealth::vfunc_11	308
