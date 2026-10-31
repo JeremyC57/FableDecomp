@@ -25508,3 +25508,13 @@ chunk	address	module	name	length
 647	006d6cb0	CTCHeroExperience	IsBlockRecoilAnimToConserveAnimationComboChain	495
 647	00a90260	C3DPrimitive2	CreateDegenerateTriangleIndexBuffer	496
 647	00b396e0	CEngineInternalAttachedPrimitive	Update	497
+648	006b1f30	CAtmosProcess	UpdateInsideBuildings	811
+648	00912840	CAIStateGroup_FlyingThingBase	AddRandomBezierCurveToPath	860
+648	009552c0	CAIStateGroup_MazeShieldedChase	CAIStateGroup_MazeShieldedChase::Update	861
+648	00881c90	global	CEnvironmentSpellEffectInterface_AddScreenFilter	874
+648	0079c880	CTCBulletTime	FrameUpdate	933
+648	00b17030	CPSCOrbit	DatabaseSerialise	991
+648	00bf0740	CEnginePrimitiveRenderUtil	SetupOutlineStencilStates	992
+648	007d00f0	CTCTavernGameShoveHaPenny	FrameUpdate	1016
+648	00ea5230	CLostTraderBanditSpawn	Main	1117
+648	00e95770	CM_UndeadHere	Main	1144
