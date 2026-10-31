@@ -25418,3 +25418,13 @@ chunk	address	module	name	length
 638	006061b0	CTCInventoryMap	CTCInventoryMap::vfunc_9	322
 638	00a1abf0	CNavigatorAStar	?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z	324
 638	00773950	CTCShop	IsOpeningHours	324
+639	00bf9fa0	CLocalDetailPrimitiveMeshZSpriteBatch	SetupPrimitiveDesc	325
+639	00d3a050	CQ_FireHeartScript	DisableFollowers	330
+639	0073acc0	CTCCreatureModeManager	AddMode	331
+639	00641ae0	CTCLight	DrawFlare	331
+639	00ba0fc0	CEnginePrimitiveManagerStaticMeshesBase	AddStaticMesh	333
+639	00a60050	CInputManagerDX	CInputManagerDX	333
+639	00e03d30	CDarkwoodRockTroll	Main	335
+639	00b92300	CEngineSceneGridCell	CreateOcclusionGroup	335
+639	00894ec0	CGameScriptInterface	?SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden@CGameScriptInterface@@UBEX_N@Z	335
+639	0065be6c	CTCVillage	UpdateHornTasks	336
