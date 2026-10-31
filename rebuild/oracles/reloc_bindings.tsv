@@ -35771,3 +35771,4 @@ _ActiveThread	013ca894	009d87f0
 _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
 ??_7?$CIntelligentPointer@VCVillageTaskCarryCrate@@@@6B@	0128b0b0	00943b40
 ?Cleanup@CAIStateGroup_MoveGoodsBase@@UAEXXZ	009162f0	00943b40
+?IsRouteClear@CNavigatorAStar@@ABE_NABVCNavWayPoint@@0_N@Z	00a1a260	00a1af00

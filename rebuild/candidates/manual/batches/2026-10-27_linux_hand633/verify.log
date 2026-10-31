@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a1af00   RELOCATION_MATCH PASS   IsNavLineOfSightClear
+
+WINS: 1
+  00a1af00 RELOCATION_MATCH CNavigatorAStar::?IsNavLineOfSightClear@CNavigatorAStar@@UBE_NABVC3DVector@@0@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CNavigatorAStar_IsNavLineOfSightClear_00a1af00

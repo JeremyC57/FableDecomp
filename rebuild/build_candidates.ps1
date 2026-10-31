@@ -371100,6 +371100,13 @@ $catalog = @(
         TestSource = '00/94/CAIStateGroupWorkInWarehouse_Cleanup_00943b40_test.cpp'
         PassPattern = '00943b40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a1af00'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_IsNavLineOfSightClear_00a1af00.cpp'
+        TestSource = '00/a1/CNavigatorAStar_IsNavLineOfSightClear_00a1af00_test.cpp'
+        PassPattern = '00a1af00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

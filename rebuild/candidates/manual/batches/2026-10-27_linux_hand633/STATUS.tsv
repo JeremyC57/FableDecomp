@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00752f30	DIFFER	226v226	-	CTCLook::UpdateHeadCreatureAnim respelled to the PDB signature (const CCharString&, ECreatureAnim, CAnimateThing*) + PDB callees; callee-saved swap (type ebx/this edi) and spill slot unchanged
+00a1af00	RELOCATION_MATCH	227v227	PASS	CNavigatorAStar::IsNavLineOfSightClear: PDB const CNavigatorManager::GetNodeAt(const C2DVector&, uchar) through the private inline CNavigatorAStar::GetNodeAt(const C3DVector&)
+004c10e0	DIFFER	227v227	-	NGraphicAppearance::CTCGraphicAppearance::GetStaticFocalPos (PDB, Ego_r order); zero-offset arm register choice / ParentThing load placement
+008da7a0	DIFFER	227v227	-	NCreatureMode::CModeDrained::OnDeactivate; this/&PDrainer ebx-edi swap (IS_THING_ALIVE macro and state-not-in-local forms identical)
+009fe460	DIFFER	231v231	-	CGraphicInfoFrame::CFrameData::FreeTextureMemory with PDB members/inline helpers; eax/ecx/edx rotation unchanged
+008af500	DIFFER	236v235	-	CombatDialogueManager::AttemptToSpeak; named iterator + TSpeechGroupInfo temporary gives retail's late iterator read; esi/edi swap and fps register remain
+00a3f250	DIFFER	236v236	-	CSoundManagerLH::vfunc_39 (no PDB name exists); scratch rotation (soundName edx, &entry eax in retail)
+0091ea70	DIFFER	240v240	-	CAIStateGroup_CreatureRangedCombat2::IsAbleToFire respelled private const + CTCVillageMember::GetPVillage; scratch rotation unchanged
+00c11230	DIFFER	242v242	-	CSoundEventManager::CanStartEvent (descriptive); block layout of the return-0 epilogue
+0074e140	DIFFER	245v245	-	CTCContainerRewardHero::GeneratePopoutVectorFromVars (access respelled ABE/IBE); return-copy scheduling of one mov
