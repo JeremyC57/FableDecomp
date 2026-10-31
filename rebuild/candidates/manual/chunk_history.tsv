@@ -25118,3 +25118,13 @@ chunk	address	module	name	length
 608	009ad5f0	CDefinitionManager	DecompressDefinitionData	231
 608	0074a4e0	global	VertexBuffer_FilterNavigableVertices	234
 608	00813010	CTCCreatureGroup	AddNewMember	238
+609	006a02b0	CCreatureAction_UnsheatheItemFromInventoryWithHasteAction	?FinishAction@CCreatureAction_UnsheatheItemFromInventoryWithHasteAction@@UAEXXZ	240
+609	007c6460	CTCGhostSword	FrameUpdate	240
+609	005c4671	CTCInventoryWeapons	GetFreeAugmentationSlotForWeapon	248
+609	0048f40a	CSubtitleRenderer	DrawTextEmbeddedHighlights	258
+609	005785b3	CTCInventoryExperience	BuyAbility	258
+609	00c77c80	global	Audio_Channel_ComputePitch_Modulation	259
+609	00957db0	CAIStateGroup_MinionBehaviourCrowdBase	CAIStateGroup_MinionBehaviourCrowdBase::Update	266
+609	00a42170	CPlane	Initialise	269
+609	00c6b9d0	global	Audio_FilterSamples_2ndOrder	269
+609	0067e290	CDegradableDef	CDegradableDef::Transfer	273
