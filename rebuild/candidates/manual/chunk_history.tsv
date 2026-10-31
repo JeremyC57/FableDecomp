@@ -25198,3 +25198,13 @@ chunk	address	module	name	length
 616	00871a80	CActionEventTriggerParticle	Dispatch	547
 616	00589a30	CTCInventory	OpenPCMapMenu	549
 616	004a34f0	CWorld	AutoLoadRegionLeaving	564
+617	0096bcb0	CThingSearchTools	GetPBestThingInRoughArea<CThingFilter_HasTrackName,CThingCompare_Nearest,CThingTrackNode>	583
+617	0072c430	CTCSpecialAbilities	CTCSpecialAbilities::GetAbilityAvailability	584
+617	00919780	CThingSearchTools	GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,CThingCompare_Nearest,CThingCreatureBase>	590
+617	00555a90	CScrollableList	UpdateVisibleList	595
+617	0063e6f0	CWorldMap	IsLineOfSight	599
+617	00621a20	CTCInventoryQuests	InitialiseQuestCardList	600
+617	00f3abf0	CRangeCompressor	CalcCompressionScript	605
+617	00965640	CAIStateGroup_RecoverStealableItem	?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ	612
+617	006ad700	CThingPlayerCreature	ControlledMove	615
+617	006a4fb0	CThingPhysical	GetFirstCollision	619
