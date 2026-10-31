@@ -25368,3 +25368,13 @@ chunk	address	module	name	length
 633	0091ea70	CAIStateGroup_CreatureRangedCombat2	IsAbleToFire	240
 633	00c11230	global	CTCHero_OnActionInterrupt	242
 633	0074e140	global	Projectile_CalculateTrajectory	245
+634	00c14f90	CTCDiceGame	CTCDiceGame::~CTCDiceGame	248
+634	006afaf0	CTCPhysicsBase	ImpulseRespondToCollisonWithImpassableObject	249
+634	0076e4d0	global	WeaponTrail_CollectPoints	253
+634	0076c8a0	CTCEnemy	CTCEnemy	254
+634	00ac7200	global	Vector_ProjectOntoPlane	255
+634	00c72d00	_gapscan	sub_00c72d00	256
+634	00c74ab0	global	CAudioChannel_ComputeShelveFilterCoefficients	256
+634	00946190	CAIStateGroup_PrepareMeal	?Update@CAIStateGroup_PrepareMeal@@MAEXXZ	259
+634	00a55f90	global	Matrix_RotationAroundAxis	259
+634	00547050	CScrollingComponent	UpdatePosition	261
