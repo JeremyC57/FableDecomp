@@ -8,8 +8,8 @@ Paste everything below the line into a new Claude Code session on branch `FullDe
 You are the coordinator for **FableDecomp**: a byte-exact VC7.1 reconstruction of retail PC `Fable.exe` (Fable: The
 Lost Chapters). Repo `JeremyC57/FableDecomp`, branch **FullDecomp**. Read `CLAUDE.md` and `docs/HANDOFF.md` first.
 
-**State:** see `docs/journal/2026-10/2026-10-29_HANDOFF.md` (2026-10-29: 51,636 of 57,267 known functions, 90.2%; no
-agents running; coordinator commands in `tools/decomp_pipeline/linux_lane/lane_tools/coordinator/README.md`).
+**State:** see `docs/HANDOFF.md` and `docs/journal/2026-10/2026-10-31_HANDOFF.md` (2026-10-31: 52,774 of 57,611 known
+functions, 91.6%; no agents running; coordinator commands in `tools/decomp_pipeline/linux_lane/lane_tools/coordinator/README.md`).
 
 ## 1. Standing rules (owner)
 - **Git:** push only to `FullDecomp` with `git push -u origin FullDecomp` (retry 2/4/8/16 s on network errors). Never
@@ -59,7 +59,15 @@ cp <unpacked>/Common7/IDE/mspdb71.dll <unpacked>/Common7/IDE/msobj71.dll $S/wine
 ln -s $S/wine/vc71/include $S/wine/vc71rtm/include; ln -s $S/wine/vc71/lib $S/wine/vc71rtm/lib
 rm -rf $S/vs2003                                    # ~disk: keep only the copied bin
 cd /home/user/FableDecomp
+# (c) VS 2003 Vc7/lib (msvcrt.lib, libcmt.lib, ... 21 files, ~20 MB): the library the `toolchain_library` grade is
+#     proven against (docs/pipeline/LIBRARY_SIGNATURES.md). Single members of the same archive.org zip, SHA-1 checked.
+bash tools/decomp_pipeline/libsig/fetch_vs2003_libs.sh $S/wine/vs2003lib
+# (d) LZO 1.08 source tree (oberhumer.com, SHA-256 checked): the vendor .asm that lib_verify.py proves 0x00C069D0 from;
+#     ml.exe from the RTM Vc7/bin assembles it (tools/decomp_pipeline/libsig/lib_verify.py, "Third-party assembled objects").
+bash tools/decomp_pipeline/libsig/fetch_lzo108.sh $S/thirdparty
 ```
+None of (a)-(d) is ever committed (compilers, Microsoft libraries, a GPL vendor tree): they live in `$S` only and are
+re-fetched by a new container from these scripts.
 Make `$S/wine/env.sh` (setup wrote one; template `tools/decomp_pipeline/linux_lane/lane_tools/env.sh.template`) read:
 ```
 export WINEPREFIX=$S/wine/prefix WINEARCH=win32 WINEDEBUG=-all WINEDLLOVERRIDES="mscoree,mshtml=" DISPLAY=
@@ -68,6 +76,8 @@ export FABLE_VC71=$S/wine/vc71rtm VC71_QFE=$S/wine/vc71
 export FABLE_EXE="$S/dl/game/Fable The Lost Chapters/Fable.exe"
 export LANDVERIFY_WORK=$S/wine/landverify
 export LINK=bufferoverflowu.lib     # keep: the DDK CRT is /GS
+export FABLE_VS2003_LIB=$S/wine/vs2003lib        # (c) above; libsig_scan.py / lib_verify.py
+export FABLE_THIRDPARTY=$S/thirdparty            # (d) above; default is the same path
 wineserver -p 2>/dev/null || true   # one persistent wineserver; without it every cl.exe boots a server (~5 s)
 ```
 Get the retail game from the owner's link into `$S/dl/` (a `.rar`; `unrar x`). Check `sha1sum Fable.exe` =

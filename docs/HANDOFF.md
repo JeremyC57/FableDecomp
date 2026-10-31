@@ -1,46 +1,65 @@
-# Resume here (one page) — updated 2026-10-30
+# Resume here (one page) — updated 2026-10-31 (end of session)
 
-**Next session: read `docs/journal/2026-10/2026-10-29_HANDOFF.md`** (lane rules, resume steps) and the 2026-10-30 lines at the
-end of `docs/journal/FINDINGS_LOG.md`. Fresh container: `docs/pipeline/FRESH_SESSION_HANDOFF.md`; coordinator commands in
-`tools/decomp_pipeline/linux_lane/lane_tools/coordinator/README.md`. Older one-page handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
+**Next session: read `docs/journal/2026-10/2026-10-31_HANDOFF.md`** (lane rebuild incl. the downloads, resume steps, open
+decisions) and the 2026-10-31 lines at the end of `docs/journal/FINDINGS_LOG.md`. Fresh container:
+`docs/pipeline/FRESH_SESSION_HANDOFF.md` (section 2 now lists all four downloads: DDK compiler, RTM compiler, VS 2003 libs,
+LZO 1.08). Coordinator commands: `tools/decomp_pipeline/linux_lane/lane_tools/coordinator/README.md`. Older one-page
+handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), pushed. Coverage figures live in `rebuild/COVERAGE.md` (`tools/landed_metrics.py`,
-  `tools/write_decomp_dashboard.py`, `tools/update_readme_progress.py`; never hand-edit): ~90.7% of the 57,579 known
-  functions, 90.6% of the original 49,568 catalog; 440 rows are grade `toolchain_library` (vendor bytes, link work), 13 asm_bake.
-- Retail compiler: cl 13.10.3077 (Rich header: 1,369 of 1,380 compiled objects; 5 QFE-4035 objects, possibly WinDDK GUID
-  libs; 6 import descriptors; link 3077, cvtres 3052). Lane default 3077, `--qfe` 4035. VS 2003 `Vc7/lib` lives in the lane
-  only (`$S/wine/vs2003lib`, `libsig/fetch_vs2003_libs.sh`); never committed.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. **Nothing is running**; no chunk agent and no naming agent.
+  The owner gives the `Fable.exe` link in the new session; it is never written into the repo.
+- Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
+  never hand-edit): 52,774 of 57,611 known functions (91.6%), 45,384 of the original 49,568 (91.6%); 174 `retail_asm`,
+  441 `toolchain_library`, 13 asm_bake oracles.
+- Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
+  downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
+  `FABLE_VS2003_LIB`), LZO 1.08 tree (`libsig/fetch_lzo108.sh` → `$S/thirdparty`, `FABLE_THIRDPARTY`; `ml.exe` from
+  the RTM bin assembles `lzo1x_f1.asm` = 0x00C069D0).
+- Catalog + manifest names: `tools/sync_catalog_names.py` (2026-10-31) makes `auto-re-candidates.tsv` and
+  `rebuild/manifest/functions.tsv` follow the `// Leaf:` symbol of each landed source (3,727 catalog renames, 6,219
+  manifest cells, 32 missing manifest rows). 23,447 landed sources have no Leaf line and 12,335 a bare leaf: their
+  catalog names are the landing-time labels. Re-run the tool after every naming wave.
 
-## Owner rules in force (2026-10-28..30)
-- Names right the first time (exact PDB spelling, two sources, one retail address = one mangled name; NAME_FIXES queue
-  `rebuild/candidates/manual/naming/NAME_FIXES_QUEUE.tsv`). Wide text `unsigned short`. Retail calling convention wins.
-- A class with a retail vtable is modelled from a shared `engine/<Class>.h`, never a row-local stand-in (migration waves
-  1-9, `rebuild/candidates/manual/headers/`). Class-model migration and chunk cutting run concurrently.
-- Grades: `retail_asm` only for instructions VC7.1 cannot emit; `toolchain_library` for CRT / import-thunk bytes proven by
-  `libsig/lib_verify.py` (`docs/pipeline/LIBRARY_SIGNATURES.md`). Everything else is compiled C++ that byte-matches.
-- At most two Opus 5.5 high-effort agents at once; "lane gap" / parked labels are opinions to retest, never a reason to skip.
+## Owner rules in force (2026-10-28..31)
+- Names right the first time: exact PDB spelling, two sources, one retail address = one mangled name. At landing, when a
+  new row carries the PDB spelling of a callee that landed callers bind under a stand-in, respell those callers and
+  recheck before committing (`vland.py ... --recheck-landed`). NAME_FIXES → `naming/NAME_FIXES_QUEUE.tsv`.
+- A class with a retail vtable is modelled from `engine/<Class>.h` (`#define Class ClassLayout` include pattern; a local
+  model only where the header flattens the vptr, said in a comment). No `__asm`/`_emit`/`naked`/`volatile`/new
+  `#pragma pack`; `retail_asm` only for instructions VC7.1 cannot emit; `toolchain_library` via `libsig/lib_verify.py`.
+- Wide text `unsigned short`; STLport containers spelled as STLport instantiations; "lane gap"/"tie" labels are opinions to
+  retest. Dead-load lever probes (`pending/2026-10-27_linux_hand649/lever_probe_not_reconstruction/`) never land.
+- At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
-## Done 2026-10-30 (details in FINDINGS_LOG)
-- Chunks 585-595 (engine-range pass 9 rows): 92 of 110 landed; migration waves 7-9 (1,667 + 1,384 + 1,578 rows; new
-  CLevelScriptBase/CEntityScriptBase inline ctors, CActiveEntityScript<T>, CCountedPointer.h); naming wave 11 (173 rows);
-  asm re-author (9 of 27); vendor-library signature, landing and manifest-boundary passes (448 oracle rows, all landed).
+## Done 2026-10-31 (details in FINDINGS_LOG)
+- Chunks 643-650 landed (2, 1, 0, 3, 0, 1, 2+bonus, 2 of 10; 650 stopped early at the owner's request); GFAXToVX
+  re-authored without `volatile`. Codex parked-50 return: 11 of 50 landed, 11 callers respelled. ChatGPT pass 10 handed
+  out (100 easiest parked rows, `pending/2026-10-31_chatgpt_pass10/`, reserved until 2026-11-04).
+- Chunk pool re-ranked into fixable vs compiler-tie buckets (`coordinator/pick_parked.py` v2); chunk 651 is cut
+  (`chunk_history.tsv`, `$S` dir gone) but was never launched.
+- Naming wave 12: 357 rows respelled, 357/357 recheck (`naming/2026-10-31_wave12/`); LZO 0x00C069D0 landed as
+  `toolchain_library` from the vendor .asm.
 
 ## Next
-1. Parked-row retry sweep COMPLETE 2026-10-31: wave 1 landed 114 of 237 (`batches/2026-10-30_parked_retry1/`), wave 2 landed 169 of 2,121 over
-   sections 1, 1b, 2, 2b, 2c, 3, 4, 4b, 5, 5b, 6, 6b (`batches/2026-10-3*_parked_retry2_sec*/`; each README has the counts). Remaining pending
-   differ/ rows are the chunk pool (item 2). Owner call 2026-10-31: SSE rows land as retail_asm when retail itself ran inline asm (0x00BF7DF0 form, claim verified from
-   the retail bytes); sec5b's two byte-exact SSE rows landed (0x00A5CEE0, 0x00AE0E60; sec5b 7 of 39), the seven DIFFER ones stay in
-   `pending/2026-10-31_parked_retry2_sec5b/retail_asm_review/`. Open: name_review rows (sec3 x3, sec2b x4, sec6 00f3fb60).
-2. Chunks 596-604 landed (596-599: 36 of 40; 600: 6 of 10; 601: 5 of 10 + 1 held for naming; 602: 7 of 10, the libpk pool copy is
-   `CHandleBasedMemoryPool_012b4098`, GOTCHAS 2026-10-31; 603: 8 of 8, the last engine-remainder rows; 604: 4 of 10, the first chunk
-   cut from the sweep's parked rows; 605: 2 of 10; 606: 1 of 10; 607: 1 of 10; 608: 1 of 10; 609: 2 of 10; 610: 3 of 10; 611: 1 of 10; 612: 3 of 10; 613: 2 of 10; 614: 4 of 10; 615: 4 of 10; 616: 2 of 10; 617: 2 of 10; 618: 2 of 10; 619: 1 of 10; 620: 0 of 10; 622: 2 of 10; 623: 2 of 10; 624: 6 of 10; 625: 3 of 10; 626: 3 of 10 + 2 extras; 627: 4 of 10; 628: 3 of 10; 629: 0 of 10; 630: 3 of 10; 631: 3 of 10; 632: 1 of 10; 633: 1 of 10; 634: 1 of 10; 635: 3 of 10; 636: 2 of 10; 637: 9 of 10; 638: 2 of 10 + four siblings respelled; 639: 5 of 10; 640: 2 of 10; 641: 3 of 10; 642: 1 of 10; 643: 2 of 10; 644: 1 of 10; 645: 0 of 10; 646: 3 of 10 + eight callers respelled; 647: 0 of 10; 648: 1 of 10; 649: 2 of 10 + bonus GFAYToVY + GFAXToVX re-authored volatile-free; 621: 1 of 10, landed after the c621 respell pass -- 67 callers/bodies respelled to PDB names, all rechecked). Chunks now come from the sweep's parked rows: `$S/w30/pick.py` (copy: `coordinator/pick_parked.py`; v2 owner 2026-10-31) ranks them into
-   `$S/w30/ranked.tsv` in two buckets -- fixable residues first (wrong control flow, frame layout, inlining, names: 267 rows), then the
-   compiler-tie bucket (register colouring, x87 operand order, scheduling, scratch rotation: 1,036 rows) which waits for migration wave 10 --
-   closest residue, fewest attempts, shortest first within a bucket; `$S/w30/cutp.sh N addrs` cuts a chunk (agent dir `$S/w22/agentN`, CHUNK_BRIEF.md,
-   `rebuild/candidates/manual/chunk_history.tsv`). Running: 649 (`$S/w22/agent649`) and 650 (`$S/w22/agent650`), both from the fixable bucket. Re-run pick.py and cut 651 before launching the next. Owner decisions queued (c627): canonical spellings of globals 0x013B83D0 (CGame object) and 0x013B8394 (sound manager).
-   Land each as it reports (`coordinator/land_chunk.sh N`, `records.py N`); re-run pick.py before cutting 609+.
-3. Migration wave 10 per `headers/2026-10-30_retail_models_wave9/NEXT.md` (item 0: the CDefPointer(ENullDef) ctor is in the header since 2026-10-31 — migrate the 76 local `enum ENullDef` models; then the 1,317 proven CP rows).
-4. Naming wave 12: queue rows 594-599, libsig/libsig2/libsig3, mig9, retry1, sec1-4 (~180 rows); the duplicate per-TU static / unfolded-COMDAT convention (owner decision open: ilog2 x3, SmoothFadeValue x3, CDefString x2, IS_THING_ALIVE<CIntelligentPointer<const CThing>> x2, LowerBound 0x004365B0/0x0040F020); three byte-matching sec3 bodies in `pending/2026-10-30_parked_retry2_sec3/name_review/` land once named; 0x00CB0C10 CompatibleTimeSetEvent; EAX GUID linkage; CDspGain::Apply two spellings; ScaleAccumulate16Ramp x3 (different bodies, distinct names).
-5. ChatGPT pass 10 out 2026-10-31: 100 easiest parked rows reserved until 2026-11-04 (`pending/2026-10-31_chatgpt_pass10/`); regrade the return like the Codex pass. Codex parked-50 pass returned 2026-10-31: 11 of 50 landed after the naming check, eleven callers respelled (`batches/2026-10-31_codex_parked50/README.md`); the 39 parked best attempts are back in the chunk pool (`pending/2026-10-31_codex_parked50/differ/`). LZO 0x00C069D0 landed as toolchain_library from the vendor .asm (owner decision 2026-10-31; `LIBRARY_SIGNATURES.md` "Third-party assembled objects"); 0x00BE8920 is a pre-existing lane DIFFER (old Windows row) to recheck.
-6. Older open work: `docs/ROADMAP.md`.
+1. **Owner decisions** (`naming/2026-10-31_wave12/DECISIONS_W12.tsv`, each with a recommendation): 0x013B83D0 `g_Game`;
+   0x013B8394 sound manager (24 spellings, pick the type); 0x0124F2B8 keep `g_twoPi`; anonymous-namespace binding
+   policy (0x008E8A10, 0x00870C90, 0x0097ABF0); 0x00C351B0 CVirtualPlayer::Start parameter; 0x00686D90 =
+   PeekThingSearchTools; 0x0129BA3C epsilon (49 spellings); duplicate-COMDAT allowlist instead of `_copy2` names; vtable
+   0x012B29F8 = PKCPlaybackTemplate; CPhysicsMesh static access. Also from the chunks: GetPWorld 0x008FCFC0 (~45
+   spellings), VIRTUAL_SCREEN_* (20), vector<CCharString> dtor 0x00414EA0 (17), GetCurrentWorldFrame 0x004167C8 (8).
+2. **Naming wave 13** input: NAME_FIXES_QUEUE rows c643-c650 + codex50 (~90), the decisions above, and
+   `2026-10-31_wave12/DEFERRED.tsv` (30 items; the GetPItem family is 2,247 rows and has a plan there). Brief template:
+   `naming/briefs/BRIEF_W12.md`. Then re-run `tools/sync_catalog_names.py`.
+3. **Chunk cycle** (two agents): `pick_parked.py` → `$S/w30/ranked.tsv`, `cutp.sh N addrs` from the fixable bucket
+   (137 rows ranked fixable, 1,036 ties wait for migration wave 10), land with `land_chunk.sh N` + `records.py N`.
+   Chunk 651 needs re-cutting in the new scratch (`cutp.sh 651 <addrs from chunk_history.tsv>`).
+4. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md`: the 76 local `enum ENullDef` models, the
+   1,317 proven CCountedPointer rows, and the shared `engine/CDefPointer.h` Release() shape (mov/dec/mov vs retail
+   `dec [ecx+4]; jne`, header debt found in chunk 649).
+5. **ChatGPT pass 10 return** (by 2026-11-04): regrade like the Codex pass (`batches/2026-10-31_codex_parked50/README.md`):
+   oracle from `oracle_from_exe.py`, `vland.py` on our lane, check every name against both PDBs before landing, respell
+   callers, then release the rest back to the pool (rename RESERVED.tsv → RETURNED.tsv).
+6. Leaf lines: make `verify_and_land.py` write `// Leaf: <mangled>` into every landed source so the catalog sync covers
+   all rows; then a one-off pass to add it to the 23,447 rows without one (the object symbol is known at recheck time).
+7. Older open work: `docs/ROADMAP.md`.
