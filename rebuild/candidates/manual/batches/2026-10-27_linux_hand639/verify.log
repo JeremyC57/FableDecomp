@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00894ec0   WARN RELOC_NAME: ??$GetAllThings@VCThingObject@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefName@@@CThingSearchTools@@QBEXABVCThingFilter_HasDefName@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 008ac660 labelled 'GetAllThings<CThingMarker,std::vector<CThing*,std::GetAllThings<CThingMarker,std::vector<CThing*,std::allocator<CThing*>_>,CThingFilter_HasScriptName>'
+00894ec0   WARN RELOC_NAME: ??$GetAllThings@VCThingObject@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 008ac700 labelled 'GetAllThings<CThingMarker,std::vector<CThing*,std::GetAllThings<CThingMarker,std::vector<CThing*,std::allocator<CThing*>_>,CThingFilter_HasScriptName>'
+00894ec0   RELOCATION_MATCH PASS   SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden
+00a60050   WARN RELOC_ALIAS: _DirectInput8Create@20 -> 00bfeff8 is the import thunk 'DINPUT8.DLL::DirectInput8Create'
+00a60050   RELOCATION_MATCH PASS   CInputManagerDX
+00bf9fa0   RELOCATION_MATCH PASS   SetupPrimitiveDesc
+00d3a050   WARN RELOC_NAME: ?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z -> 00cd3ccb labelled 'CArray<std::pair<long::push_back'
+00d3a050   RELOCATION_MATCH PASS   DisableFollowers
+00e03d30   RELOCATION_MATCH PASS   Main
+
+WINS: 5
+  00894ec0 RELOCATION_MATCH CGameScriptInterface::?SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden@CGameScriptInterface@@UBEX_N@Z
+  00a60050 RELOCATION_MATCH CInputManagerDX::??0CInputManagerDX@@QAE@ABVCInputManagerInit@@_N@Z
+  00bf9fa0 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::?SetupPrimitiveDesc@CLocalDetailPrimitiveMeshZSpriteBatch@@AAE?AUCAddPrimitiveDesc@NEnginePrimitiveManagerRepeatedZSprites@@XZ
+  00d3a050 RELOCATION_MATCH NScript::CQ_FireHeartScript::?DisableFollowers@CQ_FireHeartScript@NScript@@QAEXXZ
+  00e03d30 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::?Main@CDarkwoodRockTroll@CQ_TraderEscortScript@NScript@@EAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHi_00894ec0
+  CInputManagerDX_CInputManagerDX_00a60050
+  CLocalDetailPrimitiveMeshZSpriteBatch_SetupPrimitiveDesc_00bf9fa0
+  NScriptCQFireHeartScript_DisableFollowers_00d3a050
+  NScriptCQTraderEscortScriptCDarkwoodRockTroll_Main_00e03d30

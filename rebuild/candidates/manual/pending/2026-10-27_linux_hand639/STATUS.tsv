@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+0073acc0	DIFFER	331v331	-	scheduling only: early return-false `xor al,al` before the pops in retail, between pop ebp/pop ebx in ours; names modernised (IsModeActive, GetType, OnActivate/OnDeactivate, IsRemoveOnDeactivate)
+00641ae0	DIFFER	331v331	-	register colouring of the flare block (halo/thing/uid in edx/eax/ecx:eax vs ecx/edx/eax:edx)
+00ba0fc0	DIFFER	333v333	-	flags argument store scheduled right after its load (retail after Alpha)
+00b92300	DIFFER	335v335	-	register tie: layer edi / handle ebx in retail, ebx / edi in ours (pushes interleaved)
+0065be6c	DIFFER	336v336	-	register tie: this ebx / def temp edi in retail, reversed in ours; engine/CDefPointer.h release flips registers right but adds cmp after each dec

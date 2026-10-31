@@ -371241,6 +371241,41 @@ $catalog = @(
         TestSource = '00/df/NScriptCQTentacleKrakenBossFightScriptCMExperience_Main_00df48f0_test.cpp'
         PassPattern = '00df48f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00894ec0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHi_00894ec0.cpp'
+        TestSource = '00/89/CGameScriptInterface_SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHi_00894ec0_test.cpp'
+        PassPattern = '00894ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60050'
+        Module = 'CInputManagerDX'
+        Source = '00/a6/CInputManagerDX_CInputManagerDX_00a60050.cpp'
+        TestSource = '00/a6/CInputManagerDX_CInputManagerDX_00a60050_test.cpp'
+        PassPattern = '00a60050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bf9fa0'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_SetupPrimitiveDesc_00bf9fa0.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_SetupPrimitiveDesc_00bf9fa0_test.cpp'
+        PassPattern = '00bf9fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3a050'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_DisableFollowers_00d3a050.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_DisableFollowers_00d3a050_test.cpp'
+        PassPattern = '00d3a050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e03d30'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodRockTroll'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Main_00e03d30.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodRockTroll_Main_00e03d30_test.cpp'
+        PassPattern = '00e03d30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

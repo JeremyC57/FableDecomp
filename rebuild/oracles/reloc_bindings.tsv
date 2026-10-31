@@ -35793,3 +35793,15 @@ _IID_IDirectSound3DBuffer	012ac5e4	00c56d70
 ?ShowPassabilityOverlay@CWorldMap@@QAEX_N@Z	004ff570	004ff920
 ?UpdateDestroyedThemeAreas@CWorldMap@@IAEXXZ	004fec80	004ff920
 ?g_bShowPassability@@3_NA	013b8a78	004ff920
+??$GetAllThings@VCThingDeadCreature@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_None@@@CThingSearchTools@@QBEXABVCThingFilter_None@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	008ac5d0	00894ec0
+??$GetAllThings@VCThingObject@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefName@@@CThingSearchTools@@QBEXABVCThingFilter_HasDefName@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	008ac660	00894ec0
+??$GetAllThings@VCThingObject@@V?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$list@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	008ac700	00894ec0
+??0?$CCountedPointer@VCJoystick@@@@QAE@PAVCJoystick@@@Z	00a5fc30	00a60050
+??0CInputManager@@QAE@ABVCInputManagerInit@@_N@Z	009f5bd0	00a60050
+??0CJoystickDX@@QAE@AAVCInputManagerDX@@_N@Z	00ab7850	00a60050
+??0CKeyboardDX@@QAE@AAVCInputManagerDX@@_N@Z	00ab64e0	00a60050
+??0CMouseDX@@QAE@AAVCInputManagerDX@@_N@Z	00ab5d00	00a60050
+?_M_insert_overflow@?$vector@V?$CCountedPointer@VCJoystick@@@@V?$allocator@V?$CCountedPointer@VCJoystick@@@@@std@@@std@@IAEXPAV?$CCountedPointer@VCJoystick@@@@ABV3@ABU__false_type@2@I_N@Z	00a5fef0	00a60050
+_DirectInput8Create@20	00bfeff8	00a60050
+_IID_IDirectInput8W	012acbf4	00a60050
+?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z	00cd3ccb	00d3a050
