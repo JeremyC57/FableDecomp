@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0049dcc0   WARN RELOC_NAME: ?DAT_013B8394@@3PAUCGameScriptInterface_SoundProvider@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0049dcc0   RELOCATION_MATCH PASS   ResetToFrontEnd
+004bfc50   RELOCATION_MATCH PASS   OnCreate
+007723f0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+007723f0   RELOCATION_MATCH PASS   IsShopKeeperNearerThan
+009f7050   RELOCATION_MATCH PASS   GetInfo
+
+WINS: 4
+  0049dcc0 RELOCATION_MATCH CWorld::?ResetToFrontEnd@CWorld@@QAEXXZ
+  004bfc50 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?OnCreate@CTCGraphicAppearance@NGraphicAppearance@@UAEXXZ
+  007723f0 RELOCATION_MATCH CTCShop::?IsShopKeeperNearerThan@CTCShop@@QBE_NM@Z
+  009f7050 RELOCATION_MATCH CVsyncCallbackTimer::?GetInfo@CVsyncCallbackTimer@@QAE?AUCVsyncCallbackTimerInfo@@XZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CWorld_ResetToFrontEnd_0049dcc0
+  NGraphicAppearanceCTCGraphicAppearance_OnCreate_004bfc50
+  CTCShop_IsShopKeeperNearerThan_007723f0
+  CVsyncCallbackTimer_GetInfo_009f7050

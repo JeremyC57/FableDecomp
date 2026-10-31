@@ -35757,3 +35757,12 @@ _drftf1@20	00c98e80	00c9bc10
 ?SavedStackPointer@MicroThread@@3PAEA	013ca898	009d87f0
 ?StackTop@MicroThread@@3PAEA	013ca8a0	009d87f0
 _ActiveThread	013ca894	009d87f0
+??0CFrontendGameComponent@@QAE@AAVCGame@@ABVCFrontendGameComponentInit@@@Z	00496070	0049dcc0
+?func_00991620@CFlaggedObject_Retail@@QAEX_N@Z	00991620	0049dcc0
+?g_Game@@3VCGame@@A	013b83d0	0049dcc0
+??0CVsyncCallbackTimerInfo@@QAE@XZ	009f7020	009f7050
+?g_VsyncCPUFrameCount@@3JA	013cb4f0	009f7050
+?g_VsyncCPUPrevTimeStamp@@3NA	013cb4e8	009f7050
+?g_VsyncCPUTimeStamp@@3NA	013cb4e0	009f7050
+?g_VsyncGPUTimeRecordIndex@@3JA	013cb4f4	009f7050
+?g_VsyncGPUTimeRecords@@3PAUSVsyncGPUTimeRecord@@A	013cb4b0	009f7050

@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00994a80	DIFFER	142v141	-	CCompressedMemoryDataInputStream::SetPosition; PDB inlines CanSeekToPosWithinSourceChunk/SetPositionAssumeWithinSourceChunk fix the chunk-end lea; position/chunk register colouring (edi<->ebp shrink-wrap) left
+00978b90	DIFFER	142v142	-	std::__adjust_heap<CThing**,int,CThing*,anon CThingCompare..> (STLport spelling); comparator copy into __push_heap args: eax pointer + two-deep load pipeline not reproduced
+0085fbc0	DIFFER	142v142	-	NCreatureMode::IsAbleToBeEngagedInCombat; shared return-false block placed after the 0x51 compare instead of after the first test (block placement gap)
+00beeda0	DIFFER	147v147	-	std::__pop_heap<pair<pair<long,long>,CEngineTextureDecal>*,...> (catalog _Cons_val label is propagated); by-value copy scheduling (value.first.second load after sub esp), same gap as 00978b90
+00492ed1	DIFFER	152v152	-	CSubtitleRenderer::SetText(CCharString overload); ToWideString temporary homed in the dead pauseGame slot instead of its own frame word
+00475dfa	DIFFER	152v152	-	GFSerialiseVectorBinaryIn<C2DVector> (FableWin template spelling); loop index/start register swap (esi<->edi)

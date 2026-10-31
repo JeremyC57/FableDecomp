@@ -371002,6 +371002,34 @@ $catalog = @(
         TestSource = '00/9f/CGraphicDataBank_UpdateAvailableMemory_009fd3a0_test.cpp'
         PassPattern = '009fd3a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049dcc0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_ResetToFrontEnd_0049dcc0.cpp'
+        TestSource = '00/49/CWorld_ResetToFrontEnd_0049dcc0_test.cpp'
+        PassPattern = '0049dcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004bfc50'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_OnCreate_004bfc50.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_OnCreate_004bfc50_test.cpp'
+        PassPattern = '004bfc50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007723f0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_IsShopKeeperNearerThan_007723f0.cpp'
+        TestSource = '00/77/CTCShop_IsShopKeeperNearerThan_007723f0_test.cpp'
+        PassPattern = '007723f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f7050'
+        Module = 'CVsyncCallbackTimer'
+        Source = '00/9f/CVsyncCallbackTimer_GetInfo_009f7050.cpp'
+        TestSource = '00/9f/CVsyncCallbackTimer_GetInfo_009f7050_test.cpp'
+        PassPattern = '009f7050_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

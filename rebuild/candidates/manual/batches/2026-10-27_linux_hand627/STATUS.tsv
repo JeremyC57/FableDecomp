@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+009f7050	RELOCATION_MATCH	138v138	PASS	CVsyncCallbackTimer::GetInfo (non-const per PDB); /Od frame needs function-scope locals AND a local name that hashes below `info` (pRecord)
+00994a80	DIFFER	142v141	-	CCompressedMemoryDataInputStream::SetPosition; PDB inlines CanSeekToPosWithinSourceChunk/SetPositionAssumeWithinSourceChunk fix the chunk-end lea; position/chunk register colouring (edi<->ebp shrink-wrap) left
+0049dcc0	RELOCATION_MATCH	142v142	PASS	CWorld::ResetToFrontEnd; Init() in each arm (tail-merge) + named main-component local; ctors take CGame& (both PDBs)
+00978b90	DIFFER	142v142	-	std::__adjust_heap<CThing**,int,CThing*,anon CThingCompare..> (STLport spelling); comparator copy into __push_heap args: eax pointer + two-deep load pipeline not reproduced
+0085fbc0	DIFFER	142v142	-	NCreatureMode::IsAbleToBeEngagedInCombat; shared return-false block placed after the 0x51 compare instead of after the first test (block placement gap)
+004bfc50	RELOCATION_MATCH	144v144	PASS	NGraphicAppearance::CTCGraphicAppearance::OnCreate (slot 4); GetInterface into a local out + member assign under the found-test, base def via inline GetBaseDef()
+00beeda0	DIFFER	147v147	-	std::__pop_heap<pair<pair<long,long>,CEngineTextureDecal>*,...> (catalog _Cons_val label is propagated); by-value copy scheduling (value.first.second load after sub esp), same gap as 00978b90
+00492ed1	DIFFER	152v152	-	CSubtitleRenderer::SetText(CCharString overload); ToWideString temporary homed in the dead pauseGame slot instead of its own frame word
+00475dfa	DIFFER	152v152	-	GFSerialiseVectorBinaryIn<C2DVector> (FableWin template spelling); loop index/start register swap (esi<->edi)
+007723f0	RELOCATION_MATCH	153v153	PASS	CTCShop::IsShopKeeperNearerThan returns bool; one `return a && b && c` expression fixes the register map, C2DVector temporary's squared length fixes the x87 order, generic __fastcall IS_THING_ALIVE<T>
