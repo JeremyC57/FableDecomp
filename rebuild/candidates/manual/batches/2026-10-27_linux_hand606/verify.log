@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009713e0   RELOCATION_MATCH PASS   DuckBehindCover
+
+WINS: 1
+  009713e0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?DuckBehindCover@CAIStateGroup_CreatureUseCoverBase@@IAE_N_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupCreatureUseCoverBase_DuckBehindCover_009713e0

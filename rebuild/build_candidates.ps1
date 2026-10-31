@@ -370650,6 +370650,13 @@ $catalog = @(
         TestSource = '00/c8/CMixKernelsSSE_Add_00c88cd0_test.cpp'
         PassPattern = '00c88cd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009713e0'
+        Module = 'CAIStateGroup_CreatureUseCoverBase'
+        Source = '00/97/CAIStateGroupCreatureUseCoverBase_DuckBehindCover_009713e0.cpp'
+        TestSource = '00/97/CAIStateGroupCreatureUseCoverBase_DuckBehindCover_009713e0_test.cpp'
+        PassPattern = '009713e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

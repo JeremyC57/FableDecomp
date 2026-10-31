@@ -35688,3 +35688,4 @@ _drftf1@20	00c98e80	00c9bc10
 ?ConcatCopy@CString@@QAEXHPBDH0@Z	00c0c220	00c0c270
 ?GetData@CString@@QBEPAUCStringData@@XZ	00c0b8c0	00c0c270
 ?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z	00b46280	00b46a30
+??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0_N@Z	008b8260	009713e0
