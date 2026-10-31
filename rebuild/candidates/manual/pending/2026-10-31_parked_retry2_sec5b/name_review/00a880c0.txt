@@ -1,0 +1,7 @@
+0x00A880C0 CSBCCorridor::Process (differ only) -- names not provable to two sources:
+- CSBConstraint +0x0c (input kinematic copied to CSB::Output when steering is disabled): called `Input` here.
+- CNavigatorExternalInterface slots 6 / 7 / 8 / 22: GetRadius(long) / GetVelocity(C2DVector&) / GetPosition(C2DVector&) /
+  end-scale float getter (only the shapes are proven: float(long), out-param C2DVector, float()).
+- 0x00A57140: nearest point on a C2DLineF segment (hidden-return C2DVector, const C2DVector& arg): `GetNearestPoint`.
+- 0x013D2D60 g_SteeringDisabled (byte flag); 0x00A20E10 is list<CWall>::clear (landed file
+  CGuiControlTreePane_SortTreeRecursively_00a20e10.cpp is a propagated label).

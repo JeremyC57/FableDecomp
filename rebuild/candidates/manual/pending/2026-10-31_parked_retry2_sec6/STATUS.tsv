@@ -1,0 +1,354 @@
+addr	status	grades	lever	residue
+00d5dc50	RELOCATION_MATCH	2	no-grade row: length from retail bytes; shared NScript headers	-
+00d61bb0	RELOCATION_MATCH	2	no-grade row: length from retail bytes; shared NScript headers	-
+00d7d8d0	RELOCATION_MATCH	2	no-grade row: length from retail bytes; shared NScript headers	-
+00c00dd0	RELOCATION_MATCH	1	same-TU static (deflate.c lm_init in landed z_deflateReset TU); dummy-ecx stand-in removed	-
+00c03ee0	MATCH	1	same-TU static (trees.c init_block + real caller _tr_init); dummy-ecx stand-in removed	-
+00b6cd80	MATCH	1	parked ungraded all-__forceinline copy chain graded; new test	-
+00c5af50	RELOCATION_MATCH	2	RELOC_IDENTITY fix: commutative multiply operand order (field addends swapped)	-
+00c34b80	RELOCATION_MATCH	2	RELOC_IDENTITY fix: declare MSVCR71 operator delete[]	-
+00c34e60	RELOCATION_MATCH	3	RELOC_IDENTITY fix: declare MSVCR71 operator delete[]; row dtor bound to existing CPtrArray<CTableEntry*> spelling	-
+00c73830	HELD	4	nested if; || chain; return &&; ternary over named result	shared failure block placement (retail lays xor/pop/ret right after the RegQueryValueExA test; every spelling lays it after the type test)
+00bba3e0	HELD	4	implicit C3DVector copy; inline-member expression; float local order; user memberwise operator=	x87 scheduling only: faddp/fsqrt issue one integer move later than retail (87v87, 4 lines)
+00c5e2c0	HELD	3	decl order (returned first); no block local (indexed thrice); handle named local	register colouring of DeviceIoControl args: retail ov/size in ecx, &returned+handle in edx; ours edx/ecx/eax
+00c0a790	HELD	4	C2DVector temp member; init-list (3 members / 5 members); chained assign	constant hoist: mov edx,3F800000h hoisted to the top (retail: right before the first 1.0f store)
+00c75f80	HELD	4	rename to bound CCombFilter; memset(len); Clear data local; sibling stmt order	scheduling: memset count computed before m_pos store + m_data reload (retail after)
+00c26cd0	RELOCATION_MATCH	3	VC6 Dinkumware insert(end(), x) two-arg inline at call site	-
+00c27130	RELOCATION_MATCH	1	VC6 Dinkumware insert(end(), x) two-arg inline at call site (twin of 00c26cd0)	-
+00bddf30	HELD	4	statement order (+4 before flags; flags first); split bit clears; unsigned char bitfields	scheduling: flag byte load hoisted above the child stores and MaxFadeDistance stored after the flag in retail
+00ec3270	HELD	4	else-if clamp; inline GFClamp template; ternary clamps; explicit default	jump threading: retail's default arm (level 0.0f) jumps to the >1 test, ours threads past both clamp tests
+00c52bb0	IMPROVED	5	compare spelling (Model < 4 -> eax); case order; signed range	family-5 first compare: cmp 4/jae vs retail cmp 3/ja (eax now right)
+00c2cbd0	HELD	2	base ctor body-assign; optimize(s)	scheduling: owner argument loaded before push esi (retail after the EH this store)
+00c1ca20	MATCH	3	named product local (x87 order at zero-displacement row)	-
+00c418f0	HELD	3	named result in Length; float sqrt overload; sqrtf (unavailable)	x87 spill order of the length after fsqrt (retail fstp st(3) + pops, then spill)
+00c25f40	RELOCATION_MATCH	3	stepwise local sum (x87 operand order)	-
+00c11520	HELD	3	named event pointer; z,x,y memberwise order	scheduling: direction word 0 stored after push eax (retail before)
+00c12300	RELOCATION_MATCH	1	inline const accessor for a member copy (dead-this register)	-
+00c72a40	RELOCATION_MATCH	6	reference local to the global context (chunk 599); CAudioContext model shared with c72800; return value	-
+00c72800	RELOCATION_MATCH	1	reference local to the global context (chunk 599)	-
+00c72d00	HELD	3	context reference local; separate error return; restructured early returns	callee-saved colouring: retail holds a zero result in ebx from entry and GetProcAddress in ebp; any return restructure folds the zero
+00bca6b0	HELD	3	named new sub-primitive; implicit C3DVector copy; no head local	scheduling: head Z copy and push esi order; distance/renderer loads after the pushes
+00c35370	RELOCATION_MATCH	1	member reads instead of locals (integer sum order)	-
+00c40590	IMPROVED	5	SetCross operand order; right pointer local; members direct (no pointer locals); flipped products	3 cross-product multiplies load the this-relative right vector first (retail front first)
+00c59c60	HELD	2	named pow result local; explicit double argument	epilogue scheduling: pop edi before the last fstp in retail
+00c56d70	HELD	1	nested if with one trailing return false	shared false-block placement (retail after the first test)
+00c351b0	HELD	2	reference local to source->Info at entry; intro declared first	callee-saved swap: &source->Info edi vs intro ebx
+00c1b7d0	HELD	2	rename to bound class; same-TU DeleteFixup body	ecx/edx swap of node z vs key scratch
+00c590e0	HELD	2	count-down loop (not unrolled, 76); split increment	esi/edi swap of output and source pointers
+00c36b90	RELOCATION_MATCH	1	named floor-result local (x87/integer scheduling)	-
+00e7f330	HELD	3	store reorder; fish local; named fill local	x87 scheduling: BiggestFish store and resize temp one slot early vs faddp/fstp
+00c16e10	RELOCATION_MATCH	2	named bool for the setl open test + separate return -1s	-
+00c11230	HELD	4	goto refuse label; early returns; positive nested; else-if chain	return-1 epilogue placed after Stop (backward jmp from ResetLevel) vs retail after ResetLevel
+00c14f90	HELD	4	Delete() guard / temp / raw-pointer forms	scheduling: +0x0c zero store and lea ebx,[esi+40h] one slot early
+00c74ab0	HELD	4	rate before pow; split pow/scale; inline (float)sampleRate	x87 scheduling: rate mov/test before fmul [baseFrequency]
+00c77c80	HELD	3	rate*sum operand order; delay+size order; rate local in inner loop	tap-loop esi/edx swap (store pointer vs temporary)
+00d3ae40	HELD	3	handle reference; direct member calls; byte-offset address	handle address add vs retail mov eax/lea edi
+00beea00	HELD	3	explicit _Tp(__val) temp; implicit pair copy; body-assign decal copy ctor	by-value copy load scheduling (key word loaded before push in retail)
+00c6b9d0	HELD	4	band*damping order; in local; named product; grouped low+product	x87 operand order fld band vs retail fld damping (inert to source order)
+00b84470	HELD	2	long-typed pass members; list base pointer	store scheduling: RenderPass=2 stores grouped vs retail source order
+00b39fb0	HELD	4	+= form; named sum; 2*r; distance local	x87 scheduling of fadd/fstp around the IsVisible pushes
+00ba6dc0	HELD	3	GetData with data local+if; in-place select; size() accessor	hidden-table select computed in eax then mov ebp (retail loads ebp directly)
+00c74bb0	HELD	3	reference*pow order; double product; inline limit	x87 scheduling: rate mov/test before fmul [reference] (twin of 00c74ab0)
+00f35ed0	HELD	3	divide by 65536; double subtract; inline component helper	scheduling: next LCG imul/add hoisted above fmul in retail
+00c71f80	IMPROVED	4	shared tail store (default: break); exponent local; two-step mask	fstp [pitch scale] one slot before the state reload
+00bf9fa0	HELD	3	by-value fade param; temp fade; entries local	callee-saved esi/edi swap (ZSpriteEntries vs spilled type fields)
+00d3a050	HELD	3	direct operator[] calls; handle reference; begin()+i	handle address add vs retail mov eax/lea (lea-vs-add family, as 00d3ae40)
+00ba0fc0	HELD	4	flags store after Alpha / before Colour / last; handle temporary	flags store scheduling + zero register (ebx v esi) and handle frame slot
+00b677d0	RELOCATION_MATCH	2	const& value parameter on the inline setters	-
+00bcc1c0	RELOCATION_MATCH	3	min/max C3DVector locals instead of a C3DBoundingBox	-
+00e03d30	HELD	3	Game local; named text; inline GetGame() for the outer call	outer vtable fetch order (retail mov edx,ecx; mov edi,[edx] before the pushes)
+00b92300	HELD	3	no handle reference; layer local copy; handle pointer	callee-saved edi/ebx swap (layer vs handle address)
+00c3db80	IMPROVED	3	real // Flags: /EHsc line; if/else swap; named Init result	vtable register swap eax/edx for slots 1 and 3
+00be2b70	HELD	3	normal2D declared at top; ternary clamps; Dot written out	frame 0x10 v retail 0x14 (one dead slot)
+00c1d1c0	HELD	2	every product operand swapped (inert, same 7 pairs); source through a pointer	7 commutative fmul pairs canonicalised the other way (source order inert)
+00df48f0	HELD	2	temporary filter (const& RegisterFilter); position local	callee-saved ebx/edi swap for &Me
+00be1c10	HELD	3	user copy-assign; user copy ctor; body-assign 4-float ctor	scheduling: X/Y factor copy before Z computed in retail
+00ead9f0	HELD	3	shared CCountedPointer.h; operator== spelling; forceinline ~CScriptThing	Info reload register ecx v eax before operator delete
+00f36a30	HELD	4	inline +=; stepwise *=; split product; early ++i	x87 scheduling: counter load before first fmul in retail
+00b9e120	HELD	2	WorldPos reference local; named centre local	temporary copy register pair eax/edx swapped
+00b41c30	HELD	2	y bounds first; max-before-min order	prologue/recentre register scheduling (worse with y first)
+00c3d470	HELD	2	signed changes local; explicit if/else for the cast call	argument scheduling: mask push before the Evaluate vtable read
+00b4b8b0	HELD	2	dir.Z*upX order; negated-sum form	x87 operand order in side.Y + result-copy scheduling
+00b9d730	HELD	2	radius declared first; stepwise *=	fmul operand order radius vs scale (inert)
+00b81820	HELD	2	saved frame read at entry; named frame local	saved-frame store slot scheduling (push ebx vs push esi)
+00b17410	IMPROVED	4	named secondary local (frame fixed); block scope; inline key	secondary descriptor destructor at function end vs after its Insert
+00ba50a0	HELD	2	failed defined at entry; failed assigned after the early-out	failed=false store position
+00b847d0	HELD	2	pointer histogram loop; named radix local	histogram loop index register (reuses memset zero)
+00b396e0	HELD	2	transform reference local; pointer local	callee-saved ebp/ebx for &PrimitiveTransform
+00c11d00	HELD	1	helper zero-inits dropped from the init list (shorter)	vptr store / ctor-arg push scheduling
+00b21a50	HELD	2	unsigned count in the max; points local	size() load order (start from memory in retail)
+00b482a0	HELD	1	LightCount zeroed as the first body store	LightCount store before lea ebp
+00bcf040	HELD	2	scalar component locals; memberwise result	x87 operand choice in row-1 c.X term
+00d6c830	HELD	1	goto shared exit (over-merges to 517)	partial tail merge of terminating-return blocks
+00d8a240	HELD	1	goto shared exit (over-merges to 544)	partial tail merge of terminating-return blocks
+00f3abf0	IMPROVED	4	remaining-width counter (this/counter fixed); clamped width local; per-branch stores; function-scope counter	counter copy slot + value-loop ecx/edx swap
+00b8d420	HELD	3	device reference local; reference inside DrawIndexedPrimitive; DrawIndexedPrimitive expanded	&shaders->Device not kept in esi (re-addressed)
+00b47390	HELD	1	copy of the right operand too (worse)	operator*= commutative term order
+00b2bd80	HELD	2	offset at function scope; level declared before offset	frame-slot layout of offset/level/size/header
+00de3ce0	HELD	1	shared engine/CCountedPointer.h (same bytes)	scratch-register rotation in inline ~CScriptThing delete pushes
+00ed94d0	HELD	2	ternary IsAlive; result-local IsAlive	cmp al,bl v test al,al on inlined IsAlive
+00b45cf0	HELD	2	per-component *= inv; named FastInvSqrt result	Normalise reciprocal kept on the x87 stack
+00badb40	HELD	3	direct Colour2 copy; Colour via local; InterpolationSet local	eax/edx phase swap on two copies
+00d08b40	HELD	1	named terminating bool for the pre-guard test	pre-guard early return targets the duplicated epilogue
+00b30610	HELD	1	Dot Y operand swap (inert)	corner-sum reassociation (CSE) + dot Y operand order
+00b45720	HELD	2	colour initialised from the sum directly (copy-init / direct-init)	Normalise reciprocal spill + colour spill slots
+00b4a700	HELD	2	saved colour declaration order; copy order	zero-store/arg-push scheduling + eax/edx copy swap
+00b39080	HELD	1	named inverse-scale local	lea ecx stats-release one store early
+00dd9520	HELD	1	named angle local	fstp of GetAngleXY into outgoing arg one slot early
+00befd90	HELD	1	shader manager local	push edi vs first global load order
+00ea5230	HELD	1	break-out wait loops (longer)	lea ecx hoist above terminate jne
+00b17030	HELD	1	defaults declared before the load branch (worse, 959)	frame-word sharing of the loading-branch name
+00b6e890	HELD	2	const& value (worse); mask operand order	edx/esi swap in the last inlined SetState
+00b1a870	HELD	1	bool normalised write-back	bitfield write-back loads the bool into al (retail xor cl,[mem])
+00e95770	HELD	1	named axe temporary (worse)	edx/eax vtable register in the AXE branch
+00bf0b20	HELD	2	colour copy B,G,R,A order (body / init list)	colour byte load + spill slot scheduling in the prologue
+00bf01e0	HELD	2	const& SetState value (longer); mask operand swap (inert)	SetState test/or operand roles at one or more sites
+00b5e0f0	HELD	2	const& SetState value (longer); mask operand swap (inert)	SetState test/or operand roles at one or more sites
+00b6fa40	HELD	2	const& SetState value (longer); mask operand swap (inert)	SetState test/or operand roles at one or more sites
+00d39960	HELD	2	named terminating bool; while/break tail	post-loop termination cleanup block placement
+00eb40c0	HELD	1	named terminating bool in the intro arm	shared early-terminate exit placement
+01223cb0	HELD	1	one-float object with an inline ctor (ctor not expanded, no initializer)	identity unrecovered: constant float initialisers fold to .data; only an invented initializer object reproduces the store
+00bc62d0	IMPROVED	4	Data reference in Clear() (same length); handle pointer; early-return IsUnique; ternary IsUnique	IsUnique copies to ecx before the null test
+00be2120	IMPROVED	4	Data reference in Clear() (same length); handle pointer; early-return IsUnique; ternary IsUnique	IsUnique copies to ecx before the null test
+00cbe5f0	HELD	4	angle local; double 2pi; shared xy product; const& angle	angle spilled where retail homes cos(0)
+00b67e30	HELD	3	entry before size read; finish = finish + 1; assignment _Construct	folded entry word reloaded from the temporary; add [mem],8
+00eb3ba0	HELD	2	LineHandles reference; direct member calls	index register edx/esi (lea v add)
+00f3d200	HELD	2	i/vert at function scope; counter declared first	array pointers/counter register allocation + frame 0x20 v 0x28
+00e5e350	HELD	2	Index(0) mem-init; explicit zero then register (both eliminated)	dead zero store to the first CTimer slot missing
+00b211b0	HELD	1	Tension terms swapped	ebx/ebp colouring (other vs &ControlPoints)
+00b93860	HELD	1	named level+1 local	Level+1 folding, GridPos copy packing, this in ebx
+00f38ff0	HELD	1	mask operand swap	capture-block register tie esi/edx
+00b63800	HELD	1	total read before started flag	this/zero register + frame allocation
+00eebdf0	HELD	1	named hero for the predicate (worse)	zero register allocation in the opening region
+00d361f0	HELD	2	direct operator[] calls; handle pointer	handle address add form + vtable register (lea-vs-add family)
+00bcc700	HELD	2	trail array pointer; direct member access	strip-0 load register order (twin of 00bca6b0)
+00c3d030	HELD	3	device-null early return; tail as return; device local	count/device register roles + merged last store
+00c73660	HELD	2	switch on the version byte; switch on the stored global	NT switch on ecx in place (retail copies to eax)
+00c0e1f0	HELD	1	clamped length local (longer)	dest CString not homed in the dead count slot
+00bf32b0	HELD	1	header declared outside the loop	this/key register allocation (ebx/ebp)
+00bc9800	HELD	3	if-assigned local; plain bool cast; const& SetState value	UseZBuffer conversion (retail cmp mem,bl)
+00bebaa0	HELD	1	translation first (shorter)	esi shrink-wrapped (pop esi early)
+00b66c10	HELD	1	mip test first	Data reload for BankFrame store + dead add eax,20h + release Data load
+00c5dc60	RELOCATION_MATCH	4	indexed field walk; start = i; strncmp argument order from the push order	-
+00b45a40	IMPROVED	5	normal.Dot(DiffuseVector) (first product fixed); main light via locals; store orders; Dot term order	main-light store fxch, Normalise reciprocal spill, colour spill slots
+00b6dc40	HELD	1	size local before the read call (longer)	GetEntryDataSize/global load order + edi pop
+00e83230	HELD	2	no game local; whole-pointer assign	Game vtable reload in branch 1 + counted-pointer assign registers
+0122a550	MATCHED	c:75v78 d:RELOCATION_MATCH	pointer-param forceinline --*owners helper + FreeData(storage_) helper	-
+00c0ffe0	HELD	a:256v253 b:255v253	reversed compare; named maximum local	GetTickCount-m_tick prologue: retail folds both memory operands, ours preloads m_tick/max
+00c4aeb0	HELD	a:284v281 b:284v281	slot copied to index local; function-scope more	frame: retail packs CString/break temp/more into dead arg slot, VC7.1 opens 8-byte frame
+00b43720	HELD	a:327v324 b:327v324	mapX before mapY; offset-first sums	retail push ecx frame slot for mapY, x/y kept in edi/ebp; ours homes mapY in y arg slot
+00b43870	HELD	a:327v324(57)	named dx/dy offset locals	PeekThemeId residue: push ecx frame slot for mapY
+00b27d90	HELD	a:328v325 b:328v325	bool[2] array; const& manager alias	VC7.1 merges the two adjacent shader-enable byte reads into one word read (ax/ah)
+00eb3f40	HELD	a:378v381 b:378v381	zero local inside filter scope; drop dead locals	retail keeps dead zero dword at frame base below the filter and mov bl,al of DoesAssassinTrustHero (dead value retention)
+00ba4a40	HELD	a:447v463 b:461v463	loop through blocks local; frame re-read from bank	register swap ebp/ebx primitive vs block pointer (baseline best 466v463)
+00d38d20	HELD	a:535v526 b:SRC_FAIL c:529v526	for(;;)+break outer loop; begin()+i; villager reference	block layout (loop-exit free+DeregisterTimer placed before return copies) + lea vs mov/add &Villagers[i]
+00f07b80	MATCHED	a:794v842 b:RELOCATION_MATCH	for(;;){if(cond)break;} instead of while(!cond) (tail-merge survivor)	-
+00b40260	HELD	a:419v1037	layer loop (not unrolled, worse)	inlined PeekThemeId arg-slot/register allocation; NOTE base calls the inline PeekLayerValue but 0x00B43720 is PDB ?PeekThemeId@CEngineMap@@QBEJJJJ@Z
+00be2cd0	HELD	a:1091v1088(150)	triangle pointer local	register/slot allocation (ebx zero, edi=1 constant, shared value/triangleCount slot)
+00c35dd0	HELD	a:85v89 b:90v89 c:90v89 d:90v89	ternary IsReady; named-bool IsComplete (2 forms); named-bool IsReady	retail keeps dead second test/je on +0x5C data word; VC7.1 folds it (bool forms give setne/test al instead)
+00c35e30	IMPROVED	a:108v110(3) b:106v110 c:106v110	unsigned count<=0 in IsCurrentValid (second branch kept as jbe, no re-test)	retail re-tests the +0x5C word (test eax,eax;je); NOTE same object/sink as 00c35dd0 CAudioSample (+0x5C/+0x6C/+0x78, SetError 0x00C3D090) -> likely a libpk AudioSample_* API, name unproven
+00c425e0	HELD	a:225v217 b:209v217	one || failure test; result-local && form	retail hoists codec this (lea ecx) above Initialize branch; pDest temp edx
+00c69a70	HELD	a:198v236 b:240v236 c:240v236 d:240v236	length<<2 (worse); bytes local; m_length re-read; const& length	memset count: retail mov/shl before the stores, ours lea [ebx*4] after early buffer re-read
+00b242d0	IMPROVED	a:265 b:295 c:289v293(31->8 lines) d:297	direct screen.Y store + X via position.X	X spill to dead transform slot + X/Y final store order
+00b451d0	HELD	a:302v306 b:302v306	result declared before fog; aggregate fog initializer	frame: fog matrix vs by-value param copy 48-byte blocks swapped
+00f35c60	HELD	a:312v316 b:312v316	b11 load moved to last corner (stmt; embedded)	x87/integer scheduling: VC hoists b11 load regardless of source position
+00c1a870	HELD	a:332v321 b:343v321	block-scoped value local; Find into (void**)&file	frame: retail homes trace CString in dead value slot (0x10 frame), VC7.1 opens 0x14
+00bbcc70	HELD	a:415v415(46 vs base 40 lines) b:474v415	const& value SetState; const& core	SetState register roles (esi default value, scoped ebp temp)
+00c42850	HELD	a:458v454	split Read/Id early-fail tests	zero register: retail keeps 0 in ebx (late push ebx after separate early-fail epilogue)
+00b8ccf0	IMPROVED	a:475v487(46->21 lines) b:495 c:495 d:495	stepwise member += of wind*speed	products-first then in-place adds (x87 scheduling)
+00e1cae0	HELD	a:564v568	for(;;)+break outer loop	handle local implicit dtor inlined at 3 of 4 exits (tail-merge copies)
+00b68da0	HELD	a:603v607	ternary shadow-mode bool	count/entries register swap, RenderFlag extraction, sete vs mov al,1 bool, loop alignment
+00b420f0	HELD	a:658v662	ReadEntryData with buffer.size()	register: entry kept in ebx/zero in edi vs retail [ebp+8] reload, this in edi, zero in ebx
+00f3cf50	HELD	a:679v683	separate loop counters per loop	allocator temp in dead arg slot [esp+4c] vs fresh frame byte; i*2 strength reduction
+00e96110	HELD	a:1360v1356	HeroInside == false compare	zero promoted to ebx for whole body (retail), ebx to timer index (ours)
+00b97c10	HELD	a:155v150 b:155v150	pointer-param forceinline DecrementRefs (two forms)	pair temp zero stores before pushes; count re-read (dec [eax];cmp [esi],0) vs retail dec [esi];jne
+00c62790	MATCHED	a:RELOCATION_MATCH b:269v264	statement order: local += before member += (member RMW folds to add [mem],reg)	-
+00c4dc40	HELD	a:452v446	module local	GetProcAddress import not cached in ebp by this build
+00c2da20	IMPROVED	a:443v448 (Size/Offset load order fixed) b:same	commutative operand order Offset+Size	mov ecx,ebp hoist above failure branches
+00b80ce0	HELD	a:687v682	named E32*E23 product local	x87 commutative canonicalisation of cofactor fld/fmul operands; c0*inv frame word
+00b31160	HELD	a:891v886	&DebugScript[0] + index pointer form	in-loop index recompute register roles, integer-copy rotation, Normalise this lea scheduling
+00bd71b0	IMPROVED	a:2116v2116(295->288) b:same	retail_asm FtoL (fld/mov edx/fistp) replacing volatile stand-in; radius operand order	frame 0x290 v 0x294, radius load hoist, register drift
+00b2f760	HELD	a:101v95 b:69v95	named direction local; init-list copy	temp C3DVector reloads (X/Z from frame) vs retail X only + edx forwarding, store sinking
+00cfcca0	HELD	a:280v274 b:280v274	for(;;)+break final loop; for(;;)+break StartScripting loop	lane tail-duplicates the final loop test instead of jmp to bottom test
+00cef3b0	HELD	a:399v405 b:399v405	for(;;)+break outer; break for the message-branch exit	retail calls ~CTimer out of line on one exit (0x00CD4470) + separate in-loop deregister tail; lane inlines all four
+00d34b30	HELD	d2:508v480 d3:474v480	#pragma inline_depth(2/3)	copy ctor inlined in raw-end copy loops (retail calls 0x004ABE90 there, inline only for x_copy)
+00e36750	HELD	a:541v536	explicit early return after the wait loop	tail merge: retail keeps the post-wait Destroy/DeregisterTimer/ret exit separate
+00b4f8e0	HELD	a:796v811(111 vs base 109) b:794v811	no texture references (casts per use); CPixelFormat(long) ctor for depth format	zero register ebx (ours), scheduling of second technique, -1 seeds
+00b2b9b0	HELD	a:965v971	null test on info.Cache before the cache local	register: info ebx->cache overwrite (retail) vs info ebp + cache spill to arg slot
+00e37e40	HELD	a:1097v1103 b:same c:1097v1103(40)	named guard bool (&& / || forms); for(;;)+break camera loop	bool materialisation order (temp-flag ebx path), IsCameraPosOnScreen exit layout
+00e4aa00	HELD	a:1362v1356	named attack bool	block placement: angered block vs inline handle-dtor loop exit order
+00eb5750	HELD	a:1542v1536	block-2 exit label block moved before the normal tail	tail-merge survivor choice between byte-identical exits of block 1/2
+00bf2240	HELD	a:1567v1589	colour by const reference	colour copy slot (distance vs effect arg slot), B/R in bl, SetState or/test commutation, C4DVector copy rotation
+00d43190	HELD	a:233v226 b:168v226	break from StartScripting loop into final test; /Os pragma	final loop entered by jmp to bottom test in retail; lane duplicates the test (same family as 00cfcca0)
+00cbc130	HELD	a:291v284	block-scoped oldSize	frame: old size/len separate words (retail one push-ecx word, new start in dead fillLen slot), fillLen/newFinish edi/ebx swap
+00bcfb00	HELD	a:353v336	block count re-read per iteration	inline DrawIndexed homes counts in frame words, manager in ebx; primitive esi vs edi
+00eb2140	HELD	a:651v658	predicate as full-expression temporary	retail leading dead mov [esp+8],0 (frame word later reused by CCharString temp; same TU signature as 00eb3f40)
+00c0b7b0	HELD	a:175v167	snap stores reordered	integer copy eax/edx roles; x87 copy of c at value += c3*c
+00b905a0	HELD	a:295v280	early-return chain	shrink-wrap: retail pushes ebx/esi/edi after early-outs; lane pushes ebx in prologue
+00ed9bb0	HELD	a:187v306	explicit CCharString(text,-1) temporaries	retail zeroes the temp's frame word at entry (no EH frame); same dead-zero signature as 00eb3f40/00eb2140
+00eb55d0	HELD	a:362v370	identical trust-conditional arms (late tail-merge hypothesis; merged early, inert)	dead entry zero dword + dead mov bl,al (same family as 00eb3f40)
+00c5a9d0	HELD	a:390v382 b:390 c(no /Op):392 d:394	explicit float cast; named milliBel; drop /Op; double product	/Op int->float rounding store (fild;fstp;fld) retail lacks; without /Op reciprocal multiplies
+00b903d0	HELD	a:456v464	signed loop index	loop register allocation (primitive ebp, strip flag/stride ebx, index buffer homed in arg slot)
+00e6ad20	HELD	a:513v505	for(;;)+break loop	zero register edi for inline ~CScriptThing compares (retail)
+00edc980	HELD	a:513v505	named predicate local in a block	zero register edi (twin of 00e6ad20)
+00bc6930	HELD	a:522v530(101) b:492 c:522	Y*m3+Z*m6+X*m0 term order; const& position; memberwise pos copy	retail loads X/Y on FPU + int-copies Z and spills views eagerly; ours int-copies X/Y
+00b16aa0	HELD	a:673v681	named tangent delta vector	x87 scheduling/temp slots, Normalise square order
+00f3e6b0	HELD	a:911v920	neighbour by const reference	section-2 register allocation (v*12 esi/ebx, ushort narrowing movzx)
+00beb6c0	HELD	a:956v978	toPosition built after PreMultiply	x87 term order/CSE scheduling in inlined translation multiplies
+00cfce90	HELD	a:1845v1852	staged hit bool (|| split into two statements)	hit block: cached Game ebx vs ebp, bool frame byte vs bl, movie dtor out-of-line copy at in-block returns
+00ee82d0	HELD	a:160v181	for(;;) with named loaded bool	dead entry zero store into the CCharString temp slot (family: 00eb3f40/00eb2140/00ed9bb0/00eb55d0) + loop-head nop
+00bcee20	HELD	a:342v351	GetSafeBoundingRadius over radius/centre locals	x87 schedule (Z-term first sums) + frame 0x50 dead slot
+00bc7660	HELD	a:701v692	layer by value	inline GetFrameTexture tail cross-jump placement
+00d90290	HELD	a:711v702	for(;;)+break inner loop	zero register ebp (push ebp/cmp eax,ebp) and string-arg/vtable load order
+00f36860	IMPROVED	a:455 b:453v451(22 lines) c:461 e:461	weight declared before result (x87 value kept live)	result/weight store order; tail sum kept on stack
+00f39730	IMPROVED	a:794v796 b:798 c:794(33)	capture-block mask as assignment *2 (load-modify-store)	0xF constant in ebx (push ebx) and size load order
+00e29b20	HELD	a:859v846	for(;;)+break region loop	block placement of the post-region-loop Deregister+ret copy
+00cbaba0	IMPROVED	a:212v207(5 lines) b:same c:same	block-local ~CCountedPointer	dec-flags vs count re-read after RMW decrement
+00b84b20	HELD	a:221v232	element alias pointer in loop 1	loop-1 register allocation (source edx/count edi/index esi) + alignment pad
+00b439c0	HELD	a:345v356	argument-first map offsets	Peek family: push ecx frame slot for mapY (see 00b43720)
+00bcf4f0	HELD	a:363v374	VC stdlib __min for the scale	x87: retail reloads stored Scale, VC forwards and reassociates
+00b412a0	HELD	a:1070v1081	argument copies px/py	Peek family inlined PeekThemeId register/spill; NOTE inline named PeekLayerValue, retail 0x00B43720 is PDB PeekThemeId
+00b60f70	HELD	a:1832v1823(254 vs base 121 lines)	const& SetState value	constant 0 in ebp + this spilled (ours) vs this in ebp, immediates (retail)
+00bfa920	HELD	a:333v346	ternary flags	zero/0xFF constant registers (ebp/ebx), flags edi vs edx
+00b92950	HELD	a:719v707	renderMask & GetCellRenderMask operand order	early return-false epilogue placement, mask test from memory, this/inside slots, loop scheduling
+00c88cd0	IMPROVED	a:62v62(13 lines) c:same d:same	dst copy p stored through after pointer steps	block count eax->esi copy/prologue order
+00bba1e0	HELD	a:30v82 b:30v82	implicit dtor + forceinline member dtors; plain inline user dtor	implicit dtor not inlined into ??_G by the lane (retail inlines it with no derived vptr store)
+00bc7db0	HELD	a:161v154	by-value centre copy for the radius	x87 commutative order of the X sum and radius spill pattern
+00d6bac0	HELD	a:174v187	for(;;)+break distance loop	dead entry zero store into an extra push-ecx local (family 00eb3f40/00ee82d0)
+00c371c0	HELD	a:242v255(invalid: dropped early return) b:242v255	merged Steps/paused test; == true dirty test	zero register ebx (ours) vs immediates/test on loads (retail)
+00b3bc90	HELD	a:SRC_FAIL b:386v371	assigned name (no default ctor); named prefix string	string temporaries' frame slots; entry index edi vs ebx
+00f3a890	HELD	a:844v857	switch on bytes	Flags kept in ebp across operator=, ebx zero, this spilled (retail)
+00f00c90	HELD	a:1190v1203	break instead of return at loop-head terminate test	paused game pointer ebx vs ebp, GetHealth bool spill, frame 0x4c v 0x48
+00bb17d0	HELD	a:129v115	single temp expression (no locals)	retail keeps R,G on FPU and spills only B,A through the temp
+00c34630	MATCHED	a:RELOCATION_MATCH	const& view of the record for the self-copies (keeps load/store, blocks hoist) - volatile-candidate lever	-
+0122ae7e	MATCHED	a:33 b:33 c:38 d:38 e:32 f:32 g:RELOCATION_MATCH h:29	object copy + const long& count view (re-read after RMW without volatile)	-
+01228b70	MATCHED	g:RELOCATION_MATCH p:36v40 (+4 earlier)	object copy + const long& count view (0x0122AE7E shape)	-
+00c35290	HELD	a:242v220 b:242v220	const view for compare / subtract (no intervening store, inert)	m_pos cached in register; retail memory RMW forms + zero in edi
+00b4ac10	HELD	a:861v826	converted counted pointers as call-expression temporaries	count block kept in ebp across the call + dec-flags release (retail); ours reloads from frame
+00ba1140	IMPROVED	a:2345v2344(158 lines)	retail_asm FtoL x2 replacing volatile stand-ins	frame 0x294 v 0x298 + register swaps
+00c14b50	RELOCATION_MATCH	a:60v109 b:MATCH	early return out of the guarded scope (keeps the /EHsc frame); guard respelled PKCProtectionInstance	-
+00c14bc0	RELOCATION_MATCH	a(/EHa):114v109 b(/EHa const view):112v109 c:MATCH	early return out of the guarded scope (keeps the /EHsc frame); guard respelled PKCProtectionInstance	-
+00b6df50	HELD	base:43v54 a(__min):38v54 b(STLport min const&):53v54 c(min a<b):53v54 d(clamp stmt):38v54	stdlib __min / STLport min / index clamp	retail re-reads _M_start/_M_finish in the clamp branch and again for the index (no CSE of size()); ours CSEs size()-1
+00b6df90	HELD	base:43v54 a(__min):38v54	stdlib __min (twin of 00b6df50, whose b-d also failed)	same as 00b6df50: retail re-reads the vector bounds in the clamp branch; ours CSEs size()-1
+00b6dfd0	HELD	base:43v54 a(__min):38v54	stdlib __min (twin of 00b6df50, whose b-d also failed)	same as 00b6df50: retail re-reads the vector bounds in the clamp branch; ours CSEs size()-1
+00b48be0	RELOCATION_MATCH	base:DIFFER(3 lines over true extent) a:MATCH	BOUNDS_FIX true extent + free-list loop without entry temp; catalog name respelled to the PDB template ctor (NAME_FIXES)	-
+00b48cb0	RELOCATION_MATCH	base:DIFFER(3 lines over true extent) a:MATCH	BOUNDS_FIX true extent + free-list loop without entry temp; catalog name respelled to the PDB template ctor (NAME_FIXES)	-
+00b48d80	RELOCATION_MATCH	base:DIFFER(3 lines over true extent) a:MATCH	BOUNDS_FIX true extent + free-list loop without entry temp; catalog name respelled to the PDB template ctor (NAME_FIXES)	-
+00dc3ea0	RELOCATION_MATCH	base(/EHsc):30v50 a(no EH flags):MATCH	TU flags: drop the parked /EHsc (same-TU landed rows carry none); catalog placeholder name replaced by the PDB symbol	-
+00dcc000	RELOCATION_MATCH	base(/EHsc):30v50 a(no EH flags):MATCH	TU flags: drop the parked /EHsc (same-TU landed rows carry none); catalog placeholder name replaced by the PDB symbol	-
+00c0af90	HELD	base:193v193(7) noEH:150v193 a(float local):208v193 b(return exprs):210v193 c(float local, assignment form):208v193	float local / per-branch returns / no-EH TU check	retail keeps the double-typed value on the x87 stack but compares/adds with float (dword) constants; a double local gives qword constants, a float local is spilled to the frame
+00c44090	HELD	base:99v99(2) a(manager ref):same b(inline report helper):same c(long result):same	manager reference / inline helper / long-typed result	retail loads ecx=&g_AudioManager before push eax for ReportResult; ours pushes first (one-instruction order)
+00c44100	HELD	base:99v99(2) a(manager ref):same	manager reference (twin of 00c44090, whose b/c also failed)	same as 00c44090: mov ecx,&manager / push eax order
+00c71e10	HELD	base:126v126(13) a(merged case labels):120v126 b(inline TranslateEAXError default):126v126(14) c(case order):120v126	case-label merge / inline translate helper / case order	block placement: retail parks the shared 'return 0' and 'return -3' blocks after the a005 tail (jmp into the je); ours places them inline after the switch compare
+00c71e90	HELD	base:126v126(13) a(merged case labels):120v126	case-label merge (twin of 00c71e10, whose b/c also failed)	same block placement as 00c71e10
+00d910b0	HELD	base:369v369(8) a(delay local):same b(goto exit label):same	hoisted-delay local / goto to the exit block	retail hoists mov ecx,[g_pGameScriptInterface] above the IsDone() break (both successors use it; the break lands after the exit block's load); ours loads it in each block
+00d9eb30	HELD	base:288v288(4) a(reference local for the argument):same	argument reference local	retail builds the SetTarget argument in eax with mov ecx,esi between lea and push; ours lea ecx/push ecx then mov ecx,esi (same push-order family as 00c44090)
+00beeda0	HELD	base:147v147(5) a(SLongPair user copy ctor):same b(CEngineTextureDecal user copy ctor):same	explicit member-wise copy ctors on the pair halves	retail loads value.first.second into edx before sub esp,1Ch when copying the by-value argument; ours after
+00bf0740	HELD	base:992v992(2) a(zero local hoisted to entry):same	zero-local placement	prologue order only: retail pushes edi before loading ecx=g_pShaderRenderManager; ours loads ecx between push esi and push edi (SetState register-role family)
+00be37e0	HELD	base:285v289 bounds:285v287(15) a(x before y):same b(flags before x/y):285v287(13)	BOUNDS_FIX (catalog span swallowed the int3 + one-byte ret body at 0x00BE3900) / local declaration order	register colouring: retail keeps x (+4) in ebx and spills y (+8), ebp holds 0 for cmp edi,ebp, and IndexBuffer goes through eax; ours swaps x/y and tests edi; 2 bytes short
+00b50370	HELD	base:406v406(13) a(chained 32/8 assignments):same	chained constant assignments	constant register promotion: retail keeps 8.0 in ecx, 0.1 in edx and 1.0 in eax across the store run in source order; ours reloads eax and groups the same-constant stores
+00be5e70	HELD	base:302v302(38) a(member initializer list):308v302(50)	initializer list in declaration order	store scheduling of the 14 parameter copies: retail interleaves word loads/stores Height,Width,MapY,MapX,... with Parent stored last; ours follows source order
+00f05a10	HELD	base:1312v1312(21) a(member reference for the GetHero pair):1312v1312(19, different spill)	member reference local	argument scheduling around the two EntitySetThingAsEnemyOfThing(GetHero) calls (vector-base/Game load order, eax/edx vs ecx) shifting one alignment pad
+00ee2490	HELD	base:1334v1334(2 insns) a(pointer helper):same b(inline IsScripting/Release):1336v1334	pointer-param helper / inlined release	one coalescing choice: retail mov eax,[esi+14h]; lea ebp,[eax+48h], ours mov ebp,[esi+14h]; add ebp,48h
+00e2e400	HELD	base:59v57(10) a(plain inline operator=):same b(no duration temp):same c(variation temp):58v57 d(explicit interface local):59v57	operator= inlining / temporaries / interface local	retail loads the SetTimer vtable into edx after the subtract (no ebx save); ours loads it into ebx before and pushes/pops ebx (+2 bytes)
+00f3fb60	HELD	base:63v36 a(resize(n,T()) direct temp):63v36 b(experiment: trivially destructible 12-byte element):36v36(5)	direct temporary / element-type probe	retail destroys no fill temporary after the two-argument resize call, so the 12-byte element is trivially destructible -- the propagated CArray<unsigned short> element (non-trivial ~vector) cannot be right; with a POD element only the edx/eax roles of the two pushes differ. Name unproven (name_review/00f3fb60.txt)
+00e64d10	RELOCATION_MATCH	base:104v116 a(shared CCountedPointer.h):MATCH	shared engine/CCountedPointer.h replaces the local (T*) ctor model; catalog placeholder name replaced by the PDB symbol	-
+00b84190	HELD	base:36v75 a(in-class base dtor):36v75 b(__forceinline base dtor):30v75 c(implicit derived dtor):30v75 d(a+c):30v75 e(inline_depth 255):36v75	dtor inlining shapes	retail expands ~Derived -> ~CEngineClothSimulationMeshBase (ClearParticleSims, __destroy_aux over ParticleSims, free) -> ~CBaseClassNonCopyable call into the deleting dtor; VC7.1 here keeps one dtor out of line
+00b2c4e0	RELOCATION_MATCH	base:1042v1009 ccp:MATCH	shared engine/CCountedPointer.h replaces the local model (register/frame residue gone)	-
+01223f00	HELD	base:71v88 a(file-scope globals, no anonymous namespace):same	global linkage	VC7.1 here folds the inline-ctor initialisation of the static font-cache buffer into .data (no _$E dynamic initializer is emitted; the graded symbol is the out-of-line ctor); retail runs it as a dynamic initializer of constant stores
+01223f60	HELD	base:71v93 a(file-scope globals, no anonymous namespace):same	global linkage	VC7.1 here folds the inline-ctor initialisation of the static font-cache buffer into .data (no _$E dynamic initializer is emitted; the graded symbol is the out-of-line ctor); retail runs it as a dynamic initializer of constant stores
+00be24d0	HELD	base:36v54 a(4-arg ctor temporary):40v54 b(ctor local through const&):40v54 c(member-wise zero local):40v54	temporary shapes	retail keeps a 0x10 frame temporary whose four dead zero stores are scheduled after the member copy (copy-propagated esi=0); VC7.1 here SROAs it (dead-zero-store family)
+00be2540	HELD	base:38v56 c(member-wise zero local):42v56	member-wise zero local (twin of 00be24d0, whose a/b also failed)	same dead frame-temporary zero stores as 00be24d0
+00bf2980	HELD	base:113v96 a(child local):same b(explicit this->, !=0):same c(while loop):113v96	child local / explicit this / while loop	retail keeps this in ebp and indexes Children[i] directly ([edi+esi*4+1Ch]); VC7.1 here strength-reduces the index into ebp and spills this to a push-ecx slot (+17 bytes)
+00c780c0	HELD	base:116v133(40) a(width*spread*sign product order):116v133 b(indexed taps):133v133(44) c(sign pointer + indexed panB):128v133(41)	product order / indexing / separate sign pointer	retail runs four induction variables (sign pointer edi, byte offset eax, panA dst edx, panB dst esi) and multiplies width*spread*sign; ours derives them from one or two
+00b24400	HELD	base:223v238(21) a(member-wise view vector, Y first):221v238(26) b(named result temporary):223v238(21)	member-wise view vector / result temporary	x87 scheduling: retail loads screen.Y before the X term, spills view X to [esp] (reused as the result X) and keeps a 0xC result temporary; ours keeps X on the FPU
+00bbce10	RELOCATION_MATCH	base:175v154 a(direct [id] uses):161v154(6) b(+STLport __prev):158v154(2) c(helper long param):MATCH d(PDB list<long>, no helper):MATCH	PDB element type (list<long>) + direct indexing + STLport __prev insert	-
+00c461e0	HELD	base:135v163(71) a(const& Lerp params):126v163(67) b(factors.X read per lerp):131v163(74)	Lerp reference params / no x local	x87 scheduling: retail spills x into the dead factors argument slot (re-stored before the second pair) and multiplies from memory, keeping a 0x10 frame for c04/c15; ours keeps x on the FPU
+00b99bb0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(461v475) (171 diff lines)
+00ddc070	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(611v597) (17 diff lines)
+00f03980	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1448v1434) -> Z:\home\user\FableDecomp\rebuild\include\engine\CCountedPointer.h(102) : error C (hdr/00f03980.cpp kept when it compiled)
+00e70460	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1651v1665) -> Z:\home\user\FableDecomp\rebuild\include\engine\CCountedPointer.h(102) : error C (hdr/00e70460.cpp kept when it compiled)
+00b8d0d0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(414v429) (148 diff lines)
+00b20d30	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(563v578) (247 diff lines)
+00b94540	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(679v664) (259 diff lines)
+00dc4600	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: no local model block to move
+00d33280	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1205v1190) -> 00d33280_ccp DIFFER(1205v1190) (53, 363) (hdr/00d33280.cpp kept when it compiled)
+00b62440	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(389v405) (65 diff lines)
+00b99300	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(855v871) (42 diff lines)
+00b50fb0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(1034v1018) (97 diff lines)
+00d91960	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1101v1085) -> Z:\home\user\FableDecomp\rebuild\include\engine\CCountedPointer.h(102) : error C (hdr/00d91960.cpp kept when it compiled)
+00b22670	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1201v1217) -> Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scra (hdr/00b22670.cpp kept when it compiled)
+00b81f30	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(472v455) -> 00b81f30_ccp DIFFER(469v455) (226, 165) (hdr/00b81f30.cpp kept when it compiled)
+00c0b570	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(417v435) (42 diff lines)
+00b9c2e0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(476v494) (218 diff lines)
+00e6b900	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(860v841) -> 00e6b900_ccp DIFFER(860v841) (53, 265) (hdr/00e6b900.cpp kept when it compiled)
+00b939e0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(316v336) (59 diff lines)
+00beab40	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(325v345) (130 diff lines)
+00bd2a90	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(197v218) -> 00bd2a90_ccp DIFFER(197v218) (46, 74) (hdr/00bd2a90.cpp kept when it compiled)
+00c3da60	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(261v282) (15 diff lines)
+00e20210	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(979v956) -> 00e20210_ccp DIFFER(979v956) (106, 288) (hdr/00e20210.cpp kept when it compiled)
+00c28400	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(285v310) (87 diff lines)
+00c3f800	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(330v356) (98 diff lines)
+00b206b0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(799v773) (94 diff lines)
+00bd6810	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(868v894) (129 diff lines)
+00bdf100	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(637v610) (266 diff lines)
+00b46a30	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(322v350) (40 diff lines)
+00bfd7c0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(1203v1231) (265 diff lines)
+00be7be0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(361v391) (121 diff lines)
+00c3a7d0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(304v273) (47 diff lines)
+00c72200	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(737v770) (59 diff lines)
+00ee91e0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(575v613) -> 00ee91e0_ccp DIFFER(575v613) (17, 195) (hdr/00ee91e0.cpp kept when it compiled)
+00b2c010	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(953v993) (302 diff lines)
+00ef5840	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(768v727) -> 00ef5840_ccp DIFFER(768v727) (14, 219) (hdr/00ef5840.cpp kept when it compiled)
+00da71e0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1507v1549) -> 00da71e0_ccp DIFFER(1507v1549) (103, 481) (hdr/00da71e0.cpp kept when it compiled)
+00b4ced0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(787v831) (316 diff lines)
+00d20a40	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1433v1478) -> 00d20a40_ccp DIFFER(1433v1478) (122, 440) (hdr/00d20a40.cpp kept when it compiled)
+00d05a60	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: no local model block to move
+00d06130	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: no local model block to move
+00c0c270	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(383v433) (54 diff lines)
+00bf2b50	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(732v682) (262 diff lines)
+00b40670	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(1072v1125) (483 diff lines)
+00be06b0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(264v322) -> 00be06b0_ccp DIFFER(286v322) (104, 120) (hdr/00be06b0.cpp kept when it compiled)
+00e2eac0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(304v363) (106 diff lines)
+00d2d1a0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(556v620) -> 00d2d1a0_ccp DIFFER(556v620) (55, 190) (hdr/00d2d1a0.cpp kept when it compiled)
+00bade40	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(726v793) (221 diff lines)
+00ef4320	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(492v420) (77 diff lines)
+00f281e0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(558v481) (108 diff lines)
+00bc2480	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(374v294) (142 diff lines)
+00d17a80	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(705v785) (99 diff lines)
+00e03f70	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1986v1906) -> 00e03f70_ccp DIFFER(1986v1906) (138, 593) (hdr/00e03f70.cpp kept when it compiled)
+00b41a80	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(329v424) (164 diff lines)
+00c61610	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(1196v1292) (316 diff lines)
+00c41fb0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(1469v1570) (296 diff lines)
+00f277f0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(601v493) (133 diff lines)
+00b93b30	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(282v395) (171 diff lines)
+00dc08c0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1714v1830) -> 00dc08c0_ccp DIFFER(1714v1830) (104, 542) (hdr/00dc08c0.cpp kept when it compiled)
+00cddcb0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(1605v1475) (78 diff lines)
+00f361d0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(740v873) (437 diff lines)
+00f3ba70	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(684v853) (372 diff lines)
+00bfad90	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(18v1151) (386 diff lines)
+00bfa2a0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(93v1533) (590 diff lines)
+00b277a0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(3v1446) (404 diff lines)
+00b30b50	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(3v1499) (430 diff lines)
+00be6880	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(19v1776) (417 diff lines)
+00f37660	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(234v776) (454 diff lines)
+00bee070	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: no local model block to move
+00b49810	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(294v319) (148 diff lines)
+00b9c500	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(300v328) (155 diff lines)
+00e7de60	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(356v372) (44 diff lines)
+00f36d30	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(376v419) (79 diff lines)
+00b20ba0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(397v391) (100 diff lines)
+00becde0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(340v551) (252 diff lines)
+00f04000	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(624v630) (53 diff lines)
+00b5c120	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(580v821) (132 diff lines)
+00be95f0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(811v808) (278 diff lines)
+00bf1ee0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(837v855) (66 diff lines)
+00b1d550	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline OBJDUMP_ERR (177 diff lines)
+00b1d790	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline OBJDUMP_ERR (279 diff lines)
+00b1dc70	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline OBJDUMP_ERR (277 diff lines)
+00b1dfd0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline OBJDUMP_ERR (238 diff lines)
+00d9c680	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline OBJDUMP_ERR (628 diff lines)
+00d43db0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	shared CCountedPointer.h pre-screen: base DIFFER(1665v1799) -> 00d43db0_ccp DIFFER(1665v1799) (73, 560) (hdr/00d43db0.cpp kept when it compiled)
+00c17640	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(203v250) (58 diff lines)
+00b61dd0	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(521v532) (21 diff lines)
+00f28990	NOT_REACHED	-	no hand edit yet (stopped at the lane-time limit)	baseline DIFFER(522v522) (97 diff lines)

@@ -1,0 +1,6 @@
+0x009AE7C0 CompileDefinition callee names not provable to two sources:
+- 0x009B9BA0: landed and labelled CStringParser::FindKeyword (also NextItemIs in chunk 249); neither is an Ego_r CStringParser
+  method. Use in CompileDefinition (find "<", skip past it; later skip past the close tag) fits Ego_r ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z.
+- 0x009B9E00 (unlanded): saves CursorPos, skips whitespace (0x009B9C60), compares the argument char by char -- fits Ego_r
+  ?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z (used here as SkipPastNextItemIfIs(">")).
+- 0x009BBBF0 (unlanded): ~CPersistContext (destroys the stack context) -- Ego_r has no out-of-line ??1CPersistContext.

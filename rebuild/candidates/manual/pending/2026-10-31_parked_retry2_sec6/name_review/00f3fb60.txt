@@ -1,0 +1,6 @@
+0x00F3FB60 vector<T>::resize(size_type) wrapper -- catalog/Leaf ?resize@?$vector@V?$CArray@G@@...@std@@QAEXI@Z (manifest label is _Umove<EWeaponClass*>).
+Evidence against the CArray<unsigned short> element: retail zero-fills a 12-byte temporary, calls resize(n, const T&) 0x00F3FAF0
+and returns with no destructor call for the temporary (36 bytes). A CArray<unsigned short> element (STLport vector) has a
+non-trivial destructor, which VC7.1 emits after the call (63 bytes). A trivially destructible 12-byte element reproduces the
+retail shape (36v36, push-register roles only). The element type (and so the mangled name) is unproven; the callee 0x00F3FAF0
+is 12-byte-element resize (erase 0x00F3F7C0 / insert 0x00F3F960, /12 via 0x2AAAAAAB).

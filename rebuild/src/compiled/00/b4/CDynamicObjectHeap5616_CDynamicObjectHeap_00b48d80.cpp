@@ -1,0 +1,11 @@
+// CDynamicObjectHeap<56,16>::CDynamicObjectHeap(bool allowHeapToGrow) -- initialize the heap and push its embedded entries onto the free list.
+// Leaf: ??0?$CDynamicObjectHeap@$0DI@$0BA@@@QAE@_N@Z
+// Grade: RELOCATION_MATCH over the true extent (BOUNDS_FIX.tsv: the catalog span ran into an unlisted body) -- free-list
+//   loop written as Blocks[i].NextEntry = FreeList; FreeList = &Blocks[i] (no entry temp)
+// Identity: proven; own vtable012A20FC complete RTTI CDynamicObjectHeap<56,16> and both PDB constructor(bool) API; own FreeList+14/StartBlock+18 and member growflag+39C; original base constructor00F36C60 and original CDynamicObjectHeapBase RTTI; exact embedded16 entries of stride56.
+// Original base contract: own full RTTI and N357 prove CDynamicObjectHeapBase private pure Release and derived private override. Keep per-iteration FreeList stores: this retail16-entry loop reloads/stores the member each compiler-unrolled group, unlike large static heaps with a final publication.
+// Layout: genuine original CDynamicObjectHeapBase primary virtual base20 and original template/nested block types, same source structure as landed24/853 constructor. No shared heap header. Original Release slot1 declared. Full embedded block and trailing grow flag retained; no foreign holder or separate flag global.
+class CDynamicObjectHeapBase{public:virtual ~CDynamicObjectHeapBase();long AllocCount,TotalAllocatorBlocks;bool RefCountReleaseEnabled;CDynamicObjectHeapBase* HeapNext;CDynamicObjectHeapBase();private:virtual void Release()=0;};
+template<long ObjectSize,long BlockCount>class CDynamicObjectHeap:public CDynamicObjectHeapBase{public:struct CObjectEntry{CObjectEntry* NextEntry;unsigned char Pad[ObjectSize-4];};struct CObjectAllocatorBlockEntry{CObjectEntry Blocks[BlockCount];CObjectAllocatorBlockEntry* NextEntry;};CObjectEntry* FreeList;CObjectAllocatorBlockEntry StartBlock;bool AllowHeapToGrow;CDynamicObjectHeap(bool);virtual ~CDynamicObjectHeap();private:virtual void Release();};
+template<long ObjectSize,long BlockCount>CDynamicObjectHeap<ObjectSize,BlockCount>::CDynamicObjectHeap(bool allowHeapToGrow){AllowHeapToGrow=allowHeapToGrow;FreeList=0;StartBlock.NextEntry=0;for(long i=0;i<BlockCount;++i){StartBlock.Blocks[i].NextEntry=FreeList;FreeList=&StartBlock.Blocks[i];}}
+template class CDynamicObjectHeap<56,16>;

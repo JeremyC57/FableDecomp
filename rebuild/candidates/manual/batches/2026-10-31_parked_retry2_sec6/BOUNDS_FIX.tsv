@@ -1,0 +1,5 @@
+address	catalog_length	true_length	evidence
+00b48cb0	137	89	ret 4 at 0x00B48D06 then int3 pad; next body (unlisted) follows the pad
+00b48d80	137	86	ret 4 at 0x00B48DD3 then int3 pad; next body (unlisted) follows the pad
+00b48be0	137	84	ret 4 at 0x00B48C31 then int3 pad; next body (unlisted) at 0x00B48C40
+00be37e0	289	287	ret 0Ch at 0x00BE38FC, one int3, then a separate one-byte 'ret' body at 0x00BE3900
