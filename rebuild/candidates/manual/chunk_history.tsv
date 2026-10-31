@@ -25278,3 +25278,13 @@ chunk	address	module	name	length
 624	004310a7	CPersistContext	CPersistContext::TransferWideString	91
 624	00431143	CPersistContext	CPersistContext::TransferString	91
 624	00806c80	global	fill<C3DAnimationStateAlpha*,C3DAnimationStateAlpha>	98
+625	009bee40	CDisplayManager	SetupDepthAndBackBufferTextures	101
+625	0093cab0	CAIStateGroup_NonVillageGuardPatrol	FindNextGuardPatrolPosition	104
+625	0051d870	CLODDynamicBuildInfo	~CLODDynamicBuildInfo	104
+625	00c0a790	CEngineWaterBackgroundSubPatch	CEngineWaterBackgroundSubPatch	106
+625	006c0f00	CTCBuyableHouse	CreateMainSignPost	109
+625	00c720c0	global	Math_ConvertToPowerOfTwo_or_ComputeScale	111
+625	005fa990	CTCInventoryMap	GetGuildSealRecallRegion	111
+625	005c8101	CTCInventoryWeapons	PutWeaponsInSheathes	117
+625	00bddf30	CQuadTreeElement	CQuadTreeElement	119
+625	00ec3270	CV_RandomPopulationSimScript	GetCurrentPopulationLevel	123
