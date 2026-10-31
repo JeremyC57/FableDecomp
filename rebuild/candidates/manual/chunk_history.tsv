@@ -25458,3 +25458,13 @@ chunk	address	module	name	length
 642	00911a90	CAIStateGroup_WanderAroundInitialPos	?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ	391
 642	005cb128	CTCInventoryWeapons	RemoveItemFromInventory	392
 642	00713d50	CActionFollowCreature	SetAsSneaking	395
+643	0056f30b	CTCInventoryExperience	CloseInventory	396
+643	00a873e0	CSBAgents	?Process@CSBAgents@@UAE_NPBVCSteeringAgent@@@Z	404
+643	00b50370	CPSCOrbit	CPSCOrbit	406
+643	009faf70	CTexture	GenerateMipmapsWithGPU	407
+643	00871290	CActionEventExplosion	SetDataFromString	408
+643	00c3d470	CCombatRenderer	CCombatRenderer::UpdateRenderState	408
+643	008aac50	std	std::find_if_3d_distance	411
+643	008bf500	CCreatureAction_GenericFireProjectileWeapon	CCreatureAction_GenericFireProjectileWeapon::FinishAction	412
+643	00bbcc70	CEnginePrimitiveManagerParticleGroup	SetupPixelShader	415
+643	00774730	CTCShop	SellItem	419
