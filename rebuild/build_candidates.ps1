@@ -370820,6 +370820,20 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c11d00_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00919780'
+        Module = 'CThingSearchTools'
+        Source = '00/91/CThingSearchTools_GetAllThingsInRoughArea_00919780.cpp'
+        TestSource = '00/91/CThingSearchTools_GetAllThingsInRoughArea_00919780_test.cpp'
+        PassPattern = '00919780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0096bcb0'
+        Module = 'CThingSearchTools'
+        Source = '00/96/CThingSearchTools_GetAllThingsInRoughArea_0096bcb0.cpp'
+        TestSource = '00/96/CThingSearchTools_GetAllThingsInRoughArea_0096bcb0_test.cpp'
+        PassPattern = '0096bcb0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

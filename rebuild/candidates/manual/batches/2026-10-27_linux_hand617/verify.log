@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00919780   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00919780   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00919780   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+00919780   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@IAEXPAPAVCThingGameObject@@ABQAV3@ABU__true_type@2@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+00919780   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+0096bcb0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+0096bcb0   WARN RELOC_NAME: ?GetAllThingMapsInArea@CThingSearchTools@@IBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0096bcb0   WARN RELOC_NAME: ?ClipAndConvertWorldMapAreaToLocalArea@CThingSearchTools@@IBE?AVC2DBoxI@@ABVCThingMap@NThingMap@@ABV2@@Z -> 0049c700 labelled 'CThingSearchTools::GetCellExtents'
+0096bcb0   RELOCATION_MATCH PASS   GetAllThingsInRoughArea
+
+WINS: 2
+  00919780 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThingGameObject@@V?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasTC@@AAV?$vector@PAVCThingGameObject@@V?$allocator@PAVCThingGameObject@@@std@@@std@@@Z
+  0096bcb0 RELOCATION_MATCH CThingSearchTools::??$GetAllThingsInRoughArea@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CThingSearchTools_GetAllThingsInRoughArea_00919780
+  CThingSearchTools_GetAllThingsInRoughArea_0096bcb0

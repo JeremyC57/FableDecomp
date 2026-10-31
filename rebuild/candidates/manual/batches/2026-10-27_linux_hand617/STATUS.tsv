@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x0096BCB0	RELOCATION_MATCH	583v583	PASS (g++ tall.sh + VC tall.py)	src/0096bcb0.cpp: really CThingSearchTools::GetAllThingsInRoughArea<CThing,std::vector<CThing*>,CThingFilter_HasDefGlobalIndex> (PDB leaf in both name sets + filter 0x006A70B0 binding); landed sibling 0x008E3EB0 copied, retemplated; catalog GetPBestThingInRoughArea<HasTrackName,...> is wrong
+0x00919780	RELOCATION_MATCH	590v590	PASS (g++ tall.sh + VC tall.py)	src/00919780.cpp: really GetAllThingsInRoughArea<CThingGameObject,std::vector<CThingGameObject*>,CThingFilter_HasTC> (PDB leaf in both name sets + filter 0x006A80A0 binding); catalog GetPBestThingInRoughArea<CFilter_Bind2<...>> is wrong
+0x0072C430	DIFFER	584v584	-	differ/0072c430.cpp: CTCSpecialAbilities::IsAbilityAvailable QBE (PDB); 15 !HasTC arms load ParentThing into rotating scratch regs, retail reuses dead this (esi)
+0x00555A90	DIFFER	595v595	-	differ/00555a90.cpp: register colouring in the child loops + C2DVector by-value copy order
+0x0063E6F0	DIFFER	599v599	-	differ/0063e6f0.cpp: respelled (reference IsLineOfSight, Peek* accessors, GetFocalPos); list head cached in esi across the search call in retail (whole-program)
+0x00621A20	DIFFER	600v600	-	differ/00621a20.cpp: CDefPointer<const CQuestCardDef> GetPDef respell; register colouring (node esi/edi, vptr eax/edx)
+0x00F3ABF0	DIFFER	605v605	-	differ/00f3abf0.cpp: improved to one scheduling pair (mov ebx,edi before the jle guard in the split loop); private leaf respelled
+0x00965640	DIFFER	612v612	-	differ/00965640.cpp: callees respelled from PDB; this/&PStealableItem ebx/ebp swap
+0x006AD700	DIFFER	615v615	-	differ/006ad700.cpp: improved (Y,Z,X dot-product order now matches); residue the Y product's x87 operand form in away*along
+0x006A4FB0	DIFFER	619v619	-	differ/006a4fb0.cpp: respelled (CMeshIntersectionData, virtual ~CPhysicsMeshObject, Position/Radius); residue the final Normalise X store vs epilogue pops
