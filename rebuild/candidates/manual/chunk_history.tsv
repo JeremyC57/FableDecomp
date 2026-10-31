@@ -25050,3 +25050,13 @@ chunk	address	module	name	length
 601	00c17be0	global	sub_00c17be0	425
 601	00c64420	global	CCharacter_SetActiveSkill	426
 601	00c104f0	global	CTCHero_ProcessBlockParryStrafe	427
+602	00c891a0	global	Graphics_ProcessStreamData	428
+602	00c26090	global	CTCInventory_EquipItem	431
+602	00ae18c0	global	WriteAnimationData	436
+602	00c5f4e0	global	Audio_DecodeADPCM_Stereo	438
+602	00c1d320	global	Matrix_Invert	440
+602	00cff9a0	global	Main_InitializeHeroMorphComponents	443
+602	00c1c460	global	ParticleMorphs_UpdateEditor	445
+602	00c069d0	global	LZSS_Decompress	447
+602	00c1e300	global	PathFinding_CompressAndQuery	450
+602	00c076c0	global	code_match	451
