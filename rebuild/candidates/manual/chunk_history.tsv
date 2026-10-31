@@ -25308,3 +25308,13 @@ chunk	address	module	name	length
 627	00492ed1	CSubtitleRenderer	SetText	152
 627	00475dfa	global	GFSerialiseVectorBinaryIn<C2DVector>	152
 627	007723f0	CTCShop	IsShopKeeperNearerThan	153
+628	00493ac2	CEnginePrimitive2DSprite	CEnginePrimitive2DSprite	153
+628	009ba650	CStringParser	ReadAsFloat	154
+628	0058400a	CTCInventory	OnItemSelectedInHand	156
+628	005dac50	CTCWeapon	SetProjectileWeaponLoaded	156
+628	009350c0	CAIStateGroup_ScriptingBase<CAIStateGroupBase>	Fired	159
+628	006af3f0	CMessageEventFilter_IsMyDeadLeader	operator()	160
+628	00c418f0	global	Math_ComputeVectorMagnitude	160
+628	00c11520	global	Inventory_ProcessNavigationItem	163
+628	009f18f0	global	CircularBuffer_Read	166
+628	0061a9d0	CTCInventoryQuests	MoveToNextTestQuest	168
