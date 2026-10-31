@@ -369918,6 +369918,50 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionIceTrollIcicleAttack_PerformAction_008c6db0_test.cpp'
         PassPattern = '008c6db0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00befa20'
+        Module = 'std'
+        Source = '00/be/std_introsortloop_00befa20.cpp'
+        TestSource = '00/be/std_introsortloop_00befa20_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00befa20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1a370'
+        Module = 'PKCDefaultFileManager'
+        Source = '00/c1/PKCDefaultFileManager_CloseFile_00c1a370.cpp'
+        TestSource = '00/c1/PKCDefaultFileManager_CloseFile_00c1a370_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1a370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c783f0'
+        Module = 'CEffectPart260'
+        Source = '00/c7/CEffectPart260_Configure_00c783f0.cpp'
+        TestSource = '00/c7/CEffectPart260_Configure_00c783f0_test.cpp'
+        PassPattern = '00c783f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c8c240'
+        Module = 'libvorbis'
+        Source = '00/c8/libvorbis_ovgetlap_00c8c240.cpp'
+        TestSource = '00/c8/libvorbis_ovgetlap_00c8c240_test.cpp'
+        PassPattern = '00c8c240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb7f60'
+        Module = 'CScriptBase'
+        Source = '00/cb/CScriptBase_KillAllThreads_00cb7f60.cpp'
+        TestSource = '00/cb/CScriptBase_KillAllThreads_00cb7f60_test.cpp'
+        PassPattern = '00cb7f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce4c50'
+        Module = 'NScript::CHeroBoastsScript'
+        Source = '00/ce/NScriptCHeroBoastsScript_BoastHobbeCaveInnocentSacrificed_00ce4c50.cpp'
+        TestSource = '00/ce/NScriptCHeroBoastsScript_BoastHobbeCaveInnocentSacrificed_00ce4c50_test.cpp'
+        PassPattern = '00ce4c50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

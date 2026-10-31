@@ -1,0 +1,42 @@
+addr       parity           behav  name
+00befa20   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@U12@HV?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@std@@YIXPAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@0@00HV?$CKeyPairCompareLess@U?$pair@JJ@std@@VCEngineTextureDecal@@@@@Z -> 00befa20 labelled 'std_make_heap_build_loop'
+00befa20   RELOCATION_MATCH PASS   __introsort_loop
+00c1a370   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c1a370   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c1a370   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c1a370   RELOCATION_MATCH PASS   CloseFile
+00c783f0   WARN RELOC_NAME: ?Stage_00c78150@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c78150 labelled 'CAudioChannel_ApplyEqualizerEffect'
+00c783f0   WARN RELOC_NAME: ?Stage_00c780c0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c780c0 labelled 'Audio_Channel_ComputeEnvelope_Amplitude'
+00c783f0   WARN RELOC_NAME: ?SetPeak@CEffectFilter@@QAEXMMK@Z -> 00c74bb0 labelled 'CDspFilter::SetHighPass'
+00c783f0   WARN RELOC_NAME: ?SetShelf@CEffectFilter@@QAEXMMK@Z -> 00c74ab0 labelled 'CAudioChannel_ComputeShelveFilterCoefficients'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77fc0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77fc0 labelled 'CReverbProcessor::UpdateChorusLength'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77800@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77800 labelled 'CAudioChannel_SetupAudioFilter'
+00c783f0   WARN RELOC_NAME: ?Stage_00c78040@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c78040 labelled 'CReverbProcessor::UpdateDelayLength'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77c80@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77c80 labelled 'CReverbProcessor::UpdateLineAndTapLengths'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77b30@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77b30 labelled 'CAudioChannel_ApplyDistortionEffect'
+00c783f0   WARN RELOC_NAME: ?MixChannels_00c77d90@@YAXPAM0JJ@Z -> 00c77d90 labelled 'Audio_MixChannels'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77ae0@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77ae0 labelled 'CReverbProcessor::UpdateLineGains'
+00c783f0   WARN RELOC_NAME: ?Stage_00c783b0@CEffectPart260@@QAEXPAUSVoiceEffectParameters@@@Z -> 00c783b0 labelled 'CChannelMixer_00c783b0::Mix'
+00c783f0   WARN RELOC_NAME: ?Stage_00c77c00@CEffectPart260@@QAEXPAUCVoiceEffect@@PAUSVoiceEffectParameters@@@Z -> 00c77c00 labelled 'CReverbProcessor::UpdateTapLevels'
+00c783f0   WARN RELOC_NAME: ?MillibelsToGain_00c77700@@YAMJ@Z -> 00c77700 labelled '_global::MillibelsToAmplitude'
+00c783f0   RELOCATION_MATCH PASS   Configure
+00c8c240   RELOCATION_MATCH PASS   _ov_getlap
+00cb7f60   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@0ABU__false_type@0@@Z -> 00cbb1b0 labelled 'std::__destroy_aux<std::pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> > *>'
+00cb7f60   RELOCATION_MATCH PASS   KillAllThreads
+00ce4c50   RELOCATION_MATCH PASS   BoastHobbeCaveInnocentSacrificed
+
+WINS: 6
+  00befa20 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@U?$pair@JJ@std@@VCEngineTextureDecal@@@std@@
+  00c1a370 RELOCATION_MATCH PKCDefaultFileManager::?CloseFile@PKCDefaultFileManager@@QAEXK@Z
+  00c783f0 RELOCATION_MATCH CEffectPart260::?Configure@CEffectPart260@@
+  00c8c240 RELOCATION_MATCH libvorbis::__ov_getlap@20
+  00cb7f60 RELOCATION_MATCH CScriptBase::?KillAllThreads@CScriptBase@@QAEXXZ
+  00ce4c50 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastHobbeCaveInnocentSacrificed@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  std_introsortloop_00befa20
+  PKCDefaultFileManager_CloseFile_00c1a370
+  CEffectPart260_Configure_00c783f0
+  libvorbis_ovgetlap_00c8c240
+  CScriptBase_KillAllThreads_00cb7f60
+  NScriptCHeroBoastsScript_BoastHobbeCaveInnocentSacrificed_00ce4c50

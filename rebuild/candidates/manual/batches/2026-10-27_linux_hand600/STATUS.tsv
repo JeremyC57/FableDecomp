@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00cb7f60	RELOCATION_MATCH	394v394	PASS	CScriptBase::KillAllThreads (PDB); landed binding Shutdown -> NAME_FIXES
+00b33390	DIFFER	396v396	PASS	CEnginePrimitiveRenderer::ProcessPrimitiveStats (PDB); frame-slot packing only (locals in dead arg slots), 4 grades used
+00bca510	DIFFER	405v398	-	CEngineVertexBufferPool::GetBuffer (FableWin.pdb); register allocation (rounded count kept in edi, retail spills it and keeps a zero in ebp)
+00b9e5b0	DIFFER	403v402	-	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer (PDB); callee-saved register tie
+00ba9cb0	DIFFER	399v403	-	CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap (FableWin.pdb); bounding-sphere copy shape; contains a FloorToLong retail_asm block (retail_asm/ if it matches later)
+00c1a370	RELOCATION_MATCH	404v404	PASS	PKCDefaultFileManager::CloseFile (class proven by trace, method descriptive; libpk)
+00ce4c50	RELOCATION_MATCH	404v404	PASS	NScript::CHeroBoastsScript::BoastHobbeCaveInnocentSacrificed (PDB + ControlNewBoast literal)
+00befa20	RELOCATION_MATCH	405v405	PASS	std::__introsort_loop<pair<pair<long,long>,CEngineTextureDecal>*,...> (/Gr; bound by landed caller 0x00BEFC20)
+00c783f0	RELOCATION_MATCH	405v405	PASS	CEffectPart260::Configure (libpk, descriptive); landed binding has const parameters -> NAME_FIXES
+00c8c240	RELOCATION_MATCH	406v406	PASS	libvorbis _ov_getlap (vorbisfile.c; bound by landed caller 0x00C8C580)

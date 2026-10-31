@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00b33390	DIFFER	396v396	PASS	CEnginePrimitiveRenderer::ProcessPrimitiveStats (PDB); frame-slot packing only (locals in dead arg slots), 4 grades used
+00bca510	DIFFER	405v398	-	CEngineVertexBufferPool::GetBuffer (FableWin.pdb); register allocation (rounded count kept in edi, retail spills it and keeps a zero in ebp)
+00b9e5b0	DIFFER	403v402	-	CEnginePrimitiveManagerStaticMeshesBase::RenderMeshPrimitiveBlocksIndexBuffer (PDB); callee-saved register tie
+00ba9cb0	DIFFER	399v403	-	CEnginePrimitiveManagerMeshBase::GetAppropriateMipmap (FableWin.pdb); bounding-sphere copy shape; contains a FloorToLong retail_asm block (retail_asm/ if it matches later)
