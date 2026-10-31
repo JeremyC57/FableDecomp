@@ -25518,3 +25518,13 @@ chunk	address	module	name	length
 648	007d00f0	CTCTavernGameShoveHaPenny	FrameUpdate	1016
 648	00ea5230	CLostTraderBanditSpawn	Main	1117
 648	00e95770	CM_UndeadHere	Main	1144
+649	00587bff	CTCInventory	OpenPCSkillsMenu	1150
+649	00563480	CTCHeroOnlineScoreboard	DownloadScoreboardForSelectedClan	1178
+649	005f45b5	CTCInventoryAbilities	ConstructPCExpressionCategoryList	1233
+649	0086bfb0	CRandomAppearanceMorph	TransferBinaryIn	1307
+649	00bf01e0	CEnginePrimitiveRenderUtil	SetupOutlineSmoothAlphaStencilMaskStates	1374
+649	00b5e0f0	CEngineScreenEffectRadialBlurRenderer	ApplyRadialBlur	1547
+649	00d39960	CQ_FireHeartScript	StartRound	1774
+649	00b6fa40	CEngineWaterRenderer	RenderSeaMidground	2019
+649	0093dae0	CAIStateGroup_MeleeCombatNearby2	IsCombatSequenceActionPending	48
+649	009e21d0	global	GFACoordToVCoord	106
