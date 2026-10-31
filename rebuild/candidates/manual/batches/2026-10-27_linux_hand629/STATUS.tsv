@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006d8300	DIFFER	173v173	-	one SIB base/index order (`lea eax,[ecx+edx]` v ours `[edx+ecx]`); now on engine/CTCHeroExperience.h with PDB spellings
+009d5d30	DIFFER	179v179	-	flag-store scheduling around the lock's argument pushes; now CBaseClassNonCopyable + CMovableResource + real set::insert_unique names
+00619560	DIFFER	180v180	-	traits object homed on the dead count word, retail over the dead T() temporary; element is CTCInventoryMap::CUIRegionInfo (label fix)
+009d5df0	DIFFER	183v183	-	twin of 009d5d30 (flag-store scheduling around the lock arguments)
+00699130	DIFFER	183v183	-	clear() tail: header reload into dead ebp v retail eax with pops interleaved; now engine/CGameCameraManager.h, private ResetFlags
+00408820	DIFFER	185v185	-	this/def/&Controls register rotation (ebx/edi/esi v edi/esi/ebx); PDB names (GetDef<CControlsDef>, bound globals)
+00a358f0	DIFFER	185v185	-	one x87 operand order in the cross product z term; class keys fixed (C3DMeshObject static)
+008930f0	DIFFER	186v186	-	result blocks in opposite order + zero-store slot + one store schedule; null result is CGameScriptThing::CreateNullThing (bound)
+00ad8af0	DIFFER	188v188	-	this/other map headers swap ebx/ebp; real name CVertexGroupBlock::SharesGroupWith
+0041726d	DIFFER	189v189	-	package / &CurrentServerFrame swap ebx/edi; PDB signatures (protected, set by pointer)
