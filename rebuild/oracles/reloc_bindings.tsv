@@ -35766,3 +35766,5 @@ _ActiveThread	013ca894	009d87f0
 ?g_VsyncCPUTimeStamp@@3NA	013cb4e0	009f7050
 ?g_VsyncGPUTimeRecordIndex@@3JA	013cb4f4	009f7050
 ?g_VsyncGPUTimeRecords@@3PAUSVsyncGPUTimeRecord@@A	013cb4b0	009f7050
+?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z	00768210	005dac50
+?Normalise@CPKVector3_00c402e0@@QAEMXZ	00c402e0	00c418f0

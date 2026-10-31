@@ -371030,6 +371030,27 @@ $catalog = @(
         TestSource = '00/9f/CVsyncCallbackTimer_GetInfo_009f7050_test.cpp'
         PassPattern = '009f7050_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0058400a'
+        Module = 'CTCInventory'
+        Source = '00/58/CTCInventory_OnItemSelectedInHand_0058400a.cpp'
+        TestSource = '00/58/CTCInventory_OnItemSelectedInHand_0058400a_test.cpp'
+        PassPattern = '0058400a_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005dac50'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_SetProjectileWeaponLoaded_005dac50.cpp'
+        TestSource = '00/5d/CTCWeapon_SetProjectileWeaponLoaded_005dac50_test.cpp'
+        PassPattern = '005dac50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c418f0'
+        Module = 'CLibpkObject1D8'
+        Source = '00/c4/CLibpkObject1D8_NormaliseCopy_00c418f0.cpp'
+        TestSource = '00/c4/CLibpkObject1D8_NormaliseCopy_00c418f0_test.cpp'
+        PassPattern = '00c418f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

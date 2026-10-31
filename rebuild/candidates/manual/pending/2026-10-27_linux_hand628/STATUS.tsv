@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00493ac2	DIFFER	153v153	-	CEnginePrimitive2DSprite ctor: one scheduling diff left (Texture=0 store vs Flags load); lea residue closed by the ThemeChannelDesc member ctor
+009ba650	DIFFER	154v154	-	CStringParser::ReadAsFloat: ecx/edx swap between the two arms; PDB inline GetInteger/GetFloat closed the fild-after-dtor residue
+009350c0	DIFFER	159v159	-	CAIStateGroup_ScriptingBase<CAIStateGroupBase>::Fired: frame slots now right (frames, scale, variation declaration order); fstp/int-copy scheduling left
+006af3f0	DIFFER	172v160	-	CMessageEventFilter_IsMyDeadLeader::operator(): compiled-out typed-pointer check reproduced (IsThingOfType mask local); CDefPointer release/ctor shape left
+00c11520	DIFFER	163v163	-	library panel navigation dispatch (descriptive): one store scheduled after push eax
+009f18f0	DIFFER	166v166	-	CGameEventDataPackage::GetData: callee-saved register permutation
+0061a9d0	DIFFER	168v168	-	CTCInventoryQuests::MoveToNextTestQuest: callee-saved register permutation

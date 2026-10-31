@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0058400a   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0058400a   WARN RELOC_NAME: ??1CCreatureAction_SheatheItemToInventory@@UAE@XZ -> 0048c950 labelled '_unattributed::~CPhysicsMeshInfo_Derived_0048c950'
+0058400a   RELOCATION_MATCH PASS   OnItemSelectedInHand
+005dac50   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005dac50   RELOCATION_MATCH PASS   SetProjectileWeaponLoaded
+00c418f0   RELOCATION_MATCH PASS   NormaliseCopy
+
+WINS: 3
+  0058400a RELOCATION_MATCH CTCInventory::?OnItemSelectedInHand@CTCInventory@@
+  005dac50 RELOCATION_MATCH CTCWeapon::?SetProjectileWeaponLoaded@CTCWeapon@@
+  00c418f0 RELOCATION_MATCH CLibpkObject1D8::?NormaliseCopy@CLibpkObject1D8@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCInventory_OnItemSelectedInHand_0058400a
+  CTCWeapon_SetProjectileWeaponLoaded_005dac50
+  CLibpkObject1D8_NormaliseCopy_00c418f0
