@@ -64,7 +64,6 @@ _malloc	00bfea0e	00404690
 N_0099a2d0	0099a2d0	00404720
 ??0CCharString@@QAE@XZ	0099e4b0	00404720
 ??_7CStringParser@@6B@	0122d874	00404720
-?Inner14_dtor@@YIXPAX@Z	004046b0	004047d0
 ?Inner_dtor@@YIXPAX@Z	0099eae0	004047d0
 ?g_vtable_00404860@@3PAXA	0122dc6c	00404860
 ??4CCharString@@QAEABV0@PBD@Z	0099efe0	00404970
@@ -3066,7 +3065,6 @@ _FableCheck_5d9b70	005d94b0	005d9b70
 ?h_005dc1d0@@YGPAUAT@@PAPAU1@@Z	005e0280	005dc1d0
 ?h_005dc1f0@@YGPAUAT@@PAPAU1@@Z	005e0300	005dc1f0
 ?h_005dc210@@YGPAUAT@@PAPAU1@@Z	005e0380	005dc210
-??1CStringParserCommentList@@QAE@XZ	004046b0	005dc3c0
 ??0CStringParser@@QAE@ABVCCharString@@P6AXPAV1@@Z0J@Z	00404720	005dca60
 ?TransferIn@?$CPersistTraits@M@@QAEXAAVCPersistContext@@AAVCStringParser@@PAM@Z	0040f7e0	005dca60
 ??_7CAnimComponentMap@@6B@	01255878	005deb40
@@ -14303,7 +14301,6 @@ __imp__LoadIconW@8	01440394	009a64b0
 __imp__RegisterClassExW@4	01440390	009a64b0
 __imp__ShowWindow@8	01440354	009a64b0
 __imp__UpdateWindow@4	01440384	009a64b0
-??1CCommentList@@QAE@XZ	004046b0	009e5ad0
 ??0CTrace_00c388a0@@QAE@XZ	00c16750	00c388a0
 ??1CString_00c388a0@@QAE@XZ	00c0ba40	00c388a0
 ?Append@CString_00c388a0@@QAIPAU1@PBD@Z	00c0dec0	00c388a0
@@ -15003,7 +15000,6 @@ __CItanh	00bfece2	008ee790
 ?g_ProgressScreenHeight@@3NA	013961f0	00499880
 ?g_ProgressScreenWidth@@3NA	013961e8	00499880
 ?ReadAsSymbol@CStringParser@@QAE?AVCCharString@@XZ	009ba790	009bba40
-?SkipToItem@CStringParser@@QAE_NABVCCharString@@@Z	009b9c00	009bba40
 ??_7CPhysicsFacesSegmentLeaf@@6B@	0129dea4	00a86b30
 ?DoMission@CQ_DragonBossFightScript@NScript@@QAEXXZ	00d26190	00d255e0
 ?clear@CCutsceneArgMap@@QAEXXZ	009aace0	00e2a900
@@ -16452,8 +16448,8 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?SetDefault@CRightHandedSet@@QAEXXZ	00af07a0	00af0380
 ?CalcFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z	00aecd70	00aed2f0
 ??1CStringParser@@UAE@XZ	004047a0	00463334
-?CleanText@CPersistContext@@QAEXJJ@Z	009bb0d0	00463334
-?EntryTransferred@CPersistContext@@QAEXXZ	009bab40	00463334
+?CleanOutLine@CPersistContext@@IAEXJJ@Z	009bb0d0	00463334
+?SetAsFoundItem@CPersistContext@@QAEXXZ	009bab40	00463334
 ?_M_increment@@YAPAUSMapNode@@PAU1@@Z	004292c0	00463334
 ?clear@CStringLongMap@@QAEXXZ	0043027a	00463334
 ?find@CStringLongMap@@QAEPAUSMapNode@@ABVCCharString@@@Z	0042b467	00463334
@@ -18028,7 +18024,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z	004115a0	006d41f0
 ?ReadAsString@Parser@N006d41f0@@QAE?AUCCharString@2@XZ	009ba790	006d41f0
 ?ReadInteger@N006d41f0@@YIXPAUCPersistContext@1@PAUParser@1@PAI@Z	009e2590	006d41f0
-?TransferIn@StringTraits@N006d41f0@@QAEXPAUCPersistContext@2@PAUParser@2@PAUCCharString@2@@Z	0040e510	006d41f0
 ??0CTCParamsPhysicsBase@NFactory006ac910@@QAE@ABUC3DVector@1@ABUCRightHandedSet@1@@Z	006a06e0	006ac910
 ??0CThingPlayerCreature@NFactory006ac910@@QAE@XZ	0052ab20	006ac910
 ??0CCharString@NFactory006ac910@@QAE@PBDH@Z	0099ebf0	006ac910
@@ -22211,7 +22206,7 @@ _g_hwndCurr	0143cf0c	00cb36e0
 __imp__listen@8	0144052c	008f8cc0
 __imp__setsockopt@20	01440534	008f8cc0
 __imp__connect@12	01440514	008f9820
-?Error@CPersistContext@@QAEXABVCStringParser@@ABVCCharString@@@Z	009baa90	00403ff0
+?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z	009baa90	00403ff0
 ?g_Epsilon_0129ba3c@@3MB	0129ba3c	0040fa20
 ?Compare@CBasicStringChar@@SIJPBD0@Z	00411570	00580194
 ?FormatDouble@CCharString@@SI?AV1@JN@Z	009a08b0	00614080
@@ -24557,11 +24552,9 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?_M_allocate_and_copy@CBrainBehaviourVector@@QAEPAVCBrainBehaviour@@IPBV2@0@Z	00462c5f	00462b4e
 ?CPlayerInventoryDef_Copy_impl@@YIXPAVCPlayerInventoryDef@@PAX@Z	00462e2d	00462e28
 ?Copy_00431ed0@CDefClassBase@@QAEXPBV1@@Z	00431ed0	0046311f
-?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAVCCharString@@@Z	0040e510	00463334
 ?TransferInLong_009e2590@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z	009e2590	00463334
 ?TransferMapIn_00463732@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z	00463732	00463334
 ?TransferMapOut_0046367a@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z	0046367a	00463334
-?TransferOut@?$CPersistTraits@VCCharString@@@@QAEXPAVCPersistContext@@PAVCCharString@@1@Z	0040e630	00463334
 ?TransferOutLong_009e2560@@YIXPAVCPersistContext@@PAVCCharString@@PAJ@Z	009e2560	00463334
 ?clear@?$multimap@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAEXXZ	0043027a	00463732
 ?insert@?$multimap@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAE?AU_Rb_tree_iterator@2@ABU?$pair@$$CBVCCharString@@J@2@@Z	004636cf	00463732
@@ -26286,7 +26279,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?FindMaritalHome@CTCWife@@QBEPAVCThingBuilding@@XZ	006cfaa0	006cfec0
 ?GetWorld@CTCCreatureOpinionOfHero@@QAEPAVCWorld@@XZ	00686a70	006d0180
 ?TransferOut@?$CPersistTraits@U?$pair@VCCharString@@J@@@@QAEXPAVCPersistContext@@PAVCCharString@@PAU?$pair@VCCharString@@J@@@Z	006d3880	006d3810
-?TransferOut@?$CPersistTraits@VCCharString@@@@QBEXAAVCPersistContext@@AAVCCharString@@PBV3@@Z	0040e630	006d3880
 ?TransferIn@?$CPersistTraits@U?$pair@VCCharString@@J@@@@QAEXPAVCPersistContext@@PAVCStringParser@@PAU?$pair@VCCharString@@J@@@Z	006d41f0	006d4180
 ?_M_clear@?$vector@U?$pair@VCCharString@@J@std@@U?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXXZ	006d45c0	006d4680
 ?__uninitialized_copy@std@@YIPAU?$pair@VCCharString@@J@1@PAU21@00ABU__false_type@1@@Z	006d3770	006d4680
@@ -35748,3 +35740,10 @@ _drftf1@20	00c98e80	00c9bc10
 ?FreeSeat@CTCTavernTable@@QAEXJJ@Z	007b8aa0	00923070
 ?GetEatingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z	007b8b10	00923070
 ?GetServingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3PAPAVCThingObject@@W4ServingMode@1@_N@Z	007b8cc0	00923070
+??$GFSerialiseMapBinaryIn@U?$pair@JJ@std@@VCCharString@@U?$less@VCCharString@@@2@@@YIXAAVCMemoryDataInputStream@@AAV?$map@VCCharString@@U?$pair@JJ@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@@Z	007565e0	00756d00
+??$GFSerialiseMapBinaryOut@U?$pair@JJ@std@@VCCharString@@U?$less@VCCharString@@@2@@@YIXAAVCDataOutputStream@@ABV?$map@VCCharString@@U?$pair@JJ@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@@Z	00756540	00756d00
+?TransferIn@?$CPersistTraits@U?$pair@JJ@std@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAU?$pair@JJ@std@@@Z	00755f40	00756d00
+?TransferOut@?$CPersistTraits@U?$pair@JJ@std@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAU?$pair@JJ@std@@@Z	00755a30	00756d00
+?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@ABVCCharString@@@Z	00756350	00756d00
+?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEXXZ	007563e0	00756d00
+?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEIABVCCharString@@@Z	00756c60	00756d00

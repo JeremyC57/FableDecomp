@@ -5,7 +5,7 @@
 // CCharString operator+(const char*, const CCharString&) 0x0099F690 and operator+(const CCharString&, const char*)
 // 0x0099F600 (both __fastcall), CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, operator=
 // 0x0099EFB0, operator+= 0x0099F0A0, CStringParser::Init(const char*, callback, const CCharString&, long) 0x009B9530,
-// SkipToItem 0x009B9C00 (label CThingCreatureBase::SerialiseGameState is propagated), ReadAsStringUntilString
+// SkipPastWholeString 0x009B9C00 (label CThingCreatureBase::SerialiseGameState is propagated), ReadAsStringUntilString
 // 0x009BA330, CPersistContext::Init(CCharString&, CDefinitionManager*) 0x009BAA10 (save) and Init(CStringParser*,
 // callback, bool, CDefinitionManager*) 0x009BA9D0 (load), CGameDefinitionManager::Get 0x0044C6B0 (__fastcall).
 // Shape: the load path in an `else` arm with its own `return true/false` (one shared `return true` after the if/else
@@ -43,7 +43,7 @@ public:
         TempCharString = text;
         Init(text.c_str(), 0, filename, 0);
     }
-    bool SkipToItem(const CCharString& name);                     // 0x009B9C00
+    bool SkipPastWholeString(const CCharString& name);            // 0x009B9C00
     CCharString ReadAsStringUntilString(const CCharString& end);  // 0x009BA330
 };
 
@@ -84,7 +84,7 @@ bool CTCBase::BeginSerialising(bool saving, CCharString& data, CStringParser& pa
         parser.Init(data);
         CCharString startTag = "Start" + GetClassTypeName() + ";";
         CCharString endTag = "End" + GetClassTypeName() + ";";
-        if (parser.SkipToItem(startTag)) {
+        if (parser.SkipPastWholeString(startTag)) {
             CCharString body = parser.ReadAsStringUntilString(endTag);
             parser.Init(body);
             context.Init(&parser, 0, true, &CGameDefinitionManager::Get());

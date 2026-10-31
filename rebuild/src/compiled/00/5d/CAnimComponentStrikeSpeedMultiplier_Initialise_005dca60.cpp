@@ -26,12 +26,16 @@ public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CStringParserCommentList {                   // list<CStringParserCommentBoundaries>, retail 8 bytes
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {                   // list<CStringParserCommentBoundaries>, retail 8 bytes
 public:
     void* m_pHead;
     unsigned long m_size;
-    ~CStringParserCommentList();                   // 0x004046B0
+    ~list();                   // 0x004046B0
 };
+} // namespace std
 
 class CStringParser : public CBaseClass {
 public:
@@ -39,7 +43,7 @@ public:
     unsigned long BaseLineOffset;                  // +0x08
     CCharString Filename;                          // +0x0C
     CCharString TempCharString;                    // +0x10
-    CStringParserCommentList Comments;             // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     void (*ErrorCallback)(CCharString*);           // +0x1C
     long CursorPos[2];                             // +0x20
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename, long mode);  // 0x00404720

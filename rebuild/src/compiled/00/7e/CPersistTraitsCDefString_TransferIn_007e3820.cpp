@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E3820, 209 bytes (+15 int3 padding), `ret 0Ch`.
 // Callees: 0x009BA790 CStringParser::ReadAsSymbol() (by value), 0x0099E960 CCharString::operator!=(const char*) const,
 // 0x0099EBF0 CCharString::CCharString(const char*, long), 0x009BA330 CStringParser::ReadAsStringUntilString(const
-// CCharString&) (by value), 0x009D5060 CDefString::SetString(const CCharString&), 0x009BAA90 CPersistContext::Error(const CStringParser&,
+// CCharString&) (by value), 0x009D5060 CDefString::SetString(const CCharString&), 0x009BAA90 CPersistContext::PersistError(const CStringParser&,
 // const CCharString&), 0x0099EAE0 ~CCharString. Strings "\"" @ 0x0122DF24, "Unable to find quoted string" @ 0x01270500,
 // "Unable to find closing quote" @ 0x0122DF04.
 // The manifest's `CPersistTraits<CCharString>` is propagated: the landed CPersistContext_TransferableVector<CDefString>::
@@ -14,7 +14,7 @@
 // Shape: the `parser` argument slot is dead once the parser is in esi, so every by-value symbol / message temporary is
 // built there ([esp+14h]); the ReadAsStringUntilString result is the one `push ecx` frame word. The early error return
 // is tail-merged by VC into the second error call (the first arm pushes its message and jumps to the shared `push esi ;
-// call Error`). The implicit const char* -> CCharString conversions use the (text, -1) constructor.
+// call PersistError`). The implicit const char* -> CCharString conversions use the (text, -1) constructor.
 #define CStringParser CStringParserLayout
 #include "engine/CStringParser.h"
 #undef CStringParser
@@ -47,7 +47,7 @@ struct CStringParserReader : CStringParser {
 };
 
 class CPersistContext { public:
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
 
 template <class T> struct CPersistTraits {
@@ -60,10 +60,10 @@ void CPersistTraits<CDefString>::TransferIn(CPersistContext* context, CStringPar
 {
     if (static_cast<CStringParserReader*>(parser)->ReadAsSymbol() != "\"")
     {
-        context->Error(*parser, "Unable to find quoted string");
+        context->PersistError(*parser, "Unable to find quoted string");
         return;
     }
     value->SetString(static_cast<CStringParserReader*>(parser)->ReadAsStringUntilString("\""));
     if (static_cast<CStringParserReader*>(parser)->ReadAsSymbol() != "\"")
-        context->Error(*parser, "Unable to find closing quote");
+        context->PersistError(*parser, "Unable to find closing quote");
 }

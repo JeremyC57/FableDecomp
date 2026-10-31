@@ -8,6 +8,10 @@
 // Shape: both element-traits objects are declared first: the string traits' DefaultVal is default-constructed in the
 //   `push ecx` frame word before anything else and destroyed last; the long traits' TransferOut is inlined (the element
 //   copied into the dead value-argument slot for TransferOutLong; its DefaultVal zeroing is dead and dropped).
+// Name (2026-10-31, hand621 NAME_FIXES): 0x0040E630 is ?TransferOut@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABV3@@Z
+//   (Ego_r.pdb 0x0040C2D0 / FableWin.pdb 0x0189E7E0: non-const member, value by const reference; was QBE with a const
+//   pointer), so CPersistTraits<CCharString> is its own specialization and the element traits take the value by reference
+//   (the long traits stay inline). Bytes unchanged.
 class CPersistContext;
 class CCharString {
 public:
@@ -31,16 +35,20 @@ template <class T1, class T2> struct pair {
 template <class T> struct CPersistTraits {
     T DefaultVal;
     CPersistTraits() : DefaultVal() { }
-    void TransferOut(CPersistContext& context, CCharString& out, const T* value) const;
+    void TransferOut(CPersistContext& context, CCharString& out, const T& value) const;
 };
 
-template <> inline void CPersistTraits<long>::TransferOut(CPersistContext& context, CCharString& out, const long* value) const
+template <> inline void CPersistTraits<long>::TransferOut(CPersistContext& context, CCharString& out, const long& value) const
 {
-    long copy = *value;
+    long copy = value;
     TransferOutLong(&context, &out, &copy);
 }
 
-template <> void CPersistTraits<CCharString>::TransferOut(CPersistContext& context, CCharString& out, const CCharString* value) const;   // 0x0040E630
+template <> struct CPersistTraits<CCharString> {
+    CCharString DefaultVal;
+    CPersistTraits() : DefaultVal() { }
+    void TransferOut(CPersistContext& context, CCharString& out, const CCharString& value);   // 0x0040E630
+};
 
 template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {
     std::pair<T1, T2> DefaultVal;
@@ -49,9 +57,9 @@ template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {
         CPersistTraits<T1> firstTraits;
         CPersistTraits<T2> secondTraits;
         out += g_textOpenBracket_0122e028;
-        firstTraits.TransferOut(context, out, &value->first);
+        firstTraits.TransferOut(context, out, value->first);
         out += g_textComma_0122e024;
-        secondTraits.TransferOut(context, out, &value->second);
+        secondTraits.TransferOut(context, out, value->second);
         out += g_textCloseBracket_0122e020;
     }
 };

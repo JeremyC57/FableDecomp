@@ -1,10 +1,14 @@
-// CPersistContext::Error(const CStringParser& parser, const CCharString& message) -- report a text-transfer parse error as "<file>(<line>) : error : <message>" through the context's error callback
-// Leaf: Error
+// CPersistContext::PersistError(const CStringParser& parser, const CCharString& message) const -- report a text-transfer parse error as "<file>(<line>) : error : <message>" through the context's error callback
+// Leaf: ?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BAA90, length 172 bytes (+ int3 padding), `ret 8`.
 // Class: the catalog label "CDefinitionManager::Error" is propagated from the near-twin 0x009AC9F0; this body calls the
 // callback at +0xc, which is CPersistContext::ErrorCallback (PDB: PDefinitionManager +0, PSymbolMap +4, PParser +8,
 // ErrorCallback +0xc), and every caller is a CPersistTraits<T>::TransferIn / CPersistContext::Transfer* text parser
-// (0x00403FF0, 0x0040E510, 0x005D8978, ...). The PDB carries no symbol for it; the name follows the twin.
+// (0x00403FF0, 0x0040E510, 0x005D8978, ...).
+// Name (2026-10-31, hand621 NAME_FIXES): Ego_r.pdb donor order InitClearMode 0x00B0F470 -> PersistError 0x00B0F490 ->
+//   SetAsFoundItem 0x00B0F540 -> WriteString 0x00B0F550 = retail 0x009BAA70 / 0x009BAA90 / 0x009BAB40 / 0x009BAB50, the same
+//   0xB0 span: ?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z (public const). The earlier "Error"
+//   spelling followed the CDefinitionManager twin. Bytes unchanged.
 // Callees: the integer-to-string formatter @ 0x0099F830 (static __fastcall: result in ecx, value in edx; catalog
 // "GFIntToCharString_API"), operator+(const CCharString&, const char*) @ 0x0099F600 and operator+(const CCharString&,
 // const CCharString&) @ 0x0099F570 (__fastcall globals, result in ecx, left in edx), ~CCharString @ 0x0099EAE0, the
@@ -49,10 +53,10 @@ public:
     CSymbolMap* PSymbolMap;                        // +0x04
     CStringParser* PParser;                        // +0x08
     void (__fastcall* ErrorCallback)(const CCharString& text);   // +0x0c
-    void Error(const CStringParser& parser, const CCharString& message);
+    void PersistError(const CStringParser& parser, const CCharString& message) const;
 };
 
-void CPersistContext::Error(const CStringParser& parser, const CCharString& message)
+void CPersistContext::PersistError(const CStringParser& parser, const CCharString& message) const
 {
     long line = parser.CursorPos.Line;
     CCharString text = parser.Filename + "(" + GFIntToCharString(line + 1) + ")" + " : error : " + message;

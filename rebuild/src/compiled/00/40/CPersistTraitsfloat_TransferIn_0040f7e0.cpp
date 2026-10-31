@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0040F7E0, 135 bytes (+9 int3 padding), `__fastcall`, `ret 0Ch`.
 // Callees: CStringParser::PeekNextItemType @ 0x009BA900, CStringParser::ReadAsString @ 0x009BA6F0 (hidden CCharString
 //   result), CSymbolMap lookup (name, long*) @ 0x009E5170, operator+(const char*, const CCharString&) @ 0x0099F690
-//   (`__fastcall`, hidden result in ecx), CPersistContext::Error(const CStringParser&, const CCharString&) @ 0x009BAA90,
+//   (`__fastcall`, hidden result in ecx), CPersistContext::PersistError(const CStringParser&, const CCharString&) @ 0x009BAA90,
 //   ~CCharString @ 0x0099EAE0, CStringParser::ReadAsFloat @ 0x009BA650; message literal @ 0x0122DFE8.
 // Shape: the traits object (`this`, ecx) is never read; `push ecx` is the frame word of the looked-up `long value`.
 // When the next item is a symbol (item type 2) the name is read into the dead parser-argument slot, looked up in
 // CPersistContext::PSymbolMap (+4); a miss reports `"<msg>" + name` (the concatenation temporary lives in the dead
-// context-argument slot) through CPersistContext::Error. The symbol's long value is converted to float (`fild`) before
+// context-argument slot) through CPersistContext::PersistError. The symbol's long value is converted to float (`fild`) before
 // the name's destructor. Otherwise ReadAsFloat's x87 result is stored straight to the output.
 // CStringParser uses engine/CStringParser.h; CPersistContext (no engine header) is modelled from the PDB layout.
 #define CStringParser CStringParserLayout
@@ -40,7 +40,7 @@ class CSymbolMap { public:
 class CPersistContext { public:                                       // Ego_r.pdb, 0x2C bytes
     void* PDefinitionManager;                                  // +0x00
     CSymbolMap* PSymbolMap;                                    // +0x04
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
     CSymbolMap* GetSymbolMap() const { return PSymbolMap; }
 };
 
@@ -58,7 +58,7 @@ template <> void CPersistTraits<float>::TransferIn(CPersistContext& context, CSt
         CCharString name = p.ReadAsString();
         long value;
         if (!context.GetSymbolMap()->Lookup(name, &value))
-            context.Error(parser, g_msgUnknownSymbol_0122dfe8 + name);
+            context.PersistError(parser, g_msgUnknownSymbol_0122dfe8 + name);
         *out = (float)value;
     }
     else

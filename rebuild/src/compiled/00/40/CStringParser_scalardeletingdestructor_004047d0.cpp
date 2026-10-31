@@ -1,5 +1,8 @@
 // CStringParser::`vector deleting destructor'(unsigned int flags) -- destroy a background landscape patch and free it when bit 0 is set
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004047D0, 56 bytes. Callees: member destructors at +0x14, +0x10, +0x0C, the class destructor, operator delete.
+// Name (2026-10-31, hand621 NAME_FIXES): the +0x14 destructor 0x004046B0 is the STLport comment list's
+//   ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ (CStringParser::Comments;
+//   the landed 0x004046B0 body), called as a member destructor on this+0x14 (was a free __fastcall Inner14_dtor). Bytes unchanged.
 //
 // Vtable slot 0 of the patch class. A background patch is one tile of the distant landscape (the
 // low-detail terrain you see beyond the playable area); it owns a few sub-objects plus its texture and
@@ -13,7 +16,11 @@
 // `operator delete` is the plain global one.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CInner { void* v; };
-extern void __fastcall Inner14_dtor(void* p);   // destructor of the sub-object at +0x14
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* _M_node; ~list(); };   // ~list 0x004046B0
+} // namespace std
 extern void __fastcall Inner_dtor(void* p);     // destructor of the sub-objects at +0x10 and +0x0C
 extern void __cdecl operator_delete_stub(void* p);
 void operator delete(void* p);
@@ -30,7 +37,8 @@ class CStringParser { public:
 void* __fastcall CStringParser_scalar_deleting_destructor(CStringParser* parser, int edx_dummy, unsigned int flags)
 {
     // Owned sub-objects in reverse order, then the rest of the patch.
-    Inner14_dtor((char*)parser + 0x14);
+    typedef std::list<CStringParserCommentBoundaries> CommentList;
+    ((CommentList*)((char*)parser + 0x14))->CommentList::~CommentList();
     Inner_dtor((char*)parser + 0x10);
     Inner_dtor((char*)parser + 0xc);
     ((CBaseClass*)(parser))->CBaseClass::~CBaseClass();

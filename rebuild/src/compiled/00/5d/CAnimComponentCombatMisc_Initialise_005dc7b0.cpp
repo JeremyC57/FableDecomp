@@ -9,10 +9,14 @@
 class CPersistContext;
 class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail sentinel-only list, 4 bytes
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* head; ~list(); };
+} // namespace std -- retail sentinel-only list, 4 bytes
 class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
- CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
+ std::list<CStringParserCommentBoundaries> Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
  bool SkipPastNextItemIfIs(const CCharString&); // 009B9E00
 };

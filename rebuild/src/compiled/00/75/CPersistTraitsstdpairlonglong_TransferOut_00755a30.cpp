@@ -1,5 +1,7 @@
-// CPersistTraits<std::pair<long,long> >::TransferOut(CPersistContext&, CCharString&, const std::pair<long,long>*) -- text persist write of a long pair as "(first,second)"
-// Leaf: TransferOut
+// CPersistTraits<std::pair<long,long> >::TransferOut(CPersistContext&, CCharString&, std::pair<long,long>&) -- text persist write of a long pair as "(first,second)"
+// Leaf: ?TransferOut@?$CPersistTraits@U?$pair@JJ@std@@@@QAEXAAVCPersistContext@@AAVCCharString@@AAU?$pair@JJ@std@@@Z
+// Name (2026-10-31, hand621 NAME_FIXES): Ego_r.pdb 0x00767690 / FableWin.pdb 0x025BD9B0 spell it a non-const member taking a
+//   non-const pair reference (was a const member with a const pair pointer). Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00755A30, 98 bytes, `__fastcall`, `ret 0Ch`.
 // Callees: CCharString::operator+=(const char*) @ 0x0099F100 (x3; literals "(" 0x0122E028, "," 0x0122E024, ")" 0x0122E020),
 //   TransferOutLong @ 0x009E2560 (x2, `__fastcall`: context in ecx, output string in edx, &value on the stack).
@@ -38,14 +40,14 @@ template <> inline void CPersistTraits<long>::TransferOut(CPersistContext& conte
 
 template <class T1, class T2> struct CPersistTraits<std::pair<T1, T2> > {
     std::pair<T1, T2> DefaultVal;
-    void TransferOut(CPersistContext& context, CCharString& out, const std::pair<T1, T2>* value) const
+    void TransferOut(CPersistContext& context, CCharString& out, std::pair<T1, T2>& value)
     {
         CPersistTraits<T1> firstTraits;
         CPersistTraits<T2> secondTraits;
         out += g_textOpenBracket_0122e028;
-        firstTraits.TransferOut(context, out, &value->first);
+        firstTraits.TransferOut(context, out, &value.first);
         out += g_textComma_0122e024;
-        secondTraits.TransferOut(context, out, &value->second);
+        secondTraits.TransferOut(context, out, &value.second);
         out += g_textCloseBracket_0122e020;
     }
 };

@@ -32594,9 +32594,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009bab40'
-        Module = 'CTCCreditsUI'
-        Source = '00/9b/CTCCreditsUI_CTCCreditsUIDeactivate2_009bab40.cpp'
-        TestSource = '00/9b/CTCCreditsUI_CTCCreditsUIDeactivate2_009bab40_test.cpp'
+        Module = 'CPersistContext'
+        Source = '00/9b/CPersistContext_SetAsFoundItem_009bab40.cpp'
+        TestSource = '00/9b/CPersistContext_SetAsFoundItem_009bab40_test.cpp'
         PassPattern = 'PASS_CTCCreditsUI_DEACTIVATE2'
     }
     [pscustomobject]@{
@@ -92424,8 +92424,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009b9c00'
         Module = 'CStringParser'
-        Source = '00/9b/CStringParser_SeekToName_009b9c00.cpp'
-        TestSource = '00/9b/CStringParser_SeekToName_009b9c00_test.cpp'
+        Source = '00/9b/CStringParser_SkipPastWholeString_009b9c00.cpp'
+        TestSource = '00/9b/CStringParser_SkipPastWholeString_009b9c00_test.cpp'
         PassPattern = 'PASS_009b9c00'
     }
     [pscustomobject]@{
@@ -240635,8 +240635,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009baa90'
         Module = 'CPersistContext'
-        Source = '00/9b/CPersistContext_Error_009baa90.cpp'
-        TestSource = '00/9b/CPersistContext_Error_009baa90_test.cpp'
+        Source = '00/9b/CPersistContext_PersistError_009baa90.cpp'
+        TestSource = '00/9b/CPersistContext_PersistError_009baa90_test.cpp'
         PassPattern = '009baa90_TEST PASS'
     }
     [pscustomobject]@{
@@ -370896,6 +370896,13 @@ $catalog = @(
         Source = '00/6d/CTCHeroExperience_GetRunningNumHits_006d63a0.cpp'
         TestSource = '00/6d/CTCHeroExperience_GetRunningNumHits_006d63a0_test.cpp'
         PassPattern = '006d63a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00756d00'
+        Module = 'CPersistContext'
+        Source = '00/75/CPersistContext_TransferMappairlonglongCCharString_00756d00.cpp'
+        TestSource = '00/75/CPersistContext_TransferMappairlonglongCCharString_00756d00_test.cpp'
+        PassPattern = '00756d00_TEST PASS'
     }
 )
 

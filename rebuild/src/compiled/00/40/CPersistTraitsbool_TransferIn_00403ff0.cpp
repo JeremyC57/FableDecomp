@@ -6,7 +6,7 @@
 // Callees: CStringParser::ReadAsString @ 0x009BA6F0 (by-value CCharString through a hidden pointer), CCharString(const char*,
 //   long) @ 0x0099EBF0 ("TRUE" 0x0122D6D4, "BTRUE" 0x0122D704, "FALSE" 0x0122D6CC, "BFALSE" 0x0122D6FC), ~CCharString
 //   @ 0x0099EAE0, _stricmp @ 0x00BFEBA8, operator+(const char*, const CCharString&) @ 0x0099F690 (`__fastcall`, hidden
-//   result in ecx; "Unknown boolean value entry " 0x0122D6DC), CPersistContext::Error(const CStringParser&, const
+//   result in ecx; "Unknown boolean value entry " 0x0122D6DC), CPersistContext::PersistError(const CStringParser&, const
 //   CCharString&) @ 0x009BAA90. the conversion's empty string is the CCharString header's "" @ 0x0129AAF4.
 // Shape: the spellings are compared as `token == "TRUE"` -- the implicit converting-ctor temporary bound to the
 //   case-insensitive operator== reference, which VC7.1 re-reads from its frame slot (an explicit CCharString("TRUE")
@@ -47,7 +47,7 @@ public:
 };
 class CPersistContext {
 public:
-    void Error(const CStringParser& parser, const CCharString& message);       // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
 
 template <class T> struct CPersistTraits;
@@ -63,5 +63,5 @@ void CPersistTraits<bool>::TransferIn(CPersistContext* context, CStringParser* p
     else if (token == "FALSE" || token == "BFALSE")
         *value = false;
     else
-        context->Error(*parser, "Unknown boolean value entry " + token);
+        context->PersistError(*parser, "Unknown boolean value entry " + token);
 }

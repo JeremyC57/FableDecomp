@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009ADE90, length 699 bytes, `ret 8`. Mangled (PDB):
 //   ?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
 // Callees: CBaseClass ctor 0x0099A2D0 / ~ 0x0099A2E0, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~
-//   0x0099EAE0, malloc 0x00BFEA0E (comment-list head node), CStringParser::Init 0x009B9530 / SkipToItem 0x009B9C00
+//   0x0099EAE0, malloc 0x00BFEA0E (comment-list head node), CStringParser::Init 0x009B9530 / SkipPastWholeString 0x009B9C00
 //   (descriptive) / ReadAsString 0x009BA6F0 / SetStringPos 0x009B9940, the comment list dtor 0x004046B0,
 //   InstantiateDef 0x009ADC90, operator+(const char*, const CCharString&) 0x0099F690 (__fastcall), Error 0x009AC9F0,
 //   ParseEnumForSymbols 0x009ACEE0.
@@ -22,18 +22,23 @@ public:
     ~CCharString();                                // 0x0099EAE0
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-struct CStringParserCommentList {
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {
+public:
     struct SNode { SNode* Next; SNode* Prev; char* PStart; char* PEnd; };
     SNode* m_pHead;
-    CStringParserCommentList() : m_pHead(0)
+    list() : m_pHead(0)
     {
         SNode* node = (SNode*)malloc(sizeof(SNode));
         node->Next = node;
         node->Prev = node;
         m_pHead = node;
     }
-    ~CStringParserCommentList();                   // 0x004046B0
+    ~list();                   // 0x004046B0
 };
+} // namespace std
 struct CCursorPos {
     bool          InQuotes;
     unsigned long StringPos;
@@ -46,7 +51,7 @@ public:
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0C
     CCharString              TempCharString;       // +0x10
-    CStringParserCommentList Comments;             // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     TErrorCallback           ErrorCallback;        // +0x18
     CCursorPos               CursorPos;            // +0x1C
     CStringParser(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine)
@@ -54,7 +59,7 @@ public:
         Init(text, callback, filename, baseLine);
     }
     void Init(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
-    bool SkipToItem(const CCharString& name);      // 0x009B9C00
+    bool SkipPastWholeString(const CCharString& name); // 0x009B9C00
     CCharString ReadAsString();                    // 0x009BA6F0
     void SetStringPos(unsigned long pos);          // 0x009B9940
 };
@@ -72,14 +77,14 @@ void CDefinitionManager::ParseStringForSymbols(const char* text, bool instantiat
 {
     CStringParser parser(text, ErrorCallback, CurrentFilename, 0);
     if (instantiate) {
-        while (parser.SkipToItem("#definition_template")) {
+        while (parser.SkipPastWholeString("#definition_template")) {
             CCharString className = parser.ReadAsString();
             CCharString instanceName = parser.ReadAsString();
             if (!InstantiateDef(className, instanceName, true))
                 Error(parser, "Unable to find def class called " + className);
         }
         parser.SetStringPos(0);
-        while (parser.SkipToItem("#definition")) {
+        while (parser.SkipPastWholeString("#definition")) {
             CCharString className = parser.ReadAsString();
             CCharString instanceName = parser.ReadAsString();
             if (!InstantiateDef(className, instanceName, false))
@@ -87,6 +92,6 @@ void CDefinitionManager::ParseStringForSymbols(const char* text, bool instantiat
         }
         parser.SetStringPos(0);
     }
-    while (parser.SkipToItem("enum"))
+    while (parser.SkipPastWholeString("enum"))
         ParseEnumForSymbols(parser);
 }

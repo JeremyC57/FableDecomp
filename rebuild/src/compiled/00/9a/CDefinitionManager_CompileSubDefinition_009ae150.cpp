@@ -22,16 +22,21 @@ class CCharString { public:
 typedef void (*TErrorCallback)(CCharString*);
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList {
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {
+public:
     void* _M_node;
-    ~CStringParserCommentList();                             // 0x004046B0
+    ~list();                             // 0x004046B0
 };
+} // namespace std
 class CStringParser : public CBaseClass { public:
     const char*              String;                         // +0x04
     unsigned long            BaseLineOffset;                 // +0x08
     CCharString              Filename;                       // +0x0c
     CCharString              TempCharString;                 // +0x10
-    CStringParserCommentList Comments;                       // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;                       // +0x14
     TErrorCallback           ErrorCallback;                  // +0x18
     long                     CursorPos[3];                   // +0x1c
     CStringParser(const CCharString& text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x00404720

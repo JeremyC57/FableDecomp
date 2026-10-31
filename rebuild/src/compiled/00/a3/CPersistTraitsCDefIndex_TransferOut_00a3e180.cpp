@@ -4,7 +4,7 @@
 //   (CDefString by hidden pointer) on context->PDefinitionManager (+0), CDefStringTable::GetString(long) @ 0x009D49B0 on
 //   g_DefStringTable 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, CBasicString<char>::operator==
 //   (const char*) @ 0x004115A0 (on the string data), CCharString::operator=(const char*) @ 0x0099EFE0,
-//   CPersistTraits<CCharString>::TransferOut @ 0x0040E630, ~CCharString @ 0x0099EAE0. Strings: "" 0x0122D70E,
+//   CPersistTraits<CCharString>::TransferOut(CPersistContext&, CCharString&, const CCharString&) @ 0x0040E630, ~CCharString @ 0x0099EAE0. Strings: "" 0x0122D70E,
 //   "NULL" 0x012393E4.
 // Layout: PDB CDefIndex { long Val; }, CDefString { long TablePos; }; CCharString's data pointer (null for the empty
 //   string) carries the CBasicString compare.
@@ -62,7 +62,7 @@ class CPersistContext { public:
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CCharString> {
     CCharString DefaultVal;
-    void TransferOut(CPersistContext* context, CCharString* out, CCharString* value);   // 0x0040E630
+    void TransferOut(CPersistContext& context, CCharString& out, const CCharString& value);   // 0x0040E630
 };
 template<> struct CPersistTraits<CDefIndex> {
     void TransferOut(CPersistContext* context, CCharString* out, const CDefIndex* value);
@@ -78,5 +78,5 @@ void CPersistTraits<CDefIndex>::TransferOut(CPersistContext* context, CCharStrin
     }
     if (name == "")
         name = "NULL";
-    traits.TransferOut(context, out, &name);
+    traits.TransferOut(*context, *out, name);
 }

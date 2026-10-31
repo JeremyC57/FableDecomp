@@ -2,12 +2,14 @@
 // Leaf: TransferMap
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00463334, 838 bytes, `ret 0Ch` (/Os, ebp frame).
 // Callees: CPersistContext::CheckCRC 0x00404500, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / copy 0x0099EC30 /
-//   dtor 0x0099EAE0 / operator+=(const char*) 0x0099F100, CStringParser copy 0x0046381B / dtor 0x004047A0 / SkipToItem
+//   dtor 0x0099EAE0 / operator+=(const char*) 0x0099F100, CStringParser copy 0x0046381B / dtor 0x004047A0 / SkipPastWholeString
 //   0x009B9C00 / ReadAsSymbol 0x009BA790, the CBasicString compare 0x00411570 (__fastcall), CPersistTraits<CCharString>
 //   TransferIn 0x0040E510 / TransferOut 0x0040E630, the long transfer helpers 0x009E2590 / 0x009E2560 (__fastcall),
 //   map<CCharString,long> find 0x0042B467 / _Rb_tree::insert_equal 0x004636CF / clear 0x0043027A, the tree increment 0x004292C0,
-//   the binary map writer 0x0046367A (mode 2, save stream) and reader 0x00463732 (mode 3, load stream) (__fastcall stream, map), CPersistContext::Error 0x009BAA90 and
-//   the two context helpers 0x009BAB40 (after an entry) / 0x009BB0D0 (clean the consumed text, start..end).
+//   the binary map writer 0x0046367A (mode 2, save stream) and reader 0x00463732 (mode 3, load stream) (__fastcall stream, map), CPersistContext::PersistError 0x009BAA90 and
+//   the two context helpers SetAsFoundItem 0x009BAB40 (after an entry) / CleanOutLine 0x009BB0D0 (clean the consumed text, start..end).
+// Names (2026-10-31, hand621 NAME_FIXES): PersistError / SetAsFoundItem / CleanOutLine / SkipPastWholeString and the
+//   reference-parameter CPersistTraits<CCharString>::TransferIn/TransferOut are the Ego_r.pdb spellings; bytes unchanged.
 // Layout: CPersistContext per Ego_r.pdb (landed 0x00757160 / 0x009BBA40 models); CStringParser retail 0x28 bytes (landed
 //   copy ctor 0x0046381B); STLport map node key +0x10, value +0x14, header pointer at the map's +0.
 // Literals: "[" 0x01235434, "]" 0x01235430, ";" 0x0123542C, "] " 0x012353BC, ";\r\n" 0x012353B8, the three error messages
@@ -71,14 +73,14 @@ class CStringParser : public CBase { public:                         // retail 0
     CCursorPos               CursorPos;                // +0x1c
     CStringParser(const CStringParser& other);         // 0x0046381B
     ~CStringParser();                                  // 0x004047A0
-    bool SkipToItem(const CCharString& name);          // 0x009B9C00
+    bool SkipPastWholeString(const CCharString& name); // 0x009B9C00
     CCharString ReadAsSymbol();                        // 0x009BA790
 };
 class CPersistContext;
 template <class T> struct CPersistTraits {
     T DefaultVal;
-    void TransferIn(CPersistContext* context, CStringParser* parser, T* value);   // 0x0040E510 for CCharString
-    void TransferOut(CPersistContext* context, CCharString* out, T* value);       // 0x0040E630 for CCharString
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);   // 0x0040E510 for CCharString
+    void TransferOut(CPersistContext& context, CCharString& out, const T& value); // 0x0040E630 for CCharString
 };
 void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 void __fastcall TransferOutLong_009e2560(CPersistContext* context, CCharString* out, long* value);       // 0x009E2560
@@ -130,9 +132,9 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
     protected: void CheckCRC(const char* name); public:                      // 0x00404500
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
-    void EntryTransferred();                              // 0x009BAB40
-    void CleanText(long start, long end);                 // 0x009BB0D0
+    void PersistError(const CStringParser& parser, const CCharString& message) const;   // 0x009BAA90
+    void SetAsFoundItem();                                // 0x009BAB40
+    protected: void CleanOutLine(long start, long end); public:   // 0x009BB0D0
     void TransferMap(const char* name, CStringLongMap& map, const long& defaultValue);
 };
 
@@ -145,7 +147,7 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
         for (SMapNode* it = map._M_header->_M_left; it != map._M_header; it = _M_increment(it)) {
             *PStringToSaveTo += name;
             *PStringToSaveTo += "[";
-            keyTraits.TransferOut(this, PStringToSaveTo, &it->first);
+            keyTraits.TransferOut(*this, *PStringToSaveTo, it->first);
             *PStringToSaveTo += "] ";
             long value = it->second;
             TransferOutLong_009e2560(this, PStringToSaveTo, &value);
@@ -164,26 +166,26 @@ void CPersistContext::TransferMap(const char* name, CStringLongMap& map, const l
     default: {
         CStringParser parser(*PParser);
         long nameLength = strlen(name);
-        while (!Finished && parser.SkipToItem(name)) {
+        while (!Finished && parser.SkipPastWholeString(name)) {
             long start = parser.CursorPos.StringPos - nameLength;
             if (parser.ReadAsSymbol() == "[") {
                 CPersistTraits<CCharString> traits;
                 CCharString key;
-                traits.TransferIn(this, &parser, &key);
+                traits.TransferIn(*this, parser, key);
                 if (parser.ReadAsSymbol() == "]") {
                     map.find(key);
                     long value;
                     TransferInLong_009e2590(this, &parser, &value);
                     map.insert_equal(CStringLongPair(key, value));
-                    EntryTransferred();
+                    SetAsFoundItem();
                     if (parser.ReadAsSymbol() == ";")
-                        CleanText(start, parser.CursorPos.StringPos);
+                        CleanOutLine(start, parser.CursorPos.StringPos);
                     else
-                        Error(parser, "Unable to find terminating semicolon.");
+                        PersistError(parser, "Unable to find terminating semicolon.");
                 } else
-                    Error(parser, "Unable to find terminating bracket.");
+                    PersistError(parser, "Unable to find terminating bracket.");
             } else
-                Error(parser, "Unable to find opening bracket.");
+                PersistError(parser, "Unable to find opening bracket.");
         }
         return;
     }

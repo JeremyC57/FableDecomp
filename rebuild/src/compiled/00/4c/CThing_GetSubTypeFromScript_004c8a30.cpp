@@ -48,18 +48,23 @@ public:
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList {                      // retail list<CStringParserCommentBoundaries>: the head pointer only
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {                      // retail list<CStringParserCommentBoundaries>: the head pointer only
+public:
     struct SNode { SNode* Next; SNode* Prev; char* PStart; char* PEnd; };
     SNode* m_pHead;
-    CStringParserCommentList() : m_pHead(0)
+    list() : m_pHead(0)
     {
         SNode* node = (SNode*)malloc(sizeof(SNode));
         node->Next = node;
         node->Prev = node;
         m_pHead = node;
     }
-    ~CStringParserCommentList();                       // 0x004046B0
+    ~list();                       // 0x004046B0
 };
+} // namespace std
 struct CCursorPos {
     bool          InQuotes;                            // +0x0
     unsigned long StringPos;                           // +0x4
@@ -72,7 +77,7 @@ public:
     unsigned long              BaseLineOffset;         // +0x08
     CCharString                Filename;               // +0x0C
     CCharString                TempCharString;         // +0x10
-    CStringParserCommentList   Comments;               // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;               // +0x14
     TStringParserErrorCallback ErrorCallback;          // +0x18
     CCursorPos                 CursorPos;              // +0x1C
     CStringParser(const char* text, const CCharString& filename = CCharString(""))

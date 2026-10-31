@@ -1,8 +1,8 @@
 // CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item) -- text load of a named object: on a copy of the context's parser, for every occurrence of the name (until the context is finished) let the object read itself, then require the closing ";" (cleaning the consumed text out of the source string with spaces, newlines kept) or report the error
 // Leaf: ?TransferObjectLoadText@CPersistContext@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BBA40, 417 bytes + padding (`ret 8`). Callees: CStringParser(const CStringParser&) @ 0x0046381B,
-// CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0, CStringParser 0x009B9C00 (descriptive SkipToItem), ReadAsSymbol
-// @ 0x009BA790, CBasicString<char>::operator== @ 0x004115A0, CPersistContext::Error @ 0x009BAA90, the comment list dtor 0x004046B0,
+// CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0, CStringParser 0x009B9C00 (SkipPastWholeString), ReadAsSymbol
+// @ 0x009BA790, CBasicString<char>::operator== @ 0x004115A0, CPersistContext::PersistError @ 0x009BAA90, the comment list dtor 0x004046B0,
 // ~CBaseClass 0x0099A2E0; the item's TransferIn is its vtable slot 1. Literals: "" 0x0122D70E, ";" 0x0123542C, the error message
 // @ 0x01235404 (text not recovered; the literal here is a placeholder, relocation-masked).
 // Layout: CPersistContext per Ego_r.pdb (as the landed TransferMap 0x00757160); CStringParser retail 0x28 bytes (landed copy ctor
@@ -42,7 +42,11 @@ public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };   // 0x004046B0
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* head; ~list(); };
+} // namespace std   // 0x004046B0
 struct CCursorPos {
     bool InQuotes;                              // +0x00
     long StringPos;                             // +0x04
@@ -53,11 +57,11 @@ class CStringParser : public CBaseClass { public:                  // retail 0x2
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;          // +0x0c
     CCharString              TempCharString;    // +0x10
-    CStringParserCommentList Comments;          // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;          // +0x14
     void (*ErrorCallback)(CCharString*);        // +0x18
     CCursorPos               CursorPos;         // +0x1c
     CStringParser(const CStringParser& other);  // 0x0046381B
-    bool SkipToItem(const CCharString& name);   // 0x009B9C00 (descriptive)
+    bool SkipPastWholeString(const CCharString& name); // 0x009B9C00 (Ego_r.pdb donor order)
     CCharString ReadAsSymbol();                 // 0x009BA790
 };
 class CPersistContext;
@@ -84,7 +88,7 @@ class CPersistContext { public:
     CCharString*            PStringToSaveTo;              // +0x20
     CMemoryDataInputStream* PLoadStream;                  // +0x24
     CDataOutputStream*      PSaveStream;                  // +0x28
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
     void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);
 };
 
@@ -92,7 +96,7 @@ void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_T
 {
     CStringParser parser(*PParser);
     long nameLength = strlen(name);
-    while (!Finished && parser.SkipToItem(name)) {
+    while (!Finished && parser.SkipPastWholeString(name)) {
         long start = parser.CursorPos.StringPos - nameLength;
         item.TransferIn(this, &parser);
         if (SingleTransfer)
@@ -107,7 +111,7 @@ void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_T
             }
         } else {
             CCharString message("Expected ';'", -1);
-            Error(parser, message);
+            PersistError(parser, message);
         }
     }
 }

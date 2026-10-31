@@ -9,6 +9,10 @@
 //   free in the loop has no null test; the sentinel free does (`if (p) free(p)`). The retail list is one pointer
 //   (the sentinel). The body is shared by ~90 byte-identical list destructors (COMDAT folding), so the element
 //   type comes from the catalog label (CStringParser::Comments is such a list).
+// Name (2026-10-31, hand621 NAME_FIXES): STLport's list carries its allocator argument, so the symbol is
+//   ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ (the spelling
+//   every landed caller binds); the earlier one-argument template emitted ??1?$list@VCStringParserCommentBoundaries@@@std@@QAE@XZ.
+//   Bytes unchanged.
 extern "C" void __cdecl free(void*);                                            // 0x00BFEA14
 
 class CStringParserCommentBoundaries { public:
@@ -27,7 +31,9 @@ template <class _Tp> struct _List_node : public _List_node_base {
     _Tp _M_data;
 };
 
-template <class _Tp> class list {
+template <class _Tp> class allocator { public: allocator() { } };
+
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {
 public:
     typedef _List_node<_Tp> _Node;
     _List_node_base* _M_node;                           // +0x00 the sentinel node
@@ -46,7 +52,7 @@ public:
     ~list();
 };
 
-template <class _Tp> list<_Tp>::~list()
+template <class _Tp, class _Alloc> list<_Tp, _Alloc>::~list()
 {
     clear();
     if (_M_node)

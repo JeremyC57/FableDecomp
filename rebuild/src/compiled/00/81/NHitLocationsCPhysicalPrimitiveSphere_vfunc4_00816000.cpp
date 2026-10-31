@@ -29,12 +29,16 @@ public:
 };
 class CPersistContext;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* head; ~list(); };
+} // namespace std
 // Layout: donor CStringParser is0x30 with12B Comments; retail list is4B.
 // Retail parser is0x28: Comments14,ErrorCallback18,CursorPos1c.
 class CStringParser : public CBaseClass { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename;
-    CCharString TempCharString; CStringParserCommentList Comments;
+    CCharString TempCharString; std::list<CStringParserCommentBoundaries> Comments;
     void (*ErrorCallback)(CCharString*); long CursorPos[3];
     CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
     bool SkipPastNextItemIfIs(const CCharString&);

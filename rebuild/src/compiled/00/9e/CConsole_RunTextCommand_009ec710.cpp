@@ -45,10 +45,15 @@ class CCharString { public:
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CStringParserCommentList {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {           // retail std::list<CStringParserCommentBoundaries>: sentinel only
+public:
     void* m_pHead;
-    ~CStringParserCommentList();            // 0x004046B0
+    ~list();            // 0x004046B0
 };
+} // namespace std
 struct CCursorPos {
     bool          InQuotes;                 // +0x00
     unsigned long StringPos;                // +0x04
@@ -59,7 +64,7 @@ class CStringParser : public CBaseClass { public:         // retail 0x28 bytes
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;      // +0x0c
     CCharString              TempCharString;    // +0x10
-    CStringParserCommentList Comments;      // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;      // +0x14
     void (*ErrorCallback)(CCharString*);    // +0x18
     CCursorPos               CursorPos;     // +0x1c
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,

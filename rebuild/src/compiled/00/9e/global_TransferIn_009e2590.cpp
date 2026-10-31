@@ -7,7 +7,7 @@
 // Callees: CStringParser::PeekNextItemType 0x009BA900, CSymbolMap::UpdateDirty 0x009E5C60 (sorts the symbol vector map when
 //   dirty; ICF-shared with the catalog's CTCVillage::OnInitialActivate), CStringParser::ReadAsString 0x009BA6F0 (hidden
 //   result), CSymbolMap::FindSymbol 0x009E5170, operator+(const char*, const CCharString&) 0x0099F690 (`__fastcall`, hidden
-//   result in ecx), CPersistContext::Error 0x009BAA90, ~CCharString 0x0099EAE0, CStringParser::ReadAsInteger 0x009BA540,
+//   result in ecx), CPersistContext::PersistError 0x009BAA90, ~CCharString 0x0099EAE0, CStringParser::ReadAsInteger 0x009BA540,
 //   CCharString(const char*, long = -1) 0x0099EBF0, CStringParser::SkipPastNextItemIfIs 0x009B9E00.
 // Globals: "Unable to find symbol " 0x0122DFE8; "|" 0x0129B9FC, "+" 0x01230A74, "-" 0x0122E630, "<<" 0x0129B9F8,
 //   ">>" 0x0129B9F4.
@@ -51,7 +51,7 @@ public:
 class CPersistContext { public:                                       // Ego_r.pdb, 0x2C bytes
     void* PDefinitionManager;                                  // +0x00
     CSymbolMap* PSymbolMap;                                    // +0x04
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
     CSymbolMap* GetSymbolMap() const { return PSymbolMap; }
 };
 
@@ -65,7 +65,7 @@ void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long
         CCharString name = p->ReadAsString();
         long symbolValue = 0;
         if (!context->GetSymbolMap()->FindSymbol(name, symbolValue))
-            context->Error(*parser, g_msgUnableToFindSymbol_0122dfe8 + name);
+            context->PersistError(*parser, g_msgUnableToFindSymbol_0122dfe8 + name);
         *value = symbolValue;
     }
     else

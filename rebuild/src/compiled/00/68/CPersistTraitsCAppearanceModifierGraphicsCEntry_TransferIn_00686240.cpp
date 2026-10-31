@@ -43,7 +43,7 @@ class CSymbolMap { public:
 class CPersistContext { public:                               // Ego_r.pdb, 0x2C bytes
     void*       PDefinitionManager;                    // +0x00
     CSymbolMap* PSymbolMap;                            // +0x04
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
 enum { PARSED_ITEM_SYMBOL = 2 };
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
@@ -81,7 +81,7 @@ __declspec(noinline) void CPersistTraits<float>::TransferIn(CPersistContext* con
         CCharString name = parser->ReadAsString();
         long symbol;
         if (!context->PSymbolMap->Lookup(name, &symbol))
-            context->Error(*parser, g_msgUnknownSymbol_0122dfe8 + name);
+            context->PersistError(*parser, g_msgUnknownSymbol_0122dfe8 + name);
         *value = (float)symbol;
     }
     else

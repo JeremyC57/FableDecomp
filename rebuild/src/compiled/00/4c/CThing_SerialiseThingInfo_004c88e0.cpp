@@ -6,7 +6,7 @@
 //   ~CCharString 0x0099EAE0, operator= 0x0099EFB0, malloc 0x00BFEA0E (the comment list head), CPersistContext::Init(
 //   CCharString&, CDefinitionManager*) 0x009BAA10 (save) and Init(CStringParser*, callback, bool, CDefinitionManager*,
 //   CSymbolMap*, CCharString*) 0x009BA9D0 (load), CStringParser::Init(const char*, callback, const CCharString&, long)
-//   0x009B9530, the context overload SerialiseThingInfo(CPersistContext&, CSerialiseInfo&) 0x004C81F0, SkipToItem
+//   0x009B9530, the context overload SerialiseThingInfo(CPersistContext&, CSerialiseInfo&) 0x004C81F0, SkipPastWholeString
 //   0x009B9C00 (manifest "CThingCreatureBase::SerialiseGameState", propagated), ReadAsString 0x009BA6F0, the comment
 //   list destructor 0x004046B0. String "DefinitionSubType" 0x01239B78.
 // Layout: the retail 0x28-byte CStringParser and the 0x2C-byte CPersistContext of the landed CTCBase::SerialiseLevelState
@@ -28,18 +28,23 @@ public:
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList {                      // retail list<CStringParserCommentBoundaries>: the head pointer only
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {                      // retail list<CStringParserCommentBoundaries>: the head pointer only
+public:
     struct SNode { SNode* Next; SNode* Prev; char* PStart; char* PEnd; };
     SNode* m_pHead;
-    CStringParserCommentList() : m_pHead(0)
+    list() : m_pHead(0)
     {
         SNode* node = (SNode*)malloc(sizeof(SNode));
         node->Next = node;
         node->Prev = node;
         m_pHead = node;
     }
-    ~CStringParserCommentList();                       // 0x004046B0
+    ~list();                       // 0x004046B0
 };
+} // namespace std
 struct CCursorPos {
     bool          InQuotes;                            // +0x0
     unsigned long StringPos;                           // +0x4
@@ -52,7 +57,7 @@ public:
     unsigned long              BaseLineOffset;         // +0x08
     CCharString                Filename;               // +0x0C
     CCharString                TempCharString;         // +0x10
-    CStringParserCommentList   Comments;               // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;               // +0x14
     TStringParserErrorCallback ErrorCallback;          // +0x18
     CCursorPos                 CursorPos;              // +0x1C
     CStringParser() { String = 0; }
@@ -62,7 +67,7 @@ public:
         TempCharString = text;
         Init(text.c_str(), 0, filename, 0);
     }
-    bool SkipToItem(const CCharString& name);          // 0x009B9C00
+    bool SkipPastWholeString(const CCharString& name); // 0x009B9C00
     CCharString ReadAsString();                        // 0x009BA6F0
 };
 
@@ -99,7 +104,7 @@ void __fastcall CThing::SerialiseThingInfo(bool saving, CCharString& data, CSeri
     }
     SerialiseThingInfo(context, info);
     if (!saving) {
-        if (parser.SkipToItem("DefinitionSubType"))
+        if (parser.SkipPastWholeString("DefinitionSubType"))
             info.DefinitionType = parser.ReadAsString();
     }
 }

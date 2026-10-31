@@ -8,7 +8,8 @@
 //   operator+=(const char*) @ 0x0099F100 ("(" 0x0122E028, "," 0x0122E024, ")" 0x0122E020), operator+=(const CCharString&)
 //   @ 0x0099F0A0, CCharString::FormatDouble @ 0x009A08B0 (`__fastcall`, hidden result in ecx, six digits in edx, the double
 //   on the stack), TransferOutLong @ 0x009E2560 (`__fastcall` context, out, &copy), CPersistTraits<CCharString>::TransferOut
-//   @ 0x0040E630 (thiscall on the string traits, whose CCharString DefaultVal is built first and destroyed last).
+//   @ 0x0040E630 (thiscall on the string traits, whose CCharString DefaultVal is built first and destroyed last; PDB spelling
+//   ?TransferOut@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABV3@@Z, hand621 NAME_FIXES).
 // Shape: the landed 0x0057F78F / 0x0040FA20 text writers: each long through an inline CPersistTraits<long>::TransferOut
 //   (copy into the dead `out` argument slot), each float through an inline CPersistTraits<float>::TransferOut (the
 //   formatted temporary built in that slot after the 8-byte push), the name copied into a function-scope local that is
@@ -61,7 +62,7 @@ template <> struct CPersistTraits<float> {
 };
 template <> struct CPersistTraits<CCharString> {
     CCharString DefaultVal;
-    void TransferOut(CPersistContext* context, CCharString* out, CCharString* value);   // 0x0040E630
+    void TransferOut(CPersistContext& context, CCharString& out, const CCharString& value);   // 0x0040E630
 };
 template <> struct CPersistTraits<CTCInventoryMap::CUIMiniMapMarker> {
     void TransferOut(CPersistContext* context, CCharString* out, const CTCInventoryMap::CUIMiniMapMarker* value);
@@ -79,7 +80,7 @@ void CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>::TransferOut(CPersistCont
     longTraits.TransferOut(context, out, &value->DefNameLength);
     *out += ",";
     CCharString name(value->UIDefName);
-    stringTraits.TransferOut(context, out, &name);
+    stringTraits.TransferOut(*context, *out, name);
     *out += ",";
     floatTraits.TransferOut(context, out, &value->Position.X);
     *out += ",";

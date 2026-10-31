@@ -1,5 +1,7 @@
 // CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParser& parser, CFaction& value) -- text persist read of a faction: "Name <string>", "NumberOfAllies <n>" then n "Ally <string>" entries into the allied set, "NumberOfEnemies <n>" then n "Enemy <string>" entries into the enemy set, then "EndFaction"; a missing keyword stops the read
 // Leaf: ?TransferIn@?$CPersistTraits@VCFaction@@
+// Name (2026-10-31, hand621 NAME_FIXES): the callee 0x0040E510 is ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z
+//   (Ego_r.pdb 0x0040C1F0 / FableWin.pdb 0x0189E580: reference parameters; was the pointer form). Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BA480, 584 bytes (+ int3 padding), `ret 0Ch`, ebp frame aligned to 8.
 // Ego_r.pdb: ?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCFaction@@@Z;
 //   CFaction { CCharString Name +0, set<CCharString> AlliedFactions +4, EnemyFactions } (retail STLport set is 12 bytes, so the
@@ -54,7 +56,7 @@ template <class T> struct CPersistTraits;
 template <> struct CPersistTraits<CCharString> {
     CCharString DefaultVal;
     CPersistTraits() { }
-    void TransferIn(CPersistContext* context, CStringParser* parser, CCharString* value);   // 0x0040E510
+    void TransferIn(CPersistContext& context, CStringParser& parser, CCharString& value);   // 0x0040E510
 };
 template <> struct CPersistTraits<CFaction> {
     void TransferIn(CPersistContext& context, CStringParser& parser, CFaction& value);
@@ -65,7 +67,7 @@ void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParse
     if (!parser.NextItemIs("Name"))
         return;
     CPersistTraits<CCharString> stringTraits;
-    stringTraits.TransferIn(&context, &parser, &value.Name);
+    stringTraits.TransferIn(context, parser, value.Name);
     {
         if (!parser.NextItemIs("NumberOfAllies"))
             return;
@@ -75,7 +77,7 @@ void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParse
             if (!parser.NextItemIs("Ally"))
                 return;
             CCharString ally;
-            stringTraits.TransferIn(&context, &parser, &ally);
+            stringTraits.TransferIn(context, parser, ally);
             value.AlliedFactions.insert(ally);
         }
     }
@@ -88,7 +90,7 @@ void CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParse
             if (!parser.NextItemIs("Enemy"))
                 return;
             CCharString enemy;
-            stringTraits.TransferIn(&context, &parser, &enemy);
+            stringTraits.TransferIn(context, parser, enemy);
             value.EnemyFactions.insert(enemy);
         }
     }

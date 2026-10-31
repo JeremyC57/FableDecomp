@@ -26,17 +26,22 @@ struct SCommentNode {                                      // list<CStringParser
     char*         PStart;
     char*         PEnd;
 };
-struct CCommentList {                                      // retail list: the sentinel pointer
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {                                      // retail list: the sentinel pointer
+public:
     SCommentNode* m_head;
-    CCommentList() : m_head(0)
+    list() : m_head(0)
     {
         SCommentNode* node = (SCommentNode*)malloc(sizeof(SCommentNode));
         node->m_next = node;
         node->m_prev = node;
         m_head = node;
     }
-    ~CCommentList();                                       // 0x004046B0
+    ~list();                                       // 0x004046B0
 };
+} // namespace std
 struct CCursorPos { long Line, Column, Offset; };
 typedef void (__cdecl* TErrorCallback)(CCharString*);
 class CStringParser : public CBaseClass { public:                        // vtable 0x0122D874
@@ -44,7 +49,7 @@ class CStringParser : public CBaseClass { public:                        // vtab
     unsigned long  BaseLineOffset;                         // +0x08
     CCharString    Filename;                               // +0x0c
     CCharString    TempCharString;                         // +0x10
-    CCommentList   Comments;                               // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;                               // +0x14
     TErrorCallback ErrorCallback;                          // +0x18
     CCursorPos     CursorPos;                              // +0x1c
     CStringParser(char* text, TErrorCallback callback, const CCharString& filename, long baseLine)

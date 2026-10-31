@@ -21,16 +21,21 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CStringParserCommentList {
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {
+public:
     void* m_pHead;
-    ~CStringParserCommentList();                   // 0x004046B0
+    ~list();                   // 0x004046B0
 };
+} // namespace std
 class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
     CCharString              TempCharString;       // +0x10
-    CStringParserCommentList Comments;             // +0x14
+    std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     void (*ErrorCallback)(CCharString*);           // +0x18
     long                     CursorPos[3];         // +0x1c
     CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,

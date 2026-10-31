@@ -45,7 +45,7 @@ class CStringParser { public:
     __int64 ReadInt64();                               // 0x009BA5B0
 };
 class CPersistContext { public:
-    void Error(const CStringParser& parser, const CCharString& message);       // 0x009BAA90
+    void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
 };
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 __forceinline long TransferInLong(CPersistContext* context, CStringParser* parser)
@@ -81,7 +81,7 @@ __declspec(noinline) void CPersistTraits<bool>::TransferIn(CPersistContext* cont
     else if (EqualsNoCase(token, "FALSE") || EqualsNoCase(token, "BFALSE"))
         *value = false;
     else
-        context->Error(*parser, "Unknown boolean value entry " + token);
+        context->PersistError(*parser, "Unknown boolean value entry " + token);
 }
 #pragma auto_inline(on)
 template <> struct CPersistTraits<CHeroMarriageInfo> {

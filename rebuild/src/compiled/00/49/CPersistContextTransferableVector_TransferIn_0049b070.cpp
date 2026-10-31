@@ -1,5 +1,7 @@
 // CPersistContext_TransferableVector::TransferIn(CPersistContext*, CStringParser*, long) -- parses element `index` of the CCharString vector through a CPersistTraits<CCharString> (0x0040E510) that owns a default string
 // Leaf: TransferIn
+// Name (2026-10-31, hand621 NAME_FIXES): the callee 0x0040E510 is ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z
+//   (Ego_r.pdb 0x0040C1F0 / FableWin.pdb 0x0189E580: reference parameters; was the pointer form). Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B070, 59 bytes (+5 int3 padding).
 // Callees: 0x0099E4B0 CCharString::CCharString(), 0x0040E510 CPersistTraits<CCharString>::TransferIn
 // (CPersistContext*, CStringParser*, CCharString*) (__fastcall), 0x0099EAE0 CCharString::~CCharString.
@@ -28,7 +30,7 @@ template <class T> struct CRetailVector {
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
-    void TransferIn(CPersistContext* context, CStringParser* parser, T* value);       // 0x0040E510 for CCharString
+    void TransferIn(CPersistContext& context, CStringParser& parser, T& value);       // 0x0040E510 for CCharString
     void TransferOut(CPersistContext* context, CCharString* out, T* value);           // 0x0040E630 for CCharString
 };
 
@@ -43,5 +45,5 @@ struct CPersistContext_TransferableVector {
 void CPersistContext_TransferableVector::TransferIn(CPersistContext* context, CStringParser* parser, long index)
 {
     CPersistTraits<CCharString> traits;
-    traits.TransferIn(context, parser, &(*TransVector)[index]);
+    traits.TransferIn(*context, *parser, (*TransVector)[index]);
 }

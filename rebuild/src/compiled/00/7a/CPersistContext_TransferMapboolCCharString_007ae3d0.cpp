@@ -13,14 +13,16 @@
 //   value is bool (byte at node +0x14, "TRUE" 0x0122D6D4 / "FALSE" 0x0122D6CC), the sibling of 0x00756D00.
 // Callees: CPersistContext::CheckCRC 0x00404500, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / copy 0x0099EC30 /
 //   dtor 0x0099EAE0 / operator+=(const char*) 0x0099F100, CBasicString<char>::operator==(const char*) 0x004115A0, CStringParser
-//   copy 0x0046381B / SkipToItem 0x009B9C00 / ReadAsSymbol 0x009BA790 (inline destructor: ~list 0x004046B0, ~CCharString,
+//   copy 0x0046381B / SkipPastWholeString 0x009B9C00 / ReadAsSymbol 0x009BA790 (inline destructor: ~list 0x004046B0, ~CCharString,
 //   ~CBaseClass 0x0099A2E0), CPersistTraits<CCharString> TransferIn 0x0040E510 / TransferOut 0x0040E630, CPersistTraits<bool>
 //   TransferIn 0x00403FF0 (TransferOut inline), the map's (STLport 4.6 `_Rb_tree<CCharString, pair<const CCharString, bool>, ..>`)
 //   iterator ++ 0x007AB8A0 / _M_find 0x007ACC90 (map::find inlined; landed F012 row -- the landed source called it lower_bound) /
 //   erase(const key&) 0x007ADE60 / insert_unique 0x007AD060 (map::insert inlined) / clear 0x007ADAF0, and the binary map writer
 //   GFSerialiseMapBinaryOut<bool, CCharString, less<CCharString> > 0x007AD270 (mode 3) and reader GFSerialiseMapBinaryIn<..>
-//   0x007ADBF0 (mode 2) (__fastcall stream, map; PDB name set), CPersistContext::Error 0x009BAA90 / EntryTransferred
-//   0x009BAB40 / CleanText 0x009BB0D0.
+//   0x007ADBF0 (mode 2) (__fastcall stream, map; PDB name set), CPersistContext::PersistError 0x009BAA90 / SetAsFoundItem
+//   0x009BAB40 / CleanOutLine 0x009BB0D0.
+// Names (2026-10-31, hand621 NAME_FIXES): PersistError (const) / SetAsFoundItem / CleanOutLine (protected) /
+//   SkipPastWholeString and the comment list's ~list<CStringParserCommentBoundaries> are the Ego_r.pdb spellings; bytes unchanged.
 // Literals: "[" 0x01235434, "]" 0x01235430, ";" 0x0123542C, "] " 0x012353BC, ";\r\n" 0x012353B8, "" 0x0122D70E, the three error
 //   messages 0x01235404 / 0x012353E0 / 0x012353C0.
 // Layout: CPersistContext per Ego_r.pdb (landed 0x00757160 / 0x00463334 models); CStringParser retail 0x28 bytes; STLport map
@@ -65,10 +67,15 @@ public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-struct CStringParserCommentList {                      // std::list<CStringParserCommentBoundaries>
+class CStringParserCommentBoundaries;
+namespace std {
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class list {   // STLport list<CStringParserCommentBoundaries> (4 bytes)
+public:
     void* _M_node;
-    ~CStringParserCommentList();                       // 0x004046B0
+    ~list();                                           // 0x004046B0
 };
+} // namespace std
 struct CCursorPos {
     bool InQuotes;                                     // +0x00
     long StringPos;                                    // +0x04
@@ -80,11 +87,11 @@ public:
     unsigned long            BaseLineOffset;           // +0x08
     CCharString              Filename;                 // +0x0c
     CCharString              TempCharString;           // +0x10
-    CStringParserCommentList Comments;                 // +0x14
+    std::list<CStringParserCommentBoundaries> Comments; // +0x14
     void (*ErrorCallback)(CCharString*);               // +0x18
     CCursorPos               CursorPos;                // +0x1c
     CStringParser(const CStringParser& other);         // 0x0046381B
-    bool SkipToItem(const CCharString& name);          // 0x009B9C00
+    bool SkipPastWholeString(const CCharString& name); // 0x009B9C00
     CCharString ReadAsSymbol();                        // 0x009BA790
     CCharString ReadAsString();                        // 0x009BA6F0
 };
@@ -121,7 +128,7 @@ __declspec(noinline) void CPersistTraits<bool>::TransferIn(CPersistContext& cont
 }
 #pragma auto_inline(on)
 namespace std {
-template <class _Tp> class allocator { };
+// allocator<_Tp>: declared above with list
 template <class _Value, class _Tp, class _MaybeReboundAlloc>
 class _STLP_alloc_proxy : public _MaybeReboundAlloc {
 public:
@@ -244,9 +251,11 @@ public:
 protected:
     void CheckCRC(const char* name);                      // 0x00404500 (protected: PDB ?CheckCRC@CPersistContext@@IAEXPBD@Z)
 public:
-    void Error(const CStringParser& parser, const CCharString& message);   // 0x009BAA90
-    void EntryTransferred();                              // 0x009BAB40
-    void CleanText(long start, long end);                 // 0x009BB0D0
+    void PersistError(const CStringParser& parser, const CCharString& message) const;   // 0x009BAA90
+    void SetAsFoundItem();                                // 0x009BAB40
+protected:
+    void CleanOutLine(long start, long end);              // 0x009BB0D0
+public:
     template <class _Tp, class _Key> void TransferMap(const char* name, std::map<_Key, _Tp>& map, const _Tp& defaultValue);
 };
 
@@ -281,7 +290,7 @@ void CPersistContext::TransferMap(const char* name, std::map<_Key, _Tp>& map, co
     default: {
         CStringParser parser(*PParser);
         long nameLength = strlen(name);
-        while (!Finished && parser.SkipToItem(name)) {
+        while (!Finished && parser.SkipPastWholeString(name)) {
             long start = parser.CursorPos.StringPos - nameLength;
             if (parser.ReadAsSymbol() == "[") {
                 CPersistTraits<_Key> traits;
@@ -296,17 +305,17 @@ void CPersistContext::TransferMap(const char* name, std::map<_Key, _Tp>& map, co
                         value = defaultValue;
                     CPersistTraits<_Tp> valueTraits;
                     valueTraits.TransferIn(*this, parser, value);
-                    EntryTransferred();
+                    SetAsFoundItem();
                     map.erase(key);
                     map.insert(typename std::map<_Key, _Tp>::value_type(key, value));
                     if (parser.ReadAsSymbol() == ";")
-                        CleanText(start, parser.CursorPos.StringPos);
+                        CleanOutLine(start, parser.CursorPos.StringPos);
                     else
-                        Error(parser, "Unable to find terminating semicolon.");
+                        PersistError(parser, "Unable to find terminating semicolon.");
                 } else
-                    Error(parser, "Unable to find terminating bracket.");
+                    PersistError(parser, "Unable to find terminating bracket.");
             } else
-                Error(parser, "Unable to find opening bracket.");
+                PersistError(parser, "Unable to find opening bracket.");
         }
         return;
     }
