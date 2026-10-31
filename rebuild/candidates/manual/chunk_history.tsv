@@ -25438,3 +25438,13 @@ chunk	address	module	name	length
 640	00a22e10	CRightHandedSet	MakePerpendicular	358
 640	00688d40	CInputProcessZTarget	?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z	360
 640	00f36a30	CHeteroTerrainFractal	GetFractalHeight	361
+641	00712900	NTCScriptedControl::CActionPlayAnimation	NTCScriptedControl::CActionPlayAnimation::vfunc_1	362
+641	00956e70	CAIStateGroup_BriarRose	CAIStateGroup_BriarRose::Update	363
+641	006d4e60	CTCFollowed	IsCreatureValidFollower	363
+641	0047ed76	CTCInGameMenu	SetToSave	366
+641	008a8af0	CGameScriptInterface	?GetAllThingsInLevel@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z	366
+641	00a22ca0	global	VectorAngle_ComputeRotation	368
+641	0051e630	CThingManager	DebugVerifyUniqueIDs	369
+641	00d910b0	CBanditInRoomSample	Main	369
+641	00a1ad40	global	CNavigatorAStar_GetRandomNavigablePos	370
+641	009e5c90	CSymbolMap	CSymbolMap::LoadFromFile	373
