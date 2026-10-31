@@ -25040,3 +25040,13 @@ chunk	address	module	name	length
 600	00befa20	global	std_make_heap_build_loop	405
 600	00c783f0	global	CAudioChannel_ProcessEffects	405
 600	00c8c240	global	VertexBuffer_FillData	406
+601	00c313c0	global	sub_00c313c0	412
+601	00c07420	global	swd_findbest	413
+601	00cac640	global	sub_00cac640	414
+601	00c213c0	global	Thiscall_CreatureOpinionUpdate	415
+601	00c49470	global	sub_00c49470	415
+601	00c19340	global	RedBlackTree_RemoveByKey	419
+601	00c18870	global	sub_00c18870	424
+601	00c17be0	global	sub_00c17be0	425
+601	00c64420	global	CCharacter_SetActiveSkill	426
+601	00c104f0	global	CTCHero_ProcessBlockParryStrafe	427
