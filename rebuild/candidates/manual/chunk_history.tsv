@@ -25478,3 +25478,13 @@ chunk	address	module	name	length
 644	006aeea0	CTCRegionFollower	IsCreatureFollowingHeroAcrossRegions	429
 644	00b81820	CEngineSimulationManager	CEngineSimulationManager::FrameStart	433
 644	00a10560	global	WordWrap_FindNextLineA	433
+645	00870e00	CActionEventTriggerParticle	SetDataFromString	438
+645	00ba50a0	CEnginePrimitiveManagerStaticMeshesBase	SetupStaticBlocks	441
+645	004888c0	CPlayer	SwitchPlayerCharactersWith	443
+645	00b847d0	CEngineSubPrimitiveRenderer	RadixSort	444
+645	004feec0	CWorldMap	UnloadRegion	444
+645	0095b820	CAIStateGroup_HoverHornetQueen	Spawn	445
+645	00853670	CScriptModuleOpenChest	OnInitLeaf	445
+645	00872110	CStringAndCageBase	UpdateAutoGoBehind	447
+645	00838ec0	CThingGameObject	GetShotHitParameters	448
+645	0087bd70	CRotateAround	Update	451
