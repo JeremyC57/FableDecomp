@@ -370869,6 +370869,20 @@ $catalog = @(
         TestSource = '00/a4/CPlane_GetIntersectionWithTriangle_00a42470_test.cpp'
         PassPattern = '00a42470_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c7870'
+        Module = 'CThing'
+        Source = '00/4c/CThing_IsEntitySerialisable_004c7870.cpp'
+        TestSource = '00/4c/CThing_IsEntitySerialisable_004c7870_test.cpp'
+        PassPattern = '004c7870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00923070'
+        Module = 'CAIStateGroup_ServeFood'
+        Source = '00/92/CAIStateGroupServeFood_IsRunnable_00923070.cpp'
+        TestSource = '00/92/CAIStateGroupServeFood_IsRunnable_00923070_test.cpp'
+        PassPattern = '00923070_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

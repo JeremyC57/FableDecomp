@@ -35745,3 +35745,6 @@ _drftf1@20	00c98e80	00c9bc10
 ?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCCharString@@KM_N2@Z	00492ed1	00849700
 ?GFClear4DVectors@NVectorMath@@YAXPAVC4DVector@@KABV2@@Z	00a5c300	00ae0e60
 ?GetGroupVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z	00ae05a0	00ae0e60
+?FreeSeat@CTCTavernTable@@QAEXJJ@Z	007b8aa0	00923070
+?GetEatingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3@Z	007b8b10	00923070
+?GetServingPoint@CTCTavernTable@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ3PAPAVCThingObject@@W4ServingMode@1@_N@Z	007b8cc0	00923070

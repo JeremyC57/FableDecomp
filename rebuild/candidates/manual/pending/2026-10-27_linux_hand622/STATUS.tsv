@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+008de7a0	DIFFER	1239v1239	-	IceTroll FrameUpdate: trap-spawn register colouring (PlayerNumber/PDef load order, eax/ecx/edx rotation); same-TU LowerBound no change
+006c2170	DIFFER	1345v1329	-	CObject::Load: loop-1 index/offset register swap + alignment pad; entry-reference form worse
+00927f30	DIFFER	1331v1331	-	CAIStateGroup_SetupWares::Update: reached slot fixed (block-scoped); retry count eax v ecx + one lea scheduling left
+00590235	DIFFER	1393v1393	-	CTCInventory::GetItemsListUIComponent: pure callee-saved permutation (this edi/zero esi/index ebx); /O1 /Oy- identical
+007b3120	DIFFER	1592v1592	-	CTCGuard::FrameUpdate: frame closed 0x24->0x1c (same-TU LowerBound + out-param scoreboard); village register/spill allocation left
+0046313e	DIFFER	43v43	-	CSimVoice::operator=: post-call Dirty byte copy scheduled after pops (dl v al); same-TU callee and implicit forms no change
+0045cfad	DIFFER	49v49	-	CSoundMap::operator= (catalog says ctor): same post-call Dirty byte scheduling as 0x0046313E
+007af940	DIFFER	62v62	-	std::__uninitialized_fill_n<CIntelligentPointer<CThingAICreature>*>: x/n callee-saved register tie

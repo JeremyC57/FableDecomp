@@ -1,0 +1,13 @@
+addr       parity           behav  name
+004c7870   MATCH            PASS   IsEntitySerialisable
+00923070   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00923070   WARN RELOC_NAME: ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ -> 00662000 labelled 'CThingCreatureBase::GetMovementMode'
+00923070   RELOCATION_MATCH PASS   IsRunnable
+
+WINS: 2
+  004c7870 MATCH CThing::?IsEntitySerialisable@CThing@@UBE_NXZ
+  00923070 RELOCATION_MATCH CAIStateGroup_ServeFood::?IsRunnable@CAIStateGroup_ServeFood@@MAE_NXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CThing_IsEntitySerialisable_004c7870
+  CAIStateGroupServeFood_IsRunnable_00923070
