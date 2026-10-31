@@ -25178,3 +25178,13 @@ chunk	address	module	name	length
 614	0090bd40	CAIStateGroup_MinionWorkInInn	CleanBench	399
 614	009c38c0	CActiveFile	OnWriteFinished	409
 614	006ab5d0	CThingPlayerCreature	GetCurrentMaxMovementSpeed	412
+615	00a24d70	CAnimationData	BuildSharedAnimation	414
+615	00849be0	CCreatureAction_NavToPos	FrameUpdate	421
+615	00a11f20	CPhysicsMeshObject	IsSpherePartContainedInBoundingBox	428
+615	008cdd40	CCreatureAction_ReleaseTimeSpell	CCreatureAction_ReleaseTimeSpell::FinishAction	430
+615	0088ae40	global	GFSerialisePointer	431
+615	00680050	CThingObjectDef	?Validate@CThingObjectDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	439
+615	008cad50	CCreatureAction_SummonerLightningOrbInto	?FrameUpdate@CCreatureAction_SummonerLightningOrbInto@@UAEXXZ	441
+615	006a9690	CThingPlayerCreature	ResolveRelativeMovementAcceleration	450
+615	00b17410	NParticleEngine::CPSCOrbit	NParticleEngine::CPSCOrbit::vfunc_10	459
+615	00867010	CCombatAction_GenericResponseToDecapitation	?Initialise@CCombatAction_GenericResponseToDecapitation@@UAEXXZ	481
