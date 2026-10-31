@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+009bee40	DIFFER	101v101	-	register choice + store schedule (Y in edx v ecx, sunk X store before v after the format push); 14 masked lines
+0093cab0	RELOCATION_MATCH	104v104	PASS	one whole assignment statement per arm (tail-merged in this-before-argument order)
+0051d870	DIFFER	104v104	-	_M_start loaded into ecx then copied to edi (retail edi then ecx); real-STLport split reloads (22 lines)
+00c0a790	DIFFER	106v106	-	`mov edx,3F800000h` hoisted to the top (retail: right before the first 1.0f store); 2 masked lines
+006c0f00	RELOCATION_MATCH	109v109	PASS	one whole assignment statement per arm (3 arms, tail-merged)
+00c720c0	DIFFER	111v111	-	only the zero constant width: fld qword [0.0] v retail fld dword [0.0f]; 2 masked lines
+005fa990	RELOCATION_MATCH	111v111	PASS	recall position by const reference (no copy): Z,Y,X register loads, X squared first
+005c8101	DIFFER	117v117	-	ebx pushed at entry (retail inside the melee block) + presence-test this via mov ecx/add; 32 masked lines
+00bddf30	DIFFER	119v119	-	flag-byte load and +0x2c store scheduled differently; 4 masked lines
+00ec3270	DIFFER	123v123	-	switch default jumps to the final multiply (retail: to the >1 clamp test); 2 masked lines

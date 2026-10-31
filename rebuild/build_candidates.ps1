@@ -370946,6 +370946,27 @@ $catalog = @(
         TestSource = '00/9f/CGraphicDataBank_FrameEnd_009fd660_test.cpp'
         PassPattern = '009fd660_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005fa990'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_GetGuildSealRecallRegion_005fa990.cpp'
+        TestSource = '00/5f/CTCInventoryMap_GetGuildSealRecallRegion_005fa990_test.cpp'
+        PassPattern = '005fa990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c0f00'
+        Module = 'CTCBuyableHouse'
+        Source = '00/6c/CTCBuyableHouse_CreateMainSignPost_006c0f00.cpp'
+        TestSource = '00/6c/CTCBuyableHouse_CreateMainSignPost_006c0f00_test.cpp'
+        PassPattern = '006c0f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0093cab0'
+        Module = 'CAIStateGroup_NonVillageGuardPatrol'
+        Source = '00/93/CAIStateGroupNonVillageGuardPatrol_FindNextGuardPatrolPosition_0093cab0.cpp'
+        TestSource = '00/93/CAIStateGroupNonVillageGuardPatrol_FindNextGuardPatrolPosition_0093cab0_test.cpp'
+        PassPattern = '0093cab0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

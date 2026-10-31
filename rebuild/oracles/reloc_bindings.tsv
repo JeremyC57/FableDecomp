@@ -35748,3 +35748,7 @@ _drftf1@20	00c98e80	00c9bc10
 ?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEXXZ	007563e0	00756d00
 ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEIABVCCharString@@@Z	00756c60	00756d00
 ?GetUnloadableMemory@CResourceList@@QBEKK@Z	009fc070	009fd660
+?CreateSignPost@CTCBuyableHouse@@AAEPAVCThing@@ABVCCharString@@_N@Z	006c0970	006c0f00
+?g_MainSignPostDefName@@3VCCharString@@B	013baaf8	006c0f00
+?g_OwnedSignPostDefName@@3VCCharString@@B	013bab00	006c0f00
+?g_RentSignPostDefName@@3VCCharString@@B	013bab04	006c0f00

@@ -1,0 +1,15 @@
+addr       parity           behav  name
+005fa990   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fa990   RELOCATION_MATCH PASS   GetGuildSealRecallRegion
+006c0f00   RELOCATION_MATCH PASS   CreateMainSignPost
+0093cab0   RELOCATION_MATCH PASS   FindNextGuardPatrolPosition
+
+WINS: 3
+  005fa990 RELOCATION_MATCH CTCInventoryMap::?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ
+  006c0f00 RELOCATION_MATCH CTCBuyableHouse::?CreateMainSignPost@CTCBuyableHouse@@AAEXXZ
+  0093cab0 RELOCATION_MATCH CAIStateGroup_NonVillageGuardPatrol::?FindNextGuardPatrolPosition@CAIStateGroup_NonVillageGuardPatrol@@AAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryMap_GetGuildSealRecallRegion_005fa990
+  CTCBuyableHouse_CreateMainSignPost_006c0f00
+  CAIStateGroupNonVillageGuardPatrol_FindNextGuardPatrolPosition_0093cab0
