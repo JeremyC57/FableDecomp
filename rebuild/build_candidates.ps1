@@ -370883,6 +370883,20 @@ $catalog = @(
         TestSource = '00/92/CAIStateGroupServeFood_IsRunnable_00923070_test.cpp'
         PassPattern = '00923070_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0041db1d'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_CreateComponent_0041db1d.cpp'
+        TestSource = '00/41/NUISystemCManager_CreateComponent_0041db1d_test.cpp'
+        PassPattern = '0041db1d_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d63a0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetRunningNumHits_006d63a0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetRunningNumHits_006d63a0_test.cpp'
+        PassPattern = '006d63a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

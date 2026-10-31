@@ -1,0 +1,9 @@
+address	status	bytes	test	note
+00bc9b30	DIFFER	66v66	-	CEngineTreeFilerBase::FindNode: key/index register colouring swap (esi/edx)
+00c73830	DIFFER	72v72	-	CRegistryKey::QueryDWord (descriptive libpk): shared failure block placement; optimize("s") gives retail order but an ebp frame
+009e1960	DIFFER	74v74	-	GFStringToInt(const char*): zero-length guard jump threaded past the sign test
+009e1a80	DIFFER	75v75	-	GFStringToInt(const wchar_t*): same jump-threading residue
+00c52c40	DIFFER	75v75	-	CCpuInfo::GetCyrixModelName (label correction): family-5 Model in ecx vs retail eax
+00be1e20	DIFFER	77v77	-	CEnginePrimitive2DViewportManager ctor (label correction, PDB CArray<CEngineScene*>& signature): zero-temp block-copy register (edx/eax alternation)
+007447e0	DIFFER	77v77	-	CTCPerceiveThing::UpdateDistanceFromPerceivedThing: epilogue pop/fstp interleave only
+00521a90	DIFFER	78v78	-	CThingManager::SetNameForThing: operator[] key/argument register colouring (eax,ecx,edx vs ecx,edx,eax)

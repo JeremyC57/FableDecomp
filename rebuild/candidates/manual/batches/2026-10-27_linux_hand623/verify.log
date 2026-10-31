@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0041db1d   RELOCATION_MATCH PASS   CreateComponent
+006d63a0   RELOCATION_MATCH PASS   GetRunningNumHits
+
+WINS: 2
+  0041db1d RELOCATION_MATCH NUISystem::CManager::?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+  006d63a0 RELOCATION_MATCH CTCHeroExperience::?GetRunningNumHits@CTCHeroExperience@@QBEJXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NUISystemCManager_CreateComponent_0041db1d
+  CTCHeroExperience_GetRunningNumHits_006d63a0
