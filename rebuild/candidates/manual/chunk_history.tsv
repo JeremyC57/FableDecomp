@@ -25408,3 +25408,13 @@ chunk	address	module	name	length
 637	00f35ed0	CPerlinNoise	Initialise	307
 637	0095c0b0	CAIStateGroup_HoverHornetQueen	WaitWhileBabiesFight	307
 637	007471f0	CTCStealth	CTCStealth::vfunc_11	308
+638	006c06d0	CTCBuyableHouse	GetRentMoneyPos	312
+638	00a112f0	global	Matrix_TransformPlane	316
+638	008a8890	CGameScriptInterface	?GetAllThingsWithDefName@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z	317
+638	007175d0	NTCScriptedControl::CActionSummonerLightningAttackTarget	NTCScriptedControl::CActionSummonerLightningAttackTarget::vfunc_1	318
+638	007729a0	CTCShop	CalcIsStallLike	319
+638	004ff920	CWorldMap	CWorldMap::Update	319
+638	006d8830	global	Experience_ProcessMultiHitCombo	321
+638	006061b0	CTCInventoryMap	CTCInventoryMap::vfunc_9	322
+638	00a1abf0	CNavigatorAStar	?IsNewDestinationGoingToCauseRestart@CNavigatorAStar@@UBE_NABVC3DVector@@M@Z	324
+638	00773950	CTCShop	IsOpeningHours	324
