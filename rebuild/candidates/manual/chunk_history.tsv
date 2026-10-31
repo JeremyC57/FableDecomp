@@ -25448,3 +25448,13 @@ chunk	address	module	name	length
 641	00d910b0	CBanditInRoomSample	Main	369
 641	00a1ad40	global	CNavigatorAStar_GetRandomNavigablePos	370
 641	009e5c90	CSymbolMap	CSymbolMap::LoadFromFile	373
+642	00b41c30	CEngineMap	PeekInterpolatedWaterDepth	377
+642	005fb4b0	CTCInventoryMap	TeleportHeroToBoastingArea	379
+642	00acd960	COptimisedPrimitive	COptimisedPrimitive::SimplifyByVertexPairs	383
+642	007534b0	CTCLook	IsPosInViewRange	384
+642	0065b142	CTCVillage	EnableVillagerDefTypes	386
+642	0086b9d0	CRandomAppearanceMorph	GetRandomSkeletalMorph	389
+642	009122a0	CBezierCurve	GetPointOnCurve	390
+642	00911a90	CAIStateGroup_WanderAroundInitialPos	?Update@CAIStateGroup_WanderAroundInitialPos@@UAEXXZ	391
+642	005cb128	CTCInventoryWeapons	RemoveItemFromInventory	392
+642	00713d50	CActionFollowCreature	SetAsSneaking	395
