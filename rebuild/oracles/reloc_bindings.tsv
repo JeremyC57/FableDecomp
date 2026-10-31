@@ -9582,7 +9582,7 @@ __except_list	00000000	00c088d0
 ?Rebuild@CTCInventoryExperience_00c09270@@QAEXXZ	00c091f0	00c09270
 ?Finish@CTarget_00c092d0@@QAEXXZ	00c15c70	00c092d0
 ?Shutdown@CPixelShader_00c092d0@@QAEXXZ	00c091f0	00c092d0
-??1C3DMesh2_00c09380@@QAE@XZ	00c13470	00c09380
+??1CSoundEventManager@@UAE@XZ	00c13470	00c09380
 ??1CHelper_00c09380@@QAE@XZ	00c16580	00c09380
 ??1CNode_00c09380@@QAE@XZ	00c19250	00c09380
 ??1CPart3c_00c09380@@QAE@XZ	00c10320	00c09380
@@ -16716,7 +16716,7 @@ _s_CornerOrderNormal	0129b94c	009dca80
 ??0CSteeringHelper68@@QAE@PAUCSteeringGroup@@@Z	00c19e40	00c094a0
 ??0CSteeringHelper6C@@QAE@PAUCSteeringGroup@@@Z	00c165a0	00c094a0
 ??0CSteeringList@@QAE@XZ	00c0a6d0	00c094a0
-??0CSteeringSolver@@QAE@PAUCSteeringGroup@@MMMMMPAUCSteeringWorldEntry@@@Z	00c11d00	00c094a0
+??0CSoundEventManager@@QAE@PAUCAudioOwner@@MMMMMPAUCSteeringWorldEntry@@@Z	00c11d00	00c094a0
 ??0CTreeHeader@@QAE@H@Z	00c194f0	00c094a0
 ??_7CSteeringGroup@@6B@	012b1e24	00c094a0
 ??_7CSteeringTree@@6B@	012b1c98	00c094a0
@@ -35729,3 +35729,11 @@ _drftf1@20	00c98e80	00c9bc10
 ?Decapitate@CTCDecapitation@@QAEXXZ	007ef710	00867010
 ?DeleteData@?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@SIXPAX@Z	007180b0	00867010
 ?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0051e210	0088ae40
+??0CAudioResources@@QAE@PAX0@Z	00c1c700	00c11d00
+??0CFader@@QAE@M@Z	00c26010	00c11d00
+??0CSoundEventSet@@QAE@MMM@Z	00c222d0	00c11d00
+??0CTimerHost@@QAE@MJPAUPKCTimerTarget@@PBUSThreadParams_00c355e0@@@Z	00c25b10	00c11d00
+??0CVtable_012b401c@@QAE@PAX@Z	00c26a30	00c11d00
+??0CVtable_012b4030@@QAE@PAX@Z	00c26e90	00c11d00
+??_7CSoundEventManager@@6B@	012b2748	00c11d00
+?GetDefaultRateRatio@CAudioDevice@@QAEMXZ	00c1c0b0	00c11d00

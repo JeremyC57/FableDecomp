@@ -1,0 +1,12 @@
+addr       parity           behav  name
+009718f0   RELOCATION_MATCH PASS   GetIsEnemyInJacksWay
+00c11d00   WARN RELOC_NAME: ??0CSoundEventSet@@QAE@MMM@Z -> 00c222d0 labelled 'NScript_CEvent_Ctor'
+00c11d00   RELOCATION_MATCH PASS   CSoundEventManager
+
+WINS: 2
+  009718f0 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::?GetIsEnemyInJacksWay@CAIStateGroup_JackOfBladesBase@@IAE_NABVC3DVector@@0@Z
+  00c11d00 RELOCATION_MATCH CSoundEventManager::??0CSoundEventManager@@QAE@PAUCAudioOwner@@MMMMMPAUCSteeringWorldEntry@@@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupJackOfBladesBase_GetIsEnemyInJacksWay_009718f0
+  CSoundEventManager_CSoundEventManager_00c11d00

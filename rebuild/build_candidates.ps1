@@ -370805,6 +370805,21 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionSummonerLightningOrbInto_FrameUpdate_008cad50_test.cpp'
         PassPattern = '008cad50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009718f0'
+        Module = 'CAIStateGroup_JackOfBladesBase'
+        Source = '00/97/CAIStateGroupJackOfBladesBase_GetIsEnemyInJacksWay_009718f0.cpp'
+        TestSource = '00/97/CAIStateGroupJackOfBladesBase_GetIsEnemyInJacksWay_009718f0_test.cpp'
+        PassPattern = '009718f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c11d00'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp'
+        TestSource = '00/c1/CSoundEventManager_CSoundEventManager_00c11d00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c11d00_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

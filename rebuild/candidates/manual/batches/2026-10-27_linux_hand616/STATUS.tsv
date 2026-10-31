@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00910df0	DIFFER	500v500	-	CAIStateGroup_MinionGuardHeardYellForHelp::Update: inline xor eax,0xf v not eax (retail uses xor only at link-time inline sites) + brain-load register; lane gap
+0077c960	DIFFER	502v502	-	CTCHighlightItem::DoMovement: one x87 operand order (Min.Z first in retail); leaf made protected (IAE) so it grades again
+0070d580	DIFFER	504v504	-	CAnimateThing::SetMainAnim: STLport _Vector_base vector cut 23->19 lines; left: vector end via eax copied to ebp
+00c11d00	RELOCATION_MATCH	507v507	PASS	CSoundEventManager ctor (libpk): listener frame as three (x,y,z) vector members built in the init list; landed CTimerHost spelling; oracle label CTCHero::Initialize is wrong
+009718f0	RELOCATION_MATCH	510v510	PASS	CAIStateGroup_JackOfBladesBase::GetIsEnemyInJacksWay: compound sum orders in GetSquaredMagnitude2D (Y*Y then += X*X) and Normalise (z, x, y)
+007d5070	DIFFER	539v539	-	CTCTavernGameCardSorting::CardsMainGame: respelled to Ego_r; one store order (fstp Z before X=0)
+007f5ae0	DIFFER	544v544	-	CTCTargetingBase::UpdateNearestInterestingThing: respelled to the PDB (MAE); register roles of best / &PNearest CSE / map spill
+00871a80	DIFFER	547v547	-	NCreatureAction::CActionEventTriggerParticle::Dispatch: respelled; scratch rotation shifted by one; a bool found fixes the rotation but tail-merges the releases (520)
+00589a30	DIFFER	549v549	-	CTCInventory::OpenPCMapMenu: esi/edi reload order after repe cmpsb; lane gap
+004a34f0	DIFFER	564v564	-	CWorld::AutoLoadRegionLeaving: frame slots of heroState/fullPath v path swap; lane gap
