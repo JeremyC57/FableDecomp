@@ -25468,3 +25468,13 @@ chunk	address	module	name	length
 643	008bf500	CCreatureAction_GenericFireProjectileWeapon	CCreatureAction_GenericFireProjectileWeapon::FinishAction	412
 643	00bbcc70	CEnginePrimitiveManagerParticleGroup	SetupPixelShader	415
 643	00774730	CTCShop	SellItem	419
+644	007751a0	CTCShop	SetShopKeeper	419
+644	00b4b8b0	CEngineShadowRenderer	CalcLocalWorldToBaseShadowSpace	421
+644	00a618d0	global	Deque_Process_And_Rebalance	421
+644	009a3460	global	ReadTextFileIntoArray	424
+644	006e94d0	global	Combat_CheckRingRangeToTarget	426
+644	0057aeb4	CTCHeroStats	GetFavouriteWeapon	427
+644	00b9d730	CEnginePrimitiveManagerStaticMeshesBase	IsInsideFustrum	429
+644	006aeea0	CTCRegionFollower	IsCreatureFollowingHeroAcrossRegions	429
+644	00b81820	CEngineSimulationManager	CEngineSimulationManager::FrameStart	433
+644	00a10560	global	WordWrap_FindNextLineA	433
