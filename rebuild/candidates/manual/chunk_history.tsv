@@ -25208,3 +25208,13 @@ chunk	address	module	name	length
 617	00965640	CAIStateGroup_RecoverStealableItem	?OnReplace@CAIStateGroup_RecoverStealableItem@@UAEXXZ	612
 617	006ad700	CThingPlayerCreature	ControlledMove	615
 617	006a4fb0	CThingPhysical	GetFirstCollision	619
+618	00576ed1	CTCInventoryExperience	UndoBuyStat	622
+618	0071ba60	CTCHeroMorph	GetMorphStrength	624
+618	0047f30f	CTCInGameMenu	VideoOptionsNotAccepted	636
+618	00576c4f	CTCInventoryExperience	UndoBuyAbility	642
+618	006668a0	global	Animation_FilterAndCompile	673
+618	005c71aa	CTCInventoryWeapons	ConstructWeaponDescriptionNoDamageNorWeight	680
+618	00542780	CIconText	AddIcon	682
+618	007993f0	CTCShopKeeper	WitnessedCrime	698
+618	009644f0	CAIStateGroup_StealStealableItem	?OnReplace@CAIStateGroup_StealStealableItem@@UAEXXZ	709
+618	00849700	CCreatureAction_StealThingFromShop	PerformAction	719
