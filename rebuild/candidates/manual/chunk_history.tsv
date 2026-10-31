@@ -25258,3 +25258,13 @@ chunk	address	module	name	length
 622	0046313e	CSimVoice	operator=	43
 622	0045cfad	CSoundMap	CSoundMap	49
 622	007af940	global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	62
+623	00bc9b30	CEngineTreeFilerBase	FindNode	66
+623	0041db1d	CManager	CreateComponent	71
+623	00c73830	global	Registry_QueryDWord	72
+623	009e1960	global	GFStringToInt	74
+623	009e1a80	global	GFStringToInt	75
+623	00c52c40	CEngineInternalPrimitiveParticleGroup	GetRenderLayerMask	75
+623	00be1e20	CTCCreatureFlyOnSpline	CTCCreatureFlyOnSpline	77
+623	006d63a0	CEngine	GetEditorAnimation	77
+623	007447e0	CTCPerceiveThing	UpdateDistanceFromPerceivedThing	77
+623	00521a90	CThingManager	SetNameForThing	78
