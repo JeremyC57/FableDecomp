@@ -25428,3 +25428,13 @@ chunk	address	module	name	length
 639	00b92300	CEngineSceneGridCell	CreateOcclusionGroup	335
 639	00894ec0	CGameScriptInterface	?SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden@CGameScriptInterface@@UBEX_N@Z	335
 639	0065be6c	CTCVillage	UpdateHornTasks	336
+640	004fec80	CWorldMap	UpdateDestroyedThemeAreas	337
+640	00aa3af0	global	Quaternion_ToMatrix4x4	346
+640	00697cc0	CGameCameraManager	UpdateRightStickLookAround	346
+640	00c1d1c0	C3DMeshObject	SetInversePositionMatrixFromPositionMatrix	347
+640	00df48f0	CM_Experience	Main	348
+640	00986ed0	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby	353
+640	00be1c10	CEngineInternalPrimitive2DViewport	?Update@CEngineInternalPrimitive2DViewport@@UAEXABVCEnginePrimitive@@K@Z	353
+640	00a22e10	CRightHandedSet	MakePerpendicular	358
+640	00688d40	CInputProcessZTarget	?AddToInterface@CInputProcessZTarget@@UAE_NAAVCInputProcessManager@@@Z	360
+640	00f36a30	CHeteroTerrainFractal	GetFractalHeight	361
