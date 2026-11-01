@@ -8,7 +8,7 @@
 // tail-duplicates the true arm's return), then `return FastTrack` reloads.
 #include <math.h>
 class C3DVector { public: float X, Y, Z; };
-extern const float g_fastTrackEpsilon;              // 0x0129BA3C (0.0001f)
+extern const float EPSILON;           // 0x0129BA3C (0.0001f)
 class CThing { public:
     const C3DVector& GetPos() const;           // 0x004C73D0
 };
@@ -29,9 +29,9 @@ bool CTCSleep::GetFastTrack()
 {
     if (FastTrack) {
         const C3DVector& pos = ParentThing->GetPos();
-        FastTrack = ((float)fabs(PosAtFastTrackSetting.X - pos.X) <= g_fastTrackEpsilon
-            && (float)fabs(PosAtFastTrackSetting.Y - pos.Y) <= g_fastTrackEpsilon
-            && (float)fabs(PosAtFastTrackSetting.Z - pos.Z) <= g_fastTrackEpsilon) ? true : false;
+        FastTrack = ((float)fabs(PosAtFastTrackSetting.X - pos.X) <= EPSILON
+            && (float)fabs(PosAtFastTrackSetting.Y - pos.Y) <= EPSILON
+            && (float)fabs(PosAtFastTrackSetting.Z - pos.Z) <= EPSILON) ? true : false;
     }
     return FastTrack;
 }

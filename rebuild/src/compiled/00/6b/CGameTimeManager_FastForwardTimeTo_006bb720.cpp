@@ -25,7 +25,7 @@ class CGameTimeManager { public:
 };
 extern const float g_zero_0122dedc;                // 0x0122DEDC (0.0f)
 extern const float g_one_0122ded8;                 // 0x0122DED8 (1.0f)
-extern const float g_minFastForwardSeconds;        // 0x0129BA3C (0.0001f)
+extern const float EPSILON;                // 0x0129BA3C (0.0001f)
 
 void CGameTimeManager::FastForwardTimeTo(float time, float seconds)
 {
@@ -33,7 +33,7 @@ void CGameTimeManager::FastForwardTimeTo(float time, float seconds)
         time = g_zero_0122dedc;
     else if (time > g_one_0122ded8)
         time = g_one_0122ded8;
-    if (seconds > g_minFastForwardSeconds) {
+    if (seconds > EPSILON) {
         TimeFastForwardingTo = time;
         FastForwardingToTime = true;
         SecondsLeftToFastForwardTime = seconds;

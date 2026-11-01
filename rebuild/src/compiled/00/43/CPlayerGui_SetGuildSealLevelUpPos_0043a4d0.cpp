@@ -7,7 +7,7 @@
 // Shape: `pos.x*pos.x + pos.y*pos.y > EPS*EPS` with both components loaded first; STLport push_back (null-checked
 // placement copy, else _M_insert_overflow with the __true_type tag homed in the dead argument slot) and clear() as
 // erase(begin(), end()) with the inlined POD copy loop of the empty tail.
-extern float g_fEpsilon;                                    // 0x0129BA3C
+extern const float EPSILON; // 0x0129BA3C
 
 class C2DVector { public:
     float X;
@@ -68,7 +68,7 @@ void CPlayerGui::SetGuildSealLevelUpPos(const C2DVector& pos)
 {
     float y = pos.Y;
     float x = pos.X;
-    if (x * x + y * y > g_fEpsilon * g_fEpsilon)
+    if (x * x + y * y > EPSILON * EPSILON)
         PDrawGuildSeal->LevelUpPositions.push_back(pos);
     else
         PDrawGuildSeal->LevelUpPositions.clear();

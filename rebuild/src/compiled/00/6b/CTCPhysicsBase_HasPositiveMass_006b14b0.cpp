@@ -11,7 +11,7 @@ class CPhysicsDef { public:
     float         Mass;                     // +0x38
 };
 
-extern float g_fZero;                       // 0x0129BA3C (0.0f)
+extern const float EPSILON; // 0x0129BA3C (0.0f)
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
     const CPhysicsDef* GetDef() const { return reinterpret_cast<const CPhysicsDef*>(PhysicsDef_Object); }
@@ -20,5 +20,5 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 
 long CTCPhysicsBase_Methods::HasPositiveMass() const
 {
-    return GetDef()->Mass > g_fZero;
+    return GetDef()->Mass > EPSILON;
 }

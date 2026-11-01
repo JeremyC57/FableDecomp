@@ -18,7 +18,7 @@ struct COpenCloseHelper {
     void FrameUpdate(float frameTime);
 };
 
-extern const float g_OpenCloseEpsilon;      // 0x0129BA3C (0.0001f)
+extern const float EPSILON;           // 0x0129BA3C (0.0001f)
 
 void COpenCloseHelper::FrameUpdate(float frameTime)
 {
@@ -26,7 +26,7 @@ void COpenCloseHelper::FrameUpdate(float frameTime)
     if (Opening)
     {
         OpenCloseTransitionAmount += frameTime / TotalTimeToOpen;
-        if (OpenCloseTransitionAmount - 1.0f > -g_OpenCloseEpsilon)
+        if (OpenCloseTransitionAmount - 1.0f > -EPSILON)
         {
             Opened = true;
             Opening = false;
@@ -36,7 +36,7 @@ void COpenCloseHelper::FrameUpdate(float frameTime)
     else if (Closing)
     {
         OpenCloseTransitionAmount -= frameTime / TotalTimeToClose;
-        if (OpenCloseTransitionAmount < g_OpenCloseEpsilon)
+        if (OpenCloseTransitionAmount < EPSILON)
         {
             Closed = true;
             Closing = false;

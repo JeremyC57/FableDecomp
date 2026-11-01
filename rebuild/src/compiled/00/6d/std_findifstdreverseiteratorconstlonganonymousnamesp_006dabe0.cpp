@@ -15,7 +15,7 @@
 //   difference of the bases `sar 4`), the remainder is the fall-through `switch` (3, 2, 1 via `dec eax`). The
 //   reverse_iterator dereference is `*--tmp` (base[-1]); the predicate is `fallback < 2.0f || fallback - Multiplier <
 //   -epsilon` (2.0f @ 0x0122DCDC, epsilon 1e-4f @ 0x0129BA3C).
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 namespace std {
 struct input_iterator_tag { };
@@ -62,7 +62,7 @@ public:
     CPredIsFallbackMultiplierForMultiplier(float multiplier) : Multiplier(multiplier) { }
     bool operator()(long fallback_multiplier) const
     {
-        return (float)fallback_multiplier < 2.0f || (float)fallback_multiplier - Multiplier < -g_epsilon_0129ba3c;
+        return (float)fallback_multiplier < 2.0f || (float)fallback_multiplier - Multiplier < -EPSILON;
     }
     float Multiplier;                                    // +0x00
 };

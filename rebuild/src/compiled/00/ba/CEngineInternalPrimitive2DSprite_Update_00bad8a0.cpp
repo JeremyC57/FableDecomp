@@ -18,11 +18,11 @@
 // and an inline GetTexture() accessor (a plain member read loads the second call's `this` after its pushes).
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-extern const float g_fUVOffsetEpsilon;               // 0x0129BA3C (0.0001f)
+extern const float EPSILON;           // 0x0129BA3C (0.0001f)
 class C2DVector { public:
     float X, Y;
     float GetLengthSquared() const { return X * X + Y * Y; }
-    bool IsNonZero() const { return GetLengthSquared() > g_fUVOffsetEpsilon * g_fUVOffsetEpsilon; }
+    bool IsNonZero() const { return GetLengthSquared() > EPSILON * EPSILON; }
 };
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CRGBColour { public: unsigned char B, G, R, A; };

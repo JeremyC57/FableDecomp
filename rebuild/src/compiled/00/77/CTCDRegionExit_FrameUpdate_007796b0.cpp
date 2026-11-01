@@ -90,7 +90,7 @@ class CTCRegionDisplay { public:
     void SetCurrentAreaName(const CCharString& name, float time, bool a, bool b, bool c);   // 0x00639BA0
     void FinishShowingRegionName();                          // 0x00639930
 };
-extern const float g_epsilon_0129ba3c;                       // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 class CTCBase {
 public:
     virtual ~CTCBase();
@@ -142,7 +142,7 @@ void CTCDRegionExit::FrameUpdate()
     bool inside = distSq < Radius * Radius;
     if (!WaitingForActivationOrPlayerToLeave && inside) {
         moveHero = true;
-    } else if (MessageRadius > g_epsilon_0129ba3c && g_epsilon_0129ba3c + Radius < MessageRadius
+    } else if (MessageRadius > EPSILON && EPSILON + Radius < MessageRadius
                && distSq < MessageRadius * MessageRadius) {
         if (!WaitingForPlayerToLeaveMessageArea) {
             if (!InLetterBoxMode) {
@@ -170,7 +170,7 @@ void CTCDRegionExit::FrameUpdate()
         WaitingForActivationOrPlayerToLeave = false;
     if (distSq > MessageRadius * MessageRadius)
         WaitingForPlayerToLeaveMessageArea = false;
-    if (moveHero && hero->Health > g_epsilon_0129ba3c) {
+    if (moveHero && hero->Health > EPSILON) {
         MoveHeroThroughExit();
         WaitingForActivationOrPlayerToLeave = true;
     }

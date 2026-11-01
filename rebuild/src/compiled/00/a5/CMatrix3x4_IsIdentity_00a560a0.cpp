@@ -13,7 +13,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-extern const float g_IdentityTolerance;         // 0x0129BA3C (0.0001f)
+extern const float EPSILON;            // 0x0129BA3C (0.0001f)
 class CMatrix3x4 { public:
     C3DVector m_row0;                           // +0x00
     C3DVector m_row1;                           // +0x0c
@@ -24,10 +24,10 @@ class CMatrix3x4 { public:
 
 bool CMatrix3x4::IsIdentity() const
 {
-    if (!((m_row0 - C3DVector(1.0f, 0.0f, 0.0f)).GetLengthSquared() > g_IdentityTolerance * g_IdentityTolerance) &&
-        !((m_row1 - C3DVector(0.0f, 1.0f, 0.0f)).GetLengthSquared() > g_IdentityTolerance * g_IdentityTolerance) &&
-        !((m_row2 - C3DVector(0.0f, 0.0f, 1.0f)).GetLengthSquared() > g_IdentityTolerance * g_IdentityTolerance) &&
-        !((m_translation - C3DVector(0.0f, 0.0f, 0.0f)).GetLengthSquared() > g_IdentityTolerance * g_IdentityTolerance))
+    if (!((m_row0 - C3DVector(1.0f, 0.0f, 0.0f)).GetLengthSquared() > EPSILON * EPSILON) &&
+        !((m_row1 - C3DVector(0.0f, 1.0f, 0.0f)).GetLengthSquared() > EPSILON * EPSILON) &&
+        !((m_row2 - C3DVector(0.0f, 0.0f, 1.0f)).GetLengthSquared() > EPSILON * EPSILON) &&
+        !((m_translation - C3DVector(0.0f, 0.0f, 0.0f)).GetLengthSquared() > EPSILON * EPSILON))
         return true;
     return false;
 }

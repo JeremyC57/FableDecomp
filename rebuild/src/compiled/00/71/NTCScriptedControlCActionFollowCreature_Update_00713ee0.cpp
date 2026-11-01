@@ -131,7 +131,7 @@ class CTCLook { public:                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
 };
-extern float g_navEpsilon;                      // 0x0129BA3C (0.0001f)
+extern const float EPSILON; // 0x0129BA3C (0.0001f)
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -242,7 +242,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     nav->SetNavigationTarget(input);
     nav->Active = true;
     if (!PTCScript->ParentThing->IsPerformingAnyAction() && output.Status == 2
-        && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > g_navEpsilon * g_navEpsilon) {
+        && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > EPSILON * EPSILON) {
         C3DVector lookPos = output.Offset + PTCScript->ParentThing->PPhysics->Position;
         CTCLook* look;
         if (PTCScript->ParentThing->GetInterface(&look, 0x43)) {

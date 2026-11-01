@@ -8,7 +8,7 @@
 // Shape: `fld target; fsub position; fabs; fcomp eps; test ah,41h; jp` per axis is `fabs(TargetPosition - Position) <= eps`;
 //   the `(float)` cast keeps the compare in single precision. Base layout as in the landed CHoverable::Update.
 // Layout (retail CComponent): Position +0x34, TargetPosition +0x3c (Ego_r.pdb +0x64 / +0x6c).
-extern const float g_positionEpsilon;              // 0x0129BA3C (1e-4f)
+extern const float EPSILON;          // 0x0129BA3C (1e-4f)
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 namespace NUISystem {
@@ -42,8 +42,8 @@ class CZoomingComponent : public CChangingStateComponent { public:
 void CZoomingComponent::Update(float time)
 {
     CChangingStateComponent::Update(time);
-    if ((float)fabs(TargetPosition.X - Position.X) <= g_positionEpsilon &&
-        (float)fabs(TargetPosition.Y - Position.Y) <= g_positionEpsilon)
+    if ((float)fabs(TargetPosition.X - Position.X) <= EPSILON &&
+        (float)fabs(TargetPosition.Y - Position.Y) <= EPSILON)
         Panning = false;
 }
 }

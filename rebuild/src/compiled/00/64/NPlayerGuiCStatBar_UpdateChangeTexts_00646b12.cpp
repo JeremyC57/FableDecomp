@@ -13,7 +13,7 @@
 // Layout: Ego_r.pdb NPlayerGui::CStatBar (retail list at +0x64, PDB +0x6C); the owner (+0x04) box TL +0x4CC, BR +0x4D4,
 //   frame step +0x4DC; state +0x28. CChangeText: OldOffset +0, Offset +8, Text +0x10, Value +0x14, Colour +0x18
 //   (alpha byte +0x1B), StartToEnd +0x1C, PercentageThrough +0x20.
-extern const float g_epsilon_0129ba3c;          // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -87,7 +87,7 @@ void NPlayerGui::CStatBar::UpdateChangeTexts()
         }
         C2DVector delta;
         delta = end - start;
-        if (!((it->PercentageThrough += Owner->FrameStep) >= 1.0f - g_epsilon_0129ba3c) && it->Colour.A) {
+        if (!((it->PercentageThrough += Owner->FrameStep) >= 1.0f - EPSILON) && it->Colour.A) {
             it->OldOffset = it->Offset;
             it->Offset = start + delta * it->PercentageThrough;
             it->Colour.A = (unsigned char)((1.0f - it->PercentageThrough) * it->Colour.A);

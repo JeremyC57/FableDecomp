@@ -11,9 +11,9 @@ extern "C" double __cdecl fabs(double);
 #include "engine/CHoverable.h"
 struct NativeUIManager {unsigned char Prefix[0xbc];void* PDropped;};
 NativeUIManager* __cdecl GetUIManager(); //0041E5F2
+extern const float EPSILON;   // 0x0129BA3C (established spelling, naming wave 13)
 namespace NUISystem {
-extern const float g_PositionEpsilon; //0129BA3C
-struct C2DVector {float X,Y;bool operator==(const C2DVector& p)const{return (float)fabs(p.X-X)<=g_PositionEpsilon&&(float)fabs(p.Y-Y)<=g_PositionEpsilon;}};
+struct C2DVector {float X,Y;bool operator==(const C2DVector& p)const{return (float)fabs(p.X-X)<=EPSILON&&(float)fabs(p.Y-Y)<=EPSILON;}};
 class CDraggable { public:
  void* VTable;unsigned char BeforeTime[0x30-4];float Time;C2DVector Position,TargetPosition;
  unsigned char BeforeLayer[0x12f-0x44];unsigned char Layer;unsigned char BeforeClick[0x170-0x130];bool WasLeftClicked;

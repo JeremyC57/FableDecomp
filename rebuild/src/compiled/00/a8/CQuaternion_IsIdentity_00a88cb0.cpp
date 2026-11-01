@@ -6,7 +6,7 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-extern const float g_QuaternionEpsilon;   // 0x0129BA3C (0.0001f)
+extern const float EPSILON;            // 0x0129BA3C (0.0001f)
 extern const float g_One;                 // 0x0122DED8 (1.0f)
 
 class CQuaternion { public:
@@ -16,10 +16,10 @@ class CQuaternion { public:
 
 bool CQuaternion::IsIdentity() const
 {
-    if (fabs(X) < g_QuaternionEpsilon &&
-        fabs(Y) < g_QuaternionEpsilon &&
-        fabs(Z) < g_QuaternionEpsilon &&
-        fabs(W - g_One) < g_QuaternionEpsilon)
+    if (fabs(X) < EPSILON &&
+        fabs(Y) < EPSILON &&
+        fabs(Z) < EPSILON &&
+        fabs(W - g_One) < EPSILON)
         return true;
     return false;
 }

@@ -23,7 +23,7 @@ class C3DVector { public:
     float GetLengthSquaredXY() const { return X * X + Y * Y; }
     C3DVector GetPerpendicularXY() const { return C3DVector(Y, -X, 0.0f); }
 };
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class CThing;
 class CTCBase { public:
@@ -136,7 +136,7 @@ void NCameraModes::CZTargetNew::UpdateCoordSystem()
             const C3DVector& targetPos = target->GetPos();
             const C3DVector& pos = GetObservedThing()->GetPos();
             C3DVector axis(pos.X - targetPos.X, pos.Y - targetPos.Y, 0.0f);
-            if (axis.GetLengthSquaredXY() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
+            if (axis.GetLengthSquaredXY() > EPSILON * EPSILON) {
                 axis.AccurateNormalise();
                 XAxis = axis;
                 YAxis = XAxis.GetPerpendicularXY();

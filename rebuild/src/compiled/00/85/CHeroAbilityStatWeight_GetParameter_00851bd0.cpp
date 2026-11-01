@@ -12,7 +12,7 @@
 //   the level is a float local spilled across the second call; two float sums zeroed at entry.
 enum EHeroTrainableStatType { };
 
-extern const float g_epsilon_0129ba3c;                               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class CTCHeroExperience {
 public:
@@ -92,7 +92,7 @@ float CHeroAbilityStatWeight::GetParameter(const CTCHeroExperience& experience) 
         total += level / experience.GetTrainableStatMaxLevel(stat) * weight;
         totalWeight += weight;
     }
-    if (totalWeight < g_epsilon_0129ba3c)
+    if (totalWeight < EPSILON)
         return 0.0f;
     return total / totalWeight;
 }

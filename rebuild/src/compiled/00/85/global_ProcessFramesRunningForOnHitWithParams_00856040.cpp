@@ -6,10 +6,10 @@
 //   VC3DVector@@@Z (the combat TU's anonymous namespace); its call site is CCombatActionBase::
 //   ProcessPossibleCreatureStrikeEvent 0x00858130 (landed), `(RunningTimeSeconds, LastRunningTimeSeconds, previous,
 //   current, hitPosition)` where each pair is (weapon base, weapon tip).
-// Globals: the enabling flag 0x013B86CD (a .bss bool read only here; name not in the PDB dump), g_Epsilon 0x0129BA3C
+// Globals: the enabling flag 0x013B86CD (a .bss bool read only here; name not in the PDB dump), EPSILON 0x0129BA3C
 //   (0.0001f).
 // Shape: the tip movement and the tip-to-hit offset are C3DVector differences assigned into pre-declared locals (each
-//   built in the shared 12-byte temporary and copied out), `lenSq > g_Epsilon` (`test ah,41h ; jne`), the fraction
+//   built in the shared 12-byte temporary and copied out), `lenSq > EPSILON` (`test ah,41h ; jne`), the fraction
 //   |offset . movement| / lenSq (`fabs ; fdivrp`), and the inline Clamp(value, lo, hi) (`value < lo` first) of
 //   lastRunningTime + (runningTime - lastRunningTime) * fraction, stored back through runningTime.
 extern "C" double __cdecl fabs(double x);
@@ -40,7 +40,7 @@ template <class T> inline T Clamp(const T& value, const T& lo, const T& hi)
     return value;
 }
 
-extern const float g_Epsilon;                          // 0x0129BA3C (0.0001f)
+extern const float EPSILON;  // 0x0129BA3C (0.0001f)
 extern bool g_ProcessFramesRunningForOnHit;            // 0x013B86CD
 
 namespace {
@@ -55,7 +55,7 @@ void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float
         C3DVector offset;
         offset = hitPosition - previous.second;
         float lengthSquared = movement * movement;
-        if (lengthSquared > g_Epsilon) {
+        if (lengthSquared > EPSILON) {
             float fraction = (float)fabs(offset * movement) / lengthSquared;
             runningTime = Clamp(lastRunningTime + (runningTime - lastRunningTime) * fraction, lastRunningTime, runningTime);
         }

@@ -54,7 +54,7 @@ float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& t
 float __fastcall AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00754E70
 float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
-extern float g_epsilon_0129ba3c;                                                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 #pragma pack(push, 1)
 class CTCLook { public:
@@ -84,8 +84,8 @@ void CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& a
     float bodyYZ = ParentThing->PhysicsTC->GetFacingAngleYZ();
     if (IS_THING_ALIVE(PParentCreature)) {
         C3DVector headPos = GetHeadPos();
-        if ((float)fabs(pos.X - headPos.X) > g_epsilon_0129ba3c || (float)fabs(pos.Y - headPos.Y) > g_epsilon_0129ba3c ||
-            (float)fabs(pos.Z - headPos.Z) > g_epsilon_0129ba3c) {
+        if ((float)fabs(pos.X - headPos.X) > EPSILON || (float)fabs(pos.Y - headPos.Y) > EPSILON ||
+            (float)fabs(pos.Z - headPos.Z) > EPSILON) {
             float xy = AngleBetweenPositions(headPos, pos);
             float yz = AngleYZBetweenPositions(headPos, pos);
             angleXY = AngleDifference(bodyXY, xy);

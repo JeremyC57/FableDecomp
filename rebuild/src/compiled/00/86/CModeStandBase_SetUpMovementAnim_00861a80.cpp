@@ -22,7 +22,7 @@
 #undef CModeStandBase
 #include <math.h>
 class CThing;
-extern float g_epsilon_0129ba3c;                    // 0x0129BA3C
+extern const float EPSILON;     // 0x0129BA3C
 class CAnimationEntry { public:
     long BankIndex;                                 // +0x00
     long GetDelayTime() const;                      // 0x005DC1F0
@@ -101,7 +101,7 @@ void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStat
     long delay = Max(from.GetDelayTime(), to.GetDelayTime());
     float alpha = 1.0f;
     float range = to.MaxMovementSpeed - from.MaxMovementSpeed;
-    if (fabs(range) > g_epsilon_0129ba3c) {
+    if (fabs(range) > EPSILON) {
         alpha = (speed - from.MaxMovementSpeed) / range;
         if (alpha < 0.0f)
             alpha = 0.0f;

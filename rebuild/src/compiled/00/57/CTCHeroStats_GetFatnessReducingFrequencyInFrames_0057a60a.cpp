@@ -7,7 +7,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 extern long g_framesPerSecond_01375550;         // 0x01375550
-extern const float g_minPositive_0129ba3c;      // 0x0129BA3C (0.0001f)
+extern const float EPSILON;               // 0x0129BA3C (0.0001f)
 class CHeroStatsDef { public:
     unsigned char _pad00[0x80];
     float FatnessReductionRate;                 // +0x80
@@ -58,7 +58,7 @@ __forceinline long CeilToLong(float value)
 long CTCHeroStats::GetFatnessReducingFrequencyInFrames() const
 {
     float rate = GetDefinitionManager().PHeroStatsDef->FatnessReductionRate;
-    if (rate > g_minPositive_0129ba3c)
+    if (rate > EPSILON)
         return CeilToLong(g_framesPerSecond_01375550 * rate * 60.0f);
     return g_framesPerSecond_01375550 * 2440;
 }

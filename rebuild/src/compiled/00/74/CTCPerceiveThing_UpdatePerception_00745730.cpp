@@ -120,7 +120,7 @@ class CTCPerceiveThing { public:
 
 bool __fastcall IsIncapacitated(CThing* thing);   // 0x0085F0C0
 bool __fastcall IsLyingDown(CThing* thing);       // 0x0085F2B0
-extern float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 void CTCPerceiveThing::UpdatePerception()
 {
@@ -140,12 +140,12 @@ void CTCPerceiveThing::UpdatePerception()
     bool perceived = LineOfSight || Smelt;
     if (perceived) {
         SetAsDirectlyAwareOfPerceivedThing_00744730();
-    } else if (AwarenessTimer > g_epsilon_0129ba3c) {
+    } else if (AwarenessTimer > EPSILON) {
         float frameTime = GetGameSubsystem()->GetSecondsPerFrame();
         GetAwarenessTimer() -= frameTime * 4.0f;
         if (AwarenessTimer < 0.0f)
             AwarenessTimer = 0.0f;
-        if (AwarenessTimer < g_epsilon_0129ba3c) {
+        if (AwarenessTimer < EPSILON) {
             DirectAwareness = false;
             AwarenessTimer = 0.0f;
             g_pPlayerGui->RemovePerceivingThing(ParentThing);

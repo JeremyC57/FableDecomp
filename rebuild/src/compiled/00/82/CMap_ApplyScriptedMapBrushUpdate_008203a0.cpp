@@ -7,7 +7,7 @@ extern "C" double __cdecl fabs(double x);
 inline float fabs(float x) { return (float)fabs((double)x); }
 extern const float g_zero_0122dedc;               // 0x0122DEDC (0.0f)
 extern const float g_maxSize_012724c0;            // 0x012724C0 (2048.0f)
-extern const float g_epsilon_0129ba3c;            // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C2DCoordI { public:
     long X, Y;
@@ -61,7 +61,7 @@ class CHeightMap { public:
         if (size < g_zero_0122dedc) {
             value = g_zero_0122dedc;
         } else {
-            float limit = g_maxSize_012724c0 - g_epsilon_0129ba3c;
+            float limit = g_maxSize_012724c0 - EPSILON;
             value = size > limit ? limit : size;
         }
         GetCellIncludingExtraCells(cell.X, cell.Y).Height = value;

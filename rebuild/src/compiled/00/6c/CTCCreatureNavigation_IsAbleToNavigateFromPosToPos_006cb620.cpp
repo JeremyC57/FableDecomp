@@ -33,7 +33,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     float dy = a.Y - b.Y;
     return dx * dx + dy * dy;
 }
-extern float g_fTolerance;                      // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
@@ -62,7 +62,7 @@ class CTCCreatureNavigation { public:
 bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const
 {
     bool fromCurrentPos = true;
-    if (DistanceSquared(from, ParentThing->GetPos()) > g_fTolerance * g_fTolerance)
+    if (DistanceSquared(from, ParentThing->GetPos()) > EPSILON * EPSILON)
         fromCurrentPos = false;
     return PNavigator->IsAbleToNavigate(from, to, proximity, fromCurrentPos);
 }

@@ -15,7 +15,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern const float g_minLength_0129ba3c;           // 0x0129BA3C (0.0001f)
+extern const float EPSILON;             // 0x0129BA3C (0.0001f)
 struct CTargetPoint;
 struct CGetBestTargetInDirection {
     const C3DVector* BasePos;                      // +0x00
@@ -31,6 +31,6 @@ CGetBestTargetInDirection::CGetBestTargetInDirection(const C3DVector* basePos, c
 {
     TestLine = towards - *basePos;
     TestLine.Z = 0.0f;
-    if (TestLine.GetLengthSquared() > g_minLength_0129ba3c * g_minLength_0129ba3c)
+    if (TestLine.GetLengthSquared() > EPSILON * EPSILON)
         TestLine.AccurateNormalise();
 }

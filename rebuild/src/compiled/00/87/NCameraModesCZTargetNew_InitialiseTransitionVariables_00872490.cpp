@@ -27,7 +27,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
@@ -96,7 +96,7 @@ void NCameraModes::CZTargetNew::InitialiseTransitionVariables()
     StringLengthXY = PCameraModeDef->StringLengthXY;
     CageRadius = PCameraModeDef->CageRadius;
     offset.Z = 0.0f;
-    if (lengthSquaredXY > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
+    if (lengthSquaredXY > EPSILON * EPSILON)
         offset.AccurateNormalise();
     float sign = 1.0f;
     if (!(offset.X * XAxis.Y - offset.Y * XAxis.X > 0.0f))

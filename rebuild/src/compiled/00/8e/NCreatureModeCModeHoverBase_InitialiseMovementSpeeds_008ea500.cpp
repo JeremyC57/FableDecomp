@@ -42,7 +42,7 @@ class CWorld { public:
     unsigned char _pad[0x3c];
     long          Value3c;                              // +0x3c
 };
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 struct CModeBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -78,15 +78,15 @@ void CModeHoverBase::InitialiseMovementSpeeds()
     float mediumSpeed = creature->GetHoverSpeedMedium();
     float fastSpeed = creature->GetHoverSpeedFast();
     float slowScale, mediumScale, fastScale;
-    if (slowAnimSpeed < g_epsilon_0129ba3c || slowSpeed < g_epsilon_0129ba3c)
+    if (slowAnimSpeed < EPSILON || slowSpeed < EPSILON)
         slowScale = 1.0f;
     else
         slowScale = slowSpeed / slowAnimSpeed;
-    if (mediumAnimSpeed < g_epsilon_0129ba3c || mediumSpeed < g_epsilon_0129ba3c)
+    if (mediumAnimSpeed < EPSILON || mediumSpeed < EPSILON)
         mediumScale = 1.0f;
     else
         mediumScale = mediumSpeed / mediumAnimSpeed;
-    if (fastAnimSpeed < g_epsilon_0129ba3c || fastSpeed < g_epsilon_0129ba3c)
+    if (fastAnimSpeed < EPSILON || fastSpeed < EPSILON)
         fastScale = 1.0f;
     else
         fastScale = fastSpeed / fastAnimSpeed;

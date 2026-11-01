@@ -5,7 +5,7 @@
 //   length)` over "MOVE_DIRECTION" @ 0x0126E160, 14), CBaseClass ctor @ 0x0099A2D0, vector<pair<unsigned long, C3DVector> >
 //   ::push_back @ 0x0076B120, CTCDParticleEmitter::SetEmitterUpdateParameters(const CParticleUpdateParameters&) @ 0x006E11A0,
 //   ~CParticleUpdateParameters @ 0x006E2500. CParticleUpdateParameters<unsigned long, unsigned long> vtable 0x0125FFDC;
-//   g_epsilon_0129ba3c (1e-4f) squared at run time.
+//   EPSILON (1e-4f) squared at run time.
 // Layout: Ego_r.pdb CTCShotDefinitionBase PEffect +0x0C; retail CThing interface bitset +0x20 (0x4B = word +0x28 bit 11),
 //   PTCDriver +0x5C (PDB 0x6C), PhysicsTC +0x60 (PDB 0x70); CTCPhysicsBase Position +0x0C, OldPosition +0x18;
 //   CParticleUpdateParameters (the landed 0x006E2570 model): vptr, VectorParams map +0x04 (vector, comparator, Dirty +0x11),
@@ -25,7 +25,7 @@ class CCRC {
 public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 namespace NParticleEngine {
 struct SVectorParam {                                   // pair<unsigned long, C3DVector>
@@ -132,7 +132,7 @@ void CTCShotDefinitionBase::UpdateEffects()
     float lengthSquared = movement.Z * movement.Z;
     lengthSquared += movement.Y * movement.Y;
     lengthSquared += movement.X * movement.X;
-    if (!(lengthSquared > g_epsilon_0129ba3c * g_epsilon_0129ba3c)) {
+    if (!(lengthSquared > EPSILON * EPSILON)) {
         unsigned long key = CCRC::Calc(0, "MOVE_DIRECTION", 14);
         NParticleEngine::SVectorParam moveDirection(key, movement);
         NParticleEngine::CParticleUpdateParameters parameters;

@@ -22,7 +22,7 @@
 //   <CSnowTrollDef> 0x008C7A70, CTCDExplosiveTrail::Create 0x008100D0 (Ego_r ?Create@CTCDExplosiveTrail@@SIPAVCThing@@JABVC3DVector@@0PBV2@@Z),
 //   CTCDExplosiveTrail::AddThingToIgnore(CThing&) 0x00810970 (Ego_r 0x0080B430; landed as the descriptive
 //   CUnprovenDriverOwner_00810970::AppendTrackedThing -> NAME_FIXES.tsv), __ftol2.
-// Globals: g_framesPerSecond 0x01375550 (long), g_epsilon_0129ba3c 0x0129BA3C (1e-4f; no PDB name).
+// Globals: g_framesPerSecond 0x01375550 (long), EPSILON 0x0129BA3C (1e-4f; no PDB name).
 class CBaseObject { public: virtual void v00(); };
 #include "fable_string.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -45,7 +45,7 @@ class C3DVector { public:
 };
 inline float operator*(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 class CRightHandedSet { public: C3DVector Up, Forward; };
-extern const float g_epsilon_0129ba3c;                    // 0x0129BA3C (1e-4f; no PDB name)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f; no PDB name)
 extern long g_framesPerSecond;                            // 0x01375550
 
 class CTCPhysicsBase { public:
@@ -205,7 +205,7 @@ void CCreatureAction_IceTrollIcicleAttack::PerformAction()
         }
     }
     direction.Z = 0.0f;
-    if (direction.GetSquaredMagnitude2D() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
+    if (direction.GetSquaredMagnitude2D() > EPSILON * EPSILON) {
         direction.AccurateNormalise();
         if (forward.X * direction.X + (direction.Y * forward.Y + direction.Z * forward.Z) < cos(1.0471976f)) {
             direction = forward;

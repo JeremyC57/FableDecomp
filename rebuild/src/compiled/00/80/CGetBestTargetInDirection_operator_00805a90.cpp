@@ -14,7 +14,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern float g_fTolerance;                              // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 struct CTargetPoint {
     unsigned char _pad00[0xc];                          // PThing (CIntelligentPointer<CThing>), Index
     C3DVector TargetingPosition;                        // +0x0c
@@ -33,7 +33,7 @@ void CGetBestTargetInDirection::operator()(CTargetPoint* point)
     C3DVector delta(point->TargetingPosition.X - BasePos->X, point->TargetingPosition.Y - BasePos->Y, 0.0f);
     float lengthSquared = delta.X * delta.X;
     lengthSquared += delta.Y * delta.Y;
-    if (lengthSquared > g_fTolerance * g_fTolerance)
+    if (lengthSquared > EPSILON * EPSILON)
         delta.AccurateNormalise();
     float cosTheta = delta.Y * TestLine.Y;
     cosTheta += delta.Z * TestLine.Z;

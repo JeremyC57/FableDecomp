@@ -7,7 +7,7 @@
 // Callees: CVectorMap::LowerBound const 0x004365B0 (the inline GetTC 8: CTCTargeting), CTCTargeting slot 36 (+0x90)
 //   GetTargetedThing, CThing::PeekPlayer 0x004C7A10 (Ego_r ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ; sweep3 RENAMES), CThing::GetPos 0x004C73D0 (x2), the physics TC's slot 70
 //   (+0x118) GetFacingVector (C3DVector by hidden pointer), C3DVector::AccurateNormalise @ 0x00A14440.
-// Data: g_Epsilon 0x0129BA3C (1e-4f), 1/360 0x01238E00 (`/ 360.0f` as a reciprocal multiply), 2pi (double) 0x0124F2B8.
+// Data: EPSILON 0x0129BA3C (1e-4f), 1/360 0x01238E00 (`/ 360.0f` as a reciprocal multiply), 2pi (double) 0x0124F2B8.
 // Layout: CThing interface bitset +0x20, interface map +0x44, physics TC +0x60, flags +0x91 (bit 0 dead); CPlayer +0x20a
 //   (the lock-on byte of the landed 0x0087C900 model; no PDB name, CPlayer is padding there).
 // Shape: the targeted thing starts null and is fetched only when the shooter has interface 8; the alive test runs only
@@ -29,7 +29,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
-extern const float g_Epsilon;                           // 0x0129BA3C (1e-4f)
+extern const float EPSILON;  // 0x0129BA3C (1e-4f)
 
 struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
     struct SEntry { long type; void* component; };
@@ -117,7 +117,7 @@ bool __fastcall IsValidRangedWeaponTargetForShooter(const CThing& shooter, const
     }
     C3DVector offset = target.GetPos() - shooter.GetPos();
     C3DVector facing = shooter.PTCPhysics->GetFacingVector();
-    if (offset.GetLengthSquared() > g_Epsilon * g_Epsilon)
+    if (offset.GetLengthSquared() > EPSILON * EPSILON)
         offset.AccurateNormalise();
     if (facing * offset < cos(angle / 360.0f * 6.2831854820251465))
         return false;

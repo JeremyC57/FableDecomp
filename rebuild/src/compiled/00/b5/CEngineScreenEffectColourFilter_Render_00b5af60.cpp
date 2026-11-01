@@ -9,7 +9,7 @@ class CEngineScreenEffectColourFilter { public:
 };
 
 // the global threshold constant compared against (0x129ba3c)
-extern const float g_colourFilterThreshold;
+extern const float EPSILON;
 
 // member helper at 0xb5a3f0 (this-call)
 void __fastcall CEngineScreenEffectColourFilter_DoRender(CEngineScreenEffectColourFilter* self);
@@ -18,7 +18,7 @@ void __fastcall Render(CEngineScreenEffectColourFilter* self, int edx_dummy, CEn
 {
     (void)edx_dummy;
     if (self->enabled) {
-        if (self->amount > g_colourFilterThreshold) {
+        if (self->amount > EPSILON) {
             CEngineScreenEffectColourFilter_DoRender(self);
         }
     }

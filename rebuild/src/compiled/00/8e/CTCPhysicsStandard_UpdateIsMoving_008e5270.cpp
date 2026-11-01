@@ -10,7 +10,7 @@ class C3DVector { public:
     float X, Y, Z;
     float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
 };
-extern float g_fMinMovingSpeed;                // 0x0129BA3C (1e-4)
+extern const float EPSILON;    // 0x0129BA3C (1e-4)
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CThingPhysicsMeshInfo;
 class CTCPhysicsBase { public:
@@ -70,7 +70,7 @@ void CTCPhysicsStandard::UpdateIsMoving()
 {
     if (Moving) {
         if ((IsOnAnyStationarySurface() || !GetFeelsGravity())
-            && !(Velocity.GetMagnitudeSquared() > g_fMinMovingSpeed * g_fMinMovingSpeed)) {
+            && !(Velocity.GetMagnitudeSquared() > EPSILON * EPSILON)) {
             Moving = false;
             return;
         }

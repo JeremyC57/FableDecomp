@@ -19,7 +19,7 @@
 //   through ecx; a direct `GetRHSet().Up` copy swaps the first multiply's operands); the dummy-object name lives in its
 //   own block (constructed before the GetDummyObject arguments, homed on the dead `thing` slot, destroyed right after);
 //   C3DVector has a member-wise copy constructor; both branches end in the same `top = ...` store, which VC7.1 tail-merges.
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -115,7 +115,7 @@ public:
     {
         CDefPointer def = thing.PDef;
         float height = Height;
-        if (height < g_epsilon_0129ba3c)
+        if (height < EPSILON)
             height = def->CylinderHeight;
         return height;
     }

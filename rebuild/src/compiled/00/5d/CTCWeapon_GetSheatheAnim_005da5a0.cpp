@@ -40,7 +40,7 @@ class CWeaponDef : public CDefPointeeBase { public:
     CCharString   SheatheFromNormalAnim;                    // +0xe0
 };
 
-extern float g_MovingEpsilon;                                // 0x0129BA3C (1e-4f, squared at run time)
+extern const float EPSILON;  // 0x0129BA3C (1e-4f, squared at run time)
 
 struct CTCWeapon_Anims : CTCWeapon {
     CThing* GetParentThing() const { return *(CThing* const*)&_pad_0x04; }   // CTCBase::ParentThing (+0x04, a pad in the flattened header)
@@ -52,7 +52,7 @@ const CCharString& CTCWeapon_Anims::GetSheatheAnim() const
 {
     CThing* thing = GetParentThing();
     const C3DVector& last = thing->m_pRHSet->m_lastPosition;
-    if ((thing->GetPos() - last).GetLengthSquared() > g_MovingEpsilon * g_MovingEpsilon)
+    if ((thing->GetPos() - last).GetLengthSquared() > EPSILON * EPSILON)
         return GetDef()->SheatheFromNormalAnim;
     return GetDef()->SheatheFromCombatAnim;
 }

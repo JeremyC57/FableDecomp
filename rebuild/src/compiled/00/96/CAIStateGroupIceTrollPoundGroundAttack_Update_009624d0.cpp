@@ -21,7 +21,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-extern float g_epsilon_0129ba3c;                // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 struct CPhysicsBody {                           // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
@@ -218,11 +218,11 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             const C3DVector& myPos = GetCreature()->GetPos();
             C3DVector toTarget(targetPos.X - myPos.X, targetPos.Y - myPos.Y, targetPos.Z - myPos.Z);
             toTarget.Z = 0.0f;
-            if (toTarget.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
+            if (toTarget.MagnitudeSquared() > EPSILON * EPSILON)
                 toTarget.AccurateNormalise();
             C3DVector facing = GetCreature()->PhysicsBody->GetFacing();
             facing.Z = 0.0f;
-            if (facing.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
+            if (facing.MagnitudeSquared() > EPSILON * EPSILON)
                 facing.AccurateNormalise();
             if (Dot(facing, toTarget) < cos(1.0471976115464443)) {
                 long result = AIAction_PerformActionAndWait(

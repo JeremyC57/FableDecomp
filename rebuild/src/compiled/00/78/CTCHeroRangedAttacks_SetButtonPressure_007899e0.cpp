@@ -14,7 +14,7 @@
 
 // Shared float epsilon in .rdata; declared extern so the compiler cannot fold `1.0f - epsilon`
 // (retail computes it at run time: `fld 1.0 ; fsub [0129BA3Ch]`).
-extern const float g_FloatEpsilon;      // 0x0129BA3C
+extern const float EPSILON;       // 0x0129BA3C
 
 struct CTCHeroRangedAttacks_Methods : CTCHeroRangedAttacks {
     void SetButtonPressure(float pressure);
@@ -24,7 +24,7 @@ void CTCHeroRangedAttacks_Methods::SetButtonPressure(float pressure)
 {
     // Store the pressure, then cap it just below full so a held trigger never reads exactly 1.0.
     this->ButtonPressure = pressure;
-    float maximum = 1.0f - g_FloatEpsilon;
+    float maximum = 1.0f - EPSILON;
     if (pressure > maximum)
         this->ButtonPressure = maximum;
 }

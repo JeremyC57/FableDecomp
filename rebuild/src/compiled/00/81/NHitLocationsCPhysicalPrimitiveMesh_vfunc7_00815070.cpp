@@ -1,6 +1,6 @@
 // NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithFiniteLine,
 // retail 0x00815070. Isolated main-review fidelity source; author009 remains frozen. PDB identity: egor 19838 / debug 0x0080DF40.
-extern float g_MinVectorLengthSquared_0129ba3c;       // retail 0x0129BA3C
+extern const float EPSILON;                    // retail 0x0129BA3C
 extern const float g_NegativeOne_0122dee0;                  // retail 0x0122DEE0
 class C3DVector { public:
     float X, Y, Z;
@@ -162,8 +162,8 @@ bool NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithFiniteLine(
 {
     C3DVector line = to - from;
     if (!(line.SquaredLength() >
-          g_MinVectorLengthSquared_0129ba3c *
-          g_MinVectorLengthSquared_0129ba3c))
+          EPSILON *
+          EPSILON))
         return false;
 
     CTCPhysicsBase* physics = thing.Physics;

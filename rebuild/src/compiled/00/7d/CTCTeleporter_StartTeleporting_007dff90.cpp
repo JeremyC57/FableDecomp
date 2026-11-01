@@ -9,7 +9,7 @@
 //          CTCBase::PeekPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber() 0x00449700;
 //          CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on g_pMainGameComponent 0x013B86A0;
 //          __security_check_cookie 0x00BFE9F9. Globals: g_pPlayerGui 0x013B8790 (+0xfd, an unidentified blocking flag),
-//          g_epsilon_0129ba3c (1e-4f).
+//          EPSILON (1e-4f).
 // Layout (retail): CThing bitset +0x20, interface map +0x44, dead bit +0x91, CThingPhysical::Health +0xb4 (PDB +0xcc);
 //          CTCInventoryMap +0x240/+0x241 (by order Ego_r.pdb InventoryScreen/OpenedViaGuildSeal +0x29c/+0x29d -- inferred);
 //          CWorld mode word +0x104 (as the landed caller); CGameEvent as the landed OpenTrainingScreen 0x0077D4B0.
@@ -64,7 +64,7 @@ class CPlayerGui { public:
     bool          m_blockingFD;                 // +0xfd
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-extern float g_epsilon_0129ba3c;                // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -116,7 +116,7 @@ void CTCTeleporter::StartTeleporting(CThing* hero)
     if (!g_pPlayerGui->m_blockingFD && PeekWorld().m_mode == 0) {
         bool built = false;
         map->BuildMapTeleportUI(0, true, &built);
-        if (built && !(hero->m_flags91 & 1) && hero->Health > g_epsilon_0129ba3c) {
+        if (built && !(hero->m_flags91 & 1) && hero->Health > EPSILON) {
             CGameEvent event(0x1a);
             event.AddULONG(8);
             event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();

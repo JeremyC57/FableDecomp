@@ -44,7 +44,7 @@ class C2DLineF { public:
     float GetHighestY() const { return (float)Max<double>(Point1.Y, Point2.Y); }
     bool IntersectsWith(const C2DBoxF& box) const;            // 0x00A57BD0
 };
-extern float g_C2DTolerance;                                  // 0x0129BA3C
+extern const float EPSILON; // 0x0129BA3C
 
 namespace std {
 template <class T> struct _List_node {
@@ -88,13 +88,13 @@ bool CNavQuadTree_Methods::IsAreaBlockedByLines(const C2DBoxF& area, const std::
         const std::list<C2DLineF>* lines = *it;
         for (std::list<C2DLineF>::const_iterator it2 = lines->begin(); it2 != lines->end(); ++it2) {
             const C2DLineF& line = *it2;
-            if (line.GetHighestX() - area.TLX <= -g_C2DTolerance)
+            if (line.GetHighestX() - area.TLX <= -EPSILON)
                 continue;
-            if (line.GetLowestX() - area.BRX >= g_C2DTolerance)
+            if (line.GetLowestX() - area.BRX >= EPSILON)
                 continue;
-            if (line.GetHighestY() - area.TLY <= -g_C2DTolerance)
+            if (line.GetHighestY() - area.TLY <= -EPSILON)
                 continue;
-            if (line.GetLowestY() - area.BRY >= g_C2DTolerance)
+            if (line.GetLowestY() - area.BRY >= EPSILON)
                 continue;
             if (area.ContainsPoint(line.Point1) || area.ContainsPoint(line.Point2) || line.IntersectsWith(area))
                 return true;

@@ -82,7 +82,7 @@ inline float __fastcall GFFloatAbs(float f)
     return f;
 }
 
-extern const float g_Epsilon;                               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;  // 0x0129BA3C (1e-4f)
 
 namespace std {
 template <class T> class vector {
@@ -132,7 +132,7 @@ bool __fastcall UpdateDialogueElement(CActiveDialogueInfo& info, long elapsedFra
             if (player->IsAttachedSoundPlaying(info.SoundID)) {
                 float targetGain = GetTargetGain(info, layerDefs);
                 float diff = targetGain - info.OutputGain;
-                if (GFFloatAbs(diff) > g_Epsilon) {
+                if (GFFloatAbs(diff) > EPSILON) {
                     float step = elapsedFrames * (diff > 0.0f ? g_ResponseTimes[info.Layer].AttackMaxDeltaPerFrame
                                                               : g_ResponseTimes[info.Layer].ReleaseMaxDeltaPerFrame);
                     info.OutputGain = GFFloatAbs(diff) > GFFloatAbs(step) ? step + info.OutputGain : targetGain;

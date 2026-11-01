@@ -74,7 +74,7 @@ class CThingObjectDef { public:
     long           DieOffTimer;                         // +0x94
 };
 
-extern const float g_epsilon_0129ba3c;                  // 1e-4f
+extern const float EPSILON;           // 1e-4f
 extern long g_framesPerSecond;                 // 15
 
 struct CInterfaceMap {
@@ -157,7 +157,7 @@ bool CThingObject::OnCreate()
         return false;
     DieOffTimer = PDef->DieOffTimer;
     DiesOff = DieOffTimer > 0;
-    if (PDef->RotationTime > g_epsilon_0129ba3c && HasTC(0x5c)) {
+    if (PDef->RotationTime > EPSILON && HasTC(0x5c)) {
         CTCBase* component = GetTC(0x5c);
         bool isSprite;
         {

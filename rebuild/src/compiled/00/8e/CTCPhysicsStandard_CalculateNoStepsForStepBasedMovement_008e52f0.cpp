@@ -10,7 +10,7 @@ class C3DVector { public:
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
 };
 extern float g_fStepBasedMovementStepSize;      // 0x012786A8 (0.15)
-extern float g_fMinMovingSpeed;                 // 0x0129BA3C (1e-4)
+extern const float EPSILON;    // 0x0129BA3C (1e-4)
 struct CTCPhysicsStandard {
     void CalculateNoStepsForStepBasedMovement(float distance, C3DVector* step, long* noSteps, long stepsTaken);
 };
@@ -23,7 +23,7 @@ void CTCPhysicsStandard::CalculateNoStepsForStepBasedMovement(float distance, C3
         *step *= scale;
         return;
     }
-    if (stepsTaken == 0 && distance > g_fMinMovingSpeed)
+    if (stepsTaken == 0 && distance > EPSILON)
         *noSteps = 1;
     else
         *noSteps = 0;

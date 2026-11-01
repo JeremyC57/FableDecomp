@@ -5,7 +5,7 @@
 // Shape: a summing loop over size() (12-byte elements, reciprocal-multiply divide) that VC7.1 unrolls by four; the index is
 //   unsigned against a signed count (`jl` unroll guard, `jae` remainder loop); the length test is a file-static bool
 //   helper (`return lenSq > eps * eps;` gives `mov eax,1 / xor eax,eax`) negated in the return (`test al,al ; sete cl`).
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -24,7 +24,7 @@ template <class T> struct vector {
 
 static bool IsLongerThanEpsilon(const C3DVector& v)
 {
-    return v.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c;
+    return v.GetLengthSquared() > EPSILON * EPSILON;
 }
 
 class CPhysicsMeshObject {

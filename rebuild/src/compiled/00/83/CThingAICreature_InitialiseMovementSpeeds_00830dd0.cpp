@@ -22,7 +22,7 @@ class CAnimFilterBase { public:                             // vtable 0x0122FFCC
 };
 struct CAnimFilterAnyGroup : CAnimFilterBase {       // vtable 0x0127261C (implicit constructor: the vtable store sinks to the call)
 };
-extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 struct CCreatureSpeedSource {                        // descriptive: the +0xE0 pointee
     unsigned char _pad00[0xb0];
     float         SpeedVariation;                    // +0xb0
@@ -59,7 +59,7 @@ void CThingAICreature::InitialiseMovementSpeeds()
     } else {
         MaxFlyingSpeed = 0.0f;
     }
-    if (m_pSpeedSource->SpeedVariation > g_epsilon_0129ba3c) {
+    if (m_pSpeedSource->SpeedVariation > EPSILON) {
         RandomiseMovementSpeed(&MaxWalkingSpeed);
         RandomiseMovementSpeed(&MaxJoggingSpeed);
         RandomiseMovementSpeed(&MaxRunningSpeed);

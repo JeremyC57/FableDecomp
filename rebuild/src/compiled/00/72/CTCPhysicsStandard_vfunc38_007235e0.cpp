@@ -12,7 +12,7 @@
 // polymorphic hierarchy is modelled locally with the same offsets (as the landed constructor 0x00723FD0 does).
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
-extern const float g_minAirResistance;         // 0x0129BA3C = 0.0001f
+extern const float EPSILON;           // 0x0129BA3C = 0.0001f
 
 class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -59,7 +59,7 @@ void CTCPhysicsStandard::vfunc_38(bool enable)
 {
     SetAsMoving(true);
     if (enable)
-        FeelsGravity = GetAirResistance_006afe00() > g_minAirResistance;
+        FeelsGravity = GetAirResistance_006afe00() > EPSILON;
     else
         FeelsGravity = false;
 }

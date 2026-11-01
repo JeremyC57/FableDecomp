@@ -18,32 +18,32 @@ class C2DBoxI { public:
     long minX; long minY; long maxX; long maxY;
     void ClipLineTo(C2DLineF& line) const;
 };
-extern float g_C2DIntersectionTolerance;   // 0x0129BA3C
+extern const float EPSILON;             // 0x0129BA3C
 
 void C2DBoxI::ClipLineTo(C2DLineF& line) const
 {
     C2DVector hit;
     bool first = true;
     C2DLineF top((float)minX, (float)minY, (float)maxX, (float)minY);
-    if (line.IntersectsWith(top, &hit, g_C2DIntersectionTolerance)) {
+    if (line.IntersectsWith(top, &hit, EPSILON)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF right((float)maxX, (float)minY, (float)maxX, (float)maxY);
-    if (line.IntersectsWith(right, &hit, g_C2DIntersectionTolerance)) {
+    if (line.IntersectsWith(right, &hit, EPSILON)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF bottom((float)minX, (float)maxY, (float)maxX, (float)maxY);
-    if (line.IntersectsWith(bottom, &hit, g_C2DIntersectionTolerance)) {
+    if (line.IntersectsWith(bottom, &hit, EPSILON)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
         first = false;
     }
     C2DLineF left((float)minX, (float)minY, (float)minX, (float)maxY);
-    if (line.IntersectsWith(left, &hit, g_C2DIntersectionTolerance)) {
+    if (line.IntersectsWith(left, &hit, EPSILON)) {
         if (first) { line.x1 = hit.x; line.y1 = hit.y; }
         else { line.x2 = hit.x; line.y2 = hit.y; }
     }

@@ -10,7 +10,7 @@ public:
     long  GetType() const;                      // 0x00A03B40
     float GetValue() const;                     // 0x00A03BB0
 };
-extern const float g_InputDeadZone;             // 0x0129BA3C (0.0001f)
+extern const float EPSILON;        // 0x0129BA3C (0.0001f)
 enum { INPUT_EVENT_MOUSE_WHEEL = 14 };
 struct CInputTypeMouseWheelMovementDownEvent_Methods : CInputTypeMouseWheelMovementDownEvent {
     bool IsEventOfThisType(const CInputEvent& event) const;
@@ -19,7 +19,7 @@ bool CInputTypeMouseWheelMovementDownEvent_Methods::IsEventOfThisType(const CInp
 {
     if (event.GetType() == INPUT_EVENT_MOUSE_WHEEL) {
         float movement = event.GetValue();
-        if (movement < -g_InputDeadZone)
+        if (movement < -EPSILON)
             return true;
     }
     return false;

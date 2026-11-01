@@ -10,7 +10,7 @@
 // Shape: the spline pointer's object is tested and cached for the first position call; the previous progress is a named local
 // that the looping path overwrites with the wrapped progress (sharing the __ftol2 integer's slot); the physics component is a
 // local taken before the orientation is built (the CTCCreatureFlyInCircles::FrameUpdate 0x007DE030 orientation code).
-extern float g_epsilon;                                 // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -89,7 +89,7 @@ void CTCCreatureFlyOnSpline::FrameUpdate()
     PSpline->GetSplinePosition(&pos, Progress);
     ParentThing->PhysicsTC->SetPosition(pos);
     C3DVector dir = pos - lastPos;
-    if (dir.GetLengthSquared() > g_epsilon * g_epsilon) {
+    if (dir.GetLengthSquared() > EPSILON * EPSILON) {
         dir.Normalise();
         CTCPhysicsBase* physics = ParentThing->PhysicsTC;
         CRightHandedSet set(CrossProduct(C3DVector(dir.Y, -dir.X, 0.0f), dir), dir);

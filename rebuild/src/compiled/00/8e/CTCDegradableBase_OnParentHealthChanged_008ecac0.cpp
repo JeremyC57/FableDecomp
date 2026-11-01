@@ -17,7 +17,7 @@
 //   negation with `test ; sete bl`); IsFullyDegraded is inlined at its first use only (an inline copy of the landed body) and called
 //   out of line at the second; `cur - new > eps` gives `test ah,41h ; jne` to the shared return; the component comes from
 //   the out-parameter GetInterface; its call is the last statement, so VC7.1 tail-jumps.
-extern float g_epsilon_0129ba3c;                            // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -119,7 +119,7 @@ void CTCDegradableBase::OnParentHealthChanged(bool fromHit)
         CDegradableInfo* info = (CDegradableInfo*)GetDegradableInfoForHealthPercentage(PParentThingPhysical->GetHealthPercentage());
         if (!info)
             return;
-        if (PCurrentDegradableInfo && !(PCurrentDegradableInfo->HealthPercentage - info->HealthPercentage > g_epsilon_0129ba3c))
+        if (PCurrentDegradableInfo && !(PCurrentDegradableInfo->HealthPercentage - info->HealthPercentage > EPSILON))
             return;
         PCurrentDegradableInfo = info;
         ChangeMesh(info->EngineGraphic);

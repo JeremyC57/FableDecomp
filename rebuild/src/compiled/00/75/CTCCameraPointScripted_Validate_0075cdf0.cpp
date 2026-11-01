@@ -13,7 +13,7 @@ class CCharString { public:
     const CCharString& operator=(const char* s);          // 0x0099EFE0
 };
 
-extern float g_CameraPointMinTransitionTime;        // 0x0129BA3C (0.0001f)
+extern const float EPSILON;                 // 0x0129BA3C (0.0001f)
 
 #pragma pack(push, 1)
 class C3DVector { public: float X, Y, Z; };
@@ -49,7 +49,7 @@ bool CTCCameraPointScripted::vfunc_17(CCharString& error) const
         error = "look at direction or thing not set";
         return false;
     }
-    if (!EndPosSet && TransitionTime > g_CameraPointMinTransitionTime)
+    if (!EndPosSet && TransitionTime > EPSILON)
     {
         error = "I'm transitioning but there's no end pos to go to";
         return false;

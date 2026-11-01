@@ -15,7 +15,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-extern float g_epsilon_0129ba3c;                         // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 class C2DVector
 {
@@ -52,7 +52,7 @@ C2DVector CInputTypeXboxPadLeftStickEvent::GetControlDirection(const CInputEvent
     C2DVector direction = event.GetJoystickPosition();
     direction.Y *= -1.0f;
     float length = direction.GetLength();
-    if (length > g_epsilon_0129ba3c && length > 1.0f)
+    if (length > EPSILON && length > 1.0f)
     {
         direction.X /= length;
         direction.Y /= length;

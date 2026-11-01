@@ -21,7 +21,7 @@ public:
 public:
     C2DVector GetJoystickPosition() const;   // 0x00A043A0
 };
-extern const float g_InputDeadZone;             // 0x0129BA3C (0.0001f)
+extern const float EPSILON;        // 0x0129BA3C (0.0001f)
 struct CInputTypeXboxPadRightStickEvent_Methods : CInputTypeXboxPadRightStickEvent {
     C2DVector GetControlDirection(const CInputEvent& event) const;
 };
@@ -31,7 +31,7 @@ C2DVector CInputTypeXboxPadRightStickEvent_Methods::GetControlDirection(const CI
     double y = position.Y * -1.0f;
     double x = position.X;
     float length = (float)sqrt(x * x + y * y);
-    if (length > g_InputDeadZone && length > 1.0f) {
+    if (length > EPSILON && length > 1.0f) {
         float scale = 1.0f / length;
         x *= scale;
         y *= scale;

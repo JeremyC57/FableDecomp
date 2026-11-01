@@ -86,7 +86,7 @@ public:
 class CTCCreatureModeManager { public:             // interface type 0x31
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
-extern const float g_fMinFacingLength;      // 0x0129BA3C (1e-4)
+extern const float EPSILON;           // 0x0129BA3C (1e-4)
 
 class CCombatActionBase { public:                  protected: // retail sizeof 0x114
     virtual void FinishAction(); public:            // 0x00859A20
@@ -106,7 +106,7 @@ void CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction()
     modes->RemoveMode(0x1f);
     C3DVector forward = PCreature.GetPItem()->GetBody()->GetFacing();
     forward.Z = 0.0f;
-    if (forward.X * forward.X + forward.Y * forward.Y > g_fMinFacingLength * g_fMinFacingLength)
+    if (forward.X * forward.X + forward.Y * forward.Y > EPSILON * EPSILON)
         forward.AccurateNormalise();
     else
         forward = C3DVector(1.0f, 0.0f, 0.0f);

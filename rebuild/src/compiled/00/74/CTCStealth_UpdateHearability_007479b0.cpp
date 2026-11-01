@@ -17,7 +17,7 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-extern const float g_epsilon_0129ba3c;          // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -97,14 +97,14 @@ void CTCStealth::UpdateHearability()
     float speedSquared = movement.Z * movement.Z;
     speedSquared += movement.Y * movement.Y;
     speedSquared += movement.X * movement.X;
-    if (speedSquared > g_epsilon_0129ba3c) {
+    if (speedSquared > EPSILON) {
         DistanceCanBeHeardFrom = PDef->BaseHearingDistance;
         float multiplier;
-        float runSpeed = owner->GetRunSpeed(owner->GetPos()) + g_epsilon_0129ba3c;
+        float runSpeed = owner->GetRunSpeed(owner->GetPos()) + EPSILON;
         if (speedSquared > runSpeed * runSpeed)
             multiplier = PDef->RunningMultiplier;
         else {
-            float walkSpeed = owner->GetWalkSpeed(owner->GetPos()) + g_epsilon_0129ba3c;
+            float walkSpeed = owner->GetWalkSpeed(owner->GetPos()) + EPSILON;
             if (speedSquared > walkSpeed * walkSpeed)
                 multiplier = PDef->WalkingMultiplier;
             else

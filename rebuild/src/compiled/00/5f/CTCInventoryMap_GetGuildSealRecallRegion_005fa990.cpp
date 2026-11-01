@@ -25,7 +25,7 @@ public:
     float GetSquaredMagnitude() const { return X * X + Y * Y + Z * Z; }
 };
 
-extern const float g_positionEpsilon;                   // 0x0129BA3C (1e-4; descriptive, an existing bound spelling of this address)
+extern const float EPSILON;          // 0x0129BA3C (1e-4; descriptive, an existing bound spelling of this address)
 
 class CWorldMap {
 public:
@@ -78,7 +78,7 @@ private:
 long CTCInventoryMap::GetGuildSealRecallRegion() const
 {
     const C3DVector& recallPos = PeekWorld().GetGuildSealRecallPos();
-    if (recallPos.GetSquaredMagnitude() > g_positionEpsilon * g_positionEpsilon) {
+    if (recallPos.GetSquaredMagnitude() > EPSILON * EPSILON) {
         const CWorldMap& worldMap = PeekWorld().PeekWorldMap();
         return worldMap.GetRegionNumberMapIsIn(worldMap.GetMapNumberAt(recallPos));
     }

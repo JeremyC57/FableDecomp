@@ -16,7 +16,7 @@
 //   and is written back into the dead timeOffset parameter (retail's [esp+4Ch] slot, shared with the clamp limit; a new local
 //   takes the params slot and also turns the flag test into `test byte ptr`); each transformed component is an accumulated
 //   chain in retail's term order (x and y rows z, x, y; the z row z, y, x).
-extern float g_ParticleEpsilon;                 // 0x0129BA3C
+extern const float EPSILON;    // 0x0129BA3C
 
 class C3DVector { public:
     float X, Y, Z;
@@ -112,7 +112,7 @@ bool CPSCLight::AddToBoundingSphere(C3DBoundingSphere& sphere, float timeOffset,
             if (t < 0.0f)
                 t = 0.0f;
             else {
-                float limit = 1.0f - g_ParticleEpsilon;
+                float limit = 1.0f - EPSILON;
                 if (t > limit)
                     t = limit;
             }

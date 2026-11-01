@@ -186,7 +186,7 @@ struct CHeroMorphTarget {
     unsigned char _pad00[0x0c];
     CTextureMapSet Maps;                                // +0x0C
 };
-extern const float g_fEpsilon;                          // 0x0129BA3C
+extern const float EPSILON;   // 0x0129BA3C
 enum EHeroMorphType { };
 class CTCHeroMorph : public CTCBase {
 public:
@@ -228,7 +228,7 @@ void CTCHeroMorph::UpdateTextureMorphs()
     CCompositeTextureList composites;
     for (long type = 0; type < 0x13; ++type) {
         float strength = GetMorphStrength((EHeroMorphType)type);
-        if (strength > g_fEpsilon) {
+        if (strength > EPSILON) {
             AddCompositeTexture(type, strength, &composites);
             AddMorph(&def->TextureMorphs, type, strength, &morphs);
             AddParticles(type, strength);

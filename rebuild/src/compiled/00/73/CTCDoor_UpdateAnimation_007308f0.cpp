@@ -5,7 +5,7 @@
 //   SetForceFrameUpdate(bool) @ 0x004C7C60, CTCBase::GetGameSubsystem @ 0x00686D60 (out of line, result unused),
 //   CTCBase::GetWorld @ 0x00686A70 (x2), CThing::IsAffectedByBulletTime @ 0x004C9920, the bullet-time object's
 //   GetTimeScale @ 0x004C5FA0, CAnimateThing::UpdateFrameLogic(const CAnimFrameTime&) @ 0x0070E8B0.
-// Globals: g_framesPerSecond @ 0x01375550, 1.0f @ 0x0122DED8, g_epsilon_0129ba3c (1e-4f) @ 0x0129BA3C.
+// Globals: g_framesPerSecond @ 0x01375550, 1.0f @ 0x0122DED8, EPSILON (1e-4f) @ 0x0129BA3C.
 // Layout: engine/CTCDoor.h (retail offsets): Opening +0x12, Closing +0x13, PDef +0x20; CDoorDef (Ego_r.pdb)
 //   TriggerType +0x28; CWorld +0x68 the bullet-time state (active flag +0x0c, a second non-zero test +0x04); the
 //   animation's play fraction +0x1c and the 12-byte frame-time record as in the landed CTCCupboard::UpdateAnimation
@@ -16,7 +16,7 @@
 //   record's two trailing words are modelled as floats: as longs (landed 0x00749B40) their zero stores make VC7.1 keep
 //   a zero register (ebx) and fold every bool test / `push 0` / zero store into it; float zeros are immediates.
 extern long g_framesPerSecond;                          // 0x01375550
-extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -104,7 +104,7 @@ void CTCDoor::UpdateAnimation()
     if (ParentThing->HasTC(0x5a))
         tc = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
     CAnimateThing& anim = tc->GetAnimation();
-    if (1.0f - g_epsilon_0129ba3c < anim.PlayFraction) {
+    if (1.0f - EPSILON < anim.PlayFraction) {
         if (PDef->TriggerType == 1 && !Opening && !Closing) {
             ParentThing->SetForceFrameUpdate(false);
             return;

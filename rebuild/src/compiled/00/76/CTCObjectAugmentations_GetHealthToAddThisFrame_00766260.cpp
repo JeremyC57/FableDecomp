@@ -2,7 +2,7 @@
 // Leaf: GetHealthToAddThisFrame
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00766260, 199 bytes (plain `ret`; PDB ?GetHealthToAddThisFrame@CTCObjectAugmentations@@QBEJXZ).
 // Callees: CDefClassBase::GetSubDef<CAugmentationDef> @ 0x0042B248 (landed), CWorld::GetWorldFrame() @ 0x0049D870 (static), the def
-//   release through vtable slot 1 (`dec [esi+4] ; jne`). Globals: g_framesPerSecond @ 0x01375550, g_epsilon_0129ba3c @ 0x0129BA3C.
+//   release through vtable slot 1 (`dec [esi+4] ; jne`). Globals: g_framesPerSecond @ 0x01375550, EPSILON @ 0x0129BA3C.
 // Layout: Ego_r.pdb CTCObjectAugmentations Augmentations +0x14 (vector<CDefPointer<CThingBaseDef>>, 12-byte retail vector);
 //   CAugmentationDef (PDB = retail) frequency/increase +0x3c/+0x40.
 #pragma optimize("y", off)
@@ -55,7 +55,7 @@ template <class T> struct vector {
 };
 class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
 extern long g_framesPerSecond;                          // 0x01375550
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C
+extern const float EPSILON;           // 0x0129BA3C
 // the engine's inline-assembly FPU ceiling helper (0x004FA9A0 is its standalone copy): VC7.1 expands the __forceinline body in
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
@@ -99,7 +99,7 @@ long CTCObjectAugmentations::GetHealthToAddThisFrame() const
             CDefPointer<CAugmentationDef> slot;
             def->GetSubDef(slot);
             CAugmentationDef* aug = slot.Object;
-            if (aug->FrequencyToAddHealthInSeconds > g_epsilon_0129ba3c) {
+            if (aug->FrequencyToAddHealthInSeconds > EPSILON) {
                 long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddHealthInSeconds);
                 if (CWorld::GetFrame() % period == 0)
                     total += aug->HealthToAddPerIncrease;

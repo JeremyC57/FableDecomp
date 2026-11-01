@@ -14,7 +14,7 @@
 class C3DVector { public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} void RotateXY(float angle);}; //0x00A14040
 class CCombatActionBase;
 extern long g_GameFramesPerSecond; //0x01375550
-extern const float g_VectorZeroThreshold; //0x0129BA3C
+extern const float EPSILON;              //0x0129BA3C
 #include "engine/CTCCombat.h"
 struct CCombatComponent:CTCCombat {void ResetComboChainPos();}; //0x00733210
 struct InterfaceEntry {long Type;CCombatComponent* Component;};
@@ -62,7 +62,7 @@ void CCombatActionBase::ProcessPlayerControl(){
         long afterStrike=LastStrikeEventEndTime+1;
         if(TotalTime-afterStrike>(long)(frameRate*0.33333f)){
             C3DVector movement(creature->RelativeMovementAcceleration.X,creature->RelativeMovementAcceleration.Y,creature->RelativeMovementAcceleration.Z);
-            if(movement.X*movement.X+movement.Y*movement.Y+movement.Z*movement.Z>g_VectorZeroThreshold*g_VectorZeroThreshold){
+            if(movement.X*movement.X+movement.Y*movement.Y+movement.Z*movement.Z>EPSILON*EPSILON){
                 float angle=creature->GetCurrentRelativeMovementAngleXY();movement.RotateXY(angle);
                 if(FramesRunning-afterStrike>(long)(frameRate*0.4f)){
                     FinishAction();CCombatComponent* combat;

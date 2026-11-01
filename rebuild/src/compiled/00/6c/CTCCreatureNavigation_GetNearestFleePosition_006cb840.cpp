@@ -32,7 +32,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     float dy = a.Y - b.Y;
     return dx * dx + dy * dy;
 }
-extern float g_fTolerance;                      // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
@@ -68,7 +68,7 @@ bool CTCCreatureNavigation::GetNearestFleePosition(const C3DVector& centre, floa
 {
     *result = PNavigator->GetRandomPosition(centre, radius, true);
     if (PeekWorldMap().IsPosInMap(*result)) {
-        if (DistanceSquared(*result, centre) > g_fTolerance * g_fTolerance)
+        if (DistanceSquared(*result, centre) > EPSILON * EPSILON)
             return true;
     }
     return false;

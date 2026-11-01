@@ -2,7 +2,7 @@
 // Leaf: ?IsPosInside@CPhysicalPrimitiveCylinder@
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
-extern float g_fEpsilon;                           // 0x0129BA3C
+extern const float EPSILON; // 0x0129BA3C
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -40,7 +40,7 @@ struct CPhysicalPrimitiveCylinder {
     float GetCylinderRadius(const CThing& thing) const
     {
         float radius = Radius;
-        if (radius < g_fEpsilon) {
+        if (radius < EPSILON) {
             radius = thing.Def->Radius;
             if (thing.Flags & 8)
                 radius = static_cast<const CThingCreatureBase&>(thing).GetCombatRadius();
@@ -57,13 +57,13 @@ bool CPhysicalPrimitiveCylinder::IsPosInside(const CThing& thing, const C3DVecto
     float radius = GetCylinderRadius(thing);
     C3DVector axis = top - base;
     float length = axis.Length();
-    if (length > g_fEpsilon)
+    if (length > EPSILON)
         axis *= 1.0f / length;
     C3DVector offset = pos - base;
     float along = offset * axis;
-    if (-g_fEpsilon < along && along < g_fEpsilon + length) {
+    if (-EPSILON < along && along < EPSILON + length) {
         offset -= axis * along;
-        float limit = g_fEpsilon + radius;
+        float limit = EPSILON + radius;
         if (offset.MagSquared() < limit * limit)
             return true;
     }

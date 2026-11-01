@@ -16,7 +16,7 @@
 //   `position` copy drops its dead Z word; the suspend target is a named local (GetPItem before the argument pushes); the
 //   2D length test is `X*X + Y*Y > eps*eps` after `direction.Z = 0`; the aim is `direction * forward + position +
 //   C3DVector(direction.Y, -direction.X, 0.0f) * side` (the perpendicular term first, then the forward sum).
-extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -183,7 +183,7 @@ void CCombatAction_KickThingOnGround::Initialise()
     position.Z = PCreature.GetPItem()->GetPos().Z;
     MoveToPos = position;
     direction.Z = 0.0f;
-    if (direction.X * direction.X + direction.Y * direction.Y > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
+    if (direction.X * direction.X + direction.Y * direction.Y > EPSILON * EPSILON) {
         direction.AccurateNormalise();
         MoveToPos = direction * forward + position + C3DVector(direction.Y, -direction.X, 0.0f) * side;
     }

@@ -145,7 +145,7 @@ class CTCPerceiveThing { public:
     float PosX, PosY, PosZ;                     // +0x20
 };
 
-extern float g_Epsilon;                         // 0x0129BA3C (1e-4)
+extern const float EPSILON; // 0x0129BA3C (1e-4)
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     unsigned char _pad_0x14[0x8];               // +0x14 PEnemy
@@ -164,7 +164,7 @@ void CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing* per
     if (result == 2 && IsStillRunnable(perceive)) {
         C3DVector diff(perceive->PosX - LastKnownEnemyPosX, perceive->PosY - LastKnownEnemyPosY,
             perceive->PosZ - LastKnownEnemyPosZ);
-        if (!(diff.GetMagnitudeSquared() > g_Epsilon * g_Epsilon))
+        if (!(diff.GetMagnitudeSquared() > EPSILON * EPSILON))
             return;
     }
     Terminate();

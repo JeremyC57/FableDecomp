@@ -8,7 +8,7 @@
 // frames-per-second global into a local BEFORE the frame call (retail homes it in the dead `value` slot) and takes the start frame by
 // const reference (re-read after the call).
 #include <math.h>
-extern float         g_fEpsilon;                        // 0x0129BA3C
+extern const float EPSILON;     // 0x0129BA3C
 extern long          g_FramesPerSecond;                 // 0x01375550 (descriptive)
 class CWorld {
 public:
@@ -51,7 +51,7 @@ void CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float 
         bar->CurrentValue = value;
     bar->OldRecentMaxValue = bar->RecentMaxValue;
     bar->UpdateRecentMax();
-    bool moving = fabs(bar->CurrentValue - bar->OldValue) > g_fEpsilon;
+    bool moving = fabs(bar->CurrentValue - bar->OldValue) > EPSILON;
     if (bar->GuiMode == 0) {
         if (bar->CurrentValue < bar->OldValue) {
             bar->OldValue -= step;
@@ -72,7 +72,7 @@ void CPlayerGui::UpdateStat(float value, float jumpThreshold, float step, float 
         if (FramesExceed(bar->FrameCurrentValueLastMoved, settleTime)) {
             bar->RecentMaxValue = bar->CurrentValue;
             bar->UpdateRecentMax();
-            if (fabs(bar->RecentMaxValue - bar->OldRecentMaxValue) < g_fEpsilon) {
+            if (fabs(bar->RecentMaxValue - bar->OldRecentMaxValue) < EPSILON) {
                 if (bar->FrameFullyOpenedOn == 0) {
                     bar->FrameFullyOpenedOn = CWorld::GetFrame();
                     return;

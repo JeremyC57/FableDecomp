@@ -9,9 +9,9 @@
 //   (+0x04 == +0x08, or bit 1 of +0x51).
 // Shape: the landed sibling's model: the animation player comes from the inline accessor returning an unset local
 //   (the absent path reads the never-written word); the progress is a named float read before the GettingIn test (and
-//   popped on the path that never compares it); `progress > 1.0f - g_epsilon` (`test ah,41h ; jne`); the sleep loop
+//   popped on the path that never compares it); `progress > 1.0f - EPSILON` (`test ah,41h ; jne`); the sleep loop
 //   is a CAnimInit local built by its inline constructor over Set.
-extern float g_epsilon;                         // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 struct CTCBaseInterface;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -116,13 +116,13 @@ void CTCBed::UpdateAnimation()
     if (Animating) {
         float progress = animate.Progress;
         if (GettingIn) {
-            if (progress > 1.0f - g_epsilon) {
+            if (progress > 1.0f - EPSILON) {
                 GettingIn = false;
                 CAnimInit init(6, 0, BedSleepAnim, 1, true, 0, 100);
                 animate.SetMainAnim(init, 1, 0);
             }
         } else if (GettingOut) {
-            if (progress > 1.0f - g_epsilon) {
+            if (progress > 1.0f - EPSILON) {
                 GettingOut = false;
                 Empty = true;
             }

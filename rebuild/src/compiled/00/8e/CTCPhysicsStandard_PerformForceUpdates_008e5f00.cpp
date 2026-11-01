@@ -4,7 +4,7 @@
 //   a vtable shows otherwise.
 // Callees: virtual GetFeelsGravity slot 48 (+0xc0), IsOnGround slot 56 (+0xe0); CTCBase::GetWorldMap() @ 0x006AF620,
 //   CWorldMap::GetGroundFaceNormalAt(const C3DVector&) const @ 0x0063AB10, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210.
-//   Floats: 0.98f @ 0x01287364, g_epsilon_0129ba3c @ 0x0129BA3C (1e-4f).
+//   Floats: 0.98f @ 0x01287364, EPSILON @ 0x0129BA3C (1e-4f).
 // Shape: as 0x008E5670 (one `||` chain, inline GetLengthSquared() on the x87 stack).
 class C3DVector { public:
     float X, Y, Z;
@@ -12,7 +12,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C = 1e-4f
+extern const float EPSILON;           // 0x0129BA3C = 1e-4f
 class CWorldMap { public:
     C3DVector GetGroundFaceNormalAt(const C3DVector& pos) const;   // 0x0063AB10
 };
@@ -50,7 +50,7 @@ void CTCPhysicsStandard::PerformForceUpdates()
 {
     if (GetFeelsGravity()) {
         if (!IsOnGround() || GetWorldMap()->GetGroundFaceNormalAt(Position).Z < 0.98f
-            || Velocity.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
+            || Velocity.GetLengthSquared() > EPSILON * EPSILON)
             ApplyAcceleration(C3DVector(0.0f, 0.0f, -0.12f));
     }
 }

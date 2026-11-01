@@ -18,7 +18,7 @@
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 
-extern const float g_Epsilon;                               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;  // 0x0129BA3C (1e-4f)
 
 class CThingCreatureBase {
 public:
@@ -39,7 +39,7 @@ struct CCombatRing {                                        // CDefendingCombata
     float RotationAngle;                                    // +0x00
     float DeltaRotation;                                    // +0x04
     unsigned char _rest[0x14];
-    bool IsRotating() const { return (float)fabs(DeltaRotation) > g_Epsilon; }
+    bool IsRotating() const { return (float)fabs(DeltaRotation) > EPSILON; }
 };
 
 struct CCombatWheel {                                       // CDefendingCombatantInfo::CCombatWheel

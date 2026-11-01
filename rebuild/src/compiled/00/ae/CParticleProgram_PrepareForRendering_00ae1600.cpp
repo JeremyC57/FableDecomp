@@ -30,7 +30,7 @@ void __cdecl GFInterpolateVectors_00a5bba0(C4DVector* out, unsigned long outStri
 void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* to, unsigned long toStride,
                                  unsigned long count, float t);                                                      // 0x00A5B870
 
-extern const float g_MinimumMorphBlend;            // 0x0129BA3C (1e-4f)
+extern const float EPSILON;            // 0x0129BA3C (1e-4f)
 
 class CParticleSimulation { public:                       // Ego_r.pdb, retail 0x80 bytes
     void*         __vftable;                       // +0x00
@@ -84,7 +84,7 @@ void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulat
     CopyVectors(NonSimPositions, NonSimPositions + NonSimCount, vertices);
     GFInterpolateVectors_00a5bba0(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
                                   simulation->Positions, sizeof(C4DVector), simulation->Size, simulationInterpolate);
-    if (initialBlend > g_MinimumMorphBlend)
+    if (initialBlend > EPSILON)
         GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), InitialSimulation.Positions, sizeof(C4DVector),
                              simulation->Size, initialBlend);
 }

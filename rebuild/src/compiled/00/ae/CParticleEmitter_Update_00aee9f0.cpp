@@ -23,7 +23,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-extern float g_epsilon_0129ba3c;                                     // 0x0129BA3C
+extern const float EPSILON;     // 0x0129BA3C
 #pragma auto_inline(off)
 __declspec(noinline) bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)   // 0x006614F0
 {
@@ -88,8 +88,8 @@ void CParticleEmitter::Update()
     if ((bool)Sleeping)
         return;
     C3DVector position(Transform.Translation.X, Transform.Translation.Y, Transform.Translation.Z);
-    if (OldPos.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c
-        || Velocity.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
+    if (OldPos.GetLengthSquared() > EPSILON * EPSILON
+        || Velocity.GetLengthSquared() > EPSILON * EPSILON) {
         Velocity = position - OldPos;
         OldPos = position;
     } else {

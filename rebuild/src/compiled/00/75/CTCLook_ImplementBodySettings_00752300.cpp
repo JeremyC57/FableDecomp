@@ -19,7 +19,7 @@
 #include <math.h>
 #pragma intrinsic(fmod)
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
-extern float g_epsilon_0129ba3c;                     // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 template <class T> inline const T& Clamp(const T& value, const T& low, const T& high)
 {
@@ -120,7 +120,7 @@ void CTCLook::ImplementBodySettings()
         CThing* character = player->PCharacter.GetPItem();
         if (character && !(character->Flags91 & 1) && (character->Flags178 & 1)) {
             CThingPlacement* placement = ParentThing->PPlacement;
-            if ((placement->PreviousPosition - placement->Position).GetSquaredLength() > g_epsilon_0129ba3c)
+            if ((placement->PreviousPosition - placement->Position).GetSquaredLength() > EPSILON)
                 return;
         }
     }

@@ -31,14 +31,14 @@ class CMeshDataBank { public:
 public:
     const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
-extern float g_MinEmbeddedAnimationDuration; //0129BA3C exactfloat0.0001
+extern const float EPSILON;                 //0129BA3C exactfloat0.0001
 namespace NAnimationEvents {class CManager { public:
  unsigned long NativeManagerPrefix;CMeshDataBank* MeshDataBank;
  float GetEmbeddedEventTime(unsigned long,const CCharString&)const;
 };}
 float NAnimationEvents::CManager::GetEmbeddedEventTime(unsigned long animation,const CCharString& event)const{
  CCountedPointer<const C3DAnimationStats> stats=MeshDataBank->PeekAnimation(animation)->GetAnimationStats();
- if(stats.Data->Duration>g_MinEmbeddedAnimationDuration){
+ if(stats.Data->Duration>EPSILON){
   float duration=stats.Data->Duration;
   return stats.Data->GetEventTime(event)/duration;
  }

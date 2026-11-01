@@ -14,7 +14,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -73,14 +73,14 @@ public:
     {
         CDefPointer def = thing.PDef;
         float height = Height;
-        if (height < g_epsilon_0129ba3c)
+        if (height < EPSILON)
             height = def->CylinderHeight;
         return height;
     }
     float GetCylinderRadius(const CThing& thing) const
     {
         float radius = Radius;
-        if (radius < g_epsilon_0129ba3c) {
+        if (radius < EPSILON) {
             radius = thing.PGraphic->Radius;
             if (thing.IsCreature)
                 radius = static_cast<const CThingCreatureBase&>(thing).GetCombatRadius();

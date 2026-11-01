@@ -61,12 +61,12 @@ float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& t
 float __fastcall AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00754E70
 float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
-extern float g_epsilon_0129ba3c;                                                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 __forceinline bool C3DVector::operator!=(const C3DVector& o) const
 {
-    return (float)fabs(X - o.X) > g_epsilon_0129ba3c || (float)fabs(Y - o.Y) > g_epsilon_0129ba3c ||
-           (float)fabs(Z - o.Z) > g_epsilon_0129ba3c;
+    return (float)fabs(X - o.X) > EPSILON || (float)fabs(Y - o.Y) > EPSILON ||
+           (float)fabs(Z - o.Z) > EPSILON;
 }
 #pragma pack(push, 1)
 class CTCLook { public:

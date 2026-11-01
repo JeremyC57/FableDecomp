@@ -2,12 +2,12 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB780, 180 bytes (`ret 14h`).
 // Callees: the navigator's virtual slot 6 (+0x18; returns a C3DVector by hidden pointer, takes the direction's XY as a
 // const C2DVector&), CTCBase::PeekWorldMap() const @ 0x00686D20, CWorldMap::IsPosInMap(const C3DVector&) @ 0x004FC600;
-// g_epsilon_0129ba3c @ 0x0129BA3C (1e-4f).
+// EPSILON @ 0x0129BA3C (1e-4f).
 // Layout: Ego_r.pdb CTCCreatureNavigation PNavigator +0x0c (before any container).
 // Shape: the XY copy of the direction is a C2DVector temporary in the frame; the navigator's result temporary is copied
 // into *out; the difference is an inline operator- whose named local keeps all three components on the x87 stack, and the
 // length squared is summed z first (`s = Z*Z; s += X*X; s += Y*Y`, GOTCHAS retry 8), compared against eps*eps.
-extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 class C2DVector { public:
     float X, Y;
     C2DVector(float x, float y) : X(x), Y(y) { }
@@ -59,7 +59,7 @@ bool CTCCreatureNavigation::GetNearbyDirectedPosition(const C3DVector& from, flo
     *out = PNavigator->GetNearbyDirectedPosition(from, distance, C2DVector(direction.X, direction.Y), spread);
     if (PeekWorldMap().IsPosInMap(*out)) {
         C3DVector delta = *out - from;
-        if (delta.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
+        if (delta.GetLengthSquared() > EPSILON * EPSILON)
             return true;
     }
     return false;

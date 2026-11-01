@@ -8,7 +8,7 @@
 // component re-read per test: `> 0` is `test ah,41h ; jne`, `< 0` is `test ah,5 ; jp`), else 0. No engine
 // header exists; members carry the PDB names (GameAction +0x00 .. ControlDirection +0x14).
 
-extern const float g_floatEpsilon;              // 0x0129BA3C (1e-4f)
+extern const float EPSILON;       // 0x0129BA3C (1e-4f)
 extern const float g_floatZero;                 // 0x0122DEDC (0.0f)
 
 class C2DVector { public:
@@ -28,7 +28,7 @@ class CActionInputControl { public:
 long CActionInputControl::GetDirection() const
 {
     if (ControlDirection.X * ControlDirection.X + ControlDirection.Y * ControlDirection.Y
-            > g_floatEpsilon * g_floatEpsilon
+            > EPSILON * EPSILON
         && (GameAction == 0x3C || GameAction == 0x72)) {
         if (ControlDirection.X > g_floatZero)
             return 4;

@@ -31,7 +31,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-extern const float g_epsilon_0129ba3c;                 // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -163,7 +163,7 @@ bool CModeStrafe::GetBestFrameInAimingAnim(float& frame)
             direction = targetPos - focus;
     }
     float length2 = direction.GetLength2();
-    if (length2 > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
+    if (length2 > EPSILON * EPSILON) {
         float cosAngle = direction.Z * (1.0f / (float)sqrt(length2));
         if (cosAngle < -1.0f)
             cosAngle = -1.0f;

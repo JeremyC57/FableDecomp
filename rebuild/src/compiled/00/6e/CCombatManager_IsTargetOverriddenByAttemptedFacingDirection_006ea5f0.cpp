@@ -17,7 +17,7 @@
 // (landed 0x006E3780); the sub-def's override angle +0xcc (descriptive name).
 #include <math.h>
 #pragma intrinsic(cos)
-extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -131,7 +131,7 @@ bool CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCr
 {
     C3DVector targetPosition = target.GetPos();
     C3DVector direction = targetPosition - creature.GetPos();
-    if (direction.GetLengthSquared() > g_Epsilon * g_Epsilon) {
+    if (direction.GetLengthSquared() > EPSILON * EPSILON) {
         direction.AccurateNormalise();
         const CThing* controller = &creature;
         CTCCarrying* carrying;

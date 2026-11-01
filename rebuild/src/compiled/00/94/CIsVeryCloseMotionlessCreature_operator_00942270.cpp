@@ -25,7 +25,7 @@ class C2DVector { public:
     C2DVector(float x, float y) : X(x), Y(y) {}
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-extern const float g_minLength_0129ba3c;           // 0x0129BA3C (0.0001f)
+extern const float EPSILON;             // 0x0129BA3C (0.0001f)
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -88,7 +88,7 @@ bool CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const
 {
     if (thing->GetCreatureCategory() == 2) {
         CTCMotion* motion = GetMotionIfPresent(thing);
-        if (!((motion->Position - motion->LastPosition).GetLengthSquared() > g_minLength_0129ba3c * g_minLength_0129ba3c)) {
+        if (!((motion->Position - motion->LastPosition).GetLengthSquared() > EPSILON * EPSILON)) {
             const C3DVector& pos = thing->PeekPos();
             if (C2DVector(pos.X - MyPos.X, pos.Y - MyPos.Y).GetLength() < (thing->m_pBody->Radius + MyRadius) * 1.4f)
                 return true;

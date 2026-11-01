@@ -3,7 +3,7 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of CTCAnimationComplex, interface 0x5a:
 // bit 26 of the +0x28 word), CTCAnimationComplex::GetAnimation @ 0x0070B460, CAnimateThing::UpdateFrameLogic(const
 // CAnimFrameTime&) @ 0x0070E8B0 (as the landed twin CTCCreatureHive::UpdateAnimation 0x0077D190). Globals: g_framesPerSecond
-// @ 0x01375550, 1.0f @ 0x0122DED8, g_epsilon_0129ba3c @ 0x0129BA3C.
+// @ 0x01375550, 1.0f @ 0x0122DED8, EPSILON @ 0x0129BA3C.
 // Layout: Ego_r.pdb CTCCupboard Animating +0x0c; the animation's play fraction at +0x1c (named descriptively).
 // Shape: unlike the hive twin the animation is fetched (an accessor returning an unset local when the component is absent,
 // over a one-ternary GetTC, so
@@ -11,7 +11,7 @@
 // and the 12-byte frame-time record is zero-constructed before the Animating test; the seconds are stored inside;
 // `1.0f - eps < fraction` is `fld 1.0 ; fsub eps ; fcomp [esi+1Ch] ; test ah,5 ; jp`.
 extern long g_framesPerSecond;                          // 0x01375550
-extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -73,7 +73,7 @@ void CTCCupboard::UpdateAnimation()
     if (Animating) {
         time.Seconds = 1.0f / g_framesPerSecond;
         anim.UpdateFrameLogic(time);
-        if (1.0f - g_epsilon_0129ba3c < anim.PlayFraction)
+        if (1.0f - EPSILON < anim.PlayFraction)
             Animating = false;
     }
 }

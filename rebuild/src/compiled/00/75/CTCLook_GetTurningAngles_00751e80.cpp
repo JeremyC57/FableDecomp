@@ -16,13 +16,13 @@
 #include <math.h>
 #pragma intrinsic(atan2, fmod, fabs)
 
-extern float g_epsilon_0129ba3c;                                                      // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 class C3DVector { public:
     float X, Y, Z;
     __forceinline bool operator!=(const C3DVector& o) const
     {
-        return (float)fabs(X - o.X) > g_epsilon_0129ba3c || (float)fabs(Y - o.Y) > g_epsilon_0129ba3c ||
-               (float)fabs(Z - o.Z) > g_epsilon_0129ba3c;
+        return (float)fabs(X - o.X) > EPSILON || (float)fabs(Y - o.Y) > EPSILON ||
+               (float)fabs(Z - o.Z) > EPSILON;
     }
 };
 
@@ -65,7 +65,7 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
 
 float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00661540
 float __fastcall GFGetSignedAngleDifference(float a, float b);                        // 0x00A441E0 (Ego_r.pdb ?GFGetSignedAngleDifference@@YIMMM@Z)
-extern float g_epsilon_0129ba3c;                                                      // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 __forceinline float WrapAngle(float angle)
 {

@@ -78,7 +78,7 @@ public:
     void AddDamageChange(float amount, bool isDamage);
 };
 extern CPlayerGui* gPlayerGui;
-extern const float gDeathThreshold;
+extern const float EPSILON;
 extern const float gDamageThreshold;
 
 class CGameScriptInterface
@@ -102,7 +102,7 @@ void CGameScriptInterface::ChangeHeroHealthBy(
         return;
 
     hero->ChangeHealth(amount, rawHealthMode);
-    if (rawHealthMode && ((CreatureOverlay*)hero)->healthB4 < gDeathThreshold)
+    if (rawHealthMode && ((CreatureOverlay*)hero)->healthB4 < EPSILON)
     {
         hero->SetCurrentAction(CCreatureAction_StabbedToDeath(*hero, false));
     }

@@ -12,7 +12,7 @@
 #include <math.h>
 #pragma intrinsic(fmod)
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
-extern float g_epsilon_0129ba3c;                     // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
@@ -23,7 +23,7 @@ class CTCLook { public:
 void CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const
 {
     float difference = AngleDifference(angle, targetAngle);
-    if ((float)fabs(difference) > g_epsilon_0129ba3c) {
+    if ((float)fabs(difference) > EPSILON) {
         velocity += Sign(difference) * acceleration;
         if (velocity < -maxSpeed)
             velocity = -maxSpeed;

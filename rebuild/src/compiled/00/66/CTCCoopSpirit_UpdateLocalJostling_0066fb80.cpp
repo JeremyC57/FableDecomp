@@ -11,7 +11,7 @@
 //   `len > eps` (`fcom ; test ah,41h ; jne` to a pop) then `len < 0.5` (`fcomp ; test ah,5 ; jp`); the push is a named
 //   `offset * 0.4f` vector; the spirit thing is a named local for the subtraction (held in ebp across the hero call;
 //   reading ParentThing inline gives up ebp and moves the loop counter into it), ParentThing is re-read for the physics TC.
-extern float g_epsilon_0129ba3c;                // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -67,7 +67,7 @@ void CTCCoopSpirit::UpdateLocalJostling()
         CThing* spirit = ParentThing;
         C3DVector offset = spirit->GetPos() - hero->GetPos();
         float length = offset.GetMagnitudeAndNormalise();
-        if (length > g_epsilon_0129ba3c && length < 0.5f) {
+        if (length > EPSILON && length < 0.5f) {
             C3DVector push = offset * 0.4f;
             ParentThing->PhysicsTC->ApplyAcceleration(push);
         }

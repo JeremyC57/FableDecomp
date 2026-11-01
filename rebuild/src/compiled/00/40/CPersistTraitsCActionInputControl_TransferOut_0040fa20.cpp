@@ -20,7 +20,7 @@ public:
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
-extern const float g_Epsilon_0129ba3c;                 // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C2DVector {
 public:
@@ -77,7 +77,7 @@ void CPersistTraits<CActionInputControl>::TransferOut(CPersistContext* context, 
         longTraits.TransferOut(context, out, &value->MouseButton);
         break;
     }
-    if (value->ControlDirection.GetLengthSquared() > g_Epsilon_0129ba3c * g_Epsilon_0129ba3c &&
+    if (value->ControlDirection.GetLengthSquared() > EPSILON * EPSILON &&
         (value->GameAction == 0x3C || value->GameAction == 0x72)) {
         *out += ",";
         CPersistTraits<C2DVector>().TransferOut(context, out, &value->ControlDirection);

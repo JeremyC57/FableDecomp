@@ -133,7 +133,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +4
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
-extern const float g_Epsilon;                   // 0x0129BA3C (0.0001f, the engine's vector epsilon)
+extern const float EPSILON;  // 0x0129BA3C (0.0001f, the engine's vector epsilon)
 extern long g_StrikeHitPauseFrames;             // 0x013B86D0
 namespace {
 void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float lastRunningTime,
@@ -280,7 +280,7 @@ void CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float time, const std
         direction.X = tip->X - previous.second.X;
         direction.Y = tip->Y - previous.second.Y;
         direction.Z = tip->Z - previous.second.Z;
-        if (direction.Z * direction.Z + direction.Y * direction.Y + direction.X * direction.X > g_Epsilon * g_Epsilon)
+        if (direction.Z * direction.Z + direction.Y * direction.Y + direction.X * direction.X > EPSILON * EPSILON)
             direction.AccurateNormalise();
         CThing* weapon = GetWeaponUsedInStrikeAction();
         CHitParameters params;

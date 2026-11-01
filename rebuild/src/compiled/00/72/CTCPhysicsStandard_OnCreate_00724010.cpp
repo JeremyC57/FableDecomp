@@ -7,7 +7,7 @@
 //   CTCPhysicsBase::GetWorldMap 0x006AF620, CWorldMap::GetGroundSizeZAt 0x0063A300,
 //   CTCPhysicsStandard::GetPossibleInteractedWithList 0x008E57D0, free 0x00BFEA14; virtual slots 36 (+0x90),
 //   43 SetInteractionFlags (+0xac), 52 (+0xd0, interacts with things), 97 UpdateOnSurface (+0x184),
-//   98 GetPossibleCollidedWithArea (+0x188). g_FloatEpsilon 0x0129BA3C; on-ground tolerance 0x0125A15C.
+//   98 GetPossibleCollidedWithArea (+0x188). EPSILON 0x0129BA3C; on-ground tolerance 0x0125A15C.
 // Layout: engine/CTCPhysicsStandard.h offsets (local model with real C3DVector/CRightHandedSet members, as the landed
 //   CTCPhysicsControlled::Move 0x00725C40 / CTCPhysicsRigidBody::OnCreate 0x0075B2D0); flag bytes +0x84/+0x85 per the PDB
 //   bitfield order. CThing +0x64 graphic appearance (graphic data +0x44: index +0, type byte +0xd; has-graphic byte +0x51).
@@ -29,7 +29,7 @@ struct CThingPtrVector {                            // retail STLport vector<CTh
     CThingPtrVector() : first(0), last(0), endOfStorage(0) { }
     ~CThingPtrVector() { if (first) free(first); }
 };
-extern const float g_FloatEpsilon;                  // 0x0129BA3C
+extern const float EPSILON;       // 0x0129BA3C
 extern const float g_OnGroundTolerance;             // 0x0125A15C
 
 class C3DMeshInfo { public:
@@ -156,8 +156,8 @@ void CTCPhysicsStandard::OnCreate()
     BaseOnCreate();
     if (PhysicsDef) {
         SetInteractionFlags(PhysicsDef->InteractionFlags);
-        FeelsGravity = GetMass() > g_FloatEpsilon;
-        FeelsAirResistance = GetAirResistance() > g_FloatEpsilon;
+        FeelsGravity = GetMass() > EPSILON;
+        FeelsAirResistance = GetAirResistance() > EPSILON;
         PushableByHero = PhysicsDef->PushableByHero;
     } else {
         SetInteractionFlags(0);

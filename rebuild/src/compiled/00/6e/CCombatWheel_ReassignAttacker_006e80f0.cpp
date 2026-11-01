@@ -24,7 +24,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
 };
-extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 extern long g_framesPerSecond;              // 0x01375550
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -63,10 +63,10 @@ void CCombatWheel::ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCo
     } else {
         dolly = attacker->Parent->GetPos() - defender->Parent->GetPos();
         dolly.Z = 0.0f;
-        if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon)
+        if (dolly.GetLengthSquared() > EPSILON * EPSILON)
             dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetWorldSeed()) + 0.25f);
     }
-    if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon) {
+    if (dolly.GetLengthSquared() > EPSILON * EPSILON) {
         dolly.AccurateNormalise();
         attacker->AttackerInfo.PreferredAttackDollySet = true;
         attacker->AttackerInfo.PreferredAttackDollyTimer = (long)(g_framesPerSecond * 5.0f);

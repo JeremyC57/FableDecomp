@@ -98,14 +98,14 @@ public:
 };
 extern CMainGameComponent* g_pMainGameComponent;                                    // 0x013B86A0
 
-extern const float g_epsilon_0129ba3c;                                              // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 void __fastcall GetRotationInAnimationBetweenTimes(long bankIndex, float& rotation, float startTime, float endTime)
 {
     CMeshDataBank* bank = g_pMainGameComponent->PWorld->PMainMeshBank;
     const C3DAnimationInfo* info = bank->PeekAnimation(bankIndex);
     const C3DAnimationStats* stats = info->GetAnimationStats().Data;
-    if (endTime < -g_epsilon_0129ba3c)
+    if (endTime < -EPSILON)
         endTime = bank->PeekAnimation(bankIndex)->Duration;
     if (!stats->HasMovement()) {
         rotation = 0.0f;

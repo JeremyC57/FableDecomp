@@ -18,7 +18,7 @@ public:
     float x, y, z;
 };
 class CWorldMap;
-extern float g_fIntersectionEpsilon;                        // 0x0129BA3C (0.0001f)
+extern const float EPSILON;         // 0x0129BA3C (0.0001f)
 
 namespace NCameraModes {
 typedef bool (__fastcall* TBlockTest)(const CWorldMap& map, const C3DVector& from, const C3DVector& to, bool flag);
@@ -41,7 +41,7 @@ bool CTools::GetThemePointIntersectionFromTo(const C3DVector& from, const C3DVec
     float dy = to.y - from.y;
     float d = dx * dx;
     d += dy * dy;
-    if (d > g_fIntersectionEpsilon * g_fIntersectionEpsilon) {
+    if (d > EPSILON * EPSILON) {
         C3DVector pos;
         C3DVector normal;
         bool hit;

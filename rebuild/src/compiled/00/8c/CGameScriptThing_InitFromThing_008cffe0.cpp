@@ -24,9 +24,9 @@ FABLE_STATIC_ASSERT(sizeof(GameScriptThingNative)==sizeof(CGameScriptThing));
 FABLE_STATIC_ASSERT(offsetof(GameScriptThingNative,PThing)==offsetof(CGameScriptThing,PThing));
 FABLE_STATIC_ASSERT(offsetof(GameScriptThingNative,ThingUID)==offsetof(CGameScriptThing,ThingUID));
 FABLE_STATIC_ASSERT(offsetof(GameScriptThingNative,HomePos)==offsetof(CGameScriptThing,HomePos_X));
-extern const float PositionTolerance; //0129BA3C actual float0.0001, not a folded square literal
+extern const float EPSILON;          //0129BA3C actual float0.0001, not a folded square literal
 void GameScriptThingNative::InitFromThing(const CBaseObject& thing){
  {IntelligentPointer temporary(const_cast<CBaseObject*>(&thing));CBaseObject* rebound=temporary.GetPItem();PThing.SetPItem(rebound);}Name=PThing.GetPItem()->Name;ThingUID=PThing.GetPItem()->UniqueID;DataString=PThing.GetPItem()->DataString;
- if(!(HomePos.LengthSquared()>PositionTolerance*PositionTolerance)&&PThing.GetPItem()->Category==1)HomePos=PThing.GetPItem()->Home;
+ if(!(HomePos.LengthSquared()>EPSILON*EPSILON)&&PThing.GetPItem()->Category==1)HomePos=PThing.GetPItem()->Home;
  if(PThing.GetPItem()->GetPhysicsTC()){const Vector3& position=PThing.GetPItem()->GetPhysicsTC()->GetPosition();Pos=position;AngleXY=PThing.GetPItem()->GetPhysicsTC()->GetAngleXY();}
 }

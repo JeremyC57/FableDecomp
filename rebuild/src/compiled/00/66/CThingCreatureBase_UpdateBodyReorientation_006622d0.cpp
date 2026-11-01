@@ -5,7 +5,7 @@
 //   "CTCPhysicsNavigator::EnableNavigator" is propagated, real name unproven), IsLyingDown @ 0x0085F2B0 and
 //   IsIncapacitated @ 0x0085F0C0 (free `__fastcall` thing predicates), CTCPhysicsBase::GetFacingAngleYZ (slot 64,
 //   +0x100) / SetFacingAngleYZ (slot 67, +0x10C).
-// Global: g_epsilon_0129ba3c (1e-4f).
+// Global: EPSILON (1e-4f).
 // Layout (retail offsets; the engine header carries the Ego_r.pdb ones, so the class is local): CThing PhysicsTC +0x60,
 //   Dead +0x91 bit 0; CThingCreatureBase PCurrentAction.Data +0x100 (PDB +0x11c), BodyReorienter +0x140 (PDB +0x164),
 //   the second creature flag byte +0x15d (PDB +0x185) with HadFacingAngleYZSetByBodyOrientation at bit 5;
@@ -57,7 +57,7 @@ class CThing { public:
     bool IsAlive() const { return Dead ? false : true; }
 };
 
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 bool __fastcall IsLyingDown(CThing* thing);             // 0x0085F2B0
 bool __fastcall IsIncapacitated(CThing* thing);         // 0x0085F0C0
 
@@ -96,7 +96,7 @@ void CThingCreatureBase::UpdateBodyReorientation()
             BodyReorienter->SetFlag_00863260(false);
     }
     if (IsAlive() && HadFacingAngleYZSetByBodyOrientation) {
-        if (fabs(PhysicsTC->GetFacingAngleYZ()) > g_epsilon_0129ba3c) {
+        if (fabs(PhysicsTC->GetFacingAngleYZ()) > EPSILON) {
             if (!IsPerformingAnyAction() && !IsLyingDown(this) && !IsIncapacitated(this)) {
                 PhysicsTC->SetFacingAngleYZ(0.0f);
                 HadFacingAngleYZSetByBodyOrientation = false;

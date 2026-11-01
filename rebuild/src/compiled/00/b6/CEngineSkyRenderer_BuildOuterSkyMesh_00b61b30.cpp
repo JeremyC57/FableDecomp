@@ -20,7 +20,7 @@ class CTVertexColTex1 { public:
     float         V1;                              // +0x14
 };
 
-extern float g_SkyCapTexCoordBias;                 // 0x0129BA3C (0.0001f, a writable global: loaded and negated)
+extern const float EPSILON;       // 0x0129BA3C (0.0001f, a writable global: loaded and negated)
 
 class CEngineSkyRenderer { public:
     void BuildOuterSkyMesh(CTVertexColTex1** vertices, unsigned short** indices, long indexOffset, long vertexOffset);
@@ -33,8 +33,8 @@ void CEngineSkyRenderer::BuildOuterSkyMesh(CTVertexColTex1** vertices, unsigned 
     centre->X = 0.0f;
     centre->Y = 0.0f;
     centre->Z = 7000.0f;
-    centre->U1 = -g_SkyCapTexCoordBias;
-    centre->V1 = -g_SkyCapTexCoordBias;
+    centre->U1 = -EPSILON;
+    centre->V1 = -EPSILON;
     centre->DiffuseColour = 0;
     float angle = 0.0f;
     float u = 0.0f;

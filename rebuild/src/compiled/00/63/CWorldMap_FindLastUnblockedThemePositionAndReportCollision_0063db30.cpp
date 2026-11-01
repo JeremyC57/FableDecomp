@@ -25,7 +25,7 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 }
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C2DCoordI
 { public:
@@ -95,7 +95,7 @@ bool CWorldMap::FindLastUnblockedThemePositionAndReportCollision(const C3DVector
     bool found = false;
     C3DVector direction;
     direction = to - from;
-    if (direction.GetLength() > g_epsilon_0129ba3c) {
+    if (direction.GetLength() > EPSILON) {
         bool more;
         do {
             C3DVector next;

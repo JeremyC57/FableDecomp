@@ -8,7 +8,7 @@
 // Leaf: OnCreate
 #include "engine/CTCPhysicsBase.h"
 
-extern float g_fZero;                       // 0x0129BA3C (0.0f)
+extern const float EPSILON; // 0x0129BA3C (0.0f)
 
 struct CTCPhysicsBase_Calls {
     void  OnCreate();                       // CTCPhysicsBase::OnCreate 0x006B0780
@@ -24,5 +24,5 @@ struct CTCPhysicsLight : CTCPhysicsBase {
 void CTCPhysicsLight::OnCreate()
 {
     Base()->OnCreate();
-    AffectedByGravity = Base()->GetMass() > g_fZero;
+    AffectedByGravity = Base()->GetMass() > EPSILON;
 }

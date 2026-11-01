@@ -9,7 +9,7 @@
 //   class and member names are descriptive.
 // Shape: `if (End > Start) r = (End - Start) * t + Start; else { s = 1 - Start; r = s + (End - s) * t; }` then the
 //   clamp `if (r < 0) return 0; max = 1 - epsilon; if (r > max) return max; return r;`.
-extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 struct CLoopedRange {
     unsigned char _pad_0x00[0x1C];
@@ -29,7 +29,7 @@ float CLoopedRange::GetFraction(float t) const
     }
     if (r < 0.0f)
         return 0.0f;
-    const float maxFraction = 1.0f - g_epsilon_0129ba3c;
+    const float maxFraction = 1.0f - EPSILON;
     if (r > maxFraction)
         return maxFraction;
     return r;

@@ -19,7 +19,7 @@ class C3DVector { public:
     float LengthSquared() const { float z = Z, y = Y, x = X; return x * x + y * y + z * z; }
 };
 inline float Sqr(float x) { return x * x; }
-extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CMatrix3x4 { public: float m[12]; };
 
@@ -135,7 +135,7 @@ void CEngineInternalPrimitiveSpriteTrail::Update(const CEnginePrimitive& primiti
     BlendOp = trail.BlendOp;
     WorldMat = trail.WorldTransform;
     if (trail.UpdateExisting) {
-        if (trail.OffsetVector.LengthSquared() > Sqr(g_epsilon_0129ba3c)) {
+        if (trail.OffsetVector.LengthSquared() > Sqr(EPSILON)) {
             for (CSpriteTrailEntry* it = Trail.begin(); it != Trail.end(); ++it) {
                 it->Position.X += trail.OffsetVector.X;
                 it->Position.Y += trail.OffsetVector.Y;

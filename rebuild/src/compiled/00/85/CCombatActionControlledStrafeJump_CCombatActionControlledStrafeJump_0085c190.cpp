@@ -13,7 +13,7 @@
 // 0x114 bytes (the landed CCombatAction ctors, e.g. 0x008C94D0), so the members sit 0x18 lower: RequiredFacing
 // +0x114, OriginalFacing +0x120, AddedRollMode +0x12c.
 class CThing;
-extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
+extern const float EPSILON; // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -58,11 +58,11 @@ CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump(CThingCre
     OriginalFacing = originalFacing;
     OriginalFacing.Z = 0.0f;
     RequiredFacing.Z = 0.0f;
-    if (RequiredFacing.GetLengthSquared() > g_Epsilon * g_Epsilon)
+    if (RequiredFacing.GetLengthSquared() > EPSILON * EPSILON)
         RequiredFacing.AccurateNormalise();
     else
         RequiredFacing = owner->PhysicsBody->GetFacing();
-    if (OriginalFacing.GetLengthSquared() > g_Epsilon * g_Epsilon)
+    if (OriginalFacing.GetLengthSquared() > EPSILON * EPSILON)
         OriginalFacing.AccurateNormalise();
     else
         OriginalFacing = owner->PhysicsBody->GetFacing();

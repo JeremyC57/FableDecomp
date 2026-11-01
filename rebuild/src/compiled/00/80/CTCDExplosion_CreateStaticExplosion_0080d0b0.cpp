@@ -74,7 +74,7 @@ struct CParticleEmitterManager {
     static CThing* __fastcall CreateEmitter(long defIndex, long param, float spacing, const C3DVector& pos, long flags);   // 0x006E11F0
 };
 void __fastcall CreateCameraShake(const C3DVector* position, long strength, long duration, long flags);   // 0x007F1B70
-extern const float g_epsilon_0129ba3c;                       // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CTCBase
 {
@@ -112,7 +112,7 @@ void CTCDExplosion::CreateStaticExplosion()
     if (PExplosionDef->EmitterDefIndex >= 0) {
         long count = (long)((EndPos - StartPos).Magnitude() / radius + 1.0f);
         C3DVector direction = EndPos - StartPos;
-        if (direction.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)
+        if (direction.MagnitudeSquared() > EPSILON * EPSILON)
             direction.AccurateNormalise();
         float spacing = PExplosionDef->GetEmitterSpacing(radius);
         for (long i = 0; i != count; ++i) {

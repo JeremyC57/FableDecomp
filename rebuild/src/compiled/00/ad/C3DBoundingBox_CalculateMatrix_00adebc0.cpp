@@ -23,7 +23,7 @@ class CMatrix3x4 { public:
     float E41, E42, E43;
 };
 
-extern float g_epsilon_0129ba3c;                   // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 class C3DBoundingBox { public:
     C3DVector MinCoord;                            // +0
@@ -35,12 +35,12 @@ void C3DBoundingBox::CalculateMatrix(CMatrix3x4& matrix) const
 {
     C3DVector centre = (MaxCoord + MinCoord) * 0.5f;
     C3DVector half = (MaxCoord - MinCoord) * 0.5f;
-    if (half.X < g_epsilon_0129ba3c)
-        half.X = g_epsilon_0129ba3c;
-    if (half.Y < g_epsilon_0129ba3c)
-        half.Y = g_epsilon_0129ba3c;
-    if (half.Z < g_epsilon_0129ba3c)
-        half.Z = g_epsilon_0129ba3c;
+    if (half.X < EPSILON)
+        half.X = EPSILON;
+    if (half.Y < EPSILON)
+        half.Y = EPSILON;
+    if (half.Z < EPSILON)
+        half.Z = EPSILON;
     matrix.E11 = half.X;
     matrix.E12 = 0.0f;
     matrix.E13 = 0.0f;

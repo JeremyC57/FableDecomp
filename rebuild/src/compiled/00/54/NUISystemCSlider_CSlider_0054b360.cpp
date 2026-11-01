@@ -48,13 +48,13 @@ template <class T> struct CRetailList {          // STLport list: the header-nod
             free(_M_node);
     }
 };
-extern const float g_SliderValueEpsilon;         // 0x0129BA3C
+extern const float EPSILON;             // 0x0129BA3C
 #pragma pack(push, 1)
 class C2DVector { public:
     float X, Y;
     bool operator==(const C2DVector& v) const
     {
-        return fabs(X - v.X) <= g_SliderValueEpsilon && fabs(Y - v.Y) <= g_SliderValueEpsilon;
+        return fabs(X - v.X) <= EPSILON && fabs(Y - v.Y) <= EPSILON;
     }
 };
 #pragma pack(pop)

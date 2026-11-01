@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004348D0, length 79 bytes.
 // Callees: none. Constants: the epsilon @ 0x0129BA3C (1e-4f), 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC. Shape: the flag bytes through al, each duration compared with
 // `fcomp ; fnstsw ; test ah,5 ; jnp` (below the epsilon: the 1.0 return), the quotient left in st0 by `fdiv`; the two constants are loaded with `fld`.
-extern const float g_fadeEpsilon_0129ba3c;         // 0x0129BA3C (1e-4f)
+extern const float EPSILON;               // 0x0129BA3C (1e-4f)
 
 class CFadeInFadeOutBase { public:
     bool  m_active;                                // +0x00
@@ -20,12 +20,12 @@ class CFadeInFadeOutBase { public:
 float CFadeInFadeOutBase::GetFadeInOutAlpha()
 {
     if (m_fadingOut) {
-        if (m_fadeOutDuration < g_fadeEpsilon_0129ba3c)
+        if (m_fadeOutDuration < EPSILON)
             return 1.0f;
         return m_fadeOutElapsed / m_fadeOutDuration;
     }
     if (m_fadingIn) {
-        if (m_fadeInDuration < g_fadeEpsilon_0129ba3c)
+        if (m_fadeInDuration < EPSILON)
             return 1.0f;
         return m_fadeInElapsed / m_fadeInDuration;
     }

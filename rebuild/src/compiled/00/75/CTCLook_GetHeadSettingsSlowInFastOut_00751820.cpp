@@ -10,7 +10,7 @@
 //   re-tests `angle > maxRight` inside the combined range test.
 #include <math.h>
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
-extern float g_epsilon_0129ba3c;                     // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
@@ -23,7 +23,7 @@ void CTCLook::GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float 
                                            float targetAngle, float maxLeft, float maxRight) const
 {
     float difference = AngleDifference(angle, targetAngle);
-    if ((float)fabs(difference) > g_epsilon_0129ba3c) {
+    if ((float)fabs(difference) > EPSILON) {
         velocity += Sign(difference) * acceleration;
         if (velocity < -maxSpeed)
             velocity = -maxSpeed;
@@ -39,9 +39,9 @@ void CTCLook::GetHeadSettingsSlowInFastOut(float& angle, float& velocity, float 
     }
     if (angle > maxRight || -maxLeft > angle) {
         if (angle > maxRight)
-            angle = maxRight - g_epsilon_0129ba3c;
+            angle = maxRight - EPSILON;
         else
-            angle = -(maxLeft - g_epsilon_0129ba3c);
+            angle = -(maxLeft - EPSILON);
         velocity = 0.0f;
     }
 }

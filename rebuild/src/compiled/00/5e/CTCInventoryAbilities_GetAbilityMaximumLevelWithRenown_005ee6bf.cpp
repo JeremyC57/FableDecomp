@@ -63,7 +63,7 @@ class CTCHeroStats { public:                                // interface type 4
     float GetMoralityPercentage() const;             // 0x0057A690
 };
 
-extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 enum EHeroAbility { HERO_ABILITY_NULL };
 
@@ -83,9 +83,9 @@ long CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown(EHeroAbility abilit
     long maxLevel = GetAbilityMaximumLevel(ability);
     morality = ParentThing->GetTC<CTCHeroStats>(4)->GetMoralityPercentage();
     float costFactor = GetAbilityMoralityCostFactor(ability);
-    if (morality > 0.33 && costFactor < -g_epsilon_0129ba3c)
+    if (morality > 0.33 && costFactor < -EPSILON)
         return maxLevel - 1;
-    if (morality < 0.66 && costFactor > g_epsilon_0129ba3c)
+    if (morality < 0.66 && costFactor > EPSILON)
         return maxLevel - 1;
     return maxLevel;
 }

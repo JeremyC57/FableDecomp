@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064D6A8, length 254 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, IS_THING_ALIVE<CThing*> @ 0x0043DBD0,
 // CDrawQuickAccessIcons::GetActivationTimeForButton(long) @ 0x0064B5C1 (float), CMemoryBuffer::Copy @ 0x009F1760,
-// CMainGameComponent::AddGameEvent @ 0x0041649C (on 0x013B86A0), __security_check_cookie @ 0x00BFE9F9. Globals: g_fEpsilon 0x0129BA3C,
+// CMainGameComponent::AddGameEvent @ 0x0041649C (on 0x013B86A0), __security_check_cookie @ 0x00BFE9F9. Globals: EPSILON 0x0129BA3C,
 // g_framesPerSecond 0x01375550 (int), 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
 // Layout: CDrawQuickAccessIcons as ToggleCharge 0x0064D92A (ChargingAbility +0x2c, ChargeLevel +0x30, Charging +0x34, ChargeComplete
 // +0x35, ChargeFade +0x38); CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527; the hero's player byte +0x90.
@@ -37,7 +37,7 @@ class CGameEvent : public CMemoryBuffer { public:
 };
 class CMainGameComponent { public: void AddGameEvent(const CGameEvent& event); };   // 0x0041649C
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
-extern float g_fEpsilon;                          // 0x0129BA3C
+extern const float EPSILON; // 0x0129BA3C
 extern long  g_framesPerSecond;                   // 0x01375550
 namespace NPlayerGui {
 class CDrawQuickAccessIcons { public:
@@ -60,7 +60,7 @@ void CDrawQuickAccessIcons::Update()
         return;
     if (Charging) {
         float level = GetActivationTimeForButton(ChargingAbility);
-        if (level > g_fEpsilon) {
+        if (level > EPSILON) {
             if (level <= ChargeLevel) {
                 CGameEvent event(0x27);
                 event.Player = hero->PlayerNumber;

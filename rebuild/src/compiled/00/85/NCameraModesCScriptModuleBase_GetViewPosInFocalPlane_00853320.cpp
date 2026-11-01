@@ -10,7 +10,7 @@
 // Leaf: GetViewPosInFocalPlane
 #include <math.h>
 #pragma intrinsic(fabs)
-extern const float g_epsilon_0129ba3c;               // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -69,12 +69,12 @@ C3DVector CScriptModuleBase::GetViewPosInFocalPlane(const C3DVector& pos, const 
         C3DVector forward = CoordAxis.Forward;
         C3DVector up = CoordAxis.Up;
         C3DVector normal = CrossProduct(forward, up);
-        if (normal.GetLengthSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
+        if (normal.GetLengthSquared() > EPSILON * EPSILON) {
             normal.AccurateNormalise();
             float denominator = DotProduct(normal, dir);
-            if (fabs(denominator) > g_epsilon_0129ba3c) {
+            if (fabs(denominator) > EPSILON) {
                 float t = DotProduct(origin - pos, normal) / denominator;
-                if (t > 1.0f - g_epsilon_0129ba3c)
+                if (t > 1.0f - EPSILON)
                     result = pos + dir * t;
             }
         }

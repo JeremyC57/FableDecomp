@@ -12,7 +12,7 @@
 // Globals: 0.0f @ 0x0122DEDC and 1.0f @ 0x0122DED8 (compiler literals), epsilon 1e-4f @ 0x0129BA3C (extern variable).
 // Shape: `if (large - small > eps) { clamp radius to [small, large] in place (if / else if); Clamp((radius - small) /
 // (large - small), 0, 1); } else 0` -- the 0.0f result is preloaded before the band test.
-extern const float g_epsilon_0129ba3c;            // 0x0129BA3C (1e-4f)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f)
 class CExplosionDef {
 public:
     char  _base[0x50];                            // +0x00 CDefClassBase part and the fields up to +0x4C
@@ -28,7 +28,7 @@ namespace {
 float __fastcall GetExplosionEffectInterpolate(const CExplosionDef& def, float radius)
 {
     float result = 0.0f;
-    if (def.ExplosionRadiusLarge - def.ExplosionRadiusSmall > g_epsilon_0129ba3c) {
+    if (def.ExplosionRadiusLarge - def.ExplosionRadiusSmall > EPSILON) {
         if (radius < def.ExplosionRadiusSmall)
             radius = def.ExplosionRadiusSmall;
         else if (radius > def.ExplosionRadiusLarge)

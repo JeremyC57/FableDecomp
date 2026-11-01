@@ -26,7 +26,7 @@ class CNavigatorManager { public:
 float GetSmallestNodeSize();                                                 // 0x00A76320
 void __fastcall SetBlockedNode(long layer, long level, C2DVector position);   // 0x00A76340
 extern CANavQuadTreeNode g_BlockedNode;                                      // 0x013D2D2C
-extern const float g_epsilon_0129ba3c;                                       // 0x0129BA3C
+extern const float EPSILON;           // 0x0129BA3C
 class CNavigatorBase : public CNavigatorBaseLayout { public:
     CANavQuadTreeNode* GetNextNeighbour(const CANavQuadTreeNode* node, const CANavQuadTreeNode* prev, const C2DVector& start);
 };
@@ -79,8 +79,8 @@ CANavQuadTreeNode* CNavigatorBase::GetNextNeighbour(const CANavQuadTreeNode* nod
         found = &g_BlockedNode;
         SetBlockedNode(node->NavLayer, 6, pos);
     }
-    if (prev != 0 && fabs(found->Position_X - start.X) <= g_epsilon_0129ba3c &&
-        fabs(found->Position_Y - start.Y) <= g_epsilon_0129ba3c)
+    if (prev != 0 && fabs(found->Position_X - start.X) <= EPSILON &&
+        fabs(found->Position_Y - start.Y) <= EPSILON)
         return 0;
     return found;
 }

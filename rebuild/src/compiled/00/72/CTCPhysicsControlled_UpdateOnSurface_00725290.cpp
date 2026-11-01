@@ -46,7 +46,7 @@ template <class T> struct vector {                      // STLport vector, 12 by
     T* begin() const { return _M_start; }
     T* end() const { return _M_finish; }
 };
-extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
+extern const float EPSILON;     // 0x0129BA3C (1e-4f)
 
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
@@ -116,7 +116,7 @@ void CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVec
                 C3DVector from = pos + C3DVector(0.0f, 0.0f, radius);
                 if (HasSphereMeshCollidedFromTo(*other, from, to, response)) {
                     ModifyResponseForNearVerticalSlopes(&response);
-                    if ((float)fabs(response.CollideNormal.Z) > g_epsilon_0129ba3c) {
+                    if ((float)fabs(response.CollideNormal.Z) > EPSILON) {
                         if (response.CollidePos.Z > pos.Z)
                             pos.Z = response.CollidePos.Z - 0.199f;
                         OnMesh = true;

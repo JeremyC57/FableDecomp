@@ -19,7 +19,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern const float g_minLength_0129ba3c;           // 0x0129BA3C (0.0001f)
+extern const float EPSILON;             // 0x0129BA3C (0.0001f)
 
 class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
@@ -69,7 +69,7 @@ void CTCCarryable::vfunc_6()
     if (found)
     {
         OffsetCoordRelativeToAttachToDummy = def->OffsetCoordRelativeToAttachToDummy;
-        if (OffsetCoordRelativeToAttachToDummy.GetLengthSquared() > g_minLength_0129ba3c * g_minLength_0129ba3c)
+        if (OffsetCoordRelativeToAttachToDummy.GetLengthSquared() > EPSILON * EPSILON)
             OffsetCoordRelativeToAttachToDummy.AccurateNormalise();
     }
     if (def && --def->m_refCount == 0)

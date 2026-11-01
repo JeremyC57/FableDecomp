@@ -12,10 +12,10 @@ int C2DLineF::IntersectsWith(const C2DBoxF* box) {
     C2DLineF right = { box->maxX, box->minY, box->maxX, box->maxY };
     C2DLineF top = { box->minX, box->maxY, box->maxX, box->maxY };
     C2DLineF left = { box->minX, box->minY, box->minX, box->maxY };
-    extern float g_C2DIntersectionTolerance;
-    if (IntersectsWith(&bottom, &point, g_C2DIntersectionTolerance) ||
-        IntersectsWith(&right, &point, g_C2DIntersectionTolerance) ||
-        IntersectsWith(&top, &point, g_C2DIntersectionTolerance) ||
-        IntersectsWith(&left, &point, g_C2DIntersectionTolerance)) return true;
+    extern const float EPSILON;
+    if (IntersectsWith(&bottom, &point, EPSILON) ||
+        IntersectsWith(&right, &point, EPSILON) ||
+        IntersectsWith(&top, &point, EPSILON) ||
+        IntersectsWith(&left, &point, EPSILON)) return true;
     return false;
 }
