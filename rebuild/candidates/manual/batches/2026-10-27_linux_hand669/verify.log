@@ -1,0 +1,37 @@
+addr       parity           behav  name
+006ddb80   RELOCATION_MATCH PASS   ~CTCTrophy
+006e7550   RELOCATION_MATCH PASS   ~CScriptGameResourceObjectMovie
+00731db0   RELOCATION_MATCH PASS   ~CTCSpotLight
+00771a90   RELOCATION_MATCH PASS   ~CTCOpinionSource
+007c66f0   RELOCATION_MATCH PASS   ~CTCTurncoatSpell
+007cca90   RELOCATION_MATCH PASS   ~CTCMultiStrike
+007ce730   RELOCATION_MATCH PASS   ~CTCElectrocutedEffect
+00887b00   RELOCATION_MATCH PASS   ProcessTransitions
+009947a0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009947a0   RELOCATION_MATCH PASS   ~CBufferedFileDataOutputStream
+00a75c20   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a75c20   RELOCATION_MATCH PASS   ~CNavQuadTreeNode
+
+WINS: 10
+  006ddb80 RELOCATION_MATCH CTCTrophy::??1CTCTrophy@@UAE@XZ
+  006e7550 RELOCATION_MATCH CScriptGameResourceObjectMovie::??1CScriptGameResourceObjectMovie@@UAE@XZ
+  00731db0 RELOCATION_MATCH CTCSpotLight::??1CTCSpotLight@@UAE@XZ
+  00771a90 RELOCATION_MATCH CTCOpinionSource::??1CTCOpinionSource@@UAE@XZ
+  007c66f0 RELOCATION_MATCH CTCTurncoatSpell::??1CTCTurncoatSpell@@UAE@XZ
+  007cca90 RELOCATION_MATCH CTCMultiStrike::??1CTCMultiStrike@@UAE@XZ
+  007ce730 RELOCATION_MATCH CTCElectrocutedEffect::??1CTCElectrocutedEffect@@UAE@XZ
+  00887b00 RELOCATION_MATCH NEnvironmentInternal::CEnvironmentThemePriorityStack::?ProcessTransitions@CEnvironmentThemePriorityStack@NEnvironmentInternal@@QAEXXZ
+  009947a0 RELOCATION_MATCH CBufferedFileDataOutputStream::??1CBufferedFileDataOutputStream@@UAE@XZ
+  00a75c20 RELOCATION_MATCH CNavQuadTreeNode::??1CNavQuadTreeNode@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCTrophy_CTCTrophy_006ddb80
+  CScriptGameResourceObjectMovie_CScriptGameResourceObjectMovie_006e7550
+  CTCSpotLight_CTCSpotLight_00731db0
+  CTCOpinionSource_CTCOpinionSource_00771a90
+  CTCTurncoatSpell_CTCTurncoatSpell_007c66f0
+  CTCMultiStrike_CTCMultiStrike_007cca90
+  CTCElectrocutedEffect_CTCElectrocutedEffect_007ce730
+  NEnvironmentInternalCEnvironmentThemePriorityStack_ProcessTransitions_00887b00
+  CBufferedFileDataOutputStream_CBufferedFileDataOutputStream_009947a0
+  CNavQuadTreeNode_CNavQuadTreeNode_00a75c20

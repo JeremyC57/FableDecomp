@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00a75c20	RELOCATION_MATCH	123v123	PASS	CNavQuadTreeNode::~CNavQuadTreeNode (label right); child deletes TL,TR,BR,BL vs CNavQuadTree::BlockedNode; 1 probe
+006ddb80	RELOCATION_MATCH	98v98	PASS	CTCTrophy::~CTCTrophy (catalog CTCActionUseBuyOrSteal wrong); RemoveFromGlobalTCs + STLport lists; 1 probe
+006e7550	RELOCATION_MATCH	111v111	PASS	CScriptGameResourceObjectMovie::~ (label right); named CPlayer& + GetCurrentPlayer(); 5 probes
+00731db0	RELOCATION_MATCH	98v98	PASS	CTCSpotLight::~CTCSpotLight (label right); LightPrimitive = 0, second base CAGraphicAppearanceComponent; 1 probe
+00771a90	RELOCATION_MATCH	100v100	PASS	CTCOpinionSource::~CTCOpinionSource implicit (catalog CSharedData wrong); emitted via the PDB ctor; 1 probe
+007c66f0	RELOCATION_MATCH	108v108	PASS	CTCTurncoatSpell::~CTCTurncoatSpell (label right); empty body, CWillButtonHelperTimer implicit dtor; 1 probe
+007cca90	RELOCATION_MATCH	102v102	PASS	CTCMultiStrike::~CTCMultiStrike (catalog CTCCoopSpirit wrong); empty body; 1 probe
+007ce730	RELOCATION_MATCH	105v105	PASS	CTCElectrocutedEffect::~CTCElectrocutedEffect (catalog CTCActionUseBuyHouse wrong); FadeOrKillEffect(PEffect); 1 probe
+00887b00	RELOCATION_MATCH	99v99	PASS	NEnvironmentInternal::CEnvironmentThemePriorityStack::ProcessTransitions (label right); same-TU SetDefaultThemeWeight; 1 probe
+009947a0	RELOCATION_MATCH	105v105	PASS	CBufferedFileDataOutputStream::~ (label right); Flush(); delete[] Buffer; same-TU Flush; 1 probe

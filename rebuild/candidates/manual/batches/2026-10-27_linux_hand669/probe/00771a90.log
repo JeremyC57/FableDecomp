@@ -1,0 +1,3 @@
+probe	lever	grade
+1	first authoring from the disassembly (PDB layout, STLport 4.6 text, shared CDefPointer/CCountedPointer/CBaseClassNonCopyable headers)	RELOCATION_MATCH
+2	src/ regrade after stripping the inherited #pragma pack(1) around CBaseIntelligentPointer and final header comments (gall.sh)	RELOCATION_MATCH

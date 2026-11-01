@@ -1,0 +1,21 @@
+address	name	evidence
+00a75c20	CNavQuadTreeNode::~CNavQuadTreeNode	chunk 669 RELOCATION_MATCH: stores vtable 0x0129DCD4 (RTTI CNavQuadTreeNode); sole caller slot-0 ??_G 0x00A7D900; Ego_r name set
+006ddb80	CTCTrophy::~CTCTrophy	chunk 669 RELOCATION_MATCH: stores vtable 0x0125FC54 (RTTI CTCTrophy); sole caller slot-0 ??_G 0x006DFB40; walks Ego_r CTCTrophy (PDef +0x0C, witness lists +0x34/+0x38)
+006e7550	CScriptGameResourceObjectMovie::~CScriptGameResourceObjectMovie	chunk 669 RELOCATION_MATCH: stores vtable 0x01260F00 (RTTI); sole caller slot-0 ??_G 0x006E7C90
+00731db0	CTCSpotLight::~CTCSpotLight	chunk 669 RELOCATION_MATCH: stores vtables 0x01266FBC / 0x01266FA4 (RTTI CTCSpotLight : CTCBase, CAGraphicAppearanceComponent@12); sole caller slot-0 ??_G 0x00732690
+00771a90	CTCOpinionSource::~CTCOpinionSource	chunk 669 RELOCATION_MATCH: compiler-generated; sole caller slot-0 ??_G 0x00771A70 of vtable 0x0126A81C (RTTI CTCOpinionSource); releases Ego_r members +0x78
+007c66f0	CTCTurncoatSpell::~CTCTurncoatSpell	chunk 669 RELOCATION_MATCH: stores vtable 0x0126E5C4 (RTTI); sole caller slot-0 ??_G 0x007C77D0
+007cca90	CTCMultiStrike::~CTCMultiStrike	chunk 669 RELOCATION_MATCH: stores vtable 0x0126EE0C (RTTI CTCMultiStrike); sole caller slot-0 ??_G 0x007CD810; walks Ego_r CTCMultiStrike (ParticleEffects +0x4C, PTarget +0x44, PWeapon +0x24)
+007ce730	CTCElectrocutedEffect::~CTCElectrocutedEffect	chunk 669 RELOCATION_MATCH: stores vtable 0x0126F044 (RTTI CTCElectrocutedEffect); sole caller slot-0 ??_G 0x007CED40; walks Ego_r (PEffect +0x20, TintList +0x28)
+00887b00	NEnvironmentInternal::CEnvironmentThemePriorityStack::ProcessTransitions	chunk 669 RELOCATION_MATCH: caller 0x006B4045 walks CEnvironment::PriorityStackChannels; Ego_r name set
+009947a0	CBufferedFileDataOutputStream::~CBufferedFileDataOutputStream	chunk 669 RELOCATION_MATCH: stores vtable 0x0129A710 (RTTI); sole caller slot-0 ??_G 0x009971E0; inlines Flush 0x00994520
+00a7d900	CNavQuadTreeNode::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0129DCD4; calls 0x00A75C20
+006dfb40	CTCTrophy::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0125FC54; calls 0x006DDB80
+006e7c90	CScriptGameResourceObjectMovie::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x01260F00; calls 0x006E7550
+00732690	CTCSpotLight::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x01266FBC; calls 0x00731DB0
+00771a70	CTCOpinionSource::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0126A81C; calls 0x00771A90
+007c77d0	CTCTurncoatSpell::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0126E5C4; calls 0x007C66F0
+007cd810	CTCMultiStrike::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0126EE0C; calls 0x007CCA90
+007ced40	CTCElectrocutedEffect::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0126F044; calls 0x007CE730
+009971e0	CBufferedFileDataOutputStream::`scalar deleting destructor'	chunk 669: slot 0 of vtable 0x0129A710; calls 0x009947A0
+00510d40	std::_List_base<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature> > >::clear	chunk 669: STLport 4.6 _list.c body; four checked callers clear a list<CIntelligentPointer<CThingAICreature> > (catalog SortTreeRecursively wrong)

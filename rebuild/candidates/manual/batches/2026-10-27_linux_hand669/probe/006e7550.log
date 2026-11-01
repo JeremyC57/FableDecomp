@@ -1,0 +1,8 @@
+probe	lever	grade
+1	direct chained expression ScriptInterface->PlayerManager->GetPlayer(ScriptInterface->CurrentPlayer).RemoveMode(0x1B)	DIFFER(111v111): push 1Bh before the GetPlayer args; CCountedPointer Info reload in edx (retail eax)
+2	named CPlayer& local for the GetPlayer result	DIFFER(111v111): push order fixed; Info reload still edx
+3	CGameScriptInterface* local for the movie-sequence call (lever 2: local placement)	DIFFER(111v111): edx reload
+4	named CPlayer& local + inline PDB accessor GetCurrentPlayer() (?GetCurrentPlayer@CGameScriptInterface@@QBEJXZ)	RELOCATION_MATCH
+5	GetCurrentPlayer() without the named local	DIFFER(111v111): edx fixed, push 1Bh early again
+6	src/ regrade of probe 4 with final header comments (gall.sh)	RELOCATION_MATCH
+7	engine/CPlayerManager.h for GetPlayer instead of the local declaration (vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH

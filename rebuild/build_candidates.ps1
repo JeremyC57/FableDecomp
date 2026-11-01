@@ -372490,6 +372490,76 @@ $catalog = @(
         TestSource = '00/b5/CEngineWeatherRenderer_FadeSnowToTarget_00b52900_test.cpp'
         PassPattern = '00b52900_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ddb80'
+        Module = 'CTCTrophy'
+        Source = '00/6d/CTCTrophy_CTCTrophy_006ddb80.cpp'
+        TestSource = '00/6d/CTCTrophy_CTCTrophy_006ddb80_test.cpp'
+        PassPattern = '006ddb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7550'
+        Module = 'CScriptGameResourceObjectMovie'
+        Source = '00/6e/CScriptGameResourceObjectMovie_CScriptGameResourceObjectMovie_006e7550.cpp'
+        TestSource = '00/6e/CScriptGameResourceObjectMovie_CScriptGameResourceObjectMovie_006e7550_test.cpp'
+        PassPattern = '006e7550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00731db0'
+        Module = 'CTCSpotLight'
+        Source = '00/73/CTCSpotLight_CTCSpotLight_00731db0.cpp'
+        TestSource = '00/73/CTCSpotLight_CTCSpotLight_00731db0_test.cpp'
+        PassPattern = '00731db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771a90'
+        Module = 'CTCOpinionSource'
+        Source = '00/77/CTCOpinionSource_CTCOpinionSource_00771a90.cpp'
+        TestSource = '00/77/CTCOpinionSource_CTCOpinionSource_00771a90_test.cpp'
+        PassPattern = '00771a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c66f0'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_CTCTurncoatSpell_007c66f0.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_CTCTurncoatSpell_007c66f0_test.cpp'
+        PassPattern = '007c66f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cca90'
+        Module = 'CTCMultiStrike'
+        Source = '00/7c/CTCMultiStrike_CTCMultiStrike_007cca90.cpp'
+        TestSource = '00/7c/CTCMultiStrike_CTCMultiStrike_007cca90_test.cpp'
+        PassPattern = '007cca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ce730'
+        Module = 'CTCElectrocutedEffect'
+        Source = '00/7c/CTCElectrocutedEffect_CTCElectrocutedEffect_007ce730.cpp'
+        TestSource = '00/7c/CTCElectrocutedEffect_CTCElectrocutedEffect_007ce730_test.cpp'
+        PassPattern = '007ce730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00887b00'
+        Module = 'NEnvironmentInternal::CEnvironmentThemePriorityStack'
+        Source = '00/88/NEnvironmentInternalCEnvironmentThemePriorityStack_ProcessTransitions_00887b00.cpp'
+        TestSource = '00/88/NEnvironmentInternalCEnvironmentThemePriorityStack_ProcessTransitions_00887b00_test.cpp'
+        PassPattern = '00887b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009947a0'
+        Module = 'CBufferedFileDataOutputStream'
+        Source = '00/99/CBufferedFileDataOutputStream_CBufferedFileDataOutputStream_009947a0.cpp'
+        TestSource = '00/99/CBufferedFileDataOutputStream_CBufferedFileDataOutputStream_009947a0_test.cpp'
+        PassPattern = '009947a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75c20'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_CNavQuadTreeNode_00a75c20.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_CNavQuadTreeNode_00a75c20_test.cpp'
+        PassPattern = '00a75c20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

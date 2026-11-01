@@ -35702,3 +35702,7 @@ _static_l_desc	0139c8b0	00c051c0
 ??1CShaderDataBank@@UAE@XZ	00a620d0	009c2fd0
 ??1CEngineStaticMapFileBlockManager@@QAE@XZ	00b443b0	00b42a90
 ?Reset@CEngineStaticMapFileBlockManager@@QAEXXZ	00be05d0	00b42a90
+?clear@?$_List_base@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXXZ	00510d40	006ddb80
+?InternalEndMovieSequence@CGameScriptInterface@@QAEXXZ	0089b210	006e7550
+??_7CTCMultiStrike@@6B@	0126ee0c	007cca90
+?ProcessTransitions@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXXZ	00887a30	00887b00
