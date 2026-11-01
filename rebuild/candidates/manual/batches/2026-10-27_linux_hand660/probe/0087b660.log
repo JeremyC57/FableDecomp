@@ -1,0 +1,2 @@
+1	CTCBase-like local NCameraModes::CBase + STLport vector<C3DVector> + ctor defined	RELOCATION_MATCH
+2	CCameraModeDef pointer from engine/CDefPointer.h (vland SHARED_HEADER_AVAILABLE fix)	RELOCATION_MATCH

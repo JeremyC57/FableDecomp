@@ -1,0 +1,37 @@
+addr       parity           behav  name
+006df920   RELOCATION_MATCH PASS   ~CCreatureAction_SheatheTrophy
+0072d3e0   RELOCATION_MATCH PASS   ~CCreatureAction_SheatheItemToInventory_ForDivineWrath
+0072d430   RELOCATION_MATCH PASS   ~CCreatureAction_SheatheItemToInventory_ForUnholyPower
+007d7950   RELOCATION_MATCH PASS   ~CCardDef
+007e3370   RELOCATION_MATCH PASS   ~CTCCameraCollision
+0087b660   RELOCATION_MATCH PASS   ~CProjectileWeapon
+0090c780   RELOCATION_MATCH PASS   SetGuardFollowingPlayer
+009771a0   RELOCATION_MATCH PASS   ~CCreatureAction_JackScream
+01219f00   WARN RELOC_NAME: _$E2 -> 01228930 labelled '_global::AtexitDtor_CInitBaseClass_at_013b83d0_01228930'
+01219f00   RELOCATION_MATCH PASS   DynamicInitializer_GGame
+0121ab3f   WARN RELOC_NAME: _$E2 -> 01228fd9 labelled '_global::AtexitDtor_CCharString_at_013b8ba8_01228fd9'
+0121ab3f   RELOCATION_MATCH PASS   DynamicInitializer_NEWLINE
+
+WINS: 10
+  006df920 RELOCATION_MATCH CCreatureAction_SheatheTrophy::??1CCreatureAction_SheatheTrophy@@UAE@XZ
+  0072d3e0 RELOCATION_MATCH CCreatureAction_SheatheItemToInventory_ForDivineWrath::??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAE@XZ
+  0072d430 RELOCATION_MATCH CCreatureAction_SheatheItemToInventory_ForUnholyPower::??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAE@XZ
+  007d7950 RELOCATION_MATCH CCardDef::??1CCardDef@@UAE@XZ
+  007e3370 RELOCATION_MATCH CTCCameraCollision::??1CTCCameraCollision@@UAE@XZ
+  0087b660 RELOCATION_MATCH NCameraModes::CProjectileWeapon::??1CProjectileWeapon@NCameraModes@@UAE@XZ
+  0090c780 RELOCATION_MATCH CTCVillage::?SetGuardFollowingPlayer@CTCVillage@@QAEXPAVCThingAICreature@@@Z
+  009771a0 RELOCATION_MATCH CCreatureAction_JackScream::??1CCreatureAction_JackScream@@UAE@XZ
+  01219f00 RELOCATION_MATCH StaticInitialization::_$E1
+  0121ab3f RELOCATION_MATCH StaticInitialization::_$E1
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionSheatheTrophy_CCreatureActionSheatheTrophy_006df920
+  CCreatureActionSheatheItemToInventoryForDivineWrath_CCreatureActionSheatheItemToInventoryForDivineWr_0072d3e0
+  CCreatureActionSheatheItemToInventoryForUnholyPower_CCreatureActionSheatheItemToInventoryForUnholyPo_0072d430
+  CCardDef_CCardDef_007d7950
+  CTCCameraCollision_CTCCameraCollision_007e3370
+  NCameraModesCProjectileWeapon_CProjectileWeapon_0087b660
+  CTCVillage_SetGuardFollowingPlayer_0090c780
+  CCreatureActionJackScream_CCreatureActionJackScream_009771a0
+  StaticInitialization_DynamicInitializerGGame_01219f00
+  StaticInitialization_DynamicInitializerNEWLINE_0121ab3f

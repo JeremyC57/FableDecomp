@@ -1,0 +1,18 @@
+address	name	evidence
+007e3370	CTCCameraCollision::~CTCCameraCollision	chunk 660 RELOCATION_MATCH: sole caller slot 0 of vtable 0x01270394; FableWin ??1
+0087b660	NCameraModes::CProjectileWeapon::~CProjectileWeapon	chunk 660 RELOCATION_MATCH: sole caller slot 0 of vtable 0x01277804 (0x0087B640 ??_G); frees Attractors +0xF0 then jumps ~CBase 0x0056E0E0; FableWin ??1
+007d7950	CCardDef::~CCardDef	chunk 660 RELOCATION_MATCH: CTCTavernGameCardPairs file after GetRandomCard; followed by the unreferenced operator= 0x007D79C0 and ctor 0x007D7A00 (FableWin trio)
+0072d3e0	CCreatureAction_SheatheItemToInventory_ForDivineWrath::~CCreatureAction_SheatheItemToInventory_ForDivineWrath	chunk 660 RELOCATION_MATCH: sole caller SetupDivineWrath 0x0072CD00; FableWin ??1
+0072d430	CCreatureAction_SheatheItemToInventory_ForUnholyPower::~CCreatureAction_SheatheItemToInventory_ForUnholyPower	chunk 660 RELOCATION_MATCH: sole caller SetupUnholyPower 0x0072CE20; FableWin ??1
+006df920	CCreatureAction_SheatheTrophy::~CCreatureAction_SheatheTrophy	chunk 660 RELOCATION_MATCH: between ctor 0x006DF900 (vtable 0x0125FB14) and ??_G 0x006DF9B0; FableWin ??0/??1
+009771a0	CCreatureAction_JackScream::~CCreatureAction_JackScream	chunk 660 RELOCATION_MATCH: after ctor 0x00977100; ??_G 0x00977440 inlines the release then calls ~CCombatActionBase 0x0062E900; FableWin ??1
+0090c780	CTCVillage::SetGuardFollowingPlayer	chunk 660 RELOCATION_MATCH: caller MinionGuardFollowPlayer::Update on GetPVillage(); +0xBD GuardFollowingPlayer; both PDBs
+01219f00	`dynamic initializer for 'GGame'`	chunk 660 RELOCATION_MATCH: .CRT$XCU slot 0x01374218; constructs ?GGame@@3VCGame@@A 0x013B83D0 and registers the atexit thunk 0x01228930
+0121ab3f	`anonymous namespace'::`dynamic initializer for 'NEWLINE'`	chunk 660 RELOCATION_MATCH: .CRT$XCU slot 0x0137438C; const CWideString NEWLINE(L"\n") at 0x013B8BA8 in the CTCInventoryWeapons TU (both PDBs list that file's initializers in retail order); atexit thunk 0x01228FD9
+01228930	`dynamic atexit destructor for 'GGame'`	chunk 660: registered by 0x01219F00
+01228fd9	`anonymous namespace'::`dynamic atexit destructor for 'NEWLINE'`	chunk 660: registered by 0x0121AB3F; the object is a CWideString, not CCharString
+0048c950	CCreatureAction_SheatheItemToInventory::~CCreatureAction_SheatheItemToInventory	chunk 660: the shared callee of the sibling deleting destructors is the base dtor (landed twin respelled)
+00430300	CParentDefClassBase::~CParentDefClassBase	chunk 660: shared callee of the derived deleting destructors (landed as ??1CDefWithBuffer)
+005dae40	CTCWeapon::~CTCWeapon	chunk 660: landed twin respelled (FableWin ??1)
+007d9ef0	CTCTavernGameSpotTheAddition::~CTCTavernGameSpotTheAddition	chunk 660: landed twin respelled (FableWin ??1)
+0087b640	NCameraModes::CProjectileWeapon::`scalar deleting destructor'	chunk 660: slot 0 of vtable 0x01277804, calls 0x0087B660

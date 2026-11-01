@@ -371848,6 +371848,76 @@ $catalog = @(
         TestSource = '00/af/stdvectorpairCCharStringCRegisteredPSCInfo_Mclear_00af36c0_test.cpp'
         PassPattern = '00af36c0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006df920'
+        Module = 'CCreatureAction_SheatheTrophy'
+        Source = '00/6d/CCreatureActionSheatheTrophy_CCreatureActionSheatheTrophy_006df920.cpp'
+        TestSource = '00/6d/CCreatureActionSheatheTrophy_CCreatureActionSheatheTrophy_006df920_test.cpp'
+        PassPattern = '006df920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072d3e0'
+        Module = 'CCreatureAction_SheatheItemToInventory_ForDivineWrath'
+        Source = '00/72/CCreatureActionSheatheItemToInventoryForDivineWrath_CCreatureActionSheatheItemToInventoryForDivineWr_0072d3e0.cpp'
+        TestSource = '00/72/CCreatureActionSheatheItemToInventoryForDivineWrath_CCreatureActionSheatheItemToInventoryForDivineWr_0072d3e0_test.cpp'
+        PassPattern = '0072d3e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072d430'
+        Module = 'CCreatureAction_SheatheItemToInventory_ForUnholyPower'
+        Source = '00/72/CCreatureActionSheatheItemToInventoryForUnholyPower_CCreatureActionSheatheItemToInventoryForUnholyPo_0072d430.cpp'
+        TestSource = '00/72/CCreatureActionSheatheItemToInventoryForUnholyPower_CCreatureActionSheatheItemToInventoryForUnholyPo_0072d430_test.cpp'
+        PassPattern = '0072d430_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007d7950'
+        Module = 'CCardDef'
+        Source = '00/7d/CCardDef_CCardDef_007d7950.cpp'
+        TestSource = '00/7d/CCardDef_CCardDef_007d7950_test.cpp'
+        PassPattern = '007d7950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3370'
+        Module = 'CTCCameraCollision'
+        Source = '00/7e/CTCCameraCollision_CTCCameraCollision_007e3370.cpp'
+        TestSource = '00/7e/CTCCameraCollision_CTCCameraCollision_007e3370_test.cpp'
+        PassPattern = '007e3370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087b660'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_CProjectileWeapon_0087b660.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_CProjectileWeapon_0087b660_test.cpp'
+        PassPattern = '0087b660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090c780'
+        Module = 'CTCVillage'
+        Source = '00/90/CTCVillage_SetGuardFollowingPlayer_0090c780.cpp'
+        TestSource = '00/90/CTCVillage_SetGuardFollowingPlayer_0090c780_test.cpp'
+        PassPattern = '0090c780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009771a0'
+        Module = 'CCreatureAction_JackScream'
+        Source = '00/97/CCreatureActionJackScream_CCreatureActionJackScream_009771a0.cpp'
+        TestSource = '00/97/CCreatureActionJackScream_CCreatureActionJackScream_009771a0_test.cpp'
+        PassPattern = '009771a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01219f00'
+        Module = 'StaticInitialization'
+        Source = '01/21/StaticInitialization_DynamicInitializerGGame_01219f00.cpp'
+        TestSource = '01/21/StaticInitialization_DynamicInitializerGGame_01219f00_test.cpp'
+        PassPattern = '01219f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121ab3f'
+        Module = 'StaticInitialization'
+        Source = '01/21/StaticInitialization_DynamicInitializerNEWLINE_0121ab3f.cpp'
+        TestSource = '01/21/StaticInitialization_DynamicInitializerNEWLINE_0121ab3f_test.cpp'
+        PassPattern = '0121ab3f_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

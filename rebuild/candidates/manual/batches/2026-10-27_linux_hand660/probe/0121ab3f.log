@@ -1,0 +1,3 @@
+1	const CWideString NEWLINE(L"\n") in namespace{} + reference harness	RELOCATION_MATCH
+2	same without the harness (object kept: dynamic init)	RELOCATION_MATCH (kept in src)
+3	non-const variant: ?NEWLINE@?A0x<local hash>@@3VCWideString@@A external	RELOCATION_MATCH (not kept: const internal symbol avoids a TU-hash name)

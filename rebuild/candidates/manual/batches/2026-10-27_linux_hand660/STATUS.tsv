@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+007e3370	RELOCATION_MATCH	35v35	PASS	??1CTCCameraCollision@@UAE@XZ (proven: sole caller = ??_G slot 0 of vtable 0x01270394); probes 1
+0087b660	RELOCATION_MATCH	30v30	PASS	??1CProjectileWeapon@NCameraModes@@UAE@XZ (proven: sole caller = ??_G slot 0 of vtable 0x01277804); probes 2
+007d7950	RELOCATION_MATCH	33v33	PASS	??1CCardDef@@UAE@XZ (proven: CTCTavernGameCardPairs TU local CCardDef, FableWin ??1/??4/??0 trio); probes 1
+0072d3e0	RELOCATION_MATCH	75v75	PASS	??1CCreatureAction_SheatheItemToInventory_ForDivineWrath@@UAE@XZ (proven: SetupDivineWrath local); probes 1
+0072d430	RELOCATION_MATCH	75v75	PASS	??1CCreatureAction_SheatheItemToInventory_ForUnholyPower@@UAE@XZ (proven: SetupUnholyPower local); probes 1
+006df920	RELOCATION_MATCH	75v75	PASS	??1CCreatureAction_SheatheTrophy@@UAE@XZ (proven: CTCTrophy TU, between its ctor 0x006DF900 and ??_G 0x006DF9B0); probes 1
+009771a0	RELOCATION_MATCH	75v75	PASS	??1CCreatureAction_JackScream@@UAE@XZ (proven: after its ctor 0x00977100, ??_G 0x00977440 inlines it); probes 1
+0090c780	RELOCATION_MATCH	74v74	PASS	?SetGuardFollowingPlayer@CTCVillage@@QAEXPAVCThingAICreature@@@Z (proven: caller MinionGuardFollowPlayer::Update via GetPVillage, Ego_r +0x149 -> +0xBD); probes 2
+0121ab3f	RELOCATION_MATCH	27v27	PASS	`anonymous namespace'::dynamic initializer for 'NEWLINE' (compiler-emitted .CRT$XCU initializer, leaf _$E1); probes 3
+01219f00	RELOCATION_MATCH	32v32	PASS	dynamic initializer for 'GGame' (compiler-emitted .CRT$XCU initializer, leaf _$E1); probes 1

@@ -1,0 +1,2 @@
+1	CTCVillage local over header offsets, packed CIntelligentPointer<CThingAICreature>, GuardFollowingPlayer = guard	RELOCATION_MATCH
+2	engine/CTCBase.h named in the Layout comment (vland SHARED_HEADER_AVAILABLE fix), layout typedef check	RELOCATION_MATCH
