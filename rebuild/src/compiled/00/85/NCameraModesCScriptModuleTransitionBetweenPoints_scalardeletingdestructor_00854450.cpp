@@ -1,3 +1,6 @@
+// Leaf: ?CScriptModuleTransitionBetweenPoints_CompositeScalarDeletingDestructor@@
+// Naming wave 26 (family c694): the base destructor 0x005ED120 is ??1CScriptModuleBase@NCameraModes@@UAE@XZ (Ego_r.pdb; Fable.exe RTTI base arrays);
+//   was the free ?CScriptModuleTransitionBetweenPoints_Destruct@@YIXPAX@Z.
 #pragma optimize("t", on)
 class CBaseObject;
 class CBaseObjectPointer;
@@ -10,11 +13,18 @@ public:
 private:
     CBaseObjectPointer* PData;                           // +0x04
 };
-extern void __fastcall CScriptModuleTransitionBetweenPoints_Destruct(void* points);
+namespace NCameraModes {
+class CScriptModuleBase { public:                 // vtable 0x01255F74 (.?AVCScriptModuleBase@NCameraModes@@)
+    virtual ~CScriptModuleBase();                   // 0x005ED120
+};
+class CScriptModuleSelfTerminateBase : public CScriptModuleBase { public:   // RTTI: the direct base of OpenChest / UseLamp / OpenGate
+    virtual ~CScriptModuleSelfTerminateBase();      // 0x00854310
+};
+}
 void* __fastcall CScriptModuleTransitionBetweenPoints_CompositeScalarDeletingDestructor(void* points, int, unsigned int flags)
 {
     ((CBaseIntelligentPointer*)(static_cast<unsigned char*>(points) + 76))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
-    CScriptModuleTransitionBetweenPoints_Destruct(points);
+    static_cast<NCameraModes::CScriptModuleBase*>(points)->NCameraModes::CScriptModuleBase::~CScriptModuleBase();
     if (flags & 1)
         operator delete(points);
     return points;

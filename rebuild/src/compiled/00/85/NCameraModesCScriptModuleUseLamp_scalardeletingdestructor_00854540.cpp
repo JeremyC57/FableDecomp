@@ -3,11 +3,16 @@
 // +0x5c CBaseIntelligentPointer (~ @ 0x00A01C10), +0x54 CBaseIntelligentPointer (~ @ 0x00A01C10), then the base NCameraModes::CScriptModuleBase (~ @ 0x00854310), and frees the block with operator delete
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
+// Leaf: ?CScriptModuleUseLamp_CompositeScalarDeletingDestructor@@
+// Naming wave 26 (family c694): the base destructor 0x00854310 is ??1CScriptModuleSelfTerminateBase@NCameraModes@@UAE@XZ (Ego_r.pdb; Fable.exe RTTI base arrays);
+//   was ??1CScriptModuleBase@NCameraModes@@QAE@XZ (the base one level too high).
 #pragma optimize("t", on)
 namespace NCameraModes {
 class CScriptModuleBase { public:                 // vtable 0x01255F74 (.?AVCScriptModuleBase@NCameraModes@@)
-    void* _vptr;
-    ~CScriptModuleBase();                   // 0x00854310
+    virtual ~CScriptModuleBase();                   // 0x005ED120
+};
+class CScriptModuleSelfTerminateBase : public CScriptModuleBase { public:   // RTTI: the direct base of OpenChest / UseLamp / OpenGate
+    virtual ~CScriptModuleSelfTerminateBase();      // 0x00854310
 };
 }
 struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0129C95C
@@ -18,7 +23,7 @@ struct CBaseIntelligentPointer {            // vptr + data (8 bytes); vtable 0x0
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
 #pragma pack(push, 1)
-struct CObject_00854540 : NCameraModes::CScriptModuleBase {
+struct CObject_00854540 : NCameraModes::CScriptModuleSelfTerminateBase {
     unsigned char _pad54[0x50];
     CBaseIntelligentPointer Member54;           // +0x54
     CBaseIntelligentPointer Member5c;           // +0x5c
@@ -30,7 +35,7 @@ void* __fastcall CScriptModuleUseLamp_CompositeScalarDeletingDestructor(void* la
     CObject_00854540* object = static_cast<CObject_00854540*>(lamp);
     object->Member5c.~CBaseIntelligentPointer();
     object->Member54.~CBaseIntelligentPointer();
-    object->NCameraModes::CScriptModuleBase::~CScriptModuleBase();
+    object->NCameraModes::CScriptModuleSelfTerminateBase::~CScriptModuleSelfTerminateBase();
     if (flags & 1)
         operator delete(object);
     return lamp;
