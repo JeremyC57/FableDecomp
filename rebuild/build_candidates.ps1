@@ -183974,9 +183974,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00994b40'
-        Module = 'CCreatureActionBase'
-        Source = '00/99/CCreatureActionBase_GetFramesRemaining_00994b40.cpp'
-        TestSource = '00/99/CCreatureActionBase_GetFramesRemaining_00994b40_test.cpp'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/99/CMemoryDataOutputStream_GetLength_00994b40.cpp'
+        TestSource = '00/99/CMemoryDataOutputStream_GetLength_00994b40_test.cpp'
         PassPattern = '00994b40_TEST PASS'
     }
     [pscustomobject]@{

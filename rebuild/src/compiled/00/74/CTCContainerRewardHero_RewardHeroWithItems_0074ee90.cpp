@@ -13,7 +13,8 @@
 // Layout: Ego_r CMainGameComponent PTextBank +0x14 (CCountedPointer<NGameText::CDataBank>), PCutSceneMainFont +0x1614C
 //   (CCountedPointer<CFontBank>); CPlayerGui SubtitleRenderer +0x18; CChestDef DisplayMessageOnEmpty +0x2C; CThing interface
 //   bits +0x20, interface map +0x44, PBaseDef +0x70, dead bit +0x91 bit 0.
-// Globals: g_pMainGameComponent 0x013B86A0 (GOTCHAS wave 25), g_pPlayerGui 0x013B8790 (majority spelling; descriptive).
+// Globals: CMainGameComponent::PMainGameComponent 0x013B86A0 (ESTABLISHED_SPELLINGS; read through the inline static Get(), naming wave 18),
+//   g_pPlayerGui 0x013B8790 (majority spelling; descriptive).
 // Shape: the retail TU compiles CVectorMap::LowerBound (landed 0x0040F020 text) and GetRewardItems ahead of this body, so
 //   both are same-TU non-inline bodies under auto_inline(off): LowerBound's register facts keep the zero in ebx across
 //   the lookup (the receiver spills to 0x18), and the GetRewardItems stand-in (its real first two steps only: gold = 0,
@@ -164,7 +165,11 @@ class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
     unsigned char _pad00[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;   // +0x14
     unsigned char _pad1c[0x1614C - 0x1C];
@@ -179,7 +184,6 @@ class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
 class CTCHeroStats { public:
@@ -224,7 +228,7 @@ bool CTCContainerRewardHero::RewardHeroWithItems()
             CDefPointer<const CChestDef> chestDef;
             bool found = ParentThing->GetPBaseDef()->GetSubDef(&chestDef);
             if (!found || chestDef->DisplayMessageOnEmpty) {
-                CWideString text = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TXT_SIGN_NOTHING");
+                CWideString text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TXT_SIGN_NOTHING");
                 g_pPlayerGui->SubtitleRenderer.SetText(PeekComponent().PeekCutSceneMainFont(), text, 0x122, 0.0f, false, true);
             }
             return false;
