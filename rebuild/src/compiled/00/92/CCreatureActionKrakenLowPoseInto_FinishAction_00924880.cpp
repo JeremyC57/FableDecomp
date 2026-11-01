@@ -51,14 +51,13 @@ struct CBaseIntelligentPointer {
 };
 
 class CCombatActionBase { public:                      // retail sizeof 0x114
-    virtual void v00();
+    virtual ~CCombatActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0062E900
     virtual void FinishAction();                // 0x00859A20 (slot 4)
     unsigned char           _pad04[4];          // +0x04
     CBaseIntelligentPointer PCreature;          // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8 CIntelligentPointer<CThing> (Ego_r.pdb +0xb4)
     unsigned char           _padb0[0x114 - 0xb0];
-    ~CCombatActionBase();                       // 0x0062E900
     __forceinline CThingCreatureBase& Creature() const { return *static_cast<CThingCreatureBase*>(PCreature.GetPItem()); }
     __forceinline bool IsTargetAlive() const    // two fetches: present, then not dead
     {

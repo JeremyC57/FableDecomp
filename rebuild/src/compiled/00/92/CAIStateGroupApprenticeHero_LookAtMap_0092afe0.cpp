@@ -53,7 +53,7 @@ class CCreatureActionBase { public:
     unsigned char _body[0x110];
 };
 class CCombatActionBase : public CCreatureActionBase { public:
-    ~CCombatActionBase();                          // 0x0062E900
+    virtual ~CCombatActionBase();                          // 0x0062E900
 };
 class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:   // retail 0x118 bytes (Ego_r.pdb 0x130; the frame fixes it)
     unsigned char _own[4];

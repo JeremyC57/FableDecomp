@@ -17,8 +17,8 @@
 
 extern "C" void __cdecl free(void* block);                                // 0x00BFEA14
 
-struct CDragonActionBase {                                                // 300-byte (PDB) creature-action base, 0x114 retail
-    virtual ~CDragonActionBase();                                         // 0x0062E900
+class CCombatActionBase { public:                                                // CCombatActionBase (Ego_r.pdb ??1CCombatActionBase@@UAE@XZ; was stand-in CDragonActionBase, naming wave 15)
+    virtual ~CCombatActionBase();                                         // 0x0062E900
     unsigned char _body[0x110];                                           // +0x04 .. +0x114
 };
 
@@ -40,7 +40,7 @@ struct C3DVectorVector {                                                  // ret
     }
 };
 
-class CCreatureAction_DragonBurninateInto : public CDragonActionBase { public:          // vtable 0x01294374
+class CCreatureAction_DragonBurninateInto : public CCombatActionBase { public:          // vtable 0x01294374
     C3DVector       PreviousPoint;                                        // +0x114
     C3DVectorVector MovementPoints;                                       // +0x120
     float           BurnStart;                                            // +0x12c
