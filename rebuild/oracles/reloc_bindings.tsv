@@ -35316,3 +35316,10 @@ _longest_match_fast	00c00fd0	00c013c0
 ?GetStringCRC@CDefStringTable@@QBEKJ@Z	009d4a20	0073e940
 ??1CSpawnedFuncBase@@UAE@XZ	00cdd4c0	00ce1200
 ??1CTB_Bard@CV_TalentlessBardScript@NScript@@UAE@XZ	00ed7dd0	00ed7db0
+?clear@?$_List_base@VCUndeadFollower@CTCSpecialAbilities@@V?$allocator@VCUndeadFollower@CTCSpecialAbilities@@@std@@@std@@QAEXXZ	0072d4d0	0072da60
+??1?$vector@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@V?$allocator@V?$vector@PAVCCard@@V?$allocator@PAVCCard@@@std@@@std@@@2@@std@@QAE@XZ	007dc890	007dca90
+??1CTCTavernGameCardBase@@UAE@XZ	007d5e80	007dca90
+_z_inflateEnd	00c038d0	00a3acc0
+??1?$_List_base@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE@XZ	00b43bb0	00b42e70
+?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ	00b40000	00b42e70
+??1CBasePin@@UAE@XZ	00ca7c80	00ca9690

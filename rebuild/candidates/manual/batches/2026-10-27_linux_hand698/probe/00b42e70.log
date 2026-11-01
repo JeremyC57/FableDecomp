@@ -1,0 +1,1 @@
+1	user dtor { CloseStaticMapFile(); DeleteMap(); } + STLport members	RELOCATION_MATCH

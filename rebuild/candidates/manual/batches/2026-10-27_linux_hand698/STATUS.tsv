@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+0072da60	RELOCATION_MATCH	54v54	PASS	1	CTCSpecialAbilities::~CTCSpecialAbilities (implicit; DestroyOne); residue none
+007dca90	RELOCATION_MATCH	60v60	PASS	1	CTCTavernGameCardBlackjack::~CTCTavernGameCardBlackjack (implicit; DestroyOne); residue none
+004d1d50	RELOCATION_MATCH	93v93	PASS	1	CCRCSymbolMap::~CCRCSymbolMap (implicit; DestroyOne); residue none
+00a4eb50	RELOCATION_MATCH	83v83	PASS	1	C3DAnimationStats::~C3DAnimationStats (user empty virtual dtor); residue none
+00b42e70	RELOCATION_MATCH	88v88	PASS	1	CEngineWorldMap::~CEngineWorldMap (user dtor CloseStaticMapFile+DeleteMap); residue none
+00ca9690	RELOCATION_MATCH	88v88	PASS	1	CDynamicOutputPin::~CDynamicOutputPin (strmbase amfilter.cpp, /EHsc); residue none
+0051d590	RELOCATION_MATCH	43v43	PASS	1	CNavigationAreaInit::~CNavigationAreaInit (implicit; DestroyOne); unreferenced in retail; residue none
+006f2fd0	RELOCATION_MATCH	44v44	PASS	1	CCombatDebugInfo::~CCombatDebugInfo (implicit; DestroyOne); unreferenced in retail; residue none
+00aa7320	RELOCATION_MATCH	43v43	PASS	1	C3DMeshFileXUVTangentChunk::~C3DMeshFileXUVTangentChunk (implicit; DestroyOne); unreferenced in retail; residue none
+00a3acc0	RELOCATION_MATCH	91v91	PASS	1	CCompressorZlib::~CCompressorZlib (user dtor over same-TU Finish*Stream); residue none

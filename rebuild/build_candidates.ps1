@@ -374658,6 +374658,77 @@ $catalog = @(
         TestSource = '00/be/CEngineInternalPrimitiveMeshBase_CEngineInternalPrimitiveMeshBase_00bebc50_test.cpp'
         PassPattern = '00bebc50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004d1d50'
+        Module = 'CCRCSymbolMap'
+        Source = '00/4d/CCRCSymbolMap_CCRCSymbolMap_004d1d50.cpp'
+        TestSource = '00/4d/CCRCSymbolMap_CCRCSymbolMap_004d1d50_test.cpp'
+        PassPattern = '004d1d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051d590'
+        Module = 'CNavigationAreaInit'
+        Source = '00/51/CNavigationAreaInit_CNavigationAreaInit_0051d590.cpp'
+        TestSource = '00/51/CNavigationAreaInit_CNavigationAreaInit_0051d590_test.cpp'
+        PassPattern = '0051d590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006f2fd0'
+        Module = 'CCombatDebugInfo'
+        Source = '00/6f/CCombatDebugInfo_CCombatDebugInfo_006f2fd0.cpp'
+        TestSource = '00/6f/CCombatDebugInfo_CCombatDebugInfo_006f2fd0_test.cpp'
+        PassPattern = '006f2fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072da60'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CTCSpecialAbilities_0072da60.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CTCSpecialAbilities_0072da60_test.cpp'
+        PassPattern = '0072da60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dca90'
+        Module = 'CTCTavernGameCardBlackjack'
+        Source = '00/7d/CTCTavernGameCardBlackjack_CTCTavernGameCardBlackjack_007dca90.cpp'
+        TestSource = '00/7d/CTCTavernGameCardBlackjack_CTCTavernGameCardBlackjack_007dca90_test.cpp'
+        PassPattern = '007dca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3acc0'
+        Module = 'CCompressorZlib'
+        Source = '00/a3/CCompressorZlib_CCompressorZlib_00a3acc0.cpp'
+        TestSource = '00/a3/CCompressorZlib_CCompressorZlib_00a3acc0_test.cpp'
+        PassPattern = '00a3acc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a4eb50'
+        Module = 'C3DAnimationStats'
+        Source = '00/a4/C3DAnimationStats_C3DAnimationStats_00a4eb50.cpp'
+        TestSource = '00/a4/C3DAnimationStats_C3DAnimationStats_00a4eb50_test.cpp'
+        PassPattern = '00a4eb50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa7320'
+        Module = 'C3DMeshFileXUVTangentChunk'
+        Source = '00/aa/C3DMeshFileXUVTangentChunk_C3DMeshFileXUVTangentChunk_00aa7320.cpp'
+        TestSource = '00/aa/C3DMeshFileXUVTangentChunk_C3DMeshFileXUVTangentChunk_00aa7320_test.cpp'
+        PassPattern = '00aa7320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b42e70'
+        Module = 'CEngineWorldMap'
+        Source = '00/b4/CEngineWorldMap_CEngineWorldMap_00b42e70.cpp'
+        TestSource = '00/b4/CEngineWorldMap_CEngineWorldMap_00b42e70_test.cpp'
+        PassPattern = '00b42e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9690'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_CDynamicOutputPin_00ca9690.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_CDynamicOutputPin_00ca9690_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00ca9690_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

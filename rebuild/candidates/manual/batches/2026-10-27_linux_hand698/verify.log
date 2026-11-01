@@ -1,0 +1,39 @@
+addr       parity           behav  name
+004d1d50   RELOCATION_MATCH PASS   ~CCRCSymbolMap
+0051d590   RELOCATION_MATCH PASS   ~CNavigationAreaInit
+006f2fd0   RELOCATION_MATCH PASS   ~CCombatDebugInfo
+0072da60   RELOCATION_MATCH PASS   ~CTCSpecialAbilities
+007dca90   RELOCATION_MATCH PASS   ~CTCTavernGameCardBlackjack
+00a3acc0   RELOCATION_MATCH PASS   ~CCompressorZlib
+00a4eb50   RELOCATION_MATCH PASS   ~C3DAnimationStats
+00aa7320   RELOCATION_MATCH PASS   ~C3DMeshFileXUVTangentChunk
+00b42e70   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b42e70   WARN RELOC_NAME: ?DeleteMap@CEngineWorldMap@@AAEXXZ -> 00b42c70 labelled 'CEngineWorldMap::DeleteAllMaps'
+00b42e70   WARN RELOC_NAME: ??1?$_List_base@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE@XZ -> 00b43bb0 labelled '_global::StdList_Clear_00b43bb0'
+00b42e70   RELOCATION_MATCH PASS   ~CEngineWorldMap
+00ca9690   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9690   RELOCATION_MATCH PASS   ~CDynamicOutputPin
+
+WINS: 10
+  004d1d50 RELOCATION_MATCH CCRCSymbolMap::??1CCRCSymbolMap@@UAE@XZ
+  0051d590 RELOCATION_MATCH CNavigationAreaInit::??1CNavigationAreaInit@@QAE@XZ
+  006f2fd0 RELOCATION_MATCH CCombatDebugInfo::??1CCombatDebugInfo@@QAE@XZ
+  0072da60 RELOCATION_MATCH CTCSpecialAbilities::??1CTCSpecialAbilities@@UAE@XZ
+  007dca90 RELOCATION_MATCH CTCTavernGameCardBlackjack::??1CTCTavernGameCardBlackjack@@UAE@XZ
+  00a3acc0 RELOCATION_MATCH CCompressorZlib::??1CCompressorZlib@@UAE@XZ
+  00a4eb50 RELOCATION_MATCH C3DAnimationStats::??1C3DAnimationStats@@UAE@XZ
+  00aa7320 RELOCATION_MATCH C3DMeshFileXUVTangentChunk::??1C3DMeshFileXUVTangentChunk@@UAE@XZ
+  00b42e70 RELOCATION_MATCH CEngineWorldMap::??1CEngineWorldMap@@UAE@XZ
+  00ca9690 RELOCATION_MATCH CDynamicOutputPin::??1CDynamicOutputPin@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CCRCSymbolMap_CCRCSymbolMap_004d1d50
+  CNavigationAreaInit_CNavigationAreaInit_0051d590
+  CCombatDebugInfo_CCombatDebugInfo_006f2fd0
+  CTCSpecialAbilities_CTCSpecialAbilities_0072da60
+  CTCTavernGameCardBlackjack_CTCTavernGameCardBlackjack_007dca90
+  CCompressorZlib_CCompressorZlib_00a3acc0
+  C3DAnimationStats_C3DAnimationStats_00a4eb50
+  C3DMeshFileXUVTangentChunk_C3DMeshFileXUVTangentChunk_00aa7320
+  CEngineWorldMap_CEngineWorldMap_00b42e70
+  CDynamicOutputPin_CDynamicOutputPin_00ca9690

@@ -5459,7 +5459,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004d1b40	std::introsort_Heapsort_Top_Element	std	unknown	undefined	0		0	yes	accepted									
 004d1bc0	std::introsort_Heapsort_Top_CCharString	std	unknown	undefined	0		0	yes	accepted									
 004d1c80	std::introsort_Heapsort_Top_CDebugCone	std	unknown	undefined	0		0	yes	accepted									
-004d1d50	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+004d1d50	~CCRCSymbolMap	CCRCSymbolMap	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 004d1db0	~CSubtitledMessage	CSubtitledMessage	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 004d1e20	Insert	CVectorMap<float, EConversationAttitude>	unknown	undefined	0		0	yes	accepted									
 004d1eb0	Add	CTextureMorphs	__thiscall	void	2	CTextureMorphs *,CTextureMorphEntry *	1	yes	accepted									
@@ -8787,8 +8787,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0051d2d0	sub_0051d2d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0051d350	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
 0051d400	std::vector_InsertN_WithRealloc	std	unknown	undefined	0		0	yes	accepted									
-0051d530	FinishWithDynamicTextures	CEngineScreenEffectOutlineGlow	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
-0051d590	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+0051d530	~CNavigationAreaUpdate	CNavigationAreaUpdate	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
+0051d590	~CNavigationAreaInit	CNavigationAreaInit	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 0051d5c0	resize	std::vector<CRegion, std::allocator<CRegion>>	__thiscall	void	3	CPersistContext *,char *,CAnimationSet *	1	yes	accepted									
 0051d630	_M_fill_insert	std::vector<CNavigationAreaUpdate::CNavigationLayerUpdate, std::allocator<CNavigationAreaUpdate::CNavigationLayerUpdate>>	unknown	undefined	0		0	yes	accepted									
 0051d800	resize	std::vector<CNavigationAreaUpdate::CNavigationLayerUpdate, std::allocator<CNavigationAreaUpdate::CNavigationLayerUpdate>>	__thiscall	void	3	vector<CTCInventoryMap::CUIMiniMapMarker,std::allocator<CTCInventoryMap::CUIMiniMapMarker>_> *,uint,CUIMiniMapMarker	1	yes	accepted									
@@ -17777,8 +17777,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006f2c00	CAttackerPositionEvaluator::EvaluateAttacker	CAttackerPositionEvaluator	unknown	undefined	0		0	yes	accepted									
 006f2de0	operator()	CGetBestAttackerForProng	__thiscall	void	2	CGetBestAttackerForProng *,pair<CThingCreatureBase*,CAttackingCombatantInfo*>	1	yes	accepted									
 006f2f60	~CCreatureAction_PerformExpressionExtended	CCreatureAction_PerformExpressionExtended	__thiscall	void	1	CCreatureAction_PerformExpressionExtended *	1	yes	accepted									
-006f2fd0	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
-006f3000	CBoast	CBoast	__thiscall	undefined	2	CBoast *,CBoast *	0	yes	accepted									
+006f2fd0	~CCombatDebugInfo	CCombatDebugInfo	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+006f3000	CCombatDebugInfo	CCombatDebugInfo	__thiscall	undefined	2	CBoast *,CBoast *	0	yes	accepted									
 006f3090	CUnprovenContainer_006f0dd0	CUnprovenContainer_006f0dd0	unknown	undefined	0		0	yes	accepted									
 006f30d0	~CUnprovenContainer_006f0dd0	CUnprovenContainer_006f0dd0	unknown	undefined	0		0	yes	accepted									
 006f3200	erase	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CThingCreatureBase *>, std::_Select1st<std::pair<unsigned __int64 const, CThingCreatureBase *>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CThingCreatureBase *>>>	unknown	undefined	0		0	yes	accepted									
@@ -19070,8 +19070,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072da00	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 0072da20	CTCSpecialAbilities::vfunc_8	CTCSpecialAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072da30	CTCSpecialAbilities::vfunc_23	CTCSpecialAbilities	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0072da40	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_0072da40.cpp
-0072da60	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+0072da40	`scalar deleting destructor'	CTCSpecialAbilities	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_0072da40.cpp
+0072da60	~CTCSpecialAbilities	CTCSpecialAbilities	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 0072daa0	CTCInventoryMagic::vfunc_1	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072dab0	CTCInventoryMagic::vfunc_2	CTCInventoryMagic	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0072dac0	DrawPreparePrimitivesForRendering	CTCInventoryMagic	__thiscall	void	2	CTCInventoryMagic *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
@@ -22730,7 +22730,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007d5c00	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7d\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d5c00.cpp
 007d5ca0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7d\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_007d5ca0.cpp
 007d5d60	std::vector_Insert	std	unknown	undefined	0		0	yes	accepted									
-007d5e80	Catch@0047e8cc	_global	unknown	undefined	0		0	yes	accepted									
+007d5e80	~CTCTavernGameCardBase	CTCTavernGameCardBase	unknown	undefined	0		0	yes	accepted									
 007d5ef0	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7d\CActionDoCreatureAction_GetActionName_007d5ef0.cpp
 007d5f10	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7d\CLandscapeBackgroundPatch_vectordeletingdestructor_007d5f10.cpp
 007d5f60	LeaveGame	CTCTavernGameCardPairs	__thiscall	void	1	CTCTavernGameCardPairs *	1	yes	accepted									
@@ -22841,13 +22841,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007dc650	_Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>	_Copy_impl<std::pair<CCharString,CCharString>*,std	__fastcall	pair<CCharString,CCharString> *	4	pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 007dc6a0	`scalar_deleting_destructor'	CLandscapeBackgroundLoadTask	__thiscall	void *	2	CLandscapeBackgroundLoadTask *,uint	1	yes	accepted									
 007dc750	vector_PushBack_uint	_global	unknown	undefined	0		0	yes	accepted									
-007dc890	Vector_Deallocate_Pointers	_global	unknown	undefined	0		0	yes	accepted									
+007dc890	~vector	std::vector<std::vector<CCard *, std::allocator<CCard *>>, std::allocator<std::vector<CCard *, std::allocator<CCard *>>>>	unknown	undefined	0		0	yes	accepted									
 007dc8d0	vector_Replace_CCharString_Pairs	_global	unknown	undefined	0		0	yes	accepted									
 007dc930	Vector_Deallocate_ComplexElements	_global	unknown	undefined	0		0	yes	accepted									
 007dc970	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 007dc9a0	_M_insert_overflow	std::vector<std::vector<CCard *, std::allocator<CCard *>>, std::allocator<std::vector<CCard *, std::allocator<CCard *>>>>	unknown	undefined	0		0	yes	accepted									
 007dca70	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7d\CLandscapeBackgroundPatch_vectordeletingdestructor_007dca70.cpp
-007dca90	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+007dca90	~CTCTavernGameCardBlackjack	CTCTavernGameCardBlackjack	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 007dcad0	std_vector_PushBackEmptyElement	_global	unknown	undefined	0		0	yes	accepted									
 007dcb10	vector_PushBack_ComplexElement	_global	unknown	undefined	0		0	yes	accepted									
 007dccb0	FrameUpdate	CTCCreatureFlyOnSpline	__thiscall	void	1	CTCCreatureFlyOnSpline *	1	yes	accepted									
@@ -34638,7 +34638,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009d61f0	~CBankFileAsyncData	CBankFileAsyncData	__thiscall	void	1	CBankFileAsyncData *	1	yes	accepted									
 009d6350	Abort	CBankFileAsyncData	__thiscall	bool	1	CBankFileAsyncData *	1	yes	accepted									
 009d6420	RegisterBank	CLoadingMemoryFailureHandler	unknown	undefined	0		0	yes	accepted									
-009d6490	CBankFile::Destructor	CBankFile	unknown	undefined	0		0	yes	accepted									
+009d6490	~CBankFileAsync	CBankFileAsync	unknown	undefined	0		0	yes	accepted									
 009d66a0	SetLoadingMemoryFailureHandler	CBankFileAsync	__thiscall	void	2	CBankFileAsync *,CCountedPointer<CLoadingMemoryFailureHandler>	1	yes	accepted									
 009d6730	ProcessDisposalList	CBankFileAsync	__thiscall	void	1	CBankFileAsync *	1	yes	accepted									
 009d67e0	DiscardAsyncData	CBankFileAsync	__thiscall	void	2	CBankFileAsync *,CCountedPointer<CBankFileAsyncData> *	1	yes	accepted									
@@ -36665,7 +36665,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a397d0	_M_fill_insert	std::vector<std::pair<unsigned long, long>, std::allocator<std::pair<unsigned long, long>>>	unknown	undefined	0		0	yes	accepted									
 00a39900	DeallocateMemory	CVectorMap<unsigned long, long, CKeyPairCompareLess<unsigned long, long>>	__thiscall	void	1	CActiveFile *	1	yes	accepted									
 00a39950	DeallocateMemory	CArray<std::pair<unsigned long, long>>	__thiscall	void	1	CArray<unsigned_short> *	1	yes	accepted									
-00a399e0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CLandscapeBackgroundPatch_vectordeletingdestructor_00a399e0.cpp
+00a399e0	`scalar deleting destructor'	CCRCSymbolMap	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CLandscapeBackgroundPatch_vectordeletingdestructor_00a399e0.cpp
 00a39a00	DeallocateUnusedMemory	CArray<std::pair<unsigned long, long>>	__thiscall	void	1	CArray<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *	1	yes	accepted									
 00a39ae0	resize	std::vector<std::pair<unsigned long, long>, std::allocator<std::pair<unsigned long, long>>>	__thiscall	void	2	vector<std::pair<CCharString,long>,std::allocator<std::pair<CCharString,long>_>_> *,uint	1	yes	accepted									
 00a39b40	CWADFile	CWADFile	__thiscall	undefined	2	CWADFile *,CWADBank *	0	yes	accepted									
@@ -38802,9 +38802,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aa7250	`scalar deleting destructor'	C3DMeshFileXVertexDataChunk	__thiscall	void *	2	CParticleEffect *,uint	1	yes	accepted									
 00aa7280	?GetChunkDescription@C3DMeshFileXTriangleStripChunk@@UBE?BVCCharString@@XZ	C3DMeshFileXTriangleStripChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\C3DMeshFileXTriangleStripChunk_GetChunkDescriptionC3DMeshFileXTriangleStripChun_00aa7280.cpp
 00aa72a0	`scalar deleting destructor'	C3DMeshFileXTriangleStripChunk	__thiscall	void *	2	CParticleEffect *,uint	1	yes	accepted									
-00aa7320	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+00aa7320	~C3DMeshFileXUVTangentChunk	C3DMeshFileXUVTangentChunk	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00aa7350	?GetChunkDescription@C3DMeshFileXUVTangentChunk@@UBE?BVCCharString@@XZ	C3DMeshFileXUVTangentChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\C3DMeshFileXUVTangentChunk_GetChunkDescriptionC3DMeshFileXUVTangentChunkUBE_00aa7350.cpp
-00aa7370	FinishWithDynamicTextures	CEngineScreenEffectOutlineGlow	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
+00aa7370	`scalar deleting destructor'	C3DMeshFileXUVTangentChunk	__thiscall	void	1	CEngineScreenEffectOutlineGlow *	1	yes	accepted									
 00aa73b0	?GetChunkDescription@C3DMeshFileXAnimatedPrimitiveBlockChunk@@UBE?BVCCharString@@XZ	C3DMeshFileXAnimatedPrimitiveBlockChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00aa7440	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aa7440.cpp
 00aa7460	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aa7460.cpp
@@ -41338,7 +41338,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b3f5e0	PeekMapNormal	CEngineMap	__thiscall	C3DVector	3	CEngineMap *,long,long	1	yes	accepted									
 00b3fc40	PeekInterpolatedMapNormal	CEngineMap	__thiscall	C3DVector	3	CEngineMap *,float,float	1	yes	accepted									
 00b3ff70	CreateNewBankMap	CEngineWorldMap	__thiscall	ulong	2	CEngineWorldMap *,CCharString *	1	yes	accepted									
-00b40000	FrameStart	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,CEngineComponentParams *	1	yes	accepted									
+00b40000	CloseStaticMapFile	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,CEngineComponentParams *	1	yes	accepted									
 00b40070	AutoBuildWorldMapGrid	CEngineWorldMap	__thiscall	void	1	CEngineWorldMap *	1	yes	accepted									
 00b401e0	CEngine::MapState_SetLoaded	CEngine	unknown	undefined	0		0	unmeasured	accepted									
 00b40230	CEngine::MapState_SetUnloaded	CEngine	unknown	undefined	0		0	unmeasured	accepted									
@@ -41365,7 +41365,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b42b10	DeleteMap	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,long	1	yes	accepted									
 00b42c70	DeleteMap	CEngineWorldMap	__thiscall	void	1	CEngineWorldMap *	1	yes	accepted									
 00b42d10	AddMap	CEngineWorldMap	__thiscall	void	3	CEngineWorldMap *,long,long	1	yes	accepted									
-00b42e70	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+00b42e70	~CEngineWorldMap	CEngineWorldMap	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00b42ed0	SetWorld	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,CIDrawWorld *	1	yes	accepted									
 00b430a0	DeleteData	_global	__fastcall	void	1	void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\global_DeleteData_00b430a0.cpp
 00b43160	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b43160.cpp
@@ -41382,7 +41382,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b439c0	PeekLandscapeHeight	CEngineMap	__thiscall	float	3	CEngineMap *,long,long	1	yes	accepted									
 00b43b30	CStaticMapBankStateBlock::vfunc_0	CStaticMapBankStateBlock	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b43b90	List_InitializeNode_12Bytes	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\global_ListInitializeNode12Bytes_00b43b90.cpp
-00b43bb0	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CGuiControlTreePane_SortTreeRecursively_00b43bb0.cpp
+00b43bb0	~_List_base	std::_List_base<CEngineMap *, std::allocator<CEngineMap *>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CGuiControlTreePane_SortTreeRecursively_00b43bb0.cpp
 00b43bf0	Object_AllocateBuffer_b43bf0	_global	unknown	undefined	0		0	yes	review-low									
 00b43ca0	_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std::pair<unsigned_long,CCountedPointer<CFaction>_>_>	_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted									
 00b43d00	List_InitializeNode_12Bytes_Alt	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\global_ListInitializeNode12BytesAlt_00b43d00.cpp
@@ -48116,7 +48116,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca93f0	CBankFileAsyncData_SetImmContext	_global	unknown	undefined	0		0	yes	accepted									
 00ca9450	GetProperties	CMediaSample	unknown	undefined	0		0			discovered	gapscan							
 00ca9510	SetProperties	CMediaSample	unknown	undefined	0		0			discovered	gapscan							
-00ca9690	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+00ca9690	~CDynamicOutputPin	CDynamicOutputPin	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00ca96f0	Thunk_VirtualMethod_0	_global	unknown	undefined	0		0	unmeasured	accepted									
 00ca9700	Thunk_VirtualMethod_1	_global	unknown	undefined	0		0	unmeasured	accepted									
 00ca9710	Release	CDynamicOutputPin	unknown	undefined	0		0	unmeasured	accepted									
