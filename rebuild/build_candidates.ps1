@@ -17500,9 +17500,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004e34b2'
-        Module = 'std::vector<std::pair<long,CCharString>>'
-        Source = '00/4e/CActiveFile_OnReadFinished_004e34b2.cpp'
-        TestSource = '00/4e/CActiveFile_OnReadFinished_004e34b2_test.cpp'
+        Module = 'std::vector<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > >'
+        Source = '00/4e/stdvectorstdpairlongCCharStringstdallocatorstdpairlongCCharString_vector_004e34b2.cpp'
+        TestSource = '00/4e/stdvectorstdpairlongCCharStringstdallocatorstdpairlongCCharString_vector_004e34b2_test.cpp'
         PassPattern = 'AUTO_TINY_004e34b2_TEST PASS'
     }
     [pscustomobject]@{
@@ -48920,9 +48920,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dd782'
-        Module = '_global'
-        Source = '00/4d/DestroyrangestdallocatorNCreatureHitNotification_CFlash_004dd782.cpp'
-        TestSource = '00/4d/DestroyrangestdallocatorNCreatureHitNotification_CFlash_004dd782_test.cpp'
+        Module = 'std'
+        Source = '00/4d/std_destroyauxstdpairlongCCharString_004dd782.cpp'
+        TestSource = '00/4d/std_destroyauxstdpairlongCCharString_004dd782_test.cpp'
         PassPattern = 'DESTROY_RANGE_FLASH_OK'
     }
     [pscustomobject]@{
