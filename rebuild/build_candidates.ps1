@@ -283190,9 +283190,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00af9000'
-        Module = 'NParticleEngine::CPSCLight'
-        Source = '00/af/NParticleEngineCPSCLight_SmoothFadeValue_00af9000.cpp'
-        TestSource = '00/af/NParticleEngineCPSCLight_SmoothFadeValue_00af9000_test.cpp'
+        Module = 'NParticleEngine'
+        Source = '00/af/NParticleEngine_GFSmoothFadeValue_00af9000.cpp'
+        TestSource = '00/af/NParticleEngine_GFSmoothFadeValue_00af9000_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /W3'
         PassPattern = '00af9000_TEST PASS'
     }
