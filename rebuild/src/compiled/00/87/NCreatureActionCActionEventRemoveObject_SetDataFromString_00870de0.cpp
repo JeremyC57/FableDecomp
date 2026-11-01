@@ -9,7 +9,8 @@
 //   the `!= false` and `!!` spellings give `neg al ; sbb eax,eax ; neg eax` instead.
 #include "fable_string.h"
 
-bool __fastcall GetDataFromEventString(const CCharString& data, long index, CCharString* out);   // 0x00870C90
+namespace { bool __fastcall GetDataFromEventString(const CCharString& data, long index, CCharString& out); }   // 0x00870C90
+//   (Ego_r / FableWin ?GetDataFromEventString@?A0xaf422eae@@YI_NABVCCharString@@JAAV2@@Z: the file-static of its own TU)
 
 namespace NCreatureAction {
 struct CActionEventRemoveObject {
@@ -22,5 +23,5 @@ struct CActionEventRemoveObject {
 
 bool NCreatureAction::CActionEventRemoveObject::SetDataFromString(const CCharString& data)
 {
-    return GetDataFromEventString(data, 0, &Hand) ? true : false;
+    return GetDataFromEventString(data, 0, Hand) ? true : false;
 }
