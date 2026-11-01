@@ -233597,8 +233597,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006156e0'
         Module = 'CThingSearchTools'
-        Source = '00/61/CThingSearchTools_GetPFirstLeafThingCThingFilterAICreatureHasPrope_006156e0.cpp'
-        TestSource = '00/61/CThingSearchTools_GetPFirstLeafThingCThingFilterAICreatureHasPrope_006156e0_test.cpp'
+        Source = '00/61/CThingSearchTools_GetPFirstLeafThingCThingFilterHasTCCThingMarker_006156e0.cpp'
+        TestSource = '00/61/CThingSearchTools_GetPFirstLeafThingCThingFilterHasTCCThingMarker_006156e0_test.cpp'
         PassPattern = '006156e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -233632,8 +233632,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006d3fb0'
         Module = 'CThingSearchTools'
-        Source = '00/6d/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_006d3fb0.cpp'
-        TestSource = '00/6d/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_006d3fb0_test.cpp'
+        Source = '00/6d/CThingSearchTools_GetPFirstThingCThingFilterHasTCCThing_006d3fb0.cpp'
+        TestSource = '00/6d/CThingSearchTools_GetPFirstThingCThingFilterHasTCCThing_006d3fb0_test.cpp'
         PassPattern = '006d3fb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -233688,8 +233688,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007ee660'
         Module = 'CThingSearchTools'
-        Source = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasScriptNameconstCThi_007ee660.cpp'
-        TestSource = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasScriptNameconstCThi_007ee660_test.cpp'
+        Source = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasTCconstCThingVillage_007ee660.cpp'
+        TestSource = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasTCconstCThingVillage_007ee660_test.cpp'
         PassPattern = '007ee660_TEST PASS'
     }
     [pscustomobject]@{
@@ -233800,8 +233800,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0093f930'
         Module = 'CThingSearchTools'
-        Source = '00/93/CThingSearchTools_GetPBestThingCThingFilterHasDefGlobalIndexCThing_0093f930.cpp'
-        TestSource = '00/93/CThingSearchTools_GetPBestThingCThingFilterHasDefGlobalIndexCThing_0093f930_test.cpp'
+        Source = '00/93/CThingSearchTools_GetPBestThingCThingFilterIn2DRangeCThingCompareNearestCThing_0093f930.cpp'
+        TestSource = '00/93/CThingSearchTools_GetPBestThingCThingFilterIn2DRangeCThingCompareNearestCThing_0093f930_test.cpp'
         PassPattern = '0093f930_TEST PASS'
     }
     [pscustomobject]@{

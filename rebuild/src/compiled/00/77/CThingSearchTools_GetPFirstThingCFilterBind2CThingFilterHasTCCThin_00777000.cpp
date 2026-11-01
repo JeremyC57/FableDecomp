@@ -1,7 +1,8 @@
-// CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >, CThing>(const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >&, CThing**) -- first scan-visible thing passing both bound filters (byte twin of 0x00615750)
+// CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange >, CThing>(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange >&, CThing**) -- first scan-visible thing passing both bound filters (byte twin of 0x00615750)
 // Leaf: GetPFirstThing
+// Naming (naming wave 24): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2; wave 24: the six rows DECISIONS_W23_RESOLVED item 5 held out, re-identified from the filter addresses they call).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00777000, length 128 bytes (`ret 8`).
-// Callees: PeekAllThings() 0x0049C770, CThingFilter_HasTC::operator() 0x006A76A0 (manifest: CThingFilter_IsNot), CThingFilter_InMap::operator() 0x006A7780 (manifest: CThingFilter_In2DRange).
+// Callees: PeekAllThings() 0x0049C770, CThingFilter_IsNot::operator() (Identity, naming wave 24: was CThingFilter_HasTC; FableWin.pdb instantiates this template on CThingFilter_IsNot and the callee label names it) 0x006A76A0, CThingFilter_In3DRange::operator() (Identity, naming wave 24: was CThingFilter_InMap; FableWin.pdb instantiates this template on CThingFilter_In3DRange and the callee label names it) 0x006A7780 (manifest: CThingFilter_In2DRange).
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
@@ -55,26 +56,26 @@ struct CThingList {
 };
 
 
-namespace N_006a76a0 { struct CThingFilter_HasTC {
-    long Type;                                    // ETCInterfaceType
-    bool operator()(const CThing* thing) const;      // 0x006A76A0 (manifest: CThingFilter_IsNot)
-}; } using N_006a76a0::CThingFilter_HasTC;
-namespace N_006a7780 { struct CThingFilter_InMap {
-    long MapNumber;
-    bool operator()(const CThing* thing) const;      // 0x006A7780 (manifest: CThingFilter_In2DRange)
-}; } using N_006a7780::CThingFilter_InMap;
-template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
-    const A& First;
-    const B& Second;
-    CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing); }
+class CThingFilter_IsNot { public:
+    const void* Thing;                            // the excluded thing                                    // ETCInterfaceType
+    bool operator()(const CThing& thing) const;      // 0x006A76A0
 };
-template <class A, class B, class C> class CFilter_Bind3 { public:
-    const A& First;
-    const B& Second;
-    const C& Third;
-    CFilter_Bind3(const A& a, const B& b, const C& c) : First(a), Second(b), Third(c) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing) && Third(thing); }
+class CThingFilter_In3DRange { public:
+    long MapNumber;
+    bool operator()(const CThing& thing) const;      // 0x006A7780 (manifest: CThingFilter_In2DRange)
+};
+template <class A, class B> class CFilter_Bind2 { public:     // Ego_r.pdb: both filters held by pointer
+    const A* F1;
+    const B* F2;
+    CFilter_Bind2(const A& f1, const B& f2) : F1(&f1), F2(&f2) {}
+    template <class T> bool operator()(const T& thing) const { return (*F1)(thing) && (*F2)(thing); }
+};
+template <class A, class B, class C> class CFilter_Bind3 { public:     // Ego_r.pdb: the filters held by pointer
+    const A* F1;
+    const B* F2;
+    const C* F3;
+    CFilter_Bind3(const A& f1, const B& f2, const C& f3) : F1(&f1), F2(&f2), F3(&f3) {}
+    template <class T> bool operator()(const T& thing) const { return (*F1)(thing) && (*F2)(thing) && (*F3)(thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -94,7 +95,7 @@ bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** ou
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -111,7 +112,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -133,7 +134,7 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
         if ((*it)->IsIncludedInThingScans() && IsThingOfType<TThing>(*it))
         {
             TThing* candidate = (TThing*)*it;
-            if (candidate && filter(candidate))
+            if (candidate && filter(*candidate))
                 best = compare(best, candidate);
         }
     }
@@ -150,11 +151,11 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             best = compare(best, (TThing*)thing);
     }
     *out = best;
     return best != 0;
 }
 
-template bool CThingSearchToolsMethods::GetPFirstThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >, CThing >(const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >&, CThing**);
+template bool CThingSearchToolsMethods::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange >, CThing >(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange >&, CThing**);

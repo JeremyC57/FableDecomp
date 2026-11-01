@@ -1,7 +1,8 @@
-// CThingSearchTools::GetPBestThing<CThingFilter_HasDefGlobalIndex, CThingCompare_Nearest, CThing>(const CThingFilter_HasDefGlobalIndex&, const CThingCompare_Nearest&, CThing**) -- nearest scan-visible thing passing the filter
-// Leaf: GetPBestThing
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0093F930, length 124 bytes (`ret 0Ch`).
-// Callees: PeekAllThings() 0x0049C770, CThingFilter_HasDefGlobalIndex::operator() 0x006A76B0 (manifest: CThingFilter_In2DRange), CThingCompare_Nearest::operator()<CThing> 0x004A8D80.
+// CThingSearchTools::GetPFirstLeafThing<CThingFilter_HasTC, CThingMarker>(const CThingFilter_HasTC&, CThingMarker**) -- first scan-visible thing of type list 0xb passing the filter
+// Leaf: GetPFirstLeafThing
+// Naming (naming wave 24): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2; wave 24: the six rows DECISIONS_W23_RESOLVED item 5 held out, re-identified from the filter addresses they call).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x006156E0, length 112 bytes (`ret 8`).
+// Callees: PeekTypeList(long) 0x0049C780, CThingFilter_HasTC::operator() (Identity, naming wave 24: was CThingFilter_AICreatureHasProperty; FableWin.pdb instantiates this template on CThingFilter_HasTC and the callee label names it) 0x006A80A0 (the HasTC bitset test).
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
 // getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
 // ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
@@ -53,14 +54,13 @@ struct CThingList {
     iterator end() { return iterator(m_pHead); }
 };
 
+class CThingMarker : public CThing { public:
+    enum { ThingListType = 0xb };                // PeekTypeList index (CThingMarker's list, as the landed GetAllLeafThings rows)
+};
 
-namespace N_006a76b0 { struct CThingFilter_HasDefGlobalIndex {
-    unsigned short DefGlobalIndex;
-    bool operator()(const CThing* thing) const;      // 0x006A76B0 (manifest: CThingFilter_In2DRange)
-}; } using N_006a76b0::CThingFilter_HasDefGlobalIndex;
-class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
-    float X, Y, Z;
-    template <class T> T* operator()(T* best, T* candidate) const;
+class CThingFilter_HasTC { public:
+    long Type;                                    // ETCInterfaceType
+    bool operator()(const CThing& thing) const;      // 0x006A80A0 (the HasTC bitset test)
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -80,7 +80,7 @@ bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** ou
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -97,7 +97,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -119,7 +119,7 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
         if ((*it)->IsIncludedInThingScans() && IsThingOfType<TThing>(*it))
         {
             TThing* candidate = (TThing*)*it;
-            if (candidate && filter(candidate))
+            if (candidate && filter(*candidate))
                 best = compare(best, candidate);
         }
     }
@@ -136,11 +136,11 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             best = compare(best, (TThing*)thing);
     }
     *out = best;
     return best != 0;
 }
 
-template bool CThingSearchToolsMethods::GetPBestThing<CThingFilter_HasDefGlobalIndex, CThingCompare_Nearest, CThing >(const CThingFilter_HasDefGlobalIndex&, const CThingCompare_Nearest&, CThing**);
+template bool CThingSearchToolsMethods::GetPFirstLeafThing<CThingFilter_HasTC, CThingMarker >(const CThingFilter_HasTC&, CThingMarker**);

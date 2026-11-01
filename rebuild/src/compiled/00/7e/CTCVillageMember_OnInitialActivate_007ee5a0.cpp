@@ -98,7 +98,7 @@ void CTCVillageMember::OnInitialActivate()
         }
     }
     if (g_bCheckVillageMembers_013b86d8 && VillageUID == 0 && PDef && PDef->NeedsVillageToFunctionCorrectly) {
-        CThingVillage* village;
+        const CThingVillage* village;           // Ego_r / FableWin GetPFirstThing<HasTC, const CThingVillage> (naming wave 24)
         GetThingSearchTools().GetPFirstThing(CThingFilter_HasTC(0x22), &village);
     }
 }

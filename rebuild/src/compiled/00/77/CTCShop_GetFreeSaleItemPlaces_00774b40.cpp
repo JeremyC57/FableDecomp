@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00774B40, 274 bytes, `ret 8` (hidden result pointer + the bool).
 // Callees: vector<GoodsPlace>::erase(first, last) @ 0x00777A90 (manifest "Vector_Erase_CKeyCamera"), CTCShop::AddSaleItemPlacesFromThing(
 //   CThing*) @ 0x007748E0 (manifest "CTCGraphicAppearance_InitGoodsPlaces"), CTCBase::PeekWorld() const @ 0x00686A80,
-//   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>, CThing> @ 0x00777000 (landed
+//   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange>, CThing> @ 0x00777000 (landed
 //   with the HasTC/InMap label), vector<GoodsPlace>::push_back @ 0x00778210, vector<GoodsPlace> copy ctor @ 0x00777430
 //   (manifest "Vector_Construct_CKeyCamera"), free @ 0x00BFEA14. 0.2f inline (0x3E4CCCCD).
 // Layout: Ego_r.pdb CTCShop GoodsPlaces (vector<CTCShop::GoodsPlace>, 36-byte places, position first) +0x2C -> retail +0x28;
@@ -66,22 +66,25 @@ void CGoodsPlaceVector::push_back(const GoodsPlace& place)
         _M_insert_overflow(_M_finish, place, 1, true);
 }
 #pragma auto_inline(on)
+// Naming (naming wave 24): 0x00777000 is the const member template CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot,
+//   CThingFilter_In3DRange>, CThing> (its filter callees are IsNot 0x006A76A0 and In3DRange 0x006A7780; Ego_r + FableWin instantiate it);
+//   it was declared as a plain member over Bind2<IsNot, In2DRange>.
 class CThingFilter_IsNot { public:
-    CThing* Thing;
-    CThingFilter_IsNot(CThing* thing) : Thing(thing) {}
+    const CThing* Thing;
+    CThingFilter_IsNot(const CThing& thing) : Thing(&thing) {}
 };
-class CThingFilter_In2DRange { public:
+class CThingFilter_In3DRange { public:
     C3DVector Position;
     float     Range;
-    CThingFilter_In2DRange(const C3DVector& position, float range) : Position(position), Range(range) {}
+    CThingFilter_In3DRange(const C3DVector& position, float range) : Position(position), Range(range) {}
 };
-template <class A, class B> class CFilter_Bind2 { public:
-    const A* PA;
-    const B* PB;
-    CFilter_Bind2(const A& a, const B& b) : PA(&a), PB(&b) {}
+template <class A, class B> class CFilter_Bind2 { public:     // Ego_r.pdb: both filters held by pointer
+    const A* F1;
+    const B* F2;
+    CFilter_Bind2(const A& f1, const B& f2) : F1(&f1), F2(&f2) {}
 };
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>& filter, CThing** out);   // 0x00777000
+    template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out) const;   // 0x00777000 (<Bind2<IsNot, In3DRange>, CThing>)
 };
 class CWorld { public:
     unsigned char      _pad00[0x20];
@@ -114,8 +117,8 @@ CGoodsPlaceVector CTCShop::GetFreeSaleItemPlaces(bool includeOccupied)
     for (unsigned int i = 0; i < GoodsPlaces.size(); ++i) {
         if (!includeOccupied) {
             CThing* found;
-            if (PeekWorld().GetThingSearchTools()->GetPFirstThing(CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>(
-                    CThingFilter_IsNot(ParentThing), CThingFilter_In2DRange(GoodsPlaces[i].Position, 0.2f)), &found))
+            if (PeekWorld().GetThingSearchTools()->GetPFirstThing(CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In3DRange>(
+                    CThingFilter_IsNot(*ParentThing), CThingFilter_In3DRange(GoodsPlaces[i].Position, 0.2f)), &found))
                 continue;
         }
         result.push_back(GoodsPlaces[i]);
