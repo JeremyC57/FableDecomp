@@ -1,10 +1,12 @@
 // CCreatureActionBase::GetWorldMap() -- the world map of the world the acting creature lives in
-// Leaf: GetWorldMap@CCreatureActionBase_Methods
+// Leaf: ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ
 // Retail: Fable.exe @ 0x00692C10, 22 bytes; Ego_r.pdb ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ.
 // PCreature (+0x08, CIntelligentPointer<CThingCreatureBase>) -> CBaseIntelligentPointer::GetPItem 0x00A01B50, then the
 // thing's out-of-line world getter 0x004C7AA0 (`[g_pThingManager 0x013B8A1C]+0x24`, CThing::GetWorld; manifest name
 // CViewBase::GetDisplayEngine is ICF-propagated), then CWorld::GetWorldMap, virtual slot 12 (+0x30), as a tail jump.
+#define CCreatureActionBase CCreatureActionBaseFields
 #include "engine/CCreatureActionBase.h"
+#undef CCreatureActionBase
 class CBaseObject;
 class CWorldMap;
 class CWorld {
@@ -14,9 +16,11 @@ public:
     virtual void _s08(); virtual void _s09(); virtual void _s10(); virtual void _s11();
     virtual CWorldMap& GetWorldMap();                    // slot 12 (+0x30)
 };
+class CCreatureActionBase;
 class CThing {
-public:
-    CWorld& GetWorld();                                  // 0x004C7AA0 (out of line)
+    friend class CCreatureActionBase;                    // Access: friend (PDB IAE; retail-consistent, not attested)
+protected:
+    CWorld& GetWorld();                                  // 0x004C7AA0 (out of line; Ego_r.pdb protected)
 };
 class CThingCreatureBase : public CThing { };
 class CBaseObjectPointer;
@@ -30,10 +34,11 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* operator->() const { return (T*)GetPItem(); }
 };
-struct CCreatureActionBase_Methods : CCreatureActionBase {
-    CWorldMap& GetWorldMap();
+class CCreatureActionBase : public CCreatureActionBaseFields {
+protected:
+    CWorldMap& GetWorldMap();                            // 0x00692C10 (Ego_r.pdb ?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ)
 };
-CWorldMap& CCreatureActionBase_Methods::GetWorldMap()
+CWorldMap& CCreatureActionBase::GetWorldMap()
 {
     return (*(CIntelligentPointer<CThingCreatureBase>*)PCreature)->GetWorld().GetWorldMap();
 }

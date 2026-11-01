@@ -8,8 +8,8 @@
 //   GetHiddenCoverPos 0x00970930, CanSeeTarget 0x00970790, RefreshCoverList 0x009710D0, IsStillRunnable 0x00979E90,
 //   AttackTargetThing 0x00979F70, MoveFromCoverToFiringPosition 0x0097A1B0, CThing::GetPos 0x004C73D0,
 //   CCreatureAction_ProjectileCrouch 0x008B8310 / ~CCombatActionBase 0x0062E900, AIAction_PerformActionAndWait 0x0097DB70,
-//   CAIStateGroupBase::GetWorld 0x008FCFC0 / CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE 0x006961F0 (__fastcall),
-//   CIntelligentPointer<const CThing>(CThing*) 0x0056C860 / (const CIntelligentPointer<const CThing>&) 0x0091F990 / dtor
+//   CAIStateGroupBase::GetWorld 0x008FCFC0 / CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> > 0x006961F0 (__fastcall, ICF-folded),
+//   CIntelligentPointer<const CThing>(CThing*) 0x0056C860 / (const CIntelligentPointer<CThingCreatureBase>&) 0x0091F990 / dtor
 //   0x00A01C10, CCharString 0x0099EBF0 / ~ 0x0099EAE0, CCreatureAction_PlayAnimation 0x008424F0 / ~ 0x00693EF0,
 //   AIAction_PerformActionTargetFaceAndWait 0x0097DCB0, Terminate 0x008FCF40. Constant 1.8f @ 0x01298868.
 // Layout: Ego_r.pdb CAIStateGroup_CreatureUseCoverBase (byte-packed): PTargetThing +0x14, PCoverThing +0x1f, cover list
@@ -75,15 +75,17 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
+class CThingCreatureBase;
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { };   // CIntelligentPointer<T> (no members of its own)
 namespace N_0056c860 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(CThing* item);                         // 0x0056C860
-    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other);   // 0x0091F990
+    template <class U> CIntelligentPointerConstThing(const CIntelligentPointer<U>& other);   // 0x0091F990 (from CIntelligentPointer<CThingCreatureBase>)
 }; } using N_0056c860::CIntelligentPointerConstThing;
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing>
     virtual void v00();
 };
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointerConstThing* pointer);   // 0x006961F0
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x006961F0 (ICF: the identical IS_THING_ALIVE<T> instantiations share one body)
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (((CThing*)p.GetPItem()) != 0) {
@@ -148,7 +150,7 @@ protected:
 
 struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
 {
-    CIntelligentPointerConstThing PTargetThing; // +0x14
+    CIntelligentPointer<CThingCreatureBase> PTargetThing;   // +0x14 (Ego_r CAIStateGroup_EnemyCreatureBase +20)
     unsigned char _pad1c[3];                    // +0x1c
     CIntelligentPointerThing PCoverThing;       // +0x1f
     unsigned char _pad27;                       // +0x27
@@ -193,7 +195,7 @@ struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
 
 void CAIStateGroup_CreatureTakeCover::Update()
 {
-    if (!IS_THING_ALIVE(PTargetThing)) {
+    if (!IS_THING_ALIVE(static_cast<const CBaseIntelligentPointer&>(PTargetThing))) {
         Terminate();
         return;
     }
@@ -254,7 +256,7 @@ void CAIStateGroup_CreatureTakeCover::Update()
         DuckBehindCover(true);
     } else {
         unsigned long attacks = Random() % 3 + 1;
-        if (!IS_THING_ALIVE(&PTargetThing) || !IS_THING_ALIVE(((CThing*)PCoverThing.GetPItem()))) {
+        if (!IS_THING_ALIVE<CIntelligentPointer<CThingCreatureBase> >(PTargetThing) || !IS_THING_ALIVE(((CThing*)PCoverThing.GetPItem()))) {
             Terminate();
             return;
         }

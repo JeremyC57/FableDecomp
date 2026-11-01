@@ -1,4 +1,4 @@
-// CActionParamCountedPointer_00c5eef0::~CActionParamCountedPointer_00c5eef0() -- EH-framed destructor: stores the vtable (0x012B9174), calls its own virtual Release (slot 5, devirtualised through the known vtable slot @ 0x012B9188), then the inline base destructor restores the base vtable (0x012B5868)
+// CActionParamCountedPointer_00c5eef0::~CActionParamCountedPointer_00c5eef0() -- EH-framed destructor: stores the vtable (0x012B9174), calls its own virtual ReleaseBuffer (slot 5, devirtualised through the known vtable slot @ 0x012B9188), then the inline base destructor restores the base vtable (0x012B5868)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C5EEF0, oracle length 71 bytes. Built under /EHsc.
 // Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; mov dword ptr [esi],offset vtable ; mov dword ptr [esp+10h],0 ; call dword ptr [vtable+0x14] ; mov ecx,[esp+8] ; mov dword ptr [esi],offset base vtable ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // A virtual call on `this` inside a destructor is devirtualised by VC7.1 to a direct call; through
@@ -16,8 +16,8 @@ struct CActionParamCountedPointer_00c5eef0 : CActionParamBase_00c5eef0 {    // v
     virtual void v02();
     virtual void v03();
     virtual void v04();
-    virtual void Release();                // slot 5
-    __forceinline void DoRelease() { Release(); }   // keeps the call virtual: written directly in the destructor it would be a direct call
+    virtual void ReleaseBuffer();          // slot 5 (0x00C5EE50)
+    __forceinline void DoRelease() { ReleaseBuffer(); }   // keeps the call virtual: written directly in the destructor it would be a direct call
     ~CActionParamCountedPointer_00c5eef0();
 };
 

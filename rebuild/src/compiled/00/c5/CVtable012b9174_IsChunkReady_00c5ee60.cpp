@@ -7,12 +7,12 @@
 // Shape: one zero register (`xor eax,eax`) for the flag compare and the two clears; the `>=` test falls through.
 // The silent (null) output of the audio module (vtable 0x012B9174, no RTTI; ctor 0x00C5EEC0 landed as CVtable_012b9174,
 // which nulls +0x604): it plays nothing and paces the mixer by counting blocks. Slots parallel the waveOut output
-// 0x012B8FCC: 3 Initialize(channels, bytes) 0x00C5EE30 (+0x604 = bytes >> 7, clears +0x608 / +0x60C), 5 Close 0x00C5EE50
+// 0x012B8FCC: 3 Initialize(channels, bytes) 0x00C5EE30 (+0x604 = bytes >> 7, clears +0x608 / +0x60C), 5 ReleaseBuffer 0x00C5EE50
 // (+0x604 = 0), 6 the chunk-ready test 0x00C5EE60, 7 the chunk pointer 0x00C5EEA0, 8 the submit 0x00C5EEB0.
 class CVtable_012b9174 {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05();
+    virtual void ReleaseBuffer();                   // slot 5 (0x00C5EE50)
     virtual bool IsChunkReady();                    // slot 6 (0x00C5EE60)
     virtual void* LockChunk();                      // slot 7 (0x00C5EEA0)
     virtual void WriteBuffer(long unused);          // slot 8 (0x00C5EEB0)
