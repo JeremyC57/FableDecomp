@@ -1,9 +1,11 @@
 // CTCAssassinRush::Reset() -- reset the rush: remember the start position, forget the collided thing, clear the flags, convert the def's trail and rush delays to frames, take the dash distance for the spell level and kill both trail effects if alive
 // Leaf: ?Reset@CTCAssassinRush
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A9B70, 267 bytes (+5 int3 padding), `ret`.
 // Callees: CThing::GetPos() const 0x004C73D0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
 //   GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), __ftol2 0x00BFEA70,
-//   CThing::Kill(bool) 0x004C9B80. Global g_framesPerSecond 0x01375550.
+//   CThing::Kill(bool) 0x004C9B80. Global CMainGameComponent::GetConstantFPS() 0x01375550.
 // Layout (pack(1): Ego_r.pdb CTCAssassinRush puts C3DVectors at odd offsets): PDef +0x14, AssassinTrail +0x18,
 //   AssassinDisplacementTrail +0x20, TrailDelay +0x28, StartTrailDelay +0x2C, PositionStartedFrom +0x2D, CollidedThing
 //   +0x39, StartedMoving +0x41, JustReleased +0x42, DirectionOverride +0x48 (PDB = retail up to here); after the
@@ -14,7 +16,12 @@
 //   (0) temporary (`item = other.GetPItem(); SetPItem(item);`, the temporary's out-of-line base destructor after);
 //   the start position is the implicit C3DVector copy; both trails go through an inline IS_THING_ALIVE then
 //   `GetPItem()->Kill(true)`.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class C3DVector { public: float X, Y, Z; };
 class CBaseObject;
 class CThing {
@@ -106,8 +113,8 @@ void CTCAssassinRush::Reset()
     JustReleased = true;
     DirectionOverride = false;
     IsZTargetting = false;
-    TrailDelay = (long)(g_framesPerSecond * PDef->TrailDelaySecs);
-    RushDelayFrameCount = (long)(g_framesPerSecond * PDef->RushDelay);
+    TrailDelay = (long)(CMainGameComponent::GetConstantFPS() * PDef->TrailDelaySecs);
+    RushDelayFrameCount = (long)(CMainGameComponent::GetConstantFPS() * PDef->RushDelay);
     DashDistance = PDef->DashDistance[SpellLevel];
     if (IS_THING_ALIVE(AssassinTrail))
         ((CThing*)AssassinTrail.GetPItem())->Kill(true);

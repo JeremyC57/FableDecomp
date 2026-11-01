@@ -1,5 +1,7 @@
 // CTCTavernGameCardPairs::CardsMainGame() -- the pairs main loop: flip back or clear a mismatched selected pair, run the timed-game clock, and once every card is face up and settled play the win/lose sound and show the round-over OK message (state 0x18)
 // Leaf: ?CardsMainGame@CTCTavernGameCardPairs
+// Naming wave 18: the global stand-in g_FrameRate_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D62D0, 656 bytes (+ int3 padding), plain `ret`.
 // Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0; CTCTavernGame::PlaySound 0x005EA950; CCard::Turn 0x008F0620;
 //   CTCTavernGame::GetTavernGameDef 0x005EA000 / GetText 0x005E9E70 / SetStateAfterOK 0x005EB080. Globals: the frame rate
@@ -57,7 +59,12 @@ struct CCardVector {
     CCard** _M_finish;
     CCard** _M_end_of_storage;
 };
-extern long g_FrameRate_01375550;               // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTCTavernGameCardPairs {
     virtual void v00();
@@ -116,7 +123,7 @@ void CTCTavernGameCardPairs::CardsMainGame()
         switch (GameType) {
         case 1:
             if (GameStarted)
-                Counter += 1.0f / (float)g_FrameRate_01375550;
+                Counter += 1.0f / (float)CMainGameComponent::GetConstantFPS();
             break;
         }
     }

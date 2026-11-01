@@ -1,4 +1,6 @@
 // Retry 10b (B-12 sweep): the random delay is bound to a const REFERENCE (`const unsigned long& extraSeconds = Random(120);`, an address-taken temporary): the `% 120` div stays before the GFGetCurrentFrame call with the remainder in edi and the frame rate in ebx (a value local lets VC7.1 sink the div below the call).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // CAIStateGroup_LookAtInterestingThings::OnReplace() -- schedule the next look 240..359 seconds from now and let the idle scheduler choose a new idle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009191B0, length 140 bytes (+ int3 padding). Vtable slot 10 of
 // CAIStateGroup_LookAtInterestingThings (0x01289BBC).
@@ -6,7 +8,7 @@
 // @ 0x0049D870 (__fastcall), CVectorMap::LowerBound @ 0x0040F020 (inlined interface lookup, type 0xd3 = the idle
 // scheduler), CTCIdleScheduler::ChooseNewIdle @ 0x00801A50. Global: the frame-rate long @ 0x01375550.
 //
-// Shape: `FrameToLook = GFGetCurrentFrame() + (Random(120) + 240) * g_framesPerSecond` -- the right operand (the
+// Shape: `FrameToLook = GFGetCurrentFrame() + (Random(120) + 240) * CMainGameComponent::GetConstantFPS()` -- the right operand (the
 // inlined seed step `seed = GFROR13(seed*0x24A1 + 0x24DF)`, `% 120` as an unsigned `div` by a constant range so
 // no zero test, the frame rate held in ebx) is evaluated before the frame call. Then the out-parameter
 // GetInterface whose result guards the ChooseNewIdle call (component loaded straight into ecx).
@@ -20,7 +22,12 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                        // 0x0049D870
 long __fastcall GFROR13(unsigned long);      // 0x00497890
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -91,7 +98,7 @@ struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBase {
 void CAIStateGroup_LookAtInterestingThings::OnReplace()
 {
     const unsigned long& extraSeconds = Random(120);
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     FrameToLook = CWorld::GetFrame() + (extraSeconds + 240) * framesPerSecond;
     CTCIdleScheduler* scheduler;
     if (PBrain->PCreature->GetInterface(&scheduler, 0xd3))

@@ -1,4 +1,6 @@
 // CCreatureActionBase::GetFrameUpdateTime() const -- the creature's animation speed multiplier times one frame (1 / frame rate)
+// Naming wave 18: the global stand-in g_frameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692BC0, length 36 bytes. Vtable slot 62 of the CCreatureActionBase family
 // (rtti-vtables.tsv lists it through CCreatureAction_StartSneaking, 0x01258DFC).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThingCreatureBase::GetAnimationSpeedMultiplier
@@ -26,7 +28,12 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-extern long g_frameRate;                    // 0x01375550: frames per second (integer)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 // engine/CCreatureActionBase.h exists but is not used: it is the PDB build's flat pack(1) layout (0xb4 bytes, three
 // containers 4 bytes wider than retail's 0xa8, no vtable or methods); the retail `this` is modelled locally.
@@ -39,6 +46,6 @@ class CCreatureActionBase { public:
 
 float CCreatureActionBase::GetFrameUpdateTime() const
 {
-    float frameTime = 1.0f / (float)g_frameRate;
+    float frameTime = 1.0f / (float)CMainGameComponent::GetConstantFPS();
     return PCreature.GetPItem()->GetAnimationSpeedMultiplier() * frameTime;
 }

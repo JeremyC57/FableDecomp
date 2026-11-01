@@ -1,5 +1,7 @@
 // NCreatureMode::CModeScorpionKingExhausted::OnActivate() -- the scorpion king tires: stand-mode activation, clear the type-9 component's active flag, recovery countdown = the battle def's exhaustion time in frames, re-apply the weapon filter, switch its physics to mode 8, clear thing flag bit 0 at +0xbc and, when no action is running, reset the creature's current action
 // Leaf: OnActivate
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DA2E0, 195 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate 0x008621A0 and CTCCreatureModeManager::CModeBase::OnActivate 0x0073AAC0 (both qualified);
 // CDefClassBase::GetSubDef(CDefPointer<const CScorpionKingBattleDef>*) 0x008C5A50 (manifest "GetSubDef<CAICreatureWillPowerIndicatorDef>"
@@ -125,7 +127,12 @@ struct CCreatureController {               // what PCreature's slot 28 is called
     virtual void ResetCurrentAction(bool immediately);   // slot 28 (+0x70)
 };
 
-extern long g_framesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
     virtual void v00();
@@ -167,7 +174,7 @@ void CModeScorpionKingExhausted::OnActivate()
     if (ParentThing->HasTC(9))
         flag = ParentThing->GetTC<CTCActiveFlag>(9);
     flag->m_active = false;
-    RecoveryCount = (long)(exhaustedTime * g_framesPerSecond);
+    RecoveryCount = (long)(exhaustedTime * CMainGameComponent::GetConstantFPS());
     CModeBase::OnActivate();
     ParentThing->PPhysics->SetPhysicsMode(8);
     CThingCreatureBase* parent = ParentThing;

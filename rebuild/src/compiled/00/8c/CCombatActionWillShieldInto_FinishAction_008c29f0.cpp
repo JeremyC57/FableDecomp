@@ -1,5 +1,7 @@
 // CCombatAction_WillShieldInto::FinishAction() -- base FinishAction, then hand the creature a temporary CCreatureAction_CastPhysicalShieldSpell(creature, 2, true, "", shield frames, ShieldHealth) as its current action
 // Leaf: ?FinishAction@CCombatAction_WillShieldInto
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C29F0, 144-byte slot (143 bytes of code). FinishAction is vtable slot 4.
 // Callees: __ftol2 @ 0x00BFEA70, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, a named local
 //          fetched before the base call), CCombatActionBase::FinishAction @ 0x00859A20 (direct base call),
@@ -34,7 +36,12 @@ struct CCreatureAction_CastPhysicalShieldSpell_Retail {  // the retail temporary
     operator const CCreatureActionBase&() const { return *reinterpret_cast<const CCreatureActionBase*>(this); }
 };
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -62,7 +69,7 @@ void CCombatAction_WillShieldInto::FinishAction()
     if (*(const long*)&ShieldUpTime == 0xBF800000)
         shieldFrames = -1;
     else
-        shieldFrames = (long)(ShieldUpTime * g_framesPerSecond);
+        shieldFrames = (long)(ShieldUpTime * CMainGameComponent::GetConstantFPS());
     CThingCreatureBase_Calls* creature = PCreature.GetPItem();
     CCombatActionBase::FinishAction();
     CCharString animName("", -1);

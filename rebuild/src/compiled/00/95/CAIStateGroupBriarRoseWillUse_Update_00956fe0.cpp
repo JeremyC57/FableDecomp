@@ -1,4 +1,6 @@
 // CAIStateGroup_BriarRoseWillUse::Update() -- use Briar Rose's will on a live enemy: force-push it when close, shoot far into it otherwise; then schedule the next use
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00956FE0, length 389 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, Terminate @ 0x008FCF40 (manifest "CXMVPlaybackInfo"),
 //          CDefClassBase::GetSubDef<CBriarRoseDef> @ 0x008E7790 (landed; same-TU stand-in below), the def's slot 1 release,
@@ -106,7 +108,12 @@ class CAIBrain { public:
 };
 
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
@@ -155,7 +162,7 @@ void CAIStateGroupBriarRoseWillUseMethods::Update()
     }
     {
         CWorld* world = &GetWorld();
-        long fps = g_FramesPerSecond;
+        long fps = CMainGameComponent::GetConstantFPS();
         NextWillUseFrame = (long)((float)world->GetFrame() + (float)fps * interval);
     }
     Terminate();

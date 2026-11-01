@@ -1,16 +1,23 @@
 // CAIStateGroup_MinionReactToAlert::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&)
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F0D0, length 51 bytes (+ int3 padding). Vtable slot 1
 // of CAIStateGroup_MinionReactToAlert (0x01289070).
 // Callees: CAIStateGroupBase::Initialise @ 0x008FCEC0 (all five arguments forwarded). Global: the frame-rate
 // long @ 0x01375550.
-// Shape: base Initialise, then `Timer = g_FramesPerSecond * 2` (two seconds in frames: `lea eax,[edx+edx]`).
+// Shape: base Initialise, then `Timer = CMainGameComponent::GetConstantFPS() * 2` (two seconds in frames: `lea eax,[edx+edx]`).
 // Members from struct_layouts_egor.tsv (LastAlertReactedTo +0x14, Timer +0x18, 28 bytes); no engine header.
 class CAIBrain;
 class CThingAICreature;
 class CCharString;
 typedef long EScriptAIPriority;
 
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -27,5 +34,5 @@ struct CAIStateGroup_MinionReactToAlert : CAIStateGroupBase {
 void CAIStateGroup_MinionReactToAlert::Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name)
 {
     CAIStateGroupBase::Initialise(brain, creature, priority, scriptPriority, name);
-    Timer = g_FramesPerSecond * 2;
+    Timer = CMainGameComponent::GetConstantFPS() * 2;
 }

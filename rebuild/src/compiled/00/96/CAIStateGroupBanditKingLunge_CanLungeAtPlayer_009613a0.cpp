@@ -9,6 +9,8 @@
 // Layout: CAIStateGroup_BanditKingLunge.h (TimeOfLastLunge +0x1c); the boss def's per-phase vector at +0x40, the
 // lunge interval at +0x50 (seconds, scaled by the frame rate).
 // Leaf: CanLungeAtPlayer@CAIStateGroup_BanditKingLunge
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CThing;
@@ -145,7 +147,12 @@ namespace std {
 template<class T> inline const T& min(const T& left, const T& right) { return right < left ? right : left; }
 }
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 struct CAIStateGroup_BanditKingLunge : CAIStateGroupBase {
@@ -161,7 +168,7 @@ bool CAIStateGroup_BanditKingLunge::CanLungeAtPlayer(CThing* player)
         long hits = boss->Def->PhaseHits[std::min(boss->GetBossPhase(), (long)boss->Def->PhaseHits.size() - 1)];
         if (hits == 0) {
             if (TimeOfLastLunge) {
-                long interval = (long)(g_framesPerSecond * boss->Def->LungeIntervalSeconds);
+                long interval = (long)(CMainGameComponent::GetConstantFPS() * boss->Def->LungeIntervalSeconds);
                 if (((CWorld*)GetPWorld())->GetFrame() - TimeOfLastLunge > interval)
                     return true;
             }

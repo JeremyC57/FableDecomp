@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionReactToCriminal::IsRunnable() -- refresh the hero and home pointers (an open, non-stall shopkeeper's home is its work building), stay out while the home holds a living thing with interface 0xAB, then defer to IsValid when the creature is aware of the hero or left the group less than ten seconds ago
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00931010, length 485 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
 // CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @
@@ -7,7 +9,7 @@
 // (out of line the second time), IsAwareOfThingImplementation @ 0x00864700 (anonymous-namespace register call; retail
 // passes the creature in ecx, the hero in edx and one pushed false), CWorld::GetWorldFrame @ 0x0049D870 (static),
 // IsValid @ 0x00930EE0 (this class).
-// Globals: g_framesPerSecond @ 0x01375550; 10.0f @ 0x01291DF0; vtables CIntelligentPointer<CThingPlayerCreature>
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550; 10.0f @ 0x01291DF0; vtables CIntelligentPointer<CThingPlayerCreature>
 // 0x01231C4C, CIntelligentPointer<CThingBuilding> 0x01244344.
 // Shape: each building read goes through a named creature local (`lea ecx,[eax+168h]` rather than `add ecx`); the
 // awareness test names the creature before the call so it is loaded first (edi); fps is a named long local copied to
@@ -86,7 +88,12 @@ class CPlayer { public:
 class CWorld { public:
     static long __fastcall GetFrame();     // 0x0049D870
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCShop { public:
     unsigned char _pad0[0x0c];
@@ -145,7 +152,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
         if (IsAwareOfThingImplementation(me, ((CThing*)PHero.GetPItem()), false))
             return IsValid();
     }
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     if ((float)(CWorld::GetFrame() - FrameLastLeftStategroup) < fps * 10.0f)
         return IsValid();
     return false;

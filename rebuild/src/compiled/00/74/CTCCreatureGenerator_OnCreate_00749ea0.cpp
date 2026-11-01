@@ -1,4 +1,6 @@
 // CTCCreatureGenerator::OnCreate() -- fetches the generator def from the parent thing's def class; with a def, the random effect / sound countdowns are set to its intervals in frames; the activation frame starts one self-trigger reset interval in the past; the parent thing becomes level-persistent
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749EA0, length 95 bytes.
 // Callees: CDefClassBase::GetSubDef<CCreatureGeneratorDef>(CDefPointer<CCreatureGeneratorDef const>&) @
 // 0x0074D160 (landed). Global: the frame-rate long @ 0x01375550 (15).
@@ -40,7 +42,12 @@ class CThing { public:
     unsigned char  PausedDuringCutscenes         : 1;
 };
 
-extern long g_FramesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCCreatureGenerator { public:
     void*                            __vftable;             // +0x00
@@ -61,9 +68,9 @@ void CTCCreatureGenerator::OnCreate()
 {
     ParentThing->DefClass->GetSubDef(PDef);
     if (PDef.Object) {
-        FramesUntilRandomEffect = PDef.Object->SecondsBetweenEffects * g_FramesPerSecond;
-        FramesUntilRandomSoundEffect = PDef.Object->SecondsBetweenSoundEffects * g_FramesPerSecond;
+        FramesUntilRandomEffect = PDef.Object->SecondsBetweenEffects * CMainGameComponent::GetConstantFPS();
+        FramesUntilRandomSoundEffect = PDef.Object->SecondsBetweenSoundEffects * CMainGameComponent::GetConstantFPS();
     }
-    ActivationFrame = -(SelfTriggerResetInterval * g_FramesPerSecond);
+    ActivationFrame = -(SelfTriggerResetInterval * CMainGameComponent::GetConstantFPS());
     ParentThing->LevelPersistent = 1;
 }

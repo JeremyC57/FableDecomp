@@ -1,4 +1,6 @@
 // CTCHeroSpecialMovement::IsAvailableForSprint() const -- sprinting is allowed while a sprint still has frames left, or when enough frames have recharged for a new one
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E0700, 69 bytes (+11 int3 padding).
 // Globals: frames-per-second long @ 0x01375550 (15), the sprint-enable byte @ 0x013B86C5, 0.0f @ 0x0122DEDC.
 //
@@ -8,7 +10,12 @@
 // Layout: Sprinting +0x0C, SprintFramesRemaining +0x10, PHeroSpecialMovementDef +0x18 (PDB = retail for this class);
 // the def's +0x2C float is the sprint recharge time in seconds (named descriptively).
 
-extern long g_FramesPerSecond;                 // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern bool g_SprintEnabled;                   // 0x013B86C5
 
 class CHeroSpecialMovementDef { public:
@@ -31,7 +38,7 @@ struct CTCHeroSpecialMovement_Retail {
 
 bool CTCHeroSpecialMovement_Retail::IsAvailableForSprint() const
 {
-    float minimumFrames = g_FramesPerSecond * PHeroSpecialMovementDef->MinSprintRechargeSeconds;
+    float minimumFrames = CMainGameComponent::GetConstantFPS() * PHeroSpecialMovementDef->MinSprintRechargeSeconds;
     if (!g_SprintEnabled)
         return false;
     if (Sprinting && SprintFramesRemaining > 0.0f)

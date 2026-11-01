@@ -1,5 +1,7 @@
 // CTCCombat::UpdateCombatTimers() -- per-frame combat bookkeeping: track action/strike state, run the combo and handedness grace countdowns, the unarmed idle timer, the block-counter timer, every combat ability's timers, and the block hold/blocking counters
 // Leaf: UpdateCombatTimers
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x007339E0, 400 bytes, `ret`.
 // Callees: CThingCreatureBase::IsPerformingAnyAction 0x006622A0, the current action's slot 15 (+0x3C, is-strike),
 // CThingCreatureBase::SetLastActionHandedness 0x006619F0, the block-hold expiry 0x007338A0 (labelled
@@ -14,7 +16,12 @@
 // `_M_increment` on the node pointer, end re-read from the header each pass; the ability data pointer is a named local read at
 // the top of each pass (retail loads it before the timer test).
 extern long g_UnarmedCombatIdleFrames;                     // 0x013BAD40
-extern long g_framesPerSecond;                             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -120,7 +127,7 @@ void CTCCombat::UpdateCombatTimers()
         if (node->Timer >= 0)
             --node->Timer;
         if (node->Cooldown >= 0 && --node->Cooldown == -1)
-            node->Timer = (long)(g_framesPerSecond * data->CooldownSeconds);
+            node->Timer = (long)(CMainGameComponent::GetConstantFPS() * data->CooldownSeconds);
     }
     if (BlockHoldTimer == 0)
         OnBlockHoldExpired();

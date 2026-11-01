@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionSitOnSeat::OnReplace() -- base OnReplace, then sit down 80 seconds from now.
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F710, length 34 bytes (+ int3 padding). Vtable slot 10
 // of CAIStateGroup_MinionSitOnSeat (0x0128CFBC).
 // Callees: CAIStateGroup_UsesSeat::OnReplace @ 0x009387F0, GFGetCurrentFrame @ 0x0049D870 (__fastcall, no
@@ -14,7 +16,12 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x10];                   // +0x4..+0x13
 };
 
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -37,6 +44,6 @@ struct CAIStateGroup_MinionSitOnSeat : CAIStateGroup_MinionSitOnSeatBase {
 void CAIStateGroup_MinionSitOnSeat::OnReplace()
 {
     CAIStateGroup_UsesSeat::OnReplace();
-    long framesPerSecond = g_FramesPerSecond;   // read before the frame call (kept in edi across it)
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();   // read before the frame call (kept in edi across it)
     FrameToSitDown = CWorld::GetFrame() + framesPerSecond * 80;
 }

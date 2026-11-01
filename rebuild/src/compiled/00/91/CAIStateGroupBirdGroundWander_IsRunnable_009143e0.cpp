@@ -1,4 +1,6 @@
 // CAIStateGroup_BirdGroundWander::IsRunnable() -- runnable when the creature's mode component is in the ground-wander mode and the bird never walked or finished walking more than two seconds ago
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009143E0, length 126 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 7 =
 // bitset word 0 bit 7 -> `mov cl,[eax+20h] ; test cl,cl ; jns`), the component's mode getter @ 0x006CB6A0
@@ -12,11 +14,16 @@
 // Model: local (engine/CAIStateGroup_BirdGroundWander.h agrees: FrameLastFinishedWalking +0x14, but flattens the base).
 class CTCBase;
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern long g_groundWanderMode;                 // 0x0129CBA4
 
 class CWorld { public:
-    static long GetFramesPerSecond() { return g_framesPerSecond; }
+    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };

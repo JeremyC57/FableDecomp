@@ -1,4 +1,6 @@
 // CAIStateGroup_WhisperPotionCombat::IsRunnableLeaf() -- always runnable in boss phase 1; in phase 2 only once 10 s have passed since the last run: restamp the frame (plus a random 0..5 s delay), and run when the creature is within the combat-type range of the target and a valid jump position is found
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096AAD0, length 330 bytes (plain `ret`, virtual, bool).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 173 = bit 13 of the bitset dword at +0x34),
 //          CTCBoss::GetBossPhase @ 0x007AED10 (manifest "CWorld::DrawGetEnvironment" is propagated), CAIStateGroupBase::
@@ -86,7 +88,12 @@ class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 long __fastcall GFROR13(unsigned long value);  // 0x00497890
-extern long g_FrameRate;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -129,7 +136,7 @@ struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
 __forceinline bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
 {
     FrameLastRun = GetPWorld()->GetFrame();
-    long rate = g_FrameRate;
+    long rate = CMainGameComponent::GetConstantFPS();
     unsigned long* seed = GetPWorld()->GetPRandomSeed();
     FrameLastRun += WorldRandomRange(*seed, rate * 5);
     CThing* creature = PBrain->PCreature;
@@ -154,7 +161,7 @@ bool CAIStateGroup_WhisperPotionCombat::IsRunnableLeaf()
         return false;
     }
     long delta = GetPWorld()->GetFrame() - FrameLastRun;
-    if ((float)delta > (float)g_FrameRate * 10.0f) {
+    if ((float)delta > (float)CMainGameComponent::GetConstantFPS() * 10.0f) {
         if (RestampAndCheckRange()) {
             if (FindValidCombatPositions(&Jump_to_pos))
                 return true;

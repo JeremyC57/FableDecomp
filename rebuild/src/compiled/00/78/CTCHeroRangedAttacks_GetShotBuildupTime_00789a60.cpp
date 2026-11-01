@@ -1,5 +1,7 @@
 // CTCHeroRangedAttacks::GetShotBuildupTime() const -- seconds the hero has spent aiming the current shot (aiming timer frames / frames per second)
 // Leaf: ?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00789A60, 10 bytes, plain `ret` (float on the x87 stack).
 // Identity: Ego_r.pdb `?GetShotBuildupTime@CTCHeroRangedAttacks@@QBEMXZ`, by the donor TU order (GetProjectileTargetingZoomParameter
 //   0x790A30, GetShotBuildupTime 0x790A40, GetPullBackAmount 0x790A60, GetShotAccuracyFraction 0x790A70; retail 0x00789A50 reads
@@ -8,9 +10,14 @@
 //   was propagated (CTCTalk +0x18 is its Attitude enum).
 // Layout: as the landed CTCHeroRangedAttacks ctor 0x00789BB0 (Ego_r.pdb CTCHeroRangedAttacks, 0x4C bytes, no containers so
 //   the PDB offsets hold in retail; no engine header exists for the class).
-// Globals: g_framesPerSecond 0x01375550 (long, 15).
+// Globals: CMainGameComponent::GetConstantFPS() 0x01375550 (long, 15).
 // Shape: a long divided as float by a long global: `fild [this+18h] ; fidiv [g]`.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CThing;
 class CThingCreatureBase;
 class CHeroCombatDef;
@@ -48,5 +55,5 @@ class CTCHeroRangedAttacks : public CTCBase { public:             // vtable 0x01
 
 float CTCHeroRangedAttacks::GetShotBuildupTime() const
 {
-    return (float)AimingTimer / g_framesPerSecond;
+    return (float)AimingTimer / CMainGameComponent::GetConstantFPS();
 }

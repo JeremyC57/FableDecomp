@@ -1,5 +1,8 @@
 // CTCHeroStats::FrameUpdate() -- per-frame hero bookkeeping: region time, fatness decay, stamina and health refills, weapon augmentation regeneration, speed multiplier expiry and drunkenness
 // Leaf: FrameUpdate
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057D5A0, 798 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed SetAge 0x0057B05F).
 // Callees: CTCBase::GetWorldMap() @ 0x00686D30, CWorldMap::GetCurrentRegionNumber() @ 0x004FB150,
@@ -10,7 +13,7 @@
 //          CBaseIntelligentPointer::GetPItem() @ 0x00A01B50, IS_THING_ALIVE(CThing* const&) @ 0x00436380,
 //          CTCObjectAugmentations::GetHealthToAddThisFrame() @ 0x00766260 / GetStaminaToAddThisFrame() @ 0x00766330,
 //          CTCHaste::RemoveMultiplier(CTCHeroStats*) @ 0x0058148D, CTCHeroStats::ProcessDrunkenness() @ 0x0057CB7E.
-// Globals: g_framesPerSecond @ 0x01375550.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Shape: interfaces 0xA7 (a component whose +0xC byte blocks stamina refill), 0x93 (presence only), 0x13
 // CTCInventoryWeapons (active melee +0x134 / ranged +0x141 weapon pointers, const pick), 0xBF CTCObjectAugmentations
 // (const pick), 0x8C CTCHaste (out pointer zero-initialised). The const pick is `found = (it != last && !(k < it->type)) ? it
@@ -25,9 +28,12 @@
 
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit) const;                       // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -57,7 +63,7 @@ class CThing { public:
     virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58();
     virtual void ModifyHealth(float amount, bool showEffect);   // slot 59 (+0xEC)
     unsigned char _pad_0x04[0x1C];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
@@ -169,7 +175,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                 // 0x0049D870
-extern long g_framesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase
 {
@@ -219,7 +230,7 @@ void CTCHeroStats::FrameUpdate()
         if (!(ParentThing->GetInterface(&blocker, 0xA7) && (blocker->BlockStaminaRefill || ParentThing->HasTC(0x93)))) {
             --FramesUntilStaminaRefills;
             if (FramesUntilStaminaRefills <= 0) {
-                long fps = g_framesPerSecond;
+                long fps = CMainGameComponent::GetConstantFPS();
                 if (CWorld::GetFrame() % fps == 0)
                     Stamina += GetHeroStatsDef()->StaminaRefillAmount;
                 if (Stamina < 0)
@@ -236,7 +247,7 @@ void CTCHeroStats::FrameUpdate()
         long amount = GetHeroStatsDef()->HealthRefillAmount;
         if (amount != 0)
             thing->ModifyHealth((float)amount, true);
-        FramesUntilHealthRefills = (long)(g_framesPerSecond * GetHeroStatsDef()->SecondsBetweenHealthRefills);
+        FramesUntilHealthRefills = (long)(CMainGameComponent::GetConstantFPS() * GetHeroStatsDef()->SecondsBetweenHealthRefills);
     }
     CTCInventoryWeapons* weapons;
     if (ParentThing->PeekInterface(&weapons, 0x13)) {

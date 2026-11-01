@@ -1,3 +1,5 @@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuestInfo::DisplayQuestInfo(bool) -- open the quest box (mode 2, timers reset, mini-mode countdown from the GUI def) or start closing it (mode 1)
@@ -18,7 +20,12 @@ class CPlayerGui {
 public:
     static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
 };     // 0x00438570
-extern long g_framesPerSecond;                     // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 namespace NPlayerGui {
 
@@ -40,7 +47,7 @@ void CDrawQuestInfo::DisplayQuestInfo(bool display)
             FadeInTimer = 0.0f;
             MiniMode = false;
             MiniModeTimer = 0.0f;
-            long framesPerSecond = g_framesPerSecond;
+            long framesPerSecond = CMainGameComponent::GetConstantFPS();
             FramesUntilMiniMode = (long)(framesPerSecond * CPlayerGui::PeekGuiDef().QuestInfoMiniModeDelaySeconds);
         }
     }

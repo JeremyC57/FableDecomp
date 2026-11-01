@@ -1,5 +1,7 @@
 // CAIStateGroup_SummonerCharge::Update() -- with a live target: mark its stealth as in danger, start the charge-into action, schedule the next charge frame from the def's delay, then idle while the charge action runs until the target is in reach (or the action ends), then stop any running action and play the charge-strike (live target) or charge-out-of action; always terminates
 // Leaf: ?Update@CAIStateGroup_SummonerCharge
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FF10, 628 bytes, virtual, plain `ret`, esp frame 0x124.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, IS_THING_ALIVE @ 0x004CC340 (__fastcall), CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface 0x36 = CTCStealth), CTCStealth::SetAsInDanger @ 0x00747B80, CCombatActionBase
@@ -8,7 +10,7 @@
 //          CAIStateGroupBase::GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40 / AIAction_DoNothing @ 0x0097E200 /
 //          AIAction_CombatPerformActionAndWait @ 0x0097DA40, CWorld::GetWorldFrame @ 0x0049D870, CCurrentAction::GetActionCode
 //          @ 0x00692620, CThing::GetPos @ 0x004C73D0, CCreatureAction_SummonerChargeOutOf ctors @ 0x00970420 /
-//          0x00970370, g_FramesPerSecond @ 0x01375550.
+//          0x00970370, CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: CAIStateGroupBase PBrain +0x04; CAIStateGroup_SummonerCharge PTarget +0x14, PDef +0x1c, NextFrameToCharge +0x20;
 //          CAIBrain PCreature +0x18; CThing PBody +0x60 (Radius +0x34), interface bitset +0x20, map +0x44, flags +0x91;
 //          CThingCreatureBase PCurrentAction +0x100 (Finished +0x61); CSummonerDef ChargeReach +0x44, ChargeDelay +0x48.
@@ -116,7 +118,12 @@ struct CCreatureAction_SummonerChargeOutOf : CCombatActionBase {
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CSummonerDef { public:
     unsigned char _pad[0x44];
     float ChargeReach;                          // +0x44
@@ -164,7 +171,7 @@ void CAIStateGroup_SummonerCharge::Update()
         return;
     }
     CWorld* world = GetPWorld();
-    long fps = g_FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     const CSummonerDef* def = PDef;
     NextFrameToCharge = (long)((float)world->GetFrame() + (float)fps * def->ChargeDelay);
     bool reached = false;

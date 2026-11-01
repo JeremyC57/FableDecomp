@@ -1,12 +1,14 @@
 // CTCStealth::SetAsInDanger(const CThing* thing, long status) -- record (or refresh) the danger status of a thing; for the main player's creature entering danger start the danger music and stop the rain; restart the in-danger cool-off timer
 // Leaf: SetAsInDanger
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00747B80, 238 bytes (`ret 8`).
 // Callees: SGI __find_if over the danger list @ 0x007485F0 (__fastcall: first, last, the by-value thing predicate and the
 // iterator tag by reference; compiled in this TU, see the body below), CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10 (the pair temporary's CIntelligentPointer<const CThing>, vtable
 // 0x01237F1C), vector<pair<CIntelligentPointer<const CThing>, CDangerStatus> >::push_back @ 0x00749620, CThing::GetPlayer const
 // @ 0x004C7A30, CPlayer::IsMainPlayer @ 0x00487520, CTCBase::GetWorld @ 0x00686A70 (twice), CMusicManager::EnableDangerMusic(bool)
-// @ 0x006BDE50, CEnvironment::SetRainEnabled(bool) @ 0x006B32B0, __ftol2 @ 0x00BFEA70; g_framesPerSecond @ 0x01375550.
+// @ 0x006BDE50, CEnvironment::SetRainEnabled(bool) @ 0x006B32B0, __ftol2 @ 0x00BFEA70; CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: as the landed ClearDangerStatus 0x00747090 / SetAsRunningAwayFromCombat 0x007470E0 (PDef +0x1c, InDangerCoolOffTimer
 // +0x34, DangerThings +0x38/+0x3c of 16-byte {CIntelligentPointer, Status, Timer}); CStealthDef DangerFeedbackHangtimeSeconds +0x40.
 // Shape: a miss pushes a pair temporary (pointer built in place, then the status and a zero timer), a hit refreshes the
@@ -16,7 +18,12 @@
 //        puts it in the `thing` slot instead.
 class CThing;
 class CBaseObject;
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CPlayer { public:
     bool IsMainPlayer() const;                          // 0x00487520
 };
@@ -158,5 +165,5 @@ void CTCStealth::SetAsInDanger(const CThing* thing, long status)
         CWorld* world2 = (&GetWorld());
         world2->PEnvironment->SetRainEnabled(false);
     }
-    InDangerCoolOffTimer = (long)(PDef ? PDef->DangerFeedbackHangtimeSeconds * g_framesPerSecond : 1.0f);
+    InDangerCoolOffTimer = (long)(PDef ? PDef->DangerFeedbackHangtimeSeconds * CMainGameComponent::GetConstantFPS() : 1.0f);
 }

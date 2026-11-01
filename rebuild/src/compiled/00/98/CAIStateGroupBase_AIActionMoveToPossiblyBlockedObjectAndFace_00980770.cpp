@@ -1,4 +1,6 @@
 // CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(thing, index, proximity, seconds, filter, route, avoid, speed)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (1117v1117)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00980770, 1120 bytes, ret 0x24.
 // Shape: alive + filter guard, user-action-point interface 0x2d, optional pre-calculated route, approach the thing,
@@ -84,7 +86,12 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld { public: static long __fastcall GetFrame(); };              // 0x0049D870
 class CAIStateGroupBase { public:
     virtual void v00();
@@ -132,7 +139,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
     }
     if (!IS_THING_ALIVE(thing))
         return 3;
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     unsigned long endFrame = CWorld::GetFrame() + (long)(fps * seconds);
     C3DVector pos;
     CRightHandedSet orientation;

@@ -1,5 +1,7 @@
 // CCombatManager::UpdateDefenderAttackInstruction(CCombatantInfo&) -- on an attack entry stops a still-rotating first combat ring; on an idle entry whose wait has expired steps to the next pattern entry
 // Leaf: UpdateDefenderAttackInstruction
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E86A0, 135 bytes of code (`ret 4`).
 // Callees: GetWorldFrame @ 0x0049D870, CCombatManager::IncrementDefenderAttackPattern @ 0x006E8600.
 // Globals: the frames-per-second long @ 0x01375550, the floats 0.0001f @ 0x0129BA3C and 0.0f @ 0x0122DEDC.
@@ -10,7 +12,12 @@
 #include <math.h>
 #pragma intrinsic(fabs)
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -75,7 +82,7 @@ void CCombatManager::UpdateDefenderAttackInstruction(CCombatantInfo& info)
     if (pattern[info.AttackPatternIndex] != 0) {
         CCombatRing* ring = info.CombatWheel.GetRing(0);
         if (ring && fabs(ring->DeltaRotation) > 0.0001f)
-            ring->DeltaRotation = 0.0f / g_framesPerSecond;
+            ring->DeltaRotation = 0.0f / CMainGameComponent::GetConstantFPS();
     }
     if (pattern[info.AttackPatternIndex] == 0 && now > info.FrameForNextInstruction)
         IncrementDefenderAttackPattern(info);

@@ -1,9 +1,11 @@
 // CTCKrakenTentacle::GetShouldStrike() -- whether the tentacle may strike now: it is allowed to, its kraken is alive, the owning creature is in neither of the two blocking modes, and more frames than the def's time between attacks have passed since the last strike
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F1410, length 224 bytes (+ int3 padding); speed TU (no frame pointer, esp-relative frame).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three calls on PKraken, the third unused), CVectorMap::LowerBound const
 // @ 0x004365B0 (the inline GetInterface for type 0x31 = CTCCreatureModeManager; the bitset test folds to `test [thing+24h],20000h`),
 // CTCCreatureModeManager::HasMode(unsigned long) @ 0x0073A8A0 (modes 0x54 and 0x53), CWorld::GetWorldFrame @ 0x0049D870;
-// g_framesPerSecond @ 0x01375550. CThing: components bitset +0x20, interface map +0x44, Dead = +0x91 bit 0.
+// CMainGameComponent::GetConstantFPS() @ 0x01375550. CThing: components bitset +0x20, interface map +0x44, Dead = +0x91 bit 0.
 // Layout (PDB = retail): ParentThing +0x04, PTentacleDef +0x0C, PKraken +0x10, CanStrike +0x28, LastStrikeTick +0x30;
 // CKrakenTentacleDef::TentacleTimeBetweenAttacks +0x44.
 // Shape: the mode manager comes from the unchecked out-parameter GetInterface (the absent path reads the frame word); the frame rate
@@ -81,7 +83,12 @@ template <class T> class CDefPointer { public: T* Object; T* operator->() const 
 class CWorld { public:
     static long __fastcall GetFrame();                     // 0x0049D870
 };
-extern long g_framesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCKrakenTentacle { public:
     unsigned char _pad00[0x04];
@@ -104,7 +111,7 @@ bool CTCKrakenTentacle::GetShouldStrike()
         ParentThing->GetInterface(&modes, 0x31);
         if (!modes->HasMode(0x54) && !modes->HasMode(0x53)) {
             CThing* kraken = PKraken.GetPItem();
-            long framesPerSecond = g_framesPerSecond;
+            long framesPerSecond = CMainGameComponent::GetConstantFPS();
             CKrakenTentacleDef* def = PTentacleDef.Object;
             long elapsed = CWorld::GetFrame() - LastStrikeTick;
             if ((float)elapsed > (float)framesPerSecond * def->TentacleTimeBetweenAttacks)

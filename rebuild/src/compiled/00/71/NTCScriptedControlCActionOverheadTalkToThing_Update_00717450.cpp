@@ -1,4 +1,6 @@
 // NTCScriptedControl::CActionOverheadTalkToThing::Update() -- base talk update; then, while scrolling an unfinished line through the creature's emote icon: show the next 24 characters of the current line (or the whole line once the end is near), flag the scroll finished past the end, and push the text to the icon for the remaining turn time
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00717450, length 380 bytes (plain `ret`).
 // Callees: CActionTalkBase::Update @ 0x00716DE0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 69 = bit 5 of
 //          the bitset dword at +0x28 = CTCEmoteIcon), CWideString() @ 0x0099AED0 / ~CWideString @ 0x0099B510, the current-line
@@ -10,7 +12,7 @@
 //          and an inline `max(const long&, const long&)` returning a reference (the `lea` select) in their own block; the text
 //          local and the rest sit in a second block so they reuse those two frame words; each line read is a
 //          by-value temporary whose destructor the compiler merges after the if/else; the two bools ride in bl; the
-//          remaining time is `(float)(frames) / g_FrameRate` (`fild ; fidiv`).
+//          remaining time is `(float)(frames) / CMainGameComponent::GetConstantFPS()` (`fild ; fidiv`).
 // Layout: Ego_r.pdb NTCScriptedControl::CActionTalkBase 4 bytes high after Messages (CArray 16 vs retail 12): retail
 //          Terminated +9, UpdateCounter +0x18, GameTurnDuration +0x48, ScrollText +0x90, FinishedScroll +0x91 (as the landed
 //          ctor @ 0x00717BC0); CActionBase PTCScript +4 (CTCBase: ParentThing +4).
@@ -63,7 +65,12 @@ class CTCScriptedControl { public:                     // a CTCBase
     virtual void v00();
     CThing* ParentThing;                        // +0x04
 };
-extern long g_FrameRate;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 inline const long& Max(const long& a, const long& b) { return a < b ? b : a; }
 
@@ -116,7 +123,7 @@ void CActionOverheadTalkToThing::Update()
         bool finished = shown > GetCurrentMessageText().GetLength() - 25;
         if (finished)
             FinishedScroll = true;
-        emote->SetEmoteText(7, text, (float)(GameTurnDuration - UpdateCounter) / g_FrameRate, 0.3f);
+        emote->SetEmoteText(7, text, (float)(GameTurnDuration - UpdateCounter) / CMainGameComponent::GetConstantFPS(), 0.3f);
     }
 }
 

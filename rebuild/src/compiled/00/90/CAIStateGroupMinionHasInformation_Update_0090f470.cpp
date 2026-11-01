@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionHasInformation::Update() -- while the minion still wants the hero's attention, look at the (living) hero; every 5 seconds wave (playing ATTRACT_HERO_ATTENTION through the sound component, but after 20 seconds only every fifth wave), every 10 seconds wander; terminate when the hero is gone, attention is no longer wanted or the wander fails
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F470, length 418 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CAIStateGroupBase brain accessor @ 0x008FCF80 (brain +0x20), the main-player accessor @ 0x00449960,
 // CPlayer::GetPControlledCreature @ 0x00487DC0, CreatureWantsPlayersAttention @ 0x0090F290, CBaseIntelligentPointer ctor
@@ -8,7 +10,7 @@
 // @ 0x0040F020 (inlined GetInterface 0x10), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 // the sound component's PlaySound @ 0x0066BD00, Wander @ 0x0090F320, AIAction_DoNothing @ 0x0097E200,
 // Terminate @ 0x008FCF40.
-// Data: g_framesPerSecond @ 0x01375550; "ATTRACT_HERO_ATTENTION" @ 0x0128F574.
+// Data: CMainGameComponent::GetConstantFPS() @ 0x01375550; "ATTRACT_HERO_ATTENTION" @ 0x0128F574.
 // Layout: Ego_r.pdb CAIStateGroup_MinionHasInformation (LastFrameWaved +0x14, LastFrameWandered +0x18, FrameInitialised
 // +0x1c, WavesWithoutCalling +0x20); retail CThing interface bitset +0x20 / map +0x44. The engine header flattens the base,
 // so the model is local.
@@ -85,10 +87,15 @@ class CPlayerManager { public:
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 inline bool HasTimePassed(const long& lastFrame, long seconds)
 {
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     return CWorld::GetFrame() - lastFrame > seconds * fps;
 }
 
@@ -135,7 +142,7 @@ void CAIStateGroup_MinionHasInformation::Update()
             if (LastFrameWaved == 0 || HasTimePassed(LastFrameWaved, 5)) {
                 LastFrameWaved = CWorld::GetFrame();
                 bool attract = true;
-                if (LastFrameWaved - FrameInitialised > 20 * g_framesPerSecond) {
+                if (LastFrameWaved - FrameInitialised > 20 * CMainGameComponent::GetConstantFPS()) {
                     if (++WavesWithoutCalling > 4)
                         WavesWithoutCalling = 0;
                     else

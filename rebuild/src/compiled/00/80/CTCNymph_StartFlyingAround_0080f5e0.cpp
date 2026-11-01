@@ -1,5 +1,7 @@
 // CTCNymph::StartFlyingAround(long fadeTime) -- unless already flying: look up the INLIMBO special effect, take the start position from the appearance's DUMMY_CENTRE dummy (or the thing's position), kill any old effect and spawn the limbo effect attached at DUMMY_CENTRE, then start the fade counter and hide the owner
 // Leaf: StartFlyingAround
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F5E0, 656 bytes, `ret 4`.
 #include "engine/CTCBase.h"
 
@@ -168,7 +170,12 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 };
 #pragma pack(pop)
 
-extern long g_FramesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CNymphDef { public:
     unsigned char _pad00[0x4c];
     float FadeOutTime;                                      // +0x4c
@@ -218,7 +225,7 @@ void CTCNymph::StartFlyingAround(long fadeTime)
         emitter->AttachToThing(*ParentThing, 0xa, "DUMMY_CENTRE", 0, 0.0f);
         FlyingAround = true;
         if (fadeTime == -1)
-            fadeTime = (long)(g_FramesPerSecond * PDef->FadeOutTime);
+            fadeTime = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeOutTime);
         FadeCounter = TotalFadeTime = fadeTime;
         ParentThing->FlagsBC &= 0xfa;
         if (FadeCounter == 0) {

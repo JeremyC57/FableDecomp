@@ -1,5 +1,7 @@
 // CTCGhostSword::CTCGhostSword(CThing& parent) -- constructor: CTCBase, a null def pointer, empty minion / effect / fade-timer vectors, no spell level or removed item, not cancelled; load SPECIAL_ABILITIES_GHOST_SWORD_DEF, convert its fade-in seconds to frames and take the spell level from the owner's ability inventory
 // Leaf: ??0CTCGhostSword
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 //
 // Retail 0x007C5560, 256 bytes incl. padding (`ret 4`); vtable 0x0126E494. Ego_r.pdb `??0CTCGhostSword@@QAE@AAVCThing@@@Z`.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer ctor/SetPItem @ 0x00A01B10/0x00A01B90
@@ -8,7 +10,7 @@
 // CDefinitionManager::GetDef<CSpecialAbilitiesGhostSwordDef> @ 0x007C6600 (label "GetDef<CThingPhysicalSwitchDef>" is
 // propagated); _ftol2 @ 0x00BFEA70; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (interface 0x6F,
 // word 3 bit 15: `test ch,ch ; jns`); CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EDE93 (ability 0xF).
-// Global g_framesPerSecond (long) @ 0x01375550.
+// Global CMainGameComponent::GetConstantFPS() (long) @ 0x01375550.
 // Layout: Ego_r.pdb CTCGhostSword with retail 12-byte STLport vectors (PDB 16): PDef +0x0C, Minions +0x10, MinionEffects
 // +0x1C, MinionAliveTimer +0x28 (not initialised), FadeInTimer +0x2C, CurFadeInTimer +0x30, SpellLevel +0x3C,
 // PItemRemoved +0x40, CutSceneCancelled +0x48; the def's fade-in seconds at retail +0x4C.
@@ -109,7 +111,12 @@ public:
     }
 };
 
-extern long g_framesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase {
 public:
@@ -144,7 +151,7 @@ CTCGhostSword::CTCGhostSword(CThing& parent)
         index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &PDef);
-    FadeInTimer = (long)(g_framesPerSecond * PDef->FadeInSecs);
+    FadeInTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInSecs);
     CTCInventoryAbilities* abilities;
     if (ParentThing->GetInterface(&abilities, 0x6f))
         SpellLevel = abilities->GetAbilityLevel(0xf);

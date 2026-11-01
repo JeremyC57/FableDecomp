@@ -1,4 +1,6 @@
 // CTCGuard::GetTimeAgoThatCrimesCanBeApologisedFor() const -- seconds since the last received apology, less a 15-second grace, clamped to [0, 10]
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B29B0, length 76 bytes.
 // Callees: the world frame counter GetCurrentFrame @ 0x0049D870 (a no-argument __fastcall static; manifest label
 // "GFGetPreMainMemoryUsed" is propagated); globals: the frames-per-second rate @ 0x01375550, the .rdata constant 10 @ 0x0126D7CC.
@@ -13,7 +15,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                         // 0x0049D870
-extern long g_FramesPerSecond;                             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 const long MAX_APOLOGY_SECONDS = 10;                       // 0x0126D7CC (.rdata: bound to a const reference)
 
 template<class T> inline const T& Clamp(const T& value, const T& low, const T& high)
@@ -32,6 +39,6 @@ class CTCGuard { public:
 long CTCGuard::GetTimeAgoThatCrimesCanBeApologisedFor() const
 {
     long frames = CWorld::GetFrame() - FrameLastReceivedApology;
-    long seconds = (frames - g_FramesPerSecond * 15) / g_FramesPerSecond;
+    long seconds = (frames - CMainGameComponent::GetConstantFPS() * 15) / CMainGameComponent::GetConstantFPS();
     return Clamp(seconds, 0L, MAX_APOLOGY_SECONDS);
 }

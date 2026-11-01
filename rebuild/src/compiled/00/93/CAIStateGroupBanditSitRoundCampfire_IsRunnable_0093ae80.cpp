@@ -12,6 +12,8 @@
 // Layout: Ego_r.pdb CAIStateGroup_BanditSitRoundCampfire (PCampfire +0x14, SeatPosIndex +0x1c, GotSeatPos +0x20,
 // Sitting +0x21, FrameToNextCheckIsRunnable +0x28).
 // Leaf: IsRunnable@CAIStateGroup_BanditSitRoundCampfire
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CThing;
@@ -130,7 +132,12 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntellig
     }
 };
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 
 struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
@@ -164,7 +171,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
     PCampfire = CIntelligentPointerThingObject((CThing*)GetPNearCampfire());
     bool alive = IS_THING_ALIVE(PCampfire);
     if (!alive) {
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         FrameToNextCheckIsRunnable = CWorld::GetFrame() + framesPerSecond * 5;
     }
     return alive;

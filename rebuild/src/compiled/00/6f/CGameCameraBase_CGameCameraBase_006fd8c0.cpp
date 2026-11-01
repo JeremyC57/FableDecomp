@@ -1,5 +1,7 @@
 // CGameCameraBase::CGameCameraBase(CWorld& world) -- build the internal camera at the origin looking down +Z (up 1,1,1), default the last camera, store the world, set the orbit defaults (theta 0.2, phi 1.25, radius 10 and their fixed copies), empty the two coordinate lists, arm the trigger frame 1.5 s ahead and clear the building UID
 // Leaf: ??0CGameCameraBase
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006FD8C0, length 294 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ??0CGameCameraBase@@QAE@AAVCWorld@@@Z. Vtable 0x01264A8C (RTTI CGameCameraBase); the root
 //   CAIGameCameraBase's own vtable store (0x0125C1F4) is dead and dropped.
@@ -14,7 +16,12 @@
 //   through ecx/eax; each list is `_M_node(0)` then the malloc'd self-linked sentinel, the two mallocs' stack cleanup
 //   merged into one `add esp,8`.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -77,6 +84,6 @@ CGameCameraBase::CGameCameraBase(CWorld& world)
     : InternalCam(C3DVector(0.0f, 0.0f, 0.0f), C3DVector(1.0f, 1.0f, 1.0f), C3DVector(0.0f, 0.0f, 1.0f), 0.19444f, 0.0f),
       World(&world), Theta(0.2f), Phi(1.25f), Rad(10.0f), ThetaFixed(0.2f), RadFixed(10.0f),
       ActAsFixedCam(false), GoingIntoBuilding(false),
-      TriggerFrame((long)(g_framesPerSecond * 1.5f)), BuildingUID(0), PhiChanger(0.1f)
+      TriggerFrame((long)(CMainGameComponent::GetConstantFPS() * 1.5f)), BuildingUID(0), PhiChanger(0.1f)
 {
 }

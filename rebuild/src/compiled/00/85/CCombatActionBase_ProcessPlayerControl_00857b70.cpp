@@ -1,4 +1,7 @@
 // CCombatActionBase::ProcessPlayerControl() -- permit late post-strike movement to finish action and reset combo
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail0x00857B70,314 bytes. Shared genuine virtual prefix and intelligent-pointer layout from00859D80.
 // Component48 is CTCCombat, ResetComboChainPos0x00733210 writes native combo sentinels at+C/+10.
 #include "fable_string.h"
@@ -13,8 +16,13 @@
 #endif
 class C3DVector { public:float X,Y,Z;C3DVector(float x,float y,float z):X(x),Y(y),Z(z){} void RotateXY(float angle);}; //0x00A14040
 class CCombatActionBase;
-extern long g_GameFramesPerSecond; //0x01375550
-extern const float EPSILON;              //0x0129BA3C
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
+extern const float DELTA_NOTIONAL_ZERO;              //0x0129BA3C
 #include "engine/CTCCombat.h"
 struct CCombatComponent:CTCCombat {void ResetComboChainPos();}; //0x00733210
 struct InterfaceEntry {long Type;CCombatComponent* Component;};
@@ -58,11 +66,11 @@ class CCombatActionBase:public CCreatureActionBase { public:
 void CCombatActionBase::ProcessPlayerControl(){
     Creature* creature=PCreature.GetPItem();
     if(IsStrikeEventFinishedBeingActive()){
-        float frameRate=(float)g_GameFramesPerSecond;
+        float frameRate=(float)CMainGameComponent::GetConstantFPS();
         long afterStrike=LastStrikeEventEndTime+1;
         if(TotalTime-afterStrike>(long)(frameRate*0.33333f)){
             C3DVector movement(creature->RelativeMovementAcceleration.X,creature->RelativeMovementAcceleration.Y,creature->RelativeMovementAcceleration.Z);
-            if(movement.X*movement.X+movement.Y*movement.Y+movement.Z*movement.Z>EPSILON*EPSILON){
+            if(movement.X*movement.X+movement.Y*movement.Y+movement.Z*movement.Z>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO){
                 float angle=creature->GetCurrentRelativeMovementAngleXY();movement.RotateXY(angle);
                 if(FramesRunning-afterStrike>(long)(frameRate*0.4f)){
                     FinishAction();CCombatComponent* combat;

@@ -1,4 +1,6 @@
 // CAIStateGroup_SeekEnemy::IsRunnable() -- runnable for a live enemy the creature is willing to attack: when it is the perceived thing the creature must be aware of it and have seen it within 15 seconds, otherwise the creature must be able to see it; latch the enemy
+// Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093B740, length 368 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 8, bit 8 of +0x20, ternary pick into ecx for the
 //          tracker's virtual slot 29 GetEnemy; 0x34 = CTCPerceiveThing, bit 20 of +0x24), IsWillingToAttackTarget
@@ -6,7 +8,7 @@
 //          CanCreatureSeeThing @ 0x008645E0 (__fastcall + a bool; manifest "CMainGameComponent::BeginInputLoading" is
 //          wrong), CIntelligentPointer(CThing*) @ 0x004A96F0 and operator= @ 0x004A9760 (out of line at the first
 //          site), CBaseIntelligentPointer GetPItem/SetPItem/dtor.
-// Globals: FramesPerSecond @ 0x01375550, 15.0f @ 0x012925B8.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, 15.0f @ 0x012925B8.
 // Shape: the first assignment is an implicit conversion into the out-of-line operator=; the second site inlines it
 //          (a __forceinline helper fed by an implicit conversion, so the temporary address is re-taken); the frame count is stored into the dead key slot for the fild.
 // Layout: engine/CAIStateGroup_SeekEnemy.h (PEnemy +0x14); PBrain is the first dword at +0x04; the perception
@@ -72,7 +74,12 @@ public:
 };
 bool __fastcall IsWillingToAttackTarget(CThing* creature, CThing* target);           // 0x008648A0
 bool __fastcall CanCreatureSeeThing(CThing* creature, CThing* target, bool flag);    // 0x008645E0
-extern long FramesPerSecond;                    // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -118,7 +125,7 @@ bool CAIStateGroupSeekEnemyMethods::IsRunnable()
                 if (perceive->GetPerceivedThing() == enemy) {
                     if (perceive->IsAwareOfThing()) {
                         long frames = perceive->FramesSinceSeen;
-                        if (frames != -1 && (float)frames < (float)FramesPerSecond * 15.0f) {
+                        if (frames != -1 && (float)frames < (float)CMainGameComponent::GetConstantFPS() * 15.0f) {
                             Enemy() = enemy;
                             return true;
                         }

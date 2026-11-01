@@ -1,4 +1,6 @@
 // CAIStateGroup_WanderAroundShops::Cleanup() -- schedule the next buy a few seconds from now
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946DD0, length 53 bytes (+ int3 padding).
 // Callees: GFGetFrameCount @ 0x0049D870 (__fastcall, no arguments), __ftol2 @ 0x00BFEA70 (the
 // float-to-long conversion of the sum).
@@ -7,7 +9,12 @@
 // a local BEFORE the frame-count call (retail spills it to [esp+8] first, the frame to [esp+4]);
 // `fild frame ; fild fps ; fmul delay ; faddp` is the natural left-to-right sum. NextFrameBuy is
 // +0x24 (engine header CAIStateGroup_WanderAroundShops.h). Frame 8, result through __ftol2.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern float g_wanderShopsBuyDelay;             // 0x0138CE2C
 class CWorld {
 public:
@@ -28,6 +35,6 @@ struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
 
 void CAIStateGroup_WanderAroundShops::Cleanup()
 {
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     NextFrameBuy = (long)(CWorld::GetFrame() + fps * g_wanderShopsBuyDelay);
 }

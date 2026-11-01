@@ -1,10 +1,12 @@
 // CTCTurncoat::CTCTurncoat(CThing* parent) -- constructor: CTCBase, cleared turncoat state and effect pointers, empty stage-effect vector, the turncoat def, then the resistance-recovery delay (frames) and rate (per frame) from the def
 // Leaf: ??0CTCTurncoat
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x007C78C0, 153 bytes (`ret 4`; vtable 0x0126E6F4 = CTCTurncoat per rtti-vtables.tsv).
 // Callees: CTCBase::CTCBase(CThing*) 0x00686800; CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 (x2, then the
 //          CIntelligentPointer<CThing> vtable 0x01238C6C), ::SetPItem 0x00A01B90 (TurncoatedEffect built from a null
 //          pointer); CDefClassBase::GetSubDef<CTurncoatDef>(CDefPointer*) 0x007C8000 on the parent's def class (+0x70;
-//          template label propagated); _ftol 0x00BFEA70. Global: g_framesPerSecond (long) 0x01375550.
+//          template label propagated); _ftol 0x00BFEA70. Global: CMainGameComponent::GetConstantFPS() (long) 0x01375550.
 // Layout: engine/CTCTurncoat.h (Ego_r.pdb, packed) up to +0x3c; the retail stage-effect vector is 12 bytes, so
 //         CreatureTurncoatResistance sits at +0x48 (PDB +0x4c). CTurncoatDef: TimeDelayBeforeResistanceRecoverySecs +0x38,
 //         ResistanceRecoveryPerSec +0x3c.
@@ -68,7 +70,12 @@ template <class T> struct CRetailVector {               // STLport vector (12 by
     CRetailVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
 };
 
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase { public:
     CTCBase(CThing* parent);                            // 0x00686800
@@ -100,6 +107,6 @@ CTCTurncoat::CTCTurncoat(CThing* parent)
 {
     ParentThing->m_pDefinition->GetSubDef_007c8000(&PDef);
     WillTurncoatTimer = 1;
-    TimeDelayBeforeResistanceRecoveryFrames = (long)(g_framesPerSecond * PDef->TimeDelayBeforeResistanceRecoverySecs);
-    ResistanceRecoveryPerFrame = PDef->ResistanceRecoveryPerSec / g_framesPerSecond;
+    TimeDelayBeforeResistanceRecoveryFrames = (long)(CMainGameComponent::GetConstantFPS() * PDef->TimeDelayBeforeResistanceRecoverySecs);
+    ResistanceRecoveryPerFrame = PDef->ResistanceRecoveryPerSec / CMainGameComponent::GetConstantFPS();
 }

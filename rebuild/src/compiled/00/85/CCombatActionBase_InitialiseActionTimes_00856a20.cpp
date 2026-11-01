@@ -1,5 +1,7 @@
 // CCombatActionBase::InitialiseActionTimes() -- sets the action's total time (frames) from its animation's duration, the action time from the anim's PERFORM_ACTION event, both shifted by the anim delay
 // Leaf: InitialiseActionTimes
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856A20, 154 bytes of code.
 // Callees: the anim-manager getter @ 0x006F90B0 (__fastcall, no arguments; label "GFGetPreMainMemoryUsed" propagated),
 //          CManager::AnimHasEvent(ulong, const CCharString&) @ 0x006F9720, CManager::GetEventTimeInSeconds @ 0x006F9790,
@@ -15,7 +17,12 @@
 // (PDB +0xf2: retail CCreatureActionBase is 0xa8 bytes), so `this` is modelled locally.
 class CCharString;
 extern CCharString g_performActionEventName;    // 0x013BACD0 ("PERFORM_ACTION")
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CAnimManager_Calls {                     // CManager (anim manager)
     bool  AnimHasEvent(unsigned long animID, const CCharString& eventName);            // 0x006F9720
@@ -65,7 +72,7 @@ class CCombatActionBase { public:
 
 void CCombatActionBase::InitialiseActionTimes()
 {
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     TotalTime = 0;
     long animID = PAnimEntry->AnimID;
     CAnimManager_Calls* manager = GetAnimManager();

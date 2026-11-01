@@ -1,4 +1,6 @@
 // CTCWife::IsOfferingSex() const -- the wife offers sex once she has been in love with her husband at home for longer than the def's delay
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CEEA0, length 76 bytes (+ int3 padding).
 // Callees: CTCBase::GetWorld() @ 0x00686A70 (returns g->+0x24; byte-identical twin of 0x00686A80; manifest
 // "CViewBase::GetDisplayEngine" is propagated) -- its result only reaches the static frames-per-second getter, so the
@@ -25,11 +27,16 @@ class CTCWife : public CTCBase, public CTCWifeLayout
 };
 #include "engine/CHeroMarriageDef.h"
 
-extern long g_FramesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CWorld { public:
     static long __fastcall GetFrame();                            // 0x0049D870
-    static long GetFramesPerSecond() { return g_FramesPerSecond; }
+    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
 };
 
 struct CTCWife_Sex : CTCWife {

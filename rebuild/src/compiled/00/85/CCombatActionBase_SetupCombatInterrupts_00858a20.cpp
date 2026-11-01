@@ -1,4 +1,6 @@
 // CCombatActionBase::SetupCombatInterrupts() -- read the strike-interrupt, reset-combo, movement-interrupt and strike-speed-variation events of the action's animation into the interrupt times/frame and their Has* flags
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00858A20, length 665 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: the anim-manager getter @ 0x006F90B0 (`__fastcall`, no arguments), NAnimationEvents::CManager::GetEvents (virtual
 //   slot 0, Ego_r.pdb `UBEX...vector<pair<CCharString,float> >`), CManager::AnimHasEvent @ 0x006F9720 and
@@ -6,7 +8,7 @@
 //   @ 0x00A01B50, CDefClassBase::GetSubDef<CCreatureStatsDef> @ 0x00696130 (pushes "CCreatureStatsDef"; same-TU out-only
 //   stand-in here), CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, _ftol @ 0x00BFEA70,
 //   free @ 0x00BFEA14 (the event vector's storage).
-//   Data: g_FramesPerSecond @ 0x01375550 (long), the event-name CCharStrings @ 0x013BAC88 ("COMBT_ACTION_FINISHED"),
+//   Data: CMainGameComponent::GetConstantFPS() @ 0x01375550 (long), the event-name CCharStrings @ 0x013BAC88 ("COMBT_ACTION_FINISHED"),
 //   0x013BAC74 ("STRIKE_EVENT_RESET_COMBO"), 0x013BACE0 ("ALLOW_MOVEMENT_INTERRUPT"), 1.0f @ 0x0122DED8, 0.5f @ 0x0122F59C,
 //   the literals "STRIKE_SPEED_VARIATION_START" @ 0x012764D0 and "STRIKE_SPEED_VARIATION_END" @ 0x012764B4.
 // Shape: the frame rate is converted to a float local first. The fetched event list is never read (only destroyed: the
@@ -20,7 +22,12 @@
 //   movement-interrupt frame +0xcc, speed-variation start/end +0xd0/+0xd4, Has* flags +0xd8..+0xda. CThing +0x70 = PDef,
 //   CCreatureStatsDef +0x3c = Speed (Ego_r.pdb).
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
-extern long g_FramesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CCharString { public:
     void* m_pData;
@@ -130,7 +137,7 @@ class CCombatActionBase { public:
 
 void CCombatActionBase::SetupCombatInterrupts()
 {
-    float framesPerSecond = (float)g_FramesPerSecond;
+    float framesPerSecond = (float)CMainGameComponent::GetConstantFPS();
     float timeScale = 1.0f;
     unsigned long animID = PAnimEntry->AnimID;
     NAnimationEvents::CManager* manager = GetAnimManager();

@@ -1,4 +1,6 @@
 // CTCDExplosion::IsDynamicExplosionFinished() -- true once the explosion's evolution timer has run past the summed duration of all the def's explosion rings (in frames)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (107 bytes) -- retry batch 5: declare the total before the frame-rate local, read the def once into a local, and return the compare as `? true : false` for the bare setg
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C350, length 107 bytes (+ int3 padding).
 // Callees: __ftol2 @ 0x00BFEA70 (once per ring). Globals: frames per second @ 0x01375550.
@@ -8,7 +10,12 @@
 // Shape: the frame rate is a long local read first (fild'ed from the frame and kept on the x87 stack across the loop); the total
 // is a long accumulated as `total += fps * duration` (`fmul ; fiadd ; __ftol2`); STLport size() tested before the loop and
 // hoisted into ebx; the bool result is the compare's `setg`.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CExplosionRing { public:                         // 16 bytes
     float RingRadius;                           // +0x00
@@ -42,7 +49,7 @@ class CTCDExplosion { public:
 bool CTCDExplosion::IsDynamicExplosionFinished()
 {
     long totalFrames = 0;
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     const CExplosionDef* def = PExplosionDef;
     for (unsigned int i = 0; i != def->ExplosionRings.size(); ++i)
         totalFrames += framesPerSecond * def->ExplosionRings[i].SecondsBeforeSpawnNewRing;

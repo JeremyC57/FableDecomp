@@ -1,11 +1,13 @@
 // CTCDParticleEmitter::OnCreate() -- mark a dependent emitter's thing as not game-state persisted, clear the attachments, then create the particle emitter at the thing's position; if the manager cannot create it yet, wait ~0.9 s for the particle to load, keeping the creation parameters
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E13E0, 251 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::SetAsGameStatePersisted(bool) @ 0x004C9C10, CTCDParticleEmitter::ClearAttachments @ 0x006E0AF0,
 //   CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static; manifest "GFGetPreMainMemoryUsed"
 //   is a byte twin), CParticleEmitterManager::CreateEmitter(long, const C3DVector&, bool, const CRightHandedSet&) @
 //   0x00AEB6D0, SetPEmitter @ 0x006E1080, __ftol2 @ 0x00BFEA70, operator new @ 0x00BFEA1A, CParticleCreationParameters(
 //   long, const CRightHandedSet&) @ 0x006E25C0, CCountedPointer<CParticleCreationParameters>::Reset @ 0x006E2710.
-// Globals: the particles-enabled flag @ 0x01375754, g_framesPerSecond @ 0x01375550, the identity CRightHandedSet @
+// Globals: the particles-enabled flag @ 0x01375754, CMainGameComponent::GetConstantFPS() @ 0x01375550, the identity CRightHandedSet @
 //   0x01380104 (descriptive names), 0.9f @ 0x0125FEDC.
 // Layout = Ego_r.pdb CTCDParticleEmitter (matches retail): ParentThing +0x04, ParticleTypeID +0x10,
 //   FramesLeftToWaitForParticleToCreate +0x38, PCreationParameters +0x3c, the flag bits of +0x44
@@ -26,7 +28,12 @@ class CRightHandedSet { public:
     CRightHandedSet(const C3DVector& up, const C3DVector& forward)
         : Up(up.X, up.Y, up.Z), Forward(forward.X, forward.Y, forward.Z) { }
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern bool g_bParticlesEnabled;                // 0x01375754
 extern const CRightHandedSet g_IdentityRHSet;   // 0x01380104
 class CThing { public:
@@ -86,7 +93,7 @@ void CTCDParticleEmitter::OnCreate()
             return;
         }
         WaitingForParticleToLoad = true;
-        FramesLeftToWaitForParticleToCreate = (long)(g_framesPerSecond * 0.9f);
+        FramesLeftToWaitForParticleToCreate = (long)(CMainGameComponent::GetConstantFPS() * 0.9f);
         PCreationParameters.Reset(new CParticleCreationParameters(ParticleTypeID, g_IdentityRHSet));
     }
 }

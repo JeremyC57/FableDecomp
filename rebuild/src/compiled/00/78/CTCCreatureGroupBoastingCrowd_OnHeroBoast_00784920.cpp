@@ -1,4 +1,6 @@
 // CTCCreatureGroupBoastingCrowd::OnHeroBoast(const CBoast* boast) -- the hero boasted: advance the encouragement state (2 -> 3 -> 4), schedule leaving the post-boast state 5..10 seconds ahead, and enter crowd state 6 for a flagged boast or 5 otherwise (recording the latter)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00784920, length 160 bytes.
 // Callees: CTCBase::GetPRandomSeed @ 0x00686DA0, GFFloatRandom(float, ulong*) @ 0x004978A0 (__fastcall: float on the stack,
 // seed in ecx), GFGetCurrentFrame @ 0x0049D870 (__fastcall), __ftol2 @ 0x00BFEA70, EnterCrowdState @ 0x00784260.
@@ -14,7 +16,12 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                                // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-extern long g_framesPerSecond;                                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CBoast {
     unsigned char _pad00[0x18];
@@ -57,7 +64,7 @@ void CTCCreatureGroupBoastingCrowd::OnHeroBoast(const CBoast* boast)
         CurrentEncouragementState = 4;
         break;
     }
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * framesPerSecond * 10.0f;
     FrameToLeavePostBoastState = (long)(CWorld::GetFrame() + delay);
     bool flagged;

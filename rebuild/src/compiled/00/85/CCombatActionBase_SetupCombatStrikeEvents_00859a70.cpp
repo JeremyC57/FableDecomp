@@ -1,5 +1,7 @@
 // CCombatActionBase::SetupCombatStrikeEvents() -- build one CStrikeEvent per strike-start event of the action's animation (weapon doing the damage, its weapon-trail strike index, the first helper point name, the start frame), then give each strike event the nearest matching end frame (dropping the events without one), shift both frames by the anim delay and record the last end frame
 // Leaf: SetupCombatStrikeEvents
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00859A70, 775 bytes (784 with padding), 8-byte aligned ebp frame, plain `ret`.
 // Callees: the anim-manager getter 0x006F90B0 (`__fastcall`) and CManager::GetEvents (virtual slot 0), the same-TU
 //   strike-event name parser 0x00856780 (`__fastcall`; manifest "CComboStrike_CheckPattern" is propagated),
@@ -12,7 +14,7 @@
 //   "CCombatWheel::ResetRings" is propagated), the end-event finder's operator() 0x0085B720 (manifest
 //   "CDefendingCombatantInfo_SetupHelperRings" is propagated), virtual GetAnimDelayTime (slot 6, +0x18), _ftol 0x00BFEA70,
 //   ~CCharString 0x0099EAE0, operator delete 0x00BFE9BC, free 0x00BFEA14 (the event vector's storage and the list nodes).
-//   Data: g_FramesPerSecond 0x01375550 (long).
+//   Data: CMainGameComponent::GetConstantFPS() 0x01375550 (long).
 // Layout: engine/CCombatActionBase.h is quarantined (PDB build differs); retail offsets follow the landed
 //   InitialiseActionTimes 0x00856A20 / SetupCombatInterrupts 0x00858A20 models: PCreature +8, Initialised +0x63 (PDB
 //   CCreatureActionBase, unchanged below +0x84), PAnimEntry +0x74, the STLport strike list (one node pointer) +0xbc,
@@ -26,7 +28,12 @@
 //   schedule the `last` register move one store later); the finder's NearestFrame starts at 10000000000 (0x540BE400 once
 //   truncated to long). The list erase is inline (unlink, counted-pointer release, zeroed words, free).
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
-extern long g_FramesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CCharString { public:
     void* m_pData;
@@ -226,7 +233,7 @@ void CCombatActionBase::SetupCombatStrikeEvents()
 {
     if (!Initialised)
         return;
-    float framesPerSecond = (float)g_FramesPerSecond;
+    float framesPerSecond = (float)CMainGameComponent::GetConstantFPS();
     float timeScale = 1.0f;
     unsigned long animID = PAnimEntry->AnimID;
     NAnimationEvents::CManager* manager = GetAnimManager();

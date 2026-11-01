@@ -1,4 +1,6 @@
 // CAIStateGroup_KidWatchHopscotch::InitStateGroup(const CWorld&, CThingAICreature&) -- stamp the start frame,
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // give the watch a 60-second budget and clear the per-game counters.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00940BA0, length 37 bytes (+ int3 padding), `ret 8` (both
 // reference arguments unused).
@@ -15,7 +17,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };        // 0x0049D870
-extern long g_framesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -36,7 +43,7 @@ struct CAIStateGroup_KidWatchHopscotch : CAIStateGroupBase {
 void CAIStateGroup_KidWatchHopscotch::InitStateGroup(const CWorld& world, CThingAICreature& creature)
 {
     m_frameStarted = CWorld::GetFrame();
-    m_framesToWatch = g_framesPerSecond * 60;
+    m_framesToWatch = CMainGameComponent::GetConstantFPS() * 60;
     m_gamesWatched = 0;
     m_lastGameFrame = 0;
     m_gameSeen = false;

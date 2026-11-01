@@ -1,4 +1,6 @@
 // CAIStateGroup_KidReactToBlockage::OnReplace() -- on replacement re-stamp the current frame and pick a new random minimum re-activation interval of 5..15 seconds
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941D70, length 130 bytes (+ int3 padding). Vtable slot 10 of
 // CAIStateGroup_KidReactToBlockage (0x0128BBCC); the InitStateGroup twin (0x00941CF0) with the frame read through
 // the world: `PeekWorld().GetCurrentFrame()` still calls the accessor although the getter is static.
@@ -10,7 +12,7 @@
 // Shape: the landed CAIStateGroup_MinionKidGroupTag (0x00934090) random helper with a float span: the frame rate
 // is read into a local BEFORE the seed pointer is fetched (spilled to the `push ecx` slot for the `fild`), the
 // range is `(long)(fps * seconds)`, then the seed step `seed = GFROR13(seed*0x24A1 + 0x24DF)` and the unsigned
-// `range ? seed % range : 0`. The interval is `(long)(g_framesPerSecond * 5.0f + (float)random)` (the random
+// `range ? seed % range : 0`. The interval is `(long)(CMainGameComponent::GetConstantFPS() * 5.0f + (float)random)` (the random
 // operand, which holds the calls, is evaluated first; `fild ; test ; jge ; fadd 2^32` converts the unsigned).
 // PDB names (struct_layouts_egor.tsv): LastEndState +0x14, CurrentActivationMinInterval +0x18. The engine
 // header CAIStateGroup_KidReactToBlockage is not generated: local model.
@@ -20,7 +22,12 @@ class CWorld { public:
     static long __fastcall GetFrame();                          // 0x0049D870
 };
 long __fastcall GFROR13(unsigned long value);      // 0x00497890
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -34,7 +41,7 @@ protected:
 public:
     unsigned long RandomFramesWithin(float seconds)
     {
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         unsigned long* seed = GetPWorldSeed();
         unsigned long range = (long)(framesPerSecond * seconds);
         unsigned long next = *seed * 0x24A1U + 0x24DFU;
@@ -62,5 +69,5 @@ struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
 void CAIStateGroup_KidReactToBlockage::OnReplace()
 {
     LastEndState = PeekWorld().GetFrame();
-    CurrentActivationMinInterval = (long)(g_framesPerSecond * 5.0f + (float)RandomFramesWithin(10.0f));
+    CurrentActivationMinInterval = (long)(CMainGameComponent::GetConstantFPS() * 5.0f + (float)RandomFramesWithin(10.0f));
 }

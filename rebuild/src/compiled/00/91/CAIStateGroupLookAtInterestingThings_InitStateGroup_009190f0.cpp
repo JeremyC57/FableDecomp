@@ -1,4 +1,6 @@
 // CAIStateGroup_LookAtInterestingThings::InitStateGroup(const CWorld&, CThingAICreature&) -- schedule the first
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // look 0..239 + 0..119 seconds from now and register the group with the creature's idle scheduler (type 9).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009190F0, length 184 bytes (+ int3 padding). `ret 8`.
 // Callees: CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0 (twice), GFROR13 @ 0x00497890, GFGetCurrentFrame
@@ -161,7 +163,12 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 long __fastcall GFROR13(unsigned long);      // 0x00497890
             // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -188,7 +195,7 @@ void CAIStateGroup_LookAtInterestingThings::InitStateGroup(const CWorld& world, 
 {
     unsigned long a = WorldRandomRange(*GetPWorldSeed(), 240);
     unsigned long b = WorldRandomRange(*GetPWorldSeed(), 120);
-    long framesPerSecond = g_FramesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     FrameToLook = CWorld::GetFrame() + (a + b) * framesPerSecond;
     CTCIdleScheduler* scheduler;
     if (((CThing&)creature).GetInterface(&scheduler, 0xd3))

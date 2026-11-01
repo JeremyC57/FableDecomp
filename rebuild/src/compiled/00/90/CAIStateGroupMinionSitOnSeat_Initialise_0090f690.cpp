@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionSitOnSeat::Initialise(CAIBrain&, CThingAICreature&, long, EScriptAIPriority, const CCharString&)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // -- the base initialisation, then a random sit-down frame within the next 80 seconds.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F690, length 125 bytes (+ int3 padding), `ret 14h`. Vtable slot 1.
 // Callees: CAIStateGroupBase::Initialise @ 0x008FCEC0 (the five arguments forwarded from the frame), CAIStateGroupBase::
@@ -102,7 +104,12 @@ class CWorld { public: static long __fastcall GetFrame(); };            // 0x004
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CCharString;
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CAIStateGroupBaseI : CAIStateGroupBase {
     void Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name);  // 0x008FCEC0
@@ -117,7 +124,7 @@ struct CAIStateGroup_MinionSitOnSeat : CAIStateGroupBaseI {
 void CAIStateGroup_MinionSitOnSeat::Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name)
 {
     CAIStateGroupBaseI::Initialise(brain, creature, id, priority, name);
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     unsigned long* seed = GetPWorldSeed();
     unsigned long range = framesPerSecond * 80;
     unsigned long next = *seed * 0x24A1U + 0x24DFU;

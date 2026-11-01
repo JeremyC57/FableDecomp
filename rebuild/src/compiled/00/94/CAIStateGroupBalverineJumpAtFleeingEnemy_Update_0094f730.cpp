@@ -1,4 +1,6 @@
 // CAIStateGroup_BalverineJumpAtFleeingEnemy::Update() -- schedule next attempt, lunge at a live target, then break off after successful contact.
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail0094F730,230 bytes. State/brain use shared headers; thing Dead is retail+91 vs donor+a1.
 // Actions have the verified0x114-byte retail combat base, rather than donor0x12c.
 #include "engine/CAIStateGroup_BalverineJumpAtFleeingEnemy.h"
@@ -25,7 +27,12 @@ class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
 class CCreatureAction_BalverineBreakOffFromCombatLong : public CCombatActionBase { public:
     CCreatureAction_BalverineBreakOffFromCombatLong(CThingCreatureBase*,CThing*); // 008CCD30
 };
-extern long g_framesPerSecond; // 01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld { public: static long __fastcall GetFrame(); }; // 0049D870
 struct CJumpAtFleeingMethods : CAIStateGroup_BalverineJumpAtFleeingEnemy {
     CAIBrain* Brain() const {return *(CAIBrain* const*)_pad_0x04;}
@@ -35,7 +42,7 @@ struct CJumpAtFleeingMethods : CAIStateGroup_BalverineJumpAtFleeingEnemy {
     void Update();
 };
 void CJumpAtFleeingMethods::Update() {
-    long fps=g_framesPerSecond;
+    long fps=CMainGameComponent::GetConstantFPS();
     WaitUntilWorldFrameForNextAttempt=(long)(fps*5.0f+CWorld::GetFrame());
     if(IsAlive(Target())) {
         CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;

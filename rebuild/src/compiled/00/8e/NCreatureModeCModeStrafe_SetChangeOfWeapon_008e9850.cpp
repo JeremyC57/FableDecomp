@@ -1,5 +1,7 @@
 // NCreatureMode::CModeStrafe::SetChangeOfWeapon(CThing* weapon) -- take the new weapon's id and animation group into the strafe filter ("STAND" and -1 with no weapon thing), rebuild the combination anims, recompute the aiming frame count / centre from the projectile-aim animation's length, then clear the strafing combination anims
 // Leaf: SetChangeOfWeapon
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9850, 251 bytes (+ int3 padding), `ret 4`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0 (const instantiation; inlined HasTC + GetTC for
 //   CTCWeapon 0x48), CTCWeapon::GetAnimationGroupName 0x005DABE0, CAnimFilterOfGroup::SetGroup(const CCharString&)
@@ -108,7 +110,12 @@ template <class T> class CCountedPointer { public:
     void* Info;
 };
 
-extern long g_framesPerSecond;                 // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeBase {                             // CTCCreatureModeManager::CModeBase, retail 0x1c
     virtual void v00();
@@ -152,7 +159,7 @@ void CModeStrafe::SetChangeOfWeapon(CThing* weapon)
     AimingNumFrames = 0;
     if (aim) {
         CGlobalComponents* components = GetGlobalComponents();
-        AimingNumFrames = (long)(g_framesPerSecond * components->GetAnimBank()->PeekAnimation(aim->AnimIndex)->Seconds);
+        AimingNumFrames = (long)(CMainGameComponent::GetConstantFPS() * components->GetAnimBank()->PeekAnimation(aim->AnimIndex)->Seconds);
     }
     AimingCenterFrame = AimingNumFrames / 2;
     ClearStrafingCombinationAnims(false);

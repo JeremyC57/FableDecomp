@@ -1,6 +1,8 @@
 // CTCWife::GetAppearanceChangedNoticed(EWifeAppearanceCategories* category) -- among the appearance categories whose change the wife noticed within the def's notice window, report the one with the highest priority; true if any
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CED50, length 334 bytes (`ret 4`).
-// Callees: GFGetCurrentFrame @ 0x0049D870 (static; `this` happens to be in ecx). Globals: g_FramesPerSecond @ 0x01375550,
+// Callees: GFGetCurrentFrame @ 0x0049D870 (static; `this` happens to be in ecx). Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550,
 //   the per-category priority table @ 0x0125ED00 (16 longs in .rdata; descriptive name).
 // Layout: engine/CTCWife.h carries the PDB offsets (FrameNoticedChangeInAppearance +0xAC); retail's GiftsReceived map and
 //   ThingsSeenThePlayerWear set are 12-byte STLport trees (PDB 16), so the array sits at +0xA4 in retail (the landed
@@ -15,7 +17,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                        // 0x0049D870
-extern long g_FramesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern const long g_AppearanceCategoryPriority[16];         // 0x0125ED00
 
 class CHeroMarriageDef { public:
@@ -40,7 +47,7 @@ bool CTCWife::GetAppearanceChangedNoticed(EWifeAppearanceCategories* category)
     bool found = false;
     for (long i = 0; i < 16; ++i) {
         long noticed = FrameNoticedChangeInAppearance[i];
-        if (noticed > 0 && now - noticed < PHeroMarriageDef->AppearanceChangeNoticeSeconds * g_FramesPerSecond
+        if (noticed > 0 && now - noticed < PHeroMarriageDef->AppearanceChangeNoticeSeconds * CMainGameComponent::GetConstantFPS()
             && g_AppearanceCategoryPriority[i] > best) {
             best = g_AppearanceCategoryPriority[i];
             *category = i;

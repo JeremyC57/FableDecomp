@@ -1,4 +1,6 @@
 // CTCKrakenTentacle::QueueStrikeDamage() -- while the kraken is alive, queue the strike: QueuedStrikeTick = current frame + (long)(def strike delay in seconds * frames per second)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F1170, length 84 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times), the global frame counter getter @ 0x0049D870,
 // __ftol2 @ 0x00BFEA70. Global: the frames-per-second long @ 0x01375550 (value 15).
@@ -31,7 +33,12 @@ class CKrakenTentacleDef { public:
     float         StrikeDelaySeconds;               // +0x40
 };
 
-extern long g_framesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -50,7 +57,7 @@ void CTCKrakenTentacle::QueueStrikeDamage()
 {
     if (PKraken.Get() && !PKraken.Get()->Dead) {
         CThing* kraken = PKraken.Get();
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         const CKrakenTentacleDef* def = PTentacleDef;
         QueuedStrikeTick = CWorld::GetFrame() + (long)(framesPerSecond * def->StrikeDelaySeconds);
     }

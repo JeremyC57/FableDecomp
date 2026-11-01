@@ -1,4 +1,6 @@
 // CCombatActionBase::ProcessStrikeEvents() -- run the active strike event (damage, weapon aug effect), clear it when it ends, then arm the interrupt / reset-combo / movement-interrupt flags
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008597A0, length 638 bytes (+ int3 padding), esp frame, plain `ret`; called from
 //   CCombatActionBase::FrameUpdate @ 0x00859D80.
 // Callees: CCreatureActionBase::GetPCreatureAnimationOwner @ 0x00692950 (result unused; manifest "_Dest_val<...>" label is
@@ -9,7 +11,7 @@
 //   pointer in ecx), CInterfaceMap::LowerBound @ 0x0040F020 (the inlined GetInterface), CTCObjectAugmentations::FireCombatAugEffect
 //   @ 0x00766A60 and the InStrikeAction clear @ 0x00765D40 (`mov byte [ecx+64h],0`; manifest "CXMVPlaybackInfo" is propagated),
 //   CTCCombat::ResetComboChainPos @ 0x00733210 (manifest "CWADFile::Close" is propagated), _ftol @ 0x00BFEA70.
-//   Data: g_FramesPerSecond @ 0x01375550 (long).
+//   Data: CMainGameComponent::GetConstantFPS() @ 0x01375550 (long).
 // Shape: the frame rate is copied into a local first (it is the fild operand of both time tests). The strike-event list test is
 //   begin() != end() (`cmp [head],head`). The ended-event path calls IS_THING_ALIVE out of line; the no-strike path spells the
 //   same test inline (GetPItem twice, Dead bit at +0x91), and VC7.1 tail-merges the two aug-effect clears. The combat
@@ -19,7 +21,12 @@
 //   movement-interrupt frame +0xcc, flag bools +0xd8..+0xdc, ActiveStrikeEventIndex +0xfc, LastWeaponUsedInStrike +0x100.
 //   CThing: interface bitset +0x20, interface map +0x44, ThingTypeFlags +0x6c, Dead bit +0x91 (PDB - 0x10). CStrikeEvent +0x08 =
 //   StrikeEventIndex (PDB).
-extern long g_FramesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -142,7 +149,7 @@ class CCombatActionBase : public CCreatureActionBase { public:      // retail si
 
 void CCombatActionBase::ProcessStrikeEvents()
 {
-    long framesPerSecond = g_FramesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     GetPCreatureAnimationOwner();
     if (StrikeEvents.HasEvents() && IsStrikeEventActive()) {
         PerformPossibleDamageAction(0.25f);

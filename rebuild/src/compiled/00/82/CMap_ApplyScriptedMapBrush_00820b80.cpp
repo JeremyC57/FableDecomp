@@ -1,4 +1,6 @@
 // CMap::ApplyScriptedMapBrush(const CCharString& name, bool overTime) -- queue a scripted map brush as an update area (timer + name) and, when it is applied at once (or its creation time fits in one frame), apply it fully and zero the new area's timer
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00820B80, length 194 bytes (`ret 8`).
 // Callees: CMap::GetScriptedMapBrush @ 0x0081E960, CScriptedMapBrush::GetGameArea @ 0x0082E280 (result unused) and GetBrushName @ 0x0082E250
 // (both labelled CModeBlock::GetAnimFilter), CCharString copy ctor @ 0x0099EC30, ~CCharString @ 0x0099EAE0,
@@ -61,7 +63,12 @@ __declspec(noinline) void CUpdateAreaVector::_M_insert_overflow(CScriptedMapBrus
     
 }
 #pragma auto_inline(on)
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CMap { public:
     void*             __vftable;                // +0x00
     unsigned char     _pad04[0xc];
@@ -103,7 +110,7 @@ void CMap::ApplyScriptedMapBrush(const CCharString& name, bool overTime)
     brush->GetGameArea();
     float time = brush->CreationTimeSeconds;
     ScriptedMapBrushUpdateAreas.push_back(CScriptedMapBrushUpdateArea(time, brush->GetBrushName()));
-    if (!overTime || 1.0f / g_FramesPerSecond >= brush->CreationTimeSeconds) {
+    if (!overTime || 1.0f / CMainGameComponent::GetConstantFPS() >= brush->CreationTimeSeconds) {
         ApplyScriptedMapBrushUpdate(1.0f, brush);
         ScriptedMapBrushUpdateAreas.back().Timer = 0;
     }

@@ -2,6 +2,8 @@
 // action has a single animation set, start it at the fraction of the delay-to-total window already run; when the dragon
 // has a creature-mode manager, add a CModeDragonFlying over MovementPoints from PreviousPoint (or the first point) at Speed
 // Leaf: ?Initialise@CCreatureAction_DragonFlyInto
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -53,7 +55,12 @@ class CAnimSet { public:
 };
 CAnimSet* __fastcall GetSingleActionAnimSet(CThing* creature, long action);   // 0x008F4AA0
 class CAnimationEntry { public: long BankIndex; };
-extern long g_framesPerSecond;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
@@ -145,7 +152,7 @@ void CCreatureAction_DragonFlyInto::Initialise()
     CCombatActionBase::Initialise();
     RunningTimeSeconds = GetStartRunningTimeSeconds();
     CAnimSet* set = GetSingleActionAnimSet(((CThing*)PCreature.GetPItem()), PAnimEntry->BankIndex);
-    float fps = (float)g_framesPerSecond;
+    float fps = (float)CMainGameComponent::GetConstantFPS();
     if (set) {
         float delay = GetAnimDelayTime() / fps;
         float fraction = (RunningTimeSeconds - delay) / (TotalTime / fps - delay);

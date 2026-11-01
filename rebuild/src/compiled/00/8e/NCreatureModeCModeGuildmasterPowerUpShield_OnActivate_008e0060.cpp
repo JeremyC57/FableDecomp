@@ -1,5 +1,7 @@
 // NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate() -- guildmaster shield power-up: find nearby bodyguards, give each a physical-shield spell and a POWER_UP_BEAM effect
 // Leaf: ?OnActivate@CModeGuildmasterPowerUpShield
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E0060, 839 bytes, frame 0x158.
 // Shape (the frame layout): three same-TU `#pragma auto_inline(off)` / `__declspec(noinline)` stand-ins for callees whose
 //   retail bodies sat in this TU -- GetSubDef<CSpecialEffectsDef> (agent291's), the two vector<CIntelligentPointer<T>>
@@ -94,9 +96,11 @@ class CThing { public:
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
 };
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
@@ -206,7 +210,12 @@ class CCreatureAction_CastPhysicalShieldSpell : public CCombatActionBase { publi
                                             long timeLimit, float health);   // 0x008BB6F0
     ~CCreatureAction_CastPhysicalShieldSpell();                               // 0x0062E900
 };
-extern long g_FramesPerSecond;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vtable 0x0123E7E0
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) { SetPItem((CBaseObject*)item); }
@@ -336,11 +345,11 @@ void CModeGuildmasterPowerUpShield::OnActivate()
             unsigned long count = bodyguards.size();
             unsigned long r = GFRandom(GetWorld()->GetWorldSeed());
             unsigned long index = count ? r % count : 0;
-            long timeLimit = (long)((float)g_FramesPerSecond * 12.0f);
+            long timeLimit = (long)((float)CMainGameComponent::GetConstantFPS() * 12.0f);
             bodyguards._M_start[index]->SetCurrentAction(CCreatureAction_CastPhysicalShieldSpell(*bodyguards._M_start[index], 2, true, "", timeLimit, 10.0f));
             ShieldTargets.push_back(CIntelligentPointerCreature(bodyguards._M_start[index]));
             EraseCreature(bodyguards, &bodyguards._M_start[index]);
-            CThing* fx = CreateSpecialEffect(effect, m_pThing->GetPos(), false);
+            CThing* fx = CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false);
             if (fx && !(fx->m_flags91 & 1))
                 Effects.push_back(CIntelligentPointerThing2(fx));
         }

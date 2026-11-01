@@ -1,5 +1,8 @@
 // CThingObject::OnCreate() -- a live object takes its def's graphic and its own scale into its graphic appearance, runs the game-object creation and the physical-thing validation, takes the def's die-off timer (dying off when it is positive) and, when the def gives a rotation time, sets a sprite appearance (component 0x5c) rotating once per that many seconds
 // Leaf: ?OnCreate@CThingObject
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007032F0, length 380 bytes (+4 int3), plain `ret`.
 //   Name from Ego_r.pdb / the catalog (`CThingObject::OnCreate`).
 // Callees: CTCGraphicAppearance::SetScale(float) @ 0x004BFA50, CThingGameObject::OnCreate @ 0x00838A40,
@@ -74,8 +77,13 @@ class CThingObjectDef { public:
     long           DieOffTimer;                         // +0x94
 };
 
-extern const float EPSILON;           // 1e-4f
-extern long g_framesPerSecond;                 // 15
+extern const float DELTA_NOTIONAL_ZERO;           // 1e-4f
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -157,7 +165,7 @@ bool CThingObject::OnCreate()
         return false;
     DieOffTimer = PDef->DieOffTimer;
     DiesOff = DieOffTimer > 0;
-    if (PDef->RotationTime > EPSILON && HasTC(0x5c)) {
+    if (PDef->RotationTime > DELTA_NOTIONAL_ZERO && HasTC(0x5c)) {
         CTCBase* component = GetTC(0x5c);
         bool isSprite;
         {
@@ -165,7 +173,7 @@ bool CThingObject::OnCreate()
             isSprite = component->GetClassName() == spriteName;
         }
         if (isSprite)
-            ((CTCGraphicAppearanceSprite*)component)->SetRotationAngle(1.0f / (g_framesPerSecond * PDef->RotationTime));
+            ((CTCGraphicAppearanceSprite*)component)->SetRotationAngle(1.0f / (CMainGameComponent::GetConstantFPS() * PDef->RotationTime));
     }
     return true;
 }

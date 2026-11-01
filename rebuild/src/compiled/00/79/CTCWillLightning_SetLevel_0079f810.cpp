@@ -1,4 +1,6 @@
 // CTCWillLightning::SetLevel(long) -- copy the per-level lightning-spell tunables out of the def's level vectors
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079F810, 247 bytes (+9 int3). __fastcall, `ret 4`.
 // Callees: _ftol2 0x00BFEA70 (the (long) truncation); global frame-rate tick count 0x01375550 (fild).
 // Shape: the def object (CDefPointer<CSpecialAbilitiesLightningSpellDef const>::Object, +0x28) is loaded once into eax and
@@ -40,7 +42,12 @@ class CSpecialAbilitiesLightningSpellDef { public:
     vector<float> m_faSubBeamDelay;              // +0xf4
     vector<float> OnhitEveryNSecs;               // +0x100
 };
-extern long g_FramesPerSecond;                   // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCWillLightning { public:
     void* __vftable;                             // +0x00
     unsigned char _pad_0x04[0x28 - 0x04];
@@ -83,5 +90,5 @@ void CTCWillLightning::SetLevel(long level)
     m_fMainBeamDecapitationTime = def->m_faMainBeamDecapitationTime[level];
     m_fSubBeamDecapitationTime = def->m_faSubBeamDecapitationTime[level];
     m_fSubBeamDelay = def->m_faSubBeamDelay[level];
-    m_OnhitEveryFrame = (long)(g_FramesPerSecond * def->OnhitEveryNSecs[level]);
+    m_OnhitEveryFrame = (long)(CMainGameComponent::GetConstantFPS() * def->OnhitEveryNSecs[level]);
 }

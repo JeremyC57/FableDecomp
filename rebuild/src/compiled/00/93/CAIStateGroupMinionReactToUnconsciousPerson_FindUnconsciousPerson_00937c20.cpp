@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson() -- once a second (staggered by the creature's
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // UID), find the nearest unconscious ally the creature is aware of within a 7-unit rough box.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00937C20, length 253 bytes (+ int3 padding).
 // Callees: GFGetCurrentFrame @ 0x0049D870, __allrem @ 0x00BFEC30 (signed 64-bit `(frame + UID) % fps`), CThing::
@@ -206,7 +208,12 @@ class CAIStateGroupBase { public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
@@ -319,7 +326,7 @@ bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& box, const TUnco
 CThingCreatureBase* CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson()
 {
     __int64 uid = ((CThingWithUID*)PBrain->PCreature)->UID;
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     CThingCreatureBase* found = 0;
     if ((CWorld::GetFrame() + uid) % framesPerSecond == 0) {
         const C3DVector& pos = ((CThingPos*)PBrain->PCreature)->GetPos();

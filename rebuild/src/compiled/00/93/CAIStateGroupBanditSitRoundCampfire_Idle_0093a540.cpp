@@ -1,4 +1,6 @@
 // CAIStateGroup_BanditSitRoundCampfire::Idle() -- do nothing for a random 5..15 seconds (or until the idle action stops); true when the action was still running at the end
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093A540, length 125 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (twice, result unused: the world is only the object
 // expression of static calls), CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFFloatRandom(float, ulong*)
@@ -13,10 +15,15 @@
 // `GetPWorld()->Static()` still emits the GetPWorld call (wave 25 lesson), which is the unused call here.
 // Model: local -- the class has no engine header (layout from struct_layouts_egor.tsv as in the landed 0x0093A500).
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-extern long g_framesPerSecond;                                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CWorld { public:
-    static long GetFramesPerSecond() { return g_framesPerSecond; }
+    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
     static long __fastcall GetFrame();
 };
 

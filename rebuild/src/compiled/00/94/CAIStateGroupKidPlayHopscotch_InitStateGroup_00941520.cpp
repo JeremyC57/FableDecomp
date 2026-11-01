@@ -1,11 +1,13 @@
 // CAIStateGroup_KidPlayHopscotch::InitStateGroup(const CWorld&, CThingAICreature&) -- reset the hopscotch game state.
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941520, length 40 bytes.
 // Callee: GFGetCurrentFrame @ 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated; it returns the global
 // frame counter, see the landed CTCTargetingPlayer::SetAsTargetNextThingInDirection). The global at 0x01375550
 // is the frames-per-second constant (seconds * 60 frames).
 //
 // Shape: body assignments in order -- the board flag at +0x14 cleared, the start frame at +0x54 stamped, the
-// duration at +0x58 set to g_framesPerSecond * 60 (one minute of play; the global holds 15), then the hop
+// duration at +0x58 set to CMainGameComponent::GetConstantFPS() * 60 (one minute of play; the global holds 15), then the hop
 // counter +0x60, the square index +0x64 and the throw flag +0x5c zeroed from one register IN THAT ORDER (the
 // scheduler sinks the duration store below them; the zero-store order is the source order). Both arguments are unused (`ret 8`). No engine header exists for this class; the layout is local.
 class CWorld;
@@ -15,7 +17,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };               // 0x0049D870
-extern long g_framesPerSecond;                 // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIStateGroupBase { public:
     virtual void v00();
@@ -43,7 +50,7 @@ void CAIStateGroup_KidPlayHopscotch::InitStateGroup(const CWorld& world, CThingA
 {
     m_foundBoard = false;
     m_startFrame = CWorld::GetFrame();
-    m_playDurationFrames = g_framesPerSecond * 60;
+    m_playDurationFrames = CMainGameComponent::GetConstantFPS() * 60;
     m_hopCount = 0;
     m_currentSquare = 0;
     m_thrown = false;

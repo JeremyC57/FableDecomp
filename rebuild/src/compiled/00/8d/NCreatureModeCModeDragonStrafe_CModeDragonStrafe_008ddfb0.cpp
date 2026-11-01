@@ -1,6 +1,8 @@
 // NCreatureMode::CModeDragonStrafe::CModeDragonStrafe(CThing*, float, float, float, float) -- CModeDragonFlyingBase (empty flight spline, tension 0.5), the "STRAFE" group filter, strafe timing converted from seconds to frames
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the spline's CArray modelled with the STLport alloc-proxy end-of-storage member: the `push -1` of the filter name lands after the three zero stores as in retail
 // Leaf: ??0CModeDragonStrafe
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDFB0, 200 bytes (`ret 14h`). Vtable 0x012686C8 (NCreatureMode::CModeDragonStrafe).
 // Callees: CModeBase::CModeBase(CThing*) 0x0073EAC0; CCharString(const char*, long) 0x0099EBF0, CCharString() 0x0099E4B0,
 // operator= 0x0099EFB0, ~CCharString 0x0099EAE0; CRC 0x004014A0; __ftol2 0x00BFEA70 (x3).
@@ -109,7 +111,12 @@ class CCardinalSpline { public:                   // retail 0x14
     CCardinalSpline() : Tension(0.5f), EndPointsConnected(false) { }
 };
 
-extern long g_framesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 namespace NCreatureMode {
 
@@ -136,9 +143,9 @@ CModeDragonStrafe::CModeDragonStrafe(CThing* thing, float duration, float speed,
     , Filter("STRAFE")
 {
     Speed = speed;
-    Timer = (long)(duration * g_framesPerSecond);
+    Timer = (long)(duration * CMainGameComponent::GetConstantFPS());
     Burninated = false;
-    BurninateStartTime = (long)(Timer - burninateBeforeEnd * g_framesPerSecond);
+    BurninateStartTime = (long)(Timer - burninateBeforeEnd * CMainGameComponent::GetConstantFPS());
     BurninateDuration = (long)burninateDuration;
 }
 

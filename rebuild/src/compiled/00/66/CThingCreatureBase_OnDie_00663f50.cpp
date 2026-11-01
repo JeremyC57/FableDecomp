@@ -1,5 +1,7 @@
 // CThingCreatureBase::OnDie() -- base physical death; spawn the EXPLODE_ON_KILLING_BLOW effect when the def names one; leave a dead-creature body (copying orientation, the carried components and the lighting channel) when the creature and its def allow it; post the death message, tell the killer it killed and the creature's own entity events it died, and drop experience orbs for the hero
 // Leaf: ?OnDie@CThingCreatureBase
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663F50, 1052 bytes (+ int3 padding), plain `ret`; virtual OnDie of CThingCreatureBase
 //   (the landed CThingAICreature::OnDie 0x00832E60 tail-calls it).
 // Callees: CThingPhysical::OnDie 0x006A4CF0, CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580,
@@ -122,7 +124,12 @@ class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* MessageEventManager;          // +0x60
 };
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CThing {
 public:
@@ -184,7 +191,9 @@ public:
 protected:
     CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -235,7 +244,7 @@ void CThingCreatureBase::OnDie()
         bool found = PBaseDef->GetSubDef(effectsSlot);
         CSpecialEffectsDef* effects = effectsSlot.m_p;
         if (found && effects->GetEffectFromString("EXPLODE_ON_KILLING_BLOW", effectType))
-            CreateEffectThing(effectType, &GetPos(), false);
+            CTCDParticleEmitter::Create(effectType, *(&GetPos()), false);
         if (effects && --effects->m_refCount == 0)
             effects->Destroy();
     }
@@ -277,7 +286,7 @@ void CThingCreatureBase::OnDie()
     CThing* killer = ((CThing*)PLastAttackedByCreature.GetPItem());
     CTCPhysicsBase* physics = PhysicsTC;
     CWorld* world = &GetWorld();
-    world->MessageEventManager->AddMessage(9, g_framesPerSecond, physics->Position, killer, this, 0.0f, 0.0f, 0);
+    world->MessageEventManager->AddMessage(9, CMainGameComponent::GetConstantFPS(), physics->Position, killer, this, 0.0f, 0.0f, 0);
     if (killer && !killer->Dead) {
         if (killer->HasTC(0x42)) {
             CTCEntityEvents* events = (CTCEntityEvents*)killer->GetTC(0x42);

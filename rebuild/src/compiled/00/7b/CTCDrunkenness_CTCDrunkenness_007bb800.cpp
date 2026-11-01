@@ -1,5 +1,7 @@
 // CTCDrunkenness::CTCDrunkenness(CThing*) -- CTCBase(thing), never sobered, seconds per frame from the frame rate, and a per-creature drunkenness threshold drawn from the drunkenness ability def (0.5 .. 1.5 times its base threshold)
 // Leaf: ??0CTCDrunkenness
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 //
 // Retail 0x007BB800, 147 bytes (`ret 4`). Ego_r.pdb `??0CTCDrunkenness@@QAE@AAVCThing@@@Z`. Callees:
 // CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef<CSpecialAbilitiesDrunkennessDef>
@@ -68,7 +70,12 @@ class CThing { public:
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
 };
 
-extern long g_FrameRate;                                    // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -95,7 +102,7 @@ class CTCDrunkenness : public CTCBase { public:                           // vta
 CTCDrunkenness::CTCDrunkenness(CThing* thing)
     : CTCBase(thing)
     , FrameLastUpdatedSobering(0)
-    , SecondsPerFrame(1.0f / g_FrameRate)
+    , SecondsPerFrame(1.0f / CMainGameComponent::GetConstantFPS())
 {
     CDrunkennessDefPointer def;
     ParentThing->GetDef()->GetSubDef(&def);

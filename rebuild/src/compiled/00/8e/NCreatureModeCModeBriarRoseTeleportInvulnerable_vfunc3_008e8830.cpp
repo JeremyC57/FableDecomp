@@ -1,4 +1,6 @@
 // 008E8830 NCreatureMode::CModeBriarRoseTeleportInvulnerable::FrameUpdate.
+// Naming wave 18: the global stand-in g_FrameTicks_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Original nested mode owner, retail action sizes, and weak control blocks.
 #define CModeStandBase CModeStandBasePdb
 #include "engine/CModeStandBase.h"
@@ -9,7 +11,12 @@
 #include "engine/CCreatureActionBase.h"
 #undef CCreatureActionBase
 
-extern long g_FrameTicks_01375550;
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 namespace NGraphicAppearance {
 class CTCGraphicAppearance { public: void SetAlpha(unsigned char); };
 }
@@ -100,7 +107,7 @@ void CModeBriarRoseTeleportInvulnerable::FrameUpdate()
     }
 
     long alpha = (long)(((float)Timer * 255.0f) /
-                        ((float)g_FrameTicks_01375550 * 1.25f));
+                        ((float)CMainGameComponent::GetConstantFPS() * 1.25f));
     if (alpha < 0)
         alpha = 0;
     else if (alpha > 255)

@@ -1,4 +1,6 @@
 // CCreatureAction_SpiritHitResponse::Initialise() -- base Initialise, set the action length from a global frame count, double the knock-back vector and apply it to the creature's physics, then tell the co-op spirit component (interface type 0xc7) it was hit
+// Naming wave 18: the global stand-in g_SpiritHitResponseFrames (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00854810, length 158 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::Initialise @ 0x00694D10 (direct base call), __ftol2 @ 0x00BFEA70, CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (PCreature at +8, twice), CTCPhysicsBase::ApplyAcceleration(const C3DVector&) @ 0x006B0210 (the creature's physics at +0x60),
@@ -67,7 +69,12 @@ public:
 class CTCCoopSpirit { public:                      // interface type 0xc7 component
     void OnHit();                           // 0x006707A0
 };
-extern long g_SpiritHitResponseFrames;      // 0x01375550 (15)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -86,7 +93,7 @@ class CCreatureAction_SpiritHitResponse : public CCreatureActionBase { public:
 void CCreatureAction_SpiritHitResponse::Initialise()
 {
     CCreatureActionBase::Initialise();
-    TotalTime = (long)(float)g_SpiritHitResponseFrames;
+    TotalTime = (long)(float)CMainGameComponent::GetConstantFPS();
     Knockback *= 2.0f;
     CThing* creature = PCreature.GetPItem();   // fetched before the argument push: a named local
     creature->m_pPhysics->ApplyAcceleration(Knockback);

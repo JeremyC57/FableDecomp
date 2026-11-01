@@ -1,5 +1,7 @@
 // CCreatureAction_PlayIntoLoopOutOfAnimation::CCreatureAction_PlayIntoLoopOutOfAnimation(CThingCreatureBase&, const CCharString&, const CCharString&, const CCharString&, float, bool, long, long) -- the timed-loop form: the base action on the "into" animation (speeds -1 / 1, empty sound pair), stage 0, no loop count, copies of the loop / out-of names, and the finish frame = now + frames-per-second * loop time (the time is then cleared)
 // Leaf: ??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008427E0, 200 bytes, thiscall, `ret 20h`, returns this. Vtable 0x01273B2C.
 // Identity (proven): Ego_r.pdb donor order has four ctors of this class, 0x0051CC50 (..11J_NJJ, the landed 0x00842740),
 //   0x0051CCF0 (..11M_NJJ), 0x0051CDD0 (private ..1JM_NJJ) and 0x0051CE90 (private .._NJJ, the landed 0x00842960); retail keeps
@@ -42,7 +44,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();                       // 0x0049D870
 };
-extern long g_framesPerSecond;                               // 0x01375550 (descriptive)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CCreatureActionBase {
 public:
     CCreatureActionBase(CThingCreatureBase& creature, float a, float b, const CAnimationEntry& anim, const CSoundPair& sound,
@@ -90,7 +97,7 @@ CCreatureAction_PlayIntoLoopOutOfAnimation::CCreatureAction_PlayIntoLoopOutOfAni
     , LoopAnimName(loopAnimName)
     , OutOfAnimName(outOfAnimName)
 {
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     FrameToFinish = (long)(framesPerSecond * AmountOfTimeToLoop + CWorld::GetFrame());
     AmountOfTimeToLoop = 0;
 }

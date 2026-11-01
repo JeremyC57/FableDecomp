@@ -1,11 +1,13 @@
 // CCard::FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation) -- advance a tavern-game card one frame along its move (lerp LocalPos to NewLocalPos) and its turn (lerp the rotation, lift and tilt the card), then place its mesh on the table
 // Leaf: ?FrameUpdate@CCard@@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F06F0, length 553 bytes (ret 8). Name: Ego_r.pdb CCard::FrameUpdate; the
 // catalog label "CTCTavernGame_UpdateCardTilt" is descriptive only. Caller: CTCTavernGameCardBase::FrameUpdate @ 0x008F1DE4.
 // Callee: PositionMesh(CThingObject*, const C3DVector& pos, const CRightHandedSet& rh, const C3DVector& offset, float tilt,
 //         float scale) @ 0x005EABC0 (__fastcall global; the landed CTCTavernGameCoinBase::UpdateMeshes declares the 5th
 //         parameter `long` and passes 0 -- here it receives a float bit pattern straight from a float slot, so it is a float).
-// Globals: g_framesPerSecond 0x01375550 (long). Float pool: 1.0f 0x0122DED8, 0.0f 0x0122DEDC, 0.5f 0x0122F59C; double pool:
+// Globals: CMainGameComponent::GetConstantFPS() 0x01375550 (long). Float pool: 1.0f 0x0122DED8, 0.0f 0x0122DEDC, 0.5f 0x0122F59C; double pool:
 //          (double)TWO_PI 0x0124F2B8, 1.0 0x01237F00, 0.25 0x01238010.
 // Layout (Ego_r.pdb CCard, 88 bytes, byte-packed vectors, as the landed CCard::Move @ 0x008F0660 / Turn @ 0x008F0620 model
 // it): InitialRotation +0x0c, FinalRotation +0x10, TurnSpeed +0x14, TurnFraction +0x18, MoveSpeed +0x1c, MoveFraction +0x20,
@@ -58,7 +60,12 @@ public:
 };
 #pragma pack(pop)
 
-extern long g_framesPerSecond;                // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 static const float TWO_PI = 6.2831855f;       // double pool 0x0124F2B8 = (double)6.2831855f
 extern "C" double __cdecl cos(double);
 extern "C" double __cdecl sin(double);
@@ -68,7 +75,7 @@ void __fastcall PositionMesh(CThingObject* piece, const C3DVector& pos, const CR
 
 void CCard::FrameUpdate(const C3DVector& position, const CRightHandedSet& orientation)
 {
-    float dt = 1.0f / g_framesPerSecond;
+    float dt = 1.0f / CMainGameComponent::GetConstantFPS();
     C3DVector pos;
     if (Moving) {
         MoveFraction += dt * MoveSpeed;

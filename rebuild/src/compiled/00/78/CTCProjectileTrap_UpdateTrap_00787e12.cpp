@@ -1,5 +1,8 @@
 // CTCProjectileTrap::UpdateTrap() -- per-frame trap logic: target the hero when the current target is gone, turn the trap's look component toward the target, then count the idle/shot timers down and fire (or go idle after a full round)
 // Leaf: UpdateTrap
+// Naming wave 18: the interface-presence stand-in CComponentBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00787E12, 279 bytes (plain `ret`). CTCProjectileTrap vtable 0x0126B90C slot 29. The trap
 //   TU is size-optimised with a frame pointer: `optimize("y", off)` + `("s", on)` (`push ebp ; mov ebp,esp`, `and [esi+68h],0`,
 //   `leave`), as the landed TriggerTrap (0x00787CA5) and CTCMeleeTrap::UpdateAnimation (0x00788555).
@@ -8,7 +11,7 @@
 //   (`__fastcall`, by const reference), CIntelligentPointer(CThing*) @ 0x004A96F0, CIntelligentPointer::operator= @ 0x004A9760,
 //   ~CBaseIntelligentPointer @ 0x00A01C10, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020 (interface
 //   0x43 = CTCLook), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CTCLook::LookAtPos(const
-//   C3DVector&, long) @ 0x00753E90, __ftol2 @ 0x00BFEA70, virtual TriggerTrap (slot 30, +0x78). g_framesPerSecond @ 0x01375550.
+//   C3DVector&, long) @ 0x00753E90, __ftol2 @ 0x00BFEA70, virtual TriggerTrap (slot 30, +0x78). CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: Ego_r.pdb CTCTrapBase with 12-byte retail vectors (PTrapDef +0x54, Active +0x58, Triggered +0x59), CTCProjectileTrap
 //   ShotTimer +0x60, IdleTimer +0x64, NumShotsThisRound +0x68, PTarget +0x6C (PDB -0xC); CTrapDef NumShotsToFireBeforeIdle +0x58,
 //   SecondsIdle +0x5C (def bodies sit 4 bytes low).
@@ -43,14 +46,16 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 #pragma auto_inline(on)
-struct CComponentBitset {                               // std::bitset<274>
-    unsigned long m_words[9];
-    bool test(long bit);                                // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    unsigned long _M_w[(_Nb + 31) / 32];
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CThing {
 public:
     unsigned char    _pad00[0x20];
-    CComponentBitset UsingComponents;                   // +0x20
+    std::bitset<274> UsingComponents;                   // +0x20
     CInterfaceMap    m_interfaces;                      // +0x44
     const C3DVector& GetPos() const;                     // 0x004C73D0
 };
@@ -107,7 +112,12 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(CThing* const& thing)
     return PointerAliveSink_s7(thing);
 }
 #pragma auto_inline(on)
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTrapDef { public:
     unsigned char _pad00[0x58];
     long  NumShotsToFireBeforeIdle;                     // +0x58 (PDB +0x5c)
@@ -173,7 +183,7 @@ void CTCProjectileTrap::UpdateTrap()
             --ShotTimer;
         if (ShotTimer == 0) {
             if (NumShotsThisRound >= PTrapDef->NumShotsToFireBeforeIdle) {
-                IdleTimer = (long)(g_framesPerSecond * PTrapDef->SecondsIdle);
+                IdleTimer = (long)(CMainGameComponent::GetConstantFPS() * PTrapDef->SecondsIdle);
                 NumShotsThisRound = 0;
             } else {
                 ((CTCProjectileTrapV*)this)->TriggerTrap();

@@ -1,5 +1,8 @@
 // CTCHeroStats::Vomit() -- makes the hero throw up: plays the puke into/loop/out-of action for a drunkenness-scaled random time, counts it, posts the deed and empties the beer reservoir
 // Leaf: Vomit
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057B783, 596 bytes; size TU with the biased `lea ebp,[esp-78h]` frame:
 // `#pragma optimize("s", on)` alone (adding `optimize("y", off)` as the smaller CTCHeroStats rows gives `mov ebp,esp`).
 // Callees: CTCBase::PeekPlayerManager() @ 0x00686D50, CPlayerManager::GetMainPlayer() @ 0x00449960,
@@ -11,7 +14,7 @@
 //          CTCHeroOnlineScoreboard::UpdateScoreForActivity @ 0x0055F3B0, CThingCreatureBase::IsFreeToPerformAction
 //          @ 0x00662210 / SetCurrentAction @ 0x006644F0, CThing::GetPos() @ 0x004C73D0,
 //          CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990, CWorld::GetFrame() @ 0x0049D870.
-// Globals: 3.0f @ 0x0122DED4, 1.0f @ 0x0122DED8, 2^32 @ 0x0122DCB4, g_framesPerSecond @ 0x01375550.
+// Globals: 3.0f @ 0x0122DED4, 1.0f @ 0x0122DED8, 2^32 @ 0x0122DCB4, CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Shape: the loop time is `(Drunkenness - 3) / def` capped at the def's maximum, then a random whole number of seconds
 // from the def's minimum (unsigned GFRandom result, hence the 2^32 fix-up); the animation names are implicit
 // const char* -> const CCharString& conversions (all built before the first push). The scoreboard (interface 0x10D)
@@ -23,9 +26,12 @@
 
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -43,7 +49,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     const C3DVector& GetPos() const;            // 0x004C73D0
@@ -130,7 +136,12 @@ class CGameDefinitionManager { public:
 
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
 class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
-extern long g_framesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase
 {
@@ -180,7 +191,7 @@ void CTCHeroStats::Vomit()
                 DeedHandle = log->PostDeed(0x15, hero->GetPos(), 0, 0, 7, 0, 1, 0, 0, 0);
             hero->SetCurrentAction(action);
         }
-        long fps = g_framesPerSecond;
+        long fps = CMainGameComponent::GetConstantFPS();
         FrameEndVomit = (long)(CWorld::GetFrame() + fps * loopTime);
         BeerReservoir = 0.0f;
     }

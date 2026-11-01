@@ -1,5 +1,7 @@
 // CTCMultiStrike::FrameUpdate() -- once the strike has started, count the delay down; when it runs out hit the target creature with the owner's melee hit (and tell its entity events about the special-ability hit), count the hit, remove the multi-strike from the owner after the def's last hit, and restart the delay from the def
 // Leaf: ?FrameUpdate@CTCMultiStrike@@UAEXXZ
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CCE20, 299 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget x3, PWeapon), CHitParameters() 0x007A3BC0 (label
 //   "CWound_Constructor" is a forge autoname) / ~CHitParameters 0x00789358, CThingGameObject::GetMeleeHitParameters
@@ -7,7 +9,7 @@
 //   CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCEntityEvents 0x42), operator new 0x00BFEA1A (0x18),
 //   NEntityEvents::CEventHitBySpecialAbility(const CHitParameters&, long) 0x00811830 (ability 9),
 //   CTCEntityEvents::AddEvent 0x008113C0, CThing::RemoveTC(long) 0x004C9840 (0x87), _ftol 0x00BFEA70.
-// Globals: g_framesPerSecond 0x01375550 (`fild`).
+// Globals: CMainGameComponent::GetConstantFPS() 0x01375550 (`fild`).
 // Layout: Ego_r.pdb CTCMultiStrike (PDef +0x0c, SpellLevel +0x10, StrikeStarted +0x14, DelayTimer +0x18, NumHits +0x1c,
 //   PHitLocation +0x20, PWeapon +0x24, PointOfHit +0x2c, HitDirection +0x38, PTarget +0x44); CSpecialAbilitiesMultiStrikeDef
 //   with 12-byte retail vectors (DelayTimeSecs +0x6c, NumHits +0x78); CHitParameters 0x60 bytes, MoveBack +0x22; CThing
@@ -130,7 +132,12 @@ class CSpecialAbilitiesMultiStrikeDef { public:
     CStdVector<long>   NumHits;                     // +0x78
 };
 
-extern long g_framesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCMultiStrike {
 public:
@@ -170,6 +177,6 @@ void CTCMultiStrike::FrameUpdate()
         ++NumHits;
         if (NumHits == PDef->NumHits[SpellLevel])
             owner->RemoveTC((ETCInterfaceType)(0x87));
-        DelayTimer = (long)(g_framesPerSecond * PDef->DelayTimeSecs[SpellLevel]);
+        DelayTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->DelayTimeSecs[SpellLevel]);
     }
 }

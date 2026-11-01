@@ -1,5 +1,7 @@
 // CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target) -- remember the target, the hit location, weapon, point and direction of the hit, start the strike (first hit, delay from the def's per-level DelayTimeSecs), spawn the def's HIT_EFFECT at the target, clear the weapon's strike effects, rumble the main player's joystick and feed the experience multi-hit combo
 // Leaf: StartMultiHit
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CCB00, 619 bytes, `ret 8`.
 // Callees: CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C), __ftol2 @ 0x00BFEA70, GetSubDef<CSpecialEffectsDef> @ 0x00669580,
@@ -78,7 +80,12 @@ class CSpecialAbilitiesMultiStrikeDef : public CDefClassBase { public:
     unsigned char     _pad08[0x6c - 0x08];
     CStdVector<float> DelayTimeSecs;                   // +0x6c
 };
-extern long g_FramesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -247,7 +254,7 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
     HitDirection = hit.Direction;
     StrikeStarted = true;
     NumHits = 1;
-    DelayTimer = (long)(g_FramesPerSecond * PDef->DelayTimeSecs[SpellLevel]);
+    DelayTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->DelayTimeSecs[SpellLevel]);
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
     bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->CalcAndLookup("HIT_EFFECT", &effect);

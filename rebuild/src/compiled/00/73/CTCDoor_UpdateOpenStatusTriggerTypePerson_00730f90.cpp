@@ -1,17 +1,24 @@
 // CTCDoor::UpdateOpenStatusTriggerTypePerson() -- a person-triggered door is open while a creature stands within the trigger radius (and within one unit of height); it closes one second after the last creature was seen; open/close the door when the state changed
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00730F90, 292 bytes (+ int3 padding), plain `ret`.
 // Callees: C2DBox::ToInteger @ 0x00A55A30 (manifest "CEditWorldMap::GetPenArea" is propagated), CTCBase::PeekThingSearchTools
 //   @ 0x00686D90, CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind2<CThingFilter_InArea, CThingFilter_IsWithinZRange>,
 //   CThingCreatureBase> const @ 0x007313B0, CTCBase::PeekWorld const @ 0x00686A80, CWorld::GetFrame @ 0x0049D870 (static __fastcall),
 //   CTCDoor::Open(bool) @ 0x00730C00, CTCDoor::Close @ 0x00730DD0.
-// Globals: g_framesPerSecond @ 0x01375550.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: engine/CTCDoor.h (retail offsets): CurrentOpen +0x10, OldOpen +0x11, LastCreatureFoundWF +0x14, PDef +0x20;
 //   CDoorDef TriggerRadius +0x2c; the parent's physics TC +0x60 with its position at +0x0c.
 // Shape: the 2D centre is a named vector and the box is built from its X/Y and the radius (keeps X and Y live on the
 //   x87 stack: `fld st0 ; fadd st3`); C2DBox has a user copy ctor (minY copied at once, maxY stored from the FPU); both
 //   filters are argument temporaries of the Bind2 filter; the out pointer lives in an inner block, so the else arm reuses
 //   its slot for the elapsed-frames temp; the world pointer is read before the frames-per-second copy.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class C3DVector { public: float X, Y, Z; };
 class C2DVector { public:
     float X, Y;
@@ -97,7 +104,7 @@ void CTCDoor::UpdateOpenStatusTriggerTypePerson()
         LastCreatureFoundWF = PeekWorld().GetFrame();
     } else {
         const CWorld* world = &PeekWorld();
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         long elapsed = world->GetFrame() - LastCreatureFoundWF;
         if ((float)elapsed > (float)framesPerSecond)
             CurrentOpen = false;

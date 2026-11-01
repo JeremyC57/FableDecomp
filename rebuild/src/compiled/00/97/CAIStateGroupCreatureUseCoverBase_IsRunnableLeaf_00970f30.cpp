@@ -1,5 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf() -- after a failed cover search wait 8 seconds or 15 units of movement; then gather the cover things: none records the failure here, otherwise filter them into the retained cover handles
 // Leaf: IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Model: the landed sibling RefreshCoverList 0x009710D0 (same TU). Layout: engine/CAIStateGroup_CreatureUseCoverBase.h (retail
 //   STLport 4.6: 12-byte CoverList): FailedToFindCover +0x34, FailedTime +0x38, FailedToFindCoverAt +0x3c; PBrain +4.
 // Shape: C3DVector offset (operator-, Z dead) keeps retail frame slots; positive !empty() block puts the failure path last.
@@ -21,8 +23,13 @@ class CWorld { public: static long GetFramesPerSecond();
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-extern long g_framesPerSecond;                  // 0x01375550
-inline long CWorld::GetFramesPerSecond() { return g_framesPerSecond; }
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
+inline long CWorld::GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
 struct CIntelligentPointerBaseRetail {virtual ~CIntelligentPointerBaseRetail();void* Data; CIntelligentPointerBaseRetail(); CThingRetail* GetPItem()const;void SetPItem(CThingRetail*);}; //A01B10,A01B50,A01B90,A01C10
 struct CIntelligentPointerRetail:CIntelligentPointerBaseRetail {
  __forceinline CIntelligentPointerRetail(CThingRetail* p){SetPItem(p);}

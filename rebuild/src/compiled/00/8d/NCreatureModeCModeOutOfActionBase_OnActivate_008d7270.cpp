@@ -1,5 +1,7 @@
 // NCreatureMode::CModeOutOfActionBase::OnActivate() -- knocked out of action: set the recovery countdown in frames, suspend the creature's animation in state 1, spawn the mode's particle emitter at the head when the creature allows effects, start the derived mode's anim, then the stand-mode activation
 // Leaf: OnActivate
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7270, 171 bytes (`ret`; vtable 0x0126743C slot 5).
 // Callees: own virtuals slot 14 (+0x38, the recovery time in seconds, float), slot 13 (+0x34, the emitter type; -1 = none in
 // the base 0x0073DA20) and slot 12 (+0x30, empty in the base 0x0073DA10); __ftol2 0x00BFEA70; CThingAICreature::SetSuspendAnimation
@@ -30,9 +32,16 @@ class C3DVector { public:
 };
 
 C3DVector __fastcall GetHeadPosWithOffset(CThing* thing);   // 0x0085EE50
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
-extern long g_framesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -82,14 +91,14 @@ struct CModeOutOfActionBase : CModeStandBase {   // vtable 0x0126743C
 
 void CModeOutOfActionBase::OnActivate()
 {
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     RecoveryCount = (long)(framesPerSecond * GetRecoveryTime());
     if (ParentThing->m_state == 1)
         ParentThing->SuspendAI(true, 0);
     long emitterType = GetEmitterType();
     if (emitterType >= 0 && (ParentThing->m_flags6c & 8)) {
         C3DVector position = GetHeadPosWithOffset(ParentThing);
-        PEmitter = CIntelligentPointer<CThing>(CreateEffectThing(emitterType, &position, false));
+        PEmitter = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(emitterType, *(&position), false));
     }
     StartOutOfActionAnim();
     CModeStandBase::OnActivate();

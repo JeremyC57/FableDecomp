@@ -2,6 +2,8 @@
 //   hand it to the world and, when the network client allows it, render a frame and time it; a pending forced-render
 //   count renders catch-up frames instead
 // Leaf: ?Render@CMainGameComponent@@MAEXXZ
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00417001, 620 bytes, frame pointer, no EH.
 // Layout: the landed CMainGameComponent::ForceRender 0x004164E0 model (retail offsets); CWorld PBulletTimeManager +0x68 and
 //   Paused +0xa4, CDisplayEngine +0x68 (copied to the global 0x013B7D6C) from the retail loads.
@@ -67,7 +69,6 @@ class CWorld { public:
     static long __fastcall GetFrame();                                    // 0x0049D870
 };
 template <class T> const T& __fastcall GFLimitReturn(const T& value, const T& lower, const T& upper);   // 0x0041919C
-extern long g_framesPerSecond;                     // 0x01375550
 extern long g_ForceRenderFrames;                   // 0x013B8630
 extern bool g_b13B8688;                            // 0x013B8688
 extern long g_l13B7D6C;                            // 0x013B7D6C
@@ -99,6 +100,11 @@ struct CComponentList {
 };
 extern CComponentList* g_pComponentList;           // 0x013B8390
 class CMainGameComponent : public CGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
 public:
     CASoundBank*                         PSampleBank;               // +0x10
     CCountedPointer<NGameText::CDataBank> PTextBank;                // +0x14
@@ -148,7 +154,7 @@ public:
     double GetGameTimeOfNextPresentCompletion();  // 0x004166E2
     void ForceRender(long frames);                // 0x004164E0
     void Render();
-    __forceinline double GetServerFrameInterpolate(double gameTime) { return gameTime / (1.0f / g_framesPerSecond) - CurrentServerFrame; }
+    __forceinline double GetServerFrameInterpolate(double gameTime) { return gameTime / (1.0f / CMainGameComponent::GetConstantFPS()) - CurrentServerFrame; }
     virtual ~CMainGameComponent();
     virtual void v00();
 };
@@ -159,8 +165,8 @@ void CMainGameComponent::Render()
     SetCurrentThingManager(PWorld->GetThingManager());
     if (GFGetSystemManager()->IsApplicationActive() && AllowRender && CWorld::GetFrame() > 1) {
         if (g_ForceRenderFrames > 0) {
-            if (g_ForceRenderFrames < g_framesPerSecond)
-                g_ForceRenderFrames = g_framesPerSecond;
+            if (g_ForceRenderFrames < CMainGameComponent::GetConstantFPS())
+                g_ForceRenderFrames = CMainGameComponent::GetConstantFPS();
             ForceRender(g_ForceRenderFrames);
             Rendered = true;
         } else {

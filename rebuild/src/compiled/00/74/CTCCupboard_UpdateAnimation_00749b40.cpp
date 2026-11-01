@@ -1,17 +1,25 @@
 // CTCCupboard::UpdateAnimation() -- while the cupboard is animating, advance its animation by one frame (1 / fps seconds) and stop once the animation has (to within epsilon) reached its end
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00749B40, 163 bytes (plain `ret`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of CTCAnimationComplex, interface 0x5a:
 // bit 26 of the +0x28 word), CTCAnimationComplex::GetAnimation @ 0x0070B460, CAnimateThing::UpdateFrameLogic(const
-// CAnimFrameTime&) @ 0x0070E8B0 (as the landed twin CTCCreatureHive::UpdateAnimation 0x0077D190). Globals: g_framesPerSecond
-// @ 0x01375550, 1.0f @ 0x0122DED8, EPSILON @ 0x0129BA3C.
+// CAnimFrameTime&) @ 0x0070E8B0 (as the landed twin CTCCreatureHive::UpdateAnimation 0x0077D190). Globals: CMainGameComponent::GetConstantFPS()
+// @ 0x01375550, 1.0f @ 0x0122DED8, DELTA_NOTIONAL_ZERO @ 0x0129BA3C.
 // Layout: Ego_r.pdb CTCCupboard Animating +0x0c; the animation's play fraction at +0x1c (named descriptively).
 // Shape: unlike the hive twin the animation is fetched (an accessor returning an unset local when the component is absent,
 // over a one-ternary GetTC, so
 // the component lands straight in ecx and the absent arm reads the key's frame word)
 // and the 12-byte frame-time record is zero-constructed before the Animating test; the seconds are stored inside;
 // `1.0f - eps < fraction` is `fld 1.0 ; fsub eps ; fcomp [esi+1Ch] ; test ah,5 ; jp`.
-extern long g_framesPerSecond;                          // 0x01375550
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -71,9 +79,9 @@ void CTCCupboard::UpdateAnimation()
     CAnimateThing& anim = ((CTCAnimationComplex*)ParentThing->GetTCIfPresent(0x5a))->GetAnimation();
     CAnimFrameTime time;
     if (Animating) {
-        time.Seconds = 1.0f / g_framesPerSecond;
+        time.Seconds = 1.0f / CMainGameComponent::GetConstantFPS();
         anim.UpdateFrameLogic(time);
-        if (1.0f - EPSILON < anim.PlayFraction)
+        if (1.0f - DELTA_NOTIONAL_ZERO < anim.PlayFraction)
             Animating = false;
     }
 }

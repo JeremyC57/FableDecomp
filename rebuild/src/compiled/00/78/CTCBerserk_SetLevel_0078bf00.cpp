@@ -1,4 +1,6 @@
 // CTCBerserk::SetLevel() -- load the berserk tuning for the current spell level from the def: the duration in frames (rounded up) and the damage, scale and rumble parameters
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078BF00, length 187 bytes (+ int3 padding). No calls.
 // Globals: the frames-per-second counter 0x01375550.
 // Layout: engine/CTCBerserk.h (Timer +0x0C, MaxIncreaseInStrength +0x18, BerserkDamageToMe +0x24, BerserkDamageToEnemy +0x28,
@@ -28,7 +30,12 @@ class CSpecialAbilitiesBerserkDef { public:
     unsigned char _pad10c[0x114 - 0x10c];
     float* RumbleDecay;                         // +0x114
 };
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 #include "engine/CTCBerserk.h"
 struct CTCBerserk_Methods : CTCBerserk {         // the PDB layout header carries no methods; PDef_Object is the def pointer
     const CSpecialAbilitiesBerserkDef* GetDef() const { return (const CSpecialAbilitiesBerserkDef*)PDef_Object; }
@@ -63,7 +70,7 @@ __forceinline long CeilToLong(float value)
 }
 void CTCBerserk_Methods::SetLevel()
 {
-    Timer = CeilToLong(g_FramesPerSecond * GetDef()->Duration[SpellLevel]);
+    Timer = CeilToLong(CMainGameComponent::GetConstantFPS() * GetDef()->Duration[SpellLevel]);
     BerserkDamageToMe = GetDef()->DamageToMe[SpellLevel];
     BerserkDamageToEnemy = GetDef()->DamageToEnemy[SpellLevel];
     MaxIncreaseInStrength = GetDef()->MaxIncreaseInStrength[SpellLevel];

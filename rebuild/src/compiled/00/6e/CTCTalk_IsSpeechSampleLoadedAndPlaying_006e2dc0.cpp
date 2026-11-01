@@ -1,5 +1,7 @@
 // CTCTalk::IsSpeechSampleLoadedAndPlaying() const -- while a speech sample is pending and its frame window has not run out, ask the owner's speech emitter whether the sample is loaded and playing; otherwise true
 // Leaf: IsSpeechSampleLoadedAndPlaying
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E2DC0, length 147 bytes (padded row 160).
 // Callees: the world frame getter @ 0x00416225 on g_pWorld @ 0x013B86A0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const
 // @ 0x004365B0 (inlined GetTC of interface 0x10 = bit 16 of CThing+0x20), the emitter's sample query @ 0x0066AE60 (takes the sample id,
@@ -49,7 +51,12 @@ class CWorld { public:
     long GetFrame();                            // 0x00416225
 };
 extern CWorld* g_pWorld;                        // 0x013B86A0
-extern long g_FrameRate;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCTalk { public:
     void*         __vfptr;                      // +0x00 (CTCBase)
@@ -69,7 +76,7 @@ class CTCTalk { public:
 bool CTCTalk::IsSpeechSampleLoadedAndPlaying() const
 {
     if (SpeechSample > 0 && SampleID > 0) {
-        long rate = g_FrameRate;
+        long rate = CMainGameComponent::GetConstantFPS();
         long elapsed = g_pWorld->GetFrame() - SampleStartedFrame;
         if (!((float)elapsed > (float)rate * 10000.0f) && ParentThing->HasTC(0x10))
             return ((CSpeechEmitter*)ParentThing->GetTC(0x10))->IsSampleLoadedAndPlaying(SampleID);

@@ -1,9 +1,11 @@
 // CTCWife::WantsNiceGift()
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CEEF0, oracle length 44 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
-// Retail bytes:  push ebx ; mov ebx,[g_FramesPerSecond] ; push esi ; mov esi,ecx ; push edi ; mov edi,[esi+0Ch] ; call <frame counter> ; sub eax,[esi+84h] ; mov ecx,[edi+48h] ; imul ecx,ebx ; xor edx,edx ; cmp eax,ecx ; pop edi ; setg dl ; pop esi ; mov al,dl ; pop ebx ; ret
+// Retail bytes:  push ebx ; mov ebx,[CMainGameComponent::GetConstantFPS()] ; push esi ; mov esi,ecx ; push edi ; mov edi,[esi+0Ch] ; call <frame counter> ; sub eax,[esi+84h] ; mov ecx,[edi+48h] ; imul ecx,ebx ; xor edx,edx ; cmp eax,ecx ; pop edi ; setg dl ; pop esi ; mov al,dl ; pop ebx ; ret
 // engine/CTCWife.h (PDB): +0x0C PHeroMarriageDef_Object, +0x88 FrameLastReceivedNiceGift (retail
 // +0x84: the GiftsReceived map before it is 4 bytes smaller). PDB CHeroMarriageDef +0x48 =
 // SecondsBetweenReceivingGiftOpinionReactionCanHappen. A wife wants another nice gift once more
@@ -18,7 +20,12 @@
 //
 // Lane feedback: the frame-rate global must be read into a local before the call (retail holds it in ebx),
 // and declared AFTER the def local, or the callee-saved registers swap. RELOCATION_MATCH.
-extern long g_FramesPerSecond;         // 0x01375550 (.data)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -44,7 +51,7 @@ bool CTCWife_Retail::WantsNiceGift()
     // before the frame query: def into edi, the frame rate into ebx (retail's register order
     // follows the declaration order: def first, then the frame rate).
     CHeroMarriageDefCalls* def = this->PHeroMarriageDef_Object;
-    long framesPerSecond = g_FramesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     return CWorld::GetFrame() - this->FrameLastReceivedNiceGift >
            def->SecondsBetweenReceivingGiftOpinionReactionCanHappen * framesPerSecond;
 }

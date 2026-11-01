@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update() -- face the armed player; when another guard is already admonishing, keep watching until the player disarms; otherwise post a numbered warning, follow and watch the player for four seconds, and on the third warning declare the player a criminal
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093A080, length 832 bytes (+ int3 padding), plain `ret`, frame 0xb8.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90, IsPlayerCarryingWeapon
 // @ 0x00939E70, IsAnotherGuardAdmonishingPlayer @ 0x00939D00, CheckForOtherGuardsNewWarning @ 0x00939D70, the own-warning
@@ -11,9 +13,14 @@
 // Layout: local model (PBrain +4; WarningCount +0x14, FrameOfLastWarning +0x18, PPlayer +0x20; world message manager +0x60;
 // the criminal action is CCreatureActionBase (0xa8) + a CIntelligentPointer at +0xa8).
 // Shape: the admonishing watch loop is placed at the end; the frame window compare is unsigned. In IsWithinWarningTime
-//         the world pointer is fetched into a local BEFORE g_FramesPerSecond is read (retail calls GetPThingWorld, then
+//         the world pointer is fetched into a local BEFORE CMainGameComponent::GetConstantFPS() is read (retail calls GetPThingWorld, then
 //         loads the global into ebx; a frames-per-second local read first puts the load ahead of the call).
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -105,7 +112,7 @@ public:
     __forceinline bool IsWithinWarningTime()
     {
         const CWorld& world = PeekWorld();
-        long framesPerSecond = g_FramesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         return world.GetFrame() - FrameOfLastWarning < (unsigned long)(framesPerSecond * 4);
     }
     void Update();

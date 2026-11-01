@@ -1,12 +1,14 @@
 // CTCHeroSpecialMovement::FrameUpdate() -- per-frame hero run/sprint state: with the run option on, holding run (action 31) sets Running and running long enough starts a sprint; otherwise the sprint button (action 30) sprints directly; a sprint drains the sprint bar and stops when it is empty, otherwise the bar refills
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E0750, 385 bytes (+ int3 padding), `ret` (virtual, no arguments).
 //   Ego_r.pdb: `?FrameUpdate@CTCHeroSpecialMovement@@UAEXXZ`.
 // Callees: CThing::PeekPlayer (const) @ 0x004C7A10 and CThing::GetPlayer @ 0x004C7A30, CPlayer::GetPlayerNumber @ 0x00487510,
 //   CGamePlayerInterface::IsGameActionEventInQueue(EGameAction, EInputButtonEventType, long) @ 0x00446B10,
 //   IsAvailableForHeroRun(CThing*) @ 0x0085F560 and IsAvailableForHeroSprint(CThing*) @ 0x0085F470 (`__fastcall`),
 //   __ftol2 @ 0x00BFEA70.
-// Data: the run-option byte @ 0x013756EA, g_FramesPerSecond @ 0x01375550 (long); 0x0122DED8 is 1.0f, 0x0122DEDC 0.0f.
+// Data: the run-option byte @ 0x013756EA, CMainGameComponent::GetConstantFPS() @ 0x01375550 (long); 0x0122DED8 is 1.0f, 0x0122DEDC 0.0f.
 // Shape: SetRunning / SetSprinting (retail 0x007E06B0 / 0x007E0670, same TU) are defined inline in the class, so VC7.1
 //   expands them here and threads their flag tests into the surrounding branches (`if (on) { if (!flag &&
 //   IsAvailable()) flag = true; } else if (flag) flag = false;`); the first player read is PeekPlayer through ParentThing, the second and third go through the
@@ -43,7 +45,12 @@ class CHeroSpecialMovementDef { public:
     float TotalTimeToFullyRestoreSprintBarSeconds;      // +0x30
     float NoSecondsToRunBeforeSprintStarts;             // +0x34
 };
-extern long g_FramesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern bool g_bHeroRunOption;                           // 0x013756EA
 
 // In-place float clamps through a reference: the referenced member is stored and re-read from memory
@@ -86,7 +93,7 @@ void CTCHeroSpecialMovement::FrameUpdate()
                    && !GetThing().GetPlayer().m_controlsLocked && IsAvailableForHeroRun(ParentThing));
         if (Running) {
             if (!Sprinting) {
-                if (++RunTimer > (long)(g_FramesPerSecond * PHeroSpecialMovementDef->NoSecondsToRunBeforeSprintStarts))
+                if (++RunTimer > (long)(CMainGameComponent::GetConstantFPS() * PHeroSpecialMovementDef->NoSecondsToRunBeforeSprintStarts))
                     SetSprinting(true);
             } else
                 RunTimer = 0;
@@ -106,5 +113,5 @@ void CTCHeroSpecialMovement::FrameUpdate()
     }
     SprintFramesRemaining += PHeroSpecialMovementDef->TotalTimeToFullyRestoreSprintBarSeconds
                              / PHeroSpecialMovementDef->TotalTimeToSprintSeconds;
-    Raise(SprintFramesRemaining, g_FramesPerSecond * PHeroSpecialMovementDef->TotalTimeToSprintSeconds);
+    Raise(SprintFramesRemaining, CMainGameComponent::GetConstantFPS() * PHeroSpecialMovementDef->TotalTimeToSprintSeconds);
 }

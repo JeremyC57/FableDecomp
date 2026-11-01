@@ -1,11 +1,18 @@
-// CTimedState_00878b00::ResetDuration() -- m_frames = (long)(g_framesPerSecond * 3.0f)
+// CTimedState_00878b00::ResetDuration() -- m_frames = (long)(CMainGameComponent::GetConstantFPS() * 3.0f)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00878B00, length 28 bytes.
 // Callees: __ftol2 @ 0x00BFEA70. Globals: the frame-rate long @ 0x01375550 (`fild`, the same
 // divisor CAIStateGroup_BuyFromSeller::IsRunnable uses), the literal 3.0f in the float pool
 // @ 0x012777F4. `fild [g] ; fmul [pool]` is `g * 3.0f` (the literal is the right operand);
 // the truncated result lands at +0xa4. The manifest label (BoughtSomething) is propagated
 // from an unrelated body; the class is named by what it does.
-extern long g_framesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTimedState_00878b00 {
     unsigned char _pad[0xa4];
@@ -15,5 +22,5 @@ struct CTimedState_00878b00 {
 
 void CTimedState_00878b00::ResetDuration()
 {
-    m_frames = (long)(g_framesPerSecond * 3.0f);
+    m_frames = (long)(CMainGameComponent::GetConstantFPS() * 3.0f);
 }

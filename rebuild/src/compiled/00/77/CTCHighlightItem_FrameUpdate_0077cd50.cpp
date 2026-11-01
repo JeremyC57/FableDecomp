@@ -1,5 +1,7 @@
 // CTCHighlightItem::FrameUpdate() -- while waiting, starts running once the def's delay has elapsed; while running, moves; counts frames either way
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CD50, 117 bytes (+11 int3); default /O2 TU, no frame.
 // Catalog label "CTCHighlightItem::vfunc_9" (the CTCBase FrameUpdate slot).
 // Callees: CThingDef::GetSubDef<CHighlightItemDef> @ 0x0077D080, DoStartRunning() @ 0x0077CBE0,
@@ -78,7 +80,12 @@ struct CGameSubsystem {
     virtual bool IsCameraIdle();                     // slot 9 (+0x24)
 };
 
-extern long g_GameFramesPerSecond;                   // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTCHighlightItem {
     void*         __vftable;                         // +0x00
@@ -107,7 +114,7 @@ void CTCHighlightItem::FrameUpdate()
         CDefPointer<const CHighlightItemDef> pdef;
         thingDef->GetSubDef(&pdef);
         const CHighlightItemDef* def = pdef.Object;
-        if (LifeTimer > def->StartDelaySeconds * g_GameFramesPerSecond)
+        if (LifeTimer > def->StartDelaySeconds * CMainGameComponent::GetConstantFPS())
             DoStartRunning();
         ParentThing->UpdateGraphicAppearance(15);
         ++LifeTimer;

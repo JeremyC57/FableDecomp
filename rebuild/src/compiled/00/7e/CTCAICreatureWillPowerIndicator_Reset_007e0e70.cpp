@@ -1,4 +1,6 @@
 // CTCAICreatureWillPowerIndicator::Reset(float) -- restart the recharge timer (a negative time means the def's RechargeTime, 5 s without a def) and kill the power-up emitter
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E0E70, length 168 bytes (+ int3 padding).
 // Callees: CDefClassBase::GetSubDef<CAICreatureWillPowerIndicatorDef> @ 0x007E1230 (on the thing's def, +0x70),
 // the def's virtual Delete (slot 1) when its reference count drops to zero, __ftol2 @ 0x00BFEA70,
@@ -81,7 +83,12 @@ struct CThingWithDef {
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                        // +0x70
 };
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCAICreatureWillPowerIndicator {
 public:
@@ -109,7 +116,7 @@ void CTCAICreatureWillPowerIndicator::Reset(float time)
         if (def && --def->m_refCount == 0)
             def->Delete();
     }
-    Timer = (long)(time * g_FramesPerSecond);
+    Timer = (long)(time * CMainGameComponent::GetConstantFPS());
     PoweredUp = false;
     ++ResetCount;
     if (IsThingAlive(PEmitter))

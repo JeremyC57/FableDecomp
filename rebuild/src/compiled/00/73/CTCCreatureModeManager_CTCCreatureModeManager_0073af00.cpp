@@ -1,9 +1,11 @@
 // CTCCreatureModeManager::CTCCreatureModeManager(CThing* parent) -- CTCBase(parent), empty PModes list and AvailableIdleModes vector, TimeForNextIdleMode = 30 s of frames, then AddMode(0)
 // Leaf: ??0CTCCreatureModeManager
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073AF00, 87 bytes (+9 int3).
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, malloc @ 0x00BFEA0E (the STLport node allocator), __ftol2 @ 0x00BFEA70,
 //          CTCCreatureModeManager::AddMode(long) @ 0x0073AE10 (landed).
-// Globals: g_framesPerSecond @ 0x01375550 (long), 30.0f @ 0x012673C4.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550 (long), 30.0f @ 0x012673C4.
 // Label: the manifest's "CEngineSubPrimitive2DClockSprite_ctor2" is a propagation -- the vtable stored, 0x01268854, is
 // CTCCreatureModeManager in rtti-vtables.tsv (slot 9 = 0x0073A880), and the callee 0x0073AE10 is its landed AddMode.
 // Layout (retail, STLport containers): PModes list +0x0C (one sentinel pointer; 0x10-byte nodes = links + an 8-byte
@@ -14,7 +16,12 @@
 // frame count is converted AFTER the vector zero stores, so it is a body assignment, not an initialiser.
 class CThing;
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 template <class T> struct CRetailList {
     struct node { node* next; node* prev; T value; };
@@ -61,6 +68,6 @@ public:
 CTCCreatureModeManager::CTCCreatureModeManager(CThing* parent)
     : CTCBase_Calls(parent)
 {
-    TimeForNextIdleMode = (long)(g_framesPerSecond * 30.0f);
+    TimeForNextIdleMode = (long)(CMainGameComponent::GetConstantFPS() * 30.0f);
     AddMode(0);
 }

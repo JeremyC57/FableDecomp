@@ -1,5 +1,7 @@
 // CTCStealth::SetAsRunningAwayFromCombat() -- start the running-away timer: the def's hang time in frames, or one frame without a def
 // Leaf: SetAsRunningAwayFromCombat
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007470E0, length 45 bytes.
 // Callees: __ftol2 @ 0x00BFEA70 (float to long). Data: 0x01375550 is the long frames-per-second constant (15),
 // 0x0122DED8 is 1.0f.
@@ -9,7 +11,12 @@
 // Name and signature confirmed by ghidra_out/egor_signatures.tsv (Ego_r).
 // Shape: `fild [fps] ; fmul [def+44h]` = `def->Hangtime * fps` (right operand loaded first); the null-def fallback 1.0f is
 // a float arm of the same ternary, so each arm converts with its own __ftol2 call (VC tail-duplicates the store).
-extern long g_FramesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CThing;
 
 struct CDangerThing {                                       // pair<CIntelligentPointer<CThing const>, NStealth::CDangerStatus>, 16 bytes
@@ -57,5 +64,5 @@ class CTCStealth { public:
 
 void CTCStealth::SetAsRunningAwayFromCombat()
 {
-    RunningAwayFromCombatTimer = (long)(PDef ? PDef->RunningAwayFromCombatHangtimeSeconds * g_FramesPerSecond : 1.0f);
+    RunningAwayFromCombatTimer = (long)(PDef ? PDef->RunningAwayFromCombatHangtimeSeconds * CMainGameComponent::GetConstantFPS() : 1.0f);
 }

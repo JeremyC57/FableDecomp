@@ -12,9 +12,16 @@
 // CurrentAvailableCount/MaxCount (initialisers), the recharge rate (`rechargeSeconds <= 0.0f` keeps the full count
 // per frame; a ternary gives the shared `fstp` after `fld st(0)`) and the inverse are body assignments.
 // Leaf: ??0CReactionFrequencyTraits_ControlledCount
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CReactionFrequencyTraits_ControlledCountRetail {
     virtual void v00();
@@ -38,12 +45,12 @@ CReactionFrequencyTraits_ControlledCountRetail::CReactionFrequencyTraits_Control
     : AllowIndividualRepeats(allowIndividualRepeats),
       PLastReactionCreature(0),
       InRisingPhase(false),
-      MinGapFrames((unsigned long)(g_framesPerSecond * minGapSeconds)),
+      MinGapFrames((unsigned long)(CMainGameComponent::GetConstantFPS() * minGapSeconds)),
       CurrentAvailableCount((float)maxCount),
       MaxCount((float)maxCount),
       FrameLastStarted(0),
       FrameLastRecharged(0)
 {
-    CountRechargePerFrame = rechargeSeconds > 0.0f ? MaxCount / (g_framesPerSecond * rechargeSeconds) : MaxCount;
+    CountRechargePerFrame = rechargeSeconds > 0.0f ? MaxCount / (CMainGameComponent::GetConstantFPS() * rechargeSeconds) : MaxCount;
     InvMaxCount = 1.0f / MaxCount;
 }

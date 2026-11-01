@@ -3,10 +3,12 @@
 // leg areas; stamps the frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00706950, 444 bytes (+ int3 padding), `ret 4`.
 // Leaf: AddAppearanceModifierWithReplace
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: as the landed twin AddAppearanceModifier (0x00706880) -- CTCBase::GetDefinitionManager 0x006869D0, GetDef<CThingObjectDef> 0x0042B040,
 // GetSubDef<CAppearanceModifierDef> 0x0057FF92, _M_insert_overflow 0x00708E40, PeekWorld() 0x00686A80, CWorld::GetFrame
 // 0x0049D870 -- plus RemoveAppearanceModifiersCoveringBodyArea 0x007066A0, GetWorld() 0x00686A70 and
-// CMessageEventManager::AddMessage 0x00687540; g_FramesPerSecond 0x01375550.
+// CMessageEventManager::AddMessage 0x00687540; CMainGameComponent::GetConstantFPS() 0x01375550.
 // Shape: the twin's body (same-TU stand-ins, by-hand releases); each message is its own block with a named zero position and a
 // named `CWorld* world = &GetWorld();` so the zero stores and the GetWorld call precede the argument pushes and the manager is
 // read `mov ecx,[eax+60h]` just before the call (an inline `GetWorld().MessageEventManager->AddMessage(...)` pushes first).
@@ -68,7 +70,12 @@ class CWorld { public:
     CMessageEventManager* MessageEventManager;      // +0x60
     static long __fastcall GetFrame();                    // 0x0049D870
 };
-extern long g_FramesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModifierEntry {                             // CTCHeroAttachableAppearanceModifiers::CModifierEntry (8 bytes)
     long DefIndex;                                  // +0x00 global def index
@@ -169,17 +176,17 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long
             if (appearance->BodyAreasCovered & 0x10) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
                 CWorld* world = &GetWorld();
-                world->MessageEventManager->AddMessage(0x39, g_FramesPerSecond, position, 0, 0, 0, 0, defIndex);
+                world->MessageEventManager->AddMessage(0x39, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
             }
             if (appearance->BodyAreasCovered & 0x80) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
                 CWorld* world = &GetWorld();
-                world->MessageEventManager->AddMessage(0x3a, g_FramesPerSecond, position, 0, 0, 0, 0, defIndex);
+                world->MessageEventManager->AddMessage(0x3a, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
             }
             if (appearance->BodyAreasCovered & 0x100) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
                 CWorld* world = &GetWorld();
-                world->MessageEventManager->AddMessage(0x3b, g_FramesPerSecond, position, 0, 0, 0, 0, defIndex);
+                world->MessageEventManager->AddMessage(0x3b, CMainGameComponent::GetConstantFPS(), position, 0, 0, 0, 0, defIndex);
             }
         }
     }

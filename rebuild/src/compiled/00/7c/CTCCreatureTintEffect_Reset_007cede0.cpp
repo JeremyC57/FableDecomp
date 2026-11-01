@@ -1,4 +1,6 @@
 // CTCCreatureTintEffect::Reset() -- restart the tint: zero the clock, fade times from the def's seconds, copy the def colour
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CEDE0, length 95 bytes (+1 int3).
 // Callee: __ftol2 @ 0x00BFEA70 (twice). Global: the game frames-per-second long @ 0x01375550 (initial value 15).
 // Shape: CurTime (+0x10) = 0, FadeInTime (+0x14) and FadeOutTime (+0x20) = (long)(def seconds * frames-per-second) with
@@ -21,7 +23,12 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 
-extern long g_GameFramesPerSecond;          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CThing;
 
@@ -44,8 +51,8 @@ class CTCCreatureTintEffect { public:
 void CTCCreatureTintEffect::Reset()
 {
     CurTime = 0;
-    FadeInTime = (long)(PDef->FadeInTimeSecs * g_GameFramesPerSecond);
-    FadeOutTime = (long)(PDef->FadeOutTimeSecs * g_GameFramesPerSecond);
+    FadeInTime = (long)(PDef->FadeInTimeSecs * CMainGameComponent::GetConstantFPS());
+    FadeOutTime = (long)(PDef->FadeOutTimeSecs * CMainGameComponent::GetConstantFPS());
     for (long i = 0; i < 4; ++i)
         Color[i] = PDef->Color[i];
 }

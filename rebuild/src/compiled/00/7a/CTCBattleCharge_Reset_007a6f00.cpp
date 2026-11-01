@@ -1,9 +1,11 @@
 // CTCBattleCharge::Reset() -- reset the charge: remember the start position, forget the collided thing and the target, clear the flags, take the dash distance and radius of effect for the spell level and convert the def's pose and charge delays to frames
 // Leaf: ?Reset@CTCBattleCharge
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A6F00, 241 bytes (+15 int3 padding), `ret`.
 // Callees: CThing::GetPos() const 0x004C73D0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
 //   GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), __ftol2 0x00BFEA70.
-//   Global g_framesPerSecond 0x01375550.
+//   Global CMainGameComponent::GetConstantFPS() 0x01375550.
 // Layout: Ego_r.pdb CTCBattleCharge (retail = PDB up to the 12-byte PeopleHit vector at +0x70, then 4 below):
 //   PTarget +0x0C, PDef +0x14, PositionStartedFrom +0x18, CollidedThing +0x24, StartedMoving +0x2C, JustReleased +0x2D,
 //   DirectionOverride +0x2E, DashDistance +0x3C, SpellLevel +0x40, RadiusOfEffect +0x4C, PoseDelay +0x68,
@@ -11,7 +13,12 @@
 //   retail vectors: DashDistance +0x40, RadiusOfEffect +0x4C, PoseDelaySecs +0x88, ChargeDelay +0x8C.
 // Shape: the CTCAssassinRush::Reset sibling (0x007A9B70): each intelligent pointer cleared through the inline operator=
 //   from a CIntelligentPointer(0) temporary; the start position is the implicit C3DVector copy.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class C3DVector { public: float X, Y, Z; };
 class CBaseObject;
 class CThing {
@@ -101,8 +108,8 @@ void CTCBattleCharge::Reset()
     DirectionOverride = false;
     DashDistance = PDef->DashDistance[SpellLevel];
     RadiusOfEffect = PDef->RadiusOfEffect[SpellLevel];
-    PoseDelay = (long)(g_framesPerSecond * PDef->PoseDelaySecs);
-    ChargeDelayFrameCount = (long)(g_framesPerSecond * PDef->ChargeDelay);
+    PoseDelay = (long)(CMainGameComponent::GetConstantFPS() * PDef->PoseDelaySecs);
+    ChargeDelayFrameCount = (long)(CMainGameComponent::GetConstantFPS() * PDef->ChargeDelay);
     StartPoseDelay = false;
     PTarget = CIntelligentPointer<CThing>(0);
     IsZTargetting = false;

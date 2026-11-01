@@ -1,4 +1,6 @@
 // CMap::UpdateScriptedMapBrushes() -- advance every pending scripted-map-brush update area by one game frame: look up its brush by name, count its time left down by 1/frames-per-second, erase the entry once the time runs out, otherwise apply the brush at the progress (duration - time left) / duration
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00820AB0, length 158 bytes.
 // Callees: CMap::GetScriptedMapBrush(const CCharString&) @ 0x0081E960, the STLport `__copy` @ 0x00824790 (`__fastcall`: first/last in
 //   ecx/edx, then result, the random-access tag by reference and the null distance pointer; manifest label _Copy_impl<...CSkeletalMorph...>
@@ -46,7 +48,12 @@ struct CUpdateAreaVector {
         return pos;
     }
 };
-extern long g_GameFramesPerSecond;                 // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CMap { public:
     unsigned char      _pad00[0x10];
     CUpdateAreaVector  ScriptedMapBrushUpdateAreas;   // +0x10 (PDB +0x18)
@@ -59,7 +66,7 @@ void CMap::UpdateScriptedMapBrushes()
     if (!ScriptedMapBrushUpdateAreas.empty()) {
         for (CScriptedMapBrushUpdateArea* it = ScriptedMapBrushUpdateAreas.begin(); it != ScriptedMapBrushUpdateAreas.end(); ) {
             CScriptedMapBrush* brush = GetScriptedMapBrush(it->BrushName);
-            it->TimeLeft -= 1.0f / (float)g_GameFramesPerSecond;
+            it->TimeLeft -= 1.0f / (float)CMainGameComponent::GetConstantFPS();
             if (it->TimeLeft < 0.0f) {
                 it = ScriptedMapBrushUpdateAreas.erase(it);
             } else {

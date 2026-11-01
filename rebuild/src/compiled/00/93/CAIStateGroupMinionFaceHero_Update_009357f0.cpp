@@ -1,12 +1,14 @@
 // CAIStateGroup_MinionFaceHero::Update() -- for up to six seconds while the hero lives: look at the hero, and stop once the hero (perceived in extended line of sight) is within 2.2m; idle a tick between looks; terminate
+// Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009357F0, length 384 bytes (both exits are `jmp Terminate` tail calls).
 // Callees: CWorld::GetFrame @ 0x0049D870 (__fastcall, no object), CBaseIntelligentPointer ctor/GetPItem/SetPItem
 //          (PHero +0x14), CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0 (CIntelligentPointer<const CThing> by
 //          value, vtable 0x01237F1C), the inlined STLport lower_bound of the interface map (0x34 = CTCPerceiveThing, bit 20
 //          of +0x24), CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPos @ 0x004C73D0,
 //          AIAction_DoNothing @ 0x0097E200, Terminate @ 0x008FCF40.
-// Globals: FramesPerSecond @ 0x01375550, 4.84f (2.2 squared) @ 0x012922D4.
-// Shape: FramesPerSecond is read into a named local at the top of each pass (before the frame call) and the elapsed
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, 4.84f (2.2 squared) @ 0x012922D4.
+// Shape: CMainGameComponent::GetConstantFPS() is read into a named local at the top of each pass (before the frame call) and the elapsed
 //          test is unsigned (`ja`) against it * 6; the dead-hero / timeout exit is the loop's own exit and the other exits
 //          are inner `Terminate(); return;`s (two separate tails); IS_THING_ALIVE reads the dead bit through an inline
 //          CThing::IsDead and the interface map's lower_bound is __forceinline; the distance is `creature - hero` built member-wise, squared as one
@@ -63,7 +65,12 @@ class CTCPerceiveThing { public:                       // interface 0x34
     bool IsPlayerExtendedLineOfSight();         // 0x00744830
 };
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
-extern unsigned long FramesPerSecond;           // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -117,7 +124,7 @@ void CAIStateGroup_MinionFaceHero::Update()
 {
     unsigned long start = CWorld::GetFrame();
     while (IS_THING_ALIVE(PHero)) {
-        unsigned long fps = FramesPerSecond;
+        unsigned long fps = CMainGameComponent::GetConstantFPS();
         if (CWorld::GetFrame() - start > fps * 6)
             break;
         if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PHero), 0xf, 0.0027777f) != 2) {

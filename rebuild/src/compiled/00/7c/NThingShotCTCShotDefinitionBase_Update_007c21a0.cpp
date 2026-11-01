@@ -1,5 +1,7 @@
 // NThingShot::CTCShotDefinitionBase::Update() -- per-frame shot update: latch "passed target" once, run the movement/collision steps, strip dead entries from the hit-things list, check for a collision and, while the shot lives on, trigger its sub-shots once the shot definition's delay has elapsed (killing the shot when the definition says so), then run the post-update steps and wake the physics
 // Leaf: ?Update@CTCShotDefinitionBase
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C21A0, 333 bytes (plain `ret`).
 // Callees: CTCShotDefinitionBase::HasPassedTarget 0x007BF3D0; virtual slots 35..41 of this (+0x8c .. +0xa4); CBaseIntelligentPointer
 //          ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (CIntelligentPointer<const CThing> vtable 0x01237F1C);
@@ -63,7 +65,12 @@ class CThingShotDef { public:                          // descriptive
     unsigned char _pada4[0xa8 - 0xa4];
     bool KillOnSubShots;                        // +0xa8
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCBase
 {
 public:
@@ -121,7 +128,7 @@ void CTCShotDefinitionBase::Update()
     }
     long frame = GetWorld().GetFrame();
     if (PShotDef->NumSubShots > 0 && !SubShotsTriggered
-        && (float)(frame - StartFrame) / g_framesPerSecond >= PShotDef->SubShotDelay) {
+        && (float)(frame - StartFrame) / CMainGameComponent::GetConstantFPS() >= PShotDef->SubShotDelay) {
         TriggerSubShots();
         SubShotsTriggered = true;
         if (PShotDef->KillOnSubShots)

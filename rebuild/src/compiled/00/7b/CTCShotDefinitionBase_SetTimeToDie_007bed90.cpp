@@ -1,5 +1,7 @@
 // CTCShotDefinitionBase::SetTimeToDie(float) -- schedules the shot's death a number of seconds from the current world frame
 // Leaf: SetTimeToDie
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BED90, 53 bytes (+11 int3 padding). Manifest label
 // "CTCHeroExperience::AddSuccessfulBlockParry" is propagated from an unrelated body: the store is
 // CTCShotDefinitionBase::DieOnFrame (+0x60 in retail, PDB +0x64 -- the HitThingsList vector ahead of it is 12
@@ -10,10 +12,15 @@
 //
 // Shape: the frame-rate global is copied into a frame slot BEFORE the call (`mov eax,[g] ; mov [esp+8],eax`):
 // the source reads it first, so its value must survive the call; then `fild frame ; fild fps ; fmul seconds ;
-// faddp` and __ftol2 into DieOnFrame. Written `(long)(g_FramesPerSecond * seconds + GetWorldFrame())` VC7.1
+// faddp` and __ftol2 into DieOnFrame. Written `(long)(CMainGameComponent::GetConstantFPS() * seconds + GetWorldFrame())` VC7.1
 // hoists the call and `fild`s the global afterwards; the rate has to be read into a named local first.
 
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -29,6 +36,6 @@ struct CTCShotDefinitionBase_Retail {
 
 void CTCShotDefinitionBase_Retail::SetTimeToDie(float seconds)
 {
-    long framesPerSecond = g_FramesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     DieOnFrame = (long)(framesPerSecond * seconds + CWorld::GetFrame());
 }

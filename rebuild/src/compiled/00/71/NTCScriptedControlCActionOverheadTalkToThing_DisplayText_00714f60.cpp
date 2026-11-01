@@ -1,5 +1,7 @@
 // NTCScriptedControl::CActionOverheadTalkToThing::DisplayText() -- decide whether the current line is long enough (25+ characters) to scroll; a short line goes straight to the creature's emote icon for the line's duration
 // Leaf: ?DisplayText@CActionOverheadTalkToThing@
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00714F60, 195 bytes (plain `ret`, +13 int3 padding); vtable 0x012659FC slot 6.
 // FableWin.pdb: ?DisplayText@CActionOverheadTalkToThing@NTCScriptedControl@@MAEXXZ (slot 6 = DisplayText, as the landed
 //          CActionTalkToThing::DisplayText @ 0x007132C0).
@@ -11,7 +13,7 @@
 //          ScrollText +0x90, FinishedScroll +0x91 (as the landed Update @ 0x00717450 and ctor @ 0x00717BC0).
 // Shape: the line is a by-value temporary from the landed family's __forceinline GetCurrentText(); the scroll test is
 //          `GetLength() >= 25` stored straight into ScrollText (`setge`) before the temporary dies, then re-read; the
-//          duration is `(float)GameTurnDuration / g_FrameRate` (`fild ; fidiv`).
+//          duration is `(float)GameTurnDuration / CMainGameComponent::GetConstantFPS()` (`fild ; fidiv`).
 class CTCBase;
 class CWideStringText {                            // the message text as stored (converted by 0x0099B720)
 public:
@@ -61,7 +63,12 @@ class CTCScriptedControl { public:
     void*   __vftable;
     CThing* ParentThing;                           // +0x04 (CTCBase)
 };
-extern long g_FrameRate;                           // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CSubtitledMessage { public:                         // retail 0x44
     unsigned char   _pad00[0x0c];
     CWideStringText Text;                          // +0x0C
@@ -105,6 +112,6 @@ void CActionOverheadTalkToThing::DisplayText()
     CTCEmoteIcon* emote;
     if (!PTCScript->ParentThing->GetInterface(&emote, 0x45))
         return;
-    emote->SetEmoteText(7, GetCurrentText(), (float)GameTurnDuration / g_FrameRate, 0.3f);
+    emote->SetEmoteText(7, GetCurrentText(), (float)GameTurnDuration / CMainGameComponent::GetConstantFPS(), 0.3f);
 }
 }

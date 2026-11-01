@@ -1,5 +1,7 @@
 // CAIStateGroup_WhisperPotionCombat::DisappearJump() -- jump into the sky, hide at the jump-to position for half a second, then land
 // Leaf: DisappearJump
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096AF60; SW2 sweep (advisor/0096af60/probe/n3.cpp).
 class CThingCreatureBase;
 class C3DVector { public: float x, y, z; };
@@ -141,7 +143,12 @@ class CAIBrain { public:
 class CWorld { public:
     static long __fastcall GetFrame();                    // 0x0049D870
 };
-extern long g_FramesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -200,7 +207,7 @@ void CAIStateGroup_WhisperPotionCombat::DisappearJump()
     do {
         AIAction_DoNothing();
         now = GetWorld().GetFrame();
-    } while (!IsStopping() && (float)(now - start) < (float)g_FramesPerSecond * 0.5f);
+    } while (!IsStopping() && (float)(now - start) < (float)CMainGameComponent::GetConstantFPS() * 0.5f);
     PBrain->PCreature->PGraphic->Restore();
     PBrain->PCreature->SetActive(true);
     AIAction_PerformActionAndWait(CCreatureAction_WhisperLand(GetCreature()), false);

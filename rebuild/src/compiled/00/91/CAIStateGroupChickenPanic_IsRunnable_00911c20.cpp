@@ -1,4 +1,6 @@
 // CAIStateGroup_ChickenPanic::IsRunnable() -- panic when an attacker is within 8 units and attacked recently, or when hit by an air-guitar expression
+// Naming wave 18: the global stand-in g_ChickenPanicMemory (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00911C20, length 361 bytes (same TU as Update 0x00911D90).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::PeekPos @ 0x004C73D0, CAIStateGroupBase::GetPFrameWorld
 //          @ 0x008FCFC0 (only evaluated for the static frame call), GFGetCurrentFrame @ 0x0049D870, CVectorMap::LowerBound const
@@ -160,7 +162,12 @@ protected:
 struct CThingWorld {
     static long GetCurrentFrame() { return CWorld::GetFrame(); }
 };
-extern long g_ChickenPanicMemory;               // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CDefString { public:
     long Index;
@@ -222,7 +229,7 @@ bool CAIStateGroup_ChickenPanic::IsRunnable()
         if (delta.GetLengthSquared() < 64.0f) {
             CThingWorld* world = (CThingWorld*)&GetWorld();
             long attacked = PBrain->PCreature->FrameLastAttacked;
-            long memory = g_ChickenPanicMemory;
+            long memory = CMainGameComponent::GetConstantFPS();
             if ((float)(unsigned long)(world->GetCurrentFrame() - attacked) < (float)memory * 10.0f)
                 return true;
         }

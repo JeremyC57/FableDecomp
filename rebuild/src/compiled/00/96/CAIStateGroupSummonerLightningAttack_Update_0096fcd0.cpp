@@ -1,5 +1,7 @@
 // CAIStateGroup_SummonerLightningAttack::Update() -- with a live target and the summoner free to act: mark the target's stealth as in danger, sheathe any live weapon in the primary slot, turn to face the target, play the lightning-orb-into action, wait out any running action, play the ground-smash out-of action and schedule the next preemptive use from the def's delay; always terminates
 // Leaf: ?Update@CAIStateGroup_SummonerLightningAttack
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FCD0, length 568 bytes (0x128 frame: three action temporaries share it).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (0x36 stealth, ternary
 //   pick) / const @ 0x004365B0 (0x46 carrying), CTCStealth::SetAsInDanger @ 0x00747B80, CTCCarrying::GetThingInPrimarySlot
@@ -114,7 +116,12 @@ class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActio
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CSummonerDef { public:
     unsigned char _pad[0x38];
     float LightningPreemptiveDelay;             // +0x38
@@ -188,7 +195,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
                 if (result != 1) {
                     float delay = PDef->LightningPreemptiveDelay;
                     CWorld* world = GetPWorld();
-                    long fps = g_FramesPerSecond;
+                    long fps = CMainGameComponent::GetConstantFPS();
                     NextFrameForPreemptiveUse = (long)((float)world->GetFrame() + (float)fps * delay);
                 }
             }

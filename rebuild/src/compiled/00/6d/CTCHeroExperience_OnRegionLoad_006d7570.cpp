@@ -1,5 +1,7 @@
 // CTCHeroExperience::OnRegionLoad() -- when the hero has a combat def, scales the experience-multiplier param by the def's region-change multiplier and restarts the attenuation timer from the active combo data
 // Leaf: OnRegionLoad
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D7570, length 76 bytes (+ int3 padding).
 // Callees: CTCHeroExperience::GetActiveComboMultiplierData() const @ 0x006D72D0 (manifest "BSTInterval_FindNode" is propagated),
 // __ftol2 @ 0x00BFEA70, the def's virtual slot 1 on release; the frames-per-second global @ 0x01375550.
@@ -62,7 +64,12 @@ float __cdecl FloatLerpDummy();
 struct CWorld_Calls {
     static long __fastcall GetFrame();          // 0x0049D870
 };
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 template<class T> inline const T& Min(const T& left, const T& right) { return (right < left) ? right : left; }
 
@@ -242,6 +249,6 @@ void CTCHeroExperience::OnRegionLoad()
 {
     if (GetPHeroCombatDef().IsValid()) {
         ExperienceMultiplierParam *= PDef->ExperienceMultiplierRegionChangeMultiplier;
-        ExperienceAttenuationTimer = (long)(g_FramesPerSecond * GetActiveComboMultiplierData().ExperienceMultiplierNumSecondsForAttenuation);
+        ExperienceAttenuationTimer = (long)(CMainGameComponent::GetConstantFPS() * GetActiveComboMultiplierData().ExperienceMultiplierNumSecondsForAttenuation);
     }
 }

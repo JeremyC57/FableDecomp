@@ -1,12 +1,14 @@
 // CAIStateGroup_Clean::OnReplace() -- stop kneeling / stop the cleaning action (posting the ST_WASH_FLOOR_OUTOF get-up animation when the creature is free), reset the clean timer to 100 seconds, pick a new idle and destroy the right-hand item
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00917BB0, length 432 bytes. Vtable slot (OnReplace).
 // Leaf: OnReplace@CAIStateGroup_Clean
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: CThingCreatureBase::FinishCurrentAction @ 0x00662650 / IsPerformingAnyAction @ 0x006622A0 / IsFreeToPerformAction
 //          @ 0x00662210, action-queue current id @ 0x00692620 (manifest "CWorld::DrawGetEnvironment" is propagated),
 //          CBrainOutput @ 0x00835620 (implicit dtor inlined: counted pointer +0x20, ~CBaseIntelligentPointer @ 0x00A01C10 +0x40),
 //          CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCreatureAction_PlayAnimation @ 0x008424F0, ~CCreatureActionBase
 //          @ 0x00693EF0, CCountedPointer::Reset @ 0x00668D90, CAIBrain::SetBrainOutput @ 0x0088B8F0 (manifest
-//          "CQuestManager::RemoveAvailableQuestCardType" is propagated), CWorld::GetFrame @ 0x0049D870, g_framesPerSecond
+//          "CQuestManager::RemoveAvailableQuestCardType" is propagated), CWorld::GetFrame @ 0x0049D870, CMainGameComponent::GetConstantFPS()
 //          @ 0x01375550, CVectorMap::LowerBound @ 0x0040F020 (0xd3), CTCIdleScheduler::ChooseNewIdle @ 0x00801A50,
 //          CAIStateGroupBase::DestroyItem @ 0x008FD1B0.
 // Shape: the AIAction_PerformAction body (0x0097D8B0) inlined without the waits: the animation name is an implicit
@@ -131,7 +133,12 @@ class CTCIdleScheduler { public:                       // interface 0xd3
     void ChooseNewIdle();                       // 0x00801A50
 };
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -168,7 +175,7 @@ void CAIStateGroup_Clean::OnReplace()
         }
     }
     CleanActionID = -1;
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     FrameToClean = CWorld::GetFrame() + fps * 100;
     CTCIdleScheduler* scheduler;
     if (GetCreature()->GetInterface(&scheduler, 0xd3))

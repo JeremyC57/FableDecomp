@@ -1,4 +1,6 @@
 // CInputProcessInventoryBase::ChangeSelection -- reset movement or wait for its category/item repeat interval
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail006893D0 length230. CurrentServerFrame416225; FPS global1375550;2^32 pool122DCB4.
 // Actual quarantine CTCInventoryBase retained. Its native virtual entries42..45 are
 // projected with genuine const float PMFs, native4/full host width, no invented virtual padding.
@@ -35,7 +37,12 @@ class CAInputProcess:public CBaseClassNonCopyable { public:
 };
 
 class CGame;class CMainGameComponentInit;
-class CMainGameComponent { public: CMainGameComponent(CGame&,const CMainGameComponentInit&); long GetCurrentServerFrame()const; }; //00416225
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private: public: CMainGameComponent(CGame&,const CMainGameComponentInit&); long GetCurrentServerFrame()const; }; //00416225
 namespace NInventory {
 class CTCInventoryBase;
 #pragma pointers_to_members(full_generality,single_inheritance)
@@ -61,7 +68,6 @@ struct CInputProcessInventoryBase:CInputProcessGameBase {
  virtual NInventory::CTCInventoryBase* GetPInventory()const=0; //slot9
  bool ChangeSelection(ECurrentMovement);
 };
-extern int g_GameFramesPerSecond; //01375550 signed32
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(sizeof(NInventory::InventorySlot)==4);
 FABLE_STATIC_ASSERT(sizeof(CInputProcessInventoryBase)==sizeof(DonorCInputProcessInventoryBase));
@@ -79,7 +85,7 @@ bool CInputProcessInventoryBase::ChangeSelection(ECurrentMovement movement){
   if(StartedRepeatingMovement){NInventory::CTCInventoryBase* p=GetPInventory();delay=(p->*static_cast<const NInventory::InventorySlot*>(p->__vftable)[43].RepeatDelay)();}
   else{NInventory::CTCInventoryBase* p=GetPInventory();delay=(p->*static_cast<const NInventory::InventorySlot*>(p->__vftable)[42].RepeatDelay)();}
  }
- int fps=g_GameFramesPerSecond;
+ int fps=CMainGameComponent::GetConstantFPS();
  unsigned int elapsed=(unsigned int)Component->GetCurrentServerFrame()-FrameSinceLastMovement;
  if(elapsed>=fps*delay){StartedRepeatingMovement=true;FrameSinceLastMovement=Component->GetCurrentServerFrame();return true;}
  return false;

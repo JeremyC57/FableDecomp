@@ -1,5 +1,7 @@
 // CTCMultiArrow::Init() -- load SPECIAL_ABILITIES_MULTI_ARROW_DEF, take the spell level from the owner's ability inventory, derive the shot/volley counts and the ammo-effect delay from the def, make the cast noise, put the effect on the weapon, create the first ammo effect, spawn the def's CAST_EFFECT at the owner and play the def's cast sound
 // Leaf: ?Init@CTCMultiArrow
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CC4D0, 563 bytes, plain `ret`.
 // Callees: CCharString @ 0x0099EBF0 / 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0 (__fastcall),
 //   CDefinitionManager::GetGlobalIndexFromClassIndex @ 0x009AD390, GetDef<CSpecialAbilitiesMultiArrowDef> @ 0x007CC8E0,
@@ -90,7 +92,12 @@ struct CDefStringTable {
     CCharString GetString(long id) const;                    // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;               // 0x013CA828
-extern long g_FramesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -241,7 +248,7 @@ void CTCMultiArrow::Init()
     NumberInVolley = PDef->NumberInVolley[SpellLevel];
     NumOfVolleys = NumberOfShots / NumberInVolley;
     CreateAmmoEffectCount = NumOfVolleys;
-    CreateAmmoEffectDelay = CreateAmmoEffectTimer = (long)(g_FramesPerSecond * PDef->AmmoEffectCreationDelaySecs);
+    CreateAmmoEffectDelay = CreateAmmoEffectTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->AmmoEffectCreationDelaySecs);
     parent->MakeNoise("SIMPLE_NOISE");
     CTCWeaponHolder* holder;
     ((const CThing*)ParentThing)->GetInterface(&holder, 0x13);

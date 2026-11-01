@@ -1,5 +1,7 @@
 // CAIStateGroup_MinionReactToNoise::IsRunnable() -- within two minutes of the last interaction, when not already investigating: a perceived noise maker inside the creature's home with no earlier noise message from home starts an investigation (records the noise position and posts a 2-second noise message)
-//   Bind2 first-pointer store hoist above the GetPItem call as in retail), a local copy of FramesPerSecond taken before the
+// Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+//   Bind2 first-pointer store hoist above the GetPItem call as in retail), a local copy of CMainGameComponent::GetConstantFPS() taken before the
 //   AddMessage argument calls (retail spills it), and two unused named float locals at entry (E-19 symbol-count re-key: fiadd)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091CDC0, length 384 bytes.
 // Callees: CWorld::GetFrame @ 0x0049D870, the inlined GetInterface 0x34 (CTCPerceiveThing, bit 20 of +0x24),
@@ -8,7 +10,7 @@
 //          CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF290, CMessageEventManager::FindMostRecentMessage<
 //          CFilter_Bind2<...>> @ 0x008D46D0 / AddMessage @ 0x00687540 (world +0x60), CThingBuilding::IsPointInside
 //          @ 0x0082D000, __ftol2 @ 0x00BFEA70.
-// Globals: FramesPerSecond @ 0x01375550, 120.0f @ 0x0128FF64.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, 120.0f @ 0x0128FF64.
 // Shape: the frame-rate operand is read before the frame call (right operand first); the filter chain is
 //          `IsOfType(0x1f) && IsOriginatedByThing(home)` bound by pointers; every exit returns InvestigatingNoise.
 // Layout: engine/CAIStateGroup_MinionReactToNoise.h (NoisePosition +0x14, InvestigatingNoise +0x20, FoundNoiseMaker
@@ -109,7 +111,12 @@ class CWorld { public:
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-extern long FramesPerSecond;                    // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
@@ -141,7 +148,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
 {
     float u0 = 0.0f;   // E-19 symbol-count re-key (no bytes)
     float u1 = 0.0f;
-    long fps = FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     if ((float)CWorld::GetFrame() > (float)(fps * 120.0f + FrameOfLastInteraction))
         return false;
     if (!InvestigatingNoise) {
@@ -158,7 +165,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
                     && perceive->CanHear && home->IsPointInside(noisePos)) {
                     NoisePosition() = noisePos;
                     CThingAICreature* creature = GetCreature();
-                    long fps2 = FramesPerSecond;
+                    long fps2 = CMainGameComponent::GetConstantFPS();
                     messages->AddMessage(0x1f, (unsigned long)((float)fps2 * 2.0f), &NoisePosition(),
                         creature, creature->PHome.GetPItem(), 0.0f, 0.0f, 0);
                     InvestigatingNoise = true;

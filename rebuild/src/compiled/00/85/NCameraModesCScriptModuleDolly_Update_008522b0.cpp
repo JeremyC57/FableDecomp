@@ -1,5 +1,7 @@
 // NCameraModes::CScriptModuleDolly::Update() -- put the owning camera at PosAround + DollyVector looking at PosAround, then turn DollyVector about Z by one frame's share of a full turn
 // Leaf: Update
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008522B0, length 160 bytes (153 + int3 padding).
 // Callees: C3DVector::Rotate(const C3DVector& axis, float angle) @ 0x00A13C60.
 // Globals: the frames-per-second count @ 0x01375550 (a long, 15 at rest).
@@ -8,7 +10,12 @@
 // alias the global, so the value is kept in the frame and `fild`ed from there), the Z axis a `C3DVector(0,0,1)` temporary, the angle `1.0f / (fps * TimeFor360Turn)`.
 // Layout: PDB NCameraModes::CScriptModuleDolly (0x68 bytes): PosAround +0x4c, DollyVector +0x58,
 // TimeFor360Turn +0x64, over the 0x4c-byte CScriptModuleBase (POwner +0x38).
-extern long g_FramesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -47,7 +54,7 @@ struct CScriptModuleDolly {
 
 void CScriptModuleDolly::Update()
 {
-    long fps = g_FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     POwner->Position = PosAround + DollyVector;
     POwner->LookAt = PosAround;
     DollyVector.Rotate(C3DVector(0.0f, 0.0f, 1.0f), 1.0f / (fps * TimeFor360Turn));

@@ -1,11 +1,14 @@
 // CTCDoor::UpdateAnimation() -- once the door animation has (to within epsilon) finished, stop updating a proximity door that is not moving, else clear the opening/closing state; then advance the animation by one frame (slowed by bullet time when the door is affected by it)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007308F0, 263 bytes (+ int3 padding), plain `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of CTCAnimationComplex,
 //   interface 0x5a: bit 26 of the +0x28 word), CTCAnimationComplex::GetAnimation @ 0x0070B460, CThing::
 //   SetForceFrameUpdate(bool) @ 0x004C7C60, CTCBase::GetGameSubsystem @ 0x00686D60 (out of line, result unused),
 //   CTCBase::GetWorld @ 0x00686A70 (x2), CThing::IsAffectedByBulletTime @ 0x004C9920, the bullet-time object's
 //   GetTimeScale @ 0x004C5FA0, CAnimateThing::UpdateFrameLogic(const CAnimFrameTime&) @ 0x0070E8B0.
-// Globals: g_framesPerSecond @ 0x01375550, 1.0f @ 0x0122DED8, EPSILON (1e-4f) @ 0x0129BA3C.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, 1.0f @ 0x0122DED8, DELTA_NOTIONAL_ZERO (1e-4f) @ 0x0129BA3C.
 // Layout: engine/CTCDoor.h (retail offsets): Opening +0x12, Closing +0x13, PDef +0x20; CDoorDef (Ego_r.pdb)
 //   TriggerType +0x28; CWorld +0x68 the bullet-time state (active flag +0x0c, a second non-zero test +0x04); the
 //   animation's play fraction +0x1c and the 12-byte frame-time record as in the landed CTCCupboard::UpdateAnimation
@@ -15,8 +18,7 @@
 //   the bullet-time test is an inline `||` on one GetWorld result, the scale read through a second GetWorld. The
 //   record's two trailing words are modelled as floats: as longs (landed 0x00749B40) their zero stores make VC7.1 keep
 //   a zero register (ebx) and fold every bool test / `push 0` / zero store into it; float zeros are immediates.
-extern long g_framesPerSecond;                          // 0x01375550
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -71,6 +73,12 @@ class CWorld { public:
     CBulletTime* PBulletTime;                           // +0x68
 };
 class CMainGameComponent;
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CDoorDef { public:
     unsigned char _pad00[0x28];
     long TriggerType;                                   // +0x28 EDoorTriggerType
@@ -104,7 +112,7 @@ void CTCDoor::UpdateAnimation()
     if (ParentThing->HasTC(0x5a))
         tc = ParentThing->GetTC<CTCAnimationComplex>(0x5a);
     CAnimateThing& anim = tc->GetAnimation();
-    if (1.0f - EPSILON < anim.PlayFraction) {
+    if (1.0f - DELTA_NOTIONAL_ZERO < anim.PlayFraction) {
         if (PDef->TriggerType == 1 && !Opening && !Closing) {
             ParentThing->SetForceFrameUpdate(false);
             return;
@@ -114,7 +122,7 @@ void CTCDoor::UpdateAnimation()
     }
     CAnimFrameTime time;
     (&PeekComponent());
-    time.Seconds = 1.0f / g_framesPerSecond;
+    time.Seconds = 1.0f / CMainGameComponent::GetConstantFPS();
     if (GetWorld().PBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime())
         time.Seconds /= GetWorld().PBulletTime->GetTimeScale();
     anim.UpdateFrameLogic(time);

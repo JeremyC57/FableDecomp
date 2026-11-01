@@ -1,4 +1,6 @@
 // CAIStateGroup_WorkAtSchool::PlayLoop(float, const CCharString&, const CCharString&, const CCharString&) -- play the into animation, repeat the loop animation until `duration` seconds have passed, then the out-of animation; false as soon as one of them does not complete
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009426D0, length 322 bytes (`ret 10h`, bool). Called by the landed CrouchAndTalk
 //          @ 0x00942820 / Teach / StandAndTalk wrappers.
 // Callees: CWorld::GetFrame @ 0x0049D870 (static; manifest "GFGetPreMainMemoryUsed"), _ftol @ 0x00BFEA70, the CCreatureAction_
@@ -36,7 +38,12 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long g_FrameRate;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -63,7 +70,7 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
 
 bool CAIStateGroup_WorkAtSchool::PlayLoop(float duration, const CCharString& into, const CCharString& loop, const CCharString& outOf)
 {
-    long rate = g_FrameRate;
+    long rate = CMainGameComponent::GetConstantFPS();
     long frame = CWorld::GetFrame();
     long endFrame = (long)((float)rate * duration + (float)frame);
     if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), into, CSoundPair(),

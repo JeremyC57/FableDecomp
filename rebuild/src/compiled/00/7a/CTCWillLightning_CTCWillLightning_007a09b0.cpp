@@ -1,5 +1,7 @@
 // CTCWillLightning::CTCWillLightning(CThing*) -- construct the lightning-spell component: default members, look up the spell def, play its init sound, read the beam/hand effect indices, bind the caster, take the ability level and the starting state
 // Leaf: ??0CTCWillLightning
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A09B0, 952 bytes (+ int3 padding), `ret 4`, vtable 0x0126C724.
 // Callees: CTCBase::CTCBase(CThing*) 0x00686800; CBaseIntelligentPointer() 0x00A01B10 / ~ 0x00A01C10 / GetPItem 0x00A01B50
 //   / SetPItem 0x00A01B90; CWillButtonHelperTimer(EHeroAbility, CThing*) 0x008EDFF0; malloc 0x00BFEA0E (list sentinel);
@@ -25,7 +27,12 @@ struct CDefStringTable {
 };
 extern CDefStringTable g_StringTable;                   // 0x013CA828
 extern unsigned long g_InvalidSoundHandle;              // 0x0129D25C
-extern long g_FrameRate;                                // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern long g_LightningBeamLargeEffect;                 // 0x013BAE14
 extern long g_LightningBeamEffect;                      // 0x013BAE10
 
@@ -286,6 +293,6 @@ CTCWillLightning::CTCWillLightning(CThing* parent)
         m_bPlayedSound = false;
     }
     BeamsInitialised = false;
-    m_CombatMultiplierTimer = (long)(g_FrameRate * m_lspDef->CombatMultiplierTime);
+    m_CombatMultiplierTimer = (long)(CMainGameComponent::GetConstantFPS() * m_lspDef->CombatMultiplierTime);
     CGameDefinitionManager::Get();
 }

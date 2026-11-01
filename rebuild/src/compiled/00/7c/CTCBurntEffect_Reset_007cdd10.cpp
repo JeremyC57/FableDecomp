@@ -1,4 +1,6 @@
 // Leaf: Reset
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // SW2 sweep (advisor/007cdd10/probe/t3.cpp).
 // CTCBurntEffect::Reset() -- restart the burn: zero CurTime, scale the def's fade times by the frame rate, and if the
 // def's "SINGE_EFFECT" sub-def names an effect type, spawn three effect things at the owner, attach their particle emitters
@@ -66,7 +68,10 @@ template <class T> struct CRetailVector {
     void push_back(const T& value);                   // 0x004AD520
 };
 struct CTCBaseX;
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCBase;
@@ -104,8 +109,12 @@ public:
         return 0;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
-extern long g_FramesPerSecond;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern const CCharString g_BurntHelperA;              // 0x013BAC30
 extern const CCharString g_BurntHelperB;              // 0x013BAC34
 
@@ -143,26 +152,26 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CEffectDef>* out)
 void CTCBurntEffect::Reset()
 {
     CurTime = 0;
-    FadeInTime = (long)(PDef->FadeInTime * g_FramesPerSecond);
-    FadeOutTimeStart = (long)(PDef->FadeOutTimeStart * g_FramesPerSecond);
-    FadeOutTime = (long)(PDef->FadeOutTime * g_FramesPerSecond);
+    FadeInTime = (long)(PDef->FadeInTime * CMainGameComponent::GetConstantFPS());
+    FadeOutTimeStart = (long)(PDef->FadeOutTimeStart * CMainGameComponent::GetConstantFPS());
+    FadeOutTime = (long)(PDef->FadeOutTime * CMainGameComponent::GetConstantFPS());
     CDefPointer<CEffectDef> def;
     long type = 0;
     C3DVector position = ParentThing->GetPos();
     if (GetDef()->GetSubDef(&def) && def->GetEffectFromString("SINGE_EFFECT", type)) {
-        CThing* effectA = CreateEffectThing(type, &position, false);
+        CThing* effectA = CTCDParticleEmitter::Create(type, *(&position), false);
         if (effectA) {
             CTCDParticleEmitter* emitter = effectA->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
                 emitter->AttachToThing(*ParentThing, 10, g_BurntHelperA, 0, 0.0f);
         }
-        CThing* effectB = CreateEffectThing(type, &position, false);
+        CThing* effectB = CTCDParticleEmitter::Create(type, *(&position), false);
         if (effectB) {
             CTCDParticleEmitter* emitter = effectB->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
                 emitter->AttachToThing(*ParentThing, 10, g_BurntHelperB, 0, 0.0f);
         }
-        CThing* effectC = CreateEffectThing(type, &position, false);
+        CThing* effectC = CTCDParticleEmitter::Create(type, *(&position), false);
         if (effectC) {
             CTCDParticleEmitter* emitter = effectC->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)

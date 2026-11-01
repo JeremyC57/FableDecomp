@@ -1,5 +1,7 @@
 // CCombatManager::IncrementDefenderAttackPattern(CCombatantInfo&) -- steps a defender to the next entry of its attack pattern (wrapping), schedules the next instruction and, on an attack entry, stops the first combat ring's rotation
 // Leaf: IncrementDefenderAttackPattern
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E8600, 148 bytes of code (`ret 4`).
 // Callees: GetWorldFrame @ 0x0049D870, __ftol2 @ 0x00BFEA70.
 // Globals: the frames-per-second long @ 0x01375550 (copied to the frame for `fild`), the float 0.0f @ 0x0122DEDC.
@@ -7,7 +9,12 @@
 //          with size(); the world frame is spilled into the dead argument slot for `fild`; the first ring comes from the
 //          inlined CCombatWheel::GetRing(0) (size test then null test of the data pointer, the /28 reciprocal
 //          multiply). AttackPatternIdleStandardInterval is CCombatManager +0x30 (PDB +0x38: retail maps are 12 bytes).
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -69,11 +76,11 @@ void CCombatManager::IncrementDefenderAttackPattern(CCombatantInfo& info)
     CRetailVector<long>& pattern = info.PAttackPattern->AttackPattern;
     if ((unsigned long)++info.AttackPatternIndex >= pattern.size())
         info.AttackPatternIndex = 0;
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     info.FrameForNextInstruction = (long)(CWorld::GetFrame() + framesPerSecond * AttackPatternIdleStandardInterval);
     if (pattern[info.AttackPatternIndex] > 0) {
         CCombatRing* ring = info.CombatWheel.GetRing(0);
         if (ring)
-            ring->DeltaRotation = 0.0f / g_framesPerSecond;
+            ring->DeltaRotation = 0.0f / CMainGameComponent::GetConstantFPS();
     }
 }

@@ -1,6 +1,8 @@
 // CTCInventoryBase::UpdateInventoryAnim() -- advances the inventory preview thing's rotation: latches last angles and set, steps each axis angle by its gain over the def's per-axis seconds, rotates the right-handed set and wraps the angles past one turn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD699, length 405 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Leaf: UpdateInventoryAnim
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Shape: the three per-axis steps read the def through a by-value GetPDef() temporary (inc / dec of the def count around each
 // read). The temporary's release must be spelled `~CDefPointer() { if (Object) Object->ReleaseReference(); }` with an inline
 // `ReleaseReference() { if (--m_count == 0) Destroy(); }` on the pointee: that keeps the Y step's `dec [ecx+4]` between
@@ -15,7 +17,12 @@ class C3DVector { public: float X, Y, Z; };
 extern const C3DVector g_XAxis;                 // 0x0137CDFC
 extern const C3DVector g_YAxis;                 // 0x0137CDF0
 extern const C3DVector g_ZAxis;                 // 0x0137CE08
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CRightHandedSet { public:
     C3DVector Forward;
@@ -78,9 +85,9 @@ void CTCInventoryBase::UpdateInventoryAnim()
     InventoryAnimLastRHSet = InventoryAnimCurrentRHSet;
     InventoryAnimLastYRotationAngle = InventoryAnimCurrentYRotationAngle;
     InventoryAnimLastZRotationAngle = InventoryAnimCurrentZRotationAngle;
-    float x = InventoryAnimXRotationAngleGain / (g_FramesPerSecond * GetPDef()->InventoryAnimXRotationSeconds);
-    float y = 1.0f / (g_FramesPerSecond * GetPDef()->InventoryAnimYRotationSeconds);
-    float z = InventoryAnimZRotationAngleGain / (g_FramesPerSecond * GetPDef()->InventoryAnimZRotationSeconds);
+    float x = InventoryAnimXRotationAngleGain / (CMainGameComponent::GetConstantFPS() * GetPDef()->InventoryAnimXRotationSeconds);
+    float y = 1.0f / (CMainGameComponent::GetConstantFPS() * GetPDef()->InventoryAnimYRotationSeconds);
+    float z = InventoryAnimZRotationAngleGain / (CMainGameComponent::GetConstantFPS() * GetPDef()->InventoryAnimZRotationSeconds);
     InventoryAnimCurrentRHSet.Rotate(g_XAxis, -x);
     InventoryAnimCurrentRHSet.Rotate(g_YAxis, -y);
     InventoryAnimCurrentRHSet.Rotate(g_ZAxis, -z);

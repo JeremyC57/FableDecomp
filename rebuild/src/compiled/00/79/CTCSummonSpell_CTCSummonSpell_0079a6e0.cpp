@@ -1,5 +1,7 @@
 // CTCSummonSpell::CTCSummonSpell(CThing& parent) -- the summon-spell component: look up its SPECIAL_ABILITIES_SUMMON_SPELL_DEF, resolve the base summon creature's global def once (class static), start both fade-in timers from the def's fade-in time and take the caster's summon ability level
 // Leaf: ??0CTCSummonSpell
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079A6E0, 305 bytes, `ret 4`; vtable 0x0126C2B4.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CBaseIntelligentPointer ctor @ 0x00A01B10 (x2) / SetPItem @ 0x00A01B90,
 //   CCharString(const char*, long) @ 0x0099EBF0 ("SPECIAL_ABILITIES_SUMMON_SPELL_DEF" @ 0x01235C3C), CGameDefinitionManager::Get()
@@ -8,7 +10,7 @@
 //   CDefStringTable::GetString(long) @ 0x009D49B0 (on g_DefStringTable @ 0x013CA828), CDefinitionManager::
 //   GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, __ftol2 @ 0x00BFEA70, the const interface LowerBound
 //   @ 0x004365B0 (interface 0x6F), CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EDE93 (ability 10).
-//   Globals: CTCSummonSpell::SummonCreatureGlobalDefNum @ 0x0138306C (class static), g_framesPerSecond @ 0x01375550.
+//   Globals: CTCSummonSpell::SummonCreatureGlobalDefNum @ 0x0138306C (class static), CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: Ego_r.pdb CTCSummonSpell (pack(1): Minion at the odd +0x11, CIntelligentPointer<CThingAICreature> vtable
 //   0x0123E7E0): PDef +0x0C, JustReleased +0x10, FadeInTimer +0x1C, CurFadeInTimer +0x20, SpellLevel +0x24, CurTimer +0x28,
 //   PItemRemoved (CIntelligentPointer<CThing>, vtable 0x01238C6C) +0x2C, CutSceneCancelled +0x34; CSpecialAbilitiesSummonSpellDef
@@ -102,7 +104,12 @@ public:
         return (it == end || type < it->first ? end : it)->second;
     }
 };
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCBase {
 public:
     CTCBase(CThing* parent);                            // 0x00686800
@@ -143,7 +150,7 @@ CTCSummonSpell::CTCSummonSpell(CThing& parent)
         CCharString creatureName = g_DefStringTable.GetString(PDef->BaseSummonCreatureName);
         SummonCreatureGlobalDefNum = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(creatureName);
     }
-    FadeInTimer = CurFadeInTimer = (long)(g_framesPerSecond * PDef->FadeInTime);
+    FadeInTimer = CurFadeInTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInTime);
     if (ParentThing->HasTC(0x6f))
         SpellLevel = ((CTCInventoryAbilities*)ParentThing->GetTC(0x6f))->GetAbilityLevel(10);
 }

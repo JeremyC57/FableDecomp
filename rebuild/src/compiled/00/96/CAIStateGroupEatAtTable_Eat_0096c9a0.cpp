@@ -1,4 +1,6 @@
 // CAIStateGroup_EatAtTable::Eat(CThing*) -- pick the food up from the table, eat in a loop for a random 0..6 seconds, then put the tankard down; false as soon as an action does not succeed
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096C9A0, length 384 bytes (`ret 4`).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("ST_SAT_EATING_INTO" @ 0x01296DB4,
 //          "ST_SAT_EATING_LOOP" @ 0x01296EF8), CCreatureAction_PickUpThingAtTable ctor @ 0x008440C0 (the TU's derived
@@ -69,7 +71,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                    // 0x0049D870
-extern long g_FramesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CAIStateGroupEatAtTableMethods : CAIStateGroupBase {
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
@@ -89,7 +96,7 @@ bool CAIStateGroupEatAtTableMethods::Eat(CThing* food)
 {
     if (AIAction_PerformActionAndWait(&CCreatureAction_PickUpFoodAtTable(GetCreature(), food), false) != 2)
         return false;
-    long fps = g_FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     long endFrame = CWorld::GetFrame() + Random(7) * fps;
     do {
         if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SAT_EATING_LOOP",

@@ -1,4 +1,6 @@
 // CAIStateGroup_GoToPub::PayMoney() -- find the barman through the bar's tavern component, ask him for payment and wait up to 20 seconds for his reply; on reply play PAY_AT_BAR and send the paid message, else withdraw the request and send the gave-up message; the bar point is released on every path past the barman lookup
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094A840, length 637 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 // CVectorMap::LowerBound @ 0x0040F020, FreeBarPoint @ 0x00949320, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 / IsStopping
@@ -95,7 +97,12 @@ class CWorld { public:
     CMessageEventManager* MessageEventManager;         // +0x60
     static long __fastcall GetFrame();            // 0x0049D870
 };
-extern long g_framesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                     // +0x18
@@ -142,7 +149,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
         CMessageEventManager* messages = GetPWorld()->MessageEventManager;
         request = messages->AddMessage(0x30, 1000, pos, creature, barman, 0.0f, 0.0f, BarIndex);
     }
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     long timeout = CWorld::GetFrame() + fps * 20;
     while (!GetPaymentRequestReplyMessage()) {
         if (CWorld::GetFrame() > timeout || IsStopping()) {

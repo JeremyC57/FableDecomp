@@ -1,4 +1,6 @@
 //   (reads the Bind3, all three bound filters and the range filter), and the Bind2&&C operator builds the Bind3 straight from
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 //   the bound operands (*ab.PF1, *ab.PF2, c); together they hoist the &type store above the IsOriginatedByThing ctor as in retail
 // CAIStateGroup_MinionKidGroupTag::IsRunnable() -- after seven seconds out of the game: join the nearest kid tag group whose nearest member is within 8, else answer a nearby tag invitation (0x2e) by creating a marker-light group and joining it as the initiator, else post the creature's own invitation unless one is queued
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00934920, length 853 bytes (+ int3 padding), plain `ret`, frame 0x30.
@@ -14,7 +16,12 @@
 // Shape: the distance is sqrt(dz*dz + dy*dy + dx*dx) of component locals; InitialTagPos takes the implicit operator=.
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -211,7 +218,7 @@ const CMessageEvent* CMessageEventManager::FindMostRecentMessage(const COwnMessa
 #pragma auto_inline(on)
 bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
 {
-    long framesPerSecond = g_FramesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     if (CWorld::GetFrame() - FrameLastPlayedIn < framesPerSecond * 7)
         return false;
     InitiatedTag = false;
@@ -256,7 +263,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
             CMessageEventFilter_IsOfType(0x2e) && CMessageEventFilter_IsOriginatedByThing(GetCreature())
             && TSFRange(CThingFilter_In2DRange(GetCreature(), 8.0f)))) {
         CThingAICreature* creature = GetCreature();
-        long fps = g_FramesPerSecond;
+        long fps = CMainGameComponent::GetConstantFPS();
         CMessageEventManager* manager = GetPWorld()->PMessageEventManager;
         manager->AddMessage(0x2e, (long)(fps * 4.0f), &creature->PeekPos(), creature, 0, 8.0f, 8.0f, 0);
     }

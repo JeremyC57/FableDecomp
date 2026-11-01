@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionGossip::InitStateGroup(const CWorld&, CThingAICreature&) -- pretend the villager last
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // gossiped a random 0..GetTimeToInitiate() seconds ago.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090C800, length 100 bytes (+ int3 padding), `ret 8` (both
 // reference arguments unused). Vtable slot 13 of CAIStateGroup_MinionGossip.
@@ -107,7 +109,12 @@ public:
 };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CAIStateGroup_MinionGossip : CAIStateGroupBase {
     long FrameOfLastGossip;                     // +0x14
@@ -118,7 +125,7 @@ struct CAIStateGroup_MinionGossip : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGossip::InitStateGroup(const CWorld& world, CThingAICreature& creature)
 {
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     unsigned long* seed = GetPWorldSeed();
     unsigned long range = GetTimeToInitiate() * framesPerSecond;
     unsigned long next = *seed * 0x24A1U + 0x24DFU;

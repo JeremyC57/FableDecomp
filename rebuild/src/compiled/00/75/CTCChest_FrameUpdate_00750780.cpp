@@ -1,10 +1,12 @@
 // CTCChest::FrameUpdate() -- advance the lid's open/close transition by one frame; on the frame the chest becomes open the hero gets its reward items, on the frame it becomes closed the chest is reset; the lid animation follows; an idle chest stops forcing frame updates
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750780, 205 bytes (plain `ret`).
 // Callees: the CTCBase accessor @ 0x00686D60 (`[0x013B8A1C]+0x1c`, object unidentified; named GetFrameSource as two landed
 // callers do; the result is unused, as in the landed CTCNoise::ResetLifeTimer 0x007497C0, which calls it GetWorld),
 // COpenCloseHelper::FrameUpdate(float) @ 0x0074FF60, CTCContainerRewardHero::RewardHeroWithItems() @ 0x0074EE90 (on `this`),
 // CTCChest::UpdateAnimation(float) @ 0x00750470, CTCChest::InitClosed() @ 0x007502D0, CThing::SetForceFrameUpdate(bool)
-// @ 0x004C7C60. Globals: g_framesPerSecond @ 0x01375550 (`fild`), 1.0f @ 0x0122DED8.
+// @ 0x004C7C60. Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550 (`fild`), 1.0f @ 0x0122DED8.
 // Layout: CTCChest ChestOpener (COpenCloseHelper, Ego_r.pdb +0x20) at retail +0x1c: Opened +0x1c, Closed +0x1d, Opening +0x1e,
 // Closing +0x1f, OpenCloseTransitionAmount +0x20, LastOpenCloseTransitionAmount +0x24.
 // Shape: the frame time is an inline static reached through PeekComponent() (the accessor is still called, twice);
@@ -12,9 +14,13 @@
 // idle test is an inline IsIdle() (`!(Last != Transition)` = `fld ; fld ; fucompp ; test ah,44h ; jnp`, the idle block
 // placed last); the reward/reset arms are an `if / else if` whose shared UpdateAnimation tail VC7.1 duplicates into the
 // reward arm (a separate `return` there picks edx for the reset arm's reload).
-extern long g_framesPerSecond;                          // 0x01375550
-class CMainGameComponent { public:
-    static float GetSecondsPerFrame() { return 1.0f / g_framesPerSecond; }
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private: public:
+    static float GetSecondsPerFrame() { return 1.0f / CMainGameComponent::GetConstantFPS(); }
 };
 struct COpenCloseHelper {
     bool  Opened;                                       // +0x00

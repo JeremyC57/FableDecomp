@@ -1,13 +1,15 @@
 // CAIStateGroup_GameMaster::OfferPlayerAGame() -- play OFFER_GAME, speak the table game's banter at the hero until it finishes, then schedule the next reaction 5..14 seconds ahead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094CE60, length 437 bytes.
 // Leaf: OfferPlayerAGame@CAIStateGroup_GameMaster
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //          CBaseIntelligentPointer GetPItem @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90, CVectorMap::LowerBound
 //          @ 0x0040F020 (interface 0xcf), CTCTavernGame::GetBanter @ 0x005EA3C0, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //          CCreatureAction_PlayAnimation @ 0x008424F0, ~CCreatureActionBase @ 0x00693EF0 (manifest "CPhysicsMeshInfo" is
 //          propagated), AIAction_PerformAction @ 0x0097D8B0, AIAction_SpeakAISpeechToTarget @ 0x009812C0, Terminate
 //          @ 0x008FCF40, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame @ 0x0049D870 (manifest
-//          "GFGetPreMainMemoryUsed" is propagated), g_framesPerSecond @ 0x01375550.
+//          "GFGetPreMainMemoryUsed" is propagated), CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Shape: the bitset::test GetInterface (bool materialised to a frame byte, ternary end/hit pick straight into ecx; the miss
 //          path reads the never-written slot); the animation string is scoped to the PerformAction block so the lookup key
 //          shares its slot; `do { r = Speak(...) } while (r == 4)`; the random seconds and a NAMED fps local are taken
@@ -111,7 +113,12 @@ enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_1, AI_ACTION_REPE
 enum EAIActionReturn { AI_RET_0, AI_RET_1, AI_RET_2, AI_RET_3, AI_RET_4 };
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
     seed = seed * 0x24A1 + 0x24DF;
@@ -166,7 +173,7 @@ bool CAIStateGroup_GameMaster::OfferPlayerAGame()
         return false;
     }
     unsigned long seconds = WorldRandomRange(*GetPWorldSeed(), 10);
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     TimeNextReactToPlayer = CWorld::GetFrame() + (seconds + 5) * fps;
     return true;
 }

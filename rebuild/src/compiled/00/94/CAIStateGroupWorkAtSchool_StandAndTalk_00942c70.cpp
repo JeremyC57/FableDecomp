@@ -1,4 +1,6 @@
 // CAIStateGroup_WorkAtSchool::StandAndTalk(float seconds) -- put the creature's mode manager (interface 0x31) into
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // mode 0x1B, idle until the given time has passed (or the group stops / the idle action ends), then leave the
 // mode; true when the idle action finished (2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942C70, length 193 bytes (+ int3 padding), `ret 4`.
@@ -66,7 +68,12 @@ protected:
     bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
 };
 
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -87,7 +94,7 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBaseA {
 
 bool CAIStateGroup_WorkAtSchool::StandAndTalk(float seconds)
 {
-    long fps = g_FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     long endFrame = (long)(CWorld::GetFrame() + fps * seconds);
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);

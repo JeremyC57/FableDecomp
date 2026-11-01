@@ -1,5 +1,7 @@
 // CTCCreatureOpinionOfHero::UpdateHitTolerance(bool heavy) -- count one more hit by the hero (1.5 for a heavy hit, else 1), push back the decay frame, and report whether the creature's tolerance to being hit is used up (always true for a heavy hit)
 // Leaf: UpdateHitTolerance
+// Naming wave 18: the global stand-in g_hitCountDecaySeconds (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006819D0, length 149 bytes (padded to 160), `ret 4`.
 // Label correction: the catalog's "CViewBase::" class is wrong: `this` is a CTCCreatureOpinionOfHero (ParentThing +4,
 // NumberOfTimesHit +0x10, ToleranceToBeingHitOverride +0x14, FrameToDecayNumberOfTimesHit +0x18, PPersonalityDef +0x20); the
@@ -18,7 +20,12 @@ class CWorld { public:
     COpinionReactionManager* POpinionReactionManager;   // +0x74
     static long __fastcall GetFrame();                         // 0x0049D870
 };
-extern long g_hitCountDecaySeconds;                // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class COpinionPersonalityDef { public:
     unsigned char _pad00[0x50];
     float ToleranceToBeingHit;                     // +0x50
@@ -56,7 +63,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 bool CTCCreatureOpinionOfHero::UpdateHitTolerance(bool heavy)
 {
     NumberOfTimesHit += heavy ? 1.5f : 1.0f;
-    long decaySeconds = g_hitCountDecaySeconds;
+    long decaySeconds = CMainGameComponent::GetConstantFPS();
     FrameToDecayNumberOfTimesHit = CWorld::GetFrame() + decaySeconds * 0x78;
     if (heavy)
         return true;

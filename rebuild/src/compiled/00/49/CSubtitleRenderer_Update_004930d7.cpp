@@ -7,6 +7,8 @@
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004930D7, 197 bytes, `ret 4`. Ego_r.pdb `?Update@CSubtitleRenderer@@QAEX_N@Z`.
 // Leaf: Update
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0 (`__fastcall`), CSubtitleRenderer::Clear(bool) @ 0x00492BAB,
 //   PeekGuiDef @ 0x00438570 (`__fastcall`); globals: the frame rate @ 0x01375550 (long), float pool 1.0f @ 0x0122DED8 and
 //   0.0f @ 0x0122DEDC.
@@ -18,7 +20,12 @@
 // Retail layout (the landed CSubtitleRenderer rows): TextCharactersShowing +0x24, DisplayFlags +0x7C, MaxDisplayTime +0x88,
 //   TextTimer +0x8C, InCutscene +0xDE, DisplayingText +0xE5, UpdateWhilePaused +0xE6, UpdateTimer +0xE7; CPlayerGuiDef
 //   characters per frame retail +0x90C.
-extern long g_FramesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CPlayerGuiDef { public:
     unsigned char _pad[0x90c];
@@ -57,7 +64,7 @@ void CSubtitleRenderer::Update(bool paused)
     if (!UpdateWhilePaused && paused)
         return;
     if (UpdateTimer)
-        TextTimer += 1.0f / g_FramesPerSecond;
+        TextTimer += 1.0f / CMainGameComponent::GetConstantFPS();
     if (!(DisplayFlags & 0xc)) {
         if (DisplayFlags & 2) {
             if (MaxDisplayTime != 0.0f && TextTimer > MaxDisplayTime

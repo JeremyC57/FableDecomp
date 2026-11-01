@@ -1,5 +1,7 @@
 // CAIStateGroup_WanderAroundShops::Update() -- register as a shopper of the live shop, then for the configured number of browses: walk up to the pretty thing, look at it, keep looking at it for a random time, and pick the next pretty thing near the shop; terminates when anything dies or an action fails
 // Leaf: ?Update@CAIStateGroup_WanderAroundShops
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009474F0, length 647 bytes (aligned `and esp,-8` frame for the
 //   intelligent-pointer temporary, virtual slot 12).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (interface 0x53 CTCShop,
@@ -78,7 +80,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern unsigned long g_ShopBrowseCount;         // 0x0138CE20
 extern float g_ShopBrowseRadius;                // 0x0138CE24
 extern float g_ShopBrowseSeconds;               // 0x0138CE28
@@ -149,7 +156,7 @@ void CAIStateGroup_WanderAroundShops::Update()
             } while (result == 4);
             if (result != 2)
                 break;
-            long fps = g_FramesPerSecond;
+            long fps = CMainGameComponent::GetConstantFPS();
             long endFrame = GFRandom((long)(fps * g_ShopBrowseSeconds), GetPWorldSeed()) + CWorld::GetFrame();
             for (;;) {
                 if (!IS_THING_ALIVE(PrettyThing)) {

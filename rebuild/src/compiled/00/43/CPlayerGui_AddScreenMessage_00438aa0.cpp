@@ -1,4 +1,7 @@
 // CPlayerGui::AddScreenMessage(const CWideString& text) -- word-wrap a message into the visible screen area (left edge pushed in to the GUI def's message margin) with the def's message font, and queue it on the screen-message list with its display time (frames-per-second x the def's seconds) and reveal speed
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00438AA0, length 528 bytes, `ret 4`.
 // Callees: CDisplayManager::GetVVisibleTelevisionScreenArea 0x009BECE0 (g_pDisplayManager 0x013B8390, hidden result),
 // the lazily loaded "PLAYER_GUI_PC" def (CCharString 0x0099EBF0, CGameDefinitionManager::Get 0x0044C6B0, GetDef<T>
@@ -31,9 +34,14 @@ class C2DBoxF { public:
 class CDisplayManager { public:
     C2DBoxF GetVVisibleTelevisionScreenArea() const;        // 0x009BECE0
 };
-extern CDisplayManager* PDisplayManager;                  // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                  // 0x013B8390
 float __stdcall GFVXToAX(float x);                          // 0x009E1DA0
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CPlayerGuiDef { public:                                      // the "PLAYER_GUI_PC" definition (descriptive)
     unsigned char _pad000[0x8e0];
@@ -128,12 +136,12 @@ class CPlayerGui { public:
 
 void CPlayerGui::AddScreenMessage(const CWideString& text)
 {
-    C2DBoxF area = PDisplayManager->GetVVisibleTelevisionScreenArea();
+    C2DBoxF area = GPDisplayManager->GetVVisibleTelevisionScreenArea();
     float margin = GFVXToAX(GetPlayerGuiDef()->MessageLeftMargin);
     if (area.TLX < margin)
         area.TLX = margin;
     CFontBank* font = ((CFontBankManager*)PFontManager)->GetFont(GetPlayerGuiDef()->MessageFont).Data;
     CWideString formatted;
     FormatStringForArea(area, *font, text, formatted);
-    ScreenMessages.push_back(NPlayerGui::CScreenMessage(formatted, (long)(g_framesPerSecond * GetPlayerGuiDef()->MessageDisplaySeconds), GetPlayerGuiDef()->MessageCharactersPerFrame));
+    ScreenMessages.push_back(NPlayerGui::CScreenMessage(formatted, (long)(CMainGameComponent::GetConstantFPS() * GetPlayerGuiDef()->MessageDisplaySeconds), GetPlayerGuiDef()->MessageCharactersPerFrame));
 }

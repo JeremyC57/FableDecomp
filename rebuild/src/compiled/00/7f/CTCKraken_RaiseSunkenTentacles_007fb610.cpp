@@ -1,4 +1,6 @@
 // CTCKraken::RaiseSunkenTentacles() -- for every tentacle thing in the Tentacles list take its CTCKrakenTentacle component (interface 0xE3) and schedule its rise: TickToRise = world frame + def rise delay * frames-per-second
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FB610, 133 bytes. Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, type 0xE3 = bit 3 of the dword at
 // CThing+0x3C), GetWorldFrame 0x0049D870, __ftol2. Globals: frames-per-second long 0x01375550.
@@ -74,7 +76,12 @@ template<class T> struct CListNode {
 template<class T> struct CList {               // STLport list: header node pointer
     CListNode<T>* Node;
 };
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -108,7 +115,7 @@ void CTCKraken::RaiseSunkenTentacles()
     CTCKrakenTentacle* tentacle;
     for (CListNode<CIntelligentPointer<CThing> >* it = Tentacles.Node->Next; it != Tentacles.Node; it = it->Next) {
         it->Data.GetPItem()->GetInterface(&tentacle, 0xe3);
-        long fps = g_FramesPerSecond;
+        long fps = CMainGameComponent::GetConstantFPS();
         CKrakenDef* def = PKrakenDef;
         tentacle->TickToRise = CWorld::GetFrame() + (long)(def->TentacleRiseDelay * fps);
     }

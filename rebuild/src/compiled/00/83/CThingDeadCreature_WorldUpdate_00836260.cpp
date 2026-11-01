@@ -1,5 +1,7 @@
 // CThingDeadCreature::WorldUpdate() -- game-object update and body reorientation; then, for a creature def that persists after death, count the body's life down and, two seconds before the end, spawn the decay effect at the body and fade it out once; when the fade has finished kill the body
 // Leaf: ?WorldUpdate@CThingDeadCreature
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00836260, length 539 bytes, `ret`, bool in al.
 // Callees: CThingGameObject::WorldUpdate @ 0x00838BA0, CThingBodyReorienter::IsUpdateNeeded @ 0x00863250 /
 //   UpdateBodyReorienation @ 0x00863E10 / the one-byte flag setter @ 0x00863260, CThing::UpdateGraphicAppearance(long)
@@ -9,7 +11,7 @@
 //   CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0,
 //   LowerBound @ 0x0040F020 (non-const) / @ 0x004365B0 (const), CThing::AddTC @ 0x004C9D60, CTCFadeOutAndIn::Fade
 //   @ 0x006C3B70, CThing::Kill @ 0x004C9B80.
-// Globals/strings: g_framesPerSecond @ 0x01375550, 1e-4f @ 0x0129BA3C, 1.0f @ 0x0122DED8, "" @ 0x0122D70E,
+// Globals/strings: CMainGameComponent::GetConstantFPS() @ 0x01375550, 1e-4f @ 0x0129BA3C, 1.0f @ 0x0122DED8, "" @ 0x0122D70E,
 //   "CTCFadeOutAndIn" @ 0x01238FE4.
 // Layout (retail; Ego_r.pdb in brackets): CThing interface bitset +0x20, map +0x44, def index +0x8c, Dead +0x91 bit 0;
 //   CThingPhysical Health +0xb4 [+0xcc]; CThingDeadCreature BodyReorienter +0xe4 [+0xfc], StartedDecay +0xe8 [+0x100];
@@ -88,7 +90,10 @@ class CTCFadeOutAndIn { public:
     void Fade(float time, bool fadeIn);                 // 0x006C3B70
 };
 class CThing;
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThingBodyReorienter { public:
@@ -101,7 +106,12 @@ template<class T> struct scoped_ptr {
     T* operator->() const { return px; }
 };
 
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CThing {
 public:
@@ -154,7 +164,6 @@ __declspec(noinline) bool CThing::GetTCDriver(CTCDParticleEmitter** out)
 }
 #pragma auto_inline(on)
 
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
 class CThingGameObject : public CThing {
 public:
@@ -190,11 +199,11 @@ bool CThingDeadCreature::WorldUpdate()
         UpdateGraphicAppearance(2);
     if (PeekDefinitionInline().NumSecondsToPersistOnDeath > 0.0001f) {
         Health -= 1.0f;
-        if (Health < g_framesPerSecond * 2.0f) {
+        if (Health < CMainGameComponent::GetConstantFPS() * 2.0f) {
             if (!StartedDecay) {
                 StartedDecay = true;
                 if (PeekDefinition().DeadBodyDecayEffect > 0) {
-                    CThing* effect = CreateSpecialEffect(PeekDefinition().DeadBodyDecayEffect, GetPos(), false);
+                    CThing* effect = CTCDParticleEmitter::Create(PeekDefinition().DeadBodyDecayEffect, GetPos(), false);
                     if (effect && !effect->Dead) {
                         CTCDParticleEmitter* emitter = 0;
                         effect->GetTCDriver(&emitter);

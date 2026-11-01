@@ -1,11 +1,13 @@
 // CAIStateGroup_MazeTutorialBattleUseShield::IsRunnable() -- in boss phase 2, with a live combat target, runnable once 8 seconds have passed since the last shield: restamp the frame, fetch the whisper battle def and latch the target
+// Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954CD0, length 352 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xad = CTCBoss, bit 13 of +0x34) and its const
 //          copy @ 0x004365B0 (interface 8, bit 8 of +0x20, the enemy tracker), CTCBoss::GetBossPhase @ 0x007AED10, the
 //          tracker's virtual slot 29 (+0x74) GetTarget, CAIStateGroupBase::GetWorld @ 0x008FCFC0, CWorld::GetWorldFrame
 //          @ 0x0049D870 (static), CDefClassBase::GetSubDef<CWhisperBattleDef> @ 0x00956590 on the creature def (+0x70),
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01238C6C), def virtual slot 1.
-// Globals: FramesPerSecond @ 0x01375550, 8.0f @ 0x012944C4.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, 8.0f @ 0x012944C4.
 // Shape: both lookups are the out-parameter GetInterface with the miss path reading the never-written slot (the key's
 //          home); a same-TU GetSubDef stand-in fixes the holder zero store and the short ecx release; the second goes through the const overload (retail calls the TU's const LowerBound copy); the
 //          elapsed frames are stored into that dead slot for the fild; the def holder is released by hand.
@@ -101,7 +103,12 @@ class CTCBoss { public:                                // interface 0xad
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long FramesPerSecond;                    // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -147,7 +154,7 @@ bool CAIStateGroupMazeTutorialBattleUseShieldMethods::IsRunnable()
         CThing* target = tracker->GetTarget();
         if (target && !(target->m_flags91 & 1)) {
             float elapsed = (float)(GetWorld().GetFrame() - FrameOfLastShield);
-            if (elapsed > (float)FramesPerSecond * 8.0f) {
+            if (elapsed > (float)CMainGameComponent::GetConstantFPS() * 8.0f) {
             FrameOfLastShield = GetWorld().GetFrame();
             CDefPointer<CWhisperBattleDef> def;
             GetCreature()->PDef->GetSubDef(&def);

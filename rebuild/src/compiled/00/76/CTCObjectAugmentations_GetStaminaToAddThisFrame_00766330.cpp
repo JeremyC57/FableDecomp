@@ -1,9 +1,12 @@
 // CTCObjectAugmentations::GetStaminaToAddThisFrame() const -- sum, over the attached augmentations whose stamina frequency is positive, the def's stamina increase on every frame that is a multiple of the frequency in frames (frequency * frames-per-second, rounded)
 // Leaf: GetStaminaToAddThisFrame
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00766330, 199 bytes (plain `ret`; PDB ?GetStaminaToAddThisFrame@CTCObjectAugmentations@@QBEJXZ).
 //   The catalog labels this body "GetHealthToAddThisFrame" (twin of 0x00766260): it reads the stamina fields +0x44/+0x48.
 // Callees: CDefClassBase::GetSubDef<CAugmentationDef> @ 0x0042B248 (landed), CWorld::GetWorldFrame() @ 0x0049D870 (static), the def
-//   release through vtable slot 1 (`dec [esi+4] ; jne`). Globals: g_framesPerSecond @ 0x01375550, EPSILON @ 0x0129BA3C.
+//   release through vtable slot 1 (`dec [esi+4] ; jne`). Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, DELTA_NOTIONAL_ZERO @ 0x0129BA3C.
 // Layout: Ego_r.pdb CTCObjectAugmentations Augmentations +0x14 (vector<CDefPointer<CThingBaseDef>>, 12-byte retail vector);
 //   CAugmentationDef (PDB = retail) frequency/increase +0x44/+0x48.
 #pragma optimize("y", off)
@@ -55,8 +58,13 @@ template <class T> struct vector {
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
 class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
-extern long g_framesPerSecond;                          // 0x01375550
-extern const float EPSILON;           // 0x0129BA3C
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C
 // the engine's inline-assembly FPU ceiling helper (0x004FA9A0 is its standalone copy): VC7.1 expands the __forceinline body in
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
@@ -100,8 +108,8 @@ long CTCObjectAugmentations::GetStaminaToAddThisFrame() const
             CDefPointer<CAugmentationDef> slot;
             def->GetSubDef(slot);
             CAugmentationDef* aug = slot.Object;
-            if (aug->FrequencyToAddStaminaInSeconds > EPSILON) {
-                long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddStaminaInSeconds);
+            if (aug->FrequencyToAddStaminaInSeconds > DELTA_NOTIONAL_ZERO) {
+                long period = CeilToLong(CMainGameComponent::GetConstantFPS() * aug->FrequencyToAddStaminaInSeconds);
                 if (CWorld::GetFrame() % period == 0)
                     total += aug->StaminaToAddPerIncrease;
             }

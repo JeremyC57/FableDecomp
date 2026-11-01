@@ -1,5 +1,7 @@
 // CCombatManager::ResetDefenderAttackPattern(CCombatantInfo& info, CDefPointer<const CAttackPatternDef> pattern) -- install a new attack pattern on a defender, rewind its index and instruction frame, and stop every combat ring's rotation
 // Leaf: ResetDefenderAttackPattern
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E8C30, 164 bytes (176 with padding), `ret 8` (the def pointer is by value and
 //   released here); `this` is not used.
 // Callees: none direct -- the def's destroy is vtable slot 1 (`call [eax+4]`) when its count (+4) reaches zero.
@@ -9,7 +11,12 @@
 // Shape: the CDefPointer assignment is inlined (compare, release + null the old def, store, add-ref); the ring walk is
 //   `while ((ring = GetRing(i++)) != 0)` with the inlined GetRing (sign test strength-reduced onto the byte offset,
 //   unsigned size compare by the /28 reciprocal); DeltaRotation = 0.0f / fps.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 template<class T> struct CRetailVector {        // retail std::vector: {first, last, end_of_storage}, 12 bytes
     T* first;
@@ -100,5 +107,5 @@ void CCombatManager::ResetDefenderAttackPattern(CCombatantInfo& info, CDefPointe
     long i = 0;
     CCombatRing* ring;
     while ((ring = info.CombatWheel.GetRing(i++)) != 0)
-        ring->DeltaRotation = 0.0f / g_framesPerSecond;
+        ring->DeltaRotation = 0.0f / CMainGameComponent::GetConstantFPS();
 }

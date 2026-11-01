@@ -1,16 +1,23 @@
 // CTCCreatureModeManager::RemoveMode(unsigned long modeType) -- remove every mode of the type; when the current (front) mode was one of them it is told it is leaving and the new front mode is resumed (and the thing's look component re-picks its turning anims); the next idle mode is due in 30 seconds
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073ABA0, 170 bytes (`ret 4`).
 // Callees: the mode's virtual slots 1 GetModeType, 6 OnDeactivate (+0x18, as the landed ClearModes 0x0073AE70) and 5 OnActivate (+0x14,
 // vtable 0x012673CC: the landed 0x0073AAC0), list<CCountedPointer<CModeBase>>::remove_if<CModeBase::CIsType> @ 0x0073E790 (the predicate
 // by value: one dword), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CTCLook::UpdateTurningAnims @ 0x00754050,
-// __ftol2 @ 0x00BFEA70, CWorld::GetWorldFrame() @ 0x0049D870 (static). Globals: g_framesPerSecond @ 0x01375550, 30.0f @ 0x012673C4.
+// __ftol2 @ 0x00BFEA70, CWorld::GetWorldFrame() @ 0x0049D870 (static). Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, 30.0f @ 0x012673C4.
 // Layout: Ego_r.pdb CTCCreatureModeManager with the retail 4-byte STLport list: PModes +0x0c (sentinel node pointer; node
 // {next, prev, CCountedPointer {object, block}}), TimeLeftForCurrentMode +0x10, TimeForNextIdleMode +0x14 (PDB +0x1c); CThing
 // look component = interface 0x43 (bit 3 of the +0x28 word).
 // Shape: the "was current" bool is preset false (bl); the list address is formed once (`lea esi`) for the front reads and the
 // remove_if call; the idle delay `(long)(fps * 30.0f)` is a named local computed before GetWorldFrame (written inline in the sum
 // VC7.1 calls GetWorldFrame first and folds the add into a `sub` of the negated product).
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -95,6 +102,6 @@ void CTCCreatureModeManager::RemoveMode(unsigned long modeType)
         if (ParentThing->HasTC(0x43))
             ((CTCLook*)ParentThing->GetTC(0x43))->UpdateTurningAnims();
     }
-    long idleDelay = (long)(g_framesPerSecond * 30.0f);
+    long idleDelay = (long)(CMainGameComponent::GetConstantFPS() * 30.0f);
     TimeForNextIdleMode = CWorld::GetFrame() + idleDelay;
 }

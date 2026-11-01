@@ -1,5 +1,7 @@
 // CCreatureActionBase::FrameUpdate() -- per-frame action tick: report progress, dispatch due action events and drop the finished ones, run the movement update at the animation end, finish at TotalTime, advance FramesRunning from the running time, release / start the haste pause, perform the action at ActionTime (with its sound), fire due cut-scene events, and clamp the frame count
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x00694020, 1040 bytes, plain `ret` (virtual).
 // Callees: For_each<CDispatchActionEventIfActivationFrame> 0x00695B20, find_if 0x00695E30, remove_copy_if 0x00696240,
 //   copy 0x006962C0, _Destroy_range 0x00696790 (all LTCG `__fastcall`); UpdateActionMovement 0x00692AA0; __ftol2;
@@ -12,7 +14,12 @@
 //   members as the header (TotalTime +0x10 .. PAnimEntry +0x74). Interfaces 0x8c CTCHaste, 0x42 events, 0x10 sound.
 void* __cdecl operator new(unsigned int size);
 extern "C" void __cdecl free(void* p);
-extern long g_FramesPerSecond;                         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -236,7 +243,7 @@ void CCreatureActionBase::FrameUpdate()
         Finish();
         return;
     }
-    FramesRunning = (long)(g_FramesPerSecond * RunningTimeSeconds);
+    FramesRunning = (long)(CMainGameComponent::GetConstantFPS() * RunningTimeSeconds);
     if (PauseTimer-- == 0) {
         CTCHaste* haste;
         if (((CThing*)PCreature.GetPItem())->GetInterface(&haste, 0x8c)) {

@@ -1,6 +1,8 @@
 // SW2 sweep (advisor/008d99b0/probe/z3.cpp), on RST2's best.cpp (target as C3DVector(0,0,rise) + StartPos; the copied def; release duplicated by hand on both exits).
 // NCreatureMode::CModeJackOfBladesDeath::FrameUpdate() -- Jack of Blades' death rise: freeze the body's physics, lift it from the start position towards start + rise height over the death duration, and when the time is up remove the death mode (0x35)
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D99B0, length 326 bytes (padded to 336), `ret`.
 // Callees: CDefClassBase::GetSubDef<T>(T**) @ 0x008C33E0 (on the creature's def +0x70; manifest instantiation name
 //   "CAICreatureWillPowerIndicatorDef" is a byte twin), the physics object's (+0x60) virtual slots 38 (+0x98, enable) and 30 (+0x78,
@@ -96,7 +98,12 @@ class CThing { public:
     }
 };
 
-extern long g_GameFramesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeStandBase {                         // retail sizeof 0x68
     virtual void v00();
@@ -119,11 +126,11 @@ void CModeJackOfBladesDeath::FrameUpdate()
     ParentThing->PDef->GetSubDef(&subDef);
     CJackOfBladesDeathDef* def = subDef;
     ParentThing->PPhysics->SetEnabled(false);
-    float t = (float)Timer / (long)(g_GameFramesPerSecond * def->DeathDuration);
+    float t = (float)Timer / (long)(CMainGameComponent::GetConstantFPS() * def->DeathDuration);
     C3DVector target = C3DVector(0.0f, 0.0f, def->RiseHeight) + StartPos;
     C3DVector position = (target - StartPos) * t + StartPos;
     ParentThing->PPhysics->SetPosition(position);
-    if (++Timer > g_GameFramesPerSecond * def->DeathDuration) {
+    if (++Timer > CMainGameComponent::GetConstantFPS() * def->DeathDuration) {
         CTCCreatureModeManager* modes = 0;
         ParentThing->GetInterface(&modes, 0x31);
         modes->RemoveMode(0x35);

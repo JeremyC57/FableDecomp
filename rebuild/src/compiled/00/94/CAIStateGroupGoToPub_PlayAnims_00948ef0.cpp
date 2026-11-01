@@ -1,9 +1,11 @@
 // CAIStateGroup_GoToPub::PlayAnims(const CCharString&, const CCharString&, const CCharString&, float) -- play the into animation, repeat the loop animation for the given number of seconds and play the out-of animation, stopping early (true) once the table's tavern game is being played and failing (false) when an animation does not complete
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00948EF0, length 480 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTable +0x24), CVectorMap::LowerBound @ 0x0040F020 (inlined
 // GetInterface 0xcf = bit 15 of +0x38), CCreatureAction_PlayAnimation ctor @ 0x008424F0, AIAction_PerformActionAndWait
 // @ 0x0097DB70, AIAction_PerformAction @ 0x0097D8B0 (the out-of animation), the action base dtor @ 0x00693EF0,
-// CWorld::GetWorldFrame @ 0x0049D870, g_framesPerSecond @ 0x01375550.
+// CWorld::GetWorldFrame @ 0x0049D870, CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Shape: as the sibling 0x00948D40 (same-TU LowerBound stand-in, brain creature getter, explicit `if (failed) return false;`);
 // the fps global is copied into a named long before the frame call. The loop test is retail's `frame > endFrame` (fild frame;
 // fcomp end; test ah,41h; jne exit): the loop animation only repeats while the current frame is already PAST the end frame,
@@ -95,7 +97,12 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
                                   bool useAnimationMovement, bool usePhysics, bool cameraUpdate, long c, long d);   // 0x008424F0
     ~CCreatureAction_PlayAnimation();           // 0x00693EF0 (the base dtor)
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld { public:
     static long __fastcall GetFrame();     // 0x0049D870
 };
@@ -127,7 +134,7 @@ bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharSt
                                                                               false, true, false, 0, 0), false) != 2;
     if (failed)
         return false;
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     float endFrame = (float)CWorld::GetFrame() + fps * seconds;
     while ((float)CWorld::GetFrame() > endFrame) {
         if (game && game->IsBeingPlayed)

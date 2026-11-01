@@ -1,4 +1,6 @@
 // CProng::SetBlocked(bool blocked) -- mark the prong blocked: start a three-second blockage timer and release the occupier unless it is dead; unblocking clears the timer
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E9140, length 141 bytes.
 // Callees: _ftol @ 0x00BFEA70, CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, GetPItem @ 0x00A01B50,
 // SetPItem @ 0x00A01B90, ~CBaseIntelligentPointer @ 0x00A01C10; the frame rate @ 0x01375550 and 3.0f @ 0x0122DED4.
@@ -27,7 +29,12 @@ class CThingCreatureBase { public:                                 // only the d
     unsigned char m_91_1 : 7;
 };
 
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CProng {
     bool                    Blocked;                        // +0x00
@@ -50,7 +57,7 @@ void CProng::SetBlocked(bool blocked)
 {
     Blocked = blocked;
     if (blocked) {
-        ProngBlockageTimer = (long)(g_framesPerSecond * 3.0f);
+        ProngBlockageTimer = (long)(CMainGameComponent::GetConstantFPS() * 3.0f);
         if (GetPOccupier() && !GetPOccupier()->m_dead)
             SetPOccupierItem(0);
     } else {

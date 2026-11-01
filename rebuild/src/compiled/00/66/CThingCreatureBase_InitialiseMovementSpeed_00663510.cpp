@@ -1,10 +1,12 @@
 // CThingCreatureBase::InitialiseMovementSpeed(float& speed, const CCharString& animName) -- an unset speed (0) of a creature carrying TC 90 becomes the named animation's movement distance per second: (|MovementVector| * 0.01) / (Duration * frames per second)
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retry 10b (statement-permutation sweep): the scaled distance is computed BEFORE the duration local is read; that order
 // spills it with retail's `fstp [esp+10h] ; fld [esp+10h]` (duration first kept it with one `fst`).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00663510, length 181 bytes, `ret 8`.
 // Callees: CThingCreatureBase::GetAnimFromName(const CCharString&, long) @ 0x00662A00, CThing::PeekWorld @ 0x004C7AB0, the main
 //   mesh bank's GetAnimation(long) @ 0x00A242C0.
-// Globals/pool: g_framesPerSecond @ 0x01375550 (long, `fild`), 0x0122DEDC = 0.0f, 0x01230A5C = 0.01f.
+// Globals/pool: CMainGameComponent::GetConstantFPS() @ 0x01375550 (long, `fild`), 0x0122DEDC = 0.0f, 0x01230A5C = 0.01f.
 // Identity: engine_api.tsv / Ego_r.pdb `InitialiseMovementSpeed(float*, CCharString*)` on CThingCreatureBase.
 // Layout: retail CThing interface bitset +0x20 (TC 90 = word +0x28 bit 26); C3DAnimationInfo Duration +0x10,
 //   MovementVector +0x18; CWorld PMainMeshBank +0x3c.
@@ -44,7 +46,12 @@ class CAnimationEntry { public:
     long AnimIndex;                            // +0x00
 };
 
-extern long g_framesPerSecond;                 // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -68,6 +75,6 @@ void CThingCreatureBase::InitialiseMovementSpeed(float& speed, const CCharString
         float distance = info->MovementVector.Length() * 0.01f;
         float duration = info->Duration;
         if (distance > 0.0f && duration > 0.0f)
-            speed = distance / (duration * g_framesPerSecond);
+            speed = distance / (duration * CMainGameComponent::GetConstantFPS());
     }
 }

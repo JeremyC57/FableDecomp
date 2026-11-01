@@ -1,4 +1,6 @@
 // CTCLook::UpdateHeadPos() -- refresh the cached head position from the parent creature, except while the cache timer runs and the thing is more than 8 units from the camera; restart the timer when the head barely moved
+// Naming wave 18: the global stand-in g_HeadPosCacheFrames (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752000, length 280 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCBase::GetWorld() @ 0x00686A70, CThing::GetPos() const @ 0x004C73D0, the world's virtual slot 8 (+0x20,
 // a C3DVector by hidden pointer: the camera position; name descriptive), CTCLook::ShouldGetExactHeadPos() @ 0x00751BC0
@@ -39,7 +41,12 @@ template<class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 extern float g_HeadPosCacheTolerance;          // 0x013826A0 (.data tunable, 0.0316)
-extern long  g_HeadPosCacheFrames;             // 0x01375550 (.data, 15)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 #pragma pack(push, 1)
 class CTCBase
@@ -81,6 +88,6 @@ void CTCLook::UpdateHeadPos()
     if ((CachedHeadPos - head).MagnitudeSquared() > g_HeadPosCacheTolerance)
         HeadCacheTimer = 0;
     else
-        HeadCacheTimer = g_HeadPosCacheFrames / 2;
+        HeadCacheTimer = CMainGameComponent::GetConstantFPS() / 2;
     CachedHeadPos = head;
 }

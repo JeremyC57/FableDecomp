@@ -1,4 +1,6 @@
 // CTCCreatureHive::UpdateAnimation() -- while the hive is animating, advance its animation by one frame (1 / fps seconds) and stop animating once the main anim set is empty or finished
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077D190, length 153 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x5A, the
 // CTCAnimationComplex: word 2 bit 26, `test dword ptr [eax+28h],4000000h`), CTCAnimationComplex::GetAnimation @ 0x0070B460
@@ -45,7 +47,12 @@ class CTCBase { public:
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
 };
-extern long g_framesPerSecond;                 // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CAnimFrameTime {                        // 12-byte UpdateFrameLogic argument
     float Seconds;
@@ -77,7 +84,7 @@ void CTCCreatureHive::UpdateAnimation()
         CTCAnimationComplex* animation;
         ParentThing->GetInterface(&animation, 0x5a);
         CAnimateThing& anim = animation->GetAnimation();
-        anim.UpdateFrameLogic(CAnimFrameTime(1.0f / g_framesPerSecond));
+        anim.UpdateFrameLogic(CAnimFrameTime(1.0f / CMainGameComponent::GetConstantFPS()));
         if (anim.AnimsFirst == anim.AnimsLast || anim.Finished)
             Animating = false;
     }

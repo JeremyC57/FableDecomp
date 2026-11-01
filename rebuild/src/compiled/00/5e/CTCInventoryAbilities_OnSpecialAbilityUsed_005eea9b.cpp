@@ -1,4 +1,7 @@
 // CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility, bool) -- cast a special ability: if allowed, use it through the special-abilities component, post the cast message, charge the will cost and train the stat; else play the cast-failed sound
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
@@ -9,7 +12,12 @@ class CCharString { public:
 };
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
-struct CPresenceBits { bool test(long bit) const; };           // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +62,7 @@ __declspec(noinline) const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(cons
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char  _pad00[0x20];
-    CPresenceBits  m_present;                                  // +0x20
+    std::bitset<274>  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
     CInterfaceMap  m_interfaces;                               // +0x44
     const C3DVector& GetPos() const;                      // 0x004C73D0
@@ -138,7 +146,12 @@ class CMessageEventManager { public:
     CMessageEvent* AddMessage(long type, unsigned long flags, const C3DVector* position, CThing* thing1, CThing* thing2, float a, float b, long priority);   // 0x00687540
 };
 class CWorld { public: unsigned char _pad00[0x60]; CMessageEventManager* PMessageEventManager; };   // +0x60
-extern long g_FrameRate;                                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 // Layout: retail CTCInventoryAbilities (Ego_r.pdb - 0x18): CurrentSpecialAbilityUsedFromQuickAccess +0x142, Abilities +0x160.
 class CTCBase
@@ -191,7 +204,7 @@ void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool from
         if (special->UseSpecialAbility(ability)) {
             CurrentSpecialAbilityUsedFromQuickAccess = fromQuickAccess;
             CThing* parent = ParentThing;
-            long frames = g_FrameRate;
+            long frames = CMainGameComponent::GetConstantFPS();
             CMessageEventManager* messages = GetWorld().PMessageEventManager;
             messages->AddMessage(0x44, frames, &parent->GetPos(), 0, 0, 0.0f, 0.0f, ability);
             stats->ModifyStaminaBy(cost);

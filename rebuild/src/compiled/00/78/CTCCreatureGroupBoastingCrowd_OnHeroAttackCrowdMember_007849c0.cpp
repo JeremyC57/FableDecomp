@@ -1,5 +1,7 @@
 // CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember() -- the hero attacked a crowd member: schedule clearing the remaining opinion sources 0.5..1 minutes ahead and, unless the crowd is already hostile (state 10), pop one pushed hero opinion source, drop the pending opinion deed from the hero's deed log, push the "hero attacked crowd" opinion source onto the hero and enter state 10
 // Leaf: OnHeroAttackCrowdMember
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007849C0, 352 bytes (`ret`).
 // Callees: CTCBase::GetPRandomSeed @ 0x00686DA0, GFFloatRandom(float, ulong*) @ 0x004978A0 (__fastcall), CWorld::GetFrame
 // @ 0x0049D870 (__fastcall), __ftol2 @ 0x00BFEA70, CTCBase::GetWorld @ 0x00686A70, CBaseIntelligentPointer::GetPItem
@@ -25,7 +27,12 @@ private:
     void* m_pData;
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-extern long g_framesPerSecond;                                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -116,7 +123,7 @@ class CTCCreatureGroupBoastingCrowd : public CTCCreatureGroup { public:
 void CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember()
 {
     {
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * framesPerSecond * 60.0f;
         FrameToClearRemainingOpinionSources = (long)(CWorld::GetFrame() + delay);
     }

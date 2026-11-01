@@ -13,6 +13,8 @@
 // tail-merged the result != 0 exit into the Terminate epilogue and scheduled the store between the pops.
 // Layout: Ego_r.pdb CAIStateGroup_Drunk FrameToNextTalkToSelf +0x14.
 // Leaf: TalkToSelfUpdate@CAIStateGroup_Drunk
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CThing;
@@ -128,7 +130,12 @@ class CTCTalk { public:                                    // the interface-0xf 
 };
 
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
-extern long g_framesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 struct CAIStateGroup_Drunk : CAIStateGroupBase {
@@ -159,7 +166,7 @@ void CAIStateGroup_Drunk::TalkToSelfUpdate()
         }
         if (result == 0) {
             CWorld* world = (CWorld*)GetPWorld();
-            long framesPerSecond = g_framesPerSecond;
+            long framesPerSecond = CMainGameComponent::GetConstantFPS();
             FrameToNextTalkToSelf = (long)(world->GetFrame() +
                 (GFFloatRandom(20.0f, GetPWorldSeed()) + 10.0f) * framesPerSecond);
         }

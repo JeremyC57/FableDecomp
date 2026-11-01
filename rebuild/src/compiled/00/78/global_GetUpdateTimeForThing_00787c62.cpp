@@ -1,14 +1,16 @@
 // _global::GetUpdateTimeForThing(const CThing& thing, const CWorld& world) -- one frame's update time for a thing: 1 / fps seconds, divided by the bullet-time scale while bullet time is active and the thing is affected by it
 // Leaf: ?GetUpdateTimeForThing@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00787C62, 67 bytes, __fastcall (thing in ecx, world in edx), float in
 //   st(0), plain `ret`.
 // Identity: Ego_r.pdb `?GetUpdateTimeForThing@?A0xedf0dd2a@@YIMABVCThing@@ABVCWorld@@@Z` (a file-local function of the
 //   trap TU); callers CTCMeleeTrap::UpdateAnimation 0x0078856C and CTCTrapBase::FrameUpdate 0x007888C5 (both landed).
 // Callees: CThing::IsAffectedByBulletTime() const @ 0x004C9920, CBulletTime::GetTimeScale() @ 0x004C5FA0 (float).
-// Data: g_framesPerSecond (long) @ 0x01375550, 1.0f @ 0x0122DED8.
+// Data: CMainGameComponent::GetConstantFPS() (long) @ 0x01375550, 1.0f @ 0x0122DED8.
 // Layout: CWorld's bullet-time controller at +0x68 (active flag +0x0c, controller +0x04), as the landed
 //   CTCAnimatingObject::FrameUpdate 0x007F8E20 which inlines the same expression.
-// Shape: `float seconds = 1.0f / g_framesPerSecond; if (!bullet time active) return seconds; if
+// Shape: `float seconds = 1.0f / CMainGameComponent::GetConstantFPS(); if (!bullet time active) return seconds; if
 //   (thing.IsAffectedByBulletTime()) return seconds / scale; return seconds;` -- three separate returns: `fild ; fdivr`
 //   keeps the value on the x87 stack for the early exit and spills it to the `push ecx` frame word (`fst`) for the
 //   other two (`fld` / `fdivr` from the slot); the `&&` form merges two exits into one `fld`. `thing` stays in ecx
@@ -16,7 +18,12 @@
 //   CTCProjectileTrap::TriggerTrap 0x00787CA5).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-extern long g_framesPerSecond;                           // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CThing {
 public:
@@ -41,7 +48,7 @@ namespace {
 
 float __fastcall GetUpdateTimeForThing(const CThing& thing, const CWorld& world)
 {
-    float seconds = 1.0f / g_framesPerSecond;
+    float seconds = 1.0f / CMainGameComponent::GetConstantFPS();
     if (!world.m_pBulletTime->IsActive())
         return seconds;
     if (thing.IsAffectedByBulletTime())

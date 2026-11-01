@@ -1,5 +1,7 @@
 // NCameraModes::CStringAndCageBase::OnInit() -- start the string-and-cage camera: inherit the current string/cage lengths and height from a previous string-and-cage mode (with an expansion timer when the new string is longer), else measure them from the go-to point or, with no previous mode, take the desired values and place the camera behind the thing; then schedule the next auto-go-behind frame
 // Leaf: OnInit
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872630, 647 bytes, `ret`. Callees: virtual slots 26 (+0x68, base reset), 14 (+0x38,
 //   IsStringAndCage on the camera manager's current mode) and 29 (+0x74, GetAutoGoBehindTime); NCameraModes::CBase::
 //   GetObservedThing 0x0084F1B0, CThing::GetPos 0x004C73D0, the physics' GetFacingVector (slot 70, +0x118),
@@ -47,7 +49,12 @@ public:
     const C3DVector& GetPos() const;                    // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
-extern long g_framesPerSecond;                               // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -103,7 +110,7 @@ void CStringAndCageBase::OnInit()
         if (current->IsStringAndCage()) {
             CStringAndCageBase* previous = static_cast<CStringAndCageBase*>(current);
             if (DesiredStringLength > previous->DesiredStringLength) {
-                TimerForExpansion = (long)(g_framesPerSecond * 2.0f);
+                TimerForExpansion = (long)(CMainGameComponent::GetConstantFPS() * 2.0f);
                 CurrentCageRadius = CurrentStringLength;
             }
             CurrentHeightOffset = previous->CurrentHeightOffset;
@@ -137,7 +144,7 @@ void CStringAndCageBase::OnInit()
         Position = goTo;
         LookAt = focal;
     }
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     NextAutoGoBehindWF = (long)(fps * GetAutoGoBehindTime() + CWorld::GetFrame());
 }
 }

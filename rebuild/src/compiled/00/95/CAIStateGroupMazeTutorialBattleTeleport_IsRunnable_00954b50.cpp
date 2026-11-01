@@ -1,4 +1,6 @@
 // CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable() -- allow teleport after configured cooldown with a living target.
+// Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail00954b50 length268. Native CMazeBattleDef TutorialTeleportTime5c differs donor60; definition getter008c3510 names CMazeBattleDef at01243bb8.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_MazeTutorialBattleTeleport.h"
@@ -178,7 +180,12 @@ bool MazeDefinitionNative::GetSubDef(CDefPointer& out)
 }
 #pragma auto_inline(on)
 
-extern long FramesPerSecond; //01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct MazeThing{char base[0x20];unsigned long masks[9];MazeTable table;char beforeDef[0x24];MazeDefinitionNative* definition;char beforeDead[0x1d];unsigned char dead;
 __forceinline void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
 __forceinline void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
@@ -196,7 +203,7 @@ MazeCombat* combat;Creature()->GetCombat(&combat);MazeThing* target=combat->GetT
 if(target&&!(target->dead&1)){
 CDefPointer def;def.m_p=0;Creature()->definition->GetSubDef(def);
 float elapsed=(float)(GetWorld().GetFrame()-FrameOfLastTeleport);
-if(elapsed > FramesPerSecond*def.m_p->TutorialTeleportTime){*(MazePointer*)_pad_0x14=MazePointer(target);return true;}
+if(elapsed > CMainGameComponent::GetConstantFPS()*def.m_p->TutorialTeleportTime){*(MazePointer*)_pad_0x14=MazePointer(target);return true;}
 }
 return false;
 }

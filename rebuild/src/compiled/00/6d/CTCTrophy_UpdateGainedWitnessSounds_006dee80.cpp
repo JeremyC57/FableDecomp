@@ -1,4 +1,6 @@
 // CTCTrophy::UpdateGainedWitnessSounds() -- when witness sounds are pending and their frame has come, plays the "gained witness" sound, counts it off and schedules the next one SecsDelayPerGainedWitnessSound seconds later
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DEE80, length 94 bytes.
 // Callees: the static world-frame getter @ 0x0049D870 (twice; manifest "GFGetPreMainMemoryUsed" is propagated),
 // CTCTrophy::PlaySoundW(const CCharString&) @ 0x006DDCD0 (result dropped), __ftol2 @ 0x00BFEA70. The frames-per-second
@@ -25,7 +27,12 @@ class CWorld { public:
     static long __fastcall GetFrame();            // 0x0049D870
 };
 
-extern long g_FramesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCTrophy { public:
     void*                __vftable;         // +0x00
@@ -44,7 +51,7 @@ void CTCTrophy::UpdateGainedWitnessSounds()
         PlaySoundW(*(const CCharString*)&PDef.Object->SoundGainedWitness_PStringData);
         const CTrophyDef* def = PDef.Object;
         --PendingGainedWitnessSounds;
-        long framesPerSecond = g_FramesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         FrameForNextGainedWitnessSound = (long)(framesPerSecond * def->SecsDelayPerGainedWitnessSound + CWorld::GetFrame());
     }
 }

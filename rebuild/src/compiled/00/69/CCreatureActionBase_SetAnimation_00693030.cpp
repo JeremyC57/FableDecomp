@@ -1,4 +1,6 @@
 // CCreatureActionBase::SetAnimation(const CAnimationEntry&,float,float) -- copy animation, derive/clamp action timers and begin animation loading.
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail0x00693030 length259; real primary vtable0x01259D24 slots0 dtor,1Validate,2EditUpdate,3PerformAction,
 // 4FinishAction,5IsPlayingAnimation,6GetAnimDelayTime. Native action prefix matches actual donor header.
 #define CCreatureActionBase CCreatureActionBase_PDB
@@ -59,7 +61,12 @@ struct CAnimationEntryPointer {
     CAnimationEntry* operator->()const{return Data;}
     void Reset(CAnimationEntry*); //0x00696830
 };
-extern long g_GameFramesPerSecond; //0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CCreatureActionBase { public:
     virtual ~CCreatureActionBase(); //0x0062ED20 deleting
     virtual void Validate()const; //0x0099A400
@@ -86,7 +93,7 @@ class CCreatureActionBase { public:
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase,PAnimEntry)==0x74);
 void CCreatureActionBase::SetAnimation(const CAnimationEntry& entry,float duration,float actionFraction)
 {
-    long fps=g_GameFramesPerSecond;
+    long fps=CMainGameComponent::GetConstantFPS();
     PAnimEntry=new CAnimationEntry(entry);
     AnimDelayTime=PAnimEntry->GetDelayTime();
     if(duration < 0.0f) {

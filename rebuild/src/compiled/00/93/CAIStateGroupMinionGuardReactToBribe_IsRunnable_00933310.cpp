@@ -1,10 +1,12 @@
 // CAIStateGroup_MinionGuardReactToBribe::IsRunnable() -- with the guard's bribe component: react at once to a pending bribe (latch the live hero, no bribe received), else react while a bribe offered within the last 4 seconds is newer than 7 seconds after the last reaction (bribe received)
+// Naming wave 18: the global stand-in FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933310, length 352 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xb4, bit 20 of +0x34), CAIStateGroupBase::
 //          GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01231C4C), CWorld::GetFrame
 //          @ 0x0049D870, IS_THING_ALIVE<CIntelligentPointer<...>> @ 0x0048C740 (__fastcall, out of line at the second test).
-// Globals: FramesPerSecond @ 0x01375550.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Shape: `HasTC` (dword test against memory) then the out-param pick; a same-TU LowerBound stand-in lets the PHero
 //          temporaries overlay the dead key slot (8-byte frame); PHero is assigned through a frame temporary with
 //          the named-item operator= (the member address is formed after the temporary's GetPItem); the first
@@ -76,7 +78,12 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
-extern long FramesPerSecond;                    // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -127,8 +134,8 @@ bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
                 return true;
             }
         }
-        long deadline = bribe->FrameBribeOffered + FramesPerSecond * 4;
-        long earliest = FramesPerSecond * 7 + FrameLastReactedToReceiveing;
+        long deadline = bribe->FrameBribeOffered + CMainGameComponent::GetConstantFPS() * 4;
+        long earliest = CMainGameComponent::GetConstantFPS() * 7 + FrameLastReactedToReceiveing;
         if (CWorld::GetFrame() < deadline && deadline > earliest) {
             Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
             if (IS_THING_ALIVE_Pointer(Hero())) {

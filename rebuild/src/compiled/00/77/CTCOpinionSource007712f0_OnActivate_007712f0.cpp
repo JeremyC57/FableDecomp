@@ -1,4 +1,6 @@
 // CTCOpinionSource_007712f0::OnActivate(long, float) -- count an activation, remember its source id and set the
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // expiry frame to now + duration * frame rate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007712F0, length 69 bytes, `ret 8` (a long and a float).
 // Callees: GFGetCurrentFrame @ 0x0049D870 (__fastcall, no arguments), __ftol2 @ 0x00BFEA70 for the float->long
@@ -14,7 +16,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };        // 0x0049D870
-extern long g_framesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTCOpinionSource_007712f0 {
     unsigned char _pad[0x80];
@@ -28,6 +35,6 @@ void CTCOpinionSource_007712f0::OnActivate(long sourceId, float duration)
 {
     ++m_activations;
     m_sourceId = sourceId;
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     m_expiryFrame = (long)((float)CWorld::GetFrame() + (float)framesPerSecond * duration);
 }

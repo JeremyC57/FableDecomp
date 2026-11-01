@@ -1,5 +1,7 @@
 // CCombatActionBase::UpdateActionRunningTime() -- while a scripted camera runs on a camera point, advance the running time scaled by the point's speed and drive bullet time; otherwise the base update
 // Leaf: ?UpdateActionRunningTime@CCombatActionBase
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008579D0, 416 bytes, plain `ret` (virtual).
 // Callees: CCreatureActionBase::GetPWorld @ 0x00692940, the current game camera (world +0x34) slot 9 (+0x24, its camera
 //   manager by out pointer), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CGameCameraManager::IsUsingScriptedCameraMode
@@ -118,7 +120,12 @@ struct CCreaturePointer : CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
 };
 
-extern long g_framesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CCreatureActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -155,7 +162,7 @@ void CCombatActionBase::UpdateActionRunningTime()
         if (point->GetPointType() == 7)
             scripted = point;
         float speed = scripted->m_speed;
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         float fps = (float)framesPerSecond;
         float delay = (float)GetAnimDelayTime() / fps;
         CThingCreatureBase* creature = PCreature.GetPItem();

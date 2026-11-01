@@ -1,5 +1,7 @@
 // CTCHeroSpecialMovement::OnCreate() -- look up the parent thing's def by its def index and take its hero special-movement sub-def; then clear Sprinting and preset the sprint frames from the def's sprint duration
 // Leaf: OnCreate
+// Naming wave 18: the global stand-in g_framesPerSecond_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E0910, length 105 bytes (+7 int3 padding). Vtable 0x0126FE3C slot 4 (the
 // catalog's "vfunc_4"; slot 4 of the CTCBase vtable is OnCreate).
 // Callees: CTCBase::GetDefinitions() @ 0x006869D0 (manifest "_Cons_val<...>", propagated), CDefinitionManager::GetDef(long,
@@ -11,7 +13,12 @@
 // released by hand (null test, `dec [edi+4] ; jne`); `(float)fps * duration` loads the long first.
 // Layout: Ego_r.pdb CTCHeroSpecialMovement (same offsets in retail): Sprinting +0x0c, Running +0x0d, SprintFramesRemaining +0x10,
 // RunTimer +0x14, PHeroSpecialMovementDef +0x18; CHeroSpecialMovementDef sprint duration +0x28; CThing def index +0x8c.
-extern long g_framesPerSecond_01375550;         // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CDefPointeeBase { public:
     virtual void Destroy();
@@ -95,5 +102,5 @@ void CTCHeroSpecialMovement::OnCreate()
             def->Delete();
     }
     Sprinting = false;
-    SprintFramesRemaining = (float)g_framesPerSecond_01375550 * PHeroSpecialMovementDef->SprintDurationSeconds;
+    SprintFramesRemaining = (float)CMainGameComponent::GetConstantFPS() * PHeroSpecialMovementDef->SprintDurationSeconds;
 }

@@ -1,4 +1,6 @@
 // CBulletTimeManager::UpdateCombatRelatedEffects() -- while the main player's creature is performing a combat action, keep the default bullet-time multiplier on and restart the strike-action countdown; otherwise count it down
+// Naming wave 18: the global stand-in g_BulletTimeFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5EA0, length 107 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (landed name), CPlayer::IsInitialised @ 0x0099A330 (the shared
 // CInitBaseClass `mov al,[ecx+4]` query), CPlayer::GetPControlledCreature @ 0x00487DC0 (landed name),
@@ -46,7 +48,12 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 extern long g_BulletTimeStrikeSeconds;        // 0x01375550
-extern long g_BulletTimeFramesPerSecond;      // 0x01378D08
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CBulletTimeManager {
 public:
@@ -68,7 +75,7 @@ void CBulletTimeManager::UpdateCombatRelatedEffects()
         return;
     if (creature->m_pStrikeQuery->IsStriking()) {
         UseDefaultMultiplier = true;
-        LastStrikeActionTick = g_BulletTimeStrikeSeconds * g_BulletTimeFramesPerSecond;
+        LastStrikeActionTick = g_BulletTimeStrikeSeconds * CMainGameComponent::GetConstantFPS();
     } else if (LastStrikeActionTick > 0) {
         LastStrikeActionTick = LastStrikeActionTick - 1;
     }

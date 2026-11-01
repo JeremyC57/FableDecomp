@@ -1,5 +1,7 @@
 // NCreatureMode::CModeRockTrollVulnerable::OnActivate() -- set the recovery count to five seconds of frames, base activation, then suspend the troll's animation and set it performing the "vulnerable into" action
 // Leaf: ?OnActivate@CModeRockTrollVulnerable
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DE6A0, 90 bytes (+ int3 padding), `ret`; vtable 0x01285774 slot 5.
 // Callees: __ftol2 @ 0x00BFEA70, CModeBase::OnActivate @ 0x0073AAC0 (qualified), CThingAICreature::SetSuspendAnimation(bool,
 //   long) @ 0x00833A10, CCreatureAction_TrollVulnerableInto(CThingCreatureBase*) @ 0x008E4420 (landed; manifest
@@ -33,7 +35,12 @@ class CCreatureAction_TrollVulnerableInto : public CCombatActionBase { public:
     CCreatureAction_TrollVulnerableInto(CThingCreatureBase* owner);   // 0x008E4420
 };
 
-extern long g_FramesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
     virtual void v00();
@@ -54,7 +61,7 @@ struct CModeRockTrollVulnerable : CModeBase {   // vtable 0x01285774
 
 void NCreatureMode::CModeRockTrollVulnerable::OnActivate()
 {
-    RecoveryCount = (long)(g_FramesPerSecond * 5.0f);
+    RecoveryCount = (long)(CMainGameComponent::GetConstantFPS() * 5.0f);
     CModeBase::OnActivate();
     CThingCreatureBase* creature = PCreature;
     creature->SuspendAI(true, 0);

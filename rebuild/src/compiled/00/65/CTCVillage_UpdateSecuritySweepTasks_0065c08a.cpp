@@ -1,12 +1,14 @@
 // CTCVillage::UpdateSecuritySweepTasks() -- while a security sweep runs: a hero who is no longer a criminal ends it; otherwise the sweep is recalculated every 7.5 seconds or when the hero has moved more than 10 units from where it was last calculated
 // Leaf: UpdateSecuritySweepTasks
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C08A, 188 bytes (plain `ret`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?UpdateSecuritySweepTasks@CTCVillage@@AAEXXZ`.
 // Callees: CTCVillage::IsHeroCriminal() 0x0065BFCE; CTCVillage::InvalidateAndClearAllSecuritySweepTasks() 0x006590A0;
 //          CTCBase::PeekWorld() const 0x00686A80 (its result only feeds the static frame getter); CWorld::GetWorldFrame()
 //          0x0049D870 (static); __ftol2 0x00BFEA70; CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer()
 //          0x00449970 (Ego_r.pdb returns CPlayer&); CPlayer::GetPControlledCreature() 0x00487DC0; CThing::GetPos() const
-//          0x004C73D0; CTCVillage::CalculateSecuritySweepTasks() 0x00659800. Globals: g_framesPerSecond 0x01375550;
+//          0x004C73D0; CTCVillage::CalculateSecuritySweepTasks() 0x00659800. Globals: CMainGameComponent::GetConstantFPS() 0x01375550;
 //          7.5f 0x0125AA1C, 100.0f 0x01230A08.
 // Layout: retail CTCVillage FrameStartedSecuritySweep +0x10, PositionPlayerWasInWhenSecuritySweepCalculated +0x14,
 //         SecuritySweepTasks +0x5c (bare list head pointer; PDB +0xc4).
@@ -30,7 +32,12 @@ class CPlayer { public:
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct SListNode { SListNode* _M_next; SListNode* _M_prev; };
 struct CTaskList {                              // retail STLport list: the head node pointer
@@ -68,7 +75,7 @@ void CTCVillage::UpdateSecuritySweepTasks()
         }
         bool recalculate = false;
         const CWorld* world = (&PeekWorld());
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         if ((world->GetFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
             recalculate = true;
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();

@@ -1,5 +1,7 @@
 // CAIStateGroup_ApprenticeHero::Update() -- while the apprentice's village says it is cook time, keep doing random apprentice activities (practise skills, spar, library, leaderboard, map); stop when one fails or the group is stopping, else schedule the next practice a minute ahead; then terminate the current action
 // Leaf: ?Update@CAIStateGroup_ApprenticeHero
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0092B110, 276 bytes incl. the 5-entry jump table, `ret`. Vtable 0x0128AEC4 slot 12.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, interface 0x23 =
 //   CTCVillageMember: bitset word +0x24 bit 3), CTCVillageMember::GetPVillage 0x007EE540 (label "IS_THING_ALIVE<...>"
@@ -68,7 +70,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                     // 0x0049D870
-extern long g_framesPerSecond;                           // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIBrain { public:
     unsigned char _pad00[0x18];
@@ -141,7 +148,7 @@ void CAIStateGroup_ApprenticeHero::Update()
             return;
         }
     }
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     NextFramePractice = CWorld::GetFrame() + framesPerSecond * 60;
     Terminate();
 }

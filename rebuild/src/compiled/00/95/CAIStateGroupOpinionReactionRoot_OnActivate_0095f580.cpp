@@ -1,4 +1,6 @@
 // CAIStateGroup_OpinionReactionRoot::OnActivate() -- cut short the creature's current action when more than the
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // allowed seconds of it remain (and it is not a looping one); log the current reaction against the thing reacted to
 // and take that reaction's "allow speech on non-pure-AI speaker" flag; cache the creature's CTCTalk.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095F580, length 213 bytes (+ int3 padding).
@@ -114,7 +116,12 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern float g_maxActionSecondsBeforeReaction;  // 0x0122DEDC
 
 class CCreatureActionBase { public:
@@ -159,7 +166,7 @@ void CAIStateGroup_OpinionReactionRoot::OnActivate()
 {
     CCreatureActionBase* action = ((CThingCreatureBase*)PBrain->PCreature)->PCurrentAction;
     if (action != 0) {
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         if (action->GetFramesRemaining() > framesPerSecond * g_maxActionSecondsBeforeReaction && action->LoopCount <= 0)
             ((CThingCreatureBase*)PBrain->PCreature)->FinishCurrentAction();
     }

@@ -1,5 +1,7 @@
 // CAIStateGroup_TavernServer::FillTankard() -- with a live tankard and jug: pin the server, claim the tankard, play the pour action, wait up to 4 seconds while the serving point stays valid, fill the tankard, use a jug serving, play the second action, free the bar point and unpin
 // Leaf: FillTankard
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00967B40, 468 bytes.
 // Callees: IsAlive via CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTankard +0x2c, PJug +0x14), Terminate @ 0x008FCF40,
 //   SetPushableByHero @ 0x0097E330, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xba = +0x34 bit 26 tankard,
@@ -93,7 +95,12 @@ class CCreatureAction_PutDownJug : public CCreatureActionBase { public:
     CCreatureAction_PutDownJug(CThingAICreature* creature);           // 0x00842AF0
 };
 class CWorld { public: static long __fastcall GetFrame(); };  // 0x0049D870
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
@@ -140,7 +147,7 @@ bool CAIStateGroup_TavernServer::FillTankard()
         SetPushableByHero(true);
         return false;
     }
-    long fps = g_FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     long endFrame = CWorld::GetFrame() + fps * 4;
     do {
         if (AIAction_DoNothing() != 4) {

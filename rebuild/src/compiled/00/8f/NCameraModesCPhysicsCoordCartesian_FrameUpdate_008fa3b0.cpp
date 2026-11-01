@@ -1,12 +1,19 @@
 // NCameraModes::CPhysicsCoordCartesian::FrameUpdate() -- integrates the camera physics state for one frame: velocity += acceleration * dt with each component clamped to +-100, then position += velocity * dt; a culled state instead snaps to its first attractor and stops
 // Leaf: ?FrameUpdate@CPhysicsCoordCartesian
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008FA3B0, 460 bytes, plain `ret`; vtable slot 0. Ego_r.pdb
 //   ?FrameUpdate@CPhysicsCoordCartesian@NCameraModes@@UAEXXZ.
-// Callees: none. Globals: g_framesPerSecond (long) @ 0x01375550, 1.0f @ 0x0122DED8, -100.0f @ 0x01275E8C, 100.0f @ 0x01230A08.
+// Callees: none. Globals: CMainGameComponent::GetConstantFPS() (long) @ 0x01375550, 1.0f @ 0x0122DED8, -100.0f @ 0x01275E8C, 100.0f @ 0x01230A08.
 // Layout: retail NCameraModes::CPhysicsState (landed ctor 0x0084F490): Position +0, Velocity +0xc, Acceleration +0x18,
 //   Attractors +0x24 (4-byte STLport list of pair<C3DVector, float>; node {next, prev, data}), CullPhysics +0x2c; the coord
 //   object holds its state pointer at +4.
-extern long g_framesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -49,7 +56,7 @@ void CPhysicsCoordCartesian::FrameUpdate()
 {
     CPhysicsState* state = PState;
     if (!state->CullPhysics) {
-        float dt = 1.0f / (float)g_framesPerSecond;
+        float dt = 1.0f / (float)CMainGameComponent::GetConstantFPS();
         C3DVector velocity = state->Velocity;
         C3DVector position = state->Position;
         C3DVector acceleration = state->Acceleration;

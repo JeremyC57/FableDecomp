@@ -1,4 +1,6 @@
 // CTCInventoryExperience::ProcessButtonAHeld() -- base handler, then drive the held "add" spend event
+// Naming wave 18: the global stand-in g_ExperienceSpendTimeScale (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x00574647, 88 bytes (vtable 0x0124F108 slot 54).
 // After the base CTCInventoryBase handler (0x005BC65B, a qualified non-virtual call), and only while
 // InventorySelectionState (+0x1C) is 1: an enabled ExperienceSpendAdd event (+0x1C8) tail-calls the
@@ -34,7 +36,12 @@ struct CInventoryDefPointer {
     CInventoryDef* operator->() const { return m_p; }
 };
 
-extern long g_ExperienceSpendTimeScale;            // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTCInventoryBase {
     void ProcessButtonAHeld();                     // 0x005BC65B
@@ -60,7 +67,7 @@ void CTCInventoryExperience::ProcessButtonAHeld()
             AddExperienceSpend();
         } else if (!ExperienceSpendAdd.initiate) {
             ExperienceSpendAdd.initiate = true;
-            long scale = g_ExperienceSpendTimeScale;
+            long scale = CMainGameComponent::GetConstantFPS();
             CInventoryDefPointer def(PDef);
             ExperienceSpendAdd.time = def->ExperienceSpendTimeOffset * scale;
         }

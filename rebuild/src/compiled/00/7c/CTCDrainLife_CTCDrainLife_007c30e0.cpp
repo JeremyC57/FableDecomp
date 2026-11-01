@@ -1,5 +1,7 @@
 // CTCDrainLife::CTCDrainLife(CThing& parent) -- constructor: CTCBase, a null def pointer, spell level and removed-item pointer, an empty shot vector, JustReleased set; load SPECIAL_ABILITIES_DRAIN_LIFE_DEF, take the spell level from the owner's ability inventory and convert SpellDelaySecs to frames
 // Leaf: ??0CTCDrainLife
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C30E0, length 219 bytes (+ int3 padding). `ret 4`; vtable 0x0126E284.
 //         Ego_r.pdb: `??0CTCDrainLife@@QAE@AAVCThing@@@Z`.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer ctor/SetPItem @ 0x00A01B10/0x00A01B90
@@ -9,7 +11,7 @@
 //          CDefinitionManager::GetDef<CSpecialAbilitiesDrainLifeDef>(long, CDefPointer<const ..>*) const @ 0x007C3A60;
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (interface 0x6F, word 3 bit 15: `test ch,ch ; jns`);
 //          CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EDE93 (ability 6); _ftol2 @ 0x00BFEA70.
-//          Global g_framesPerSecond (long) @ 0x01375550.
+//          Global CMainGameComponent::GetConstantFPS() (long) @ 0x01375550.
 // Shape: init-list members after the vtable store (one ebp zero register); the def name is a named CCharString in its own
 //        block, homed in the dead `parent` argument slot like the interface lookup key that follows.
 // Layout: Ego_r.pdb CTCDrainLife matches retail (PDef +0x0C, SpellLevel +0x10, PItemRemoved +0x14, Shots +0x1C (12-byte
@@ -109,7 +111,12 @@ public:
     }
 };
 
-extern long g_framesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase {
 public:
@@ -143,5 +150,5 @@ CTCDrainLife::CTCDrainLife(CThing& parent)
     CTCInventoryAbilities* abilities;
     if (ParentThing->GetInterface(&abilities, 0x6f))
         SpellLevel = abilities->GetAbilityLevel(6);
-    SpellDelayFrames = (long)(g_framesPerSecond * PDef->SpellDelaySecs);
+    SpellDelayFrames = (long)(CMainGameComponent::GetConstantFPS() * PDef->SpellDelaySecs);
 }

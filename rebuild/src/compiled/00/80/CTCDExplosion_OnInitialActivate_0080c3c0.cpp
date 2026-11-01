@@ -1,5 +1,7 @@
 // CTCDExplosion::OnInitialActivate() -- fetch the explosion sub-def and copy its radius, damage and life time
 // Leaf: OnInitialActivate
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C3C0, length 79 bytes (+1 int3). CTCDExplosion vtable 0x01242A54 slot 6.
 // Callees: CDefClassBase::GetSubDef<CExplosionDef>(CDefPointer<T>*) const @ 0x00751190 (manifest label names another
 // byte-identical instantiation), __ftol2 @ 0x00BFEA70. Global: the game frames-per-second long @ 0x01375550.
@@ -34,7 +36,12 @@ class CThing { public:
     CDefPointer<CThingDef> PDef;            // +0x70
 };
 
-extern long g_GameFramesPerSecond;          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCDExplosion { public:
     void* __vftable;                        // +0x00 (CTCBase)
@@ -64,7 +71,7 @@ void CTCDExplosion::OnInitialActivate()
     PhysicsRadius = PExplosionDef->ExplosionRadius;
     MaxDamage = PExplosionDef->Damage;
     FireDamage = PExplosionDef->FireDamage;
-    ExplosionLifeTimer = (long)(PExplosionDef->ExplosionLifeTime * g_GameFramesPerSecond);
+    ExplosionLifeTimer = (long)(PExplosionDef->ExplosionLifeTime * CMainGameComponent::GetConstantFPS());
     ExplosionEvolutionTimer = 0;
     CurrentExplosionRing = -1;
 }

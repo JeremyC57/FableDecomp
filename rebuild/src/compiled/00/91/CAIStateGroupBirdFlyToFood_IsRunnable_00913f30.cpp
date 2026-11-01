@@ -1,5 +1,7 @@
 // CAIStateGroup_BirdFlyToFood::IsRunnable() -- runnable for a flying bird that has not eaten for 20 seconds, on a 74% roll: fly to the nearest dead creature (64% roll) or else the nearest BIRD_FOOD thing, if a flight position near it is found
 // Leaf: IsRunnable@CAIStateGroup_BirdFlyToFood
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Model: the landed sibling CAIStateGroup_BirdGroundWander::IsRunnable 0x009143E0 (same TU: interface 7 lookup, mode getter,
 //   frame-rate local) and GetRandomFlightPos 0x00912700; layout local: FlightPos +0x24 (C3DVector), FrameLastAte +0x30.
 // Shape: the two GetPBestThing<Filter, Compare> instantiations have same-TU out-only stand-in bodies that read the
@@ -7,11 +9,16 @@
 //   the out pointer's zero after loading the creature and loads the whole position before the stores (as retail).
 class CTCBase;
 
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern long g_flyingMode;                       // 0x0129CBA4 (the mode compared by BirdGroundWander too)
 
 class CWorld { public:
-    static long GetFramesPerSecond() { return g_framesPerSecond; }
+    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };

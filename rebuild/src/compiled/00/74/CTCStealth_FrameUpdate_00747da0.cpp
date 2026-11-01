@@ -3,6 +3,8 @@
 // Retail-asm: 0x0074803F `fstp [ebp-8]` / 0x00748042 `fld [ebp-8]` + 0x00748045 `fadd [ebp-10h]` + 0x00748048 `fistp dword ptr [ebp-0Ch]` + 0x0074804B `fild` / 0x0074804E `fsub [ebp-14h]` / 0x00748054 `mov eax,[ebp-8] ; cmp eax,[ebp-18h] ; jne ; dec dword ptr [ebp-0Ch]` -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants at 0x0074802B / 0x00748032, a bare dword fistp into a named long). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`); same 10-instruction block as the landed retail_asm 0x0079C5F0 / standalone 0x004FA9A0.
 // Name: CTCStealth::FrameUpdate is virtual (Ego_r.pdb ?FrameUpdate@CTCStealth@@UAEXXZ); 0x00747DA0 sits in the CTCStealth vtable at 0x01268A10 (RTTI COL 0x01343474 -> .?AVCTCStealth@@), next to HasFrameUpdate 0x00749410 (`mov al,1 ; ret`).
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00747DA0, 1010 bytes, ebp frame, `ret`.
 // Callees: the graphic's offset getter (vslot +0x118, C3DVector by hidden pointer), CThing::GetPos @ 0x004C73D0, the
 //   thing's radius-at-point vslot +0x140, CCreatureActionBase::GetActionID @ 0x00692620, CThingCreatureBase::
@@ -136,7 +138,12 @@ struct CScriptTask {
     bool IsRunning();                                   // 0x007122C0
 };
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern bool g_sneakToggleOption;                        // 0x01375749
 
 // the engine's inline-assembly FPU ceiling helper (standalone copy 0x004FA9A0; landed inlined form 0x0079C5F0)
@@ -251,7 +258,7 @@ void CTCStealth::FrameUpdate()
                 FrameStartedSneakingAndMoving = GetWorld().GetFrame();
             else if (SneakingAndMovingDeedHandle == -1) {
                 GetWorld();
-                long frames = CeilToLong(g_framesPerSecond * 4.0f);
+                long frames = CeilToLong(CMainGameComponent::GetConstantFPS() * 4.0f);
                 if (CWorld::GetFrame() - FrameStartedSneakingAndMoving > frames && creature->HasTC(0x51)) {
                     CTCHeroOpinionDeedLog* log = creature->GetTC<CTCHeroOpinionDeedLog>(0x51);
                     SneakingAndMovingDeedHandle = log->PostDeed(0x49, creature->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);

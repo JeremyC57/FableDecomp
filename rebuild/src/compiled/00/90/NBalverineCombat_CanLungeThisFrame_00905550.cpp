@@ -1,10 +1,12 @@
 // NBalverineCombat::CanLungeThisFrame(const CThingCreatureBase& creature) -- true when enough frames have passed since the last lunge: the creature's CBalverineBattleDef SecondsBetweenLunges (default 5 s) times the frame rate is below the frames elapsed since SetLungedThisFrame
 // Leaf: ?CanLungeThisFrame@NBalverineCombat@@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00905550, 140 bytes, __fastcall (creature in ecx), returns bool.
 // Identity: Ego_r.pdb `?CanLungeThisFrame@NBalverineCombat@@YI_NABVCThingCreatureBase@@@Z` (catalog `_global`).
 // Callees: CDefClassBase::GetSubDef<CBalverineBattleDef> 0x008CD0D0 (on the creature's def class, +0x70),
 //   GFGetCurrentFrame 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated); the def is released through
-//   its vtable slot 1. Globals: g_framesPerSecond 0x01375550, g_lastLungeFrame 0x013BB660 (written by
+//   its vtable slot 1. Globals: CMainGameComponent::GetConstantFPS() 0x01375550, g_lastLungeFrame 0x013BB660 (written by
 //   SetLungedThisFrame 0x009054F0, the function right above this one).
 // Layout: retail CBalverineBattleDef SecondsBetweenLunges +0x3c (PDB +0x40: the retail CDefClassBase is 4 bytes
 //   shorter); the creature's def class at +0x70 (local model: the generated CThingCreatureBase header is all pads).
@@ -64,7 +66,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern long g_lastLungeFrame;                   // 0x013BB660
 
 namespace NBalverineCombat {
@@ -77,7 +84,7 @@ bool __fastcall NBalverineCombat::CanLungeThisFrame(const CThingCreatureBase& cr
     CDefPointer<CBalverineBattleDef> def;
     if (creature.m_pDef->GetSubDef(def))
         seconds = def->SecondsBetweenLunges;
-    long fps = g_framesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     if ((float)(CWorld::GetFrame() - g_lastLungeFrame) > seconds * fps)
         return true;
     return false;

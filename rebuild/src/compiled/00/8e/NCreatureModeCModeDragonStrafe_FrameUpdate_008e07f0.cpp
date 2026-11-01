@@ -1,5 +1,7 @@
 // NCreatureMode::CModeDragonStrafe::FrameUpdate() -- base update; at the end of the strafe timer set the "strafe out of" action, otherwise move the dragon one frame's worth of Speed along its physics facing
 // Leaf: ?FrameUpdate@CModeDragonStrafe
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E07F0, 193 bytes (+ int3 padding), `ret`; vtable 0x012686C8 slot 3.
 // Callees: CModeBase::FrameUpdate @ 0x0073AC50 (qualified), CCreatureAction_DragonStrafeOutOf(CThingCreatureBase*) @ 0x008E4AD0
 //   (stores vtable 0x0128702C = CCreatureAction_DragonStrafeOutOf), CThingCreatureBase::SetCurrentAction @ 0x006644F0,
@@ -70,7 +72,12 @@ class CCreatureAction_DragonStrafeOutOf : public CCombatActionBase { public:
     CCreatureAction_DragonStrafeOutOf(CThingCreatureBase* owner);   // 0x008E4AD0
 };
 
-extern long g_FramesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
     virtual void v00();
@@ -100,7 +107,7 @@ void NCreatureMode::CModeDragonStrafe::FrameUpdate()
         creature->SetCurrentAction(CCreatureAction_DragonStrafeOutOf(creature));
         return;
     }
-    float step = Speed / g_FramesPerSecond;
+    float step = Speed / CMainGameComponent::GetConstantFPS();
     C3DVector offset = creature->PPhysics->GetFacing() * step;
     C3DVector position = ParentThing->GetPos() + offset;
     ParentThing->PPhysics->SetPosition(position);

@@ -1,4 +1,6 @@
 // CAIStateGroup_JackDragon::WaitForAnimLoop(float seconds) -- idle a tick at a time until the current animation
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // has played to 99.5% and the given number of seconds has passed; terminate the group instead when the enemy
 // dies or the group is stopping.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00950950, length 221 bytes (+ int3 padding).
@@ -7,7 +9,7 @@
 // propagated), the brain world accessor @ 0x008FCFC0 (object expression of the frame accessor), CWorld::GetFrame
 // @ 0x0049D870, CAIStateGroupBase::AIAction_DoNothing @ 0x0097E200, IsStopping @ 0x008FD010, Terminate
 // @ 0x008FCF40; the frame-rate global @ 0x01375550 (15) and the 0.995f fraction @ 0x012933FC.
-// Shape: the wait in frames `(float)g_FramesPerSecond * seconds` goes to a frame slot; a do/while whose body
+// Shape: the wait in frames `(float)CMainGameComponent::GetConstantFPS() * seconds` goes to a frame slot; a do/while whose body
 // idles, bails out through Terminate, and computes the elapsed frames (stored into the dead parameter slot for
 // the fild) before the `fraction < 0.995f || elapsed < wait` test.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
@@ -254,7 +256,12 @@ struct CTCAnim {                                // interface 0x5a
     CAnimInstance* GetPCurrentAnim();           // 0x0070B460
 };
 
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CWorldFrame {
     long GetCurrentFrame() { return CWorld::GetFrame(); }
 };
@@ -265,7 +272,7 @@ void CAIStateGroup_JackDragon::WaitForAnimLoop(float seconds)
     PBrain->PCreature->GetInterfaceT(&anim, 0x5a);
     CAnimInstance* current = anim->GetPCurrentAnim();
     long start = ((CWorldFrame*)&GetWorld())->GetCurrentFrame();
-    float wait = (float)g_FramesPerSecond * seconds;
+    float wait = (float)CMainGameComponent::GetConstantFPS() * seconds;
     long elapsed;
     do {
         AIAction_DoNothing();

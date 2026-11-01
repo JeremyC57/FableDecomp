@@ -1,5 +1,7 @@
 // NCreatureMode::CModeDragonFireBeam::CModeDragonFireBeam(CThing*, CThing*, float) -- CModeDragonHover(thing, target), empty beam-effect pointer, filter re-assigned to "FIRE_BEAM", Timer = seconds in frames
 // Leaf: ??0CModeDragonFireBeam
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D86E0, 209 bytes (`ret 0Ch`). Vtable 0x01285900 (NCreatureMode::CModeDragonFireBeam).
 // Callees: NCreatureMode::CModeDragonHover::CModeDragonHover(CThing*, CThing*) 0x008D8580 (landed); __ftol2 0x00BFEA70;
 // global: the frames-per-second long 0x01375550 (`fild`);
@@ -78,7 +80,12 @@ struct CModeStandBase {                    // retail sizeof 0x68
     unsigned char _body[0x64];
 };
 
-extern long g_framesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 namespace NCreatureMode {
 
@@ -102,7 +109,7 @@ CModeDragonFireBeam::CModeDragonFireBeam(CThing* thing, CThing* target, float se
     : CModeDragonHover(thing, target)
 {
     Filter = CAnimFilterOfGroup("FIRE_BEAM");   // literal @ 0x012858F0 (masked)
-    Timer = (long)(seconds * g_framesPerSecond);
+    Timer = (long)(seconds * CMainGameComponent::GetConstantFPS());
 }
 
 }

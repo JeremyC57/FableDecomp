@@ -1,4 +1,6 @@
 // CCreatureAction_JackFloatUp::FrameUpdate() -- base FrameUpdate; while moving, raise the creature by FloatSpeed per frame, clamped to StartHeight + FloatHeight
+// Naming wave 18: the global stand-in g_frameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0790, length 140 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8,
 // twice), CThing::GetPos @ 0x004C73D0 (`[this+60h]+0Ch`, a const C3DVector&), the physics component's virtual slot 31 (`call [edx+7Ch]`
@@ -46,7 +48,12 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-extern long g_frameRate;                    // 0x01375550 frames per second
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
@@ -68,7 +75,7 @@ void CCreatureAction_JackFloatUp::FrameUpdate()
 {
     CCombatActionBase::FrameUpdate();
     if (Moving) {
-        C3DVector rise(0.0f, 0.0f, FloatSpeed / (float)g_frameRate);
+        C3DVector rise(0.0f, 0.0f, FloatSpeed / (float)CMainGameComponent::GetConstantFPS());
         const C3DVector& position = PCreature.GetPItem()->GetPos();
         C3DVector target(position.X, position.Y, position.Z + rise.Z);
         float limit = FloatHeight + StartHeight;

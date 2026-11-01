@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable() -- runnable for a village guard when the (re-acquired) living player carries a weapon, is in extended line of sight and within 15 units in XY; also resets or decays the warning count every two minutes
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00939ED0, length 430 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 0x23 = CTCVillager, 0x34 = CTCPerceiveThing),
 // GFGetPVillageInterface @ 0x007EE540 (manifest "IS_THING_ALIVE<..>" propagated), CBaseIntelligentPointer ctor @ 0x00A01B10 /
@@ -7,7 +9,7 @@
 // CAIStateGroupBase::GetPThingWorld @ 0x008FCFA0 (both only feed the static CWorld::GetWorldFrame @ 0x0049D870; the manifest's
 // "CPlayer::GetCurrentMode" on both is propagated), IsPlayerCarryingWeapon @ 0x00939E70 (this class),
 // CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPos @ 0x004C73D0 (twice).
-// Globals: g_framesPerSecond @ 0x01375550; 225.0f @ 0x012922C0; CIntelligentPointer<CThingPlayerCreature> vtable 0x01231C4C.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550; 225.0f @ 0x012922C0; CIntelligentPointer<CThingPlayerCreature> vtable 0x01231C4C.
 // Shape: nested ifs with one shared false exit; the world pointer and the frames-per-second value are named locals ahead of
 // the static frame read (fps is loaded before the call, into edi); the hero goes through the implicit
 // CIntelligentPointer<CThingPlayerCreature> temporary and an inline operator=.
@@ -76,7 +78,12 @@ class CPlayer { public:
 class CWorld { public:
     static long __fastcall GetFrame();     // 0x0049D870
 };
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCVillage;
 struct CTCVillager;
@@ -128,7 +135,7 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
             Player = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         } else if (NumberOfTimesPlayerTold > 0) {
             const CWorld& world = GetWorld();
-            long fps = g_framesPerSecond;
+            long fps = CMainGameComponent::GetConstantFPS();
             if (world.GetFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
                 --NumberOfTimesPlayerTold;
                 FrameLastToldPlayer = PeekWorld().GetFrame();

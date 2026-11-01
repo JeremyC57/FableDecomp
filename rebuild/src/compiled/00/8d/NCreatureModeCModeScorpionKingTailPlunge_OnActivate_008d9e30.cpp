@@ -1,5 +1,7 @@
 // NCreatureMode::CModeScorpionKingTailPlunge::OnActivate() -- arm the recovery / spike / spike-decision countdowns from the battle def (seconds x frames per second), attach-mode activation, find the EMITTER_TAIL dummy (kept at ground height) as the tail position, and spawn the TAIL_STRIKE_IDLE effect (the tail emitter) and the TAIL_STRIKE_TRAVEL effect (its particle emitter attached to itself; the dust trail) there
 // Leaf: ?OnActivate@CModeScorpionKingTailPlunge
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D9E30, 689 bytes (`ret`).
 // Callees: CDefClassBase::GetSubDef(CDefPointer<CScorpionKingBattleDef>*) 0x008C5A50 (manifest "GetSubDef<CAICreatureWillPowerIndicatorDef>"
 //   is a byte-twin label), __ftol2 0x00BFEA70, CModeBase::OnActivate 0x0073AAC0, CThing::GetPos 0x004C73D0,
@@ -101,7 +103,10 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 class CThing;
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 struct CTCGraphicAppearance {
@@ -140,7 +145,6 @@ inline bool IS_THING_ALIVE(const CThing* thing)
     return false;
 }
 class CThingCreatureBase : public CThing { public: };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector& position, bool flag);   // 0x006E0880
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -162,7 +166,12 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-extern long g_framesPerSecond;             // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeBase {
     virtual ~CModeBase();
@@ -194,9 +203,9 @@ void CModeScorpionKingTailPlunge::OnActivate()
 {
     CDefPointer<CScorpionKingBattleDef> def;
     ParentThing->PDef->GetSubDef(&def);
-    RecoveryCount = (long)(g_framesPerSecond * def.m_p->RecoveryTime);
-    SpikeTime = (long)(RecoveryCount - g_framesPerSecond * def.m_p->SpikeTime);
-    SpikeDecisionTime = (long)(RecoveryCount - g_framesPerSecond * def.m_p->SpikeDecisionTime);
+    RecoveryCount = (long)(CMainGameComponent::GetConstantFPS() * def.m_p->RecoveryTime);
+    SpikeTime = (long)(RecoveryCount - CMainGameComponent::GetConstantFPS() * def.m_p->SpikeTime);
+    SpikeDecisionTime = (long)(RecoveryCount - CMainGameComponent::GetConstantFPS() * def.m_p->SpikeDecisionTime);
     CModeBase::OnActivate();
     C3DVector pos = ParentThing->GetPos();
     CRightHandedSet axes;
@@ -210,13 +219,13 @@ void CModeScorpionKingTailPlunge::OnActivate()
     if (effects) {
         bool found = effects->GetEffectFromString("TAIL_STRIKE_IDLE", effectType);
         if (found) {
-            CThing* fx = CreateEffectThing(effectType, pos, false);
+            CThing* fx = CTCDParticleEmitter::Create(effectType, pos, false);
             if (IS_THING_ALIVE(fx))
                 PTailEmitter = CIntelligentPointer<CThing>(fx);
         }
         found = effects->GetEffectFromString("TAIL_STRIKE_TRAVEL", effectType);
         if (found) {
-            CThing* fx = CreateEffectThing(effectType, pos, false);
+            CThing* fx = CTCDParticleEmitter::Create(effectType, pos, false);
             if (IS_THING_ALIVE(fx)) {
                 if (fx->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = fx->GetTC<CTCDParticleEmitter>(0x4b);

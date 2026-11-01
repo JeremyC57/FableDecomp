@@ -1,5 +1,7 @@
 // CGameScriptInterface::WorldUpdate(bool active) -- once per game second (and never during a movie sequence or cutscene) count every running script timer down by one, stopping at zero
 // Leaf: ?WorldUpdate@CGameScriptInterface@@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E75C0, 104 bytes (112 with int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?WorldUpdate@CGameScriptInterface@@QAEX_N@Z`; `this` +0x3C is the ScriptTimers
 //   map<long, long> (Ego_r.pdb offset 0x3C) whose node values (+0x14) are decremented, and the two virtual tests are the
@@ -7,7 +9,7 @@
 //   models name them. Single caller 0x004A5D91. The catalog's "UpdateFrame_ProcessRegions" is descriptive and wrong.
 // Callees: the two virtual slots, GFGetCurrentFrame @ 0x0049D870, the STLport map iterator's out-of-line
 //   operator++ @ 0x0059299D (`_M_node = _Rb_global::_M_increment(_M_node)`, ICF'd from another TU).
-// Globals: g_framesPerSecond @ 0x01375550.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: CGameScriptInterface (Ego_r.pdb / engine/CGameScriptInterface.h): vtable +0, ScriptTimers +0x3C (STLport
 //   map: header node; begin = header->_M_left; node key +0x10, value +0x14). Modelled locally because the generated
 //   header is a method-less struct (no virtual interface, no members to define).
@@ -47,7 +49,12 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                                   // 0x0049D870
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 #define V1(n) virtual void v##n();
 #define V10(n) V1(n##0) V1(n##1) V1(n##2) V1(n##3) V1(n##4) V1(n##5) V1(n##6) V1(n##7) V1(n##8) V1(n##9)
@@ -71,7 +78,7 @@ public:
 void CGameScriptInterface::WorldUpdate(bool active)
 {
     if (active && !IsInMovieSequence() && !IsInCutscene()) {
-        long fps = g_framesPerSecond;
+        long fps = CMainGameComponent::GetConstantFPS();
         if (CWorld::GetFrame() % fps == 0) {
             for (CScriptTimerMap::iterator it = ScriptTimers.begin(); it != ScriptTimers.end(); ++it)
                 if (it->second > 0)

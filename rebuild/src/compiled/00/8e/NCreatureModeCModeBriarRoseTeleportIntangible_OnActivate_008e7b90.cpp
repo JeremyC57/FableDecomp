@@ -1,5 +1,7 @@
 // NCreatureMode::CModeBriarRoseTeleportIntangible::OnActivate() -- Briar Rose turns intangible: read the teleport timings from her def (defaults 6 s, no theme change, scale 1), set the mode's frame count, suspend a player creature's animation, clear the 0x3a flag and the type-9 component's flag, stop her movement and run the environment theme transition on all six channels
 // Leaf: OnActivate
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E7B90, length 342 bytes (padded to 352), `ret`.
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CDefClassBase::GetSubDef<T>(CDefPointer<T>*) @ 0x008E7790 (manifest instantiation
 //   name is a byte twin), the defs' virtual slot 1 (release), __ftol2 @ 0x00BFEA70, CThingAICreature::SuspendAI @ 0x00833A10,
@@ -126,7 +128,12 @@ struct CGlobalComponents {
     CEnvironment* Environment;                  // +0x18
     CEnvironment* GetEnvironment() const { return Environment; }
 };
-extern long g_GameFramesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CModeBase {
     virtual void v00();
@@ -166,7 +173,7 @@ void CModeBriarRoseTeleportIntangible::OnActivate()
         duration = teleport->Duration;
         scale = teleport->ThemeScale;
     }
-    FrameCount = (long)(g_GameFramesPerSecond * duration);
+    FrameCount = (long)(CMainGameComponent::GetConstantFPS() * duration);
     if (ParentThing->m_type == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
     CTCFlagged* flagged;

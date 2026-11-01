@@ -1,5 +1,7 @@
 // CTCHeroExperience::SetAsHit() -- the hero was hit: the combo multiplier drops (flourish invalidated, the "lost" sound when it was above one), the attenuation timer rearms and the param falls back to the current fallback multiplier's start
 // Leaf: ?SetAsHit@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D80E0, length 134 bytes (+ int3 padding), thiscall plain `ret`. Ego_r.pdb
 // `?SetAsHit@CTCHeroExperience@@QAEXXZ`; single caller 0x0083A44B in CThingGameObject::OnHit (0x00839940), which fetches
 // the hero's experience component (interface 0x68) first. The manifest label "CTCHeroExperience_OnComboHit" is wrong.
@@ -38,7 +40,12 @@ public:
     CComboMultiplierSounds ComboMultiplierLost;             // +0x84
 };
 
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCHeroExperience {
 public:
@@ -87,6 +94,6 @@ void CTCHeroExperience::SetAsHit()
     long multiplier = GetExperiencePickUpMultiplier();
     if (multiplier > 1)
         PlayCombatMultiplierSound(*ParentThing, PDef->ComboMultiplierLost, multiplier);
-    ExperienceAttenuationTimer = (long)(g_framesPerSecond * GetActiveComboMultiplierData().ExperienceMultiplierNumSecondsForAttenuation);
+    ExperienceAttenuationTimer = (long)(CMainGameComponent::GetConstantFPS() * GetActiveComboMultiplierData().ExperienceMultiplierNumSecondsForAttenuation);
     ExperienceMultiplierParam = GetExperienceMultiplierParamForMultiplier(GetExperienceFallbackMultiplier());
 }

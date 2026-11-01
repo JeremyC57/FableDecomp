@@ -1,12 +1,14 @@
 // CTCStealth::InitialiseSneakSpeed() -- derive the maximum sneaking speed from the creature's crouching walk animation: its scaled movement length over its duration in frames (0.1 when either is not positive)
 // Leaf: InitialiseSneakSpeed
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00747330, 279 bytes (plain `ret`).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("CROUCH" @ 0x01267B28, "ST_WALK" @ 0x0125A990), CCharString()
 //   @ 0x0099E4B0, CCharString::operator= @ 0x0099EFB0, CRC Calc @ 0x004014A0 (`__fastcall`, "" @ 0x0129AAF4 for an empty
 //   name), CThingCreatureBase::GetAnimFromName(const CCharString&, const CAnimFilterBase*, long) @ 0x00662B10, ~CCharString
 //   @ 0x0099EAE0 (x3), the creature's animation movement length @ 0x006627A0 and duration @ 0x006627F0 (both `(long anim)`,
 //   float), the appearance component's scale getter @ 0x004BBFF0 (manifest "CMap::DrawGetSeaLevel", unverified).
-//   g_framesPerSecond @ 0x01375550; 0.0f @ 0x0122DEDC; 0.1f inline.
+//   CMainGameComponent::GetConstantFPS() @ 0x01375550; 0.0f @ 0x0122DEDC; 0.1f inline.
 // Layout: Ego_r.pdb CTCStealth MaxSneakingSpeed +0x18; retail CThing graphic-appearance component +0x64; CAnimFilterOfGroup
 //   (vtable 0x01267568; base CAnimFilterBase 0x0122FFCC) {Group +4, GroupCRC +8} as the landed 0x008C7C00 model; the anim
 //   entry's id at +0.
@@ -59,7 +61,12 @@ public:
 public:
     float GetAnimMovementDistance(long) const;   // 0x006627A0
 };
-extern long g_framesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCStealth { public:
     virtual void v00();
     CThingCreatureBase* ParentThing;                    // +0x04 (CTCBase)
@@ -82,7 +89,7 @@ void CTCStealth::InitialiseSneakSpeed()
     float length = creature->GetAnimMovementDistance(anim) * appearance->GetScale();
     float duration = creature->GetAnimDuration(anim);
     if (length > 0.0f && duration > 0.0f)
-        MaxSneakingSpeed = length / (duration * g_framesPerSecond);
+        MaxSneakingSpeed = length / (duration * CMainGameComponent::GetConstantFPS());
     else
         MaxSneakingSpeed = 0.1f;
 }

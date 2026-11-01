@@ -1,11 +1,13 @@
 // CTCInventory::GlobalUpdate(bool) -- base update, then spins the inventory's 3D item one rotation step and blinks the quick-access highlight
 // Retry 10: RELOCATION_MATCH -- the def release written as `DecRefToZero(Object->RefCount)` (a forceinline `long&` helper: `--count == 0` through a reference) gives retail's `dec [ecx+4] ; jne` scheduled after the fmul; the plain `--Object->RefCount == 0` form materialises the count in a register.
 // Leaf: GlobalUpdate
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00591E8C, 214 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
 // Callees: NInventory::CTCInventoryBase::GlobalUpdate(bool) @ 0x005BDD39, the right-handed set's axis rotation
 //          @ 0x00A22F80 (manifest "CMatrix3x3::MultiplyByQuaternionRotation"; name unproven), _ftol2 @ 0x00BFEA70,
-//          CTCInventory::UpdateContextSensitiveItems() @ 0x00591B7F; globals g_framesPerSecond @ 0x01375550 and the
+//          CTCInventory::UpdateContextSensitiveItems() @ 0x00591B7F; globals CMainGameComponent::GetConstantFPS() @ 0x01375550 and the
 //          (0, -1, 0) rotation axis @ 0x0137CC74; the def's slot 1 on release.
 // Shape: the previous rotation (a 24-byte POD set, `rep movsd`, and its angle) is saved; the step is
 // `1.0f / (def->NumberOfSecondsForObjectRotation * fps)` over a by-value copy of the inventory def pointer (add-ref
@@ -24,7 +26,12 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-extern long g_framesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern C3DVector g_inventoryItemRotationAxis;        // 0x0137CC74 (0, -1, 0)
 
 struct CDefBase {
@@ -87,14 +94,14 @@ void CTCInventory::GlobalUpdate(bool paused)
     float step;
     {
         CInventoryDefPointer def = PDef;
-        step = 1.0f / (def->NumberOfSecondsForObjectRotation * g_framesPerSecond);
+        step = 1.0f / (def->NumberOfSecondsForObjectRotation * CMainGameComponent::GetConstantFPS());
     }
     CurrentObjectRHSet.RotateAboutAxis_00a22f80(g_inventoryItemRotationAxis, -step);
     CurrentRotationAngle += step;
     if (--QuickAccessFlashTimer <= 0) {
         {
             CInventoryDefPointer def = PDef;
-            QuickAccessFlashTimer = (long)(def->MainQuickAccessItemFlashTime * g_framesPerSecond);
+            QuickAccessFlashTimer = (long)(def->MainQuickAccessItemFlashTime * CMainGameComponent::GetConstantFPS());
         }
         bool& flash = QuickAccessFlashState;
         flash = !flash;

@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionKidGroupTag::InitStateGroup(const CWorld&, CThingAICreature&) -- pretend the kid last
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // played tag a random 0..7 seconds ago (never in the future).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00934090, length 90 bytes (+ int3 padding), `ret 8` (both
 // reference arguments unused).
@@ -20,7 +22,12 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };        // 0x0049D870
 long __fastcall GFROR13(unsigned long);   // 0x00497890
-extern long g_framesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -32,7 +39,7 @@ class CAIStateGroupBase { public:
     // loads the global first and multiplies after the call), the seed step is the landed GetRandomObject one
     unsigned long RandomFramesWithin(long seconds)
     {
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         unsigned long* seed = GetPWorldSeed();
         unsigned long range = framesPerSecond * seconds;
         unsigned long next = *seed * 0x24A1U + 0x24DFU;

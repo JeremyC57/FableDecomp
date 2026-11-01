@@ -1,4 +1,6 @@
 // CCreatureActionBase::EditUpdate(float) -- per-frame update: remember the last running time; a finished action clears the creature's current action; otherwise accumulate the frame time step, run the movement update once the start frame is reached, finish (virtual slot 4) when the total time has elapsed, else recompute the frames running from the elapsed seconds, clamped to the total
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692DB0, length 149 bytes (+ int3 padding). `ret 4`: the float argument is unused.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThingCreatureBase::ClearCurrentAction @ 0x006633A0
 // (releases the counted pointer at +0x100 of the creature; the manifest "_Dest_val<...CFaction>" label is propagated), this action's
@@ -29,7 +31,12 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-extern long g_framesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -83,7 +90,7 @@ void CCreatureActionBase::EditUpdate(float timeStep)
             return;
         }
     }
-    FramesRunning = (long)(RunningTimeSeconds * g_framesPerSecond);
+    FramesRunning = (long)(RunningTimeSeconds * CMainGameComponent::GetConstantFPS());
     if (TotalTime >= 0 && FramesRunning > TotalTime)
         FramesRunning = TotalTime;
 }

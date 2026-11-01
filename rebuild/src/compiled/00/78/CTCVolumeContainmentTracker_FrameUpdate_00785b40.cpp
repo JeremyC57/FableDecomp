@@ -1,10 +1,12 @@
 // CTCVolumeContainmentTracker::FrameUpdate() -- while tracking is enabled and the tracked volume is active, re-runs the containment Update every 5 seconds' worth of frames (every 0.8 s when the camera is within 10 units of the thing), staggered by the thing's UID; immediately when the def says so or the tracker is not yet updated
 // Leaf: ?FrameUpdate@CTCVolumeContainmentTracker
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785B40, 318 bytes (plain `ret`, ebp frame).
 // Callees: CTCBase::GetWorld() const 0x00686A70; CThing::GetPos() const 0x004C73D0; the world's slot 8 (+0x20) camera
 //          position getter (C3DVector by hidden pointer); CWorld::GetFrame 0x0049D870; __allrem 0x00BFEC30;
 //          CTCVolumeContainmentTracker::Update() 0x00785620.
-// Globals: the tracking-enabled byte 0x01375757, g_framesPerSecond 0x01375550; constants 5.0f 0x0126B664, 0.8f 0x0126B660,
+// Globals: the tracking-enabled byte 0x01375757, CMainGameComponent::GetConstantFPS() 0x01375550; constants 5.0f 0x0126B664, 0.8f 0x0126B660,
 //          100.0f 0x01230A08, 0.5f/1.0f as immediates.
 // Layout (Ego_r.pdb): CTCVolumeContainmentTracker PreviouslyUpdated +0x18, PDef +0x1c (def +0x25 an always-update flag);
 //          CThing UID (unsigned __int64) +0x18.
@@ -19,7 +21,12 @@ class C3DVector { public:
     float GetMagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
 };
 extern unsigned char g_bVolumeTrackingEnabled;  // 0x01375757
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07();
@@ -84,11 +91,11 @@ void CTCVolumeContainmentTracker::FrameUpdate()
     if (!g_bVolumeTrackingEnabled)
         return;
     if (!PDef->AlwaysUpdate && PreviouslyUpdated) {
-        long interval = CeilToLong(g_framesPerSecond * 5.0f);
+        long interval = CeilToLong(CMainGameComponent::GetConstantFPS() * 5.0f);
         CWorld* world = &GetWorld();
         const C3DVector& pos = ParentThing->GetPos();
         if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
-            interval = CeilToLong(g_framesPerSecond * 0.8f);
+            interval = CeilToLong(CMainGameComponent::GetConstantFPS() * 0.8f);
         unsigned __int64 uid = ParentThing->UID;
         if ((uid + CWorld::GetFrame()) % interval != 0)
             return;

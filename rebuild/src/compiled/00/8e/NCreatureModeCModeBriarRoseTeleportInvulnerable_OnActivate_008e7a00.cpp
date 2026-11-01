@@ -1,5 +1,7 @@
 // NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnActivate() -- Briar Rose charges a teleport: set the 1.25 s frame count, suspend a player creature's animation, advance the boss phase when ready, and spawn the TELEPORT_CHARGE effect at her position, keeping it in the mode's effect pointer
 // Leaf: OnActivate
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Shape: GetEffectFromString (0x00669D30) gets a same-TU out-type-only stand-in body (the 0x008D9740 idiom), so the effect
 //   type does not escape and the CIntelligentPointer temp overlays its word as retail; `out` declared before `effectType`
 //   (zero-store order).
@@ -128,7 +130,9 @@ class CTCBoss { public:
     bool IsReadyForPhaseChange() const;               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -149,7 +153,12 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-extern long g_GameFramesPerSecond;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CModeBase {
     virtual void v00();
     CThing* ParentThing;                        // +0x04
@@ -171,7 +180,7 @@ struct CModeBriarRoseTeleportInvulnerable : CModeStandBase {
 void CModeBriarRoseTeleportInvulnerable::OnActivate()
 {
     CModeStandBase::OnActivate();
-    FrameCount = (long)(g_GameFramesPerSecond * 1.25f);
+    FrameCount = (long)(CMainGameComponent::GetConstantFPS() * 1.25f);
     if (ParentThing->m_type == 1)
         ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
     {
@@ -186,7 +195,7 @@ void CModeBriarRoseTeleportInvulnerable::OnActivate()
         && out.Object->GetEffectFromString("TELEPORT_CHARGE", &effectType);
     CDefHolder<CSpecialEffectsDef> effects(out.Object);
     if (found) {
-        CThing* effect = CreateEffectThing(effectType, &GetParent()->GetPos(), false);
+        CThing* effect = CTCDParticleEmitter::Create(effectType, *(&GetParent()->GetPos()), false);
         if (effect && !(effect->m_flags91 & 1))
             PEffect = CIntelligentPointer<CThing>(effect);
     }

@@ -1,4 +1,6 @@
 // CTCAISummon::IsTimeToSummon() -- true when nothing was summoned yet, the def has no interval, or the interval has elapsed
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FDE00, length 88 bytes (+ int3 padding).
 // Callees: GetWorldFrame @ 0x0049D870 (returns the global frame counter @ 0x013B89BC; the manifest's
 // "GFGetPreMainMemoryUsed" label is propagated), __ftol2 @ 0x00BFEA70. Globals: the frame rate (long @
@@ -16,7 +18,12 @@
 
 class CThing;
 
-extern long g_FramesPerSecond;                              // 0x01375550 (.data), 15
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
@@ -48,6 +55,6 @@ bool CTCAISummon::IsTimeToSummon()
         return true;
     if (PSummonDef->TimeBetweenSummons == 0.0f)
         return true;
-    long framesPerSecond = g_FramesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     return CWorld::GetFrame() - LastSummonTick > (long)(framesPerSecond * PSummonDef->TimeBetweenSummons) ? true : false;
 }

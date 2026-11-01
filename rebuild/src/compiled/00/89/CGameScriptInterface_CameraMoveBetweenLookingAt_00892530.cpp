@@ -1,5 +1,7 @@
 // CGameScriptInterface::CameraMoveBetweenLookingAt(const C3DVector& from, const C3DVector& to, const C3DVector& lookAt, float time, float f) const -- hand the camera manager a scripted move-between camera mode looking at a fixed position
 // Leaf: ?CameraMoveBetweenLookingAt@CGameScriptInterface@@UBEXABVC3DVector@@00MM@Z
+// Naming wave 18: the global stand-in g_WorldFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00892530, 211 bytes, `ret 0x14`; Ego_r.pdb same symbol.
 // Body: f == -1.0f (float 0x0122DEE0) defaults to 0.2f; World (+0x04)->PCurrentGameCamera (+0x34)->GetCameraManager(&manager)
 // (slot 9); manager->SetScriptedCameraMode(CCountedPointer<CScriptModuleBase>(new <0x90-byte mode>(lookAt, from, to,
@@ -53,10 +55,14 @@ public:
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool GetCameraManager(CGameCameraManager** manager);   // slot 9 (+0x24)
 };
-extern long g_WorldFramesPerSecond;                  // 0x01375550
 class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
 public:
-    static long ConvertSecondsToWF(float seconds) { return (long)(g_WorldFramesPerSecond * seconds); }
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+public:
+    static long ConvertSecondsToWF(float seconds) { return (long)(CMainGameComponent::GetConstantFPS() * seconds); }
 };
 class CWorld {
 public:

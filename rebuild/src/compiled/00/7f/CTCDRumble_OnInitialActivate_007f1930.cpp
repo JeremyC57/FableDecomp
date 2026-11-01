@@ -1,5 +1,7 @@
 // CTCDRumble::OnInitialActivate() -- take the rumble def from the thing's def, start a camera earthquake at the thing, then rumble the hero's controller (scaled by distance unless the rumble is global) and time the rumble's life from its length
 // Leaf: OnInitialActivate
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 //
 // Retail 0x007F1930, 391 bytes (plain `ret`; vtable 0x012408BC slot 6, the CTCBase OnInitialActivate slot -- the catalog's
 // "CTCDRumble::vfunc_6").
@@ -9,7 +11,7 @@
 // 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the distance falloff exp(k * |a - b|^2) @ 0x007F1840 (`__fastcall`, two vectors),
 // CThing::GetJoystickDeviceNumber @ 0x004C7CA0, the joystick device's virtual slot 17 (+0x44, start a rumble), `_ftol` @ 0x00BFEA70,
 // the defs' virtual slot 1 on release. Globals: g_pInputManager 0x013B8388 (joystick table +0x2c, 8-byte entries),
-// g_FramesPerSecond 0x01375550.
+// CMainGameComponent::GetConstantFPS() 0x01375550.
 // Layout = Ego_r.pdb CTCDRumble (0x20): PDef +0x0c, Strength +0x10, Length +0x14, GlobalRumble +0x18, LifeTimer +0x1c; CWorld
 // PCurrentGameCamera +0x34; CInitRumble {MaxLevel, Smoothness, AttackTime, DecayTime, Cumulative}; CThing PDef +0x70, Dead bit 0
 // of +0x91.
@@ -116,7 +118,12 @@ class CInputManager { public:
     CJoystickEntry* Joysticks;                          // +0x2c
 };
 extern CInputManager* PInputManager;                  // 0x013B8388
-extern long g_FramesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 float __fastcall RumbleDistanceFalloff(const C3DVector& from, const C3DVector& to);   // 0x007F1840
 
 class CTCBase {
@@ -162,7 +169,7 @@ void CTCDRumble::OnInitialActivate()
         CJoystickDevice* device = PInputManager->Joysticks[joystick].Device;
         CInitRumble init(scale * Strength, 0.5f, attackTime, decayTime, false);
         device->StartRumble(4, &init, false);
-        LifeTimer = (long)(g_FramesPerSecond * Length);
+        LifeTimer = (long)(CMainGameComponent::GetConstantFPS() * Length);
         return;
     }
     LifeTimer = -1;

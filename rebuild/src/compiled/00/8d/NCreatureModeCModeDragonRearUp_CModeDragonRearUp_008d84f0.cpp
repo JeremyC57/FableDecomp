@@ -1,5 +1,7 @@
 // NCreatureMode::CModeDragonRearUp::CModeDragonRearUp(CThing* thing, float seconds) -- CModeStandBase(thing), own vtable, the "REAR_UP" filter, Timer = seconds converted to frames
 // Leaf: ??0CModeDragonRearUp
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D84F0 (`ret 8`). Vtable 0x01268420 = NCreatureMode::CModeDragonRearUp (rtti-vtables.tsv).
 // Callees: CModeStandBase::CModeStandBase(CThing*) @ 0x00861E00 (manifest label "CTCCreatureNavigation" is propagated;
 // 0x008621A0 CModeStandBase::OnActivate sits beside it), CCharString @ 0x0099EBF0 / 0x0099E4B0 / operator= 0x0099EFB0 /
@@ -63,7 +65,12 @@ struct CModeStandBase {                    // retail sizeof 0x68 (CModeBase 0x1c
 
 namespace NCreatureMode {
 }
-extern long g_framesPerSecond;               // 0x01375550 (15)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 namespace NCreatureMode {
 
 struct CModeDragonRearUp : CModeStandBase {   // vtable 0x01268420
@@ -76,7 +83,7 @@ struct CModeDragonRearUp : CModeStandBase {   // vtable 0x01268420
 CModeDragonRearUp::CModeDragonRearUp(CThing* thing, float seconds)
     : CModeStandBase(thing)
     , Filter("REAR_UP")
-    , Timer((long)(g_framesPerSecond * seconds))
+    , Timer((long)(CMainGameComponent::GetConstantFPS() * seconds))
 {
 }
 

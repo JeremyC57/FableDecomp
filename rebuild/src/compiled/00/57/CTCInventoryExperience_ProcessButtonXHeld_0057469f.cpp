@@ -10,6 +10,8 @@
 // test, `if (--refCount == 0) Destroy()` through vtable slot 1 with no null test, tail-jumped).
 // Retail offsets (the PDB header is 0x44 bytes wider ahead of the events), local model.
 // Leaf: ProcessButtonXHeld
+// Naming wave 18: the global stand-in g_ExperienceSpendTimeScale (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 #pragma optimize("s", on)
 
 struct ExperienceSpendEvent {
@@ -36,7 +38,12 @@ struct CInventoryDefPointer {
     CInventoryDef* operator->() const { return m_p; }
 };
 
-extern long g_ExperienceSpendTimeScale;            // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTCInventoryBase {
     void ProcessButtonXHeld();                     // 0x005BC68E
@@ -62,7 +69,7 @@ void CTCInventoryExperience::ProcessButtonXHeld()
             RemoveExperienceSpend();
         } else if (!ExperienceSpendRemove.initiate) {
             ExperienceSpendRemove.initiate = true;
-            long scale = g_ExperienceSpendTimeScale;
+            long scale = CMainGameComponent::GetConstantFPS();
             CInventoryDefPointer def(PDef);
             ExperienceSpendRemove.time = def->ExperienceSpendTimeOffset * scale;
         }

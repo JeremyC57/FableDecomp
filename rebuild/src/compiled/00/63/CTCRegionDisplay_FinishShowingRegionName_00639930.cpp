@@ -1,5 +1,7 @@
 // CTCRegionDisplay::FinishShowingRegionName() -- start the fade-out of the region name: when not yet timing out, or timing out with the fade point still ahead, back-date FrameNameChanged so the remaining display time equals the fade time, then flag TimeOut
 // Leaf: FinishShowingRegionName
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH -- the fade test is `elapsed < displayFrames - fadeFrames` (elapsed on the LEFT: `fild elapsed` first, then `fld display ; fsub fade ; fcompp ; test ah,41h ; jne`); the earlier `displayFrames - fadeFrames < elapsed` was the inverted condition (it skipped when elapsed <= d instead of when d <= elapsed)
 // Retail: Fable.exe 0x00639930, 115 bytes (plain `ret`).
 // Callees: GFGetCurrentFrame() @ 0x0049D870 (`__fastcall`, manifest "GFGetPreMainMemoryUsed" is propagated) twice,
@@ -8,7 +10,12 @@
 // Layout = Ego_r.pdb CTCRegionDisplay (0x28, as landed 0x00639B70): FrameNameChanged +0x14, DisplayTime +0x20,
 // TimeOut +0x24.
 // Shape: FrameNameChanged is read into edi before the products; the products are float locals.
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern const float g_regionNameFadeTime;                    // 0x0125A0E4
 class CWorld {
 public:
@@ -36,8 +43,8 @@ class CTCRegionDisplay { public:
 void CTCRegionDisplay::FinishShowingRegionName()
 {
     long changed = FrameNameChanged;
-    float displayFrames = g_framesPerSecond * DisplayTime;
-    float fadeFrames = g_framesPerSecond * g_regionNameFadeTime;
+    float displayFrames = CMainGameComponent::GetConstantFPS() * DisplayTime;
+    float fadeFrames = CMainGameComponent::GetConstantFPS() * g_regionNameFadeTime;
     long elapsed = CWorld::GetFrame() - changed;
     if (!TimeOut || elapsed < displayFrames - fadeFrames)
         FrameNameChanged = (long)(CWorld::GetFrame() - (displayFrames - fadeFrames));

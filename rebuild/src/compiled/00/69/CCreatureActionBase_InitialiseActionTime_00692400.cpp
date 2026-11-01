@@ -1,4 +1,6 @@
 // CCreatureActionBase::InitialiseActionTime() -- when the action reports a positive duration, seed
+// Naming wave 18: the global stand-in g_FramesPerSecond_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // the running-time pair with it and compute the start frame from the frames-per-second global
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692400, length 70 bytes (+ int3 padding).
 // Callees: vtable slot 64 (+0x100, float, called twice: once for the test, once for the value),
@@ -9,7 +11,12 @@
 // with `fst` and then multiplied by the converted rate for the truncating conversion.
 #include "engine/CCreatureActionBase.h"
 
-extern long g_FramesPerSecond_01375550;        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CCreatureActionBaseVirtuals {
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
@@ -39,7 +46,7 @@ void CCreatureActionBase_Methods::InitialiseActionTime()
 {
     CCreatureActionBaseVirtuals* self = reinterpret_cast<CCreatureActionBaseVirtuals*>(this);
     if (self->GetActionTimeSeconds() > 0.0f) {
-        long framesPerSecond = g_FramesPerSecond_01375550;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         float seconds = self->GetActionTimeSeconds();
         RunningTimeSeconds = seconds;
         LastRunningTimeSeconds = seconds;

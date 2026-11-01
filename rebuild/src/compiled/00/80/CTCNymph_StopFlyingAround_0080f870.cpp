@@ -1,5 +1,7 @@
 // CTCNymph::StopFlyingAround(long fadeTime) -- if flying: look up the HOVER special effect, kill the old effect and make the current one the old one, spawn the hover effect at the owner attached at DUMMY_CENTRE, then stop flying, start the fade-in counter, show the owner, and kill the old effect at once when there is no fade
 // Leaf: StopFlyingAround
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F870, 608 bytes, `ret 4`.
 // Callees: GetSubDef<CSpecialEffectsDef> @ 0x00669580, GetEffectFromString @ 0x00669D30, CCharString @ 0x0099EBF0/0x0099EAE0,
 //   CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
@@ -178,7 +180,12 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 };
 #pragma pack(pop)
 
-extern long g_FramesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CPhysicsBody {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -235,7 +242,7 @@ void CTCNymph::StopFlyingAround(long fadeTime)
         FlyingAround = false;
         BeenHit = false;
         if (fadeTime == -1)
-            fadeTime = (long)(g_FramesPerSecond * PDef->FadeInTime);
+            fadeTime = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInTime);
         FadeCounter = TotalFadeTime = fadeTime;
         ParentThing->SetVisible(true);
         ParentThing->PhysicsBody->Reset();

@@ -1,10 +1,12 @@
 // CTCCoopSpirit::UpdateAttractionToMaster() -- once the spirit has not moved for a while, pull it towards its master's hero: an acceleration along the offset, scaled by how far beyond 1.5 units it is (capped at 2.5) times 1.027
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006701A0, 312 bytes (+ int3 padding), plain `ret`.
 // Callees: __ftol2 @ 0x00BFEA70, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0 (x2),
 //   C3DVector::GetLength @ 0x00A14480 (manifest "C3DVector::GetScaled" is propagated), CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of the physics TC, interface 2 = word 0 bit 2),
 //   CTCPhysicsBase::ApplyAcceleration(const C3DVector&) @ 0x006B0210.
-// Globals: g_framesPerSecond @ 0x01375550, the idle seconds before attraction 3.0f @ 0x0137EA20 (an extern float
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550, the idle seconds before attraction 3.0f @ 0x0137EA20 (an extern float
 //   variable, named descriptively), 1.5f @ 0x0125AADC, 2.5f @ 0x01241D68, 1.027f @ 0x0125B250.
 // Layout = Ego_r.pdb CTCCoopSpirit: ParentThing +0x04, NoMovementTimer +0x0c, Master (CPlayer*) +0x24.
 // Shape: the master's position is copied into a named C3DVector (three dword moves) before the spirit's own position is
@@ -14,7 +16,12 @@
 //   reference the subtraction folds into memory operands); the distance a named float (fst); the physics TC
 //   through an inline accessor returning an unset local when absent; the excess is clamped with `if (f > max) f = max`
 //   and the acceleration is a named `offset * f` vector in the master position's frame words.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern float g_CoopSpiritAttractionDelay;       // 0x0137EA20 (3.0f)
 class C3DVector { public:
     float X, Y, Z;
@@ -82,7 +89,7 @@ class CTCCoopSpirit { public:
 void CTCCoopSpirit::UpdateAttractionToMaster()
 {
     CPlayer* master = Master;
-    if (master && NoMovementTimer > (long)(g_framesPerSecond * g_CoopSpiritAttractionDelay)) {
+    if (master && NoMovementTimer > (long)(CMainGameComponent::GetConstantFPS() * g_CoopSpiritAttractionDelay)) {
         CThing* hero = master->GetPControlledCreature();
         if (hero) {
             C3DVector masterPos = hero->GetPos();

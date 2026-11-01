@@ -1,19 +1,26 @@
 // CTCAnimatingObject::FrameUpdate() -- notice when the current animation has finished, start the next queued animation when idle, then advance the thing's animation by one frame (1 / fps seconds, divided by the bullet-time scale when it applies)
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F8E20, 267 bytes (+5 int3 padding), `ret`; CTCAnimatingObject vtable
 //   0x012417E4 slot 9 (the TC FrameUpdate slot; the catalog's "vfunc_9").
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCAnimationComplex, type
 //   0x5A), CTCAnimationComplex::GetAnimation 0x0070B460, CTCAnimatingObject::PlayAnimation(const CAnimInit&, long)
 //   0x007F8DC0, free 0x00BFEA14, CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime
 //   0x004C9920, CBulletTime::GetTimeScale 0x004C5FA0, CAnimateThing::UpdateFrameLogic(const CAnimFrameTime&) 0x0070E8B0.
-//   Globals g_framesPerSecond 0x01375550, 1.0f 0x0122DED8.
+//   Globals CMainGameComponent::GetConstantFPS() 0x01375550, 1.0f 0x0122DED8.
 // Layout = Ego_r.pdb CTCAnimatingObject: Animating +0x0C, CurrentAnimationPriority +0x10, QueuedAnims +0x14 (STLport
 //   list<CAnimInit>, one word: the landed ClearQueuedAnims 0x007F8BE0); the world's bullet-time controller +0x68.
 // Shape: the landed CTCBed/CTCCupboard animation accessor (an unset local when the component is absent); the queue's
 //   front is played and popped through the inline STLport erase(begin()); the frame time record is built by a
 //   (seconds) constructor from `scaled ? seconds / scale : seconds`.
 extern "C" void __cdecl free(void* memory);     // 0x00BFEA14
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -151,7 +158,7 @@ void CTCAnimatingObject::FrameUpdate()
             QueuedAnims.pop_front();
         }
     }
-    float seconds = 1.0f / g_framesPerSecond;
+    float seconds = 1.0f / CMainGameComponent::GetConstantFPS();
     CAnimFrameTime time((PeekWorld().m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime())
                             ? seconds / PeekWorld().m_pBulletTime->GetTimeScale() : seconds);
     animate.UpdateFrameLogic(time);

@@ -1,5 +1,7 @@
 // NCreatureMode::CModeSummonerLightningOrb::OnActivate() -- stand-mode activation; suspend a player's animation; spawn the orb-charge effect (attached to the summoner's LIGHTNING_ORB_FOCUS bone through its particle emitter) and the charge effect; give the summoner an electrocute-on-touch component; arm the timer
 // Leaf: ?OnActivate@CModeSummonerLightningOrb
+// Naming wave 18: the global stand-in g_LightningOrbChargeSeconds (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DAE10, 541 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAICreature::SuspendAI @ 0x00833A10,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, CCRC::CalcAndLookup @ 0x00669D30, CCharString(const char*, long)
@@ -101,9 +103,11 @@ class CThing { public:
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
 };
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
@@ -137,7 +141,12 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     return false;
 }
 
-extern long g_LightningOrbChargeSeconds;              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 extern const float g_FramesPerSecond_0122ded4;        // 0x0122DED4 (3.0f)
 
 namespace NCreatureMode {
@@ -168,7 +177,7 @@ void CModeSummonerLightningOrb::OnActivate()
     if (m_pThing->GetDef()->GetSubDef(&effects)) {
         long effect;
         if (effects->CalcAndLookup("LIGHTNING_ORB_CHARGE", &effect)) {
-            POrbChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPos(), false));
+            POrbChargeEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false));
             if (IS_THING_ALIVE(POrbChargeEffect)) {
                 CTCDParticleEmitter* emitter;
                 CThing* orb = POrbChargeEffect.GetPItem();
@@ -178,9 +187,9 @@ void CModeSummonerLightningOrb::OnActivate()
             }
         }
         if (effects->CalcAndLookup("LIGHTNING_CHARGE", &effect))
-            PChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPos(), false));
+            PChargeEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false));
     }
     m_pThing->AddTC("CTCElectrocuteOnTouch", true, 0);
-    Timer = (long)(g_LightningOrbChargeSeconds * g_FramesPerSecond_0122ded4);
+    Timer = (long)(CMainGameComponent::GetConstantFPS() * g_FramesPerSecond_0122ded4);
 }
 }

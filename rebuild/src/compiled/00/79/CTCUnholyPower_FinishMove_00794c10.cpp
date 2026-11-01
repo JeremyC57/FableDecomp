@@ -1,5 +1,7 @@
 // CTCUnholyPower::FinishMove() -- finish the spell: start the level's fade-out wait, fade the environment back to its default theme, reset the caster's interface-0xA7 component, fade or kill the build-up and hand effects, kill the dark-faces effect and stop the looping sound
 // Leaf: FinishMove
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00794C10, length 369 bytes (plain `ret`, no frame pointer; Ego_r.pdb
 //   `?FinishMove@CTCUnholyPower@@QAEXXZ`).
 // Callees: as the landed sibling CTCDivineWrath::FinishMove 0x0078F6E0: __ftol2 0x00BFEA70, CTCBase::GetWorld 0x00686A70,
@@ -7,7 +9,7 @@
 //   (interfaces 0xA7 and 0x10), CBaseIntelligentPointer::GetPItem 0x00A01B50, CTCSpecialAbilities::FadeOrKillEffect
 //   (CIntelligentPointer<CThing>&) 0x0072ABD0 (__fastcall), the emitter's StopSample(unsigned long) 0x0066ADD0; plus
 //   CThing::Kill(bool) 0x004C9B80 (as landed) on the dark-faces effect.
-// Globals: g_framesPerSecond 0x01375550.
+// Globals: CMainGameComponent::GetConstantFPS() 0x01375550.
 // Layout: Ego_r.pdb CTCUnholyPower with the retail containers (as the sibling: after Timer 4 lower, after the map/vector
 //   0xc lower): PDef +0x0c, SpellLevel +0x50, Finished +0x64, NumFramesToWaitForFadeOut +0x68, BuildUpEffect +0x9c,
 //   DarkFacesEffect +0xa4, HandEffect1 +0xb4, HandEffect2 +0xbc, LoopingSound +0xc4; the def's per-level fade-out seconds
@@ -17,7 +19,12 @@
 //   (`DarkFacesEffect.GetPItem()->Kill(true)`, the argument pushed before the third GetPItem); the sound stops through
 //   an inline StopSound(sound) member (Ego_r.pdb `?StopSound@CTCUnholyPower@@AAEXK@Z`) whose argument loads into edi
 //   before the lookup.
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -133,7 +140,7 @@ class CTCUnholyPower : public CTCBase { public:
 void CTCUnholyPower::FinishMove()
 {
     Finished = true;
-    NumFramesToWaitForFadeOut = (long)(g_framesPerSecond * PDef->FadeOutTimes[SpellLevel]);
+    NumFramesToWaitForFadeOut = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeOutTimes[SpellLevel]);
     const float* times = PDef->FadeOutTimes;
     CWorld* world = (&GetWorld());
     world->PEnvironment->TransitionToDefaultThemeAllChannels(2, times[SpellLevel]);

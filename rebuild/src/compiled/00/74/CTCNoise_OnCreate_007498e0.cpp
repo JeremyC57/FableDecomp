@@ -1,5 +1,7 @@
 // CTCNoise::OnCreate() -- copy the owning thing's noise definition into the component, take its hearing distance, and set the lifetime: a timed noise lasts LifeTime seconds (+5 frames), a single-shot one 5 frames
 // Leaf: OnCreate
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007498E0, length 160 bytes. Vtable slot 4 of CTCNoise (0x01268A74; catalog "vfunc_4",
 // the CTCBase OnCreate slot).
 // Callees: CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetDef<CThingNoiseDef>(long, CDefPointer*) @ 0x00749AC0
@@ -53,9 +55,14 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPoint
     return true;
 }
 #pragma auto_inline(on)
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CFrameSource {
-    static long GetFramesPerSecond() { return g_FramesPerSecond; }
+    static long GetFramesPerSecond() { return CMainGameComponent::GetConstantFPS(); }
 };
 struct CIntelligentPointerConstThing {
     virtual void v00();

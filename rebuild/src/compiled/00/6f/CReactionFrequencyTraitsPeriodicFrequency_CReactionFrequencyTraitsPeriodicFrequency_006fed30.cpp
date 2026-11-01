@@ -1,12 +1,19 @@
 // CReactionFrequencyTraits_PeriodicFrequency::CReactionFrequencyTraits_PeriodicFrequency(float rampUpTime, float cutoffInterval, float lowFreqPerMin, float highFreqPerMin) -- periodic reaction frequency: rates per minute and frame counts derived from the frame rate
 // Leaf: ??0CReactionFrequencyTraits_PeriodicFrequency@@
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FED30, 92 bytes, `ret 0x10`.
 // Label correction: catalog "ConsoleSetViewPort" is propagated; the vtable stored (0x01264B7C) is
 //   CReactionFrequencyTraits_PeriodicFrequency's, so this is its (float, float, float, float) constructor.
-// Callees: _ftol 0x00BFEA70 (float -> unsigned long, twice). Data: g_framesPerSecond 0x01375550.
+// Callees: _ftol 0x00BFEA70 (float -> unsigned long, twice). Data: CMainGameComponent::GetConstantFPS() 0x01375550.
 // Shape: the init list holds the two rates and FramesPerMinute (`imul ecx,ecx,3Ch`); the body converts the ramp-up and
 //   cutoff times to frames and zeroes LastCutoffFrame.
-extern long g_framesPerSecond;                            // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CThingAICreature;
 class CMemoryDataInputStream;
@@ -42,9 +49,9 @@ public:
 
 CReactionFrequencyTraits_PeriodicFrequency::CReactionFrequencyTraits_PeriodicFrequency(float rampUpTime, float cutoffInterval,
                                                                                        float lowFreqPerMin, float highFreqPerMin)
-    : LowFreqPerMin(lowFreqPerMin), HighLowFreqInterval(highFreqPerMin - lowFreqPerMin), FramesPerMinute(g_framesPerSecond * 60)
+    : LowFreqPerMin(lowFreqPerMin), HighLowFreqInterval(highFreqPerMin - lowFreqPerMin), FramesPerMinute(CMainGameComponent::GetConstantFPS() * 60)
 {
-    RampUpTimeFrames = (unsigned long)(g_framesPerSecond * rampUpTime);
-    CutoffIntervalFrames = (unsigned long)((rampUpTime + cutoffInterval) * g_framesPerSecond);
+    RampUpTimeFrames = (unsigned long)(CMainGameComponent::GetConstantFPS() * rampUpTime);
+    CutoffIntervalFrames = (unsigned long)((rampUpTime + cutoffInterval) * CMainGameComponent::GetConstantFPS());
     LastCutoffFrame = 0;
 }

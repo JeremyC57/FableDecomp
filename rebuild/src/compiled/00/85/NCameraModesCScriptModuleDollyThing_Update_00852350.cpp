@@ -1,5 +1,7 @@
 // NCameraModes::CScriptModuleDollyThing::Update() -- put the owning camera at RotThing's position + DollyVector looking at RotThing, then turn DollyVector about Z by one frame's share of a full turn
 // Leaf: Update
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852350, length 172 bytes (`ret`).
 // Callees: CThing::GetPos() const @ 0x004C73D0 (twice), C3DVector::Rotate(const C3DVector& axis, float angle) @ 0x00A13C60.
 // Globals: the frames-per-second count @ 0x01375550 (a long).
@@ -9,7 +11,12 @@
 // before the second GetPos (kept in ebx across the call) for the look-at copy, the Z axis a C3DVector(0,0,1) temporary, angle 1 / (fps * TimeFor360Turn).
 // Layout: Ego_r.pdb NCameraModes::CScriptModuleDollyThing (0x60 bytes): RotThing +0x4c, DollyVector +0x50,
 // TimeFor360Turn +0x5c, over the 0x4c-byte CScriptModuleBase (POwner +0x38).
-extern long g_FramesPerSecond;                       // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -53,7 +60,7 @@ struct CScriptModuleDollyThing {
 
 void CScriptModuleDollyThing::Update()
 {
-    long fps = g_FramesPerSecond;
+    long fps = CMainGameComponent::GetConstantFPS();
     POwner->Position = RotThing->GetPos() + DollyVector;
     CCameraState* owner = POwner;
     owner->LookAt = RotThing->GetPos();

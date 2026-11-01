@@ -1,4 +1,7 @@
 // CCombatWheel::ReassignAttacker(CWorld*, CCombatantInfo*, CCombatantInfo*, const C3DVector*) -- give the attacker a fresh preferred attack dolly: the flat direction from the defender to the given position, or to the attacker turned by a random 0.25..0.75 turn; when it is not degenerate it is normalised and stored with a five-second timer
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E80F0, 383 bytes (385 incl. a padding byte). `ret 10h` (`this` unused).
 // Callees: CThing::GetPosition 0x004C73D0, CWorld's random-seed accessor 0x0049D810 (catalogued
 //          CVertexBufferWin32::DoSizeof), `__fastcall` GFFloatRandom(float, unsigned long*) 0x004978A0,
@@ -24,8 +27,13 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
     void Rotate(const C3DVector& axis, float angle);    // 0x00A13C60
 };
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
-extern long g_framesPerSecond;              // 0x01375550
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 class CThing { public:
@@ -63,13 +71,13 @@ void CCombatWheel::ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCo
     } else {
         dolly = attacker->Parent->GetPos() - defender->Parent->GetPos();
         dolly.Z = 0.0f;
-        if (dolly.GetLengthSquared() > EPSILON * EPSILON)
+        if (dolly.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetWorldSeed()) + 0.25f);
     }
-    if (dolly.GetLengthSquared() > EPSILON * EPSILON) {
+    if (dolly.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         dolly.AccurateNormalise();
         attacker->AttackerInfo.PreferredAttackDollySet = true;
-        attacker->AttackerInfo.PreferredAttackDollyTimer = (long)(g_framesPerSecond * 5.0f);
+        attacker->AttackerInfo.PreferredAttackDollyTimer = (long)(CMainGameComponent::GetConstantFPS() * 5.0f);
         attacker->AttackerInfo.PreferredAttackDollyVector.X = dolly.X;
         attacker->AttackerInfo.PreferredAttackDollyVector.Y = dolly.Y;
     }

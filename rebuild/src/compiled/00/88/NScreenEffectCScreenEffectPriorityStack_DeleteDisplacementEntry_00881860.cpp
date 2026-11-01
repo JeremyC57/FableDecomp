@@ -1,10 +1,12 @@
 // NScreenEffect::CScreenEffectPriorityStack::DeleteDisplacementEntry(CDisplacementMonochromeEffectColourEntry* entry, float fadeTime) -- erases the entry from DisplacementKeys and, if it was there, starts its fade-out over fadeTime seconds
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00881860, length 59 bytes.
 // Leaf: ?DeleteDisplacementEntry@CScreenEffectPriorityStack@NScreenEffect
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail bytes: as 0x00881820 with `add ecx,78h` (DisplacementKeys)
 // Callees: the RadialBlurKeys/DisplacementKeys set's find @ 0x008839E0 (iterator through the hidden result) and erase(key) @ 0x00884710.
 // Caller: CEnvironmentSpellEffectInterpolator (its priority stack at +0x90, 0x006B82E0..0x006B83A0).
-// `test ; jbe` is the unsigned `count > 0`; `fild [g] ; fmul [arg]` is `fadeTime * g_framesPerSecond`, truncated through
+// `test ; jbe` is the unsigned `count > 0`; `fild [g] ; fmul [arg]` is `fadeTime * CMainGameComponent::GetConstantFPS()`, truncated through
 // __ftol2 @ 0x00BFEA70.
 // Retail model (STLport containers): CScreenEffectPriorityStack (vtable 0x01278058) is
 //   +0x00 vptr, +0x04 RadialParamStack[3] (4-byte STLport lists), +0x10 RadialBlurKeys (set<CStackEntry*>:
@@ -40,7 +42,12 @@ struct CRadialBlurPositionParams {             // 32 bytes
     ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION AreaTrackPos;   // +0x18
     ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION BlurTrackPos;   // +0x1c
 };
-extern long g_framesPerSecond;                 // 0x01375550 (15)
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 namespace NScreenEffect {
 
@@ -104,7 +111,7 @@ void CScreenEffectPriorityStack::DeleteDisplacementEntry(CDisplacementMonochrome
     if (DisplacementKeys.erase(entry) > 0) {
         entry->fadingout = true;
         entry->curdurationcount = 0;
-        entry->durationcount = (long)(fadeTime * g_framesPerSecond);
+        entry->durationcount = (long)(fadeTime * CMainGameComponent::GetConstantFPS());
     }
 }
 

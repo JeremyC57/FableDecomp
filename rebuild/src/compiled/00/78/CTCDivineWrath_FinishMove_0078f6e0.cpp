@@ -1,4 +1,6 @@
 // CTCDivineWrath::FinishMove() -- finish the spell: start the level's fade-out wait, fade the environment back to its default theme, reset the caster's interface-0xA7 component, fade or kill the build-up and hand effects and stop the looping sound
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078F6E0, 319 bytes (+ int3 padding), plain `ret`.
 // Callees: __ftol2 @ 0x00BFEA70, CTCBase::GetWorld @ 0x00686A70, CEnvironment::TransitionToDefaultThemeAllChannels(long,
 //   float) @ 0x006B3950, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined lookups of interface 0xA7
@@ -6,7 +8,7 @@
 //   CTCSpecialAbilities::FadeOrKillEffect(CIntelligentPointer<CThing>&) @ 0x0072ABD0 (__fastcall, the pointer in ecx;
 //   manifest "CCreatureAction_CastWillReclaimUndeadFollower::PerformAction" is propagated), the emitter's StopSample(ulong)
 //   @ 0x0066ADD0 (manifest "CGameScriptThing::SetToKillOnLevelUnload" is propagated).
-// Globals: g_framesPerSecond @ 0x01375550.
+// Globals: CMainGameComponent::GetConstantFPS() @ 0x01375550.
 // Layout: Ego_r.pdb CTCDivineWrath with the retail containers (fields after Timer 4 lower, after the map/vector 0xc
 //   lower): PDef +0x0c, SpellLevel +0x50, Finished +0x64, NumFramesToWaitForFadeOut +0x68, BuildUpEffect +0x9c, HandEffect1
 //   +0xac, HandEffect2 +0xb4, LoopingSound +0xbc; CSpecialAbilitiesDivineWrathDef per-level fade-out seconds (vector<float>
@@ -16,7 +18,12 @@
 //   lands before GetWorld, the level after it) with the world in a named local (GetWorld before the argument, the
 //   environment read straight into ecx); the 0xA7 component comes from HasTC + GetTC (one ternary entry pick), the
 //   sound emitter from the out-parameter GetInterface (`mov eax,[eax+4]` ... `mov ecx,eax`).
-extern long g_framesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -124,7 +131,7 @@ class CTCDivineWrath : public CTCBase { public:
 void CTCDivineWrath::FinishMove()
 {
     Finished = true;
-    NumFramesToWaitForFadeOut = (long)(g_framesPerSecond * PDef->FadeOutTimes[SpellLevel]);
+    NumFramesToWaitForFadeOut = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeOutTimes[SpellLevel]);
     const float* times = PDef->FadeOutTimes;
     CWorld* world = (&GetWorld());
     world->PEnvironment->TransitionToDefaultThemeAllChannels(2, times[SpellLevel]);

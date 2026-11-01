@@ -3,11 +3,13 @@
 // looping build-up sound, cap the castable level by the hero's stamina thresholds and convert the release delay to frames
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C87F0, 510 bytes, `ret 4`; vtable 0x0126E964. No EH frame (TU without /EH).
 // Leaf: ??0CTCFireballSpell
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: CTCBase(CThing*) 0x00686800 (catalog "ClockSprite"), CWillButtonHelperTimer(EHeroAbility, CThing*) 0x008EDFF0,
 // CBaseIntelligentPointer 0x00A01B10 / SetPItem 0x00A01B90 (CIntelligentPointer<CThing> vtable 0x01238C6C), CCharString
 // 0x0099EBF0 / ~ 0x0099EAE0 ("" 0x0122D70E), CGameDefinitionManager::Get 0x0044C6B0, GetGlobalIndexFromClassIndex 0x009AD390,
 // GetDef<CSpecialAbilitiesFireballSpellDef> 0x005F8A57, LowerBound 0x0040F020 (0xA7 special abilities: `test cl,cl ; jns`,
-// 0x10 sound player, 4 hero stats), CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00, __ftol2 0x00BFEA70; g_FramesPerSecond 0x01375550.
+// 0x10 sound player, 4 hero stats), CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00, __ftol2 0x00BFEA70; CMainGameComponent::GetConstantFPS() 0x01375550.
 // Shape: the CTCForcePushPower ctor (0x007A54A0) init list sharing the ebx zero; implicit-literal string temps; the stamina
 // level loop converts `(float)stamina` INSIDE the loop condition from a named long -- VC hoists it as loop-invariant through a
 // stack slot (`mov ecx,[eax+58h] ; mov [esp+14h],ecx ; fild ; fstp` to the same word) and aligns the loop head with
@@ -123,7 +125,12 @@ struct CWillButtonHelperTimer {                     // retail 0x34 bytes
     unsigned char _data[0x34];
 };
 
-extern long g_FramesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class CTCBase {
 public:
@@ -185,5 +192,5 @@ CTCFireballSpell::CTCFireballSpell(CThing& parent)
         if (MaxLevelAllowableByStamina < 0)
             MaxLevelAllowableByStamina = 0;
     }
-    ReleaseDelayFrameCount = (long)(g_FramesPerSecond * PDef->ReleaseDelaySeconds);
+    ReleaseDelayFrameCount = (long)(CMainGameComponent::GetConstantFPS() * PDef->ReleaseDelaySeconds);
 }

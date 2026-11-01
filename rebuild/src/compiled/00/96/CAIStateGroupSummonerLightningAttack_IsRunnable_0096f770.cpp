@@ -2,6 +2,8 @@
 //   SMatch out dies at the call (retail packs it with the IP temporaries and the LOS distance word: frame 0x44); the world is a
 //   named local before the camera-manager call (this straight into ecx); the from-vector reads PBrain->PCreature directly.
 // Leaf: IsRunnable
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -87,7 +89,12 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -191,7 +198,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                             }
                         }
                     }
-                    long fps = g_FramesPerSecond;
+                    long fps = CMainGameComponent::GetConstantFPS();
                     const CSummonerDef* def = PDef;
                     NextFrameForPreemptiveUse = (long)((float)CWorld::GetFrame() + (float)fps * def->PreemptiveDelaySeconds);
                 }

@@ -1,5 +1,7 @@
 // NCreatureMode::CModeDragonFlying::OnActivate() -- start a flying leg: suspend a player creature's animation, clear the interface-0x3a flag, make the dragon un-willable, measure the leg, prime the flight animation and its playback rate
 // Leaf: OnActivate
+// Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DBB30, length 331 bytes (padded to 336), `ret`; vtable 0x0126868C slot 5.
 // Callees: CModeBase::OnActivate @ 0x0073AAC0, CThingAICreature::SuspendAI @ 0x00833A10, CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface, types 0x3a and 0x5a), SetThingAsNotBloodyWillableAtAll(CThing*, bool) @ 0x007E4040
@@ -68,7 +70,12 @@ class CTCAnimationComplex { public:                // the type-0x5a component
 };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
-extern long g_GameFramesPerSecond;          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -129,7 +136,7 @@ void CModeDragonFlying::OnActivate()
     AnimUpdate(*anim);
     AnimLength = animation->GetAnimDuration(animation->GetAnimIndex());
     MovementDuringAnimationLoop = AnimLength * Speed;
-    float frames = (float)g_GameFramesPerSecond;
+    float frames = (float)CMainGameComponent::GetConstantFPS();
     float rate = 1.0f / (AnimLength * frames);
     if (rate < 0.0f)
         rate = 0.0f;

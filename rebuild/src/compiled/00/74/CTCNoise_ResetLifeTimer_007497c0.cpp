@@ -1,5 +1,7 @@
 // CTCNoise::ResetLifeTimer() -- restarts the noise's life timer: (definition life time in seconds) x (frames per second) + 5 frames
 // Leaf: ResetLifeTimer
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007497C0, 33 bytes. Manifest label "CTCHeroExperience::AddSuccessfulBlockParry"
 // is propagated from an unrelated body: the members are CTCNoise's (PDB: Definition CTCNoiseDef @ +0x0C, its LifeTime @ +0x2C
 // -> +0x38; LifeTimer @ +0x40), and CTCNoise's vtable slot 4 (0x007498E0, the definition refresh) inlines exactly this
@@ -11,7 +13,12 @@
 // `fild [g] ; fmul [this+38h] ; fadd [5.0f]` = `g * LifeTime + 5.0f` (the int global is the left operand),
 // truncated by __ftol2 into LifeTimer.
 
-extern long g_FramesPerSecond;               // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 struct CTCNoiseDef_Retail {                  // embedded definition, +0x0C in CTCNoise
     void*         __vftable;                 // +0x00
@@ -38,5 +45,5 @@ struct CTCNoise_Retail {
 void CTCNoise_Retail::ResetLifeTimer()
 {
     GetWorld();
-    LifeTimer = (long)(g_FramesPerSecond * Definition.LifeTime + 5.0f);
+    LifeTimer = (long)(CMainGameComponent::GetConstantFPS() * Definition.LifeTime + 5.0f);
 }

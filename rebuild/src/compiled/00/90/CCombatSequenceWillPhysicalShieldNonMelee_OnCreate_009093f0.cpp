@@ -1,4 +1,6 @@
 // CCombatSequence_WillPhysicalShieldNonMelee::OnCreate -- enqueue the buildup animation and physical shield spell.
+// Naming wave 18: the global stand-in g_01375550 (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 #define CCombatSequence_WillPhysicalShieldNonMelee CCombatSequence_WillPhysicalShieldNonMelee_PDB
 #include "engine/CCombatSequence_WillPhysicalShieldNonMelee.h"
 #undef CCombatSequence_WillPhysicalShieldNonMelee
@@ -54,7 +56,12 @@ template<class T> class CCountedPointer { public:
         count = 0;
     }
 };
-extern long g_01375550; // native frames-per-second global at 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CCombatSequence_WillPhysicalShieldNonMelee {
     unsigned char nativePrefix[0x1c];
     CThingCreatureBase* ownerAt1c;
@@ -66,7 +73,7 @@ struct CCombatSequence_WillPhysicalShieldNonMelee {
     void OnCreateBase(); // 0x008B0650
 };
 void CCombatSequence_WillPhysicalShieldNonMelee::OnCreate() {
-    long timeLimit = g_01375550 * 0xf;
+    long timeLimit = CMainGameComponent::GetConstantFPS() * 0xf;
     CCountedPointer<CCreatureActionBase> action;
     action=new CCreatureAction_PlayCombatAnimation(GetCreature(),GetTarget(),"ST_BUILDUP_PHYSICAL_SHIELD",true);
     AddAction(action);
