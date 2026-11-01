@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,794 of 57,611 known functions (91.6%), 45,404 of the original 49,568 (91.6%); 174 `retail_asm`,
+  never hand-edit): 52,797 of 57,611 known functions (91.6%), 45,407 of the original 49,568 (91.6%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -39,6 +39,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   22 labels; 4 owner decisions scoped (`naming/2026-11-01_wave13/`). ESTABLISHED_SPELLINGS now applied across the tree.
 - Chunk 655 = NA001 of the never-attempted pool (ten landed-twin rows) landed 10/10 in 1-2 probes each: settle the row's own
   identity from the caller chain, then author from the twin's source. NA002-NA007 (59 more twins) go the same way.
+- Chunk 654 landed 3/10 (IsTimeToGoToSchool, CThingCreatureDef::Validate, vector<CIVCountedPointer<..>>::_M_fill_insert); 7 parked
+  with 12-30 probes; 13 NAME_FIXES (c654); `__forceinline` debt noted in its README.
 - Chunks 652 (4/10) and 653 (3/10) landed under the increased-attempts + retail-fidelity brief; owner decisions pending in their
   READMEs: `volatile` on CFileInstaller::PCompletedRead (0x009C4F20; landed 0x009C42F0 already carries it), the 0x00626E40 /
   0x006276F0 pair (reconstruct the 1.5 KB sibling first). `lane_tools/const_check.py` checks __real@ constants the reloc mask hides.
@@ -56,8 +58,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): cut NA001.. as chunks 655+ once 652-654 land (three agents
-   were running at this write). The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002 = chunk 656 and NA003 = chunk 657 running
+   with naming wave 14 at this write (owner allowed three agents). The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
    pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.

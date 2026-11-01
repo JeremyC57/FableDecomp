@@ -1,0 +1,19 @@
+# 0x00BC7660 CEnginePrimitiveManagerText::Render2DPrimitive -- probe log (residue = normalised differing lines, res.py)
+p01 prior (inline GetFrameTexture returning CTexture*)                           DIFFER(701v692) residue 86
+p02 FableWin shape: bool GetTexture(CTexture** out, mip, flags), single return, caller `if (!GetTexture(&sub->Texture,0,1)) sub->Texture = 0;`   DIFFER(695v692) residue 38
+p03 p02 + FableWin TouchFrame(mip) member                                         DIFFER(695v692) residue 39 (kept as differ: no goto)
+p04 two returns (`*out = ...; return true;` in both arms)                         DIFFER(783v692) residue 198 (tail not cross-jumped)
+p05 early-return touch arm, no else                                               DIFFER(783v692) residue 198
+p06 CIVCountedPointer operator T*() and `if (Data && ...)`                         residue 38
+p07 raw `Data.Data->Frame.FrameData`                                               residue 38
+p08 CGraphicFrame::IsInitialised()                                                  residue 38
+p09 explicit `!= 0` tests                                                          residue 38
+p10 inverted condition (load arm first)                                            residue 38
+p11 nested `if (Data) { if (FrameData) {touch; goto done;} } else create;` (diagnostic goto)   DIFFER(691v692) residue 38 (re-test gone)
+p12 p11 + counted pointer zero-store order swapped                                 residue 40
+p13 p11 + ~CGraphicFrame null test                                                  DIFFER(634v692) residue 90
+p14 p11 + named CGraphicFrame copy                                                  residue 38
+p15 p11 + frame stamp through a local                                               residue 38
+p16 p11 + TouchFrame member                                                         residue 38
+VERDICT: parked at p03 (no goto); last 4 probes no reduction. Remaining = register allocation of the frame-data pointer
+  (ecx in retail, eax+reloads here) and the zero register in the copy tail.

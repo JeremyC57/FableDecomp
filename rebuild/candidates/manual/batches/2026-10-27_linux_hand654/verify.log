@@ -1,0 +1,19 @@
+addr       parity           behav  name
+0065a8ee   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065a8ee   RELOCATION_MATCH PASS   IsTimeToGoToSchool
+00670d50   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00670d50   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00670d50   RELOCATION_MATCH PASS   Validate
+00a6bcd0   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@@std@@YIPAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@00ABU__false_type@0@@Z -> 00a6afd0 labelled '_global::UninitCopy_CIVCountedPointer_00a6afd0'
+00a6bcd0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAV?$CIVCountedPointer@VCManagedTextureData@@@@IV1@@std@@YIPAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@IABV1@@Z -> 00a6b340 labelled '_global::UninitFillN_CIVCountedPointer_00a6b340'
+00a6bcd0   RELOCATION_MATCH PASS   _M_fill_insert
+
+WINS: 3
+  0065a8ee RELOCATION_MATCH CTCVillage::?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z
+  00670d50 RELOCATION_MATCH CThingCreatureDef::?Validate@CThingCreatureDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z
+  00a6bcd0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@V?$CIVCountedPointer@VCManagedTextureData@@@@V?$allocator@V?$CIVCountedPointer@VCManagedTextureData@@@@@std@@@std@@QAEXPAV?$CIVCountedPointer@VCManagedTextureData@@@@IABV3@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CTCVillage_IsTimeToGoToSchool_0065a8ee
+  CThingCreatureDef_Validate_00670d50
+  stdvector_Mfillinsert_00a6bcd0

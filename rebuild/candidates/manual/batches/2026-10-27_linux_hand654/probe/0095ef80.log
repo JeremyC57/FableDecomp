@@ -1,0 +1,15 @@
+# 0x0095EF80 CAIStateGroup_OpinionReactionRoot::IsRunnable -- probe log (residue = normalised differing lines, res.py)
+p01 prior (pointer-returning GetTC(T*, type) behind HasTCWord)                   DIFFER(1536v1528) residue 92
+p02 squared-distance sum in all five other operand orders (tmp/d_2..6)            residue 92 each (VC7.1 normalises the order)
+p03 (mine - theirs).GetSquaredMagnitude() through C3DVector operator-             DIFFER(1564v1528) residue 126
+p04 source selection + early return in its own block                              residue 92 (frame unchanged)
+p05 opinion declared at function scope                                            residue 92
+p06 CIntelligentPointerConstThing as a full-expression temporary                  DIFFER(1532v1528) residue 93
+p07 isTarget/heroBusy at function scope                                           residue 96
+p08 sources list read through the cached manager                                  DIFFER(1532v1528) residue 124
+p09 PDB out-parameter GetTC<T>(T**) for all five component reads (StatGetInterfaceType per TC)   DIFFER(1536v1528) residue 57 (kept)
+p10 p09 with the LowerBound key = the type local itself                           DIFFER(1552v1528) residue 112
+p11 p09 + pointer as a full-expression temporary                                  DIFFER(1532v1528) residue 58
+p12 p09 + opinion at function scope                                               residue 57
+p13 p09 + `if (!source)`                                                          residue 57
+VERDICT: parked at p09; last 4 probes no reduction. Remaining: frame-slot packing (0x38 v 0x30) and x87 sum order.

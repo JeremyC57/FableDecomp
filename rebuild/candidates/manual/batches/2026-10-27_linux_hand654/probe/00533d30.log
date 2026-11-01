@@ -1,0 +1,15 @@
+# 0x00533D30 NUISystem::CComponent::GetSize -- probe log (residue = normalised differing lines, res.py)
+p01 prior (same-TU noinline STLport __find body)                                  DIFFER(1742v1750) residue 429 (frame 0x9c)
+p02 `first` unsigned long                                                          residue 429
+p03 first loop without the count local                                             residue 429
+p04 empty-shapes test in the for condition                                         residue 429
+p05 named find result                                                              residue 429
+p06 Find extern (no same-TU body)                                                  DIFFER(1764v1750) residue 462
+p07 minimum seeded by two statements (X, then Y; BaseState re-fetched)             DIFFER(1724v1750) residue 352
+p08 p07 + `maximum = minimum + GetSize()` through inline C2DVector::operator+      DIFFER(1723v1750) residue 344, frame 0x94 (kept)
+p09 p08 + one function-scope `i` for both loops                                    residue 344
+p10 p09 + function-scope count                                                     residue 344
+p11 p08 + both min/max conditions inverted (non-centred arm first)                 residue 344 (identical code)
+p12 p08 + min condition inverted                                                   residue 344 (identical code)
+VERDICT: parked at p08; last 4 probes no reduction. Remaining: block layout of the centred/non-centred arms (cross-jump
+  driven), the first-pass register roles (first in edi, Start in ebx) and the unshared early-return exit.

@@ -1,0 +1,28 @@
+# 0x00D38D20 NScript::CQ_FireHeartScript::RunVillagerComments -- probe log (residue = normalised differing lines, res.py)
+p01 prior source (local interface/timer/vector models)                         DIFFER(529v526) residue 41
+p02 final test inverted `if (!Term()) return;`                                 DIFFER(529v526) same layout (compiler normalises)
+p03 final test as a bare call                                                   DIFFER(545v526) natural end falls through but the f16 copy no longer cross-jumps; refuted
+p04 shared headers: engine/CScriptThing.h, CGameScriptInterface.h, CScriptBase.h, CTimer.h (inline ctor/dtor/operator=/GetTime), callee respelled GetSquaredDistanceBetweenThings (0x00CBE583, constant 25.0f = 5 squared)   DIFFER(529v526) residue 41 (kept)
+p05 explicit trailing `return;`                                                 529 residue 41
+p06 final `!= false`                                                            529 residue 41
+p07 outer loop `for(;;){ if (MissionSucceeded) break; ...}`                      535 residue 44
+p08 `while (MissionSucceeded == false)`                                         529 residue 41
+p09 real STLport _Vector_base/_STLP_alloc_proxy/deallocate + ~vector _Destroy   529 residue 41
+p10 ~vector with _Destroy loop then free (landed 0x00D67270 model)              529 residue 41
+p11 `long count` at function scope                                              529 residue 41
+p12 `long i` declared before the for                                            529 residue 41
+p13 `CScriptThing& villager = Villagers[i]` named                               529 residue 64
+p14 `!(d > 25.0f)` condition                                                    529 residue 42
+flag /Os                                                                         412 residue 120
+flag /Ob2                                                                        529 residue 41
+flag /Oy-                                                                        526 residue 66
+p15 do/while -> for(;;){...; if (count > 0) break;}                             529 residue 41
+p16 timer wait -> for(;;){ if (GetTime()==0) break; ...}                        549 residue 50
+p17 `while (commentTimer != 0)` through inline CTimer::operator!=(long)        529 residue 41
+p18 whole body in an inner block                                                529 residue 41
+p19 vector + loop + final test in an inner block                               529 residue 41
+p20 loop alone in an inner block, final test outside                           529 residue 41
+p21 diagnostic: final test as goto to a label (not a retail shape)              529 residue 40 (same layout; not kept)
+VERDICT: parked at p04. The ten exits alternate between two identical merged dtor copies exactly as in retail; only the
+  placement of the natural-end copy differs (retail lays it right after the final re-test, VC7.1 here lays the
+  return-group copy there and the natural end last). Plus lea/add for &Villagers[i]. 12+ probes, last 4 no reduction.

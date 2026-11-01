@@ -1,0 +1,14 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0065D624	??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z	Ego_r.pdb template instance; caller 0x0065A8EE passes CIntelligentPointer<CThingBuilding> WorkBuilding; RELOCATION_MATCH in src/0065a8ee.cpp	?IS_THING_ALIVE@@YI_NABQAVCThingBuilding@@@Z (reloc_bindings via 0x00658EC3)
+0x00658ACB	?GetSchoolTimes@CTCVillage@@QBE_NAAM0@Z	Ego_r.pdb + FableWin.pdb (const, float& out params); landed 0x00658ACB body	?GetSchoolTimes@CTCVillage@@QAE_NPAM0@Z; ?GetTimes@CTCVillage@@QBE_NABUCLongVector@@JAAM1@Z
+0x00410DE0	?test@?$bitset@$0BBC@@std@@QBE_NI@Z	CThing UsingComponents is std::bitset<274> (Ego_r); STLport bitset::test out of line in /Os TUs; reloc in src/0065a8ee.cpp	CBitset/CPresenceBits/CTCBitset ::test spellings
+0x007B85C0	?GetFood@CTCTavernTable@@QAEPAVCThingObject@@J@Z	Ego_r.pdb GetFood takes long	?GetFood@CTCTavernTable@@QAEPAVCThingObject@@K@Z (unsigned long)
+0x007B8590	?GetTankard@CTCTavernTable@@QAEPAVCThingObject@@J@Z	Ego_r.pdb order GetTankard, GetFood; body reads the tankard array	GetFood (manifest/landed label)
+0x007FEF40	?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z	Ego_r.pdb + FableWin.pdb	FreeActionPoint; UseActionPoint; ReleaseSlot
+0x01375550	?ConstantFPS@CMainGameComponent@@1JA	read only through ?GetConstantFPS@CMainGameComponent@@SIJXZ (FableWin.pdb, inline); Ego_r static member	g_FramesPerSecond; g_framesPerSecond; const long g_FramesPerSecond
+0x0072ABD0	?FadeOrKillEffect@CTCSpecialAbilities@@SIXAAV?$CIntelligentPointer@VCThing@@@@@Z	Ego_r.pdb static __fastcall member	void __fastcall FadeOrKillEffect(CBaseIntelligentPointer&) (free function)
+0x00A2EA20	?HasHelperPoint@C3DMeshStats@@QBE_NK@Z	Ego_r.pdb order HasHelperPoint 0xB8E300 / HasDummyObject 0xB8E340 = retail 0xA2EA20 / 0xA2EA60; called with the focal helper name in 0x00670D50	?HasDummyObject@C3DMeshStats@@QAEJK@Z (reloc_bindings via 0x00A36100)
+0x005DC2E0	?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z	Ego_r.pdb; landed 0x00830F20 label; reloc in src/00670d50.cpp	?HasAnimation@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z; ?HasAnim@...; ?FindAnimationByName@CAnimationSet@@QAE_NABVCCharString@@ABUCAnimFilter@@@Z; ?HasAnimation@CAnimationSet@@QBE_NJABUCAnimFilter@@@Z
+0x00A24280	?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	Ego_r.pdb; naming wave 1 decision; reloc in src/00670d50.cpp	?GetEntry@CGraphicsBank@@QAEJJ@Z; GetMesh; GetCreatureMeshInfo
+0x00A242B0	?PeekAnimatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	Ego_r.pdb; naming wave 1 decision; reloc in src/00670d50.cpp	GetAnimatedMesh; GetHeroMeshInfo
+0x00686A70	?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	Ego_r.pdb CTCBase protected const; 118 landed declarations agree	?GetDisplayEngine@@YIPAVCDisplayEngine@@PAUCViewBase@@@Z; ?GetWorld@CTCFineDialogue@@QAEPAUCWorld_007e2790@@XZ; ?GetWorld@CTCCreatureOpinionOfHero@@QAEPAVCWorld@@XZ; other per-row helpers

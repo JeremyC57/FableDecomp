@@ -35680,3 +35680,11 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?TransferBinaryIn@?$CPersistTraits@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@Z	00e1e040	00e1df60
 ??_7?$CPersistContext_TransferableComponent@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@6B@	012e37b4	00e38dd0
 ?TransferBinaryIn@?$CPersistTraits@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@Z	00e38eb0	00e38dd0
+??$IS_THING_ALIVE@PAVCThingBuilding@@@@YI_NABQAVCThingBuilding@@@Z	0065d624	0065a8ee
+?GetMovementSpeedFromAnimation@NCreatureMode@@YIMABVCCharString@@ABVCThingCreatureBase@@ABVCMeshDataBank@@@Z	00861c90	0065a8ee
+?GetSchoolTimes@CTCVillage@@QBE_NAAM0@Z	00658acb	0065a8ee
+?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z	005dc2e0	00670d50
+??$__copy_backward@PAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@H@std@@YIPAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	00a6b0e0	00a6bcd0
+??$fill@PAV?$CIVCountedPointer@VCManagedTextureData@@@@V1@@std@@YIXPAV?$CIVCountedPointer@VCManagedTextureData@@@@0ABV1@@Z	00a6b000	00a6bcd0
+??$uninitialized_fill_n@PAV?$CIVCountedPointer@VCManagedTextureData@@@@IV1@@std@@YIPAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@IABV1@@Z	00a6b340	00a6bcd0
+?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VCManagedTextureData@@@@V?$allocator@V?$CIVCountedPointer@VCManagedTextureData@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VCManagedTextureData@@@@ABV3@ABU__false_type@2@I_N@Z	00a6ba60	00a6bcd0

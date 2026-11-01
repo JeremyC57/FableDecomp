@@ -1,0 +1,2 @@
+1	prior as-is (local CIVCountedPointeeBase, declared-only operator=, test-less-zero dtor)	DIFFER(285v276)
+2	shared CIVCountedPointeeBase.h retail opt-in + AddRef/Release + release-and-zero dtor + real inline operator= (0x00AF2010 model)	RELOCATION_MATCH

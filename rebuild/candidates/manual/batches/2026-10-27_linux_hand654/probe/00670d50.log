@@ -1,0 +1,14 @@
+# 0x00670D50 CThingCreatureDef::Validate -- probe log (residue = normalised differing lines, res.py)
+p01 prior (struct keys: leaf did not resolve, graded largest function)           DIFFER(525v533) residue 35
+p02 retail headers (CDefClassBase/CDefPointer/CCountedPointer), extern GetSubDef, PDB names (PeekStaticMesh, AnimExists, GetCRC)   DIFFER(526v533) residue 141
+p03 p02 + CAnimFilterBase with PDB virtuals (virtual dtor, operator(), Clone)    DIFFER(526v533) residue 141
+p04 p03 + filter as a default argument                                           DIFFER(526v533) residue 141
+p05 prior with class keys (leaf resolves)                                        DIFFER(525v533) residue 35
+p06 p05 + filter default argument                                                 residue 35 (no change)
+p07 p05 + inline helper taking the string, filter inside                          DIFFER(513v533) residue 112
+p08 p05 + AnimExists("DEFAULT", CAnimFilterNoGroup()) -- implicit const char* conversion   RELOCATION_MATCH
+p09 p08 + PDB callee names / class keys                                          RELOCATION_MATCH
+p10 p03 + implicit conversion                                                     DIFFER(534v533) residue 54
+p11 p10 + named CMeshDataBank* in the type-5 arm                                  DIFFER(534v533) residue 26 (left: def-pointer escape)
+p12 p11 + landed 0x0042B0A2 GetSubDef body as same-TU stand-in (CSubDefClassBase, CDefinitionManager pattern as 0x004BFC50)   RELOCATION_MATCH
+p13 p12 + real member names (CEngineGraphic Graphic +0x100, PrimaryMeleeWeaponDef +0xd8) = src/00670d50.cpp   RELOCATION_MATCH

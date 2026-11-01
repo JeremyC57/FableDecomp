@@ -1,0 +1,30 @@
+1	prior as-is (stand-in structs, function-scope locals, ?: CCharString argument temp)	DIFFER(377v385)
+2	re-author on engine/CWorld.h, CTCBase::GetWorld, CMainGameComponent::GetConstantFPS, IS_THING_ALIVE<T> same-TU body, plain-inline C3DVector, no school local	DIFFER(353v385)
+3	p2 + school C3DVector local + __forceinline operator-/GetLength (prior FP shape)	DIFFER(377v385)
+4	lever 2 block scope: village test as nested if, start/end in the inner block	DIFFER(386v385) frame fixed
+5	p4 + `if (start <= r) return true;` in the inner block	DIFFER(381v385)
+6	p5 + named CCharString animation local (ctor before GetWorld)	DIFFER(381v385)
+7	named local copy-initialised from `run ? CCharString(..) : CCharString(..)`	DIFFER(430v385)
+8	argument temp `run ? CCharString(..) : CCharString(..)`	DIFFER(419v385)
+9	`CCharString animation = run ? "ST_RUN" : "ST_WALK";`	DIFFER(381v385)
+10	`const char* animationName = run ? ..;` then CCharString animation(animationName)	DIFFER(381v385)
+11	animation local in its own block ending after the speed call (dtor before FPS multiply)	DIFFER(382v385)
+12	p11 with explicit -1 length argument	DIFFER(382v385)
+13	p11 with `(run != 0) ?`	DIFFER(382v385)
+14	p11 with (const char*) casts on the literals	DIFFER(382v385)
+15	if/else with two block-scope CCharString locals and identical speed calls (tail merge)	DIFFER(383v385) push-in-arms + child esi fixed
+16	if/else on a const char* name, one ctor	DIFFER(382v385)
+17	p15 + ternary entry pick in GetTC	DIFFER(383v385)
+18	p15 + named CTCVillageMember* member local	DIFFER(383v385)
+19	p15 + `if (start > r) return false; return true;`	DIFFER(383v385)
+20	p15 + `if (!(start > r)) return true;`	DIFFER(383v385)
+21	early-return chain, start/end block after `if (!village) return false;`, `if (start > r) return false; return true;`	DIFFER(383v385) only GetTC pick left
+22	p21 with `return !(start > r);`	DIFFER(379v385)
+23	p21 with `return start <= r;`	DIFFER(379v385)
+24	p21 + template GetTC<T> returning (T*)it->second	DIFFER(383v385)
+25	p21 + void GetTC(T**, type) out-parameter	DIFFER(383v385)
+26	p21 + bool GetInterface(T**, type) with HasTC inside	RELOCATION_MATCH
+27	PDB GetTC<T>(T**) with T::StatGetInterfaceType, ETCInterfaceType local, std::bitset<274>	DIFFER(385v385) (enum local kept in ebx/slot)
+28	p27 with `long type = T::StatGetInterfaceType();` and an ETCInterfaceType key	RELOCATION_MATCH
+29	p28 without __forceinline on C3DVector operator-/GetLength	DIFFER(375v385)
+30	p28 + CThing::Dead bitfield +0x91 in the IS_THING_ALIVE body (no raw offset)	RELOCATION_MATCH (src)

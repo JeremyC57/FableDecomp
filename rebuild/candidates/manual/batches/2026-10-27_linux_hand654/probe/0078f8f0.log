@@ -1,0 +1,19 @@
+1	prior as-is (Finish via ParentThing then caster; hand map iterator; explicit sound lookup)	DIFFER(506v505)
+2	caster declared before Finish, Finish through caster	DIFFER(499v505) (caster takes ebx, constant 1 not enregistered)
+3	StopSound as a same-TU plain private member (landed 0x0078EC80) inlined	DIFFER(506v505) (A7 key slot moves)
+4	p3 + caster first	DIFFER(499v505)
+5	p4 + A7 through the out-parameter GetInterface (inline key)	DIFFER(499v505) frame 8
+6	p4 + A7 through HasTC + GetTC	DIFFER(499v505) frame 8
+7	p3 + `caster = ParentThing; ParentThing->Finish()` (load CSEd into caster)	DIFFER(499v505)
+8	p4 with CThingCreatureBase* caster	DIFFER(499v505)
+9	p4 with caster declared at function top, assigned later	DIFFER(499v505)
+10	p4 with the A7 key block-scoped	DIFFER(499v505) frame 8
+11	landed CancelMove loop model (named end(), align(8) copy) + caster first	DIFFER(506v505) loop regs wrong
+12	p11 with the p1 Finish order	DIFFER(507v505)
+13	STLport iterator model with begin/end in the for-init, caster first	DIFFER(499v505)
+14	p13 with the p1 Finish order	DIFFER(506v505) (+A7 key slot)
+15	p13 + A7 GetInterface inline	DIFFER(499v505)
+16	p14 + A7 GetInterface inline (key shares the sound key slot)	DIFFER(506v505) (differ/: only the Finish order)
+17	p14 + A7 HasTC+GetTC	DIFFER(506v505)
+18	p16 with `CThing* const caster` first	DIFFER(499v505)
+19	p16 with caster first and a copied owner for RemoveTC	DIFFER(499v505)

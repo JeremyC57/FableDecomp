@@ -371608,6 +371608,27 @@ $catalog = @(
         TestSource = '00/e3/CPersistContext_TransferAALocationIdentifier_00e38dd0_test.cpp'
         PassPattern = '00e38dd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0065a8ee'
+        Module = 'CTCVillage'
+        Source = '00/65/CTCVillage_IsTimeToGoToSchool_0065a8ee.cpp'
+        TestSource = '00/65/CTCVillage_IsTimeToGoToSchool_0065a8ee_test.cpp'
+        PassPattern = '0065a8ee_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00670d50'
+        Module = 'CThingCreatureDef'
+        Source = '00/67/CThingCreatureDef_Validate_00670d50.cpp'
+        TestSource = '00/67/CThingCreatureDef_Validate_00670d50_test.cpp'
+        PassPattern = '00670d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6bcd0'
+        Module = 'std::vector'
+        Source = '00/a6/stdvector_Mfillinsert_00a6bcd0.cpp'
+        TestSource = '00/a6/stdvector_Mfillinsert_00a6bcd0_test.cpp'
+        PassPattern = '00a6bcd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

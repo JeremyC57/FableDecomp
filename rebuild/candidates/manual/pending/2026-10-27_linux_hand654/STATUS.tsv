@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+007b8b10	DIFFER(408v417)	417	-	CTCTavernTable::GetEatingPoint; register tie (&pointIndex ebp v ebx, mov eax/mov esi copy) (25 probes)
+00935e40	DIFFER(476v468)	468	-	CAIStateGroup_MinionPutOutFires::PutOutFire; search start via eax copy, xor ecx/push ecx zero register (16 probes)
+0078f8f0	DIFFER(506v505)	505	-	CTCDivineWrath::CancelForCutscene; caster spill before FinishCurrentAction (19 probes)
+00d38d20	DIFFER(529v526)	526	-	CQ_FireHeartScript::RunVillagerComments; natural-end exit copy placement + lea/add (24 probes)
+00bc7660	DIFFER(695v692)	692	-	CEnginePrimitiveManagerText::Render2DPrimitive; frame-data pointer register in inline GetTexture (16 probes; residue 86->39)
+0095ef80	DIFFER(1536v1528)	1528	-	CAIStateGroup_OpinionReactionRoot::IsRunnable; frame slot packing 0x38 v 0x30, x87 sum order (13 probes; residue 92->57)
+00533d30	DIFFER(1723v1750)	1750	-	NUISystem::CComponent::GetSize; centred/non-centred arm layout, first-pass registers, unshared early exit (12 probes; residue 429->344, frame fixed)

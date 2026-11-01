@@ -1,0 +1,13 @@
+address	name	evidence
+00a6bcd0	std::vector<CIVCountedPointer<CManagedTextureData> >::_M_fill_insert	chunk 654 RELOCATION_MATCH: STLport; catalog Vector_InsertN_DetailPlacementGrid was wrong
+0065a8ee	CTCVillage::IsTimeToGoToSchool	chunk 654 RELOCATION_MATCH: Ego_r; GetSchoolTimes(float&,float&) const 0x00658ACB, bitset<274>::test 0x00410DE0
+00670d50	CThingCreatureDef::Validate	chunk 654 RELOCATION_MATCH: Ego_r UBE (CValidateDefinitionInitBase&, CCharString&); PrimaryMeleeWeaponDef +0xd8, Graphic +0x100
+007b8590	CTCTavernTable::GetTankard	chunk 654: Ego_r (catalog GetFood is 0x007B85C0)
+007b85c0	CTCTavernTable::GetFood	chunk 654: Ego_r ?GetFood@CTCTavernTable@@QAEPAVCThingObject@@J@Z
+00cbe583	GetSquaredDistanceBetweenThings	chunk 654: no fsqrt (GOTCHAS 2026-10-28); the 0x00D38D20 prior called it GetDistanceBetweenThings, so its 25.0f is a distance of 5
+00a24280	CMeshDataBank::PeekStaticMesh	chunk 654: Ego_r (catalog GetAbilityLevel was propagated)
+00a242b0	CMeshDataBank::PeekAnimatedMesh	chunk 654: Ego_r (catalog GetAbilityLevel was propagated)
+005dc2e0	CAnimationSet::AnimExists	chunk 654: Ego_r ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z
+00686a70	CTCBase::GetWorld	chunk 654 (also c653/c652): Ego_r IBE AAVCWorld (catalog GetDisplayEngine was wrong)
+0072abd0	CTCSpecialAbilities::FadeOrKillEffect	chunk 654: Ego_r static __fastcall (CIntelligentPointer<CThing>&)
+00a2ea20	C3DMeshStats::HasHelperPoint	chunk 654: Ego_r QBE_NK
