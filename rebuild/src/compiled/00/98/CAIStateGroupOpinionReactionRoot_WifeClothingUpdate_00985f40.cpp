@@ -6,7 +6,7 @@
 // table index); the category out value is declared inside the interface test, so it shares the lookup key's frame word.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0xD7 = CTCWife, bit 23 of the dword at
 // +0x38), CTCWife::GetAppearanceChangedNoticed @ 0x006CED50, CCharString copy ctor @ 0x0099EC30 from the category
-// string table @ 0x013BAB40, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (result dropped), CCharString::operator+= @
+// string table @ 0x013BAB40, CAIStateGroupBase::GetWorld @ 0x008FCFC0 (result dropped), CCharString::operator+= @
 // 0x0099F0A0 with the second table @ 0x013BABD0, SayToThingReactingTo @ 0x0095EE70, CTCWife::
 // ClearAppearanceChangedNoticed @ 0x006CECD0, ~CCharString @ 0x0099EAE0.
 // Shape: the category out value shares the lookup key's frame word; a NAMED CCharString line destroyed on both returns.
@@ -14,7 +14,8 @@
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
 class CTCBase;
 class CThing;
-class CWorld;
+class CWorld { public:
+};
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
@@ -89,6 +90,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -124,7 +127,6 @@ class CTCWife { public:
 enum EOpinionAttitudeType { OPINION_ATTITUDE_NONE };
 
 class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     long SayToThingReactingTo(const CCharString& line);  // 0x0095EE70
     bool WifeClothingUpdate(EOpinionAttitudeType attitude);
 };
@@ -136,7 +138,7 @@ bool CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate(EOpinionAttitudeType 
         long category;
         if (wife->GetAppearanceChangedNoticed(&category)) {
             CCharString line(g_WifeAppearanceLinePrefix[category]);
-            GetPWorld();
+            GetWorld();
             line += g_WifeAppearanceLineSuffix[attitude];
             if (SayToThingReactingTo(line) == 2) {
                 wife->ClearAppearanceChangedNoticed(&category);

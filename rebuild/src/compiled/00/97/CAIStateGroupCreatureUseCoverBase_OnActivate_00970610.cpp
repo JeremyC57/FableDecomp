@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::OnActivate() -- cache whether the creature has the dive-for-cover and both jump-out anims, say the combat dialogue's take-cover speech and reset the found-position count
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970610, length 336 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThingCreatureBase::HasAnim @ 0x00662C70,
-//          CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CombatDialogueManager::SaySpeech @ 0x008AFC40.
+//          CAIStateGroupBase::GetWorld @ 0x008FCFC0, CombatDialogueManager::SaySpeech @ 0x008AFC40.
 // Vtables: CAnimFilterAnyGroup 0x0127261C, CAnimFilterBase 0x0122FFCC. Strings DIVE_FOR_COVER / JUMP_OUT_LEFT / JUMP_OUT_RIGHT.
 // Shape: each HasAnim goes through an inline (name, filter) wrapper so the name temporary is built before the filter's vtable
 //          store and the filter restores CAnimFilterBase's vtable before the name dies; the second flag is an && of two
@@ -58,11 +58,13 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                      // +0x18
 };
 
-struct CAIStateGroupCreatureUseCoverBaseMethods : CAIStateGroup_CreatureUseCoverBase {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroupCreatureUseCoverBaseMethods : public CAIStateGroupBase, CAIStateGroup_CreatureUseCoverBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThingCreatureBase* GetCreature() const { return Brain()->PCreature; }
     bool CreatureHasAnim(const CCharString& name, const CAnimFilterBase& filter) const { return GetCreature()->HasAnim(name, filter); }
-    CWorld* GetPWorld() const;                          // 0x008FCFC0
     void OnActivate();
 };
 
@@ -72,11 +74,11 @@ void CAIStateGroupCreatureUseCoverBaseMethods::OnActivate()
     HasJumpOutAnims = CreatureHasAnim("JUMP_OUT_LEFT", CAnimFilterAnyGroup()) && CreatureHasAnim("JUMP_OUT_RIGHT", CAnimFilterAnyGroup());
     unsigned long speechGroup;
     {
-        CDefPointer<CCombatDialogueDef> def(GetPWorld()->PThingCombatManager->DialogueManager.PDialogueDef.Object);
+        CDefPointer<CCombatDialogueDef> def(GetWorld().PThingCombatManager->DialogueManager.PDialogueDef.Object);
         speechGroup = def->TakeCoverSpeechGroup;
     }
     CThingCreatureBase* creature = GetCreature();
-    CWorld* world = GetPWorld();
+    CWorld* world = &GetWorld();
     world->PThingCombatManager->DialogueManager.SaySpeech(*creature, speechGroup);
     ValidPositionsFound = 0;                            // +0x48 (retail STLport 4.6 header)
 }

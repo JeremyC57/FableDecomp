@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095F580, length 213 bytes (+ int3 padding).
 // Callees: CCreatureActionBase::GetFramesRemaining @ 0x006925D0 (on the creature's current action at +0x100),
 // CThingCreatureBase::FinishCurrentAction @ 0x00662650, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
-// CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (+0x74 = COpinionReactionManager), COpinionReactionManager::LogReaction
+// CAIStateGroupBase::GetWorld @ 0x008FCFC0 (+0x74 = COpinionReactionManager), COpinionReactionManager::LogReaction
 // @ 0x00700940, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface into PTCTalk, type 0xF = CTCTalk, bit 15 of
 // the dword at +0x20); frames-per-second long @ 0x01375550, the seconds float global @ 0x0122DEDC.
 // Shape: the frame rate is read into a local before the GetFramesRemaining call (both fild from the frame), the
@@ -88,6 +88,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 class CBaseObject;
@@ -149,7 +151,6 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     bool LastRunWasTryAndLook;                  // +0x88
     bool ReactingToPlayer;                      // +0x89
     bool AllowSpeechOnNonPureAISpeaker;         // +0x8a
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     virtual void OnActivate();
 };
 #pragma pack(pop)
@@ -164,7 +165,7 @@ void CAIStateGroup_OpinionReactionRoot::OnActivate()
     }
     AllowSpeechOnNonPureAISpeaker = false;
     if (CurrentReactionType != 0 && ThingReactingTo.GetPItem() != 0) {
-        COpinionReactionManager* manager = GetPWorld()->POpinionReactionManager;
+        COpinionReactionManager* manager = GetWorld().POpinionReactionManager;
         manager->LogReaction(CurrentReactionType, PBrain->PCreature, true);
         AllowSpeechOnNonPureAISpeaker = manager->AllowSpeechOnNonPureAISpeaker[CurrentReactionType];
     }

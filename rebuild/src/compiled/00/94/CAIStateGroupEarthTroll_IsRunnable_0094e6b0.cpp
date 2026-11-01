@@ -93,6 +93,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -130,7 +132,6 @@ struct CAIStateGroup_EarthTroll : CAIStateGroupBase {
     long LastRunFrame;                          // +0x1c
     unsigned char _pad20[4];
     float AttackRange;                          // +0x24
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     virtual bool IsRunnable();
 };
 
@@ -147,7 +148,7 @@ bool CAIStateGroup_EarthTroll::IsRunnable()
         float dy = pos.Y - enemyPos.Y;
         if ((float)sqrt(dx * dx + dy * dy) < AttackRange) {
             PEnemy = enemy;
-            LastRunFrame = ((CWorld*)GetPWorld())->GetFrame();
+            LastRunFrame = GetWorld().GetFrame();
             return true;
         }
     }

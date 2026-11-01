@@ -112,12 +112,14 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupJackOfBladesBaseMethods : CAIStateGroup_JackOfBladesBase {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroupJackOfBladesBaseMethods : public CAIStateGroupBase, CAIStateGroup_JackOfBladesBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
     CIntelligentPointer<CThing>& ArenaCentre() { return *(CIntelligentPointer<CThing>*)PArenaCentre; }
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
-    CWorld* GetPWorld();                        // 0x008FCFC0
     CDefinitionManager* GetPDefinitionManager();   // 0x008FCFB0
     void SetupArena();
 };
@@ -132,7 +134,7 @@ void CAIStateGroupJackOfBladesBaseMethods::SetupArena()
         ArenaCentre() = CIntelligentPointer<CThing>(centre);
     }
     CGameCameraManager* camera;
-    if (GetPWorld()->GetPCameraHost()->GetCameraManager(&camera)) {
+    if (GetWorld().GetPCameraHost()->GetCameraManager(&camera)) {
         CDefPointer<CCameraManagerSetDef> def;
         GetPDefinitionManager()->GetDef("CAMERA_MANAGER_SET_DEFAULT", &def);
         camera->SetCameraManagerSetDef(def);

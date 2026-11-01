@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091CDC0, length 384 bytes.
 // Callees: CWorld::GetFrame @ 0x0049D870, the inlined GetInterface 0x34 (CTCPerceiveThing, bit 20 of +0x24),
 //          CTCPerceiveThing::GetPerceivedThing @ 0x007446A0, CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer::
-//          GetPItem @ 0x00A01B50 (the creature's PHome +0x168), CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
+//          GetPItem @ 0x00A01B50 (the creature's PHome +0x168), CAIStateGroupBase::GetWorld @ 0x008FCFC0,
 //          CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF290, CMessageEventManager::FindMostRecentMessage<
 //          CFilter_Bind2<...>> @ 0x008D46D0 / AddMessage @ 0x00687540 (world +0x60), CThingBuilding::IsPointInside
 //          @ 0x0082D000, __ftol2 @ 0x00BFEA70.
@@ -115,11 +115,13 @@ class CAIBrain { public:
     CThingAICreature* PCreature;                // +0x18
 };
 
-struct CAIStateGroupMinionReactToNoiseMethods : CAIStateGroup_MinionReactToNoise {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroupMinionReactToNoiseMethods : public CAIStateGroupBase, CAIStateGroup_MinionReactToNoise {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThingAICreature* GetCreature() const { return Brain()->PCreature; }
     C3DVector& NoisePosition() { return *(C3DVector*)&NoisePosition_X; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
     bool IsRunnable();
 };
 
@@ -150,7 +152,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
             const C3DVector& noisePos = noise->GetPos();
             CThing* home = GetCreature()->PHome.GetPItem();
             if (home) {
-                CMessageEventManager* messages = GetPWorld()->PMessageManager;
+                CMessageEventManager* messages = GetWorld().PMessageManager;
                 if (!messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x1f)
                         && CMessageEventFilter_IsOriginatedByThing(GetCreature()->PHome.GetPItem()))
                     && perceive->CanHear && home->IsPointInside(noisePos)) {

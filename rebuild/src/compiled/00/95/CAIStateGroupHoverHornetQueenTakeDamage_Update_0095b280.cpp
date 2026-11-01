@@ -15,10 +15,13 @@
 #include "engine/CAIStateGroup_HoverHornetQueenTakeDamage.h"
 #undef CAIStateGroup_HoverHornetQueenTakeDamage
 
+class CWorld;
 class CAIStateGroupBase
 {
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 class CAIStateGroup_EnemyCreatureBase : public CAIStateGroupBase
 {
@@ -104,7 +107,6 @@ struct CAIStateGroupHoverHornetQueenTakeDamageMethods : CAIStateGroup_HoverHorne
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
     CBaseIntelligentPointer& PTarget() { return *(CBaseIntelligentPointer*)_pad_0x14; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
     long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
     void Update();
 };
@@ -116,8 +118,8 @@ void CAIStateGroupHoverHornetQueenTakeDamageMethods::Update()
     if (boss->IsReadyForPhaseChange())
         boss->IncrementBossPhase();
     if (bIsRangeAttack) {
-        long elapsed = GetPWorld()->GetFrame() - FrameOfLastHit;
-        FrameOfLastHit = GetPWorld()->GetFrame();
+        long elapsed = GetWorld().GetFrame() - FrameOfLastHit;
+        FrameOfLastHit = GetWorld().GetFrame();
         if (elapsed < 90) {
             if (++RangeAttackCount >= 3) {
                 CCombatManager* combat = GetCreature()->GetCombatManager();
@@ -127,7 +129,7 @@ void CAIStateGroupHoverHornetQueenTakeDamageMethods::Update()
                 }
                 if (GetCreature()->IsCombatant()) {
                     CThing* creature = GetCreature();
-                    CWorld* world = GetPWorld();
+                    CWorld* world = &GetWorld();
                     world->PCombatManager->SetAttackerAsReadyToAttack(creature, true);
                 }
                 CThing* creature = GetCreature();

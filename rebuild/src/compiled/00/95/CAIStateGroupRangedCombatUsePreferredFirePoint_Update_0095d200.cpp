@@ -6,7 +6,7 @@
 // RegisterCombatant(creature, enemy, bool) @ 0x006EDC50 / DeregisterCombatant @ 0x006ED9C0, CBaseIntelligentPointer
 // GetPItem/ctor/SetPItem (the by-value CIntelligentPointer<const CThing> target, vtable 0x01237F1C), CThing::
 // GetPosition @ 0x004C73D0 (the fire point; C3DVector by value through the user copy constructor),
-// AIAction_ProjectileAttackAndStrafeToPos @ 0x0097F3A0, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (result unused:
+// AIAction_ProjectileAttackAndStrafeToPos @ 0x0097F3A0, CAIStateGroupBase::GetWorld @ 0x008FCFC0 (result unused:
 // the frame getter @ 0x0049D870 ignores `this`), AttackEnemy @ 0x0095D070, Terminate @ 0x008FCF40.
 // Shape: separate `if (...) { Terminate(); return; }` exits tail-merged into one Terminate block; a do/while
 // yield loop on the strafe action.
@@ -199,6 +199,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -229,7 +231,6 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     CBaseIntelligentPointer PFirePoint;         // +0x1c CIntelligentPointer<CThing>
     long TimeOutCounter;                        // +0x24
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    CWorld* GetPWorld();                       // 0x008FCFC0
     void Terminate();                           // 0x008FCF40
     bool IsStillRunnable();                     // 0x0095D0E0
     bool AttackEnemy();                         // 0x0095D070
@@ -260,7 +261,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
         Terminate();
         return;
     }
-    TimeOutCounter = GetPWorld()->GetFrame();
+    TimeOutCounter = GetWorld().GetFrame();
     while (AttackEnemy()) {
         if (!IsStillRunnable()) {
             Terminate();

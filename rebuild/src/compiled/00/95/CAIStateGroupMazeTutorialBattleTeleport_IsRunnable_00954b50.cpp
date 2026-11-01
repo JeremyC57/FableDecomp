@@ -2,7 +2,9 @@
 // Retail00954b50 length268. Native CMazeBattleDef TutorialTeleportTime5c differs donor60; definition getter008c3510 names CMazeBattleDef at01243bb8.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_MazeTutorialBattleTeleport.h"
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
 #include "engine/CDefClassBase.h"
 #include "engine/CDefinitionManager.h"
@@ -175,16 +177,18 @@ __forceinline void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)ta
 __forceinline void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
 };
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
-struct TeleportMethods:CAIStateGroup_MazeTutorialBattleTeleport{
-__forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct TeleportMethods : public CAIStateGroupBase, CAIStateGroup_MazeTutorialBattleTeleport {
+__forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
 bool HasBeenHitByLightning(); //00954c60
-CWorld* GetPWorld(); //008fcfc0
 bool IsRunnable();};
 bool TeleportMethods::IsRunnable(){
 MazeCombat* combat;Creature()->GetCombat(&combat);MazeThing* target=combat->GetTarget();
 if(target&&!(target->dead&1)){
 CDefPointer def;def.m_p=0;Creature()->definition->GetSubDef(def);
-float elapsed=(float)(GetPWorld()->GetFrame()-FrameOfLastTeleport);
+float elapsed=(float)(GetWorld().GetFrame()-FrameOfLastTeleport);
 if(elapsed > FramesPerSecond*def.m_p->TutorialTeleportTime){*(MazePointer*)_pad_0x14=MazePointer(target);return true;}
 }
 return false;

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00962C10, length 309 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface, type 8, ternary form into ecx for the
 // component's virtual slot 29 +0x74 GetEnemy), CDefClassBase::GetSubDef<CAbilityDef>(CDefPointer<const CAbilityDef>*)
-// @ 0x00485815 on the enemy's def (+0x70), CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetPRandomSeed
+// @ 0x00485815 on the enemy's def (+0x70), CAIStateGroupBase::GetWorld @ 0x008FCFC0, CWorld::GetPRandomSeed
 // @ 0x0049D810, GFROR13 @ 0x00497890, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (vtable 0x0123E7D8), the
 // ability def's virtual slot 1 (destroy on the last release).
 // Shape: the def holder is zeroed up front and its pointer copied to a local (edi) right after GetSubDef; the local
@@ -196,6 +196,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -251,7 +253,6 @@ inline CDefClassBase* GetThingDef(CThing* thing) { return *(CDefClassBase**)((un
 struct CAIStateGroup_VersusRockTroll : CAIStateGroupBase {
     CIntelligentPointerCreature PEnemy;         // +0x14
     bool UseRockThrowing;                       // +0x1c (descriptive)
-    CWorldR* GetPWorld();                       // 0x008FCFC0
     virtual bool IsRunnable();
 };
 
@@ -265,7 +266,7 @@ bool CAIStateGroup_VersusRockTroll::IsRunnable()
         bool found = GetThingDef(enemy)->GetSubDef_00485815(&holder);
         CAbilityDef* ability = holder.Object;
         if (found && (ability->AbilityType == 0x10000 || ability->AbilityType == 0x8000)) {
-            unsigned long* seed = GetPWorld()->GetPRandomSeed();
+            unsigned long* seed = ((CWorldR*)&GetWorld())->GetPRandomSeed();
             unsigned long next = *seed * 0x24A1U + 0x24DFU;
             *seed = next;
             unsigned long rotated = GFROR13(next);

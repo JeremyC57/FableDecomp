@@ -1,6 +1,6 @@
 // CAIStateGroup_BriarRoseWillUse::IsRunnable() -- once the world frame reaches NextUseFrame, take the creature's live attack target (interface 8, slot 29) as PTargetThing
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00956CE0, length 170 bytes (+ int3 padding).
-// Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetWorldFrame @ 0x0049D870 (static; manifest
+// Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0, CWorld::GetWorldFrame @ 0x0049D870 (static; manifest
 // "GFGetPreMainMemoryUsed" is propagated), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (type 8),
 // component slot 29 (+0x74), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
 // Shape: `GetPWorld()->GetWorldFrame()` keeps the accessor call before the static call; the target's dead bit is tested
@@ -112,20 +112,24 @@ class CWorld
     static long __fastcall GetFrame();                    // 0x0049D870
 };
 
-struct CAIStateGroup_BriarRoseWillUse
-{
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+
+struct CAIStateGroup_BriarRoseWillUse : CAIStateGroupBase
+{
     CBaseIntelligentPointer PTargetThing;           // +0x14
     long NextUseFrame;                              // +0x1c
-    CWorld* GetPWorld();                            // 0x008FCFC0
     bool IsRunnable();
 };
 
 bool CAIStateGroup_BriarRoseWillUse::IsRunnable()
 {
-    if (GetPWorld()->GetFrame() >= NextUseFrame && PBrain->Creature->HasTC(8))
+    if (GetWorld().GetFrame() >= NextUseFrame && PBrain->Creature->HasTC(8))
     {
         CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->second)->GetTarget();
         if (target && !(target->m_flags91 & 1))

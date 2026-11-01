@@ -2,7 +2,7 @@
 // creature is alive with at least 1.0 health, reset every live trap thing that has the trap interface (0x7D).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097B780, length 236 bytes (+ int3 padding).
 // Callees: the creature's combatant test @ 0x00662410 (manifest "C3DAnimationBlendState::AddCombinationBlend" is
-// propagated), CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (+0x4c = CCombatManager), CCombatManager::DeregisterCombatant
+// propagated), CAIStateGroupBase::GetWorld @ 0x008FCFC0 (+0x4c = CCombatManager), CCombatManager::DeregisterCombatant
 // @ 0x006ED9C0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (IS_THING_ALIVE, then the thing), CVectorMap::LowerBound
 // @ 0x0040F020 (inlined HasTC + entry lookup, type 0x7D, bit 29 of the dword at +0x2c), the trap component's reset
 // @ 0x00787C07 (manifest "CXMVPlaybackInfo" is propagated); 1.0f @ 0x0122DED8.
@@ -90,6 +90,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -146,7 +148,6 @@ struct CIntelligentPointerVector {              // std::vector<CIntelligentPoint
 struct CAIStateGroup_ScorpionKing : CAIStateGroupBase {
     CIntelligentPointerThing PArenaCentre;      // +0x14
     CIntelligentPointerVector TrapThings;       // +0x1c
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     virtual void Cleanup();
 };
 
@@ -154,7 +155,7 @@ void CAIStateGroup_ScorpionKing::Cleanup()
 {
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInMeleeAsAttacker()) {
         CThing* combatant = PBrain->PCreature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->PCombatManager->DeregisterCombatant(combatant);
     }
     CThing* creature = PBrain->PCreature;

@@ -4,7 +4,7 @@
 // instead of being hoisted into edi before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096F180, length 185 bytes (+ int3 padding).
 // Callees: the creature's position getter @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated and wrong),
-// __ftol2 @ 0x00BFEA70 (x and y truncated to int), CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (+0x20 = the world's
+// __ftol2 @ 0x00BFEA70 (x and y truncated to int), CAIStateGroupBase::GetWorld @ 0x008FCFC0 (+0x20 = the world's
 // CThingSearchTools), CThingSearchTools::GetPFirstThingInRoughArea<filter, CThingAICreature const> @ 0x0096F260
 // (box, filter, out), the converting CIntelligentPointer temporary (vtable 0x01237F1C): ctor @ 0x00A01B10,
 // SetPItem @ 0x00A01B90 (twice), GetPItem @ 0x00A01B50, dtor @ 0x00A01C10.
@@ -90,6 +90,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -129,7 +131,6 @@ class CWorld { public:
 struct CAIStateGroup_MinionBehaviourSad : CAIStateGroupBase {
     unsigned char _pad_0x14[0x20];              // +0x14..+0x33
     CIntelligentPointerThing PDeadSpouse;       // +0x34
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     bool FoundDeadSpouse();
 };
 
@@ -148,7 +149,7 @@ bool CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse()
         box.MaxY = y + 5;
         CThingFilter_IsDeadSpouse filter;
         filter.PCreature = PBrain->PCreature;
-        CThingSearchTools* tools = GetPWorld()->PThingSearchTools;
+        CThingSearchTools* tools = GetWorld().PThingSearchTools;
         found = tools->GetPFirstThingInRoughArea(box, filter, &spouse);
     }
     if (found) {

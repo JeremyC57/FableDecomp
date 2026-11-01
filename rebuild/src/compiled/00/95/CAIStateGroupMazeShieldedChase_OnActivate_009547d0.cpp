@@ -2,7 +2,9 @@
 // Retail009547d0 length294. Shared group/base/brain headers; native boss Home22 is unaligned (packed layout), combat target40 and thing flags6c.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_MazeShieldedChase.h"
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
 #else
@@ -35,15 +37,18 @@ class CCombatManager{ public:void RegisterCombatant(MazeThing*,MazeThing*,bool);
 #ifndef _MSC_VER
 class CWorld{ public:char prefix[0x4c];CCombatManager* PThingCombatManager_ptr;};
 #endif
-struct ShieldMethods:CAIStateGroup_MazeShieldedChase{
-__forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
-__forceinline MazeCreaturePointer& Target(){return *(MazeCreaturePointer*)((CAIStateGroupBase*)this+1);}
-CWorld* GetPWorld(); //008fcfc0
+class CWorld;
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct ShieldMethods : public CAIStateGroupBase, CAIStateGroup_MazeShieldedChase {
+__forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
+__forceinline MazeCreaturePointer& Target(){return *(MazeCreaturePointer*)((CAIStateGroupBaseLayout*)this+1);}
 void OnActivate();};
 void ShieldMethods::OnActivate(){
 MazeBoss* boss;Creature()->GetBoss(&boss);
 if(boss->GetPhase()==0)boss->Home=Creature()->GetPos();
 MazeThing* target=Target().GetPItem();MazeCombat* combat;Creature()->GetCombat(&combat);
 combat->target=MazeCreaturePointer(target);
-if(Target().GetPItem()->flags&8){MazeThing* opponent=Target().GetPItem();MazeThing* actor=Creature();CWorld* world=GetPWorld();world->PThingCombatManager_ptr->RegisterCombatant(actor,opponent,true);}
+if(Target().GetPItem()->flags&8){MazeThing* opponent=Target().GetPItem();MazeThing* actor=Creature();CWorld* world=&GetWorld();world->PThingCombatManager_ptr->RegisterCombatant(actor,opponent,true);}
 }

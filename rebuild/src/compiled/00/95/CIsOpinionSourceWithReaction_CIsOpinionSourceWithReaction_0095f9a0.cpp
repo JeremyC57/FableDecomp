@@ -66,11 +66,13 @@ struct CCreatureInfo {
 };
 class CWorld;
 class CIsOpinionSourceWithReaction;
-class CAIStateGroup_OpinionReactionRoot { public:
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     void*          __vftable;
     CCreatureInfo* Info;                            // +0x04
 protected:
-    CWorld& GetWorld() const;                       // 0x008FCFC0 CAIStateGroupBase::GetWorld (Ego_r.pdb IBEAAVCWorld; the donor run PeekWorld/PeekDefinitionManager/GetWorld/GetPWorldSeed is retail 0x8FCFA0/B0/C0/D0)
     friend class CIsOpinionSourceWithReaction;      // the filter ctor calls the protected accessor in retail
 public:
     CThingAICreature* GetCreature() { return Info->Creature; }

@@ -1,5 +1,12 @@
 // CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition() -- require combat range and a valid or nearby preferred position.
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
+class CWorld;
+class CAIStateGroupBase : public CAIStateGroupBaseLayout { public:
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
 class C3DVector { public:
@@ -25,11 +32,10 @@ struct CCombatPositionMethods {
  C3DVector GetPreferredPos(CThingAICreature*); // 006EA770
 };
 struct CCombatStateMethods : CAIStateGroupBase {
- CWorld* GetPWorld(); // 008FCFC0
  inline bool InRange() {
   if(((CCreatureCombatView*)PBrain->Creature)->IsRegisteredCombatant()) {
   CThingAICreature* creature=PBrain->Creature;
-  CCombatPositionMethods* combat=(CCombatPositionMethods*)GetPWorld()->PThingCombatManager_ptr;
+  CCombatPositionMethods* combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
   if(combat->CheckRingRangeToTarget(creature)) return true;
   }
   return false;
@@ -39,14 +45,14 @@ struct CCombatStateMethods : CAIStateGroupBase {
 bool CCombatStateMethods::IsEnemyCreatureInCombatPosition() {
  bool inRange=InRange();
  CThingAICreature* creature=PBrain->Creature;
- CCombatPositionMethods* combat=(CCombatPositionMethods*)GetPWorld()->PThingCombatManager_ptr;
+ CCombatPositionMethods* combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
  if(combat->ValidateSequencePosition(creature)) return inRange;
  if(inRange) {
   creature=PBrain->Creature;
-  combat=(CCombatPositionMethods*)GetPWorld()->PThingCombatManager_ptr;
+  combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
   if(combat->IsCreatureWithValidMeleeCombatSequence(creature)) return true;
   creature=PBrain->Creature;
-  combat=(CCombatPositionMethods*)GetPWorld()->PThingCombatManager_ptr;
+  combat=(CCombatPositionMethods*)GetWorld().PThingCombatManager_ptr;
   const C3DVector& position=((CCreatureCombatView*)creature)->GetPos();
   if(GroundDistanceSquared(combat->GetPreferredPos(creature),position)<2.25f) return true;
  }

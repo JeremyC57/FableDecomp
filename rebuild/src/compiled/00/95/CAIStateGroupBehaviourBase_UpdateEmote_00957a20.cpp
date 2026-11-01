@@ -1,6 +1,6 @@
 // CAIStateGroupBehaviourBase::UpdateEmote() -- after the current speech plus a random wait, re-arm the emote timer and sometimes play ST_EMOTE
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00957A20, length 339 bytes.
-// Callees: GetPWorld @ 0x008FCFC0 and the static frame counter @ 0x0049D870, DivideByGameSpeed(float) @ 0x00415FD3 (__stdcall),
+// Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0 and the static frame counter @ 0x0049D870, DivideByGameSpeed(float) @ 0x00415FD3 (__stdcall),
 //          CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xF = CTCTalk, bit 15 of +0x20: `test ch,ch ; jns`),
 //          CTCTalk::GetCurrentSpeechDuration @ 0x006E2840, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, GFFloatRandom(float,
 //          unsigned long*) @ 0x004978A0 (__fastcall), CCharString(const char*, long) @ 0x0099EBF0 ("ST_EMOTE" @ 0x01294E2C),
@@ -84,10 +84,12 @@ class CDisplayEngine { public:
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-struct CAIStateGroupBehaviourBaseMethods : CAIStateGroupBehaviourBase {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroupBehaviourBaseMethods : public CAIStateGroupBase, CAIStateGroupBehaviourBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)Brain()->PCreature; }
-    CWorld* GetPWorld();                   // 0x008FCFC0
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     unsigned long Random(unsigned long range)
     {
@@ -104,7 +106,7 @@ struct CAIStateGroupBehaviourBaseMethods : CAIStateGroupBehaviourBase {
 
 bool CAIStateGroupBehaviourBaseMethods::UpdateEmote()
 {
-    float now = CDisplayEngine::DivideByGameSpeed((float)GetPWorld()->GetFrame());
+    float now = CDisplayEngine::DivideByGameSpeed((float)GetWorld().GetFrame());
     if (now - TriggerTime > RandomWaitTime + ThisSpeechDuration) {
         CTCTalk* talk;
         Brain()->PCreature->GetInterface(&talk, 0xf);

@@ -4,7 +4,9 @@
 // CThingAICreature's generated header flattens these inherited fields into padding. No CThing, pointer or boss shared headers exist.
 // The action's retail temporary occupies 0x114 bytes; the generated CCreatureAction_BanditKingLunge header is 0x12c, so an opaque retail action shell preserves its audited constructor/destructor boundary.
 #include "engine/CAIStateGroup_BanditKingLunge.h"
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
 class CTCBoss { public: long GetPhase(); void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
 struct CThingRetail;
@@ -43,15 +45,17 @@ struct CRetailBanditKingLungeAction {
  ~CRetailBanditKingLungeAction(); // 0x0062E900
 };
 class CWorld { public: static long __fastcall GetFrame(); }; // 0x0049D870
-struct BanditKingLungeMethods : CAIStateGroup_BanditKingLunge {
- __forceinline CAIStateGroupBase* Base() { return (CAIStateGroupBase*)this; }
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct BanditKingLungeMethods : public CAIStateGroupBase, CAIStateGroup_BanditKingLunge {
+ __forceinline CAIStateGroupBaseLayout* Base() { return (CAIStateGroupBaseLayout*)this; }
  __forceinline CThingRetail* Creature() { return (CThingRetail*)Base()->PBrain->Creature; }
  __forceinline CBaseIntelligentPointer& Target() { return *(CBaseIntelligentPointer*)Player; }
  long AIAction_DoNothing(); // 0x0097E200
  long AIAction_LookAtThing(long,CConstThingPointer,long,float); // 0x0097D6F0
  bool CanLungeAtPlayer(CThingRetail*); // 0x009613A0
  long AIAction_CombatPerformActionAndWait(CRetailBanditKingLungeAction*,bool); // 0x0097DA40
- void* GetWorld(); // 0x008FCFC0
  void Terminate(); // 0x008FCF40
  void Update();
 };

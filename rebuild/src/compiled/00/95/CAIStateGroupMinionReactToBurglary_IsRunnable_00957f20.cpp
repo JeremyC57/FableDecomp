@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionReactToBurglary::IsRunnable() -- during the creature's sleep hours, runnable when the live
 // player is visible to it and standing inside its home building; remember the player in PBurglar.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00957F20, length 210 bytes (+ int3 padding).
-// Callees: CThingAICreature::GetSleepTimes @ 0x00833390 (two out longs), CAIStateGroupBase::GetPWorld @ 0x008FCFC0
+// Callees: CThingAICreature::GetSleepTimes @ 0x00833390 (two out longs), CAIStateGroupBase::GetWorld @ 0x008FCFC0
 // (twice), the world clock's IsTimeOfDayInRange @ 0x006BB390 (world +0x1c), CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50 on the creature's home-building pointer (+0x168), the world's player-manager getter @ 0x0049D9D0
 // and its player getter @ 0x00487DD0 (manifest "_Cons_val<...>" labels are propagated and wrong),
@@ -89,6 +89,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -144,7 +146,6 @@ struct CIntelligentPointerOut : CBaseIntelligentPointerCtor {
 
 struct CAIStateGroup_MinionReactToBurglary : CAIStateGroupBase {
     CIntelligentPointerOut PBurglar;            // +0x14
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     virtual bool IsRunnable();
 };
 
@@ -153,11 +154,11 @@ bool CAIStateGroup_MinionReactToBurglary::IsRunnable()
     long start;
     long end;
     ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(&start, &end);
-    CWorldClock* clock = GetPWorld()->PClock;
+    CWorldClock* clock = GetWorld().PClock;
     bool sleepTime = clock->IsTimeOfDayInRange(start, end);
     CThingBuilding* home = (CThingBuilding*)((CHomeOwner*)PBrain->PCreature)->GetPHome();
     if (sleepTime && home != 0) {
-        CThing* player = GetPWorld()->GetPlayerManager()->GetPlayerCharacter();
+        CThing* player = GetWorld().GetPlayerManager()->GetPlayerCharacter();
         if (player != 0 && !(player->m_flags91 & 1) && CanCreatureSeeCreature(PBrain->PCreature, player, false) &&
             home->IsPointInside(((CThingPos*)player)->GetPosition())) {
             CIntelligentPointerOut burglar(player);

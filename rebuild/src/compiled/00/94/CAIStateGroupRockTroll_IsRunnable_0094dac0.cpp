@@ -4,7 +4,7 @@
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface, type 8 `test ch,1` on +0x20, ternary form:
 // the component straight into ecx for its virtual slot 29 +0x74 GetEnemy), the physics-position accessor
 // @ 0x006A4D00 (x2), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (vtable 0x0123E7D8),
-// CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (result unused: the frame getter @ 0x0049D870 ignores `this`).
+// CAIStateGroupBase::GetWorld @ 0x008FCFC0 (result unused: the frame getter @ 0x0049D870 ignores `this`).
 // Shape: the XY delta assigned member by member (x first) and its length kept on the FPU (`fld st(0) ; fmul st(1)`,
 // fsqrt) against TROLL_MAX_THROWING_DISTANCE (+0x24). CAIStateGroup_TrollBase members are the PDB names
 // (rebuild/include/engine/CAIStateGroup_TrollBase.h; flattened base, so modelled locally).
@@ -198,6 +198,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -238,7 +240,6 @@ struct CAIStateGroup_TrollBase : CAIStateGroupBase {
     float TROLL_MIN_THROWING_DISTANCE;          // +0x28
     float TROLL_STOP_POUNDING_DISTANCE;         // +0x2c
     float TROLL_STOP_THROWING_DISTANCE;         // +0x30
-    CWorld* GetPWorld();                       // 0x008FCFC0
 };
 struct CAIStateGroup_RockTroll : CAIStateGroup_TrollBase {
     virtual bool IsRunnable();
@@ -256,7 +257,7 @@ bool CAIStateGroup_RockTroll::IsRunnable()
         delta.y = creaturePos.y - enemyPos.y;
         if (delta.GetLength() < TROLL_MAX_THROWING_DISTANCE) {
             PEnemy = CIntelligentPointerCreature(enemy);
-            EnemyKnockDownFrame = GetPWorld()->GetFrame();
+            EnemyKnockDownFrame = GetWorld().GetFrame();
             return true;
         }
     }

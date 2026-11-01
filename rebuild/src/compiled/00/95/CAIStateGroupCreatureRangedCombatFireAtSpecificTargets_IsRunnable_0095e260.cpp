@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable() -- the creature carries a projectile weapon and its interface-8 component holds a specific target: copy it into PTargetThing
 // Leaf: IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E260, length 199 bytes.
-// Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0, NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable
+// Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0, NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable
 // (slot 0 of vtable 0x0128FFD4 = 0x00982890, called through the vtable of the temporary), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x004365B0 (type 8), CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/0x00A01B50/
 // 0x00A01B90/0x00A01C10.
@@ -132,19 +132,23 @@ struct CTCTargetHolder                              // interface type 8 componen
 };
 #pragma pack(pop)
 
-struct CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
-{
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+
+struct CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets : CAIStateGroupBase
+{
     CBaseIntelligentPointer PTargetThing;           // +0x14
-    CWorld* GetPWorld();                            // 0x008FCFC0
     bool IsRunnable();
 };
 
 bool CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable()
 {
-    if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(GetPWorld(), PBrain->Creature).IsRunnable()
+    if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(&GetWorld(), PBrain->Creature).IsRunnable()
         && PBrain->Creature->HasTC(8))
     {
         CTCTargetHolder* holder = (CTCTargetHolder*)PBrain->Creature->FindEntry(8)->second;

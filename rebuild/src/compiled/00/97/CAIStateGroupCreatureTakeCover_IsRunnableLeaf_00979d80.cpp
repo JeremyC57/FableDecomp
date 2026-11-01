@@ -1,6 +1,6 @@
 // CAIStateGroup_CreatureTakeCover::IsRunnableLeaf() -- gate on the projectile-carrying module, then require a live target outside melee, a projectile weapon, and the cover-base leaf check.
 // Retail: Fable.exe (TLC, VC7.1), @0x00979D80, 258 bytes.
-// Callees: CAIStateGroupBase::GetPWorld @0x008FCFC0; NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable @0x00982890 (temporary vtable 0x0128FFD4); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers @0x00979910; CVectorMap::LowerBound @0x004365B0; CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40; qualified base IsRunnableLeaf @0x00970F30.
+// Callees: CAIStateGroupBase::GetWorld @0x008FCFC0; NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable @0x00982890 (temporary vtable 0x0128FFD4); CBaseIntelligentPointer::GetPItem @0x00A01B50; IsInMeleeWithCombatWheelAttackers @0x00979910; CVectorMap::LowerBound @0x004365B0; CTCCarrying::GetThingInPrimarySlot @0x006A1440; CTCWeapon::IsProjectileWeapon @0x005DAA40; qualified base IsRunnableLeaf @0x00970F30.
 // The PDB header only exposes a flattened 0x50-byte base area. The fields at +0x14/+0x1f and inherited call behavior follow the landed CreatureTakeCover/CreatureUseCoverBase relatives. GetInterface inlines the presence-bit test at +0x28, then searches the sorted component map.
 class CThing;
 
@@ -126,15 +126,19 @@ __forceinline bool IS_THING_ALIVE(CThing* thing)
 
 #pragma pack(push, 1)
 class CWorld;
-struct CAIStateGroup_CreatureTakeCover
-{
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+
+struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
+{
     CIntelligentPointer<const CThing> PTargetThing; // +0x14
     unsigned char _pad1c[3];                        // +0x1c
     CIntelligentPointer<CThing> PCoverThing;        // +0x1f
-    CWorld* GetPWorld(); // 0x008FCFC0
     bool IsCoverBaseRunnable(); // 0x00970F30
     bool IsRunnableLeaf();
 };
@@ -155,7 +159,7 @@ struct CIsRunnableModuleCarryingProjectileWeapon : CIsRunnableModule {
 class CWorld;
 bool CAIStateGroup_CreatureTakeCover::IsRunnableLeaf()
 {
-    if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(GetPWorld(), (CThing*)PBrain->Creature).IsRunnable()
+    if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(&GetWorld(), (CThing*)PBrain->Creature).IsRunnable()
         && IS_THING_ALIVE(PTargetThing)
         && !IsInMeleeWithCombatWheelAttackers(((CThing*)PTargetThing.GetPItem()))
         )

@@ -4,7 +4,7 @@
 //          CDefClassBase::GetSubDef<CBriarRoseDef> @ 0x008E7790 (landed; same-TU stand-in below), the def's slot 1 release,
 //          CThing::GetPos @ 0x004C73D0, CCreatureAction_BriarRoseForcePush(creature, target) @ 0x009572A0 (vtable 0x01294CD4),
 //          CCreatureAction_BriarRoseShotFarInto(creature, target) @ 0x00957170 (landed), AIAction_PerformActionAndWait @ 0x0097DB70,
-//          the combat action base dtor @ 0x0062E900, GetPWorld @ 0x008FCFC0, the static frame counter @ 0x0049D870, __ftol2.
+//          the combat action base dtor @ 0x0062E900, CAIStateGroupBase::GetWorld @ 0x008FCFC0, the static frame counter @ 0x0049D870, __ftol2.
 // Globals: frames per second @ 0x01375550 (int 15).
 // Shape: IS_THING_ALIVE on PEnemy (two GetPItem); the creature def is add-ref'd by hand around GetSubDef and the same
 //          register then holds the sub-def (released by hand after Terminate, no null test); the push threshold and the
@@ -108,12 +108,14 @@ class CAIBrain { public:
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 extern long g_FramesPerSecond;                  // 0x01375550
 
-struct CAIStateGroupBriarRoseWillUseMethods : CAIStateGroup_BriarRoseWillUse {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroupBriarRoseWillUseMethods : public CAIStateGroupBase, CAIStateGroup_BriarRoseWillUse {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
     CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)PEnemy; }
     void Terminate();                           // 0x008FCF40
-    CWorld* GetPWorld();                   // 0x008FCFC0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
     void Update();
 };
@@ -152,7 +154,7 @@ void CAIStateGroupBriarRoseWillUseMethods::Update()
             AIAction_PerformActionAndWait(&CCreatureAction_BriarRoseShotFarInto(GetCreature(), enemy), false);
     }
     {
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         long fps = g_FramesPerSecond;
         NextWillUseFrame = (long)((float)world->GetFrame() + (float)fps * interval);
     }

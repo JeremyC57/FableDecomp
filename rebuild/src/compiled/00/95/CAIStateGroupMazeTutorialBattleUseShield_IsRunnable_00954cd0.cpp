@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00954CD0, length 352 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xad = CTCBoss, bit 13 of +0x34) and its const
 //          copy @ 0x004365B0 (interface 8, bit 8 of +0x20, the enemy tracker), CTCBoss::GetBossPhase @ 0x007AED10, the
-//          tracker's virtual slot 29 (+0x74) GetTarget, CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetWorldFrame
+//          tracker's virtual slot 29 (+0x74) GetTarget, CAIStateGroupBase::GetWorld @ 0x008FCFC0, CWorld::GetWorldFrame
 //          @ 0x0049D870 (static), CDefClassBase::GetSubDef<CWhisperBattleDef> @ 0x00956590 on the creature def (+0x70),
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01238C6C), def virtual slot 1.
 // Globals: FramesPerSecond @ 0x01375550, 8.0f @ 0x012944C4.
@@ -127,11 +127,13 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-struct CAIStateGroupMazeTutorialBattleUseShieldMethods : CAIStateGroup_MazeTutorialBattleUseShield {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroupMazeTutorialBattleUseShieldMethods : public CAIStateGroupBase, CAIStateGroup_MazeTutorialBattleUseShield {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
     CIntelligentPointer<CThing>& PTarget() { return *(CIntelligentPointer<CThing>*)_pad_0x14; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
     bool IsRunnable();
 };
 
@@ -144,9 +146,9 @@ bool CAIStateGroupMazeTutorialBattleUseShieldMethods::IsRunnable()
         ((const CThing*)GetCreature())->GetInterface(&tracker, 8);
         CThing* target = tracker->GetTarget();
         if (target && !(target->m_flags91 & 1)) {
-            float elapsed = (float)(GetPWorld()->GetFrame() - FrameOfLastShield);
+            float elapsed = (float)(GetWorld().GetFrame() - FrameOfLastShield);
             if (elapsed > (float)FramesPerSecond * 8.0f) {
-            FrameOfLastShield = GetPWorld()->GetFrame();
+            FrameOfLastShield = GetWorld().GetFrame();
             CDefPointer<CWhisperBattleDef> def;
             GetCreature()->PDef->GetSubDef(&def);
             PTarget() = CIntelligentPointer<CThing>(target);

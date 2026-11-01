@@ -126,6 +126,8 @@ public:
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
 protected:
     bool IsStopping() const;   // 0x008FD010 (Ego_r.pdb protected const)
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 
@@ -238,7 +240,6 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
     long FramesInSnapRange;                     // +0x58
     long CurrentState;                          // +0x5c EDragonState
     long GoLeft;                                // +0x60
-    CWorldFrame* GetPFrameWorld();              // 0x008FCFC0 (GetPWorld)
     long AIAction_DoNothing();                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
     long ChooseHoverOrStrafeState();
@@ -263,7 +264,7 @@ void CAIStateGroup_JackDragon::WaitForAnimLoop(float seconds)
     CTCAnim* anim = 0;
     PBrain->PCreature->GetInterfaceT(&anim, 0x5a);
     CAnimInstance* current = anim->GetPCurrentAnim();
-    long start = GetPFrameWorld()->GetCurrentFrame();
+    long start = ((CWorldFrame*)&GetWorld())->GetCurrentFrame();
     float wait = (float)g_FramesPerSecond * seconds;
     long elapsed;
     do {
@@ -272,6 +273,6 @@ void CAIStateGroup_JackDragon::WaitForAnimLoop(float seconds)
             Terminate();
             return;
         }
-        elapsed = GetPFrameWorld()->GetCurrentFrame() - start;
+        elapsed = ((CWorldFrame*)&GetWorld())->GetCurrentFrame() - start;
     } while (current->m_fraction < 0.995f || (float)elapsed < wait);
 }

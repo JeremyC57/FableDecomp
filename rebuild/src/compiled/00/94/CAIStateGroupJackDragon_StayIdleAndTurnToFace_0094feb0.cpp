@@ -2,7 +2,9 @@
 // Retail0094feb0 length311. Shared JackDragon/Base/Brain headers; narrow thing view exposes retail physics60 and dead91.
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackDragon.h"
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
 #else
 class CAIBrain{ public:char prefix[24];void* Creature;};
@@ -92,19 +94,22 @@ struct CDragonThing{char prefix[0x60];CDragonPhysics* Physics;char beforeDead[0x
 struct CDragonPointer{CDragonThing* GetPItem()const;}; //00a01b50
 extern long FramesPerSecond; //01375550
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
-struct DragonMethods:CAIStateGroup_JackDragon{
-CWorld* GetPWorld();void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
-__forceinline CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct DragonMethods : public CAIStateGroupBase, CAIStateGroup_JackDragon {
+void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
+__forceinline CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
 __forceinline CDragonPointer& Enemy(){return *(CDragonPointer*)PEnemy;}
 void StayIdleAndTurnToFace(float,const C3DVector&);
 };
 void DragonMethods::StayIdleAndTurnToFace(float duration,const C3DVector& facing){
-long start=GetPWorld()->GetFrame();
+long start=GetWorld().GetFrame();
 CRightHandedSet orientation(facing);
 do{
 AIAction_DoNothing();
 orientation=Creature()->Physics->GetFacing().Interpolate(orientation,0.1f);
 Creature()->Physics->SetFacingAnglesFromRHSet(orientation);
 if(!Enemy().GetPItem()||(Enemy().GetPItem()->dead&1)||IsStopping()){Terminate();return;}
-}while((float)(GetPWorld()->GetFrame()-start)/FramesPerSecond<duration);
+}while((float)(GetWorld().GetFrame()-start)/FramesPerSecond<duration);
 }

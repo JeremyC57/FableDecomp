@@ -28,8 +28,12 @@ extern CCharString g_OpinionAttitudeNames[];               // 0x013BABD0
 
 namespace NSpeechGainManager { enum EDialogueLayer { DIALOGUE_LAYER_2 = 2 }; }
 
-class CAIStateGroup_OpinionReactionRoot { public:
-    long GetReactionContext();                             // 0x008FCFC0
+class CWorld { public:
+};
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     EAIActionReturn WaitForTextToLoadThenSpeak(const CCharString& text, NSpeechGainManager::EDialogueLayer layer);   // 0x0095ED80
     bool WifeToHerselfUpdate(EOpinionAttitudeType attitude);
 };
@@ -37,7 +41,7 @@ class CAIStateGroup_OpinionReactionRoot { public:
 bool CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate(EOpinionAttitudeType attitude)
 {
     CCharString text("TEXT_AI_WIFE_OPINION_ACT_TOHERSELF_", -1);
-    GetReactionContext();
+    GetWorld();
     text += g_OpinionAttitudeNames[attitude];
     return WaitForTextToLoadThenSpeak(text, NSpeechGainManager::DIALOGUE_LAYER_2) == AI_ACTION_RETURN_FINISHED;
 }

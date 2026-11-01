@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH -- two levers together: the B-17 same-TU noinline FindMostRecentMessage stand-in (reads the const-reference filter, nothing escapes) puts the bound filter's first-pointer store before the UID-filter ctor call, and the creature read into a named local ahead of the call chain (`CThing* creature = PBrain->PCreature;`) gives retail's this=esi / message=edi and the late type-word store
 // Leaf: OnReplace
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090CA60, length 287 bytes (+ int3 padding).
-// Callees: CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF2B0, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (x2),
+// Callees: CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF2B0, CAIStateGroupBase::GetWorld @ 0x008FCFC0 (x2),
 // CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, IsOriginatedByThing>> @ 0x0090DEE0,
 // CMessageEventManager::RemoveMessage @ 0x00493B5B, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0xC1 =
 // CTCGossip bit 1 of +0x38, 0x31 = CTCCreatureModeManager bit 17 of +0x24), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
@@ -147,6 +147,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -211,17 +213,16 @@ struct CAIStateGroup_MinionGossip : CAIStateGroupBase {
     bool NowRelyingOnGossipee;                  // +0x19
     CTCGossip* PTCGossip;                       // +0x1c
     CTCGossip* PTCGossipOther;                  // +0x20
-    CWorld* GetPWorld();                        // 0x008FCFC0
     virtual void OnReplace();
 };
 
 void CAIStateGroup_MinionGossip::OnReplace()
 {
     CThing* creature = PBrain->PCreature;
-    CMessageEvent* message = GetPWorld()->GetPMessageManager()->FindMostRecentMessage_0090dee0(
+    CMessageEvent* message = GetWorld().GetPMessageManager()->FindMostRecentMessage_0090dee0(
         CMessageEventFilter_IsOfType(0x2c) && CMessageEventFilter_IsOriginatedByThing(creature));
     if (message)
-        GetPWorld()->GetPMessageManager()->RemoveMessage(message);
+        GetWorld().GetPMessageManager()->RemoveMessage(message);
     CTCGossip* gossip;
     PBrain->PCreature->GetInterfaceV(&gossip, 0xc1);
     gossip->PGossipTarget = CIntelligentPointerGossip(0);

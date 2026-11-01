@@ -108,7 +108,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     const CPlayerManager* GetPPlayerManager() const;    // 0x008FCF80
-    CWorld* GetPWorld() const;                  // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct CAIStateGroup_ServeFood : CAIStateGroupBase {
     CThing* MakeFood(const C3DVector* position, CThing* owner);
@@ -119,7 +120,7 @@ CThing* CAIStateGroup_ServeFood::MakeFood(const C3DVector* position, CThing* own
     long def;
     {
         CCharString name("OBJECT_VILLAGE_TAVERN_APPLE");
-        CDefinitionManager* defs = GetPWorld()->PDefManager;
+        CDefinitionManager* defs = GetWorld().PDefManager;
         def = defs->GetDefGlobalIndexFromName(name);
     }
     long player = GetPPlayerManager()->GetMainPlayer().Number;

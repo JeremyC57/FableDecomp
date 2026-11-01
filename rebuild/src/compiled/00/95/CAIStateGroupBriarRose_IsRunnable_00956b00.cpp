@@ -101,6 +101,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -137,7 +139,6 @@ class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?Ge
 struct CAIStateGroup_BriarRose : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;            // +0x14 CIntelligentPointer<CThingCreatureBase>
     long NextRunFrame;                          // +0x1c
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     virtual bool IsRunnable();
 };
 
@@ -148,7 +149,7 @@ bool CAIStateGroup_BriarRose::IsRunnable()
     creature->GetInterface(&source, 8);
     CTCBoss* boss;
     if (!(creature->GetInterface(&boss, 0xad) && boss->IsReadyForPhaseChange())) {
-        if (((CWorld*)GetPWorld())->GetFrame() < NextRunFrame)
+        if (GetWorld().GetFrame() < NextRunFrame)
             return false;
     }
     CThing* enemy = source->GetEnemy();

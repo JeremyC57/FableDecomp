@@ -92,6 +92,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CBaseIntelligentPointerCtor {            // CBaseIntelligentPointer (8 bytes: vptr + item)
@@ -133,7 +135,6 @@ class CTCVillageMember { public: CTCVillage* GetPVillage() const; };   // 0x007E
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBase {
     unsigned char _seat[0x2c];                  // +0x14..+0x3f UsesSeat / SitOnSeatBase members
     long FrameToStopSitting;                    // +0x40
-    CWorld* GetPWorld();                        // 0x008FCFC0 (CAIStateGroupBase)
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (CAIStateGroupBase)
     virtual bool IsRunnable();                  // 0x0090F9C0
 };
@@ -156,7 +157,7 @@ bool CAIStateGroup_MinionSitOutside::IsRunnable()
                 return false;
         }
     }
-    GetPWorld();
+    GetWorld();
     FrameToStopSitting = 225 + WorldRandomRange(*GetPWorldSeed(), 150) + CWorld::GetFrame();
     return CAIStateGroup_MinionSitOnSeatBase::IsRunnable();
 }

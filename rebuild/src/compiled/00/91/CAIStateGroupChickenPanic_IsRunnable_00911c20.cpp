@@ -153,7 +153,8 @@ class CAIStateGroupBase { public:
         bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
     long AIAction_DoNothing();                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
-    struct CThingWorld* GetPFrameWorld();       // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 struct CThingWorld {
@@ -219,7 +220,7 @@ bool CAIStateGroup_ChickenPanic::IsRunnable()
         delta.x = pos.x - attackerPos.x;
         delta.y = pos.y - attackerPos.y;
         if (delta.GetLengthSquared() < 64.0f) {
-            CThingWorld* world = GetPFrameWorld();
+            CThingWorld* world = (CThingWorld*)&GetWorld();
             long attacked = PBrain->PCreature->FrameLastAttacked;
             long memory = g_ChickenPanicMemory;
             if ((float)(unsigned long)(world->GetCurrentFrame() - attacked) < (float)memory * 10.0f)

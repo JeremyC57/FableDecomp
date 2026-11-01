@@ -152,13 +152,14 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CWorld* GetPWorld() const;                  // 0x008FCFC0
 protected:
     bool IsStopping() const;                          // 0x008FD010 (Ego_r.pdb protected const)
 public:
     void Terminate();                           protected: // 0x008FCF40
     EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   protected: // 0x0097DB70
     EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
@@ -194,11 +195,11 @@ void CAIStateGroup_WhisperPotionCombat::DisappearJump()
     PBrain->PCreature->PGraphic->SetPosition(&Jump_to_pos);
     PBrain->PCreature->SetActive(false);
     PBrain->PCreature->PGraphic->SetFlags(0x20);
-    long start = GetPWorld()->GetFrame();
+    long start = GetWorld().GetFrame();
     long now;
     do {
         AIAction_DoNothing();
-        now = GetPWorld()->GetFrame();
+        now = GetWorld().GetFrame();
     } while (!IsStopping() && (float)(now - start) < (float)g_FramesPerSecond * 0.5f);
     PBrain->PCreature->PGraphic->Restore();
     PBrain->PCreature->SetActive(true);

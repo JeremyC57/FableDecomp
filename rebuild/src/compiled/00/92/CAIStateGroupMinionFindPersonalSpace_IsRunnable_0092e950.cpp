@@ -4,7 +4,7 @@
 // Callees: IsSpaceInvader(CThingCreatureBase*) @ 0x0092E890, the creature's physics-info accessor @ 0x006A4D00
 // (+0x60 sub-object + 0xc; manifest "DoSizeof" is propagated), the static radius getter @ 0x00661CC0 (`fld [g] ; ret`,
 // so the object expression is evaluated and ignored), CThing::GetPosition @ 0x004C73D0, __ftol2 @ 0x00BFEA70 (x3),
-// CAIStateGroupBase::GetPWorld @ 0x008FCFC0, the world's thing-search tools (+0x20) GetThingsInRoughArea @ 0x00725F10,
+// CAIStateGroupBase::GetWorld @ 0x008FCFC0, the world's thing-search tools (+0x20) GetThingsInRoughArea @ 0x00725F10,
 // free @ 0x00BFEA14 (the vector block), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (vtable 0x0123E7D8).
 // Shape: the box is built by a centre/radius C2DBoxI constructor from the truncated position and the truncated radius
 // (x and y then become the far corner in place); the result vector is a POD {first, last, end} with a freeing
@@ -154,6 +154,8 @@ class CAIStateGroupBase { public:
         *seed = rotated;
         return rotated % range;
     }
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 
 // vtable padding helpers: V4/V16 declare 4/16 placeholder virtual slots
@@ -204,7 +206,6 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligent
 
 struct CAIStateGroup_MinionFindPersonalSpace : CAIStateGroupBase {
     CIntelligentPointerCreature PSpaceInvader;  // +0x14
-    CWorld* GetPWorld();                        // 0x008FCFC0
     bool IsSpaceInvader(CThingCreatureBase* creature);  // 0x0092E890
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     virtual bool IsRunnable();
@@ -235,7 +236,7 @@ bool CAIStateGroup_MinionFindPersonalSpace::IsRunnable()
             long x = (long)pos.x;
             long y = (long)pos.y;
             C2DBoxI box(C2DCoordI(x, y), (long)radius);
-            CWorld* world = GetPWorld();
+            CWorld* world = &GetWorld();
             world->m_pSearchTools->GetThingsInRoughArea(box, notSelf, found);
         }
         for (CThingCreatureBase** it = found.m_pFirst; it != found.m_pLast; ++it) {

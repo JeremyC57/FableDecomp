@@ -26,8 +26,12 @@ private:
 };
 extern CCharString g_OpinionAttitudeNames[];               // 0x013BABD0
 
-class CAIStateGroup_OpinionReactionRoot { public:
-    long GetReactionContext();                             // 0x008FCFC0
+class CWorld { public:
+};
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
     EAIActionReturn SayToThingReactingTo(const CCharString& text);   // 0x0095EE70
     bool WifeFeelingUpdate(EOpinionAttitudeType attitude);
 };
@@ -35,7 +39,7 @@ class CAIStateGroup_OpinionReactionRoot { public:
 bool CAIStateGroup_OpinionReactionRoot::WifeFeelingUpdate(EOpinionAttitudeType attitude)
 {
     CCharString text("TEXT_AI_WIFE_OPINION_ACT_FEELING_", -1);
-    GetReactionContext();
+    GetWorld();
     text += g_OpinionAttitudeNames[attitude];
     return SayToThingReactingTo(text) == AI_ACTION_RETURN_FINISHED;
 }

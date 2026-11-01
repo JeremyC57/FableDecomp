@@ -1,6 +1,6 @@
 // CAIStateGroup_CreatureRangedCombat2::IsRunnable() -- the creature carries a projectile weapon and its attack component names a best target: remember it and require IsAbleToFire
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091EB60, length 198 bytes (+ int3 padding).
-// Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0, NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable
+// Callees: CAIStateGroupBase::GetWorld @ 0x008FCFC0, NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::IsRunnable
 // (slot 0 of vtable 0x0128FFD4 = 0x00982890, called through the vtable of the local), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x004365B0 (type 8), component slot 29 (+0x74), IsBestTargetForAttack(CThing*, CThing*) @ 0x00864840
 // (__fastcall), CIntelligentPointer<const CThing>::CIntelligentPointer(const CThing*) @ 0x00668B60 (emitted out of line in
@@ -133,13 +133,17 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer    // CIntelligen
     CIntelligentPointerConstThing(const CThing* item);    // 0x00668B60 (out of line here)
 };
 
-struct CAIStateGroup_CreatureRangedCombat2
-{
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+
+struct CAIStateGroup_CreatureRangedCombat2 : CAIStateGroupBase
+{
     CBaseIntelligentPointer PTargetThing;           // +0x14 CIntelligentPointer<CThingCreatureBase>
-    CWorld* GetPWorld();                            // 0x008FCFC0
 private:
     bool IsAbleToFire() const;                      // 0x0091EA70 (Ego_r.pdb: private const)
 public:
@@ -148,7 +152,7 @@ public:
 
 bool CAIStateGroup_CreatureRangedCombat2::IsRunnable()
 {
-    if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(GetPWorld(), PBrain->Creature).IsRunnable()
+    if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(&GetWorld(), PBrain->Creature).IsRunnable()
         && PBrain->Creature->HasTC(8))
     {
         CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->second)->GetTarget();

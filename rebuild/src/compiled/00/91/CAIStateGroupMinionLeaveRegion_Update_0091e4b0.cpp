@@ -5,10 +5,13 @@
 #include "engine/CAIStateGroup_MinionLeaveRegion.h"
 #undef CAIStateGroup_MinionLeaveRegion
 
+class CWorld;
 class CAIStateGroupBase
 {
 public:
     void Terminate();   // 0x008FCF40
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 class CAIStateGroup_MinionLeaveRegion : public CAIStateGroupBase, public CAIStateGroup_MinionLeaveRegionLayout
 {
@@ -61,8 +64,8 @@ struct CAIStateGroup_MinionLeaveRegion_Adapter : CAIStateGroup_MinionLeaveRegion
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  C3DVector& ExitPosition() { return *(C3DVector*)&ExitPoint_X; }
  long AIAction_MoveToPos(long,C3DVector,bool*,long,bool,bool,CThing*,bool,float);
- long AIAction_DoNothing(); CWorld* GetPWorld(); unsigned long* GetPWorldSeed(); void Update();
- __forceinline void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=GetPWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
+ long AIAction_DoNothing();  unsigned long* GetPWorldSeed(); void Update();
+ __forceinline void GetNodes(const CThingFilter_IsRegionNode& filter,ThingVector* nodes) { CWorld* world=&GetWorld(); ((CThingSearchToolsMethods*)world->PThingSearchTools_ptr)->GetAllRegionNodes(filter,nodes); }
 };
 void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {
  bool reached;

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00960760, 592 bytes. ?OnReplace@CAIStateGroup_DeedReactionRoot@@UAEXXZ (Ego_r.pdb).
 // Callees: CInterfaceMap lower_bound 0x0040F020 / const 0x004365B0, CTCDeedEffects::GetDeedEffectsDef 0x006C5630,
 //   CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame 0x0049D870, CTCTutorial::IsActive 0x006CFE80 /
-//   OnDeedReactionDone 0x006CEF20, CTCTutorialGiver::GiveTutorialForCategory 0x006C9FA0, GetPWorld 0x008FCFC0,
+//   OnDeedReactionDone 0x006CEF20, CTCTutorialGiver::GiveTutorialForCategory 0x006C9FA0, CAIStateGroupBase::GetWorld 0x008FCFC0,
 //   ReleaseDeedSpeech 0x006FEAE0, CTCTalk::StopCurrentSpeech 0x006E2E60, CBaseIntelligentPointer::GetPItem 0x00A01B50.
 // Layout: PDB state-group fields ThingReactingTo +0x14 .. DeliveredSpeech +0x35; brain creature +0x18; retail CThing
 //   interface bitset +0x20, map +0x44, dead flag +0x91 bit 0; deed effects def RefCount +4, SpeechReaction +0x7c bit 7;
@@ -155,7 +155,8 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
-    CWorldObject* GetPWorld() const;            // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase {
     CIntelligentPointer<CThing> ThingReactingTo;    // +0x14
@@ -212,7 +213,7 @@ void CAIStateGroup_DeedReactionRoot::OnReplace()
         }
     }
     if (DeliveredSpeech) {
-        CWorldObject* world = GetPWorld();
+        CWorldObject* world = (CWorldObject*)&GetWorld();
         world->PSpeech->ReleaseDeedSpeech(CurrentDeedType, 0);
     }
     CThingCreatureBase* creature = GetCreature();

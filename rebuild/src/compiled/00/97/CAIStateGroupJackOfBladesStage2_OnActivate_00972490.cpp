@@ -2,7 +2,9 @@
 // Retail00972490 length254. Shared headers retain opaque group fields24(target) and30(state).
 #ifdef _MSC_VER
 #include "engine/CAIStateGroup_JackOfBladesStage2.h"
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
 #include "engine/CWorld.h"
 #include "fable_string.h"
@@ -25,13 +27,16 @@ struct JackTable{JackEntry* begin;JackEntry* end;JackEntry* FindEntry(const long
 struct JackThing{char prefix[0x2c];unsigned long mask;char gap[0x14];JackTable components;
 __forceinline void GetInterface(HitLocations** output){if(mask&0x80000000)*output=components.Lookup();}
 };
-struct JackMethods:CAIStateGroup_JackOfBladesStage2{
-CWorld* GetPWorld(); //008fcfc0
-__forceinline JackThing* Creature(){return (JackThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
+class CWorld;
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct JackMethods : public CAIStateGroupBase, CAIStateGroup_JackOfBladesStage2 {
+__forceinline JackThing* Creature(){return (JackThing*)((CAIStateGroupBaseLayout*)this)->PBrain->Creature;}
 void OnActivate();
 };
 void JackMethods::OnActivate(){
-JackThing* actor=Creature();CCombatManager* combat=GetPWorld()->PThingCombatManager_ptr;
+JackThing* actor=Creature();CCombatManager* combat=GetWorld().PThingCombatManager_ptr;
 combat->RegisterCombatant(actor,((JackPointer*)_pad_0x24)->GetPItem(),false);
 HitLocations* hits;
 Creature()->GetInterface(&hits);

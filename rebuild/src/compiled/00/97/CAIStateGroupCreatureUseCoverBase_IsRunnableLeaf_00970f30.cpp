@@ -42,9 +42,11 @@ struct CCoverDispatch {
  virtual void s00();virtual void s01();virtual void s02();virtual void s03();virtual void s04();virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual void s16();virtual void s17();virtual void s18();virtual void s19();virtual void s20();virtual void s21();
  virtual void FilterCoverList(CThingVector&);virtual void GetCoverThingList(CThingVector&);
 };
-struct UseCoverMethods:CAIStateGroup_CreatureUseCoverBase {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct UseCoverMethods : public CAIStateGroupBase, CAIStateGroup_CreatureUseCoverBase {
  bool IsRunnableLeaf();
- CWorld* GetPWorld();                           // 0x008FCFC0
  __forceinline CThingRetail* GetCreature(){return (*(CAIBrainRetail**)_pad_0x04)->Creature;}
  __forceinline CHandleVector& Covers(){return *(CHandleVector*)CoverList;}
  __forceinline bool& RetailFailedToFindCover(){return FailedToFindCover;}
@@ -54,7 +56,7 @@ struct UseCoverMethods:CAIStateGroup_CreatureUseCoverBase {
 bool UseCoverMethods::IsRunnableLeaf(){
  if(RetailFailedToFindCover()){
   C3DVector offset=RetailFailedToFindCoverAt()-GetCreature()->GetPos();
-  long framesPerSecond=GetPWorld()->GetFramesPerSecond();
+  long framesPerSecond=GetWorld().GetFramesPerSecond();
   long seconds=(CWorld::GetFrame()-RetailFailedTime())/framesPerSecond;
   if(offset.GetLengthSquared2D()<225.0f&&seconds<8)return false;
   RetailFailedToFindCover()=false;

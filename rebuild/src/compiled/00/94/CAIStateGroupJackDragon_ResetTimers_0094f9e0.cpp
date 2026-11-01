@@ -6,9 +6,11 @@ class CWorld {
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };        // 0x0049d870 : returns int in eax
-void ResetHelper(void);                // 0x008fcfc0 : return discarded
 
-struct CAIStateGroup_JackDragon_Methods : CAIStateGroup_JackDragon {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroup_JackDragon_Methods : public CAIStateGroupBase, CAIStateGroup_JackDragon {
     // +0x58
 
     void ResetTimers();
@@ -17,7 +19,7 @@ struct CAIStateGroup_JackDragon_Methods : CAIStateGroup_JackDragon {
 void CAIStateGroup_JackDragon_Methods::ResetTimers()
 {
     this->FramesInSnapRange = 0;
-    ResetHelper();
+    GetWorld();
     int t = CWorld::GetFrame();
     this->FrameOfLastSlam = t;
     this->FrameWhenLastInRange = t;

@@ -8,7 +8,7 @@
 //   GetHiddenCoverPos 0x00970930, CanSeeTarget 0x00970790, RefreshCoverList 0x009710D0, IsStillRunnable 0x00979E90,
 //   AttackTargetThing 0x00979F70, MoveFromCoverToFiringPosition 0x0097A1B0, CThing::GetPos 0x004C73D0,
 //   CCreatureAction_ProjectileCrouch 0x008B8310 / ~CCombatActionBase 0x0062E900, AIAction_PerformActionAndWait 0x0097DB70,
-//   GetPWorld 0x008FCFC0 / CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE 0x006961F0 (__fastcall),
+//   CAIStateGroupBase::GetWorld 0x008FCFC0 / CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE 0x006961F0 (__fastcall),
 //   CIntelligentPointer<const CThing>(CThing*) 0x0056C860 / (const CIntelligentPointer<const CThing>&) 0x0091F990 / dtor
 //   0x00A01C10, CCharString 0x0099EBF0 / ~ 0x0099EAE0, CCreatureAction_PlayAnimation 0x008424F0 / ~ 0x00693EF0,
 //   AIAction_PerformActionTargetFaceAndWait 0x0097DCB0, Terminate 0x008FCF40. Constant 1.8f @ 0x01298868.
@@ -138,10 +138,16 @@ extern float g_CoverReachedDistance;            // 0x01298868 (1.8f)
 
 struct SCoverEntry { CThing* thing; long data; };
 #pragma pack(push, 1)
-struct CAIStateGroup_CreatureTakeCover {
+class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+
+struct CAIStateGroup_CreatureTakeCover : CAIStateGroupBase
+{
     CIntelligentPointerConstThing PTargetThing; // +0x14
     unsigned char _pad1c[3];                    // +0x1c
     CIntelligentPointerThing PCoverThing;       // +0x1f
@@ -152,7 +158,6 @@ struct CAIStateGroup_CreatureTakeCover {
     unsigned char _pad30[0x48 - 0x30];
     long FailedCount;                           // +0x48
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
     void Terminate();                           // 0x008FCF40
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     long AIAction_PerformActionTargetFaceAndWait(CCreatureActionBase* action, CIntelligentPointerConstThing target, bool wait);   // 0x0097DCB0
@@ -171,7 +176,7 @@ struct CAIStateGroup_CreatureTakeCover {
     bool MoveFromCoverToFiringPosition(C3DVector& pos, const CIntelligentPointerConstThing& cover);   // 0x0097A1B0
     __forceinline unsigned long Random()
     {
-        unsigned long* seed = GetPWorld()->GetPRandomSeed();
+        unsigned long* seed = GetWorld().GetPRandomSeed();
         *seed = *seed * 0x24A1U + 0x24DFU;
         return *seed = GFROR13(*seed);
     }

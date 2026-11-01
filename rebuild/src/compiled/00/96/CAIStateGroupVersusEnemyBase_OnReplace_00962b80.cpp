@@ -3,7 +3,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface on the brain's creature, type 0x31 = bit 17
 // of the presence word at +0x24), CTCCreatureModeManager::IsModeActive(long) @ 0x0073A8A0,
 // CTCCreatureModeManager::RemoveMode(long) @ 0x0073ABA0, CThingCreatureBase::IsInMeleeAsAttacker @ 0x00662410
-// (landed name), CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CCombatManager::DeregisterCombatant @ 0x006ED9C0.
+// (landed name), CAIStateGroupBase::GetWorld @ 0x008FCFC0, CCombatManager::DeregisterCombatant @ 0x006ED9C0.
 //
 // Shape: the mode manager comes from the out-parameter GetInterface whose result is not tested (a miss reads
 // the unwritten frame slot into esi, `mov esi,[esp+8]`); mode 0x19 is removed when present. Then the landed
@@ -102,9 +102,11 @@ struct CAIBrainCreature {
     CThingCreatureBase* PCreature;              // +0x18
 };
 
-struct CAIStateGroup_VersusEnemyBase_Methods : CAIStateGroup_VersusEnemyBase {
+class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
+struct CAIStateGroup_VersusEnemyBase_Methods : public CAIStateGroupBase, CAIStateGroup_VersusEnemyBase {
     CAIBrainCreature* GetPBrain() const { return *(CAIBrainCreature* const*)_pad_0x04; }   // PBrain (+0x04)
-    CWorld* GetPWorld();                        // 0x008FCFC0
     void OnReplace();
 };
 
@@ -117,7 +119,7 @@ void CAIStateGroup_VersusEnemyBase_Methods::OnReplace()
     CThingCreatureBase* self = GetPBrain()->PCreature;
     if (self->IsInMeleeAsAttacker()) {
         CThingCreatureBase* creature = GetPBrain()->PCreature;
-        CWorld* world = GetPWorld();
+        CWorld* world = &GetWorld();
         world->m_pCombatManager->DeregisterCombatant(creature);
     }
 }

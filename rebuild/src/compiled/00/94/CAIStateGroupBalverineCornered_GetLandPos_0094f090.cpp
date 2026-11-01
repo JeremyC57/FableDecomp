@@ -1,7 +1,14 @@
 // CAIStateGroup_BalverineCornered::GetLandPos(CThing*) -- land beyond the target by 1.2 times the combined radii, at terrain height.
 // Grade: RELOCATION_MATCH -- corrected no-argument world-map getter and subsequent position-taking height-query signatures reproduce all 223 bytes.
 #include "engine/CAIStateGroup_BalverineCornered.h"
+#define CAIStateGroupBase CAIStateGroupBaseLayout   // engine/CAIStateGroupBase.h flattens the vptr
 #include "engine/CAIStateGroupBase.h"
+#undef CAIStateGroupBase
+class CWorld;
+class CAIStateGroupBase : public CAIStateGroupBaseLayout { public:
+protected:
+    CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
+};
 #include "engine/CAIBrain.h"
 #include "engine/CTCPhysicsBase.h"
 class C3DVector { public:
@@ -29,7 +36,6 @@ struct CWorldHeightView {
  virtual void v12(); virtual CWorldMap& PeekWorldMap() const; // slot13, CWorld RTTI vtable012390f0 ->004AE8C0, no stack arguments
 };
 struct CBalverineLandMethods : CAIStateGroupBase {
- CWorldHeightView* GetPWorld(); // 008FCFC0
  C3DVector GetLandPos(CGeometryThing*);
 };
 C3DVector CBalverineLandMethods::GetLandPos(CGeometryThing* target) {
@@ -39,6 +45,6 @@ C3DVector CBalverineLandMethods::GetLandPos(CGeometryThing* target) {
  C3DVector direction(targetPos.X-mine.X,targetPos.Y-mine.Y,0.0f);
  direction.AccurateNormalise();
  C3DVector result=targetPos+direction*radius;
- result.Z=GetPWorld()->PeekWorldMap().GetHeightZBelowPos(result);
+ result.Z=((CWorldHeightView*)&GetWorld())->PeekWorldMap().GetHeightZBelowPos(result);
  return result;
 }
