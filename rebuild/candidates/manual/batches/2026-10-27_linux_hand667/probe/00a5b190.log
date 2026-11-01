@@ -1,0 +1,1 @@
+1	same body as Write 0x00A5AFB0 under ?SetLength@CCachedFile@@UAEXJ@Z	DIFFER(97v96) = retail + the int3 after the final _CxxThrowException (int3-after-noreturn)

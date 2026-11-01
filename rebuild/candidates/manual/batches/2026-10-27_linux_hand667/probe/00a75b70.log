@@ -1,0 +1,2 @@
+1	switch assigning opposite, cases 0..3, default __assume(0)	DIFFER(112v112) arms in source order 0,1,2,3; retail 3,2,1,0
+2	cases written 3,2,1,0 (byte order of the arms)	RELOCATION_MATCH

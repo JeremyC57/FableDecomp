@@ -1,0 +1,1 @@
+1	CCharString("",-1) + text, PDB by-value CBBBFileException(CCharString, EFileExceptionType) ctor, type 8	DIFFER(97v96) = retail + the int3 after the final _CxxThrowException (int3-after-noreturn)

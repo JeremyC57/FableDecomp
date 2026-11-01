@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,899 of 57,611 known functions (91.8%), 45,498 of the original 49,568 (91.8%); 174 `retail_asm`,
+  never hand-edit): 52,909 of 57,611 known functions (91.8%), 45,508 of the original 49,568 (91.8%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -35,8 +35,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
 ## Done 2026-11-01 (details in FINDINGS_LOG)
-- Chunks 663-666 (NA008-NA011: the authorable band, 100-250 bytes, no twins) landed 10/10 each; 89 NAME_FIXES
-  (c663-c666), 110 labels. Owner rule 2026-11-01: wrong catalog names are fixed at landing (`coordinator/apply_labels.py` + sync);
+- Chunks 663-667 (NA008-NA012: the authorable band, 100-250 bytes, no twins) landed 10/10 each; 104 NAME_FIXES
+  (c663-c667), 134 labels (two int3-after-noreturn stubs landed on the N+1 span). Owner rule 2026-11-01: wrong catalog names are fixed at landing (`coordinator/apply_labels.py` + sync);
   landed-source respells go to naming wave 15 (brief written) right after the chunk round. zlib is 1.2.1 (C, ordinary reconstruction). The pool's authorable band lands like the twins: identity first. 0x00CA4xxx-0x00CA7xxx is DirectShow strmbase.
 - Chunk 659 (the parked pairs) landed 0x006276F0 GetItemsListUI with the real same-file ConstructItemCategoryList body; that
   sibling (destructor-inlining gap, chunk 583) and the Minion pair 0x00935E40 / 0x009363D0 (one source) stay parked with 12-33 probes.
@@ -72,7 +72,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA011 = 662-666 landed 10/10; NA012/NA013 = chunks 667/668 and naming wave 15 running at this write
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA012 = 662-667 landed 10/10; NA013/NA014 = chunks 668/669 and naming wave 15 running at this write
    (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked

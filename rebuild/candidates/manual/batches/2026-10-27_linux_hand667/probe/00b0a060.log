@@ -1,0 +1,2 @@
+1	CPSCBase : CBaseClassNonCopyable, STLport vector CArray, engine CCountedPointer, implicit dtor via PDB ctor	RELOCATION_MATCH
+2	RTTI chain CPSCBase : CParticleUpdateParamCallback<K,K> : CBaseClassNonCopyable, ctor without invented init	RELOCATION_MATCH

@@ -1,0 +1,14 @@
+1	total local, alpha local, alpha -= frames/total*51	DIFFER(111v111) frame slots: total/alpha/frames at +8/+0/+4, retail +4/+8/+0
+2	one expression	DIFFER(119v111)
+3	float alpha declared before total	DIFFER(111v111) same slots as 1
+4	named framesRunning local	DIFFER(103v111)
+5	frames/(float)total	DIFFER(111v111) same as 1
+6	alpha = alpha - ...	DIFFER(111v111) same as 1
+7	float total	DIFFER(119v111)
+8	block-scope float fraction	DIFFER(111v111) slots right (+0xc/+0x10/+8) but fraction spilled
+9	total + alpha computation in an inner block	DIFFER(111v111) slots as 1
+10	only the subtraction in a block	DIFFER(111v111) slots as 1
+11	(float)((float)frames/total) explicit temp	DIFFER(111v111) slots as 1
+12	block-scope named framesRunning	DIFFER(103v111)
+13	named startAlpha local, alpha = startAlpha - frames/total*51	RELOCATION_MATCH
+14	named creature local	DIFFER(111v111) slots as 1

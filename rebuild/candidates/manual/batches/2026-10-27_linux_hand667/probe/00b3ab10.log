@@ -1,0 +1,2 @@
+1	FableWin model (CEnginePrimitiveHandle inline virtual dtor = Clear + CIVCountedPointer Release, implicit outer dtor emitted through the PDB default ctor)	RELOCATION_MATCH
+2	engine/CIVCountedPointeeBase.h retail opt-in instead of the local base (SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH (kept)

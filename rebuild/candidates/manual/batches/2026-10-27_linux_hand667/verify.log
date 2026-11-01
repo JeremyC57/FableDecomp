@@ -1,0 +1,34 @@
+addr       parity           behav  name
+008553c0   WARN RELOC_NAME: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::GetPDefinitionManager'
+008553c0   RELOCATION_MATCH PASS   FrameUpdate
+008c3f20   WARN RELOC_NAME: ?GetFramesRunning@CCreatureActionBase@@QBEJXZ -> 006925c0 labelled '_global::GetMember_dword0x1c_006925c0'
+008c3f20   RELOCATION_MATCH PASS   FrameUpdate
+0091d8c0   RELOCATION_MATCH PASS   OnActivate
+009ac7c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009ac7c0   RELOCATION_MATCH PASS   ~CRetailBank
+00a6b5b0   RELOCATION_MATCH PASS   ~CManagedTextureData
+00a75b70   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a75b70   RELOCATION_MATCH PASS   SetUpNeighbours
+00b0a060   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b0a060   RELOCATION_MATCH PASS   ~CPSCSplineBase
+00b3ab10   RELOCATION_MATCH PASS   ~CEngineInternalAttachedPrimitiveInfo
+
+WINS: 8
+  008553c0 RELOCATION_MATCH CCreatureAction_BlockRespond::?FrameUpdate@CCreatureAction_BlockRespond@@UAEXXZ
+  008c3f20 RELOCATION_MATCH CCreatureAction_WaspQueenDie::?FrameUpdate@CCreatureAction_WaspQueenDie@@UAEXXZ
+  0091d8c0 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+  009ac7c0 RELOCATION_MATCH NBankFileManager::CRetailBank::??1CRetailBank@NBankFileManager@@UAE@XZ
+  00a6b5b0 RELOCATION_MATCH CManagedTextureData::??1CManagedTextureData@@UAE@XZ
+  00a75b70 RELOCATION_MATCH CNavNavigableLeafNode::?SetUpNeighbours@CNavNavigableLeafNode
+  00b0a060 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::??1CPSCSplineBase@NParticleEngine@@UAE@XZ
+  00b3ab10 RELOCATION_MATCH CEngineInternalAttachedPrimitiveInfo::??1CEngineInternalAttachedPrimitiveInfo@@UAE@XZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionBlockRespond_FrameUpdate_008553c0
+  CCreatureActionWaspQueenDie_FrameUpdate_008c3f20
+  CAIStateGroupEnemyCreatureBase_OnActivate_0091d8c0
+  NBankFileManagerCRetailBank_CRetailBank_009ac7c0
+  CManagedTextureData_CManagedTextureData_00a6b5b0
+  CNavNavigableLeafNode_SetUpNeighbours_00a75b70
+  NParticleEngineCPSCSplineBase_CPSCSplineBase_00b0a060
+  CEngineInternalAttachedPrimitiveInfo_CEngineInternalAttachedPrimitiveInfo_00b3ab10

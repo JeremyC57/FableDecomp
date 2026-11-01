@@ -372350,6 +372350,76 @@ $catalog = @(
         TestSource = '00/e5/CConversation_CConversation_00e54d80_test.cpp'
         PassPattern = '00e54d80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008553c0'
+        Module = 'CCreatureAction_BlockRespond'
+        Source = '00/85/CCreatureActionBlockRespond_FrameUpdate_008553c0.cpp'
+        TestSource = '00/85/CCreatureActionBlockRespond_FrameUpdate_008553c0_test.cpp'
+        PassPattern = '008553c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3f20'
+        Module = 'CCreatureAction_WaspQueenDie'
+        Source = '00/8c/CCreatureActionWaspQueenDie_FrameUpdate_008c3f20.cpp'
+        TestSource = '00/8c/CCreatureActionWaspQueenDie_FrameUpdate_008c3f20_test.cpp'
+        PassPattern = '008c3f20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091d8c0'
+        Module = 'CAIStateGroup_EnemyCreatureBase'
+        Source = '00/91/CAIStateGroupEnemyCreatureBase_OnActivate_0091d8c0.cpp'
+        TestSource = '00/91/CAIStateGroupEnemyCreatureBase_OnActivate_0091d8c0_test.cpp'
+        PassPattern = '0091d8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ac7c0'
+        Module = 'NBankFileManager::CRetailBank'
+        Source = '00/9a/NBankFileManagerCRetailBank_CRetailBank_009ac7c0.cpp'
+        TestSource = '00/9a/NBankFileManagerCRetailBank_CRetailBank_009ac7c0_test.cpp'
+        PassPattern = '009ac7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6b5b0'
+        Module = 'CManagedTextureData'
+        Source = '00/a6/CManagedTextureData_CManagedTextureData_00a6b5b0.cpp'
+        TestSource = '00/a6/CManagedTextureData_CManagedTextureData_00a6b5b0_test.cpp'
+        PassPattern = '00a6b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75b70'
+        Module = 'CNavNavigableLeafNode'
+        Source = '00/a7/CNavNavigableLeafNode_SetUpNeighbours_00a75b70.cpp'
+        TestSource = '00/a7/CNavNavigableLeafNode_SetUpNeighbours_00a75b70_test.cpp'
+        PassPattern = '00a75b70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0a060'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b0/NParticleEngineCPSCSplineBase_CPSCSplineBase_00b0a060.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSplineBase_CPSCSplineBase_00b0a060_test.cpp'
+        PassPattern = '00b0a060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3ab10'
+        Module = 'CEngineInternalAttachedPrimitiveInfo'
+        Source = '00/b3/CEngineInternalAttachedPrimitiveInfo_CEngineInternalAttachedPrimitiveInfo_00b3ab10.cpp'
+        TestSource = '00/b3/CEngineInternalAttachedPrimitiveInfo_CEngineInternalAttachedPrimitiveInfo_00b3ab10_test.cpp'
+        PassPattern = '00b3ab10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5afb0'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_Write_00a5afb0.cpp'
+        TestSource = '00/a5/CCachedFile_Write_00a5afb0_test.cpp'
+        PassPattern = '00a5afb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5b190'
+        Module = 'CCachedFile'
+        Source = '00/a5/CCachedFile_SetLength_00a5b190.cpp'
+        TestSource = '00/a5/CCachedFile_SetLength_00a5b190_test.cpp'
+        PassPattern = '00a5b190_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

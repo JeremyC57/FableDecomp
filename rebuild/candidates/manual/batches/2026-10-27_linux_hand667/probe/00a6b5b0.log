@@ -1,0 +1,1 @@
+1	CResource base + real member list (CCountedPointer header, boost::scoped_ptr checked_delete), implicit dtor emitted through the real ctor	RELOCATION_MATCH

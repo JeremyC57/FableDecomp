@@ -1,0 +1,25 @@
+address	name	evidence
+008553c0	CCreatureAction_BlockRespond::FrameUpdate	chunk 667 RELOCATION_MATCH: vtable 0x01276084 slot 56 (both PDBs)
+008c3f20	CCreatureAction_WaspQueenDie::FrameUpdate	chunk 667 RELOCATION_MATCH: vtable 0x01280D84 slot 56 (13 probes: x87 slot order follows named float locals)
+0091d8c0	CAIStateGroup_EnemyCreatureBase::OnActivate	chunk 667 RELOCATION_MATCH: slot 2 of its own vtable 0x0128B8BC (catalog named CAIStateGroup_HoverMovementBase's)
+00a5afb0	CCachedFile::Write	chunk 667 RELOCATION_MATCH against the 97-byte N+1 span (int3-after-noreturn throw stub); slot 4, Ego_r donor order
+00a5b190	CCachedFile::SetLength	chunk 667 RELOCATION_MATCH against the 97-byte N+1 span; slot 8
+00a75b70	CNavNavigableLeafNode::SetUpNeighbours	chunk 667 RELOCATION_MATCH: slot 17, protected (ENavQuadTreeNeighbours, CANavQuadTreeNode*)
+00b0a060	NParticleEngine::CPSCSplineBase::~CPSCSplineBase	chunk 667 RELOCATION_MATCH: shared by the CPSCSplineBase / CPSCSpline ??_G and ~CPSCSingleSprite; RTTI base arrays (catalog ~C3DMeshStripifier was wrong)
+00a6b5b0	CManagedTextureData::~CManagedTextureData	chunk 667 RELOCATION_MATCH: ??_G 0x00A6B590 + RTTI (catalog ~C3DMeshStripifier was wrong)
+009ac7c0	NBankFileManager::CRetailBank::~CRetailBank	chunk 667 RELOCATION_MATCH: ??_G + RTTI (catalog ~C3DMeshStripifier was wrong)
+00b3ab10	CEngineInternalAttachedPrimitiveInfo::~CEngineInternalAttachedPrimitiveInfo	chunk 667 RELOCATION_MATCH: label was right
+009aa780	std::_Rb_tree<CCharString,pair<const CCharString,NBankFileManager::CContainedBank>,...>::_M_erase	chunk 667 (landed with CUnproven placeholders)
+008f7860	NCombatActionHelpers::IsToCreateCombatParticleEffects	chunk 667: namespace NCombatActionHelpers (both PDBs)
+008f7950	NCombatActionHelpers::CreateDustEffectForCreature	chunk 667
+006edc50	CCombatManager::RegisterCombatant	chunk 667: (CThingCreatureBase&, CThingCreatureBase&, bool); six wrong spellings bound
+008fcfc0	CAIStateGroupBase::GetWorld	chunk 667 (bound as Sub_8FCFC0 by one caller)
+006925b0	CCreatureActionBase::GetTotalTimeWorldFrames	chunk 667: Ego_r donor run (catalog DrawGetEnvironment / GetTotalTime were wrong)
+006925c0	CCreatureActionBase::GetFramesRunning	chunk 667 (catalog DrawGetEnvironment was wrong)
+00692910	CCreatureActionBase::PeekDefinitionManager	chunk 667 (catalog _Dest_val was wrong)
+00692c10	CCreatureActionBase::GetWorldMap	chunk 667: the non-const IAE overload
+004bfac0	NGraphicAppearance::CTCGraphicAppearance::SetAlpha	chunk 667
+00b0a160	NParticleEngine::CPSCSplineBase::`scalar deleting destructor'	chunk 667 (catalog OnDie was wrong)
+00b1b490	NParticleEngine::CPSCSpline::`scalar deleting destructor'	chunk 667 (catalog CLandscapeBackgroundPatch stand-in)
+00b230c0	NParticleEngine::CPSCSingleSprite::`scalar deleting destructor'	chunk 667 (catalog CLandscapeBackgroundPatch stand-in)
+00b3ab80	CEngineInternalAttachedPrimitiveInfo::`scalar deleting destructor'	chunk 667 (catalog CLandscapeBackgroundPatch stand-in)
