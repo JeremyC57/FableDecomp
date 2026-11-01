@@ -1,0 +1,21 @@
+skip 004da967 no vptr in CTCBase model
+edited 004db004 CBase3DAnimState->CTCBase virtual dtor; vptr taken from the leading pad (0x14 -> 0x10) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GC3DAnimationBlendState@@UAEPAXI@Z'] -u ['??1CBase3DAnimState@@QAE@XZ']
+edited 004dbf56 BlendBase->CTCBase virtual dtor; vptr taken from the leading pad (0x14 -> 0x10) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GC3DAnimationBlendState@@UAEPAXI@Z'] -u ['??1BlendBase@@QAE@XZ']
+edited 004dc7c8 BlendBase->CTCBase virtual dtor; vptr taken from the leading pad (0xc -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GC3DAnimationBlendState@@UAEPAXI@Z'] -u ['??1BlendBase@@QAE@XZ']
+skip 004dcbce no vptr in CTCBase model
+edited 004dccd2 C3DAnimBlendBase->CTCBase virtual dtor; vptr taken from the leading pad (0xc -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GC3DAnimationBlendState@@UAEPAXI@Z'] -u ['??1C3DAnimBlendBase@@QAE@XZ']
+skip 004dcdfd no vptr in CTCBase model
+skip 004dcf4e no vptr in CTCBase model
+edited 004ddf6f CChunkedFileChunkBase->CTCBase virtual dtor; vptr taken from the leading pad (0x0c -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCPatchTesselationEdgeStrip@@UAEPAXI@Z'] -u ['??1CChunkedFileChunkBase@@QAE@XZ']
+skip 004de6ed shape ?outer@FableDestVal_004de6ed_t@@QAIXXZ
+skip 004e0ae8 shape ?outer@FableDestVal_004e0ae8_t@@QAIXXZ
+skip 004e5c71 shape ?outer@FableDestVal_004e5c71_t@@QAIXXZ
+edited 005dae40 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0xc -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_005dae40@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+edited 006b14f0 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0x38 -> 0x34) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_006b14f0@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+skip 006e1e60 no vptr in CTCBase model
+edited 00731330 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0x20 -> 0x1c) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_00731330@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+edited 00732cb0 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0xc -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_00732cb0@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+edited 00746d00 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0x14 -> 0x10) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_00746d00@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+edited 0078afc0 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0x10 -> 0xc) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_0078afc0@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+edited 007dfca0 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0xc -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_007dfca0@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']
+edited 007e48e0 CBase_00686830->CTCBase virtual dtor; vptr taken from the leading pad (0xc -> 0x8) +u ['??1CTCBase@@UAE@XZ', '??3@YAXPAX@Z', '??_GCSharedOwner_007e48e0@@UAEPAXI@Z'] -u ['??1CBase_00686830@@QAE@XZ']

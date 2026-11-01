@@ -1,0 +1,12 @@
+skip 006585ee unparsed _helper_prep
+skip 00658604 free stand-in CTCVillage_GetIsHeroEnemyOfGuards_Prep not a one-argument this-call
+skip 006a23e0 non-public GetWorld needs an access path
+skip 006af620 non-public GetWorld needs an access path
+skip 006cb8f0 unparsed _helperA
+skip 006ceae0 free stand-in First_Helper not a one-argument this-call
+skip 006d0180 moved CTCCreatureOpinionOfHero::GetWorld -> GetWorld x1 :: compile: w15\ov_t_qall\rebuild\src\compiled\00\6d\CTCWife_Divorce_006d0180.cpp(154) : error C2248: 'CTCBase::GetWorld' : cannot access protected member declared in class 'CTCBase' | b1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\6d\CTCWife_Divorce_006d0180.cpp(154) : error C2440: 'type cast' : cannot convert from 'CWorld' to 'CWorld *' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\6d\CTCWife_Divorce_006d0180.cpp(154) : error C2227: left of '->GetFrame' must point to class/struct/union
+skip 007236e0 non-public GetWorld needs an access path
+skip 007be0f9 non-public GetWorld needs an access path
+skip 007e2790 non-public GetWorld needs an access path
+skip 00811450 non-public GetWorld needs an access path
+skip 00960760 non-public GetWorld needs an access path

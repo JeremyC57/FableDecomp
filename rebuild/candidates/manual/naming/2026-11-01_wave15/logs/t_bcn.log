@@ -1,0 +1,76 @@
+skip 004016b0 shape ?BaseDtor_0099a300@@YIXPAX@Z
+skip 00401f30 no vptr in CBaseClassNonCopyable model
+skip 00412020 shape @BaseOnDie@4
+skip 004120c0 shape ?BaseDtor_588240@@YIXPAX@Z
+edited 004354c0 CDisplayEngineBase->CBaseClassNonCopyable access +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CDisplayEngineBase@@UAE@XZ']
+edited 00446be0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCDiskFileWin32@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 0049bc70 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+edited 00687050 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+skip 006ac910 shape ??1CBaseClass@NFactory006ac910@@UAE@XZ
+skip 006e11f0 shape ??1CBaseClassNonCopyable@X_006e11f0@@UAE@XZ
+edited 00714730 virtual dtor replaces placeholder v000 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCPhysicsSnapshot@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 00715710 virtual dtor replaces placeholder v000 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCPhysicsSnapshot@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+skip 007190c0 shape ?CActionTalkedTo_Destruct@@YIXPAX@Z
+skip 007190f0 shape ?CActionDoCreatureAction_Destruct@@YIXPAX@Z
+skip 00719120 virtual dtor replaces explicit vptr _vptr :: compile: letingdestructor_00719120.cpp(35) : error C2248: 'CBaseClassNonCopyable::CBaseClassNonCopyable' : cannot access protected member declared in class 'CBaseClassNonCopyable' | letingdestructor_00719120.cpp(37) : error C2248: 'CBaseClassNonCopyable::CBaseClassNonCopyable' : cannot access protected member declared in class 'CBaseClassNonCopyable'
+skip 00719150 shape ?CActionPickUpGenericBox_Destruct@@YIXPAX@Z
+skip 00719cb0 shape ?CActionFireProjectileWeapon_Destruct@@YIXPAX@Z
+edited 00778d60 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCTCParamsBase@@UAEPAXI@Z', '??_GCTCParamsPhysicsBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00779d20 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCTCParamsBase@@UAEPAXI@Z', '??_GCTCParamsPhysicsBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+skip 007e7e40 virtual dtor replaces explicit vptr _vptr :: compile: etingdestructor_007e7e40.cpp(36) : error C2248: 'CBaseClassNonCopyable::~CBaseClassNonCopyable' : cannot access protected member declared in class 'CBaseClassNonCopyable'
+edited 0080c250 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCTCParamsBase@@UAEPAXI@Z', '??_GCTCParamsPhysicsBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 0082d920 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCTCParamsBase@@UAEPAXI@Z', '??_GCTCParamsPhysicsBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00833800 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCTCParamsBase@@UAEPAXI@Z', '??_GCTCParamsPhysicsBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+skip 00835c80 shape ??1CTCParamsPhysicsBase@ExternalRetry_00835c80@@UAE@XZ
+skip 0083b7f0 ~CBaseClassNonCopyable defined inline
+skip 0083bbf0 ~CBaseClassNonCopyable defined inline
+skip 0083c5d0 ~CBaseClassNonCopyable defined inline
+skip 0083dbe0 ~CBaseClassNonCopyable defined inline
+skip 00905070 shape ?CActionPlayAnimation_Destruct@@YIXPAX@Z
+skip 009050a0 shape ?CActionPlayCombatAnimation_Destruct@@YIXPAX@Z
+skip 00905440 shape ?CActionPerformExpression_Destruct@@YIXPAX@Z
+skip 00905470 shape ?CActionWaitForThingToFinishPerformingTasks_Destruct@@YIXPAX@Z
+skip 009054a0 shape ?CActionFollowCreature_Destruct@@YIXPAX@Z
+skip 00987f10 shape @base_dtor_99A300@4
+edited 00995df0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCCompressedMemoryDataInputStream_Retail@@UAEPAXI@Z', '??_GCDataStream@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 00996ea0 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+edited 00996ed0 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+edited 00997240 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCDataStream@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+skip 009a0b00 shape ?baseDtor@BaseInput@@QAEXXZ
+edited 009b08c0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 009d4c30 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 009d4ce0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 009d6fa0 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+skip 009e7bd0 shape ?CSymbolMap_Destruct@@YIXPAX@Z
+edited 009f5c80 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00a044b0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00a07980 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00a0d810 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCInputProcessManager@@UAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ']
+edited 00a19c00 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+edited 00a37360 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCClassFactory@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 00a44eb0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GC3DSkeletalMorph@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+skip 00a46420 shape ?C3DSkeletalMorphParameter_Destruct@@YIXPAX@Z
+edited 00a60aa0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00a76a80 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCANavQuadTreeNode@@UAEPAXI@Z', '??_GCNavNavigableLeafNode@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ', '?v00@CBaseClassNonCopyable@@UAEXXZ']
+edited 00a7d990 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+skip 00a8e040 no vptr in CBaseClassNonCopyable model
+edited 00aa8490 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCChunkedFileChunk_Retail@@UAEPAXI@Z', '??_GCChunkedFileSuperChunk_Retail@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 00aa8d50 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+skip 00aac7f0 shape ?CActiveSound_Destruct@@YIXPAX@Z
+skip 00ab3550 shape ?C3DAnimationBuilder_Destruct@@YIXPAX@Z
+edited 00ac6ae0 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+edited 00ad88c0 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GC3DOptimisedMeshBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+skip 00b15b20 shape ?CPSCEmitterGeneric_Destruct@@YIXPAX@Z
+edited 00b44f20 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 00b50be0 CBase_0099a300->CBaseClassNonCopyable virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??_GCBaseClassNonCopyable@@MAEPAXI@Z'] -u ['??1CBase_0099a300@@QAE@XZ', '?v00@CBase_0099a300@@UAEXXZ']
+skip 00b564c0 shape @base_dtor_99a300@4
+edited 00b81e60 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCEngineClothSimulationMeshBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+edited 00b84030 virtual dtor replaces placeholder v00 +u ['??1CBaseClassNonCopyable@@MAE@XZ', '??3@YAXPAX@Z', '??_GCEngineClothSimulationMeshBase@@UAEPAXI@Z'] -u ['??1CBaseClassNonCopyable@@QAE@XZ']
+skip 00b98560 shape ?CEngineSceneMap_Destruct@@YIXPAX@Z
+skip 00bb1760 shape @SubPrim_dtor@4
+edited 00bbf1c0 CBaseNativeView->CBaseClassNonCopyable access +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBaseNativeView@@UAE@XZ']
+edited 00bc5420 CBase_Retail->CBaseClassNonCopyable access +u ['??1CBaseClassNonCopyable@@MAE@XZ'] -u ['??1CBase_Retail@@UAE@XZ']
+skip 0122aad0 shape ?Invoke@AutoTinyFieldTarget@@QAEXXZ
+skip 0122ab10 shape ?Second_0099a300@AutoTinyFieldMethodsTarget@@QAEXXZ
+skip 0122ab30 shape ?Second_0099a300@AutoTinyFieldMethodsTarget@@QAEXXZ
+skip 0122ab50 shape ?Second_0099a300@AutoTinyFieldMethodsTarget@@QAEXXZ

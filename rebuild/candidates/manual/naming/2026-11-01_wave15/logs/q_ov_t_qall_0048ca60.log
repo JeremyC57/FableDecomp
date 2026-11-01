@@ -1,0 +1,4 @@
+skip 0048d390 0 definitions of list<class C3DVector, class std::allocator<class C3DVector>>
+skip 006fd9f0 0 definitions of list<class C3DVector, class std::allocator<class C3DVector>>
+skip 006fe780 0 CList_0048ca60::~CList_0048ca60 declarations
+skip 00850240 free ::InnerDtor_0048ca60 -> ~_List_base<class C3DVector, class std::allocator<class C3DVector>> x1 :: compile: d\naming\w15\ov_t_qall\rebuild\src\compiled\00\85\CLandscapeBackgroundPatch_vectordeletingdestructor_00850240.cpp(20) : error C2143: syntax error : missing ';' before '<' | d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\85\CLandscapeBackgroundPatch_vectordeletingdestructor_00850240.cpp(20) : error C2059: syntax error : '<' | \naming\w15\ov_t_qall\rebuild\src\compiled\00\85\CLandscapeBackgroundPatch_vectordeletingdestructor_00850240.cpp(20) : error C2039: 'allocator' : is not a member of 'std'

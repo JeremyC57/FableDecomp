@@ -1,0 +1,2 @@
+edited 00c26090 moved CHandleBasedMemoryPool_012b4098::Free -> Free x1 +u ['?Free@CHandleBasedMemoryPool@@QAEXJ@Z'] -u ['?Free@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z']
+edited 00c265b0 moved CHandleBasedMemoryPool_012b4098::FreeAllocation -> Free x1 +u ['?Free@CHandleBasedMemoryPool@@QAEXJ@Z'] -u ['?FreeAllocation@CHandleBasedMemoryPool_012b4098@@QAEXJ@Z']

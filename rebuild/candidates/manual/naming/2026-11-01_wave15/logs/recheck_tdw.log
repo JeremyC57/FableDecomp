@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00972590   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00972590   WARN SHARED_HEADER_AVAILABLE CWorld
+00972590   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00972590   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesStage2::Cleanup
+009f4ed0   MATCH            PASS   CInputManager::EventScanStart
+
+WINS: 2
+  00972590 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage2::?Cleanup@CAIStateGroup_JackOfBladesStage2@@UAEXXZ
+  009f4ed0 MATCH CInputManager::EventScanStart

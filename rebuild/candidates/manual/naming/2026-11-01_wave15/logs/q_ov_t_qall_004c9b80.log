@@ -1,0 +1,24 @@
+edited 00449cb0 moved CThingCalls::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThingCalls@@QAEX_N@Z']
+edited 00487af0 moved CThingPlayerCreature::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThingPlayerCreature@@QAEX_N@Z']
+edited 005e9a60 moved C::Helper -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Helper@C@@QAEXH@Z']
+skip 0066fb50 moved CThing_0066fb50::Kill -> Kill x1 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\66\KillField04ThingIfFieldB4NonPositive_0066fb50.cpp(2) : error C2236: unexpected 'class' 'CThing' | naming\w15\ov_t_qall\rebuild\src\compiled\00\66\KillField04ThingIfFieldB4NonPositive_0066fb50.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | 1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\66\KillField04ThingIfFieldB4NonPositive_0066fb50.cpp(14) : error C2143: syntax error : missing ';' before '*'
+skip 006e11f0 CThing defined in another scope
+edited 00810fe0 moved CThing_00810fe0::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThing_00810fe0@@QAEXJ@Z']
+edited 00811040 moved CThing_00811040::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThing_00811040@@QAEXJ@Z']
+edited 00865e20 moved RetObj::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@RetObj@@QAEX_N@Z']
+edited 0087e840 moved RetObj::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@RetObj@@QAEX_N@Z']
+edited 008981c0 moved CThing_Retail::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThing_Retail@@QAEX_N@Z']
+edited 008a0820 moved CThingKill_Retail::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThingKill_Retail@@QAEX_N@Z']
+edited 008c3f00 moved RetObj::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@RetObj@@QAEX_N@Z']
+skip 008c5370 moved CThingCreatureBase::Kill -> Kill x1 :: compile: tionWaspQueenDie_FinishAction_008c5370.cpp(73) : error C2248: 'CThingCreatureBase::SetCurrentAction' : cannot access private member declared in class 'CThingCreatureBase'
+edited 008c9fc0 moved RetObj::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@RetObj@@QAEX_N@Z']
+skip 008d7730 CThing defined in another scope
+skip 008d79a0 CThing defined in another scope
+skip 008d79f0 CThing defined in another scope
+edited 008da690 moved ThingNative::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@ThingNative@@QAEX_N@Z']
+skip 008df310 CThing defined in another scope
+edited 008e7e70 moved ThingNative::Kill -> Kill x2 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@ThingNative@@QAEX_N@Z']
+edited 008ed830 moved RetObj::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@RetObj@@QAEX_N@Z']
+edited 008f5cf0 moved CClass_008f5cf0::Method -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Method@CClass_008f5cf0@@QAEXJ@Z']
+edited 0091c130 moved CThingKill::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThingKill@@QAEX_N@Z']
+edited 009239c0 moved CThingKill::Kill -> Kill x1 +u ['?Kill@CThing@@QAEX_N@Z'] -u ['?Kill@CThingKill@@QAEX_N@Z']

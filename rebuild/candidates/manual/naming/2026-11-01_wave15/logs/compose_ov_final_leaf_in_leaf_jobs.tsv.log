@@ -1,0 +1,58 @@
+skip 00411570 special member Compare
+skip 004676bb namespaced class std::vector<bool, class std::allocator<bool>>
+skip 0049eaf0 parameter types differ ['class CGameEvent const *'] -> ['class CGameEvent const &']
+skip 004a9cb0 namespaced class std::_Rb_tree<long, long, struct std::_Identity<long>, struct std::less<long>, class std::allocator<long>>
+test 004c73d0 renamed
+edited 004c73d0 GetPosition->GetPos +u [] -u []
+skip 005278a0 namespaced class std::_Rb_tree<unsigned __int64, struct std::pair<unsigned __int64 const, class CThing *>, struct std::_Select1st<struct std::pair<unsigned __int64 const, class CThing *>>, struct std::less<unsigned __int64>, class std::allocator<struct std::pair<unsigned __int64 const, class CThing *>>>
+skip 00527950 namespaced class std::_Rb_tree<struct CUnprovenKey_00527950, struct CUnprovenValue_00527950, struct CUnprovenKeyOfValue_00527950, struct std::less<struct CUnprovenKey_00527950>, class std::allocator<struct CUnprovenValue_00527950>>
+skip 005356a0 namespaced class std::_List_base<class CCountedPointer<class NUISystem::CAction>, class std::allocator<class CCountedPointer<class NUISystem::CAction>>>
+skip 005d96f0 0 candidate own definitions []
+skip 00634870 class CPlayer_Methods->CPlayer :: compile: -575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_final\rebuild\src\compiled\00\63\CPlayer_ResetModes_00634870.cpp(11) : error C2011: 'CPlayer' : 'class' type redefinition | 8649-a32d96bb1c2d\scratchpad\naming\w15\ov_final\rebuild\src\compiled\00\63\CPlayer_ResetModes_00634870.cpp(16) : error C2039: 'ResetModes' : is not a member of 'CPlayer' | d\scratchpad\naming\w15\ov_final\rebuild\src\compiled\00\63\CPlayer_ResetModes_00634870.cpp(18) : error C2673: 'ResetModes' : global functions do not have 'this' pointers
+skip 006bbf40 return type differs class C2DVector -> class C2DVector const
+skip 006f0dd0 special member _Rb_tree<class CCharString, struct std::pair<class CCharString const, class CCombatSequenceBase * 
+skip 007239c0 SetFacingAnglesFromRHSet->SetRHSet :: final not defined
+skip 0072a4a0 namespaced class NCameraModes::CScriptModuleBase
+skip 0072ac40 0 candidate own definitions []
+skip 00759a00 static/virtual differ
+skip 0075ccb0 0 candidate own definitions []
+skip 00776aa0 namespaced class std::_Rb_tree<long, struct std::pair<long const, class CShopItem>, struct std::_Select1st<struct std::pair<long const, class CShopItem>>, struct std::less<long>, class std::allocator<struct std::pair<long const, class CShopItem>>>
+skip 007acc50 namespaced class std::_Rb_tree<class CCharString, struct std::pair<class CCharString const, bool>, struct std::_Select1st<struct std::pair<class CCharString const, bool>>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, bool>>>
+edited 007b8590  +u [] -u []
+edited 007b85c0  +u [] -u []
+skip 007c75e0 static/virtual differ
+skip 007f7700 static/virtual differ
+edited 007f80c0 SetDoorOpen->SetDoorState private +u [] -u []
+edited 007fb870 private +u [] -u []
+skip 007fc6f0 0 candidate own definitions []
+skip 007fc710 0 candidate own definitions []
+skip 007fef40 0 candidate own definitions []
+skip 00824830 namespaced class std::_Rb_tree<unsigned __int64, unsigned __int64, struct std::_Identity<unsigned __int64>, struct std::less<unsigned __int64>, class std::allocator<unsigned __int64>>
+skip 00824870 namespaced class std::_Rb_tree<unsigned __int64, struct std::pair<unsigned __int64 const, class CScriptedMapBrush::CThingPosAndOrientation>, struct std::_Select1st<struct std::pair<unsigned __int64 const, class CScriptedMapBrush::CThingPosAndOrientation>>, struct std::less<unsigned __int64>, class std::allocator<struct std::pair<unsigned __int64 const, class CScriptedMapBrush::CThingPosAndOrientation>>>
+skip 00850280 namespaced class std::_List_base<struct std::pair<float, class std::list<class C3DVector, class std::allocator<class C3DVector>>>, class std::allocator<struct std::pair<float, class std::list<class C3DVector, class std::allocator<class C3DVector>>>>>
+skip 00861d00 static/virtual differ
+skip 0098fd80 namespaced class std::_Rb_tree<unsigned long, struct std::pair<unsigned long const, class CThreadedFileManager::CFileObject *>, struct std::_Select1st<struct std::pair<unsigned long const, class CThreadedFileManager::CFileObject *>>, struct std::less<unsigned long>, class std::allocator<struct std::pair<unsigned long const, class CThreadedFileManager::CFileObject *>>>
+skip 0099b2c0 0 candidate own definitions []
+edited 009c4120 protected +u [] -u []
+edited 009f1760 class CMemoryBuffer->CGameEvent Copy->AddData +u [] -u []
+skip 009f4ac0 0 candidate own definitions []
+already 009f4ed0 const
+skip 009fc020 parameter types differ ['class CResource *'] -> ['class CResource &']
+skip 009fe440 namespaced class CGraphicInfoFrame::CFrameData
+edited 00a00b90 UnInitialise_00a00b90->UnInitialise +u [] -u []
+skip 00a03b40 0 candidate own definitions []
+skip 00a03b50 0 candidate own definitions []
+skip 00a03b70 return type differs int -> enum EInputKey
+edited 00a03be0 class C00a03be0->CInputEvent M->SetAsNull +u [] -u []
+edited 00a0d3a0 class CClass_00a0d3a0->CProcessedInput __EH_epilog3->SetPlayer +u [] -u []
+skip 00a21640 namespaced class std::_Rb_tree<long, struct std::pair<long const, class CNavigatorAStar::CAStarState>, struct std::_Select1st<struct std::pair<long const, class CNavigatorAStar::CAStarState>>, struct std::less<long>, class std::allocator<struct std::pair<long const, class CNavigatorAStar::CAStarState>>>
+skip 00a69ad0 0 candidate own definitions []
+skip 00adcb90 namespaced class std::vector<class CVertexGroupBlock, class std::allocator<class CVertexGroupBlock>>
+skip 00aecbf0 special member DeleteData
+skip 00aecc30 special member Reset
+skip 00b8fee0 0 candidate own definitions []
+skip 00b95ee0 namespaced class std::_Rb_tree<enum EEngineRenderLayer, struct std::pair<enum EEngineRenderLayer const, class CEngineSceneRenderStats>, struct std::_Select1st<struct std::pair<enum EEngineRenderLayer const, class CEngineSceneRenderStats>>, struct std::less<enum EEngineRenderLayer>, class std::allocator<struct std::pair<enum EEngineRenderLayer const, class CEngineSceneRenderStats>>>
+skip 00b97cb0 namespaced class std::vector<class CCountedPointer<class CEngineSceneGrid>, class std::allocator<class CCountedPointer<class CEngineSceneGrid>>>
+skip 00b97e90 namespaced class std::vector<class CCountedPointer<class CEngineSceneGrid>, class std::allocator<class CCountedPointer<class CEngineSceneGrid>>>
+skip 00b98350 namespaced class std::_Rb_tree<long, struct std::pair<long const, class std::map<long, class CCountedPointer<class CEngineSceneMap>, struct std::less<long>, class std::allocator<struct std::pair<long const, class CCountedPointer<class CEngineSceneMap>>>>>, struct std::_Select1st<struct std::pair<long const, class std::map<long, class CCountedPointer<class CEngineSceneMap>, struct std::less<long>, class std::allocator<struct std::pair<long const, class CCountedPointer<class CEngineSceneMap>>>>>>, struct std::less<long>, class std::allocator<struct std::pair<long const, class std::map<long, class CCountedPointer<class CEngineSceneMap>, struct std::less<long>, class std::allocator<struct std::pair<long const, class CCountedPointer<class CEngineSceneMap>>>>>>>
+skip 00ca5510 0 candidate own definitions []

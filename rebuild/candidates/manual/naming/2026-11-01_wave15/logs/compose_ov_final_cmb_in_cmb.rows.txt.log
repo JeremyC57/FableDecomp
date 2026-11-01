@@ -1,0 +1,31 @@
+skip 0072cba0 stand-in CCreatureAction_CastStrengthBerserk is a PDB class not listed as a wrong spelling of 0062e900 (needs a CCombatActionBase base model)
+skip 0074ace0 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+skip 007ece20 stand-in CCombatAction_KickThingOnGround is a PDB class not listed as a wrong spelling of 0062e900 (needs a CCombatActionBase base model)
+skip 00868350 CBase_0062e900->CCombatActionBase virtual dtor; vptr taken from the leading pad (0x114 -> 0x110) :: final not named
+skip 008a9100 CCreatureActionAppear->CCombatActionBase virtual dtor; vptr taken from the leading pad (0x114 -> 0x110) :: diff ['rename moves bound ??0CCreatureActionAppear@@QAE@PAVCThingAICreature@@@Z off-PDB to ??0CCombatActionBase@@QAE@PAVCThingAICreature@@@Z']
+skip 008c2980 CCombatActionBase and stand-in CCreatureAction_CastWillForceSpell_Retail both declared (CCreatureAction_CastWillForceSpell_Retail not derived from it)
+skip 008c29f0 CCombatActionBase and stand-in CCreatureAction_CastPhysicalShieldSpell_Retail both declared (CCreatureAction_CastPhysicalShieldSpell_Retail not derived from it)
+skip 008c2a80 CCombatActionBase and stand-in CCreatureAction_CastWillEnflameSpell_Retail both declared (CCreatureAction_CastWillEnflameSpell_Retail not derived from it)
+skip 008c9690 CBase_0062e900->CCombatActionBase virtual dtor; vptr taken from the leading pad (0x118 -> 0x114) :: final not named
+skip 008ced90 CBase_0062e900->CCombatActionBase virtual dtor; vptr taken from the leading pad (0x114 -> 0x110) :: final not named
+skip 008cedd0 CBase_0062e900->CCombatActionBase virtual dtor; vptr taken from the leading pad (0x114 -> 0x110) :: final not named
+skip 008df3a0 shape ??1CCombatActionBase@NCreatureMode@@QAE@XZ
+skip 008df640 shape ??1CCreatureAction_GoUnderground@NCreatureMode@@QAE@XZ
+skip 008e0060 0 ~CCombatActionBase declarations
+skip 008e6ae0 0 ~CCombatActionBase declarations
+skip 0091f0d0 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+skip 00920730 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+skip 009208e0 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+skip 00920960 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+skip 009211d0 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+edited 00924880 virtual dtor replaces placeholder v00 +u ['??1CCombatActionBase@@UAE@XZ'] -u ['??1CCombatActionBase@@QAE@XZ']
+skip 00924930 first virtual 'virtual void FinishAction();' is not a placeholder
+edited 0092afe0 virtual added +u ['??1CCombatActionBase@@UAE@XZ'] -u ['??1CCombatActionBase@@QAE@XZ']
+edited 0093afc0 virtual added +u ['??1CCombatActionBase@@UAE@XZ', '??_GCCreatureAction_StandUp@@UAEPAXI@Z'] -u ['??1CCombatActionBase@@QAE@XZ']
+edited 00953a40 CDragonActionBase->CCombatActionBase access +u ['??1CCombatActionBase@@UAE@XZ', '??_GCCombatActionBase@@UAEPAXI@Z'] -u ['??1CDragonActionBase@@UAE@XZ', '??_GCDragonActionBase@@UAEPAXI@Z']
+skip 009551a0 CCombatActionBaseRetail->CCombatActionBase access :: compile: date_009551a0.cpp(112) : error C2243: 'type cast' : conversion from 'CCreatureAction_ThrowShotObjectRetail *' to 'CCreatureActionBaseRetail *' exists, but is inaccessible | _009551a0.cpp(120) : error C2243: 'type cast' : conversion from 'CCreatureAction_PlayCombatAnimationRetail *' to 'CCreatureActionBaseRetail *' exists, but is inaccessible
+skip 00956380 stand-in CCreatureAction_CastWillLightningSpell is a PDB class not listed as a wrong spelling of 0062e900 (needs a CCombatActionBase base model)
+skip 00956fe0 shape ??1CCreatureActionBase@N_0062e900@@QAE@XZ
+skip 00961880 CRetailBanditKingLungeAction->CCombatActionBase virtual dtor; vptr taken from the leading pad (0x114 -> 0x110) :: diff ['rename moves bound ?AIAction_CombatPerformActionAndWait@BanditKingLungeMethods@ off-PDB to ?AIAction_CombatPerformActionAndWait@BanditKingLungeMethods@', 'rename moves bound ??0CRetailBanditKingLungeAction@@QAE@PAUCThingRetail@@0@Z off-PDB to ??0CCombatActionBase@@QAE@PAUCThingRetail@@0@Z']
+skip 009627c0 CIceCombatAction->CCombatActionBase access :: diff ['rename moves bound ?AIAction_CombatPerformActionAndWait@IceAssaultMethods@@QAEJ off-PDB to ?AIAction_CombatPerformActionAndWait@IceAssaultMethods@@QAEJ']
+skip 0096c4f0 stand-in CCreatureAction_ThunderLightningStorm is a PDB class not listed as a wrong spelling of 0062e900 (needs a CCombatActionBase base model)

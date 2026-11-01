@@ -1,0 +1,1 @@
+skip 00836780 moved CThingSoundEmitter::GetState -> WorldUpdate x1 :: final not named

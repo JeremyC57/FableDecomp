@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00cef9a0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cef9a0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cef9a0.obj; graded the largest function
+00cef9a0   RELOCATION_MATCH PASS   CVtable_012c3fa4::`scalar deleting destructor'
+00e0e7b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e7b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e7b0.obj; graded the largest function
+00e0e7b0   WARN RELOC_NAME: ??1CVector_008ac970@@QAE@XZ -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00e0e7b0   RELOCATION_MATCH PASS   CVtable_012dfd3c::`scalar deleting destructor'
+00e9fba0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e9fba0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e9fba0.obj; graded the largest function
+00e9fba0   RELOCATION_MATCH PASS   CVtable_012ed558::`scalar deleting destructor'
+
+WINS: 3
+  00cef9a0 RELOCATION_MATCH CVtable_012c3fa4::`vector_deleting_destructor'
+  00e0e7b0 RELOCATION_MATCH CVtable_012dfd3c::`vector_deleting_destructor'
+  00e9fba0 RELOCATION_MATCH CVtable_012ed558::`vector_deleting_destructor'
+addr       parity           behav  name
+00daabd0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00daabd0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00daabd0.obj; graded the largest function
+00daabd0   RELOCATION_MATCH PASS   CVtable_012d7158::`scalar deleting destructor'
+00e5d110   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5d110.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5d110.obj; graded the largest function
+00e5d110   RELOCATION_MATCH PASS   CVtable_012e65e0::`scalar deleting destructor'
+00ed0e30   WARN SHARED_HEADER_AVAILABLE CScriptBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed0e30.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed0e30.obj; graded the largest function
+00ed0e30   RELOCATION_MATCH PASS   CVtable_012f17dc::`scalar deleting destructor'
+
+WINS: 3
+  00daabd0 RELOCATION_MATCH CVtable_012d7158::`vector_deleting_destructor'
+  00e5d110 RELOCATION_MATCH CVtable_012e65e0::`vector_deleting_destructor'
+  00ed0e30 RELOCATION_MATCH CVtable_012f17dc::`vector_deleting_destructor'

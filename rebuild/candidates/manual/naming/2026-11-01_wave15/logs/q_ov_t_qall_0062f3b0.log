@@ -1,0 +1,44 @@
+skip 006f8280 no calls of CBase_0062f3b0
+skip 006f8560 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: qall\rebuild\src\compiled\00\6f\CCreatureActionWaspQueenDeath_CCreatureActionWaspQueenDeath_006f8560.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | build\src\compiled\00\6f\CCreatureActionWaspQueenDeath_CCreatureActionWaspQueenDeath_006f8560.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | led\00\6f\CCreatureActionWaspQueenDeath_CCreatureActionWaspQueenDeath_006f8560.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 006f8640 no calls of CBase_0062f3b0
+skip 006f8890 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: ld\src\compiled\00\6f\CCreatureActionHobbeSpellcasterAim_CCreatureActionHobbeSpellcasterAim_006f8890.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | compiled\00\6f\CCreatureActionHobbeSpellcasterAim_CCreatureActionHobbeSpellcasterAim_006f8890.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | CCreatureActionHobbeSpellcasterAim_CCreatureActionHobbeSpellcasterAim_006f8890.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 006f89f0 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: uild\src\compiled\00\6f\CCreatureActionSummonerFlameSlice_CCreatureActionSummonerFlameSlice_006f89f0.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | c\compiled\00\6f\CCreatureActionSummonerFlameSlice_CCreatureActionSummonerFlameSlice_006f89f0.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | f\CCreatureActionSummonerFlameSlice_CCreatureActionSummonerFlameSlice_006f89f0.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 0074df10 no calls of CBase_0062f3b0
+skip 008ae2f0 no calls of CBase_0062f3b0
+skip 008b8900 no calls of CBase_0062f3b0
+skip 008b89a0 no calls of CBase_0062f3b0
+skip 008b8ac0 no calls of CBase_0062f3b0
+skip 008b9240 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: \ov_t_qall\rebuild\src\compiled\00\8b\CCreatureActionScreamerDie_CCreatureActionScreamerDie_008b9240.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | all\rebuild\src\compiled\00\8b\CCreatureActionScreamerDie_CCreatureActionScreamerDie_008b9240.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | \compiled\00\8b\CCreatureActionScreamerDie_CCreatureActionScreamerDie_008b9240.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 008be350 no calls of CBase_0062f3b0
+skip 008be520 no calls of CBase_0062f3b0
+skip 008be620 no calls of CBase_0062f3b0
+skip 008be6c0 no calls of CBase_0062f3b0
+skip 008be820 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: b\CCreatureActionCastWillReclaimUndeadFollower_CCreatureActionCastWillReclaimUndeadFollower_008be820.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | tureActionCastWillReclaimUndeadFollower_CCreatureActionCastWillReclaimUndeadFollower_008be820.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | illReclaimUndeadFollower_CCreatureActionCastWillReclaimUndeadFollower_008be820.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 008be870 no calls of CBase_0062f3b0
+skip 008be910 no calls of CBase_0062f3b0
+skip 008beb00 no calls of CBase_0062f3b0
+skip 008c3d10 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: rc\compiled\00\8c\CCreatureActionBriarRoseShotFarOutof_CCreatureActionBriarRoseShotFarOutof_008c3d10.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | iled\00\8c\CCreatureActionBriarRoseShotFarOutof_CCreatureActionBriarRoseShotFarOutof_008c3d10.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | atureActionBriarRoseShotFarOutof_CCreatureActionBriarRoseShotFarOutof_008c3d10.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 008c5e90 no calls of CBase_0062f3b0
+skip 008c97e0 no calls of CBase_0062f3b0
+skip 008c98e0 no calls of CBase_0062f3b0
+skip 008cc500 no calls of CBase_0062f3b0
+skip 008cd330 no calls of CBase_0062f3b0
+skip 008cee70 no calls of CBase_0062f3b0
+skip 008ceee0 no calls of CBase_0062f3b0
+skip 008cf260 no calls of CBase_0062f3b0
+skip 008e5030 no calls of CBase_0062f3b0
+skip 008e6f10 no calls of CBase_0062f3b0
+skip 008e8de0 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: e\CCreatureActionBriarRoseInvulnerableTeleport_CCreatureActionBriarRoseInvulnerableTeleport_008e8de0.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | tureActionBriarRoseInvulnerableTeleport_CCreatureActionBriarRoseInvulnerableTeleport_008e8de0.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | RoseInvulnerableTeleport_CCreatureActionBriarRoseInvulnerableTeleport_008e8de0.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 008f5850 no calls of CBase_0062f3b0
+skip 00925c40 no calls of CBase_0062f3b0
+skip 00925d10 no calls of CBase_0062f3b0
+skip 00925ef0 no calls of CBase_0062f3b0
+skip 00953cf0 no calls of CBase_0062f3b0
+skip 00956990 no calls of CBase_0062f3b0
+skip 009569e0 no calls of CBase_0062f3b0
+skip 00956a20 no calls of CBase_0062f3b0
+skip 00957400 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: led\00\95\CCreatureActionBriarRoseIntoInvulnerable_CCreatureActionBriarRoseIntoInvulnerable_00957400.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | 95\CCreatureActionBriarRoseIntoInvulnerable_CCreatureActionBriarRoseIntoInvulnerable_00957400.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | ionBriarRoseIntoInvulnerable_CCreatureActionBriarRoseIntoInvulnerable_00957400.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 00957480 moved CBase_0062f3b0::CBase_0062f3b0 -> CCombatActionBase x1 :: compile: uild\src\compiled\00\95\CCreatureActionBriarRoseForcePush_CCreatureActionBriarRoseForcePush_00957480.cpp(42) : error C2351: obsolete C++ constructor initialization syntax | c\compiled\00\95\CCreatureActionBriarRoseForcePush_CCreatureActionBriarRoseForcePush_00957480.cpp(42) : error C2612: trailing '->' illegal in base/member initializer list | 5\CCreatureActionBriarRoseForcePush_CCreatureActionBriarRoseForcePush_00957480.cpp(42) : error C2512: 'CIntelligentPointer' : no appropriate default constructor available
+skip 0096c100 no calls of CBase_0062f3b0
+skip 0096c140 no calls of CBase_0062f3b0
+skip 0097d1c0 no calls of CBase_0062f3b0

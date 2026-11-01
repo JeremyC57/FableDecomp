@@ -1,0 +1,8 @@
+skip 004da967 no vptr in CTCBase model
+skip 004dcbce no vptr in CTCBase model
+skip 004dcdfd no vptr in CTCBase model
+skip 004dcf4e no vptr in CTCBase model
+skip 004de6ed shape ?outer@FableDestVal_004de6ed_t@@QAIXXZ
+skip 004e0ae8 shape ?outer@FableDestVal_004e0ae8_t@@QAIXXZ
+skip 004e5c71 shape ?outer@FableDestVal_004e5c71_t@@QAIXXZ
+skip 006e1e60 no vptr in CTCBase model

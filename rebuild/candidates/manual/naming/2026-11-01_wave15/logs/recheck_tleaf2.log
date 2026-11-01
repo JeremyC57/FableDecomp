@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0049eaf0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+0049eaf0   WARN SHARED_HEADER_AVAILABLE CWorld
+0049eaf0   RELOCATION_MATCH PASS   CWorld::HandleMoveHeroToRegionGameEvent
+006bbf40   MATCH            PASS   CRegion::GetWorldMapOffset
+009fc020   MATCH            PASS   CResourceList::RemoveResource
+00a03b40   MATCH            PASS   CInputEvent::GetType
+00a03b50   MATCH            PASS   CInputEvent::GetDeviceType
+00a03b70   MATCH            PASS   CInputEvent::GetKey
+
+WINS: 6
+  0049eaf0 RELOCATION_MATCH CWorld::?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z
+  006bbf40 MATCH CRegion::GetWorldMapOffset
+  009fc020 MATCH CResourceList::RemoveResource
+  00a03b40 MATCH CInputEvent::?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
+  00a03b50 MATCH CInputEvent::?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ
+  00a03b70 MATCH _global::?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ

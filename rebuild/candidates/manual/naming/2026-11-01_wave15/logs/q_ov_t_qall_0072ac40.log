@@ -1,0 +1,4 @@
+skip 007bd7ca free stand-in FadeOutEffect not a one-argument this-call
+skip 007be0f9 call of FadeOutEffect with 0 args
+skip 007c6da0 call of FadeOutEffect with 0 args
+skip 007c75e0 call of FadeOutEffect with 0 args

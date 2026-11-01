@@ -1,0 +1,33 @@
+addr       parity           behav  name
+0049eaf0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+0049eaf0   WARN SHARED_HEADER_AVAILABLE CWorld
+0049eaf0   RELOCATION_MATCH PASS   CWorld::HandleMoveHeroToRegionGameEvent
+007239c0   RELOCATION_MATCH PASS   CTCPhysicsStandard::SetRHSet
+007a0400   WARN SHARED_HEADER_AVAILABLE CTCWillLightning
+007a0400   RELOCATION_MATCH PASS   CTCWillLightning::StartLoopingSound
+007f7700   MATCH            PASS   CTCActivationReceptorBase::Deactivate
+00a03b40   MATCH            PASS   CInputEvent::GetType
+00a03b70   MATCH            PASS   CInputEvent::GetKey
+
+WINS: 6
+  0049eaf0 RELOCATION_MATCH CWorld::?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z
+  007239c0 RELOCATION_MATCH CTCPhysicsStandard::SetRHSet
+  007a0400 RELOCATION_MATCH CTCWillLightning::?StartLoopingSound@CTCWillLightning@@QAEXXZ
+  007f7700 MATCH _global::?Deactivate@CTCActivationReceptorBase@@UAEXXZ
+  00a03b40 MATCH CInputEvent::?GetType@CInputEvent@@QBE?AW4EInputEventType@@XZ
+  00a03b70 MATCH _global::?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ
+addr       parity           behav  name
+006bbf40   MATCH            PASS   CRegion::GetWorldMapOffset
+00759a00   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00759a00   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::SetRHSet
+007c75e0   WARN RELOC_NAME: ?FadeOutEffect@CThing@@QAEXXZ -> 0072ac40 labelled 'CTCSpecialAbilities::FadeOrKillEffect'
+007c75e0   RELOCATION_MATCH PASS   CTCTurncoatSpell::OnRemove
+009fc020   MATCH            PASS   CResourceList::RemoveResource
+00a03b50   MATCH            PASS   CInputEvent::GetDeviceType
+
+WINS: 5
+  006bbf40 MATCH CRegion::GetWorldMapOffset
+  00759a00 RELOCATION_MATCH CTCPhysicsRigidBody::SetRHSet
+  007c75e0 RELOCATION_MATCH CTCTurncoatSpell::OnRemove
+  009fc020 MATCH CResourceList::RemoveResource
+  00a03b50 MATCH CInputEvent::?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ

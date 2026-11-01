@@ -1,0 +1,9 @@
+skip 0056ea4e free stand-in GetXString not a one-argument this-call
+skip 005907ab free stand-in GetXString not a one-argument this-call
+skip 0059ca95 free stand-in GetXString not a one-argument this-call
+skip 0059cfbd free stand-in GetXString not a one-argument this-call
+skip 0059d0b8 free stand-in GetXString not a one-argument this-call
+skip 0059d1b1 free stand-in GetXString not a one-argument this-call
+skip 0059d65a free stand-in GetXString not a one-argument this-call
+skip 0059d761 free stand-in GetXString not a one-argument this-call
+skip 005a8a5d free stand-in GetXString not a one-argument this-call

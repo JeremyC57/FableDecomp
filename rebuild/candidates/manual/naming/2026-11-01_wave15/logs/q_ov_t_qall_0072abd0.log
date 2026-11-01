@@ -1,0 +1,2 @@
+skip 0078f6e0 free stand-in FadeOrKillEffect not a one-argument this-call
+skip 00794c10 free stand-in FadeOrKillEffect not a one-argument this-call

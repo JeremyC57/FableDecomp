@@ -1,0 +1,2 @@
+edited 0090fdb0 inplace CTCVillage::GetSchoolTimes -> GetSchoolTimes x1 +u ['?GetSchoolTimes@CTCVillage@@QBE_NAAM0@Z'] -u ['?GetSchoolTimes@CTCVillage@@QAE_NPAM0@Z']
+edited 009432c0 inplace CTCVillage::GetSchoolTimes -> GetSchoolTimes x1 +u ['?GetSchoolTimes@CTCVillage@@QBE_NAAM0@Z'] -u ['?GetSchoolTimes@CTCVillage@@QAE_NPAM0@Z']

@@ -1,0 +1,36 @@
+skip 00ce6c80 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+edited 00cef9a0 CRecordSet_00cbd510->CScriptBase virtual dtor replaces explicit vptr _vptr +u ['??1CScriptBase@@UAE@XZ'] -u ['??1CRecordSet_00cbd510@@QAE@XZ']
+skip 00d1cbd0 no vptr in CScriptBase model
+skip 00d34440 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d50650 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d61c00 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d7c6d0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d80c00 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d84b20 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d87ab0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d89d40 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d99e10 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00d9e1e0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+edited 00daabd0 CRecordSet_00cbd510->CScriptBase virtual dtor replaces explicit vptr _vptr +u ['??1CScriptBase@@UAE@XZ'] -u ['??1CRecordSet_00cbd510@@QAE@XZ']
+skip 00dc2540 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00ddad00 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00de02f0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00df40c0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00df5c60 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00dfa080 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00e00660 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00e0afb0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+edited 00e0e7b0 CRecordSet_00cbd510->CScriptBase virtual dtor replaces explicit vptr _vptr +u ['??1CScriptBase@@UAE@XZ'] -u ['??1CRecordSet_00cbd510@@QAE@XZ']
+skip 00e13bf0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00e18410 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00e1a7d0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00e2ab30 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+edited 00e5d110 CRecordSet_00cbd510->CScriptBase virtual dtor replaces explicit vptr _vptr +u ['??1CScriptBase@@UAE@XZ'] -u ['??1CRecordSet_00cbd510@@QAE@XZ']
+skip 00e6e280 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00e92940 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+edited 00e9fba0 CRecordSet_00cbd510->CScriptBase virtual dtor replaces explicit vptr _vptr +u ['??1CScriptBase@@UAE@XZ'] -u ['??1CRecordSet_00cbd510@@QAE@XZ']
+skip 00ea2cc0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00ea86c0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00eae8e0 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+skip 00ebcc70 shape ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z
+edited 00ed0e30 CRecordSet_00cbd510->CScriptBase virtual dtor replaces explicit vptr _vptr +u ['??1CScriptBase@@UAE@XZ'] -u ['??1CRecordSet_00cbd510@@QAE@XZ']

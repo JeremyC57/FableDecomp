@@ -1,0 +1,567 @@
+row	parity	behaviour	families	name
+004016b0	RELOCATION_MATCH	PASS	queue	CDiskFileWin32::`scalar_deleting_destructor'
+00401fe0	RELOCATION_MATCH	PASS	queue	EULA::DoEULAThings
+004047d0	RELOCATION_MATCH	PASS	queue	CStringParser::`scalar_deleting_destructor'
+0040e840	RELOCATION_MATCH	PASS	queue	CPersistTraits<CWideString>::TransferOut
+0040ec50	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0040ec50
+004120c0	RELOCATION_MATCH	PASS	queue	CMemoryFile::`scalar_deleting_destructor'
+004133a0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004133a0
+00413480	RELOCATION_MATCH	PASS	queue	CConsoleInputBase::`scalar_deleting_destructor'
+00413780	RELOCATION_MATCH	PASS	queue	CConsoleVariable::`scalar deleting destructor'
+004159e0	RELOCATION_MATCH	PASS	queue	AddUBYTE
+004354c0	RELOCATION_MATCH	PASS	bcn	CDisplayEngine::~CDisplayEngine
+00438020	RELOCATION_MATCH	PASS	queue	CScreenMessage::CScreenMessage
+004380a0	RELOCATION_MATCH	PASS	queue	CScreenMessage::GetText
+004381b0	RELOCATION_MATCH	PASS	queue	CScreenMessage::IsHardCoded
+0043dd10	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0043dd10
+0043dd40	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0043dd40
+0043f960	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0043f960
+00449cb0	RELOCATION_MATCH	PASS	queue	CPlayerManager::SwapToHero
+004509d9	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004509d9
+004509f8	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004509f8
+0047b300	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0047b300
+004852d1	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004852d1
+004874f0	RELOCATION_MATCH	PASS	queue	CPlayer::IsUsingJoystickDeviceNumber
+00487af0	RELOCATION_MATCH	PASS	queue	CPlayer::Uninitialise
+00488b20	RELOCATION_MATCH	PASS	queue	CPlayer::LocateCharacterStartHolySite
+0048de8a	RELOCATION_MATCH	PASS	queue	CSubtitleRenderer::GetVisibleText
+0048f6bd	RELOCATION_MATCH	PASS	queue	CSubtitleRenderer::GetTextFromTextTag
+0049bc70	RELOCATION_MATCH	PASS	bcn	CGameJoystickManager::ScalarDeletingDestructor
+0049eaf0	RELOCATION_MATCH	PASS	leaf	CWorld::HandleMoveHeroToRegionGameEvent
+004b75e0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004b75e0
+004b77e0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004b77e0
+004c73d0	MATCH	PASS	leaf	CThing::GetPosition
+004cf3a0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_004cf3a0
+004d7aad	RELOCATION_MATCH	PASS	queue	CTCRotate::`scalar_deleting_destructor'
+004d97ce	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_004d97ce
+004da68a	RELOCATION_MATCH	PASS	queue	std::pair<long,CCharString>::`scalardeletingdestructor'
+004e0080	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_004e0080
+0051f0e0	RELOCATION_MATCH	PASS	queue	CThingManager::CopyHeroToHero
+00541f20	RELOCATION_MATCH	PASS	queue	NUISystem::CIconText::SetValue
+0054f410	RELOCATION_MATCH	PASS	queue	NUISystem::CText::SetValue
+0055e850	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::GetCachedClanLogosAsString
+0055ea80	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString
+0055f480	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::CreateStringFromMyScores
+005615c0	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::DownloadListOfMyClans
+00561980	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::DownloadMyClansLogos
+00561dc0	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::DownloadMemberListForSelectedClan
+005621b0	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers
+00563130	RELOCATION_MATCH	PASS	queue	CTCHeroOnlineScoreboard::ShowScoreboard
+00565be0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00565be0
+0056ead6	RELOCATION_MATCH	PASS	queue	CSliderAnimator::ExtractParenthesis
+0057a545	RELOCATION_MATCH	PASS	cab	CCreatureAction_PlayIntoLoopOutOfAnimation::~CCreatureAction_PlayIntoLoopOutOfAnimation
+0057b783	RELOCATION_MATCH	PASS	cab	CTCHeroStats::Vomit
+00582414	RELOCATION_MATCH	PASS	queue	CTCInventory::DeactivateAllEditBoxes
+005907ab	RELOCATION_MATCH	PASS	anong	CTCInventory::ConstructItemCategoryListPC
+00596550	RELOCATION_MATCH	PASS	queue	NUISystem::CFrontEndManager::GetScoreboardOptionsToProfile
+005b157d	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_005b157d
+005c30d3	RELOCATION_MATCH	PASS	queue	CTCInventoryWeapons::RefreshActiveWeaponData
+005c311a	RELOCATION_MATCH	PASS	queue	CTCInventoryWeapons::GetItemOfTypeInInventory
+005c3444	RELOCATION_MATCH	PASS	newline	CTCInventoryWeapons::ConstructWieldEntryPC
+005c3a95	RELOCATION_MATCH	PASS	queue	CTCInventoryWeapons::OnSerialise
+005c4769	RELOCATION_MATCH	PASS	queue	CTCInventoryWeapons::GetActiveMeleeWeaponDamage
+005c99fd	RELOCATION_MATCH	PASS	queue	CTCInventoryWeapons::ConfiscateItems
+005cbdfa	RELOCATION_MATCH	PASS	queue	CVillageTaskCarryCrate::IsCreatureAssignedToTask
+005cc091	RELOCATION_MATCH	PASS	bip,cab	CCreatureAction_UnsheatheItemFromInventory::~CCreatureAction_UnsheatheItemFromInventory
+005d8135	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_005d8135
+005e9a60	RELOCATION_MATCH	PASS	queue	std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>
+005fad40	RELOCATION_MATCH	PASS	queue	CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+006129c0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_006129c0
+00618100	RELOCATION_MATCH	PASS	bip	std::list<CIntelligentPointer<CThing> >::_M_insert_dispatch
+006232c0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_006232c0
+00629020	RELOCATION_MATCH	PASS	bip,cab	_unattributed::~CAggregate_00629020
+00629060	RELOCATION_MATCH	PASS	cab	_unattributed::~CAggregate_00629060
+00629110	RELOCATION_MATCH	PASS	bip,cab	_unattributed::~CAggregate_00629110
+0062da90	RELOCATION_MATCH	PASS	bip	CCreatureAction_GiveItemToThing::`scalar deleting destructor'
+00630a50	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00630a50
+00654cb9	RELOCATION_MATCH	PASS	queue	CVillageTaskCarryCrate::IsCreatureAssignedToTask
+006592e2	RELOCATION_MATCH	PASS	queue	CTCVillage::AddTorchToVillage
+0065d655	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+0065d691	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+0065d6b6	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+0065d6db	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+0065d700	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+00662820	RELOCATION_MATCH	PASS	queue	CThingCreatureBase::IsAnimCombinationAnim
+00663510	RELOCATION_MATCH	PASS	queue	CThingCreatureBase::InitialiseMovementSpeed
+00665f90	RELOCATION_MATCH	PASS	queue	CThingCreatureBase::PlayCreatureContinuousSounds
+00668b80	RELOCATION_MATCH	PASS	queue	_global::CIntelligentPointer_Assign_00668b80
+0066c2f0	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_0066c2f0
+00687050	RELOCATION_MATCH	PASS	bcn	CTCBase::ScalarDeletingDestructor
+00687210	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_00687210
+00687310	RELOCATION_MATCH	PASS	bip	CMessageEvent::CMessageEvent
+00692940	RELOCATION_MATCH	PASS	dec	CCreatureActionBase::GetWorld
+00692c10	RELOCATION_MATCH	PASS	dec	CCreatureActionBase::GetWorldMap
+00695640	RELOCATION_MATCH	PASS	queue	NCreatureAction::CActionEventExplosion::`scalar_deleting_destructor'
+00695760	RELOCATION_MATCH	PASS	queue	NCreatureAction::CActionEventRemoveObject::`scalar_deleting_destructor'
+00698c30	RELOCATION_MATCH	PASS	queue	CGameCameraManager::PushDownManualCameraList
+00698d10	RELOCATION_MATCH	PASS	queue	PushProjectileWeaponMode
+00698e40	RELOCATION_MATCH	PASS	queue	CGameCameraManager::PushZTargetMode
+00698f50	RELOCATION_MATCH	PASS	queue	PushSpecialCameraMode
+00699970	RELOCATION_MATCH	PASS	queue	CGameCameraManager::PushLookAround
+0069b790	RELOCATION_MATCH	PASS	queue	CGameCameraManager::Update
+0069f0f0	RELOCATION_MATCH	PASS	bip	CCreatureAction_UnsheatheItemFromInventory::CCreatureAction_UnsheatheItemFromInventory
+006a08f0	RELOCATION_MATCH	PASS	cab	CCreatureAction_SheatheItemToInventory::`scalar_deleting_destructor'
+006a0d50	RELOCATION_MATCH	PASS	bip	CCreatureAction_UseObject::CCreatureAction_UseObject
+006a28a0	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+006a68f0	RELOCATION_MATCH	PASS	queue	CThingPhysical::ModifyHealth
+006baa70	RELOCATION_MATCH	PASS	queue	_global::DeleteObject_006baa70
+006bbf40	MATCH	PASS	leaf	CRegion::GetWorldMapOffset
+006d76c0	RELOCATION_MATCH	PASS	queue	NHeroExperience::GetWeaponModifiedExperienceMultiplierForThing
+006dd6c0	RELOCATION_MATCH	PASS	cab	CCreatureAction_ShowToSheatheTrophy::~CCreatureAction_ShowToSheatheTrophy
+006df860	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_006df860
+006df970	RELOCATION_MATCH	PASS	bip	CCreatureAction_UnsheatheToShowToSheatheTrophy::`scalar_deleting_destructor'
+006df9b0	RELOCATION_MATCH	PASS	cab	CCreatureAction_SheatheTrophy::`scalar_deleting_destructor'
+006e0e80	RELOCATION_MATCH	PASS	queue	CTCDParticleEmitter::SendCreationCriteriaSound
+006e0fa0	RELOCATION_MATCH	PASS	queue	CTCDParticleEmitter::OnDie
+006e8730	RELOCATION_MATCH	PASS	queue	CCombatManager::PickBestSequenceFromIndexList
+006f8fa0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_006f8fa0
+006f91e0	RELOCATION_MATCH	PASS	queue	CAnimationEventQuery_006f91e0::GetEmbeddedEventNames
+006f9240	RELOCATION_MATCH	PASS	queue	CAnimationEventQuery_006f9240::GetEmbeddedEventNames
+006f9790	RELOCATION_MATCH	PASS	queue	NAnimationEvents::CManager::GetEventTimeInSeconds
+007004b0	RELOCATION_MATCH	PASS	anong	COpinionReactionManager::COpinionReactionManager
+00714730	RELOCATION_MATCH	PASS	bcn,queue	NTCScriptedControl::CActionMoveTo::OnCleanup
+00715710	RELOCATION_MATCH	PASS	bcn	NTCScriptedControl::CActionFollowCreature::OnActivate
+00722f30	RELOCATION_MATCH	PASS	bip	std::vector<CTCSmokeGenerator::CGenerationPos, std::allocator<CTCSmokeGenerator::CGenerationPos>>::operator=
+007239c0	RELOCATION_MATCH	PASS	leaf	CTCPhysicsStandard::SetRHSet
+00724010	RELOCATION_MATCH	PASS	queue	CTCPhysicsStandard::OnCreate
+00729c30	RELOCATION_MATCH	PASS	queue	CTCActionUseScriptedHook::SetEntranceAsLocked
+0072c230	RELOCATION_MATCH	PASS	sai	CTCUndeadSoul::FrameUpdate
+00730440	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_00730440
+00737310	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+0073d7a0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0073d7a0
+0073fe70	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeCrouch::`scalar_deleting_destructor'
+00744730	RELOCATION_MATCH	PASS	queue	CTCPerceiveThing::SetLastAwareInfo
+007471a0	RELOCATION_MATCH	PASS	queue	CTCStealth::IsAbleToFlourishDangerThings
+0074cb00	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+00759a00	RELOCATION_MATCH	PASS	leaf	CTCPhysicsRigidBody::SetRHSet
+007673c0	RELOCATION_MATCH	PASS	bip	CTCObjectAugmentations::CTCObjectAugmentations
+00778d60	RELOCATION_MATCH	PASS	bcn	CTCDCameraPoint::Construct
+00779d20	RELOCATION_MATCH	PASS	bcn	CTCDExperienceOrb::Construct
+0077c490	RELOCATION_MATCH	PASS	queue	NGraphicAppearance::CTCGraphicAppearanceSprite::SetRotationAngle
+0077e0a0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_0077e0a0
+00781540	RELOCATION_MATCH	PASS	bip	std::_Destroy<NFire::CFirePoint>
+00783380	RELOCATION_MATCH	PASS	anong	CTCBoastingCrowdControl::SpawnCrowdMember
+00786b10	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00786b10
+00787f29	RELOCATION_MATCH	PASS	queue	CTCMeleeTrap::InitialiseStrikeAnimation
+00788406	RELOCATION_MATCH	PASS	anong,queue	CTCMeleeTrap::TriggerTrap
+007884f5	RELOCATION_MATCH	PASS	anong	CTCMeleeTrap::ResetTrap
+0078ab20	RELOCATION_MATCH	PASS	bip,cab	_unattributed::~CAggregate_0078ab20
+0078af00	RELOCATION_MATCH	PASS	bip	CCreatureAction_HeroLoadRangedWeapon::`scalar_deleting_destructor'
+00798510	RELOCATION_MATCH	PASS	sai	CTCForcePushed::OnKill
+00798540	RELOCATION_MATCH	PASS	sai	CTCForcePushed::OnRemove
+00798570	RELOCATION_MATCH	PASS	sai	CTCForcePushed::CTCForcePushed
+007986a0	RELOCATION_MATCH	PASS	sai	CTCForcePushed::SetUpForcePush
+00798770	RELOCATION_MATCH	PASS	sai	CTCForcePushed::FinishBeingForcePushed
+007a0400	RELOCATION_MATCH	PASS	queue	CTCWillLightning::StartLoopingSound
+007a0630	RELOCATION_MATCH	PASS	queue	CLightningBeam
+007a09b0	RELOCATION_MATCH	PASS	queue	CTCWillLightning::CTCWillLightning
+007a3410	RELOCATION_MATCH	PASS	queue	std::__unguarded_insertion_sort_aux<CThing **, CThing *, CThingCompare_NearestToPos>
+007a37b0	RELOCATION_MATCH	PASS	queue	std::__make_heap<CThing **, CThingCompare_NearestToPos, CThing *, int>
+007a3ac0	RELOCATION_MATCH	PASS	queue	std::__insertion_sort<CThing **, CThingCompare_NearestToPos>
+007a3f30	RELOCATION_MATCH	PASS	queue	std::__final_insertion_sort<CThing **, CThingCompare_NearestToPos>
+007a4140	RELOCATION_MATCH	PASS	queue	std::__introsort_loop<CThing **, CThing *, int, CThingCompare_NearestToPos>
+007a7370	RELOCATION_MATCH	PASS	sai	CTCBattleCharge::OnInitialActivate
+007a9820	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_007a9820
+007aa4d0	RELOCATION_MATCH	PASS	sai	CTCAssassinRush::FinalCleanup
+007aa6b0	RELOCATION_MATCH	PASS	sai	CTCAssassinRush::OnInitialActivate
+007ab190	RELOCATION_MATCH	PASS	sai,queue	CTCAssassinRush::FrameUpdate
+007b8590	RELOCATION_MATCH	PASS	queue,leaf	CTCTavernTable::GetTankard
+007b85c0	RELOCATION_MATCH	PASS	queue,leaf	CTCTavernTable::GetFood
+007b8aa0	RELOCATION_MATCH	PASS	queue	CTCTavernTable::FreeSeat
+007b9090	RELOCATION_MATCH	PASS	queue	CTCTavernTable::FreePoint
+007ba4f0	RELOCATION_MATCH	PASS	queue	CTCTavernBar::FreeBarPoint
+007bae00	RELOCATION_MATCH	PASS	bip	CTCTrespasser::CTCTrespasser
+007bb660	RELOCATION_MATCH	PASS	queue	CThingSearchTools::GetAllThings
+007be0f9	RELOCATION_MATCH	PASS	queue	NThingShot::CTCShotDefinitionForcePushBall::OnCollision
+007c2880	RELOCATION_MATCH	PASS	queue	operator==<CThingBuilding>
+007c6aa0	RELOCATION_MATCH	PASS	queue	CTCTurncoatSpell::StartTurncoatingEffects
+007c75e0	RELOCATION_MATCH	PASS	leaf	CTCTurncoatSpell::OnRemove
+007c7a00	RELOCATION_MATCH	PASS	queue	CTCTurncoat::ModifyTurncoatedness
+007c8de0	RELOCATION_MATCH	PASS	queue	CTCFireballSpell::ProcessLevellingUpFX
+007cc4d0	RELOCATION_MATCH	PASS	queue	CTCMultiArrow::Init
+007de030	RELOCATION_MATCH	PASS	queue	CTCCreatureFlyInCircles::FrameUpdate
+007dfcf0	RELOCATION_MATCH	PASS	queue	CTCTeleporter::TeleportHero
+007e5cc0	RELOCATION_MATCH	PASS	sai	CTCFireRangedWeaponOnLeavingStateGroup::FinalCleanup
+007e61b0	RELOCATION_MATCH	PASS	queue	CTCOracleMinigame::FireOutput
+007e8050	RELOCATION_MATCH	PASS	queue	CCreatureAction_Read::`scalar_deleting_destructor'
+007e8a00	RELOCATION_MATCH	PASS	sai	CTCFlourishTarget::OnInitialActivate
+007e8a20	RELOCATION_MATCH	PASS	sai	CTCFlourishTarget::FinalCleanup
+007ed270	RELOCATION_MATCH	PASS	bip,cab	_unattributed::~CAggregate_007ed270
+007ed830	RELOCATION_MATCH	PASS	bip	CCreatureAction_ShowItemToThing::`scalar_deleting_destructor'
+007ee8f0	RELOCATION_MATCH	PASS	bip,cab,queue	CTCActionUseChest::OnActionUse
+007f01f0	RELOCATION_MATCH	PASS	bip	CTCCarriedActionUseFishingRod::OnActionUse
+007f7700	MATCH	PASS	leaf	CTCActivationReceptorBase::Deactivate
+007f80c0	RELOCATION_MATCH	PASS	leaf	CTCActivationReceptorDoor::SetDoorState
+007fb870	RELOCATION_MATCH	PASS	leaf	CTCKraken::KillBeamEffect
+007fbb00	RELOCATION_MATCH	PASS	queue	CTCKraken::CreateHeadEffect
+007fc6f0	RELOCATION_MATCH	PASS	queue	CTCKraken::InitTentaclesOnly
+007fc710	RELOCATION_MATCH	PASS	queue	CTCKraken::InitTentaclesAndHead
+007fc820	RELOCATION_MATCH	PASS	queue	CTCKraken::SetPhase
+00802d10	RELOCATION_MATCH	PASS	queue	NPlayerTargeting::IsThingInTargetingRangeForTargetType
+0080ab40	RELOCATION_MATCH	PASS	bip	std::__unguarded_insertion_sort_aux
+0080c250	RELOCATION_MATCH	PASS	bcn	CTCDExplosion::Construct
+00810fe0	RELOCATION_MATCH	PASS	queue	NEntityEvents::CEventReceivedItem::~CEventReceivedItem
+00811040	RELOCATION_MATCH	PASS	queue	NEntityEvents::CEventSoldItem::~CEventSoldItem
+00812ca0	RELOCATION_MATCH	PASS	queue	CTCCreatureGroup::GetNearestOtherActiveMember
+008233c0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_008233c0
+0082d920	RELOCATION_MATCH	PASS	bcn	CThingBuilding::Create
+0082db00	RELOCATION_MATCH	PASS	queue	CThingBuilding::LockAllDoors
+0082def0	RELOCATION_MATCH	PASS	queue	CThingBuilding::IsUnlocked
+0082fed0	RELOCATION_MATCH	PASS	queue	CThingAICreature::GetMaxRunningSpeed
+0082ff70	RELOCATION_MATCH	PASS	queue	CThingAICreature::GetMaxJoggingSpeed
+00830000	RELOCATION_MATCH	PASS	queue	CThingAICreature::GetMaxWalkingSpeed
+00833800	RELOCATION_MATCH	PASS	bcn	CThingAICreature::Create
+008430b0	RELOCATION_MATCH	PASS	bip	CCreatureAction_PerformExpression::CCreatureAction_PerformExpression
+00844720	RELOCATION_MATCH	PASS	queue	CCreatureAction_PickCrop::PerformAction
+00846100	RELOCATION_MATCH	PASS	queue	CCreatureAction_WearGameObject::PerformAction
+00846410	RELOCATION_MATCH	PASS	queue	CCreatureAction_Undress::PerformAction
+00847ac0	RELOCATION_MATCH	PASS	bip	CCreatureAction_Drink::Initialise
+0084a950	RELOCATION_MATCH	PASS	queue	CVillageTaskCarryCrate::IsCreatureAssignedToTask
+0084b270	RELOCATION_MATCH	PASS	bip	CCreatureAction_LearnExpression::`scalar_deleting_destructor'
+0084b2b0	RELOCATION_MATCH	PASS	bip	CCreatureAction_Drink::`scalar_deleting_destructor'
+0084b3e0	RELOCATION_MATCH	PASS	bip	CCreatureAction_DowseFire::`scalar_deleting_destructor'
+0084bd40	RELOCATION_MATCH	PASS	bip	CCreatureAction_PerformExpression::CCreatureAction_PerformExpression
+008529d0	RELOCATION_MATCH	PASS	queue	NCameraModes::CScriptModuleConversationOverShoulderOfSpokenTo::Update
+00856dd0	RELOCATION_MATCH	PASS	queue	CCombatActionBase::GetTotalTimeSeconds
+008574d0	RELOCATION_MATCH	PASS	queue	CCombatActionBase::SetCombatAnimation
+0085bad0	RELOCATION_MATCH	PASS	queue	CCreatureActionHeroJump::FrameUpdate
+0085baf0	RELOCATION_MATCH	PASS	queue	CCreatureActionHeroJump::FinishAction
+008610d0	RELOCATION_MATCH	PASS	queue	CVillageTaskTorch::IsBetterThan
+008611f0	RELOCATION_MATCH	PASS	queue	CVillageTaskHorn::IsBetterThan
+00861310	RELOCATION_MATCH	PASS	queue	CVillageTaskPatrol::IsBetterThan
+008621a0	RELOCATION_MATCH	PASS	queue	CModeStandBase::OnActivate
+00862ec0	RELOCATION_MATCH	PASS	queue	CModeStandBase::AnimUpdate
+00865e20	RELOCATION_MATCH	PASS	queue	CCombatAction_GenericResponseToDecapitation::FinishAction
+008663d0	RELOCATION_MATCH	PASS	cab	CCombatAction_GenericStrikeResponseBase::FinishAction
+00866ce0	RELOCATION_MATCH	PASS	sai	CCombatAction_RecoverFromStunned::Initialise
+00868350	RELOCATION_MATCH	PASS	bip	CCombatAction_GenericStrikeResponseKnockdown::`scalar_deleting_destructor'
+0087cdf0	RELOCATION_MATCH	PASS	bip	CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAction_InterruptableMidAttackAutoTurn
+0087cec0	RELOCATION_MATCH	PASS	bip	CCreatureAction_InterruptableMidAttackAutoTurn::CCreatureAction_InterruptableMidAttackAutoTurn
+0087e840	RELOCATION_MATCH	PASS	queue	CCreatureAction_StabbedToDeath::FinishAction
+0087e860	RELOCATION_MATCH	PASS	sai	CCombatAction_KickThingOnGround::Initialise
+00891720	RELOCATION_MATCH	PASS	cab	CGameScriptInterface::ChangeHeroHealthBy
+00892850	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::AddScreenMessage
+00893a50	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::RemoveBoastMessage
+008942c0	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::MsgOnChestOpeningCancelled
+00896a30	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::SetQuestCardObjective
+008981c0	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::AddTattooToHero
+008a0820	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::CancelHeroTeleportEffects
+008a1b10	RELOCATION_MATCH	PASS	queue	CGameScriptInterface::GetSleepingPositionAndOrientationFromBed
+008ac330	RELOCATION_MATCH	PASS	cab	CCreatureAction_SitDown::`scalar_deleting_destructor'
+008b8260	RELOCATION_MATCH	PASS	bip	CCreatureAction_ProjectileCrouch::CCreatureAction_ProjectileCrouch
+008b8310	RELOCATION_MATCH	PASS	bip	CCreatureAction_ProjectileCrouch::CCreatureAction_ProjectileCrouch
+008bca00	RELOCATION_MATCH	PASS	queue	CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell
+008c0c00	RELOCATION_MATCH	PASS	sai	CCreatureAction_JackFlash::FinishAction
+008c3ee0	RELOCATION_MATCH	PASS	queue	CCreatureAction_ScorpionRecover::Initialise
+008c3f00	RELOCATION_MATCH	PASS	queue	CCreatureAction_ScorpionKingDeath::FinishAction
+008c4780	RELOCATION_MATCH	PASS	sai	CCreatureAction_ScorpionTailWithdraw::FinishAction
+008c4a80	RELOCATION_MATCH	PASS	sai	CCreatureAction_ScorpionSummon::Initialise
+008c4b00	RELOCATION_MATCH	PASS	sai	CCreatureAction_ScorpionRecover::FinishAction
+008c64f0	RELOCATION_MATCH	PASS	bip	CCreatureAction_TrollThrowProjectile::Initialise
+008c9690	RELOCATION_MATCH	PASS	bip	CCreatureAction_BanditKingStuck::`scalar_deleting_destructor'
+008c9fc0	RELOCATION_MATCH	PASS	queue	CCreatureAction_NymphGetHitDie::FinishAction
+008cbb90	RELOCATION_MATCH	PASS	bip	CCreatureAction_SummonerFlameSlice::Initialise
+008ce6f0	RELOCATION_MATCH	PASS	queue	CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow
+008ce900	RELOCATION_MATCH	PASS	queue	CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow
+008ced90	RELOCATION_MATCH	PASS	bip	CCreatureAction_BattleChargeImpact::`scalar_deleting_destructor'
+008cedd0	RELOCATION_MATCH	PASS	bip	CCreatureAction_BattleChargeMiss::`scalar_deleting_destructor'
+008d0440	RELOCATION_MATCH	PASS	queue	CGameScriptThing::GetPThing
+008d08a0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::IsSummonedCreature
+008d0fb0	RELOCATION_MATCH	PASS	queue	CGameScriptThingMethods::MsgIsHitBy
+008d1130	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgIsHitByWithWeapon
+008d1440	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgIsHitByWithDecapitate
+008d16d0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgPerformedFlourish
+008d17b0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgPerformedSuccessfulFlourish
+008d1ef0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgHowLongWasExpressionPerformed
+008d22d0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgReceivedMoney
+008d23c0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgIsPresentedWithItem
+008d2540	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgReceivedInventoryItem
+008d2610	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgPerformedSpecialAbility
+008d27e0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgPerformedAnyAggressiveSpecialAbility
+008d28d0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility
+008d3cf0	RELOCATION_MATCH	PASS	queue	CGameScriptThing::MsgIsKicked
+008d6580	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeSitBase::OnActivate
+008d6740	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeKnockedDown::OnDeactivate
+008d6900	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeSummonerSummon::OnDeactivate
+008d6920	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeSummonerDie::OnActivate
+008d6980	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeChargeForcePush::OnActivate
+008d69d0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonRearUp::OnActivate
+008d69f0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonRearUp::OnActivate
+008d6a10	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonRearUp::OnDeactivate
+008d6a50	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonFireBeam::OnActivate
+008d6aa0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonRearUp::OnActivate
+008d6ac0	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeSitBase::AnimUpdate
+008d7510	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonGetHit::OnActivate
+008d7630	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnActivate
+008d79a0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeScreamerSuperAttack::OnDeactivate
+008d79f0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeSummonerLightningOrb::OnDeactivate
+008d8330	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeScreamerSuperAttack::OnActivate
+008d8ce0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeBlock::OnActivate
+008d8f30	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeOutOfActionBase::OnDeactivate
+008d90b0	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeCreatureIsProjectile::OnDeactivate
+008da690	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeScreamerAggressive::OnDeactivate
+008da890	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeDrained::FrameUpdate
+008dae10	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeSummonerLightningOrb::OnActivate
+008dbb30	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonFlying::OnActivate
+008dc590	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonFlying::OnDeactivate
+008dc600	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonStrafe::OnActivate
+008dc660	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeDragonStrafe::OnDeactivate
+008ddd70	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate
+008df310	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeJackOfBladesFlash::OnDeactivate
+008df680	RELOCATION_MATCH	PASS	sai	CModeThunderLightningStorm::OnDeactivate
+008e0060	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate
+008e08c0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeCreatureIsProjectile::Recover
+008e6690	RELOCATION_MATCH	PASS	queue	CCreatureAction_CastStrengthMultiStrikeProper::Initialise
+008e6940	RELOCATION_MATCH	PASS	bip	CCreatureAction_ReleaseStrengthBerserk::FinishAction
+008e7040	RELOCATION_MATCH	PASS	queue	CMeleeCombatAbilityDef::IsAbilityValid
+008e7390	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeIntangible::OnActivate
+008e74f0	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeIntangible::OnDeactivate
+008e7850	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnDeactivate
+008e7a00	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnActivate
+008e7b90	RELOCATION_MATCH	PASS	sai	NCreatureMode::CModeBriarRoseTeleportIntangible::OnActivate
+008e7e70	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeBriarRoseConcentrate::OnDeactivate
+008e8940	RELOCATION_MATCH	PASS	queue	NCreatureMode::CModeBriarRoseTeleportIntangible::FrameUpdate
+008eba00	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_008eba00
+008ec220	RELOCATION_MATCH	PASS	sai	CCreatureAction_UndeadRiseUp::Initialise
+008ec470	RELOCATION_MATCH	PASS	sai	CCreatureAction_UndeadRiseUp::FinishAction
+008ed830	RELOCATION_MATCH	PASS	queue	CCreatureAction_Die::FinishAction
+008ed8c0	RELOCATION_MATCH	PASS	sai	CCombatAction_RecoverFromDazed::Initialise
+008f3ad0	RELOCATION_MATCH	PASS	sai	CCreatureAction_DragonLand::Initialise
+008f3c00	RELOCATION_MATCH	PASS	sai	CCreatureAction_DragonLand::FinishAction
+008f5cf0	RELOCATION_MATCH	PASS	queue	_unattributed::CallWith_008f5cf0
+00903265	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_00903265
+0090332e	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_0090332e
+00903456	RELOCATION_MATCH	PASS	bip	_unattributed::~CAggregate_00903456
+00903ac0	RELOCATION_MATCH	PASS	queue	CScriptGameResourceObjectScriptedThing::~CScriptGameResourceObjectScriptedThing
+00905070	RELOCATION_MATCH	PASS	queue	NTCScriptedControl::CActionPlayAnimation::`scalar_deleting_destructor'
+009050a0	RELOCATION_MATCH	PASS	queue	NTCScriptedControl::CActionPlayCombatAnimation::`scalar_deleting_destructor'
+00905440	RELOCATION_MATCH	PASS	queue	NTCScriptedControl::CActionPerformExpression::`scalar_deleting_destructor'
+00907010	RELOCATION_MATCH	PASS	queue	CCombatSequence_ScorpionLungeAttack::OnCreate
+009084a0	RELOCATION_MATCH	PASS	queue	CCreatureAction_TrollProjectileAttack::`scalar_deleting_destructor'
+0090f470	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MinionHasInformation::Update
+0090fdb0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MinionSitAtSchool::Update
+00915890	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MoveGoodsBase::FetchGoods
+00918ee0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_Gaze::`scalar_deleting_destructor'
+0091c130	RELOCATION_MATCH	PASS	queue	CAIStateGroup_NymphFloatAround::OnReplace
+0091faa0	RELOCATION_MATCH	PASS	queue	std::__unguarded_insertion_sort_aux<CThingObject const **, CThingObject const *, CThingCompare_Nearest>
+0091fdb0	RELOCATION_MATCH	PASS	queue	std::__make_heap<CThingObject const **, CThingCompare_Nearest, CThingObject const *, int>
+009200c0	RELOCATION_MATCH	PASS	queue	std::__insertion_sort<CThingObject const **, CThingCompare_Nearest>
+00920480	RELOCATION_MATCH	PASS	queue	std::__final_insertion_sort<CThingObject const **, CThingCompare_Nearest>
+009205d0	RELOCATION_MATCH	PASS	queue	std::__introsort_loop<CThingObject const **, CThingObject const *, int, CThingCompare_Nearest>
+009239c0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_ServeFood::OnReplace
+00924880	RELOCATION_MATCH	PASS	cmb	CCreatureAction_KrakenLowPoseInto::FinishAction
+0092afe0	RELOCATION_MATCH	PASS	cmb	CAIStateGroup_ApprenticeHero::LookAtMap
+0092c2e0	RELOCATION_MATCH	PASS	bip,cab	_unattributed::~CAggregate_0092c2e0
+0092c740	RELOCATION_MATCH	PASS	queue	CAIStateGroup_GoToBed::OnReplace
+0092e300	RELOCATION_MATCH	PASS	bip	CCreatureAction_GetInBed::CCreatureAction_GetInBed
+00933250	RELOCATION_MATCH	PASS	queue	CVillageTaskCarryCrate::IsCreatureAssignedToTask
+00935ad0	RELOCATION_MATCH	PASS	bip,queue	CAIStateGroup_MinionPutOutFires::IsRunnable
+009387f0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_UsesSeat::OnReplace
+0093afc0	RELOCATION_MATCH	PASS	bip,cmb,queue	CAIStateGroup_BanditSitRoundCampfire::OnReplace
+0093dc10	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable
+009415b0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_KidPlayHopscotch::Cleanup
+009432c0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_WorkAtSchool::Update
+00944690	RELOCATION_MATCH	PASS	queue	CAIStateGroup_WorkSawingWood::OnReplace
+00944db0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_WorkHammerAnvil::OnReplace
+00945530	RELOCATION_MATCH	PASS	queue	CAIStateGroup_SitForMeal::ReleaseControlOfPot
+00946100	RELOCATION_MATCH	PASS	queue	CAIStateGroup_PrepareMeal::Cleanup
+00946850	RELOCATION_MATCH	PASS	queue	CAIStateGroup_LightHomeCandle::Update
+0094b330	RELOCATION_MATCH	PASS	queue	CVillageTaskCarryCrate::IsCreatureAssignedToTask
+0094d020	RELOCATION_MATCH	PASS	bip	CAIStateGroup_GameMaster::Update
+0094feb0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+00950a30	RELOCATION_MATCH	PASS	queue	CAIStateGroup_JackDragon::ChooseIntoGroundState
+00953a40	RELOCATION_MATCH	PASS	cmb	CCreatureAction_DragonBurninateInto::`scalar_deleting_destructor'
+00954220	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MazeRangedCombat::IsStillRunnable
+009547d0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MazeShieldedChase::OnActivate
+00954b50	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+00954e30	RELOCATION_MATCH	PASS	queue	CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+0095a6c0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_HoverHornetQueen::GotoCirclePoint
+0095b020	RELOCATION_MATCH	PASS	queue	CAIStateGroup_HoverHornetQueen::GoToSpawnPoint
+0095b6f0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_HoverHornetQueen::KeepOutOfWay
+0095cf50	RELOCATION_MATCH	PASS	queue	std::__unguarded_insertion_sort_aux<CThing **, CThing *, CThingCompare_Nearest>
+0095d880	RELOCATION_MATCH	PASS	queue	std::__make_heap<CThing **, CThingCompare_Nearest, CThing *, int>
+0095da90	RELOCATION_MATCH	PASS	queue	std::__insertion_sort<CThing **, CThingCompare_Nearest>
+0095ddf0	RELOCATION_MATCH	PASS	queue	std::__final_insertion_sort<CThing **, CThingCompare_Nearest>
+0095df40	RELOCATION_MATCH	PASS	queue	std::__introsort_loop<CThing **, CThing *, int, CThingCompare_Nearest>
+009627c0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_IceTrollIcicleAssault::Update
+00962c10	RELOCATION_MATCH	PASS	queue	CAIStateGroup_VersusRockTroll::IsRunnable
+009647c0	RELOCATION_MATCH	PASS	bip,queue	CAIStateGroup_StealStealableItem::Update
+00970cd0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
+009713e0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_CreatureUseCoverBase::DuckBehindCover
+00972490	RELOCATION_MATCH	PASS	queue	CAIStateGroup_JackOfBladesStage2::OnActivate
+00972590	RELOCATION_MATCH	PASS	w14def	CAIStateGroup_JackOfBladesStage2::Cleanup
+00978fd0	RELOCATION_MATCH	PASS	queue	CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList
+00979f70	RELOCATION_MATCH	PASS	cab	CAIStateGroup_CreatureTakeCover::AttackTargetThing
+0097a630	RELOCATION_MATCH	PASS	dec	CAIStateGroup_CreatureTakeCover::Update
+00980770	RELOCATION_MATCH	PASS	queue	CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace
+0098e1e0	RELOCATION_MATCH	PASS	queue	CThreadedFile::Open
+00996ea0	RELOCATION_MATCH	PASS	bcn	CDataStream::ScalarDeletingDestructor
+00996ed0	RELOCATION_MATCH	PASS	bcn	CDataInputStream::`scalar_deleting_destructor'
+00997240	RELOCATION_MATCH	PASS	bcn	CCompressedMemoryDataInputStream::ScalarDeletingDestructor
+00998a30	RELOCATION_MATCH	PASS	queue	CAFile::IsFilePathSyntaxValid
+009a5340	RELOCATION_MATCH	PASS	queue	CSystemManager::InitApplicationName
+009a78d0	RELOCATION_MATCH	PASS	queue	CBankFileManager::CloseRetailBank
+009a9940	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_009a9940
+009aef60	RELOCATION_MATCH	PASS	queue	CDefinitionManager::CreateSymbolsFromPathList
+009af480	RELOCATION_MATCH	PASS	queue	CDefinitionManager::DoCompilePathList
+009b05f0	RELOCATION_MATCH	PASS	queue	CDefinitionManager::CheckDependencies
+009b08c0	RELOCATION_MATCH	PASS	bcn	CDefinitionManager::Compile
+009c4120	RELOCATION_MATCH	PASS	leaf	CFileInstaller::PostFileReadCompletion
+009c46b0	RELOCATION_MATCH	PASS	queue	CFileInstaller::IsCompressedFilename
+009c53a0	RELOCATION_MATCH	PASS	queue	CFileInstaller::ProcessReads
+009c9e40	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_009c9e40
+009cbe10	RELOCATION_MATCH	PASS	queue	CBankFile::ConvertPathToFilename
+009d4c30	RELOCATION_MATCH	PASS	bcn	CDefStringTable::LoadTable
+009d4ce0	RELOCATION_MATCH	PASS	bcn	CDefStringTable::SaveBinary
+009d6fa0	RELOCATION_MATCH	PASS	bcn	CBankFileAsyncEntry::ScalarDeletingDestructor
+009e45f0	RELOCATION_MATCH	PASS	queue	CMaintainedEvent::`scalar_deleting_destructor'
+009e4f80	RELOCATION_MATCH	PASS	queue	CSymbolMap::Error
+009e94a0	RELOCATION_MATCH	PASS	queue	CMemoryFile::Open
+009ee2c0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_009ee2c0
+009ee390	RELOCATION_MATCH	PASS	queue	CConsoleCommandLine::`scalar_deleting_destructor'
+009f1760	MATCH	PASS	leaf	CGameEvent::AddData
+009f4ed0	MATCH	PASS	w14def	CInputManager::EventScanStart
+009f4f70	RELOCATION_MATCH	PASS	queue	CInputManager::RemoveEventFromQueue
+009f5c80	RELOCATION_MATCH	PASS	bcn	CInputManager::~CInputManager
+009fc020	MATCH	PASS	leaf	CResourceList::RemoveResource
+009fc5c0	RELOCATION_MATCH	PASS	queue	CResourceList::~CResourceList
+009fdc20	RELOCATION_MATCH	PASS	queue	CFrameData::StopLoading
+009fe440	RELOCATION_MATCH	PASS	queue	CGraphicInfoFrame::CFrameData::ResetTexture
+009fe550	RELOCATION_MATCH	PASS	queue	_global::CCountedPointer_Dtor_009fe550
+00a00b90	RELOCATION_MATCH	PASS	leaf	CGraphicFrame::UnInitialise
+00a03b40	MATCH	PASS	leaf	CInputEvent::GetType
+00a03b50	MATCH	PASS	leaf	CInputEvent::GetDeviceType
+00a03b70	MATCH	PASS	leaf	CInputEvent::GetKey
+00a03be0	MATCH	PASS	leaf	CInputEvent::SetAsNull
+00a044b0	RELOCATION_MATCH	PASS	bcn	CRenderStateManager::~CRenderStateManager
+00a07980	RELOCATION_MATCH	PASS	bcn	CRenderStateManager::`scalar deleting destructor'
+00a0d3a0	MATCH	PASS	leaf	CProcessedInput::SetPlayer
+00a0d810	RELOCATION_MATCH	PASS	bcn	CInputProcessManager::~CInputProcessManager
+00a19c00	RELOCATION_MATCH	PASS	bcn	CANavQuadTreeNode::ScalarDeletingDestructor
+00a36df0	RELOCATION_MATCH	PASS	queue	C3DMeshObject::GetEventTime
+00a37360	RELOCATION_MATCH	PASS	bcn	CClassFactory::~CClassFactory
+00a37850	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00a37850
+00a39cc0	RELOCATION_MATCH	PASS	queue	CWADFile::Open
+00a3f730	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00a3f730
+00a44eb0	RELOCATION_MATCH	PASS	bcn	C3DSkeletalMorph::~C3DSkeletalMorph
+00a5b260	RELOCATION_MATCH	PASS	queue	CCachedFile::Open
+00a5ed60	RELOCATION_MATCH	PASS	queue	_global::GFGetLastWindowsError
+00a606f0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00a606f0
+00a60aa0	RELOCATION_MATCH	PASS	bcn,queue	CChecksumCacheFile::Save
+00a69b20	RELOCATION_MATCH	PASS	queue	CIVCountedHandle_00a69b20::operator=
+00a6e570	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00a6e570
+00a76a80	RELOCATION_MATCH	PASS	bcn	CNavNavigableLeafNode::~CNavNavigableLeafNode
+00a7d990	RELOCATION_MATCH	PASS	bcn	CNavBlockedQuadTreeNode::`scalar_deleting_destructor'
+00aa8490	RELOCATION_MATCH	PASS	bcn	CChunkedFileSuperChunk::~CChunkedFileSuperChunk
+00aa8d50	RELOCATION_MATCH	PASS	bcn	CChunkedFileChunk::ScalarDeletingDestructor
+00aab150	RELOCATION_MATCH	PASS	queue	C3DMeshFileHelperPointChunk::`scalar_deleting_destructor'
+00aac7f0	RELOCATION_MATCH	PASS	queue	CSoundEmitterLH::CActiveSound::`scalar_deleting_destructor'
+00aaeed0	RELOCATION_MATCH	PASS	queue	C3DAnimFileTimingEventChunk::`scalar_deleting_destructor'
+00ab0a10	RELOCATION_MATCH	PASS	queue	C3DAnimFileObjectChunk::`scalar_deleting_destructor'
+00abe080	RELOCATION_MATCH	PASS	queue	C3DMeshFileSubMeshChunk::`scalar_deleting_destructor'
+00abe0d0	RELOCATION_MATCH	PASS	queue	C3DMeshFileBoneChunk::`scalar_deleting_destructor'
+00ac1e90	RELOCATION_MATCH	PASS	queue	C3DMeshFileMaterialChunk::`scalar_deleting_destructor'
+00ac6ae0	RELOCATION_MATCH	PASS	bcn	C3DOptimisedMeshBase::ScalarDeletingDestructor
+00ad88c0	RELOCATION_MATCH	PASS	bcn	CLoadedMesh_00ad88c0::`scalar deleting destructor'
+00b44f20	RELOCATION_MATCH	PASS	bcn	CEngineLightingManager::SetupShaderPointLights
+00b50be0	RELOCATION_MATCH	PASS	bcn	CEngineWeatherSettings::ScalarDeletingDestructor
+00b81e60	RELOCATION_MATCH	PASS	bcn	CEngineClothSimulationStaticMesh::~CEngineClothSimulationStaticMesh
+00b84030	RELOCATION_MATCH	PASS	bcn	CEngineClothSimulation2DAnimatedMesh::~CEngineClothSimulation2DAnimatedMesh
+00b9d8e0	RELOCATION_MATCH	PASS	queue	CEngineInternalPrimitiveStaticMesh::Update
+00bbf1c0	RELOCATION_MATCH	PASS	bcn	~CEnginePrimitiveManagerParticleSpriteTrailGroup
+00bc5420	RELOCATION_MATCH	PASS	bcn	~CEnginePrimitiveManagerParticleLineGroup
+00bdd480	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00bdd480
+00c5ee60	MATCH	PASS	dec	CVtable_012b9174::IsChunkReady
+00c5eeb0	MATCH	PASS	dec	CVtable_012b9174::WriteBuffer
+00c5eef0	RELOCATION_MATCH	PASS	dec	_unattributed::~CActionParamCountedPointer_00c5eef0
+00cd22a4	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00cd22a4
+00cd22c0	RELOCATION_MATCH	PASS	queue	_global::ScalarDeletingDtor_00cd22c0
+00ce6be0	RELOCATION_MATCH	PASS	queue	CVtable_012c36b8::`scalar deleting destructor'
+00ce6c10	RELOCATION_MATCH	PASS	queue	CVtable_012c3b88::`scalar deleting destructor'
+00ce6c80	RELOCATION_MATCH	PASS	queue	CVtable_012c3688::`scalar deleting destructor'
+00cef9a0	RELOCATION_MATCH	PASS	scb	CVtable_012c3fa4::`scalar deleting destructor'
+00d0edb0	RELOCATION_MATCH	PASS	queue	CVtable_012c9918::`scalar deleting destructor'
+00d154e0	RELOCATION_MATCH	PASS	queue	CVtable_012ca4f4::`scalar deleting destructor'
+00d1fd00	RELOCATION_MATCH	PASS	queue	CVtable_012cb070::`scalar deleting destructor'
+00d3abe0	RELOCATION_MATCH	PASS	queue	GetEndSpeech
+00d50650	RELOCATION_MATCH	PASS	queue	CVtable_012cd458::`scalar deleting destructor'
+00d80c00	RELOCATION_MATCH	PASS	queue	CVtable_012d3994::`scalar deleting destructor'
+00d84b20	RELOCATION_MATCH	PASS	queue	CVtable_012d45f0::`scalar deleting destructor'
+00d89d40	RELOCATION_MATCH	PASS	queue	CVtable_012d4d2c::`scalar deleting destructor'
+00d900b0	RELOCATION_MATCH	PASS	queue	CVtable_012d5a1c::`scalar deleting destructor'
+00d99e10	RELOCATION_MATCH	PASS	queue	CVtable_012d5540::`scalar deleting destructor'
+00d9e1e0	RELOCATION_MATCH	PASS	queue	CVtable_012d65cc::`scalar deleting destructor'
+00daabd0	RELOCATION_MATCH	PASS	scb	CVtable_012d7158::`scalar deleting destructor'
+00ddad00	RELOCATION_MATCH	PASS	queue	CVtable_012db86c::`scalar deleting destructor'
+00df40c0	RELOCATION_MATCH	PASS	queue	CVtable_012de10c::`scalar deleting destructor'
+00dfa080	RELOCATION_MATCH	PASS	queue	CVtable_012de6a4::`scalar deleting destructor'
+00e02e50	RELOCATION_MATCH	PASS	queue	CDarkwoodAssassinSpawn::Main
+00e0afb0	RELOCATION_MATCH	PASS	queue	CVtable_012df16c::`scalar deleting destructor'
+00e0e7b0	RELOCATION_MATCH	PASS	scb	CVtable_012dfd3c::`scalar deleting destructor'
+00e13bf0	RELOCATION_MATCH	PASS	queue	CVtable_012e00e4::`scalar deleting destructor'
+00e37e10	RELOCATION_MATCH	PASS	queue	CVtable_012e36b8::`scalar deleting destructor'
+00e3ac40	RELOCATION_MATCH	PASS	queue	CVtable_012e3ac8::`scalar deleting destructor'
+00e4a9d0	RELOCATION_MATCH	PASS	queue	CVtable_012e4fc4::`scalar deleting destructor'
+00e5d110	RELOCATION_MATCH	PASS	scb	CVtable_012e65e0::`scalar deleting destructor'
+00e6a5d0	RELOCATION_MATCH	PASS	queue	CVtable_012e8468::`scalar deleting destructor'
+00e6e280	RELOCATION_MATCH	PASS	queue	CVtable_012e8080::`scalar deleting destructor'
+00e7b860	RELOCATION_MATCH	PASS	queue	CVtable_012ea0b4::`scalar deleting destructor'
+00e836c0	RELOCATION_MATCH	PASS	queue	CVtable_012eb0c0::`scalar deleting destructor'
+00e8b020	RELOCATION_MATCH	PASS	queue	CRingFighter::Main
+00e92940	RELOCATION_MATCH	PASS	queue	CVtable_012ec138::`scalar deleting destructor'
+00e93050	RELOCATION_MATCH	PASS	queue	CVtable_012ecae8::`scalar deleting destructor'
+00e9cfa0	RELOCATION_MATCH	PASS	queue	CVtable_012ed614::`scalar deleting destructor'
+00e9da90	RELOCATION_MATCH	PASS	queue	CVtable_012ed67c::`scalar deleting destructor'
+00e9fba0	RELOCATION_MATCH	PASS	scb	CVtable_012ed558::`scalar deleting destructor'
+00eb62b0	RELOCATION_MATCH	PASS	queue	CVtable_012efa0c::`scalar deleting destructor'
+00eb62e0	RELOCATION_MATCH	PASS	queue	CVtable_012efee8::`scalar deleting destructor'
+00ed0e30	RELOCATION_MATCH	PASS	scb	CVtable_012f17dc::`scalar deleting destructor'
+00edc2a0	RELOCATION_MATCH	PASS	queue	CVtable_012f3e94::`scalar deleting destructor'
+00eed6b0	RELOCATION_MATCH	PASS	queue	CVtable_012f5890::vfunc_1
+00ef29e0	RELOCATION_MATCH	PASS	queue	CGoalChest::Main
+00ef3000	RELOCATION_MATCH	PASS	queue	CVtable_012f6350::vfunc_1
+00f00ae0	RELOCATION_MATCH	PASS	queue	CGamesmasterOracleMarker::Main
+00f03870	RELOCATION_MATCH	PASS	queue	CVtable_012f7d88::`scalar deleting destructor'
+0121a050	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b86f4
+0121a2f0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8778
+0121a36c	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8798
+0121a3c0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b89d4
+0121a650	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8a7c
+0121a8c1	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8b4c
+0121a8de	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8b50
+0121a8fb	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8b54
+0121a918	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013b8b58
+0121df30	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013ba878
+0121df90	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013ba884
+0121dfc0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013ba894
+0121e190	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bab18
+0121e1b0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bab1c
+0121e1d0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bab28
+0121e380	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bab80
+0121e460	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013babc8
+0121ecc0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bad2c
+0121ee30	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bad8c
+0121ee50	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bad90
+0121eed0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bada4
+0121eef0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bada8
+0121ef50	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013baddc
+0121efa0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bade4
+0121efc0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bade8
+0121efe0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013badec
+0121f000	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013badf0
+0121f01d	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013badf4
+0121f03a	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013badf8
+0121f057	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013badfc
+0121f0a0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bae08
+0121f0c0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bae0c
+0121f240	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bae6c
+0121f5f0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013baf58
+0121f640	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bafa0
+0121f660	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bafa4
+01221860	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bb668
+012219a0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bb694
+012219c0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bb6c0
+01221cd0	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bb734
+01221d00	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bb740
+01223c60	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bc3a0
+01223c90	RELOCATION_MATCH	PASS	anong	_static_init::g_CCharString_013bc3a8

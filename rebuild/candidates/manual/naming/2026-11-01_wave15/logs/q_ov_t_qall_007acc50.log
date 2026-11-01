@@ -1,0 +1,6 @@
+skip 007ad180 call of _M_erase with 1 args
+skip 007adb50 call of Erase with 1 args
+skip 007adbf0 call of _M_erase with 1 args
+skip 007add50 call of Erase with 1 args
+skip 008a78e0 call of Erase with 1 args
+skip 008a7930 call of Release with 1 args

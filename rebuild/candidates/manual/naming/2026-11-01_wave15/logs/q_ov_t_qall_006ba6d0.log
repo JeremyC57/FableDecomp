@@ -1,0 +1,3 @@
+edited 006baa70 free ::Mapwho_Dtor -> ~CFaction x1 +u ['??1CFaction@@QAE@XZ'] -u ['@Mapwho_Dtor@4']
+skip 006bab80 0 CEntry::~CEntry declarations
+skip 006baed0 0 CNamedMapPair_006ba420::~CNamedMapPair_006ba420 declarations

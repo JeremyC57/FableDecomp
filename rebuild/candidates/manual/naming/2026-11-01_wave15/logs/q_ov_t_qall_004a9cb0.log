@@ -1,0 +1,10 @@
+skip 004ac140 non-public _M_erase needs an access path
+skip 004ac8a0 non-public _M_erase needs an access path
+skip 004ad8d0 non-public _M_erase needs an access path
+skip 00512ce0 non-public _M_erase needs an access path
+skip 00517850 non-public _M_erase needs an access path
+skip 00519f50 non-public _M_erase needs an access path
+skip 006380c0 non-public _M_erase needs an access path
+skip 00638ee0 non-public _M_erase needs an access path
+skip 006cf1d0 non-public _M_erase needs an access path
+skip 0075fc40 non-public _M_erase needs an access path

@@ -1,0 +1,5 @@
+skip 00584f15 2 SActionParamPair::SActionParamPair declarations
+skip 005907ab 2 CAction::CAction declarations
+skip 00596cce 2 SActionParamPair::SActionParamPair declarations
+skip 0059de04 2 CAction::CAction declarations
+skip 005b43a2 2 SActionParamPair::SActionParamPair declarations

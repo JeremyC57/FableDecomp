@@ -1,0 +1,13 @@
+skip 008d6900 free ::CMode_Base_OnActivate -> OnDeactivate x1 :: final not named
+skip 008d6980 moved CModeChargeForcePush::BaseActivate -> OnDeactivate x1 :: final not named
+skip 008d69d0 free ::DragonRear_BaseActivate -> OnDeactivate x1 :: final not named
+skip 008d6a10 free ::DragonRearUpBase_861d00 -> OnDeactivate x1 :: final not named
+skip 008d6aa0 free ::DragonRear_BaseActivate -> OnDeactivate x1 :: final not named
+skip 008d79a0 CModeStandBase::OnDeactivate defined out of line
+skip 008d79f0 CModeStandBase::OnDeactivate defined out of line
+skip 008d8f30 CModeStandBase::OnDeactivate defined out of line
+skip 008d90b0 CModeStandBase::OnDeactivate defined out of line
+skip 008da690 moved ModeScreamer::StandDeactivate -> OnDeactivate x1 :: compile: atchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\8d\CModeScreamerAggressive_OnDeactivate_008da690.cpp(70) : error C2011: 'CModeStandBase' : 'struct' type redefinition | \naming\w15\ov_t_qall\rebuild\src\compiled\00\8d\CModeScreamerAggressive_OnDeactivate_008da690.cpp(88) : error C2039: 'OnDeactivate' : is not a member of 'CModeStandBase'
+skip 008df680 CModeStandBase::OnDeactivate defined out of line
+skip 008e7cf0 ModeStandNative::OnDeactivate defined out of line
+skip 008e7e70 ModeStandNative::OnDeactivate defined out of line

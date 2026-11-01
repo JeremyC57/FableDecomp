@@ -1,0 +1,29 @@
+skip 00687210 CMember_0099a430->CBaseObject virtual dtor; vptr taken from the leading pad :: compile: ompiled\00\68\unattributed_CAggregate00687210_00687210.cpp(32) : error C2248: 'CBaseObject::~CBaseObject' : cannot access protected member declared in class 'CBaseObject'
+skip 006872b0 no vptr in CBaseObject model
+skip 00cab370 no vptr in CBaseObject model
+skip 00cac070 no vptr in CBaseObject model
+skip 00ce15e0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00d22880 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00d246c0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00d29db0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00d2a180 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00d2d060 shape ?DestroyCBaseObject@ScriptResource@@QAEXXZ
+skip 00d732f0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00dc21f0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00ddd030 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00deb000 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00df4be0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00e1bc70 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00e292c0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00e96660 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb10c0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb15c0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb19c0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb23e0 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb3740 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb4f80 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00eb5d50 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00ef3f00 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00efc500 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00efeb60 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)
+skip 00f14770 CBaseObject and stand-in CBaseObjectDtor both declared (CBaseObjectDtor not derived from it)

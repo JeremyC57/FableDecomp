@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0097a630   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0097a630   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097a630   WARN SHARED_HEADER_AVAILABLE CWorld
+0097a630   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097a630   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097a630   WARN RELOC_NAME: ?GetPRandomSeed@CWorld@@QAEPAKXZ -> 0049d810 labelled 'CWorld::GetWorldSeed'
+0097a630   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@N_0056c860@@QAE@PAVCThing@@@Z -> 0056c860 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   WARN RELOC_NAME: ??$?0VCThingCreatureBase@@@CIntelligentPointerConstThing@N_0056c860@@QAE@ABV?$CIntelligentPointer@VCThingCreatureBase@@@@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   RELOCATION_MATCH PASS   CAIStateGroup_CreatureTakeCover::Update
+
+WINS: 1
+  0097a630 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::Update

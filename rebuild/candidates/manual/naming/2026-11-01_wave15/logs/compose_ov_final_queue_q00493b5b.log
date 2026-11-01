@@ -1,0 +1,2 @@
+edited 00893a50 moved CMessageEventManager_Retail::RemoveMessage -> RemoveMessage x1 +u ['?RemoveMessage@CMessageEventManager@@QAEXPBVCMessageEvent@@@Z'] -u ['?RemoveMessage@CMessageEventManager_Retail@@QAEXPBUCMessageEvent_Retail@@@Z']
+edited 008942c0 moved CMgr::Handle -> RemoveMessage x1 +u ['?RemoveMessage@CMessageEventManager@@QAEXPBVCMessageEvent@@@Z'] -u ['?Handle@CMgr@@QAEXPAX@Z']

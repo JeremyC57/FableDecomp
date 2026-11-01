@@ -1,0 +1,3 @@
+skip 00550c60 0 definitions of map<enum NUISystem::ETableSprites, class CCountedPointer<class NUISystem::CComponent>>
+skip 00553c00 call of Erase with 1 args
+skip 00553f20 call of Erase with 1 args

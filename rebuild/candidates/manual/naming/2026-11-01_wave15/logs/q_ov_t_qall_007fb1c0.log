@@ -1,0 +1,1 @@
+skip 007fc800 free ::Kraken_Finish -> KillTentacles x1 :: compile: rebuild\src\compiled\00\7f\CTCKraken_EndAttackBeam_007fc800.cpp(18) : error C2248: 'CTCKraken::KillTentacles' : cannot access private member declared in class 'CTCKraken'

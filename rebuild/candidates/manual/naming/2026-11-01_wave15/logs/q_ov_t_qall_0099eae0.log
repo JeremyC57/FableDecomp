@@ -1,0 +1,187 @@
+skip 00403510 free ::dtorB -> ~CCharString x2 :: diff -[] +['??3@YAXPAX@Z']
+edited 004047d0 free ::Inner_dtor -> ~CCharString x2 +u ['??1CCharString@@QAE@XZ'] -u ['?Inner_dtor@@YIXPAX@Z']
+edited 004133a0 free ::CLandscapeBackgroundPatch_dtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@CLandscapeBackgroundPatch_dtor@4']
+edited 00413480 free ::CConsoleInputBase_dtor_inner -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CConsoleInputBase_dtor_inner@@YIXPAUCInner@@@Z']
+edited 00413780 free ::CConsoleVariable_dtor_inner -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CConsoleVariable_dtor_inner@@YIXPAUCInner@@@Z']
+skip 00414ef0 free ::Ring_dtor -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 0041735a 0 CCharString2::~CCharString2 declarations
+skip 0043020a moved SubObject::Cleanup -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00433040 free ::Ring_reset -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00438570 0 InitGuard::~InitGuard declarations
+edited 0043dd10 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+skip 00443cf0 free ::ElemA_dtor -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 004509d9 free ::Sub_Dtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?Sub_Dtor@@YIXPAX@Z']
+edited 004509f8 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 00451b82 moved SubObject::Cleanup -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00455c1d 0 CSubObj::~CSubObj declarations
+skip 00457e03 moved CMember::dtor -> ~CCharString x2 :: diff -[] +['??3@YAXPAX@Z']
+skip 00458a4f free ::CGlobalDef_dtor_shared -> ~CCharString x4 :: diff -[] +['??3@YAXPAX@Z']
+skip 0045ce22 free ::MemberA48_dtor -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 0047b300 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 004abd40 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 004ac700 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 004ad2a0 0 CBase_0099eae0::~CBase_0099eae0 declarations
+edited 004b75e0 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+edited 004b77e0 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 004b8110 0 StrRefB::~StrRefB declarations
+edited 004cf3a0 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+edited 004d7aad free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 004da68a free ::Sub_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@Sub_dtor_0099eae0@4']
+skip 004dfd60 0 CCharString::~CCharString declarations
+skip 004e1d68 0 CCharString::~CCharString declarations
+skip 004e6e9e 0 CCharString::~CCharString declarations
+skip 004e823b 0 CCharString::~CCharString declarations
+skip 004ff490 0 CSectionName::~CSectionName declarations
+skip 005149b0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00529f30 CTCInventoryItemBase::OnDie defined out of line
+skip 00546140 0 CCharString::~CCharString declarations
+skip 0054ed90 0 CCharString::~CCharString declarations
+skip 00564b60 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00566940 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 0056c820 0 StrA::~StrA declarations
+skip 00579435 moved SubObject::Cleanup -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 0057a545 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 0057fefb moved SubObject::Cleanup -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 005e0ab0 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 005e0de0 0 CInstanceCountedBase::~CInstanceCountedBase declarations
+skip 005e1790 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 005fc2d0 0 CCharString::~CCharString declarations
+skip 005fc8a0 0 CCharString::~CCharString declarations
+edited 006129c0 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 00629060 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 00630a50 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 00630d90 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00655fe9 free ::PrimSlotAssign -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 0066c2f0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 00695640 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00695760 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+skip 00695f80 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 00699090 0 ScopedGuard::~ScopedGuard declarations
+skip 006ac910 0 CCharString::~CCharString declarations
+skip 006d41f0 0 CCharString::~CCharString declarations
+skip 006df860 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 006df970 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 006f8fa0 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 006fc130 0 CCharString::~CCharString declarations
+skip 0071f8f0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00739dd0 free ::Sub_dtor -> ~CCharString x2 :: diff -[] +['??3@YAXPAX@Z']
+edited 0073d7a0 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 0073e970 0 CListMember_0099eae0::~CListMember_0099eae0 declarations
+edited 0073fe70 free ::DestructSecondMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructSecondMember_0099eae0@@YIXPAX@Z']
+skip 0074dbb0 0 CCharString_Retail::~CCharString_Retail declarations
+skip 0074fce0 0 CCharString::~CCharString declarations
+skip 0076b0e0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 0076b1a0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 0076bd70 0 CCharString::~CCharString declarations
+skip 0076bdd0 0 CCharString::~CCharString declarations
+skip 00770090 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 007701c0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 0077e0a0 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 00781540 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 00786b10 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 007acc50 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 008233c0 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 0084aae0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 0084b500 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00868350 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 0086d370 0 CCharString::~CCharString declarations
+skip 0088f850 0 CDeedReactionName::~CDeedReactionName declarations
+skip 008902e0 moved Str::dtor -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00890f40 moved Local10::Dtor_10dba0 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00891490 moved Str::dtor -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 008a96c0 0 Key::~Key declarations
+skip 008a9720 0 Key::~Key declarations
+skip 008a9e00 moved Cat::dtor -> ~CCharString x1 :: compile: scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\8a\CGameScriptInterface_RemoveRumourCategory_008a9e00.cpp(17) : error C2065: 'CCharString' : undeclared identifier | -8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\8a\CGameScriptInterface_RemoveRumourCategory_008a9e00.cpp(17) : error C2059: syntax error : ')'
+skip 008aa050 0 GString::~GString declarations
+skip 008aa270 0 StrKey::~StrKey declarations
+skip 008aa2b0 0 Str::~Str declarations
+skip 008aa510 0 GStr::~GStr declarations
+skip 008af850 0 CCharString::~CCharString declarations
+skip 008df3a0 0 CCharString::~CCharString declarations
+edited 008eba00 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 008fd2ca 0 MemberC::~MemberC declarations
+skip 008fe880 free ::FableMemberDtor_008fe880 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 00905070 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 009050a0 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00905440 free ::DestructFirstMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructFirstMember_0099eae0@@YIXPAX@Z']
+edited 009084a0 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00918ee0 free ::DestructSecondMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructSecondMember_0099eae0@@YIXPAX@Z']
+skip 00927be0 free ::memb0c_dtor -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 0092c2e0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 009567f0 0 CCharString_Retail::~CCharString_Retail declarations
+skip 00956870 0 CCharString_Retail::~CCharString_Retail declarations
+skip 00977290 0 CCharString_Retail::~CCharString_Retail declarations
+skip 0098cec0 free ::FableBaseDtor_0098cec0 -> ~CCharString x1 free ::FableMemberDtor_0098cec0 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\98\global_Destval_0098cec0.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 009a0b00 moved MemberAt8::destroy -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 009a9940 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 009ac5d0 0 CCharString::~CCharString declarations
+edited 009c9e40 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 009cad20 0 CCharString::~CCharString declarations
+skip 009d3b70 moved CTCInventoryItemBase::OnDieBase -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 009d8460 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 009e63f0 free ::FableBaseDtor_009e63f0 -> ~CCharString x1 free ::FableMemberDtor_009e63f0 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\9e\global_Destval_009e63f0.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 009eb590 0 CCharString::~CCharString declarations
+edited 009ee2c0 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+edited 009ee390 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+skip 009eea90 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 009eedc0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 009ef260 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 009f03b0 0 CCharString::~CCharString declarations
+skip 00a0a3f0 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 00a0a4d0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 00a37850 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+skip 00a379c0 free ::FableMemberDtor_00a379c0 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 00a3f730 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 00a3fd40 free ::FableBaseDtor_00a3fd40 -> ~CCharString x1 free ::FableMemberDtor_00a3fd40 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\a3\global_Destval_00a3fd40.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 00a40bd0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00a489c0 0 CBase_0099eae0::~CBase_0099eae0 declarations
+skip 00a49d40 0 CMember_0099eae0::~CMember_0099eae0 declarations
+skip 00a49ea0 0 CBase_0099eae0::~CBase_0099eae0 declarations
+edited 00a6e570 free ::CLandscapeBackgroundPatch_dtor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?CLandscapeBackgroundPatch_dtor_0099eae0@@YIXPAVCLandscapeBackgroundPatch@@@Z']
+skip 00a9c910 free ::FableMemberDtor_00a9c910 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00a9c980 free ::FableMemberDtor_00a9c980 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00a9c9a0 free ::FableMemberDtor_00a9c9a0 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 00aab150 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00aac7f0 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00aaeed0 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00ab0a10 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00abe080 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00abe0d0 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+edited 00ac1e90 free ::DestructMember_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?DestructMember_0099eae0@@YIXPAX@Z']
+skip 00af5900 0 CCharString::~CCharString declarations
+skip 00b59760 free ::FableConsume_b59760 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 00bdd480 free ::InnerDtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['@InnerDtor@4']
+skip 00cb5ac0 moved PairSlot::Release -> ~CCharString x1 :: compile: \naming\w15\ov_t_qall\rebuild\src\compiled\00\cb\std_Consvalpairmorphi_00cb5ac0.cpp(16) : error C2300: 'PairSlot' : class does not have a destructor called '~CCharString'
+skip 00cb6400 free ::FableBaseDtor_00cb6400 -> ~CCharString x1 free ::FableMemberDtor_00cb6400 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\cb\global_Destval_00cb6400.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 00cb9ef0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 00cd22a4 free ::AutoTinyScalarDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyScalarDestructor_0099eae0@@YIXPAX@Z']
+edited 00cd22c0 free ::Sub_Dtor -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?Sub_Dtor@@YIXPAX@Z']
+skip 00cd27b4 free ::FableBaseDtor_00cd27b4 -> ~CCharString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 00cd44e0 free ::FableBaseDtor_00cd44e0 -> ~CCharString x1 free ::FableMemberDtor_00cd44e0 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\cd\global_Destval_00cd44e0.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 00cd45c0 free ::FableBaseDtor_00cd45c0 -> ~CCharString x1 free ::FableMemberDtor_00cd45c0 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\cd\global_Destval_00cd45c0.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 00cd4600 free ::CCharStringDtor -> ~CCharString x3 :: diff -[] +['??3@YAXPAX@Z']
+skip 00cd4fd0 free ::FableBaseDtor_00cd4fd0 -> ~CCharString x1 free ::FableMemberDtor_00cd4fd0 -> ~CCharString x1 :: compile: ng\w15\ov_t_qall\rebuild\src\compiled\00\cd\global_Destval_00cd4fd0.cpp(16) : error C2535: 'CCharString::~CCharString(void)' : member function already defined or declared
+skip 00cdbcc0 0 CMember_0099eae0::~CMember_0099eae0 declarations
+edited 00ce6be0 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00ce6c10 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00ce6c80 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00d0edb0 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00e0afb0 free ::AutoTinyFirstMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyFirstMemberDestructor_0099eae0@@YIXPAX@Z']
+skip 00e15500 0 CCharString::~CCharString declarations
+skip 00e1e530 0 CCharString::~CCharString declarations
+edited 00e37e10 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00e3ac40 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00e6e280 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+skip 00e80d60 0 CCharString::~CCharString declarations
+edited 00e836c0 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00e92940 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00e93050 free ::AutoTinyMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyMemberDestructor_0099eae0@@YIXPAX@Z']
+edited 00eb62e0 free ::AutoTinyFirstMemberDestructor_0099eae0 -> ~CCharString x1 +u ['??1CCharString@@QAE@XZ'] -u ['?AutoTinyFirstMemberDestructor_0099eae0@@YIXPAX@Z']
+skip 01229480 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229480.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229480.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | \ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229480.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_013bab40'
+skip 012294a0 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012294a0.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012294a0.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | aming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012294a0.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects'
+skip 012294d0 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012294d0.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012294d0.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | \ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012294d0.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_013bab84'
+skip 012295f0 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012295f0.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012295f0.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | \ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_012295f0.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_013babd0'
+skip 01229df0 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229df0.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229df0.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | \ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229df0.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_013bae94'
+skip 01229e20 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229e20.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229e20.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | \ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_01229e20.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_013baeb0'
+skip 0122a460 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_0122a460.cpp(2) : error C2236: unexpected 'class' 'CCharString' | 96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_0122a460.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | \ov_t_qall\rebuild\src\compiled\01\22\global_CreateCRC_0122a460.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_013bb768'
+skip 0122aef0 moved AutoTinyReverseLoopTarget::Invoke -> ~CCharString x1 :: compile: fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\CreateCRC_CreateCRC_0122aef0.cpp(2) : error C2236: unexpected 'class' 'CCharString' | b1c2d\scratchpad\naming\w15\ov_t_qall\rebuild\src\compiled\01\22\CreateCRC_CreateCRC_0122aef0.cpp(5) : error C2447: '{' : missing function header (old-style formal list?) | _t_qall\rebuild\src\compiled\01\22\CreateCRC_CreateCRC_0122aef0.cpp(8) : error C2146: syntax error : missing ';' before identifier 'g_AutoTinyReverseLoopObjects_0143e934'

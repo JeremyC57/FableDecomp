@@ -1,0 +1,14 @@
+skip 00cdbeb0 call of Erase with 1 args
+skip 00cdbfb0 call of Erase with 1 args
+skip 00d823a0 call of Erase with 1 args
+skip 00e12f20 call of Erase with 1 args
+skip 00e1cd40 call of _M_erase with 1 args
+skip 00e292c0 call of Erase with 1 args
+skip 00e3e720 call of _M_erase with 1 args
+skip 00e6da80 call of _M_erase with 1 args
+skip 00e80d60 call of _M_erase with 1 args
+skip 00ed0b10 call of Erase with 1 args
+skip 00ee2db0 call of _M_erase with 1 args
+skip 00f01480 call of Erase with 1 args
+skip 00f02210 call of Erase with 1 args
+skip 00f0bb10 call of Erase with 1 args

@@ -1,0 +1,12 @@
+skip 00455588 5 CPersistContext::Transfer declarations
+skip 004585fe 3 CPersistContext::Transfer declarations
+skip 00458911 5 CPersistContext::Transfer declarations
+skip 00458d6f 5 CPersistContext::Transfer declarations
+skip 00463bff 6 CPersistContext::Transfer declarations
+skip 0046c6f0 5 CPersistContext::Transfer declarations
+skip 0046fc51 6 CPersistContext::Transfer declarations
+skip 004ddb76 5 CPersistContext::Transfer declarations
+skip 004de4b2 5 CPersistContext::Transfer declarations
+skip 004de9d2 qualified call of Transfer
+skip 004e795a 6 CPersistContext::Transfer declarations
+skip 004eb02f 5 CPersistContext::Transfer declarations

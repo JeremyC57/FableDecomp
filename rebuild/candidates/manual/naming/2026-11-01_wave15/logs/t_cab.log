@@ -1,0 +1,41 @@
+edited 0048c950 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) +u ['??1CCreatureActionBase@@UAE@XZ', '??_GCPhysicsMeshInfo_Derived_0048c950@@UAEPAXI@Z'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 0057a545 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 0057b783 virtual dtor replaces placeholder v00 +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CCreatureActionBase@@QAE@XZ']
+edited 005cc091 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 00629020 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 00629060 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 00629110 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 0062da90 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+edited 006a08f0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 006dd6c0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 006df7c0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+edited 006df9b0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 00713510 no vptr in CCreatureActionBase model
+skip 00715560 shape ??1ActionBase@Retail@@QAE@XZ
+edited 0078ab20 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 0078af00 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+skip 007eb9b0 CCreatureActionBase_Retail->CCreatureActionBase virtual dtor replaces placeholder v00 :: diff ['rename moves bound ?SetCurrentAction@CThingCreatureBase_Retail@@QAE_NPAUCCreatu off-PDB to ?SetCurrentAction@CThingCreatureBase_Retail@@QAE_NPAVCCreatu']
+edited 007ed270 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 007ed830 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+edited 007ee8f0 virtual dtor replaces placeholder v00 +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CCreatureActionBase@@QAE@XZ']
+skip 0084aae0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xbc -> 0xb8) :: final not named
+skip 0084b270 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+skip 0084b2b0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+skip 0084b3e0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+skip 0084b500 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) :: final not named
+edited 008663d0 virtual dtor; vptr taken from the leading pad (0xa4 -> 0xa0) +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CCreatureActionBase@@QAE@XZ']
+edited 00891720 ~CCreatureAction_StabbedToDeath removed (implicit: calls ~CCreatureActionBase) access +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CCreatureAction_StabbedToDeath@@UAE@XZ']
+edited 008abaa0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) +u ['??1CCreatureActionBase@@UAE@XZ', '??_GCPhysicsMeshInfo_Derived_008abaa0@@UAEPAXI@Z'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+edited 008ac330 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad (0xa8 -> 0xa4) +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 008d6ac0 0 ~CCreatureActionBase declarations
+edited 0092c2e0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor; vptr taken from the leading pad +u ['??1CCreatureActionBase@@UAE@XZ'] -u ['??1CPhysicsMeshInfo@@QAE@XZ']
+skip 0092e3e0 CPhysicsMeshInfo->CCreatureActionBase virtual dtor replaces placeholder v00 :: final not named
+skip 0093a5c0 0 ~CCreatureActionBase declarations
+skip 0093a7a0 0 ~CCreatureActionBase declarations
+skip 0093a8c0 0 ~CCreatureActionBase declarations
+skip 009400f0 shape ?Base@Obj@@QAEXXZ
+skip 00941e00 0 ~CCreatureActionBase declarations
+skip 00948d40 0 ~CCreatureActionBase declarations
+skip 00948ef0 0 ~CCreatureActionBase declarations
+skip 0095b6f0 CActionNative->CCreatureActionBase access :: diff ['rename moves bound ?AIAction_PerformActionAndWait@CQueenNative@@QAEJPAUCActionN off-PDB to ?AIAction_PerformActionAndWait@CQueenNative@@QAEJPAVCCreatur']
+edited 00979f70 virtual dtor replaces placeholder v00 +u ['??1CCreatureActionBase@@UAE@XZ', '??1CCreatureAction_FireMissileWeapon@@UAE@XZ'] -u ['??1CCreatureActionBase@@QAE@XZ', '??1CCreatureAction_FireMissileWeapon@@QAE@XZ']

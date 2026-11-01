@@ -1,0 +1,1 @@
+skip 008916a0 moved CGSISheatheHeroWeapons_ActionStorage::Destroy -> ~CCreatureAction_SheatheItemToInventory x1 :: final not named

@@ -1,0 +1,241 @@
+addr       parity           behav  name
+004354c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf '~CDisplayEngine' matches no symbol in 004354c0.obj; graded the largest function
+  WARN leaf '~CDisplayEngine' matches no symbol in 004354c0.obj; graded the largest function
+004354c0   WARN RELOC_NAME: ?Flush@CDisplaySubsystem@@QAEXXZ -> 006404b0 labelled 'CTCInventoryAbilities::AddLearnedExpression'
+004354c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+004354c0   RELOCATION_MATCH PASS   CDisplayEngine::~CDisplayEngine
+0049bc70   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 0049bc70.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 0049bc70.obj; graded the largest function
+0049bc70   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+0049bc70   RELOCATION_MATCH PASS   CGameJoystickManager::ScalarDeletingDestructor
+00714730   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00714730   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00714730   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00714730   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00714730   RELOCATION_MATCH PASS   NTCScriptedControl::CActionMoveTo::OnCleanup
+00778d60   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00778d60   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00778d60   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00778d60   RELOCATION_MATCH PASS   CTCDCameraPoint::Construct
+0080c250   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0080c250   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0080c250   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+0080c250   RELOCATION_MATCH LINK_FAIL CTCDExplosion::Construct
+00833800   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00833800   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00833800   WARN SHARED_HEADER_AVAILABLE CClass
+00833800   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00833800   RELOCATION_MATCH PASS   CThingAICreature::Create
+00996ea0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00996ea0.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00996ea0.obj; graded the largest function
+00996ea0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00996ea0   RELOCATION_MATCH PASS   CDataStream::ScalarDeletingDestructor
+00997240   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00997240.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00997240.obj; graded the largest function
+00997240   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00997240   RELOCATION_MATCH PASS   CCompressedMemoryDataInputStream::ScalarDeletingDestructor
+009d4c30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009d4c30   WARN SHARED_HEADER_AVAILABLE CFileDataInputStream
+009d4c30   WARN RELOC_NAME: ??1CFileDataInputStream@@QAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+009d4c30   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009d4c30   RELOCATION_MATCH PASS   CDefStringTable::LoadTable
+009d6fa0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 009d6fa0.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 009d6fa0.obj; graded the largest function
+009d6fa0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009d6fa0   RELOCATION_MATCH PASS   CBankFileAsyncEntry::ScalarDeletingDestructor
+00a044b0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a044b0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a044b0   RELOCATION_MATCH PASS   CRenderStateManager::~CRenderStateManager
+00a0d810   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a0d810   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a0d810   RELOCATION_MATCH PASS   CInputProcessManager::~CInputProcessManager
+00a37360   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a37360   WARN RELOC_NAME: ??1SClassList@@QAE@XZ -> 00a376a0 labelled '_global::StdList_Clear_00a376a0'
+00a37360   WARN RELOC_NAME: ?_Destroy_range@@YIXPAVCClassTypeInfo@@0ABUSScalarTag@@@Z -> 00a37af0 labelled 'std::__destroy_aux'
+00a37360   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a37360   RELOCATION_MATCH PASS   CClassFactory::~CClassFactory
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00a60aa0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a60aa0   RELOCATION_MATCH PASS   CChecksumCacheFile::Save
+00a7d990   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00a7d990.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00a7d990.obj; graded the largest function
+00a7d990   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a7d990   RELOCATION_MATCH PASS   CNavBlockedQuadTreeNode::`scalar_deleting_destructor'
+00aa8d50   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00aa8d50.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00aa8d50.obj; graded the largest function
+00aa8d50   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00aa8d50   RELOCATION_MATCH PASS   CChunkedFileChunk::ScalarDeletingDestructor
+00ad88c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00ad88c0   WARN RELOC_NAME: ??1CMember_00ad83a0@@QAE@XZ -> 00ad83a0 labelled 'std::vector<QuadricOptimiserInternals::COptimisedSubMesh, std::allocator<QuadricOptimiserInternals::COptimisedSubMesh>>::~vector'
+00ad88c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00ad88c0   RELOCATION_MATCH PASS   CLoadedMesh_00ad88c0::`scalar deleting destructor'
+00b50be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00b50be0.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00b50be0.obj; graded the largest function
+00b50be0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b50be0   RELOCATION_MATCH PASS   CEngineWeatherSettings::ScalarDeletingDestructor
+00b84030   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b84030   WARN RELOC_NAME: ?_Destroy_range@@YIXPAUCParticleSimulationPointer@@0ABUSScalarTag@@@Z -> 00b833f0 labelled 'std::__destroy_aux<CCountedPointer<CParticleSimulation> *>'
+00b84030   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b84030   RELOCATION_MATCH PASS   CEngineClothSimulation2DAnimatedMesh::~CEngineClothSimulation2DAnimatedMesh
+00bc5420   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bc5420   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00bc5420   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerParticleLineGroup
+
+WINS: 19
+  004354c0 RELOCATION_MATCH CDisplayEngine::~CDisplayEngine
+  0049bc70 RELOCATION_MATCH CGameJoystickManager::ScalarDeletingDestructor
+  00714730 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::OnCleanup
+  00778d60 RELOCATION_MATCH CTCDCameraPoint::Construct
+  00833800 RELOCATION_MATCH CThingAICreature::?Create@CThingAICreature
+  00996ea0 RELOCATION_MATCH CDataStream::ScalarDeletingDestructor
+  00997240 RELOCATION_MATCH CCompressedMemoryDataInputStream::ScalarDeletingDestructor
+  009d4c30 RELOCATION_MATCH CDefStringTable::LoadTable
+  009d6fa0 RELOCATION_MATCH CBankFileAsyncEntry::ScalarDeletingDestructor
+  00a044b0 RELOCATION_MATCH CRenderStateManager::??1CRenderStateManager
+  00a0d810 RELOCATION_MATCH _global::??1CInputProcessManager@@UAE@XZ
+  00a37360 RELOCATION_MATCH CClassFactory::??1CClassFactory
+  00a60aa0 RELOCATION_MATCH CChecksumCacheFile::Save
+  00a7d990 RELOCATION_MATCH CNavBlockedQuadTreeNode::`scalar_deleting_destructor'
+  00aa8d50 RELOCATION_MATCH CChunkedFileChunk::ScalarDeletingDestructor
+  00ad88c0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedMesh::??_GCLoadedMesh_00ad88c0@@QAEPAXI@Z
+  00b50be0 RELOCATION_MATCH CEngineWeatherSettings::ScalarDeletingDestructor
+  00b84030 RELOCATION_MATCH CEngineClothSimulation2DAnimatedMesh::??1CEngineClothSimulation2DAnimatedMesh
+  00bc5420 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::??1CEnginePrimitiveManagerParticleLineGroup_Retail
+addr       parity           behav  name
+00446be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00446be0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00446be0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00446be0   DIFFER(296v296)  PASS   CGamePlayerInterface::~CGamePlayerInterface
+00687050   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00687050.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00687050.obj; graded the largest function
+00687050   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00687050   RELOCATION_MATCH PASS   CTCBase::ScalarDeletingDestructor
+00715710   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00715710   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00715710   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00715710   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00715710   RELOCATION_MATCH PASS   NTCScriptedControl::CActionFollowCreature::OnActivate
+00779d20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00779d20   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00779d20   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00779d20   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00779d20   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00779d20   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00779d20   RELOCATION_MATCH PASS   CTCDExperienceOrb::Construct
+0082d920   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0082d920   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0082d920   WARN SHARED_HEADER_AVAILABLE CClass
+0082d920   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+0082d920   RELOCATION_MATCH PASS   CThingBuilding::Create
+00995df0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+  WARN leaf '??1CCompressedMemoryDataInputStream@' matches no symbol in 00995df0.obj; graded the largest function
+00995df0   DIFFER(73v52)    PASS   _global::Dtor_CBaseBase_00995df0
+00996ed0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00996ed0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00996ed0.obj; graded the largest function
+00996ed0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00996ed0   RELOCATION_MATCH PASS   CDataInputStream::`scalar_deleting_destructor'
+009b08c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009b08c0   WARN RELOC_NAME: ??1CFileDataInputStream@@QAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+009b08c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009b08c0   WARN RELOC_NAME: ?GetSize@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+009b08c0   RELOCATION_MATCH PASS   CDefinitionManager::Compile
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CFileDataOutputStream
+009d4ce0   WARN RELOC_NAME: ?Erase@CStringMap@@QAEXPAUSRbTreeNode@@@Z -> 0043020a labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+009d4ce0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009d4ce0   RELOCATION_MATCH PASS   CDefStringTable::SaveBinary
+009f5c80   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009f5c80   WARN SHARED_HEADER_AVAILABLE CMouse
+009f5c80   WARN SHARED_HEADER_AVAILABLE CKeyboard
+009f5c80   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009f5c80   WARN RELOC_NAME: ?Destroy_009f6750@@YIXPAUCJoystickPointer@@0ABUSAllocatorTag@@@Z -> 009f6750 labelled '_global::DestroyRange_CountedPointer_009f6750'
+009f5c80   RELOCATION_MATCH PASS   CInputManager::~CInputManager
+00a07980   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a07980   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a07980   RELOCATION_MATCH PASS   CRenderStateManager::`scalar deleting destructor'
+00a19c00   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00a19c00.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00a19c00.obj; graded the largest function
+00a19c00   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a19c00   RELOCATION_MATCH PASS   CANavQuadTreeNode::ScalarDeletingDestructor
+00a44eb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00a44eb0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a44eb0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a44eb0   RELOCATION_MATCH PASS   C3DSkeletalMorph::~C3DSkeletalMorph
+00a76a80   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a76a80   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a76a80   RELOCATION_MATCH PASS   CNavNavigableLeafNode::~CNavNavigableLeafNode
+00aa8490   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf '~CChunkedFileSuperChunk' matches no symbol in 00aa8490.obj; graded the largest function
+  WARN leaf '~CChunkedFileSuperChunk' matches no symbol in 00aa8490.obj; graded the largest function
+00aa8490   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00aa8490   RELOCATION_MATCH PASS   CChunkedFileSuperChunk::~CChunkedFileSuperChunk
+00ac6ae0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00ac6ae0.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor' matches no symbol in 00ac6ae0.obj; graded the largest function
+00ac6ae0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00ac6ae0   RELOCATION_MATCH PASS   C3DOptimisedMeshBase::ScalarDeletingDestructor
+00b44f20   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b44f20   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b44f20   RELOCATION_MATCH PASS   CEngineLightingManager::SetupShaderPointLights
+00b81e60   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b81e60   WARN RELOC_NAME: ?_Destroy_range@@YIXPAUCParticleSimulationPointer@@0ABUSScalarTag@@@Z -> 00b833f0 labelled 'std::__destroy_aux<CCountedPointer<CParticleSimulation> *>'
+00b81e60   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b81e60   RELOCATION_MATCH PASS   CEngineClothSimulationStaticMesh::~CEngineClothSimulationStaticMesh
+00bbf1c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bbf1c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00bbf1c0   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerParticleSpriteTrailGroup
+
+WINS: 17
+  00687050 RELOCATION_MATCH CTCBase::ScalarDeletingDestructor
+  00715710 RELOCATION_MATCH NTCScriptedControl::CActionFollowCreature::?OnActivate@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+  00779d20 RELOCATION_MATCH CTCDExperienceOrb::Construct
+  0082d920 RELOCATION_MATCH CThingBuilding::?Create@CThingBuilding
+  00996ed0 RELOCATION_MATCH CDataInputStream::`scalar_deleting_destructor'
+  009b08c0 RELOCATION_MATCH CDefinitionManager::Compile
+  009d4ce0 RELOCATION_MATCH CDefStringTable::SaveBinary
+  009f5c80 RELOCATION_MATCH CInputManager::??1CInputManager
+  00a07980 RELOCATION_MATCH CRenderStateManager::??_GCRenderStateManager@@UAEPAXI@Z
+  00a19c00 RELOCATION_MATCH CANavQuadTreeNode::ScalarDeletingDestructor
+  00a44eb0 RELOCATION_MATCH C3DSkeletalMorph::??1C3DSkeletalMorph
+  00a76a80 RELOCATION_MATCH CNavNavigableLeafNode::??1CNavNavigableLeafNode
+  00aa8490 RELOCATION_MATCH CChunkedFileSuperChunk::~CChunkedFileSuperChunk
+  00ac6ae0 RELOCATION_MATCH C3DOptimisedMeshBase::ScalarDeletingDestructor
+  00b44f20 RELOCATION_MATCH CEngineLightingManager::SetupShaderPointLights
+  00b81e60 RELOCATION_MATCH CEngineClothSimulationStaticMesh::??1CEngineClothSimulationStaticMesh
+  00bbf1c0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteTrailGroup::??1CEnginePrimitiveManagerParticleSpriteTrailGroupNativeView

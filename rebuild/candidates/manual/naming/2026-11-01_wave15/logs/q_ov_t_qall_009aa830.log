@@ -1,0 +1,6 @@
+skip 009a7b70 call of Erase with 1 args
+skip 009ab770 call of Erase with 1 args
+skip 009ac310 call of Erase with 1 args
+skip 009ecf30 0 definitions of _Rb_tree<class CCharString, struct std::pair<class CCharString const, class CCharString>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, class CCharString>>>
+skip 00e6da80 call of _M_erase with 1 args
+skip 00ed0b10 call of Erase with 1 args

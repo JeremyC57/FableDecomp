@@ -1,0 +1,3 @@
+edited 007fbb00 moved CTCKraken::RemoveHeadEffect -> EndHeadEffects x1 +u ['?EndHeadEffects@CTCKraken@@QAEXXZ'] -u ['?RemoveHeadEffect@CTCKraken@@QAEXXZ']
+edited 007fc6f0 free ::Kraken_sub_7fb150 -> EndHeadEffects x1 +u ['?EndHeadEffects@CTCKraken@@QAEXXZ'] -u ['?Kraken_sub_7fb150@@YIXPAVCTCKraken@@@Z']
+edited 007fc710 free ::CTCKraken_SetupHead -> EndHeadEffects x1 +u ['?EndHeadEffects@CTCKraken@@QAEXXZ'] -u ['?CTCKraken_SetupHead@@YIXPAVCTCKraken@@@Z']

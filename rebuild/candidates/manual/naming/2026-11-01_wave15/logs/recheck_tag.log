@@ -1,0 +1,303 @@
+addr       parity           behav  name
+005907ab   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005907ab   WARN SHARED_HEADER_AVAILABLE CManager
+005907ab   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+005907ab   WARN RELOC_NAME: ??0CLongLongMap@@QAE@XZ -> 004df86c labelled 'std::map<T_004df86c>::map'
+005907ab   WARN RELOC_CONFLICT: ??0CAction@NUISystem@@QAE@XZ -> 0042bed4 here, 0042be50 in landed 0056f615
+005907ab   WARN RELOC_NAME: ??0CAction@NUISystem@@QAE@XZ -> 0042bed4 labelled 'NUISystem::CDeletion::CDeletion'
+005907ab   WARN RELOC_NAME: ??0CAction@NUISystem@@QAE@ABV01@@Z -> 0042cd84 labelled 'NUISystem::CDeletion::CDeletion'
+005907ab   WARN RELOC_NAME: ??1CActionParamList@NUISystem@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005907ab   WARN RELOC_NAME: ??1CLongLongMap@@QAE@XZ -> 004dd2b1 labelled 'std::list<T_004dd2b1>::~list'
+005907ab   RELOCATION_MATCH PASS   CTCInventory::ConstructItemCategoryListPC
+00783380   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00783380   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00783380   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00783380   WARN SHARED_HEADER_AVAILABLE CTCBase
+00783380   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00783380   RELOCATION_MATCH PASS   CTCBoastingCrowdControl::SpawnCrowdMember
+007884f5   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007884f5   WARN RELOC_NAME: ?FindAnimationByName@CAnimationSet@@QAE_NABVCCharString@@ABUCAnimFilter@@@Z -> 005dc2e0 labelled 'CAnimationSet::AnimExists'
+007884f5   RELOCATION_MATCH PASS   CTCMeleeTrap::ResetTrap
+  WARN leaf 'g_CCharString_013b8778' matches no symbol in 0121a2f0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8778' matches no symbol in 0121a2f0.obj; graded the largest function
+0121a2f0   WARN RELOC_CONFLICT: _$E2 -> 01228b00 here, 01228930 in landed 01219f00
+0121a2f0   WARN RELOC_NAME: _$E2 -> 01228b00 labelled '_global::AtexitDtor_CCharString_at_013b8778_01228b00'
+0121a2f0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8778
+  WARN leaf 'g_CCharString_013b89d4' matches no symbol in 0121a3c0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b89d4' matches no symbol in 0121a3c0.obj; graded the largest function
+0121a3c0   WARN RELOC_CONFLICT: _$E2 -> 01228c30 here, 01228930 in landed 01219f00
+0121a3c0   WARN RELOC_NAME: _$E2 -> 01228c30 labelled '_global::AtexitDtor_CCharString_at_013b89d4_01228c30'
+0121a3c0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b89d4
+  WARN leaf 'g_CCharString_013b8b4c' matches no symbol in 0121a8c1.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8b4c' matches no symbol in 0121a8c1.obj; graded the largest function
+0121a8c1   WARN RELOC_CONFLICT: _$E2 -> 01228eec here, 01228930 in landed 01219f00
+0121a8c1   WARN RELOC_NAME: _$E2 -> 01228eec labelled '_global::AtexitDtor_CCharString_at_013b8b4c_01228eec'
+0121a8c1   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8b4c
+  WARN leaf 'g_CCharString_013b8b54' matches no symbol in 0121a8fb.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8b54' matches no symbol in 0121a8fb.obj; graded the largest function
+0121a8fb   WARN RELOC_CONFLICT: _$E2 -> 01228f00 here, 01228930 in landed 01219f00
+0121a8fb   WARN RELOC_NAME: _$E2 -> 01228f00 labelled '_global::AtexitDtor_CCharString_at_013b8b54_01228f00'
+0121a8fb   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8b54
+  WARN leaf 'g_CCharString_013ba878' matches no symbol in 0121df30.obj; graded the largest function
+  WARN leaf 'g_CCharString_013ba878' matches no symbol in 0121df30.obj; graded the largest function
+0121df30   WARN RELOC_CONFLICT: _$E2 -> 012291d0 here, 01228930 in landed 01219f00
+0121df30   WARN RELOC_NAME: _$E2 -> 012291d0 labelled '_global::AtexitDtor_CCharString_at_013ba878_012291d0'
+0121df30   RELOCATION_MATCH PASS   _static_init::g_CCharString_013ba878
+  WARN leaf 'g_CCharString_013ba894' matches no symbol in 0121dfc0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013ba894' matches no symbol in 0121dfc0.obj; graded the largest function
+0121dfc0   WARN RELOC_CONFLICT: _$E2 -> 01229240 here, 01228930 in landed 01219f00
+0121dfc0   WARN RELOC_NAME: _$E2 -> 01229240 labelled '_global::AtexitDtor_CCharString_at_013ba894_01229240'
+0121dfc0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013ba894
+  WARN leaf 'g_CCharString_013bab1c' matches no symbol in 0121e1b0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bab1c' matches no symbol in 0121e1b0.obj; graded the largest function
+0121e1b0   WARN RELOC_CONFLICT: _$E2 -> 01229450 here, 01228930 in landed 01219f00
+0121e1b0   WARN RELOC_NAME: _$E2 -> 01229450 labelled '_global::AtexitDtor_CCharString_at_013bab1c_01229450'
+0121e1b0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bab1c
+  WARN leaf 'g_CCharString_013bab80' matches no symbol in 0121e380.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bab80' matches no symbol in 0121e380.obj; graded the largest function
+0121e380   WARN RELOC_CONFLICT: _$E2 -> 012294c0 here, 01228930 in landed 01219f00
+0121e380   WARN RELOC_NAME: _$E2 -> 012294c0 labelled '_global::AtexitDtor_CCharString_at_013bab80_012294c0'
+0121e380   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bab80
+  WARN leaf 'g_CCharString_013bad2c' matches no symbol in 0121ecc0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bad2c' matches no symbol in 0121ecc0.obj; graded the largest function
+0121ecc0   WARN RELOC_CONFLICT: _$E2 -> 012299c0 here, 01228930 in landed 01219f00
+0121ecc0   WARN RELOC_NAME: _$E2 -> 012299c0 labelled '_global::AtexitDtor_CCharString_at_013bad2c_012299c0'
+0121ecc0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bad2c
+  WARN leaf 'g_CCharString_013bad90' matches no symbol in 0121ee50.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bad90' matches no symbol in 0121ee50.obj; graded the largest function
+0121ee50   WARN RELOC_CONFLICT: _$E2 -> 01229a90 here, 01228930 in landed 01219f00
+0121ee50   WARN RELOC_NAME: _$E2 -> 01229a90 labelled '_global::AtexitDtor_CCharString_at_013bad90_01229a90'
+0121ee50   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bad90
+  WARN leaf 'g_CCharString_013bada8' matches no symbol in 0121eef0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bada8' matches no symbol in 0121eef0.obj; graded the largest function
+0121eef0   WARN RELOC_CONFLICT: _$E2 -> 01229b00 here, 01228930 in landed 01219f00
+0121eef0   WARN RELOC_NAME: _$E2 -> 01229b00 labelled '_global::AtexitDtor_CCharString_at_013bada8_01229b00'
+0121eef0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bada8
+  WARN leaf 'g_CCharString_013bade4' matches no symbol in 0121efa0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bade4' matches no symbol in 0121efa0.obj; graded the largest function
+0121efa0   WARN RELOC_CONFLICT: _$E2 -> 01229b50 here, 01228930 in landed 01219f00
+0121efa0   WARN RELOC_NAME: _$E2 -> 01229b50 labelled '_global::AtexitDtor_CCharString_at_013bade4_01229b50'
+0121efa0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bade4
+  WARN leaf 'g_CCharString_013badec' matches no symbol in 0121efe0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013badec' matches no symbol in 0121efe0.obj; graded the largest function
+0121efe0   WARN RELOC_CONFLICT: _$E2 -> 01229b70 here, 01228930 in landed 01219f00
+0121efe0   WARN RELOC_NAME: _$E2 -> 01229b70 labelled '_global::AtexitDtor_CCharString_at_013badec_01229b70'
+0121efe0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013badec
+  WARN leaf 'g_CCharString_013badf4' matches no symbol in 0121f01d.obj; graded the largest function
+  WARN leaf 'g_CCharString_013badf4' matches no symbol in 0121f01d.obj; graded the largest function
+0121f01d   WARN RELOC_CONFLICT: _$E2 -> 01229b8a here, 01228930 in landed 01219f00
+0121f01d   WARN RELOC_NAME: _$E2 -> 01229b8a labelled '_global::AtexitDtor_CCharString_at_013badf4_01229b8a'
+0121f01d   RELOCATION_MATCH PASS   _static_init::g_CCharString_013badf4
+  WARN leaf 'g_CCharString_013badfc' matches no symbol in 0121f057.obj; graded the largest function
+  WARN leaf 'g_CCharString_013badfc' matches no symbol in 0121f057.obj; graded the largest function
+0121f057   WARN RELOC_CONFLICT: _$E2 -> 01229b9e here, 01228930 in landed 01219f00
+0121f057   WARN RELOC_NAME: _$E2 -> 01229b9e labelled '_global::AtexitDtor_CCharString_at_013badfc_01229b9e'
+0121f057   RELOCATION_MATCH PASS   _static_init::g_CCharString_013badfc
+  WARN leaf 'g_CCharString_013bae0c' matches no symbol in 0121f0c0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bae0c' matches no symbol in 0121f0c0.obj; graded the largest function
+0121f0c0   WARN RELOC_CONFLICT: _$E2 -> 01229bd0 here, 01228930 in landed 01219f00
+0121f0c0   WARN RELOC_NAME: _$E2 -> 01229bd0 labelled '_global::AtexitDtor_CCharString_at_013bae0c_01229bd0'
+0121f0c0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bae0c
+  WARN leaf 'g_CCharString_013baf58' matches no symbol in 0121f5f0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013baf58' matches no symbol in 0121f5f0.obj; graded the largest function
+0121f5f0   WARN RELOC_CONFLICT: _$E2 -> 0122a060 here, 01228930 in landed 01219f00
+0121f5f0   WARN RELOC_NAME: _$E2 -> 0122a060 labelled '_global::AtexitDtor_CCharString_at_013baf58_0122a060'
+0121f5f0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013baf58
+  WARN leaf 'g_CCharString_013bafa4' matches no symbol in 0121f660.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bafa4' matches no symbol in 0121f660.obj; graded the largest function
+0121f660   WARN RELOC_CONFLICT: _$E2 -> 0122a090 here, 01228930 in landed 01219f00
+0121f660   WARN RELOC_NAME: _$E2 -> 0122a090 labelled '_global::AtexitDtor_CCharString_at_013bafa4_0122a090'
+0121f660   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bafa4
+  WARN leaf 'g_CCharString_013bb694' matches no symbol in 012219a0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bb694' matches no symbol in 012219a0.obj; graded the largest function
+012219a0   WARN RELOC_CONFLICT: _$E2 -> 0122a2e0 here, 01228930 in landed 01219f00
+012219a0   WARN RELOC_NAME: _$E2 -> 0122a2e0 labelled '_global::AtexitDtor_CCharString_at_013bb694_0122a2e0'
+012219a0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bb694
+  WARN leaf 'g_CCharString_013bb734' matches no symbol in 01221cd0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bb734' matches no symbol in 01221cd0.obj; graded the largest function
+01221cd0   WARN RELOC_CONFLICT: _$E2 -> 0122a440 here, 01228930 in landed 01219f00
+01221cd0   WARN RELOC_NAME: _$E2 -> 0122a440 labelled '_global::AtexitDtor_CCharString_at_013bb734_0122a440'
+01221cd0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bb734
+  WARN leaf 'g_CCharString_013bc3a0' matches no symbol in 01223c60.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bc3a0' matches no symbol in 01223c60.obj; graded the largest function
+01223c60   WARN RELOC_CONFLICT: _$E2 -> 0122a480 here, 01228930 in landed 01219f00
+01223c60   WARN RELOC_NAME: _$E2 -> 0122a480 labelled '_global::AtexitDtor_CCharString_at_013bc3a0_0122a480'
+01223c60   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bc3a0
+
+WINS: 24
+  005907ab RELOCATION_MATCH CTCInventory::ConstructItemCategoryListPC@CTCInventory
+  00783380 RELOCATION_MATCH CTCBoastingCrowdControl::SpawnCrowdMember
+  007884f5 RELOCATION_MATCH CTCMeleeTrap::ResetTrap
+  0121a2f0 RELOCATION_MATCH _static_init::g_CCharString_013b8778
+  0121a3c0 RELOCATION_MATCH _static_init::g_CCharString_013b89d4
+  0121a8c1 RELOCATION_MATCH _static_init::g_CCharString_013b8b4c
+  0121a8fb RELOCATION_MATCH _static_init::g_CCharString_013b8b54
+  0121df30 RELOCATION_MATCH _static_init::g_CCharString_013ba878
+  0121dfc0 RELOCATION_MATCH _static_init::g_CCharString_013ba894
+  0121e1b0 RELOCATION_MATCH _static_init::g_CCharString_013bab1c
+  0121e380 RELOCATION_MATCH _static_init::g_CCharString_013bab80
+  0121ecc0 RELOCATION_MATCH _static_init::g_CCharString_013bad2c
+  0121ee50 RELOCATION_MATCH _static_init::g_CCharString_013bad90
+  0121eef0 RELOCATION_MATCH _static_init::g_CCharString_013bada8
+  0121efa0 RELOCATION_MATCH _static_init::g_CCharString_013bade4
+  0121efe0 RELOCATION_MATCH _static_init::g_CCharString_013badec
+  0121f01d RELOCATION_MATCH _static_init::g_CCharString_013badf4
+  0121f057 RELOCATION_MATCH _static_init::g_CCharString_013badfc
+  0121f0c0 RELOCATION_MATCH _static_init::g_CCharString_013bae0c
+  0121f5f0 RELOCATION_MATCH _static_init::g_CCharString_013baf58
+  0121f660 RELOCATION_MATCH _static_init::g_CCharString_013bafa4
+  012219a0 RELOCATION_MATCH _static_init::g_CCharString_013bb694
+  01221cd0 RELOCATION_MATCH _static_init::g_CCharString_013bb734
+  01223c60 RELOCATION_MATCH _static_init::g_CCharString_013bc3a0
+addr       parity           behav  name
+007004b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007004b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007004b0   WARN RELOC_NAME: ??0CBaseIntelligentPointerReal@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+007004b0   RELOCATION_MATCH PASS   COpinionReactionManager::COpinionReactionManager
+00788406   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00788406   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00788406   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+00788406   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00788406   WARN SHARED_HEADER_AVAILABLE CWorld
+00788406   WARN SHARED_HEADER_AVAILABLE CTCBase
+00788406   WARN RELOC_NAME: ?GetAnimation@CAnimationTable@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z -> 005dc340 labelled 'Animation_FindNthValid'
+00788406   WARN RELOC_NAME: ?GetAnimation@CMeshDataBank@@QAEPAVC3DAnimationInfo@@J@Z -> 00a242c0 labelled 'CMeshDataBank::PeekAnimation'
+00788406   WARN RELOC_NAME: ?HasAnimation@CAnimationTable@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z -> 005dc2e0 labelled 'CAnimationSet::AnimExists'
+00788406   WARN RELOC_NAME: ?SetStrikeTimes@CTCMeleeTrap@@QAEXMM@Z -> 00787c35 labelled 'CTCTrapBase::SetTransitionParams'
+00788406   RELOCATION_MATCH PASS   CTCMeleeTrap::TriggerTrap
+  WARN leaf 'g_CCharString_013b86f4' matches no symbol in 0121a050.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b86f4' matches no symbol in 0121a050.obj; graded the largest function
+0121a050   WARN RELOC_CONFLICT: _$E2 -> 012289f0 here, 01228930 in landed 01219f00
+0121a050   WARN RELOC_NAME: _$E2 -> 012289f0 labelled '_global::AtexitDtor_CCharString_at_013b86f4_012289f0'
+0121a050   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b86f4
+  WARN leaf 'g_CCharString_013b8798' matches no symbol in 0121a36c.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8798' matches no symbol in 0121a36c.obj; graded the largest function
+0121a36c   WARN RELOC_CONFLICT: _$E2 -> 01228b98 here, 01228930 in landed 01219f00
+0121a36c   WARN RELOC_NAME: _$E2 -> 01228b98 labelled '_global::AtexitDtor_CCharString_at_013b8798_01228b98'
+0121a36c   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8798
+  WARN leaf 'g_CCharString_013b8a7c' matches no symbol in 0121a650.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8a7c' matches no symbol in 0121a650.obj; graded the largest function
+0121a650   WARN RELOC_CONFLICT: _$E2 -> 01228de0 here, 01228930 in landed 01219f00
+0121a650   WARN RELOC_NAME: _$E2 -> 01228de0 labelled '_global::AtexitDtor_CCharString_at_013b8a7c_01228de0'
+0121a650   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8a7c
+  WARN leaf 'g_CCharString_013b8b50' matches no symbol in 0121a8de.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8b50' matches no symbol in 0121a8de.obj; graded the largest function
+0121a8de   WARN RELOC_CONFLICT: _$E2 -> 01228ef6 here, 01228930 in landed 01219f00
+0121a8de   WARN RELOC_NAME: _$E2 -> 01228ef6 labelled '_global::AtexitDtor_CCharString_at_013b8b50_01228ef6'
+0121a8de   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8b50
+  WARN leaf 'g_CCharString_013b8b58' matches no symbol in 0121a918.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8b58' matches no symbol in 0121a918.obj; graded the largest function
+0121a918   WARN RELOC_CONFLICT: _$E2 -> 01228f0a here, 01228930 in landed 01219f00
+0121a918   WARN RELOC_NAME: _$E2 -> 01228f0a labelled '_global::AtexitDtor_CCharString_at_013b8b58_01228f0a'
+0121a918   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8b58
+  WARN leaf 'g_CCharString_013ba884' matches no symbol in 0121df90.obj; graded the largest function
+  WARN leaf 'g_CCharString_013ba884' matches no symbol in 0121df90.obj; graded the largest function
+0121df90   WARN RELOC_CONFLICT: _$E2 -> 01229200 here, 01228930 in landed 01219f00
+0121df90   WARN RELOC_NAME: _$E2 -> 01229200 labelled '_global::AtexitDtor_CCharString_at_013ba884_01229200'
+0121df90   RELOCATION_MATCH PASS   _static_init::g_CCharString_013ba884
+  WARN leaf 'g_CCharString_013bab18' matches no symbol in 0121e190.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bab18' matches no symbol in 0121e190.obj; graded the largest function
+0121e190   WARN RELOC_CONFLICT: _$E2 -> 01229440 here, 01228930 in landed 01219f00
+0121e190   WARN RELOC_NAME: _$E2 -> 01229440 labelled '_global::AtexitDtor_CCharString_at_013bab18_01229440'
+0121e190   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bab18
+  WARN leaf 'g_CCharString_013bab28' matches no symbol in 0121e1d0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bab28' matches no symbol in 0121e1d0.obj; graded the largest function
+0121e1d0   WARN RELOC_CONFLICT: _$E2 -> 01229460 here, 01228930 in landed 01219f00
+0121e1d0   WARN RELOC_NAME: _$E2 -> 01229460 labelled '_global::AtexitDtor_CCharString_at_013bab28_01229460'
+0121e1d0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bab28
+  WARN leaf 'g_CCharString_013babc8' matches no symbol in 0121e460.obj; graded the largest function
+  WARN leaf 'g_CCharString_013babc8' matches no symbol in 0121e460.obj; graded the largest function
+0121e460   WARN RELOC_CONFLICT: _$E2 -> 012295e0 here, 01228930 in landed 01219f00
+0121e460   WARN RELOC_NAME: _$E2 -> 012295e0 labelled '_global::AtexitDtor_CCharString_at_013babc8_012295e0'
+0121e460   RELOCATION_MATCH PASS   _static_init::g_CCharString_013babc8
+  WARN leaf 'g_CCharString_013bad8c' matches no symbol in 0121ee30.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bad8c' matches no symbol in 0121ee30.obj; graded the largest function
+0121ee30   WARN RELOC_CONFLICT: _$E2 -> 01229a80 here, 01228930 in landed 01219f00
+0121ee30   WARN RELOC_NAME: _$E2 -> 01229a80 labelled '_global::AtexitDtor_CCharString_at_013bad8c_01229a80'
+0121ee30   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bad8c
+  WARN leaf 'g_CCharString_013bada4' matches no symbol in 0121eed0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bada4' matches no symbol in 0121eed0.obj; graded the largest function
+0121eed0   WARN RELOC_CONFLICT: _$E2 -> 01229af0 here, 01228930 in landed 01219f00
+0121eed0   WARN RELOC_NAME: _$E2 -> 01229af0 labelled '_global::AtexitDtor_CCharString_at_013bada4_01229af0'
+0121eed0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bada4
+  WARN leaf 'g_CCharString_013baddc' matches no symbol in 0121ef50.obj; graded the largest function
+  WARN leaf 'g_CCharString_013baddc' matches no symbol in 0121ef50.obj; graded the largest function
+0121ef50   WARN RELOC_CONFLICT: _$E2 -> 01229b30 here, 01228930 in landed 01219f00
+0121ef50   WARN RELOC_NAME: _$E2 -> 01229b30 labelled '_global::AtexitDtor_CCharString_at_013baddc_01229b30'
+0121ef50   RELOCATION_MATCH PASS   _static_init::g_CCharString_013baddc
+  WARN leaf 'g_CCharString_013bade8' matches no symbol in 0121efc0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bade8' matches no symbol in 0121efc0.obj; graded the largest function
+0121efc0   WARN RELOC_CONFLICT: _$E2 -> 01229b60 here, 01228930 in landed 01219f00
+0121efc0   WARN RELOC_NAME: _$E2 -> 01229b60 labelled '_global::AtexitDtor_CCharString_at_013bade8_01229b60'
+0121efc0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bade8
+  WARN leaf 'g_CCharString_013badf0' matches no symbol in 0121f000.obj; graded the largest function
+  WARN leaf 'g_CCharString_013badf0' matches no symbol in 0121f000.obj; graded the largest function
+0121f000   WARN RELOC_CONFLICT: _$E2 -> 01229b80 here, 01228930 in landed 01219f00
+0121f000   WARN RELOC_NAME: _$E2 -> 01229b80 labelled '_global::AtexitDtor_CCharString_at_013badf0_01229b80'
+0121f000   RELOCATION_MATCH PASS   _static_init::g_CCharString_013badf0
+  WARN leaf 'g_CCharString_013badf8' matches no symbol in 0121f03a.obj; graded the largest function
+  WARN leaf 'g_CCharString_013badf8' matches no symbol in 0121f03a.obj; graded the largest function
+0121f03a   WARN RELOC_CONFLICT: _$E2 -> 01229b94 here, 01228930 in landed 01219f00
+0121f03a   WARN RELOC_NAME: _$E2 -> 01229b94 labelled '_global::AtexitDtor_CCharString_at_013badf8_01229b94'
+0121f03a   RELOCATION_MATCH PASS   _static_init::g_CCharString_013badf8
+  WARN leaf 'g_CCharString_013bae08' matches no symbol in 0121f0a0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bae08' matches no symbol in 0121f0a0.obj; graded the largest function
+0121f0a0   WARN RELOC_CONFLICT: _$E2 -> 01229bc0 here, 01228930 in landed 01219f00
+0121f0a0   WARN RELOC_NAME: _$E2 -> 01229bc0 labelled '_global::AtexitDtor_CCharString_at_013bae08_01229bc0'
+0121f0a0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bae08
+  WARN leaf 'g_CCharString_013bae6c' matches no symbol in 0121f240.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bae6c' matches no symbol in 0121f240.obj; graded the largest function
+0121f240   WARN RELOC_CONFLICT: _$E2 -> 01229dc0 here, 01228930 in landed 01219f00
+0121f240   WARN RELOC_NAME: _$E2 -> 01229dc0 labelled '_global::AtexitDtor_CCharString_at_013bae6c_01229dc0'
+0121f240   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bae6c
+  WARN leaf 'g_CCharString_013bafa0' matches no symbol in 0121f640.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bafa0' matches no symbol in 0121f640.obj; graded the largest function
+0121f640   WARN RELOC_CONFLICT: _$E2 -> 0122a080 here, 01228930 in landed 01219f00
+0121f640   WARN RELOC_NAME: _$E2 -> 0122a080 labelled '_global::AtexitDtor_CCharString_at_013bafa0_0122a080'
+0121f640   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bafa0
+  WARN leaf 'g_CCharString_013bb668' matches no symbol in 01221860.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bb668' matches no symbol in 01221860.obj; graded the largest function
+01221860   WARN RELOC_CONFLICT: _$E2 -> 0122a240 here, 01228930 in landed 01219f00
+01221860   WARN RELOC_NAME: _$E2 -> 0122a240 labelled '_global::AtexitDtor_CCharString_at_013bb668_0122a240'
+01221860   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bb668
+  WARN leaf 'g_CCharString_013bb6c0' matches no symbol in 012219c0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bb6c0' matches no symbol in 012219c0.obj; graded the largest function
+012219c0   WARN RELOC_CONFLICT: _$E2 -> 0122a300 here, 01228930 in landed 01219f00
+012219c0   WARN RELOC_NAME: _$E2 -> 0122a300 labelled '_global::AtexitDtor_CCharString_at_013bb6c0_0122a300'
+012219c0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bb6c0
+  WARN leaf 'g_CCharString_013bb740' matches no symbol in 01221d00.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bb740' matches no symbol in 01221d00.obj; graded the largest function
+01221d00   WARN RELOC_CONFLICT: _$E2 -> 0122a450 here, 01228930 in landed 01219f00
+01221d00   WARN RELOC_NAME: _$E2 -> 0122a450 labelled '_global::AtexitDtor_CCharString_at_013bb740_0122a450'
+01221d00   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bb740
+  WARN leaf 'g_CCharString_013bc3a8' matches no symbol in 01223c90.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bc3a8' matches no symbol in 01223c90.obj; graded the largest function
+01223c90   WARN RELOC_CONFLICT: _$E2 -> 0122a490 here, 01228930 in landed 01219f00
+01223c90   WARN RELOC_NAME: _$E2 -> 0122a490 labelled '_global::AtexitDtor_CCharString_at_013bc3a8_0122a490'
+01223c90   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bc3a8
+
+WINS: 24
+  007004b0 RELOCATION_MATCH COpinionReactionManager::COpinionReactionManager
+  00788406 RELOCATION_MATCH CTCMeleeTrap::TriggerTrap
+  0121a050 RELOCATION_MATCH _static_init::g_CCharString_013b86f4
+  0121a36c RELOCATION_MATCH _static_init::g_CCharString_013b8798
+  0121a650 RELOCATION_MATCH _static_init::g_CCharString_013b8a7c
+  0121a8de RELOCATION_MATCH _static_init::g_CCharString_013b8b50
+  0121a918 RELOCATION_MATCH _static_init::g_CCharString_013b8b58
+  0121df90 RELOCATION_MATCH _static_init::g_CCharString_013ba884
+  0121e190 RELOCATION_MATCH _static_init::g_CCharString_013bab18
+  0121e1d0 RELOCATION_MATCH _static_init::g_CCharString_013bab28
+  0121e460 RELOCATION_MATCH _static_init::g_CCharString_013babc8
+  0121ee30 RELOCATION_MATCH _static_init::g_CCharString_013bad8c
+  0121eed0 RELOCATION_MATCH _static_init::g_CCharString_013bada4
+  0121ef50 RELOCATION_MATCH _static_init::g_CCharString_013baddc
+  0121efc0 RELOCATION_MATCH _static_init::g_CCharString_013bade8
+  0121f000 RELOCATION_MATCH _static_init::g_CCharString_013badf0
+  0121f03a RELOCATION_MATCH _static_init::g_CCharString_013badf8
+  0121f0a0 RELOCATION_MATCH _static_init::g_CCharString_013bae08
+  0121f240 RELOCATION_MATCH _static_init::g_CCharString_013bae6c
+  0121f640 RELOCATION_MATCH _static_init::g_CCharString_013bafa0
+  01221860 RELOCATION_MATCH _static_init::g_CCharString_013bb668
+  012219c0 RELOCATION_MATCH _static_init::g_CCharString_013bb6c0
+  01221d00 RELOCATION_MATCH _static_init::g_CCharString_013bb740
+  01223c90 RELOCATION_MATCH _static_init::g_CCharString_013bc3a8

@@ -1,0 +1,1 @@
+skip 007fc800 free ::Kraken_PreEnd -> KillBeamEffect x1 :: compile: ebuild\src\compiled\00\7f\CTCKraken_EndAttackBeam_007fc800.cpp(17) : error C2248: 'CTCKraken::KillBeamEffect' : cannot access private member declared in class 'CTCKraken'

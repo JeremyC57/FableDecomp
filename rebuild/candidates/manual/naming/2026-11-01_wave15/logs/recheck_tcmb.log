@@ -1,0 +1,66 @@
+addr       parity           behav  name
+0072c790   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072c790   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0072c790   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0072c790   DIFFER(422v413)  PASS   CTCSpecialAbilities::SetupEnflameSpell
+007ddda0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007ddda0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007ddda0   WARN SHARED_HEADER_AVAILABLE CEnvironment
+007ddda0   WARN SHARED_HEADER_AVAILABLE CWorld
+007ddda0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ddda0   DIFFER(507v496)  PASS   CTCCreatureFlyInCircles::PlayLoopAnim
+0092afe0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0092afe0   WARN SHARED_HEADER_AVAILABLE CThingGameObject
+0092afe0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0092afe0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092afe0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0092afe0   RELOCATION_MATCH PASS   CAIStateGroup_ApprenticeHero::LookAtMap
+00953a40   RELOCATION_MATCH PASS   CCreatureAction_DragonBurninateInto::`scalar_deleting_destructor'
+
+WINS: 2
+  0092afe0 RELOCATION_MATCH CAIStateGroup_ApprenticeHero::LookAtMap@CAIStateGroup_ApprenticeHero
+  00953a40 RELOCATION_MATCH CCreatureAction_DragonBurninateInto::??_GCCreatureAction_DragonBurninateInto
+addr       parity           behav  name
+0072d990   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+  WARN leaf '~CBase_0062e900_Derived_0072d990' matches no symbol in 0072d990.obj; graded the largest function
+0072d990   DIFFER(81v75)    PASS   _unattributed::~CBase_0062e900_Derived_0072d990
+00924880   RELOCATION_MATCH PASS   CCreatureAction_KrakenLowPoseInto::FinishAction
+0093afc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0093afc0   WARN SHARED_HEADER_AVAILABLE CWorld
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093afc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093afc0   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0093afc0   RELOCATION_MATCH PASS   CAIStateGroup_BanditSitRoundCampfire::OnReplace
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095b280   WARN SHARED_HEADER_AVAILABLE CWorld
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b280   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0095b280   DIFFER(351v340)  PASS   CAIStateGroup_HoverHornetQueenTakeDamage::Update
+
+WINS: 2
+  00924880 RELOCATION_MATCH CCreatureAction_KrakenLowPoseInto::?FinishAction@
+  0093afc0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::OnReplace

@@ -1,0 +1,1 @@
+edited 006a68f0 inplace CThingPhysical::InternalModifyHealth -> InternalModifyHealth x1 +u ['?InternalModifyHealth@CThingPhysical@@AAEXM_N@Z'] -u ['?InternalModifyHealth@CThingPhysical@@QAEXM_N@Z']

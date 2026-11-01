@@ -1,0 +1,115 @@
+skip 00440730 virtual dtor replaces explicit vptr _vfptr_or_pad :: final not named
+skip 00443930 tmpl dtor removed :: final not named
+skip 0048a4d0 shape ?scalar_destructor@CIntelligentPointer@@QAEXXZ
+skip 004d607c virtual dtor replaces explicit vptr _vptr :: final not named
+edited 004d97ce CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 004dbe58 shape ?DestroyElement_00a01c10@pair_ulong_anim@@QAEXXZ
+skip 004dcd2b no vptr in CBaseIntelligentPointer model
+skip 004dd641 no vptr in CBaseIntelligentPointer model
+skip 004ddab4 no vptr in CBaseIntelligentPointer model
+edited 004e0080 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 004e1437 no vptr in CBaseIntelligentPointer model
+edited 005cc091 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 00618100 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 00629020 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 00629110 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0062da90 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 00646709 no vptr in CBaseIntelligentPointer model
+skip 006592e2 CIntelligentPointer->CBaseIntelligentPointer virtual dtor replaces explicit vptr _vfptr :: diff ['rename moves bound ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z off-PDB to ?push_back@CThingList@@QAEXABVCBaseIntelligentPointer@@@Z', 'rename moves bound ??0CIntelligentPointer@@QAE@PAVCThing@@@Z off-PDB to ??0CBaseIntelligentPointer@@QAE@PAVCThing@@@Z', 'rename moves bound ?GetPItem@CIntelligentPointer@@QBEPAVCThing@@XZ off-PDB to ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ']
+skip 0065f0fa shape ?dtor_a01c10@CIntelligentPointer@@QAEXXZ
+edited 0066c2f0 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 00687210 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 006872b0 no vptr in CBaseIntelligentPointer model
+edited 00687310 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 0069f0f0 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 006a0d50 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 006a23e0 shape ??1CBaseIntelligentPointer@NRemap006a23e0@@UAE@XZ
+skip 006a2e20 shape ??1CBaseIntelligentPointer@N006a2e20@@QAE@XZ
+skip 006a3300 shape ??1CBaseIntelligentPointer@FableHeap_006a3300@@QAE@XZ
+skip 006c1be0 no vptr in CBaseIntelligentPointer model
+edited 006df860 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 006df970 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 006e1e60 no vptr in CBaseIntelligentPointer model
+skip 00713510 no vptr in CBaseIntelligentPointer model
+edited 00722f30 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 00730440 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x10 -> 0xc) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 007673c0 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 007699c0 no vptr in CBaseIntelligentPointer model
+skip 0076bdd0 shape ??1CBaseIntelligentPointer@FableDestroy_0076bdd0@@QAE@XZ
+edited 00781540 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 00782f60 no vptr in CBaseIntelligentPointer model
+skip 00782fe0 no vptr in CBaseIntelligentPointer model
+skip 00787e12 no vptr in CBaseIntelligentPointer model
+edited 0078ab20 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0078af00 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 007a0630 shape ??1BaseIntelligentPointer@LightningNative@@UAE@XZ
+edited 007a9820 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 007b6c90 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 007bae00 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 007eaf00 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 007eb2b0 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 007eb470 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 007eb990 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 007ed270 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 007ed420 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 007ed830 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 007edff0 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 007ee7a0 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 007ee8f0 virtual dtor replaces explicit vptr __vftable +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CBaseIntelligentPointer@@QAE@XZ']
+edited 007f01f0 virtual dtor replaces explicit vptr __vftable +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CBaseIntelligentPointer@@QAE@XZ']
+edited 0080ab40 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 0080df90 shape ??1CBaseIntelligentPointer@N0080df90@@QAE@XZ
+skip 008131b0 no vptr in CBaseIntelligentPointer model
+edited 008430b0 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 00847ac0 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 0084b270 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0084b2b0 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0084b3e0 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0084bd40 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 00854500 no vptr in CBaseIntelligentPointer model
+skip 00854540 no vptr in CBaseIntelligentPointer model
+skip 0085edf0 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 00868350 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0087cdf0 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ', '??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 0087cec0 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ', '??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 00883230 no vptr in CBaseIntelligentPointer model
+skip 008834f0 no vptr in CBaseIntelligentPointer model
+skip 008a99f0 BaseIntelligentPointer->CBaseIntelligentPointer access :: diff ['rename moves bound ?SetPItem@BaseIntelligentPointer@@QAEXPAUCThingNative@@@Z off-PDB to ?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThingNative@@@Z']
+edited 008b8260 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ', '??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 008b8310 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@$$CBVCThing@@@@UAE@XZ', '??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 008c64f0 ~CIntelligentPointerThing removed (implicit: calls ~CBaseIntelligentPointer) access +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CIntelligentPointerThing@@UAE@XZ']
+edited 008c9690 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 008cbb90 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+edited 008ced90 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 008cedd0 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 008d74b0 shape ??1CBaseIntelligentPointer@NCreatureMode@@QAE@XZ
+skip 008da690 BaseIntelligentPointer->CBaseIntelligentPointer access :: diff ['rename moves bound ?SetPItem@BaseIntelligentPointer@@QAEXPAUThingNative@@@Z off-PDB to ?SetPItem@CBaseIntelligentPointer@@QAEXPAUThingNative@@@Z', 'rename moves bound ?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ off-PDB to ?GetPItem@CBaseIntelligentPointer@@QBEPAUThingNative@@XZ']
+skip 008da890 BaseIntelligentPointer->CBaseIntelligentPointer access :: diff ['rename moves bound ?SetPItem@BaseIntelligentPointer@@QAEXPAUThingNative@@@Z off-PDB to ?SetPItem@CBaseIntelligentPointer@@QAEXPAUThingNative@@@Z', 'rename moves bound ?GetPItem@BaseIntelligentPointer@@QBEPAUThingNative@@XZ off-PDB to ?GetPItem@CBaseIntelligentPointer@@QBEPAUThingNative@@XZ']
+edited 008e6940 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 008e8c20 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 008e8cb0 shape ?teardown@Sub114@@QAEXXZ
+skip 008efd50 tmpl dtor removed :: final not named
+skip 008fd2ca no vptr in CBaseIntelligentPointer model
+skip 008fd544 shape ?inner@FableDestVal_008fd544_t@@QAIXXZ
+skip 008fd769 shape ?inner@FableDestVal_008fd769_t@@QAIXXZ
+edited 00903265 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0090332e CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 00903456 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad (0x8 -> 0x4) +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+skip 00910b20 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 00922eb0 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 0092c2e0 CMember_00a01c10->CBaseIntelligentPointer virtual dtor; vptr taken from the leading pad +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CMember_00a01c10@@QAE@XZ']
+edited 0092e300 tmpl dtor removed +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1?$CIntelligentPointer@VCThing@@@@UAE@XZ']
+skip 00935970 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 00935ad0 virtual dtor replaces placeholder v00 +u ['??1CBaseIntelligentPointer@@UAE@XZ', '??3@YAXPAX@Z', '??_GCIntelligentPointerThing@@UAEPAXI@Z'] -u ['??1CBaseIntelligentPointer@@QAE@XZ']
+edited 0093afc0 virtual dtor replaces placeholder v00 +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CBaseIntelligentPointer@@QAE@XZ']
+skip 009400f0 shape ?Dtor@Sub@@QAEXXZ
+edited 0094d020 virtual dtor replaces placeholder v00 +u ['??1CBaseIntelligentPointer@@UAE@XZ', '??3@YAXPAX@Z', '??_GCBuildingPointer@@UAEPAXI@Z'] -u ['??1CBaseIntelligentPointer@@QAE@XZ']
+skip 009547d0 MazeCreaturePointerBase->CBaseIntelligentPointer access :: diff ['rename moves bound ?GetPItem@MazeCreaturePointerBase@@QBEPAUMazeThing@@XZ off-PDB to ?GetPItem@CBaseIntelligentPointer@@QBEPAUMazeThing@@XZ', 'rename moves bound ?SetPItem@MazeCreaturePointerBase@@QAEXPAUMazeThing@@@Z off-PDB to ?SetPItem@CBaseIntelligentPointer@@QAEXPAUMazeThing@@@Z']
+skip 00954b50 MazePointerBase->CBaseIntelligentPointer access :: diff ['rename moves bound ?GetPItem@MazePointerBase@@QBEPAUMazeThing@@XZ off-PDB to ?GetPItem@CBaseIntelligentPointer@@QBEPAUMazeThing@@XZ', 'rename moves bound ?SetPItem@MazePointerBase@@QAEXPAUMazeThing@@@Z off-PDB to ?SetPItem@CBaseIntelligentPointer@@QAEXPAUMazeThing@@@Z']
+skip 00954e30 MazePointerBase->CBaseIntelligentPointer access :: diff ['rename moves bound ?GetPItem@MazePointerBase@@QBEPAUMazeThing@@XZ off-PDB to ?GetPItem@CBaseIntelligentPointer@@QBEPAUMazeThing@@XZ', 'rename moves bound ?SetPItem@MazePointerBase@@QAEXPAUMazeThing@@@Z off-PDB to ?SetPItem@CBaseIntelligentPointer@@QAEXPAUMazeThing@@@Z']
+skip 00957300 virtual dtor replaces explicit vptr _vptr :: final not named
+edited 009647c0 virtual dtor replaces placeholder v00 +u ['??1CBaseIntelligentPointer@@UAE@XZ'] -u ['??1CBaseIntelligentPointer@@QAE@XZ']
+skip 00966890 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 00968150 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 00968170 virtual dtor replaces explicit vptr _vptr :: final not named
+skip 0097d280 virtual dtor replaces explicit vptr _vptr :: final not named

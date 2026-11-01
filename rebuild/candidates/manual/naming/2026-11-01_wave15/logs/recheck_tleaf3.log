@@ -1,0 +1,13 @@
+addr       parity           behav  name
+007239c0   RELOCATION_MATCH PASS   CTCPhysicsStandard::SetRHSet
+00759a00   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00759a00   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::SetRHSet
+007c75e0   WARN RELOC_NAME: ?FadeOutEffect@CThing@@QAEXXZ -> 0072ac40 labelled 'CTCSpecialAbilities::FadeOrKillEffect'
+007c75e0   RELOCATION_MATCH PASS   CTCTurncoatSpell::OnRemove
+007f7700   MATCH            PASS   CTCActivationReceptorBase::Deactivate
+
+WINS: 4
+  007239c0 RELOCATION_MATCH CTCPhysicsStandard::SetRHSet
+  00759a00 RELOCATION_MATCH CTCPhysicsRigidBody::SetRHSet
+  007c75e0 RELOCATION_MATCH CTCTurncoatSpell::OnRemove
+  007f7700 MATCH _global::?Deactivate@CTCActivationReceptorBase@@UAEXXZ

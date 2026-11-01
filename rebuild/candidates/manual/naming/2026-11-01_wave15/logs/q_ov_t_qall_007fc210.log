@@ -1,0 +1,3 @@
+skip 007fc6f0 free ::Kraken_sub_7fc210 -> CreateTentacles x1 :: compile: rc\compiled\00\7f\CTCKraken_InitTentaclesAndHead_007fc6f0.cpp(28) : error C2248: 'CTCKraken::CreateTentacles' : cannot access private member declared in class 'CTCKraken'
+skip 007fc710 free ::CTCKraken_ClearTentacles -> CreateTentacles x1 :: compile: rc\compiled\00\7f\CTCKraken_InitTentaclesAndHead_007fc710.cpp(23) : error C2248: 'CTCKraken::CreateTentacles' : cannot access private member declared in class 'CTCKraken'
+edited 007fc820 inplace CTCKraken::CreateTentacles -> CreateTentacles x1 +u ['?CreateTentacles@CTCKraken@@AAEXXZ'] -u ['?CreateTentacles@CTCKraken@@QAEXXZ']

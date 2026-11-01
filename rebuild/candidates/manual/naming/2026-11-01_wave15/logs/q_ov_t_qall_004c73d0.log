@@ -1,0 +1,37 @@
+skip 00744730 free ::Getter_d82ca0 -> GetPos x1 :: compile: \ov_t_qall\rebuild\src\compiled\00\74\CTCPerceiveThing_SetLastAwareInfo_00744730.cpp(33) : error C2440: 'initializing' : cannot convert from 'const C3DVector' to 'Vec3 *'
+edited 007a3410 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 007a37b0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 007a3ac0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 007a3f30 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 007a4140 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 007be0f9 moved CThing::GetPosition -> GetPos x3 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 007de030 moved CThingCreatureBase::GetPosition -> GetPos x1 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThingCreatureBase@@QBEABVC3DVector@@XZ']
+edited 007ee8f0 moved CThing::GetPosition -> GetPos x1 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 00802d10 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0082fed0 moved CThing::GetPosition -> GetPos x1 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0082ff70 moved CThing::GetPosition -> GetPos x1 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 00830000 moved CThing::GetPosition -> GetPos x1 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 008610d0 moved CThing::GetPosition -> GetPos x3 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 008611f0 moved CThing::GetPosition -> GetPos x3 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 00861310 moved CThing::GetPosition -> GetPos x3 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+skip 00871d30 moved A::GetB -> GetPos x1 :: compile: chpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\87\CTCLook_UpdateLookTimer_00871d30.cpp(35) : error C2440: 'type cast' : cannot convert from 'const C3DVector' to 'B *'
+edited 008d90b0 moved CThing::GetPosition -> GetPos x1 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+skip 008f7950 CThing defined in another scope
+skip 008f7bd0 CThing defined in another scope
+edited 0091faa0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0091fdb0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 009200c0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 00920480 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 009205d0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+skip 00927c80 moved CThingView::GetPosition -> GetPos x2 :: compile: atchpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\92\CAIStateGroupShopkeeperWatchPlayer_IsRunnable_00927c80.cpp(27) : error C2011: 'CThing' : 'class' type redefinition | chpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\92\CAIStateGroupShopkeeperWatchPlayer_IsRunnable_00927c80.cpp(70) : error C2039: 'GetPos' : is not a member of 'CThing' | chpad\naming\w15\ov_t_qall\rebuild\src\compiled\00\92\CAIStateGroupShopkeeperWatchPlayer_IsRunnable_00927c80.cpp(71) : error C2039: 'GetPos' : is not a member of 'CThing'
+skip 00935160 CThing defined in another scope
+edited 00935ad0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QAEABVC3DVector@@XZ']
+edited 00954220 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+skip 00957f20 moved CThingPos::GetPosition -> GetPos x1 :: compile: ad\naming\w15\ov_t_qall\rebuild\src\compiled\00\95\CAIStateGroupMinionReactToBurglary_IsRunnable_00957f20.cpp(35) : error C2143: syntax error : missing ';' before 'const' | ll\rebuild\src\compiled\00\95\CAIStateGroupMinionReactToBurglary_IsRunnable_00957f20.cpp(35) : error C2501: 'CThing::C3DVector' : missing storage-class or type specifiers | roupMinionReactToBurglary_IsRunnable_00957f20.cpp(165) : error C2664: 'CThingBuilding::IsPointInside' : cannot convert parameter 1 from 'const int' to 'const C3DVector &'
+edited 0095cf50 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0095d880 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0095da90 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0095ddf0 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 0095df40 moved CThing::GetPosition -> GetPos x2 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+edited 009647c0 moved CThing::GetPosition -> GetPos x5 +u ['?GetPos@CThing@@QBEABVC3DVector@@XZ'] -u ['?GetPosition@CThing@@QBEABVC3DVector@@XZ']
+skip 009863e0 0 CThingView::GetPosition declarations

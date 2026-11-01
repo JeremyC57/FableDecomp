@@ -1,0 +1,16 @@
+skip 00cdf620 0 definitions of CHERO_GUILD_TELEPORT_MARKER
+edited 00d3abe0 moved CFH_Prisoner::IsActiveThreadTerminating -> IsActiveThreadTerminating x6 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsActiveThreadTerminating@CFH_Prisoner@@QBE_NXZ']
+skip 00d864b0 call of IsActiveThreadTerminating with 1 args
+skip 00d9c2b0 call of IsActiveThreadTerminating with 1 args
+skip 00d9f270 CEntityScriptBase defined in another scope
+edited 00e02e50 moved CDarkwoodAssassinSpawn::IsActiveThreadTerminating -> IsActiveThreadTerminating x16 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsActiveThreadTerminating@CDarkwoodAssassinSpawn@@QAE_NXZ']
+skip 00e05360 0 definitions of CTraderComment
+skip 00e76920 0 definitions of CEM_FlashLightPoint
+edited 00e8b020 moved CEntityScriptBase::IsDone -> IsActiveThreadTerminating x18 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsDone@CEntityScriptBase@@QAE_NXZ']
+skip 00ee76f0 CEntityScriptBase defined in another scope
+edited 00eed6b0 moved CExitWardensOffice::IsActiveThreadTerminating -> IsActiveThreadTerminating x5 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsActiveThreadTerminating@CExitWardensOffice@@QBE_NXZ']
+edited 00ef29e0 moved CGoalChest::IsActiveThreadTerminating -> IsActiveThreadTerminating x3 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsActiveThreadTerminating@CGoalChest@@QAE_NXZ']
+edited 00ef3000 moved CDoor::IsActiveThreadTerminating -> IsActiveThreadTerminating x6 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsActiveThreadTerminating@CDoor@@QAE_NXZ']
+skip 00efb8c0 0 definitions of CHitSwitch
+skip 00efe8d0 0 definitions of CFader
+edited 00f00ae0 moved CGamesmasterOracleMarker::IsTerminating -> IsActiveThreadTerminating x1 +u ['?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ'] -u ['?IsTerminating@CGamesmasterOracleMarker@@QBE_NXZ']

@@ -1,0 +1,3 @@
+skip 00578797 call of TransferSignedChar with 2 args
+skip 00591a66 call of Transfer with 2 args
+skip 00706f40 call of Transfer with 2 args

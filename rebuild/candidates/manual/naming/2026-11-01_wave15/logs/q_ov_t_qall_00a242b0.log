@@ -1,0 +1,1 @@
+edited 00724010 moved CGraphicBank::GetAnimatedMesh -> PeekAnimatedMesh x2 +u ['?PeekAnimatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z'] -u ['?GetAnimatedMesh@CGraphicBank@@QAEPAVC3DMeshInfo@@K@Z']

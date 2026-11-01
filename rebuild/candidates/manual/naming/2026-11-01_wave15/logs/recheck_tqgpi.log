@@ -1,0 +1,285 @@
+addr       parity           behav  name
+005c30d3   WARN RELOC_NAME: ?RefreshItemData@CTCInventoryBase_Retail@@QAEXPAVCThing@@@Z -> 005bf414 labelled 'NInventory::CTCInventoryBase::UpdateItemStatsForThing'
+005c30d3   RELOCATION_MATCH PASS   CTCInventoryWeapons::RefreshActiveWeaponData
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c3a95   WARN RELOC_NAME: ??BCDefString@N_00415dd0@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::GetString'
+005c3a95   RELOCATION_MATCH PASS   CTCInventoryWeapons::OnSerialise
+005c99fd   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConfiscateItems
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 00654cb9.obj; graded the largest function
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 00654cb9.obj; graded the largest function
+00654cb9   RELOCATION_MATCH PASS   CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d655.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d655.obj; graded the largest function
+0065d655   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d6b6.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d6b6.obj; graded the largest function
+0065d6b6   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d700.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d700.obj; graded the largest function
+0065d700   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+00698c30   RELOCATION_MATCH PASS   CGameCameraManager::PushDownManualCameraList
+00698e40   WARN SHARED_HEADER_AVAILABLE CWorld
+00698e40   WARN RELOC_NAME: ??0CCameraModePointer@@QAE@ABU0@@Z -> 0056c050 labelled '_global::CCountedPointer_CopyCtor_0056c050'
+00698e40   RELOCATION_MATCH PASS   CGameCameraManager::PushZTargetMode
+00699970   WARN RELOC_NAME: ??0CCountedCameraMode@@QAE@PAVCBase@NCameraModes@@@Z -> 0056c880 labelled 'CCountedPointer_0056c0f0::CCountedPointer_0056c0f0'
+00699970   WARN RELOC_NAME: ?SetPendingMode@CGameCameraManager@@QAEXUCCountedCameraMode@@@Z -> 00697e20 labelled 'SetCameraMode'
+00699970   RELOCATION_MATCH PASS   CGameCameraManager::PushLookAround
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 006a28a0.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 006a28a0.obj; graded the largest function
+006a28a0   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+006e0fa0   WARN RELOC_NAME: ?Notify@Target4@@QAEXXZ -> 006e0f10 labelled 'CTCDParticleEmitter::SendDestructionCriteriaSound'
+006e0fa0   RELOCATION_MATCH PASS   CTCDParticleEmitter::OnDie
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 00737310.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 00737310.obj; graded the largest function
+00737310   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+007471a0   WARN SHARED_HEADER_AVAILABLE CStealthDef
+007471a0   RELOCATION_MATCH PASS   CTCStealth::IsAbleToFlourishDangerThings
+  WARN leaf 'CLightningBeam' matches no symbol in 007a0630.obj; graded the largest function
+  WARN leaf 'CLightningBeam' matches no symbol in 007a0630.obj; graded the largest function
+007a0630   RELOCATION_MATCH PASS   CLightningBeam
+007b85c0   RELOCATION_MATCH PASS   CTCTavernTable::GetFood
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 007c2880.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 007c2880.obj; graded the largest function
+007c2880   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+0082db00   WARN SHARED_HEADER_AVAILABLE CTCDoor
+0082db00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082db00   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0082db00   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0082db00   RELOCATION_MATCH PASS   CThingBuilding::LockAllDoors
+00844720   RELOCATION_MATCH PASS   CCreatureAction_PickCrop::PerformAction
+008529d0   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleConversationOverShoulderOfSpokenTo::Update
+0085bad0   WARN RELOC_NAME: ?Base_FrameStep@@YIXPAVCCreatureActionHeroJump@@@Z -> 00859d80 labelled 'CCombatActionBase::FrameUpdate'
+0085bad0   RELOCATION_MATCH PASS   CCreatureActionHeroJump::FrameUpdate
+00865e20   RELOCATION_MATCH PASS   CCombatAction_GenericResponseToDecapitation::FinishAction
+008a0820   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a0820   WARN SHARED_HEADER_AVAILABLE CPlayer
+008a0820   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008a0820   RELOCATION_MATCH PASS   CGameScriptInterface::CancelHeroTeleportEffects
+008c3f00   RELOCATION_MATCH PASS   CCreatureAction_ScorpionKingDeath::FinishAction
+008d0440   WARN SHARED_HEADER_AVAILABLE CGameScriptThing
+008d0440   RELOCATION_MATCH PASS   CGameScriptThing::GetPThing
+008d0fb0   RELOCATION_MATCH PASS   CGameScriptThingMethods::MsgIsHitBy
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in 008d1440.obj; graded the largest function
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in 008d1440.obj; graded the largest function
+008d1440   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsHitByWithDecapitate
+008d17b0   WARN RELOC_NAME: ?GetSuccessfulFlourishEvent@EntityEventsMethods@@QAE_NPAPAUEventBase@@ABUBind3@@@Z -> 008d4e30 labelled 'CTCEntityEvents::GetEvent'
+008d17b0   RELOCATION_MATCH PASS   CGameScriptThing::MsgPerformedSuccessfulFlourish
+008d22d0   RELOCATION_MATCH PASS   CGameScriptThing::MsgReceivedMoney
+008d2540   RELOCATION_MATCH PASS   CGameScriptThing::MsgReceivedInventoryItem
+008d27e0   RELOCATION_MATCH PASS   CGameScriptThing::MsgPerformedAnyAggressiveSpecialAbility
+008d3cf0   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsKicked
+008da690   WARN RELOC_NAME: ?StandDeactivate@ModeScreamer@@QAEXXZ -> 00861d00 labelled 'CModeStandBase::OnDeactivate'
+008da690   RELOCATION_MATCH PASS   NCreatureMode::CModeScreamerAggressive::OnDeactivate
+008e7e70   WARN RELOC_NAME: ?SetThingHitting@HitParameters@@QAEXAAUThingNative@@@Z -> 008685f0 labelled '_unattributed::AssignTarget_008685f0'
+008e7e70   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseConcentrate::OnDeactivate
+008ed830   RELOCATION_MATCH PASS   CCreatureAction_Die::FinishAction
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 00933250.obj; graded the largest function
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 00933250.obj; graded the largest function
+00933250   RELOCATION_MATCH PASS   CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 0094b330.obj; graded the largest function
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 0094b330.obj; graded the largest function
+0094b330   RELOCATION_MATCH PASS   CVillageTaskCarryCrate::IsCreatureAssignedToTask
+009547d0   WARN RELOC_NAME: ?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+009547d0   WARN RELOC_NAME: ?GetPhase@MazeBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+009547d0   WARN RELOC_NAME: ??0MazeCreaturePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+009547d0   WARN RELOC_NAME: ??1MazeCreaturePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+009547d0   RELOCATION_MATCH PASS   CAIStateGroup_MazeShieldedChase::OnActivate
+00954e30   WARN SHARED_HEADER_AVAILABLE CWorld
+00954e30   WARN RELOC_NAME: ?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954e30   WARN RELOC_NAME: ?GetPhase@MazeBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+00954e30   WARN RELOC_NAME: ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 004365b0 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954e30   WARN RELOC_NAME: ?HasBeenHitByLightning@LightningMethods@@QAE_NXZ -> 00954c60 labelled 'CAIStateGroup_MazeTutorialBattleRespondToLightning::FindHitEvent'
+00954e30   WARN RELOC_NAME: ??0MazePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00954e30   WARN RELOC_NAME: ??1MazePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00954e30   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+0095b6f0   WARN RELOC_NAME: ??0CPlayAnimationNative@@QAE@PAUCQueenThing@@ABVCCharString@@ABUCAnimationSound@@_N33JJ@Z -> 008424f0 labelled 'CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation'
+0095b6f0   WARN RELOC_NAME: ??1CActionNative@@UAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+0095b6f0   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::KeepOutOfWay
+00970cd0   WARN RELOC_NAME: ?IsOccupied@CTCOccupiableMethods@@QAE_NXZ -> 0087c3f0 labelled '_global::IsThingAlive_0087c3f0'
+00970cd0   WARN RELOC_NAME: ?SetOccupier@CTCOccupiableMethods@@QAEXPAUCThingRetail@@@Z -> 0087c390 labelled '_unattributed::AssignTarget_0087c390'
+00970cd0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
+00972490   WARN RELOC_NAME: ?FindEntry@JackTable@@QAEPAUJackEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00972490   WARN RELOC_NAME: ?GetHitLocation@HitLocations@@QAEPAUHitLocation@@ABVCCharString@@@Z -> 00815820 labelled 'CTCHitLocations::GetPHitLocationFromName'
+00972490   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesStage2::OnActivate
+
+WINS: 42
+  005c30d3 RELOCATION_MATCH CTCInventoryWeapons::RefreshActiveWeaponData
+  005c3a95 RELOCATION_MATCH CTCInventoryWeapons::OnSerialise@CTCInventoryWeapons
+  005c99fd RELOCATION_MATCH CTCInventoryWeapons::ConfiscateItems@CTCInventoryWeapons
+  00654cb9 RELOCATION_MATCH CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  0065d655 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  0065d6b6 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  0065d700 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  00698c30 RELOCATION_MATCH CGameCameraManager::PushDownManualCameraList
+  00698e40 RELOCATION_MATCH CGameCameraManager::PushZTargetMode
+  00699970 RELOCATION_MATCH CGameCameraManager::PushLookAround
+  006a28a0 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  006e0fa0 RELOCATION_MATCH CTCDParticleEmitter::OnDie
+  00737310 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  007471a0 RELOCATION_MATCH CTCStealth::IsAbleToFlourishDangerThings
+  007a0630 RELOCATION_MATCH CTCWillLightning_CLightningBeam::CLightningBeam
+  007b85c0 RELOCATION_MATCH CTCTavernTable::GetFood
+  007c2880 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  0082db00 RELOCATION_MATCH CThingBuilding::LockAllDoors
+  00844720 RELOCATION_MATCH CCreatureAction_PickCrop::PerformAction
+  008529d0 RELOCATION_MATCH NCameraModes::CScriptModuleConversationOverShoulderOfSpokenTo::?Update@CScriptModuleConversationOverShoulderOfSpokenTo
+  0085bad0 RELOCATION_MATCH CCreatureActionHeroJump::FrameUpdate
+  00865e20 RELOCATION_MATCH CCombatAction_GenericResponseToDecapitation::FinishAction
+  008a0820 RELOCATION_MATCH CGameScriptInterface::?CancelHeroTeleportEffects@CGameScriptInterface@@UBEXXZ
+  008c3f00 RELOCATION_MATCH CCreatureAction_ScorpionKingDeath::FinishAction
+  008d0440 RELOCATION_MATCH CGameScriptThing::GetPThing
+  008d0fb0 RELOCATION_MATCH CGameScriptThingMethods::MsgIsHitBy
+  008d1440 RELOCATION_MATCH CGameScriptThing::?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z
+  008d17b0 RELOCATION_MATCH CGameScriptThing::MsgPerformedSuccessfulFlourish
+  008d22d0 RELOCATION_MATCH CGameScriptThing::MsgReceivedMoney
+  008d2540 RELOCATION_MATCH CGameScriptThing::MsgReceivedInventoryItem
+  008d27e0 RELOCATION_MATCH CGameScriptThing::MsgPerformedAnyAggressiveSpecialAbility
+  008d3cf0 RELOCATION_MATCH CGameScriptThing::MsgIsKicked
+  008da690 RELOCATION_MATCH NCreatureMode::CModeScreamerAggressive::OnDeactivate
+  008e7e70 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::OnDeactivate
+  008ed830 RELOCATION_MATCH CCreatureAction_Die::FinishAction
+  00933250 RELOCATION_MATCH CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  0094b330 RELOCATION_MATCH CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  009547d0 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::OnActivate
+  00954e30 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+  0095b6f0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::KeepOutOfWay
+  00970cd0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
+  00972490 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage2::OnActivate
+addr       parity           behav  name
+005c311a   RELOCATION_MATCH PASS   CTCInventoryWeapons::GetItemOfTypeInInventory
+005c4769   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+005c4769   WARN RELOC_NAME: ?GetDamage@CTCWeapon@@QBEMXZ -> 005daaa0 labelled 'CTCWeapon::GetAnimationSpeedValue'
+005c4769   RELOCATION_MATCH PASS   CTCInventoryWeapons::GetActiveMeleeWeaponDamage
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 005cbdfa.obj; graded the largest function
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 005cbdfa.obj; graded the largest function
+005cbdfa   RELOCATION_MATCH PASS   CVillageTaskCarryCrate::IsCreatureAssignedToTask
+006592e2   WARN SHARED_HEADER_AVAILABLE CTCVillage
+006592e2   WARN RELOC_NAME: ??1CIntelligentPointer@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+006592e2   RELOCATION_MATCH PASS   CTCVillage::AddTorchToVillage
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d691.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d691.obj; graded the largest function
+0065d691   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d6db.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0065d6db.obj; graded the largest function
+0065d6db   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+  WARN leaf '??4?$CIntelligentPointer@' matches no symbol in 00668b80.obj; graded the largest function
+  WARN leaf '??4?$CIntelligentPointer@' matches no symbol in 00668b80.obj; graded the largest function
+00668b80   WARN RELOC_NAME: ?Assign@CIntelligentPointer@@QAEXPAVCThingCreatureBase@@@Z -> 00a01b90 labelled 'CBaseIntelligentPointer::SetPItem'
+00668b80   RELOCATION_MATCH PASS   _global::CIntelligentPointer_Assign_00668b80
+00698d10   WARN RELOC_NAME: ?GetProjectileWeaponFirstPersonTargetingModeZoomFOV@CCameraRangedMethods@@QBEMXZ -> 00789cc0 labelled 'CTCDivineWrath::GetDamageMultiplier'
+00698d10   WARN RELOC_NAME: ??0CCameraModePointer@@QAE@PAUCCameraMode@@@Z -> 0056c880 labelled 'CCountedPointer_0056c0f0::CCountedPointer_0056c0f0'
+00698d10   RELOCATION_MATCH PASS   PushProjectileWeaponMode
+00698f50   RELOCATION_MATCH PASS   PushSpecialCameraMode
+0069b790   WARN RELOC_NAME: ?PromotePendingScriptAndResetPreloadFlags@CGameCameraManager@@QAEXXZ -> 00697c60 labelled 'CMapInfo_00697c60::Clear'
+0069b790   WARN RELOC_NAME: ?UpdateEarthQuakes@CGameCameraManager@@QAEXXZ -> 00698540 labelled 'CGameCameraManager_UpdatePointLightAccumulation'
+0069b790   RELOCATION_MATCH PASS   CGameCameraManager::Update
+006d76c0   RELOCATION_MATCH PASS   NHeroExperience::GetWeaponModifiedExperienceMultiplierForThing
+00729c30   RELOCATION_MATCH LINK_FAIL CTCActionUseScriptedHook::SetEntranceAsLocked
+00744730   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00744730   WARN RELOC_NAME: ?NotifyA@GObj@@QAEXH@Z -> 004378f0 labelled '_global::Forward_AddPerceivingThing_via0x1b8_004378f0'
+00744730   WARN RELOC_NAME: ?NotifyB@GObj@@QAEXH@Z -> 00437900 labelled '_global::Forward_RemoveThing_via0x1b8_00437900'
+00744730   RELOCATION_MATCH PASS   CTCPerceiveThing::SetLastAwareInfo
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0074cb00.obj; graded the largest function
+  WARN leaf 'operator==<CThingBuilding>' matches no symbol in 0074cb00.obj; graded the largest function
+0074cb00   RELOCATION_MATCH PASS   operator==<CThingBuilding>
+007b8590   RELOCATION_MATCH PASS   CTCTavernTable::GetTankard
+007bb660   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+007bb660   WARN RELOC_NAME: ?push_back@?$CResultList@V?$CIntelligentPointer@VCThingAICreature@@@@@@QAEXABV?$CIntelligentPointer@VCThingAICreature@@@@@Z -> 006604eb labelled 'InsertIntoListWrapper'
+007bb660   RELOCATION_MATCH PASS   CThingSearchTools::GetAllThings
+00812ca0   RELOCATION_MATCH PASS   CTCCreatureGroup::GetNearestOtherActiveMember
+0082def0   WARN SHARED_HEADER_AVAILABLE CTCDoor
+0082def0   RELOCATION_MATCH PASS   CThingBuilding::IsUnlocked
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 0084a950.obj; graded the largest function
+  WARN leaf 'IsCreatureAssignedToTask' matches no symbol in 0084a950.obj; graded the largest function
+0084a950   RELOCATION_MATCH PASS   CVillageTaskCarryCrate::IsCreatureAssignedToTask
+008574d0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008574d0   RELOCATION_MATCH PASS   CCombatActionBase::SetCombatAnimation
+  WARN leaf 'FinishAction' matches no symbol in 0085baf0.obj; graded the largest function
+  WARN leaf 'FinishAction' matches no symbol in 0085baf0.obj; graded the largest function
+0085baf0   WARN RELOC_NAME: ?outer@FableDestVal_0085baf0_t@@QAIXXZ -> 00859a20 labelled 'CCombatActionBase::FinishAction'
+0085baf0   RELOCATION_MATCH LINK_FAIL CCreatureActionHeroJump::FinishAction
+0087e840   RELOCATION_MATCH PASS   CCreatureAction_StabbedToDeath::FinishAction
+008c3ee0   WARN RELOC_NAME: ?BaseInit@CCreatureAction_ScorpionRecover_Methods@@QAEXXZ -> 00857520 labelled 'CCombatActionBase::Initialise'
+008c3ee0   RELOCATION_MATCH PASS   CCreatureAction_ScorpionRecover::Initialise
+008c9fc0   RELOCATION_MATCH PASS   CCreatureAction_NymphGetHitDie::FinishAction
+008d08a0   WARN RELOC_NAME: ?GetDefinitionManager@ThingMethods@@QBEPAUDefinitionManagerMethods@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+008d08a0   RELOCATION_MATCH PASS   CGameScriptThing::IsSummonedCreature
+008d1130   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008d1130   WARN RELOC_NAME: ?GetDefinitionManager@CThingNative@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+008d1130   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsHitByWithWeapon
+008d16d0   WARN RELOC_NAME: ?GetFlourishEvent@EntityEventsMethods@@QAE_NPAPAUEventBase@@ABUBind2@@@Z -> 008d4d90 labelled 'CTCEntityEvents::GetEvent'
+008d16d0   RELOCATION_MATCH PASS   CGameScriptThing::MsgPerformedFlourish
+008d1ef0   RELOCATION_MATCH PASS   CGameScriptThing::MsgHowLongWasExpressionPerformed
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+008d23c0   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsPresentedWithItem
+008d2610   RELOCATION_MATCH PASS   CGameScriptThing::MsgPerformedSpecialAbility
+008d28d0   RELOCATION_MATCH PASS   CGameScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility
+008d7630   WARN RELOC_NAME: ?GetSnowTroll@NativeDefinition@@QBE_NPAUSnowDefinitionPointer@@@Z -> 008c7a70 labelled 'CDefClassBase::GetSubDef<CSnowTrollDef>'
+008d7630   WARN RELOC_NAME: ?GetWorld@ModeIceTroll@@QBEAAUWorldNative@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008d7630   RELOCATION_MATCH PASS   NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnActivate
+008da890   RELOCATION_MATCH PASS   NCreatureMode::CModeDrained::FrameUpdate
+008e8940   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008e8940   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseTeleportIntangible::FrameUpdate
+00903ac0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00903ac0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00903ac0   RELOCATION_MATCH PASS   CScriptGameResourceObjectScriptedThing::~CScriptGameResourceObjectScriptedThing
+0093dc10   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable
+0094feb0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094feb0   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+00954b50   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00954b50   WARN SHARED_HEADER_AVAILABLE CWorld
+00954b50   WARN RELOC_NAME: ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 004365b0 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954b50   WARN RELOC_NAME: ??0MazePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00954b50   WARN RELOC_NAME: ??1MazePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00954b50   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+0095a6c0   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::GotoCirclePoint
+009627c0   WARN RELOC_NAME: ??0CIceTrollIcicleAssaultIntoNative@@QAE@PAUCIceThing@@0@Z -> 00962990 labelled 'CCreatureAction_IceTrollIcicleAssaultInto::CCreatureAction_IceTrollIcicleAssaultInto'
+009627c0   WARN RELOC_NAME: ??1CIceCombatAction@@UAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+009627c0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollIcicleAssault::Update
+009713e0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase::DuckBehindCover
+00978fd0   WARN RELOC_NAME: ?ToInteger@C2DBox@@QBE?AVC2DBoxI@@XZ -> 00a55a30 labelled 'C2DBoxF::ToBoxI'
+00978fd0   WARN RELOC_NAME: ?FindInRoughArea@CThingSearchToolsRetail@@QAEXABVC2DBoxI@@ABUCFilterBind4@@AAUCThingVector@@@Z -> 009793d0 labelled 'CThingSearchTools::GetAllThingsInRoughArea'
+00978fd0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList
+
+WINS: 40
+  005c311a RELOCATION_MATCH CTCInventoryWeapons::GetItemOfTypeInInventory@CTCInventoryWeapons
+  005c4769 RELOCATION_MATCH CTCInventoryWeapons::GetActiveMeleeWeaponDamage
+  005cbdfa RELOCATION_MATCH CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  006592e2 RELOCATION_MATCH CTCVillage::AddTorchToVillage
+  0065d691 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  0065d6db RELOCATION_MATCH _global::operator==<CThingBuilding>
+  00668b80 RELOCATION_MATCH _global::??4?$CIntelligentPointer@
+  00698d10 RELOCATION_MATCH CGameCameraManager::PushProjectileWeaponMode
+  00698f50 RELOCATION_MATCH CGameCameraManager::PushSpecialCameraMode
+  0069b790 RELOCATION_MATCH CGameCameraManager::Update
+  006d76c0 RELOCATION_MATCH NHeroExperience::?GetWeaponModifiedExperienceMultiplierForThing@NHeroExperience@@YIMABVCThing@@@Z
+  00744730 RELOCATION_MATCH CTCPerceiveThing::SetLastAwareInfo
+  0074cb00 RELOCATION_MATCH _global::operator==<CThingBuilding>
+  007b8590 RELOCATION_MATCH CTCTavernTable::GetTankard
+  007bb660 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00812ca0 RELOCATION_MATCH CTCCreatureGroup::GetNearestOtherActiveMember
+  0082def0 RELOCATION_MATCH CThingBuilding::IsUnlocked
+  0084a950 RELOCATION_MATCH CVillageTaskCarryCrate::IsCreatureAssignedToTask
+  008574d0 RELOCATION_MATCH CCombatActionBase::SetCombatAnimation
+  0087e840 RELOCATION_MATCH CCreatureAction_StabbedToDeath::FinishAction
+  008c3ee0 RELOCATION_MATCH CCreatureAction_ScorpionRecover::Initialise
+  008c9fc0 RELOCATION_MATCH CCreatureAction_NymphGetHitDie::FinishAction
+  008d08a0 RELOCATION_MATCH CGameScriptThing::IsSummonedCreature
+  008d1130 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithWeapon
+  008d16d0 RELOCATION_MATCH CGameScriptThing::MsgPerformedFlourish
+  008d1ef0 RELOCATION_MATCH CGameScriptThing::MsgHowLongWasExpressionPerformed
+  008d23c0 RELOCATION_MATCH CGameScriptThingMethods::?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z
+  008d2610 RELOCATION_MATCH CGameScriptThing::MsgPerformedSpecialAbility
+  008d28d0 RELOCATION_MATCH CGameScriptThing::MsgPerformedAnyNonAggressiveSpecialAbility
+  008d7630 RELOCATION_MATCH NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::OnActivate
+  008da890 RELOCATION_MATCH NCreatureMode::CModeDrained::FrameUpdate
+  008e8940 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportIntangible::?FrameUpdate@CModeBriarRoseTeleportIntangible
+  00903ac0 RELOCATION_MATCH CScriptGameResourceObjectScriptedThing::??1CScriptGameResourceObjectScriptedThing
+  0093dc10 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable
+  0094feb0 RELOCATION_MATCH CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+  00954b50 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+  0095a6c0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::GotoCirclePoint
+  009627c0 RELOCATION_MATCH CAIStateGroup_IceTrollIcicleAssault::Update
+  009713e0 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::?DuckBehindCover@CAIStateGroup_CreatureUseCoverBase@@IAE_N_N@Z
+  00978fd0 RELOCATION_MATCH CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList

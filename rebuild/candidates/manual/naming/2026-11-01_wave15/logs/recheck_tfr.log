@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00692940   RELOCATION_MATCH PASS   CCreatureActionBase::GetWorld
+00692c10   WARN SHARED_HEADER_AVAILABLE CWorld
+00692c10   RELOCATION_MATCH PASS   CCreatureActionBase::GetWorldMap
+
+WINS: 2
+  00692940 RELOCATION_MATCH CCreatureActionBase::?GetWorld@CCreatureActionBase@@IAEAAVCWorld@@XZ
+  00692c10 RELOCATION_MATCH CCreatureActionBase::?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ

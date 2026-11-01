@@ -1,0 +1,1 @@
+edited 004874f0 moved CInputThing::GetDeviceNumber -> GetPlayerNumberFromJoystickDeviceNumber x1 +u ['?GetPlayerNumberFromJoystickDeviceNumber@CPlayerManager@@QBEJJ@Z'] -u ['?GetDeviceNumber@CInputThing@@QAEJJ@Z']

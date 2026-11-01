@@ -1,0 +1,12 @@
+skip 00454b4c moved Pair::dtor -> ~CParentDefClassBase x3 :: compile: estvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00454b4c.cpp(1) : error C2143: syntax error : missing ')' before '*' | rc\compiled\00\45\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00454b4c.cpp(1) : error C2059: syntax error : ')' | CMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_00454b4c.cpp(1) : error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+skip 004554c6 0 CParentDefClassBase::~CParentDefClassBase declarations
+skip 00455c64 moved CEnvironmentThemeDaySetDef::realdtor -> ~CParentDefClassBase x1 :: final not named
+skip 00455dff moved CTCMoveBase::FinishMove -> ~CParentDefClassBase x1 :: final not named
+skip 00456010 0 PatchEdgeBase456010::~PatchEdgeBase456010 declarations
+skip 0045619e 0 CDefinitionBaseModel::~CDefinitionBaseModel declarations
+skip 00457936 moved CBase::dtor -> ~CParentDefClassBase x3 :: compile: src\compiled\00\45\CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00457936.cpp(4) : error C2146: syntax error : missing ')' before identifier 'CParentDefClassBase' | naming\w15\ov_t_qall\rebuild\src\compiled\00\45\CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00457936.cpp(4) : error C2143: syntax error : missing ')' before '{' | src\compiled\00\45\CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00457936.cpp(4) : error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+skip 00458017 moved CSpecialAbilitiesThunderLightningStormDef::real_dtor -> ~CParentDefClassBase x1 :: final not named
+skip 00458111 0 CDefinitionBaseModel::~CDefinitionBaseModel declarations
+skip 004582d6 0 CDefinitionBaseModel::~CDefinitionBaseModel declarations
+skip 00459abe 0 CPatchStripBase::~CPatchStripBase declarations
+skip 00459b73 0 CPatchStripBase::~CPatchStripBase declarations

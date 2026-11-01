@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00c5ee60   MATCH            PASS   CVtable_012b9174::IsChunkReady
+00c5eeb0   MATCH            PASS   CVtable_012b9174::WriteBuffer
+  WARN leaf '~CActionParamCountedPointer_00c5eef0' matches no symbol in 00c5eef0.obj; graded the largest function
+  WARN leaf '~CActionParamCountedPointer_00c5eef0' matches no symbol in 00c5eef0.obj; graded the largest function
+00c5eef0   RELOCATION_MATCH PASS   _unattributed::~CActionParamCountedPointer_00c5eef0
+
+WINS: 3
+  00c5ee60 MATCH CVtable_012b9174::?IsChunkReady@CVtable_012b9174@@UAE_NXZ
+  00c5eeb0 MATCH CVtable_012b9174::?WriteBuffer@CVtable_012b9174@@UAEXJ@Z
+  00c5eef0 RELOCATION_MATCH _unattributed::~CActionParamCountedPointer_00c5eef0

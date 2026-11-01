@@ -1,0 +1,32 @@
+edited 004016b0 free ::Member18Dtor -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Member18Dtor@@YIXPAX@Z']
+skip 00403510 free ::dtorA_0099b510 -> ~CWideString x4 :: diff -[] +['??3@YAXPAX@Z']
+skip 00406610 free ::WSdtor_0099b510 -> ~CWideString x2 :: diff -[] +['??3@YAXPAX@Z']
+skip 004067c0 free ::CTemp_dtor -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 0040ec50 moved T::Dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Dtor_0099b510@T@@QAEXXZ']
+skip 00412020 free ::SubMemberDtor -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 004120c0 free ::SubDtor_589450 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?SubDtor_589450@@YIXPAX@Z']
+skip 00412130 free ::Ring_dtor -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 0043dd10 free ::AutoTinyCompositeDestructor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?AutoTinyCompositeDestructor_0099b510@@YIXPAX@Z']
+edited 0043dd40 free ::CLandscapeBackgroundPatch_scalar_dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['@CLandscapeBackgroundPatch_scalar_dtor_0099b510@4']
+edited 0043f960 moved T::Dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Dtor_0099b510@T@@QAEXXZ']
+skip 004407b0 free ::NodeSub_Dtor -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 0047b880 free ::Symbol_dtor -> ~CWideString x3 :: diff -[] +['??3@YAXPAX@Z']
+edited 004852d1 moved T::Dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Dtor_0099b510@T@@QAEXXZ']
+skip 004857e0 moved SubObject::Cleanup_0099b510 -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 004a9140 moved DV::m -> ~CWideString x2 :: diff -[] +['??3@YAXPAX@Z']
+skip 004b8110 0 StrRefA::~StrRefA declarations
+edited 00565be0 free ::InnerDtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['@InnerDtor_0099b510@4']
+skip 00569450 0 CWideString::~CWideString declarations
+skip 0056c820 0 StrB::~StrB declarations
+edited 005b157d free ::Sub_Dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Sub_Dtor_0099b510@@YIXPAX@Z']
+edited 005d8135 moved T::Dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Dtor_0099b510@T@@QAEXXZ']
+edited 006232c0 free ::InnerDtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['@InnerDtor_0099b510@4']
+skip 006568bb free ::FableMemberDtor_006568bb -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 006be9d0 0 CWideString::~CWideString declarations
+skip 006bebf0 0 CWideString::~CWideString declarations
+edited 007e8050 free ::DestructMember_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?DestructMember_0099b510@@YIXPAX@Z']
+skip 009ac5d0 0 CWideString::~CWideString declarations
+skip 009c1ac0 free ::FableBaseDtor_009c1ac0 -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+skip 009c2520 free ::FableBaseDtor_009c2520 -> ~CWideString x1 :: diff -[] +['??3@YAXPAX@Z']
+edited 00a606f0 moved T::Dtor_0099b510 -> ~CWideString x1 +u ['??1CWideString@@QAE@XZ'] -u ['?Dtor_0099b510@T@@QAEXXZ']
+skip 00bc7ab0 0 CListMember_0099b510::~CListMember_0099b510 declarations

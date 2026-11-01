@@ -1,0 +1,4 @@
+edited 009fdc20 moved CManagedTexture::ClearHandle -> Release x1 +u ['?Release@CManagedTexture@@QAE_NXZ'] -u ['?ClearHandle@CManagedTexture@@QAEXXZ']
+edited 009fe440 moved SubB::Clear -> Release x1 +u ['?Release@CManagedTexture@@QAE_NXZ'] -u ['?Clear@SubB@@QAEXXZ']
+edited 009fe550 moved CManagedTexture::ClearHandle -> Release x1 +u ['?Release@CManagedTexture@@QAE_NXZ'] -u ['?ClearHandle@CManagedTexture@@QBE_NXZ']
+edited 00a69b20 moved CIVCountedHandle_00a69b20::ClearHandle -> Release x1 +u ['?Release@CManagedTexture@@QAE_NXZ'] -u ['?ClearHandle@CIVCountedHandle_00a69b20@@QAEXXZ']

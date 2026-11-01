@@ -1,0 +1,142 @@
+addr       parity           behav  name
+0048c950   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0048c950   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+  WARN leaf '~CCreatureAction_SheatheItemToInventory' matches no symbol in 0048c950.obj; graded the largest function
+0048c950   DIFFER(81v75)    PASS   CCreatureAction_SheatheItemToInventory::~CCreatureAction_SheatheItemToInventory
+0057b783   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0057b783   WARN SHARED_HEADER_AVAILABLE CPlayer
+0057b783   WARN SHARED_HEADER_AVAILABLE CWorld
+0057b783   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057b783   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0057b783   RELOCATION_MATCH PASS   CTCHeroStats::Vomit
+00629020   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CAggregate_00629020' matches no symbol in 00629020.obj; graded the largest function
+  WARN leaf '~CAggregate_00629020' matches no symbol in 00629020.obj; graded the largest function
+00629020   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00629020   RELOCATION_MATCH PASS   _unattributed::~CAggregate_00629020
+00629110   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CAggregate_00629110' matches no symbol in 00629110.obj; graded the largest function
+  WARN leaf '~CAggregate_00629110' matches no symbol in 00629110.obj; graded the largest function
+00629110   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00629110   RELOCATION_MATCH PASS   _unattributed::~CAggregate_00629110
+006dd6c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CCreatureAction_ShowToSheatheTrophy' matches no symbol in 006dd6c0.obj; graded the largest function
+  WARN leaf '~CCreatureAction_ShowToSheatheTrophy' matches no symbol in 006dd6c0.obj; graded the largest function
+006dd6c0   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+006dd6c0   RELOCATION_MATCH PASS   CCreatureAction_ShowToSheatheTrophy::~CCreatureAction_ShowToSheatheTrophy
+0078ab20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CAggregate_0078ab20' matches no symbol in 0078ab20.obj; graded the largest function
+  WARN leaf '~CAggregate_0078ab20' matches no symbol in 0078ab20.obj; graded the largest function
+0078ab20   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+0078ab20   RELOCATION_MATCH PASS   _unattributed::~CAggregate_0078ab20
+007ee8f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007ee8f0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007ee8f0   WARN SHARED_HEADER_AVAILABLE CHeroDef
+007ee8f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007ee8f0   WARN RELOC_NAME: ?OnUseBase@CTCActionUseBase@@QAEXPAVCThingCreatureBase@@@Z -> 007eab90 labelled 'CTCActionUseBase::vfunc_28'
+007ee8f0   RELOCATION_MATCH PASS   CTCActionUseChest::OnActionUse
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00891720   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00891720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891720   WARN RELOC_NAME: ??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@_N@Z -> 008ed650 labelled 'CCreatureAction_Die::CCreatureAction_Die'
+00891720   RELOCATION_MATCH PASS   CGameScriptInterface::ChangeHeroHealthBy
+008ac330   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008ac330   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 008ac330.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 008ac330.obj; graded the largest function
+008ac330   RELOCATION_MATCH PASS   CCreatureAction_SitDown::`scalar_deleting_destructor'
+00979f70   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00979f70   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00979f70   WARN SHARED_HEADER_AVAILABLE CWorld
+00979f70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00979f70   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00979f70   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00979f70   WARN RELOC_CONFLICT: ??$IS_THING_ALIVE@V?$CIntelligentPointer@$$CBVCThing@@@@@@YI_NABV?$CIntelligentPointer@$$CBVCThing@@@@@Z -> 006961f0 here, 0069ce20 in landed 00836ad0
+00979f70   WARN RELOC_CONFLICT: ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@ABV0@@Z -> 0091f990 here, 004a9730 in landed 00788d68
+00979f70   RELOCATION_MATCH PASS   CAIStateGroup_CreatureTakeCover::AttackTargetThing
+
+WINS: 9
+  0057b783 RELOCATION_MATCH CTCHeroStats::Vomit
+  00629020 RELOCATION_MATCH _unattributed::~CAggregate_00629020
+  00629110 RELOCATION_MATCH _unattributed::~CAggregate_00629110
+  006dd6c0 RELOCATION_MATCH _unattributed::~CCreatureAction_ShowToSheatheTrophy
+  0078ab20 RELOCATION_MATCH _unattributed::~CAggregate_0078ab20
+  007ee8f0 RELOCATION_MATCH CTCActionUseChest::OnActionUse
+  00891720 RELOCATION_MATCH CGameScriptInterface::ChangeHeroHealthBy
+  008ac330 RELOCATION_MATCH CCreatureAction_SitDown::`scalar_deleting_destructor'
+  00979f70 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::AttackTargetThing
+addr       parity           behav  name
+0057a545   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0057a545   WARN RELOC_NAME: ??1CMember_0099eae0@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+0057a545   RELOCATION_MATCH PASS   CCreatureAction_PlayIntoLoopOutOfAnimation::~CCreatureAction_PlayIntoLoopOutOfAnimation
+005cc091   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+005cc091   WARN RELOC_NAME: ??1CMember_0048afb0@@QAE@XZ -> 0048afb0 labelled '_global::CCountedPointer_Release_0048afb0'
+005cc091   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+005cc091   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheItemFromInventory::~CCreatureAction_UnsheatheItemFromInventory
+00629060   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CAggregate_00629060' matches no symbol in 00629060.obj; graded the largest function
+  WARN leaf '~CAggregate_00629060' matches no symbol in 00629060.obj; graded the largest function
+00629060   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00629060   WARN RELOC_NAME: ??1CMember_0099eae0@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00629060   RELOCATION_MATCH PASS   _unattributed::~CAggregate_00629060
+006a08f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006a08f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 006a08f0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 006a08f0.obj; graded the largest function
+006a08f0   RELOCATION_MATCH PASS   CCreatureAction_SheatheItemToInventory::`scalar_deleting_destructor'
+006df9b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006df9b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 006df9b0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 006df9b0.obj; graded the largest function
+006df9b0   RELOCATION_MATCH PASS   CCreatureAction_SheatheTrophy::`scalar_deleting_destructor'
+007ed270   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CAggregate_007ed270' matches no symbol in 007ed270.obj; graded the largest function
+  WARN leaf '~CAggregate_007ed270' matches no symbol in 007ed270.obj; graded the largest function
+007ed270   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+007ed270   RELOCATION_MATCH PASS   _unattributed::~CAggregate_007ed270
+008663d0   WARN RELOC_NAME: ??0CCreatureAction_AlertToPlayer@@QAE@AAUCreature@@@Z -> 00865a00 labelled 'CCreatureAction_BeDazed::CCreatureAction_BeDazed'
+008663d0   RELOCATION_MATCH PASS   CCombatAction_GenericStrikeResponseBase::FinishAction
+008abaa0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008abaa0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008abaa0   DIFFER(81v75)    PASS   CCreatureAction_SitDown::~CCreatureAction_SitDown
+0092c2e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+  WARN leaf '~CAggregate_0092c2e0' matches no symbol in 0092c2e0.obj; graded the largest function
+  WARN leaf '~CAggregate_0092c2e0' matches no symbol in 0092c2e0.obj; graded the largest function
+0092c2e0   WARN RELOC_NAME: ??1CMember_0099eae0@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+0092c2e0   WARN RELOC_NAME: ??1CMember_00a01c10@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+0092c2e0   RELOCATION_MATCH PASS   _unattributed::~CAggregate_0092c2e0
+
+WINS: 8
+  0057a545 RELOCATION_MATCH CCreatureAction_PlayIntoLoopOutOfAnimation::??1CAggregate_0057a545@
+  005cc091 RELOCATION_MATCH CCreatureAction_UnsheatheItemFromInventory::??1CAggregate_005cc091@
+  00629060 RELOCATION_MATCH _unattributed::~CAggregate_00629060
+  006a08f0 RELOCATION_MATCH CCreatureAction_SheatheItemToInventory::`scalar_deleting_destructor'
+  006df9b0 RELOCATION_MATCH CCreatureAction_SheatheTrophy::`scalar_deleting_destructor'
+  007ed270 RELOCATION_MATCH _unattributed::~CAggregate_007ed270
+  008663d0 RELOCATION_MATCH CCombatAction_GenericStrikeResponseBase::FinishAction
+  0092c2e0 RELOCATION_MATCH _unattributed::~CAggregate_0092c2e0

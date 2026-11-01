@@ -1,0 +1,2 @@
+edited 005fad40 inplace CWorld::HandleMoveHeroToRegionGameEvent -> HandleMoveHeroToRegionGameEvent x1 +u ['?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z'] -u ['?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXPBVCGameEvent@@@Z']
+edited 007dfcf0 inplace CWorld::HandleMoveHeroToRegionGameEvent -> HandleMoveHeroToRegionGameEvent x1 +u ['?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z'] -u ['?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXPAVCGameEvent@@@Z']

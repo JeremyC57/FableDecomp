@@ -1,0 +1,3 @@
+skip 0059b79a free stand-in GetInventoryTabState not a one-argument this-call
+skip 0059c0c6 free stand-in GetInventoryTabState not a one-argument this-call
+skip 0059c447 free stand-in GetInventoryTabState not a one-argument this-call
