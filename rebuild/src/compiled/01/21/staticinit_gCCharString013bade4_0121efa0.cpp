@@ -1,4 +1,4 @@
-// dynamic initializer for CCharString g_CCharString_013bade4 @ 0x013BADE4 -- constructs it from the literal, then registers its destructor with atexit
+// dynamic initializer for CCharString `anonymous namespace'::BOASTING_CROWD_HOOK_QUEST_NAME @ 0x013BADE4 -- constructs it from the literal, then registers its destructor with atexit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121EFA0, oracle length 29 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -8,8 +8,8 @@
 // living at 0x013BADE4: it constructs it from the literal and registers the
 // destructor thunk @ 0x01229B50 (`mov ecx,offset object ; jmp CCharString::~CCharString`, already landed)
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
-// exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
-// real identifier is not recoverable. One of 163 bodies of this shape.
+// exact function (and the thunk) from the .CRT$XCU table; the object is the PDB's file-static
+// `anonymous namespace'::BOASTING_CROWD_HOOK_QUEST_NAME (naming wave 15). One of 163 bodies of this shape.
 #include "fable_string.h"      // CCharString: ctor @ 0x0099EBF0 / default @ 0x0099AED0, ~CCharString @ 0x0099EAE0
 
-CCharString g_CCharString_013bade4("Hook_BoastingCrowd", -1);
+namespace { CCharString BOASTING_CROWD_HOOK_QUEST_NAME("Hook_BoastingCrowd", -1); }

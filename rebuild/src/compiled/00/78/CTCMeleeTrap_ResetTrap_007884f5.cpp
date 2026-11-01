@@ -72,7 +72,7 @@ class CThing { public:
     CDefClassBase* PBaseDef;                       // +0x70
 };
 
-extern CCharString g_TrapResetAnimationName;       // 0x013BADFC ("TRAP_RESET")
+namespace { extern CCharString STrapReset; }       // 0x013BADFC ("TRAP_RESET")
 
 struct CTCMeleeTrap {
     void*         __vftable;                       // +0x00 (CTCBase)
@@ -90,8 +90,8 @@ void CTCMeleeTrap::ResetTrap()
     PlayingContinuous = false;
     m_pThing->PBaseDef->GetSubDef(appearance);
     CAppearanceDef* def = appearance.m_pDef;
-    if (def->m_animations.FindAnimationByName(g_TrapResetAnimationName, CAnimFilterNoGroup()))
-        InitialiseAnimation(g_TrapResetAnimationName, false);
+    if (def->m_animations.FindAnimationByName(STrapReset, CAnimFilterNoGroup()))
+        InitialiseAnimation(STrapReset, false);
     if (def)
         def->Release();
 }

@@ -107,7 +107,7 @@ class CWorld { public:
     unsigned char       _pad00[0x10];
     CDefinitionManager* DefinitionManager;           // +0x10
 };
-extern CCharString g_OpinionReactionManagerDefName;  // 0x013BABC8
+namespace { extern CCharString REACTION_MANAGER_DEF_INSTANTIATION_NAME; }  // 0x013BABC8
 
 class COpinionReactionManager {
 public:
@@ -135,7 +135,7 @@ public:
 COpinionReactionManager::COpinionReactionManager(CWorld* world)
     : World(world)
 {
-    World->DefinitionManager->GetDef(g_OpinionReactionManagerDefName, &PDef);
+    World->DefinitionManager->GetDef(REACTION_MANAGER_DEF_INSTANTIATION_NAME, &PDef);
     for (long i = 0; i < 79; ++i) {
         {
             SMapNode<long>* it = PDef->AttitudeCondition.find(i);

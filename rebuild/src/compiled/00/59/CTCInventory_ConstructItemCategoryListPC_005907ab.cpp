@@ -43,7 +43,7 @@ struct CGameSubsystem {
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-extern CCharString g_ItemsTitleName;                  // 0x013B8B4C ("ITEMS TITLE")
+namespace { extern CCharString TITLE_NAME; }                  // 0x013B8B4C ("ITEMS TITLE")
 template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
@@ -297,7 +297,7 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         titleText += L":";
         titleText += title;
         titleObject->SetText(titleText, true, true);
-        titleComp->SetName(g_ItemsTitleName);
+        titleComp->SetName(TITLE_NAME);
         sub->SetHeader(titleComp);
         if (frame)
             frame->AddFrameMember(titleComp.m_pObject);
@@ -321,7 +321,7 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         }
         CCountedPointer<CComponent> actionsTitle(fe->CreateComponent("PC_ITEM_TITLE", false));
         actionsTitle->SetText(titleText, true, true);
-        actionsTitle->SetName(g_ItemsTitleName);
+        actionsTitle->SetName(TITLE_NAME);
         actionsList->SetHeader(actionsTitle);
         if (frame)
             frame->AddFrameMember(actionsTitle.m_pObject);

@@ -1,4 +1,4 @@
-// dynamic initializer for CCharString g_CCharString_013b8b4c @ 0x013B8B4C -- constructs it from the literal, then registers its destructor with atexit
+// dynamic initializer for CCharString `anonymous namespace'::TITLE_NAME @ 0x013B8B4C -- constructs it from the literal, then registers its destructor with atexit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121A8C1, oracle length 29 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -8,8 +8,8 @@
 // living at 0x013B8B4C: it constructs it from the literal and registers the
 // destructor thunk @ 0x01228EEC (`mov ecx,offset object ; jmp CCharString::~CCharString`, already landed)
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
-// exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
-// real identifier is not recoverable. One of 46 bodies of this shape.
+// exact function (and the thunk) from the .CRT$XCU table; the object is the PDB's file-static
+// `anonymous namespace'::TITLE_NAME (naming wave 15). One of 46 bodies of this shape.
 #include "fable_string.h"      // CCharString: ctor @ 0x0099EBF0 / default @ 0x0099AED0, ~CCharString @ 0x0099EAE0
 
-CCharString g_CCharString_013b8b4c("ITEMS TITLE", -1);
+namespace { CCharString TITLE_NAME("ITEMS TITLE", -1); }

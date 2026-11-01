@@ -16,8 +16,8 @@
 class CCharString { public:
     void* PStringData;
 };
-extern CCharString g_meleeTrapTriggerAnimName;       // 0x013BADF8
-extern CCharString g_meleeTrapSecondAnimName;        // 0x013BADFC
+namespace { extern CCharString STrapTrigger; }       // 0x013BADF8
+namespace { extern CCharString STrapReset; }        // 0x013BADFC
 class CAnimFilterBase { public:                             // vtable 0x0122FFCC
     virtual ~CAnimFilterBase() { }
 };
@@ -27,9 +27,11 @@ struct CAnimFilterAll : CAnimFilterBase {            // vtable 0x0122FFDC: accep
 class CAnimationEntry { public:
     long AnimationIndex;                             // +0x00
 };
+class CAnimationSet { public:
+    bool AnimExists(CCharString const&a0, CAnimFilterBase const&a1) const;   // 0x005DC2E0 (Ego_r.pdb ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z)
+};
 struct CAnimationTable {
     const CAnimationEntry* GetAnimation(const CCharString& name, long index, const CAnimFilterBase& filter) const;   // 0x005DC340
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;                                 // 0x005DC2E0
 };
 class CDefPointeeBase { public:
     virtual void v00();
@@ -109,13 +111,13 @@ void CTCMeleeTrap::TriggerTrap()
 {
     CDefPointer<CMeleeTrapDef> def;
     ParentThing->PDef->GetSubDef(&def);
-    InitialiseAnimation(g_meleeTrapTriggerAnimName, false);
-    const CAnimationEntry* trigger = def->Animations.GetAnimation(g_meleeTrapTriggerAnimName, 0, CAnimFilterAll());
+    InitialiseAnimation(STrapTrigger, false);
+    const CAnimationEntry* trigger = def->Animations.GetAnimation(STrapTrigger, 0, CAnimFilterAll());
     CMeshDataBank* bank = GetWorld().PMainMeshBank.Data;
     float triggerTime = bank->GetAnimation(trigger->AnimationIndex)->Duration;
     float secondTime = 0.0f;
-    if (def->Animations.HasAnimation(g_meleeTrapSecondAnimName, CAnimFilterAll())) {
-        const CAnimationEntry* second = def->Animations.GetAnimation(g_meleeTrapSecondAnimName, 0, CAnimFilterAll());
+    if (((CAnimationSet*)&(def->Animations))->AnimExists(STrapReset, CAnimFilterAll())) {
+        const CAnimationEntry* second = def->Animations.GetAnimation(STrapReset, 0, CAnimFilterAll());
         CMeshDataBank* secondBank = GetWorld().PMainMeshBank.Data;
         secondTime = secondBank->GetAnimation(second->AnimationIndex)->Duration;
     }

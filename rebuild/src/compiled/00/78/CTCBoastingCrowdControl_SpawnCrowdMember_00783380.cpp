@@ -19,7 +19,7 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
-extern CCharString g_CrowdMemberScriptName;             // 0x013BADE8
+namespace { extern CCharString BOASTING_CROWD_MEMBER_SCRIPT_NAME; }             // 0x013BADE8
 class C3DVector { public: float X, Y, Z; };
 long __fastcall GFROR13(unsigned long value);  // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
@@ -195,7 +195,7 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
             else
                 female = (GFRandom(GetPWorldSeed()) & 1) != 0;
             CThingAICreatureInit init;
-            init.ScriptName = g_CrowdMemberScriptName;
+            init.ScriptName = BOASTING_CROWD_MEMBER_SCRIPT_NAME;
             init.EnableCreatureAutoPlacing = false;
             CThingAICreature* creature = CThingAICreature::Create(female ? def->FemaleDef : def->MaleDef,
                                                                   spawnPoint->GetPos(), 4, &init);
