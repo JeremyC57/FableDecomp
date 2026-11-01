@@ -44629,7 +44629,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c20f20	IsState6_00C20F20	CUnprovenStateObject_00C20720	unknown	undefined	0		0	yes	accepted									
 00c20f40	IsState5_00C20F40	CUnprovenStateObject_00C20720	unknown	undefined	0		0	yes	accepted									
 00c20f60	CountInto	CSoundEvent	unknown	undefined	0		0	yes	accepted									
-00c21040	Thiscall_CombatActionDebugFormat	_global	unknown	undefined	0		0	yes	accepted									
+00c21040	Describe	CSoundEvent	unknown	undefined	0		0	yes	accepted									
 00c21330	GetRecordFlag	CSoundEvent	__thiscall	bool	1	CPlayer *	1	yes	accepted									
 00c21360	ApplyPan	CSoundEvent	unknown	undefined	0		0			discovered	gapscan							
 00c21380	GetGain	CSoundEvent	unknown	undefined	0		0			discovered	gapscan							
@@ -46354,8 +46354,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c44dc0	FireballSpell_DispatchScaledDamage	_global	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c4\0x00C44DC0_global_FireballSpell_DispatchScaledDamage.cpp				
 00c44e30	Finish	CAmbientEmitter	unknown	undefined	0		0	yes	accepted									
 00c44e80	~CTCShotDefinitionFireballSpell	CTCShotDefinitionFireballSpell	__thiscall	void	1	CTCShotDefinitionFireballSpell *	1	yes	accepted									
-00c44eb0	CWorld::OnResourceAllocate	CWorld	unknown	undefined	0		0	yes	accepted									
-00c44f80	~_Pair_base<CCharString_const_,CScriptGameResourceObjectScriptedThingBase>	_Pair_base<CCharString_const_	__thiscall	void	1	_Pair_base<CCharString_const_,CScriptGameResourceObjectScriptedThingBase> *	1	yes	accepted									
+00c44eb0	CAmbientEmitter	CAmbientEmitter	unknown	undefined	0		0	yes	accepted									
+00c44f80	~CAmbientEmitter	CAmbientEmitter	__thiscall	void	1	_Pair_base<CCharString_const_,CScriptGameResourceObjectScriptedThingBase> *	1	yes	accepted									
 00c45030	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CLandscapeBackgroundPatch_vectordeletingdestructor_00c45030.cpp
 00c45070	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CBase_CBase_00c45070.cpp
 00c45080	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c4\CLandscapeBackgroundPatch_vectordeletingdestructor_00c45080.cpp

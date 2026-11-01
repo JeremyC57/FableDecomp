@@ -1,0 +1,121 @@
+Counter({'RETIRE': 273, 'ADD': 34, 'KEEP': 4}) removed lines 274 added 34
+NEWDEF 004a9e50 ??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z
+NEWDEF 004dfd60 ??1?$pair@VCCharString@@UCRegisteredTCInfo@std@@@std@@QAE@XZ ?__unguarded_insertion_sort_aux@std@@YIXPAU?$pair@VCCharString@@UCRegisteredTCInfo@std@@@1@00UCKeyPairCompareLess@1@@Z
+NEWDEF 004e1d68 ??1?$pair@VCCharString@@UCRegisteredTCInfo@std@@@std@@QAE@XZ ?__make_heap@std@@YIXPAU?$pair@VCCharString@@UCRegisteredTCInfo@std@@@1@0UCKeyPairCompareLess@1@0PAH@Z
+NEWDEF 004e823b ??1?$pair@VCCharString@@UCRegisteredTCInfo@std@@@std@@QAE@XZ ?__introsort_loop@std@@YIXPAU?$pair@VCCharString@@UCRegisteredTCInfo@std@@@1@00HUCKeyPairCompareLess@1@@Z
+NEWDEF 005149b0 ??_GCCharString@@QAEPAXI@Z
+NEWDEF 00569450 ??0?$pair@HVCWideString@@@FableVector_00569450@@QAE@ABU01@@Z ??1?$pair@HVCWideString@@@FableVector_00569450@@QAE@XZ ??_G?$pair@HVCWideString@@@FableVector_00569450@@QAEPAXI@Z ??_GCWideString@@QAEPAXI@Z ?Size@?$vector@U?$pair@HVCWideString@@@FableVector_00569450@@@FableVector_00569450@@QBEIXZ ?_Destroy@FableVector_00569450@@YIXPAU?$pair@HVCWideString@@@1@0ABU__false_type@1@@Z ?_M_insert_overflow@?$
+NEWDEF 005c0d9d ??RCThingFilter_HasTC@@QBE_NPAVCThing@@@Z
+NEWDEF 00615750 ??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z
+NEWDEF 00630d90 ??_GCCharString@@QAEPAXI@Z
+NEWDEF 0065f744 ??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z
+NEWDEF 006fc130 ??0?$pair@VCCharString@@H@FableVector_006fc130@@QAE@ABU01@@Z ??1?$pair@VCCharString@@H@FableVector_006fc130@@QAE@XZ ??_G?$pair@VCCharString@@H@FableVector_006fc130@@QAEPAXI@Z ??_GCCharString@@QAEPAXI@Z ?Size@?$vector@U?$pair@VCCharString@@H@FableVector_006fc130@@@FableVector_006fc130@@QBEIXZ ?_Destroy@FableVector_006fc130@@YIXPAU?$pair@VCCharString@@H@1@0ABU__false_type@1@@Z ?_M_insert_overflow@?$
+NEWDEF 0071f8f0 ??_GCCharString@@QAEPAXI@Z
+NEWDEF 0074fce0 ??0?$pair@HVCCharString@@@FableVector_0074fce0@@QAE@ABU01@@Z ??1?$pair@HVCCharString@@@FableVector_0074fce0@@QAE@XZ ??_G?$pair@HVCCharString@@@FableVector_0074fce0@@QAEPAXI@Z ??_GCCharString@@QAEPAXI@Z ?Size@?$vector@U?$pair@HVCCharString@@@FableVector_0074fce0@@@FableVector_0074fce0@@QBEIXZ ?_Destroy@FableVector_0074fce0@@YIXPAU?$pair@HVCCharString@@@1@0ABU__false_type@1@@Z ?_M_insert_overflow@?$
+NEWDEF 0076c750 ?Sort@?$CVectorMap@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@2@@@QAEXXZ ?Sort@?$CVectorMap@KVC3DVector@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@@QAEXXZ
+NEWDEF 00782670 ??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z
+NEWDEF 00799c40 ??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z
+NEWDEF 0086d370 ??0?$pair@VCCharString@@H@FableVector_0086d370@@QAE@ABU01@@Z ??1?$pair@VCCharString@@H@FableVector_0086d370@@QAE@XZ ??_G?$pair@VCCharString@@H@FableVector_0086d370@@QAEPAXI@Z ??_GCCharString@@QAEPAXI@Z ?Size@?$vector@U?$pair@VCCharString@@H@FableVector_0086d370@@@FableVector_0086d370@@QBEIXZ ?_Destroy@FableVector_0086d370@@YIXPAU?$pair@VCCharString@@H@1@0ABU__false_type@1@@Z ?_M_insert_overflow@?$
+NEWDEF 00965e80 ??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z
+NEWDEF 009cad20 ??0?$pair@HVCCharString@@@FableVector_009cad20@@QAE@ABU01@@Z ??1?$pair@HVCCharString@@@FableVector_009cad20@@QAE@XZ ??_G?$pair@HVCCharString@@@FableVector_009cad20@@QAEPAXI@Z ??_GCCharString@@QAEPAXI@Z ?Size@?$vector@U?$pair@HVCCharString@@@FableVector_009cad20@@@FableVector_009cad20@@QBEIXZ ?_Destroy@FableVector_009cad20@@YIXPAU?$pair@HVCCharString@@@1@0ABU__false_type@1@@Z ?_M_insert_overflow@?$
+NEWDEF 009d8460 ??_GCCharString@@QAEPAXI@Z
+NEWDEF 009f03b0 ??_GCCharString@@QAEPAXI@Z ?RemoveSection@CCodeSectionManager@CodeSections@@QAEXVCCharString@@@Z
+NEWDEF 00b67ec0 ??0__true_type@std@@QAE@XZ ??A?$vector@MV?$allocator@M@std@@@std@@QAEAAMI@Z ?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z ?begin@?$vector@EV?$allocator@E@std@@@std@@QAEPAEXZ ?begin@?$vector@MV?$allocator@M@std@@@std@@QAEPAMXZ ?end@?$vector@EV?$allocator@E@std@@@std@@QAEPAEXZ ?end@?$vector@MV?$allocator@M@std@@@std@@QAEPAMXZ ?erase@?$vector@EV?$allocator@E
+NEWDEF 00c09920 ??0CString@@QAE@PAD@Z
+NEWDEF 00c0a250 ??0CString@@QAE@PAD@Z
+NEWDEF 00c0a300 ??0CString@@QAE@PAD@Z
+NEWDEF 00c12720 ?TraceOutput@@YAXABVCString@@@Z
+NEWDEF 00c127c0 ?TraceOutput@@YAXABVCString@@0@Z
+NEWDEF 00c15740 ??0CString@@QAE@PAD@Z
+NEWDEF 00c157f0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c169d0 ??0CString@@QAE@XZ
+NEWDEF 00c16b10 ??0CString@@QAE@XZ
+NEWDEF 00c16ce0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c16d90 ??0CString@@QAE@PAD@Z
+NEWDEF 00c17400 ??0CString@@QAE@PAD@Z
+NEWDEF 00c17740 ??0CString@@QAE@PAD@Z
+NEWDEF 00c17940 ??0CString@@QAE@PAD@Z
+NEWDEF 00c17be0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c17e60 ??0CString@@QAE@PAD@Z
+NEWDEF 00c17f30 ??0CString@@QAE@PAD@Z
+NEWDEF 00c18000 ??0CString@@QAE@PAD@Z
+NEWDEF 00c180d0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c18270 ??0CString@@QAE@PAD@Z
+NEWDEF 00c18340 ??0CString@@QAE@PAD@Z
+NEWDEF 00c18410 ??0CString@@QAE@PAD@Z
+NEWDEF 00c185b0 ??0CString@@QAE@XZ
+NEWDEF 00c187a0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c18870 ??0CString@@QAE@PAD@Z
+NEWDEF 00c191b0 ??0CString@@QAE@PAX@Z
+NEWDEF 00c19250 ??0CString@@QAE@XZ
+NEWDEF 00c194f0 ??0CString@@QAE@XZ
+NEWDEF 00c19fa0 ??0CString@@QAE@PAX@Z
+NEWDEF 00c1a370 ??0CString@@QAE@PAD@Z
+NEWDEF 00c1db60 ??0CString@@QAE@XZ
+NEWDEF 00c1de50 ??0CString@@QAE@PAD@Z
+NEWDEF 00c23370 ??0CString@@QAE@PAD@Z
+NEWDEF 00c23420 ??0CString@@QAE@PAD@Z
+NEWDEF 00c239b0 ??0CString@@QAE@XZ
+NEWDEF 00c23c10 ??0CString@@QAE@XZ
+NEWDEF 00c23e00 ??0CString@@QAE@XZ
+NEWDEF 00c24050 ??0CString@@QAE@XZ
+NEWDEF 00c27760 ??0CString@@QAE@XZ ?LogStatus@CPlayback_00c27760@@QAE?AVCString@@XZ
+NEWDEF 00c29fc0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c2a090 ??0CString@@QAE@PAD@Z
+NEWDEF 00c2a150 ??0CString@@QAE@PAD@Z
+NEWDEF 00c2ce60 ??0CString@@QAE@PAD@Z
+NEWDEF 00c2cf10 ??0CString@@QAE@PAD@Z
+NEWDEF 00c2ebc0 ??0CString@@QAE@XZ
+NEWDEF 00c312c0 ??0CString@@QAE@XZ
+NEWDEF 00c31560 ??0CString@@QAE@XZ
+NEWDEF 00c31710 ??0CString@@QAE@XZ
+NEWDEF 00c31810 ??0CString@@QAE@XZ
+NEWDEF 00c31a70 ??0CString@@QAE@XZ
+NEWDEF 00c31db0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c322e0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c324f0 ??0CString@@QAE@XZ
+NEWDEF 00c325f0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c326d0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c327b0 ??0CString@@QAE@XZ
+NEWDEF 00c328b0 ??0CString@@QAE@PAX@Z
+NEWDEF 00c32bf0 ??0CString@@QAE@XZ
+NEWDEF 00c35510 ??0CString@@QAE@PAX@Z
+NEWDEF 00c36290 ??_GCAmbientEmitter@@QAEPAXI@Z ?DetachAllocation@CResourceWorld@@QAEPAVCAmbientEmitter@@PAX@Z
+NEWDEF 00c37560 ??0CString@@QAE@PAD@Z
+NEWDEF 00c37610 ??0CString@@QAE@PAD@Z
+NEWDEF 00c388a0 ??0CString@@QAE@XZ
+NEWDEF 00c392f0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c394b0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c39670 ??0CString@@QAE@PAD@Z
+NEWDEF 00c39830 ??0CString@@QAE@PAD@Z
+NEWDEF 00c399f0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c3a330 ??0CString@@QAE@PAD@Z
+NEWDEF 00c3a420 ??0CString@@QAE@PAD@Z
+NEWDEF 00c44f80 ??1CAmbientEmitter@@QAE@XZ
+NEWDEF 00c454e0 ??0CString@@QAE@PAD@Z
+NEWDEF 00c45590 ??0CString@@QAE@PAD@Z
+NEWDEF 00c47b90 ??0CString@@QAE@PAD@Z
+NEWDEF 00c47c40 ??0CString@@QAE@PAD@Z
+NEWDEF 00c48640 ??0CString@@QAE@XZ
+NEWDEF 00c48860 ??0CString@@QAE@XZ
+NEWDEF 00c48e00 ??0CString@@QAE@PAD@Z
+NEWDEF 00c49010 ??0CString@@QAE@PAD@Z
+NEWDEF 00c49650 ??0CString@@QAE@XZ
+NEWDEF 00c49ff0 ??0CString@@QAE@XZ
+NEWDEF 00c4aa40 ??0CString@@QAE@XZ
+NEWDEF 00c4ab90 ??0CString@@QAE@PAD@Z
+NEWDEF 00c4b060 ??0CString@@QAE@PAD@Z
+NEWDEF 00c4bc80 ??0CString@@QAE@XZ
+NEWDEF 00c4c1d0 ??0CString@@QAE@XZ
+NEWDEF 00c4c370 ??0CString@@QAE@PAX@Z
+NEWDEF 00c4c6c0 ??0CString@@QAE@XZ
+NEWDEF 00c4c7a0 ??0CString@@QAE@XZ
+NEWDEF 00c4c8b0 ??0CString@@QAE@XZ
+NEWDEF 00c4cc90 ??0CString@@QAE@XZ
+NEWDEF 00c4cd80 ??0CString@@QAE@XZ
+NEWDEF 00c62a50 ??0CString@@QAE@PAD@Z
+NEWDEF 00c62c70 ??0CString@@QAE@XZ
+NEWDEF 00c62e60 ??0CString@@QAE@PAD@Z
+NEWDEF 00c73d90 ??0CString@@QAE@PAD@Z
+NEWDEF 00d34470 ??0CQ_FireHeartScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CScriptObject@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+NEWDEF 00e80d60 ?Run@Script@Row00e80d60@@QAEXVCCharString@@@Z

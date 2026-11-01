@@ -1,0 +1,11 @@
+cstr fam_cstr22.py {'edited': 116, 'skip': 0, 'already': 0} 
+vec h22_vec.py ok 6 already 0 other 0 
+emit h22_emit.py ok 16 already 0 other 0 
+c689 h22_c689.py ok 5 already 0 other 0 
+hastc h22_hastc.py ok 14 already 0 other 0 
+ccs fam_ccs22.py {'edited': 40, 'skip': 0, 'already': 0} 
+ccsns fam_ccsns22.py {'edited': 16, 'skip': 14, 'already': 0} 
+c690 h22_c690.py ok 1 already 0 other 0 
+ws fam_ws22.py {'edited': 3, 'skip': 0, 'already': 0} 
+wsns fam_wsns22.py {'edited': 2, 'skip': 5, 'already': 0} 
+{'cstr': 116, 'vec': 1, 'emit': 3, 'c689': 1, 'hastc': 7, 'ccs': 40, 'ccsns': 16, 'c690': 1, 'ws': 3, 'wsns': 2}

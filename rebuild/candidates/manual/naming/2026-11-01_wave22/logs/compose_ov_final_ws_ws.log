@@ -1,0 +1,3 @@
+edited 00bc7ab0 CListMember_0099b510 -> CWideString + ['??1CWideString@@QAE@XZ'] - ['??1CListMember_0099b510@@QAE@XZ']
+edited 0056c820 StrB -> CWideString + ['??1CWideString@@QAE@XZ'] - ['??1StrB@@QAE@XZ']
+edited 004b8110 StrRefA -> CWideString + ['??1CWideString@@QAE@XZ'] - ['??1StrRefA@@QAE@XZ']
