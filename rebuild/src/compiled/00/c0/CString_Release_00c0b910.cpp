@@ -1,5 +1,7 @@
 // CString::Release() -- MFC-style CString::Release: unless the string uses the shared empty block, assert the block is referenced, drop one reference (freeing the block on the last) and point the string at the shared empty text
 // Leaf: ?Release@CString@@QAEXXZ
+// Naming wave 26: the nil header pointer 0x0139C8FC is _NullString (retail assert text "stringSrc.GetData() != _NullString";
+//   DECISIONS_W25_RESOLVED D1); was _afxDataNil.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0B910, 213 bytes (`ret`). Label correction: the manifest's
 //   "CCharString_ReleaseRefcount" is propagated; the body is MFC's CString::Release() of the 0x00C0xxxx library
 //   (assert texts "m_pchData != NULL\n" 0x012B1EC0 and "GetData()->nRefs != 0\n" 0x012B1ED4 are MFC's own); the
@@ -7,7 +9,7 @@
 // Callees: the assertion hook through the global pointer @ 0x0143BB2C (__fastcall, message in ecx),
 //   CDebugBreak::CDebugBreak @ 0x00C16750, InterlockedDecrement (IAT 0x0143FD38), CString::FreeData @ 0x00C0B900
 //   (__fastcall, the header in ecx: `operator delete[]`).
-// Globals: _afxDataNil (the shared empty header) @ 0x0139C8FC, _afxPchNil (its text) @ 0x0139C900.
+// Globals: _NullString (the shared empty header) @ 0x0139C8FC, _afxPchNil (its text) @ 0x0139C900.
 // Shape: five inlined GetData() calls, each with ASSERT(m_pchData != NULL); every empty CDebugBreak temporary lands
 //   on the dead high byte of the `push ecx` frame word (`lea ecx,[esp+7]`); Init() is the final store.
 #include <stddef.h>
@@ -29,7 +31,7 @@ struct CStringData {                            // the 12-byte header in front o
     long nDataLength;
     long nAllocLength;
 };
-extern CStringData* _afxDataNil;                // 0x0139C8FC
+extern CStringData* _NullString;                // 0x0139C8FC
 extern char* _afxPchNil;                        // 0x0139C900
 
 class CString {
@@ -47,7 +49,7 @@ public:
 
 void CString::Release()
 {
-    if (GetData() != _afxDataNil) {
+    if (GetData() != _NullString) {
         LIB_ASSERT(GetData()->nRefs != 0)
         if (InterlockedDecrement(&GetData()->nRefs) <= 0)
             FreeData(GetData());

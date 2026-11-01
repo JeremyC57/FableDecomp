@@ -1,11 +1,13 @@
 // CString::Release(CStringData* pData) -- MFC-style static CString::Release (PASCAL): unless pData is the shared empty block, assert it is referenced and drop one reference, freeing the block on the last
 // Leaf: ?Release@CString@@SGXPAUCStringData@@@Z
+// Naming wave 26: the nil header pointer 0x0139C8FC is _NullString (retail assert text "stringSrc.GetData() != _NullString";
+//   DECISIONS_W25_RESOLVED D1); was _afxDataNil.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0B9F0, 63 bytes (`ret 4`, __stdcall). Label correction: the manifest's
 //   "CCharStringData_ReleaseWithRefcount" is propagated; the body is MFC's `void PASCAL CString::Release(CStringData*)`
 //   ("pData->nRefs != 0\n" @ 0x012B1EEC); the landed GetBuffer 0x00C0C4B0 calls it as CString::Release(pOldData).
 // Callees: the assertion hook through the global pointer @ 0x0143BB2C, CDebugBreak::CDebugBreak @ 0x00C16750,
 //   InterlockedDecrement (IAT 0x0143FD38), CString::FreeData @ 0x00C0B900 (__fastcall, the header in ecx).
-// Globals: _afxDataNil @ 0x0139C8FC (loaded before the frame push).
+// Globals: _NullString @ 0x0139C8FC (loaded before the frame push).
 // Shape: pData lives in esi, so the empty CDebugBreak temporary is homed in its dead argument slot (`lea ecx,[esp+8]`).
 #include <stddef.h>
 
@@ -26,7 +28,7 @@ struct CStringData {                            // the 12-byte header in front o
     long nDataLength;
     long nAllocLength;
 };
-extern CStringData* _afxDataNil;                // 0x0139C8FC
+extern CStringData* _NullString;                // 0x0139C8FC
 
 class CString {
 public:
@@ -37,7 +39,7 @@ public:
 
 void __stdcall CString::Release(CStringData* pData)
 {
-    if (pData != _afxDataNil) {
+    if (pData != _NullString) {
         LIB_ASSERT(pData->nRefs != 0)
         if (InterlockedDecrement(&pData->nRefs) <= 0)
             FreeData(pData);
