@@ -1,31 +1,31 @@
 // behaviour test for 0x00C61F60 CPKVoiceHandle::UpdateScaledParameter: value * scale (unless unscaled) sent for a live handle
 #include <cstdio>
 #include <cmath>
-struct CPKVoiceTable {
+struct CSoundEventManager {
     int m_calls; int m_handle; float m_value;
     void SetValue(int handle, float value) { ++m_calls; m_handle = handle; m_value = value; }
 };
 struct CPKScaleSource { float m_scale; float GetScale() { return m_scale; } };
 struct CPKEmitterOwner { CPKScaleSource m_scale; };
 struct CAmbientEmitter {
-    CPKEmitterOwner* m_pOwner; float m_value; CPKVoiceTable* m_pTable;
+    CPKEmitterOwner* m_pOwner; float m_value; CSoundEventManager* m_pTable;
     float GetVolume() { return m_value; }
 };
 struct CPKVoiceHandle {
     bool m_bUnscaled; int m_handle;
-    CPKVoiceTable* GetTable(CAmbientEmitter* e) { return e->m_pTable; }
+    CSoundEventManager* GetEventManager(CAmbientEmitter* e) { return e->m_pTable; }
     void UpdateScaledParameter(CAmbientEmitter* emitter)
     {
         if (m_handle >= 0) {
             float value = emitter->GetVolume();
             if (!m_bUnscaled) value *= emitter->m_pOwner->m_scale.GetScale();
-            GetTable(emitter)->SetValue(m_handle, value);
+            GetEventManager(emitter)->SetValue(m_handle, value);
         }
     }
 };
 int main()
 {
-    CPKVoiceTable table = { 0, 0, 0.0f };
+    CSoundEventManager table = { 0, 0, 0.0f };
     CPKEmitterOwner owner = { { 0.5f } };
     CAmbientEmitter e = { &owner, 0.8f, &table };
     CPKVoiceHandle h = { false, -1 };

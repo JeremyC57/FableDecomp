@@ -1,15 +1,16 @@
-// CPKVoiceHandle::Release(CPKEmitter* emitter) -- when the voice handle at +0xc is live (not negative), release it through the voice table (GetTable 0x00C61CF0, virtual slot 22) and mark the handle invalid (-1)
-// Leaf: ?Release@CPKVoiceHandle@@QAEXPAVCPKEmitter@@@Z
+// CPKVoiceHandle::Release(CAmbientEmitter* emitter) -- when the voice handle at +0xc is live (not negative), release it through the voice table (GetEventManager 0x00C61CF0, virtual slot 22) and mark the handle invalid (-1)
+// Leaf: ?Release@CPKVoiceHandle@@QAEXPAVCAmbientEmitter@@@Z
+// Naming (naming wave 21): the "voice table" (context+4 -> device+0x38) is CSoundSystem+0x38, the landed CSoundEventManager (ctor 0x00C11D00, vtable 0x012B2748; Play 0x00C13140): CPKVoiceTable / GetTable -> CSoundEventManager / GetEventManager (one class, one name).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C61FB0, 41 bytes, thiscall `ret 4`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 442, 0xC61CF0 item): agent442 identifies `this` as the voice handle of
 //   CPKVoiceHandle::UpdateScaledParameter 0x00C61F60 (handle +0xc, -1 = none) and the callee 0x00C61CF0 as its thiscall
-//   GetTable(emitter) (bound ?GetTable@CPKVoiceHandle@@... from 0x00C61F60). The landed model declared the getter as a
+//   GetEventManager(emitter) (bound ?GetEventManager@CPKVoiceHandle@@... from 0x00C61F60). The landed model declared the getter as a
 //   `__stdcall` free function taking a `long` "context": the bytes are the same (ecx still holds `this` from entry, so no
 //   `mov ecx` is needed), but the declaration was wrong. The CHandleOwner_00c61fb0 / "CItem::GetItemThings" names are
 //   propagated; descriptive names (libpk: no PDB/RTTI).
-// Shape: the handle is read once into edi (`test edi,edi ; jl`), then `push emitter ; call GetTable ; push handle ;
+// Shape: the handle is read once into edi (`test edi,edi ; jl`), then `push emitter ; call GetEventManager ; push handle ;
 //   call [edx+58h]`.
-class CPKVoiceTable {                               // the voice table reached from the emitter
+struct CSoundEventManager {                               // the voice table reached from the emitter
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -21,22 +22,22 @@ public:
     virtual void SetValue(long handle, float value);   // slot 25 (+0x64)
 };
 
-class CPKEmitter;
+class CAmbientEmitter;
 
 class CPKVoiceHandle {
 public:
     unsigned char _pad000[8];
     bool          m_bUnscaled;                         // +8
     long          m_handle;                            // +0xc (-1 = none)
-    CPKVoiceTable* GetTable(CPKEmitter* emitter);      // 0x00C61CF0
-    void Release(CPKEmitter* emitter);
+    CSoundEventManager* GetEventManager(CAmbientEmitter* emitter);      // 0x00C61CF0
+    void Release(CAmbientEmitter* emitter);
 };
 
-void CPKVoiceHandle::Release(CPKEmitter* emitter)
+void CPKVoiceHandle::Release(CAmbientEmitter* emitter)
 {
     long handle = m_handle;
     if (handle >= 0) {
-        GetTable(emitter)->Release(handle);
+        GetEventManager(emitter)->Release(handle);
         m_handle = -1;
     }
 }

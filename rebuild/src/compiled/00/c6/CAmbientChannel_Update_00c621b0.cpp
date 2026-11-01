@@ -1,5 +1,6 @@
 // CAmbientChannel::Update(CAmbientSource* source) -- keep one ambient channel's looping voice in step with its source: when the source is silent release the voice; when no voice plays start one (the 0x50-byte play-parameter block with the source's volume and owner id, priority 1, registered on the source's layer, placed at the owner's position) and keep its handle; otherwise move the playing voice to the owner's position and set its volume
 // Leaf: ?Update@CAmbientChannel@@QAEXPAVCAmbientSource@@@Z
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): the play-parameter record is CPKVoiceParams (ctor 0x00C10A30; setters SetMinDistance 0x00C20480 / SetMaxDistance 0x00C204A0 / SetScale 0x00C20420, descriptive) and the table Play 0x00C13140 is called on is the landed CSoundEventManager (CSoundSystem+0x38, vtable 0x012B2748).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C621B0, 363 bytes, thiscall `ret 4`, frameless (0x5c-byte frame).
 // Identity (descriptive; libpk ambient sound, no PDB / RTTI): `this` is the 8-byte CAmbientChannel of the landed ctor
 //   0x00C62120 ({sound id +0, handle +4 = -1}); the argument is the CAmbientSource (GetVolume 0x00C46F40, owner +0 with
@@ -11,9 +12,9 @@
 //   0x00C471C0 binds it); 0x00C62150 CAmbientChannel::GetHandleTable(CAmbientSource*) (the source's sound system: retail
 //   passes this in ecx, so it is a thiscall member that ignores this, as CAmbientTrigger::GetHandleTable 0x00C62440 --
 //   the landed `__stdcall GetHandleTable_00c62150(long)` / CTools::GetWorld spellings are wrong, NAME_FIXES.tsv); member
-//   ctors 0x00C203A0 / 0x00C20390 and setters Set9_00c20420 (float) / SetFilter_00c20440 (long) of the landed
-//   CSoundPlayParams_00c37840 model; CRegistryLayer_00c383d0::Add 0x00C383D0 (item, false, true);
-//   CSoundSystem_00c37840::Play_00c13140 0x00C13140; the sound system's virtual slots 27 (+0x6C, position) and 25
+//   ctors 0x00C203A0 / 0x00C20390 and setters SetScale (float) / SetFilter_00c20440 (long) of the landed
+//   CPKVoiceParams model; CRegistryLayer_00c383d0::Add 0x00C383D0 (item, false, true);
+//   CSoundEventManager::Play 0x00C13140; the sound system's virtual slots 27 (+0x6C, position) and 25
 //   (+0x64, volume).
 // Shape: the volume is fetched once (homed in the dead argument slot); `if (volume <= 0.0f)` gives `test ah,41h ; jp`
 //   over the release; the moved-voice position is a zeroed C3DVector local filled member by member from the owner
@@ -38,7 +39,7 @@ struct SEventRecord {
     unsigned char m_flag;
     SEventRecord();                                     // 0x00C20390
 };
-struct CSoundPlayParams_00c37840 {
+struct CPKVoiceParams {
     CMessageListOwner_00c203a0 m_filter;
     unsigned char _unset00c[0x10];
     long  m_loopCount;
@@ -51,14 +52,14 @@ struct CSoundPlayParams_00c37840 {
     short m_group;
     long  m_owner;
     long  m_user;
-    CSoundPlayParams_00c37840()
+    CPKVoiceParams()
         : m_loopCount(0), m_delay(0), m_volume(1.0f), m_pitch(1.0f), m_priority(0),
           m_flags(0), m_group(0), m_owner(0), m_user(0) {}
-    void Set9_00c20420(float value);                    // 0x00C20420
+    void SetScale(float value);                    // 0x00C20420
     void SetFilter_00c20440(long value);                // 0x00C20440
 };
-struct CSoundSystem_00c37840 {
-    long Play_00c13140(long soundID, long flags, const CSoundPlayParams_00c37840* params);   // 0x00C13140
+struct CSoundEventManager {
+    long Play(long soundID, long flags, const CPKVoiceParams* params);   // 0x00C13140
 };
 class CHandleTable { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -109,16 +110,16 @@ void CAmbientChannel::Update(CAmbientSource* source)
     }
     long handle = m_handle;
     if (handle < 0) {
-        CSoundPlayParams_00c37840 params;
+        CPKVoiceParams params;
         params.m_volume = volume;
         params.m_loopCount = source->m_pOwner->m_id;
         params.m_priority = 1;
-        params.Set9_00c20420(1.0f);
+        params.SetScale(1.0f);
         params.SetFilter_00c20440(-1);
         source->m_pLayer->Add((CRegisteredItem*)&params, false, true);
         params.m_links.m_position = source->m_pOwner->m_position;
         params.m_links.m_flag = 0;
-        m_handle = ((CSoundSystem_00c37840*)GetHandleTable(source))->Play_00c13140(m_soundId, 0, &params);
+        m_handle = ((CSoundEventManager*)GetHandleTable(source))->Play(m_soundId, 0, &params);
     } else {
         C3DVector position(0.0f, 0.0f, 0.0f);
         position.X = source->m_pOwner->m_position.X;

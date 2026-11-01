@@ -1,12 +1,12 @@
 #include <cstdio>
 
 // Behaviour model of CPooledResource::SetStateValues (0x00C26680): two flagged sets on the +0x24 block.
-struct State {
+struct CPKVoiceParams {
     unsigned int flags; unsigned int v2, v3;
     void Set2(unsigned int v) { v2 = v; flags |= 4; }
     void Set3(unsigned int v) { v3 = v; flags |= 8; }
 };
-struct Resource { State m_state24; void SetStateValues(int, unsigned int a, unsigned int b) { m_state24.Set2(a); m_state24.Set3(b); } };
+struct Resource { CPKVoiceParams m_state24; void SetStateValues(int, unsigned int a, unsigned int b) { m_state24.Set2(a); m_state24.Set3(b); } };
 
 int main()
 {

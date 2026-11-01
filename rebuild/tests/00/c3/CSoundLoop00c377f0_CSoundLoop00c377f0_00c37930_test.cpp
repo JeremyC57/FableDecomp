@@ -23,14 +23,14 @@ struct CSoundLoop {
     long m_soundID;
     float m_volume;
     long m_refCount;
-    CSoundSystem* GetSoundSystem() { return &g_system; }
+    CSoundSystem* GetEventManager() { return &g_system; }
     void DropFinishedVoice() { if (m_voice == g_finishedAt) m_voice = -1; }
     ~CSoundLoop()
     {
         DropFinishedVoice();
         long voice = m_voice;
         if (voice != -1) {
-            GetSoundSystem()->StopVoice(voice);
+            GetEventManager()->StopVoice(voice);
             m_voice = -1;
         }
         m_pOwner->m_loops.Remove(this);

@@ -15,13 +15,13 @@ struct CSoundLoop {
     long m_soundID;
     float m_volume;
     long m_refCount;
-    CSoundSystem* GetSoundSystem() { return &g_system; }
+    CSoundSystem* GetEventManager() { return &g_system; }
     void DropFinishedVoice()
     {
         long voice = m_voice;
         if (voice != -1) {
             long status;
-            float position = GetSoundSystem()->GetVoicePosition(voice, &status);
+            float position = GetEventManager()->GetVoicePosition(voice, &status);
             if (status == 0 && position >= 1.0f)
                 m_voice = -1;
         }

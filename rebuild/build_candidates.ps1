@@ -40212,8 +40212,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c61cf0'
         Module = 'CPKVoiceHandle'
-        Source = '00/c6/CPKVoiceHandle_GetTable_00c61cf0.cpp'
-        TestSource = '00/c6/CPKVoiceHandle_GetTable_00c61cf0_test.cpp'
+        Source = '00/c6/CPKVoiceHandle_GetEventManager_00c61cf0.cpp'
+        TestSource = '00/c6/CPKVoiceHandle_GetEventManager_00c61cf0_test.cpp'
         PassPattern = '00c61cf0_TEST PASS'
     }
     [pscustomobject]@{
@@ -43507,16 +43507,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c20480'
-        Module = 'CBrainOutput'
-        Source = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20480.cpp'
-        TestSource = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20480_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_SetMinDistance_00c20480.cpp'
+        TestSource = '00/c2/CPKVoiceParams_SetMinDistance_00c20480_test.cpp'
         PassPattern = '00c20480_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c204a0'
-        Module = 'CBrainOutput'
-        Source = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c204a0.cpp'
-        TestSource = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c204a0_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_SetMaxDistance_00c204a0.cpp'
+        TestSource = '00/c2/CPKVoiceParams_SetMaxDistance_00c204a0_test.cpp'
         PassPattern = '00c204a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -47464,9 +47464,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c20420'
-        Module = 'CBrainOutput'
-        Source = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20420.cpp'
-        TestSource = '00/c2/CBrainOutput_SetAsPumpCombatActions_00c20420_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_SetScale_00c20420.cpp'
+        TestSource = '00/c2/CPKVoiceParams_SetScale_00c20420_test.cpp'
         PassPattern = 'PUMP_COMBAT_OK'
     }
     [pscustomobject]@{
@@ -188571,9 +188571,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c13140'
-        Module = '_unattributed'
-        Source = '00/c1/unattributed_GetBlockParryReward00c13140_00c13140.cpp'
-        TestSource = '00/c1/unattributed_GetBlockParryReward00c13140_00c13140_test.cpp'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_Play_00c13140.cpp'
+        TestSource = '00/c1/CSoundEventManager_Play_00c13140_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c13140_TEST PASS'
     }
@@ -209458,9 +209458,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c10a30'
-        Module = 'SNavigationRequest'
-        Source = '00/c1/SNavigationRequest_SNavigationRequest_00c10a30.cpp'
-        TestSource = '00/c1/SNavigationRequest_SNavigationRequest_00c10a30_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c1/CPKVoiceParams_CPKVoiceParams_00c10a30.cpp'
+        TestSource = '00/c1/CPKVoiceParams_CPKVoiceParams_00c10a30_test.cpp'
         PassPattern = '00c10a30_TEST PASS'
     }
     [pscustomobject]@{
@@ -274572,9 +274572,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c27c10'
-        Module = 'SerializedState_00c27c10'
-        Source = '00/c2/SerializedState00c27c10_Load_00c27c10.cpp'
-        TestSource = '00/c2/SerializedState00c27c10_Load_00c27c10_test.cpp'
+        Module = 'CPKVoiceParams'
+        Source = '00/c2/CPKVoiceParams_Load_00c27c10.cpp'
+        TestSource = '00/c2/CPKVoiceParams_Load_00c27c10_test.cpp'
         PassPattern = '00c27c10_TEST PASS'
     }
     [pscustomobject]@{
@@ -306209,9 +306209,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c37930'
-        Module = 'CSoundLoop_00c37930'
-        Source = '00/c3/CSoundLoop00c37930_CSoundLoop00c37930_00c37930.cpp'
-        TestSource = '00/c3/CSoundLoop00c37930_CSoundLoop00c37930_00c37930_test.cpp'
+        Module = 'CSoundLoop_00c377f0'
+        Source = '00/c3/CSoundLoop00c377f0_CSoundLoop00c377f0_00c37930.cpp'
+        TestSource = '00/c3/CSoundLoop00c377f0_CSoundLoop00c377f0_00c37930_test.cpp'
         PassPattern = '00c37930_TEST PASS'
     }
     [pscustomobject]@{
@@ -349148,8 +349148,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c377e0'
         Module = 'CSoundLoop_00c377f0'
-        Source = '00/c3/CSoundLoop00c377f0_GetSoundSystem_00c377e0.cpp'
-        TestSource = '00/c3/CSoundLoop00c377f0_GetSoundSystem_00c377e0_test.cpp'
+        Source = '00/c3/CSoundLoop00c377f0_GetEventManager_00c377e0.cpp'
+        TestSource = '00/c3/CSoundLoop00c377f0_GetEventManager_00c377e0_test.cpp'
         PassPattern = '00c377e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -358222,9 +358222,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44d30'
-        Module = 'CPKEmitter'
-        Source = '00/c4/CPKEmitter_ClearEvents_00c44d30.cpp'
-        TestSource = '00/c4/CPKEmitter_ClearEvents_00c44d30_test.cpp'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_ClearEvents_00c44d30.cpp'
+        TestSource = '00/c4/CAmbientEmitter_ClearEvents_00c44d30_test.cpp'
         PassPattern = '00c44d30_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,5 +1,6 @@
-// CSoundLoop_00c37840::Update() -- per-frame upkeep of a looping sound: drop a finished voice, stop the voice when the volume is zero, start it (with default play parameters and the current volume) when silent, else push the new volume to the playing voice
-// Leaf: Update@CSoundLoop_00c37840
+// CSoundLoop_00c377f0::Update() -- per-frame upkeep of a looping sound: drop a finished voice, stop the voice when the volume is zero, start it (with default play parameters and the current volume) when silent, else push the new volume to the playing voice
+// Leaf: Update@CSoundLoop_00c377f0
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): the play-parameter record is CPKVoiceParams (ctor 0x00C10A30; setters SetMinDistance 0x00C20480 / SetMaxDistance 0x00C204A0 / SetScale 0x00C20420, descriptive) and the table Play 0x00C13140 is called on is the landed CSoundEventManager (CSoundSystem+0x38, vtable 0x012B2748).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C37840, length 232 bytes, plain `ret`.
 // Identity: library code in the 0x00C3xxxx module; the catalog label "CPlayer::CPlayer::OnModeActivityUpdate" is
 // propagated (no CPlayer here: `this` is a 16-byte {owner, voice handle, sound id, volume} record). Single caller
@@ -33,7 +34,7 @@ struct CNavigationLayer {                               // 16 bytes
     CNavigationLayer();                                 // 0x00C20390
 };
 
-struct CSoundPlayParams_00c37840 {                      // 0x50 bytes
+struct CPKVoiceParams {                      // 0x50 bytes
     CMessageListOwner_00c203a0 m_filter;                // +0x00
     unsigned char _unset00c[0x10];                      // +0x0c .. +0x1c (left unset here)
     long  m_loopCount;                                  // +0x1c
@@ -46,13 +47,13 @@ struct CSoundPlayParams_00c37840 {                      // 0x50 bytes
     short m_group;                                      // +0x44
     long  m_owner;                                      // +0x48
     long  m_user;                                       // +0x4c
-    CSoundPlayParams_00c37840()
+    CPKVoiceParams()
         : m_loopCount(0), m_delay(0), m_volume(1.0f), m_pitch(1.0f), m_priority(0),
           m_flags(0), m_group(0), m_owner(0), m_user(0) {}
     void SetFilter_00c20440(long filter);               // 0x00C20440 (thiscall: ecx + one stack argument)
 };
 
-struct CSoundSystem_00c37840 {
+struct CSoundEventManager {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -61,38 +62,38 @@ struct CSoundSystem_00c37840 {
     virtual void StopVoice(long handle);                // slot 22 (+0x58)
     virtual void v23(); virtual void v24();
     virtual void SetVoiceVolume(long handle, float volume);         // slot 25 (+0x64)
-    long Play_00c13140(long soundID, long flags, const CSoundPlayParams_00c37840* params);   // 0x00C13140
+    long Play(long soundID, long flags, const CPKVoiceParams* params);   // 0x00C13140
 };
 
-struct CSoundLoop_00c37840 {
+struct CSoundLoop_00c377f0 {
     void* m_pOwner;                                     // +0x00
     long  m_voice;                                      // +0x04 (-1: not playing)
     long  m_soundID;                                    // +0x08
     float m_volume;                                     // +0x0c
-    void DropFinishedVoice_00c377f0();                  // 0x00C377F0
-    CSoundSystem_00c37840* GetSoundSystem_00c377e0();   // 0x00C377E0
+    void DropFinishedVoice();                  // 0x00C377F0
+    CSoundEventManager* GetEventManager();   // 0x00C377E0
     void Update();
 };
 
-void CSoundLoop_00c37840::Update()
+void CSoundLoop_00c377f0::Update()
 {
-    DropFinishedVoice_00c377f0();
+    DropFinishedVoice();
     long voice = m_voice;
     if (m_volume == 0.0f) {
         if (voice != -1) {
-            GetSoundSystem_00c377e0()->StopVoice(voice);
+            GetEventManager()->StopVoice(voice);
             m_voice = -1;
         }
         return;
     }
     if (voice == -1) {
-        CSoundPlayParams_00c37840 params;
+        CPKVoiceParams params;
         params.m_loopCount = -1;
         params.m_priority = 0;
         params.SetFilter_00c20440(-1);
         params.m_volume = m_volume;
-        m_voice = GetSoundSystem_00c377e0()->Play_00c13140(m_soundID, 0, &params);
+        m_voice = GetEventManager()->Play(m_soundID, 0, &params);
     } else {
-        GetSoundSystem_00c377e0()->SetVoiceVolume(voice, m_volume);
+        GetEventManager()->SetVoiceVolume(voice, m_volume);
     }
 }

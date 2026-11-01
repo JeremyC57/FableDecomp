@@ -46,7 +46,7 @@ struct SEventRecord {
     unsigned char m_flag;
     SEventRecord();                                     // 0x00C20390
 };
-struct CSoundPlayParams_00c37840 {
+struct CPKVoiceParams {
     CMessageListOwner_00c203a0 m_filter;
     unsigned char _unset00c[0x10];
     long  m_loopCount;
@@ -59,15 +59,15 @@ struct CSoundPlayParams_00c37840 {
     short m_group;
     long  m_owner;
     long  m_user;
-    CSoundPlayParams_00c37840()
+    CPKVoiceParams()
         : m_loopCount(0), m_delay(0), m_volume(1.0f), m_pitch(1.0f), m_priority(0),
           m_flags(0), m_group(0), m_owner(0), m_user(0) {}
-    void Set2_00c20480(float value);                    // 0x00C20480
-    void Set3_00c204a0(float value);                    // 0x00C204A0
-    void Set9_00c20420(float value);                    // 0x00C20420
+    void SetMinDistance(float value);                    // 0x00C20480
+    void SetMaxDistance(float value);                    // 0x00C204A0
+    void SetScale(float value);                    // 0x00C20420
 };
-struct CSoundSystem_00c37840 {
-    long Play_00c13140(long soundID, long flags, const CSoundPlayParams_00c37840* params);   // 0x00C13140
+struct CSoundEventManager {
+    long Play(long soundID, long flags, const CPKVoiceParams* params);   // 0x00C13140
 };
 struct CRegisteredItem;
 struct CRegistryLayer_00c383d0 {
@@ -111,7 +111,7 @@ void CAmbientTrigger::Play(CAmbientSource* source)
     RemoveHandle(source);
     if (source->GetVolume() <= 0.0f)
         return;
-    CSoundPlayParams_00c37840 params;
+    CPKVoiceParams params;
     m_offset = GetRandomPointInSphere(m_pSound->Range.GetMinimum());
     float distance = m_offset.GetMagnitude();
     params.m_links.m_position = m_offset + source->m_pOwner->m_position;
@@ -119,11 +119,11 @@ void CAmbientTrigger::Play(CAmbientSource* source)
     params.m_volume = source->GetVolume();
     params.m_loopCount = source->m_pOwner->m_id;
     params.m_priority = 1;
-    params.Set2_00c20480(m_pSound->Range.GetMinimum() - distance);
-    params.Set3_00c204a0(m_pSound->Range.GetMaximum() - distance);
-    params.Set9_00c20420(1.0f);
+    params.SetMinDistance(m_pSound->Range.GetMinimum() - distance);
+    params.SetMaxDistance(m_pSound->Range.GetMaximum() - distance);
+    params.SetScale(1.0f);
     source->m_pLayer->Add((CRegisteredItem*)&params, true, true);
-    m_handle = ((CSoundSystem_00c37840*)GetHandleTable(source))->Play_00c13140((long)m_pSound, 0, &params);
+    m_handle = ((CSoundEventManager*)GetHandleTable(source))->Play((long)m_pSound, 0, &params);
 }
 
 // ---- mocks ----
@@ -134,18 +134,18 @@ float CUnprovenPackedParameterRange::GetMaximum() const { return MaximumWord; }
 CMessageListOwner_00c203a0::CMessageListOwner_00c203a0() : m_state(0), m_index(0), m_count(0) { m_messages.head = 0; }
 SEventRecord::SEventRecord() : m_position(-1, -1, -1), m_flag(7) { }
 static float g_set2 = -999, g_set3 = -999, g_set9 = -999;
-void CSoundPlayParams_00c37840::Set2_00c20480(float v) { g_set2 = v; m_filter.m_state |= 4; }
-void CSoundPlayParams_00c37840::Set3_00c204a0(float v) { g_set3 = v; m_filter.m_state |= 8; }
-void CSoundPlayParams_00c37840::Set9_00c20420(float v) { g_set9 = v; }
-static CSoundPlayParams_00c37840 g_played;
+void CPKVoiceParams::SetMinDistance(float v) { g_set2 = v; m_filter.m_state |= 4; }
+void CPKVoiceParams::SetMaxDistance(float v) { g_set3 = v; m_filter.m_state |= 8; }
+void CPKVoiceParams::SetScale(float v) { g_set9 = v; }
+static CPKVoiceParams g_played;
 static long g_playSound = 0, g_playFlags = -1;
-long CSoundSystem_00c37840::Play_00c13140(long soundID, long flags, const CSoundPlayParams_00c37840* params)
+long CSoundEventManager::Play(long soundID, long flags, const CPKVoiceParams* params)
 { g_playSound = soundID; g_playFlags = flags; std::memcpy(&g_played, params, sizeof(g_played)); return 42; }
 static int g_adds = 0;
 CRegisteredItem* CRegistryLayer_00c383d0::Add(CRegisteredItem* item, bool a, bool b) { if (a && b) ++g_adds; return item; }
 static float g_volume = 0.5f;
 float CAmbientSource::GetVolume() { return g_volume; }
-static CSoundSystem_00c37840 g_system;
+static CSoundEventManager g_system;
 CHandleTable* CAmbientTrigger::GetHandleTable(CAmbientSource*) { return (CHandleTable*)&g_system; }
 static int g_removes = 0;
 void CAmbientTrigger::RemoveHandle(CAmbientSource*) { ++g_removes; m_handle = -1; }

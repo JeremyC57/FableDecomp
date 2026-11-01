@@ -1,5 +1,6 @@
 // CSoundLoop_00c377f0::DropFinishedVoice() -- forget a looping sound's voice once it has played out: when a voice is held, ask the sound system for its play position (slot 28, with a status word out); a zero status and a position at or past 1.0 clear the handle to -1
 // Leaf: ?DropFinishedVoice@CSoundLoop_00c377f0@@
+// Naming (naming wave 21): the record is one class, CSoundLoop_00c377f0 (DropFinishedVoice 0x00C377F0, GetEventManager 0x00C377E0, Update 0x00C37840, dtor 0x00C37930), and the object its accessor reaches (owner -> host -> core+4 -> +0x38) is the landed CSoundEventManager (CSoundSystem+0x38), not a second sound-system class.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C377F0, 69 bytes (+ int3 padding), __fastcall, plain `ret`.
 // Library: libpk audio (no PDB/RTTI); descriptive names. `this` is the landed 0x00C37840 CSoundLoop record
 //   {owner +0, voice handle +4 (-1 = none), sound id +8, volume +0xc, reference count +0x10}; Update 0x00C37840 and the
@@ -8,7 +9,7 @@
 //   (+0x70: float position of a voice, status word through the pointer). Float 1.0f @ 0x0122DED8.
 // Shape: the handle is read once into edi; the status word is the `push ecx` frame word; the float result stays on the
 //   x87 stack across the status test (`fstp st(0)` on the non-zero arm), `>= 1.0f` is `fcomp ; test ah,1 ; jne`.
-struct CSoundSystem_00c377f0 {
+struct CSoundEventManager {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -27,7 +28,7 @@ struct CSoundLoop_00c377f0 {
     long  m_soundID;                                    // +0x08
     float m_volume;                                     // +0x0c
     long  m_refCount;                                   // +0x10
-    CSoundSystem_00c377f0* GetSoundSystem();            // 0x00C377E0
+    CSoundEventManager* GetEventManager();            // 0x00C377E0
     void DropFinishedVoice();
 };
 
@@ -36,7 +37,7 @@ void CSoundLoop_00c377f0::DropFinishedVoice()
     long voice = m_voice;
     if (voice != -1) {
         long status;
-        float position = GetSoundSystem()->GetVoicePosition(voice, &status);
+        float position = GetEventManager()->GetVoicePosition(voice, &status);
         if (status == 0 && position >= 1.0f)
             m_voice = -1;
     }

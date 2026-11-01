@@ -1,5 +1,6 @@
 // CPKVoiceHandle::UpdateScaledParameter(CAmbientEmitter* emitter) -- push the emitter's ramped value (times the owner's scale unless unscaled) to the live voice
 // Leaf: ?UpdateScaledParameter@CPKVoiceHandle@@
+// Naming (naming wave 21): the "voice table" (context+4 -> device+0x38) is CSoundSystem+0x38, the landed CSoundEventManager (ctor 0x00C11D00, vtable 0x012B2748; Play 0x00C13140): CPKVoiceTable / GetTable -> CSoundEventManager / GetEventManager (one class, one name).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C61F60, 80 bytes (thiscall, `ret 4`).
 // Callees: the emitter getter 0x00C44A90 (a ramped value 0x00C38510 times the owner's +0x160 float), the owner's +0x4c
 //   ramped parameter 0x00C45940, the voice-table lookup 0x00C61CF0 (a thiscall member: `mov ecx,esi` before it), then
@@ -8,7 +9,7 @@
 //   object as 0x00C61FB0 (handle at +0xc, -1 = none; that row releases it through slot 22). Descriptive names: the
 //   parameter is most likely a gain/volume but nothing in the image names it.
 // Shape: the float lives in the dead `emitter` argument slot; any of `v *= s`, `v = v * s`, `v = s * v` matches.
-class CPKVoiceTable {
+struct CSoundEventManager {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -38,7 +39,7 @@ public:
     unsigned char _pad000[8];
     bool          m_bUnscaled;                         // +8
     long          m_handle;                            // +0xc
-    CPKVoiceTable* GetTable(CAmbientEmitter* emitter);      // 0x00C61CF0
+    CSoundEventManager* GetEventManager(CAmbientEmitter* emitter);      // 0x00C61CF0
     void UpdateScaledParameter(CAmbientEmitter* emitter);
 };
 
@@ -49,6 +50,6 @@ void CPKVoiceHandle::UpdateScaledParameter(CAmbientEmitter* emitter)
         float value = emitter->GetVolume();
         if (!m_bUnscaled)
             value *= emitter->m_pOwner->m_scale.GetScale();
-        GetTable(emitter)->SetValue(m_handle, value);
+        GetEventManager(emitter)->SetValue(m_handle, value);
     }
 }

@@ -1,5 +1,6 @@
 // CAmbientTrigger::Play(CAmbientSource* source) -- (re)start the trigger's ambient sound: drop any playing voice, then if the source is audible pick a random offset inside the sound's minimum-distance sphere, place the voice at the source owner's position plus that offset with the source's volume, set the distance attenuation range (minimum / maximum minus the offset length), register the parameter block on the source's layer and play it, keeping the voice handle
 // Leaf: ?Play@CAmbientTrigger@@QAEXPAVCAmbientSource@@@Z
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): the play-parameter record is CPKVoiceParams (ctor 0x00C10A30; setters SetMinDistance 0x00C20480 / SetMaxDistance 0x00C204A0 / SetScale 0x00C20420, descriptive) and the table Play 0x00C13140 is called on is the landed CSoundEventManager (CSoundSystem+0x38, vtable 0x012B2748).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C62530, 354 bytes, thiscall `ret 4`, frameless (0x5c-byte frame).
 // Identity: libpk ambient sound (no PDB / RTTI: descriptive names). `this` is the 0x18-byte CAmbientTrigger of the landed
 //   CAmbientTrigger::UpdateVolume 0x00C624C0 (sound +0, handle +8, offset vector +0xC) and the argument its CAmbientSource
@@ -12,7 +13,7 @@
 //   parameter block of the landed CSoundLoop_00c37840::Update 0x00C37840 (member ctors CMessageListOwner_00c203a0
 //   0x00C203A0 and SEventRecord 0x00C20390, inline scalar initialisers) and its setters 0x00C20480 / 0x00C204A0 /
 //   0x00C20420 (float arguments: `fstp [esp]`); CRegistryLayer_00c383d0::Add 0x00C383D0 (item, true, true);
-//   CSoundSystem_00c37840::Play_00c13140 0x00C13140 (sound, 0, &params) on the table GetHandleTable returns.
+//   CSoundEventManager::Play 0x00C13140 (sound, 0, &params) on the table GetHandleTable returns.
 // Same-TU helpers (stand-ins, not graded here): the random point in a sphere 0x00C62370 (static, retail's private
 //   convention: the hidden result pointer in esi, the radius on the stack, `ret 4` -- VC7.1 gives a same-TU
 //   `static __declspec(noinline) __stdcall` exactly this, and its body here byte-matches retail) and the random
@@ -20,7 +21,7 @@
 //   stack across the call, as retail does).
 // Shape: the volume test is `if (GetVolume() <= 0.0f) return;` (`test ah,41h ; jnp`); the offset length is a float homed
 //   in the dead argument slot; the table returned by GetHandleTable is the sound system (CHandleTable in UpdateVolume's
-//   spelling, CSoundSystem_00c37840 in Play_00c13140's), hence the cast.
+//   spelling, CSoundEventManager in Play's), hence the cast.
 #include <math.h>
 #pragma intrinsic(sin, cos, acos)
 class C3DVector { public:
@@ -62,7 +63,7 @@ struct SEventRecord {
     unsigned char m_flag;
     SEventRecord();                                     // 0x00C20390
 };
-struct CSoundPlayParams_00c37840 {
+struct CPKVoiceParams {
     CMessageListOwner_00c203a0 m_filter;
     unsigned char _unset00c[0x10];
     long  m_loopCount;
@@ -75,15 +76,15 @@ struct CSoundPlayParams_00c37840 {
     short m_group;
     long  m_owner;
     long  m_user;
-    CSoundPlayParams_00c37840()
+    CPKVoiceParams()
         : m_loopCount(0), m_delay(0), m_volume(1.0f), m_pitch(1.0f), m_priority(0),
           m_flags(0), m_group(0), m_owner(0), m_user(0) {}
-    void Set2_00c20480(float value);                    // 0x00C20480
-    void Set3_00c204a0(float value);                    // 0x00C204A0
-    void Set9_00c20420(float value);                    // 0x00C20420
+    void SetMinDistance(float value);                    // 0x00C20480
+    void SetMaxDistance(float value);                    // 0x00C204A0
+    void SetScale(float value);                    // 0x00C20420
 };
-struct CSoundSystem_00c37840 {
-    long Play_00c13140(long soundID, long flags, const CSoundPlayParams_00c37840* params);   // 0x00C13140
+struct CSoundEventManager {
+    long Play(long soundID, long flags, const CPKVoiceParams* params);   // 0x00C13140
 };
 struct CRegisteredItem;
 struct CRegistryLayer_00c383d0 {
@@ -127,7 +128,7 @@ void CAmbientTrigger::Play(CAmbientSource* source)
     RemoveHandle(source);
     if (source->GetVolume() <= 0.0f)
         return;
-    CSoundPlayParams_00c37840 params;
+    CPKVoiceParams params;
     m_offset = GetRandomPointInSphere(m_pSound->Range.GetMinimum());
     float distance = m_offset.GetMagnitude();
     params.m_links.m_position = m_offset + source->m_pOwner->m_position;
@@ -135,9 +136,9 @@ void CAmbientTrigger::Play(CAmbientSource* source)
     params.m_volume = source->GetVolume();
     params.m_loopCount = source->m_pOwner->m_id;
     params.m_priority = 1;
-    params.Set2_00c20480(m_pSound->Range.GetMinimum() - distance);
-    params.Set3_00c204a0(m_pSound->Range.GetMaximum() - distance);
-    params.Set9_00c20420(1.0f);
+    params.SetMinDistance(m_pSound->Range.GetMinimum() - distance);
+    params.SetMaxDistance(m_pSound->Range.GetMaximum() - distance);
+    params.SetScale(1.0f);
     source->m_pLayer->Add((CRegisteredItem*)&params, true, true);
-    m_handle = ((CSoundSystem_00c37840*)GetHandleTable(source))->Play_00c13140((long)m_pSound, 0, &params);
+    m_handle = ((CSoundEventManager*)GetHandleTable(source))->Play((long)m_pSound, 0, &params);
 }
