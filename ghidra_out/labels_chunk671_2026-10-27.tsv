@@ -1,0 +1,29 @@
+address	name	evidence
+007c8560	CTCHitOnCollision::~CTCHitOnCollision	chunk 671 RELOCATION_MATCH: implicit dtor; sole caller slot-0 ??_G 0x007C8540 of vtable 0x0126E7A4 (RTTI CTCHitOnCollision : CTCBase) (catalog CTCInventoryItem::OnDie wrong)
+00ab7a70	CStaticFontBank::~CStaticFontBank	chunk 671 RELOCATION_MATCH: slot-0 ??_G 0x00AB9990 of vtable 0x0129EAD4 (RTTI CStaticFontBank); uses CSystemManager::GetDisplayManager inline accessor
+00b59be0	CEngineLocalDetailGenerator::~CEngineLocalDetailGenerator	chunk 671 RELOCATION_MATCH: stores vtable 0x012A2588 (RTTI CEngineLocalDetailGenerator : CEngineComponent); sole caller slot-0 ??_G 0x00B5A090 (catalog AddLocalDetailDynamic wrong)
+00b5a0d0	CEngineScreenEffectColourFilter::~CEngineScreenEffectColourFilter	chunk 671 RELOCATION_MATCH: slot-0 ??_G 0x00B5BB00 of vtable 0x012A25CC; tail ~CBaseClass via CRenderTarget's implicit dtor
+00a04160	CInputEvent::GetChecksum	chunk 671 RELOCATION_MATCH: sole caller CInputManager::CalculateInternalChecksum 0x009F5170 summing it over EventStore at a 0x34 stride (catalog _Dest_val<allocator<CMacro>,CMacro> wrong)
+00ed7640	NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript	chunk 671 RELOCATION_MATCH: RTTI-less vtable 0x012F301C stored only by ctor 0x00ED4AA0, whose only caller is Alloc 0x00ED75F0, registered after strings "V_SwordInTheStone"/"S_VSITS" at 0x00CD968A
+00a84f00	CNavSwitchableLeafNode::~CNavSwitchableLeafNode	chunk 671 RELOCATION_MATCH: implicit; sole caller slot-0 ??_G 0x00A84EE0 of vtable 0x0129DE04 (RTTI CNavSwitchableLeafNode : CNavNavigableLeafNode) (catalog OnDie wrong)
+00a9a7c0	C3DAnimFileBoneMaskChunk::~C3DAnimFileBoneMaskChunk	chunk 671 RELOCATION_MATCH: implicit; sole caller slot-0 ??_G 0x00AB0B50 of vtable 0x0129E980 (RTTI C3DAnimFileBoneMaskChunk : CChunkedFileChunk) (catalog OnDie wrong)
+00a895f0	C3DMesh2::~C3DMesh2	chunk 671 RELOCATION_MATCH: slot-0 ??_G 0x00A8D700 of vtable 0x0129DEF0 (RTTI C3DMesh2); GFExplicitDelete<T> in-place array destruction; FreeResource x3 on C3DMeshStats::MemoryPool
+00b4d210	CEngineShadowRenderer::~CEngineShadowRenderer	chunk 671 RELOCATION_MATCH: slot-0 ??_G 0x00B50B80 of vtable 0x012A2374; Ego_r name set
+007c8540	CTCHitOnCollision::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x0126E7A4; calls 0x007C8560
+00a84ee0	CNavSwitchableLeafNode::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x0129DE04; calls 0x00A84F00
+00a76a80	CNavNavigableLeafNode::~CNavNavigableLeafNode	chunk 671: called by slot-0 ??_G 0x00A80340 of vtable 0x0129DDA4 and tail-called by ~CNavSwitchableLeafNode; Ego_r name set
+00a80340	CNavNavigableLeafNode::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x0129DDA4
+00ab0b50	C3DAnimFileBoneMaskChunk::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x0129E980; calls 0x00A9A7C0
+00aa75c0	CChunkedFileChunk::~CChunkedFileChunk	chunk 671: stores vtable 0x0129E474 then jmp ~CBaseClassNonCopyable; tail target of ~C3DAnimFileBoneMaskChunk and ~50 chunk dtors; Ego_r
+00ab9990	CStaticFontBank::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x0129EAD4; calls 0x00AB7A70
+00b5a090	CEngineLocalDetailGenerator::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x012A2588; calls 0x00B59BE0
+00bded60	CLocalDetailCacheMap::~CLocalDetailCacheMap	chunk 671: called with ecx = CEngineMap::LocalDetailCacheMap before operator delete in CEngineLocalDetailGenerator::DeleteMap 0x00B59840 (catalog ~CPatchTesselationEdgeStrip wrong)
+00b5bb00	CEngineScreenEffectColourFilter::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x012A25CC; calls 0x00B5A0D0
+00ed7620	NScript::CV_SwordInTheStoneScript::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x012F301C (catalog CVtable_012f301c wrong)
+00ed4aa0	NScript::CV_SwordInTheStoneScript::CV_SwordInTheStoneScript	chunk 671: stores vtable 0x012F301C; only caller Alloc 0x00ED75F0; Ego_r/FableWin ??0 (CScriptDataBase*, CGameScriptInterfaceBase&)
+00ed75f0	NScript::CV_SwordInTheStoneScript::Alloc	chunk 671: `push 80h; call new; call ctor 0x00ED4AA0` (__fastcall static); registered at 0x00CD968A
+00a8d700	C3DMesh2::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x0129DEF0 (RTTI C3DMesh2); retail body is the scalar form (`test [esp+8],1` only) although the donor PDBs list ??_E (vector form); retail bytes decide
+00b50b80	CEngineShadowRenderer::`scalar deleting destructor'	chunk 671: slot 0 of vtable 0x012A2374; calls 0x00B4D210
+0099a330	CInitBaseClass::IsValid	chunk 671: `mov al,[ecx+4]; ret` called on GFGetSystemManager() (CSystemManager : CInitBaseClass, RTTI); Ego_r ?IsValid@CInitBaseClass@@QBE_NXZ (catalog GetCanItemBeQuickAssigned wrong)
+00a62ed0	CMovableResourceMemoryPool::FreeResource	chunk 671: called with ecx = C3DMeshStats::MemoryPool and a handle in ~C3DMesh2 (x3) and ~C3DMeshStats; Ego_r/FableWin name set
+0099a2e0	CBaseClass::~CBaseClass	chunk 671: tail of CRenderTarget's and CScriptThing's implicit dtors; Ego_r ??1CBaseClass@@UAE@XZ (chunk 662 proof via ??_GCBaseClass 0x004371F0)

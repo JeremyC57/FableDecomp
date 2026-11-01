@@ -35717,3 +35717,9 @@ _static_l_desc	0139c8b0	00c051c0
 ??_7CEngineSubPrimitiveRenderer@@6BCEngineComponent@@@	012a3a28	00b84390
 ?PFrameMemoryPool_0143bac4@@3PAVCSimpleMemoryPool@@A	0143bac4	00b84390
 ??1CEngineSceneGridCell@@QAE@XZ	00b93660	00b93e40
+??1CNavNavigableLeafNode@@UAE@XZ	00a76a80	00a84f00
+??1C3DMeshStats@@UAE@XZ	00a2f190	00a895f0
+??_7CStaticFontBank@@6B@	0129ead4	00ab7a70
+??_7CEngineShadowRenderer@@6B@	012a2374	00b4d210
+?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ	00b4b830	00b4d210
+??1CLocalDetailCacheMap@@QAE@XZ	00bded60	00b59be0

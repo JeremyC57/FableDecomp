@@ -1,0 +1,1 @@
+1	user dtor, PDB accessors GetMapCount()/GetMap(i) re-evaluated around the delete, STLport vector ObjectCollectionTypes	RELOCATION_MATCH (relocs checked)

@@ -1,0 +1,37 @@
+addr       parity           behav  name
+007c8560   RELOCATION_MATCH PASS   ~CTCHitOnCollision
+00a04160   RELOCATION_MATCH PASS   GetChecksum
+00a84f00   RELOCATION_MATCH PASS   ~CNavSwitchableLeafNode
+00a895f0   RELOCATION_MATCH PASS   ~C3DMesh2
+00a9a7c0   RELOCATION_MATCH PASS   ~C3DAnimFileBoneMaskChunk
+00ab7a70   WARN RELOC_NAME: ?IsValid@CInitBaseClass@@QBE_NXZ -> 0099a330 labelled '_global::GetMember_byte0x4_0099a330'
+00ab7a70   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00ab7a70   RELOCATION_MATCH PASS   ~CStaticFontBank
+00b4d210   RELOCATION_MATCH PASS   ~CEngineShadowRenderer
+00b59be0   RELOCATION_MATCH PASS   ~CEngineLocalDetailGenerator
+00b5a0d0   RELOCATION_MATCH PASS   ~CEngineScreenEffectColourFilter
+00ed7640   RELOCATION_MATCH PASS   ~CV_SwordInTheStoneScript
+
+WINS: 10
+  007c8560 RELOCATION_MATCH CTCHitOnCollision::??1CTCHitOnCollision@@UAE@XZ
+  00a04160 RELOCATION_MATCH CInputEvent::?GetChecksum@CInputEvent@@QBEKXZ
+  00a84f00 RELOCATION_MATCH CNavSwitchableLeafNode::??1CNavSwitchableLeafNode@@UAE@XZ
+  00a895f0 RELOCATION_MATCH C3DMesh2::??1C3DMesh2@@UAE@XZ
+  00a9a7c0 RELOCATION_MATCH C3DAnimFileBoneMaskChunk::??1C3DAnimFileBoneMaskChunk@@UAE@XZ
+  00ab7a70 RELOCATION_MATCH CStaticFontBank::??1CStaticFontBank@@UAE@XZ
+  00b4d210 RELOCATION_MATCH CEngineShadowRenderer::??1CEngineShadowRenderer@@UAE@XZ
+  00b59be0 RELOCATION_MATCH CEngineLocalDetailGenerator::??1CEngineLocalDetailGenerator@@UAE@XZ
+  00b5a0d0 RELOCATION_MATCH CEngineScreenEffectColourFilter::??1CEngineScreenEffectColourFilter@@UAE@XZ
+  00ed7640 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::??1CV_SwordInTheStoneScript@NScript@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCHitOnCollision_CTCHitOnCollision_007c8560
+  CInputEvent_GetChecksum_00a04160
+  CNavSwitchableLeafNode_CNavSwitchableLeafNode_00a84f00
+  C3DMesh2_C3DMesh2_00a895f0
+  C3DAnimFileBoneMaskChunk_C3DAnimFileBoneMaskChunk_00a9a7c0
+  CStaticFontBank_CStaticFontBank_00ab7a70
+  CEngineShadowRenderer_CEngineShadowRenderer_00b4d210
+  CEngineLocalDetailGenerator_CEngineLocalDetailGenerator_00b59be0
+  CEngineScreenEffectColourFilter_CEngineScreenEffectColourFilter_00b5a0d0
+  NScriptCVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed7640

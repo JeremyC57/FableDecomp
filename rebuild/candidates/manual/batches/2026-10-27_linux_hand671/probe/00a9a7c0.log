@@ -1,0 +1,1 @@
+1	first shape: implicit dtor via PDB ctor, CArray<bool> = STLport vector<bool> generic (byte per element), local CChunkedFileChunk model	RELOCATION_MATCH (_free, ??1CChunkedFileChunk@@UAE@XZ)

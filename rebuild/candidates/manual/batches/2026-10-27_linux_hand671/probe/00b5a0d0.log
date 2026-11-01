@@ -1,0 +1,1 @@
+1	empty user dtor; inline user ~CPixelShader/~CVertexShader (local Data copy), protected empty ~CShaderBase, implicit CRenderTarget with inline user ~CSurface	RELOCATION_MATCH (relocs checked)

@@ -1,0 +1,3 @@
+1	user dtor, in-place destruction loops written on the members	DIFFER(221v175): members re-read every pass, index walk
+2	PDB template GFExplicitDelete<T>(T*, unsigned long) __fastcall defined in TU (index form), called twice	RELOCATION_MATCH (relocs checked)
+3	GFExplicitDelete count-down/pointer form	DIFFER(175v175) (register/schedule)

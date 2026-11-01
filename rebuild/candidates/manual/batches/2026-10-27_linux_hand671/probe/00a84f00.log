@@ -1,0 +1,1 @@
+1	first shape: implicit dtor via PDB ctor, CVectorMap : vector<pair<u64,bool>> + Compare + Dirty, opaque CNavNavigableLeafNode base	RELOCATION_MATCH (_free, ??1CNavNavigableLeafNode@@UAE@XZ)

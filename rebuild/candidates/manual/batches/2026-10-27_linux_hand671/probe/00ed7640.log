@@ -1,0 +1,1 @@
+1	implicit dtor via PDB ctor; engine CTimer/CScriptThing/CScriptBase/CCountedPointer headers, inline ~CTimer/~CScriptThing, CLevelScriptBase<CQ_SunnyvaleMasterData> without dtor decl	RELOCATION_MATCH (relocs checked)

@@ -372630,6 +372630,76 @@ $catalog = @(
         TestSource = '00/b9/CEngineSceneGrid_CEngineSceneGrid_00b93e40_test.cpp'
         PassPattern = '00b93e40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007c8560'
+        Module = 'CTCHitOnCollision'
+        Source = '00/7c/CTCHitOnCollision_CTCHitOnCollision_007c8560.cpp'
+        TestSource = '00/7c/CTCHitOnCollision_CTCHitOnCollision_007c8560_test.cpp'
+        PassPattern = '007c8560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a04160'
+        Module = 'CInputEvent'
+        Source = '00/a0/CInputEvent_GetChecksum_00a04160.cpp'
+        TestSource = '00/a0/CInputEvent_GetChecksum_00a04160_test.cpp'
+        PassPattern = '00a04160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a84f00'
+        Module = 'CNavSwitchableLeafNode'
+        Source = '00/a8/CNavSwitchableLeafNode_CNavSwitchableLeafNode_00a84f00.cpp'
+        TestSource = '00/a8/CNavSwitchableLeafNode_CNavSwitchableLeafNode_00a84f00_test.cpp'
+        PassPattern = '00a84f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a895f0'
+        Module = 'C3DMesh2'
+        Source = '00/a8/C3DMesh2_C3DMesh2_00a895f0.cpp'
+        TestSource = '00/a8/C3DMesh2_C3DMesh2_00a895f0_test.cpp'
+        PassPattern = '00a895f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9a7c0'
+        Module = 'C3DAnimFileBoneMaskChunk'
+        Source = '00/a9/C3DAnimFileBoneMaskChunk_C3DAnimFileBoneMaskChunk_00a9a7c0.cpp'
+        TestSource = '00/a9/C3DAnimFileBoneMaskChunk_C3DAnimFileBoneMaskChunk_00a9a7c0_test.cpp'
+        PassPattern = '00a9a7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab7a70'
+        Module = 'CStaticFontBank'
+        Source = '00/ab/CStaticFontBank_CStaticFontBank_00ab7a70.cpp'
+        TestSource = '00/ab/CStaticFontBank_CStaticFontBank_00ab7a70_test.cpp'
+        PassPattern = '00ab7a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4d210'
+        Module = 'CEngineShadowRenderer'
+        Source = '00/b4/CEngineShadowRenderer_CEngineShadowRenderer_00b4d210.cpp'
+        TestSource = '00/b4/CEngineShadowRenderer_CEngineShadowRenderer_00b4d210_test.cpp'
+        PassPattern = '00b4d210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b59be0'
+        Module = 'CEngineLocalDetailGenerator'
+        Source = '00/b5/CEngineLocalDetailGenerator_CEngineLocalDetailGenerator_00b59be0.cpp'
+        TestSource = '00/b5/CEngineLocalDetailGenerator_CEngineLocalDetailGenerator_00b59be0_test.cpp'
+        PassPattern = '00b59be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5a0d0'
+        Module = 'CEngineScreenEffectColourFilter'
+        Source = '00/b5/CEngineScreenEffectColourFilter_CEngineScreenEffectColourFilter_00b5a0d0.cpp'
+        TestSource = '00/b5/CEngineScreenEffectColourFilter_CEngineScreenEffectColourFilter_00b5a0d0_test.cpp'
+        PassPattern = '00b5a0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7640'
+        Module = 'NScript::CV_SwordInTheStoneScript'
+        Source = '00/ed/NScriptCVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed7640.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed7640_test.cpp'
+        PassPattern = '00ed7640_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

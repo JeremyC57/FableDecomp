@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+007c8560	RELOCATION_MATCH	27v27	PASS	??1CTCHitOnCollision@@UAE@XZ (catalog CTCInventoryItem::OnDie wrong); implicit dtor via PDB ctor; 1 probe
+00ab7a70	RELOCATION_MATCH	143v143	PASS	??1CStaticFontBank@@UAE@XZ (label right); PDB accessor CSystemManager::GetDisplayManager; 5 probes
+00b59be0	RELOCATION_MATCH	129v129	PASS	??1CEngineLocalDetailGenerator@@UAE@XZ (catalog AddLocalDetailDynamic wrong); 1 probe
+00b5a0d0	RELOCATION_MATCH	139v139	PASS	??1CEngineScreenEffectColourFilter@@UAE@XZ (label right); 1 probe
+00a04160	RELOCATION_MATCH	145v145	PASS	?GetChecksum@CInputEvent@@QBEKXZ (catalog _Dest_val<allocator<CMacro>,CMacro> wrong); 2 probes
+00ed7640	RELOCATION_MATCH	147v147	PASS	??1CV_SwordInTheStoneScript@NScript@@UAE@XZ (label right; RTTI-less, named via ctor->Alloc->registration); 1 probe
+00a84f00	RELOCATION_MATCH	27v27	PASS	??1CNavSwitchableLeafNode@@UAE@XZ (catalog CTCInventoryItem::OnDie wrong); 1 probe
+00a9a7c0	RELOCATION_MATCH	27v27	PASS	??1C3DAnimFileBoneMaskChunk@@UAE@XZ (catalog CTCInventoryItem::OnDie wrong); 1 probe
+00a895f0	RELOCATION_MATCH	175v175	PASS	??1C3DMesh2@@UAE@XZ (label right); PDB template GFExplicitDelete<T>; 3 probes
+00b4d210	RELOCATION_MATCH	171v171	PASS	??1CEngineShadowRenderer@@UAE@XZ (label right); 1 probe

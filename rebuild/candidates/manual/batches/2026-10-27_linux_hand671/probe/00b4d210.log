@@ -1,0 +1,1 @@
+1	user body OnReleaseDefaultPoolResources(); PDB member classes (CTexture inline dtor, user ~CSurface, implicit CRenderTarget, inline ~CRenderStateCaptureBlock)	RELOCATION_MATCH (relocs checked)

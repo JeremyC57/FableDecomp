@@ -1,0 +1,1 @@
+1	first shape: implicit dtor emitted via PDB ctor, STLport vector<CThingGameObject*> member, local CTCBase model	RELOCATION_MATCH (objdump -dr: _free, ??1CTCBase@@UAE@XZ)

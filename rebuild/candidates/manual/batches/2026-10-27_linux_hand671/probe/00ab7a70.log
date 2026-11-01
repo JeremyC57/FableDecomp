@@ -1,0 +1,5 @@
+1	user dtor, glyph loop with explicit null test, PDisplayManager.Get() inline at the call site	DIFFER(144v143): dead `add eax,60h`
+2	PDB accessor CSystemManager::GetDisplayManager() { return PDisplayManager.Get(); }	RELOCATION_MATCH
+3	direct PDisplayManager.Data read	RELOCATION_MATCH (not kept: accessor is the PDB shape)
+4	!PDisplayManager.IsNull()	DIFFER(146v143)
+5	probe 2 shape with engine/CCountedPointer.h instead of a local counted-pointer model	RELOCATION_MATCH (kept; relocs checked)
