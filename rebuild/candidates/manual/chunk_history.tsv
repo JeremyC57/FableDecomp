@@ -25862,3 +25862,13 @@ chunk	address	module	name	length
 685	007748e0	_global	CTCGraphicAppearance_InitGoodsPlaces	596
 685	00c674b0	_global	CCharacter_AddSkill	618
 685	00ca3b80	_global	Math_LevenbergMarquardtFit	718
+686	00c68a50	_global	CDrawGuildSeal_SetLightProperty	798
+686	00a5bba0	_global	GFInterpolateVectors	840
+686	00b202d0	_global	Transform_VectorWithQuaternion	850
+686	00a3a410	_global	CreateWorldLevelWad	920
+686	007808b0	_global	CTCAvoidRegion_Initialize	923
+686	00cbdad0	_global	CCharString_Quicksort	1010
+686	00a8efa0	_global	TransformVertexBuffer_LoopUnrolled_x4	520
+686	00b801f0	_global	Vector_Insert_3Floats	523
+686	00ca4570	_global	Math_ApplyDampeningFilter	398
+686	00ac97d0	_global	QuadricOptimiser_RemapAndAccumulateCosts	535
