@@ -1,5 +1,5 @@
-// Behaviour test for 0x0099A300 CBaseClass::~CBaseClass(): the empty root destructor, run through a virtual delete after
-// the derived destructor.
+// Behaviour test for 0x0099A300 CBaseClassNonCopyable::~CBaseClassNonCopyable(): the empty destructor (with the root
+// destructor inlined), run through a virtual delete after the derived destructor.
 #include <cstdio>
 
 static int g_order[4];

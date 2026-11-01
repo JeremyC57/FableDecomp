@@ -348025,9 +348025,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0099a300'
-        Module = 'CBaseClass'
-        Source = '00/99/CBaseClass_CBaseClass_0099a300.cpp'
-        TestSource = '00/99/CBaseClass_CBaseClass_0099a300_test.cpp'
+        Module = 'CBaseClassNonCopyable'
+        Source = '00/99/CBaseClassNonCopyable_CBaseClassNonCopyable_0099a300.cpp'
+        TestSource = '00/99/CBaseClassNonCopyable_CBaseClassNonCopyable_0099a300_test.cpp'
         PassPattern = '0099a300_TEST PASS'
     }
     [pscustomobject]@{

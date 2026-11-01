@@ -3,12 +3,7 @@
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 
-class CBaseClass { public:
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
-class CBaseClassNonCopyable { public:
-    virtual ~CBaseClassNonCopyable();                   // 0x0099A300
-};
+#include "engine/CBaseClassNonCopyable.h"              // ~CBaseClass 0x0099A2E0; ~CBaseClassNonCopyable 0x0099A300 (protected virtual, PDB MAE; naming wave 23)
 class CCPPointerInfo { public:
     unsigned long RefCount;                             // +0x00
     void (__fastcall* DeleteFunc)(void* data);          // +0x04
