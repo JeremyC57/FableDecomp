@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00c0ad10   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c0ad10   WARN RELOC_NAME: ??6CString@@QAIAAV0@ABV0@@Z -> 00c0dea0 labelled 'CString::operator<<(CString const &)'
+00c0ad10   RELOCATION_MATCH PASS   _global::CShaderResource_ConstructFromBitset
+00c0e0f0   WARN RELOC_NAME: ?AllocCopy@CString@@QBEXAAV1@HHH@Z -> 00c0bf90 labelled 'CCharString_AllocFromSize'
+00c0e0f0   RELOCATION_MATCH PASS   _global::CShaderResource_Assign_Range
+
+WINS: 2
+  00c0ad10 RELOCATION_MATCH _unattributed::?DescribeBitset_00c0ad10@@YI?AVCString@@PBV1@KG@Z
+  00c0e0f0 RELOCATION_MATCH CString_00c0e0f0::?Right@CString@@QBE?AV1@H@Z
+addr       parity           behav  name
+00c0df50   WARN RELOC_NAME: ?AllocCopy@CString@@QBEXAAV1@HHH@Z -> 00c0bf90 labelled 'CCharString_AllocFromSize'
+00c0df50   RELOCATION_MATCH PASS   CString_00c0e0f0::Mid
+00c0e360   WARN RELOC_NAME: ?TrimLeft@CString@@QAEXD@Z -> 00c0d970 labelled 'CCharString::RemoveAllOccurrencesAndMove'
+00c0e360   WARN RELOC_NAME: ??4CString@@QAEABV0@ABV0@@Z -> 00c0c0c0 labelled 'CCharString::Assign'
+00c0e360   WARN RELOC_NAME: ?TrimRight@CString@@QAEXD@Z -> 00c0d7c0 labelled 'CCharString::RemoveAllOccurrences'
+00c0e360   RELOCATION_MATCH PASS   CCharString::CCharString::GetFileNameWithoutExtension
+
+WINS: 2
+  00c0df50 RELOCATION_MATCH CString_00c0e0f0::?Mid@CString@@QBE?AV1@HH@Z
+  00c0e360 RELOCATION_MATCH CString_00c0e360::?GetFileNameWithoutExtension@CString@@QBE?AV1@XZ

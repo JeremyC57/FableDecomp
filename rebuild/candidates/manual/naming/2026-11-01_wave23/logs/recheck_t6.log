@@ -1,0 +1,12 @@
+addr       parity           behav  name
+0099a300   RELOCATION_MATCH PASS   CBaseClass::~CBaseClass
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CTexture
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b3b8e0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b3b8e0   RELOCATION_MATCH PASS   CEngineResourceManager::~CEngineResourceManager
+
+WINS: 2
+  0099a300 RELOCATION_MATCH CBaseClass::??1CBaseClassNonCopyable@@MAE@XZ
+  00b3b8e0 RELOCATION_MATCH CEngineResourceManager::??1CEngineResourceManager@@UAE@XZ

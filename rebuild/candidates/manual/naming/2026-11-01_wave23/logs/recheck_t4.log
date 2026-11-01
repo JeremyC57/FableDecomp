@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00c44c50   WARN RELOC_NAME: ??0CAmbientEvent@@QAE@PAX_N@Z -> 00c61c70 labelled 'CThingFilter_SolidToThing::CThingFilter_SolidToThing'
+00c44c50   WARN RELOC_NAME: ?Reschedule@CAmbientEvent@@QAEXPAVCAmbientEmitter@@@Z -> 00c61ca0 labelled 'CThingPlayerCreature::ResolveMovementBandType'
+00c44c50   RELOCATION_MATCH PASS   _global::CGame_InitializeThingFilters
+00c44eb0   WARN RELOC_NAME: ?Get1C@COwnerPart_00c44eb0@@QAEJXZ -> 00c1e750 labelled '_global::GetMember_dword0x1c_00c1e750'
+00c44eb0   WARN RELOC_NAME: ??0CPart8_00c44eb0@@QAE@J@Z -> 00c23c10 labelled '_global::NScript_InitializeEventSubscription'
+00c44eb0   WARN RELOC_NAME: ??0CPart20_00c44eb0@@QAE@PAUCPart8_00c44eb0@@@Z -> 00c45660 labelled 'CVtable_012b7ca0::CVtable_012b7ca0'
+00c44eb0   WARN RELOC_NAME: ??0CNode_00c44eb0@@QAE@J@Z -> 00c194f0 labelled 'PKCTRRedblackTree_00c18b20::PKCTRRedblackTree_00c18b20'
+00c44eb0   WARN RELOC_NAME: ?Lookup@CResourceTable_00c44eb0@@QAEJJ@Z -> 00c36cf0 labelled '_unattributed::CheckThingAlive_00c36cf0'
+00c44eb0   WARN RELOC_NAME: ??0CArray_00c44eb0@@QAE@J@Z -> 00c61b90 labelled 'CPKArray::CPKArray'
+00c44eb0   RELOCATION_MATCH PASS   CAmbientEmitter::CAmbientEmitter
+00c61c70   MATCH            PASS   CThingFilter_SolidToThing::CThingFilter_SolidToThing
+
+WINS: 3
+  00c44c50 RELOCATION_MATCH _unattributed::?InitializeThingFilters@CAmbientEmitter@@QAEXXZ
+  00c44eb0 RELOCATION_MATCH CWorld::??0CAmbientEmitter@@QAE@PAUCResourceWorld@@PAX@Z
+  00c61c70 MATCH CThingFilter_SolidToThing::??0CAmbientEvent@@QAE@PAX_N@Z

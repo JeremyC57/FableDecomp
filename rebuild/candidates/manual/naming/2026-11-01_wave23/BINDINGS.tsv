@@ -1,0 +1,79 @@
+action	symbol	target	by_row	note
+RETIRE	??RCThingFilter_IsWithinZRange@@QBE_NPBVCThing@@@Z	006a7020	007313b0	no row names it after wave 23 (was: 007313b0; bound by 007313b0); the target is now ??RCThingFilter_IsWithinZRange@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsInterestingToCreature@@QBE_NPBVCThing@@@Z	006a7120	007f5d20	no row names it after wave 23 (was: 007f5d20; bound by 007f5d20); the target is now ??RCThingFilter_IsInterestingToCreature@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsInCreatureFOV@@QBE_NPBVCThing@@@Z	006a73c0	007f5d20	no row names it after wave 23 (was: 007f5d20; bound by 007f5d20); the target is now ??RCThingFilter_IsInCreatureFOV@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsUnconscious@@QBE_NPBVCThing@@@Z	006a73e0	00937690	no row names it after wave 23 (was: 00937690; bound by 00937690); the target is now ??RCThingFilter_IsUnconscious@@QBE_NABVCThing@@@Z
+KEEP	??RCThingFilter_EnemyCreature@@QBE_NPAVCThing@@@Z	006a7550	007f6df0	still named by 1 unedited row(s) (index)
+RETIRE	??RCThingFilter_ObjectHasProperty@@QBE_NPBVCThing@@@Z	006a7590	00964230	no row names it after wave 23 (was: 00964230,00965e80; bound by 00964230); the target is now ??RCThingFilter_ObjectHasProperty@@QBE_NABVCThingObject@@@Z
+RETIRE	??RCThingFilter_MarkerHasProperty@@QBE_NPAVCThingMarker@@@Z	006a75b0	00964ef0	no row names it after wave 23 (was: 00964ef0; bound by 00964ef0); the target is now ??RCThingFilter_MarkerHasProperty@@QBE_NABVCThingMarker@@@Z
+RETIRE	??RCThingFilter_IsAICreatureAwareOf@@QBE_NPBVCThing@@@Z	006a7610	00937690	no row names it after wave 23 (was: 00937690; bound by 00937690); the target is now ??RCThingFilter_IsAICreatureAwareOf@@QBE_NABVCThingCreatureBase@@@Z
+KEEP	??RCThingFilter_IsNot@@QBE_NPBVCThing@@@Z	006a76a0	007f6df0	still named by 5 unedited row(s) (index)
+KEEP	??RCThingFilter_InMap@@QBE_NPAVCThing@@@Z	006a7930	006186f0	still named by 1 unedited row(s) (index)
+RETIRE	??RCThingFilter_InMap@@QBE_NPBVCThing@@@Z	006a7930	00512ed0	no row names it after wave 23 (was: 00512ed0,00615750,008abdf0; bound by 00512ed0); the target is now ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_InArea@@QBE_NPBVCThing@@@Z	006a7990	007313b0	no row names it after wave 23 (was: 007313b0; bound by 007313b0); the target is now ??RCThingFilter_InArea@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsAnAlly@@QBE_NPBVCThing@@@Z	006a7a40	00937690	no row names it after wave 23 (was: 00937690; bound by 00937690); the target is now ??RCThingFilter_IsAnAlly@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_HasDefName@@QBE_NPAVCThing@@@Z	006a7be0	005800d6	no row names it after wave 23 (was: 005800d6; bound by 005800d6); the target is now ??RCThingFilter_HasDefName@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsInQuest@@QBE_NPBVCThing@@@Z	006a7c20	00512ed0	no row names it after wave 23 (was: 00512ed0; bound by 00512ed0); the target is now ??RCThingFilter_IsInQuest@@QBE_NABVCThing@@@Z
+KEEP	??RCThingFilter_HasScriptData@@QBE_NPAVCThing@@@Z	006a7e70	005800d6	still named by 1 unedited row(s) (index)
+RETIRE	??RCThingFilter_HasTC@@QBE_NPAVCThing@@@Z	006a80a0	005c0d9d	no row names it after wave 23 (was: 005c0d9d,006186f0; bound by 005c0d9d); the target is now ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_HasTC@@QBE_NPBVCThing@@@Z	006a80a0	004a9da0	no row names it after wave 23 (was: 004a9da0,004a9e50,00615750,0065f744,00782670,00799c40,0093f8a0,00965e80; bound by 004a9da0); the target is now ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_NoiseCameFromThing@@QBE_NPBVCThing@@@Z	006a81f0	007461c0	no row names it after wave 23 (was: 007461c0; bound by 007461c0); the target is now ??RCThingFilter_NoiseCameFromThing@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_NoiseCanBeHeardFromPosition@@QBE_NPBVCThing@@@Z	006a8240	007461c0	no row names it after wave 23 (was: 007461c0; bound by 007461c0); the target is now ??RCThingFilter_NoiseCanBeHeardFromPosition@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsPerceptible@@QBE_NPBVCThing@@@Z	006a8450	007f5d20	no row names it after wave 23 (was: 007f5d20; bound by 007f5d20); the target is now ??RCThingFilter_IsPerceptible@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_HasFreeActionPoint@@QBE_NPBVCThing@@@Z	006a8b40	00964230	no row names it after wave 23 (was: 00964230,00965e80; bound by 00964230); the target is now ??RCThingFilter_HasFreeActionPoint@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsAlliedWithFaction@@QBE_NPBVCThing@@@Z	006c8c50	00986d90	no row names it after wave 23 (was: 00986d90; bound by 00986d90); the target is now ??RCThingFilter_IsAlliedWithFaction@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsPotentialCustomer@@QBE_NPBVCThing@@@Z	00799e30	0079a050	no row names it after wave 23 (was: 0079a050,0079a280; bound by 0079a050); the target is now ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z
+RETIRE	??RCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QBE_NPBVCThing@@@Z	00987040	00987430	no row names it after wave 23 (was: 00987430; bound by 00987430); the target is now ??RCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QBE_NABVCThingAICreature@@@Z
+KEEP	??1CBaseClassNonCopyable@@UAE@XZ	0099a300	00b3b8e0	still named by 47 unedited row(s) (index)
+RETIRE	??1CString_00c0ad10@@QAE@XZ	00c0ba40	00c0ad10	no row names it after wave 23 (was: 00c0ad10; bound by 00c0ad10); the target is now ??1CString@@QAE@XZ
+KEEP	??1CString_00c0e0f0@@QAE@XZ	00c0ba40	00c0e0f0	identifier appears in 2 unindexed row(s) (01210f4b,01210f64): conservative
+KEEP	??1CString_00c0e360@@QAE@XZ	00c0ba40	00c0e360	identifier appears in 3 unindexed row(s) (01210fa1,01210fa9,01210fb1): conservative
+RETIRE	?ReverseFind@CString_00c0e360@@QBEHD@Z	00c0bc20	00c0e360	no row names it after wave 23 (was: 00c0e360; bound by 00c0e360); the target is now ?ReverseFind@CString@@QBEHD@Z
+RETIRE	?StringLength_00c0ad10@@YGKPBD@Z	00c0bcc0	00c0ad10	no row names it after wave 23 (was: 00c0ad10; bound by 00c0ad10); the target is now ?SafeStrlen@CString@@SGHPBD@Z
+RETIRE	?AllocCopy@CString_00c0e0f0@@QBEXAAU1@JJJ@Z	00c0bf90	00c0e0f0	no row names it after wave 23 (was: 00c0df50,00c0e0f0; bound by 00c0e0f0); the target is now ?AllocCopy@CString@@QBEXAAV1@HHH@Z
+KEEP	??0CString_00c0e360@@QAE@PBD@Z	00c0bfe0	00c0e360	identifier appears in 3 unindexed row(s) (01210fa1,01210fa9,01210fb1): conservative
+KEEP	??4CString_00c0e360@@QAEABU0@ABU0@@Z	00c0c0c0	00c0e360	identifier appears in 3 unindexed row(s) (01210fa1,01210fa9,01210fb1): conservative
+RETIRE	?Remove@CString_00c0e360@@QAEXD@Z	00c0d7c0	00c0e360	no row names it after wave 23 (was: 00c0e360; bound by 00c0e360); the target is now ?TrimRight@CString@@QAEXD@Z
+RETIRE	?TrimLeft@CString_00c0e360@@QAEXD@Z	00c0d970	00c0e360	no row names it after wave 23 (was: 00c0e360; bound by 00c0e360); the target is now ?TrimLeft@CString@@QAEXD@Z
+RETIRE	??0CString_00c0ad10@@QAE@ABU0@@Z	00c0dab0	00c0ad10	no row names it after wave 23 (was: 00c0ad10; bound by 00c0ad10); the target is now ??0CString@@QAE@ABV0@@Z
+KEEP	??0CString_00c0e0f0@@QAE@ABU0@@Z	00c0dab0	00c0e0f0	identifier appears in 2 unindexed row(s) (01210f4b,01210f64): conservative
+KEEP	??0CString_00c0e360@@QAE@ABU0@@Z	00c0dab0	00c0e360	identifier appears in 3 unindexed row(s) (01210fa1,01210fa9,01210fb1): conservative
+RETIRE	?Append@CString_00c0ad10@@QAIPAU1@ABU1@@Z	00c0dea0	00c0ad10	no row names it after wave 23 (was: 00c0ad10; bound by 00c0ad10); the target is now ??6CString@@QAIAAV0@ABV0@@Z
+RETIRE	?Append@CString_00c0ad10@@QAIPAU1@PBD@Z	00c0dec0	00c0ad10	no row names it after wave 23 (was: 00c0ad10; bound by 00c0ad10); the target is now ??6CString@@QAIAAV0@PBD@Z
+RETIRE	?Left@CString_00c0e360@@QBE?AU1@H@Z	00c0e1f0	00c0e360	no row names it after wave 23 (was: 00c0e360; bound by 00c0e360); the target is now ?Left@CString@@QBE?AV1@H@Z
+RETIRE	??0CTrace_00c0e0f0@@QAE@XZ	00c16750	00c0e0f0	no row names it after wave 23 (was: 00c0df50,00c0e0f0; bound by 00c0e0f0); the target is now ??0CDebugBreak@@QAE@XZ
+RETIRE	?Init1@CResourceAllocation_00c44eb0@@QAEXXZ	00c44c50	00c44eb0	no row names it after wave 23 (was: 00c44eb0; bound by 00c44eb0); the target is now ?InitializeThingFilters@CAmbientEmitter@@QAEXXZ
+RETIRE	?Init2@CResourceAllocation_00c44eb0@@QAEXXZ	00c44ce0	00c44eb0	no row names it after wave 23 (was: 00c44eb0; bound by 00c44eb0); the target is now ?AcquireSounds@CAmbientEmitter@@QAEXXZ
+RETIRE	??0CFilter_00c44c50@@QAE@PAXJ@Z	00c61c70	00c44c50	no row names it after wave 23 (was: 00c44c50; bound by 00c44c50); the target is now ??0CAmbientEvent@@QAE@PAX_N@Z
+RETIRE	?Bind@CFilter_00c44c50@@QAEXPAUCGame_00c44c50@@@Z	00c61ca0	00c44c50	no row names it after wave 23 (was: 00c44c50; bound by 00c44c50); the target is now ?Reschedule@CAmbientEvent@@QAEXPAVCAmbientEmitter@@@Z
+KEEP	?g_pchNil_0139c900@@3PADA	0139c900	00c0ad10	still named by 39 unedited row(s) (index)
+KEEP	?g_pfnLogSink_0143bb2c@@3P6IXPBD@ZA	0143bb2c	00c0e0f0	still named by 36 unedited row(s) (index)
+RETIRE	??RCThingFilter_InRegion@@QBE_NPBUCThing@@@Z	006a7960	004a9e50	stale: no indexed row names it and no unindexed row source mentions it (bound by 004a9e50; the target is now ??RCThingFilter_InRegion@@QBE_NABVCThing@@@Z)
+RETIRE	N_006a7960	006a7960	004a9da0	stale: no indexed row names it and no unindexed row source mentions it (bound by 004a9da0; the target is now ??RCThingFilter_InRegion@@QBE_NABVCThing@@@Z)
+RETIRE	??RCThingFilter_IsRegionEntranceActive@@QBE_NPBUCThing@@@Z	006a8be0	004a9e50	stale: no indexed row names it and no unindexed row source mentions it (bound by 004a9e50; the target is now ??RCThingFilter_IsRegionEntranceActive@@QBE_NABVCThing@@@Z)
+RETIRE	?ResolveMapBrush@@YGPAXPAUCScriptedMapBrush@@0@Z	00c0bcc0	00c0dd40	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c0dd40; the target is now ?SafeStrlen@CString@@SGHPBD@Z)
+RETIRE	?SafeStringLength@@YGKPBD@Z	00c0bcc0	00c0dbb0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c0dbb0; the target is now ?SafeStrlen@CString@@SGHPBD@Z)
+RETIRE	?helper_c0bcc0@@YGHPAUCCharString@@0@Z	00c0bcc0	00c0c200	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c0c200; the target is now ?SafeStrlen@CString@@SGHPBD@Z)
+RETIRE	?g_landLayerMeshGlobal@@3HA	0139c900	00c3b900	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c3b900; the target is now ?_EmptyString@@3VCString@@A)
+RETIRE	?g_pCurrentOwner@@3PAXA	0139c900	00c307e0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c307e0; the target is now ?_EmptyString@@3VCString@@A)
+ADD	??RCThingFilter_IsRegionEntranceActive@@QBE_NABVCThing@@@Z	006a8be0	004a9e50	exact Ego_r/FableWin spelling, not yet bound; first named by 004a9e50
+ADD	??RCThingFilter_IsInQuest@@QBE_NABVCThing@@@Z	006a7c20	00512ed0	exact Ego_r/FableWin spelling, not yet bound; first named by 00512ed0
+ADD	??RCThingFilter_HasScriptData@@QBE_NABVCThing@@@Z	006a7e70	005800d6	exact Ego_r/FableWin spelling, not yet bound; first named by 005800d6
+ADD	??RCThingFilter_InArea@@QBE_NABVCThing@@@Z	006a7990	007313b0	exact Ego_r/FableWin spelling, not yet bound; first named by 007313b0
+ADD	??RCThingFilter_IsWithinZRange@@QBE_NABVCThing@@@Z	006a7020	007313b0	exact Ego_r/FableWin spelling, not yet bound; first named by 007313b0
+ADD	??RCThingFilter_NoiseCameFromThing@@QBE_NABVCThing@@@Z	006a81f0	007461c0	exact Ego_r/FableWin spelling, not yet bound; first named by 007461c0
+ADD	??RCThingFilter_NoiseCanBeHeardFromPosition@@QBE_NABVCThing@@@Z	006a8240	007461c0	exact Ego_r/FableWin spelling, not yet bound; first named by 007461c0
+ADD	??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z	00799e30	0079a050	exact Ego_r/FableWin spelling, not yet bound; first named by 0079a050
+ADD	??RCThingFilter_IsInCreatureFOV@@QBE_NABVCThing@@@Z	006a73c0	007f5d20	exact Ego_r/FableWin spelling, not yet bound; first named by 007f5d20
+ADD	??RCThingFilter_IsInterestingToCreature@@QBE_NABVCThing@@@Z	006a7120	007f5d20	exact Ego_r/FableWin spelling, not yet bound; first named by 007f5d20
+ADD	??RCThingFilter_IsPerceptible@@QBE_NABVCThing@@@Z	006a8450	007f5d20	exact Ego_r/FableWin spelling, not yet bound; first named by 007f5d20
+ADD	??RCThingFilter_IsAlliedWithFaction@@QBE_NABVCThing@@@Z	006c8c50	00986d90	exact Ego_r/FableWin spelling, not yet bound; first named by 00986d90
+ADD	??RCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QBE_NABVCThingAICreature@@@Z	00987040	00987430	exact Ego_r/FableWin spelling, not yet bound; first named by 00987430
+ADD	?AllocCopy@CString@@QBEXAAV1@HHH@Z	00c0bf90	00c0df50	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c0df50
+ADD	?Left@CString@@QBE?AV1@H@Z	00c0e1f0	00c0e360	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c0e360
+ADD	?ReverseFind@CString@@QBEHD@Z	00c0bc20	00c0e360	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c0e360
+ADD	?TrimLeft@CString@@QAEXD@Z	00c0d970	00c0e360	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c0e360
+ADD	?TrimRight@CString@@QAEXD@Z	00c0d7c0	00c0e360	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c0e360
+ADD	??0CAmbientEvent@@QAE@PAX_N@Z	00c61c70	00c44c50	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c44c50
+ADD	?AcquireSounds@CAmbientEmitter@@QAEXXZ	00c44ce0	00c44eb0	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c44eb0
+ADD	?InitializeThingFilters@CAmbientEmitter@@QAEXXZ	00c44c50	00c44eb0	wave-23 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c44eb0

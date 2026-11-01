@@ -1,0 +1,143 @@
+addr       parity           behav  name
+004a9da0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+004a9da0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+004a9da0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing>
+00512ed0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00512ed0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_InMap, CThingFilter_IsInQuest >, const CThingObject>
+006156e0   WARN RELOC_CONFLICT: ??RCThingFilter_AICreatureHasProperty@@QBE_NABVCThingAICreature@@@Z -> 006a80a0 here, 006a75d0 in landed 009823d0
+006156e0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstLeafThing<CThingFilter_AICreatureHasProperty, CThingAICreature>
+00618790   WARN RELOC_NAME: ??RCThingFilter_EnemyCreature@@QBE_NABVCThing@@@Z -> 006a7550 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00618790   RELOCATION_MATCH PASS   CThingSearchTools::GetAllLeafThings
+006d3fb0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+006d3fb0   WARN RELOC_CONFLICT: ??RCThingFilter_HasDefGlobalIndex@@QBE_NABVCThing@@@Z -> 006a80a0 here, 006a70b0 in landed 008e4100
+006d3fb0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasDefGlobalIndex, CThing>
+00777000   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00777000   WARN RELOC_CONFLICT: ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z -> 006a76a0 here, 006a80a0 in landed 008e6030
+00777000   WARN RELOC_CONFLICT: ??RCThingFilter_InMap@@QBE_NABVCThing@@@Z -> 006a7780 here, 006a7930 in landed 00617bb0
+00777000   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >, CThing>
+00799c40   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00799c40   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasTC, CThingAICreature>
+007ee660   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+007ee660   WARN RELOC_CONFLICT: ??RCThingFilter_HasScriptName@@QBE_NABVCThing@@@Z -> 006a80a0 here, 006a7e30 in landed 005ed860
+007ee660   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, const CThingVillage>
+007fe730   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fe730   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007fe730   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThingInRoughArea
+00937690   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00937690   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+00937690   WARN RELOC_NAME: ??RCThingFilter_IsAICreatureAwareOf@@QBE_NABVCThingCreatureBase@@@Z -> 006a7610 labelled '_Dest_val_std::allocator_NCreatureHitNotification::CFlash_,NCreatureHitNotification::CFlash_'
+00937690   WARN RELOC_NAME: ??RCThingFilter_IsUnconscious@@QBE_NABVCThing@@@Z -> 006a73e0 labelled '_global::ReturnFalse_ret4_006a73e0'
+00937690   WARN RELOC_NAME: ??RCThingFilter_IsAnAlly@@QBE_NABVCThing@@@Z -> 006a7a40 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00937690   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThingInRoughArea
+00964230   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00964230   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+00964230   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint >, CThingCompare_Nearest, CThingObject>
+00986d90   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00986d90   WARN RELOC_NAME: ??$?R$$CBVCThingAICreature@@@CThingCompare_Nearest@@QBEPBVCThingAICreature@@PBV1@0@Z -> 00986c30 labelled 'CThingCompare_Nearest::operator()<CThingAICreature const>'
+00986d90   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsAlliedWithFaction >, CThingCompare_Nearest, const CThingAICreature>
+
+WINS: 12
+  004a9da0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00512ed0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  006156e0 RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing
+  00618790 RELOCATION_MATCH CThingSearchTools::GetAllLeafThings
+  006d3fb0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00777000 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00799c40 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  007ee660 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  007fe730 RELOCATION_MATCH CThingSearchTools::GetPFirstThingInRoughArea
+  00937690 RELOCATION_MATCH CThingSearchTools::GetPBestThingInRoughArea
+  00964230 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00986d90 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+addr       parity           behav  name
+004a9e50   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+004a9e50   WARN RELOC_NAME: ??RCThingFilter_IsRegionEntranceActive@@QBE_NABVCThing@@@Z -> 006a8be0 labelled 'CScriptBase::IsActiveThreadTerminating'
+004a9e50   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+004a9e50   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind3<CThingFilter_HasTC, CThingFilter_InRegion, CThingFilter_IsRegionEntranceActive >, CThingCompare_Nearest, CThing>
+005800d6   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasDefName,CThingFilter_HasScriptData>,CThingMarker>
+00615750   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00615750   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >, CThing>
+0065f744   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+0065f744   WARN RELOC_NAME: ??$?RVCThingAICreature@@@CThingCompare_Nearest@@QBEPAVCThingAICreature@@PAV1@0@Z -> 0065da97 labelled 'CThingCompare_Nearest::operator'
+0065f744   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_HasTC, CThingCompare_Nearest, CThingAICreature>
+007313b0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007313b0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007313b0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThingInRoughArea
+00782670   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00782670   WARN RELOC_NAME: ??$?RVCThingCreatureBase@@@CThingCompare_Nearest@@QBEPAVCThingCreatureBase@@PAV1@0@Z -> 00782560 labelled 'CThingCompare_Nearest::operator()<CThingCreatureBase>'
+00782670   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_HasTC, CThingCompare_Nearest, CThingCreatureBase>
+0079a050   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0079a050   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0079a050   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThingInRoughArea
+007f5d20   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007f5d20   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007f5d20   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThingInRoughArea
+008abdf0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+008abdf0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_HasScriptName, CThingFilter_InMap >, CThingGameObject>
+0093f8a0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+0093f8a0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0093f8a0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange >, CThingCompare_Nearest, CThing>
+00964ef0   RELOCATION_MATCH PASS   CThingSearchTools::GetAllLeafThings
+00987430   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+00987430   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+00987430   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThingInRoughArea
+
+WINS: 12
+  004a9e50 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  005800d6 RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing
+  00615750 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  0065f744 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  007313b0 RELOCATION_MATCH CThingSearchTools::GetPFirstThingInRoughArea
+  00782670 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  0079a050 RELOCATION_MATCH CThingSearchTools::GetPBestThingInRoughArea
+  007f5d20 RELOCATION_MATCH CThingSearchTools::GetPBestThingInRoughArea
+  008abdf0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  0093f8a0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00964ef0 RELOCATION_MATCH CThingSearchTools::GetAllLeafThings
+  00987430 RELOCATION_MATCH CThingSearchTools::GetPFirstThingInRoughArea
+addr       parity           behav  name
+004b26b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004b26b0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+004b26b0   WARN SHARED_HEADER_AVAILABLE CWorld
+004b26b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+004b26b0   WARN RELOC_NAME: ?BindsEntityScript@CScriptBase@@QAE_NABVCCharString@@@Z -> 00cb7d60 labelled 'CScriptManager::FindScriptBinding'
+004b26b0   WARN RELOC_NAME: ?ActivateEntity@CScriptBase@@QAEX_KABVCScriptThing@@@Z -> 00cb8960 labelled 'CScriptBase::OnScriptedEntityActivated'
+004b26b0   RELOCATION_MATCH PASS   CQuestManager::AttachExistingScriptedEntitiesToScript
+005c0d9d   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstLeafThing<CThingFilter_HasTC,CThingBuilding>
+006186f0   RELOCATION_MATCH PASS   CThingSearchTools::GetAllLeafThings
+00685ee0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstLeafThing<CThingFilter_AICreatureHasProperty, CThingAICreature>
+007461c0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestLeafThing<CFilter_Bind2<CThingFilter_NoiseCameFromThing, CThingFilter_NoiseCanBeHeardFromPosition >, CThingCompare_GetMostRecentlyCreatedThing, CThingNoise>
+00783090   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00783090   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, const CThingMarker>
+0079a280   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+0079a280   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+0079a280   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThingInRoughArea
+007fcef0   WARN RELOC_NAME: ?GetMapsInArea@CThingSearchTools@@QAEXABVC2DBoxI@@PAUCMapVector@@@Z -> 0049c6f0 labelled '_global::Forward_CThingMapManager_GetOverlappingThings_via0x4_0049c6f0'
+007fcef0   WARN RELOC_CONFLICT: ?g_MapwhoLevels@@3PAUSMapwhoLevel@@A -> 0137dadc here, 0137dad8 in landed 00637da0
+007fcef0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThingInRoughArea
+009223a0   WARN RELOC_DUPLICATE: retail 006a76a0 bound to ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z, ??RCThingFilter_InRegion@@QBE_NABVCThing@@@Z
+009223a0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+009223a0   WARN RELOC_CONFLICT: ??RCThingFilter_HasTC@@QBE_NABVCThing@@@Z -> 006a76a0 here, 006a80a0 in landed 008e6030
+009223a0   WARN RELOC_CONFLICT: ??RCThingFilter_InRegion@@QBE_NABVCThing@@@Z -> 006a76a0 here, 006a7960 in landed 007ea040
+009223a0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+009223a0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind3<CThingFilter_HasTC, CThingFilter_InRegion, CThingFilter_IsRegionEntranceActive >, CThingCompare_Nearest, CThing>
+0093f930   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+0093f930   WARN RELOC_CONFLICT: ??RCThingFilter_HasDefGlobalIndex@@QBE_NABVCThing@@@Z -> 006a76b0 here, 006a70b0 in landed 008e4100
+0093f930   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0093f930   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_HasDefGlobalIndex, CThingCompare_Nearest, CThing>
+00965e80   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00965e80   WARN RELOC_NAME: ??$?RVCThingObject@@@CThingCompare_Nearest@@QBEPAVCThingObject@@PAV1@0@Z -> 00916b10 labelled 'CThingCompare_Nearest::operator()<CThingObject>'
+00965e80   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind3<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC>, CThingCompare_Nearest, CThingObject>
+
+WINS: 11
+  004b26b0 RELOCATION_MATCH CQuestManager::AttachExistingScriptedEntitiesToScript
+  005c0d9d RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing
+  006186f0 RELOCATION_MATCH CThingSearchTools::GetAllLeafThings
+  00685ee0 RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing
+  007461c0 RELOCATION_MATCH CThingSearchTools::GetPBestLeafThing
+  00783090 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  0079a280 RELOCATION_MATCH CThingSearchTools::GetPFirstThingInRoughArea
+  007fcef0 RELOCATION_MATCH CThingSearchTools::GetPFirstThingInRoughArea
+  009223a0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  0093f930 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  00965e80 RELOCATION_MATCH CThingSearchTools::GetPBestThing

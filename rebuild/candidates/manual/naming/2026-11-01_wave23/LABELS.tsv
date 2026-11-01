@@ -1,0 +1,23 @@
+address	name	evidence
+00c0ad10	DescribeBitset_00c0ad10	naming wave 23 (cstrown): the row now defines ?DescribeBitset_00c0ad10@@YI?AVCString@@PBV1@KG@Z (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0e0f0	CString::Right	naming wave 23 (cstrown): the row now defines ?Right@CString@@QBE?AV1@H@Z (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0e360	CString::GetFileNameWithoutExtension	naming wave 23 (cstrown): the row now defines ?GetFileNameWithoutExtension@CString@@QBE?AV1@XZ (was ?GetFileNameWithoutExtension@CString_00c0e360@@QBE?AU1@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+00c44c50	CAmbientEmitter::InitializeThingFilters	naming wave 23 (emit): the row now defines ?InitializeThingFilters@CAmbientEmitter@@QAEXXZ (was ?InitializeThingFilters@CGame_00c44c50@@QAEXXZ); rechecked MATCH / RELOCATION_MATCH + PASS
+00c61c70	CAmbientEvent::CAmbientEvent	naming wave 23 (emit): the row now defines ??0CAmbientEvent@@QAE@PAX_N@Z (was ??0CThingFilter_SolidToThing@@QAE@PAVCThing@@_N@Z); rechecked MATCH / RELOCATION_MATCH + PASS
+006a8be0	CThingFilter_IsRegionEntranceActive::operator()	naming wave 23: ??RCThingFilter_IsRegionEntranceActive@@QBE_NABVCThing@@@Z, bound this wave (first named by 004a9e50); rechecked MATCH / RELOCATION_MATCH + PASS
+006a7990	CThingFilter_InArea::operator()	naming wave 23: ??RCThingFilter_InArea@@QBE_NABVCThing@@@Z, bound this wave (first named by 007313b0); rechecked MATCH / RELOCATION_MATCH + PASS
+006a7020	CThingFilter_IsWithinZRange::operator()	naming wave 23: ??RCThingFilter_IsWithinZRange@@QBE_NABVCThing@@@Z, bound this wave (first named by 007313b0); rechecked MATCH / RELOCATION_MATCH + PASS
+006a81f0	CThingFilter_NoiseCameFromThing::operator()	naming wave 23: ??RCThingFilter_NoiseCameFromThing@@QBE_NABVCThing@@@Z, bound this wave (first named by 007461c0); rechecked MATCH / RELOCATION_MATCH + PASS
+006a8240	CThingFilter_NoiseCanBeHeardFromPosition::operator()	naming wave 23: ??RCThingFilter_NoiseCanBeHeardFromPosition@@QBE_NABVCThing@@@Z, bound this wave (first named by 007461c0); rechecked MATCH / RELOCATION_MATCH + PASS
+00799e30	CThingFilter_IsPotentialCustomer::operator()	naming wave 23: ??RCThingFilter_IsPotentialCustomer@@QBE_NABVCThing@@@Z, bound this wave (first named by 0079a050); rechecked MATCH / RELOCATION_MATCH + PASS
+006a73c0	CThingFilter_IsInCreatureFOV::operator()	naming wave 23: ??RCThingFilter_IsInCreatureFOV@@QBE_NABVCThing@@@Z, bound this wave (first named by 007f5d20); rechecked MATCH / RELOCATION_MATCH + PASS
+006a7120	CThingFilter_IsInterestingToCreature::operator()	naming wave 23: ??RCThingFilter_IsInterestingToCreature@@QBE_NABVCThing@@@Z, bound this wave (first named by 007f5d20); rechecked MATCH / RELOCATION_MATCH + PASS
+006a8450	CThingFilter_IsPerceptible::operator()	naming wave 23: ??RCThingFilter_IsPerceptible@@QBE_NABVCThing@@@Z, bound this wave (first named by 007f5d20); rechecked MATCH / RELOCATION_MATCH + PASS
+006c8c50	CThingFilter_IsAlliedWithFaction::operator()	naming wave 23: ??RCThingFilter_IsAlliedWithFaction@@QBE_NABVCThing@@@Z, bound this wave (first named by 00986d90); rechecked MATCH / RELOCATION_MATCH + PASS
+00987040	CThingFilter_IsAICreatureMatchingTypeAndFactionNearby::operator()	naming wave 23: ??RCThingFilter_IsAICreatureMatchingTypeAndFactionNearby@@QBE_NABVCThingAICreature@@@Z, bound this wave (first named by 00987430); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0bf90	CString::AllocCopy	naming wave 23: ?AllocCopy@CString@@QBEXAAV1@HHH@Z, bound this wave (first named by 00c0df50); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0e1f0	CString::Left	naming wave 23: ?Left@CString@@QBE?AV1@H@Z, bound this wave (first named by 00c0e360); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0bc20	CString::ReverseFind	naming wave 23: ?ReverseFind@CString@@QBEHD@Z, bound this wave (first named by 00c0e360); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0d970	CString::TrimLeft	naming wave 23: ?TrimLeft@CString@@QAEXD@Z, bound this wave (first named by 00c0e360); rechecked MATCH / RELOCATION_MATCH + PASS
+00c0d7c0	CString::TrimRight	naming wave 23: ?TrimRight@CString@@QAEXD@Z, bound this wave (first named by 00c0e360); rechecked MATCH / RELOCATION_MATCH + PASS
+00c44ce0	CAmbientEmitter::AcquireSounds	naming wave 23: ?AcquireSounds@CAmbientEmitter@@QAEXXZ, bound this wave (first named by 00c44eb0); rechecked MATCH / RELOCATION_MATCH + PASS

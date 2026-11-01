@@ -16230,7 +16230,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a8a80	operator()	CThingFilter_IsOnFire	__thiscall	bool	2	CThingFilter_HasFreeActionPoint *,CThing *	1	yes	accepted									
 006a8af0	CTCInterface_FindInterface	_global	unknown	undefined	0		0	yes	accepted									
 006a8b40	operator()	CThingFilter_HasFreeActionPoint	__thiscall	bool	2	CThingFilter_HasFreeActionPoint *,CThing *	1	yes	accepted									
-006a8be0	IsActiveThreadTerminating	CScriptBase	__thiscall	bool	1	CScriptBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CScriptBase_IsActiveThreadTerminating_006a8be0.cpp
+006a8be0	operator()	CThingFilter_IsRegionEntranceActive	__thiscall	bool	1	CScriptBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\CScriptBase_IsActiveThreadTerminating_006a8be0.cpp
 006a8c00	CThingFilter_IsInSameVolumeContextAsThing	CThingFilter_IsInSameVolumeContextAsThing	__thiscall	undefined	3	CThingFilter_IsInSameVolumeContextAsThing *,CThing *,bool	0	yes	accepted									
 006a8c60	operator()	CThingFilter_IsInSameVolumeContextAsThing	__thiscall	bool	2	CThingFilter_IsInSameVolumeContextAsThing *,CThing *	1	yes	accepted									
 006a8d30	operator()	CThingFilter_CanBeHitByEpicSpell	__thiscall	bool	2	CThingFilter_CanBeHitByEpicSpell *,CThing *	1	yes	accepted									
@@ -16906,7 +16906,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006c8730	std::vector<pair<long,?>>::emplace_back	std::vector<pair<long,?>>	unknown	undefined	0		0	yes	accepted									
 006c8780	TransferBinaryIn	CPersistTraits<CIntelligentPointer<CThing>_>	__thiscall	void	3	CPersistTraits<CIntelligentPointer<CThing>_> *,CMemoryDataInputStream *,CIntelligentPointer<CThing> *	1	yes	accepted									
 006c88d0	TransferBinaryIn	CPersistTraits<COpinionDeed*>	__thiscall	void	3	CPersistTraits<COpinionDeed*> *,CMemoryDataInputStream *,COpinionDeed * *	1	yes	accepted									
-006c8c50	IsBlocking	CThingCreatureBase	__thiscall	bool	1	CThingCreatureBase *	1	yes	accepted									
+006c8c50	operator()	CThingFilter_IsAlliedWithFaction	__thiscall	bool	1	CThingCreatureBase *	1	yes	accepted									
 006c8cf0	GetInterfaceType	CTCHeroOpinionDeedLog	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006c8d00	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 006c8d20	CTCHeroOpinionDeedLog::vfunc_8	CTCHeroOpinionDeedLog	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -33416,7 +33416,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099a2d0	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBase_CBase_0099a2d0.cpp
 0099a2e0	~CBaseClass	CBaseClass	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBase_RestoreVTable_0099a2e0.cpp
 0099a2f0	CBaseClassNonCopyable	CBaseClassNonCopyable	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBase_CBase_0099a2f0.cpp
-0099a300	~CBaseClass	CBaseClass	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBase_RestoreVTable_0099a300.cpp
+0099a300	~CBaseClassNonCopyable	CBaseClassNonCopyable	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBase_RestoreVTable_0099a300.cpp
 0099a310	CInitBaseClass	CInitBaseClass	__thiscall	undefined	1	CInitBaseClass *	0	yes	accepted									
 0099a330	IsValid	CInitBaseClass	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_0099a330.cpp
 0099a340	CInitBaseClass::Validate	CInitBaseClass	__thiscall	void	1	CInitBaseClass *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CInitBaseClass_Validate_0099a340.cpp
@@ -43724,7 +43724,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0ac00	OnInitialActivate	CTCElectrocutedEffect	__thiscall	void	1	CTCElectrocutedEffect *	1	yes	accepted									
 00c0ac30	Container_EmplaceBack_IfSmall_2	_global	unknown	undefined	0		0	yes	accepted									
 00c0acc0	MultiplyMaskedFactors	_global	unknown	undefined	0		0	yes	accepted									
-00c0ad10	CShaderResource_ConstructFromBitset	_global	unknown	undefined	0		0	yes	accepted									
+00c0ad10	DescribeBitset_00c0ad10	_global	unknown	undefined	0		0	yes	accepted									
 00c0ae70	ConstructString_SetCharMask	_global	unknown	undefined	0		0	yes	accepted									
 00c0aee0	ConstructString	_global	__fastcall	bool	2	CWideString *,long	1	yes	accepted									
 00c0af00	ConstructString	_global	__fastcall	bool	2	CWideString *,long	1	yes	accepted									
@@ -43747,7 +43747,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0b9f0	Release	CString	unknown	undefined	0		0	yes	accepted									
 00c0ba40	~CString	CString	unknown	undefined	0		0	yes	accepted									
 00c0bb70	Find	CString	unknown	undefined	0		0			discovered	gapscan							
-00c0bc20	CCharString_ReverseFind	_global	unknown	undefined	0		0	yes	accepted									
+00c0bc20	ReverseFind	CString	unknown	undefined	0		0	yes	accepted									
 00c0bc50	Find	CString	unknown	undefined	0		0			discovered	gapscan							
 00c0bcc0	_Cons_val<std::allocator<std::pair<CCharString,CCharString>_>,std::pair<CCharString,CCharString>,std::pair<class_CCharString,class_CCharString>_>	_Cons_val<std::allocator<std::pair<CCharString,CCharString>_>,std::pair<CCharString,CCharString>,std	__fastcall	void	3	allocator<std::pair<CCharString,CCharString>_> *,pair<CCharString,CCharString> *,pair<class_CCharString,class_CCharString> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\ConsvalstdallocatorstdpairCCharStringCCharStringstdpairCCharStringCCharStringstd_pairclassCCharStringclassCCharString_00c0bcc0.cpp
 00c0bce0	operator==	CDefString	__thiscall	bool	2	CDefString *,char *	1	yes	accepted									
@@ -43755,7 +43755,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0bda0	CCharString_AllocFromSize	_global	unknown	undefined	0		0	yes	accepted									
 00c0be20	RefcountedData_Copy	_global	unknown	undefined	0		0	yes	accepted									
 00c0bee0	CCharString::SetDataLength	CCharString	unknown	undefined	0		0	yes	accepted									
-00c0bf90	CCharString_AllocFromSize	_global	unknown	undefined	0		0	yes	accepted									
+00c0bf90	AllocCopy	CString	unknown	undefined	0		0	yes	accepted									
 00c0bf9b	CCharString_CopyRange_FromOffset	_global	unknown	undefined	0		0	yes	accepted									
 00c0bfe0	Std_Allocator_Construct	_global	unknown	undefined	0		0	yes	accepted									
 00c0c060	CCharString_SetData	_global	unknown	undefined	0		0	yes	accepted									
@@ -43773,8 +43773,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0ce50	Replace	CString	unknown	undefined	0		0	yes	accepted									
 00c0d1b0	CCharString_FormatVarArgs	_global	unknown	undefined	0		0	yes	accepted									
 00c0d740	TrimRight	CString	unknown	undefined	0		0	yes	accepted									
-00c0d7c0	CCharString::RemoveAllOccurrences	CCharString	unknown	undefined	0		0	yes	accepted									
-00c0d970	CCharString::RemoveAllOccurrencesAndMove	CCharString	unknown	undefined	0		0	yes	accepted									
+00c0d7c0	TrimRight	CString	unknown	undefined	0		0	yes	accepted									
+00c0d970	TrimLeft	CString	unknown	undefined	0		0	yes	accepted									
 00c0dab0	CString	CString	unknown	undefined	0		0	yes	accepted									
 00c0dbb0	GetHash	CString	__thiscall	void	2	CAnimationSet *,CAnimationEntry *	1	yes	accepted									
 00c0dcf0	CCharString_InsertDataWrapper	_global	unknown	undefined	0		0	yes	accepted									
@@ -43791,10 +43791,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0df00	operator<<(long)	CString	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df00.cpp
 00c0df10	operator<<(unsigned long)	CString	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df10.cpp
 00c0df20	operator<<(void const *)	CString	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\operatorNScriptCPredicateAndNScriptCPredicateAndNScriptCPredicateAndNScriptCPred_CIsThingAlive_00c0df20.cpp
-00c0df50	CCharString::SubstringToNewString	CCharString	unknown	undefined	0		0	yes	accepted									
-00c0e0f0	CShaderResource_Assign_Range	_global	unknown	undefined	0		0	yes	accepted									
-00c0e1f0	CCharString::LeftSubstring	CCharString	unknown	undefined	0		0	yes	accepted									
-00c0e360	CCharString::GetFileNameWithoutExtension	CCharString	unknown	undefined	0		0	yes	accepted									
+00c0df50	Mid	CString	unknown	undefined	0		0	yes	accepted									
+00c0e0f0	Right	CString	unknown	undefined	0		0	yes	accepted									
+00c0e1f0	Left	CString	unknown	undefined	0		0	yes	accepted									
+00c0e360	GetFileNameWithoutExtension	CString	unknown	undefined	0		0	yes	accepted									
 00c0e440	Mid	CString	unknown	undefined	0		0	yes	accepted									
 00c0e580	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CBase_CBase_00c0e580.cpp
 00c0e590	sub_00c0e590	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -46346,7 +46346,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c44bc0	sub_00c44bc0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c44bd0	ProcessEvents	CAmbientEmitter	unknown	undefined	0		0	yes	accepted									
 00c44c40	sub_00c44c40	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00c44c50	CGame_InitializeThingFilters	_global	unknown	undefined	0		0	yes	accepted									
+00c44c50	InitializeThingFilters	CAmbientEmitter	unknown	undefined	0		0	yes	accepted									
 00c44ce0	AcquireSounds	CAmbientEmitter	unknown	undefined	0		0	yes	accepted									
 00c44d30	ClearEvents	CAmbientEmitter	unknown	undefined	0		0	yes	accepted									
 00c44d80	CSBAgents	CSBAgents	__thiscall	undefined	3	CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *	0	yes	accepted									
@@ -47094,7 +47094,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c61c00	CArrayBase_GetRandomElement	_global	unknown	undefined	0		0	yes	accepted									
 00c61c50	Clear	CGameEventPackage	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\Clear_Clear_00c61c50.cpp
 00c61c60	GetCount	CPKArray	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\global_DrawGetEnvironment_00c61c60.cpp
-00c61c70	CThingFilter_SolidToThing	CThingFilter_SolidToThing	__thiscall	undefined	2	CThingFilter_SolidToThing *,CThing *	0	yes	accepted									
+00c61c70	CAmbientEvent	CAmbientEvent	__thiscall	undefined	2	CThingFilter_SolidToThing *,CThing *	0	yes	accepted									
 00c61c90	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\E2_E2_00c61c90.cpp
 00c61ca0	ResolveMovementBandType	CThingPlayerCreature	__thiscall	void	1	CThingPlayerCreature *	1	yes	accepted									
 00c61ce0	Getter_TripleDeref	_global	unknown	undefined	0		0	yes	review-low	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\c6\0x00C61CE0_global_Getter_TripleDeref.cpp	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\global_GetterTripleDeref_00c61ce0.cpp
