@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 53,005 of 57,613 known functions (92.0%), 45,593 of the original 49,568 (92.0%); 174 `retail_asm`,
+  never hand-edit): 53,062 of 57,613 known functions (92.1%), 45,645 of the original 49,568 (92.1%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -71,6 +71,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   (`chunk_history.tsv`, `$S` dir gone) but was never launched.
 - Naming wave 12: 357 rows respelled, 357/357 recheck (`naming/2026-10-31_wave12/`); LZO 0x00C069D0 landed as
   `toolchain_library` from the vendor .asm.
+
+- ChatGPT pass 10 landed: 57/57 claimed matches regraded and landed, names audited (55 catalog labels fixed, 3 established spellings corrected), 43 unmatched rows retried as chunk 680 (`rebuild/candidates/manual/batches/2026-10-31_chatgpt_pass10/README.md`).
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
