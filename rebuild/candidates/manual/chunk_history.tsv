@@ -25762,3 +25762,13 @@ chunk	address	module	name	length
 673	00ee40f0	CTCTavernGame	~CTCTavernGame	247
 673	00cafc40	_gapscan	sub_00cafc40	15
 673	0121a460	_gapscan	sub_0121a460	139
+674	00ca5200	_gapscan	sub_00ca5200	14
+674	0121a7ca	_gapscan	sub_0121a7ca	177
+674	0121a4f0	_gapscan	sub_0121a4f0	139
+674	0121a580	_gapscan	sub_0121a580	139
+674	00ca62d0	_gapscan	sub_00ca62d0	15
+674	005fd410	CTCInventoryMap	GetRegionsToDisplay	451
+674	00f29dc0	CTCInventoryMap	ResetPrimitiveHandles	382
+674	00cbf7fe	_global	PlayCutsceneSound	480
+674	00c057d0	_global	__tr_flush_block	485
+674	00bd9ce0	_global	TexturePool_Clear	488
