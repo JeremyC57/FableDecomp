@@ -25872,3 +25872,13 @@ chunk	address	module	name	length
 686	00b801f0	_global	Vector_Insert_3Floats	523
 686	00ca4570	_global	Math_ApplyDampeningFilter	398
 686	00ac97d0	_global	QuadricOptimiser_RemapAndAccumulateCosts	535
+687	00c68d70	_global	ScriptCommand_SetLightAttributes	542
+687	00ca2480	_global	CurveInterpolation_ValidateSplineQuality	542
+687	00cb09a0	_global	OS_WaitForMultipleObjectsWithMessages	520
+687	00a0f4b0	_global	RenderList_ProcessLargeInsert	570
+687	00a3ef00	_global	CMainGameComponent_Initialize	561
+687	00aca5f0	_global	QuadricOptimiser_NormalizeQuadricWeights	570
+687	00c04020	_global	gen_bitlen	563
+687	00c61d10	_global	CRegion_UpdateMouseCursorVisuals	581
+687	00c733d0	_global	Audio_ApplyEffectProperties	610
+687	00c73af0	_global	NHeroInformationScreens_CreateScreen	672
