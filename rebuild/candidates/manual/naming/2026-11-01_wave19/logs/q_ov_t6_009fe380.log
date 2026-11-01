@@ -1,0 +1,14 @@
+edited 0041ac20 nested CFrameData : CResource, 1 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 0041c260 nested CFrameData : CResource, 1 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 009fe550 nested CFrameData : CResource, 1 helper(s) templated, 0 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z']
+edited 009fe620 nested CFrameData, 0 helper(s) templated, 0 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 009ff8d0 nested CFrameData : CResource, 1 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 00b9bcc0 nested CFrameData : CResource, 0 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 00ba9360 nested CFrameData : CResource, 1 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 00ba95d0 nested CFrameData : CResource, 1 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+edited 00ba9a70 nested CFrameData : CResource, 1 helper(s) templated, 1 InternalGetFrameForcedLoading respelled +u ['??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z', '?BeginLoading@CFrameData@CGraphicInfoFrame@@QAEXKK@Z'] -u ['??0CFrameData@@QAE@PAVCGraphicInfoFrame@@@Z', '?BeginLoading@CFrameData@@QAEXKK@Z']
+skip 00bec000 0 definitions of CFrameData
+skip 00bec470 0 definitions of CFrameData
+skip 00bec950 0 definitions of CFrameData
+skip 00a00d90 0 definitions of CFrameData
+skip 0041b550 nested in a namespace / class

@@ -1,0 +1,12 @@
+edited 009c80f0 moved NGameText::CDataBank::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CDataBank@NGameText@@QBEKK@Z']
+edited 009c8340 moved NGameText::CDataBank::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CDataBank@NGameText@@QBEKK@Z']
+skip 009d5260 moved CBankFileAsync::GetEntryDataSize -> GetEntryDataSize x1 :: compile: ed\00\9d\CBankFileAsyncEntry_CBankFileAsyncEntry_009d5260.cpp(37) : error C2248: 'CBankFileAsync::Align' : cannot access private member declared in class 'CBankFileAsync'
+skip 009d58d0 moved CBankFileAsync::GetEntryDataSize -> GetEntryDataSize x1 :: compile: \src\compiled\00\9d\CBankFileAsync_GetAsyncEntry_009d58d0.cpp(78) : error C2248: 'CBankFileAsync::Align' : cannot access private member declared in class 'CBankFileAsync'
+edited 00a24a80 inplace CBankFile::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CBankFile@@QAEKK@Z']
+edited 00a25bd0 inplace CBankFile::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CBankFile@@QAEKK@Z']
+edited 00a26730 moved CBankFileAsync::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CBankFileAsync@@QAEKK@Z']
+edited 00a39c20 moved CBankFileAsync::Method -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?Method@CBankFileAsync@@QAEHH@Z']
+skip 00a42980 moved BankNative::GetEntryDataSize -> GetEntryDataSize x1 :: compile: b1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\a4\CLipSyncDataBankEntry_BeginLoading_00a42980.cpp(43) : error C2011: 'CBankFile' : 'class' type redefinition | hpad\naming\w19\ov_final\rebuild\src\compiled\00\a4\CLipSyncDataBankEntry_BeginLoading_00a42980.cpp(66) : error C2039: 'GetEntryDataSize' : is not a member of 'CBankFile'
+skip 00a62120 inplace CBankFile::GetEntryDataSize -> GetEntryDataSize x1 :: compile: \compiled\00\a6\CShaderBankEntry_CShaderBankEntry_00a62120.cpp(171) : error C2248: 'CBankFile::ReadEntryData' : cannot access private member declared in class 'CBankFile'
+edited 00af1360 moved CBankFileAsync::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CBankFileAsync@@QAEKK@Z']
+edited 00b41fa0 inplace CBankFile::GetEntryDataSize -> GetEntryDataSize x1 +u ['?GetEntryDataSize@CBankFile@@QBEKK@Z'] -u ['?GetEntryDataSize@CBankFile@@QAEKK@Z']

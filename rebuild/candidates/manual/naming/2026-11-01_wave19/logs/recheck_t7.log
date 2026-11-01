@@ -1,0 +1,138 @@
+addr       parity           behav  name
+00463334   WARN RELOC_NAME: ?clear@CStringLongMap@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+00463334   WARN RELOC_NAME: ?TransferMapOut_0046367a@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 0046367a labelled 'GFSerialiseMultiMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00463334   WARN RELOC_NAME: ?TransferMapIn_00463732@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 00463732 labelled '_global::GFSerialiseMultiMapBinaryIn'
+00463334   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+0047550f   WARN RELOC_NAME: ?find_00475861@CStringLongMap@@QAEPAUSMapNode@@ABVCCharString@@@Z -> 00475861 labelled 'std::_Rb_tree<CCharString, pair<const CCharString, long>, _Select1st, less<CCharString> >::_M_find'
+0047550f   WARN RELOC_NAME: ?insert_004758e3@CStringLongMap@@QAE?AUCStringLongInsertResult@@ABUCStringLongPair@@@Z -> 004758e3 labelled 'std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::less<CCharString>>::insert_unique'
+0047550f   WARN RELOC_NAME: ?TransferMapOut_00475a51@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 00475a51 labelled 'GFSerialiseMapBinaryOut<EGameAction, CCharString, std::less<CCharString>>'
+0047550f   WARN RELOC_NAME: ?TransferMapIn_00475aa6@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 00475aa6 labelled '_global::GFSerialiseMapBinaryIn'
+0047550f   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+004b0c80   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b0c80   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b0c80   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b0c80   RELOCATION_MATCH PASS   CQuestManager::GetActiveQuestCardFromScriptName
+004b1340   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b1340   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b1340   WARN RELOC_NAME: ?IsVignette@CTCQuestCard@@QBE_NXZ -> 007022e0 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+004b1340   RELOCATION_MATCH PASS   CQuestManager::IsActiveQuestBetweenQuestStartAndFinishScreensInRegion
+00530830   RELOCATION_MATCH PASS   NUISystem::CComponent::FindChildForward
+00712d70   RELOCATION_MATCH PASS   CTCScriptedControl::IsActionRunning
+0081e9f0   WARN RELOC_NAME: ?GetName@CModeBlock@@QAEAAVCCharString@@XZ -> 0082e250 labelled 'CScriptedMapBrush::GetBrushName'
+0081e9f0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+0081e9f0   RELOCATION_MATCH PASS   CMapBrushList_0081e9f0::GetScriptedMapBrush
+008a0260   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a0260   WARN RELOC_NAME: ?OnBestEnemyTargetChanged@CThingPlayerCreature_Retail@@QAEXXZ -> 006d5ab0 labelled '_global::Forward_ForceResetWithOutput_via0x1a8_006d5ab0'
+008a0260   RELOCATION_MATCH PASS   CGameScriptInterface::GiveThingBestEnemyTarget
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00a09dc0   WARN SHARED_HEADER_AVAILABLE CMeshBankManager
+00a09dc0   RELOCATION_MATCH PASS   CMeshBankManager::CloseMeshBank
+00cb7aa0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb7aa0   RELOCATION_MATCH PASS   CScriptBase::KillSpawnedFunction
+00cb7b60   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb7b60   WARN RELOC_NAME: ?SetFuncAsPaused@CSpawnedFuncBaseRetail@@QAEX_N@Z -> 00f359f0 labelled '_global::SetMember_byte0x28_00f359f0'
+00cb7b60   RELOCATION_MATCH PASS   CScriptBase::OnRegionUnloaded
+00cd5090   RELOCATION_MATCH PASS   _global::GetNumberFromDataMarker
+00d1d7d0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00d1d7d0   RELOCATION_MATCH PASS   NScript::CQ_BreakSiegeScript::WatchForTermination
+00d6cdc0   WARN RELOC_NAME: ?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__false_type@@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d6cdc0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeEvilScript::MonitorRegionPresence
+00e1fcf0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fcf0   RELOCATION_MATCH PASS   CQR_EscortTraderScript::WatchForExpressionFollow
+00e24260   RELOCATION_MATCH PASS   CQR_EscortTraderScript::GetTraderRandomSpeechEnabled
+00e6a0b0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::WatchForInsideChapel
+00e9cb20   RELOCATION_MATCH PASS   NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern
+00f0a470   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f0a470   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::WatchForQuestSuccess
+
+WINS: 19
+  00463334 RELOCATION_MATCH CPersistContext::TransferMap
+  0047550f RELOCATION_MATCH CPersistContext::TransferMap
+  004b0c80 RELOCATION_MATCH CQuestManager::GetActiveQuestCardFromScriptName
+  004b1340 RELOCATION_MATCH CQuestManager::IsActiveQuestBetweenQuestStartAndFinishScreensInRegion
+  00530830 RELOCATION_MATCH NUISystem::CComponent::FindChildForward
+  00712d70 RELOCATION_MATCH CTCScriptedControl::IsActionRunning
+  0081e9f0 RELOCATION_MATCH CMapBrushList_0081e9f0::GetScriptedMapBrush
+  008a0260 RELOCATION_MATCH CGameScriptInterface::GiveThingBestEnemyTarget
+  00a09dc0 RELOCATION_MATCH CMeshBankManager::CloseMeshBank
+  00cb7aa0 RELOCATION_MATCH CScriptBase::?KillSpawnedFunction@CScriptBase
+  00cb7b60 RELOCATION_MATCH CScriptBase::?OnRegionUnloaded@CScriptBase
+  00cd5090 RELOCATION_MATCH _global::?GetNumberFromDataMarker@@
+  00d1d7d0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?WatchForTermination@CQ_BreakSiegeScript@NScript@@
+  00d6cdc0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::MonitorRegionPresence
+  00e1fcf0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionFollow@CQR_EscortTraderScript@@
+  00e24260 RELOCATION_MATCH CQR_EscortTraderScript::GetTraderRandomSpeechEnabled
+  00e6a0b0 RELOCATION_MATCH CV_ChapelOfEvilScript::WatchForInsideChapel
+  00e9cb20 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern
+  00f0a470 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::WatchForQuestSuccess
+addr       parity           behav  name
+00475026   WARN RELOC_NAME: ?clear@CStringLongMap@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+00475026   WARN RELOC_NAME: ?TransferMapOut_004314c8@@YIXPAVCDataOutputStream@@AAUCStringLongMap@@@Z -> 004314c8 labelled 'GFSerialiseMapBinaryOut<long, CCharString, std::less<CCharString>>'
+00475026   WARN RELOC_NAME: ?TransferMapIn_0043151d@@YIXPAVCMemoryDataInputStream@@AAUCStringLongMap@@@Z -> 0043151d labelled '_global::GFSerialiseMapBinaryIn'
+00475026   RELOCATION_MATCH PASS   CPersistContext::TransferMap
+004b0aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b0aa0   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b0aa0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b0aa0   RELOCATION_MATCH PASS   CQuestManager::RemoveActiveQuestCard
+004b0fc0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b0fc0   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b0fc0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b0fc0   RELOCATION_MATCH PASS   CQuestManager::IsQuestCompleted
+00530780   RELOCATION_MATCH PASS   NUISystem::CComponent::FindChild
+00712ce0   RELOCATION_MATCH PASS   CTCScriptedControl::TerminateActionByName
+0081e960   WARN RELOC_NAME: ?GetName@CModeBlock@@QAEAAVCCharString@@XZ -> 0082e250 labelled 'CScriptedMapBrush::GetBrushName'
+0081e960   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+0081e960   RELOCATION_MATCH PASS   CMapBrushList_0081e960::GetScriptedMapBrush
+00898c40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00898c40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898c40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898c40   RELOCATION_MATCH PASS   CGameScriptInterface::GiveHeroItemsFromContainer
+009f8290   WARN SHARED_HEADER_AVAILABLE CBankFile
+009f8290   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009f8290   RELOCATION_MATCH PASS   CGraphicBankManager::CloseGraphicBank
+00a37060   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00a37060   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+00a37060   RELOCATION_MATCH PASS   CClassFactory::GetClassNumberFromName
+00cb7b00   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb7b00   WARN RELOC_NAME: ?SetFuncAsPaused@CSpawnedFuncBaseRetail@@QAEX_N@Z -> 00f359f0 labelled '_global::SetMember_byte0x28_00f359f0'
+00cb7b00   RELOCATION_MATCH PASS   CScriptBase::OnRegionLoaded
+00cd4ff0   RELOCATION_MATCH PASS   _global::GetStringFromDataMarker
+00d151d0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d151d0   RELOCATION_MATCH PASS   CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+00d1e3e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d1e3e0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d1e3e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1e3e0   RELOCATION_MATCH PASS   CGuardHoldingBandit::Main
+00d773e0   WARN RELOC_NAME: ??$_M_insert_overflow@U__false_type@@@CCharStringVector@@QAEXPAVCCharString@@ABV1@ABU__false_type@@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d773e0   RELOCATION_MATCH PASS   CQ_HangingTreeGoodScript::MonitorRegionPresence
+00e1fef0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fef0   RELOCATION_MATCH PASS   CQR_EscortTraderScript::WatchForExpressionWait
+00e57020   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e57020   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e57020   RELOCATION_MATCH PASS   CBS_Teacher::GetBookSpecificArgs
+00e6b750   RELOCATION_MATCH PASS   NScript::CV_ChapelOfEvilScript::WatchForRegionEntry
+00edbd80   RELOCATION_MATCH PASS   NScript::CV_TempleOfLightScript::WatchForInsideTemple
+00f0b130   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f0b130   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::DoQuest
+
+WINS: 19
+  00475026 RELOCATION_MATCH CPersistContext::TransferMap
+  004b0aa0 RELOCATION_MATCH CQuestManager::RemoveActiveQuestCard
+  004b0fc0 RELOCATION_MATCH CQuestManager::IsQuestCompleted
+  00530780 RELOCATION_MATCH NUISystem::CComponent::FindChild
+  00712ce0 RELOCATION_MATCH CTCScriptedControl::TerminateActionByName
+  0081e960 RELOCATION_MATCH CMapBrushList_0081e960::GetScriptedMapBrush
+  00898c40 RELOCATION_MATCH CGameScriptInterface::?GiveHeroItemsFromContainer@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+  009f8290 RELOCATION_MATCH CGraphicBankManager::CloseGraphicBank
+  00a37060 RELOCATION_MATCH CClassFactory::GetClassNumberFromName
+  00cb7b00 RELOCATION_MATCH CScriptBase::?OnRegionLoaded@CScriptBase
+  00cd4ff0 RELOCATION_MATCH _global::?GetStringFromDataMarker@@
+  00d151d0 RELOCATION_MATCH CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+  00d1e3e0 RELOCATION_MATCH CGuardHoldingBandit::Main
+  00d773e0 RELOCATION_MATCH CQ_HangingTreeGoodScript::MonitorRegionPresence
+  00e1fef0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionWait@CQR_EscortTraderScript@@
+  00e57020 RELOCATION_MATCH CBS_Teacher::GetBookSpecificArgs
+  00e6b750 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@
+  00edbd80 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
+  00f0b130 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::DoQuest

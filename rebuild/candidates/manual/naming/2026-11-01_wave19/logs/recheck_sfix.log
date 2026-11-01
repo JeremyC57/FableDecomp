@@ -1,0 +1,34 @@
+addr       parity           behav  name
+007fbc90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007fbc90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007fbc90   WARN SHARED_HEADER_AVAILABLE CWorld
+007fbc90   WARN SHARED_HEADER_AVAILABLE CPlayer
+007fbc90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fbc90   WARN RELOC_NAME: ?GetWorld_00686d60@CTCBase@@QAEPAVCWorld@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+007fbc90   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007fbc90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007fbc90   RELOCATION_MATCH PASS   CTCKraken::GetCentreMarker
+0095ab50   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ab50   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0095ab50   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+0095b020   WARN SHARED_HEADER_AVAILABLE CWorld
+0095b020   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095b020   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b020   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095b020   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0095b020   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::GoToSpawnPoint
+00972830   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00972830   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00972830   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00972830   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00972830   WARN SHARED_HEADER_AVAILABLE CWorld
+00972830   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00972830   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesBase::SetupArena
+
+WINS: 4
+  007fbc90 RELOCATION_MATCH CTCKraken::GetCentreMarker
+  0095ab50 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+  0095b020 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::GoToSpawnPoint
+  00972830 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::SetupArena

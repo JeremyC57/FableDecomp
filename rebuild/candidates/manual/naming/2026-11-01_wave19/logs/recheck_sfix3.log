@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0095b3e0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095b3e0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b3e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095b3e0   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::SetupArena
+
+WINS: 1
+  0095b3e0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::SetupArena

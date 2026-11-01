@@ -1,0 +1,9 @@
+addr       parity           behav  name
+004dd782   WARN RELOC_NAME: ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z -> 004da68a labelled 'std::pair<long,CCharString>::`scalardeletingdestructor''
+004dd782   RELOCATION_MATCH PASS   std::__destroy_aux<std::pair<long,CCharString>*>
+004e34b2   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JVCCharString@@@std@@@std@@YIXPAU?$pair@JVCCharString@@@0@0ABU__false_type@0@@Z -> 004dd782 labelled 'std::__destroy_aux<std::pair<long,CCharString>*>'
+004e34b2   RELOCATION_MATCH PASS   std::vector<std::pair<long,CCharString>>::~vector
+
+WINS: 2
+  004dd782 RELOCATION_MATCH _global::??$__destroy_aux@PAU?$pair@JVCCharString@@@std@@@std@@YIXPAU?$pair@JVCCharString@@@0@0ABU__false_type@0@@Z
+  004e34b2 RELOCATION_MATCH std::vector<std::pair<long,CCharString>>::??1?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@XZ

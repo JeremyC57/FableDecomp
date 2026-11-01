@@ -1,0 +1,1 @@
+edited 00774b40 moved CTCShop::InitGoodsPlaces -> AddSaleItemPlacesFromThing x1 +u ['?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z'] -u ['?InitGoodsPlaces@CTCShop@@QAEXPAVCThing@@@Z']

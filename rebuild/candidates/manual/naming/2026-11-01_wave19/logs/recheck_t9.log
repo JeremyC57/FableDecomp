@@ -1,0 +1,102 @@
+addr       parity           behav  name
+004051c0   RELOCATION_MATCH PASS   NUISystem::CIME::Shutdown
+00774b40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00774b40   WARN SHARED_HEADER_AVAILABLE CWorld
+00774b40   WARN SHARED_HEADER_AVAILABLE CTCBase
+00774b40   WARN RELOC_NAME: ??0CGoodsPlaceVector@@QAE@ABU0@@Z -> 00777430 labelled 'std::vector<CTCShop::GoodsPlace, std::allocator<CTCShop::GoodsPlace>>::vector'
+00774b40   RELOCATION_MATCH PASS   CTCShop::GetFreeSaleItemPlaces
+009c8340   WARN SHARED_HEADER_AVAILABLE CBankFile
+009c8340   RELOCATION_MATCH PASS   BeginLoading
+009d58d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+  WARN leaf 'CreateEntry' matches no symbol in 009d58d0.obj; graded the largest function
+  WARN leaf 'CreateEntry' matches no symbol in 009d58d0.obj; graded the largest function
+009d58d0   WARN RELOC_NAME: ?DeleteBankFileAsyncEntry@@YIXPAX@Z -> 009d6a60 labelled '_global::DeleteViaVtable0_009d6a60'
+009d58d0   RELOCATION_MATCH PASS   CBankFileAsync::GetAsyncEntry
+00a25bd0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00a25bd0   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a25bd0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00a25bd0   WARN RELOC_NAME: ??0CResourceBase@@QAE@XZ -> 009fbec0 labelled 'CResource::CResource'
+00a25bd0   WARN RELOC_NAME: ?CreateEntry@CMeshDataBank@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z -> 009d58d0 labelled 'CBankFileAsync::GetAsyncEntry'
+00a25bd0   WARN RELOC_NAME: ??4?$CCountedPointer@VCBankFileAsyncData@@@@QAEAAV0@ABV0@@Z -> 009a4440 labelled '_global::CCountedPointer_Set_009a4440'
+00a25bd0   RELOCATION_MATCH PASS   CPhysicsMeshInfo::BeginLoading
+00a39c20   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a39c20   RELOCATION_MATCH PASS   CWADFile::GetLength
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a62120   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a62120   WARN RELOC_NAME: ??$_M_insert_overflow@U__false_type@@@?$CArray@VCCharString@@@@QAEXPAVCCharString@@ABV1@ABU__false_type@@K_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry::CShaderBankEntry
+00af1360   WARN SHARED_HEADER_AVAILABLE CResourceList
+00af1360   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00af1360   WARN SHARED_HEADER_AVAILABLE CBankFile
+00af1360   WARN RELOC_NAME: ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z -> 009d58d0 labelled 'CBankFileAsync::GetAsyncEntry'
+00af1360   WARN RELOC_NAME: ??4?$CCountedPointer@VCBankFileAsyncData@@@@QAEAAV0@ABV0@@Z -> 009a4440 labelled '_global::CCountedPointer_Set_009a4440'
+00af1360   RELOCATION_MATCH PASS   NParticleEngine::CEmitterData::BeginLoading
+00b98de0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveRepeatedStaticMesh::CollectStats
+00c689b0   SRC_FAIL         PASS   CEaxContext::SetSlotProperty
+00caaf10   RELOCATION_MATCH PASS   CBaseFilter::Unregister
+
+WINS: 10
+  004051c0 RELOCATION_MATCH NUISystem::CIME::?Shutdown@CIME@NUISystem@@QAEXXZ
+  00774b40 RELOCATION_MATCH CTCShop::GetFreeSaleItemPlaces
+  009c8340 RELOCATION_MATCH NGameText::CDataBankTextEntry::BeginLoading
+  009d58d0 RELOCATION_MATCH CBankFileAsync::CreateEntry
+  00a25bd0 RELOCATION_MATCH CPhysicsMeshInfo::BeginLoading
+  00a39c20 RELOCATION_MATCH CWADFile::GetLength
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00af1360 RELOCATION_MATCH NParticleEngine::CEmitterData::BeginLoading
+  00b98de0 RELOCATION_MATCH CEngineInternalPrimitiveRepeatedStaticMesh::CollectStats
+  00caaf10 RELOCATION_MATCH CBaseFilter::?Unregister@CBaseFilter
+addr       parity           behav  name
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   WARN RELOC_NAME: ?ImeUi_SetScreenDimension@@YIXII@Z -> 00cb2ee0 labelled '_global::SetCurrentPair_00cb2ee0'
+00405650   RELOCATION_MATCH PASS   CIME::Initialise
+009c80f0   WARN SHARED_HEADER_AVAILABLE CBankFile
+009c80f0   RELOCATION_MATCH PASS   BeginLoading
+009d5260   RELOCATION_MATCH PASS   CBankFileAsyncEntry::CBankFileAsyncEntry
+00a24a80   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00a24a80   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a24a80   WARN SHARED_HEADER_AVAILABLE CResource
+00a24a80   WARN SHARED_HEADER_AVAILABLE CResourceList
+00a24a80   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00a24a80   WARN RELOC_NAME: ?CreateEntry@CMeshDataBank@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z -> 009d58d0 labelled 'CBankFileAsync::GetAsyncEntry'
+00a24a80   WARN RELOC_CONFLICT: ?AddResource@CResourceBank@@QAEXPAVCResource@@@Z -> 009fc3d0 here, 009fc380 in landed 00b2c460
+00a24a80   RELOCATION_MATCH PASS   C3DMeshInfo::BeginLoadingStats
+00a26730   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00a26730   WARN SHARED_HEADER_AVAILABLE CResource
+00a26730   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a26730   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+00a26730   WARN RELOC_NAME: ?CreateEntry@CBankFileAsync@@QAE?AV?$CCountedPointer@VCBankFileAsyncEntry@@@@K@Z -> 009d58d0 labelled 'CBankFileAsync::GetAsyncEntry'
+00a26730   WARN RELOC_NAME: ??4?$CCountedPointer@VCBankFileAsyncData@@@@QAEAAV0@ABV0@@Z -> 009a4440 labelled '_global::CCountedPointer_Set_009a4440'
+00a26730   WARN RELOC_CONFLICT: ?AddResource@CResourceBank@@QAEXPAVCResource@@@Z -> 009fc3d0 here, 009fc380 in landed 00b2c460
+00a26730   RELOCATION_MATCH PASS   C3DAnimationInfo::BeginLoading
+00a42980   WARN RELOC_NAME: ??0ResourceNative@@QAE@XZ -> 009fbec0 labelled 'CResource::CResource'
+00a42980   WARN RELOC_NAME: ?CreateEntry@BankNative@@QAE?AU?$Counted@UAsyncEntry@@@@K@Z -> 009d58d0 labelled 'CBankFileAsync::GetAsyncEntry'
+00a42980   WARN RELOC_NAME: ??4?$Counted@UAsyncData@@@@QAEAAU0@ABU0@@Z -> 009a4440 labelled '_global::CCountedPointer_Set_009a4440'
+00a42980   RELOCATION_MATCH PASS   _global::CIVCountedPointer_Assign_00a42980
+00ab36b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ab36b0   RELOCATION_MATCH PASS   CCountedPointer_00ab3640::Reset
+00b41fa0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00b41fa0   WARN SHARED_HEADER_AVAILABLE CBankFile
+00b41fa0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b41fa0   WARN RELOC_NAME: ??0CByteBuffer@@QAE@K@Z -> 00411910 labelled 'std::vector<char, std::allocator<char>>::vector'
+00b41fa0   WARN RELOC_NAME: ?CreateEntry@CStaticMapBankFile@@QAE?AUCEntryPointer@@K@Z -> 009d58d0 labelled 'CBankFileAsync::GetAsyncEntry'
+00b41fa0   WARN RELOC_NAME: ??0CDataBuffer@@QAE@K@Z -> 00514e20 labelled 'std::vector<unsigned char, std::allocator<unsigned char>>::vector'
+00b41fa0   WARN RELOC_NAME: ?Read@CBankFileAsyncEntry@@QAEXJPAXK@Z -> 009d52b0 labelled 'CEditTransactionBase::ActionSetEngineTheme'
+00b41fa0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00b41fa0   RELOCATION_MATCH PASS   CEngineWorldMap::LoadWaterData
+00bec8b0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveMeshBase::CollectStats
+00caaea0   RELOCATION_MATCH PASS   CBaseFilter::Register
+
+WINS: 10
+  00405650 RELOCATION_MATCH CIME::Initialise
+  009c80f0 RELOCATION_MATCH NGameText::CDataBankGroupEntry::BeginLoading
+  009d5260 RELOCATION_MATCH CBankFileAsyncEntry::CBankFileAsyncEntry
+  00a24a80 RELOCATION_MATCH C3DMeshInfo::BeginLoadingStats
+  00a26730 RELOCATION_MATCH C3DAnimationInfo::BeginLoading@C3DAnimationInfo
+  00a42980 RELOCATION_MATCH _global::BeginLoading
+  00ab36b0 RELOCATION_MATCH CCountedPointer_00ab3640::Reset
+  00b41fa0 RELOCATION_MATCH CEngineWorldMap::LoadWaterData
+  00bec8b0 RELOCATION_MATCH CEngineInternalPrimitiveMeshBase::CollectStats
+  00caaea0 RELOCATION_MATCH CBaseFilter::?Register@CBaseFilter

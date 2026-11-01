@@ -1,0 +1,83 @@
+Counter({'RETIRE': 50, 'ADD': 37, 'KEEP': 12}) removed lines 50 added 37
+NEWDEF 0041ac20 ??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z ??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ ??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ
+NEWDEF 0041c260 ??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z ??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ ??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ
+NEWDEF 00463334 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00475026 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 0047550f ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 004b0aa0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 004b0c80 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 004b0fc0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 004b1340 ?IsEqual@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 004dd782 ??$_Destroy@U?$pair@JVCCharString@@@std@@@std@@YAXPAU?$pair@JVCCharString@@@0@@Z ??$__destroy_aux@PAU?$pair@JVCCharString@@@std@@@std@@YIXPAU?$pair@JVCCharString@@@0@0ABU__false_type@0@@Z ??1?$pair@JVCCharString@@@std@@QAE@XZ ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z
+NEWDEF 004e34b2 ??$_Destroy@U?$pair@JVCCharString@@@std@@@std@@YAXPAU?$pair@JVCCharString@@@0@0@Z ??$__destroy@PAU?$pair@JVCCharString@@@std@@U12@@std@@YAXPAU?$pair@JVCCharString@@@0@00@Z ??0__false_type@std@@QAE@XZ ??1?$_Vector_base@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@XZ ??1?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE
+NEWDEF 00530780 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00530830 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 0063a390 ?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
+NEWDEF 00712ce0 ?SameText@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 00712d70 ?SameText@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 007fbc90 ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z ??1CThingFilter_HasScriptName@@QAE@XZ
+NEWDEF 0081e960 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 0081e9f0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00898c40 ?SameText@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 008a0260 ?SameText@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 008c2240 ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z ??1CThingFilter_HasScriptName@@QAE@XZ
+NEWDEF 0090c1a0 ?GetPBestThing@CThingSearchTools@@QBE_NABVCThingFilter_HasTC@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@@@Z
+NEWDEF 0091a9b0 ?FindThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@AAV?$list@PAVCThingCreatureBase@@@std@@@Z
+NEWDEF 00934920 ?GetPBestThing_00935040@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+NEWDEF 00935ad0 ?GetPBestLeafThing@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@UCThingFilter_IsBurning@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+NEWDEF 00936210 ?GetPBestLeafThing@CThingSearchTools@@QBE_NABV?$CFilter_Bind2@UCThingFilter_OnFire@@VCThingFilter_In2DRange@@@@ABVCThingCompare_Nearest@@PAPAVCThingBuilding@@@Z
+NEWDEF 00936a60 ?GetPBestLeafThing@CThingSearchTools@@QBE_NABVCThingFilter_None@@ABVCThingCompare_Nearest@@PAPAVCThingDeadCreature@@@Z
+NEWDEF 00937b10 ?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsAICreatureAwareOf@@VCThingFilter_IsUnconscious@@VCThingFilter_IsAnAlly@@U?$unary_negate_@VCThingFilter_HasBeenDiscovered@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z
+NEWDEF 00937c20 ?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind3@VCThingFilter_IsAICreatureAwareOf@@VCThingFilter_IsUnconscious@@VCThingFilter_IsAnAlly@@@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z
+NEWDEF 0093cc60 ?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasTrackName@@ABVCThingCompare_Nearest@@PAPAVCThingTrackNode@@@Z
+NEWDEF 00942d40 ?GetPBestThing@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+NEWDEF 00942ee0 ?FindThings@CThingSearchTools@@QBEXABUCThingFilter_And3@@AAUCThingPtrVector@@@Z ?GetPBestThing@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z
+NEWDEF 0095ab50 ??$GetPFirstThingInRoughArea@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z ??1CThingFilter_HasScriptName@@QAE@XZ
+NEWDEF 0095b020 ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z ??1CThingFilter_HasScriptName@@QAE@XZ
+NEWDEF 0095b3e0 ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z ??1CThingFilter_HasScriptName@@QAE@XZ
+NEWDEF 00963640 ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+NEWDEF 00965210 ?GetPBestThing@CThingSearchTools@@QBE_NABUCFilter_Bind4@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z
+NEWDEF 00965f30 ?GetPBestThing@CThingSearchTools@@QBE_NABV?$CFilter_Bind3@VCThingFilter_ObjectHasProperty@@VCThingFilter_HasFreeActionPoint@@VCThingFilter_HasTC@@@@ABVCThingCompare_Nearest@@PAPAVCThingObject@@@Z
+NEWDEF 00972830 ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z ??1CThingFilter_HasScriptName@@QAE@XZ
+NEWDEF 0097b900 ?GetPFirstThing@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z
+NEWDEF 0099f560 ?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ
+NEWDEF 009f8290 ?SameText@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 009fe550 ?Assign@?$ResourcePointer@VCFrameData@CGraphicInfoFrame@@@@QAEXPAVCFrameData@CGraphicInfoFrame@@@Z
+NEWDEF 009fe620 ??4?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAV0@PAVCFrameData@CGraphicInfoFrame@@@Z ?Reset@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEXXZ
+NEWDEF 009ff6b0 ?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z
+NEWDEF 009ff8d0 ??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z ??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ ??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ
+NEWDEF 00a09dc0 ?SameText@?$CBasicString@D@@QBE_NABV1@@Z
+NEWDEF 00a37060 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00a89320 ?GetVertexCount@C3DMesh2@@QBEKXZ
+NEWDEF 00a89350 ?GetTriangleCount@C3DMesh2@@QBEKXZ
+NEWDEF 00ab1480 ??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAJ@Z ??4?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@QAEAAV0@ABV0@@Z
+NEWDEF 00ab3640 ??_GCBoneInfo@C3DAnimationBuilder@@QAEPAXI@Z ?DeleteData@?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@SIXPAX@Z
+NEWDEF 00b9bcc0 ??4?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAV0@PAVCFrameData@CGraphicInfoFrame@@@Z ??C?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?Reset@?$CIVCountedPointer@VCFrameData@CGraphicInfoFrame@@@@QAEXXZ
+NEWDEF 00ba9360 ??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z ??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ ??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ
+NEWDEF 00ba95d0 ??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z ??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ ??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ
+NEWDEF 00ba9a70 ??4?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QAEAAU0@PAVCFrameData@CGraphicInfoFrame@@@Z ??B?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBE_NXZ ??C?$CFrameDataPointer@VCFrameData@CGraphicInfoFrame@@@@QBEPAVCFrameData@CGraphicInfoFrame@@XZ ?DecRef@CFrameData@CGraphicInfoFrame@@QAEXXZ
+NEWDEF 00c25860 ?Cross@C3DVector@@QBE?BV1@ABV1@@Z
+NEWDEF 00c689b0 ?SetSlotLock@CEaxContext@@QAEJKJ@Z ?SetSlotProperty@CEaxContext@@QAEJJABUSEaxSlotProperties@@@Z
+NEWDEF 00c73770 ?EnsureWindowsVersionDetected_00c73770@@YIPAXPAX@Z
+NEWDEF 00c74ce0 ?Apply@CDspGain@@QAEXPBUSGainParams@@PBMPAM_NI@Z
+NEWDEF 00c74d30 ?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAM_NII@Z
+NEWDEF 00cb7aa0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00cb7b00 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00cb7b60 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00cd4ff0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00cd5090 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00d151d0 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00d1d7d0 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00d1e3e0 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00d6cdc0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00d773e0 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00e1fcf0 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00e1fef0 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00e24260 ??8?$CBasicString@D@@QBE_NABV0@@Z
+NEWDEF 00e57020 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00e6a0b0 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00e6b750 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00e9cb20 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00edbd80 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00f0a470 ??8?$CBasicString@D@@QBE_NPBD@Z
+NEWDEF 00f0b130 ??8?$CBasicString@D@@QBE_NPBD@Z

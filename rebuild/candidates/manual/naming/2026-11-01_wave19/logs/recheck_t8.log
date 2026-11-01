@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0063a390   WARN RELOC_NAME: ?GetThemeSizeZAt@CMap@@QBEMABVC3DVector@@@Z -> 008200b0 labelled 'CMap::GetThemeMinCameraHeightAtPosition'
+0063a390   RELOCATION_MATCH PASS   CWorldMap::GetGroundSizeZAt
+00912700   WARN RELOC_NAME: ?GetThemeSizeZAt@CWorldMapMethods@@QBEMABVC3DVector@@@Z -> 0063a390 labelled 'CWorldMap::GetGroundSizeZAt'
+00912700   RELOCATION_MATCH PASS   CAIStateGroup_FlyingThingBase::GetRandomFlightPos
+009c4f20   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock
+009c4f20   WARN SHARED_HEADER_AVAILABLE CCompressorZlib
+009c4f20   RELOCATION_MATCH PASS   CFileInstaller::ProcessAlways
+00c25860   MATCH            PASS   C3DVector::CrossProduct
+00c73770   RELOCATION_MATCH PASS   CDefString::SetDefaultString
+
+WINS: 5
+  0063a390 RELOCATION_MATCH CWorldMap::?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
+  00912700 RELOCATION_MATCH CAIStateGroup_FlyingThingBase::GetRandomFlightPos
+  009c4f20 RELOCATION_MATCH CFileInstaller::?ProcessAlways@CFileInstaller@@IAEXXZ
+  00c25860 MATCH C3DVector::?Cross@C3DVector@@QBE?BV1@ABV1@@Z
+  00c73770 RELOCATION_MATCH CDefString::?EnsureWindowsVersionDetected_00c73770@@YIPAXPAX@Z

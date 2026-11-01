@@ -1,0 +1,7 @@
+addr       parity           behav  name
+  WARN leaf '?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z' matches no symbol in 00c74d30.obj; graded the largest function
+  WARN leaf '?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z' matches no symbol in 00c74d30.obj; graded the largest function
+00c74d30   RELOCATION_MATCH PASS   CDspGain::Crossfade
+
+WINS: 1
+  00c74d30 RELOCATION_MATCH CDspGain::?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z

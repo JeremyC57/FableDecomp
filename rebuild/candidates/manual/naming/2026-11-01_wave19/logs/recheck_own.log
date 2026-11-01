@@ -1,0 +1,23 @@
+addr       parity           behav  name
+0099f560   RELOCATION_MATCH PASS   CCharString::RemoveWhiteSpaceBeginEnd
+009ff6b0   WARN SHARED_HEADER_AVAILABLE CResource
+009ff6b0   WARN RELOC_NAME: ?CompleteLoad@CFrameData_009ff6b0@@QAEXXZ -> 009fc440 labelled 'CTCActivationTrigger::OnKill'
+009ff6b0   RELOCATION_MATCH PASS   CGraphicInfoFrame::InternalGetFrameForcedLoading
+00a89320   MATCH            PASS   C3DMesh2::GetVertexCount
+00a89350   MATCH            PASS   C3DMesh2::GetTriangleCount
+00ab1480   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ab1480   SRC_FAIL         PASS   _global::Move_CountedPointer_00ab1480
+00ab3640   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ab3640   WARN RELOC_NAME: ??1CBoneInfo@C3DAnimationBuilder@@QAE@XZ -> 00ab34c0 labelled 'CEntityBindingRecord_00ab34c0::~CEntityBindingRecord_00ab34c0'
+00ab3640   RELOCATION_MATCH PASS   CCountedPointer<CBoneInfo>::DeleteData
+00caaea0   RELOCATION_MATCH PASS   CBaseFilter::Register
+00caaf10   RELOCATION_MATCH PASS   CBaseFilter::Unregister
+
+WINS: 7
+  0099f560 RELOCATION_MATCH _global::?RemoveWhiteSpaceBeginEnd@CCharString@@QAEXXZ
+  009ff6b0 RELOCATION_MATCH CGraphicInfoFrame::InternalGetFrameForcedLoading
+  00a89320 MATCH C3DMesh2::GetVertexCount
+  00a89350 MATCH C3DMesh2::GetTriangleCount
+  00ab3640 RELOCATION_MATCH _global::?DeleteData@?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@SIXPAX@Z
+  00caaea0 RELOCATION_MATCH CBaseFilter::?Register@CBaseFilter
+  00caaf10 RELOCATION_MATCH CBaseFilter::?Unregister@CBaseFilter

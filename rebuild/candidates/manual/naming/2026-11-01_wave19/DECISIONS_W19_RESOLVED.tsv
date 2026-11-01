@@ -1,0 +1,9 @@
+item	address	spelling	evidence	decision (coordinator under the owner delegation 2026-11-01, "do what retail did")
+0x007E5230 on the class-static PPlayerGui model	007e5230	?g_pPlayerGui@@3PAVCPlayerGui@@A kept	three class-static models DIFFER 817v817 / 811v817: VC7.1 swaps two callee-saved reloads after the g_CurrentBet store	DEFERRED, descriptive spelling kept (the one pgui row not on the PDB accessor); open item
+std::__copy spelling at 0x00AB1480	00ab1480	the 5-parameter compiler spelling (Leaf + LABELS)	VC7.1 emits it for the STLport text; retail pops 0Ch; the chunk 685 NAME_FIXES 4-parameter form is in neither PDB	ACCEPTED: the compiler's spelling; the c685 queue row superseded (c686 note row)
+CMap::GetThemeSizeZAt access	008200b0	?GetThemeSizeZAt@CMap@@IBE...	PDB: protected const (IBE); the 0x0063A390 CWorldMap row keeps a public CMap model	ACCEPTED as header debt (the CWorldMap row reaches it as a derived class once engine/CMap.h carries the protected member; migration wave 10)
+g_defStringInit	0143ccc0	descriptive	no PDB name (the 0x00C73770 once-flag)	KEPT descriptive
+0x00AB34C0	00ab34c0	??1CBoneInfo@C3DAnimationBuilder@@QAE@XZ	FableWin; catalog CEntityBindingRecord_00ab34c0 propagated	ACCEPTED: label applied
+0x007E5D20's GetPFirstThing<HasTrackName> 0x007E6EC0	007e6ec0	-	not verified (different target from the 0x007FD110 misnaming)	queued for verification (c686 note row)
+per-row c685 leftovers	00ab2bd0 00bec680 00a36ec0	-	per-row re-models	DEFERRED to wave 20
+libpk CHandleBasedMemoryPool copy	00c28690	-	wave 15 decision	DEFERRED (stands); 0x00440730 HOLD

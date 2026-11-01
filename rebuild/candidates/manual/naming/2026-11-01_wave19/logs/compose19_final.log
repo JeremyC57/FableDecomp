@@ -1,0 +1,15 @@
+rfail h19_stl.py ok 4 already 0 other 0 
+stools fam_stools19.py {'edited': 25, 'skip': 6, 'already': 0} 
+stools h19_sfix.py ok 8 already 0 other 0 
+c684 h19_c684.py ok 16 already 9 other 0 
+gif fam_gif19.py {'edited': 9, 'skip': 5, 'already': 0} 
+gif h19_own_gif.py ok 3 already 0 other 0 
+c685 h19_c685.py ok 16 already 0 other 0 
+c685 h19_own.py ok 7 already 0 other 0 
+c685 fam_q18.py {'edited': 1, 'skip': 0, 'already': 0} 
+c685 fam_q18.py {'edited': 8, 'skip': 4, 'already': 0} 
+c685 fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+c680 h19_c680.py ok 20 already 1 other 0 
+xfer fam_xfer19.py {'edited': 26, 'skip': 0, 'already': 0} 
+cmp fam_cmp19.py {'edited': 38, 'skip': 42, 'already': 0} 
+{'rfail': 2, 'stools': 27, 'c684': 8, 'gif': 10, 'c685': 20, 'c680': 5, 'xfer': 26, 'cmp': 38}

@@ -1,0 +1,80 @@
+skip 00431606 CBasicString already defined
+skip 004316cf CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: \ov_final\rebuild\src\compiled\00\43\stdRbtreeCCharStringpairconstCCharStringlong_Minsert_004316cf.cpp(24) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+edited 00463334 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00475026 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 0047550f CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 004af5b0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004af670 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004af6d0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004af740 calls of Compare_00411570 outside one class (free helper / free operator shape)
+edited 004b0aa0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 004b0c80 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 004b0fc0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 004b1340 CBasicString<char> base of CCharStringData: 2 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 004b1960 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004b19f0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004b2490 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004b3900 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 004b43d0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 00518dc0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: w19\ov_final\rebuild\src\compiled\00\51\CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0.cpp(23) : error C2143: syntax error : missing ';' before '*' | CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0.cpp(23) : error C2501: 'CBasicString<T>::CCharStringData' : missing storage-class or type specifiers | \51\CThingFilterHasTCOfLeafTypeCTCActionUseScriptedHook_operator_00518dc0.cpp(23) : error C2501: 'CBasicString<T>::PStringData' : missing storage-class or type specifiers
+skip 0051fc20 calls of Compare_00411570 outside one class (free helper / free operator shape)
+edited 00530780 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00530830 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 00530f30 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: tchpad\naming\w19\ov_final\rebuild\src\compiled\00\53\NUISystemCComponent_FindAllChildren_00530f30.cpp(28) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 00580194 0 free Compare-shaped declarations
+skip 006412b0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: a32d96bb1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\64\CTCLight_SetActive_006412b0.cpp(35) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 006a7c60 CBasicString already defined
+skip 006a7f30 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 006d41f0 CCharString nested in a scope
+skip 007032f0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: d96bb1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\70\CThingObject_OnCreate_007032f0.cpp(26) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+edited 00712ce0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00712d70 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 0076e2f0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved :: compile: w19\ov_final\rebuild\src\compiled\00\76\CTCWeaponTrail_CalculateInterpolatedWeaponHelpers_0076e2f0.cpp(10) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 00811100 CBasicString already defined
+edited 0081e960 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 0081e9f0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 008330d0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: tchpad\naming\w19\ov_final\rebuild\src\compiled\00\83\CThingAICreature_AutoSetupSexuality_008330d0.cpp(30) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 0083cc10 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: \naming\w19\ov_final\rebuild\src\compiled\00\83\CThingSwitch_OnThingWithScriptNameApplied_0083cc10.cpp(30) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 00856780 0 free Compare-shaped declarations
+skip 0085b720 0 free Compare-shaped declarations
+edited 00898c40 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?CompareStrings@@YIJPBD0@Z']
+skip 0089ad90 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: ing\w19\ov_final\rebuild\src\compiled\00\89\CGameScriptInterface_IsQuestStartScreenActive_0089ad90.cpp(23) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+edited 008a0260 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?CompareStrings@@YIJPBD0@Z']
+skip 008a03f0 calls of CompareStrings outside one class (free helper / free operator shape)
+skip 008d0110 0 free Compare-shaped declarations
+skip 008d0730 CBasicString already defined
+skip 0099e900 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: 2d96bb1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\99\CCharString_operator_0099e900.cpp(18) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 009c7ef0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 009e50c0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 009e5290 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: atchpad\naming\w19\ov_final\rebuild\src\compiled\00\9e\CSymbolMap_GetSymbolsFromGroupName_009e5290.cpp(26) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+edited 009f8290 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00a09dc0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 00a14ee0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+edited 00a37060 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 00aee180 calls of Compare_00411570 outside one class (free helper / free operator shape)
+skip 00aee1e0 calls of Compare_00411570 outside one class (free helper / free operator shape)
+edited 00cb7aa0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00cb7b00 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00cb7b60 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00cd4ff0 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00cd5090 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00d151d0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00d1d7d0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00d1e3e0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00d6cdc0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00d773e0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 00dcd1d0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved :: compile: 49-a32d96bb1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\dc\CTeamSpawn_Init_00dcd1d0.cpp(27) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 00def760 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: d96bb1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\de\CSPUndeadTrigger_Main_00def760.cpp(38) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+skip 00e0a510 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved :: compile: 1c2d\scratchpad\naming\w19\ov_final\rebuild\src\compiled\00\e0\CTraderScript_HandleTrader_00e0a510.cpp(25) : error C2039: 'Compare' : is not a member of 'CBasicString<T>'
+edited 00e1fcf0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00e1fef0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 00e24210 calls of Compare_00411570 outside one class (free helper / free operator shape)
+edited 00e24260 CBasicString<char> base of CCharString: 1 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00e57020 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00e6a0b0 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00e6b750 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00e9cb20 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00edbd80 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00f0a470 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+edited 00f0b130 CBasicString<char> base of CBasicStringChar: 4 data member(s), 1 member(s) moved +u ['?Compare@?$CBasicString@D@@KIJPBD0@Z'] -u ['?Compare_00411570@@YIJPBD0@Z']
+skip 00f1a990 calls of Compare outside one class (free helper / free operator shape)

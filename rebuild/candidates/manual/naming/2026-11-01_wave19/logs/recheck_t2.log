@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00663f50   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00663f50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00663f50   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+00663f50   WARN SHARED_HEADER_AVAILABLE CWorld
+00663f50   WARN RELOC_NAME: ?OnDie@CThingPhysical@@QAEXXZ -> 006a4cf0 labelled 'CThingPhysical::Kill'
+00663f50   RELOCATION_MATCH PASS   CThingCreatureBase::OnDie
+00ae1600   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ae1600   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+00bda3d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bda3d0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bda3d0   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::AllocateVertexBuffer
+00c74ce0   RELOCATION_MATCH PASS   CDspGain::Apply
+
+WINS: 4
+  00663f50 RELOCATION_MATCH CThingCreatureBase::?OnDie@CThingCreatureBase
+  00ae1600 RELOCATION_MATCH CParticleProgram::?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MM@Z
+  00bda3d0 RELOCATION_MATCH CEngineLandscapeMemoryManager::AllocateVertexBuffer
+  00c74ce0 RELOCATION_MATCH CDspGain::?Apply@CDspGain
+addr       parity           behav  name
+00ae1260   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae1260   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ae1260   WARN RELOC_NAME: ?GetGroupVectorBuffer@@YIPAVC4DVector@@K@Z -> 00ae0540 labelled 'CParticleProgram::GetVectorBuffer'
+00ae1260   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+00bda360   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00bda360   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bda360   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::AllocateIndexBuffer
+00bda470   WARN SHARED_HEADER_AVAILABLE CTexture
+00bda470   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bda470   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::AllocateTexture
+00c74d30   DIFFER(307v297)  PASS   CDspGain::Crossfade
+
+WINS: 3
+  00ae1260 RELOCATION_MATCH CParticleProgram::?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
+  00bda360 RELOCATION_MATCH CEngineLandscapeMemoryManager::AllocateIndexBuffer
+  00bda470 RELOCATION_MATCH CEngineLandscapeMemoryManager::AllocateTexture

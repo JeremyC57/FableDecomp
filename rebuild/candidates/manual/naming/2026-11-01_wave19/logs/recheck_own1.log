@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ab1480   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+  WARN leaf '??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@0ABUrandom_access_iterator_tag@0@PAJ@Z' matches no symbol in 00ab1480.obj; graded the largest function
+  WARN leaf '??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@0ABUrandom_access_iterator_tag@0@PAJ@Z' matches no symbol in 00ab1480.obj; graded the largest function
+00ab1480   RELOCATION_MATCH PASS   _global::Move_CountedPointer_00ab1480
+
+WINS: 1
+  00ab1480 RELOCATION_MATCH _global::??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@0ABUrandom_access_iterator_tag@0@PAJ@Z

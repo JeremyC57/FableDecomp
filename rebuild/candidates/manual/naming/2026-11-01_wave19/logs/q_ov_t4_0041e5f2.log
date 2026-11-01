@@ -1,0 +1,28 @@
+skip 0041e641 CFrontEndManager::GetInstance defined out of line
+edited 005407b0 freestatic ::GetUIManager -> GetInstance x1 +u ['?GetInstance@CManager@NUISystem@@SIPAV12@XZ'] -u ['?GetUIManager@@YIPAUManagerMethods@@XZ']
+skip 0054b4b0 CFrontEndManager::GetInstance defined out of line
+skip 0054c810 CFrontEndManager::GetInstance defined out of line
+skip 0054e280 CFrontEndManager::GetInstance defined out of line
+skip 005518e0 Manager::GetInstance defined out of line
+skip 00551bc0 Manager::GetInstance defined out of line
+skip 00558770 CFrontEndManager::GetInstance defined out of line
+edited 0055a3e0 freestatic ::GetUIManager -> GetInstance x1 +u ['?GetInstance@CManager@NUISystem@@SIPAV12@XZ'] -u ['?GetUIManager@@YAPAUNativeUIManager@@XZ']
+skip 0056be00 CFrontEndManager::GetInstance defined out of line
+skip 005820e7 CFrontEndManager::GetInstance defined out of line
+skip 00582673 CFrontEndManager::GetInstance defined out of line
+skip 00597006 moved NUISystem::CFrontEndManager::GetInstance -> GetInstance x1 :: diff -['?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@QAEPAVCComponent@2@AAVCWideString@@MABVCCharString@@1_N@Z'] +['?CreateFrontEndButtonComponent@CFrontEndManager@NUISystem@@AAEPAVCComponent@2@AAVCWideString@@MABVCCharString@@1_N@Z']
+skip 0059f304 CFrontEndManager::GetInstance defined out of line
+skip 005a45f6 CFrontEndManager::GetInstance defined out of line
+skip 005a731f CFrontEndManager::GetInstance defined out of line
+skip 005b358c CFrontEndManager::GetInstance defined out of line
+skip 005b3613 CFrontEndManager::GetInstance defined out of line
+skip 005c323a CFrontEndManager::GetInstance defined out of line
+skip 005c3444 CFrontEndManager::GetInstance defined out of line
+skip 005cdd86 CFrontEndManager::GetInstance defined out of line
+skip 005faf50 CFrontEndManager::GetInstance defined out of line
+skip 005fc2d0 free stand-in GetUI not a one-argument this-call
+skip 005fc8a0 free stand-in GetUI not a one-argument this-call
+skip 005fce60 CFrontEndManager::GetInstance defined out of line
+skip 00621720 CFrontEndManager::GetInstance defined out of line
+skip 00621c80 CFrontEndManager::GetInstance defined out of line
+skip 00691ae0 Manager::GetInstance defined out of line

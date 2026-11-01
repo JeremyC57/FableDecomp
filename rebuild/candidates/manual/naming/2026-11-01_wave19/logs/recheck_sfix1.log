@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0095ab50   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ab50   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0095ab50   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+
+WINS: 1
+  0095ab50 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::SetUpCirclePoints

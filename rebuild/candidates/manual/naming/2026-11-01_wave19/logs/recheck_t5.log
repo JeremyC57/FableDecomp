@@ -1,0 +1,181 @@
+addr       parity           behav  name
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CWorld
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0090c1a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0090c1a0   WARN RELOC_NAME: ?GetCurrentPlayer@CWorldP@@QAEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+0090c1a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0090c1a0   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardFollowPlayer::IsRunnable
+0091a9b0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0091a9b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091a9b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091a9b0   WARN RELOC_NAME: ?FindThingsInRoughArea@CThingSearchTools@@QBEXABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_HasTC@@VCThingFilter_In2DRange@@@@AAV?$list@PAVCThingCreatureBase@@@std@@@Z -> 0091a750 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::list<CThingCreatureBase *, std::allocator<CThingCreatureBase *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>>'
+0091a9b0   RELOCATION_MATCH PASS   CAIStateGroup_WorkBase<CAIStateGroupBase>::AcquireSeller
+00921630   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00921630   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00921630   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00921630   RELOCATION_MATCH PASS   CAIStateGroup_MinionWalkToMarker::IsRunnable
+00935ad0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00935ad0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00935ad0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00935ad0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00935ad0   WARN RELOC_NAME: ?GetExtendedSightRadius@CTCPerceiveThing@@QAEMXZ -> 007448f0 labelled 'CTCPerceiveThing::GetSightRadius'
+00935ad0   RELOCATION_MATCH PASS   CAIStateGroup_MinionPutOutFires::IsRunnable
+00936a60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00936a60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00936a60   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00936a60   WARN RELOC_NAME: ?CanSeePosition@CThingCreatureLook@@QAE_NABVC3DVector@@_N@Z -> 00665260 labelled 'CThingCreatureBase::IsPosInFOV'
+00936a60   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCorpse::IsRunnable
+00937c20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00937c20   WARN SHARED_HEADER_AVAILABLE CWorld
+00937c20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00937c20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00937c20   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson
+00942d40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00942d40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00942d40   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00942d40   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00942d40   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00942d40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00942d40   WARN RELOC_NAME: ?PeekPMaterial@CThingBuilding@@QAE?AV?$CDefPointer@VCMaterialDef@@@@XZ -> 0082d2d0 labelled 'CThingBuilding::PeekPSimDefinition'
+00942d40   RELOCATION_MATCH PASS   CAIStateGroup_TellStory::IsRunnable
+0095ab50   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ab50   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0095ab50   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+0095b3e0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095b3e0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b3e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095b3e0   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::SetupArena
+00965210   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00965210   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00965210   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00965210   RELOCATION_MATCH PASS   CAIStateGroup_RecoverStealableItem::FindPStealableItemOutsideTargetPointRange
+0096a7a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0096a7a0   WARN SHARED_HEADER_AVAILABLE CWorld
+0096a7a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0096a7a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0096a7a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096a7a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096a7a0   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0096a7a0   RELOCATION_MATCH PASS   CAIStateGroup_WhisperRetreat::IsRunnableLeaf
+00972830   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00972830   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00972830   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00972830   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00972830   WARN SHARED_HEADER_AVAILABLE CWorld
+00972830   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00972830   WARN RELOC_CONFLICT: ?GetPFirstThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABVCThingFilter_HasDefGlobalIndex@@PAPAVCThing@@@Z -> 007fd110 here, 007fcef0 in landed 007fbc90
+00972830   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesBase::SetupArena
+0097b900   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0097b900   WARN SHARED_HEADER_AVAILABLE CWorld
+0097b900   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097b900   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097b900   WARN RELOC_NAME: ?CanCreatureSeeCreature@@YI_NPBVCThing@@0_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+0097b900   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0097b900   RELOCATION_MATCH PASS   CAIStateGroup_ScorpionKing::IsRunnable
+
+WINS: 13
+  0090c1a0 RELOCATION_MATCH CAIStateGroup_MinionGuardFollowPlayer::IsRunnable
+  0091a9b0 RELOCATION_MATCH CAIStateGroup_WorkBase<CAIStateGroupBase>::?AcquireSeller@
+  00921630 RELOCATION_MATCH CAIStateGroup_MinionWalkToMarker::IsRunnable
+  00935ad0 RELOCATION_MATCH CAIStateGroup_MinionPutOutFires::IsRunnable
+  00936a60 RELOCATION_MATCH CAIStateGroup_MinionReactToCorpse::IsRunnable
+  00937c20 RELOCATION_MATCH CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciousPerson
+  00942d40 RELOCATION_MATCH CAIStateGroup_TellStory::?IsRunnable@CAIStateGroup_TellStory
+  0095ab50 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+  0095b3e0 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::SetupArena
+  00965210 RELOCATION_MATCH CAIStateGroup_RecoverStealableItem::FindPStealableItemOutsideTargetPointRange
+  0096a7a0 RELOCATION_MATCH CAIStateGroup_WhisperRetreat::?IsRunnableLeaf@CAIStateGroup_WhisperRetreat
+  00972830 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::SetupArena
+  0097b900 RELOCATION_MATCH CAIStateGroup_ScorpionKing::?IsRunnable@CAIStateGroup_ScorpionKing
+addr       parity           behav  name
+00910100   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00910100   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00910100   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00910100   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00910100   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00910100   RELOCATION_MATCH PASS   CAIStateGroup_MinionListenToStory::IsRunnable
+0091d930   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091d930   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091d930   RELOCATION_MATCH PASS   CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition
+00934920   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00934920   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00934920   WARN SHARED_HEADER_AVAILABLE CWorld
+00934920   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00934920   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00934920   WARN RELOC_NAME: ?GetPBestThing_00935040@CThingSearchTools@@QBE_NABVCThingFilter_HasDefGlobalIndex@@ABVCThingCompare_Nearest@@PAPAVCThing@@@Z -> 00935040 labelled 'CThingSearchTools::GetPBestThing<CThingFilter_HasTC, CThingCompare_NearestGroupByMember, CThing>'
+00934920   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+00934920   RELOCATION_MATCH PASS   CAIStateGroup_MinionKidGroupTag::IsRunnable
+00936210   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00936210   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00936210   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00936210   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00936210   RELOCATION_MATCH PASS   CAIStateGroup_MinionWatchFires::IsRunnable
+00937b10   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00937b10   WARN SHARED_HEADER_AVAILABLE CWorld
+00937b10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00937b10   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00937b10   WARN RELOC_NAME: ?GetPBestThingInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind4@VCThingFilter_IsAICreatureAwareOf@@VCThingFilter_IsUnconscious@@VCThingFilter_IsAnAlly@@U?$unary_negate_@VCThingFilter_HasBeenDiscovered@@@@@@ABVCThingCompare_Nearest@@PAPAVCThingCreatureBase@@@Z -> 00937420 labelled 'GetPBestThingInRoughArea<CFilter_Bind4<CThingFilter_IsAICreatureAwareOf,CThingFilter_IsUnconscious,CThingFilter_IsAnAlly,std::unary_negate<CThingFilter_HasBeenDiscovered>_>,CThingCompare_Nearest,CThingCreatureBase>'
+00937b10   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToUnconsciousPerson::FindUndiscoveredUnconsciousPerson
+0093cc60   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0093cc60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093cc60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093cc60   RELOCATION_MATCH PASS   CAIStateGroup_NonVillageGuardPatrol::IsRunnable
+00942ee0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00942ee0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00942ee0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00942ee0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00942ee0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00942ee0   WARN RELOC_NAME: ?FindThings@CThingSearchTools@@QBEXABUCThingFilter_And3@@AAUCThingPtrVector@@@Z -> 00943830 labelled 'CThingSearchTools::GetAllThings'
+00942ee0   RELOCATION_MATCH PASS   CAIStateGroup_TellStory::Update
+0095b020   WARN SHARED_HEADER_AVAILABLE CWorld
+0095b020   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095b020   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b020   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095b020   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0095b020   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::GoToSpawnPoint
+00963640   WARN SHARED_HEADER_AVAILABLE CEnemyDef
+00963640   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00963640   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00963640   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00963640   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00963640   WARN SHARED_HEADER_AVAILABLE CWorld
+00963640   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00963640   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00963640   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+00963640   WARN RELOC_NAME: ?GetPRandomSeed@CWorld@@QAEPAKXZ -> 0049d810 labelled 'CWorld::GetWorldSeed'
+00963640   RELOCATION_MATCH PASS   CAIStateGroup_VersusScorpionKing::IsRunnable
+00965f30   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00965f30   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00965f30   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00965f30   RELOCATION_MATCH PASS   CAIStateGroup_CarryCrateAndFollow::FindPCrate
+0096c2e0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0096c2e0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0096c2e0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096c2e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096c2e0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PBVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0096c2e0   WARN RELOC_NAME: ?GetValue@CTCEnvironmentValue@@QAEJXZ -> 007aed40 labelled 'CTCBoss::Getter_007aed40'
+0096c2e0   RELOCATION_MATCH PASS   CAIStateGroup_Thunder::IsRunnable
+00977c40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00977c40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00977c40   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00977c40   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NK@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+00977c40   RELOCATION_MATCH PASS   CAIStateGroup_Guildmaster::OnActivate
+
+WINS: 12
+  00910100 RELOCATION_MATCH CAIStateGroup_MinionListenToStory::IsRunnable
+  0091d930 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition
+  00934920 RELOCATION_MATCH CAIStateGroup_MinionKidGroupTag::IsRunnable
+  00936210 RELOCATION_MATCH CAIStateGroup_MinionWatchFires::IsRunnable
+  00937b10 RELOCATION_MATCH CAIStateGroup_MinionReactToUnconsciousPerson::FindUndiscoveredUnconsciousPerson
+  0093cc60 RELOCATION_MATCH CAIStateGroup_NonVillageGuardPatrol::IsRunnable
+  00942ee0 RELOCATION_MATCH CAIStateGroup_TellStory::?Update@CAIStateGroup_TellStory
+  0095b020 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::GoToSpawnPoint
+  00963640 RELOCATION_MATCH CAIStateGroup_VersusScorpionKing::?IsRunnable@CAIStateGroup_VersusScorpionKing
+  00965f30 RELOCATION_MATCH CAIStateGroup_CarryCrateAndFollow::FindPCrate
+  0096c2e0 RELOCATION_MATCH CAIStateGroup_Thunder::?IsRunnable@CAIStateGroup_Thunder
+  00977c40 RELOCATION_MATCH CAIStateGroup_Guildmaster::OnActivate

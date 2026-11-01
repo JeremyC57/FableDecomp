@@ -1,0 +1,8 @@
+addr       parity           behav  name
+008c2240   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+008c2240   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008c2240   WARN RELOC_NAME: ?GetThingSearchTools@CCombatActionBase@@QBEPAVCThingSearchTools@@XZ -> 00692990 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+008c2240   RELOCATION_MATCH PASS   CCreatureAction_JackScream::PerformAction
+
+WINS: 1
+  008c2240 RELOCATION_MATCH CCreatureAction_JackScream::?PerformAction@CCreatureAction_JackScream

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00c689b0   RELOCATION_MATCH PASS   CEaxContext::SetSlotProperty
+
+WINS: 1
+  00c689b0 RELOCATION_MATCH CSkillTable_00c67470::?SetSlotProperty@CEaxContext@@QAEJJABUSEaxSlotProperties@@@Z

@@ -1,0 +1,23 @@
+addr       parity           behav  name
+004051c0   RELOCATION_MATCH PASS   NUISystem::CIME::Shutdown
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   WARN RELOC_NAME: ?ImeUi_SetScreenDimension@@YIXII@Z -> 00cb2ee0 labelled '_global::SetCurrentPair_00cb2ee0'
+00405650   RELOCATION_MATCH PASS   CIME::Initialise
+0095ab50   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095ab50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095ab50   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@UCIntelligentPointer@@@@QAEXPAUCIntelligentPointer@@ABU2@ABU__false_type@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+0095ab50   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+00a89320   MATCH            PASS   C3DMesh2::GetVertexCount
+00a89350   MATCH            PASS   C3DMesh2::GetTriangleCount
+00caaea0   RELOCATION_MATCH PASS   CBaseFilter::Register
+00caaf10   RELOCATION_MATCH PASS   CBaseFilter::Unregister
+
+WINS: 7
+  004051c0 RELOCATION_MATCH NUISystem::CIME::?Shutdown@CIME@NUISystem@@QAEXXZ
+  00405650 RELOCATION_MATCH CIME::Initialise
+  0095ab50 RELOCATION_MATCH CAIStateGroup_HoverHornetQueen::SetUpCirclePoints
+  00a89320 MATCH C3DMesh2::GetVertexCount
+  00a89350 MATCH C3DMesh2::GetTriangleCount
+  00caaea0 RELOCATION_MATCH CBaseFilter::?Register@CBaseFilter
+  00caaf10 RELOCATION_MATCH CBaseFilter::?Unregister@CBaseFilter
