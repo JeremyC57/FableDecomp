@@ -1,0 +1,21 @@
+1	PDB name set, local models, direct ParentThing->PTCGraphicAppearance / PhysicsTC, pointer form GetTC	DIFFER(624v622) 76 lines
+2	+ C3DVector user copy ctor (PDB ??0C3DVector@@QAE@ABV0@@Z)	DIFFER(626v622) 71
+3	pointer-returning GetTC(long)	76
+4	named keys before each pair	76
+5	push_back + Dirty written out instead of CVectorMap::Insert	76
+6	CThing* thing = particle.Get() local	76
+7	PDB inline accessors GetPhysicsTC() / GetTCGraphicAppearance()	DIFFER(624v622) 32
+8	7 + C3DVector user copy ctor	DIFFER(626v622) 27 (only END-key register + emitter register)
+9	8 + thing local for GetTC	27
+10	8 + bool GetTC(T**) && emitter	27
+11	8 + named keys	27
+12	8 + same-TU noinline _M_insert_overflow stand-in body	DIFFER(624v622) 13 (END key in esi now; only the emitter register left)
+13	12 + bool GetTC && emitter	13
+14	12 + nested ifs	13
+15	12 + emitter = 0 preset	13
+16	12 + if-declaration	13
+17	12 + same-TU SetEmitterUpdateParameters body	13
+18	12 + same-TU LowerBound body	13
+19	12 + pointer GetTC with the one-ternary return	RELOCATION_MATCH
+20	12 + PDB bool GetTC(T**) with the one-ternary store	RELOCATION_MATCH
+21	20 with the real STLport 4.6 _M_insert_overflow / __uninitialized_copy / __uninitialized_fill_n bodies (landed 0x0076ADA0 TU) instead of the stand-in	RELOCATION_MATCH (src)

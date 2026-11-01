@@ -20583,7 +20583,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007674a0	ClearAllParticleEffects	CTCObjectAugmentations	__thiscall	void	1	CTCObjectAugmentations *	1	yes	accepted									
 007676a0	CTCObjectAugmentations_Destructor	_global	unknown	undefined	0		0	yes	accepted									
 007677e0	AttachAugmentationParticles	CTCObjectAugmentations	__thiscall	void	1	CTCObjectAugmentations *	1	yes	accepted									
-00767da0	CTCLinkDisplay_SetupParticleNodes	_global	unknown	undefined	0		0	yes	accepted									
+00767da0	UpdateParticleAttachment	CTCObjectAugmentations	unknown	undefined	0		0	yes	accepted									
 00768010	OnInitialActivate	CTCObjectAugmentations	unknown	undefined	0		0	yes	accepted									
 00768120	AttachAugmentationToSlot	CTCObjectAugmentations	__thiscall	void	3	CTCObjectAugmentations *,long,long	1	yes	accepted									
 007681d0	RemoveAugmentationFromSlot	CTCObjectAugmentations	__thiscall	void	2	CTCObjectAugmentations *,long	1	yes	accepted									
@@ -20685,10 +20685,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0076bdd0	__destroy_aux	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0076be30	Sort_IntrosortPhase_4UintElem	_global	unknown	undefined	0		0	yes	accepted									
 0076bf80	resize	std::vector<CDefPointer<CThingBaseDef const>, std::allocator<CDefPointer<CThingBaseDef const>>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
-0076c000	std::vector_Relocate	std	unknown	undefined	0		0	yes	accepted									
+0076c000	sort<std::pair<unsigned long, C3DVector> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareVector<unsigned long>>	std	unknown	undefined	0		0	yes	accepted									
 0076c080	Sort_IntrosortPhase_Sorted_4Uint	_global	unknown	undefined	0		0	yes	accepted									
 0076c180	TransferToGui	CGuiVarTransferBool	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\76\CGuiVarTransferBool_TransferToGui_0076c180.cpp
-0076c1a0	std::vector_Relocate_Sorted	std	unknown	undefined	0		0	yes	accepted									
+0076c1a0	sort<std::pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<unsigned long, unsigned long>> *, NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::CParticleUpdateCCompareParamDesc<unsigned long>>	std	unknown	undefined	0		0	yes	accepted									
 0076c360	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\76\CTCVillage_OnInitialActivate_0076c360.cpp
 0076c380	TransferToGui	CGuiVarTransferBool	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\76\CGuiVarTransferBool_TransferToGui_0076c380.cpp
 0076c3a0	GetInterfaceType	CTCObjectAugmentations	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -33462,7 +33462,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099b3c0	AllocStringData	CCharString	__thiscall	CCharStringData *	3	CCharString *,char *,long	1	yes	accepted									
 0099b440	CWideString::CWideString	CWideString	__thiscall	CWideString *	2	CWideString *,CCharString const &	1	yes	accepted									
 0099b4d0	CWideString::UnassignString	CWideString	__thiscall	void	1	CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_UnassignString_0099b4d0.cpp
-0099b510	CWideString::~CWideString	CWideString	__thiscall	void	1	CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_destructor_0099b510.cpp
+0099b510	~CWideString	CWideString	__thiscall	void	1	CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_destructor_0099b510.cpp
 0099b560	MakeOwnCopyOfData	CCharString	__thiscall	void	1	CCharString *	1	yes	accepted									
 0099b6a0	CWideString::CreateFromCharString	CWideString	__fastcall	CWideString	1	CCharString const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_CreateFromCharString_0099b6a0.cpp
 0099b6b0	CWideString::CWideString	CWideString	__thiscall	CWideString *	2	CWideString *,wchar_t const *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CWideString_CWideStringfromLiteral_0099b6b0.cpp
@@ -34443,8 +34443,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cbc40	CBankFile::IsDiskFile	CBankFile	__thiscall	bool	3	CBankFile *,ulong,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CBankFile_IsDiskFile_009cbc40.cpp
 009cbc50	CBankFile::GetLastModifiedTime	CBankFile	__thiscall	CDateAndTime	2	CBankFile *,CCharString const &	1	yes	accepted									
 009cbd10	GetEnumerationType	CBankFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CBankFile_GetBankHandle_009cbd10.cpp
-009cbd30	AskHeroQuestion	CScriptGameResourceObjectScriptedThingBase	__thiscall	void	8	CScriptGameResourceObjectScriptedThingBase *,CScriptThing *,char *,CCharString *,CCharString *,CCharString *,bool,bool	1	yes	accepted									
-009cbd50	CScriptGameResourceObjectScriptedThingBase::func_009cbd50	CScriptGameResourceObjectScriptedThingBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
+009cbd30	SetBankUpdateStatus	CBankFile	__thiscall	void	8	CScriptGameResourceObjectScriptedThingBase *,CScriptThing *,char *,CCharString *,CCharString *,CCharString *,bool,bool	1	yes	accepted									
+009cbd50	SetBankUpdateProgress	CBankFile	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 009cbd70	CScriptGameResourceObjectScriptedThingBase::func_009cbd70	CScriptGameResourceObjectScriptedThingBase	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece, chunk 901)					
 009cbd90	WriteBankWarning	CBankFile	__thiscall	void	2	CBankFile *,CCharString *	1	yes	accepted									
 009cbe10	ConvertPathToFilename	CBankFile	__thiscall	CCharString	2	CBankFile *,CCharString *	1	yes	accepted									
@@ -34498,8 +34498,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ce8d0	BeginUpdateEntries	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
 009cea70	EndUpdateEntries	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
 009ceae0	CDefClassBase_SetSubDefInfo	_global	unknown	undefined	0		0	yes	accepted									
-009cec60	?Update@CBankFile@@UAEXXZ	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
-009cf2f4	Catch@009cf2f4	_global	unknown	undefined	0		0	yes	accepted									
+009cec60	Update	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
 009cf3a0	CBankFile_WriteSymbolFile	_global	unknown	undefined	0		0	yes	accepted									
 009cfb70	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted									
 009cfbc0	ReadEntryList	CBankFile	__thiscall	bool	4	CBankFile *,CFileDataInputStream *,ulong,ulong	1	yes	accepted									
@@ -39909,7 +39908,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00adecc0	IntersectsSolid	C3DBoundingBox	__thiscall	bool	2	C3DBoundingBox *,C3DBoundingSphere *	1	yes	accepted									
 00aded70	BuildFromPoints	C3DBoundingBox	unknown	undefined	0		0			discovered	gapscan							
 00adeea0	BuildFromPoints	C3DBoundingBox	unknown	undefined	0		0			discovered	gapscan							
-00adefc0	Matrix4x4_Multiply	_global	unknown	undefined	0		0	yes	accepted									
+00adefc0	AlignedPreMultiplyTransposed	CMatrix4x4	unknown	undefined	0		0	yes	accepted									
 00adf1e0	Clear	CParticleSimulation	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ad\CLandscapeBackgroundPatch_ClearTextures_00adf1e0.cpp
 00adf2a0	AllocateArrays	CParticleSimulation	__thiscall	bool	2	CParticleSimulation *,CMovableResourceMemoryPool *	1	yes	accepted									
 00adf300	ApplyDragging	CParticleSimulation	__thiscall	void	2	CParticleSimulation *,CParticleContext *	1	yes	accepted									
@@ -41300,7 +41299,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b3b7f0	ProcessLoading	CEngineResourceManager	__thiscall	void	3	CEngineResourceManager *,bool,double	1	yes	accepted									
 00b3b870	FrameEnd	CEngineResourceManager	__thiscall	void	1	CEngineResourceManager *	1	yes	accepted									
 00b3b8c0	CEngineResourceManager::ProcessLoading	CEngineResourceManager	__thiscall	void	1	CEngineResourceManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b3\CEngineResourceManager_ProcessLoading_00b3b8c0.cpp
-00b3b8e0	CEngineResourceManager_Destructor	_global	unknown	undefined	0		0	yes	accepted									
+00b3b8e0	~CEngineResourceManager	CEngineResourceManager	unknown	undefined	0		0	yes	accepted									
 00b3bc90	CEngine::GetEditorAnimation	CEngine	unknown	undefined	0		0	yes	accepted									
 00b3be10	Image_GenerateAlphaStipplePattern	_global	unknown	undefined	0		0	yes	accepted									
 00b3c4b0	BuildHWStipplePatterns	CEngineResourceManager	__thiscall	void	2	CEngineResourceManager *,CArray<unsigned_char> *	1	yes	accepted									
@@ -43573,7 +43572,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c055d0	_tr_align	_global	unknown	undefined	0		0	yes	accepted									
 00c057d0	_tr_flush_block	_global	unknown	undefined	0		0	yes	accepted									
 00c059d0	crc32_little	_global	unknown	undefined	0		0	yes	accepted									
-00c05cb0	crc32_little	_global	unknown	undefined	0		0	yes	accepted									
+00c05cb0	crc32_big	_global	unknown	undefined	0		0	yes	accepted									
 00c05fd0	z_crc32	_global	__cdecl	undefined	0		0	yes	accepted									
 00c06030	zcalloc	_global	__cdecl	undefined	0		0	yes	accepted									
 00c06050	operator_new	_global	__fastcall	void *	1	uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\global_operatornew_00c06050.cpp
@@ -47885,7 +47884,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca1250	sub_00ca1250	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca12b0	sub_00ca12b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca1310	Geometry_ProcessNonzeroElements	_global	unknown	undefined	0		0	yes	accepted									
-00ca1360	Environment_TransformVertexArray	_global	unknown	undefined	0		0	yes	accepted									
+00ca1360	res2_forward	libvorbis	unknown	undefined	0		0	yes	accepted									
 00ca15c0	CDefinitionManager::ProcessPropertyDefinition	CDefinitionManager	unknown	undefined	0		0	yes	accepted									
 00ca1750	_Cons_val<std::allocator<C3DGeneratorObject>,C3DGeneratorObject,C3DGeneratorObject>	_Cons_val<std	__fastcall	void	3	allocator<C3DGeneratorObject> *,C3DGeneratorObject *,C3DGeneratorObject *	1	yes	accepted									
 00ca1770	sub_00ca1770	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -48291,7 +48290,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cb01c0	WaitForObjectWithMessagePump	_global	unknown	undefined	0		0	yes	accepted									
 00cb0310	MemMove	_global	unknown	undefined	0		0	yes	accepted									
 00cb0370	llMulDiv	_global	unknown	undefined	0		0	yes	accepted									
-00cb0700	SignedDecimal_Divide	_global	unknown	undefined	0		0	yes	accepted									
+00cb0700	Int64x32Div32	_global	unknown	undefined	0		0	yes	accepted									
 00cb0940	COM_AllocateWideString	_global	unknown	undefined	0		0	yes	accepted									
 00cb09a0	WaitDispatchingMessages	_global	unknown	undefined	0		0	yes	accepted									
 00cb0bc0	Win32ErrorToHRESULT	_global	unknown	undefined	0		0	yes	accepted									

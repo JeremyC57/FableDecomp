@@ -35649,3 +35649,17 @@ __aulldvrm	00f3fd50	00cb0370
 ??1CQ_FireHeartScript@NScript@@UAE@XZ	00d3b010	00d3aff0
 ??0CDefStringTable@@QAE@XZ	009d4db0	012240a0
 ??0CDefaultAllocator_00c166f0@@QAE@XZ	00c166f0	01224b40
+??$sort@PAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0V?$CParticleUpdateCCompareParamDesc@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z	0076c1a0	00767da0
+??$sort@PAU?$pair@KVC3DVector@@@std@@V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@std@@YIXPAU?$pair@KVC3DVector@@@0@0V?$CParticleUpdateCCompareVector@K@?$CParticleUpdateParameters@KK@NParticleEngine@@@Z	0076c000	00767da0
+??1CBaseClassNonCopyable@@UAE@XZ	0099a300	00b3b8e0
+??1CGPUScratchBufferTextureManager@@UAE@XZ	00f37570	00b3b8e0
+??1CMeshDataBank@@UAE@XZ	00a27350	00b3b8e0
+??1CVertexShaderConstantLayout@@UAE@XZ	0098d710	00b3b8e0
+??_7CEngineResourceManager@@6BCAsyncLoadingProcessCallback@@@	012a1b34	00b3b8e0
+??_7CEngineResourceManager@@6BCEngineComponent@@@	012a1b3c	00b3b8e0
+?ClearMemoryBlocks@CSimpleMemoryPool@@QAEXXZ	00a5c600	00b3b8e0
+?RemoveLoadingCallback@CAsyncLoadingMemoryPool@@SIXPAVCAsyncLoadingProcessCallback@@@Z	00a14930	00b3b8e0
+?UninitialiseShaders@CEngineResourceManager@@AAEXXZ	00b3b0c0	00b3b8e0
+?UnregisterVertexShaderConstantLayouts@CShaderRenderManager@@QAEXXZ	0098b280	00b3b8e0
+?_M_erase@CExternalTextureMap@@QAEXPAUSExternalTextureNode@@@Z	00b3e6e0	00b3b8e0
+_crc_table	012af780	00c059d0

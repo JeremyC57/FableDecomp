@@ -374183,6 +374183,49 @@ $catalog = @(
         TestSource = '00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d3b010_test.cpp'
         PassPattern = '00d3b010_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00767da0'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_UpdateParticleAttachment_00767da0.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_UpdateParticleAttachment_00767da0_test.cpp'
+        PassPattern = '00767da0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3b8e0'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_CEngineResourceManager_00b3b8e0.cpp'
+        TestSource = '00/b3/CEngineResourceManager_CEngineResourceManager_00b3b8e0_test.cpp'
+        PassPattern = '00b3b8e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c059d0'
+        Module = '_global'
+        Source = '00/c0/global_crc32little_00c059d0.cpp'
+        TestSource = '00/c0/global_crc32little_00c059d0_test.cpp'
+        PassPattern = '00c059d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c05cb0'
+        Module = '_global'
+        Source = '00/c0/global_crc32big_00c05cb0.cpp'
+        TestSource = '00/c0/global_crc32big_00c05cb0_test.cpp'
+        PassPattern = '00c05cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca1360'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_res2forward_00ca1360.cpp'
+        TestSource = '00/ca/libvorbis_res2forward_00ca1360_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ca1360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb0700'
+        Module = '_global'
+        Source = '00/cb/global_Int64x32Div32_00cb0700.cpp'
+        TestSource = '00/cb/global_Int64x32Div32_00cb0700_test.cpp'
+        PassPattern = '00cb0700_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x00C059D0	RELOCATION_MATCH	722	PASS	_crc32_little (zlib 1.2.1 crc32.c); brief's _tr_flush_block claim wrong (that is 0x00C057D0)
+0x00C05CB0	RELOCATION_MATCH	793	PASS	_crc32_big (same crc32.c TU); catalog crc32_little wrong
+0x00CB0700	RELOCATION_MATCH	493	PASS	retail_asm/: Int64x32Div32 (DX9 SDK wxutil.cpp verbatim, EnlargedUnsignedDivide __inline asm); not in payload.json (finish.py reads src/ only)
+0x00CA1360	RELOCATION_MATCH	596	PASS	@res2_forward@28 (libvorbis 1.0.1 res0.c, /Gr)
+0x00767DA0	RELOCATION_MATCH	622	PASS	CTCObjectAugmentations::UpdateParticleAttachment (21 probes)
+0x00B3B8E0	RELOCATION_MATCH	942	PASS	CEngineResourceManager::~CEngineResourceManager (4 probes); local retail-layout model (header CShaderDataBank size wrong)
+0x00ADEFC0	DIFFER(472v471)	471	PASS	retail_asm/ parked: CMatrix4x4::AlignedPreMultiplyTransposed, x87 fallback term order only (33 probes + 24 permutations)
+0x00C76880	DIFFER(500v513)	513	PASS	differ/ parked: CDspOps::Biquad (descriptive), libpk x87 two-pole state lane gap (14 probes)
+0x00C73050	DIFFER(673v672)	672	PASS	differ/ parked: CAudioSource::UpdateStream (descriptive), ebx/ebp swap of sound vs queue (22 probes)
+0x009CEC60	DIFFER(1840v1684)	1684	PASS	differ/ parked: CBankFile::Update; TRUE EXTENT 1850 (0x73A, ret at 0x009CF399) -> DIFFER(1840v1850) vs true bytes (15 probes)

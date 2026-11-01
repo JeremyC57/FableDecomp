@@ -1,0 +1,46 @@
+addr       parity           behav  name
+00767da0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00767da0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00767da0   RELOCATION_MATCH PASS   UpdateParticleAttachment
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CTexture
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b3b8e0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@UAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b3b8e0   RELOCATION_MATCH PASS   ~CEngineResourceManager
+00c059d0   RELOCATION_MATCH PASS   crc32_little
+00c05cb0   RELOCATION_MATCH PASS   crc32_big
+00ca1360   RELOCATION_MATCH PASS   res2_forward
+
+WINS: 5
+  00767da0 RELOCATION_MATCH CTCObjectAugmentations::?UpdateParticleAttachment@CTCObjectAugmentations@@AAEXV?$CIntelligentPointer@VCThing@@@@ABVCCharString@@1@Z
+  00b3b8e0 RELOCATION_MATCH CEngineResourceManager::??1CEngineResourceManager@@UAE@XZ
+  00c059d0 RELOCATION_MATCH _global::_crc32_little
+  00c05cb0 RELOCATION_MATCH _global::_crc32_big
+  00ca1360 RELOCATION_MATCH libvorbis::@res2_forward@28
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CTCObjectAugmentations_UpdateParticleAttachment_00767da0
+  CEngineResourceManager_CEngineResourceManager_00b3b8e0
+  global_crc32little_00c059d0
+  global_crc32big_00c05cb0
+  libvorbis_res2forward_00ca1360
+=== retail_asm payload ===
+addr       parity           behav  name
+00cb0700   RELOCATION_MATCH PASS   Int64x32Div32
+
+WINS: 1
+  00cb0700 RELOCATION_MATCH _global::?Int64x32Div32@@YG_J_JJJJ@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  global_Int64x32Div32_00cb0700
+addr       parity           behav  name
+00cb0700   RELOCATION_MATCH PASS   Int64x32Div32
+
+WINS: 1
+  00cb0700 RELOCATION_MATCH _global::?Int64x32Div32@@YG_J_JJJJ@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  global_Int64x32Div32_00cb0700

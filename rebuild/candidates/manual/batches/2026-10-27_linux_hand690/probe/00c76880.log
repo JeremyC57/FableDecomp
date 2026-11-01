@@ -1,0 +1,15 @@
+1	SDK-style index loop dst[i]/src[i], locals a1,a2,b0..b2,biases,s0,s1	DIFFER(526v513) (dst-relative src addressing)
+2	pointer walk *src++/*dst++	DIFFER(500v513) 135 lines
+3	state[1] read before state[0]	DIFFER(500v513) 129 lines (best)
+4	coefficient/bias declaration order a,inBias,b,outBias	129
+5	explicit t rotation + y local stored last	DIFFER(573v513) 234
+6	x = *src++ named local	179
+7	signed int counter	135
+8	parenthesised (z*a2 + s0*a1) pairs	DIFFER(498v513) 137
+9	float s[2] array state	187
+10	(x + inBias) / (w*b0 + outBias) parenthesised	DIFFER(493v513) 240
+11	left-nested parentheses + state stores swapped	DIFFER(498v513) 173
+12	while (count--)	DIFFER(205v513) (no unroll)
+13	s0,s1 declared first, assigned before the loop	129
+14	s1,s0 initialised before the coefficient loads	DIFFER(491v513) 182
+PARK	same mirror as chunk 684's CDspGain::ApplyRamps two-pole loop (37 probes there): retail keeps s0 (state[0]) in a frame slot (int copy in/out, updated by fstp each sample) and carries z (state[1]) on the x87 stack; VC7.1 builds keep s0 on the x87 stack in every spelling. Prologue order and the 4x unroll otherwise line up.

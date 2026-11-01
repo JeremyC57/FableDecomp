@@ -1,0 +1,35 @@
+1	asm in an inline AlignedSetMultiply(copy, other) helper (VC7.1 never inlines an __asm function)	DIFFER(50v471)
+2	asm directly in the body, copy = *this, x87 loop c[r][k]*o[k][c] summed k=0..3	DIFFER(472v471) 62 lines (x87 term order only)
+3	operands swapped (o*c)	DIFFER(472v471) 62 (identical: VC canonicalises operand order)
+4	explicit column unroll in source	DIFFER(905v471) (row loop unrolled too)
+5	k-loop sum from 0.0f	DIFFER(392v471)
+6	terms k=3..0	DIFFER(472v471) 62 (identical)
+7	parenthesised pairs	DIFFER(472v471) 78
+perm00-23	all 24 term orders of the single sum (one probe batch)	DIFFER(472v471) 62 each: order is canonicalised, not source order
+8	operator()(int,int) accessors (FableWin ??RCMatrix4x4)	DIFFER(472v471) 44
+9	int loop counters	62
+10	unsigned long counters	62
+11	row pointer const float* a = copy.m[row]	30 (column 1 exact)
+12	row values hoisted into float locals	DIFFER(470v471) 80
+13	column pointer for other	40
+14	row pointer + destination pointer	34
+15	walking pointers a+=4,d+=4	38
+16	row pointer + operator() for other/this	44
+17	row pointer + explicit column unroll	905
+18	row + column pointers	40
+19	&copy.m[row][0]	30
+20	named E11.. fields over C4DVector rows	905
+21	inline TransformRow helper (named fields)	DIFFER(353v471)
+22	named fields without refs	905
+23	sequential += accumulation (keeps source order c0..c3 every column)	58
+24	other.m[0]+column pointer	40
+25	int counters + row pointer	30
+26	sequential accumulation without row pointer	64
+27	const CMatrix4x4& a = copy	38
+28	row references float(&)[4]	34
+29	__forceinline AlignedSetMultiply(copy, other) helper holding the asm (VC7.1 does inline an __asm body under __forceinline)	DIFFER(472v471) 62 (same as 2)
+30	chain AlignedSetMultiplyTransposed(other, copy) -> AlignedSetMultiply(copy, other), both __forceinline (FableWin structure)	62
+31	chain + row pointer	30
+32	chain + int counters	62
+33	chain + column pointer	44
+PARK	best = probe 11/19/25 (30 lines): only the x87 fallback's term order in columns 0,2,3 differs; prologue, copy, SSE asm block and loop control match

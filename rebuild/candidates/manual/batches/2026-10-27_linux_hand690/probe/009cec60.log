@@ -1,0 +1,18 @@
+identity: ?Update@CBankFile@@UAEXXZ (manifest name, FableWin PDB); EH funcinfo 0x0136942C: 1 try (state 0), catch(CBankCreatorException&) at ebp-0xD8 -> funclet 0x009CF2F4; throws CBankCreatorAbortException (throwinfo 0x013693E8) and CBankCreatorException (0x013693B4)
+extent: the function ends at ret 0x009CF399 (0x73A = 1850 bytes): the catch funclet 0x009CF2F4..0x009CF351 rethrows and the main body continues 0x009CF351..0x009CF399 (loop increment, EndUpdateEntries, ChecksumCache.Close, string dtors, epilogue). Graded with tmp/q2.py (XLEN=73a reads the true bytes from Fable.exe) alongside the 1684-byte oracle
+p1 full reconstruction (sibling UpdateEntry 0x009D1320 model for CRC/RuntimeData/UpdateData, EntryExists/GetEntrySymbol inline, ProgressCallback wrappers inline) -> true DIFFER(1824v1850) 216; ChecksumCache at +0xf5 (char pad, no alignment)
+p2 CChecksumCacheFile pad as unsigned long[6] -> DIFFER(1824v1850) 214
+p3 "Scanning files..." status as a named CCharString local -> DIFFER(1828v1850) 213 (status call shape now retail)
+p4 first loop as if-block instead of continue -> DIFFER(1828v1850) 213
+p5 GetEntrySymbol as a ternary -> DIFFER(1765v1850) 208 but no longer inlined (call 0x9cc1d0); reverted
+p6 GetEntrySymbol through CArray::iterator (begin()+index, landed 0x009CC1D0 form) -> DIFFER(1829v1850) 198; symbol block now retail
+p7 GetEntryDataType ternary -> 198 (no change)
+p8 type as explicit ternary in loop -> 198 (no change)
+p9 type via if/else assignment -> 198 (no change)
+p10 CBankCreatorAbortException with user empty ctor -> DIFFER(1840v1850) 136; throw temp now copied from an uninitialised local as retail, outer-loop alignment pad gone
+p11 named local `CBankCreatorAbortException abort; throw abort;` -> DIFFER(1840v1850) 136 (same bytes as p10); BEST (oracle-row grade DIFFER(1840v1684))
+p12 second loop as while with manual increment (malformed: increment only on the skip path) -> 138
+p13 EntryExists against (unsigned long)GetSize() -> 136 (no change)
+p14 type declared at function scope -> 136 (no change)
+p15 checksum declared at function scope -> 136 (no change)
+PARK at p11: last 4 probes (12-15) did not reduce

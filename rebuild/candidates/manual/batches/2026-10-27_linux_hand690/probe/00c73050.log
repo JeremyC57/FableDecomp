@@ -1,0 +1,23 @@
+p1 straight if/else transcription, plain-inline AL resolvers -> DIFFER(628v672); only 4 of 5 resolver blocks inline
+p2 restructure with goto stopped + SVoiceRequests bitfield -> DIFFER(628v672) 87 lines; inline budget still drops 5th GetSourcei
+p3 __forceinline GetSourcei -> DIFFER(673v672) 76; all 5 resolver blocks inline, 2nd SourcePlay out of line as retail
+p4 hoist CircularQueue* queue = &sound->m_queue after ApplySound -> DIFFER(678v672) 81 (lea of queue now early like retail)
+p5 m_requests as unsigned long, test (unsigned char)(m_requests>>7)&1 -> DIFFER(688v672) 76; bit test now mov/shr 7/test al,1 as retail
+p6 one shared long value for processed and both states -> DIFFER(673v672) 48; frame now push ecx as retail
+p7 function-scope processed+state -> DIFFER(688v672) 75 (sub esp,8 frame)
+p8 no queue local (sound->m_queue everywhere) -> DIFFER(677v672) 93
+p9 queue declared after value local -> DIFFER(669v672) 64
+p10 queue via reference alias -> DIFFER(669v672) 64
+p11 separate post-queue state local -> DIFFER(688v672) 76 (sub esp,8)
+p12 separate post-queue and else states -> DIFFER(688v672) 78
+p13 inline bool IsPlaying() helper with own state local (plain inline) -> DIFFER(526v672) 46; helper not inlined
+p14 __forceinline IsPlaying() -> DIFFER(673v672) 44; arg-slot homing matches retail (processed/else-state in sound slot, post-queue state in now.lo slot); BEST
+p15 split IsEmpty / next item local -> DIFFER(673v672) 44 (no change)
+p16 local CAudioObject* alias for sound -> DIFFER(673v672) 44 (no change)
+p17 queue declared inside if(capacity) -> DIFFER(672v672) 69 (now.hi into ebx; worse)
+p18 queue declared before ApplySound -> DIFFER(673v672) 44 (no change)
+p19 CircularQueue& queue reference -> DIFFER(673v672) 44 (no change)
+p20 DequeueNext via sound->m_queue (lower queue weight) -> DIFFER(673v672) 44 (no change)
+p21 bool looping local for QueueNextBuffer -> DIFFER(677v672) 51
+p22 ! forms for the item/tail tests -> DIFFER(673v672) 44 (no change)
+PARK at p14: residue = ebx/ebp swap (retail sound=ebp, queue=ebx) and the knock-on temp (retail edx, ours edi) in the IsEmpty/items[tail] test; last 4 probes (19-22) did not reduce

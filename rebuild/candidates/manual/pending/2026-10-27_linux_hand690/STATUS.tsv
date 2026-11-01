@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+0x00ADEFC0	DIFFER(472v471)	471	PASS	retail_asm/ parked: CMatrix4x4::AlignedPreMultiplyTransposed, x87 fallback term order only (33 probes + 24 permutations)
+0x00C76880	DIFFER(500v513)	513	PASS	differ/ parked: CDspOps::Biquad (descriptive), libpk x87 two-pole state lane gap (14 probes)
+0x00C73050	DIFFER(673v672)	672	PASS	differ/ parked: CAudioSource::UpdateStream (descriptive), ebx/ebp swap of sound vs queue (22 probes)
+0x009CEC60	DIFFER(1840v1850)	1850	PASS	differ/ parked: CBankFile::Update; TRUE EXTENT 1850 (0x73A, ret at 0x009CF399) -> DIFFER(1840v1850) vs true bytes (15 probes)

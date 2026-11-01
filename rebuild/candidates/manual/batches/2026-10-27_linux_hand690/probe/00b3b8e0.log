@@ -1,0 +1,5 @@
+identity: primary vtable 0x012A1B3C stored first (slot 0 = ??_E 0x00B3ECA0, the sole caller, call at 0x00B3ECA3), secondary vtable 0x012A1B34 at +0xC = ?ProcessLoading@CEngineResourceManager@@UAEXXZ; RTTI .?AVCEngineResourceManager@@ bases CEngineComponent@0 + CAsyncLoadingProcessCallback@12; FableWin PDB has ??1CEngineResourceManager@@UAE@XZ; tail jmp to ~CEngineComponent 0x00B59730
+p1 full member model at retail offsets (header CShaderDataBank 0x13c is wrong: retail 0x128, member offsets after VShaderBanks are header-0x230), body RemoveLoadingCallback/UninitialiseShaders/CloseShaderBank/Close via pointers/retail-mode test/UnregisterVertexShaderConstantLayouts -> DIFFER(929v942) 67; CVertexShaderConstantLayout and CGPUScratchBufferTextureManager pads counted the vptr twice
+p2 pads fixed (0x148, 0x40) -> DIFFER(929v942) 19; only the CArray<CTexture> loop reloads m_last each iteration
+p3 CArray dtor caches `T* last = m_last` before the element loop -> RELOCATION_MATCH
+p4 UninitialiseShaders made private (FableWin.pdb ?UninitialiseShaders@CEngineResourceManager@@AAEXXZ) -> RELOCATION_MATCH, calls.py symbols all resolve

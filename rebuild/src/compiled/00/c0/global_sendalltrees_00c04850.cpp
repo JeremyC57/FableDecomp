@@ -3,7 +3,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C04850, 621 bytes. The whole trees.c TU below is the landed scan_tree 0x00C04260 text
 //   (zlib 1.2.1, Z_PREFIX, /GS, every `local` static inside extern "C" { static __declspec(noinline) }); this row is its
-//   send_all_trees (sole caller _tr_flush_block 0x00C059D0 at 0x00C0597E, the dynamic-trees arm). Catalog label correct.
+//   send_all_trees (sole caller _tr_flush_block 0x00C057D0 at 0x00C0597E, the dynamic-trees arm). Catalog label correct.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C04260. zlib 1.2.1 (ZLIB_VERSION at 0x0129CFE0, Z_PREFIX build) statically linked;
 //   layouts from the Ego_r PDB. This file is the whole of trees.c (minus the DEBUG/GEN_TREES_H paths; the tables are
 //   declared, retail .rdata), so every `local` static is compiled next to its real callers.
