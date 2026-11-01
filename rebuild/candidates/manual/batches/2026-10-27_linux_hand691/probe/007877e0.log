@@ -1,0 +1,23 @@
+1	shared engine CDefPointer/CSubDefClassBase, GetSubDef declared only	DIFFER(527v487) early-return release ReleaseTemporary shape + null test at end
+2	same-TU auto_inline(off) GetSubDef<CShipDef> body (landed 0x00787AE0 text)	DIFFER(487v487) residue 18: cross product hoisted above the pitch-angle fld/fdiv/fmul; 2 mov/fstp ties
+3	GetRight member-wise (no ctor)	DIFFER(497v487) extra temp
+4	(float) cast on the partial pitch phase	DIFFER(487v487) residue 18 (same as 2)
+5	named float pitch local before the call	DIFFER(487v487) residue 18
+6	C3DVector without user copy ctor	DIFFER(491v487)
+7	C3DVector::operator^ (PDB ??TC3DVector) for GetRight	DIFFER(487v487) residue 18
+8	float phase local before the call	DIFFER(487v487) residue ~18
+9	GetRight as non-inline member defined earlier (auto-inline)	DIFFER(487v487) residue 18
+10	physics declared after the rhset/pos copies	DIFFER(487v487) worse
+11	pos copied before rhset	DIFFER(487v487) residue 38
+12	frame computed after the copies	DIFFER(487v487) worse
+13	CRightHandedSet user copy ctor (Ego_r ??0CRightHandedSet@@QAE@ABV0@@Z)	DIFFER(487v487) residue 18
+13b	flags /Ob1 and /EHsc on 13	/Ob1 residue 18; /EHsc 575v487
+14	pitch phase float local + named `right` C3DVector before the second Rotate	DIFFER(487v487) residue 6: only the swell-block fsin/lea/mov ecx order and one mov/fstp tie at the copies
+15	TWO_PI * (phase) operand order	residue 24
+16	named height float for the swell	residue 12
+17	phase local reused for the swell	residue 12
+18	Swell * sin(...) operand order (on 14)	residue 6 (same ties)
+19	phase locals for all three expressions	residue 10
+20	18 without the CRightHandedSet copy ctor	residue 6
+21	const float frame	residue 6
+22	PhysicsTC member read instead of GetPhysicsTC()	residue 6 (parked: last 4 did not reduce)

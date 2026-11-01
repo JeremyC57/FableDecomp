@@ -374226,6 +374226,56 @@ $catalog = @(
         TestSource = '00/cb/global_Int64x32Div32_00cb0700_test.cpp'
         PassPattern = '00cb0700_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004ba810'
+        Module = 'std::_List_base'
+        Source = '00/4b/stdListbase_clear_004ba810.cpp'
+        TestSource = '00/4b/stdListbase_clear_004ba810_test.cpp'
+        PassPattern = '004ba810_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084fdb0'
+        Module = 'NCameraModes::CCameraPointModeBase'
+        Source = '00/84/NCameraModesCCameraPointModeBase_OnDie_0084fdb0.cpp'
+        TestSource = '00/84/NCameraModesCCameraPointModeBase_OnDie_0084fdb0_test.cpp'
+        PassPattern = '0084fdb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a39010'
+        Module = 'CCRCSymbolMap'
+        Source = '00/a3/CCRCSymbolMap_LoadFromFile_00a39010.cpp'
+        TestSource = '00/a3/CCRCSymbolMap_LoadFromFile_00a39010_test.cpp'
+        PassPattern = '00a39010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0ce50'
+        Module = 'CString'
+        Source = '00/c0/CString_Replace_00c0ce50.cpp'
+        TestSource = '00/c0/CString_Replace_00c0ce50_test.cpp'
+        PassPattern = '00c0ce50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6d630'
+        Module = 'CVtable_012b8a64'
+        Source = '00/c6/CVtable012b8a64_Process_00c6d630.cpp'
+        TestSource = '00/c6/CVtable012b8a64_Process_00c6d630_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6d630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd3f50'
+        Module = 'CScriptDefinitionManager'
+        Source = '00/cd/CScriptDefinitionManager_InitAndCompile_00cd3f50.cpp'
+        TestSource = '00/cd/CScriptDefinitionManager_InitAndCompile_00cd3f50_test.cpp'
+        PassPattern = '00cd3f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e3a6b0'
+        Module = 'NScript::CV_BordelloScript'
+        Source = '00/e3/NScriptCVBordelloScript_AdjustTavernPrices_00e3a6b0.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScript_AdjustTavernPrices_00e3a6b0_test.cpp'
+        PassPattern = '00e3a6b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

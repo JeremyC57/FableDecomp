@@ -1,0 +1,34 @@
+addr       parity           behav  name
+004ba810   RELOCATION_MATCH PASS   clear
+0084fdb0   MATCH            PASS   OnDie
+00a39010   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a39010   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00a39010   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a39010   RELOCATION_MATCH PASS   LoadFromFile
+00c0ce50   RELOCATION_MATCH PASS   Replace
+00c6d630   RELOCATION_MATCH PASS   Process
+00cd3f50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00cd3f50   WARN RELOC_NAME: ?GetHeaderDir@NBankFileManager@@YI?AVCWideString@@XZ -> 009a76a0 labelled '_global::MakeCWideString__009a76a0'
+00cd3f50   WARN RELOC_NAME: ?ClearSymbols@CDefinitionManager@@QAEXXZ -> 009acb10 labelled '_global::Forward_allocator_std__pair_CCharString_const____via0x58_009acb10'
+00cd3f50   WARN RELOC_NAME: ?SaveTable@CDefStringTable@@QAEX_N@Z -> 009d4ce0 labelled 'CDefStringTable::SaveBinary'
+00cd3f50   WARN RELOC_NAME: ?SetGlobalScriptDef@@YIXXZ -> 00cbf647 labelled '_global::GFLoadScriptDef_00cbf647'
+00cd3f50   RELOCATION_MATCH PASS   InitAndCompile
+00e3a6b0   RELOCATION_MATCH PASS   AdjustTavernPrices
+
+WINS: 7
+  004ba810 RELOCATION_MATCH std::_List_base::?clear@?$_List_base@VCScriptThingInfo@CGameScriptThingManager@@V?$allocator@VCScriptThingInfo@CGameScriptThingManager@@@std@@@std@@QAEXXZ
+  0084fdb0 MATCH NCameraModes::CCameraPointModeBase::?OnDie@CCameraPointModeBase@NCameraModes@@UAEXXZ
+  00a39010 RELOCATION_MATCH CCRCSymbolMap::?LoadFromFile@CCRCSymbolMap@@QAE_NABVCWideString@@ABVCCharString@@@Z
+  00c0ce50 RELOCATION_MATCH CString::?Replace@CString@@QAEHPBD0@Z
+  00c6d630 RELOCATION_MATCH CVtable_012b8a64::?Process@CVtable_012b8a64@@UAEXPBFPBQAJ@Z
+  00cd3f50 RELOCATION_MATCH CScriptDefinitionManager::?InitAndCompile@CScriptDefinitionManager@@UAEXXZ
+  00e3a6b0 RELOCATION_MATCH NScript::CV_BordelloScript::?AdjustTavernPrices@CV_BordelloScript@NScript@@QAEXXZ
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  stdListbase_clear_004ba810
+  NCameraModesCCameraPointModeBase_OnDie_0084fdb0
+  CCRCSymbolMap_LoadFromFile_00a39010
+  CString_Replace_00c0ce50
+  CVtable012b8a64_Process_00c6d630
+  CScriptDefinitionManager_InitAndCompile_00cd3f50
+  NScriptCVBordelloScript_AdjustTavernPrices_00e3a6b0

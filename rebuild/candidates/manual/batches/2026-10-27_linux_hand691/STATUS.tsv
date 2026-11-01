@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x0084FDB0	MATCH	15v15	PASS	NCameraModes::CCameraPointModeBase::OnDie (vtable 0x0124DDDC slot 22; Ego_r + FableWin)
+0x004BA810	RELOCATION_MATCH	89v89	PASS	std::_List_base<CGameScriptThingManager::CScriptThingInfo>::clear (STLport 4.6); catalog remove_if label wrong
+0x00A39010	RELOCATION_MATCH	378v378	PASS	CCRCSymbolMap::LoadFromFile (Ego_r + FableWin)
+0x00C0CE50	RELOCATION_MATCH	681v681	PASS	libpk CString::Replace(const char*, const char*) (MFC strex.cpp text); catalog CCharString_ReplaceAll wrong
+0x00C6D630	RELOCATION_MATCH	808v808	PASS	retail_asm (/GS): CVtable_012b8a64::Process slot 2, SSE2 multi-tap delay; descriptive libpk name
+0x00CD3F50	RELOCATION_MATCH	867v867	PASS	CScriptDefinitionManager::InitAndCompile (vtable 0x012C2648 slot 2; Ego_r + FableWin)
+0x00E3A6B0	RELOCATION_MATCH	1013v1013	PASS	NScript::CV_BordelloScript::AdjustTavernPrices (CSpawnedFunc name string; Ego_r + FableWin)
+0x007877E0	DIFFER	487v487	-	CTCBob::FrameUpdate parked after 22 probes: 6 lines of fsin/lea scheduling ties
+0x00D89710	DIFFER	903v960	-	NScript::CQ_HeroSoulsNostroScript::DealWithCreatureGeneration parked after 12 probes: retail inlines ~CScriptThing at one site only (inline_depth lever banned)
+0x00C08D40	SKIP	-v964	-	libpk CSoundSystem vtable 0x012B1E24 slot 10 bank loader (/EHsc /GS, ".\CSystem.cpp" line 54, .lug/.lut); not authored (budget), 0 probes

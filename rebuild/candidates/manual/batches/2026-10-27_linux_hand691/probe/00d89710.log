@@ -1,0 +1,13 @@
+p1 local CScriptThing model (inline dtor, inline GetPos/IsAlive), CTimer, std::vector, straight body -> DIFFER(1264v960) 312 (all 6 dtor sites inline)
+p2 loop-2 creature as named local -> DIFFER(1247v960) 289
+p3 loop-1 creature as named local -> DIFFER(1264v960) 312
+p4 shared engine/CScriptThing.h + CCountedPointer.h, inline dtor out of class -> DIFFER(1264v960) 312
+p5 declared-only ~CScriptThing (0x004AA840) -> DIFFER(903v960) 181 (best; only the one retail inline site missing)
+p6 p1 body + header model + inline dtor -> 312 (6 inline)
+p7 p2 body + header model + inline dtor -> 289 (6 inline)
+p8 inline dtor + `if(!x){do{...}while(!x);}` wait loop (GOTCHAS 274 lever) -> DIFFER(1264v960) 312
+p9 CTimer declared after the vector -> DIFFER(903v960) 315
+p10 vector declared before generator -> DIFFER(902v960) 277
+p11 loop-2 creature as block-scoped named local -> DIFFER(903v960) 181
+p12 inline dtor + `while (IsAlive() && !IATT())` -> DIFFER(1279v960) 315
+parked: p5 shape in differ/ (inline_depth lever banned by brief)

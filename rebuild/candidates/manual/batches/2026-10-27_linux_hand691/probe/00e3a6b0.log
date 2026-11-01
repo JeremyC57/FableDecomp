@@ -1,0 +1,2 @@
+p1 CreateCustomers TU model (shared CScriptThing/CTimer/CScriptBase headers, inline ~CScriptThing and operator=), engine/CDefPointer.h -> timeout (cl hang on <stddef.h>)
+p1b same body, local CDefPointer<const CScriptDef> model -> RELOCATION_MATCH

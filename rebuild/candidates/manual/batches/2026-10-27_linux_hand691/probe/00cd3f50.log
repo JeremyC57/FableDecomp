@@ -1,0 +1,13 @@
+p1 STLport vector<CWideString> local x2, inline push_back, inline GetDefDir, decl-only _M_insert_overflow/operator= -> DIFFER(982v867) residue 405
+p2 __false_type user ctor (drops zero byte store) -> DIFFER(950v867) 396
+p3 plain end-of-storage pointer instead of _STLP_alloc_proxy (folding test) -> DIFFER(966v867) 402
+p4 p2 + /Oa -> DIFFER(950v867) 396 (no change)
+p5 same-TU auto_inline(off) bodies for _M_insert_overflow and operator= -> DIFFER(872v867) 213 (finish kept in esi/edi, first push folds)
+p6 platform declared before the vectors -> DIFFER(876v867) 209
+p7 compile vector declared first -> DIFFER(872v867) 321
+p8 const CWideString platform -> DIFFER(872v867) 213
+p9 GetDefDir with named local (NRVO) -> DIFFER(985v867) 276
+p10 GetDefDir without __fastcall -> DIFFER(872v867) 213
+p11 CWideString(L"Data\\Defs\\") temporary written in place (rhs pushed first) -> RELOCATION_MATCH
+p12 GetDefDir non-inline-keyword body auto-inlined -> DIFFER(872v867) 213
+final src (names: SaveTable, protected _M_insert_overflow) -> RELOCATION_MATCH

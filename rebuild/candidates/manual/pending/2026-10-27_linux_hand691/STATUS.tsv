@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+0x007877E0	DIFFER	487v487	-	CTCBob::FrameUpdate parked after 22 probes: 6 lines of fsin/lea scheduling ties
+0x00D89710	DIFFER	903v960	-	NScript::CQ_HeroSoulsNostroScript::DealWithCreatureGeneration parked after 12 probes: retail inlines ~CScriptThing at one site only (inline_depth lever banned)

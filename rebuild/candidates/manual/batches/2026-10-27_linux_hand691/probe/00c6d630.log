@@ -1,0 +1,4 @@
+1	landed CVtable_012bed7c model + same-TU static MixSamplesRampSSE2 + three tap-mixer functions + asm history copy (no flags)	DIFFER(801v808) step passed in eax
+1b	same source with /GS (the TU's kernels carry cookies)	DIFFER(806v808) only the tap-set swap store order
+2	swap via `current = m_pCurrent` local	RELOCATION_MATCH (/GS)
+3	swap via two locals	DIFFER(806v808)

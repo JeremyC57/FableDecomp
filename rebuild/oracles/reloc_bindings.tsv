@@ -35423,3 +35423,16 @@ _crc_table	012af780	00c059d0
 ?ReleaseSounds@CAmbientEmitter@@QAEXXZ	00c44b80	00c44f80
 ??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z	00cd3d2e	00e80d60
 ?RunCutsceneMacro@Row00e80d60@@YIXABVCCharString@@PAUCCutsceneCastMap@1@HPAUCCutsceneArgMap@1@HH@Z	00cbfb7d	00e80d60
+?CurrentFilename@CCRCSymbolMap@@2VCWideString@@A	013d27e8	00a39010
+?DeallocateMemory@?$CVectorMap@KJV?$CKeyPairCompareLess@KJ@@@@QAEXXZ	00a39900	00a39010
+?DeallocateUnusedMemory@?$CArray@U?$pair@KJ@std@@@@QAEXXZ	00a39a00	00a39010
+?ParseBuffer@CCRCSymbolMap@@IAE_NPBDABVCCharString@@@Z	00a38e50	00a39010
+__imp__strstr	0143ffdc	00c0ce50
+?MixSamplesRampSSE2@@YAXGPBFKPAJF@Z	00c6d410	00c6d630
+?ScaleAccumulate16@@YAXPBFKPAJF@Z	00c6d370	00c6d630
+??4?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEAAV01@ABV01@@Z	00433df0	00cd3f50
+?ClearSymbols@CDefinitionManager@@QAEXXZ	009acb10	00cd3f50
+?Compile@CDefinitionManager@@QAEXXZ	009b08c0	00cd3f50
+?GetHeaderDir@NBankFileManager@@YI?AVCWideString@@XZ	009a76a0	00cd3f50
+?SaveTable@CDefStringTable@@QAEX_N@Z	009d4ce0	00cd3f50
+?SetGlobalScriptDef@@YIXXZ	00cbf647	00cd3f50
