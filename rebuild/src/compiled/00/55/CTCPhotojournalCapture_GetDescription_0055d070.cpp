@@ -35,6 +35,8 @@ extern const CWideString g_EmptyWideString;                 // 0x013BCA24
 class CBaseClassNonCopyable : public CBaseClass {
 public:
     CBaseClassNonCopyable();                                // 0x0099A2F0
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (Ego_r / FableWin protected virtual; naming wave 25)
 };
 
 enum FileAccessType { FILE_ACCESS_TYPE_1 = 1, FILE_ACCESS_TYPE_2 = 2 };

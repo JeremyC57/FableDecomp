@@ -13,6 +13,7 @@
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                                // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (Ego_r / FableWin protected virtual; naming wave 25)
 };
 
 class CXMVPlayerBuffers : public CBaseClassNonCopyable {

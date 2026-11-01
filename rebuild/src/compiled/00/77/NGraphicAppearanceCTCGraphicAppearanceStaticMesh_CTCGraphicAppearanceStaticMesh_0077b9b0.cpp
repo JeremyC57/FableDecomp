@@ -7,7 +7,8 @@ namespace NGraphicAppearance { class CAGraphicAppearanceComponent { public: CAGr
 class CThing { public: virtual ~CThing() {} unsigned char _unmodeled04[0x60]; NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance; };
 class CThing;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
- class CBaseClassNonCopyable:public CBaseClass {};
+ class CBaseClassNonCopyable:public CBaseClass { protected: virtual ~CBaseClassNonCopyable();   // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (Ego_r / FableWin protected virtual; naming wave 25)
+};
 class CTCBase:public CBaseClassNonCopyable { public: CTCBase(CThing&); CThing* ParentThing; bool ToBeRemoved,IsInGlobalUpdateTCs; };
 namespace NGraphicAppearance { class CTCGraphicAppearanceStaticMesh:public CTCBase,public CAGraphicAppearanceComponent { public: CPrimitive* PrimHandle; CTCGraphicAppearanceStaticMesh(CThing&); };
 CTCGraphicAppearanceStaticMesh::CTCGraphicAppearanceStaticMesh(CThing& thing):CTCBase(thing),PrimHandle(0) { ParentThing->PTCGraphicAppearance->RegisterComponent(this); } }

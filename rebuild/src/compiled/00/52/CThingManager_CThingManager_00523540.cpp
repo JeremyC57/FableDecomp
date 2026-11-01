@@ -98,7 +98,8 @@ public:
 template <class T> class CArray : public std::vector<T> { };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CBaseClassNonCopyable : public CBaseClass { };
+class CBaseClassNonCopyable : public CBaseClass { protected: virtual ~CBaseClassNonCopyable();   // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (Ego_r / FableWin protected virtual; naming wave 25)
+};
 class CClassFactory : public CBaseClassNonCopyable {
 protected:
     CClassFactory(unsigned char maxClassTypeID);            // 0x00A373B0
