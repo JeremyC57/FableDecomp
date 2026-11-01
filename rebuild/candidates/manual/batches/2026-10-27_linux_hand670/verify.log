@@ -1,0 +1,43 @@
+addr       parity           behav  name
+00a0b9a0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a0b9a0   RELOCATION_MATCH PASS   ~CSoundBankLH
+00a24470   RELOCATION_MATCH PASS   ~C3DMeshLODInfo
+00a3ede0   WARN RELOC_NAME: ??1?$_List_base@PAVCSoundObjectLH@@V?$allocator@PAVCSoundObjectLH@@@std@@@std@@QAE@XZ -> 00a3ff60 labelled '_global::StdList_Clear_00a3ff60'
+00a3ede0   RELOCATION_MATCH PASS   ~CSoundManagerLH
+00a5f150   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a5f150   RELOCATION_MATCH PASS   ~CStreamingFontDataBankEntry
+00a5f3a0   RELOCATION_MATCH PASS   ~CStreamingFontDataBank
+00a63480   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a63480   RELOCATION_MATCH PASS   ~CFontDataBankEntry
+00ab5320   WARN RELOC_NAME: ??1CMouse@@UAE@XZ -> 00a66f80 labelled 'CGuiControlTreePane_Destructor'
+00ab5320   RELOCATION_MATCH PASS   ~CMouseDX
+00b84390   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b84390   RELOCATION_MATCH PASS   ~CEngineSubPrimitiveRenderer
+00b8c7c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b8c7c0   RELOCATION_MATCH PASS   ~CEngineBillboardGenerator
+00b93e40   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b93e40   RELOCATION_MATCH PASS   ~CEngineSceneGrid
+
+WINS: 10
+  00a0b9a0 RELOCATION_MATCH CSoundBankLH::??1CSoundBankLH@@UAE@XZ
+  00a24470 RELOCATION_MATCH C3DMeshLODInfo::??1C3DMeshLODInfo@@UAE@XZ
+  00a3ede0 RELOCATION_MATCH CSoundManagerLH::??1CSoundManagerLH@@UAE@XZ
+  00a5f150 RELOCATION_MATCH CStreamingFontDataBankEntry::??1CStreamingFontDataBankEntry@@UAE@XZ
+  00a5f3a0 RELOCATION_MATCH CStreamingFontDataBank::??1CStreamingFontDataBank@@UAE@XZ
+  00a63480 RELOCATION_MATCH CFontDataBankEntry::??1CFontDataBankEntry@@UAE@XZ
+  00ab5320 RELOCATION_MATCH CMouseDX::??1CMouseDX@@UAE@XZ
+  00b84390 RELOCATION_MATCH CEngineSubPrimitiveRenderer::??1CEngineSubPrimitiveRenderer@@UAE@XZ
+  00b8c7c0 RELOCATION_MATCH CEngineBillboardGenerator::??1CEngineBillboardGenerator@@UAE@XZ
+  00b93e40 RELOCATION_MATCH CEngineSceneGrid::??1CEngineSceneGrid@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CSoundBankLH_CSoundBankLH_00a0b9a0
+  C3DMeshLODInfo_C3DMeshLODInfo_00a24470
+  CSoundManagerLH_CSoundManagerLH_00a3ede0
+  CStreamingFontDataBankEntry_CStreamingFontDataBankEntry_00a5f150
+  CStreamingFontDataBank_CStreamingFontDataBank_00a5f3a0
+  CFontDataBankEntry_CFontDataBankEntry_00a63480
+  CMouseDX_CMouseDX_00ab5320
+  CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84390
+  CEngineBillboardGenerator_CEngineBillboardGenerator_00b8c7c0
+  CEngineSceneGrid_CEngineSceneGrid_00b93e40

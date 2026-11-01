@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00a24470	RELOCATION_MATCH	101v101	PASS	??1C3DMeshLODInfo (catalog name right); 1 probe
+00a0b9a0	RELOCATION_MATCH	115v115	PASS	??1CSoundBankLH (catalog C3DMeshLODInfo dtor wrong); 1 probe
+00a3ede0	RELOCATION_MATCH	104v104	PASS	??1CSoundManagerLH (catalog CIconText::ClearIcons wrong); 1 probe
+00a5f150	RELOCATION_MATCH	100v100	PASS	??1CStreamingFontDataBankEntry (catalog CFontDataBankEntry dtor wrong); 1 probe
+00a63480	RELOCATION_MATCH	100v100	PASS	??1CFontDataBankEntry (catalog name right); 3 probes
+00ab5320	RELOCATION_MATCH	109v109	PASS	??1CMouseDX (catalog name right); 1 probe
+00b84390	RELOCATION_MATCH	104v104	PASS	??1CEngineSubPrimitiveRenderer (catalog CEngineWaterBackgroundSubPatch dtor wrong); 1 probe
+00b8c7c0	RELOCATION_MATCH	102v102	PASS	??1CEngineBillboardGenerator (catalog name right; compiler-generated); 1 probe
+00b93e40	RELOCATION_MATCH	98v98	PASS	??1CEngineSceneGrid (catalog CLocalDetailGeneratorTheme dtor wrong); 2 probes
+00a5f3a0	RELOCATION_MATCH	126v126	PASS	??1CStreamingFontDataBank (catalog CChunkedFile dtor wrong); 2 probes

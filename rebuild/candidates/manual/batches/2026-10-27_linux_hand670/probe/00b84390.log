@@ -1,0 +1,1 @@
+1	user dtor clearing the frame-pool global over CBaseClassNonCopyable + CEngineComponent bases, CSubPrimitiveList[15] + CArray<CSortElement> STLport members -- kept (src/)	RELOCATION_MATCH

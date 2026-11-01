@@ -1,0 +1,1 @@
+1	user dtor calling the slot-2 release (devirtualised, same-TU body) over an implicit-dtor CASoundBank (engine/CBaseClassNonCopyable.h, engine/CCountedPointer.h) -- kept (src/)	RELOCATION_MATCH

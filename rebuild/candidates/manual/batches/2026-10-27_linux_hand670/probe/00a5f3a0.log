@@ -1,0 +1,2 @@
+1	user dtor CloseFonts() over a CBankFileAsync stand-in (no bases), STLport CArray, CCharString, CCountedPointer, CStreamingFontBankStateBlock : CBankStateBlock members	RELOCATION_MATCH
+2	same with CBankFile : CBaseClassNonCopyable and CBankFileAsync : CBankFile sized stand-ins (RTTI chain) -- kept (src/)	RELOCATION_MATCH

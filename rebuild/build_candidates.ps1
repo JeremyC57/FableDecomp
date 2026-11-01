@@ -372560,6 +372560,76 @@ $catalog = @(
         TestSource = '00/a7/CNavQuadTreeNode_CNavQuadTreeNode_00a75c20_test.cpp'
         PassPattern = '00a75c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a0b9a0'
+        Module = 'CSoundBankLH'
+        Source = '00/a0/CSoundBankLH_CSoundBankLH_00a0b9a0.cpp'
+        TestSource = '00/a0/CSoundBankLH_CSoundBankLH_00a0b9a0_test.cpp'
+        PassPattern = '00a0b9a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a24470'
+        Module = 'C3DMeshLODInfo'
+        Source = '00/a2/C3DMeshLODInfo_C3DMeshLODInfo_00a24470.cpp'
+        TestSource = '00/a2/C3DMeshLODInfo_C3DMeshLODInfo_00a24470_test.cpp'
+        PassPattern = '00a24470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3ede0'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_CSoundManagerLH_00a3ede0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_CSoundManagerLH_00a3ede0_test.cpp'
+        PassPattern = '00a3ede0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f150'
+        Module = 'CStreamingFontDataBankEntry'
+        Source = '00/a5/CStreamingFontDataBankEntry_CStreamingFontDataBankEntry_00a5f150.cpp'
+        TestSource = '00/a5/CStreamingFontDataBankEntry_CStreamingFontDataBankEntry_00a5f150_test.cpp'
+        PassPattern = '00a5f150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5f3a0'
+        Module = 'CStreamingFontDataBank'
+        Source = '00/a5/CStreamingFontDataBank_CStreamingFontDataBank_00a5f3a0.cpp'
+        TestSource = '00/a5/CStreamingFontDataBank_CStreamingFontDataBank_00a5f3a0_test.cpp'
+        PassPattern = '00a5f3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a63480'
+        Module = 'CFontDataBankEntry'
+        Source = '00/a6/CFontDataBankEntry_CFontDataBankEntry_00a63480.cpp'
+        TestSource = '00/a6/CFontDataBankEntry_CFontDataBankEntry_00a63480_test.cpp'
+        PassPattern = '00a63480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab5320'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_CMouseDX_00ab5320.cpp'
+        TestSource = '00/ab/CMouseDX_CMouseDX_00ab5320_test.cpp'
+        PassPattern = '00ab5320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b84390'
+        Module = 'CEngineSubPrimitiveRenderer'
+        Source = '00/b8/CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84390.cpp'
+        TestSource = '00/b8/CEngineSubPrimitiveRenderer_CEngineSubPrimitiveRenderer_00b84390_test.cpp'
+        PassPattern = '00b84390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8c7c0'
+        Module = 'CEngineBillboardGenerator'
+        Source = '00/b8/CEngineBillboardGenerator_CEngineBillboardGenerator_00b8c7c0.cpp'
+        TestSource = '00/b8/CEngineBillboardGenerator_CEngineBillboardGenerator_00b8c7c0_test.cpp'
+        PassPattern = '00b8c7c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b93e40'
+        Module = 'CEngineSceneGrid'
+        Source = '00/b9/CEngineSceneGrid_CEngineSceneGrid_00b93e40.cpp'
+        TestSource = '00/b9/CEngineSceneGrid_CEngineSceneGrid_00b93e40_test.cpp'
+        PassPattern = '00b93e40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

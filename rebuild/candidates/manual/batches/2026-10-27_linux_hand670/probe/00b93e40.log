@@ -1,0 +1,2 @@
+1	indexed delete loop over CArray<CEngineSceneGridCell*> (STLport vector model, ~vector empty)	RELOCATION_MATCH
+2	same with the STLport 4.6 _Destroy -> __destroy -> __type_traits<T*> trivial __destroy_aux chain -- kept (src/)	RELOCATION_MATCH

@@ -1,0 +1,1 @@
+1	compiler-generated dtor emitted via the PDB ctor; CPixelShader/CVertexShader user dtors `if (Data) Data->Release()` with PDB private Release `if (--ReferenceCount == 0) delete this`; CShaderBase protected virtual empty dtor; bases CEnginePrimitiveRenderUtil, CEngineComponent -- kept (src/)	RELOCATION_MATCH

@@ -35706,3 +35706,14 @@ _static_l_desc	0139c8b0	00c051c0
 ?InternalEndMovieSequence@CGameScriptInterface@@QAEXXZ	0089b210	006e7550
 ??_7CTCMultiStrike@@6B@	0126ee0c	007cca90
 ?ProcessTransitions@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXXZ	00887a30	00887b00
+??1?$_List_base@PAVCSoundObjectLH@@V?$allocator@PAVCSoundObjectLH@@@std@@@std@@QAE@XZ	00a3ff60	00a3ede0
+??1?$vector@U?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@V?$allocator@U?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@@2@@std@@QAE@XZ	00a40bd0	00a3ede0
+??1CASoundManager@@UAE@XZ	00991880	00a3ede0
+??_7CSoundManagerLH@@6B@	0129d2c4	00a3ede0
+?ClearBanks_009918f0@CASoundManager@@QAEXXZ	009918f0	00a3ede0
+?CloseFonts@CStreamingFontDataBank@@AAEXXZ	00a5f2f0	00a5f3a0
+??1CMouse@@UAE@XZ	00a66f80	00ab5320
+??_7CEngineSubPrimitiveRenderer@@6BCBaseClassNonCopyable@@@	012a3a60	00b84390
+??_7CEngineSubPrimitiveRenderer@@6BCEngineComponent@@@	012a3a28	00b84390
+?PFrameMemoryPool_0143bac4@@3PAVCSimpleMemoryPool@@A	0143bac4	00b84390
+??1CEngineSceneGridCell@@QAE@XZ	00b93660	00b93e40

@@ -1,0 +1,28 @@
+address	name	evidence
+00a24470	C3DMeshLODInfo::~C3DMeshLODInfo	chunk 670 RELOCATION_MATCH: stores vtable 0x0129CDA4 (RTTI C3DMeshLODInfo : CResource); sole caller slot-0 ??_G 0x00A2B690
+00a0b9a0	CSoundBankLH::~CSoundBankLH	chunk 670 RELOCATION_MATCH: stores vtable 0x0129C9DC (RTTI CSoundBankLH : CASoundBank : CBaseClassNonCopyable); sole caller slot-0 ??_G 0x00A0BDF0 (catalog ~C3DMeshLODInfo wrong)
+00a3ede0	CSoundManagerLH::~CSoundManagerLH	chunk 670 RELOCATION_MATCH: stores vtable 0x0129D2C4 (RTTI CSoundManagerLH : CASoundManager); sole caller slot-0 ??_G 0x00A41A50; tail ~CASoundManager (catalog CIconText::ClearIcons wrong)
+00a5f150	CStreamingFontDataBankEntry::~CStreamingFontDataBankEntry	chunk 670 RELOCATION_MATCH: stores vtable 0x0129D5B4 (RTTI); sole caller slot-0 ??_G 0x00A5F800; Ego_r name set
+00a63480	CFontDataBankEntry::~CFontDataBankEntry	chunk 670 RELOCATION_MATCH: stores vtable 0x0129DA70 (RTTI CFontDataBankEntry); sole caller slot-0 ??_G 0x00A63970
+00ab5320	CMouseDX::~CMouseDX	chunk 670 RELOCATION_MATCH: stores vtable 0x0129EA14 (RTTI CMouseDX : CMouse); sole caller slot-0 ??_G 0x00AB5FA0; tail ~CMouse 0x00A66F80
+00b84390	CEngineSubPrimitiveRenderer::~CEngineSubPrimitiveRenderer	chunk 670 RELOCATION_MATCH: stores vtables 0x012A3A60 / 0x012A3A28 (RTTI COL offsets 0/4); sole caller slot-0 ??_G 0x00B866A0 (catalog ~CEngineWaterBackgroundSubPatch wrong)
+00b8c7c0	CEngineBillboardGenerator::~CEngineBillboardGenerator	chunk 670 RELOCATION_MATCH: compiler-generated; sole caller slot-0 ??_G 0x00B8C7A0 of vtable 0x012A3BF4; Ego_r name set
+00b93e40	CEngineSceneGrid::~CEngineSceneGrid	chunk 670 RELOCATION_MATCH: stores vtable 0x012A3E58 (RTTI CEngineSceneGrid); sole caller slot-0 ??_G 0x00B97A60; deletes Ego_r GridCells (catalog ~CLocalDetailGeneratorTheme wrong)
+00a5f3a0	CStreamingFontDataBank::~CStreamingFontDataBank	chunk 670 RELOCATION_MATCH: stores vtable 0x0129D5CC (RTTI CStreamingFontDataBank : CBankFileAsync); sole caller slot-0 ??_G 0x00A5FA30 (catalog ~CChunkedFile wrong)
+00a2b690	C3DMeshLODInfo::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129CDA4; calls 0x00A24470
+00a0bdf0	CSoundBankLH::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129C9DC; calls 0x00A0B9A0
+00a41a50	CSoundManagerLH::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129D2C4; calls 0x00A3EDE0
+00a5f800	CStreamingFontDataBankEntry::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129D5B4; calls 0x00A5F150
+00a63970	CFontDataBankEntry::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129DA70; calls 0x00A63480
+00ab5fa0	CMouseDX::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129EA14; calls 0x00AB5320
+00b866a0	CEngineSubPrimitiveRenderer::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x012A3A60; calls 0x00B84390
+00b8c7a0	CEngineBillboardGenerator::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x012A3BF4; calls 0x00B8C7C0
+00b97a60	CEngineSceneGrid::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x012A3E58; calls 0x00B93E40
+00a5fa30	CStreamingFontDataBank::`scalar deleting destructor'	chunk 670: slot 0 of vtable 0x0129D5CC; calls 0x00A5F3A0
+00a40bd0	std::vector<std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*> >::~vector	chunk 670: called by ~CSoundManagerLH on the bank table; STLport 4.6 text (catalog CCombatWheel::ResetRings wrong)
+00a3ff60	std::_List_base<CSoundObjectLH*,std::allocator<CSoundObjectLH*> >::~_List_base	chunk 670: called by ~CSoundManagerLH 0x00A3EE3B on Sounds (+0x4C); STLport 4.6 text (catalog SortTreeRecursively wrong)
+00a66f80	CMouse::~CMouse	chunk 670: stores vtable 0x0129DBC4 (CMouse); callers ??_GCMouse 0x00A673B0 and the ~CMouseDX tail; Ego_r ??1CMouse@@UAE@XZ (catalog CGuiControlTreePane_Destructor wrong)
+009d5f80	CBankFileAsync::CBankFileAsync	chunk 670: stores vtable 0x0129B8D4 (RTTI CBankFileAsync : CBankFile) after the CBankFile ctor 0x009CD480; Ego_r ??0CBankFileAsync@@QAE@XZ
+00a3ef00	CSoundManagerLH::CSoundManagerLH	chunk 670: stores vtable 0x0129D2C4 (RTTI CSoundManagerLH) (catalog CMainGameComponent_Initialize wrong)
+00b84470	CEngineSubPrimitiveRenderer::CEngineSubPrimitiveRenderer	chunk 670: stores vtables 0x012A3A60 / 0x012A3A28; sets PFrameMemoryPool from CEngine::FrameMemoryPool (catalog NHeroInformationScreens::CBase::CBase wrong)
+00a0bac0	CSoundBankLH::CSoundBankLH	chunk 670: stores vtable 0x0129C9DC (RTTI CSoundBankLH); callers pass the sound manager (catalog CEntityScriptInfo wrong; parameter type CASoundManager* vs CSoundManagerLH* open)
