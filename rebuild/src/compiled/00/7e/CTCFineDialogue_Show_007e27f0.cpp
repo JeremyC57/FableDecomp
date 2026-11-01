@@ -1,4 +1,8 @@
 // CTCFineDialogue::Show(long fine, long money, CTCVillage* village) -- stores the fine, builds "pay for" + the hero's crime report for this region, then shows the hand-over prompt (and registers for updates) or the lack-of-funds prompt
+// Naming wave 18: the global stand-in g_PlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_GameText (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E27F0, 611 bytes, `ret 0Ch`.
 // Callees: CTCFineDialogue::IsAllowed @ 0x007E2790, CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 /
 //          dtor @ 0x0099EAE0, CDataBank::GetTextBySymbol @ 0x009C95E0, CWideString ctor @ 0x0099AED0 / += wchar_t* @ 0x0099B940 /
@@ -40,22 +44,36 @@ public:
 };
 }
 using NGameText::CDataBank;
-struct CGameTextManager {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                               // +0x14
     unsigned char _pad18[0x1614c - 0x18];
     CFontBank* PFontBank;                               // +0x1614C
 };
-extern CGameTextManager* g_GameText;                    // 0x013B86A0
 class CSubtitleRenderer {
 public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long colour, float time, bool flag, unsigned long mode);   // 0x00492E4B
+};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
-extern CPlayerGui* g_PlayerGui;                         // 0x013B8790
 class CRegion { public:
     unsigned char _pad00[0x18];
     CCharString Name;                                   // +0x18
@@ -132,7 +150,7 @@ void CTCFineDialogue::Show(long fine, long money, CTCVillage* village)
     Fine = fine;
     Money = money;
     Village = village;
-    CWideString text = g_GameText->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_PAY_FOR");
+    CWideString text = CMainGameComponent::Get()->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_PAY_FOR");
     text += (const unsigned short*)L"\n";
     CWideString report;
     CTCHeroStats* stats;
@@ -146,17 +164,17 @@ void CTCFineDialogue::Show(long fine, long money, CTCVillage* village)
     long framesLeft;
     stats->GetOutstandingFineAndFramesLeft(region, outstandingFine, framesLeft);
     if (Fine <= Money) {
-        CWideString amount = g_GameText->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_FINE_HAND_OVER");
+        CWideString amount = CMainGameComponent::Get()->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_FINE_HAND_OVER");
         NGameText::ConstructString(amount, fine);
         text += amount;
-        g_PlayerGui->Subtitles.SetText(*g_GameText->PFontBank, text, 0x24, 0.0f, false, 1);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*CMainGameComponent::Get()->PFontBank, text, 0x24, 0.0f, false, 1);
         WaitingForConfirmation = true;
         AddToGlobalUpdateList();
     } else {
-        CWideString amount = g_GameText->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_FINE_LACK_FUNDS");
+        CWideString amount = CMainGameComponent::Get()->PDataBank->GetTextBySymbol("TEXT_GUI_CRIME_FINE_LACK_FUNDS");
         NGameText::ConstructString(amount, fine);
         text += amount;
-        g_PlayerGui->Subtitles.SetText(*g_GameText->PFontBank, text, 0x2a, 0.0f, false, 1);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*CMainGameComponent::Get()->PFontBank, text, 0x2a, 0.0f, false, 1);
         WaitingForConfirmation = false;
         GivePlayerChanceToPayFine = false;
     }

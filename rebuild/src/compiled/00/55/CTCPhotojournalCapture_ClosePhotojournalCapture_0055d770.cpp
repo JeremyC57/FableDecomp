@@ -1,9 +1,11 @@
 // CTCPhotojournalCapture::ClosePhotojournalCapture() -- mark the capture screen closed, queue game event 0x43 for the main player, and tell the parent's inventory component (interface 0x11) to start game rendering again
 // Leaf: ClosePhotojournalCapture
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055D770, 150 bytes.
 // Callees: CPlayerManager::GetMainPlayerNumber @ 0x00449700 (catalog "CWorld::DrawGetEnvironment") on the main game component's
-//   player manager (+0x1c), CMainGameComponent::AddGameEvent(const CGameEvent&) @ 0x0041649C on g_pMainGameComponent @ 0x013B86A0,
+//   player manager (+0x1c), CMainGameComponent::AddGameEvent(const CGameEvent&) @ 0x0041649C on CMainGameComponent::Get() @ 0x013B86A0,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 0x11: bit 17 of CThing+0x20),
 //   CTCInventory::StartGameRendering @ 0x00581C1E, __security_check_cookie @ 0x00BFE9F9 (cookie 0x0139C8A8).
 // GS note: the 40-byte CGameEvent (32-byte data array) gets the /GS cookie; esp-based frame (no size pragma).
@@ -59,12 +61,16 @@ class CGameEvent : public CMemoryBuffer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
     void AddGameEvent(const CGameEvent& event); // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CTCPhotojournalCapture { public:
     void*   __vftable;                          // +0x00 (CTCBase)
     CThing* ParentThing;                        // +0x04
@@ -79,8 +85,8 @@ void CTCPhotojournalCapture::ClosePhotojournalCapture()
 {
     ScreenOpen = false;
     CGameEvent event(0x43);
-    event.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
-    g_pMainGameComponent->AddGameEvent(event);
+    event.Player = (signed char)CMainGameComponent::Get()->PlayerManager->GetMainPlayerNumber();
+    CMainGameComponent::Get()->AddGameEvent(event);
     CTCInventory* inventory;
     if (ParentThing->GetInterface(&inventory, 0x11))
         inventory->StartGameRendering();

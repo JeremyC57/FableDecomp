@@ -1,11 +1,13 @@
 // CTCQuickAccessMenu::GetItemsListUI(long& numItems, NUISystem::CComponent* parent) -- build the quick-access items list: sort the hero's inventory (expressions skipped) into trophies / potions / gifts / produce / others by UI category, count the items, and when any category is non-empty create the list component and add one category entry per tab (gifts checked for a usable target)
 // Leaf: ?GetItemsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006276F0, length 1260 bytes, `ret 8`.
 // Callees: CManager::GetInstance @ 0x0041E5F2, CManager::CreateComponent @ 0x0041DB1D, CThing::GetTC<CTCInventory>
 //   (inline, interface 0x11, CVectorMap::LowerBound @ 0x0040F020 inlined), NInventory::CTCInventoryBase::GetAllItems @ 0x005BF482,
 //   CTCInventoryItem::IsExpression @ 0x005D9830, CTCInventoryItem::GetUIInventoryCategory @ 0x005D96F0, std::vector::push_back
 //   (STLport 4.6, _M_insert_overflow out of class), NUISystem::CList::InitialiseOffsets (vtable +0x270),
-//   NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 via g_pMainGameComponent @ 0x013B86A0 (PTextBank +0x14),
+//   NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 via CMainGameComponent::Get() @ 0x013B86A0 (PTextBank +0x14),
 //   CWideString ctor/dtor/operator= @ 0x0099AED0 / 0x0099B510 / 0x0099B7D0, ConstructItemCategoryList @ 0x00626E40 (same TU).
 // Names (PDB): every function, member and class here is spelled from FableWin.pdb / Ego_r.pdb; mangled leaf identical to FableWin.
 // Layout: Ego_r.pdb CTCQuickAccessMenu : CTCBase (ParentThing via engine/CTCBase.h); retail CThing interface bitset +0x20 / map +0x44.
@@ -541,12 +543,16 @@ class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char                          _pad00[0x14];
     CCountedPointer<NGameText::CDataBank>  PTextBank;   // +0x14
     const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }   // FableWin ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ
 };
-extern CMainGameComponent* g_pMainGameComponent;       // 0x013B86A0
 
 enum EUIInventoryCategory { };                          // enumerator names not in the name sets (0..4; 4 = the default)
 class CTCInventoryItem { public:
@@ -665,15 +671,15 @@ CComponent* CTCQuickAccessMenu::GetItemsListUI(long& numItems, CComponent* paren
         list = static_cast<CList*>(manager->CreateComponent("UI_LIST_WIELD_AUGMENT_TEMPLATE_QUICK_ACCESS", false));
         list->InitialiseOffsets(5);
         CWideString name;
-        name = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_TROPHIES");
+        name = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_TROPHIES");
         ConstructItemCategoryList(name, list, trophies, parent, false);
-        name = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_POTIONS");
+        name = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_POTIONS");
         ConstructItemCategoryList(name, list, potions, parent, false);
-        name = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_GIFTS");
+        name = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_GIFTS");
         ConstructItemCategoryList(name, list, gifts, parent, true);
-        name = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_PRODUCE");
+        name = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_PRODUCE");
         ConstructItemCategoryList(name, list, produce, parent, false);
-        name = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_OTHERS");
+        name = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_OTHERS");
         ConstructItemCategoryList(name, list, others, parent, false);
     }
     return list;

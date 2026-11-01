@@ -1,8 +1,11 @@
 // CTCHeroReceiveItems::PrepareToShowItems(const C3DVector& position) -- with items queued and none on display, start the item-taking area at the item's screen position (or the centre of the visible TV area), reset the item orientation and clear the current item
 // Leaf: PrepareToShowItems
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CA670, 397 bytes (+ int3 padding), `ret 4`.
 //   Ego_r.pdb: `?PrepareToShowItems@CTCHeroReceiveItems@@AAEXABVC3DVector@@@Z`.
-// Callees: the display engine's renderer (g_pMainGameComponent 0x013B86A0 -> +0x28 -> +0x2c) virtual slot 13 (+0x34,
+// Callees: the display engine's renderer (CMainGameComponent::Get() 0x013B86A0 -> +0x28 -> +0x2c) virtual slot 13 (+0x34,
 //   world position -> screen position, bool), CDisplayManager::GetAVisibleTelevisionScreenArea @ 0x009BECB0 (C2DBoxF
 //   by value, on the display manager 0x013B8390), CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10 /
 //   0x00A01B50 / 0x00A01B90 / 0x00A01C10 (CIntelligentPointer<CThingObject> vtable 0x0125A858).
@@ -78,12 +81,16 @@ struct CRenderer {
     virtual bool GetScreenPosition(const C3DVector& position, C2DVector* out);   // slot 13 (+0x34)
 };
 class CDisplayEngine { public: unsigned char _pad[0x2c]; CRenderer* Renderer; };       // +0x2c
-class CMainGameComponent { public: unsigned char _pad[0x28]; CDisplayEngine* DisplayEngine; };   // +0x28
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x28]; CDisplayEngine* DisplayEngine; };   // +0x28
 class CDisplayManager { public:
     C2DBoxF GetAVisibleTelevisionScreenArea();          // 0x009BECB0
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-extern CDisplayManager* PDisplayManager;              // 0x013B8390
+extern CDisplayManager* GPDisplayManager;              // 0x013B8390
 extern C3DVector g_ItemUp;                              // 0x01383A5C
 
 class CTCHeroReceiveItems : public CTCBase { public:
@@ -114,10 +121,10 @@ void CTCHeroReceiveItems::PrepareToShowItems(const C3DVector& position)
         return;
     AmountThroughForAreaResize = 0.0f;
     C2DVector screen;
-    if (g_pMainGameComponent->DisplayEngine->Renderer->GetScreenPosition(position, &screen)) {
+    if (CMainGameComponent::Get()->DisplayEngine->Renderer->GetScreenPosition(position, &screen)) {
         InitialAreaItemTook.Set(screen.X, screen.Y, screen.X, screen.Y);
     } else {
-        C2DBoxF area = PDisplayManager->GetAVisibleTelevisionScreenArea();
+        C2DBoxF area = GPDisplayManager->GetAVisibleTelevisionScreenArea();
         float x = (area.BRX - area.TLX) * 0.5f + area.TLX;
         float y = (area.BRY - area.TLY) * 0.5f + area.TLY;
         InitialAreaItemTook.Set(x, y, x, y);

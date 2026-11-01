@@ -1,5 +1,9 @@
 // CTCActionUseBuyHouse::OnActionUseRent(CTCBuyableHouse* house) -- switch to the rent question and show the matching rent prompt (marital home live/rent for a furnished house, rent stop/start otherwise; offered only when the player owns the house and no wife lives there), waiting for the answer when there is text
 // Leaf: OnActionUseRent
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0072E810, 290 bytes (+14 int3 padding), `ret 4`. Called from GlobalUpdate 0x0072EE30.
 // Callees: CWideString::CWideString() 0x0099AED0, CCharString(const char*, long) 0x0099EBF0, CBaseIntelligentPointer::
 //   GetPItem 0x00A01B50, CDataBank::GetTextBySymbol(const CCharString&) 0x009C95E0 (CWideString by value),
@@ -7,7 +11,7 @@
 //   CWideString::operator!=(const wchar_t*) const 0x0099B150 (L"" 0x0122D70C), CSubtitleRenderer::SetText(const
 //   CFontBank&, const CWideString&, unsigned long, float, bool, bool) 0x00492E4B (landed).
 //   Literals TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_LIVE 0x01266BC0, _MARITAL_HOME_RENT 0x01266B94, _RENT_STOP 0x01266B70,
-//   _RENT_START 0x01266B4C. Globals g_pMainGameComponent 0x013B86A0 (text bank +0x14, font +0x1614C), g_pPlayerGui
+//   _RENT_START 0x01266B4C. Globals CMainGameComponent::Get() 0x013B86A0 (text bank +0x14, font +0x1614C), (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())
 //   0x013B8790 (subtitle renderer +0x18).
 // Layout: engine/CTCBuyableHouse.h (OwnedByPlayer +0x11, Rented +0x12, MaxDressLevel +0x20, WifeLivingHere +0x38);
 //   CTCActionUseBuyHouse WaitingForConfirmation +0x18, HouseQuestion +0x1c.
@@ -48,7 +52,12 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    PTextBank;                                 // +0x14
     unsigned char _pad18[0x1614c - 0x18];
@@ -59,12 +68,21 @@ class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool clickPast,
                  bool pauseGame);                            // 0x00492E4B
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                      // +0x18
 };
-extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
-extern CPlayerGui* g_pPlayerGui;                             // 0x013B8790
 
 enum EHouseQuestion { HOUSE_QUESTION_NONE = 0, HOUSE_QUESTION_BUY = 1, HOUSE_QUESTION_RENT = 2 };
 class CTCActionUseBuyHouse {
@@ -84,17 +102,17 @@ void CTCActionUseBuyHouse::OnActionUseRent(CTCBuyableHouse* house)
     CWideString caption;
     if (house->MaxDressLevel > 0) {
         if (house->Rented)
-            text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_LIVE");
+            text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_LIVE");
         else if (house->OwnedByPlayer && !((CBaseIntelligentPointer*)house->WifeLivingHere)->GetPItem())
-            text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_RENT");
+            text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_RENT");
     } else {
         if (house->Rented)
-            text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_RENT_STOP");
+            text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_RENT_STOP");
         else if (house->OwnedByPlayer && !((CBaseIntelligentPointer*)house->WifeLivingHere)->GetPItem())
-            text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_RENT_START");
+            text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_RENT_START");
     }
     if (text != L"") {
         WaitingForConfirmation = true;
-        g_pPlayerGui->SubtitleRenderer.SetText(*g_pMainGameComponent->PFont, text, 4, 0.0f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->PFont, text, 4, 0.0f, false, true);
     }
 }

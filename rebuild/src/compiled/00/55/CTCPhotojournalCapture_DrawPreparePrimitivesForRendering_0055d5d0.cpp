@@ -1,10 +1,12 @@
 // CTCPhotojournalCapture::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- while the capture screen is open: tick and draw its UI components with the time since the last render, switch an engine flag off on the second frame, and from then on render the inventory backdrop
 // Leaf: DrawPreparePrimitivesForRendering
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055D5D0, 227 bytes (`ret 4`). CTCPhotojournalCapture vtable slot 11 (catalog "vfunc_11";
 //   GOTCHAS chunk 169: slot 11 = DrawPreparePrimitivesForRendering; PDB ?DrawPreparePrimitivesForRendering@CTCPhotojournalCapture@@UAEXABVCEnginePrimitivePrepareInfo@@@Z).
 // Callees: GFGetTime() @ 0x009E1BC0 (`__fastcall`, double), the components' virtual slots 1 (+0x04, given the elapsed time) and
 //   2 (+0x08, given info.Engine and four zeros) -- names from use --, the 3D engine's virtual slot 76 (+0x130, given false) through
-//   g_pMainGameComponent @ 0x013B86A0 ->PDisplayEngine (+0x28) ->Engine3D (+0x2c), CVectorMap<...>::LowerBound @ 0x0040F020
+//   CMainGameComponent::Get() @ 0x013B86A0 ->PDisplayEngine (+0x28) ->Engine3D (+0x2c), CVectorMap<...>::LowerBound @ 0x0040F020
 //   (interface 0x11), NInventory::CTCInventoryBase::RenderUIBackdropQuad(float) @ 0x005BC6D6 (the only (float) void member in the
 //   PDB class; manifest "CSpellContainerList::AddChild" is propagated). 1.0f is an immediate push.
 // Layout: Ego_r.pdb CTCPhotojournalCapture (PDB = retail): FrameCounter +0x14, ScreenOpen +0x19, LastRenderTime +0x20 (double),
@@ -112,11 +114,15 @@ class CDisplayEngine { public:
     unsigned char _pad00[0x2c];
     CIEngine*     Engine3D;                             // +0x2c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28 scoped_ptr
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CTCInventory { public:                                   // interface 0x11 (NInventory::CTCInventoryBase)
     void RenderUIBackdropQuad(float alpha);             // 0x005BC6D6
 };
@@ -179,7 +185,7 @@ void CTCPhotojournalCapture::DrawPreparePrimitivesForRendering(const CEnginePrim
             }
         }
         if (++FrameCounter == 2)
-            g_pMainGameComponent->PDisplayEngine->Engine3D->SetEngineFlag76(false);
+            CMainGameComponent::Get()->PDisplayEngine->Engine3D->SetEngineFlag76(false);
         if (FrameCounter >= 2) {
             CTCInventory* inventory;
             if (ParentThing->GetInterface(&inventory, 0x11))

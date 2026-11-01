@@ -1,5 +1,7 @@
 // CSubtitleRenderer::Clear(bool keepText) -- drop every primitive handle; unless keeping the text, reset the captions and overrides, end the player mode it added, release the hero's item display, post the "text finished" messages its flags ask for, unpause the game, and show the next queued text
 // Leaf: ?Clear@CSubtitleRenderer@@QAEX_N@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 #define CSubtitleRenderer CSubtitleRendererLayout
 #include "engine/CSubtitleRenderer.h"
@@ -151,14 +153,18 @@ class CGameEvent : public CGameEventLayout { public:
     void AddData(long size, const void* data);          // 0x009F1760
     void AddUBYTE(unsigned char value) { AddData(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char              _pad00[0x1C];
     scoped_ptr<CPlayerManager> PPlayerManager;          // +0x1C
     unsigned char              _pad20[0x04];
     CWorld*                    PWorld;                  // +0x24
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 enum { GAME_EVENT_PAUSE = 9 };
 
 class CSubtitleRenderer : public CSubtitleRendererLayout { public:
@@ -190,7 +196,7 @@ void CSubtitleRenderer::Clear(bool keepText)
     std::for_each(reinterpret_cast<CHandles&>(EmbeddedPrimitiveHandles).begin(), reinterpret_cast<CHandles&>(EmbeddedPrimitiveHandles).end(), std::mem_fun_ref(&CEnginePrimitiveHandle::Clear));
     if (keepText)
         return;
-    CPlayer& player = g_pMainGameComponent->PPlayerManager->GetMainPlayer();
+    CPlayer& player = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer();
     CThingPlayerCreature* hero = player.GetPControlledCreature();
     DisplayingText = false;
     UpdateTimer = true;
@@ -210,14 +216,14 @@ void CSubtitleRenderer::Clear(bool keepText)
     if ((DisplayFlags & 0x40) && IS_THING_ALIVE(hero) && hero->UsingComponents.test(TCI_HERO_RECEIVE_ITEMS))
         ((CTCHeroReceiveItems&)hero->GetTC(TCI_HERO_RECEIVE_ITEMS)).ForceClear = true;
     if (DisplayFlags & 8)
-        g_pMainGameComponent->PWorld->PMessageEventManager_Data->AddMessage(MESSAGE_EVENT_TEXT_FINISHED_8, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+        CMainGameComponent::Get()->PWorld->PMessageEventManager_Data->AddMessage(MESSAGE_EVENT_TEXT_FINISHED_8, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
     if (DisplayFlags & 2)
-        g_pMainGameComponent->PWorld->PMessageEventManager_Data->AddMessage(MESSAGE_EVENT_TEXT_FINISHED_2, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
+        CMainGameComponent::Get()->PWorld->PMessageEventManager_Data->AddMessage(MESSAGE_EVENT_TEXT_FINISHED_2, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
     DisplayFlags = 0;
     if (PausedGame) {
         CGameEvent event(GAME_EVENT_PAUSE);
         event.AddUBYTE(0);
-        g_pMainGameComponent->AddGameEvent(event);
+        CMainGameComponent::Get()->AddGameEvent(event);
         PausedGame = false;
     }
     if (!reinterpret_cast<CTextInfoQueue&>(TextInfoQueue).empty()) {

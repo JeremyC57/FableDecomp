@@ -1,5 +1,7 @@
 // NUISystem::CManager::OnCloseMenus() -- when the last open menu closes, give the engine resource pool back its pre-menu size
 // Leaf: ?OnCloseMenus@CManager@NUISystem@@SIXXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0041D165, 51 bytes, plain `ret`; Ego_r.pdb ?OnCloseMenus@CManager@NUISystem@@SIXXZ (static
 // __fastcall, no arguments). Counterpart of OnOpenMenus (0x0041D122), which bumps the open-menu count (0x013B8714) and,
 // on the first menu, saves the pool's PoolSize (+0x0c) to 0x013B8718 and resizes the pool to 0x013758CC. Here:
@@ -36,11 +38,15 @@ class CIEngine { public:
     virtual void _slot68(); virtual void _slot69(); virtual void _slot70(); virtual void _slot71();
     virtual CHandleBasedMemoryPool_Methods* GetResourceMemoryPool();   // +0x120
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                      // +0x28 scoped_ptr<CDisplayEngine>
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 namespace NUISystem {
 class CManager {
 public:
@@ -51,7 +57,7 @@ public:
 void __fastcall CManager::OnCloseMenus()
 {
     if (--OpenMenuCount == 0) {
-        CHandleBasedMemoryPool_Methods* pool = g_pMainGameComponent->PDisplayEngine->Engine3D->GetResourceMemoryPool();
+        CHandleBasedMemoryPool_Methods* pool = CMainGameComponent::Get()->PDisplayEngine->Engine3D->GetResourceMemoryPool();
         if (pool)
             pool->ResizePool(PoolSizeBeforeMenus, 1.0f);
     }

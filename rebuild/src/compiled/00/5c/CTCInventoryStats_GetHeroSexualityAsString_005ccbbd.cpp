@@ -1,9 +1,11 @@
 // CTCInventoryStats::GetHeroSexualityAsString(long sexuality) -- the localised stats label for the hero's sexuality: TEXT_GUI_STATS_LABEL_SEX_UNKNOWN for 0, else the label for SEX_STRAIGHT (1), SEX_BI (2), SEX_GAY (3) or NONE
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CCBBD, length 212 bytes (CWideString by value: hidden pointer at [ebp+8], `ret 8`).
 // Frame-pointer size TU: optimize("y",off) + ("s",on). `this` is unused.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 and ~CCharString @ 0x0099EAE0, operator+(const CCharString&, const CCharString&)
 // @ 0x0099F570 (`__fastcall`, the result through the hidden pointer in ecx, the left operand in edx), NGameText::CDataBank::GetTextBySymbol
-// (const CCharString&) @ 0x009C95E0 (CWideString by value, straight into this function's result) on g_pMainGameComponent(0x013B86A0)->
+// (const CCharString&) @ 0x009C95E0 (CWideString by value, straight into this function's result) on CMainGameComponent::Get()(0x013B86A0)->
 // TextBank (+0x14). Literals: "SEX_UNKNOWN" 0x01254994, "TEXT_GUI_STATS_LABEL_" 0x012547FC, "SEX_BI" 0x0125498C, "SEX_GAY" 0x01254984,
 // "SEX_STRAIGHT" 0x01254974, "NONE" 0x0125496C.
 // Shape: one `return` per case (0, 2, 3, 1, else), each building the same sum of two temporaries. The compiler head-merges the
@@ -28,11 +30,15 @@ class CDataBank { public:                                      // NGameText::CDa
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 enum EHeroSexuality { SEX_UNKNOWN_VALUE = 0, SEX_STRAIGHT_VALUE = 1, SEX_BI_VALUE = 2, SEX_GAY_VALUE = 3 };
 
 namespace NInventory {
@@ -41,7 +47,7 @@ struct CTCInventoryStats {
 };
 CWideString CTCInventoryStats::GetHeroSexualityAsString(long sexuality)
 {
-    CDataBank* bank = g_pMainGameComponent->TextBank;
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     if (sexuality == SEX_UNKNOWN_VALUE)
         return bank->GetTextBySymbol(CCharString("TEXT_GUI_STATS_LABEL_") + CCharString("SEX_UNKNOWN"));
     if (sexuality == SEX_BI_VALUE)

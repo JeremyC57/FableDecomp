@@ -1,8 +1,10 @@
 // NCreatureMode::IsAvailableForHeroSprint(const CThing& thing) -- sprinting is available to the idle main-player hero in movement state 3 whose special-movement component allows it, in a stand (1), weapon-stand (4) or berserk (0x24) mode, not casting lightning and not carrying a too-heavy weapon
 // Leaf: ?IsAvailableForHeroSprint@NCreatureMode@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F470, length 236 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsAvailableForHeroSprint@NCreatureMode@@YI_NABVCThing@@@Z.
-// Callees: CPlayerManager::IsThingMainPlayer 0x004497C0 (g_pMainGameComponent 0x013B86A0 +0x1C), CThingCreatureBase::
+// Callees: CPlayerManager::IsThingMainPlayer 0x004497C0 (CMainGameComponent::Get() 0x013B86A0 +0x1C), CThingCreatureBase::
 //   IsPerformingAnyAction 0x006622A0, CVectorMap LowerBound 0x004365B0 (const, twice), CTCHeroSpecialMovement::
 //   IsAvailableForSprint 0x007E0700 (interface 0xDF, bit 31 of word 6 = the `jns` test), GetCurrentMode 0x0073A6E0, the
 //   mode's slot 1, NCreatureMode::IsCarryingTooHeavyWeapon 0x0085EF70 (same TU). Interface 0x94 = CTCWillLightning.
@@ -141,11 +143,15 @@ public:
     bool IsThingMainPlayer(const CThing& thing) const;  // 0x004497C0
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CTCHeroSpecialMovement {                          // interface 0xDF
 public:
     bool IsAvailableForSprint() const;                  // 0x007E0700
@@ -159,7 +165,7 @@ bool __fastcall IsCarryingTooHeavyWeapon(const CThing& thing);
 bool __fastcall NCreatureMode::IsAvailableForHeroSprint(const CThing& thing)
 {
     const CThingCreatureBase& creature = (const CThingCreatureBase&)thing;
-    if (g_SprintEnabled && g_pMainGameComponent->PlayerManager->IsThingMainPlayer(thing) && !creature.IsPerformingAnyAction()
+    if (g_SprintEnabled && CMainGameComponent::Get()->PlayerManager->IsThingMainPlayer(thing) && !creature.IsPerformingAnyAction()
         && creature.MovementState == 3 && thing.HasTC(0xdf)
         && ((const CTCHeroSpecialMovement*)thing.GetTC(0xdf))->IsAvailableForSprint() && thing.HasTC(0x31)) {
         long mode = thing.GetModeManager()->GetCurrentMode().GetType();

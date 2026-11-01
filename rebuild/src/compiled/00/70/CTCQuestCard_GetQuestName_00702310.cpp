@@ -1,8 +1,10 @@
 // CTCQuestCard::GetQuestName() const -- the card's quest name text: the script-set QuestName symbol looked up in the text bank (or the symbol itself widened when the bank has no entry), else the def's QuestName text entry, else the empty string
 // Leaf: GetQuestName
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00702310, 232 bytes (`ret 4`, CWideString by hidden pointer; PDB ?GetQuestName@CTCQuestCard@@QBE?AVCWideString@@XZ).
 // Callees: CCharString::operator!=(const char*) @ 0x0099E960 ("" @ 0x0122D70E), CDataBank::GetTextBySymbol @ 0x009C95E0 on
-//   g_pMainGameComponent @ 0x013B86A0 ->TextBank (+0x14), CWideString::operator!=(const wchar_t*) @ 0x0099B150 (L"" @ 0x0122D70C),
+//   CMainGameComponent::Get() @ 0x013B86A0 ->TextBank (+0x14), CWideString::operator!=(const wchar_t*) @ 0x0099B150 (L"" @ 0x0122D70C),
 //   CWideString(const CWideString&) @ 0x0099B720, ~CWideString @ 0x0099B510, CCharString::ToWideString() @ 0x0099E480,
 //   CDataBank::GetPGroupEntry(unsigned long, bool) @ 0x009C9070, CGroupEntry::GetText() @ 0x009C7A40, g_EmptyWideString @ 0x013BCA24.
 // Layout: Ego_r.pdb CTCQuestCard (QuestName 0x18), CQuestCardDef QuestName 0x28 (text index); NGameText::CGroupEntry ref count +0x04.
@@ -57,11 +59,15 @@ class CDataBank { public:                                      // NGameText::CDa
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CQuestCardDef { public:
     unsigned char _pad00[0x28];
     long QuestName;                                     // +0x28 text index
@@ -98,13 +104,13 @@ class CTCQuestCard { public:
 CWideString CTCQuestCard::GetQuestName() const
 {
     if (QuestName != "") {
-        CWideString text = g_pMainGameComponent->TextBank->GetTextBySymbol(QuestName);
+        CWideString text = CMainGameComponent::Get()->TextBank->GetTextBySymbol(QuestName);
         if (text != L"")
             return text;
         return QuestName.ToWideString();
     }
     if (PDef->QuestName > 0) {
-        CIVCountedPointer<const CTextEntry> entry = g_pMainGameComponent->TextBank->GetPTextEntry(PDef->QuestName, true);
+        CIVCountedPointer<const CTextEntry> entry = CMainGameComponent::Get()->TextBank->GetPTextEntry(PDef->QuestName, true);
         if (entry.Object)
             return entry.Object->GetText();
     }

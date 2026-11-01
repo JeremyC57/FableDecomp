@@ -1,4 +1,6 @@
 // CTCShop::OpenShoppingInterface() -- tell the hero's shopping component which shop it is in, then queue game event 0x1a (open the shopping interface, payload 0xc) for the main player
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00773B20, 210 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::PeekComponent @ 0x00686D60 (CMainGameComponent +0x1c PPlayerManager, Ego_r.pdb), CPlayerManager::GetMainPlayer
@@ -6,7 +8,7 @@
 // component's shop setter @ 0x005BC4CB (`mov [ecx+0B8h],arg ; ret 4`, named SetCurrentShop -- the manifest's
 // CObservable::AddExclusiveObserver is propagated), CMemoryBuffer::Copy @ 0x009F1760, CTCBase::PeekPlayerManager const
 // @ 0x00686D50, CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent @ 0x0041649C on
-// g_pMainGameComponent 0x013B86A0, __security_check_cookie @ 0x00BFE9F9.
+// CMainGameComponent::Get() 0x013B86A0, __security_check_cookie @ 0x00BFE9F9.
 // Layout: CThing dead flag bit 0 of +0x91, interface bitset +0x20 (0x17 = bit 23 of the first word), interface map +0x44;
 // CGameEvent as the landed CTCWife::SendPauseEvent 0x006CEBF0 (40 bytes over an empty CMemoryBuffer).
 // Shape: the out-parameter GetInterface lookup (leaves the component in eax before `mov ecx,eax`); the event payload is an inline by-value
@@ -68,12 +70,16 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PPlayerManager;                     // +0x1c (Ego_r.pdb scoped_ptr)
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
@@ -97,5 +103,5 @@ void CTCShop::OpenShoppingInterface()
     CGameEvent event(0x1a);
     event.AddULONG(0xc);
     event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
-    g_pMainGameComponent->AddGameEvent(event);
+    CMainGameComponent::Get()->AddGameEvent(event);
 }

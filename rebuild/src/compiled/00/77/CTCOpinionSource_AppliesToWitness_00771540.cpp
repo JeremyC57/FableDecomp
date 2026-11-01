@@ -1,10 +1,12 @@
 // CTCOpinionSource::AppliesToWitness(const CThingAICreature* witness) const -- does this opinion source affect the witness: no witness never, no faction restriction always, otherwise only witnesses with an enemy component whose faction is allied with the restricting faction (inverted by RestrictToFactionIsReversed)
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00771540, 221 bytes (`ret 4`; PDB ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0 (interface 0x49 = CTCEnemy, bitset word 2 bit 9),
 //   virtual CDefClassBase::GetInstantiationName() const slot 10 (+0x28, CDefString by hidden pointer), CDefStringTable::GetString
 //   @ 0x009D49B0 on g_DefStringTable @ 0x013CA828, CFactionManager::GetPFaction(const CCharString&) const @ 0x006B93D0 (manifest
 //   "Faction::FindFactionByHash"; PDB ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z) through
-//   g_pMainGameComponent @ 0x013B86A0 ->PWorld (+0x24) ->PFactionManager (+0x54), ~CCharString @ 0x0099EAE0,
+//   CMainGameComponent::Get() @ 0x013B86A0 ->PWorld (+0x24) ->PFactionManager (+0x54), ~CCharString @ 0x0099EAE0,
 //   CTCEnemy::IsAlliedWithFaction(const CFaction*) const @ 0x0076C7F0 (PDB QBE_NPBVCFaction@@@Z; the one landed caller declares
 //   it with a `long` parameter).
 // Layout: Ego_r.pdb CTCOpinionSource (12-byte DefStack): RestrictToFactionAndAllies +0x20, RestrictToFactionIsReversed +0x24;
@@ -35,11 +37,15 @@ class CWorld { public:
     unsigned char    _pad00[0x54];
     scoped_ptr<CFactionManager> PFactionManager;        // +0x54
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     scoped_ptr<CWorld> PWorld;                          // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CDefClassBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -103,7 +109,7 @@ bool CTCOpinionSource::AppliesToWitness(const CThingAICreature* witness) const
             const CFaction* factionObject;
             {
                 CCharString name = g_DefStringTable.GetString(faction->GetInstantiationName().Index);
-                factionObject = g_pMainGameComponent->PWorld->PFactionManager->GetPFaction(name);
+                factionObject = CMainGameComponent::Get()->PWorld->PFactionManager->GetPFaction(name);
             }
             if (factionObject) {
                 if (enemy->IsAlliedWithFaction(factionObject))

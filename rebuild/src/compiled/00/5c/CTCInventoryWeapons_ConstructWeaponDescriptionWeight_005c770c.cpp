@@ -1,5 +1,7 @@
 // CTCInventoryWeapons::ConstructWeaponDescriptionWeight(CWideString& description, long defIndex, float damage) const -- appends the weapon-weight line (and heavy/light for melee weapons) to the item description
 // Leaf: ConstructWeaponDescriptionWeight
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C770C, 519 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 //   Ego_r.pdb ?ConstructWeaponDescriptionWeight@CTCInventoryWeapons@@QBEXAAVCWideString@@JM@Z (the float is unused).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CGameDefinitionManager::Get 0x0044C6B0 / GetDefGlobalIndexFromName 0x009AD390 /
@@ -31,8 +33,12 @@ namespace NGameText {
 class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
 }
 using NGameText::CDataBank;   // 0x009C95E0
-class CMainGameComponent { public: unsigned char _pad[0x14]; CDataBank* TextBank; };   // +0x14
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x14]; CDataBank* TextBank; };   // +0x14
 template <class T> struct vector {
     T* _M_start;
     T* _M_finish;
@@ -180,7 +186,7 @@ void CTCInventoryWeapons::ConstructWeaponDescriptionWeight(CWideString& descript
                 }
             }
         }
-        CDataBank* bank = g_pMainGameComponent->TextBank;
+        CDataBank* bank = CMainGameComponent::Get()->TextBank;
         if (IsMeleeWeaponClass(weaponDef->WeaponClass)) {
             description += bank->GetTextBySymbol("TEXT_GUI_MENU_WEAPON_WEIGHT") + misc->WeightUnits;
             if (weaponDef->WeaponClass == 2)

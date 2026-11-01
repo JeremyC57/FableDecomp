@@ -1,5 +1,8 @@
 // GetRotationInAnimationBetweenTimes(long bankIndex, float& rotation, float startTime, float endTime) -- the signed turn (in revolutions) of a bank animation's root movement between two times: the angle between the end movement's forward axis and +X, signed by the half-way movement's forward axis
 // Leaf: ?GetRotationInAnimationBetweenTimes@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DB6B0, 529 bytes (0x211 + int3 padding), __fastcall `ret 8` (bankIndex in ecx,
 //   &rotation in edx). Ego_r.pdb `?GetRotationInAnimationBetweenTimes@?A0x1f24e1a2@@YIXJAAMMM@Z` (an anonymous-namespace
 //   helper of the animation-set TU, written here with external linkage so VC7.1 emits it). One caller: the thunk
@@ -7,7 +10,7 @@
 // Callees: CMeshDataBank::PeekAnimation(unsigned long) const 0x00A242C0 (twice), C3DAnimationInfo::GetAnimationStats()
 //   const 0x00A269C0 (returns CCountedPointer<const C3DAnimationStats> through a hidden pointer), the stats' pure
 //   virtuals slot 4 (+0x10, bool: has root movement) and slot 6 (+0x18, CMatrix3x4 by value from (start, end)),
-//   operator delete 0x00BFE9BC, _CIacos 0x00BFEBA2 (the acos intrinsic). Globals: g_pMainGameComponent 0x013B86A0,
+//   operator delete 0x00BFE9BC, _CIacos 0x00BFEBA2 (the acos intrinsic). Globals: CMainGameComponent::Get() 0x013B86A0,
 //   1e-4f 0x0129BA3C (read as a variable, negated with fchs), 0.0f 0x0122DEDC, 1.0f 0x0122DED8, -1.0f 0x0122DEE0,
 //   0.5f 0x0122F59C, 1/(2 pi) 0x01237F08.
 // Layout: CMainGameComponent::PWorld +0x24, CWorld::PMainMeshBank +0x3c; C3DAnimationInfo::Duration +0x10;
@@ -92,20 +95,24 @@ public:
     CMeshDataBank* PMainMeshBank;                                                    // +0x3c
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x24];
     CWorld*       PWorld;                                                            // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;                                    // 0x013B86A0
 
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 void __fastcall GetRotationInAnimationBetweenTimes(long bankIndex, float& rotation, float startTime, float endTime)
 {
-    CMeshDataBank* bank = g_pMainGameComponent->PWorld->PMainMeshBank;
+    CMeshDataBank* bank = CMainGameComponent::Get()->PWorld->PMainMeshBank;
     const C3DAnimationInfo* info = bank->PeekAnimation(bankIndex);
     const C3DAnimationStats* stats = info->GetAnimationStats().Data;
-    if (endTime < -EPSILON)
+    if (endTime < -DELTA_NOTIONAL_ZERO)
         endTime = bank->PeekAnimation(bankIndex)->Duration;
     if (!stats->HasMovement()) {
         rotation = 0.0f;

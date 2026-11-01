@@ -1,5 +1,9 @@
 // CTCQuestCompletionUI::~CTCQuestCompletionUI() -- quest completion screen TC dtor: leave the global TC list, delete the black overlay, re-enable 3D rendering and mark the world as starting 3D rendering, delete the screen's UI components, reset the UI manager (observers, action params, previous-selection list, bastard child), cancel the cutscene preload and reopen the player GUI; then the member and base destructors
 // Leaf: ??1CTCQuestCompletionUI@@UAE@XZ
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E41E0, 587 bytes, tail jump to the base destructor.
 // Identity: the vtable store 0x0125589C carries RTTI `.?AVCTCQuestCompletionUI@@` (rtti_bases: CTCQuestCompletionUI : CTCBase);
 //   Ego_r.pdb has `??1CTCQuestCompletionUI@@UAE@XZ`. The catalog label is right.
@@ -13,7 +17,7 @@
 //   Virtual calls on the 3D engine (CDisplayEngine::Get3DEngine of the main game component's display engine): CIEngine slot 76
 //   Enable3DSceneRendering(bool) and slot 56 CutscenePreload(bool, bool) (vtable 0x012A0D24 in Ego_r declaration order: slot 70
 //   is FreeTextureFromEngineResourcePools, as the landed CMovie::FreeTextures 0x00547B90; both PDB signatures fit the pushes).
-// Data: g_pMainGameComponent 0x013B86A0 (bound), g_pPlayerGui 0x013B8790 (bound), NUISystem::CList::GPreviousSelected 0x013B8A98:
+// Data: CMainGameComponent::Get() 0x013B86A0 (bound), (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (bound), NUISystem::CList::GPreviousSelected 0x013B8A98:
 //   Ego_r.pdb names the dynamic initializers of CList::GPreviousSelected then CHoverable::GAlreadyHovered in that order, and the
 //   retail initializers 0x0121A6AC / 0x0121A6D0 build the lists at 0x013B8A98 then 0x013B8AD4, whose atexit destructors run
 //   code in the CList (0x0053C9BC) and CHoverable (0x0055C300) TUs; the element type CList* is probable (the CList code at
@@ -305,12 +309,27 @@ template <class T> class scoped_ptr { public:
     T* ptr;
     T& operator*() const { return *ptr; }
 };
-class CMainGameComponent { public:                          // Ego_r.pdb offsets up to +0x28 hold in retail
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:                          // Ego_r.pdb offsets up to +0x28 hold in retail
     unsigned char              _pad00[0x28];
     scoped_ptr<CDisplayEngine> PDisplayEngine;              // +0x28
     CDisplayEngine& GetDisplayEngine() { return *PDisplayEngine; }
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 #define CPlayerGui CPlayerGuiLayout
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
@@ -318,7 +337,6 @@ class CPlayerGui : public CPlayerGuiLayout { public:
     void Open();                                            // 0x004374B0
     bool IsOpen() const;                                    // 0x004374F0
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
 namespace NUISystem {
 enum EEvent { };                                            // values not needed here
@@ -439,7 +457,7 @@ CTCQuestCompletionUI::~CTCQuestCompletionUI()
     RemoveFromGlobalTCs();
     delete PBlack;
     PFrame = 0;
-    g_pMainGameComponent->GetDisplayEngine().Get3DEngine().Enable3DSceneRendering(true);
+    CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine().Enable3DSceneRendering(true);
     GetWorld().SetAsStarting3DRendering();
     for (unsigned long i = 0; i < Components.size(); ++i)
         delete Components[i];
@@ -448,7 +466,7 @@ CTCQuestCompletionUI::~CTCQuestCompletionUI()
     NUISystem::CManager::GetInstance()->ClearActionParams();
     NUISystem::CList::GPreviousSelected.clear();
     NUISystem::CManager::GetInstance()->ClearBastardChild();
-    g_pMainGameComponent->GetDisplayEngine().Get3DEngine().CutscenePreload(false, false);
-    if (!g_pPlayerGui->IsOpen())
-        g_pPlayerGui->Open();
+    CMainGameComponent::Get()->GetDisplayEngine().Get3DEngine().CutscenePreload(false, false);
+    if (!CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen())
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
 }

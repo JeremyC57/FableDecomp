@@ -1,11 +1,13 @@
 // CTCTavernGameCardBlackjack::UpdateValues() -- after a won sitting reports the winnings and the winning streak to the hero's online scoreboard, then rolls the bet over (last bet = bet, bet = 0)
 // Leaf: UpdateValues
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DAB60, length 163 bytes (plain `ret`); CTCTavernGameCardBlackjack vtable
 // 0x0126F8F4 slot 40 (the catalog's "vfunc_40"). Name from Ego_r.pdb `?UpdateValues@CTCTavernGameCardBlackjack@@UAE_NXZ`
 // (Ego_r's source order: ... HasPlayerDrawnHand, LeaveGame, EndRound, UpdateValues; retail EndRound is 0x007DAAE0).
 // Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetPControlledCreature() @ 0x00487DC0,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CTCHeroOnlineScoreboard::UpdateScoreForActivity(
-// EOnlineScoreboardActivity, float, bool) @ 0x0055F3B0 (activities 0x18 and 0x20). Global: g_pMainGameComponent
+// EOnlineScoreboardActivity, float, bool) @ 0x0055F3B0 (activities 0x18 and 0x20). Global: CMainGameComponent::Get()
 // @ 0x013B86A0 (player manager at +0x1c).
 // Layout (retail CTCTavernGame; local model because engine/CTCTavernGame.h carries Ego_r.pdb offsets and retail's
 // 12-byte vectors put everything after UIComponents 8..0x1c bytes lower): GameWon +0x21, BaseBet +0x34, LastBet +0x38,
@@ -58,12 +60,16 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;           // +0x1c
     const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 struct CTCTavernGameCardBlackjack {         // vptr +0x00 (CTCBase)
     unsigned char _pad_0x04[0x1c];
@@ -81,7 +87,7 @@ struct CTCTavernGameCardBlackjack {         // vptr +0x00 (CTCBase)
 bool CTCTavernGameCardBlackjack::UpdateValues()
 {
     if (GameWon) {
-        CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         long winnings = TotalWinnings;

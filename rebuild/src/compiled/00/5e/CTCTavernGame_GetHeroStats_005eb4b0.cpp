@@ -1,4 +1,6 @@
 // CTCTavernGame::GetHeroStats(CTCHeroStats** out) -- hands out the living hero creature's hero-stats component (interface 4), leaving *out untouched otherwise
+// Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EB4B0, length 92 bytes (ret 4). Name and signature: Ego_r.pdb
 // `?GetHeroStats@CTCTavernGame@@QAEXPAPAVCTCHeroStats@@@Z`.
 // Callees: CPlayerManager::GetMainPlayer() @ 0x00449960 and CPlayer::GetPControlledCreature() @ 0x00487DC0 (landed naming,
@@ -53,11 +55,15 @@ class CPlayer { public:
 class CPlayerManager { public:
     const CPlayer& GetMainPlayer() const;                // 0x00449960
 };
-class CWorld { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PPlayerManager;          // +0x1c
 };
-extern CWorld* g_pWorld;                     // 0x013B86A0
 
 class CTCTavernGame { public:
     void GetHeroStats(CTCHeroStats** out);
@@ -65,7 +71,7 @@ class CTCTavernGame { public:
 
 void CTCTavernGame::GetHeroStats(CTCHeroStats** out)
 {
-    CThing* hero = g_pWorld->PPlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead())
         hero->GetInterface(out, 4);
 }

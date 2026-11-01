@@ -1,11 +1,13 @@
 // CPlayer::InitModeBoastUI(EPlayerMode, CProcessedInput*) -- attach the boast-UI mode's input processes to the player interface and, with a player character present, switch the display to a third-person view, set the character's controlled movement type and level the controlled creature's facing pitch
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00633F10, length 224 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?InitModeBoastUI@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a CPlayer::PlayerModeInfo
 // InitFunc).
 // Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, six processes),
 // CBaseIntelligentPointer::GetPItem 0x00A01B50, operator new 0x00BFEA1A (0x9C bytes),
 // NDisplayView::CView3DThirdPerson::CView3DThirdPerson 0x0069E940, CDisplayViewManager::SetView(CViewBase*) 0x00640050
-// (g_pMainGameComponent 0x013B86A0 -> display engine +0x28 -> view manager +0xE0), CPlayer::PeekPControlledCreature
+// (CMainGameComponent::Get() 0x013B86A0 -> display engine +0x28 -> view manager +0xE0), CPlayer::PeekPControlledCreature
 // 0x00487DD0, CPlayer::GetPControlledCreature 0x00487DC0, the physics component's slot 67 (+0x10C, SetFacingAngleYZ(float):
 // CTCPhysicsStandard 0x007237E0 rebuilds the facing from the XY angle (slot 63), this angle and slot 65).
 // Layout: engine/CPlayer.h (the scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, PlayerCharacter +0x34) with
@@ -88,11 +90,15 @@ class CDisplayEngine { public:
     unsigned char        _pad00[0xe0];
     CDisplayViewManager* ViewManager;                   // +0xe0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                      // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 class CPlayer : public CPlayerPdb { public:
     CIntelligentPointer<CThingPlayerCreature>& PlayerCharacterPointer() { return *reinterpret_cast<CIntelligentPointer<CThingPlayerCreature>*>(PlayerCharacter); }
@@ -111,7 +117,7 @@ void CPlayer::InitModeBoastUI(EPlayerMode mode, CProcessedInput* input)
     reinterpret_cast<CAInputProcess*>(InputProcessCreatureMovement_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessWatchForControlAngleChange_ptr)->AddToInterface(PlayerInterface);
     if (PlayerCharacterPointer().GetPItem()) {
-        g_pMainGameComponent->DisplayEngine->ViewManager->SetView(new NDisplayView::CView3DThirdPerson);
+        CMainGameComponent::Get()->DisplayEngine->ViewManager->SetView(new NDisplayView::CView3DThirdPerson);
         PlayerCharacterPointer().GetPItem()->ControlledMovementType = 1;
         if (IsThingAlive(PeekPControlledCreature()))
             GetPControlledCreature()->GetPhysicsTC()->SetFacingAngleYZ(0.0f);

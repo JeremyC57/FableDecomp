@@ -1,4 +1,6 @@
 // CSubtitleRenderer::GetTextFromEmbeddedTagGraphic(long graphic) const -- the localised controller-side caption for an embedded button graphic: TEXT_GUI_CONTROLLER_LEFT for the A/X/D-pad-left graphics, TEXT_GUI_CONTROLLER_RIGHT for B/Y/D-pad-right, else the empty wide string
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DF77, 155 bytes; `ret 8` (hidden result + graphic).
@@ -29,11 +31,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CPlayerGuiDef { public:
     unsigned char _pad000[0x66c];
     long          ControllerAGraphic;              // +0x66c
@@ -70,6 +76,6 @@ CWideString CSubtitleRenderer::GetTextFromEmbeddedTagGraphic(long graphic) const
     else if (graphic == gui->ControllerDPadRightGraphic)
         tag = "TEXT_GUI_CONTROLLER_RIGHT";
     if (tag != "")
-        return g_pMainGameComponent->TextBank->GetTextBySymbol(tag);
+        return CMainGameComponent::Get()->TextBank->GetTextBySymbol(tag);
     return g_EmptyWideString;
 }

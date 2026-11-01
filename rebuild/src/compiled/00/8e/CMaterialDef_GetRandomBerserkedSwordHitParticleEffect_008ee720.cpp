@@ -1,4 +1,6 @@
 // CMaterialDef::GetRandomBerserkedSwordHitParticleEffect() -- pick one entry of the material's berserked sword-hit particle-effect list with the engine's random generator (0 when the list is empty)
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EE720, length 100 bytes.
 // Callees: the random-generator accessor @ 0x0049D800 (returns its object's +8 pointer + 0x16140; the manifest's
 //   CVertexBufferWin32::DoSizeof label is a byte-twin propagation) on the engine singleton 0x013B86A0's +0x24 member, GFROR13 @ 0x00497890 (`__fastcall`).
@@ -14,11 +16,15 @@ struct CRandomGenerator {
 struct CEngineRandomOwner {                       // the object at +0x24 of the engine singleton
     CRandomGenerator* GetRandomGenerator();       // 0x0049D800
 };
-struct CEngineSingleton {                          // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:                          // 0x013B86A0
     unsigned char _pad[0x24];
     CEngineRandomOwner* m_pOwner;
 };
-extern CEngineSingleton* g_pEngine;                // 0x013B86A0
 template <class T> struct vector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     bool empty() const { return _M_start == _M_finish; }
@@ -33,7 +39,7 @@ class CMaterialDef { public:
 long CMaterialDef::GetRandomBerserkedSwordHitParticleEffect()
 {
     if (!BerserkedSwordHitParticleEffect.empty()) {
-        CRandomGenerator* rng = g_pEngine->m_pOwner->GetRandomGenerator();
+        CRandomGenerator* rng = CMainGameComponent::Get()->m_pOwner->GetRandomGenerator();
         return BerserkedSwordHitParticleEffect[rng->Random(BerserkedSwordHitParticleEffect.size())];
     }
     return 0;

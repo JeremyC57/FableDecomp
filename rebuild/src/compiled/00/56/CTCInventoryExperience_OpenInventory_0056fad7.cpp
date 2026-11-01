@@ -1,4 +1,7 @@
 // CTCInventoryExperience::OpenInventory() -- opens the experience screen: menu bookkeeping, front-end notification, fade reset, HUD hook, sound category refresh, then snapshots the hero's experience values and opens the base inventory view
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0056FAD7, 278 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: the global open-menus counter 0x0041D122 (__fastcall, no arguments; landed as an asm bake),
 // CManager::GetInstance 0x0041E5F2 and its slot 26 (+0x68) given the parent thing, the base screen hook
@@ -18,9 +21,12 @@
 
 void __fastcall OnOpenMenus();                       // 0x0041D122
 class CThing;
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -36,7 +42,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -172,11 +178,15 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 struct CSoundSystem {
     virtual void v000();
     virtual void v001();
@@ -342,7 +352,7 @@ void CTCInventoryExperience::OpenInventory()
     NUISystem::CManager::GetInstance()->OnThingInventoryOpened(ParentThing);
     PrepareScreen();
     AccumFadeTime = 0.0f;
-    g_pMainGameComponent->World->Hud->SetEnabled(false);
+    CMainGameComponent::Get()->World->Hud->SetEnabled(false);
     CTCHeroExperience* experience;
     ParentThing->GetInterface(&experience, 0x68);
     if (((CSoundSystem*)PSoundManager)) {

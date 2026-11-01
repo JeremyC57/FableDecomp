@@ -1,5 +1,7 @@
 // CTCTavernGameCoinGolf::UpdateValues() -- settle the round through the base CTCTavernGame::UpdateValues; on a won coin-golf table (the plain or the Snowspire one, by def name) award the prize once (lower score wins), report score and winning streak to the online scoreboard and keep the hero's best (lowest) coin-golf score
 // Leaf: ?UpdateValues@CTCTavernGameCoinGolf
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D4410, 693 bytes (+ int3 padding), plain `ret`; referenced from the CoinGolf vtable
 //   at 0x0126F53C (the catalog's "CTCTavernGameShoveHaPenny" label is wrong; the ShoveHaPenny one is 0x007D0850).
 // Callees: CTCTavernGame::UpdateValues() 0x005EA010; GetHeroStats 0x005EB4B0; GetDef 0x005EA000; CThing::GetDefName
@@ -57,12 +59,16 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;           // +0x1c
     const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CPrizeScoreDef { public:
     unsigned char _pad_0x00[0x28];
@@ -126,7 +132,7 @@ bool CTCTavernGameCoinGolf::UpdateValues()
                 stats->PrizeGivenCoinGolf = true;
                 GivePrize();
             }
-            CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCHeroOnlineScoreboard* scoreboard;
             hero->GetInterface(&scoreboard, 0x10d);
             scoreboard->UpdateScoreForActivity(0x16, Score, true);
@@ -141,7 +147,7 @@ bool CTCTavernGameCoinGolf::UpdateValues()
             stats->PrizeGivenCoinGolfSnowspire = true;
             GivePrize();
         }
-        CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         scoreboard->UpdateScoreForActivity(0x17, Score, true);

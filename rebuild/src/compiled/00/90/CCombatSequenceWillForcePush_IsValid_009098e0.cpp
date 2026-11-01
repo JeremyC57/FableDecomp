@@ -1,5 +1,7 @@
 // CCombatSequence_WillForcePush::IsValid() -- valid unless the owner's will-power component (interface 0xCE) is inactive, or, for a non-enemy hero, the hero stands within 8 units
 // Leaf: IsValid
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009098E0, 204 bytes (208 with padding), virtual IsValid.
 // Callees: CVectorMap::LowerBound 0x004365B0 (inlined GetInterface, type 0xCE = bit 14 of the bitset dword +0x38),
 //   CPlayerManager::GetMainPlayer 0x00449970 (landed name; manifest "Catch@0040d959" is wrong) on the main game component
@@ -86,11 +88,15 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 
-struct CMainGameComponent_Retail {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
-extern CMainGameComponent_Retail* g_pMainGameComponent;   // 0x013B86A0
 
 struct CTCWillPower {                           // interface type 0xCE
     unsigned char _pad[0xc];
@@ -112,7 +118,7 @@ bool CCombatSequence_WillForcePush::IsValid()
     CTCWillPower* willPower;
     if (m_pOwner->GetInterface(&willPower, 0xce)) {
         if (willPower->Active) {
-            CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
+            CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
             if (!AreThingsEnemies(hero, m_pOwner)) {
                 if ((hero->GetPos() - m_pOwner->GetPos()).GetLength() < 8.0f)
                     return false;

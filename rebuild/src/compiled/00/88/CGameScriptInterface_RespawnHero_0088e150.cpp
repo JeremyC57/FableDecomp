@@ -9,6 +9,8 @@
 // Shape: /GS cookie frame (the 32-byte data array); the inline constructor stores Type 8, Player -1, EndPos 0, Valid 1, Replacement 0;
 // AddBOOL's by-value bool is homed in the dead flag slot (an `unsigned char` parameter takes a new frame byte); the player number overwrites Player after the Copy.
 // Leaf: RespawnHero
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);   // 0x009F1760
 };
@@ -24,10 +26,14 @@ class CGameEvent : public CMemoryBuffer { public:
     __forceinline void AddBOOL(bool value) { Copy(1, &value); }   // __forceinline + bool: the by-value copy is homed in the caller's dead bool slot
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -47,5 +53,5 @@ void CGameScriptInterface::RespawnHero(bool flag) const
     CGameEvent event(GAME_EVENT_RESPAWN_HERO);
     event.AddBOOL(flag);
     event.Player = (signed char)PlayerManager->GetMainPlayerNumber();
-    g_pMainGameComponent->AddGameEvent(event);
+    CMainGameComponent::Get()->AddGameEvent(event);
 }

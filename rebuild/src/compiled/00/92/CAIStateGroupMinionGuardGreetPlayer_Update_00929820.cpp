@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionGuardGreetPlayer::Update() -- greet the living player: push the village's next-greet frame 120 frames ahead, pick a speech (an opinion-graded TEXT_AI_GUARD_GREET_* tag when the hero-stats field is clear, else the creature opinion's greet group), speak it, then set the next-greet frame 1200 (spoken) or 120 frames ahead; always Terminate()
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00929820, length 623 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020
 // (creature 0x23 / 0x4F lookups) and its const instantiation @ 0x004365B0 (the player's interface 4), CWorld::GetFrame
@@ -7,7 +9,7 @@
 // @ 0x00701750, CCharString_ComputeCRC32 @ 0x00404310 (__fastcall), GetTagFromCRC @ 0x009CC410,
 // CTCCreatureOpinionOfHero::GetGreetDialogueGroupIndex @ 0x00683C10, CBaseIntelligentPointer ctor @ 0x00A01B10 /
 // SetPItem @ 0x00A01B90, AIAction_SpeakAISpeechToTarget @ 0x009812C0, Terminate @ 0x008FCF40.
-// Data: g_pMainGameComponent @ 0x013B86A0; "TEXT_AI_GUARD_GREET_NEUTRAL/FRIENDLY/WARY" @ 0x012919E4/0x012919C4/0x012919A4;
+// Data: CMainGameComponent::Get() @ 0x013B86A0; "TEXT_AI_GUARD_GREET_NEUTRAL/FRIENDLY/WARY" @ 0x012919E4/0x012919C4/0x012919A4;
 // 0.3f @ 0x0129199C, -0.3f @ 0x012919C0.
 // Layout: local models (PBrain +4; brain PCreature +0x18; thing presence bits +0x20, interface map +0x44, flags +0x91;
 // village NextGreetFrame +0xAC; main component +0x14 tag table, +0x24 world; thing world +0x74 opinion manager;
@@ -103,13 +105,17 @@ class CWorld { public:
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CTagTable* PTags;                           // +0x14
     unsigned char _pad18[0x0c];
     CWorld* PWorld;                             // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -146,7 +152,7 @@ struct CAIStateGroup_MinionGuardGreetPlayer : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardGreetPlayer::Update()
 {
-    CThingPlayerCreature* player = g_pMainGameComponent->PWorld->GetCurrentPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* player = CMainGameComponent::Get()->PWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {
         CTCVillageMember* member;
         GetCreature()->GetInterface(&member, 0x23);
@@ -164,7 +170,7 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
                 text = "TEXT_AI_GUARD_GREET_FRIENDLY";
             if (opinion < -0.3f)
                 text = "TEXT_AI_GUARD_GREET_WARY";
-            CTagTable* tags = g_pMainGameComponent->PTags;
+            CTagTable* tags = CMainGameComponent::Get()->PTags;
             speech = tags->GetTagFromCRC(CCharString_ComputeCRC32(text));
         } else {
             CTCCreatureOpinionOfHero* opinionTC;

@@ -2,10 +2,15 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00490A22, 446 bytes, plain `ret`; /Os frame-pointer TU like the landed siblings 0x00490927/0x0048DB46.
 // Callees: CSubtitleRenderer::IsTextFullyShown? 0x0048E072 (name unconfirmed), IsWaitingForClickPast 0x0048DB46, CPlayerManager::GetMainPlayer 0x00449970,
 //   CPlayer::PeekPControlledCreature 0x00487DD0 / GetPControlledCreature 0x00487DC0, IS_THING_ALIVE<CThing*> 0x0043DBF0, bitset::test 0x00410DE0,
-//   LowerBound const 0x004365B0 / non-const 0x0040F020, front-end predicate 0x00434D60 on g_pMainGameComponent+0x28, CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0.
+//   LowerBound const 0x004365B0 / non-const 0x0040F020, front-end predicate 0x00434D60 on CMainGameComponent::Get()+0x28, CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: IsInInteractiveState
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 class CWideString { public: void* PStringData; };
 
 class C2DVector { public: float X, Y; };
@@ -79,7 +84,12 @@ public:
 
 
 class CTCBase;
-struct CPresenceBits { bool test(long bit) const; };     // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -124,7 +134,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad0[0x20];
-    CPresenceBits m_present;                       // +0x20
+    std::bitset<274> m_present;                       // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }
@@ -168,16 +178,30 @@ class CPlayer { public:
 #include "engine/CPlayerManager.h"
    // 0x00449970
 struct CFrontEnd { bool IsActive(); };             // 0x00434D60
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad0[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1C
     unsigned char _pad1[0x8];
     CFrontEnd* m_pFrontEnd;                        // +0x28
 };
 struct CHeroInfoScreensManager { unsigned char _pad[0x34]; unsigned char m_open; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public: CHeroInfoScreensManager* GetPHeroInfoScreensManager() const; };   // 0x00437CD0
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 
 bool CSubtitleRenderer::IsInInteractiveState()
 {
@@ -191,7 +215,7 @@ bool CSubtitleRenderer::IsInInteractiveState()
                     return false;
             }
         } else {
-            const CThingPlayerCreature* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().PeekPControlledCreature();
+            const CThingPlayerCreature* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().PeekPControlledCreature();
             bool busy = false;
             if (IS_THING_ALIVE(hero) && hero->HasInterface(0xfc)) {
                 CTCA* c = hero->GetInterfaceConst<CTCA>(0xfc);
@@ -200,15 +224,15 @@ bool CSubtitleRenderer::IsInInteractiveState()
             }
             if (!busy) {
                 CTCA* a = 0;
-                CThingCreatureBase* h2 = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
+                CThingCreatureBase* h2 = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
                 if (h2->HasInterface(0xfc))
                     a = h2->GetTC<CTCA>(0xfc);
                 CTCB* b = 0;
-                CThingCreatureBase* h3 = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
+                CThingCreatureBase* h3 = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
                 if (h3->HasInterface(0xc6))
                     b = h3->GetTC<CTCB>(0xc6);
-                return g_pMainGameComponent->m_pFrontEnd->IsActive() || (a && a->m_d) || (b && b->m_c)
-                    || g_pPlayerGui->GetPHeroInfoScreensManager()->m_open;
+                return CMainGameComponent::Get()->m_pFrontEnd->IsActive() || (a && a->m_d) || (b && b->m_c)
+                    || CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->m_open;
             }
         }
     }

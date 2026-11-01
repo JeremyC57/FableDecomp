@@ -1,11 +1,13 @@
 // CWorldMap::ShowPassabilityOverlay(bool show) -- for every loaded map (from 1), switch the 3D engine's overlay for that map on or off; when on, build a width x height colour grid (green-ish where CMap::IsPassableAt, red elsewhere) and hand it to the engine
 // Leaf: ShowPassabilityOverlay
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FF570, 475 bytes (+ int3 padding), `ret 4`, 8-aligned frame (`and esp,-8`).
 //   Manifest signature CWorldMap::ShowPassabilityOverlay(bool).
 // Callees: CWorldMap virtual slots 10 IsMapLoaded(long) const (+0x28, 0x004FC050) and 18 GetMap(long) (+0x48,
 //   0x0051CE20); CMap 0x0081E690 (manifest GetWorldMapNumber: [+0x20]->slot 13->slot 17(&WorldPos), returns the engine's
 //   map handle), CMap::IsPassableAt(const C2DCoordI&) const 0x0081F3D0, vector<CRGBColour>(size_type) 0x005179C0
-//   (manifest "std_vector_ulong_Initialize"), CRT free 0x00BFEA14; the 3D engine (g_pMainGameComponent 0x013B86A0
+//   (manifest "std_vector_ulong_Initialize"), CRT free 0x00BFEA14; the 3D engine (CMainGameComponent::Get() 0x013B86A0
 //   -> PDisplayEngine +0x28 -> Engine3D +0x2C) slots 64 (+0x100, overlay data) and 65 (+0x104, overlay enable).
 // Shape: the blocked colour is declared first (its bytes are stored first, passable sits below it); the overlay box
 //   uses a four-long ctor built before the colour vector (all four stores share one `xor eax,eax`); GetData is
@@ -70,11 +72,15 @@ class CDisplayEngine { public:
     unsigned char _pad[0x2c];
     CIEngine* Engine3D;                                          // +0x2C
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x28];
     CDisplayEngine* PDisplayEngine;                              // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;                 // 0x013B86A0
 
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -96,7 +102,7 @@ void CWorldMap::ShowPassabilityOverlay(bool show)
         if (!IsMapLoaded(i))
             continue;
         CMap& map = GetMap(i);
-        CIEngine* engine = g_pMainGameComponent->PDisplayEngine->Engine3D;
+        CIEngine* engine = CMainGameComponent::Get()->PDisplayEngine->Engine3D;
         engine->EnableMapOverlay(map.GetWorldMapNumber(), show, true);
         if (!show)
             continue;

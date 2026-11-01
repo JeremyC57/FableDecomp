@@ -1,5 +1,7 @@
 // NCreatureMode::CModeDragonGetHit::OnActivate() -- the CModeStandBase activation, PTarget pointed at the main player's hero, a player creature's animation suspended for this mode
 // Leaf: OnActivate
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7510, 111 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CPlayerManager::GetMainPlayer @ 0x00449970 (catalog label is a
 // catch funclet; the 0x00449960 twin is GetMainPlayer per GOTCHAS chunk 139), CPlayer::GetPControlledCreature @ 0x00487DC0
@@ -28,11 +30,15 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
    // 0x00449970
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* m_pPlayerManager;              // +0x1c
 };
-extern CEngine* g_pEngine;                         // 0x013B86A0
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -73,7 +79,7 @@ struct CModeDragonGetHit : CModeStandBase {
 void CModeDragonGetHit::OnActivate()
 {
     CModeStandBase::OnActivate();
-    PTarget = CIntelligentPointer(g_pEngine->m_pPlayerManager->GetMainPlayer().GetPControlledCreature());
+    PTarget = CIntelligentPointer(CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().GetPControlledCreature());
     if (m_pThing->m_type == 1)
         ((CThingAICreature*)m_pThing)->SuspendAI(true, this);
 }

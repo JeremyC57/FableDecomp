@@ -1,10 +1,12 @@
 // CPlayerGui::ToggleLiveGui() -- flip the live-GUI mode (refused while it is off and the hero-information screens are open) and report the change to the game as an event: show-GUI event 0x1A carrying 0x2B, or hide event 0x42, for the main player
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00438310, length 192 bytes, plain `ret`; /GS frame (cookie 0x0139C8A8,
 // __security_check_cookie 0x00BFE9F9).
 // Callees: CMemoryBuffer::Copy(unsigned long, const void*) 0x009F1760 (the inline CGameEvent::AddLong),
-// CPlayerManager::GetMainPlayerNumber 0x00449700 (g_pMainGameComponent 0x013B86A0 -> PlayerManager +0x1C),
+// CPlayerManager::GetMainPlayerNumber 0x00449700 (CMainGameComponent::Get() 0x013B86A0 -> PlayerManager +0x1C),
 // CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C.
 // Layout: CPlayerGui retail offsets (as the landed ClearGui 0x00438230: engine/CPlayerGui.h is the PDB layout, 0x10
 // high here): LiveGuiMode +0x2BE, PHeroInfoScreensManager (scoped_ptr<NHeroInformationScreens::CManager>) +0x32C;
@@ -32,12 +34,16 @@ class CGameEvent : public CMemoryBuffer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 enum {
     GAME_EVENT_LIVE_GUI_ON  = 0x1a,
@@ -67,11 +73,11 @@ void CPlayerGui::ToggleLiveGui()
     if (LiveGuiMode) {
         CGameEvent event(GAME_EVENT_LIVE_GUI_ON);
         event.AddLong(0x2b);
-        event.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
-        g_pMainGameComponent->AddGameEvent(event);
+        event.Player = (signed char)CMainGameComponent::Get()->PlayerManager->GetMainPlayerNumber();
+        CMainGameComponent::Get()->AddGameEvent(event);
     } else {
         CGameEvent event(GAME_EVENT_LIVE_GUI_OFF);
-        event.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
-        g_pMainGameComponent->AddGameEvent(event);
+        event.Player = (signed char)CMainGameComponent::Get()->PlayerManager->GetMainPlayerNumber();
+        CMainGameComponent::Get()->AddGameEvent(event);
     }
 }

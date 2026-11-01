@@ -1,5 +1,7 @@
 // NHeroInformationScreens::CManager::PlayScreenUpdateSound(EScreenSoundTypes type) const -- play the hero-information screen's update sample (the GUI def's inventory no-movement sound for type 2, else sample 0) through the game state's sound player
 // Leaf: ?PlayScreenUpdateSound@CManager@NHeroInformationScreens
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066E742, 87 bytes, thiscall `ret 4` (`this` unused). Name: Ego_r.pdb
 //   `?PlayScreenUpdateSound@CManager@NHeroInformationScreens@@QBEXW4EScreenSoundTypes@2@@Z` (the only one-argument void
 //   const sound member of the class; it sits in the NHeroInformationScreens TU next to CBase::CBase 0x0066E734). No call or
@@ -37,6 +39,11 @@ public:
     virtual CSoundPlayer* GetSoundPlayer();     // slot 9 (+0x24)
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad00[0x10];
     CASoundBank*  PSampleBank;                  // +0x10
@@ -44,7 +51,6 @@ public:
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;            // 0x013B8394
-extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
 class CPlayerGuiDef {
 public:
     unsigned char _pad00[0x3c];
@@ -75,7 +81,7 @@ void CManager::PlayScreenUpdateSound(EScreenSoundTypes type) const
         break;
     }
     if (((CGameState*)PSoundManager)) {
-        CASoundBank& bank = g_pMainGameComponent->GetSampleBank();
+        CASoundBank& bank = CMainGameComponent::Get()->GetSampleBank();
         ((CGameState*)PSoundManager)->GetSoundPlayer()->PlaySample(bank, sample, true, CSoundInit(), false);
     }
 }

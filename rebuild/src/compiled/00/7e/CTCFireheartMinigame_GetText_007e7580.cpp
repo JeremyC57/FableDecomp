@@ -1,5 +1,7 @@
 // CTCFireheartMinigame::GetText(unsigned long textId) -- the game text `textId` from the main component's text bank, or "Missing text entry"
 // Leaf: ?GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E7580, 181 bytes, thiscall, `ret 8` (CWideString by hidden pointer; `this` unused).
 // Identity (proven): Ego_r.pdb ?GetText@CTCFireheartMinigame@@QAE?AVCWideString@@K@Z (each minigame class has its own copy); its callers are CTCFireheartMinigame::DelayedQuit 0x007E7AC0 (three texts).
 //   The manifest's "CTCBetting::GetText" is propagated across byte-identical bodies.
@@ -56,11 +58,15 @@ public:
 };
 }
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                       // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;          // 0x013B86A0
 class CTCFireheartMinigame {
 public:
     CWideString GetText(unsigned long textId);
@@ -68,6 +74,6 @@ public:
 CWideString CTCFireheartMinigame::GetText(unsigned long textId)
 {
     static CWideString missing(L"Missing text entry");    // 0x013BAEA4
-    CIVCountedPointer<const NGameText::CTextEntry> entry = g_pMainGameComponent->TextBank->GetPTextEntry(textId, true);
+    CIVCountedPointer<const NGameText::CTextEntry> entry = CMainGameComponent::Get()->TextBank->GetPTextEntry(textId, true);
     return entry.Object ? entry.Object->GetText() : missing;
 }

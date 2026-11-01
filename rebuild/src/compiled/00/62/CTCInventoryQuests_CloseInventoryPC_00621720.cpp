@@ -1,10 +1,14 @@
 // CTCInventoryQuests::CloseInventoryPC() -- closes the PC quest screen: unless the hero-information screen is still active, restores the sound categories, resets the player's GUI state, returns the hero-info manager to the previous screen, deletes every UI component, notifies the front end, clears the front-end node list and closes the menus; then closes the base view, clears the primitive handles and the quest cards, re-enables the HUD and stamps the world's close frame
 // Leaf: CloseInventoryPC@CTCInventoryQuests
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00621720, 761 bytes, plain `ret`. Speed TU (no pragmas, no frame pointer).
 // Callees: NHeroInformationScreens::CBase slot 3 (IsActive) on the +0x130 base, the sound system (0x013B8394) slot 46,
 //   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CFrontEndManager::GetInstance 0x0041E5F2 and slots 6/29/37/40/42,
-//   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 (g_pPlayerGui 0x013B8790) + 0x0066E799, memmove 0x00BFEAE6, free 0x00BFEA14,
-//   the HUD owner slots 56/76 (g_pMainGameComponent +0x28 -> +0x2C), menu close 0x0041D165, CTCInventoryBase::CloseInventory
+//   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790) + 0x0066E799, memmove 0x00BFEAE6, free 0x00BFEA14,
+//   the HUD owner slots 56/76 (CMainGameComponent::Get() +0x28 -> +0x2C), menu close 0x0041D165, CTCInventoryBase::CloseInventory
 //   0x005BD597, CEnginePrimitiveHandle::Clear 0x0041BE70 + vector erase 0x00440D70, quest-card operator= 0x006255B0 and
 //   __destroy_aux 0x005C2A8E (`__fastcall`), CTCBase::GetWorld 0x00686A70, CWorld::GetFrame 0x0049D870.
 // Shape: the sound / front-end block is the landed CTCInventoryTrade::CloseInventoryPC (0x0059E2C7) form; Components.clear()
@@ -147,11 +151,15 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -195,10 +203,20 @@ class CBase { public:
     virtual bool IsActive();                         // slot 3 (+0x0C)
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 class CTCBase
 {
 protected:
@@ -239,7 +257,7 @@ void CTCInventoryQuests::CloseInventoryPC()
         CFrontEndManager* a = CFrontEndManager::GetInstance();
         CFrontEndManager* b = CFrontEndManager::GetInstance();
         b->Slot40(&a->Slot42().Data->SomeState, true);
-        g_pPlayerGui->GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
         for (unsigned long i = 0; i < Components.size(); ++i)
             delete Components[i];
         Components.clear();
@@ -247,7 +265,7 @@ void CTCInventoryQuests::CloseInventoryPC()
         CFrontEndManager::GetInstance()->Slot29();
         g_frontEndNodeList.clear();
         CFrontEndManager::GetInstance()->Slot37();
-        g_pMainGameComponent->World->Hud->Slot56(0, 0);
+        CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
         CloseMenus();
     }
     BaseCloseInventory();
@@ -258,7 +276,7 @@ void CTCInventoryQuests::CloseInventoryPC()
     PrimitiveHandles.clear();
     QuestCards.clear();
     QuestCards.clear();
-    g_pMainGameComponent->World->Hud->SetEnabled(true);
+    CMainGameComponent::Get()->World->Hud->SetEnabled(true);
     CWorld* world = (&GetWorld());
     world->InventoryClosedFrame = CWorld::GetFrame();
 }

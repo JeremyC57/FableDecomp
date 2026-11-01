@@ -1,9 +1,11 @@
 // CTCInventoryBase::GetInventoryText(long textIndex) -- the wide text of game-text entry `textIndex` (looked up in the main component's text bank), or the empty wide string when the index is not positive or the bank has no text entry for it
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD273, length 181 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: NGameText::CDataBank::GetTextInfo(unsigned long) @ 0x009C7D00, NGameText::CDataBank::GetPGroupEntry(unsigned long, bool)
 // const @ 0x009C9070 (CIVCountedPointer<const CGroupEntry> by hidden pointer), NGameText::CGroupEntry::GetText() const @ 0x009C7A40
 // (CWideString by hidden pointer -- the function's own result pointer is passed straight through), CWideString::CWideString(const
-// CWideString&) @ 0x0099B720 on the empty wide string 0x013BCA24; the bank is g_pMainGameComponent(0x013B86A0)->TextBank (+0x14).
+// CWideString&) @ 0x0099B720 on the empty wide string 0x013BCA24; the bank is CMainGameComponent::Get()(0x013B86A0)->TextBank (+0x14).
 // Shape: the result is a CWideString by value (hidden pointer at [ebp+8], `ret 8`); `this` is unused. The presence test is a named
 // bool built from an `&&` over a counted temporary: its construction flag is the zeroed frame word [ebp-4] (`and [ebp-4],0` size
 // store), the bool lands in the dead high byte of the index slot, the temporary in [ebp-8] and its release is the inlined long form
@@ -55,11 +57,15 @@ class CDataBank { public:                                 // NGameText::CDataBan
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 namespace NInventory {
 class CTCInventoryBase { public:
@@ -68,7 +74,7 @@ class CTCInventoryBase { public:
 CWideString CTCInventoryBase::GetInventoryText(long textIndex)
 {
     if (textIndex > 0) {
-        CDataBank* bank = g_pMainGameComponent->TextBank;
+        CDataBank* bank = CMainGameComponent::Get()->TextBank;
         bool found = bank->GetTextInfo(textIndex) != 0 && bank->GetPTextEntry(textIndex, true).Object != 0;
         if (found)
             return bank->GetPTextEntry(textIndex, true).Object->GetText();

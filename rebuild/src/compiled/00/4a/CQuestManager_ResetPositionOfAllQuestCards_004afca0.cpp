@@ -1,8 +1,10 @@
 // CQuestManager::ResetPositionOfAllQuestCards() -- while the hero lives, move every living in-limbo quest-card thing (active and completed lists) onto the hero's position through its physics component
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFCA0, length 221 bytes, plain `ret`.
 // Quest cards are real things kept in limbo; whenever the hero is moved they are reset onto him so that a card dropped
 // back into the world appears at his feet.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetPControlledCreature
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (CMainGameComponent::Get() 0x013B86A0 +0x1c), CPlayer::GetPControlledCreature
 // 0x00487DC0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0 (const C3DVector&),
 // CTCPhysicsBase::ResetPosition (vtable slot 31, +0x7c; RTTI vtable 0x0125D2C4 -> 0x006B01D0).
 // Layout: retail CThing (PDB -0x10): PhysicsTC +0x60, Dead +0x91 bit 0, InLimbo +0x91 bit 5; retail CQuestManager
@@ -41,11 +43,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;               // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent; // 0x013B86A0
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -77,7 +83,7 @@ class CQuestManager { public:
 
 void CQuestManager::ResetPositionOfAllQuestCards()
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || hero->Dead)
         return;
     CCardNode* node;

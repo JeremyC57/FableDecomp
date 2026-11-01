@@ -1,4 +1,6 @@
 // CMiniMapDisplay::InitialiseOnRegionLoad(CRegion* region) -- pick the region's minimap graphic, flag the prison-courtyard / execution-tree special maps, size the region minimap for the world map and remember the region
+// Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082BA00, length 233 bytes (`ret 4`).
 // Callees: the game singleton's virtual slot 9 (0x013B86A0; named IsLevelPersistent after the landed CThingSoundEmitter 0x008367B0 model),
 // PeekGuiDef @ 0x00438570 (`__fastcall`), map<CCharString,long>::find @ 0x0042B467 (returns the node; labelled StdMap_FindLE),
@@ -38,14 +40,18 @@ class CWorld { public:
     virtual void v12();
     virtual CWorldMap* PeekWorldMap();          // slot 13 (+0x34)
 };
-class CGame { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsLevelPersistent();           // slot 9 (+0x24)
     unsigned char _pad04[0x20];
     CWorld*       World;                        // +0x24
 };
-extern CGame* g_pGame;                          // 0x013B86A0
 class CRegion { public:
     unsigned char _pad00[0x28];
     CCharString   MiniMapGraphic;               // +0x28
@@ -73,7 +79,7 @@ class CMiniMapDisplay { public:
 
 void CMiniMapDisplay::InitialiseOnRegionLoad(CRegion* region)
 {
-    if (g_pGame->IsLevelPersistent())
+    if (CMainGameComponent::Get()->IsLevelPersistent())
         return;
     CPlayerGuiDef* def = PeekGuiDef();
     MiniMapIsPrisonCourtyard1 = false;
@@ -99,7 +105,7 @@ void CMiniMapDisplay::InitialiseOnRegionLoad(CRegion* region)
         else if (MiniMapGraphic == executionTree->Value)
             MiniMapIsHeadsmansHillNorth = true;
     }
-    CWorldMap* map = g_pGame->World->PeekWorldMap();
+    CWorldMap* map = CMainGameComponent::Get()->World->PeekWorldMap();
     RegionMinimap.Initialise();
     RegionMinimap.InitialiseRegionMinimapSize(map, region);
     PRegion = region;

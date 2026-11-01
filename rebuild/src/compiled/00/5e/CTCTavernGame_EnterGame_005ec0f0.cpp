@@ -1,5 +1,9 @@
 // CTCTavernGame::EnterGame() -- start playing: enter (or leave on a pending quit) the game state, hide the hero in limbo, bind the hero's game player, close the hero's menu, open the game UI, and seed the bets and money from the hero's purse and the def's minimum bet
 // Leaf: ?EnterGame@CTCTavernGame
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC0F0, 373 bytes (plain `ret`).
 // Callees: CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0; the hero's virtual slot 28 (+0x70);
 //          CThing::SetInLimbo(bool) 0x004C8CF0; CDefClassBase::GetSubDef<CTavernGameDef>(CDefPointer*) 0x005ED4A0 (the
@@ -8,7 +12,7 @@
 //          0x005EDC00; the menu component's RequestClose() 0x00625920; CPlayerGui::Close(bool) 0x00438400 and the game-UI
 //          opener 0x00437FF0 (manifest label is a propagated STL name); CTCTavernGame::GetHeroStats 0x005EB4B0; the def's
 //          slot 1; the virtual LeaveGame (slot 30) through the inline SetState.
-// Globals: quit request 0x013BAE1C, g_pMainGameComponent 0x013B86A0, g_pPlayerGui 0x013B8790.
+// Globals: quit request 0x013BAE1C, CMainGameComponent::Get() 0x013B86A0, (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790.
 // Layout (retail CTCTavernGame, Ego_r.pdb - 8 to CurrentMoney, - 0x1c from the state block): ParentThing +0x04,
 //          IsBeingPlayed +0x20, GameWon +0x21, GameFinished +0x28, BaseBet +0x34, LastBet +0x38, TotalWinnings +0x3c,
 //          CurrentMoney +0x40, NumConsecutiveRoundsWon +0xa4, TavernGameState +0xc0, PreviousTavernGameState +0xc4,
@@ -142,18 +146,32 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad_0x00[0x2bd];
     bool          m_bShowing;                   // +0x2bd
     void Close(bool immediately);               // 0x00438400
     void OpenGameUI();                          // 0x00437FF0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CTCTavernGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -202,7 +220,7 @@ void CTCTavernGame::EnterGame()
     GamePlayed = false;
     GameFinished = false;
     GameWon = false;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     hero->SetVisible(false);
     hero->SetInLimbo(true);
     CDefPointer def;
@@ -217,9 +235,9 @@ void CTCTavernGame::EnterGame()
         hero->GetInterfaceDirect(&menu, 0xf6);
         menu->RequestClose();
     }
-    g_pPlayerGui->Close(false);
-    g_pPlayerGui->m_bShowing = true;
-    g_pPlayerGui->OpenGameUI();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Close(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_bShowing = true;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().OpenGameUI();
     TotalWinnings = 0;
     {
         CTCHeroStats* stats;

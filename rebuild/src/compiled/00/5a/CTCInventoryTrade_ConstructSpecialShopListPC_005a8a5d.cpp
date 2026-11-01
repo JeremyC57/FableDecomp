@@ -1,5 +1,8 @@
 // CTCInventoryTrade::ConstructSpecialShopListPC(const std::vector<std::pair<long,long> >& items, CCharString& name) -- creates the special-shop list, totals the price of the special items the hero can still buy and writes it into the buy entry's text
 // Leaf: ConstructSpecialShopListPC
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A8A5D, 521 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D, CGameDefinitionManager::Get 0x0044C6B0 /
 //   GetDefGlobalIndexFromName 0x009AD390 / GetDef 0x0042B312 (same-TU noinline stand-in), GetMainPlayer 0x00449960,
@@ -55,7 +58,12 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
     return true;
 }
 #pragma auto_inline(on)
-struct CPresenceBits { bool test(long kind) const; };      // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -65,7 +73,7 @@ struct CInterfaceMap {
 struct CTCInventoryBase { bool CanAddItem(long defIndex) const; };   // 0x005BF2ED
 class CThing { public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20
+    std::bitset<274> present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
@@ -87,8 +95,12 @@ class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() co
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
    // 0x00449960
-class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
 long __fastcall GetInventoryInterfaceType(long defIndex);   // 0x005D99D0
 namespace NUISystem {
 class CComponent { public:
@@ -167,7 +179,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
         for (const std::pair<long, long>* it = items.begin(); it != items.end(); ++it) {
             long defIndex = it->first;
             long count = it->second;
-            const CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
+            const CThing* hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
             CTCInventoryBase* inventory = 0;
             hero->GetInterface(&inventory, GetInventoryInterfaceType(defIndex));
             if (IsItemAffordable(defIndex, true) && (inventory->CanAddItem(defIndex) || IsSpecialCase(defIndex)) && count > 0

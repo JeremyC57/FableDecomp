@@ -1,5 +1,7 @@
 // CThingManager::SetAllBossesToBossPhase(CThingManager& thing_manager, const vector<CGenericVar>& params) -- script command: move every scan-visible boss creature to the boss phase given in params[0]
 // Leaf: ?SetAllBossesToBossPhase@CThingManager@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 //
 // Retail 0x0051FA00, 193 bytes, plain `ret` (__fastcall: thing manager in ecx (unused), params in edx); 0x1c-byte frame.
 // Callees: 0x0052B300 CThingSearchTools::GetAllThings<CThingAICreature, vector<CThingAICreature*>,
@@ -10,7 +12,7 @@
 //   name is right, only the class was missing. No direct callers (reached through a command table).
 // Layout: CGenericVar is the Ego_r.pdb record (no STL members, offsets hold); CThing's interface bitset +0x20 and
 //   CVectorMap +0x44, ThingTypeFlags +0x6C and the scan bits +0x91 are the landed retail models (0x0052B300, 0x00833710,
-//   0x008E0990); g_pMainGameComponent 0x013B86A0 -> World +0x24 -> PThingSearchTools +0x20 (engine/CWorld.h).
+//   0x008E0990); CMainGameComponent::Get() 0x013B86A0 -> World +0x24 -> PThingSearchTools +0x20 (engine/CWorld.h).
 // Lever: the GetAllThings template, vector::push_back and its STLport _M_insert_overflow (0x00515CC0) are written out in
 //   the TU as the headers put them there (GetAllThings' instances sit right after this TU at 0x0052B270/0x0052B300).
 //   With the bodies visible VC7.1 sees the result vector never escapes, so begin/end stay in ebp/edi across the
@@ -236,11 +238,15 @@ public:
     CThingSearchTools* PThingSearchTools;               // +0x20
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad00[0x24];
     CWorld*       World;                                // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 enum { TC_BOSS = 0xAD };                                // CTCBoss interface type (bit 13 of the +0x34 word)
 
@@ -253,7 +259,7 @@ void __fastcall CThingManager::SetAllBossesToBossPhase(CThingManager& thing_mana
 {
     long phase = params[0].ValSLONG;
     std::vector<CThingAICreature*> creatures;
-    g_pMainGameComponent->World->PThingSearchTools->GetAllThings<CThingAICreature>(
+    CMainGameComponent::Get()->World->PThingSearchTools->GetAllThings<CThingAICreature>(
         CFilter_Bind2<CThingFilter_None, CThingFilter_HasTC>(CThingFilter_None(), CThingFilter_HasTC(TC_BOSS)), creatures);
     for (std::vector<CThingAICreature*>::iterator it = creatures.begin(); it != creatures.end(); ++it)
         (*it)->GetTCIfPresent<CTCBoss>(TC_BOSS)->SetNextBossPhase(phase, false);

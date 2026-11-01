@@ -1,6 +1,8 @@
 // CTCInventoryWeapons::ConstructWieldEntryPC(bool melee, NUISystem::CViewport* viewport, NUISystem::CComponent* list, long defIndex) -- PC twin of ConstructWieldEntry: the guide text is the melee/ranged PC wield guide plus two separators and the item def's description, and both texts are also registered with the optional list
 // Grade: RELOCATION_MATCH -- the shared engine/CCountedPointer.h (members Data / Info) in place of the parked local CCountedPointer stand-in (m_pObject): the entry component now loads into esi after the viewport call as retail does (parked residue: one scheduling difference)
 // Leaf: ?ConstructWieldEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@PAVCComponent@4@J@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C3444, 638 bytes, `ret 14h`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // FableWin.pdb: ?ConstructWieldEntryPC@CTCInventoryWeapons@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@_NPAVCViewport@NUISystem@@PAVCComponent@4@J@Z
 // Callees as 0x005C323A, plus CWideString copy @ 0x0099B720 (from the empty string 0x013BCA24) / operator= @ 0x0099B7D0 /
@@ -35,11 +37,15 @@ class CDataBank { public:                                                // NGam
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                                       // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;                  // 0x013B86A0
 
 namespace NUISystem {
 class CAction { public:                                                  // retail 0x10 bytes
@@ -100,13 +106,13 @@ class CTCInventoryWeapons { public:
 
 CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructWieldEntryPC(bool melee, NUISystem::CViewport* viewport, NUISystem::CComponent* list, long defIndex)
 {
-    CDataBank* bank = g_pMainGameComponent->TextBank;
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
     CWideString text = bank->GetTextBySymbol("TEXT_GUI_MENU_WIELD");
     CCountedPointer<NUISystem::CComponent> entry(manager->CreateMenuEntryComponent(text, 0.0f, 1.0f,
         "PC_MENU_ENTRY_TEMPLATE", 0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CCountedPointer<NUISystem::CComponent> description(manager->CreateComponent("PC_DESCRIPTION", false));
-    CDataBank* guideBank = g_pMainGameComponent->TextBank;
+    CDataBank* guideBank = CMainGameComponent::Get()->TextBank;
     NUISystem::CComponent* descriptionComponent = description.Data;
     CCharString guide(melee ? "TEXT_GUI_MENUGUIDE_WEAPONS_MELEE_WIELD_PC" : "TEXT_GUI_MENUGUIDE_WEAPONS_RANGED_WIELD_PC");
     CWideString guideText(g_EmptyWideString);

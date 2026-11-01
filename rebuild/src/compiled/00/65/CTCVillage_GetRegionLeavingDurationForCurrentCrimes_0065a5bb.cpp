@@ -1,13 +1,18 @@
 // CTCVillage::GetRegionLeavingDurationForCurrentCrimes() -- the longest knowledge life, in frames, of the hero's deeds recorded as crimes against this village (0 when there is no hero)
 // Leaf: GetRegionLeavingDurationForCurrentCrimes
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065A5BB, 203 bytes (plain `ret`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (`and [ebp-4],0`, `push 51h ; pop edi`).
-// Callees: CWorld::PeekMyPlayer() const 0x0049D9D0 (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
+// Callees: CWorld::PeekMyPlayer() const 0x0049D9D0 (on CMainGameComponent::Get() 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
 //          0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51, the deed log); CVectorMap<
 //          ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetTC); CTCHeroOpinionDeedLog::GetDeedFromHandle(
 //          long) 0x006C58F0; the deed log's effects-def getter 0x006C5630 (CDefPointer by hidden pointer; landed spelling
 //          GetDeedEffectsDef, Ego_r.pdb PeekPDeedEffectsDef(EOpinionDeedType) const); the STLport tree increment
-//          Successor 0x004292C0 (`__cdecl`); g_framesPerSecond 0x01375550; the def's slot 1 on the last release.
+//          Successor 0x004292C0 (`__cdecl`); CMainGameComponent::GetConstantFPS() 0x01375550; the def's slot 1 on the last release.
 // Layout: retail CTCVillage PlayersCrimes (set<long>, header node pointer first) +0x64 (as the landed IsHeroMurderer
 //         0x0065A1FD); set node value +0x10; COpinionDeed DeedType +0x00; retail COpinionDeedEffectsDef
 //         KnowledgeLifeInSeconds +0x3c (PDB +0x40, 0x3c-byte def base).
@@ -19,9 +24,12 @@
 #pragma optimize("s", on)
 class CTCBase;
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -35,7 +43,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
@@ -59,12 +67,20 @@ public:
     CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
 private:           // 0x0049D9D0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-extern long g_framesPerSecond;                  // 0x01375550
 
 struct CRefCounted {
     long m_count;
@@ -121,7 +137,7 @@ class CTCVillage { public:
 long CTCVillage::GetRegionLeavingDurationForCurrentCrimes()
 {
     long longest = 0;
-    CThing* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)((CWorld*)(CMainGameComponent::Get()->World))->PeekMyPlayer())->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         if (hero->HasTC(0x51))
@@ -130,7 +146,7 @@ long CTCVillage::GetRegionLeavingDurationForCurrentCrimes()
         for (SNode* it = end->_M_left; it != end; it = Successor(it)) {
             COpinionDeed* deed = log->GetDeedFromHandle(it->_M_value_field);
             if (deed) {
-                long duration = log->GetDeedEffectsDef(deed->DeedType).Object->KnowledgeLifeInSeconds * g_framesPerSecond;
+                long duration = log->GetDeedEffectsDef(deed->DeedType).Object->KnowledgeLifeInSeconds * CMainGameComponent::GetConstantFPS();
                 if (duration > longest)
                     longest = duration;
             }

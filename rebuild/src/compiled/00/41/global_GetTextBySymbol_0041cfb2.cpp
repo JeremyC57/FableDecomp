@@ -3,9 +3,11 @@
 //   0x0041DB84 (this TU; graded separately): VC7.1 /O2 then gives it retail's private convention (the CWideString result pointer in
 //   edi, `mov eax,edi ; ret 4`), so the parked "link-time custom convention" gap is disproved. Retail: Fable.exe @ 0x0041CFB2, 138
 //   bytes, ebp frame (the TU's /Oy- /Os pragmas). Callees: NGameText::CDataBank::GetTextBySymbol 0x009C95E0, CWideString operator!=
-//   0x0099B0F0 / copy ctor 0x0099B720 / dtor 0x0099B510, CWideString::CreateFromCharString 0x0099B6A0. Globals: g_pMainGameComponent
+//   0x0099B0F0 / copy ctor 0x0099B720 / dtor 0x0099B510, CWideString::CreateFromCharString 0x0099B6A0. Globals: CMainGameComponent::Get()
 //   0x013B86A0 (Ego_r CMainGameComponent::PTextBank +0x14), g_pFrontEndGame 0x013B871C (+0x60), g_emptyWideString 0x013BCA24.
 // Leaf: GetTextBySymbol
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Lane gap: retail calls GetTextBySymbol 0x0041CFB2 with a link-time-generated convention (the CWideString result pointer in
 //   edi, `mov eax,edi ; ret 4`), which a single-TU VC7.1 compile cannot emit; this source uses the standard hidden pointer.
 #pragma optimize("y", off)
@@ -31,7 +33,12 @@ public:
 };
 }
 template <class T> class CCountedPointer { public: T* Object; T* operator->() const { return Object; } };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;    // +0x14 (Ego_r CMainGameComponent::PTextBank)
 };
@@ -39,14 +46,13 @@ struct CFrontEndGameComponent {
     unsigned char _pad00[0x60];
     CCountedPointer<NGameText::CDataBank> PTextBank;    // +0x60
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 extern CFrontEndGameComponent* g_pFrontEndGame;         // 0x013B871C
 
 // 0x0041CFB2: a same-TU static (retail's private convention: the result pointer in edi, `mov eax,edi ; ret 4`).
 static __declspec(noinline) CWideString __stdcall GetTextBySymbol(const CCharString& symbol)
 {
-    if (g_pMainGameComponent) {
-        CWideString text = g_pMainGameComponent->PTextBank->GetTextBySymbol(symbol);
+    if (CMainGameComponent::Get()) {
+        CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol(symbol);
         if (text != g_emptyWideString)
             return text;
     }

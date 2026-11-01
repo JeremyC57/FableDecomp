@@ -1,4 +1,6 @@
 // CTCInventoryClothing::ConstructTitleString(CWideString& title) -- appends "<localised TOTAL ARMOUR> <armour value>" to the title
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005B6881, length 138 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 on
 // "TEXT_GUI_MENU_CLOTHING_TOTAL_ARMOUR" @ 0x01253A48, CDataBank::GetTextBySymbol @ 0x009C95E0 (engine globals
@@ -30,11 +32,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                    // +0x14
 };
-extern CEngineGlobals* g_pEngineGlobals;                          // 0x013B86A0
 
 struct CTCInventoryClothing_Retail {
     void* __vftable;
@@ -45,7 +51,7 @@ void CTCInventoryClothing_Retail::ConstructTitleString(CWideString& title)
 {
     {
         CCharString symbol("TEXT_GUI_MENU_CLOTHING_TOTAL_ARMOUR");
-        CDataBank* textBank = g_pEngineGlobals->m_pTextBank;
+        CDataBank* textBank = CMainGameComponent::Get()->m_pTextBank;
         title += textBank->GetTextBySymbol(symbol);
     }
     title += CWideString(L" ");

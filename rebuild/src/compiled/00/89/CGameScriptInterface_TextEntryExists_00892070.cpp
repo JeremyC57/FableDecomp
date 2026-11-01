@@ -2,6 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00892070, length 65 bytes.
 // Callees: Calc @ 0x004014A0 (__fastcall: seed 0, the data, the length pushed), the bank lookup @ 0x009CC410 (labelled CVectorMap::LookupValue). Shape: the bank kept in esi from the start, the length and the data each through their own inline accessor (two separate null tests on the data block, "" @ 0x0129AAF4), `neg ; sbb ; neg` for the non-null result, `ret 4`.
 // Leaf: TextEntryExists
+// Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -32,11 +34,15 @@ struct CDataBank_Retail {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0 (CDataBank::GetTextBySymbol, by value through the hidden result pointer)
     void* LookupText(unsigned long hash);        // 0x009CC410 (labelled CVectorMap::LookupValue)
 };
-struct CEngineGlobals_Retail {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char    _pad[0x14];
     CDataBank_Retail* m_pTextBank;               // +0x14
 };
-extern CEngineGlobals_Retail* g_pEngineGlobals_013b86a0;   // 0x013B86A0
 bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20
 class CCRC {
 public:
@@ -49,6 +55,6 @@ public:
 
 bool CGameScriptInterface::TextEntryExists(const CCharString& symbol) const
 {
-    CDataBank_Retail* bank = g_pEngineGlobals_013b86a0->m_pTextBank;
+    CDataBank_Retail* bank = CMainGameComponent::Get()->m_pTextBank;
     return bank->LookupText(CCRC::Calc(0, symbol.GetString(), symbol.GetLength())) != 0;
 }

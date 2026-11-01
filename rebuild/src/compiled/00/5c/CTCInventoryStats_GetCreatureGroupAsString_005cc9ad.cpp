@@ -1,9 +1,11 @@
 // CTCInventoryStats::GetCreatureGroupAsString(unsigned long groups) -- the localised stats label (TEXT_GUI_STATS_LABEL_CR*) for the first creature group set in a group bit mask, CROTHER when none matches
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CC9AD, 528 bytes (CWideString by value: hidden pointer at [ebp+8], `ret 8`); called once @ 0x005CD6DD.
 // Frame-pointer size TU: optimize("y",off) + ("s",on). `this` is unused.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, operator+(const CCharString&, const CCharString&)
 // @ 0x0099F570 (`__fastcall`, hidden result in ecx, left operand in edx), NGameText::CDataBank::GetTextBySymbol @ 0x009C95E0 on
-// g_pMainGameComponent (0x013B86A0)->TextBank (+0x14).
+// CMainGameComponent::Get() (0x013B86A0)->TextBank (+0x14).
 // Shape: the landed GetHeroSexualityAsString (0x005CCBBD) form: one `return` per bit test in mask order (HOBBES tests 0x20 || 0x40 and UNDEAD 0x400 || 0x800, which VC7.1 folds to one mask test and places at the end;
 // ICETROLL 0x2000000 is tested after SUMMONER 0x4000000), each the same sum of two temporaries; VC7.1
 // head-merges the `push -1` and tail-merges everything after the per-arm literal push, so only the first arm keeps its own body.
@@ -24,11 +26,15 @@ class CDataBank { public:                                      // NGameText::CDa
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 namespace NInventory {
 struct CTCInventoryStats {
@@ -36,7 +42,7 @@ struct CTCInventoryStats {
 };
 CWideString CTCInventoryStats::GetCreatureGroupAsString(unsigned long groups)
 {
-    CDataBank* bank = g_pMainGameComponent->TextBank;
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     if (groups & 0x1)
         return bank->GetTextBySymbol(CCharString("TEXT_GUI_STATS_LABEL_") + CCharString("CRVILLAGERS"));
     if (groups & 0x2)

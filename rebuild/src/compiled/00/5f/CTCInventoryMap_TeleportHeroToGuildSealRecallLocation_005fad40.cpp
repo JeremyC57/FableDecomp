@@ -1,12 +1,14 @@
 // CTCInventoryMap::TeleportHeroToGuildSealRecallLocation() const -- while the hero creature is alive, show the mini map on the region load and queue a move-hero-to-region game event (0x2C) carrying the world's guild-seal recall position and angle, via a teleporter and neither forced nor by door, from the main player
 // Leaf: TeleportHeroToGuildSealRecallLocation
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FAD40, 336 bytes, `ret`, esp frame (speed TU), /GS (cookie
 //   0x0139C8A8, __security_check_cookie @ 0x00BFE9F9).
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
 //   CPlayer::PeekPControlledCreature @ 0x00487DD0 (as the landed sibling TeleportHeroToGuild 0x005FBD90), CTCBase::GetWorld
 //   @ 0x00686A70 and PeekWorld @ 0x00686A80, CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760,
-//   CPlayerManager::GetMainPlayerNumber @ 0x00449700 (g_pMainGameComponent 0x013B86A0 +0x1C), CWorld::HandleMoveHeroToRegionGameEvent
+//   CPlayerManager::GetMainPlayerNumber @ 0x00449700 (CMainGameComponent::Get() 0x013B86A0 +0x1C), CWorld::HandleMoveHeroToRegionGameEvent
 //   @ 0x0049EAF0 (landed; it reads X, Y, Z, angle and three flag bytes in this order).
 // Layout: retail CWorld (Ego_r.pdb order, 16 bytes less ahead of these members): DisplayMiniMapOnRegionLoad +0x12F,
 //   GuildSealRecallPos +0x154, GuildSealRecallAngleXY +0x160; CGameEvent as the landed CInputProcessFishing
@@ -39,11 +41,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1C (Ego_r.pdb PPlayerManager)
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 class CWorld { public:
     unsigned char _pad000[0x12f];
     bool DisplayMiniMapOnRegionLoad;                  // +0x12F
@@ -78,7 +84,7 @@ void CTCInventoryMap::TeleportHeroToGuildSealRecallLocation() const
         event.AddBool(true);
         event.AddBool(false);
         event.AddBool(false);
-        event.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
+        event.Player = (signed char)CMainGameComponent::Get()->PlayerManager->GetMainPlayerNumber();
         GetWorld().HandleMoveHeroToRegionGameEvent(*(&event));
     }
 }

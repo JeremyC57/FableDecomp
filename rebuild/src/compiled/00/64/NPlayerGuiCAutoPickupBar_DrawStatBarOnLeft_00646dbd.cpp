@@ -1,5 +1,7 @@
 // NPlayerGui::CAutoPickupBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, const C2DVector& size, const CRGBColour& colour, unsigned char alpha, bool flash) -- advance the auto-pickup queue by the frame time (show the front pickup for the display time, then wait and drop it), point the bar at the front pickup's inventory graphic and count, then draw it as a stat bar
 // Leaf: DrawStatBarOnLeft
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00646DBD, 381 bytes (size TU, frame pointer), `ret 1Ch`; Ego_r.pdb
 //   ?DrawStatBarOnLeft@CAutoPickupBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z.
 // Callees: list<CAutoPickup>::pop_front 0x00655AA4 (catalog owner label propagated), CMainGameComponent::PeekDefinitionManager
@@ -8,7 +10,7 @@
 //   CStatBar::DrawStatBarOnLeft 0x00646762; the defs' slot 1.
 // Layout: as the landed sibling CAutoPickupBar::AddObject 0x00647511 (state +0x28, pickups list +0x68, CurrentDefIndex +0x6c,
 //   WaitingTimeLeft +0x78; the info's display/wait times +0x520/+0x524); CStatBar shown value +0x10, GraphicFrame +0x50;
-//   CInventoryItemDef Graphic +0x25 (packed); g_pMainGameComponent 0x013B86A0 (+0x24 state, paused byte +0xa4).
+//   CInventoryItemDef Graphic +0x25 (packed); CMainGameComponent::Get() 0x013B86A0 (+0x24 state, paused byte +0xa4).
 // Shape: the countdowns as the landed CMultiStatBar::DrawStatBarOnLeft 0x00646C44 (`t -= frameTime / period`, tested <= 0),
 //   the paused test repeated per statement; the defs held by CDefPointer locals.
 #pragma optimize("y", off)
@@ -77,13 +79,17 @@ struct CGameState {
     unsigned char _pad00[0xa4];
     bool          Paused;                                   // +0xa4
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CGameState*   GameState;                                // +0x24
 public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 
 namespace NPlayerGui {
 
@@ -140,11 +146,11 @@ void CAutoPickupBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, 
     if (!Pickups.empty()) {
         if (m_state == 0) {
             CAutoPickup& pickup = Pickups.front();
-            if (!g_pMainGameComponent->GameState->Paused && pickup.DefIndex != CurrentDefIndex) {
+            if (!CMainGameComponent::Get()->GameState->Paused && pickup.DefIndex != CurrentDefIndex) {
                 CurrentDefIndex = pickup.DefIndex;
                 pickup.TimeRemaining = m_pInfo->PickupDisplayTime;
             }
-            if (!g_pMainGameComponent->GameState->Paused) {
+            if (!CMainGameComponent::Get()->GameState->Paused) {
                 if ((pickup.TimeRemaining -= info.FrameTime / m_pInfo->PickupDisplayTime) <= 0.0f) {
                     m_state = 3;
                     WaitingTimeLeft = m_pInfo->PickupWaitTime;
@@ -153,7 +159,7 @@ void CAutoPickupBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, 
                 }
             }
         } else if (m_state == 1) {
-            if (!g_pMainGameComponent->GameState->Paused) {
+            if (!CMainGameComponent::Get()->GameState->Paused) {
                 if ((WaitingTimeLeft -= info.FrameTime / m_pInfo->PickupWaitTime) <= 0.0f) {
                     if (!Pickups.empty())
                         Pickups.pop_front();
@@ -166,7 +172,7 @@ void CAutoPickupBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, 
     if (!Pickups.empty()) {
         CAutoPickup& pickup = Pickups.front();
         CDefPointer<CObjectDef> def;
-        g_pMainGameComponent->PeekDefinitionManager().GetDef(pickup.DefIndex, &def);
+        CMainGameComponent::Get()->PeekDefinitionManager().GetDef(pickup.DefIndex, &def);
         CDefPointer<CInventoryItemDef> itemDef;
         def->GetSubDef(&itemDef);
         GraphicFrame = itemDef->Graphic;

@@ -3,7 +3,7 @@
 // Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetPlayerCharacter @ 0x00487B70,
 // IS_THING_ALIVE<CThing*> @ 0x0040DCE0, std::bitset<>::test @ 0x00410DE0, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x0040F020, CTCInGameMenu::ConfirmedVideoOptionsNotAccepted @ 0x0047DA50.
-// Global: g_pMainGameComponent @ 0x013B86A0 (player manager at +0x1C).
+// Global: CMainGameComponent::Get() @ 0x013B86A0 (player manager at +0x1C).
 // Shape: Ego_r.pdb `?VideoOptionsNotAcceptedConfirmed@@YIXXZ` (a `__fastcall` free function, registered by address
 // at 0x0047F374); byte-identical to VideoOptionsChangedConfirmed 0x0047D9E3 except the final callee.
 // Label correction: the catalog calls this row "VideoOptionsChangedConfirmed" too (propagated); the callee
@@ -13,10 +13,18 @@
 // `(it == last || type < it->type) ? last : it` select. Size TU with a frame pointer, as the landed
 // sibling SavedConfirmed 0x0047DB73.
 // Leaf: VideoOptionsNotAcceptedConfirmed
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 #pragma optimize("s", on)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };            // std::bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -26,7 +34,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -69,15 +77,19 @@ public:
 };
 class CPlayer { public: CThing* GetPlayerCharacter(); };           // 0x00487B70
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };  // 0x00449960
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* m_pPlayerManager;                       // +0x1C
 };
-extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 
 void __fastcall VideoOptionsNotAcceptedConfirmed()
 {
-    CThing* thing = g_pMainGameComponent->m_pPlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* thing = CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer()->GetPlayerCharacter();
     if (IS_THING_ALIVE(thing)) {
         CTCInGameMenu* menu = 0;
         thing->GetInterface(&menu, 0xC6);

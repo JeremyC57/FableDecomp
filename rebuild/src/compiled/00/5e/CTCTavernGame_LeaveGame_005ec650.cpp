@@ -1,5 +1,11 @@
 // CTCTavernGame::LeaveGame() -- stop playing: leave (or record) the state, announce the game master's departure, hand the hero back (mode, visibility, game player), close the game UI, pay out the money held, clear the text box, bet and subtitles
 // Leaf: ?LeaveGame@CTCTavernGame
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC650, 362 bytes (plain `ret`); CTCTavernGame vtable 0x012560BC slot 30.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; CTCBase::GetWorld 0x00686A70 (manifest "CViewBase::
 //          GetDisplayEngine" is propagated); CThing::GetPos() const 0x004C73D0; CMessageEventManager::AddMessage
@@ -10,7 +16,7 @@
 //          propagated); CTCTavernGame::GetHeroStats 0x005EB4B0; CTCHeroStats::SetMoney(long, bool) 0x0057A774;
 //          CTCTavernGame::ClearBox 0x005EC5C0, ::ClearBetAndMoney 0x005E9F30; CSubtitleRenderer::Clear(bool) 0x00492BAB;
 //          the virtual LeaveGame (slot 30) through the inline SetState.
-// Globals: quit request 0x013BAE1C, frames per second 0x01375550, g_pMainGameComponent 0x013B86A0, g_pPlayerGui 0x013B8790.
+// Globals: quit request 0x013BAE1C, frames per second 0x01375550, CMainGameComponent::Get() 0x013B86A0, (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790.
 // Layout (retail, as the landed SetStateAfterTime 0x005E9B70): IsBeingPlayed +0x20, CurrentMoney +0x40, TavernGameState
 //          +0xc0, PreviousTavernGameState +0xc4, PGameMaster (CIntelligentPointer<CThingAICreature>, PDB +0xec) +0xd0; CPlayerGui
 //          subtitle renderer +0x18, a bool at +0x2bd.
@@ -24,7 +30,6 @@ class C3DVector { public: float X, Y, Z; };
 typedef long ETavernGameStates;
 
 extern bool g_bTavernGameQuitRequested;         // 0x013BAE1C
-extern long g_framesPerSecond;                  // 0x01375550
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -98,13 +103,33 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CSubtitleRenderer { public:
     void Clear(bool now);                       // 0x00492BAB
+};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
     unsigned char     _pad_0x00[0x18];
@@ -114,7 +139,6 @@ class CPlayerGui { public:
 public:
     void Open();   // 0x004374B0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CTCBase
 {
@@ -163,12 +187,12 @@ void CTCTavernGame::LeaveGame()
     SetState(0);
     if (PGameMaster.Get() && !PGameMaster.Get()->IsDead()) {
         CThing* gameMaster = PGameMaster.Get();
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         CMessageEventManager* messages = GetWorld().m_pMessages;
         messages->AddMessage(0x40, framesPerSecond * 5, (C3DVector*)&gameMaster->GetPos(),
                                        PGameMaster.Get(), 0, 0.0f, 0.0f, 0);
     }
-    CPlayer* player = &g_pMainGameComponent->PlayerManager->GetMainPlayer();
+    CPlayer* player = &CMainGameComponent::Get()->PlayerManager->GetMainPlayer();
     player->RemoveMode(0x1a);
     CThing* hero = player->GetPControlledCreature();
     hero->SetVisible(true);
@@ -178,8 +202,8 @@ void CTCTavernGame::LeaveGame()
         hero->GetInterface(&gamePlayer, 0xd0);
         gamePlayer->SetGame(0);
     }
-    g_pPlayerGui->Open();
-    g_pPlayerGui->m_bShowing = false;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_bShowing = false;
     {
         CTCHeroStats* stats;
         GetHeroStats(&stats);
@@ -187,5 +211,5 @@ void CTCTavernGame::LeaveGame()
     }
     ClearBox();
     ClearBetAndMoney();
-    g_pPlayerGui->Subtitles.Clear(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.Clear(false);
 }

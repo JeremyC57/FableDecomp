@@ -1,9 +1,11 @@
 // CCreatureAction_DragonTakeOffIntoFlying::Initialise() -- names the "TAKE_OFF" animation, runs the base Initialise, makes the dragon unliftable, clears the interface-9 byte, makes the dragon not solid to the hero (adding a CTCSolidToThing to the hero when missing) and records the take-off destination 35.148 units above the dragon
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3E70, length 338 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0,
 // ~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // SetThingIsAbleToBeLifted(CThing*, bool) @ 0x007E4330 (`__fastcall`: ecx thing, dl flag), CVectorMap::LowerBound @ 0x0040F020
-// (inlined GetInterface for types 9 and 0x4D), CPlayerManager::GetMainPlayer @ 0x00449970 (g_pMainGameComponent +0x1c),
+// (inlined GetInterface for types 9 and 0x4D), CPlayerManager::GetMainPlayer @ 0x00449970 (CMainGameComponent::Get() +0x1c),
 // CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) @ 0x004C9D60,
 // CTCSolidToThing::AddThingNotSolidTo(CThing*) @ 0x00770FA0, CThing::GetPos @ 0x004C73D0.
 // Shape: the interface-9 lookup is untested (the absent arm reads the dead out word `mov eax,[esp+0Ch]`); the hero's
@@ -98,11 +100,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;          // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 void __fastcall SetThingIsAbleToBeLifted(CThing* thing, bool able);   // 0x007E4330
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
@@ -127,7 +133,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
     CTCCreatureFlags9* pFlags;
     PCreature.GetPItem()->GetInterface(&pFlags, 9);
     pFlags->m_canBeTargeted = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCSolidToThing* pSolid;
     if (hero->HasTC(0x4d))
         pSolid = hero->GetTC<CTCSolidToThing>(0x4d);

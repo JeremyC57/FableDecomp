@@ -1,6 +1,8 @@
 // CTCInventoryClothing::CreateMenuDesc(const CCharString& descriptionSymbol) -- create the description component from its UI definition ("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW"), set its text to the game text bank's entry for the symbol, and return it counted
 // Grade: RELOCATION_MATCH -- the shared engine/CCountedPointer.h in place of the parked local CCountedPointer stand-in (declared-only ctor/copy/dtor): with the real inline bodies in this size TU VC7.1 still calls 0x00429C15 / 0x00428928 / 0x004291DE out of line and the component pointer now lands straight in esi (parked residue 137v135 closed; 11 parked grades tried other forms)
 // Leaf: ?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005b358c, 135 bytes, thiscall, `ret 8` (hidden CCountedPointer result + symbol), ebp frame
 //   in a size-optimised TU (unaligned address, `leave`).
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?CreateMenuDesc@CTCInventoryClothing@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z
@@ -9,7 +11,7 @@
 //   0x0099EAE0, NUISystem::CManager::CreateComponent(const CCharString&, bool) 0x0041DB1D, CCountedPointer<CComponent>
 //   (CComponent*) 0x00429C15 / copy 0x00428928 / ~CCountedPointer 0x004291DE, NGameText::CDataBank::GetTextBySymbol 0x009C95E0,
 //   ~CWideString 0x0099B510; the component's SetText(const CWideString&, bool, bool) vtable slot 144 (+0x240); global
-//   g_pMainGameComponent 0x013B86A0 (Ego_r.pdb CMainGameComponent::PTextBank +0x14).
+//   CMainGameComponent::Get() 0x013B86A0 (Ego_r.pdb CMainGameComponent::PTextBank +0x14).
 // Shape (family L013): `#pragma optimize("y", off)` + `("s", on)`; the definition string goes through the implicit
 //   const char* -> const CCharString& conversion (the temporary's address is reloaded for the push); the text bank is
 //   read into a local before the call; the CWideString temporary is homed on the symbol's argument slot.
@@ -64,11 +66,15 @@ public:
 };
 }
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;
 };
-extern CMainGameComponent* g_pMainGameComponent;
 class CTCInventoryClothing {
 private:
     CCountedPointer<NUISystem::CComponent> CreateMenuDesc(const CCharString& descriptionSymbol);
@@ -77,7 +83,7 @@ CCountedPointer<NUISystem::CComponent> CTCInventoryClothing::CreateMenuDesc(cons
 {
     NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
     CCountedPointer<NUISystem::CComponent> description(manager->CreateComponent("UI_TEXT_WEAPONS_DESCRIPTION_TEMPLATE_NEW", false));
-    const NGameText::CDataBank* bank = g_pMainGameComponent->PTextBank.operator->();
+    const NGameText::CDataBank* bank = CMainGameComponent::Get()->PTextBank.operator->();
     description->SetText(bank->GetTextBySymbol(descriptionSymbol), true, true);
     return description;
 }

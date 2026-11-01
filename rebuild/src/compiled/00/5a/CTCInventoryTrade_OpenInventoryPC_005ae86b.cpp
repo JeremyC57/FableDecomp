@@ -1,5 +1,7 @@
 // CTCInventoryTrade::OpenInventoryPC() -- open the PC trade screen: base screen preparation, HUD off, fade reset, the three sound categories refreshed, front-end notifications, the top-level list built, the mouse pointer component created and registered, then the base inventory opened and the screen marked open
 // Leaf: OpenInventoryPC
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005AE86B, length 263 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off)
 // + ("s",on). Vtable 0x0125318C slot (rtti abs reference); FableWin.pdb ?OpenInventoryPC@CTCInventoryTrade@@UAEXXZ.
 // Callees: CTCInventoryBase::PrepareScreen @ 0x005BC6ED, the main game component (0x013B86A0) chain +0x28 -> +0x2C slot 76
@@ -67,11 +69,15 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                             // +0x2c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                          // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -113,7 +119,7 @@ class CTCInventoryTrade { public:
 void CTCInventoryTrade::OpenInventoryPC()
 {
     PrepareScreen();
-    g_pMainGameComponent->World->Hud->SetEnabled(false);
+    CMainGameComponent::Get()->World->Hud->SetEnabled(false);
     AccumFadeTime = 0.0f;
     if (((CSoundSystem*)PSoundManager)) {
         ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, 500.0f);

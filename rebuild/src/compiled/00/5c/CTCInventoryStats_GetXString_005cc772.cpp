@@ -1,9 +1,11 @@
 // CTCInventoryStats::GetXString() -- static: the localised TEXT_GUI_MENU_XSTRING text, round-tripped through a narrow string and with its underscores replaced by spaces (two passes)
 // Leaf: ?GetXString@CTCInventoryStats@@SI
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x005CC772, 240 bytes, static __fastcall (hidden CWideString result in ecx), `ret`. Ego_r.pdb
 // `?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ`. 105 callers (the inventory screens' "x" count separator).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0,
-// NGameText::CDataBank::GetTextBySymbol(const CCharString&) @ 0x009C95E0 on g_pMainGameComponent (0x013B86A0)->TextBank
+// NGameText::CDataBank::GetTextBySymbol(const CCharString&) @ 0x009C95E0 on CMainGameComponent::Get() (0x013B86A0)->TextBank
 // (+0x14), CWideString::ToCharString() const @ 0x0099B2C0, CCharString::ToWideString() const @ 0x0099E480,
 // CWideString::operator=(const CWideString&) @ 0x0099B7D0, CWideString::CWideString(const wchar_t*) @ 0x0099B6B0,
 // CWideString::Replace(const CWideString&, const CWideString&) @ 0x0099C1E0, CWideString(const CWideString&) @ 0x0099B720,
@@ -42,18 +44,22 @@ public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                     // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CTCInventoryStats {
 public:
     static CWideString __fastcall GetXString();
 };
 CWideString __fastcall CTCInventoryStats::GetXString()
 {
-    CWideString text = g_pMainGameComponent->TextBank->GetTextBySymbol("TEXT_GUI_MENU_XSTRING");
+    CWideString text = CMainGameComponent::Get()->TextBank->GetTextBySymbol("TEXT_GUI_MENU_XSTRING");
     CCharString narrow = text.ToCharString();
     text = narrow.ToWideString();
     text.Replace(L"_", L" ");

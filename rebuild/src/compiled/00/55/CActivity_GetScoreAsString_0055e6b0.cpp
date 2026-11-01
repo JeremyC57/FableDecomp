@@ -1,4 +1,6 @@
 // CActivity::GetScoreAsString(float) const -- format the score to its configured precision and append the localized unit.
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: 0x0055E6B0, 263 bytes. Leaf: GetScoreAsString
 // No CActivity header exists. PDB: Name+0, Description+4, UnitOfMeasurement+8,
 // NumDecPlacesToShow+c and LowerIsBetter+d. Shared fable_string.h supplies the strings
@@ -16,8 +18,12 @@ inline CWideString IntToWideString(long value) {
 }
 CWideString FABLE_FASTCALL GFFloatToWideString(double); //00486C40
 namespace NGameText { class CDataBank { public: const CWideString GetTextBySymbol(const CCharString&) const; }; }
-class CMainGameComponent { public: unsigned char beforeTextBank[0x14]; NGameText::CDataBank* PTextBank; NGameText::CDataBank* GetTextBank() const { return PTextBank; } };
-extern CMainGameComponent* g_pMainGameComponent; //013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char beforeTextBank[0x14]; NGameText::CDataBank* PTextBank; NGameText::CDataBank* GetTextBank() const { return PTextBank; } };
 struct CActivity {
     CCharString Name,Description,UnitOfMeasurement;
     unsigned char NumDecPlacesToShow;
@@ -34,6 +40,6 @@ CWideString CActivity::GetScoreAsString(float score) const
         result=value;
     }
     result+=L" "; //0122D820
-    result+=g_pMainGameComponent->GetTextBank()->GetTextBySymbol(UnitOfMeasurement);
+    result+=CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol(UnitOfMeasurement);
     return result;
 }

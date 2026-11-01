@@ -1,5 +1,7 @@
 // CThingManager::RuntimeSaveGameHero(bool binary) -- saves the living hero into the game-persistent slot 1 of the runtime persistence, as a compressed binary stream or as script text (the other form is cleared)
 // Leaf: ?RuntimeSaveGameHero@CThingManager@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00523B40, 423 bytes (0x1A7 + int3 padding), thiscall `ret 4`. One caller
 //   (0x0052434C, the runtime game save).
 // Identity: Ego_r.pdb ?RuntimeSaveGameHero@CThingManager@@AAEX_N@Z (the bool picks binary); the catalog's
@@ -58,11 +60,15 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;                                                     // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;                                      // 0x013B86A0
 
 namespace std {
 
@@ -238,7 +244,7 @@ __declspec(noinline) void CThingManager::SaveEntitiesBinary(CMemoryDataOutputStr
 
 void CThingManager::RuntimeSaveGameHero(bool binary)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero != 0 && !hero->Dead) {
         std::vector<CThing*> things;
         things.push_back(hero);

@@ -1,8 +1,10 @@
 // CTCWife::Died() -- a married wife's death unmarries her and sets the living hero's marriage state to 6 (widowed)
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D0020, 120 bytes (+8 int3). __fastcall, `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::Unmarry(bool) 0x006CFF10; CPlayerManager::GetMainPlayer()
 //          0x00449970; CPlayer::GetPControlledCreature() 0x00487DC0; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020;
-//          CTCHeroStats::SetMarriageState(CThingAICreature*, EMarriageState) 0x0057BC6E. Global g_pMainGameComponent 0x013B86A0.
+//          CTCHeroStats::SetMarriageState(CThingAICreature*, EMarriageState) 0x0057BC6E. Global CMainGameComponent::Get() 0x013B86A0.
 // Shape: same guard as OnGreet; the player manager is read from the main game component's +0x1C (not through CTCBase);
 //        interface 4 is CTCHeroStats (bitset byte +0x20 bit 4), called through the out-parameter lookup form.
 // Layout: CTCWife ParentThing +0x04, FrameGotMarriedToThePlayer +0x20; CMainGameComponent PlayerManager +0x1C.
@@ -56,11 +58,15 @@ class CPlayer { public:
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;               // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 class CTCHeroStats { public:
     void SetMarriageState(CThing* spouse, long state);   // 0x0057BC6E
 };
@@ -77,7 +83,7 @@ void CTCWife::Died()
     if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
     Unmarry(true);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1))
         return;
     CTCHeroStats* stats;

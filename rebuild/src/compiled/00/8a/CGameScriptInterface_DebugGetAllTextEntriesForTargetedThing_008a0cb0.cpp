@@ -1,5 +1,7 @@
 // CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(set<CCharString>& entries) const -- clear the entries, then list the text entries of the debug narrator when one is set, else of the hero's current target's text bank (retrying with the "_1_5" suffix when the plain bank name yields nothing)
 // Leaf: DebugGetAllTextEntriesForTargetedThing
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008A0CB0, 454 bytes, `ret 4`.
 // Callees: the tree erase 0x004CF810 (STLport _Rb_tree::_M_erase), CBasicString<char>::operator==(const char*) 0x004115A0,
 //   the text data bank's GetAllTextEntriesForNarrator 0x009C8990, the player-manager / player accessors 0x00449960 /
@@ -98,14 +100,18 @@ class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() co
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
    // 0x00449960
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   Data[0x14];
     CTextDataBank*  TextBank;                            // +0x14
     unsigned char   Data2[4];
     CPlayerManager* PlayerManager;                       // +0x1c
     const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 extern CCharString g_DebugNarrator;                      // 0x013B86F8
 extern long g_TextLanguage;                              // 0x013B86C0
 template <class T, long TYPE> __forceinline T* GetComponent(const CThing* thing)
@@ -125,19 +131,19 @@ void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet& en
     entries.clear();
     const CThing* hero;
     CThing* target;
-    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature()) != 0
+    if (g_DebugNarrator == "" && (hero = CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature()) != 0
         && !(hero->LifeFlags & 1) && (hero->UsingComponents[0] & 0x100)
         && (target = GetComponent<CTCTargeting, 8>(hero)->GetTarget()) != 0 && (target->ThingTypeFlags & 0x10)) {
         if (target->UsingComponents[0] & 0x8000) {
             CTCText* text = GetComponent<CTCText, 0xf>(target);
             if (text->GetBankHandle() != "") {
-                CTextDataBank* bank = g_pMainGameComponent->TextBank;
+                CTextDataBank* bank = CMainGameComponent::Get()->TextBank;
                 bank->GetAllTextEntriesForNarrator(text->GetBankHandle(), entries, g_TextLanguage);
                 if (entries._M_node_count == 0)
                     bank->GetAllTextEntriesForNarrator(text->GetBankHandle() + "_1_5", entries, g_TextLanguage);
             }
         }
     } else {
-        g_pMainGameComponent->TextBank->GetAllTextEntriesForNarrator(g_DebugNarrator, entries, g_TextLanguage);
+        CMainGameComponent::Get()->TextBank->GetAllTextEntriesForNarrator(g_DebugNarrator, entries, g_TextLanguage);
     }
 }

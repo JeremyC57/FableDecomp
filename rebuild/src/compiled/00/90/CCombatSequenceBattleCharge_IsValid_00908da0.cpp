@@ -1,17 +1,23 @@
 // CCombatSequence_BattleCharge::IsValid() -- valid once more than ten seconds of logic frames have passed since the last use
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00908DA0, length 54 bytes (+ int3 padding).
-// Callees: CMainGameComponent::GetCurrentWorldFrame on g_pMainGameComponent @ 0x013B86A0 (`mov ecx,[g] ; call 0x004167C8`,
+// Callees: CMainGameComponent::GetCurrentWorldFrame on CMainGameComponent::Get() @ 0x013B86A0 (`mov ecx,[g] ; call 0x004167C8`,
 // an incremental-link thunk onto GFGetCurrentFrame @ 0x0049D870).
 // The frame difference is spilled to the one-dword frame for `fild`, divided by the integer logic frame
 // rate @ 0x01375550 (`fidiv`, value 15) and compared with the float constant 10.0 @ 0x01237F0C; the
 // bool is `test ah,41h` (not below-or-equal) behind `if (..) return true; return false;` (a bare
 // `return cond;` widens to eax). m_frameOfLastUse is +0x28 in retail (PDB +0x2c, the base's
 // 16-byte vector is 12 bytes here).
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
 
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern long g_logicFramesPerSecond;            // 0x01375550 (15)
 
 struct CCombatSequence_BattleCharge_Retail {
@@ -23,7 +29,7 @@ struct CCombatSequence_BattleCharge_Retail {
 
 bool CCombatSequence_BattleCharge_Retail::IsValid()
 {
-    if ((float)(g_pMainGameComponent->GetCurrentWorldFrame() - m_frameOfLastUse) / g_logicFramesPerSecond > 10.0f)
+    if ((float)(CMainGameComponent::Get()->GetCurrentWorldFrame() - m_frameOfLastUse) / g_logicFramesPerSecond > 10.0f)
         return true;
     return false;
 }

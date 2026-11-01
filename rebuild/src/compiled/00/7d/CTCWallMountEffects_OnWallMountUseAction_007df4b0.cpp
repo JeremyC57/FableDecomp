@@ -1,5 +1,11 @@
 // CTCWallMountEffects::OnWallMountUseAction(CThingCreatureBase& creature) -- when the effect's cool-down has passed, ask the teleport/heal question as a Yes/No subtitle, remember the creature and wait for confirmation; false while cooling down or for a mount with no effect question
 // Leaf: ?OnWallMountUseAction@CTCWallMountEffects
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DF4B0, length 345 bytes (`ret 4`, no frame pointer; Ego_r.pdb
 //   `?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z`).
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static, as the landed DoEffect 0x007DF6A0); CCharString(const char*, long)
@@ -9,8 +15,8 @@
 //   CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8), SetPItem 0x00A01B90, GetPItem 0x00A01B50,
 //   ~CBaseIntelligentPointer 0x00A01C10.
 // Data: "" 0x0122D70E, "Do you want to teleport?" 0x0126FC44, "Do you want to heal yourself?" 0x0126FC60, "Yes" 0x0126FC3C,
-//   "No" 0x0126FC40; g_framesPerSecond 0x01375550; g_pMainGameComponent 0x013B86A0 (font bank +0x1614C, local view as the
-//   landed DisplayGameInfoText 0x00892A80); g_pPlayerGui 0x013B8790 (SubtitleRenderer +0x18, engine/CPlayerGui.h).
+//   "No" 0x0126FC40; CMainGameComponent::GetConstantFPS() 0x01375550; CMainGameComponent::Get() 0x013B86A0 (font bank +0x1614C, local view as the
+//   landed DisplayGameInfoText 0x00892A80); (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (SubtitleRenderer +0x18, engine/CPlayerGui.h).
 // Layout (Ego_r.pdb, retail offsets equal; as the landed DoEffect): CTCWallMountEffects PDef +0x0c, WaitingForConfirmation
 //   +0x10, CreaturePerformingAction +0x14, FrameEffectLastUsed +0x1c; CWallMountEffectsDef Effect +0x28,
 //   SecondsBetweenEffectUsesAllowed +0x30.
@@ -37,14 +43,32 @@ class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, const CCharString& a, const CCharString& b, const CCharString& c,
                  unsigned long colour, float time, bool b1, bool b2);   // 0x00492FB4
 };
-struct CPlayerGuiView {                                     // engine/CPlayerGui.h: SubtitleRenderer +0x18
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:                                     // engine/CPlayerGui.h: SubtitleRenderer +0x18
     unsigned char     _pad_0x00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
 };
-struct CMainGameComponentFontView { unsigned char _prefix[0x1614c]; CFontBank* Font; };   // +0x1614C
-extern CMainGameComponentFontView* g_pMainGameComponent;   // 0x013B86A0
-extern CPlayerGuiView* g_pPlayerGui;                        // 0x013B8790
-extern long g_framesPerSecond;                              // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _prefix[0x1614c]; CFontBank* Font; };   // +0x1614C
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -93,7 +117,7 @@ class CTCWallMountEffects : public CTCBaseModel { public:
     bool IsAllowedToUseEffect() const
     {
         const CWallMountEffectsDef* def = PDef;
-        long framesPerSecond = g_framesPerSecond;
+        long framesPerSecond = CMainGameComponent::GetConstantFPS();
         return CWorld::GetFrame() - FrameEffectLastUsed > def->SecondsBetweenEffectUsesAllowed * framesPerSecond;
     }
     bool OnWallMountUseAction(CThingCreatureBase& creature);
@@ -117,7 +141,7 @@ bool CTCWallMountEffects::OnWallMountUseAction(CThingCreatureBase& creature)
             CCharString no("No");
             CCharString yes("Yes");
             CCharString empty("");
-            g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, question, empty, yes, no, 4, 0.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, question, empty, yes, no, 4, 0.0f, false, true);
         }
         CreaturePerformingAction = CIntelligentPointer<CThingCreatureBase>(&creature);
         WaitingForConfirmation = WALL_MOUNT_CONFIRMATION_WAITING;

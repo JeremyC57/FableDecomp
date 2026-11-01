@@ -1,4 +1,7 @@
 // CTCInventoryStats::CreateExperienceSliders(NUISystem::CComponent* parent, long spacing, bool current) -- builds the four experience level sliders (general / strength / skill / will) under parent and returns them
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (sec1b 2026-10-30) -- one `long value` and one `long level` reused by all four sliders (value = the stat, level = current ? value : the original experience), as retail homes them in the dead parent slot / [ebp-4]; per-slider named values gave fresh slots. Earlier residue: frame-slot assignment only.
 #include "engine/CCountedPointer.h"
 #pragma optimize("y", off)
@@ -37,8 +40,12 @@ public:
 namespace NUISystem { class CComponent; }
 
 class CMainGameComponent;
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0 (descriptive)
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad00[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;    // +0x14
@@ -81,7 +88,12 @@ public:
     void push_back(const T& value);                     // 0x00486024
 };
 }
-struct CPresenceBits { bool test(long kind) const; };      // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -91,7 +103,7 @@ struct CInterfaceMap {
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20
+    std::bitset<274> present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -130,7 +142,7 @@ public:
 };
 std::vector<NUISystem::CComponent*> CTCInventoryStats::CreateExperienceSliders(NUISystem::CComponent* parent, long spacing, bool current)
 {
-    NGameText::CDataBank* bank = g_pMainGameComponent->PTextBank.Data;
+    NGameText::CDataBank* bank = CMainGameComponent::Get()->PTextBank.Data;
     std::vector<NUISystem::CComponent*> sliders;
     CTCInventoryExperience* experience;
     ParentThing->GetInterface(&experience, 0x16);

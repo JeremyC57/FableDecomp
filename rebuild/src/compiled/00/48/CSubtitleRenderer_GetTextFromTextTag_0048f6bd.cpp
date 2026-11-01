@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: GetTextFromTextTag
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048F6BD, 259 bytes, `ret 8`. Ego_r.pdb
 //   `?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z` (private).
 // Callees: CWideString::ToCharString() const 0x0099B2C0, the CCharString hash 0x00404310 (manifest
@@ -10,7 +12,7 @@
 //   0x009C8890, CDataBank::GetPTextEntry(unsigned long, bool) const 0x009C9070 (the landed rows call it GetPGroupEntry;
 //   type 0 is text, so this is the text-entry getter), CTextEntry::GetText() const 0x009C7A40 (CWideString by hidden
 //   pointer), CWideString::operator= 0x0099B7D0, ~CWideString 0x0099B510.
-// Globals: g_pMainGameComponent 0x013B86A0 (+0x14 the game text bank).
+// Globals: CMainGameComponent::Get() 0x013B86A0 (+0x14 the game text bank).
 // Shape: frame-pointer size TU (the CSubtitleRenderer siblings); the bank in ebx; the text call is written in both
 //   arms (their identical pushes hoist above the type test and the calls cross-jump); the group member is read through a
 //   named `items` pointer (reuses esi; indexing the array directly picks eax); every by-value temporary (the char
@@ -78,11 +80,15 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long id, bool load) const;     // 0x009C9070
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                     // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 class CSubtitleRenderer {
 public:
@@ -96,7 +102,7 @@ public:
 
 bool CSubtitleRenderer::GetTextFromTextTag(const CWideString& tag, CWideString& text)
 {
-    NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
+    NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
     unsigned long id = bank->LookupValue(((CWideString*)&tag)->ToCharString().GetCRC());
     if (id > 0) {
         if (bank->GetEntryDataType(id)) {

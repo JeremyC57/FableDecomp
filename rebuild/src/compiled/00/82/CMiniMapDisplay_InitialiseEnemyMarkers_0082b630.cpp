@@ -1,5 +1,7 @@
 // CMiniMapDisplay::InitialiseEnemyMarkers() -- when a region is loaded and the hero is alive, add a minimap marker (graphics[8].Primary) for every creature in the current region that is the hero's enemy, is not a guild sparrow, is not underground and is not hidden from the minimap
 // Leaf: InitialiseEnemyMarkers
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082B630, 278 bytes (+ int3 padding).
 // Callees: CPlayerManager::GetPlayer 0x00449970 / CPlayer::GetPControlledCreature 0x00487DC0 (the game 0x013B86A0 +0x1c), the world's
 //   slots 4 (+0x10) and 13 (+0x34), CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / GetCurrentRegionNumber 0x004FB150,
@@ -103,13 +105,17 @@ class CWorld { public:
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1c scoped_ptr<CPlayerManager>
     unsigned char   _pad20[0x24 - 0x20];
     CWorld*         PWorld;                        // +0x24 scoped_ptr<CWorld>
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CRegion;
 class CMiniMapDisplay { public:
     virtual void v00();
@@ -122,9 +128,9 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseEnemyMarkers()
 {
     if (m_pRegion) {
-        CThing* hero = g_pMainGameComponent->PPlayerManager->GetPlayer()->GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PPlayerManager->GetPlayer()->GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
-            CWorld* world = g_pMainGameComponent->PWorld;
+            CWorld* world = CMainGameComponent::Get()->PWorld;
             CWorldMap* worldMap = world->GetWorldMap();
             list<CThing*>& creatures = world->GetThingManager()->Lists->Creatures;
             for (_List_node<CThing*>* node = creatures._M_node->_M_next; node != creatures._M_node; node = node->_M_next) {

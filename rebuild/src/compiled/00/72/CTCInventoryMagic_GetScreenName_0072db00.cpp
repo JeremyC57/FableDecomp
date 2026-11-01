@@ -9,6 +9,8 @@
 // named local read after the copy (retail loads it before the tag); the counted group entry is a temporary (GetText runs on
 // the returned pointer, `mov ecx,[eax]`) whose dtor has a null test, the inline ReleaseTemporary and a pointer clear.
 // Leaf: GetScreenName
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Layout: retail CTCInventoryBase PDef +0x68 (Ego_r.pdb +0x70 less the 4 bytes of each of the two 16-byte debug vectors
 // before it); the screen-name tag at CInventoryDef +0x1EC (retail offset; PDB name not resolved).
 class CWideString {
@@ -47,11 +49,15 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
-extern CEngine* g_pEngine;                      // 0x013B86A0
 
 class CDefPointeeBase { public:
     virtual void v00();
@@ -90,6 +96,6 @@ public:
 CWideString CTCInventoryMagic::GetScreenName() const
 {
     CDefPointer<CInventoryDef> def = PDef;
-    NGameText::CDataBank* textBank = g_pEngine->PGameTextDataBank;
+    NGameText::CDataBank* textBank = CMainGameComponent::Get()->PGameTextDataBank;
     return textBank->GetPTextEntry(def->MagicScreenNameTag, true)->GetText();
 }

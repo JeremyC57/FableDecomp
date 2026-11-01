@@ -1,5 +1,7 @@
 // CTCHeroStats::GetFavouriteRegion(long&) const -- the display text of the region the hero spent most time in (empty text and -1 when none)
 // Leaf: GetFavouriteRegion
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057A989, 146 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 8` (hidden result + one argument).
 // Callees: CTCBase::PeekWorldMap() @ 0x00686D20, CWorldMap::GetRegion(long) @ 0x004FC180, CRegion::GetDisplayName()
@@ -35,12 +37,16 @@ class CDataBank { public:
 }
 using NGameText::CDataBank;
 
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x14];
     CDataBank*    TextBank;                          // +0x14
 };
 
-extern CEngineGlobals* g_pEngineGlobals;             // 0x013B86A0
 
 class CRegion { public:
     const CCharString& GetDisplayName() const;       // 0x006BBF20
@@ -82,7 +88,7 @@ CWideString CTCHeroStats::GetFavouriteRegion(long& region) const
             best = i;
         }
     }
-    CDataBank* textBank = g_pEngineGlobals->TextBank;
+    CDataBank* textBank = CMainGameComponent::Get()->TextBank;
     if (best != -1)
         return textBank->GetTextBySymbol(PeekWorldMap().GetRegion(best).GetDisplayName());
     region = -1;

@@ -2,18 +2,21 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070C330, length 333 bytes, ret 4.
 // Callees: CMeshDataBank::PeekAnimation(unsigned long) const @ 0x00A242C0 (catalog "CTCInventoryAbilities::GetAbilityLevel",
 // propagated), C3DAnimationInfo::GetNonLoopingDuration() const @ 0x00A23CE0 (catalog "CMap::DrawGetSeaLevel", propagated).
-// Globals: g_pMainGameComponent @ 0x013B86A0 (+0x24 World -> +0x3c PMainMeshBank), EPSILON 0.0001f @ 0x0129BA3C,
+// Globals: CMainGameComponent::Get() @ 0x013B86A0 (+0x24 World -> +0x3c PMainMeshBank), DELTA_NOTIONAL_ZERO 0.0001f @ 0x0129BA3C,
 // 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC.
 // Layout: retail CAnimSet = PDB - 8 (12-byte vectors): Anims +4, CurrentPercentageComplete +0x1c, LastPercentageComplete
 // +0x20, Speed +0x24, LastUpdateChange +0x34, flag bits +0x51 (Looping 1, Finished 2, Forwards 4).
-// Shape: `fabsf(time) < EPSILON` early out (Last = Current as an integer copy); `time *= Speed` is written back into the
+// Shape: `fabsf(time) < DELTA_NOTIONAL_ZERO` early out (Last = Current as an integer copy); `time *= Speed` is written back into the
 // argument slot; the first animation's info comes through the landed inline PeekAnimInfo (bank in a named local: split
 // `mov ax` / `movsx` index load); `Looping ? info.Duration : info.GetNonLoopingDuration()`; the main body sits inside
-// `if (duration > EPSILON)` with the zero-length finish (`Current = 1.0f; Finished = true;`, the store scheduled between
+// `if (duration > DELTA_NOTIONAL_ZERO)` with the zero-length finish (`Current = 1.0f; Finished = true;`, the store scheduled between
 // the flag load and store) as the fallthrough tail; the Forwards/Looping tests share one flag-byte load (al), and the
 // non-looping clamp goes through `float& current = CurrentPercentageComplete;` -- a store through the reference stops
 // VC7.1 reusing that byte for the final `Finished = true`, which retail does as `or byte ptr [esi+51h],2`.
 // Leaf: UpdateTimePassed
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 #define C3DAnimationInfo C3DAnimationInfo_PDB
 #include "engine/C3DAnimationInfo.h"
 #undef C3DAnimationInfo
@@ -27,12 +30,16 @@ class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;                  // +0x3c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld* World;                                 // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-extern const float EPSILON;                        // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;                        // 0x0129BA3C
 #include <math.h>
 
 struct CVectorShort {
@@ -67,7 +74,7 @@ public:
 private:
     const C3DAnimationInfo& PeekAnimInfo(short anim) const
     {
-        CMeshDataBank* bank = g_pMainGameComponent->World->PMainMeshBank;
+        CMeshDataBank* bank = CMainGameComponent::Get()->World->PMainMeshBank;
         return *bank->PeekAnimation(anim);
     }
 public:
@@ -76,7 +83,7 @@ public:
 
 void CAnimSet::UpdateTimePassed(float time)
 {
-    if (fabsf(time) < EPSILON) {
+    if (fabsf(time) < DELTA_NOTIONAL_ZERO) {
         LastPercentageComplete = CurrentPercentageComplete;
         return;
     }
@@ -84,7 +91,7 @@ void CAnimSet::UpdateTimePassed(float time)
     time *= Speed;
     const C3DAnimationInfo& info = PeekAnimInfo(Anims[0]);
     float duration = Looping ? info.Duration : info.GetNonLoopingDuration();
-    if (duration > EPSILON) {
+    if (duration > DELTA_NOTIONAL_ZERO) {
         float delta = time / duration;
         if (Forwards)
             CurrentPercentageComplete += delta;
@@ -107,7 +114,7 @@ void CAnimSet::UpdateTimePassed(float time)
                 current = 0.0f;
             else if (current > 1.0f)
                 current = 1.0f;
-            if (1.0f - EPSILON <= current)
+            if (1.0f - DELTA_NOTIONAL_ZERO <= current)
                 Finished = true;
         }
         return;

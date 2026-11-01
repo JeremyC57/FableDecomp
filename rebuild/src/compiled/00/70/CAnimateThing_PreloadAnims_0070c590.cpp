@@ -1,4 +1,6 @@
 // CAnimateThing::PreloadAnims(const CCompleteAnimation&) -- touch every animation the complete animation (and the delayed combination anims) will need
+// Naming wave 18: the global stand-in g_PMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Layout: no engine/CAnimSet.h / CCompleteAnimation.h; retail STLport vector is 12 bytes and list 4 bytes, so CAnimSet is 0x54,
 // CCompleteAnimation keeps TransitionAnimSets at +0x54 / CombinationAnims at +0x58, CAnimateThing::DelayedAnim at +0x64 (ctor 0x0070E710).
 class C3DAnimationInfo { public: public:
@@ -8,8 +10,12 @@ class CMeshDataBank { public: public:
     const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };   // 0xA242C0
 class CWorld { public: char _pad[0x3c]; CMeshDataBank* PMainMeshBank; };
-class CMainGameComponent { public: char _pad[0x24]; CWorld* PWorld; };
-extern CMainGameComponent* g_PMainGameComponent;   // 0x13B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: char _pad[0x24]; CWorld* PWorld; };
 
 class CIVCountedPointeeBase { public:
     virtual void Destroy(int flags);
@@ -54,7 +60,7 @@ struct CAlphaVector {
 
 inline void PreloadAnimation(long anim)
 {
-    CMeshDataBank* bank = g_PMainGameComponent->PWorld->PMainMeshBank;
+    CMeshDataBank* bank = CMainGameComponent::Get()->PWorld->PMainMeshBank;
     bank->PeekAnimation(anim)->BeginLoading(false);
 }
 

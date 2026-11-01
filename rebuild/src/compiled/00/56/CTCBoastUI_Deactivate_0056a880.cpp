@@ -1,4 +1,8 @@
 // CTCBoastUI::Deactivate() -- a pending activation is cancelled; when the UI is already active it hands the camera back to automatic control, marks Quitting and closes the player GUI
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056A880, length 55 bytes (+ int3 padding).
 // Callees: CGameCameraManager::SetAutomaticCameraControl @ 0x00699090 (no arguments), CPlayerGui::Close
 // @ 0x004374B0 (tail jump; manifest "CPlayerGui::Open" is propagated, the landed 0x005BD597 names it Close).
@@ -19,17 +23,31 @@ struct CGameWorldCalls {                                    // reached through t
     CGameCameraManager* m_pCameraManager;                   // +0x34
 };
 
-struct CEngineCalls {                                       // the engine singleton behind 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:                                       // the engine singleton behind 0x013B86A0
     unsigned char    _pad00[0x24];
     CGameWorldCalls* m_pWorld;                              // +0x24
 };
-extern CEngineCalls* g_pEngine;                             // 0x013B86A0
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
 public:
     void Open();   // 0x004374B0
 };
-extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790
 
 struct CTCBoastUI_Retail {
     void*         __vftable;                                // +0x00
@@ -47,9 +65,9 @@ void CTCBoastUI_Retail::Deactivate()
 {
     if (ActivationRequested) {
         if (Active) {
-            g_pEngine->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
+            CMainGameComponent::Get()->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
             Quitting = true;
-            g_pPlayerGui->Open();
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
         } else {
             ActivationRequested = false;
         }

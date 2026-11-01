@@ -1,4 +1,7 @@
 // CTCInventoryTrade::CloseInventoryPC() -- closes the PC trade screen: empties the special categories, closes the base view, deletes every UI component, clears the buy/sell maps, notifies the front end, re-enables the HUD, stamps the world's close frame, restores the sound categories, resets the player's GUI state, re-checks sold wielded weapons and clears the open flags
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059E2C7, 528 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: 0x0059D9AD (RemoveAllItemsFromCategory 0x0059CF49 for categories 12 and 11; name descriptive; manifest
 // "CMemoryAllocator::ClearPerformanceStats" is propagated), CTCInventoryBase::CloseInventory @ 0x005BD597 (manifest
@@ -97,11 +100,15 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -141,9 +148,12 @@ public:
 class CTCInventoryWeapons { public:
     void CheckForSoldWieldedWeapons();               // 0x005CB780
 };
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -159,7 +169,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -220,7 +230,7 @@ void CTCInventoryTrade::CloseInventoryPC()
     NUISystem::CManager::GetInstance()->Slot29();
     g_frontEndNodeList.clear();
     NUISystem::CManager::GetInstance()->Slot37();
-    g_pMainGameComponent->World->Hud->SetEnabled(true);
+    CMainGameComponent::Get()->World->Hud->SetEnabled(true);
     CWorld* world = (&GetWorld());
     world->InventoryClosedFrame = CWorld::GetFrame();
     if (((CSoundSystem*)PSoundManager)) {
@@ -231,7 +241,7 @@ void CTCInventoryTrade::CloseInventoryPC()
     NUISystem::CManager* a = NUISystem::CManager::GetInstance();
     NUISystem::CManager* b = NUISystem::CManager::GetInstance();
     b->Slot40(&a->Slot42().Data->SomeState, true);
-    g_pMainGameComponent->World->Hud->Slot56(0, 0);
+    CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
     CTCInventoryWeapons* weapons;
     if (ParentThing->GetInterface(&weapons, 0x13))
         weapons->CheckForSoldWieldedWeapons();

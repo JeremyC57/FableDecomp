@@ -1,8 +1,10 @@
 // CItem::GetInventoryItemDef() const -- the counted CInventoryItemDef of a non-empty slot: the item type's def from the global definition manager, narrowed with GetSubDef; a null pointer for an empty slot
 // Leaf: GetInventoryItemDef
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD82E, length 114 bytes.
 // Callees: CDefinitionManager::GetDef<CDefClassBase>(long, CDefPointer&) @ 0x0042AF3C (the manager at
-// g_pMainGameComponent(0x013B86A0) +0x24 -> +0x10), CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer&) @ 0x005BADE1
+// CMainGameComponent::Get()(0x013B86A0) +0x24 -> +0x10), CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer&) @ 0x005BADE1
 // (both landed); the defs' virtual slot 1 (Delete) on the last release.
 // Model: engine/CItem.h (ItemType +0, NumberOfItems +4); the counted defs as the landed CItem::GetMaximumNumberOfItems
 // 0x005BD931 (vptr, IVRefCount +4). Pragmas: the frame-pointer size TU of the CItem module (`optimize("y", off)` +
@@ -80,11 +82,15 @@ struct CGameComponentDefs {
     unsigned char       _pad00[0x10];
     CDefinitionManager* DefinitionManager;         // +0x10
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char       _pad00[0x24];
     CGameComponentDefs* Defs;                      // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CItem_Methods : CItem {
     CInventoryItemDefPointer GetInventoryItemDef() const;
 };
@@ -93,7 +99,7 @@ CInventoryItemDefPointer CItem_Methods::GetInventoryItemDef() const
 {
     if (NumberOfItems > 0) {
         CDefClassBasePointer def;
-        g_pMainGameComponent->Defs->DefinitionManager->GetDef(ItemType, def);
+        CMainGameComponent::Get()->Defs->DefinitionManager->GetDef(ItemType, def);
         CInventoryItemDefPointer sub;
         def->GetSubDef(sub);
         return sub;

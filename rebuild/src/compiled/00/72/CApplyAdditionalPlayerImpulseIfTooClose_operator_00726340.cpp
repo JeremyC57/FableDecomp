@@ -1,6 +1,8 @@
 // CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* other) -- when the other thing overlaps the player vertically, is within the combined radius plus 0.1 in XY, both collide with things, it is pushable by the hero and the player's collision filter lets them collide: push it away from the player (harder the deeper the overlap) or, when on the same spot, along the player's velocity, turned by a random angle; a moving player also tells a creature it is being pushed
 // Grade: RELOCATION_MATCH (retry A 11a) -- the unit scaling is written per component (X = X / dist ...), not as offset *= 1/dist, and GetXYLengthSquared is sequenced (s = X*X; s += Y*Y)
 // Leaf: ??RCApplyAdditionalPlayerImpulseIfTooClose
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 #include <math.h>
 #pragma intrinsic(fabs, sqrt)
 
@@ -108,11 +110,15 @@ class CWorld { public:
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld* World;                              // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
         // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -153,7 +159,7 @@ void CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* oth
                 offset = Owner->GetVelocity();
                 offset *= 0.1f;
             }
-            CWorld* world = g_pMainGameComponent->World;
+            CWorld* world = CMainGameComponent::Get()->World;
             float sign = (CWorld::GetFrame() % 2 == 0) ? -1.0f : 1.0f;
             float angle = GFFloatRandom(45.0f, world->GetPRandomSeed()) * sign;
             float turns = angle * (1.0f / 360.0f);

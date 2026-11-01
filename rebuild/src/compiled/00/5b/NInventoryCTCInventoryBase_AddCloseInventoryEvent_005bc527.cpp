@@ -1,5 +1,7 @@
 // NInventory::CTCInventoryBase::AddCloseInventoryEvent() -- queues a "close inventory" game event (type 0x1B) for the local player, carrying one zero byte
 // Leaf: ?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Name: the class is NInventory::CTCInventoryBase (RTTI vtable 0x01253DBC .?AVCTCInventoryBase@NInventory@@, slot 32);
 // Ego_r.exe ?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ 0x0061F3AF.
@@ -33,10 +35,14 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -96,5 +102,5 @@ void NInventory::CTCInventoryBase::AddCloseInventoryEvent()
     CGameEvent event(GAME_EVENT_CLOSE_INVENTORY);
     event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
     event.AddUBYTE(0);
-    g_pMainGameComponent->AddGameEvent(event);
+    CMainGameComponent::Get()->AddGameEvent(event);
 }

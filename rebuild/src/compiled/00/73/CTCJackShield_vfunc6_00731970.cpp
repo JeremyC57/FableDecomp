@@ -1,4 +1,6 @@
 // CTCJackShield::vfunc_6() -- slot 6 (the initial-activate slot): disables the shield and, unless the engine globals' slot-9 query says otherwise, calls the owner thing's virtual slot 28 with false
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00731970, 37 bytes (+11 int3). rtti-vtables: CTCJackShield 0x01266EFC slot 6
 // (CTCJackPillar's slot 6 is labelled OnInitialActivate; the catalog label "vfunc_6" is kept).
 // Callees: CTCJackShield::EnableShield(bool) @ 0x00731680, virtual slot 9 (+0x24, bool; name unknown) of the engine globals
@@ -9,13 +11,17 @@
 // The component derives from engine/CTCBase.h (ParentThing at +4); CThing is modelled by its vtable only.
 #include "engine/CTCBase.h"
 
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08();
     virtual bool QuerySlot9();                // slot 9 (+0x24), name unknown
 };
-extern CEngineGlobals* g_pEngineGlobals;      // 0x013B86A0
 
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -36,6 +42,6 @@ class CTCJackShield : public CTCBase { public:
 void CTCJackShield::vfunc_6()
 {
     EnableShield(false);
-    if (!g_pEngineGlobals->QuerySlot9())
+    if (!CMainGameComponent::Get()->QuerySlot9())
         ParentThing->Slot28(false);
 }

@@ -1,5 +1,7 @@
 // NInventory::CTCInventoryTrade::AddWantedItemToList(long defIndex, NUISystem::CList* list, NUISystem::CViewport* viewport) -- builds a menu entry for a wanted item, wires its five actions and adds it to the list
 // Leaf: AddWantedItemToList@CTCInventoryTrade
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059CB90, 953 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateMenuEntryComponent 0x00428494, CCountedPointer<CComponent>
 //   Reset 0x00429C6F / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 + GetPControlledCreature 0x00487DC0 (result unused),
@@ -30,8 +32,12 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
    // 0x00449960
-class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
 namespace NUISystem {
 class CActionParam { public:
     virtual void v00();
@@ -165,7 +171,7 @@ void CTCInventoryTrade::AddWantedItemToList(long defIndex, CList* list, CViewpor
 {
     CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> entry;
-    g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
+    CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_TEMPLATE_NEW",
                                              0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CComponent* comp = entry.m_pObject;

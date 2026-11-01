@@ -1,5 +1,7 @@
 // GiveHeroMeleeAbility(long, bool) -- (anonymous namespace) add or remove a melee flourish ability on the live hero's combat component
 // Leaf: ?GiveHeroMeleeAbility@?A0x
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00736910, 120 bytes, __fastcall (ecx = ability def index, dl = give).
 // Identity (proven): Ego_r.pdb `?GiveHeroMeleeAbility@?A0x7e2a648c@@YIXJ_N@Z` (fastcall, long + bool), sitting before
 // GiveHeroMeleeAbilityFlourishLevel1..4 exactly as the retail callers 0x00736990.. do (each builds a def index from a
@@ -7,7 +9,7 @@
 // 0x00736640 and RemoveMeleeFlourishAbility(long) 0x007366C0 (Ego_r neighbours of this function's PDB block).
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020.
-// Globals: g_pMainGameComponent 0x013B86A0 (CMainGameComponent::PPlayerManager +0x1c, Ego_r).
+// Globals: CMainGameComponent::Get() 0x013B86A0 (CMainGameComponent::PPlayerManager +0x1c, Ego_r).
 // Layout: CThing interface bitset +0x20 (interface 0x30 = CTCCombat: dword +0x24 bit 16), interface map +0x44,
 // dead flag +0x91 bit 0 (the landed CThingAICreature::OnHeroPush 0x008328D0 model).
 // Shape: the inlined CThing::GetInterface template with an UNINITIALISED component local whose miss path reads the
@@ -57,17 +59,21 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PPlayerManager;             // +0x1c scoped_ptr<CPlayerManager>
 };
-extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
 
 #pragma auto_inline(off)
 namespace {
 void __fastcall GiveHeroMeleeAbility(long defIndex, bool give)
 {
-    CThingPlayerCreature* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         CTCCombat* combat;
         hero->GetInterface(&combat, 0x30);

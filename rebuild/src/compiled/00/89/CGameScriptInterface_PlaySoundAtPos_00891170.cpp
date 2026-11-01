@@ -1,6 +1,8 @@
 // CGameScriptInterface::PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const -- play a sound
 // sample once from a new unattached sound emitter at the position; returns the sound handle or the invalid handle
 // Leaf: ?PlaySoundAtPos@CGameScriptInterface
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891170, length 176 bytes, `ret 8`.
 // Callees: CASoundBank::GetSoundIndexFromSymbol(const CCharString&) @ 0x00A01920, the static `__fastcall`
 // CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) @ 0x008369F0 (labelled
@@ -43,12 +45,16 @@ class CThingSoundEmitter { public:
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);       // 0x00836810
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x10];
     CASoundBank* PSampleBank;             // +0x10
     CASoundBank& GetSampleBank() const { return *PSampleBank; }
 };
-extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
 extern unsigned long g_InvalidSoundHandle;          // 0x0129D25C
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -58,13 +64,13 @@ extern unsigned long g_InvalidSoundHandle;          // 0x0129D25C
 
 unsigned long CGameScriptInterface::PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const
 {
-    long sample = g_pMainGameComponent->GetSampleBank().GetSoundIndexFromSymbol(sound);
+    long sample = CMainGameComponent::Get()->GetSampleBank().GetSoundIndexFromSymbol(sound);
     if (sample) {
         CThingSoundEmitter* emitter = CThingSoundEmitter::Create(position, 0, true);
         if (emitter && !emitter->Dead) {
             CSoundInit init;
             init.GainFaderBits = 0x8010;
-            return emitter->PlaySample(g_pMainGameComponent->GetSampleBank(), sample, false, init, false);
+            return emitter->PlaySample(CMainGameComponent::Get()->GetSampleBank(), sample, false, init, false);
         }
     }
     return g_InvalidSoundHandle;

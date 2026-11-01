@@ -1,11 +1,13 @@
 // NInventory::CCategory::GetHighlightedItemText(const CGameDefinitionManager&) const -- the highlighted item's description; when that is empty, the TXT_OBJT_EMPTY game text (looked up by its tag) through the owning inventory, if the tag exists
 // Leaf: ?GetHighlightedItemText@CCategory@NInventory@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x005BDA1D, 168 bytes, __fastcall `ret 8` (hidden CWideString result + the unused definition
 // manager). Ego_r.pdb `?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z`.
 // Callees: NInventory::CItem::GetItemDescription() const @ 0x005BD8A0 (hidden result), wcscmp @ 0x00BFE94C (import),
 // the STLport `operator==(const wstring&, const wchar_t*)` @ 0x00404280 (cdecl bool), CCharString(const char*, long)
 // @ 0x0099EBF0, CCharString::GetCRC() const's out-of-line copy @ 0x00404310, NGameText::NGameText::CDataBank::LookupValue(unsigned
-// long) const @ 0x009CC410 on g_pMainGameComponent (0x013B86A0)->TextBank (+0x14), ~CCharString @ 0x0099EAE0,
+// long) const @ 0x009CC410 on CMainGameComponent::Get() (0x013B86A0)->TextBank (+0x14), ~CCharString @ 0x0099EAE0,
 // CTCInventoryBase::GetInventoryText(long) @ 0x005BD273 on PInventory (+0x18, straight into the result),
 // CWideString(const CWideString&) @ 0x0099B720, ~CWideString @ 0x0099B510. Literals: L"" 0x0122D70C,
 // "TXT_OBJT_EMPTY" 0x01253CB8.
@@ -63,11 +65,15 @@ public:
     unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                     // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CGameDefinitionManager;
 namespace NInventory {
 class CTCInventoryBase {
@@ -104,7 +110,7 @@ CWideString CCategory::GetHighlightedItemText(const CGameDefinitionManager& defi
     return text;
 empty:
     {
-        NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
+        NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
         long textId = bank->LookupValue(CCharString("TXT_OBJT_EMPTY").GetCRC());
         if (textId > 0)
             return PInventory->GetInventoryText(textId);

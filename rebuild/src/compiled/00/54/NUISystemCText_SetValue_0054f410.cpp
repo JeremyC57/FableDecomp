@@ -1,11 +1,13 @@
 // NUISystem::CText::SetValue(const CWideString& text, bool lookUpTag, bool keepSize) -- optionally resolve the text's game-text tag (from the CRC of its narrow copy, through the game's or the front end's text bank), then set the text
 // Leaf: ?SetValue@CText@NUISystem@@UAEXABVCWideString@@_N1@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054F410, 160 bytes, virtual, `ret 0Ch`.
 // Vtable 0x01249CCC (NUISystem::CText) slot 144; Ego_r.pdb `?SetValue@CText@NUISystem@@UAEXABVCWideString@@_N1@Z`.
 // Callees: CWideString::ToCharString 0x0099B2C0, the CRC Calc 0x004014A0, CCharString::GetCRC's out-of-line
 //   copy 0x00404310, NGameText::NGameText::CDataBank::LookupValue 0x009CC410, ~CCharString 0x0099EAE0, and the
 //   (K, const CWideString&, bool) overload, slot 143 (+0x23c).
-// Globals: g_pMainGameComponent 0x013B86A0 (game-text bank +0x14), g_pNewFrontendGameComponent 0x013B871C (+0x60).
+// Globals: CMainGameComponent::Get() 0x013B86A0 (game-text bank +0x14), g_pNewFrontendGameComponent 0x013B871C (+0x60).
 // Shape: as the CCharString overload 0x0054F370, with the narrow copy as a temporary in the dead `lookUpTag` slot:
 //   GetCRC is inlined at the first site and called out of line at the second, the two arms' identical
 //   `GetTagFromCRC ; ~CCharString` tails are cross-jumped into one. The bank is read through an inline const getter
@@ -45,7 +47,12 @@ public:
     unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;        // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
@@ -55,7 +62,6 @@ class CNewFrontendGameComponent { public:
     NGameText::CDataBank* PGameTextDataBank;        // +0x60
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-extern CMainGameComponent* g_pMainGameComponent;                 // 0x013B86A0
 extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 
 namespace NUISystem {
@@ -215,8 +221,8 @@ void CText::SetValue(const CWideString& text, bool lookUpTag, bool keepSize)
 {
     unsigned long tag = 0;
     if (lookUpTag) {
-        if (g_pMainGameComponent) {
-            tag = g_pMainGameComponent->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());
+        if (CMainGameComponent::Get()) {
+            tag = CMainGameComponent::Get()->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());
         }
         else if (g_pNewFrontendGameComponent) {
             tag = g_pNewFrontendGameComponent->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());

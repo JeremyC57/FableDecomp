@@ -1,6 +1,8 @@
 // CQuestManager::Update() -- per-frame quest update: publish the main player's id to the script interface, update the script thing manager, run the pending quest deactivations and clear that list, run one frame of every active quest's script, and re-lay the quest cards when the hero changed map
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B4490, length 254 bytes, plain `ret`.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (through g_pMainGameComponent 0x013B86A0 +0x1c),
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (through CMainGameComponent::Get() 0x013B86A0 +0x1c),
 // CGameScriptThingManager::FrameUpdate 0x007047D0, CQuestManager::IsQuestActive(const CCharString&) 0x004AF610
 // (propagated label "CQuest_Array_FindByName"), CQuestManager::DeactivateQuest(const CCharString&, unsigned long)
 // 0x004B43D0, ~CCharString 0x0099EAE0 and free 0x00BFEA14 (the inline list clear), CScriptBase::UpdateScript
@@ -31,11 +33,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad0[0x1c];
     CPlayerManager* PlayerManager;                     // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 
 class CThing { public:
     unsigned char _pad0[0x8e];
@@ -120,7 +126,7 @@ class CQuestManager { public:
 
 void CQuestManager::Update()
 {
-    CPlayer* player = &g_pMainGameComponent->PlayerManager->GetMainPlayer();
+    CPlayer* player = &CMainGameComponent::Get()->PlayerManager->GetMainPlayer();
     GameInterface->MainPlayerID = player->PlayerID;
     PGameScriptThingManager->FrameUpdate();
     for (_List_node<CPendingDeactivation>* n = PendingQuestsToDeactivate._M_node->_M_next; n != PendingQuestsToDeactivate._M_node; n = n->_M_next) {

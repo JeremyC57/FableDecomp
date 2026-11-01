@@ -1,5 +1,8 @@
 // CTCVillage::OnCreate() -- takes the village def from the thing's def, copies its default stance to the hero, clears the guard respawn and curfew state, schedules the next guard respawn from the hero's renown ratio when the hero is alive, sets the light state from the time of day and resets the crier
 // Leaf: ?OnCreate@CTCVillage
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659164, 305 bytes (plain `ret`, `leave`).
 // Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) 0x0042AF3C;
 //          CDefClassBase::GetSubDef<CVillageDef>(CDefPointer<const CVillageDef>*) 0x0065F440 (into PDef);
@@ -13,7 +16,7 @@
 //          offsets, hence a local model): InCurfew +0x84, PDef +0x94, StanceToHero +0x98, NextGuardRespawn +0xa4,
 //          LightActiveStateToChange +0xcc, MaxFrameToAssignTask +0xd0; CThing def index (ushort) +0x8c, bitset +0x20,
 //          interface map +0x44; CVillageDef::DefaultStanceToHero +0x38; CVillagePeopleDef GuardRespawnMaxRenownBasedOffset
-//          +0xc0; g_pMainGameComponent +0x24 the world.
+//          +0xc0; CMainGameComponent::Get() +0x24 the world.
 // Shape: frame-pointer size TU; the thing def and the people def are out-locals whose lookups are this TU's / link-time
 //        knowledge (stand-ins below), so VC keeps the thing def in ebx (reloaded from its slot once ebx holds the 0x14
 //        key) and the people def is read back for the release; the hero stays in edi: IS_THING_ALIVE<const CThing*> takes a converted
@@ -82,9 +85,12 @@ bool CThingDef::GetSubDef(CDefPointer<CVillagePeopleDef>* out)
 }
 #pragma auto_inline(on)
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -99,7 +105,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char  _pad00[0x20];
-    CBitset        m_present;                   // +0x20
+    std::bitset<274>        m_present;                   // +0x20
     unsigned char  _pad24[0x20];
     CInterfaceMap  m_interfaces;                // +0x44
     unsigned char  _pad4c[0x40];
@@ -143,11 +149,15 @@ private: public:
 class CGameTimeManager { public:
     bool IsDay() const;                         // 0x006BB2C0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CTCBase
 {
@@ -186,7 +196,7 @@ void CTCVillage::OnCreate()
     StanceToHero = PDef->DefaultStanceToHero;
     NextGuardRespawn = 0;
     InCurfew = false;
-    CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
+    CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)(CMainGameComponent::Get()->World))->PeekMyPlayer())->GetPControlledCreature();
     CDefPointer<CVillagePeopleDef> peopleDef;
     if (thingDef->GetSubDef(&peopleDef) && IS_THING_ALIVE(hero) && hero->HasTC(0x14))
         NextGuardRespawn = (long)(((CTCRenownRatio*)hero->GetTC(0x14))->CalculateRatio()

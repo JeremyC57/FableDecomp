@@ -1,5 +1,7 @@
 // NUISystem::CManager::OnOpenMenus() -- on the first open menu, save the engine resource pool's size and shrink it to the menu size
 // Leaf: ?OnOpenMenus@CManager@NUISystem@@SIXXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0041D122, 67 bytes, plain `ret`; Ego_r.pdb ?OnOpenMenus@CManager@NUISystem@@SIXXZ (static
 // __fastcall, no arguments). Counterpart of OnCloseMenus (0x0041D165): ++open-menu count (0x013B8714, re-read for the
 // == 1 test); on the first menu, main game component (0x013B86A0) -> PDisplayEngine (+0x28) -> Engine3D (+0x2c) ->
@@ -36,11 +38,15 @@ class CIEngine { public:
     virtual void _slot68(); virtual void _slot69(); virtual void _slot70(); virtual void _slot71();
     virtual CHandleBasedMemoryPool_Methods* GetResourceMemoryPool();   // +0x120
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                      // +0x28 scoped_ptr<CDisplayEngine>
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 namespace NUISystem {
 class CManager {
 public:
@@ -53,7 +59,7 @@ void __fastcall CManager::OnOpenMenus()
 {
     ++OpenMenuCount;
     if (OpenMenuCount == 1) {
-        CHandleBasedMemoryPool_Methods* pool = g_pMainGameComponent->PDisplayEngine->Engine3D->GetResourceMemoryPool();
+        CHandleBasedMemoryPool_Methods* pool = CMainGameComponent::Get()->PDisplayEngine->Engine3D->GetResourceMemoryPool();
         if (pool) {
             PoolSizeBeforeMenus = pool->PoolSize;
             pool->ResizePool(MenuPoolSize, 1.0f);

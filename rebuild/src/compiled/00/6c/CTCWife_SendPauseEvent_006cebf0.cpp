@@ -1,11 +1,13 @@
 // CTCWife::SendPauseEvent(bool pause) -- queue game event 9 (pause) for the current player carrying the pause flag byte
 // Leaf: SendPauseEvent
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe @ 0x006CEBF0, 117 bytes (`ret 4`, /GS cookie 0x0139C8A8). Callers: CTCWife::GlobalUpdate (x5, 0x006D0BDE..0x006D123B),
 //         so the catalog CTCTrophy label is a byte-twin propagation from CTCTrophy::SendPauseEvent 0x006DD760.
 // Callees: CTCBase::PeekWorld() const 0x00686A80; CWorld::PeekMyPlayer() 0x0049D9D0 (player number byte at +0x28);
 //          CMemoryBuffer::Copy(unsigned long, const void*) 0x009F1760; CMainGameComponent::AddGameEvent(const CGameEvent&)
-//          0x0041649C on g_pMainGameComponent 0x013B86A0; __security_check_cookie 0x00BFE9F9.
+//          0x0041649C on CMainGameComponent::Get() 0x013B86A0; __security_check_cookie 0x00BFE9F9.
 // Model: CGameEvent as the landed CInputProcessQuickAccessItems::CancelQuickAccessCharge 0x0068E3C0 (Ego_r.pdb, 40 bytes
 //        over an empty CMemoryBuffer; the ctor's dead `Player = -1` store is kept).
 // Shape: the flag byte is normalised IN the `pause` argument slot (`test ; setne ; mov [arg],cl`) and its address passed
@@ -24,10 +26,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBool(bool& value) { value = value ? true : false; Copy(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CPlayer { public:
     unsigned char _pad_0x00[0x28];
@@ -56,5 +62,5 @@ void CTCWife::SendPauseEvent(bool pause)
     CGameEvent gameEvent(9);
     gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;
     gameEvent.AddBool(pause);
-    g_pMainGameComponent->AddGameEvent(gameEvent);
+    CMainGameComponent::Get()->AddGameEvent(gameEvent);
 }

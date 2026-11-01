@@ -1,11 +1,13 @@
 // CWillButtonHelperTimer::FrameUpdate() -- per-frame will-button charge timer: bail if the creature is gone or dead; for an AI caster count up until its target level (or while it holds the button), for the player keep counting while the ability's button (or quick-access event) is still held, raising the accumulated level each time the held time passes the next level's timing; a finished player release clears the ability inventory's quick-access state
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EDDD0, 531 bytes (+ int3 padding), plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0
 //   and non-const 0x0040F020 (interface 0x6F CTCInventoryAbilities = presence word 3 bit 15, `test ch,ch ; jns`);
 //   CTCInventoryAbilities::GetButtonAbilityIsSetTo 0x005EDF33, IsAbilityQuickAccessEventInQueue 0x005EE99D and the empty
 //   0x005EDCEF (descriptive name ClearQuickAccessState: a bare `ret`); CThing::GetPlayer 0x004C7A30, CPlayer::GetJoystickDeviceNumber
 //   0x00487510, CMainGameComponent::GetGamePlayerInterface 0x00416359, CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue
-//   0x00445E90; g_pMainGameComponent 0x013B86A0.
+//   0x00445E90; CMainGameComponent::Get() 0x013B86A0.
 // Layout: Ego_r.pdb CWillButtonHelperTimer (56) with the retail 12-byte STLport vector: ButtonHeldDownTimer +0, WillAccumulatedLevel
 //   +4, PCreature +8, MyAbility +0x10, CurrentState +0x14, WillPowerUpAccumulatedTimings +0x18, MaxNumberLevels +0x24,
 //   CurMaxLevels +0x28, WillIncrementedFlag +0x2c, UpdateAccLevel +0x2d, IsAICasting +0x2e, IsAIHoldingDown +0x2f, LevelToCast +0x30.
@@ -26,11 +28,15 @@ public:
     bool IsAssignableSpecialMoveButtonInQueue(long button, long eventType, long playerNumber) const;   // 0x00445E90
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
 };
-extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
-inline CMainGameComponent* GetMainGameComponent() { return g_pMainGameComponent; }
+inline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

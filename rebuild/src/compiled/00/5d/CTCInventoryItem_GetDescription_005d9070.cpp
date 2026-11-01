@@ -1,7 +1,9 @@
 // Retry 10b (B-12 sweep): the text id is a const REFERENCE to the def's member (`const unsigned long& textIndex = def->ItemDescription;`), which keeps it in edx across the global's load and the bank deref (retail order); a value local is loaded after the bank chain.
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // CTCInventoryItem::GetDescription() -- the wide description text of the item's inventory def (its ItemDescription text id looked up in the main component's text bank), or the empty wide string when the def has no description
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005D9070, length 172 bytes; speed TU (no frame pointer, `mov dword ptr [..],0`).
-// Callees: NGameText::CDataBank::GetPGroupEntry(unsigned long, bool) const @ 0x009C9070 on g_pMainGameComponent(0x013B86A0)->TextBank (+0x14)
+// Callees: NGameText::CDataBank::GetPGroupEntry(unsigned long, bool) const @ 0x009C9070 on CMainGameComponent::Get()(0x013B86A0)->TextBank (+0x14)
 // (CIVCountedPointer<const CGroupEntry> by hidden pointer), NGameText::CGroupEntry::GetText() const @ 0x009C7A40 (CWideString by hidden
 // pointer -- the function's own result pointer is passed straight through), CWideString::CWideString(const CWideString&) @ 0x0099B720 on
 // the empty wide string 0x013BCA24, the defs' virtual slot 1 on release.
@@ -66,11 +68,15 @@ class CDataBank { public:                                 // NGameText::CDataBan
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CTCInventoryItem { public:
     void*   __vftable;                             // +0x00
     void*   ParentThing;                           // +0x04
@@ -84,7 +90,7 @@ CWideString CTCInventoryItem::GetDescription()
     bool hasDescription = GetPDef()->ItemDescription > 0;
     if (hasDescription) {
         CDefPointer<CInventoryItemDef> def(PDef);
-        CDataBank* bank = g_pMainGameComponent->TextBank;
+        CDataBank* bank = CMainGameComponent::Get()->TextBank;
         const unsigned long& textIndex = def->ItemDescription;
         return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }

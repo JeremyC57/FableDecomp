@@ -1,5 +1,9 @@
 // CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a press of action 0x35 in normal play (world load status 0 or 9, nothing pending, no auto-save banner) take a quick photojournal screenshot (without the HUD while Shift is held) and mark the input handled; otherwise make the console on first use, let it see the event unless it is open, and on a non-type-1 event steer the player GUI's mouse cursor for action 0x47
 // Leaf: ProcessInput
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00687FD0, length 430 bytes (`ret 8`), /GS cookie 0x0139C8A8 / check 0x00BFE9F9.
 // Callees: CInputEvent ctor 0x00A04410 / dtor 0x00A03B30 / GetType 0x00A03B40 (an unused 0x34-byte frame local, as the landed
@@ -76,18 +80,32 @@ class CWorld { public:
     unsigned char _padfc[0x104 - 0xfc];
     long          RegionLoadStatus;                // +0x104 ERegionLoadStatus
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1c
     unsigned char   _pad20[4];
     CWorld*         PWorld;                        // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 extern bool g_bAutoSaveProgressShown;              // 0x013B89C1
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void MoveCursor(const C2DVector& movement);    // 0x004379C0
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CConsole { public:                                  // vtable 0x0129C600, 0x9c bytes
     virtual void v00();
     unsigned char _pad04[0x78 - 0x04];
@@ -121,11 +139,11 @@ public:
 void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
     CInputEvent unused;
-    if (IsEventGameAction(0x35, event) && IsEventButtonPressed(event) && g_pMainGameComponent) {
-        CWorld* world = g_pMainGameComponent->PWorld;
+    if (IsEventGameAction(0x35, event) && IsEventButtonPressed(event) && CMainGameComponent::Get()) {
+        CWorld* world = CMainGameComponent::Get()->PWorld;
         if ((world->RegionLoadStatus == 0 || world->RegionLoadStatus == 9) && world->SaveGameLoadStatus == 0
             && !g_bAutoSaveProgressShown) {
-            CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
             if (hero->HasTC(0x10e)) {
                 CTCPhotojournalCapture* capture = hero->GetTC(0x10e);
                 if (GetAsyncKeyState(0x10) < 0) {
@@ -151,6 +169,6 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
         IsEventGameAction(6, event);
     else if (IsEventGameAction(0x47, event)) {
         C2DVector movement = GetMouseMovement(event);
-        g_pPlayerGui->MoveCursor(movement);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().MoveCursor(movement);
     }
 }

@@ -1,5 +1,7 @@
 // NThingShot::CreateShot(CThing& shot, CThing* shooter, CThing* weapon, const CThing* target, float, float, float, const CDefPointer<const CMeleeCombatAbilityDef>& ability, long shot_def_index) -- turn an existing thing into a shot: the shot def (the given index, else the weapon's created-shot def; the shooter stands in for a missing weapon) names the shot-definition TC to add, which is Init'ed with the def, shooter, weapon, target, the three floats and the ability; returns the shot (0 when shots are off, there is no shooter/weapon or no shot def)
 // Leaf: ?CreateShot@NThingShot@@YIPAVCThing@@AAV2@PAV2@1PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@J@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C0E80, 297 bytes, __fastcall (ecx shot, edx shooter), `ret 1Ch` (seven stack arguments).
 // Identity (proven): Ego_r.pdb ?CreateShot@NThingShot@@YIPAVCThing@@AAV2@PAV2@1PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@J@Z
 //   (donor 0x007BF690), the overload of the def-index CreateShot (donor 0x007BF280) that takes the thing: 2 register + 7 stack
@@ -12,7 +14,7 @@
 //   CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0, NThingShot::CTCShotDefinitionBase::Init(CDefPointer<const CThingShotDef>,
 //   CThing*, CThing*, const CThing*, float, float, float, const CDefPointer<const CMeleeCombatAbilityDef>&) 0x007C0690; inside
 //   GetDef: CDefinitionManager::GetPDefFromGlobalIndex(long) const 0x009AD9E0.
-//   Data: g_pMainGameComponent 0x013B86A0, the shots-enabled switch 0x0137573F (a bool read by both CreateShot overloads;
+//   Data: CMainGameComponent::Get() 0x013B86A0, the shots-enabled switch 0x0137573F (a bool read by both CreateShot overloads;
 //   descriptive name).
 // Layout: retail CThing UsingComponents +0x20 / Components +0x44 (interface 0x48 CTCWeapon); CThingShotDef ShotDefinitionClassName
 //   (CDefString) +0x60 (Ego_r +0x64); the def lock count is CIVCountedPointeeBase::IVRefCount +0x04 (Ego_r.pdb; AddRef / Release / virtual Delete slot 1).
@@ -196,10 +198,14 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long global_index, CDefPoin
 #pragma auto_inline(on)
 class CGameDefinitionManager : public CDefinitionManager { };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 extern bool g_bShotsEnabled;                            // 0x0137573F (descriptive)
 
 class CTCWeapon {
@@ -230,7 +236,7 @@ CThing* __fastcall CreateShot(CThing& shot, CThing* shooter, CThing* weapon, con
     long def_index = shot_def_index > 0 ? shot_def_index : weapon_tc->GetCreatedShotDefGlobalIndex();
     if (def_index >= 0) {
         CDefPointer<const CThingShotDef> shot_def(NULL_DEF);
-        g_pMainGameComponent->PeekDefinitionManager().GetDef<CThingShotDef>(def_index, &shot_def);
+        CMainGameComponent::Get()->PeekDefinitionManager().GetDef<CThingShotDef>(def_index, &shot_def);
         CTCShotDefinitionBase* shot_tc =
             (CTCShotDefinitionBase*)shot.AddTC(shot_def->ShotDefinitionClassName, true, 0);
         shot_tc->Init(shot_def, shooter, weapon, target, a, b, c, ability);

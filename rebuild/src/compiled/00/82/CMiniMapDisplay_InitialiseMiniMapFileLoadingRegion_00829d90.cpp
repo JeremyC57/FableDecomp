@@ -5,6 +5,8 @@
 //   case the minimap is generated into the cache path; with neither file it is generated only when `regenerate` is set;
 //   a loaded minimap builds its texture, which is kept at +0x50, and frees its data
 // Leaf: InitialiseMiniMapFileLoading_Region
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00829D90, 648 bytes (`ret 0Ch`).
 // Callees: CRegionMinimap 0x0066DBB0 Initialise / 0x0066CC40 InitialiseRegionMinimapSize / 0x0066CA80 LoadRegionMinimapTGAFile /
 //   0x0066DC50 generate-and-save (manifest "CParticleSimulation::Clear") / 0x0066C610 is-loaded (manifest
@@ -58,11 +60,15 @@ class CWorld { public:
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();                   // slot 13
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld* World;                                      // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 static inline CWideString ToWide(CCharString text)
 {
@@ -102,7 +108,7 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
         CreateDirectory(g_MiniMapDataDirectory);
     if (!CAFile::PathExists(g_MiniMapCacheDirectory))
         CreateDirectory(g_MiniMapCacheDirectory);
-    CWorldMap* worldMap = g_pMainGameComponent->World->GetWorldMap();
+    CWorldMap* worldMap = CMainGameComponent::Get()->World->GetWorldMap();
     RegionMinimap.InitialiseRegionMinimapSize(worldMap, region);
     CWideString tgaName = ToWide(region->GetName() + ".tga");
     CWideString cachePath = g_MiniMapCacheDirectory + tgaName;

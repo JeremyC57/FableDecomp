@@ -1,12 +1,14 @@
 // CTCHeroCentreDoorMarker::FrameUpdate() -- while the hero centre is alive, raise game event 0x34 (door type + hero-centre UID) the first time the hero walks inside the marker radius, then (for door type 1) update the particle experience
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 //
 // Retail 0x0077FB00, 321 bytes (plain `ret`, /GS cookie 0x0139C8A8 checked by __security_check_cookie @ 0x00BFE9F9).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (inline IS_THING_ALIVE pair, then the UID read), CTCBase::GetPlayerManager
 // @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0
 // (own thing first, then the hero), CMemoryBuffer::Copy @ 0x009F1760 (DoorType, then the 8-byte UID), CMainGameComponent::AddGameEvent
-// @ 0x0041649C on g_pMainGameComponent 0x013B86A0, CTCHeroCentreDoorMarker::UpdateParticleExperience @ 0x0077F970.
+// @ 0x0041649C on CMainGameComponent::Get() 0x013B86A0, CTCHeroCentreDoorMarker::UpdateParticleExperience @ 0x0077F970.
 // Shape: the landed CTCHeroCentre::OpenTrainingScreen 0x0077D4B0 event model (CGameEvent over an empty CMemoryBuffer); the planar
 // range test keeps both deltas and the radius on the x87 stack and compares Radius*Radius against dX*dX + dY*dY (`test ah,41h`).
 // Layout (packed, landed 0x0077F5C0): Radius +0x0c, DoorType +0x10, HeroInsideRadius +0x14, PParticle +0x15, PHeroCentre +0x1d;
@@ -62,10 +64,14 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddLONG(long value) { Copy(4, &value); }
     void AddUID(unsigned __int64 value) { Copy(8, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 class CTCBase {
 public:
@@ -105,7 +111,7 @@ void CTCHeroCentreDoorMarker::FrameUpdate()
                     event.AddLONG(DoorType);
                     event.AddUID(PHeroCentre.GetPItem()->UID);
                     event.Player = hero->Player;
-                    g_pMainGameComponent->AddGameEvent(event);
+                    CMainGameComponent::Get()->AddGameEvent(event);
                     HeroInsideRadius = true;
                 }
             } else {

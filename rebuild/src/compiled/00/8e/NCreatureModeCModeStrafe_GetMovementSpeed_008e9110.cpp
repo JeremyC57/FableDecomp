@@ -1,13 +1,17 @@
 // NCreatureMode::CModeStrafe::GetMovementSpeed(const C3DVector&, const C3DVector&, EMovementType) const -- the per-frame speed of the strafe animation chosen for this direction: its movement distance over its duration, divided by the frame rate
 // Leaf: ?GetMovementSpeed@CModeStrafe
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9110, 123 bytes (+ int3 padding), `ret 0Ch`; CModeStrafe vtable slot 7.
 // Callees: GetStrafeAnimationName @ 0x008E8E50 (a same-file free __fastcall returning CCharString by value: the return slot
 //   in ecx, the first vector in edx, `ret 8`; label "GetStrafeAnimationName" in ghidra_out), CThingCreatureBase::GetAnimFromName
 //   @ 0x00662A00, CMeshDataBank::PeekAnimation @ 0x00A242C0, C3DAnimationInfo::GetDuration @ 0x00A23CE0 (manifest
 //   "DrawGetSeaLevel" is propagated), CThingCreatureBase::GetAnimMovementDistance @ 0x006627A0, ~CCharString @ 0x0099EAE0.
 // Name: FableWin.pdb `?GetMovementSpeed@CModeStrafe@NCreatureMode@@UBEMABVC3DVector@@0W4EMovementType@@@Z` (slot 7).
-// Globals: g_pMainGameComponent 0x013B86A0 (world +0x24, the world's main mesh bank +0x3c: CThing::PeekWorld inlined),
-//   g_FramesPerSecond 0x01375550 (long).
+// Globals: CMainGameComponent::Get() 0x013B86A0 (world +0x24, the world's main mesh bank +0x3c: CThing::PeekWorld inlined),
+//   CMainGameComponent::GetConstantFPS() 0x01375550 (long).
 // Shape: the name temporary takes the dead third-parameter slot; the bank is a named local fetched before the creature;
 //   the animation index is a named local (edi, used twice); `speed / fps` with `speed` a named float.
 class CCharString { public:
@@ -30,12 +34,20 @@ class CWorld { public:
     unsigned char  _pad00[0x3c];
     CMeshDataBank* PMainMeshBank;          // +0x3c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       World;                   // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-extern long g_FramesPerSecond;                     // 0x01375550
 
 class CAnimationEntry { public:                   // Ego_r.pdb CAnimationEntry (0x10)
     long BankIndex;                        // +0
@@ -44,7 +56,7 @@ class CAnimationEntry { public:                   // Ego_r.pdb CAnimationEntry (
 class CThingCreatureBase { public:
     CAnimationEntry* GetAnimFromName(const CCharString& name, long index);   // 0x00662A00
     float GetAnimMovementDistance(long animIndex) const;                    // 0x006627A0
-    static const CWorld& PeekWorld() { return *g_pMainGameComponent->World; }
+    static const CWorld& PeekWorld() { return *CMainGameComponent::Get()->World; }
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -67,5 +79,5 @@ float NCreatureMode::CModeStrafe::GetMovementSpeed(const C3DVector& a, const C3D
     long animIndex = creature->GetAnimFromName(name, 0)->BankIndex;
     float duration = bank->PeekAnimation(animIndex)->GetDuration();
     float speed = creature->GetAnimMovementDistance(animIndex) / duration;
-    return speed / (float)g_FramesPerSecond;
+    return speed / (float)CMainGameComponent::GetConstantFPS();
 }

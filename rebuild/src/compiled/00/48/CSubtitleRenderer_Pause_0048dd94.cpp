@@ -1,4 +1,6 @@
 // CSubtitleRenderer::Pause(bool updateWhilePaused) -- mark the game paused by the subtitles, remember whether to keep updating, and queue a pause game event (type 9) carrying one byte 1
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: DIFFER(100v98) -- retail homes AddUBYTE's by-value byte in the unused top byte of the bool parameter slot ([ebp+0Bh]) inside a 0x2c frame; the lane opens a 0x30 frame for it ([ebp-30h]) and copies `this` to eax (lane gap: short-lived local in a dead argument slot)
 // Flags: /GS
 // Layout (supersedes any local-model note above): engine/CSubtitleRenderer.h now has the retail STLport 4.6 offsets, so the data
@@ -28,10 +30,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 enum { GAME_EVENT_PAUSE = 9 };
 class CSubtitleRenderer : public CSubtitleRendererDonor {
  public:
@@ -44,5 +50,5 @@ void CSubtitleRenderer::Pause(bool updateWhilePaused)
     PausedGame = true;
     CGameEvent event(GAME_EVENT_PAUSE);
     event.AddUBYTE(1);
-    g_pMainGameComponent->AddGameEvent(event);
+    CMainGameComponent::Get()->AddGameEvent(event);
 }

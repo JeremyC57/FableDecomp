@@ -2,14 +2,19 @@
 // move it through the exit; inside the message radius start the letterbox and show the destination region's name, and on
 // leaving it end the letterbox and finish the region name; re-arm the waiting flags once the hero is outside the radii
 // Leaf: FrameUpdate
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 //
 // Retail 0x007796B0, 598 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
 // @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0 (twice), CDisplayEngine::StartLetterBoxMode
-// (float, float, float) @ 0x00434BA0 / EndLetterBox @ 0x004349D0 (g_pMainGameComponent 0x013B86A0 +0x28), CTCBase::GetWorld
+// (float, float, float) @ 0x00434BA0 / EndLetterBox @ 0x004349D0 (CMainGameComponent::Get() 0x013B86A0 +0x28), CTCBase::GetWorld
 // const @ 0x00686A80 (byte +0xdf), CVectorMap::LowerBound @ 0x0040F020 (CTCRegionDisplay 0x8e on the hero),
 // CTCDRegionExit::GetDisplayName @ 0x00779260, CTCRegionDisplay::SetCurrentAreaName @ 0x00639BA0 / FinishShowingRegionName
-// @ 0x00639930, CTCDRegionExit::MoveHeroThroughExit @ 0x00779080; g_pPlayerGui 0x013B8790 (byte +0xf6), epsilon 0x0129BA3C.
+// @ 0x00639930, CTCDRegionExit::MoveHeroThroughExit @ 0x00779080; (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (byte +0xf6), epsilon 0x0129BA3C.
 // Layout = Ego_r.pdb CTCDRegionExit (packed, as the landed MoveHeroThroughExit 0x00779080); CThing dead bit +0x91, +0xb4 float.
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
@@ -72,16 +77,30 @@ class CDisplayEngine { public:
     void StartLetterBoxMode(float a, float b, float aspect); // 0x00434BA0
     void EndLetterBox();                                     // 0x004349D0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                           // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0xf6];
     bool          Busy;                                      // +0xf6
 };
-extern CPlayerGui* g_pPlayerGui;                             // 0x013B8790
 class CWorld { public:
     unsigned char _pad00[0xdf];
     bool          ShowRegionNames;                           // +0xdf
@@ -90,7 +109,7 @@ class CTCRegionDisplay { public:
     void SetCurrentAreaName(const CCharString& name, float time, bool a, bool b, bool c);   // 0x00639BA0
     void FinishShowingRegionName();                          // 0x00639930
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 class CTCBase {
 public:
     virtual ~CTCBase();
@@ -142,11 +161,11 @@ void CTCDRegionExit::FrameUpdate()
     bool inside = distSq < Radius * Radius;
     if (!WaitingForActivationOrPlayerToLeave && inside) {
         moveHero = true;
-    } else if (MessageRadius > EPSILON && EPSILON + Radius < MessageRadius
+    } else if (MessageRadius > DELTA_NOTIONAL_ZERO && DELTA_NOTIONAL_ZERO + Radius < MessageRadius
                && distSq < MessageRadius * MessageRadius) {
         if (!WaitingForPlayerToLeaveMessageArea) {
             if (!InLetterBoxMode) {
-                g_pMainGameComponent->DisplayEngine->StartLetterBoxMode(0.5f, 0.5f, 1.7777778f);
+                CMainGameComponent::Get()->DisplayEngine->StartLetterBoxMode(0.5f, 0.5f, 1.7777778f);
                 if (PeekWorld().ShowRegionNames) {
                     CTCRegionDisplay* display;
                     if (hero->HasTC(0x8e))
@@ -156,8 +175,8 @@ void CTCDRegionExit::FrameUpdate()
             }
             InLetterBoxMode = true;
         }
-    } else if (InLetterBoxMode && !g_pPlayerGui->Busy) {
-        g_pMainGameComponent->DisplayEngine->EndLetterBox();
+    } else if (InLetterBoxMode && !CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Busy) {
+        CMainGameComponent::Get()->DisplayEngine->EndLetterBox();
         if (PeekWorld().ShowRegionNames) {
             CTCRegionDisplay* display;
             if (hero->HasTC(0x8e))
@@ -170,7 +189,7 @@ void CTCDRegionExit::FrameUpdate()
         WaitingForActivationOrPlayerToLeave = false;
     if (distSq > MessageRadius * MessageRadius)
         WaitingForPlayerToLeaveMessageArea = false;
-    if (moveHero && hero->Health > EPSILON) {
+    if (moveHero && hero->Health > DELTA_NOTIONAL_ZERO) {
         MoveHeroThroughExit();
         WaitingForActivationOrPlayerToLeave = true;
     }

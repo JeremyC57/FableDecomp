@@ -1,5 +1,7 @@
 // NUISystem::CKeyRedefiner::GetActionText(CWideString& text, const CCharString& symbol) const -- the redefiner's action caption: for the movement action the direction's game text (forward / back / left / right by sub-type, the tag itself when the bank has no text), otherwise the symbol's game text (or the symbol) followed by the sub-type number
 // Leaf: ?GetActionText@CKeyRedefiner@NUISystem@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00558170, 945 bytes of code + the four-entry case table (976 bytes in all),
 //   thiscall `ret 8`. One caller (0x00558736, NUISystem::CKeyRedefiner::SetAction).
 // Identity: Ego_r.pdb ?GetActionText@CKeyRedefiner@NUISystem@@ABEXAAVCWideString@@ABVCCharString@@@Z (private const);
@@ -10,7 +12,7 @@
 //   const CWideString&) 0x0099BFF0 (__fastcall), GFIntToWideString 0x00405F00 (__fastcall), wcscmp 0x00BFE94C,
 //   __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (inherited by char_traits<wchar_t>) (cdecl). Literals: L"" 0x0122D70C, L" " 0x0122D820, the four
 //   "TEXT_GUI_ACTION_MOVE_*" tags (narrow and wide), L"Invalid Movement!!" 0x0124AC14.
-// Globals: g_pMainGameComponent 0x013B86A0 (game-text bank +0x14), else g_pNewFrontendGameComponent 0x013B871C (+0x60),
+// Globals: CMainGameComponent::Get() 0x013B86A0 (game-text bank +0x14), else g_pNewFrontendGameComponent 0x013B871C (+0x60),
 //   as the landed NUISystem::CText::SetValue 0x0054F410.
 // Layout: retail CKeyRedefiner: Actions (STLport list<EGameAction>, 4 bytes: the header node) +0x19c, SubType +0x1a0.
 //   Action 0x3c is the movement action, sub-types 10..13 its directions.
@@ -85,7 +87,12 @@ public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;                // 0x009C95E0
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;                                           // +0x14
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
@@ -95,7 +102,6 @@ class CNewFrontendGameComponent { public:
     NGameText::CDataBank* PGameTextDataBank;                                           // +0x60
     NGameText::CDataBank* GetGameTextDataBank() const { return PGameTextDataBank; }
 };
-extern CMainGameComponent*        g_pMainGameComponent;                               // 0x013B86A0
 extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;                        // 0x013B871C
 
 namespace std {
@@ -126,7 +132,7 @@ public:
 
 void CKeyRedefiner::GetActionText(CWideString& text, const CCharString& symbol) const
 {
-    NGameText::CDataBank* bank = g_pMainGameComponent ? g_pMainGameComponent->GetGameTextDataBank()
+    NGameText::CDataBank* bank = CMainGameComponent::Get() ? CMainGameComponent::Get()->GetGameTextDataBank()
                                                       : g_pNewFrontendGameComponent->GetGameTextDataBank();
     if (Actions.front() == GAME_ACTION_MOVE) {
         switch (SubType) {

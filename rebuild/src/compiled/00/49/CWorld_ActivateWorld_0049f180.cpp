@@ -2,6 +2,10 @@
 // environment's spell-effect screen stack, activate the player GUI, activate the initial quests, then post the
 // "world activated" game event for the main player and stamp the 3D-rendering start frame
 // Leaf: ActivateWorld
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049F180, 334 bytes, `ret 4`, /GS (cookie 0x0139C8A8, check 0x00BFE9F9).
 //   PDB ?ActivateWorld@CWorld@@QAEX_N@Z.
@@ -11,8 +15,8 @@
 //   InitPlayerCharacter(bool) 0x00449D90, the spell-effect interpolator's screen-effect refresh 0x006B8410 (its
 //   ScreenEffectPriorityStack at +0x90), CPlayerGui::InitialActivate 0x0043A380 on g_pPlayerGui 0x013B8790,
 //   CQuestManager::ActivateMultipleQuests(CArray<CCharString>*, bool, bool) 0x004B4260 and PostBoastTransfer 0x004B2890
-//   on g_pQuestManager 0x013B89FC, CGameEvent::AddData(long, const void*) 0x009F1760, CPlayerManager::GetMainPlayerNumber
-//   0x00449700, CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on g_pMainGameComponent 0x013B86A0;
+//   on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass 0x013B89FC, CGameEvent::AddData(long, const void*) 0x009F1760, CPlayerManager::GetMainPlayerNumber
+//   0x00449700, CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on CMainGameComponent::Get() 0x013B86A0;
 //   the world frame global 0x013B89BC.
 // Layout: rebuild/include/engine/CWorld.h (PlayerManager +0x0c, PEnvironment +0x18, FrameStarted3DRendering +0x8c,
 //   InitialActiveQuests +0xac -- retail matches the header); CGameEvent 0x28 bytes (Type, Player +4, Data +5, EndPos
@@ -56,11 +60,21 @@ class CPlayerGui { public:
     void InitialActivate();                              // 0x0043A380
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     bool ActivateMultipleQuests(CArray<CCharString>* quests, bool fromSave, bool showMessages);   // 0x004B4260
     void PostBoastTransfer();                            // 0x004B2890
 };
-extern CQuestManager* g_pQuestManager;                   // 0x013B89FC
 class CGameEvent { public:
     long          Type;                                  // +0x00
     signed char   Player;                                // +0x04
@@ -72,10 +86,14 @@ class CGameEvent { public:
     void AddData(long size, const void* data);           // 0x009F1760
     template<class T> void Add(const T& value) { AddData(sizeof(T), &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);          // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 extern long g_WorldFrame;                                // 0x013B89BC
 enum { GAME_EVENT_WORLD_ACTIVATED = 9 };
 class CWorld : public CWorld_PDB { public:
@@ -91,12 +109,12 @@ void CWorld::ActivateWorld(bool loadedGame)
     LoadingStage("Init GUI", 0);
     g_pPlayerGui->InitialActivate();
     LoadingStage("Init Quests", 0);
-    g_pQuestManager->ActivateMultipleQuests((CArray<CCharString>*)InitialActiveQuests, false, true);
-    g_pQuestManager->PostBoastTransfer();
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateMultipleQuests((CArray<CCharString>*)InitialActiveQuests, false, true);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PostBoastTransfer();
     LoadingStageDone(0);
     CGameEvent event(GAME_EVENT_WORLD_ACTIVATED);
     event.Add(false);
     event.Player = (signed char)((CPlayerManager*)PlayerManager)->GetMainPlayerNumber();
-    g_pMainGameComponent->AddGameEvent(event);
+    CMainGameComponent::Get()->AddGameEvent(event);
     FrameStarted3DRendering = g_WorldFrame;
 }

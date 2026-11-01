@@ -12,6 +12,10 @@
 // Shape: owner/target reach the action constructor through inline accessors (GetCreature/GetTarget); reading the
 //   members directly rotates the owner/target/argument registers (eax/ecx/edx) in the VC7.1 allocator.
 // Leaf: OnCreate
+// Naming wave 18: the global stand-in g_logicFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 class CWorld {
 public:
@@ -33,13 +37,21 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 struct CWorld_Calls {
 };
 
-struct CMainGameComponent_Retail {
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld_Calls* World;                                        // +0x24
 };
 
-extern CMainGameComponent_Retail* g_pMainGameComponent;        // 0x013B86A0
-extern long g_logicFramesPerSecond;                             // 0x01375550 (15)
 class CThingCreatureBase;
 class CThing;
 
@@ -105,8 +117,8 @@ struct CCombatSequence_ScorpionLungeAttack : CCombatSequenceBase {
 
 void CCombatSequence_ScorpionLungeAttack::OnCreate()
 {
-    long framesPerSecond = g_logicFramesPerSecond;
-    unsigned long* seed = ((CWorld*)(g_pMainGameComponent->World))->GetWorldSeed();
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
+    unsigned long* seed = ((CWorld*)(CMainGameComponent::Get()->World))->GetWorldSeed();
     unsigned long offset = WorldRandomRange(*seed, framesPerSecond * 10);
     m_frameOfNextUse = CWorld::GetFrame() + offset;
     CCountedPointer action;

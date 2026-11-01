@@ -1,5 +1,9 @@
 // CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CCharString& cardDefName) -- debug: create the named quest-card object at the living hero, point its quest card at the given script quest and activate it (loading resources); on success the card becomes active (in limbo, persisted), the guild-seal recall point is reset, its type leaves the available cards and the player GUI refreshes
 // Leaf: ActivateTestQuestCard
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -110,8 +114,10 @@ class CWorld { public:
     float         GuildSealRecallAngleXY;                // +0x160 (PDB +0x170)
 };
 class CRightHandedSet;
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector& position, long player, CRightHandedSet* orientation,
-    unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 class CPlayer { public:
     unsigned char _pad00[0x28];
     long          PlayerNumber;                          // +0x28
@@ -122,22 +128,36 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad[0x1c];
     CPlayerManager* PlayerManager;                       // +0x1c
     CPlayerManager* GetPlayerManager() const { return PlayerManager; }
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();     // 0x0044C6B0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);                // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
 class CQuestManager { public:
     unsigned char     _pad00[0x5c];
@@ -154,12 +174,12 @@ class CQuestManager { public:
 
 bool CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CCharString& cardDefName)
 {
-    CPlayer* player = &g_pMainGameComponent->GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = &CMainGameComponent::Get()->GetPlayerManager()->GetMainPlayer();
     CThing* hero = player->GetPControlledCreature();
     if (hero && !hero->Dead) {
         long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(cardDefName);
         if (defIndex > 0) {
-            CThing* card = CreateThingObject(defIndex, hero->GetPos(), player->GetPlayerNumber(), 0, 0, "");
+            CThing* card = ((CThing*)CThingObject::Create(defIndex, hero->GetPos(), player->GetPlayerNumber(), 0, 0, ""));
             if (card && card->HasTC(0x6c)) {
                 CTCQuestCard* tc = (CTCQuestCard*)card->GetTC(0x6c);
                 if (tc) {
@@ -177,7 +197,7 @@ bool CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CC
                             World->GuildSealRecallPos = C3DVector(0.0f, 0.0f, 0.0f);
                             World->GuildSealRecallAngleXY = 0.0f;
                             RemoveAvailableQuestCardType(card->GetDefName());
-                            g_pPlayerGui->UpdateMiniMapMarkers(false);
+                            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                             if (--def->RefCount == 0)
                                 def->DeleteThis();
                             return true;

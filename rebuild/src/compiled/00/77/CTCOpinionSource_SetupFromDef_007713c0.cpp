@@ -1,4 +1,6 @@
 // CTCOpinionSource::SetupFromDef(long defIndex) -- load the opinion-source def for the index and copy its reaction switches, faction restriction (fetched as a faction def when set), produced opinion set and the 79 reaction flags; false when the def does not exist
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007713C0, 219 bytes (`ret 4`; PDB ?SetupFromDef@CTCOpinionSource@@AAE_NJ@Z).
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80 -> CWorld::DefinitionManager (+0x10), CGameDefinitionManager::GetDef<COpinionSourceDef>
 //   @ 0x007719C0 and GetDef<CFactionDef> @ 0x006B9D90 (both labelled GetDef<CThingPhysicalSwitchDef>), COpinionSet::operator=
@@ -9,7 +11,7 @@
 //   RestrictToFactionAndAllies +0x64, RestrictToFactionIsReversed +0x68, OpinionProduced +0x6c, ReactionFlags +0x78.
 // Tried: holder in the arm (this=edi), the manager in a local (fixes the GetWorld order), a raw pointer + hand release, a
 //   `__forceinline CopyFromDef(def)` helper (this=esi, as retail). Next: move the holder into the helper (one register for the
-//   def) and read g_pMainGameComponent into a local before the GetDef pushes; the loop as `def->ReactionFlags[i]` on a local copy.
+//   def) and read CMainGameComponent::Get() into a local before the GetDef pushes; the loop as `def->ReactionFlags[i]` on a local copy.
 void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement, Destroy on zero)
 struct CDefVirtual {
     virtual void v00();
@@ -101,10 +103,14 @@ class CWorld { public:
     unsigned char _pad00[0x10];
     CGameDefinitionManager* DefinitionManager;          // +0x10
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 template <class T> class CCountedPointer { public: T* Object; void* Info; };
 class CThing;
@@ -149,7 +155,7 @@ class CTCOpinionSource : public CTCBase { public:
         RelativeEffect = def->RelativeEffect;
         RestrictToFactionIsReversed = def->RestrictToFactionIsReversed;
         if (def->RestrictToFactionAndAllies)
-            g_pMainGameComponent->PeekDefinitionManager().GetDef(def->RestrictToFactionAndAllies, RestrictToFactionAndAllies);
+            CMainGameComponent::Get()->PeekDefinitionManager().GetDef(def->RestrictToFactionAndAllies, RestrictToFactionAndAllies);
         const bool* flags = def->ReactionFlags;
         for (unsigned long i = 0; i < 79; ++i)
             ReactionFlags[i] = flags[i];

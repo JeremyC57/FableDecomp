@@ -1,5 +1,9 @@
 // CTCBuyableHouse::SetRented(bool rented) -- mark the house as rented out (or not): keep the living hero's rented-building count in step, evict the tenant when an owned house stops being rented, rebuild the main sign post and refresh the player GUI's mini-map markers
 // Leaf: ?SetRented@CTCBuyableHouse@@QAEX_N@Z
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C1150, 243 bytes, `ret` through the tail jump to CPlayerGui::UpdateMiniMapMarkers
 //   with the argument slot reused (`mov [esp+4],0`).
 // Identity: Ego_r.pdb has `?SetRented@CTCBuyableHouse@@QAEX_N@Z`; the catalog label is right. The sibling
@@ -12,7 +16,7 @@
 //   0x004378C0 (Ego_r `?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z`: the body forwards to the mini-map drawer +0x160, whose
 //   0x00643E9A forwards to its CMiniMapDisplay +0x28 at 0x0082B7C0 -- CDrawMiniMap::UpdateMarkers(bool) and
 //   CMiniMapDisplay::UpdateMarkers(bool) in the PDB; the landed spelling `Refresh(long)` is not a PDB name).
-// Globals: g_pMainGameComponent 0x013B86A0 and g_pPlayerGui 0x013B8790 (bound spellings; no PDB data symbols).
+// Globals: CMainGameComponent::Get() 0x013B86A0 and (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (bound spellings; no PDB data symbols).
 // Layout: engine/CTCBuyableHouse.h (OwnedByPlayer +0x11, Rented +0x12, MainSignPost +0x24), engine/CTCHeroStats.h
 //   (NumberOfBuildingsRented +0xE8), engine/CPlayer.h, engine/CPlayerManager.h and engine/CPlayerGui.h through the rename trick (callee classes,
 //   methods only); CMainGameComponent::PPlayerManager +0x1C (Ego_r, scoped_ptr); CThing: UsingComponents +0x20, Components
@@ -123,19 +127,33 @@ template <class T> class scoped_ptr { public:
     T* ptr;
     T& operator*() const { return *ptr; }
 };
-class CMainGameComponent { public:                          // Ego_r.pdb offsets up to +0x28 hold in retail
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:                          // Ego_r.pdb offsets up to +0x28 hold in retail
     unsigned char              _pad00[0x1C];
     scoped_ptr<CPlayerManager> PPlayerManager;              // +0x1C
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 #define CPlayerGui CPlayerGuiLayout
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
 class CPlayerGui : public CPlayerGuiLayout { public:
     void UpdateMiniMapMarkers(bool force);                  // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
 class CBaseObject;
 class CBaseIntelligentPointer { public:                     // vptr + PData, 8 bytes
@@ -160,7 +178,7 @@ private:
 
 void CTCBuyableHouse::SetRented(bool rented)
 {
-    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         CTCHeroStats* stats = 0;
         hero->GetTC(&stats);
@@ -180,5 +198,5 @@ void CTCBuyableHouse::SetRented(bool rented)
         reinterpret_cast<CIntelligentPointer<CThing>&>(MainSignPost).Get()->Kill(true);
     if (NeedsMainSignPost())
         CreateMainSignPost();
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

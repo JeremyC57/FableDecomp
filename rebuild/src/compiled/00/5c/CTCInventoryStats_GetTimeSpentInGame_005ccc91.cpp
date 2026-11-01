@@ -1,5 +1,7 @@
 // CTCInventoryStats::GetTimeSpentInGame(unsigned long frames, const NGameText::CDataBank* bank) -- formats the play time (frames at 15 per second) as "<Time spent>: <h> <hour(s)> <m> <mins>" from the game text bank
 // Leaf: ?GetTimeSpentInGame@CTCInventoryStats@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CCC91, 538 bytes (0x21A, no padding), static __fastcall `ret 4` (hidden return
 //   pointer in ecx, frames in edx, bank on the stack). Four callers (0x0047F268, 0x00595FFD, 0x005CE6F7, 0x005D2CED).
 // Identity: Ego_r.pdb ?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z; the
@@ -56,11 +58,15 @@ public:
 };
 
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char                         _pad_0x00[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;                                   // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;                                      // 0x013B86A0
 
 class CTCInventoryStats {
 public:
@@ -74,7 +80,7 @@ CWideString __fastcall CTCInventoryStats::GetTimeSpentInGame(unsigned long frame
     CWideString newLine(L"\n");
     CWideString text;
     if (bank == 0)
-        bank = g_pMainGameComponent->PTextBank.Get();
+        bank = CMainGameComponent::Get()->PTextBank.Get();
     CWideString hoursText;
     unsigned long seconds = frames / 15;
     unsigned long hours = seconds / 3600;

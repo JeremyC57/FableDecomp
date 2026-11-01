@@ -1,5 +1,7 @@
 // CQuestManager::AddBoast(const CCharString& scriptName, const CCharString& textTag, long id, long cost, long reward, bool evil, long groupIndex) -- offer a boast: look up its text (tag) and title (tag + "_TITLE") in the game-text bank (falling back to the widened tag), append it to Boasts and stamp the boast frame
 // Leaf: AddBoast
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x004B1720, 576 bytes, `ret 0x1c` (Ego_r.pdb ?AddBoast@CQuestManager@@QAEXABVCCharString@@0JJJ_NJ@Z).
 // Callees: CWideString() 0x0099AED0 / operator= 0x0099B7D0 / copy 0x0099B720 / dtor 0x0099B510, the CRC CCRC::Calc 0x004014A0
 // (`__fastcall`), NGameText::CDataBank GetTagFromCRC 0x009CC410 / GetPGroupEntry 0x009C9070, CGroupEntry::GetText
@@ -70,11 +72,15 @@ public:
     unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
 };
-extern CEngine* g_pEngine;                              // 0x013B86A0
 class CWorld { public: static long __fastcall GetFrame(); };         // 0x0049D870
 
 struct CBoast {                                         // CQuestManager::CBoast (PDB, 32 bytes)
@@ -141,7 +147,7 @@ void CQuestManager::AddBoast(const CCharString& scriptName, const CCharString& t
 {
     CWideString text;
     CWideString title;
-    NGameText::CDataBank* bank = g_pEngine->PGameTextDataBank;
+    NGameText::CDataBank* bank = CMainGameComponent::Get()->PGameTextDataBank;
     if (unsigned long tag = bank->LookupValue(textTag.GetCRC()))
         text = bank->GetPTextEntry(tag, true)->GetText();
     else

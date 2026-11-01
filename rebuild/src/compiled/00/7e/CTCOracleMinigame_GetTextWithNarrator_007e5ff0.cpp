@@ -1,11 +1,13 @@
 // CTCOracleMinigame::GetTextWithNarrator(unsigned long textId) -- have the speech marker's talk component speak the text entry, then return the entry's text from its dialogue-voice group (or a "Missing text entry" placeholder)
 // Leaf: ?GetTextWithNarrator@CTCOracleMinigame@@QAE?AVCWideString@@K@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E5FF0, 255 bytes, `ret 8`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined one-ternary lookup of CTCTalk 0xf),
 //   CTCTalk::PlaySpeech 0x006E3B10, CWideString(const wchar_t*) 0x0099B6B0 (static no_text_entry 0x013BAE8C, guard
 //   0x013BAE90 bit 0, "Missing text entry" 0x01255FE8, atexit 0x004012BC with the destructor thunk 0x01229DE0),
 //   CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0 (inline CTCTalk::GetDialogueVoice copy of +0x38),
-//   CDataBank::GetTextEntryFromGroup 0x009C9280 (g_pMainGameComponent 0x013B86A0 +0x14), CTextEntry::GetText 0x009C7A40,
+//   CDataBank::GetTextEntryFromGroup 0x009C9280 (CMainGameComponent::Get() 0x013B86A0 +0x14), CTextEntry::GetText 0x009C7A40,
 //   CWideString(const CWideString&) 0x0099B720 / ~CWideString 0x0099B510.
 // Layout: CTCOracleMinigame SpeechMarker +0xe4 (Ego_r.pdb +0xEC, as a plain CThing* here); CThing bitset +0x20, map +0x44.
 // Shape: the landed CTCTavernGame twin 0x005EB3A0 with the thing reached directly; the found flag and the entry lookup
@@ -42,11 +44,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    PDataBank;                            // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -93,7 +99,7 @@ CWideString CTCOracleMinigame::GetTextWithNarrator(unsigned long textId)
     SpeechMarker->GetInterface(0xf, &talk);
     talk->PlaySpeech(textId, DIALOGUE_LAYER_0, true, true);
     static CWideString no_text_entry(L"Missing text entry");
-    CDataBank* bank = g_pMainGameComponent->PDataBank;
+    CDataBank* bank = CMainGameComponent::Get()->PDataBank;
     {
         bool found;
         const CTextEntry* entry = bank->GetTextEntryFromGroup(textId, talk->GetDialogueVoice(), found, 0, true);

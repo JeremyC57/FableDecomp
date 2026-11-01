@@ -1,15 +1,19 @@
 // CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) const -- no while another talker is alive; otherwise only if the hero is alive, its interface-0x36 list holds the creature, and enough seconds have passed since the last speech and the last battle cry
 // Leaf: IsSpeechAllowed
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x008AF5F0, 239 bytes, `__fastcall`, `ret 4` (Ego_r.pdb ?IsSpeechAllowed@CombatDialogueManager@@QBE_NABVCThingCreatureBase@@@Z;
 // called by the landed PlayBattleCry 0x008AF850).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2), CPlayerManager::GetMainPlayer 0x00449970 (g_pWorld+0x1C),
 // CPlayer::GetPControlledCreature 0x00487DC0, the const CVectorMap::LowerBound(const long&) 0x004365B0 (inline GetInterface, type 0x36 =
 // bit 22 of CThing+0x24), the type-0x36 component's list membership test 0x00747450 (std::find over +0x38..+0x3C != end;
 // manifest label "CTCBuyableHouse::MovedInNotification" is propagated; component class named descriptively),
-// CMainGameComponent::GetCurrentWorldFrame 0x004167C8 on g_pMainGameComponent 0x013B86A0; g_framesPerSecond 0x01375550.
+// CMainGameComponent::GetCurrentWorldFrame 0x004167C8 on CMainGameComponent::Get() 0x013B86A0; CMainGameComponent::GetConstantFPS() 0x01375550.
 // Layout (retail): PDialogueDef +0x0C, PCurrentTalker +0x10, LastSpeechFrame +0x1C, LastBattleCryFrame +0x20;
 // CCombatDialogueDef MinTimeBetweenSpeech +0x3C, MinDelayAfterBattleCry +0x44 (PDB +0x40/+0x48).
-// Shape: `(float)g_framesPerSecond` written at each use keeps one fild and two `fdiv` (a float local turns them into a
+// Shape: `(float)CMainGameComponent::GetConstantFPS()` written at each use keeps one fild and two `fdiv` (a float local turns them into a
 // reciprocal multiply); the two time tests as one `!(a < x) && !(b < y)` guard on `return true` give retail's `jnp fail`
 // with the success path falling through (two `if (a < x) return false;` invert the first branch).
 struct TSpeechGroupInfo {                   // CombatDialogueManager::TSpeechGroupInfo, Ego_r.pdb 4 bytes
@@ -38,10 +42,19 @@ struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeec
     CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CBaseObject;
 class CTCBase;
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
@@ -116,7 +129,6 @@ struct CDefPointerCombatDialogueDef {       // CDefPointer<const CCombatDialogue
     const CCombatDialogueDef* Data;
     const CCombatDialogueDef* operator->() const { return Data; }
 };
-extern long g_framesPerSecond;              // 0x01375550
 class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
@@ -125,7 +137,7 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CWorldPlayers {                           // g_pMainGameComponent viewed for its player manager (+0x1C)
+class CWorldPlayers {                           // CMainGameComponent::Get() viewed for its player manager (+0x1C)
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1C
@@ -150,7 +162,7 @@ bool CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) 
 {
     if (PCurrentTalker.Get() && !PCurrentTalker->Dead)
         return false;
-    CThingCreatureBase* hero = ((CWorldPlayers*)g_pMainGameComponent)->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThingCreatureBase* hero = ((CWorldPlayers*)CMainGameComponent::Get())->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || hero->Dead)
         return false;
     CTCCombatSpeechTargets* targets;
@@ -158,9 +170,9 @@ bool CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) 
         return false;
     if (!targets->ContainsCreature(creature))
         return false;
-    long frame = g_pMainGameComponent->GetCurrentWorldFrame();
-    if (!((frame - LastSpeechFrame) / (float)g_framesPerSecond < PDialogueDef->MinTimeBetweenSpeech)
-        && !((frame - LastBattleCryFrame) / (float)g_framesPerSecond < PDialogueDef->MinDelayAfterBattleCry))
+    long frame = CMainGameComponent::Get()->GetCurrentWorldFrame();
+    if (!((frame - LastSpeechFrame) / (float)CMainGameComponent::GetConstantFPS() < PDialogueDef->MinTimeBetweenSpeech)
+        && !((frame - LastBattleCryFrame) / (float)CMainGameComponent::GetConstantFPS() < PDialogueDef->MinDelayAfterBattleCry))
         return true;
     return false;
 }

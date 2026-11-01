@@ -1,5 +1,9 @@
 // CTCQuickAccessMenu::GlobalUpdate(bool) -- tear the menu down once it is quitting, else arm Quitting when the game leaves the menu's mode
 // Leaf: GlobalUpdate
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00625ED0, length 569 bytes; vtable 0x01258B74 (CTCQuickAccessMenu) slot 26,
 // the CTCBase GlobalUpdate(bool) slot (catalog name vfunc_26).
 // Callees: CManager::GetInstance @ 0x0041E5F2 (slots +0x18, +0x74, +0x94, +0xa8, +0xa0), CRT free @ 0x00BFEA14,
@@ -144,14 +148,28 @@ class CPlayer { public: void RemoveMode(long mode); };             // 0x00634190
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 #include "engine/CPlayerManager.h"
         // 0x00449970
 class CPlayerGui { public: void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b); };   // 0x00437580
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
 struct CGameState { unsigned char _pad[0x104]; long Mode; };
-class CEngine { public: unsigned char _pad[0x24]; CGameState* State; };
-extern CEngine* g_pEngine;                                  // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x24]; CGameState* State; };
 
 struct CRetailVector_Component {                            // retail std::vector, 12 bytes
     NUISystem::CComponent** _M_start;
@@ -213,11 +231,11 @@ void CTCQuickAccessMenu::GlobalUpdate(bool)
         NUISystem::CManager* source = NUISystem::CManager::GetInstance();
         NUISystem::CManager* target = NUISystem::CManager::GetInstance();
         target->SetScreenData((char*)source->GetScreenData().Data + 0x1a8, true);
-        g_pPlayerGui->SetSpecialAbilityButtonsAsDisplaying(false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetSpecialAbilityButtonsAsDisplaying(false, true);
         return;
     }
     if (Active) {
-        CGameState* st = g_pEngine->State;
+        CGameState* st = CMainGameComponent::Get()->State;
         if (st->Mode != 0 && st->Mode != 9)
             Quitting = true;
         CTCFC* tc;

@@ -1,12 +1,14 @@
 // CWorld::TeleportHeroToHSP(const CCharString& name) -- teleport the hero to the holy site whose ScriptName is name (false when no such site exists)
 // Leaf: ?TeleportHeroToHSP@CWorld@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A0940, 416 bytes, `ret 4` (Ego_r.pdb ?TeleportHeroToHSP@CWorld@@QAE_NABVCCharString@@@Z).
 //   Caller: the test-quest activation 0x0061ABFC (CTCBase::GetWorld().TeleportHeroToHSP(quest name)).
 // Callees: CWorld::PeekThingManager (virtual slot 4, +0x10; 0x0049E1C0), the CWorld-TU copy of the holy-site copy
 //   template 0x004ADCB0 (/Gr, hidden result in ecx; the same body as CPlayer's 0x0048D5C0), CCharString copy 0x0099EC30 /
 //   dtor 0x0099EAE0, STLport __find_if 0x0048CC60 with bind2nd(ptr_fun(0x0048BC70), name), CThing::GetScriptThing 0x004C7E50,
-//   CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1C), CPlayer::GetPlayerCharacter
+//   CPlayerManager::GetMainPlayer 0x00449970 (CMainGameComponent::Get() 0x013B86A0 +0x1C), CPlayer::GetPlayerCharacter
 //   0x00487B70, CGameScriptInterface::EntityTeleportToThing (slot 472, +0x760; CWorld +0x38), ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC, free 0x00BFEA14.
 // Shape: the landed CPlayer::LocateCharacterStartHolySite 0x00488B20 model (owner local before the vector, the inline
@@ -66,11 +68,15 @@ public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -225,7 +231,7 @@ bool CWorld::TeleportHeroToHSP(const CCharString& name)
     CThing** found = std::find_if(sites.begin(), sites.end(), std::bind2nd(std::ptr_fun(&IsThingScriptNamed), name));
     if (found != sites.end()) {
         CGameScriptInterface* gsi = PGameScriptInterface_ptr;
-        CPlayerManager* players = g_pMainGameComponent->PlayerManager;
+        CPlayerManager* players = CMainGameComponent::Get()->PlayerManager;
         gsi->EntityTeleportToThing(players->GetMainPlayer().GetPlayerCharacter()->GetScriptThing(),
                                    (*found)->GetScriptThing(), false);
         return true;

@@ -1,12 +1,14 @@
 // CGameScriptThingManager::CGameScriptThingManager() -- an empty script-thing list and the shared null script thing, whose implementation is a fresh empty CGameScriptThing of the current world
 // Leaf: ??0CGameScriptThingManager
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00704A80, 175 bytes.
 // Callees: malloc @ 0x00BFEA0E (the list's 0x18-byte sentinel), CBaseClass::CBaseClass @ 0x0099A2D0 (NullThing's base),
 //   operator new @ 0x00BFEA1A (the 0x48-byte CGameScriptThing and the 12-byte count block),
 //   CGameScriptThing::CGameScriptThing(CWorld*) @ 0x008CFF60 (landed), the count block's per-type deleter @ 0x007044B0,
 //   CScriptThing's by-value counted-pointer setter @ 0x007046D0 (landed under the propagated label
 //   "SetAnimationMemoryPool"; it assigns +4/+8 from the argument then destroys the argument), operator delete @ 0x00BFE9BC.
-// Globals: g_pMainGameComponent @ 0x013B86A0 (PWorld at +0x24, Ego_r.pdb CMainGameComponent).
+// Globals: CMainGameComponent::Get() @ 0x013B86A0 (PWorld at +0x24, Ego_r.pdb CMainGameComponent).
 // Layout (Ego_r.pdb, 0x18 bytes; retail 0x10): ScriptThings (list<CScriptThingInfo>, the 4-byte retail sentinel) +0x00,
 //   NullThing (CScriptThing: vtable 0x01238C8C, PImp Data +4 / Info +8) +0x04.
 // Shape: one zero register (esi) serves the list head clear, NullThing's PImp and the counted pointer's null Info;
@@ -19,12 +21,16 @@ void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 void __cdecl operator delete(void* block);             // 0x00BFE9BC
 
 class CWorld;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                          // +0x24 scoped_ptr<CWorld>
     CWorld* GetWorld() const { return PWorld; }
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CGameScriptThing { public:
     unsigned char _body[0x48];
@@ -102,6 +108,6 @@ class CGameScriptThingManager { public:
 
 CGameScriptThingManager::CGameScriptThingManager()
 {
-    CCountedPointer imp(new CGameScriptThing(g_pMainGameComponent->GetWorld()));
+    CCountedPointer imp(new CGameScriptThing(CMainGameComponent::Get()->GetWorld()));
     NullThing.SetImp(imp);
 }

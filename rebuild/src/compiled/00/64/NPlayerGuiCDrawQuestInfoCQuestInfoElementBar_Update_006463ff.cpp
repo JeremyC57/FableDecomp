@@ -1,5 +1,7 @@
 // NPlayerGui::CDrawQuestInfo::CQuestInfoElementBar::Update() -- track the bar's thing: refresh value/max and a red-to-green colour from its health, or re-acquire it by UID once its map's region is the current one
 // Leaf: Update
+// Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x006463FF, 360 bytes, size-optimised TU (#pragma optimize("s"): ebp frame, `leave`, unaligned entry).
 // Callees: IS_THING_ALIVE<CIntelligentPointer<CThingPhysical const> > 0x00655D04 (__fastcall), GetPItem 0x00A01B50,
 // the game global 0x013B86A0 (+0x24 world: GetWorldMap slot 13, GetThingManager slot 3), CWorldMap::
@@ -64,8 +66,12 @@ class CWorld { public:
     virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-class CGame { public: unsigned char _pad[0x24]; CWorld* World; };   // +0x24
-extern CGame* g_pGame;                             // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x24]; CWorld* World; };   // +0x24
 class CRGBColour { public: unsigned char B, G, R, A; };
 #pragma pack(push, 1)
 struct CQuestInfoElementBar {
@@ -105,7 +111,7 @@ bool CQuestInfoElementBar::Update()
             Colour.B = 0;
         }
     } else if (ThingValid && ThingUID && ThingMapNumber) {
-        CWorld* world = g_pGame->World;
+        CWorld* world = CMainGameComponent::Get()->World;
         CWorldMap* map = world->GetWorldMap();
         if (map->GetLoadedRegion() == map->GetRegionNumberMapIsIn(ThingMapNumber)) {
             CThing* thing = world->GetThingManager()->GetPThingWithUID(ThingUID);

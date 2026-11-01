@@ -1,13 +1,17 @@
 // CTCFireheartMinigame::Answer(bool) -- answer the pending quit prompt: on yes force-quit the game; either way queue game event 9 with a zero byte, clear the subtitle prompt and drop the pending flag
 // Grade: DIFFER(143v143) -- only the inline AddUBYTE byte's home: retail stores it in the dead bool parameter slot (mov byte [esp+40h],bl ; lea eax,[esp+38h]) under /GS so its frame is 0x2c, ours opens a separate frame byte (sub esp,30h, every offset +4); tried by-value inline, __forceinline, const-reference AddUBYTE (lane gap: /GS one-byte local in a bool parameter slot)
 // Leaf: Answer
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 //
 // Retail 0x007E7C00, 143 bytes (`ret 4`, /GS cookie 0x0139C8A8 / __security_check_cookie @ 0x00BFE9F9).
 // Ego_r.pdb `?Answer@CTCFireheartMinigame@@QAEX_N@Z`. Callees: CTCFireheartMinigame::Quit() @ 0x007E7A40,
 // CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760 (the inlined CGameEvent::AddUBYTE),
-// CMainGameComponent::AddGameEvent(const CGameEvent&) @ 0x0041649C on g_pMainGameComponent @ 0x013B86A0,
-// CSubtitleRenderer::Clear(bool) @ 0x00492BAB on g_pPlayerGui @ 0x013B8790 (+0x18).
+// CMainGameComponent::AddGameEvent(const CGameEvent&) @ 0x0041649C on CMainGameComponent::Get() @ 0x013B86A0,
+// CSubtitleRenderer::Clear(bool) @ 0x00492BAB on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790 (+0x18).
 // Layout = Ego_r.pdb CTCFireheartMinigame: ForceQuit +0x4d, QuitWithDelay +0x88; CGameEvent (40 bytes)
 // is the landed CTCInventoryBase::AddCloseInventoryEvent model (0x005BC527).
 // Shape: one zero register (ebx) for the event's EndPos/Replacement, the AddUBYTE byte, Clear's
@@ -27,19 +31,33 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
 class CSubtitleRenderer { public:
     void Clear(bool immediately);                 // 0x00492BAB
+};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;           // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                  // 0x013B8790
 
 enum { GAME_EVENT_FIREHEART_ANSWERED = 9 };
 
@@ -68,8 +86,8 @@ void CTCFireheartMinigame::Answer(bool yes)
         }
         CGameEvent event(GAME_EVENT_FIREHEART_ANSWERED);
         event.AddUBYTE(0);
-        g_pMainGameComponent->AddGameEvent(event);
-        g_pPlayerGui->SubtitleRenderer.Clear(false);
+        CMainGameComponent::Get()->AddGameEvent(event);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.Clear(false);
         QuitWithDelay = false;
     }
 }

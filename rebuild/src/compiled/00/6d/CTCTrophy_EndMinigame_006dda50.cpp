@@ -1,5 +1,7 @@
 // CTCTrophy::EndMinigame() -- while a trophy minigame is in progress: open the "game aborted" dialog box (text TEXT_GUI_TROPHY_GAME_ABORTED, dialog 0x12a, no button texts) and wait for it to terminate the game
 // Leaf: EndMinigame
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x006DDA50, 144 bytes.
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 (implicit conversion temporary), CDataBank::
 //          GetTextBySymbol(const CCharString&) 0x009C95E0 on the engine globals' text bank (0x013B86A0 +0x14),
@@ -26,11 +28,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                    // +0x14
 };
-extern CEngineGlobals* g_pEngineGlobals;                          // 0x013B86A0
 
 class CTCTrophy { public:
     virtual void v00();
@@ -48,7 +54,7 @@ class CTCTrophy { public:
 void CTCTrophy::EndMinigame()
 {
     if (MinigameInProgress) {
-        CWideString text = g_pEngineGlobals->m_pTextBank->GetTextBySymbol("TEXT_GUI_TROPHY_GAME_ABORTED");
+        CWideString text = CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol("TEXT_GUI_TROPHY_GAME_ABORTED");
         StartDialogBox(text, 0x12a, L"", L"", L"");
         WaitingForTerminate = true;
     }

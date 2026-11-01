@@ -1,12 +1,14 @@
 // CTCObjectAugmentations::GetAugmentationName(long defIndex) -- the display name of an augmentation def (its Name text from the game text bank), or "Missing augmentation name!" when the def has no text
 // Leaf: ?GetAugmentationName@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00765F90, 186 bytes (+int3 pad to 192), plain `ret` (static __fastcall:
 //   the hidden CWideString result in ecx, the def index in edx; eax = result).
 // Identity: Ego_r.pdb ?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z. Callers 0x005C6E55,
 //   0x005C736F, 0x005C939D (inventory UI).
 // Callees: CGameDefinitionManager::Get() @ 0x0044C6B0, CDefinitionManager::GetDef<CThingBaseDef> @ 0x0042AF3C,
 //   CDefClassBase::GetSubDef<CAugmentationDef> @ 0x0042B248, NGameText::CDataBank::GetPGroupEntry(unsigned long, bool)
-//   const @ 0x009C9070 (the bank at g_pMainGameComponent 0x013B86A0 +0x14), the group entry's GetText() @ 0x009C7A40,
+//   const @ 0x009C9070 (the bank at CMainGameComponent::Get() 0x013B86A0 +0x14), the group entry's GetText() @ 0x009C7A40,
 //   CWideString::CWideString(const CWideString&) @ 0x0099B720 on g_CWideString_013bad98 (L"Missing augmentation name!",
 //   dynamic initializer 0x0121EE90 / atexit 0x01229AD0).
 // Shape: the def lookups as GetDamageMultiplierFromAugmentationSet 0x007661C0 (GetDef's arguments pushed before Get(),
@@ -134,11 +136,15 @@ class CDataBank { public:
 };
 }
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* TextBank;              // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent; // 0x013B86A0
 
 class CTCObjectAugmentations {
 public:
@@ -152,7 +158,7 @@ CWideString __fastcall CTCObjectAugmentations::GetAugmentationName(long defIndex
     CDefPointer<const CAugmentationDef> augmentation;
     def->GetSubDef(&augmentation);
     if (augmentation->Name > 0) {
-        NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
+        NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
         return bank->GetPTextEntry(augmentation->Name, true)->GetText();
     }
     return g_CWideString_013bad98;

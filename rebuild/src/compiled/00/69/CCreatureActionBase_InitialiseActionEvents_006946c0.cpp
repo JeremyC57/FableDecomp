@@ -1,8 +1,12 @@
 // CCreatureActionBase::InitialiseActionEvents() -- unless the editor is active, for each embedded event name of the action's animation look up the registered action event by the name's first word, allocate a copy at (anim delay + frames-per-second * event time) for the creature and the current game camera's camera manager, and keep it in ActionEvents when it accepts the full name
 // Leaf: ?InitialiseActionEvents@CCreatureActionBase@@AAEXXZ
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006946C0, 455 bytes (+int3), thiscall, `and esp,-8` frame, plain `ret`. Ego_r.pdb
 //   ?InitialiseActionEvents@CCreatureActionBase@@AAEXXZ (private).
-// Callees: CMainGameComponent::IsEditorActive (vtable slot 9 on g_pMainGameComponent 0x013B86A0, manifest label at the slot
+// Callees: CMainGameComponent::IsEditorActive (vtable slot 9 on CMainGameComponent::Get() 0x013B86A0, manifest label at the slot
 //   target 0x004197B0); CBaseIntelligentPointer::GetPItem 0x00A01B50; CThing::GetWorld 0x004C7AA0 ([g_pThingManager]+0x24);
 //   CWorld::GetGameCamera() (inline, PCurrentGameCamera +0x34) -> GetCameraManager(CGameCameraManager**) (slot 9, Ego_r.pdb
 //   ?GetCameraManager@CGameCameraManager@@UAE_NPAPAV1@@Z); CCreatureActionBase virtual slots 6 (GetAnimDelayTime) / 7
@@ -67,15 +71,23 @@ public:
 };
 CManager& __fastcall GetGameEventManager();                 // 0x006F90B0
 }
-extern long g_FramesPerSecond;                              // 0x01375550 (descriptive)
 class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     virtual void UnprovenSlot00(); virtual void UnprovenSlot01(); virtual void UnprovenSlot02(); virtual void UnprovenSlot03();
     virtual void UnprovenSlot04(); virtual void UnprovenSlot05(); virtual void UnprovenSlot06(); virtual void UnprovenSlot07();
     virtual void UnprovenSlot08();
     virtual bool IsEditorActive() const;                    // slot 9
 };
-extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 class CGameCameraManager;
 class CAIGameCameraBase {
 public:
@@ -171,14 +183,14 @@ private:
 
 void CCreatureActionBase::InitialiseActionEvents()
 {
-    if (g_pMainGameComponent->IsEditorActive())
+    if (CMainGameComponent::Get()->IsEditorActive())
         return;
     CGameCameraManager* camera_manager;
     PCreature->GetWorld().GetGameCamera()->GetCameraManager(&camera_manager);
     long animation = GetAnimationIndex();
     if (animation <= 0)
         return;
-    long frames_per_second = g_FramesPerSecond;
+    long frames_per_second = CMainGameComponent::GetConstantFPS();
     NAnimationEvents::CManager* manager = &NAnimationEvents::GetGameEventManager();
     std::vector<CCharString> names;
     manager->GetEventNames(animation, names);

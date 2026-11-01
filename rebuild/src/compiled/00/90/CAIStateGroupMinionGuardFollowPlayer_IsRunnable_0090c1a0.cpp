@@ -1,4 +1,8 @@
 // CAIStateGroup_MinionGuardFollowPlayer::IsRunnable() -- at most once per second: a village guard follows the hero
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // when the hero is alive, the guard's village has no live guard-follower yet, and this guard is the nearest
 // creature with the guard component (0xB4) to the hero; otherwise re-arm the one-second timer.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090C1A0, length 293 bytes (+ int3 padding).
@@ -159,7 +163,6 @@ class CAIStateGroupBase { public:
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
-extern long g_framesPerSecond;                  // 0x01375550
 class C3DVector { public:
     float x, y, z;
     C3DVector(const C3DVector& v) : x(v.x), y(v.y), z(v.z) { }
@@ -170,11 +173,20 @@ class CPlayer { public:
 struct CWorldP {
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
 };
-struct CGameGlobals {
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorldP* m_pWorld;                          // +0x24
 };
-extern CGameGlobals* g_pMainGameComponent;      // 0x013B86A0
 struct CThingPos : CThing {
 };
 struct CTCVillager;
@@ -244,7 +256,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
 {
     if (NextCheckFrame > (unsigned long)CWorld::GetFrame())
         return false;
-    CThing* hero = g_pMainGameComponent->m_pWorld->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->m_pWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1) && PBrain->PCreature->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second;
         if (((CVillage*)((CTCVillageMember*)villager)->GetPVillage())) {
@@ -260,7 +272,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
             }
         }
     }
-    long oneSecond = g_framesPerSecond;
+    long oneSecond = CMainGameComponent::GetConstantFPS();
     NextCheckFrame = CWorld::GetFrame() + oneSecond;
     return false;
 }

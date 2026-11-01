@@ -1,6 +1,8 @@
 // CGameScriptInterface::SetQuestInfoName(const char* symbol) const -- look the game-text symbol up in the text bank
 // and show its text as the name line of the player GUI's quest-info panel
 // Leaf: ?SetQuestInfoName@CGameScriptInterface
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891940, length 192 bytes, `ret 4`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, the CRC CCRC::Calc @ 0x004014A0 (`__fastcall(seed,
 // data, length)`), NGameText::NGameText::CDataBank::LookupValue @ 0x009CC410 (the bank's CRC -> tag map at +0xD0, 0 when
@@ -71,11 +73,15 @@ public:
     unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;        // +0x14
 };
-extern CEngine* g_pEngine;                          // 0x013B86A0
 
 namespace NPlayerGui {
 class CDrawQuestInfo { public:
@@ -102,7 +108,7 @@ extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 void CGameScriptInterface::SetQuestInfoName(const char* symbol) const
 {
-    NGameText::CDataBank* bank = g_pEngine->PGameTextDataBank;
+    NGameText::CDataBank* bank = CMainGameComponent::Get()->PGameTextDataBank;
     unsigned long tag = bank->LookupValue(CCharString(symbol, -1).GetCRC());
     if (tag > 0) {
         CIVCountedPointer<const NGameText::CTextEntry> entry = bank->GetPTextEntry(tag, true);

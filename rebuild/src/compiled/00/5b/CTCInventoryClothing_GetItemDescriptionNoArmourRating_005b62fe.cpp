@@ -1,8 +1,10 @@
 // CTCInventoryClothing::GetItemDescriptionNoArmourRating(CWideString& out, long defIndex) -- append a clothing item's stat block to `out`: the suit-parts count when the item is part of a suit, then attractiveness, scariness and alignment, each as "<label> [+]<item value> ([+]<change>)" with the change against what the hero wears now, and finally the item's description text
 // Leaf: GetItemDescriptionNoArmourRating@CTCInventoryClothing
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005B62FE, 1129 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: ArgPasser::ArgPasser 0x005B336A, CTCInventoryClothing::CalculateArmorValues(ArgPasser&, long) 0x005B4EBA,
-//   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at g_pMainGameComponent 0x013B86A0 +0x14), GFIntToWideString 0x00405F00,
+//   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at CMainGameComponent::Get() 0x013B86A0 +0x14), GFIntToWideString 0x00405F00,
 //   GetItemDefDescription 0x005D9630 (both `__fastcall`, CWideString by hidden pointer), CWideString(const wchar*) 0x0099B6B0 /
 //   += 0x0099B8D0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70 (the float-to-long casts).
 // Shape: each piece is `out += <temporary>` (the temporary built into the dead `out` / defIndex argument slots, `out`
@@ -32,11 +34,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 struct ArgPasser {                                      // Ego_r.pdb, 0x30 bytes
     bool  is_suit;                                      // +0x00
     long  num_suit_parts;                               // +0x04
@@ -60,7 +66,7 @@ void CTCInventoryClothing::GetItemDescriptionNoArmourRating(CWideString& out, lo
 {
     ArgPasser values;
     CalculateArmorValues(values, defIndex);
-    CDataBank* bank = g_pMainGameComponent->TextBank;
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     if (values.is_suit) {
         out += bank->GetTextBySymbol("TEXT_GUI_MENU_PARTS_ACQUIRED");
         out += GFIntToWideString(values.num_suit_parts);

@@ -1,5 +1,7 @@
 // std::__median(const CIntelligentPointer<CThing>& a, const CIntelligentPointer<CThing>& b, const CIntelligentPointer<CThing>& c, CDoNotUseBinaryPredicate comp) -- SGI median-of-three for the introsort pivot of a thing-pointer array under the coin-flip predicate: each comparison advances the world's random seed and answers "low bit clear", so the pick is random
 // Leaf: __median
+// Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00805FE0, 220 bytes, `ret 8` (__fastcall: a in ecx, b in edx, c and the
 // predicate's slot on the stack -- the SGI/STLport algorithm TUs are /Gr). Callee: GFROR13 @ 0x00497890 (landed,
 // __fastcall). Global: the world @ 0x013B86A0, its random seed at +0x1613C (the landed 0x00807520 model).
@@ -26,12 +28,16 @@ struct CRandomSeed {
     }
 };
 
-class CWorld { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1613c];
     CRandomSeed RandomSeed;                     // +0x1613c
 };
 
-extern CWorld* g_pWorld;                        // 0x013B86A0
 
 struct PointerLink { CBaseObject* item; int refs; };
 class CBaseIntelligentPointer {
@@ -49,7 +55,7 @@ struct CDoNotUseBinaryPredicate {
     char m_tag;
     bool operator()(const ThingPointer&, const ThingPointer&) const
     {
-        if (g_pWorld->RandomSeed.Random() & 1)
+        if (CMainGameComponent::Get()->RandomSeed.Random() & 1)
             return false;
         return true;
     }

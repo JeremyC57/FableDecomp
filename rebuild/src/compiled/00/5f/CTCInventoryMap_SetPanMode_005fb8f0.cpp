@@ -1,5 +1,7 @@
 // CTCInventoryMap::SetPanMode(bool panMode) -- with the map list and the zooming map present: store the pan mode and relabel the list's unselect text (region-list scroll text in pan mode); leaving pan mode also re-centres the map on the selected region's name graphic (centre minus offset times zoom, 0.4 s)
 // Leaf: SetPanMode
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FB8F0, 429 bytes (+int3), `ret 4`, esp frame (speed TU).
 //   Ego_r.pdb: ?SetPanMode@CTCInventoryMap@@QAEX_N@Z.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, the list's FindChild(CCharString) (slot 3),
@@ -30,12 +32,16 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank* GameTextBank;                            // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-inline CDataBank* GetGameTextBank() { return g_pMainGameComponent->GameTextBank; }
+inline CDataBank* GetGameTextBank() { return CMainGameComponent::Get()->GameTextBank; }
 class C2DVector { public:
     float X, Y;
     C2DVector() {}

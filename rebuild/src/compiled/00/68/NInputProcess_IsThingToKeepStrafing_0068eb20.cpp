@@ -1,11 +1,13 @@
 // NInputProcess::IsThingToKeepStrafing(const CThingPlayerCreature& creature) -- the hero keeps strafing while it holds a live projectile weapon outside ranged-weapon mode and is firing, loading, has the strafe action (0xA, held) queued or is busy with an action, or while its weapon is analogue-loading but not yet loaded
 // Leaf: ?IsThingToKeepStrafing@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068EB20, 384 bytes (380 without padding), `__fastcall` (ecx = creature), plain `ret`,
 //   bool in al. Ego_r.pdb `?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (x3: 0x46 CTCCarrying, 0x48 CTCWeapon, 0x81
 //   CTCHeroRangedAttacks), CTCCarrying::GetThingInPrimarySlot 0x006A1440, CTCWeapon::IsProjectileWeapon 0x005DAA40 /
 //   IsAnalogueLoading 0x005DA950 / IsProjectileWeaponLoaded 0x005DA980, CMainGameComponent::GetGamePlayerInterface 0x00416359
-//   (on g_pMainGameComponent 0x013B86A0), CThing::PeekPlayer 0x004C7A10 (twice), CPlayer::GetJoystickDeviceNumber 0x00487510,
+//   (on CMainGameComponent::Get() 0x013B86A0), CThing::PeekPlayer 0x004C7A10 (twice), CPlayer::GetJoystickDeviceNumber 0x00487510,
 //   CGamePlayerInterface::IsGameActionEventInQueue 0x00446B10, CThingCreatureBase::IsPerformingAnyAction 0x006622A0.
 // Layout: retail CThing interface bits +0x20 (0x46 = word +0x28 bit 6, 0x48 = word +0x28 bit 8, 0x81 = word +0x30 bit 1), map
 //   +0x44, dead bit +0x91; CPlayer InRangedWeaponMode +0x218 (descriptive, as the landed 0x0068F9D0); CTCHeroRangedAttacks
@@ -52,11 +54,15 @@ public:
     bool IsGameActionEventInQueue(long action, long buttonEventType, long playerNumber);   // 0x00446B10
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
 };
-extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
-inline CMainGameComponent* GetMainGameComponent() { return g_pMainGameComponent; }
+inline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 
 class CThing {
 public:

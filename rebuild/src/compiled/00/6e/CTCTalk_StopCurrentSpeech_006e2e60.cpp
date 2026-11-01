@@ -2,10 +2,12 @@
 // Grade: RELOCATION_MATCH (109v109) -- retry wave 2 sec2b: the out-parameter `bool GetInterface(T**, long)` (one inline
 //   test + lookup) replaces HasTC + GetTC. Was DIFFER(109v109) -- scheduling: retail `mov edx,[esi+28h] ; mov ecx,[eax+4] ; push edx`, ours `mov ecx,[esi+28h] ; push ecx ; mov ecx,[eax+4]` before StopSample
 // Leaf: ?StopCurrentSpeech@CTCTalk@@QAEXXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E2E60, length 109 bytes (padded row 112).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetTC of interface 0x10 = bit 16 of CThing+0x20),
 // CTCSoundPlayer::StopAttachedSound @ 0x0066ADD0 (manifest label "CGameScriptThing::SetToKillOnLevelUnload" is propagated),
-// CMainGameComponent::GetCurrentServerFrame @ 0x00416225 on g_pMainGameComponent @ 0x013B86A0.
+// CMainGameComponent::GetCurrentServerFrame @ 0x00416225 on CMainGameComponent::Get() @ 0x013B86A0.
 // Layout (Ego_r.pdb CTCTalk = retail, as the landed StopCurrentSpeech(CSpeechEmitter*) 0x006E28D0): SpeechSample +0x0C,
 // SampleStartedFrame +0x10, SampleDurationFrames +0x14, MimeStartTime +0x1C, SampleLoadedTime +0x20, SampleID +0x28, LipSynching +0x35.
 // Shape: this overload is the landed one-argument body inlined after the component lookup (`GetTC(k)` passed straight in, so the emitter
@@ -61,10 +63,14 @@ public:
     void StopAttachedSound(unsigned long sound);   // 0x0066ADD0 Ego_r ?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z (bound)
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     long GetCurrentServerFrame() const;          // 0x00416225 `mov eax,[ecx+48h]` = Ego_r CurrentServerFrame +0x48 (bound ?GetCurrentServerFrame@CMainGameComponent@@QBEJXZ)
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CTCTalk {
 public:
@@ -88,7 +94,7 @@ private:
     void StopCurrentSpeech(CTCSoundPlayer* emitter)   // out of line at 0x006E28D0 (Ego_r ?StopCurrentSpeech@CTCTalk@@AAEXPAVCTCSoundPlayer@@@Z)
     {
         emitter->StopAttachedSound(SampleID);
-        SampleDurationFrames = g_pMainGameComponent->GetCurrentServerFrame() - SampleStartedFrame - 1;
+        SampleDurationFrames = CMainGameComponent::Get()->GetCurrentServerFrame() - SampleStartedFrame - 1;
         LipSynching = false;
         SpeechSample = 0;
         MimeStartTime = 0.0f;

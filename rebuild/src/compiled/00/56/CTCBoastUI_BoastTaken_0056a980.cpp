@@ -1,5 +1,9 @@
 // CTCBoastUI::BoastTaken(const CQuestManager::CBoast*) -- a boast the hero has taken leaves the boast-group map, every group menu sharing its group bits re-selects its first type-8 child, a boasting crowd hears of it, and with no boast left the UI closes before the hero plays "ST_BOAST"
 // Leaf: BoastTaken
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0056A980, 656 bytes, `ret 4`. Callees: _Rb_tree_rebalance_for_erase 0x0042A34E (cdecl), ~CWideString
 // 0x0099B510, ~CCharString 0x0099EAE0, free 0x00BFEA14, CTCBoastingCrowdControl::OnHeroBoast 0x00783C50 and
 // DetachAll 0x00783680, SetAutomaticCameraControl 0x00699090, CPlayerGui::Open 0x004374B0, CCharString 0x0099EBF0,
@@ -309,11 +313,15 @@ struct CGameWorldCalls {
     unsigned char       _pad00[0x34];
     CGameCameraManager* m_pCameraManager;               // +0x34
 };
-struct CEngineCalls {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char    _pad00[0x24];
     CGameWorldCalls* m_pWorld;                          // +0x24
 };
-extern CEngineCalls* g_pEngine;                         // 0x013B86A0
 class CPlayerGui { public:
     void Open();                                        // 0x004374B0 (Ego_r.pdb CPlayerGui::Open)
 };
@@ -324,11 +332,21 @@ struct CBoastList {
     SListNode* _M_node;
     bool empty() const { return _M_node->_M_next == _M_node; }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     unsigned char _pad00[0x68];
     CBoastList    Boasts;                               // +0x68
 };
-extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 
 class CTCBoastUI { public:
     void*         __vftable;                            // +0x00
@@ -345,7 +363,7 @@ class CTCBoastUI { public:
     {
         if (ActivationRequested) {
             if (Active) {
-                g_pEngine->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
+                CMainGameComponent::Get()->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
                 Quitting = true;
                 g_pPlayerGui->Open();
             } else {
@@ -380,7 +398,7 @@ void CTCBoastUI::BoastTaken(const CBoast* boast)
         crowd = (CTCBoastingCrowdControl*)ParentThing->GetTC(0x73);
         crowd->OnHeroBoast(boast);
     }
-    if (g_pQuestManager->Boasts.empty()) {
+    if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().Boasts.empty()) {
         if (crowd)
             crowd->DetachAll();
         Deactivate();

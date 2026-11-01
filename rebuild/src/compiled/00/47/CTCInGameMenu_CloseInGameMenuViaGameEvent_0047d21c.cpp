@@ -1,5 +1,7 @@
 // CTCInGameMenu::CloseInGameMenuViaGameEvent() -- queues a "close in-game menu" game event (type 0x1C) for the main player's hero while it is alive
 // Leaf: CloseInGameMenuViaGameEvent
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retry 10b (B-12 sweep): the hero is a const REFERENCE to the call result (`CThingCreatureBase* const& hero = ...->GetPControlledCreature();`): retail's dead `Player = -1` byte store survives before the player-number store (a value local lets VC7.1 drop it).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047D21C, 109 bytes; frame-pointer size TU
@@ -28,10 +30,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);      // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
 class CThing { public:
 };
@@ -77,6 +83,6 @@ void CTCInGameMenu::CloseInGameMenuViaGameEvent()
     if (IS_THING_ALIVE(hero)) {
         CGameEvent event(GAME_EVENT_CLOSE_IN_GAME_MENU);
         event.Player = hero->PlayerNumber;
-        g_pMainGameComponent->AddGameEvent(event);
+        CMainGameComponent::Get()->AddGameEvent(event);
     }
 }

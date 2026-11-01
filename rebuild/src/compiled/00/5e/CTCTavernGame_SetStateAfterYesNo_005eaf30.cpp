@@ -1,5 +1,7 @@
 // CTCTavernGame::SetStateAfterYesNo(CWideString title, CWideString text, ETavernGameStates yesState, CWideString altText, ETavernGameStates noState) -- show a yes/no prompt and remember the follow-up states
 // Leaf: ?SetStateAfterYesNo@CTCTavernGame@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe @ 0x005EAF30, 326 bytes, `ret 14h`, /GS (cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 // Catalog row: only the first 22 bytes (it stops at `cmp al,bl`), so no compiled body can equal the catalog oracle.
@@ -43,13 +45,17 @@ class CGameEvent { public:
     CGameEvent(long type) : Type(type), Flag(0xff), B25(0), B26(1), B27(0) { }
     template <class T> void SetData(T value) { ((CGameEventData*)this)->Copy(sizeof(T), &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1614c];
     CFontBank*    PFont;                                       // +0x1614c
     void AddGameEvent(CGameEvent* event);                      // 0x0041649C
 };
 struct CSubtitleOwner { unsigned char _pad[0x18]; CSubtitleRenderer Renderer; };
-extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 extern CSubtitleOwner* g_pSubtitleOwner;                       // 0x013B8790
 extern bool g_bTavernSkipYesNo;                                // 0x013BAE1C
 enum ETavernGameStates { TAVERN_STATE_YES_NO = 0x2d };
@@ -80,10 +86,10 @@ void CTCTavernGame::SetStateAfterYesNo(CWideString title, CWideString text, ETav
         OnYesNoSkipped();
     } else {
         PlaySound("TAVERN_GAME_OBJECT_SELECTION_CHANGE");
-        g_pSubtitleOwner->Renderer.SetText(g_pMainGameComponent->PFont, title, L"", text, altText, 0x84, 0.0f, false, true);
+        g_pSubtitleOwner->Renderer.SetText(CMainGameComponent::Get()->PFont, title, L"", text, altText, 0x84, 0.0f, false, true);
         CGameEvent event(9);
         event.SetData(false);
-        g_pMainGameComponent->AddGameEvent(&event);
+        CMainGameComponent::Get()->AddGameEvent(&event);
         YesState = yesState;
         NoState = noState;
         AltState = (ETavernGameStates)0;

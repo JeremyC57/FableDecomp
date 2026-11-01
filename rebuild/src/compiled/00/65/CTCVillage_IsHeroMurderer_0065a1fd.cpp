@@ -1,8 +1,11 @@
 #pragma optimize("s", on)
 // CTCVillage::IsHeroMurderer() -- true when the hero's deed log holds, for any of the village's recorded crime handles, a murder deed (type 9) with its flag at +0x23 set
 // Leaf: IsHeroMurderer
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0065A1FD, 146 bytes; size TU (unaligned entry, `push 51h ; pop edi`): `optimize("s",on)`.
-// Callees: CWorld::PeekMyPlayer() 0x0049D9D0 (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
+// Callees: CWorld::PeekMyPlayer() 0x0049D9D0 (on CMainGameComponent::Get() 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
 //          0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 81); CVectorMap<ETCInterfaceType,CTCBase*>::
 //          LowerBound 0x0040F020 (inlined GetTC); CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0; STLport
 //          _Rb_global<bool>::_M_increment 0x004292C0 (__cdecl, manifest "CMemoryAllocatorVariableSize::GetNoAllocatedAreas"
@@ -15,9 +18,12 @@
 class CTCBase;
 class CThing;
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -34,7 +40,7 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
@@ -54,11 +60,15 @@ public:
     CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
 private:           // 0x0049D9D0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class COpinionDeed { public:
     long          Type;                         // +0x00 (9 = murder)
@@ -87,7 +97,7 @@ class CTCVillage { public:
 
 bool CTCVillage::IsHeroMurderer()
 {
-    CThing* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)((CWorld*)(CMainGameComponent::Get()->World))->PeekMyPlayer())->GetPControlledCreature();
     if (hero && hero->HasTC(81)) {
         CTCHeroOpinionDeedLog* log = (CTCHeroOpinionDeedLog*)hero->GetTC(81);
         SRbNode* end = PlayersCrimes;

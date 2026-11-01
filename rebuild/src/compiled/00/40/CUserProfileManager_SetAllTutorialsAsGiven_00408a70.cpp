@@ -1,6 +1,8 @@
 // CUserProfileManager::SetAllTutorialsAsGiven() -- add every tutorial (1..94) with a text to the hero's log book under its _TITLE key (a "_PC" text key loses the suffix first) and mark each category as given
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00408A70, length 538 bytes, plain `ret`.
-// Callees: PeekGuiDef 0x00438570 (__fastcall, CPlayerGuiDef*), GetMainPlayer 0x00449970 (on g_pMainGameComponent 0x013B86A0
+// Callees: PeekGuiDef 0x00438570 (__fastcall, CPlayerGuiDef*), GetMainPlayer 0x00449970 (on CMainGameComponent::Get() 0x013B86A0
 //   +0x1c), CCharString(const char*, long) 0x0099EBF0 / CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0
 //   / operator!=(const char*) 0x0099E960 / GetSubString 0x0099EC70 / operator= 0x0099EFB0 / operator+=(const char*)
 //   0x0099F100 / ToWideString 0x0099E480, operator+(const CCharString&, const char*) 0x0099F600 (__fastcall, hidden
@@ -62,11 +64,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 enum ETutorialCategory { TUTORIAL_CATEGORY_NONE };
 struct __true_type { };
 struct CTutorialCategoryVector {                            // STLport vector<ETutorialCategory>
@@ -95,7 +101,7 @@ class CUserProfileManager { public:
 void CUserProfileManager::SetAllTutorialsAsGiven()
 {
     const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
-    CHeroLogBook* logBook = g_pMainGameComponent->PlayerManager->GetMainPlayer().PHeroLogBook;
+    CHeroLogBook* logBook = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().PHeroLogBook;
     for (long i = 0; i < 95; ++i) {
         if (i > 0) {
             CCharString text = def->TutorialText[i];

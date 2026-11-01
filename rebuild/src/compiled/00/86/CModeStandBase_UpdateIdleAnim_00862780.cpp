@@ -6,6 +6,8 @@
 //   special idle (type 0x19) over a subtle pose when it is not already looping, else (re)start the pose idle (type 6) when
 //   it changed or nothing loops; remember the pose idle name
 // Leaf: ?UpdateIdleAnim@CModeStandBase
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00862780, 798 bytes (`ret 4`). Ego_r.pdb: `?UpdateIdleAnim@CModeStandBase@@AAEXAAVCAnimateThing@@@Z`.
 // Callees: CAnimateThing::ResetTransistionAnimationModes 0x0070C0A0 / SetMainAnim 0x0070D580; CCharString() 0x0099E4B0,
 //   (const char*, long) 0x0099EBF0, ~ 0x0099EAE0, operator=(const char*) 0x0099EFE0, operator=(const CCharString&) 0x0099EFB0,
@@ -14,7 +16,7 @@
 //   LowerBound 0x004365B0 (TC 0x30), CTCCombat::IsUsingUnarmedCombatIdle 0x00733100, CThingAICreature +0x1c8 getters 0x008300D0
 //   (has information) / 0x008300F0 (wave with information), CModeBase::GetNoFramesBeforePlayingWaveAnims 0x0073A7D0 /
 //   GetNoFramesBeforePlayingIdleAnims 0x0073A760 (manifest: both "GetNoFramesBeforePlayingCombinationIdleAnims", propagated from
-//   0x0073A6F0), CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), GetPItem 0x00A01B50,
+//   0x0073A6F0), CPlayerManager::GetMainPlayer 0x00449970 (CMainGameComponent::Get() 0x013B86A0 +0x1c), GetPItem 0x00A01B50,
 //   CThing::GetPos 0x004C73D0 (both hero and creature, so the creature model declares no GetPos of its own),
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0 / GetRandomLoadedAnimFromName 0x00662FA0, CAnimationEntry
 //   GetAnimationTransitionInTime 0x005DC1F0 / GetTimeToBlendIn 0x005DC230 / GetAnimateThingFlags 0x005DC390, the out-of-line
@@ -155,11 +157,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 struct CBlendPair {                                     // the two floats at CAnimInit +0x18
     float m_first;
@@ -234,7 +240,7 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
     bool resetIdleCounter = false;
     if ((creature->Flags6c & 0x10) && creature->GetHasInformation() && creature->GetWaveWithInformation()
         && IdleCounter > GetNoFramesBeforePlayingWaveAnims(GetModeType())) {
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPCharacterThing();
+        CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPCharacterThing();
         if (hero && !(hero->Flags91 & 1)) {
             const C3DVector& heroPos = hero->GetPos();
             const C3DVector& pos = creature->GetPos();

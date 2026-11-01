@@ -1,12 +1,14 @@
 // CGameScriptInterface::IsPlayerHoldingUnsheatheRangedWeaponButton() const -- is a game-action 0xE event (button state 2) for the main player's joystick queued in the player's input interface
 // Leaf: ?IsPlayerHoldingUnsheatheRangedWeaponButton@CGameScriptInterface@@UBE_NXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008905b0, 38 bytes, thiscall, `ret`.
 // Identity (proven): vtable 0x01260F0C (RTTI .?AVCGameScriptInterface@@) slot 65; ghidra_out/cgsi_slots_aligned.tsv (Ego_r.pdb vtable order, neighbours 64 PostAddScriptedEntities 0x006E7460 and 69 IsHeroInProjectileWeaponMode 0x00890670 landed) names the slot ?IsPlayerHoldingUnsheatheRangedWeaponButton@CGameScriptInterface@@UBE_NXZ; the game action it queries is 0xE.
 // Callees: CPlayerManager::GetMainPlayer() const 0x00449960 (Ego_r.pdb QBE, const CPlayer&: it calls the const GetPlayer
 //   0x00449910; the non-const pair is 0x00449970 / 0x004498C0, same order as the Ego_r.pdb donors), CPlayer::GetJoystickDeviceNumber() const 0x00487510,
 //   CGamePlayerInterface::IsGameActionEventInQueue(EGameAction, EInputButtonEventType, long) const 0x00446B10.
 // Globals: the main game component 0x013B86A0 (its PPlayerManager scoped_ptr at +0x1C, Ego_r.pdb CMainGameComponent; the
-//   global's spelling g_pMainGameComponent is descriptive -- no PDB symbol names it).
+//   global's spelling CMainGameComponent::Get() is descriptive -- no PDB symbol names it).
 // Body: CMainGameComponent::GetPlayerManager() and the scoped_ptr dereference inline (`mov ecx,[eax+1Ch]`); the player's
 //   PlayerInterface (+0xC) is read before the device-number call.
 enum EGameAction { EGameAction_FIRST };
@@ -31,19 +33,23 @@ public:
     T& operator*() const { return *ptr; }
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char              _pad00[0x1C];
     scoped_ptr<CPlayerManager> PPlayerManager;             // +0x1C
     const CPlayerManager& GetPlayerManager() const { return *PPlayerManager; }   // inline (spelling unproven, no symbol)
 };
-extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 bool CGameScriptInterface::IsPlayerHoldingUnsheatheRangedWeaponButton() const
 {
-    const CPlayer& player = g_pMainGameComponent->GetPlayerManager().GetMainPlayer();
+    const CPlayer& player = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer();
     CGamePlayerInterface* playerInterface = player.PlayerInterface;
     return playerInterface->IsGameActionEventInQueue((EGameAction)0xE, (EInputButtonEventType)2, player.GetJoystickDeviceNumber());
 }

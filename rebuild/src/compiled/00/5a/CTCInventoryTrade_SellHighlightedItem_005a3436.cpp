@@ -1,5 +1,8 @@
 // CTCInventoryTrade::SellHighlightedItem() -- in the selected category's highlighted slot, sell the item (positive def index) to the owner's shop: take the shop's buy price for one, let the shop record the sale, pay the hero and remove one from the trade list; then rebuild the buyable and sellable lists and refresh the animation and owned count for the highlighted item
 // Leaf: SellHighlightedItem
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005A3436, 331 bytes, plain `ret`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 53h ; pop edi`).
 // Callees: NInventory::CTCInventoryBase::GetSelectedCategory @ 0x005BCACE, CCategory::GetItemInSlotWithIndex
@@ -21,7 +24,12 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind) const; };      // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -36,7 +44,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20
+    std::bitset<274> present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) const { return present.test(type); }
@@ -55,11 +63,15 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                      // 0x00487DC0
 class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };          // 0x00449960
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1C
 };
-extern CEngine* g_pEngine;                                  // 0x013B86A0
 
 namespace NInventory {
 class CItem { public:
@@ -134,7 +146,7 @@ void CTCInventoryTrade::SellHighlightedItem()
             GetOwner()->GetInterface(&shop, 0x53);
             long price = shop->GetCurrentBuyPrice(item, 1);
             shop->SellHighlightedItem(item);
-            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer().GetPControlledCreature();
+            CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
             CTCHeroStats* stats = 0;
             hero->GetInterface(&stats, 4);
             stats->AddMoney(price, true);

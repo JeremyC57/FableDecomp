@@ -1,5 +1,7 @@
 // CQuestManager::AddNewObjective(const CCharString& textTag, unsigned long id) -- append an objective whose text is the tag's game text (the tag itself, widened, when the bank has no text for it)
 // Leaf: AddNewObjective
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x004B1BA0, 387 bytes, `ret 8`. Callees: CCharString::ToWideString 0x0099E480, the CRC CCRC::Calc 0x004014A0
 // (`__fastcall`), NGameText::CDataBank GetTagFromCRC 0x009CC410 / GetTextInfo 0x009C7D00 / GetPGroupEntry 0x009C9070,
 // CGroupEntry::GetText 0x009C7A40, CWideString copy 0x0099B720 / operator= 0x0099B7D0 / dtor 0x0099B510, malloc 0x00BFEA0E.
@@ -7,7 +9,7 @@
 // Layout: engine/CQuestManager.h is the PDB layout (Objectives +0xC8); retail sits 0x54 lower here (Objectives, the
 // STLport list header pointer, at +0x74; see the landed UninitializeDaySection 0x004B3260), hence a local model.
 // Shape: the bank comes from an inline getter (a function call, so the bank load lands between the CRC's arguments and
-// the Calc call; the plain `g_pEngine->PGameTextDataBank->` member expression loads it after Calc); the `GetTextInfo &&
+// the Calc call; the plain `CMainGameComponent::Get()->PGameTextDataBank->` member expression loads it after Calc); the `GetTextInfo &&
 // GetPGroupEntry(...).Data` test keeps its conditional counted-pointer temporary (the `test bl,1` destroy flag);
 // list push_back is STLport insert(end()) with the `prev` local (one load of header->prev).
 #include <new>
@@ -67,12 +69,16 @@ public:
     unsigned long LookupValue(unsigned long) const;   // 0x009CC410
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
 };
-extern CEngine* g_pEngine;                              // 0x013B86A0
-inline NGameText::CDataBank* GetGameTextBank() { return g_pEngine->PGameTextDataBank; }
+inline NGameText::CDataBank* GetGameTextBank() { return CMainGameComponent::Get()->PGameTextDataBank; }
 
 class CQuestManager { public:
     class CObjective { public:                                 // 0x0c bytes

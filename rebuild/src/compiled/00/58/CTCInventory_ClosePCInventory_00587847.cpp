@@ -1,4 +1,7 @@
 // CTCInventory::ClosePCInventory(bool closeInGameMenu) -- leave the PC inventory screens: cancel the pending UI action,
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // close the edit boxes and the menu, close the in-game menu, stop the inventory effect, destroy the PC screens, reset the
 // state, release the UI manager's modal state, restore the three audio group volumes from the user profile, clear the
 // quest-persistent flags and restart game rendering
@@ -9,7 +12,12 @@
 #pragma optimize("s", on)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };             // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -38,7 +46,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     __forceinline bool HasTC(long type) { return present.test(type); }
@@ -134,11 +142,15 @@ class CDisplayEngine { public:
     unsigned char _pad00[0x2C];
     CRenderer*    PRenderer;                                // +0x2C
 };
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                         // +0x28
 };
-extern CEngine* g_pEngine;                                  // 0x013B86A0
 struct CInventoryCamera {
     void Reset();                                           // 0x004855A3
 };
@@ -205,5 +217,5 @@ void CTCInventory::ClosePCInventory(bool closeInGameMenu)
     }
     ClearQuestPersistentFlags();
     StartGameRendering();
-    g_pEngine->PDisplayEngine->PRenderer->SetPaused_slot56(false, false);
+    CMainGameComponent::Get()->PDisplayEngine->PRenderer->SetPaused_slot56(false, false);
 }

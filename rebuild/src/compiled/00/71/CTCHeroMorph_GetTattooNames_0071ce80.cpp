@@ -1,12 +1,14 @@
 // CTCHeroMorph::GetTattooNames(std::vector<CWideString>&) const -- appends the display name (inventory-item description text) of every tattoo the hero wears
 // Leaf: GetTattooNames
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071CE80, 238 bytes (+ int3 padding), `ret 4`.
 // Callees: CDefClassBase::GetSubDef<CInventoryItemDef>(CDefPointer<const CInventoryItemDef>&) @ 0x005BADE1 (the
 //          template is instantiated in this TU: see the stand-in below), NGameText::CDataBank::GetPGroupEntry(ulong,
 //          bool) const @ 0x009C9070 (on the main game component's text bank, +0x14), NGameText::CGroupEntry::GetText()
 //          const @ 0x009C7A40, CWideString::CWideString(const CWideString&) @ 0x0099B720 (push_back's placement copy),
 //          vector<CWideString>::_M_insert_overflow(pos, x, __false_type, n, atEnd) @ 0x00412330, ~CWideString
-//          @ 0x0099B510; the defs' / entries' slot 1 on release. Global g_pMainGameComponent @ 0x013B86A0.
+//          @ 0x0099B510; the defs' / entries' slot 1 on release. Global CMainGameComponent::Get() @ 0x013B86A0.
 // Shape: per tattoo the item def is read once from the zeroed out slot into ebx (kept: the GetSubDef body is known),
 // the group entry is a counted temporary in the frame (null-tested, released through the ref-count base's inline
 // accessors and nulled), the text a CWideString in the dead `names` slot pushed with the STLport inline push_back
@@ -145,11 +147,15 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool load) const;   // 0x009C9070
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;         // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
 struct CThingBaseDefPointer {                        // CDefPointer<const CThingBaseDef>
     CDefClassBase* Object;
@@ -177,7 +183,7 @@ void CTCHeroMorph::GetTattooNames(CWideStringVector& names) const
         Tattoos[i]->GetSubDef(item);
         CInventoryItemDef* itemDef = item.m_p;
         CIVCountedPointer<const NGameText::CTextEntry> entry =
-            g_pMainGameComponent->PGameTextDataBank->GetPTextEntry(itemDef->ItemDescription, true);
+            CMainGameComponent::Get()->PGameTextDataBank->GetPTextEntry(itemDef->ItemDescription, true);
         if (entry.Data) {
             CWideString text = entry->GetText();
             names.push_back(text);

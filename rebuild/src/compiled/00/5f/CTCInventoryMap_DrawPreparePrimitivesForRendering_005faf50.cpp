@@ -1,5 +1,9 @@
 // CTCInventoryMap::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- with a quest waiting to be dropped, leave the player's current mode, close the hero-information screens and queue game event 9 (one zero byte); otherwise, while the inventory is open and the information screen is not active, advance and draw every UI component, accumulate the fade time and draw the backdrop at the fade fraction (clamped to 1)
 // Leaf: DrawPreparePrimitivesForRendering
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FAF50, 439 bytes, `ret 4`, esp frame (speed TU) with the /GS cookie
 //   (0x0139C8A8, checked by 0x00BFE9F9 on both exits) guarding the game event's 32-byte data array. Vtable ref 0x01257AC8.
@@ -105,10 +109,20 @@ class CManager { public:
     void Close();                                              // 0x0066E73D (name unconfirmed)
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                               // 0x013B8790
 
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);         // 0x009F1760
@@ -131,12 +145,16 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                             // +0x1C
     void AddGameEvent(const CGameEvent& event);                // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 
 class CTCInventoryMap : public CTCInventoryBase, public NHeroInformationScreens::CBase { public:
     unsigned char    _pad134[0x140 - 0x134];                   // VisitedRegions (12-byte STLport vector)
@@ -149,12 +167,12 @@ class CTCInventoryMap : public CTCInventoryBase, public NHeroInformationScreens:
 void CTCInventoryMap::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
 {
     if (QuestToBeDropped > 0) {
-        CPlayer* player = &g_pMainGameComponent->PlayerManager->GetPlayer(0);
+        CPlayer* player = &CMainGameComponent::Get()->PlayerManager->GetPlayer(0);
         player->RemoveMode(player->GetCurrentMode());
-        g_pPlayerGui->GetPHeroInfoScreensManager()->Close();
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->Close();
         CGameEvent event(9);
         event.AddUBYTE(0);
-        g_pMainGameComponent->AddGameEvent(event);
+        CMainGameComponent::Get()->AddGameEvent(event);
     } else if (InventoryOpen && !IsActive()) {
         float deltaTime = (float)(GFGetTime() - LastRenderTime);
         LastRenderTime = GFGetTime();

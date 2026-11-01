@@ -1,4 +1,8 @@
 // Shared donor layouts remain visible alongside the retail call views below.
+// Naming wave 18: the global stand-in g_PlayerGui_013b8790 (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_MainGameComponent_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 #define CWorld CWorldPdb
 #define CRenderManagerCore CRenderManagerCorePdb
 #define CTCInGameMenu CTCInGameMenuPdb
@@ -113,7 +117,12 @@ class CThingPlayerCreature { public:
 // belong to the external getters. These method-only views do not flatten or read them.
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; const CThingPlayerCreature* PeekPControlledCreature() const; };
 class CPlayerManager { public: CPlayer& GetMainPlayer(); const CPlayer& GetMainPlayer() const; };
-class CMainGameComponent { public: unsigned char _pad00[0x1c]; CPlayerManager* PPlayerManager; unsigned char _pad20[4]; CWorld* PWorld; CDisplayEngine* PDisplayEngine; };
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad00[0x1c]; CPlayerManager* PPlayerManager; unsigned char _pad20[4]; CWorld* PWorld; CDisplayEngine* PDisplayEngine; };
 
 // Layout: CTCTavernGame.h donor size0x108. This view exposes the primary virtual
 // slot11 and IsBetting call only; none of its donor data is accessed.
@@ -130,6 +139,17 @@ class CSubtitleRenderer { public: unsigned char SubtitleState[0x120]; void DrawP
 // the Ego_r layout had +0x2cd.
 // The unnamed interval is deliberately opaque: debug STL sizes cannot identify
 // its retail subfields. Both accessed regions are separately offset-checked below.
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0x18]; CSubtitleRenderer SubtitleRenderer; unsigned char BeforeForceSubtitle[0x2bd-0x138]; bool ForceAllowSubtitleToRender;
     bool IsOpen() const; void SetVWindowForDeprecatedDrawInterface(const C2DBoxF&);
@@ -157,14 +177,12 @@ struct CView3DThirdPerson : CView3DBase { CCamera GetCamera(const CInterpolation
 extern unsigned char g_RenderThrottleEnabled_013b860c;
 extern unsigned char g_RenderThrottlePaused_013b8629;
 extern unsigned long g_RenderFrame_013b7d70;
-extern CMainGameComponent* g_MainGameComponent_013b86a0;
 // Original CInputManager.Loading is debug+44, retail+38: three preceding
 // vector headers each lose4 bytes in the retail STLport layout. The global
 // input-manager role is independently established by native input consumers.
 class CInputManager { public: unsigned char StateBeforeLoading[0x38]; bool Loading; };
 extern CInputManager* PInputManager;
 extern CRenderManagerCore* g_RenderManagerCore_013b8384;
-extern CPlayerGui* g_PlayerGui_013b8790;
 extern double g_DeprecatedScreenWidth_013961e8;
 extern double g_DeprecatedScreenHeight_013961f0;
 extern unsigned char g_BettingHudEnabled_013bae1d;
@@ -195,42 +213,42 @@ void NDisplayView::CView3DBase::Render(const CInterpolationInfo& interpolation,b
     }
 
     CEnginePrimitivePrepareInfo guiPrepare(interpolation,PEngine,false,camera);
-    if(g_PlayerGui_013b8790->IsOpen()) {
+    if(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen()) {
         C2DBoxF fullWindow;
         fullWindow.Left=0.0f;fullWindow.Top=0.0f;
         fullWindow.Right=(float)g_DeprecatedScreenWidth_013961e8;
         fullWindow.Bottom=(float)g_DeprecatedScreenHeight_013961f0;
-        g_PlayerGui_013b8790->SetVWindowForDeprecatedDrawInterface(fullWindow);
-        g_PlayerGui_013b8790->DrawPreparePrimitivesForEngine(guiPrepare);
-        CPlayer& player=g_MainGameComponent_013b86a0->PPlayerManager->GetMainPlayer();
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetVWindowForDeprecatedDrawInterface(fullWindow);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawPreparePrimitivesForEngine(guiPrepare);
+        CPlayer& player=CMainGameComponent::Get()->PPlayerManager->GetMainPlayer();
         CThingPlayerCreature* creature=player.GetPControlledCreature();
         if(creature && !creature->Killed && creature->HasTC(0x102)) {
             CTCInGameMenu* menu=creature->Interfaces.Get<CTCInGameMenu>(0x102);
             menu->DrawPreparePrimitivesForRendering(guiPrepare);
-            if(g_BettingHudEnabled_013bae1d) g_PlayerGui_013b8790->DrawBettingHUD(guiPrepare);
+            if(g_BettingHudEnabled_013bae1d) CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawBettingHUD(guiPrepare);
         }
     } else {
-        g_PlayerGui_013b8790->ClearGui();
-        g_PlayerGui_013b8790->DrawReceivedItems(guiPrepare);
-        g_PlayerGui_013b8790->DrawInventory(guiPrepare);
-        g_PlayerGui_013b8790->DrawSaveScreen(guiPrepare);
-        g_PlayerGui_013b8790->DrawScreenFade(guiPrepare);
-        if(g_PlayerGui_013b8790->ForceAllowSubtitleToRender) {
-            g_PlayerGui_013b8790->SubtitleRenderer.DrawPreparePrimitivesForEngine(guiPrepare);
-            const CPlayer& player=((const CPlayerManager*)g_MainGameComponent_013b86a0->PPlayerManager)->GetMainPlayer();
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ClearGui();
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawReceivedItems(guiPrepare);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawInventory(guiPrepare);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawSaveScreen(guiPrepare);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawScreenFade(guiPrepare);
+        if(CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ForceAllowSubtitleToRender) {
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.DrawPreparePrimitivesForEngine(guiPrepare);
+            const CPlayer& player=((const CPlayerManager*)CMainGameComponent::Get()->PPlayerManager)->GetMainPlayer();
             const CThingPlayerCreature* creature=player.PeekPControlledCreature();
             if(creature && !creature->Killed && creature->HasTC(0xd0)) {
                 const CTCGamePlayer* gamePlayer=creature->Interfaces.Get<CTCGamePlayer>(0xd0);
                 CTCTavernGame* game=gamePlayer->GetGame();
                 if(game) {
-                    if(game->IsBetting()) g_PlayerGui_013b8790->DrawBettingHUD(guiPrepare);
+                    if(game->IsBetting()) CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawBettingHUD(guiPrepare);
                     game->DrawPreparePrimitivesForRendering(guiPrepare);
                 }
             }
         }
-        g_PlayerGui_013b8790->Draw2DText(guiPrepare);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Draw2DText(guiPrepare);
     }
-    g_PlayerGui_013b8790->DrawDebugSafeAreas(guiPrepare);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DrawDebugSafeAreas(guiPrepare);
     {
     CEngineInterpolationInfo engineInterpolation(interpolation);
     PEngine->Render(engineInterpolation,finalPass?1UL:0UL);

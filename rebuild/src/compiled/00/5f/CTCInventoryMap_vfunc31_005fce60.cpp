@@ -1,4 +1,8 @@
 // CTCInventoryMap::vfunc_31() -- closes the PC map screen: clears the hover/selection state; unless the hero-information screen is still active, restores the sound categories, resets the player's GUI state, re-enables the HUD, stamps the world's close frame, returns the hero-info manager to the previous screen, closes the base view, deletes every UI component, notifies the front end, clears the front-end node list and closes the menus; then marks the map dirty, clears its region lists and drops the two pending flags
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FCE60, 584 bytes, plain `ret`. Speed TU (no pragmas, no frame pointer).
 // Callees: as CTCInventoryQuests::CloseInventoryPC (0x00621720) plus CTCInventoryMap's list clear 0x005FC510.
 // Layout: local view -- Components +0x0C, hero-info CBase +0x130, +0x188 / +0x214 cleared longs, +0x240 / +0x248 flags,
@@ -98,11 +102,15 @@ struct CWorldPart {
     unsigned char _pad_0x00[0x2c];
     CHudOwner* Hud;                                  // +0x2c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x28];
     CWorldPart* World;                               // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -146,10 +154,20 @@ class CBase { public:
     virtual bool IsActive();                         // slot 3 (+0x0C)
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 class CTCBase
 {
 protected:
@@ -197,10 +215,10 @@ void CTCInventoryMap::vfunc_31()
         CFrontEndManager* a = CFrontEndManager::GetInstance();
         CFrontEndManager* b = CFrontEndManager::GetInstance();
         b->Slot40(&a->Slot42().Data->SomeState, true);
-        g_pMainGameComponent->World->Hud->SetEnabled(true);
+        CMainGameComponent::Get()->World->Hud->SetEnabled(true);
         CWorld* world = (&GetWorld());
         world->InventoryClosedFrame = CWorld::GetFrame();
-        g_pPlayerGui->GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
         BaseCloseInventory();
         for (unsigned long i = 0; i < Components.size(); ++i)
             delete Components[i];
@@ -209,7 +227,7 @@ void CTCInventoryMap::vfunc_31()
         CFrontEndManager::GetInstance()->Slot29();
         g_frontEndNodeList.clear();
         CFrontEndManager::GetInstance()->Slot37();
-        g_pMainGameComponent->World->Hud->Slot56(0, 0);
+        CMainGameComponent::Get()->World->Hud->Slot56(0, 0);
         CloseMenus();
     }
     Dirty = true;

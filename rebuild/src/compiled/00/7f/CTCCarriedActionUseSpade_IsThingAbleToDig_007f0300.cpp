@@ -1,5 +1,7 @@
 // CTCCarriedActionUseSpade::IsThingAbleToDig(const CThingCreatureBase& creature) -- a creature can dig only on bare ground: not standing on a thing, and the strongest engine theme under it has a material def flagged IsDiggable
 // Leaf: ?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F0300, 199 bytes (+ int3 padding). Ego_r.pdb / FableWin.pdb
 //   `?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z` (public static `__fastcall`); callers
 //   CTCCarriedActionUseSpade 0x007F03D0 and CContextSensitiveItemDef::IsValidOverride 0x00850A80.
@@ -8,7 +10,7 @@
 //   CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long*) 0x0063ADF0, CDefinitionManager::GetDef<CEngineThemeDef>
 //   0x0063F3A0 and GetDef<CMaterialDef> 0x0066C340 (manifest names both "<CThingPhysicalSwitchDef>": byte twins), the def's
 //   virtual slot 1 (destroy).
-// Globals: g_pMainGameComponent 0x013B86A0 (PWorld +0x24); CWorld DefinitionManager +0x10 (Ego_r.pdb).
+// Globals: CMainGameComponent::Get() 0x013B86A0 (PWorld +0x24); CWorld DefinitionManager +0x10 (Ego_r.pdb).
 // Layout: retail CEngineThemeDef MaterialDef +0x8c and CMaterialDef IsDiggable +0x4d (both 4 below Ego_r.pdb, as the landed
 //   CTCStealth::UpdateViewability 0x00747480 finds for the theme def); def objects count references at +4.
 // Shape: the whole test inside `if (!creature.GetThingStandingOn())` with one `return false` last; the world is a named
@@ -89,11 +91,15 @@ public:
     CDefinitionManager& GetDefinitionManager() const { return *DefinitionManager; }
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                                       // +0x24 scoped_ptr<CWorld>
 };
-extern CMainGameComponent* g_pMainGameComponent;                // 0x013B86A0
 
 class CThing {
 public:
@@ -117,7 +123,7 @@ public:
 bool __fastcall CTCCarriedActionUseSpade::IsThingAbleToDig(const CThingCreatureBase& creature)
 {
     if (!creature.GetThingStandingOn()) {
-        CWorld* world = g_pMainGameComponent->PWorld;
+        CWorld* world = CMainGameComponent::Get()->PWorld;
         long weight;
         CDefPointer<const CEngineThemeDef> themeDef;
         if (world->GetDefinitionManager().GetDef(world->PeekWorldMap().GetStrongestEngineThemeAt(creature.GetPos(), &weight), &themeDef)) {

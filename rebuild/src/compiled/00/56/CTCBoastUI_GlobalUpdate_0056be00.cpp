@@ -1,4 +1,6 @@
 // CTCBoastUI::GlobalUpdate(long) -- per-frame update of the boast UI: a quitting UI deletes its menu components,
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // closes the front end, clears the global boast list and drops the player's boast mode; a requested activation
 // either snaps the camera to the "BoastingCamera" point (when active and not already in a null camera mode) or opens
 // the UI when allowed
@@ -100,11 +102,15 @@ class CWorld { public:
     CGameCameraManager* CameraManager;                 // +0x34
     CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; }
 };
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld* World;                                     // +0x24
 };
-extern CEngine* g_pEngine;                             // 0x013B86A0
 
 struct CFrontEndManager {
     static CFrontEndManager* __fastcall GetInstance(); // 0x0041E5F2
@@ -215,10 +221,10 @@ void CTCBoastUI::GlobalUpdate(long)
     }
     if (ActivationRequested) {
         if (Active) {
-            CGameCameraManager* camera = g_pEngine->World->CameraManager;
+            CGameCameraManager* camera = CMainGameComponent::Get()->World->CameraManager;
             if (camera->CurrentMode->GetModeType() != 2) {
                 CThing* point = 0;
-                if (g_pEngine->World->GetThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName("BoastingCamera"), &point)) {
+                if (CMainGameComponent::Get()->World->GetThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName("BoastingCamera"), &point)) {
                     CDefPointer<CCameraModeDef> def;
                     CGameDefinitionManager::Get().GetDef(CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CAMERA_MODE_MODE_NULL"), &def);
                     CCountedPointer<NCameraModes::CBase> mode(new NCameraModes::CSnapToPoint(camera, def, point));

@@ -2,6 +2,8 @@
 // is currently rented; when there is rent to collect and the hero is alive, format TEXT_GUI_COLLECTABLE_RENT with
 // the two totals into the hero's region display (the extra area-name line)
 // Leaf: DisplayCollectableRentInformation
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A0370, 400 bytes, `ret`.
 // Callees: CThingSearchTools::GetAllLeafThings(filter, vector&) 0x004AD780 (the buyable-house instantiation; the
 //   manifest names the CThingAICreature copy), the const CVectorMap::LowerBound 0x004365B0 (inlined GetInterface on a
@@ -36,11 +38,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                            // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;       // 0x013B86A0
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -155,7 +161,7 @@ void CWorld::DisplayCollectableRentInformation()
         if (IsThingAlive(hero)) {
             CTCRegionDisplay* display;
             if (hero->GetInterface(&display, 0x8e) && display) {
-                CWideString text = g_pMainGameComponent->TextBank->GetTextBySymbol("TEXT_GUI_COLLECTABLE_RENT");
+                CWideString text = CMainGameComponent::Get()->TextBank->GetTextBySymbol("TEXT_GUI_COLLECTABLE_RENT");
                 ConstructString(text, collectableRent, maxRent);
                 display->CurrentAreaNameExtra = text;
             }

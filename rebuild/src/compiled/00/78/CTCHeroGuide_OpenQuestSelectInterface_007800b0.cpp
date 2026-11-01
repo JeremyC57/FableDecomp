@@ -1,4 +1,8 @@
 // CTCHeroGuide::OpenQuestSelectInterface() -- find the hero centre this guide belongs to; when the world allows it and the
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // centre has quest cards on offer, clear the hero's quest-select flag and queue game event 0x1a (payload 0xd) for the main
 // player, otherwise show "TEXT_GUI_QUESTS_NO_AVAILABLE" as a subtitle
 // Flags: /GS
@@ -133,10 +137,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
@@ -147,11 +155,21 @@ class CFontBank;
 class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 struct CGameSubsystem {
     unsigned char _pad00[0x1614c];
     CFontBank* SubtitleFont;                            // +0x1614C
@@ -190,11 +208,11 @@ void CTCHeroGuide::OpenQuestSelectInterface()
             CGameEvent event(0x1a);
             event.AddULONG(0xd);
             event.Player = (signed char)GetPlayerManager().GetMainPlayerNumber();
-            g_pMainGameComponent->AddGameEvent(event);
+            CMainGameComponent::Get()->AddGameEvent(event);
         } else {
             CCharString text("TEXT_GUI_QUESTS_NO_AVAILABLE", -1);
             CGameSubsystem* subsystem = GetGameSubsystem();
-            g_pPlayerGui->Subtitles.SetText(subsystem->SubtitleFont, text, 0x122, 4.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(subsystem->SubtitleFont, text, 0x122, 4.0f, false, true);
         }
     }
 }

@@ -1,5 +1,7 @@
 // CAtmosProcess::UpdateInsideBuildings() -- take the reverb environment from the current region's def; every fourth frame test whether the camera is inside a building near it (whose reverb then wins) and record it; when the inside flag changes, cross-fade the four atmos sound groups and touch every SOUND_THEME def; when the reverb changed, store it and apply it
 // Leaf: ?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1F30, length 811 bytes, plain `ret` (thiscall, no arguments).
 // Name: Ego_r.pdb ?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ (private); callee ApplyReverbSettings 0x006B1600 is the PDB's
 //   private ?ApplyReverbSettings@CAtmosProcess@@AAEXXZ (its body indexes a 0x54-byte reverb preset table by ReverbType and
@@ -190,12 +192,16 @@ public:
     unsigned char      _pad24[0x34 - 0x24];
     CAIGameCameraBase* PCurrentGameCamera;                                      // +0x34
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                                   // +0x24 (scoped_ptr<CWorld>)
     CWorld& GetWorld() { return *PWorld; }
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 
 class CGlobalDef : public CDefPointeeBase { public:
     unsigned char _pad1c[0x138 - 0x1c];
@@ -252,7 +258,7 @@ private:
 
 void CAtmosProcess::UpdateInsideBuildings()
 {
-    CWorld& world = g_pMainGameComponent->GetWorld();
+    CWorld& world = CMainGameComponent::Get()->GetWorld();
     EReverbEnvironmentType reverbType = ReverbType;
     float reverbLevel = ReverbLevel;
     const CRegionDef* def = static_cast<const CRegionDef*>(world.GetWorldMap().GetRegion(world.GetWorldMap().GetLoadedRegion()).PDef.Object);

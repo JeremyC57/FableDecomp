@@ -1,5 +1,7 @@
 // CInputProcessInventoryExperienceScreen::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- route input to the front end and the hero's inventory map (component 0x1B): pressed / held / released menu actions become front-end events (the page actions 0x27/0x28 and the held close action 0x48 only while the front end is not busy, slot 8), held action 0x48 queues a close-inventory game event, released d-pad actions zoom (front-end slot 38) or pan the map, mouse moves update the cursor and the wheel scrolls the menu
 // Leaf: ProcessInput
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068B2E0, length 1168 bytes, `ret 8`.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap LowerBound @ 0x0040F020, CInputProcessGameBase::
@@ -67,12 +69,16 @@ class CGameEvent : public CMemoryBuffer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                // +0x1C
     void AddGameEvent(const CGameEvent& event);   // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 class CTCInventoryMap { public:
     void PanMap(CMousePosition direction);        // 0x005FB140
 };
@@ -152,8 +158,8 @@ void CInputProcessInventoryExperienceScreen::ProcessInput(const CInputEvent& eve
             if (NUISystem::CManager::GetInstance()->IsBusy())
                 return;
             CGameEvent closeEvent(0x1b);
-            closeEvent.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
-            g_pMainGameComponent->AddGameEvent(closeEvent);
+            closeEvent.Player = (signed char)CMainGameComponent::Get()->PlayerManager->GetMainPlayerNumber();
+            CMainGameComponent::Get()->AddGameEvent(closeEvent);
         } else
             return;
     } else if (IsEventButtonReleased(event)) {

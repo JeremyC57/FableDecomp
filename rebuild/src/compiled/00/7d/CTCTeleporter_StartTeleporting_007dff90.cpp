@@ -1,5 +1,10 @@
 // CTCTeleporter::StartTeleporting(CThing* hero) -- resets the hero's map-screen flags; when no GUI block or world mode is active and the map teleport UI builds, and the hero is alive with health left, queues game event 0x1a (open the map screen, payload 8) for the main player; otherwise flags the map screen state back on
 // Leaf: StartTeleporting
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DFF90, 314 bytes (`ret 4`, /GS cookie 0x0139C8A8).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inline GetInterface, interface 0x1B =
@@ -7,9 +12,9 @@
 //          CTCInventoryMap::BuildMapTeleportUI(long, bool, bool*) 0x0060C900 (`ret 0Ch`; the third argument is an out
 //          flag, the landed caller's `bool keepSelection` spelling is wrong); CMemoryBuffer::Copy 0x009F1760;
 //          CTCBase::PeekPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber() 0x00449700;
-//          CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on g_pMainGameComponent 0x013B86A0;
-//          __security_check_cookie 0x00BFE9F9. Globals: g_pPlayerGui 0x013B8790 (+0xfd, an unidentified blocking flag),
-//          EPSILON (1e-4f).
+//          CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on CMainGameComponent::Get() 0x013B86A0;
+//          __security_check_cookie 0x00BFE9F9. Globals: (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (+0xfd, an unidentified blocking flag),
+//          DELTA_NOTIONAL_ZERO (1e-4f).
 // Layout (retail): CThing bitset +0x20, interface map +0x44, dead bit +0x91, CThingPhysical::Health +0xb4 (PDB +0xcc);
 //          CTCInventoryMap +0x240/+0x241 (by order Ego_r.pdb InventoryScreen/OpenedViaGuildSeal +0x29c/+0x29d -- inferred);
 //          CWorld mode word +0x104 (as the landed caller); CGameEvent as the landed OpenTrainingScreen 0x0077D4B0.
@@ -59,12 +64,22 @@ class CTCInventoryMap { public:
     void BuildMapTeleportUI(long screen, bool forceRebuild, bool* built);   // 0x0060C900
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad_0x00[0xfd];
     bool          m_blockingFD;                 // +0xfd
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -79,10 +94,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event); // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CWorld { public:
     unsigned char _pad[0x104];
@@ -113,14 +132,14 @@ void CTCTeleporter::StartTeleporting(CThing* hero)
     hero->GetInterface(&map, 0x1b);
     map->InventoryScreen = false;
     map->OpenedViaGuildSeal = false;
-    if (!g_pPlayerGui->m_blockingFD && PeekWorld().m_mode == 0) {
+    if (!CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_blockingFD && PeekWorld().m_mode == 0) {
         bool built = false;
         map->BuildMapTeleportUI(0, true, &built);
-        if (built && !(hero->m_flags91 & 1) && hero->Health > EPSILON) {
+        if (built && !(hero->m_flags91 & 1) && hero->Health > DELTA_NOTIONAL_ZERO) {
             CGameEvent event(0x1a);
             event.AddULONG(8);
             event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
-            g_pMainGameComponent->AddGameEvent(event);
+            CMainGameComponent::Get()->AddGameEvent(event);
             return;
         }
     }

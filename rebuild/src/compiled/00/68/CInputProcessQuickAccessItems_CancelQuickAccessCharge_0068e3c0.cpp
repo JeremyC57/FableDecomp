@@ -1,5 +1,7 @@
 // CInputProcessQuickAccessItems::CancelQuickAccessCharge() -- if the controlled creature is alive, queue game event 0x29 (cancel quick-access charge) for its player carrying the charging quick-access slot and a zero byte
 // Leaf: CancelQuickAccessCharge
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E3C0, length 141 bytes.
 // Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0 (MyPlayer +0x18), CMemoryBuffer::Copy(unsigned long, const void*)
@@ -22,10 +24,14 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddLong(long value) { Copy(sizeof(value), &value); }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern long g_QuickAccessChargeSlot;               // 0x0137EE78
 class CThingCreatureBase { public:
     unsigned char _pad00[0x90];
@@ -62,6 +68,6 @@ void CInputProcessQuickAccessItems::CancelQuickAccessCharge()
         gameEvent.Player = creature->m_playerNumber;
         gameEvent.AddLong(g_QuickAccessChargeSlot);
         gameEvent.AddUBYTE(0);
-        g_pMainGameComponent->AddGameEvent(gameEvent);
+        CMainGameComponent::Get()->AddGameEvent(gameEvent);
     }
 }

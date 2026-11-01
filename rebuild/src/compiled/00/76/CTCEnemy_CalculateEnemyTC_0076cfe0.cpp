@@ -1,5 +1,7 @@
 // CTCEnemy::CalculateEnemyTC(const CThing& thing, const CTCEnemy** enemy_tc, const CThing*& enemy_thing, bool no_follower_proxy) -- the enemy component that speaks for a thing: its own; a live turncoat originator's (which becomes the enemy thing); else, for a follower of the player's controlled creature, the player creature's (unless disabled); true when a proxy thing was chosen
 // Leaf: ?CalculateEnemyTC@CTCEnemy@@CI_NABVCThing@@PAPBV1@AAPBV2@_N@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0076CFE0, 454 bytes, private static __fastcall (ecx thing, edx enemy_tc), `ret 8`.
 // Identity (proven): Ego_r.pdb / FableWin.pdb ?CalculateEnemyTC@CTCEnemy@@CI_NABVCThing@@PAPBV1@AAPBV2@_N@Z (Ego_r donor 0x0077B080,
 //   between IsEnemyOf 0x0077AD60 and RemoveEnemyThing 0x0077B290); the signature matches the register/stack use exactly, and its
@@ -7,7 +9,7 @@
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*,..>::LowerBound const 0x004365B0, CTCTurncoat::IsTurncoated() const 0x007C7890,
 //   CBaseIntelligentPointer::GetPItem() const 0x00A01B50, CPlayerManager::GetMainPlayer() 0x00449970 (non-const, the landed leaf),
 //   CPlayer::GetPControlledCreature() const 0x00487DC0, CTCFollowed::IsFollower(const CThing*) const 0x006D4D70 (it walks Followers
-//   +0x0C; the AIFollowers twin IsAIFollower is 0x006D4DB0). Data: g_pMainGameComponent 0x013B86A0 (PPlayerManager +0x1C), the
+//   +0x0C; the AIFollowers twin IsAIFollower is 0x006D4DB0). Data: CMainGameComponent::Get() 0x013B86A0 (PPlayerManager +0x1C), the
 //   follower-proxy switch 0x01375731 (a .data bool initialised 1, read only here; descriptive name).
 // Layout: retail CThing CClass::Type +0x10, UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0; CTCEnemy
 //   EnableFollowersEnemyProxy +0x0D (Ego_r); CTCTurncoat TurncoatOriginator +0x24 (engine/CTCTurncoat.h); interfaces 0x49 CTCEnemy,
@@ -114,12 +116,16 @@ public:
     T& operator*() const { return *ptr; }
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char             _pad00[0x1c];
     scoped_ptr<CPlayerManager> PPlayerManager;          // +0x1C
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 extern bool g_bFollowersEnemyProxyEnabled;              // 0x01375731 (descriptive)
 
 class CBaseIntelligentPointer {
@@ -176,7 +182,7 @@ bool __fastcall CTCEnemy::CalculateEnemyTC(const CThing& thing, const CTCEnemy**
     }
     if (!no_follower_proxy && g_bFollowersEnemyProxyEnabled && (*enemy_tc == 0 || (*enemy_tc)->EnableFollowersEnemyProxy) &&
         thing.Type != 2) {
-        const CThing* player = g_pMainGameComponent->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+        const CThing* player = CMainGameComponent::Get()->GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (player && !player->Dead && player->HasTC((ETCInterfaceType)0xBC) &&
             player->PeekTC<CTCFollowed>((ETCInterfaceType)0xBC)->IsFollower(&thing)) {
             if (player->HasTC((ETCInterfaceType)0x49))

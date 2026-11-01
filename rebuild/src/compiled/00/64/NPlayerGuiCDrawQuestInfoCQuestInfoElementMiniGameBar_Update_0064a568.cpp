@@ -1,6 +1,9 @@
 // NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::Update() -- while the bar is updatable, stop updating it once the living hero lets go of the button held for its mini-game's expression (pick-lock or pick-pocket); always reports success
+// Naming wave 18: the interface-presence stand-in CTCBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064A568, length 209 bytes, plain `ret` (bool true).
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetPControlledCreature
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (CMainGameComponent::Get() 0x013B86A0 +0x1c), CPlayer::GetPControlledCreature
 // 0x00487DC0, IS_THING_ALIVE 0x0043DBF0 (`__fastcall`, by reference; a separate instantiation from the CThing* one at
 // 0x0043DBD0; its T is unproven -- CThingPlayerCreature* is assumed, the hero pointer reaches it through a converted
 // temporary in the frame so the thing stays in esi), std::bitset::test 0x00410DE0 (TC type 0x11,
@@ -35,13 +38,15 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
-struct CTCBitset {                                       // std::bitset<274> CThing::UsingComponents
-    unsigned long _M_w[9];
-    bool test(long bit) const;                           // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    unsigned long _M_w[(_Nb + 31) / 32];
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CThing { public:                                          // retail CThing (local model)
     unsigned char _pad00[0x20];
-    CTCBitset     UsingComponents;                       // +0x20
+    std::bitset<274>     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long type) const
     {
@@ -74,11 +79,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                       // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 
 struct CQuestInfoElementMiniGameBar {
     unsigned char _base[0x1c];                           // CQuestInfoElementBase (vptr ...)
@@ -93,7 +102,7 @@ struct CQuestInfoElementMiniGameBar {
 bool CQuestInfoElementMiniGameBar::Update()
 {
     if (Updatable) {
-        const CThingPlayerCreature* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+        const CThingPlayerCreature* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
         if (IS_THING_ALIVE(hero) && hero->GetInterface(&inventory, 0x11)) {
             switch (Type) {

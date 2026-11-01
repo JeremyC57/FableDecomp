@@ -1,5 +1,7 @@
 // CTCHeroOnlineScoreboard::AbortWithMessage(const CCharString& textSymbol) -- looks the symbol up in the engine text bank, shows the text, clears the scoreboard data, sets ScoreboardState 0 / TaskState 100 and closes the HTTP connection when one is open
 // Leaf: AbortWithMessage
+// Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00563410, length 95 bytes (`ret 4`).
 // Callees: CDataBank::GetTextBySymbol @ 0x009C95E0 (by value through the hidden result pointer; the
 //          text bank is +0x14 of the engine globals @ 0x013B86A0), the message display @ 0x0055EF00
@@ -32,12 +34,16 @@ class CDataBank { public:
 }
 using NGameText::CDataBank;
 
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                            // +0x14
 };
 
-extern CEngineGlobals* g_pEngineGlobals_013b86a0;                         // 0x013B86A0
 
 namespace LHNetworkLib {
 
@@ -77,7 +83,7 @@ public:
 
 void CTCHeroOnlineScoreboard::AbortWithMessage(const CCharString& textSymbol)
 {
-    CWideString text = g_pEngineGlobals_013b86a0->m_pTextBank->GetTextBySymbol(textSymbol);
+    CWideString text = CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol(textSymbol);
     DisplayErrorMessage(text);
     ClearScoreboard();
     ScoreboardState = 0;

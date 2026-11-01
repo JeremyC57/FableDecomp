@@ -1,5 +1,7 @@
 // CGamePlayerInterface::GetInputProcessEvent(CProcessedInput& processedInput) const -- scan the queued input events, offer each unprocessed one to every registered input process and keep the highest-priority accepted result (flagging an event a process consumes outright as processed); copy the best result out, flag its event as processed and report whether any process produced one
 // Leaf: ?GetInputProcessEvent@CGamePlayerInterface
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1, /GS) @ 0x00446330, 1002 bytes, `ret 4`. Ego_r.pdb ?GetInputProcessEvent@CGamePlayerInterface@@ABE_NAAVCProcessedInput@@@Z (private const).
 // Callees (Ego_r.pdb spellings): CInputEvent ctor 0x00A04410 / dtor 0x00A03B30 / SetAsNull 0x00A03BE0 / GetType 0x00A03B40 / GetDeviceType 0x00A03B50 /
@@ -8,7 +10,7 @@
 //   FlagEventAsProcessed 0x009F55C0 (labels_familypass7 + its store-insert body); CPlayerManager::GetPlayerNumberFromJoystickDeviceNumber 0x00449990;
 //   the input process's virtual ProcessInput (slot 4) / ProcessWhilePaused (slot 7) / IsInputEventToBeSentToThisInputProcess (slot 8) as in the landed
 //   CInputProcessManager::PreparePrimitivesForEngine 0x00A0D6B0; CMainGameComponent::IsEditorActive (slot 9, 0x004197B0).
-// Globals: g_pMainGameComponent 0x013B86A0, PInputManager 0x013B8388 (ESTABLISHED_SPELLINGS).
+// Globals: CMainGameComponent::Get() 0x013B86A0, PInputManager 0x013B8388 (ESTABLISHED_SPELLINGS).
 // Shape: the input-process scan is the landed 0x00A0D6B0 CLinkedListScanInfo model (StartScanAtHead / ScanForward / RemoveScanInfo through the
 //   list, so the no-previous-scan branch stores FirstScanInfo through `this` and the empty-list path threads into it). Here the scan info is reused
 //   per event, so RemoveScanInfo's trailing resets (Started, NextScan, PreviousScan, List) survive (they are dead in 0x00A0D6B0) and the head step
@@ -82,14 +84,18 @@ class CPlayerManager : public CPlayerManagerLayout { public:
     long GetPlayerNumberFromJoystickDeviceNumber(long deviceNumber) const;   // 0x00449990
 };
 class CWorld : public CWorldLayout { };
-class CMainGameComponent { public:                 // local model: vptr, PWorld (scoped_ptr<CWorld>) at +0x24 (Ego_r.pdb)
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:                 // local model: vptr, PWorld (scoped_ptr<CWorld>) at +0x24 (Ego_r.pdb)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsEditorActive() const;           // slot 9 (+0x24) 0x004197B0 (RTTI vtable 0x0122F180 + FableWin.pdb ?IsEditorActive@CMainGameComponent@@UBE_NXZ)
     unsigned char _pad04[0x24 - 0x04];
     CWorld*       PWorld;                          // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CInputEvent;
 class CEnginePrimitivePrepareInfo;
@@ -166,7 +172,7 @@ bool CGamePlayerInterface::GetInputProcessEvent(CProcessedInput& processedInput)
     bestEvent.SetAsNull();
     bestResult.Clear();
     bool altDown = false;
-    if (g_pMainGameComponent && !g_pMainGameComponent->IsEditorActive()) {
+    if (CMainGameComponent::Get() && !CMainGameComponent::Get()->IsEditorActive()) {
         CInputEvent query;
         altDown = PInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x38, query);
     }
@@ -184,7 +190,7 @@ bool CGamePlayerInterface::GetInputProcessEvent(CProcessedInput& processedInput)
             result.Clear();
             if (process->IsInputEventToBeSentToThisInputProcess(event)) {
                 result.SetPlayer(PlayerManager->GetPlayerNumberFromJoystickDeviceNumber(event.DeviceNumber));
-                if (process->ProcessWhilePaused() || !g_pMainGameComponent->PWorld->Paused)
+                if (process->ProcessWhilePaused() || !CMainGameComponent::Get()->PWorld->Paused)
                     process->ProcessInput(event, result);
             }
             switch (result.GetType()) {

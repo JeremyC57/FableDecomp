@@ -1,10 +1,14 @@
 // CTCInventoryMap::OpenInventory() -- opens the world-map screen: remembers the previous hero-info screen, opens the base inventory, fades the sound channels, builds the map menu and the mouse pointer and keeps both components
 // Leaf: OpenInventory@CTCInventoryMap
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006116E0, 535 bytes (+ int3 padding), speed TU (no frame pointer, `sub esp,10h`).
 // Callees: NHeroInformationScreens::CBase slots 2 (+0x08) / 3 (+0x0C) through the +0x130 secondary base,
 //   CTCInventoryBase 0x005BC6ED (manifest "_Dest_val<...>" is propagated; named descriptively) and OpenInventory 0x005BD4EA,
 //   CManager::GetInstance 0x0041E5F2 + manager slots 16 (+0x40) / 26 (+0x68) + CreateComponent 0x0041DB1D,
-//   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 (g_pPlayerGui 0x013B8790), CManager::GetCurrentScreen 0x0066E7BD /
+//   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), CManager::GetCurrentScreen 0x0066E7BD /
 //   SetCurrentScreenType 0x0066E799, the sound system's slot 46 (+0xB8) (g 0x013B8394), OnOpenMenus 0x0041D122, the input
 //   controller's slot 76 (+0x130), FindTeleports 0x005FC620, the map-menu builder 0x0060EEB0 (manifest
 //   "CTCInventoryMap_BuildMapMenu"), component slots 43 (+0xAC) / 48 (+0xC0), this's slots 32 (+0x80) / 46 (+0xB8),
@@ -90,10 +94,20 @@ class CManager { public:
     void SetCurrentScreenType(long type);               // 0x0066E799
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 struct CSoundSystem {
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
@@ -115,8 +129,12 @@ struct CInputController {
     virtual void SetEnabled(bool enabled);              // slot 76 (+0x130)
 };
 class CDisplayEngine { public: unsigned char _pad[0x2c]; CInputController* Input; };   // +0x2c
-class CMainGameComponent { public: unsigned char _pad[0x28]; CDisplayEngine* Display; };   // +0x28
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x28]; CDisplayEngine* Display; };   // +0x28
 struct CTCInventoryBase {
 #define V(n) virtual void v##n();
     V(00) V(01) V(02) V(03) V(04) V(05) V(06) V(07) V(08) V(09) V(10) V(11) V(12) V(13) V(14) V(15) V(16) V(17) V(18) V(19)
@@ -153,13 +171,13 @@ void CTCInventoryMap::OpenInventory()
         ResetOpenState();
         AccumFadeTime = 0.0f;
         NUISystem::CManager::GetInstance()->SetActiveThing(ParentThing);
-        PreviousScreenType = g_pPlayerGui->GetPHeroInfoScreensManager()->GetCurrentScreen()->GetScreenType();
+        PreviousScreenType = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->GetCurrentScreen()->GetScreenType();
         RefreshScreen(0);
         TeleportsFound = true;
         FindTeleports();
     }
     if (!IsActive()) {
-        CPlayerGui* gui = g_pPlayerGui;
+        CPlayerGui* gui = (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get());
         gui->GetPHeroInfoScreensManager()->SetCurrentScreenType(GetScreenType());
     }
     CTCInventoryBase::OpenInventory();
@@ -172,7 +190,7 @@ void CTCInventoryMap::OpenInventory()
         ((CSoundSystem*)PSoundManager)->FadeChannel(0x80, 0, 500.0f);
     }
     OnOpenMenus();
-    g_pMainGameComponent->Display->Input->SetEnabled(false);
+    CMainGameComponent::Get()->Display->Input->SetEnabled(false);
     NUISystem::CComponent* screen = BuildMapMenu(0, 0);
     if (screen) {
         NUISystem::CComponent* pointer = NUISystem::CManager::GetInstance()->CreateComponent("UI_MOUSE_POINTER", false);

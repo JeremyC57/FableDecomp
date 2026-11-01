@@ -1,11 +1,13 @@
 // NExplosiveTrailHelpers::RandomiseThingOrientationAroundDirection(CThing& thing, const C3DVector& direction) -- give a thing a random orientation: spin the default forward axis a random amount about the up axis, tilt both axes by up to +-0.125 about the direction, and hand the set to the thing's physics
 // Leaf: ?RandomiseThingOrientationAroundDirection@NExplosiveTrailHelpers@@YIXAAVCThing@@ABVC3DVector@@@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0080FFB0, 229 bytes (+ int3 padding), `__fastcall` (thing in ecx -> ebx, direction in edx ->
 //   esi), plain `ret`.
 // Name: Ego_r.pdb / FableWin.pdb `?RandomiseThingOrientationAroundDirection@NExplosiveTrailHelpers@@YIXAAVCThing@@ABVC3DVector@@@Z`
 //   (name set); callers 0x008107B5 and 0x008DEB24.
 // Callees: CWorld::GetWorldSeed() const 0x0049D810 (`mov eax,[ecx+8] ; add eax,1613Ch`; GetLocalSeed is 0x0049D800) on the
-//   main game component's world (g_pMainGameComponent 0x013B86A0, the inline GetWorld() reads +0x24 once);
+//   main game component's world (CMainGameComponent::Get() 0x013B86A0, the inline GetWorld() reads +0x24 once);
 //   GFFloatRandom(float, unsigned long*) 0x004978A0 (__fastcall: the seed in ecx, the range pushed);
 //   C3DVector::Rotate(const C3DVector&, float) 0x00A13C60; the physics component's virtual slot 75 (+0x12c,
 //   CTCPhysicsBase::SetRHSet(const CRightHandedSet&): Ego_r donor order SetFacingAnglesFromRHSet, UpdateOldRHSet, ResetRHSet,
@@ -43,12 +45,16 @@ public:
 };
 
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x24];
     CWorld*       PWorld;                                    // +0x24 scoped_ptr<CWorld>
     CWorld& GetWorld() { return *PWorld; }
 };
-extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -79,7 +85,7 @@ public:
 namespace NExplosiveTrailHelpers {
 void __fastcall RandomiseThingOrientationAroundDirection(CThing& thing, const C3DVector& direction)
 {
-    CWorld& world = g_pMainGameComponent->GetWorld();
+    CWorld& world = CMainGameComponent::Get()->GetWorld();
     C3DVector up(0.0f, 0.0f, 1.0f);
     C3DVector forward(1.0f, 0.0f, 0.0f);
     forward.Rotate(up, GFFloatRandom(1.0f, world.GetWorldSeed()));

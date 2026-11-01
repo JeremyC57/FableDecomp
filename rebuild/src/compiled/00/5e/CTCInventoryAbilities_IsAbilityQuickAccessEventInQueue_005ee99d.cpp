@@ -1,5 +1,8 @@
 // CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility ability) -- true when one of the inventory's quick-access slots holding the ability's quick-access item has a press of type 2 queued for the main player
 // Leaf: IsAbilityQuickAccessEventInQueue
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x005EE99D, 254 bytes, `ret 4`. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: GetAbilityPDef(EHeroAbility) const 0x005EDFD9 (counted CDefPointer by value, built in the dead `ability`
 // argument slot), std::bitset::test 0x00410DE0 + the const CVectorMap::LowerBound 0x004365B0 (inline GetInterface for the
@@ -11,15 +14,18 @@
 // size re-read every pass) is scanned for it and each hit asks the input queue; both exits release the def through
 // its inline destructor (the null test folds into the `if (def)`); the call object comes after the argument chain.
 // `this` stays in edx across GetAbilityPDef because its real body (byte-exact to 0x005EDFD9, frame omitted) is compiled
-// above the caller in the same TU; g_pMainGameComponent is read first through an inline accessor (ebx before the
+// above the caller in the same TU; CMainGameComponent::Get() is read first through an inline accessor (ebx before the
 // argument chain); the vector's start is loaded into a local each pass so the size test and the element read share it.
 // Layout: retail CHeroAbilityDef quick-access item +0x98; CTCInventory quick-access slots vector<long> +0x148.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -34,7 +40,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -83,11 +89,15 @@ class CPlayerManager { public:
 class CGamePlayerInterface { public:
     bool IsAssignableSpecialMoveButtonInQueue(long button, long buttonEventType, long playerNumber);   // 0x004460C0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     CGamePlayerInterface* GetGamePlayerInterface(); // 0x00416359
 };
-extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
-__forceinline CMainGameComponent* GetMainGameComponent() { return g_pMainGameComponent; }
+__forceinline CMainGameComponent* GetMainGameComponent() { return CMainGameComponent::Get(); }
 enum EHeroAbility { EHeroAbility_Force32 = 0x7fffffff };
 
 struct SAbilityEntry {                               // std::pair<long, CDefPointer<const CHeroAbilityDef> >

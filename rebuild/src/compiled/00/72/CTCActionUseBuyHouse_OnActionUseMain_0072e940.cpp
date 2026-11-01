@@ -1,12 +1,16 @@
 // CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money) -- unless the hero's buy-house tutorial takes over, ask the hero to buy the house (or tell him he cannot afford it) or to sell it
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0072E940, 512 bytes (`ret 8`). Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
 // @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020
 // (inlined GetInterface, CTCHero = 0x29), CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0,
 // CWideString() @ 0x0099AED0, CTCBuyableHouse::GetPrice @ 0x006C0120, CCharString(const char*, long) @ 0x0099EBF0,
-// CDataBank::GetTextBySymbol @ 0x009C95E0 (g_pMainGameComponent 0x013B86A0 -> +0x14), CWideString::operator+= @ 0x0099B8D0,
+// CDataBank::GetTextBySymbol @ 0x009C95E0 (CMainGameComponent::Get() 0x013B86A0 -> +0x14), CWideString::operator+= @ 0x0099B8D0,
 // CWideString::operator= @ 0x0099B7D0, ~CWideString @ 0x0099B510, ~CCharString @ 0x0099EAE0, ConstructString @ 0x009C7B70
 // (__fastcall), CWideString::operator!=(const wchar_t*) @ 0x0099B150 (L"" 0x0122D70C), CSubtitleRenderer::SetText
-// @ 0x00492E4B (g_pPlayerGui 0x013B8790 -> +0x18, font at +0x1614C).
+// @ 0x00492E4B ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 -> +0x18, font at +0x1614C).
 // Layout: engine/CTCBuyableHouse.h (OwnedByPlayer +0x11, MaxDressLevel +0x20); CTCActionUseBuyHouse as the landed
 // OnActionUseRent 0x0072E810 (WaitingForConfirmation +0x18, HouseQuestion +0x1c); CThing Dead bit 0 of +0x91.
 // Shape: as the sibling OnActionUseRent: the symbol and the looked-up text temporaries sit in the dead argument
@@ -82,7 +86,12 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    PTextBank;                                 // +0x14
     unsigned char _pad18[0x1614c - 0x18];
@@ -93,12 +102,21 @@ class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CWideString& text, unsigned long flags, float time, bool clickPast,
                  bool pauseGame);                            // 0x00492E4B
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                      // +0x18
 };
-extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
-extern CPlayerGui* g_pPlayerGui;                             // 0x013B8790
 
 struct CTCBuyableHouseCalls : CTCBuyableHouse {
     long GetPrice();                                         // 0x006C0120
@@ -130,29 +148,29 @@ void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
         long price = ((CTCBuyableHouseCalls*)house)->GetPrice();
         if (price != -1 && price <= money) {
             if (house->MaxDressLevel > 0)
-                text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_BUY");
+                text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_BUY");
             else
-                text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_BUY");
+                text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_BUY");
         } else {
             if (house->MaxDressLevel > 0)
-                text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_CANNOT_AFFORD");
+                text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_CANNOT_AFFORD");
             else
-                text += g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_CANNOT_AFFORD");
+                text += CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_CANNOT_AFFORD");
             confirm = false;
         }
     } else {
         if (house->MaxDressLevel > 0)
-            text = g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_SELL");
+            text = CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_MARITAL_HOME_SELL");
         else
-            text = g_pMainGameComponent->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_SELL");
+            text = CMainGameComponent::Get()->GetTextBank()->GetTextBySymbol("TEXT_GUI_BUYABLE_HOUSE_SELL");
     }
     ConstructString(&text, ((CTCBuyableHouseCalls*)house)->GetPrice());
     if (text != L"") {
         if (confirm) {
             WaitingForConfirmation = true;
-            g_pPlayerGui->SubtitleRenderer.SetText(*g_pMainGameComponent->PFont, text, 4, 0.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->PFont, text, 4, 0.0f, false, true);
         } else {
-            g_pPlayerGui->SubtitleRenderer.SetText(*g_pMainGameComponent->PFont, text, 2, 0.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(*CMainGameComponent::Get()->PFont, text, 2, 0.0f, false, true);
         }
     }
 }

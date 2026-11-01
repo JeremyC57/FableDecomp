@@ -1,11 +1,13 @@
 // CTCInventory::ContructItemLists(map<long,long>& items, NUISystem::CList* list, NUISystem::CComponent* owner, CCountedPointer<NUISystem::CComponent>& entry) -- build one inventory entry per merged item, the guild seal first
 // Leaf: ContructItemLists@CTCInventory
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0058EF79, 157 bytes, `ret 10h`.
 // Name: FableWin.pdb ?ContructItemLists@CTCInventory@@QAEXAAV?$map@JJ...@std@@PAVCList@NUISystem@@PAVCComponent@5@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
 // (sic, "Contruct"); the catalog "ConstructItemCategoryList" is a different method. Only caller 0x0058F5C3; the PC twin
 // ContructItemListsPC is 0x00590198 (ConstructItemEntryPC).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CMainGameComponent::
-// PeekDefinitionManager() const @ 0x00415FBC (a jmp thunk; catalog "GFGetPreMainMemoryUsed") on g_pMainGameComponent
+// PeekDefinitionManager() const @ 0x00415FBC (a jmp thunk; catalog "GFGetPreMainMemoryUsed") on CMainGameComponent::Get()
 // @ 0x013B86A0, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, map<long,long>::find
 // @ 0x00592F92 (node pointer), CTCInventory::ConstructItemEntry(long, long, CList*, CComponent*, CCountedPointer&)
 // @ 0x0058A0C7, the STLport tree successor _Rb_global<bool>::_M_increment @ 0x004292C0 (`__cdecl`).
@@ -31,11 +33,15 @@ class CDefinitionManager { public:
 class CGameDefinitionManager : public CDefinitionManager
 {
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
 public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
 };
-extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 
 template <class T> class CCountedPointer { public:
     T*    m_pObject;
@@ -100,7 +106,7 @@ void CTCInventory::ContructItemLists(std::map<long, long>& items, NUISystem::CLi
     std::map<long, long>::iterator seal(0);
     {
         CCharString name("OBJECT_GUILD_SEAL_1", -1);
-        seal = items.find(g_pMainGameComponent->PeekDefinitionManager().GetDefGlobalIndexFromName(name));
+        seal = items.find(CMainGameComponent::Get()->PeekDefinitionManager().GetDefGlobalIndexFromName(name));
     }
     if (seal != items.end())
         ConstructItemEntry(seal->first, seal->second, list, owner, entry);

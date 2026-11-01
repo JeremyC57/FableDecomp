@@ -1,10 +1,12 @@
 // CWorld::GetCurrentSoundCamera(const CInterpolationInfo&) const -- the camera the sound listener follows: the render camera without a sound system or in the editor, the free camera while the player uses it, otherwise the current game camera, moved onto the hero's interpolated position unless a scripted camera mode is running
 // Leaf: GetCurrentSoundCamera
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049DAA0, 291 bytes (304 with padding), `ret 8` (hidden CCamera result + info).
 //   PDB ?GetCurrentSoundCamera@CWorld@@QBE?AVCCamera@@ABVCInterpolationInfo@@@Z.
 // Callees: CWorld virtual slots 5 GetCurrentRenderCamera(const CInterpolationInfo&) const (0x0049DA00) and 6
 //   GetCurrentRenderCamera() const (0x0049DA60) (rtti-vtables 0x012390F0; overloads in reverse declaration order),
-//   g_pMainGameComponent 0x013B86A0 slot 9 IsEditorActive (0x004197B0), CPlayerManager::GetMainPlayer 0x00449970,
+//   CMainGameComponent::Get() 0x013B86A0 slot 9 IsEditorActive (0x004197B0), CPlayerManager::GetMainPlayer 0x00449970,
 //   CPlayer::GetFreeCamera(float) const 0x00487180, CPlayer::GetPControlledCreature 0x00487DC0 (x2), the current game camera
 //   (+0x34) slots 10 (+0x28, its camera manager by out reference) and 1 (+0x04, the camera at a fraction),
 //   CGameCameraManager::IsUsingScriptedCameraMode 0x00697AE0, CTCPhysicsBase::GetInterpolatedPosition(float) 0x0049D150
@@ -66,12 +68,16 @@ class CAIGameCameraBase { public:
     virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool GetCameraManager(CGameCameraManager*& manager);   // slot 10 (+0x28)
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsEditorActive();                     // slot 9 (+0x24)
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 extern void* g_pSoundManager;                          // 0x013B86E0
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -88,7 +94,7 @@ CCamera CWorld::GetCurrentSoundCamera(const CInterpolationInfo& info) const
     float t = info.Fraction;
     if (!g_pSoundManager)
         return GetCurrentRenderCamera(info);
-    if (g_pMainGameComponent->IsEditorActive())
+    if (CMainGameComponent::Get()->IsEditorActive())
         return GetCurrentRenderCamera();
     CPlayer* player = &PlayerManager->GetMainPlayer();
     if (player->UsingFreeCamera)

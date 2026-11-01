@@ -1,5 +1,7 @@
 // std::__partial_sort(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* middle, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing>*, CDoNotUseBinaryPredicate comp) -- STLport partial sort of the thing-pointer shuffle (heap-sort fallback of the introsort): heapify [first, middle), pop every later element the coin-flip predicate prefers into the heap, then sort the heap
 // Leaf: ??$__partial_sort@
+// Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080A240, 252 bytes, /Gr `__fastcall` (first ecx, middle edx; last, the
 //   value-type pointer and the 4-byte predicate on the stack, `ret 0Ch`), `and esp,-8` frame.
 // Identity: called from the landed __introsort_loop 0x0080AF70 (its depth-limit `partial_sort(first, last, last, comp)`,
@@ -29,12 +31,16 @@ struct CRandomSeed {
     }
 };
 
-class CWorld { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1613c];
     CRandomSeed RandomSeed;                     // +0x1613c
 };
 
-extern CWorld* g_pWorld;                        // 0x013B86A0
 
 class CBaseIntelligentPointer {
 public:
@@ -56,7 +62,7 @@ struct CDoNotUseBinaryPredicate {
     char m_tag;
     bool operator()(const ThingPointer&, const ThingPointer&) const
     {
-        unsigned long bit = g_pWorld->RandomSeed.Random() & 1;
+        unsigned long bit = CMainGameComponent::Get()->RandomSeed.Random() & 1;
         if (bit != 0)
             return false;
         return true;

@@ -3,13 +3,17 @@
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049319C, 227 bytes, `ret 4`. Ego_r.pdb `?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z`.
 // Leaf: ?SetAsInCutscene@CSubtitleRenderer@@
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Callees: PeekGuiDef @ 0x00438570 (`__fastcall`), CFadeInFadeOutBase::Start(float, float, CRGBColour) @ 0x00434840 (landed name),
 //   CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E), ~CCharString @ 0x0099EAE0,
 //   CSubtitleRenderer::SetButton1OverrideText @ 0x0048F7C0 / SetButton2OverrideText @ 0x0048F881, CSubtitleRenderer::Clear(bool)
 //   @ 0x00492BAB, deque<CSubtitleRenderer::CSetTextInfo>::pop_front @ 0x00493CF5 (through the inline STLport queue::pop;
 //   sweep2 1g: was a flat CSetTextInfoQueue::pop binding), virtual slot 45 (+0xB4) of the
 //   main game component's +0x24 -> +0x38 object.
-// Globals: g_pPlayerGui @ 0x013B8790 (its +0x2BC flag follows !inCutscene), g_pMainGameComponent @ 0x013B86A0.
+// Globals: (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790 (its +0x2BC flag follows !inCutscene), CMainGameComponent::Get() @ 0x013B86A0.
 // Shape: frame-pointer size TU (as the landed CSubtitleRenderer rows): one zero register (bl) for the flag stores and tests,
 //   the InCutscene member addressed once (`lea eax`) and re-read after the global store; the GUI def is a named local fetched
 //   before the skip fade's by-value colour (user ctor R,G,B,A in its argument slot), 0.0f and the def's float; each "" caption
@@ -50,12 +54,22 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     static const CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
     unsigned char _pad[0x2bc];
     bool          NotInCutscene;                        // +0x2bc
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 struct CCutsceneListener {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -71,11 +85,15 @@ struct CMainGameSubsystem {
     unsigned char      _pad[0x38];
     CCutsceneListener* Listener;                        // +0x38
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char       _pad[0x24];
     CMainGameSubsystem* Subsystem;                      // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 namespace std {                                         // STLport 4.6 queue over deque (40-byte retail deque)
 template <class _Tp> class allocator {
@@ -124,14 +142,14 @@ void CSubtitleRenderer::SetAsInCutscene(bool inCutscene)
 {
     InCutscene = inCutscene;
     CutsceneSkipped = false;
-    g_pPlayerGui->NotInCutscene = !inCutscene;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().NotInCutscene = !inCutscene;
     if (InCutscene) {
         const CPlayerGuiDef* gui = &CPlayerGui::PeekGuiDef();
         SkipCutsceneTimer.Start(gui->TextBoxCutsceneSecondsBeforeSkip, 0.0f, CRGBColour(0, 0, 0, 255));
         SetButton1OverrideText("");
         SetButton2OverrideText("");
     } else {
-        g_pMainGameComponent->Subsystem->Listener->OnCutsceneEnded();
+        CMainGameComponent::Get()->Subsystem->Listener->OnCutsceneEnded();
         SkipCutsceneTimer.BeginClose();
         Clear(false);
         while (!TextInfoQueue.empty())

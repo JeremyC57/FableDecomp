@@ -1,9 +1,12 @@
 // CUserProfileManager::ApplyValues() -- push the profile's live values (the new-profile set when UseNewProfileValues) to the engine: vibration flag, gamma (renderer or display manager), the five sound-category volumes (zero when muted) plus the headphones flag, then a main-player refresh
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00407370, length 569 bytes, plain `ret` (the last call is a tail jump).
 // Callees: CDisplayManager::SetGamma 0x009BEAA0; the sound system's slot 46 RefreshCategory (+0xb8) and slot 7 (+0x1c,
 //   descriptive SetUsingHeadPhones); CPlayerManager::GetMainPlayerNumber 0x00449700 / IsPlayer 0x00449880 / GetMainPlayer
 //   0x00449970; the main player's +0x0c object's 0x00447390 (descriptive Refresh). The renderer pointer's safe-bool member
-//   0x0040D870. Globals: vibration flag 0x013966F0, g_pMainGameComponent 0x013B86A0 (+0x1c player manager, +0x28 renderer),
+//   0x0040D870. Globals: vibration flag 0x013966F0, CMainGameComponent::Get() 0x013B86A0 (+0x1c player manager, +0x28 renderer),
 //   g_pDisplayManager 0x013B8390, g_pSoundSystem 0x013B8394.
 // Layout: CUserProfileManager (Ego_r.pdb; fields after the first vectors are retail = PDB - 4): UseNewProfileValues +0x0c,
 //   VibrationEnabled +0x0e, Gamma +0x1c, SoundVolume +0x24, MusicVolume +0x28, DialogueVolume +0x2c, UsingHeadPhones
@@ -35,17 +38,21 @@ class CPlayerManager { public:
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1c
     unsigned char   _pad20[0x28 - 0x20];
     CRendererPtr    Renderer;                               // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 class CDisplayManager { public:
     void SetGamma(float gamma, bool b);                     // 0x009BEAA0
 };
-extern CDisplayManager* PDisplayManager;                  // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                  // 0x013B8390
 struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void SetUsingHeadPhones(bool on);               // slot 7 (+0x1c)
@@ -93,18 +100,18 @@ class CUserProfileManager { public:
 void CUserProfileManager::ApplyValues()
 {
     g_bVibrationEnabled = UseNewProfileValues ? VibrationEnabledNewProfile : VibrationEnabled;
-    if (g_pMainGameComponent) {
-        if (g_pMainGameComponent->Renderer) {
+    if (CMainGameComponent::Get()) {
+        if (CMainGameComponent::Get()->Renderer) {
             if (UseNewProfileValues)
-                g_pMainGameComponent->Renderer->Gamma = GammaNewProfile;
+                CMainGameComponent::Get()->Renderer->Gamma = GammaNewProfile;
             else
-                g_pMainGameComponent->Renderer->Gamma = Gamma;
+                CMainGameComponent::Get()->Renderer->Gamma = Gamma;
         }
-    } else if (PDisplayManager) {
+    } else if (GPDisplayManager) {
         if (UseNewProfileValues)
-            PDisplayManager->SetGamma(GammaNewProfile, false);
+            GPDisplayManager->SetGamma(GammaNewProfile, false);
         else
-            PDisplayManager->SetGamma(Gamma, false);
+            GPDisplayManager->SetGamma(Gamma, false);
     }
     if (((CSoundSystem*)PSoundManager)) {
         if (SoundsMuted) {
@@ -131,8 +138,8 @@ void CUserProfileManager::ApplyValues()
             }
         }
     }
-    if (g_pMainGameComponent) {
-        CPlayerManager* players = g_pMainGameComponent->PlayerManager;
+    if (CMainGameComponent::Get()) {
+        CPlayerManager* players = CMainGameComponent::Get()->PlayerManager;
         if (players->IsPlayer(players->GetMainPlayerNumber()))
             players->GetMainPlayer().Object->Refresh();
     }

@@ -1,12 +1,14 @@
 // NHeroInformationScreens::CManager::RemoveAllPlayerModes() -- take every registered screen's player mode off the main player
 // Retail: Fable.exe @ 0x0066E985, 100 bytes, `ret`; frame-pointer size TU (`push ebp ; mov ebp,esp`, `leave`).
-// The main player comes from g_pMainGameComponent (0x013B86A0) -> PPlayerManager (+0x1C) -> GetMainPlayer (0x00449970);
+// The main player comes from CMainGameComponent::Get() (0x013B86A0) -> PPlayerManager (+0x1C) -> GetMainPlayer (0x00449970);
 // a local vector<const CBase*> (zeroed in [ebp-10h]) is filled by GetAllRegisteredScreens (0x0066E941, landed); for
 // each screen the mode from its virtual slot 1 (+4) is removed with CPlayer::RemoveMode (0x00634190). The vector's
 // destructor frees the buffer through the allocator (`if (p) free(p)`, CRT free 0x00BFEA14).
 // Layout: retail NHeroInformationScreens::CManager as the landed 0x0066EA85 / 0x0066E941 (12-byte STLport vectors).
 // Callers 0x004A48E3, 0x0062B448.
 // Leaf: RemoveAllPlayerModes
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Shape: retail keeps the local vector's _M_start in ebx across the loop calls into the destructor (`test ebx,ebx ; push ebx`),
 // which VC7.1 does only when the filler GetAllRegisteredScreens is a same-TU body that never stores the vector's address
 // (declared only, &screens escapes and the destructor re-reads [ebp-10h], 104v100).
@@ -24,11 +26,15 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                      // +0x1c scoped_ptr<CPlayerManager>
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 namespace NHeroInformationScreens {
 class CBase {
 public:
@@ -68,7 +74,7 @@ __declspec(noinline) void CManager::GetAllRegisteredScreens(CVector<const CBase*
 #pragma auto_inline(on)
 void CManager::RemoveAllPlayerModes()
 {
-    CPlayer* player = &g_pMainGameComponent->PPlayerManager->GetMainPlayer();
+    CPlayer* player = &CMainGameComponent::Get()->PPlayerManager->GetMainPlayer();
     unsigned int i = 0;
     CVector<const CBase*> screens;
     GetAllRegisteredScreens(screens);

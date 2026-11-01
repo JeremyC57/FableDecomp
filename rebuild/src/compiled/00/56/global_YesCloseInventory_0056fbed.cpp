@@ -1,5 +1,8 @@
 // YesCloseInventory() -- the "yes" answer of the experience screen's close prompt: if the main player's character is alive, close its experience inventory with undo
 // Leaf: ?YesCloseInventory@@YIXXZ
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- the inlined GetInterface tail is the F88 form (`if (found != map->last && !(type < found->type)) it = found; else it = map->last;` then one `*ppOut = it->component`), which VC7.1 tail-duplicates so the component lands straight in the register retail uses
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056FBED, 112 bytes, `void __fastcall YesCloseInventory()` (FableWin.pdb
 //   `?YesCloseInventory@@YIXXZ`, a free yes/no callback). Frame-pointer size TU, as the neighbouring landed
@@ -17,9 +20,12 @@
 
 class CThing;
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;                                   // +0x00
@@ -44,7 +50,7 @@ struct CInterfaceMap {
 class CThing {
 public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad_0x4c[0x91 - 0x4c];
@@ -75,11 +81,15 @@ class CPlayerManager {
 public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;                   // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
 // 0x0040DCE0 (COMDAT-folded IS_THING_ALIVE<T*> instantiations): the header template, visible here and out of line
 // as in retail, so VC7.1 knows the hero is only read through the reference.
@@ -183,7 +193,7 @@ class CTCInventoryExperience { public:                      // interface type 0x
 
 void __fastcall YesCloseInventory()
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPlayerCharacter();
     if (IS_THING_ALIVE(hero)) {
         CTCInventoryExperience* inventory;
         hero->GetInterface(&inventory, 0x16);

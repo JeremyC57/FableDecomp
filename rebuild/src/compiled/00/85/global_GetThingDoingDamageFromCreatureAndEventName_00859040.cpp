@@ -1,11 +1,13 @@
 // GetThingDoingDamageFromCreatureAndEventName(CThing& creature, const CCharString& eventName, bool useCarrySlot, bool second, bool third) -- the thing whose helper points a strike event uses: the creature's carry-slot item named by the event's first helper point (right/left hand), else its living primary-slot weapon when that has the helper points, else the creature itself when it does, else null
 // Leaf: ?GetThingDoingDamageFromCreatureAndEventName@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00859040, 416 bytes, /Gr __fastcall (creature in ecx, eventName in edx, the three
 //   bools on the stack), `ret 0Ch`.
 // Identity: Ego_r.pdb ?GetThingDoingDamageFromCreatureAndEventName@?A0xad05d24c@@YIPAVCThing@@AAV2@ABVCCharString@@_N22@Z
 //   (the combat TU's anonymous namespace, with GetHelperPointNamesFromStrikeEventName 0x00858E00 and
 //   IsThingWithHelperPoints 0x00856570 beside it).
-// Callees: CMainGameComponent::PeekDefinitionManager 0x00415FBC on g_pMainGameComponent 0x013B86A0,
+// Callees: CMainGameComponent::PeekDefinitionManager 0x00415FBC on CMainGameComponent::Get() 0x013B86A0,
 //   GetHelperPointNamesFromStrikeEventName 0x00858E00, CVectorMap::LowerBound 0x004365B0 (the inline GetTC 0x46:
 //   CTCCarrying), CCharString copy ctor 0x0099EC30 / (const char*, long) ctor 0x0099EBF0 / dtor 0x0099EAE0,
 //   CBasicString<char>::operator==(const char*) 0x004115A0 (the inline CCharString::operator== arm), CGameDefinitionManager::
@@ -121,10 +123,14 @@ public:
     long GetDefGlobalIndexFromName(const CCharString& name) const;              // 0x009AD410
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     const CGameDefinitionManager& PeekDefinitionManager() const;                // 0x00415FBC
 };
-extern CMainGameComponent* g_pMainGameComponent;                                // 0x013B86A0
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -177,7 +183,7 @@ bool __fastcall IsThingWithHelperPoints(const CThing& thing, std::vector<CCharSt
 CThing* __fastcall GetThingDoingDamageFromCreatureAndEventName(CThing& creature, const CCharString& eventName,
                                                               bool useCarrySlot, bool second, bool third)
 {
-    const CGameDefinitionManager& definitions = g_pMainGameComponent->PeekDefinitionManager();
+    const CGameDefinitionManager& definitions = CMainGameComponent::Get()->PeekDefinitionManager();
     std::vector<CCharString> helperPointNames;
     GetHelperPointNamesFromStrikeEventName(eventName, helperPointNames, useCarrySlot, second, third);
     if (creature.HasTC(0x46)) {

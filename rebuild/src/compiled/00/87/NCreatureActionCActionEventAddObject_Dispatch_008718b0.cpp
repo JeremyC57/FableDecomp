@@ -1,9 +1,11 @@
 // NCreatureAction::CActionEventAddObject::Dispatch(const CCreatureActionBase&) -- when the creature can carry: resolve the hand slot and the object def by name, create the object at the creature's position for the main player and put it in that carry slot, optionally tagging it to be destroyed when the action finishes
-// Retry 10b (combined accessor sweeps, FIXES B-4/B-15): the player manager and the script thing are read through inline getters (`g_pMainGameComponent->GetPlayerManager()`, `GetThing()`); plain member reads give the parked register difference.
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
+// Retry 10b (combined accessor sweeps, FIXES B-4/B-15): the player manager and the script thing are read through inline getters (`CMainGameComponent::Get()->GetPlayerManager()`, `GetThing()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008718B0, length 339 bytes (`ret 4`; the action argument is unused).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 70 = bit 6 of the bitset dword at +0x28 =
 //          CTCCarrying), CPlayerManager::GetMainPlayerNumber @ 0x00449700 (manifest "CWorld::DrawGetEnvironment" is
-//          propagated; g_pMainGameComponent @ 0x013B86A0 +0x1c), CThing::GetPos @ 0x004C73D0, CGameDefinitionManager::Get
+//          propagated; CMainGameComponent::Get() @ 0x013B86A0 +0x1c), CThing::GetPos @ 0x004C73D0, CGameDefinitionManager::Get
 //          @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410 (x2), CCharString(const char*, long)
 //          @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("" @ 0x0122D70E, "CTCDestroyThingOnActionFinish" @ 0x0123E144), the
 //          thing-object creator @ 0x00703210 (__fastcall: def in ecx, position in edx; player, orientation, flags, name on the
@@ -83,15 +85,21 @@ class CGameDefinitionManager : public CDefinitionManager { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
     CPlayerManager* GetPlayerManager() const { return PlayerManager; }
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
-CThing* __fastcall CreateThingObject(long defIndex, C3DVector* position, long player, CRightHandedSet* orientation,
-    unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 
 struct CActionEventAddObject {
     virtual ~CActionEventAddObject();
@@ -114,7 +122,7 @@ __forceinline void CActionEventAddObject::CreateObjectInHand(CTCCarrying* carryi
 {
     long objectDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Object);
     if (objectDef > 0) {
-        CThing* thing = CreateThingObject(objectDef, &position, player, &orientation, 0, "");
+        CThing* thing = ((CThing*)CThingObject::Create(objectDef, *(&position), player, (CRightHandedSet const*)(&orientation), 0, ""));
         if (thing != 0 && !(thing->m_flags91 & 1)) {
             carrying->PutThingInCarrySlot(thing, slot, true);
             if (DestroyOnExit)
@@ -127,7 +135,7 @@ void CActionEventAddObject::Dispatch(const CCreatureActionBase& action)
 {
     CTCCarrying* carrying;
     if (GetThing()->GetInterface(&carrying, 70)) {
-        long player = g_pMainGameComponent->GetPlayerManager()->GetMainPlayerNumber();
+        long player = CMainGameComponent::Get()->GetPlayerManager()->GetMainPlayerNumber();
         C3DVector position = GetThing()->GetPos();
         CRightHandedSet orientation;
         long slot = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Hand);

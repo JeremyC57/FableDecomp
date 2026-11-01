@@ -1,4 +1,6 @@
 // CTCTalk::DoesSpeechExist(unsigned long entryID) -- asks the world's dialogue data bank whether the entry exists in this talker's voice group
+// Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E2910, length 48 bytes (ret 4).
 // Callee: CDataBank::GetTextEntryFromGroup(unsigned long, const CCharString&, bool* found, long* index, bool) @ 0x009C9280,
 // called on the data bank held at +0x14 of the global world object @ 0x013B86A0.
@@ -14,11 +16,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CWorld { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x14];
     CDataBank*    PDataBank;                 // +0x14
 };
-extern CWorld* g_pWorld;                     // 0x013B86A0
 
 class CTCTalk { public:
     unsigned char _base[0x38];               // CTCBase + SpeechSample .. UseLipSynching
@@ -28,7 +34,7 @@ class CTCTalk { public:
 
 bool CTCTalk::DoesSpeechExist(unsigned long entryID)
 {
-    CDataBank* bank = g_pWorld->PDataBank;
+    CDataBank* bank = CMainGameComponent::Get()->PDataBank;
     bool found = false;
     bank->GetTextEntryFromGroup(entryID, DialogueVoice, found, 0, false);
     return found;

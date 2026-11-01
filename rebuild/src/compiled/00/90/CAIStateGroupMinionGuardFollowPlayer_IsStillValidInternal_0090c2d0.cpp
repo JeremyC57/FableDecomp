@@ -1,4 +1,6 @@
 // CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool) -- a guard keeps following the live player only while the player is inside a building (thing type 3) and the guard belongs to a village: a closed shop must carry interface 0x53, any other building must not and must have an owned sim definition; then the village's follow frame must have come and a building whose 0xD5 component is flagged must carry interface 0x53
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090C2D0, length 612 bytes (+ int3 padding), `ret 4` (virtual).
 // Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0 (the main game component @ 0x013B86A0, world at +0x24), CPlayer::GetPControlledCreature
 // @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x75 on the player, 0x23 CTCVillageMember, 0xBD the
@@ -125,11 +127,15 @@ class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
     static long __fastcall GetFrame();                        // 0x0049D870
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld* PWorld;                                     // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                                  // +0x18
@@ -147,7 +153,7 @@ struct CAIStateGroup_MinionGuardFollowPlayer : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool)
 {
-    CThing* player = g_pMainGameComponent->PWorld->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* player = CMainGameComponent::Get()->PWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {
         CTCPlayerBuilding* inside;
         if (player->GetInterface(&inside, 0x75) && IsAlive(inside->PBuilding.GetPItem())) {

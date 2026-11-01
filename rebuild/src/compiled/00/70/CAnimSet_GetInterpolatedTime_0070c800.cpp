@@ -1,4 +1,6 @@
 // CAnimSet::GetInterpolatedTime(float alpha, long animIndex) const -- the time into one of the set's animations between the last and current completion fractions: looping sets wrap through the interpolation helper, others lerp linearly, both scaled by the animation's duration
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070C800, length 168 bytes, ret 8, returns float
 // (?GetInterpolatedTime@CAnimSet@@ABEMMJ@Z: private const).
 // Callees: GFGetInterpolatedLoopingValue(float last, float current, float alpha, float range, bool forwards) @ 0x0070BD80
@@ -7,7 +9,7 @@
 // (static __fastcall: the bool in cl, four floats on the stack, ret 0x10); CMeshDataBank::PeekAnimation(unsigned long) const
 // @ 0x00A242C0 (catalog "CTCInventoryAbilities::GetAbilityLevel", propagated; body `return Animations[index]` at +0x380, Ego_r
 // 0x00B60570); C3DAnimationInfo::GetNonLoopingDuration() const @ 0x00A23CE0 (catalog "CMap::DrawGetSeaLevel", propagated;
-// body `fld [ecx+14h]`). Global: g_pMainGameComponent @ 0x013B86A0 (+0x24 World -> +0x3c PMainMeshBank).
+// body `fld [ecx+14h]`). Global: CMainGameComponent::Get() @ 0x013B86A0 (+0x24 World -> +0x3c PMainMeshBank).
 // Shape: Ego_r has the private inline `CAnimSet::PeekAnimInfo(short) const` returning `const C3DAnimationInfo&`; with the bank
 // in a named local it keeps retail's split index load (`mov ax,[..]` early, `movsx eax,ax` after the World/bank chain).
 // Last/Current are copied into two float locals first (Last loaded first); the Looping bit (bit 0 of +0x51) picks the
@@ -29,11 +31,15 @@ class CWorld { public:
     unsigned char _pad[0x3c];
     CMeshDataBank* PMainMeshBank;                  // +0x3c
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld* World;                                 // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 float __fastcall GFGetInterpolatedLoopingValue(float last, float current, float alpha, float range, bool forwards);   // 0x0070BD80
 
@@ -59,7 +65,7 @@ public:
 private:
     const C3DAnimationInfo& PeekAnimInfo(short anim) const
     {
-        CMeshDataBank* bank = g_pMainGameComponent->World->PMainMeshBank;
+        CMeshDataBank* bank = CMainGameComponent::Get()->World->PMainMeshBank;
         return *bank->PeekAnimation(anim);
     }
 public:

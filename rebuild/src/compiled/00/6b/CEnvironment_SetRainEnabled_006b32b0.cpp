@@ -1,4 +1,6 @@
 // CEnvironment::SetRainEnabled(bool enabled) -- push the rain override to the weather renderer (slot 80 of the renderer reached through the engine globals: -1.0f when enabled, 0.0f when not) and record the flag in RainEnabled
+// Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B32B0, length 60 bytes.
 // Callees: virtual slot 80 (+0x140) of the object at g_pEngineGlobals(0x013B86A0)->+0x28->+0x2c (a float argument pushed as an immediate:
 // 0xBF800000 / 0). Shape: the global is read before the prologue, the chain and the vtable are loaded before the branch, the flag byte
@@ -24,16 +26,20 @@ struct CEngineRenderers_006b32b0 {
     IWeatherOverride_006b32b0* m_pWeather;         // +0x2c
 };
 
-struct CEngineGlobals_006b32b0 {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char              _pad[0x28];
     CEngineRenderers_006b32b0* m_pRenderers;       // +0x28
 };
 
-extern CEngineGlobals_006b32b0* g_pEngineGlobals_013b86a0;   // 0x013B86A0
 
 static inline IWeatherOverride_006b32b0* GetWeatherOverride_006b32b0()
 {
-    return g_pEngineGlobals_013b86a0->m_pRenderers->m_pWeather;
+    return CMainGameComponent::Get()->m_pRenderers->m_pWeather;
 }
 
 class CEnvironment { public:

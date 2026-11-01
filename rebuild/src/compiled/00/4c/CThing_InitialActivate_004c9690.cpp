@@ -1,11 +1,15 @@
 // CThing::InitialActivate() -- advance the initialisation stage, mark activated, join the manager's update list, run each live component's initial-activate hook over a copy of the component map, and hide things whose def is not drawable (outside the special engine mode)
 // Leaf: ?InitialActivate@CThing
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9690, 274 bytes (+14 int3), virtual, `ret`.
 // Callees: CThingManager::AddToUpdateList(CThing*) @ 0x0051EC50, the component map's (CVectorMap) copy constructor
 //   @ 0x004CC290, each component's virtual slot 5 (+0x14), the engine singleton's virtual slot 9 (+0x24; name not
 //   recovered), the def's virtual slot 1 (+4) at a zero count, this thing's virtual slot 28 (+0x70) with false,
 //   free @ 0x00BFEA14.
-// Globals: g_pThingManager 0x013B8A1C, the engine singleton 0x013B86A0.
+// Globals: CThing::GetPCurrentThingManager() 0x013B8A1C, the engine singleton 0x013B86A0.
 // Layout: the landed CThing ctor 0x004C9030 / OnCreate 0x004C9560 (components +0x44, PBaseDef +0x70, flag bytes
 //   +0x91..+0x94); CThingBaseDef IsDrawable is bit 4 of +0x41 (PDB +0x45).
 // Shape: the stage increment and the Activated bit are one read-modify-write each; the component pass is the OnCreate
@@ -43,13 +47,16 @@ class CThing;
 class CThingManager { public:
     void AddToUpdateList(CThing* thing);         // 0x0051EC50
 };
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsSpecialMode();                // slot 9 (+0x24; name not recovered)
 };
-extern CEngine* g_pEngine;                       // 0x013B86A0
-extern CThingManager* g_pThingManager;           // 0x013B8A1C
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void OnInitialActivate();            // slot 5 (+0x14)
@@ -79,7 +86,12 @@ __declspec(noinline) CComponentVector::CComponentVector(const CComponentVector& 
     _M_end_of_storage = last;
 }
 #pragma auto_inline(on)
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -128,7 +140,7 @@ void CThing::InitialActivate()
 {
     ++InitialisationStage;
     Activated = true;
-    g_pThingManager->AddToUpdateList(this);
+    CThing::GetPCurrentThingManager()->AddToUpdateList(this);
     CComponentVector components(Components);
     SComponentPair* end = components._M_finish;
     for (SComponentPair* it = components._M_start; it != end; ++it) {
@@ -136,7 +148,7 @@ void CThing::InitialActivate()
         if (!component->ToBeRemoved)
             component->OnInitialActivate();
     }
-    bool hide = !g_pEngine->IsSpecialMode() && GetPBaseDef() && !GetPBaseDef()->IsDrawable;
+    bool hide = !CMainGameComponent::Get()->IsSpecialMode() && GetPBaseDef() && !GetPBaseDef()->IsDrawable;
     if (hide)
         SetDrawable(false);
 }

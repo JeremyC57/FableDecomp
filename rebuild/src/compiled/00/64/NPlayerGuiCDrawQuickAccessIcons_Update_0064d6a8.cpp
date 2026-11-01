@@ -3,12 +3,17 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::Update() -- advance the quick-access charge: while charging, a held button whose activation time passes the charge level fires the "charge complete" game event (0x27, the hero's player number, the ability) and starts the completion fade, otherwise the level grows by one frame; the completion fade then runs down by one frame
 // Leaf: Update
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064D6A8, length 254 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, IS_THING_ALIVE<CThing*> @ 0x0043DBD0,
 // CDrawQuickAccessIcons::GetActivationTimeForButton(long) @ 0x0064B5C1 (float), CMemoryBuffer::Copy @ 0x009F1760,
-// CMainGameComponent::AddGameEvent @ 0x0041649C (on 0x013B86A0), __security_check_cookie @ 0x00BFE9F9. Globals: EPSILON 0x0129BA3C,
-// g_framesPerSecond 0x01375550 (int), 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
+// CMainGameComponent::AddGameEvent @ 0x0041649C (on 0x013B86A0), __security_check_cookie @ 0x00BFE9F9. Globals: DELTA_NOTIONAL_ZERO 0x0129BA3C,
+// CMainGameComponent::GetConstantFPS() 0x01375550 (int), 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
 // Layout: CDrawQuickAccessIcons as ToggleCharge 0x0064D92A (ChargingAbility +0x2c, ChargeLevel +0x30, Charging +0x34, ChargeComplete
 // +0x35, ChargeFade +0x38); CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527; the hero's player byte +0x90.
 class CThing { public: unsigned char _pad[0x90]; unsigned char PlayerNumber; };   // +0x90 (descriptive)
@@ -35,10 +40,18 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddLONG(long value) { Copy(4, &value); }
 };
-class CMainGameComponent { public: void AddGameEvent(const CGameEvent& event); };   // 0x0041649C
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
-extern const float EPSILON; // 0x0129BA3C
-extern long  g_framesPerSecond;                   // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: void AddGameEvent(const CGameEvent& event); };   // 0x0041649C
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C
 namespace NPlayerGui {
 class CDrawQuickAccessIcons { public:
     void*           _vtable;
@@ -60,21 +73,21 @@ void CDrawQuickAccessIcons::Update()
         return;
     if (Charging) {
         float level = GetActivationTimeForButton(ChargingAbility);
-        if (level > EPSILON) {
+        if (level > DELTA_NOTIONAL_ZERO) {
             if (level <= ChargeLevel) {
                 CGameEvent event(0x27);
                 event.Player = hero->PlayerNumber;
                 event.AddLONG(ChargingAbility);
-                g_pMainGameComponent->AddGameEvent(event);
+                CMainGameComponent::Get()->AddGameEvent(event);
                 Charging = false;
                 ChargeComplete = true;
                 ChargeFade = 0.5f;
             } else
-                ChargeLevel += 1.0f / g_framesPerSecond;
+                ChargeLevel += 1.0f / CMainGameComponent::GetConstantFPS();
         }
     }
     if (ChargeComplete) {
-        ChargeFade -= 1.0f / g_framesPerSecond;
+        ChargeFade -= 1.0f / CMainGameComponent::GetConstantFPS();
         if (ChargeFade <= 0.0f)
             ChargeComplete = false;
     }

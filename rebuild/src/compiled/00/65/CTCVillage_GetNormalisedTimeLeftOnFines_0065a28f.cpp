@@ -1,4 +1,7 @@
 // CTCVillage::GetNormalisedTimeLeftOnFines() -- for the village region's fines: the longest time left, in frames, before a guard forgets one of the hero's recorded crimes, as a fraction of that crime's knowledge life (0 when the region has no fines)
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065A28F, length 397 bytes (`leave`, plain `ret`): frame-pointer size TU,
 //   `#pragma optimize("y", off)` + `#pragma optimize("s", on)` as the landed sibling GetRegionLeavingDurationForCurrentCrimes
 //   0x0065A5BB.
@@ -23,9 +26,12 @@
 class CTCBase;
 class C3DVector { public: float x, y, z; };
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -39,7 +45,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
@@ -64,11 +70,15 @@ class CWorld { public:
     static long __fastcall GetFrame();   // 0x0049D870
     static long GetFramesSince(long frame) { return GetFrame() - frame; }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern long g_framesPerSecond;                  // 0x01375550
 class CDefinitionManager { public:
     static long& FramesPerSecond() { return g_framesPerSecond; }
@@ -172,7 +182,7 @@ float CTCVillage::GetNormalisedTimeLeftOnFines()
     if (def.Object && def->HasFines) {
         long longest = 0;
         long life = 1;
-        CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->World->GetCurrentPlayer()->GetPControlledCreature();
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->HasTC(0x51))

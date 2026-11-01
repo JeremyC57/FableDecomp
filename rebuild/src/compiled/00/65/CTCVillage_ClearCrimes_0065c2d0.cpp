@@ -1,9 +1,12 @@
 // CTCVillage::ClearCrimes() -- forget every crime the hero's deed log still knows (RemoveCrime on each handle), then reset the fines paid and the crime-enemy flag
 // Leaf: ?ClearCrimes@CTCVillage
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C2D0, 158 bytes, thiscall `leave ; ret`. Name: Ego_r.pdb `?ClearCrimes@CTCVillage@@QAEXXZ`
 // (name set); the landed callers EnableGuards 0x0065C45A ("most likely ClearCrimes") and PayFines 0x0065C760 call it,
 // plus 0x004A547E, 0x0065C54F, 0x006A95CB, 0x007B36FE, 0x007E2BEF.
-// Callees: CWorld::PeekMyPlayer 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24), CPlayer::GetPControlledCreature 0x00487DC0,
+// Callees: CWorld::PeekMyPlayer 0x0049D9D0 (CMainGameComponent::Get() 0x013B86A0 +0x24), CPlayer::GetPControlledCreature 0x00487DC0,
 // std::bitset::test 0x00410DE0 (interface 0x51 = CTCHeroOpinionDeedLog), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // 0x0040F020, _Rb_global<bool>::_M_increment 0x004292C0 (cdecl), CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0,
 // CTCVillage::RemoveCrime 0x0065C146 (landed).
@@ -20,9 +23,12 @@
 #pragma optimize("s", on)
 class CTCBase;
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -36,7 +42,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }
@@ -68,11 +74,15 @@ public:
     CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
 private:           // 0x0049D9D0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld*       World;                        // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CTCHeroOpinionDeedLog { public:
     class COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
@@ -118,7 +128,7 @@ class CTCVillage { public:
 
 void CTCVillage::ClearCrimes()
 {
-    CThing* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)((CWorld*)(CMainGameComponent::Get()->World))->PeekMyPlayer())->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

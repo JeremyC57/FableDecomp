@@ -1,5 +1,7 @@
 // CTCJackPillar::Enable(bool enable) -- switch the pillar's physics and its switchable navigation; enabling plays the RISE animation, spawns the def's RISE_UP_EFFECT at the pillar and shows it, disabling hides it unless the game is loading
 // Leaf: Enable
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007317D0, 413 bytes (+int3), `ret 4`, esp frame (speed TU).
 // Callees: the physics' slots 36/43/44 (+0x90 / +0xAC / +0xB0; names descriptive), CVectorMap::LowerBound @ 0x0040F020
 //   (inline GetInterface 0x79 / 0x83 over the bitset words +0x2C / +0x30), CTCSwitchableNavigation 0x00787580 (manifest
@@ -129,7 +131,9 @@ public:
         return component;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 class CTCSwitchableNavigation { public:                      // interface 0x79
 public:
     void SetAsBlockingNavigation(bool);   // 0x00787580
@@ -137,12 +141,16 @@ public:
 class CTCAnimatingObject { public:                           // interface 0x83
     void PlayAnimation(const CCharString& name, long a, bool b);   // 0x007F90B0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool IsLoading();                         // slot 9 (+0x24) (name descriptive)
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 
 class CTCJackPillar { public:
     virtual void v00();
@@ -170,13 +178,13 @@ void CTCJackPillar::Enable(bool enable)
         if (effects) {
             effects->GetEffectFromString("RISE_UP_EFFECT", effectType);
             if (effectType)
-                CreateEffectThing(effectType, &ParentThing->GetPos(), false);
+                CTCDParticleEmitter::Create(effectType, *(&ParentThing->GetPos()), false);
         }
         ParentThing->SetVisible(true);
         if (effects && --effects->m_refCount == 0)
             effects->Destroy();
     } else {
-        if (!g_pMainGameComponent->IsLoading())
+        if (!CMainGameComponent::Get()->IsLoading())
             ParentThing->SetVisible(false);
     }
 }

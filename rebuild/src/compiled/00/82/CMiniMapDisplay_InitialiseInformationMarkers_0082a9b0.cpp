@@ -1,5 +1,7 @@
 // CMiniMapDisplay::InitialiseInformationMarkers() -- with a region loaded and the main player's creature alive: look up the four body-guard def indices and the hero's followed component (0xbc); for every information thing in the current region that carries the information flag, add a marker: the body-guard graphic ([8].Secondary) when it is one of the hero's followers of a body-guard def, else the information graphic ([2].Secondary)
 // Leaf: ?InitialiseInformationMarkers@CMiniMapDisplay
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082A9B0, 529 bytes (`ret`).
 // Callees: CPlayerManager::GetMainPlayer() const 0x00449960, CPlayer::PeekPControlledCreature 0x00487DD0, CCharString 0x0099EBF0 /
 //   ~ 0x0099EAE0, CGameDefinitionManager::Get 0x0044C6B0 (static __fastcall) / GetDefGlobalIndexFromName 0x009AD410,
@@ -114,13 +116,17 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     const CPlayerManager* PPlayerManager;          // +0x1c
     unsigned char   _pad20[4];
     CWorld*         PWorld;                        // +0x24 scoped_ptr<CWorld>
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CRegion;
 class CMiniMapDisplay { public:
     virtual void v00();
@@ -133,7 +139,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseInformationMarkers()
 {
     if (m_pRegion) {
-        const CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().PeekPControlledCreature();
+        const CThing* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().PeekPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             long bodyGuard = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD");
             long bodyGuardWeak = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_WEAK");
@@ -142,7 +148,7 @@ void CMiniMapDisplay::InitialiseInformationMarkers()
             const CTCFollowed* followed = 0;
             if (hero->HasTC(0xbc))
                 followed = hero->GetTC<CTCFollowed>(0xbc);
-            CWorld* world = g_pMainGameComponent->PWorld;
+            CWorld* world = CMainGameComponent::Get()->PWorld;
             CWorldMap* worldMap = world->GetWorldMap();
             list<CThing*>& things = world->GetThingManager()->Lists->InformationThings;
             for (_List_node<CThing*>* node = things._M_node->_M_next; node != things._M_node; node = node->_M_next) {

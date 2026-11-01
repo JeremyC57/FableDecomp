@@ -3,6 +3,10 @@
 // pixels of an edge push the owning hero's creature back towards the middle (rotated into its movement frame, scaled and
 // clamped); count the frames the spirit spends off screen and after five seconds' worth make it return to the hero
 // Leaf: UpdateScreenRestrictingForces
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 //
 // Retail 0x0066FC90, 655 bytes, plain `ret`.
 // Callees: the display's GetScreenArea @ 0x00434B50 (C2DBoxF by hidden pointer), CThing::GetPos @ 0x004C73D0, the
@@ -39,12 +43,20 @@ struct CDisplay {
     CCamera* PCamera;                                        // +0x2c
     C2DBoxF GetScreenArea() const;                           // 0x00434B50
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x28];
     CDisplay* PDisplay;                                      // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;             // 0x013B86A0
-extern long g_framesPerSecond;                               // 0x01375550
 extern float g_spiritOffScreenSeconds;                       // 0x0137EA24
 class CTCPhysicsBase { public: void ApplyAcceleration(const C3DVector& acceleration); };   // 0x006B0210
 class CThing { public:
@@ -87,7 +99,7 @@ class CTCCoopSpirit : public CTCBase { public:
 
 void CTCCoopSpirit::UpdateScreenRestrictingForces()
 {
-    CDisplay* display = g_pMainGameComponent->PDisplay;
+    CDisplay* display = CMainGameComponent::Get()->PDisplay;
     CCamera* camera = display->PCamera;
     C2DBoxF area = display->GetScreenArea();
     const C3DVector& position = ParentThing->GetPos();
@@ -135,7 +147,7 @@ void CTCCoopSpirit::UpdateScreenRestrictingForces()
         ++OffScreenFrames;
     else
         OffScreenFrames = 0;
-    if (OffScreenFrames > (long)((float)g_framesPerSecond * g_spiritOffScreenSeconds)) {
+    if (OffScreenFrames > (long)((float)CMainGameComponent::GetConstantFPS() * g_spiritOffScreenSeconds)) {
         OffScreenFrames = 0;
         CThingCreatureBase* parent = ParentThing;
         parent->SetCurrentAction(CCreatureAction_SpiritReturnToHero(parent));

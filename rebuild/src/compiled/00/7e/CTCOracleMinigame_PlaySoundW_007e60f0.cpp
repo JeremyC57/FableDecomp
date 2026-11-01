@@ -1,9 +1,11 @@
 // CTCOracleMinigame::PlaySoundW(const CCharString& sound) -- play a sample-bank sound by symbol on the minigame thing's sound player (interface 0x10): the symbol's index as a one-sound pair with default play settings; the invalid handle when the thing has no player or the symbol is unknown
 // Leaf: PlaySoundW
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E60F0, 183 bytes (`ret 4`; PDB ?PlaySoundW@CTCOracleMinigame@@QAEKABVCCharString@@@Z --
 //   the name carries the <windows.h> PlaySound -> PlaySoundW macro).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CASoundBank::GetSoundIndexFromSymbol(const CCharString&)
-//   const @ 0x00A01920 (g_pMainGameComponent @ 0x013B86A0 ->PSampleBank +0x10), CTCSoundPlayer::PlayAttachedSample(const CSoundPair&,
+//   const @ 0x00A01920 (CMainGameComponent::Get() @ 0x013B86A0 ->PSampleBank +0x10), CTCSoundPlayer::PlayAttachedSample(const CSoundPair&,
 //   const CSoundInit&, bool, bool, bool) @ 0x0066B280 (PDB QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z; three landed callers declare it
 //   `void PlaySound(...)`, but the result is this function's return value). g_InvalidSoundHandle @ 0x0129D25C.
 // Layout: Ego_r.pdb CSoundPair {FirstSound, LastSound}, CSoundInit {Volume, Pitch, Pan, NoPlays, PlaybackType, GainFaderBits,
@@ -17,11 +19,15 @@ extern unsigned long g_InvalidSoundHandle;              // 0x0129D25C
 class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x10];
     CASoundBank*  PSampleBank;                          // +0x10
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CSoundPair { public:
     long FirstSound;                                    // +0x00
     long LastSound;                                     // +0x04
@@ -82,7 +88,7 @@ unsigned long CTCOracleMinigame::PlaySoundW(const CCharString& sound)
 {
     CTCSoundPlayer* player;
     if (ParentThing->GetInterface(&player, 0x10)) {
-        CASoundBank* bank = g_pMainGameComponent->PSampleBank;
+        CASoundBank* bank = CMainGameComponent::Get()->PSampleBank;
         long index = bank->GetSoundIndexFromSymbol(sound);
         if (index != 0) {
             return player->PlayAttachedSample(CSoundPair(index, index), CSoundInit(), true, false, false);

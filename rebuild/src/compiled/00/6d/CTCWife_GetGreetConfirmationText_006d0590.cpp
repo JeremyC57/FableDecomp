@@ -1,9 +1,11 @@
 // CTCWife::GetGreetConfirmationText(CWideString&) -- the greet prompt: "go to bed" for a married wife offering sex, "marry me" for a willing one
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D0590, 148 bytes (+12 int3). __fastcall, `ret 4`, returns bool.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::IsOfferingSex() 0x006CEEA0; CTCWife::IsWillingToMarry()
 //          0x006CFEC0; CCharString(const char*, long) 0x0099EBF0; ~CCharString 0x0099EAE0; CDataBank::GetTextBySymbol(const
 //          CCharString&) 0x009C95E0 (CWideString by value); CWideString::operator= 0x0099B7D0; ~CWideString 0x0099B510.
-//          Globals: g_pMainGameComponent 0x013B86A0 (text data bank at +0x14); strings 0x0125EEEC "TEXT_GUI_WIFE_GO_TO_BED",
+//          Globals: CMainGameComponent::Get() 0x013B86A0 (text data bank at +0x14); strings 0x0125EEEC "TEXT_GUI_WIFE_GO_TO_BED",
 //          0x0125EED4 "TEXT_GUI_WIFE_MARRY_ME".
 // Shape: married (FrameGotMarriedToThePlayer <= world frame) arm first; each arm builds a named CCharString symbol
 //        (`lea edx ; push edx`) and reads the bank into a named local AFTER it, which keeps the ctor call in each arm
@@ -26,11 +28,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x14];
     CDataBank* TextBank;                         // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 class CTCWife { public:
     virtual void v00();
     unsigned char _pad_0x04[0x20 - 0x04];
@@ -44,13 +50,13 @@ bool CTCWife::GetGreetConfirmationText(CWideString& text) const
     if (FrameGotMarriedToThePlayer <= CWorld::GetFrame()) {
         if (IsOfferingSex()) {
             CCharString symbol("TEXT_GUI_WIFE_GO_TO_BED", -1);
-            CDataBank* bank = g_pMainGameComponent->TextBank;
+            CDataBank* bank = CMainGameComponent::Get()->TextBank;
             text = bank->GetTextBySymbol(symbol);
             return true;
         }
     } else if (IsWillingToMarry()) {
         CCharString symbol("TEXT_GUI_WIFE_MARRY_ME", -1);
-        CDataBank* bank = g_pMainGameComponent->TextBank;
+        CDataBank* bank = CMainGameComponent::Get()->TextBank;
         text = bank->GetTextBySymbol(symbol);
         return true;
     }

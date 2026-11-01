@@ -1,4 +1,6 @@
 // CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front) -- draw the minimap sprite (switching the prison-courtyard map on the hero's height and the Headsman's Hill half on its y), then its markers
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail 0x0082BE60, 511 bytes, `ret 0x10`.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970 (label "Catch" is wrong), GetPControlledCreature 0x00487DC0, __fastcall
 //   PeekGuiDef 0x00438570, the hero's position getter 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" is wrong),
@@ -62,11 +64,15 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
    // 0x00449970
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CMinimapNode {                              // map<CCharString, long> node
     unsigned char _pad00[0x10];
     CCharString   Name;                            // +0x10
@@ -96,7 +102,7 @@ class CMiniMapDisplay { public:
 
 void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front)
 {
-    CHero* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
+    CHero* hero = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1) || MiniMapGraphic <= 0)
         return;
     long layer = 0x44;

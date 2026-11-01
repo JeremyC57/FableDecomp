@@ -1,4 +1,6 @@
 // (the short widened inside the accessor puts the movsx in eax and the marker-graphic load in ecx/edx, as retail)
+// Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // CMiniMapDisplay::InitialiseDemonDoorMarkers() -- for every demon door in the currently loaded region whose minimap flag is set, add an automatic marker with the demon-door marker graphic
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082ADD0, length 171 bytes (`ret`).
 // Callees: CWorld::PeekWorldMap (slot 13) and PeekThingManager (slot 4) through the game singleton 0x013B86A0 (+0x24 world),
@@ -61,11 +63,15 @@ class CWorld { public:
     virtual void v11(); virtual void v12();
     virtual CWorldMap* PeekWorldMap();          // slot 13 (+0x34)
 };
-class CGame { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       World;                        // +0x24
 };
-extern CGame* g_pGame;                          // 0x013B86A0
 class CRegion;
 class CMiniMapDisplay : public CMiniMapDisplayDonor {
  public:
@@ -77,7 +83,7 @@ void CMiniMapDisplay::InitialiseDemonDoorMarkers()
 {
     if (!PRegion)
         return;
-    CWorld* world = g_pGame->World;
+    CWorld* world = CMainGameComponent::Get()->World;
     CWorldMap* map = world->PeekWorldMap();
     CThingList& doors = world->PeekThingManager()->PDemonDoorRegistry->DemonDoors;
     for (CThingList::node* n = doors.head->next; n != doors.head; n = n->next) {

@@ -1,11 +1,13 @@
 // CPlayer::InitModeControlCreature(EPlayerMode mode, CProcessedInput* input) -- entering the control-creature mode attaches the eighteen walking/combat input processes to the player interface and, with a player character present, switches the display to a fresh third-person view, sets the character's controlled movement type and levels the controlled creature's facing pitch
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00633D80, length 398 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?InitModeControlCreature@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a
 // CPlayer::PlayerModeInfo InitFunc; UninitModeControlCreature 0x00633420 is landed).
 // Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, eighteen processes),
 // CBaseIntelligentPointer::GetPItem 0x00A01B50, operator new 0x00BFEA1A (0x9C bytes),
 // NDisplayView::CView3DThirdPerson::CView3DThirdPerson 0x0069E940, CDisplayViewManager::SetView(CViewBase*) 0x00640050
-// (g_pMainGameComponent 0x013B86A0 -> display engine +0x28 -> view manager +0xE0), CPlayer::PeekPControlledCreature
+// (CMainGameComponent::Get() 0x013B86A0 -> display engine +0x28 -> view manager +0xE0), CPlayer::PeekPControlledCreature
 // 0x00487DD0, CPlayer::GetPControlledCreature 0x00487DC0, the physics component's slot 67 (+0x10C, SetFacingAngleYZ(float)).
 // Layout: engine/CPlayer.h (the scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, PlayerCharacter +0x34) through
 // the lane's CPlayer carrier; the player creature's ControlledMovementType at retail +0x17C (PDB +0x1A4),
@@ -86,11 +88,15 @@ class CDisplayEngine { public:
     unsigned char        _pad00[0xe0];
     CDisplayViewManager* ViewManager;                   // +0xe0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                      // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 class CPlayer : public CPlayerPdb { public:
     CIntelligentPointer<CThingPlayerCreature>& PlayerCharacterPointer() { return *reinterpret_cast<CIntelligentPointer<CThingPlayerCreature>*>(PlayerCharacter); }
@@ -121,7 +127,7 @@ void CPlayer::InitModeControlCreature(EPlayerMode mode, CProcessedInput* input)
     reinterpret_cast<CAInputProcess*>(InputProcessWatchForControlAngleChange_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessToggleViewHeroMode_ptr)->AddToInterface(PlayerInterface);
     if (PlayerCharacterPointer().GetPItem()) {
-        g_pMainGameComponent->DisplayEngine->ViewManager->SetView(new NDisplayView::CView3DThirdPerson);
+        CMainGameComponent::Get()->DisplayEngine->ViewManager->SetView(new NDisplayView::CView3DThirdPerson);
         PlayerCharacterPointer().GetPItem()->ControlledMovementType = 1;
         if (IsThingAlive(PeekPControlledCreature()))
             GetPControlledCreature()->GetPhysicsTC()->SetFacingAngleYZ(0.0f);

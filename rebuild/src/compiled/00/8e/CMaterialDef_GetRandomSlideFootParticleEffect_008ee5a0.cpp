@@ -1,5 +1,7 @@
 // CMaterialDef::GetRandomSlideFootParticleEffect() const -- a random id from the material's SlideFootParticleEffect list (0 when the list is empty)
 // Leaf: ?GetRandomSlideFootParticleEffect@CMaterialDef@@QBEJXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008ee5a0, 85 bytes, thiscall, `ret`.
 // Identity (proven): Ego_r.pdb ?GetRandomSlideFootParticleEffect@CMaterialDef@@QBEJXZ over Ego_r.pdb CMaterialDef::SlideFootParticleEffect (vector<long>, PDB +84, retail +0x50: the five effect vectors are consecutive 12-byte STLport vectors, the landed GetRandomBerserkedSwordHitParticleEffect 0x008EE720 reads the fifth at +0x80); caller CreateDustEffectForCreature 0x008F7950 (landed).
 // Callees: CWorld::GetLocalSeed() const 0x0049D800 (Ego_r.pdb ?GetLocalSeed@CWorld@@QBEPAKXZ: &Component->LocalSeed) on the main
@@ -24,11 +26,15 @@ public:
     T* operator->() const { return ptr; }
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char      _pad00[0x24];
     scoped_ptr<CWorld> PWorld;                             // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {     // STLport 4.6, 12 bytes
@@ -51,7 +57,7 @@ public:
 long CMaterialDef::GetRandomSlideFootParticleEffect() const
 {
     if (!SlideFootParticleEffect.empty()) {
-        unsigned long* seed = g_pMainGameComponent->PWorld->GetLocalSeed();
+        unsigned long* seed = CMainGameComponent::Get()->PWorld->GetLocalSeed();
         return SlideFootParticleEffect[GFRandom(SlideFootParticleEffect.size(), seed)];
     }
     return 0;

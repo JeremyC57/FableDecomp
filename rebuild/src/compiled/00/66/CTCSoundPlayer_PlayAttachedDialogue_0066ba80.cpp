@@ -1,11 +1,13 @@
 // CTCSoundPlayer::PlayAttachedDialogue(unsigned long textID, bool flag1, bool flag2, bool altFader, bool flag4) -- play a dialogue line attached to the owner: resolve the text entry (a group entry directly, else the entry for the owner's talk voice), find its sound bank and the "SND_"-prefixed sample, then play it with the dialogue fader (0x20 when altFader, else 0x8040); 0 when anything is missing
 // Leaf: ?PlayAttachedDialogue@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BA80, 368 bytes (350 without padding), thiscall `ret 14h`, unsigned long in eax.
 //   Ego_r.pdb `?PlayAttachedDialogue@CTCSoundPlayer@@QAEKK_N000@Z`; called from 0x0066BF23 and
 //   CCreatureAction_PerformExpression::Initialise 0x008469B3.
 // Callees: CBankFile::GetEntryDataType(unsigned long) const 0x009CC210, NGameText::CDataBank::GetPGroupEntry(unsigned long, bool)
 //   const 0x009C9070 (CIVCountedPointer<const CGroupEntry> by hidden pointer into the dead textID slot) and
-//   GetTextEntryFromGroup(unsigned long, const CCharString&, bool&, long*, bool) const 0x009C9280 (on g_pMainGameComponent
+//   GetTextEntryFromGroup(unsigned long, const CCharString&, bool&, long*, bool) const 0x009C9280 (on CMainGameComponent::Get()
 //   0x013B86A0 +0x14); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (interface 0xF CTCTalk, bit 15 of
 //   +0x20); CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0 / operator+(const char*, const CCharString&)
 //   0x0099F690 ("SND_" 0x01239ED4); the sound-bank symbol map lookup 0x009917E0 (g_pSoundBankMap 0x013B8394, label
@@ -133,11 +135,15 @@ public:
 };
 }
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PTextBank;                   // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 
 class CASoundBank {
 public:
@@ -172,7 +178,7 @@ private:
 unsigned long CTCSoundPlayer::PlayAttachedDialogue(unsigned long textID, bool flag1, bool flag2, bool altFader, bool flag4)
 {
     if (textID > 0) {
-        NGameText::CDataBank* bank = g_pMainGameComponent->PTextBank;
+        NGameText::CDataBank* bank = CMainGameComponent::Get()->PTextBank;
         const NGameText::CTextEntry* entry;
         if (bank->GetEntryDataType(textID) == 0) {
             CIVCountedPointer<const NGameText::CTextEntry> group = bank->GetPTextEntry(textID, true);

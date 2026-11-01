@@ -1,6 +1,8 @@
 // CInputProcessBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- forward the input to the main hero's betting component (component kind 0x102) while betting input is enabled
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the map Find written as the ternary entry pick (`((it == last || kind < it->kind) ? last : it)->tc`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Leaf: ProcessInput
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691560, length 105 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (player manager at CMainGameComponent +0x1c, the component global
 // @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020; the component's
@@ -51,11 +53,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 extern bool g_bBettingInputEnabled;                // 0x013BAE1D
 class CTCBetting : public CTCBase { public:
     void ProcessInputIfEnabled(const CInputEvent& event, CProcessedInput& processed, CInputProcessBetting* process)
@@ -74,7 +80,7 @@ public:
 
 void CInputProcessBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero->HasTC(0x102)) {
         static_cast<CTCBetting*>(hero->GetTC(0x102))->ProcessInputIfEnabled(event, processed, this);
     }

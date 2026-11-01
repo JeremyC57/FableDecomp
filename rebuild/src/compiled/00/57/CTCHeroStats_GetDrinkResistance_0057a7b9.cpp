@@ -1,5 +1,7 @@
 // CTCHeroStats::GetDrinkResistance() const -- the GUI text for the hero's drink resistance: level 1..5 from the drink multiplier, looked up as the text symbol "<prefix><level>"
 // Leaf: GetDrinkResistance
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057A7B9, length 111 bytes, `ret 4` (hidden CWideString result). Size-optimised
 // TU (`#pragma optimize("s", on)`: `push 5 ; pop eax`, `xor eax,eax ; inc eax`, frame pointer), as the landed Drink 0x0057A82A.
 // Callees: __ftol2 @ 0x00BFEA70, the `__fastcall` GFIntToCharString(long) @ 0x0099F830 and operator+(const char*, const
@@ -23,11 +25,15 @@ public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
-extern CEngine* g_pEngine;                      // 0x013B86A0
 class CThing;
 class CTCHeroStats {
 public:
@@ -46,5 +52,5 @@ CWideString CTCHeroStats::GetDrinkResistance() const
     if (level > 5)
         level = 5;
     CCharString symbol = "TEXT_GUI_STATS_LABEL_DRINKERCLASS" + GFIntToCharString(level);
-    return g_pEngine->PGameTextDataBank->GetTextBySymbol(symbol);
+    return CMainGameComponent::Get()->PGameTextDataBank->GetTextBySymbol(symbol);
 }

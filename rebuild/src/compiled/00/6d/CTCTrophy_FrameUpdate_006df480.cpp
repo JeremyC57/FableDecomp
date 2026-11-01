@@ -1,13 +1,17 @@
 // CTCTrophy::FrameUpdate() -- trophy minigame tick: plays pending witness sounds; while the minigame runs (and the thing manager is not paused) counts the frames down, and either times out (out-of-time sound, "time up" dialog, wait for terminate) or updates the quest-info minigame display (time fraction, witnesses gained, witness total)
 // Leaf: ?FrameUpdate@CTCTrophy
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DF480, 292 bytes (plain `ret`).
 // Callees: CTCTrophy::UpdateGainedWitnessSounds() 0x006DEE80; CTCBase::GetThingManager() 0x00686AE0 (x2);
 //          CTCTrophy::PlaySound(const CCharString&) 0x006DDCD0; CCharString(const char*, long) 0x0099EBF0
 //          ("TEXT_GUI_TROPHY_TIME_UP" 0x0125FE78); NGameText::CDataBank::GetTextBySymbol(const CCharString&) 0x009C95E0
-//          (text bank g_pMainGameComponent +0x14); ~CCharString 0x0099EAE0; CWideString(const wchar_t*) 0x0099B6B0
+//          (text bank CMainGameComponent::Get() +0x14); ~CCharString 0x0099EAE0; CWideString(const wchar_t*) 0x0099B6B0
 //          (L"" 0x0122D70C, x3); CWideString(const CWideString&) 0x0099B720; CTCTrophy::StartDialogBox(CWideString,
 //          unsigned long, CWideString, CWideString, CWideString) 0x006DD7E0; ~CWideString 0x0099B510;
-//          CDrawQuestInfo::UpdateMiniGame(float, long, long) 0x00644EFD (g_pPlayerGui +0x1c8).
+//          CDrawQuestInfo::UpdateMiniGame(float, long, long) 0x00644EFD ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) +0x1c8).
 // Layout (retail, PDB - 0x10 after the two 4-byte lists): CTCTrophy PDef +0x0c, MinigameInProgress +0x14,
 //          MinigameInitialFramesLeft +0x1c, MinigameCurrentFramesLeft +0x20, MinigameStartingWitnessCount +0x24,
 //          NumberOfWitnessesLeft +0x28, WaitingForTerminate +0x3e; CTrophyDef::SoundOutOfTime +0x54 (PDB offset holds);
@@ -32,19 +36,33 @@ class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;   // 0x009C95E0
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char        _pad_0x00[0x14];
     NGameText::CDataBank* PTextBank;            // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CDrawQuestInfo {
     void UpdateMiniGame(float timeFraction, long gained, long total);   // 0x00644EFD
+};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
     unsigned char   _pad_0x00[0x1c8];
     CDrawQuestInfo* PDrawQuestInfo;             // +0x1c8
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CThingManager { public:
     unsigned char _pad_0x00[0x54];
@@ -90,7 +108,7 @@ void CTCTrophy::FrameUpdate()
     long framesLeft = --MinigameCurrentFramesLeft;
     if (framesLeft <= 0) {
         PlaySound(PDef->SoundOutOfTime);
-        CWideString text = g_pMainGameComponent->PTextBank->GetTextBySymbol("TEXT_GUI_TROPHY_TIME_UP");
+        CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_TROPHY_TIME_UP");
         StartDialogBox(text, 10, L"", L"", L"");
         WaitingForTerminate = true;
         return;
@@ -99,6 +117,6 @@ void CTCTrophy::FrameUpdate()
     long initialFrames = MinigameInitialFramesLeft;
     if (initialFrames > 0)
         fraction = (float)framesLeft / ((float)initialFrames * 2.0f);
-    g_pPlayerGui->PDrawQuestInfo->UpdateMiniGame(fraction, MinigameStartingWitnessCount - NumberOfWitnessesLeft,
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PDrawQuestInfo->UpdateMiniGame(fraction, MinigameStartingWitnessCount - NumberOfWitnessesLeft,
                                                  MinigameStartingWitnessCount);
 }

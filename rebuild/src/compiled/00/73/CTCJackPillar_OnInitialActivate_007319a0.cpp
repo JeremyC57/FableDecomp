@@ -1,4 +1,6 @@
 // CTCJackPillar::OnInitialActivate() -- unless the engine globals' slot-9 query says otherwise, the pillar starts disabled
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007319A0, 29 bytes (+3 int3). rtti-vtables: CTCJackPillar 0x01266E84 slot 6.
 // Callees: virtual slot 9 (+0x24, returns bool; name unknown -- the landed CMap::IsCameraPassableAt 0x0081F460
 //          calls the same slot) of the engine-globals object behind the pointer @ 0x013B86A0 (the landed
@@ -10,13 +12,17 @@
 // CTCJackPillar itself is 12 bytes in the PDB, i.e. CTCBase only).
 #include "engine/CTCBase.h"
 
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08();
     virtual bool QuerySlot9();                // slot 9 (+0x24), name unknown
 };
-extern CEngineGlobals* g_pEngineGlobals;      // 0x013B86A0
 
 class CTCJackPillar : public CTCBase { public:
     void Enable(bool enable);                 // 0x007317D0
@@ -25,6 +31,6 @@ class CTCJackPillar : public CTCBase { public:
 
 void CTCJackPillar::OnInitialActivate()
 {
-    if (!g_pEngineGlobals->QuerySlot9())
+    if (!CMainGameComponent::Get()->QuerySlot9())
         Enable(false);
 }

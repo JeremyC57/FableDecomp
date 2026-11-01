@@ -1,9 +1,11 @@
 // CThingManager::RuntimeLoadEntities(long map, set<CCharString>* names, vector<CThing*>* things) -- unless the main game component says otherwise (virtual slot 9), load a map's runtime-persisted entities: the level-persistent entity script, the (non-empty) game-persistent entity script, then the game-persistent binary save data, flagging the manager as loading while it runs
 // Leaf: ?RuntimeLoadEntities@CThingManager
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00522720, length 349 bytes (+3 int3), `ret 0Ch`.
 //   Name and arguments from the catalog / engine_api (`CThingManager::RuntimeLoadEntities(long, set<CCharString>*,
 //   vector<CThing*>*)`).
-// Callees: g_pMainGameComponent (0x013B86A0) virtual slot 9 (+0x24), CThingManager::LoadEntitiesFromScript @ 0x00520D00,
+// Callees: CMainGameComponent::Get() (0x013B86A0) virtual slot 9 (+0x24), CThingManager::LoadEntitiesFromScript @ 0x00520D00,
 //   CEntityRuntimePersistence::GetGamePersistentSaveData(long, CArray<unsigned char>&) @ 0x00522530,
 //   CMemoryDataInputStream(void*, unsigned long) @ 0x00994930, its destructor @ 0x00993B10 (manifest
 //   "~CChunkedFileChunk", propagated), CThingManager::LoadEntitiesBinary @ 0x00521240, free @ 0x00BFEA14.
@@ -71,12 +73,16 @@ class CMemoryDataInputStream { public:
     virtual ~CMemoryDataInputStream();                                  // 0x00993B10
 };
 
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual bool v09();                                 // slot 9 (+0x24): true skips the load (unnamed)
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 class CThingManager { public:
     unsigned char             _pad00[0x9c];
@@ -92,7 +98,7 @@ class CThingManager { public:
 
 void CThingManager::RuntimeLoadEntities(long map, set<CCharString>* names, vector<CThing*>* things)
 {
-    if (g_pMainGameComponent->v09())
+    if (CMainGameComponent::Get()->v09())
         return;
     LoadingEntitiesFromSaveGame = true;
     const CEntityScriptInfo* levelInfo = EntityRuntimePersistence.GetLevelPersistentScriptInfo(map);

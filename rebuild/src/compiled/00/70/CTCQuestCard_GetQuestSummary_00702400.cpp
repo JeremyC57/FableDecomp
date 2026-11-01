@@ -1,5 +1,7 @@
 // CTCQuestCard::GetQuestSummary() const -- the game text of the quest card def's QuestSummary tag (looked up in the game-text data bank), else the empty wide string
 // Leaf: GetQuestSummary
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00702400, 112 bytes, `ret 4` (hidden CWideString result).
 // Callees: NGameText::CDataBank::GetPGroupEntry(unsigned long, bool) const @ 0x009C9070 (CIVCountedPointer by hidden pointer),
 //   NGameText::CGroupEntry::GetText() const @ 0x009C7A40 (CWideString by hidden pointer), CWideString::CWideString(const
@@ -47,11 +49,15 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
-extern CEngine* g_pEngine;                      // 0x013B86A0
 class CDefPointeeBase { public: virtual void v00(); long m_refCount; };
 class CQuestCardDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
@@ -76,7 +82,7 @@ public:
 CWideString CTCQuestCard::GetQuestSummary() const
 {
     if (PDef->QuestSummary > 0) {
-        CIVCountedPointer<const NGameText::CTextEntry> entry = g_pEngine->PGameTextDataBank->GetPTextEntry(PDef->QuestSummary, true);
+        CIVCountedPointer<const NGameText::CTextEntry> entry = CMainGameComponent::Get()->PGameTextDataBank->GetPTextEntry(PDef->QuestSummary, true);
         if (entry.Data)
             return entry->GetText();
     }

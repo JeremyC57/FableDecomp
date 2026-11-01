@@ -1,5 +1,7 @@
 // CTCHeroCentre::OpenTrainingScreen() -- if the hero still has the training tutorial to see, show it and wait for it to finish; otherwise, for a hero that can train, queue game event 0x1a (open the training screen, payload 0xb) for the main player
 // Leaf: OpenTrainingScreen
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 //
 // Retail 0x0077D4B0, 256 bytes incl. padding (plain `ret`, /GS cookie 0x0139C8A8). Ego_r.pdb `?OpenTrainingScreen@CTCHeroCentre@@...`.
@@ -7,7 +9,7 @@
 // CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for
 // CTCHero, type 0x29 = bit 9 of the bitset word +0x24, the component null-tested in ecx), CTCHero::GiveTutorialForCategory
 // (ETutorialCategory, bool) @ 0x006C9FA0 (category 0xf), CMemoryBuffer::Copy @ 0x009F1760, CPlayerManager::GetMainPlayerNumber
-// @ 0x00449700, CMainGameComponent::AddGameEvent @ 0x0041649C on g_pMainGameComponent 0x013B86A0, __security_check_cookie
+// @ 0x00449700, CMainGameComponent::AddGameEvent @ 0x0041649C on CMainGameComponent::Get() 0x013B86A0, __security_check_cookie
 // @ 0x00BFE9F9.
 // Layout: Ego_r.pdb CTCHeroCentre with retail 12-byte vectors: WaitingForTutorialToFinish +0x30 (PDB +0x38; the engine header
 // carries the PDB offsets); retail CThing bitset +0x20 (type 0x16 = bit 22 of the first word), interface map +0x44, dead bit +0x91.
@@ -70,10 +72,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
@@ -106,7 +112,7 @@ void CTCHeroCentre::OpenTrainingScreen()
             CGameEvent event(0x1a);
             event.AddULONG(0xb);
             event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
-            g_pMainGameComponent->AddGameEvent(event);
+            CMainGameComponent::Get()->AddGameEvent(event);
         }
     }
 }

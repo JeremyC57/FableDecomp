@@ -1,5 +1,7 @@
 // CSubtitleRenderer::InitPlayerMode() -- swap the main player's subtitle player mode: remove the mode added last time, then add the one the display flags ask for (and remember it); the two button-prompt modes also fill an empty button 1 text with TEXT_GUI_NEXT, or empty button 1 / button 2 texts with TEXT_GUI_CONFIRM / TEXT_GUI_CANCEL
 // Leaf: ?InitPlayerMode@CSubtitleRenderer@@AAEXXZ
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048F939, 359 bytes, thiscall `ret`; frame-pointer size TU (as the landed CSubtitleRenderer rows).
 // Identity (proven): (1) Ego_r.pdb names ?InitPlayerMode@CSubtitleRenderer@@AAEXXZ (private, no arguments), the only
 //   CSubtitleRenderer method about player modes; (2) the body reads and writes Ego_r PlayerModeAdded (EPlayerMode, Ego_r +0x80,
@@ -9,7 +11,7 @@
 //   CSubtitleRenderer::GetTextFromTextTag 0x0048F6BD with the L"TEXT_GUI_NEXT" / L"TEXT_GUI_CONFIRM" / L"TEXT_GUI_CANCEL"
 //   tags (0x0123817C / 0x012381C0 / 0x012381E4); its only caller is 0x00492B4F.
 // Label: the catalog's "CSubtitleRenderer_ProcessPlayerModes" is behavioural.
-// Callees: CPlayerManager::GetMainPlayer() 0x00449970 (on g_pMainGameComponent 0x013B86A0 ->PPlayerManager +0x1C),
+// Callees: CPlayerManager::GetMainPlayer() 0x00449970 (on CMainGameComponent::Get() 0x013B86A0 ->PPlayerManager +0x1C),
 //   CPlayer::RemoveMode(EPlayerMode) 0x00634190, CPlayer::AddMode(EPlayerMode, bool) 0x006345C0, wcscmp 0x00BFE94C (import),
 //   the STLport operator==(const wstring&, const wchar_t*) 0x00404280 (cdecl), CWideString(const unsigned short*) 0x0099B6B0,
 //   CSubtitleRenderer::GetTextFromTextTag 0x0048F6BD, ~CWideString 0x0099B510. L"" 0x0122D70C.
@@ -87,11 +89,15 @@ public:
     T* operator->() const { return ptr; }
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char              _pad00[0x1C];
     scoped_ptr<CPlayerManager> PPlayerManager;          // +0x1C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 class CSubtitleRenderer : public CSubtitleRendererLayout {   // engine/CSubtitleRenderer.h (retail offsets: Button1Text +0x64,
 public:                                                 //   Button2Text +0x68, DisplayFlags +0x7C, PlayerModeAdded +0x90)
@@ -102,7 +108,7 @@ private:
 
 void CSubtitleRenderer::InitPlayerMode()
 {
-    CPlayer& player = g_pMainGameComponent->PPlayerManager->GetMainPlayer();
+    CPlayer& player = CMainGameComponent::Get()->PPlayerManager->GetMainPlayer();
     if (reinterpret_cast<EPlayerMode&>(PlayerModeAdded) != 0) {
         player.RemoveMode(reinterpret_cast<EPlayerMode&>(PlayerModeAdded));
         reinterpret_cast<EPlayerMode&>(PlayerModeAdded) = (EPlayerMode)0;

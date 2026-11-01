@@ -1,5 +1,7 @@
 // CDisplayEngine::RenderHeroDrunkenness(const CInterpolationInfo&) const -- lets the hero's stats draw the drunkenness screen effect
 // Leaf: ?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00435070, 94 bytes, `ret 4`. Catalog label CGameScriptInterface::DisplayTutorial is wrong. Evidence: the only
 // caller is CDisplayEngine::DoRender 0x004357D8 (this = the display engine); it pushes this->Engine3D (+0x2c) into
 // CTCHeroStats::RenderHeroDrunkenness 0x0057B43F; Ego_r.pdb ?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z.
@@ -139,12 +141,16 @@ public:
     void RenderHeroDrunkenness(CIEngine* engine);                    // 0x0057B43F
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                      // +0x1c
     CPlayerManager* GetPlayerManager() const { return PPlayerManager; }
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 class CDisplayEngine {
 public:
     unsigned char _pad00[0x2c];
@@ -154,7 +160,7 @@ public:
 
 void CDisplayEngine::RenderHeroDrunkenness(const CInterpolationInfo& info) const
 {
-    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = CMainGameComponent::Get()->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     CTCHeroStats* stats;
     if (hero && hero->GetTC(&stats))
     {

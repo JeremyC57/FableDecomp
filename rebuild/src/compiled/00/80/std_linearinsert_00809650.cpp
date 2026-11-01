@@ -1,5 +1,7 @@
 // std::__linear_insert(CIntelligentPointer<CThing>* first, CIntelligentPointer<CThing>* last, CIntelligentPointer<CThing> val, CDoNotUseBinaryPredicate comp) -- STLport insertion-sort step under the coin-flip predicate: either shift [first, last) up one and put val first, or hand val to __unguarded_linear_insert
 // Leaf: ??$__linear_insert@
+// Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00809650, 172 bytes, /Gr `__fastcall` (first ecx, last edx, the 8-byte pointer and the
 //   4-byte predicate on the stack, `ret 0Ch`); the callee destroys its by-value pointer.
 // Identity (proven): bound ??$__linear_insert@PAV?$CIntelligentPointer@VCThing@@@@V1@UCDoNotUseBinaryPredicate@...; the only
@@ -25,12 +27,16 @@ struct CRandomSeed {
     }
 };
 
-class CWorld { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1613c];
     CRandomSeed RandomSeed;                     // +0x1613c
 };
 
-extern CWorld* g_pWorld;                        // 0x013B86A0
 
 class CBaseIntelligentPointer {
 public:
@@ -52,7 +58,7 @@ struct CDoNotUseBinaryPredicate {
     char m_tag;
     bool operator()(const ThingPointer&, const ThingPointer&) const
     {
-        unsigned long bit = g_pWorld->RandomSeed.Random() & 1;
+        unsigned long bit = CMainGameComponent::Get()->RandomSeed.Random() & 1;
         if (bit != 0)
             return false;
         return true;

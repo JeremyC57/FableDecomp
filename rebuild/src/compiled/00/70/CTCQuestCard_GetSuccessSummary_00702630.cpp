@@ -1,5 +1,7 @@
 // CTCQuestCard::GetSuccessSummary() const -- the game text of the quest card def's SuccessSummary tag (looked up in the game-text data bank), else the empty wide string
 // Leaf: GetSuccessSummary
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Label: catalog "CTCQuestCard::GetQuestSummary" (byte twin of 0x00702400); this body reads CQuestCardDef +0x34 = SuccessSummary.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00702630, 112 bytes, `ret 4` (hidden CWideString result).
 // Callees: NGameText::CDataBank::GetPGroupEntry(unsigned long, bool) const @ 0x009C9070 (CIVCountedPointer by hidden pointer),
@@ -48,11 +50,15 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
-extern CEngine* g_pEngine;                      // 0x013B86A0
 class CDefPointeeBase { public: virtual void v00(); long m_refCount; };
 class CQuestCardDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x28 - 0x08];
@@ -77,7 +83,7 @@ public:
 CWideString CTCQuestCard::GetSuccessSummary() const
 {
     if (PDef->SuccessSummary > 0) {
-        CIVCountedPointer<const NGameText::CTextEntry> entry = g_pEngine->PGameTextDataBank->GetPTextEntry(PDef->SuccessSummary, true);
+        CIVCountedPointer<const NGameText::CTextEntry> entry = CMainGameComponent::Get()->PGameTextDataBank->GetPTextEntry(PDef->SuccessSummary, true);
         if (entry.Data)
             return entry->GetText();
     }

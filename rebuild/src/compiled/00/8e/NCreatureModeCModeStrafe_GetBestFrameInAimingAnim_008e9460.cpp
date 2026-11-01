@@ -3,6 +3,9 @@
 //   as a fraction of a turn, clamped to [1/90, 151/360], mapped onto the aiming animation's frame range as a 0..1 fraction;
 //   returns false when the direction is degenerate
 // Leaf: GetBestFrameInAimingAnim
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E9460, 683 bytes (`ret 4`).
 // Callees: CTCGraphicAppearance::GetDummyObject 0x004C08C0 ("WEAPON_FOCUS_01" 0x0126515C), CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   CVectorMap::LowerBound const 0x004365B0 (inline GetTC 8, unchecked miss path), driver slot 70 (+0x118, GetForward),
@@ -31,7 +34,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -122,11 +125,15 @@ struct CEngineWorld {
     unsigned char       _pad0[0x34];
     CGameCameraManager* m_pCameraManager;               // +0x34
 };
-struct CEngineCalls {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad0[0x24];
     CEngineWorld* m_pWorld;                             // +0x24
 };
-extern CEngineCalls* g_pEngine;                         // 0x013B86A0
 struct CModeBase {
     virtual void v00();
     CThing* ParentThing;                                // +0x04
@@ -155,7 +162,7 @@ bool CModeStrafe::GetBestFrameInAimingAnim(float& frame)
         validTarget = true;
     if (ParentThing->GetPlayer().IsFirstPersonTargeting() || ParentThing->GetPlayer().m_bLockedOn) {
         CCamera* camera;
-        g_pEngine->m_pWorld->m_pCameraManager->GetCurrentCamera(&camera);
+        CMainGameComponent::Get()->m_pWorld->m_pCameraManager->GetCurrentCamera(&camera);
         direction = camera->Forward;
     } else {
         C3DVector targetPos;
@@ -163,7 +170,7 @@ bool CModeStrafe::GetBestFrameInAimingAnim(float& frame)
             direction = targetPos - focus;
     }
     float length2 = direction.GetLength2();
-    if (length2 > EPSILON * EPSILON) {
+    if (length2 > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         float cosAngle = direction.Z * (1.0f / (float)sqrt(length2));
         if (cosAngle < -1.0f)
             cosAngle = -1.0f;

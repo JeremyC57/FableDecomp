@@ -1,5 +1,7 @@
 // GetProjectileTrailElementFromPoint(const C3DVector& point) -- (file-local, anonymous namespace) the two edge points of a projectile's weapon-trail element at a point: half of an eighth of the render camera's up vector below and above the point
 // Leaf: ?GetProjectileTrailElementFromPoint@
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076DEB0, 216 bytes (+8 int3), `__fastcall` (hidden pair result in ecx,
 //   point in edx), `ret`.
 // Name: FableWin.pdb `?GetProjectileTrailElementFromPoint@?A0x22d77832@@YI?AU?$pair@VC3DVector@@V1@@std@@ABVC3DVector@@@Z`
@@ -61,17 +63,21 @@ public:
     unsigned char _pad_0x00[0x34];
     CGameCameraManager* m_pCameraManager;               // +0x34
 };
-class CEngineCalls {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x24];
     CGameWorldCalls* m_pWorld;                          // +0x24
 };
-extern CEngineCalls* g_pEngine;                         // 0x013B86A0
 
 namespace {
 std::pair<C3DVector, C3DVector> __fastcall GetProjectileTrailElementFromPoint(const C3DVector& point)
 {
-    CCamera camera = g_pEngine->m_pWorld->m_pCameraManager->GetRenderCamera(1.0f);
+    CCamera camera = CMainGameComponent::Get()->m_pWorld->m_pCameraManager->GetRenderCamera(1.0f);
     C3DVector offset = camera.RHSet.Up * 0.125f;
     return std::pair<C3DVector, C3DVector>(point - offset * 0.5f, offset * 0.5f + point);
 }

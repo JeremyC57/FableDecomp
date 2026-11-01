@@ -1,5 +1,7 @@
 // CMiniMapDisplay::InitialiseTraderMarkers() -- when a region is loaded, add a minimap marker (player GUI def marker graphics[9]) for every live creature in the current region that is a shopkeeper (interfaces 0x53 and 0x90) whose shop is open
 // Leaf: InitialiseTraderMarkers
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082AE80, 277 bytes (+ int3 padding).
 // Callees: the game's world (0x013B86A0 +0x24) slots 4 (+0x10, thing manager) and 13 (+0x34, world map);
 //   CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / GetCurrentRegionNumber 0x004FB150 (labelled CWorld::DrawGetEnvironment),
@@ -92,11 +94,15 @@ class CWorld { public:
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                          // +0x24 scoped_ptr<CWorld>
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CRegion;
 class CMiniMapDisplay { public:
     virtual void v00();
@@ -109,7 +115,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseTraderMarkers()
 {
     if (m_pRegion) {
-        CWorld* world = g_pMainGameComponent->PWorld;
+        CWorld* world = CMainGameComponent::Get()->PWorld;
         CWorldMap* worldMap = world->GetWorldMap();
         list<CThing*>& creatures = world->GetThingManager()->Lists->Creatures;
         for (_List_node<CThing*>* node = creatures._M_node->_M_next; node != creatures._M_node; node = node->_M_next) {

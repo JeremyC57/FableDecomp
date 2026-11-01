@@ -1,4 +1,6 @@
 // CPlayer::SetControlledCreature(CThingPlayerCreature* creature) -- make the creature both the player character and the controlled creature, switch the display to a fresh third-person view, re-arm the initial player mode and reset the game camera
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: MATCH (retry 9) -- the InitialPlayerModeSet clear is a plain member store (through a retail-offset view of the
 //   object) written BEFORE the camera expression: VC7.1 then hoists the World load above the byte store (same base,
 //   different offset) and keeps the store ahead of the camera read; a store through a `bool*` computed from the header
@@ -7,11 +9,11 @@
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (twice
 //   each), operator new 0x00BFEA1A, CView3DThirdPerson::CView3DThirdPerson() 0x0069E940, CDisplayViewManager::SetView
 //   0x00640050, the current game camera's virtual slot 9 (+0x24, fills an out pointer), CGameCameraManager::ResetCamera
-//   0x0069A990; global g_pMainGameComponent 0x013B86A0.
+//   0x0069A990; global CMainGameComponent::Get() 0x013B86A0.
 // Shape: each assignment is `member = CIntelligentPointer<CThingPlayerCreature>(creature)`: a temporary intelligent
 //   pointer (vtable 0x01231C4C) in the frame, the inline operator= (`SetPItem(other.GetPItem())`), then its destructor;
 //   PlayerCharacter (+0x34) first, ControlledCreature (+0x2C) second. The view is `new CView3DThirdPerson` (null-tested
-//   ctor call) handed to g_pMainGameComponent->PDisplayEngine (+0x28, Ego_r.pdb)->PViewManager (+0xE0, the counted
+//   ctor call) handed to CMainGameComponent::Get()->PDisplayEngine (+0x28, Ego_r.pdb)->PViewManager (+0xE0, the counted
 //   pointer's data); the new-expression is evaluated before the global chain is loaded. InitialPlayerModeSet is retail
 //   +0x216 (PDB +0x21E: retail PlayerModes is 8 bytes narrower), stored as a real member of a retail-offset view
 //   struct (the header's pad holds that byte) before the world's current game camera (CWorld +0x34, PCurrentGameCamera
@@ -53,11 +55,15 @@ class CDisplayEngine { public:
     unsigned char        _pad00[0xE0];
     CDisplayViewManager* PViewManager;                      // +0xE0 (CCountedPointer<CDisplayViewManager>::Data)
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                         // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 
 class CGameCameraManager { public:
     void ResetCamera();                                     // 0x0069A990
@@ -86,7 +92,7 @@ void CPlayer_Methods::SetControlledCreature(CThingPlayerCreature* creature)
 {
     PlayerCharacterPointer() = CIntelligentPointer<CThingPlayerCreature>(creature);
     ControlledCreaturePointer() = CIntelligentPointer<CThingPlayerCreature>(creature);
-    g_pMainGameComponent->PDisplayEngine->PViewManager->SetView(new CView3DThirdPerson);
+    CMainGameComponent::Get()->PDisplayEngine->PViewManager->SetView(new CView3DThirdPerson);
     CGameCameraManager* manager;
     reinterpret_cast<CPlayerRetailFlags*>(this)->InitialPlayerModeSet = false;   // +0x216 (PDB +0x21E)
     CAIGameCameraBase* camera = reinterpret_cast<CWorldCameraView*>(World)->PCurrentGameCamera;

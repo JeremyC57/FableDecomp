@@ -1,8 +1,10 @@
 // NCreatureMode::IsAvailableForHeroRun(const CThing& thing) -- running is available to the idle main-player hero in a stand (1), weapon-stand (4) or berserk (0x24) mode, not casting lightning and not carrying a too-heavy weapon
 // Leaf: ?IsAvailableForHeroRun@NCreatureMode@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F560, length 154 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsAvailableForHeroRun@NCreatureMode@@YI_NABVCThing@@@Z.
-// Callees: CPlayerManager::IsThingMainPlayer 0x004497C0 (g_pMainGameComponent 0x013B86A0 +0x1C), CThingCreatureBase::
+// Callees: CPlayerManager::IsThingMainPlayer 0x004497C0 (CMainGameComponent::Get() 0x013B86A0 +0x1C), CThingCreatureBase::
 //   IsPerformingAnyAction 0x006622A0, CVectorMap LowerBound 0x004365B0 (const), GetCurrentMode 0x0073A6E0, the mode's slot 1,
 //   NCreatureMode::IsCarryingTooHeavyWeapon 0x0085EF70 (same TU). Interface 0x94 = CTCWillLightning.
 // Data: the run-option byte @ 0x013756EA.
@@ -140,11 +142,15 @@ public:
     bool IsThingMainPlayer(const CThing& thing) const;  // 0x004497C0
 };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CTCHeroSpecialMovement {                          // interface 0xDF
 public:
     bool IsAvailableForSprint() const;                  // 0x007E0700
@@ -158,7 +164,7 @@ bool __fastcall IsCarryingTooHeavyWeapon(const CThing& thing);
 bool __fastcall NCreatureMode::IsAvailableForHeroRun(const CThing& thing)
 {
     const CThingCreatureBase& creature = (const CThingCreatureBase&)thing;
-    if (g_bHeroRunOption && g_pMainGameComponent->PlayerManager->IsThingMainPlayer(thing) && !creature.IsPerformingAnyAction()
+    if (g_bHeroRunOption && CMainGameComponent::Get()->PlayerManager->IsThingMainPlayer(thing) && !creature.IsPerformingAnyAction()
         && thing.HasTC(0x31)) {
         long mode = thing.GetModeManager()->GetCurrentMode().GetType();
         if ((mode == 1 || mode == 4 || mode == 0x24) && !thing.HasTC(0x94) && !IsCarryingTooHeavyWeapon(thing))

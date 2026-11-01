@@ -1,5 +1,7 @@
 // CTCWife::Unmarry(bool keepHouseUnrented) -- for a wife married to the player: hand her home back (the house component's occupant cleared, re-rented and optionally un-rented), hide the attraction icon, forget the wedding frame, tell the living hero's stats she is no longer married, and ask for a new brain
 // Leaf: ?Unmarry@CTCWife
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CFF10, 269 bytes (+3 int3), `ret 4`.
 // Callees: CWorld::GetWorldFrame() @ 0x0049D870 (static), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, on the
 //   creature's HomeBuilding), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (house component type 0xD5 =
@@ -7,7 +9,7 @@
 //   "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated; called with 0) and CTCBuyableHouse::SetRented(bool)
 //   @ 0x006C1150, CTCWife::SetAttractionIcon(bool, float, unsigned char) @ 0x006CFC90, CPlayerManager::GetMainPlayer
 //   @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CTCHeroStats::SetMarriageState(CThingAICreature*, EMarriageState)
-//   @ 0x0057BC6E. Global g_pMainGameComponent 0x013B86A0 (PlayerManager +0x1C).
+//   @ 0x0057BC6E. Global CMainGameComponent::Get() 0x013B86A0 (PlayerManager +0x1C).
 // Layout: CTCWife ParentThing +0x04 (CTCBase; engine/CTCWife.h leaves it as padding, so the landed CTCWife::Died
 //   0x006D0020 local model is used), FrameGotMarriedToThePlayer +0x20, NeedsToChangeBrain +0x26; CThingAICreature
 //   HomeBuilding +0x168 (the landed ctor 0x00831F80).
@@ -79,11 +81,15 @@ class CPlayer { public:
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 class CTCHeroStats { public:
     void SetMarriageState(CThingAICreature* spouse, long state);   // 0x0057BC6E
 };
@@ -118,7 +124,7 @@ void CTCWife::Unmarry(bool keepHouseUnrented)
         }
         SetAttractionIcon(false, 1.0f, 255);
         FrameGotMarriedToThePlayer = 0x7fffffff;
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+        CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->Flags91 & 1)) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

@@ -1,11 +1,13 @@
 // CTCDRegionExit::~CTCDRegionExit() -- a region exit dying while it holds the screen in letterbox mode (and the world still shows it) ends the letterbox and tells the living hero's region display to finish showing the region name; then the entrance pointer and the CTCBase go
 // Leaf: ??1CTCDRegionExit
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007795A0, 167 bytes (plain `ret`). Vtable 0x0126AB54.
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80, CDisplayEngine::EndLetterBox @ 0x004349D0 on the main game component's +0x28 (the landed
 // body 0x004349D0 clears its +0x7c/+0x7d flags; Ego_r.pdb puts PDisplayEngine at +0x28), CTCBase::GetPlayerManager() @ 0x00686D40,
 // CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::
 // LowerBound @ 0x0040F020, CTCRegionDisplay::FinishShowingRegionName @ 0x00639930, ~CBaseIntelligentPointer @ 0x00A01C10,
-// ~CTCBase @ 0x00686830. Global: g_pMainGameComponent @ 0x013B86A0.
+// ~CTCBase @ 0x00686830. Global: CMainGameComponent::Get() @ 0x013B86A0.
 // Layout: Ego_r.pdb CTCDRegionExit: InLetterBoxMode +0x0d, PEntranceConnectedTo +0x2a (unaligned: the pointer classes are
 // `pack(1)`); the world's letterbox-shown flag at +0xdf (named descriptively); the hero's region display = interface 0x8e
 // (bit 14 of the +0x30 word, `test ch,40h`).
@@ -62,11 +64,15 @@ class CWorld { public:
 class CDisplayEngine { public:
     void EndLetterBox();                                // 0x004349D0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                     // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 #pragma pack(push, 1)
 class CBaseObject;
 class CBaseObjectPointer;
@@ -112,7 +118,7 @@ class CTCDRegionExit : public CTCBase { public:                       // vtable 
 CTCDRegionExit::~CTCDRegionExit()
 {
     if (InLetterBoxMode && PeekWorld().LetterBoxShown) {
-        g_pMainGameComponent->PDisplayEngine->EndLetterBox();
+        CMainGameComponent::Get()->PDisplayEngine->EndLetterBox();
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (IsThingAlive(hero)) {
             CTCRegionDisplay* display;

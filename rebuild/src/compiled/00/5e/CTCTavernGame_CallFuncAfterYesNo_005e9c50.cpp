@@ -1,10 +1,14 @@
 // CTCTavernGame::CallFuncAfterYesNo(CWideString text, CWideString yesText, void (__fastcall *yesFunc)(), CWideString noText, void (__fastcall *noFunc)()) -- show a yes/no subtitle prompt, announce it with game event 9, remember the two answer callbacks and enter the yes/no wait state 45 (or leave the game when a quit is pending)
 // Leaf: CallFuncAfterYesNo
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E9C50, 268 bytes, `ret 14h` (the three CWideString arguments are destroyed here),
 //   /GS cookie 0x0139C8A8 / __security_check_cookie 0x00BFE9F9. Ego_r.pdb `?CallFuncAfterYesNo@CTCTavernGame@@IAEXVCWideString@@0P6IXXZ01@Z`.
 // Callees: CWideString(const wchar_t*) @ 0x0099B6B0 (L"" @ 0x0122D70C), CSubtitleRenderer::SetText(CFontBank*, const CWideString&
-//   x4, unsigned long, float, bool, bool) @ 0x00492F69 (on g_pPlayerGui @ 0x013B8790 +0x18; font g_pMainGameComponent
+//   x4, unsigned long, float, bool, bool) @ 0x00492F69 (on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790 +0x18; font CMainGameComponent::Get()
 //   @ 0x013B86A0 +0x1614C), ~CWideString @ 0x0099B510 (x4), CMemoryBuffer::Copy @ 0x009F1760 (inline CGameEvent::AddBOOL),
 //   CMainGameComponent::AddGameEvent @ 0x0041649C, the virtual LeaveGame (slot 30, +0x78). Quit flag @ 0x013BAE1C.
 // Layout: retail CTCTavernGame sits 0x1C below Ego_r.pdb (landed SetStateAfterTime 0x005E9B70): YesFunc +0xB4, NoFunc +0xB8,
@@ -28,11 +32,21 @@ public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
 };
@@ -46,12 +60,16 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBOOL(bool value) { Copy(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1614c];
     CFontBank* Font;                                    // +0x1614c
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 typedef void (__fastcall *TTavernGameFunc)();
 class CTCTavernGame { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -74,11 +92,11 @@ class CTCTavernGame { public:
 
 void CTCTavernGame::CallFuncAfterYesNo(CWideString text, CWideString yesText, TTavernGameFunc yesFunc, CWideString noText, TTavernGameFunc noFunc)
 {
-    g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, text, L"", yesText, noText, 0x84, 0.0f, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, text, L"", yesText, noText, 0x84, 0.0f, false, true);
     {
         CGameEvent event(9);
         event.AddBOOL(false);
-        g_pMainGameComponent->AddGameEvent(event);
+        CMainGameComponent::Get()->AddGameEvent(event);
     }
     YesFunc = yesFunc;
     NoFunc = noFunc;

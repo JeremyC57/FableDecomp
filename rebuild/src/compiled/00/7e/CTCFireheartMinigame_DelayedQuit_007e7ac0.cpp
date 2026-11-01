@@ -1,5 +1,9 @@
 // CTCFireheartMinigame::DelayedQuit() -- once only: play the selection-change sound, put up the "quit?" subtitle prompt (QuitText with YesText/NoText buttons) in the player GUI's subtitle renderer, and queue game event 9 with a true payload byte
 // Leaf: DelayedQuit
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 //
 // Retail 0x007E7AC0, 320 bytes incl. padding (plain `ret`, /GS cookie 0x0139C8A8). Ego_r.pdb
@@ -11,7 +15,7 @@
 // (three times, hidden result; label "CTCBetting::GetText" propagated), CSubtitleRenderer::SetText(CFontBank*, 4 x const
 // CWideString&, ulong, float, bool, bool) @ 0x00492F69 (landed), ~CWideString @ 0x0099B510 (four), CMemoryBuffer::Copy @
 // 0x009F1760, CMainGameComponent::AddGameEvent @ 0x0041649C, __security_check_cookie @ 0x00BFE9F9. Globals:
-// g_pMainGameComponent 0x013B86A0 (font bank +0x1614C), g_pPlayerGui 0x013B8790 (SubtitleRenderer +0x18).
+// CMainGameComponent::Get() 0x013B86A0 (font bank +0x1614C), (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (SubtitleRenderer +0x18).
 // Layout: retail CTCFireheartMinigame QuitWithDelay +0x88, PDef +0x98 (PDB +0x9C, the Handles vector 12 bytes);
 // CFireheartMinigameDef QuitText +0x30, YesText +0x34, NoText +0x38.
 // Shape: the sound name, the prompt and the event live in three sibling blocks (the frame slots are shared); the def, the font bank and the GUI are locals taken before the argument pushes (ebp/ebx/edi); the GetText
@@ -36,11 +40,21 @@ public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& name, const CWideString& button1,
                  const CWideString& button2, unsigned long flags, float time, bool b1, bool b2);   // 0x00492F69
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);      // 0x009F1760
 };
@@ -54,12 +68,16 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddBOOL(bool value) { Copy(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1614c];
     CFontBank* Font;                                        // +0x1614c
     void AddGameEvent(const CGameEvent& event);             // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 class CFireheartMinigameDef { public:
     unsigned char _pad00[0x30];
     unsigned long QuitText;                                 // +0x30
@@ -94,14 +112,14 @@ void CTCFireheartMinigame::DelayedQuit()
     {
         CWideString empty(L"");
         const CFireheartMinigameDef* def = PDef.operator->();
-        CFontBank* font = g_pMainGameComponent->Font;
-        CPlayerGui* gui = g_pPlayerGui;
+        CFontBank* font = CMainGameComponent::Get()->Font;
+        CPlayerGui* gui = (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get());
         gui->SubtitleRenderer.SetText(font, GetText(def->QuitText), empty, GetText(def->YesText), GetText(def->NoText),
                                       0x1004, 0.0f, false, true);
     }
     {
         CGameEvent event(9);
         event.AddBOOL(true);
-        g_pMainGameComponent->AddGameEvent(event);
+        CMainGameComponent::Get()->AddGameEvent(event);
     }
 }

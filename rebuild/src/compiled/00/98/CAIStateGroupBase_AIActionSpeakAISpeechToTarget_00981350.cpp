@@ -1,4 +1,6 @@
 // CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(mode, speaker, target, speechName, a5, a6, a7) -- resolve the AI speech name through the engine's speech map (CRC of the name) and forward to AIAction_SpeakToTarget
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00981350, length 181 bytes (`ret 24h`).
 // Callees: Calc(ulong seed, const char* data, ulong length) @ 0x004014A0 (__fastcall CRC), the speech map's LookupValue
 // @ 0x009CC410 (engine singleton 0x013B86A0 +0x14), CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/
@@ -49,12 +51,16 @@ struct CSpeechMap
     long LookupValue(unsigned long crc);            // 0x009CC410
 };
 
-class CEngine
-{ public:
+class CMainGameComponent
+{
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CSpeechMap* SpeechMap;                          // +0x14
 };
-extern CEngine* g_pEngine;                          // 0x013B86A0
 
 class CAIStateGroupBase
 { public:
@@ -72,7 +78,7 @@ long CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPo
                                                        CIntelligentPointer<const CThing> target,
                                                        const CCharString& speechName, long a5, long a6, long a7)
 {
-    CSpeechMap* map = g_pEngine->SpeechMap;
+    CSpeechMap* map = CMainGameComponent::Get()->SpeechMap;
     long speech = map->LookupValue(CCRC::Calc(0, speechName.GetString(), speechName.GetLength()));
     return AIAction_SpeakToTarget(mode, speaker, target, speech, a5, a6, a7);
 }

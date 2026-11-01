@@ -2,6 +2,8 @@
 // Grade: RELOCATION_MATCH (header ctor landed 2026-10-31; was PENDING HEADER) (retry wave 2 sec2c): the -1 custom-tattoo test re-reads the member (`if (tattoo->BankIndex == -1)`) instead of the textureID local, so textureID lives in eax/a spill slot and tattoo keeps ebx (was 1017v1027); on engine/CDefPointer.h + fable_string.h + engine/CSubDefClassBase.h with the real GetSubDef<CTattooDef> body (0x005B1EFC, as the sibling hdr 0071d940). Compiles once the header declares CDefPointer(ENullDef); hdr/0071d3b0.verify.cpp (header text inlined + that ctor) grades RELOCATION_MATCH. The _M_insert_overflow stand-in body (invented GrowVectorStorage callee) is the landed AddCompositeTexture 0x0071DBD0 model; dropping it gives 1027v1027/51.
 // Was: DIFFER(1017v1027) -- register assignment: retail keeps the tattoo def in ebx and the texture id in eax / the dead tattoo-slot word (ours: id in ebx, def in esi), so the frame packs differently; structure, callees, temporaries and the release paths as retail
 // Leaf: ?UpdateTattoos@CTCHeroMorph
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071D3B0, 1027 bytes, `ret 4`, aligned (and esp,-8) frame.
 // Callees: GetSubDef<const CTattooDef> 0x005B1EFC, CTattooDef::IsInvalidCustomTattoo 0x00581765, CUserProfileManager::Get
 //   0x0040D2A0, GetValidProfileName 0x00406350, save / custom-tattoo directories 0x0041A650 / 0x0041A6A0, operator+ 0x0099BE70 /
@@ -32,7 +34,10 @@ class CDateAndTime { public:                                       // 28 bytes
     CDateAndTime();
     bool operator==(const CDateAndTime& other) const;       // 0x009E9AD0
 };
-CDateAndTime __fastcall GetFileModifiedTime(const CWideString& path);   // 0x009992A0
+class CWideString;
+class CAFile { public:
+    static CDateAndTime __fastcall GetFileModifiedTime(CWideString const&a0);   // 0x009992A0 (Ego_r.pdb ?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z)
+};
 
 class CPixelFormat { public:
     long FormatIndex;
@@ -64,8 +69,12 @@ class CTextureManager { public:                                    // virtual sl
     virtual long AddTexture(CTexture& texture, const CCharString& name);   // slot 36
 };
 struct CEngineRenderer { unsigned char _pad00[0x2c]; CTextureManager* PTextures; };   // +0x2c
-class CEngine { public: unsigned char _pad00[0x28]; CEngineRenderer* PRenderer; };            // +0x28
-extern CEngine* g_pEngine;                                  // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad00[0x28]; CEngineRenderer* PRenderer; };            // +0x28
 
 #include "engine/CDefPointer.h"                             // CDefPointer(ENullDef) landed in the header 2026-10-31
 
@@ -230,7 +239,7 @@ void CTCHeroMorph::UpdateTattoos(CTextureLayerMap& layers)
                 CWideString path = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\"
                     + tattoo->CustomFileName.ToWideString();
                 CBankNode* found = CustomToBankIndex.find(tattoo->CustomFileName);
-                if (found != CustomToBankIndex.end() && found->Value.second == GetFileModifiedTime(path)) {
+                if (found != CustomToBankIndex.end() && found->Value.second == CAFile::GetFileModifiedTime(path)) {
                     textureID = found->Value.first;
                 } else {
                     CTexture texture;
@@ -242,8 +251,8 @@ void CTCHeroMorph::UpdateTattoos(CTextureLayerMap& layers)
                                                   0, &format, 1, 0, 2, 1, 1, 0, 0))
                         continue;
                     CreateAlphaChannel(texture, alpha);
-                    textureID = g_pEngine->PRenderer->PTextures->AddTexture(texture, tattoo->CustomFileName);
-                    CustomToBankIndex[tattoo->CustomFileName] = CBankEntry(textureID, GetFileModifiedTime(path));
+                    textureID = CMainGameComponent::Get()->PRenderer->PTextures->AddTexture(texture, tattoo->CustomFileName);
+                    CustomToBankIndex[tattoo->CustomFileName] = CBankEntry(textureID, CAFile::GetFileModifiedTime(path));
                 }
             }
             layers.Add(tattoo->TextureLayer,

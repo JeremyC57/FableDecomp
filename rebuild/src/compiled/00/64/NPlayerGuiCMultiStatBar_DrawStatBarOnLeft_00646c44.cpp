@@ -1,5 +1,7 @@
 // NPlayerGui::CMultiStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank&, const C2DVector&, const C2DVector&, const CRGBColour&, unsigned char, bool) -- advance the multi-stat bar's update queue by the frame time: pick up the front update's colour/graphic/effect, count its display time down (then switch to waiting) or count the wait down (then drop the update)
 // Leaf: DrawStatBarOnLeft
+// Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00646C44, length 330 bytes (unaligned: a size-optimised TU), `ret 1Ch`.
 // Ego_r.pdb: `?DrawStatBarOnLeft@CMultiStatBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z`.
 // Pragma: #pragma optimize("s", on) (as the landed sibling AddStatUpdate 0x00647457).
@@ -29,11 +31,15 @@ struct CGameState {
     unsigned char _pad00[0xa4];
     bool          Paused;                  // +0xa4
 };
-class CGame { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CGameState*   GameState;               // +0x24
 };
-extern CGame* g_pGame;                     // 0x013B86A0
 
 namespace NPlayerGui {
 
@@ -106,11 +112,11 @@ void CMultiStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, c
     if (!Updates.empty()) {
         if (DisplayMode == 0) {
             CStatUpdate& update = Updates.front();
-            if (!g_pGame->GameState->Paused && update.Type != CurrentType) {
+            if (!CMainGameComponent::Get()->GameState->Paused && update.Type != CurrentType) {
                 CurrentType = update.Type;
                 update.TimeRemaining = POwner->UpdateDisplayTime;
             }
-            if (!g_pGame->GameState->Paused) {
+            if (!CMainGameComponent::Get()->GameState->Paused) {
                 if ((update.TimeRemaining -= info.FrameTime / POwner->UpdateDisplayTime) <= 0.0f) {
                     DisplayMode = 3;
                     WaitingTimeLeft = POwner->UpdateWaitTime;
@@ -119,7 +125,7 @@ void CMultiStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, c
                 }
             }
         } else if (DisplayMode == 1) {
-            if (!g_pGame->GameState->Paused) {
+            if (!CMainGameComponent::Get()->GameState->Paused) {
                 if ((WaitingTimeLeft -= info.FrameTime / POwner->UpdateWaitTime) <= 0.0f) {
                     if (!Updates.empty())
                         Updates.pop_front();

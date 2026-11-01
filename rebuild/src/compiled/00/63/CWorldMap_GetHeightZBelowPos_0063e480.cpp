@@ -2,12 +2,14 @@
 // ground below it: starts from the ground height, gathers every thing in a 4x4 box round the position and casts the
 // segment pos -> (pos.X, pos.Y, ground) against each thing's physics mesh, keeping the highest intersection Z
 // Leaf: GetHeightZBelowPos
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063E480, 272 bytes, `ret 4`. PDB ?GetHeightZBelowPos@CWorldMap@@QBEMABVC3DVector@@@Z.
 // Callees: GetGroundSizeZAt 0x0063A300, __ftol2 0x00BFEA70 (x2), the thing-search-tools all-things-in-rough-area
 //   query 0x0049C490 (`ret 0Ch`; labelled GetPBestThingInRoughArea<HasTrackName,...>), CTCPhysicsBase::
 //   GetPhysicsMeshObject 0x006B0850, CPhysicsMeshObject::GetPointIntersectionFromTo 0x00A12450,
 //   ~CPhysicsMeshObject 0x00A127D0, free thunk 0x00BFEA14.
-// Layout: g_pMainGameComponent 0x013B86A0 -> +0x24 world -> +0x20 thing search tools; CThing::PhysicsTC +0x60 and the
+// Layout: CMainGameComponent::Get() 0x013B86A0 -> +0x24 world -> +0x20 thing search tools; CThing::PhysicsTC +0x60 and the
 //   CPhysicsMeshObject / CMeshIntersectionData models of the landed CTools::GetCollisionThing 0x00875E60;
 //   local STLport vector<CThing*> (12 bytes, freed through free()). No CWorldMap data members are read.
 class C3DVector { public:
@@ -58,11 +60,15 @@ class CWorld { public:
     unsigned char       _pad00[0x20];
     CThingSearchTools*  ThingSearchTools;          // +0x20
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       World;                           // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;
 CThing** CollectThingsInRoughArea(const C2DBoxI& box, CThing** first, CThing** last);
 // Same-TU stand-in for the 0x0049C490 template instantiation (retail emits it in this TU): with its body visible VC
 // knows `things` does not escape and keeps the vector's start in ebp across the loop's calls.
@@ -85,7 +91,7 @@ float CWorldMap::GetHeightZBelowPos(const C3DVector& pos) const
     CThingFilter_All filter;
     long x = (long)pos.X;
     long y = (long)pos.Y;
-    g_pMainGameComponent->World->ThingSearchTools->GetAllThingsInRoughArea(C2DBoxI(x - 2, y - 2, x + 2, y + 2), filter, things);
+    CMainGameComponent::Get()->World->ThingSearchTools->GetAllThingsInRoughArea(C2DBoxI(x - 2, y - 2, x + 2, y + 2), filter, things);
     for (CThing** it = things.begin(); it != things.end(); ++it) {
         CTCPhysicsBase* physics = (*it)->PhysicsTC;
         C3DVector below(pos.X, pos.Y, ground);

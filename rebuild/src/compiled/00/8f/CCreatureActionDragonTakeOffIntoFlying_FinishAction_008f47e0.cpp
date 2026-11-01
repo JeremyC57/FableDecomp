@@ -3,6 +3,8 @@
 // a creature-mode manager, remember the first point and add a CModeDragonFlying (StartPos, speed 1.0, PEndAction); then the
 // base FinishAction
 // Leaf: ?FinishAction@CCreatureAction_DragonTakeOffIntoFlying
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -57,11 +59,15 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
   // 0x00449970
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 
 struct C3DVectorVector {                              // STLport vector<C3DVector>, 12 bytes in retail
     C3DVector* _M_start;
@@ -143,7 +149,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
 {
     PCreature.GetPItem()->GetPhysics()->SetFlying(true);
     PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(0x4d));
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTC4D* list;
     if (hero->GetInterface(&list, 0x4d))
         list->RemoveThing(PCreature.GetPItem());

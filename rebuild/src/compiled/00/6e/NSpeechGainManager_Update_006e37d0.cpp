@@ -1,5 +1,7 @@
 // NSpeechGainManager::Update(const CWorld& world) -- once per frame: mark the first active dialogue line as the layer head, advance every line's gain by the frames elapsed since the last update (the global def's dialogue layers), drop the finished lines (and their layer speaker count), then record the current world frame
 // Leaf: ?Update@NSpeechGainManager@@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E37D0, 184 bytes (+ int3 padding), `__fastcall` (ecx = world), plain `ret`.
 // Identity: Ego_r.pdb name set `?Update@NSpeechGainManager@@YIXABVCWorld@@@Z`; only caller 0x004A5E82 (the world update).
 //   The catalog's bare "Update" is right.
@@ -7,7 +9,7 @@
 //   byte twin), NSpeechGainManager::UpdateDialogueElement(CActiveDialogueInfo&, long, const vector<CDialogueLayerDef>&)
 //   @ 0x006E3440 (`__fastcall`, bool), CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 (the line's
 //   ThingSpeaking pointer, the inlined ~CActiveDialogueInfo), free @ 0x00BFEA14 (STLport node deallocation).
-// Globals: g_pMainGameComponent @ 0x013B86A0; the active line list @ 0x013BABA0 (a static STLport list<CActiveDialogueInfo>,
+// Globals: CMainGameComponent::Get() @ 0x013B86A0; the active line list @ 0x013BABA0 (a static STLport list<CActiveDialogueInfo>,
 //   0x20-byte nodes, landed initialiser 0x0121E3F0); the per-layer speaker counts @ 0x013BAB94 (static vector<short>); the
 //   last update frame @ 0x013BAB8C.
 // Layout: CWorld definition manager +0x10 (CGameDefinitionManager, global def +0xD0 as in the landed CTCTalk
@@ -80,10 +82,14 @@ private:
 };
 
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     long GetWorldFrame();                                   // 0x00416225
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 
 namespace NSpeechGainManager {
 
@@ -132,7 +138,7 @@ extern long g_LastUpdateFrame;                              // 0x013BAB8C
 void __fastcall Update(const CWorld& world)
 {
     if (!g_ActiveDialogue.empty()) {
-        long elapsedFrames = g_pMainGameComponent->GetWorldFrame() - g_LastUpdateFrame;
+        long elapsedFrames = CMainGameComponent::Get()->GetWorldFrame() - g_LastUpdateFrame;
         const std::vector<CDialogueLayerDef>& layerDefs = world.PDefinitionManager->PGlobalDef->DialogueLayers;
         std::list<CActiveDialogueInfo>::iterator it = g_ActiveDialogue.begin();
         std::list<CActiveDialogueInfo>::iterator next = it;
@@ -146,7 +152,7 @@ void __fastcall Update(const CWorld& world)
             it = next;
         }
     }
-    g_LastUpdateFrame = g_pMainGameComponent->GetWorldFrame();
+    g_LastUpdateFrame = CMainGameComponent::Get()->GetWorldFrame();
 }
 
 }

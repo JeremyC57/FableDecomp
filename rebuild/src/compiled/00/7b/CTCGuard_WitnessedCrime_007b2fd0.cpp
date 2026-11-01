@@ -1,5 +1,7 @@
 // CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle) -- a village guard saw a crime: unless its village already handled the deed, note whether the guard itself is the perpetrator, record the crime's severity (from the hero's deed log effects) and the frame, report it to the village and, for a severity 2 or 3 crime, have the village recalculate its security sweep
 // Leaf: WitnessedCrime
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // SW2 sweep (advisor/007b2fd0/probe/x1.cpp).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2FD0, 336 bytes (`ret 8`). Ego_r.pdb
 // `?WitnessedCrime@CTCGuard@@QAEXABVCOpinionDeed@@J@Z`.
@@ -56,11 +58,15 @@ class CWorld { public: CPlayer const* PeekMyPlayer() const; private:            
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld* World;                                      // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 struct CRefCounted {
     long m_count;
@@ -144,7 +150,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
         return;
     CThing* parent = ParentThing;
     bool self = deed.Perpetrator.GetPItem() == parent;
-    CThing* hero = ((CPlayer*)g_pMainGameComponent->World->PeekMyPlayer())->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)CMainGameComponent::Get()->World->PeekMyPlayer())->GetPControlledCreature();
     bool severe = false;
     if (hero) {
         CTCHeroOpinionDeedLog* log;

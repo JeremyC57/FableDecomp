@@ -1,16 +1,20 @@
 // CTCInGameMenu::CloseInGameMenu() -- restores the sound volumes, books the paused time, tears down the menu UI, plays the close sound and, when the inventory was asked for, queues the open-inventory game event
 // Leaf: CloseInGameMenu
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047D78B, 600 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed CloseInGameMenuPC 0x0047DBB8) with /GS (the game
 // event's data array gets the cookie 0x0139C8A8, __security_check_cookie @ 0x00BFE9F9).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get() @ 0x0040D2A0 with the same-TU inline GetSoundVolume 0x0047CFC2 /
 //          GetDialogueVolume 0x0047CFD3, the game state (0x013B8394) slot 46 (+0xB8, category volume), the 3D engine's
-//          slot 76 (+0x130) through g_pMainGameComponent (0x013B86A0) ->PDisplayEngine (+0x28) ->Engine3D (+0x2C) and slot
+//          slot 76 (+0x130) through CMainGameComponent::Get() (0x013B86A0) ->PDisplayEngine (+0x28) ->Engine3D (+0x2C) and slot
 //          56 (+0xE0), CTCBase::GetWorld() @ 0x00686A70, CWorld::GetFrame() @ 0x0049D870, GFGetTime() @ 0x009E1BC0,
 //          the components' deleting destructors (slot 0), vector<CComponent*>::erase @ 0x00485AA7,
 //          NUISystem::CManager::GetInstance() @ 0x0041E5F2 (slots 6, 29, 37, 40 and 42), the UI list clear @ 0x004855A3 on
-//          0x013B8A98, CPlayerGui::Open() @ 0x004374B0 (g_pPlayerGui 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
+//          0x013B8A98, CPlayerGui::Open() @ 0x004374B0 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
 //          CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetPControlledCreature() @ 0x00487DC0,
 //          IS_THING_ALIVE<CThing*> @ 0x0043DBD0, CMemoryBuffer::Copy @ 0x009F1760, CMainGameComponent::AddGameEvent
 //          @ 0x0041649C, the static menu reset @ 0x0041D165 (descriptive name).
@@ -81,12 +85,16 @@ class CDisplayEngine { public:
     unsigned char _pad00[0x2C];
     CIEngine*     Engine3D;                          // +0x2C
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                  // +0x28 scoped_ptr
     void AddGameEvent(const CGameEvent& event);      // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
 class CThing { public:
 };
@@ -161,8 +169,18 @@ class CManager { public:
 }
 struct CGlobalList { void clear(); };                // 0x004855A3
 extern CGlobalList g_UIList;                         // 0x013B8A98
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public: void Open(); };                  // 0x004374B0 (Ego_r.pdb CPlayerGui::Open)
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 struct CComponentVector {                            // retail 12-byte STLport vector<NUISystem::CComponent*>
     NUISystem::CComponent** _M_start;
@@ -209,7 +227,7 @@ void CTCInGameMenu::CloseInGameMenu()
         ((CGameState*)PSoundManager)->SetCategoryVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
         ((CGameState*)PSoundManager)->SetCategoryVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
     }
-    g_pMainGameComponent->PDisplayEngine->Engine3D->SetEngineFlag76(true);
+    CMainGameComponent::Get()->PDisplayEngine->Engine3D->SetEngineFlag76(true);
     CWorld* world = (&GetWorld());
     world->FrameStarted3DRendering = CWorld::GetFrame();
     AccumulativePausedTime += GFGetTime() - CurStartPauseTime;
@@ -222,18 +240,18 @@ void CTCInGameMenu::CloseInGameMenu()
     NUISystem::CManager::GetInstance()->ResetB();
     g_UIList.clear();
     NUISystem::CManager::GetInstance()->ResetC();
-    g_pPlayerGui->Open();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
     InGameMenuOpen = false;
     NUISystem::CManager* owner = NUISystem::CManager::GetInstance();
     NUISystem::CManager::GetInstance()->PlayUISound_0041d0a8(owner->GetIconsDef()->CloseMenuSound_1a8, true);
-    g_pMainGameComponent->PDisplayEngine->Engine3D->SetCameraMoved(false, false);
+    CMainGameComponent::Get()->PDisplayEngine->Engine3D->SetCameraMoved(false, false);
     if (OpenInventory) {
         CThingPlayerCreature* const& hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (IS_THING_ALIVE(hero)) {
             CGameEvent event(GAME_EVENT_OPEN_INVENTORY);
             event.Player = hero->PlayerNumber;
             event.AddLong(4);
-            g_pMainGameComponent->AddGameEvent(event);
+            CMainGameComponent::Get()->AddGameEvent(event);
         }
         OpenInventory = false;
     }

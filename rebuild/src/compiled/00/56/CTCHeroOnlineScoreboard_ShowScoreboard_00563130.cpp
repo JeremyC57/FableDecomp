@@ -1,5 +1,7 @@
 // CTCHeroOnlineScoreboard::ShowScoreboard() -- resets the scoreboard (connection dropped, TaskState 100) and, when the hero has a GUI component, creates the two "connecting" message components, registers them with the GUI, then either reports "not signed in" or starts the state machine (SelectedClan cleared, ScoreboardState 1)
 // Leaf: ShowScoreboard
+// Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00563130, 736 bytes, `ret`. Ego_r.pdb `?ShowScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ`.
 // Callees: ClearScoreboard 0x00562E10, LHHttp2::~LHHttp2 0x008410D0 + operator delete 0x00BFE9BC (inline scoped_ptr
 // reset), CVectorMap::LowerBound 0x0040F020 (inline CThing::GetTC for interface 0x11), CFrontEndManager::GetInstance
@@ -63,11 +65,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                          // +0x14
 };
-extern CEngineGlobals* g_pEngineGlobals_013b86a0;       // 0x013B86A0
 
 class CUserProfileManager { public:
     unsigned char _pad[0x110];
@@ -322,7 +328,7 @@ void CTCHeroOnlineScoreboard::ShowScoreboard()
         PConnectingMessage1->SetVisible(true);
         bool notSignedIn = GetSignedInUserName() == "" || GetSignedInPassword() == "";
         if (notSignedIn) {
-            CWideString text = g_pEngineGlobals_013b86a0->m_pTextBank->GetTextBySymbol("TEXT_GUI_SCOREBOARD_ERROR_LOGIN_DETAILS_MISSING");
+            CWideString text = CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol("TEXT_GUI_SCOREBOARD_ERROR_LOGIN_DETAILS_MISSING");
             DisplayErrorMessage(text);
             return;
         }

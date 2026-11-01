@@ -1,10 +1,13 @@
 // CTCInventoryTrade::InitialiseBuyableItems(vector<pair<long,long> >& items) -- rebuilds the buyable-item map: marks the hero's own tattoo / hair / ability cards the shop deals in as stocked and counts them into BuyableItems, then walks the shop stock map, recording sold-out specials in NotInStock and adding buyable stock to the inventory and to `items`, and stores the item total
 // Leaf: InitialiseBuyableItems@CTCInventoryTrade
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A30A1, 917 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 //   FableWin.pdb ?InitialiseBuyableItems@CTCInventoryTrade@@QAEXAAV?$vector@U?$pair@JJ@std@@...@std@@@Z
 // Callees: map<long,long> clear 0x004DB91F / operator[] 0x005B30BB / find 0x00592F92 / ~ 0x004DD2B1, _Rb_tree increment 0x004292C0,
 //   shop-thing getter 0x005BC4C4, bitset test 0x00410DE0, LowerBound 0x0040F020 (shop 0x53) and const 0x004365B0 (hero 0x11),
-//   shop stock map by value 0x00774610, CPlayerManager::GetMainPlayer 0x00449960 (g_pMainGameComponent +0x1C), GetControlledCreature
+//   shop stock map by value 0x00774610, CPlayerManager::GetMainPlayer 0x00449960 (CMainGameComponent::Get() +0x1C), GetControlledCreature
 //   0x00487DD0, GetAllItems 0x005BF482, CTCBase::GetDefinitions 0x006869D0 + GetDef 0x0042AF3C, GetSubDef<CAbilityDef> 0x005B1E5A,
 //   GetTattooCardDef 0x005D9AA0 / GetHairCardDef 0x005D9A10 (`__fastcall`, by value), shop type tests 0x00772510 / 0x00772490 /
 //   0x00772590 (names unproven), GetMaxStock 0x00772720, IsBuyable 0x005D9B50, AddItemOfTypeToInventory 0x0059C6B0,
@@ -125,10 +128,15 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
-struct CPresenceBits { bool test(long kind) const; };   // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 class CThing { public:
     unsigned char  _pad00[0x20];
-    CPresenceBits  m_present;                           // +0x20
+    std::bitset<274>  m_present;                           // +0x20
     unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                        // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long kind)
@@ -161,8 +169,12 @@ class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() co
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };   // +0x1c
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };   // +0x1c
 struct CTCShopkeeper {
     CLongMap GetStockMap() const;                          // 0x00774610
     bool IsTattooShop() const;                          // 0x00772510
@@ -198,7 +210,7 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
     GetShopThing()->GetInterface(&shop, 0x53);
     CLongMap stock = shop->GetStockMap();
     CTCInventoryItem* inventory = 0;
-    static_cast<const CThing*>(g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature())->GetInterface(&inventory, 0x11);
+    static_cast<const CThing*>(CMainGameComponent::Get()->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature())->GetInterface(&inventory, 0x11);
     CItemVector heroItems;
     inventory->GetAllItems(heroItems);
     for (unsigned int i = 0; i < heroItems.size(); ++i) {

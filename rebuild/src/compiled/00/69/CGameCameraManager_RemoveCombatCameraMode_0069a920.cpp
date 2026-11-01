@@ -1,4 +1,6 @@
 // CGameCameraManager::RemoveCombatCameraMode() -- unless the main player is in mode 0x2f, look up the camera manager set's main camera manager def, install it (SetCameraManagerDef) and clear ObservedThingInMelee
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069A920, length 104 bytes (+ int3 padding).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::HasMode(EPlayerMode) @ 0x00634160 (as the landed RemoveBuildingCameraMode
 // 0x0069B610), CDefinitionManager::GetDef(long, CDefPointer&) @ 0x0069CE80 (the world's definition manager at +0x10),
@@ -15,11 +17,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* m_pPlayerManager;               // +0x1c
 };
-extern CEngine* g_pEngine;                          // 0x013B86A0
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                         // slot 1: runs when the last reference goes
@@ -117,7 +123,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPoin
 #pragma auto_inline(on)
 void CGameCameraManager::RemoveCombatCameraMode()
 {
-    if (!g_pEngine->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
+    if (!CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
         CDefPointer<CCameraManagerDef> def;
         World->m_pDefinitionManager->GetDef(PCameraManagerSet->MainCameraManagerDef, def);
         SetCameraManagerDef(def);

@@ -1,5 +1,7 @@
 // NCreatureMode::CModeCreatureIsProjectile::OnDeactivate() -- end of a creature being thrown: for a kicked chicken record the throw distance in the hero's longest-kick stat and the online scoreboard, then put the thrown creature's physics back to normal and leave the stand mode
 // Leaf: OnDeactivate
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): a same-TU noinline CInterfaceMap::LowerBound stand-in (GOTCHAS chunk
 //   240), the brain def index read into a named local before GetDefNameFromGlobalIndex, and the kick distance computed
 //   in its own block (the position/delta temporaries die before the scoreboard key) give retail's frame packing and temp
@@ -122,12 +124,16 @@ class CPlayerManager { public:
 
 class CGameDefinitionManager : public CDefinitionManager { };
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;          // +0x1c
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC (ILT thunk; Ego_r.pdb ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ)
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 class CTCHeroStats { public:                       // interface type 4
     unsigned char _pad00[0x110];
@@ -158,9 +164,9 @@ struct CModeCreatureIsProjectile : CModeStandBase {
 void CModeCreatureIsProjectile::OnDeactivate()
 {
     long index = ParentThing->Brain->DefGlobalIndex;
-    CDefString brain = g_pMainGameComponent->PeekDefinitionManager().GetDefNameFromGlobalIndex(index);
+    CDefString brain = CMainGameComponent::Get()->PeekDefinitionManager().GetDefNameFromGlobalIndex(index);
     if (brain == "BRAIN_CHICKEN") {
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPHero().GetPItem();
+        CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetPHero().GetPItem();
         if (hero && !hero->m_dead) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

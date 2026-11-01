@@ -2,6 +2,8 @@
 // switch to the building's camera manager set (and back into melee mode when fighting), and flag the camera as in a
 // building
 // Leaf: PushBuildingCameraMode
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069AD10, length 176 bytes, `ret`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::RemoveMode(EPlayerMode) @ 0x00634190,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the `__fastcall` GetPBuildingThingOccupying(CThing*) @ 0x006989D0,
@@ -23,11 +25,15 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* m_pPlayerManager;               // +0x1C
 };
-extern CEngine* g_pEngine;                          // 0x013B86A0
 
 struct CRefCounted {
     long m_count;
@@ -86,7 +92,7 @@ public:
 
 void CGameCameraManager::PushBuildingCameraMode()
 {
-    g_pEngine->m_pPlayerManager->GetMainPlayer().RemoveMode(0x2f);
+    CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().RemoveMode(0x2f);
     if (PObservedThing.GetPItem()) {
         CThingBuilding* building = GetPBuildingThingOccupying(PObservedThing.GetPItem());
         if (building) {

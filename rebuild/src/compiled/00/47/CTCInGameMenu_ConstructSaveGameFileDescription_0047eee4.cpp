@@ -1,5 +1,8 @@
 // CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, long index) -- build the load/save screen text for save slot `index`: when the save (and its "." companion file, if present) verify, "<profile name label>:<profile name>\n<date><separator><time>\n<region label>:<region display name>\n<time spent in game>"; otherwise the TEXT_GUI_MENU_INVALID_SAVE text with the file name substituted
 // Leaf: ?ConstructSaveGameFileDescription@CTCInGameMenu
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 //
 // Retail 0x0047EEE4, 1067 bytes (`ret 8`; biased /GS frame `lea ebp,[esp-1ACh]`, cookie at [ebp+1A8h]). Size TU with only
@@ -106,12 +109,16 @@ class CDataBank : public CBankFile { public:
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     long       _pad00[0x14 / 4];
     CDataBank* TextBank;                                // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-__forceinline CDataBank* GetTextBank() { return g_pMainGameComponent->TextBank; }
+__forceinline CDataBank* GetTextBank() { return CMainGameComponent::Get()->TextBank; }
 namespace NUISystem {
 class CManager { public:
     virtual void m00(); virtual void m01(); virtual void m02(); virtual void m03(); virtual void m04();
@@ -133,10 +140,15 @@ class CUserProfileManager { public:
     CWideString GetPathNameFromFileName(const CWideString& name, bool full);   // 0x00408120
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
 };
-struct CPresenceBits { bool test(long kind); };         // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 class CThing { public:
     long          _pad00[0x20 / 4];
-    CPresenceBits present;                              // +0x20
+    std::bitset<274> present;                              // +0x20
     long          _pad21[(0x44 - 0x24) / 4];
     class CTCBase** m_firstTC;                         // +0x44 (interface map, simplified)
     template<class T> __forceinline T* GetTC(long kind) { if (present.test(kind)) return (T*)m_firstTC[kind]; return 0; }

@@ -1,5 +1,8 @@
 // NPlayerGui::CDrawNPCName::Draw(const CEnginePrimitivePrepareInfo& prepare_info) -- draw the NPC name centred at the top of the screen (static white colour, scale 0.7, text layer); while the screenshot message shows, also draw TEXT_GUI_MENU_SCREENSHOT_TAKEN (fallback L"Screenshot taken") at (280, 35)
 // Leaf: ?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006572A0, 462 bytes (+2 int3), `ret 4`. Ego_r.pdb
 //   ?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z.
 // Callees: CWideString::GetLength 0x0099B220, GetAsCharArray 0x0099AF10, operator=(const wchar_t*) 0x0099B800, ~CWideString
@@ -76,7 +79,7 @@ class CDisplayManager {
 public:
     const C2DExtentsI GetRenderTargetDimensions();              // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;                     // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                     // 0x013B8390
 namespace NGameText {
 class CDataBank {
 public:
@@ -85,6 +88,11 @@ public:
 }
 #include "engine/CCountedPointer.h"
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char _pad00[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;            // +0x14
@@ -94,7 +102,6 @@ public:
     const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }
     const CFontBank& PeekCutSceneMainFont() const { return *PCutSceneMainFont; }
 };
-extern CMainGameComponent* g_pMainGameComponent;               // 0x013B86A0
 float __fastcall GFAXToVX(float x);                             // 0x009E1DA0
 float __fastcall GFAYToVY(float y);                             // 0x009E1DD0
 class CPlayerManager;
@@ -126,15 +133,15 @@ void CDrawNPCName::Draw(const CEnginePrimitivePrepareInfo& prepare_info)
         const CFontBank& font = Component->PeekCutSceneMainFont();
         static CRGBColour colour(0xff, 0xff, 0xff, 0xff);
         float width = font.GetStringWidth(Name);
-        float x = PDisplayManager->GetRenderTargetDimensions().Width * 0.5f - width * 0.5f;
+        float x = GPDisplayManager->GetRenderTargetDimensions().Width * 0.5f - width * 0.5f;
         PlayerGui->Draw2DText(C2DVector(GFAXToVX(x), GFAYToVY(10.0f)), Name, font, colour, 0.7f, ENGINE_2D_LAYER_TEXT, true);
     }
     if (ScreenShotMessageCounter > 0 &&
-        fabs((float)(g_pMainGameComponent->GetCurrentWorldFrame() - ScreenShotMessageCounter)) < 25.0f) {
+        fabs((float)(CMainGameComponent::Get()->GetCurrentWorldFrame() - ScreenShotMessageCounter)) < 25.0f) {
         Drawing = true;
         const CFontBank& font = Component->PeekCutSceneMainFont();
         CRGBColour colour(0xff, 0xff, 0xff, 0xff);
-        CWideString text = g_pMainGameComponent->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_SCREENSHOT_TAKEN");
+        CWideString text = CMainGameComponent::Get()->GetTextBank().GetTextBySymbol("TEXT_GUI_MENU_SCREENSHOT_TAKEN");
         if (text.GetLength() == 0)
             text = L"Screenshot taken";
         PlayerGui->Draw2DText(C2DVector(GFAXToVX(280.0f), GFAYToVY(35.0f)), text, font, colour, 0.7f, ENGINE_2D_LAYER_TEXT, true);

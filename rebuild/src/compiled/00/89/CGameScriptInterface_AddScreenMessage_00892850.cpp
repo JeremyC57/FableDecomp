@@ -1,5 +1,9 @@
 // CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const -- look the tag up in the game text bank (by CRC): a text entry's string is shown as a screen message; for a group entry only the random pick is drawn; an unknown tag shows "(" + tag
 // Leaf: AddScreenMessage
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00892850, length 383 bytes (`ret 8`).
 // Callees: CWideString ctor/dtor/operator=/operator!= @ 0x0099AED0 / 0x0099B510 / 0x0099B7D0 / 0x0099B150, CCRC::Calc
 //   @ 0x004014A0 (`__fastcall`), the text bank's CRC lookup @ 0x009CC410, CBankFile::GetEntryDataType @ 0x009CC210,
@@ -79,10 +83,24 @@ class CDataBank : public CBankFile { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngine_Retail { unsigned char _pad[0x14]; CDataBank* TextBank; };
-extern CEngine_Retail* g_pEngine;                       // 0x013B86A0
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public: unsigned char _pad[0x14]; CDataBank* TextBank; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public: void AddScreenMessage(const CWideString& text); };   // 0x00438AA0
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
 class CWorld { public:
     unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
@@ -97,7 +115,7 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const
 {
     CWideString text;
-    CDataBank* bank = g_pEngine->TextBank;
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     long entry = bank->LookupValue(CCRC::Calc(0, textTag.GetData(), textTag.Length()));
     if (entry) {
         if (bank->GetEntryDataType(entry) == 0) {
@@ -111,5 +129,5 @@ void CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGro
     } else
         text = L"(" + textTag.ToWideString();
     if (text != L"")
-        g_pPlayerGui->AddScreenMessage(text);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddScreenMessage(text);
 }

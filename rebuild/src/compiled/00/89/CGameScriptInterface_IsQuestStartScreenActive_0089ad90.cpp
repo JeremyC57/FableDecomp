@@ -1,7 +1,9 @@
 // CGameScriptInterface::IsQuestStartScreenActive(CCharString&) const -- is the hero's quest-completion UI up as the start screen of this quest
 // Leaf: ?IsQuestStartScreenActive@CGameScriptInterface@@UBE_NAAVCCharString@@@Z
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0089AD90, 155 bytes, `ret 4`; Ego_r.pdb same symbol (CGameScriptInterface slot 36).
-// Body: hero = g_pMainGameComponent (0x013B86A0)->PPlayerManager (+0x1c)->GetMainPlayer() (0x00449970)
+// Body: hero = CMainGameComponent::Get() (0x013B86A0)->PPlayerManager (+0x1c)->GetMainPlayer() (0x00449970)
 // ->GetPControlledCreature() (0x00487DC0), not null-tested; if it holds interface 0xfc (bit 28 of UsingComponents[7], +0x3c):
 // ui = the component (non-const LowerBound 0x0040F020); true when ui->Active and !ui->Quitting and ui->Completion == 0
 // and ui->ScriptName == questName (inline CCharString ==, Compare 0x00411570).
@@ -83,12 +85,16 @@ public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                      // +0x1c
     CPlayerManager* GetPlayerManager() const { return PPlayerManager; }
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -96,7 +102,7 @@ extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 
 bool CGameScriptInterface::IsQuestStartScreenActive(CCharString& questName) const
 {
-    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = CMainGameComponent::Get()->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero->HasTC(CTCQuestCompletionUI::INTERFACE_TYPE))
     {
         CTCQuestCompletionUI* ui = hero->GetTC<CTCQuestCompletionUI>();

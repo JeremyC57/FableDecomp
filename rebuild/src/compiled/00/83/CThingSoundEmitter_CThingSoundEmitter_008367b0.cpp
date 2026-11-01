@@ -1,5 +1,7 @@
 // CThingSoundEmitter::CThingSoundEmitter() -- CThing(type 6) base, zeroed sound object / attach flags, the attached-thing intelligent pointer; kill-on-level-unload cleared when the engine's slot-9 query says false
 // Leaf: ??0CThingSoundEmitter
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe 0x008367B0, 89 bytes. Vtables: CThingSoundEmitter 0x01272C24, CIntelligentPointer<const CThing>
 // 0x01237F1C.
 // Callees: CThing::CThing(unsigned long) 0x004C9030, CBaseIntelligentPointer::CBaseIntelligentPointer
@@ -18,13 +20,17 @@ class CThing { public:
     void SetToKillOnLevelUnload(bool kill);              // 0x004C9C40
 };
 
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008();
     virtual bool IsLevelPersistent();                    // slot 9 (+0x24)
 };
-extern CEngine* g_pEngine;                               // 0x013B86A0
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -54,6 +60,6 @@ class CThingSoundEmitter : public CThing { public:
 CThingSoundEmitter::CThingSoundEmitter()
     : CThing(6), m_pSoundPlayer(0), AttachedToThing(false), ContinuePlayingAfterAttachedThingDeath(false)
 {
-    if (!g_pEngine->IsLevelPersistent())
+    if (!CMainGameComponent::Get()->IsLevelPersistent())
         SetToKillOnLevelUnload(false);
 }

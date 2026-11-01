@@ -2,6 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891340, length 87 bytes.
 // Callees: CDataBank::GetTextBySymbol @ 0x009C95E0 (hidden result pointer), CWideString::operator!=(const wchar_t*) @ 0x0099B150 against L"" @ 0x0122D70C, ConstructString @ 0x009C7C20 (__fastcall: the text, the vector), CWideString::CWideString(const CWideString&) @ 0x0099B720, CWideString::~CWideString @ 0x0099B510. Shape: no frame: the temporary wide string is homed in the dead `symbol` argument slot, `this` is unused, the hidden result pointer read into esi only for the copy, `ret 0Ch`.
 // Leaf: GetFormattedString
+// Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 struct CMainGameComponent_Retail;
@@ -35,11 +37,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngineGlobals_Retail {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char    _pad[0x14];
     CDataBank* m_pTextBank;               // +0x14
 };
-extern CEngineGlobals_Retail* g_pEngineGlobals_013b86a0;   // 0x013B86A0
 bool __fastcall ConstructString(CWideString* text, CWideStringVector_Retail* args);   // 0x009C7C20
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0 (CRC)
 class CGameScriptInterface { public:
@@ -59,7 +65,7 @@ public:
 
 CWideString CGameScriptInterface::GetFormattedString(const CCharString& symbol, CWideStringVector_Retail& args) const
 {
-    CWideString text = g_pEngineGlobals_013b86a0->m_pTextBank->GetTextBySymbol(symbol);
+    CWideString text = CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol(symbol);
     if (text != L"")
         ConstructString(&text, &args);
     return text;

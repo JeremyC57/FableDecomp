@@ -1,5 +1,11 @@
 // CTCOracleMinigame::Quit() -- end the oracle minigame: enter the quit stage, take the main player out of the minigame mode, drop pending inputs, wait the def's quit time, hide the minigame info and the subtitle override, show the win/lose text and report the level reached to the online scoreboard
 // Leaf: ?Quit@CTCOracleMinigame
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E62D0, 369 bytes (plain `ret`).
 // Callees: CTCBase::GetPlayerManager 0x00686D40 (byte twin of the 0x00686D50 the landed SetText calls; manifest
 //          "CViewBase::GetDisplayEngine" is propagated); CPlayerManager::GetMainPlayer 0x00449970 / its twin 0x00449960;
@@ -9,7 +15,7 @@
 //          CSubtitleRenderer::SetButton2OverrideText 0x0048F881; CTCOracleMinigame::SetText 0x007E6230;
 //          CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (scoreboard 0x10d);
 //          CTCHeroOnlineScoreboard::UpdateScoreForActivity 0x0055F3B0.
-// Globals: frames per second 0x01375550, g_pPlayerGui 0x013B8790, g_pMainGameComponent 0x013B86A0.
+// Globals: frames per second 0x01375550, (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790, CMainGameComponent::Get() 0x013B86A0.
 // Layout (rebuild/include/engine/CTCOracleMinigame.h is the PDB, data only; the retail STLport list is one sentinel pointer
 //          (PDB 12 bytes), so PDef sits at +0xe8 (PDB +0xf0)): Level +0x10, Stage +0x14, WaitTime +0x1c, Success +0xa8,
 //          InputsPending +0xe0, PDef +0xe8. Def (descriptive): quit wait seconds +0x28, lose text +0x44, win text +0x48.
@@ -60,15 +66,23 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+private:
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad_0x00[0x1c];
     const CPlayerManager* PlayerManager;        // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
-extern long g_framesPerSecond;                  // 0x01375550
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -80,6 +94,17 @@ class CSubtitleRenderer { public:
 struct CDrawQuestInfo {
     void DisplayMiniGameInfo(long a, long b, long c);       // 0x00654593
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char     _pad_0x00[0x18];
     CSubtitleRenderer Subtitles;                // +0x18
@@ -88,7 +113,6 @@ class CPlayerGui { public:
     unsigned char     _pad_0xf9[0x1c8 - 0xf9];
     CDrawQuestInfo*   QuestInfo;                // +0x1c8
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 class COracleMinigameDef { public:
     unsigned char _pad00[0x28];
     float QuitWaitTime;                         // +0x28 (seconds)
@@ -144,20 +168,20 @@ void CTCOracleMinigame::Quit()
     if (player->GetCurrentMode() == 0x29)
         player->RemoveMode(0x29);
     InputsPending.clear();
-    long framesPerSecond = g_framesPerSecond;
+    long framesPerSecond = CMainGameComponent::GetConstantFPS();
     COracleMinigameDef* def = PDef;
     WaitTime = (long)(CWorld::GetFrame() + framesPerSecond * def->QuitWaitTime);
-    g_pPlayerGui->QuestInfo->DisplayMiniGameInfo(0, 7, 0);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().QuestInfo->DisplayMiniGameInfo(0, 7, 0);
     {
         CCharString empty("");
-        g_pPlayerGui->Subtitles.SetButton2OverrideText(empty);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetButton2OverrideText(empty);
     }
-    g_pPlayerGui->m_bShowMiniGameInfo = false;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_bShowMiniGameInfo = false;
     if (Success)
         SetText(PDef->WinText);
     else
         SetText(PDef->LoseText);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroOnlineScoreboard* scoreboard;
     hero->GetInterface(&scoreboard, 0x10d);
     scoreboard->UpdateScoreForActivity(0x15, (float)Level, false);

@@ -1,5 +1,7 @@
 // CTCGuard::ReportAllPendingCrimes(CTCVillage* village) -- hand every pending crime the guard is holding to its village (and to the village's opinion of the hero, unless it already knows of the deed), note whether any of them is a severity 2 or 3 crime by the hero's deed-log effects and, if so, have the village recalculate its security sweep; then forget the pending crimes
 // Leaf: ?ReportAllPendingCrimes@CTCGuard@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2E20, length 432 bytes (thiscall, `ret 4`; 0x1AB bytes + int3).
 // Identity: Ego_r.pdb ?ReportAllPendingCrimes@CTCGuard@@QAEXPAVCTCVillage@@@Z. The catalog label
 //   "CTCVillage_ProcessDeedReports" is descriptive. Same TU as the landed CTCGuard::WitnessedCrime 0x007B2FD0.
@@ -55,11 +57,15 @@ class CPlayer { public:
 };
 class CWorld { public: CPlayer const* PeekMyPlayer() const; private:                      // 0x0049D9D0
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld* World;                                      // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 struct CRefCounted {
     long m_count;
@@ -196,7 +202,7 @@ public:
 void CTCGuard::ReportAllPendingCrimes(CTCVillage* village)
 {
     if (village) {
-        CThing* hero = ((CPlayer*)g_pMainGameComponent->World->PeekMyPlayer())->GetPControlledCreature();
+        CThing* hero = ((CPlayer*)CMainGameComponent::Get()->World->PeekMyPlayer())->GetPControlledCreature();
         CTCHeroOpinionDeedLog* log = 0;
         if (hero)
             hero->GetInterface(&log, 0x51);

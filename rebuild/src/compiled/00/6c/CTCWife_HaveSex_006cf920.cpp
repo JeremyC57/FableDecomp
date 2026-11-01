@@ -1,6 +1,8 @@
 // CTCWife::HaveSex() -- start the wedding-timed black screen fade, pause the game for the current player, flag the fade/sex wait, and for a live hero bump the sex statistic, restore full health and report the activity to the online scoreboard
 // Flags: /GS
 // Leaf: HaveSex
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CF920, length 378 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::AddToGlobalUpdateTCs() 0x00686ED0; CDisplayEngine::StartScreenFadeOut(float, float, CRGBColour, float)
 //   0x00434C00 on the main component's display engine (+0x28); CTCBase::PeekWorld() const 0x00686A80; CWorld::
@@ -45,13 +47,17 @@ class CRGBColour { public:                                         // B,G,R,A by
 class CDisplayEngine { public:
     void StartScreenFadeOut(float fadeOutTime, float fadeInTime, CRGBColour colour, float holdTime);   // 0x00434C00
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* DisplayEngine;                          // +0x28
     CDisplayEngine* GetDisplayEngine() const { return DisplayEngine; }
     void AddGameEvent(const CGameEvent& event);             // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
     struct SEntry { long type; CTCBase* component; };
@@ -165,12 +171,12 @@ class CTCWife : public CTCBase { public:
 void CTCWife::HaveSex()
 {
     AddToGlobalUpdateTCs();
-    g_pMainGameComponent->GetDisplayEngine()->StartScreenFadeOut(PHeroMarriageDef->WeddingTimeForScreenToFadeOut,
+    CMainGameComponent::Get()->GetDisplayEngine()->StartScreenFadeOut(PHeroMarriageDef->WeddingTimeForScreenToFadeOut,
         PHeroMarriageDef->WeddingTimeForScreenToFadeIn, CRGBColour(0, 0, 0, 255), -1.0f);
     CGameEvent gameEvent(9);                                // SendPauseEvent(true) written out
     gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;
     gameEvent.AddBool(true);
-    g_pMainGameComponent->AddGameEvent(gameEvent);
+    CMainGameComponent::Get()->AddGameEvent(gameEvent);
     WaitingForFadeOut = true;
     WaitingForSex = true;
     CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();

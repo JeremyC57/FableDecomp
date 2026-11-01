@@ -1,5 +1,7 @@
 // CGameCameraManager::ResetCamera() -- re-target the camera on the hero, reset the world height band around the hero, clear the camera flags and the hero's projectile aiming mode, drop the current mode and both script modules, clear the earthquakes, snapshot the camera, push the manual mode, and tell the renderer the camera moved (not in fast mode)
 // Leaf: ResetCamera
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069A990, 488 bytes, `ret`.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, own virtual slots 27/28,
 //   CThing::GetPos 0x004C73D0, ResetFlags 0x00699130, the component-map LowerBound 0x0040F020 (TC 0x81),
@@ -66,13 +68,17 @@ struct CRenderer {
     virtual void InvalidateCamera();   // slot 58 (+0xe8)
 };
 class CDisplayEngine { public: unsigned char Data[0x2c]; CRenderer* Renderer; };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   Data[0x1c];
     CPlayerManager* PlayerManager;                       // +0x1c
     unsigned char   Data2[8];
     CDisplayEngine* DisplayEngine;                       // +0x28
 };
-extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 class CCPPointerInfo { public: long Count; void (__fastcall* Delete)(void*); void* Object; };
 template <class T> class CCountedPointer { public:
     T*              Data;
@@ -154,7 +160,7 @@ template <class T, long TYPE> __forceinline T* GetComponent(CThing* thing)
 
 void CGameCameraManager::ResetCamera()
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     SetThingToFollow(hero);
     SetThingToLookAt(hero);
     MinWorldHeight = hero->GetPos().Z;
@@ -173,12 +179,12 @@ void CGameCameraManager::ResetCamera()
     RefreshMode();
     {
         bool fastMode = false;
-        g_pMainGameComponent->DisplayEngine->Renderer->InvalidateCamera();
+        CMainGameComponent::Get()->DisplayEngine->Renderer->InvalidateCamera();
         CCharString message("telling engine that the camera has moved and");
         if (!fastMode)
             message += " not ";
         message += "using fast mode";
-        g_pMainGameComponent->DisplayEngine->Renderer->SetCameraMoved(fastMode, true);
+        CMainGameComponent::Get()->DisplayEngine->Renderer->SetCameraMoved(fastMode, true);
     }
     OldCamera = Camera;
 }

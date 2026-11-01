@@ -1,14 +1,18 @@
 // CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThingCreatureBase& hero) -- when the hero steps onto a boast's spot, show the boast text with its "gold: <cost>" button, or the "not enough money" subtitle when the hero cannot afford it
 // Leaf: ?OnHeroEnterBoastArea@CTCBoastingPodium@@QAEXJ_NAAVCThingCreatureBase@@@Z
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008139C0, 430 bytes, `ret 0Ch`; `this` is not read.
-// Callees: CQuestManager::GetBoast(long, CCharString) 0x004AF7A0 (g_pQuestManager 0x013B89FC; "" 0x0122D70E built in the
+// Callees: CQuestManager::GetBoast(long, CCharString) 0x004AF7A0 (CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass 0x013B89FC; "" 0x0122D70E built in the
 //   by-value argument slot), CCharString(const char*, long) 0x0099EBF0 ("TEXT_GUI_GOLD" 0x01255A38, "You do not have enough
 //   money to make this boast!" 0x01272420) / ~CCharString 0x0099EAE0, CCharString::GetCRC 0x00404310, NGameText::CDataBank::
-//   LookupValue 0x009CC410 / GetPGroupEntry 0x009C9070 (g_pMainGameComponent 0x013B86A0 +0x14), CGroupEntry::GetText
+//   LookupValue 0x009CC410 / GetPGroupEntry 0x009C9070 (CMainGameComponent::Get() 0x013B86A0 +0x14), CGroupEntry::GetText
 //   0x009C7A40 (manifest "CBankFile::GetBankHandle"), GFIntToWideString 0x00405F00, operator+(const wchar_t*, const
 //   CWideString&) 0x0099BFF0 (L": " 0x01236A50), CWideString::operator+= 0x0099B8D0, CWideString(const wchar_t*) 0x0099B6B0
 //   (L"" 0x0122D70C), ~CWideString 0x0099B510, CSubtitleRenderer::SetText 0x00492F69 (four wide texts) / 0x00492ED1
-//   (narrow text) on g_pPlayerGui 0x013B8790 +0x18 (font g_pMainGameComponent +0x1614C).
+//   (narrow text) on g_pPlayerGui 0x013B8790 +0x18 (font CMainGameComponent::Get() +0x1614C).
 // Layout: CQuestManager::CBoast Cost +0x04, Text +0x10 (Ego_r.pdb).
 // Shape: every temporary lives in a dead argument slot. The quest manager and the first text-bank read are named locals
 //   (loaded before the argument pushes). goldText sits in a nested `if (entry)` block, which frees the canAfford slot for
@@ -68,13 +72,17 @@ class CDataBank { public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long index, bool load) const;   // 0x009C9070
 };
 }
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char         _pad00[0x14];
     NGameText::CDataBank* TextBank;                        // +0x14
     unsigned char         _pad18[0x1614c - 0x18];
     CFontBank*            Font;                            // +0x1614C
 };
-extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
 
 class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString& text, const CWideString& button1, const CWideString& button2,
@@ -87,6 +95,17 @@ class CPlayerGui { public:
 };
 extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     class CBoast { public:
         long        ID;                                    // +0x00
@@ -98,7 +117,6 @@ class CQuestManager { public:
     };
     CBoast* GetBoast(long id, CCharString scriptName);     // 0x004AF7A0
 };
-extern CQuestManager* g_pQuestManager;                     // 0x013B89FC
 
 class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
@@ -111,19 +129,19 @@ class CTCBoastingPodium { public:
 
 void CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThingCreatureBase& hero)
 {
-    CQuestManager* questManager = g_pQuestManager;
+    CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     CQuestManager::CBoast* boast = questManager->GetBoast(boastID, "");
     if (!boast || hero.ThingClass != 2)
         return;
     if (canAfford) {
-        NGameText::CDataBank* textBank = g_pMainGameComponent->TextBank;
+        NGameText::CDataBank* textBank = CMainGameComponent::Get()->TextBank;
         unsigned long entry = textBank->LookupValue(CCharString("TEXT_GUI_GOLD").GetCRC());
         if (entry) {
-            NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
+            NGameText::CDataBank* bank = CMainGameComponent::Get()->TextBank;
             CWideString goldText = bank->GetPTextEntry(entry, true)->GetText();
             goldText += L": " + GFIntToWideString(boast->Cost);
-            g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
+            g_pPlayerGui->SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
         }
     } else
-        g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
+        g_pPlayerGui->SubtitleRenderer.SetText(CMainGameComponent::Get()->Font, "You do not have enough money to make this boast!", 0, 2.5f, false, true);
 }

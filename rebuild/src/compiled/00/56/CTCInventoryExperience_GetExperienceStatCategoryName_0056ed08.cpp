@@ -1,4 +1,6 @@
 // CTCInventoryExperience::GetExperienceStatCategoryName(long category) -- the localised name of an experience stat category (0 strength, 1 skill, 2 will), else ""
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056ED08, length 108 bytes (`ret 8`: hidden CWideString result + category; `this` unused).
 // Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CDataBank::GetTextBySymbol
@@ -27,11 +29,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                    // +0x14
 };
-extern CEngineGlobals* g_pEngineGlobals;                          // 0x013B86A0
 
 enum EExperienceStatCategory { STAT_CATEGORY_STRENGTH = 0, STAT_CATEGORY_SKILL = 1, STAT_CATEGORY_WILL = 2 };
 class CTCInventoryExperience { public:
@@ -39,7 +45,7 @@ class CTCInventoryExperience { public:
 };
 CWideString CTCInventoryExperience::GetExperienceStatCategoryName(long category)
 {
-    CDataBank* textBank = g_pEngineGlobals->m_pTextBank;
+    CDataBank* textBank = CMainGameComponent::Get()->m_pTextBank;
     if (category == STAT_CATEGORY_SKILL)
         return textBank->GetTextBySymbol("TEXT_GUI_MENU_SKILL");
     if (category == STAT_CATEGORY_STRENGTH)

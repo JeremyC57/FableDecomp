@@ -1,8 +1,10 @@
 // CItem::GetItemDescription() const -- the wide description text of a non-empty slot's item (the inventory def's text index at +0x34, looked up in the game text bank); the empty wide string for an empty slot or a def without text
 // Leaf: GetItemDescription
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD8A0, length 145 bytes.
 // Callees: CItem::GetInventoryItemDef @ 0x005BD82E (counted def by value), NGameText::CDataBank::GetPGroupEntry(unsigned long,
-// bool) @ 0x009C9070 on the bank at g_pMainGameComponent(0x013B86A0) +0x14 (CIVCountedPointer<const CGroupEntry> by value),
+// bool) @ 0x009C9070 on the bank at CMainGameComponent::Get()(0x013B86A0) +0x14 (CIVCountedPointer<const CGroupEntry> by value),
 // CGroupEntry's text getter @ 0x009C7A40 (`return m_text;` at +0x28; manifest label "CBankFile::GetBankHandle" is
 // propagated), CWideString::CWideString(const CWideString&) @ 0x0099B720 on the empty wide string 0x013BCA24.
 // Model: engine/CItem.h; the counted temporaries and their inlined release (`mov ecx,eax ; add eax,4 ; dec [eax] ;
@@ -57,11 +59,15 @@ class CDataBank { public:                                 // NGameText::CDataBan
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                        // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 struct CItem_Methods : CItem {
     CIVCountedPointer<CInventoryItemDef_Retail> GetInventoryItemDef() const;   // 0x005BD82E
     CWideString GetItemDescription() const;
@@ -73,7 +79,7 @@ CWideString CItem_Methods::GetItemDescription() const
         return g_emptyWideString;
     long textIndex = GetInventoryItemDef().Object->DescriptionTextIndex;
     if (textIndex > 0) {
-        CDataBank* bank = g_pMainGameComponent->TextBank;
+        CDataBank* bank = CMainGameComponent::Get()->TextBank;
         return bank->GetPTextEntry(textIndex, true).Object->GetText();
     }
     return g_emptyWideString;

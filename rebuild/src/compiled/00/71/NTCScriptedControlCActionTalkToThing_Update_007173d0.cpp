@@ -1,5 +1,7 @@
 // NTCScriptedControl::CActionTalkToThing::Update() -- skip to the end of the current line once the player has clicked it away (subtitles on: the renderer stopped displaying it; subtitles off: a type-0x11 message event arrived), then run the base talk update
 // Leaf: ?Update@CActionTalkToThing@
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007173D0, 126 bytes (+2 int3 padding); vtable 0x012659C8 slot 1.
 // FableWin.pdb: ?Update@CActionTalkToThing@NTCScriptedControl@@UAEXXZ.
 // Callees: CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0 (no arguments, the manager in eax) with the landed
@@ -7,7 +9,7 @@
 //          CMessageEventManager::FindMostRecentMessage<CMessageEventFilter_IsOfType> @ 0x004AB8B0 (as the landed
 //          CGameScriptInterface::CheckForCameraMessage @ 0x006E7920), CActionTalkBase::Update @ 0x00716DE0.
 // Data: g_pPlayerGui @ 0x013B8790 (SubtitleRenderer +0x18, its retail DisplayingText +0xE5 = GUI +0xFD per the landed
-//          0x0048DB46 layout), g_pMainGameComponent @ 0x013B86A0 (PWorld +0x24; CWorld PMessageEventManager +0x60).
+//          0x0048DB46 layout), CMainGameComponent::Get() @ 0x013B86A0 (PWorld +0x24; CWorld PMessageEventManager +0x60).
 // Layout: retail CActionTalkBase UpdateCounter +0x18, GameTurnDuration +0x48, SkippedCurrentLine +0x8F (Ego_r.pdb +0x93:
 //          the debug CArray is 4 bytes larger); CUserProfileManager UseNewProfileValues +0xC, SubtitlingEnabled +0xD,
 //          SubtitlingEnabledNewProfile +0xCD.
@@ -38,11 +40,15 @@ class CWorld { public:
     unsigned char _pad04[0x60 - 0x04];
     CCountedPointer<CMessageEventManager> PMessageEventManager;   // +0x60
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x24];
     CWorld*       PWorld;                          // +0x24
 };
-extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
 class CSubtitleRenderer : public CSubtitleRendererDonor {
  public:
@@ -110,7 +116,7 @@ void CActionTalkToThing::Update()
         if (!g_pPlayerGui->SubtitleRenderer.DisplayingText)
             SkipCurrentLine();
     } else {
-        CMessageEventManager* manager = g_pMainGameComponent->PWorld->PMessageEventManager.Data;
+        CMessageEventManager* manager = CMainGameComponent::Get()->PWorld->PMessageEventManager.Data;
         if (manager->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x11)))
             SkipCurrentLine();
     }

@@ -1,9 +1,11 @@
 // CTCPhotojournalCapture::DestroyScreen() -- delete the capture screen's UI components, empty the list, and queue game event 0x44 for the main player
 // Leaf: DestroyScreen
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055D6C0, 173 bytes (plain `ret`; PDB ?DestroyScreen@CTCPhotojournalCapture@@QAEXXZ).
 // Callees: the components' virtual deleting destructor (slot 0, `push 1`), memmove @ 0x00BFEAE6 (the inlined STLport erase),
-//   CPlayerManager::GetMainPlayerNumber @ 0x00449700 on g_pMainGameComponent->PlayerManager (+0x1c), CMainGameComponent::
+//   CPlayerManager::GetMainPlayerNumber @ 0x00449700 on CMainGameComponent::Get()->PlayerManager (+0x1c), CMainGameComponent::
 //   AddGameEvent(const CGameEvent&) @ 0x0041649C, __security_check_cookie @ 0x00BFE9F9 (cookie 0x0139C8A8).
 // Layout: Ego_r.pdb CTCPhotojournalCapture Components +0x2c (12-byte retail vector); CGameEvent as the landed sibling
 //   ClosePhotojournalCapture 0x0055D770 (Type +0, Player +4, Data +5, EndPos +0x25, Valid +0x26, Replacement +0x27).
@@ -52,12 +54,16 @@ class CGameEvent : public CMemoryBuffer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 class CThing;
 class CWideString { public: void* PStringData; };
 class CTCPhotojournalCapture { public:
@@ -84,6 +90,6 @@ void CTCPhotojournalCapture::DestroyScreen()
             delete Components[i];
     Components.clear();
     CGameEvent event(0x44);
-    event.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
-    g_pMainGameComponent->AddGameEvent(event);
+    event.Player = (signed char)CMainGameComponent::Get()->PlayerManager->GetMainPlayerNumber();
+    CMainGameComponent::Get()->AddGameEvent(event);
 }

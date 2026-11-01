@@ -1,5 +1,7 @@
 // CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- hand the input to the hero's current tavern game (game-player component 0xD0), then translate press/held of actions 0x19/0x4c and mouse capture 0x47 into front-end UI events
 // Leaf: ProcessInput
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690830, length 359 bytes, `ret 8`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (player manager at CMainGameComponent +0x1C, the component
 //   global @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020,
@@ -79,11 +81,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-struct CMainGameComponentView {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1C
 };
-extern CMainGameComponentView* g_pMainGameComponent;   // 0x013B86A0
 class CInputProcessTavernGame : public CInputProcessGameBase {
 public:
     bool IsEventButtonPressed(const CInputEvent& event);              // 0x00687A90
@@ -94,7 +100,7 @@ public:
 
 void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCGamePlayer* player = 0;
     if (hero->HasTC(0xd0))
         player = hero->GetTC(0xd0);

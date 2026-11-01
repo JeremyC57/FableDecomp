@@ -1,5 +1,8 @@
 // PCLoad() -- the PC "load this save?" Yes callback: release the yes/no dialog, the mouse pointer and both buttons from the UI manager, give input back to the pointer and arm the hero's in-game menu to load the chosen save
 // Leaf: ?PCLoad@@
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047DC69, 308 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed CTCInGameMenu::CloseInGameMenuPC 0x0047DBB8), `ret`.
@@ -9,7 +12,7 @@
 //          CTCBase*>::LowerBound @ 0x0040F020; the dialog's CComponent slot 3 (+0x0C, find child by name), the manager's
 //          CObservable slots 10 (+0x28) and 2 (+0x08), the pointer's CObserver slot 3 (+0x0C, event 0x19).
 // Globals: the yes/no dialog 0x013B87A8 and the mouse pointer 0x013B87A4 (file statics of the in-game-menu TU, shared
-//          with ConfirmedVideoOptionsChanged 0x0047D012 and PCSetToLoad 0x0047DD9D), g_pMainGameComponent 0x013B86A0.
+//          with ConfirmedVideoOptionsChanged 0x0047D012 and PCSetToLoad 0x0047DD9D), CMainGameComponent::Get() 0x013B86A0.
 // Layout: retail CTCInGameMenu (12-byte containers; PDB -0x20 past the eight vectors): LoadGameIndex +0x64 (PDB +0x78),
 //          SaveGameToLoad +0xB8 (PDB +0xD8). TC interface 0xC6 is the in-game menu (as SavedConfirmed 0x0047DB73).
 // Shape: each global goes to the manager as its CObserver sub-object (`neg/sbb/and` converting null test); the dialog's
@@ -52,9 +55,12 @@ class CManager { public:                                    // NUISystem::CManag
 
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -70,7 +76,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThing { public:
     unsigned char _pad0[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasInterface(long type) { return m_present.test(type); }
@@ -93,11 +99,15 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                   // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
 class CTCInGameMenu { public:
     void*         __vftable;                         // +0x00
@@ -125,7 +135,7 @@ void PCLoad()
     if (noButton)
         NUISystem::CManager::GetInstance()->ReleaseObserver_0055ca00(noButton);
     CTCInGameMenu* menu = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero->HasInterface(TC_IN_GAME_MENU))
         menu = hero->GetInterfaceUnchecked<CTCInGameMenu>(TC_IN_GAME_MENU);
     menu->LoadGameIndex = menu->SaveGameToLoad;

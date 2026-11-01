@@ -1,4 +1,6 @@
 // CTCHero::GetTitleGuiText() const -- the GUI text of the hero's current title (the title sub-def's HeroTitleGuiTag looked up in the game-text data bank), else the empty wide string
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CA0A0, length 114 bytes (+14 int3 padding), `ret 4` (hidden CWideString result).
 // Ego_r.pdb: ?GetTitleGuiText@CTCHero@@QBE?AVCWideString@@XZ
 // Callees: NGameText::CDataBank::GetPGroupEntry(unsigned long, bool) const @ 0x009C9070 (CIVCountedPointer by hidden pointer),
@@ -47,11 +49,15 @@ public:
     CIVCountedPointer<const CTextEntry> GetPTextEntry(unsigned long tag, bool b) const;   // 0x009C9070
 };
 }
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     NGameText::CDataBank* PGameTextDataBank;    // +0x14
 };
-extern CEngine* g_pEngine;                      // 0x013B86A0
 
 class CDefPointeeBase { public: virtual void v00(); long m_refCount; };
 class CHeroTitleDef : public CDefPointeeBase { public:
@@ -76,7 +82,7 @@ CWideString CTCHero::GetTitleGuiText() const
 {
     if (PHeroTitleSubDef.Object && PHeroTitleSubDef->HeroTitleGuiTag > 0) {
         CIVCountedPointer<const NGameText::CTextEntry> entry =
-            g_pEngine->PGameTextDataBank->GetPTextEntry(PHeroTitleSubDef->HeroTitleGuiTag, true);
+            CMainGameComponent::Get()->PGameTextDataBank->GetPTextEntry(PHeroTitleSubDef->HeroTitleGuiTag, true);
         if (entry.Data)
             return entry->GetText();
     }

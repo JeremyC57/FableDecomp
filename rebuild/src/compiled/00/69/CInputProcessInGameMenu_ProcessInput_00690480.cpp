@@ -1,5 +1,7 @@
 // CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- drive the in-game menu while no sub-page (+0xC8) is open: analogue keys 0x11/0x12 past +-0.6 send front-end events, pressed actions 0x25..0x28/0x21/0x22 send navigation events (left/right go to an active slider first), actions 3/2 close the menu (2 also queues game event 0x1A for the live hero), released 0x25/0x26 send 0/1
 // Leaf: ProcessInput
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690480, 848 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 #include "engine/CInputProcessGameBase.h"
@@ -52,12 +54,16 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                 // +0x1C
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CTCInGameMenu { public:
     unsigned char _pad00[0xc8];
     long          CurrentSubPage;                  // +0xC8 (descriptive; -1 = none)
@@ -139,12 +145,12 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             processed.SetHandled();
         } else if (IsEventGameAction(2, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
-            CThingPlayerCreature* const& hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+            CThingPlayerCreature* const& hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer().GetPControlledCreature();
             if (IS_THING_ALIVE(hero)) {
                 CGameEvent gameEvent(0x1a);
                 gameEvent.Player = hero->PlayerNumber;
                 gameEvent.AddLong(4);
-                g_pMainGameComponent->AddGameEvent(gameEvent);
+                CMainGameComponent::Get()->AddGameEvent(gameEvent);
             }
             processed.SetHandled();
         }

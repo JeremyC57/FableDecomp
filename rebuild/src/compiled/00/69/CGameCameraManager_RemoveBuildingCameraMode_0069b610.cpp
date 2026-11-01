@@ -1,4 +1,6 @@
 // CGameCameraManager::RemoveBuildingCameraMode() -- unless the main player is in mode 0x2f, restores the main camera set def, adds the melee mode when the observed thing is in melee, and clears ObservedThingInBuilding
+// Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069B610, length 64 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (`GetPlayer(MainPlayer)`; manifest label "Catch@0040d959" is wrong),
 // CPlayer::HasMode(EPlayerMode) @ 0x00634160, SetUpMainCameraManagerSetDef @ 0x0069ADC0, IsObservedThingInMelee
@@ -14,12 +16,16 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 
-class CEngine { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x1c];
     CPlayerManager* m_pPlayerManager;               // +0x1c
 };
 
-extern CEngine* g_pEngine;                          // 0x013B86A0
 
 class CWorld;
 class CThing;
@@ -121,7 +127,7 @@ class CGameCameraManager { public:
 
 void CGameCameraManager::RemoveBuildingCameraMode()
 {
-    if (!g_pEngine->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
+    if (!CMainGameComponent::Get()->m_pPlayerManager->GetMainPlayer().HasMode(0x2f)) {
         SetUpMainCameraManagerSetDef();
         if (IsObservedThingInMelee())
             AddMeleeCameraMode();

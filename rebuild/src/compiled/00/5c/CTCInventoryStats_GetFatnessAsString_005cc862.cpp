@@ -1,10 +1,12 @@
 // CTCInventoryStats::GetFatnessAsString(float fatness) -- the localised stats label for the hero's fatness band: TEXT_GUI_STATS_LABEL_FATNESS1 below 0.2, FATNESS2 / 3 / 4 for [0.2, 0.4) / [0.4, 0.6) / [0.6, 0.8), FATNESS5 from 0.8, and the literal L"Unbelievably Fat" when no band matches (a NaN)
 // Leaf: GetFatnessAsString
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CC862, 331 bytes (CWideString by value: hidden pointer at [ebp+8],
 //   `ret 8`). Frame-pointer size TU: optimize("y",off) + ("s",on). `this` is unused.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 and ~CCharString @ 0x0099EAE0, operator+(const CCharString&,
 //   const CCharString&) @ 0x0099F570 (`__fastcall`), NGameText::CDataBank::GetTextBySymbol(const CCharString&)
-//   @ 0x009C95E0 on g_pMainGameComponent(0x013B86A0)->TextBank (+0x14), CWideString(const wchar_t*) @ 0x0099B6B0.
+//   @ 0x009C95E0 on CMainGameComponent::Get()(0x013B86A0)->TextBank (+0x14), CWideString(const wchar_t*) @ 0x0099B6B0.
 // Literals: "FATNESS1".."FATNESS5" 0x01254814 / 0x012547F0 / 0x012547D8 / 0x012547C0 / 0x012547B4,
 //   "TEXT_GUI_STATS_LABEL_" 0x012547FC, L"Unbelievably Fat" 0x01254790; doubles 0.2 0x01254820, 0.4 0x01248028,
 //   0.6 0x012547E8, 0.8 0x012547D0.
@@ -30,11 +32,15 @@ class CDataBank { public:                                      // NGameText::CDa
 };
 }
 using NGameText::CDataBank;
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank*    TextBank;                             // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
 namespace NInventory {
 struct CTCInventoryStats {
@@ -42,7 +48,7 @@ struct CTCInventoryStats {
 };
 CWideString CTCInventoryStats::GetFatnessAsString(float fatness)
 {
-    CDataBank* bank = g_pMainGameComponent->TextBank;
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     if (fatness < 0.2)
         return bank->GetTextBySymbol(CCharString("TEXT_GUI_STATS_LABEL_") + CCharString("FATNESS1"));
     if (fatness >= 0.2 && fatness < 0.4)

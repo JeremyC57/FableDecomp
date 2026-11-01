@@ -1,5 +1,7 @@
 // CTCRegionDisplay::SetCurrentAreaName(const CCharString&, float, bool, bool, bool) -- look the region tag up in the text data bank (text entry, first entry of a group, or the tag itself) and show it, unless it is already showing
 // Leaf: SetCurrentAreaName
+// Naming wave 18: the global stand-in g_pWorld (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00639BA0, 658 bytes, `ret 14h` (the CWideString overload 0x00639A90 is landed).
 // Callees: CCharString::operator!=(const char*) const 0x0099E960 (catalog "CCharString::NotEqual"), CWideString() 0x0099AED0
 //   (catalog "CCharString" -- the known CWideString/CCharString default ctor name conflict), CRC32 CCRC::Calc 0x004014A0 (fastcall),
@@ -104,11 +106,15 @@ class CDataBank : public CBankFile { public:
 };
 }
 using NGameText::CDataBank;
-struct CWorldGlobal {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                                   // +0x14
 };
-extern CWorldGlobal* g_pWorld;                              // 0x013B86A0
 
 class CThing;
 class CWorld { public:
@@ -141,7 +147,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CCharString& tag, float displayT
     if (tag != "") {
         CWideString text;
         {
-            CDataBank* bank = g_pWorld->PDataBank;
+            CDataBank* bank = CMainGameComponent::Get()->PDataBank;
             unsigned long id = bank->LookupValue(CCRC::Calc(0, tag.GetData(), tag.GetLength()));
             if (id > 0) {
                 if (bank->GetEntryDataType(id) == 0)

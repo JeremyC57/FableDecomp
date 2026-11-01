@@ -1,4 +1,7 @@
 // CTCInventoryStats::BuildRenownString() -- the localised renown-class text of the hero: TEXT_GUI_STATS_RENOWNCLASS_LEVEL<n> looked up in the game-text data bank, n = the renown component's class level
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pEngineGlobals (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CD433, length 145 bytes (`ret 4`: hidden CWideString result). Frame-pointer size TU:
 // optimize("y",off) + ("s",on). Ego_r.pdb: ?BuildRenownString@CTCInventoryStats@@QAE?AVCWideString@@XZ.
 // Callees: std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface for interface 4,
@@ -12,9 +15,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -29,7 +35,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -68,11 +74,15 @@ class CDataBank { public:
 };
 }
 using NGameText::CDataBank;
-struct CEngineGlobals {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank*    m_pTextBank;                                    // +0x14
 };
-extern CEngineGlobals* g_pEngineGlobals;                          // 0x013B86A0
 
 struct CTCHeroRenown {                                // interface type 4
     unsigned char _pad_0x00[0x70];
@@ -90,5 +100,5 @@ CWideString CTCInventoryStats::BuildRenownString()
     CTCHeroRenown* renown = ParentThing->GetTC<CTCHeroRenown>(4);
     CCharString symbol("TEXT_GUI_STATS_RENOWNCLASS_LEVEL");
     symbol += GFIntToCharString(renown->RenownClassLevel);
-    return g_pEngineGlobals->m_pTextBank->GetTextBySymbol(symbol);
+    return CMainGameComponent::Get()->m_pTextBank->GetTextBySymbol(symbol);
 }

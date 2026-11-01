@@ -1,10 +1,12 @@
 // CTCWife::~CTCWife() -- wife component dtor: un-pause the game (event 9, false) for each of a pending divorce, dowry or sex scene, end a pending screen fade-out, leave the global TC list, then destroy the seen-clothing set, the gifts map and the marriage def pointer and run ~CTCBase
 // Leaf: ??1CTCWife
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CF1D0, length 480 bytes (/GS cookie 0x0139C8A8); vtable 0x0125ED5C.
 // Callees: CTCBase::PeekWorld() const 0x00686A80; CWorld::PeekMyPlayer() 0x0049D9D0; CMemoryBuffer::Copy 0x009F1760;
-//   CMainGameComponent::AddGameEvent 0x0041649C on g_pMainGameComponent 0x013B86A0; CDisplayEngine::EndScreenFadeOut
-//   0x00434C90 (display engine at g_pMainGameComponent+0x28); CTCBase::RemoveFromGlobalTCs 0x00686DF0;
+//   CMainGameComponent::AddGameEvent 0x0041649C on CMainGameComponent::Get() 0x013B86A0; CDisplayEngine::EndScreenFadeOut
+//   0x00434C90 (display engine at CMainGameComponent::Get()+0x28); CTCBase::RemoveFromGlobalTCs 0x00686DF0;
 //   _Rb_tree<set<long>>::_M_erase 0x004A9CB0, _Rb_tree<map<long,long>>::_M_erase 0x004DA2AC; free 0x00BFEA14;
 //   CTCBase::~CTCBase 0x00686830 (catalogued ~CChunkedFileChunk).
 // Layout: the landed CTCWife ctor 0x006CF040 model (retail STLport trees are 12 bytes): PHeroMarriageDef +0x0C,
@@ -33,12 +35,16 @@ class CGameEvent : public CMemoryBuffer { public:
 class CDisplayEngine { public:
     void EndScreenFadeOut();                       // 0x00434C90
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x28];
     CDisplayEngine* PDisplayEngine;                // +0x28
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                  // +0x28
@@ -153,7 +159,7 @@ class CTCWife : public CTCBase { public:                         // vtable 0x012
         CGameEvent gameEvent(9);
         gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;
         gameEvent.AddBool(false);
-        g_pMainGameComponent->AddGameEvent(gameEvent);
+        CMainGameComponent::Get()->AddGameEvent(gameEvent);
     }
 };
 
@@ -166,6 +172,6 @@ CTCWife::~CTCWife()
     if (WaitingForSex)
         SendUnpauseEvent();
     if (WaitingForFadeOut)
-        g_pMainGameComponent->PDisplayEngine->EndScreenFadeOut();
+        CMainGameComponent::Get()->PDisplayEngine->EndScreenFadeOut();
     RemoveFromGlobalTCs();
 }

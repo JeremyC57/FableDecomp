@@ -2,12 +2,15 @@
 // Grade: RELOCATION_MATCH
 // Lever: same-TU noinline stand-in body for the map operator[] template (0x005B3167): with it visible VC7.1 schedules the `parent` / &actionsList loads above the store through the returned reference, as retail.
 // Leaf: ConstructSellActionsList@CTCInventoryTrade
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A45F6, 1767 bytes, `ret 10h`, bool in al (bl). Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CFrontEndManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
-//   CCountedPointer<CComponent>(T*) 0x00429C15 / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 (g_pMainGameComponent
+//   CCountedPointer<CComponent>(T*) 0x00429C15 / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 (CMainGameComponent::Get()
 //   0x013B86A0 +0x1C) + CPlayer::GetControlledCreature 0x00487DD0, CTCInventoryBase::GetTradingThing 0x005BC4C4, std::bitset::test
 //   0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (inline GetInterface, type 0x53 = CTCShop), CTCInventoryItem::GetInventoryCategory 0x005D99D0,
-//   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at g_pMainGameComponent +0x14), IntToWideString 0x00405F00 (`__fastcall`),
+//   CDataBank::GetTextBySymbol 0x009C95E0 (text bank at CMainGameComponent::Get() +0x14), IntToWideString 0x00405F00 (`__fastcall`),
 //   CWideString operator+ 0x0099BE70 (`__fastcall`), CWideString 0x0099B6B0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   operator new 0x00BFEA1A, CAction 0x0042BE50, CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646
 //   (same-TU noinline stand-in), CTCShop::HasDefaultStockItem 0x007723D0, ItemSellLists operator[] 0x005B3167.
@@ -38,9 +41,12 @@ CWideString __fastcall operator+(const CWideString& left, const CWideString& rig
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
-struct CPresenceBits {
-    bool test(long bit);                                // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;                                      // +0x00
@@ -49,7 +55,7 @@ struct CInterfaceMap {
 };
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                            // +0x20
+    std::bitset<274> m_present;                            // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                         // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -70,13 +76,17 @@ class CTCShop { public:                                        // interface type
 };
 class CPlayer { public: CThing* GetControlledCreature(); };  // 0x00487DD0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char   _pad00[0x14];
     CDataBank*      TextBank;                           // +0x14
     unsigned char   _pad18[0x1c - 0x18];
     CPlayerManager* PlayerManager;                      // +0x1c
 };
-extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 class CTCInventoryItem { public:
     static long __fastcall GetInventoryCategory(long defIndex);   // 0x005D99D0 (Ego_r.pdb ?GetInventoryCategory@CTCInventoryItem@@SIJJ@Z; landed 0x005C44FA spelling)
 };
@@ -185,8 +195,8 @@ bool CTCInventoryTrade::ConstructSellActionsList(CComponent* parent, long defInd
     CFrontEndManager* fe = CFrontEndManager::GetInstance();
     CCountedPointer<CComponentBase> actionsList(CFrontEndManager::GetInstance()->CreateComponent("UI_LIST_SELL_ACTIONS", false));
     CComponentBase* list = actionsList.Data;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetControlledCreature();
-    CDataBank* bank = g_pMainGameComponent->TextBank;
+    CThing* hero = CMainGameComponent::Get()->PlayerManager->GetMainPlayer()->GetControlledCreature();
+    CDataBank* bank = CMainGameComponent::Get()->TextBank;
     CTCShop* shop = 0;
     GetTradingThing()->GetInterface(&shop, 0x53);
     hero->m_present.test(CTCInventoryItem::GetInventoryCategory(defIndex));

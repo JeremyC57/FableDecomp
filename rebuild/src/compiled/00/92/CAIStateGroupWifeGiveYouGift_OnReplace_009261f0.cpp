@@ -1,5 +1,9 @@
 // CAIStateGroup_WifeGiveYouGift::OnReplace() -- once the give speech was delivered and the hero is alive: create the gift object at the hero, put it into the hero's inventory of its category, show the "wife gave you a gift" subtitle with the item description, and clear the wife component's gift state
 // Leaf: OnReplace
+// Naming wave 18: the global stand-in g_pDisplayEngine (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009261F0, 512 bytes.
 // Callees: CAIStateGroupBase::GetPlayerManager @ 0x008FCF90 (manifest "CPixelShader::CountReferences", propagated),
 //   CPlayerManager::GetMainPlayer @ 0x00449970 (manifest "Catch@0040d959"), CPlayer::GetPControlledCreature @ 0x00487DC0 (manifest
@@ -85,8 +89,10 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
 };
 bool __fastcall ConstructString(CWideString* text, const CWideString* argument);   // 0x009C7980
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, CRightHandedSet* orientation,
-    unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 struct CTCInventoryBase;
 class CTCInventoryItem { public:
     long GetInventoryType();                            // 0x005D9030
@@ -104,21 +110,35 @@ class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& s
 }
 using NGameText::CDataBank;   // 0x009C95E0
 class CFontBank;
-class CGame { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x14];
     CDataBank* PTextBank;                               // +0x14
     unsigned char _pad18[0x1614c - 0x18];
     CFontBank* PSubtitleFont;                           // +0x1614c
 };
-extern CGame* g_pGame;                                  // 0x013B86A0
 class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CWideString* text, unsigned long colour, float time, bool a, bool b);   // 0x00492E4B
 };
-class CDisplayEngine { public:
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
     unsigned char _pad[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
 };
-extern CDisplayEngine* g_pDisplayEngine;                // 0x013B8790
 class CTCWife { public:                                        // interface 0xd7
     unsigned char _pad[0x74];
     long GiftState;                                     // +0x74
@@ -152,13 +172,13 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
     CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || (hero->m_flags91 & 1))
         return;
-    CThing* gift = CreateThingObject(GiftToGiveDef, &hero->GetPos(), hero->PlayerNumber, 0, 0, "");
+    CThing* gift = ((CThing*)CThingObject::Create(GiftToGiveDef, *(&hero->GetPos()), hero->PlayerNumber, 0, 0, ""));
     CTCInventoryItem* item = (CTCInventoryItem*)gift->GetTCIfHas(0x1a);
     long type = item->GetInventoryType();
     item->AddToInventory((CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
-    CWideString text = g_pGame->PTextBank->GetTextBySymbol("TEXT_GUI_WIFE_GIVEN_YOU_GIFT");
+    CWideString text = CMainGameComponent::Get()->PTextBank->GetTextBySymbol("TEXT_GUI_WIFE_GIVEN_YOU_GIFT");
     ConstructString(&text, &item->GetDescription());
-    g_pDisplayEngine->Subtitles.SetText(g_pGame->PSubtitleFont, &text, 0x122, 0.0f, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(CMainGameComponent::Get()->PSubtitleFont, &text, 0x122, 0.0f, false, true);
     if (PBrain->PCreature->HasTC(0xd7))
         ((CTCWife*)PBrain->PCreature->GetTC(0xd7))->GiftState = 0;
 }

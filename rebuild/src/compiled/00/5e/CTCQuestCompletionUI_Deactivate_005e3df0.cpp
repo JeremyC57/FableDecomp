@@ -1,5 +1,7 @@
 // CTCQuestCompletionUI::Deactivate() -- when active: start the quitting fade-out, tell the black overlay component (virtual slot 48, true) and queue game event 9 carrying a zero byte
 // Leaf: Deactivate
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS
 // Grade: DIFFER(123v119) -- ours copies `this` to eax after the /GS cookie load (mov eax,ecx ; mov cl,[eax+0Ch]) where retail keeps ecx and loads al; AddGameEvent arg via lea ecx after the push instead of mov ecx,[global] ; lea edx
 // Retail: Fable.exe 0x005E3DF0, 119 bytes (plain `ret`, /GS cookie 0x0139C8A8 / __security_check_cookie 0x00BFE9F9).
@@ -22,10 +24,14 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
     void AddUBYTE(unsigned char value) { Copy(1, &value); }
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     void AddGameEvent(const CGameEvent& event);    // 0x0041649C
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 namespace NUISystem {
 class CComponent { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -57,6 +63,6 @@ void CTCQuestCompletionUI::Deactivate()
         PBlack->SetFading(true);
         CGameEvent gameEvent(9);
         gameEvent.AddUBYTE(0);
-        g_pMainGameComponent->AddGameEvent(gameEvent);
+        CMainGameComponent::Get()->AddGameEvent(gameEvent);
     }
 }

@@ -1,4 +1,6 @@
 // SW2 sweep (advisor/006d7960/probe/t1.cpp), on the chunk-301 lane source.
+// Naming wave 18: the global stand-in g_GameText (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // CTCHeroExperience::GetFullHeroTitle() const -- hero title text, plus " - " and the best earned title from the experience def's list
 class CWideString {
 public:
@@ -100,12 +102,16 @@ public:
 };
 }
 using NGameText::CDataBank;
-struct CGameTextManager {
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CDataBank* PDataBank;                               // +0x14
 };
-extern CGameTextManager* g_GameText;                    // 0x013B86A0
-inline CDataBank* GetGameTextBank() { return g_GameText->PDataBank; }
+inline CDataBank* GetGameTextBank() { return CMainGameComponent::Get()->PDataBank; }
 template<class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; const T* begin() const { return _M_start; } const T* end() const { return _M_finish; } long size() const { return end() - begin(); } const T& operator[](long n) const { return *(begin() + n); } };
 class CHeroExperienceDef {
 public:

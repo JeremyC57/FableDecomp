@@ -1,5 +1,7 @@
 // CSubtitledMessage::GetMessageFromTextIndex -- original value68, intrusive textentry and sound fallback graph
 // Leaf: ?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z
+// Naming wave 18: the global stand-in CUnprovenGlobal_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /Gr
 #include <stddef.h>
 #include <new>
@@ -107,8 +109,12 @@ class CGameComponent:public CBaseClassNonCopyable,public CDeviceResetCallback{pu
 // this TU neither constructs it nor claims its full original size.
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;};
 namespace NGameText{class CDataBank;}
-class CMainGameComponent:public CGameComponent{public:CASoundBank*PSampleBank;CCountedPointer<NGameText::CDataBank>PTextBank;};
-extern CMainGameComponent*CUnprovenGlobal_013b86a0;
+class CMainGameComponent:public CGameComponent{
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private:public:CASoundBank*PSampleBank;CCountedPointer<NGameText::CDataBank>PTextBank;};
 // These services are genuine RTTI API projections. No own size/field/secondary
 // base-offset claim or fabricated padding is used; all calls use primary base0.
 #define CBankFile CBankFileFields
@@ -138,7 +144,7 @@ class CDataBank:public CBankFileAsync,public CResourceBank{public:const CDataBan
 }
 CCharString __fastcall operator+(const char*,const CCharString&);
 CSubtitledMessage __fastcall CSubtitledMessage::GetMessageFromTextIndex(unsigned long index,const char*unused){
- NGameText::CDataBank*bank=CUnprovenGlobal_013b86a0->PTextBank.Data;
+ NGameText::CDataBank*bank=CMainGameComponent::Get()->PTextBank.Data;
  if(bank->GetTextInfo(index)){
   const NGameText::CTextEntry*entry=bank->GetPTextEntry(index,true).Get();
   CSubtitledMessage message(*entry);const CASoundBank*speechBank=message.PSpeechBank;long speechIndex=0;

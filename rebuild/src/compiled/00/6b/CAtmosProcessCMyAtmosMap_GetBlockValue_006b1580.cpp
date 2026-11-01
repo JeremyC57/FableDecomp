@@ -1,4 +1,6 @@
 // CAtmosProcess::CMyAtmosMap::GetBlockValue(const C2DCoordI&) -- virtual slot 0: when the game object exists and
+// Naming wave 18: the global stand-in g_pGame (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // the world's map is not in its disabled state, forwards the block coordinate to the map's lookup; otherwise 0.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B1580, length 50 bytes.
 // Callees: CWorld::GetMap (vtable slot 12, +0x30) on the world at +0x24 of the global game object @ 0x013B86A0,
@@ -21,11 +23,15 @@ class CWorld { public:
     virtual CWorldMap* GetMap();                         // slot 12 (+0x30)
 };
 
-class CGame { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad[0x24];
     CWorld* m_pWorld;                                    // +0x24
 };
-extern CGame* g_pGame;                                   // 0x013B86A0
 
 struct CMyAtmosMap {
     virtual long GetBlockValue(const C2DCoordI& block);
@@ -34,9 +40,9 @@ struct CMyAtmosMap {
 
 long CMyAtmosMap::GetBlockValue(const C2DCoordI& block)
 {
-    if (g_pGame) {
-        if (!g_pGame->m_pWorld->GetMap()->m_disabled) {
-            CWorldMap* map = g_pGame->m_pWorld->GetMap();
+    if (CMainGameComponent::Get()) {
+        if (!CMainGameComponent::Get()->m_pWorld->GetMap()->m_disabled) {
+            CWorldMap* map = CMainGameComponent::Get()->m_pWorld->GetMap();
             return map->GetBlockValue(block);
         }
     }

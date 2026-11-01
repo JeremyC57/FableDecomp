@@ -1,5 +1,8 @@
 // CTCVillage::FrameUpdate() -- per-frame village upkeep: prune members, refresh tasks and crowds, run the def's task updaters, crimes and enemy status; every 30 frames switch the village lights with the day and recount the working villagers; play the curfew / cook-time change announcement near the hero; then update the curfew
 // Leaf: ?FrameUpdate@CTCVillage
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
+//   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C781, 1002 bytes, plain `ret`, ebp frame (size TU, `optimize("s",on)`).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -22,9 +25,12 @@ class CCharString { public:
     const char* GetString() const;                     // 0x00404310
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -54,7 +60,7 @@ class CTCPhysicsBase { public:
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
@@ -139,11 +145,15 @@ struct CTextBank {
     bool EntryExists(long id);                  // 0x009CC190
     CGroupEntryRef GetPGroupEntry(long id, bool create);   // 0x009C9070
 };
-class CMainGameComponent { public:
+class CMainGameComponent {
+protected:
+    static CMainGameComponent* PMainGameComponent;      // 0x013B86A0 ?PMainGameComponent@CMainGameComponent@@1PAV1@A (protected static; ESTABLISHED_SPELLINGS)
+public:
+    static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }   // Ego_r / FableWin ?Get@CMainGameComponent@@SIPAV1@XZ (inline)
+private: public:
     unsigned char _pad00[0x14];
     CTextBank* PTextBank;                       // +0x14
 };
-extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 extern bool g_RepopulateVillages;               // 0x013B86E9
 class CGameTimeManager { public:
     bool IsDay();                               // 0x006BB2C0
@@ -281,7 +291,7 @@ void CTCVillage::FrameUpdate()
         if (was != IsCookTime_00658b20())
             text = was ? PDef->CookStartText : PDef->CookEndText;
         if (text != "") {
-            CTextBank* bank = g_pMainGameComponent->PTextBank;
+            CTextBank* bank = CMainGameComponent::Get()->PTextBank;
             long id = bank->LookupValue(text.GetString());
             bool exists = bank->EntryExists(id);
             CGroupEntryRef::CEntry* entry = bank->GetPGroupEntry(id, false).Object;
