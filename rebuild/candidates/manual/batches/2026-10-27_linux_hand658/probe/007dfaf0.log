@@ -1,0 +1,1 @@
+1	implicit dtor: CTCWallMountEffects : CTCBase, engine CDefPointer PDef + CIntelligentPointer<CThingCreatureBase> CreaturePerformingAction, ctor defined	RELOCATION_MATCH

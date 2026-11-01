@@ -1,0 +1,1 @@
+1	own anonymous-namespace class CCreatureAction_KrakenLowAttackLoop : CCombatActionBase (copy 0x0062F3B0), sizeof 0x11C, bool Interrupt + long LoopNum, Clone const in namespace { }	RELOCATION_MATCH

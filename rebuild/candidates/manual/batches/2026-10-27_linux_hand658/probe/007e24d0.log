@@ -1,0 +1,1 @@
+1	implicit dtor: CTCFishingRod : CTCBase with engine CDefPointer<const CFishingRodDef> PDef, ctor defined to emit vftable/??_G/??1	RELOCATION_MATCH

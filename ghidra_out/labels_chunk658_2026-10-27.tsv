@@ -1,0 +1,16 @@
+address	name	evidence
+00aeca80	std::vector<std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo> >::~vector	chunk 658 RELOCATION_MATCH: CCountedPointer<CPSCManager>::DeleteData 0x00AECBF0 calls it; CPSCManager = one CVectorMap<CCharString,CRegisteredPSCInfo> (Ego_r); FableWin spelling (catalog CCombatWheel::ResetRings was wrong)
+00af36c0	std::vector<std::pair<CCharString,NParticleEngine::CRegisteredPSCInfo> >::_M_clear	chunk 658 RELOCATION_MATCH: only caller the landed _M_insert_overflow 0x00AF37F0 (binding already spelled it)
+0084c490	CCreatureAction_PlayConversationAnimation::Clone	chunk 658 RELOCATION_MATCH: vtable 0x012737CC slot 11 (UBE, returns CCreatureActionBase*); allocates 0xB0; members UseAnimationMovement, Duration
+008f5740	CCreatureAction_DragonFlight::Clone	chunk 658 RELOCATION_MATCH: vtable 0x01288544 slot 11; base CCombatActionBase (copy 0x0062F3B0); allocates 0x11C; FaceTarget, TurnRate
+00925d90	`anonymous namespace'::CCreatureAction_KrakenLowAttackLoop::Clone	chunk 658 RELOCATION_MATCH: vtable 0x01290C64 slot 11; retail hash ?A0x29922355; Interrupt +0x114, LoopNum +0x118
+00925e40	`anonymous namespace'::CCreatureAction_KrakenHighAttackLoop::Clone	chunk 658 RELOCATION_MATCH: vtable 0x0129107C slot 11
+0083d6d0	CThingPhysicalSwitch::~CThingPhysicalSwitch	chunk 658 RELOCATION_MATCH: slot 0 of vtable 0x01245644 calls it and it stores that vtable; Ego_r + FableWin (catalog ~CInputProcessManager was wrong)
+0071a570	NTCScriptedControl::CActionTalkToThing::~CActionTalkToThing	chunk 658 RELOCATION_MATCH: slot 0 of vtable 0x012659C8; tail-jumps ~CActionTalkBase 0x0071A430; destroys QuestionButton3/2/1 (catalog _Dest_val<CMacro> was wrong)
+007dfaf0	CTCWallMountEffects::~CTCWallMountEffects	chunk 658 RELOCATION_MATCH: slot 0 of vtable 0x0126FC84; FableWin ??1 (catalog ~CCreatureAction_PerformExpressionExtended was wrong)
+007e24d0	CTCFishingRod::~CTCFishingRod	chunk 658 RELOCATION_MATCH: slot 0 of vtable 0x01270104; FableWin ??1 (catalog ~C3DAnimationBlendState was wrong)
+00aecbf0	CCountedPointer<NParticleEngine::CPSCManager>::DeleteData	chunk 658: deleter of the Reset 0x00AECC30 chain from NParticleEngine::Initialise 0x00AEBE20 (landed as CTCMapwho::OnDie)
+00aecc30	CCountedPointer<NParticleEngine::CPSCManager>::Reset	chunk 658: called by NParticleEngine::Initialise on the global 0x013D2E24
+0062ebc0	CCreatureActionBase::CCreatureActionBase(const CCreatureActionBase&)	chunk 658: base copy in every generated Clone (landed as CBase_0062ebc0)
+0062f3b0	CCombatActionBase::CCombatActionBase(const CCombatActionBase&)	chunk 658: base copy of the CCombatActionBase-derived Clones
+00838a00	CThingGameObject::~CThingGameObject	chunk 658: stores vtable 0x01244F7C; UAE (landed QAE / ScalarDtor spellings)

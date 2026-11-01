@@ -1,0 +1,1 @@
+1	implicit dtor: NTCScriptedControl::CActionTalkToThing : CActionTalkBase, three CCharString QuestionButtons, EmitImplicitDestructor helper	RELOCATION_MATCH

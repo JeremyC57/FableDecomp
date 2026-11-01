@@ -1,0 +1,1 @@
+1	own class: CCreatureAction_PlayConversationAnimation : CCreatureActionBase (copy 0x0062EBC0), sizeof 0xB0, bool UseAnimationMovement + float Duration, Clone const	RELOCATION_MATCH

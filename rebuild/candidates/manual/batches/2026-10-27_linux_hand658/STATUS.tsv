@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00aeca80	RELOCATION_MATCH	57v57	PASS	1 probe; std::vector<pair<CCharString,NParticleEngine::CRegisteredPSCInfo>>::~vector (CPSCManager's map; label CCombatWheel::ResetRings wrong)
+00af36c0	RELOCATION_MATCH	57v57	PASS	1 probe; same vector's protected _M_clear (caller _M_insert_overflow 0x00AF37F0; label CCombatWheel::ResetRings wrong)
+0084c490	RELOCATION_MATCH	71v71	PASS	1 probe; CCreatureAction_PlayConversationAnimation::Clone const (base CCreatureActionBase, 0xB0)
+008f5740	RELOCATION_MATCH	71v71	PASS	1 probe; CCreatureAction_DragonFlight::Clone const (base CCombatActionBase, 0x11C)
+00925d90	RELOCATION_MATCH	71v71	PASS	1 probe; ?A0x29922355::CCreatureAction_KrakenLowAttackLoop::Clone const (label vfunc_11)
+00925e40	RELOCATION_MATCH	71v71	PASS	1 probe; ?A0x29922355::CCreatureAction_KrakenHighAttackLoop::Clone const (label vfunc_11)
+0083d6d0	RELOCATION_MATCH	28v28	PASS	1 probe; CThingPhysicalSwitch::~CThingPhysicalSwitch (label CInputProcessManager wrong)
+0071a570	RELOCATION_MATCH	44v44	PASS	1 probe; implicit NTCScriptedControl::CActionTalkToThing::~CActionTalkToThing (label _Dest_val<CMacro> wrong)
+007dfaf0	RELOCATION_MATCH	43v43	PASS	1 probe; implicit CTCWallMountEffects::~CTCWallMountEffects (label PerformExpressionExtended wrong)
+007e24d0	RELOCATION_MATCH	35v35	PASS	1 probe; implicit CTCFishingRod::~CTCFishingRod (label C3DAnimationBlendState wrong)

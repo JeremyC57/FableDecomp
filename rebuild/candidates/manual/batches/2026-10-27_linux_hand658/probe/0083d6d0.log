@@ -1,0 +1,1 @@
+1	twin shape (vtable store + member CCharString + base tail jump), own class CThingPhysicalSwitch : CThingGameObject, no pragma	RELOCATION_MATCH

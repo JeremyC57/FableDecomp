@@ -35628,3 +35628,6 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?SetDoorState@CTCActivationReceptorDoor@@AAEX_N@Z	007f80c0	007f8140
 ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z	0072ac40	007c7560
 ?StopTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ	007c6da0	007c7560
+??1CActionTalkBase@NTCScriptedControl@@UAE@XZ	0071a430	0071a570
+??_7CCreatureAction_KrakenLowAttackLoop@?A0x204c1a1a@@6B@	01290c64	00925d90
+??_7CCreatureAction_KrakenHighAttackLoop@?A0x03ddf25e@@6B@	0129107c	00925e40

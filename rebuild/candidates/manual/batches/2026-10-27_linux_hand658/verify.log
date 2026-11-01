@@ -1,0 +1,35 @@
+addr       parity           behav  name
+0071a570   RELOCATION_MATCH PASS   ~CActionTalkToThing
+007dfaf0   RELOCATION_MATCH PASS   ~CTCWallMountEffects
+007e24d0   RELOCATION_MATCH PASS   ~CTCFishingRod
+0083d6d0   RELOCATION_MATCH PASS   ~CThingPhysicalSwitch
+0084c490   RELOCATION_MATCH PASS   Clone
+008f5740   RELOCATION_MATCH PASS   Clone
+00925d90   RELOCATION_MATCH PASS   Clone
+00925e40   RELOCATION_MATCH PASS   Clone
+00aeca80   RELOCATION_MATCH PASS   ~vector
+00af36c0   RELOCATION_MATCH PASS   _M_clear
+
+WINS: 10
+  0071a570 RELOCATION_MATCH NTCScriptedControl::CActionTalkToThing::??1CActionTalkToThing@NTCScriptedControl@@UAE@XZ
+  007dfaf0 RELOCATION_MATCH CTCWallMountEffects::??1CTCWallMountEffects@@UAE@XZ
+  007e24d0 RELOCATION_MATCH CTCFishingRod::??1CTCFishingRod@@UAE@XZ
+  0083d6d0 RELOCATION_MATCH CThingPhysicalSwitch::??1CThingPhysicalSwitch@@UAE@XZ
+  0084c490 RELOCATION_MATCH CCreatureAction_PlayConversationAnimation::?Clone@CCreatureAction_PlayConversationAnimation@@UBEPAVCCreatureActionBase@@XZ
+  008f5740 RELOCATION_MATCH CCreatureAction_DragonFlight::?Clone@CCreatureAction_DragonFlight@@UBEPAVCCreatureActionBase@@XZ
+  00925d90 RELOCATION_MATCH CCreatureAction_KrakenLowAttackLoop::?Clone@CCreatureAction_KrakenLowAttackLoop@?A0x
+  00925e40 RELOCATION_MATCH CCreatureAction_KrakenHighAttackLoop::?Clone@CCreatureAction_KrakenHighAttackLoop@?A0x
+  00aeca80 RELOCATION_MATCH std::vector<pair<CCharString, CRegisteredPSCInfo> >::??1?$vector@U?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@V?$allocator@U?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@@2@@std@@QAE@XZ
+  00af36c0 RELOCATION_MATCH std::vector<pair<CCharString, CRegisteredPSCInfo> >::?_M_clear@?$vector@U?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@V?$allocator@U?$pair@VCCharString@@VCRegisteredPSCInfo@NParticleEngine@@@std@@@2@@std@@IAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NTCScriptedControlCActionTalkToThing_CActionTalkToThing_0071a570
+  CTCWallMountEffects_CTCWallMountEffects_007dfaf0
+  CTCFishingRod_CTCFishingRod_007e24d0
+  CThingPhysicalSwitch_CThingPhysicalSwitch_0083d6d0
+  CCreatureActionPlayConversationAnimation_Clone_0084c490
+  CCreatureActionDragonFlight_Clone_008f5740
+  CCreatureActionKrakenLowAttackLoop_Clone_00925d90
+  CCreatureActionKrakenHighAttackLoop_Clone_00925e40
+  stdvectorpairCCharStringCRegisteredPSCInfo_vector_00aeca80
+  stdvectorpairCCharStringCRegisteredPSCInfo_Mclear_00af36c0

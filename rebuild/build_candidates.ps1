@@ -371778,6 +371778,76 @@ $catalog = @(
         TestSource = '00/8c/CCreatureActionBanditKingStuck_CCreatureActionBanditKingStuck_008c9580_test.cpp'
         PassPattern = '008c9580_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0071a570'
+        Module = 'NTCScriptedControl::CActionTalkToThing'
+        Source = '00/71/NTCScriptedControlCActionTalkToThing_CActionTalkToThing_0071a570.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkToThing_CActionTalkToThing_0071a570_test.cpp'
+        PassPattern = '0071a570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007dfaf0'
+        Module = 'CTCWallMountEffects'
+        Source = '00/7d/CTCWallMountEffects_CTCWallMountEffects_007dfaf0.cpp'
+        TestSource = '00/7d/CTCWallMountEffects_CTCWallMountEffects_007dfaf0_test.cpp'
+        PassPattern = '007dfaf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e24d0'
+        Module = 'CTCFishingRod'
+        Source = '00/7e/CTCFishingRod_CTCFishingRod_007e24d0.cpp'
+        TestSource = '00/7e/CTCFishingRod_CTCFishingRod_007e24d0_test.cpp'
+        PassPattern = '007e24d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083d6d0'
+        Module = 'CThingPhysicalSwitch'
+        Source = '00/83/CThingPhysicalSwitch_CThingPhysicalSwitch_0083d6d0.cpp'
+        TestSource = '00/83/CThingPhysicalSwitch_CThingPhysicalSwitch_0083d6d0_test.cpp'
+        PassPattern = '0083d6d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084c490'
+        Module = 'CCreatureAction_PlayConversationAnimation'
+        Source = '00/84/CCreatureActionPlayConversationAnimation_Clone_0084c490.cpp'
+        TestSource = '00/84/CCreatureActionPlayConversationAnimation_Clone_0084c490_test.cpp'
+        PassPattern = '0084c490_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f5740'
+        Module = 'CCreatureAction_DragonFlight'
+        Source = '00/8f/CCreatureActionDragonFlight_Clone_008f5740.cpp'
+        TestSource = '00/8f/CCreatureActionDragonFlight_Clone_008f5740_test.cpp'
+        PassPattern = '008f5740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00925d90'
+        Module = 'CCreatureAction_KrakenLowAttackLoop'
+        Source = '00/92/CCreatureActionKrakenLowAttackLoop_Clone_00925d90.cpp'
+        TestSource = '00/92/CCreatureActionKrakenLowAttackLoop_Clone_00925d90_test.cpp'
+        PassPattern = '00925d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00925e40'
+        Module = 'CCreatureAction_KrakenHighAttackLoop'
+        Source = '00/92/CCreatureActionKrakenHighAttackLoop_Clone_00925e40.cpp'
+        TestSource = '00/92/CCreatureActionKrakenHighAttackLoop_Clone_00925e40_test.cpp'
+        PassPattern = '00925e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aeca80'
+        Module = 'std::vector<pair<CCharString, CRegisteredPSCInfo> >'
+        Source = '00/ae/stdvectorpairCCharStringCRegisteredPSCInfo_vector_00aeca80.cpp'
+        TestSource = '00/ae/stdvectorpairCCharStringCRegisteredPSCInfo_vector_00aeca80_test.cpp'
+        PassPattern = '00aeca80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af36c0'
+        Module = 'std::vector<pair<CCharString, CRegisteredPSCInfo> >'
+        Source = '00/af/stdvectorpairCCharStringCRegisteredPSCInfo_Mclear_00af36c0.cpp'
+        TestSource = '00/af/stdvectorpairCCharStringCRegisteredPSCInfo_Mclear_00af36c0_test.cpp'
+        PassPattern = '00af36c0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
