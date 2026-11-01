@@ -189835,9 +189835,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44c50'
-        Module = '_unattributed'
-        Source = '00/c4/unattributed_InitializeThingFilters00c44c50_00c44c50.cpp'
-        TestSource = '00/c4/unattributed_InitializeThingFilters00c44c50_00c44c50_test.cpp'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_InitializeThingFilters_00c44c50.cpp'
+        TestSource = '00/c4/CAmbientEmitter_InitializeThingFilters_00c44c50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c44c50_TEST PASS'
     }
@@ -194514,9 +194514,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44eb0'
-        Module = 'CWorld'
-        Source = '00/c4/CWorld_CResourceAllocation00c44eb0ctor_00c44eb0.cpp'
-        TestSource = '00/c4/CWorld_CResourceAllocation00c44eb0ctor_00c44eb0_test.cpp'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_CAmbientEmitter_00c44eb0.cpp'
+        TestSource = '00/c4/CAmbientEmitter_CAmbientEmitter_00c44eb0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c44eb0_TEST PASS'
     }
@@ -218077,9 +218077,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c61c70'
-        Module = 'CThingFilter_SolidToThing'
-        Source = '00/c6/CThingFilterSolidToThing_CThingFilterSolidToThing_00c61c70.cpp'
-        TestSource = '00/c6/CThingFilterSolidToThing_CThingFilterSolidToThing_00c61c70_test.cpp'
+        Module = 'CAmbientEvent'
+        Source = '00/c6/CAmbientEvent_CAmbientEvent_00c61c70.cpp'
+        TestSource = '00/c6/CAmbientEvent_CAmbientEvent_00c61c70_test.cpp'
         PassPattern = '00c61c70_TEST PASS'
     }
     [pscustomobject]@{
