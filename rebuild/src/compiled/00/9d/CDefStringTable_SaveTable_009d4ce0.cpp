@@ -1,5 +1,7 @@
 // CDefStringTable::SaveTable(bool lock) -- unless the table is locked, write it to its file through a file stream; when asked to lock, also clear the string map and mark the table locked
 // Leaf: ?SaveTable@CDefStringTable@@QAEX_N@Z
+// Naming wave 26 (family fdos): ??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z 0x00994400 (Ego_r.pdb + FableWin.pdb; c693 queue) takes the
+//   file by reference; CDiskFileWin32 derives from CAFile (RTTI 0x0122D06C). Was CFileDataOutputStream(CDiskFileWin32*).
 // Naming (naming wave 24): Ego_r.pdb / FableWin.pdb ?SaveTable@CDefStringTable@@QAEX_N@Z -- the PDB member order GetString /
 //   GetStringAsCharArray / GetStringCRC / ReadTable / LoadTable / SaveTable is retail 0x009D49B0 / 49F0 / 4A20 / 4AB0 / 4C30 / 4CE0
 //   (labels_chunk691); its caller CScriptDefinitionManager::InitAndCompile 0x00CD3F50 already binds it. Was landed as SaveBinary.
@@ -30,7 +32,8 @@ class CWideString { public:
 };
 bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
+class CAFile : public CBaseClassNonCopyable { };   // RTTI 0x0122D06C chain: CDiskFileWin32 <- CAFile <- CBaseClassNonCopyable
+class CDiskFileWin32 : public CAFile { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c
@@ -45,7 +48,7 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
 struct CFileDataOutputStream {                     // 0xc bytes
     void* m_pFile;
     long m_position;
-    CFileDataOutputStream(CDiskFileWin32* file);   // 0x00994400
+    CFileDataOutputStream(CAFile& file);           // 0x00994400
     virtual ~CFileDataOutputStream();                      // 0x00994430
 };
 
@@ -88,7 +91,7 @@ void CDefStringTable::SaveTable(bool lock)
     if (!Locked) {
         CDiskFileWin32 file;
         file.Open(TableFilename, FILE_ACCESS_WRITE, 4);
-        CFileDataOutputStream stream(&file);
+        CFileDataOutputStream stream(file);
         WriteTable(&stream);
         if (lock) {
             StringMap.clear();

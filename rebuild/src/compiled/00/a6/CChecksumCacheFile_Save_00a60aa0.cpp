@@ -1,4 +1,6 @@
 // CChecksumCacheFile::Save() -- when the cache needs saving, rewrite its file: a placeholder header, then for every entry whose path still exists its name (as a char string), date and checksum, then the header patched with version 4 and the number of entries written; the file is closed and the cache marked saved
+// Naming wave 26 (family fdos): ??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z 0x00994400 (Ego_r.pdb + FableWin.pdb; c693 queue) takes the
+//   file by reference; CDiskFileWin32 derives from CAFile (RTTI 0x0122D06C). Was CFileDataOutputStream(CDiskFileWin32*).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A60AA0, 388 bytes (400 with padding).
 // Callees: CBaseClassNonCopyable ctor 0x0099A2F0 / dtor 0x0099A300, CWideString() 0x0099AED0, CWideString(const
 //          CWideString&) 0x0099B720, ~CWideString 0x0099B510, CWideString::ToCharString 0x0099B2C0 (by value),
@@ -33,12 +35,12 @@ private: public:
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
 };
-class CAFile {
+class CAFile : public CBaseClassNonCopyable {   // RTTI 0x0122D06C chain: CDiskFileWin32 <- CAFile
 public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
 };   // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBaseClassNonCopyable { public:    // vtable 0x0122D06C
+class CDiskFileWin32 : public CAFile { public:    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c
@@ -65,7 +67,7 @@ struct CFileDataOutputStream : public CDataOutputStream {                     //
     void* __vftable;
     void* m_pFile;
     long m_position;
-    CFileDataOutputStream(CDiskFileWin32* file);   // 0x00994400
+    CFileDataOutputStream(CAFile& file);           // 0x00994400
     ~CFileDataOutputStream();                      // 0x00994430
     unsigned long GetPosition() const;             // 0x00994460
     void SetPosition(unsigned long position);      // 0x00994450
@@ -127,7 +129,7 @@ void CChecksumCacheFile::Save()
     if (NeedsSaving) {
         CDiskFileWin32 file;
         file.Open(Filename, FILE_ACCESS_WRITE, 2);
-        CFileDataOutputStream stream(&file);
+        CFileDataOutputStream stream(file);
         unsigned long start = stream.GetPosition();
         stream.WriteSLONG(0);
         stream.WriteSLONG(0);

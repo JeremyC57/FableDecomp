@@ -1,5 +1,7 @@
 // CBankFileManager::CreateRetailBank(const CWideString& path) -- create an empty retail bank file: open it for writing and write the magic, the manager's file version and two zero words
 // Leaf: CreateRetailBank
+// Naming wave 26 (family fdos): ??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z 0x00994400 (Ego_r.pdb + FableWin.pdb; c693 queue) takes the
+//   file by reference; CDiskFileWin32 derives from CAFile (RTTI 0x0122D06C). Was CFileDataOutputStream(CDiskFileWin32*).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A7720, length 171 bytes (+5 int3), ret 4.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0, CDiskFileWin32::Open(const CWideString&,
 // FileAccessType, ulong) @ 0x0099A6A0 (access 4, flags 2), CFileDataOutputStream::CFileDataOutputStream(CAFile*) @ 0x00994400,
@@ -21,7 +23,8 @@ class CWideString { public:
     ~CWideString();                                // 0x0099B510
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
+class CAFile : public CBaseClassNonCopyable { };   // RTTI 0x0122D06C chain: CDiskFileWin32 <- CAFile <- CBaseClassNonCopyable
+class CDiskFileWin32 : public CAFile { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c
@@ -43,7 +46,7 @@ struct CFileDataOutputStream : public CDataOutputStream {                     //
     void* m_vtable;
     void* m_pFile;
     long m_position;
-    CFileDataOutputStream(CDiskFileWin32* file);   // 0x00994400
+    CFileDataOutputStream(CAFile& file);           // 0x00994400
     ~CFileDataOutputStream();                      // 0x00994430
     void Write(const void* data, long size);       // 0x00994480
 };
@@ -60,7 +63,7 @@ void CBankFileManager::CreateRetailBank(const CWideString& path)
 {
     CDiskFileWin32 file;
     file.Open(path, FILE_ACCESS_WRITE, 2);
-    CFileDataOutputStream stream(&file);
+    CFileDataOutputStream stream(file);
     stream.Write(g_retailBankMagic, 4);
     stream.WriteULONG(FileVersion);
     stream.WriteULONG(0);
