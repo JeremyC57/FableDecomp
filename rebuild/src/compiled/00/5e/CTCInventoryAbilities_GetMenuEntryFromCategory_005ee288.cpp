@@ -1,5 +1,7 @@
 // CTCInventoryAbilities::GetMenuEntryFromCategory(EUISpellCategory, CComponent*) const -- finds the attack / surround / physical spells menu entry (PC or console name) under a list
 // Leaf: GetMenuEntryFromCategory
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE288, 149 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 8`.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (built in the argument area), the list's
@@ -32,11 +34,21 @@ struct CComponent {                                  // NUISystem::CComponent
     virtual CComponent* FindChild(CCharString name); // slot 3 (+0x0C)
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui : public CPlayerGuiDonor {
  public:
 };
 
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 enum EUISpellCategory {
     UI_SPELL_CATEGORY_ATTACK   = 0,
@@ -55,15 +67,15 @@ CComponent* CTCInventoryAbilities::GetMenuEntryFromCategory(EUISpellCategory cat
 {
     switch (category) {
     case UI_SPELL_CATEGORY_ATTACK:
-        if (g_pPlayerGui->LiveGuiMode)
+        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().LiveGuiMode)
             return list->FindChild(CCharString("PC_MENU_ENTRY_ATTACK_SPELLS", -1));
         return list->FindChild(CCharString("UI_MENU_ENTRY_ATTACK_SPELLS", -1));
     case UI_SPELL_CATEGORY_SURROUND:
-        if (g_pPlayerGui->LiveGuiMode)
+        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().LiveGuiMode)
             return list->FindChild(CCharString("PC_MENU_ENTRY_SURROUND_SPELLS", -1));
         return list->FindChild(CCharString("UI_MENU_ENTRY_SURROUND_SPELLS", -1));
     case UI_SPELL_CATEGORY_PHYSICAL:
-        if (g_pPlayerGui->LiveGuiMode)
+        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().LiveGuiMode)
             return list->FindChild(CCharString("PC_MENU_ENTRY_PHYSICAL_SPELLS", -1));
         return list->FindChild(CCharString("UI_MENU_ENTRY_PHYSICAL_SPELLS", -1));
     }

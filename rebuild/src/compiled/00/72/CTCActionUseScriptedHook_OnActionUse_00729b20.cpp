@@ -1,6 +1,8 @@
 // CTCActionUseScriptedHook::OnActionUse(CThing& user) -- mark the hook for performing; when the owner thing carries script data other than "" / "NULL", either ask for confirmation first (ForceConfirmation: wait instead of perform) or show the text straight away, through the game UI's subtitle renderer
 // Retry 10b (getsw sweep, FIXES B-15): the font bank is read through an inline getter `GetFontBank()`; the plain member read gives the parked register/scheduling difference.
 // Leaf: ?OnActionUse@CTCActionUseScriptedHook@@QAEXAAVCThing@@@Z
+// Naming wave 18: the global stand-in g_pGameUI (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729B20, length 150 bytes (+10 int3 padding). Non-virtual (`QAE`); `ret 4`
 // (the user is unused).
 // Callees: CCharString::operator!=(const char*) @ 0x0099E960 (x2: "" @ 0x0122D70E, "NULL" @ 0x012393E4), the CTCBase main-game-
@@ -29,11 +31,21 @@ class CMainGameComponent { public:
 class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
-struct CGameUI {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                // +0x18
 };
-extern CGameUI* g_pGameUI;                      // 0x013B8790
 
 class CTCBase {
 public:
@@ -65,10 +77,10 @@ void CTCActionUseScriptedHook::OnActionUse(CThing&)
             PerformAction = false;
             WaitingForConfirmation = true;
             CFontBank* font = PeekComponent().GetFontBank();
-            CGameUI* ui = g_pGameUI;
+            CPlayerGui* ui = (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get());
             ui->Subtitles.SetText(font, text, 4, 0.0f, false, true);
         } else {
-            g_pGameUI->Subtitles.SetText(PeekComponent().GetFontBank(), text, 0x322, 0.0f, false, true);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(PeekComponent().GetFontBank(), text, 0x322, 0.0f, false, true);
         }
     }
 }

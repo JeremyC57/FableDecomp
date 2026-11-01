@@ -1,12 +1,14 @@
 // CPlayer::UninitModeViewHero(EPlayerMode mode, CProcessedInput* input) -- leaving view-hero mode: detach its three input processes, show the bottom half of the GUI again, hand the camera back to automatic control and drop player mode 0x2F
 // Leaf: ?UninitModeViewHero@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00634560, 88 bytes, thiscall `ret 8` (a CPlayer::PlayerModeInfo handler).
 // Identity (probable, donor order + mirror): Ego_r.pdb orders RemoveMode (0x00634190 here), UninitModeFirstPerson (0x00634410),
 // UninitModeChargeQuickAccess (0x00634470, landed), UninitModeViewHero, AddMode (0x006345C0, landed); this body undoes the landed
 // InitModeViewHero 0x00636E90 exactly (the same three processes LeftStickLookAround +0x190, BButtonExitMode +0x1D8,
 // ToggleViewHeroMode +0x204; DisplayBottomHalfGUI back to true).
 // Callees: CAInputProcess::RemoveFromInterface 0x00A0D2D0 (x3), CPlayerGui::SetDisplayBottomHalfGUI(bool) inlined (FableWin.pdb
-// places it right after InitModeViewHero; g_pPlayerGui 0x013B8790, DisplayBottomHalfGUI +0x330), the world camera source's
+// places it right after InitModeViewHero; (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790, DisplayBottomHalfGUI +0x330), the world camera source's
 // GetCameraManager (slot 9), CGameCameraManager::SetAutomaticCameraControl 0x00699090, CPlayer::RemoveMode(EPlayerMode) 0x00634190.
 // Shape: the camera out pointer is not initialised and its bool result is ignored (as InitModeViewHero).
 // Layout: engine/CPlayerGui.h (DisplayBottomHalfGUI +0x330, donor include) and engine/CPlayer.h through the landed screen-mode donor include (InitModeNavigateInventoryExperienceScreen 0x00635080):
@@ -156,6 +158,17 @@ public:
 
 enum EPlayerMode { EPlayerMode_Force32 = 0x7fffffff };     // enumerators not needed
 class CProcessedInput;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 #define CPlayerGui CPlayerGuiDonor
 #include "engine/CPlayerGui.h"
 #undef CPlayerGui
@@ -163,7 +176,6 @@ class CPlayerGui : public CPlayerGuiDonor {
 public:
     void SetDisplayBottomHalfGUI(bool display) { DisplayBottomHalfGUI = display; }
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 class CPlayer : public CPlayerPdb {
 private:
 public:
@@ -178,7 +190,7 @@ void CPlayer::UninitModeViewHero(EPlayerMode mode, CProcessedInput* input)
     InputProcessLeftStickLookAround_ptr->RemoveFromInterface();
     InputProcessBButtonExitMode_ptr->RemoveFromInterface();
     InputProcessToggleViewHeroMode_ptr->RemoveFromInterface();
-    g_pPlayerGui->SetDisplayBottomHalfGUI(true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SetDisplayBottomHalfGUI(true);
     CGameCameraManager* camera;
     World->CameraSource->GetCameraManager(&camera);
     camera->SetAutomaticCameraControl();

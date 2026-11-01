@@ -1,4 +1,6 @@
 // CThingAICreature::SetHasInformation(bool hasInformation, bool wander, bool wave, bool continueAI) -- set the four information flag bits and refresh the player GUI when HasInformation changed
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00830EB0, 104 bytes (`ret 10h`).
 // Callees: CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 (label "_Cons_val<...>" propagated) on the player GUI singleton
 //   pointer at 0x013B8790.
@@ -7,10 +9,20 @@
 //   bit 6 ImmuneToAttack, bit 7 EnableCreatureAutoPlacing.
 // Shape: the change test is taken first (kept in the dead hasInformation slot: `setne [esp+0Ch]`), then the four
 //   adjacent bit assignments fold into one read-modify-write (`and al,0C3h ; shl dl,2 ; or`).
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool mode);       // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CThingAICreature { public:
     unsigned char _pad[0x1c8];
@@ -33,5 +45,5 @@ void CThingAICreature::SetHasInformation(bool hasInformation, bool wander, bool 
     WaveWithInformation = wave;
     ContinueAIWithInformation = continueAI;
     if (changed)
-        g_pPlayerGui->UpdateMiniMapMarkers(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

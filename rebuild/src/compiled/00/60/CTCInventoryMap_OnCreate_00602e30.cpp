@@ -16,6 +16,8 @@
 // MapScreenPrimitiveHandles +0x1AC, MapScreenQuestPrimitiveHandles +0x1B8, MapScreenTeleportPrimitiveHandles +0x1C4,
 // MapScreenHousePrimitiveHandles +0x1D0, NumRegions +0x23C; the map def's inventory-def index at +0x8C.
 // Leaf: ?OnCreate@CTCInventoryMap
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 class CDefPointeeBase { public:
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -47,10 +49,20 @@ class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CEnginePrimitiveHandle;
 struct CPrimitiveHandleVector {                 // vector<CEnginePrimitiveHandle> (12 bytes)
@@ -103,7 +115,7 @@ public:
 
 void CTCInventoryMap::OnCreate()
 {
-    g_pPlayerGui->GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<CInventoryMapDef> def;
     def.Object = 0;

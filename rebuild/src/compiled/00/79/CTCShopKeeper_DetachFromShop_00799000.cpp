@@ -1,9 +1,11 @@
 // CTCShopKeeper::DetachFromShop() -- tell the alive shop's shop component it has no keeper, clear the keeper's shop pointer, and refresh the player GUI when a shop was told
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799000, 181 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem const @ 0x00A01B50, the interface LowerBound @ 0x0040F020, CTCShop::SetShopKeeper
 // (CThingCreatureBase*) @ 0x007751A0, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
 // (the clearing temporary; CIntelligentPointer vtable 0x01238C6C stored inline), CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on
-// g_pPlayerGui 0x013B8790.
+// (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790.
 // Layout (retail; Ego_r.pdb CTCShopKeeper): Shop (CIntelligentPointer<CThing>) +0x14; CThing interface bitset +0x20 (0x53 =
 // bit 19 of the third word), map +0x44, dead flag bit 0 of +0x91.
 // Shape: nested alive / HasTC tests (the third GetPItem in a named local serves HasTC and GetTC) with the one-ternary GetTC (component straight into ecx); the flag rides in bl across the
@@ -54,10 +56,20 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 class CTCShop { public:
     void SetShopKeeper(CThingCreatureBase* shopKeeper); // 0x007751A0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);               // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 class CTCShopKeeper { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
@@ -85,5 +97,5 @@ void CTCShopKeeper::DetachFromShop()
         Shop.SetPItem((CBaseObject*)item);
     }
     if (detached)
-        g_pPlayerGui->UpdateMiniMapMarkers(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

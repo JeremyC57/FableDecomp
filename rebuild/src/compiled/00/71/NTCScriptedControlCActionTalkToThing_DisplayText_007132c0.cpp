@@ -3,6 +3,10 @@
 //   __forceinline getters evaluated in the argument list (text ctor, then PeekComponent, then the gui load, before the pushes);
 //   in the plain branch the font view is a named local so the font word lands in edx.
 // Leaf: ?DisplayText@CActionTalkToThing
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Layout: retail CActionTalkBase is Ego_r.pdb less 4 (CArray<CSubtitledMessage> 12 bytes: Messages +0x30, CurrentMessageIndex +0x3c,
 //   GameTurnDuration +0x48, SoundStartedPlaying +0x73); retail CSubtitledMessage is 0x44 (Text +0xc); CActionTalkToThing
 //   AskingHeroQuestion +0x91, DisplayOverScreenFade +0x92, QuestionButton1..3 +0x94/+0x98/+0x9c (PDB less 8).
@@ -55,14 +59,29 @@ class CSubtitleRenderer { public:
         const CWideString& button2Text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492F69
     void SetText(CFontBank* font, const CWideString& text, unsigned long flags, float time, bool clickPast, bool pauseGame);   // 0x00492E4B
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;         // +0x18
     unsigned char _pad19[0xff - 0x19];
     bool ShowSubtitleBackground;                // +0xff
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-extern long g_FramesPerSecond;                  // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 struct CMainGameComponentFontView { unsigned char _prefix[0x1614c]; CFontBank* Font; };   // +0x1614C
 class CThing { public:
     CMainGameComponentFontView* PeekComponent();    // 0x004C7A70
@@ -94,13 +113,13 @@ public:
     CCharString QuestionButton3;                // +0x9c
     __forceinline CWideString GetCurrentText() const { return CWideString(Messages[CurrentMessageIndex].Text); }
     __forceinline CFontBank* GetFont() const { return PControl->PThing->PeekComponent()->Font; }
-    __forceinline CPlayerGui* GetPlayerGui() const { return g_pPlayerGui; }
+    __forceinline CPlayerGui* GetPlayerGui() const { return (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()); }
     void DisplayText();
 };
 
 void CActionTalkToThing::DisplayText()
 {
-    g_pPlayerGui->SubtitleRenderer.ClearText(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.ClearText(false);
     if (AskingHeroQuestion) {
         if (QuestionButton3 == "") {
             CWideString name(L"");
@@ -118,9 +137,9 @@ void CActionTalkToThing::DisplayText()
         CWideString text(Messages[CurrentMessageIndex].Text);
         CMainGameComponentFontView* view = PControl->PThing->PeekComponent();
         CFontBank* font = view->Font;
-        g_pPlayerGui->SubtitleRenderer.SetText(font, text, flags,
-            (float)GameTurnDuration / g_FramesPerSecond, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetText(font, text, flags,
+            (float)GameTurnDuration / CMainGameComponent::GetConstantFPS(), false, true);
         if (!SoundStartedPlaying)
-            g_pPlayerGui->ShowSubtitleBackground = false;
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ShowSubtitleBackground = false;
     }
 }

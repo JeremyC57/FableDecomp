@@ -1,5 +1,7 @@
 // CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- answer the on-screen yes/no question: on PC keyboard input keys 4 (yes) / 10 (no), otherwise the yes / no / cancel game actions 0x16 / 0x17 / 0x18 (cancel only while the gui allows it) queue game event 0x1D carrying (answer, previous player mode) and mark the input handled
 // Leaf: ProcessInput
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068C880, 576 bytes, `ret 8` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
 #include "engine/CInputProcessGameBase.h"
@@ -30,13 +32,23 @@ public:
 struct CPlayerGuiQuestion {
     bool CanCancel();                              // 0x0048DB98
 };
-struct CPlayerGuiCalls {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
     unsigned char      _pad00[0x18];
     CPlayerGuiQuestion Question;                   // +0x18
     unsigned char      _pad19[0xfa - 0x19];
     bool               UsingKeyboard;              // +0xFA
 };
-extern CPlayerGuiCalls* g_pPlayerGui;              // 0x013B8790
 // Layout: engine/CInputProcessYesNoQuestion.h is a flattened view of the same object (PreviousMode +0x28); the
 // game-base methods need the CInputProcessGameBase base, so the derived member is declared here.
 class CInputProcessYesNoQuestion : public CInputProcessGameBase {
@@ -51,7 +63,7 @@ void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcess
 {
     if (!IsEventButtonPressed(event))
         return;
-    if (g_pPlayerGui->UsingKeyboard) {
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UsingKeyboard) {
         if (event.GetDeviceType() == 3 && event.GetKey_00a03b40() == 4) {
             CGameEvent gameEvent(0x1d);
             gameEvent.AddLong(1);
@@ -77,7 +89,7 @@ void CInputProcessYesNoQuestion::ProcessInput(const CInputEvent& event, CProcess
         gameEvent.AddLong(PreviousMode);
         processed.SetHandled();
         processed.AddGameEvent(gameEvent);
-    } else if (IsEventGameAction(0x18, event) && g_pPlayerGui->Question.CanCancel()) {
+    } else if (IsEventGameAction(0x18, event) && CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Question.CanCancel()) {
         CGameEvent gameEvent(0x1d);
         gameEvent.AddLong(2);
         gameEvent.AddLong(PreviousMode);

@@ -1,10 +1,12 @@
 // CTCPerceiveThing::SetPerceivedThing(const CThing* thing) -- point PerceivedThing at the thing (through a temporary intelligent pointer) and add or remove the parent thing from the player GUI's perceiver drawing
 // Leaf: SetPerceivedThing
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007446B0, 124 bytes. Callees: CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10.
 // Shape: `PerceivedThing = CIntelligentPointer(thing);` -- the temporary is built in the frame (vtable 0x01237F1C stored after the argument push), its inline operator= is SetPItem(other.GetPItem()), then its destructor.
 // Model (local; engine/CTCPerceiveThing.h flattens the CIntelligentPointer member to a byte array): PerceivedThing +0x0c
 //   (CIntelligentPointer<CThing const>), FramesSinceDirectlyPerceivedThing +0x1c, the flag bytes +0x2c..+0x33.
-//   g_pPlayerGui @ 0x013B8790: CPlayerGui::AddPerceivingThing @ 0x004378F0 / RemovePerceivingThing @ 0x00437900 are
+//   (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790: CPlayerGui::AddPerceivingThing @ 0x004378F0 / RemovePerceivingThing @ 0x00437900 are
 //   `mov ecx,[ecx+1B8h] ; jmp` forwarders to CDrawPerceivers (0x0064A2DB AddPerceivingThing / 0x0064639C); the catalog's
 //   "_Cons_val<...>" labels on them are propagated.
 // The add-or-remove tail is the inline UpdateDrawPerceivers(): the perceiving thing is drawn while its target exists.
@@ -23,11 +25,21 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { CBaseObject* item = other.GetPItem(); SetPItem(item); return *this; }
 };
-class CPlayerGui { public:                             // the global g_pPlayerGui @ 0x013B8790
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:                             // the global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790
     void AddPerceivingThing(CThing* thing);     // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
     void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 class CDefPointeeBase;
 class C3DVector { public: float X, Y, Z; };
 class CTCPerceiveThing { public:
@@ -60,9 +72,9 @@ class CTCPerceiveThing { public:
     void UpdateDrawPerceivers()
     {
         if (PerceivedThing.GetPItem())
-            g_pPlayerGui->AddPerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddPerceivingThing(ParentThing);
         else
-            g_pPlayerGui->RemovePerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
     }
     void SetPerceivedThing(const CThing* thing);
     void SetThingLineOfSight(bool lineOfSight);

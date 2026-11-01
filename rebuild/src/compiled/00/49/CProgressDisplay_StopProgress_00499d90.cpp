@@ -1,10 +1,12 @@
 // CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen) -- end the loading/progress display: optionally clear the screen to black (or render a final "Stopping progress display" frame), then release every progress, guild-seal and loading-screen texture and the player GUI's graphics
 // Leaf: ?StopProgress@CProgressDisplay@
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00499D90, length 530 bytes (padded to 544), `ret 8` (vtable slot 2).
 // Callees: GFGetSystemManager 0x009A4EC0; CDisplayManager BeginRender 0x009BEF20 / EndRender 0x009BEF50 / SwapScreens
 // 0x009BEEB0; the render manager's Draw2DBox 0x009DE3F0 / Render2DDrawList 0x009DA9F0; CCharString(const char*, long)
 // 0x0099EBF0 / ~CCharString 0x0099EAE0; RenderProgress 0x00499880; CTexture::Uninitialise 0x009F9F70;
-// vector<CTexture>::erase(first, last) 0x0049B3B0; the player GUI's graphics release 0x00437570 (g_pPlayerGui 0x013B8790);
+// vector<CTexture>::erase(first, last) 0x0049B3B0; the player GUI's graphics release 0x00437570 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790);
 // globals: progress-enabled bool 0x01375445, suppress bool 0x013B89D3, the two black-screen bools 0x013B89C0 / 0x013B89C1;
 // screen size doubles 0x013961E8 / 0x013961F0.
 // Layout: Ego_r.pdb CProgressDisplay with 12-byte retail vectors (ProgressTextures +0x04, GuildSealTextures +0x10,
@@ -64,10 +66,20 @@ struct TextureVector {                                 // STLport vector<CTextur
     CTexture* erase(CTexture* first, CTexture* last);  // 0x0049B3B0
     void clear() { erase(_M_start, _M_finish); }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UninitialiseGraphics();                       // 0x00437570
 };
-extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790
 
 struct CProgressDisplay {
     virtual void v00();
@@ -129,7 +141,7 @@ void CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen)
     for (i = 0; i < LoadingScreenTextures.size(); ++i)
         LoadingScreenTextures[i].Uninitialise();
     LoadingScreenTextures.clear();
-    if (g_pPlayerGui)
-        g_pPlayerGui->UninitialiseGraphics();
+    if ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()))
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UninitialiseGraphics();
     Initialised = false;
 }

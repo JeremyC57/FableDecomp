@@ -1,4 +1,6 @@
 // CTCFineDialogue::IsAllowed() -- the fine dialogue may start only when the player is offered the chance to pay, the main player is free, no blocking game-UI state is up and the world's mode is 0 or 9
+// Naming wave 18: the global stand-in g_pGameUI_013b8790 (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E2790, length 83 bytes.
 // Callees: the CTCBase accessor @ 0x00686D60 (`[g_pMainGameComponent 0x013B8A1C]+0x1c`; object not identified, modelled by the
 // record at its +0x28 -- landed 0x007E1F70 calls it GetSubsystem)
@@ -22,13 +24,23 @@ struct CPlayerManager_007e2790 {
     CPlayerRecord_007e2790* m_pMainPlayer;         // +0x28
 };
 
-struct CGameUI_007e2790 {                          // the game UI singleton behind the pointer at 0x013B8790
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:                          // the game UI singleton behind the pointer at 0x013B8790
     unsigned char _pad00[0xf6];
     bool          m_blockingF6;                    // +0xf6
     unsigned char _padF7[0x6];
     bool          m_blockingFD;                    // +0xfd
 };
-extern CGameUI_007e2790* g_pGameUI_013b8790;       // 0x013B8790
 
 struct CWorld_007e2790 {
     unsigned char _pad[0x104];
@@ -52,9 +64,9 @@ bool CTCFineDialogue::IsAllowed()
         return false;
     if (GetGameSubsystem1C()->m_pMainPlayer->m_busy)
         return false;
-    if (g_pGameUI_013b8790->m_blockingFD)
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_blockingFD)
         return false;
-    if (g_pGameUI_013b8790->m_blockingF6)
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_blockingF6)
         return false;
     long mode = GetWorld()->m_mode;
     if (mode == 0 || mode == 9)

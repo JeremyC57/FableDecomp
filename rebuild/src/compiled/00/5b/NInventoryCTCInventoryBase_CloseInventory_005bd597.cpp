@@ -1,3 +1,5 @@
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 #pragma optimize("s", on)
 // NInventory::CTCInventoryBase::CloseInventory() -- clears InventoryOpen, notifies the global GUI owner, walks the categories (an inlined empty per-category hook) and resets the two animation def indices
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD597, length 68 bytes; size-optimised TU (`push 14h ; pop ecx` divisor, pass-through pushes).
@@ -6,11 +8,21 @@
 // (vector<CCategory>, 0x2C-byte elements) at +0x20, InventoryOpen at +0x58 (PDB +0x60),
 // InventoryAnimThingDefIndex at +0x124 and RHSetInvItemDefIndex at +0x128 (PDB +0x138/+0x13C).
 // The category loop survives with an empty body: size() is re-read every iteration.
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
 public:
     void Open();   // 0x004374B0
 };
-extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
 struct CCategory_Retail {
     unsigned char _body[0x2C];
@@ -39,7 +51,7 @@ struct CTCInventoryBase_Retail {
 void CTCInventoryBase_Retail::CloseInventory()
 {
     InventoryOpen = false;
-    g_pPlayerGui->Open();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
     for (unsigned long i = 0; i < Categories.size(); ++i)
         Categories[i].CloseInventory();
     InventoryAnimThingDefIndex = 0;

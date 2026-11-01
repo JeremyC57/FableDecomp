@@ -23,8 +23,9 @@ public:
 };
 }
 
-struct CGSIChangeQuestInfoBarColour_GuiOwner
+class CPlayerGui
 {
+public:
     unsigned char m_Unused[0x1C8];
     NPlayerGui::CDrawQuestInfo* m_QuestInfo;
 };
@@ -38,8 +39,16 @@ public:
         const CRGBColour& secondaryColour) const;
 };
 
-CGSIChangeQuestInfoBarColour_GuiOwner*
-    CGSIChangeQuestInfoBarColour_Gui;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T& operator*() const { return *Data; } };
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the source reads the private static PClass through Get()
+    static CCountedPointer<T> PClass;
+public:
+    static T& __fastcall Get() { return *PClass; }
+    static void __fastcall Set(T* p) { PClass.Data = p; PClass.Info = 0; }   // ?Set@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIXPAVCPlayerGui@@@Z
+};
+template <class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CPlayerGui>;
 static NPlayerGui::CDrawQuestInfo* g_ObservedQuestInfo;
 static long g_ObservedQuestId;
 static const CRGBColour* g_ObservedPrimaryColour;
@@ -60,7 +69,7 @@ void NPlayerGui::CDrawQuestInfo::ChangeBarColour(
 
 static int CheckCall(
     CGameScriptInterface& interfaceObject,
-    CGSIChangeQuestInfoBarColour_GuiOwner& guiOwner,
+    CPlayerGui& guiOwner,
     NPlayerGui::CDrawQuestInfo& questInfo,
     long questId,
     const CRGBColour& primaryColour,
@@ -83,13 +92,13 @@ int main()
 {
     NPlayerGui::CDrawQuestInfo firstQuestInfo;
     NPlayerGui::CDrawQuestInfo secondQuestInfo;
-    CGSIChangeQuestInfoBarColour_GuiOwner guiOwner;
+    CPlayerGui guiOwner;
     CGameScriptInterface interfaceObject;
     CRGBColour firstPrimaryColour(0x10111213);
     CRGBColour firstSecondaryColour(0x20212223);
     CRGBColour secondPrimaryColour(0x30313233);
     CRGBColour secondSecondaryColour(0x40414243);
-    CGSIChangeQuestInfoBarColour_Gui = &guiOwner;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(&guiOwner);
 
     if (CheckCall(
             interfaceObject,

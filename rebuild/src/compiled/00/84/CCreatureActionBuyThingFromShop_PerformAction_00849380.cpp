@@ -1,5 +1,7 @@
 // CCreatureAction_BuyThingFromShop::PerformAction() -- buy the shop's stock item for the creature: when the creature's inventory can take it, pay the price, create a copy of the item at the creature, add it to that inventory, give the shopkeeper a sold-item event and post message 0x13; otherwise show "already have" / "no room" as a 3-second subtitle
 // Leaf: PerformAction
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00849380, length 886 bytes (+ int3 padding), virtual PerformAction, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +0x08, PTarget +0xa8), CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound const @ 0x004365B0 (the target's lookups: 0x54 CTCStockItem = bit 20 of +0x28, 0x1a CTCInventoryItem =
@@ -138,13 +140,15 @@ class CThing { public:
     }
 };
 class CRightHandedSet;
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
-                                     unsigned long flags, const CCharString& name);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 // A copy of `item` at `at`, owned by `owner`'s player.
 __forceinline CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
 {
     long defIndex = item->DefIndex;
-    return CreateThingObject(defIndex, &at->GetPos(), owner->GetPlayer(), 0, 0, name);
+    return ((CThing*)CThingObject::Create(defIndex, *(&at->GetPos()), owner->GetPlayer(), 0, 0, name));
 }
 
 class CBaseObject;
@@ -166,11 +170,21 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 class CSubtitleRenderer { public:
     void SetText(CFontBank* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                 // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 
 class CTCHeroStats { public:
     void AddMoney(long amount, bool showMessage);       // 0x0057B327
@@ -227,7 +241,7 @@ struct CCreatureAction_BuyThingFromShop : CCreatureActionBase {
 void CCreatureAction_BuyThingFromShop::PerformAction()
 {
     if (IS_THING_ALIVE(PTarget)) {
-        CSubtitleRenderer* subtitles = &g_pPlayerGui->SubtitleRenderer;
+        CSubtitleRenderer* subtitles = &CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer;
         CTCStockItem* stockItem;
         static_cast<const CThing*>(((CThing*)PTarget.GetPItem()))->GetInterface(&stockItem, 0x54);
         CTCHeroStats* stats;

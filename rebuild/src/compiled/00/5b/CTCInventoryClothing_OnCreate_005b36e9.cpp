@@ -1,5 +1,8 @@
 // CTCInventoryClothing::OnCreate() -- registers the clothing screen, points the inventory at the clothing sub-def's inventory def, runs the base OnCreate, then creates every starting clothing item at the owner and adds it to this inventory
 // Leaf: ?OnCreate@CTCInventoryClothing
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail 0x005B36E9, 270 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (global player GUI 0x013B8790),
 // NHeroInformationScreens::CManager::RegisterScreen(const CBase*) 0x0066EB11, CDefClassBase::GetSubDef<T> 0x00485815,
@@ -51,9 +54,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CInventoryClothin
     return true;
 }
 #pragma auto_inline(on)
-struct CPresenceBits {
-    bool test(long bit);                        // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -68,7 +74,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
-    CPresenceBits m_present;                    // +0x20
+    std::bitset<274> m_present;                    // +0x20
     unsigned char _pad21[0x23];
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
@@ -107,10 +113,20 @@ class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 struct CLongVector {
     long* _M_start;
@@ -226,7 +242,7 @@ public:
 
 void CTCInventoryClothing::OnCreate()
 {
-    g_pPlayerGui->GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<CInventoryClothingDef> def;
     def.Object = 0;

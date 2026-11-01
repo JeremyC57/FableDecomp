@@ -1,5 +1,7 @@
 // CWorld::EACloseLiveGUI(const CGameEvent* event) -- game-event action: unpause the world, take the event player out of the live-GUI mode (0x2B) and close the hero information screens
 // Leaf: ?EACloseLiveGUI@CWorld@@QAEXPBVCGameEvent@@@Z
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00629DA0, 57 bytes, thiscall `ret 4`.
 // Identity (proven by source order): registered by the static initialiser 0x0121B9B0 as the handler of game event 66 in the
 //   dispatch table 0x013B9288 (no direct caller). Retail keeps the Ego_r.pdb donor order of the CWorld EA handlers:
@@ -48,11 +50,21 @@ public:
     void Close();                                          // 0x0066E73D
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui {
 public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
 
 class CWorld : public CWorldDonor {
 protected:
@@ -67,5 +79,5 @@ void CWorld::EACloseLiveGUI(const CGameEvent* event)
     SetAsPaused(false);
     CPlayer* player = GetPlayer(event->Player);
     player->RemoveMode(PLAYER_MODE_LIVE_GUI);
-    g_pPlayerGui->GetPHeroInfoScreensManager()->Close();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->Close();
 }

@@ -1,11 +1,14 @@
 // CTCHeroStats::SetMorality(long) -- clamps and applies a morality change, with tutorial, GUI, event, sound and morph updates
 // Leaf: SetMorality
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057C2E6, 523 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed SetAge 0x0057B05F).
 // Callees: CTCBase::GetDefinitionManager() @ 0x006869D0 (+0xDC the CHeroStatsDef; def +0xD0 / +0xD4 the adult / child
 //          morality limits), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0, CPlayerGui::AddMoralityChange(long)
-//          @ 0x00437930 (g_pPlayerGui 0x013B8790), CThingCreatureBase::IsChild() @ 0x00661F70, operator new @ 0x00BFEA1A,
+//          @ 0x00437930 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), CThingCreatureBase::IsChild() @ 0x00661F70, operator new @ 0x00BFEA1A,
 //          CTCEntityEvents::AddEvent(CEventBase*) @ 0x008113C0, CTCHeroStats::CheckForNewExpressions() @ 0x0057BE71,
 //          CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos() @ 0x004C73D0,
 //          CTCSoundPlayer::PlayUnattachedCriteria @ 0x0066BDF0, CTCHeroStats::GetMoralityPercentage() @ 0x0057A690,
@@ -22,9 +25,12 @@
 class CTCBase;
 void* __cdecl operator new(unsigned int size);      // 0x00BFEA1A
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -42,7 +48,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     const C3DVector& GetPos() const;            // 0x004C73D0
@@ -123,10 +129,20 @@ class CTCSoundPlayer { public:
 class CTCHeroMorph { public:
     void SetMorality(float morality);                // 0x0071C000
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void AddMoralityChange(long change);             // 0x00437930
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 class CHeroStatsDef { public:
     unsigned char _pad_0x00[0xD0];
@@ -177,7 +193,7 @@ void CTCHeroStats::SetMorality(long morality)
         CTCHero* hero;
         if (ParentThing->GetInterfacePick(&hero, 0x29) && hero)
             hero->GiveTutorialForCategory(0x19, false);
-        g_pPlayerGui->AddMoralityChange(change);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddMoralityChange(change);
         if (((CThingCreatureBase*)ParentThing)->IsChild()) {
             long maxChild = GetHeroStatsDef()->MaxChildMorality;
             long minChild = -maxChild;

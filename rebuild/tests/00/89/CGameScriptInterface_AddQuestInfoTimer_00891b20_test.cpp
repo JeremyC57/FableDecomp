@@ -34,8 +34,9 @@ public:
 };
 }
 
-struct CGSIAddQuestInfoTimer_GuiOwner
+class CPlayerGui
 {
+public:
     unsigned char m_Unused[0x1C8];
     NPlayerGui::CDrawQuestInfo* m_QuestInfo;
 };
@@ -55,8 +56,16 @@ union FloatBits
     unsigned long bits;
 };
 
-CGSIAddQuestInfoTimer_GuiOwner*
-    CGSIAddQuestInfoTimer_Gui;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T& operator*() const { return *Data; } };
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the source reads the private static PClass through Get()
+    static CCountedPointer<T> PClass;
+public:
+    static T& __fastcall Get() { return *PClass; }
+    static void __fastcall Set(T* p) { PClass.Data = p; PClass.Info = 0; }   // ?Set@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIXPAVCPlayerGui@@@Z
+};
+template <class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CPlayerGui>;
 static NPlayerGui::CDrawQuestInfo* g_ObservedQuestInfo;
 static const CTimer* g_ObservedTimer;
 static const CCharString* g_ObservedLabelText;
@@ -81,7 +90,7 @@ long NPlayerGui::CDrawQuestInfo::AddCounter_0064f93f(
 
 static int CheckCall(
     CGameScriptInterface& interfaceObject,
-    CGSIAddQuestInfoTimer_GuiOwner& guiOwner,
+    CPlayerGui& guiOwner,
     NPlayerGui::CDrawQuestInfo& questInfo,
     const CTimer& timer,
     const CCharString& labelText,
@@ -111,13 +120,13 @@ int main()
 {
     NPlayerGui::CDrawQuestInfo firstQuestInfo;
     NPlayerGui::CDrawQuestInfo secondQuestInfo;
-    CGSIAddQuestInfoTimer_GuiOwner guiOwner;
+    CPlayerGui guiOwner;
     CGameScriptInterface interfaceObject;
     CTimer firstTimer(0x10203040);
     CTimer secondTimer(0x50607080);
     CCharString firstLabel(0x11223344);
     CCharString secondLabel(0x55667788);
-    CGSIAddQuestInfoTimer_Gui = &guiOwner;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(&guiOwner);
 
     if (CheckCall(
             interfaceObject,

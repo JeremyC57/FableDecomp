@@ -1,11 +1,13 @@
 // CWorld::EAChargeQuickAccessItem(const CGameEvent*) -- game-event action: start or stop charging a quick-access item for the event player's hero and switch the player's charging mode with it
 // Leaf: EAChargeQuickAccessItem
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00629B10, 298 bytes (304 with padding), `ret 4`, /GS (cookie 0x0139C8A8).
 //   PDB ?EAChargeQuickAccessItem@CWorld@@QAEXPBVCGameEvent@@@Z.
 // Callees: CWorld::GetPlayer(long) 0x0049D850 (x2), CPlayer::HasMode 0x00634160, CPlayer::GetPControlledCreature 0x00487DC0,
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0,
-//   CPlayerGui::ToggleQuickAccessCharge(long, bool) 0x00437A10 and IsOpen() const 0x004374F0 on g_pPlayerGui 0x013B8790,
+//   CPlayerGui::ToggleQuickAccessCharge(long, bool) 0x00437A10 and IsOpen() const 0x004374F0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790,
 //   CPlayer::GetCurrentMode 0x00633BE0, AddMode(EPlayerMode, bool) 0x006345C0, RemoveMode 0x00634190,
 //   __security_check_cookie 0x00BFE9F9.
 // Shape: the first player is a named local (GetPlayer before the 0x2F push); the hero gate is one `||` early return
@@ -45,11 +47,21 @@ class CPlayer { public:
     void AddMode(EPlayerMode mode, bool b);        // 0x006345C0
     void RemoveMode(EPlayerMode mode);             // 0x00634190
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void ToggleQuickAccessCharge(long item, bool charge);   // 0x00437A10
     bool IsOpen() const;                           // 0x004374F0
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
     void EAChargeQuickAccessItem(const CGameEvent* event);
@@ -68,8 +80,8 @@ void CWorld::EAChargeQuickAccessItem(const CGameEvent* event)
     long item;
     buffer.Read(4, &item);
     bool charge = buffer.ReadChar() != 0;
-    g_pPlayerGui->ToggleQuickAccessCharge(item, charge);
-    if (g_pPlayerGui->IsOpen()) {
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ToggleQuickAccessCharge(item, charge);
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen()) {
         EPlayerMode mode = player->GetCurrentMode();
         if (charge) {
             if (mode != PLAYER_MODE_CHARGING_QUICK_ACCESS)

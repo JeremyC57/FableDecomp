@@ -1,10 +1,12 @@
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 #pragma optimize("s",on)
 // CTCVillage::IsHeroCriminal()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065BFCE, oracle length 44 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
-// Retail bytes:  push ebx ; push esi ; mov esi,ecx ; call CTCVillage::GetFineAmountForCurrentCrimes ; test eax,eax ; setg bl ; add esi,0E4h ; cmp [esi],bl ; je S ; mov ecx,[g_pPlayerGui] ; push 0 ; call <notify> ; mov [esi],bl ; S: mov al,[esi] ; pop esi ; pop ebx ; ret
+// Retail bytes:  push ebx ; push esi ; mov esi,ecx ; call CTCVillage::GetFineAmountForCurrentCrimes ; test eax,eax ; setg bl ; add esi,0E4h ; cmp [esi],bl ; je S ; mov ecx,[(&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())] ; push 0 ; call <notify> ; mov [esi],bl ; S: mov al,[esi] ; pop esi ; pop ebx ; ret
 // The hero is a criminal while a fine is outstanding. CurrentIsHeroCriminal (PDB +0x170, retail
 // +0xE4) caches the answer; when it changes, the global observer object at 0x013B8790 is told
 // (0x004378C0, __fastcall, one argument, called with 0; its manifest label is a propagated name)
@@ -33,17 +35,27 @@ class CTCVillage { public:
     bool IsHeroCriminal();
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool reason);           // 0x004378C0
 };
 
-extern CPlayerGui* g_pPlayerGui;                                  // 0x013B8790
 
 bool CTCVillage::IsHeroCriminal()
 {
     bool criminal = GetFineAmountForCurrentCrimes() > 0;
     if (this->CurrentIsHeroCriminal != criminal) {
-        g_pPlayerGui->UpdateMiniMapMarkers(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
         this->CurrentIsHeroCriminal = criminal;
     }
     return this->CurrentIsHeroCriminal;

@@ -1,5 +1,8 @@
 // CTCInventoryAbilities::FrameUpdate() -- once the inventory is closed and nothing blocks it, gives the pending abilities tutorial through the hero component
 // Leaf: FrameUpdate
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE418, 130 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
@@ -17,9 +20,12 @@
 
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -35,7 +41,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) { return m_present.test(wanted); }
@@ -57,12 +63,22 @@ class CWorld { public:
     bool          Paused;                            // +0xA4
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad_0x00[0xFD];
     bool          BlockingTutorials;                 // +0xFD
 };
 
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 class CTCBase
 {
@@ -89,7 +105,7 @@ class CTCInventoryAbilities : public NInventory::CTCInventoryBase { public:
 
 void CTCInventoryAbilities::FrameUpdate()
 {
-    if (WaitingToGiveTutorial && !InventoryOpen && !g_pPlayerGui->BlockingTutorials && !PeekWorld().Paused) {
+    if (WaitingToGiveTutorial && !InventoryOpen && !CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().BlockingTutorials && !PeekWorld().Paused) {
         CThing* thing = ParentThing;
         if (thing->HasTC(0x29)) {
             CTCHero* hero = thing->GetTCUnchecked<CTCHero>(0x29);

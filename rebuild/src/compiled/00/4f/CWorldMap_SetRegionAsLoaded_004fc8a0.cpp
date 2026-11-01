@@ -1,9 +1,11 @@
 // CWorldMap::SetRegionAsLoaded(long, const CCharString&) -- record the loaded region and initialise the mini-map for it, bracketed by two loading-progress ticks
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x004FC8A0, 134 bytes, `ret 8`. PDB ?SetRegionAsLoaded@CWorldMap@@QAEXJABVCCharString@@@Z
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("SetRegionAsLoaded: Initialise MiniMap" 0x0124444C,
 // "... End" 0x01244420), __fastcall DisplayProgress(const CCharString&, float, bool, bool) 0x009E9F40, ~CCharString
 // 0x0099EAE0 (manifest label "_Cons_val<...>" is a byte twin), CPlayerGui::GetPMiniMapDisplay() 0x00437CE0 (label
-// "CVertexBufferWin32::DoSizeof" is a byte twin) on g_pPlayerGui 0x013B8790, CMiniMapDisplay::InitialiseOnRegionLoad
+// "CVertexBufferWin32::DoSizeof" is a byte twin) on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790, CMiniMapDisplay::InitialiseOnRegionLoad
 // (const CRegion&) 0x0082BA00. The name argument is unused.
 // Retail CWorldMap (the engine header engine/CWorldMap.h is the PDB layout with 16-byte containers; retail STLport
 // vectors / CArrays are 12 bytes and the map member is 12 bytes, so everything after +0x14 sits lower):
@@ -34,8 +36,18 @@ namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&,
 
 class CRegion { public: unsigned char _body[0x58]; };
 class CMiniMapDisplay { public: void InitialiseOnRegionLoad(const CRegion& region); };   // 0x0082BA00
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public: CMiniMapDisplay* GetPMiniMapDisplay(); };                     // 0x00437CE0
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CWorldMap { public:
     unsigned char          _pad[0x2c];
@@ -52,7 +64,7 @@ void CWorldMap::SetRegionAsLoaded(long region, const CCharString& name)
         CCharString text("SetRegionAsLoaded: Initialise MiniMap");
         NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
-    g_pPlayerGui->GetPMiniMapDisplay()->InitialiseOnRegionLoad(Regions[LoadedRegion]);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPMiniMapDisplay()->InitialiseOnRegionLoad(Regions[LoadedRegion]);
     {
         CCharString text("SetRegionAsLoaded: Initialise MiniMap End");
         NProgressDisplay::DisplayProgress(text, -1.0f, false, false);

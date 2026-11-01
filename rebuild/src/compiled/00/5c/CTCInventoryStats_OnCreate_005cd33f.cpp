@@ -3,9 +3,12 @@
 // ternary `((it == map->last || typeId < it->type) ? map->last : it)->component` (retry 10b20 lever): the two reads of
 // map->last outweigh `this` in the esi/edi tie, giving retail this=edi (edi pushed at entry) and thingDef/owner=esi.
 // Leaf: OnCreate
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CD33F, length 244 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) +
 // ("s",on).
-// Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 on g_pPlayerGui (0x013B8790), NHeroInformationScreens::
+// Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) (0x013B8790), NHeroInformationScreens::
 // CManager::RegisterScreen(const CBase*) @ 0x0066EB11, CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*)
 // @ 0x00485815, CTCInventoryBase::SetPDef(long) @ 0x005BDB4D, CTCInventoryBase::OnCreate() @ 0x005C0121, std::bitset::test
 // @ 0x00410DE0 on the owner's UsingComponents (+0x20), the const component-map LowerBound @ 0x004365B0, the defs' slot 1 on
@@ -86,9 +89,12 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CCreatureDef>* ou
 }
 #pragma auto_inline(on)
 class CTCBase;
-struct CPresenceBits {
-    bool test(long bit) const;                  // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -102,7 +108,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
-    CPresenceBits UsingComponents;              // +0x20
+    std::bitset<274> UsingComponents;              // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad4c[0x70 - 0x4c];
@@ -125,10 +131,20 @@ class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 class CTCHeroExperience;
 class CTCHeroStats;
 struct CTCInventoryBase_Stats {                 // retail 0x130 bytes
@@ -150,7 +166,7 @@ public:
 
 void CTCInventoryStats::OnCreate()
 {
-    g_pPlayerGui->GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<CCreatureDef> def;
     def.Object = 0;

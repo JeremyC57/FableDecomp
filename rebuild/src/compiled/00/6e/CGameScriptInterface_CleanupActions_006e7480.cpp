@@ -2,9 +2,11 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7480, length 136 bytes.
 // Callees: CAIGameCameraBase virtual slot 14 (+0x38, ScriptEnd) on CWorld+0x34 (PCurrentGameCamera) twice, the inlined UnfreezeControls body twice
 // (CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetControlledCreature @ 0x00487DD0, +0x91 bit 0, the unfreeze @ 0x00449A50 with CurrentPlayer +0x1c),
-// CPlayerGui::Close @ 0x004374B0 on g_pPlayerGui @ 0x013B8790, CGameScriptInterface virtual slot 378 (+0x5e8, EndLetterBox), CDisplayEngine::EndScreenFadeOut @ 0x00434C90.
+// CPlayerGui::Close @ 0x004374B0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790, CGameScriptInterface virtual slot 378 (+0x5e8, EndLetterBox), CDisplayEngine::EndScreenFadeOut @ 0x00434C90.
 // Shape: UnfreezeControls (0x006E73E0) is called qualified, so its body is inlined.
 // Leaf: CleanupActions
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 #include <string.h>
 struct CThing_Retail;
 class CScriptThing;
@@ -137,11 +139,21 @@ class CPlayerManager { public:
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
 public:
     void Open();   // 0x004374B0
 };
-extern CPlayerGui* g_pPlayerGui;             // 0x013B8790
 class CDisplayEngine { public:
 public:
     void EndScreenFadeOut();   // 0x00434C90
@@ -216,7 +228,7 @@ void CGameScriptInterface::CleanupActions()
 {
     World->PCurrentGameCamera->ScriptEnd();
     CGameScriptInterface::UnfreezeControls();
-    g_pPlayerGui->Open();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Open();
     World->PCurrentGameCamera->ScriptEnd();
     EndLetterBox();
     DisplayEngine->EndScreenFadeOut();

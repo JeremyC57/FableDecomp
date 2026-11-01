@@ -5,13 +5,25 @@
 //   WasPlayerGuiOpen +0x3c, TakeScreenshotAfterFrames +0x40; FrameCounter +0x14 unchanged). No engine header: local model.
 // Shape: `FrameCounter > 18` (`cmp ; jle`), the global re-read for each call, the counter zeroed between the two calls.
 // Leaf: TakeQuickScreenshotNoHud
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     bool IsOpen() const;                    // 0x004374F0 (state +0x294 != 1; manifest "C3DMeshInfo::HasPhysicsMesh", propagated)
     void Open();                            // 0x004374B0 (state 2)
     void Close(bool immediately);           // 0x00438400 (state 1 when immediate, else 3)
 };
 
-extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
 class CWideString { public: void* m_pData; };
 class CThing;
@@ -39,8 +51,8 @@ class CTCPhotojournalCapture { public:             // 0x44 bytes in retail (PDB 
 void CTCPhotojournalCapture::TakeQuickScreenshotNoHud()
 {
     if (FrameCounter > 18) {
-        WasPlayerGuiOpen = g_pPlayerGui->IsOpen();
+        WasPlayerGuiOpen = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen();
         FrameCounter = 0;
-        g_pPlayerGui->Close(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Close(false);
     }
 }

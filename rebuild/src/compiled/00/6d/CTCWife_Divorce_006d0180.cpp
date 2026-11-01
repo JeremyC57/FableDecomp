@@ -1,12 +1,16 @@
 // CTCWife::Divorce() -- once married, divorce the hero: unmarry, mark divorced, set the wife's divorced opinion masks and personality, reset the hero's marriage state and morality, sour the opinion of whoever is at the marital home and refresh the player GUI
 // Leaf: ?Divorce@CTCWife
+// Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D0180, 598 bytes (+ int3 padding), plain `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::Unmarry(bool) 0x006CFF10; LowerBound 0x0040F020;
 //   CTCCreatureOpinionOfHero::SetOpinionReactionMask 0x00681E30 / SetOpinionDeedMask 0x006822E0 / SetPersonalityOverride
 //   0x006820E0 / ClearAllKnownDeeds 0x00681A70 / ApplyOpinionTransientOffset 0x00682140; CTCBase::GetWorld 0x00686A70 (on the opinion
 //   TC) / CTCBase::GetPlayerManager 0x00686D40; CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0;
 //   CTCHeroStats::SetMarriageState 0x0057BC6E / GetMoralityMax 0x0057A67E / SetMorality 0x0057C2E6; the home's
-//   occupant getter 0x007EE540; the player GUI refresh 0x004378C0 on g_pPlayerGui 0x013B8790; CCharString 0x0099EBF0 /
+//   occupant getter 0x007EE540; the player GUI refresh 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790; CCharString 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0; frame rate 0x01375550.
 // Layout (retail CTCWife = Ego_r.pdb less 4 after the 12-byte GiftsReceived map): ParentThing +0x04, PHeroMarriageDef +0x0c,
 //   FrameGotMarriedToThePlayer +0x20, DivorcedHero +0x24, LoveAttitudeValue +0x8c; CHeroMarriageDef
@@ -105,11 +109,26 @@ class CTCVillageMember { public:
 };
 struct CTCHome {
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool a);          // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
-extern long g_FrameRate;                        // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CHeroMarriageDef { public:
     unsigned char _pad00[0xac];
     float HeroStatMoralityInOpinionFormChangePerDivorce;   // +0xac
@@ -173,10 +192,10 @@ void CTCWife::Divorce()
         if (occupant) {
             CTCCreatureOpinionOfHero* other;
             if (occupant->Thing->GetInterface(&other, 0x4f)) {
-                other->ApplyOpinionTransientOffset(0, -1.0f, 0, g_FrameRate * 300, 0.0f, 0);
-                other->ApplyOpinionTransientOffset(3, -2.0f, 0, g_FrameRate * 300, -0.5f, 0);
+                other->ApplyOpinionTransientOffset(0, -1.0f, 0, CMainGameComponent::GetConstantFPS() * 300, 0.0f, 0);
+                other->ApplyOpinionTransientOffset(3, -2.0f, 0, CMainGameComponent::GetConstantFPS() * 300, -0.5f, 0);
             }
         }
     }
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

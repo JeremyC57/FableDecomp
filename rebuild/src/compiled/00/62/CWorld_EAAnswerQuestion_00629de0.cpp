@@ -1,5 +1,7 @@
 // CWorld::EAAnswerQuestion(const CGameEvent* event) -- game-event action: read the answer from the event, post message 0x10 carrying it after 50 frames, and while the subtitle box is displaying text play the A (answer 1) or B button sound and clear the subtitles
 // Leaf: ?EAAnswerQuestion@
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00629DE0, 324 bytes (+ int3 padding to 336), thiscall `ret 4`, /GS (cookie
 //   0x0139C8A8, __security_check_cookie 0x00BFE9F9). Ego_r.pdb name set: ?EAAnswerQuestion@CWorld@@QAEXPBVCGameEvent@@@Z;
@@ -9,7 +11,7 @@
 // Callees: CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0, CMessageEventManager::AddMessage 0x00687540
 //   (on CWorld +0x60), __fastcall PeekGuiDef() 0x00438570, the sound system 0x013B8394 slot 9 (+0x24, GetSoundPlayer)
 //   and the player's PlaySoundEvent (slot 4, +0x10), CWorld::GetSampleBank() const 0x0049D9B0,
-//   CSubtitleRenderer::Clear(bool) 0x00492BAB. Globals: g_pPlayerGui 0x013B8790 (subtitle renderer at +0x18).
+//   CSubtitleRenderer::Clear(bool) 0x00492BAB. Globals: (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (subtitle renderer at +0x18).
 // Layout: CSubtitleRenderer DisplayingText +0xE5 (PDB +0xED, less the two 4-byte vector shrinks); CPlayerGuiDef
 //   TextBoxButtonA/BSoundCriteria +0x5E8/+0x5EC (PDB +0x624/+0x628).
 // Shape: as the landed EASkipCutScene (CSoundInit default ctor + GainFaderBits 0x8010, the sound player's vtable spilled
@@ -64,13 +66,23 @@ class CSubtitleRenderer : public CSubtitleRendererDonor {
 public:
     void Clear(bool all);                              // 0x00492BAB
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui {
 public:
     static const CPlayerGuiDef& __fastcall PeekGuiDef();                // 0x00438570
     unsigned char     _pad[0x18];
     CSubtitleRenderer SubtitleRenderer;                // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                       // 0x013B8790
 class CMessageEventManager {
 public:
     void* AddMessage(long type, unsigned long delay, const C3DVector& position, CThing* from, CThing* to, float value1, float value2, long data);   // 0x00687540
@@ -109,7 +121,7 @@ void CWorld::EAAnswerQuestion(const CGameEvent* event)
     event->GetData(buffer);
     long answer = buffer.ReadLong();
     PMessageEventManager->AddMessage(0x10, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, answer);
-    CSubtitleRenderer& subtitles = g_pPlayerGui->SubtitleRenderer;
+    CSubtitleRenderer& subtitles = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer;
     if (subtitles.DisplayingText) {
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CSoundInit init;

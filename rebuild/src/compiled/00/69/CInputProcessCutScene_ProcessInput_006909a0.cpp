@@ -1,5 +1,7 @@
 // CInputProcessCutScene::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- on a button press: game action 0x15 marks the input handled and queues game event 0x39; otherwise post message 0x4b (flags 0x32) to the world's message manager -- in cutscene action mode for a joystick (device 3) event of type 4, else for game action 0x16
 // Leaf: ?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006909A0, length 288 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
@@ -47,11 +49,21 @@ class CWorld { public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;    // +0x60
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0xfa];
     bool          CutsceneActionMode;              // +0xfa (SubtitleRenderer +0xe2)
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CPlayer;
 class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -81,7 +93,7 @@ void CInputProcessCutScene::ProcessInput(const CInputEvent& event, CProcessedInp
         processed.AddGameEvent(gameEvent);
         return;
     }
-    if (g_pPlayerGui->CutsceneActionMode) {
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().CutsceneActionMode) {
         if (event.GetDeviceType() == 3 && event.GetType() == 4)
             World->PMessageEventManager->AddMessage(0x4b, 0x32, &C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
     } else if (IsEventGameAction(0x16, event))

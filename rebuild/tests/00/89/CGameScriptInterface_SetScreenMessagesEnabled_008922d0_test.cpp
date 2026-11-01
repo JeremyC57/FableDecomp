@@ -1,15 +1,24 @@
 #include <cstdio>
 
-struct CGSISetScreenMessagesEnabled_Manager
+class CPlayerGui
 {
+public:
     unsigned char m_Pad00[0x2BB];
     unsigned char m_Before;
     bool m_AreScreenMessagesEnabled;
     unsigned char m_After;
 };
 
-CGSISetScreenMessagesEnabled_Manager*
-    CGSISetScreenMessagesEnabled_ManagerInstance;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T& operator*() const { return *Data; } };
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the source reads the private static PClass through Get()
+    static CCountedPointer<T> PClass;
+public:
+    static T& __fastcall Get() { return *PClass; }
+    static void __fastcall Set(T* p) { PClass.Data = p; PClass.Info = 0; }   // ?Set@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIXPAVCPlayerGui@@@Z
+};
+template <class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CPlayerGui>;
 
 class CGameScriptInterface
 {
@@ -39,13 +48,13 @@ static int Fail(const char* pMessage)
 int main()
 {
     CGameScriptInterface interfaceObject;
-    CGSISetScreenMessagesEnabled_Manager first = {};
-    CGSISetScreenMessagesEnabled_Manager second = {};
+    CPlayerGui first = {};
+    CPlayerGui second = {};
 
     first.m_Before = 0x31;
     first.m_AreScreenMessagesEnabled = true;
     first.m_After = 0x13;
-    CGSISetScreenMessagesEnabled_ManagerInstance = &first;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(&first);
     interfaceObject.CGameScriptInterface::
         SetScreenMessagesEnabled(false);
     if (first.m_AreScreenMessagesEnabled ||
@@ -55,7 +64,7 @@ int main()
     second.m_Before = 0xC7;
     second.m_AreScreenMessagesEnabled = false;
     second.m_After = 0x7C;
-    CGSISetScreenMessagesEnabled_ManagerInstance = &second;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(&second);
     interfaceObject.CGameScriptInterface::
         SetScreenMessagesEnabled(true);
     if (!second.m_AreScreenMessagesEnabled ||

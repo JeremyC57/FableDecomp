@@ -11,7 +11,17 @@ class CPlayerGui { public:
 void CPlayerGui::UpdateMiniMapMarkers(bool force) { calls++; lastArg = force; }
 
 static CPlayerGui g_obj = {0,-1};
-CPlayerGui* g_pPlayerGui = &g_obj;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T& operator*() const { return *Data; } };
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the source reads the private static PClass through Get()
+    static CCountedPointer<T> PClass;
+public:
+    static T& __fastcall Get() { return *PClass; }
+    static void __fastcall Set(T* p) { PClass.Data = p; PClass.Info = 0; }   // ?Set@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIXPAVCPlayerGui@@@Z
+};
+template <class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CPlayerGui>;
+static int g_setPClass = (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(&g_obj), 0);
 
 static int g_baseCalled = 0;
 static CTCEnemy* g_baseSelf = 0;

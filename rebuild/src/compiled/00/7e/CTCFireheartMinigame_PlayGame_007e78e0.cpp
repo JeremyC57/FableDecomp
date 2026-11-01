@@ -1,4 +1,6 @@
 // CTCFireheartMinigame::PlayGame() -- start a session: find the sixteen grid markers by script name once, then reset the hero to grid cell (0, 3), put the player into mode 0x2A, hide the bottom half of the GUI and clear QuitWithDelay
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E78E0, length 221 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?PlayGame@CTCFireheartMinigame@@QAEXXZ`.
 // Callees: CCharString(const CCharString&) @ 0x0099EC30 / ~CCharString @ 0x0099EAE0 (the filter's name),
@@ -7,7 +9,7 @@
 //          CThing::GetPos @ 0x004C73D0, the physics component's SetPosition(const C3DVector&) (slot 30, +0x78),
 //          CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970,
 //          CPlayer::GetCurrentMode @ 0x00633BE0, CPlayer::AddMode(EPlayerMode, bool) @ 0x006345C0.
-//          Globals: the marker script-name table CCharString[4][4] @ 0x013BAEB0, g_pPlayerGui @ 0x013B8790.
+//          Globals: the marker script-name table CCharString[4][4] @ 0x013BAEB0, (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790.
 // Shape: the marker grid is two nested counted loops strength-reduced to a name pointer (esi, compared with the table
 //        end) and a marker pointer (edi); each filter is a temporary holding a copy of the name, built before the
 //        pushes; the physics component is a named local (esi) whose vtable is read into edi before the position call; both mode arms end in the
@@ -68,12 +70,22 @@ public:
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 #include "engine/CPlayerManager.h"
 
 class CPlayerGui : public CPlayerGuiDonor {
 public:
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 class CTCBase {
 public:
@@ -119,6 +131,6 @@ void CTCFireheartMinigame::PlayGame()
     CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)
         player->AddMode(0x2a, false);
-    g_pPlayerGui->DisplayBottomHalfGUI = false;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().DisplayBottomHalfGUI = false;
     QuitWithDelay = false;
 }

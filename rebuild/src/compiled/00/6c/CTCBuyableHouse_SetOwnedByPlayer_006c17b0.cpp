@@ -1,4 +1,6 @@
 // CTCBuyableHouse::SetOwnedByPlayer(bool owned) -- (un)register the house with the living hero (ownership flag, frame stamp, persisted state, the hero stats' house positions, eviction on sale), refresh the sign post and the player GUI
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail 0x006C17B0, 435 bytes (tail `jmp` to CPlayerGui::Refresh with the argument slot reused). Callees: the
 // CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CWorld::GetFrame @ 0x0049D870 (__fastcall), CThing::SetAsGameStatePersisted(bool) @ 0x004C7880, CTCBase::PeekWorld
@@ -6,7 +8,7 @@
 // @ 0x004FC180, CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface, CTCHeroStats = 4), CThing::GetPos @ 0x004C73D0,
 // CTCHeroStats::AddHousePosition @ 0x0057CB4B / RemoveHousePosition @ 0x0057ADF7, CTCBuyableHouse::Evict @ 0x006C0FD0,
 // CIntelligentPointer<CThing>::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, NeedsMainSignPost @ 0x006BFB90,
-// CreateMainSignPost @ 0x006C0F00 (the three private), CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on g_pPlayerGui 0x013B8790.
+// CreateMainSignPost @ 0x006C0F00 (the three private), CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790.
 // Layout: engine/CTCBuyableHouse.h (PDef +0x0c, OwnedByPlayer +0x11, MainSignPost +0x24,
 // FrameToNextCheckIfWeNeedToCreateAnything +0x34); the parent thing is CTCBase +4; the def's byte +0x26 asks for eviction.
 // Shape: the stats lookup has an unchecked result (the miss path reads the never-written out local, which shares the
@@ -80,10 +82,20 @@ template<class T> class CIntelligentPointer { public:
     void* m_pExtra;
     T* GetPItem() const;                            // 0x00A01B50
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool force);          // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 class CBuyableHouseDef { public:
     unsigned char _pad00[0x26];
@@ -138,5 +150,5 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
         MainSignPost.GetPItem()->Kill(true);
     if (NeedsMainSignPost())
         CreateMainSignPost();
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

@@ -1,5 +1,7 @@
 // CTCBoastingArea::OnHeroEnteringArea(CThing& hero) -- unless a mini game is running, open the hero's boast UI and, when the hero has a boasting crowd control, tell it the hero entered the podium area
 // Leaf: ?OnHeroEnteringArea@CTCBoastingArea@@AAEXAAVCThing@@@Z
+// Naming wave 18: the global stand-in g_pGameUI (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007827D0, length 138 bytes (+6 int3 padding). Private; `ret 4` (`this` unused).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (the inlined GetInterface, twice), CDrawQuestInfo::GetMiniGameType
 // @ 0x00644D54 on the game UI's quest info (singleton @ 0x013B8790, +0x1C8), CTCBoastUI::RequestActivate @ 0x0056A860, the crowd
@@ -51,11 +53,21 @@ class CTCBoastingCrowdControl { public:
 struct CDrawQuestInfo {
     long GetMiniGameType();                     // 0x00644D54 (EMiniGameType)
 };
-struct CGameUI {
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:
     unsigned char _pad00[0x1c8];
     CDrawQuestInfo* m_pQuestInfo;               // +0x1c8
 };
-extern CGameUI* g_pGameUI;                      // 0x013B8790
 
 class CTCBase {
 public:
@@ -72,7 +84,7 @@ private:
 
 void CTCBoastingArea::OnHeroEnteringArea(CThing& hero)
 {
-    if (g_pGameUI->m_pQuestInfo->GetMiniGameType() == 0) {
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_pQuestInfo->GetMiniGameType() == 0) {
         CTCBoastUI* boastUI;
         if (hero.GetInterface(&boastUI, 0xe8)) {
             boastUI->RequestActivate();

@@ -1,7 +1,10 @@
 // NInventory::CTCInventoryBase::OpenInventory() -- opens the inventory screen: stamps the render time, flags the first render frame, remembers the display's presentation interval once, marks the inventory open, closes the player GUI, deselects the item, selects the current category (if any) and restarts the item animation on the highlighted item, then rearms the four menu arrow highlights
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BD4EA, length 173 bytes. Size TU without frame pointer (optimize("s",on)).
 // Callees: GFGetTime @ 0x009E1BC0 (`__fastcall`, a double on the FPU stack stored straight into LastRenderTime), CPlayerGui::Close(bool)
-// @ 0x00438400 on g_pPlayerGui (0x013B8790), CTCInventoryBase virtual slot 46 (+0xB8, SelectItem(long)), CCategory::SetAsSelected(bool)
+// @ 0x00438400 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) (0x013B8790), CTCInventoryBase virtual slot 46 (+0xB8, SelectItem(long)), CCategory::SetAsSelected(bool)
 // @ 0x005BC934 (CCategory is 0x2C bytes), CTCInventoryBase::GetHighlightedItem() @ 0x005BCAE3 and ResetInventoryAnim(long) @ 0x005BCD2D;
 // the presentation interval is copied from g_pDisplayDevice (0x013B8390) +0x1CC.
 // Layout: retail CTCInventoryBase is 0x130 bytes -- the PDB layout minus 4 bytes per preceding std::vector: FirstRenderFrame +0x18,
@@ -45,11 +48,21 @@ struct CDisplayDevice {
     CPresentationIntervalDesc PresentationInterval;   // +0x1cc
 };
 class CDisplayManager;
-extern CDisplayManager* PDisplayManager;         // 0x013B8390
+extern CDisplayManager* GPDisplayManager;         // 0x013B8390
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void Close(bool immediately);                // 0x00438400
 };
-extern CPlayerGui* g_pPlayerGui;                 // 0x013B8790
 
 namespace NInventory {
 class CCategory { public:                               // 0x2C bytes
@@ -109,11 +122,11 @@ void CTCInventoryBase::OpenInventory()
     FirstRenderFrame = true;
     CInventoryDef* inventoryDef = AddRef(PDef.Object);   // keeps the definition alive while the screen comes up
     if (!OldIntervalDescInitialised) {
-        OldIntervalDesc = ((CDisplayDevice*)PDisplayManager)->PresentationInterval;
+        OldIntervalDesc = ((CDisplayDevice*)GPDisplayManager)->PresentationInterval;
         OldIntervalDescInitialised = true;
     }
     InventoryOpen = true;
-    g_pPlayerGui->Close(true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Close(true);
     SelectItem(0);
     if (Categories.begin() != Categories.end())
         Categories[SelectedCategoryIndex].SetAsSelected(true);

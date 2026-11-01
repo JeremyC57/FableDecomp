@@ -1,9 +1,11 @@
 // CCreatureAction_TrollTunnel::PerformAction() -- whack the ground, put the troll into mode 0x1e (tunnelling) through its mode manager (interface type 0x31), then refresh the player GUI
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C63C0, length 97 bytes (+ int3 padding).
 // Callees: CCreatureAction_TrollWhackGroundBase::WhackGround @ 0x008C61C0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8),
 // CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x31 = bit 17 of the bitset dword at +0x24),
 // CTCCreatureModeManager::AddMode(unsigned long) @ 0x0073AE10 (bool result dropped), CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 (landed naming of
-// 0x0089EEC0; the manifest "_Cons_val<...>" label is propagated) on the global g_pPlayerGui @ 0x013B8790.
+// 0x0089EEC0; the manifest "_Cons_val<...>" label is propagated) on the global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790.
 // Shape: the mode manager is an UNINITIALISED out-parameter used unconditionally; here the two paths JOIN (`jmp` to the shared AddMode push) because
 // more code follows the call; the miss path reads the never-written frame word into eax. The GUI pointer is loaded straight into ecx after AddMode.
 // The PDB header (CCreatureAction_TrollTunnel.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
@@ -56,10 +58,20 @@ public:
 class CTCCreatureModeManager { public:             // interface type 0x31 component
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);   // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02();
@@ -81,5 +93,5 @@ void CCreatureAction_TrollTunnel::PerformAction()
     CTCCreatureModeManager* pModes;
     PCreature.GetPItem()->GetInterface(&pModes, 0x31);
     pModes->AddMode(0x1e);
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

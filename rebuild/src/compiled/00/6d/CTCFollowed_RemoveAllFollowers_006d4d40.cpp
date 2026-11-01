@@ -1,4 +1,6 @@
 // CTCFollowed::RemoveAllFollowers() -- empty the follower and AI-follower lists and refresh the player GUI
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D4D40, length 34 bytes.
 // Callees: list<CIntelligentPointer<CThing>>::clear() @ 0x004B8050 and list<CIntelligentPointer<CThingAICreature>>::clear()
 // @ 0x00510D40 (the landed CRetailList clear bodies: destroy each value through its virtual destructor, free the node,
@@ -20,10 +22,20 @@ struct CAIFollowerList {                         // retail std::list<CIntelligen
     void clear();                                // 0x00510D40
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);        // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 class CTCFollowed : public CTCBase { public:
     CFollowerList   Followers;                   // +0x0c
@@ -35,5 +47,5 @@ void CTCFollowed::RemoveAllFollowers()
 {
     Followers.clear();
     AIFollowers.clear();
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

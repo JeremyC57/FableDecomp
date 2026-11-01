@@ -1,10 +1,13 @@
 // CTCInventoryTrade::ShowWarningIfNeeded() -- after a trade: hands a pending trophy use to the hero's inventory component and clears it, or, when flagged, shows the "weapon held" shop warning as a subtitle
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059DABB, length 199 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound @ 0x0040F020 (the inline GetInterface, type 0x11 = CTCInventory),
 // CTCInventory virtual slot 33 (+0x84, the trophy use taking the def index and an in/out flag), CCharString(const char*, long)
 // @ 0x0099EBF0 ("TEXT_GUI_SHOP_WEAPON_HELD_WARNING" 0x01252FF4) and ~CCharString @ 0x0099EAE0, CThing::GetDisplayEngine()
 // @ 0x004C7A70 (the font bank at +0x1614C), CSubtitleRenderer::SetText(CFontBank*, const CCharString&, unsigned long, float, bool, bool)
-// @ 0x00492ED1 on the renderer embedded at g_pPlayerGui (0x013B8790) +0x18.
+// @ 0x00492ED1 on the renderer embedded at (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) (0x013B8790) +0x18.
 // Layout: retail CTCInventoryTrade ParentThing +0x04, WarningNeeded +0x178, TrophyUseNeeded +0x17C (PDB +0x1A4/+0x1A8).
 // Shape: the flag local is the byte [ebp-1]; the lookup key is an immediate in [ebp-8] (no spare register), which the warning
 // name then reuses; WarningNeeded is addressed once (`lea`) for its test and clear; the display engine is a named local so its call
@@ -16,9 +19,12 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -38,7 +44,7 @@ struct CDisplayEngine_Retail {
 };
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -64,14 +70,24 @@ class CTCInventory { public:                                // interface type 0x
     virtual void v30(); virtual void v31(); virtual void v32();
     virtual void UseTrophy(long trophyDefIndex, bool* fromShop);   // slot 33 (+0x84)
 };
-struct CSubtitleRenderer_Retail {                    // embedded at g_pPlayerGui+0x18
+struct CSubtitleRenderer_Retail {                    // embedded at (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())+0x18
     void SetText(CFontBank_Retail* font, const CCharString& text, unsigned long colour, float time, bool a, bool b);   // 0x00492ED1
+};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
 };
 class CPlayerGui { public:
     unsigned char           _pad00[0x18];
     CSubtitleRenderer_Retail m_subtitles;            // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 namespace NInventory {
 struct CTCInventoryTrade {
@@ -95,7 +111,7 @@ void CTCInventoryTrade::ShowWarningIfNeeded()
         WarningNeeded = false;
         CCharString warning("TEXT_GUI_SHOP_WEAPON_HELD_WARNING");
         CDisplayEngine_Retail* engine = ParentThing->GetDisplayEngine();
-        g_pPlayerGui->m_subtitles.SetText(engine->m_pFontBank, warning, 0x122, 0.0f, true, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitles.SetText(engine->m_pFontBank, warning, 0x122, 0.0f, true, true);
     }
 }
 }

@@ -1,5 +1,7 @@
 // CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, const CCharString& yesText, const CCharString& noText, const CCharString& extraText, bool pauseGame) const -- close the hero's boast UI, optionally pause, show the yes/no question as a subtitle (the four-answer form only when the extra text is non-empty), then let the boast UI open again
 // Leaf: GiveHeroYesNoQuestion
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089E540, 458 bytes, `ret 0x14`.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, CBaseIntelligentPointer ctor 0x00A01B10 /
 //   GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10, the component-map LowerBound 0x0040F020 (TC 0xe8 boast UI),
@@ -40,8 +42,18 @@ class CSubtitleRenderer { public:
     void SetText(const CFontBank& font, const CCharString& a, const CCharString& b, const CCharString& c, const CCharString& d,
                  unsigned long colour, float time, bool f, bool g);                         // 0x00492FB4
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public: unsigned char Data[0x18]; CSubtitleRenderer Subtitles; };
-extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 class CMainGameComponent { public: unsigned char Data[0x1614c]; CFontBank* PFont; };
 class CTCBoastUI { public: void AllowUIToOpen(bool allow); };   // 0x0056A930
 class CTCBase;
@@ -105,9 +117,9 @@ void CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, co
     if (pauseGame)
         Pause(1.0f);
     if (extraText == "")
-        g_pPlayerGui->Subtitles.SetText(*Component->PFont, question, "", yesText, noText, 0x24, 0.0f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*Component->PFont, question, "", yesText, noText, 0x24, 0.0f, false, true);
     else
-        g_pPlayerGui->Subtitles.SetText(*Component->PFont, question, "", yesText, noText, extraText, 0x24, 0.0f, false, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetText(*Component->PFont, question, "", yesText, noText, extraText, 0x24, 0.0f, false, true);
     if (((CThing*)hero.GetPItem()) && !(((CThing*)hero.GetPItem())->LifeFlags & 1) && boastUI)
         boastUI->AllowUIToOpen(true);
 }

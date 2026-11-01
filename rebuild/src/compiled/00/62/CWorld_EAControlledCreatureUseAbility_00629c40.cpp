@@ -1,5 +1,7 @@
 // CWorld::EAControlledCreatureUseAbility(const CGameEvent*) -- game-event action: make the event player's hero use the ability from the event (main player only) and flash the GUI attack event
 // Leaf: ?EAControlledCreatureUseAbility@CWorld@@QAEXPBVCGameEvent@@@Z
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS
 // Shape: one CPlayer* local holds both GetPlayer results (the mode test, then the hero lookup), which gives retail's
 //   callee-saved assignment (event in ebp, creature in edi).
@@ -49,10 +51,20 @@ class CDefinitionManager { public:
 public:
     long GetDefGlobalIndexFromName(const CCharString&) const;   // 0x009AD410
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void OnEventAttack();                          // 0x004379B0
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CWorld { public:
     unsigned char       _pad00[0xc];
     CPlayerManager*     PlayerManager;             // +0x0C
@@ -79,5 +91,5 @@ void CWorld::EAControlledCreatureUseAbility(const CGameEvent* event)
     creature->UseAbility(ability, 0.0f);
     unsigned short attack = (unsigned short)DefinitionManager->GetDefGlobalIndexFromName("CREATURE_ABILITY_ATTACK");
     if (attack != 0)
-        g_pPlayerGui->OnEventAttack();
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().OnEventAttack();
 }

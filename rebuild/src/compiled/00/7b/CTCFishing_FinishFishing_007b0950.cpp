@@ -1,4 +1,6 @@
 // CTCFishing::FinishFishing(bool caught) -- stops the reel/escape sounds on the hero, closes the fishing mini-game GUI and button prompts, scores a caught fish's weight, posts the finish message and leaves fishing mode
+// Naming wave 18: the global stand-in g_PlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B0950, 584 bytes, `ret 4`.
 // Callees: CTCBase::PeekPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer const @ 0x00449960,
 //          CPlayer::GetPControlledCreature @ 0x00487DC0 (Ego_r.pdb names; the const chain), CVectorMap::LowerBound @ 0x0040F020, sound stop @ 0x0066ADD0
@@ -123,6 +125,17 @@ public:
     void SetButton1OverrideText(const CCharString& text);   // 0x0048F7C0
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer Subtitles;                        // +0x18
@@ -131,7 +144,6 @@ class CPlayerGui { public:
     unsigned char _padf9[0x1c8 - 0xf9];
     CDrawQuestInfo* PQuestInfo;                         // +0x1C8
 };
-extern CPlayerGui* g_PlayerGui;                         // 0x013B8790
 extern long g_framesPerSecond;                          // 0x01375550
 
 class CTCFishing : public CTCBase {
@@ -160,9 +172,9 @@ void CTCFishing::FinishFishing(bool caught)
         ((CTCSoundEmitter*)hero->GetTC(0x10))->StopSound(fishEscapingSoundID);
         FishEscapingSoundID = 0;
     }
-    g_PlayerGui->PQuestInfo->DisplayMiniGameInfo(false, 1, 0);
-    g_PlayerGui->Subtitles.SetButton2OverrideText("");
-    g_PlayerGui->ShowFishingMeter = false;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().PQuestInfo->DisplayMiniGameInfo(false, 1, 0);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetButton2OverrideText("");
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().ShowFishingMeter = false;
     CThing* fish = 0;
     if (caught) {
         fish = PFish.Get();
@@ -183,5 +195,5 @@ void CTCFishing::FinishFishing(bool caught)
         StageInitialised = false;
     }
     hero->GetPlayer().RemoveMode(0x1d);
-    g_PlayerGui->Subtitles.SetButton1OverrideText("");
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Subtitles.SetButton1OverrideText("");
 }

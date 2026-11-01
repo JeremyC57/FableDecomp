@@ -1,4 +1,7 @@
 // CTCInventory::OpenQuickAccessMenu() -- opens the owner's quick-access inventory menu unless the in-game menu or the quest start screen is up, the GUI is busy or a hero information screen is showing, and only when the menu is neither active nor closing
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail 0x00583BD5, 255 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: std::bitset::test 0x00410DE0 + the const CVectorMap::LowerBound 0x004365B0 (two const inline GetInterface
 // lookups: the in-game menu component 0xC6 and the quest start component 0xFC) and the non-const LowerBound 0x0040F020
@@ -12,9 +15,12 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CPresenceBits {
-    bool test(long bit) const;                       // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -30,7 +36,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -79,12 +85,22 @@ class CManager { public:
     bool ScreenShowing;                              // +0x34 (descriptive)
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad_0x000[0xf6];
     bool GuiBusy;                                    // +0xf6 (descriptive)
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 class CTCInventory { public:
     void* __vftable;
@@ -101,9 +117,9 @@ void CTCInventory::OpenQuickAccessMenu()
     CTCQuestStartTarget* questStart;
     if (GetConstParent()->GetInterface(&questStart, 0xfc) && questStart && questStart->Active)
         return;
-    if (g_pPlayerGui->GuiBusy)
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GuiBusy)
         return;
-    if (g_pPlayerGui->GetPHeroInfoScreensManager()->ScreenShowing)
+    if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->ScreenShowing)
         return;
     CTCInventoryMenu* menu;
     if (ParentThing->GetInterface(&menu, 0xf6)) {

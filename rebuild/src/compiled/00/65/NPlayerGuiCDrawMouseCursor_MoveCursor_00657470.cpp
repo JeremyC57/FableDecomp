@@ -1,5 +1,7 @@
 // NPlayerGui::CDrawMouseCursor::MoveCursor(const C2DVector& delta) -- move the cursor by the mouse delta scaled by the GUI def's cursor scales (Y inverted) and clamp it inside the screen area minus the cursor graphic's width
 // Leaf: MoveCursor
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00657470, length 215 bytes (+ int3 padding), `ret 4`.
 // Callees: PeekGuiDef() @ 0x00438570 (returns the CPlayerGuiDef), the player GUI's graphic bank virtual slot 23 (+0x5c)
 // returning the graphic's width as an unsigned long, the screen-area getter @ 0x00434B50 (thiscall, C2DBoxF by hidden
@@ -31,12 +33,22 @@ struct CGraphicBank {
     virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22();
     virtual unsigned long GetGraphicWidth(long graphic);   // slot 23 (+0x5c)
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     static const CPlayerGuiDef& __fastcall PeekGuiDef();            // 0x00438570
     unsigned char _pad[0x14];
     CGraphicBank* Bank;                            // +0x14
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CDisplayEngine { public:
 public:
     C2DBoxF GetMainWindow() const;   // 0x00434B50
@@ -61,7 +73,7 @@ class CDrawMouseCursor { public:
 void CDrawMouseCursor::MoveCursor(const C2DVector& delta)
 {
     const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
-    float width = (float)g_pPlayerGui->Bank->GetGraphicWidth(def->MouseCursorGraphic);
+    float width = (float)CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().Bank->GetGraphicWidth(def->MouseCursorGraphic);
     Pos.X += delta.X * def->MouseCursorScaleX;
     Pos.Y -= delta.Y * def->MouseCursorScaleY;
     C2DBoxF area = Component->Screen->GetMainWindow();

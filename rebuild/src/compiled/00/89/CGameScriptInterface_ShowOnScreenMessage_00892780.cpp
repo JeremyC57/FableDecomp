@@ -2,6 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00892780, length 43 bytes.
 // Callees: CSubtitleRenderer::SetText(CFontBank*, const CCharString&, unsigned long, float, bool, bool) @ 0x00492ED1. Shape: no frame, the font bank loaded between the pushes, `add ecx,18h` for the embedded renderer, `ret 8`.
 // Leaf: ShowOnScreenMessage
+// Naming wave 18: the global stand-in g_pGameUI_013b8790 (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
 class CMainGameComponent;
@@ -42,7 +44,18 @@ struct CMiniMapDisplay_Retail {
 struct CDrawQuestInfo_Retail {
     long AddBarHealth(CThing_Retail* thing, const CRGBColour& colour, const CCharString& name, float value);   // 0x0064F885 (CDrawQuestInfo::AddBarHealth)
 };
-struct CGameUI_Retail {                          // the game UI singleton behind the pointer at 0x013B8790
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:                          // the game UI singleton behind the pointer at 0x013B8790
     unsigned char            _pad00[0x18];
     CSubtitleRenderer_Retail m_subtitles;        // +0x18
     unsigned char            _pad19[0x1af];
@@ -52,7 +65,6 @@ struct CGameUI_Retail {                          // the game UI singleton behind
     void ShowGuildMasterMessage(const CCharString& text, long id, bool flag);   // 0x00437800 (the label is propagated)
     void ShowOnScreenMessage(const CWideString& text, long a, long b, long c);   // 0x0043A2A0 (labelled ShowOnScreenMessage_FormatDisplay)
 };
-extern CGameUI_Retail* g_pGameUI_013b8790;      // 0x013B8790
 class CMainGameComponent { public:
     unsigned char    _pad[0x1614c];
     CFontBank_Retail* m_pFontBank;               // +0x1614c
@@ -64,5 +76,5 @@ class CMainGameComponent { public:
 
 void CGameScriptInterface::ShowOnScreenMessage(const CCharString& text, float time) const
 {
-    g_pGameUI_013b8790->m_subtitles.SetText(Component->m_pFontBank, text, 0, time, false, true);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_subtitles.SetText(Component->m_pFontBank, text, 0, time, false, true);
 }

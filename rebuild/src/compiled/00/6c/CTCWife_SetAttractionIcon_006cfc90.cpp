@@ -1,10 +1,12 @@
 // CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha) -- shows (or clears) the wife's attraction emote icon: the just-married icon while the marriage frame has passed, else the ring or no-ring courting icon; refreshes the player GUI when the icon's visibility changes
 // Leaf: SetAttractionIcon
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CFC90, 261 bytes (`ret 0Ch`; Ego_r.pdb `?SetAttractionIcon@CTCWife@@AAEX_NME@Z`).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0x45, CTCEmoteIcon: bit 5 of the bitset
 //          word +0x28); GFGetCurrentFrame 0x0049D870 (`__fastcall`, no arguments); CTCBase::GetDefinitionManager() 0x006869D0
 //          (x3); CTCEmoteIcon::SetEmoteIcon(EEmotePriority, long, float, float, unsigned char) 0x0071AAB0;
-//          CPlayerGui::UpdateMiniMapMarkers(bool) 0x004378C0 on g_pPlayerGui 0x013B8790.
+//          CPlayerGui::UpdateMiniMapMarkers(bool) 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790.
 // Layout: engine/CTCWife.h holds up to the GiftsReceived map, then retail sits 4 bytes below the PDB (as the landed
 //          IsWillingToMarry 0x006CFEC0): FrameGotMarriedToThePlayer +0x20, ReceivedWeddingRing +0x91 (PDB +0x95), so a
 //          local model; CTCEmoteIcon::EmoteIcon +0x14 (retail: CWideString EmoteText below it is 4 bytes, PDB offset
@@ -63,10 +65,20 @@ class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xd0];
     CWifeIconDefs* Defs;                        // +0xd0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);       // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CTCBase
 {
@@ -106,5 +118,5 @@ void CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha)
         icon->SetEmoteIcon(married ? 3 : 4, 0, -1.0f, 1.0f, 0xff);
     }
     if (show != wasShowing)
-        g_pPlayerGui->UpdateMiniMapMarkers(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

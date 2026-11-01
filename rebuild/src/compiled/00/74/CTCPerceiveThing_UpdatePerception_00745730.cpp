@@ -1,9 +1,12 @@
 // CTCPerceiveThing::UpdatePerception() -- an incapacitated parent loses all three lines of sight and its smell / hearing / direct awareness; otherwise update sight (unless lying down), smell and hearing, then become directly aware on sight or smell, or let the awareness timer run down (4 per second) and drop direct awareness when it expires
 // Leaf: UpdatePerception
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00745730, length 272 bytes, plain `ret` (one `jmp` tail call).
 // FableWin.pdb ?UpdatePerception@CTCPerceiveThing@@AAEXXZ (private).
 // Callees: IsIncapacitated @ 0x0085F0C0 and IsLyingDown @ 0x0085F2B0 (`__fastcall`, the thing in ecx), CPlayerGui::
-// RemovePerceivingThing @ 0x00437900 (g_pPlayerGui 0x013B8790), UpdateLineOfSight @ 0x00745120, UpdateSmell @ 0x00744B50,
+// RemovePerceivingThing @ 0x00437900 ((&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790), UpdateLineOfSight @ 0x00745120, UpdateSmell @ 0x00744B50,
 // UpdateHearing @ 0x00744FB0 (PDB private members; addresses follow the PDB declaration order Smell, Hearing,
 // LineOfSight), SetAsDirectlyAwareOfPerceivedThing @ 0x00744730 (tail-jumped), CTCBase::GetGameSubsystem() @ 0x00686D60
 // (only evaluated: the frame rate is a static long, 0x01375550). Constants: 1e-4f 0x0129BA3C, 1.0f 0x0122DED8,
@@ -28,11 +31,21 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing const>, vtable 0x01237F1C
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-class CPlayerGui { public:                             // the global g_pPlayerGui @ 0x013B8790
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui { public:                             // the global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790
     void AddPerceivingThing(CThing* thing);     // 0x004378F0 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
     void RemovePerceivingThing(CThing* thing);  // 0x00437900 (forwards to CDrawPerceivers @ +0x1b8; catalog "_Cons_val<...>")
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 class CDefPointeeBase { public:
     unsigned char _pad00[0x40];
     long StartWithoutTarget;                    // +0x40 CPerceivedThingDef word: 0 = start searching for a target
@@ -72,16 +85,16 @@ class CTCPerceiveThing { public:
     void UpdateDrawPerceivers()
     {
         if (PerceivedThing.GetPItem())
-            g_pPlayerGui->AddPerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddPerceivingThing(ParentThing);
         else
-            g_pPlayerGui->RemovePerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
     }
     void SetPerceivedThing(const CThing* thing);
     void SetThingLineOfSight(bool lineOfSight)
     {
         if (LineOfSight != lineOfSight) {
             if (LineOfSight)
-                g_pPlayerGui->RemovePerceivingThing(ParentThing);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
             LineOfSight = lineOfSight;
             if (lineOfSight)
                 UpdateDrawPerceivers();
@@ -93,7 +106,7 @@ class CTCPerceiveThing { public:
     {
         if (ExtendedLineOfSight != lineOfSight) {
             if (ExtendedLineOfSight)
-                g_pPlayerGui->RemovePerceivingThing(ParentThing);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
             ExtendedLineOfSight = lineOfSight;
             if (lineOfSight)
                 UpdateDrawPerceivers();
@@ -103,7 +116,7 @@ class CTCPerceiveThing { public:
     {
         if (IgnoreFOVLineOfSight != lineOfSight) {
             if (IgnoreFOVLineOfSight)
-                g_pPlayerGui->RemovePerceivingThing(ParentThing);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
             IgnoreFOVLineOfSight = lineOfSight;
             if (lineOfSight)
                 UpdateDrawPerceivers();
@@ -120,7 +133,7 @@ class CTCPerceiveThing { public:
 
 bool __fastcall IsIncapacitated(CThing* thing);   // 0x0085F0C0
 bool __fastcall IsLyingDown(CThing* thing);       // 0x0085F2B0
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 void CTCPerceiveThing::UpdatePerception()
 {
@@ -140,15 +153,15 @@ void CTCPerceiveThing::UpdatePerception()
     bool perceived = LineOfSight || Smelt;
     if (perceived) {
         SetAsDirectlyAwareOfPerceivedThing_00744730();
-    } else if (AwarenessTimer > EPSILON) {
+    } else if (AwarenessTimer > DELTA_NOTIONAL_ZERO) {
         float frameTime = GetGameSubsystem()->GetSecondsPerFrame();
         GetAwarenessTimer() -= frameTime * 4.0f;
         if (AwarenessTimer < 0.0f)
             AwarenessTimer = 0.0f;
-        if (AwarenessTimer < EPSILON) {
+        if (AwarenessTimer < DELTA_NOTIONAL_ZERO) {
             DirectAwareness = false;
             AwarenessTimer = 0.0f;
-            g_pPlayerGui->RemovePerceivingThing(ParentThing);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().RemovePerceivingThing(ParentThing);
         }
     }
 }

@@ -1,5 +1,7 @@
 // CTCFireheartMinigame::Quit() -- end the session: drop the hero out of the fireheart player mode, flag the player GUI, clear the subtitle's second-button override text and release the board primitives
 // Leaf: Quit
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 //
 // Retail 0x007E7A40, 128 bytes (plain `ret`). Ego_r.pdb `?Quit@CTCFireheartMinigame@@QAEXXZ`. Callees:
 // CTCBase::GetPlayerManager() @ 0x00686D40 (manifest "CViewBase::GetDisplayEngine", propagated),
@@ -7,7 +9,7 @@
 // (EPlayerMode) @ 0x00634190, CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("" @ 0x0122D70E),
 // CSubtitleRenderer::SetButton2OverrideText(const CCharString&) @ 0x0048F881, ~CCharString @ 0x0099EAE0,
 // vector<CEnginePrimitiveHandle>::erase(first, last) @ 0x00440D70 (manifest "Vector_EraseRange").
-// Global g_pPlayerGui @ 0x013B8790 (its subtitle renderer at +0x18, a flag byte at +0x330).
+// Global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790 (its subtitle renderer at +0x18, a flag byte at +0x330).
 // Layout = Ego_r.pdb CTCFireheartMinigame: InSession +0x4c, Handles +0x8c (12-byte retail vector).
 // Shape: the player is a named local (edi); RemoveMode's constant argument is the compared mode value
 // still in eax; the empty text is a named CCharString in its own block (destroyed before the erase) in the `push ecx`
@@ -36,13 +38,23 @@ class CSubtitleRenderer { public:
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char     _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;                     // +0x18
     unsigned char     _pad19[0x330 - 0x19];
     bool              FireheartQuitPending;                 // +0x330
 };
-extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
 class CEnginePrimitiveHandle;
 template <class T> struct CRetailVector {                   // STLport vector (12 bytes)
@@ -81,10 +93,10 @@ void CTCFireheartMinigame::Quit()
     CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() == PLAYER_MODE_FIREHEART_MINIGAME)
         player->RemoveMode(PLAYER_MODE_FIREHEART_MINIGAME);
-    g_pPlayerGui->FireheartQuitPending = true;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().FireheartQuitPending = true;
     {
         CCharString noText("", -1);
-        g_pPlayerGui->SubtitleRenderer.SetButton2OverrideText(noText);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetButton2OverrideText(noText);
     }
     Handles.clear();
 }

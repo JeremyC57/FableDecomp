@@ -1,3 +1,5 @@
+// Naming wave 18: the global stand-in CGSIAddQuestInfoCounterScalar_Gui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 class CCharString;
 
 namespace NPlayerGui
@@ -12,8 +14,19 @@ public:
 };
 }
 
-struct CGSIAddQuestInfoCounterScalar_GuiOwner
-{
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
+class CPlayerGui
+{ public:
     unsigned char m_Unused[0x1C8];
     NPlayerGui::CDrawQuestInfo* m_QuestInfo;
 };
@@ -23,14 +36,12 @@ struct CGSIAddQuestInfoCounterScalar_GuiOwner
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-extern CGSIAddQuestInfoCounterScalar_GuiOwner*
-    CGSIAddQuestInfoCounterScalar_Gui;
 
 long CGameScriptInterface::AddQuestInfoCounter(
     const CCharString& labelText,
     long value,
     float fadeTime) const
 {
-    return CGSIAddQuestInfoCounterScalar_Gui->m_QuestInfo
+    return CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_QuestInfo
         ->AddCounter(labelText, value, fadeTime);
 }

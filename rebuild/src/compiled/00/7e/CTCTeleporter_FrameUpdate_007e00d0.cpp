@@ -1,10 +1,12 @@
 // CTCTeleporter::FrameUpdate() -- finish a teleport held back for a tutorial; otherwise, while the hero is in the teleporter's region, activate the teleporter for named guild markers, start teleporting (or a tutorial) when the hero steps inside the radius, keep the active particle effect alive, and kill it when teleporting is disabled
 // Leaf: ?FrameUpdate@CTCTeleporter
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E00D0, 858 bytes, plain `ret`.
 // Callees: CTCBase getters 0x00686A80 (world) / 0x00686D30 (world map) / 0x00686D20 / 0x00686D40 / 0x00686D50 (labels
 //   "CViewBase::GetDisplayEngine" are propagated); CPlayerManager getters 0x00449960 / 0x00449970; CPlayer::GetPControlledCreature
 //   0x00487DC0; CTCTeleporter::StartTeleporting 0x007DFF90; CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / the current
-//   region 0x004FB150; CCharString::operator!= 0x0099E960; the player GUI refresh 0x004378C0 on g_pPlayerGui 0x013B8790;
+//   region 0x004FB150; CCharString::operator!= 0x0099E960; the player GUI refresh 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790;
 //   IS_THING_ALIVE<CThingPlayerCreature*> 0x0043DBD0 / IS_THING_ALIVE<CIntelligentPointer<CThing> > 0x004CC340 (`__fastcall`);
 //   CThing::GetPos 0x004C73D0 / Kill 0x004C9B80; LowerBound 0x0040F020 (interfaces 0x29 hero, 0x4B emitter);
 //   CTCHero::GiveTutorialForCategory 0x006C9FA0; particle Create 0x006E0880 (`__fastcall`); CIntelligentPointer<CThing>
@@ -94,9 +96,11 @@ template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer {
 };
 #pragma pack(pop)
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& p);   // 0x004CC340 IS_THING_ALIVE<CIntelligentPointer<CThing> >
-CThing* __fastcall CreateParticle(long effect, const C3DVector* pos, bool attach);   // 0x006E0880
 
-class CTCDParticleEmitter { public:                            // interface 0x4B
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:                            // interface 0x4B
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
 };
@@ -122,12 +126,22 @@ struct CRegionManager {
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual bool IsMapLoaded(long mapIndex);            // slot 10 (+0x28)
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad00[0xfd];
     bool TutorialShowing;                               // +0xfd (descriptive)
     void UpdateMiniMapMarkers(bool a);                  // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 
 class CTeleporterDef { public:
     unsigned char _pad00[0x28];
@@ -168,7 +182,7 @@ class CTCTeleporter : public CTCBase { public:
 void CTCTeleporter::FrameUpdate()
 {
     if (WaitingForTutorialToFinish) {
-        if (g_pPlayerGui->TutorialShowing || GetWorld()->Paused)
+        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().TutorialShowing || GetWorld()->Paused)
             return;
         WaitingForTutorialToFinish = false;
         CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer_00449960()->GetPControlledCreature();
@@ -185,7 +199,7 @@ void CTCTeleporter::FrameUpdate()
             if (parent->ScriptName != "HERO_GUILD_TELEPORT_MARKER" && Active != true) {
                 Active = true;
                 Activated = true;
-                g_pPlayerGui->UpdateMiniMapMarkers(false);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
             }
         }
     }
@@ -208,7 +222,7 @@ void CTCTeleporter::FrameUpdate()
                     if (parent->ScriptName != "HERO_GUILD_TELEPORT_MARKER" && Active != true) {
                         Active = true;
                         Activated = true;
-                        g_pPlayerGui->UpdateMiniMapMarkers(false);
+                        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                     }
                 }
             }
@@ -231,7 +245,7 @@ void CTCTeleporter::FrameUpdate()
     if (((CThing*)PParticle.GetPItem()))
         return;
     {
-        CIntelligentPointer<CThing> particle(CreateParticle(PDef->ParticleEffect, &ParentThing->GetPos(), false));
+        CIntelligentPointer<CThing> particle(CTCDParticleEmitter::Create(PDef->ParticleEffect, *(&ParentThing->GetPos()), false));
         PParticle = particle;
     }
     if (!((CThing*)PParticle.GetPItem()))

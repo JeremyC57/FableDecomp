@@ -1,9 +1,11 @@
 // CTCInventoryAbilities::OnCreate() -- registers the abilities screen, points the inventory at its def, runs the base OnCreate and initialises abilities and expressions once (not while a hero state is about to load)
 // Leaf: OnCreate
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F4A86, 170 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`). The twin of the landed CTCInventoryWeapons::OnCreate
 // (0x005C3057) with the abilities def and the one-time initialisation.
-// Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 (through g_pPlayerGui @ 0x013B8790),
+// Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 (through (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790),
 //          NHeroInformationScreens::CManager::RegisterScreen(const CBase*) @ 0x0066EB11, CDefClassBase::GetSubDef<T>
 //          (CDefPointer<const T>*) @ 0x00485815, CTCInventoryBase::SetPDef(long) @ 0x005BDB4D, CTCInventoryBase::
 //          OnCreate() @ 0x005C0121, CTCBase::PeekWorld() const @ 0x00686A80, InitialiseAbilities() @ 0x005EEDE2,
@@ -66,10 +68,20 @@ class CManager { public:
     void RegisterScreen(const CBase* screen);        // 0x0066EB11
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 class CWorld : public CWorldDonor {
  public:
@@ -106,7 +118,7 @@ public:
 
 void CTCInventoryAbilities::OnCreate()
 {
-    g_pPlayerGui->GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<CInventoryAbilitiesDef> def;
     def.Object = 0;

@@ -1,3 +1,6 @@
+// Naming wave 18: the global stand-in gPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 class CCreatureActionBase;
 class CThingCreatureBase;
 
@@ -71,13 +74,23 @@ private:
     unsigned char storage[0xA8];
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui
 {
 public:
     void AddDamageChange(float amount, bool isDamage);
 };
-extern CPlayerGui* gPlayerGui;
-extern const float EPSILON;
+extern const float DELTA_NOTIONAL_ZERO;
 extern const float gDamageThreshold;
 
 class CGameScriptInterface
@@ -101,10 +114,10 @@ void CGameScriptInterface::ChangeHeroHealthBy(
         return;
 
     hero->ChangeHealth(amount, rawHealthMode);
-    if (rawHealthMode && ((CreatureOverlay*)hero)->healthB4 < EPSILON)
+    if (rawHealthMode && ((CreatureOverlay*)hero)->healthB4 < DELTA_NOTIONAL_ZERO)
     {
         hero->SetCurrentAction(CCreatureAction_StabbedToDeath(*hero, false));
     }
     if (*(const bool*)&applyHealthChange && amount < gDamageThreshold)
-        gPlayerGui->AddDamageChange(-amount, true);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().AddDamageChange(-amount, true);
 }

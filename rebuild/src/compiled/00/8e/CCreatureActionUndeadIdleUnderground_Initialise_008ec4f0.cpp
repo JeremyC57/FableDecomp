@@ -14,6 +14,8 @@
 // is also a ternary (the if/reassign pick gave `mov eax,[eax+4] ; mov ecx,eax`). The carried-things vector is a local
 // STLport vector (free-based dtor) scoped in the 0x46 block.
 // Leaf: Initialise
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 class CCharString { public:
     char* m_pString;
@@ -102,10 +104,20 @@ struct CTCType9 {                           // interface type 9
     unsigned char _pad00[0x10];
     bool m_flag10;                          // +0x10
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);   // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
 class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -127,7 +139,7 @@ void CCreatureAction_UndeadIdleUnderground::Initialise()
     if (creature->HasTC(0x31))
         pModes = creature->GetTC<CTCCreatureModeManager>(0x31);
     pModes->AddMode(0x1e);
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
     PCreature.GetPItem()->Slot28(0);
     CTCCarrying* pCarrying;
     if (PCreature.GetPItem()->GetInterface(&pCarrying, 0x46)) {

@@ -1,5 +1,7 @@
 // CQuestManager::ActivateQuestCard(CThing* card, bool loadResources) -- clear the objectives; if the living card thing's quest card is activatable, has a def, no quest is between its start and finish screens in the card's region and its script quest activates, make the card active (in limbo, persisted), reset the guild-seal recall point, drop the card's type from the available cards and refresh the player GUI
 // Leaf: ActivateQuestCard
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Shape: the quest-card component lookup is a template-constant-key GetTC: LowerBound binds its const long& to the constant, so the
 //   key temporary is homed in the dead `card` argument slot (shared with the uninitialised-on-miss tc) and the compare stays an
 //   immediate; a by-value key copy local takes its own frame word.
@@ -107,10 +109,20 @@ class CWorld { public:
     C3DVector     GuildSealRecallPos;                    // +0x154 (PDB +0x164)
     float         GuildSealRecallAngleXY;                // +0x160 (PDB +0x170)
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);                // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
 class CQuestManager { public:
     unsigned char     _pad00[0x5c];
@@ -147,7 +159,7 @@ bool CQuestManager::ActivateQuestCard(CThing* card, bool loadResources)
                         World->GuildSealRecallPos = C3DVector(0.0f, 0.0f, 0.0f);
                         World->GuildSealRecallAngleXY = 0.0f;
                         RemoveAvailableQuestCardType(card->GetDefName());
-                        g_pPlayerGui->UpdateMiniMapMarkers(false);
+                        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                         if (--def->RefCount == 0)
                             def->DeleteThis();
                         return true;

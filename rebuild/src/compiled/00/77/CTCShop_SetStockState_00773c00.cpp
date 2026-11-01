@@ -1,5 +1,7 @@
 // CTCShop::SetStockState(long state) -- on a change: store it, tell the keeper's CTCShopKeeper component (interface 0x90) to repress opinions unless the state is 1, then refresh the player GUI
 // Leaf: SetStockState
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe 0x00773C00, 140 bytes (`ret 4`; the GUI refresh is a `mov [esp+4],0 ; jmp` tail call).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x0040F020 (inline GetInterface), CTCShopKeeper::RepressOpinions(bool) @ 0x007996B0, CPlayerGui::UpdateMiniMapMarkers(bool)
@@ -67,10 +69,20 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 class CTCShopKeeper { public:
     void RepressOpinions(bool repress);             // 0x007996B0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);           // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 class CTCShop { public:
     virtual void v00();
     void*                   ParentThing;            // +0x04 (CTCBase)
@@ -91,6 +103,6 @@ void CTCShop::SetStockState(long state)
             if (keeper->GetInterface(&shopKeeper, 0x90))
                 shopKeeper->RepressOpinions(state != 1);
         }
-        g_pPlayerGui->UpdateMiniMapMarkers(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
     }
 }

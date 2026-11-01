@@ -1,8 +1,10 @@
 // CTCInventoryMap::ProcessButtonAReleased() -- A released on the map screen: in selection state 1 with the world map active and a region chosen, leaves the world map (drops the map primitives, starts the mini-map file loading for the region, rebuilds the quest and teleport markers and re-selects); in state 0 with teleporting allowed and the screen not opened from the hero-information screens, teleports to the active region; otherwise the base handler
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00602F30, length 208 bytes (+ int3 padding); speed TU (no frame pointer).
 // Callees: CTCInventoryMap's map-primitive release @ 0x005FC510 (manifest "ComboBox_ClearAllLists" is propagated; it clears the three
 // MapScreen*PrimitiveHandles vectors), CTCBase::PeekWorld() const @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine"), CWorld virtual slot
-// 13 (+0x34, PeekWorldMap), CWorldMap::GetRegion(long) @ 0x004FC180 (CRegion&), CPlayerGui::GetPMiniMapDisplay() @ 0x00437CE0 on g_pPlayerGui
+// 13 (+0x34, PeekWorldMap), CWorldMap::GetRegion(long) @ 0x004FC180 (CRegion&), CPlayerGui::GetPMiniMapDisplay() @ 0x00437CE0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get())
 // (0x013B8790), CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CRegion&, const CCharString&, bool) @ 0x00829D90 with CWorld::CurrentWorldName
 // (+0x84), CTCInventoryMap::FindQuestsForActiveRegion @ 0x005FD0F0 and FindTeleportsForActiveRegion @ 0x005FD1D0, CTCInventoryBase virtual
 // slot 46 (+0xB8, the selection hook taking 0), the NHeroInformationScreens::CBase secondary base's virtual slot 3 (+0x130),
@@ -30,10 +32,20 @@ class CWorld { public:
 class CMiniMapDisplay { public:
     void InitialiseMiniMapFileLoading_Region(const CRegion& region, const CCharString& worldName, bool b);   // 0x00829D90
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     CMiniMapDisplay* GetPMiniMapDisplay();         // 0x00437CE0
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 namespace NHeroInformationScreens {
 class CBase { public:                                     // secondary base at +0x130
     virtual void v00();
@@ -83,7 +95,7 @@ void CTCInventoryMap::ProcessButtonAReleased()
             ReleaseMapScreenPrimitives();
             const CRegion& region = PeekWorld().PeekWorldMap()->GetRegion(ActiveRegionIndex);
             const CWorld* world = &PeekWorld();
-            CPlayerGui* gui = g_pPlayerGui;
+            CPlayerGui* gui = (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get());
             gui->GetPMiniMapDisplay()->InitialiseMiniMapFileLoading_Region(region, world->CurrentWorldName, false);
             FindQuestsForActiveRegion();
             FindTeleportsForActiveRegion();

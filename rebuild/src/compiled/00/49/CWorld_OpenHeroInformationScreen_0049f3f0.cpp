@@ -1,9 +1,11 @@
 // CWorld::OpenHeroInformationScreen(EPlayerMode mode) -- takes the main player out of every registered hero-information-screen mode, puts it into `mode`, opens the hero information screens and pauses the world
 // Leaf: ?OpenHeroInformationScreen@CWorld@@
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049F3F0, 194 bytes (padded to 208), `ret 4`.
 //   PDB name ?OpenHeroInformationScreen@CWorld@@QAEXW4EPlayerMode@@@Z.
 // Callees: CPlayerManager::GetMainPlayer 0x00449970 (PlayerManager +0xc); CPlayerGui::GetPHeroInfoScreensManager
-//   0x00437CD0 on g_pPlayerGui 0x013B8790 (twice); NHeroInformationScreens::CManager::GetAllRegisteredScreens 0x0066E941
+//   0x00437CD0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) 0x013B8790 (twice); NHeroInformationScreens::CManager::GetAllRegisteredScreens 0x0066E941
 //   and Open 0x0066EA46; each screen's virtual slot 1 (+4, its player mode); CPlayer::RemoveMode(EPlayerMode)
 //   0x00634190 and AddMode(EPlayerMode, bool) 0x006345C0; CRT free 0x00BFEA14 (the vector's storage).
 // Shape: the screen manager is fetched into a local before the vector is declared; the screens vector is a default-constructed STLport vector local (three zero stores after the argument
@@ -37,11 +39,21 @@ class CManager { public:
     void Open();                                   // 0x0066EA46
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
 public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CPlayer { public:
     void RemoveMode(EPlayerMode mode);             // 0x00634190
     void AddMode(EPlayerMode mode, bool flag);     // 0x006345C0
@@ -67,12 +79,12 @@ class CWorld { public:
 void CWorld::OpenHeroInformationScreen(EPlayerMode mode)
 {
     CPlayer* player = &PlayerManager->GetMainPlayer();
-    NHeroInformationScreens::CManager* manager = g_pPlayerGui->GetPHeroInfoScreensManager();
+    NHeroInformationScreens::CManager* manager = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager();
     CRetailVector<const NHeroInformationScreens::CBase*> screens;
     manager->GetAllRegisteredScreens(&screens);
     for (unsigned long i = 0; i < screens.size(); ++i)
         player->RemoveMode(screens[i]->GetPlayerMode());
     player->AddMode(mode, false);
-    g_pPlayerGui->GetPHeroInfoScreensManager()->Open();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->Open();
     SetAsPaused(true);
 }

@@ -1,5 +1,7 @@
 // NTCScriptedControl::CActionTalkToThing::CActionTalkToThing(CThing* target, unsigned long textIndex, const char* groupName, long unused, bool makeTargetListen, bool soundIn2D, bool displayOverScreenFade) -- constructor: as the text-name overload (0x00717AA0) but the one subtitled line comes from a text index, pushed into a local array that is then assigned to Messages; records whether the talk starts during a cutscene
 // Leaf: ??0CActionTalkToThing
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00717C50, length 234 bytes (+ int3 padding), `ret 1Ch`.
 // Callees: CActionTalkBase::CActionTalkBase @ 0x00717950, CCharString::CCharString() @ 0x0099E4B0 (x3),
 // GetMessageFromTextIndex @ 0x004CEA60 (__fastcall, CSubtitledMessage by hidden pointer), the STLport
@@ -95,11 +97,21 @@ __declspec(noinline) CSubtitledMessageArray& CSubtitledMessageArray::operator=(c
 
 CSubtitledMessage __fastcall GetMessageFromTextIndex(unsigned long textIndex, const char* groupName);   // 0x004CEA60
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     unsigned char _pad[0xf6];
     bool m_inCutscene;                              // +0xf6
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 struct CActionTalkBase {                            // NTCScriptedControl::CActionTalkBase (0x90 bytes in retail)
     virtual void v00();
@@ -130,5 +142,5 @@ CActionTalkToThing::CActionTalkToThing(CThing* target, unsigned long textIndex, 
     CSubtitledMessageArray messages;
     messages.push_back(GetMessageFromTextIndex(textIndex, groupName));
     Messages = messages;
-    AddedDuringCutscene = g_pPlayerGui->m_inCutscene;
+    AddedDuringCutscene = CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().m_inCutscene;
 }

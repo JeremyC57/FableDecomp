@@ -1,11 +1,13 @@
 // CTCFollowed::AddFollower(CThing& follower, bool aiFollower) -- add a follower (with its emote icon and a GUI refresh) unless already following; an AI creature asked to follow as an AI follower also joins the AI list and is persisted with the game state
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D50C0, length 181 bytes (+ int3 padding). __fastcall, `ret 8`.
 //         Ego_r.pdb: `?AddFollower@CTCFollowed@@QAEXAAVCThing@@_N@Z`.
 // Callees: CTCFollowed::IsFollower(const CThing*) const @ 0x006D4D70, IsAIFollower @ 0x006D4DB0,
 //          AddEmoteIcon(CThing&) @ 0x006D4FD0; CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0);
 //          list<CIntelligentPointer<CThing>>::push_back @ 0x004BA4E0, list<CIntelligentPointer<CThingAICreature>>::push_back
-//          @ 0x006604EB; CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on g_pPlayerGui @ 0x013B8790;
+//          @ 0x006604EB; CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790;
 //          CThing::SetAsGameStatePersisted(bool) @ 0x004C7880.
 // Shape: each list entry is a converting temporary (inline ctor: base ctor, vtable, SetPItem) passed by reference and
 //        destroyed through the base dtor; both temporaries share the 8-byte frame.
@@ -47,10 +49,20 @@ public:
     void SetAsGameStatePersisted(bool persisted);   // 0x004C7880
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);           // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 class CTCFollowed { public:
     virtual void v00();
@@ -69,7 +81,7 @@ void CTCFollowed::AddFollower(CThing& follower, bool aiFollower)
     if (!IsFollower(&follower)) {
         Followers.push_back(CIntelligentPointer(&follower));
         AddEmoteIcon(follower);
-        g_pPlayerGui->UpdateMiniMapMarkers(false);
+        CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
     }
     if (aiFollower && follower.ThingClass == 1) {
         if (!IsAIFollower((const CThingAICreature*)&follower))

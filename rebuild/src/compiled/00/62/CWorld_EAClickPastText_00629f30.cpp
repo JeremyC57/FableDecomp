@@ -1,5 +1,7 @@
 // CWorld::EAClickPastText(const CGameEvent* event) -- game-event action: tell the player GUI's subtitle renderer to click past the current text
 // Leaf: ?EAClickPastText@CWorld@@QAEXPBVCGameEvent@@@Z
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00629F30, 17 bytes, thiscall `ret 4`.
 // Identity (proven): registered by the static initialiser 0x0121B9B0 as the handler of game event 25 in the dispatch table
 //   0x013B9288 (no direct caller); it sits between EAAnswerQuestion 0x00629DE0 and EASkipCutScene 0x00629F50, exactly as
@@ -49,6 +51,17 @@ class CSubtitleRenderer {
 public:
     bool ClickPast();                                      // 0x00493281
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui {                                         // partial view
 public:
     virtual ~CPlayerGui();
@@ -59,7 +72,6 @@ public:
     CGraphicDataBank* Graphics;                            // +0x14
     CSubtitleRenderer SubtitleRenderer;                    // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                           // 0x013B8790
 
 class CWorld : public CWorldDonor {
 public:
@@ -68,5 +80,5 @@ public:
 
 void CWorld::EAClickPastText(const CGameEvent* event)
 {
-    g_pPlayerGui->SubtitleRenderer.ClickPast();
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.ClickPast();
 }

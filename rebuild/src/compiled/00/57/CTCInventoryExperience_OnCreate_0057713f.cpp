@@ -1,6 +1,8 @@
 // CTCInventoryExperience::OnCreate() -- registers the experience screen with the hero-information screen manager, points the inventory at the owner's CCreatureDef ExperienceScreenInventory def, runs the base OnCreate, resets the stat indicators and the spend state and sizes the three spend-record vectors (10 stats, 20 abilities, 4 pools)
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057713F, length 215 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 on g_pPlayerGui (0x013B8790), NHeroInformationScreens::CManager::
+// Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) (0x013B8790), NHeroInformationScreens::CManager::
 // RegisterScreen(const CBase*) @ 0x0066EB11, CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) @ 0x00485815 (the
 // body looks up "CCreatureDef"; the landed Trade/Weapons OnCreate twins call it the inventory sub-def), CTCInventoryBase::SetPDef(long)
 // @ 0x005BDB4D, CTCInventoryBase::OnCreate() @ 0x005C0121, CTCInventoryExperience::ResetStatIndicatorValues() @ 0x0056E5AB,
@@ -46,10 +48,20 @@ class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 struct ExperienceSpendInfo {
     long currentSpend;      // +0x0
     long initialSpend;      // +0x4
@@ -91,7 +103,7 @@ public:
 };
 void CTCInventoryExperience::OnCreate()
 {
-    g_pPlayerGui->GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<CCreatureDef> def;
     def.Object = 0;

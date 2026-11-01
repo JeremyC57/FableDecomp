@@ -12,8 +12,9 @@ public:
 };
 }
 
-struct CGSIUpdateQuestInfoCounterList_GuiOwner
+class CPlayerGui
 {
+public:
     unsigned char m_Unused[0x1C8];
     NPlayerGui::CDrawQuestInfo* m_QuestInfo;
 };
@@ -27,8 +28,16 @@ public:
         long maximum) const;
 };
 
-CGSIUpdateQuestInfoCounterList_GuiOwner*
-    CGSIUpdateQuestInfoCounterList_Gui;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T& operator*() const { return *Data; } };
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the source reads the private static PClass through Get()
+    static CCountedPointer<T> PClass;
+public:
+    static T& __fastcall Get() { return *PClass; }
+    static void __fastcall Set(T* p) { PClass.Data = p; PClass.Info = 0; }   // ?Set@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIXPAVCPlayerGui@@@Z
+};
+template <class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CPlayerGui>;
 static NPlayerGui::CDrawQuestInfo* g_ObservedQuestInfo;
 static long g_ObservedQuestId;
 static long g_ObservedValue;
@@ -49,7 +58,7 @@ void NPlayerGui::CDrawQuestInfo::UpdateCounterList(
 
 static int CheckCall(
     CGameScriptInterface& interfaceObject,
-    CGSIUpdateQuestInfoCounterList_GuiOwner& guiOwner,
+    CPlayerGui& guiOwner,
     NPlayerGui::CDrawQuestInfo& questInfo,
     long questId,
     long value,
@@ -72,9 +81,9 @@ int main()
 {
     NPlayerGui::CDrawQuestInfo firstQuestInfo;
     NPlayerGui::CDrawQuestInfo secondQuestInfo;
-    CGSIUpdateQuestInfoCounterList_GuiOwner guiOwner;
+    CPlayerGui guiOwner;
     CGameScriptInterface interfaceObject;
-    CGSIUpdateQuestInfoCounterList_Gui = &guiOwner;
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Set(&guiOwner);
 
     if (CheckCall(
             interfaceObject,

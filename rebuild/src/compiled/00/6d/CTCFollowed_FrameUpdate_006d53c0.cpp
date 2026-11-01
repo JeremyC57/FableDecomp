@@ -1,4 +1,8 @@
 // CTCFollowed::FrameUpdate() -- every 10th frame (staggered by UID) culls dead followers, drops the ones no longer willing to follow (posting deed 0x31 for each), resets the idle timer when the hero moves more than 3 units, otherwise after 5 s idle posts deed 0x34 for a random follower at most every 10 s
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D53C0, 800 bytes, `ret` (aligned ebp frame from the __int64 UID math).
 // Callees: CTCBase::GetWorld @ 0x00686A70 (result unused: CWorld::GetFrame @ 0x0049D870 is static), __aullrem @ 0x00BFEBB0,
 //          CullNullFollowers @ 0x006D5260, LowerBound @ 0x0040F020 / 0x004365B0 (two CVectorMap instances),
@@ -76,12 +80,27 @@ class CTCDependents {
 public:
     void AddDependentThing(CThing* thing);              // 0x006AEBA0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui {
 public:
     void UpdateMiniMapMarkers(bool value);              // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
-extern long g_FramesPerSecond;                          // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 class CWorld {
 public:
     static long __fastcall GetFrame();                             // 0x0049D870
@@ -161,7 +180,7 @@ void CTCFollowed::FrameUpdate()
                 }
                 node = Followers.erase(node);
                 Registry.Remove(CIntelligentPointer<CThing>(follower));
-                g_pPlayerGui->UpdateMiniMapMarkers(false);
+                CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                 CTCDependents* dependents;
                 if (Thing->HasTC(0x7a))
                     dependents = (CTCDependents*)Thing->TCs.Find(0x7a);
@@ -175,9 +194,9 @@ void CTCFollowed::FrameUpdate()
             if (dx * dx + dy * dy > 9.0f) {
                 LastPlayerPosition = Thing->GetPos();
                 FramesSincePlayerMoved = 0;
-            } else if (FramesSincePlayerMoved > g_FramesPerSecond * 5.0f) {
+            } else if (FramesSincePlayerMoved > CMainGameComponent::GetConstantFPS() * 5.0f) {
                 CWorld* world = &GetWorld();
-                long fps = g_FramesPerSecond;
+                long fps = CMainGameComponent::GetConstantFPS();
                 if (world->GetFrame() - FrameLastIdleReaction > fps * 10.0f) {
                     long pick = GFRandom(Followers.size(), GetRandom());
                     long n = 0;

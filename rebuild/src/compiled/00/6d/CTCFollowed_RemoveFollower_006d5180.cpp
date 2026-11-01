@@ -1,11 +1,13 @@
 // CTCFollowed::RemoveFollower(CThing& follower) -- drop a follower (and, for an AI creature, its AI-follower entry; a homeless, jobless AI follower also stops being persisted), then remove its emote icon and refresh the GUI
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D5180, length 218 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb: `?RemoveFollower@CTCFollowed@@QAEXAAVCThing@@@Z`.
 // Callees: CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0);
 //          list<CIntelligentPointer<CThing>>::remove @ 0x0065DE8A, list<CIntelligentPointer<CThingAICreature>>::remove
 //          @ 0x0065DE48; CTCFollowed::IsAIFollower @ 0x006D4DB0, RemoveEmoteIcon(CThing&) @ 0x006D5050;
-//          CThing::SetAsGameStatePersisted(bool) @ 0x004C7880; CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on g_pPlayerGui.
+//          CThing::SetAsGameStatePersisted(bool) @ 0x004C7880; CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()).
 // Shape: the list entries are converting temporaries passed by reference (the follower reference is read after the
 //        first base ctor); the persistence drop needs neither HomeBuilding nor WorkBuilding alive (two inlined
 //        single-fetch alive tests) and clears the LevelPersistent bit (`and byte ptr [esi+92h],0EFh`).
@@ -67,10 +69,20 @@ __forceinline bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPI
     return false;
 }
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool flag);           // 0x004378C0
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 class CTCFollowed { public:
     virtual void v00();
@@ -97,5 +109,5 @@ void CTCFollowed::RemoveFollower(CThing& follower)
         AIFollowers.remove(CIntelligentPointer<CThingAICreature>((CThingAICreature*)&follower));
     }
     RemoveEmoteIcon(follower);
-    g_pPlayerGui->UpdateMiniMapMarkers(false);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
 }

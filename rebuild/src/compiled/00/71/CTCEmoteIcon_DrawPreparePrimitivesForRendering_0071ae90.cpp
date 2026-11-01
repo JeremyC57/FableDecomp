@@ -1,9 +1,11 @@
 // CTCEmoteIcon::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo&) -- while the emote is active, enabled, the GUI allows it and the parent is drawable, draw it as an icon (type 1) or text (type 0); otherwise release the emote primitive
 // Leaf: DrawPreparePrimitivesForRendering
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 //
 // Retail 0x0071AE90, 147 bytes (`ret 4`). Ego_r.pdb `?DrawPreparePrimitivesForRendering@CTCEmoteIcon@@UAEXABV
 // CEnginePrimitivePrepareInfo@@@Z`. Callees: CPlayerGui::IsOpen 0x004374F0 (Ego_r.pdb; manifest
-// "C3DMeshInfo::HasPhysicsMesh" is propagated; it returns `[this+294h] != 1`) on g_pPlayerGui @
+// "C3DMeshInfo::HasPhysicsMesh" is propagated; it returns `[this+294h] != 1`) on (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @
 // 0x013B8790, the parent thing's virtual slot 27 (+0x6c, a bool), CTCEmoteIcon::DrawEmoteTypeIcon @
 // 0x0071AD20 and DrawEmoteTypeText @ 0x0071AB20; the primitive's virtual slots 3 and 1 in the release.
 // Layout = Ego_r.pdb CTCEmoteIcon (0x30, no retail shift): ActiveTimer +0xc, EmoteType +0x1c, Enabled
@@ -60,10 +62,20 @@ public:
 
 class CEnginePrimitivePrepareInfo;
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     bool IsOpen() const;                           // 0x004374F0
 };
-extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -94,7 +106,7 @@ class CTCEmoteIcon : public CTCBase { public:
 
 void CTCEmoteIcon::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
 {
-    if (ActiveTimer != 0 && Enabled && g_pPlayerGui->IsOpen() && ParentThing->IsDrawable())
+    if (ActiveTimer != 0 && Enabled && CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().IsOpen() && ParentThing->IsDrawable())
     {
         if (EmoteType == 1)
         {

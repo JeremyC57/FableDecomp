@@ -1,11 +1,13 @@
 // CTCFireheartMinigame::FrameUpdate() -- while the minigame session runs, keep the "stop" prompt on the subtitle button 2 (unless text or a cutscene is showing) and end a move once the owner's scripted-control action list is empty
 // Leaf: FrameUpdate
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E76B0, length 167 bytes (+ int3 padding). __fastcall, `ret`.
 //         CTCFireheartMinigame vtable slot 9 (the catalog's "vfunc_9"); Ego_r.pdb `?FrameUpdate@CTCFireheartMinigame@@UAEXXZ`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("TEXT_GUI_FISHING_STOP" @ 0x0126D788),
 //          CSubtitleRenderer::SetButton2OverrideText(const CCharString&) @ 0x0048F881, CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound @ 0x0040F020 (interface 0x1F CTCScriptedControl, word 0 bit 31: `test ecx,ecx ; jns`),
-//          CTCScriptedControl::IsActionListEmpty() const @ 0x007122C0. Global g_pPlayerGui @ 0x013B8790.
+//          CTCScriptedControl::IsActionListEmpty() const @ 0x007122C0. Global (&CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get()) @ 0x013B8790.
 // Shape: the GUI pointer is read for the two flag tests and re-read after the string ctor; the prompt string is a named
 //        local in its own block; the scripted control comes from an inline accessor that leaves its result unset when
 //        the interface is absent (the miss path reads the shared frame word), merged into eax for the call.
@@ -30,12 +32,22 @@ public:
     void SetButton2OverrideText(const CCharString& text);   // 0x0048F881
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui {
 public:
     unsigned char _pad00[0x18];
     CSubtitleRenderer SubtitleRenderer;             // +0x18
 };
-extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -97,9 +109,9 @@ public:
 void CTCFireheartMinigame::FrameUpdate()
 {
     if (InSession) {
-        if (!g_pPlayerGui->SubtitleRenderer.DisplayingText && !g_pPlayerGui->SubtitleRenderer.InCutscene) {
+        if (!CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.DisplayingText && !CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.InCutscene) {
             CCharString text("TEXT_GUI_FISHING_STOP", -1);
-            g_pPlayerGui->SubtitleRenderer.SetButton2OverrideText(text);
+            CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().SubtitleRenderer.SetButton2OverrideText(text);
         }
         if (Moving) {
             if (ParentThing->GetScriptedControl()->IsActionListEmpty())

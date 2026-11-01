@@ -1,5 +1,7 @@
 // CTCInventory::OnCreate() -- registers the inventory screen with the GUI manager, resolves its inventory def from the thing's CInventory sub-def, runs the base OnCreate and leaves quick-access assignment off
 // Leaf: OnCreate
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00582944, 137 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), no EH frame.
 // Callees: the player GUI global @ 0x013B8790's manager getter @ 0x00437CD0 (+0x32C) and its RegisterScreen
@@ -72,11 +74,21 @@ struct CScreenManager {
     void RegisterScreen(CScreenBase* screen);        // 0x0066EB11
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     CScreenManager* GetScreenManager();              // 0x00437CD0 (+0x32C)
 };
 
-extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 struct CTCInventoryBase {
     virtual void v00();                              // +0x00 vtable
@@ -96,7 +108,7 @@ class CTCInventory : public CTCInventoryBase, public CScreenBase { public:    //
 
 void CTCInventory::OnCreate()
 {
-    g_pPlayerGui->GetScreenManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetScreenManager()->RegisterScreen(this);
     CRawDefPointer<CInventorySubDef> pdef;
     ParentThing->GetDef()->GetSubDef(&pdef);
     CInventorySubDef* def = pdef.Object;

@@ -1,4 +1,6 @@
 // CTCInventoryWeapons::OnCreate() -- registers the weapons screen with the hero-information screen manager, fetches the weapons-inventory sub-def from the owner's def, points the inventory at its inventory def and runs the base OnCreate
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C3057, length 124 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const @ 0x00437CD0 (manifest "CWorld::DrawGetEnvironment", propagated;
 // the body reads +0x32C), NHeroInformationScreens::CManager::RegisterScreen(const CBase*) @ 0x0066EB11,
@@ -44,10 +46,20 @@ class CManager { public:
     void RegisterScreen(const CBase* screen);   // 0x0066EB11
 };
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public:
     NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;   // 0x00437CD0
 };
-extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 struct CTCInventoryBase_Weapons {               // retail 0x130 bytes
     virtual void v00();
@@ -66,7 +78,7 @@ public:
 
 void CTCInventoryWeapons::OnCreate()
 {
-    g_pPlayerGui->GetPHeroInfoScreensManager()->RegisterScreen(this);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetPHeroInfoScreensManager()->RegisterScreen(this);
     CDefClassBase* thingDef = ParentThing->PDef.Object;
     CDefPointer<CInventoryWeaponsDef> def;
     def.Object = 0;

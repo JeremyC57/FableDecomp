@@ -1,4 +1,6 @@
 // CTCInventoryExperience vtable slot 90 (bool undo) -- twin of slot 89 (0x0057770A); without `undo` it keeps the mouse
+// Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
+//   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // pointer component and hands it back to the UI manager.
 // CTCInventoryExperience vtable slot 89 (bool undo) -- with `undo`, give back every undoable stat and ability purchase
 // (drop the bought levels, re-upgrade them so the derived values rebuild, refund the spent experience into the hero
@@ -110,8 +112,18 @@ class CManager { public:
 struct CGlobalList { void clear(); };                        // 0x004855A3
 extern CGlobalList g_UIList;                                 // 0x013B8A98
 struct CHeroInfoScreens { void SetScreenType(long type); };  // 0x0066E799
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CPlayerGui
+    static CCountedPointer<T> PClass;                                // 0x013B8790 ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@0V?$CCountedPointer@VCPlayerGui@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCPlayerGui@@@@SIAAVCPlayerGui@@XZ (inline)
+};
 class CPlayerGui { public: CHeroInfoScreens* GetHeroInfoScreens(); };   // 0x00437CD0
-extern CPlayerGui* g_pPlayerGui;                             // 0x013B8790
 
 struct CComponentVector {                                    // vector<NUISystem::CComponent*>
     NUISystem::CComponent** _M_start;
@@ -177,7 +189,7 @@ void CTCInventoryExperience::vfunc_90(bool undo)
         UndoableAbilityBuys.clear();
         OpenedExperienceSpending = true;
     }
-    g_pPlayerGui->GetHeroInfoScreens()->SetScreenType(PreviousScreenType);
+    CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetHeroInfoScreens()->SetScreenType(PreviousScreenType);
     OnInventoryClosed();
     NUISystem::CComponent** it = Components.begin();
     while (it != Components.end()) {
