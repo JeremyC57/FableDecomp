@@ -255284,9 +255284,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c14e40'
-        Module = 'CVtable_012b28d8'
-        Source = '00/c1/CTCDiceGame_CTCDiceGame_00c14e40.cpp'
-        TestSource = '00/c1/CTCDiceGame_CTCDiceGame_00c14e40_test.cpp'
+        Module = 'PKCDeferredBank'
+        Source = '00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp'
+        TestSource = '00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c14e40_TEST PASS'
     }
@@ -304892,9 +304892,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c14a50'
-        Module = 'CDataOwner_00c14a50'
-        Source = '00/c1/CDataOwner00c14a50_DeleteData_00c14a50.cpp'
-        TestSource = '00/c1/CDataOwner00c14a50_DeleteData_00c14a50_test.cpp'
+        Module = 'PKCDeferredBank'
+        Source = '00/c1/PKCDeferredBank_DeleteData_00c14a50.cpp'
+        TestSource = '00/c1/PKCDeferredBank_DeleteData_00c14a50_test.cpp'
         PassPattern = '00c14a50_TEST PASS'
     }
     [pscustomobject]@{
@@ -310880,9 +310880,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c14a80'
-        Module = 'PKCPlaybackTemplate'
-        Source = '00/c1/PKCPlaybackTemplate_ApplyTo_00c14a80.cpp'
-        TestSource = '00/c1/PKCPlaybackTemplate_ApplyTo_00c14a80_test.cpp'
+        Module = 'PKCDeferredBank'
+        Source = '00/c1/PKCDeferredBank_ApplyTo_00c14a80.cpp'
+        TestSource = '00/c1/PKCDeferredBank_ApplyTo_00c14a80_test.cpp'
         PassPattern = '00c14a80_TEST PASS'
     }
     [pscustomobject]@{
@@ -370263,17 +370263,17 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c14b50'
-        Module = 'CSettingsProxy_012b29f8'
-        Source = '00/c1/CSettingsProxy012b29f8_SetOptionCC_00c14b50.cpp'
-        TestSource = '00/c1/CSettingsProxy012b29f8_SetOptionCC_00c14b50_test.cpp'
+        Module = 'PKCDeferredBank'
+        Source = '00/c1/PKCDeferredBank_SetOptionCC_00c14b50.cpp'
+        TestSource = '00/c1/PKCDeferredBank_SetOptionCC_00c14b50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c14b50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c14bc0'
-        Module = 'CSettingsProxy_012b29f8'
-        Source = '00/c1/CSettingsProxy012b29f8_SetOptionCD_00c14bc0.cpp'
-        TestSource = '00/c1/CSettingsProxy012b29f8_SetOptionCD_00c14bc0_test.cpp'
+        Module = 'PKCDeferredBank'
+        Source = '00/c1/PKCDeferredBank_SetOptionCD_00c14bc0.cpp'
+        TestSource = '00/c1/PKCDeferredBank_SetOptionCD_00c14bc0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c14bc0_TEST PASS'
     }

@@ -1,4 +1,4 @@
-// CSettingsProxy_012b29f8::SetOptionCC(bool value) -- under the global profile lock, store a boolean option into the shared settings record and mark the record dirty when the value changes
+// PKCDeferredBank::SetOptionCC(bool value) -- under the global profile lock, store a boolean option into the shared settings record and mark the record dirty when the value changes
 // Grade: RELOCATION_MATCH -- early return out of the guarded scope keeps retail's /EHsc frame (was DIFFER 66v109 with a
 //   nested if)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C14B50, 108 bytes (+4 int3), __fastcall, ret 4; vtable 0x012B29F8 slot 1 (no RTTI).
@@ -7,6 +7,8 @@
 // The catalog label (CBankFileAsyncData::OnFileReadCompletion) is propagated: the row is reached only through
 // slot 1 of the unnamed vtable at 0x012B29F8 (its twin, slot 2, sets the neighbouring byte); the class is named
 // by its vtable.
+// Class (naming wave 13, owner decision 2026-11-01): PKCDeferredBank, the libpk deferred-bank object whose third vtable is
+//   0x012B29F8 (built by 0x00C14E40, destroyed by 0x00C14F90); descriptive, libpk has no RTTI and no class strings.
 // Callees: PKCProtectionInstance::PKCProtectionInstance 0x00C0FFC0 (on the global lock object @ 0x0143BB14) and ~PKCProtectionInstance 0x00C0FFE0
 // (GOTCHAS 23f: an 8-byte guard -- critical section and entry tick; trace string .\PKCProtectionInstance.cpp).
 // Layout (by use): the shared settings record pointer at +8; the record keeps a dirty flag at +4 and this
@@ -32,7 +34,7 @@ struct SSettingsRecord {
     bool m_optionCD;                               // +0xCD
 };
 
-class CSettingsProxy_012b29f8 {
+class PKCDeferredBank {
 public:
     virtual void v00();
     virtual void SetOptionCC(bool value);          // slot 1
@@ -41,7 +43,7 @@ public:
     SSettingsRecord* m_pSettings;                  // +0x08
 };
 
-void CSettingsProxy_012b29f8::SetOptionCC(bool value)
+void PKCDeferredBank::SetOptionCC(bool value)
 {
     PKCProtectionInstance lock(&g_settingsLock);
     if (m_pSettings->m_optionCC == value)

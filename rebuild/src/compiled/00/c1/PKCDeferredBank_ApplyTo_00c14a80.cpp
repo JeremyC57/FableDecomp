@@ -1,5 +1,7 @@
-// PKCPlaybackTemplate::ApplyTo(PKCPlaybackState& state, bool alternate, bool withRange) -- libpk: apply the template's base flag patch, then its normal or alternate patch, optionally copy its two range words; return the state
-// Leaf: ?ApplyTo@PKCPlaybackTemplate@@
+// PKCDeferredBank::ApplyTo(PKCPlaybackState& state, bool alternate, bool withRange) -- libpk: apply the template's base flag patch, then its normal or alternate patch, optionally copy its two range words; return the state
+// Leaf: ?ApplyTo@PKCDeferredBank@@
+// Class (naming wave 13, owner decision 2026-11-01): PKCDeferredBank, the libpk deferred-bank object whose third vtable is
+//   0x012B29F8 (built by 0x00C14E40, destroyed by 0x00C14F90); descriptive, libpk has no RTTI and no class strings.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C14A80, 76 bytes (+ int3 padding), __fastcall `ret 0Ch`, returns the state reference.
 // Identity: libpk (0x00C08AE0..0x00C40000: no PDB, no RTTI; every name here is descriptive). The three 12-byte members at
 //   +0x78 / +0x84 / +0x90 are one flag-patch class (vtable 0x012B4630, set by its ctor 0x00C2C6B0: vptr + four zeroed
@@ -26,7 +28,7 @@ public:
     PKCPlaybackState& ApplyTo(PKCPlaybackState& state) const;   // 0x00C2C670
 };
 
-class PKCPlaybackTemplate {
+class PKCDeferredBank {
 public:
     unsigned char _pad00[0x78];
     PKCFlagPatch BasePatch;                 // +0x78
@@ -37,7 +39,7 @@ public:
     PKCPlaybackState& ApplyTo(PKCPlaybackState& state, bool alternate, bool withRange);
 };
 
-PKCPlaybackState& PKCPlaybackTemplate::ApplyTo(PKCPlaybackState& state, bool alternate, bool withRange)
+PKCPlaybackState& PKCDeferredBank::ApplyTo(PKCPlaybackState& state, bool alternate, bool withRange)
 {
     BasePatch.ApplyTo(state);
     if (alternate)

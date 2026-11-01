@@ -1,11 +1,13 @@
-// CTCDiceGame::CTCDiceGame(CThing* parent, const CDiceGameSetup* setup, long seed) -- (labelled Initialize: it is the constructor) builds the component: parent link, two inline-buffered rule holders, the seeded pair, three short quads, then allocates the game state (0xd4 bytes, from the setup's first word) and the 0x64-byte controller
-// Leaf: CTCDiceGame
+// PKCDeferredBank::PKCDeferredBank(CThing* parent, const CDiceGameSetup* setup, long seed) -- (labelled Initialize: it is the constructor) builds the component: parent link, two inline-buffered rule holders, the seeded pair, three short quads, then allocates the game state (0xd4 bytes, from the setup's first word) and the 0x64-byte controller
+// Leaf: ??0PKCDeferredBank@@
+// Class (naming wave 13, owner decision 2026-11-01): PKCDeferredBank, the libpk deferred-bank object whose third vtable is
+//   0x012B29F8 (built by 0x00C14E40, destroyed by 0x00C14F90); descriptive, libpk has no RTTI and no class strings.
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C14E40, 336 bytes (`ret 0Ch`, EH frame).
 // Callees: CDiceRuleSet ctor(long) @ 0x00C194F0, CDiceSeedPair ctor(long, long) @ 0x00C2D0C0, CDiceQuad ctor @ 0x00C2C6B0,
-// operator new @ 0x00BFEA1A, CDiceGameState ctor(CTCDiceGame*, long) @ 0x00C2A8C0, CDiceController ctor(CTCDiceGame*) @ 0x00C2BD90.
-// Vtables: CTCDiceGame 0x012B29F8, the two holders 0x012B29B0 / 0x012B28D8, the rule set 0x012B2F0C, the quad 0x012B4630.
-// Layout: retail, local (the Ego_r.pdb CTCDiceGame is 24 bytes, so the CTCDiceGame attribution of this vptr-0x012B29F8 class is
+// operator new @ 0x00BFEA1A, CDiceGameState ctor(PKCDeferredBank*, long) @ 0x00C2A8C0, CDiceController ctor(PKCDeferredBank*) @ 0x00C2BD90.
+// Vtables: PKCDeferredBank 0x012B29F8, the two holders 0x012B29B0 / 0x012B28D8, the rule set 0x012B2F0C, the quad 0x012B4630.
+// Layout: retail, local (the Ego_r.pdb CTCDiceGame is 24 bytes, so the earlier CTCDiceGame attribution of this vptr-0x012B29F8 class was
 // unverified; names are descriptive): parent +0x04, game state +0x08, controller +0x0c,
 // holders +0x10 / +0x40 (vptr, buffer pointer, 0x28-byte rule set), seed pair +0x70, quads +0x78/+0x84/+0x90, +0x9c/+0xa0 zero.
 // Shape: the base is an empty polymorphic shell (EH state 0, its vptr store dead) and the parent is the derived class's first
@@ -42,23 +44,23 @@ struct CDiceQuad {
     virtual ~CDiceQuad();
     short V[4];
 };
-class CTCDiceGame;
+class PKCDeferredBank;
 struct CDiceGameState {
-    CDiceGameState(CTCDiceGame* game, long value);          // 0x00C2A8C0
+    CDiceGameState(PKCDeferredBank* game, long value);          // 0x00C2A8C0
     unsigned char _pad[0xd4];
 };
 struct CDiceController {
-    CDiceController(CTCDiceGame* game);                     // 0x00C2BD90
+    CDiceController(PKCDeferredBank* game);                     // 0x00C2BD90
     unsigned char _pad[0x64];
 };
 struct CTCBaseShell {
     CTCBaseShell() { }
     virtual ~CTCBaseShell() { }
 };
-class CTCDiceGame : public CTCBaseShell { public:
+class PKCDeferredBank : public CTCBaseShell { public:
     CThing* ParentThing;
-    CTCDiceGame(CThing* parent, const CDiceGameSetup* setup, long seed);
-    virtual ~CTCDiceGame();
+    PKCDeferredBank(CThing* parent, const CDiceGameSetup* setup, long seed);
+    virtual ~PKCDeferredBank();
     CDiceGameState*  State;                                 // +0x08
     CDiceController* Controller;                            // +0x0c
     CDiceRuleHolderA HolderA;                               // +0x10
@@ -71,7 +73,7 @@ class CTCDiceGame : public CTCBaseShell { public:
     long             FieldA0;                               // +0xa0
 };
 
-CTCDiceGame::CTCDiceGame(CThing* parent, const CDiceGameSetup* setup, long seed)
+PKCDeferredBank::PKCDeferredBank(CThing* parent, const CDiceGameSetup* setup, long seed)
     : ParentThing(parent), State(0), Controller(0), Seed(0, seed), Field9C(0), FieldA0(0)
 {
     State = new CDiceGameState(this, setup->Value);
