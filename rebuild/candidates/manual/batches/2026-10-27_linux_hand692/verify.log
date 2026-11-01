@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00a9a900   WARN RELOC_NAME: ??1CChunkedFileLoader@@UAE@XZ -> 00aa7540 labelled 'CChunkedFileLoader::CChunkedFileLoader'
+00a9a900   RELOCATION_MATCH PASS   ~C3DMeshFileLoader
+00b621a0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b621a0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00b621a0   RELOCATION_MATCH PASS   ~CEngineSkyRenderer
+00bb6730   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bb6730   RELOCATION_MATCH PASS   ~CEngineClothRenderer
+00c011a0   RELOCATION_MATCH PASS   deflate_stored
+00ea4980   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea4980   RELOCATION_MATCH PASS   TraderYellForHelp
+00ea4bb0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ea4bb0   RELOCATION_MATCH PASS   TraderYellAtHero
+00ee8c30   RELOCATION_MATCH PASS   ~CCS_OakValeRevisitedScript
+
+WINS: 7
+  00a9a900 RELOCATION_MATCH C3DMeshFileLoader::??1C3DMeshFileLoader@@UAE@XZ
+  00b621a0 RELOCATION_MATCH CEngineSkyRenderer::??1CEngineSkyRenderer@@UAE@XZ
+  00bb6730 RELOCATION_MATCH CEngineClothRenderer::??1CEngineClothRenderer@@UAE@XZ
+  00c011a0 RELOCATION_MATCH _global::_deflate_stored
+  00ea4980 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::?TraderYellForHelp@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ
+  00ea4bb0 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::?TraderYellAtHero@CLostTraderTrader@CV_LostTraderScript@NScript@@AAEXXZ
+  00ee8c30 RELOCATION_MATCH NScript::CCS_OakValeRevisitedScript::??1CCS_OakValeRevisitedScript@NScript@@UAE@XZ
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  C3DMeshFileLoader_C3DMeshFileLoader_00a9a900
+  CEngineSkyRenderer_CEngineSkyRenderer_00b621a0
+  CEngineClothRenderer_CEngineClothRenderer_00bb6730
+  global_deflatestored_00c011a0
+  NScriptCVLostTraderScriptCLostTraderTrader_TraderYellForHelp_00ea4980
+  NScriptCVLostTraderScriptCLostTraderTrader_TraderYellAtHero_00ea4bb0
+  NScriptCCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8c30

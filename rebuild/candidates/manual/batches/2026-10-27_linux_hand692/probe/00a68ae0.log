@@ -1,0 +1,18 @@
+1	p1 CTexture p2 model ported (CVolumeLockedBox, D3DVOLUME_DESC, out-of-line GetLevelByteLength 0x00A681F0), depth local	DIFFER(780v753) residue 80
+2	p2 inner row loop counting down from box.Dimensions.Y	DIFFER(762v753) residue 73
+3	p3 p2 + overflow product written Y*depth	DIFFER(762v753) residue 73
+4	p4 p2 + single u64 product chain	DIFFER(762v753) residue 73
+5	p5 no depth local, Z and Y read from the box	DIFFER(759v753) residue 60
+6	p6 p5 + outer loop counting down	DIFFER(746v753) residue 70
+7	p7 p5 + overflow product (__int64)Y*Z	DIFFER(759v753) residue 56
+8	p8 p7 + size written Y*Z*rowBytes	DIFFER(759v753) residue 56
+9	p9 p7 + depth local before the second check	DIFFER(762v753) residue 73
+10	p10 p7 + outer loop counting down	DIFFER(746v753) residue 66
+11	p11 p7 + depth local at the top of the branch	DIFFER(762v753) residue 87
+12	p12 p7 + depth local declared after the size (keeps the CSE'd Z in edi)	DIFFER(754v753) residue 42
+13	p13 p12 + outer loop counting down	DIFFER(754v753) residue 42
+14	p14 p12 + inner loop counting up	DIFFER(764v753) residue 50
+15	p15 p12 + dst declared before src	DIFFER(754v753) residue 42
+16	p16 p12 + depth local after the buffer	DIFFER(746v753) residue 66
+17	p17 p12 + while (depth-- > 0)	DIFFER(754v753) residue 42
+18	p18 p12 + unsigned depth	DIFFER(754v753) residue 42

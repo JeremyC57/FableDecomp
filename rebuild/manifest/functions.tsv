@@ -8544,7 +8544,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00513500	_Move<CLevelLoader::CObject::CLevelFiles*,CLevelLoader::CObject::CLevelFiles*>	_Move<CLevelLoader::CObject::CLevelFiles*,CLevelLoader::CObject	__fastcall	CLevelFiles *	4	CLevelFiles *,CLevelFiles *,CLevelFiles *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00513570	__uninitialized_fill_n<CLevelLoader::CObject::CLevelFiles *, unsigned int, CLevelLoader::CObject::CLevelFiles>	std	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 005135d0	Vector_InsertN_uint16	_global	unknown	undefined	0		0	yes	accepted									
-005136b0	LoadDataStream_AllocateSurface	_global	unknown	undefined	0		0	yes	accepted									
+005136b0	vector	std::vector<unsigned char, std::allocator<unsigned char>>	unknown	undefined	0		0	yes	accepted									
 00513700	std::list<CFeatDef>::_Cons_node	std::list<CFeatDef>	unknown	undefined	0		0	yes	accepted									
 005137f0	DList_Init_0x1c	_global	unknown	undefined	0		0	yes	accepted									
 00513830	_Uninit_copy<CFeatDef*,CFeatDef*,std::allocator<CFeatDef>_>	_Uninit_copy<CFeatDef*,CFeatDef*,std	__fastcall	CFeatDef *	5	CFeatDef *,CFeatDef *,CFeatDef *,allocator<CFeatDef> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -35392,8 +35392,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fa620	GetNextValidDimensions	_global	__fastcall	C2DExtentsI	2	C2DExtentsI *,CPixelFormat *	1	yes	accepted									
 009fa780	BltToRenderTargetWithGPU	CTexture	__thiscall	void	4	CTexture *,bool,bool,bool	1	yes	accepted									
 009faf70	GenerateMipmapsWithGPU	CTexture	__thiscall	void	1	CTexture *	1	yes	accepted									
-009fb110	sub_009fb110	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-009fb3f0	sub_009fb3f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+009fb110	SaveToDataStream	CTexture	unknown	undefined	0		0			discovered	gapscan							
+009fb3f0	LoadFromDataStream	CTexture	unknown	undefined	0		0			discovered	gapscan							
 009fb750	LoadFromDataStreamToPreallocatedSurface	CTexture	__thiscall	void	2	CTexture *,CDataInputStream *	1	yes	accepted									
 009fbbd0	CalcAlphaHistogram	CTexture	__thiscall	void	2	CTexture *,CHistogram<long> *	1	yes	accepted									
 009fbd00	`vector_deleting_destructor'	CRenderTarget	__thiscall	void *	2	CRenderTarget *,uint	1	yes	accepted									
@@ -37677,7 +37677,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a67ff0	CalcByteLength	CVolumeTexture	__thiscall	void	1	CVolumeTexture *	1	yes	accepted									
 00a68060	Uninitialise	CVolumeTexture	__thiscall	void	1	CVolumeTexture *	1	yes	accepted									
 00a68130	CopyFromVolumeTexture	CVolumeTexture	__thiscall	void	3	CVolumeTexture *,CVolumeTexture *,ulong	1	yes	accepted									
-00a681f0	GetByteLength	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted									
+00a681f0	GetLevelByteLength	CVolumeTexture	__thiscall	ulong	1	CSurface *	1	yes	accepted									
 00a68250	CreateTexture	CVolumeTexture	__thiscall	bool	7	CVolumeTexture *,C3DExtentsI *,long,ulong,CPixelFormat *,EVolumePool,bool	1	yes	accepted									
 00a682a0	operator=	CVolumeTexture	__thiscall	CVolumeTexture *	2	CVolumeTexture *,CVolumeTexture *	1	yes	accepted									
 00a682e0	InitialiseFromPreallocatedVolumeTexture	CVolumeTexture	__thiscall	bool	2	CVolumeTexture *,IDirect3DVolumeTexture9 *	1	yes	accepted									
@@ -37685,7 +37685,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a685e0	Lock	CVolumeTexture	__thiscall	CVolumeLockedBox	3	CVolumeTexture *,ulong,ulong	1	yes	accepted									
 00a68690	InitialiseSlicesFromTextureList	CVolumeTexture	__thiscall	bool	3	CVolumeTexture *,CTexture *,long	1	yes	accepted									
 00a68910	GetAsTextureList	CVolumeTexture	unknown	undefined	0		0	yes	accepted									
-00a68ae0	sub_00a68ae0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00a68ae0	SaveToDataStream	CVolumeTexture	unknown	undefined	0		0			discovered	gapscan							
 00a68de0	sub_00a68de0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00a69550	InitNumberBox	CPaintMapDialog	__thiscall	void	4	CPaintMapDialog *,CCharString *,CGuiWindowBox *,float	1	yes	accepted									
 00a69590	`scalar deleting destructor'	CVolumeTexture	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
@@ -38810,7 +38810,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aa7460	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aa7460.cpp
 00aa7480	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00aa7510	CChunkedFileLoader	CChunkedFileLoader	__thiscall	undefined	2	CChunkedFileLoader *,char *	0	yes	accepted									
-00aa7540	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CBase_CBase_00aa7540.cpp
+00aa7540	~CChunkedFileLoader	CChunkedFileLoader	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CBase_CBase_00aa7540.cpp
 00aa7550	CChunkedFileSaver	CChunkedFileSaver	unknown	undefined	0		0			discovered	gapscan							
 00aa7580	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CBase_CBase_00aa7580.cpp
 00aa7590	CChunkedFileChunk	CChunkedFileChunk	__thiscall	undefined	2	CChunkedFileChunk *,char *	0	yes	accepted									
@@ -43536,7 +43536,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c00e60	longest_match	_global	unknown	undefined	0		0	yes	accepted									
 00c00fd0	longest_match_fast	_global	unknown	undefined	0		0	yes	accepted									
 00c01090	fill_window	_global	unknown	undefined	0		0	yes	accepted									
-00c011a0	sub_00c011a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c011a0	deflate_stored	_global	unknown	undefined	0		0			discovered	gapscan							
 00c013c0	sub_00c013c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c01750	deflate_slow	_global	unknown	undefined	0		0	yes	accepted									
 00c01b60	z_deflateReset	_global	__cdecl	undefined	0		0	yes	accepted									
@@ -43621,7 +43621,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c08d00	SetSoundTempAllocator_00c08d00	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\std_Consvalpairmorphg_00c08d00.cpp
 00c08d10	SetSoundPhysicalAllocator_00c08d10	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\std_Consvalpairmorphh_00c08d10.cpp
 00c08d20	CSBAgents	CSBAgents	__thiscall	undefined	3	CSBAgents *,vector<CSteeringAgent_const*,std::allocator<CSteeringAgent_const*>_> *,CSteeringAgent *	0	yes	accepted									
-00c08d40	CSystem_ProcessMainEvent	_global	unknown	undefined	0		0	yes	accepted									
+00c08d40	LoadBank	CSystem	unknown	undefined	0		0	yes	accepted									
 00c09110	Setup_ProcessInventory	_global	unknown	undefined	0		0	yes	accepted									
 00c091a0	OnActivate	CActionSummonerLightningAttackTarget	__thiscall	void	1	CActionSummonerLightningAttackTarget *	1	yes	accepted									
 00c091f0	Update	CSoundSystem	__thiscall	void	1	CPixelShader *	1	yes	accepted									
@@ -43641,7 +43641,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c098c0	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CBase_CBase_00c098c0.cpp
 00c098d0	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CBase_CBase_00c098d0.cpp
 00c098f0	Uninitialise	CTexture	__thiscall	void	1	CTexture *	1	yes	accepted									
-00c09920	CWorldManager::OnShutdown	CWorldManager	unknown	undefined	0		0	yes	accepted									
+00c09920	GetChecked	PKCAutoDelete<CUnprovenPKObject_00c099f0>	unknown	undefined	0		0	yes	accepted									
 00c099f0	Release	PKCAutoDelete<CUnprovenPKObject_00c099f0>	unknown	undefined	0		0	yes	accepted									
 00c09ad0	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CBase_CBase_00c09ad0.cpp
 00c09ae0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c09ae0.cpp
@@ -53391,8 +53391,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ea3640	OnPredicateFail	NScript::CV_LostTraderScript::CLostTraderTrader	unknown	undefined	0		0			discovered	gapscan							
 00ea3690	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ea\CLandscapeBackgroundPatch_vectordeletingdestructor_00ea3690.cpp
 00ea36b0	sub_00ea36b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00ea4980	TraderYellAtHero	CLostTraderTrader	__thiscall	void	1	CLostTraderTrader *	1	yes	accepted									
-00ea4bb0	TraderYellAtHero	CLostTraderTrader	__thiscall	void	1	CLostTraderTrader *	1	yes	accepted									
+00ea4980	TraderYellForHelp	NScript::CV_LostTraderScript::CLostTraderTrader	__thiscall	void	1	CLostTraderTrader *	1	yes	accepted									
+00ea4bb0	TraderYellAtHero	NScript::CV_LostTraderScript::CLostTraderTrader	__thiscall	void	1	CLostTraderTrader *	1	yes	accepted									
 00ea4de0	MakeRandomComment	CLostTraderTrader	__thiscall	void	1	CLostTraderTrader *	1	yes	accepted									
 00ea50a0	Init	CLostTraderBrother	__thiscall	void	1	CLostTraderBrother *	1	yes	accepted									
 00ea50e0	OnPredicateFail	NScript::CV_LostTraderScript::CLostTraderBrother	unknown	undefined	0		0			discovered	gapscan							
@@ -54120,15 +54120,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ee7a20	Main	CDemonDoorFace	__thiscall	void	1	CDemonDoorFace *	1	yes	accepted									
 00ee80a0	Alloc	CActionEventShot	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00ee80e0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00ee80e0.cpp
-00ee8100	CCS_OakValeRevisitedScript	CCS_OakValeRevisitedScript	__thiscall	undefined	3	CCS_OakValeRevisitedScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
+00ee8100	CCS_OakValeRevisitedScript	NScript::CCS_OakValeRevisitedScript	__thiscall	undefined	3	CCS_OakValeRevisitedScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00ee8210	RegisterMain	NScript::CCS_OakValeRevisitedScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00ee82a0	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ee82a0.cpp
 00ee82b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00ee82b0.cpp
 00ee82d0	sub_00ee82d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ee8390	DoMission_OakValeRevisited	_global	unknown	undefined	0		0	yes	accepted									
 00ee8870	OakValeFire	CCS_OakValeRevisitedScript	__thiscall	void	1	CCS_OakValeRevisitedScript *	1	yes	accepted									
-00ee8c10	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00ee8c10.cpp
-00ee8c30	CParticleEmitter::~CParticleEmitter_0xe8c30	CParticleEmitter	unknown	undefined	0		0	yes	accepted									
+00ee8c10	`scalar deleting destructor'	NScript::CCS_OakValeRevisitedScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ee\CLandscapeBackgroundPatch_vectordeletingdestructor_00ee8c10.cpp
+00ee8c30	~CCS_OakValeRevisitedScript	NScript::CCS_OakValeRevisitedScript	unknown	undefined	0		0	yes	accepted									
 00ee8e80	CEngineSubPrimitive2DClockSprite	CEngineSubPrimitive2DClockSprite	__thiscall	undefined	2	CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *	0	yes	accepted									
 00ee8ea0	sub_00ee8ea0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ee8eb0	RegisterMain	NScript::CGlobal_WatchForHeroDeathScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									

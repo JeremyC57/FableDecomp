@@ -1,0 +1,27 @@
+1	p1 first model: GetDimensions/GetPixelFormat inline getters, GetLevelByteLength via C2DExtentsI local, u64 overflow checks	DIFFER(772v732) residue 309
+2	p2 GetLevelByteLength reads the level desc directly (no C2DExtentsI copy); width/height named locals	DIFFER(735v732) residue 37
+3	p3 width read inline from rect in both depth products (no width local)	DIFFER(735v732) residue 102
+4	p4 p3 + dst declared before src	DIFFER(735v732) residue 102
+5	p5 p2 + dst declared before src	DIFFER(735v732) residue 37
+6	p6 p2 + dst incremented before src	DIFFER(735v732) residue 39
+7	p7 p2 + named depth local before width	DIFFER(735v732) residue 81
+8	p8 p2 + level declared at function top	DIFFER(735v732) residue 37
+9	p9 p2 + info declared before desc	DIFFER(735v732) residue 37
+10	p10 p2 + down-counting row loop	DIFFER(735v732) residue 37
+11	p11 p2 + height local after the overflow check	DIFFER(735v732) residue 37
+12	p12 p2 + src declared before the buffer vector	DIFFER(739v732) residue 88
+13	p13 p2 + increments in the for clause	DIFFER(735v732) residue 37
+14	p14 p2 + copy through rect.PMem directly	DIFFER(730v732) residue 251
+15	flags /Ob1, /GS on p2 (no change), /EHsc	DIFFER(735v732) residue 37 / 37 / 58
+16	p16 p2 + width local, rowBytes via local	DIFFER(737v732) residue 40
+17	p17 no width local, Dimensions.X direct	DIFFER(737v732) residue 55
+18	p18 width local declared after first overflow check, height after size	DIFFER(737v732) residue 26
+19	p19 p18 + dst declared before src	DIFFER(737v732) residue 26
+20	p20 p18 + dst advanced before src	DIFFER(737v732) residue 28
+21	p21 p18 + height declared after vector ctor	DIFFER(731v732) residue 56
+22	p22 p18 + down-count row loop	DIFFER(737v732) residue 26
+23	p23 p18 + dst indexed by y*rowBytes	DIFFER(746v732) residue 107
+24	p24 p18 + src indexed by y*Pitch	DIFFER(754v732) residue 209
+25	p25 p18 without height local, bound rect.Dimensions.Y	DIFFER(741v732) residue 60
+26	p26 p25 + down-count from rect.Dimensions.Y	DIFFER(731v732) residue 56 (frame layout shifts)
+27	p27 p18 + const src	DIFFER(737v732) residue 26 -- parked at p18

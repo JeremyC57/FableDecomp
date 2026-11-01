@@ -374276,6 +374276,55 @@ $catalog = @(
         TestSource = '00/e3/NScriptCVBordelloScript_AdjustTavernPrices_00e3a6b0_test.cpp'
         PassPattern = '00e3a6b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a9a900'
+        Module = 'C3DMeshFileLoader'
+        Source = '00/a9/C3DMeshFileLoader_C3DMeshFileLoader_00a9a900.cpp'
+        TestSource = '00/a9/C3DMeshFileLoader_C3DMeshFileLoader_00a9a900_test.cpp'
+        PassPattern = '00a9a900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b621a0'
+        Module = 'CEngineSkyRenderer'
+        Source = '00/b6/CEngineSkyRenderer_CEngineSkyRenderer_00b621a0.cpp'
+        TestSource = '00/b6/CEngineSkyRenderer_CEngineSkyRenderer_00b621a0_test.cpp'
+        PassPattern = '00b621a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bb6730'
+        Module = 'CEngineClothRenderer'
+        Source = '00/bb/CEngineClothRenderer_CEngineClothRenderer_00bb6730.cpp'
+        TestSource = '00/bb/CEngineClothRenderer_CEngineClothRenderer_00bb6730_test.cpp'
+        PassPattern = '00bb6730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c011a0'
+        Module = '_global'
+        Source = '00/c0/global_deflatestored_00c011a0.cpp'
+        TestSource = '00/c0/global_deflatestored_00c011a0_test.cpp'
+        PassPattern = '00c011a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea4980'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderTrader'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_TraderYellForHelp_00ea4980.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_TraderYellForHelp_00ea4980_test.cpp'
+        PassPattern = '00ea4980_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea4bb0'
+        Module = 'NScript::CV_LostTraderScript::CLostTraderTrader'
+        Source = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_TraderYellAtHero_00ea4bb0.cpp'
+        TestSource = '00/ea/NScriptCVLostTraderScriptCLostTraderTrader_TraderYellAtHero_00ea4bb0_test.cpp'
+        PassPattern = '00ea4bb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee8c30'
+        Module = 'NScript::CCS_OakValeRevisitedScript'
+        Source = '00/ee/NScriptCCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8c30.cpp'
+        TestSource = '00/ee/NScriptCCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8c30_test.cpp'
+        PassPattern = '00ee8c30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,23 @@
+1	p1 header/inline-Read model from SaveToDataStream p2; plain inline CDataInputStream::Read	DIFFER(634v850) residue 342 (Read outlined)
+2	p2 __forceinline Read (Ego_r has no out-of-line Read; 383 landed rows use the same)	DIFFER(860v850) residue 198
+3	p3 p2 + row loop bound on the height local	DIFFER(863v850) residue 244
+4	p4 p3 + dst declared before src	DIFFER(863v850) residue 244
+5	p5 p2 + down-counting row loop from rect.Dimensions.Y	DIFFER(850v850) residue 168
+6	p6 p2 + rows local copied from rect before the loop	DIFFER(850v850) residue 168
+7	p7 p5 + named extents local for Initialise	DIFFER(853v850) residue 220
+8	p8 p5 + explicit (long) levels argument	DIFFER(850v850) residue 168
+9	p9 p5 + named byte-count local in the compressed branch	DIFFER(850v850) residue 168
+10	p10 p5 + default-constructed format then Initialise(init)	DIFFER(850v850) residue 168
+11	p11 p5 + signed size	DIFFER(850v850) residue 168
+12	p12 p5 + stream through a pointer local	DIFFER(850v850) residue 168
+13	flags /Ob1, /GS on p5	DIFFER(850v850) residue 168 / 168
+14	p14 p5 + rows local after size, y < rows	DIFFER(863v850) residue 95
+15	p15 width local after first overflow check (9fb110 p18 lever), no height local	DIFFER(850v850) residue 166 (all ebx/ebp stream swap + src/dst slot swap)
+16	p16 p15 + height local after size as loop bound	DIFFER(863v850) residue 95 (stream now ebp; height spilled, frame 0xb4)
+17	p17 no width local	DIFFER(856v850) residue 253
+18	p18 p15 + dst declared before src	DIFFER(850v850) residue 164
+19	p19 p18 + src advanced first	DIFFER(850v850) residue 164
+20	p20 p15 + src advanced first	DIFFER(850v850) residue 160 -- best same-size
+21	p21 p15 + long size	DIFFER(850v850) residue 166
+22	p22 p15 + long rowBytes	DIFFER(870v850) residue 224
+23	p23 p15 + stream through reference local	DIFFER(850v850) residue 166 -- parked at p20

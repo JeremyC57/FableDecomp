@@ -35372,3 +35372,8 @@ __imp__strstr	0143ffdc	00c0ce50
 ?Find@Reader@@QAEHABVCString@@@Z	00c2d9c0	00c3bb50
 ?FindSegment@CriteriaReader@@QAEHABVCString@@@Z	00c2d9c0	00c3bcb0
 ??$GetDef@VCScriptDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCScriptDef@@@@@Z	00cd2994	00cbf647
+??_7C3DMeshFileLoader@@6B@	0129e0d0	00a9a900
+??_7CEngineSkyRenderer@@6B@	012a293c	00b621a0
+__tr_flush_block	00c057d0	00c011a0
+_fill_window	00c01090	00c011a0
+_flush_pending	00c00630	00c011a0

@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+0x009FB110	DIFFER	737v732	-	CTexture::SaveToDataStream; parked after 27 probes, residue 26 (row-count register / src-dst roles in the row loop)
+0x00A68AE0	DIFFER	754v753	-	CVolumeTexture::SaveToDataStream; parked after 18 probes, residue 42 (slice count spilled across vector(n))
+0x009FB3F0	DIFFER	850v850	-	CTexture::LoadFromDataStream; parked after 23 probes, residue 160 (stream ebx vs ebp)
+0x00C08D40	DIFFER	968v964	-	libpk CSystem::LoadBank (vtable 0x012B1E24 slot 10); parked after 15 probes, residue 66 (LTCG: failure paths reuse esi for the holder's pointer)

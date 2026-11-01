@@ -1,0 +1,15 @@
+1	p1 first model (lock guard, new + PKCAutoDelete holder, assert block, load desc with ctor, Load, .lug/.lut Right/CompareNoCase), flags passed as one string	DIFFER(766v964) (no /EHsc took effect)
+1b	p1 with --flags /EHsc /GS as separate args	DIFFER(968v964) residue 138
+2	p2 GetChecked const	DIFFER(968v964) residue 138
+3	p3 desc declared at top, no ctor, fields assigned	DIFFER(968v964) residue 138
+4	p4 buffer declared before name	DIFFER(968v964) residue 138
+5	p5 holder initialised from new directly, raw pointer from the holder	DIFFER(968v964) residue 138
+6	p6 desc #pragma pack(1)	DIFFER(968v964) residue 138
+7	p7 name/buffer part in a nested block	DIFFER(968v964) residue 156
+8	p8 desc in a block scope around the load	DIFFER(968v964) residue 138
+9	p9 desc's six bytes as named members, not an array (/GS no longer treats desc as a buffer: frame layout fixed)	DIFFER(968v964) residue 66
+10	p10 p9 + GetChecked body in the TU (not inlined by VC)	DIFFER(968v964) residue 66
+11	p11 p10 + noinline	DIFFER(968v964) residue 66
+12	p12 every use through autoBank.m_pObject	DIFFER(970v964) residue 211
+13	p13 failure path delete autoBank.Release()	DIFFER(969v964) residue 80
+14	p14 switch for the lock sources	DIFFER(960v964) residue 82 -- parked at p9

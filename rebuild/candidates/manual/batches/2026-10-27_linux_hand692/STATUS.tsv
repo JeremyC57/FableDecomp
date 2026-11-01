@@ -1,0 +1,12 @@
+address	status	bytes	test	note
+0x00A9A900	RELOCATION_MATCH	1021v1021	PASS	C3DMeshFileLoader::~C3DMeshFileLoader: empty user dtor over 22 CCountedPointer members, tail to ~CChunkedFileLoader 0x00AA7540
+0x00BB6730	RELOCATION_MATCH	537v537	PASS	CEngineClothRenderer::~CEngineClothRenderer: implicit dtor emitted by defining the ctor; local shader/index-buffer/pool models (headers flattened)
+0x00EA4980	RELOCATION_MATCH	556v556	PASS	NScript::CV_LostTraderScript::CLostTraderTrader::TraderYellForHelp (catalog said TraderYellAtHero)
+0x00EA4BB0	RELOCATION_MATCH	556v556	PASS	NScript::CV_LostTraderScript::CLostTraderTrader::TraderYellAtHero
+0x00EE8C30	RELOCATION_MATCH	585v585	PASS	NScript::CCS_OakValeRevisitedScript::~CCS_OakValeRevisitedScript (implicit; catalog CParticleEmitter label wrong)
+0x00B621A0	RELOCATION_MATCH	660v660	PASS	CEngineSkyRenderer::~CEngineSkyRenderer: { VertexBuffer.Uninitialise(); IndexBuffer.Uninitialise(); }
+0x009FB110	DIFFER	737v732	-	CTexture::SaveToDataStream; parked after 27 probes, residue 26 (row-count register / src-dst roles in the row loop)
+0x00A68AE0	DIFFER	754v753	-	CVolumeTexture::SaveToDataStream; parked after 18 probes, residue 42 (slice count spilled across vector(n))
+0x009FB3F0	DIFFER	850v850	-	CTexture::LoadFromDataStream; parked after 23 probes, residue 160 (stream ebx vs ebp)
+0x00C011A0	RELOCATION_MATCH	529v529	PASS	zlib 1.2.1 deflate_stored (configuration_table[0].func)
+0x00C08D40	DIFFER	968v964	-	libpk CSystem::LoadBank (vtable 0x012B1E24 slot 10); parked after 15 probes, residue 66 (LTCG: failure paths reuse esi for the holder's pointer)
