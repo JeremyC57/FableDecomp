@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00487550   RELOCATION_MATCH PASS   PrepareForLoad
+004c2df0   RELOCATION_MATCH PASS   ~C3DAnimationBlendState
+005e0a80   RELOCATION_MATCH PASS   ~pair
+0078adf0   RELOCATION_MATCH PASS   ~CCreatureAction_FireMissileWeapon
+007f8140   WARN RELOC_NAME: ?SetDoorState@CTCActivationReceptorDoor@@AAEX_N@Z -> 007f80c0 labelled 'CTCActivationReceptorDoor::SetDoorOpen'
+007f8140   WARN RELOC_NAME: ?Deactivate@CTCActivationReceptorBase@@UAEXXZ -> 007f7700 labelled '_global::SetMemberConst_007f7700'
+007f8140   RELOCATION_MATCH PASS   Deactivate
+0086d530   RELOCATION_MATCH PASS   __uninitialized_copy<CTextureMorphMap*, CTextureMorphMap*>
+008d69a0   RELOCATION_MATCH PASS   OnDeactivate
+00cd4550   RELOCATION_MATCH PASS   ~TeleportData
+00cd4fa0   RELOCATION_MATCH PASS   _Destroy<TeleportData>
+00f270d0   RELOCATION_MATCH PASS   ~CHeroSoulsCreatureDef
+
+WINS: 10
+  00487550 RELOCATION_MATCH CPlayer::?PrepareForLoad@CPlayer@@QAEXXZ
+  004c2df0 RELOCATION_MATCH C3DAnimationBlendState::??1C3DAnimationBlendState@@UAE@XZ
+  005e0a80 RELOCATION_MATCH std::pair<const CCharString, CIVCountedPointer<CAnimComponentBase> >::??1?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@QAE@XZ
+  0078adf0 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::??1CCreatureAction_FireMissileWeapon@@UAE@XZ
+  007f8140 RELOCATION_MATCH CTCActivationReceptorDoor::?Deactivate@CTCActivationReceptorDoor@@UAEXXZ
+  0086d530 RELOCATION_MATCH std::??$__uninitialized_copy@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@PAV1@@std@@YIPAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@PAV1@00ABU__false_type@0@@Z
+  008d69a0 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpHeal::?OnDeactivate@CModeGuildmasterPowerUpHeal@NCreatureMode@@UAEXXZ
+  00cd4550 RELOCATION_MATCH NScript::CQ_BountyHuntScript::TeleportData::??1TeleportData@CQ_BountyHuntScript@NScript@@QAE@XZ
+  00cd4fa0 RELOCATION_MATCH std::??$_Destroy@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@YIXPAUTeleportData@CQ_BountyHuntScript@NScript@@@Z
+  00f270d0 RELOCATION_MATCH CHeroSoulsCreatureDef::??1CHeroSoulsCreatureDef@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CPlayer_PrepareForLoad_00487550
+  C3DAnimationBlendState_C3DAnimationBlendState_004c2df0
+  stdpairconstCCharStringCIVCountedPointerCAnimComponentBase_pair_005e0a80
+  CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_0078adf0
+  CTCActivationReceptorDoor_Deactivate_007f8140
+  std_uninitializedcopyCTextureMorphMapCTextureMorphMa_0086d530
+  NCreatureModeCModeGuildmasterPowerUpHeal_OnDeactivate_008d69a0
+  NScriptCQBountyHuntScriptTeleportData_TeleportData_00cd4550
+  std_DestroyTeleportData_00cd4fa0
+  CHeroSoulsCreatureDef_CHeroSoulsCreatureDef_00f270d0

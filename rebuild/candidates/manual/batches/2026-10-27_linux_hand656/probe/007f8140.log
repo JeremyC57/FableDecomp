@@ -1,0 +1,1 @@
+1	CTCActivationReceptorDoor::Deactivate: SetDoorState(false) + base Deactivate, receptor-family local model	RELOCATION_MATCH

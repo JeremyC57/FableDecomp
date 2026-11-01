@@ -35623,3 +35623,6 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@I@Z	0057fcdd	0057b9d7
 ?_M_erase@?$_Rb_tree@VCCharString@@V?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@std@@AAEXPAU?$_Rb_tree_node@V?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@Z	007ae0e0	007ae0e0
 ??RCIsImposterHit@?A0x4c72bf35@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z	008e8a10	008e7e10
+?Clear@CHeroLogBook@@QAEXXZ	0047ae50	00487550
+?ResetModes@CPlayer@@QAEXXZ	00634870	00487550
+?SetDoorState@CTCActivationReceptorDoor@@AAEX_N@Z	007f80c0	007f8140

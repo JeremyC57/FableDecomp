@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,798 of 57,611 known functions (91.6%), 45,408 of the original 49,568 (91.6%); 174 `retail_asm`,
+  never hand-edit): 52,808 of 57,611 known functions (91.7%), 45,417 of the original 49,568 (91.6%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -35,6 +35,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
 ## Done 2026-11-01 (details in FINDINGS_LOG)
+- Chunk 656 (NA002, landed-twin rows) landed 10/10, 9 on the first probe; 10 NAME_FIXES (c656), 18 labels; the twin pipeline
+  holds (655 + 656 = 20/20).
 - Naming wave 14 landed: 160 rows, 6 family commits, recheck 160/160, bindings 73 RETIRE / 4 ADD, 1 rename, 7 labels; its three
   decisions resolved by the coordinator under the owner delegation (`naming/2026-11-01_wave14/DECISIONS_W14_RESOLVED.tsv`).
 - Owner delegated the five open decisions (2026-11-01, "do what retail did"): recorded in EXTRA_RULES "Owner decisions, 2026-11-01";
@@ -64,7 +66,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA004 = chunks 656-658 running at this write
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002 = chunk 656 landed 10/10; NA003/NA004 = chunks 657/658 running at this write
    (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked

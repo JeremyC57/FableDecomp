@@ -1,0 +1,2 @@
+1	OnDeactivate over local CModeBase/CModeStandBase chain, CClass::GetType()==1, SuspendAI(false,this)	RELOCATION_MATCH
+2	same with the mode vtable padded so OnActivate/OnDeactivate sit at slots 5/6 (fidelity only)	RELOCATION_MATCH

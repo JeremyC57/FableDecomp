@@ -371636,6 +371636,78 @@ $catalog = @(
         TestSource = '00/9c/CFileInstaller_ProcessAlways_009c4f20_test.cpp'
         PassPattern = '009c4f20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00487550'
+        Module = 'CPlayer'
+        Source = '00/48/CPlayer_PrepareForLoad_00487550.cpp'
+        TestSource = '00/48/CPlayer_PrepareForLoad_00487550_test.cpp'
+        PassPattern = '00487550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c2df0'
+        Module = 'C3DAnimationBlendState'
+        Source = '00/4c/C3DAnimationBlendState_C3DAnimationBlendState_004c2df0.cpp'
+        TestSource = '00/4c/C3DAnimationBlendState_C3DAnimationBlendState_004c2df0_test.cpp'
+        PassPattern = '004c2df0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e0a80'
+        Module = 'std::pair<const CCharString, CIVCountedPointer<CAnimComponentBase> >'
+        Source = '00/5e/stdpairconstCCharStringCIVCountedPointerCAnimComponentBase_pair_005e0a80.cpp'
+        TestSource = '00/5e/stdpairconstCCharStringCIVCountedPointerCAnimComponentBase_pair_005e0a80_test.cpp'
+        PassPattern = '005e0a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078adf0'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/78/CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_0078adf0.cpp'
+        TestSource = '00/78/CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_0078adf0_test.cpp'
+        PassPattern = '0078adf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007f8140'
+        Module = 'CTCActivationReceptorDoor'
+        Source = '00/7f/CTCActivationReceptorDoor_Deactivate_007f8140.cpp'
+        TestSource = '00/7f/CTCActivationReceptorDoor_Deactivate_007f8140_test.cpp'
+        PassPattern = '007f8140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086d530'
+        Module = 'std'
+        Source = '00/86/std_uninitializedcopyCTextureMorphMapCTextureMorphMa_0086d530.cpp'
+        TestSource = '00/86/std_uninitializedcopyCTextureMorphMapCTextureMorphMa_0086d530_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086d530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d69a0'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpHeal'
+        Source = '00/8d/NCreatureModeCModeGuildmasterPowerUpHeal_OnDeactivate_008d69a0.cpp'
+        TestSource = '00/8d/NCreatureModeCModeGuildmasterPowerUpHeal_OnDeactivate_008d69a0_test.cpp'
+        PassPattern = '008d69a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd4550'
+        Module = 'NScript::CQ_BountyHuntScript::TeleportData'
+        Source = '00/cd/NScriptCQBountyHuntScriptTeleportData_TeleportData_00cd4550.cpp'
+        TestSource = '00/cd/NScriptCQBountyHuntScriptTeleportData_TeleportData_00cd4550_test.cpp'
+        PassPattern = '00cd4550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cd4fa0'
+        Module = 'std'
+        Source = '00/cd/std_DestroyTeleportData_00cd4fa0.cpp'
+        TestSource = '00/cd/std_DestroyTeleportData_00cd4fa0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00cd4fa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f270d0'
+        Module = 'CHeroSoulsCreatureDef'
+        Source = '00/f2/CHeroSoulsCreatureDef_CHeroSoulsCreatureDef_00f270d0.cpp'
+        TestSource = '00/f2/CHeroSoulsCreatureDef_CHeroSoulsCreatureDef_00f270d0_test.cpp'
+        PassPattern = '00f270d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

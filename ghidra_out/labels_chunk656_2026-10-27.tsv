@@ -1,0 +1,19 @@
+address	name	evidence
+00cd4550	NScript::CQ_BountyHuntScript::TeleportData::~TeleportData	chunk 656 RELOCATION_MATCH: ten Q_BountyHunt callers destroy the stack TeleportData built by ctor 0x00D15140 (catalog _Dest_val<CMacro> was wrong)
+00cd4fa0	std::_Destroy<NScript::CQ_BountyHuntScript::TeleportData>	chunk 656 RELOCATION_MATCH: COMDAT order matches Ego_r _Dest_val<TeleportData> then _Dest_val<CDataMarkerOutput::CElement> (0x00CD4FD0)
+00cd4fd0	std::_Destroy<CDataMarkerOutput::CElement>	chunk 656: COMDAT neighbour of 0x00CD4FA0 per Ego_r emission order
+0078adf0	CCreatureAction_FireMissileWeapon::~CCreatureAction_FireMissileWeapon	chunk 656 RELOCATION_MATCH: deleting dtor 0x008D6140 in vtable 0x01285424 (RTTI) calls it; Ego_r UAE
+0086d530	std::__uninitialized_copy<CTextureMorphMap*,CTextureMorphMap*>	chunk 656 RELOCATION_MATCH: non-const-source instantiation (callers _M_insert_overflow 0x0086E1C0 / _M_fill_insert 0x0086E4B0); twin 0x00674CE0 is the const-source one (catalog _Uninit_copy<CFeatDef*> was wrong)
+004c2df0	C3DAnimationBlendState::~C3DAnimationBlendState	chunk 656 RELOCATION_MATCH: callers destroy instances of ctor 0x004C2DD0 (vtable 0x01239838)
+005e0a80	std::pair<const CCharString,CIVCountedPointer<CAnimComponentBase> >::~pair	chunk 656 RELOCATION_MATCH: body inlined per node by the TU's _Rb_tree::_M_erase 0x005E1F30; symbol tentative among three identical copies (0x005E0AB0, 0x005E1790)
+00f270d0	CHeroSoulsCreatureDef::~CHeroSoulsCreatureDef	chunk 656 RELOCATION_MATCH: deleting dtor 0x00F270B0 is slot 0 of vtable 0x012FB500 (catalog ~CAIStateGroup_HoverHornetQueen was wrong)
+00487550	CPlayer::PrepareForLoad	chunk 656 RELOCATION_MATCH: Ego_r + FableWin ?PrepareForLoad@CPlayer@@QAEXXZ; callers CPlayerManager/CWorld::PrepareForLoad
+007f8140	CTCActivationReceptorDoor::Deactivate	chunk 656 RELOCATION_MATCH: vtable slot 29; Ego_r orders SetDoorState/Activate/Deactivate as retail places 0x007F80C0/0x007F8120/0x007F8140
+007f80c0	CTCActivationReceptorDoor::SetDoorState	chunk 656: Ego_r ?SetDoorState@CTCActivationReceptorDoor@@AAEX_N@Z (catalog SetDoorOpen)
+007f8120	CTCActivationReceptorDoor::Activate	chunk 656: Ego_r order with 0x007F80C0 / 0x007F8140
+007f7700	CTCActivationReceptorBase::Deactivate	chunk 656: slot 29 of every receptor vtable; body Activated = false (catalog SetMemberConst_007f7700)
+008d69a0	NCreatureMode::CModeGuildmasterPowerUpHeal::OnDeactivate	chunk 656 RELOCATION_MATCH: RTTI on vtable 0x012685BC slot 6; slot 5 is the landed OnActivate 0x008DDD70 (catalog CModeDragonRearUp::OnDeactivate was wrong)
+00634870	CPlayer::ResetModes	chunk 656: Ego_r ?ResetModes@CPlayer@@QAEXXZ, tail callee of 0x00487550
+00833a10	CThingAICreature::SuspendAI	chunk 656: Ego_r ?SuspendAI@CThingAICreature@@QAEX_NPAX@Z (17 bindings wrong)
+00861d00	CModeStandBase::OnDeactivate	chunk 656: Ego_r/FableWin ?OnDeactivate@CModeStandBase@@UAEXXZ (8 bindings wrong)
+00693ef0	CCreatureActionBase::~CCreatureActionBase	chunk 656: Ego_r ??1CCreatureActionBase@@UAE@XZ, tail callee of 0x0078ADF0 (10 bindings wrong)

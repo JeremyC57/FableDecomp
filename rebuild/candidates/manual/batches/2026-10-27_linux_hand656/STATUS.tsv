@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+00cd4550	RELOCATION_MATCH	35v35	PASS	1	NScript::CQ_BountyHuntScript::TeleportData::~TeleportData (implicit; emission helper)
+00cd4fa0	RELOCATION_MATCH	35v35	PASS	1	std::_Destroy<TeleportData> (STLport _construct.h, /Gr)
+0078adf0	RELOCATION_MATCH	52v52	PASS	1	CCreatureAction_FireMissileWeapon::~CCreatureAction_FireMissileWeapon (implicit; engine CDefPointer)
+0086d530	RELOCATION_MATCH	52v52	PASS	1	std::__uninitialized_copy<CTextureMorphMap*, CTextureMorphMap*> (STLport verbatim, /Gr)
+004c2df0	RELOCATION_MATCH	35v35	PASS	2	C3DAnimationBlendState::~C3DAnimationBlendState (implicit; CIVCountedPointer::Release needs a named local)
+005e0a80	RELOCATION_MATCH	35v35	PASS	1	std::pair<const CCharString, CIVCountedPointer<CAnimComponentBase> >::~pair (type proven; symbol among 3 copies tentative)
+00f270d0	RELOCATION_MATCH	33v33	PASS	1	CHeroSoulsCreatureDef::~CHeroSoulsCreatureDef (implicit; retail CDefClassBase opt-in)
+00487550	RELOCATION_MATCH	22v22	PASS	1	CPlayer::PrepareForLoad (engine/CPlayer.h via CPlayerLayout)
+007f8140	RELOCATION_MATCH	18v18	PASS	1	CTCActivationReceptorDoor::Deactivate (slot 29)
+008d69a0	RELOCATION_MATCH	28v28	PASS	2	NCreatureMode::CModeGuildmasterPowerUpHeal::OnDeactivate (slot 6)
