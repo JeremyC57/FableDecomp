@@ -123399,9 +123399,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004128a0'
-        Module = '_global'
-        Source = '00/41/global_VectorPushBack_004128a0.cpp'
-        TestSource = '00/41/global_VectorPushBack_004128a0_test.cpp'
+        Module = 'std::vector<CWideString,std::allocator<CWideString> >'
+        Source = '00/41/stdvectorCWideStringstdallocatorCWideString_pushback_004128a0.cpp'
+        TestSource = '00/41/stdvectorCWideStringstdallocatorCWideString_pushback_004128a0_test.cpp'
         PassPattern = 'VECTOR_PUSH_BACK_PASS'
     }
     [pscustomobject]@{

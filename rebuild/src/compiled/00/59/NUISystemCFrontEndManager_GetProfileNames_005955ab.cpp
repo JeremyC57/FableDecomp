@@ -1,5 +1,8 @@
 // NUISystem::CFrontEndManager::GetProfileNames(std::vector<CWideString>& names) -- list the profiles: every sub-directory entry of the save directory (skipping "." / ".." and only while the search pattern is not a file) that holds *.bin files contributes its name once per file found
-// Leaf: ?GetProfileNames@CFrontEndManager@NUISystem@@
+// Leaf: ?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+// Naming wave 27 (family pb, DECISIONS_W26 D7): std::vector takes STLport's allocator argument, so push_back names
+//   0x004128A0's STLport spelling and erase the bound STLport erase 0x00412450; GetProfileNames is protected (Ego_r.pdb /
+//   FableWin.pdb IAE). Was the allocator-less vector<CWideString> (?push_back@?$vector@VCWideString@@@std@@..) and public.
 // Flags: /GS
 // Retail: Fable.exe @ 0x005955AB, 556 bytes, `ret 4`, /GS cookie (0x0139C8A8, __security_check_cookie 0x00BFE9F9) in a
 // biased frame (`lea ebp,[esp-3D0h]`).
@@ -67,7 +70,8 @@ namespace NResourceDirectoryNames {
 CWideString __fastcall GetSaveDir();            // 0x0041A540
 }
 namespace std {
-template <class T> class vector {
+template <class T> class allocator { };
+template <class T, class A = allocator<T> > class vector {   // STLport 4.6: the allocator argument
 public:
     T* _M_start;
     T* _M_finish;
@@ -81,7 +85,7 @@ public:
 }
 namespace NUISystem {
 class CFrontEndManager {
-public:
+protected:                                      // Ego_r.pdb / FableWin.pdb IAE
     void GetProfileNames(std::vector<CWideString>& names);
 };
 void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
