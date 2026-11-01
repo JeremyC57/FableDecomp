@@ -93046,9 +93046,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0043020a'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/43/LTextTreeWalkThrough_BuildTreeArray_0043020a.cpp'
-        TestSource = '00/43/LTextTreeWalkThrough_BuildTreeArray_0043020a_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,long>,std::_Select1st<std::pair<const CCharString,long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,long> > >'
+        Source = '00/43/stdRbtreeCCharStringstdpairconstCCharStringlongstdSelect1ststdpairconstCCharStri_Merase_0043020a.cpp'
+        TestSource = '00/43/stdRbtreeCCharStringstdpairconstCCharStringlongstdSelect1ststdpairconstCCharStri_Merase_0043020a_test.cpp'
         PassPattern = 'PASS_0043020a'
     }
     [pscustomobject]@{
@@ -166834,9 +166834,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad14e0'
-        Module = '_unattributed'
-        Source = '00/ad/unattributed_FreeTreeCTreeOwner00ad14e0_00ad14e0.cpp'
-        TestSource = '00/ad/unattributed_FreeTreeCTreeOwner00ad14e0_00ad14e0_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long,std::pair<const unsigned long,float>,std::_Select1st<std::pair<const unsigned long,float> >,std::less<unsigned long>,std::allocator<std::pair<const unsigned long,float> > >'
+        Source = '00/ad/stdRbtreeunsignedlongstdpairconstunsignedlongfloatstdSelect1ststdpairconstunsign_Merase_00ad14e0.cpp'
+        TestSource = '00/ad/stdRbtreeunsignedlongstdpairconstunsignedlongfloatstdSelect1ststdpairconstunsign_Merase_00ad14e0_test.cpp'
         PassPattern = '00ad14e0_TEST PASS'
     }
     [pscustomobject]@{

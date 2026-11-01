@@ -257,8 +257,8 @@ protected:
         _M_leftmost() = this->_M_header._M_data;
         _M_rightmost() = this->_M_header._M_data;
     }
-    void _M_erase(_Link_type __x);                                                   // 0x00AD14E0
 private:
+    void _M_erase(_Link_type __x);                                                   // 0x00AD14E0 (private in STLport 4.6 _tree.h: AAE, as the 347 landed _M_erase rows; naming wave 20)
     iterator _M_insert(_Base_ptr __x, _Base_ptr __y, const value_type& __v, _Base_ptr __w = 0);   // 0x00AD3440
     _Link_type _M_copy(_Link_type __x, _Link_type __p);
 public:
