@@ -1,4 +1,5 @@
 // CIVCountedPointeeBase_Derived_00bc7ab0::`scalar deleting destructor'(unsigned int) -- the list member at +0x60 cleared out of line (@ 0x0099B510), the CIVCountedPointeeBase vtable stored by the inlined base destructor, flag-tested delete
+// Naming (naming wave 22, ws): the string type is the PDB CWideString (was CListMember_0099b510); name-only.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC7AB0, oracle length 39 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,9 +10,9 @@
 // (0x012354D0, rtti-vtables.tsv), and bit 0 of the flag argument selects the flag-tested operator
 // delete @ 0x00BFE9BC. The manifest label is propagated across the family; the derived class
 // is named by its base. One of 14 bodies of this shape.
-struct CListMember_0099b510 {
+class CWideString { public:
     void* m_head;
-    ~CListMember_0099b510();            // 0x0099B510
+    ~CWideString();            // 0x0099B510
 };
 
 class CIVCountedPointeeBase { public:
@@ -20,7 +21,7 @@ class CIVCountedPointeeBase { public:
 };
 
 struct CIVCountedPointeeBase_Derived_00bc7ab0 : CIVCountedPointeeBase {
-    CListMember_0099b510 m_60;        // +0x60
+    CWideString m_60;        // +0x60
 };
 
 // Constructing the class emits its vtable (and with it the scalar deleting destructor); the

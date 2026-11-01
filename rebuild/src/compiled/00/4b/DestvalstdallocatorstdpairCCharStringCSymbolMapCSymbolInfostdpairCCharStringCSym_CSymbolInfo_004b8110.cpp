@@ -1,4 +1,5 @@
 // Retail 0x004b8110 : std::_Dest_val< allocator<pair<CCharString,CSymbolInfo>>,
+// Naming (naming wave 22, ws): the string type is the PDB CWideString (was StrRefA); name-only.
 //                                      pair<CCharString,CSymbolInfo> >
 // Disasm (this=ecx=pair):
 //   push esi; mov esi,ecx
@@ -10,9 +11,9 @@
 // so each is a 4-byte (single-pointer) object with a destructor. Members are
 // destroyed in reverse declaration order -> declare ascending by offset.
 
-struct StrRefA {   // 4 bytes; dtor -> 0x99b510
+class CWideString { public:   // 4 bytes; dtor -> 0x99b510
     void* p;
-    ~StrRefA();
+    ~CWideString();
 };
 
 struct StrRefB {   // 4 bytes; dtor -> 0x99eae0
@@ -23,8 +24,8 @@ struct StrRefB {   // 4 bytes; dtor -> 0x99eae0
 struct SymPair_Dest_val {
     char     pad0[0x0c]; // +0x00..+0x0b : no destructor emitted
     StrRefB  m0c;        // +0x0c : destroyed last  (tail 0x99eae0)
-    StrRefA  m10;        // +0x10 : destroyed second (0x99b510)
-    StrRefA  m14;        // +0x14 : destroyed first  (0x99b510)
+    CWideString  m10;        // +0x10 : destroyed second (0x99b510)
+    CWideString  m14;        // +0x14 : destroyed first  (0x99b510)
     ~SymPair_Dest_val();
 };
 
