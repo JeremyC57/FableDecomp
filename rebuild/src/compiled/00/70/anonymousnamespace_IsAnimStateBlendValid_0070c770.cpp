@@ -13,18 +13,15 @@
 //   signed divide by 20, re-evaluated every pass with Data re-read through the blend kept in the `push ecx` word) over
 //   `Data->CombinationBlends[i]` (STLport `*(begin() + n)`, the 20-byte stride strength-reduced into edi).
 // Layout: local models -- retail C3DAnimationBlendState = vptr + CIVCountedPointer<CSharedData> Data (+4); CSharedData =
-//   CIVCountedPointeeBase (vptr, RefCount) + BaseAnimation +0x08 + CombinationBlends +0x0C (STLport vector of 20-byte
+//   CIVCountedPointeeBase (engine header retail class: vptr, IVRefCount; slot 1 Delete) + BaseAnimation +0x08 + CombinationBlends +0x0C (STLport vector of 20-byte
 //   C3DAnimationStateAlpha) + SkeletalMorph +0x18 (Ego_r.pdb, retail vectors are 12 bytes).
 class CMeshDataBank;
 
-class CIVCountedPointeeBase {
-public:
-    virtual ~CIVCountedPointeeBase();                   // slot 0
-    long RefCount;                                      // +0x04
-};
+#include "rebuild_abi.h"
+#define FABLE_RETAIL_DEF_CLASS_BASE   // the retail polymorphic class: slot 0 scalar deleting dtor, slot 1 Delete (vtable 0x012354D0)
+#include "engine/CIVCountedPointeeBase.h"
 class C3DAnimationStateBase : public CIVCountedPointeeBase {
 public:
-    virtual void Validate();                            // slot 1
     virtual long GetType() const;                       // slot 2
 };
 class C3DAnimationState : public C3DAnimationStateBase {
