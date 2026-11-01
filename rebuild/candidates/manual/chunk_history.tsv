@@ -25832,3 +25832,13 @@ chunk	address	module	name	length
 682	00670820	CTCCoopSpirit	UpdateMovement	483
 682	00bbbbc0	CEnginePrimitiveManagerDecal	~CEnginePrimitiveManagerDecal	488
 682	0121e260	_gapscan	sub_0121e260	284
+683	0121f2d0	_gapscan	sub_0121f2d0	284
+683	0121e480	_gapscan	sub_0121e480	318
+683	00d50800	_gapscan	sub_00d50800	448
+683	00ed83c0	_gapscan	sub_00ed83c0	480
+683	00effe10	_gapscan	sub_00effe10	480
+683	00c6d150	_gapscan	sub_00c6d150	511
+683	00c6eef0	_gapscan	sub_00c6eef0	507
+683	00cefac0	_gapscan	sub_00cefac0	499
+683	0099a6a0	CDiskFileWin32	?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z	640
+683	00ba9830	_global	GetReflectionTexture	570
