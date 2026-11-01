@@ -92263,8 +92263,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006a5230'
         Module = 'CThingPhysical'
-        Source = '00/6a/C3DAnimationBlendState_AddCombinationBlend_006a5230.cpp'
-        TestSource = '00/6a/C3DAnimationBlendState_AddCombinationBlend_006a5230_test.cpp'
+        Source = '00/6a/CThingPhysical_InitialActivate_006a5230.cpp'
+        TestSource = '00/6a/CThingPhysical_InitialActivate_006a5230_test.cpp'
         PassPattern = 'PASS_006a5230'
     }
     [pscustomobject]@{
