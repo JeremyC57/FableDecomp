@@ -25933,3 +25933,15 @@ chunk	address	module	name	length
 692	009fb3f0	_gapscan	sub_009fb3f0	850
 692	00c011a0	_gapscan	sub_00c011a0	529
 692	00c08d40	_global	CSystem_ProcessMainEvent	964
+693	00c6fe10	_gapscan	sub_00c6fe10	507
+693	00c6cc60	_gapscan	sub_00c6cc60	648
+693	00c6e8f0	_gapscan	sub_00c6e8f0	673
+693	00c6dba0	_gapscan	sub_00c6dba0	689
+693	0099d8c0	_gapscan	sub_0099d8c0	689
+693	00c013c0	_gapscan	sub_00c013c0	909
+693	00cf0790	_gapscan	sub_00cf0790	960
+693	00d89e60	_gapscan	sub_00d89e60	976
+693	00ddde20	_gapscan	sub_00ddde20	1021
+693	00ef8d30	_gapscan	sub_00ef8d30	1013
+693	00bc9c30	CEngineSubPrimitiveSpriteTrail	CEngineSubPrimitiveSpriteTrail::CEngineSubPrimitiveSpriteTrail	34
+693	009cdf50	CBankFile	CBankFile::WriteRecoveryFile	246
