@@ -1,5 +1,7 @@
 // CQ_FireHeartScript::CQ_FireHeartScript(void* data, CGameScriptInterface* game) -- quest-script constructor: script base, data/interface pair, vtable 0x012CCB90, the two empty cutscene maps, empty effect handle and FX strings, the empty bool/thing/handle/pattern vectors, three empty scripted-thing handles, an empty comment string and escape marker
-// Leaf: ??0CQ_FireHeartScript
+// Leaf: ??0CQ_FireHeartScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 22 (c689 deferral): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*,
+//   CGameScriptInterface*), as the landed CQ_HangingTreeGoodScript ctor 0x00D6EF20 has it; name-only (one pushed pointer each).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D34470, 489 bytes (496 with padding), `ret 8`; the 0x1A4-byte object is built by
 //   the factory at 0x00D3AFC2 (operator new 0x1A4).
 // Label: manifest "CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript" is propagated; the member layout (two maps, a
@@ -15,16 +17,17 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
-class CGameScriptInterface;
+class CGameScriptInterfaceBase;
+class CScriptDataBase;
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptBase.h"
 struct __declspec(novtable) CScriptObject : CScriptBase {
-    CGameScriptInterface* m_pGame;                   // +0x40
-    void* m_pData;                                   // +0x44
-    CScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pData(data) { }
+    CGameScriptInterfaceBase* m_pGame;               // +0x40 (Ego_r CLevelScriptBase<T>::Game)
+    CScriptDataBase* m_pData;                        // +0x44 (the script data)
+    CScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), m_pGame(&game), m_pData(data) { }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
@@ -155,12 +158,12 @@ public:          // vtable 0x012CCB90, 0x1A4 bytes
     bool  KilledAllPrisoners;                        // +0x1a2
     bool  FreedAllPrisoners;                         // +0x1a3
     virtual void v00();
-    CQ_FireHeartScript(void* data, CGameScriptInterface* game);
+    CQ_FireHeartScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CQ_FireHeartScript;
 
-NScript::CQ_FireHeartScript::CQ_FireHeartScript(void* data, CGameScriptInterface* game)
+NScript::CQ_FireHeartScript::CQ_FireHeartScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CScriptObject(data, game)
 {
 }
