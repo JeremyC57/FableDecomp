@@ -25682,3 +25682,13 @@ chunk	address	module	name	length
 665	00d83350	_global	CParticleEmitter_Dtor_6	165
 665	0098e690	_global	CThreadedFileManager_Destructor	214
 665	00d27290	_global	CParticleEmitter_Dtor_2	217
+666	00e54d80	CTCInventoryMap	ResetPrimitiveHandles	182
+666	00534eb0	std	__find_in_uint_array	112
+666	006a6880	CThingPhysical	WorldUpdate	111
+666	00b2b910	CFrameData	~CFrameData	157
+666	009fe6c0	CFrameData	~CFrameData	182
+666	009e3870	CPixelFormat	GetInit	208
+666	004615fb	CArmourDef	?Transfer@CArmourDef@@UAEXAAVCPersistContext@@@Z	101
+666	004df562	CWillResponseDef	?Transfer@CWillResponseDef@@UAEXAAVCPersistContext@@@Z	101
+666	0071c260	CTCHeroMorph	KillParticles	110
+666	007fc730	CTCKraken	SetMode	104
