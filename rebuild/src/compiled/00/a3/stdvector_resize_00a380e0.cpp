@@ -1,5 +1,7 @@
 // std::vector::resize(size_type new_size, const value_type& x) -- (vector<CClassTypeInfo >) STLport resize: shrink by erasing [begin() + new_size, end()) (copy down, destroy the stale tail), or grow by inserting new_size - size() copies of x at the end
 // Leaf: ?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXIABVCClassTypeInfo@@@Z
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A380E0, 105 bytes (+ int3 padding), thiscall, `ret 8`.
 // Identity (proven): std::vector<CClassTypeInfo >::resize(unsigned int, const CClassTypeInfo&); evidence: its only caller is the landed vector<CClassTypeInfo>::resize(n) 0x00A38150 (CClassFactory's constructors 0x00A37360 / 0x00A373B0: ClassTypeInfo.resize(MaxClassTypeID)), which names this callee vector<CClassTypeInfo>::resize; its fill-insert 0x00A37F40 grows through J085's vector<CClassTypeInfo>::_M_insert_overflow 0x00A37E20, and the destroy is the landed __destroy_aux<CClassTypeInfo*>; FableWin.pdb holds ?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXI@Z.
 // Label: the manifest's "resize" is right in kind but propagated from a byte-identical body elsewhere (family J087: the
@@ -87,7 +89,7 @@ public:
     unsigned long NoAllocated;                             // +0x04
     bool Used;                                             // +0x08
     bool Local;                                            // +0x09
-    CClass* (__cdecl* AllocFunc)();                        // +0x0C
+    CClass* (__fastcall* AllocFunc)();                        // +0x0C
     CCharString Name;                                      // +0x10
 };
 typedef CClassTypeInfo TElement_00a380e0;

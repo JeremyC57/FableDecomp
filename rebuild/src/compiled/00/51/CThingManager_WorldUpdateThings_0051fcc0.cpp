@@ -1,5 +1,7 @@
 // CThingManager::WorldUpdateThings() -- per-frame update of every thing on the per-type update lists, then the death pass
 // Leaf: ?WorldUpdateThings@CThingManager@@QAEXXZ
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051FCC0, 189 bytes, tail jump to UpdateDeaths.
 // Identity: Ego_r.pdb and FableWin.pdb both carry `?WorldUpdateThings@CThingManager@@QAEXXZ`; the retail caller is the CWorld
 //   frame update (0x004A5D1C, `this` = CWorld::PThingManager). Its callees are the PDB-named CThing::FrameUpdate, the virtual
@@ -44,7 +46,7 @@ class CClassTypeInfo { public:                              // retail 0x14
     unsigned long NoAllocated;                              // +0x04
     bool          Used;                                     // +0x08
     bool          Local;                                    // +0x09
-    CClass* (__cdecl* AllocFunc)();                         // +0x0C
+    CClass* (__fastcall* AllocFunc)();                         // +0x0C
     void*         Name;                                     // +0x10 CCharString
 };
 struct ThingLList {

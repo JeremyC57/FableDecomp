@@ -1,5 +1,7 @@
 // std::vector::resize(unsigned int new_size) -- STLport vector<CClassTypeInfo>::resize(n): resize(n, CClassTypeInfo()) with a default class-type record built on the stack and destroyed after
 // Leaf: ?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXI@Z
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe @ 0x00A38150, 100 bytes, thiscall `ret 4`.
 // Callers: the CClassFactory constructors 0x00A37360 / 0x00A373B0 (`ClassTypeInfo.resize(MaxClassTypeID)`).
 // Callees: malloc 0x00BFEA0E (the TypeList sentinel), CCharString() 0x0099E4B0, vector<CClassTypeInfo>::resize(n, x)
@@ -67,7 +69,7 @@ public:
 };
 }
 
-typedef CClass* (__cdecl* ClassAllocFunc)();
+typedef CClass* (__fastcall* ClassAllocFunc)();
 
 // Retail layout (20 bytes; Ego_r's is 28 because its std::list is 12 bytes), as the landed constructor 0x00A37880.
 class CClassTypeInfo {

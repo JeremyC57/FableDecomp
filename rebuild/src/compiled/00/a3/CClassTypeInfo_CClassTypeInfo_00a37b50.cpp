@@ -1,5 +1,7 @@
 // CClassTypeInfo::CClassTypeInfo(const CClassTypeInfo& other) -- copy a class-type record: a fresh TypeList holding the other's class pointers, the counters and flags, the allocator function and the name
 // Leaf: ??0CClassTypeInfo@@QAE@ABV0@@Z
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37B50, 101 bytes (+ int3 padding), `ret 4`.
 // Identity: the (implicit, memberwise) copy constructor of the 20-byte vector<CClassTypeInfo> element of CClassFactory;
 //   the field order NoAllocated +4, Used +8, Local +9, AllocFunc +0xc, Name +0x10 follows the landed default constructor
@@ -65,7 +67,7 @@ public:
 };
 }
 
-typedef CClass* (__cdecl* ClassAllocFunc)();
+typedef CClass* (__fastcall* ClassAllocFunc)();
 
 class CClassTypeInfo {
 public:

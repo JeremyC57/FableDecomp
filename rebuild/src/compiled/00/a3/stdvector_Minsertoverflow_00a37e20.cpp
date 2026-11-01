@@ -1,5 +1,7 @@
 // std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CClassTypeInfo >) STLport growth insert: allocate size + max(size, fill_len) elements, copy the head, x (once, or fill_len times) and the tail unless atend, destroy and free the old block, adopt the new one
 // Leaf: ?_M_insert_overflow@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@IAEXPAVCClassTypeInfo@@ABV3@ABU__false_type@2@I_N@Z
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37E20, 286 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
 // Identity (proven): std::vector<CClassTypeInfo >::_M_insert_overflow; evidence: its only caller is vector<CClassTypeInfo>::_M_fill_insert 0x00A37F40 (0x00A3806A), the fill-insert of the landed vector<CClassTypeInfo>::resize(n, x) 0x00A380E0 / resize(n) 0x00A38150 chain (CClassFactory::ClassTypeInfo); the element copy is the landed CClassTypeInfo copy constructor 0x00A37B50 and the destroy the landed __destroy_aux<CClassTypeInfo*> 0x00A37AF0; the 20-byte stride (0x66666667 reciprocal, `sar edx,3`) is retail's CClassTypeInfo.
 // Label: the manifest's "Vector_Reallocate_CFeatDef" is propagated from a byte-identical body elsewhere (family J085: the 286-byte growth inserts
@@ -117,7 +119,7 @@ public:
     unsigned long NoAllocated;                             // +0x04
     bool Used;                                             // +0x08
     bool Local;                                            // +0x09
-    CClass* (__cdecl* AllocFunc)();                        // +0x0C
+    CClass* (__fastcall* AllocFunc)();                        // +0x0C
     CCharString Name;                                      // +0x10
 };
 typedef CClassTypeInfo TElement_00a37e20;

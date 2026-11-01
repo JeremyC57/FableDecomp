@@ -1,5 +1,7 @@
 // CClassFactory::`scalar deleting destructor'(unsigned int flags) -- destroy the class list and the class-type table, run the CBaseClassNonCopyable destructor, free when flags & 1
 // Leaf: ??_GCClassFactory@@
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe @ 0x00A38080, 78 bytes (+ int3 padding), thiscall `ret 4`. Slot 0 of the CClassFactory vtable
 //   0x0129CF70 (rtti-vtables.tsv; the only reference to the function).
@@ -72,7 +74,7 @@ public:
 };
 }
 
-typedef CClass* (__cdecl* ClassAllocFunc)();
+typedef CClass* (__fastcall* ClassAllocFunc)();
 
 // Retail layout (20 bytes; Ego_r's is 28 because its std::list is 12 bytes), as the landed constructor 0x00A37880.
 class CClassTypeInfo {

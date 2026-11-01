@@ -1,5 +1,7 @@
 // std::vector::_M_fill_insert(pointer position, size_type n, const value_type& x) -- (vector<CClassTypeInfo>) STLport 4.6 insert of n copies of a non-POD 20-byte class: shift the tail inside the spare capacity, else grow through the __false_type _M_insert_overflow
 // Leaf: ?_M_fill_insert@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXPAVCClassTypeInfo@@IABV3@@Z
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37F40, 311 bytes, thiscall `ret 0Ch`.
 // Identity (proven): settled symbol (work/SETTLED_NAMES_2026-10-28.tsv, public QAE as STLport 4.6 declares it); its only
 //   caller is the landed vector<CClassTypeInfo>::resize(n, x) 0x00A380E0 (CClassFactory::ClassTypeInfo), its overflow
@@ -151,7 +153,7 @@ void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, cons
 }
 }
 
-typedef CClass* (__cdecl* ClassAllocFunc)();
+typedef CClass* (__fastcall* ClassAllocFunc)();
 
 class CClassTypeInfo {
 public:

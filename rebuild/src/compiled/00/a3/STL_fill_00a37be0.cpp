@@ -1,5 +1,7 @@
 // std::fill(CClassTypeInfo* first, CClassTypeInfo* last, const CClassTypeInfo& value) -- assign one class-factory type record to every element of a range
 // Leaf: ??$fill@PAVCClassTypeInfo@@
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A37BE0, 74 bytes, `__fastcall` (first ecx, last edx, value pointer
 //   on the stack), `ret 4`.
 // Identity: 20-byte stride = {4-byte member +0 assigned through 0x00A37940 (a list copy-assign: the STLport list is
@@ -29,7 +31,7 @@ public:
     unsigned long  NoAllocated;                          // +0x04
     bool           Used;                                 // +0x08
     bool           Local;                                // +0x09
-    CClass*        (__cdecl* AllocFunc)();               // +0x0c
+    CClass*        (__fastcall* AllocFunc)();               // +0x0c
     CCharString    Name;                                 // +0x10
 };
 

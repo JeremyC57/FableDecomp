@@ -1,5 +1,7 @@
 // std::__copy(CClassTypeInfo* first, CClassTypeInfo* last, CClassTypeInfo* result, const random_access_iterator_tag&, int*) -- STLport random-access copy of class-type records: *result++ = *first++, (last - first) times; returns the advanced result
 // Leaf: ??$__copy@
+// Naming wave 26 (family cti, chunk 694 decision 2): CClassTypeInfo::AllocFunc is CClass* (__fastcall*)() (FableWin.pdb
+//   ??0CClassTypeInit@@QAE@JP6IPAVCClass@@XZ_NABVCCharString@@@Z); was __cdecl.
 // Retail: Fable.exe @ 0x00A37C40, 103 bytes, `ret 0Ch`. /Gr TU written as explicit __fastcall: first in ecx, last in
 //   edx, result + the tag reference + the (int*)0 distance pointer on the stack.
 // Callers: 0x00A37D0C / 0x00A37DF8 / 0x00A38116 -- the vector<CClassTypeInfo> erase/insert helpers of CClassFactory
@@ -69,7 +71,7 @@ public:
 };
 }
 
-typedef CClass* (__cdecl* ClassAllocFunc)();
+typedef CClass* (__fastcall* ClassAllocFunc)();
 
 // Retail layout (20 bytes; Ego_r's is 28 because its std::list is 12 bytes), as the landed constructor 0x00A37880.
 class CClassTypeInfo {
