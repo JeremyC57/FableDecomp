@@ -11,6 +11,9 @@
 //   same-TU noinline stand-in that reads Start/Finish before writing. The CRC is the table loop crc = (crc >> 8) ^ table[byte ^ (crc & 0xff)]
 //   inlined over a local copy of each checksum.
 // Leaf: CheckDependencies
+// Naming wave 28 (family c697): the checksum file is CChecksumCacheFile (chunk 697: ~CChecksumCacheFile 0x00A60CE0, Ego_r
+//   0x00C00700 after Close; ctor 0x00A60C90 ??0CChecksumCacheFile@@QAE@J@Z and Open 0x00A60D40 as the landed binders). Was a
+//   separate CChecksumFile class (??0 / ??1 / ?Open@CChecksumFile@@).
 #include <new>
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 void* GrowArrayStorage(unsigned long bytes);
@@ -37,16 +40,14 @@ public:
 struct CFileScanState { long _body[2]; };
 bool __fastcall ScanFirstFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);   // 0x00999C50
 bool __fastcall ScanNextFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);    // 0x00999CB0
-class CChecksumCacheFile { public:
-    unsigned long GetChecksum(CWideString const&a0);   // 0x00A60FB0 (Ego_r.pdb ?GetChecksum@CChecksumCacheFile@@QAEKABVCWideString@@@Z)
-};
-class CChecksumFile {
+class CChecksumCacheFile {
 public:
     __int64       Stamp;
     unsigned char _body[0x10];
-    CChecksumFile(long bufferSize);                     // 0x00A60C90
-    ~CChecksumFile();                                   // 0x00A60CE0
+    CChecksumCacheFile(long bufferSize);                // 0x00A60C90
+    ~CChecksumCacheFile();                              // 0x00A60CE0
     void Open(const CWideString& path);                 // 0x00A60D40
+    unsigned long GetChecksum(CWideString const&a0);   // 0x00A60FB0 (Ego_r.pdb ?GetChecksum@CChecksumCacheFile@@QAEKABVCWideString@@@Z)
 };
 extern const unsigned long g_CRCTable[256];             // 0x0129A168
 struct SScalarTag { SScalarTag() { } };
@@ -151,7 +152,7 @@ void CDefinitionManager::CheckDependencies(const CWideStringVector& paths)
     CWideString name;
     CAFile::SplitPath(CompiledFileName, &drive, &directory, &name, 0);
     CWideString checksumPath = drive + directory + name + L".cks";
-    CChecksumFile checksums(0x10000);
+    CChecksumCacheFile checksums(0x10000);
     checksums.Open(checksumPath);
     CFileChecksumMap files;
     for (const CWideString* path = paths.begin(); path != paths.end(); ++path) {

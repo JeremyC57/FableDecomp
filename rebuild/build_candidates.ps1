@@ -207173,8 +207173,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b81e20'
         Module = 'CEnginePrimitiveSimulationInfo'
-        Source = '00/b8/CEnginePrimitiveSimulationInfo_ClearSimulations_00b81e20.cpp'
-        TestSource = '00/b8/CEnginePrimitiveSimulationInfo_ClearSimulations_00b81e20_test.cpp'
+        Source = '00/b8/CEnginePrimitiveSimulationInfo_Clear_00b81e20.cpp'
+        TestSource = '00/b8/CEnginePrimitiveSimulationInfo_Clear_00b81e20_test.cpp'
         PassPattern = '00b81e20_TEST PASS'
     }
     [pscustomobject]@{

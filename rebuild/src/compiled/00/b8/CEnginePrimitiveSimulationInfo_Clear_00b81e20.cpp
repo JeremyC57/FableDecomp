@@ -1,5 +1,8 @@
-// CEnginePrimitiveSimulationInfo::ClearSimulations() -- empties the Simulations array (the VC6-era `erase(begin(), end())`: the empty tail moved onto the first element, every old element destroyed, the end pointer rewritten)
-// Leaf: ClearSimulations
+// CEnginePrimitiveSimulationInfo::Clear() -- empties the Simulations array (the VC6-era `erase(begin(), end())`: the empty tail moved onto the first element, every old element destroyed, the end pointer rewritten)
+// Leaf: ?Clear@CEnginePrimitiveSimulationInfo@@QAEXXZ
+// Naming wave 28 (family c697): own row is ?Clear@CEnginePrimitiveSimulationInfo@@QAEXXZ (chunk 697: Ego_r.pdb 0x00A29FB0 /
+//   FableWin.pdb 0x02D7CC40; Ego_r donor order ctor -> Clear = retail ctor 0x00B81E00 -> 0x00B81E20; the landed caller
+//   ~CEngineInternalPrimitiveMeshBase already binds it). Was the descriptive ClearSimulations.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B81E20, 50 bytes.
 // Callees: `__fastcall _Move(first, last, dest, tag, bool)` @ 0x00B82EC0 and `__fastcall _Destroy_range(first, last,
 // allocator tag)` @ 0x00B83580 for CCountedPointer<CEngineSimulationBase> (8-byte elements; both labelled with other
@@ -32,10 +35,10 @@ class CEnginePrimitiveSimulationInfo { public:
     CSimulationPointer* m_simulationsFirst;          // +0x08 Simulations (CArray)
     CSimulationPointer* m_simulationsLast;           // +0x0c
     CSimulationPointer* m_simulationsEnd;            // +0x10
-    void ClearSimulations();
+    void Clear();
 };
 
-void CEnginePrimitiveSimulationInfo::ClearSimulations()
+void CEnginePrimitiveSimulationInfo::Clear()
 {
     CSimulationPointer* last = m_simulationsLast;
     CSimulationPointer* first = m_simulationsFirst;
