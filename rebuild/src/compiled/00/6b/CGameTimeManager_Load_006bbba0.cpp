@@ -1,7 +1,7 @@
 // CGameTimeManager::Load(const CCharString& text) -- parses the saved time-manager text: builds a string parser over it and a text persist context, then runs the context-based Load
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BBBA0, length 127 bytes (padded to 144).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the "" file name @ 0x0122D70E, -1),
-//          CStringParser::CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long) @ 0x00404720,
+//          CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&, long) @ 0x00404720,
 //          CCharString::~CCharString @ 0x0099EAE0, CPersistContext::CPersistContext(CStringParser*, void (*)(CCharString*),
 //          bool, CDefinitionManager*, CSymbolMap*, CCharString*) @ 0x009BADD0, CGameTimeManager::Load(CPersistContext&)
 //          @ 0x006BBAC0, std::list<CStringParserCommentBoundaries>::~list @ 0x004046B0, CBaseClass::~CBaseClass @ 0x0099A2E0.
@@ -33,7 +33,7 @@ class CStringParser : public CBaseClass { public:                     // retail 
     std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     void (*ErrorCallback)(CCharString*);           // +0x18
     long                     CursorPos[3];         // +0x1c CCursorPos
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
 class CDefinitionManager;

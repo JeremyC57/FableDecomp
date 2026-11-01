@@ -65,7 +65,7 @@ public:
     unsigned long CursorLine;                           // +0x1C CursorPos (12 bytes)
     unsigned long StringPos;                            // +0x20
     unsigned long CursorColumn;                         // +0x24
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename, long baseLineOffset);   // 0x00404720
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset);   // 0x00404720
     bool NextItemExists();                              // 0x009BA4F0
     unsigned long GetStringPos() const { return StringPos; }
     void SetStringPos(unsigned long pos);               // 0x009B9940

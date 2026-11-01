@@ -124,7 +124,7 @@ public:
     unsigned long CursorLine;                           // +0x1C CursorPos (12 bytes)
     unsigned long StringPos;                            // +0x20
     unsigned long CursorColumn;                         // +0x24
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename, long baseLineOffset);   // 0x00404720
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset);   // 0x00404720
     bool ReadAsStringUntilString(const CCharString& until, CParsedItem& item);   // 0x009BA110
     bool SkipPastString(const CCharString& text);       // 0x009B9BA0
 };

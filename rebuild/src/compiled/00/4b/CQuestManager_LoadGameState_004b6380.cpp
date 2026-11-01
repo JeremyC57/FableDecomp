@@ -79,7 +79,7 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     void (*ErrorCallback)(CCharString*);           // +0x18
     long                     CursorPos[3];         // +0x1c CCursorPos
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
 };
 class CPersistContext { public:                           // Ego_r.pdb, 0x2c bytes

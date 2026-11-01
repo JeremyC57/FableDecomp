@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DCA60, 123 bytes, __fastcall, ret 8; vtable 0x01255800 slot 3.
 // Leaf: ?Initialise@CAnimComponentStrikeSpeedMultiplier@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
 // Callees: SetDefaultValue (vtable slot 8, 0x005DB410), CCharString::CCharString(const char*, long)
-// 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&,
+// 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&,
 // long) 0x00404720, CCharString::~CCharString 0x0099EAE0, CPersistTraits<float>::TransferIn 0x0040F7E0,
 // list<CStringParserCommentBoundaries>::~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
 // Shape: the default reset is a real virtual call (`call [eax+20h]`). The parser is a 0x28-byte stack
@@ -46,7 +46,7 @@ public:
     std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     void (*ErrorCallback)(CCharString*);           // +0x1C
     long CursorPos[2];                             // +0x20
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename, long mode);  // 0x00404720
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long mode);  // 0x00404720
 };
 
 template <class T>

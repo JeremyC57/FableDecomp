@@ -48,7 +48,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* 
 class CStringParser : public CBaseClass { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
     std::list<CStringParserCommentBoundaries> Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
-    CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);   // 0x00404720
+    CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&, long);   // 0x00404720
     bool SkipPastNextItemIfIs(const CCharString&);  // 0x009B9E00
 };
 class CDefString { public:

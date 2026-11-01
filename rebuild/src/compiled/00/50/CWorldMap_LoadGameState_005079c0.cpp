@@ -68,7 +68,7 @@ public:
     std::list<long>         Comments;                  // +0x14
     void (*ErrorCallback)(CCharString*);                // +0x18
     long                     CursorPos[3];              // +0x1c (Pos +0x20)
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);                 // 0x00404720
     bool SkipPastString(const CCharString& text);      // 0x009B9BA0 (label NextItemIs)
     long SkipWhitespace();                              // 0x009B9C60

@@ -38,7 +38,7 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     std::list<CStringParserCommentBoundaries> Comments;             // +0x14
     void (*ErrorCallback)(CCharString*);           // +0x18
     long                     CursorPos[3];         // +0x1c
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
     bool NextItemIs(const CCharString& item);              // 0x009B9BA0
     long SkipWhitespace();                                 // 0x009B9C60

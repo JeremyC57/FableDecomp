@@ -40,7 +40,7 @@ class CStringParser : public CBaseClass { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename;
     CCharString TempCharString; std::list<CStringParserCommentBoundaries> Comments;
     void (*ErrorCallback)(CCharString*); long CursorPos[3];
-    CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
+    CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&, long);
     bool SkipPastNextItemIfIs(const CCharString&);
 };
 class CDefString { public:

@@ -1,7 +1,7 @@
 // CAnimComponentFlags::Initialise(CPersistContext&, const CCharString&) -- reset, then OR the flags parsed from the text into Flags
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DC3C0, length 130 bytes (virtual, `ret 8`).
 // Callees: this's virtual slot 8 (+0x20, the component reset), CCharString::CCharString(const char*, long)
-// @ 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&,
+// @ 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (__fastcall*)(const CCharString&), const CCharString&,
 // long) @ 0x00404720 (landed), CCharString::~CCharString @ 0x0099EAE0, TransferIn(CPersistContext*,
 // CStringParser*, long*) @ 0x009E2590 (__fastcall), std::list<CStringParserCommentBoundaries>::~list
 // @ 0x004046B0 (landed), CBaseClass::~CBaseClass @ 0x0099A2E0.
@@ -43,7 +43,7 @@ class CStringParser : public CBaseClass { public:                  // retail 0x2
     std::list<CStringParserCommentBoundaries> Comments;          // +0x14
     void (*ErrorCallback)(CCharString*);        // +0x18
     long CursorPos[3];                          // +0x1c CCursorPos
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);         // 0x00404720
 };
 

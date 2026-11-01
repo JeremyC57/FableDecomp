@@ -96,7 +96,7 @@ class CStringParser : public CBaseClass { public:                        // reta
     std::list<CStringParserCommentBoundaries> Comments;                     // +0x14
     void (*ErrorCallback)(CCharString*);                   // +0x18
     long                     CursorPos[3];                 // +0x1c
-    CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename,
+    CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);                    // 0x00404720
     bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
     float ReadAsFloat();                                   // 0x009BA650
