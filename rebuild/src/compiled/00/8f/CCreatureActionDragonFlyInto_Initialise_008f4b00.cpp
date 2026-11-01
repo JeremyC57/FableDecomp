@@ -122,7 +122,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     CAnimationEntry* PAnimEntry;                      // +0x74
     unsigned char _pad78[0x114 - 0x78];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
-    void Initialise();                                // 0x00857520
+    virtual void Initialise();                                // 0x00857520
     CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
 };
 struct CCreatureAction_DragonFlyInto : CCombatActionBase {

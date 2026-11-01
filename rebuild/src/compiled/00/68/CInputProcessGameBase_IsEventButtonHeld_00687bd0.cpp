@@ -7,9 +7,10 @@
 // keyboard kinds 0x15/0x14/0x15 split the three into pressed / released / held.
 // Shape: each device arm returns a full-register bool (`neg/sbb/inc`, `xor eax,eax` / `mov eax,1`); only the
 // fall-through for an unknown device returns through `xor al,al`. `this` is never read (thiscall, `ret 4`).
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
-    long GetDeviceType() const;                    // 0x00A03B50
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
     long GetEventType() const;                     // 0x00A03B40
 };
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h (members not used here)

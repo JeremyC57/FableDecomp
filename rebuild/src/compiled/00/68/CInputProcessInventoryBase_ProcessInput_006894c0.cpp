@@ -9,10 +9,11 @@
 //   locally because the slot-9 screen accessor (pure in the base vtable 0x012376CC, overridden per screen at 0x006896A0..) and
 //   the screen's slots 38..41 / 62..65 need real virtuals. Stick thresholds: 0x0125BEC8 = 0.6f, 0x0125BED4 = -0.6f,
 //   0x0125BED0 = -0.9f, 0x0125BECC = 0.9f.
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
     struct C2DVector { float X, Y; C2DVector() {} };
-    long GetType() const;                          // 0x00A03B40
+    EInputEventType GetType() const;                          // 0x00A03B40
     C2DVector GetAnaloguePosition() const;         // 0x00A043A0
 };
 class CProcessedInput {

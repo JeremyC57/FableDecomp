@@ -31,12 +31,13 @@ struct DIDEVICEOBJECTDATA_Retail {                 // 20 bytes
     unsigned long uAppData;
 };
 enum EInputKey { INPUT_KEY_NONE };
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent { public:                               // 0x34 bytes
     unsigned char Data[0x30];
     float         StartTime;                       // +0x30
     CInputEvent();                                 // 0x00A04410
     ~CInputEvent();                                // 0x00A03B30
-    long GetType() const;                          // 0x00A03B40
+    EInputEventType GetType() const;                          // 0x00A03B40
     EInputKey GetKey() const;                      // 0x00A03B70
     void SetAsKeyboardKeyPressed(EInputKey key, double time);                     // 0x00A03BF0
     void SetAsKeyboardKeyReleased(EInputKey key, double startTime, double time);  // 0x00A03C50

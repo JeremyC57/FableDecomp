@@ -21,10 +21,11 @@ public:
     void AddGameEvent(const CGameEvent& event);    // 0x00A0D340
     void SetHandled();                             // 0x00A0D390
 };
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
     long GetKey_00a03b40() const;                           // 0x00A03B40
-    long GetDeviceType() const;                    // 0x00A03B50
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
 };
 struct CPlayerGuiQuestion {
     bool CanCancel();                              // 0x0048DB98

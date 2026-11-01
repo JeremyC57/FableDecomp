@@ -4,7 +4,7 @@
 // Callees: CThing::PeekPos() const @ 0x006A4D00 (this TU's out-of-line copy, four times), the player-manager
 // accessor @ 0x004C7A00, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
-// @ 0x009AD410, CThing::PeekWorld @ 0x004C7AA0, CEnvironment::TransitionToTheme(long, float) @ 0x006B37A0 on the
+// @ 0x009AD410, CThing::GetWorld @ 0x004C7AA0, CEnvironment::TransitionToTheme(long, float) @ 0x006B37A0 on the
 // world's PEnvironment (+0x18).
 // Layout (retail, as the landed CThingSwitch::ConstructFromParams 0x0083BD80): TriggerRadius +0xd0, EnvironmentDef
 // +0xd4, TimeToChangeEnvironmentDef +0xd8; CThing PhysicsTC +0x60 (position at +0x0c), Dead bit +0x91.
@@ -55,6 +55,8 @@ public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990
 protected:
     CPlayerManager& GetPlayerManager();   // 0x004C7A00
+protected:
+    CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
@@ -74,7 +76,6 @@ public:
     float         TriggerRadius;                               // +0xd0
     CCharString   EnvironmentDef;                              // +0xd4
     float         TimeToChangeEnvironmentDef;                  // +0xd8
-    CWorld* PeekWorld();                                       // 0x004C7AA0
     void TriggerSetEnvironment();
 };
 
@@ -89,7 +90,7 @@ void CThingSwitch::TriggerSetEnvironment()
     if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->GetPhysicsPosition()))) {
         long theme = PeekDefinitionManager().GetDefGlobalIndexFromName(EnvironmentDef);
         if (theme) {
-            CWorld* world = PeekWorld();
+            CWorld* world = &GetWorld();
             world->PEnvironment->TransitionToTheme(theme, TimeToChangeEnvironmentDef);
         }
     }

@@ -39,7 +39,7 @@ class CProcessedInput { public:                                // 0xb0 bytes
     EGameEventPriority  Priority;                       // +0xac
     CProcessedInput() { Clear(); }
     void Clear();                                       // 0x00A0D300
-    void SetPlayer(long player);                        // 0x00A0D3A0
+    void SetPlayer(unsigned long player);                        // 0x00A0D3A0
 };
 
 class CInputProcessManager { public:

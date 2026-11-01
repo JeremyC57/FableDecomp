@@ -43,9 +43,9 @@ class CThing : public CClass { public:
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
-class CCombatActionBase { public:void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
+class CCombatActionBase { public:void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  void SetCombatAnimation(const CCharString&); //008574D0
- void Initialise(); //00857520
+ virtual void Initialise(); //00857520
 };
 extern const float g_DragonLandingHeightDrop; //0128838C =30.148378372192383
 class CCreatureAction_DragonLand : public CCombatActionBase { public:void Initialise();};

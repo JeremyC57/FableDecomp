@@ -40,7 +40,7 @@ class CInputEvent { public:                                // 0x34 bytes (PDB)
     long          Type;                            // +0x28
     float         CurrentTime;                     // +0x2c
     float         StartTime;                       // +0x30
-    long GetType() const;                          // 0x00A03B40
+    EInputEventType GetType() const;                          // 0x00A03B40
     C2DVector GetMousePos() const;                 // 0x00A04380
     void SetAsLeftMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime);   // 0x00A03D10
     void SetAsRightMouseButtonHeld(const C2DVector& pos, const C3DVector& movement, double startTime, double currentTime);  // 0x00A03DC0

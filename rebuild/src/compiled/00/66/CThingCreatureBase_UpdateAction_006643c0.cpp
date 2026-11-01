@@ -80,7 +80,7 @@ class CThingCreatureBase { public:
     unsigned char _pad00[0x100];
     CCountedPointer_CCreatureActionBase PCurrentAction;     // +0x100
     CCreatureActionList PQueuedActions;                     // +0x108
-    bool IsPerformingAnyAction()
+    bool IsPerformingAnyAction() const                   // 0x006622A0 (Ego_r.pdb const)
     {
         CCreatureActionBase* action = PCurrentAction.Data;
         if (action != 0) {

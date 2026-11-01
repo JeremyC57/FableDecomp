@@ -95,7 +95,7 @@ class CCombatActionBase { public:                             // retail sizeof 0
     CBaseIntelligentPointer POwner;                    // +0x08
     unsigned char           _body[0x114 - 0x10];
     void SetCombatAnimation(const CCharString& name);    // 0x008574D0
-    void Initialise();                                 // 0x00857520
+    virtual void Initialise();                                 // 0x00857520
     CThing* GetOwner() const { return (CThing*)POwner.GetPItem(); }
     __forceinline CSpecialEffectsDef* GetSpecialEffectsDef() const
     {

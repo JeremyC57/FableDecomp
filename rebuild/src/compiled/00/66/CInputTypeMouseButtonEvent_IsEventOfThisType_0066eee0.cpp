@@ -6,10 +6,12 @@
 // [27,31] -> Button == type - 19; [32,36] -> Button == type - 24; else false.
 // Layout: +0x04 the mouse button (as the landed GetEventTypeFromGeneralButtonType 0x0066F060 / IsButton 0x00447A90).
 // Opt: /O2 (16-aligned entry).
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
-    long GetType() const;                                // 0x00A03B40
-    long GetDeviceType() const;                          // 0x00A03B50
+    EInputEventType GetType() const;                                // 0x00A03B40
+    EInputDeviceType GetDeviceType() const;                          // 0x00A03B50
 };
 class CInputTypeMouseButtonEvent {
 public:

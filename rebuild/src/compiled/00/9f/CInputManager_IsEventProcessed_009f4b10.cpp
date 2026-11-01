@@ -11,6 +11,9 @@
 //   device number (`stored != event`), then switches on the device type: the per-type compares are written
 //   `event.X() == stored.X()` as `if (...) return true; return false;` statements (a `return a == b` materialises
 //   sete), and `case 3: return true;` shares one `dec eax ; je` with the default.
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
+enum EInputKey { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {                                // 0x34 bytes (PDB): Data +0, DeviceType +0x20, DeviceNumber +0x24, Type +0x28
 public:
     unsigned char _data[0x20];
@@ -19,10 +22,10 @@ public:
     long          Type;                            // +0x28
     float         CurrentTime;                     // +0x2c
     float         StartTime;                       // +0x30
-    long GetType() const;                          // 0x00A03B40
-    long GetDeviceType() const;                    // 0x00A03B50
+    EInputEventType GetType() const;                          // 0x00A03B40
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
     long GetDeviceNumber() const;                  // 0x00A03B60
-    long GetKey() const;                           // 0x00A03B70 (the dword at +0)
+    EInputKey GetKey() const;                           // 0x00A03B70 (the dword at +0)
     unsigned short GetChar() const;                // 0x00A03B80 (the wchar_t at +0)
     long GetJoystickButton() const;                // 0x00A03B90 (movzx of the byte at +8)
 };

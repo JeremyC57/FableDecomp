@@ -13,6 +13,8 @@ class C2DVector { public:
     C2DVector() {}
     C2DVector(const C2DVector& v) : X(v.X), Y(v.Y) {}
 };
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputKey { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
     unsigned char _pad00[0x0c];
@@ -20,9 +22,9 @@ public:
     unsigned char _pad14[0x34 - 0x14];
     CInputEvent();                                 // 0x00A04410
     ~CInputEvent();                                // 0x00A03B30
-    long GetType() const;                          // 0x00A03B40
+    EInputEventType GetType() const;                          // 0x00A03B40
     long GetDeviceNumber() const;                  // 0x00A03B60
-    long GetKey() const;                           // 0x00A03B70
+    EInputKey GetKey() const;                           // 0x00A03B70
     unsigned short GetChar() const;                         // 0x00A03B80
     long GetJoystickButton() const;                // 0x00A03B90
     float GetMouseWheel() const;                   // 0x00A03BB0
@@ -38,9 +40,9 @@ public:
     virtual void v00();
     virtual void v04();
     virtual void Update();                         // slot 2
-    bool EventScanStart(CInputEventScanInfo& scan, CInputEvent& event);   // 0x009F4ED0
-    bool EventScanNext(CInputEventScanInfo& scan, CInputEvent& event);    // 0x009F4F10
-    void EventScanEnd(CInputEventScanInfo& scan);                         // 0x009F4AC0
+    bool EventScanStart(CInputEventScanInfo& scan, CInputEvent& event) const;   // 0x009F4ED0
+    bool EventScanNext(CInputEventScanInfo& scan, CInputEvent& event) const;    // 0x009F4F10
+    void EventScanEnd(CInputEventScanInfo& scan) const;                         // 0x009F4AC0
     void ClearEvents();                                                   // 0x009F5540
 };
 extern CInputManager* PInputManager;             // 0x013B8388

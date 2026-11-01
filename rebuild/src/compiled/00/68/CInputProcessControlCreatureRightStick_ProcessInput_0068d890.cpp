@@ -27,10 +27,12 @@ class C2DVector { public:
 };
 inline float Abs(float x) { return (float)fabs(x); }
 inline float DotProduct(const C2DVector& a, const C2DVector& b) { return a.X * b.X + a.Y * b.Y; }
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
-    long GetType() const;                          // 0x00A03B40
-    long GetDeviceType() const;                    // 0x00A03B50
+    EInputEventType GetType() const;                          // 0x00A03B40
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
 };
 class CProcessedInput {
 public:

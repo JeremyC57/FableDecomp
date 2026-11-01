@@ -62,7 +62,7 @@ class CTCWillLightning { public:
 FABLE_STATIC_ASSERT(offsetof(CTCWillLightning, PItemRemoved)==0x11);
 
 class CCombatActionBase { public:
-    void* __vftable;
+    
     unsigned char _pad04[0x04];
     CIntelligentPointer<CThing> PCreature;              // +0x08
     unsigned char _pad10[0x1c];
@@ -70,7 +70,7 @@ class CCombatActionBase { public:
     unsigned char _pad34[0x74];
     CIntelligentPointer<CThing> POptionalItem;           // +0xa8
     unsigned char _padB0[0x64];
-    void Initialise();                                 // 0x00857520
+    virtual void Initialise();                                 // 0x00857520
 };
 
 class CCreatureAction_CastWillLightningSpell : public CCombatActionBase { public:

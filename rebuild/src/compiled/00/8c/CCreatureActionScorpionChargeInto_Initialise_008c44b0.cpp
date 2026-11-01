@@ -136,7 +136,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     CIntelligentPointer<CThing> PTarget;                 // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
-    void Initialise();                                // 0x00857520
+    virtual void Initialise();                                // 0x00857520
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public:

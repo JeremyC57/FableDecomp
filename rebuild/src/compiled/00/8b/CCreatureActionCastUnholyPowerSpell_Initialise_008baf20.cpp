@@ -108,7 +108,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0x2c - 0x10];
     CIntelligentPointer PItemRemoved;                 // +0x2c
     unsigned char _pad34[0x114 - 0x34];
-    void Initialise();                                // 0x00857520
+    virtual void Initialise();                                // 0x00857520
 };
 class CCreatureAction_CastUnholyPowerSpell : public CCombatActionBase { public:
     void Initialise();

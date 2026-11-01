@@ -26,9 +26,11 @@ class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; m
     virtual void v00();  // moved from CThing: the inserted base owns the vptr (vtable order unchanged)
     const C3DVector& PeekPos() const;       // 0x006A4D00
 };
+class CWorld;
 class CThing : public CThingPhysical { public:
-    CCamera* GetCamera() const;                 // 0x004C7AA0
     void WorldUpdateBulletTime();               // 0x004C8BA0 (slot 20)
+protected:
+    CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
 class CThingCreatureBase : public CThing { public:
     void UpdateAction();                        // 0x006643C0
@@ -42,7 +44,7 @@ void CThingAICreature::WorldUpdateBulletTime()
 {
     UpdateAction();
     CThing::WorldUpdateBulletTime();
-    CCamera* camera = GetCamera();
+    CCamera* camera = (CCamera*)&GetWorld();
     const C3DVector& pos = PeekPos();
     UpdateAnimation((camera->GetPosition() - pos).GetLength());
 }

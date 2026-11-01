@@ -13,12 +13,15 @@
 //   the given event's device type whose cases `goto found` on each comparison (given event first) -- a `same` flag is
 //   materialised (`sete al`) -- and case 3 jumps straight to found (threaded into the shared `je` through the switch's
 //   `dec eax` flags). The match (Clear) is laid after the loop's own epilogue and recomputes `i * 0x34`.
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
+enum EInputKey { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent { public:
     unsigned char _body[0x34];
-    long           GetType() const;                            // 0x00A03B40
-    long           GetDeviceType() const;                      // 0x00A03B50
+    EInputEventType           GetType() const;                            // 0x00A03B40
+    EInputDeviceType           GetDeviceType() const;                      // 0x00A03B50
     long           GetDeviceNumber() const;                    // 0x00A03B60
-    long           GetKey() const;                             // 0x00A03B70
+    EInputKey           GetKey() const;                             // 0x00A03B70
     unsigned short GetChar() const;                     // 0x00A03B80 (wchar_t; VC7.1 without /Zc:wchar_t)
     void           Clear();                                    // 0x00A03BE0
 public:

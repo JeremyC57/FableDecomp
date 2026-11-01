@@ -103,7 +103,7 @@ class CCombatActionBase { public:
     unsigned char _pad04[4];                    // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char _pad10[0xa8 - 0x10];          // +0x10
-    void Initialise();                          // 0x00857520
+    virtual void Initialise();                          // 0x00857520
 };
 
 class CCombatAction_StabThing : public CCombatActionBase { public:

@@ -145,7 +145,6 @@ public:
     signed char   PlayerNumber;                         // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;    // 0x004C73D0
-    CWorld* PeekWorld();                                // 0x004C7AA0
     void AddAndCopyTC(const CTCBase* tc, bool activate);   // 0x004C9F60
     __forceinline bool HasTC(long type) const
     {
@@ -182,6 +181,8 @@ public:
         const CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->first ? end : it)->second;
     }
+protected:
+    CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
@@ -275,7 +276,7 @@ void CThingCreatureBase::OnDie()
     }
     CThing* killer = ((CThing*)PLastAttackedByCreature.GetPItem());
     CTCPhysicsBase* physics = PhysicsTC;
-    CWorld* world = PeekWorld();
+    CWorld* world = &GetWorld();
     world->MessageEventManager->AddMessage(9, g_framesPerSecond, physics->Position, killer, this, 0.0f, 0.0f, 0);
     if (killer && !killer->Dead) {
         if (killer->HasTC(0x42)) {

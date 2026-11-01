@@ -47,9 +47,9 @@ class CThing:public CClass { public:
 class CBaseObject;
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
 class CCombatActionBase { public:
- void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
+ void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  unsigned char _beforeTarget[0x98];CBaseIntelligentPointer PTarget;unsigned char _remainingBase[0x64];
- void Initialise(); //00857520
+ virtual void Initialise(); //00857520
 };
 class CCreatureAction_CastAssassinRush:public CCombatActionBase { public:
  bool Override;unsigned char Dir[15];float Distance;long Level;CCountedAction FinalAction;bool UseCollision;bool IsZTargetting;

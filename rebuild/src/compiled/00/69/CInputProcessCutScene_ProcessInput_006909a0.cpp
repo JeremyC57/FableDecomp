@@ -11,10 +11,12 @@
 // Layout: engine/CInputProcessGameBase.h (World +0x14), modelled locally as in the landed 0x00690C70; CGameEvent
 //   (Ego_r.pdb, 40 bytes) as there.
 // Shape: the handled arm returns on its own; the two message arms make the same call (retail tail-merges them).
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
-    long GetType() const;                          // 0x00A03B40
-    long GetDeviceType() const;                    // 0x00A03B50
+    EInputEventType GetType() const;                          // 0x00A03B40
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
 };
 struct CMemoryBuffer {
 };

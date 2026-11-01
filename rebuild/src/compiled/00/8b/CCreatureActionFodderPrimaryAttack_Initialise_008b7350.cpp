@@ -112,7 +112,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
     void SetCombatAnimation(const CCharString& name); // 0x008574D0 (Ego_r.pdb ?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z)
-    void Initialise();                                // 0x00857520
+    virtual void Initialise();                                // 0x00857520
 };
 class CCreatureAction_FodderPrimaryAttack : public CCombatActionBase { public:
     void Initialise();

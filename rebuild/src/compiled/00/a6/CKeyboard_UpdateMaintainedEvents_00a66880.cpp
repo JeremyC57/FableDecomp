@@ -2,12 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A66880, length 96 bytes.
 // Callees: CInputEvent::GetType @ 0x00A03B40 (on the node's event at +0xc), GetTickCount through the import table (held in ebx across the loop).
 // Shape: a one-word frame (`push ecx`) for the unsigned-to-float conversion (`fild` plus 2^32 when negative), `this` in edi, the node in esi, `fstp [esi+38h]`, `ret`.
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent { public:                                // 0x34 bytes (PDB): the kind word at +0x28, the time at +0x2c
     unsigned char _body[0x28];
     long          m_kind;                          // +0x28
     float         m_time;                          // +0x2c
     unsigned char _pad30[4];
-    long GetType() const;                          // 0x00A03B40 (labelled "CWorld::DrawGetEnvironment")
+    EInputEventType GetType() const;                          // 0x00A03B40 (labelled "CWorld::DrawGetEnvironment")
 };
 class CInputEventScanInfo { public:                       // PDB: bool Started +0, long Index +4
     bool Started;

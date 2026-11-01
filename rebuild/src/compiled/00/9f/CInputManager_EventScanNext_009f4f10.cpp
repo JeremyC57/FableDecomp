@@ -5,9 +5,10 @@
 // Shape: the index starts at scan.Index + 1 (edi); the element pointer is a named local (esi = first + i*0x34, the offset
 // strength-reduced in ebx, the loop head padded with `lea ebx,[ebx]`) reused by the 13-dword copy on the found path; the
 // count is re-read after each call; `xor al,al` / `mov al,1` tails.
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent { public:                                // 0x34 bytes
     unsigned char _body[0x34];
-    long GetType() const;                           // 0x00A03B40
+    EInputEventType GetType() const;                           // 0x00A03B40
 };
 class CInputEventScanInfo { public:
     bool Started;                                   // +0x00
@@ -22,10 +23,10 @@ class CInputManager { public:
     CInputEvent*  m_pEventStoreEnd;                 // +0x18
     long          NoStoredEvents;                   // +0x1c
     long          NoEventScansRunning;              // +0x20
-    bool EventScanNext(CInputEventScanInfo& scan, CInputEvent& event);
+    bool EventScanNext(CInputEventScanInfo& scan, CInputEvent& event) const;
 };
 
-bool CInputManager::EventScanNext(CInputEventScanInfo& scan, CInputEvent& event)
+bool CInputManager::EventScanNext(CInputEventScanInfo& scan, CInputEvent& event) const
 {
     for (long i = scan.Index + 1; i < NoStoredEvents; ++i) {
         CInputEvent* stored = &m_pEventStoreFirst[i];

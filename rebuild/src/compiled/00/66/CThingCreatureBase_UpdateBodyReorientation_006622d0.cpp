@@ -75,7 +75,7 @@ class CThingCreatureBase : public CThing { public:
     bool HadFacingAngleYZSetByBodyOrientation : 1;      // bit 5
     bool UnderInfluenceOfEpicSpell : 1;                 // bit 6
     bool HiddenOnMiniMap : 1;                           // bit 7
-    bool IsPerformingAnyAction()
+    bool IsPerformingAnyAction() const                   // 0x006622A0 (Ego_r.pdb const)
     {
         CCreatureActionBase* action = PCurrentAction_Data;
         if (action != 0) {

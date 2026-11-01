@@ -96,7 +96,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
-    void Initialise();                                // 0x00857520
+    virtual void Initialise();                                // 0x00857520
     CWorldMap* GetWorldMap();                         // 0x00692C10
 };
 class CCreatureAction_NymphGetHitDie : public CCombatActionBase { public:

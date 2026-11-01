@@ -10,10 +10,12 @@
 //   (Ego_r.pdb, 40 bytes) as there; CThing UniqueID (ulong64) +0x18 and the Dead bit at +0x91 bit 0 (retail offsets).
 // Shape: the event is built before the creature test; the inline Add* helpers home their by-value argument (the
 //   floats copied through integer registers) in the dead `event` slot, the 64-bit id in a frame pair.
+enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
+enum EInputKey { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
-    long GetDeviceType() const;                    // 0x00A03B50
-    long GetKey() const;                           // 0x00A03B70
+    EInputDeviceType GetDeviceType() const;                    // 0x00A03B50
+    EInputKey GetKey() const;                           // 0x00A03B70
 };
 class C2DVector { public: float X, Y; };
 struct CMemoryBuffer {

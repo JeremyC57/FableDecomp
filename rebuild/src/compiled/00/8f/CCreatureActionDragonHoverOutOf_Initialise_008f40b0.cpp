@@ -52,10 +52,10 @@ struct CBaseIntelligentPointer {
  CBaseObject* GetPItem() const; //00A01B50
 };
 class CCombatActionBase { public:
- void* __vftable;void* IntelligentPointer;
+ void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;
  void SetCombatAnimation(const CCharString&); //008574D0
- void Initialise(); //00857520
+ virtual void Initialise(); //00857520
 };
 extern void FABLE_FASTCALL SetThingIsAbleToBeLifted(CThing*,bool); //007E4330
 class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:void Initialise();};

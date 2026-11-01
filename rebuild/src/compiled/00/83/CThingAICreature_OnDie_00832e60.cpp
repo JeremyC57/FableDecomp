@@ -1,7 +1,7 @@
 // CThingAICreature::OnDie() -- a creature killed by a thing that answers the killer query posts the hero-postcard message event; a killer with an opinion deed log posts the murder deeds against the victim's faction and tells the victim's wife it was murdered (otherwise she is told it died); then the base OnDie
 // Leaf: OnDie
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDef<T>
-// @ 0x007923C0, CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CThing::PeekWorld @ 0x004C7AA0,
+// @ 0x007923C0, CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CThing::GetWorld @ 0x004C7AA0,
 // CThingCreatureBase::PeekPos @ 0x006A4D00, CMessageEventManager::AddMessage @ 0x00687730, LowerBound @ 0x0040F020 (non-const) and
 // @ 0x004365B0 (const), CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990, CTCWife::Murdered @ 0x006D00A0, CTCWife::Died @ 0x006D0020,
 // CThingCreatureBase::OnDie @ 0x00663F50.
@@ -83,7 +83,6 @@ class CThing { public:
     unsigned long UsingComponents[9];                   // +0x20
     CInterfaceMap Components;                           // +0x44
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990
-    CWorld* PeekWorld();                                // 0x004C7AA0
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long interfaceType)
     {
@@ -103,6 +102,8 @@ class CThing { public:
             it = map->last;
         return (const T*)it->second;
     }
+protected:
+    CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
 
 class CBaseObject;
@@ -162,7 +163,7 @@ void CThingAICreature::OnDie()
             found = GetDefinitionManager()->GetDef(name, def);
         }
         if (found) {
-            CMessageEventManager* manager = PeekWorld()->MessageEventManager;
+            CMessageEventManager* manager = GetWorld().MessageEventManager;
             manager->AddMessage(def.m_p, &PeekPos(), killer, this, 0);
         }
     }

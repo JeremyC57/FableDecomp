@@ -19,7 +19,7 @@ class CInputEvent { public:
 class CInputManager { public:
     unsigned char _pad00[0x28];
     long          m_enabled;                       // +0x28 (descriptive)
-    bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent* event);   // 0x009F50A0
+    bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const;   // 0x009F50A0 (Ego_r.pdb const, reference)
 };
 extern CInputManager* PInputManager;             // 0x013B8388
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
@@ -76,7 +76,7 @@ void CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
     config.Torque.Zero();
     config.CMForce.Zero();
     CInputEvent event;
-    if (PInputManager->m_enabled && PInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, &event)) {
+    if (PInputManager->m_enabled && PInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, event)) {
         config.CMForce.Z += 25.0f / OneOverMass;
         config.Torque.X = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());
         config.Torque.Y = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());

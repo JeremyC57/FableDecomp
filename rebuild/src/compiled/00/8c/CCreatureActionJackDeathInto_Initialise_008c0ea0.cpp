@@ -153,7 +153,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void Initialise();                                // 0x00857520
+    virtual void Initialise();                                // 0x00857520
 };
 class CCreatureAction_JackDeathInto : public CCombatActionBase { public:
     void Initialise();

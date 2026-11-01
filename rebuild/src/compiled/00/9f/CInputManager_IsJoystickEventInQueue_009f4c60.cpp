@@ -9,6 +9,7 @@
 // Layout: retail CInputManager (0x80 bytes, 12-byte vectors; GOTCHAS wave 24m): ProcessedEvents +0x04, EventStore +0x10,
 // NoStoredEvents +0x1c, NoEventScansRunning +0x20, PMouse +0x24, PKeyboard +0x28, PJoysticks +0x2c (8-byte
 // CCountedPointer<CJoystick> elements), Loading +0x38, Saving +0x39, Checksum +0x3c, LoadedEventPackages +0x4c.
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {                                // 0x34 bytes (PDB): Data +0, DeviceType +0x20, DeviceNumber +0x24, Type +0x28
 public:
     unsigned char _data[0x20];
@@ -17,7 +18,7 @@ public:
     long          Type;                            // +0x28
     float         CurrentTime;                     // +0x2c
     float         StartTime;                       // +0x30
-    long GetType() const;                          // 0x00A03B40
+    EInputEventType GetType() const;                          // 0x00A03B40
     long GetDeviceType() const;                    // 0x00A03B50
     long GetDeviceNumber() const;                  // 0x00A03B60
     long GetJoystickButton() const;                // 0x00A03B90 (movzx of the byte at +8)

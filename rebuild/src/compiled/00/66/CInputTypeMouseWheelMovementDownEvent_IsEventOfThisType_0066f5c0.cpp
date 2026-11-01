@@ -5,9 +5,10 @@
 // zone 0.0001f held in a global (0x0129BA3C): VC loads the global and negates it (`fchs`) instead of folding a
 // constant, so it is an extern const float, not a literal. `<` gives `test ah,5 ; jp`.
 #include "engine/CInputTypeMouseWheelMovementDownEvent.h"
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
-    long  GetType() const;                      // 0x00A03B40
+    EInputEventType  GetType() const;                      // 0x00A03B40
     float GetValue() const;                     // 0x00A03BB0
 };
 extern const float EPSILON;        // 0x0129BA3C (0.0001f)

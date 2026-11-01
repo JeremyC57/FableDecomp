@@ -5,7 +5,7 @@
 //   CThingCreatureBase (0x0125AC0C) is 0x00667310 = CThingCreatureBase::OnCollision, called first with the same arguments.
 // Callees: CThingCreatureBase::OnCollision @ 0x00667310, CInterfaceMap::LowerBound @ 0x0040F020,
 //   CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 (label "_Cons_val<...>" propagated),
-//   CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0, CThing::PeekWorld @ 0x004C7AA0 (a world getter
+//   CTCPerceiveThing::SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0, CThing::GetWorld @ 0x004C7AA0 (a world getter
 //   whose result is unused; label "CViewBase::GetDisplayEngine" propagated).
 // Layout: retail CThing: Dead = +0x91 bit 0, interface bitset +0x20 (TC 0x34 = CTCPerceiveThing: word +0x24 bit 20),
 //   CVectorMap +0x44.
@@ -25,7 +25,8 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-class CWorld;
+class CWorld { public:
+};
 class CThing;
 class CTCPerceiveThing { public:
     CThing* GetPerceivedThing();                // 0x007446A0
@@ -38,7 +39,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                     // +0x91 bit 0
-    CWorld* PeekWorld();                        // 0x004C7AA0
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -54,6 +54,8 @@ class CThing { public:
             return true;
         return false;
     }
+protected:
+    CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -74,6 +76,6 @@ void CThingAICreature::OnCollision(ECollideType type, C3DVector* position, C3DVe
                 perceive->SetAsDirectlyAwareOfPerceivedThing();
         }
         if (type == COLLIDE_LANDSCAPE)
-            PeekWorld();
+            GetWorld();
     }
 }

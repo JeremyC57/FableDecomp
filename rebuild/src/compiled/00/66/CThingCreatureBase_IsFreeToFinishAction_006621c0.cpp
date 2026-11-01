@@ -26,7 +26,7 @@ class CCreatureActionBase { public:
 class CThingCreatureBase { public:
     unsigned char _pad000[0x100];
     CCreatureActionBase* PCurrentAction;            // +0x100 CCountedPointer<CCreatureActionBase>::Object
-    bool IsPerformingAnyAction()
+    bool IsPerformingAnyAction() const                   // 0x006622A0 (Ego_r.pdb const)
     {
         if (PCurrentAction && !PCurrentAction->Finished)
             return true;

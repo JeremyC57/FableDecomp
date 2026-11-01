@@ -20,12 +20,13 @@
 //   call result straight through pushes the returned pointer instead.
 extern "C" __declspec(dllimport) short __stdcall GetAsyncKeyState(int key);
 class C2DVector { public: float X, Y; C2DVector() {} };
+enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 class CInputEvent {
 public:
     unsigned char _body[0x34];
     CInputEvent();                                 // 0x00A04410
     ~CInputEvent();                                // 0x00A03B30
-    long GetType() const;                          // 0x00A03B40
+    EInputEventType GetType() const;                          // 0x00A03B40
 };
 class CProcessedInput {
 public:
