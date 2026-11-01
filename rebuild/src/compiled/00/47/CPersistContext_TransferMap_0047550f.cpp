@@ -34,15 +34,11 @@ class CCharStringData { public:
     long             NoRefs;
 };
 #pragma pack(pop)
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-class CCharString {
-public:
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharString (data and inline comparisons)
     CCharStringData* PStringData;
-    CCharString();                                     // 0x0099E4B0
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    CCharString(const CCharString& other);             // 0x0099EC30
-    ~CCharString();                                    // 0x0099EAE0
-    const CCharString& operator+=(const char* text);         // 0x0099F100
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
     __forceinline bool operator==(const char* text) const
     {
         if (PStringData == 0) {
@@ -50,8 +46,16 @@ public:
                 return true;
             return false;
         }
-        return Compare_00411570(PStringData->Data.PData, text) == 0;
+        return Compare(PStringData->Data.PData, text) == 0;
     }
+};
+class CCharString : public CBasicString<char> {
+public:
+    CCharString();                                     // 0x0099E4B0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    CCharString(const CCharString& other);             // 0x0099EC30
+    ~CCharString();                                    // 0x0099EAE0
+    const CCharString& operator+=(const char* text);         // 0x0099F100
 };
 struct CBase { virtual ~CBase(); };                    // 0x0099A2E0
 struct CStringParserCommentList { void* head; };

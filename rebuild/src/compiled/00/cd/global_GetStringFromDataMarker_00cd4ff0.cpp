@@ -13,24 +13,28 @@ class CCharStringData { public:                        // the shared string bloc
     const char*   m_pData;                      // +0x00
     unsigned long m_length;                     // +0x04
 };
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-
-class CCharString {
-public:
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharString (data and inline comparisons)
     CCharStringData* PStringData;
-    const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
-    // The inlined equality: the same block, or both present with equal lengths and Compare == 0
-    // (`neg eax ; sbb al,al ; inc al`).
-    bool operator==(const CCharString& other) const
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool operator==(const CBasicString& other) const
     {
         CCharStringData* a = PStringData;
         CCharStringData* b = other.PStringData;
         if (a == b)
             return true;
         if (a && b && a->m_length == b->m_length)
-            return Compare_00411570(a->m_pData, b->m_pData) == 0;
+            return Compare(a->m_pData, b->m_pData) == 0;
         return false;
     }
+};
+
+class CCharString : public CBasicString<char> {
+public:
+    const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
+    // The inlined equality: the same block, or both present with equal lengths and Compare == 0
+    // (`neg eax ; sbb al,al ; inc al`).
 };
 namespace std {
 template <class T> class allocator { };

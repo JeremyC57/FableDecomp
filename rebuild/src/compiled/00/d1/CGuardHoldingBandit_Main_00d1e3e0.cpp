@@ -13,14 +13,18 @@
 #pragma intrinsic(strcmp)
 namespace NScript { class CPredicateBase; }
 enum EHeroAbility { HERO_ABILITY_NONE };
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-#pragma pack(push, 1)
-struct CBasicStringChar {                               // CBasicString<char>, 13 bytes
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
     char*         PData;
     unsigned long StringLength;
     unsigned long DataLength : 31;
     bool          UseFastExtend : 1;
-    bool operator==(const char* text) const { return Compare_00411570(PData, text) ? false : true; }
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool operator==(const char* text) const { return Compare(PData, text) ? false : true; }
+};
+#pragma pack(push, 1)
+struct CBasicStringChar : public CBasicString<char> {                               // CBasicString<char>, 13 bytes
 };
 class CCharStringData { public: CBasicStringChar Data; long NoRefs; };
 #pragma pack(pop)

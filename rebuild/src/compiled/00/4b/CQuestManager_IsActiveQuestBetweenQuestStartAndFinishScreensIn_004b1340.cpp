@@ -11,17 +11,21 @@
 // conditional, with a construction flag) and an inline
 // CCharString == whose length+Compare tail is a nested inline IsEqual (its own `xor al,al ; mov bl,al` false exit);
 // the match bool survives the temporary's destructor in bl.
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-
-class CCharStringData { public:                               // the shared string block
-    const char*   Data;                                // +0x00
-    unsigned long Length;                              // +0x04
-    bool IsEqual(const CCharStringData& other) const
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharStringData (data and inline comparisons)
+    const char*   Data;
+    unsigned long Length;
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool IsEqual(const CBasicString& other) const
     {
         if (Length != other.Length)
             return false;
-        return Compare_00411570(Data, other.Data) == 0;
+        return Compare(Data, other.Data) == 0;
     }
+};
+
+class CCharStringData : public CBasicString<char> { public:                               // the shared string block
 };
 class CCharString { public:
     CCharStringData* PStringData;

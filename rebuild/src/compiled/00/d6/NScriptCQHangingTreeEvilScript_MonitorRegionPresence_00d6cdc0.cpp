@@ -16,19 +16,23 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-#pragma pack(push, 1)
-struct CBasicStringChar {                       // CBasicString<char>, 13 bytes
-    char*         PData;                        // +0x00
-    unsigned long StringLength;                 // +0x04
-    unsigned long DataLength : 31;              // +0x08
-    bool          UseFastExtend : 1;            // +0x0c
-    bool operator==(const CBasicStringChar& other) const
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
+    char*         PData;
+    unsigned long StringLength;
+    unsigned long DataLength : 31;
+    bool          UseFastExtend : 1;
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool operator==(const CBasicString& other) const
     {
         if (StringLength != other.StringLength)
             return false;
-        return Compare_00411570(PData, other.PData) ? false : true;
+        return Compare(PData, other.PData) ? false : true;
     }
+};
+#pragma pack(push, 1)
+struct CBasicStringChar : public CBasicString<char> {                       // CBasicString<char>, 13 bytes
 };
 class CCharStringData { public:                        // 17 bytes
     CBasicStringChar Data;                      // +0x00

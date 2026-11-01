@@ -14,22 +14,26 @@
 //          the message is traced by reference (release build: only the const char* conversion survives); no EH frame.
 #include <stddef.h>
 class CCharStringData { public: const char* m_pData; unsigned long m_length; };
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-class CCharString { public:
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharString (data and inline comparisons)
     CCharStringData* m_pData;
-    CCharString(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString();                                     // 0x0099EAE0
-    operator const char*() const;                       // 0x0099E4C0
-    bool operator==(const CCharString& other) const
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool operator==(const CBasicString& other) const
     {
         CCharStringData* a = m_pData;
         CCharStringData* b = other.m_pData;
         if (a == b)
             return true;
         if (a && b && a->m_length == b->m_length)
-            return Compare_00411570(a->m_pData, b->m_pData) == 0;
+            return Compare(a->m_pData, b->m_pData) == 0;
         return false;
     }
+};
+class CCharString : public CBasicString<char> { public:
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                     // 0x0099EAE0
+    operator const char*() const;                       // 0x0099E4C0
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570

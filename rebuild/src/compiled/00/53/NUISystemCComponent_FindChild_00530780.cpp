@@ -11,22 +11,26 @@ class CCharStringData { public:                                        // the sh
     const char*   m_pData;                                      // +0x00
     unsigned long m_length;                                     // +0x04
 };
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-
-class CCharString { public:
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharString (data and inline comparisons)
     CCharStringData* PStringData;
-    CCharString(const CCharString& other);                      // 0x0099EC30
-    ~CCharString();                                             // 0x0099EAE0
-    bool operator==(const CCharString& other) const             // inlined: same block, or equal lengths and Compare == 0
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool operator==(const CBasicString& other) const             // inlined: same block, or equal lengths and Compare == 0
     {
         CCharStringData* a = PStringData;
         CCharStringData* b = other.PStringData;
         if (a == b)
             return true;
         if (a && b && a->m_length == b->m_length)
-            return Compare_00411570(a->m_pData, b->m_pData) == 0;
+            return Compare(a->m_pData, b->m_pData) == 0;
         return false;
     }
+};
+
+class CCharString : public CBasicString<char> { public:
+    CCharString(const CCharString& other);                      // 0x0099EC30
+    ~CCharString();                                             // 0x0099EAE0
 };
 
 template<class T> struct CRetailVector {                        // retail std::vector: {first, last, end} with an iterator OBJECT

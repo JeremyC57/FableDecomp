@@ -15,17 +15,21 @@ class CCharStringData { public:
     const char*   m_pData;                         // +0x00
     unsigned long m_length;                        // +0x04
 };
-long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
-
-class CCharString { public:
+template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CCharString (data and inline comparisons)
     CCharStringData* PStringData;
-    ~CCharString();                                // 0x0099EAE0
-    bool SameText(const CCharString& other) const
+protected:
+    static long __fastcall Compare(const T* a, const T* b);   // 0x00411570 (Ego_r.pdb ?Compare@?$CBasicString@D@@KIJPBD0@Z, protected static)
+public:
+    bool SameText(const CBasicString& other) const
     {
         if (PStringData->m_length != other.PStringData->m_length)
             return false;
-        return Compare_00411570(PStringData->m_pData, other.PStringData->m_pData) == 0;
+        return Compare(PStringData->m_pData, other.PStringData->m_pData) == 0;
     }
+};
+
+class CCharString : public CBasicString<char> { public:
+    ~CCharString();                                // 0x0099EAE0
     bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
