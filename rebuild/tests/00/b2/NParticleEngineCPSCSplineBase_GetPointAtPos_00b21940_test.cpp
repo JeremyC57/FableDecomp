@@ -38,7 +38,7 @@ struct CSplinePosParamData {
     CParticleUpdateParameters* m_lastParams;
     CCardinalSpline*      m_lastSpline;
     void Update(CParticleUpdateParameters* params, CCardinalSpline* spline) { ++m_updateCalls; m_lastParams = params; m_lastSpline = spline; }
-    void TransformFromPos(CParticleUpdateParameters* params, C3DVector* point, float pos) { ++m_transformCalls; m_lastParams = params; point->Y += 100.0f; }
+    void TransformFromPosition(CParticleUpdateParameters* params, C3DVector* point, float pos) { ++m_transformCalls; m_lastParams = params; point->Y += 100.0f; }
 };
 struct CPSCSplineBase {
     CParticleSystem*                         ParticleSystem;
@@ -59,7 +59,7 @@ void CPSCSplineBase::GetPointAtPos(CParticleUpdateParameters* params, C3DVector*
     else
         Spline.GetSplinePosition(out, pos);
     if (SplinePosParamData.Data && SplinePosParamData->SplinePosParam.Size() > 0)
-        SplinePosParamData->TransformFromPos(params, out, pos);
+        SplinePosParamData->TransformFromPosition(params, out, pos);
 }
 
 int main()

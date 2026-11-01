@@ -200260,9 +200260,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b21850'
-        Module = 'CEngineScreenEffectColourFilter'
-        Source = '00/b2/CEngineScreenEffectColourFilter_Render_00b21850.cpp'
-        TestSource = '00/b2/CEngineScreenEffectColourFilter_Render_00b21850_test.cpp'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplinePosParamData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_TransformFromPosition_00b21850.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_TransformFromPosition_00b21850_test.cpp'
         PassPattern = '00b21850_TEST PASS'
     }
     [pscustomobject]@{
@@ -206616,9 +206616,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b21940'
-        Module = 'CPSCSplineBase'
-        Source = '00/b2/CPSCSplineBase_GetPointAtPos_00b21940.cpp'
-        TestSource = '00/b2/CPSCSplineBase_GetPointAtPos_00b21940_test.cpp'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_GetPointAtPos_00b21940.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_GetPointAtPos_00b21940_test.cpp'
         PassPattern = '00b21940_TEST PASS'
     }
     [pscustomobject]@{
@@ -230426,9 +230426,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b218b0'
-        Module = 'NParticleEngine::CSplinePosParamData'
-        Source = '00/b2/NParticleEngineCSplinePosParamData_TransformFromIndex_00b218b0.cpp'
-        TestSource = '00/b2/NParticleEngineCSplinePosParamData_TransformFromIndex_00b218b0_test.cpp'
+        Module = 'NParticleEngine::CPSCSplineBase::CSplinePosParamData'
+        Source = '00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_TransformFromIndex_00b218b0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_TransformFromIndex_00b218b0_test.cpp'
         PassPattern = '00b218b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -254426,9 +254426,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b219a0'
-        Module = 'CPSCSplineBase'
-        Source = '00/b2/CPSCSplineBase_GetPointAtIndex_00b219a0.cpp'
-        TestSource = '00/b2/CPSCSplineBase_GetPointAtIndex_00b219a0_test.cpp'
+        Module = 'NParticleEngine::CPSCSplineBase'
+        Source = '00/b2/NParticleEngineCPSCSplineBase_GetPointAtIndex_00b219a0.cpp'
+        TestSource = '00/b2/NParticleEngineCPSCSplineBase_GetPointAtIndex_00b219a0_test.cpp'
         PassPattern = '00b219a0_TEST PASS'
     }
     [pscustomobject]@{
