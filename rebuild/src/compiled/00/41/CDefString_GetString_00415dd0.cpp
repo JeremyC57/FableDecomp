@@ -1,7 +1,9 @@
-// CDefString::operator CCharString() const -- the def string's text: the global def-string table's string at TablePos
-// Leaf: ??BCDefString@@QBE?AVCCharString@@XZ
+// CDefString::GetString() const -- the def string's text: the global def-string table's string at TablePos
+// Leaf: ?GetString@CDefString@@QBE?AVCCharString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00415DD0, 25 bytes, thiscall `ret 4` (hidden CCharString result).
-// Identity: Ego_r.pdb `??BCDefString@@QBE?AVCCharString@@XZ` (name set; the catalog name is already this operator) and
+// Identity (naming wave 13, owner decision 2026-11-01): FableWin.pdb `?GetString@CDefString@@QBE?AVCCharString@@XZ` 0x018C2120,
+//   listed right after `??BCDefString@@QBE?AVCCharString@@XZ` 0x018C20E0 as retail 0x00415DD0 follows the identical
+//   operator CCharString() const 0x00415D70 (was catalogued as the operator: one retail address, one name), and
 //   struct_layouts_egor CDefString = { long TablePos; } (4 bytes): the body loads [this] = TablePos and returns
 //   CDefStringTable::GetString(TablePos) const (Ego_r.pdb `?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z`, landed
 //   0x009D49B0) on the global table @ 0x013CA828 (Ego_r.pdb `GDefStringTable`; the landed TUs call it g_DefStringTable,
@@ -23,10 +25,10 @@ extern CDefStringTable g_DefStringTable;           // 0x013CA828 (Ego_r.pdb GDef
 class CDefString {
 public:
     long TablePos;                                 // +0x00
-    operator CCharString() const;
+    CCharString GetString() const;
 };
 
-CDefString::operator CCharString() const
+CCharString CDefString::GetString() const
 {
     return g_DefStringTable.GetString(TablePos);
 }

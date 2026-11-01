@@ -31,7 +31,8 @@
 class CDefString {
 public:
     long Index;
-    operator CCharString() const;                           // 0x00415DD0
+    CCharString GetString() const;                          // 0x00415DD0 (FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ)
+    operator CCharString() const { return GetString(); }    // inline here (its out-of-line copy is 0x00415D70)
 };
 class CSoundPair {
 public:

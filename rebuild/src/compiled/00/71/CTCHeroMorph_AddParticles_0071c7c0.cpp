@@ -24,7 +24,7 @@ public:
 class CDefString {
 public:
     long Index;
-    operator CCharString() const;                       // 0x00415DD0
+    CCharString GetString() const;                      // 0x00415DD0 (FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ)
 };
 class CBaseObject;
 class CBaseIntelligentPointer {
@@ -123,7 +123,7 @@ public:
     static CThing* __fastcall Create(long type, long typeEnd, float t, const C3DVector& pos, bool flag);   // 0x006E11F0
     void AttachToThing(CThing& thing, long bone, const CCharString& helper, long index, float time);   // 0x006E0BE0
 };
-extern const float g_fEpsilon;                          // 0x0129BA3C
+extern const float EPSILON;   // 0x0129BA3C
 
 // Same-TU stand-in for the out-of-line GetSubDef (retail's link-time codegen saw that the out pointer does not escape).
 #pragma auto_inline(off)
@@ -148,11 +148,11 @@ void CTCHeroMorph::AddParticles(long type, float value)
     vector<CParticleMorphEntry> entries;
     if (def->ParticleMorphs.GetAllMorphsOfType(type, entries)) {
         for (CParticleMorphEntry* entry = entries._M_start; entry != entries._M_finish; ++entry) {
-            if (entry->Min - g_fEpsilon <= value && g_fEpsilon + entry->Max >= value) {
+            if (entry->Min - EPSILON <= value && EPSILON + entry->Max >= value) {
                 CThing* particle;
                 if (entry->Interpolate && entry->ParticleTypeEnd > 0) {
                     float t = 1.0f;
-                    if (fabs(entry->Max - entry->Min) > g_fEpsilon)
+                    if (fabs(entry->Max - entry->Min) > EPSILON)
                         t = (value - entry->Min) / (entry->Max - entry->Min);
                     particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPos(), false);
                 } else {
@@ -166,10 +166,10 @@ void CTCHeroMorph::AddParticles(long type, float value)
                         CCharString helper("");
                         emitter->AttachToThing(*Thing, 8, helper, 0, 0.0f);
                     } else if (entry->AttachMode == 2) {
-                        const CCharString& helper = entry->HelperName;
+                        const CCharString& helper = entry->HelperName.GetString();
                         emitter->AttachToThing(*Thing, 0xa, helper, entry->HelperIndex, 0.0f);
                     } else if (entry->AttachMode == 3) {
-                        const CCharString& helper = entry->HelperName;
+                        const CCharString& helper = entry->HelperName.GetString();
                         emitter->AttachToThing(*Thing, 0xc, helper, entry->HelperIndex, 0.0f);
                     }
                     ParticleEmitters.push_back(CIntelligentPointer<CThing>(particle));

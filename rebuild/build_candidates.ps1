@@ -92977,8 +92977,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00415dd0'
         Module = 'CDefString'
-        Source = '00/41/CDefString_operatorclassCCharString_00415dd0.cpp'
-        TestSource = '00/41/CDefString_operatorclassCCharString_00415dd0_test.cpp'
+        Source = '00/41/CDefString_GetString_00415dd0.cpp'
+        TestSource = '00/41/CDefString_GetString_00415dd0_test.cpp'
         PassPattern = 'PASS_00415dd0'
     }
     [pscustomobject]@{

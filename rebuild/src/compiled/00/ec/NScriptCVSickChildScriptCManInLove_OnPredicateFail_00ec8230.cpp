@@ -18,8 +18,8 @@ public:
 };
 class CDefString {                                      // Ego_r.pdb CDefString, 4 bytes
 public:
-    operator CCharString();                             // 0x00415D70 (non-const twin; the landed 0x008E7040 binds it so)
-    operator CCharString() const;                       // 0x00415DD0 (const; the landed 0x0071C7C0 binds it so)
+    operator CCharString() const;                       // 0x00415D70 (Ego_r / FableWin ??BCDefString@@QBE?AVCCharString@@XZ; naming wave 13)
+    CCharString GetString() const;                      // 0x00415DD0 (FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ)
     long _index;
 };
 class CScriptDef {                                      // Ego_r.pdb CScriptDef; retail offsets (agent501: AssassinThreatDistSq +0x720)
