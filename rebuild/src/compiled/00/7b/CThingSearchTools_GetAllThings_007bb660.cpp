@@ -70,6 +70,9 @@ struct CThingList {
 class CBaseObject;
 struct CBaseObjectPointer { CBaseObject* Object; unsigned long RefCount; };
 struct CBaseIntelligentPointer {
+public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+public:
     CBaseObjectPointer* PData;
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();               // 0x00A01C10
@@ -88,7 +91,6 @@ class CBaseObject;
 struct CBuildingPointer {
     void* _vfptr;
     void* PData;
-    CBaseObject* GetPItem() const;                    // 0x00A01B50
 };
 class CThingAICreature : public CThing { public:
     enum { ThingTypeMask = 0x1f };
@@ -100,7 +102,7 @@ class CThingFilter_HasBuildingAsHomeOrWork { public:
     CBaseObject* Building;
     bool operator()(const CThingAICreature& creature) const
     {
-        return creature.WorkBuilding.GetPItem() == Building || creature.HomeBuilding.GetPItem() == Building;
+        return ((CBaseIntelligentPointer*)&(creature.WorkBuilding))->GetPItem() == Building || ((CBaseIntelligentPointer*)&(creature.HomeBuilding))->GetPItem() == Building;
     }
 };
 

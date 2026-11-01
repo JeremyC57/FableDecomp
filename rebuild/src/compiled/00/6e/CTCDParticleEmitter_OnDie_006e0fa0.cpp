@@ -1,7 +1,10 @@
 // CTCDParticleEmitter::OnDie  @ 006e0fa0
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct Sub14 {
-    int Check();  // 0xa01b50, returns int used as bool
 };
 
 struct Target4 {
@@ -20,6 +23,6 @@ class CTCDParticleEmitter { public:
 
 void CTCDParticleEmitter::OnDie()
 {
-    if (this->m14.Check())
+    if (((CBaseIntelligentPointer*)&(this->m14))->GetPItem())
         this->ParentThing->Notify();
 }

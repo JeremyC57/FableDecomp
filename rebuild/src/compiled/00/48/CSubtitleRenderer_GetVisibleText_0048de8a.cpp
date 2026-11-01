@@ -9,7 +9,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048DE8A, 237 bytes, `ret 8`. Ego_r.pdb `?GetVisibleText@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z`.
 // Leaf: GetVisibleText
 // Callees: CWideString::operator=(const CWideString&) @ 0x0099B7D0, CCharString::CCharString(const char*, long) @ 0x0099EBF0
-//   ("(HC)" @ 0x0123172C), CWideString::ConvertToCharString() const @ 0x0099B2C0 (landed name; PDB ToCharString), strncmp
+//   ("(HC)" @ 0x0123172C), CWideString::ToCharString() const @ 0x0099B2C0 (landed name; PDB ToCharString), strncmp
 //   @ 0x00BFEAF8, ~CCharString @ 0x0099EAE0, CWideString::GetLength() const @ 0x0099B220, CWideString::GetSubString(unsigned
 //   long, unsigned long) const @ 0x0099BDB0 (by value), ~CWideString @ 0x0099B510, CWideString::SetLength(long) @ 0x0099BC50.
 // Shape: frame-pointer size TU (as the landed CSubtitleRenderer rows). The marker test is an inline prefix compare: the
@@ -34,10 +34,12 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* PStringData;
     ~CWideString();                                      // 0x0099B510
     const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
-    CCharString ConvertToCharString() const;             // 0x0099B2C0
     long GetLength() const;                              // 0x0099B220
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
     void SetLength(long length);                         // 0x0099BC50
@@ -65,7 +67,7 @@ public:
 bool CSubtitleRenderer::GetVisibleText(const CWideString& text, CWideString& visible)
 {
     visible = text;
-    bool hideCursor = BeginsWith(visible.ConvertToCharString(), "(HC)");
+    bool hideCursor = BeginsWith(((CWideString*)&visible)->ToCharString(), "(HC)");
     if (hideCursor)
         visible = visible.GetSubString(4, visible.GetLength());
     if (!InCutscene && !AllCharactersDisplayed) {

@@ -4,7 +4,7 @@
 // Leaf: GetTextFromTextTag
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048F6BD, 259 bytes, `ret 8`. Ego_r.pdb
 //   `?GetTextFromTextTag@CSubtitleRenderer@@AAE_NABVCWideString@@AAV2@@Z` (private).
-// Callees: CWideString::ConvertToCharString() const 0x0099B2C0, the CCharString hash 0x00404310 (manifest
+// Callees: CWideString::ToCharString() const 0x0099B2C0, the CCharString hash 0x00404310 (manifest
 //   CCharString_ComputeCRC32), CDataBank::LookupValue(unsigned long) const 0x009CC410, ~CCharString 0x0099EAE0,
 //   CBankFile::GetEntryDataType(unsigned long) const 0x009CC210, CDataBank::GetPGroupEntry(unsigned long, bool) const
 //   0x009C8890, CDataBank::GetPTextEntry(unsigned long, bool) const 0x009C9070 (the landed rows call it GetPGroupEntry;
@@ -27,10 +27,12 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 template <class T> class CArray { public:
     T* m_pFirst;
@@ -95,7 +97,7 @@ public:
 bool CSubtitleRenderer::GetTextFromTextTag(const CWideString& tag, CWideString& text)
 {
     NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
-    unsigned long id = bank->LookupValue(tag.ConvertToCharString().GetCRC());
+    unsigned long id = bank->LookupValue(((CWideString*)&tag)->ToCharString().GetCRC());
     if (id > 0) {
         if (bank->GetEntryDataType(id)) {
             const CArray<long>* entries = &bank->GetPGroupEntry(id, true)->Entries;

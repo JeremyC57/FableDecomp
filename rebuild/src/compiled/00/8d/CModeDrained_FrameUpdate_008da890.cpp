@@ -48,17 +48,20 @@ struct ModeStandNative {
 FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C
  virtual ~BaseIntelligentPointer(); //A01C10
- ThingNative*GetPItem()const; //A01B50
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
  IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
- IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(p.GetPItem());return*this;}
+ IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem()));return*this;}
 };
 FABLE_STATIC_ASSERT(sizeof(IntelligentThingPointer)==8);
 #ifdef _MSC_VER
@@ -80,9 +83,9 @@ FABLE_STATIC_ASSERT(offsetof(ModeDrained,PDrainer)==0x74);
 FABLE_STATIC_ASSERT(offsetof(ModeDrained,DrainerMode)==0x7c);
 void ModeDrained::FrameUpdate(){
  BaseFrameUpdate();
- if(PDrainer.GetPItem() && !(PDrainer.GetPItem()->LifeFlags&1)){
+ if(((ThingNative*)((CBaseIntelligentPointer*)&PDrainer)->GetPItem()) && !(((ThingNative*)((CBaseIntelligentPointer*)&PDrainer)->GetPItem())->LifeFlags&1)){
   ModeManager*manager;
-  if(PDrainer.GetPItem()->GetInterface(manager,49)){
+  if(((ThingNative*)((CBaseIntelligentPointer*)&PDrainer)->GetPItem())->GetInterface(manager,49)){
    ModeInterface&mode=manager->GetCurrentMode();
    if((mode.*static_cast<ModeIdSlot*>(mode.VTable)[1].GetType)()!=DrainerMode){
     PDrainer=IntelligentThingPointer(0);

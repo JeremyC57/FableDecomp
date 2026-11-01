@@ -1,5 +1,9 @@
 // Retail CTCWillLightning::CLightningBeam(CThing*,CThing*), PDB026AFF00.
 // Native list is one pointer rather than donor12 bytes; subsequent fields shift -8.
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 #include "engine/CTCWillLightning.h"
 #include "engine/CBaseObject.h"
 #include "engine/_quarantine/CThing.h"
@@ -10,14 +14,13 @@ struct BaseIntelligentPointer {
  BaseIntelligentPointer(); //A01B10; PDBB4C7A0
  virtual ~BaseIntelligentPointer(); //A01C10; PDBB4C8A0, sole virtual slot
  CBaseObjectPointer* PData;
- CBaseObject* GetPItem()const; //A01B50 PDBB4C7E0
  void SetPItem(CBaseObject*); //A01B90 PDBB4C820
 };
 struct ThingPointer:BaseIntelligentPointer {
  ThingPointer(){}
  ThingPointer(CThing* p){SetPItem((CBaseObject*)p);}
  // Implicit virtual destructor: VT1238C6C slot0=4A9710
- ThingPointer& operator=(const ThingPointer& p){SetPItem(p.GetPItem());return *this;}
+ ThingPointer& operator=(const ThingPointer& p){SetPItem(((CBaseIntelligentPointer*)&p)->GetPItem());return *this;}
 };
 struct DefNative {virtual ~DefNative();virtual void Delete()const;unsigned long IVRefCount;long GetRefCount()const{return (long)IVRefCount;}long Release()const{unsigned long r=--const_cast<DefNative*>(this)->IVRefCount;if(!r)Delete();return(long)r;}};
 struct DefPointer {DefNative* Object;DefPointer():Object(0){}void Reset(){if(Object){DefNative* old=Object;if(--old->IVRefCount==0)old->Delete();Object=0;}Object=0;}};

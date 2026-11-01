@@ -28,7 +28,10 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
+class CThing {
+public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+private: public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -116,7 +119,6 @@ public:
     CThing* RemoveThingFromPrimarySlot(bool);   // 0x006A1E00
 };
 struct CThingKill {
-    void Kill(bool silent);                     // 0x004C9B80
 };
 
 struct CAIStateGroup_ServeFood : CAIStateGroupBase {
@@ -140,7 +142,7 @@ void CAIStateGroup_ServeFood::OnReplace()
         CThing* food = carrying->GetThingInPrimarySlot();
         if (food != 0 && !(food->m_flags91 & 1)) {
             carrying->RemoveThingFromPrimarySlot(0);
-            ((CThingKill*)food)->Kill(true);
+            ((CThing*)(((CThingKill*)food)))->Kill(true);
             table->NotifyFoodServed(TaskIndex, 0);
         }
         TaskIndex = -1;

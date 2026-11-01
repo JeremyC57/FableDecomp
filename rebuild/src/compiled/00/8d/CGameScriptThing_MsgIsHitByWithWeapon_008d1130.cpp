@@ -64,10 +64,13 @@ struct CThingNative {
     unsigned char  LifeFlags;                           // +0x91 (bit 0 = dead)
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990 (reads the game's definition manager)
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct PointerView {                                    // CIntelligentPointer<CThing>
     void*            VTable;
     void*            Info;
-    CThingNative* GetPItem() const;                     // 0x00A01B50
 };
 struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
@@ -133,8 +136,8 @@ struct CGameScriptThingMethods : CGameScriptThing {
 bool CGameScriptThingMethods::MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
-    if (p->GetPItem() && !(p->GetPItem()->LifeFlags & 1)) {
-        CThingNative* thing = p->GetPItem();
+    if (((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()) && !(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags & 1)) {
+        CThingNative* thing = ((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());
         if (thing->UsingComponents[2] & 4) {
             const ComponentMap* map = &thing->Components;
             const ComponentEntry* it = map->LowerBound((ETCInterfaceType)0x42);
@@ -146,7 +149,7 @@ bool CGameScriptThingMethods::MsgIsHitByWithWeapon(const CCharString& attackerSc
                 if (HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithNoWeapon(false), current, last))
                     return true;
             } else {
-                long index = p->GetPItem()->GetDefinitionManager()->GetDefGlobalIndexFromName(weaponDefName);
+                long index = ((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->GetDefinitionManager()->GetDefGlobalIndexFromName(weaponDefName);
                 if (index > 0 && HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithWeapon(index), current, last))
                     return true;
             }

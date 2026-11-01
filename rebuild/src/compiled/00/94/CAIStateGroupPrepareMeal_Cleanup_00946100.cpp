@@ -110,8 +110,10 @@ class CAIStateGroupBase { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
+class CTCUserActionPointBase { public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+};
 struct CTCActionPoints {                        // interface type 0x2D
-    void FreeActionPoint(long index);           // 0x007FEF40
 };
 
 struct CAIStateGroup_PrepareMeal : CAIStateGroupBase {
@@ -127,7 +129,7 @@ void CAIStateGroup_PrepareMeal::Cleanup()
         if (IS_THING_ALIVE(PCookingPot)) {
             CTCActionPoints* pActionPoints;
             PCookingPot.GetPItem()->GetInterface(&pActionPoints, 0x2d);
-            pActionPoints->FreeActionPoint(ActionPointIndex);
+            ((CTCUserActionPointBase*)pActionPoints)->SetActionPointAsFree(ActionPointIndex);
         }
     }
 }

@@ -176,9 +176,11 @@ public:
     void RemoveMessage(const CMessageEvent*);   // 0x00493B5B
 };
 
-struct CTCUserActionPointBase {                 // interface 0x2d
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface 0x2d
     bool IsActionPointFree();                   // 0x007FEBF0
-    void ReleaseSlot(long slot);                // 0x007FEF40
 };
 
 #pragma pack(push, 1)
@@ -197,7 +199,7 @@ void CAIStateGroup_KidPlayHopscotch::Cleanup()
         CTCUserActionPointBase* point;
         m_pMarker.GetPItem()->GetInterface(&point, 0x2d);
         if (!point->IsActionPointFree())
-            point->ReleaseSlot(m_slot);
+            ((CTCUserActionPointBase*)point)->SetActionPointAsFree(m_slot);
         CMessageEvent* event = GetWorld().GetPMessageManager()->FindMostRecentMessage_0090dee0(
             CMessageEventFilter_IsOfType(0x18) && CMessageEventFilter_IsOriginatedByThing(PBrain->PCreature));
         if (event)

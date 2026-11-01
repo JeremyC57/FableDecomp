@@ -2,7 +2,7 @@
 // Leaf: ?StartTurncoatingEffects@CTCTurncoatSpell
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C6AA0, 762 bytes (+ int3 padding), plain `ret`.
 // Callees: CBaseIntelligentPointer() 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / ~ 0x00A01C10; LowerBound
-//   0x0040F020 (interfaces 0x10 sound player, 0x4B particle emitter); CTCSoundPlayer::PlaySound 0x0066BD00; the spell def's
+//   0x0040F020 (interfaces 0x10 sound player, 0x4B particle emitter); CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00; the spell def's
 //   effect-table lookup 0x00669580 (manifest label "GetSubDef<CAICreatureWillPowerIndicatorDef>" is propagated) and the
 //   table's named lookup 0x00669D30 (manifest label "CCRC::CalcAndLookup"); CThing::GetPos() const 0x004C73D0;
 //   CreateParticleEffect 0x0072AB70 (`__fastcall`); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CCharString 0x0099EBF0 /
@@ -82,8 +82,10 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 class CTCDParticleEmitter { public:                            // interface 0x4B
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-class CTCSoundPlayer { public:                                 // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+class CTCSoundPlayer {
+public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+private:    // 0x0066BD00
 };
 
 struct CEffectTableDef {                                // descriptive
@@ -147,7 +149,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
         return;
     CTCSoundPlayer* sound;
     if (ParentThing->GetInterface(&sound, 0x10))
-        LoopingSound = sound->PlaySound("HERO_ABILITY_TURNCOAT_CONTINUOUS", 0, 0, 0, -1);
+        LoopingSound = ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_TURNCOAT_CONTINUOUS", 0, 0, 0, -1);
     {   // own scope: the table/effect slots are then packed after the sound name's (retail F+0 table, F+4 effect/name)
         CEffectTablePointer table;
         long effect = 0;

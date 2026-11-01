@@ -22,9 +22,11 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
-    CCharString ConvertToCharString() const;                // 0x0099B2C0
 };
 struct CFileInfo { CWideString Source; };
 struct CFileInfoPointer {                                   // CCountedPointer<const CFileInstaller::CFileInfo>
@@ -170,7 +172,7 @@ void CFileInstaller::ProcessReads()
             FilesToFinish.push_back(info);
         } else {
             CCharStringSet::CInsertResult result;
-            CompletedFiles.insert(&result, info.Data->Source.ConvertToCharString());
+            CompletedFiles.insert(&result, ((CWideString*)&(info.Data->Source))->ToCharString());
         }
         FilesToCopy.pop_front();
         if (FilesToFinish.empty() && FilesToCopy.empty())

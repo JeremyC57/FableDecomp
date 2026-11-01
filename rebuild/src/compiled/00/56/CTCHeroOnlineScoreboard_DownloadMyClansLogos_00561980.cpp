@@ -31,14 +31,16 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 long __fastcall GFCharStringToInt(const CCharString& text);                            // 0x0099E7F0
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString();                                   // 0x0099AED0
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     const CWideString& operator+=(const wchar16* text);        // 0x0099B940
-    CCharString ConvertToCharString() const;         // 0x0099B2C0
     void __cdecl Sprintf(const wchar16* format, ...);       // 0x0099BA70
 };
 class CUserProfileManager { public:
@@ -135,7 +137,7 @@ public:
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
     CCharString GetCachedClanLogosAsString();        // 0x0055E850
-    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return name.ConvertToCharString(); }
+    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
     __forceinline bool OpenRequest(const CCharString& request)
     {
         LHString text(request.c_str());

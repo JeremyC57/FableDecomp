@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CBE10, 121 bytes (+7 int3), __fastcall (`this` unused), ret 8 (hidden result + path).
 // Callees: CWideString::CWideString() 0x0099AED0, CCharString::ToWideString() const 0x0099E480 (hidden result),
 // SplitPath 0x00997620 (__fastcall: path in ecx, drive in edx, then directory, name, extension on the stack),
-// CWideString::~CWideString 0x0099B510, CWideString::operator+= 0x0099B8D0, CWideString::ConvertToCharString()
+// CWideString::~CWideString 0x0099B510, CWideString::operator+= 0x0099B8D0, CWideString::ToCharString()
 // const 0x0099B2C0 (hidden result).
 // Shape: the two wide-string locals are built first; SplitPath's stack arguments are pushed before its first
 // argument is evaluated, so the ToWideString temporary (homed in the dead `path` argument slot) is built
@@ -12,12 +12,14 @@ class CCharString;
 
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* m_pData;
     CWideString();                                          // 0x0099AED0
     CWideString(const CWideString& other);
     ~CWideString();                                         // 0x0099B510
     const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
-    CCharString ConvertToCharString() const;                // 0x0099B2C0
 };
 
 class CCharString {
@@ -44,5 +46,5 @@ CCharString CBankFile_Retail::ConvertPathToFilename(const CCharString& path) con
     CWideString extension;
     CAFile::SplitPath(path.ToWideString(), 0, 0, &name, &extension);
     name += extension;
-    return name.ConvertToCharString();
+    return ((CWideString*)&name)->ToCharString();
 }

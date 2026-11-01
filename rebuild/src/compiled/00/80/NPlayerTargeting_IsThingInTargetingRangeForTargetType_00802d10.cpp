@@ -7,7 +7,7 @@
 //   bare leaf).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0, CTCCarrying::GetThingInPrimarySlot
 //   0x006A1440, CDefClassBase::GetSubDef<CTargetingDef>(CDefPointer<const CTargetingDef>*) 0x007EA960 (manifest
-//   propagates a CAICreatureWillPowerIndicatorDef instantiation), CThing::GetPosition 0x004C73D0 (twice),
+//   propagates a CAICreatureWillPowerIndicatorDef instantiation), CThing::GetPos 0x004C73D0 (twice),
 //   GetTargetingRangeForTargetType(unsigned long, const CTargetingDef&, const CThing&, const CThing*) 0x008028D0
 //   (__fastcall, file-static ?A0x58ed6966 in Ego_r.pdb); the defs' slot 1 (Destroy) on release.
 // Layout (retail CThing): UsingComponents bitset +0x20 (interface 0x46 = CTCCarrying: byte +0x28 bit 6), component
@@ -69,13 +69,15 @@ struct CTCBitset {
 };
 class CThing {
 public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private:
+public:
     unsigned char _pad00[0x20];
     CTCBitset     UsingComponents;                       // +0x20
     CTCMap        Components;                            // +0x44
     unsigned char _pad50[0x70 - 0x50];
     CDefPointer<const CThingBaseDef> PBaseDef;           // +0x70
     CDefPointer<const CThingBaseDef> GetPBaseDef() const { return PBaseDef; }   // FableWin ?GetPBaseDef@CThing@@QBE?AV?$CDefPointer@$$CBVCThingBaseDef@@@@XZ
-    const C3DVector& GetPosition() const;                // 0x004C73D0
     __forceinline bool HasTC(long type) const { return UsingComponents.test(type); }
     template <class T> __forceinline T* GetTC(long type) const
     {
@@ -99,7 +101,7 @@ bool __fastcall IsThingInTargetingRangeForTargetType(const CThing& thing, const 
         carried = thing.GetTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
     CDefPointer<const CTargetingDef> def(NULL_DEF);
     thing.GetPBaseDef()->GetSubDef(&def);
-    C3DVector delta = target.GetPosition() - thing.GetPosition();
+    C3DVector delta = ((CThing*)&target)->GetPos() - ((CThing*)&thing)->GetPos();
     float range = GetTargetingRangeForTargetType(type, *def, target, carried);
     float distanceSquared = delta.Y * delta.Y;
     distanceSquared += delta.X * delta.X;

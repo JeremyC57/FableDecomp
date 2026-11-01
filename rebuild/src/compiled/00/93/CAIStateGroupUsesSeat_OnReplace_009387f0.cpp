@@ -73,8 +73,10 @@ __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     }
     return false;
 }
-struct CTCUserActionPointBase {                 // interface 0x2d
-    void FreeActionPoint(long index);           // 0x007FEF40
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface 0x2d
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
@@ -131,7 +133,7 @@ void CAIStateGroup_UsesSeat::OnReplace()
     if (GotSeat && IS_THING_ALIVE(PSeat)) {
         CTCUserActionPointBase* points;
         PSeat.GetPItem()->GetInterfaceV(&points, 0x2d);
-        points->FreeActionPoint(ActionPointIndex);
+        ((CTCUserActionPointBase*)points)->SetActionPointAsFree(ActionPointIndex);
         GotSeat = false;
     }
     ActionPointIndex = -1;

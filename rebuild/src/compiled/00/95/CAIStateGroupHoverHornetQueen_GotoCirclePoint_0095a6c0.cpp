@@ -7,7 +7,11 @@
 class C3DVector { public:float X,Y,Z;};
 class CThing { public: const C3DVector& GetPos() const; };
 struct CQueenThing : public CThing { public:  }; //004c73d0
-struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;CQueenThing* GetPItem()const;}; //00a01b50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;}; //00a01b50
 struct CQueenNative {
 virtual ~CQueenNative();
 virtual void slot1();
@@ -45,10 +49,10 @@ long CQueenNative::GotoCirclePoint(long index,float tolerance){
 if((unsigned long)(last-first)==0)return 3;
 if(!IsStillRunnable()){Terminate();return 2;}
 CQueenPointer* markers=first;
-C3DVector point=markers[index].GetPItem()->GetPos();
+C3DVector point=((CQueenThing*)((CBaseIntelligentPointer*)&(markers[index]))->GetPItem())->GetPos();
 long result;bool blocked;bool arrived;
 do{
-result=MoveTo(2,point,target.GetPItem()->GetPos(),&arrived,tolerance);
+result=MoveTo(2,point,((CQueenThing*)((CBaseIntelligentPointer*)&target)->GetPItem())->GetPos(),&arrived,tolerance);
 if(!IsStillRunnable()){Terminate();return 2;}
 blocked=IsRouteToPosBlockedByTarget(index);
 }while(result==4&&!blocked);

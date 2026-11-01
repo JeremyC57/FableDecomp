@@ -1,10 +1,12 @@
 #pragma optimize("t", on)
 // Leaf: `scalar_deleting_destructor'
-extern void __fastcall AutoTinyMemberDestructor_0099eae0(void* member);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 extern void __fastcall AutoTinyCompositeDestructor(void* self);
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor_0099eae0(static_cast<unsigned char*>(self) + 64);
+    ((CCharString*)(static_cast<unsigned char*>(self) + 64))->~CCharString();
     AutoTinyCompositeDestructor(self);
     if (flags & 1)
         operator delete(self);

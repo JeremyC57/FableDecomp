@@ -11,11 +11,13 @@ private:
     CBaseObjectPointer* PData;                           // +0x04
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-extern void __fastcall DestructSecondMember_0099eae0(void* member);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 void* __fastcall CAIStateGroup_Gaze_CompositeScalarDeletingDestructor(void* stateGroup, int, unsigned int flags)
 {
     ((CBaseIntelligentPointer*)(static_cast<unsigned char*>(stateGroup) + 20))->CBaseIntelligentPointer::~CBaseIntelligentPointer();
-    DestructSecondMember_0099eae0(static_cast<unsigned char*>(stateGroup) + 12);
+    ((CCharString*)(static_cast<unsigned char*>(stateGroup) + 12))->~CCharString();
     ((CBaseClass*)(stateGroup))->CBaseClass::~CBaseClass();
     if (flags & 1)
         operator delete(stateGroup);

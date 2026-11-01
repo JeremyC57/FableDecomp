@@ -16,14 +16,16 @@
 enum EInputEventType { };   // Ego_r.pdb enum (values unused here)
 enum EInputDeviceType { };   // Ego_r.pdb enum (values unused here)
 enum EInputKey { };   // Ego_r.pdb enum (values unused here)
-class CInputEvent { public:
+class CInputEvent {
+public:
+    void SetAsNull();   // 0x00A03BE0 (Ego_r.pdb ?SetAsNull@CInputEvent@@QAEXXZ)
+private: public:
     unsigned char _body[0x34];
     EInputEventType           GetType() const;                            // 0x00A03B40
     EInputDeviceType           GetDeviceType() const;                      // 0x00A03B50
     long           GetDeviceNumber() const;                    // 0x00A03B60
     EInputKey           GetKey() const;                             // 0x00A03B70
     unsigned short GetChar() const;                     // 0x00A03B80 (wchar_t; VC7.1 without /Zc:wchar_t)
-    void           Clear();                                    // 0x00A03BE0
 public:
     long GetJoystickButton() const;   // 0x00A03B90
 };
@@ -72,5 +74,5 @@ void CInputManager::RemoveEventFromQueue(const CInputEvent& event)
     }
     return;
 found:
-    EventStore[i].Clear();
+    ((CInputEvent*)&(EventStore[i]))->SetAsNull();
 }

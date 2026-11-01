@@ -36,8 +36,10 @@ struct CCountedPointer_C3DAnimationStats {
 class C3DAnimationInfo { public:
     CCountedPointer_C3DAnimationStats GetAnimationStats();   // 0x00A269C0
 };
+class CMeshDataBank { public:
+    C3DAnimationInfo const* PeekAnimation(unsigned long a0) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
+};
 struct CAnimationBank {
-    C3DAnimationInfo* GetAnimation(long animation);   // 0x00A242C0
 };
 struct CManager {
     void*           __vftable;
@@ -51,7 +53,7 @@ struct CManager {
 };
 float CManager::GetEventTimeInSeconds(long animation, long event)
 {
-    CCountedPointer_C3DAnimationStats stats = m_pBank->GetAnimation(animation)->GetAnimationStats();
+    CCountedPointer_C3DAnimationStats stats = ((C3DAnimationInfo*)((CMeshDataBank*)m_pBank)->PeekAnimation(animation))->GetAnimationStats();
     float frame;
     if (m_useEmbeddedEvents && AnimHasEmbeddedEvent(animation, event))
         frame = GetEmbeddedEventFrame(animation, event);

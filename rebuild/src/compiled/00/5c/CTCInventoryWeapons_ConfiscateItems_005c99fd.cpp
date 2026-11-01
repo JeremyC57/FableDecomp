@@ -16,9 +16,12 @@ class CThing { public:
     unsigned short DefIndex;                  // +0x8c
     unsigned short GetDefIndex() const { return DefIndex; }
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {
     unsigned char _body[8];
-    CThing* GetPItem();                       // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE(CIntelligentPointer* pointer);   // 0x004CC340
 namespace NInventory { class CItem; }
@@ -49,10 +52,10 @@ void CTCInventoryWeapons::ConfiscateItems(const CItemVector& items)
     RefreshActiveWeaponData();
     long meleeDefIndex = 0;
     if (IS_THING_ALIVE(&PActiveMeleeWeapon))
-        meleeDefIndex = PActiveMeleeWeapon.GetPItem()->GetDefIndex();
+        meleeDefIndex = ((CThing*)((CBaseIntelligentPointer*)&PActiveMeleeWeapon)->GetPItem())->GetDefIndex();
     long rangedDefIndex = 0;
     if (IS_THING_ALIVE(&PActiveRangedWeapon))
-        rangedDefIndex = PActiveRangedWeapon.GetPItem()->GetDefIndex();
+        rangedDefIndex = ((CThing*)((CBaseIntelligentPointer*)&PActiveRangedWeapon)->GetPItem())->GetDefIndex();
     CTCInventoryBase_Retail::ConfiscateItems(items);
     if (meleeDefIndex > 0 && !IS_THING_ALIVE(&PActiveMeleeWeapon))
         ConfiscatedActiveMeleeWeaponDefIndex = meleeDefIndex;

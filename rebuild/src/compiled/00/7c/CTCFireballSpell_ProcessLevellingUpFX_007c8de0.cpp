@@ -4,7 +4,7 @@
 // Leaf: ProcessLevellingUpFX
 // Callees: GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30 (catalog "CCRC::CalcAndLookup"),
 // CThing::GetPos 0x004C73D0, CreateParticleEffect 0x0072AB70 (__fastcall), LowerBound 0x0040F020 (0x4b emitter, 0x10 sound
-// player), CTCDParticleEmitter::AttachToThing 0x006E0BE0, CTCSoundPlayer::PlaySound 0x0066BD00, MakeNoise 0x00662110, CCharString
+// player), CTCDParticleEmitter::AttachToThing 0x006E0BE0, CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00, MakeNoise 0x00662110, CCharString
 // 0x0099EBF0 / ~ 0x0099EAE0.
 // Shape: the CTCLightningOrb::OnDie (0x007F2410) `bool found = GetSubDef && GetEffectFromString("...")` with the literal converted
 // implicitly (the temp is built before the other arguments and freed under the `test bl,1` flag); every string argument is an
@@ -112,8 +112,10 @@ CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-class CTCSoundPlayer { public:                         // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+class CTCSoundPlayer {
+public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+private:    // 0x0066BD00
 };
 struct CBaseIntelligentPointer {
     void* __vftable;
@@ -177,13 +179,13 @@ void CTCFireballSpell::ProcessLevellingUpFX()
     if (ParentThing->GetInterface(&sound, 0x10)) {
         switch (Timer.WillAccumulatedLevel) {
         case 1:
-            sound->PlaySound("HERO_ABILITY_FIREBALL_POWERUP_1", 1, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_FIREBALL_POWERUP_1", 1, 0, 0, -1);
             break;
         case 2:
-            sound->PlaySound("HERO_ABILITY_FIREBALL_POWERUP_2", 1, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_FIREBALL_POWERUP_2", 1, 0, 0, -1);
             break;
         case 3:
-            sound->PlaySound("HERO_ABILITY_FIREBALL_POWERUP_3", 1, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_FIREBALL_POWERUP_3", 1, 0, 0, -1);
             break;
         }
     }

@@ -28,7 +28,10 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
+class CThing {
+public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+private: public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -146,7 +149,6 @@ class CBrainOutput { public:                           // 0x48 bytes
 };
 
 struct CThingKill {
-    void Kill(bool silent);                     // 0x004C9B80
 };
 class CTCNymph { public:
     void StopFlyingAround(long mode);           // 0x0080F870
@@ -171,7 +173,7 @@ void CAIStateGroup_NymphFloatAround::OnReplace()
 {
     CBrainOutput output;
     if (IS_THING_ALIVE(PFloatTarget)) {
-        ((CThingKill*)PFloatTarget.GetPItem())->Kill(true);
+        ((CThing*)(((CThingKill*)PFloatTarget.GetPItem())))->Kill(true);
         PFloatTarget = 0;
     }
     CTCNymph* nymph;

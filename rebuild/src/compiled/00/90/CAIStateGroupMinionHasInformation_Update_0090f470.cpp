@@ -54,8 +54,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 struct CTCSound {                               // the interface-0x10 component
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -142,7 +144,7 @@ void CAIStateGroup_MinionHasInformation::Update()
                 CTCSound* sound;
                 if (attract && GetCreature()->GetInterface(&sound, 0x10)) {
                     CCharString name("ATTRACT_HERO_ATTENTION");
-                    sound->PlaySound(name, 0, 0, 0, -1);
+                    ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, 0, 0, 0, -1);
                 }
             }
         }

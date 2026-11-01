@@ -1,10 +1,13 @@
 // CTCActionUseScriptedHook::SetEntranceAsLocked  @ 0x00729c30
 // __fastcall void(CTCActionUseScriptedHook*, bool)
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct Entrance
 {
     // method at 0x00a01b50 : __fastcall, returns pointer/bool in eax
-    void* Resolve();
     char data[8];   // occupies +0x20..+0x27
 };
 
@@ -19,7 +22,7 @@ class CTCActionUseScriptedHook
 
 void CTCActionUseScriptedHook::SetEntranceAsLocked(bool locked)
 {
-    if (this->m_entrance.Resolve())
+    if (((void*)((CBaseIntelligentPointer*)&(this->m_entrance))->GetPItem()))
     {
         this->m_locked = locked;
     }

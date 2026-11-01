@@ -12,11 +12,11 @@ CCharString CDefStringTable::GetString(long id) const { CCharString s; s.PString
 CDefStringTable g_DefStringTable;
 unsigned long g_InvalidSoundHandle = 0xffffffffUL;
 class CTCBase;
-struct CTCSound { unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c); };
-unsigned long CTCSound::PlaySound(const CCharString& name, bool positional, long a, long b, long c)
+class CTCSoundPlayer { public: unsigned long PlayAttachedCriteria(const CCharString& name, bool a1, bool a2, bool a3, long a4); };   // 0x0066BD00 (Ego_r.pdb)
+unsigned long CTCSoundPlayer::PlayAttachedCriteria(const CCharString& name, bool a1, bool a2, bool a3, long a4)
 {
     ++g_plays; g_played_id = (long)name.PStringData;
-    return (!positional && a == 0 && b == 0 && c == -1) ? 42UL : 7UL;
+    return (!a1 && !a2 && !a3 && a4 == -1) ? 42UL : 7UL;
 }
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -45,7 +45,7 @@ class CTCWillLightning { public:
 int main()
 {
     static CSpecialAbilitiesLightningSpellDef def; def.LoopingSound = 9;
-    CTCSound snd;
+    CTCSoundPlayer snd;
     CInterfaceMap::SEntry e[1] = { { (ETCInterfaceType)16, (CTCBase*)&snd } };
     CThing t; memset(&t, 0, sizeof(t));
     t.m_interfaces.first = e; t.m_interfaces.last = e + 1;

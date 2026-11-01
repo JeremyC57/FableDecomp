@@ -12,11 +12,14 @@ extern bool g_FlourishDangerThings;                         // 0x0137574D
 class CThing;
 bool __fastcall IsKnockedDown(CThing* thing);               // 0x0085F010
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CDangerThing {                                       // pair<CIntelligentPointer<CThing const>, NStealth::CDangerStatus>, 16 bytes
     struct CPointer {
         void*   m_vtable;
         void*   m_pItem;
-        CThing* GetPItem() const;                           // CBaseIntelligentPointer::GetPItem @ 0x00A01B50
     } first;                                                // +0x00
     long Status;                                            // +0x08
     long Timer;                                             // +0x0c
@@ -60,7 +63,7 @@ bool CTCStealth::IsAbleToFlourishDangerThings() const
     if (!g_FlourishDangerThings)
         return true;
     for (CDangerThing* it = m_pDangerFirst; it != m_pDangerLast; ++it) {
-        CThing* thing = it->first.GetPItem();
+        CThing* thing = ((CThing*)((CBaseIntelligentPointer*)&(it->first))->GetPItem());
         if (thing && !IsKnockedDown(thing) && it->Status != 4)
             return true;
     }

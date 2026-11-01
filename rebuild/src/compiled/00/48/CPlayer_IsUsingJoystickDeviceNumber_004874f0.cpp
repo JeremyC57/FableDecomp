@@ -1,8 +1,10 @@
 // CPlayer::IsUsingJoystickDeviceNumber  retail 0x004874f0
 // __fastcall bool(CPlayer*, long)
 
+class CPlayerManager { public:
+    long GetPlayerNumberFromJoystickDeviceNumber(long a0) const;   // 0x00449990 (Ego_r.pdb ?GetPlayerNumberFromJoystickDeviceNumber@CPlayerManager@@QBEJJ@Z)
+};
 struct CInputThing {
-	long GetDeviceNumber(long which);   // retail 0x449990, __fastcall
 };
 
 class CPlayer { public:
@@ -16,7 +18,7 @@ class CPlayer { public:
 bool CPlayer::IsUsingJoystickDeviceNumber(long which)
 {
 	long stored = this->Number;
-	if (this->PlayerManager->GetDeviceNumber(which) == stored)
+	if (((CPlayerManager*)(this->PlayerManager))->GetPlayerNumberFromJoystickDeviceNumber(which) == stored)
 		return true;
 	return false;
 }

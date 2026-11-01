@@ -22,9 +22,10 @@ public:
 };
 CCharString __fastcall operator+(const char* text, const CCharString& tail);   // 0x0099F690
 
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 class CTCSound {                                            // the thing's interface-16 sound component
-public:
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00
 };
 
 namespace NParticleEngine {
@@ -106,6 +107,6 @@ void __fastcall CTCDParticleEmitter::SendCreationCriteriaSound(CThing& thing)
     if (thing.GetInterface(&sound, 16)) {
         NParticleEngine::CParticleEmitter* particles = emitter->PEmitter.GetPItem();
         CCharString name = "CREATE_PARTICLE_" + particles->Name.ToUpper();
-        sound->PlaySound(name, true, 0, 0, -1);
+        ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, true, 0, 0, -1);
     }
 }

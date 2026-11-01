@@ -66,7 +66,9 @@ public:
     unsigned char              _pad48[0x60 - 0x48];
     EKrakenBossPhase           Phase;                    // +0x60
     long                       Mode;                     // +0x64 EKrakenMode
+private:
     void CreateTentacles();                              // 0x007FC210
+public:
     void RaiseSunkenTentacles();                         // 0x007FB610
     void EndHeadEffects();                               // 0x007FB150
     void InitTentaclesAndHead()

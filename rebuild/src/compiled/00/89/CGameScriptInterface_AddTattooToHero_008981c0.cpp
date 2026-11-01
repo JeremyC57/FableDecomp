@@ -62,7 +62,10 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap_Retail;
-class CThing { public:
+class CThing {
+public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+private: public:
     const C3DVector& GetPos() const;               // 0x004C73D0
 };
 struct CThing_Retail : public CThing {
@@ -93,7 +96,6 @@ struct CThing_Retail : public CThing {
         }
         return false;
     }
-    void Kill(bool silent);                             // 0x004C9B80
 };
 class CThingPlayerCreature : public CThing_Retail { };
 class CThingObject : public CThing_Retail { public:
@@ -140,5 +142,5 @@ void CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) con
         if (!hero->m_dead && hero->GetInterfaceOut(&morph, 3))
             morph->UploadTextureMorphsToEngine(g_pEngine->Graphics->Engine, 0, false, 0.0f);
     }
-    tattoo->Kill(false);
+    ((CThing*)tattoo)->Kill(false);
 }

@@ -4,12 +4,15 @@
 
 class CThingCreatureBase;
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 class CIntelligentPointer
 {
 public:
     CIntelligentPointer &operator=(CIntelligentPointer &other);
     // 0xa01b50: read the referenced object out of 'other'
-    CThingCreatureBase *GetObject();
     // 0xa01b90: assign the referenced object into 'this'
     void Assign(CThingCreatureBase *obj);
 
@@ -18,6 +21,6 @@ public:
 
 CIntelligentPointer &CIntelligentPointer::operator=(CIntelligentPointer &other)
 {
-    Assign(other.GetObject());
+    Assign(((CThingCreatureBase*)((CBaseIntelligentPointer*)&other)->GetPItem()));
     return *this;
 }

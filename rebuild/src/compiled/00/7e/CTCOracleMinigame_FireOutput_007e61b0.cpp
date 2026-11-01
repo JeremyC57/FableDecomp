@@ -19,8 +19,10 @@ struct CRandomGenerator {
     unsigned long Seed;
     __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }
 };
-class CWorld { public:
-    CRandomGenerator* GetRandomGenerator();         // 0x0049D810
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private:          // 0x0049D810
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
@@ -55,7 +57,7 @@ class CTCOracleMinigame : public CTCBase { public:
 
 void CTCOracleMinigame::FireOutput()
 {
-    long symbol = GetWorld().GetRandomGenerator()->Next() & 3;
+    long symbol = ((CRandomGenerator*)((CWorld*)&(GetWorld()))->GetWorldSeed())->Next() & 3;
     Output[NumOutputsFired] = symbol;
     SymbolsFiring[symbol] = 1;
     FramesFired[symbol] = CWorld::GetFrame();

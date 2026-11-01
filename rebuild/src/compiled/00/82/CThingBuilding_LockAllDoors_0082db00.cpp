@@ -43,9 +43,12 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 class CThing;
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {
     unsigned char _pad00[8];
-    CThing* GetPItem() const;                        // 0x00A01B50
 };
 struct SDoorNode {
     SDoorNode*          _M_next;
@@ -133,13 +136,13 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
         for (SDoorNode* node = doors->Doors->_M_next; node != doors->Doors; node = node->_M_next) {
             const CIntelligentPointer& door = node->_M_data;
             CTCDoor* tc;
-            if (door.GetPItem() && !door.GetPItem()->Dead && door.GetPItem() && !door.GetPItem()->Dead
-                && door.GetPItem()->GetInterface(&tc, 0x26)) {
+            if (((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem()) && !((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem())->Dead && ((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem()) && !((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem())->Dead
+                && ((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem())->GetInterface(&tc, 0x26)) {
                 if (!tc->IsLockableByOwner())
                     continue;
                 const CThingCreatureBase* hero = static_cast<const CThingBuilding*>(this)->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
                 if (hero && !hero->Dead && lock && tc->OwnerLock) {
-                    const C3DVector& a = door.GetPItem()->GetPos();
+                    const C3DVector& a = ((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem())->GetPos();
                     const C3DVector& b = hero->GetPos();
                     float dx = b.X - a.X;
                     float dy = b.Y - a.Y;
@@ -147,14 +150,14 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
                     if (dz * dz + dy * dy + dx * dx < G_DoorPlayerRadiusSq)
                         continue;
                     const CTCCurrentBuilding* current;
-                    if (hero->GetInterface(&current, 0x75) && current->Building.GetPItem() == this)
+                    if (hero->GetInterface(&current, 0x75) && ((CThing*)((CBaseIntelligentPointer*)&(current->Building))->GetPItem()) == this)
                         continue;
                     tc->OwnerLock = 0;
                 }
                 if (!tc->IsClosed() && lock && checkBlocking) {
                     CThingCreatureBase* player = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                     CTCSwitchableNavigation* nav;
-                    if (door.GetPItem()->GetInterface(&nav, 0x79) && nav->WouldBlockPos(player->GetPos()))
+                    if (((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem())->GetInterface(&nav, 0x79) && nav->WouldBlockPos(player->GetPos()))
                         continue;
                 }
                 tc->ScriptTriggerOpen(!lock);

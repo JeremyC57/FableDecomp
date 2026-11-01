@@ -19,9 +19,12 @@ class CThing { public:
 struct CThingCombatGeometry : public CThing {
  unsigned char _beforePhysics[0x60]; CTCPhysicsBase* PhysicsTC;
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentTargetView {
  void* __vftable; CThingCombatGeometry* Object;
- CThingCombatGeometry* GetPItem() const; // 00A01B50
 };
 struct CMeleeNearbyBaseMethods : CAIStateGroupBase {
  CIntelligentTargetView Enemy;
@@ -33,11 +36,11 @@ struct CMeleeCloseMethods : CMeleeNearbyBaseMethods {
 bool CMeleeCloseMethods::IsStillRunnable(bool initial) {
  if(CMeleeNearbyBaseMethods::IsStillRunnable(initial)) {
   CThingCombatGeometry* creature=(CThingCombatGeometry*)PBrain->Creature;
-  CThingCombatGeometry* enemy=Enemy.GetPItem();
+  CThingCombatGeometry* enemy=((CThingCombatGeometry*)((CBaseIntelligentPointer*)&Enemy)->GetPItem());
   const C3DVector& mine=creature->GetPos();
   C3DVector delta=enemy->GetPos()-mine;
   if(fabs(delta.Z)<2.0f) {
-   CThingCombatGeometry* other=Enemy.GetPItem();
+   CThingCombatGeometry* other=((CThingCombatGeometry*)((CBaseIntelligentPointer*)&Enemy)->GetPItem());
    CThingCombatGeometry* me=(CThingCombatGeometry*)PBrain->Creature;
    float radius=(me->PhysicsTC->Radius+other->PhysicsTC->Radius)*1.2f+2.0f;
    if(delta.GetLengthSquared2D()<radius*radius) return true;

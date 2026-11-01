@@ -28,11 +28,13 @@ public:
         return C3DVector(here.X - pos.X, here.Y - pos.Y, 0.0f);
     }
 };
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer_CThingConst {
     virtual void v00();
     void* m_pItem;
-    CThing* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
-    CThing* operator->() const { return GetPItem(); }
+    CThing* operator->() const { return ((CThing*)((CBaseIntelligentPointer*)this)->GetPItem()); }
 };
 struct CCameraState {
     unsigned char _pad00[0x10];
@@ -62,8 +64,8 @@ struct CScriptModuleConversationBase : CScriptModuleBase {
     float RandomDirection;                           // +0x5c
     bool IsThingsOk() const
     {
-        const CThing* speaker = PSpeaker.GetPItem();
-        const CThing* spokenTo = PSpokenTo.GetPItem();
+        const CThing* speaker = ((CThing*)((CBaseIntelligentPointer*)&PSpeaker)->GetPItem());
+        const CThing* spokenTo = ((CThing*)((CBaseIntelligentPointer*)&PSpokenTo)->GetPItem());
         return speaker && spokenTo && speaker != spokenTo;
     }
 };

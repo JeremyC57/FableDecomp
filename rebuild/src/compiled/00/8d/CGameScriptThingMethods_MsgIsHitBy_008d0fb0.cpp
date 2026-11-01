@@ -52,10 +52,13 @@ struct CThingNative {
     unsigned char  Metadata[0x45];
     unsigned char  LifeFlags;                           // +0x91 (bit 0 = dead)
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct PointerView {                                    // CIntelligentPointer<CThing>
     void*            VTable;
     void*            Info;
-    CThingNative* GetPItem() const;                     // 0x00A01B50
 };
 struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
@@ -109,10 +112,10 @@ bool CTCEntityEventsNative::GetEvent(CEventHitBy** out, const CInFramesFilter& f
 bool CGameScriptThingMethods::MsgIsHitBy(const CCharString& attackerScriptName) const
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
-    if (p->GetPItem() && !(p->GetPItem()->LifeFlags & 1)) {
+    if (((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()) && !(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags & 1)) {
         long last = LastFrame(g_pQuestManager->PQuestCurrentlyRunning);
         long current = CurrentFrame(g_pQuestManager->PQuestCurrentlyRunning);
-        CThingNative* thing = p->GetPItem();
+        CThingNative* thing = ((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());
         if (thing->UsingComponents[2] & 4) {
             const ComponentMap* map = &thing->Components;
             const ComponentEntry* it = map->LowerBound((ETCInterfaceType)0x42);

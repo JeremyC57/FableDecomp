@@ -10,8 +10,11 @@
 #define NOINLINE __declspec(noinline)
 #endif
 class C3DVector { public: float X,Y,Z; C3DVector(float x=0,float y=0,float z=0):X(x),Y(y),Z(z) {} C3DVector(const C3DVector& p):X(p.X),Y(p.Y),Z(p.Z) {} C3DVector operator-(const C3DVector& p) const { return C3DVector(X-p.X,Y-p.Y,Z-p.Z); } float GetLengthSquared() const { return X*X+Y*Y+Z*Z; } };
-class CThing { public: const C3DVector& GetPosition() const; }; class CThingObject:public CThing {};
-class CThingCompare_NearestToPos { public: C3DVector Pos; template<class T> NOINLINE bool operator()(T* a,T* b) const { if(!a) return false; if(!b) return true; C3DVector da=a->GetPosition()-Pos; C3DVector db=b->GetPosition()-Pos; return da.GetLengthSquared()<db.GetLengthSquared(); } };
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private:  }; class CThingObject:public CThing {};
+class CThingCompare_NearestToPos { public: C3DVector Pos; template<class T> NOINLINE bool operator()(T* a,T* b) const { if(!a) return false; if(!b) return true; C3DVector da=((CThing*)a)->GetPos()-Pos; C3DVector db=((CThing*)b)->GetPos()-Pos; return da.GetLengthSquared()<db.GetLengthSquared(); } };
 typedef CThing* Element;
 namespace std {
 template<class Iter,class Distance,class T,class Compare> NOINLINE void __fastcall __push_heap(Iter first,Distance hole,Distance top,T value,Compare comp) { Distance parent=(hole-1)/2; while(hole>top && comp(*(first+parent),value)) { *(first+hole)=*(first+parent); hole=parent; parent=(hole-1)/2; } *(first+hole)=value; }

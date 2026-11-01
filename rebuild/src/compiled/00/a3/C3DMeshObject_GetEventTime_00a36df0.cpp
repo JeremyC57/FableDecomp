@@ -40,8 +40,10 @@ class C3DAnimationStats { public:
 class C3DAnimationInfo { public:
     CCountedPointer<const C3DAnimationStats> GetAnimationStats();   // 0x00A269C0
 };
+class CMeshDataBank { public:
+    C3DAnimationInfo const* PeekAnimation(unsigned long a0) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
+};
 struct C3DAnimationBank {
-    C3DAnimationInfo* GetInfo(long index);               // 0x00A242C0
 };
 struct SAnimationRecord {
     unsigned char _pad00[8];
@@ -73,7 +75,7 @@ class C3DMeshObject { public:
 float C3DMeshObject::GetEventTime(long event, const SAnimationRef* animation, const SAnimationSource* source)
 {
     long animationID = animation->Holder->Player->GetRecord()->AnimationID;
-    C3DAnimationInfo* info = source->GetBank()->GetInfo(animationID);
+    C3DAnimationInfo* info = ((C3DAnimationInfo*)((CMeshDataBank*)(source->GetBank()))->PeekAnimation(animationID));
     float time = info->GetAnimationStats()->GetEventTime(event);
     return time;
 }

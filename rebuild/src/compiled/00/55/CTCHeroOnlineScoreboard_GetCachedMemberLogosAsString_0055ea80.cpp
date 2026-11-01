@@ -9,7 +9,7 @@
 // hidden CWideString result), operator+(const CWideString&, const wchar_t*) 0x0099BF30, ~CWideString 0x0099B510,
 // CCharString::ToWideString 0x0099E480, CWideString::operator+= 0x0099B8D0 / 0x0099B940, CCharString(const char*, long)
 // 0x0099EBF0, CAFile::StartFileScan 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,
-// CWideString::ConvertToCharString 0x0099B2C0, CCharString::GetSubString 0x0099EC70, CCharString::operator= 0x0099EFB0,
+// CWideString::ToCharString 0x0099B2C0, CCharString::GetSubString 0x0099EC70, CCharString::operator= 0x0099EFB0,
 // CCharString(const CCharString&) 0x0099EC30.
 // Layout: retail MyClans (STLport list, one node pointer) +0x38, ClanMembers +0x40, TaskState +0x54 (Ego_r.pdb +0x44 /
 // +0x54 / +0x74 less the 16->12-byte map/vector and 12->4-byte list shrink; landed UploadPlayerScores has TaskState +0x54).
@@ -37,14 +37,16 @@ class CCharString { public:
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };
 class CWideStringData;
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     CWideStringData* PStringData;
     CWideString(const wchar16* text);                // 0x0099B6B0
     ~CWideString();                                  // 0x0099B510
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     const CWideString& operator+=(const wchar16* text);        // 0x0099B940
     long GetLength() const;                          // 0x0099B220
-    CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);   // 0x0099BF30
 CCharString __fastcall GFIntToCharString(long value);                              // 0x0099F830
@@ -114,7 +116,7 @@ CCharString CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString()
         if (CAFile::StartFileScan(path, handle, data.FileName)) {
             CWideString name(data.FileName);
             long start = path.GetLength() - 1;
-            CCharString file = name.ConvertToCharString().GetSubString(start, name.GetLength());
+            CCharString file = ((CWideString*)&name)->ToCharString().GetSubString(start, name.GetLength());
             extension = file.GetSubString(0, file.GetLength() - 4);
         }
         result += extension;

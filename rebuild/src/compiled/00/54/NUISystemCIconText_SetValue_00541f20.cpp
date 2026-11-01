@@ -1,5 +1,5 @@
 // NUISystem::CIconText::SetValue(const CWideString&) -- treat the value as a text symbol: show its text-bank string when the game (else system) bank has one, otherwise the value itself
-// Retail 0x00541F20, 166 bytes (vtable 0x012470CC slot 144, `ret 4`). Callees: CWideString::ConvertToCharString 0x0099B2C0,
+// Retail 0x00541F20, 166 bytes (vtable 0x012470CC slot 144, `ret 4`). Callees: CWideString::ToCharString 0x0099B2C0,
 // CDataBank::GetTextBySymbol 0x009C95E0, ~CCharString 0x0099EAE0, CWideString::operator!= 0x0099B0F0 (empty string 0x013BCA24),
 // CWideString::operator= 0x0099B7D0, ~CWideString 0x0099B510, UpdateText (slot 150, +0x258).
 // Name: Ego_r.pdb ?SetValue@CIconText@NUISystem@@UAEXABVCWideString@@@Z.
@@ -15,12 +15,14 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
  void* PStringData;
  CWideString(const CWideString&);
  ~CWideString();                                     // 0x0099B510
  const CWideString& operator=(const CWideString&);         // 0x0099B7D0
  bool operator!=(const CWideString&) const;          // 0x0099B0F0
- CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 namespace NGameText {
 class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
@@ -74,13 +76,13 @@ class CIconText { public:
 void CIconText::SetValue(const CWideString& value)
 {
  if (Game_013b86a0) {
-  CWideString text = Game_013b86a0->GetTextDataBank()->GetTextBySymbol(value.ConvertToCharString());
+  CWideString text = Game_013b86a0->GetTextDataBank()->GetTextBySymbol(((CWideString*)&value)->ToCharString());
   if (text != Empty_013bca24)
    Text = text;
   else
    Text = value;
  } else if (System_013b871c) {
-  CWideString text = System_013b871c->GetTextDataBank()->GetTextBySymbol(value.ConvertToCharString());
+  CWideString text = System_013b871c->GetTextDataBank()->GetTextBySymbol(((CWideString*)&value)->ToCharString());
   if (text != Empty_013bca24)
    Text = text;
   else

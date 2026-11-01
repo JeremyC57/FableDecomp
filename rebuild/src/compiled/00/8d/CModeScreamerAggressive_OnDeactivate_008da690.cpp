@@ -23,8 +23,10 @@ template <class K, class V, class TCompare> class CVectorMap;
 typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry*First,*Last,*Limit;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //40F020
+class CThing { public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+};
 struct ThingNative {
- void Kill(bool); //4C9B80: native kill flags/deferred destruction
  void* VTable;unsigned char BaseData[0x1c];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0x3c];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
  __forceinline void* GetInterface(int type){ETCInterfaceType key = (ETCInterfaceType)(type);ComponentMap*map=&Components;ComponentEntry*p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;return ((void*)p->second);}
@@ -50,17 +52,20 @@ struct ModeStandNative {
 FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C
  virtual ~BaseIntelligentPointer(); //A01C10
- ThingNative*GetPItem()const; //A01B50
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
  IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
- IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(p.GetPItem());return*this;}
+ IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem()));return*this;}
 };
 FABLE_STATIC_ASSERT(sizeof(IntelligentThingPointer)==8);
 
@@ -72,8 +77,8 @@ struct ModeScreamer:ModeStandNative {
 FABLE_STATIC_ASSERT(offsetof(ModeScreamer,PEffect)==0x74);
 FABLE_STATIC_ASSERT(offsetof(ModeScreamer,PTarget)==0x7c);
 void ModeScreamer::OnDeactivate(){
- if(PEffect.GetPItem()&&!(PEffect.GetPItem()->LifeFlags&1)){
-  PEffect.GetPItem()->Kill(true);
+ if(((ThingNative*)((CBaseIntelligentPointer*)&PEffect)->GetPItem())&&!(((ThingNative*)((CBaseIntelligentPointer*)&PEffect)->GetPItem())->LifeFlags&1)){
+  ((CThing*)(((ThingNative*)((CBaseIntelligentPointer*)&PEffect)->GetPItem())))->Kill(true);
   PEffect=IntelligentThingPointer(0);
  }
  PTarget=IntelligentThingPointer(0);

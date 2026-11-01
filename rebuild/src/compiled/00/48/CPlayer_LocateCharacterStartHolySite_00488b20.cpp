@@ -2,7 +2,7 @@
 // Leaf: ?LocateCharacterStartHolySite@CPlayer@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488B20, 494 bytes, `ret 4`.
 // Callees: the /Gr (__fastcall) template copy 0x0048D5C0 (hidden result in ecx; copies the list's things whose +0xD4 flag
-//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / GetAsCharArray() 0x0099AF10 on the
+//   is set onto back_inserter(sites)), CWideString::ToCharString 0x0099B2C0 / GetAsCharArray() 0x0099AF10 on the
 //   global 0x013B866C (the start holy site name), CCharString copy 0x0099EC30 / default 0x0099E4B0 / dtor 0x0099EAE0 /
 //   Format 0x0099F1F0 ("*** WARNING : failed to find a holy site with ScriptName %S" 0x01238074), SGI __find_if 0x0048CC60
 //   (/Gr: first ecx, last edx, the binder by value, the iterator tag), the bound predicate 0x0048BC70
@@ -27,9 +27,11 @@ public:
 public:
     void __cdecl Sprintf(const char*, ...);   // 0x0099F1F0
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
-    CCharString ConvertToCharString() const;       // 0x0099B2C0
     const unsigned short* GetAsCharArray() const;               // 0x0099AF10
 };
 extern CWideString g_CWideString_013b866c;         // 0x013B866C (the character start holy site name)
@@ -194,7 +196,7 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
     CRetailVector<CThing*> sites;
     CopyHolySites(owner->HolySites.begin(), owner->HolySites.end(), back_inserter(sites));
     if (!RespawnValid) {
-        CThing** found = std::find_if(sites.begin(), sites.end(), std::bind2nd(std::ptr_fun(&IsThingScriptNamed), g_CWideString_013b866c.ConvertToCharString()));
+        CThing** found = std::find_if(sites.begin(), sites.end(), std::bind2nd(std::ptr_fun(&IsThingScriptNamed), ((CWideString*)&g_CWideString_013b866c)->ToCharString()));
         if (found != sites.end()) {
             *site = *found;
             return true;

@@ -1,5 +1,7 @@
 struct CInner;
-void __fastcall CConsoleInputBase_dtor_inner(CInner* input);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 
 class CConsoleInputBase { public:
     unsigned int vftable;
@@ -11,7 +13,7 @@ void* __fastcall CConsoleInputBase_scalar_deleting_destructor(CConsoleInputBase*
 {
     (void)edx;
     input->vftable = 0x122e5b0;
-    CConsoleInputBase_dtor_inner((CInner*)(&input->inner));
+    ((CCharString*)((CInner*)(&input->inner)))->~CCharString();
     if (flags & 1)
         operator delete(input);
     return input;

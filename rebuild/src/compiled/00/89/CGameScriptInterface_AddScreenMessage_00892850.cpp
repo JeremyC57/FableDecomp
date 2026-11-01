@@ -84,7 +84,10 @@ extern CEngine_Retail* g_pEngine;                       // 0x013B86A0
 class CPlayerGui { public: void AddScreenMessage(const CWideString& text); };   // 0x00438AA0
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
-struct CWorld_Retail { unsigned long* GetRandomSeed(); };   // 0x0049D810
+class CWorld { public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+};
+struct CWorld_Retail {  };   // 0x0049D810
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECT_FIRST, TEXT_GROUP_SELECT_RANDOM };
 class CGameScriptInterface { public:
     virtual void AddScreenMessage(const CCharString& textTag, ETextGroupSelectionMethod method) const;
@@ -103,7 +106,7 @@ void CGameScriptInterface::AddScreenMessage(const CCharString& textTag, ETextGro
             const CRetailVector<long>* entries = &bank->GetPGroupEntry(entry, true)->Entries;
             unsigned long count = entries->size();
             if (count > 1 && method)
-                GFRandom(count, World->GetRandomSeed());
+                GFRandom(count, ((CWorld*)World)->GetWorldSeed());
         }
     } else
         text = L"(" + textTag.ToWideString();

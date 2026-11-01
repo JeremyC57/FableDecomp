@@ -5,7 +5,10 @@ struct ListNode {
     ListNode* next;
 };
 
-class CTCKraken { public:
+class CTCKraken {
+public:
+    void EndHeadEffects();   // 0x007FB150 (Ego_r.pdb ?EndHeadEffects@CTCKraken@@QAEXXZ)
+private: public:
     char pad[0x44];
     ListNode* list; // +0x44
 
@@ -15,7 +18,6 @@ public:
 
 // callees (thiscall members modeled as __fastcall free fns)
 void __fastcall Kraken_sub_7fc210(CTCKraken* self);
-void __fastcall Kraken_sub_7fb150(CTCKraken* self);
 
 void __fastcall InitTentaclesAndHead(CTCKraken* self)
 {
@@ -24,5 +26,5 @@ void __fastcall InitTentaclesAndHead(CTCKraken* self)
         Kraken_sub_7fc210(self);
     }
     ((CTCKraken*)(self))->RaiseSunkenTentacles();
-    Kraken_sub_7fb150(self);
+    ((CTCKraken*)self)->EndHeadEffects();
 }

@@ -12,7 +12,10 @@ class CIsThingAlive { public:
 };
 }
 using NScript::CIsThingAlive;
-struct CExitWardensOffice {void* Vtable;CGameScriptInterface* Script;CScriptThing Thing;void SetPredicate(const CIsThingAlive&);bool IsActiveThreadTerminating()const;void Main();}; //F35B10/F35B30
+class CEntityScriptBase { public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+};
+struct CExitWardensOffice {void* Vtable;CGameScriptInterface* Script;CScriptThing Thing;void SetPredicate(const CIsThingAlive&);void Main();}; //F35B10/F35B30
 __forceinline bool WardenUsed(const CScriptThing& thing,const CCharString& name){typedef bool(CScriptThing::*F)(const CCharString&)const;return (thing.*static_cast<const F*>(thing.__vftable)[20])(name);}
 __forceinline void WardenFrame(CGameScriptInterface* s){typedef void(CGameScriptInterface::*F)()const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+7,sizeof(f));(s->*f)();}
 __forceinline void WardenInfo(CGameScriptInterface* s,const CCharString& name){typedef void(CGameScriptInterface::*F)(const CCharString&)const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+115,sizeof(f));(s->*f)(name);}
@@ -23,14 +26,14 @@ typedef char Thing8[offsetof(CExitWardensOffice,Thing)==8?1:-1];
 #endif
 void CExitWardensOffice::Main(){
  {CIsThingAlive alive(Thing);SetPredicate(alive);}
- WardenFrame(Script);if(IsActiveThreadTerminating())return;
- while(!IsActiveThreadTerminating()){
+ WardenFrame(Script);if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
+ while(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()){
  bool used;{CCharString name("SCRIPT_NAME_HERO",-1);used=WardenUsed(Thing,name);}
  if(used){
- if(IsActiveThreadTerminating())return;
+ if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
  {CCharString name("TEXT_QST_055_DIARY_LOCKED",-1);WardenInfo(Script,name);}
- while(!WardenClicked(Script)){WardenFrame(Script);if(IsActiveThreadTerminating())return;}
- if(IsActiveThreadTerminating())return;
+ while(!WardenClicked(Script)){WardenFrame(Script);if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;}
+ if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
  }
  WardenFrame(Script);
  }

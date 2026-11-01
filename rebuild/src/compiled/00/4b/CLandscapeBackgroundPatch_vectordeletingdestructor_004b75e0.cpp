@@ -3,12 +3,14 @@ class CLandscapeBackgroundPatch { public:
     void* vftable;
 };
 
-void __fastcall CLandscapeBackgroundPatch_dtor_0099eae0(CLandscapeBackgroundPatch* self);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 void operator delete(void*);
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
 {
-    CLandscapeBackgroundPatch_dtor_0099eae0(self);
+    ((CCharString*)self)->~CCharString();
     if (flags & 1)
         operator delete(self);
     return self;

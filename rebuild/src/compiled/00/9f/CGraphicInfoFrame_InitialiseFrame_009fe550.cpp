@@ -45,7 +45,10 @@ struct SharedFrame {
  CGraphicFrameData* FrameData;
  __forceinline void Assign(const SharedFrame& p) { CGraphicFrameData* old=FrameData; if(old && --old->ReferenceCount==0) { old->~CGraphicFrameData(); operator delete(old); } FrameData=p.FrameData; if(FrameData) ++FrameData->ReferenceCount; }
 };
-class CManagedTexture { public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&); bool ClearHandle() const; };
+class CManagedTexture {
+public:
+    bool Release();   // 0x00A69AD0 (Ego_r.pdb ?Release@CManagedTexture@@QAE_NXZ)
+private: public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&);  };
 class CGraphicInfoFrame;
 struct CFrameData : CResource {
  SharedFrame Frame; CManagedTexture Texture; CManagedTexture SmallTexture; void* LoadInfo; void* LoadContext;
@@ -64,6 +67,6 @@ void CGraphicInfoFrame::InitialiseFrame(const SharedFrame& frame,const CManagedT
  if(!Data.Object) Data.Assign(new CFrameData(this));
  Data.Object->Frame.Assign(frame);
  Data.Object->Texture=texture;
- texture.ClearHandle();
+ ((CManagedTexture*)&texture)->Release();
  Data.Object->CurrentPreloadMipmap=level;
 }

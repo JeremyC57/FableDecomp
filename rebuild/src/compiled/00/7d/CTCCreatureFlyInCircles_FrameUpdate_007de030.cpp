@@ -53,6 +53,9 @@ struct CTCFlagged {                                     // the type-0x3a compone
     unsigned char _pad00[0x50];
     unsigned char InMap : 1;                            // +0x50 bit 0
 };
+class CThing { public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+};
 class CThingCreatureBase { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
@@ -71,7 +74,6 @@ class CThingCreatureBase { public:
             it = map->last;
         return it->component;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
 };
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) const;        // 0x004FC600
@@ -100,7 +102,7 @@ void CTCCreatureFlyInCircles::FrameUpdate()
     if (!Active)
         return;
     C3DVector facing = Creature->PhysicsTC->GetFacing();
-    C3DVector pos = Creature->GetPosition();
+    C3DVector pos = ((CThing*)Creature)->GetPos();
     Creature->Health = 100.0f;
     if (ModeChangeQueued)
         ChangeMode();

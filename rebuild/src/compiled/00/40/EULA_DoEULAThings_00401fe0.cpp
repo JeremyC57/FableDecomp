@@ -2,7 +2,7 @@
 // Leaf: DoEULAThings
 // Retail: Fable.exe @ 0x00401FE0, 136 bytes, `__fastcall` with no arguments, plain `ret` (FableWin.pdb ?DoEULAThings@EULA@@YIHXZ:
 // a namespace function returning int). Replaces the landed asm_bake oracle rebuild/src/compiled/00/40/EULA_DoEULAThings_00401fe0.cpp.
-// Callees: imports LoadLibraryW 0x0143FE38, GetProcAddress 0x0143FE44, FreeLibrary 0x0143FE3C; CWideString::ConvertToCharString
+// Callees: imports LoadLibraryW 0x0143FE38, GetProcAddress 0x0143FE44, FreeLibrary 0x0143FE3C; CWideString::ToCharString
 // 0x0099B2C0 (by-value CCharString through a hidden pointer) on the global 0x013BCA28, ~CCharString 0x0099EAE0; the export
 // is `__stdcall` (it pops its four arguments). Data: L"eula.dll" 0x0122D680, "EBUEula" 0x0122D678, "" 0x0129AAF4, the two
 // file-name pointers 0x01374F54 / 0x01374F58. wchar_t is not a VC7.1 built-in here: the wide literal is `unsigned short`.
@@ -25,8 +25,10 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* PStringData;
-    CCharString ConvertToCharString() const;   // 0x0099B2C0
 };
 
 extern CWideString g_RegistryKeyLocation;  // 0x013BCA28
@@ -45,7 +47,7 @@ int __fastcall DoEULAThings()
     EBUEulaProc eula = (EBUEulaProc)GetProcAddress(library, "EBUEula");
     if (eula != 0)
     {
-        bool accepted = eula(g_RegistryKeyLocation.ConvertToCharString().GetString(), g_EULAFileName, g_WarrantyFileName, 1) == 1;
+        bool accepted = eula(((CWideString*)&g_RegistryKeyLocation)->ToCharString().GetString(), g_EULAFileName, g_WarrantyFileName, 1) == 1;
         if (accepted)
         {
             FreeLibrary(library);

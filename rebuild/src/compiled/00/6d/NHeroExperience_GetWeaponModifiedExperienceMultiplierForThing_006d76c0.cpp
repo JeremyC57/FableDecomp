@@ -47,9 +47,12 @@ public:
     }
 };
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {
     unsigned char _body[8];
-    CThing* GetPItem() const;                               // 0x00A01B50
 };
 
 class CTCInventoryWeapons {
@@ -78,8 +81,8 @@ float __fastcall GetWeaponModifiedExperienceMultiplierForThing(const CThing& thi
     float multiplier = 1.0f;
     if (thing.HasTC(TC_INVENTORY_WEAPONS)) {
         const CTCInventoryWeapons* weapons = thing.GetConstTC<CTCInventoryWeapons>(TC_INVENTORY_WEAPONS);
-        const CThing* melee = weapons->PActiveMeleeWeapon.GetPItem();
-        const CThing* ranged = weapons->PActiveRangedWeapon.GetPItem();
+        const CThing* melee = ((CThing*)((CBaseIntelligentPointer*)&(weapons->PActiveMeleeWeapon))->GetPItem());
+        const CThing* ranged = ((CThing*)((CBaseIntelligentPointer*)&(weapons->PActiveRangedWeapon))->GetPItem());
         if (melee && !melee->IsDead() && melee->HasTC(TC_OBJECT_AUGMENTATIONS))
             multiplier = melee->GetConstTC<CTCObjectAugmentations>(TC_OBJECT_AUGMENTATIONS)->GetExperienceMultiplier();
         if (ranged && !ranged->IsDead() && ranged->HasTC(TC_OBJECT_AUGMENTATIONS))

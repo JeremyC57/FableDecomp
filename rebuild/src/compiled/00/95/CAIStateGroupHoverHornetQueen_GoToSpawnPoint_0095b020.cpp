@@ -60,8 +60,10 @@ class CTCCreatureNavigation { public:
 };
 extern long g_NavigatorTypeHover;               // 0x0129CB44
 extern long g_NavigatorTypeDefault;             // 0x0129CBA4
-class CWorld { public:
-    unsigned long& GetRandomSeed();             // 0x0049D810
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private:              // 0x0049D810
 };
 class CThingSearchTools { public:
     CThing* GetPFirstThingInRoughArea(const CRectI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** found);   // 0x007FD110
@@ -116,7 +118,7 @@ struct CAIStateGroup_HoverHornetQueen : CAIStateGroup_HoverMovementBase {
 
 void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
 {
-    GetPWorld()->GetRandomSeed();
+    ((CWorld*)(GetPWorld()))->GetWorldSeed();
     CThingCreatureBase* creature = GetCreature();
     CTCCreatureNavigation* nav;
     bool has = (creature->m_presentBits[0] >> 7) & 1;

@@ -1,9 +1,12 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 struct FableDestVal_0085baf0_t
-{ char pad[0x8]; void FABLE_FASTCALL inner(); void FABLE_FASTCALL outer(); };
+{ char pad[0x8]; void FABLE_FASTCALL outer(); };
+class CBaseObject;
+class CBaseIntelligentPointer { public: CBaseObject* GetPItem() const; };   // 0x00A01B50 (Ego_r.pdb)
+
 static int g_inner = 0, g_outer = 0;
-void FABLE_FASTCALL FableDestVal_0085baf0_t::inner() { g_inner++; }
+CBaseObject* CBaseIntelligentPointer::GetPItem() const { g_inner++; return 0; }
 void FABLE_FASTCALL FableDestVal_0085baf0_t::outer() { g_outer++; }
 extern "C" void FABLE_FASTCALL FableDestVal_0085baf0(FableDestVal_0085baf0_t* action);
 int main()

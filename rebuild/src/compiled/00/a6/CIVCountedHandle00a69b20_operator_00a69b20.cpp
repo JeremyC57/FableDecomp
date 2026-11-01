@@ -30,17 +30,19 @@ struct CIVCountedPointer {
     }
 };
 
+class CManagedTexture { public:
+    bool Release();   // 0x00A69AD0 (Ego_r.pdb ?Release@CManagedTexture@@QAE_NXZ)
+};
 struct CIVCountedHandle_00a69b20 {
     virtual void v00();
     CIVCountedPointer Data;                // +4
-    void ClearHandle();                    // 0x00A69AD0
     CIVCountedHandle_00a69b20& operator=(const CIVCountedHandle_00a69b20& other);
 };
 
 CIVCountedHandle_00a69b20& CIVCountedHandle_00a69b20::operator=(const CIVCountedHandle_00a69b20& other)
 {
     if (Data.Object != other.Data.Object) {
-        ClearHandle();
+        ((CManagedTexture*)this)->Release();
         Data = other.Data;
     }
     return *this;

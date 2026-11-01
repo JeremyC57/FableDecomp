@@ -99,8 +99,11 @@ public:
 };
 CManager& __fastcall GetGameEventManager();                 // 0x006F90B0
 }
+class C3DAnimationInfo;
+class CMeshDataBank { public:
+    C3DAnimationInfo const* PeekAnimation(unsigned long a0) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
+};
 struct CAnimationBank {
-    long Query(long animation) const;                       // 0x00A242C0
 };
 class CWorld { public:
     unsigned char   _pad00[0x3c];
@@ -134,7 +137,7 @@ void CTCMeleeTrap::InitialiseStrikeAnimation(const CAnimationEntry& entry)
     manager.GetEventNames(animation, names);
     StrikeAnimation = false;
     CWorld* world = (&GetWorld());
-    world->PAnimationBank->Query(entry.Animation);
+    ((CMeshDataBank*)(world->PAnimationBank))->PeekAnimation(entry.Animation);
     for (CCharString* it = names._M_start; it != names._M_finish; ++it) {
         if (it->StartsWith(g_StrikeStart) || *it == g_CombatStrikeEvent || *it == g_CombatStrikeEvent2)
             StrikeAnimation = true;

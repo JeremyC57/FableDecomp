@@ -37,10 +37,12 @@ struct CGameState {
     bool          SuspendIdlingForCutscene;     // +0x55
 };
 
+class CWorld { public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+};
 struct CGlobalComponents {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CGameState* GetGameState();         // slot 4 (+0x10)
-    CRandomGenerator* GetRandomGenerator();     // 0x0049D810
 };
 
 struct CMovementComponent {
@@ -123,7 +125,7 @@ void CModeStandBase::AnimUpdate(CAnimateThing& anim)
         UpdateWalkingAnim(anim);
         if (creature->GetMaxJoggingSpeed(creature->GetPos() + creature->Movement->GetVelocity()) >= speed) {
             if (IdleCounter > GetNoFramesBeforePlayingCombinationIdleAnims(GetModeType())) {
-                if (GetGlobalComponents()->GetRandomGenerator()->Next() % 3 == 0) {
+                if (((CRandomGenerator*)((CWorld*)(GetGlobalComponents()))->GetWorldSeed())->Next() % 3 == 0) {
                     AddCombinationIdles(creature, anim);
                     IdleCounter = 0;
                 }

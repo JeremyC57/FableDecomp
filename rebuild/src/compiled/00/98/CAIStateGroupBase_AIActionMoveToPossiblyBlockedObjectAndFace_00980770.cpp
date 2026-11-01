@@ -65,9 +65,11 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     virtual void v00();
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThing& p);   // 0x004CC340
-struct CTCUserActionPointBase {                 // interface 0x2d
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface 0x2d
     bool GetFreeActionPoint(CThing* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
-    void FreeActionPoint(long index);           // 0x007FEF40
 };
 class CTCCarrying;
 class CTCCarryable {                            // interface 0x47 (vtable 0x0123B35C slot 21: `push 47h ; pop eax`)
@@ -145,14 +147,14 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
     CThing* carried = ((CThing*)thing.GetPItem());
     bool isCarryable = carried->TestTC(0x47);
     if (!isCarryable || ((CTCCarryable*)carried->GetTC(0x47))->PCarryingTC != 0) {
-        point->FreeActionPoint(index);
+        ((CTCUserActionPointBase*)point)->SetActionPointAsFree(index);
         return 3;
     }
     for (;;) {
         if (!IS_THING_ALIVE(thing))
             return 3;
         if (!filter()) {
-            point->FreeActionPoint(index);
+            ((CTCUserActionPointBase*)point)->SetActionPointAsFree(index);
             return 3;
         }
         bool reached;
@@ -164,7 +166,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
     if (!IS_THING_ALIVE(thing))
         return 3;
     if (result != 2 || !filter()) {
-        point->FreeActionPoint(index);
+        ((CTCUserActionPointBase*)point)->SetActionPointAsFree(index);
         if (result == 2)
             result = 3;
         return result;
@@ -175,7 +177,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
         if (!IS_THING_ALIVE(thing))
             return 3;
         if (!filter()) {
-            point->FreeActionPoint(index);
+            ((CTCUserActionPointBase*)point)->SetActionPointAsFree(index);
             return 3;
         }
         result = AIAction_LookAtPos(2, lookPos, 0x11, 0.01f);
@@ -187,7 +189,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
         return 3;
     if (result == 2 && filter())
         return result;
-    point->FreeActionPoint(index);
+    ((CTCUserActionPointBase*)point)->SetActionPointAsFree(index);
     if (result == 2)
         result = 3;
     return result;

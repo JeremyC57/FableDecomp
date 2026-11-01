@@ -35,9 +35,13 @@ extern const float g_OnGroundTolerance;             // 0x0125A15C
 class C3DMeshInfo { public:
     bool HasPhysicsMesh() const;                    // 0x00A23C40
 };
+class CMeshDataBank {
+public:
+    C3DMeshInfo const* PeekAnimatedMesh(unsigned long a0) const;   // 0x00A242B0 (Ego_r.pdb ?PeekAnimatedMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z)
+private: public:
+    C3DMeshInfo const* PeekStaticMesh(unsigned long a0) const;   // 0x00A24280 (Ego_r.pdb ?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z)
+};
 struct CGraphicBank {
-    C3DMeshInfo* GetMesh(unsigned long index);              // 0x00A24280
-    C3DMeshInfo* GetAnimatedMesh(unsigned long index);      // 0x00A242B0
 };
 class CWorld { public:
     unsigned char _pad[0x3c];
@@ -55,10 +59,10 @@ struct CGraphicDataRef {
     {
         if (Type == 5) {
             if (Index)
-                return bank->GetMesh(Index)->HasPhysicsMesh();
+                return ((C3DMeshInfo*)((CMeshDataBank*)bank)->PeekStaticMesh(Index))->HasPhysicsMesh();
         } else if (Type == 4) {
             if (Index)
-                return bank->GetAnimatedMesh(Index)->HasPhysicsMesh();
+                return ((C3DMeshInfo*)((CMeshDataBank*)bank)->PeekAnimatedMesh(Index))->HasPhysicsMesh();
         }
         return false;
     }
@@ -146,10 +150,10 @@ void CTCPhysicsStandard::OnCreate()
         CGraphicBank* bank = world.PGraphicBank;
         unsigned char type = data.Type;
         if (type == 5) {
-            if (data.Index && bank->GetMesh(data.Index)->HasPhysicsMesh())
+            if (data.Index && ((C3DMeshInfo*)((CMeshDataBank*)bank)->PeekStaticMesh(data.Index))->HasPhysicsMesh())
                 CreatePPhysicsMeshInfo(data);
         } else if (type == 4) {
-            if (data.Index && bank->GetAnimatedMesh(data.Index)->HasPhysicsMesh())
+            if (data.Index && ((C3DMeshInfo*)((CMeshDataBank*)bank)->PeekAnimatedMesh(data.Index))->HasPhysicsMesh())
                 CreatePPhysicsMeshInfo(data);
         }
     }

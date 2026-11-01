@@ -28,8 +28,10 @@ class C3DAnimationInfo { public:
     float     Rotation;                        // +0x24
 };
 
-class CMeshDataBank { public:
-    C3DAnimationInfo* GetAnimation(long index);   // 0x00A242C0
+class CMeshDataBank {
+public:
+    C3DAnimationInfo const* PeekAnimation(unsigned long a0) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
+private:    // 0x00A242C0
 };
 
 class CWorld { public:
@@ -62,7 +64,7 @@ void CThingCreatureBase::InitialiseMovementSpeed(float& speed, const CCharString
     if (speed == 0.0f && (UsingComponents[90 >> 5] & (1UL << (90 & 31)))) {
         CAnimationEntry* entry = GetAnimFromName(animName, 0);
         CMeshDataBank* bank = PeekWorld().PMainMeshBank;
-        C3DAnimationInfo* info = bank->GetAnimation(entry->AnimIndex);
+        C3DAnimationInfo* info = ((C3DAnimationInfo*)((CMeshDataBank*)bank)->PeekAnimation(entry->AnimIndex));
         float distance = info->MovementVector.Length() * 0.01f;
         float duration = info->Duration;
         if (distance > 0.0f && duration > 0.0f)

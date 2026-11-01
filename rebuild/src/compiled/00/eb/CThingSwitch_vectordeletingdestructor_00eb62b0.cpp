@@ -1,6 +1,8 @@
 #pragma optimize("t", on)
 // Leaf: `vector_deleting_destructor'
-extern void __fastcall AutoTinyFirstMemberDestructor_00cd4470(void* member);
+class CTimer { public:
+    ~CTimer();   // 0x00CD4470 (Ego_r.pdb ??1CTimer@@QAE@XZ)
+};
 #define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBasePdb
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 #undef CScriptGameResourceObjectScriptedThingBase
@@ -10,7 +12,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:   // ctor 0x007E72A0 
 extern void __fastcall AutoTinyCompositeDestructor_00f35b40(void* self);
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor_00cd4470(static_cast<unsigned char*>(self) + 44);
+    ((CTimer*)(static_cast<unsigned char*>(self) + 44))->~CTimer();
     reinterpret_cast<CScriptGameResourceObjectScriptedThingBase*>(static_cast<unsigned char*>(self) + 28)->CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase();
     AutoTinyCompositeDestructor_00f35b40(self);
     if (flags & 1)

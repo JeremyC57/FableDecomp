@@ -8,7 +8,7 @@
 //   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
 //   CDefinitionManager::GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CSpecialAbilitiesLightningSpellDef> 0x007A35D0,
 //   CVectorMap::LowerBound 0x0040F020 (inlined GetInterface type 0x10), CDefStringTable::GetString 0x009D49B0 on
-//   g_DefStringTable 0x013CA828, CTCSound::PlaySound 0x0066BD00.
+//   g_DefStringTable 0x013CA828, CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00.
 // Layout: local model (as the landed overloads) -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08, PTarget
 //   +0xa8); members +0x114/+0x118 take the two arguments; the def's cast-sound string id at +0x110.
 // Shape: the landed 0x008BC8C0 source verbatim with a by-value inline SetPTarget(CIntelligentPointer<CThing>) fed an
@@ -122,8 +122,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     virtual void v00();
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
 };
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 struct CTCSound {                                     // interface type 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
@@ -161,7 +163,7 @@ CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell(C
     CTCSound* sound;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&sound, 0x10)) {
         CCharString castSound = g_DefStringTable.GetString(def->CastSound);
-        sound->PlaySound(castSound, 0, 0, 0, -1);
+        ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(castSound, 0, 0, 0, -1);
     }
     SetPTarget(CIntelligentPointerThing(target));
 }

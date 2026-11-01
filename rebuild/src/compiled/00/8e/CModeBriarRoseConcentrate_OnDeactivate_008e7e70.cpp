@@ -27,12 +27,14 @@ struct ThingNative;
 struct ComponentEntry{int Type;void* Component;};
 struct ComponentMap{ComponentEntry*First,*Last,*Limit;ComponentEntry*LowerBound(const int*);}; //40F020
 enum ETCInterfaceType{BriarRoseImposterTC=272};
-class CThing { public:
+class CThing {
+public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+private: public:
     const C3DVector& GetPos() const; //4C73D0 position-interface60 +C, realGetPos reference
 };
 struct ThingNative : public CThing {
  void RemoveTC(ETCInterfaceType); //4C9840, genuine CThing removal
- void Kill(bool); //4C9B80
  void SuspendAI(bool,void*); //833A10, actual CThingAICreature donor53A870, native suspenders1CC/AISuspended1C8bit1
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0xc];EmitterMethods*Emitter;void*PositionInterface;unsigned char Unrecovered64[8];unsigned long TypeFlags;NativeDefinition*Definition;unsigned char Unrecovered74[0x18];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;
@@ -60,17 +62,20 @@ struct ModeStandNative {
 FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C
  virtual ~BaseIntelligentPointer(); //A01C10
- ThingNative*GetPItem()const; //A01B50
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
  __forceinline IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
- IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(p.GetPItem());return*this;}
+ IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem()));return*this;}
 };
 FABLE_STATIC_ASSERT(sizeof(IntelligentThingPointer)==8);
 
@@ -111,14 +116,14 @@ void ModeBriarConcentrate::OnDeactivate(){
  if(ParentThing->RuntimeType==1)ParentThing->SuspendAI(false,this);
  HitParameters hit;hit.AddDamageWithAttribute(DamageNormal,10.0f);hit.SetThingHitting(*ParentThing);
  for(IntelligentThingPointer*it=Imposters.First;it!=Imposters.Last;++it){
-  ThingNative*thing=it->GetPItem();
+  ThingNative*thing=((ThingNative*)((CBaseIntelligentPointer*)it)->GetPItem());
   if(thing&&!(thing->LifeFlags&1)&&(thing->TypeFlags&8)){
    CreatureThingNative*creature=static_cast<CreatureThingNative*>(thing);
    creature->RemoveTC(BriarRoseImposterTC);
    (creature->*static_cast<HitSlot*>(creature->VTable)[65].OnHit)(hit);
   }
  }
- if(PBodyEffect.GetPItem()&&!(PBodyEffect.GetPItem()->LifeFlags&1))PBodyEffect.GetPItem()->Kill(true);
- if(PSwordEffect.GetPItem()&&!(PSwordEffect.GetPItem()->LifeFlags&1))PSwordEffect.GetPItem()->Kill(true);
+ if(((ThingNative*)((CBaseIntelligentPointer*)&PBodyEffect)->GetPItem())&&!(((ThingNative*)((CBaseIntelligentPointer*)&PBodyEffect)->GetPItem())->LifeFlags&1))((CThing*)(((ThingNative*)((CBaseIntelligentPointer*)&PBodyEffect)->GetPItem())))->Kill(true);
+ if(((ThingNative*)((CBaseIntelligentPointer*)&PSwordEffect)->GetPItem())&&!(((ThingNative*)((CBaseIntelligentPointer*)&PSwordEffect)->GetPItem())->LifeFlags&1))((CThing*)(((ThingNative*)((CBaseIntelligentPointer*)&PSwordEffect)->GetPItem())))->Kill(true);
  ModeStandNative::OnDeactivate();
 }

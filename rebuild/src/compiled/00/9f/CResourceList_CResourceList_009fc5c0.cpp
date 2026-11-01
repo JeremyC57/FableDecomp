@@ -48,14 +48,14 @@ public:
     unsigned long DebugStatsFrame;              // +0x30
     unsigned long UnloadDelay;                  // +0x34
     unsigned long UnloadedThisFrame;            // +0x38
-    void RemoveResource(CResource* resource);   // 0x009FC020
+    void RemoveResource(CResource&a0);   // 0x009FC020
     ~CResourceList();
 };
 
 inline CResource::~CResource()
 {
     if (ResourceList)
-        ResourceList->RemoveResource(this);
+        ResourceList->RemoveResource(*this);
 }
 
 CResourceList::~CResourceList()

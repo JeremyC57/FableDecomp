@@ -15,6 +15,9 @@
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 class CWorld {
 public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private:
+public:
     static long __fastcall GetFrame();   // 0x0049D870
 };                     // 0x0049D870
 
@@ -28,7 +31,6 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 }
 
 struct CWorld_Calls {
-    unsigned long* GetPRandomSeed();                            // 0x0049D810
 };
 
 struct CMainGameComponent_Retail {
@@ -104,7 +106,7 @@ struct CCombatSequence_ScorpionLungeAttack : CCombatSequenceBase {
 void CCombatSequence_ScorpionLungeAttack::OnCreate()
 {
     long framesPerSecond = g_logicFramesPerSecond;
-    unsigned long* seed = g_pMainGameComponent->World->GetPRandomSeed();
+    unsigned long* seed = ((CWorld*)(g_pMainGameComponent->World))->GetWorldSeed();
     unsigned long offset = WorldRandomRange(*seed, framesPerSecond * 10);
     m_frameOfNextUse = CWorld::GetFrame() + offset;
     CCountedPointer action;

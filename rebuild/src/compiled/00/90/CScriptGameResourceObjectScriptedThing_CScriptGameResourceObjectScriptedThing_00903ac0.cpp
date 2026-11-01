@@ -110,7 +110,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    CThing_Retail* GetPItem();                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
 };
@@ -127,10 +127,10 @@ class CScriptGameResourceObjectScriptedThing : public CScriptGameResourceObjectS
 
 CScriptGameResourceObjectScriptedThing::~CScriptGameResourceObjectScriptedThing()
 {
-    if (PThing.GetPItem()) {
-        if (!PThing.GetPItem()->m_dead) {
+    if (((CThing_Retail*)PThing.GetPItem())) {
+        if (!((CThing_Retail*)PThing.GetPItem())->m_dead) {
             CTCScriptedControl* control;
-            PThing.GetPItem()->GetInterface(&control, 0x1f);
+            ((CThing_Retail*)PThing.GetPItem())->GetInterface(&control, 0x1f);
             if (control->Locked) {
                 control->AddAction(new NTCScriptedControl::CActionStopScripting());
                 control->ClearLocked();

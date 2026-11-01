@@ -21,7 +21,9 @@ extern const void* CDiskFileWin32_vftable;
 // Helper run over the whole object before members are destroyed.
 extern void __fastcall Member599270(void* win32);
 // Destructor of the member sub-object at +0x18.
-extern void __fastcall Member18Dtor(void* p);
+class CWideString { public:
+    ~CWideString();   // 0x0099B510 (Ego_r.pdb ??1CWideString@@QAE@XZ)
+};
 // Base-class destructor.
 extern void __fastcall BaseDtor_0099a300(void* win32);
 // Engine heap release used by every deleting destructor.
@@ -33,7 +35,7 @@ void* __fastcall CDiskFileWin32_scalar_deleting_destructor(CDiskFileWin32* win32
     // Virtual calls during teardown must land on this class, not a derived one.
     win32->vptr = (void*)&CDiskFileWin32_vftable;
     Member599270(win32);
-    Member18Dtor((char*)win32 + 0x18);
+    ((CWideString*)((char*)win32 + 0x18))->~CWideString();
     BaseDtor_0099a300(win32);
     // Bit 0: the caller used `delete`, so release the storage as well.
     if (flags & 1) {

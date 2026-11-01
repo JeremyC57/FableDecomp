@@ -1,5 +1,5 @@
 // CTCTavernTable::GetTankard(unsigned long index) -- returns the CThingObject held by the index-th intelligent pointer of Tankards (vector at +0x1C), or 0 past the end
-// Leaf: GetTankard
+// Leaf: ?GetTankard@CTCTavernTable@@QAEPAVCThingObject@@J@Z
 // Retail: Fable.exe @ 0x007B8590, 38 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (thiscall on the 8-byte element).
 // Layout: Ego_r.pdb CTCTavernTable with retail 12-byte vectors: Occupants +0x10, Tankards +0x1C, Food
@@ -10,10 +10,13 @@
 //        re-loaded after the check (the landed CRetailVector model of 0x004AF3C0).
 class CThingObject;
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {            // 8 bytes: vptr + item
     void* __vftable;
     CThingObject* m_pItem;
-    CThingObject* GetPItem() const;     // 0x00A01B50 (CBaseIntelligentPointer)
 };
 
 template<class T> struct CRetailVector {
@@ -36,12 +39,12 @@ class CTCTavernTable { public:
     CRetailVector<void*> Occupants;                     // +0x10 vector<CThingAICreature*>
     CRetailVector<CIntelligentPointer> Tankards;        // +0x1c
     CRetailVector<CIntelligentPointer> Food;            // +0x28
-    CThingObject* GetTankard(unsigned long index);
+    CThingObject* GetTankard(long index);
 };
 
-CThingObject* CTCTavernTable::GetTankard(unsigned long index)
+CThingObject* CTCTavernTable::GetTankard(long index)
 {
     if (Tankards.size() > index)
-        return Tankards[index].GetPItem();
+        return ((CThingObject*)((CBaseIntelligentPointer*)&(Tankards[index]))->GetPItem());
     return 0;
 }

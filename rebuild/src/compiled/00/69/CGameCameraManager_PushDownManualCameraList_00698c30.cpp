@@ -13,7 +13,11 @@
 #include "engine/_quarantine/CCameraModeDef.h"
 #undef CCameraModeDef
 class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;}; // native bit0 means unavailable; all GetPItem guards use this mask
-struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; // A01B50 reads info+0 and may release stale info
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CObservedThingPointer {void* VTable;void* PointerInfo;}; // A01B50 reads info+0 and may release stale info
 struct CCameraModeDefNative;
 struct CCameraModeVTable {void* Destructor;void (__fastcall* Destroy)(CCameraModeDefNative*);};
 struct CCameraModeDefNative {CCameraModeVTable* VTable;long References;};
@@ -41,17 +45,17 @@ class CGameCameraManager { public:
 };
 void CGameCameraManager::PushDownManualCameraList(){
  BlockModeChange=false;UsingCameraManually=true;
- if(PObservedThing.GetPItem()&&!(PObservedThing.GetPItem()->LifetimeFlags&1)) {
+ if(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())&&!(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())->LifetimeFlags&1)) {
   if(!PPendingScriptModule) {
    if(!PCurrentScriptModule||PCurrentScriptModule->AllowsManualControl()) {
     if(CameraListIndex+1==CameraListLast) {
      CCharString sound("CAMERA_LIST_PUSH_ERROR",-1);
-     PlayCameraSoundThroughObservedThing(PObservedThing.GetPItem(),PDef,sound);
+     PlayCameraSoundThroughObservedThing(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem()),PDef,sound);
     }else {
      ++CameraListIndex;
      PreparePendingMode(*CameraListIndex);
      CCharString sound("CAMERA_LIST_PUSH_DOWN",-1);
-     PlayCameraSoundThroughObservedThing(PObservedThing.GetPItem(),PDef,sound);
+     PlayCameraSoundThroughObservedThing(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem()),PDef,sound);
     }
    }
   }

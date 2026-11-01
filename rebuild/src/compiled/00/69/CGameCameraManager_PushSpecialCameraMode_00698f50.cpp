@@ -26,7 +26,11 @@ struct CCameraModePointer {CCameraMode* Data;CCameraModeOwner* Info;CCameraModeP
 struct CCameraScript {void* Vtable;bool IsFinished()const{typedef bool(CCameraScript::*F)()const;return(this->*static_cast<const F*>(Vtable)[2])();}};
 struct CCameraScriptPointer {CCameraScript* Data;CCameraModeOwner* Info;};
 class CThing { public:unsigned char BeforeDeleted[0x91];unsigned char Deleted;};
-struct CCameraObservedPointer {void* Vtable;void* Info;const CThing* GetPItem()const;}; //A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CCameraObservedPointer {void* Vtable;void* Info;}; //A01B50
 struct CCameraDefArray {CCameraDefPointer* Begin;CCameraDefPointer* End;CCameraDefPointer* Capacity;};
 void __fastcall PlayCameraSoundThroughObservedThing(const CThing*,const CCameraManagerDef&,const CCharString&); //698A30
 class CGameCameraManager;
@@ -57,8 +61,8 @@ typedef char NativeDef134[offsetof(CGameCameraManager,PDef)==0x134?1:-1];
 #endif
 void CGameCameraManager::PushSpecialCameraMode(){
  BlockModeChange=false;UsingCameraManually=true;
- if(Observed.GetPItem()&&!(Observed.GetPItem()->Deleted&1)&&!PendingScript.Data&&(!CurrentScript.Data||CurrentScript.Data->IsFinished())){
- {CCharString sound("PUSH_SPECIALITY_CAMERA_MODE",-1);const CCameraManagerDef& def=*PDef;PlayCameraSoundThroughObservedThing(Observed.GetPItem(),def,sound);}
+ if(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem())&&!(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem())->Deleted&1)&&!PendingScript.Data&&(!CurrentScript.Data||CurrentScript.Data->IsFinished())){
+ {CCharString sound("PUSH_SPECIALITY_CAMERA_MODE",-1);const CCameraManagerDef& def=*PDef;PlayCameraSoundThroughObservedThing(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem()),def,sound);}
  CCameraDefPointer mode=*SpecialIndex++;
  if(SpecialIndex==SpecialList.End)SpecialIndex=SpecialList.Begin;
  CCameraRegisteredIterator entry=RegisteredModes.Find(static_cast<NCameraModes::EMode>(mode.Object->CameraMode));

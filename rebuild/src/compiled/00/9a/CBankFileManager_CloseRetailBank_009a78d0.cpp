@@ -1,7 +1,7 @@
 // CBankFileManager::CloseRetailBank(const CWideString& name) -- drop the open retail bank of that name from the RetailBanks list (first match by name)
 // Leaf: CloseRetailBank
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A78D0, length 185 bytes (+7 int3), ret 4.
-// Callees: CWideString::ConvertToCharString() @ 0x0099B2C0 (by value), strcmp @ 0x00BFEBA8 (a real call:
+// Callees: CWideString::ToCharString() @ 0x0099B2C0 (by value), strcmp @ 0x00BFEBA8 (a real call:
 // `#pragma function(strcmp)`), operator delete @ 0x00BFE9BC (count block), free @ 0x00BFEA14 (list node),
 // CCharString::~CCharString @ 0x0099EAE0. "" @ 0x0129AAF4.
 // Shape: the converted name is homed in the dead argument slot; CCharString's inline c_str() is written null-first
@@ -21,9 +21,11 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
-    CCharString ConvertToCharString() const;       // 0x0099B2C0
 };
 struct SCountBlock {
     long  m_references;                            // +0
@@ -81,7 +83,7 @@ public:
 
 void CBankFileManager::CloseRetailBank(const CWideString& name)
 {
-    CCharString bankName = name.ConvertToCharString();
+    CCharString bankName = ((CWideString*)&name)->ToCharString();
     for (SRetailBankNode* it = RetailBanks.begin(); it != RetailBanks.end(); it = it->_M_next) {
         if (_stricmp(bankName.c_str(), it->_M_data.Data->FilePath.c_str()) == 0) {
             RetailBanks.erase(it);

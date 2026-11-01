@@ -1,7 +1,7 @@
 // CAIStateGroup_SitForMeal::ReleaseControlOfPot() -- free the cooking-pot action point this creature holds
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00945530, length 119 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap::LowerBound @ 0x0040F020 (inlined
-// GetInterface, type 0x2D), CTCUserActionPointBase::ReleaseActionPoint(long) @ 0x007FEF40 (manifest label
+// GetInterface, type 0x2D), CTCUserActionPointBase::SetActionPointAsFree(long) @ 0x007FEF40 (manifest label
 // "CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera" is propagated and rejected).
 //
 // Shape: nothing to do while ActionPointIndex (+0x3c) is negative (`jl` straight to the epilogue). Otherwise,
@@ -83,8 +83,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-struct CTCUserActionPointBase {                 // interface type 0x2D component
-    void ReleaseActionPoint(long index);        // 0x007FEF40
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface type 0x2D component
 };
 
 class CTCCarrying { public:                            // interface type 0x46 component
@@ -131,7 +133,7 @@ void CAIStateGroup_SitForMeal::ReleaseControlOfPot()
         if (IS_THING_ALIVE(PPot)) {
             CTCUserActionPointBase* actionPoint;
             if (PPot.GetPItem()->GetInterface(&actionPoint, 0x2D))
-                actionPoint->ReleaseActionPoint(ActionPointIndex);
+                ((CTCUserActionPointBase*)actionPoint)->SetActionPointAsFree(ActionPointIndex);
         }
         ActionPointIndex = -1;
     }

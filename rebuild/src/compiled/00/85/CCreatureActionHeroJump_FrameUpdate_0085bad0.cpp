@@ -3,7 +3,10 @@
 struct SubObj8;
 
 // method at 0xa01b50 called with ecx = &self at +8 (subobject)
-void __fastcall Sub8_Method(SubObj8* action);
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 
 class CCreatureActionHeroJump { public:
     int   m00;      // +0x00
@@ -23,7 +26,7 @@ void __fastcall FrameUpdate(CCreatureActionHeroJump* action)
 {
     int v = action->m1c + 7;
     if (v >= action->m10) {
-        Sub8_Method((SubObj8*)&action->m08);
+        ((CBaseIntelligentPointer*)((SubObj8*)&action->m08))->GetPItem();
     }
     Base_FrameStep(action);
 }

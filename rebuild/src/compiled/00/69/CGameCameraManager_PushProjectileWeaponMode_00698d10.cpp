@@ -38,7 +38,11 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CCameraComponentMap;
 class CThing { public:unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
 struct CCameraRangedMethods:CTCHeroRangedAttacks {float GetProjectileWeaponFirstPersonTargetingModeZoomFOV()const;}; //789CC0
-struct CCameraObservedPointer {void* Vtable;void* Info;const CThing* GetPItem()const;}; //A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CCameraObservedPointer {void* Vtable;void* Info;}; //A01B50
 struct CCameraDefArray {CCameraDefPointer* Begin;CCameraDefPointer* End;CCameraDefPointer* Capacity;};
 void __fastcall PlayCameraSoundThroughObservedThing(const CThing*,const CCameraManagerDef&,const CCharString&); //698A30
 class CGameCameraManager { public:
@@ -62,9 +66,9 @@ typedef char NativeProjectile108[sizeof(NCameraModes::CProjectileWeapon)==0x108?
 #endif
 void CGameCameraManager::PushProjectileWeaponMode(){
  BlockModeChange=true;
- if(Observed.GetPItem()&&!(Observed.GetPItem()->Deleted&1)&&!PendingScript.Data&&(!CurrentScript.Data||CurrentScript.Data->IsFinished())){
+ if(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem())&&!(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem())->Deleted&1)&&!PendingScript.Data&&(!CurrentScript.Data||CurrentScript.Data->IsFinished())){
  CCameraDefPointer mode;World->DefinitionManager->GetDef(PDef->ProjectileWeaponMode,&mode);
- const CThing* thing=Observed.GetPItem();const CCameraRangedMethods* ranged;
+ const CThing* thing=((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem());const CCameraRangedMethods* ranged;
  // Retail leaves the lookup output untouched if component81 is absent;
  // callers must supply an observed ranged-attack creature.
  if(thing->RangedFlag&2)ranged=static_cast<const CCameraRangedMethods*>(thing->Components.Find());

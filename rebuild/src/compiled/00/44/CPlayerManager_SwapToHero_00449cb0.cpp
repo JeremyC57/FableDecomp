@@ -7,8 +7,10 @@
 // Number +0x28 (engine/CPlayer.h).
 // Shape: the new main player number is stored before the swap and restored from the old player on failure; the hero
 // thing is fetched twice (null test, then the call).
+class CThing { public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+};
 struct CThingCalls {
-    void Kill(bool flag);                                   // 0x004C9B80
 };
 class CThingPlayerCreature : public CThingCalls { };
 
@@ -40,6 +42,6 @@ void CPlayerManager::SwapToHero(long player)
         if (!newPlayer->SwitchPlayerCharactersWith(oldPlayer))
             MainPlayer = oldPlayer->Number;
         if (oldPlayer->GetPControlledCreature())
-            oldPlayer->GetPControlledCreature()->Kill(true);
+            ((CThing*)(oldPlayer->GetPControlledCreature()))->Kill(true);
     }
 }

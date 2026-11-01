@@ -5,9 +5,12 @@ struct CIntelligentPointer {
 };
 
 // callee at 0xa01b50: CIntelligentPointer<CThingBuilding>::Get / dereference
-extern "C" CThingBuilding* __fastcall IP_Get(CIntelligentPointer* self);
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 
 bool __fastcall thingbuilding_ip_equal(CIntelligentPointer* a, CIntelligentPointer* b)
 {
-    return IP_Get(a) == IP_Get(b);
+    return ((CBaseIntelligentPointer*)a)->GetPItem() == ((CBaseIntelligentPointer*)b)->GetPItem();
 }

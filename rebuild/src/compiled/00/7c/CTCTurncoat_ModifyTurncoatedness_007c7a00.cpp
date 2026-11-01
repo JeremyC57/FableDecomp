@@ -5,7 +5,7 @@
 //   CIntelligentPointer<CThing>(CThing*) 0x004A96F0 / ~CBaseIntelligentPointer 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem
 //   0x00A01B90; IS_THING_ALIVE<CIntelligentPointer<...> > 0x004CC340 (`__fastcall`, out of line); LowerBound 0x0040F020
 //   (interfaces 0x4B particle emitter, 0x10 sound player); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CThing::Kill(bool)
-//   0x004C9B80; vector<CIntelligentPointer<CThing> >::erase(first, last) 0x004AC0F0; CTCSoundPlayer::PlaySound 0x0066BD00;
+//   0x004C9B80; vector<CIntelligentPointer<CThing> >::erase(first, last) 0x004AC0F0; CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00;
 //   CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0.
 // Layout (retail CTCTurncoat = Ego_r.pdb, the stage-effect vector 12 bytes, as the landed ctor 0x007C78C0):
 //   CurrentTurncoatedness +0x10, PDef +0x14, TurncoatedEffect +0x18, TimeDelayBeforeResistanceRecoveryFrames +0x30,
@@ -88,8 +88,10 @@ struct CEffectVector {                                  // vector<CIntelligentPo
 class CTCDParticleEmitter { public:                            // interface 0x4B
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-class CTCSoundPlayer { public:                                 // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+class CTCSoundPlayer {
+public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+private:    // 0x0066BD00
 };
 
 class CTurncoatDef { public:
@@ -158,7 +160,7 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
         CTCSoundPlayer* sound;
         if (ParentThing->GetInterface(&sound, 0x10)) {
             CCharString chant("HERO_ABILITY_TURNCOAT_CHANT");
-            sound->PlaySound(chant, 1, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(chant, 1, 0, 0, -1);
         }
     }
 }

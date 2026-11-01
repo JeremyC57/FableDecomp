@@ -23,8 +23,10 @@ class CTCBase { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void CopyStateFrom(CTCBase* source);     // slot 12 (+0x30)
 };
+class CTCHeroMorph { public:
+    void KillParticles();   // 0x0071C260 (Ego_r.pdb ?KillParticles@CTCHeroMorph@@QAEXXZ)
+};
 struct CTCHeroType3 : CTCBase {                      // interface type 3
-    void ResetState();                               // 0x0071C260
 };
 
 struct CPresenceBits {                               // std::bitset<274> (nine words)
@@ -104,7 +106,7 @@ void CThingManager::CopyHeroToHero(CThing& from, CThing& to, std::vector<CThing*
     if (from.GetInterface(&sourceType3, 3)) {
         CTCHeroType3* targetType3;
         to.GetInterface(&targetType3, 3);
-        targetType3->ResetState();
+        ((CTCHeroMorph*)targetType3)->KillParticles();
         to.CopyTCState(sourceType3, true);
     }
     const CThing& sourceThing = from;

@@ -13,7 +13,11 @@ struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(con
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x45];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};
-struct PointerView{void*VTable;IntelligentInfo* Info;CThingNative* GetPItem()const;}; //00A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct PointerView{void*VTable;IntelligentInfo* Info;}; //00A01B50
 // Retail CQuestManager+88 PQuestCurrentlyRunning and CScriptBase+2c PActiveThread differ from donor STL container sizes.
 typedef CSpawnedFuncBase SpawnedFunc;
 struct ScriptBaseNative{unsigned char Containers[0x2c];SpawnedFunc* PActiveThread;};
@@ -33,9 +37,9 @@ struct EventList{EventNode*Head;};
 __forceinline EventList& Events(CTCEntityEvents*tc){return *reinterpret_cast<EventList*>(tc->Events);}
 struct CGameScriptThingMethods:CGameScriptThing{bool MsgPerformedAnyAggressiveSpecialAbility()const;};
 bool CGameScriptThingMethods::MsgPerformedAnyAggressiveSpecialAbility()const{
- const PointerView*p=reinterpret_cast<const PointerView*>(PThing);if(p->GetPItem()&&!(p->GetPItem()->LifeFlags&1)){
+ const PointerView*p=reinterpret_cast<const PointerView*>(PThing);if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){
  long last=LastFrame(QuestManager->PQuestCurrentlyRunning);long current=CurrentFrame(QuestManager->PQuestCurrentlyRunning);
- CThingNative*thing=p->GetPItem();if(thing->UsingComponents[2]&4){CTCEntityEvents*events;{long key=66;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;events=static_cast<CTCEntityEvents*>((it==end||it->Type>66?end:it)->Component);}
+ CThingNative*thing=((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());if(thing->UsingComponents[2]&4){CTCEntityEvents*events;{long key=66;ComponentMap*map=&thing->Components;ComponentEntry*it=map->LowerBound(key);ComponentEntry*end=map->Finish;events=static_cast<CTCEntityEvents*>((it==end||it->Type>66?end:it)->Component);}
  for(EventNode*it=Events(events).Head->Next;it!=Events(events).Head;it=it->Next){EventBase*event=it->Data;if(event->GetType()==26 && event->WorldFrame>last && event->WorldFrame<=current && static_cast<AbilityEvent*>(event)->Aggressive){return true;}}}}
  return false;
 }

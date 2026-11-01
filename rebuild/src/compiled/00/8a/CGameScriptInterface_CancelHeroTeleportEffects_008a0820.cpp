@@ -97,12 +97,17 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
     CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
     return t && !t->m_dead;
 }
+class CThing { public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+};
 struct CThingKill_Retail : CThing_Retail {
     void RemoveTC(long interfaceType);             // 0x004C9840
-    void Kill(bool b);                             // 0x004C9B80
+};
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
 };
 struct CBaseIntelligentPointer_Retail {
-    CThingKill_Retail* GetPItem() const;           // 0x00A01B50
 };
 struct CTCTeleport_Retail {
     unsigned char _pad[0x30];
@@ -120,9 +125,9 @@ void CGameScriptInterface::CancelHeroTeleportEffects() const
         hero->RemoveTC(0xf9);
         CTCTeleport_Retail* teleport;
         if (GetTCOut(hero, 0x29, &teleport)) {
-            CThingKill_Retail* effect = teleport->m_effect.GetPItem();
+            CThingKill_Retail* effect = ((CThingKill_Retail*)((CBaseIntelligentPointer*)&(teleport->m_effect))->GetPItem());
             if (effect && !effect->m_dead)
-                effect->Kill(false);
+                ((CThing*)effect)->Kill(false);
         }
     }
 }

@@ -11,7 +11,10 @@
 #undef CCharString
 class CWideString;
 class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
-class CWideString:public CWideStringCore { public:CWideString();~CWideString();CCharString ConvertToCharString() const;const CWideString& operator=(const CWideString&);};
+class CWideString:public CWideStringCore {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:CWideString();~CWideString();const CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 struct CExtensionNode {unsigned char TreeLinks[0x10];CCharString first,second;};
 struct CExtensionTree { CExtensionNode* Head;CExtensionNode* Find(const CCharString&); };
@@ -22,7 +25,7 @@ bool CFileInstaller::IsCompressedFilename(const CWideString& filename,CWideStrin
  bool result;
  { CWideString stem,extension;
  CAFile::SplitPath(filename,0,0,&stem,&extension);
- CExtensionNode* found=CompressedFileTypes.find(extension.ConvertToCharString().ToLower());
+ CExtensionNode* found=CompressedFileTypes.find(((CWideString*)&extension)->ToCharString().ToLower());
  if(found!=CompressedFileTypes.Head){
  output=stem+found->second.ToWideString();result=true;
  }else{output=stem+extension;result=false;}

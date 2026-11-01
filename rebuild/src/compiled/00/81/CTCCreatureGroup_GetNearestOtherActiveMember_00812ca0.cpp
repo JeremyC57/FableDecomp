@@ -25,9 +25,12 @@ class CThingPhysical : public CThing { public:
 };
 class CThingAICreature : public CThingPhysical { public:
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer_AICreature {                     // CIntelligentPointer<CThingAICreature const>: 8 bytes
     void* Data[2];
-    const CThingAICreature* GetPItem() const;               // 0x00A01B50
 };
 class CGroupMemberData { public:
     CIntelligentPointer_AICreature PMember;                 // +0x00
@@ -85,16 +88,16 @@ const CThingAICreature* CTCCreatureGroup::GetNearestOtherActiveMember(const CThi
             continue;
         if (it->Key == id)
             continue;
-        const CThingAICreature* member = it->Data.PMember.GetPItem();
+        const CThingAICreature* member = ((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem());
         if (nearest != 0) {
             float distance = (member->PeekPos() - pos).GetLengthSquared();
             if (distance < bestDistance * bestDistance) {
-                nearest = it->Data.PMember.GetPItem();
+                nearest = ((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem());
                 bestDistance = distance;
             }
         } else {
             nearest = member;
-            bestDistance = (it->Data.PMember.GetPItem()->PeekPos() - pos).GetLengthSquared();
+            bestDistance = (((CThingAICreature const*)((CBaseIntelligentPointer*)&(it->Data.PMember))->GetPItem())->PeekPos() - pos).GetLengthSquared();
         }
     }
     return nearest;

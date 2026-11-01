@@ -1,10 +1,14 @@
-extern void __fastcall AutoTinyMemberDestructor_0099eae0(void* member);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 // Leaf: `scalar_deleting_destructor'
-extern void __fastcall AutoTinyCompositeDestructor_0099b510(void* self);
+class CWideString { public:
+    ~CWideString();   // 0x0099B510 (Ego_r.pdb ??1CWideString@@QAE@XZ)
+};
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyMemberDestructor_0099eae0(static_cast<unsigned char*>(self) + 16);
-    AutoTinyCompositeDestructor_0099b510(self);
+    ((CCharString*)(static_cast<unsigned char*>(self) + 16))->~CCharString();
+    ((CWideString*)self)->~CWideString();
     if (flags & 1)
         operator delete(self);
     return self;

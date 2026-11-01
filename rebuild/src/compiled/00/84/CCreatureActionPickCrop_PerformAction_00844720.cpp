@@ -1,8 +1,11 @@
 // Layout: retail STLport 4.6 container sizes put the PDB member on these bytes; renamed `sub` -> `PObjectToUse`.
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 #include "engine/CCreatureAction_PickCrop.h"
 
 struct CPickCropActionState {
-    int PerformStep();
 };
 
 struct CCreatureAction_PickCrop_Methods : CCreatureAction_PickCrop {
@@ -12,7 +15,7 @@ struct CCreatureAction_PickCrop_Methods : CCreatureAction_PickCrop {
 void CCreatureAction_PickCrop_Methods::PerformAction()
 {
     CPickCropActionState* state = (CPickCropActionState*)&this->PObjectToUse;
-    if (state->PerformStep()) {
-        state->PerformStep();
+    if (((CBaseIntelligentPointer*)state)->GetPItem()) {
+        ((CBaseIntelligentPointer*)state)->GetPItem();
     }
 }

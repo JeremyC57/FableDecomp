@@ -71,9 +71,11 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 struct CTCCreatureSound {                   // interface type 0x10
     void SetVoiceChannel(const CCharString& channel);                       // 0x0066A9D0
-    void PlaySound(const CCharString& name, long a, long b, long c, long d); // 0x0066BD00
 };
 class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
@@ -104,7 +106,7 @@ void CThingCreatureBase::PlayCreatureContinuousSounds()
             CCharString voice = "VOICE" + GFIntToCharString(g_CreatureContinuousSoundVoice + 1);
             g_CreatureContinuousSoundVoice = (g_CreatureContinuousSoundVoice + 1) % 8;
             sound->SetVoiceChannel(voice);
-            sound->PlaySound("SE_CREATURE_CONTINUOUS", 0, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("SE_CREATURE_CONTINUOUS", 0, 0, 0, -1);
         }
     }
 }

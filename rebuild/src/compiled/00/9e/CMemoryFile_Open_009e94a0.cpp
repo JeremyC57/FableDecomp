@@ -4,7 +4,7 @@
 // Callees: ConvertPathToFullPath @ 0x00999110 and PathExists @ 0x00999230 (both `__fastcall`; the first returns a CWideString through
 //   ecx with the path in edx), CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) @ 0x0099AD80 / Read @ 0x0099A960 /
 //   the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBaseClassNonCopyable 0x0099A300),
-//   vector<unsigned char>::resize(size_type, const unsigned char&) @ 0x00486189, CWideString::ConvertToCharString @ 0x0099B2C0,
+//   vector<unsigned char>::resize(size_type, const unsigned char&) @ 0x00486189, CWideString::ToCharString @ 0x0099B2C0,
 //   CCharString(const char*, long) @ 0x0099EBF0, `__fastcall` operator+(const CCharString&, const CCharString&) @ 0x0099F570, the
 //   CCharString copy ctor 0x0099EC30 / operator const char* 0x0099E4C0 / dtor 0x0099EAE0, _CxxThrowException @ 0x00BFEB84 with the
 //   CBBBFileException ThrowInfo 0x01369380, CWideString::operator= @ 0x0099B7D0.
@@ -20,11 +20,13 @@ class CCharString { public:
     operator const char*() const;                       // 0x0099E4C0
     friend CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 class CAFile {
 public:
@@ -101,7 +103,7 @@ void CMemoryFile::Open(const CWideString& pathname, FileAccessType access, unsig
         AccessType = access;
     } else {
         if (access == FILE_ACCESS_READ) {
-            CCharString message = CCharString("File does not exist: ", -1) + fullPath.ConvertToCharString();
+            CCharString message = CCharString("File does not exist: ", -1) + ((CWideString*)&fullPath)->ToCharString();
             throw CBBBFileException(message, CBBBFileException::FileNotFound);
         }
         AccessType = access;

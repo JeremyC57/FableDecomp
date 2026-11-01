@@ -27,18 +27,21 @@ struct GameCalls:CGameScriptInterface {
  void OpenDoor(const CScriptThing& t)const{(this->*reinterpret_cast<const GameSlot*>(__vftable)[425].Door)(t);}
  void CloseDoor(const CScriptThing& t)const{(this->*reinterpret_cast<const GameSlot*>(__vftable)[426].Door)(t);}
 };
+class CEntityScriptBase { public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+};
 struct CDoor {void* VTable;GameCalls* Game;CScriptThing Me;
- void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();void Main();
+ void SetPredicate(const NScript::CPredicateBase&);void Main();
 };
 void CDoor::Main(){
  {NScript::CIsThingAlive p(Me);SetPredicate(p);}
- Game->NewScriptFrame();if(IsActiveThreadTerminating())return;
- while(!IsActiveThreadTerminating()){
-  while(!Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
-  if(IsActiveThreadTerminating())return;
+ Game->NewScriptFrame();if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
+ while(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()){
+  while(!Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;}
+  if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
   Game->OpenDoor(Me);
-  while(Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
-  if(IsActiveThreadTerminating())return;
+  while(Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;}
+  if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
   Game->CloseDoor(Me);Game->NewScriptFrame();
  }
 }

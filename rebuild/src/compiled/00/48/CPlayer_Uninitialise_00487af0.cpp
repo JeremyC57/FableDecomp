@@ -11,8 +11,10 @@
 // argument before the second GetPItem; `PlayerCharacter = CIntelligentPointer(0)` as the landed CThingGameObject::OnCreate
 // 0x00838A40 (out-of-line base ctor, derived vtable store, SetPItem(0); inline operator= `SetPItem(other.GetPItem())`;
 // base dtor); the base Uninitialise is a plain call (the 8-byte frame is popped after it); `ret`.
-class CThingPlayerCreature { public:
-    void Kill(bool removeImmediately);             // 0x004C9B80 (CThing::Kill)
+class CThing { public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+};
+class CThingPlayerCreature {              // 0x004C9B80 (CThing::Kill)
 };
 
 class CBaseObject;
@@ -51,7 +53,7 @@ void CPlayer::Uninitialise()
 {
     if (IsInitialised() == true) {
         if (PlayerCharacter.GetPItem()) {
-            PlayerCharacter.GetPItem()->Kill(false);
+            ((CThing*)(PlayerCharacter.GetPItem()))->Kill(false);
             PlayerCharacter = CIntelligentPointer<CThingPlayerCreature>(0);
         }
     }

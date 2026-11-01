@@ -22,10 +22,12 @@ public:
 class CWideStringData;
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     CWideStringData* PStringData;
     ~CWideString();                                      // 0x0099B510
     const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
-    CCharString ConvertToCharString() const;             // 0x0099B2C0
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 class CUserProfileManager {
@@ -81,8 +83,8 @@ void CFrontEndManager::GetScoreboardOptionsToProfile()
         CUserProfileManager::Get().SetScoreBoardUserName(GetScoreboardEditBox("UI_SCOREBOARD_LOGIN_EDITBOX_FE"));
         CUserProfileManager::Get().SetScoreBoardPassword(GetScoreboardEditBox("UI_SCOREBOARD_PASSWORD_EDITBOX_FE"));
         CUserProfileManager::Get().SetScoreBoardProxyIp(GetScoreboardEditBox("UI_SCOREBOARD_PROXY_IP_EDITBOX_FE"));
-        CUserProfileManager::Get().SetScoreBoardProxyPort(GFCharStringToInt(GetScoreboardEditBox("UI_SCOREBOARD_PROXY_PORT_EDITBOX_FE").ConvertToCharString()));
-        CUserProfileManager::Get().SetScoreBoardServerPort(GFCharStringToInt(GetScoreboardEditBox("UI_SCOREBOARD_SERVER_PORT_EDITBOX_FE").ConvertToCharString()));
+        CUserProfileManager::Get().SetScoreBoardProxyPort(GFCharStringToInt(((CWideString*)&(GetScoreboardEditBox("UI_SCOREBOARD_PROXY_PORT_EDITBOX_FE")))->ToCharString()));
+        CUserProfileManager::Get().SetScoreBoardServerPort(GFCharStringToInt(((CWideString*)&(GetScoreboardEditBox("UI_SCOREBOARD_SERVER_PORT_EDITBOX_FE")))->ToCharString()));
     }
 }
 }

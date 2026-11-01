@@ -14,7 +14,11 @@ class CCharString { public:void* storage_;CCharString(const char*,long);~CCharSt
 class C3DVector { public:float X,Y,Z;};
 class CThing { public: const C3DVector& GetPos() const; };
 struct CQueenThing : public CThing { public:  }; //004c73d0
-struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;CQueenThing* GetPItem()const;}; //00a01b50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;}; //00a01b50
 struct CAnimationSound {long first,last;CAnimationSound():first(0),last(0){}};
 struct CActionNative {virtual ~CActionNative();char state[0xa4];}; //00693ef0
 struct CPlayAnimationNative:CActionNative {bool UseAnimationMovement,UsePhysics,StayOnLastFrame,Looping;long NumberOfTimesToLoop;bool AnimMayNeedCameraPositionUpdatedInSpeakAndWait;
@@ -34,7 +38,7 @@ long CQueenNative::KeepOutOfWay(){
 if(!IsStillRunnable()){Terminate();return 1;}
 TimingCritical=true;
 CQueenThing* creature=GetCreature();
-const C3DVector& enemy=target.GetPItem()->GetPos();
+const C3DVector& enemy=((CQueenThing*)((CBaseIntelligentPointer*)&target)->GetPItem())->GetPos();
 const C3DVector& owner=creature->GetPos();
 float dx=owner.X-enemy.X,dy=owner.Y-enemy.Y;
 long result;

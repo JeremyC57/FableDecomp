@@ -48,12 +48,15 @@ public:
     }
 };
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {                    // CIntelligentPointer<CThing>: vptr + item
     void* _vfptr;
     CThing* m_pItem;
     CIntelligentPointer(CThing* item);          // 0x004A96F0
     ~CIntelligentPointer();                     // 0x00A01C10 (CBaseIntelligentPointer)
-    CThing* GetPItem() const;                   // 0x00A01B50
 };
 struct CThingList {                             // retail std::list<CIntelligentPointer<CThing>>: head pointer only
     void* _M_node;
@@ -75,7 +78,7 @@ void CTCVillage::AddTorchToVillage(CThing* torch)
     CIntelligentPointer pointer(torch);
     VillageTorches.push_back(pointer);
     CTCVillageMember* member = 0;
-    CThing* thing = pointer.GetPItem();
+    CThing* thing = ((CThing*)((CBaseIntelligentPointer*)&pointer)->GetPItem());
     if (thing->HasTC(35))
         member = (CTCVillageMember*)thing->GetTC(35);
     member->SetPVillage(this);

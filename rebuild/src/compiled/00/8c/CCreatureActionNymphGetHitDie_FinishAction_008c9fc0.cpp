@@ -1,13 +1,18 @@
 // CCreatureAction_Die::FinishAction  (retail 0x008ed830, __fastcall, void)
 
+class CThing { public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+};
 struct RetObj
 {
-    void Kill(bool destroy);      // call 0x4c9b80 (CThing::Kill, bool stack arg)
 };
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct SubObj
 {
-    RetObj* GetPItem();           // call 0xa01b50 (thiscall on this+8)
 };
 
 struct Base
@@ -26,5 +31,5 @@ class CCreatureAction_Die : public Base
 void CCreatureAction_Die::FinishAction()
 {
     Base::FinishAction_008663d0();
-    this->sub.GetPItem()->Kill(true);
+    ((CThing*)(((RetObj*)((CBaseIntelligentPointer*)&(this->sub))->GetPItem())))->Kill(true);
 }

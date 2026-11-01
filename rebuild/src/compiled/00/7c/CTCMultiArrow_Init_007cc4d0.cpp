@@ -8,7 +8,7 @@
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCMultiArrow::ApplyEffectOnWeapon @ 0x007CC060 / CreateAmmoEffect
 //   @ 0x007CC2B0, GetSubDef<CSpecialEffectsDef> @ 0x00669580, CalcAndLookup @ 0x00669D30, CThing::GetPos @ 0x004C73D0,
 //   CreateParticleEffect @ 0x0072AB70 (__fastcall), CDefStringTable::GetString @ 0x009D49B0 (table 0x013CA828),
-//   CTCSoundPlayer::PlaySound @ 0x0066BD00; the def's slot 1.
+//   CTCSoundPlayer::PlayAttachedCriteria @ 0x0066BD00; the def's slot 1.
 // Data: "SPECIAL_ABILITIES_MULTI_ARROW_DEF" 0x01235AC0, "SIMPLE_NOISE" 0x01268A5C, "CAST_EFFECT" 0x0126EDF8, frames per
 //   second (long) 0x01375550.
 // Layout: CTCMultiArrow as Ego_r.pdb (landed siblings): PDef +0x0C, NumberOfShots +0x10, NumberInVolley +0x14, NumOfVolleys
@@ -200,7 +200,8 @@ public:
 };
 class CTCSoundPlayer {
 public:
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+private:
 };
 #pragma pack(push, 1)
 struct CTCWeaponHolder {                               // interface 0x13 (descriptive)
@@ -256,6 +257,6 @@ void CTCMultiArrow::Init()
     CTCSoundPlayer* player;
     if (parent->GetInterface(&player, 0x10)) {
         CCharString sound = g_DefStringTable.GetString(PDef->CastSound);
-        player->PlaySound(sound, 1, 0, 0, -1);
+        ((CTCSoundPlayer*)player)->PlayAttachedCriteria(sound, 1, 0, 0, -1);
     }
 }

@@ -204,9 +204,11 @@ protected:
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
 #define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
 extern "C" double __cdecl sqrt(double);
+class CWorld { public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+};
 #pragma intrinsic(sqrt)
 struct CWorldR {
-    unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 struct CTCEnemyTracker {                        // interface 8
     V16(a) V4(b) V4(c)
@@ -266,7 +268,7 @@ bool CAIStateGroup_VersusRockTroll::IsRunnable()
         bool found = GetThingDef(enemy)->GetSubDef_00485815(&holder);
         CAbilityDef* ability = holder.Object;
         if (found && (ability->AbilityType == 0x10000 || ability->AbilityType == 0x8000)) {
-            unsigned long* seed = ((CWorldR*)&GetWorld())->GetPRandomSeed();
+            unsigned long* seed = ((CWorld*)(((CWorldR*)&GetWorld())))->GetWorldSeed();
             unsigned long next = *seed * 0x24A1U + 0x24DFU;
             *seed = next;
             unsigned long rotated = GFROR13(next);

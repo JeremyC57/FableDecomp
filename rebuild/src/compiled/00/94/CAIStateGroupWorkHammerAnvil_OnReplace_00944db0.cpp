@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944DB0, length 201 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PAnvil +0x15, three times), CVectorMap::LowerBound
 // @ 0x0040F020 (inlined out-parameter GetInterface, user action point 0x2D = bit 13 of +0x24),
-// CTCUserActionPointBase::ReleaseSlot(long) @ 0x007FEF40 (manifest "EditCyclePreviousKeyCamera" propagated; landed
+// CTCUserActionPointBase::SetActionPointAsFree(long) @ 0x007FEF40 (manifest "EditCyclePreviousKeyCamera" propagated; landed
 // name), CThingCreatureBase::FinishCurrentAction @ 0x00662650, CCharString(const char*, long) @ 0x0099EBF0 /
 // ~CCharString @ 0x0099EAE0, CAIStateGroupBase::DestroyItem(const CCharString&) @ 0x008FD1B0 (twice),
 // SetPushableByHero(bool) @ 0x0097E330. Literals 0x01265440 "CARRY_SLOT_RIGHT_HAND", 0x01265428 "CARRY_SLOT_LEFT_HAND".
@@ -95,8 +95,10 @@ class CCharString { public:                            // 4 bytes: the shared st
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CTCUserActionPointBase {                 // interface 0x2D
-    void ReleaseSlot(long slot);                // 0x007FEF40
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface 0x2D
 };
 
 class CThingCreatureBase { public:
@@ -127,7 +129,7 @@ void CAIStateGroup_WorkHammerAnvil::OnReplace()
     if (IS_THING_ALIVE(PAnvil) && TookActionPoint) {
         CTCUserActionPointBase* point;
         if (PAnvil.GetPItem()->GetInterface(&point, 0x2D))
-            point->ReleaseSlot(ActionPointIndex);
+            ((CTCUserActionPointBase*)point)->SetActionPointAsFree(ActionPointIndex);
     }
     ((CThingCreatureBase*)PBrain->PCreature)->FinishCurrentAction();
     DestroyItem("CARRY_SLOT_RIGHT_HAND");

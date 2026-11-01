@@ -87,9 +87,12 @@ template<class A, class B> class CFilter_Bind2 { public:   // the bound filter h
 };
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_CanBeSeenOrHeard> CSeenOrHeardFilter;
+class CMessageEvent;
+class CMessageEventManager { public:
+    void RemoveMessage(CMessageEvent const*a0);   // 0x00493B5B (Ego_r.pdb ?RemoveMessage@CMessageEventManager@@QAEXPBVCMessageEvent@@@Z)
+};
 struct CMessageEventManager_Retail {
     CMessageEvent_Retail* FindMostRecentMessage(const CSeenOrHeardFilter& filter);   // 0x008ABED0
-    void RemoveMessage(const CMessageEvent_Retail* message);   // 0x00493B5B
 };
 struct CBaseIntelligentPointer_Retail {
     virtual void v00();
@@ -133,5 +136,5 @@ void CGameScriptInterface::RemoveBoastMessage() const
     CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
     CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x29) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
     if (message)
-        messages->RemoveMessage(message);
+        ((CMessageEventManager*)messages)->RemoveMessage((CMessageEvent const*)message);
 }

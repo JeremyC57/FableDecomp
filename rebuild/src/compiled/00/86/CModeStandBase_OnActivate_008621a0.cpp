@@ -62,10 +62,12 @@ class CThingCreatureBase { public:
 };
 class CThingPlayerCreature : public CThingCreatureBase { public: void InitialiseMovementSpeeds(); };   // 0x006A9A00
 struct CAnimBank;
-class CWorld { public:
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private: public:
     unsigned char _pad[0x3c];
     long Value3c;                                      // +0x3c
-    CAnimBank* GetAnimBank();                          // 0x0049D810
 };
 CCountedPointer<CAnimEntryLite> __fastcall LookupStandAnim(const CCharString& name, CThingCreatureBase* creature,
                                                           long animSet, CAnimBank* bank);   // 0x00861E60
@@ -102,12 +104,12 @@ void CModeStandBase::OnActivate()
 {
     CModeBase::OnActivate();
     CThingCreatureBase* creature = ParentThing;
-    PStandAnimation = LookupStandAnim("ST_IDLE_SUBTLE", creature, GetAnimSet(), GetWorld()->GetAnimBank());
-    PSlowWalkAnimation = LookupStandAnim("ST_SLOW_WALK", creature, GetAnimSet(), GetWorld()->GetAnimBank());
-    PWalkAnimation = LookupStandAnim("ST_WALK", creature, GetAnimSet(), GetWorld()->GetAnimBank());
-    PJogAnimation = LookupStandAnim("ST_JOG", creature, GetAnimSet(), GetWorld()->GetAnimBank());
-    PRunAnimation = LookupStandAnim("ST_RUN", creature, GetAnimSet(), GetWorld()->GetAnimBank());
-    PSprintAnimation = LookupStandAnim("ST_SPRINT", creature, GetAnimSet(), GetWorld()->GetAnimBank());
+    PStandAnimation = LookupStandAnim("ST_IDLE_SUBTLE", creature, GetAnimSet(), ((CAnimBank*)((CWorld*)(GetWorld()))->GetWorldSeed()));
+    PSlowWalkAnimation = LookupStandAnim("ST_SLOW_WALK", creature, GetAnimSet(), ((CAnimBank*)((CWorld*)(GetWorld()))->GetWorldSeed()));
+    PWalkAnimation = LookupStandAnim("ST_WALK", creature, GetAnimSet(), ((CAnimBank*)((CWorld*)(GetWorld()))->GetWorldSeed()));
+    PJogAnimation = LookupStandAnim("ST_JOG", creature, GetAnimSet(), ((CAnimBank*)((CWorld*)(GetWorld()))->GetWorldSeed()));
+    PRunAnimation = LookupStandAnim("ST_RUN", creature, GetAnimSet(), ((CAnimBank*)((CWorld*)(GetWorld()))->GetWorldSeed()));
+    PSprintAnimation = LookupStandAnim("ST_SPRINT", creature, GetAnimSet(), ((CAnimBank*)((CWorld*)(GetWorld()))->GetWorldSeed()));
     if (!PStandAnimation.Data)
         PStandAnimation.Reset(new CAnimEntryLite(creature->GetAnimFromName("DEFAULT", 0)));
     if (!PWalkAnimation.Data)

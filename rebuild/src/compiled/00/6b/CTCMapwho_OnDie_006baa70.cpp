@@ -3,14 +3,16 @@
 
 class CTCMapwho { public: int dummy; };
 
-extern "C" void __fastcall Mapwho_Dtor(CTCMapwho* self);
+class CFaction { public:
+    ~CFaction();   // 0x006BA6D0 (Ego_r.pdb ??1CFaction@@QAE@XZ)
+};
 void operator delete(void*);
 
 void __fastcall OnDie(CTCMapwho* self)
 {
     if (self)
     {
-        Mapwho_Dtor(self);
+        ((CFaction*)self)->~CFaction();
         operator delete(self);
     }
 }

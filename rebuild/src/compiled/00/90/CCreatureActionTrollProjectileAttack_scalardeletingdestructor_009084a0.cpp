@@ -3,10 +3,12 @@ class CCombatActionBase {
 public:
     virtual ~CCombatActionBase();   // 0x0062E900
 };
-extern void __fastcall DestructMember_0099eae0(void* member);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 void* __fastcall CCreatureAction_TrollProjectileAttack_CompositeScalarDeletingDestructor(void* action, int, unsigned int flags)
 {
-    DestructMember_0099eae0(static_cast<unsigned char*>(action) + 280);
+    ((CCharString*)(static_cast<unsigned char*>(action) + 280))->~CCharString();
     ((CCombatActionBase*)(action))->CCombatActionBase::~CCombatActionBase();
     if (flags & 1)
         operator delete(action);

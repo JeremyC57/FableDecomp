@@ -91,7 +91,11 @@ virtual const CRightHandedSet& GetFacing()const; //slot72,00724bd0
 virtual void slot73();virtual void slot74();virtual void SetFacingAnglesFromRHSet(const CRightHandedSet&); //slot75,007239c0
 };
 struct CDragonThing{char prefix[0x60];CDragonPhysics* Physics;char beforeDead[0x2d];unsigned char dead;};
-struct CDragonPointer{CDragonThing* GetPItem()const;}; //00a01b50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CDragonPointer{}; //00a01b50
 extern long FramesPerSecond; //01375550
 class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
 class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
@@ -110,6 +114,6 @@ do{
 AIAction_DoNothing();
 orientation=Creature()->Physics->GetFacing().Interpolate(orientation,0.1f);
 Creature()->Physics->SetFacingAnglesFromRHSet(orientation);
-if(!Enemy().GetPItem()||(Enemy().GetPItem()->dead&1)||IsStopping()){Terminate();return;}
+if(!((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())||(((CDragonThing*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->dead&1)||IsStopping()){Terminate();return;}
 }while((float)(GetWorld().GetFrame()-start)/FramesPerSecond<duration);
 }

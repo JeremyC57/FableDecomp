@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C490, length 56 bytes (64 with padding). Callees:
 // CTCGraphicAppearance::SetAsChanged(unsigned long reasons) @ 0x004BF9E0 (reason 4), the shared display-engine getter
 // @ 0x00686A70 (manifest "CViewBase::GetDisplayEngine": `return g_world->DisplayEngine` -- it ignores ecx),
-// CWorld::GetRandomGenerator @ 0x0049D810 (manifest "CVertexBufferWin32::DoSizeof", propagated: `return &m_p->+0x1613c`)
+// CWorld::GetWorldSeed @ 0x0049D810 (manifest "CVertexBufferWin32::DoSizeof", propagated: `return &m_p->+0x1613c`)
 // and the generator's FloatRandom(float max) @ 0x004978A0 (manifest "GFFloatRandom", but it is a __fastcall: ecx = the seed).
 // Only caller @ 0x00703457.
 // Layout (Ego_r.pdb CTCGraphicAppearanceSprite, 48 bytes): CTCBase +0x00..+0x0b (ParentThing +0x04), the component vptr +0x0c,
@@ -17,8 +17,10 @@ struct CRandomGenerator {
     float FloatRandom(float max);                       // 0x004978A0
 };
 
-class CWorld { public:
-    CRandomGenerator* GetRandomGenerator();             // 0x0049D810
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private:              // 0x0049D810
 };
 
 struct CTCGraphicAppearance {
@@ -64,7 +66,7 @@ void CTCGraphicAppearanceSprite::SetRotationAngle(float amount)
 {
     ParentThing->PTCGraphicAppearance->SetAsChanged(4);
     RotationAmountPerFrame = amount;
-    CRandomGenerator* random = GetWorld().GetRandomGenerator();
+    CRandomGenerator* random = ((CRandomGenerator*)((CWorld*)&(GetWorld()))->GetWorldSeed());
     RotationAngle = random->FloatRandom(1.0f);
 }
 

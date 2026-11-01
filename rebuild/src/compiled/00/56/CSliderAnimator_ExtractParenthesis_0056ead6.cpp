@@ -1,6 +1,6 @@
 // CSliderAnimator::ExtractParenthesis(NUISystem::CText* text) -- the text's string from its first '(' to the end, as a wide string (the empty wide string when there is no '(')
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056EAD6, length 114 bytes (`ret 8`, frame pointer + `leave`).
-// Callees: CText virtual slot 142 (+0x238, the displayed wide string), CWideString::ConvertToCharString @ 0x0099B2C0 (result into the
+// Callees: CText virtual slot 142 (+0x238, the displayed wide string), CWideString::ToCharString @ 0x0099B2C0 (result into the
 // dead `text` argument slot), CCharString::FindCharPos @ 0x0099E5A0, GetSubString @ 0x0099EC70, ToWideString @ 0x0099E480,
 // ~CCharString @ 0x0099EAE0 (catalog label a propagated _Cons_val), CWideString copy ctor @ 0x0099B720 from the static 0x013BCA24.
 // TU: `#pragma optimize("s", on)` + `("y", off)` (ebp frame, `leave`, one shared string-dtor exit).
@@ -18,10 +18,12 @@ class CCharString { public:
     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
     CWideString ToWideString() const;                          // 0x0099E480
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString(const CWideString& other);                     // 0x0099B720
-    CCharString ConvertToCharString() const;                   // 0x0099B2C0
 };
 extern const CWideString g_EmptyWideString;                    // 0x013BCA24
 
@@ -179,7 +181,7 @@ class CSliderAnimator { public:
 
 CWideString CSliderAnimator::ExtractParenthesis(NUISystem::CText* text)
 {
-    CCharString s = text->GetText().ConvertToCharString();
+    CCharString s = ((CWideString*)&(text->GetText()))->ToCharString();
     long pos = s.FindCharPos('(');
     if (pos != -1) {
         CCharString sub = s.GetSubString(pos, s.GetLength());

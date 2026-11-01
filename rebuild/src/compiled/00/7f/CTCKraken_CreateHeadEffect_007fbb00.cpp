@@ -142,18 +142,20 @@ class CTCDParticleEmitter { public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
-class CTCKraken { public:
+class CTCKraken {
+public:
+    void EndHeadEffects();   // 0x007FB150 (Ego_r.pdb ?EndHeadEffects@CTCKraken@@QAEXXZ)
+private: public:
     void*   __vftable;                          // +0x00
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x28 - 0x08];
     CIntelligentPointer<CThing> PHeadEffect;            // +0x28
-    void RemoveHeadEffect();                    // 0x007FB150
     void CreateHeadEffect(const CCharString& name);
 };
 
 void CTCKraken::CreateHeadEffect(const CCharString& name)
 {
-    RemoveHeadEffect();
+    ((CTCKraken*)this)->EndHeadEffects();
     CDefPointer<CSpecialEffectsDef> effectsSlot;
     long effectType = 0;
     CDefClassBase* defClass = ParentThing->m_pDef;

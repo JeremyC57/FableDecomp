@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E4F80, 270 bytes (+2 int3 padding), `ret` (a varargs member: __cdecl with
 //   `this` as the first stack argument, never read). Callers 0x009E570C.. (CSymbolMap's definition parser).
 // Callees: CCharString::CCharString() 0x0099E4B0, _snprintf 0x00BFEB96, vsprintf 0x00BFEDD0,
-//   CWideString::ConvertToCharString() const 0x0099B2C0 (by value), CCharString(const char*, long) 0x0099EBF0,
+//   CWideString::ToCharString() const 0x0099B2C0 (by value), CCharString(const char*, long) 0x0099EBF0,
 //   operator+(const CCharString&, const CCharString&) 0x0099F570 / operator+(const CCharString&, const char*) 0x0099F600
 //   (__fastcall: result in ecx, left in edx), CCharString::operator=(const CCharString&) 0x0099EFB0, ~CCharString
 //   0x0099EAE0, __security_check_cookie 0x00BFE9F9. Literals "(%d)" 0x0129C14C, " : error C2065 : " 0x0129C138,
@@ -27,9 +27,11 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
-    CCharString ConvertToCharString() const;                 // 0x0099B2C0
 };
 
 class CSymbolMap {
@@ -47,5 +49,5 @@ void CSymbolMap::Error(const CWideString& file, long line, const char* format, .
     va_list args;
     va_start(args, format);
     vsprintf(message, format, args);
-    errorText = CCharString("", -1) + file.ConvertToCharString() + lineText + " : error C2065 : " + message;
+    errorText = CCharString("", -1) + ((CWideString*)&file)->ToCharString() + lineText + " : error C2065 : " + message;
 }

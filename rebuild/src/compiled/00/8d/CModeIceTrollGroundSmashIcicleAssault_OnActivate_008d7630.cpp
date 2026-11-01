@@ -57,17 +57,20 @@ struct ModeStandNative {
 FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C
  virtual ~BaseIntelligentPointer(); //A01C10
- ThingNative*GetPItem()const; //A01B50
  void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
  __forceinline IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
- IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(p.GetPItem());return*this;}
+ IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem()));return*this;}
 };
 FABLE_STATIC_ASSERT(sizeof(IntelligentThingPointer)==8);
 
@@ -127,7 +130,7 @@ void ModeIceTroll::OnActivate(){
  Timer=0;
  if(ParentThing->RuntimeType==1)ParentThing->SuspendAI(true,0);
  C3DVector pos=ParentThing->GetPos();
- if(PTarget.GetPItem()&&!(PTarget.GetPItem()->LifeFlags&1))pos=PTarget.GetPItem()->GetPos();
+ if(((ThingNative*)((CBaseIntelligentPointer*)&PTarget)->GetPItem())&&!(((ThingNative*)((CBaseIntelligentPointer*)&PTarget)->GetPItem())->LifeFlags&1))pos=((ThingNative*)((CBaseIntelligentPointer*)&PTarget)->GetPItem())->GetPos();
  WorldNative&world=GetWorld();
  const CSnowTrollDef*definition=PDef.Object;
  CThingSearchTools*search=GetWorld().Search;

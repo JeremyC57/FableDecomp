@@ -28,7 +28,7 @@ struct CBaseIntelligentPointer {           // vtable + PData (8 bytes; byte-alig
     void* PData;
     CBaseIntelligentPointer();             // 0x00A01B10
     virtual ~CBaseIntelligentPointer();    // 0x00A01C10
-    CThingCreatureBase* GetPItem() const;  // 0x00A01B50
+    CBaseObject* GetPItem() const;  // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {
 };
@@ -72,8 +72,8 @@ void NCreatureMode::CModeBriarRoseTeleportIntangible::FrameUpdate()
     CModeBase::FrameUpdate();
     if (--Timer <= 0) {
         CThingCreatureBase* owner = ParentThing;
-        if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1) &&
-            owner->SetCurrentAction(CCreatureAction_BriarRoseConcentrateInto(owner, (CBaseObject*)PTarget.GetPItem(), false)))
+        if (((CThingCreatureBase*)PTarget.GetPItem()) != 0 && !(((CThingCreatureBase*)PTarget.GetPItem())->m_flags91 & 1) &&
+            owner->SetCurrentAction(CCreatureAction_BriarRoseConcentrateInto(owner, (CBaseObject*)((CThingCreatureBase*)PTarget.GetPItem()), false)))
             return;
     }
 }

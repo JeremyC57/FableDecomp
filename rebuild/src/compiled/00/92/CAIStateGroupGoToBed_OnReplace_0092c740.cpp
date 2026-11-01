@@ -96,8 +96,10 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 };
 
+class CTCUserActionPointBase { public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+};
 struct CTCActionPointOwner {                    // interface 0x2d
-    void FreePoint(long index);                 // 0x007FEF40
 };
 class CTCBed { public:                                 // interface 0xac
     CThing* GetOccupant();                      // 0x0087C3E0
@@ -120,7 +122,7 @@ void CAIStateGroup_GoToBed::OnReplace()
         if (ActionPointIndex != -1 && IS_THING_ALIVE(PBed)) {
             CTCActionPointOwner* points;
             PBed.GetPItem()->GetInterface(&points, 0x2d);
-            points->FreePoint(ActionPointIndex);
+            ((CTCUserActionPointBase*)points)->SetActionPointAsFree(ActionPointIndex);
             ActionPointIndex = -1;
         }
     }

@@ -50,8 +50,10 @@ class CThing { public:
     }
 };
 
+class CTCUserActionPointBase { public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+};
 struct CTCFreePointList {                       // interface type 0x2E component
-    void AddFreePoint(long index);              // 0x007FEF40
 };
 
 class CTCTavernBar { public:
@@ -64,5 +66,5 @@ void CTCTavernBar::FreeBarPoint(long index)
 {
     CTCFreePointList* points;
     ParentThing->GetInterface(&points, 0x2E);
-    points->AddFreePoint(index);
+    ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
 }

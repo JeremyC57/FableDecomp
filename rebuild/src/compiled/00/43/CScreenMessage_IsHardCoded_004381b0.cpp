@@ -1,7 +1,7 @@
 // CScreenMessage::IsHardCoded() const -- true when the message text starts with the "(HC)" hard-coded marker
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004381B0, length 117 bytes (+11 int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("(HC)" @ 0x0123172C, length -1),
-// CWideString::ConvertToCharString() const @ 0x0099B2C0 (hidden result pointer), strncmp @ 0x00BFEAF8,
+// CWideString::ToCharString() const @ 0x0099B2C0 (hidden result pointer), strncmp @ 0x00BFEAF8,
 // ~CCharString @ 0x0099EAE0 (temporary first, then the marker). "" = 0x0129AAF4.
 // Shape: the marker (frame +4) is a named local; the converted text is the temporary OBJECT of an inline
 // StartsWith(const CCharString&) member call in the return expression, so the conversion runs before the strncmp
@@ -27,9 +27,11 @@ class CCharString { public:
     }
 };
 
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* m_pData;
-    CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
 
 class CScreenMessage {
@@ -45,5 +47,5 @@ private:
 bool CScreenMessage::IsHardCoded() const
 {
     CCharString marker("(HC)");
-    return Text.ConvertToCharString().StartsWith(marker);
+    return ((CWideString*)&Text)->ToCharString().StartsWith(marker);
 }

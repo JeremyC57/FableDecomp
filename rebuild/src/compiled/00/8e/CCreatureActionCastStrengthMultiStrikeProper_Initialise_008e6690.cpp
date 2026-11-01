@@ -61,10 +61,12 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
     *(void**)out = def;
     return true;
 }
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 #pragma auto_inline(on)
 
 struct CTCSound {                               // the interface-0x10 component
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -140,7 +142,7 @@ void CCreatureAction_CastStrengthMultiStrikeProper::Initialise()
     CTCSound* sound;
     if (PCreature.GetPItem()->GetInterface(&sound, 0x10)) {
         CCharString soundName = g_DefStringTable.GetString(def->Sounds[SpellLevel - 1]);
-        sound->PlaySound(soundName, 1, 0, 0, -1);
+        ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(soundName, 1, 0, 0, -1);
     }
     CCombatActionBase::Initialise();
 }

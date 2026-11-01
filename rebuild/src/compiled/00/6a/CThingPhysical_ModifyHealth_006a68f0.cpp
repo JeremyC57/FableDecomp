@@ -62,8 +62,7 @@ __forceinline long FloorToLong(float value)
     }
     return result;
 }
-class CThingPhysical { public:
-    void InternalModifyHealth(float amount, bool fromHit);   // 0x006A62E0
+class CThingPhysical { void InternalModifyHealth(float a0, bool a1);   // 0x006A62E0
     void ModifyHealth(float amount, bool fromHit);
 };
 

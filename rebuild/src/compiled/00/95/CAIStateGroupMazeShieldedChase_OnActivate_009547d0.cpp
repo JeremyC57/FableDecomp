@@ -14,8 +14,12 @@ class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_MazeShieldedChase:CAIStateGroupBase{void* _pad_0x14[2];char unused[4];long unusedFrame;};
 #endif
 struct MazeThing;
-struct MazeCreaturePointerBase{virtual ~MazeCreaturePointerBase();MazeThing* item;MazeCreaturePointerBase();MazeThing* GetPItem()const;void SetPItem(MazeThing*);}; //00a01c10,00a01b10,00a01b50,00a01b90
-struct MazeCreaturePointer:MazeCreaturePointerBase{__forceinline MazeCreaturePointer(MazeThing* p){SetPItem(p);}__forceinline MazeCreaturePointer& operator=(const MazeCreaturePointer& p){SetPItem(p.GetPItem());return *this;}}; //derived scalar destructor004d6915,vtable0123e7d8
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct MazeCreaturePointerBase{virtual ~MazeCreaturePointerBase();MazeThing* item;MazeCreaturePointerBase();void SetPItem(MazeThing*);}; //00a01c10,00a01b10,00a01b50,00a01b90
+struct MazeCreaturePointer:MazeCreaturePointerBase{__forceinline MazeCreaturePointer(MazeThing* p){SetPItem(p);}__forceinline MazeCreaturePointer& operator=(const MazeCreaturePointer& p){SetPItem(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem()));return *this;}}; //derived scalar destructor004d6915,vtable0123e7d8
 class C3DVector{ public:float X,Y,Z;};
 #pragma pack(push,1)
 struct MazeBoss{char beforeHome[0x22];C3DVector Home;long GetPhase();};
@@ -48,7 +52,7 @@ void OnActivate();};
 void ShieldMethods::OnActivate(){
 MazeBoss* boss;Creature()->GetBoss(&boss);
 if(boss->GetPhase()==0)boss->Home=Creature()->GetPos();
-MazeThing* target=Target().GetPItem();MazeCombat* combat;Creature()->GetCombat(&combat);
+MazeThing* target=((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem());MazeCombat* combat;Creature()->GetCombat(&combat);
 combat->target=MazeCreaturePointer(target);
-if(Target().GetPItem()->flags&8){MazeThing* opponent=Target().GetPItem();MazeThing* actor=Creature();CWorld* world=&GetWorld();world->PThingCombatManager_ptr->RegisterCombatant(actor,opponent,true);}
+if(((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem())->flags&8){MazeThing* opponent=((MazeThing*)((CBaseIntelligentPointer*)&(Target()))->GetPItem());MazeThing* actor=Creature();CWorld* world=&GetWorld();world->PThingCombatManager_ptr->RegisterCombatant(actor,opponent,true);}
 }

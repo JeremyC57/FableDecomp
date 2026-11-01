@@ -211,5 +211,8 @@ virtual long GetTimer(long) const; //slot90 0x006e7710
 virtual ScriptMethods CreateCreature(CCharString const &, C3DVector const &, CCharString const &, bool) const; //slot91 0x008a9100
 };
 FABLE_STATIC_ASSERT(offsetof(CScriptThing,PImp_Data)==4);
-struct CGamesmasterOracleMarker{void*VTable;GameMethods*Game;ScriptMethods Marker;void*ParentClass;void*PMasterData;void Main();bool IsTerminating()const;__forceinline ScriptMethods CreateOracle(){CCharString name("OracleGamesmaster",-1);CCharString definition("CREATURE_SS_ORACLE_GAMES_MASTER",-1);return Game->CreateCreature(definition,Marker.GetPos(),name,false);}}; //00F35B30 calls parent slot3 then CScriptBase::IsActiveThreadTerminating00CB7940
-void CGamesmasterOracleMarker::Main(){ScriptMethods creature=CreateOracle();do{Game->NewScriptFrame();}while(!IsTerminating());}
+class CEntityScriptBase { public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+};
+struct CGamesmasterOracleMarker{void*VTable;GameMethods*Game;ScriptMethods Marker;void*ParentClass;void*PMasterData;void Main();__forceinline ScriptMethods CreateOracle(){CCharString name("OracleGamesmaster",-1);CCharString definition("CREATURE_SS_ORACLE_GAMES_MASTER",-1);return Game->CreateCreature(definition,Marker.GetPos(),name,false);}}; //00F35B30 calls parent slot3 then CScriptBase::IsActiveThreadTerminating00CB7940
+void CGamesmasterOracleMarker::Main(){ScriptMethods creature=CreateOracle();do{Game->NewScriptFrame();}while(!((CEntityScriptBase*)this)->IsActiveThreadTerminating());}

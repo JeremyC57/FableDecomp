@@ -28,10 +28,12 @@ struct CCountedPointer_C3DAnimationStats {         // {object, count block}
 class C3DAnimationInfo { public:
     CCountedPointer_C3DAnimationStats GetAnimationStats();   // 0x00A269C0 (returned through the hidden result pointer)
 };
+class CMeshDataBank { public:
+    C3DAnimationInfo const* PeekAnimation(unsigned long a0) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
+};
 struct CAnimationBank {
     unsigned char      _pad[0x380];
     C3DAnimationInfo** m_pAnimations;              // +0x380
-    C3DAnimationInfo* GetAnimation(long animation);   // 0x00A242C0 (`m_pAnimations[animation]`; the manifest label "GetAbilityLevel" is propagated)
 };
 class C3DAnimationStats { public:
     void GetEmbeddedEventNames(void* names) const; // 0x00A4EF90
@@ -44,6 +46,6 @@ struct CAnimationEventQuery_006f9240 {
 
 void CAnimationEventQuery_006f9240::GetEmbeddedEventNames(long animation, void* names)
 {
-    CCountedPointer_C3DAnimationStats stats = m_pBank->GetAnimation(animation)->GetAnimationStats();
+    CCountedPointer_C3DAnimationStats stats = ((C3DAnimationInfo*)((CMeshDataBank*)m_pBank)->PeekAnimation(animation))->GetAnimationStats();
     stats->GetEmbeddedEventNames(names);
 }

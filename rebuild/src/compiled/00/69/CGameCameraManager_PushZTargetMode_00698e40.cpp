@@ -95,10 +95,13 @@ class CThing { public:
     unsigned char Deleted;                              // +0x91 bit 0
     unsigned char GetDeleted() const { return Deleted; }
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CCameraObservedPointer {
     void* Vtable;
     void* Item;
-    const CThing* GetPItem() const;                     // 0x00A01B50
 };
 void __fastcall PlayCameraSoundThroughObservedThing(const CThing* thing, const CCameraManagerDef& def, const CCharString& sound);   // 0x00698A30
 
@@ -128,12 +131,12 @@ void CGameCameraManager::PushZTargetMode()
 {
     BlockModeChange = true;
     UsingCameraManually = true;
-    if (Observed.GetPItem() && !(Observed.GetPItem()->GetDeleted() & 1) && !PendingScript.Data &&
+    if (((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem()) && !(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem())->GetDeleted() & 1) && !PendingScript.Data &&
         (!CurrentScript.Data || CurrentScript.Data->IsFinished())) {
         {
             CCharString sound("Z_TARGET_START", -1);
             const CCameraManagerDef& def = *PDef;
-            PlayCameraSoundThroughObservedThing(Observed.GetPItem(), def, sound);
+            PlayCameraSoundThroughObservedThing(((CThing const*)((CBaseIntelligentPointer*)&Observed)->GetPItem()), def, sound);
         }
         CCameraDefPointer mode;
         if (PDef && PDef->ZTargetMode) {

@@ -37,11 +37,14 @@ class CThing { public:
     unsigned short _pad[0x46];
     unsigned short DefIndex;                            // +0x8c
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 #pragma pack(push, 1)
 struct CIntelligentPointer {
     virtual void v00();
     void* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
 };
 #pragma pack(pop)
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& p);   // 0x004CC340
@@ -113,21 +116,21 @@ void CTCInventoryWeapons::OnSerialise(CPersistContext& context, long version)
     BaseOnSerialise(context, version);
     if (context.IsSaving()) {
         if (IS_THING_ALIVE(MeleeWeapon))
-            MeleeDefIndex = MeleeWeapon.GetPItem()->DefIndex;
+            MeleeDefIndex = ((CThing*)((CBaseIntelligentPointer*)&MeleeWeapon)->GetPItem())->DefIndex;
         else
             MeleeDefIndex = 0;
         if (IS_THING_ALIVE(RangedWeapon))
-            RangedDefIndex = RangedWeapon.GetPItem()->DefIndex;
+            RangedDefIndex = ((CThing*)((CBaseIntelligentPointer*)&RangedWeapon)->GetPItem())->DefIndex;
         else
             RangedDefIndex = 0;
         bool meleeCarried = false;
         bool rangedCarried = false;
         const CTCCarrying* carrying;
         if (ParentThing->GetInterface(&carrying, 0x46)) {
-            if (MeleeWeapon.GetPItem() && carrying->IsCarryingThing(MeleeWeapon.GetPItem()))
-                meleeCarried = carrying->IsCarriedThingInPrimarySlot(MeleeWeapon.GetPItem());
-            if (RangedWeapon.GetPItem() && carrying->IsCarryingThing(RangedWeapon.GetPItem()))
-                rangedCarried = carrying->IsCarriedThingInPrimarySlot(RangedWeapon.GetPItem());
+            if (((CThing*)((CBaseIntelligentPointer*)&MeleeWeapon)->GetPItem()) && carrying->IsCarryingThing(((CThing*)((CBaseIntelligentPointer*)&MeleeWeapon)->GetPItem())))
+                meleeCarried = carrying->IsCarriedThingInPrimarySlot(((CThing*)((CBaseIntelligentPointer*)&MeleeWeapon)->GetPItem()));
+            if (((CThing*)((CBaseIntelligentPointer*)&RangedWeapon)->GetPItem()) && carrying->IsCarryingThing(((CThing*)((CBaseIntelligentPointer*)&RangedWeapon)->GetPItem())))
+                rangedCarried = carrying->IsCarriedThingInPrimarySlot(((CThing*)((CBaseIntelligentPointer*)&RangedWeapon)->GetPItem()));
         }
         context.Transfer("MeleeWeaponCarried", meleeCarried, false);
         context.Transfer("RangedWeaponCarried", rangedCarried, false);

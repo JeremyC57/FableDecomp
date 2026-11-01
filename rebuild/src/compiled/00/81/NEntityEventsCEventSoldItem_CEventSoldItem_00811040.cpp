@@ -4,10 +4,12 @@
 // CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10 twice. Vtables 0x01272378 = NEntityEvents::CEventSoldItem, 0x0124F2C4 = CEventBase (rtti-vtables.tsv).
 // Shape: the ownership byte through al before the vtable store's `je`, the pointer address kept in edi across the three accessor calls; members destroyed in
 // reverse order, the inlined base destructor last.
+class CThing { public:
+    void Kill(bool a0);   // 0x004C9B80 (Ego_r.pdb ?Kill@CThing@@QAEX_N@Z)
+};
 struct CThing_00811040 {
     unsigned char _pad[0x91];
     unsigned char m_flags;                         // +0x91
-    void Kill(long reason);                        // 0x004C9B80
 };
 
 struct CBaseIntelligentPointer {                   // 8 bytes: vptr + the pointee link
@@ -42,7 +44,7 @@ NEntityEvents::CEventSoldItem::~CEventSoldItem()
     if (m_ownsItem) {
         if (m_item.GetPItem()) {
             if (!(m_item.GetPItem()->m_flags & 1))
-                m_item.GetPItem()->Kill(0);
+                ((CThing*)(m_item.GetPItem()))->Kill(0);
         }
     }
 }

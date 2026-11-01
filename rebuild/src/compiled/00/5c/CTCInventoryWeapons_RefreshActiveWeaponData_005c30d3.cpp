@@ -10,9 +10,12 @@
 // Local model (no engine header for CTCInventoryWeapons).
 #pragma optimize("s", on)
 class CThing;
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {
     unsigned char _body[8];
-    CThing* GetPItem();                       // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE(CIntelligentPointer* pointer);   // 0x004CC340
 struct CTCInventoryBase_Retail {
@@ -33,7 +36,7 @@ class CTCInventoryWeapons : public CTCInventoryBase_Retail, public NHeroInformat
 void CTCInventoryWeapons::RefreshActiveWeaponData()
 {
     if (IS_THING_ALIVE(&PActiveMeleeWeapon))
-        RefreshItemData(PActiveMeleeWeapon.GetPItem());
+        RefreshItemData(((CThing*)((CBaseIntelligentPointer*)&PActiveMeleeWeapon)->GetPItem()));
     if (IS_THING_ALIVE(&PActiveRangedWeapon))
-        RefreshItemData(PActiveRangedWeapon.GetPItem());
+        RefreshItemData(((CThing*)((CBaseIntelligentPointer*)&PActiveRangedWeapon)->GetPItem()));
 }

@@ -50,9 +50,12 @@ class CThing { public:
         return component;
     }
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {
     unsigned char _body[8];
-    CThing* GetPItem() const;                 // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* pointer);   // 0x004CC340
 class CTCWeapon { public:                            // interface type 0x48
@@ -69,6 +72,6 @@ float CTCInventoryWeapons::GetActiveMeleeWeaponDamage() const
 {
     float damage = 0.0f;
     if (IS_THING_ALIVE(&PActiveMeleeWeapon))
-        damage = PActiveMeleeWeapon.GetPItem()->GetTC<CTCWeapon>(0x48)->GetDamage();
+        damage = ((CThing*)((CBaseIntelligentPointer*)&PActiveMeleeWeapon)->GetPItem())->GetTC<CTCWeapon>(0x48)->GetDamage();
     return damage;
 }

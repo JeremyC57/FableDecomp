@@ -35,14 +35,14 @@ class CThingAICreature : public CThingCreatureBase { };
 class CBaseIntelligentPointer {
 public:
     virtual ~CBaseIntelligentPointer();
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     CBaseObject* m_pItem;                           // +0x04
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    T* operator->() const { return (T*)GetPItem(); }
-    T& operator*() const { return *(T*)GetPItem(); }
-    T* Get() const { return (T*)GetPItem(); }
+    T* operator->() const { return (T*)((CThing*)GetPItem()); }
+    T& operator*() const { return *(T*)((CThing*)GetPItem()); }
+    T* Get() const { return (T*)((CThing*)GetPItem()); }
 };
 
 template <class T> __forceinline bool IS_THING_ALIVE(const CIntelligentPointer<T>& p)

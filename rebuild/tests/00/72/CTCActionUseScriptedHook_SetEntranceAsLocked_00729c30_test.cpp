@@ -2,7 +2,6 @@
 
 struct Entrance
 {
-    void* Resolve();
     char data[8];
 };
 
@@ -17,9 +16,11 @@ class CTCActionUseScriptedHook
 
 static void* g_resolveResult = 0;
 
-void* Entrance::Resolve()
+class CBaseObject;
+class CBaseIntelligentPointer { public: CBaseObject* GetPItem() const; };   // 0x00A01B50 (Ego_r.pdb)
+CBaseObject* CBaseIntelligentPointer::GetPItem() const
 {
-    return g_resolveResult;
+    return (CBaseObject*)g_resolveResult;
 }
 
 int main()

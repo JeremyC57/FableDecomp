@@ -70,7 +70,7 @@ class CThingCreatureBase : public CThing { public: };
 class CTCVillage { public:
     unsigned char _pad[0xbc];
     bool LessonOn;                              // +0xBC
-    bool GetSchoolTimes(float* start, float* end);   // 0x00658ACB
+    bool GetSchoolTimes(float&a0, float&a1) const;   // 0x00658ACB
 };
 class CTCVillageMember { public:
     CTCVillage* GetPVillage() const;                    // 0x007EE540
@@ -159,7 +159,7 @@ void CAIStateGroup_MinionSitAtSchool::Update()
     GetCreature()->GetInterface(&member, 0x23);
     float startTime;
     float endTime;
-    member->GetPVillage()->GetSchoolTimes(&startTime, &endTime);
+    member->GetPVillage()->GetSchoolTimes(*(&startTime), *(&endTime));
     float now = PeekWorld().PTimeOfDay->Now;
     unsigned long* seed = GetPWorldSeed();
     *seed = *seed * 0x24A1U + 0x24DFU;

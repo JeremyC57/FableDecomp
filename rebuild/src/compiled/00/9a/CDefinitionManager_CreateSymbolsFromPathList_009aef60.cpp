@@ -25,12 +25,14 @@ class CCharString { public:
     CCharString ToLower() const;                        // 0x0099ED10
     class CWideString ToWideString() const;            // 0x0099E480
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 class CBaseClassNonCopyable {
 protected:
@@ -135,7 +137,7 @@ void CDefinitionManager::CreateSymbolsFromPathList(const CWideStringVector& path
         CWideStringVector files;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
-                files.push_back(fileName.ConvertToCharString().ToLower().ToWideString());
+                files.push_back(((CWideString*)&fileName)->ToCharString().ToLower().ToWideString());
             } while (ScanNextFile(*path, scan, fileName));
         }
         long count = files.size();
@@ -148,7 +150,7 @@ void CDefinitionManager::CreateSymbolsFromPathList(const CWideStringVector& path
             GFRemoveComments(buffer, "//", "\n");
             GFRemoveComments(buffer, "//", "\r");
             GFRemoveComments(buffer, "/*", "*/");
-            CurrentFileName = file.GetPathname().ConvertToCharString();
+            CurrentFileName = ((CWideString*)&(file.GetPathname()))->ToCharString();
             ParseStringForSymbols(buffer, flags);
             delete[] buffer;
         }

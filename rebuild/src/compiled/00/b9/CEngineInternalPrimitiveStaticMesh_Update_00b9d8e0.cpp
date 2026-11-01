@@ -48,8 +48,10 @@ public:
     }
 };
 
+class CMeshDataBank { public:
+    C3DMeshInfo const* PeekStaticMesh(unsigned long a0) const;   // 0x00A24280 (Ego_r.pdb ?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z)
+};
 struct CMeshBank {
-    C3DMeshInfo* GetMesh(unsigned long index);     // 0x00A24280 (manifest "CTCInventoryAbilities::GetAbilityLevel", propagated)
 };
 
 struct SEngineResources {                          // engine resource record reached through the pointer at 0x01436E98
@@ -115,7 +117,7 @@ void CEngineInternalPrimitiveStaticMesh::Update(const CEnginePrimitive& primitiv
 {
     const CEnginePrimitiveStaticMesh& mesh = static_cast<const CEnginePrimitiveStaticMesh&>(primitive);
     EnginePrimitiveFlags = flags;
-    ShadowMeshInfo = MeshInfo = g_pEngineResources->GetMeshBank()->GetMesh(mesh.MeshIndex);
+    ShadowMeshInfo = MeshInfo = ((C3DMeshInfo*)((CMeshDataBank*)(g_pEngineResources->GetMeshBank()))->PeekStaticMesh(mesh.MeshIndex));
     Scale = mesh.Size * 0.01f;
     Alpha = mesh.Alpha;
     TintColour = mesh.TintColour;

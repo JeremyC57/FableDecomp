@@ -19,7 +19,11 @@ class CWorld{ public:char prefix[0x4c];CCombatManager* PThingCombatManager_ptr;}
 #endif
 struct JackThing;
 class CCombatManager{ public:void RegisterCombatant(JackThing*,JackThing*,bool);}; //006edc50
-struct JackPointer{JackThing* GetPItem()const;}; //00a01b50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct JackPointer{}; //00a01b50
 struct HitLocation{void SetEnabled(bool);}; //00816390
 struct HitLocations{HitLocation* GetHitLocation(const CCharString&);}; //00815820
 struct JackEntry{long type;HitLocations* value;};
@@ -37,7 +41,7 @@ void OnActivate();
 };
 void JackMethods::OnActivate(){
 JackThing* actor=Creature();CCombatManager* combat=GetWorld().PThingCombatManager_ptr;
-combat->RegisterCombatant(actor,((JackPointer*)_pad_0x24)->GetPItem(),false);
+combat->RegisterCombatant(actor,((JackThing*)((CBaseIntelligentPointer*)(((JackPointer*)_pad_0x24)))->GetPItem()),false);
 HitLocations* hits;
 Creature()->GetInterface(&hits);
 HitLocation* location;

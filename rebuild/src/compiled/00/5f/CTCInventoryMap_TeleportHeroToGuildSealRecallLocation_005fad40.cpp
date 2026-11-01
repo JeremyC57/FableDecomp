@@ -50,7 +50,7 @@ class CWorld { public:
     unsigned char _pad130[0x154 - 0x130];
     C3DVector GuildSealRecallPos;                     // +0x154
     float GuildSealRecallAngleXY;                     // +0x160
-    void HandleMoveHeroToRegionGameEvent(const CGameEvent* event);   // 0x0049EAF0
+    void HandleMoveHeroToRegionGameEvent(CGameEvent const&a0);   // 0x0049EAF0
 };
 
 class CTCBase { protected:                            // Ego_r.pdb CTCBase protected accessors
@@ -79,6 +79,6 @@ void CTCInventoryMap::TeleportHeroToGuildSealRecallLocation() const
         event.AddBool(false);
         event.AddBool(false);
         event.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
-        GetWorld().HandleMoveHeroToRegionGameEvent(&event);
+        GetWorld().HandleMoveHeroToRegionGameEvent(*(&event));
     }
 }

@@ -153,7 +153,10 @@ template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(con
 
 class CMessageEvent;
 class CMessageEventManager;
-class CWorld { public:
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private: public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
@@ -314,7 +317,6 @@ class CTCBoss { public:                                // interface 0xad
 };
 
 struct CWorldSeed {
-    unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 
 long CAIStateGroup_JackDragon::ChooseIntoGroundState()
@@ -325,7 +327,7 @@ long CAIStateGroup_JackDragon::ChooseIntoGroundState()
     CTCBoss* boss;
     PBrain->PCreature->GetInterface(&boss, 0xad);
     if (boss->GetBossPhase() >= 2) {
-        if ((float)WorldRandomRange(*((CWorldSeed*)&GetWorld())->GetPRandomSeed(), 100) < def.m_p->ChanceIntoGround)
+        if ((float)WorldRandomRange(*((CWorld*)(((CWorldSeed*)&GetWorld())))->GetWorldSeed(), 100) < def.m_p->ChanceIntoGround)
             return 5;
     }
     return 0;

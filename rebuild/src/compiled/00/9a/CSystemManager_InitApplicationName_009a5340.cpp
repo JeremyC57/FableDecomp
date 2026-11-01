@@ -3,7 +3,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A5340, 274 bytes, `ret`.
 // Callees: GetCommandLineW (kernel32 import 0x0143FD74), wcsncpy 0x00BFEB04, wcslen 0x00BFED94, wcsrchr 0x00BFEDB2,
-//   wcscpy 0x00BFED76 (CRT), CWideString::CWideString(const wchar_t*) 0x0099B6B0, CWideString::ConvertToCharString()
+//   wcscpy 0x00BFED76 (CRT), CWideString::CWideString(const wchar_t*) 0x0099B6B0, CWideString::ToCharString()
 //   const 0x0099B2C0 (by value), CCharString::operator=(const CCharString&) 0x0099EFB0, ~CCharString 0x0099EAE0,
 //   ~CWideString 0x0099B510, __security_check_cookie 0x00BFE9F9.
 // Layout: ApplicationName (CCharString) at retail +0x168 (Ego_r.pdb +0x160; no engine header, local model).
@@ -26,11 +26,13 @@ class CCharString { public:
     ~CCharString();                                          // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString(const wchar_t* text);                        // 0x0099B6B0
     ~CWideString();                                          // 0x0099B510
-    CCharString ConvertToCharString() const;                 // 0x0099B2C0
 };
 
 class CSystemManager {
@@ -60,6 +62,6 @@ void CSystemManager::InitApplicationName()
     wchar_t* slash = wcsrchr(commandLine, L'\\');
     if (slash) {
         wcscpy(exeName, slash + 1);
-        ApplicationName = CWideString(exeName).ConvertToCharString();
+        ApplicationName = ((CWideString*)&(CWideString(exeName)))->ToCharString();
     }
 }

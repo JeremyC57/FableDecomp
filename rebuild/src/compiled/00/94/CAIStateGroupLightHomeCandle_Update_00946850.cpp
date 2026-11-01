@@ -43,10 +43,12 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public: };
-struct CTCUserActionPointBase {                 // interface 0x2d
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface 0x2d
     long GetNumberOfActionPointsInUse();        // 0x007FEC10
     bool GetFreeActionPoint(CThingCreatureBase* user, C3DVector* pos, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
-    void FreeActionPoint(long index);           // 0x007FEF40
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -122,32 +124,32 @@ void CAIStateGroup_LightHomeCandle::Update()
     long result;
     do {
         if (PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
-            points->FreeActionPoint(index);
+            ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
             Terminate();
             return;
         }
         result = AIAction_MoveToPos(2, pos, &arrived, 3, true, true, 0, true, 0.0f);
     } while (result == 4);
     if (result != 2 || PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
-        points->FreeActionPoint(index);
+        ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
         Terminate();
         return;
     }
     C3DVector candlePos = PCandle.GetPItem()->GetPos();
     do {
         if (PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
-            points->FreeActionPoint(index);
+            ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
             Terminate();
             return;
         }
         result = AIAction_LookAtPos(2, candlePos, 0x11, 0.0027777f);
     } while (result == 4);
     if (result != 2 || PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
-        points->FreeActionPoint(index);
+        ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
         return;
     }
     AIAction_PerformActionAndWait(CCreatureAction_UseObject(GetCreature(), PCandle.GetPItem(), false), false);
-    points->FreeActionPoint(index);
+    ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
     {
         CIntelligentPointer<CThing> none(0);
         PCandle = none;

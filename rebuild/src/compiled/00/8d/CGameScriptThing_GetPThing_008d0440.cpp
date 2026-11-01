@@ -1,7 +1,10 @@
 class CThing;
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CThingRef {
-    CThing* Get();
 };
 
 class CGameScriptThing { public:
@@ -12,9 +15,9 @@ class CGameScriptThing { public:
 CThing* __fastcall CGameScriptThing_GetPThing(const CGameScriptThing* self)
 {
     CThingRef* r = (CThingRef*)&self->ref;
-    if (r->Get() != 0) {
-        if ((*((unsigned char*)r->Get() + 0x91) & 1) == 0)
-            return r->Get();
+    if (((CThing*)((CBaseIntelligentPointer*)r)->GetPItem()) != 0) {
+        if ((*((unsigned char*)((CThing*)((CBaseIntelligentPointer*)r)->GetPItem()) + 0x91) & 1) == 0)
+            return ((CThing*)((CBaseIntelligentPointer*)r)->GetPItem());
     }
     return 0;
 }

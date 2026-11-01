@@ -21,7 +21,9 @@ namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list { public: void* _M_node; ~list(); };   // ~list 0x004046B0
 } // namespace std
-extern void __fastcall Inner_dtor(void* p);     // destructor of the sub-objects at +0x10 and +0x0C
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 extern void __cdecl operator_delete_stub(void* p);
 void operator delete(void* p);
 
@@ -39,8 +41,8 @@ void* __fastcall CStringParser_scalar_deleting_destructor(CStringParser* parser,
     // Owned sub-objects in reverse order, then the rest of the patch.
     typedef std::list<CStringParserCommentBoundaries> CommentList;
     ((CommentList*)((char*)parser + 0x14))->CommentList::~CommentList();
-    Inner_dtor((char*)parser + 0x10);
-    Inner_dtor((char*)parser + 0xc);
+    ((CCharString*)((char*)parser + 0x10))->~CCharString();
+    ((CCharString*)((char*)parser + 0xc))->~CCharString();
     ((CBaseClass*)(parser))->CBaseClass::~CBaseClass();
     // Bit 0: the caller used `delete`, so give the storage back too.
     if (flags & 1)

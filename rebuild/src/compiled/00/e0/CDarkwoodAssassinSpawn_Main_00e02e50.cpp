@@ -73,13 +73,15 @@ inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
 }
 using NScript::CIsThingAlive;
+class CEntityScriptBase { public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+};
 struct CDarkwoodAssassinSpawn {
     virtual ~CDarkwoodAssassinSpawn();
     virtual void Main();
     CGameScriptInterface* Game;                          // +0x04
     CScriptThing Me;                                     // +0x08
     void SetPredicate(CIsThingAlive& filter);            // 0x00F35B10
-    bool IsActiveThreadTerminating();                    // 0x00F35B30
 };
 
 void CDarkwoodAssassinSpawn::Main()
@@ -89,7 +91,7 @@ void CDarkwoodAssassinSpawn::Main()
         SetPredicate(filter);
     }
     Game->NewScriptFrame();
-    if (IsActiveThreadTerminating())
+    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     CTimer timer;
     timer = 2;
@@ -98,13 +100,13 @@ void CDarkwoodAssassinSpawn::Main()
     unsigned long index = rand() % count;
     CCharString shout = pGlobalScriptDef->ShoutSoundsBegin[index];
     for (;;) {
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
         if (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), (float)spawnDistance) && !Game->IsCameraPosOnScreen(Me.GetPos())) {
-            if (IsActiveThreadTerminating())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
         } else {
-            if (IsActiveThreadTerminating())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             timer = 2;
         }
@@ -112,69 +114,69 @@ void CDarkwoodAssassinSpawn::Main()
             break;
         Game->NewScriptFrame();
     }
-    if (IsActiveThreadTerminating())
+    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     CScriptThing assassin = Game->CreateCreature(pGlobalScriptDef->DarkwoodAssassinDefName, Me.GetPos(), "DarkwoodAssassin", true);
     Game->SetThingPersistent(assassin, true);
     Game->EntityAttachToScript(assassin, Game->GetActiveQuestName());
     if (rand() % 5 == 0) {
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
         Game->GiveThingBestEnemyTarget(assassin, Game->GetHero());
     } else {
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
         Game->GiveThingBestEnemyTarget(assassin, Game->GetNearestWithScriptName(assassin, "DarkwoodTrader"));
     }
     if (IsDistanceBetweenThingsOver(assassin, Game->GetHero(), 18.0f)) {
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
         while (!IsDistanceBetweenThingsUnder(assassin, Game->GetHero(), 18.0f)) {
             Game->NewScriptFrame();
-            if (IsActiveThreadTerminating())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
                 return;
 #pragma inline_depth()
         }
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
         Game->PlaySoundOnThing(assassin, shout);
     }
     if (IsDistanceBetweenThingsOver(assassin, Game->GetHero(), 12.0f)) {
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
         while (!IsDistanceBetweenThingsUnder(assassin, Game->GetHero(), 12.0f)) {
             Game->NewScriptFrame();
-            if (IsActiveThreadTerminating())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
                 return;
 #pragma inline_depth()
         }
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
         Game->PlaySoundOnThing(assassin, shout);
     }
     if (IsDistanceBetweenThingsOver(assassin, Game->GetHero(), 8.0f)) {
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
         while (!IsDistanceBetweenThingsUnder(assassin, Game->GetHero(), 8.0f)) {
             Game->NewScriptFrame();
-            if (IsActiveThreadTerminating())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
                 return;
 #pragma inline_depth()
         }
-        if (IsActiveThreadTerminating())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()

@@ -25,11 +25,14 @@ class CThingCreatureBase { public:
     bool GetPossibleCombatAnimations(const CCharString& name, CAnimationEntryVector& anims) const;   // 0x006668A0
 };
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CCreaturePointer {                       // CIntelligentPointer<CThingCreatureBase>
     void*               __vftable;
     void*               m_pItem;
-    CThingCreatureBase* GetPItem() const;       // CBaseIntelligentPointer::GetPItem 0x00A01B50
-    CThingCreatureBase* operator->() const { return GetPItem(); }
+    CThingCreatureBase* operator->() const { return ((CThingCreatureBase*)((CBaseIntelligentPointer*)this)->GetPItem()); }
 };
 
 struct CAnimationEntryVector {                  // retail vector<const CAnimationEntry*>: three words

@@ -3,10 +3,12 @@ class CChunkedFileChunk {
 public:
     virtual ~CChunkedFileChunk();   // 0x00AA75C0
 };
-extern void __fastcall DestructMember_0099eae0(void* member);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 void* __fastcall C3DAnimFileTimingEventChunk_CompositeScalarDeletingDestructor(void* chunk, int, unsigned int flags)
 {
-    DestructMember_0099eae0(static_cast<unsigned char*>(chunk) + 16);
+    ((CCharString*)(static_cast<unsigned char*>(chunk) + 16))->~CCharString();
     ((CChunkedFileChunk*)(chunk))->CChunkedFileChunk::~CChunkedFileChunk();
     if (flags & 1)
         operator delete(chunk);

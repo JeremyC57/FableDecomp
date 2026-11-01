@@ -13,8 +13,10 @@ struct CRandomSeed {
 };
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
-class CWorld { public:
-    CRandomSeed* GetRandomSeed();          // 0x0049D810
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private:           // 0x0049D810
 };
 
 struct CModeBase {                         // CTCCreatureModeManager::CModeBase, retail 0x1c
@@ -48,7 +50,7 @@ void NCreatureMode::CModeSitBase::OnActivate()
     CModeBase::OnActivate();
     float frames = (float)GetNoFramesBeforePlayingCombinationIdleAnims(GetType());
     long minFrames = (long)(frames * 0.75f);
-    CRandomSeed* random = GetWorld()->GetRandomSeed();
+    CRandomSeed* random = ((CRandomSeed*)((CWorld*)(GetWorld()))->GetWorldSeed());
     unsigned long range = -minFrames - (long)(frames * -1.5f);
     unsigned long r = GFRandom(random);
     IdleCounter = (range ? r % range : 0) + minFrames;

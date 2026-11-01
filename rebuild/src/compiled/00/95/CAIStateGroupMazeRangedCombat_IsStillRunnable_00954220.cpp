@@ -5,7 +5,7 @@
 //   choice / test-and-branch shape.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00954220, 142 bytes (+ int3 padding to 144), plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, PTarget at +0x14), CAIStateGroupBase::IsStopping
-//   @ 0x008FD010, CThing::GetPosition @ 0x004C73D0 (creature first, then the target); 50.0f @ 0x012944BC, 8.0f
+//   @ 0x008FD010, CThing::GetPos @ 0x004C73D0 (creature first, then the target); 50.0f @ 0x012944BC, 8.0f
 //   @ 0x012944C4.
 // Shape: IS_THING_ALIVE(PTarget) (GetPItem null test, then the dead bit +0x91) && !IsStopping(), then the XY distance
 //   `sqrt(dx*dx + dy*dy)` (fsqrt) tested `< 50 && > 8`.
@@ -14,11 +14,13 @@
 
 class C3DVector { public: float X, Y, Z; };
 
-class CThing { public:
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private: public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -65,8 +67,8 @@ bool CAIStateGroup_MazeRangedCombat::IsStillRunnable()
     if (IS_THING_ALIVE(PTarget) && !IsStopping()) {
         const CThing* self = PBrain->PCreature;
         const CThing* target = PTarget.GetPItem();
-        const C3DVector& me = self->GetPosition();
-        const C3DVector& him = target->GetPosition();
+        const C3DVector& me = ((CThing*)self)->GetPos();
+        const C3DVector& him = ((CThing*)target)->GetPos();
         float dx = him.X - me.X;
         float dy = him.Y - me.Y;
         float dist = (float)sqrt(dx * dx + dy * dy);

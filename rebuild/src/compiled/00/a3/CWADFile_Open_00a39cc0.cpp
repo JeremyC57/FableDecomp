@@ -2,7 +2,7 @@
 // Leaf: ?Open@CWADFile@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A39CC0, 85 bytes (`ret 0Ch`). CWADFile vtable 0x0129CF8C slot 1 reaches it
 // through the `jmp` at 0x00A39DC0; CWADFile::CWADFile (0x00A39D80) calls it directly.
-// Callees: CWideString::ConvertToCharString() const @ 0x0099B2C0 (CCharString through the hidden pointer),
+// Callees: CWideString::ToCharString() const @ 0x0099B2C0 (CCharString through the hidden pointer),
 // Calc @ 0x004014A0 (`__fastcall(seed, data, length)`: the CRC), the bank's entry lookup @ 0x009CC410 (labelled
 // "CVectorMap::LookupValue"), CCharString::~CCharString @ 0x0099EAE0.
 // Label: "CParticleMorphs::InsertEntry" is propagated; the vtable and the PDB layout (Bank +4, Index +8, FilePos
@@ -27,9 +27,11 @@ class CCharString { public:
     const char* GetData() const { return m_pData == 0 ? g_EmptyString : m_pData->m_pText; }
 };
 
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* m_pData;
-    CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
 
 class CCRC {
@@ -58,6 +60,6 @@ class CWADFile { public:
 
 void CWADFile::Open(const CWideString& name, FileAccessType access, unsigned long flags)
 {
-    Index = Bank->LookupValue(GetNameCRC(name.ConvertToCharString()));
+    Index = Bank->LookupValue(GetNameCRC(((CWideString*)&name)->ToCharString()));
     FilePos = 0;
 }

@@ -7,7 +7,11 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
-struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; //00A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CObservedThingPointer {void* VTable;void* PointerInfo;}; //00A01B50
 class C3DVector { public:float X,Y,Z;};
 class CRightHandedSet { public:C3DVector Up,Forward;};
 class CCamera { public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned int FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
@@ -31,7 +35,7 @@ public:
  void Update();
 };
 void CGameCameraManager::Update(){
- if(PObservedThing.GetPItem()&&!(PObservedThing.GetPItem()->LifetimeFlags&1)) {
+ if(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())&&!(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())->LifetimeFlags&1)) {
   UpdatePrepareFlags();UpdateMode();PromotePendingScriptAndResetPreloadFlags();OldCamera=Camera;
   UpdateHeightLimits();CamTools.FrameUpdate();CurrentMode->FrameUpdate();
   UpdateCreatureControlAngleXY();UpdateRightStickLookAround();UpdateEarthQuakes();CameraValidationCheck();

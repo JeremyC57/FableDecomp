@@ -47,10 +47,13 @@ struct CThingNative {
     unsigned char  LifeFlags;                           // +0x91 (bit 0 = dead)
     CDefString GetDefName() const;                      // 0x004C7CC0
 };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct PointerView {                                    // CIntelligentPointer<CThing>
     void*            VTable;
     void*            Info;
-    CThingNative* GetPItem() const;                     // 0x00A01B50
 };
 struct EventBase {                                      // NEntityEvents::CEventBase
     virtual ~EventBase();
@@ -80,10 +83,10 @@ struct CGameScriptThingMethods : CGameScriptThing {
 bool CGameScriptThingMethods::MsgIsPresentedWithItem(CCharString& itemDefName) const
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
-    if (p->GetPItem() && !(p->GetPItem()->LifeFlags & 1)) {
+    if (((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()) && !(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags & 1)) {
         long last = LastFrame(g_pQuestManager->PQuestCurrentlyRunning);
         long current = CurrentFrame(g_pQuestManager->PQuestCurrentlyRunning);
-        CThingNative* thing = p->GetPItem();
+        CThingNative* thing = ((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());
         if (thing->UsingComponents[2] & 4) {
             const ComponentMap* map = &thing->Components;
             const ComponentEntry* it = map->LowerBound((ETCInterfaceType)0x42);
@@ -94,10 +97,10 @@ bool CGameScriptThingMethods::MsgIsPresentedWithItem(CCharString& itemDefName) c
                 if (event->WorldFrame > last && event->WorldFrame <= current) {
                     switch (event->GetType()) {
                     case 10:
-                        itemDefName = ((ItemPresentedEvent*)event)->Item.GetPItem()->GetDefName();
+                        itemDefName = ((CThingNative*)((CBaseIntelligentPointer*)&(((ItemPresentedEvent*)event)->Item))->GetPItem())->GetDefName();
                         return true;
                     case 11:
-                        itemDefName = ((ItemPresentedEvent*)event)->Item.GetPItem()->GetDefName();
+                        itemDefName = ((CThingNative*)((CBaseIntelligentPointer*)&(((ItemPresentedEvent*)event)->Item))->GetPItem())->GetDefName();
                         return true;
                     }
                 }

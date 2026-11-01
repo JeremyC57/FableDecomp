@@ -1,6 +1,8 @@
 struct CInner;
 // Leaf: `scalar_deleting_destructor'
-void __fastcall CConsoleVariable_dtor_inner(CInner* variable);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 
 struct CConsoleVariable {
     unsigned int vftable;
@@ -12,7 +14,7 @@ void* __fastcall CConsoleVariable_scalar_deleting_destructor(CConsoleVariable* v
 {
     (void)edx;
     variable->vftable = 0x122e5b0;
-    CConsoleVariable_dtor_inner((CInner*)(&variable->inner));
+    ((CCharString*)((CInner*)(&variable->inner)))->~CCharString();
     if (flags & 1)
         operator delete(variable);
     return variable;

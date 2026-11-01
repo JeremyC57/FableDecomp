@@ -5,7 +5,7 @@
 // CTCCrateStack::GetNextCrate @ 0x007B6750 / GetNumCrates @ 0x007B6660 / RemoveNextCrate @ 0x007B6790,
 // AIAction_MoveToPossiblyBlockedObjectAndFace @ 0x00980770, the fetch action ctor @ 0x00916590 / ~CCreatureActionBase
 // @ 0x00693EF0, CCreatureActionBase::GetActionID @ 0x00692620, AIAction_PerformActionAndWait @ 0x0097DB70,
-// CTCUserActionPointBase::FreeActionPoint @ 0x007FEF40, free @ 0x00BFEA14 (the by-value vector's storage).
+// CTCUserActionPointBase::SetActionPointAsFree @ 0x007FEF40, free @ 0x00BFEA14 (the by-value vector's storage).
 // Layout: local model (PBrain +4; brain PCreature +0x18; CurrentActionID +0x18; retail CThing bitset +0x20, map +0x44, dead bit +0x91;
 // STLport vector 12 bytes; the fetch action is CCreatureActionBase (0xa8) + a CIntelligentPointer<CThing> at +0xa8).
 // Shape: one shared false tail (success path nested); goods.Start read into a local after the walk; the target item hoisted into a local before the action ctor; the crate-stack lookup is the word-local HasTC in the first test and the masked test (null-checked) in the second.
@@ -62,8 +62,10 @@ class CTCCrateStack { public:                          // interface 0xB5
     long GetNumCrates();                        // 0x007B6660
     CThing* RemoveNextCrate();                  // 0x007B6790
 };
-struct CTCUserActionPointBase {                 // interface 0x2D
-    void FreeActionPoint(long index);           // 0x007FEF40
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface 0x2D
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -150,7 +152,7 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
             if (IS_THING_ALIVE(target)) {
                 CTCUserActionPointBase* point;
                 ((CThing*)target.GetPItem())->GetInterface(&point, 0x2d);
-                point->FreeActionPoint(actionPoint);
+                ((CTCUserActionPointBase*)point)->SetActionPointAsFree(actionPoint);
             }
             if (((CThing*)container.GetPItem()) && stack)
                 stack->RemoveNextCrate();

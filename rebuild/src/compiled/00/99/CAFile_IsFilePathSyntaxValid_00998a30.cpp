@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00998A30, 512 bytes (incl. int3 padding). FableWin.pdb
 //   `?IsFilePathSyntaxValid@CAFile@@SI_NABVCWideString@@_N@Z`: a public static `__fastcall` (path in ecx, the bool in dl),
 //   plain `ret`. The catalog name is the PDB name.
-// Callees: CWideString::ConvertToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, CCharString(const char*, long = -1)
+// Callees: CWideString::ToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, CCharString(const char*, long = -1)
 //   0x0099EBF0, CStringParser(const CCharString&, callback, const CCharString&, long) 0x00404720, CCharString()
 //   0x0099E4B0, CAFile::ParserIsSeparatorNext 0x00997DA0, CAFile::ParserReadPastSeparator 0x00997E90 (the catalog's
 //   second "ParserIsSeparatorNext" label), CAFile::ParserReadPastComponent 0x00998010 (this chunk),
@@ -34,8 +34,10 @@ public:
 class CWideString
 {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* PStringData;
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -131,7 +133,7 @@ inline bool __fastcall CAFile::ParserIsFinished(CStringParser& parser)
 
 bool __fastcall CAFile::IsFilePathSyntaxValid(const CWideString& filePath, bool absolute)
 {
-    CCharString path = filePath.ConvertToCharString();
+    CCharString path = ((CWideString*)&filePath)->ToCharString();
     if (path.GetLength() > 260)
         return false;
     CStringParser parser(path, 0, CCharString(""), 0);

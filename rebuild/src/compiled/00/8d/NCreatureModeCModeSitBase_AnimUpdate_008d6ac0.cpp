@@ -93,8 +93,10 @@ struct CRandomSeed {
     unsigned long Seed;
 };
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
-class CWorld { public:
-    CRandomSeed* GetRandomSeed();          // 0x0049D810
+class CWorld {
+public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+private:           // 0x0049D810
 };
 inline unsigned long GFRandom(CRandomSeed* random)
 {
@@ -150,7 +152,7 @@ void CModeSitBase::AnimUpdate(CAnimateThing& anim)
             if (PlayingIdle) {
                 float frames = (float)GetNoFramesBeforePlayingCombinationIdleAnims(GetType());
                 long minFrames = (long)(frames * 0.75f);
-                CRandomSeed* random = GetWorld()->GetRandomSeed();
+                CRandomSeed* random = ((CRandomSeed*)((CWorld*)(GetWorld()))->GetWorldSeed());
                 unsigned long range = -minFrames - (long)(frames * -1.5f);
                 unsigned long r = GFRandom(random);
                 IdleCounter = (range ? r % range : 0) + minFrames;

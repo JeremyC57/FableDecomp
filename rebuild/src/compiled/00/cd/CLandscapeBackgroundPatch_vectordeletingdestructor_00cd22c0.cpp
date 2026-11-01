@@ -1,6 +1,8 @@
 #pragma optimize("s",on)
 // Leaf: `vector_deleting_destructor'
-extern void __fastcall Sub_Dtor(void* p);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 
 class CLandscapeBackgroundPatch { public:
     int f0;
@@ -9,7 +11,7 @@ class CLandscapeBackgroundPatch { public:
 };
 
 void* __fastcall CLandscapeBackgroundPatch_vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx, unsigned int flags) {
-    Sub_Dtor((char*)self + 4);
+    ((CCharString*)((char*)self + 4))->~CCharString();
     if (flags & 1) {
         operator delete(self);
     }

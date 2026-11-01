@@ -10,7 +10,11 @@ struct ScorpionRecoverTarget {
     virtual void v60(); virtual void v64(); virtual void v68(); virtual void v6c();
     virtual void SetRecovering(int enabled);
 };
-struct CreaturePointerStorage { ScorpionRecoverTarget* GetTarget(); };
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CreaturePointerStorage {  };
 struct CCreatureAction_ScorpionRecover_Methods : CCreatureAction_ScorpionRecover {
     void BaseInit();
     virtual void Initialise();
@@ -22,6 +26,6 @@ void CCreatureAction_ScorpionRecover_Methods::Initialise() {
         reinterpret_cast<CCreatureAction_ScorpionRecover*>(this);
     CreaturePointerStorage* creature =
         reinterpret_cast<CreaturePointerStorage*>(&action->m8);
-    ScorpionRecoverTarget* target = creature->GetTarget();
+    ScorpionRecoverTarget* target = ((ScorpionRecoverTarget*)((CBaseIntelligentPointer*)creature)->GetPItem());
     target->SetRecovering(1);
 }

@@ -9,7 +9,7 @@
 //   so `this` = the game @ 0x013B86A0 is loaded but unused), CDefinitionManager::GetDefNameFromGlobalIndex @ 0x009ACCC0 (CDefString
 //   by value), CDefString::operator==(const char*) @ 0x005B3440 ("BRAIN_CHICKEN" @ 0x0128597C), CPlayerManager::GetMainPlayer
 //   @ 0x00449970, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, types 4
-//   and 0x10d), CThing::GetPosition @ 0x004C73D0, CTCHeroOnlineScoreboard::UpdateScoreForActivity(long, float, bool) @ 0x0055F3B0,
+//   and 0x10d), CThing::GetPos @ 0x004C73D0, CTCHeroOnlineScoreboard::UpdateScoreForActivity(long, float, bool) @ 0x0055F3B0,
 //   the physics object's virtual slot 68 (+0x110), CModeStandBase::OnDeactivate @ 0x00861D00.
 // Layout: landed CModeCreatureIsProjectile::Recover (0x008E08C0): CModeStandBase 0x68, StartThrow +0x68, PCreature +0x84; the
 //   creature's brain def (+0x70 object, global def index +0xe8), physics +0x60; the hero's dead bit +0x91 bit 0; the type-4 stats
@@ -77,7 +77,10 @@ struct CBrain {
     long          DefGlobalIndex;           // +0xe8
 };
 
-class CThing { public:
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private: public:
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];       // +0x20 std::bitset of interface types
     CInterfaceMap   m_interfaces;           // +0x44
@@ -100,7 +103,6 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;   // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -164,7 +166,7 @@ void CModeCreatureIsProjectile::OnDeactivate()
             hero->GetInterface(&stats, 4);
             float distance;
             {
-                const C3DVector& pos = ParentThing->GetPosition();
+                const C3DVector& pos = ((CThing*)ParentThing)->GetPos();
                 float dx = pos.X - StartThrow.X;
                 float dy = pos.Y - StartThrow.Y;
                 distance = (float)sqrt(dx * dx + dy * dy);

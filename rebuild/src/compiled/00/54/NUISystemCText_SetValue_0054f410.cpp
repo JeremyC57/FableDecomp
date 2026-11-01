@@ -2,7 +2,7 @@
 // Leaf: ?SetValue@CText@NUISystem@@UAEXABVCWideString@@_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054F410, 160 bytes, virtual, `ret 0Ch`.
 // Vtable 0x01249CCC (NUISystem::CText) slot 144; Ego_r.pdb `?SetValue@CText@NUISystem@@UAEXABVCWideString@@_N1@Z`.
-// Callees: CWideString::ConvertToCharString 0x0099B2C0, the CRC Calc 0x004014A0, CCharString::GetCRC's out-of-line
+// Callees: CWideString::ToCharString 0x0099B2C0, the CRC Calc 0x004014A0, CCharString::GetCRC's out-of-line
 //   copy 0x00404310, NGameText::NGameText::CDataBank::LookupValue 0x009CC410, ~CCharString 0x0099EAE0, and the
 //   (K, const CWideString&, bool) overload, slot 143 (+0x23c).
 // Globals: g_pMainGameComponent 0x013B86A0 (game-text bank +0x14), g_pNewFrontendGameComponent 0x013B871C (+0x60).
@@ -31,9 +31,11 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* PStringData;
     ~CWideString();                                 // 0x0099B510
-    CCharString ConvertToCharString() const;        // 0x0099B2C0
 };
 
 namespace NGameText {
@@ -214,10 +216,10 @@ void CText::SetValue(const CWideString& text, bool lookUpTag, bool keepSize)
     unsigned long tag = 0;
     if (lookUpTag) {
         if (g_pMainGameComponent) {
-            tag = g_pMainGameComponent->GetGameTextDataBank()->LookupValue(text.ConvertToCharString().GetCRC());
+            tag = g_pMainGameComponent->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());
         }
         else if (g_pNewFrontendGameComponent) {
-            tag = g_pNewFrontendGameComponent->GetGameTextDataBank()->LookupValue(text.ConvertToCharString().GetCRC());
+            tag = g_pNewFrontendGameComponent->GetGameTextDataBank()->LookupValue(((CWideString*)&text)->ToCharString().GetCRC());
         }
     }
     SetValue(tag, text, keepSize);

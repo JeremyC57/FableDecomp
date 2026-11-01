@@ -11,7 +11,11 @@ class C3DVector { public: float X,Y,Z; };
 class C2DVector { public: float X,Y; C2DVector(const C3DVector& p):X(p.X),Y(p.Y){} };
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingRetail : public CThing { public:  }; // 0x004C73D0
-struct CIntelligentPointerRetail { CThingRetail* GetPItem() const; }; // 0x00A01B50 (opaque handle methods)
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CIntelligentPointerRetail {  }; // 0x00A01B50 (opaque handle methods)
 struct CThingVector { CThingRetail** first; CThingRetail** last; CThingRetail** limit; unsigned char allocators[4]; };
 class CThingFilter_CanBeUsedAsCover { public: CThingFilter_CanBeUsedAsCover() {} bool operator()(CThingRetail*) const; }; // 0x006A7AB0
 class CThingFilter_IsOccupiableOccupied { public: CThingFilter_IsOccupiableOccupied() {} bool operator()(CThingRetail*) const; }; // 0x006A8A30
@@ -36,12 +40,12 @@ struct AdvanceInCoverMethods : CAIStateGroup_CreatureAdvanceInCover {
 };
 void AdvanceInCoverMethods::GetCoverThingList(CThingVector& output)
 {
- CThingRetail* current=Cover().GetPItem();
+ CThingRetail* current=((CThingRetail*)((CBaseIntelligentPointer*)&(Cover()))->GetPItem());
  if(!current) current=(CThingRetail*)((CAIStateGroupBase*)this)->PBrain->Creature;
- const C3DVector& enemy=Enemy().GetPItem()->GetPos();
+ const C3DVector& enemy=((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->GetPos();
  const C3DVector& start=current->GetPos();
  float dx=start.X-enemy.X,dy=start.Y-enemy.Y;
  float radius=(float)sqrt(dx*dx+dy*dy);
- C2DVector center(Enemy().GetPItem()->GetPos());
- PeekThingSearchTools()->FindInRoughArea(C2DBox(center,radius).ToInteger(),CFilterBind4(CThingFilter_CanBeUsedAsCover(),CNotOccupied(),CThingFilter_IsNot(current),CThingFilter_In2DRange(Enemy().GetPItem()->GetPos(),radius)),output);
+ C2DVector center(((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->GetPos());
+ PeekThingSearchTools()->FindInRoughArea(C2DBox(center,radius).ToInteger(),CFilterBind4(CThingFilter_CanBeUsedAsCover(),CNotOccupied(),CThingFilter_IsNot(current),CThingFilter_In2DRange(((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->GetPos(),radius)),output);
 }

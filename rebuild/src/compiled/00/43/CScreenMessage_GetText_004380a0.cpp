@@ -2,7 +2,7 @@
 // Leaf: GetText
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004380A0, length 269 bytes (`ret 4`: the CWideString result by hidden pointer).
 // Callees: CWideString copy ctor @ 0x0099B720, CCharString(const char*, long) @ 0x0099EBF0 ("(HC)" @ 0x0123172C),
-// CWideString::ConvertToCharString @ 0x0099B2C0, strncmp (MSVCR71 import thunk 0x00BFEAF8), ~CCharString @ 0x0099EAE0,
+// CWideString::ToCharString @ 0x0099B2C0, strncmp (MSVCR71 import thunk 0x00BFEAF8), ~CCharString @ 0x0099EAE0,
 // CWideString::GetLength @ 0x0099B220, CCharString::GetSubString(unsigned long, unsigned long) @ 0x0099EC70,
 // CCharString::ToWideString @ 0x0099E480, CWideString::operator= @ 0x0099B7D0, ~CWideString @ 0x0099B510,
 // CWideString::SetLength @ 0x0099BC50. The empty string is 0x0129AAF4.
@@ -45,14 +45,16 @@ class CCharString { public:
     }
 };
 
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* m_pData;
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     long GetLength() const;                          // 0x0099B220
     void SetLength(long length);                     // 0x0099BC50
-    CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
 
 class CScreenMessage {
@@ -71,10 +73,10 @@ CWideString CScreenMessage::GetText() const
     bool hasPrefix;
     {
         CCharString prefix("(HC)", -1);
-        hasPrefix = text.ConvertToCharString().BeginsWith(prefix);
+        hasPrefix = ((CWideString*)&text)->ToCharString().BeginsWith(prefix);
     }
     if (hasPrefix)
-        text = Text.ConvertToCharString().GetSubString(4, Text.GetLength()).ToWideString();
+        text = ((CWideString*)&Text)->ToCharString().GetSubString(4, Text.GetLength()).ToWideString();
     if (NumberOfCharactersShowing < text.GetLength())
         text.SetLength(NumberOfCharactersShowing);
     return text;

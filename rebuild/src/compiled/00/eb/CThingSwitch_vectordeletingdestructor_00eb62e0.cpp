@@ -1,6 +1,8 @@
 #pragma optimize("t", on)
 // Leaf: `vector_deleting_destructor'
-extern void __fastcall AutoTinyFirstMemberDestructor_0099eae0(void* member);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 #define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBasePdb
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 #undef CScriptGameResourceObjectScriptedThingBase
@@ -10,7 +12,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:   // ctor 0x007E72A0 
 extern void __fastcall AutoTinyCompositeDestructor_00f35b40(void* self);
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyFirstMemberDestructor_0099eae0(static_cast<unsigned char*>(self) + 52);
+    ((CCharString*)(static_cast<unsigned char*>(self) + 52))->~CCharString();
     reinterpret_cast<CScriptGameResourceObjectScriptedThingBase*>(static_cast<unsigned char*>(self) + 28)->CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase();
     AutoTinyCompositeDestructor_00f35b40(self);
     if (flags & 1)

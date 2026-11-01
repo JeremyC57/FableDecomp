@@ -7,7 +7,7 @@
 // long) 0x0099EBF0 / ~ 0x0099EAE0, the components' slots 43 (+0xac) and 48 (+0xc0, given a bool), the GUI component's
 // slot 82 (+0x148, returns its component vector), vector<CComponent*>::_M_insert_overflow 0x00485DBC,
 // CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CWideString(const CWideString&) 0x0099B720 / ~ 0x0099B510,
-// CWideString::ConvertToCharString 0x0099B2C0, CBasicString<char>::operator==(const char*) 0x004115A0,
+// CWideString::ToCharString 0x0099B2C0, CBasicString<char>::operator==(const char*) 0x004115A0,
 // CDataBank::GetTextBySymbol 0x009C95E0 (text bank +0x14 of 0x013B86A0), DisplayErrorMessage 0x0055EF00,
 // CWideString::operator=(const CWideString&) 0x0099B7D0 with the empty wide string 0x013BCA24.
 // Layout: as the landed AbortWithMessage 0x00563410 / ResetScoreboard 0x00562E70: PHttp +0x0c, SelectedClan +0x3c,
@@ -46,12 +46,14 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 extern const CWideString g_emptyWideString;             // 0x013BCA24
 
@@ -296,8 +298,8 @@ public:
     CComponent*    PConnectingMessage1;                 // +0x64
     void ClearScoreboard();                             // 0x00562E10
     void DisplayErrorMessage(const CWideString& text);  // 0x0055EF00
-    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return name.ConvertToCharString(); }
-    CCharString GetSignedInPassword() { CWideString password = CUserProfileManager::Get().SignedInPassword; return password.ConvertToCharString(); }
+    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
+    CCharString GetSignedInPassword() { CWideString password = CUserProfileManager::Get().SignedInPassword; return ((CWideString*)&password)->ToCharString(); }
     void ShowScoreboard();
 };
 

@@ -5,7 +5,7 @@
 // Callees: CCharString(const char*, long) 0x0099EBF0 / (const CCharString&) 0x0099EC30 / ~ 0x0099EAE0, operator+(const
 // CCharString&, const char*) 0x0099F600 and (const CCharString&, const CCharString&) 0x0099F570 (__fastcall),
 // CCharString::operator+= 0x0099F0A0, CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CWideString(const
-// CWideString&) 0x0099B720 / ~ 0x0099B510, CWideString::ConvertToCharString 0x0099B2C0, GFIntToCharString 0x0099F830,
+// CWideString&) 0x0099B720 / ~ 0x0099B510, CWideString::ToCharString 0x0099B2C0, GFIntToCharString 0x0099F830,
 // map<EOnlineScoreboardActivity,float>::operator[] 0x005692B0, CCharString::FormatDouble(long, double) 0x009A08B0.
 // Layout: retail LocalScoreboard +0x1c (12-byte STLport map, as landed UpdateScoreForActivity 0x0055F3B0), ActivityInfo
 // +0x28 (vector of 16-byte CActivity, LowerIsBetter at +0x0d), SessionID +0x34; map node key +0x10.
@@ -23,11 +23,13 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString(const CWideString& other);           // 0x0099B720
     ~CWideString();                                  // 0x0099B510
-    CCharString ConvertToCharString() const;         // 0x0099B2C0
 };
 class CUserProfileManager { public:
     unsigned char _pad[0x110];
@@ -90,7 +92,7 @@ public:
     CScoreMap       LocalScoreboard;                 // +0x1c
     CActivityVector ActivityInfo;                    // +0x28
     CCharString     SessionID;                       // +0x34
-    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return name.ConvertToCharString(); }
+    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
     CCharString CreateStringFromMyScores();
 };
 

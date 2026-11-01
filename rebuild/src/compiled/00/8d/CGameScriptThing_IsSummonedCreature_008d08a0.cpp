@@ -17,7 +17,11 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 #include "engine/CDefinitionManager.h"
 #include "fable_string.h"
 struct IntelligentInfo{CThingNative* Object;long References;};
-struct PointerView{void*VTable;IntelligentInfo* Info;CThingNative* GetPItem()const;}; //00A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct PointerView{void*VTable;IntelligentInfo* Info;}; //00A01B50
 struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&);}; //009AD410
 struct ThingMethods:CThingNative{DefinitionManagerMethods* GetDefinitionManager()const;__forceinline long GetDefinitionID()const{return (unsigned short)DefinitionID;}}; //004C7990
 // PDB CTCSummonableCreature HasBeenSummoned+10; no generated class header exists.
@@ -26,9 +30,9 @@ static __forceinline bool PeekSummon(CThingNative*thing,const SummonableCreature
 struct CGameScriptThingMethods:CGameScriptThing{bool IsSummonedCreature()const;};
 bool CGameScriptThingMethods::IsSummonedCreature()const{
  const PointerView* p=reinterpret_cast<const PointerView*>(PThing);
- if(p->GetPItem()&&!(p->GetPItem()->LifeFlags&1)){
- const SummonableCreature* tc;if(PeekSummon(p->GetPItem(),&tc)&&tc->GetHasBeenSummoned())return true;
- long id;{CCharString name("GHOSTLY_SWORD",-1);id=static_cast<ThingMethods*>(p->GetPItem())->GetDefinitionManager()->GetDefGlobalIndexFromName(name);}
- if(id>0&&static_cast<ThingMethods*>(p->GetPItem())->GetDefinitionID()==id)return true;
+ if(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())&&!(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags&1)){
+ const SummonableCreature* tc;if(PeekSummon(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()),&tc)&&tc->GetHasBeenSummoned())return true;
+ long id;{CCharString name("GHOSTLY_SWORD",-1);id=static_cast<ThingMethods*>(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()))->GetDefinitionManager()->GetDefGlobalIndexFromName(name);}
+ if(id>0&&static_cast<ThingMethods*>(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()))->GetDefinitionID()==id)return true;
  }return false;
 }

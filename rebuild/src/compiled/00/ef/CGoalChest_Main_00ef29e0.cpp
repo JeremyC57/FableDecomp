@@ -30,19 +30,22 @@ struct ThingCalls:CScriptThing {
  __forceinline unsigned char MsgIsUsedBy(const CCharString& name)const {return(this->*reinterpret_cast<const ThingSlot*>(__vftable)[20].MsgIsUsedBy)(name);}
 };
 struct CPersonalScript_EmptyScript { unsigned char Unknown[0x48]; bool GoalChestFinished; };
+class CEntityScriptBase { public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+};
 struct CGoalChest {
  void* VTable; GameCalls* Game; ThingCalls Me; CPersonalScript_EmptyScript* ParentClass; void* PMasterData;
- void SetPredicate(const NScript::CPredicateBase&); bool IsActiveThreadTerminating();
+ void SetPredicate(const NScript::CPredicateBase&); 
  void Main();
 };
 void CGoalChest::Main() {
  { NScript::CIsThingAlive filter(Me); SetPredicate(filter); }
  Game->NewScriptFrame();
- if(!IsActiveThreadTerminating()) {
+ if(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
   while(Me.NotUsedByHero()) {
    Game->NewScriptFrame();
-   if(IsActiveThreadTerminating()) return;
+   if(((CEntityScriptBase*)this)->IsActiveThreadTerminating()) return;
   }
-  if(!IsActiveThreadTerminating()) ParentClass->GoalChestFinished=true;
+  if(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()) ParentClass->GoalChestFinished=true;
  }
 }

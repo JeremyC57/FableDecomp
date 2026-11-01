@@ -52,8 +52,10 @@ class CRightHandedSet { public:
     CRightHandedSet() { }
 };
 struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:
     bool GetFreeActionPoint(CThing_Retail* user, C3DVector* position, CRightHandedSet* orientation, long* index);   // 0x007FEDE0
-    void UseActionPoint(long index);               // 0x007FEF40
 };
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
@@ -67,7 +69,7 @@ __forceinline bool ClaimFreeActionPoint(CTCUserActionPointBase* points, const CS
     long index;
     if (points->GetFreeActionPoint(((CThing_Retail*)user.GetPThing()), &position, &axes, &index)) {
         orientation = axes.Forward;
-        points->UseActionPoint(index);
+        ((CTCUserActionPointBase*)points)->SetActionPointAsFree(index);
         return true;
     }
     return false;

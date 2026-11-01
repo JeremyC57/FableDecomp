@@ -105,9 +105,11 @@ __declspec(noinline) bool CThingObjectDef::GetSubDef(CDefPointer<CAppearanceModi
     out->Object = def;
     return def != 0;
 }
+class CWorld { public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+};
 #pragma auto_inline(on)
 struct CRandomSource {
-    unsigned long* GetRandomSeed();                          // 0x0049D810
 };
 class CWorld;
 class CPlayer { public:
@@ -216,8 +218,8 @@ void CCreatureAction_Undress::PerformAction()
         long item = worn.back();
         modifiers->AddAppearanceModifier_00706370(item);
         C3DVector velocity;
-        velocity.X = 0.2f - GFFloatRandom(0.4f, GetPWorld()->GetRandomSeed());
-        velocity.Y = 0.2f - GFFloatRandom(0.4f, GetPWorld()->GetRandomSeed());
+        velocity.X = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
+        velocity.Y = 0.2f - GFFloatRandom(0.4f, ((CWorld*)(GetPWorld()))->GetWorldSeed());
         velocity.Z = 0.15f;
         CThingObject* thing;
         {

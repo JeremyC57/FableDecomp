@@ -3,7 +3,9 @@
 struct Sub {
 };
 
-extern "C" void __fastcall Sub_dtor_0099eae0(Sub* self);
+class CCharString { public:
+    ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
+};
 
 class CLandscapeBackgroundPatch { public:
     int pad0;
@@ -13,7 +15,7 @@ class CLandscapeBackgroundPatch { public:
 void* __fastcall vector_deleting_destructor(CLandscapeBackgroundPatch* self, int edx_unused, unsigned int flags)
 {
     (void)edx_unused;
-    Sub_dtor_0099eae0(&self->sub);
+    ((CCharString*)(&self->sub))->~CCharString();
     if (flags & 1) {
         operator delete(self);
     }

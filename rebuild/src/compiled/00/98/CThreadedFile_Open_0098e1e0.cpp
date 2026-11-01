@@ -2,7 +2,7 @@
 // Leaf: Open
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098E1E0, length 308 bytes (+ int3 padding), `ret 8`.
 // Callees: ConvertPathToFullPath @ 0x00999110 and SplitPath @ 0x00997620 (both `__fastcall`, hidden result / first
-// arguments in ecx/edx), CWideString::CWideString() @ 0x0099AED0, CWideString::ConvertToCharString() const @ 0x0099B2C0,
+// arguments in ecx/edx), CWideString::CWideString() @ 0x0099AED0, CWideString::ToCharString() const @ 0x0099B2C0,
 // CCharString::ToUpper() const @ 0x0099EE20, CBasicString<char>::operator==(const char*) @ 0x004115A0, ~CCharString
 // @ 0x0099EAE0, CWideString::operator const wchar_t* @ 0x0099AF00, CreateFileW (IAT 0x0143FE2C), CWideString::operator=
 // @ 0x0099B7D0, GetFileSize (IAT 0x0143FDF0), ~CWideString @ 0x0099B510.
@@ -41,12 +41,14 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* PStringData;
     CWideString();                                             // 0x0099AED0
     ~CWideString();                                            // 0x0099B510
     const CWideString& operator=(const CWideString& other);          // 0x0099B7D0
     operator const wchar_t*() const;                           // 0x0099AF00 (Ego_r/FableWin ??BCWideString@@QBEPB_WXZ; G form)
-    CCharString ConvertToCharString() const;                   // 0x0099B2C0
 };
 class CAFile {
 public:
@@ -88,7 +90,7 @@ bool CThreadedFile::Open(const CWideString& filename, bool unbuffered)
     CWideString drive;
     CAFile::SplitPath(fullPath, &drive, 0, 0, 0);
     OpenedForWrite = false;
-    bool onDriveD = drive.ConvertToCharString().ToUpper() == "D:";
+    bool onDriveD = ((CWideString*)&drive)->ToCharString().ToUpper() == "D:";
     DeviceID = (EThreadedFileDeviceID)(onDriveD != 0);
     unsigned long flags = 0x40000001;                          // FILE_FLAG_OVERLAPPED | FILE_ATTRIBUTE_READONLY
     if (unbuffered)

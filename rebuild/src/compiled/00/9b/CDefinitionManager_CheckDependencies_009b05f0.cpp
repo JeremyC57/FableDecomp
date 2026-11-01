@@ -20,11 +20,13 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     CCharString ToLower() const;                        // 0x0099ED10
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
@@ -155,7 +157,7 @@ void CDefinitionManager::CheckDependencies(const CWideStringVector& paths)
         CFileScanState scan;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
-                files.Add(fileName.ConvertToCharString().ToLower(), checksums.GetChecksum(fileName));
+                files.Add(((CWideString*)&fileName)->ToCharString().ToLower(), checksums.GetChecksum(fileName));
             } while (ScanNextFile(*path, scan, fileName));
         }
     }

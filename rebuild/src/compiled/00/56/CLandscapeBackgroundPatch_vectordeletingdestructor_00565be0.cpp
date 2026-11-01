@@ -17,7 +17,9 @@ class CLandscapeBackgroundPatch { public:
 
 // scalar destructor operating on the subobject located at self+4.
 // __fastcall => arg1 in ecx. Single pointer param = ecx.
-extern "C" void __fastcall InnerDtor_0099b510(void* subAtPlus4);
+class CWideString { public:
+    ~CWideString();   // 0x0099B510 (Ego_r.pdb ??1CWideString@@QAE@XZ)
+};
 
 // operator delete (cdecl)
 
@@ -27,7 +29,7 @@ extern "C" void* __fastcall VecDelDtor(CLandscapeBackgroundPatch* self, int edxD
 {
     (void)edxDummy;
     // scalar dtor on the subobject at self+4
-    InnerDtor_0099b510((char*)self + 4);
+    ((CWideString*)((char*)self + 4))->~CWideString();
     if (flags & 1)
         operator delete(self);
     return self;

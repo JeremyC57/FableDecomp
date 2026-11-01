@@ -5,7 +5,7 @@
 //   / SetPItem 0x00A01B90; CWillButtonHelperTimer(EHeroAbility, CThing*) 0x008EDFF0; malloc 0x00BFEA0E (list sentinel);
 //   CGameDefinitionManager::Get 0x0044C6B0 / the def index by name 0x009AD390 / GetDef 0x007A35D0; LowerBound 0x0040F020
 //   (interfaces 0xA7, 0x10, 4) and the const 0x004365B0 (0x6F); CDefStringTable::GetString 0x009D49B0 on 0x013CA828;
-//   CTCSoundPlayer::PlaySound 0x0066BD00; the effects sub-def 0x00669580 and its named lookup 0x00669D30;
+//   CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00; the effects sub-def 0x00669580 and its named lookup 0x00669D30;
 //   CTCInventoryAbilities::GetAbilityLevel 0x005EDE93; CTCWillLightning::SetLevel 0x0079F810; __ftol2;
 //   CCharString 0x0099EBF0 / ~ 0x0099EAE0. Vtables: CIntelligentPointer<CThing> 0x01238C6C, <CThingCreatureBase> 0x0123E7D8.
 // Layout: retail CTCWillLightning as the landed ~CTCWillLightning 0x007A07F0 (pack(1), PItemRemoved +0x11, m_lspDef +0x28,
@@ -83,8 +83,10 @@ struct CTCAbilityUser {                                 // interface 0xA7 (descr
     unsigned char _pad0d[3];
     long Ability;                                       // +0x10
 };
-class CTCSoundPlayer { public:                                 // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
+class CTCSoundPlayer {
+public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+private:    // 0x0066BD00
 };
 class CTCInventoryAbilities { public:                          // interface 0x6F
     long GetAbilityLevel(long ability);                 // 0x005EDE93
@@ -250,7 +252,7 @@ CTCWillLightning::CTCWillLightning(CThing* parent)
         CTCSoundPlayer* sound = ParentThing->GetTC<CTCSoundPlayer>(0x10);
         {
             CCharString name = g_StringTable.GetString(m_lspDef->InitSoundName);
-            sound->PlaySound(name, 0, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, 0, 0, 0, -1);
         }
     }
     CEffectsDefPointer effects;

@@ -54,9 +54,12 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 class CThing;
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 struct CIntelligentPointer {                         // CIntelligentPointer<CThing>
     unsigned char _pad00[8];
-    CThing* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer)
 };
 struct SDoorNode {                                   // STLport list node
     SDoorNode*          _M_next;
@@ -116,8 +119,8 @@ bool CThingBuilding::IsUnlocked() const
     if (GetInterface(&doors, 0x21)) {
         for (SDoorNode* node = doors->Doors->_M_next; node != doors->Doors; node = node->_M_next) {
             const CIntelligentPointer& door = node->_M_data;
-            if (door.GetPItem() && !door.GetPItem()->Dead) {
-                CThing* thing = door.GetPItem();
+            if (((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem()) && !((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem())->Dead) {
+                CThing* thing = ((CThing*)((CBaseIntelligentPointer*)&door)->GetPItem());
                 CTCDoor* tc;
                 if (thing->GetInterface(&tc, 0x26)) {
                     if (tc->Locked || tc->Barred || !tc->Open)

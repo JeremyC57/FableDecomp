@@ -1,7 +1,7 @@
 // CAIStateGroup_WorkSawingWood::OnReplace() -- give back the sawhorse action point, drop the right-hand item
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00944690, length 149 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap::LowerBound @ 0x0040F020 (inlined
-// GetInterface, type 0x2D), CTCUserActionPointBase::ReleaseActionPoint(long) @ 0x007FEF40 (manifest label
+// GetInterface, type 0x2D), CTCUserActionPointBase::SetActionPointAsFree(long) @ 0x007FEF40 (manifest label
 // "CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera" is propagated and rejected),
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0, CAIStateGroupBase::DestroyItem(const CCharString&)
 // @ 0x008FD1B0, CCharString::~CCharString @ 0x0099EAE0.
@@ -95,8 +95,10 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CTCUserActionPointBase {                 // interface type 0x2D component
-    void ReleaseActionPoint(long index);        // 0x007FEF40
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:                 // interface type 0x2D component
 };
 
 struct CAIStateGroup_WorkSawingWood_Methods : CAIStateGroup_WorkSawingWood {
@@ -110,7 +112,7 @@ void CAIStateGroup_WorkSawingWood_Methods::OnReplace()
     if (IS_THING_ALIVE(Sawhorse()) && TookActionPoint) {
         CTCUserActionPointBase* actionPoint;
         if (Sawhorse().GetPItem()->GetInterface(&actionPoint, 0x2D))
-            actionPoint->ReleaseActionPoint(ActionPointIndex);
+            ((CTCUserActionPointBase*)actionPoint)->SetActionPointAsFree(ActionPointIndex);
     }
     {
         CCharString slot("CARRY_SLOT_RIGHT_HAND", -1);

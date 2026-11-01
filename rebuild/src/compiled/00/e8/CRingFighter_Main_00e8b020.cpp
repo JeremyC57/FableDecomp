@@ -104,12 +104,14 @@ struct CV_FisticuffsClubScript {
     float BooNumber;                                    // +0xb0
     CCharString GetCutsceneName(CCharString name);      // 0x00E8A1D0
 };
-class CEntityScriptBase { public:
+class CEntityScriptBase {
+public:
+    bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+private: public:
     virtual void Main() = 0;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     void SetPredicate(const CScriptPredicate& predicate);   // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
 };
 struct CRingFighter : CEntityScriptBase {
     CV_FisticuffsClubScript* ParentClass;               // +0x14
@@ -127,38 +129,38 @@ void CRingFighter::Main()
         SetPredicate(both);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase fighter;
     while (!ParentClass->RoundStarted) {
         Game->NewScriptFrame();
-        if (IsDone())
+        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    while (!IsDone()) {
+    while (!((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
         bool hit = Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"));
         if (hit) {
-            if (IsDone())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             ParentClass->CheerNumber += 0.25f;
         }
         if (Game->GetHero().MsgIsHitBy("KHGRingFighter")) {
-            if (IsDone())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             ParentClass->BooNumber += 4.0f;
         }
         if (ParentClass->TimeOut) {
-            if (IsDone())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             Game->ClearThingBestEnemyTarget(Me);
             return;
         }
         const CScriptDef* def = pGlobalScriptDef;
         if (Game->GetHealth(Me) <= def->FisticuffsLosingHealth) {
-            if (IsDone())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             CScriptThing loserPos = Game->GetThingWithScriptName("LoserFighterPos");
             ParentClass->RoundStarted = false;
@@ -170,10 +172,10 @@ void CRingFighter::Main()
                     fighter.Release();
                 while (!Game->StartScriptingEntity(Me, fighter, (EScriptAIPriority)4)) {
                     Game->NewScriptFrame();
-                    if (IsDone())
+                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                         return;
                 }
-                if (IsDone())
+                if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                     return;
                 Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
                 CCutsceneCastMap cast;
@@ -188,12 +190,12 @@ void CRingFighter::Main()
                 RunCutsceneMacro(ParentClass->GetCutsceneName("ROUNDWON"), cast, 0, 0, false, true);
                 while (fighter.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
-                    if (IsDone()) {
+                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         return;
                     }
                 }
-                if (IsDone()) {
+                if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
                     return;
                 }
@@ -201,12 +203,12 @@ void CRingFighter::Main()
                 ParentClass->RingCleared = true;
                 while (!ParentClass->RoundStarted && !ParentClass->TylerInFight) {
                     Game->NewScriptFrame();
-                    if (IsDone()) {
+                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         return;
                     }
                 }
-                if (IsDone()) {
+                if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
                     return;
                 }
@@ -217,19 +219,19 @@ void CRingFighter::Main()
                 C3DVector pos = loserPos.GetPos();
                 while (IsDistanceFromThingToPositionOver(fighter.GetScriptThing(), pos, 2.0f)) {
                     Game->NewScriptFrame();
-                    if (IsDone())
+                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                         return;
                     fighter.MoveToPosition(pos, 0.0f, MOVE_TYPE_WALK, false, true);
                     while (fighter.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
-                        if (IsDone())
+                        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                             return;
                     }
-                    if (IsDone())
+                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                         return;
                 }
             }
-            if (IsDone())
+            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
                 return;
             Game->RemoveThing(Me, false, true);
             return;

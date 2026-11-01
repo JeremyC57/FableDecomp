@@ -9,7 +9,7 @@
 //   IS_THING_ALIVE<CThing*> 0x0040DCE0, CTCWeapon::GetWeaponClass 0x005DA7F0, std::find<long*> 0x008E6FB0,
 //   CDefString::operator CCharString 0x00415D70 / const 0x00415DD0, ~CCharString 0x0099EAE0, GetCombatManager
 //   0x00661EC0, CCombatManager::GetCombatantInfo 0x006E9360, the attacker iterator ++ 0x006EF790,
-//   GetCombatAnimationSet 0x00663260, CAnimationSet::HasAnimation 0x005DC2E0; CAnimFilterNoGroup vtable 0x0122FFDC
+//   GetCombatAnimationSet 0x00663260, CAnimationSet::AnimExists 0x005DC2E0; CAnimFilterNoGroup vtable 0x0122FFDC
 //   (base 0x0122FFCC).
 // Layout: Ego_r.pdb CMeleeCombatAbilityDef less 4 from Flourish on: FlourishAnimName +0x40, Flourish +0x48,
 //   ValidWeaponClasses +0x50 (12-byte vector), StatsNeeded +0x68, ComboMultiplierLowerBound +0x74, UpperBound +0x78.
@@ -90,8 +90,10 @@ class CAnimFilterBase { public:                                 // vtable 0x0122
 struct CAnimFilterNoGroup : CAnimFilterBase {            // vtable 0x0122FFDC
     virtual void v01();
 };
-class CAnimationSet { public:
-    bool HasAnimation(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x005DC2E0
+class CAnimationSet {
+public:
+    bool AnimExists(CCharString const&a0, CAnimFilterBase const&a1) const;   // 0x005DC2E0 (Ego_r.pdb ?AnimExists@CAnimationSet@@QBE_NABVCCharString@@ABVCAnimFilterBase@@@Z)
+private:    // 0x005DC2E0
 };
 class CCombatManager;
 class CThingCreatureBase : public CThing { public:
@@ -193,7 +195,7 @@ bool CMeleeCombatAbilityDef::IsAbilityValid(CThingCreatureBase* creature)
             CCombatantInfo* info = creature->GetCombatManager()->GetCombatantInfo(creature);
             for (CAttackerIterator it = info->Attackers.begin(); it != info->Attackers.end(); ++it) {
                 CThingCreatureBase* attacker = it->second;
-                if (!attacker->GetCombatAnimationSet().HasAnimation(((const CDefString&)FlourishAnimName), CAnimFilterNoGroup()))
+                if (!((CAnimationSet*)&(attacker->GetCombatAnimationSet()))->AnimExists(((const CDefString&)FlourishAnimName), CAnimFilterNoGroup()))
                     goto fail;
             }
         }

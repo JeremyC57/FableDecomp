@@ -25,8 +25,10 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 class CTCBase;
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 struct CTCSound {                               // the thing's interface-16 sound component
-    unsigned long PlaySound(const CCharString& name, bool positional, long a, long b, long c);   // 0x0066BD00 (catalog "CSoundInfo::PlaySound")
 };
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -77,7 +79,7 @@ void CTCWillLightning::StartLoopingSound()
         CTCSound* sound;
         if (ParentThing->GetInterface(&sound, 16)) {
             CCharString name = g_DefStringTable.GetString(m_lspDef->LoopingSound);
-            LoopingSound = sound->PlaySound(name, false, 0, 0, -1);
+            LoopingSound = ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, false, 0, 0, -1);
         }
     }
 }

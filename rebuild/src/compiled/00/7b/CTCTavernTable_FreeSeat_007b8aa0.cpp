@@ -54,8 +54,10 @@ class CThing { public:
     }
 };
 
+class CTCUserActionPointBase { public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+};
 struct CTCFreePointList {                       // interface type 0x2E component
-    void AddFreePoint(long index);              // 0x007FEF40
 };
 
 template <class T> class CRetailVector {        // retail STLport vector (12 bytes)
@@ -101,6 +103,6 @@ void CTCTavernTable::FreeSeat(long seat, long point)
 {
     CTCFreePointList* points;
     ParentThing->GetInterface(&points, 0x2E);
-    points->AddFreePoint(point);
+    ((CTCUserActionPointBase*)points)->SetActionPointAsFree(point);
     SetSeatState(seat, false);
 }

@@ -8,7 +8,9 @@ class CMemoryFile { public:
 
 extern const void* CMemoryFile_vtbl[];
 extern void __fastcall Cleanup_5d72d0(void* file);
-extern void __fastcall SubDtor_589450(void* sub);
+class CWideString { public:
+    ~CWideString();   // 0x0099B510 (Ego_r.pdb ??1CWideString@@QAE@XZ)
+};
 extern "C" void __cdecl free(void* block);   // 0x00BFEA14 (MSVCR71)
 extern void __fastcall BaseDtor_588240(void* file);
 
@@ -16,7 +18,7 @@ void* __fastcall CMemoryFile_scalar_deleting_destructor(CMemoryFile* file, void*
 {
     file->vptr = (void*)CMemoryFile_vtbl;
     Cleanup_5d72d0(file);
-    SubDtor_589450(&file->Pathname);
+    ((CWideString*)(&file->Pathname))->~CWideString();
     if (file->member10)
         free(file->member10);
     BaseDtor_588240(file);

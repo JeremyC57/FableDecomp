@@ -25,8 +25,12 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct QuestManagerMethods:CQuestManager{bool SetQuestCardObjective(const CCharString&,const CCharString&,const CCharString&,const CCharString&);bool IsQuestCardActive(const CCharString&)const;CThingNative* GetActiveQuestCardFromScriptName(const CCharString&)const;}; //004B0D30,004AF610,004B0C80
 extern QuestManagerMethods* g_QuestManager; //013B89FC
 struct QuestCardMethods:CTCQuestCard{bool IsVignette()const;}; //007022E0 reads native Def+59; donor+5D differs due vector stride
-struct SoundPlayerMethods:CTCBase{unsigned long PlaySoundEvent(const CCharString&,bool,bool,bool,long);}; //0066BD00 returns sound handle, forwards to internal0066B120
-__forceinline void PlayLogCue(SoundPlayerMethods* sound){CCharString cue("LOG_ENTRY",-1);sound->PlaySoundEvent(cue,false,true,false,-1);}
+class CCharString;
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
+struct SoundPlayerMethods:CTCBase{}; //0066BD00 returns sound handle, forwards to internal0066B120
+__forceinline void PlayLogCue(SoundPlayerMethods* sound){CCharString cue("LOG_ENTRY",-1);((CTCSoundPlayer*)sound)->PlayAttachedCriteria(cue, false, true, false, -1);}
 template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 IS_THING_ALIVE<CThingPlayerCreature*>
 {
     return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91

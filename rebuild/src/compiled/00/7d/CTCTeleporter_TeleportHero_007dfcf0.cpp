@@ -58,7 +58,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CWorld { public:
     unsigned char _pad_0x00[0x12f];
     bool          DisplayMiniMapOnRegionLoad;   // +0x12f
-    void HandleMoveHeroToRegionGameEvent(CGameEvent* event);   // 0x0049EAF0
+    void HandleMoveHeroToRegionGameEvent(CGameEvent const&a0);   // 0x0049EAF0
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -91,5 +91,5 @@ void CTCTeleporter::TeleportHero()
     event.AddBool(false);
     event.AddBool(false);
     event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
-    GetWorld().HandleMoveHeroToRegionGameEvent(&event);
+    GetWorld().HandleMoveHeroToRegionGameEvent(*(&event));
 }

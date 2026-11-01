@@ -8,7 +8,11 @@
 #include "engine/_quarantine/CThing.h"
 #undef CThing
 class CThing { public:unsigned char NativeState[0x91];unsigned char LifetimeFlags;};
-struct CObservedThingPointer {void* VTable;void* PointerInfo;CThing* GetPItem()const;}; //00A01B50
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CObservedThingPointer {void* VTable;void* PointerInfo;}; //00A01B50
 class CCameraManagerDef;struct CCameraManagerDefPointer {CCameraManagerDef* Object;operator CCameraManagerDef*()const{return Object;}};
 struct CCameraModeDefPointer {void* Object;};
 extern CCameraModeDefPointer g_DefaultCameraModeDef; //013BA8D8
@@ -40,10 +44,10 @@ class CGameCameraManager { public:
  void PushLookAround();
 };
 void CGameCameraManager::PushLookAround(){
- if(PObservedThing.GetPItem()&&!(PObservedThing.GetPItem()->LifetimeFlags&1)) {
+ if(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())&&!(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem())->LifetimeFlags&1)) {
  if(!PPendingScriptModule&&(!PCurrentScriptModule||PCurrentScriptModule->AllowsManualControl())) {
  BlockModeChange=true;UsingCameraManually=true;
- {CCharString sound("ROTATE_START",-1);PlayCameraSoundThroughObservedThing(PObservedThing.GetPItem(),PDef,sound);}
+ {CCharString sound("ROTATE_START",-1);PlayCameraSoundThroughObservedThing(((CThing*)((CBaseIntelligentPointer*)&PObservedThing)->GetPItem()),PDef,sound);}
  SetPendingMode(new NCameraModes::CRotateAround(this,g_DefaultCameraModeDef));
  }
  }

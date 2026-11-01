@@ -34,12 +34,14 @@ public:
 };
 class CWideString {
 public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private:
+public:
     void* m_pStringData;
     CWideString();                                    // 0x0099AED0
     CWideString(const CWideString& other);            // 0x0099B720
     ~CWideString();                                   // 0x0099B510
     const CWideString& operator=(const CWideString& other); // 0x0099B7D0
-    CCharString ConvertToCharString() const;          // 0x0099B2C0
 };
 CCharString __fastcall GFIntToCharString(long value); // 0x0099F830
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
@@ -120,11 +122,11 @@ void CTCInventory::DeactivateAllEditBoxes(bool apply)
             if ((*it)->GetName() == "UI_SCOREBOARD_PROXY_IP_EDITBOX")
                 CUserProfileManager::Get().SetScoreBoardProxyIp(text);
             if ((*it)->GetName() == "UI_SCOREBOARD_PROXY_PORT_EDITBOX") {
-                long port = GFCharStringToInt(text.ConvertToCharString());
+                long port = GFCharStringToInt(((CWideString*)&text)->ToCharString());
                 CUserProfileManager::Get().ScoreBoardProxyPort = port;
             }
             if ((*it)->GetName() == "UI_SCOREBOARD_SERVER_PORT_EDITBOX") {
-                long port = GFCharStringToInt(text.ConvertToCharString());
+                long port = GFCharStringToInt(((CWideString*)&text)->ToCharString());
                 CUserProfileManager::Get().ScoreBoardServerPort = port;
             }
             CUserProfileManager::Get().Save();

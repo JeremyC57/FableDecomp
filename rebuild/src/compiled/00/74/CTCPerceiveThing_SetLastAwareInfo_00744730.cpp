@@ -19,14 +19,17 @@ struct GObj {
     void NotifyB(int arg);   // 0xffcf31d0
 };
 
-extern "C" void* __fastcall Getter_2bd420(void* self);   // 0x2bd420
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
 extern "C" Vec3* __fastcall Getter_d82ca0(void* self);   // 0xffd82ca0
 extern float g_const_122dedc;                            // ds:0x122dedc
 extern GObj* g_obj_13b8790;                              // ds:0x13b8790
 
 void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
 {
-    void* sub = Getter_2bd420(self->field_c);
+    void* sub = ((CBaseIntelligentPointer*)(self->field_c))->GetPItem();
     Vec3* v = Getter_d82ca0(sub);
     self->v20 = *v;
 
@@ -34,7 +37,7 @@ void __fastcall CTCPerceiveThing_SetLastAwareInfo(CTCPerceiveThing* self)
     self->f18 = val;
 
     if (val != g_const_122dedc) {
-        if (Getter_2bd420(self->field_c)) {
+        if (((CBaseIntelligentPointer*)(self->field_c))->GetPItem()) {
             g_obj_13b8790->NotifyA(self->field4);
         } else {
             g_obj_13b8790->NotifyB(self->field4);

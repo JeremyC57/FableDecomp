@@ -6,7 +6,8 @@ static int g_dtor = 0;
 static int g_free = 0;
 static void* g_freed = 0;
 
-extern "C" void __fastcall Mapwho_Dtor(CTCMapwho* self) { g_dtor++; }
+class CFaction { public: ~CFaction(); };   // 0x006BA6D0 (Ego_r.pdb)
+CFaction::~CFaction() { g_dtor++; }
  void operator delete(void* p) { g_free++; g_freed = p; }
 
 void __fastcall OnDie(CTCMapwho* self);

@@ -18,8 +18,12 @@ class CAIStateGroupBase{ public:void* vtable;CAIBrain* PBrain;char state[12];};
 struct CAIStateGroup_MazeTutorialBattleTeleport:CAIStateGroupBase{void* _pad_0x14[2];char unused[4];long FrameOfLastTeleport;};
 #endif
 struct MazeThing;
-struct MazePointerBase{virtual ~MazePointerBase();MazeThing* item;MazePointerBase();MazeThing* GetPItem()const;void SetPItem(MazeThing*);}; //00a01c10,00a01b10,00a01b50,00a01b90
-struct MazePointer:MazePointerBase{__forceinline MazePointer(MazeThing* p){SetPItem(p);}__forceinline MazePointer& operator=(const MazePointer& p){SetPItem(p.GetPItem());return *this;}}; //derived scalar destructor004a9710,vtable01238c6c
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct MazePointerBase{virtual ~MazePointerBase();MazeThing* item;MazePointerBase();void SetPItem(MazeThing*);}; //00a01c10,00a01b10,00a01b50,00a01b90
+struct MazePointer:MazePointerBase{__forceinline MazePointer(MazeThing* p){SetPItem(p);}__forceinline MazePointer& operator=(const MazePointer& p){SetPItem(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem()));return *this;}}; //derived scalar destructor004a9710,vtable01238c6c
 struct MazeBoss{long GetPhase();}; //007aed10
 struct MazeCombat{virtual ~MazeCombat();
 virtual void slot1();

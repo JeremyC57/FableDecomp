@@ -2,7 +2,7 @@
 // Leaf: OnCollision
 // Grade: RELOCATION_MATCH -- the inlined fast Normalise as `*this *= FastInvSqrt(X*X + Y*Y + Z*Z)` with an inline `operator*=(const float&)` (the landed 0x007AF0F0 / 0x008C0FB0 C3DVector model) gives retail's `fld st(2); fmul st(1)` component-first scaling; was one x87 instruction pair
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BE0F9, 743 bytes, `leave ; ret 10h` (optimize("y", off) + ("s", on) TU).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, the effect creator 0x006E0880 (__fastcall), CThing::GetPosition
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, the effect creator 0x006E0880 (__fastcall), CThing::GetPos
 //   0x004C73D0, std::bitset::test 0x00410DE0, CThing::AddTC 0x004C9D60 ("CTCForcePushed" 0x0123C2AC), CCharString 0x0099EBF0 /
 //   ~ 0x0099EAE0, LowerBound 0x0040F020, CHitParameters 0x007A3BC0 / SetHitter 0x008685F0 / ~ 0x00789358, operator new
 //   0x00BFEA1A, CEventHitBySpecialAbility 0x00811830, CTCEntityEvents::AddEvent 0x008113C0, CTCForcePushed::SetUpForcePush
@@ -54,7 +54,10 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
-class CThing { public:
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private: public:
     unsigned char _pad00[0x20];
     CPresenceBits m_present;                            // +0x20
     unsigned char _pad21[0x44 - 0x21];
@@ -70,7 +73,6 @@ class CThing { public:
         return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
     }
     CTCBase* AddTC(const CCharString& name, bool flag, void* params);   // 0x004C9D60
-    const C3DVector& GetPosition() const;               // 0x004C73D0
     void SetAttackedByCreature(CThing* attacker);       // 0x006624F0
     void Kill(bool flag);                               // 0x004C9B80
 };
@@ -175,8 +177,8 @@ void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& pos
         if (PShotDef->ImpactEffect)
             CreateThingEffect(PShotDef->ImpactEffect, &position, false);
         if (thing->ThingTypeFlags & 8) {
-            C3DVector shooterPos = shooter->GetPosition();
-            C3DVector away = shooterPos - thing->GetPosition();
+            C3DVector shooterPos = ((CThing*)shooter)->GetPos();
+            C3DVector away = shooterPos - ((CThing*)thing)->GetPos();
             away.Normalise();
             if (!thing->HasTC(0x8d)) {
                 CTCForcePushed* pushed;
@@ -201,7 +203,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& pos
             }
             if (found) {
                 CMessageEventManager* manager = GetWorld()->MessageEventManager;
-                manager->AddMessage(def.Data, &thing->GetPosition(), shooter, thing, 1);
+                manager->AddMessage(def.Data, &((CThing*)thing)->GetPos(), shooter, thing, 1);
             }
             if (thing->HasTC(0x34)) {
                 CTCPerceiveThing* perceive = thing->GetTC<CTCPerceiveThing>(0x34);

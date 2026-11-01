@@ -6,7 +6,11 @@
 #include "engine/CAIBrain.h"
 class C3DVector { public:float X,Y,Z;};
 struct CThingRetail;
-struct CIntelligentPointerRetail { virtual void v00(); void* PData; CThingRetail* GetPItem() const; void SetPItem(CThingRetail*); }; //00A01B50/00A01B90
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
+};
+struct CIntelligentPointerRetail { virtual void v00(); void* PData;  void SetPItem(CThingRetail*); }; //00A01B50/00A01B90
 struct CIntelligentVector { CIntelligentPointerRetail* first; CIntelligentPointerRetail* last; CIntelligentPointerRetail* capacity; unsigned char allocators[4];
  struct iterator { CIntelligentPointerRetail* p; explicit iterator(CIntelligentPointerRetail* q):p(q){} CIntelligentPointerRetail& operator*()const{return *p;} iterator operator++(int){iterator old(p);++p;return old;} bool operator!=(const iterator& other)const{return p!=other.p;} };
  iterator begin(){return iterator(first);} iterator end(){return iterator(last);} bool empty()const{return first==last;}
@@ -44,14 +48,14 @@ bool UseCoverMethods::GetHiddenCoverPosAndSetUpCoverThing(C3DVector& result)
  if(Candidates().empty())return false;
  CIntelligentVector::iterator it=Candidates().begin();
  do {
-  if(!Enemy().GetPItem() || (Enemy().GetPItem()->deathFlags&1))return false;
+  if(!((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem()) || (((CThingRetail*)((CBaseIntelligentPointer*)&(Enemy()))->GetPItem())->deathFlags&1))return false;
   CIntelligentPointerRetail& candidate=*it++;
-  if(candidate.GetPItem() && !(candidate.GetPItem()->deathFlags&1)) {
-   if(GetHiddenCoverPos(result,candidate.GetPItem())) {
+  if(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem()) && !(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())->deathFlags&1)) {
+   if(GetHiddenCoverPos(result,((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem()))) {
     CTCOccupiableMethods* occupiable;
-    if(candidate.GetPItem()->GetOccupiable(&occupiable) && !occupiable->IsOccupied()) {
+    if(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())->GetOccupiable(&occupiable) && !occupiable->IsOccupied()) {
      ClearCover();
-     Cover().SetPItem(candidate.GetPItem());
+     Cover().SetPItem(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem()));
      occupiable->SetOccupier((CThingRetail*)((CAIStateGroupBase*)this)->PBrain->Creature);
      return true;
     }

@@ -25,8 +25,10 @@ struct CLongVector {                            // std::vector<long>
     long operator[](long index) const { return m_pFirst[index]; }
 };
 
+class CWorld { public:
+    unsigned long* GetWorldSeed() const;   // 0x0049D810 (Ego_r.pdb ?GetWorldSeed@CWorld@@QBEPAKXZ)
+};
 struct CWorld_Calls {              // engine/CWorld.h exists but is not used: only its GetPRandomSeed call is used
-    unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 
 class CCombatManager { public:
@@ -38,7 +40,7 @@ class CCombatManager { public:
 long CCombatManager::PickBestSequenceFromIndexList(const CLongVector& indices)
 {
     long count = indices.size();
-    unsigned long* seed = World->GetPRandomSeed();      // named: the seed call precedes `imul esi,100`
+    unsigned long* seed = ((CWorld*)World)->GetWorldSeed();      // named: the seed call precedes `imul esi,100`
     long pick = WorldRandomRange(*seed, count * 100);
     return indices[pick / 100];
 }

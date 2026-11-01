@@ -1,13 +1,17 @@
 // CFrameData::ResetTexture  (retail 0x009fe440)
 
+class CGraphicFrame { public:
+    void UnInitialise();   // 0x00A00B90 (Ego_r.pdb ?UnInitialise@CGraphicFrame@@QAEXXZ)
+};
 struct SubA {  // member at CFrameData+0x1c
     int x;
-    void Reset();
 };
 
+class CManagedTexture { public:
+    bool Release();   // 0x00A69AD0 (Ego_r.pdb ?Release@CManagedTexture@@QAE_NXZ)
+};
 struct SubB {  // member at CFrameData+0x20
     int x;
-    void Clear();
 };
 
 struct CFrameData {
@@ -23,8 +27,8 @@ struct CFrameData {
 
 void CFrameData::ResetTexture()
 {
-    this->b.Clear();
-    this->a.Reset();
+    ((CManagedTexture*)&(this->b))->Release();
+    ((CGraphicFrame*)&(this->a))->UnInitialise();
     this->f38 = 0xff;
     this->f3a = 0x7f;
 }

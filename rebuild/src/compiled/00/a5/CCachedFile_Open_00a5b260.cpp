@@ -18,12 +18,14 @@ class CCharString { public:
     operator const char*() const;                       // 0x0099E4C0
     friend CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 class CAFile {
 public:
@@ -91,6 +93,6 @@ void CCachedFile::Open(const CWideString& filename, FileAccessType access, unsig
         PDiskFile.Reset(file.Clone());
         return;
     }
-    CCharString message = CCharString("File does not exist: ", -1) + path.ConvertToCharString();
+    CCharString message = CCharString("File does not exist: ", -1) + ((CWideString*)&path)->ToCharString();
     throw CBBBFileException(message, CBBBFileException::FileNotFound);
 }

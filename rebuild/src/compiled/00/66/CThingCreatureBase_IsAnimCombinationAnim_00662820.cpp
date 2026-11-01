@@ -15,8 +15,11 @@ struct C3DAnimationInfoCalls {
     bool IsCombinationAnimation();                      // 0x00A23F00
 };
 
+class C3DAnimationInfo;
+class CMeshDataBank { public:
+    C3DAnimationInfo const* PeekAnimation(unsigned long a0) const;   // 0x00A242C0 (Ego_r.pdb ?PeekAnimation@CMeshDataBank@@QBEPBVC3DAnimationInfo@@K@Z)
+};
 struct C3DAnimationManagerCalls {
-    C3DAnimationInfoCalls* GetAnimationInfo(long animationId);   // 0x00A242C0
 };
 
 struct CDisplayEngineCalls {
@@ -37,7 +40,7 @@ bool CThingCreatureBase_Methods::IsAnimCombinationAnim(long animationId)
     // and pushes it after that call). The false exit is the cold tail.
     if (animationId > 0) {
         C3DAnimationManagerCalls* manager = GFGetDisplayEngine()->AnimationManager;
-        return manager->GetAnimationInfo(animationId)->IsCombinationAnimation();
+        return ((C3DAnimationInfoCalls*)((CMeshDataBank*)manager)->PeekAnimation(animationId))->IsCombinationAnimation();
     }
     return false;
 }
