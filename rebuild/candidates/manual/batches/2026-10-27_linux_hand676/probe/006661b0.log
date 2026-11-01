@@ -1,0 +1,2 @@
+1	real STLport vector/list text, engine CCountedPointer/CDefPointer, boost scoped_ptr, user body PTCModeManager = 0; DebugText = 0	RELOCATION_MATCH
+2	boost::checked_delete respelled __fastcall (Ego_r YI mangling) (src)	RELOCATION_MATCH

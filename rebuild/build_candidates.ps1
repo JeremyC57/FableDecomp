@@ -372968,6 +372968,70 @@ $catalog = @(
         TestSource = '00/cb/global_GetHeroTitleAsLHTSTag_00cbeba7_test.cpp'
         PassPattern = '00cbeba7_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006661b0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_CThingCreatureBase_006661b0.cpp'
+        TestSource = '00/66/CThingCreatureBase_CThingCreatureBase_006661b0_test.cpp'
+        PassPattern = '006661b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ad260'
+        Module = 'CThingPlayerCreature'
+        Source = '00/6a/CThingPlayerCreature_UpdateWalkingControlForces_006ad260.cpp'
+        TestSource = '00/6a/CThingPlayerCreature_UpdateWalkingControlForces_006ad260_test.cpp'
+        PassPattern = '006ad260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c5d70'
+        Module = 'CTCHeroOpinionDeedLog'
+        Source = '00/6c/CTCHeroOpinionDeedLog_CTCHeroOpinionDeedLog_006c5d70.cpp'
+        TestSource = '00/6c/CTCHeroOpinionDeedLog_CTCHeroOpinionDeedLog_006c5d70_test.cpp'
+        PassPattern = '006c5d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8170'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_PaintSegment_00ac8170.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_PaintSegment_00ac8170_test.cpp'
+        PassPattern = '00ac8170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add380'
+        Module = 'CLHFile'
+        Source = '00/ad/CLHFile_CLHFile_00add380.cpp'
+        TestSource = '00/ad/CLHFile_CLHFile_00add380_test.cpp'
+        PassPattern = '00add380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00add4a0'
+        Module = 'CLHFile'
+        Source = '00/ad/CLHFile_CLHFile_00add4a0.cpp'
+        TestSource = '00/ad/CLHFile_CLHFile_00add4a0_test.cpp'
+        PassPattern = '00add4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c055d0'
+        Module = '_global'
+        Source = '00/c0/global_tralign_00c055d0.cpp'
+        TestSource = '00/c0/global_tralign_00c055d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c055d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3f60'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_NewtonRaphson_00ca3f60.cpp'
+        TestSource = '00/ca/libvorbis_NewtonRaphson_00ca3f60_test.cpp'
+        PassPattern = '00ca3f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dbefc0'
+        Module = 'NScript::CQ_NewOakValeIntroScript'
+        Source = '00/db/NScriptCQNewOakValeIntroScript_CQNewOakValeIntroScript_00dbefc0.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScript_CQNewOakValeIntroScript_00dbefc0_test.cpp'
+        PassPattern = '00dbefc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

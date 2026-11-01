@@ -1,0 +1,22 @@
+1	first-block pointer local, loop bound re-read (i < GetStaticBlockCount())	DIFFER(332v324) -- count reloaded per pass, up-counting index
+2	loop bound cached in `count` local	DIFFER(326v324) -- primitive spilled, level/bank in ebx/ebp (retail: primitive ebp, bank ebx)
+3	no first-block local: primitive.GetStaticBlock(0)-> for material, diffuse and bump stores	DIFFER(327v324) -- registers right; failed store early; bump store reloads StaticBlocks
+4	p2 + loop material via primitive.GetStaticBlock(i)	DIFFER(323v324) -- allocation flipped as p2
+5	p3 + `bool failed = false` after the material local	DIFFER(327v324) -- only residue: `mov edi,[ebp+44h]` reload before the first bump store
+6	first local + material via primitive.GetStaticBlock(0)	DIFFER(326v324) -- allocation flipped
+7	first local for material and both stores, failed after material	DIFFER(326v324) -- allocation flipped (level in ebx, primitive spilled)
+8	p7 with the material expression inline in both calls	DIFFER(340v324) -- worse
+9	p8 + inline material in the loop too	DIFFER(349v324) -- worse
+10	first local only for the bump store, diffuse via primitive.GetStaticBlock(0)	DIFFER(326v324) -- allocation flipped
+11	p5 via a `blocks = primitive.StaticBlocks` local	DIFFER(326v324) -- allocation flipped
+12	p7 with first-block locals block-scoped	DIFFER(326v324) -- allocation flipped
+13	p7 with the PDB accessors (C3DMesh2::GetMaterial, CStaticBlock::GetMaterialIndex, CBaseBlock::GetChangeFlags)	DIFFER(326v324) -- allocation flipped
+14	p13 + count declared at function top	DIFFER(326v324) -- unchanged
+15	p13 + loop index declared at function top	DIFFER(326v324) -- unchanged
+16	p13 + failed declared first	DIFFER(326v324) -- unchanged
+17	p13 + loop material/flag test through primitive.GetStaticBlock(i)	DIFFER(323v324) -- unchanged allocation
+18	p17 + first material through primitive.GetStaticBlock(0)	DIFFER(323v324) -- unchanged allocation
+19	one block/material variable pair for both sections (C style)	DIFFER(326v324) -- unchanged
+20	p13 + same-TU non-inline GetDiffuseTexture/GetBumpTexture stand-ins	DIFFER(326v324) -- unchanged
+21	p5 + same-TU stand-ins	DIFFER(327v324) -- unchanged
+22	flags sweep on p5/p13: /Oa (288v324), /Ob1 (no change)	DIFFER -- flags not the lever

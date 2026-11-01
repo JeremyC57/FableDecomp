@@ -1,0 +1,2 @@
+1	chunk-674 trees.c TU as is (tables extern), leaf __tr_align, /GS	DIFFER(545v497) -- static_ltree[END_BLOCK] reloaded, not folded
+2	trees.c/trees.h tables defined with initialisers (values regenerated + checked vs retail .rdata)	RELOCATION_MATCH

@@ -1,0 +1,36 @@
+addr       parity           behav  name
+006661b0   WARN SHARED_HEADER_AVAILABLE CThingGameObject
+006661b0   RELOCATION_MATCH PASS   ~CThingCreatureBase
+006ad260   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@Z -> 00527910 labelled '_unattributed::FreeTree_CTreeOwner_00527910'
+006ad260   RELOCATION_MATCH PASS   UpdateWalkingControlForces
+006c5d70   RELOCATION_MATCH PASS   ~CTCHeroOpinionDeedLog
+00ac8170   RELOCATION_MATCH PASS   PaintSegment
+00add380   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+00add380   RELOCATION_MATCH PASS   CLHFile
+00add4a0   RELOCATION_MATCH PASS   CLHFile
+00c055d0   RELOCATION_MATCH PASS   _tr_align
+00ca3f60   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00ca3f60   RELOCATION_MATCH PASS   Newton_Raphson
+00dbefc0   RELOCATION_MATCH PASS   ~CQ_NewOakValeIntroScript
+
+WINS: 9
+  006661b0 RELOCATION_MATCH CThingCreatureBase::??1CThingCreatureBase@@UAE@XZ
+  006ad260 RELOCATION_MATCH CThingPlayerCreature::?UpdateWalkingControlForces@CThingPlayerCreature@@IAEXXZ
+  006c5d70 RELOCATION_MATCH CTCHeroOpinionDeedLog::??1CTCHeroOpinionDeedLog@@UAE@XZ
+  00ac8170 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?PaintSegment@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXKJAAV?$list@JV?$allocator@J@std@@@std@@@Z
+  00add380 RELOCATION_MATCH CLHFile::??0CLHFile@@QAE@PAVCLHFileManager@@PBD@Z
+  00add4a0 RELOCATION_MATCH CLHFile::??0CLHFile@@QAE@PAVCLHFileManager@@PBG@Z
+  00c055d0 RELOCATION_MATCH _global::__tr_align
+  00ca3f60 RELOCATION_MATCH libvorbis::_Newton_Raphson@12
+  00dbefc0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::??1CQ_NewOakValeIntroScript@NScript@@UAE@XZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CThingCreatureBase_CThingCreatureBase_006661b0
+  CThingPlayerCreature_UpdateWalkingControlForces_006ad260
+  CTCHeroOpinionDeedLog_CTCHeroOpinionDeedLog_006c5d70
+  QuadricOptimiserInternalsCOptimisedPrimitive_PaintSegment_00ac8170
+  CLHFile_CLHFile_00add380
+  CLHFile_CLHFile_00add4a0
+  global_tralign_00c055d0
+  libvorbis_NewtonRaphson_00ca3f60
+  NScriptCQNewOakValeIntroScript_CQNewOakValeIntroScript_00dbefc0

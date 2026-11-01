@@ -1,0 +1,2 @@
+1	chunk-673 quest template: CLevelScriptBase<CQ_SunnyvaleMasterData>, 8 STLport vector<CCharString>, 2 CTimer, PDB ctor emitter	DIFFER(450v450) -- every member 4 high (aligned C3DVector)
+2	C3DVector byte-aligned (Ego_r offsets +0x8A / +0x99)	RELOCATION_MATCH

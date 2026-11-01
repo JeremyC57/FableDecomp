@@ -1,0 +1,2 @@
+1	real STLport map/list text, loop it != OpinionDeedMap.end()	DIFFER(300v284) -- end() reloaded each pass ([ebp] vs ebp)
+2	end() held in a local before the loop	RELOCATION_MATCH

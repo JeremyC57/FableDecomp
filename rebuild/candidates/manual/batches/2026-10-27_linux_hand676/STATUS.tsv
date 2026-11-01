@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c055d0	RELOCATION_MATCH	497v497	PASS	zlib 1.2.1 trees.c _tr_align, /GS; tables defined in the TU
+00ca3f60	RELOCATION_MATCH	505v505	PASS	libvorbis lsp.c Newton_Raphson (static __stdcall, ord in esi)
+006c5d70	RELOCATION_MATCH	284v284	PASS	~CTCHeroOpinionDeedLog (label was LTextTreeWalkThrough_Destructor)
+00add380	RELOCATION_MATCH	276v276	PASS	CLHFile::CLHFile(CLHFileManager*, const char*)
+00ac8170	RELOCATION_MATCH	295v295	PASS	QuadricOptimiserInternals::COptimisedPrimitive::PaintSegment
+00add4a0	RELOCATION_MATCH	274v274	PASS	CLHFile::CLHFile(CLHFileManager*, const unsigned short*)
+00ba48f0	DIFFER	327v324	-	SetupStaticBlocksNoMorph: one extra StaticBlocks reload, 22 probes, parked
+006661b0	RELOCATION_MATCH	348v348	PASS	~CThingCreatureBase (label was CThingGameObject_Finalize)
+006ad260	RELOCATION_MATCH	338v338	PASS	CThingPlayerCreature::UpdateWalkingControlForces
+00dbefc0	RELOCATION_MATCH	450v450	PASS	~NScript::CQ_NewOakValeIntroScript (label was CParticleEmitter_Dtor_7)

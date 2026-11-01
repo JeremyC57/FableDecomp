@@ -1,0 +1,4 @@
+1	wide ctor, explicit CWideString(fileName) temporary to Open	DIFFER(272v274) -- temp built after push 1, this loaded early
+2	named CWideString local for Open	DIFFER(274v274) -- frame 0x14, new slot instead of the arg slot
+3	implicit CWideString(const unsigned short*) conversion in the Open call	RELOCATION_MATCH
+4	manager param respelled CLHFileManager*, virtual ~CLHFile declared (src)	RELOCATION_MATCH

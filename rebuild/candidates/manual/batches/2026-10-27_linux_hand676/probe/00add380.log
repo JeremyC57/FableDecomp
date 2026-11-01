@@ -1,0 +1,4 @@
+1	narrow ctor, CThreadedFile modelled as vtable only	DIFFER(276v276) -- push 4 vs push 1Ch (sizeof CThreadedFile)
+2	CThreadedFile with the Ego_r members (0x1C)	RELOCATION_MATCH
+3	wide ctor added to the TU (graded as 0x00ADD380 again)	RELOCATION_MATCH
+4	manager param respelled CLHFileManager*, virtual ~CLHFile declared (src)	RELOCATION_MATCH

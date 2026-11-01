@@ -35595,3 +35595,10 @@ _pqdownheap	00c03f50	00c052c0
 ?StartFade@CAudioSource@@QAEX_JM@Z	00c720c0	00c72e00
 ?UpdateGain@CAudioSource@@QAE_NPBUCFadeParams@@_N_J@Z	00c72200	00c72e00
 _vorbis_dBquant	00ca1e50	00ca20a0
+?clear@?$_List_base@V?$CCountedPointer@VCCreatureActionBase@@@@V?$allocator@V?$CCountedPointer@VCCreatureActionBase@@@@@std@@@std@@QAEXXZ	00669b50	006661b0
+?ResolveFacingDirection@CThingPlayerCreature@@IAEXXZ	006ab820	006ad260
+?ResolveMovementAcceleration@CThingPlayerCreature@@IAEXXZ	006ab770	006ad260
+?ResolveRelativeMovementAcceleration@CThingPlayerCreature@@IAEXXZ	006a9690	006ad260
+??_7CTCHeroOpinionDeedLog@@6B@	0125ea44	006c5d70
+?_M_erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@Z	006c4f80	006c5d70
+_bi_flush	00c05040	00c055d0

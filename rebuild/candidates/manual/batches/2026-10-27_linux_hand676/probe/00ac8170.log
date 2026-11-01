@@ -1,0 +1,5 @@
+1	real STLport list text, Faces[face] store after the list ctor, Faces[current].Edges[i] in the loop	DIFFER(294v295) -- this spilled, Faces reloaded after malloc
+2	store before the list ctor, currentFace reference in the outer loop	DIFFER(294v295) -- store before malloc, register order
+3	reference to Faces[face] taken before the list ctor	DIFFER(294v295) -- full start address computed early
+4	COptimisedFace* faceData = &Faces[0] before the list ctor	RELOCATION_MATCH
+5	engine/CCountedPointer.h in place of the local layout-only CCountedPointer (vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH

@@ -1,0 +1,2 @@
+1	libvorbis 1.0.1 lsp.c Newton_Raphson verbatim, extern "C" static noinline cdecl + same-TU caller	DIFFER -- body identical, `ret` vs retail `ret 8`
+2	same, static __stdcall (callee pops the two stack args; ord stays in esi)	RELOCATION_MATCH
