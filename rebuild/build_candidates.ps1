@@ -56935,9 +56935,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d3aff0'
-        Module = 'CVtable_012ccb90'
-        Source = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3aff0.cpp'
-        TestSource = '00/d3/CLandscapeBackgroundPatch_vectordeletingdestructor_00d3aff0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_scalardeletingdestructor_00d3aff0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_scalardeletingdestructor_00d3aff0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00d3aff0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166582,9 +166582,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00613ae0'
-        Module = '_unattributed'
-        Source = '00/61/unattributed_FreeTreeCTreeOwner00613ae0_00613ae0.cpp'
-        TestSource = '00/61/unattributed_FreeTreeCTreeOwner00613ae0_00613ae0_test.cpp'
+        Module = 'std::_Rb_tree<CHeroLogBook::CHeroLogBookEntry::ECategory,std::pair<const CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*>,std::_Select1st<std::pair<const CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*> >,std::less<CHeroLogBook::CHeroLogBookEntry::ECategory>,std::allocator<std::pair<const CHeroLogBook::CHeroLogBookEntry::ECategory,NUISystem::CComponent*> > >'
+        Source = '00/61/stdRbtreeCHeroLogBookCHeroLogBookEntryECategorystdpairconstCHeroLogBookCHeroLogB_Merase_00613ae0.cpp'
+        TestSource = '00/61/stdRbtreeCHeroLogBookCHeroLogBookEntryECategorystdpairconstCHeroLogBookCHeroLogB_Merase_00613ae0_test.cpp'
         PassPattern = '00613ae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166876,9 +166876,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006196d0'
-        Module = '_unattributed'
-        Source = '00/61/unattributed_FreeTreeCTreeOwner006196d0_006196d0.cpp'
-        TestSource = '00/61/unattributed_FreeTreeCTreeOwner006196d0_006196d0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,CRegion>,std::_Select1st<std::pair<const long,CRegion> >,std::less<long>,std::allocator<std::pair<const long,CRegion> > >'
+        Source = '00/61/stdRbtreelongstdpairconstlongCRegionstdSelect1ststdpairconstlongCRegionstdlesslo_Merase_006196d0.cpp'
+        TestSource = '00/61/stdRbtreelongstdpairconstlongCRegionstdSelect1ststdpairconstlongCRegionstdlesslo_Merase_006196d0_test.cpp'
         PassPattern = '006196d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -230398,9 +230398,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad30c0'
-        Module = 'CSTLportVector<C3DVector>'
-        Source = '00/ad/CSTLportVectorC3DVector_CSTLportVector_00ad30c0.cpp'
-        TestSource = '00/ad/CSTLportVectorC3DVector_CSTLportVector_00ad30c0_test.cpp'
+        Module = 'std::vector<C3DVector,std::allocator<C3DVector> >'
+        Source = '00/ad/stdvectorC3DVectorstdallocatorC3DVector_vector_00ad30c0.cpp'
+        TestSource = '00/ad/stdvectorC3DVectorstdallocatorC3DVector_vector_00ad30c0_test.cpp'
         PassPattern = '00ad30c0_TEST PASS'
     }
     [pscustomobject]@{
