@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00bebca0	DIFFER	445v484	-	CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture; 22 probes; retail recomputes the graphic-list size

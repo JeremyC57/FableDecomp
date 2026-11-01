@@ -1,0 +1,4 @@
+p1	InitializeProperties-TU model; plain (x>>N)&1 bit tests; ternaries inline in call args	DIFFER(460v475) test ch,1 folds vs retail shr;test dl,1
+p2	p1 with (unsigned char)(x>>N)&1 on all four bit tests	DIFFER(474v475) push ebx before the virtual call (arg order)
+p3	p2 with the stream/sample ternaries in named locals	RELOCATION_MATCH
+p4	p2 with inline AsStream()/AsSample() accessors instead of locals	DIFFER(474v475) same push placement

@@ -1,0 +1,46 @@
+addr       parity           behav  name
+00443e20   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00443e20   WARN RELOC_NAME: ??1?$deque@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@QAE@XZ -> 004427d0 labelled 'CBankFileAsyncData::FreeBuffer'
+00443e20   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00443e20   RELOCATION_MATCH PASS   ~CSubtitleRenderer
+005d8ef0   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005d8ef0   WARN RELOC_NAME: ??0CRightHandedSet@@QAE@ABV0@@Z -> 0049cf80 labelled 'CNearestBuildingWithProperty::CNearestBuildingWithProperty'
+005d8ef0   RELOCATION_MATCH PASS   GetRHSetFromOrientation
+00946f90   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00946f90   WARN RELOC_NAME: ??$GetAllLeafThings@VCThingBuilding@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z -> 00947780 labelled 'GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>'
+00946f90   WARN RELOC_NAME: ?GetNumShoppers@CTCShop@@QBEJXZ -> 00772110 labelled 'CShaderPreParser::GetConstantCount'
+00946f90   RELOCATION_MATCH PASS   FindASimplyDelightfulShop
+00ac8840   WARN SHARED_HEADER_AVAILABLE COptimisedPrimitive
+00ac8840   WARN RELOC_NAME: ??0?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@ABV01@@Z -> 00ad3a10 labelled 'std::set::set'
+00ac8840   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z -> 004cf810 labelled '_unattributed::FreeTree_CTreeOwner_004cf810'
+00ac8840   RELOCATION_MATCH PASS   GetRemainingVertices
+00ad8ed0   RELOCATION_MATCH PASS   CountRemainingGroups
+00c052c0   RELOCATION_MATCH PASS   build_tree
+00c72e00   WARN RELOC_NAME: ?StartFade@CAudioSource@@QAEX_JM@Z -> 00c720c0 labelled 'Math_ConvertToPowerOfTwo_or_ComputeScale'
+00c72e00   WARN RELOC_NAME: ?ApplyHardware@CAudioSource@@QAEXPAVCAudioObject@@K@Z -> 00c880a0 labelled 'Audio_GetProcAddress_Wrapper'
+00c72e00   WARN RELOC_NAME: ?ApplySoftware@CAudioSource@@QAEXPAVCAudioObject@@K@Z -> 00c733d0 labelled 'Audio_ApplyEffectProperties'
+00c72e00   RELOCATION_MATCH PASS   ApplySound
+00ca20a0   RELOCATION_MATCH PASS   accumulate_fit
+00cbeba7   RELOCATION_MATCH PASS   GetHeroTitleAsLHTSTag
+
+WINS: 9
+  00443e20 RELOCATION_MATCH CSubtitleRenderer::??1CSubtitleRenderer@@UAE@XZ
+  005d8ef0 RELOCATION_MATCH CTCInventoryItem::?GetRHSetFromOrientation@CTCInventoryItem@@CI
+  00946f90 RELOCATION_MATCH CAIStateGroup_WanderAroundShops::?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@
+  00ac8840 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@
+  00ad8ed0 RELOCATION_MATCH CVertexGroupBlockOptimiser::?CountRemainingGroups@CVertexGroupBlockOptimiser@@
+  00c052c0 RELOCATION_MATCH _global::_build_tree
+  00c72e00 RELOCATION_MATCH CAudioSource::?ApplySound@CAudioSource@@
+  00ca20a0 RELOCATION_MATCH libvorbis::_accumulate_fit@28
+  00cbeba7 RELOCATION_MATCH _global::?GetHeroTitleAsLHTSTag@@YI?AVCCharString@@XZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CSubtitleRenderer_CSubtitleRenderer_00443e20
+  CTCInventoryItem_GetRHSetFromOrientation_005d8ef0
+  CAIStateGroupWanderAroundShops_FindASimplyDelightfulShop_00946f90
+  QuadricOptimiserInternalsCOptimisedPrimitive_GetRemainingVertices_00ac8840
+  CVertexGroupBlockOptimiser_CountRemainingGroups_00ad8ed0
+  global_buildtree_00c052c0
+  CAudioSource_ApplySound_00c72e00
+  libvorbis_accumulatefit_00ca20a0
+  global_GetHeroTitleAsLHTSTag_00cbeba7

@@ -1,0 +1,23 @@
+address	name	evidence
+00c052c0	build_tree	chunk 675 RELOCATION_MATCH (/GS): zlib 1.2.1 trees.c `local void build_tree(deflate_state*, tree_desc*)`; the landed trees.c TU text
+00ad8ed0	CVertexGroupBlockOptimiser::CountRemainingGroups	chunk 675 RELOCATION_MATCH (15 probes): Ego_r private const member; walks InputList/CurrentBlock/MaxGroupIndex (catalog VertexListMarkConnected wrong)
+00ac8840	QuadricOptimiserInternals::COptimisedPrimitive::GetRemainingVertices	chunk 675 RELOCATION_MATCH: Ego_r private const member returning CIndexList; set<unsigned long> insert (catalog LTextTreeWalkThrough_BuildFromTree wrong)
+005d8ef0	CTCInventoryItem::GetRHSetFromOrientation	chunk 675 RELOCATION_MATCH: Ego_r/FableWin private static __fastcall; 12-case switch over the anonymous-namespace *_ORIENTATION constants
+00cbeba7	GetHeroTitleAsLHTSTag	chunk 675 RELOCATION_MATCH: Ego_r free __fastcall returning CCharString; odd start address genuine
+00443e20	CSubtitleRenderer::~CSubtitleRenderer	chunk 675 RELOCATION_MATCH: implicit; sole caller slot-0 ??_G 0x004942A2 of vtable 0x012384BC (RTTI COL CSubtitleRenderer) (catalog TextureCache_Destructor wrong)
+00946f90	CAIStateGroup_WanderAroundShops::FindASimplyDelightfulShop	chunk 675 RELOCATION_MATCH: Ego_r private member; caller IsRunnable 0x00947280; GetAllLeafThings<CThingBuilding> + CTCShop::GetNumShoppers (catalog SelectRandomEnemy wrong)
+00c72e00	CAudioSource::ApplySound	chunk 675 RELOCATION_MATCH: thiscall member of the libpk/OpenAL CAudioSource (ret 0Ch); descriptive name from the landed caller CAudioSource::Update 0x00C72FE0 (catalog free Audio_InitializeSource_AL wrong)
+00ca20a0	accumulate_fit	chunk 675 RELOCATION_MATCH: libvorbis 1.0.1 floor1.c static `accumulate_fit` from the verbatim vendor text (catalog FloatVector_Clamp wrong)
+00bebca0	CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture	chunk 675 parked DIFFER(445v484): Ego_r public static __fastcall; sibling of PreloadDiffuseTexture 0x00BEC000 / PreloadBumpTexture 0x00BEC470 (both manifest retail_parity DIFFER): solve the three together
+004942a2	CSubtitleRenderer::`scalar deleting destructor'	chunk 675: slot 0 of vtable 0x012384BC (RTTI); landed as a free fastcall stand-in
+004427d0	std::deque<CSubtitleRenderer::CSetTextInfo>::~deque	chunk 675: called from ~CSubtitleRenderer on the +0x34 queue (catalog CBankFileAsyncData::FreeBuffer wrong)
+00947780	CThingSearchTools::GetAllLeafThings<CThingBuilding,std::vector<CThing*>,CThingFilter_HasTC>	chunk 675: the instantiation FindASimplyDelightfulShop calls (manifest <CThingAICreature,...> wrong)
+00772110	CTCShop::GetNumShoppers	chunk 675: called on the CTCShop component (TC 0x53) in 0x00946F90; PDB const long (catalog CShaderPreParser::GetConstantCount wrong)
+008fd000	CAIStateGroupBase::PeekThingSearchTools	chunk 675: PDB protected const member of the base (landed with derived-class spellings)
+008fcfd0	CAIStateGroupBase::GetPWorldSeed	chunk 675: PDB protected const member of the base; feeds GFRandom in 0x00946F90
+0049c780	CThingSearchTools::PeekTypeList	chunk 675: PDB; called in the GetAllLeafThings body
+006a80a0	CThingFilter_HasTC::operator()	chunk 675: PDB functor; called per thing in GetAllLeafThings (catalog Bitset_Test wrong)
+0049cf80	CRightHandedSet::CRightHandedSet	chunk 675: the by-value CRightHandedSet copy in GetRHSetFromOrientation binds this address (24-byte memberwise copy ctor) (catalog CNearestBuildingWithProperty wrong)
+00c720c0	CAudioSource::StartFade	chunk 675 descriptive: thiscall on the source (now, fade target) from ApplySound
+00c880a0	CAudioSource::ApplyHardware	chunk 675 descriptive: hardware path of ApplySound (stream-or-null, flags)
+00c733d0	CAudioSource::ApplySoftware	chunk 675 descriptive: software path of ApplySound (sample-or-null, flags)

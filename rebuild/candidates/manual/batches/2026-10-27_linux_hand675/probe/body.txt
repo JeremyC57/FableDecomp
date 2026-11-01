@@ -1,0 +1,44 @@
+void __fastcall CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture(const C3DMeshMaterial* material, unsigned long mipmap, bool& preloading, const CGraphicDataBank* bank)
+{
+    unsigned long index = material->ReflectionMapBankIndex;
+    if (index == 0)
+        return;
+    @LOOKUP@ {
+        CGraphicInfoFrame* frame = bank->GetEntry(index)->InfoFrame;
+        if (frame) {
+            unsigned long acceptable = GetAcceptablePreloadMipmap(mipmap, frame);
+            if (frame->Data) {
+                if (frame->Data->Frame) {
+                    unsigned long currentFrame = frame->GraphicInfo->Bank->CurrentFrame;
+                    if (frame->Data->TouchedFrame != currentFrame || mipmap <= (unsigned long)frame->Data->TouchedMipmapLevel) {
+                        frame->Data->TouchedFrame = currentFrame;
+                        if (frame->Data->ManagedTexture.Data)
+                            frame->Data->ManagedTexture.Data->Touch();
+                        if (mipmap <= (unsigned long)frame->Data->CurrentMipmapLevel)
+                            frame->Data->Touch();
+                        if ((unsigned long)frame->Data->TouchedMipmapLevel > mipmap)
+                            frame->Data->TouchedMipmapLevel = (signed char)mipmap;
+                    }
+                    if (mipmap < (unsigned long)frame->Data->CurrentMipmapLevel)
+                        frame->Data->BeginLoading(mipmap, 0);
+                    if ((frame->Data ? (unsigned long)frame->Data->CurrentMipmapLevel : 0xffffffff) > acceptable)
+                        preloading = true;
+                } else {
+                    frame->Data->BeginLoading(mipmap, 0);
+                    preloading = true;
+                }
+            } else {
+                CFrameData* data = new CFrameData(frame);
+                CFrameData* old = frame->Data;
+                if (old) {
+                    if (--old->RefCount == 0)
+                        old->v01();
+                    frame->Data = 0;
+                }
+                frame->Data = data;
+                data->BeginLoading(mipmap, 0);
+                preloading = true;
+            }
+        }
+    }
+}

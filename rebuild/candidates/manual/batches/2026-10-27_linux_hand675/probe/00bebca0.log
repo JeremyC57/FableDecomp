@@ -1,0 +1,23 @@
+p1	sibling PreloadDiffuse model, PDB member names; plain inline helpers	DIFFER(346v484) GetEntry/Touch emitted out of line
+p2	p1 with __forceinline Size/GetEntry/Touch	DIFFER(437v484) second size()/compare folded away; new-data block first
+p3	p2 with entry = GetEntry(i); if (entry) + local `old` for the counted release	DIFFER(429v484) second lookup still folded
+p4	if (Data){if(Frame){main}else{..}}else{new} nesting, first check `index < Size() && &E[index]`	DIFFER(437v484) folded
+p5	p4 with GetEntry written `Size() > i ? ..`	DIFFER(442v484) second compare kept, size CSE'd (retail recomputes)
+p6	p5 with `if (GetEntry(index))` as the first check	DIFFER(437v484) folded
+p7	early `if (index >= Size()) return;` then &E[index] test	DIFFER(437v484) folded
+p8	signed Count() for the first check	DIFFER(437v484) folded
+p9	GetEntry `i >= Size() ? 0 : &E[i]`	DIFFER(437v484) folded
+p10	two record types over the vector (union views)	DIFFER(437v484) folded (VC value-numbers the loads)
+p11	p4 under #pragma optimize("g", off)	DIFFER(753v484) no global regalloc
+p12	GetEntry as if/return	DIFFER(437v484)
+p13	GetEntry with a result local	DIFFER(437v484)
+p14	GetEntry early-return >=	DIFFER(437v484)
+p15	named `count` local for the first check	DIFFER(437v484)
+p16	named count + early return	DIFFER(437v484)
+p17	p5 + early returns in the else blocks, final check after, CManagedTexture::Touch() inline	DIFFER(445v484) dead `add eax,20h` now reproduced
+p18	p17 + CGraphicInfoFrame::GetCurrentLoadedMipmapLevel() inline (PDB)	DIFFER(445v484)
+p19	p5 nesting + GetCurrentLoadedMipmapLevel + ManagedTexture.Touch()	DIFFER(445v484) best: only the size recompute, edi/esi swap and tail layout differ
+p20	p19 with explicit returns in the else blocks	DIFFER(445v484) same
+p21	index re-read from material at every use	DIFFER(452v484)
+p22	STLport-style GraphicList vector (size()/operator[]) for the first check	DIFFER(452v484)
+p19/Ot,O2	p19 with /Ot and /O2	DIFFER(445v484) no change

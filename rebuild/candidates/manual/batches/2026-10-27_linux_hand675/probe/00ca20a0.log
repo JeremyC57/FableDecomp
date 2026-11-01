@@ -1,0 +1,2 @@
+p1	libvorbis 1.0.1 floor1.c accumulate_fit verbatim as static noinline + same-TU caller	DIFFER(463v465) caller-pop ret, mdct-flr in its own slot
+p2	p1 with __stdcall on the static (lane libvorbis convention)	RELOCATION_MATCH

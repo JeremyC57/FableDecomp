@@ -1,0 +1,4 @@
+p1	GetIntersection STLport set text + _M_increment + insert(*it)	DIFFER(280v277) key passed by node address, no copy
+p2	named index local before the Exists test	DIFFER(268v277) store hoisted before test
+p3	block-scope index local inside the if	RELOCATION_MATCH
+final	CArray moved to global namespace, header	RELOCATION_MATCH

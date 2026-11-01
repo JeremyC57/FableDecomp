@@ -1,0 +1,3 @@
+p1	declared-only GetAllLeafThings/_M_insert_overflow, named shop local	DIFFER(392v373) shops escapes (begin/size re-read), push_back via named local
+x1	diagnostic: noinline stub GetAllLeafThings body (not kept)	DIFFER(392v373) no change (push_back still escapes)
+p2	real GetAllLeafThings template body + STLport _M_insert_overflow text + push_back(shops[i])	RELOCATION_MATCH

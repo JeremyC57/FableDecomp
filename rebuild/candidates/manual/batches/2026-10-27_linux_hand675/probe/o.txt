@@ -1,0 +1,4 @@
+00c052c0 _global::build_tree SRC_FAIL flags= ['/GS', '/TC']
+00c052c0.cpp
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\wine\q\00c052c0\00c052c0.cpp(149) : error C2059: syntax error : 'string'
+ 

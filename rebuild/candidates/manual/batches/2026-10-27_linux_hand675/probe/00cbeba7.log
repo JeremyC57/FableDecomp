@@ -1,0 +1,2 @@
+p1	switch on GetHeroTitle() returning literals, size TU pragmas (neighbour TU)	RELOCATION_MATCH
+p2	p1 without the optimize pragmas	DIFFER(516v345) per-case ctor calls

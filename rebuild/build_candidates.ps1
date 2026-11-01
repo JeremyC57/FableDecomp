@@ -372904,6 +372904,70 @@ $catalog = @(
         TestSource = '01/21/global_ECrimeText_0121a7ca_test.cpp'
         PassPattern = '0121a7ca_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00443e20'
+        Module = 'CSubtitleRenderer'
+        Source = '00/44/CSubtitleRenderer_CSubtitleRenderer_00443e20.cpp'
+        TestSource = '00/44/CSubtitleRenderer_CSubtitleRenderer_00443e20_test.cpp'
+        PassPattern = '00443e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d8ef0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetRHSetFromOrientation_005d8ef0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetRHSetFromOrientation_005d8ef0_test.cpp'
+        PassPattern = '005d8ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00946f90'
+        Module = 'CAIStateGroup_WanderAroundShops'
+        Source = '00/94/CAIStateGroupWanderAroundShops_FindASimplyDelightfulShop_00946f90.cpp'
+        TestSource = '00/94/CAIStateGroupWanderAroundShops_FindASimplyDelightfulShop_00946f90_test.cpp'
+        PassPattern = '00946f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac8840'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_GetRemainingVertices_00ac8840.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_GetRemainingVertices_00ac8840_test.cpp'
+        PassPattern = '00ac8840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad8ed0'
+        Module = 'CVertexGroupBlockOptimiser'
+        Source = '00/ad/CVertexGroupBlockOptimiser_CountRemainingGroups_00ad8ed0.cpp'
+        TestSource = '00/ad/CVertexGroupBlockOptimiser_CountRemainingGroups_00ad8ed0_test.cpp'
+        PassPattern = '00ad8ed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c052c0'
+        Module = '_global'
+        Source = '00/c0/global_buildtree_00c052c0.cpp'
+        TestSource = '00/c0/global_buildtree_00c052c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c052c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c72e00'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_ApplySound_00c72e00.cpp'
+        TestSource = '00/c7/CAudioSource_ApplySound_00c72e00_test.cpp'
+        PassPattern = '00c72e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca20a0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_accumulatefit_00ca20a0.cpp'
+        TestSource = '00/ca/libvorbis_accumulatefit_00ca20a0_test.cpp'
+        PassPattern = '00ca20a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbeba7'
+        Module = '_global'
+        Source = '00/cb/global_GetHeroTitleAsLHTSTag_00cbeba7.cpp'
+        TestSource = '00/cb/global_GetHeroTitleAsLHTSTag_00cbeba7_test.cpp'
+        PassPattern = '00cbeba7_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

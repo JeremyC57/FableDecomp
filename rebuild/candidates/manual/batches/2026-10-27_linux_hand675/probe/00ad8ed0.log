@@ -1,0 +1,17 @@
+p1	plain index loops, HasGroup inline, vector<bool> ctor declared	DIFFER(270v269) inner loop reloads used/Blocks, header cached
+p1b	p1 + /Oa (flag probe)	DIFFER(255v269) frame 0x20, worse
+p2	named block ref + hoisted n in inner loop	DIFFER(279v269) inner ok-ish; used start reloaded; header cached in ebx
+p3	p2 + `iterator marks = used.begin()` for stores/tests	DIFFER(274v269) loop1 exact; dtor reloads start; header cached; bool/alloc temps 2 slots
+p4	real STLport _Vector_base(n,a)+ctor bodies in class	DIFFER(268v269) ctor fully inlined (memset)
+p5	ctor body only (_Vector_base declared)	DIFFER(295v269) ctor inlined
+p6	full STLport uninitialized_fill_n/__type_traits chain	DIFFER(295v269) ctor inlined
+p6b/p3b	/EHsc on p6 and p3 (flag probe)	no change
+p9	explicit instantiation of the noinline ctor before the function (ctor still calls declared _Vector_base)	DIFFER(279v269) no change: _Vector_base call lets this escape
+p10	real STLport _Vector_base(n,a) body inline + noinline ctor + explicit instantiation	DIFFER(270v269) used/loop1/shared byte exact; header reused
+p11	STLport base iterator + free operator==, body-assign iterator ctors	DIFFER(270v269) no change
+p12	HasGroup const, out-of-class non-inline, defined before (Ego_r order)	DIFFER(270v269) no change
+p13	verbatim STLport _M_find with _M_root/_S_left reference casts	DIFFER(270v269) no change
+p14	HasGroup with a NAMED const_iterator from find	RELOCATION_MATCH
+p15	no HasGroup, explicit find==end in the loop	DIFFER(270v269)
+final	p14 + real list/vector members, STLport allocate n!=0 form	RELOCATION_MATCH
+x2	final without the explicit instantiation (implicit instantiation suffices)	RELOCATION_MATCH (adopted)

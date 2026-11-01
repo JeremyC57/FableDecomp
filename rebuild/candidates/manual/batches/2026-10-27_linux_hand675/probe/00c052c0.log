@@ -1,0 +1,2 @@
+p1	landed whole-trees.c TU unchanged (C++ uch ?: lvalue)	DIFFER(492v498) mov cl,dl vs movzx per arm
+p2	(int) on both ?: arms (C usual arithmetic conversions)	RELOCATION_MATCH

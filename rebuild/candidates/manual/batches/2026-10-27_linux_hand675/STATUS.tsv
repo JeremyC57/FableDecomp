@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c052c0	RELOCATION_MATCH	498v498	PASS	zlib 1.2.1 build_tree (landed trees.c TU text + (int) casts on the depth ?:), /GS
+00ad8ed0	RELOCATION_MATCH	269v269	PASS	CVertexGroupBlockOptimiser::CountRemainingGroups, real STLport vector<bool>/_Rb_tree text
+00ac8840	RELOCATION_MATCH	277v277	PASS	COptimisedPrimitive::GetRemainingVertices, block-scoped index local
+005d8ef0	RELOCATION_MATCH	316v316	PASS	CTCInventoryItem::GetRHSetFromOrientation, first grade
+00cbeba7	RELOCATION_MATCH	345v345	PASS	GetHeroTitleAsLHTSTag, optimize(y off, s on)
+00443e20	RELOCATION_MATCH	360v360	PASS	CSubtitleRenderer implicit ~, first grade
+00946f90	RELOCATION_MATCH	373v373	PASS	CAIStateGroup_WanderAroundShops::FindASimplyDelightfulShop, real GetAllLeafThings/_M_insert_overflow bodies
+00c72e00	RELOCATION_MATCH	475v475	PASS	CAudioSource::ApplySound (descriptive), (unsigned char) bit tests + named ternary locals
+00ca20a0	RELOCATION_MATCH	465v465	PASS	libvorbis 1.0.1 accumulate_fit, static __stdcall
+00bebca0	DIFFER	445v484	-	CEnginePrimitiveManagerMeshBase::PreloadReflectionTexture; 22 probes; retail recomputes the graphic-list size

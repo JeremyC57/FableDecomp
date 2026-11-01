@@ -1,0 +1,1 @@
+p1	implicit dtor of CSubtitleRenderer : CBaseClassNonCopyable, PDB members at STLport sizes, STLport vector _Destroy chain, ~deque declared, ctor defined as emitter	RELOCATION_MATCH
