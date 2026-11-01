@@ -1,5 +1,8 @@
 // CTrophyDealerInCave::Main() -- entity script: holds an alive filter on the trophy dealer, makes it unkillable and undamageable, takes the hero and the dealer under scripted control and plays CS_TROPHY_DEALER in a paused movie sequence, then re-enables the Witchwood2 creature generators and completes and retires the active quest
-// Leaf: Main
+// Leaf: ?Main@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: ?Main@CTrophyDealerInCave@NScript@@QAEXXZ (not nested, public non-virtual).
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
@@ -83,8 +86,15 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 #include "engine/CIsThingAlive.h"                     // NScript::CIsThingAlive : CPredicateBase, vtable 0x012C32F0, ~ 0x00E241B0
 inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}   // FableWin-only: retail expands it inline
 
+class CScriptBase; class CPersistContext;
 class CEntityScriptBase { public:                       // global PDB class, retail 0x14 bytes
     virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
@@ -93,15 +103,18 @@ class CEntityScriptBase { public:                       // global PDB class, ret
 
 namespace NScript {
 
-class CV_TrophyDealerScript;
+class CV_TrophyDealerScript { public:
+    struct CTrophyDealerInCave;                         // Ego_r.pdb / FableWin.pdb: nested entity script
+};
 class CQ_SunnyvaleMasterData;
-struct CTrophyDealerInCave : CEntityScriptBase {
+struct CV_TrophyDealerScript::CTrophyDealerInCave : CEntityScriptBase {
     CV_TrophyDealerScript*  ParentClass;                // +0x14
     CQ_SunnyvaleMasterData* PMasterData;                // +0x18
-    void Main();
+private:
+    virtual void Main();                                // private virtual (Ego_r / FableWin EAEXXZ)
 };
 
-void CTrophyDealerInCave::Main()
+void CV_TrophyDealerScript::CTrophyDealerInCave::Main()
 {
     CScriptGameResourceObjectScriptedThingBase trophy;
     SetPredicate(CIsThingAlive(Me));

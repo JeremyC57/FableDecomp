@@ -1,5 +1,9 @@
 // CUndeadRisingZombieAttackerBoss::Main() -- Undead Rising boss zombie: conscious filter on Me; once the quest flags the boss cutscene, spawn the quest's LookAfterHealth thread on Me, take scripting control, retreat to the start position whenever health drops below half until it recovers, then attack the hero and idle
-// Leaf: ?Main@CUndeadRisingZombieAttackerBoss@@QAEXXZ
+// Leaf: ?Main@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: ?Main@CUndeadRisingZombieAttackerBoss@@QAEXXZ over a global CQ_UndeadRisingScript with a row-local Add (0x00CB7E50 is
+//   CScriptBase::AddSpawnedFunction) and LookAfterHealth outside NScript.
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
@@ -18,7 +22,7 @@
 //   PMasterData +0x18, StartPos (C3DVector) +0x1c, MaxHealth +0x28 (descriptive names for the last two). CQ_UndeadRisingScript
 //   retail = Ego_r.pdb - 0x14: BossCutscenePlayed +0x51. The spawned function as the landed CAttackingBandit::Init 0x00E1F3E0
 //   (0x48 bytes: base 0x34, Func +0x34, PClass +0x38, Par1 +0x3c).
-// Shape: generated script code; the spawn is `ParentClass->Add(new CSpawnedFunc1(...), "")` (conditional name temporaries
+// Shape: generated script code; the spawn is `ParentClass->AddSpawnedFunction(new CSpawnedFunc1(...), "")` (conditional name temporaries
 //   with frame flags, the by-value thing parameter destroyed before Add).
 class CCharString { public:
     void* PStringData;
@@ -130,12 +134,16 @@ struct GameCalls {                                       // CGameScriptInterface
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-struct CQ_UndeadRisingScript {
-    unsigned char _pad00[0x51];
+#include "engine/CScriptBase.h"                       // : CBaseClassNonCopyable, 0x40; AddSpawnedFunction 0x00CB7E50
+namespace NScript {
+class CQ_UndeadRisingScript : public CScriptBase { public:   // Ego_r.pdb / FableWin.pdb NScript::CQ_UndeadRisingScript
+    unsigned char _pad40[0x51 - 0x40];
     bool          BossCutscenePlayed;                   // +0x51
     void LookAfterHealth(CScriptThing thing);           // 0x00E0DBB0
-    void Add(CSpawnedFuncBase* function, const CCharString& name);   // 0x00CB7E50
+    struct CUndeadRisingZombieAttackerBoss;             // nested entity script
 };
+}
+using NScript::CQ_UndeadRisingScript;
 typedef void (CQ_UndeadRisingScript::*SpawnedThingCallback)(CScriptThing);
 struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_UndeadRisingScript, CScriptThing>, vtable 0x012E0088
     SpawnedThingCallback   Func;                        // +0x34
@@ -146,22 +154,30 @@ struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_Unde
     virtual void SuspendableProcess();
 };
 void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A
-class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+class CScriptBase; class CPersistContext;
+class CEntityScriptBase { public:   // global PDB class (Game / Me are declared on the entity in this row's model)
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
-struct CUndeadRisingZombieAttackerBoss : public CEntityScriptBase {
-    void*                  VTable;
+struct CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss : public CEntityScriptBase {
     GameCalls*             Game;                        // +0x04
     CScriptThing           Me;                          // +0x08
     CQ_UndeadRisingScript* ParentClass;                 // +0x14
     void*                  PMasterData;                 // +0x18
     C3DVector              StartPos;                    // +0x1c
     float                  MaxHealth;                   // +0x28
-    void Main();
+private:
+    virtual void Main();                                // private virtual (Ego_r / FableWin EAEXXZ)
 };
 
-void CUndeadRisingZombieAttackerBoss::Main()
+void CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss::Main()
 {
     SetPredicate(CIsThingConscious(Me));
     Game->NewScriptFrame();
@@ -175,7 +191,7 @@ void CUndeadRisingZombieAttackerBoss::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    ParentClass->Add(new CSpawnedFunc1(CCharString("ParentClass.") + CCharString("LookAfterHealth"), 0,
+    ParentClass->AddSpawnedFunction(new CSpawnedFunc1(CCharString("ParentClass.") + CCharString("LookAfterHealth"), 0,
                                        &CQ_UndeadRisingScript::LookAfterHealth, ParentClass, Me), CCharString(""));
     if (handle.IsValid())
         handle.Release();

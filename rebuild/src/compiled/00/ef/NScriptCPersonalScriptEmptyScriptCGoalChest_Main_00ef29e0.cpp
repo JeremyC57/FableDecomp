@@ -1,5 +1,8 @@
 // CGoalChest::Main -- watch the chest until hero use ends or script termination, then flag the parent
-// Leaf: ?Main@CGoalChest@@QAEXXZ
+// Leaf: ?Main@CGoalChest@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CGoalChest@CPersonalScript_EmptyScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: ?Main@CGoalChest@@QAEXXZ over a global CPersonalScript_EmptyScript, the vptr a `void* VTable` member.
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
@@ -34,16 +37,28 @@ struct ThingCalls:CScriptThing {
  __forceinline bool NotUsedByHero() const { CCharString name("SCRIPT_NAME_HERO",-1); return MsgIsUsedBy(name) ? false : true; }
  __forceinline unsigned char MsgIsUsedBy(const CCharString& name)const {return(this->*reinterpret_cast<const ThingSlot*>(__vftable)[20].MsgIsUsedBy)(name);}
 };
-struct CPersonalScript_EmptyScript { unsigned char Unknown[0x48]; bool GoalChestFinished; };
-class CEntityScriptBase { public:
+namespace NScript {
+class CPersonalScript_EmptyScript { public: unsigned char Unknown[0x48]; bool GoalChestFinished; struct CGoalChest; };   // Ego_r.pdb NScript::
+}
+using NScript::CPersonalScript_EmptyScript;
+class CScriptBase; class CPersistContext;
+class CEntityScriptBase { public:   // global PDB class (Game / Me are declared on the entity in this row's model)
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
     void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
-struct CGoalChest : CEntityScriptBase {                 // the PDB base (empty here: offset 0)
- void* VTable; GameCalls* Game; ThingCalls Me; CPersonalScript_EmptyScript* ParentClass; void* PMasterData;
- void Main();
+struct CPersonalScript_EmptyScript::CGoalChest : CEntityScriptBase {   // the PDB base (its vptr at +0x00)
+ GameCalls* Game; ThingCalls Me; CPersonalScript_EmptyScript* ParentClass; void* PMasterData;
+private:
+ virtual void Main();   // private virtual (Ego_r / FableWin EAEXXZ)
 };
-void CGoalChest::Main() {
+void CPersonalScript_EmptyScript::CGoalChest::Main() {
  { NScript::CIsThingAlive filter(Me); SetPredicate(filter); }
  Game->NewScriptFrame();
  if(!IsActiveThreadTerminating()) {

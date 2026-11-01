@@ -1,7 +1,10 @@
 // NScript::CQ_MinionCampScript::CMC_Minion::Main() -- minion: target Briar Rose (2 in 3, while she lives) or the hero; then,
 //   every frame, retarget the hero whenever the hero hits Me (directly, or with any special ability other than 14) and is
 //   not already the target
-// Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript
+// Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: public non-virtual ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@QAEXXZ.
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
@@ -93,8 +96,15 @@ class CIsThingConscious : public CPredicateBase { public:      // vtable 0x012C2
 // the constructor outside the inline_depth(0) region: retail expands the CPredicateBase constructor inside it
 inline CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
 }
+class CScriptBase; class CPersistContext;
 class CEntityScriptBase { public:                       // global PDB class, retail 0x14 bytes
     virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
@@ -105,7 +115,8 @@ class CQ_MinionCampScript { public:
 struct CMC_Minion : CEntityScriptBase {                 // Ego_r.pdb: nested in CQ_MinionCampScript
     CQ_MinionCampScript* ParentClass;                   // +0x14
     void*                PMasterData;                   // +0x18 CQ_SunnyvaleMasterData*
-    void Main();
+private:
+    virtual void Main();                                // private virtual (Ego_r / FableWin EAEXXZ)
 };
 };
 

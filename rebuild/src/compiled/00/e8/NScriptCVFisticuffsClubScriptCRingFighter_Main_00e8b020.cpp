@@ -1,5 +1,8 @@
 // CRingFighter::Main() -- punch-club ring fighter: filter on Me alive while the crowd is not all attacking; wait for the round to start and target the hero; each frame let the crowd cheer when the hero lands a hit and boo when the ring fighter hits the hero, stop on a time-out; once Me's health falls to the def's losing threshold, take scripted control of Me and the hero, play the ROUNDWON cutscene, walk Me to the loser marker, flag the ring cleared and wait for the next round, then walk Me out to the marker and remove Me
-// Leaf: ?Main@CRingFighter@@
+// Leaf: ?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: ?Main@CRingFighter@@UAEXXZ over a global CV_FisticuffsClubScript (GetCutsceneName outside NScript).
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
@@ -90,7 +93,9 @@ class CScriptDef { public:
     long FisticuffsLosingHealth;                        // +0x5e0
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CV_FisticuffsClubScript {
+namespace NScript {
+class CV_FisticuffsClubScript { public:                 // Ego_r.pdb / FableWin.pdb NScript::CV_FisticuffsClubScript
+    struct CRingFighter;                                // nested entity script
     unsigned char _pad[0x54];
     bool TylerInFight;                                  // +0x54
     bool HeroBeatTyler;                                 // +0x55
@@ -104,23 +109,32 @@ struct CV_FisticuffsClubScript {
     float BooNumber;                                    // +0xb0
     CCharString GetCutsceneName(CCharString name);      // 0x00E8A1D0
 };
+}
+using NScript::CV_FisticuffsClubScript;
+class CScriptBase; class CPersistContext;
 class CEntityScriptBase {
 public:
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
-private: public:
-    virtual void Main() = 0;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
 };
-struct CRingFighter : CEntityScriptBase {
+struct CV_FisticuffsClubScript::CRingFighter : CEntityScriptBase {
     CV_FisticuffsClubScript* ParentClass;               // +0x14
     void*                    PMasterData;               // +0x18
     bool                     FirstRingFighterFought;    // +0x1c
-    virtual void Main();
+private:
+    virtual void Main();                                // private virtual (Ego_r / FableWin EAEXXZ)
 };
 
-void CRingFighter::Main()
+void CV_FisticuffsClubScript::CRingFighter::Main()
 {
     {
         CIsFlagFalse notAttacking(&ParentClass->EverybodyAttack);

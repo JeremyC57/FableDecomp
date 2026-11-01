@@ -239967,16 +239967,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef29e0'
-        Module = 'CGoalChest'
-        Source = '00/ef/CGoalChest_Main_00ef29e0.cpp'
-        TestSource = '00/ef/CGoalChest_Main_00ef29e0_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CGoalChest'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_Main_00ef29e0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCGoalChest_Main_00ef29e0_test.cpp'
         PassPattern = '00ef29e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ef3000'
-        Module = 'CVtable_012f6350'
-        Source = '00/ef/CDoor_Main_00ef3000.cpp'
-        TestSource = '00/ef/CDoor_Main_00ef3000_test.cpp'
+        Module = 'NScript::CPersonalScript_EmptyScript::CDoor'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCDoor_Main_00ef3000.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCDoor_Main_00ef3000_test.cpp'
         PassPattern = '00ef3000_TEST PASS'
     }
     [pscustomobject]@{
@@ -267642,9 +267642,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d3a1a0'
-        Module = 'CDF_Fireheart'
-        Source = '00/d3/CDFFireheart_Main_00d3a1a0.cpp'
-        TestSource = '00/d3/CDFFireheart_Main_00d3a1a0_test.cpp'
+        Module = 'NScript::CQ_FireHeartScript::CDF_Fireheart'
+        Source = '00/d3/NScriptCQFireHeartScriptCDFFireheart_Main_00d3a1a0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCDFFireheart_Main_00d3a1a0_test.cpp'
         PassPattern = '00d3a1a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -270500,9 +270500,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee76f0'
-        Module = 'CTrophyDealerInCave'
-        Source = '00/ee/CTrophyDealerInCave_Main_00ee76f0.cpp'
-        TestSource = '00/ee/CTrophyDealerInCave_Main_00ee76f0_test.cpp'
+        Module = 'NScript::CV_TrophyDealerScript::CTrophyDealerInCave'
+        Source = '00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Main_00ee76f0.cpp'
+        TestSource = '00/ee/NScriptCVTrophyDealerScriptCTrophyDealerInCave_Main_00ee76f0_test.cpp'
         PassPattern = '00ee76f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -272368,9 +272368,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e0e2e0'
-        Module = 'CUndeadRisingZombieAttackerBoss'
-        Source = '00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp'
-        TestSource = '00/e0/CUndeadRisingZombieAttackerBoss_Main_00e0e2e0_test.cpp'
+        Module = 'NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss'
+        Source = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_Main_00e0e2e0.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScriptCUndeadRisingZombieAttackerBoss_Main_00e0e2e0_test.cpp'
         PassPattern = '00e0e2e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275420,9 +275420,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e8b020'
-        Module = 'CRingFighter'
-        Source = '00/e8/CRingFighter_Main_00e8b020.cpp'
-        TestSource = '00/e8/CRingFighter_Main_00e8b020_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript::CRingFighter'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020_test.cpp'
         PassPattern = '00e8b020_TEST PASS'
     }
     [pscustomobject]@{

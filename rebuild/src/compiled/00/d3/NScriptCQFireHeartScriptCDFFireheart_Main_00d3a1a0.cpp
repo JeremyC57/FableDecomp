@@ -2,7 +2,10 @@
 //   (parent flag +0x1a0 clear) create OBJECT_DEMON_DOOR_01 as "DD_Fireheart" where the unused placeholder stands,
 //   make the door and the speaker immune and persistent, drop the placeholder and set the flag; then mark the door on
 //   the minimap, wait until the hero uses the door speaker, play CS_FIREHEART_DEMONDOOR and remove the speaker
-// Leaf: Main
+// Leaf: ?Main@CDF_Fireheart@CQ_FireHeartScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CDF_Fireheart@CQ_FireHeartScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: ?Main@CDF_Fireheart@@QAEXXZ over a global CQ_FireHeartScript (PlayCutscene outside NScript).
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
@@ -132,24 +135,36 @@ struct CGameScriptInterface_Calls {               // slots: ghidra_out/cgsi_slot
     virtual void v510(); virtual void v511(); virtual void v512(); virtual void v513(); virtual void v514(); virtual void v515();
     virtual void EntitySetAsDamageable(const CScriptThing& thing, bool damageable) const;   // slot 516 (+0x810)
 };
-struct CQ_FireHeartScript {
+namespace NScript {
+class CQ_FireHeartScript { public:                      // Ego_r.pdb / FableWin.pdb NScript::CQ_FireHeartScript
     unsigned char _pad000[0x1a0];
     bool          DemonDoorCreated;                    // +0x1a0
     void PlayCutscene(CCharString name);               // 0x00D39330
+    struct CDF_Fireheart;                              // nested entity script
 };
-class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
+}
+using NScript::CQ_FireHeartScript;
+class CScriptBase; class CPersistContext;
+class CEntityScriptBase { public:   // global PDB class (Game / Me are declared on the entity in this row's model)
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
     void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
-struct CDF_Fireheart : public CEntityScriptBase {
-    void*                       __vftable;             // +0x00
+struct CQ_FireHeartScript::CDF_Fireheart : public CEntityScriptBase {
     CGameScriptInterface_Calls* Game;                  // +0x04
     CScriptThing                Me;                    // +0x08
     CQ_FireHeartScript*         ParentClass;           // +0x14
-    void Main();
+private:
+    virtual void Main();                               // private virtual (Ego_r / FableWin EAEXXZ)
 };
 
-void CDF_Fireheart::Main()
+void CQ_FireHeartScript::CDF_Fireheart::Main()
 {
     SetPredicate(NScript::CIsThingAlive(Me));
     Game->NewScriptFrame();
