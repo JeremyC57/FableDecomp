@@ -3,6 +3,7 @@
 // inventory with the stats-screen animation box and register the screen with the UI manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F05E5, 410 bytes, plain `ret` (frame pointer, `leave`).
 // Leaf: OpenInventory@CTCInventoryAbilities
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Callees: AddAbilityToCorrectList @ 0x005EEFB7, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
 // @ 0x009AD410, GetNumberOfItemsOfTypeInInventory @ 0x005BDF08, CThing::GetPos @ 0x004C73D0, the thing factory
 // @ 0x00835A20 (__fastcall (def index, position, bool)), bitset::test 0x00410DE0 / LowerBound 0x0040F020 (interface 0x1A),
@@ -17,7 +18,12 @@
 #pragma optimize("s", on)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };             // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -33,7 +39,7 @@ class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     const C3DVector& GetPos() const;                   // 0x004C73D0

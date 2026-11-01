@@ -1,3 +1,4 @@
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 #pragma optimize("s", on)
 // CTCVillage::IsVillagerPerformingVillageTask(const CThingAICreature*) -- true when the villager carries the task-performing type bit (0xB4) or any carry-crate task reports it as its performer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659104, length 71 bytes (PDB `?IsVillagerPerformingVillageTask@CTCVillage@@QAE_NPBVCThingAICreature@@@Z`).
@@ -10,13 +11,16 @@
 // Layout: CTCVillage.h is the PDB layout (CrateTasks +0xD0); with 4-byte retail lists it sits at +0x60, so a local model.
 class CThingAICreature;
 
-struct CBitset {
-    bool test(unsigned long position) const;   // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 class CThingAICreature { public:
     unsigned char _pad[0x20];
-    CBitset       TypeBits;                 // +0x20
+    std::bitset<274>       TypeBits;                 // +0x20
 };
 
 class CVillageTaskCarryCrate { public:

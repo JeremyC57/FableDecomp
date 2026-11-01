@@ -1,5 +1,6 @@
 // CTCVillage::SetVillageLimbo(bool limbo) -- records the village limbo state; entering limbo also puts every living villager that is not a scripted quest thing into limbo (kept on level unload) and hands every living building's door locking to the limbo flag, then refreshes the mirrored crime data
 // Leaf: SetVillageLimbo
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C36E, 236 bytes (`ret 4`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (`or byte ptr [eax+92h],40h`). Ego_r.pdb
 // `?SetVillageLimbo@CTCVillage@@QAEX_N@Z`.
@@ -21,12 +22,15 @@
 #pragma optimize("s", on)
 class CBaseObject;
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CThing { public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad21[0x71];
     unsigned char DeletedOnOwnerLevelOutOfScope : 1;   // +0x92 bit 0
     unsigned char Drawable : 1;

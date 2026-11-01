@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawPerceivers::Update() -- rebuild the perceiver summary: for each perceiving thing still alive, its perception component raises State to 2 (hostile perception) or 1 (aware) and counts it; each counted thing makes the allegiance 2 (an enemy of the hero) or else 1 (an ally); dead things are erased from the list
 // Leaf: Update
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064A1AE, length 301 bytes (frame pointer).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0 (the
 // hero) and @ 0x00436380 (each thing) -- `__fastcall`, by reference, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, std::bitset::test
@@ -14,9 +15,12 @@
 // re-read for the relation tests); the count before the interface test is kept in a local; the component lookup is one ternary.
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -44,7 +48,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad0[0x20];
-    mutable CPresenceBits m_present;               // +0x20
+    mutable std::bitset<274> m_present;               // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }

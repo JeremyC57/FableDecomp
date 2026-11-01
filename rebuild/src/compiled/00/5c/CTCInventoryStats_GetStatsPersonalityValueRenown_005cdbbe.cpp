@@ -1,6 +1,7 @@
 // CTCInventoryStats::GetStatsPersonalityValueRenown() -- the hero's renown as a fraction: the owner thing's CTCHeroStats RenownLevel over RenownMaxLevel, 0 when the thing has no hero stats or the maximum is 0
 // Grade: RELOCATION_MATCH (near-miss retry agent901) -- a same-TU read-only noinline LowerBound body (0x0040F020, the escaping callee) frees the key word for the fidiv divisor spill
 // Leaf: ?GetStatsPersonalityValueRenown@CTCInventoryStats@@QAEMXZ
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x005CDBBE, 94 bytes, __fastcall `ret`, float in st0. Ego_r.pdb
 // `?GetStatsPersonalityValueRenown@CTCInventoryStats@@QAEMXZ`. Caller: CTCVillage::OnCreate 0x00659221 (on the player
 // character's interface 0x14, scaled by the village def's renown factor).
@@ -29,7 +30,12 @@ struct CInterfaceMap {                                  // CVectorMap<ETCInterfa
     Entry* first; Entry* last;
     Entry* LowerBound(const long*);                     // 0x0040F020
 };
-struct CPresenceBits { bool test(long kind); };         // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 // LowerBound @ 0x0040F020: a same-TU read-only stand-in (GOTCHAS 665, the escaping callee) -- with its body visible the
 // key word is dead after the call and VC7.1 reuses it for the fidiv divisor spill as retail.
 #pragma auto_inline(off)
@@ -51,7 +57,7 @@ __declspec(noinline) CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long*
 }
 #pragma auto_inline(on)
 class CThing { public:
-    unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
+    unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> __forceinline bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             long key = kind; CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(&key);

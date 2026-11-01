@@ -1,5 +1,6 @@
 // CTCInventoryBase::GetResurrectionItemInInventory() -- walk every inventory item; for each whose def has a resurrection sub-def, create its object and return it when it carries interface 0xE1, otherwise poke its interface-0x1A component and go on; null when none
 // Leaf: GetResurrectionItemInInventory
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BF77D, 334 bytes, plain `ret`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: CTCInventoryBase::GetAllItems(vector<NInventory::CItem>&) @ 0x005BF482 (landed), CTCBase::GetDefinitions
@@ -18,7 +19,12 @@
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };            // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -33,7 +39,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) { return present.test(type); }

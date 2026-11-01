@@ -1,5 +1,6 @@
 // CTCInventoryClothing::ResetMannequin() -- when there is a mannequin, dress it like the hero: copy the hero's worn clothing appearance modifiers (type 2) onto the mannequin's, replacing whatever it wore
 // Leaf: ?ResetMannequin@CTCInventoryClothing@@
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x005B425B, 209 bytes, __fastcall `ret`. Ego_r.pdb `?ResetMannequin@CTCInventoryClothing@@QAEXXZ`
 // (name inferred: the only argument-less CTCInventoryClothing member that fits -- it reads PMannequin and rebuilds its
 // clothing from the hero's; the landed InitialiseMannequin 0x005B37F7 creates PMannequin at the same +0x158).
@@ -30,7 +31,12 @@ class CTCHeroAttachableAppearanceModifiers { public:           // interface 0x5E
     void RemoveAllAppearanceModifiers(long type);       // 0x00706640
     void AddAppearanceModifierWithReplace(long def);    // 0x00706950
 };
-struct CPresenceBits { bool test(long bit); };          // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -45,7 +51,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char  _pad00[0x20];
-    CPresenceBits  m_present;                           // +0x20
+    std::bitset<274>  m_present;                           // +0x20
     unsigned char  _pad21[0x23];
     CInterfaceMap  m_interfaces;                        // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)

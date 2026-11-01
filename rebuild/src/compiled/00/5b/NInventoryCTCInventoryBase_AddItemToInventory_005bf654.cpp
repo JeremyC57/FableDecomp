@@ -1,4 +1,5 @@
 // NInventory::CTCInventoryBase::AddItemToInventory(CThing* item, bool silent, bool fromShop, long price, bool noTutorials) -- a hero-title item sets the owner's title instead; otherwise the item goes into the category matching its identifier and OnItemAdded is raised; true when added
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail 0x005BF654, 297 bytes, `ret 14h`. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const CHeroTitleDef>*) const 0x005B1E5A (on the item's def),
 // std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (inline GetInterface: the owner's hero component 0x29)
@@ -16,9 +17,12 @@ void ReleaseDef_s7(void* def);   // stand-in: the def's release (count decrement
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CPresenceBits {
-    bool test(long bit) const;                       // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -117,7 +121,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CHeroTitleDef>* o
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad_0x4c[0x70 - 0x4c];

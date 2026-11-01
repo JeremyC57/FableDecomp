@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawAbilityButtons::DrawAbilityList(CEnginePrimitivePrepareInfo*, float) -- draw the hero's ability grid: for a live hero with the abilities component (0x6f), scale by 0.75, fetch the ability def list, and starting at the row after the scroll row draw every row that holds at least one ability (each column at its slot offset), then wrap round to the rows before the scroll row, numbering the drawn rows consecutively from 0
 // Leaf: DrawAbilityList
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064DB2B, length 546 bytes (frame pointer /Os TU, `ret 8`).
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::PeekPControlledCreature 0x00487DD0, IS_THING_ALIVE 0x0043DBF0
 //   (__fastcall, by reference; same-TU stand-in body), virtual slot 5 (slot-offset fill), std::bitset::test 0x00410DE0, LowerBound
@@ -13,9 +14,12 @@
 #pragma optimize("s", on)
 #include <stdlib.h>
 class CTCBase;
-struct CPresenceBits {
-    bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -41,7 +45,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 #pragma auto_inline(on)
 class CThing { public:
     unsigned char _pad0[0x20];
-    mutable CPresenceBits m_present;               // +0x20
+    mutable std::bitset<274> m_present;               // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     template <class T> __forceinline bool GetInterface(T** ppOut, long type) const

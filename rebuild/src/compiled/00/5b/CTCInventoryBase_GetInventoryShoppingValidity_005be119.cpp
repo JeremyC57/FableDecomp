@@ -1,5 +1,6 @@
 // CTCInventoryBase::GetInventoryShoppingValidity() -- the shop is valid while the shopkeeper lives; when it does, its shop's keeper creature (if alive) finishes any action it may, and with the hero alive the keeper is turned to face the hero
 // Leaf: GetInventoryShoppingValidity
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BE119, 363 bytes, plain `ret`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`leave`, `push 53h ; pop edi`).
 // Callees: IS_THING_ALIVE<CThing*> @ 0x0040DCE0 (twice), IS_THING_ALIVE @ 0x005C05C0 (the keeper creature) and
@@ -23,7 +24,12 @@
 #pragma intrinsic(atan2, fmod)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };            // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -35,7 +41,7 @@ class C2DVector { public: float X, Y; C2DVector(float x, float y) : X(x), Y(y) {
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     const C3DVector& GetPos() const;                   // 0x004C73D0

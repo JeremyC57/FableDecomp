@@ -1,6 +1,7 @@
 #pragma optimize("s", on)
 // CTCVillage::SetEnemyToHeroStatus() -- through the village thing's enemy component (interface 73): add the hero as an enemy while the village stance is hostile (1) and the hero is alive, else remove the hero from its enemies
 // Leaf: SetEnemyToHeroStatus
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x0065A852, 156 bytes; size TU (unaligned entry): `optimize("s",on)`.
 // Callees: std::bitset<>::test(size_t) const 0x00410DE0 (interface 73); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
 //          0x0040F020 (inlined GetInterface); CTCBase::GetPlayerManager() 0x00686D40 (x2); CPlayerManager::GetMainPlayer()
@@ -14,9 +15,12 @@
 class CTCBase;
 class CThing;
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -31,7 +35,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)

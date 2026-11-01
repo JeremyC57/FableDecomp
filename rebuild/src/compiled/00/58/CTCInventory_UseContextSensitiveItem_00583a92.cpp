@@ -1,5 +1,6 @@
 // CTCInventory::UseContextSensitiveItem(long quickSlot) -- for a positive quick-access def: if its context-sensitive sub-def is a type-6 item with a slot in [0, 6), remember the slot's previous item and put this one in it; then use the item held in the primary slot when it is alive and of that def, otherwise use the def itself
 // Leaf: UseContextSensitiveItem
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00583A92, 323 bytes, `ret 4`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`leave`, `push 46h ; pop ebx`).
 // Callees: std::bitset<>::test @ 0x00410DE0 and CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0
@@ -14,7 +15,12 @@
 #pragma optimize("s", on)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind) const; };      // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -24,7 +30,7 @@ struct CInterfaceMap {                                      // CVectorMap<ETCInt
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad4c[0x8c - 0x4c];

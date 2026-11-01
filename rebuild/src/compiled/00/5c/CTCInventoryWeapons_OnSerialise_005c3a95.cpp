@@ -1,5 +1,6 @@
 // CTCInventoryWeapons::OnSerialise(CPersistContext& context, long version) -- persists the active weapons: on save, refreshes the active def indices, records whether each active weapon is carried in the primary slot and writes the confiscated / previously wielded weapon def names; on load, reads the carried flags and maps the def names back to global indices; both ways transfer the active def indices
 // Leaf: OnSerialise@CTCInventoryWeapons
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C3A95, 1020 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CTCInventoryBase::OnSerialise 0x005BFD5E, CPersistContext saving test 0x004AEF50
 //   (labelled IsBinary) / Transfer<bool>(name, value, default) 0x004045C0 / Transfer(name, bool*) 0x004107C0 / Transfer<CCharString>
@@ -70,10 +71,15 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CPresenceBits { bool test(long kind) const; };   // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CThingBase {
     unsigned char  _pad00[0x20];
-    CPresenceBits  m_present;                           // +0x20
+    std::bitset<274>  m_present;                           // +0x20
     unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                        // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long kind) const

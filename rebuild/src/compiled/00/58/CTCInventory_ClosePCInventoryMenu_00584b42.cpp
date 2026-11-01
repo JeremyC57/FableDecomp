@@ -1,4 +1,5 @@
 // CTCInventory::ClosePCInventoryMenu() -- asks the owner's in-game-menu component (interface type 0x12) to close its PC inventory menu
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup as `if (thing->HasTC(t)) thing->GetTC<T>(t)->Close()` on a named thing local with the ternary entry pick: the component loads straight into ecx for the virtual call
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -17,9 +18,12 @@
 // null test. A size TU only inlines the lookup when it is `__forceinline`.
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -35,7 +39,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     bool HasTC(long wanted) { return m_present.test(wanted); }

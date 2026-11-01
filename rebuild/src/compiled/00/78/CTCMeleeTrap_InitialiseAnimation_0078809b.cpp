@@ -1,5 +1,6 @@
 // CTCMeleeTrap::InitialiseAnimation(const CCharString& name, bool loop) -- reset the thing's animator and start the appearance's first animation of the given name (type 6, update mode 1, looping as asked, priority 100), then pick up its strike events
 // Leaf: ?InitialiseAnimation@CTCMeleeTrap@@AAEXABVCCharString@@_N@Z
+// Naming wave 18: the interface-presence stand-in CComponentBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078809B, 253 bytes, `ret 8`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 5Ah ; pop edi`, `leave`), as the landed trap siblings (0x00788555).
 // Callees: std::bitset::test 0x00410DE0 (out of line), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020
@@ -124,14 +125,16 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);                      // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CComponentBitset {                                      // std::bitset<274>
-    unsigned long m_words[9];
-    bool test(long bit);                                       // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    unsigned long _M_w[(_Nb + 31) / 32];
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CThing {
 public:
     unsigned char    _pad00[0x20];
-    CComponentBitset UsingComponents;                          // +0x20
+    std::bitset<274> UsingComponents;                          // +0x20
     CInterfaceMap    m_interfaces;                             // +0x44
     unsigned char    _pad4c[0x70 - 0x4c];
     CThingBaseDef*   PBaseDef;                                 // +0x70

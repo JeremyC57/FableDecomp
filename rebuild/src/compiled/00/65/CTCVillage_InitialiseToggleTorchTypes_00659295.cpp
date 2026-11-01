@@ -1,3 +1,4 @@
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // CTCVillage::InitialiseToggleTorchTypes(CThingObject&) -- if the object has a light component (type 0x27), toggles that light's active state
@@ -20,9 +21,12 @@ class CTCLight { public:
     void ToggleActive() { SetActive(!Active); }
 };
 
-struct CBitset {
-    bool test(unsigned long position) const;   // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -38,7 +42,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingObject { public:
     unsigned char _pad0[0x20];
-    CBitset       TypeBits;                 // +0x20 std::bitset of interface types
+    std::bitset<274>       TypeBits;                 // +0x20 std::bitset of interface types
     unsigned char _pad24[0x20];
     CInterfaceMap Interfaces;               // +0x44
     template<class T> __forceinline T* PeekTC(long interfaceType)

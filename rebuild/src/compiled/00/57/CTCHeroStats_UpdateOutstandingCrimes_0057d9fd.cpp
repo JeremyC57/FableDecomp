@@ -1,5 +1,6 @@
 // CTCHeroStats::UpdateOutstandingCrimes(const CCharString& region) -- forget every outstanding crime in the region whose deed knowledge has expired since the hero was last seen by a guard
 // Leaf: UpdateOutstandingCrimes
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 //
 // Retail 0x0057D9FD, 248 bytes (`ret 4`; frame pointer, `leave`). Ego_r.pdb
 // `?UpdateOutstandingCrimes@CTCHeroStats@@QAEXABVCCharString@@@Z`. Size TU with a frame pointer: `#pragma optimize("y", off)`
@@ -26,7 +27,12 @@ class CCharString { public:
     CCharStringData* PStringData;
 };
 
-struct CPresenceBits { bool test(long kind); };             // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -41,7 +47,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     __forceinline bool HasTC(long type) { return present.test(type); }

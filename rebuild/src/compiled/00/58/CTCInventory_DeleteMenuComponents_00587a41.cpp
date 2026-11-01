@@ -1,5 +1,6 @@
 // CTCInventory::DeleteMenuComponents() -- tear down the open inventory screen: base clean-up, clear the edit boxes, close the screen-specific menu, then (if a screen was open) delete every menu component except the two persistent ones, keep only those two, reset the UI manager and the global list registry, and mark no screen open
 // Leaf: DeleteMenuComponents
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Shape: case 3 fetches components 0x13 and 0x12 and discards them (`HasTC(t) ? FindTCInline(t) : 0` into unused locals):
 //   only the two bitset::test calls survive, but through the thing pointer held in eax as retail (a bare discarded HasTC
 //   loads ecx and adds 20h); the CVectorMap LowerBound instantiation is defined in this TU (noinline).
@@ -17,7 +18,12 @@
 #pragma optimize("s", on)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };            // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -46,7 +52,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     bool HasTC(long type) { return present.test(type); }

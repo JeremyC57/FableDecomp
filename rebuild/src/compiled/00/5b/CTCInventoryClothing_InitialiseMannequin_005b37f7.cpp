@@ -1,4 +1,5 @@
 // CTCInventoryClothing::InitialiseMannequin() -- create the inventory mannequin from the inventory def at the owner, copy the owner's appearance components onto it and start its DEFAULT animation
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public:
@@ -106,7 +107,12 @@ class CTCBase;
 class CTCHeroAttachableAppearanceModifiers { public:                  // interface 0x5E
     void EditFrameUpdate();                                    // 0x00707930
 };
-struct CPresenceBits { bool test(long bit); };                 // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -121,7 +127,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class C3DVector { public: float X, Y, Z; };
 class CThing { public:
     unsigned char  _pad00[0x20];
-    CPresenceBits  m_present;                                  // +0x20
+    std::bitset<274>  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
     CInterfaceMap  m_interfaces;                               // +0x44
     unsigned char  _pad4c[0x64 - 0x4c];

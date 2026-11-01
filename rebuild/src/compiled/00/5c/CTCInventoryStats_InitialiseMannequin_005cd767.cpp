@@ -1,5 +1,6 @@
 // CTCInventoryStats::InitialiseMannequin() -- creates the stats-screen mannequin from the hero def's mannequin def at the hero's position, copies the hero's appearance components onto it, adds an animation component and starts its DEFAULT animation, then gives it an editable frame update
 // Leaf: InitialiseMannequin@CTCInventoryStats
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD767, 745 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CThing::GetPos 0x004C73D0, the thing-create helper 0x00835A20 (`__fastcall` def index / position, stack bool),
 //   CThing::AddAndCopyTC 0x004C9F60, CThing::AddTC(const CCharString&, bool, bool) 0x004C9D60, bitset test 0x00410DE0,
@@ -114,10 +115,15 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CPresenceBits { bool test(long kind) const; };   // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 class CThing { public:
     unsigned char  _pad00[0x20];
-    CPresenceBits  m_present;                           // +0x20
+    std::bitset<274>  m_present;                           // +0x20
     unsigned char  _pad21[0x44 - 0x21];
     CInterfaceMap  m_interfaces;                        // +0x44
     unsigned char  _pad4c[0x64 - 0x4c];

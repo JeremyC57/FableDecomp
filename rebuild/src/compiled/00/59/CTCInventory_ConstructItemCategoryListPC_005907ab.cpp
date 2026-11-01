@@ -1,5 +1,6 @@
 // CTCInventory::ConstructItemCategoryListPC(CWideString& title, NUISystem::CList* list, std::vector<std::pair<long,long> >& items, NUISystem::CComponent* owner, const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable) -- PC inventory category: a branch entry captioned "title x <total count>" with a subtitle, the category description (shown in the owner's viewport) and an optional template component, all registered with the owner's frame; an empty category clears the entry, otherwise the items are merged per def into a map, a sub-list titled "<title>: <name>" gets the merged count, and an items-actions list (the "can't use" variant, with its not-usable entry cleared and the icon action reset, when the hero's carried thing is not alive) gets the same title before ContructItemListsPC fills them
 // Leaf: ConstructItemCategoryListPC@CTCInventory
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005907AB, 1415 bytes, `ret 1Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 //   FableWin.pdb ?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@...@ABVCCharString@@4_N@Z
 //   (the catalog label "CTCInventoryAbilities::ConstructPCExpressionCategoryList" is propagated).
@@ -173,7 +174,12 @@ template <class T> struct vector {
 };
 }
 typedef std::vector<std::pair<long, long> > CItemVector;
-struct CPresenceBits { bool test(long kind) const; };  // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 struct CInterfaceMap {
     struct SEntry { long type; void* component; };
     SEntry* first;
@@ -193,7 +199,7 @@ struct CTCCarryingSlot {                                // the parent thing's in
 };
 class CThing { public:
     unsigned char _pad00[0x20];
-    CPresenceBits m_present;                            // +0x20
+    std::bitset<274> m_present;                            // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                         // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long kind) const

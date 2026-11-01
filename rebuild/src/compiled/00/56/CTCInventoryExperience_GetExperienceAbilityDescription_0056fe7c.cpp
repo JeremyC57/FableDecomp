@@ -1,4 +1,5 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test exercises a hand-written stand-in, not the candidate)
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // CTCInventoryExperience::GetExperienceAbilityDescription(long ability, long level) -- resolve the ability's description text
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056FE7C, 193 bytes.
 // Callees: bitset<>::test 0x00410DE0 and CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (the inlined
@@ -40,9 +41,14 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     Entry* LowerBound(const ETCInterfaceType& key);                     // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CPresenceBits { bool test(long kind); };         // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 class CThing { public:
-    unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
+    unsigned char _pad00[0x20]; std::bitset<274> present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> __forceinline bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
             ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);

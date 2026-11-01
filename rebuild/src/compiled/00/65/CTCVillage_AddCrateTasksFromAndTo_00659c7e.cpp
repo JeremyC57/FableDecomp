@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // CTCVillage::AddCrateTasksFromAndTo(const vector<long>&, const vector<long>&) -- rebuild the crate tasks: for every crate stack whose def type is a destination, queue a put-down task per missing crate (up to 2); then for every stack whose type is a source, queue a pick-up task per crate it holds
 // Leaf: ?AddCrateTasksFromAndTo@CTCVillage
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00659C7E, 555 bytes, `ret 8`, ebp frame (size TU, `optimize("s",on)`).
 // Callees: the crate-task list clear 0x0065FF2D; CBaseIntelligentPointer::GetPItem 0x00A01B50; std::bitset::test
 //   0x00410DE0; CVectorMap LowerBound 0x004365B0 (interface 0xB5, CTCCrateStack); CDefClassBase::GetSubDef 0x0065F7B4;
@@ -11,9 +12,12 @@
 //   the crate-stack list +0x70; CThing interface bitset +0x20, map +0x44, PDef +0x70; crate-stack def type +0x28,
 //   crate type +0x2c (descriptive).
 class CTCBase;
-struct CPresenceBits {
-    bool test(long bit);                        // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -54,7 +58,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef<CCrateStackDef>(CDefPointer<c
 }
 class CThing { public:
     unsigned char _pad00[0x20];
-    CPresenceBits m_present;                    // +0x20
+    std::bitset<274> m_present;                    // +0x20
     unsigned char _pad24[0x44 - 0x24];
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x70 - 0x4c];

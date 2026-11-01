@@ -1,5 +1,6 @@
 // CTCInventory::RemoveItemFromInventory(long defIndex, long count) -- remove through the base, then clear every quick-access and context-sensitive entry of that def that is no longer held (repeating the quick-access pass while it clears), and switch the owner's light off when the def has a light sub-def
 // Leaf: RemoveItemFromInventory
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00583CD4, 338 bytes, `ret 8`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (no frame words: the flag and both def pointers live in the argument slots).
 // Callees: CTCInventoryBase::RemoveItemFromInventory(long, long) @ 0x005BF3C6 (landed),
@@ -15,7 +16,12 @@
 #pragma optimize("s", on)
 
 class CTCBase;
-struct CPresenceBits { bool test(long kind); };            // bitset<>::test 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+};
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -30,7 +36,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 class CThing {
 public:
     unsigned char _pad00[0x20];
-    CPresenceBits present;                                  // +0x20 std::bitset of interface types
+    std::bitset<274> present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)

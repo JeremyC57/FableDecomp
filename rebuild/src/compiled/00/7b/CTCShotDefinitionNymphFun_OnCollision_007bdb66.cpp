@@ -1,4 +1,5 @@
 // CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other) -- on the first hit by a live shooter with the trap-spawner component (TC 0xF5), spawn its trap object at the hit point (on a live terrain-snapping thing: at that thing, raised one unit and dropped onto the ground below), make the shooter and its summons immune to the trap, trigger it, and mark the shot spent; then the base collision
+// Naming wave 18: the interface-presence stand-in CTCBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x007BDB66, 406 bytes (frame-pointer, `leave ; ret 0x10`; unaligned entry = /Os TU).
 // Shape: /Os frame-pointer TU (`optimize("y",off)` + `("s",on)`); C3DVector has a user copy ctor and the implicit operator= (the pos copy goes through registers, the GetPos assignment through movsd); the empty name and the shooter's team are named locals in their own block so the team is read before the Create pushes; the trap component is left uninitialised when TC 0x7D is absent.
 // Callees: GetPItem 0x00A01B50, IS_THING_ALIVE 0x0040DCE0 (__fastcall), std::bitset::test 0x00410DE0, LowerBound 0x0040F020, CThing::GetPos 0x004C73D0,
@@ -28,15 +29,17 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CTCBitset {
-    unsigned long Words[9];
-    bool test(unsigned long bit) const;                 // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    unsigned long _M_w[(_Nb + 31) / 32];
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 class CThing {
 public:
     virtual void v00();
     unsigned char _pad04[0x1c];
-    CTCBitset TCBits;                                   // +0x20
+    std::bitset<274> TCBits;                                   // +0x20
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x6c - 0x4c];
     unsigned char Flags6c;                              // +0x6c (bit 3: snaps to terrain)

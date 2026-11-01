@@ -1,10 +1,12 @@
+// Naming wave 18: the interface-presence stand-in InterfaceBits is std::bitset<274> (STLport 4.6); its Test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 #pragma optimize("s",on)
 
-struct InterfaceBits
-{
-    unsigned long words[9];
-    unsigned long Test(unsigned long bit);
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    unsigned long _M_w[(_Nb + 31) / 32];
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -17,7 +19,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct InterfaceContainer
 {
     unsigned char unused00[0x20];
-    InterfaceBits bits;
+    std::bitset<274> bits;
     InterfaceMap map;
 
     bool CTC_FindInterface_0x11(int* output);
@@ -25,7 +27,7 @@ struct InterfaceContainer
 
 bool InterfaceContainer::CTC_FindInterface_0x11(int* output)
 {
-    unsigned long tested = bits.Test(0x11);
+    unsigned long tested = bits.test(0x11);
     bool result;
     if ((unsigned char)tested != 0) {
         ETCInterfaceType key = (ETCInterfaceType)(0x11);

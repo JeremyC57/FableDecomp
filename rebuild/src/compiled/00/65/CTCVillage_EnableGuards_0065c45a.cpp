@@ -1,5 +1,6 @@
 // CTCVillage::EnableGuards(bool enable) -- enable or disable every live guard dummy (disabling kills its live guard, enabling re-creates a missing one at the village owner), then clear the village's crimes and have every live villager decriminalise all known crimes
 // Leaf: EnableGuards
+// Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C45A, length 351 bytes (`leave`, `ret 4`): frame-pointer size TU
 //   (PDB `?EnableGuards@CTCVillage@@QAEX_N@Z`), as the landed CTCVillage siblings.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; IS_THING_ALIVE(CBaseObject* const&) 0x0040DCE0, the villager's
@@ -19,9 +20,12 @@
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 
-struct CBitset {
-    bool test(unsigned long position) const;    // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -47,7 +51,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 #pragma auto_inline(on)
 class CBaseObject { public:
     unsigned char _pad00[0x20];
-    CBitset       m_present;                    // +0x20
+    std::bitset<274>       m_present;                    // +0x20
     unsigned char _pad24[0x20];
     CInterfaceMap m_interfaces;                 // +0x44
     bool HasTC(long type) const { return m_present.test(type); }

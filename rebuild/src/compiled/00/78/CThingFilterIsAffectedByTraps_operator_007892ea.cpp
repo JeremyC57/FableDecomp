@@ -1,5 +1,6 @@
 // CThingFilter_IsAffectedByTraps::operator()(CThing* thing) -- false only when the thing's interface-0x31 component reports an object of type 0x5F; true otherwise (a frame-pointer, size-optimised twin of 0x0080E480)
 // Leaf: ??RCThingFilter_IsAffectedByTraps
+// Naming wave 18: the interface-presence stand-in CInterfaceBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007892EA, length 87 bytes.
 // Callees: std::bitset<..>::test @ 0x00410DE0 (out of line in this TU), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x004365B0, the component's object accessor @ 0x0073A6E0 (propagated label "CPixelShader::CountReferences"),
@@ -23,14 +24,16 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CInterfaceBitset {                           // std::bitset<288>
-    unsigned long m_words[9];
-    bool test(unsigned long pos) const;             // 0x00410DE0
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    unsigned long _M_w[(_Nb + 31) / 32];
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 class CThing { public:
     unsigned char _pad0[0x20];
-    CInterfaceBitset m_presentBits;                 // +0x20
+    std::bitset<274> m_presentBits;                 // +0x20
     CInterfaceMap m_interfaces;                     // +0x44
     template <class T> __forceinline bool GetInterface(long type, T** out)
     {

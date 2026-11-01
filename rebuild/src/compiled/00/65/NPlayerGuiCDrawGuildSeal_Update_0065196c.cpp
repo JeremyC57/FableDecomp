@@ -2,6 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawGuildSeal::Update() -- track the hero's ready-to-level-up state (an adult hero with an experience component; a rising edge queues the guild-seal message) and, once the current message has run out, show the next queued message unless the GUI or the display blocks it
 // Leaf: Update
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065196C, length 274 bytes (frame pointer, `push ecx` frame).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
 // (`__fastcall`, the instantiation next to the CThing* one), CThingCreatureBase::IsChild @ 0x00661F70, std::bitset::test @ 0x00410DE0,
@@ -19,9 +20,12 @@
 // (`end-or-miss ? last : it`), which loads the component straight into ecx for the call (the if/assign form goes through eax).
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit) const;                           // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -35,7 +39,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
-    CPresenceBits m_present;                       // +0x20
+    std::bitset<274> m_present;                       // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
     bool HasInterface(long type) const { return m_present.test(type); }

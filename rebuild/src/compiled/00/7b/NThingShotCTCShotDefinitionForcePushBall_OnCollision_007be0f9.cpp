@@ -1,5 +1,7 @@
 // NThingShot::CTCShotDefinitionForcePushBall::OnCollision(ECollideType, const C3DVector&, const C3DVector&, CThing*) -- with a live shooter: spawn the impact effect, force-push a game-object thing away from the shooter (adding the pushed TC and a hit-by-ability event if needed), mark it attacked, post the attack message, make a perceiving thing indirectly aware, then fade the shield effect and kill the ball; with no shooter fall back to the base collision
 // Leaf: OnCollision
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Grade: RELOCATION_MATCH -- the inlined fast Normalise as `*this *= FastInvSqrt(X*X + Y*Y + Z*Z)` with an inline `operator*=(const float&)` (the landed 0x007AF0F0 / 0x008C0FB0 C3DVector model) gives retail's `fld st(2); fmul st(1)` component-first scaling; was one x87 instruction pair
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BE0F9, 743 bytes, `leave ; ret 10h` (optimize("y", off) + ("s", on) TU).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, the effect creator 0x006E0880 (__fastcall), CThing::GetPos
@@ -19,7 +21,7 @@
 //   other arguments, destroyed right after the call); the message manager is a named local; GetDef has a same-TU stand-in.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-extern unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -33,7 +35,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
@@ -45,9 +47,12 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CTCBase;
-struct CPresenceBits {
-    bool test(long bit);                                // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -59,7 +64,7 @@ public:
     C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
 private: public:
     unsigned char _pad00[0x20];
-    CPresenceBits m_present;                            // +0x20
+    std::bitset<274> m_present;                            // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x6c - 0x4c];
@@ -98,7 +103,9 @@ class CTCPerceiveThing { public:
     void SetAsIndirectlyAwareOfPerceivedThing();        // 0x007449E0
 };
 class CTCPhysicalShieldSpell { public: void FadeOutEffect(); };   // 0x0072AC40
-CThing* __fastcall CreateThingEffect(long def, const C3DVector* pos, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 
 struct CDefBase {
@@ -175,7 +182,7 @@ void CTCShotDefinitionForcePushBall::OnCollision(long type, const C3DVector& pos
     if (shooter) {
     if (thing) {
         if (PShotDef->ImpactEffect)
-            CreateThingEffect(PShotDef->ImpactEffect, &position, false);
+            CTCDParticleEmitter::Create(PShotDef->ImpactEffect, *(&position), false);
         if (thing->ThingTypeFlags & 8) {
             C3DVector shooterPos = ((CThing*)shooter)->GetPos();
             C3DVector away = shooterPos - ((CThing*)thing)->GetPos();

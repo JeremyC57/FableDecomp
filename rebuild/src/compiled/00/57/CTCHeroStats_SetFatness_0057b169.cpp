@@ -1,5 +1,6 @@
 // CTCHeroStats::SetFatness(float) -- clamps the fatness to [0,1], stores it and forwards it to the hero-morph component
 // Leaf: SetFatness
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057B169, 114 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
 // Callees: GFLimitReturn<float>(const float&, const float&, const float&) @ 0x0057EF86 (__fastcall, returns the
@@ -19,9 +20,12 @@ class CTCBase;
 
 template <class T> const T& __fastcall GFLimitReturn(const T& v, const T& lo, const T& hi);  // 0x0057EF86
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -37,7 +41,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
