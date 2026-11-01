@@ -40,8 +40,7 @@ class CMemoryDataInputStream { public:                    // 0x1c bytes (CDataIn
     virtual ~CMemoryDataInputStream();                     // 0x00993B10
 };
 struct SCountBlock { long m_references; void (__fastcall* m_pfnDestroy)(void*); void* m_pObject; };
-class CBankFile { public:
-    unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
+class CBankFile { public: unsigned long GetEntryDataSize(unsigned long a0) const; private:   // 0x009CC240
 public:
     unsigned long FindIndexBySymbol(const CCharString&) const;   // 0x009CCDC0
 };

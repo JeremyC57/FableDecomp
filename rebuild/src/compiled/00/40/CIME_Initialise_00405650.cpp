@@ -39,14 +39,14 @@ struct IMEUI_VERTEX;
 extern void (FABLE_FASTCALL *g_ImeDrawRect)(int,int,int,int,unsigned long); //0143CD64
 extern void* (FABLE_FASTCALL *ImeUiCallback_Malloc)(unsigned int); //0143E514 (DirectX SDK ImeUi.cpp; as 0x00CB2310 / 0x00CB2670)
 extern void (FABLE_FASTCALL *ImeUiCallback_Free)(void*); //0143CF08 (DirectX SDK ImeUi.cpp; as 0x00CB2310)
-extern void (FABLE_FASTCALL *g_ImeDrawFans)(const IMEUI_VERTEX*,unsigned int); //0143CDFC
+extern void (FABLE_FASTCALL *ImeUiCallback_DrawFans)(const IMEUI_VERTEX*,unsigned int); //0143CDFC (SDK ImeUi.cpp callback pointer, chunk 685; naming wave 19)
 extern void (FABLE_FASTCALL *g_ImeOnChar)(wchar_t); //0143E630
 void FABLE_FASTCALL Callback_DrawRect(int,int,int,int,unsigned long); //00404D50
 void* FABLE_FASTCALL Callback_malloc(unsigned int); //00404A60, genuine malloc importBFEA0E
 void FABLE_FASTCALL Callback_free(void*); //00404A70, freeBFEA14
 void FABLE_FASTCALL Callback_DrawFans(const IMEUI_VERTEX*,unsigned int); //00404E10
 void FABLE_FASTCALL Callback_OnChar(wchar_t); //00404F00
-bool FABLE_FASTCALL ImeUI_Initialize(HWND__*,bool); //00CB5180
+bool FABLE_FASTCALL ImeUi_Initialize(HWND__*,bool); //00CB5180 (FableWin.pdb ?ImeUi_Initialize@@YI_NPAUHWND__@@_N@Z; naming wave 19)
 void FABLE_FASTCALL ImeUi_EnableIme(bool); //00CB5130
 void FABLE_FASTCALL ImeUi_FinalizeString(bool); //00CB2C60
 struct IMEUI_APPEARANCE;
@@ -82,10 +82,10 @@ void CIME::Initialise(HWND__* window) {
   g_ImeDrawRect=Callback_DrawRect;
   ImeUiCallback_Malloc=Callback_malloc;
   ImeUiCallback_Free=Callback_free;
-  g_ImeDrawFans=Callback_DrawFans;
+  ImeUiCallback_DrawFans=Callback_DrawFans;
   g_ImeOnChar=Callback_OnChar;
   window_=window;
-  initialised_=ImeUI_Initialize(window_,false);
+  initialised_=ImeUi_Initialize(window_,false);
   if(initialised_) {
    reinterpret_cast<IMEUI_APPEARANCE*>(appearance_)->symbolFont=new CIMEFont;
    ImeUi_SetAppearance(reinterpret_cast<IMEUI_APPEARANCE*>(appearance_));
@@ -98,6 +98,6 @@ void CIME::Initialise(HWND__* window) {
    ImeUi_FinalizeString(false);
    ImeUi_EnableIme(false);
   }
- } else ImeUI_Initialize(window,true);
+ } else ImeUi_Initialize(window,true);
 }
 }

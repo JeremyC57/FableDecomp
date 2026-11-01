@@ -103,7 +103,7 @@ extern "C" __declspec(dllimport) long __stdcall CoInitialize(void* reserved);
 extern "C" __declspec(dllimport) long __stdcall CoCreateInstance(const GUID& clsid, IUnknown* outer, unsigned long context, const GUID& iid, void** ppv);
 extern "C" __declspec(dllimport) void __stdcall CoFreeUnusedLibraries();
 extern "C" __declspec(dllimport) void __stdcall CoUninitialize();
-long __stdcall AMovieSetupRegisterFilter(const AMOVIESETUP_FILTER* setup, IFilterMapper* mapper, int doRegister);   // 0x00CAA4A0
+extern "C" long __stdcall AMovieSetupRegisterFilter(const AMOVIESETUP_FILTER* setup, IFilterMapper* mapper, int doRegister);   // 0x00CAA4A0 (_AMovieSetupRegisterFilter@12: the DirectShow base classes\' C-linkage dllsetup.cpp entry, the landed leaf; naming wave 19)
 long __stdcall CBaseFilter::Register()
 {
     AMOVIESETUP_FILTER* psetupdata = GetSetupData();

@@ -61,6 +61,9 @@ class CBankFileAsyncData { public:};
 class CBankFileAsyncEntry { public:CountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long,unsigned long,long);}; //009D6100
 extern long gDataBankReadPriority; //01396314 used as EThreadedFilePriority
 class CResourceBank { public:void* VTable;class CResourceList ResourceList,LoadingQueue;void AddResource(CResource&);}; //009FC380
+class CBankFile { public:
+    unsigned long GetEntryDataSize(unsigned long a0) const;   // 0x009CC240 (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z)
+};
 namespace NGameText {
 class CDataBank;class CDataBankGroupEntry;
 class CGroupEntry:public CResource { public:
@@ -72,12 +75,11 @@ class CDataBankGroupEntry { public:OwnedIVPointer<CGroupEntry> PGroup;void Begin
 class CDataBank { public:
  unsigned char BankAsyncState[0x164];class CResourceBank ResourceBank;
  CountedPointer<CBankFileAsyncEntry> GetAsyncEntry(unsigned long); //009D58D0
- unsigned long GetEntryDataSize(unsigned long)const; //009CC240
 };
 void CDataBankGroupEntry::BeginLoading(unsigned long index,CDataBank* bank){
  if(!PGroup.Object){
   CountedPointer<CBankFileAsyncEntry> entry=bank->GetAsyncEntry(index);
-  CountedPointer<CBankFileAsyncData> data=entry->BeginReadDataAutoAlloc(0,bank->GetEntryDataSize(index),gDataBankReadPriority);
+  CountedPointer<CBankFileAsyncData> data=entry->BeginReadDataAutoAlloc(0,((CBankFile*)bank)->GetEntryDataSize(index),gDataBankReadPriority);
   PGroup.Adopt(new CGroupEntry(data,this));
   bank->ResourceBank.AddResource(*PGroup.Object);
   bank->ResourceBank.ResourceList.MakeFreeSpace(0);

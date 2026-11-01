@@ -76,10 +76,12 @@ class CResource { public:
 class CResourceBank { public:
     void AddResource(CResource* resource);         // 0x009FC3D0
 };
+class CBankFile { public:
+    unsigned long GetEntryDataSize(unsigned long a0) const;   // 0x009CC240 (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z)
+};
 class CBankFileAsync { public:
     unsigned char _pad[0x268];
     CResourceBank ResourceBank;                    // +0x268
-    unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };
 
@@ -103,7 +105,7 @@ void C3DAnimationInfo::BeginLoading(bool wait) const
 {
     if (Data.Data)
         return;
-    unsigned long size = GetBank()->GetEntryDataSize(GetEntryIndex());
+    unsigned long size = ((CBankFile*)(GetBank()))->GetEntryDataSize(GetEntryIndex());
     CCountedPointer<CBankFileAsyncEntry> entry = GetBank()->CreateEntry(GetEntryIndex());
     Data = new CAnimationData(this);
     Data->FileData = entry->BeginReadDataAutoAlloc(0, size, g_AnimationReadPriority);

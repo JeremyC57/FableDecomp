@@ -1,7 +1,7 @@
 // CTCShop::GetFreeSaleItemPlaces(bool includeOccupied) const -- rebuild the shop's goods places from the parent thing and return the ones that are free (no other thing within 0.2 of the place), or all of them
 // Leaf: GetFreeSaleItemPlaces
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00774B40, 274 bytes, `ret 8` (hidden result pointer + the bool).
-// Callees: vector<GoodsPlace>::erase(first, last) @ 0x00777A90 (manifest "Vector_Erase_CKeyCamera"), CTCShop::InitGoodsPlaces(
+// Callees: vector<GoodsPlace>::erase(first, last) @ 0x00777A90 (manifest "Vector_Erase_CKeyCamera"), CTCShop::AddSaleItemPlacesFromThing(
 //   CThing*) @ 0x007748E0 (manifest "CTCGraphicAppearance_InitGoodsPlaces"), CTCBase::PeekWorld() const @ 0x00686A80,
 //   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_In2DRange>, CThing> @ 0x00777000 (landed
 //   with the HasTC/InMap label), vector<GoodsPlace>::push_back @ 0x00778210, vector<GoodsPlace> copy ctor @ 0x00777430
@@ -96,18 +96,20 @@ protected:
     const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
-class CTCShop : public CTCBase { public:
+class CTCShop : public CTCBase {
+public:
+    void AddSaleItemPlacesFromThing(CThing const*a0);   // 0x007748E0 (Ego_r.pdb ?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z)
+private: public:
     CThing*           ParentThing;                  // +0x04 (CTCBase)
     unsigned char     _pad08[0x28 - 0x08];
     CGoodsPlaceVector GoodsPlaces;                  // +0x28
-    void InitGoodsPlaces(CThing* thing);            // 0x007748E0
     CGoodsPlaceVector GetFreeSaleItemPlaces(bool includeOccupied);
 };
 
 CGoodsPlaceVector CTCShop::GetFreeSaleItemPlaces(bool includeOccupied)
 {
     GoodsPlaces.erase(GoodsPlaces.begin(), GoodsPlaces.end());
-    InitGoodsPlaces(ParentThing);
+    ((CTCShop*)this)->AddSaleItemPlacesFromThing((CThing const*)ParentThing);
     CGoodsPlaceVector result;
     for (unsigned int i = 0; i < GoodsPlaces.size(); ++i) {
         if (!includeOccupied) {

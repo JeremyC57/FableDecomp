@@ -61,10 +61,12 @@ class CBankFileAsyncData { public:
 class CBankFileAsyncEntry { public:
     CCountedPointer<CBankFileAsyncData> BeginReadDataAutoAlloc(unsigned long offset, unsigned long size, EThreadedFilePriority priority);   // 0x009D6100
 };
+class CBankFile { public:
+    unsigned long GetEntryDataSize(unsigned long a0) const;   // 0x009CC240 (Ego_r.pdb ?GetEntryDataSize@CBankFile@@QBEKK@Z)
+};
 class CBankFileAsync { public:
     unsigned char _pad[0x168];
     CResourceList ResourceList;             // +0x168
-    unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
     CCountedPointer<CBankFileAsyncEntry> CreateEntry(unsigned long index);   // 0x009D58D0
 };
 struct CParticleEmitterInfo {
@@ -86,7 +88,7 @@ void CEmitterData::BeginLoading()
 {
     if (FileData.Object)
         return;
-    unsigned long size = Owner->Bank->GetEntryDataSize(Owner->EntryIndex);
+    unsigned long size = ((CBankFile*)(Owner->Bank))->GetEntryDataSize(Owner->EntryIndex);
     Owner->Bank->ResourceList.MakeFreeSpace(size);
     CCountedPointer<CBankFileAsyncEntry> entry = Owner->Bank->CreateEntry(Owner->EntryIndex);
     FileData = entry->BeginReadDataAutoAlloc(0, size, g_ParticleReadPriority);

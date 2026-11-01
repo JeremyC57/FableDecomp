@@ -34779,9 +34779,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0099f560'
-        Module = '_global'
-        Source = '00/99/global_Destval_0099f560.cpp'
-        TestSource = '00/99/global_Destval_0099f560_test.cpp'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_RemoveWhiteSpaceBeginEnd_0099f560.cpp'
+        TestSource = '00/99/CCharString_RemoveWhiteSpaceBeginEnd_0099f560_test.cpp'
         PassPattern = '0099f560_TEST PASS'
     }
     [pscustomobject]@{
@@ -93263,9 +93263,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ab3640'
-        Module = '_global'
-        Source = '00/ab/CTCMapwho_OnDie_00ab3640.cpp'
-        TestSource = '00/ab/CTCMapwho_OnDie_00ab3640_test.cpp'
+        Module = 'CCountedPointer<C3DAnimationBuilder::CBoneInfo>'
+        Source = '00/ab/CCountedPointerC3DAnimationBuilderCBoneInfo_DeleteData_00ab3640.cpp'
+        TestSource = '00/ab/CCountedPointerC3DAnimationBuilderCBoneInfo_DeleteData_00ab3640_test.cpp'
         PassPattern = 'PASS_00ab3640'
     }
     [pscustomobject]@{
@@ -172391,9 +172391,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ab1480'
-        Module = '_global'
-        Source = '00/ab/global_MoveCountedPointer00ab1480_00ab1480.cpp'
-        TestSource = '00/ab/global_MoveCountedPointer00ab1480_00ab1480_test.cpp'
+        Module = 'std'
+        Source = '00/ab/std_copyCCountedPointerC3DAnimationBuilderCBoneInfoCCountedPointerC3DAnimationBuilderCBoneInfolong_00ab1480.cpp'
+        TestSource = '00/ab/std_copyCCountedPointerC3DAnimationBuilderCBoneInfoCCountedPointerC3DAnimationBuilderCBoneInfolong_00ab1480_test.cpp'
         PassPattern = '00ab1480_TEST PASS'
     }
     [pscustomobject]@{
@@ -224471,9 +224471,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c689b0'
-        Module = 'CSkillTable_00c67470'
-        Source = '00/c6/CSkillTable00c67470_SetSkillPropertiesEx_00c689b0.cpp'
-        TestSource = '00/c6/CSkillTable00c67470_SetSkillPropertiesEx_00c689b0_test.cpp'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetSlotProperty_00c689b0.cpp'
+        TestSource = '00/c6/CEaxContext_SetSlotProperty_00c689b0_test.cpp'
         PassPattern = '00c689b0_TEST PASS'
     }
     [pscustomobject]@{

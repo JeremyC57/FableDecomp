@@ -4,7 +4,7 @@
 //   address as a "NativeCIME::Reset" adapter) and by the front end. Ego_r.pdb lists ?Shutdown@CIME@NUISystem@@QAEXXZ and a private
 //   ?Reset@CIME@NUISystem@@AAEXXZ; this body is Shutdown with Reset inlined (Reset's stores + the ResetToDefaultSettings tail call).
 //   The catalog label _Cons_val<...CScreenFilterEntry> is propagated.
-// Callees: ImeUi_FinalizeString(bool) 0x00CB2C60, ImeUi_EnableIme(bool) 0x00CB5130, ImeUI_Initialize(HWND__*, bool) 0x00CB5180
+// Callees: ImeUi_FinalizeString(bool) 0x00CB2C60, ImeUi_EnableIme(bool) 0x00CB5130, ImeUi_Initialize(HWND__*, bool) 0x00CB5180
 //   (all __fastcall, as the landed Initialise declares them), operator delete 0x00BFE9BC, CIME::ResetToDefaultSettings() 0x00404A90
 //   (static __fastcall, landed; reached by a tail jump).
 // Layout: Ego_r.pdb CIME (0x54): EnableIME +0, WindowHandle +4, IsInitialised +8, Appearance +0xC (IMEUI_APPEARANCE, symbolFont at
@@ -33,7 +33,7 @@ struct IMEUI_APPEARANCE {                         // 0x40 bytes
     unsigned long    compColorText;
     unsigned char    caretWidth, caretYMargin;
 };
-bool __fastcall ImeUI_Initialize(HWND__* window, bool disable);   // 0x00CB5180
+bool __fastcall ImeUi_Initialize(HWND__* window, bool disable);   // 0x00CB5180 (FableWin.pdb ?ImeUi_Initialize@@YI_NPAUHWND__@@_N@Z; naming wave 19)
 void __fastcall ImeUi_EnableIme(bool enable);                    // 0x00CB5130
 void __fastcall ImeUi_FinalizeString(bool send);                 // 0x00CB2C60
 namespace NUISystem {
@@ -63,7 +63,7 @@ void CIME::Shutdown()
     if (IsInitialised) {
         ImeUi_FinalizeString(false);
         ImeUi_EnableIme(false);
-        ImeUI_Initialize(WindowHandle, true);
+        ImeUi_Initialize(WindowHandle, true);
         IsInitialised = false;
         delete Appearance.symbolFont;
         Appearance.symbolFont = 0;

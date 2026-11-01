@@ -1,4 +1,8 @@
-// _Move<CCountedPointer*> -- copy-assign [first, last) onto dest (count-block release/adopt inlined), return the advanced dest
+// std::__copy<CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, long>(first, last, result, const random_access_iterator_tag&, long*)
+// -- STLport 4.6 _algobase.h random-access copy back end: copy-assign [first, last) onto result (count-block release/adopt inlined), return the advanced result
+// Leaf: ??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAJ@Z
+// Name: chunk 685 NAME_FIXES (the STLport 4.6 instantiation; in neither PDB -- its hand-mangled spelling ...PAV1@0ABU... drops one parameter, VC7.1 emits ...PAV1@00ABU... for the five-parameter text);
+//   the row was landed as the descriptive Move_CountedPointer_00ab1480 (naming wave 19: the same body under the template spelling).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB1480, oracle length 115 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -17,13 +21,14 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-struct CCountedPointer {
-    void* m_pObject;                       // +0
+class C3DAnimationBuilder { public: class CBoneInfo; };
+template <class T> class CCountedPointer { public:
+    T* m_pObject;                          // +0
     SCountBlock* m_pCount;                 // +4
     CCountedPointer& operator=(const CCountedPointer& other)
     {
         SCountBlock* count = other.m_pCount;   // the source's fields are read first (retail keeps them in edi/ebp across the release)
-        void* object = other.m_pObject;
+        T* object = other.m_pObject;
         if (m_pCount != count) {
             if (m_pCount) {
                 --m_pCount->m_references;
@@ -41,11 +46,14 @@ struct CCountedPointer {
     }
 };
 
-struct SIteratorTag { SIteratorTag() { } };
-
-CCountedPointer* __fastcall Move_CountedPointer_00ab1480(CCountedPointer* first, CCountedPointer* last, CCountedPointer* dest, SIteratorTag category, SIteratorTag range)
+namespace std {
+struct random_access_iterator_tag { };
+template <class _RandomAccessIter, class _OutputIter, class _Distance>
+_OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result, const random_access_iterator_tag&, _Distance*)
 {
-    for (long count = last - first; 0 < count; --count, ++first, ++dest)
-        *dest = *first;
-    return dest;
+    for (_Distance __n = __last - __first; 0 < __n; --__n, ++__first, ++__result)
+        *__result = *__first;
+    return __result;
+}
+template CCountedPointer<C3DAnimationBuilder::CBoneInfo>* __fastcall __copy<CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, long>(CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, CCountedPointer<C3DAnimationBuilder::CBoneInfo>*, const random_access_iterator_tag&, long*);
 }

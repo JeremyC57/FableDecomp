@@ -22,10 +22,10 @@ class C3DMesh2 { public:
     unsigned char  _pad_0x00[0x90];
     unsigned long  PrimitiveCount;         // +0x90 (PDB +0x98)
     C3DPrimitive2* Primitives;             // +0x94 (PDB +0x9c)
-    unsigned long GetTriangleCount();
+    unsigned long GetTriangleCount() const;   // ?GetTriangleCount@C3DMesh2@@QBEKXZ (Ego_r.pdb, chunk 685: const; naming wave 19)
 };
 
-unsigned long C3DMesh2::GetTriangleCount()
+unsigned long C3DMesh2::GetTriangleCount() const
 {
     unsigned long total = 0;
     for (unsigned long i = 0; i < PrimitiveCount; ++i)

@@ -50,8 +50,7 @@ extern unsigned long g_NextMeshID;                 // 0x01397248
 class CBankFileAsyncData { public:
     unsigned long Sizeof() const;                  // 0x009D5620
 };
-class CBankFile { public:
-    unsigned long GetEntryDataSize(unsigned long index);   // 0x009CC240
+class CBankFile { public: unsigned long GetEntryDataSize(unsigned long a0) const; private:   // 0x009CC240
 };
 class CBankFileAsyncEntry { public:
     void*          __vftable;
