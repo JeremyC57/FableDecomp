@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+005ebfa0	DIFFER	321v329	-	CTCTavernGame::CameraUseCameraPoint: end-of-function vector free keeps the null test; 19 probes, last 4 no gain
+00c5a9d0	DIFFER	382v382	-	CCodaVoice::SetModulation (catalog ReadFromFile wrong): falling volume rate fld -1; fdiv s; fmul d without reciprocal CSE; 20 probes
+00896b60	DIFFER	437v445	-	CGameScriptInterface::KickOffQuestStartScreen: shared epilogue placement (tail duplication of the tutorial exit); 16 probes
+00666310	DIFFER	915v908	-	CThingCreatureBase::OnCreate: memory-operand and byte ptr [esi+0x15c],0x7d v load/and/store; 14 probes
+00984f60	DIFFER	856v863	-	CAIStateGroup_OpinionReactionRoot::FleeUpdate: navigation component enregistered v homed at [esp+0x14]; 16 probes
+00e37e40	DIFFER	1104v1103	-	CM_AssassinTrigger::Main: prior loop-2 condition was negated (fixed); left: guard bool if-conversion + ~CTimer inline-site choice; 14 probes
+00e4aa00	DIFFER	1362v1356	-	CBanditLeader::Main: handle-dtor inline-site choice (loop exit v inner-loop return); 12 probes

@@ -1,0 +1,10 @@
+p00	prior as-is (local CScriptThing/CGameScriptInterface projection)	DIFFER(395v403) creature PImp.Data reloaded lazily into ecx; retail keeps it in edi (this in ebx)
+p01	re-authored on engine/CScriptThing.h + engine/CGameScriptInterface.h (FABLE_RETAIL_NSCRIPT), Ego_r GetWorldSeed/GetPos/GetNearbyWanderPosition, const LowerBound 0x004365B0	DIFFER(395v403) same residue
+p02	GetPThing/IsAlive through a named imp local	DIFFER(395v403) same
+p03	CCountedPointer operator-> / IsNull accessors	DIFFER(395v403) same
+p04	ternary GetPThing/IsAlive	DIFFER(395v403) same
+p05	engine/CCountedPointer.h + IsAlive as retail's out-of-line && form (0x004AB130)	DIFFER(395v403) same
+p06	early-return form	DIFFER(432v403) duplicated copy/dtor tails
+p07	merged IsAlive && HasTC condition	DIFFER(408v403) eager reload appears, but into ecx
+p08	p05 + /Og- (flags probe)	DIFFER(513v403) frame pointer, no optimisation
+p09	p05 + same-TU noinline body of the const CVectorMap::LowerBound (0x004365B0): VC7.1 then knows the lookup writes no memory, so PImp.Data stays cached in edi across it	RELOCATION_MATCH

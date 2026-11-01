@@ -1,0 +1,16 @@
+p00	prior as-is	DIFFER(856v863) navigation component register-allocated (ebp, else-path reload) where retail homes it in the key slot [esp+0x14]; brain not cached in edi across the faction lookup
+p01	lever 1/3: same-TU noinline const LowerBound body (0x004365B0)	DIFFER(856v863) identical to p00
+p02	lever 1/3: same-TU noinline bodies for both LowerBound overloads	DIFFER(852v863) worse (243 diff lines)
+p03	lever 1/3: same-TU noinline non-const LowerBound only	DIFFER(852v863) worse
+p04	lever 7: GetInterfaceWord plain inline instead of __forceinline	DIFFER(767v863) lookups not inlined
+p05	lever 6: map compare as operator== on the two MapID members, no locals	DIFFER(868v863) creature map read hoisted above GetPItem
+p06	lever 6: operator== on the two CMapCoords locals	DIFFER(856v863) identical to p00
+p07	lever 6: operator== by const reference, no locals	DIFFER(868v863) as p05
+p08	lever 2: ok and fleePos declared before the nav lookup	DIFFER(856v863) identical
+p09	lever 2/7: nav lookup through a T*& reference overload	DIFFER(856v863) identical
+p10	lever 2: fleePos declared before ok	DIFFER(856v863) identical
+p11	lever 2: threat thing in a named local	DIFFER(856v863) identical
+p12	lever 2: nav, ok, fleePos declared together, assignments after	DIFFER(856v863) identical
+p13	lever 8: /Ob1	DIFFER(856v863) identical
+p14	lever 8: /Op	DIFFER(855v863) worse (x87 stores)
+p15	lever 8: /GS	DIFFER(856v863) identical

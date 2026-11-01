@@ -1,0 +1,5 @@
+p00	prior as-is	DIFFER(1410v1404) camera-view switch keeps the scaled tails per case
+p01	semantic fix: retail's switch scales by 1.75 for view 0, none for view 1, 0.75 for view 2 (constants read from retail .rdata 0x012657FC=1.75, 0x01238174=0.75); the prior had 0/0.75/1.75 for 0/1/2, which the relocation mask hid	RELOCATION_MATCH
+p02	lever 7: retail names (CCameraTag Ego_r.pdb members, CScriptThing retail header, CTCPhysicsBase::GetFacingVector slot 70, GetFocalPos, GetPos, GetMagnitudeAndNormalise, private const member, global CSubtitledMessage)	RELOCATION_MATCH; mangled name equals retail
+p03	installed-game enumerators for the tag compares and the switch	RELOCATION_MATCH (19 float constants verified against retail)
+p04	lever 7: engine/CTCBase.h for ParentThing instead of the local CTCBase	RELOCATION_MATCH (adopted)

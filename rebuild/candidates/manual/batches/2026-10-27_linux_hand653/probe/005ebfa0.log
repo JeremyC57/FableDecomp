@@ -1,0 +1,19 @@
+p00	prior as-is (local vector model, forceinline const helper)	DIFFER(321v329) success-path free keeps its null test; failed checks cross-jump into the empty-path free
+p01	same-TU noinline stand-in body for the script-name search (no escape of the vector)	DIFFER(319v329) vector scalar-replaced: start kept in ebp, frame 0x18, but the end free is test-free like retail
+p02	stand-in body whose overflow call is declared-only (escape inside the body)	DIFFER(321v329) back to p00
+p03	real STLport 4.6 vector (_Vector_base + _STLP_alloc_proxy + allocator::deallocate null test)	DIFFER(321v329) same as p00
+p04	single exit: if (!things.empty()) { ... } with one dtor	DIFFER(311v329) one free block, every path tests
+p05	p03 + stand-in with push_back and same-TU noinline _M_insert_overflow	DIFFER(319v329) as p01
+p06	stand-in calling _M_insert_overflow directly	DIFFER(319v329) as p01
+p07	stand-in writing through end() only	DIFFER(75v329) degenerate (empty vector proven)
+p08	re-authored with retail names: PeekWorld/GetWorld (Ego_r), CThingFilter_HasScriptName temporary, GetAllThings<CThing> template, GetPointType<CTCCameraPointScripted>, GetStartPos/GetLookDirection, inline PeekThingSearchTools	DIFFER(313v329) manager gets its own slot, search-tools load hoisted, empty return merged
+p09	p08 + block-scoped manager + explicit return in the success block + direct PeekWorld().PThingSearchTools	DIFFER(321v329) prior residue + search-tools load after both pushes
+p10	p09 + const CWorld& world local	DIFFER(321v329) worse prologue order
+p11	p09 + boost::scoped_ptr operator-> model	DIFFER(324v329) extra add eax,20h
+p12	p09 + named filter local	DIFFER(311v329) filter leaves the arg slot
+p13	p09 + PeekThingSearchTools() with a named world reference	DIFFER(321v329) only the end-free null test differs (best faithful form)
+p14	p13 + real GetAllThings body (PeekAllThings loop, filter operator(), push_back, declared-only _M_insert_overflow)	DIFFER(321v329) same as p13
+p15	p14 + same-TU noinline _M_insert_overflow (no escape)	DIFFER(319v329) as p01 (ebp, frame 0x18, test-free end)
+p16	p15 with template bodies defined after the caller	DIFFER(319v329) as p15
+p17	p13 + same-TU noinline CVectorMap::LowerBound (0x0040F020) body (the 0089f300 lever)	DIFFER(321v329) no change
+p18	p15 + same-TU LowerBound body	DIFFER(319v329) no change (ebp, frame 0x18)

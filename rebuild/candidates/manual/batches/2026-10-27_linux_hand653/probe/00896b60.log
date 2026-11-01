@@ -1,0 +1,16 @@
+p00	prior as-is (local projection)	DIFFER(437v445) retail's shared epilogue follows the quest-card path, the tutorial call gets its own; ours keeps the single epilogue last
+p01	if (!showScreen) {card} else {screen} (no explicit returns)	DIFFER(437v445) same
+p02	explicit return after the tutorial call	DIFFER(437v445) same
+p03	tutorial as an early-return chain	DIFFER(437v445) same
+p04	if (showScreen) {screen} else {card}	DIFFER(454v445) screen path laid out first
+p05	if (showScreen) {screen; return;} card	DIFFER(454v445) as p04
+p06	re-authored on engine/CGameScriptInterface.h + CPlayerManager.h; Ego_r GetTC<T>(T**), SaveInitialValues, Activate(CompletionType,...), the same-TU GiveHeroTutorial (0x00898A50 body) called qualified	DIFFER(358v445) GiveHeroTutorial stays a call; CWideString temporary built after the pushes
+p07	p06 + block-scoped named CWideString summary	DIFFER(357v445) GiveHeroTutorial still a call
+p08	p07 + inline on GiveHeroTutorial	DIFFER(357v445) still a call
+p09	p07 + __forceinline GiveHeroTutorial (probe only, not PDB-attested)	DIFFER(437v445) epilogue residue + screen-path ui/key slots differ (GetTC out-pointer)
+p10	p09 + labelled goto for the stop exit	DIFFER(437v445) same as p09
+p11	p09 + card autosave as early return	DIFFER(437v445) same
+p12	p09 + nested autosave ifs	DIFFER(437v445) same
+p13	p09 + stop test merged into the tutorial condition	DIFFER(451v445) worse
+p14	faithful model, open-coded tutorial, assignment-form TC pointer with a named key	DIFFER(437v445) screen-path key slot still differs
+p15	p14 with the key as a call temporary (prior's slot sharing)	DIFFER(437v445) only the epilogue placement differs (best faithful form)

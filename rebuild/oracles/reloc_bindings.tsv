@@ -35657,3 +35657,7 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?GetPriority@CProcessedInput@@QAE?AW4EGameEventPriority@@XZ	00a0d3b0	00446330
 ?IsEventProcessed@CInputManager@@QBE_NABVCInputEvent@@@Z	009f4b10	00446330
 ?SetAsNull@CInputEvent@@QAEXXZ	00a03be0	00446330
+?g_CameraHeadOffset@@3VC3DVector@@A	01380c44	00712340
+?DeleteBuffers@CAudioContext@@QAEXJPBK@Z	00c4d8c0	00c4dc40
+?Process@CAudioContext@@QAEXXZ	00c4d7d0	00c4dc40
+?Suspend@CAudioContext@@QAEXXZ	00c4d790	00c4dc40

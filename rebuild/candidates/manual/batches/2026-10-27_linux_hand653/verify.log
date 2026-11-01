@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00712340   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00712340   WARN RELOC_NAME: ?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z -> 004c1060 labelled 'CTCGraphicAppearance::GetHelperPointOr'
+00712340   RELOCATION_MATCH PASS   GetCameraSetupPositions
+0089f300   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0089f300   WARN SHARED_HEADER_AVAILABLE CWorld
+0089f300   RELOCATION_MATCH PASS   CreateCreatureNearby
+00c4dc40   RELOCATION_MATCH PASS   Create
+
+WINS: 3
+  00712340 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@
+  0089f300 RELOCATION_MATCH CGameScriptInterface::?CreateCreatureNearby@CGameScriptInterface
+  00c4dc40 RELOCATION_MATCH CAudioBuffer::?Create@CAudioBuffer@@
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NTCScriptedControlCActionTalkBase_GetCameraSetupPositions_00712340
+  CGameScriptInterface_CreateCreatureNearby_0089f300
+  CAudioBuffer_Create_00c4dc40

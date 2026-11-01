@@ -1,0 +1,14 @@
+p00	prior as-is	DIFFER(915v908) retail clears Blinking/HeadPosCached (+0x15c bits 1/7) with a memory-operand and; ours loads/ands/stores through al; ShotAccuracyPercentage=50 store order
+p01	clear order HeadPosCached then Blinking	DIFFER(915v908) same
+p02	MovementVector stores before the bit clears	DIFFER(915v908) contiguous load/and/store, still no memory and
+p03	bit clears split around the MovementVector stores	DIFFER(915v908) same
+p04	chained Blinking = HeadPosCached = false	DIFFER(915v908) same
+p05	= 0 instead of = false	DIFFER(915v908) same
+p06	unsigned char bitfields instead of bool	DIFFER(915v908) same
+p07	ShotAccuracyPercentage = 50 (and the def index read) before the two CDefPointer locals (lever 2)	DIFFER(915v908) store order fixed; only the memory-and residue remains
+p08	single HeadPosCached clear (diagnostic)	DIFFER(915v908) a single bit clear is load/and/store too
+p09	raw byte &= 0x7d through a cast (diagnostic)	DIFFER(915v908) even a plain byte &= is load/and/store here
+p10	bit clears in their own block after the MovementVector stores	DIFFER(915v908) same
+p11	CThingGameObject::OnCreate result in a named local	DIFFER(915v908) same
+p12	/Ob1 (flags probe)	DIFFER(915v908) same
+p13	QFE 13.10.4035 compiler (flags probe)	DIFFER(915v908) same

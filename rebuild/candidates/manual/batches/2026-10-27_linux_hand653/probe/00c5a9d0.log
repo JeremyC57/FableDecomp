@@ -1,0 +1,20 @@
+p00	prior as-is (/Op, float steps local)	DIFFER(390v382) /Op rounds the VolumeMilliBel fild (fstp/fld)
+p01	prior without /Op	DIFFER(392v382) all six divisions become reciprocal multiplies
+p02	/Op + (double)VolumeMilliBel * 0.001f	DIFFER(394v382) /Op rounds the double too (qword store), 0.001 becomes a double constant
+p03	no /Op, (float)RampSteps at each division (no float divisor local; GOTCHAS 2026-10-22 lever)	DIFFER(396v382) pitch divisions now fdiv like retail; volume pair still one reciprocal (1/s hoisted, both multiplied)
+p04	p03 + VolumeDown as decibels * (-1.0f / s)	DIFFER(396v382) same reciprocal
+p05	p03 + explicit (float)(-1.0f / s) temporary (lever 5)	DIFFER(396v382) same
+p06	p03 + -1.0f in a float local	DIFFER(376v382) const-propagated; decibels/s CSE'd, VolumeDown = (d/s)*-1
+p07	p03 + VolumeDown = -decibels / s	DIFFER(372v382) d/s CSE'd + fchs
+p08	p03 + VolumeDown = decibels / -s	DIFFER(372v382) same as p07
+p09	p03 + VolumeDown = decibels * -1.0f / s	DIFFER(382v382) size equal; VolumeDown is fld d; fmul -1; fdiv s v retail fld -1; fdiv s; fmul d
+p10	p03 + VolumeDown = -1.0f * decibels / s	DIFFER(382v382) same as p09
+p11	p03 + VolumeDown = -1.0f * (decibels / s)	DIFFER(376v382) d/s CSE'd
+p12	p03 + const float decibels + (-1.0f/s)*decibels	DIFFER(396v382) reciprocal again
+p13	p03 + VolumeUp = 1.0f / s * decibels	DIFFER(396v382) reciprocal again
+p14	p03 + float steps local for the volume pair only	DIFFER(400v382) reciprocal through st(1)
+p15	/Op + long milliBel local	DIFFER(390v382) same rounding store as p00
+p16	/Op + 0.001f * VolumeMilliBel	DIFFER(390v382) same as p00
+p17	p03 + VolumeUp in double ((double)decibels / s)	DIFFER(382v382) VolumeDown reassociated to d/s*-1 (fld d; fdiv s; fmul -1)
+p18	p03 + VolumeDown with double -1.0	DIFFER(382v382) d/s * qword -1.0
+p19	p03 + VolumeDown -1.0f / (double)s * d	DIFFER(382v382) same as p18

@@ -1,0 +1,14 @@
+p00	prior as-is	DIFFER(1097v1103) guard bool if-converted; second camera loop condition negated (semantic bug in the prior: retail loops while IsCameraPosOnScreen && timer); timer-dtor tails at the end
+p01	lever 6: guard as !(A && B)	DIFFER(1097v1103) identical
+p02	lever 6: guard as A == false || B == false	DIFFER(1097v1103) identical
+p03	lever 6: guard as (A && B) ? false : true	DIFFER(1097v1103) identical
+p04	lever 2: guard in a named bool	DIFFER(1097v1103) identical
+p05	lever 6: guard as an early return (A && B) return	DIFFER(1097v1103) 90 diff lines, worse (stores swap, temporaries move)
+p06	lever 6: empty if-branch with else return	DIFFER(1097v1103) worse
+p07	semantic fix: second loop is while (IsCameraPosOnScreen(pos) && timer.GetTime() != 0) as retail	DIFFER(1097v1103) loop branch senses now match
+p08	lever 6: the region code moves inside the loop under if (!IsCameraPosOnScreen(pos)) { ...; return; } (retail's normal loop exit goes straight to the timer dtor and ret)	DIFFER(1104v1103) 65 diff lines; tails now in the body; VC7.1 inlines ~CTimer at the two inner-loop returns where retail inlines it at the loop exit and the first inner-loop return
+p09	lever 6: for(;;) with the termination return at the loop top	DIFFER(1104v1103) identical to p08
+p10	lever 6: if + do-while(!terminating)	DIFFER(1088v1103) worse
+p11	lever 6: break instead of return at the end of the region block	DIFFER(1104v1103) identical to p08
+p12	lever 6: timer test as an in-loop break	DIFFER(1104v1103) identical to p08
+p13	lever 8: QFE 13.10.4035 compiler	DIFFER(1104v1103) identical to p08

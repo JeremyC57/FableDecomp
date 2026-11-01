@@ -1,0 +1,12 @@
+p00	prior as-is	DIFFER(1362v1356) VC7.1 inlines the scripted-thing handle dtor at the talk block's StartScriptingEntity-loop return and calls 0x007E74D0 at the loop exit; retail inlines it at the loop exit (right after the loop) and calls it at every return
+p01	lever 6: if (!(angered && alive && aware)) { talk; frame } else { angered }	DIFFER(1362v1356) byte-identical to p00
+p02	lever 6: same with the negated || chain	DIFFER(1362v1356) byte-identical to p00
+p03	lever 6: angered block after the loop through goto	DIFFER(1362v1356) byte-identical to p00 (layout is the compiler's, not the source order)
+p04	lever 3/7: user-declared empty inline dtor on the handle class	DIFFER(1370v1356) worse
+p05	lever 2: handle and loop in their own block	DIFFER(1362v1356) 259 diff lines, worse
+p06	lever 6: for(;;) with the termination return at the top	DIFFER(1362v1356) identical
+p07	lever 8: QFE 13.10.4035 compiler	DIFFER(1362v1356) identical
+p08	lever 8: /Ob1	DIFFER(1362v1356) identical
+p09	lever 7: CTimer accessors plain inline	DIFFER(1338v1356) worse (not inlined)
+p10	lever 6: angered wait loop as while (true)	DIFFER(1362v1356) identical
+p11	lever 6: talk StartScriptingEntity wait as if + do-while	DIFFER(1362v1356) worse (243 lines)

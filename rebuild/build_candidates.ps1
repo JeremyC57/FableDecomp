@@ -371487,6 +371487,27 @@ $catalog = @(
         TestSource = '00/70/anonymousnamespace_IsAnimationStateBaseValid_0070bf50_test.cpp'
         PassPattern = '0070bf50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00712340'
+        Module = 'NTCScriptedControl::CActionTalkBase'
+        Source = '00/71/NTCScriptedControlCActionTalkBase_GetCameraSetupPositions_00712340.cpp'
+        TestSource = '00/71/NTCScriptedControlCActionTalkBase_GetCameraSetupPositions_00712340_test.cpp'
+        PassPattern = '00712340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0089f300'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_CreateCreatureNearby_0089f300.cpp'
+        TestSource = '00/89/CGameScriptInterface_CreateCreatureNearby_0089f300_test.cpp'
+        PassPattern = '0089f300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c4dc40'
+        Module = 'CAudioBuffer'
+        Source = '00/c4/CAudioBuffer_Create_00c4dc40.cpp'
+        TestSource = '00/c4/CAudioBuffer_Create_00c4dc40_test.cpp'
+        PassPattern = '00c4dc40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

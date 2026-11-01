@@ -1,0 +1,13 @@
+address	name	evidence
+00c4dc40	CAudioBuffer::Create	chunk 653 RELOCATION_MATCH: OpenAL buffer creation via the landed CAudioContext inline wrappers; format map 1 -> MONO16/STEREO16, 2 -> MONO8/STEREO8
+0089f300	CGameScriptInterface::CreateCreatureNearby	chunk 653 RELOCATION_MATCH: Ego_r name; engine/CScriptThing.h + CGameScriptInterface.h; same-file const CVectorMap::LowerBound body
+00712340	NTCScriptedControl::CActionTalkBase::GetCameraSetupPositions	chunk 653 RELOCATION_MATCH: exact Ego_r mangled leaf; camera views WIDE x1.75 / MEDIUM x1 / CLOSE x0.75 (the prior swapped them; the reloc mask hid it)
+00c5a9d0	CCodaVoice::SetModulation	chunk 653 (DIFFER 382v382, label only): catalog C3DMeshFileXBoundingBoxChunk::ReadFromFile was wrong; descriptive CODA name per the landed CCodaVoice siblings
+0049d810	CWorld::GetWorldSeed	chunk 653: Ego_r ?GetWorldSeed@CWorld@@QBEPAKXZ (catalog DoSizeof / GetPRandomSeed / GetBank)
+004c73d0	CThing::GetPos	chunk 653: Ego_r (catalog DoSizeof)
+00a14480	C3DVector::GetMagnitudeAndNormalise	chunk 653: Ego_r (catalog GetScaled)
+00c59b00	SecondsToMixBlocks	chunk 653 (descriptive, CODA): catalog Graphics_ConvertTimeToPixels is wrong
+004c1060	NGraphicAppearance::CTCGraphicAppearance::GetFocalPos	chunk 653: Ego_r ?GetFocalPos@CTCGraphicAppearance@NGraphicAppearance@@QBE?AVC3DVector@@M@Z (catalog GetHelperPointOr)
+0075cd30	CTCCameraPointScripted::GetStartPos	chunk 653: Ego_r (catalog GetEndPos)
+0075ccb0	CTCCameraPointScripted::GetLookDirection	chunk 653: Ego_r (binding TransformVector@CEnvironmentSpellEffectInterface was wrong)
+006b1410	CTCPhysicsBase::GetFacingVector	chunk 653: Ego_r UBE, vtable slot 70 read from Fable.exe
