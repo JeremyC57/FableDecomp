@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00ef5cb0	DIFFER	706v817	-	PILOT: pragma-free NOT matched after 13 probes; keep landed inline_depth source
+00ef87d0	DIFFER	1047v1003	-	PILOT: pragma-free NOT matched after 13 probes; keep landed inline_depth source

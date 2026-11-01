@@ -9115,7 +9115,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052cf40	ChangeState	CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,ulong	1	yes	accepted									
 0052d520	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CGuiControlTreePane_SortTreeRecursively_0052d520.cpp
 0052d5a0	StdList_Initialize	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_StdListInitialize_0052d5a0.cpp
-0052d5c0	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CGuiControlTreePane_SortTreeRecursively_0052d5c0.cpp
+0052d5c0	~_List_base	std::_List_base<NUISystem::CChangingStateComponent::EChangingStateComponentState, std::allocator<NUISystem::CChangingStateComponent::EChangingStateComponentState>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CGuiControlTreePane_SortTreeRecursively_0052d5c0.cpp
 0052d620	StdList_Initialize	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_StdListInitialize_0052d620.cpp
 0052d6b0	BinaryTree_LowerBound_Uint	_global	unknown	undefined	0		0	yes	accepted									
 0052d700	NUISystem::CChangingStateComponent::vfunc_0	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -12552,7 +12552,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005ed0f0	NCameraModes::CScriptModuleBase::vfunc_3	NCameraModes::CScriptModuleBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005ed100	NCameraModes::CScriptModuleBase::vfunc_6	NCameraModes::CScriptModuleBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005ed110	NCameraModes::CScriptModuleBase::vfunc_8	NCameraModes::CScriptModuleBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-005ed120	Clear	CTCIdleScheduler	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
+005ed120	~CScriptModuleBase	NCameraModes::CScriptModuleBase	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 005ed150	`scalar deleting destructor'	NCameraModes::CScriptModuleBase	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 005ed190	C3DPositionInterpolator	C3DPositionInterpolator	__thiscall	undefined	3	C3DPositionInterpolator *,C3DVector *,C3DVector *	0	yes	accepted									
 005ed210	Clear	CTCIdleScheduler	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
@@ -25339,7 +25339,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00854030	IsStretchAroundHero	NCameraModes::CScriptModuleBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008540f0	NCameraModes::CScriptModuleSpline::vfunc_8	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854180	NCameraModes::CScriptModuleSpline::vfunc_1	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00854310	Clear	CTCIdleScheduler	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
+00854310	~CScriptModuleSelfTerminateBase	NCameraModes::CScriptModuleSelfTerminateBase	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 00854340	NCameraModes::CScriptModuleTransitionBetweenPoints::vfunc_5	NCameraModes::CScriptModuleTransitionBetweenPoints	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854360	NCameraModes::CScriptModuleFOVZoom::vfunc_3	NCameraModes::CScriptModuleFOVZoom	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854370	NCameraModes::CScriptModuleFOVZoom::vfunc_7	NCameraModes::CScriptModuleFOVZoom	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -25473,7 +25473,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008591e0	PerformPossibleDamageAction	CCombatActionBase	__thiscall	void	2	CCombatActionBase *,float	1	yes	accepted									
 00859660	ResetMeleeCombatAbilityEffects	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
 008597a0	ProcessStrikeEvents	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
-00859a20	?FinishAction@CCombatActionBase@@MAEXXZ	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
+00859a20	FinishAction	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
 00859a70	SetupCombatStrikeEvents	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
 00859d80	?FrameUpdate@CCombatActionBase@@UAEXXZ	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
 00859ec0	SetUpCombatAnimationNotes	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
@@ -36604,7 +36604,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a36ec0	~CCountedPointer	CCountedPointer<const C3DMesh2>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a36ec0.cpp
 00a36f70	operator()	CThingFilter_IsUnconscious	__thiscall	bool	2	CThingFilter_IsUnconscious *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\operator_operator_00a36f70.cpp
 00a36f80	PostConstructionInit	CClass	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CThingFilterIsValid_opcall_00a36f80.cpp
-00a36f90	?AddNewClassType@CClassFactory@@MAEXABVCClassTypeInit@@@Z	CClassFactory	__thiscall	void	2	CClassFactory *,CClassTypeInit *	1	yes	accepted									
+00a36f90	AddNewClassType	CClassFactory	__thiscall	void	2	CClassFactory *,CClassTypeInit *	1	yes	accepted									
 00a36fc0	GetNoAllocatedOfType	CClassFactory	unknown	undefined	0		0			discovered	gapscan							
 00a36fe0	InterruptAllNavigators	CNavigatorManager	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
 00a37060	GetClassNumberFromName	CClassFactory	__thiscall	long	2	CClassFactory *,CCharString *	1	yes	accepted									
@@ -47327,7 +47327,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6e1d0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6e1d0.cpp
 00c6e1f0	ScaleAccumulate16	Row00c6e1f0	unknown	undefined	0		0	yes	accepted									
 00c6e290	Filter_ApplyTransformSSE_16	_global	unknown	undefined	0		0	yes	accepted									
-00c6e410	sub_00c6e410	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6e410	Process	CVtable_012b8a78	unknown	undefined	0		0			discovered	gapscan							
 00c6e630	~CVtable_012beda4	CVtable_012beda4	__thiscall	undefined	2	CConsoleCommandParameters *,EGenericVarType	0	yes	accepted									
 00c6e660	WriteCBYTE	CDataOutputStream	__thiscall	void	2	CDataOutputStream *,char	1	yes	accepted									
 00c6e690	sub_00c6e690	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -47352,7 +47352,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6f3e0	CAudioMixer_ProcessChannels_64bit	_global	unknown	undefined	0		0	yes	accepted									
 00c6f730	ScaleAccumulate16MMX_00c6f730	_global	unknown	undefined	0		0	yes	accepted									
 00c6f800	Filter_ApplyTransformSSE_64	_global	unknown	undefined	0		0	yes	accepted									
-00c6f990	sub_00c6f990	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6f990	Process	CVtable_012b8ab4	unknown	undefined	0		0			discovered	gapscan							
 00c6fbb0	ScaleAccumulate16MMX_00c6fbb0	_global	unknown	undefined	0		0	yes	accepted									
 00c6fc80	SSE_MatrixMultiplyLonglong	_global	unknown	undefined	0		0	yes	accepted									
 00c6fe10	Process	CVtable_012b8ac8	unknown	undefined	0		0			discovered	gapscan							
@@ -48274,7 +48274,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caf820	CModifierGraphic	CModifierGraphic	__thiscall	undefined	4	CModifierGraphic *,long,float,CDefPointer<CTextureReplacementDef_const_>	0	yes	accepted									
 00caf890	Open	CEngineProfileLog	__thiscall	void	3	CEngineProfileLog *,CWideString,long	1	yes	accepted									
 00caf8f0	GetDueCommand	CCmdQueue	unknown	undefined	0		0	yes	accepted									
-00cafa10	CEditControlCentre::FindTrackNodeInTimeRange	CEditControlCentre	unknown	undefined	0		0	yes	accepted									
+00cafa10	GetCommandDueFor	CCmdQueue	unknown	undefined	0		0	yes	accepted									
 00cafc40	QueryInterface	CPosPassThru	unknown	undefined	0		0			discovered	gapscan							
 00cafcc0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00cafcc0.cpp
 00cafce0	CCompressedMemoryDataInputStream	CCompressedMemoryDataInputStream	__thiscall	undefined	1	CCompressedMemoryDataInputStream *	0	yes	accepted									

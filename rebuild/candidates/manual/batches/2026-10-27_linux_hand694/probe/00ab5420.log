@@ -1,0 +1,3 @@
+1	00ab5420_p1.cpp	STLport list view over CMouse.h, three switches, bool local	DIFFER(740v740)
+2	00ab5420_p2.cpp	retail case order (L/M/R/X pressed, released, wheel); heldType/converted declaration order	RELOCATION_MATCH
+3	00ab5420_p3.cpp	jump-table fix: case 6 -> 8, case 5 -> 11 (retail table 0x00AB5678 = 5, 0xB, 8); source order L/M/R	RELOCATION_MATCH

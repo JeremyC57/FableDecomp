@@ -374375,6 +374375,79 @@ $catalog = @(
         TestSource = '00/bc/CEngineSubPrimitiveSpriteTrail_CEngineSubPrimitiveSpriteTrail_00bc9c30_test.cpp'
         PassPattern = '00bc9c30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0052ccf0'
+        Module = 'NUISystem::CChangingStateComponent'
+        Source = '00/52/NUISystemCChangingStateComponent_CChangingStateComponent_0052ccf0.cpp'
+        TestSource = '00/52/NUISystemCChangingStateComponent_CChangingStateComponent_0052ccf0_test.cpp'
+        PassPattern = '0052ccf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ed120'
+        Module = 'NCameraModes::CScriptModuleBase'
+        Source = '00/5e/NCameraModesCScriptModuleBase_CScriptModuleBase_005ed120.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleBase_CScriptModuleBase_005ed120_test.cpp'
+        PassPattern = '005ed120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00854310'
+        Module = 'NCameraModes::CScriptModuleSelfTerminateBase'
+        Source = '00/85/NCameraModesCScriptModuleSelfTerminateBase_CScriptModuleSelfTerminateBase_00854310.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleSelfTerminateBase_CScriptModuleSelfTerminateBase_00854310_test.cpp'
+        PassPattern = '00854310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00859a20'
+        Module = 'CCombatActionBase'
+        Source = '00/85/CCombatActionBase_FinishAction_00859a20.cpp'
+        TestSource = '00/85/CCombatActionBase_FinishAction_00859a20_test.cpp'
+        PassPattern = '00859a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a36f90'
+        Module = 'CClassFactory'
+        Source = '00/a3/CClassFactory_AddNewClassType_00a36f90.cpp'
+        TestSource = '00/a3/CClassFactory_AddNewClassType_00a36f90_test.cpp'
+        PassPattern = '00a36f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a371c0'
+        Module = 'CClassFactory'
+        Source = '00/a3/CClassFactory_AllocateClass_00a371c0.cpp'
+        TestSource = '00/a3/CClassFactory_AllocateClass_00a371c0_test.cpp'
+        PassPattern = '00a371c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab5420'
+        Module = 'CMouseDX'
+        Source = '00/ab/CMouseDX_ConvertMouseEventToInputEvent_00ab5420.cpp'
+        TestSource = '00/ab/CMouseDX_ConvertMouseEventToInputEvent_00ab5420_test.cpp'
+        PassPattern = '00ab5420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6e410'
+        Module = 'CVtable_012b8a78'
+        Source = '00/c6/CVtable012b8a78_Process_00c6e410.cpp'
+        TestSource = '00/c6/CVtable012b8a78_Process_00c6e410_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6e410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6f990'
+        Module = 'CVtable_012b8ab4'
+        Source = '00/c6/CVtable012b8ab4_Process_00c6f990.cpp'
+        TestSource = '00/c6/CVtable012b8ab4_Process_00c6f990_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6f990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cafa10'
+        Module = 'CCmdQueue'
+        Source = '00/ca/CCmdQueue_GetCommandDueFor_00cafa10.cpp'
+        TestSource = '00/ca/CCmdQueue_GetCommandDueFor_00cafa10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00cafa10_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

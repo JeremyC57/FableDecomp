@@ -1,0 +1,1 @@
+1	0052ccf0_p1.cpp	inline user virtual dtor, RTTI bases CUIInterface/CObserver/CActionParam, STLport list member (~_List_base out of line)	RELOCATION_MATCH

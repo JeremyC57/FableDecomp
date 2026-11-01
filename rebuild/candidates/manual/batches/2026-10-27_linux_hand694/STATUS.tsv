@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+00ab5420	RELOCATION_MATCH	740v740	PASS	CMouseDX::ConvertMouseEventToInputEvent; 3 probes; all three jump tables checked entry by entry ($L symbols vs retail)
+00c6e410	RELOCATION_MATCH	533v533	PASS	retail_asm: libpk SSE2 gain mixer CVtable_012b8a78::Process (slot 2, descriptive); 1 probe
+00c6f990	RELOCATION_MATCH	533v533	PASS	retail_asm: libpk MMX gain mixer CVtable_012b8ab4::Process (slot 2, descriptive); 1 probe
+00cafa10	RELOCATION_MATCH	395v395	PASS	CCmdQueue::GetCommandDueFor (strmbase ctlutil.cpp, /EHsc); catalog CEditControlCentre label wrong; 2 probes
+00a36f90	RELOCATION_MATCH	47v47	PASS	CClassFactory::AddNewClassType; local model (header flattens vptr); 2 probes
+00a371c0	RELOCATION_MATCH	42v42	PASS	CClassFactory::AllocateClass; engine header rename pattern; 4 probes
+00859a20	RELOCATION_MATCH	72v72	PASS	CCombatActionBase::FinishAction; IS_THING_ALIVE inline template; local model; 1 probe
+0052ccf0	RELOCATION_MATCH	42v42	PASS	NUISystem::CChangingStateComponent::~CChangingStateComponent; catalog CTCIdleScheduler::Clear wrong; 1 probe
+005ed120	RELOCATION_MATCH	34v34	PASS	NCameraModes::CScriptModuleBase::~CScriptModuleBase; catalog label wrong; 1 probe
+00854310	RELOCATION_MATCH	34v34	PASS	NCameraModes::CScriptModuleSelfTerminateBase::~CScriptModuleSelfTerminateBase (implicit dtor); landed callers bind it as ~CScriptModuleBase; 1 probe
+00ef5cb0	DIFFER	706v817	-	PILOT: pragma-free NOT matched after 13 probes; keep landed inline_depth source
+00ef87d0	DIFFER	1047v1003	-	PILOT: pragma-free NOT matched after 13 probes; keep landed inline_depth source

@@ -1,0 +1,13 @@
+1	00ef5cb0_p1.cpp	pilot: CVillager header set, plain inline ~CScriptThing, landed body without inline_depth	DIFFER(706v817)
+2	00ef5cb0_p2.cpp	outer while(!Term) loop (scope-end exit), plain inline dtor	DIFFER(706v817)
+3	00ef5cb0_p3.cpp	non-virtual ~CPredicate_And (budget test)	DIFFER(706v817)
+4	00ef5cb0_p4.cpp	~CScriptThing inline body defined after Main	DIFFER(706v817)
+5	00ef5cb0_p5.cpp	diagnostic: S4/S5 as break to the scope end	DIFFER(784v817)
+6	00ef5cb0_p6.cpp	__forceinline ~CScriptThing, no pragma (for(;;) form)	DIFFER(899v817)
+7	00ef5cb0_p7.cpp	flags /Ob1 on p2	DIFFER(706v817)
+8	00ef5cb0_p8.cpp	direct CPredicate_And construction (no operator&& expansion)	DIFFER(693v817)
+9	00ef5cb0_p2.cpp	QFE-4035 compiler on p2	DIFFER(706v817)
+10	00ef5cb0_p10.cpp	diagnostic: landed local predicates (non-virtual inline dtors)	DIFFER(706v817)
+11	00ef5cb0_p11.cpp	crate + loop in a nested block scope	SRC_FAIL
+12	00ef5cb0_p12.cpp	first exit as if(!Term){...} block (scope-end exits)	DIFFER(692v817)
+13	00ef5cb0_p13.cpp	crate + loop in a nested block scope (p11 redone; p11 was a script splice error)	DIFFER(706v817)

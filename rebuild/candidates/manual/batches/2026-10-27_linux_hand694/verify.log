@@ -1,0 +1,38 @@
+addr       parity           behav  name
+0052ccf0   WARN SHARED_HEADER_AVAILABLE CObserver
+0052ccf0   WARN RELOC_NAME: ??1?$_List_base@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@V?$allocator@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0052d5c0 labelled '_global::StdList_Clear_0052d5c0'
+0052ccf0   RELOCATION_MATCH PASS   ~CChangingStateComponent
+005ed120   RELOCATION_MATCH PASS   ~CScriptModuleBase
+00854310   RELOCATION_MATCH PASS   ~CScriptModuleSelfTerminateBase
+00859a20   RELOCATION_MATCH PASS   FinishAction
+00a36f90   RELOCATION_MATCH PASS   AddNewClassType
+00a371c0   RELOCATION_MATCH PASS   AllocateClass
+00ab5420   RELOCATION_MATCH PASS   ConvertMouseEventToInputEvent
+00c6e410   RELOCATION_MATCH PASS   Process
+00c6f990   RELOCATION_MATCH PASS   Process
+00cafa10   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00cafa10   RELOCATION_MATCH PASS   GetCommandDueFor
+
+WINS: 10
+  0052ccf0 RELOCATION_MATCH NUISystem::CChangingStateComponent::??1CChangingStateComponent@NUISystem@@UAE@XZ
+  005ed120 RELOCATION_MATCH NCameraModes::CScriptModuleBase::??1CScriptModuleBase@NCameraModes@@UAE@XZ
+  00854310 RELOCATION_MATCH NCameraModes::CScriptModuleSelfTerminateBase::??1CScriptModuleSelfTerminateBase@NCameraModes@@UAE@XZ
+  00859a20 RELOCATION_MATCH CCombatActionBase::?FinishAction@CCombatActionBase@@MAEXXZ
+  00a36f90 RELOCATION_MATCH CClassFactory::?AddNewClassType@CClassFactory@@MAEXABVCClassTypeInit@@@Z
+  00a371c0 RELOCATION_MATCH CClassFactory::?AllocateClass@CClassFactory@@QAEPAVCClass@@ABVCCharString@@@Z
+  00ab5420 RELOCATION_MATCH CMouseDX::?ConvertMouseEventToInputEvent@CMouseDX@@IAE_NPBVCMouseEvent@@PAVCInputEvent@@@Z
+  00c6e410 RELOCATION_MATCH CVtable_012b8a78::?Process@CVtable_012b8a78@@UAEXPBFPBQAJ@Z
+  00c6f990 RELOCATION_MATCH CVtable_012b8ab4::?Process@CVtable_012b8ab4@@UAEXPBFPBQAJ@Z
+  00cafa10 RELOCATION_MATCH CCmdQueue::?GetCommandDueFor@CCmdQueue@@UAEJ_JPAPAVCDeferredCommand@@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NUISystemCChangingStateComponent_CChangingStateComponent_0052ccf0
+  NCameraModesCScriptModuleBase_CScriptModuleBase_005ed120
+  NCameraModesCScriptModuleSelfTerminateBase_CScriptModuleSelfTerminateBase_00854310
+  CCombatActionBase_FinishAction_00859a20
+  CClassFactory_AddNewClassType_00a36f90
+  CClassFactory_AllocateClass_00a371c0
+  CMouseDX_ConvertMouseEventToInputEvent_00ab5420
+  CVtable012b8a78_Process_00c6e410
+  CVtable012b8ab4_Process_00c6f990
+  CCmdQueue_GetCommandDueFor_00cafa10
