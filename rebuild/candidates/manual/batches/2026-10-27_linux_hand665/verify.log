@@ -1,0 +1,43 @@
+addr       parity           behav  name
+006ed200   RELOCATION_MATCH PASS   Update
+007aff70   RELOCATION_MATCH PASS   ~CTCBoss
+007c5660   RELOCATION_MATCH PASS   ~CTCGhostSword
+0098e690   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+0098e690   RELOCATION_MATCH PASS   ~CThreadedFileManager
+009a1090   WARN SHARED_HEADER_AVAILABLE CTexture
+009a1090   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009a1090   RELOCATION_MATCH PASS   ~CStreamingFontBank
+00c051c0   RELOCATION_MATCH PASS   _tr_init
+00d27290   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@_N@std@@@2@@Z -> 007acc50 labelled '_unattributed::FreeTree_CTreeOwner_007acc50'
+00d27290   WARN RELOC_NAME: ??1CScriptBase@@UAE@XZ -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d27290   RELOCATION_MATCH PASS   ~CQ_DragonBossFightScript
+00d2f640   WARN RELOC_NAME: ??1CScriptBase@@UAE@XZ -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d2f640   RELOCATION_MATCH PASS   ~CQ_EndGameFocalSitesScript
+00d83350   WARN RELOC_NAME: ??1CScriptBase@@UAE@XZ -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d83350   RELOCATION_MATCH PASS   ~CQ_HeroSoulsBriarScript
+00dd1f40   WARN RELOC_NAME: ??1CScriptBase@@UAE@XZ -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00dd1f40   RELOCATION_MATCH PASS   ~CQ_OrchardFarmRaidScript
+
+WINS: 10
+  006ed200 RELOCATION_MATCH CCombatManager::?Update@CCombatManager@@QAEXXZ
+  007aff70 RELOCATION_MATCH CTCBoss::??1CTCBoss@@UAE@XZ
+  007c5660 RELOCATION_MATCH CTCGhostSword::??1CTCGhostSword@@UAE@XZ
+  0098e690 RELOCATION_MATCH CThreadedFileManager::??1CThreadedFileManager@@UAE@XZ
+  009a1090 RELOCATION_MATCH CStreamingFontBank::??1CStreamingFontBank@@UAE@XZ
+  00c051c0 RELOCATION_MATCH _global::__tr_init
+  00d27290 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::??1CQ_DragonBossFightScript@NScript@@UAE@XZ
+  00d2f640 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::??1CQ_EndGameFocalSitesScript@NScript@@UAE@XZ
+  00d83350 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::??1CQ_HeroSoulsBriarScript@NScript@@UAE@XZ
+  00dd1f40 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::??1CQ_OrchardFarmRaidScript@NScript@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CCombatManager_Update_006ed200
+  CTCBoss_CTCBoss_007aff70
+  CTCGhostSword_CTCGhostSword_007c5660
+  CThreadedFileManager_CThreadedFileManager_0098e690
+  CStreamingFontBank_CStreamingFontBank_009a1090
+  global_trinit_00c051c0
+  NScriptCQDragonBossFightScript_CQDragonBossFightScript_00d27290
+  NScriptCQEndGameFocalSitesScript_CQEndGameFocalSitesScript_00d2f640
+  NScriptCQHeroSoulsBriarScript_CQHeroSoulsBriarScript_00d83350
+  NScriptCQOrchardFarmRaidScript_CQOrchardFarmRaidScript_00dd1f40

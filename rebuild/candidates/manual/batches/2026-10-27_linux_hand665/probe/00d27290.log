@@ -1,0 +1,2 @@
+1	CLevelScriptBase local implicit-dtor model + STLport map/vector text + EmitDestructor harness	RELOCATION_MATCH
+2	same, harness replaced by the real ctor definition (0x00D25410) to emit the implicit dtor	RELOCATION_MATCH

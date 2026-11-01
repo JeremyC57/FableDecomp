@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006ed200	RELOCATION_MATCH	101v101	PASS	CCombatManager::Update; 3 probes (empty CombatDialogueManager misaligned +0x35 -> Ego_r members)
+00c051c0	RELOCATION_MATCH	100v100	PASS	zlib 1.2.1 trees.c _tr_init; 1 probe (landed init_block TU text)
+00d2f640	RELOCATION_MATCH	108v108	PASS	~CQ_EndGameFocalSitesScript; 2 probes (header ~CLevelScriptBase adds a vtable store -> local implicit model)
+007aff70	RELOCATION_MATCH	129v129	PASS	~CTCBoss (implicit); 1 probe
+00dd1f40	RELOCATION_MATCH	155v155	PASS	~CQ_OrchardFarmRaidScript; 1 probe
+007c5660	RELOCATION_MATCH	161v161	PASS	~CTCGhostSword (empty user body); 1 probe
+009a1090	RELOCATION_MATCH	170v170	PASS	~CStreamingFontBank; 2 probes (pointer walk in two counted loops)
+00d83350	RELOCATION_MATCH	165v165	PASS	~CQ_HeroSoulsBriarScript; 1 probe
+0098e690	RELOCATION_MATCH	214v214	PASS	~CThreadedFileManager; 1 probe (real STLport _M_erase body inlines one level, as retail)
+00d27290	RELOCATION_MATCH	217v217	PASS	~CQ_DragonBossFightScript; 2 probes (harness -> real ctor)

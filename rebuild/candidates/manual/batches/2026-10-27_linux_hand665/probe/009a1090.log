@@ -1,0 +1,2 @@
+1	indexed cache[i][j] loops, FontIndex=0 then Glyph=0	DIFFER(177v170): loops folded into one 0x8000 linear loop, fontIndex hoisted to ebp, store order swapped
+2	one entry pointer advanced in two counted loops (256, 8), Glyph=0 before FontIndex=0	RELOCATION_MATCH

@@ -1,0 +1,3 @@
+1	STLport map iteration; CCombatantInfo forward-declared	SRC_FAIL (pair<const K, incomplete V>)
+2	CCombatantInfo opaque 0x70; CombatDialogueManager empty class	DIFFER(101v101): DialogueManager at +0x35 (empty class not 4-aligned)
+3	CombatDialogueManager with Ego_r members (retail 0x24, 4-aligned)	RELOCATION_MATCH

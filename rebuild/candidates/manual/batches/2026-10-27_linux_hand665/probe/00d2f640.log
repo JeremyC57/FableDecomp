@@ -1,0 +1,2 @@
+1	engine/CLevelScriptBase.h + inline user ~CLevelScriptBase() {} after the include	DIFFER(114v108): extra `mov [esi],vftable` before the tail jump (user dtor keeps the store)
+2	local CLevelScriptBase<T> without a dtor declaration (implicit, as retail's 0x00CDD250 ??_G proves); ctor defined to emit vtable/??_G/??1	RELOCATION_MATCH

@@ -372210,6 +372210,76 @@ $catalog = @(
         TestSource = '00/f3/CGPUScratchBufferTextureManager_CGPUScratchBufferTextureManager_00f37570_test.cpp'
         PassPattern = '00f37570_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006ed200'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_Update_006ed200.cpp'
+        TestSource = '00/6e/CCombatManager_Update_006ed200_test.cpp'
+        PassPattern = '006ed200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007aff70'
+        Module = 'CTCBoss'
+        Source = '00/7a/CTCBoss_CTCBoss_007aff70.cpp'
+        TestSource = '00/7a/CTCBoss_CTCBoss_007aff70_test.cpp'
+        PassPattern = '007aff70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c5660'
+        Module = 'CTCGhostSword'
+        Source = '00/7c/CTCGhostSword_CTCGhostSword_007c5660.cpp'
+        TestSource = '00/7c/CTCGhostSword_CTCGhostSword_007c5660_test.cpp'
+        PassPattern = '007c5660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098e690'
+        Module = 'CThreadedFileManager'
+        Source = '00/98/CThreadedFileManager_CThreadedFileManager_0098e690.cpp'
+        TestSource = '00/98/CThreadedFileManager_CThreadedFileManager_0098e690_test.cpp'
+        PassPattern = '0098e690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009a1090'
+        Module = 'CStreamingFontBank'
+        Source = '00/9a/CStreamingFontBank_CStreamingFontBank_009a1090.cpp'
+        TestSource = '00/9a/CStreamingFontBank_CStreamingFontBank_009a1090_test.cpp'
+        PassPattern = '009a1090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c051c0'
+        Module = '_global'
+        Source = '00/c0/global_trinit_00c051c0.cpp'
+        TestSource = '00/c0/global_trinit_00c051c0_test.cpp'
+        PassPattern = '00c051c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d27290'
+        Module = 'NScript::CQ_DragonBossFightScript'
+        Source = '00/d2/NScriptCQDragonBossFightScript_CQDragonBossFightScript_00d27290.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScript_CQDragonBossFightScript_00d27290_test.cpp'
+        PassPattern = '00d27290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d2f640'
+        Module = 'NScript::CQ_EndGameFocalSitesScript'
+        Source = '00/d2/NScriptCQEndGameFocalSitesScript_CQEndGameFocalSitesScript_00d2f640.cpp'
+        TestSource = '00/d2/NScriptCQEndGameFocalSitesScript_CQEndGameFocalSitesScript_00d2f640_test.cpp'
+        PassPattern = '00d2f640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d83350'
+        Module = 'NScript::CQ_HeroSoulsBriarScript'
+        Source = '00/d8/NScriptCQHeroSoulsBriarScript_CQHeroSoulsBriarScript_00d83350.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsBriarScript_CQHeroSoulsBriarScript_00d83350_test.cpp'
+        PassPattern = '00d83350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd1f40'
+        Module = 'NScript::CQ_OrchardFarmRaidScript'
+        Source = '00/dd/NScriptCQOrchardFarmRaidScript_CQOrchardFarmRaidScript_00dd1f40.cpp'
+        TestSource = '00/dd/NScriptCQOrchardFarmRaidScript_CQOrchardFarmRaidScript_00dd1f40_test.cpp'
+        PassPattern = '00dd1f40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

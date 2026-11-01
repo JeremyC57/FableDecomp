@@ -1,0 +1,19 @@
+address	name	evidence
+006ed200	CCombatManager::Update	chunk 665 RELOCATION_MATCH: only caller CWorld::UpdateFrame through CWorld+0x4C (Ego_r PThingCombatManager) (catalog CombatDialogueManager_UpdateDialogueFrame was wrong)
+00c051c0	_tr_init	chunk 665 RELOCATION_MATCH: zlib 1.2.1 trees.c (retail strings " deflate 1.2.1 " / " inflate 1.2.1 "), C linkage; ordinary reconstruction per the 2026-11-01 vendor decision
+00d2f640	NScript::CQ_EndGameFocalSitesScript::~CQ_EndGameFocalSitesScript	chunk 665 RELOCATION_MATCH: ??_G 0x00D2F620 -> ctor -> Alloc -> registration `push "Q_EndGameFocalSites"`; both PDBs ??1 (catalog CParticleEmitter_Dtor_3)
+007aff70	CTCBoss::~CTCBoss	chunk 665 RELOCATION_MATCH: implicit; slot-0 ??_G + RTTI (catalog CChunkedFileChunk_Destructor_WithVectorCleanup)
+00dd1f40	NScript::CQ_OrchardFarmRaidScript::~CQ_OrchardFarmRaidScript	chunk 665 RELOCATION_MATCH: ??_G 0x00DD1F20; registration "Q_OrchardFarmRaid"
+007c5660	CTCGhostSword::~CTCGhostSword	chunk 665 RELOCATION_MATCH: user dtor, empty body; ??_G + RTTI (catalog Destroy_CChunkedFileChunk)
+009a1090	CStreamingFontBank::~CStreamingFontBank	chunk 665 RELOCATION_MATCH: ??_G + RTTI (catalog CTextureScreen_dtor)
+00d83350	NScript::CQ_HeroSoulsBriarScript::~CQ_HeroSoulsBriarScript	chunk 665 RELOCATION_MATCH: ??_G 0x00D83330; registration "Q_HeroSoulsBriar"
+0098e690	CThreadedFileManager::~CThreadedFileManager	chunk 665 RELOCATION_MATCH: ??_G + RTTI
+00d27290	NScript::CQ_DragonBossFightScript::~CQ_DragonBossFightScript	chunk 665 RELOCATION_MATCH: ??_G 0x00D27270; registration "Q_DragonBossFight"
+00d25410	NScript::CQ_DragonBossFightScript::CQ_DragonBossFightScript	chunk 665: its Alloc is registered as "Q_DragonBossFight" (landed/manifest as ??0CQ_NewOakValeIntroScript)
+00d27270	NScript::CQ_DragonBossFightScript::`scalar deleting destructor'	chunk 665 (landed as a CLandscapeBackgroundPatch stand-in)
+00d2f620	NScript::CQ_EndGameFocalSitesScript::`scalar deleting destructor'	chunk 665
+00d83330	NScript::CQ_HeroSoulsBriarScript::`scalar deleting destructor'	chunk 665
+00dd1f20	NScript::CQ_OrchardFarmRaidScript::`scalar deleting destructor'	chunk 665
+007acc50	std::_Rb_tree<CCharString,pair<const CCharString,bool>,...>::_M_erase	chunk 665 (landed as FreeTree_CTreeOwner_007acc50)
+0098fd80	std::_Rb_tree<unsigned long,pair<const unsigned long,CThreadedFileManager::CFileObject*>,...>::_M_erase	chunk 665 (landed under a CUnprovenKey spelling)
+00cdb3c0	NScript::CQ_OrchardFarmRaidScript::CCrateTeamManager::~CCrateTeamManager	chunk 665: nested class (landed as a global CCrateTeamManager)

@@ -35670,3 +35670,16 @@ _NEWLINE	013b8ba8	0121ab3f
 ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@U?$_Select1st@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@Z	00a21640	00a1cb40
 ?RegisterPrimitiveManager@CEnginePrimitiveTypeInfo@@QAEXPAVCEnginePrimitiveManager@@@Z	00b8fad0	00b33ae0
 ?_M_insert_overflow@?$vector@V?$CCountedPointer@VCEnginePrimitiveManager@@@@V?$allocator@V?$CCountedPointer@VCEnginePrimitiveManager@@@@@std@@@std@@IAEXPAV?$CCountedPointer@VCEnginePrimitiveManager@@@@ABV3@ABU__false_type@2@I_N@Z	00b38bb0	00b33ae0
+?Update@CombatDialogueManager@@QAEXXZ	008af780	006ed200
+?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z	006ed030	006ed200
+?_M_erase@?$_Rb_tree@KU?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Select1st@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@Z	0098fd80	0098e690
+?_M_erase@?$_Rb_tree@VCPendingObjectSortKey@CThreadedFileManager@@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@U?$_Select1st@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@U?$less@VCPendingObjectSortKey@CThreadedFileManager@@@4@V?$allocator@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCPendingObjectSortKey@CThreadedFileManager@@PAVCFileObject@2@@std@@@2@@Z	0098fd40	0098e690
+??_7CStreamingFontBank@@6B@	0129ab54	009a1090
+?g_StreamingFontBanks_013bda50@@3PAPAVCStreamingFontBank@@A	013bda50	009a1090
+?g_StreamingGlyphCache_013bda70@@3PAY07USStreamingGlyphCacheEntry_013bda70@@A	013bda70	009a1090
+_init_block	00c03ee0	00c051c0
+_static_bl_desc	0139c8d8	00c051c0
+_static_d_desc	0139c8c4	00c051c0
+_static_l_desc	0139c8b0	00c051c0
+?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@_N@std@@@2@@Z	007acc50	00d27290
+??1CCrateTeamManager@CQ_OrchardFarmRaidScript@NScript@@QAE@XZ	00cdb3c0	00dd1f40
