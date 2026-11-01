@@ -1,13 +1,13 @@
-// CTCOracleMinigame::PlayGame() -- start the oracle minigame at level 1: take the output interval from the def, find the four symbol objects and the gamesmaster by track name, clear the firing symbols and put the main player into the minigame mode
+// CTCOracleMinigame::PlayGame() -- start the oracle minigame at level 1: take the output interval from the def, find the four symbol objects by def name and the gamesmaster by script name, clear the firing symbols and put the main player into the minigame mode
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E5D20, length 475 bytes (+ int3 padding), esp frame, plain `ret`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, the CTCBase accessors
 // GetThingSearchTools @ 0x00686D90 and GetPlayerManager @ 0x00686D40 (propagated manifest labels), CThingSearchTools::
-// GetPFirstThing<CThingFilter_HasTrackName, ...> @ 0x007E6EC0 (symbols) and the second instantiation @ 0x0056D050 (the
-// gamesmaster; manifest names both "<CThingFilter_HasDefGlobalIndex,CThing>"), CPlayerManager::GetMainPlayer @ 0x00449970,
+// GetPFirstThing<CThingFilter_HasDefName, CThing> @ 0x007E6EC0 (the four symbols, OBJECT_* def names) and GetPFirstThing<CThingFilter_HasScriptName, CThing>
+// @ 0x0056D050 (the gamesmaster, a script name; both landed under those leaves), CPlayerManager::GetMainPlayer @ 0x00449970,
 // CPlayer::GetCurrentMode @ 0x00633BE0 / AddMode(EPlayerMode, bool) @ 0x006345C0 (mode 0x29).
 // Strings: "OBJECT_SS_ORACLE_SYMBOL_YELLOW_01" @ 0x0127078C, "..._RED_01" @ 0x0127076C, "..._GREEN_01" @ 0x01270748,
 // "..._BLUE_01" @ 0x01270728, "OracleGamesmaster" @ 0x01270714.
-// Shape: each track name is a NAMED CCharString in its own block (an unnamed temporary pushes the ctor's eax); the filter
+// Shape: each name is a NAMED CCharString in its own block (an unnamed temporary pushes the ctor's eax); the filter
 // copies it as a temporary, so the two frame slots alternate between the searches.
 // Layout (local model, as the landed Quit 0x007E62D0: engine/CTCOracleMinigame.h is the PDB with a 12-byte list; retail's
 // STLport list is one sentinel pointer, so SpeechMarker is +0xe4 and PDef +0xe8): Level +0x10, Stage +0x14,
@@ -19,13 +19,19 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-class CThingFilter_HasTrackName { public:
+class CThingFilter_HasDefName { public:                     // ??0CThingFilter_HasDefName@@QAE@ABVCCharString@@@Z (Ego_r.pdb; inline here)
     CCharString Name;
-    CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
+    CThingFilter_HasDefName(const CCharString& name) : Name(name) { }
+};
+class CThingFilter_HasScriptName { public:                  // ??0CThingFilter_HasScriptName@@QAE@ABVCCharString@@@Z (Ego_r.pdb; inline here)
+    CCharString Name;
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CThingFilter_HasTrackName& filter, CThing** out) const;         // 0x007E6EC0 (const: Ego_r / FableWin)
-    bool GetPFirstSpeechThing(const CThingFilter_HasTrackName& filter, CThing** out) const;   // 0x0056D050 (second instantiation)
+    template <class TFilter, class TThing> bool GetPFirstThing(const TFilter& filter, TThing** out) const;
+    // 0x007E6EC0 ??$GetPFirstThing@VCThingFilter_HasDefName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasDefName@@PAPAVCThing@@@Z (the four symbols, by def name)
+    // 0x0056D050 ??$GetPFirstThing@VCThingFilter_HasScriptName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasScriptName@@PAPAVCThing@@@Z (the gamesmaster, by script name)
+    // (Ego_r / FableWin.pdb member template; naming wave 20 -- both were named with CThingFilter_HasTrackName, a CThingTrackNode filter)
 };
 class CPlayer { public:
     long GetCurrentMode();                              // 0x00633BE0
@@ -75,23 +81,23 @@ void CTCOracleMinigame::PlayGame()
     TimeBetweenOutputs = PDef->TimeBetweenOutputs;
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_YELLOW_01");
-        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[0]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasDefName(name), &Symbols[0]);
     }
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_RED_01");
-        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[1]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasDefName(name), &Symbols[1]);
     }
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_GREEN_01");
-        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[2]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasDefName(name), &Symbols[2]);
     }
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_BLUE_01");
-        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[3]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasDefName(name), &Symbols[3]);
     }
     {
         CCharString name("OracleGamesmaster");
-        PeekThingSearchTools().GetPFirstSpeechThing(CThingFilter_HasTrackName(name), &SpeechMarker);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(name), &SpeechMarker);
     }
     SymbolsFiring[0] = 0;
     SymbolsFiring[1] = 0;

@@ -1,10 +1,10 @@
-// Behaviour test for 0x009E6530 CCharString::FastCompare: identity, null-first, length, then word-wise order.
+// Behaviour test for 0x009E6530 CCharString::operator<: identity, null-first, length, then word-wise order.
 #include <cstdio>
 #include <cstring>
 class CCharStringData { public: char* PData; unsigned long StringLength; };
 class CCharString { public:
     CCharStringData* PStringData;
-    bool FastCompare(const CCharString& other) const
+    bool operator<(const CCharString& other) const
     {
         const CCharStringData* b = other.PStringData;
         const CCharStringData* a = PStringData;
@@ -29,11 +29,11 @@ int main()
 {
     CCharStringData da = { bufA, 4 }, db = { bufB, 4 }, dc = { bufC, 2 };
     CCharString a = { &da }, b = { &db }, c = { &dc }, n = { 0 };
-    if (a.FastCompare(a) || !n.FastCompare(a) || a.FastCompare(n) || n.FastCompare(n)) { std::printf("009e6530_TEST FAIL\n"); return 1; }
-    if (!c.FastCompare(a) || a.FastCompare(c)) { std::printf("009e6530_TEST FAIL\n"); return 1; }    // shorter first
-    if (a.FastCompare(b) == b.FastCompare(a)) { std::printf("009e6530_TEST FAIL\n"); return 1; }      // strict
+    if (a.operator<(a) || !n.operator<(a) || a.operator<(n) || n.operator<(n)) { std::printf("009e6530_TEST FAIL\n"); return 1; }
+    if (!c.operator<(a) || a.operator<(c)) { std::printf("009e6530_TEST FAIL\n"); return 1; }    // shorter first
+    if (a.operator<(b) == b.operator<(a)) { std::printf("009e6530_TEST FAIL\n"); return 1; }      // strict
     CCharStringData da2 = { bufA, 4 }; CCharString a2 = { &da2 };
-    if (a.FastCompare(a2) || a2.FastCompare(a)) { std::printf("009e6530_TEST FAIL\n"); return 1; }    // equal text
+    if (a.operator<(a2) || a2.operator<(a)) { std::printf("009e6530_TEST FAIL\n"); return 1; }    // equal text
     std::printf("009e6530_TEST PASS\n");
     return 0;
 }

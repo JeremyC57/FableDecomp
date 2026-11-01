@@ -5,8 +5,8 @@
 //   (?GetInterpolationSet@CEnginePrimitive@@QBE?AW4EEngineInterpolationSet@@XZ) to a const reference; the bound
 //   temporary restarts the eax/edx copy alternation so the set and the filter bit both load into eax as retail.
 #include "rebuild_abi.h"
-extern const float EPSILON;   // 0x0129BA3C 1e-4f, the tree spelling (naming wave 13). ChatGPT reads the Ego_r public here as ?DELTA_NOTIONAL_ZERO@@3MB: confirm with a PDB data dump
-class C2DVector{public:float X,Y;float GetSquaredMagnitude()const{return X*X+Y*Y;}bool IsNonZero()const{return GetSquaredMagnitude()>EPSILON*EPSILON;}};
+extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (ESTABLISHED_SPELLINGS; naming wave 20) 1e-4f, the tree spelling (naming wave 13). ChatGPT reads the Ego_r public here as ?DELTA_NOTIONAL_ZERO@@3MB: confirm with a PDB data dump
+class C2DVector{public:float X,Y;float GetSquaredMagnitude()const{return X*X+Y*Y;}bool IsNonZero()const{return GetSquaredMagnitude()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO;}};
 class C2DBoxF{public:float TLX,TLY,BRX,BRY;};
 // Layout: original four-byte colour union is projected through its IntValue arm.
 class CRGBColour{public:unsigned long IntValue;};

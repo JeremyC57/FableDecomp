@@ -1,6 +1,6 @@
 // CDefStringTable::WriteTable(CDataOutputStream&) -- write the magic, random id, string count, blob size and the string blob
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4A50, length 96 bytes.
-// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0 (four times), CMemoryDataOutputStream::GetSize @ 0x00994B40 and
+// Callees: CDataOutputStream::WriteULONG @ 0x00993EA0 (four times), CMemoryDataOutputStream::GetLength @ 0x00994B40 and
 // ::PeekData @ 0x00995E70 on the stream at +0xc, CDataOutputStream vslot 4 WriteData(const void*, unsigned long).
 // Shape: the stream sub-object is addressed once (`add edi,0Ch`) and read through a named pointer; the virtual
 // WriteData pushes its size argument before evaluating PeekData() (right-to-left). PDB CDefStringTable: StringStream
@@ -13,7 +13,7 @@ public:
 };
 
 class CMemoryDataOutputStream { public:
-    unsigned long GetSize();                       // 0x00994B40
+    unsigned long GetLength() const;                       // 0x00994B40 ?GetLength@CMemoryDataOutputStream@@QBEKXZ (Ego_r / FableWin.pdb; naming wave 20)
     void const* PeekData() const;                              // 0x00995E70
 };
 
@@ -33,7 +33,7 @@ void CDefStringTable::WriteTable(CDataOutputStream& stream)
     stream.WriteULONG(RandomID);
     stream.WriteULONG(StringCount);
     CMemoryDataOutputStream* data = &StringStream;
-    unsigned long size = data->GetSize();
+    unsigned long size = data->GetLength();
     stream.WriteULONG(size);
     stream.WriteData(((void*)data->PeekData()), size);
 }

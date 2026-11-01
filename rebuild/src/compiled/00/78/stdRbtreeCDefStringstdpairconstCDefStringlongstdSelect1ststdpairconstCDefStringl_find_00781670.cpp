@@ -1,18 +1,18 @@
-// std::_Rb_tree<CUnprovenKey_00781670, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CUnprovenKey_00781670>, std::allocator<CUnprovenValue_00781670>>::find(CUnprovenKey_00781670 const &) -- STLport 4.6 find(const key_type&): _M_find inlined -- lower-bound walk from the root, end() unless the found key is not greater; iterator returned through the hidden pointer
+// std::_Rb_tree<CDefString, std::pair<const CDefString, long>, std::_Select1st<std::pair<const CDefString, long> >, std::less<CDefString>, std::allocator<std::pair<const CDefString, long> > >::find(const CDefString&) -- STLport 4.6 exact-key lookup returning the iterator by value (the header when absent)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00781670, 71 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_00781670 (key signed (jl/jge) or unobserved); every row of the instantiation shares them.
+// Types (naming wave 20, chunk 686): the map<CDefString, long> of CFlammableDef (+0x40): the landed GetEffectAtHelperPoint 0x007817F0 and
+//   GetAllFireHelpers 0x00781B90 walk the same tree (pair<const CDefString, long> at +0x10; CDefString = long TablePos, Ego_r.pdb); was the CUnproven* placeholders.
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
 //   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_longkey::find).
-// Leaf: ?find@?$_Rb_tree@UCUnprovenKey_00781670@@UCUnprovenValue_00781670@@UCUnprovenKeyOfValue_00781670@@U?$less@UCUnprovenKey_00781670@@@std@@V?$allocator@UCUnprovenValue_00781670@@@5@@std@@QAE?AU?$_Rb_tree_iterator@UCUnprovenValue_00781670@@U?$_Nonconst_traits@UCUnprovenValue_00781670@@@std@@@2@ABUCUnprovenKey_00781670@@@Z
+// Leaf: ?find@?$_Rb_tree@VCDefString@@U?$pair@$$CBVCDefString@@J@std@@
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_00781670 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_00781670& __x, const CUnprovenKey_00781670& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_00781670 { CUnprovenKey_00781670 _M_key; };
-struct CUnprovenKeyOfValue_00781670 { const CUnprovenKey_00781670& operator()(const CUnprovenValue_00781670& __v) const { return __v._M_key; } };
+class CDefString { public:                                     // Ego_r.pdb: long TablePos (4 bytes, class V)
+    long TablePos;
+    bool operator<(const CDefString& __y) const { return TablePos < __y.TablePos; }   // the signed `jl` / `jge` compare of the walk (no out-of-line operator< in either PDB)
+};
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -341,5 +341,6 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template _Rb_tree<CUnprovenKey_00781670, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, less<CUnprovenKey_00781670 >, allocator<CUnprovenValue_00781670 > >::iterator _Rb_tree<CUnprovenKey_00781670, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, less<CUnprovenKey_00781670 >, allocator<CUnprovenValue_00781670 > >::find(const CUnprovenKey_00781670&);
+typedef pair<const CDefString, long> _Val;
+template _Rb_tree<CDefString, _Val, _Select1st<_Val>, less<CDefString>, allocator<_Val> >::iterator _Rb_tree<CDefString, _Val, _Select1st<_Val>, less<CDefString>, allocator<_Val> >::find(const CDefString&);
 }

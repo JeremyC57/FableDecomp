@@ -1,7 +1,9 @@
-// std::_Rb_tree<CCharString, pair<const CCharString, CUnprovenValue_0042b467>, ...>::_M_find(const CCharString& k) const -- STLport exact-key lookup: the last node whose key is not less than k, unless it is the header or k is less than its key (then the header)
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@ECUnprovenValue_0042b467@@
+// std::_Rb_tree<CCharString, pair<const CCharString, long>, ...>::_M_find(const CCharString& k) const -- STLport exact-key lookup: the last node whose key is not less than k, unless it is the header or k is less than its key (then the header)
+// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042B467, 92 bytes, thiscall `ret 4`, frame pointer (size TU); returns the node.
-// Identity (descriptive): a CCharString-keyed tree of this TU (callers 0x0042B8FC / 0x0042BEF2, both propagated labels; reloc_bindings has only the stand-in CSubDefMap::find); the mapped type is not recoverable.
+// Identity (naming wave 20, chunk 686): the map<CCharString, long> of this TU -- its insert_unique 0x00431606 (landed: "the tree is map<CCharString, long>") and
+//   _M_erase 0x0043020A are the same instantiation; chunk 686 reads it as the helper-count map of CTCFlammable::InitFirePoints 0x007808B0 and the
+//   landed CMap caller 0x004FE510 as its name -> index map<CCharString, long> (was the CUnprovenValue_0042b467 placeholder).
 // Callees: std::less<CCharString>::operator() 0x0042AAB3 (out of line in this TU, `this` = the tree's comparator at +8).
 // Shape (family K085, representative 0x0042B467): the landed _M_find 0x00756350 text under `optimize("y", off)` +
 //   `("s", on)`: the comparator call is not inlined, the candidate lives in the one frame word and the header, read
@@ -9,7 +11,6 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CCharString { public: void* PStringData; };
-struct CUnprovenValue_0042b467 { };                     // mapped type not recoverable (only the key is read here)
 namespace std {
 
 template <class _Tp> class allocator { };
@@ -82,7 +83,7 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
     return __y;
 }
 
-typedef pair<const CCharString, CUnprovenValue_0042b467> _Val;
+typedef pair<const CCharString, long> _Val;
 template _Rb_tree_node<_Val>* _Rb_tree<CCharString, _Val, _Select1st<_Val>, less<CCharString>, allocator<_Val> >::_M_find(const CCharString&) const;
 
 } // namespace std

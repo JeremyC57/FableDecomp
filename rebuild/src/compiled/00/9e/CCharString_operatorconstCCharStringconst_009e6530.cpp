@@ -1,5 +1,8 @@
-// CCharString::FastCompare(const CCharString&) const -- cheap strict ordering for sorted containers: by block identity, then by length, then by the text compared one 32-bit word at a time
-// Leaf: ?FastCompare@CCharString
+// CCharString::operator<(const CCharString&) const -- cheap strict ordering for sorted containers: by block identity, then by length, then by the text compared one 32-bit word at a time
+// Leaf: ??MCCharString@@QBE_NABV0@@Z
+// Name (naming wave 20, chunk 686): FableWin.pdb ??MCCharString@@QBE_NABV0@@Z -- the CCompareString comparator of the landed chunk-686 sort rows
+//   (__introsort_loop 0x00CBDAD0, __unguarded_linear_insert 0x00CBA9B0 ...) and of CVectorMap<CCharString, ...>::LowerBound 0x00CBA1F0 calls it as
+//   `a.first < b.first`; it is not CBasicString<char>::operator< 0x00429950 (the lexicographic one). Was the descriptive operator<.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6530, 108 bytes (`ret 4`, bool in al).
 // Callees: none.
 // Shape: the same block (or both unassigned) is "not less"; an unassigned string sorts before any assigned one; a
@@ -24,10 +27,10 @@ class CCharStringData { public:                        // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
-    bool FastCompare(const CCharString& other) const;
+    bool operator<(const CCharString& other) const;
 };
 
-bool CCharString::FastCompare(const CCharString& other) const
+bool CCharString::operator<(const CCharString& other) const
 {
     const CCharStringData* b = other.PStringData;
     const CCharStringData* a = PStringData;

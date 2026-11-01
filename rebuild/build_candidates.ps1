@@ -153544,9 +153544,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00781670'
-        Module = 'std::_Rb_tree<CUnprovenKey_00781670,CUnprovenValue_00781670,CUnprovenKeyOfValue_00781670,std::less<CUnprovenKey_00781670>,std::allocator<CUnprovenValue_00781670> >'
-        Source = '00/78/stdRbtreeCUnprovenKey00781670CUnprovenValue00781670CUnprovenKeyOfValue00781670st_find_00781670.cpp'
-        TestSource = '00/78/stdRbtreeCUnprovenKey00781670CUnprovenValue00781670CUnprovenKeyOfValue00781670st_find_00781670_test.cpp'
+        Module = 'std::_Rb_tree<CDefString,std::pair<const CDefString,long>,std::_Select1st<std::pair<const CDefString,long> >,std::less<CDefString>,std::allocator<std::pair<const CDefString,long> > >'
+        Source = '00/78/stdRbtreeCDefStringstdpairconstCDefStringlongstdSelect1ststdpairconstCDefStringl_find_00781670.cpp'
+        TestSource = '00/78/stdRbtreeCDefStringstdpairconstCDefStringlongstdSelect1ststdpairconstCDefStringl_find_00781670_test.cpp'
         PassPattern = '00781670_TEST PASS'
     }
     [pscustomobject]@{
@@ -222398,8 +222398,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009e6530'
         Module = 'CCharString'
-        Source = '00/9e/CCharString_FastCompare_009e6530.cpp'
-        TestSource = '00/9e/CCharString_FastCompare_009e6530_test.cpp'
+        Source = '00/9e/CCharString_operatorconstCCharStringconst_009e6530.cpp'
+        TestSource = '00/9e/CCharString_operatorconstCCharStringconst_009e6530_test.cpp'
         PassPattern = '009e6530_TEST PASS'
     }
     [pscustomobject]@{
@@ -228585,9 +228585,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac99f0'
-        Module = 'COptimisedPrimitive'
-        Source = '00/ac/COptimisedPrimitive_RemapGroups_00ac99f0.cpp'
-        TestSource = '00/ac/COptimisedPrimitive_RemapGroups_00ac99f0_test.cpp'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_RemapGroups_00ac99f0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_RemapGroups_00ac99f0_test.cpp'
         PassPattern = '00ac99f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -233681,8 +233681,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007e6ec0'
         Module = 'CThingSearchTools'
-        Source = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_007e6ec0.cpp'
-        TestSource = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasDefGlobalIndexCThin_007e6ec0_test.cpp'
+        Source = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasDefNameCThing_007e6ec0.cpp'
+        TestSource = '00/7e/CThingSearchTools_GetPFirstThingCThingFilterHasDefNameCThing_007e6ec0_test.cpp'
         PassPattern = '007e6ec0_TEST PASS'
     }
     [pscustomobject]@{
@@ -334406,9 +334406,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042b467'
-        Module = 'std::_Rb_tree<CCharString, pair<const CCharString, CUnprovenValue_0042b467>, ...>'
-        Source = '00/42/stdRbtreeCCharStringpairconstCCharStringCUnprovenValue0042b467_Mfind_0042b467.cpp'
-        TestSource = '00/42/stdRbtreeCCharStringpairconstCCharStringCUnprovenValue0042b467_Mfind_0042b467_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,long>,std::_Select1st<std::pair<const CCharString,long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,long> > >'
+        Source = '00/42/stdRbtreeCCharStringstdpairconstCCharStringlongstdSelect1ststdpairconstCCharStri_Mfind_0042b467.cpp'
+        TestSource = '00/42/stdRbtreeCCharStringstdpairconstCCharStringlongstdSelect1ststdpairconstCCharStri_Mfind_0042b467_test.cpp'
         PassPattern = '0042b467_TEST PASS'
     }
     [pscustomobject]@{

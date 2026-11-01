@@ -1,13 +1,13 @@
-// Behaviour test for 00781670: std::_Rb_tree<CUnprovenKey_00781670, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CUnprovenKey_00781670>, std::allocator<CUnprovenValue_00781670>>::find (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
+// Behaviour test for 00781670: std::_Rb_tree<CDefString, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CDefString>, std::allocator<CUnprovenValue_00781670>>::find (STLport 4.6 _Rb_tree model, real rebalancing; exercises the same member)
 #include <cstdio>
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_00781670 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_00781670& __x, const CUnprovenKey_00781670& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_00781670 { CUnprovenKey_00781670 _M_key; };
-struct CUnprovenKeyOfValue_00781670 { const CUnprovenKey_00781670& operator()(const CUnprovenValue_00781670& __v) const { return __v._M_key; } };
+struct CDefString { long _M_unproven; };
+inline bool operator<(const CDefString& __x, const CDefString& __y) { return __x._M_unproven < __y._M_unproven; }
+struct CUnprovenValue_00781670 { CDefString _M_key; };
+struct CUnprovenKeyOfValue_00781670 { const CDefString& operator()(const CUnprovenValue_00781670& __v) const { return __v._M_key; } };
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -579,8 +579,8 @@ _Rb_tree_node_base* __cdecl _Rb_global<_Dummy>::_Rebalance_for_erase(_Rb_tree_no
     return __y;
 }
 }
-struct _TestTree : public std::_Rb_tree<CUnprovenKey_00781670, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CUnprovenKey_00781670 >, std::allocator<CUnprovenValue_00781670 > > {
-    _TestTree() : std::_Rb_tree<CUnprovenKey_00781670, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CUnprovenKey_00781670 >, std::allocator<CUnprovenValue_00781670 > >(std::less<CUnprovenKey_00781670 >(), std::allocator<CUnprovenValue_00781670 >()) { }
+struct _TestTree : public std::_Rb_tree<CDefString, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CDefString >, std::allocator<CUnprovenValue_00781670 > > {
+    _TestTree() : std::_Rb_tree<CDefString, CUnprovenValue_00781670, CUnprovenKeyOfValue_00781670, std::less<CDefString >, std::allocator<CUnprovenValue_00781670 > >(std::less<CDefString >(), std::allocator<CUnprovenValue_00781670 >()) { }
     std::_Rb_tree_node_base* hdr() { return this->_M_header._M_data; }
     unsigned int cnt() { return this->_M_node_count; }
 };
@@ -596,8 +596,8 @@ int main()
     { CUnprovenValue_00781670 v3; v3._M_key._M_unproven = 3; if (!(t.insert_unique(v3).second)) ok = 0; }
     { CUnprovenValue_00781670 v2; v2._M_key._M_unproven = 2; if (!(!t.insert_unique(v2).second)) ok = 0; }
     if (!(t.size() == 6)) ok = 0;
-    { CUnprovenKey_00781670 k8; k8._M_unproven = 8; if (!(t.find(k8) != t.end() && (*t.find(k8))._M_key._M_unproven == 8)) ok = 0; }
-    { CUnprovenKey_00781670 k4; k4._M_unproven = 4; if (!(t.find(k4) == t.end())) ok = 0; }
+    { CDefString k8; k8._M_unproven = 8; if (!(t.find(k8) != t.end() && (*t.find(k8))._M_key._M_unproven == 8)) ok = 0; }
+    { CDefString k4; k4._M_unproven = 4; if (!(t.find(k4) == t.end())) ok = 0; }
     if (!ok) { std::printf("00781670_TEST FAIL\n"); return 1; }
     std::printf("00781670_TEST PASS\n");
     return 0;

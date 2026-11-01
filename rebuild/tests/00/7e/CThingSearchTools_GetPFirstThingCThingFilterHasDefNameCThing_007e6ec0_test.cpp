@@ -1,24 +1,16 @@
-// CThingSearchTools::GetPFirstThing<CThingFilter_HasDefGlobalIndex, CThing>(const CThingFilter_HasDefGlobalIndex&, CThing**) -- first scan-visible thing passing the filter (byte twin of 0x006D3FB0)
-// Leaf: GetPFirstThing
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x007E6EC0, length 99 bytes (`ret 8`).
-// Callees: PeekAllThings() 0x0049C770, CThingFilter_HasDefGlobalIndex::operator() 0x006A7BE0 (manifest: CThingFilter_HasDefName).
-// Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
-// getter); CThing is a local retail-layout model (see below; retail sits 0x10 below Ego_r.pdb from
-// ThingTypeFlags on). The thing type is selected by its THING_TYPE mask (TThing::ThingTypeMask).
-#include "engine/CThingSearchTools.h"
+#include <cstdio>
+class CThingSearchTools { public: void* WorldMap; void* PThingMapManager; void* ThingManager; };
 
-// ---- CThing (retail layout; Ego_r.pdb offsets in brackets) -------------------------------------
-// Retail CThing sits 0x10 below the PDB from ThingTypeFlags on (the PDB bitset<274> and vector map
-// carry debug padding): UsingComponents +0x20 [PDB +0x20], ThingTypeFlags +0x6c [PDB +0x7c],
-// the state bit byte +0x91 [PDB +0xa1] = Dead 0x01, IncludeInThingScans 0x04, Activated 0x08, InLimbo 0x20.
 class CThing { public:
     enum { ThingTypeMask = 0 };                       // every thing matches the CThing type mask
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                 // +0x20 bitset of present thing components
-    unsigned char _pad_0x44[0x6c - 0x44];
+    unsigned char _pad_0x44[0x68 - 0x44];
+    long WorldFrameCreatedAt;
     unsigned long ThingTypeFlags;                     // +0x6c THING_TYPE_* inheritance bits
     unsigned char _pad_0x70[0x91 - 0x70];
     unsigned char StateBits;                          // +0x91 Dead / IncludeInThingScans / Activated / InLimbo
+    int TestPass, TestCategory, TestDist; unsigned long TestVFlags;   // test-only fields
 
     // CThing::IsIncludedInThingScans (out of line at 0x0048BC40), inlined here.
     bool IsIncludedInThingScans() const
@@ -31,14 +23,11 @@ class CThing { public:
     }
 };
 
-// The type test: the mask is copied into a local first, so VC7.1 folds `x & 0` for CThing late
-// and keeps retail's `xor al,al ; jne` (a constant enum operand folds the whole test away).
 template <class T> inline bool IsThingOfType(const CThing* thing)
 {
     unsigned long mask = T::ThingTypeMask;
     return (thing->ThingTypeFlags & mask) == mask;
 }
-// std::list<CThing*> (STLport: the node pointer at +0, node = next, prev, value).
 struct CThingList {
     struct SNode { SNode* m_pNext; SNode* m_pPrev; CThing* m_value; };
     SNode* m_pHead;
@@ -54,10 +43,10 @@ struct CThingList {
 };
 
 
-namespace N_006a7be0 { struct CThingFilter_HasDefGlobalIndex {
+namespace N_006a7be0 { struct CThingFilter_HasDefName {
     unsigned short DefGlobalIndex;
     bool operator()(const CThing* thing) const;      // 0x006A7BE0 (manifest: CThingFilter_HasDefName)
-}; } using N_006a7be0::CThingFilter_HasDefGlobalIndex;
+}; } using N_006a7be0::CThingFilter_HasDefName;
 
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekAllThings();                      // 0x0049C770: &ThingManager->(all-things list at +0x18)
@@ -68,7 +57,6 @@ struct CThingSearchToolsMethods : CThingSearchTools {
     template <class TFilter, class TCompare, class TThing> bool GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out);
 };
 
-// First thing of the whole thing list that is of type TThing, scan-visible and passes the filter.
 template <class TFilter, class TThing>
 bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** out)
 {
@@ -85,7 +73,6 @@ bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** ou
     return false;
 }
 
-// First scan-visible thing of TThing's own type list that passes the filter.
 template <class TFilter, class TThing>
 bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing** out)
 {
@@ -102,7 +89,6 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     return false;
 }
 
-// Best (by the comparator) scan-visible TThing of the whole thing list that passes the filter.
 template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
@@ -123,7 +109,6 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
     return best != 0;
 }
 
-// Best scan-visible thing of TThing's own type list that passes the filter.
 template <class TFilter, class TCompare, class TThing>
 bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TCompare& compare, TThing** out)
 {
@@ -139,4 +124,60 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     return best != 0;
 }
 
-template bool CThingSearchToolsMethods::GetPFirstThing<CThingFilter_HasDefGlobalIndex, CThing >(const CThingFilter_HasDefGlobalIndex&, CThing**);
+template bool CThingSearchToolsMethods::GetPFirstThing<CThingFilter_HasDefName, CThing >(const CThingFilter_HasDefName&, CThing**);
+
+static CThingList g_list;
+static CThingList g_empty;
+CThingList* CThingSearchToolsMethods::PeekAllThings() { return &g_list; }
+CThingList* CThingSearchToolsMethods::PeekTypeList(long) { return &g_list; }
+bool CThingFilter_HasDefName::operator()(const CThing* thing) const { return thing->TestPass != 0; }
+
+static void Link(CThingList& l, CThingList::SNode* head, CThingList::SNode* nodes, CThing** things, int n)
+{
+    l.m_pHead = head; head->m_pNext = head; head->m_pPrev = head;
+    for (int i = 0; i < n; ++i) {
+        CThingList::SNode* nd = &nodes[i];
+        nd->m_value = things[i];
+        nd->m_pPrev = head->m_pPrev; nd->m_pNext = head;
+        head->m_pPrev->m_pNext = nd; head->m_pPrev = nd;
+    }
+}
+int main()
+{
+    static CThing objs[5];
+    CThing* things[5];
+    // 0 hidden from scans; 1 untyped (CThing only); 2 typed, fails the filters; 3 and 4 typed and passing
+    const int vis[5] = { 0x00, 0x0c, 0x0c, 0x0c, 0x0c };
+    const int typ[5] = { 0xffff, 0, 0xffff, 0xffff, 0xffff };
+    const int pass[5] = { 1, 1, 0, 1, 1 };
+    const int dist[5] = { 0, 9, 7, 5, 2 };
+    const int born[5] = { 9, 1, 8, 3, 2 };
+    for (int i = 0; i < 5; ++i) {
+        CThing* t = &objs[i];
+        t->StateBits = (unsigned char)vis[i];
+        t->ThingTypeFlags = (unsigned long)typ[i];
+        t->TestPass = pass[i];
+        t->TestCategory = pass[i] ? 1 : 0;
+        t->TestDist = dist[i];
+        t->TestVFlags = pass[i] ? 0x8000u : 0u;
+        for (int w = 0; w < 9; ++w) t->UsingComponents[w] = 0;
+        if (pass[i]) t->UsingComponents[1] = 1u << 13;
+        t->WorldFrameCreatedAt = born[i];
+        things[i] = t;
+    }
+    CThingList::SNode head, nodes[5], head2;
+    Link(g_list, &head, nodes, things, 5);
+    Link(g_empty, &head2, nodes, things, 0);
+    CThingFilter_HasDefName filter = CThingFilter_HasDefName();
+    
+    CThingSearchToolsMethods tools;
+    CThing* out = 0;
+    bool ok = tools.GetPFirstThing(filter, &out);
+    if (!ok || out != (CThing*)things[1]) { std::printf("007e6ec0_TEST FAIL\n"); return 1; }
+    g_list = g_empty;
+    out = (CThing*)things[0];
+    ok = tools.GetPFirstThing(filter, &out);
+    if (ok) { std::printf("007e6ec0_TEST FAIL\n"); return 1; }
+    std::printf("007e6ec0_TEST PASS\n");
+    return 0;
+}

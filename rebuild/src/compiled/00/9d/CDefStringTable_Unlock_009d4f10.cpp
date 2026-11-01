@@ -1,7 +1,7 @@
 // CDefStringTable::Unlock() -- leave the locked state: unless read-only, rebuild the name -> offset map from the string blob (each record: a 4-byte header, the characters and their terminator) and clear Locked
 // Leaf: Unlock
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4F10, length 119 bytes.
-// Callees: CMemoryDataOutputStream::PeekData @ 0x00995E70 and ::GetSize @ 0x00994B40 on the stream at +0xc (the manifest's
+// Callees: CMemoryDataOutputStream::PeekData @ 0x00995E70 and ::GetLength @ 0x00994B40 on the stream at +0xc (the manifest's
 // "CCreatureActionBase::GetFramesRemaining" for 0x00994B40 is propagated), CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0, map<CCharString, long>::operator[] @ 0x00519230 (manifest "map<CCharString, C2DVector>" is propagated across
 // identical bodies), CCharString::~CCharString @ 0x0099EAE0.
@@ -27,7 +27,7 @@ struct CStringOffsetMap {                           // map<CCharString, long> (S
 };
 
 class CMemoryDataOutputStream { public:
-    unsigned long GetSize();                        // 0x00994B40
+    unsigned long GetLength() const;                        // 0x00994B40 ?GetLength@CMemoryDataOutputStream@@QBEKXZ (Ego_r / FableWin.pdb; naming wave 20)
     void const* PeekData() const;                               // 0x00995E70
 };
 
@@ -52,7 +52,7 @@ void CDefStringTable::Unlock()
         return;
     CMemoryDataOutputStream* stream = &StringStream;
     const char* data = (const char*)((void*)stream->PeekData());
-    unsigned long size = stream->GetSize();
+    unsigned long size = stream->GetLength();
     for (unsigned long offset = 4; offset < size; ) {
         CCharString name(data + offset + 4, -1);
         StringMap[name] = offset;
