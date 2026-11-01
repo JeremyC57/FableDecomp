@@ -1,0 +1,17 @@
+addr       parity           behav  name
+0077a350   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0077a350   RELOCATION_MATCH PASS   CTCDExperienceOrb::GetExperienceOrbsToCreateForTotalExperience
+007dc750   RELOCATION_MATCH PASS   std::vector<long>::insert
+0086d240   RELOCATION_MATCH PASS   CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph> >::GetKeyList
+
+WINS: 3
+  0077a350 RELOCATION_MATCH CTCDExperienceOrb::?GetExperienceOrbsToCreateForTotalExperience@CTCDExperienceOrb
+  007dc750 RELOCATION_MATCH std::vector<long>::?insert@?$vector@
+  0086d240 RELOCATION_MATCH CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph> >::GetKeyList
+addr       parity           behav  name
+007cb850   RELOCATION_MATCH PASS   CTCHeroReceiveItems::SetItemAsPickedUp
+008285d0   RELOCATION_MATCH PASS   CRegionConnectionNode::SetAsConnectedToRegion
+
+WINS: 2
+  007cb850 RELOCATION_MATCH CTCHeroReceiveItems::?SetItemAsPickedUp@CTCHeroReceiveItems
+  008285d0 RELOCATION_MATCH CRegionConnectionNode::?SetAsConnectedToRegion@CRegionConnectionNode

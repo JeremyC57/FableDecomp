@@ -1,0 +1,18 @@
+addr       parity           behav  name
+009a7720   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009a7720   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009a7720   RELOCATION_MATCH PASS   CBankFileManager::CreateRetailBank
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00a60aa0   RELOCATION_MATCH PASS   CChecksumCacheFile::Save
+
+WINS: 2
+  009a7720 RELOCATION_MATCH CBankFileManager::CreateRetailBank
+  00a60aa0 RELOCATION_MATCH CChecksumCacheFile::Save
+addr       parity           behav  name
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CFileDataOutputStream
+009d4ce0   RELOCATION_MATCH PASS   CDefStringTable::SaveTable
+
+WINS: 1
+  009d4ce0 RELOCATION_MATCH CDefStringTable::?SaveTable@CDefStringTable@@QAEX_N@Z

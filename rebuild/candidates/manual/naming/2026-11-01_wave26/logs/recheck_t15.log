@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00d9f270   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9f270   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d9f270   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::CMC_Minion::Main
+
+WINS: 1
+  00d9f270 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_Minion::?Main@CMC_Minion@CQ_MinionCampScript@NScript

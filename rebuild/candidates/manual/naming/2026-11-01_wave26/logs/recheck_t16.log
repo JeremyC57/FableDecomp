@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00718810   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleGoToLookAt::`scalar_deleting_destructor'
+00854500   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleOpenChest::`scalar_deleting_destructor'
+00854580   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleOpenGate::`scalar_deleting_destructor'
+
+WINS: 3
+  00718810 RELOCATION_MATCH NCameraModes::CScriptModuleGoToLookAt::?CScriptModuleGoToLookAt_CompositeScalarDeletingDestructor@@
+  00854500 RELOCATION_MATCH NCameraModes::CScriptModuleOpenChest::?CScriptModuleOpenChest_CompositeScalarDeletingDestructor@@
+  00854580 RELOCATION_MATCH NCameraModes::CScriptModuleOpenGate::?CScriptModuleOpenGate_CompositeScalarDeletingDestructor@@
+addr       parity           behav  name
+00854450   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleTransitionBetweenPoints::`scalar_deleting_destructor'
+00854540   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleUseLamp::`scalar_deleting_destructor'
+
+WINS: 2
+  00854450 RELOCATION_MATCH NCameraModes::CScriptModuleTransitionBetweenPoints::?CScriptModuleTransitionBetweenPoints_CompositeScalarDeletingDestructor@@
+  00854540 RELOCATION_MATCH NCameraModes::CScriptModuleUseLamp::?CScriptModuleUseLamp_CompositeScalarDeletingDestructor@@

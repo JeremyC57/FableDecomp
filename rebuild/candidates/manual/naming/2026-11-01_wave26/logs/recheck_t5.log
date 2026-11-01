@@ -1,0 +1,48 @@
+addr       parity           behav  name
+004ff080   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004ff080   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess
+004ff080   WARN SHARED_HEADER_AVAILABLE CWorld
+004ff080   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004ff080   RELOCATION_MATCH PASS   CWorldMap::LoadTopologyFromFile
+007714b0   RELOCATION_MATCH PASS   CTCOpinionSource::PushNewSourceDef
+00a86e20   RELOCATION_MATCH PASS   CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet
+00f37030   RELOCATION_MATCH PASS   CGPUScratchBufferTextureManager::FreeMemoryPage
+
+WINS: 4
+  004ff080 RELOCATION_MATCH CWorldMap::LoadTopologyFromFile
+  007714b0 RELOCATION_MATCH CTCOpinionSource::PushNewSourceDef
+  00a86e20 RELOCATION_MATCH CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet
+  00f37030 RELOCATION_MATCH CGPUScratchBufferTextureManager::?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z
+addr       parity           behav  name
+005fc620   WARN SHARED_HEADER_AVAILABLE CRegion
+005fc620   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fc620   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005fc620   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fc620   WARN RELOC_NAME: ?GetAllThings@CThingSearchTools@@QAEXABUCFilter_Bind2@@AAU?$list@PAVCThing@@@@@Z -> 00617780 labelled 'CThingSearchTools::GetAllLeafThings<CThingMarker, std::list<CThingMarker const *, std::allocator<CThingMarker const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+005fc620   RELOCATION_MATCH PASS   CTCInventoryMap::FindTeleports
+007fede0   WARN SHARED_HEADER_AVAILABLE CWorld
+007fede0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fede0   RELOCATION_MATCH PASS   CTCUserActionPointBase::GetFreeActionPoint
+00aebaf0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aebaf0   WARN RELOC_NAME: ?FindString_004b8e40@@YIPAVCCharString@@PAV1@0ABV1@ABUSRandomAccessIteratorTag@@@Z -> 004b8e40 labelled 'std::__find<CCharString*, CCharString>'
+00aebaf0   WARN RELOC_NAME: ?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__false_type@@K_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00aebaf0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterManager::GetActiveEmitterNames
+
+WINS: 3
+  005fc620 RELOCATION_MATCH CTCInventoryMap::FindTeleports
+  007fede0 RELOCATION_MATCH CTCUserActionPointBase::GetFreeActionPoint
+  00aebaf0 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::GetActiveEmitterNames
+addr       parity           behav  name
+00666b50   WARN SHARED_HEADER_AVAILABLE CWorld
+00666b50   WARN RELOC_NAME: ?SelectAnimation@CTCCombatAnimations@@QAEJABUCAnimationDefVector@@@Z -> 007345d0 labelled 'CTCCombat::GetAppropriateCombatAnimationFromList'
+00666b50   WARN RELOC_NAME: ?GetCombatInfo@CAnimationDef@@QBEXPAPBUSCombatAnimInfo@@@Z -> 00669cb0 labelled 'CAnimationEntry::GetComponent<CAnimComponentCombatHandedness>'
+00666b50   WARN RELOC_NAME: ?GetWorld@CThing@@QAEPAVCWorld@@XZ -> 004c7ab0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7ab0'
+00666b50   WARN RELOC_NAME: ?GetPRandomSeed@CWorld@@QAEPAKXZ -> 0049d810 labelled 'CWorld::GetWorldSeed'
+00666b50   RELOCATION_MATCH PASS   CThingCreatureBase::GetAppropriateCombatAnimationFromList
+0098a9a0   RELOCATION_MATCH PASS   CShaderRenderManager::CreatePixelShader
+00bc7920   RELOCATION_MATCH PASS   CEnginePrimitiveManagerText::GetSupportedTypes
+
+WINS: 3
+  00666b50 RELOCATION_MATCH CThingCreatureBase::GetAppropriateCombatAnimationFromList
+  0098a9a0 RELOCATION_MATCH CShaderRenderManager::CreatePixelShader
+  00bc7920 RELOCATION_MATCH CEnginePrimitiveManagerText::GetSupportedTypes

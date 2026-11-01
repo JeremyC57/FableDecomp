@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0098a9a0   RELOCATION_MATCH PASS   CShaderRenderManager::CreatePixelShader
+
+WINS: 1
+  0098a9a0 RELOCATION_MATCH CShaderRenderManager::CreatePixelShader

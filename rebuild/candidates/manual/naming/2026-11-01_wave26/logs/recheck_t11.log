@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00bb1640   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DSprites::GetSupportedTypes
+00bc7920   RELOCATION_MATCH PASS   CEnginePrimitiveManagerText::GetSupportedTypes
+
+WINS: 2
+  00bb1640 RELOCATION_MATCH CEnginePrimitiveManager2DSprites::?GetSupportedTypes@CEnginePrimitiveManager2DSprites@@UBEXAAVCEnginePrimitiveTypeList@@@Z
+  00bc7920 RELOCATION_MATCH CEnginePrimitiveManagerText::?GetSupportedTypes@CEnginePrimitiveManagerText@@UBEXAAVCEnginePrimitiveTypeList@@@Z

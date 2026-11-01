@@ -1,0 +1,22 @@
+addr       parity           behav  name
+005fdad0   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fdad0   RELOCATION_MATCH PASS   CTCInventoryMap::Copy
+009aef60   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009aef60   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009aef60   WARN RELOC_NAME: ?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z -> 00999c50 labelled 'CAFile::StartFileScan'
+009aef60   RELOCATION_MATCH PASS   CDefinitionManager::CreateSymbolsFromPathList
+
+WINS: 2
+  005fdad0 RELOCATION_MATCH CTCInventoryMap::Copy
+  009aef60 RELOCATION_MATCH CDefinitionManager::CreateSymbolsFromPathList
+addr       parity           behav  name
+0071ce80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0071ce80   RELOCATION_MATCH PASS   CTCHeroMorph::GetTattooNames
+009af480   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009af480   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009af480   WARN RELOC_NAME: ?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z -> 00999c50 labelled 'CAFile::StartFileScan'
+009af480   RELOCATION_MATCH PASS   CDefinitionManager::DoCompilePathList
+
+WINS: 2
+  0071ce80 RELOCATION_MATCH CTCHeroMorph::GetTattooNames
+  009af480 RELOCATION_MATCH CDefinitionManager::DoCompilePathList

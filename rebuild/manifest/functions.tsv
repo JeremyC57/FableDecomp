@@ -1606,7 +1606,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00440770	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CGuiControlTreePane_SortTreeRecursively_00440770.cpp
 004407b0	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\CGuiControlTreePane_SortTreeRecursively_004407b0.cpp
 004408a0	Std_Vector_Insert_Range	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x004408A0_global_Std_Vector_Insert_Range.cpp				
-00440990	_M_insert_overflow	std::vector<long, std::allocator<long>>	unknown	undefined	0		0	yes	accepted									
+00440990	_M_insert_overflow	std::vector<long,std::allocator<long> >	unknown	undefined	0		0	yes	accepted									
 00440a70	~vector<CConversation,std::allocator<CConversation>_>	~vector<CConversation,std	__thiscall	void	1	vector<CConversation,std::allocator<CConversation>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\vectorCConversationstd_allocatorCConversation_00440a70.cpp
 00440ad0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\44\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00440ad0.cpp
 00440b40	Vector_DestructStringRange	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\44\0x00440B40_global_Vector_DestructStringRange.cpp				
@@ -19832,7 +19832,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007444d0	SetGiveUpChaseRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 00744500	SetSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
 00744540	SetSightRadius	CTCPerceiveThing	__thiscall	void	2	CTCPerceiveThing *,float	1	yes	accepted									
-00744580	GetExtendedSightRadius	CTCPerceiveThing	__thiscall	float	1	CTCPerceiveThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CTCPerceiveThing_GetExtendedSightRadius_00744580.cpp
+00744580	GetTimeBasedVisibilityMultiplier	CTCPerceiveThing	__thiscall	float	1	CTCPerceiveThing *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CTCPerceiveThing_GetExtendedSightRadius_00744580.cpp
 007445d0	GetAirResistance	CTCPhysicsBase	__thiscall	float	1	CTCPhysicsBase *	1	yes	accepted									
 007445e0	CTCPerceiveThing	CTCPerceiveThing	__thiscall	undefined	2	CTCPerceiveThing *,CThing *	0	yes	accepted									
 007446a0	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
@@ -21984,7 +21984,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007acf70	_M_insert	std::_Rb_tree<CCharString, std::pair<CCharString const, bool>, std::_Select1st<std::pair<CCharString const, bool>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>	unknown	undefined	0		0	yes	accepted									
 007ad060	insert_unique	FableTree_007ad060::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 007ad160	insert	std::map<CCharString, bool, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>	unknown	undefined	0		0			discovered	gapscan							
-007ad180	LTextBinTree_EraseRange	_global	unknown	undefined	0		0	yes	accepted									
+007ad180	erase	std::_Rb_tree<CCharString, std::pair<CCharString const, bool>, std::_Select1st<std::pair<CCharString const, bool>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>	unknown	undefined	0		0	yes	accepted									
 007ad270	LTextBinTree_SerializeNode	_global	unknown	undefined	0		0	yes	accepted									
 007ad300	?Transfer@CAIScratchpadDef@@UAEXAAVCPersistContext@@@Z	CAIScratchpadDef	__thiscall	void	2	CAIScratchpadDef *,CPersistContext *	1	yes	accepted									
 007ad6d0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
@@ -27351,8 +27351,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a7610	?SetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a76f0	?GetTargetingDistanceOffset@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a77f0	?ResetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a78e0	CGameScriptInterface::ClearActiveGossipCategories	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A78E0_global_ClearActiveGossipCategories_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearActiveGossipCategories_008a78e0.cpp
-008a7930	CGameScriptInterface::ClearIsGossipForPlayer	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7930_global_ClearIsGossipForPlayer_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearIsGossipForPlayer_008a7930.cpp
+008a78e0	ClearActiveGossipCategories	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A78E0_global_ClearActiveGossipCategories_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearActiveGossipCategories_008a78e0.cpp
+008a7930	ClearIsGossipForPlayer	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7930_global_ClearIsGossipForPlayer_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearIsGossipForPlayer_008a7930.cpp
 008a7980	CGameScriptInterface::EntityStopFollowing	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7980_global_EntityStopFollowing_CGameScriptInterface_UBEXABVCScriptThing_Z.cpp				
 008a7a70	?TeleportAllFollowersToHeroPosition@CGameScriptInterface@@UBEXXZ	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted									
 008a7d60	?GetThingWithScriptName@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@@Z	CGameScriptInterface	__thiscall	CScriptThing	2	CGameScriptInterface *,CCharString *	1	yes	accepted									
@@ -42440,7 +42440,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bafa00	CEnginePrimitiveManager2DSprites::RenderClockPrim	CEnginePrimitiveManager2DSprites	__thiscall	void	4	CEnginePrimitiveManager2DSprites *,CEngineInternalPrimitiveBase &,CEngineSubPrimitiveChain &,ESubPrimitiveType	1	yes	accepted									
 00bb0970	?RenderSpritePrim@CEnginePrimitiveManager2DSprites@@MAEXAAVCEngineInternalPrimitiveBase@@AAVCEngineSubPrimitiveChain@@W4ESubPrimitiveType@@@Z	CEnginePrimitiveManager2DSprites	__thiscall	void	4	CEnginePrimitiveManager2DSprites *,CEngineInternalPrimitiveBase *,CEngineSubPrimitiveChain *,ESubPrimitiveType	1	yes	accepted									
 00bb1600	CEnginePrimitiveManagerSprites::GetSupportedTypes	CEnginePrimitiveManagerSprites	__thiscall	void	2	CEnginePrimitiveManagerSprites *,CEnginePrimitiveTypeList &	1	yes	accepted									
-00bb1640	CEnginePrimitiveManager2DSprites::GetSupportedTypes	CEnginePrimitiveManager2DSprites	__thiscall	void	2	CEnginePrimitiveManager2DSprites *,CEnginePrimitiveTypeList &	1	yes	accepted									
+00bb1640	GetSupportedTypes	CEnginePrimitiveManager2DSprites	__thiscall	void	2	CEnginePrimitiveManager2DSprites *,CEnginePrimitiveTypeList &	1	yes	accepted									
 00bb16e0	CEngineInternalPrimitiveSprite::GetWorldPosition	CEngineInternalPrimitiveSprite	__thiscall	bool	2	CEngineInternalPrimitiveSprite *,C3DVector &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bb\CEngineInternalPrimitive2DStaticMesh_GetWorldPosition_00bb16e0.cpp
 00bb1740	`vector_deleting_destructor'	CEngineSubPrimitiveGameMesh	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bb\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb1740.cpp
 00bb1760	`vector_deleting_destructor'	CEngineSubPrimitiveGameMesh	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\bb\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00bb1760.cpp
@@ -42662,7 +42662,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bc6b50	CEnginePrimitiveManagerText	CEnginePrimitiveManagerText	__thiscall	undefined	2	CEnginePrimitiveManagerText *,CArray<CEngineScene*> *	0	yes	accepted									
 00bc6db0	?RenderSubPrimitive@CEnginePrimitiveManagerText@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	CEnginePrimitiveManagerText	__thiscall	void	3	CEnginePrimitiveManagerText *,CEngineSubPrimitiveBase *,ERenderPassType	1	yes	accepted									
 00bc7660	CEnginePrimitiveManagerText::Render2DPrimitive	CEnginePrimitiveManagerText	__thiscall	void	4	CEnginePrimitiveManagerText *,CEngineInternalPrimitiveBase &,CEngineSubPrimitiveChain &,ESubPrimitiveType	1	yes	accepted									
-00bc7920	CEnginePrimitiveManagerText::GetSupportedTypes	CEnginePrimitiveManagerText	__thiscall	void	2	CEnginePrimitiveManagerText *,CEnginePrimitiveTypeList &	1	yes	accepted									
+00bc7920	GetSupportedTypes	CEnginePrimitiveManagerText	__thiscall	void	2	CEnginePrimitiveManagerText *,CEnginePrimitiveTypeList &	1	yes	accepted									
 00bc7a00	~CEngineInternalPrimitive2DText	CEngineInternalPrimitive2DText	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00bc7a50	CEngineSubPrimitive2DClockSprite	CEngineSubPrimitive2DClockSprite	__thiscall	undefined	2	CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *	0	yes	accepted									
 00bc7a80	`scalar deleting destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted									
@@ -50847,7 +50847,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d9f1b0	OnPredicateFail	CMC_Minion	__thiscall	void	1	CMC_Minion *	1	yes	accepted									
 00d9f200	CMC_Minion::Piece_00d9f200	CMC_Minion	unknown	undefined	0		0			discovered	gapscan		split_rows.py (skipped-ledger piece)					
 00d9f250	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CLandscapeBackgroundPatch_vectordeletingdestructor_00d9f250.cpp
-00d9f270	Main	CMC_Minion	__thiscall	void	1	CMC_Minion *	1	yes	accepted									
+00d9f270	Main	NScript::CQ_MinionCampScript::CMC_Minion	__thiscall	void	1	CMC_Minion *	1	yes	accepted									
 00d9f5b0	Alloc	NScript::CQ_MinionCampScript::CFadeinSummoner	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00d9f650	sub_00d9f650	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d9f660	Init	CFadeinSummoner	__thiscall	void	1	CFadeinSummoner *	1	yes	accepted									
@@ -52204,7 +52204,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e23f30	GetRandomSpeech	CTraderToEscort	__thiscall	CCharString	1	CTraderToEscort *	1	yes	accepted									
 00e24090	ForceDisableFollow	CQR_EscortTraderScript	__thiscall	void	2	CQR_EscortTraderScript *,CScriptThing *	1	yes	accepted									
 00e24100	GetSuccessType	CQR_EscortTraderScript	__thiscall	EscortTraderSuccessType	2	CQR_EscortTraderScript *,CScriptThing *	1	yes	accepted									
-00e241b0	~CScriptThingFunctor_00e241b0	CScriptThingFunctor_00e241b0	__thiscall	void	1	CIsThingAlive *	1	yes	accepted									
+00e241b0	~CIsThingAlive	NScript::CIsThingAlive	__thiscall	void	1	CIsThingAlive *	1	yes	accepted									
 00e24210	InFinalRegion	CQR_EscortTraderScript	__thiscall	bool	1	CQR_EscortTraderScript *	1	yes	accepted									
 00e24260	GetTraderRandomSpeechEnabled	CQR_EscortTraderScript	__thiscall	bool	1	CQR_EscortTraderScript *	1	yes	accepted									
 00e242d0	ExpressionEnableFollow	CQR_EscortTraderScript	__thiscall	void	3	CQR_EscortTraderScript *,CScriptThing *,CScriptGameResourceObjectScriptedThingBase *	1	yes	accepted									

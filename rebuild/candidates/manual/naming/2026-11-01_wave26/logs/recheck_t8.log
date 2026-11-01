@@ -1,0 +1,9 @@
+addr       parity           behav  name
+007fecb0   WARN SHARED_HEADER_AVAILABLE CWorld
+007fecb0   RELOCATION_MATCH PASS   CTCUserActionPointBase::UpdateBlockedActionPoints
+00bb1640   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManager2DSprites
+00bb1640   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DSprites::GetSupportedTypes
+
+WINS: 2
+  007fecb0 RELOCATION_MATCH CTCUserActionPointBase::UpdateBlockedActionPoints
+  00bb1640 RELOCATION_MATCH CEnginePrimitiveManager2DSprites::?GetSupportedTypes@CEnginePrimitiveManager2DSprites@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z

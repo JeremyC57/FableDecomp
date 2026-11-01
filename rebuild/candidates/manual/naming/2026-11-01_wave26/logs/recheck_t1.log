@@ -1,0 +1,116 @@
+addr       parity           behav  name
+00744580   WARN SHARED_HEADER_AVAILABLE CWorld
+00744580   WARN SHARED_HEADER_AVAILABLE CTCBase
+00744580   RELOCATION_MATCH PASS   CTCPerceiveThing::GetExtendedSightRadius
+00c0ba40   WARN RELOC_NAME: ?FreeData@CString@@SIXPAUCStringData@@@Z -> 00c0b900 labelled '_global::OperatorDelete_thunk_00c0b900'
+00c0ba40   RELOCATION_MATCH PASS   CString::~CString
+00e0e2e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e0e2e0   RELOCATION_MATCH PASS   CUndeadRisingZombieAttackerBoss::Main
+00ec46b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ec46b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec46b0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ec46b0   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ec46b0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00ec46b0   RELOCATION_MATCH PASS   CVtable_012f16e0::vfunc_1
+
+WINS: 4
+  00744580 RELOCATION_MATCH CTCPerceiveThing::?GetTimeBasedVisibilityMultiplier@CTCPerceiveThing@@ABEMXZ
+  00c0ba40 RELOCATION_MATCH CString::??1CString@@QAE@XZ
+  00e0e2e0 RELOCATION_MATCH CUndeadRisingZombieAttackerBoss::?Main@CUndeadRisingZombieAttackerBoss@@QAEXXZ
+  00ec46b0 RELOCATION_MATCH CVtable_012f16e0::Main
+addr       parity           behav  name
+009f31c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f31c0   RELOCATION_MATCH PASS   CSurface::SetPixel
+00d3a1a0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d3a1a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d3a1a0   RELOCATION_MATCH PASS   CDF_Fireheart::Main
+00e11bb0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e11bb0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e11bb0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e11bb0   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e11bb0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e11bb0   RELOCATION_MATCH PASS   CVtable_012e04fc::vfunc_1
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee76f0   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ee76f0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00ee76f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00ee76f0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ee76f0   RELOCATION_MATCH PASS   CTrophyDealerInCave::Main
+
+WINS: 4
+  009f31c0 RELOCATION_MATCH CSurface::?SetPixel@CSurface@@QAEXJJABVCRGBColour@@ABVCSurfaceLockedRect@@@Z
+  00d3a1a0 RELOCATION_MATCH CDF_Fireheart::Main
+  00e11bb0 RELOCATION_MATCH CVtable_012e04fc::Main
+  00ee76f0 RELOCATION_MATCH CTrophyDealerInCave::Main
+addr       parity           behav  name
+00c0b910   WARN RELOC_NAME: ?FreeData@CString@@SIXPAUCStringData@@@Z -> 00c0b900 labelled '_global::OperatorDelete_thunk_00c0b900'
+00c0b910   RELOCATION_MATCH PASS   CString::Release
+00d408b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d408b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d408b0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00d408b0   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00d408b0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00d408b0   RELOCATION_MATCH PASS   CVtable_012cdf28::vfunc_1
+00e4a060   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e4a060   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e4a060   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e4a060   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00e4a060   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e4a060   RELOCATION_MATCH PASS   CVtable_012e4ef8::vfunc_1
+00ef29e0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef29e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ef29e0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ef29e0   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ef29e0   RELOCATION_MATCH PASS   CGoalChest::Main
+
+WINS: 4
+  00c0b910 RELOCATION_MATCH CString::?Release@CString@@QAEXXZ
+  00d408b0 RELOCATION_MATCH CVtable_012cdf28::Main
+  00e4a060 RELOCATION_MATCH CVtable_012e4ef8::Main
+  00ef29e0 RELOCATION_MATCH CGoalChest::?Main@CGoalChest@@QAEXXZ
+addr       parity           behav  name
+00c0b9f0   WARN RELOC_NAME: ?FreeData@CString@@SIXPAUCStringData@@@Z -> 00c0b900 labelled '_global::OperatorDelete_thunk_00c0b900'
+00c0b9f0   RELOCATION_MATCH PASS   CString::Release
+00d9f270   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+  WARN leaf '?Main@CMC_Minion@CQ_MinionCampScript@NScript' matches no symbol in 00d9f270.obj; graded the largest function
+00d9f270   DIFFER(823v823)  PASS   NScript::CQ_MinionCampScript::CMC_Minion::Main
+00e8b020   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e8b020   WARN RELOC_NAME: ??0CAndPredicate@@QAE@ABVCIsThingAlive@NScript@@ABUCIsFlagFalse@@@Z -> 00e7e020 labelled 'NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsVariableFalse>::CPredicate_And'
+00e8b020   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00e8b020   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00e8b020   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8b020   RELOCATION_MATCH PASS   CRingFighter::Main
+00ef3000   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef3000   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ef3000   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ef3000   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ef3000   RELOCATION_MATCH PASS   CVtable_012f6350::vfunc_1
+
+WINS: 3
+  00c0b9f0 RELOCATION_MATCH CString::?Release@CString@@SGXPAUCStringData@@@Z
+  00e8b020 RELOCATION_MATCH CRingFighter::?Main@CRingFighter@@
+  00ef3000 RELOCATION_MATCH CVtable_012f6350::Main

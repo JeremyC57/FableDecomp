@@ -1,0 +1,5 @@
+addr       parity           behav  name
+007ad180   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, pair<const CCharString,bool>, ...>::erase
+
+WINS: 1
+  007ad180 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString,bool>, ...>::?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@2@0@Z

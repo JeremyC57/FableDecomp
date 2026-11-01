@@ -1,0 +1,7 @@
+addr       parity           behav  name
+008a78e0   RELOCATION_MATCH PASS   CGameScriptInterface::ClearActiveGossipCategories
+008a7930   RELOCATION_MATCH PASS   CGameScriptInterface::ClearIsGossipForPlayer
+
+WINS: 2
+  008a78e0 RELOCATION_MATCH CGameScriptInterface::?ClearActiveGossipCategories@CGameScriptInterface@@UAEXXZ
+  008a7930 RELOCATION_MATCH CGameScriptInterface::?ClearIsGossipForPlayer@CGameScriptInterface@@UAEXXZ

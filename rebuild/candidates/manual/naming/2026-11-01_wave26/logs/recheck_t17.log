@@ -1,0 +1,34 @@
+addr       parity           behav  name
+0051fcc0   RELOCATION_MATCH PASS   CThingManager::WorldUpdateThings
+00a37c40   RELOCATION_MATCH PASS   std::__copy
+00a38080   WARN RELOC_NAME: ??1?$_List_base@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QAE@XZ -> 00a376a0 labelled '_global::StdList_Clear_00a376a0'
+00a38080   RELOCATION_MATCH PASS   CClassFactory::`scalar deleting destructor'
+
+WINS: 3
+  0051fcc0 RELOCATION_MATCH CThingManager::?WorldUpdateThings@CThingManager@@QAEXXZ
+  00a37c40 RELOCATION_MATCH std::??$__copy@
+  00a38080 RELOCATION_MATCH CClassFactory::??_GCClassFactory@@
+addr       parity           behav  name
+00a37b50   RELOCATION_MATCH PASS   CClassTypeInfo::CClassTypeInfo
+00a37e20   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCClassTypeInfo@@PAV1@@std@@YIPAVCClassTypeInfo@@PAV1@00ABU__false_type@0@@Z -> 00a37d50 labelled '_global::UninitCopy_CElement20_00a37b50_00a37d50'
+00a37e20   RELOCATION_MATCH PASS   std::vector<CClassTypeInfo, std::allocator<CClassTypeInfo>>::_M_insert_overflow
+00a380e0   RELOCATION_MATCH PASS   std::vector<CClassTypeInfo, std::allocator<CClassTypeInfo>>::resize
+
+WINS: 3
+  00a37b50 RELOCATION_MATCH CClassTypeInfo::??0CClassTypeInfo@@QAE@ABV0@@Z
+  00a37e20 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@IAEXPAVCClassTypeInfo@@ABV3@ABU__false_type@2@I_N@Z
+  00a380e0 RELOCATION_MATCH std::vector::?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXIABVCClassTypeInfo@@@Z
+addr       parity           behav  name
+00a37be0   WARN SHARED_HEADER_AVAILABLE CList
+00a37be0   RELOCATION_MATCH PASS   std::fill
+00a37f40   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCClassTypeInfo@@PAV1@@std@@YIPAVCClassTypeInfo@@PAV1@00ABU__false_type@0@@Z -> 00a37d50 labelled '_global::UninitCopy_CElement20_00a37b50_00a37d50'
+00a37f40   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCClassTypeInfo@@IV1@@std@@YIPAVCClassTypeInfo@@PAV1@IABV1@@Z -> 00a37d80 labelled '_global::UninitFillN_CElement20_00a37b50_00a37d80'
+00a37f40   WARN RELOC_NAME: ??1?$_List_base@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QAE@XZ -> 00a376a0 labelled '_global::StdList_Clear_00a376a0'
+00a37f40   RELOCATION_MATCH PASS   std::vector<CClassTypeInfo, std::allocator<CClassTypeInfo>>::_M_fill_insert
+00a38150   WARN RELOC_NAME: ??1?$_List_base@PAVCClass@@V?$allocator@PAVCClass@@@std@@@std@@QAE@XZ -> 00a376a0 labelled '_global::StdList_Clear_00a376a0'
+00a38150   RELOCATION_MATCH PASS   std::vector<CClassTypeInfo, std::allocator<CClassTypeInfo>>::resize
+
+WINS: 3
+  00a37be0 RELOCATION_MATCH std::??$fill@PAVCClassTypeInfo@@
+  00a37f40 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXPAVCClassTypeInfo@@IABV3@@Z
+  00a38150 RELOCATION_MATCH std::vector::?resize@?$vector@VCClassTypeInfo@@V?$allocator@VCClassTypeInfo@@@std@@@std@@QAEXI@Z

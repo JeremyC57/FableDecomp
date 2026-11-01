@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00994400   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00994400   RELOCATION_MATCH PASS   CFileDataOutputStream::CFileDataOutputStream
+009cda70   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009cda70   RELOCATION_MATCH PASS   CBankFile::InternalWriteEntryList
+
+WINS: 2
+  00994400 RELOCATION_MATCH CFileDataOutputStream::??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z
+  009cda70 RELOCATION_MATCH CBankFile_Retail::?InternalWriteEntryList@CBankFile@@QAEKAAVCDataOutputStream@@@Z
+addr       parity           behav  name
+009cbfe0   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32
+009cbfe0   RELOCATION_MATCH PASS   CBankFile::GetRecoveryFilePath
+00e241b0   RELOCATION_MATCH PASS   CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0
+
+WINS: 2
+  009cbfe0 RELOCATION_MATCH CBankFile::?GetRecoveryFilePath@CBankFile@@AAE?AVCWideString@@XZ
+  00e241b0 RELOCATION_MATCH CScriptThingFunctor_00e241b0::??1CIsThingAlive@NScript@@UAE@XZ

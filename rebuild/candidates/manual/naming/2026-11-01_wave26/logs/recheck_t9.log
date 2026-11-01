@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00aebc90   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aebc90   WARN RELOC_NAME: ??$FindString@PAVCCharString@@V1@USRandomAccessIteratorTag@@@@YIPAVCCharString@@PAV0@0ABV0@ABUSRandomAccessIteratorTag@@@Z -> 004b8e40 labelled 'std::__find<CCharString*, CCharString>'
+00aebc90   RELOCATION_MATCH PASS   CParticleEmitterManager::GetVisibleEmitterNames
+
+WINS: 1
+  00aebc90 RELOCATION_MATCH CParticleEmitterManager::?GetVisibleEmitterNames@CParticleEmitterManager@@
