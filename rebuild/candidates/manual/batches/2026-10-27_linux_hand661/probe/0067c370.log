@@ -1,0 +1,2 @@
+1	shared engine/CParentDefClassBase.h opt-in (out-of-line ~CParentDefClassBase)	DIFFER(27v49) call to 0x00430300 instead of inline
+2	local CParentDefClassBase with the header layout, implicit dtor; CDefClassBase chain from engine/CDefClassBase.h	RELOCATION_MATCH

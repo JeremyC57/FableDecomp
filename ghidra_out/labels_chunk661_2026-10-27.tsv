@@ -1,0 +1,21 @@
+address	name	evidence
+0121a670	`dynamic initializer for 'CThing::TCsToBeRemoved'`	chunk 661 RELOCATION_MATCH: .CRT$XCU order AttitudeSymbols -> REACTION_MANAGER_DEF_INSTANTIATION_NAME -> CThing::TCsToBeRemoved (FableWin) = retail 0x0121A630/50/70; STLport _Rb_tree() on 0x013B8A8C
+0121ac08	`anonymous namespace'::`dynamic initializer for 'REACTION_MANAGER_DEF_INSTANTIATION_NAME'`	chunk 661 RELOCATION_MATCH: "OPINION_REACTION_MANAGER_INSTANCE" (PDB 33 per-TU copies, retail 32 initializers)
+0121ae9c	`anonymous namespace'::`dynamic initializer for 'TITLE_NAME'`	chunk 661 RELOCATION_MATCH: "EXPRESSIONS TITLE" (the two TITLE_NAME entries in each PDB; "ITEMS TITLE" is the one followed by the ITEM_* strings)
+0121f074	`anonymous namespace'::`dynamic initializer for 'STrapCycle'`	chunk 661 RELOCATION_MATCH: "TRAP_CONTINUOUS"; Ego_r/FableWin order STrapUntriggeredAnimName/Trigger/Reset/Cycle matches retail, 0x1D apart
+004b6a80	std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::~pair	chunk 661 RELOCATION_MATCH: ??1 / ??_G 0x004B77A0 / _Destroy 0x004B86B0 triple in one TU; Ego_r layout
+004b77a0	std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::`scalar deleting destructor'	chunk 661 (landed as ??_GSQuestPersistEntry)
+004b86b0	std::_Destroy<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> >	chunk 661 (landed under 0x006FB460's name: one name on two addresses)
+006fb8d0	std::_Destroy<std::pair<CCharString,CSymbolMap::CSymbolInfo> >	chunk 661 RELOCATION_MATCH: triple 0x006FB460 / 0x006FB730 / 0x006FB8D0
+006fb730	std::pair<CCharString,CSymbolMap::CSymbolInfo>::`scalar deleting destructor'	chunk 661 (landed as ??_GSSymbolMapEntry)
+007803d0	NFire::CFirePoint::~CFirePoint	chunk 661 RELOCATION_MATCH: triple 0x007803D0 / 0x007811D0 / 0x00781540
+007811d0	NFire::CFirePoint::`scalar deleting destructor'	chunk 661
+00781540	std::_Destroy<NFire::CFirePoint>	chunk 661 (landed as CAggregate_00781540)
+00768bf0	AttackParticleAndEndPoints::~AttackParticleAndEndPoints	chunk 661 RELOCATION_MATCH: triple 0x00768BF0 / 0x007692A0 / 0x007699C0; ctor 0x00768BC0
+007692a0	AttackParticleAndEndPoints::`scalar deleting destructor'	chunk 661
+007699c0	std::_Destroy<AttackParticleAndEndPoints>	chunk 661 (landed as the free Dest_val_CSymbolInfo___)
+00768bc0	AttackParticleAndEndPoints::AttackParticleAndEndPoints	chunk 661 (landed as CQuestThingEntry_00768bc0)
+00c5ee20	CVtable_012b9174::Uninitialize	chunk 661 MATCH: slot 2 of the silent audio output vtable 0x012B9174, tail jump to slot 5 ReleaseBuffer (descriptive; no PDB/RTTI in the audio library)
+0067c370	CBlurredAttitudesDef::~CBlurredAttitudesDef	chunk 661 RELOCATION_MATCH: slot 0 of vtable 0x0125B8AC is the deleting dtor 0x0067C520 inlining the same sequence (catalog CCompressedMemoryDataInputStream was wrong)
+0067c520	CBlurredAttitudesDef::`scalar deleting destructor'	chunk 661
+00527950	std::_Rb_tree<...CUnproven_00527950...>::_M_erase	chunk 661: STLport _M_erase (private AAE) of the TCsToBeRemoved tree instantiation (landed as FreeTree_CTreeOwner_00527950)

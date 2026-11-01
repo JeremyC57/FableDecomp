@@ -35633,3 +35633,7 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??_7CCreatureAction_KrakenHighAttackLoop@?A0x03ddf25e@@6B@	0129107c	00925e40
 _$E2	01228930	01219f00
 _NEWLINE	013b8ba8	0121ab3f
+?TCsToBeRemoved@CThing@@2V?$_Rb_tree@UCUnprovenKey_00527950@@UCUnprovenValue_00527950@@UCUnprovenKeyOfValue_00527950@@U?$less@UCUnprovenKey_00527950@@@std@@V?$allocator@UCUnprovenValue_00527950@@@5@@std@@A	013b8a8c	0121a670
+?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xb41d3c3b@@3VCCharString@@A	013b8bc4	0121ac08
+?TITLE_NAME@?A0xab817341@@3VCCharString@@A	013b8c60	0121ae9c
+?STrapCycle@?A0xf91fa7da@@3VCCharString@@A	013bae00	0121f074

@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+0121a670	RELOCATION_MATCH	60v60	PASS	1	CThing::TCsToBeRemoved dynamic initializer (_$E1), STLport 4.6 _Rb_tree default ctor over the 0x00527950 instantiation (CUnproven K/V)
+004b6a80	RELOCATION_MATCH	31v31	PASS	1	std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>::~pair (implicit, quest-manager TU)
+006fb8d0	RELOCATION_MATCH	31v31	PASS	1	std::_Destroy<pair<CCharString,CSymbolMap::CSymbolInfo> > (/Gr, animation-events TU)
+007803d0	RELOCATION_MATCH	27v27	PASS	1	NFire::CFirePoint::~CFirePoint (implicit, CTCFlammable TU)
+00768bf0	RELOCATION_MATCH	27v27	PASS	1	AttackParticleAndEndPoints::~AttackParticleAndEndPoints (implicit, CTCObjectAugmentations TU)
+0121ae9c	RELOCATION_MATCH	29v29	PASS	1	anonymous-namespace TITLE_NAME ("EXPRESSIONS TITLE") dynamic initializer (_$E1)
+0121ac08	RELOCATION_MATCH	29v29	PASS	1	anonymous-namespace REACTION_MANAGER_DEF_INSTANTIATION_NAME dynamic initializer (_$E1)
+0121f074	RELOCATION_MATCH	29v29	PASS	1	anonymous-namespace STrapCycle ("TRAP_CONTINUOUS") dynamic initializer (_$E1)
+00c5ee20	MATCH	5v5	PASS	2	CVtable_012b9174::Uninitialize (slot 2 of the silent audio output; descriptive names, no PDB/RTTI)
+0067c370	RELOCATION_MATCH	49v49	PASS	2	CBlurredAttitudesDef::~CBlurredAttitudesDef (implicit); probe 1 with engine/CParentDefClassBase.h DIFFER 27v49 (out-of-line ~CParentDefClassBase)

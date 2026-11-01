@@ -371918,6 +371918,77 @@ $catalog = @(
         TestSource = '01/21/StaticInitialization_DynamicInitializerNEWLINE_0121ab3f_test.cpp'
         PassPattern = '0121ab3f_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b6a80'
+        Module = 'std::pair<CCharString,CPersistInfo>'
+        Source = '00/4b/stdpairCCharStringCPersistInfo_pair_004b6a80.cpp'
+        TestSource = '00/4b/stdpairCCharStringCPersistInfo_pair_004b6a80_test.cpp'
+        PassPattern = '004b6a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0067c370'
+        Module = 'CBlurredAttitudesDef'
+        Source = '00/67/CBlurredAttitudesDef_CBlurredAttitudesDef_0067c370.cpp'
+        TestSource = '00/67/CBlurredAttitudesDef_CBlurredAttitudesDef_0067c370_test.cpp'
+        PassPattern = '0067c370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fb8d0'
+        Module = 'std'
+        Source = '00/6f/std_DestroypairCCharStringCSymbolInfo_006fb8d0.cpp'
+        TestSource = '00/6f/std_DestroypairCCharStringCSymbolInfo_006fb8d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006fb8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00768bf0'
+        Module = 'AttackParticleAndEndPoints'
+        Source = '00/76/AttackParticleAndEndPoints_AttackParticleAndEndPoints_00768bf0.cpp'
+        TestSource = '00/76/AttackParticleAndEndPoints_AttackParticleAndEndPoints_00768bf0_test.cpp'
+        PassPattern = '00768bf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007803d0'
+        Module = 'NFire::CFirePoint'
+        Source = '00/78/NFireCFirePoint_CFirePoint_007803d0.cpp'
+        TestSource = '00/78/NFireCFirePoint_CFirePoint_007803d0_test.cpp'
+        PassPattern = '007803d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5ee20'
+        Module = 'CVtable_012b9174'
+        Source = '00/c5/CVtable012b9174_Uninitialize_00c5ee20.cpp'
+        TestSource = '00/c5/CVtable012b9174_Uninitialize_00c5ee20_test.cpp'
+        PassPattern = '00c5ee20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121a670'
+        Module = 'CThing'
+        Source = '01/21/CThing_ETCsToBeRemoved_0121a670.cpp'
+        TestSource = '01/21/CThing_ETCsToBeRemoved_0121a670_test.cpp'
+        PassPattern = '0121a670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121ac08'
+        Module = '_global'
+        Source = '01/21/global_EREACTIONMANAGERDEFINSTANTIATIONNAME_0121ac08.cpp'
+        TestSource = '01/21/global_EREACTIONMANAGERDEFINSTANTIATIONNAME_0121ac08_test.cpp'
+        PassPattern = '0121ac08_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121ae9c'
+        Module = '_global'
+        Source = '01/21/global_ETITLENAME_0121ae9c.cpp'
+        TestSource = '01/21/global_ETITLENAME_0121ae9c_test.cpp'
+        PassPattern = '0121ae9c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f074'
+        Module = '_global'
+        Source = '01/21/global_ESTrapCycle_0121f074.cpp'
+        TestSource = '01/21/global_ESTrapCycle_0121f074_test.cpp'
+        PassPattern = '0121f074_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

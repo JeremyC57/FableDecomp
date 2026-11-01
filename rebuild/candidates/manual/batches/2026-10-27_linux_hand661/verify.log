@@ -1,0 +1,43 @@
+addr       parity           behav  name
+004b6a80   RELOCATION_MATCH PASS   ~pair
+0067c370   RELOCATION_MATCH PASS   ~CBlurredAttitudesDef
+006fb8d0   RELOCATION_MATCH PASS   _Destroy<pair<CCharString,CSymbolInfo> >
+00768bf0   RELOCATION_MATCH PASS   ~AttackParticleAndEndPoints
+007803d0   RELOCATION_MATCH PASS   ~CFirePoint
+00c5ee20   MATCH            PASS   Uninitialize
+0121a670   WARN RELOC_CONFLICT: _$E2 -> 01228df0 here, 01228930 in landed 01219f00
+0121a670   WARN RELOC_NAME: _$E2 -> 01228df0 labelled 'unattributed::StaticTreeDeleter013B8A8C'
+0121a670   RELOCATION_MATCH PASS   $E_TCsToBeRemoved
+0121ac08   WARN RELOC_CONFLICT: _$E2 -> 0122901f here, 01228930 in landed 01219f00
+0121ac08   WARN RELOC_NAME: _$E2 -> 0122901f labelled '_global::AtexitDtor_CCharString_at_013b8bc4_0122901f'
+0121ac08   RELOCATION_MATCH PASS   $E_REACTION_MANAGER_DEF_INSTANTIATION_NAME
+0121ae9c   WARN RELOC_CONFLICT: _$E2 -> 0122917a here, 01228930 in landed 01219f00
+0121ae9c   WARN RELOC_NAME: _$E2 -> 0122917a labelled '_global::AtexitDtor_CCharString_at_013b8c60_0122917a'
+0121ae9c   RELOCATION_MATCH PASS   $E_TITLE_NAME
+0121f074   WARN RELOC_CONFLICT: _$E2 -> 01229ba8 here, 01228930 in landed 01219f00
+0121f074   WARN RELOC_NAME: _$E2 -> 01229ba8 labelled '_global::AtexitDtor_CCharString_at_013bae00_01229ba8'
+0121f074   RELOCATION_MATCH PASS   $E_STrapCycle
+
+WINS: 10
+  004b6a80 RELOCATION_MATCH std::pair<CCharString,CPersistInfo>::??1?$pair@VCCharString@@VCPersistInfo@CRuntimeQuestPersistence@NQuestManager@@@std@@QAE@XZ
+  0067c370 RELOCATION_MATCH CBlurredAttitudesDef::??1CBlurredAttitudesDef@@UAE@XZ
+  006fb8d0 RELOCATION_MATCH std::??$_Destroy@U?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@@std@@YIXPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@@Z
+  00768bf0 RELOCATION_MATCH AttackParticleAndEndPoints::??1AttackParticleAndEndPoints@@QAE@XZ
+  007803d0 RELOCATION_MATCH NFire::CFirePoint::??1CFirePoint@NFire@@QAE@XZ
+  00c5ee20 MATCH CVtable_012b9174::?Uninitialize@CVtable_012b9174@@UAEXXZ
+  0121a670 RELOCATION_MATCH CThing::_$E1
+  0121ac08 RELOCATION_MATCH _global::_$E1
+  0121ae9c RELOCATION_MATCH _global::_$E1
+  0121f074 RELOCATION_MATCH _global::_$E1
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  stdpairCCharStringCPersistInfo_pair_004b6a80
+  CBlurredAttitudesDef_CBlurredAttitudesDef_0067c370
+  std_DestroypairCCharStringCSymbolInfo_006fb8d0
+  AttackParticleAndEndPoints_AttackParticleAndEndPoints_00768bf0
+  NFireCFirePoint_CFirePoint_007803d0
+  CVtable012b9174_Uninitialize_00c5ee20
+  CThing_ETCsToBeRemoved_0121a670
+  global_EREACTIONMANAGERDEFINSTANTIATIONNAME_0121ac08
+  global_ETITLENAME_0121ae9c
+  global_ESTrapCycle_0121f074

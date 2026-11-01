@@ -1,0 +1,2 @@
+1	virtual member calling this->Close() (slot 5)	MATCH
+2	slot names respelled to the DSound interface (ReleaseBuffer slot 5), same shape	MATCH
