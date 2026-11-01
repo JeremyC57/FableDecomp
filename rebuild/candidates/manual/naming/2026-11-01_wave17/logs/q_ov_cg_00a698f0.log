@@ -1,0 +1,2 @@
+skip 00a6aaa0 free stand-in CalculateTextureSize not a one-argument this-call
+skip 00b3b4f0 free stand-in CalculateTextureSize not a one-argument this-call

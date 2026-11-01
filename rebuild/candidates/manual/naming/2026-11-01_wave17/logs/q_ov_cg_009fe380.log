@@ -1,0 +1,11 @@
+skip 0041ac20 CFrameData defined in another scope
+skip 0041b550 moved NUISystem::CFrameData::CFrameData -> CFrameData x1 :: compile: ad\naming\w17\ov_cg\rebuild\src\compiled\00\41\NUISystemCSprite_vfunc145_0041b550.cpp(205) : error C2039: 'CFrameData' : is not a member of 'NUISystem::CGraphicInfoFrame' | 5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\41\NUISystemCSprite_vfunc145_0041b550.cpp(205) : error C2059: syntax error : '->'
+skip 0041c260 CFrameData defined in another scope
+skip 009fe550 CFrameData defined in another scope
+skip 009fe620 CFrameData defined in another scope
+skip 009ff8d0 CFrameData defined in another scope
+skip 00a00d90 moved CFrameData_00a00d90::CFrameData_00a00d90 -> CFrameData x1 :: compile: me_InitialiseFrame_00a00d90.cpp(12) : error C2757: 'CGraphicInfoFrame' : a symbol with this name already exists and therefore this name cannot be used as a namespace name | 17\ov_cg\rebuild\src\compiled\00\a0\CGraphicInfoFrame_InitialiseFrame_00a00d90.cpp(12) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+skip 00b9bcc0 CFrameData defined in another scope
+skip 00bec000 0 definitions of CFrameData
+skip 00bec470 0 definitions of CFrameData
+skip 00bec950 0 definitions of CFrameData

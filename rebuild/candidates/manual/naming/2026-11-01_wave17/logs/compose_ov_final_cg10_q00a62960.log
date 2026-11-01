@@ -1,0 +1,2 @@
+edited 009c31e0 moved CCriticalSectionLock::Unlock -> Release x1 +u ['?Release@CCriticalSectionLock@@QAEXXZ'] -u ['?Unlock@CCriticalSectionLock@@QAEXXZ']
+edited 009d6490 moved CCriticalSectionLock::Unlock -> Release x2 +u ['?Release@CCriticalSectionLock@@QAEXXZ'] -u ['?Unlock@CCriticalSectionLock@@QAEXXZ']

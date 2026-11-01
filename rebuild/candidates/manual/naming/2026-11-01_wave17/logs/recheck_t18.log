@@ -1,0 +1,35 @@
+addr       parity           behav  name
+0080fad0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0080fad0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0080fad0   WARN SHARED_HEADER_AVAILABLE CWorld
+0080fad0   WARN SHARED_HEADER_AVAILABLE CNymphDef
+0080fad0   WARN RELOC_NAME: ?FrameUpdate@CTCBaseFrame@@QAEXXZ -> 006868a0 labelled 'CTCBase::vfunc_9'
+0080fad0   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PBVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0080fad0   WARN RELOC_CONFLICT: ??4CIntelligentPointerConstThing@@QAEAAU0@ABU0@@Z -> 00668b80 here, 007b82c0 in landed 00967650
+0080fad0   WARN RELOC_NAME: ??4CIntelligentPointerConstThing@@QAEAAU0@ABU0@@Z -> 00668b80 labelled '_global::CIntelligentPointer_Assign_00668b80'
+0080fad0   RELOCATION_MATCH PASS   CTCNymph::FrameUpdate
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c64f0   WARN SHARED_HEADER_AVAILABLE CWorld
+008c64f0   WARN RELOC_NAME: ?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+008c64f0   WARN RELOC_NAME: ?GetWeaponHand@CCombatTC@@QAEXPAPAUSWeaponHand@@@Z -> 00669cb0 labelled 'CAnimationEntry::GetComponent<CAnimComponentCombatHandedness>'
+008c64f0   WARN RELOC_NAME: ?GetPDefinitionManager@CCombatActionBase@@QBEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+008c64f0   WARN RELOC_NAME: ?AddThing@CTCCarrying@@QAEXPAVCThing@@J_N@Z -> 006a1f80 labelled 'CTCCarrying::PutThingInCarrySlot'
+008c64f0   WARN RELOC_NAME: ?SetVisibleFlag@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z -> 004bfac0 labelled 'NGraphicAppearance::CTCGraphicAppearance::SetAlpha'
+008c64f0   RELOCATION_MATCH PASS   CCreatureAction_TrollThrowProjectile::Initialise
+008ccb00   RELOCATION_MATCH PASS   CCreatureAction_BalverineDropInFromSky::FinishAction
+008ccd70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008ccd70   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008ccd70   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008ccd70   WARN RELOC_NAME: ??0CCreatureAction_BalverineLungeAttack@N_008ccc10@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 008ccc10 labelled 'CCreatureAction_BalverineDropInFromSky::CCreatureAction_BalverineDropInFromSky'
+008ccd70   WARN RELOC_NAME: ?DetachParticles@CTCAttachedParticles@@QAEXXZ -> 007f8860 labelled 'CTCInterface82::ClearEntry_7f8860'
+008ccd70   RELOCATION_MATCH PASS   CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction
+
+WINS: 4
+  0080fad0 RELOCATION_MATCH CTCNymph::FrameUpdate
+  008c64f0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Initialise@CCreatureAction_TrollThrowProjectile
+  008ccb00 RELOCATION_MATCH CCreatureAction_BalverineDropInFromSky::FinishAction
+  008ccd70 RELOCATION_MATCH CCreatureAction_BalverineCorneredJumpIntoSky::?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky

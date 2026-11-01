@@ -1,0 +1,33 @@
+skip 0048cb50 non-public PeekTypeList needs an access path
+skip 0048cbd0 non-public PeekTypeList needs an access path
+skip 004a9ef0 free stand-in GetThingList not a one-argument this-call
+skip 004ad700 non-public PeekTypeList needs an access path
+skip 004ad780 non-public PeekTypeList needs an access path
+skip 005163b0 inplace CThingSearchTools::PeekTypeList -> PeekTypeList x2 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_005163b0.cpp(166) : error C2065: 'CClass' : undeclared identifier | c-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_005163b0.cpp(166) : error C2059: syntax error : ',' | -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_005163b0.cpp(166) : error C2059: syntax error : '>>'
+skip 00516530 inplace CThingSearchTools::PeekTypeList -> PeekTypeList x2 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_00516530.cpp(166) : error C2065: 'CClass' : undeclared identifier | c-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_00516530.cpp(166) : error C2059: syntax error : ',' | -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_00516530.cpp(166) : error C2059: syntax error : '>>'
+skip 005166b0 inplace CThingSearchTools::PeekTypeList -> PeekTypeList x2 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_005166b0.cpp(166) : error C2065: 'CClass' : undeclared identifier | c-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_005166b0.cpp(166) : error C2059: syntax error : ',' | -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\51\CThingSearchTools_GetAllLeafThings_005166b0.cpp(166) : error C2059: syntax error : '>>'
+skip 00516830 non-public PeekTypeList needs an access path
+skip 005800d6 non-public PeekTypeList needs an access path
+skip 005c0d9d non-public PeekTypeList needs an access path
+skip 006156e0 non-public PeekTypeList needs an access path
+skip 00617780 inplace CThingSearchTools::PeekTypeList -> PeekTypeList x2 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617780.cpp(108) : error C2065: 'CClass' : undeclared identifier | c-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617780.cpp(108) : error C2059: syntax error : ',' | -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617780.cpp(108) : error C2059: syntax error : '>>'
+skip 00617860 non-public PeekTypeList needs an access path
+skip 00617970 non-public PeekTypeList needs an access path
+skip 00617a00 inplace CThingSearchTools::PeekTypeList -> PeekTypeList x2 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617a00.cpp(108) : error C2065: 'CClass' : undeclared identifier | c-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617a00.cpp(108) : error C2059: syntax error : ',' | -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617a00.cpp(108) : error C2059: syntax error : '>>'
+skip 00617a90 inplace CThingSearchTools::PeekTypeList -> PeekTypeList x2 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617a90.cpp(108) : error C2065: 'CClass' : undeclared identifier | c-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617a90.cpp(108) : error C2059: syntax error : ',' | -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_q\rebuild\src\compiled\00\61\CThingSearchTools_GetAllLeafThings_00617a90.cpp(108) : error C2059: syntax error : '>>'
+skip 006186f0 non-public PeekTypeList needs an access path
+skip 00618790 non-public PeekTypeList needs an access path
+skip 006698d0 non-public PeekTypeList needs an access path
+skip 00685ee0 non-public PeekTypeList needs an access path
+skip 006ae830 non-public PeekTypeList needs an access path
+skip 006d4600 non-public PeekTypeList needs an access path
+skip 007461c0 non-public PeekTypeList needs an access path
+skip 0077ec20 non-public PeekTypeList needs an access path
+skip 007f7040 non-public PeekTypeList needs an access path
+skip 00910a90 non-public PeekTypeList needs an access path
+skip 00936070 non-public PeekTypeList needs an access path
+skip 00936950 non-public PeekTypeList needs an access path
+skip 00939af0 non-public PeekTypeList needs an access path
+skip 00947780 non-public PeekTypeList needs an access path
+skip 00964ef0 non-public PeekTypeList needs an access path
+skip 00982450 non-public PeekTypeList needs an access path

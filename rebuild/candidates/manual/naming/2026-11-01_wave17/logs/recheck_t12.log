@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00880a40   MATCH            PASS   NScreenEffect::CScreenEffectPriorityStack::Reset
+00881370   RELOCATION_MATCH PASS   NScreenEffect::CScreenEffectPriorityStack::CScreenEffectPriorityStack
+00cfa2f0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::Alloc
+00d6ef20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d6ef20   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript
+
+WINS: 4
+  00880a40 MATCH NScreenEffect::CScreenEffectPriorityStack::Reset
+  00881370 RELOCATION_MATCH NScreenEffect::CScreenEffectPriorityStack::??0CScreenEffectPriorityStack@NScreenEffect@@QAE@XZ
+  00cfa2f0 RELOCATION_MATCH _global::?Alloc@CQ_AmbushTradersScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d6ef20 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::??0CQ_HangingTreeGoodScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

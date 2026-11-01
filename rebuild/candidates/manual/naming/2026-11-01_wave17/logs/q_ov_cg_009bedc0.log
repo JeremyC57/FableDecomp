@@ -1,0 +1,4 @@
+skip 00405650 call of GetRenderTargetDimensions with 1 args
+skip 0040f0e0 call of GetDims with 1 args
+edited 009e1d00 moved CDisplayManagerPixelRoundView::GetRenderTargetDimensions -> GetRenderTargetDimensions x1 +u ['?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ'] -u ['?GetRenderTargetDimensions@CDisplayManagerPixelRoundView@@QBE?AVC2DExtentsI@@XZ']
+edited 009e1d50 moved CDisplayManagerPixelRoundView::GetRenderTargetDimensions -> GetRenderTargetDimensions x1 +u ['?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ'] -u ['?GetRenderTargetDimensions@CDisplayManagerPixelRoundView@@QBE?AVC2DExtentsI@@XZ']

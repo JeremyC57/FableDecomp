@@ -1,0 +1,39 @@
+skip 004016b0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00401f30 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 00412020 non-public ~CBaseClassNonCopyable needs an access path
+skip 004120c0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00446be0 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 006ac910 0 definitions of CBaseClass
+skip 006e11f0 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 007190c0 non-public ~CBaseClassNonCopyable needs an access path
+skip 007190f0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00719120 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 00719150 non-public ~CBaseClassNonCopyable needs an access path
+skip 00719cb0 non-public ~CBaseClassNonCopyable needs an access path
+skip 007e7e40 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 00835c80 0 CTCParamsPhysicsBase::~CTCParamsPhysicsBase declarations
+skip 0083b7f0 0 CTCParamsPhysicsBase::~CTCParamsPhysicsBase declarations
+skip 0083bbf0 0 CTCParamsPhysicsBase::~CTCParamsPhysicsBase declarations
+skip 0083c5d0 0 CTCParamsPhysicsBase::~CTCParamsPhysicsBase declarations
+skip 0083dbe0 0 CTCParamsPhysicsBase::~CTCParamsPhysicsBase declarations
+skip 00905070 non-public ~CBaseClassNonCopyable needs an access path
+skip 009050a0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00905440 non-public ~CBaseClassNonCopyable needs an access path
+skip 00905470 non-public ~CBaseClassNonCopyable needs an access path
+skip 009054a0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00987f10 non-public ~CBaseClassNonCopyable needs an access path
+skip 00995df0 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 009a0b00 non-public ~CBaseClassNonCopyable: BaseInput is not an RTTI-derived class of the row (CFontBank::~CFontBank)
+skip 009e7bd0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00a46420 non-public ~CBaseClassNonCopyable needs an access path
+skip 00a8e040 0 CBaseClassNonCopyable::~CBaseClassNonCopyable declarations
+skip 00aac7f0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00ab3550 non-public ~CBaseClassNonCopyable needs an access path
+skip 00b15b20 non-public ~CBaseClassNonCopyable needs an access path
+skip 00b564c0 non-public ~CBaseClassNonCopyable needs an access path
+skip 00b98560 non-public ~CBaseClassNonCopyable needs an access path
+skip 00bb1760 non-public ~CBaseClassNonCopyable needs an access path
+skip 0122aad0 non-public ~CBaseClassNonCopyable: AutoTinyFieldTarget is not an RTTI-derived class of the row (std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CPart)
+skip 0122ab10 non-public ~CBaseClassNonCopyable: AutoTinyFieldMethodsTarget is not an RTTI-derived class of the row (CTCInventoryItem::ClearCachedDefs)
+skip 0122ab30 non-public ~CBaseClassNonCopyable: AutoTinyFieldMethodsTarget is not an RTTI-derived class of the row (CTCInventoryItem::ClearCachedDefs)
+skip 0122ab50 non-public ~CBaseClassNonCopyable: AutoTinyFieldMethodsTarget is not an RTTI-derived class of the row (CTCInventoryItem::ClearCachedDefs)

@@ -1,0 +1,1 @@
+edited 0064499c moved CGameUI::IsShowingPerceivers -> IsMiniMapActive x1 +u ['?IsMiniMapActive@CPlayerGui@@QBE_NXZ'] -u ['?IsShowingPerceivers@CGameUI@@QAE_NXZ']

@@ -1,0 +1,6 @@
+edited 0041ac20 inplace CGraphicInfoFrame::BeginLoading -> BeginLoading x4 +u ['?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z'] -u ['?BeginLoading@CGraphicInfoFrame@@QAEXKK@Z']
+skip 0041b550 CGraphicInfoFrame defined in another scope
+edited 009ff710 inplace CGraphicInfoFrame::BeginLoading -> BeginLoading x1 +u ['?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z'] -u ['?BeginLoading@CGraphicInfoFrame@@QAEXKK@Z']
+edited 00bad670 inplace CGraphicInfoFrame::BeginLoading -> BeginLoading x1 +u ['?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z'] -u ['?BeginLoading@CGraphicInfoFrame@@QAEXKK@Z']
+edited 00bad8a0 inplace CGraphicInfoFrame::BeginLoading -> BeginLoading x1 +u ['?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z'] -u ['?BeginLoading@CGraphicInfoFrame@@QAEXKK@Z']
+edited 00bc7f70 inplace CGraphicInfoFrame::BeginLoading -> BeginLoading x1 +u ['?BeginLoading@CGraphicInfoFrame@@QBEXKK@Z'] -u ['?BeginLoading@CGraphicInfoFrame@@QAEXKK@Z']

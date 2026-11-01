@@ -1,0 +1,6 @@
+skip 007032f0 CThingGameObject::OnCreate defined out of line
+skip 0082d6f0 moved CThingBuilding::OnCreateGameObject -> OnCreate x1 :: final not named
+skip 0083b610 CThingGameObject::OnCreate defined out of line
+skip 0083ba20 CThingGameObject::OnCreate defined out of line
+skip 0083be20 moved CThingSwitch::OnCreate -> OnCreate x2 :: final not named
+skip 0083d6f0 moved CThingPhysicalSwitch::OnCreate -> OnCreate x2 :: final not named

@@ -1,0 +1,261 @@
+skip 004aa030 CBaseIntelligentPointer defined in another scope
+edited 0050f3d0 moved CIntelligentPointer_CThingCreatureBase::SetRaw -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetRaw@CIntelligentPointer_CThingCreatureBase@@QAEXPAVCThingCreatureBase@@@Z']
+skip 00511f50 CBaseIntelligentPointer defined in another scope
+edited 0062ebc0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00668b80 moved CIntelligentPointer::Assign -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?Assign@CIntelligentPointer@@QAEXPAVCThingCreatureBase@@@Z']
+edited 006691c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00688eb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00692f30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00693b30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThingCreatureBase@@@Z']
+edited 00693c70 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0069fe60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 006a1490 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 006a23e0 CBaseIntelligentPointer defined in another scope
+skip 006a2e20 CBaseIntelligentPointer defined in another scope
+skip 006a3130 CBaseIntelligentPointer defined in another scope
+skip 006a3180 CBaseIntelligentPointer defined in another scope
+skip 006a31d0 CBaseIntelligentPointer defined in another scope
+skip 006a3220 CBaseIntelligentPointer defined in another scope
+skip 006a3300 CBaseIntelligentPointer defined in another scope
+skip 006a3cd0 CBaseIntelligentPointer defined in another scope
+skip 006e1080 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: 96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\6e\CTCDParticleEmitter_SetPEmitter_006e1080.cpp(30) : error C2061: syntax error : identifier 'CBaseObject'
+skip 006e4bd0 CBaseIntelligentPointer defined in another scope
+skip 006e5790 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: atchpad\naming\w17\ov_final\rebuild\src\compiled\00\6e\CScriptConversation_AddPersonToConversation_006e5790.cpp(28) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007008c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: ratchpad\naming\w17\ov_final\rebuild\src\compiled\00\70\COpinionReactionManager_ClearOpinionSource_007008c0.cpp(51) : error C2061: syntax error : identifier 'CBaseObject' | ild\src\compiled\00\70\COpinionReactionManager_ClearOpinionSource_007008c0.cpp(72) : error C2660: 'CBaseIntelligentPointer::SetPItem' : function does not take 1 arguments
+edited 00730070 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00737ad0 CBaseIntelligentPointer defined in another scope
+skip 00739550 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 9-a32d96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\73\stdvector_Minsertoverflow_00739550.cpp(27) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00748d80 CBaseIntelligentPointer defined in another scope
+skip 0074cc90 CBaseIntelligentPointer defined in another scope
+skip 0074ce40 CBaseIntelligentPointer defined in another scope
+skip 00770e80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: a32d96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\77\CTCSolidToThing_FrameUpdate_00770e80.cpp(27) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00771660 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: 9-a32d96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\77\CTCOpinionSource_OnCreate_00771660.cpp(67) : error C2061: syntax error : identifier 'CBaseObject'
+edited 0077cbe0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0078b070 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0078e820 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0078f4d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0079fe90 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007a0310 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007a0630 moved LightningNative::BaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@BaseIntelligentPointer@LightningNative@@QAEXPAVCBaseObject@@@Z']
+edited 007a09b0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007b85f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007ba1d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007ba8c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 007c21a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\7c\NThingShotCTCShotDefinitionBase_Update_007c21a0.cpp(32) : error C2061: syntax error : identifier 'CBaseObject'
+edited 007c25a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007c6940 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007c7a00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007ca670 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007ca9e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007cab30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007df130 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007df4b0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007f0810 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 007f11d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 007f3ad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 6bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\7f\CLightningBranch_CLightningBranch_007f3ad0.cpp(8) : error C2061: syntax error : identifier 'CBaseObject'
+edited 007f83f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 007fdeb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\7f\CTCAISummon_GetAllSummonedCreatures_007fdeb0.cpp(22) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007fdf60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: d96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\7f\CTCAISummon_GetNumberCanSummon_007fdf60.cpp(23) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007ffdb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\7f\CTCGatherPointBase_RemoveAsUser_007ffdb0.cpp(28) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007ffeb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 32d96bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\7f\CTCGatherPointBase_AddAsUser_007ffeb0.cpp(19) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00807320 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00807b70 CBaseIntelligentPointer defined in another scope
+skip 00809d60 CBaseIntelligentPointer defined in another scope
+edited 0080a850 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0080cc40 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 0080df90 CBaseIntelligentPointer defined in another scope
+edited 0080fad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 008110a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: ratchpad\naming\w17\ov_final\rebuild\src\compiled\00\81\NEntityEventsCEventHitThing_CEventHitThing_008110a0.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0082c5e0 CBaseIntelligentPointer defined in another scope
+edited 00830360 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008448e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00845350 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008455c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 0084ae00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: aming\w17\ov_final\rebuild\src\compiled\00\84\NEntityEventsCEventReceivedMoney_CEventReceivedMoney_0084ae00.cpp(15) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0084ae80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \naming\w17\ov_final\rebuild\src\compiled\00\84\NEntityEventsCEventReceivedItem_CEventReceivedItem_0084ae80.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0084af30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: ratchpad\naming\w17\ov_final\rebuild\src\compiled\00\84\NEntityEventsCEventSoldItem_CEventSoldItem_0084af30.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0084b010 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: al\rebuild\src\compiled\00\84\NEntityEventsCEventExpressionPerformedTo_CEventExpressionPerformedTo_0084b010.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00852750 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCBaseObject@@@Z']
+edited 00852d10 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCBaseObject@@@Z']
+edited 00852d90 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCBaseObject@@@Z']
+edited 008530b0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCBaseObject@@@Z']
+edited 00853120 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCBaseObject@@@Z']
+edited 00853190 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCBaseObject@@@Z']
+edited 00857e40 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00857f30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00858030 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00860a00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00860e70 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00868220 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z']
+edited 0087e690 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00883180 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 17\ov_final\rebuild\src\compiled\00\88\SThingPointerWithFlag00883180_SThingPointerWithFlag00883180_00883180.cpp(17) : error C2061: syntax error : identifier 'CBaseObject'
+edited 0089e540 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008a99f0 moved BaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@BaseIntelligentPointer@@QAEXPAUCThingNative@@@Z']
+skip 008ac3f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: ov_final\rebuild\src\compiled\00\8a\NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac3f0.cpp(54) : error C2061: syntax error : identifier 'CBaseObject'
+edited 008b8d30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008b97e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008b9970 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008b9b00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008ba220 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008ba3c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008ba7f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008bae10 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008baf20 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008bca00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 008c0900 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: naming\w17\ov_final\rebuild\src\compiled\00\8c\CCreatureActionBriarRoseShotFarOutof_PerformAction_008c0900.cpp(168) : error C2061: syntax error : identifier 'CBaseObject'
+edited 008c4cb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008c64f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008c8380 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008c87a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008c8f70 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008c91e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008c99c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008cbe10 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008cc0b0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z']
+edited 008cc180 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z']
+edited 008cd5a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008cd730 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008d5480 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 008d74b0 CBaseIntelligentPointer defined in another scope
+edited 008d7bb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008d8330 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008da690 moved BaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@BaseIntelligentPointer@@QAEXPAUThingNative@@@Z']
+edited 008da890 moved BaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@BaseIntelligentPointer@@QAEXPAUThingNative@@@Z']
+edited 008ddad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008e0060 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x6 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008e78c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z']
+skip 008f3100 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: ad\naming\w17\ov_final\rebuild\src\compiled\00\8f\CCreatureActionDragonLandFireball_PerformAction_008f3100.cpp(164) : error C2061: syntax error : identifier 'CBaseObject'
+skip 008f3630 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: hpad\naming\w17\ov_final\rebuild\src\compiled\00\8f\CCreatureActionDragonRearUpFull_PerformAction_008f3630.cpp(215) : error C2061: syntax error : identifier 'CBaseObject'
+edited 008f5060 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 008f5220 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00902045 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00902233 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0090ca60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00911630 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00915290 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00915890 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00916910 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00917130 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\91\CAIStateGroupThrowLogsOnFire_Update_00917130.cpp(39) : error C2061: syntax error : identifier 'CBaseObject'
+edited 009183a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x6 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0091c080 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0091c3d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+skip 0091d190 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 :: compile: scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\91\CAIStateGroupMinionReactToApology_Update_0091d190.cpp(48) : error C2061: syntax error : identifier 'CBaseObject'
+edited 0091e750 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 0091eb60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00921440 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009236c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00929820 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: atchpad\naming\w17\ov_final\rebuild\src\compiled\00\92\CAIStateGroupMinionGuardGreetPlayer_Update_00929820.cpp(118) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00929b10 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+skip 0092a8a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: ratchpad\naming\w17\ov_final\rebuild\src\compiled\00\92\CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0.cpp(22) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0092afe0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\92\CAIStateGroupApprenticeHero_LookAtMap_0092afe0.cpp(37) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0092b3e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: cratchpad\naming\w17\ov_final\rebuild\src\compiled\00\92\CAIStateGroupSkillPractice_PracticeSkills_0092b3e0.cpp(33) : error C2061: syntax error : identifier 'CBaseObject'
+edited 0092c8a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0092e950 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00931010 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00932990 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00933310 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 009352c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\93\CAIStateGroupPerformAction_Update_009352c0.cpp(95) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00935530 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009357f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00935ad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: cratchpad\naming\w17\ov_final\rebuild\src\compiled\00\93\CAIStateGroupMinionPutOutFires_IsRunnable_00935ad0.cpp(97) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00936210 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00936a60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009378f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00937da0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00939ed0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 0093a080 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 0093ae80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0093cc60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0093dde0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 0093e2d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+skip 0093e8c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\93\CAIStateGroupVillageTaskTorch_IsRunnable_0093e8c0.cpp(34) : error C2061: syntax error : identifier 'CBaseObject'
+edited 0093fbc0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00940180 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00940240 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00940820 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00941210 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 009432c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 009473e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: naming\w17\ov_final\rebuild\src\compiled\00\94\CAIStateGroupWanderAroundShops_InitCreaturePosition_009473e0.cpp(31) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00948060 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 009490d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 009498b0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 0094a840 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 0094bad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094bb20 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094c7e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094c850 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 0094c900 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: b1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\94\CAIStateGroupGameMaster_IsRunnable_0094c900.cpp(51) : error C2061: syntax error : identifier 'CBaseObject'
+edited 0094cb40 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094ce60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094d480 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094dac0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094ef90 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0094f000 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00952e80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00954470 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00954690 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009547d0 moved MazeCreaturePointerBase::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@MazeCreaturePointerBase@@QAEXPAUMazeThing@@@Z']
+edited 00954b50 moved MazePointerBase::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@MazePointerBase@@QAEXPAUMazeThing@@@Z']
+edited 00954e30 moved MazePointerBase::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@MazePointerBase@@QAEXPAUMazeThing@@@Z']
+edited 00956380 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00956ce0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009574d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00958000 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00959a60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095a2c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z']
+edited 0095aa60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095ab50 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095b5a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095d200 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095d3a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095d590 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095e260 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095e900 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095edf0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0095ee70 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009612f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009614a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00961790 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00961880 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\96\CAIStateGroupBanditKingLunge_Update_00961880.cpp(36) : error C2061: syntax error : identifier 'CBaseObject'
+edited 00961e80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00961fb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 009621f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPBVCThing@@@Z']
+edited 00962c10 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00963640 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00964da0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00965320 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00966290 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00966930 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00967650 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00967a20 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009683a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00968bc0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00968e00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00969470 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00969cb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0096c2e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x5 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0096ee90 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0096f050 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x3 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0096f770 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009708a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00970ab0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00970b60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00970c10 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00970cd0 moved CIntelligentPointerRetail::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CIntelligentPointerRetail@@QAEXPAUCThingRetail@@@Z']
+edited 00972280 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009723d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009725b0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00977820 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00977c40 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0097b900 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0097dcb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0097df60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0097ef60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 0097fbe0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009804a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 00981350 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00982210 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: ming\w17\ov_final\rebuild\src\compiled\00\98\CCreatureActionSendMessage_CCreatureActionSendMessage_00982210.cpp(58) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00982320 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: _final\rebuild\src\compiled\00\98\NEntityEventsCEventVillagerInteraction_CEventVillagerInteraction_00982320.cpp(17) : error C2061: syntax error : identifier 'CBaseObject'
+edited 009857d0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+edited 009859a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 +u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z'] -u ['?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z']
+skip 00a53520 CBaseIntelligentPointer defined in another scope

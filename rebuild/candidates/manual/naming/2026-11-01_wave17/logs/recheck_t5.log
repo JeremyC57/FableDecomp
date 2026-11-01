@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00450ccc   RELOCATION_MATCH PASS   std::_Vector_base<bool>::_Vector_base
+00451583   RELOCATION_MATCH PASS   std::vector<bool>::vector
+00459af3   WARN RELOC_NAME: ??$?0H@?$vector@JV?$allocator@J@std@@@std@@QAE@HHABV?$allocator@J@1@@Z -> 00453659 labelled 'std::vector<long, std::allocator<long>>::vector<long, std::allocator<long>><int>'
+00459af3   RELOCATION_MATCH PASS   CPlayerInventoryDef::CPlayerInventoryDef
+00d34f00   RELOCATION_MATCH PASS   std::vector<bool>::vector
+
+WINS: 4
+  00450ccc RELOCATION_MATCH std::_Vector_base<bool>::??0?$_Vector_base@_NV?$allocator@_N@std@@@std@@QAE@IABV?$allocator@_N@1@@Z
+  00451583 RELOCATION_MATCH std::vector<bool>::??0?$vector@_NV?$allocator@_N@std@@@std@@QAE@IAB_NABV?$allocator@_N@1@@Z
+  00459af3 RELOCATION_MATCH CPlayerInventoryDef::??0CPlayerInventoryDef@@QAE@XZ
+  00d34f00 RELOCATION_MATCH std::vector<bool>::??0?$vector@_NV?$allocator@_N@std@@@std@@QAE@ABV01@@Z

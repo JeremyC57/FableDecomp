@@ -1,0 +1,2 @@
+edited 00ad8fe0 inplace CVertexGroupBlockOptimiser::CountRemainingGroups -> CountRemainingGroups x1 +u ['?CountRemainingGroups@CVertexGroupBlockOptimiser@@ABEKXZ'] -u ['?CountRemainingGroups@CVertexGroupBlockOptimiser@@QBEKXZ']
+edited 00ada240 inplace CVertexGroupBlockOptimiser::CountRemainingGroups -> CountRemainingGroups x1 +u ['?CountRemainingGroups@CVertexGroupBlockOptimiser@@ABEKXZ'] -u ['?CountRemainingGroups@CVertexGroupBlockOptimiser@@QBEKXZ']

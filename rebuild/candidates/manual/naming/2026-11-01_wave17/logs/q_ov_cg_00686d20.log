@@ -1,0 +1,4 @@
+skip 00700940 non-public PeekWorldMap: CTCBase is not an RTTI-derived class of the row (COpinionReactionManager::LogReaction)
+skip 00723a10 non-public PeekWorldMap: CTCPhysicsStandard_Methods is not an RTTI-derived class of the row (CTCPhysicsStandard::SetRHSetAsFlushOnGround)
+skip 007310c0 non-public PeekWorldMap: CTCBase is not an RTTI-derived class of the row (CTCDoor::UpdateOpenStatusTriggerTypeScript)
+skip 007e00d0 moved CTCTeleporter::GetRegionManager -> PeekWorldMap x1 :: compile: \w17\ov_cg\rebuild\src\compiled\00\7e\CTCTeleporter_FrameUpdate_007e00d0.cpp(196) : error C2440: 'type cast' : cannot convert from 'const CWorldMap' to 'CRegionManager *' | scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\7e\CTCTeleporter_FrameUpdate_007e00d0.cpp(196) : error C2227: left of '->IsMapLoaded' must point to class/struct/union

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00880a40   MATCH            PASS   NScreenEffect::CScreenEffectPriorityStack::Reset
+
+WINS: 1
+  00880a40 MATCH NScreenEffect::CScreenEffectPriorityStack::Reset

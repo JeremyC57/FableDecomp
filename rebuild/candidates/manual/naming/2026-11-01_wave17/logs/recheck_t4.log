@@ -1,0 +1,7 @@
+addr       parity           behav  name
+004427d0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+004427d0   WARN RELOC_NAME: ?_M_destroy_nodes@?$_Deque_base@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@IAEXPAPAVCSetTextInfo@CSubtitleRenderer@@0@Z -> 0043f510 labelled 'FreePointerArray'
+004427d0   RELOCATION_MATCH PASS   std::deque<CSubtitleRenderer::CSetTextInfo>::~deque
+
+WINS: 1
+  004427d0 RELOCATION_MATCH std::deque<CUnprovenElement_004427d0>::??1?$deque@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@QAE@XZ

@@ -1,0 +1,1 @@
+edited 009d1090 moved CBankFile::Close -> CloseEntries x1 +u ['?CloseEntries@CBankFile@@AAEXXZ'] -u ['?Close@CBankFile@@QAEXXZ']

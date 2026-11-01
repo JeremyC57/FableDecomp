@@ -1,0 +1,4 @@
+edited 006d0180 moved CTCHome::GetOccupant -> GetPVillage x1 +u ['?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ'] -u ['?GetOccupant@CTCHome@@QAEPAUCHomeOccupant@@XZ']
+edited 008a1cc0 moved CTCVillageMember_Retail::GetVillage -> GetPVillage x1 +u ['?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ'] -u ['?GetVillage@CTCVillageMember_Retail@@QAEPAUCVillage_Retail@@XZ']
+edited 0090c1a0 free ::GFGetPVillageInterface -> GetPVillage x2 +u ['?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ'] -u ['?GFGetPVillageInterface@@YIPAUCVillage@@PAUCTCVillager@@@Z']
+edited 00969470 moved CTCScratch23::Reset -> GetPVillage x1 +u ['?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ'] -u ['?Reset@CTCScratch23@@QAE_NXZ']

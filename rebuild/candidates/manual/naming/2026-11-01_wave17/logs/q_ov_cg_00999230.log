@@ -1,0 +1,5 @@
+skip 00401f30 call of PathExists with 0 args
+skip 0040d350 free stand-in PathExists not a one-argument this-call
+skip 00506d40 free stand-in PathExists not a one-argument this-call
+skip 0066ca80 call of Check with 0 args
+skip 00999620 CAFile defined in another scope

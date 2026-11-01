@@ -1,0 +1,23 @@
+addr       parity           behav  name
+007c04a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007c04a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007c04a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007c04a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007c04a0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007c04a0   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingVector@@@Z -> 007197c0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::vector<CThingCreatureBase*>, CThingFilter_None>'
+007c04a0   WARN RELOC_NAME: ?PlaySound@CTCAI@@QAEXABEABVCSoundInit@@JJ@Z -> 0066ace0 labelled 'CTCSoundPlayer::PlayUnattachedSample'
+007c04a0   RELOCATION_MATCH PASS   CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+009cb960   WARN RELOC_NAME: ?GetRetailBankPath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z -> 009a7d40 labelled 'CBankFileManager::GetRetailBankFilePath'
+009cb960   WARN RELOC_NAME: ?RegisterRetailBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z -> 009a8090 labelled 'CBankFileManager::RegisterBank'
+009cb960   WARN RELOC_NAME: ?GetDevBankFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z -> 009a7ca0 labelled 'CBankFileManager::FindBank'
+009cb960   RELOCATION_MATCH PASS   CBankFile::OpenReadWrite
+009d1090   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009d1090   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009d1090   WARN SHARED_HEADER_AVAILABLE CBankFile
+009d1090   WARN RELOC_NAME: ?CloseEntries@CBankFile@@AAEXXZ -> 009cd850 labelled 'CBankFile::InternalClose'
+009d1090   RELOCATION_MATCH PASS   CBankFile::OpenFileReadOnly
+
+WINS: 3
+  007c04a0 RELOCATION_MATCH CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+  009cb960 RELOCATION_MATCH CBankFile::?OpenReadWrite@CBankFile@@
+  009d1090 RELOCATION_MATCH CBankFile::?OpenFileReadOnly@CBankFile@@

@@ -1,0 +1,2 @@
+edited 00947280 moved CAIStateGroup_WanderAroundShops::SelectRandomShop -> FindASimplyDelightfulShop x1 +u ['?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ'] -u ['?SelectRandomShop@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@XZ']
+edited 009473e0 moved CAIStateGroup_WanderAroundShops::SelectRandomShop -> FindASimplyDelightfulShop x1 +u ['?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ'] -u ['?SelectRandomShop@CAIStateGroup_WanderAroundShops@@QAEPAVCThing@@XZ']

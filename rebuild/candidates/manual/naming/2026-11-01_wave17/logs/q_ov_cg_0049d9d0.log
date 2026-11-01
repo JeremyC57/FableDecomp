@@ -1,0 +1,35 @@
+edited 00490927 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 00659164 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 0065a1fd moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+skip 0065a28f moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 :: compile: compiled\00\65\CTCVillage_GetNormalisedTimeLeftOnFines_0065a28f.cpp(188) : error C2248: 'CWorld::GetFramesSince' : cannot access private member declared in class 'CWorld'
+edited 0065a5bb moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+skip 0065a686 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 :: compile: compiled\00\65\CTCVillage_PlayerCanApologiseForCurrentCrimes_0065a686.cpp(139) : error C2248: 'CWorld::GetFrame' : cannot access private member declared in class 'CWorld' | compiled\00\65\CTCVillage_PlayerCanApologiseForCurrentCrimes_0065a686.cpp(146) : error C2248: 'CWorld::GetFrame' : cannot access private member declared in class 'CWorld'
+edited 0065a7a9 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 0065c146 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+skip 0065c1fc moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 :: compile: uild\src\compiled\00\65\CTCVillage_RemoveCrimeIfApologisable_0065c1fc.cpp(135) : error C2248: 'CWorld::GetFrame' : cannot access private member declared in class 'CWorld'
+edited 0065c2d0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+skip 0068ea10 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x2 :: compile: naming\w17\ov_cg\rebuild\src\compiled\00\68\CInputProcessCombat_GetCurrentRelativeMovementAngleXY_0068ea10.cpp(13) : error C2226: syntax error : unexpected type 'CPlayer' | tchpad\naming\w17\ov_cg\rebuild\src\compiled\00\68\CInputProcessCombat_GetCurrentRelativeMovementAngleXY_0068ea10.cpp(13) : error C2238: unexpected token(s) preceding ';'
+edited 0068eca0 moved CWorld::GetMainPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetMainPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+edited 006a9640 moved CDisplayEngine::GetState -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetState@CDisplayEngine@@QAEPAUCEngineState@@XZ']
+edited 006cebf0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 006cef20 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 006cf1d0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 006cf920 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 006dd760 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 00701840 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+edited 007018b0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+edited 0075c530 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 00760990 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+edited 00771de0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+edited 007b2e20 inplace CWorld::PeekMyPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?PeekMyPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 007b2fd0 inplace CWorld::PeekMyPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?PeekMyPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 007dd990 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 007ddda0 inplace CWorld::PeekMyPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?PeekMyPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+edited 007df130 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+edited 008cb940 moved CWorld::GetMainPlayer -> PeekMyPlayer x2 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetMainPlayer@CWorld@@QAEPAVCPlayer@@XZ']
+skip 0090c1a0 moved CWorldP::GetCurrentPlayer -> PeekMyPlayer x1 :: compile: pad\naming\w17\ov_cg\rebuild\src\compiled\00\90\CAIStateGroupMinionGuardFollowPlayer_IsRunnable_0090c1a0.cpp(125) : error C2143: syntax error : missing ';' before 'const' | g\rebuild\src\compiled\00\90\CAIStateGroupMinionGuardFollowPlayer_IsRunnable_0090c1a0.cpp(125) : error C2501: 'CWorld::CPlayer' : missing storage-class or type specifiers
+skip 0090c2d0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 :: compile: 90\CAIStateGroupMinionGuardFollowPlayer_IsStillValidInternal_0090c2d0.cpp(173) : error C2248: 'CWorld::GetFrame' : cannot access private member declared in class 'CWorld'
+skip 00929820 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 :: compile: ompiled\00\92\CAIStateGroupMinionGuardGreetPlayer_Update_00929820.cpp(163) : error C2248: 'CWorld::GetPOpinions' : cannot access private member declared in class 'CWorld'
+edited 00930a70 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x1 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']
+skip 00957f20 moved CWorld::GetPlayerManager -> PeekMyPlayer x1 :: compile: chpad\naming\w17\ov_cg\rebuild\src\compiled\00\95\CAIStateGroupMinionReactToBurglary_IsRunnable_00957f20.cpp(136) : error C2143: syntax error : missing ';' before 'const' | _cg\rebuild\src\compiled\00\95\CAIStateGroupMinionReactToBurglary_IsRunnable_00957f20.cpp(136) : error C2501: 'CWorld::CPlayer' : missing storage-class or type specifiers
+edited 0095f9a0 moved CWorld::GetCurrentPlayer -> PeekMyPlayer x2 +u ['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ'] -u ['?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ']

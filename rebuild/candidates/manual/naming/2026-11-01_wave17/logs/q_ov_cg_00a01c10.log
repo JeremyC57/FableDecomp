@@ -1,0 +1,68 @@
+skip 00440730 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00443930 0 definitions of CIntelligentPointer<class CThing>
+skip 0048a4d0 moved CIntelligentPointer::scalar_destructor -> ~CBaseIntelligentPointer x1 :: final not named
+skip 004d607c 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 004dbe58 moved pair_ulong_anim::DestroyElement_00a01c10 -> ~CBaseIntelligentPointer x1 :: final not named
+skip 004dcd2b 0 CIntelligentPointer::~CIntelligentPointer declarations
+skip 004dd641 0 CValue_00a01c10::~CValue_00a01c10 declarations
+skip 004ddab4 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 004e1437 0 CIntelligentPointer::~CIntelligentPointer declarations
+skip 005fd410 0 definitions of CIntelligentPointer<class CThing>
+skip 00629060 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 00646709 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 006592e2 0 CIntelligentPointer::~CIntelligentPointer declarations
+skip 0065f0fa moved CIntelligentPointer::dtor_a01c10 -> ~CBaseIntelligentPointer x1 :: final not named
+skip 006872b0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 006a23e0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 006a2e20 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 006a3300 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 006c1be0 0 CIntelligentPointer::~CIntelligentPointer declarations
+skip 006dd6c0 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 006df7c0 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 006e1e60 0 CIntelligentPointer::~CIntelligentPointer declarations
+skip 00713510 0 IntelligentPointer::~IntelligentPointer declarations
+skip 007699c0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 0076bdd0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00782f60 0 CValue_00a01c10::~CValue_00a01c10 declarations
+skip 00782fe0 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 00787e12 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007a0630 0 BaseIntelligentPointer::~BaseIntelligentPointer declarations
+skip 007b6c90 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007eaf00 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007eb2b0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007eb470 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007eb990 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007ed420 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007edff0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 007ee7a0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 0080df90 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 008131b0 0 CValue_00a01c10::~CValue_00a01c10 declarations
+skip 0084b500 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 00854500 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00854540 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 0085edf0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00883230 0 CValue_00a01c10::~CValue_00a01c10 declarations
+skip 008834f0 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 008a99f0 0 BaseIntelligentPointer::~BaseIntelligentPointer declarations
+skip 008d74b0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 008da690 0 BaseIntelligentPointer::~BaseIntelligentPointer declarations
+skip 008da890 0 BaseIntelligentPointer::~BaseIntelligentPointer declarations
+skip 008e8c20 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 008e8cb0 moved Sub114::teardown -> ~CBaseIntelligentPointer x1 :: final not named
+skip 008efd50 0 definitions of CIntelligentPointer<class CThing>
+skip 008fd2ca 0 MemberB::~MemberB declarations
+skip 008fd544 moved FableDestVal_008fd544_t::inner -> ~CBaseIntelligentPointer x1 :: final not named
+skip 008fd769 moved FableDestVal_008fd769_t::inner -> ~CBaseIntelligentPointer x1 :: final not named
+skip 0090190f 0 CMember_00a01c10::~CMember_00a01c10 declarations
+skip 00910b20 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00922eb0 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00935970 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 009400f0 moved Sub::Dtor -> ~CBaseIntelligentPointer x1 :: compile: catorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0.cpp(17) : error C2065: 'CBaseIntelligentPointer' : undeclared identifier | c\compiled\00\94\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009400f0.cpp(17) : error C2059: syntax error : ')'
+skip 009547d0 0 MazeCreaturePointerBase::~MazeCreaturePointerBase declarations
+skip 00954b50 0 MazePointerBase::~MazePointerBase declarations
+skip 00954e30 0 MazePointerBase::~MazePointerBase declarations
+skip 00957300 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00966890 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00968150 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 00968170 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations
+skip 0097d280 0 CBaseIntelligentPointer::~CBaseIntelligentPointer declarations

@@ -1,0 +1,10 @@
+item	address	spelling	evidence	decision (coordinator under the owner delegation 2026-11-01, "do what retail did")
+EHeroAbility enumerator casts	007a09b0 007c6760 007c87f0	(EHeroAbility)N	neither PDB lists EHeroAbility enumerators	cast stays until an enumerator source exists (EPlayerMode precedent, wave 16)
+set<unsigned long>::find const overload	00ad2790	?find@...@QBE...	CIndexList::HasIndex is a const member (Ego_r), so retail resolved the const find	ACCEPTED: the const overload is what retail called
+return type void	006b8410	GetTarget_006b8410	bytes match with void; no PDB name	ACCEPTED (descriptive name kept until proven)
+CTCShop shoppers model	00772110	vector<CIntelligentPointer<CThingCreatureBase> > Shoppers at +0x18	Ego_r layout: CTCShop +24 Shoppers vector<CIntelligentPointer<CThingCreatureBase>>, +16 PShopKeeper	ACCEPTED: matches the PDB layout exactly
+__false_type namespace	00b7ffc0	std::__false_type	STLport 4.6 declares __false_type in namespace std	the retail (std) spelling when the row is re-authored; the landed global spelling stays until then (DEFERRED)
+0x00994B40 body under two names	00994b40	?GetLength@CMemoryDataOutputStream@@QBEKXZ	chunk 681 landing decision: data-stream block, CMemoryDataOutputStream callers, Ego_r symbol	the row is CMemoryDataOutputStream::GetLength; the own row + file rename is re-authored next wave (c681 queue row); callers already respelled this wave
+CBankFile::CloseEntries	009cd850	?CloseEntries@CBankFile@@...	chunk 678 evidence-best, not two-source	kept as the best evidence spelling; re-prove when CBankFile::OpenReadOnly (parked) lands
+recheck failures reverted	00401f30 006a2520 009e1d00 009e1d50	-	fam_q made the Close call virtual (DIFFER 170v162); three tests link against old stand-in names	reverted by the agent (excl_queue.txt), DEFERRED [recheck-fail]; respell with the test fix next wave
+libpk CHandleBasedMemoryPool copy	00c28690	-	wave 15 decision	DEFERRED (stands)

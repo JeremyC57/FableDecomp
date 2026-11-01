@@ -1,0 +1,2 @@
+skip 0055d070 call of Read with 2 args
+edited 00b2c8e0 inplace CDiskFileWin32::Read -> Read x1 +u ['?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z'] -u ['?Read@CDiskFileWin32@@QAEXPAXJPAVCASuspendableProcess@@@Z']

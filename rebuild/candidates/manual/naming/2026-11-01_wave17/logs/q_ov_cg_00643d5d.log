@@ -1,0 +1,2 @@
+edited 0064499c moved NPlayerGui::CDrawPerceivers::GetFadedAlpha -> ScaleAlpha x3 +u ['?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z'] -u ['?GetFadedAlpha@CDrawPerceivers@NPlayerGui@@QAEEE@Z']
+edited 00645292 moved NPlayerGui::CDrawQuickAccessIcons::GetFadedAlpha -> ScaleAlpha x2 +u ['?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z'] -u ['?GetFadedAlpha@CDrawQuickAccessIcons@NPlayerGui@@QAEEE@Z']

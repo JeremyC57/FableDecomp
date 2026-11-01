@@ -1,0 +1,29 @@
+addr       parity           behav  name
+004cf810   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z -> 004cf810 labelled '_unattributed::FreeTree_CTreeOwner_004cf810'
+004cf810   RELOCATION_MATCH PASS   _unattributed::FreeTree_CTreeOwner_004cf810
+006c4f80   RELOCATION_MATCH PASS   std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80>, std::allocator<CUnprovenValue_006c4f80>>::_M_erase
+006c7d70   RELOCATION_MATCH PASS   std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::~_Rb_tree
+006c8230   RELOCATION_MATCH PASS   CUnprovenContainer_006c4f80::CUnprovenContainer_006c4f80
+009aaca0   RELOCATION_MATCH PASS   std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >::clear
+009ac0f0   RELOCATION_MATCH PASS   CUnprovenContainer_009aa780::CUnprovenContainer_009aa780
+
+WINS: 6
+  004cf810 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z
+  006c4f80 RELOCATION_MATCH std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::?_M_erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@Z
+  006c7d70 RELOCATION_MATCH std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::??1?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QAE@XZ
+  006c8230 RELOCATION_MATCH CUnprovenContainer_006c4f80::??0?$map@JPAVCOpinionDeed@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@3@@std@@QAE@XZ
+  009aaca0 RELOCATION_MATCH std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >::?clear@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@QAEXXZ
+  009ac0f0 RELOCATION_MATCH CUnprovenContainer_009aa780::??0?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAE@XZ
+addr       parity           behav  name
+00527910   RELOCATION_MATCH PASS   std::_Rb_tree<EGameAction,std::pair<const EGameAction,std::pair<C3DVector,long> >,std::_Select1st<std::pair<const EGameAction,std::pair<C3DVector,long> > >,std::less<EGameAction>,std::allocator<std::pair<const EGameAction,std::pair<C3DVector,long> > > >::_M_erase
+006c75a0   RELOCATION_MATCH PASS   std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::clear
+006c7de0   RELOCATION_MATCH PASS   std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::erase
+006c8270   DIFFER(5v66)     PASS   CUnprovenContainer_006c4f80::~CUnprovenContainer_006c4f80
+009ab6b0   RELOCATION_MATCH PASS   std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >::~_Rb_tree
+009ac130   DIFFER(5v66)     PASS   CUnprovenContainer_009aa780::~CUnprovenContainer_009aa780
+
+WINS: 4
+  00527910 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@Z
+  006c75a0 RELOCATION_MATCH std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QAEXXZ
+  006c7de0 RELOCATION_MATCH std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >::?erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@2@0@Z
+  009ab6b0 RELOCATION_MATCH std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >::??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@QAE@XZ

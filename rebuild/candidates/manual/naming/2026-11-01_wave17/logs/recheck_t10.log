@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0049cf80   MATCH            PASS   CRightHandedSet::CRightHandedSet
+00772110   MATCH            PASS   CTCShop::GetNumShoppers
+
+WINS: 2
+  0049cf80 MATCH CNearestBuildingWithProperty::??0CRightHandedSet@@QAE@ABV0@@Z
+  00772110 MATCH CShaderPreParser::?GetNumShoppers@CTCShop@@QBEJXZ

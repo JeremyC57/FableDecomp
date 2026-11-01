@@ -1,0 +1,8 @@
+skip 006e26f0 moved Sub28::Cleanup -> ~CParticleUpdateParameters<unsigned long, unsigned long> x1 :: compile: ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\6e\CTCMapwho_OnDie_006e26f0.cpp(2) : error C2143: syntax error : missing ';' before '<' | -FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\6e\CTCMapwho_OnDie_006e26f0.cpp(2) : error C2059: syntax error : '<' | ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\6e\CTCMapwho_OnDie_006e26f0.cpp(2) : error C2143: syntax error : missing ';' before '{'
+skip 007c2480 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 007c25a0 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 008f7950 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 008f7e70 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 008f7f50 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 00af10e0 0 SUpdateParameters::~SUpdateParameters declarations
+skip 00af5900 0 SUpdateParameters::~SUpdateParameters declarations

@@ -1,0 +1,18 @@
+addr       parity           behav  name
+005d92f0   WARN SHARED_HEADER_AVAILABLE CInventoryItemDef
+005d92f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+005d92f0   RELOCATION_MATCH PASS   CTCInventoryItem::GetStartingRightHandedSet
+005d9730   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005d9730   RELOCATION_MATCH PASS   CTCInventoryItem::GetStartingRightHandedSet
+0121ac30   RELOCATION_MATCH PASS   _global::$E_InventoryOrientationRHSet1
+0121acd0   RELOCATION_MATCH PASS   _global::$E_InventoryOrientationRHSet5
+0121ad20   RELOCATION_MATCH PASS   _global::$E_InventoryOrientationRHSet6
+0121ad50   RELOCATION_MATCH PASS   _global::$E_InventoryOrientationRHSet7
+
+WINS: 6
+  005d92f0 RELOCATION_MATCH CTCInventoryItem::GetStartingRightHandedSet
+  005d9730 RELOCATION_MATCH CTCInventoryItem::?GetStartingRightHandedSet@CTCInventoryItem@@SI
+  0121ac30 RELOCATION_MATCH _global::_$E1
+  0121acd0 RELOCATION_MATCH _global::_$E1
+  0121ad20 RELOCATION_MATCH _global::_$E1
+  0121ad50 RELOCATION_MATCH _global::_$E1

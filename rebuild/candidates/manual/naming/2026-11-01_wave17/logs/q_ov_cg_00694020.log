@@ -1,0 +1,4 @@
+skip 0069fce0 CCreatureActionBase::FrameUpdate defined out of line
+skip 00848ae0 CCreatureActionBase::FrameUpdate defined out of line
+skip 00859d80 CCreatureActionBase::FrameUpdate defined out of line
+skip 008d5000 non-public FrameUpdate needs an access path

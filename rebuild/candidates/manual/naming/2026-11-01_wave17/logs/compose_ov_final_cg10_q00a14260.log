@@ -1,0 +1,2 @@
+edited 0090bed0 moved C3DVector::RotateAboutZ -> Rotate x1 +u ['?Rotate@C3DVector@@QAEXMM@Z'] -u ['?RotateAboutZ@C3DVector@@QAEXM_N@Z']
+edited 009175e0 moved C3DVector::RotateAboutZ -> Rotate x2 +u ['?Rotate@C3DVector@@QAEXMM@Z'] -u ['?RotateAboutZ@C3DVector@@QAEXM_N@Z']

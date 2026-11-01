@@ -1,0 +1,7 @@
+addr       parity           behav  name
+006c8270   RELOCATION_MATCH PASS   CUnprovenContainer_006c4f80::~CUnprovenContainer_006c4f80
+009ac130   RELOCATION_MATCH PASS   CUnprovenContainer_009aa780::~CUnprovenContainer_009aa780
+
+WINS: 2
+  006c8270 RELOCATION_MATCH CUnprovenContainer_006c4f80::??1?$map@JPAVCOpinionDeed@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@3@@std@@QAE@XZ
+  009ac130 RELOCATION_MATCH CUnprovenContainer_009aa780::??1?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAE@XZ

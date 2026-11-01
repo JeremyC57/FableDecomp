@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00c3ec30   RELOCATION_MATCH PASS   CAnimationEnvironment::InitializeWithDefaults
+00c4e1b0   WARN RELOC_NAME: ?KeepShadowCopy@CAudioSoundBuffer@@QAEJXZ -> 00c4de00 labelled 'CAudioSoundBuffer_TransferPCMData'
+00c4e1b0   RELOCATION_MATCH PASS   CAudioSoundBuffer::SetData
+  WARN leaf 'Initialize' matches no symbol in 00c71cf0.obj; graded the largest function
+  WARN leaf 'Initialize' matches no symbol in 00c71cf0.obj; graded the largest function
+00c71cf0   WARN RELOC_NAME: ??1CAudioContextBase_00c71cf0@@QAE@XZ -> 00c6ac50 labelled '_global::SetMemberConst_00c6ac50'
+00c71cf0   RELOCATION_MATCH PASS   CAudioContextEAX::CAudioContextEAX::Initialize
+00c72af0   RELOCATION_MATCH PASS   CAudioSource::InitializeProperties
+  WARN leaf 'g_CStatic_00c55cd0_0143bdb0' matches no symbol in 01224bc0.obj; graded the largest function
+  WARN leaf 'g_CStatic_00c55cd0_0143bdb0' matches no symbol in 01224bc0.obj; graded the largest function
+01224bc0   WARN RELOC_NAME: ??0CAudioContext@@QAE@XZ -> 00c55cd0 labelled 'pair<NParticleEngine::EPSCType,NParticleEngine::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>'
+01224bc0   WARN RELOC_CONFLICT: _$E2 -> 0122ae30 here, 01228930 in landed 01219f00
+01224bc0   WARN RELOC_NAME: _$E2 -> 0122ae30 labelled '_global::Static_CEngineWaterRenderer_Destructor_on_0143bdb0_0122ae30'
+01224bc0   RELOCATION_MATCH PASS   _static_init::g_CStatic_00c55cd0_0143bdb0
+
+WINS: 5
+  00c3ec30 RELOCATION_MATCH CAnimationEnvironment::InitializeWithDefaults
+  00c4e1b0 RELOCATION_MATCH CAudioSoundBuffer::?SetData@CAudioSoundBuffer@@
+  00c71cf0 RELOCATION_MATCH CAudioContextEAX::Initialize
+  00c72af0 RELOCATION_MATCH CAudioSource::InitializeProperties
+  01224bc0 RELOCATION_MATCH _static_init::g_CStatic_00c55cd0_0143bdb0

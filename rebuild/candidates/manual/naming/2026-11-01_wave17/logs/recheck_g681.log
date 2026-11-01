@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00b2f6e0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b2f6e0   RELOCATION_MATCH PASS   CEngineSurfaceCompositionManager::`scalar_deleting_destructor'
+00b9c6d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedStaticMeshes
+00b9c6d0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedStaticMeshes::`scalar_deleting_destructor'
+00cf91f0   RELOCATION_MATCH PASS   CVtable_012c6c10::`scalar deleting destructor'
+00da2f70   RELOCATION_MATCH PASS   CVtable_012d6c60::`scalar deleting destructor'
+00debc90   RELOCATION_MATCH PASS   CVtable_012dce70::`scalar deleting destructor'
+00e24c60   RELOCATION_MATCH PASS   CVtable_012e12e0::`scalar deleting destructor'
+00e46a30   RELOCATION_MATCH PASS   CVtable_012e38b0::`scalar deleting destructor'
+00e7b2c0   RELOCATION_MATCH PASS   CVtable_012e96cc::`scalar deleting destructor'
+00e7f1f0   RELOCATION_MATCH PASS   CVtable_012ea620::`scalar deleting destructor'
+
+WINS: 9
+  00b2f6e0 RELOCATION_MATCH CEngineSurfaceCompositionManager::??_GCEngineSurfaceCompositionManager@@UAEPAXI@Z
+  00b9c6d0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::??_GCEnginePrimitiveManagerRepeatedStaticMeshes@@UAEPAXI@Z
+  00cf91f0 RELOCATION_MATCH CVtable_012c6c10::??_GCLadyGreyWifeManagerScript@NScript@@UAEPAXI@Z
+  00da2f70 RELOCATION_MATCH CVtable_012d6c60::??_GCQ_MinionCampScript@NScript@@UAEPAXI@Z
+  00debc90 RELOCATION_MATCH CVtable_012dce70::??_GCQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00e24c60 RELOCATION_MATCH CVtable_012e12e0::??_GCQR_EscortTraderScript@NScript@@UAEPAXI@Z
+  00e46a30 RELOCATION_MATCH CVtable_012e38b0::??_GCV_BordelloScript@NScript@@UAEPAXI@Z
+  00e7b2c0 RELOCATION_MATCH CVtable_012e96cc::??_GCV_ExposeMayorScript@NScript@@UAEPAXI@Z
+  00e7f1f0 RELOCATION_MATCH CVtable_012ea620::??_GCFishCompOrganiser@CV_FishingCompetitionScript@NScript@@UAEPAXI@Z

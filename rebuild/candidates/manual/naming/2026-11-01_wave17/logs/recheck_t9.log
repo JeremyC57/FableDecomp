@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00d25410   RELOCATION_MATCH PASS   NScript::CQ_DragonBossFightScript::CQ_DragonBossFightScript
+
+WINS: 1
+  00d25410 RELOCATION_MATCH CQ_NewOakValeIntroScript::??0CQ_DragonBossFightScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

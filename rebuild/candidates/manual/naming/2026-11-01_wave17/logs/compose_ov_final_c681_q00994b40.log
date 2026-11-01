@@ -1,0 +1,14 @@
+edited 004fbde0 moved CMemoryDataOutputStream::GetSize -> GetLength x1 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QBEJXZ']
+edited 00523b40 moved CMemoryDataOutputStream::GetSize -> GetLength x1 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QAEJXZ']
+edited 006f92a0 moved CMemoryDataOutputStream::GetSize -> GetLength x1 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QBEJXZ']
+edited 009b08c0 moved CMemoryDataOutputStream::GetSize -> GetLength x1 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QBEKXZ']
+skip 009d4a50 moved CMemoryDataOutputStream::GetSize -> GetLength x1 :: compile: \CDefStringTable_WriteTable_009d4a50.cpp(40) : error C2248: 'CMemoryDataOutputStream::PeekData' : cannot access private member declared in class 'CMemoryDataOutputStream'
+skip 009d4f10 moved CMemoryDataOutputStream::GetSize -> GetLength x1 :: compile: 0\9d\CDefStringTable_Unlock_009d4f10.cpp(56) : error C2248: 'CMemoryDataOutputStream::PeekData' : cannot access private member declared in class 'CMemoryDataOutputStream'
+edited 009d4f90 moved CMemoryDataOutputStream::GetSize -> GetLength x2 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QAEJXZ']
+edited 00a382e0 moved CMemoryDataOutputStream::GetSize -> GetLength x1 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QAEJXZ']
+skip 00a99840 moved X_00a99840::CMemoryDataOutputStreamMethods::GetLength -> GetLength x1 :: compile: Z:\home\user\FableDecomp\rebuild\include\engine\CMemoryDataOutputStream.h(14) : error C2011: 'CMemoryDataOutputStream' : 'class' type redefinition | Z:\home\user\FableDecomp\rebuild\include\engine\CMemoryDataOutputStream.h(23) : error C2118: negative subscript
+skip 00a9ba70 moved X_00a9ba70::CMemoryDataOutputStreamMethods::GetLength -> GetLength x1 :: compile: Z:\home\user\FableDecomp\rebuild\include\engine\CMemoryDataOutputStream.h(14) : error C2011: 'CMemoryDataOutputStream' : 'class' type redefinition | Z:\home\user\FableDecomp\rebuild\include\engine\CMemoryDataOutputStream.h(23) : error C2118: negative subscript
+edited 00aad150 moved CMemoryDataOutputStream::GetSize -> GetLength x4 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QBEJXZ']
+edited 00ac3b00 moved CMemoryDataOutputStream::GetSize -> GetLength x2 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QAEKXZ']
+edited 00adfdc0 moved CMemoryDataOutputStream::GetSize -> GetLength x3 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QAEJXZ']
+edited 00ae2230 moved CMemoryDataOutputStream::GetSize -> GetLength x2 +u ['?GetLength@CMemoryDataOutputStream@@QBEKXZ'] -u ['?GetSize@CMemoryDataOutputStream@@QAEJXZ']

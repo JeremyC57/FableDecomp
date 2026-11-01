@@ -1,0 +1,3 @@
+skip 004016b0 free ::Member599270 -> Close x1 :: final not named
+edited 0055d070 inplace CDiskFileWin32::Close -> Close x3 +u ['?Close@CDiskFileWin32@@UAEXXZ'] -u ['?Close@CDiskFileWin32@@QAEXXZ']
+skip 009cdf50 moved CDiskFileWin32Runtime::Close -> Close x1 :: compile: 6bb1c2d\scratchpad\naming\w17\ov_final\rebuild\src\compiled\00\9c\CBankFile_WriteRecoveryFile_009cdf50.cpp(28) : error C2011: 'CDiskFileWin32' : 'class' type redefinition

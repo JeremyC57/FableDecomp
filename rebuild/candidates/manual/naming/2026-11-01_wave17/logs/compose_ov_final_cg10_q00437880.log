@@ -1,0 +1,1 @@
+edited 0064499c moved CGameUI::GetPerceiverAlpha -> GetMiniMapRingAlpha x1 +u ['?GetMiniMapRingAlpha@CPlayerGui@@QBEEXZ'] -u ['?GetPerceiverAlpha@CGameUI@@QAEEXZ']

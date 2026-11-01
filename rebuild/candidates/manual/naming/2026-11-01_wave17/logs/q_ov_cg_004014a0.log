@@ -1,0 +1,4 @@
+skip 005dcf70 free stand-in Hash not a one-argument this-call
+skip 008e9a30 free stand-in CalculateCRC not a one-argument this-call
+skip 008f7950 CCRC::Calc defined out of line
+skip 008f7bd0 CCRC::Calc defined out of line

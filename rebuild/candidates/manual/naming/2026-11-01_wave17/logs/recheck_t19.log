@@ -1,0 +1,13 @@
+addr       parity           behav  name
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c64f0   WARN SHARED_HEADER_AVAILABLE CWorld
+008c64f0   WARN RELOC_NAME: ?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+008c64f0   WARN RELOC_NAME: ?GetWeaponHand@CCombatTC@@QAEXPAPAUSWeaponHand@@@Z -> 00669cb0 labelled 'CAnimationEntry::GetComponent<CAnimComponentCombatHandedness>'
+008c64f0   WARN RELOC_NAME: ?GetPDefinitionManager@CCombatActionBase@@QBEPAVCDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::PeekDefinitionManager'
+008c64f0   WARN RELOC_NAME: ?AddThing@CTCCarrying@@QAEXPAVCThing@@J_N@Z -> 006a1f80 labelled 'CTCCarrying::PutThingInCarrySlot'
+008c64f0   RELOCATION_MATCH PASS   CCreatureAction_TrollThrowProjectile::Initialise
+
+WINS: 1
+  008c64f0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Initialise@CCreatureAction_TrollThrowProjectile

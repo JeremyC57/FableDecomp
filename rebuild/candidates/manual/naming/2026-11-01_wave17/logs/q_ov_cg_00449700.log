@@ -1,0 +1,3 @@
+edited 00487520 moved CPlayerManagerCalls::GetMainPlayerNumber -> GetMainPlayerNumber x1 +u ['?GetMainPlayerNumber@CPlayerManager@@QBEJXZ'] -u ['?GetMainPlayerNumber@CPlayerManagerCalls@@QAEJXZ']
+skip 00487fb0 moved CPlayerManagerCalls::GetMainPlayerNumber -> GetMainPlayerNumber x1 :: compile: atchpad\naming\w17\ov_cg\rebuild\src\compiled\00\48\CPlayer_InitPlayerGui_00487fb0.cpp(49) : error C2039: 'GetMainPlayerNumber' : is not a member of 'CPlayerManagerCalls'
+edited 0049f180 moved CPlayerManager::GetMainPlayerID -> GetMainPlayerNumber x1 +u ['?GetMainPlayerNumber@CPlayerManager@@QBEJXZ'] -u ['?GetMainPlayerID@CPlayerManager@@QAEJXZ']

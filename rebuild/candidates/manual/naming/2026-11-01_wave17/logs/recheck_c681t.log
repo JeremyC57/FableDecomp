@@ -1,0 +1,87 @@
+addr       parity           behav  name
+004fbde0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+004fbde0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+004fbde0   WARN SHARED_HEADER_AVAILABLE CRegion
+004fbde0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+004fbde0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+004fbde0   RELOCATION_MATCH PASS   CWorldMap::SaveWorldToBinaryFile
+006f92a0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+006f92a0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+006f92a0   WARN SHARED_HEADER_AVAILABLE CManager
+006f92a0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+006f92a0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+006f92a0   RELOCATION_MATCH PASS   NAnimationEvents::CManager::SaveBinary
+009d49b0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d49b0   RELOCATION_MATCH PASS   CDefStringTable::GetString
+009d4a50   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009d4a50   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d4a50   WARN RELOC_NAME: ?GetSize@CMemoryDataOutputStream@@QAEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+009d4a50   RELOCATION_MATCH PASS   CDefStringTable::WriteTable
+009d4f10   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d4f10   WARN RELOC_NAME: ?GetSize@CMemoryDataOutputStream@@QAEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+009d4f10   RELOCATION_MATCH PASS   CDefStringTable::Unlock
+00a382e0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a382e0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00a382e0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00a382e0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a382e0   RELOCATION_MATCH PASS   CCRCSymbolMap::SaveBinary
+00ac3b00   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00ac3b00   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ac3b00   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ac3b00   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00ac3b00   WARN RELOC_NAME: ?WriteData@CDataOutputStream@@QAEXPBXK@Z -> 00996610 labelled 'CDataOutputStream::WriteCompressed'
+00ac3b00   RELOCATION_MATCH PASS   C3DClothPrimitive::SaveBinary
+00ae2230   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00ae2230   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00ae2230   WARN RELOC_NAME: ?WriteVectors_00ae18c0@@YIXPBVC4DVector@@KAAVCDataOutputStream@@@Z -> 00ae18c0 labelled 'CParticleSimulation::WriteVectorArray'
+00ae2230   RELOCATION_MATCH PASS   CParticleProgram::WriteToFile
+
+WINS: 8
+  004fbde0 RELOCATION_MATCH CWorldMap::SaveWorldToBinaryFile
+  006f92a0 RELOCATION_MATCH NAnimationEvents::CManager::SaveBinary
+  009d49b0 RELOCATION_MATCH CDefStringTable::GetString
+  009d4a50 RELOCATION_MATCH CDefStringTable::WriteTable
+  009d4f10 RELOCATION_MATCH CDefStringTable::Unlock
+  00a382e0 RELOCATION_MATCH CCRCSymbolMap::SaveBinary
+  00ac3b00 RELOCATION_MATCH C3DClothPrimitive::SaveBinary
+  00ae2230 RELOCATION_MATCH CParticleProgram::WriteToFile
+addr       parity           behav  name
+00523b40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00523b40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00523b40   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00523b40   WARN RELOC_NAME: ?Reserve@CCharString@@QAEXJ@Z -> 0099ef90 labelled 'C3DAnimationBlendState::AddCombinationBlend'
+00523b40   RELOCATION_MATCH PASS   CThingManager::RuntimeSaveGameHero
+009b08c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009b08c0   WARN RELOC_NAME: ??1CFileDataInputStream@@QAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+009b08c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009b08c0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+009b08c0   RELOCATION_MATCH PASS   CDefinitionManager::Compile
+009d49f0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d49f0   RELOCATION_MATCH PASS   CDefStringTable::GetStringAsCharArray
+009d4ab0   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d4ab0   WARN RELOC_NAME: ?ReadFromInputStream@CMemoryDataOutputStream@@QAEXAAUCDataInputStreamReader@@J@Z -> 00996970 labelled '_Cons_val_std::allocator_std::pair_unsigned_long,CAnimationEntry___,std::pair_unsigned_long,CAnimationEntry_,std::pair_unsigned_long,class_CAnimationEntry_&_'
+009d4ab0   RELOCATION_MATCH PASS   CDefStringTable::ReadTable
+009d4f90   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009d4f90   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+009d4f90   RELOCATION_MATCH PASS   CDefStringTable::AddString
+00aad150   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00aad150   WARN RELOC_NAME: ?WriteUShort@CDataOutputStream@@QAEXG@Z -> 00993e80 labelled 'CDataOutputStream::WriteUWORD'
+00aad150   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00aad150   RELOCATION_MATCH PASS   CWaveLoader::SaveWaveFile
+00adfdc0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00adfdc0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00adfdc0   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00adfdc0   WARN RELOC_NAME: ?GetLength@CMemoryDataOutputStream@@QBEKXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00adfdc0   WARN RELOC_NAME: ?Reset@CMemoryDataOutputStream@@QAEXXZ -> 00996b60 labelled 'CMemoryDataOutputStream::Clear'
+00adfdc0   WARN RELOC_NAME: ?ReadToStream@CDataInputStream@@QAEXAAVCDataOutputStream@@J@Z -> 009964e0 labelled 'CDataInputStream::ReadWithChunking'
+00adfdc0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00adfdc0   RELOCATION_MATCH PASS   CParticleProgram::OptimiseConstraints
+
+WINS: 7
+  00523b40 RELOCATION_MATCH CThingManager::?RuntimeSaveGameHero@CThingManager@@
+  009b08c0 RELOCATION_MATCH CDefinitionManager::Compile
+  009d49f0 RELOCATION_MATCH CDefStringTable::GetStringAsCharArray
+  009d4ab0 RELOCATION_MATCH CDefStringTable::ReadTable
+  009d4f90 RELOCATION_MATCH CDefStringTable::AddString
+  00aad150 RELOCATION_MATCH CWaveLoader::SaveWaveFile
+  00adfdc0 RELOCATION_MATCH CParticleProgram::OptimiseConstraints

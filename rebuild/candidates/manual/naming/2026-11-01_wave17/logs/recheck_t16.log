@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00ad2790   MATCH            PASS   std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >::find
+
+WINS: 1
+  00ad2790 MATCH std::_Rb_tree<CUnprovenKey_00ad2790,CUnprovenValue_00ad2790,CUnprovenKeyOfValue_00ad2790,std::less<CUnprovenKey_00ad2790>,std::allocator<CUnprovenValue_00ad2790> >::?find@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QBE?AU?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@2@ABK@Z

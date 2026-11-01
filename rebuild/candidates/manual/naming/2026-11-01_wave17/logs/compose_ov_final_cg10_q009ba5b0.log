@@ -1,0 +1,4 @@
+edited 0044b7e0 moved CStringParser::ReadInt64 -> ReadAsUHUGE x1 +u ['?ReadAsUHUGE@CStringParser@@QAE_KXZ'] -u ['?ReadInt64@CStringParser@@QAE_JXZ']
+edited 00580194 moved CStringParser::ReadInt64 -> ReadAsUHUGE x2 +u ['?ReadAsUHUGE@CStringParser@@QAE_KXZ'] -u ['?ReadInt64@CStringParser@@QAE_JXZ']
+edited 00614430 moved CStringParser::ReadInt64 -> ReadAsUHUGE x1 +u ['?ReadAsUHUGE@CStringParser@@QAE_KXZ'] -u ['?ReadInt64@CStringParser@@QAE_JXZ']
+edited 00cb8440 moved CStringParser::ReadInt64 -> ReadAsUHUGE x1 +u ['?ReadAsUHUGE@CStringParser@@QAE_KXZ'] -u ['?ReadInt64@CStringParser@@QAE_KXZ']

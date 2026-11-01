@@ -1,0 +1,1 @@
+edited 00836260 inplace CThingDeadCreature::PeekDefinition -> PeekDefinition x3 +u ['?PeekDefinition@CThingDeadCreature@@IBEABVCThingCreatureDef@@XZ'] -u ['?PeekDefinition@CThingDeadCreature@@QBEABVCThingCreatureDef@@XZ']

@@ -1,0 +1,6 @@
+skip 00663f50 0 CDefClassBase::GetSubDef<class CSpecialEffectsDef> declarations
+skip 008b74d0 moved CDefClassBase::GetSubDef -> GetSubDef<class CSpecialEffectsDef> x1 :: compile: 96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\8b\CCreatureActionOnGenerate_Initialise_008b74d0.cpp(55) : error C2143: syntax error : missing ';' before '<' | a32d96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\8b\CCreatureActionOnGenerate_Initialise_008b74d0.cpp(55) : error C2238: unexpected token(s) preceding ';' | hpad\naming\w17\ov_cg\rebuild\src\compiled\00\8b\CCreatureActionOnGenerate_Initialise_008b74d0.cpp(138) : error C2226: syntax error : unexpected type 'CSpecialEffectsDef'
+skip 008b9e50 0 CDefClassBase::GetSubDef<class CSpecialEffectsDef> declarations
+skip 008b9f20 0 CDefClassBase::GetSubDef<class CSpecialEffectsDef> declarations
+skip 008ec260 0 CDefClassBase::GetSubDef<class CSpecialEffectsDef> declarations
+skip 008ec320 0 CDefClassBase::GetSubDef<class CSpecialEffectsDef> declarations

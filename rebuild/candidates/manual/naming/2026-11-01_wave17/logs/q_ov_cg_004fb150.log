@@ -1,0 +1,3 @@
+edited 0082a180 moved Obj::m4fb150 -> GetLoadedRegion x1 +u ['?GetLoadedRegion@CWorldMap@@QBEJXZ'] -u ['?m4fb150@Obj@@QAEPAXXZ']
+skip 0088e300 moved CWorldEnvironment::DrawGetEnvironment -> GetLoadedRegion x1 :: compile: -fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w17\ov_cg\rebuild\src\compiled\00\88\CGameScriptInterface_IsRegionLoaded_0088e300.cpp(31) : error C2059: syntax error : ')'
+edited 0088e340 free ::CRegions_GetCount -> GetLoadedRegion x1 +u ['?GetLoadedRegion@CWorldMap@@QBEJXZ'] -u ['?CRegions_GetCount@@YIHPAUCRegions@@@Z']

@@ -1,0 +1,24 @@
+skip 00914f00 non-public GetPWorldSeed: CAIStateGroupKidHurtSelfRunToMotherMethods is not an RTTI-derived class of the row (CAIStateGroup_KidHurtSelfRunToMother::PerformRandomLengthCry)
+edited 009175e0 moved CAIStateGroup_Clean::GetPWorldSeed -> GetPWorldSeed x5 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_Clean@@QAEPAKXZ']
+edited 009190f0 moved CAIStateGroup_LookAtInterestingThings::GetPWorldSeed -> GetPWorldSeed x2 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_LookAtInterestingThings@@QAEPAKXZ']
+edited 00919440 moved CAIStateGroup_LookAtInterestingThings::GetPWorldSeed -> GetPWorldSeed x1 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_LookAtInterestingThings@@QAEPAKXZ']
+skip 0091e4b0 non-public GetPWorldSeed: CAIStateGroup_MinionLeaveRegion_Adapter is not an RTTI-derived class of the row (CAIStateGroup_MinionLeaveRegion::Update)
+edited 00922750 moved CAIStateGroup_Drunk::GetPWorldSeed -> GetPWorldSeed x1 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_Drunk@@QAEPAKXZ']
+skip 009284b0 non-public GetPWorldSeed: CAIStateGroup_BanditPlayDice_Methods is not an RTTI-derived class of the row (CAIStateGroup_BanditPlayDice::InitStateGroup)
+skip 0092a0c0 non-public GetPWorldSeed: CAIStateGroupApprenticeHeroMethods is not an RTTI-derived class of the row (CAIStateGroup_ApprenticeHero::GetDummy)
+skip 0092a220 non-public GetPWorldSeed: CAIStateGroupApprenticeHeroMethods is not an RTTI-derived class of the row (CAIStateGroup_ApprenticeHero::MoveToAppropriateDummy)
+edited 009347b0 moved CAIStateGroup_MinionKidGroupTag::GetPWorldSeed -> GetPWorldSeed x1 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_MinionKidGroupTag@@QAEPAKXZ']
+skip 00938bf0 non-public GetPWorldSeed: CAIStateGroupBaseR is not an RTTI-derived class of the row (CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding)
+skip 00938f70 non-public GetPWorldSeed: CAIStateGroup_MinionSitOnSeatBase is not an RTTI-derived class of the row (CAIStateGroup_MinionSitOutside::IsRunnable)
+edited 0093a5c0 moved CAIStateGroup_BanditSitRoundCampfire::GetPWorldSeed -> GetPWorldSeed x3 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_BanditSitRoundCampfire@@QAEPAKXZ']
+edited 0093a7a0 moved CAIStateGroup_BanditSitRoundCampfire::GetPWorldSeed -> GetPWorldSeed x2 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_BanditSitRoundCampfire@@QAEPAKXZ']
+edited 0093a8c0 moved CAIStateGroup_BanditSitRoundCampfire::GetPWorldSeed -> GetPWorldSeed x2 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_BanditSitRoundCampfire@@QAEPAKXZ']
+skip 0093ad70 non-public GetPWorldSeed: CAIStateGroupSeed is not an RTTI-derived class of the row (CAIStateGroup_BanditSitRoundCampfire::SitMain)
+skip 009431e0 non-public GetPWorldSeed: CAIStateGroupBaseR is not an RTTI-derived class of the row (CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding)
+edited 0094a0e0 moved CAIStateGroup_GoToPub::GetPWorldSeed -> GetPWorldSeed x1 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_GoToPub@@QAEPAKXZ']
+edited 0094a200 moved CAIStateGroup_GoToPub::GetPWorldSeed -> GetPWorldSeed x1 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_GoToPub@@QAEPAKXZ']
+edited 0094a2b0 moved CAIStateGroup_GoToPub::GetPWorldSeed -> GetPWorldSeed x1 +u ['?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ'] -u ['?GetPWorldSeed@CAIStateGroup_GoToPub@@QAEPAKXZ']
+skip 0094ef70 non-public GetPWorldSeed needs an access path
+skip 00957a20 non-public GetPWorldSeed: CAIStateGroupBehaviourBaseMethods is not an RTTI-derived class of the row (CAIStateGroupBehaviourBase::UpdateEmote)
+skip 0095b020 inplace CAIStateGroupBase::GetPWorldSeed -> GetPWorldSeed x1 :: compile: c\compiled\00\95\CAIStateGroupHoverHornetQueen_GoToSpawnPoint_0095b020.cpp(140) : error C2440: 'initializing' : cannot convert from 'unsigned long *' to 'unsigned long &'
+skip 0096c9a0 non-public GetPWorldSeed: CAIStateGroupEatAtTableMethods is not an RTTI-derived class of the row (CAIStateGroup_EatAtTable::Eat)

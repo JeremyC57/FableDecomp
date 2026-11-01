@@ -1,0 +1,62 @@
+skip 0041735a 2 CCharString2::CCharString2 declarations
+skip 00438570 2 InitGuard::InitGuard declarations
+skip 004d2a91 moved GAN004d2a91::m -> CCharString x1 :: compile: naming\w17\ov_cg\rebuild\src\compiled\00\4d\CTCTargeted_StatGetClassTypeName_004d2a91.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2b04 moved GAN004d2b04::m -> CCharString x1 :: compile: \w17\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseTorch_StatGetClassTypeName_004d2b04.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2b17 moved GAN004d2b17::m -> CCharString x1 :: compile: d\naming\w17\ov_cg\rebuild\src\compiled\00\4d\CTCRotate_StatGetClassTypeName_004d2b17.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2b7a moved GAN004d2b7a::m -> CCharString x1 :: compile: g\w17\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseSign_StatGetClassTypeName_004d2b7a.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2b8d moved GAN004d2b8d::m -> CCharString x1 :: compile: 7\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseReadable_StatGetClassTypeName_004d2b8d.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2ba0 moved GAN004d2ba0::m -> CCharString x1 :: compile: w17\ov_cg\rebuild\src\compiled\00\4d\CTCActionUsePickUp_StatGetClassTypeName_004d2ba0.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2bb3 moved GAN004d2bb3::m -> CCharString x1 :: compile: rebuild\src\compiled\00\4d\CTCActionUsePickUpGenericBox_StatGetClassTypeName_004d2bb3.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2bc6 moved GAN004d2bc6::m -> CCharString x1 :: compile: g\rebuild\src\compiled\00\4d\CTCActionUsePutInInventory_StatGetClassTypeName_004d2bc6.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2bd9 moved GAN004d2bd9::m -> CCharString x1 :: compile: 7\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseMapTable_StatGetClassTypeName_004d2bd9.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2bec moved GAN004d2bec::m -> CCharString x1 :: compile: w17\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseSearch_StatGetClassTypeName_004d2bec.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2bff moved GAN004d2bff::m -> CCharString x1 :: compile: 7\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseBlowHorn_StatGetClassTypeName_004d2bff.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2c2f moved GAN004d2c2f::m -> CCharString x1 :: compile: ov_cg\rebuild\src\compiled\00\4d\CTCActionUseBuyOrSteal_StatGetClassTypeName_004d2c2f.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2c42 moved GAN004d2c42::m -> CCharString x1 :: compile: w17\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseWindow_StatGetClassTypeName_004d2c42.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2c55 moved GAN004d2c55::m -> CCharString x1 :: compile: v_cg\rebuild\src\compiled\00\4d\CTCActionUseAcceptBoast_StatGetClassTypeName_004d2c55.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2c68 moved GAN004d2c68::m -> CCharString x1 :: compile: \src\compiled\00\4d\CTCActionUseStartExtrapolationMorph_StatGetClassTypeName_004d2c68.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2c7b moved GAN004d2c7b::m -> CCharString x1 :: compile: ng\w17\ov_cg\rebuild\src\compiled\00\4d\CTCActionUseBed_StatGetClassTypeName_004d2c7b.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2c8e moved GAN004d2c8e::m -> CCharString x1 :: compile: v_cg\rebuild\src\compiled\00\4d\CTCActionUseKickChicken_StatGetClassTypeName_004d2c8e.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2ca1 moved GAN004d2ca1::m -> CCharString x1 :: compile: v_cg\rebuild\src\compiled\00\4d\CTCCarriedActionUseLamp_StatGetClassTypeName_004d2ca1.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2cb4 moved GAN004d2cb4::m -> CCharString x1 :: compile: v_cg\rebuild\src\compiled\00\4d\CTCCarriedActionUseDrop_StatGetClassTypeName_004d2cb4.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2cc7 moved GAN004d2cc7::m -> CCharString x1 :: compile: ld\src\compiled\00\4d\CTCCarriedActionUseDropGenericBox_StatGetClassTypeName_004d2cc7.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2cda moved GAN004d2cda::m -> CCharString x1 :: compile: v_cg\rebuild\src\compiled\00\4d\CTCCarriedActionUseGive_StatGetClassTypeName_004d2cda.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2ced moved GAN004d2ced::m -> CCharString x1 :: compile: \rebuild\src\compiled\00\4d\CTCCarriedActionUseGiveBeer_StatGetClassTypeName_004d2ced.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2d00 moved GAN004d2d00::m -> CCharString x1 :: compile: g\rebuild\src\compiled\00\4d\CTCCarriedActionUseGoldBag_StatGetClassTypeName_004d2d00.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d2d13 moved GAN004d2d13::m -> CCharString x1 :: compile: v_cg\rebuild\src\compiled\00\4d\CTCCarriedActionUseShow_StatGetClassTypeName_004d2d13.cpp(5) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d31c0 moved CCharString::ctor -> CCharString x1 :: compile: \naming\w17\ov_cg\rebuild\src\compiled\00\4d\CTCVillage_StatGetClassTypeName_004d31c0.cpp(9) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d4232 moved CCharString::Ctor -> CCharString x1 :: compile: aming\w17\ov_cg\rebuild\src\compiled\00\4d\CTCDHeroSuit_StatGetClassTypeName_004d4232.cpp(8) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d4369 moved CCharString::Init -> CCharString x1 :: compile: w17\ov_cg\rebuild\src\compiled\00\4d\CTCDExperienceOrb_StatGetClassTypeName_004d4369.cpp(12) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d5ff2 moved CCharString::ctorB -> CCharString x1 :: compile: \naming\w17\ov_cg\rebuild\src\compiled\00\4d\CTCDRumble_StatGetClassTypeName_004d5ff2.cpp(9) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004d66c3 moved Helper::Do -> CCharString x1 :: compile: w17\ov_cg\rebuild\src\compiled\00\4d\CTCDExplosiveTrail_StatGetClassTypeName_004d66c3.cpp(9) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004ff490 2 CSectionName::CSectionName declarations
+skip 005fc2d0 3 CCharString::CCharString declarations
+skip 005fc8a0 3 CCharString::CCharString declarations
+skip 00692c80 2 CRetailString::CRetailString declarations
+skip 00699090 2 ScopedGuard::ScopedGuard declarations
+skip 006ac910 2 CCharString::CCharString declarations
+skip 0074dbb0 2 CCharString_Retail::CCharString_Retail declarations
+skip 0088f850 2 CDeedReactionName::CDeedReactionName declarations
+skip 008902e0 moved Str::ctor -> CCharString x1 :: compile: ming\w17\ov_cg\rebuild\src\compiled\00\89\CGameScriptInterface_GiveHeroObject_008902e0.cpp(71) : error C2512: 'CCharString' : no appropriate default constructor available | ng\w17\ov_cg\rebuild\src\compiled\00\89\CGameScriptInterface_GiveHeroObject_008902e0.cpp(72) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008b3810 moved CCharString::Init -> CCharString x1 :: compile: 17\ov_cg\rebuild\src\compiled\00\8b\CCombatSequenceBanditAttackSide_GetName_008b3810.cpp(16) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008b42e0 moved CCharString::Init -> CCharString x1 :: compile: w17\ov_cg\rebuild\src\compiled\00\8b\CCombatSequenceTrollRockPursue_GetName_008b42e0.cpp(22) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008b4820 moved CCharString::ctor -> CCharString x1 :: compile: \rebuild\src\compiled\00\8b\CCombatSequenceVillagerComboUnblockable_GetName_008b4820.cpp(19) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008b4f10 moved CCharString::ctor -> CCharString x1 :: compile: ng\w17\ov_cg\rebuild\src\compiled\00\8b\CCombatSequence2StrikeCombo_GetName_008b4f10.cpp(19) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008db030 3 CCharString::CCharString declarations
+skip 008df3a0 2 CCharString::CCharString declarations
+skip 008fd46b moved CCharString::ctor -> CCharString x1 :: compile: g\w17\ov_cg\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd46b.cpp(9) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008fd4bc moved CCharString::ctor -> CCharString x1 :: compile: \w17\ov_cg\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd4bc.cpp(13) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008fd923 moved CCharString::ctor_99ebf0 -> CCharString x1 :: compile: \w17\ov_cg\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd923.cpp(16) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008fd94e moved CCharString::ctor -> CCharString x1 :: compile: g\w17\ov_cg\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fd94e.cpp(9) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008fe14d moved CActionDoCreatureAction::LookupActionName -> CCharString x1 :: compile: \w17\ov_cg\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe14d.cpp(27) : error C2273: 'function-style cast' : illegal as right side of '->' operator | ng\w17\ov_cg\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe14d.cpp(28) : error C2512: 'CCharString' : no appropriate default constructor available
+skip 00905420 moved CCharString::ctor_99ebf0 -> CCharString x1 :: compile: \w17\ov_cg\rebuild\src\compiled\00\90\CActionDoCreatureAction_GetActionName_00905420.cpp(28) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 009092c0 no calls of CRetailString
+skip 009093f0 no calls of CRetailString
+skip 009567f0 2 CCharString_Retail::CCharString_Retail declarations
+skip 00956870 2 CCharString_Retail::CCharString_Retail declarations
+skip 00977290 2 CCharString_Retail::CCharString_Retail declarations
+skip 00aa49d0 moved CCharString::ctor_99ebf0 -> CCharString x1 :: compile: cg\rebuild\src\compiled\00\aa\C3DAnimFileXSequenceChunk_GetChunkDescription_00aa49d0.cpp(27) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00b2c4e0 2 CCharString::CCharString declarations
+skip 00e15500 3 CCharString::CCharString declarations
+skip 00e1e530 4 CCharString::CCharString declarations
+skip 00e80d60 4 CCharString::CCharString declarations

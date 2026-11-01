@@ -1,0 +1,10 @@
+addr       parity           behav  name
+004942a2   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+004942a2   RELOCATION_MATCH PASS   CSubtitleRenderer::`scalar deleting destructor'
+006c9c30   RELOCATION_MATCH PASS   CTCHeroOpinionDeedLog::`scalar deleting destructor'
+00dbefa0   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::`scalar deleting destructor'
+
+WINS: 3
+  004942a2 RELOCATION_MATCH CSubtitleRenderer::??_GCSubtitleRenderer@@UAEPAXI@Z
+  006c9c30 RELOCATION_MATCH CTCHeroOpinionDeedLog::??_GCTCHeroOpinionDeedLog@@UAEPAXI@Z
+  00dbefa0 RELOCATION_MATCH CVtable_012d7a28::??_GCQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z

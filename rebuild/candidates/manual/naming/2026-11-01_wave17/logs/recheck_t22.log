@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefPointer
+009ae150   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009ae150   RELOCATION_MATCH PASS   CDefinitionManager::CompileSubDefinition
+
+WINS: 1
+  009ae150 RELOCATION_MATCH CDefinitionManager::CompileSubDefinition

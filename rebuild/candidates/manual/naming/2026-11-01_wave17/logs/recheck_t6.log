@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00aab7a0   RELOCATION_MATCH PASS   CLHFileManager::CreateFile1
+00aab7d0   RELOCATION_MATCH PASS   CLHFileManager::CreateFile0
+
+WINS: 2
+  00aab7a0 RELOCATION_MATCH CLHFileManager::CreateFile1
+  00aab7d0 RELOCATION_MATCH CLHFileManager::CreateFile0

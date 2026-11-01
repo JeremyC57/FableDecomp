@@ -1,0 +1,5 @@
+edited 00a3c260 inplace C3DAnimationBlendState::MakeOwnCopyOfData -> MakeOwnCopyOfData x1 +u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@AAEXXZ'] -u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@QAEXXZ']
+edited 00a3c2d0 inplace C3DAnimationBlendState::MakeOwnCopyOfData -> MakeOwnCopyOfData x1 +u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@AAEXXZ'] -u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@QAEXXZ']
+skip 00a3c310 non-public MakeOwnCopyOfData: C3DAnimationBlendState is not an RTTI-derived class of the row (C3DAnimationBlendState::AddCombinationBlend)
+edited 00a3c330 inplace C3DAnimationBlendState::MakeOwnCopyOfData -> MakeOwnCopyOfData x1 +u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@AAEXXZ'] -u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@QAEXXZ']
+edited 00a3c350 inplace C3DAnimationBlendState::MakeOwnCopyOfData -> MakeOwnCopyOfData x1 +u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@AAEXXZ'] -u ['?MakeOwnCopyOfData@C3DAnimationBlendState@@QAEXXZ']

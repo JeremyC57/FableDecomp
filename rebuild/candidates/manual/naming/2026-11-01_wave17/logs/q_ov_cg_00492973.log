@@ -1,0 +1,5 @@
+skip 00492f69 2 CSubtitleRenderer::SetText declarations
+skip 005eadc0 2 CSubtitleRenderer::SetText declarations
+skip 006dd7e0 2 CSubtitleRenderer::SetText declarations
+skip 007132c0 3 CSubtitleRenderer::SetText declarations
+edited 00892a80 inplace CSubtitleRenderer::SetText -> SetText x1 +u ['?SetText@CSubtitleRenderer@@QAEXABVCFontBank@@ABVCWideString@@1111KM_N2@Z'] -u ['?SetText@CSubtitleRenderer@@QAEXPAVCFontBank@@ABVCWideString@@1111KM_N2@Z']

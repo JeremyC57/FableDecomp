@@ -1,0 +1,23 @@
+skip 004b4c50 free stand-in CreateThingObject not a one-argument this-call
+skip 00664680 free stand-in CreateThingObject not a one-argument this-call
+skip 006648d0 free stand-in CreateObject not a one-argument this-call
+skip 006ac690 free stand-in CreateThingObject not a one-argument this-call
+skip 006c0c90 CThingObject::Create defined out of line
+skip 007038d0 free stand-in CreateObject not a one-argument this-call
+skip 0072ddb0 free stand-in CreateThing not a one-argument this-call
+skip 0078b070 free stand-in CreateThingObject not a one-argument this-call
+skip 007eed20 free stand-in Create not a one-argument this-call
+skip 00846100 CThingObject::Create defined out of line
+skip 00846410 CThingObject::Create defined out of line
+skip 00848500 free stand-in CreateObject not a one-argument this-call
+skip 00849380 free stand-in CreateThingObject not a one-argument this-call
+skip 008718b0 free stand-in CreateThingObject not a one-argument this-call
+skip 008c0900 free stand-in Create not a one-argument this-call
+skip 008c64f0 CThingObject::Create defined out of line
+skip 008c6b20 free stand-in CreateThingObject not a one-argument this-call
+skip 008ed170 free stand-in Create not a one-argument this-call
+skip 008f3100 free stand-in Create not a one-argument this-call
+skip 008f3630 free stand-in Create not a one-argument this-call
+skip 008fd0a0 free stand-in CreateObject not a one-argument this-call
+skip 00923510 free stand-in CreateThingObject not a one-argument this-call
+skip 009261f0 free stand-in CreateThingObject not a one-argument this-call

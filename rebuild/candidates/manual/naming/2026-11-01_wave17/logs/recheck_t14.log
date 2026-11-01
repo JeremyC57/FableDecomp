@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00882bc0   RELOCATION_MATCH PASS   std::_Rb_tree<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*,...>::_M_erase
+
+WINS: 1
+  00882bc0 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@AAEXPAU?$_Rb_tree_node@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@2@@Z

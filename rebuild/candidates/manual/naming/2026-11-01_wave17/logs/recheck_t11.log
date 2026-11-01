@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004fe7f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+004fe7f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004fe7f0   WARN SHARED_HEADER_AVAILABLE CRegion
+004fe7f0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fe7f0   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+004fe7f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@DDU?$_Identity@D@std@@U?$less@D@2@V?$allocator@D@2@@std@@AAEXPAU?$_Rb_tree_node@D@2@@Z -> 00510da0 labelled '_unattributed::FreeTree_CTreeOwner_00510da0'
+004fe7f0   RELOCATION_MATCH PASS   CWorldMap::GetSoundThemesUsedInCurrentRegion
+
+WINS: 1
+  004fe7f0 RELOCATION_MATCH CWorldMap::?GetSoundThemesUsedInCurrentRegion@CWorldMap@@

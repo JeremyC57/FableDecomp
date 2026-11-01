@@ -1,0 +1,2 @@
+skip 00404720 2 CBase::CBase declarations
+skip 009fe380 no calls of CBaseNative

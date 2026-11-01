@@ -1,0 +1,25 @@
+addr       parity           behav  name
+007a09b0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+007a09b0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007a09b0   WARN RELOC_NAME: ??0CTCBase_Calls@@QAE@PAVCThing@@@Z -> 00686800 labelled 'CTCBase::CTCBase'
+007a09b0   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CGameDefinitionManager@@QBEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+007a09b0   WARN RELOC_NAME: ?Lookup@CEffectsDef@@QAEXABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+007a09b0   RELOCATION_MATCH PASS   CTCWillLightning::CTCWillLightning
+007c6760   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007c6760   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007c6760   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+007c6760   WARN RELOC_NAME: ??0CTCBaseModel@@QAE@PAVCThing@@@Z -> 00686800 labelled 'CTCBase::CTCBase'
+007c6760   WARN RELOC_NAME: ?GetDefIndex@CDefinitionManager@@QAEJABVCCharString@@_N@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+007c6760   RELOCATION_MATCH PASS   CTCTurncoatSpell::CTCTurncoatSpell
+007c87f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007c87f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007c87f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007c87f0   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+007c87f0   RELOCATION_MATCH PASS   CTCFireballSpell::CTCFireballSpell
+00b6d600   RELOCATION_MATCH PASS   CLocalDetailCacheMap_00b6d600::CloseStaticMap
+
+WINS: 4
+  007a09b0 RELOCATION_MATCH CTCWillLightning::??0CTCWillLightning
+  007c6760 RELOCATION_MATCH CTCTurncoatSpell::??0CTCTurncoatSpell
+  007c87f0 RELOCATION_MATCH CTCFireballSpell::??0CTCFireballSpell
+  00b6d600 RELOCATION_MATCH CLocalDetailCacheMap_00b6d600::CloseStaticMap

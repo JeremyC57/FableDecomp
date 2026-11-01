@@ -1,0 +1,1 @@
+edited 009b05f0 moved CChecksumFile::GetChecksum -> GetChecksum x1 +u ['?GetChecksum@CChecksumCacheFile@@QAEKABVCWideString@@@Z'] -u ['?GetChecksum@CChecksumFile@@QAEKABVCWideString@@@Z']

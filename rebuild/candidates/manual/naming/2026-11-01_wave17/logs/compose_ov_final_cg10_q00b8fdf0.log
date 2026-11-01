@@ -1,0 +1,2 @@
+edited 00b4a670 moved CEngineInternalPrimitiveBase::Add -> AddToList x2 +u ['?AddToList@CEngineInternalPrimitiveBase@@QAEXPAPAV1@@Z'] -u ['?Add@CEngineInternalPrimitiveBase@@QAEXPAX@Z']
+edited 00b91870 inplace CEngineInternalPrimitiveBase::AddToList -> AddToList x1 +u ['?AddToList@CEngineInternalPrimitiveBase@@QAEXPAPAV1@@Z'] -u ['?AddToList@CEngineInternalPrimitiveBase@@QAEXPAX@Z']

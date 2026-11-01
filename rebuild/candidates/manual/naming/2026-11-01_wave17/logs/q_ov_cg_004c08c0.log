@@ -1,0 +1,25 @@
+skip 00661aa0 CTCGraphicAppearance defined in another scope
+skip 00661b40 CTCGraphicAppearance defined in another scope
+skip 0072ddb0 CTCGraphicAppearance defined in another scope
+skip 0072df50 CTCGraphicAppearance defined in another scope
+skip 007fb6a0 CTCGraphicAppearance defined in another scope
+skip 007fb870 CTCGraphicAppearance defined in another scope
+skip 007fbe50 CTCGraphicAppearance defined in another scope
+skip 007feaf0 CTCGraphicAppearance defined in another scope
+skip 007ff0c0 CTCGraphicAppearance defined in another scope
+skip 0080f5e0 call of GetDummyObject with 3 args
+skip 00845350 call of GetDummyObject with 3 args
+skip 008455c0 call of GetDummyObject with 3 args
+skip 008717a0 CTCGraphicAppearance defined in another scope
+skip 008c0900 call of GetDummyObject with 4 args
+skip 008c2240 call of GetDummyObject with 3 args
+skip 008d9e30 CTCGraphicAppearance defined in another scope
+skip 008db620 CTCGraphicAppearance defined in another scope
+skip 008dc900 CTCGraphicAppearance defined in another scope
+skip 008e9460 CTCGraphicAppearance defined in another scope
+skip 008f3100 call of GetDummyObject with 4 args
+skip 008f5060 call of GetDummyObject with 3 args
+skip 008f5220 call of GetDummyObject with 3 args
+skip 008f5490 CTCGraphicAppearance defined in another scope
+skip 0093e8c0 CTCGraphicAppearance defined in another scope
+skip 009432c0 CTCGraphicAppearance defined in another scope
