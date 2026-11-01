@@ -1,5 +1,9 @@
-// CCRCSymbolMap::ParseBuffer(char* buffer, long context) -- parse a symbol-definition text buffer: for every "enum" token found, parse the enum block into the CRC map (fail on the first bad block)
-// Leaf: ParseBuffer
+// CCRCSymbolMap::ParseBuffer(const char* buffer, const CCharString& wantedName) -- parse a symbol-definition text buffer: for every "enum" token found, parse the enum block into the CRC map (fail on the first bad block)
+// Leaf: ?ParseBuffer@CCRCSymbolMap@@IAE_NPBDABVCCharString@@@Z
+// Naming (naming wave 24, labels_chunk691): Ego_r.pdb / FableWin.pdb ?ParseBuffer@CCRCSymbolMap@@IAE_NPBDABVCCharString@@@Z (protected;
+//   the second argument, the 4-byte value kept in esi, is the wanted enum name handed on to ParseEnum) and its callee
+//   ?ParseEnum@CCRCSymbolMap@@IAE_NAAVCStringParser@@ABVCCharString@@@Z (the parser by reference). The parser text is const char*
+//   (the CStringParser::Init spelling the landed 0x009ADE90 already binds: PBD).
 // Retail 0x00A38E50, 350 bytes, `ret 8`. The byte twin of the landed CSymbolMap::ParseBuffer 0x009E5AD0 with a second
 // argument (a dword kept in esi across the loop) handed on to the per-block parser.
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E, "enum" 0x0129B144), ~CCharString 0x0099EAE0,
@@ -52,11 +56,11 @@ class CStringParser : public CBaseClass { public:                        // vtab
     std::list<CStringParserCommentBoundaries> Comments;                               // +0x14
     TErrorCallback ErrorCallback;                          // +0x18
     CCursorPos     CursorPos;                              // +0x1c
-    CStringParser(char* text, TErrorCallback callback, const CCharString& filename, long baseLine)
+    CStringParser(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine)
     {
         Init(text, callback, filename, baseLine);
     }
-    void Init(char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
+    void Init(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
     bool FindKeyword(const CCharString& keyword);          // 0x009B9BA0
 };
 struct SParseToken {                                       // 12 bytes: two POD words and the token text
@@ -64,17 +68,18 @@ struct SParseToken {                                       // 12 bytes: two POD 
     long        Value;
     CCharString Text;
 };
-class CCRCSymbolMap { public:
-    bool ParseEnum(CStringParser* parser, long context);   // 0x00A38670
-    bool ParseBuffer(char* buffer, long context);
+class CCRCSymbolMap {
+protected:
+    bool ParseEnum(CStringParser& parser, const CCharString& wantedName);   // 0x00A38670
+    bool ParseBuffer(const char* buffer, const CCharString& wantedName);
 };
 
-bool CCRCSymbolMap::ParseBuffer(char* buffer, long context)
+bool CCRCSymbolMap::ParseBuffer(const char* buffer, const CCharString& wantedName)
 {
     CStringParser parser(buffer, 0, CCharString(""), 0);
     SParseToken token;
     while (parser.FindKeyword("enum")) {
-        if (!ParseEnum(&parser, context))
+        if (!ParseEnum(parser, wantedName))
             return false;
     }
     return true;

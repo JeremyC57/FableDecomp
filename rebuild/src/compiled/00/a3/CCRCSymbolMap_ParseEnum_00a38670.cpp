@@ -1,5 +1,9 @@
-// CCRCSymbolMap::ParseEnum(CStringParser* parser, const CCharString& wantedName) -- parse one "enum [Name] { A, B = n, ... };" block into the CRC symbol map (skip to the next "enum" when the name is not the wanted one)
-// Leaf: ParseEnum
+// CCRCSymbolMap::ParseEnum(CStringParser& parser, const CCharString& wantedName) -- parse one "enum [Name] { A, B = n, ... };" block into the CRC symbol map (skip to the next "enum" when the name is not the wanted one)
+// Leaf: ?ParseEnum@CCRCSymbolMap@@IAE_NAAVCStringParser@@ABVCCharString@@@Z
+// Naming (naming wave 24, labels_chunk691): Ego_r.pdb / FableWin.pdb ?ParseEnum@CCRCSymbolMap@@IAE_NAAVCStringParser@@ABVCCharString@@@Z
+//   (protected, the parser by reference); Error is ?Error@CCRCSymbolMap@@IAAXABVCWideString@@JPBDZZ (protected) and the file name the
+//   static CCRCSymbolMap::CurrentFilename 0x013D27E8 (Ego_r dynamic initializer; LoadFromFile 0x00A39010 writes it). Was a public
+//   pointer-parameter ParseEnum with a CRetailWideString g_CRCSymbolFileName.
 // Retail 0x00A38670, 1456 bytes, `ret 8`.
 // Callees: CCharString() 0x0099E4B0 / copy 0x0099EC30 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0 /
 //   operator=(const CCharString&) 0x0099EFB0 / operator=(const char*) 0x0099EFE0 / operator!=(const char*) 0x0099E960 /
@@ -45,8 +49,7 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
-struct CRetailWideString { void* PStringData; };
-extern CRetailWideString g_CRCSymbolFileName;          // 0x013D27E8
+class CWideString { public: void* PStringData; };
 class CParsedItem { public:                                   // 12 bytes
     long        Type;                                  // 1 = symbol, 2 = identifier
     long        Value;
@@ -87,20 +90,22 @@ class CPersistContext { public:                               // 0x2c bytes
 };
 void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 class CCRCSymbolMap { public:
-    void Error(const CRetailWideString& file, long line, const char* format, ...);   // 0x00A381D0
+    static CWideString CurrentFilename;                                             // 0x013D27E8
     void AddSymbolDirty(const CCharString& name, long value);                       // 0x00A385A0
-    bool ParseEnum(CStringParser* parser, const CCharString& wantedName);
+protected:
+    void Error(const CWideString& file, long line, const char* format, ...);        // 0x00A381D0
+    bool ParseEnum(CStringParser& parser, const CCharString& wantedName);
 };
 
-bool CCRCSymbolMap::ParseEnum(CStringParser* parser, const CCharString& wantedName)
+bool CCRCSymbolMap::ParseEnum(CStringParser& parser, const CCharString& wantedName)
 {
     CParsedItem item;
-    if (parser->ReadNextItem(item) == true) {
+    if (parser.ReadNextItem(item) == true) {
     CCharString enumName;
     if (item.Type == 2) {
         enumName = item.GetString();
-        if (!parser->ReadNextItem(item)) {
-            Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF while reading enum");
+        if (!parser.ReadNextItem(item)) {
+            Error(CurrentFilename, parser.CursorLine, "Unexpected EOF while reading enum");
             return false;
         }
     } else {
@@ -108,72 +113,72 @@ bool CCRCSymbolMap::ParseEnum(CStringParser* parser, const CCharString& wantedNa
     }
     if (wantedName != "" && wantedName != enumName) {
         CCharString keyword("enum");
-        parser->SkipUntilString(keyword);
+        parser.SkipUntilString(keyword);
         return true;
     }
     if (item.Type != 1 || item.GetSymbol() != "{") {
-        Error(g_CRCSymbolFileName, parser->CursorLine, "Expecting a brace in enum");
+        Error(CurrentFilename, parser.CursorLine, "Expecting a brace in enum");
         return false;
     }
-    for (long value = 0; parser->ReadNextItem(item); ++value) {
+    for (long value = 0; parser.ReadNextItem(item); ++value) {
         if (item.Type == 1 && item.GetSymbol() == "}") {
-            if (!parser->ReadNextItem(item)) {
-                Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum def line");
+            if (!parser.ReadNextItem(item)) {
+                Error(CurrentFilename, parser.CursorLine, "Unexpected EOF in enum def line");
                 return false;
             }
             if (item.Type == 1 && item.GetSymbol() == ";")
                 return true;
         }
         if (item.Type != 2)
-            Error(g_CRCSymbolFileName, parser->CursorLine, "Expected string in enum");
+            Error(CurrentFilename, parser.CursorLine, "Expected string in enum");
         CCharString valueName(item.GetString());
-        if (!parser->ReadNextItem(item)) {
-            Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum");
+        if (!parser.ReadNextItem(item)) {
+            Error(CurrentFilename, parser.CursorLine, "Unexpected EOF in enum");
             return false;
         }
         if (item.Type == 1 && item.GetSymbol() == ",") {
             AddSymbolDirty(valueName, value);
         } else if (item.Type == 1 && item.GetSymbol() == "}") {
             AddSymbolDirty(valueName, value);
-            if (!parser->ReadNextItem(item)) {
-                Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum");
+            if (!parser.ReadNextItem(item)) {
+                Error(CurrentFilename, parser.CursorLine, "Unexpected EOF in enum");
                 return false;
             }
             if (item.Type != 1 || item.GetSymbol() != ";")
-                Error(g_CRCSymbolFileName, parser->CursorLine, "Expecting ';' in enum");
+                Error(CurrentFilename, parser.CursorLine, "Expecting ';' in enum");
             break;
         } else if (item.Type == 1 && item.GetSymbol() == "=") {
-            CPersistContext context(parser, 0, true, 0, 0, 0);
+            CPersistContext context(&parser, 0, true, 0, 0, 0);
             long read;
-            TransferInLong_009e2590(&context, parser, &read);
+            TransferInLong_009e2590(&context, &parser, &read);
             value = read;
             AddSymbolDirty(valueName, read);
-            if (!parser->ReadNextItem(item)) {
-                Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum");
+            if (!parser.ReadNextItem(item)) {
+                Error(CurrentFilename, parser.CursorLine, "Unexpected EOF in enum");
                 return false;
             }
             if (item.Type == 1) {
                 if (item.GetSymbol() == ",") {
                 } else if (item.GetSymbol() == "}") {
-                    if (!parser->ReadNextItem(item)) {
-                        Error(g_CRCSymbolFileName, parser->CursorLine, "Unexpected EOF in enum");
+                    if (!parser.ReadNextItem(item)) {
+                        Error(CurrentFilename, parser.CursorLine, "Unexpected EOF in enum");
                         return false;
                     }
                     if (item.Type != 1 || item.GetSymbol() != ";")
-                        Error(g_CRCSymbolFileName, parser->CursorLine, "Expecting ';' in enum");
+                        Error(CurrentFilename, parser.CursorLine, "Expecting ';' in enum");
                     return true;
                 } else {
-                    Error(g_CRCSymbolFileName, parser->CursorLine, "Expecting ',' '=' or '}' in enum");
+                    Error(CurrentFilename, parser.CursorLine, "Expecting ',' '=' or '}' in enum");
                 }
             } else {
-                Error(g_CRCSymbolFileName, parser->CursorLine, "Expecting ',' '=' or '}' in enum");
+                Error(CurrentFilename, parser.CursorLine, "Expecting ',' '=' or '}' in enum");
             }
         } else {
-            Error(g_CRCSymbolFileName, parser->CursorLine, "Expecting ',' '=' or '}' in enum");
+            Error(CurrentFilename, parser.CursorLine, "Expecting ',' '=' or '}' in enum");
         }
     }
     return true;
     }
-    Error(g_CRCSymbolFileName, parser->CursorLine, "Cannot read Definition Type name");
+    Error(CurrentFilename, parser.CursorLine, "Cannot read Definition Type name");
     return false;
 }

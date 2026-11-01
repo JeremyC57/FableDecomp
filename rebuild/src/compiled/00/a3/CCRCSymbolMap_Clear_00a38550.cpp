@@ -7,7 +7,8 @@
 // Layout (agent329's constructor model: Ego_r.pdb with the retail 16-byte CVectorMap and 12-byte STLport set):
 //   CBase vptr +0, SLONGMap CVectorMap<unsigned long, long, CKeyPairCompareLess<unsigned long, long> > +0x04,
 //   NamesUsed set<unsigned long> +0x14 (header +0x14, node count +0x18), CheckForDuplicateSymbols +0x20.
-// Callees: CVectorMap::Clear @ 0x00A39900 (out of line), the set's _Rb_tree::_M_erase @ 0x004CF810.
+// Callees: CVectorMap::DeallocateMemory @ 0x00A39900 (out of line; Ego_r ?DeallocateMemory@?$CVectorMap@KJV?$CKeyPairCompareLess@KJ@@@@QAEXXZ,
+//   labels_chunk691 -- naming wave 24, was a CVectorMap::Clear not in the PDB), the set's _Rb_tree::_M_erase @ 0x004CF810.
 // Shape: byte-identical to CSymbolMap::Clear 0x009E5250 except the two callees: the out-of-line vector-map clear,
 //   then STLport `set::clear()` inline (the tree address formed once, each header store re-reads the header
 //   pointer, the count zeroed last).
@@ -90,7 +91,7 @@ template <class K, class V, class C> class CVectorMap { public: // retail 16 byt
     CVector<CKeyValuePair<K, V> > Data;                  // +0x00
     C                             Compare;               // +0x0c empty comparator
     bool                          Dirty;                 // +0x0d
-    void Clear();                                        // out of line
+    void DeallocateMemory();                             // out of line
 };
 template <class K, class V> class CKeyPairCompareLess { public: };
 
@@ -104,6 +105,6 @@ class CCRCSymbolMap : public CBase { public:                           // vtable
 
 void CCRCSymbolMap::Clear()
 {
-    SLONGMap.Clear();
+    SLONGMap.DeallocateMemory();
     NamesUsed.clear();
 }
