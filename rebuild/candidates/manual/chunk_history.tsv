@@ -25957,3 +25957,13 @@ chunk	address	module	name	length
 694	00854310	CTCIdleScheduler	Clear	34
 694	00ef87d0	NScript	NScript::CPersonalScript_EmptyScript::CUndeadFellow::Main	1003
 694	00ef5cb0	NScript	NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main	817
+695	005ed210	CTCIdleScheduler	Clear	34
+695	00854380	CTCIdleScheduler	Clear	34
+695	00713630	CTCScriptedControl	CleanupAllActions	40
+695	00713700	CTCScriptedControl	OnKill	51
+695	00838a00	CThingGameObject	~CThingGameObject	40
+695	009959f0	CDataOutputStream	WriteString	46
+695	00996b30	CCompressedMemoryDataInputStream	~CCompressedMemoryDataInputStream	47
+695	009e5c30	CTCInventoryQuests	ProcessButtonBReleased	39
+695	0061b590	CTCInventoryQuests	ProcessButtonAReleased	93
+695	00a0d3d0	CAInputProcess	~CAInputProcess	46
