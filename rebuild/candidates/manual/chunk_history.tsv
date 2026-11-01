@@ -25772,3 +25772,13 @@ chunk	address	module	name	length
 674	00cbf7fe	_global	PlayCutsceneSound	480
 674	00c057d0	_global	__tr_flush_block	485
 674	00bd9ce0	_global	TexturePool_Clear	488
+675	00c052c0	_global	build_tree	498
+675	00ad8ed0	_global	VertexListMarkConnected	269
+675	00ac8840	_global	LTextTreeWalkThrough_BuildFromTree	277
+675	005d8ef0	_global	GetRHSetFromOrientation	316
+675	00cbeba7	_global	GetHeroTitleAsLHTSTag	345
+675	00443e20	_global	TextureCache_Destructor	360
+675	00946f90	_global	CAIStateGroup_WanderAroundShops_SelectRandomEnemy	373
+675	00c72e00	_global	Audio_InitializeSource_AL	475
+675	00ca20a0	_global	FloatVector_Clamp	465
+675	00bebca0	_global	PreloadReflectionTexture	484
