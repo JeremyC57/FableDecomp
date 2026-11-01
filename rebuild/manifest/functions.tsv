@@ -383,7 +383,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00412330	_M_insert_overflow	std::vector<CWideString, std::allocator<CWideString>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x00412330_global_Std_Vector_Insert_Range_Copies.cpp				
 00412450	Std_Vector_Erase_Range	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x00412450_global_Std_Vector_Erase_Range.cpp				
 004124c0	_M_insert_overflow	std::vector<CDisplayModeDesc, std::allocator<CDisplayModeDesc>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x004124C0_global_Std_Vector_Insert_Range_16Bytes.cpp				
-004125a0	Std_Vector_Insert_Range_Copies_28byte	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x004125A0_global_Std_Vector_Insert_Range_Copies_28byte.cpp				
+004125a0	_M_insert_overflow	std::vector<CDateAndTime, std::allocator<CDateAndTime>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x004125A0_global_Std_Vector_Insert_Range_Copies_28byte.cpp				
 004126e0	_M_fill_insert	std::vector<CWideString,std::allocator<CWideString> >	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x004126E0_global_vector_resize_with_fill.cpp				
 004127e0	Std_Deque_PushBack_ChunkAlloc	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x004127E0_global_Std_Deque_PushBack_ChunkAlloc.cpp				
 00412880	_Umove<EWeaponClass*>	vector<EWeaponClass	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\vectorEWeaponClass_UmoveEWeaponClass_00412880.cpp
@@ -10006,7 +10006,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055a390	NUISystem::CScrollBar::vfunc_0	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a3a0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055a3a0.cpp
 0055a3d0	Initialise	CClickable	__thiscall	void	1	CClickable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CClickable_Initialise_0055a3d0.cpp
-0055a3e0	Update	CDraggable	__thiscall	void	2	CDraggable *,float	1	yes	accepted									
+0055a3e0	Update	NUISystem::CDraggable	__thiscall	void	2	CDraggable *,float	1	yes	accepted									
 0055a510	ProcessEvent	CDraggable	__thiscall	void	2	CDraggable *,EEvent	1	yes	accepted									
 0055a5b0	NUISystem::CScrollBar::vfunc_143	NUISystem::CScrollBar	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055a5d0	OnLeftClicked	NUISystem::CDraggable	__thiscall	void	1	CDraggable *	1	yes	accepted									
@@ -16138,7 +16138,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a4f60	GetNavCollisionLineList	CThingPhysical	__thiscall	void	3	CThingPhysical *,vector<C2DLineF,std::allocator<C2DLineF>_> *,long	1	yes	accepted									
 006a4fb0	GetFirstCollision	CThingPhysical	__thiscall	bool	6	CThingPhysical *,float,C3DVector *,C3DVector *,C3DVector *,C3DVector *	1	yes	accepted									
 006a5220	IsNotPositive_006a5220	CUnproven_006a5220	unknown	undefined	0		0			discovered	gapscan							
-006a5230	AddCombinationBlend	C3DAnimationBlendState	__thiscall	void	2	C3DAnimationBlendState *,C3DAnimationStateAlpha *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\C3DAnimationBlendState_AddCombinationBlend_006a5230.cpp
+006a5230	InitialActivate	CThingPhysical	__thiscall	void	2	C3DAnimationBlendState *,C3DAnimationStateAlpha *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6a\C3DAnimationBlendState_AddCombinationBlend_006a5230.cpp
 006a5250	sub_006a5250	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 006a5260	SetMaxHealth	CThingPhysical	__thiscall	void	3	CThingPhysical *,float,bool	1	yes	accepted									
 006a5460	GetFirstCollisionBetweenPoints	CThingPhysical	__thiscall	bool	6	CThingPhysical *,float,C3DVector *,C3DVector *,C3DVector *,C3DVector *	1	yes	accepted									
@@ -19246,7 +19246,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00734320	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\73\Destvalstd_allocatorCMacroCMacro_00734320.cpp
 00734340	CTCCombat_FindBlockAbilityPrioritized	_global	unknown	undefined	0		0	yes	accepted									
 00734570	SetNextComboChainPos	CTCCombat	__thiscall	void	2	CTCCombat *,CCombatActionBase *	1	yes	accepted									
-007345d0	GetAppropriateCombatAnimation_FilterAndSelect	_global	unknown	undefined	0		0	yes	accepted									
+007345d0	GetAppropriateCombatAnimationFromList	CTCCombat	unknown	undefined	0		0	yes	accepted									
 00734880	GetBlockAbilityIterator	CTCCombat	__thiscall	bool	3	CTCCombat *,_Tree_const_iterator<std::_Tree_val<std::_Tmap_traits<ECombatAbilityDataType,std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility>,std::less<ECombatAbilityDataType>,std::allocator<std::pair<ECombatAbilityDataType_const_,std::pair<CCountedPointer<CCombatAbilityData>,CCombatAbility>_>_>,1>_>_> *,EWeaponClass	1	yes	accepted									
 007348c0	IsToBlock	CTCCombat	__thiscall	bool	2	CTCCombat *,CHitParameters *	1	yes	accepted									
 00734c60	SetStruck	CTCCombat	__thiscall	void	3	CTCCombat *,CHitLocation *,CHitParameters *	1	yes	accepted									

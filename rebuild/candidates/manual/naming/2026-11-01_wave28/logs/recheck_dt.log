@@ -1,0 +1,1073 @@
+addr       parity           behav  name
+00ce1200   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce1200   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ce1200.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ce1200.obj; graded the largest function
+00ce1200   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ce1200   RELOCATION_MATCH PASS   CVtable_012c3594::`scalar deleting destructor'
+00cf6860   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cf6860   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cf6860.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cf6860.obj; graded the largest function
+00cf6860   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00cf6860   RELOCATION_MATCH PASS   CVtable_012c695c::`scalar deleting destructor'
+00d0ede0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d0ede0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d0ede0.obj; graded the largest function
+00d0ede0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d0ede0   RELOCATION_MATCH PASS   CVtable_012c9a70::`scalar deleting destructor'
+00d1fd00   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d1fd00.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d1fd00.obj; graded the largest function
+00d1fd00   RELOCATION_MATCH PASS   CVtable_012cb070::`scalar deleting destructor'
+00d29800   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d29800.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d29800.obj; graded the largest function
+00d29800   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d29800   RELOCATION_MATCH PASS   CVtable_012cbcc8::`scalar deleting destructor'
+00d38cf0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d38cf0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d38cf0.obj; graded the largest function
+00d38cf0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d38cf0   RELOCATION_MATCH PASS   CVtable_012cd1a0::`scalar deleting destructor'
+00d58460   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d58460.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d58460.obj; graded the largest function
+00d58460   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d58460   RELOCATION_MATCH PASS   CVtable_012d0580::`scalar deleting destructor'
+00d67240   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d67240.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d67240.obj; graded the largest function
+00d67240   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d67240   RELOCATION_MATCH PASS   CVtable_012d1dbc::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d728a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d728a0.obj; graded the largest function
+00d728a0   RELOCATION_MATCH PASS   CVtable_012d28a0::`scalar deleting destructor'
+00d7aa00   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7aa00.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7aa00.obj; graded the largest function
+00d7aa00   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d7aa00   RELOCATION_MATCH PASS   CVtable_012d346c::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d84470.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d84470.obj; graded the largest function
+00d84470   RELOCATION_MATCH PASS   CVtable_012d477c::`scalar deleting destructor'
+00d8aae0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d8aae0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d8aae0.obj; graded the largest function
+00d8aae0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d8aae0   RELOCATION_MATCH PASS   CVtable_012d5114::`scalar deleting destructor'
+00d973a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d973a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d973a0.obj; graded the largest function
+00d973a0   RELOCATION_MATCH PASS   CVtable_012d613c::`scalar deleting destructor'
+00da0130   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da0130.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da0130.obj; graded the largest function
+00da0130   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00da0130   RELOCATION_MATCH PASS   CVtable_012d6e5c::`scalar deleting destructor'
+00da84b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da84b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00da84b0.obj; graded the largest function
+00da84b0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00da84b0   RELOCATION_MATCH PASS   CVtable_012d7844::`scalar deleting destructor'
+00dca6a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00dca6a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00dca6a0.obj; graded the largest function
+00dca6a0   RELOCATION_MATCH PASS   CVtable_012dac78::`scalar deleting destructor'
+00dd9460   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dd9460.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dd9460.obj; graded the largest function
+00dd9460   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dd9460   RELOCATION_MATCH PASS   CVtable_012dc584::`scalar deleting destructor'
+00de8340   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00de8340.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00de8340.obj; graded the largest function
+00de8340   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_00de8340
+00df36b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df36b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df36b0.obj; graded the largest function
+00df36b0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00df36b0   RELOCATION_MATCH PASS   CVtable_012de350::`scalar deleting destructor'
+00e052d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e052d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e052d0.obj; graded the largest function
+00e052d0   RELOCATION_MATCH PASS   CVtable_012df764::`scalar deleting destructor'
+00e122d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e122d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e122d0.obj; graded the largest function
+00e122d0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e122d0   RELOCATION_MATCH PASS   CVtable_012e0574::`scalar deleting destructor'
+00e1f780   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e1f780.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e1f780.obj; graded the largest function
+00e1f780   RELOCATION_MATCH PASS   CVtable_012e15d0::`scalar deleting destructor'
+00e27e30   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e27e30.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e27e30.obj; graded the largest function
+00e27e30   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e27e30   RELOCATION_MATCH PASS   CVtable_012e20c0::`scalar deleting destructor'
+00e2ea90   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e2ea90.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e2ea90.obj; graded the largest function
+00e2ea90   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e2ea90   RELOCATION_MATCH PASS   CVtable_012e2b30::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e37e10.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e37e10.obj; graded the largest function
+00e37e10   RELOCATION_MATCH PASS   CVtable_012e36b8::`scalar deleting destructor'
+00e3b8c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e3b8c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e3b8c0.obj; graded the largest function
+00e3b8c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e3b8c0   RELOCATION_MATCH PASS   CVtable_012e3c08::`scalar deleting destructor'
+00e4b350   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e4b350.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e4b350.obj; graded the largest function
+00e4b350   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e4b350   RELOCATION_MATCH PASS   CVtable_012e510c::`scalar deleting destructor'
+00e54850   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e54850.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e54850.obj; graded the largest function
+00e54850   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e54850   RELOCATION_MATCH PASS   CVtable_012e5f5c::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e5fce0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e5fce0.obj; graded the largest function
+00e5fce0   WARN RELOC_NAME: ?AutoTinyMemberDestructor_008ac970@@YIXPAX@Z -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00e5fce0   RELOCATION_MATCH PASS   CVtable_012e70e4::`scalar deleting destructor'
+00e6a5d0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e6a5d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e6a5d0.obj; graded the largest function
+00e6a5d0   RELOCATION_MATCH PASS   CVtable_012e8468::`scalar deleting destructor'
+00e77660   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e77660.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e77660.obj; graded the largest function
+00e77660   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e77660   RELOCATION_MATCH PASS   CVtable_012e9960::`scalar deleting destructor'
+00e7eec0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e7eec0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e7eec0.obj; graded the largest function
+00e7eec0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e7eec0   RELOCATION_MATCH PASS   CVtable_012ea604::`scalar deleting destructor'
+00e8d270   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e8d270.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e8d270.obj; graded the largest function
+00e8d270   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e8d270   RELOCATION_MATCH PASS   CVtable_012ebd00::`scalar deleting destructor'
+00e960e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e960e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e960e0.obj; graded the largest function
+00e960e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e960e0   RELOCATION_MATCH PASS   CVtable_012ecd58::`scalar deleting destructor'
+00e9cfa0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e9cfa0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e9cfa0.obj; graded the largest function
+00e9cfa0   RELOCATION_MATCH PASS   CVtable_012ed614::`scalar deleting destructor'
+00ea1060   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea1060.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea1060.obj; graded the largest function
+00ea1060   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ea1060   RELOCATION_MATCH PASS   CVtable_012edb88::`scalar deleting destructor'
+00ead9c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ead9c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ead9c0.obj; graded the largest function
+00ead9c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ead9c0   RELOCATION_MATCH PASS   CVtable_012ef7e4::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6340.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6340.obj; graded the largest function
+00eb6340   RELOCATION_MATCH PASS   CVtable_012f036c::`scalar deleting destructor'
+00ec1180   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec1180.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec1180.obj; graded the largest function
+00ec1180   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ec1180   RELOCATION_MATCH PASS   CVtable_012f1214::`scalar deleting destructor'
+00ec4940   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec4940.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec4940.obj; graded the largest function
+00ec4940   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ec4940   RELOCATION_MATCH PASS   CVtable_012f16fc::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ed2890.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ed2890.obj; graded the largest function
+00ed2890   RELOCATION_MATCH PASS   CVtable_012f2c1c::`scalar deleting destructor'
+00ed75c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ed75c0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ed75c0.obj; graded the largest function
+00ed75c0   RELOCATION_MATCH PASS   CVtable_012f3374::`scalar deleting destructor'
+00edd000   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00edd000.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00edd000.obj; graded the largest function
+00edd000   RELOCATION_MATCH PASS   CVtable_012f3ecc::`scalar deleting destructor'
+00ee76c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee76c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee76c0.obj; graded the largest function
+00ee76c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ee76c0   RELOCATION_MATCH PASS   CVtable_012f52f8::`scalar deleting destructor'
+00ef8d00   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ef8d00.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ef8d00.obj; graded the largest function
+00ef8d00   RELOCATION_MATCH PASS   CVtable_012f6888::`scalar deleting destructor'
+00efbb40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efbb40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efbb40.obj; graded the largest function
+00efbb40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efbb40   RELOCATION_MATCH PASS   CVtable_012f6bb8::`scalar deleting destructor'
+00eff740   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eff740.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eff740.obj; graded the largest function
+00eff740   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00eff740   RELOCATION_MATCH PASS   CVtable_012f7038::`scalar deleting destructor'
+00f09c70   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f09c70   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00f09c70.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00f09c70.obj; graded the largest function
+00f09c70   RELOCATION_MATCH PASS   CVtable_012f7ebc::`scalar deleting destructor'
+
+WINS: 48
+  00ce1200 RELOCATION_MATCH CVtable_012c3594::`vector_deleting_destructor'
+  00cf6860 RELOCATION_MATCH CVtable_012c695c::`vector_deleting_destructor'
+  00d0ede0 RELOCATION_MATCH CVtable_012c9a70::`vector_deleting_destructor'
+  00d1fd00 RELOCATION_MATCH CVtable_012cb070::`scalar_deleting_destructor'
+  00d29800 RELOCATION_MATCH CVtable_012cbcc8::`vector_deleting_destructor'
+  00d38cf0 RELOCATION_MATCH CVtable_012cd1a0::`vector_deleting_destructor'
+  00d58460 RELOCATION_MATCH CVtable_012d0580::`vector_deleting_destructor'
+  00d67240 RELOCATION_MATCH CVtable_012d1dbc::`vector_deleting_destructor'
+  00d728a0 RELOCATION_MATCH CVtable_012d28a0::`scalar_deleting_destructor'
+  00d7aa00 RELOCATION_MATCH CVtable_012d346c::`vector_deleting_destructor'
+  00d84470 RELOCATION_MATCH CVtable_012d477c::`scalar_deleting_destructor'
+  00d8aae0 RELOCATION_MATCH CVtable_012d5114::`vector_deleting_destructor'
+  00d973a0 RELOCATION_MATCH CVtable_012d613c::`scalar_deleting_destructor'
+  00da0130 RELOCATION_MATCH CVtable_012d6e5c::`vector_deleting_destructor'
+  00da84b0 RELOCATION_MATCH CVtable_012d7844::`vector_deleting_destructor'
+  00dca6a0 RELOCATION_MATCH CVtable_012dac78::`scalar_deleting_destructor'
+  00dd9460 RELOCATION_MATCH CVtable_012dc584::`vector_deleting_destructor'
+  00de8340 RELOCATION_MATCH _global::`scalar_deleting_destructor'
+  00df36b0 RELOCATION_MATCH CVtable_012de350::`vector_deleting_destructor'
+  00e052d0 RELOCATION_MATCH CVtable_012df764::`scalar_deleting_destructor'
+  00e122d0 RELOCATION_MATCH CVtable_012e0574::`vector_deleting_destructor'
+  00e1f780 RELOCATION_MATCH CVtable_012e15d0::`scalar_deleting_destructor'
+  00e27e30 RELOCATION_MATCH CVtable_012e20c0::`vector_deleting_destructor'
+  00e2ea90 RELOCATION_MATCH CVtable_012e2b30::`vector_deleting_destructor'
+  00e37e10 RELOCATION_MATCH CVtable_012e36b8::`scalar_deleting_destructor'
+  00e3b8c0 RELOCATION_MATCH CVtable_012e3c08::`vector_deleting_destructor'
+  00e4b350 RELOCATION_MATCH CVtable_012e510c::`vector_deleting_destructor'
+  00e54850 RELOCATION_MATCH CVtable_012e5f5c::`vector_deleting_destructor'
+  00e5fce0 RELOCATION_MATCH CVtable_012e70e4::`scalar_deleting_destructor'
+  00e6a5d0 RELOCATION_MATCH CVtable_012e8468::`scalar_deleting_destructor'
+  00e77660 RELOCATION_MATCH CVtable_012e9960::`vector_deleting_destructor'
+  00e7eec0 RELOCATION_MATCH CVtable_012ea604::`vector_deleting_destructor'
+  00e8d270 RELOCATION_MATCH CVtable_012ebd00::`vector_deleting_destructor'
+  00e960e0 RELOCATION_MATCH CVtable_012ecd58::`vector_deleting_destructor'
+  00e9cfa0 RELOCATION_MATCH CVtable_012ed614::`scalar_deleting_destructor'
+  00ea1060 RELOCATION_MATCH CVtable_012edb88::`vector_deleting_destructor'
+  00ead9c0 RELOCATION_MATCH CVtable_012ef7e4::`vector_deleting_destructor'
+  00eb6340 RELOCATION_MATCH CVtable_012f036c::`scalar_deleting_destructor'
+  00ec1180 RELOCATION_MATCH CVtable_012f1214::`vector_deleting_destructor'
+  00ec4940 RELOCATION_MATCH CVtable_012f16fc::`vector_deleting_destructor'
+  00ed2890 RELOCATION_MATCH CVtable_012f2c1c::`scalar_deleting_destructor'
+  00ed75c0 RELOCATION_MATCH CVtable_012f3374::`scalar_deleting_destructor'
+  00edd000 RELOCATION_MATCH CVtable_012f3ecc::`scalar_deleting_destructor'
+  00ee76c0 RELOCATION_MATCH CVtable_012f52f8::`vector_deleting_destructor'
+  00ef8d00 RELOCATION_MATCH CVtable_012f6888::`scalar_deleting_destructor'
+  00efbb40 RELOCATION_MATCH CVtable_012f6bb8::`vector_deleting_destructor'
+  00eff740 RELOCATION_MATCH CVtable_012f7038::`vector_deleting_destructor'
+  00f09c70 RELOCATION_MATCH CVtable_012f7ebc::`scalar_deleting_destructor'
+addr       parity           behav  name
+00ce1250   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce1250   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ce1250.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ce1250.obj; graded the largest function
+00ce1250   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ce1250   RELOCATION_MATCH PASS   CVtable_012c3578::`scalar deleting destructor'
+00cfdfa0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cfdfa0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cfdfa0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cfdfa0.obj; graded the largest function
+00cfdfa0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00cfdfa0   RELOCATION_MATCH PASS   CVtable_012c7da0::`scalar deleting destructor'
+00d154e0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d154e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d154e0.obj; graded the largest function
+00d154e0   RELOCATION_MATCH PASS   CVtable_012ca4f4::`scalar deleting destructor'
+00d20760   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d20760.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d20760.obj; graded the largest function
+00d20760   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d20760   RELOCATION_MATCH PASS   CVtable_012cb140::`scalar deleting destructor'
+00d2d6d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d2d6d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d2d6d0.obj; graded the largest function
+00d2d6d0   RELOCATION_MATCH PASS   CVtable_012cc444::`scalar deleting destructor'
+00d44620   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d44620.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d44620.obj; graded the largest function
+00d44620   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d44620   RELOCATION_MATCH PASS   CVtable_012ce48c::`scalar deleting destructor'
+00d5ae40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5ae40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5ae40.obj; graded the largest function
+00d5ae40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d5ae40   RELOCATION_MATCH PASS   CVtable_012d09f4::`scalar deleting destructor'
+00d68e70   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d68e70.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d68e70.obj; graded the largest function
+00d68e70   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d68e70   RELOCATION_MATCH PASS   CVtable_012d1f7c::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d729b0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d729b0.obj; graded the largest function
+00d729b0   RELOCATION_MATCH PASS   CVtable_012d296c::`scalar deleting destructor'
+00d7c440   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7c440.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7c440.obj; graded the largest function
+00d7c440   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d7c440   RELOCATION_MATCH PASS   CVtable_012d3978::`scalar deleting destructor'
+00d84600   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d84600.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d84600.obj; graded the largest function
+00d84600   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d84600   RELOCATION_MATCH PASS   CVtable_012d47c0::`scalar deleting destructor'
+00d900b0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d900b0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d900b0.obj; graded the largest function
+00d900b0   RELOCATION_MATCH PASS   CVtable_012d5a1c::`scalar deleting destructor'
+00d9da90   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d9da90.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d9da90.obj; graded the largest function
+00d9da90   RELOCATION_MATCH PASS   CVtable_012d6bf0::`scalar deleting destructor'
+00da29f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da29f0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da29f0.obj; graded the largest function
+00da29f0   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_00da29f0
+00db8680   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00db8680.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00db8680.obj; graded the largest function
+00db8680   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00db8680   RELOCATION_MATCH PASS   CVtable_012d95b0::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00dcf760.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00dcf760.obj; graded the largest function
+00dcf760   RELOCATION_MATCH PASS   CVtable_012db364::`scalar deleting destructor'
+00ddc950   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ddc950.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ddc950.obj; graded the largest function
+00ddc950   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ddc950   RELOCATION_MATCH PASS   CVtable_012dca80::`scalar deleting destructor'
+00dec730   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dec730.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dec730.obj; graded the largest function
+00dec730   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dec730   RELOCATION_MATCH PASS   CVtable_012ddc04::`scalar deleting destructor'
+00df4bb0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df4bb0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df4bb0.obj; graded the largest function
+00df4bb0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00df4bb0   RELOCATION_MATCH PASS   CVtable_012de5e4::`scalar deleting destructor'
+00e05300   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e05300.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e05300.obj; graded the largest function
+00e05300   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e05300   RELOCATION_MATCH PASS   CVtable_012df7d4::`scalar deleting destructor'
+00e18380   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e18380.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e18380.obj; graded the largest function
+00e18380   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e18380   RELOCATION_MATCH PASS   CVtable_012e0cc8::`scalar deleting destructor'
+00e1f7b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1f7b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1f7b0.obj; graded the largest function
+00e1f7b0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e1f7b0   RELOCATION_MATCH PASS   CVtable_012e1610::`scalar deleting destructor'
+00e29290   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e29290.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e29290.obj; graded the largest function
+00e29290   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e29290   RELOCATION_MATCH PASS   CVtable_012e2268::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e37310.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e37310.obj; graded the largest function
+00e37310   RELOCATION_MATCH PASS   CVtable_012e30dc::`scalar deleting destructor'
+00e38d50   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e38d50.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e38d50.obj; graded the largest function
+00e38d50   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e38d50   RELOCATION_MATCH PASS   CVtable_012e3780::`scalar deleting destructor'
+00e47770   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e47770.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e47770.obj; graded the largest function
+00e47770   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e47770   RELOCATION_MATCH PASS   CVtable_012e4b60::`scalar deleting destructor'
+00e54200   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e54200.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e54200.obj; graded the largest function
+00e54200   RELOCATION_MATCH PASS   CVtable_012e5e70::`scalar deleting destructor'
+00e5d080   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5d080.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5d080.obj; graded the largest function
+00e5d080   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e5d080   RELOCATION_MATCH PASS   CVtable_012e6e30::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e5fd10.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e5fd10.obj; graded the largest function
+00e5fd10   WARN RELOC_NAME: ?AutoTinyMemberDestructor_008ac970@@YIXPAX@Z -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00e5fd10   RELOCATION_MATCH PASS   CVtable_012e7100::`scalar deleting destructor'
+00e6b3a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e6b3a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e6b3a0.obj; graded the largest function
+00e6b3a0   RELOCATION_MATCH PASS   CVtable_012e84d4::`scalar deleting destructor'
+00e7b860   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e7b860.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e7b860.obj; graded the largest function
+00e7b860   RELOCATION_MATCH PASS   CVtable_012ea0b4::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e836c0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e836c0.obj; graded the largest function
+00e836c0   RELOCATION_MATCH PASS   CVtable_012eb0c0::`scalar deleting destructor'
+00e90bb0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e90bb0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e90bb0.obj; graded the largest function
+00e90bb0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e90bb0   RELOCATION_MATCH PASS   CVtable_012ec1a0::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e98430.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e98430.obj; graded the largest function
+00e98430   RELOCATION_MATCH PASS   CVtable_012eceb4::`scalar deleting destructor'
+00e9da90   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e9da90.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e9da90.obj; graded the largest function
+00e9da90   RELOCATION_MATCH PASS   CVtable_012ed67c::`scalar deleting destructor'
+00ea5900   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea5900.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea5900.obj; graded the largest function
+00ea5900   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ea5900   RELOCATION_MATCH PASS   CVtable_012ee154::`scalar deleting destructor'
+00eb62b0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62b0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62b0.obj; graded the largest function
+00eb62b0   RELOCATION_MATCH PASS   CVtable_012efa0c::`scalar deleting destructor'
+00eb64f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb64f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb64f0.obj; graded the largest function
+00eb64f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00eb64f0   RELOCATION_MATCH PASS   CVtable_012f040c::`scalar deleting destructor'
+00ec1750   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec1750.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec1750.obj; graded the largest function
+00ec1750   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ec1750   RELOCATION_MATCH PASS   CVtable_012f12bc::`scalar deleting destructor'
+00ec5330   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ec5330.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ec5330.obj; graded the largest function
+00ec5330   RELOCATION_MATCH PASS   CVtable_012f17a8::`scalar deleting destructor'
+00ed2a20   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed2a20.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed2a20.obj; graded the largest function
+00ed2a20   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ed2a20   RELOCATION_MATCH PASS   CVtable_012f2dc0::`scalar deleting destructor'
+00ed8390   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed8390.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed8390.obj; graded the largest function
+00ed8390   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ed8390   RELOCATION_MATCH PASS   CVtable_012f34f4::`scalar deleting destructor'
+00edd030   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00edd030.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00edd030.obj; graded the largest function
+00edd030   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00edd030   RELOCATION_MATCH PASS   CVtable_012f3f00::`scalar deleting destructor'
+00eedbc0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eedbc0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eedbc0.obj; graded the largest function
+00eedbc0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00eedbc0   RELOCATION_MATCH PASS   CVtable_012f58c8::`scalar deleting destructor'
+00efa390   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efa390.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efa390.obj; graded the largest function
+00efa390   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efa390   RELOCATION_MATCH PASS   CVtable_012f69cc::`scalar deleting destructor'
+00efc100   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efc100.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efc100.obj; graded the largest function
+00efc100   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efc100   RELOCATION_MATCH PASS   CVtable_012f6c3c::`scalar deleting destructor'
+00f012d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f012d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f012d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f012d0.obj; graded the largest function
+00f012d0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00f012d0   RELOCATION_MATCH PASS   CVtable_012f72a8::`scalar deleting destructor'
+00f09ca0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f09ca0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f09ca0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f09ca0.obj; graded the largest function
+00f09ca0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00f09ca0   RELOCATION_MATCH PASS   CVtable_012f8178::`scalar deleting destructor'
+
+WINS: 48
+  00ce1250 RELOCATION_MATCH CVtable_012c3578::`vector_deleting_destructor'
+  00cfdfa0 RELOCATION_MATCH CVtable_012c7da0::`vector_deleting_destructor'
+  00d154e0 RELOCATION_MATCH CVtable_012ca4f4::`scalar_deleting_destructor'
+  00d20760 RELOCATION_MATCH CVtable_012cb140::`vector_deleting_destructor'
+  00d2d6d0 RELOCATION_MATCH CVtable_012cc444::`scalar_deleting_destructor'
+  00d44620 RELOCATION_MATCH CVtable_012ce48c::`vector_deleting_destructor'
+  00d5ae40 RELOCATION_MATCH CVtable_012d09f4::`vector_deleting_destructor'
+  00d68e70 RELOCATION_MATCH CVtable_012d1f7c::`vector_deleting_destructor'
+  00d729b0 RELOCATION_MATCH CVtable_012d296c::`scalar_deleting_destructor'
+  00d7c440 RELOCATION_MATCH CVtable_012d3978::`vector_deleting_destructor'
+  00d84600 RELOCATION_MATCH CVtable_012d47c0::`vector_deleting_destructor'
+  00d900b0 RELOCATION_MATCH CVtable_012d5a1c::`scalar_deleting_destructor'
+  00d9da90 RELOCATION_MATCH CVtable_012d6bf0::`scalar_deleting_destructor'
+  00da29f0 RELOCATION_MATCH _global::`scalar_deleting_destructor'
+  00db8680 RELOCATION_MATCH CVtable_012d95b0::`vector_deleting_destructor'
+  00dcf760 RELOCATION_MATCH CVtable_012db364::`scalar_deleting_destructor'
+  00ddc950 RELOCATION_MATCH CVtable_012dca80::`vector_deleting_destructor'
+  00dec730 RELOCATION_MATCH CVtable_012ddc04::`vector_deleting_destructor'
+  00df4bb0 RELOCATION_MATCH CVtable_012de5e4::`vector_deleting_destructor'
+  00e05300 RELOCATION_MATCH CVtable_012df7d4::`vector_deleting_destructor'
+  00e18380 RELOCATION_MATCH CVtable_012e0cc8::`vector_deleting_destructor'
+  00e1f7b0 RELOCATION_MATCH CVtable_012e1610::`vector_deleting_destructor'
+  00e29290 RELOCATION_MATCH CVtable_012e2268::`vector_deleting_destructor'
+  00e37310 RELOCATION_MATCH CVtable_012e30dc::`scalar_deleting_destructor'
+  00e38d50 RELOCATION_MATCH CVtable_012e3780::`vector_deleting_destructor'
+  00e47770 RELOCATION_MATCH CVtable_012e4b60::`vector_deleting_destructor'
+  00e54200 RELOCATION_MATCH CVtable_012e5e70::`scalar_deleting_destructor'
+  00e5d080 RELOCATION_MATCH CVtable_012e6e30::`vector_deleting_destructor'
+  00e5fd10 RELOCATION_MATCH CVtable_012e7100::`scalar_deleting_destructor'
+  00e6b3a0 RELOCATION_MATCH CVtable_012e84d4::`scalar_deleting_destructor'
+  00e7b860 RELOCATION_MATCH CVtable_012ea0b4::`scalar_deleting_destructor'
+  00e836c0 RELOCATION_MATCH CVtable_012eb0c0::`scalar_deleting_destructor'
+  00e90bb0 RELOCATION_MATCH CVtable_012ec1a0::`vector_deleting_destructor'
+  00e98430 RELOCATION_MATCH CVtable_012eceb4::`scalar_deleting_destructor'
+  00e9da90 RELOCATION_MATCH CVtable_012ed67c::`scalar_deleting_destructor'
+  00ea5900 RELOCATION_MATCH CVtable_012ee154::`vector_deleting_destructor'
+  00eb62b0 RELOCATION_MATCH CVtable_012efa0c::`vector_deleting_destructor'
+  00eb64f0 RELOCATION_MATCH CVtable_012f040c::`vector_deleting_destructor'
+  00ec1750 RELOCATION_MATCH CVtable_012f12bc::`vector_deleting_destructor'
+  00ec5330 RELOCATION_MATCH CVtable_012f17a8::`scalar_deleting_destructor'
+  00ed2a20 RELOCATION_MATCH CVtable_012f2dc0::`vector_deleting_destructor'
+  00ed8390 RELOCATION_MATCH CVtable_012f34f4::`vector_deleting_destructor'
+  00edd030 RELOCATION_MATCH CVtable_012f3f00::`vector_deleting_destructor'
+  00eedbc0 RELOCATION_MATCH CVtable_012f58c8::`vector_deleting_destructor'
+  00efa390 RELOCATION_MATCH CVtable_012f69cc::`vector_deleting_destructor'
+  00efc100 RELOCATION_MATCH CVtable_012f6c3c::`vector_deleting_destructor'
+  00f012d0 RELOCATION_MATCH CVtable_012f72a8::`vector_deleting_destructor'
+  00f09ca0 RELOCATION_MATCH CVtable_012f8178::`vector_deleting_destructor'
+addr       parity           behav  name
+00ce6be0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ce6be0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ce6be0.obj; graded the largest function
+00ce6be0   RELOCATION_MATCH PASS   CVtable_012c36b8::`scalar deleting destructor'
+00d032c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d032c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d032c0.obj; graded the largest function
+00d032c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d032c0   RELOCATION_MATCH PASS   CVtable_012c88ac::`scalar deleting destructor'
+00d172e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d172e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d172e0.obj; graded the largest function
+00d172e0   RELOCATION_MATCH PASS   CVtable_012ca5e0::`scalar deleting destructor'
+00d24630   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d24630.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d24630.obj; graded the largest function
+00d24630   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d24630   RELOCATION_MATCH PASS   CVtable_012cb5fc::`scalar deleting destructor'
+00d2d700   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d2d700.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d2d700.obj; graded the largest function
+00d2d700   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d2d700   RELOCATION_MATCH PASS   CVtable_012cc470::`scalar deleting destructor'
+00d50c30   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d50c30.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d50c30.obj; graded the largest function
+00d50c30   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d50c30   RELOCATION_MATCH PASS   CVtable_012cf6e0::`scalar deleting destructor'
+00d5e040   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5e040.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5e040.obj; graded the largest function
+00d5e040   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d5e040   RELOCATION_MATCH PASS   CVtable_012d108c::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d6b560.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d6b560.obj; graded the largest function
+00d6b560   RELOCATION_MATCH PASS   CVtable_012d2258::`scalar deleting destructor'
+00d72b40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d72b40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d72b40.obj; graded the largest function
+00d72b40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d72b40   RELOCATION_MATCH PASS   CVtable_012d299c::`scalar deleting destructor'
+00d7fc10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7fc10.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7fc10.obj; graded the largest function
+00d7fc10   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d7fc10   RELOCATION_MATCH PASS   CVtable_012d3fe0::`scalar deleting destructor'
+00d872a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d872a0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d872a0.obj; graded the largest function
+00d872a0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d872a0   RELOCATION_MATCH PASS   CVtable_012d4c78::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d91580.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d91580.obj; graded the largest function
+00d91580   RELOCATION_MATCH PASS   CVtable_012d5a94::`scalar deleting destructor'
+00d9dac0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d9dac0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d9dac0.obj; graded the largest function
+00d9dac0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d9dac0   RELOCATION_MATCH PASS   CVtable_012d6c44::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da82f0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da82f0.obj; graded the largest function
+00da82f0   RELOCATION_MATCH PASS   CVtable_012d73e0::`scalar deleting destructor'
+00dc02d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dc02d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dc02d0.obj; graded the largest function
+00dc02d0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dc02d0   RELOCATION_MATCH PASS   CVtable_012d9f9c::`scalar deleting destructor'
+00dcf8f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dcf8f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dcf8f0.obj; graded the largest function
+00dcf8f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dcf8f0   RELOCATION_MATCH PASS   CVtable_012db50c::`scalar deleting destructor'
+00ddf060   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ddf060.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ddf060.obj; graded the largest function
+00ddf060   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ddf060   RELOCATION_MATCH PASS   CVtable_012dcd2c::`scalar deleting destructor'
+00def380   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00def380.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00def380.obj; graded the largest function
+00def380   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00def380   RELOCATION_MATCH PASS   CVtable_012ddf08::`scalar deleting destructor'
+00df9b50   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df9b50.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00df9b50.obj; graded the largest function
+00df9b50   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00df9b50   RELOCATION_MATCH PASS   CVtable_012deaac::`scalar deleting destructor'
+00e0e700   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e0e700.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e0e700.obj; graded the largest function
+00e0e700   RELOCATION_MATCH PASS   CVtable_012e0088::`scalar deleting destructor'
+00e19530   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e19530.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e19530.obj; graded the largest function
+00e19530   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e19530   RELOCATION_MATCH PASS   CVtable_012e0e84::`scalar deleting destructor'
+00e25f10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e25f10.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e25f10.obj; graded the largest function
+00e25f10   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e25f10   RELOCATION_MATCH PASS   CVtable_012e1e44::`scalar deleting destructor'
+00e2a2f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e2a2f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e2a2f0.obj; graded the largest function
+00e2a2f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e2a2f0   RELOCATION_MATCH PASS   CVtable_012e23d4::`scalar deleting destructor'
+00e374c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e374c0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e374c0.obj; graded the largest function
+00e374c0   RELOCATION_MATCH PASS   CVtable_012e33dc::`scalar deleting destructor'
+00e39510   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e39510.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e39510.obj; graded the largest function
+00e39510   RELOCATION_MATCH PASS   CVtable_012e37bc::`scalar deleting destructor'
+00e4a9d0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e4a9d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e4a9d0.obj; graded the largest function
+00e4a9d0   RELOCATION_MATCH PASS   CVtable_012e4fc4::`scalar deleting destructor'
+00e54230   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e54230.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e54230.obj; graded the largest function
+00e54230   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e54230   RELOCATION_MATCH PASS   CVtable_012e5ee0::`scalar deleting destructor'
+00e5f160   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5f160.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e5f160.obj; graded the largest function
+00e5f160   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e5f160   RELOCATION_MATCH PASS   CVtable_012e70ac::`scalar deleting destructor'
+00e64180   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e64180.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e64180.obj; graded the largest function
+00e64180   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e64180   RELOCATION_MATCH PASS   CVtable_012e74fc::`scalar deleting destructor'
+00e6b3d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e6b3d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e6b3d0.obj; graded the largest function
+00e6b3d0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e6b3d0   RELOCATION_MATCH PASS   CVtable_012e851c::`scalar deleting destructor'
+00e7c830   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e7c830.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e7c830.obj; graded the largest function
+00e7c830   RELOCATION_MATCH PASS   CVtable_012ea164::`scalar deleting destructor'
+00e83d20   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e83d20.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e83d20.obj; graded the largest function
+00e83d20   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e83d20   RELOCATION_MATCH PASS   CVtable_012eb1e0::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e93050.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e93050.obj; graded the largest function
+00e93050   RELOCATION_MATCH PASS   CVtable_012ecae8::`scalar deleting destructor'
+00e985e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e985e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e985e0.obj; graded the largest function
+00e985e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e985e0   RELOCATION_MATCH PASS   CVtable_012ed0a8::`scalar deleting destructor'
+00e9e0b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e9e0b0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e9e0b0.obj; graded the largest function
+00e9e0b0   RELOCATION_MATCH PASS   CVtable_012ed6b8::`scalar deleting destructor'
+00ea7650   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ea7650.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ea7650.obj; graded the largest function
+00ea7650   RELOCATION_MATCH PASS   _global::ScalarDeletingDtor_00ea7650
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb62e0.obj; graded the largest function
+00eb62e0   RELOCATION_MATCH PASS   CVtable_012efee8::`scalar deleting destructor'
+00eb9870   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb9870.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb9870.obj; graded the largest function
+00eb9870   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00eb9870   RELOCATION_MATCH PASS   CVtable_012f0808::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ec2830.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ec2830.obj; graded the largest function
+00ec2830   RELOCATION_MATCH PASS   CVtable_012f1390::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ecd5d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ecd5d0.obj; graded the largest function
+00ecd5d0   RELOCATION_MATCH PASS   CVtable_012f2404::`scalar deleting destructor'
+00ed4a10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed4a10.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed4a10.obj; graded the largest function
+00ed4a10   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ed4a10   RELOCATION_MATCH PASS   CVtable_012f3000::`scalar deleting destructor'
+00ed99a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ed99a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ed99a0.obj; graded the largest function
+00ed99a0   RELOCATION_MATCH PASS   CVtable_012f37d0::`scalar deleting destructor'
+00ee1d90   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee1d90.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee1d90.obj; graded the largest function
+00ee1d90   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ee1d90   RELOCATION_MATCH PASS   CVtable_012f4454::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ef5040.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ef5040.obj; graded the largest function
+00ef5040   RELOCATION_MATCH PASS   CVtable_012f6518::`scalar deleting destructor'
+00efaf00   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efaf00.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efaf00.obj; graded the largest function
+00efaf00   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efaf00   RELOCATION_MATCH PASS   CVtable_012f6a8c::`scalar deleting destructor'
+00efdc10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efdc10.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efdc10.obj; graded the largest function
+00efdc10   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efdc10   RELOCATION_MATCH PASS   CVtable_012f6e60::`scalar deleting destructor'
+00f01e80   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f01e80   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f01e80.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f01e80.obj; graded the largest function
+00f01e80   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00f01e80   RELOCATION_MATCH PASS   CVtable_012f7354::`scalar deleting destructor'
+00f1ccb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f1ccb0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f1ccb0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f1ccb0.obj; graded the largest function
+00f1ccb0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00f1ccb0   RELOCATION_MATCH PASS   CVtable_012f9ec0::`scalar deleting destructor'
+
+WINS: 48
+  00ce6be0 RELOCATION_MATCH CVtable_012c36b8::`scalar_deleting_destructor'
+  00d032c0 RELOCATION_MATCH CVtable_012c88ac::`vector_deleting_destructor'
+  00d172e0 RELOCATION_MATCH CVtable_012ca5e0::`scalar_deleting_destructor'
+  00d24630 RELOCATION_MATCH CVtable_012cb5fc::`vector_deleting_destructor'
+  00d2d700 RELOCATION_MATCH CVtable_012cc470::`vector_deleting_destructor'
+  00d50c30 RELOCATION_MATCH CVtable_012cf6e0::`vector_deleting_destructor'
+  00d5e040 RELOCATION_MATCH CVtable_012d108c::`vector_deleting_destructor'
+  00d6b560 RELOCATION_MATCH CVtable_012d2258::`scalar_deleting_destructor'
+  00d72b40 RELOCATION_MATCH CVtable_012d299c::`vector_deleting_destructor'
+  00d7fc10 RELOCATION_MATCH CVtable_012d3fe0::`vector_deleting_destructor'
+  00d872a0 RELOCATION_MATCH CVtable_012d4c78::`vector_deleting_destructor'
+  00d91580 RELOCATION_MATCH CVtable_012d5a94::`scalar_deleting_destructor'
+  00d9dac0 RELOCATION_MATCH CVtable_012d6c44::`vector_deleting_destructor'
+  00da82f0 RELOCATION_MATCH CVtable_012d73e0::`scalar_deleting_destructor'
+  00dc02d0 RELOCATION_MATCH CVtable_012d9f9c::`vector_deleting_destructor'
+  00dcf8f0 RELOCATION_MATCH CVtable_012db50c::`vector_deleting_destructor'
+  00ddf060 RELOCATION_MATCH CVtable_012dcd2c::`vector_deleting_destructor'
+  00def380 RELOCATION_MATCH CVtable_012ddf08::`vector_deleting_destructor'
+  00df9b50 RELOCATION_MATCH CVtable_012deaac::`vector_deleting_destructor'
+  00e0e700 RELOCATION_MATCH CVtable_012e0088::`scalar_deleting_destructor'
+  00e19530 RELOCATION_MATCH CVtable_012e0e84::`vector_deleting_destructor'
+  00e25f10 RELOCATION_MATCH CVtable_012e1e44::`vector_deleting_destructor'
+  00e2a2f0 RELOCATION_MATCH CVtable_012e23d4::`vector_deleting_destructor'
+  00e374c0 RELOCATION_MATCH CVtable_012e33dc::`scalar_deleting_destructor'
+  00e39510 RELOCATION_MATCH CVtable_012e37bc::`scalar_deleting_destructor'
+  00e4a9d0 RELOCATION_MATCH CVtable_012e4fc4::`scalar_deleting_destructor'
+  00e54230 RELOCATION_MATCH CVtable_012e5ee0::`vector_deleting_destructor'
+  00e5f160 RELOCATION_MATCH CVtable_012e70ac::`vector_deleting_destructor'
+  00e64180 RELOCATION_MATCH CVtable_012e74fc::`vector_deleting_destructor'
+  00e6b3d0 RELOCATION_MATCH CVtable_012e851c::`vector_deleting_destructor'
+  00e7c830 RELOCATION_MATCH CVtable_012ea164::`scalar_deleting_destructor'
+  00e83d20 RELOCATION_MATCH CVtable_012eb1e0::`vector_deleting_destructor'
+  00e93050 RELOCATION_MATCH CVtable_012ecae8::`scalar_deleting_destructor'
+  00e985e0 RELOCATION_MATCH CVtable_012ed0a8::`vector_deleting_destructor'
+  00e9e0b0 RELOCATION_MATCH CVtable_012ed6b8::`scalar_deleting_destructor'
+  00ea7650 RELOCATION_MATCH _global::`scalar_deleting_destructor'
+  00eb62e0 RELOCATION_MATCH CVtable_012efee8::`vector_deleting_destructor'
+  00eb9870 RELOCATION_MATCH CVtable_012f0808::`vector_deleting_destructor'
+  00ec2830 RELOCATION_MATCH CVtable_012f1390::`scalar_deleting_destructor'
+  00ecd5d0 RELOCATION_MATCH CVtable_012f2404::`scalar_deleting_destructor'
+  00ed4a10 RELOCATION_MATCH CVtable_012f3000::`vector_deleting_destructor'
+  00ed99a0 RELOCATION_MATCH CVtable_012f37d0::`scalar_deleting_destructor'
+  00ee1d90 RELOCATION_MATCH CVtable_012f4454::`vector_deleting_destructor'
+  00ef5040 RELOCATION_MATCH CVtable_012f6518::`scalar_deleting_destructor'
+  00efaf00 RELOCATION_MATCH CVtable_012f6a8c::`vector_deleting_destructor'
+  00efdc10 RELOCATION_MATCH CVtable_012f6e60::`vector_deleting_destructor'
+  00f01e80 RELOCATION_MATCH CVtable_012f7354::`vector_deleting_destructor'
+  00f1ccb0 RELOCATION_MATCH CVtable_012f9ec0::`vector_deleting_destructor'
+addr       parity           behav  name
+00ce6c10   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ce6c10.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00ce6c10.obj; graded the largest function
+00ce6c10   RELOCATION_MATCH PASS   CVtable_012c3b88::`scalar deleting destructor'
+00d0edb0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d0edb0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d0edb0.obj; graded the largest function
+00d0edb0   RELOCATION_MATCH PASS   CVtable_012c9918::`scalar deleting destructor'
+00d17310   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d17310.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d17310.obj; graded the largest function
+00d17310   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d17310   RELOCATION_MATCH PASS   CVtable_012ca6ac::`scalar deleting destructor'
+00d26160   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d26160.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d26160.obj; graded the largest function
+00d26160   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d26160   RELOCATION_MATCH PASS   CVtable_012cb7c4::`scalar deleting destructor'
+00d30000   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d30000.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d30000.obj; graded the largest function
+00d30000   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d30000   RELOCATION_MATCH PASS   CVtable_012cc724::`scalar deleting destructor'
+00d52470   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d52470.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d52470.obj; graded the largest function
+00d52470   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d52470   RELOCATION_MATCH PASS   CVtable_012cf890::`scalar deleting destructor'
+00d64370   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d64370.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d64370.obj; graded the largest function
+00d64370   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d64370   RELOCATION_MATCH PASS   CVtable_012d1a64::`scalar deleting destructor'
+00d6b6f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d6b6f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d6b6f0.obj; graded the largest function
+00d6b6f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d6b6f0   RELOCATION_MATCH PASS   CVtable_012d22b8::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d732c0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d732c0.obj; graded the largest function
+00d732c0   WARN RELOC_NAME: ?AutoTinyMemberDestructor_008ac970@@YIXPAX@Z -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00d732c0   RELOCATION_MATCH PASS   CVtable_012d29b8::`scalar deleting destructor'
+00d82370   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d82370.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d82370.obj; graded the largest function
+00d82370   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d82370   RELOCATION_MATCH PASS   CVtable_012d4428::`scalar deleting destructor'
+00d896e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d896e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d896e0.obj; graded the largest function
+00d896e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d896e0   RELOCATION_MATCH PASS   CVtable_012d4f84::`scalar deleting destructor'
+00d91710   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d91710.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d91710.obj; graded the largest function
+00d91710   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d91710   RELOCATION_MATCH PASS   CVtable_012d5b70::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d9ffa0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d9ffa0.obj; graded the largest function
+00d9ffa0   RELOCATION_MATCH PASS   CVtable_012d6d28::`scalar deleting destructor'
+00da8480   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da8480.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00da8480.obj; graded the largest function
+00da8480   RELOCATION_MATCH PASS   CVtable_012d771c::`scalar deleting destructor'
+00dc8860   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dc8860.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dc8860.obj; graded the largest function
+00dc8860   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dc8860   RELOCATION_MATCH PASS   CVtable_012daa38::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00dd92d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00dd92d0.obj; graded the largest function
+00dd92d0   RELOCATION_MATCH PASS   CVtable_012dbe68::`scalar deleting destructor'
+00de45e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00de45e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00de45e0.obj; graded the largest function
+00de45e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00de45e0   RELOCATION_MATCH PASS   CVtable_012dd4a0::`scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00def730.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00def730.obj; graded the largest function
+00def730   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor_008ac970@@YIXPAX@Z -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00def730   RELOCATION_MATCH PASS   CVtable_012ddf3c::`scalar deleting destructor'
+00dfc260   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dfc260.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00dfc260.obj; graded the largest function
+00dfc260   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00dfc260   RELOCATION_MATCH PASS   CVtable_012dee4c::`scalar deleting destructor'
+00e0e730   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e730.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e0e730.obj; graded the largest function
+00e0e730   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e0e730   RELOCATION_MATCH PASS   CVtable_012e00c8::`scalar deleting destructor'
+00e1c0c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1c0c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1c0c0.obj; graded the largest function
+00e1c0c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e1c0c0   RELOCATION_MATCH PASS   CVtable_012e10e8::`scalar deleting destructor'
+00e26dd0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e26dd0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e26dd0.obj; graded the largest function
+00e26dd0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e26dd0   RELOCATION_MATCH PASS   CVtable_012e1f90::`scalar deleting destructor'
+00e2ea60   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e2ea60.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e2ea60.obj; graded the largest function
+00e2ea60   RELOCATION_MATCH PASS   CVtable_012e2b00::`scalar deleting destructor'
+00e374f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e374f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e374f0.obj; graded the largest function
+00e374f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e374f0   RELOCATION_MATCH PASS   CVtable_012e34e0::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e3ac40.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e3ac40.obj; graded the largest function
+00e3ac40   RELOCATION_MATCH PASS   CVtable_012e3ac8::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e4b1a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e4b1a0.obj; graded the largest function
+00e4b1a0   RELOCATION_MATCH PASS   CVtable_012e4d88::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e546a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e546a0.obj; graded the largest function
+00e546a0   RELOCATION_MATCH PASS   CVtable_012e5f40::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e5fcb0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e5fcb0.obj; graded the largest function
+00e5fcb0   WARN RELOC_NAME: ?AutoTinyMemberDestructor_008ac970@@YIXPAX@Z -> 008ac970 labelled 'std::vector<CScriptThing, std::allocator<CScriptThing>>::~vector'
+00e5fcb0   RELOCATION_MATCH PASS   CVtable_012e70c8::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e64f80.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e64f80.obj; graded the largest function
+00e64f80   WARN RELOC_NAME: ?AutoTinyMemberDestructor_00412130@@YIXPAX@Z -> 00412130 labelled 'std::vector<CWideString>::~vector'
+00e64f80   RELOCATION_MATCH PASS   CVtable_012e7648::`scalar deleting destructor'
+00e74d40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e74d40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e74d40.obj; graded the largest function
+00e74d40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e74d40   RELOCATION_MATCH PASS   CVtable_012e9600::`scalar deleting destructor'
+00e7c860   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e7c860.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e7c860.obj; graded the largest function
+00e7c860   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e7c860   RELOCATION_MATCH PASS   CVtable_012ea1f8::`scalar deleting destructor'
+00e8d240   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e8d240.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00e8d240.obj; graded the largest function
+00e8d240   RELOCATION_MATCH PASS   CVtable_012ebc50::`scalar deleting destructor'
+00e93be0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e93be0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e93be0.obj; graded the largest function
+00e93be0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e93be0   RELOCATION_MATCH PASS   CVtable_012ecb04::`scalar deleting destructor'
+00e9a240   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e9a240.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e9a240.obj; graded the largest function
+00e9a240   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e9a240   RELOCATION_MATCH PASS   CVtable_012ed370::`scalar deleting destructor'
+00e9e0e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e9e0e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e9e0e0.obj; graded the largest function
+00e9e0e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00e9e0e0   RELOCATION_MATCH PASS   CVtable_012ed6d4::`scalar deleting destructor'
+00ea8070   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea8070.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ea8070.obj; graded the largest function
+00ea8070   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ea8070   RELOCATION_MATCH PASS   CVtable_012ee5a0::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6310.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00eb6310.obj; graded the largest function
+00eb6310   RELOCATION_MATCH PASS   CVtable_012f00bc::`scalar deleting destructor'
+00ebed70   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ebed70.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ebed70.obj; graded the largest function
+00ebed70   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ebed70   RELOCATION_MATCH PASS   CVtable_012f0ec0::`scalar deleting destructor'
+00ec29c0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec29c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ec29c0.obj; graded the largest function
+00ec29c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ec29c0   RELOCATION_MATCH PASS   CVtable_012f13f4::`scalar deleting destructor'
+00ecd780   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ecd780.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ecd780.obj; graded the largest function
+00ecd780   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ecd780   RELOCATION_MATCH PASS   CVtable_012f243c::`scalar deleting destructor'
+00ed54a0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed54a0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed54a0.obj; graded the largest function
+00ed54a0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ed54a0   RELOCATION_MATCH PASS   CVtable_012f3190::`scalar deleting destructor'
+00edc2a0   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00edc2a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00edc2a0.obj; graded the largest function
+00edc2a0   RELOCATION_MATCH PASS   CVtable_012f3e94::`scalar deleting destructor'
+00ee56f0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee56f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee56f0.obj; graded the largest function
+00ee56f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ee56f0   RELOCATION_MATCH PASS   CVtable_012f5194::`scalar deleting destructor'
+00ef51d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ef51d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ef51d0.obj; graded the largest function
+00ef51d0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00ef51d0   RELOCATION_MATCH PASS   CVtable_012f65ac::`scalar deleting destructor'
+00efb5e0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efb5e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efb5e0.obj; graded the largest function
+00efb5e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efb5e0   RELOCATION_MATCH PASS   CVtable_012f6b3c::`scalar deleting destructor'
+00efefd0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efefd0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00efefd0.obj; graded the largest function
+00efefd0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00efefd0   RELOCATION_MATCH PASS   CVtable_012f6f74::`scalar deleting destructor'
+00f03870   WARN SHARED_HEADER_AVAILABLE CTimer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00f03870.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00f03870.obj; graded the largest function
+00f03870   RELOCATION_MATCH PASS   CVtable_012f7d88::`scalar deleting destructor'
+
+WINS: 47
+  00ce6c10 RELOCATION_MATCH CVtable_012c3b88::`scalar_deleting_destructor'
+  00d0edb0 RELOCATION_MATCH CVtable_012c9918::`scalar_deleting_destructor'
+  00d17310 RELOCATION_MATCH CVtable_012ca6ac::`vector_deleting_destructor'
+  00d26160 RELOCATION_MATCH CVtable_012cb7c4::`vector_deleting_destructor'
+  00d30000 RELOCATION_MATCH CVtable_012cc724::`vector_deleting_destructor'
+  00d52470 RELOCATION_MATCH CVtable_012cf890::`vector_deleting_destructor'
+  00d64370 RELOCATION_MATCH CVtable_012d1a64::`vector_deleting_destructor'
+  00d6b6f0 RELOCATION_MATCH CVtable_012d22b8::`vector_deleting_destructor'
+  00d732c0 RELOCATION_MATCH CVtable_012d29b8::`scalar_deleting_destructor'
+  00d82370 RELOCATION_MATCH CVtable_012d4428::`vector_deleting_destructor'
+  00d896e0 RELOCATION_MATCH CVtable_012d4f84::`vector_deleting_destructor'
+  00d91710 RELOCATION_MATCH CVtable_012d5b70::`vector_deleting_destructor'
+  00d9ffa0 RELOCATION_MATCH CVtable_012d6d28::`scalar_deleting_destructor'
+  00da8480 RELOCATION_MATCH CVtable_012d771c::`scalar_deleting_destructor'
+  00dc8860 RELOCATION_MATCH CVtable_012daa38::`vector_deleting_destructor'
+  00dd92d0 RELOCATION_MATCH CVtable_012dbe68::`scalar_deleting_destructor'
+  00de45e0 RELOCATION_MATCH CVtable_012dd4a0::`vector_deleting_destructor'
+  00def730 RELOCATION_MATCH CVtable_012ddf3c::`vector_deleting_destructor'
+  00dfc260 RELOCATION_MATCH CVtable_012dee4c::`vector_deleting_destructor'
+  00e0e730 RELOCATION_MATCH CVtable_012e00c8::`vector_deleting_destructor'
+  00e1c0c0 RELOCATION_MATCH CVtable_012e10e8::`vector_deleting_destructor'
+  00e26dd0 RELOCATION_MATCH CVtable_012e1f90::`vector_deleting_destructor'
+  00e2ea60 RELOCATION_MATCH CVtable_012e2b00::`scalar_deleting_destructor'
+  00e374f0 RELOCATION_MATCH CVtable_012e34e0::`vector_deleting_destructor'
+  00e3ac40 RELOCATION_MATCH CVtable_012e3ac8::`scalar_deleting_destructor'
+  00e4b1a0 RELOCATION_MATCH CVtable_012e4d88::`scalar_deleting_destructor'
+  00e546a0 RELOCATION_MATCH CVtable_012e5f40::`scalar_deleting_destructor'
+  00e5fcb0 RELOCATION_MATCH CVtable_012e70c8::`scalar_deleting_destructor'
+  00e64f80 RELOCATION_MATCH CVtable_012e7648::`scalar_deleting_destructor'
+  00e74d40 RELOCATION_MATCH CVtable_012e9600::`vector_deleting_destructor'
+  00e7c860 RELOCATION_MATCH CVtable_012ea1f8::`vector_deleting_destructor'
+  00e8d240 RELOCATION_MATCH CVtable_012ebc50::`scalar_deleting_destructor'
+  00e93be0 RELOCATION_MATCH CVtable_012ecb04::`vector_deleting_destructor'
+  00e9a240 RELOCATION_MATCH CVtable_012ed370::`vector_deleting_destructor'
+  00e9e0e0 RELOCATION_MATCH CVtable_012ed6d4::`vector_deleting_destructor'
+  00ea8070 RELOCATION_MATCH CVtable_012ee5a0::`vector_deleting_destructor'
+  00eb6310 RELOCATION_MATCH CVtable_012f00bc::`scalar_deleting_destructor'
+  00ebed70 RELOCATION_MATCH CVtable_012f0ec0::`vector_deleting_destructor'
+  00ec29c0 RELOCATION_MATCH CVtable_012f13f4::`vector_deleting_destructor'
+  00ecd780 RELOCATION_MATCH CVtable_012f243c::`vector_deleting_destructor'
+  00ed54a0 RELOCATION_MATCH CVtable_012f3190::`vector_deleting_destructor'
+  00edc2a0 RELOCATION_MATCH CVtable_012f3e94::`scalar_deleting_destructor'
+  00ee56f0 RELOCATION_MATCH CVtable_012f5194::`vector_deleting_destructor'
+  00ef51d0 RELOCATION_MATCH CVtable_012f65ac::`vector_deleting_destructor'
+  00efb5e0 RELOCATION_MATCH CVtable_012f6b3c::`vector_deleting_destructor'
+  00efefd0 RELOCATION_MATCH CVtable_012f6f74::`vector_deleting_destructor'
+  00f03870 RELOCATION_MATCH CVtable_012f7d88::`scalar_deleting_destructor'

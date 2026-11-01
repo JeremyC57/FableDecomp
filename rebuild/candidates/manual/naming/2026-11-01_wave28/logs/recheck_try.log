@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0073e940   RELOCATION_MATCH PASS   CAnimFilterOfGroup::Accepts
+0073ea00   RELOCATION_MATCH PASS   CAnimFilterOf2Groups::Accepts
+
+WINS: 2
+  0073e940 RELOCATION_MATCH CAnimFilterOfGroup::Accepts
+  0073ea00 RELOCATION_MATCH CAnimFilterOf2Groups::Accepts
