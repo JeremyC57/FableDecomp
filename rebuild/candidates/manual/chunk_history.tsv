@@ -25608,3 +25608,13 @@ chunk	address	module	name	length
 657	007599c0	CTCPhysicsRigidBody	vfunc_74	56
 657	007c75a0	CTCTurncoatSpell	FinalCleanup	60
 657	007c7560	CTCTurncoatSpell	FinalCleanup	60
+658	00aeca80	CCombatWheel	ResetRings	57
+658	00af36c0	CCombatWheel	ResetRings	57
+658	0084c490	CCreatureAction_PlayConversationAnimation	Clone	71
+658	008f5740	CCreatureAction_DragonFlight	Clone	71
+658	00925d90	?A0x29922355::CCreatureAction_KrakenLowAttackLoop	vfunc_11	71
+658	00925e40	?A0x29922355::CCreatureAction_KrakenHighAttackLoop	vfunc_11	71
+658	0083d6d0	CInputProcessManager	~CInputProcessManager	28
+658	0071a570	_Dest_val<std	allocator<CMacro>,CMacro>	44
+658	007dfaf0	CCreatureAction_PerformExpressionExtended	~CCreatureAction_PerformExpressionExtended	43
+658	007e24d0	C3DAnimationBlendState	~C3DAnimationBlendState	35
