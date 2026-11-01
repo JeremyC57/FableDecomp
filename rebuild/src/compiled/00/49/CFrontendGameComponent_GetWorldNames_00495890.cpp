@@ -49,7 +49,8 @@ namespace std {
 struct __false_type { __false_type() {} };
 template <class T> struct less { less() {} };
 template <class It, class Cmp> void __fastcall sort(It first, It last, Cmp comp);   // 0x004977D0 for CWideString*
-template <class T> class vector {
+template <class T> class allocator { };
+template <class T, class A = allocator<T> > class vector {   // naming wave 24: STLport's allocator argument; _M_insert_overflow protected
 public:
     T* _M_start;
     T* _M_finish;
@@ -57,7 +58,9 @@ public:
     T* begin() { return _M_start; }
     T* end() { return _M_finish; }
     T* erase(T* first, T* last);                         // 0x00412450 for CWideString
+protected:
     void _M_insert_overflow(T* pos, const T& x, const __false_type&, unsigned int fillLen, bool atEnd);   // 0x00412330
+public:
     void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {

@@ -1,5 +1,7 @@
 // std::vector<CWideString>::_M_insert_overflow(CWideString* position, const CWideString& x, const __false_type&, unsigned int fillLength, bool atEnd) -- STLport growth path of a wide-string vector: allocate size + max(size, n), copy-construct the head, n copies of x and (unless at the end) the tail, destroy and free the old block
-// Leaf: ?_M_insert_overflow@?$vector@VCWideString@@
+// Leaf: ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
+// Naming (naming wave 24, labels_chunk691): the protected STLport member of vector<CWideString, allocator<CWideString> > (IAE as every
+//   landed _M_insert_overflow; 0x005FD9C0 and 0x00CD3F50 bind it); the row had dropped the allocator argument and made it public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00412330, 280 bytes, thiscall `ret 14h` (position, x, the tag, fillLength, atEnd); /O2.
 // Identity: stride 4 with CWideString's copy constructor 0x0099B720 and destructor 0x0099B510; 28 callers across the
 //   engine (push_back / insert of every vector<CWideString>, 0x00409326 .. 0x00E81C54): one COMDAT. The catalog label
@@ -62,7 +64,8 @@ template <class _ForwardIter> inline void _Destroy(_ForwardIter __first, _Forwar
         _Destroy(&*__first);
 }
 
-template <class _Tp> class vector {
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // naming wave 24: STLport's allocator argument; the member protected
 public:
     typedef _Tp* pointer;
     _Tp* _M_start;
@@ -73,12 +76,13 @@ public:
     _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
     void _M_clear() { _Destroy(_M_start, _M_finish); if (_M_start != 0) free(_M_start); }
     void _M_set(pointer __s, pointer __f, pointer __e) { _M_start = __s; _M_finish = __f; _M_end_of_storage = __e; }
+protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                             bool __atend = false);
 };
 
-template <class _Tp>
-void vector<_Tp>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
+template <class _Tp, class _Alloc>
+void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                                      bool __atend)
 {
     const unsigned int __old_size = size();

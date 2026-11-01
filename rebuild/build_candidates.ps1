@@ -315029,9 +315029,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00412330'
-        Module = 'std::vector<CWideString>'
-        Source = '00/41/stdvectorCWideString_Minsertoverflow_00412330.cpp'
-        TestSource = '00/41/stdvectorCWideString_Minsertoverflow_00412330_test.cpp'
+        Module = 'std::vector<CWideString,std::allocator<CWideString> >'
+        Source = '00/41/stdvectorCWideStringstdallocatorCWideString_Minsertoverflow_00412330.cpp'
+        TestSource = '00/41/stdvectorCWideStringstdallocatorCWideString_Minsertoverflow_00412330_test.cpp'
         PassPattern = '00412330_TEST PASS'
     }
     [pscustomobject]@{
@@ -315043,9 +315043,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004126e0'
-        Module = 'std::vector<CWideString>'
-        Source = '00/41/stdvectorCWideString_Mfillinsert_004126e0.cpp'
-        TestSource = '00/41/stdvectorCWideString_Mfillinsert_004126e0_test.cpp'
+        Module = 'std::vector<CWideString,std::allocator<CWideString> >'
+        Source = '00/41/stdvectorCWideStringstdallocatorCWideString_Mfillinsert_004126e0.cpp'
+        TestSource = '00/41/stdvectorCWideStringstdallocatorCWideString_Mfillinsert_004126e0_test.cpp'
         PassPattern = '004126e0_TEST PASS'
     }
     [pscustomobject]@{

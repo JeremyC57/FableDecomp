@@ -15,6 +15,9 @@
 //   `inline` STLport templates (VC7.1 leaves them out of line here), except __copy_backward_ptrs, which needs a
 //   same-TU noinline body (as plain `inline` VC7.1 inlines it down to a cdecl __copy_backward call, 255 v 256).
 // Model: CWideString is the engine's one-pointer wide-string handle; STLport's three vector words.
+// Naming (naming wave 24): the vector carries STLport's allocator argument and _M_insert_overflow is protected, so the growth call
+//   binds ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAE... (labels_chunk691; was the
+//   allocator-less public spelling); the own row is vector<CWideString, allocator<CWideString> >::_M_fill_insert.
 extern "C" void* __cdecl malloc(unsigned int size);       // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -97,7 +100,8 @@ template <class _ForwardIter> inline void _Destroy(_ForwardIter __first, _Forwar
         _Destroy(&*__first);
 }
 
-template <class _Tp> class vector {
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     typedef _Tp* pointer;
     _Tp* _M_start;
@@ -108,13 +112,15 @@ public:
     _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
     void _M_clear() { _Destroy(_M_start, _M_finish); if (_M_start != 0) free(_M_start); }
     void _M_set(pointer __s, pointer __f, pointer __e) { _M_start = __s; _M_finish = __f; _M_end_of_storage = __e; }
+protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                             bool __atend = false);                                                    // 0x00412330
+public:
     void _M_fill_insert(pointer __position, unsigned int __n, const _Tp& __x);
 };
 
-template <class _Tp>
-void vector<_Tp>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
+template <class _Tp, class _Alloc>
+void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                                      bool __atend)
 {
     const unsigned int __old_size = size();
@@ -134,8 +140,8 @@ void vector<_Tp>::_M_insert_overflow(pointer __position, const _Tp& __x, const _
     _M_set(__new_start, __new_finish, __new_start + __len);
 }
 
-template <class _Tp>
-void vector<_Tp>::_M_fill_insert(pointer __position, unsigned int __n, const _Tp& __x)
+template <class _Tp, class _Alloc>
+void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, unsigned int __n, const _Tp& __x)
 {
     if (__n != 0) {
         if ((unsigned int)(this->_M_end_of_storage - this->_M_finish) >= __n) {

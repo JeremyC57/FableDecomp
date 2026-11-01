@@ -62,7 +62,9 @@ public:
     }
     _Tp* begin() { return _M_start; }
     _Tp& operator[](unsigned int __n) { return *(begin() + __n); }
-    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);   // 0x00412330 (CWideString)
+protected:
+    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);   // 0x00412330 (CWideString; protected, naming wave 24)
+public:
     void push_back(const _Tp& __x)
     {
         if (_M_finish != _M_end_of_storage) {
