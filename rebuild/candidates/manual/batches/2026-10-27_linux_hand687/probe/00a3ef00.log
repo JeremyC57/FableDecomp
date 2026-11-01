@@ -1,0 +1,1 @@
+3 p1 full model (STLport list/vector ctors, inline LowestSetBit, setup record ctor) 561v561: store order of setup +0xc/+8, jb/jl; p2 unsigned loop index; p3 setup assignments in retail order (MaxSounds, MaxVoices, Scale, Flags, MemoryBudget) -> RELOCATION_MATCH

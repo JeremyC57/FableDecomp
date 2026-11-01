@@ -1,0 +1,1 @@
+1 do/while(0) chain over the 24 setters + 9 landed ecx-keeping setter bodies noinline in the TU -> RELOCATION_MATCH

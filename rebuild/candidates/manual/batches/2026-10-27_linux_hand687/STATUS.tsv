@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c04020	MATCH	563	PASS	zlib 1.2.1 trees.c gen_bitlen (toolchain-era vendor source, the landed trees.c TU), /GS
+00cb09a0	RELOCATION_MATCH	520	PASS	DirectShow strmbase wxutil.cpp WaitDispatchingMessages, SDK text verbatim
+00c68d70	RELOCATION_MATCH	542	PASS	CEaxContext::SetReverbAllParameters (EAX 4.0 software context), nine same-TU setter bodies
+00ca2480	RELOCATION_MATCH	542	PASS	libvorbis 1.0.1 floor1.c inspect_error (static, VC7.1 private convention), vendor text verbatim
+00a3ef00	RELOCATION_MATCH	561	PASS	CSoundManagerLH::CSoundManagerLH (RTTI vtable 0x0129D2C4 + landed base ctor / dtor layout)
+00a0f4b0	RELOCATION_MATCH	1462	PASS	std::deque<C2DVector>::_M_insert_aux -- EXTENT FIX: the chunk row (570) + 0x00A0F6EA + 0x00A0F98B are one 1462-byte function; matched against tmp/00a0f4b0_oracle_full.tsv (bin/qo.py); vland/gall report DIFFER(1462v570) against the chunk oracle
+00aca5f0	RELOCATION_MATCH	570	PASS	QuadricOptimiserInternals::COptimisedVertex::LimitGroupCount (PDB), /Gr, same-TU non-leaking vector bodies
+00c61d10	DIFFER	579v581	-	parked: CAmbientEvent::Trigger (libpk ambient), tail scheduling of the Play call's pushes vs the height x87 chain (31 probes + flag sweep)
+00c733d0	DIFFER	610v610	-	parked: CAudioSource::ApplySoftware (OpenAL), register choice only (flags in ebx vs sample) (13 probes)
+00c73af0	DIFFER	671v672	-	parked: libpk CDecompressorInterface.cpp stream factory, block layout only (epilogue placed after the type-0 arm) (13 probes + flag sweep)

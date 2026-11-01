@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00c61d10	DIFFER	579v581	-	parked: CAmbientEvent::Trigger (libpk ambient), tail scheduling of the Play call's pushes vs the height x87 chain (31 probes + flag sweep)
+00c733d0	DIFFER	610v610	-	parked: CAudioSource::ApplySoftware (OpenAL), register choice only (flags in ebx vs sample) (13 probes)
+00c73af0	DIFFER	671v672	-	parked: libpk CDecompressorInterface.cpp stream factory, block layout only (epilogue placed after the type-0 arm) (13 probes + flag sweep)

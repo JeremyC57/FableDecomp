@@ -149,3 +149,6 @@ address	pool	module	name	length	class	action	new_length	evidence
 0087bf40	chatgpt10	NCameraModes::CRotateAround	OnInit	6	TRUNCATED	len	295	chunk 680: true extent 0x0087BF40..0x0087C066 (ret, then int3 to 0x0087C070); the 6-byte span was a reserved-row defect; byte-exact at 295
 00854b90	chatgpt10	CCreatureAction_SpiritAttack	FrameUpdate	21	TRUNCATED	len	566	chunk 680: true extent 0x00854B90..0x00854DC5 (next row 0x00854DD0); byte-exact at 566
 00863ca0	chatgpt10	CThingBodyReorienter	FillBodyReorientationPossibleIntersecting	53	TRUNCATED	len	358	chunk 680: true extent 358 bytes (next row 0x00863E10); parked DIFFER 358v358 at that extent
+00a0f4b0	never	_global	RenderList_ProcessLargeInsert	570	TRUNCATED	len	1462	chunk 687: std::deque<C2DVector>::_M_insert_aux is one function 0x00A0F4B0..0x00A0FA66 (single epilogue); the catalog split it into three rows
+00a0f6ea	never	_global	Deque_InsertRange	673	MIDSTART	skip	673	chunk 687: not a function start, inside 00a0f4b0 (_M_insert_aux, 1462); row removed from the manifest and catalog
+00a0f98b	never	_global	Deque_InsertRangeReverse	219	MIDSTART	skip	219	chunk 687: not a function start, inside 00a0f4b0 (_M_insert_aux, 1462); row removed from the manifest and catalog

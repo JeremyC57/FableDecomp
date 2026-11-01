@@ -374040,6 +374040,57 @@ $catalog = @(
         TestSource = '00/cb/std_introsortloop_00cbdad0_test.cpp'
         PassPattern = '00cbdad0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a0f4b0'
+        Module = 'std::deque<C2DVector>'
+        Source = '00/a0/stddequeC2DVector_Minsertaux_00a0f4b0.cpp'
+        TestSource = '00/a0/stddequeC2DVector_Minsertaux_00a0f4b0_test.cpp'
+        PassPattern = '00a0f4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3ef00'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_CSoundManagerLH_00a3ef00.cpp'
+        TestSource = '00/a3/CSoundManagerLH_CSoundManagerLH_00a3ef00_test.cpp'
+        PassPattern = '00a3ef00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aca5f0'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedVertex_LimitGroupCount_00aca5f0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedVertex_LimitGroupCount_00aca5f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00aca5f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c04020'
+        Module = '_global'
+        Source = '00/c0/global_genbitlen_00c04020.cpp'
+        TestSource = '00/c0/global_genbitlen_00c04020_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c04020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c68d70'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetReverbAllParameters_00c68d70.cpp'
+        TestSource = '00/c6/CEaxContext_SetReverbAllParameters_00c68d70_test.cpp'
+        PassPattern = '00c68d70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca2480'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_inspecterror_00ca2480.cpp'
+        TestSource = '00/ca/libvorbis_inspecterror_00ca2480_test.cpp'
+        PassPattern = '00ca2480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb09a0'
+        Module = '_global'
+        Source = '00/cb/global_WaitDispatchingMessages_00cb09a0.cpp'
+        TestSource = '00/cb/global_WaitDispatchingMessages_00cb09a0_test.cpp'
+        PassPattern = '00cb09a0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

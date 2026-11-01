@@ -1,0 +1,27 @@
+p1 DIFFER(573v581) first model (zone +0x44 position / +0x4c cube offsets off by 4, origin pair on the zone, volume test `> 0.0f` = jne, product order, direct height store)
+p2 DIFFER(575v581) offsets fixed (origin pair is scene+0x40), `if (GetVolume() <= 0.0f) return` = jnp, `spread * (rand*k)` product order, height accumulated from the Evaluate result
+p3 DIFFER(575v581) 3-float jittered local (x, y, z): frame layout now retail's (pos +0x10, pair temp / range +0x18, xyz +0x20, params +0x2c)
+p4 DIFFER(575v581) by-reference SetPosition setter, `(range.y - range.x) * (rand*k)` order
+p5 DIFFER(575v581) pointer-based setter (VC still forwards the z value into the params store)
+p6 DIFFER(575v581) inline AddZ member on the local
+p7 DIFFER(575v581) float xyz[3] array
+p8 DIFFER(577v581) the height stored into the params' +0x48 long as float bits (*(long*)&xyz[2]): retail's fstp / mov eax / mov pattern appears
+p9 DIFFER(583v581) separate address-taken float height local (lands in the argument slot)
+p10 DIFFER(577v581) m_4c store before SetPosition
+p11 DIFFER(575v581) owner store before the x/y stores
+p12 DIFFER(577v581) x/y as one SPosition2D struct copy
+p13 DIFFER(575v581) inline FloatToDWord(float) helper (forwarded again)
+p14 DIFFER(583v581) explicit `long bits` local
+p15 DIFFER(575v581) union-based FloatToDWord helper
+p16 DIFFER(575v581) SetHeight(expr) inside the Play argument list
+p17 DIFFER(583v581) SetPosition(x, y, expr) inside the Play argument list
+p18 DIFFER(572v581) x/y/4c stores before the z chain, owner after
+flags /G5 /G7 /G4 /G3 /Oa /Op /Oi /Ow on p8: 577 / 610 / 577 / 577 / 543 / 639 / 577 / 577
+p24 DIFFER(577v581) table pointer local before Play
+p25 DIFFER(577v581) sound pointer local before Play
+p26 DIFFER(577v581) 3-float struct with the reinterpret on z
+p28 DIFFER(577v581) memcpy of the float bits
+p29 DIFFER(579v581) scene pointer local taken after the x line: the middle register pattern matches; residue = the tail scheduling (pushes interleaved with the z chain)
+p30 DIFFER(579v581) inline no-op between the stores and the call
+p31 DIFFER(579v581) inline GetSound() accessor
+flags /O1 /Os /Ot /Ob1 /Og- /Oy- /Gy /GB on p29: 496 / 496 / 579 / 579 / 642 / 504 / 579 / 579 -- parked at p29

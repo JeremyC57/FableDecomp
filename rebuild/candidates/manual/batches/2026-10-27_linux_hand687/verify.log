@@ -1,0 +1,34 @@
+addr       parity           behav  name
+00a0f4b0   WARN RELOC_NAME: ??$copy_backward@U?$_Deque_iterator@VC2DVector@@U?$_Nonconst_traits@VC2DVector@@@std@@@std@@U12@@std@@YI?AU?$_Deque_iterator@VC2DVector@@U?$_Nonconst_traits@VC2DVector@@@std@@@0@U10@00@Z -> 00a0ef90 labelled 'std::copy_backward<std::_Deque_iterator<C2DVector,std::_Nonconst_traits<C2DVector> >,std::_Deque_iterator<C2DVector,std::_Nonconst_traits<C2DVector> > >'
+00a0f4b0   RELOCATION_MATCH PASS   _M_insert_aux
+00a3ef00   WARN RELOC_NAME: ?SetSoundAllocator_00c08cf0@@YGXPAVCAllocator@LHA@@@Z -> 00c08cf0 labelled '_global::CdeclCall_ProcessEvent_00c08cf0'
+00a3ef00   WARN RELOC_NAME: ?SetSoundTempAllocator_00c08d00@@YGXPAVCAllocator@LHA@@@Z -> 00c08d00 labelled '_global::CdeclCall_ProcessEvent_00c08d00'
+00a3ef00   WARN RELOC_NAME: ?SetSoundPhysicalAllocator_00c08d10@@YGXPAVCAllocator@LHA@@@Z -> 00c08d10 labelled '_global::CdeclCall_ProcessEvent_00c08d10'
+00a3ef00   WARN RELOC_NAME: ?CreateSoundSystem_00c096e0@@YGPAUCSoundSystem@@PAUCSoundSystemSetup@@@Z -> 00c096e0 labelled 'CWorldManager::InitializeSteeringAfterSave'
+00a3ef00   WARN RELOC_NAME: ??0CSoundSystemConfig@@QAE@XZ -> 00c08800 labelled 'NScript::CGameflowAssistanceScript::Init'
+00a3ef00   WARN RELOC_NAME: ?SetChannel_00c087c0@CSoundSystemConfig@@QAEXK_N@Z -> 00c087c0 labelled 'CMainGameComponent::BeginInputLoading'
+00a3ef00   RELOCATION_MATCH PASS   CSoundManagerLH
+00aca5f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKM@std@@U?$_Select1st@U?$pair@$$CBKM@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 00ad14e0 labelled '_unattributed::FreeTree_CTreeOwner_00ad14e0'
+00aca5f0   RELOCATION_MATCH PASS   LimitGroupCount
+00c04020   MATCH            PASS   gen_bitlen
+00c68d70   RELOCATION_MATCH PASS   SetReverbAllParameters
+00ca2480   RELOCATION_MATCH PASS   inspect_error
+00cb09a0   RELOCATION_MATCH PASS   WaitDispatchingMessages
+
+WINS: 7
+  00a0f4b0 RELOCATION_MATCH std::deque<C2DVector>::?_M_insert_aux@
+  00a3ef00 RELOCATION_MATCH CSoundManagerLH::??0CSoundManagerLH@@QAE@ABUCSoundManagerInit@@_N@Z
+  00aca5f0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedVertex::?LimitGroupCount@COptimisedVertex@QuadricOptimiserInternals@@QAEXK@Z
+  00c04020 MATCH _global::_gen_bitlen
+  00c68d70 RELOCATION_MATCH CEaxContext::?SetReverbAllParameters@CEaxContext@@QAEJKPBUEAXREVERBPROPERTIES@@@Z
+  00ca2480 RELOCATION_MATCH libvorbis::_inspect_error@28
+  00cb09a0 RELOCATION_MATCH _global::?WaitDispatchingMessages@@
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  stddequeC2DVector_Minsertaux_00a0f4b0
+  CSoundManagerLH_CSoundManagerLH_00a3ef00
+  QuadricOptimiserInternalsCOptimisedVertex_LimitGroupCount_00aca5f0
+  global_genbitlen_00c04020
+  CEaxContext_SetReverbAllParameters_00c68d70
+  libvorbis_inspecterror_00ca2480
+  global_WaitDispatchingMessages_00cb09a0

@@ -1,0 +1,10 @@
+p1 DIFFER(566v570) local vector, reserve(Groups.size()), count read after sort, groups[i] indexing: frame 0x14 (count not homed), temp CGroup half-homed, no zero register
+p2 DIFFER(547v570) count declared first and passed to reserve: count kept in ebp, no spill, second loop reloads the vector base each iteration
+p3 DIFFER(547v570) p2 with a named loop-scope CGroup temp
+p4 DIFFER(547v570) p2 with same-TU bodies for reserve/growth/sort (reserve called _M_allocate_and_copy as a member -> this still escapes)
+p5 DIFFER(566v570) p1 with the growth stand-in reading both words of x
+p6 DIFFER(547v570) p5 with two counters (count, newCount) at the top: VC merges them, same as p2
+p7 DIFFER(568v570) count at the top, Groups.size() re-read in reserve and the if: frame still 0x14, if re-reads this+0xa0
+p8 DIFFER(561v570) p7 + `CGroup* first = groups.begin()` taken before the sort and used by all loops: frame 0x18, count homed at +0x10, zero register ebx
+p9 DIFFER(574v570) p8 + two counters (count compared, newCount reassigned in the if): all registers as retail; residue = _M_finish re-read after the element copy and _M_start re-read for the destructor (vector treated as escaped)
+p10 RELOCATION_MATCH p9 + same-TU reserve body that does not let `this` escape (allocate/copy/free inline, no member call): VC7.1 then keeps the local vector unaliased across the sort and the map inserts

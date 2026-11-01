@@ -1,0 +1,13 @@
+p1 DIFFER(622v610) landed CAudioContext model with header-defined GetProcAddress / EAXSetSource bodies, `while (pitch > 0)` retry loop: inlining pattern already retail's (GetProcAddress inlined inside the loop only, EAXSetSource at both sites)
+p2 DIFFER(610v610) do { if (pitch <= 0) break; ... } while (GetError() == AL_INVALID_VALUE): loop rotation as retail; residues = jnp vs jne at the loop head, the 0.8 scale before the GetError resolver, flags/sample register choice
+p3 DIFFER(610v610) flags copied to a local (no change)
+p4 DIFFER(609v610) for-loop form: changes the inliner's decision (GetProcAddress no longer inlined) -- rejected
+p5 DIFFER(610v610) `if (!(pitch > 0.0f)) break` gives retail's jne; comma-scaled condition
+p6 DIFFER(618v610) scale after GetError in the condition (VC follows source order: lands after the call)
+p7 DIFFER(610v610) sample as a const reference parameter
+p8 DIFFER(610v610) GetError split into GetErrorProc() (the lazy resolve) + the scale + the call: the loop now matches retail exactly; residue = register choice only (flags in ebx vs sample)
+p9 DIFFER(610v610) address-taken sample dummy (eliminated by VC)
+p10 DIFFER(672v610) extra flag/EAX use (experiment, rejected)
+p11 DIFFER(610v610) `CAudioObject* const sample`
+p12 DIFFER(610v610) by-value 4-byte handle parameter with inline operator->
+p13 DIFFER(610v610) direct g_AudioContext uses instead of the reference local -- parked at p8

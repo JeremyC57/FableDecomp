@@ -1,0 +1,14 @@
+p1 DIFFER(671v672) factory with a CString temporary for the extension classifier, early returns per type, the libpk PK_REPORT_ERROR macro (CString over the nil buffer, << chain, hook, CDebugBreak), the tone frequency ((rand*k)+1)*440: all arms match; residue = block layout (retail: type-0 arm, epilogue, then the type-1 / type-2 arms)
+p2 DIFFER(673v672) single `result` variable + if/else-if chain (adds retail's early xor eax,eax, same layout residue)
+p3 DIFFER(670v672) switch (dense cases -> dec chain, rejected)
+p4 DIFFER(670v672) switch assigning result directly
+p5 DIFFER(673v672) return inside the type-0 arm, chain in else-if
+p6 DIFFER(673v672) nested else { if / else if }
+p7 DIFFER(673v672) else { if (type == 2) }
+p8 DIFFER(673v672) explicit goto past the return (VC still sinks the epilogue to the end)
+p9 DIFFER(672v672) inverted nesting `if (type != 0) { chain; return } A; return` (je, arms reversed)
+p10 DIFFER(673v672) do { } while (0) with breaks
+p11 DIFFER(673v672) for (;;) with breaks
+p12 DIFFER(671v672) returns in every arm inside else
+p13 DIFFER(681v672) else return 0
+flags /O1 /Os /Ot /Ob1 /Og- /Oy- /Oa /Ow /G5 /G7 /GB /Gy on p2: 573 / 573 / 673 / 673 / 885 / 608 / 673 / 673 / 673 / 673 / 673 / 673 -- parked at p1
