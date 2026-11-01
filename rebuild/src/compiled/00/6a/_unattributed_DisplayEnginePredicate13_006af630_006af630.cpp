@@ -1,5 +1,8 @@
-// _unattributed::DisplayEnginePredicate13_006af630() -- tail-calls virtual slot 13 of the display engine returned by CViewBase::GetDisplayEngine (a bool predicate); owner unknown
+// _unattributed::DisplayEnginePredicate13_006af630() -- tail-calls virtual slot 13 of the world returned by CTCBase::PeekWorld (a bool predicate); owner unknown
 // Leaf: ?DisplayEnginePredicate13_006af630@_unattributed@@
+// Naming wave 25 (DECISIONS_W24_RESOLVED item 7): 0x00686A80 is ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r / FableWin, 16 bytes after
+//   GetWorld; ~100 landed rows bind it), so the object whose slot 13 (+0x34) this tail-calls is the const CWorld; the owner class stays
+//   descriptive (_unattributed), now deriving from the empty-base CTCBase the landed PeekWorld rows model. Was CViewBase::GetDisplayEngine.
 // Renamed (fistp pass, 2026-10-24) from CThingTrackNode::DrawIsDrawable @ 00/6a/CThingTrackNode_CThingTrackNodeDrawIsDrawableb_006af630.cpp: not in any vtable; its three callers (0x00880205 in NUISystem::CSpellContainerList::AddChild, 0x0088022C/0x0088024E in CTCPhysicsBase::HasCollidedWithLandscapeAt) carry propagated labels themselves; descriptive name, module _unattributed
 // (was: _unattributed::DisplayEnginePredicate13_006af630 @ 0x006af630)
 // Retail (12 bytes):
@@ -16,25 +19,26 @@
 //
 // Build: cl /c /O2 /Oy /W3
 
-class CDisplayEngine { public:
+class CWorld { public:
     // Only the vtable layout matters for byte parity: 13 unused virtual slots
     // (0x00..0x30) ahead of the bool predicate at slot 0x34.
     virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
     virtual void v10(); virtual void v14(); virtual void v18(); virtual void v1c();
     virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
     virtual void v30();
-    virtual bool v34(); // slot 0x34: the predicate this thunk tail-calls
+    virtual bool v34() const; // slot 0x34: the predicate this thunk tail-calls
 };
 
-struct CViewBase {
-    CDisplayEngine *GetDisplayEngine();
+class CTCBase {
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80
 };
 
-struct _unattributed : CViewBase {
+struct _unattributed : CTCBase {
     bool DisplayEnginePredicate13_006af630();
 };
 
 bool _unattributed::DisplayEnginePredicate13_006af630()
 {
-    return GetDisplayEngine()->v34();
+    return PeekWorld().v34();
 }

@@ -3,6 +3,8 @@
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E00D0, 858 bytes, plain `ret`.
+// Naming wave 25 (DECISIONS_W24_RESOLVED item 7): 0x00686A80 is ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r / FableWin), declared on
+//   the CTCBase base (was CTCTeleporter::GetWorld returning CWorld*); the two reads (Paused, TeleportingEnabled) go through the const CWorld&.
 // Callees: CTCBase getters 0x00686A80 (world) / 0x00686D30 (world map) / 0x00686D20 / 0x00686D40 / 0x00686D50 (labels
 //   "CViewBase::GetDisplayEngine" are propagated); CPlayerManager getters 0x00449960 / 0x00449970; CPlayer::GetPControlledCreature
 //   0x00487DC0; CTCTeleporter::StartTeleporting 0x007DFF90; CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / the current
@@ -159,6 +161,7 @@ struct CTeleporterDefPointer {
 class CTCBase { public:
     virtual void v00();
 protected:
+    const CWorld& PeekWorld() const;                    // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r / FableWin)
     CPlayerManager& GetPlayerManager();                 // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ (Ego_r / FableWin)
 };
 class CTCTeleporter : public CTCBase { public:
@@ -170,7 +173,6 @@ class CTCTeleporter : public CTCBase { public:
     bool HeroInsideRadius;                              // +0x12
     CIntelligentPointer<CThing> PParticle;                      // +0x13
     bool WaitingForTutorialToFinish;                    // +0x1b
-    CWorld* GetWorld();                                 // 0x00686A80
     CRegionManager* GetRegionManager();                 // 0x00686D20
     CWorldMap* GetWorldMap();                           // 0x00686D30
     CPlayerManager* GetPlayerManager2();                // 0x00686D50
@@ -182,7 +184,7 @@ class CTCTeleporter : public CTCBase { public:
 void CTCTeleporter::FrameUpdate()
 {
     if (WaitingForTutorialToFinish) {
-        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().TutorialShowing || GetWorld()->Paused)
+        if (CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().TutorialShowing || PeekWorld().Paused)
             return;
         WaitingForTutorialToFinish = false;
         CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer_00449960()->GetPControlledCreature();
@@ -207,7 +209,7 @@ void CTCTeleporter::FrameUpdate()
         return;
     if (!GetRegionManager()->IsMapLoaded(ParentThing->RegionMapIndex))
         return;
-    if (GetWorld()->TeleportingEnabled) {
+    if (PeekWorld().TeleportingEnabled) {
     CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (IS_THING_ALIVE(hero)) {
         const C3DVector& myPos = ParentThing->GetPos();
