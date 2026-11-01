@@ -67,7 +67,6 @@ class CCreatureAction_StabbedToDeath : public CCreatureActionBase
 {
 public:
     CCreatureAction_StabbedToDeath(CThingCreatureBase& creature, bool unknown);
-    ~CCreatureAction_StabbedToDeath();
 private:
     unsigned char storage[0xA8];
 };

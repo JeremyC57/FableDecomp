@@ -80,9 +80,8 @@ class CCharString { public:
 };
 
 class CCreatureActionBase { public:
-    virtual void v00();
+    virtual ~CCreatureActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00693EF0
     unsigned char _body[0xA4];
-    ~CCreatureActionBase();                          // 0x00693EF0
 };
 class CThingCreatureBase;
 class CCreatureAction_PlayIntoLoopOutOfAnimation : public CCreatureActionBase { public:

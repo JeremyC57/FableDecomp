@@ -33,13 +33,13 @@ struct CCountedPointer {
     }
 };
 
-class CPhysicsMeshInfo { public:
-    unsigned char _body[0xa8];
-    ~CPhysicsMeshInfo();                             // 0x00693EF0
+class CCreatureActionBase { public:   // CCreatureActionBase (Ego_r.pdb ??1CCreatureActionBase@@UAE@XZ; was stand-in CPhysicsMeshInfo, naming wave 15)
+    unsigned char _body[0xa4];   // +0x04 (vptr at +0x00)
+    virtual ~CCreatureActionBase();                             // 0x00693EF0
 };
 
 struct SPairCPhysicsMeshInfoCountedPointer_006a08f0 {
-    CPhysicsMeshInfo first;                          // +0
+    CCreatureActionBase first;                          // +0
     CCountedPointer second;                // +0xa8
 };
 

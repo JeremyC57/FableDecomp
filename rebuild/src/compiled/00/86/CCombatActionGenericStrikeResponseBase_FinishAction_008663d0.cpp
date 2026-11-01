@@ -20,7 +20,7 @@
 #define __forceinline inline __attribute__((always_inline))
 #endif
 struct Creature;
-class CCreatureActionBase { public:void* __vftable;unsigned char NativeActionState[0xa4];~CCreatureActionBase();}; //00693EF0; opaque native state constructed externally, no local field accesses.
+class CCreatureActionBase { public:void* __vftable;unsigned char NativeActionState[0xa0];virtual ~CCreatureActionBase();}; //00693EF0; opaque native state constructed externally, no local field accesses.   // +0x04 (vptr at +0x00)
 class CCreatureAction_BeStunned:public CCreatureActionBase { public:bool Flip;CCreatureAction_BeStunned(Creature&,bool);}; //00865940
 class CCreatureAction_AlertToPlayer:public CCreatureActionBase { public:CCreatureAction_AlertToPlayer(Creature&);}; //00865A00; PDB sizeB4 same as donor base.
 class CTCCreatureModeManager { public:class CModeBase { public:virtual ~CModeBase();virtual unsigned long GetType()const;};CModeBase& GetCurrentMode()const;}; //0073A6E0; GetType genuine mode slot1
