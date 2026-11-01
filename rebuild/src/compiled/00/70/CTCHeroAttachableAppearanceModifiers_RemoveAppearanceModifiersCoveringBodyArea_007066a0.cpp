@@ -4,7 +4,7 @@
 // `?RemoveAppearanceModifiersCoveringBodyArea@CTCHeroAttachableAppearanceModifiers@@QAEXJW4EHeroAttachableAppearanceModifierType@@@Z`.
 // Callees: malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (the local STLport list<long>), CTCBase::GetDefinitionManager @ 0x006869D0,
 // CDefinitionManager::GetDef<CThingObjectDef> @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef> @ 0x0057FF92,
-// RemoveAppearanceModifier(long) @ 0x00706370, CTCBase::GetWorld @ 0x00686A80, the world frame getter @ 0x0049D870 (static).
+// RemoveAppearanceModifier(long) @ 0x00706370, CTCBase::PeekWorld @ 0x00686A80, the world frame getter @ 0x0049D870 (static).
 // Layout: as the landed RemoveAllAppearanceModifiers 0x00706640 (local model; retail 12-byte containers): FrameLastChanged +0x10,
 // AppearanceModifiers +0x30 (vector< vector<CModifierEntry{DefIndex, Rendered}> >). CAppearanceModifierDef CoversBodyAreaFlags
 // +0x40 (Ego_r.pdb +0x48 less two 4-byte container shrinks).
@@ -16,8 +16,8 @@ extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
 class CThing;
-struct CWorld_Calls {
-    static long __fastcall GetFrame();                  // 0x0049D870
+class CWorld { public:
+    static long __fastcall GetFrame();                  // 0x0049D870 (Ego_r ?GetFrame@CWorld@@SIJXZ; naming wave 24, was CWorld_Calls)
 };
 struct CModifierEntry {
     long DefIndex;
@@ -135,8 +135,8 @@ class CTCBase { public:
     CThing* ParentThing;
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
-    CWorld_Calls& GetWorld() const;                     // 0x00686A80
 protected:
+    const CWorld& PeekWorld() const;                    // 0x00686A80 (Ego_r.pdb ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ; naming wave 24, was GetWorld)
     const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb CTCBase, protected)
 };
 typedef long EHeroAttachableAppearanceModifierType;
@@ -178,5 +178,5 @@ void CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifiersCoveringBody
     }
     for (SLongNode* node = toRemove._M_node->_M_next; node != toRemove._M_node; node = node->_M_next)
         RemoveAppearanceModifier(node->_M_data);
-    FrameLastChanged = GetWorld().GetFrame();
+    FrameLastChanged = PeekWorld().GetFrame();
 }
