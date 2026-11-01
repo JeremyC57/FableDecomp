@@ -1,4 +1,6 @@
 // CDefinitionManager::CDefinitionManager(const CWideString& compiledFileName, void (*errorCallback)(CCharString*)) -- the definition manager: CResourceList root, empty path lists / symbol-map pointers / vector maps / arrays, the error callback, an empty current filename, the compiled file name = the compiled-defs directory + the argument, the empty recompiled-defs map, two fresh CSymbolMaps (the symbol map seeded with the "NULL" symbol and finalised), and the +0x34 word cleared
+// Naming wave 27 (family sym, chunk 695): CSymbolMap::UpdateDirty() const 0x009E5C30 (Ego_r.pdb + FableWin.pdb
+//   ?UpdateDirty@CSymbolMap@@QBEXXZ); was an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B0470, length 368 bytes (+ int3 padding), `ret 8`. Vtable 0x0129B28C (CDefinitionManager).
 // Callees: CResourceList::CResourceList @ 0x009FC570 (the base), CCharString::CCharString() @ 0x0099E4B0, operator+(const CWideString&,
 // const CWideString&) @ 0x0099BE70 (`__fastcall`, hidden result pointer in ecx, left operand in edx: the global 0x013CA7DC), malloc
@@ -78,7 +80,7 @@ class CSymbolMap { public:                                    // 0x24 bytes
     unsigned char _body[0x24];
     CSymbolMap();                                      // 0x009E5200
     void AddSymbolDirty(const CCharString& name, long value);   // 0x009E5420
-    void Finalise();                                   // 0x009E5C30
+    void UpdateDirty() const;                          // 0x009E5C30 (Ego_r.pdb / FableWin.pdb)
 };
 struct SCountBlock;
 template <class T> class CCountedPointer { public:
@@ -127,6 +129,6 @@ CDefinitionManager::CDefinitionManager(const CWideString& compiledFileName, void
         CCharString nullName("NULL");
         PSymbolMap->AddSymbolDirty(nullName, 0);
     }
-    PSymbolMap->Finalise();
+    PSymbolMap->UpdateDirty();
     m_resourceCount = 0;
 }

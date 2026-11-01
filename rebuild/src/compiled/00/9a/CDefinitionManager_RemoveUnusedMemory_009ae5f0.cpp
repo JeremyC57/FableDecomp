@@ -1,5 +1,8 @@
 // CDefinitionManager::RemoveUnusedMemory() -- shrink every container the manager owns to its used size: the instantiated-def table, the definition symbol map, each def class's global index list and each instantiated def's sub-def table
-// Leaf: RemoveUnusedMemory
+// Leaf: ?RemoveUnusedMemory@CDefinitionManager@@IAEXXZ
+// Naming wave 27 (family sym, chunk 695): the symbol map's call is CSymbolMap::DeallocateUnusedMemory 0x009E5350 (Ego_r.pdb +
+//   FableWin.pdb; was ?RemoveUnusedMemory@CSymbolMap, no such member), and RemoveUnusedMemory itself is protected (IAE, both PDBs;
+//   the spelling 0x009B08C0 binds). Was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009AE5F0, length 182 bytes (+ int3 padding), `ret`.
 // Callees: CArray<T>::DeallocateUnusedMemory instantiations -- CArray<CInstantiatedDefInfo*> @ 0x009B6EB0, CArray<ulong>
 // @ 0x009B6E00, CArray<pair<ulong, CDefClassBase::CSubDefInfo>> @ 0x009B79B0 (catalog labels name them after other
@@ -21,7 +24,7 @@ template <class T> class CArray { public:                 // retail 12 bytes
     void DeallocateUnusedMemory();
 };
 class CSymbolMap { public:
-    void RemoveUnusedMemory();                     // 0x009E5350
+    void DeallocateUnusedMemory();                 // 0x009E5350 (Ego_r.pdb / FableWin.pdb)
 };
 struct CSubDefInfo { unsigned long a, b; };        // CDefClassBase::CSubDefInfo
 struct SSubDefEntry { unsigned long Key; CSubDefInfo Info; };   // pair<unsigned long, CSubDefInfo>, 12 bytes
@@ -59,13 +62,14 @@ public:
     SDefClassVector DefClassInfo;                  // +0x78
     unsigned char _pad2[0x24];
     CArray<CInstantiatedDefInfo*> InstantiatedDefs;   // +0xa4
-    void RemoveUnusedMemory();
+protected:
+    void RemoveUnusedMemory();                     // protected (Ego_r.pdb / FableWin.pdb IAE)
 };
 
 void CDefinitionManager::RemoveUnusedMemory()
 {
     InstantiatedDefs.DeallocateUnusedMemory();
-    PDefinitionSymbolMap->RemoveUnusedMemory();
+    PDefinitionSymbolMap->DeallocateUnusedMemory();
     for (unsigned long i = 0; i < DefClassInfo.size(); ++i)
         DefClassInfo[i].Info.GlobalIndices.DeallocateUnusedMemory();
     for (unsigned long j = 0; j < InstantiatedDefs.size(); ++j)

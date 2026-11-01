@@ -1,6 +1,8 @@
 // CParticleEmitterDatabase::CreateSymbolMap() -- rebuild the symbol map from the emitter map: clear it, add each emitter's upper-cased name with its handle, then finalise the map
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE85F0, length 134 bytes (padded to 144).
 // Leaf: CreateSymbolMap
+// Naming wave 27 (family sym, chunk 695): CSymbolMap::UpdateDirty() const 0x009E5C30 (Ego_r.pdb + FableWin.pdb
+//   ?UpdateDirty@CSymbolMap@@QBEXXZ); was an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
 // Callees: CSymbolMap::Clear @ 0x009E5250 (manifest label "allocator::construct" is propagated), CCharString copy ctor
 // @ 0x0099EC30, CCharString(const char*, long) @ 0x0099EBF0 (the empty literal 0x0122D70E), CCharString::ToUpper() const
 // @ 0x0099EE20 (hidden result), CSymbolMap::AddSymbolDirty(prefix, name, value) @ 0x009E54E0, ~CCharString @ 0x0099EAE0 (x3),
@@ -21,7 +23,7 @@ class CSymbolMap { public:
     unsigned char m_data[0x24];
     void Clear();                                                                   // 0x009E5250
     void AddSymbolDirty(const CCharString& prefix, const CCharString& name, long value);   // 0x009E54E0
-    void Finalise();                                                                // 0x009E5C30
+    void UpdateDirty() const;                                                       // 0x009E5C30 (Ego_r.pdb / FableWin.pdb)
 };
 namespace NParticleEngine {
 class CParticleEmitter { public:
@@ -60,5 +62,5 @@ void CParticleEmitterDatabase::CreateSymbolMap()
         CCharString prefix("", -1);
         SymbolMap.AddSymbolDirty(prefix, name.ToUpper(), it->first);
     }
-    SymbolMap.Finalise();
+    SymbolMap.UpdateDirty();
 }
