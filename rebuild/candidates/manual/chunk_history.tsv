@@ -25812,3 +25812,13 @@ chunk	address	module	name	length
 678	009c01c0	CInputManagerDX	~CInputManagerDX	268
 678	00e57aa0	CParticleEmitter	~CParticleEmitter_MeshFree	265
 678	00df10d0	CParticleEmitter	~CParticleEmitter	285
+681	00e7f210	CParticleEmitter	~CParticleEmitter_ScreenFree	281
+681	00e24c80	CParticleEmitter	~CParticleEmitter_0x24c80	321
+681	00e7b2e0	CV_ExposeMayorScript	~CV_ExposeMayorScript	261
+681	00da2f90	CV_FisticuffsClubScript	~CV_FisticuffsClubScript	283
+681	00ae1a90	CParticleProgram	ExecuteProgram	292
+681	00cf9210	CLadyGreyWifeManagerScript	~CLadyGreyWifeManagerScript	319
+681	00b999f0	CEnginePrimitiveManagerRepeatedStaticMeshes	~CEnginePrimitiveManagerRepeatedStaticMeshes	337
+681	00debcb0	CQ_RansomVictimScript	~CQ_RansomVictimScript	344
+681	00b2d1b0	CEngineSurfaceCompositionManager	~CEngineSurfaceCompositionManager	374
+681	00e46a50	CSystemManager	~CSystemManager	380
