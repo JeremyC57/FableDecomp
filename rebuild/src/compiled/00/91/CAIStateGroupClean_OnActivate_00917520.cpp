@@ -4,7 +4,7 @@
 // Callees: own virtual slot 14 (+0x38, the building; called again for every use), CTCPhysicsBase::GetBoundingInfo
 // (C3DVector*, float*) @ 0x006AF640 on the building's physics (+0x60), CThingBuilding::IsPointInside(const C3DVector&)
 // @ 0x0082D000. Constant: the step 0.5f @ 0x0122F59C.
-// Shape: `if (inside) { C3DVector last; while (inside) { last = pos; pos.Z -= step; } FloorHeight = last.Z; }` -- the
+// Shape: `if (inside) const { C3DVector last; while (inside) { last = pos; pos.Z -= step; } FloorHeight = last.Z; }` -- the
 // pre-test is repeated before the loop, so `last` is read uninitialised when the loop never runs (retail behaviour).
 class C3DVector { public: float X, Y, Z; };
 
@@ -42,7 +42,7 @@ class CThingBuilding
 { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* Physics;                        // +0x60
-    bool IsPointInside(const C3DVector& point);     // 0x0082D000
+    bool IsPointInside(const C3DVector& point) const;     // 0x0082D000
     CDefPointer<CMaterialDef> PeekPMaterial();      // 0x0082D2D0 (by value, hidden pointer)
 };
 

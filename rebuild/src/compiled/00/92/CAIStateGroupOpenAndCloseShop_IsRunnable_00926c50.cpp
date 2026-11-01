@@ -172,7 +172,7 @@ class CTCShop { public:
     unsigned char _pad[0x0c];
     long StockState;                            // +0x0c
     bool IsOpeningHours();                      // 0x00773950
-    bool IsPermanentlyStocked();                // 0x007721A0
+    bool IsPermanentlyStocked() const;                // 0x007721A0
 };
 class CTCShopKeeper { public:
     CTCShop* GetShopTC();                       // 0x00798F50
@@ -187,7 +187,7 @@ class CThingBuilding : public CThing { public:
     unsigned char m_buildingFlags;              // +0xd4 (bit 0: keeper present)
     bool HasOccupants();                        // 0x0082DD90
     bool HasBusyOccupants();                    // 0x0082DE20
-    bool IsPointInside(const C3DVector& position);  // 0x0082D000
+    bool IsPointInside(const C3DVector& position) const;  // 0x0082D000
 };
 struct CThingShopkeeper : CThing {
     unsigned char _pad94[0x168 - 0x94];

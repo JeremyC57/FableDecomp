@@ -35,13 +35,13 @@ public:
 };
 class CThingBuilding {
 public:
-    bool IsPointInside(const C3DVector& pos);   // 0x0082D000
+    bool IsPointInside(const C3DVector& pos) const;   // 0x0082D000
 };
 void* FindRef_CThingBuilding_IsPointInside_2();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingBuilding::IsPointInside(const C3DVector& pos)
+__declspec(noinline) bool CThingBuilding::IsPointInside(const C3DVector& pos) const
 {
     void* p = FindRef_CThingBuilding_IsPointInside_2();
     if (!p)

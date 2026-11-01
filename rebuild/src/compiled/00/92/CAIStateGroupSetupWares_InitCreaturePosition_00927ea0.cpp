@@ -79,7 +79,7 @@ class CTCShop { public:
     void RemoveStockItemsFromShop();            // 0x00773E10
     void StockDisplay();                        // 0x00774C60
     void SetStockState(long state);             // 0x00773C00
-    bool IsPermanentlyStocked();                // 0x007721A0
+    bool IsPermanentlyStocked() const;                // 0x007721A0
 };
 
 class CTCShopKeeper { public:                          // interface type 0x90 component

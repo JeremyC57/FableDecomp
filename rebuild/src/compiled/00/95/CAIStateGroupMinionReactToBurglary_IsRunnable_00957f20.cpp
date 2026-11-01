@@ -115,7 +115,7 @@ struct CThingPos {
     const C3DVector& GetPosition();             // 0x004C73D0
 };
 class CThingBuilding { public:
-    bool IsPointInside(const C3DVector& point); // 0x0082D000
+    bool IsPointInside(const C3DVector& point) const; // 0x0082D000
 };
 struct CHomeOwner {
     unsigned char _pad[0x168];

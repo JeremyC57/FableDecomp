@@ -30,7 +30,7 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
 
 class CThing { public:
-    CDefString GetDefName();                    // 0x004C7CC0
+    CDefString GetDefName() const;                    // 0x004C7CC0
 };
 
 class CBaseObject;

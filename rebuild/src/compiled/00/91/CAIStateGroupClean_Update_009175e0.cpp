@@ -23,7 +23,7 @@ class CThingBuilding { public:
     CTCPhysicsBase* Physics;                    // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    bool IsPointInside(const C3DVector& point); // 0x0082D000
+    bool IsPointInside(const C3DVector& point) const; // 0x0082D000
 };
 class CThing;
 class CCharString { public:

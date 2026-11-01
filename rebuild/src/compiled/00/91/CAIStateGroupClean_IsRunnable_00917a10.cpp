@@ -44,7 +44,7 @@ class CThingBuilding
 { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* Physics;                        // +0x60
-    bool IsPointInside(const C3DVector& point);     // 0x0082D000
+    bool IsPointInside(const C3DVector& point) const;     // 0x0082D000
     CDefPointer<CSimBuildingDef> PeekPSimDefinition();      // 0x0082D2D0 (by value, hidden pointer)
 };
 

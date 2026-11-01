@@ -119,7 +119,9 @@ public:
     bool    Animating;                          // +0x0c
     long    CurrentAnimationPriority;           // +0x10
     CRetailList<CAnimInit> QueuedAnims;         // +0x14
+private:
     void PlayAnimation(const CAnimInit& init, long priority);  // 0x007F8DC0
+public:
     void PlayDefaultAnimation();
 };
 

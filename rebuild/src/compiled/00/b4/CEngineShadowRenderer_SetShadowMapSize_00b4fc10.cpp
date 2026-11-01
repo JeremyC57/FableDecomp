@@ -9,7 +9,9 @@ class CEngineShadowRenderer { public:
     long m_shadowMapWidth;                          // +0x338
     long m_shadowMapHeight;                         // +0x33c
     void OnReleaseDefaultPoolResources();           // 0x00B4B830
+private:
     bool InitialiseTextures();                      // 0x00B4F8E0
+public:
     void SetShadowMapSize(long width, long height);
 };
 

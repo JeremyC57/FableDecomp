@@ -47,10 +47,10 @@ public:
 class CThingBuilding { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* m_pPhysics;                         // +0x60
-    bool IsPointInside(const C3DVector& pos);
+    bool IsPointInside(const C3DVector& pos) const;
 };
 
-bool CThingBuilding::IsPointInside(const C3DVector& pos)
+bool CThingBuilding::IsPointInside(const C3DVector& pos) const
 {
     CTCPhysicsBase* physics = m_pPhysics;
     if (physics && physics->GetPhysicsMesh()) {

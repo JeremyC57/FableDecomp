@@ -55,7 +55,7 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CThingBuilding : public CThing { public:
-    bool IsPointInside(const C3DVector& pos);       // 0x0082D000
+    bool IsPointInside(const C3DVector& pos) const;       // 0x0082D000
     bool IsDoorBlockedBy(CThing* thing);            // 0x0082D9C0
 };
 __forceinline bool IsThingAlive(const CThing* thing) { return thing && !thing->Dead; }

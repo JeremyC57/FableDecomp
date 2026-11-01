@@ -72,7 +72,9 @@ class CTCAnimatingObject : public CTCBase { public:
     long CurrentAnimationPriority;             // +0x10
     void SetCurrentAnimAsManualUpdate();
     void SetFractionComplete(float fraction);
+private:
     void PlayAnimation(const CAnimInit& init, long priority);
+public:
 };
 
 void CTCAnimatingObject::PlayAnimation(const CAnimInit& init, long priority)
