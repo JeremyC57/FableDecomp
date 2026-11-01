@@ -13,7 +13,7 @@ address	symbol	evidence
 0x013B86A0	?g_pMainGameComponent@@3PAVCMainGameComponent@@A	established 2026-10-28 (owner decision list)
 0x013CA828	?GDefStringTable@@3VCDefStringTable@@A	PDB dynamic initializer 'GDefStringTable'; established 2026-10-28
 0x013961E8	?VIRTUAL_SCREEN_WIDTH@@3NA	established 2026-10-31 (chunk 649)
-0x013961F0	?VIRTUAL_SCREEN_HEIGHT@@3NA	PDB name set (3NA); sibling of VIRTUAL_SCREEN_WIDTH; InitVirtualPixels 0x009E21D0 writes it; 2026-11-01
+0x013961F0	?VIRTUAL_SCREEN_HEIGHT@@3NA	Ego_r DATA symbol as read by the Codex pass (batches/2026-10-31_codex_parked50/NAME_RECOVERY.md, DOUBLE_GLOBALS_EGOR.json -- not in this repo); the repo's PDB name lists hold function symbols only, so NOT re-verifiable here; sibling of VIRTUAL_SCREEN_WIDTH (same source); InitVirtualPixels 0x009E21D0 writes both; confirm with a PDB data-symbol dump on the Windows box before wave 14 respells; 2026-11-01
 0x008FCFC0	?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ	Ego_r + FableWin protected const reference getter; 24 landed rows; owner rule 2026-11-01 (retail fidelity): never GetPWorld; 2026-11-01
 0x00414EA0	??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ	FableWin STLport instantiation; callers hold a real std::vector<CCharString>; 2026-11-01
 0x004167C8	?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ	Ego_r name set + body (jmp CWorld::GetFrame 0x0049D870) + callers via g_pMainGameComponent; 2026-11-01

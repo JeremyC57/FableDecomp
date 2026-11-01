@@ -8,7 +8,9 @@ and the wave 13 `scripts/` -- compose13.py, fam_glob.py, fam_gptr.py, hand13/ --
 ## Scope, in this order (name-only unless the decision says re-author; every family rechecked, one commit per family)
 1. GetWorld@CAIStateGroupBase 0x008FCFC0: the 48 non-PDB callers (`runs/` of wave 13 lists them via famrep.py), each modelled as derived
    from CAIStateGroupBase, `GetWorld().` at the use sites; rows whose bytes move -> DEFERRED with the diff.
-2. VIRTUAL_SCREEN_WIDTH / HEIGHT 0x013961E8 / 0x013961F0: 19 + 18 callers to `extern double ...;`.
+2. VIRTUAL_SCREEN_WIDTH / HEIGHT 0x013961E8 / 0x013961F0: 19 + 18 callers to `extern double ...;` -- ONLY if the coordinator has recorded the
+   PDB data-symbol confirmation in ESTABLISHED_SPELLINGS.tsv (the names come from the Codex read of Ego_r data symbols, which this repo
+   cannot re-verify); otherwise DEFERRED. Same gate for PMainGameComponent 0x013B86A0 (DECISIONS_W13_RESOLVED, GetCurrentWorldFrame row).
 3. GetCurrentWorldFrame 0x004167C8 (15 callers, `g_pMainGameComponent->GetCurrentWorldFrame()`); bind 0x0049D870 as `?GetFrame@CWorld@@SIJXZ`.
 4. vector<CCharString> dtor 0x00414EA0: header-based family (54 rows); byte-moving rows -> DEFERRED with the diff.
 5. 0x0070C770: CIVCountedPointeeBase slot 1 is Delete (respell the invented Validate).
