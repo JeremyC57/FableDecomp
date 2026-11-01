@@ -62473,8 +62473,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004da68a'
         Module = 'std::pair<long,CCharString>'
-        Source = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004da68a.cpp'
-        TestSource = '00/4d/CLandscapeBackgroundPatch_vectordeletingdestructor_004da68a_test.cpp'
+        Source = '00/4d/stdpairlongCCharString_scalardeletingdestructor_004da68a.cpp'
+        TestSource = '00/4d/stdpairlongCCharString_scalardeletingdestructor_004da68a_test.cpp'
         PassPattern = 'VDTOR_OK'
     }
     [pscustomobject]@{
@@ -87725,9 +87725,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c2220'
-        Module = '_global'
-        Source = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c2220.cpp'
-        TestSource = '00/9c/CGuiControlTreePane_SortTreeRecursively_009c2220_test.cpp'
+        Module = 'std::_List_base<CDeviceResetCallback*,std::allocator<CDeviceResetCallback*> >'
+        Source = '00/9c/stdListbaseCDeviceResetCallbackstdallocatorCDeviceResetCallback_Listbase_009c2220.cpp'
+        TestSource = '00/9c/stdListbaseCDeviceResetCallbackstdallocatorCDeviceResetCallback_Listbase_009c2220_test.cpp'
         PassPattern = 'PASS_009c2220'
     }
     [pscustomobject]@{
@@ -91155,9 +91155,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00579435'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/57/LTextTreeWalkThrough_BuildTreeArray_00579435.cpp'
-        TestSource = '00/57/LTextTreeWalkThrough_BuildTreeArray_00579435_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,unsigned long>,std::_Select1st<std::pair<const CCharString,unsigned long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,unsigned long> > >'
+        Source = '00/57/stdRbtreeCCharStringstdpairconstCCharStringunsignedlongstdSelect1ststdpairconstC_Merase_00579435.cpp'
+        TestSource = '00/57/stdRbtreeCCharStringstdpairconstCCharStringunsignedlongstdSelect1ststdpairconstC_Merase_00579435_test.cpp'
         PassPattern = 'PASS_00579435'
     }
     [pscustomobject]@{
@@ -166911,9 +166911,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007acc50'
-        Module = '_unattributed'
-        Source = '00/7a/unattributed_FreeTreeCTreeOwner007acc50_007acc50.cpp'
-        TestSource = '00/7a/unattributed_FreeTreeCTreeOwner007acc50_007acc50_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,bool>,std::_Select1st<std::pair<const CCharString,bool> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,bool> > >'
+        Source = '00/7a/stdRbtreeCCharStringstdpairconstCCharStringboolstdSelect1ststdpairconstCCharStri_Merase_007acc50.cpp'
+        TestSource = '00/7a/stdRbtreeCCharStringstdpairconstCCharStringboolstdSelect1ststdpairconstCCharStri_Merase_007acc50_test.cpp'
         PassPattern = '007acc50_TEST PASS'
     }
     [pscustomobject]@{
@@ -168528,9 +168528,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b2ea90'
-        Module = 'CRetailList_CountedPointer'
-        Source = '00/b2/CRetailListCountedPointer_clear_00b2ea90.cpp'
-        TestSource = '00/b2/CRetailListCountedPointer_clear_00b2ea90_test.cpp'
+        Module = 'std::_List_base<CCountedPointer<CCompositeSurfaceCache>,std::allocator<CCountedPointer<CCompositeSurfaceCache> > >'
+        Source = '00/b2/stdListbaseCCountedPointerCCompositeSurfaceCachestdallocatorCCountedPointerCComp_clear_00b2ea90.cpp'
+        TestSource = '00/b2/stdListbaseCCountedPointerCCompositeSurfaceCachestdallocatorCCountedPointerCComp_clear_00b2ea90_test.cpp'
         PassPattern = '00b2ea90_TEST PASS'
     }
     [pscustomobject]@{
@@ -173483,9 +173483,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b7fd00'
-        Module = 'CRetailVector_elem56'
-        Source = '00/b7/CRetailVectorelem56_resize_00b7fd00.cpp'
-        TestSource = '00/b7/CRetailVectorelem56_resize_00b7fd00_test.cpp'
+        Module = 'std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >'
+        Source = '00/b7/stdvectorCTVertexWaterBackgroundstdallocatorCTVertexWaterBackground_resize_00b7fd00.cpp'
+        TestSource = '00/b7/stdvectorCTVertexWaterBackgroundstdallocatorCTVertexWaterBackground_resize_00b7fd00_test.cpp'
         PassPattern = '00b7fd00_TEST PASS'
     }
     [pscustomobject]@{
@@ -279900,9 +279900,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b2ef20'
-        Module = 'CRetailTree_erase00b2ef20'
-        Source = '00/b2/CRetailTreeerase00b2ef20_Erase_00b2ef20.cpp'
-        TestSource = '00/b2/CRetailTreeerase00b2ef20_Erase_00b2ef20_test.cpp'
+        Module = 'std::_Rb_tree<std::pair<long,long>,std::pair<const std::pair<long,long>,CEngineTextureMorph>,std::_Select1st<std::pair<const std::pair<long,long>,CEngineTextureMorph> >,std::less<std::pair<long,long> >,std::allocator<std::pair<const std::pair<long,long>,CEngineTextureMorph> > >'
+        Source = '00/b2/stdRbtreestdpairlonglongstdpairconststdpairlonglongCEngineTextureMorphstdSelect1_Merase_00b2ef20.cpp'
+        TestSource = '00/b2/stdRbtreestdpairlonglongstdpairconststdpairlonglongCEngineTextureMorphstdSelect1_Merase_00b2ef20_test.cpp'
         PassPattern = '00b2ef20_TEST PASS'
     }
     [pscustomobject]@{
