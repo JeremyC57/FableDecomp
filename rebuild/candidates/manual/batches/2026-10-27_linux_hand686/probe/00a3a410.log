@@ -1,0 +1,16 @@
+1 first authoring: find-or-add symbol, size/date/bytes comparison for existing entries, UpdateEntry with the file information as info
+2 STLport vector<char> model (base + alloc proxy; resize(n) -> resize(n, char()))
+3 one bool reused for exists/differs (retail shares [esp+0x12])
+4 vectors declared before the stored-info read (size() not folded across the calls); counted-pointer copy through a local Info
+5 the empty filename as a temporary of the AddEntry call (retail destroys it right after the call)
+6 shared engine/CCountedPointer.h instead of the local counted-pointer model; empty filename in an inner block (landed 0x00B2C4E0 form)
+7 vectors declared after the date check (retail zero-stores follow that branch); resize with a default-argument _Tp() (one inline level)
+8 probe 7 with the local counted-pointer model again (isolates whether the header's inline weight pushes resize out of line)
+9 header text inlined into the TU without the dtor's dead Data = 0 / Info = 0 stores (inline-budget sensitivity test)
+10 probe 9 with the (T*) ctor declared only (does the declined inline attempt eat the budget that resize needs?)
+11 STLport 4.6 erase text: copy (__copy_trivial / memmove) + _Destroy, finish = result
+12 DIAGNOSTIC: __forceinline resize (shows what else differs once resize is expanded; not a landing form)
+13 (still the forceinline diagnostic) empty filename as a call temporary instead of a block local -- slot-order test
+14 probe 11 + #pragma inline_depth(255) (is resize refused for depth?)
+15 (forceinline resize kept) size test written file.Length != GetEntryDataSize(index) (retail loads Length into edi before the call)
+16 (forceinline resize kept) full path bound as a const reference to the returned temporary (slot-order test: retail places it after the if-block temporaries)

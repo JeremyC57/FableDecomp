@@ -1,0 +1,5 @@
+address	status	bytes	test	note
+00b202d0	DIFFER(850v850)	850	-	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformPosToMaintainShape; 18 probes; residue: 9 rotation identity stores hoisted (retail keeps them after the normalisation), pos copy slot 0x14 vs the dead arg slots 0x68, final transform register residency; the division form matched the whole normalisation
+00a3a410	DIFFER(918v920)	918	-	CWADBank::AddFile(const CWideString&); 16 probes; residue: frame-slot order of fullPath / the empty filename / the two CByteVectors, file.Length hoisted into edi; vector::resize needs __forceinline (857v920 without); engine/CCountedPointer.h fixed the register map
+007808b0	DIFFER(1027v923)	1027	-	CTCFlammable::InitialiseFirePoints(); 12 probes; residue: retail inlines the 5-arg CFirePoint ctor at the loop site and calls 0x00781200 at the fallback site (+100 bytes here), T3/T4 temporary slot order, zero register ebp vs ebx
+00b801f0	DIFFER(523v523)	523	-	std::vector<CTVertexSeaBackground>::_M_fill_insert; 12 probes; residue: one load order in the else-branch final fill (x_copy.Z hoisted above X/Y)

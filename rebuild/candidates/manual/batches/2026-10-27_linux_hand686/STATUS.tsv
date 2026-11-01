@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c68a50	RELOCATION_MATCH	798	PASS	libpk CEaxContext::SetEnvironment(unsigned long, unsigned long); 1 probe; same-TU noinline bodies of all 31 setters (landed 00/c6 + agent684 SetEnvironmentSize) give VC the ecx-preservation facts; manifest label CDrawGuildSeal_SetLightProperty wrong
+00a5bba0	RELOCATION_MATCH (retail_asm)	840	PASS	NVectorMath::GFInterpolateVectors; SSE interpolation loop retail ran as inline asm (Retail-asm line, no naked/_emit); Flags /Zi; 4 probes; copy in retail_asm/
+00b202d0	DIFFER(850v850)	850	-	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformPosToMaintainShape; 18 probes; residue: 9 rotation identity stores hoisted (retail keeps them after the normalisation), pos copy slot 0x14 vs the dead arg slots 0x68, final transform register residency; the division form matched the whole normalisation
+00a3a410	DIFFER(918v920)	918	-	CWADBank::AddFile(const CWideString&); 16 probes; residue: frame-slot order of fullPath / the empty filename / the two CByteVectors, file.Length hoisted into edi; vector::resize needs __forceinline (857v920 without); engine/CCountedPointer.h fixed the register map
+007808b0	DIFFER(1027v923)	1027	-	CTCFlammable::InitialiseFirePoints(); 12 probes; residue: retail inlines the 5-arg CFirePoint ctor at the loop site and calls 0x00781200 at the fallback site (+100 bytes here), T3/T4 temporary slot order, zero register ebp vs ebx
+00cbdad0	RELOCATION_MATCH	1010	PASS	std::__introsort_loop<pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>*,...,CCompareString<...>>; 1 probe on the landed 0x00CBD700 model; callers bind the invented IntrosortLoop_00cbdad0
+00a8efa0	MATCH	520	PASS	C3DPrimitive2::ConvertToVBFormatStaticNonBump(CTVertexNormTex1*); 2 probes
+00b801f0	DIFFER(523v523)	523	-	std::vector<CTVertexSeaBackground>::_M_fill_insert; 12 probes; residue: one load order in the else-branch final fill (x_copy.Z hoisted above X/Y)
+00ca4570	RELOCATION_MATCH	398	PASS	libvorbis vorbis_lsp_to_curve (fastcall leaf @vorbis_lsp_to_curve@32); Flags /O2 /Oy /QIfist; 8 probes; manifest Math_ApplyDampeningFilter wrong
+00ac97d0	RELOCATION_MATCH	535	PASS	QuadricOptimiserInternals::COptimisedVertex::RemapGroups(const std::map<unsigned long,unsigned long>&); 12 probes; anyRemapped flag form + full STLport _tree model with inlinable _M_erase

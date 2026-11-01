@@ -1,0 +1,12 @@
+1 first authoring: clear(), GetAllFireHelpers -> map<CCharString,long> counts, GetAllHelperPointNames loop, fallback first helper
+2 + user ctors on the empty tag structs (no zero-init byte stores)
+3 CFirePoint 5-arg ctor inline in the class; insert(make_pair(CCharString(GetString(*helper)), 0L))
+4 less<> user ctor (no comparator zero byte); const CCharString name local; ctor still inline
+5 GetString returning const CCharString (copy into the named local not elided)
+6 CDefString::operator CCharString() (landed 00/83 form: GetString(long) through the inline conversion, one extra temporary)
+7 CIntelligentPointer(T* = 0) ctor with a folding if; explicit pair<CCharString,long> temporary; def tree find() out of line returning an iterator
+8 named pair<CCharString,long> local before the insert (retail: name 0x1c, pair 0x20, converted temp 0x28)
+9 CFirePoint 5-arg ctor declared in class, defined inline after the namespace
+10 CFirePoint 5-arg ctor defined after InitialiseFirePoints (both sites must call 0x00781200)
+11 fallback site: push_back of a CFirePoint temporary
+12 helper index increment split into read + store

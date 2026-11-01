@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00a5bba0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5bba0   RELOCATION_MATCH PASS   GFInterpolateVectors
+00a8efa0   MATCH            PASS   ConvertToVBFormatStaticNonBump
+00ac97d0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKM@std@@U?$_Select1st@U?$pair@$$CBKM@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@IAEXPAU?$_Rb_tree_node@U?$pair@$$CBKM@std@@@2@@Z -> 00ad14e0 labelled '_unattributed::FreeTree_CTreeOwner_00ad14e0'
+00ac97d0   RELOCATION_MATCH PASS   RemapGroups
+00c68a50   WARN RELOC_NAME: ?SetRoomHF@CEaxContext@@QAEJKJ@Z -> 00c632e0 labelled 'CLight::SetIntegerProperty2'
+00c68a50   WARN RELOC_NAME: ?SetRoomLF@CEaxContext@@QAEJKJ@Z -> 00c63350 labelled 'CLight::SetIntegerProperty3'
+00c68a50   RELOCATION_MATCH PASS   SetEnvironment
+00ca4570   RELOCATION_MATCH PASS   vorbis_lsp_to_curve
+00cbdad0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbdad0   WARN RELOC_NAME: ??MCCharString@@QBE_NABV0@@Z -> 009e6530 labelled 'CCharString::FastCompare'
+00cbdad0   WARN RELOC_NAME: ??$__median@U?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIABU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@ABU10@00V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z -> 00cba620 labelled 'std::__median<std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase>>, CCompareString<CCountedPointer<CEntityScriptBindingBase>>>'
+00cbdad0   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@00HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z -> 00cbdad0 labelled 'CCharString_Quicksort'
+00cbdad0   RELOCATION_MATCH PASS   __introsort_loop
+
+WINS: 6
+  00a5bba0 RELOCATION_MATCH NVectorMath::?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KKM@Z
+  00a8efa0 MATCH C3DPrimitive2::?ConvertToVBFormatStaticNonBump@C3DPrimitive2@@AAEXPAVCTVertexNormTex1@@@Z
+  00ac97d0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedVertex::?RemapGroups@COptimisedVertex@QuadricOptimiserInternals@@QAEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
+  00c68a50 RELOCATION_MATCH CEaxContext::?SetEnvironment@CEaxContext@@QAEJKK@Z
+  00ca4570 RELOCATION_MATCH libvorbis::@vorbis_lsp_to_curve@32
+  00cbdad0 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@00HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  NVectorMath_GFInterpolateVectors_00a5bba0
+  C3DPrimitive2_ConvertToVBFormatStaticNonBump_00a8efa0
+  QuadricOptimiserInternalsCOptimisedVertex_RemapGroups_00ac97d0
+  CEaxContext_SetEnvironment_00c68a50
+  libvorbis_vorbislsptocurve_00ca4570
+  std_introsortloop_00cbdad0

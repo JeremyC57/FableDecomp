@@ -1,0 +1,2 @@
+1 plain loop, count once, C3DVector memberwise copies into the CTVertexNormTex1 floats
+2 landed ConvertToVBFormatRepeatingMesh model (by-value const C3DVector getters, PDB CGenericVertex setters), private

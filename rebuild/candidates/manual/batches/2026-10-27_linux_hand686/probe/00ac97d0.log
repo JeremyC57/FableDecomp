@@ -1,0 +1,12 @@
+1 real STLport 4.6 map model, break-scan then rebuild into a local map
+2 const begin/end on map
+3 work inside the found arm (return), no post-loop test
+4 break instead of return after the work
+5 probe-1 shape through a local reference to Groups
+6 _Rb_tree_base header allocation in its ctor (STLport 4.6), _M_erase body in the TU, probe-1 shape
+7 STLport 4.6 _Rb_global::_M_increment by value (node returned, assigned to the iterator)
+8 DIAGNOSTIC: same-TU reading stand-ins for insert_unique / operator[] (address-escape knowledge)
+9 real STLport 4.6 _tree.c bodies in the TU (insert_unique x2, _M_insert, _Rebalance, _M_copy, operator=, operator[], _M_erase), noinline
+10 _M_erase inlinable again (one level into the local map's clear(), the recursion out of line)
+11 local reference to Groups + while-scan loop (add ecx,0x9c lead)
+12 bool anyRemapped flag set in the scan loop (post-loop test lead)

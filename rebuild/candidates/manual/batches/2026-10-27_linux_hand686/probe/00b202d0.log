@@ -1,0 +1,18 @@
+1 decoded maths, C3DVector/CMatrix3x4 inline model, pos = transform * pos
+2 CMatrix3x4 ctor via SetIdentity() with explicit scalar stores
+3 + transform declared after the direction/length block
+4 SetIdentity as two chained assignments (zeros chain, ones chain; retail's decreasing store order), transform declared first
+5 + DELTA_NOTIONAL_ZERO as an extern const global (retail fld/fmul from 0x0129BA3C, not a folded literal)
+6 + each length computed right after its direction
+7 + per-component TransformPoint(in, out) writing straight into Position / pos (pos copied first)
+8 + the pos copy declared at the top (retail keeps it in the dead a3..a5 argument slots)
+9 lengths through Dot(*this) (GetLength = sqrt(GetLengthSquared()), GetLengthSquared = Dot(*this))
+10 operator- through a named result object (NRVO member stores)
+11 per-component scaling of the two directions
+12 operator/= by the lengths, scale = newLen / origLen
+13 p12 + the matrix declared after the normalisation (before the cross product)
+14 p13 + operator/= written as *this *= 1.0f / s
+15 p14 + matrix at the top again and a rotation-only 9-store chain (SetScale(1.0f)) before the cross product: retail keeps the 3 Position zeros in the prologue and the 9 rotation stores after the normalisation
+16 p15 with a zero-filling ctor (does the later rotation chain survive redundant-store elimination?)
+17 p15 with a ctor that zeroes Position only (diagnostic: where does the rest of the body stand?)
+18 p14 + the final transform fed a C3DVector(pos) temporary instead of a named copy

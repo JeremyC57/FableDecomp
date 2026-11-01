@@ -1,0 +1,12 @@
+1 STLport 4.6 _M_fill_insert verbatim on the landed 0x00B80400 model, inline tag helpers
+2 random-access __copy_backward (counted loop)
+3 the landed 0x00B7FDE0 sibling model verbatim with the 12-byte element
+4 _Tp __x_copy(__x)
+5 memberwise user copy ctor on the element
+6 fill as while (*first++ = val)
+7 element with a memberwise user operator=
+8 else-branch finish = old_finish + n instead of += elems_after
+9 final fill from the original __x instead of __x_copy
+10 fill plain inline (not __forceinline)
+11 fill assigning _Tp(__val)
+12 const _Tp __x_copy

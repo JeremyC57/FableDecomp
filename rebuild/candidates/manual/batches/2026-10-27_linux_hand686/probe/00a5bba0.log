@@ -1,0 +1,4 @@
+1 landed 0x00A5BEF0 retail_asm model with one weight (two aligned float locals), /Zi
+2 swap the two aligned locals' declaration order
+3 aligned locals at function scope before the SSE test
+4 two aligned C4DVector locals with only X written

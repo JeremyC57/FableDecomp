@@ -373996,6 +373996,50 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '00cb5180_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a5bba0'
+        Module = 'NVectorMath'
+        Source = '00/a5/NVectorMath_GFInterpolateVectors_00a5bba0.cpp'
+        TestSource = '00/a5/NVectorMath_GFInterpolateVectors_00a5bba0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zi'
+        PassPattern = '00a5bba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a8efa0'
+        Module = 'C3DPrimitive2'
+        Source = '00/a8/C3DPrimitive2_ConvertToVBFormatStaticNonBump_00a8efa0.cpp'
+        TestSource = '00/a8/C3DPrimitive2_ConvertToVBFormatStaticNonBump_00a8efa0_test.cpp'
+        PassPattern = '00a8efa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac97d0'
+        Module = 'QuadricOptimiserInternals::COptimisedVertex'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedVertex_RemapGroups_00ac97d0.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedVertex_RemapGroups_00ac97d0_test.cpp'
+        PassPattern = '00ac97d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c68a50'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetEnvironment_00c68a50.cpp'
+        TestSource = '00/c6/CEaxContext_SetEnvironment_00c68a50_test.cpp'
+        PassPattern = '00c68a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4570'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_vorbislsptocurve_00ca4570.cpp'
+        TestSource = '00/ca/libvorbis_vorbislsptocurve_00ca4570_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /O2 /Oy /QIfist'
+        PassPattern = '00ca4570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbdad0'
+        Module = 'std'
+        Source = '00/cb/std_introsortloop_00cbdad0.cpp'
+        TestSource = '00/cb/std_introsortloop_00cbdad0_test.cpp'
+        PassPattern = '00cbdad0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

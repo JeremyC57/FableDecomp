@@ -1,0 +1,8 @@
+1 verbatim lsp.c FLOAT_LOOKUP text, __fastcall
+2 drop the dllimport frexp redeclaration (math.h)
+3 same-TU lookup.c bodies (lsp.c #includes lookup.c) for VC7.1's callee register knowledge
+4 lookup.c bodies __declspec(noinline) (retail keeps them out of line; lane precedent chunk 585/596)
+5 DIAGNOSTIC: same-TU eax-only vorbis_ftoi stand-in (register knowledge through coslook)
+6 even arm q*=q*(1+w); p*=p*(1-w) (retail x87 order); same-TU C++ vorbis_ftoi (int)f, no /QIfist
+7 same + /QIfist (bare fistp helper in C++)
+8 frexp as dllimport (IAT call), /QIfist flag line
