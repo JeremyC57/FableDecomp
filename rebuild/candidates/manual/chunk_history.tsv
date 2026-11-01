@@ -25802,3 +25802,13 @@ chunk	address	module	name	length
 677	00c683c0	_global	CDrawGuildSeal_ApplyEffect	328
 677	00881210	_global	CScreenEffectPriorityStack_Rebuild	346
 677	00c5f7f0	_global	Audio_ExpandADPCM_Stereo	486
+678	00ca1060	_global	Environment_AccumulateVertexData	490
+678	009ce180	NHeroInformationScreens::CBase	~CBase	473
+678	009d06f0	CBankFile	?OpenReadOnly@CBankFile@@UAE_NABVCCharString@@K@Z	385
+678	0074ee90	CTCContainerRewardHero	RewardHeroWithItems	484
+678	0075aec0	CTCPhysicsRigidBody	Move	306
+678	00a996d0	C3DAnimFileLoader	~C3DAnimFileLoader	357
+678	0077a180	CTCDExperienceOrb	OnCollected	455
+678	009c01c0	CInputManagerDX	~CInputManagerDX	268
+678	00e57aa0	CParticleEmitter	~CParticleEmitter_MeshFree	265
+678	00df10d0	CParticleEmitter	~CParticleEmitter	285
