@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00b2d1b0   RELOCATION_MATCH PASS   ~CEngineSurfaceCompositionManager
+00b999f0   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerRepeatedStaticMeshes
+00cf9210   RELOCATION_MATCH PASS   ~CLadyGreyWifeManagerScript
+00da2f90   RELOCATION_MATCH PASS   ~CQ_MinionCampScript
+00debcb0   RELOCATION_MATCH PASS   ~CQ_RansomVictimScript
+00e24c80   RELOCATION_MATCH PASS   ~CQR_EscortTraderScript
+00e46a50   RELOCATION_MATCH PASS   ~CV_BordelloScript
+00e7b2e0   RELOCATION_MATCH PASS   ~CV_ExposeMayorScript
+00e7f210   RELOCATION_MATCH PASS   ~CFishCompOrganiser
+
+WINS: 9
+  00b2d1b0 RELOCATION_MATCH CEngineSurfaceCompositionManager::??1CEngineSurfaceCompositionManager@@UAE@XZ
+  00b999f0 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::??1CEnginePrimitiveManagerRepeatedStaticMeshes@@UAE@XZ
+  00cf9210 RELOCATION_MATCH NScript::CLadyGreyWifeManagerScript::??1CLadyGreyWifeManagerScript@NScript@@UAE@XZ
+  00da2f90 RELOCATION_MATCH NScript::CQ_MinionCampScript::??1CQ_MinionCampScript@NScript@@UAE@XZ
+  00debcb0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::??1CQ_RansomVictimScript@NScript@@UAE@XZ
+  00e24c80 RELOCATION_MATCH NScript::CQR_EscortTraderScript::??1CQR_EscortTraderScript@NScript@@UAE@XZ
+  00e46a50 RELOCATION_MATCH NScript::CV_BordelloScript::??1CV_BordelloScript@NScript@@UAE@XZ
+  00e7b2e0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::??1CV_ExposeMayorScript@NScript@@UAE@XZ
+  00e7f210 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::??1CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@UAE@XZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CEngineSurfaceCompositionManager_CEngineSurfaceCompositionManager_00b2d1b0
+  CEnginePrimitiveManagerRepeatedStaticMeshes_CEnginePrimitiveManagerRepeatedStaticMeshes_00b999f0
+  NScriptCLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf9210
+  NScriptCQMinionCampScript_CQMinionCampScript_00da2f90
+  NScriptCQRansomVictimScript_CQRansomVictimScript_00debcb0
+  NScriptCQREscortTraderScript_CQREscortTraderScript_00e24c80
+  NScriptCVBordelloScript_CVBordelloScript_00e46a50
+  NScriptCVExposeMayorScript_CVExposeMayorScript_00e7b2e0
+  NScriptCVFishingCompetitionScriptCFishCompOrganiser_CFishCompOrganiser_00e7f210

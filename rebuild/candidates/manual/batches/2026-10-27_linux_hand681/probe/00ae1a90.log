@@ -1,0 +1,22 @@
+1 p1 STLport vector (clear=erase/__copy_ptrs, push_back, back, pop_back) + CArray::push_back wrapper, cases 3-5 as one empty label group -> DIFFER(274v292): compare chain instead of jump table, tag byte store, frame 0x14
+2 p2 __true_type with empty user ctor (no tag init store) -> DIFFER(269v292): still compare chain
+3 p3 cases 3/4/5 as separate `break` labels -> DIFFER(269v292): unchanged (empty labels fold into default)
+4 p4 cases 3-5 call inline empty CParticleSimulation::SatisfyMinMaxDistance/Unbend/SphereCollisionConstraints (FableWin names) -> DIFFER(296v292): jump table 0..5, register assignment now retail's; residue = frame 0x14 (tag slot) + LoopCount reload + case-1/2 scheduling (37 diff lines)
+5 p5 cases 3-5 as empty count loops -> DIFFER(296v292): same residue as p4
+6 p6 tag __false_type (STLport is_POD_type of a class) with user ctor -> DIFFER(296v292): same 37 lines (kept as best: faithful tag type)
+7 p7 CLoopBegin local at function scope -> DIFFER(296v292): unchanged
+8 p8 count as long (LoopCount type) -> DIFFER(296v292): unchanged
+9 p10 aggregate initialiser `CLoopBegin loopBegin = { position + size, count }` -> DIFFER(296v292): unchanged
+10 p11 header fields read type-first -> DIFFER(296v292): unchanged
+11 p12 raw offset reads instead of a header struct pointer -> DIFFER(300v292): worse
+12 p14 named constraints pointer local in case 2 -> DIFFER(296v292): unchanged
+13 p15 distance case first in the switch -> DIFFER(308v292): worse (layout)
+14 x1 case 2 through a static stand-in (simulation unused; liveness test of the tag homing) -> tag still gets a frame slot (not liveness)
+15 p16 CArray::push_back defined out of class (same file) -> DIFFER(296v292): unchanged
+16 p17 LoopStack as plain std::vector (no CArray wrapper) -> DIFFER(296v292): unchanged
+17 p18/p19 SatisfyMinMax/Unbend/SphereCollision as out-of-class empty members before / after the body -> DIFFER(296v292): unchanged
+18 p20 inline bodies with empty count loops -> DIFFER(296v292): unchanged
+19 p21 inline bodies with a dead member load -> DIFFER(296v292): unchanged
+20 flags /Ob1, /Ob2, /Og-, /Oa on p6 -> no gain (/Og- 395, /Oa 300)
+21 p22 const_cast access instead of mutable -> DIFFER(296v292): unchanged
+PARK: best p6 (296v292, 37 diff lines); last 8 probes did not reduce the residue.

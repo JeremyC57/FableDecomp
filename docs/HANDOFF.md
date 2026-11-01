@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 53,071 of 57,613 known functions (92.1%), 45,654 of the original 49,568 (92.1%); 174 `retail_asm`,
+  never hand-edit): 53,080 of 57,613 known functions (92.1%), 45,663 of the original 49,568 (92.1%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -76,7 +76,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA018 = 662-673 landed 10/10, NA019-NA022 = 674-677 9/10; NA023/NA024 = chunks 678/681 (the 257-512 band) and naming wave 17 running at this write; ChatGPT pass 10 return: 57/57 regraded byte-exact on our lane (name audit running before landing, `$S/w22/agent679`), its 43 unmatched rows retried as chunk 680
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA018 = 662-673 landed 10/10, NA019-NA022 = 674-677 9/10; NA023/NA024 = chunks 678/681 landed 9/10 each; NA025 = chunk 682 and naming wave 17 running at this write; ChatGPT pass 10 return: 57/57 regraded byte-exact on our lane (audited and landed), its 43 unmatched rows retried as chunk 680
    (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked

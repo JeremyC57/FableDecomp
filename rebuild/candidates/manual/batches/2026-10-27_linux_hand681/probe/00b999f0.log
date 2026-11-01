@@ -1,0 +1,1 @@
+1 ZSprites 0x00BABE60 template: local shader models with inline user dtors, user dtor body DeallocateAligned -> RELOCATION_MATCH

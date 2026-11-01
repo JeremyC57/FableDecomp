@@ -1,0 +1,2 @@
+1 user dtor loop (it->Data, inline CGraphicFrame::UnInitialise re-reading FrameData, Release, RemoveResource) -> DIFFER(383v374): FrameData re-read + delete null test + ebp shrink-wrapped
+2 UnInitialise through a local data pointer (as landed 0x00B2EEC0) -> RELOCATION_MATCH

@@ -373568,6 +373568,69 @@ $catalog = @(
         TestSource = '00/e5/NScriptCVBookCollectingScript_CVBookCollectingScript_00e57aa0_test.cpp'
         PassPattern = '00e57aa0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00b2d1b0'
+        Module = 'CEngineSurfaceCompositionManager'
+        Source = '00/b2/CEngineSurfaceCompositionManager_CEngineSurfaceCompositionManager_00b2d1b0.cpp'
+        TestSource = '00/b2/CEngineSurfaceCompositionManager_CEngineSurfaceCompositionManager_00b2d1b0_test.cpp'
+        PassPattern = '00b2d1b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b999f0'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_CEnginePrimitiveManagerRepeatedStaticMeshes_00b999f0.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_CEnginePrimitiveManagerRepeatedStaticMeshes_00b999f0_test.cpp'
+        PassPattern = '00b999f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf9210'
+        Module = 'NScript::CLadyGreyWifeManagerScript'
+        Source = '00/cf/NScriptCLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf9210.cpp'
+        TestSource = '00/cf/NScriptCLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf9210_test.cpp'
+        PassPattern = '00cf9210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da2f90'
+        Module = 'NScript::CQ_MinionCampScript'
+        Source = '00/da/NScriptCQMinionCampScript_CQMinionCampScript_00da2f90.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScript_CQMinionCampScript_00da2f90_test.cpp'
+        PassPattern = '00da2f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00debcb0'
+        Module = 'NScript::CQ_RansomVictimScript'
+        Source = '00/de/NScriptCQRansomVictimScript_CQRansomVictimScript_00debcb0.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScript_CQRansomVictimScript_00debcb0_test.cpp'
+        PassPattern = '00debcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e24c80'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e2/NScriptCQREscortTraderScript_CQREscortTraderScript_00e24c80.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderScript_CQREscortTraderScript_00e24c80_test.cpp'
+        PassPattern = '00e24c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e46a50'
+        Module = 'NScript::CV_BordelloScript'
+        Source = '00/e4/NScriptCVBordelloScript_CVBordelloScript_00e46a50.cpp'
+        TestSource = '00/e4/NScriptCVBordelloScript_CVBordelloScript_00e46a50_test.cpp'
+        PassPattern = '00e46a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b2e0'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_CVExposeMayorScript_00e7b2e0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_CVExposeMayorScript_00e7b2e0_test.cpp'
+        PassPattern = '00e7b2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7f210'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
+        Source = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_CFishCompOrganiser_00e7f210.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_CFishCompOrganiser_00e7f210_test.cpp'
+        PassPattern = '00e7f210_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

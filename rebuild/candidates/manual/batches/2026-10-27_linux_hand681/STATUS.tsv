@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00e7f210	RELOCATION_MATCH	281v281	PASS	NScript::CV_FishingCompetitionScript::CFishCompOrganiser implicit dtor (catalog CParticleEmitter placeholder wrong); 1 probe
+00e24c80	RELOCATION_MATCH	321v321	PASS	NScript::CQR_EscortTraderScript implicit dtor (catalog CParticleEmitter placeholder wrong); 1 probe
+00e7b2e0	RELOCATION_MATCH	261v261	PASS	NScript::CV_ExposeMayorScript implicit dtor (label class right, nesting added); 1 probe
+00da2f90	RELOCATION_MATCH	283v283	PASS	NScript::CQ_MinionCampScript implicit dtor (catalog CV_FisticuffsClubScript wrong); 2 probes
+00ae1a90	DIFFER	296v292	-	CParticleProgram::ExecuteProgram (label right); 21 probes, parked: empty STLport tag gets a frame slot (retail homes it on the live argument slot) + LoopCount reload
+00cf9210	RELOCATION_MATCH	319v319	PASS	NScript::CLadyGreyWifeManagerScript implicit dtor (label class right, nesting added); 1 probe
+00b999f0	RELOCATION_MATCH	337v337	PASS	CEnginePrimitiveManagerRepeatedStaticMeshes user dtor (label right); 1 probe
+00debcb0	RELOCATION_MATCH	344v344	PASS	NScript::CQ_RansomVictimScript implicit dtor (label class right, nesting added); 1 probe
+00b2d1b0	RELOCATION_MATCH	374v374	PASS	CEngineSurfaceCompositionManager user dtor (label right); 2 probes
+00e46a50	RELOCATION_MATCH	380v380	PASS	NScript::CV_BordelloScript implicit dtor (catalog CSystemManager wrong); 1 probe

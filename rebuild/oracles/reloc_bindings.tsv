@@ -35734,3 +35734,11 @@ _bi_flush	00c05040	00c055d0
 ??1CChunkedFileLoader@@UAE@XZ	00aa7540	00a996d0
 @_encodepart@20	00ca0620	00ca1060
 __01forward@24	00ca0ba0	00ca1060
+??1CGraphicDataBank@@UAE@XZ	009febc0	00b2d1b0
+??1CTextureManager@@UAE@XZ	00a6a440	00b2d1b0
+??_7CEngineSurfaceCompositionManager@@6BCEngineComponent@@@	012a1200	00b2d1b0
+??_7CEngineSurfaceCompositionManager@@6BCResourceBank@@@	012a1238	00b2d1b0
+?RemoveResource@CResourceBank@@QAEXAAVCResource@@@Z	009fc3c0	00b2d1b0
+?_M_erase@?$_Rb_tree@U?$pair@JJ@std@@U?$pair@$$CBU?$pair@JJ@std@@VCEngineTextureMorph@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@JJ@std@@VCEngineTextureMorph@@@std@@@2@U?$less@U?$pair@JJ@std@@@2@V?$allocator@U?$pair@$$CBU?$pair@JJ@std@@VCEngineTextureMorph@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBU?$pair@JJ@std@@VCEngineTextureMorph@@@std@@@2@@Z	00b2ef20	00b2d1b0
+?clear@?$_List_base@V?$CCountedPointer@VCCompositeSurfaceCache@@@@V?$allocator@V?$CCountedPointer@VCCompositeSurfaceCache@@@@@std@@@std@@QAEXXZ	00b2ea90	00b2d1b0
+?clear@?$_List_base@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ	00cd4df0	00da2f90

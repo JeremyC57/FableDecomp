@@ -1,0 +1,12 @@
+address	name	evidence
+00e7f210	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::~CFishCompOrganiser	entity-script factory 0x00E7EEF0 stored by CV_FishingCompetitionScript::Main 0x00E7E370 next to "FishCompOrganiser"; slot-0 ??_G 0x00E7F1F0; label CParticleEmitter_ScreenFree wrong (chunk 681)
+00e24c80	NScript::CQR_EscortTraderScript::~CQR_EscortTraderScript	??_G 0x00E24C60 -> vtable -> ctor 0x00E1DB00 -> Alloc -> "S_QRET" registration; label CParticleEmitter placeholder wrong (chunk 681)
+00e7b2e0	NScript::CV_ExposeMayorScript::~CV_ExposeMayorScript	??_G 0x00E7B2C0 chain, "S_VEM"; NScript nesting added (chunk 681)
+00da2f90	NScript::CQ_MinionCampScript::~CQ_MinionCampScript	??_G 0x00DA2F70 chain, "S_QMC"; label CV_FisticuffsClubScript wrong (that dtor is 0x00E8B750, chunk 673) (chunk 681)
+00cf9210	NScript::CLadyGreyWifeManagerScript::~CLadyGreyWifeManagerScript	??_G 0x00CF91F0 chain, "LadyGreyWifeManager"/"S_LGWM"; NScript nesting added (chunk 681)
+00b999f0	CEnginePrimitiveManagerRepeatedStaticMeshes::~CEnginePrimitiveManagerRepeatedStaticMeshes	stored vtable + RTTI COL chain + Ego_r ??1; label right (chunk 681)
+00debcb0	NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript	??_G 0x00DEBC90 chain, "S_QRV"; NScript nesting added (chunk 681)
+00b2d1b0	CEngineSurfaceCompositionManager::~CEngineSurfaceCompositionManager	stored vtable + RTTI COL chain + Ego_r ??1; label right (chunk 681)
+00e46a50	NScript::CV_BordelloScript::~CV_BordelloScript	vtable 0x012E38B0 has no RTTI and the body walks a quest-script layout; ??_G 0x00E46A30 chain, "S_VB"; label CSystemManager wrong (chunk 681)
+00e398f0	NScript::CV_BordelloScript::CV_BordelloScript	ctor stores vtable 0x012E38B0 (CV_BordelloScript, above); propagated label CQ_HangingTreeGoodScript wrong (chunk 681)
+00e7ef70	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::CFishCompOrganiser	ctor called by the entity factory 0x00E7EEF0 of CFishCompOrganiser; propagated label CGameScriptThing wrong (chunk 681)
