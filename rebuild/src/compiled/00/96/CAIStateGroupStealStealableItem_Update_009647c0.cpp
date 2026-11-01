@@ -96,10 +96,12 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* item);     // 0x004A96F0
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& o);   // 0x004A9760
 };
-struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<const CThing> : public CBaseIntelligentPointer { public:   // Ego_r: PEscapePoint is CIntelligentPointer<CThing const>
 };
+typedef CIntelligentPointer<const CThing> CIntelligentPointerConstThing;
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThing& p);        // 0x004CC340
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointerConstThing& p);   // 0x0069CE20
+template <class T> bool __fastcall IS_THING_ALIVE(const T& p);              // 0x0069CE20 = IS_THING_ALIVE<CIntelligentPointer<const CThing> > (Ego_r / FableWin)
 struct CTCUserActionPointBase {
     bool GetFreeActionPoint(CThingCreatureBase* creature, C3DVector* pos, CRightHandedSet* set, long* index);   // 0x007FEDE0
 };
