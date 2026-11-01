@@ -1,0 +1,12 @@
+1	user dtor ManagedTexture.Release(); inline ~CGraphicFrame{UnInitialise()} with `delete FrameData`, user ~CGraphicFrameData	DIFFER(103v157) delete calls ??_GCGraphicFrameData
+2	implicit ~CGraphicFrameData, IsInitialised test in UnInitialise, delete	DIFFER(76v157) ~CGraphicFrame -> UnInitialise call (not inlined)
+3	explicit data->~CGraphicFrameData(); operator delete(data)	DIFFER(76v157) same
+4	p2 with the UnInitialise body written into ~CGraphicFrame	DIFFER(76v157) ~CGraphicFrame itself called
+5	p3 with the body written into ~CGraphicFrame	DIFFER(76v157) same
+6	p5 + __forceinline ~CGraphicFrame	DIFFER(166v157) inlined, FrameData re-read (no esi local)
+7	p3 + __forceinline ~CGraphicFrame{UnInitialise()}	DIFFER(76v157) UnInitialise call
+8	__forceinline ~CGraphicFrame with named CGraphicFrameData* data local, explicit dtor + operator delete	RELOCATION_MATCH
+9	p8 without __forceinline	DIFFER(76v157)
+10	plain ~CGraphicFrame{UnInitialise()} with the p8 body in UnInitialise	DIFFER(76v157)
+11	plain ~CGraphicFrame with local + `delete data` (implicit data dtor)	DIFFER(93v157)
+12	p8 cleaned (UnInitialise declaration only) = src	RELOCATION_MATCH

@@ -1,0 +1,2 @@
+1	PDB SetMode + same-TU InitTentaclesOnly/AndHead bodies auto-inlined, STLport list empty()	RELOCATION_MATCH
+2	engine/CDefPointer.h for PKrakenDef (vland SHARED_HEADER_AVAILABLE) = src	RELOCATION_MATCH

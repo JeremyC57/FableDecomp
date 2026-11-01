@@ -1,0 +1,15 @@
+1	STLport list, back() named-__tmp form, if (back()) via operator T*	DIFFER(110v110) first back() lea/add register form
+2	back() = *(--end()) (STLport 4.6 text)	DIFFER(110v110) same residue
+3	explicit GetPItem() != 0 test	DIFFER same
+4	reference local emitter = back()	DIFFER same
+5	explicit cast of GetPItem for Kill	DIFFER same
+6	PDB Get() accessor for the test (no operator T*)	DIFFER same
+7	Get() for both test and Kill	DIFFER same
+8	Get() != 0	DIFFER same
+9	back() as a direct _M_prev read (both sites)	DIFFER: first site fixed, second site now wrong -> two different access paths
+10	test via rbegin() (reverse_iterator)	DIFFER same as 2
+11	test via named loop-scope iterator it=end();--it; Kill via back()	RELOCATION_MATCH
+12	test via back(), Kill via rbegin()	DIFFER
+13	p11 + KillIdleParticles written the same way (final src)	RELOCATION_MATCH
+14	engine/CCountedPointer.h for PMeshMorphSet (vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH
+15	PMeshMorphSet typed CCountedPointer<CTCAppearanceMorphBase::CMeshMorphSet> = src	RELOCATION_MATCH

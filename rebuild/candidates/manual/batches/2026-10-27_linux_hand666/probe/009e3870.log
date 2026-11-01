@@ -1,0 +1,3 @@
+1	(incomplete draft, not graded)	-
+2	layout-rename engine/CPixelFormat.h, const CD3DFormatInfo& local, cases in PFType order	DIFFER(188v208) lea-first entry address, arm order
+3	no reference local (re-index per member), cases in retail arm order 2,5,4,7,6	RELOCATION_MATCH (jump table pairing checked by hand)

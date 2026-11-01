@@ -1,0 +1,28 @@
+address	name	evidence
+00e54d80	CConversation::~CConversation	chunk 666 RELOCATION_MATCH: implicit; caller 0x00E54D60 is slot 0 of vtable 0x012E5FF0; Ego_r + FableWin (catalog CTCInventoryMap::ResetPrimitiveHandles was wrong)
+00534eb0	std::__find<CCountedPointer<NUISystem::CComponent>*,CCountedPointer<NUISystem::CComponent> >	chunk 666 MATCH: callers incl. the landed CComponent::RemoveChild bind it (catalog __find_in_uint_array was a guess)
+006a6880	CThingPhysical::WorldUpdate	chunk 666 RELOCATION_MATCH: vtable slot 19, Ego_r UAE_N; same-file CHealthOverTimeHelper::Update / IsFinished inlined
+00b2b910	CCompositeSurfaceCache::~CCompositeSurfaceCache	chunk 666 RELOCATION_MATCH: stores vtable 0x012A116C (RTTI), slot-0 caller 0x00B2EE00 (catalog CFrameData::~CFrameData was copied from 0x009FE6C0)
+009fe6c0	CGraphicInfoFrame::CFrameData::~CFrameData	chunk 666 RELOCATION_MATCH: stores vtable 0x0129C89C; sole caller its ??_G 0x00A010A0; inlines ResetTexture
+009e3870	CPixelFormat::GetInit	chunk 666 RELOCATION_MATCH: const, returns CPixelFormatInit (Ego_r); jump table pairing checked by hand
+004615fb	CArmourDef::Transfer	chunk 666 RELOCATION_MATCH: vtable 0x01234AEC slot 18 (CPersistContext&)
+004df562	CWillResponseDef::Transfer	chunk 666 RELOCATION_MATCH: vtable 0x0123E324 slot 18
+0071c260	CTCHeroMorph::KillParticles	chunk 666 RELOCATION_MATCH: FableWin; PDB order = retail order; tail 0x0071C1F0 KillIdleParticles
+007fc730	CTCKraken::SetMode	chunk 666 RELOCATION_MATCH: private (EKrakenMode); PDB order = retail order 0x007FC210..0x007FC9D0
+007fc6f0	CTCKraken::InitTentaclesOnly	chunk 666: compiled RELOCATION_MATCH in the same file (landed as Dtor_EndHeadEffectsBase_007fc6f0)
+007fc710	CTCKraken::InitTentaclesAndHead	chunk 666: compiled RELOCATION_MATCH in the same file (landed as Dtor_EndHeadEffectsBase_007fc710)
+007fc210	CTCKraken::CreateTentacles	chunk 666: private AAE
+007fb150	CTCKraken::EndHeadEffects	chunk 666 (bound as a free stand-in)
+007fb870	CTCKraken::KillBeamEffect	chunk 666: private
+007fb1c0	CTCKraken::KillTentacles	chunk 666: private
+0071c1f0	CTCHeroMorph::KillIdleParticles	chunk 666: compiled RELOCATION_MATCH in the same file
+009fe440	CGraphicInfoFrame::CFrameData::ResetTexture	chunk 666: compiled RELOCATION_MATCH in the same file (landed under a stand-in class)
+00a00b90	CGraphicFrame::UnInitialise	chunk 666 (landed as ?Reset@SubA)
+006a62e0	CThingPhysical::InternalModifyHealth	chunk 666: private (float, bool)
+004c8050	CThing::WorldUpdate	chunk 666 (bound as GetState@CThingSoundEmitter)
+004c9b80	CThing::Kill	chunk 666: (bool); 15 wrong spellings bound
+00a01b50	CBaseIntelligentPointer::GetPItem	chunk 666: returns CBaseObject* (both PDBs)
+00a69ad0	CManagedTexture::Release	chunk 666 (catalog CFrameDataHandle::Clear; bound as ClearHandle / SubB::Clear)
+009fcba0	CGraphicFrameData::Uninitialise	chunk 666 (stray NUISystem namespace in the binding)
+009fc550	CResource::~CResource	chunk 666: UAE
+0099eae0	CCharString::~CCharString	chunk 666: 102 descriptive spellings bound (own respell wave)

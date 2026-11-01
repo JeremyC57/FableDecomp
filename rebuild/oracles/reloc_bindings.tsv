@@ -35683,3 +35683,14 @@ _static_d_desc	0139c8c4	00c051c0
 _static_l_desc	0139c8b0	00c051c0
 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@_N@std@@@2@@Z	007acc50	00d27290
 ??1CCrateTeamManager@CQ_OrchardFarmRaidScript@NScript@@QAE@XZ	00cdb3c0	00dd1f40
+??$TransferMap@MW4EDamageAttribute@@@CPersistContext@@QAEXAAV?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@@Z	00461894	004615fb
+??$TransferMap@MW4EObjectAugmentationType@@@CPersistContext@@QAEXAAV?$map@W4EObjectAugmentationType@@MU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@@Z	00461660	004615fb
+?InternalModifyHealth@CThingPhysical@@AAEXM_N@Z	006a62e0	006a6880
+?CreateTentacles@CTCKraken@@AAEXXZ	007fc210	007fc730
+?KillBeamEffect@CTCKraken@@AAEXXZ	007fb870	007fc730
+?KillTentacles@CTCKraken@@AAEXXZ	007fb1c0	007fc730
+?StartBeamEffect@CTCKraken@@AAEXXZ	007fb6a0	007fc730
+??1CManagedTexture@@UAE@XZ	00a69e20	009fe6c0
+??_7CFrameData@CGraphicInfoFrame@@6B@	0129c89c	009fe6c0
+?Release@CManagedTexture@@QAE_NXZ	00a69ad0	009fe6c0
+?UnInitialise@CGraphicFrame@@QAEXXZ	00a00b90	009fe6c0

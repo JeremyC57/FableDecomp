@@ -3003,7 +3003,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004614c0	CTCCarryable_CopyConstructor	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004614C0_global_CTCCarryable_CopyConstructor.cpp				
 00461533	Tree_Clone_Recursive	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00461533_global_Tree_Clone_Recursive.cpp				
 004615c3	TreeNode_AllocData	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x004615C3_global_TreeNode_AllocData.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_TreeNodeAllocData_004615c3.cpp
-004615fb	?Transfer@CArmourDef@@UAEXAAVCPersistContext@@@Z	CArmourDef	__fastcall	void	0		1	yes	accepted									
+004615fb	Transfer	CArmourDef	__fastcall	void	0		1	yes	accepted									
 00461660	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CEngineLightingManager_UpdateShadowScene_00461660.cpp
 00461695	SerializeAllocationAreas	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00461695_global_SerializeAllocationAreas.cpp				
 004616d6	GFSerialiseMapBinaryIn<long,long,std::less<long>_>	GFSerialiseMapBinaryIn<long,long,std	__fastcall	void	2	CMemoryDataInputStream *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *	1	yes	accepted									
@@ -7216,7 +7216,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004df532	CNavigatorExternalInterface::vfunc_23	CNavigatorExternalInterface	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df54f	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActiveFile_OnReadFinished_004df54f.cpp
 004df554	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CActiveFile_OnReadFinished_004df554.cpp
-004df562	?Transfer@CWillResponseDef@@UAEXAAVCPersistContext@@@Z	CWillResponseDef	__fastcall	void	0		1	yes	accepted									
+004df562	Transfer	CWillResponseDef	__fastcall	void	0		1	yes	accepted									
 004df5c7	Transfer	CBettingDef	__fastcall	void	0		1	yes	accepted									
 004df658	Transfer	COracleMinigameDef	__fastcall	void	0		1	yes	accepted									
 004df6f4	?Transfer@CFireheartMinigameDef@@UAEXAAVCPersistContext@@@Z	CFireheartMinigameDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CFireheartMinigameDef_TransferCFireheartMinigameDefUAEXAAVCPersistCont_004df6f4.cpp
@@ -9278,7 +9278,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00534d30	erase	std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>	unknown	undefined	0		0	yes	accepted									
 00534da0	RBTreeNode::FindSuccessor	RBTreeNode	unknown	undefined	0		0	yes	accepted									
 00534df0	_M_insert	std::_Rb_tree<NUISystem::CComponent *, NUISystem::CComponent *, std::_Identity<NUISystem::CComponent *>, std::less<NUISystem::CComponent *>, std::allocator<NUISystem::CComponent *>>	unknown	undefined	0		0	yes	accepted									
-00534eb0	std::__find_in_uint_array	std	unknown	undefined	0		0	yes	accepted									
+00534eb0	__find<CCountedPointer<NUISystem::CComponent>*,CCountedPointer<NUISystem::CComponent> >	std	unknown	undefined	0		0	yes	accepted									
 00534f20	std::__find_in_tree_by_key	std	unknown	undefined	0		0	yes	accepted									
 00534f80	__copy_backward<CCountedPointer<NUISystem::CComponent> *, CCountedPointer<NUISystem::CComponent> *, int>	std	__fastcall	CCountedPointer<C3DGroup2> *	4	CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00535000	_Move<CCountedPointer<CGuiVarTransferBase>*,CCountedPointer<class_CGuiVarTransferBase>*>	_global	__fastcall	CCountedPointer<CGuiVarTransferBase> *	4	CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -23611,7 +23611,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007fbc90	GetCentreMarker	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 007fbe50	UpdateBeamExplosion	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 007fc210	CreateTentacles	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
-007fc6f0	InitTentaclesAndHead	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CTCKraken_InitTentaclesAndHead_007fc6f0.cpp
+007fc6f0	InitTentaclesOnly	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CTCKraken_InitTentaclesAndHead_007fc6f0.cpp
 007fc710	InitTentaclesAndHead	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\CTCKraken_InitTentaclesAndHead_007fc710.cpp
 007fc730	SetMode	CTCKraken	__thiscall	void	2	CTCKraken *,EKrakenMode	1	yes	accepted									
 007fc7a0	StartHighAttackBeam	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
@@ -35428,7 +35428,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fc4f0	MakeFreeSpace	CResourceList	__thiscall	bool	2	CResourceList *,ulong	1	yes	accepted									
 009fc520	AddToInterface	CInputProcessGameBase	__thiscall	bool	2	CInputProcessGameBase *,CInputProcessManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CInputProcessGameBase_AddToInterface_009fc520.cpp
 009fc540	CResourceList::HandleFailedAllocation	CResourceList	__thiscall	bool	2	CResourceList *,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CResourceList_HandleFailedAllocation_009fc540.cpp
-009fc550	~CMemoryBlock	CMemoryBlock	__thiscall	void	1	CMemoryBlock *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMemoryBlock_CMemoryBlock_009fc550.cpp
+009fc550	~CResource	CResource	__thiscall	void	1	CMemoryBlock *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CMemoryBlock_CMemoryBlock_009fc550.cpp
 009fc570	CResourceList	CResourceList	__thiscall	undefined	1	CResourceList *	0	yes	accepted									
 009fc5c0	Stack<unsigned_long,64>::~Stack<unsigned_long,64>	Stack<unsigned_long,64>	unknown	undefined	0		0	yes	accepted									
 009fc5f0	CResourceBank	CResourceBank	__thiscall	undefined	1	CResourceBank *	0	yes	accepted									
@@ -35482,11 +35482,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fdde0	Sizeof	CGraphicInfo	__thiscall	ulong	1	CGraphicInfo *	1	yes	accepted									
 009fde80	BeginLoading	CFrameData	__thiscall	void	3	CFrameData *,ulong,ulong	1	yes	accepted									
 009fe380	CFrameData	CGraphicInfoFrame::CFrameData	__thiscall	undefined	2	CFrameData *,CGraphicInfoFrame *	0	yes	accepted									
-009fe440	ResetTexture	CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CFrameData_ResetTexture_009fe440.cpp
+009fe440	ResetTexture	CGraphicInfoFrame::CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9f\CFrameData_ResetTexture_009fe440.cpp
 009fe460	FreeTextureMemory	CFrameData	__thiscall	bool	2	CFrameData *,bool	1	yes	accepted									
 009fe550	InitialiseFrame	CGraphicInfoFrame	__thiscall	void	4	CGraphicInfoFrame *,CGraphicFrame *,CManagedTexture *,char	1	yes	accepted									
 009fe620	BeginLoading	CGraphicInfoFrame	__thiscall	void	3	CGraphicInfoFrame *,ulong,ulong	1	yes	accepted									
-009fe6c0	~CFrameData	CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
+009fe6c0	~CFrameData	CGraphicInfoFrame::CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
 009fe780	InitialiseFramesAsSurfaceSections	CGraphicInfo	__thiscall	void	6	CGraphicInfo *,CManagedTexture *,char,CCountedPointer<CTexture> *,bool,bool	1	yes	accepted									
 009fe8e0	UnloadFrame	CGraphicInfo	__thiscall	void	2	CGraphicInfo *,ulong	1	yes	accepted									
 009fea00	CGraphicInfoFrame::CFrameData::vfunc_10	CGraphicInfoFrame::CFrameData	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -37704,7 +37704,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a69980	CGPUScratchBufferTextureManager	CGPUScratchBufferTextureManager	__thiscall	undefined	1	CGPUScratchBufferTextureManager *	0	yes	accepted									
 00a699d0	CreateVolumeTexture	CManagedTextureData	__thiscall	bool	6	CManagedTextureData *,ulong,ulong,ulong,long,CPixelFormat *	1	yes	accepted									
 00a69a80	ReleaseTexture	CManagedTextureData	__thiscall	void	1	CManagedTextureData *	1	yes	accepted									
-00a69ad0	ClearHandle	CViewport	__thiscall	void	1	CViewport *	1	yes	accepted									
+00a69ad0	Release	CManagedTexture	__thiscall	void	1	CViewport *	1	yes	accepted									
 00a69b20	operator=	C3DAnimationBlendState	__thiscall	C3DAnimationBlendState *	2	C3DAnimationBlendState *,C3DAnimationBlendState *	1	yes	accepted									
 00a69b70	AllocateTexture	CTextureManager	__thiscall	bool	7	CTextureManager *,CManagedTexture *,ulong,ulong,long,CPixelFormat *,CManagedTextureOwner *	1	yes	accepted									
 00a69c20	AllocateVolumeTexture	CTextureManager	__thiscall	bool	8	CTextureManager *,CManagedTexture *,ulong,ulong,ulong,long,CPixelFormat *,CManagedTextureOwner *	1	yes	accepted									
@@ -40988,7 +40988,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b2b180	RenderToTexture	CEngineSurfaceCompositionManager	__thiscall	void	8	CEngineSurfaceCompositionManager *,CTexture *,C2DExtentsI *,bool,bool,CEngineTextureMorph *,CArray<CGraphicFrame> *,long	1	yes	accepted									
 00b2b790	GetGraphicInfo	CEngineSurfaceCompositionManager	__thiscall	CGraphicInfoFrame *	2	CEngineSurfaceCompositionManager *,ulong	1	yes	accepted									
 00b2b820	CEngineSurfaceCompositionManager::FrameEnd	CEngineSurfaceCompositionManager	__thiscall	void	2	CEngineSurfaceCompositionManager *,CEngineComponentParams const &	1	yes	accepted									
-00b2b910	~CFrameData	CFrameData	__thiscall	void	1	CFrameData *	1	yes	accepted									
+00b2b910	~CCompositeSurfaceCache	CCompositeSurfaceCache	__thiscall	void	1	CFrameData *	1	yes	accepted									
 00b2b9b0	GetComposedSurface	CEngineSurfaceCompositionManager	__thiscall	bool	5	CEngineSurfaceCompositionManager *,CGraphicFrame *,CCompositeSurfaceInfo *,ulong,bool	1	yes	accepted									
 00b2bd80	WriteTextureToBank	CEngineSurfaceCompositionManager	__thiscall	void	5	CEngineSurfaceCompositionManager *,CTexture *,CGraphicDataBank *,ulong,bool	1	yes	accepted									
 00b2c010	PreloadCompletedBank	CEngineSurfaceCompositionManager	__thiscall	void	1	CEngineSurfaceCompositionManager *	1	yes	accepted									
@@ -52695,7 +52695,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e54d00	sub_00e54d00	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00e54d10	Copy	CConversation	unknown	undefined	0		0			discovered	gapscan							
 00e54d60	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CLandscapeBackgroundPatch_vectordeletingdestructor_00e54d60.cpp
-00e54d80	ResetPrimitiveHandles	CTCInventoryMap	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
+00e54d80	~CConversation	CConversation	__thiscall	void	1	CTCInventoryMap *	1	yes	accepted									
 00e54e40	_M_allocate_and_copy<CConversation const *>	std::vector<CConversation, std::allocator<CConversation>>	unknown	undefined	0		0	yes	accepted									
 00e54e90	sub_00e54e90	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00e55c60	AddGossip	CV_BookCollectingScript	__thiscall	void	5	CV_BookCollectingScript *,CCharString,CCharString,CCharString,CCharString	1	yes	accepted									

@@ -1,0 +1,39 @@
+addr       parity           behav  name
+004615fb   WARN RELOC_NAME: ??$TransferMap@MW4EObjectAugmentationType@@@CPersistContext@@QAEXAAV?$map@W4EObjectAugmentationType@@MU?$less@W4EObjectAugmentationType@@@std@@V?$allocator@U?$pair@$$CBW4EObjectAugmentationType@@M@std@@@3@@std@@@Z -> 00461660 labelled '_global::PersistTransfer_00461660'
+004615fb   WARN RELOC_NAME: ??$TransferMap@MW4EDamageAttribute@@@CPersistContext@@QAEXAAV?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@@Z -> 00461894 labelled '_global::PersistTransfer_00461894'
+004615fb   RELOCATION_MATCH PASS   Transfer
+004df562   RELOCATION_MATCH PASS   Transfer
+00534eb0   MATCH            PASS   __find
+006a6880   RELOCATION_MATCH PASS   WorldUpdate
+0071c260   RELOCATION_MATCH PASS   KillParticles
+007fc730   RELOCATION_MATCH PASS   SetMode
+009e3870   RELOCATION_MATCH PASS   GetInit
+009fe6c0   WARN RELOC_NAME: ?Release@CManagedTexture@@QAE_NXZ -> 00a69ad0 labelled 'CFrameDataHandle::Clear'
+009fe6c0   RELOCATION_MATCH PASS   ~CFrameData
+00b2b910   WARN RELOC_NAME: ?Release@CManagedTexture@@QAE_NXZ -> 00a69ad0 labelled 'CFrameDataHandle::Clear'
+00b2b910   RELOCATION_MATCH PASS   ~CCompositeSurfaceCache
+00e54d80   RELOCATION_MATCH PASS   ~CConversation
+
+WINS: 10
+  004615fb RELOCATION_MATCH CArmourDef::?Transfer@CArmourDef@@UAEXAAVCPersistContext@@@Z
+  004df562 RELOCATION_MATCH CWillResponseDef::?Transfer@CWillResponseDef@@UAEXAAVCPersistContext@@@Z
+  00534eb0 MATCH std::??$__find@PAV?$CCountedPointer@VCComponent@NUISystem@@@@V1@@std@@
+  006a6880 RELOCATION_MATCH CThingPhysical::?WorldUpdate@CThingPhysical@@UAE_NXZ
+  0071c260 RELOCATION_MATCH CTCHeroMorph::?KillParticles@CTCHeroMorph@@QAEXXZ
+  007fc730 RELOCATION_MATCH CTCKraken::?SetMode@CTCKraken@@AAEXW4EKrakenMode@1@@Z
+  009e3870 RELOCATION_MATCH CPixelFormat::?GetInit@CPixelFormat@@QBE?AVCPixelFormatInit@@XZ
+  009fe6c0 RELOCATION_MATCH CGraphicInfoFrame::CFrameData::??1CFrameData@CGraphicInfoFrame@@UAE@XZ
+  00b2b910 RELOCATION_MATCH CCompositeSurfaceCache::??1CCompositeSurfaceCache@@UAE@XZ
+  00e54d80 RELOCATION_MATCH CConversation::??1CConversation@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CArmourDef_Transfer_004615fb
+  CWillResponseDef_Transfer_004df562
+  std_find_00534eb0
+  CThingPhysical_WorldUpdate_006a6880
+  CTCHeroMorph_KillParticles_0071c260
+  CTCKraken_SetMode_007fc730
+  CPixelFormat_GetInit_009e3870
+  CGraphicInfoFrameCFrameData_CFrameData_009fe6c0
+  CCompositeSurfaceCache_CCompositeSurfaceCache_00b2b910
+  CConversation_CConversation_00e54d80

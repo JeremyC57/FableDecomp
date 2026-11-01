@@ -1,0 +1,1 @@
+1	def-family template Transfer<T> + TransferMap<V,K>(map&) over STLport map, engine/CParentDefClassBase.h	RELOCATION_MATCH

@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+00e54d80	RELOCATION_MATCH	182v182	PASS	1	CConversation::~CConversation (implicit; label CTCInventoryMap::ResetPrimitiveHandles wrong)
+00534eb0	MATCH	112v112	PASS	1	std::__find<CCountedPointer<NUISystem::CComponent>*, CCountedPointer<NUISystem::CComponent> > (label __find_in_uint_array was a guess)
+006a6880	RELOCATION_MATCH	111v111	PASS	1	CThingPhysical::WorldUpdate (slot 19; same-TU CHealthOverTimeHelper::Update/IsFinished)
+00b2b910	RELOCATION_MATCH	157v157	PASS	12	CCompositeSurfaceCache::~CCompositeSurfaceCache (label CFrameData::~CFrameData wrong); __forceinline ~CGraphicFrame
+009fe6c0	RELOCATION_MATCH	182v182	PASS	1	CGraphicInfoFrame::CFrameData::~CFrameData (inlined same-TU ResetTexture)
+009e3870	RELOCATION_MATCH	208v208	PASS	3	CPixelFormat::GetInit const; jump-table pairing checked by hand
+004615fb	RELOCATION_MATCH	101v101	PASS	1	CArmourDef::Transfer (slot 18)
+004df562	RELOCATION_MATCH	101v101	PASS	1	CWillResponseDef::Transfer (slot 18)
+0071c260	RELOCATION_MATCH	110v110	PASS	15	CTCHeroMorph::KillParticles (named loop iterator for the test, back() for Kill)
+007fc730	RELOCATION_MATCH	104v104	PASS	2	CTCKraken::SetMode (private; same-TU InitTentaclesOnly/AndHead inlined and merged)
