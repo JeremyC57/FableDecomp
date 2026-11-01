@@ -10,7 +10,7 @@ class CEnvironmentThemePriorityStackEntry { public:
  long ThemeTransitionTargetID; float ThemeTransitionInitialWeight; bool ThemeTransitionActive;
  double ThemeTransitionStartTime; float ThemeTransitionDuration;
  void SetOnlyTheme(long); void RestoreDefaultTheme(); void SetThemeWeight(long,float,bool); void RebalanceWeights();
- __forceinline void SetBaseWeight(float weight,bool locked) {
+ __forceinline void SetDefaultThemeWeight(float weight,bool locked) {
    if(weight < 0.0f) weight=0.0f; else if(weight > 1.0f) weight=1.0f;
    BaseWeight=weight; BaseWeightLocked=locked; RebalanceWeights();
  }
@@ -24,7 +24,7 @@ void CEnvironmentThemePriorityStackEntry::ProcessTransitions() {
    ThemeTransitionActive=false;
   } else {
    float weight=ThemeTransitionInitialWeight+(1.0f-ThemeTransitionInitialWeight)*((now-ThemeTransitionStartTime)/ThemeTransitionDuration);
-   if(ThemeTransitionTargetID>=0) SetThemeWeight(ThemeTransitionTargetID,weight,true); else SetBaseWeight(weight,true);
+   if(ThemeTransitionTargetID>=0) SetThemeWeight(ThemeTransitionTargetID,weight,true); else SetDefaultThemeWeight(weight,true);
   }
  }
 }

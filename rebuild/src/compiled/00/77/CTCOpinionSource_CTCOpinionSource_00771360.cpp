@@ -1,6 +1,9 @@
-// CTCOpinionSource::CTCOpinionSource(CThing*) -- CTCBase(owner), vtable, empty def stack, every flag false, no opinion set, no virtual deed (ID -1)
+// CTCOpinionSource::CTCOpinionSource(CThing& parent) -- CTCBase(owner), vtable, empty def stack, every flag false, no opinion set, no virtual deed (ID -1)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771360, length 91 bytes (vtable 0x0126A81C).
-// Callees: CTCBase::CTCBase(CThing*) @ 0x00686800.
+// Leaf: ??0CTCOpinionSource@@QAE@AAVCThing@@@Z
+// Callees: CTCBase::CTCBase(CThing&) @ 0x00686800 (Ego_r ??0CTCBase@@QAE@AAVCThing@@@Z).
+// Naming wave 16 (c669): Ego_r.pdb ??0CTCOpinionSource@@QAE@AAVCThing@@@Z is the only constructor; the landed CThing*
+//   parameter and the CTCBase_00771360 base stand-in are respelled (one pushed pointer: name-only, bytes unchanged).
 // Retail CTCOpinionSource (PDB, the 16-byte DefStack vector is 12 bytes in retail): DefStack +0x0c, UseNavLineOfSight +0x18,
 // WitnessesWillNotAttack +0x19, WitnessesWillOverrideFactionEnemy +0x1a, BypassesPersonality +0x1b, RelativeEffect +0x1c,
 // RestrictToFactionAndAllies +0x20, RestrictToFactionIsReversed +0x24, ReactionFlags[79] +0x25 (left uninitialised),
@@ -28,14 +31,15 @@ struct COpinionSetPointer {                         // CCountedPointer<COpinionS
     COpinionSetPointer() : m_pObject(0), m_pBlock(0) {}
 };
 
-struct CTCBase_00771360 {
+class CTCBase {
+public:
     virtual void v00();
     CThing*       ParentThing;                      // +0x04
     unsigned char _pad08[4];
-    CTCBase_00771360(CThing* owner);                // 0x00686800
+    CTCBase(CThing& parent);                        // 0x00686800
 };
 
-class CTCOpinionSource : public CTCBase_00771360 { public:
+class CTCOpinionSource : public CTCBase { public:
     CLongVector        DefStack;                    // +0x0c
     bool               UseNavLineOfSight;           // +0x18
     bool               WitnessesWillNotAttack;      // +0x19
@@ -53,12 +57,12 @@ class CTCOpinionSource : public CTCBase_00771360 { public:
     long               VirtualDeed;                 // +0x80 EOpinionDeedType
     long               VirtualDeedID;               // +0x84
     unsigned long      FrameToClearVirtualDeed;     // +0x88
-    CTCOpinionSource(CThing* owner);
+    CTCOpinionSource(CThing& parent);
     virtual void v00();
 };
 
-CTCOpinionSource::CTCOpinionSource(CThing* owner)
-    : CTCBase_00771360(owner), UseNavLineOfSight(false), WitnessesWillNotAttack(false),
+CTCOpinionSource::CTCOpinionSource(CThing& parent)
+    : CTCBase(parent), UseNavLineOfSight(false), WitnessesWillNotAttack(false),
       WitnessesWillOverrideFactionEnemy(false), BypassesPersonality(false), RelativeEffect(false),
       RestrictToFactionIsReversed(false), ReactToSelfPermitted(false), AlwaysAwareOf(false),
       UnknownThreatSource(false), ReactNonstopFlag(false), VirtualDeed(0), VirtualDeedID(-1)

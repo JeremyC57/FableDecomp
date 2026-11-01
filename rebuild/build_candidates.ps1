@@ -9247,15 +9247,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006925b0'
         Module = 'CCreatureActionBase'
-        Source = '00/69/CCreatureActionBase_GetTotalTime_006925b0.cpp'
-        TestSource = '00/69/CCreatureActionBase_GetTotalTime_006925b0_test.cpp'
+        Source = '00/69/CCreatureActionBase_GetTotalTimeWorldFrames_006925b0.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetTotalTimeWorldFrames_006925b0_test.cpp'
         PassPattern = 'AUTO_TINY_006925b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006925c0'
-        Module = '_global'
-        Source = '00/69/global_DrawGetEnvironment_006925c0.cpp'
-        TestSource = '00/69/global_DrawGetEnvironment_006925c0_test.cpp'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_GetFramesRunning_006925c0.cpp'
+        TestSource = '00/69/CCreatureActionBase_GetFramesRunning_006925c0_test.cpp'
         PassPattern = 'AUTO_TINY_006925c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -33814,8 +33814,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00692910'
         Module = 'CCreatureActionBase'
-        Source = '00/69/global_Destval_00692910.cpp'
-        TestSource = '00/69/global_Destval_00692910_test.cpp'
+        Source = '00/69/CCreatureActionBase_PeekDefinitionManager_00692910.cpp'
+        TestSource = '00/69/CCreatureActionBase_PeekDefinitionManager_00692910_test.cpp'
         PassPattern = '00692910_TEST PASS'
     }
     [pscustomobject]@{
@@ -36201,8 +36201,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00cbfab8'
         Module = '_global'
-        Source = '00/cb/global_SetMiniMapRegionExitTextOffsetX_00cbfab8.cpp'
-        TestSource = '00/cb/global_SetMiniMapRegionExitTextOffsetX_00cbfab8_test.cpp'
+        Source = '00/cb/global_SetScriptActiveStatus_00cbfab8.cpp'
+        TestSource = '00/cb/global_SetScriptActiveStatus_00cbfab8_test.cpp'
         PassPattern = '00cbfab8_TEST PASS'
     }
     [pscustomobject]@{
@@ -43325,8 +43325,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a0b6c0'
         Module = 'CSoundBankLH'
-        Source = '00/a0/CEnginePrimitiveRenderer_ClearAllChildPrimitives_00a0b6c0.cpp'
-        TestSource = '00/a0/CEnginePrimitiveRenderer_ClearAllChildPrimitives_00a0b6c0_test.cpp'
+        Source = '00/a0/CSoundBankLH_Unload00a0b6c0_00a0b6c0.cpp'
+        TestSource = '00/a0/CSoundBankLH_Unload00a0b6c0_00a0b6c0_test.cpp'
         PassPattern = '00a0b6c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -46616,9 +46616,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac1ee0'
-        Module = 'CVolume'
-        Source = '00/ac/CVolume_ReleaseVolume_00ac1ee0.cpp'
-        TestSource = '00/ac/CVolume_ReleaseVolume_00ac1ee0_test.cpp'
+        Module = 'CIndexBuffer'
+        Source = '00/ac/CIndexBuffer_Uninitialise_00ac1ee0.cpp'
+        TestSource = '00/ac/CIndexBuffer_Uninitialise_00ac1ee0_test.cpp'
         PassPattern = 'RELEASEVOLUME_OK'
     }
     [pscustomobject]@{
@@ -67733,9 +67733,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0099a330'
-        Module = '_global'
-        Source = '00/99/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_0099a330.cpp'
-        TestSource = '00/99/GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_0099a330_test.cpp'
+        Module = 'CInitBaseClass'
+        Source = '00/99/CInitBaseClass_IsValid_0099a330.cpp'
+        TestSource = '00/99/CInitBaseClass_IsValid_0099a330_test.cpp'
         PassPattern = 'OK_0099a330'
     }
     [pscustomobject]@{
@@ -184087,8 +184087,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008fcfc0'
         Module = 'CAIStateGroupBase'
-        Source = '00/8f/CAIStateGroupBase_GetPWorld_008fcfc0.cpp'
-        TestSource = '00/8f/CAIStateGroupBase_GetPWorld_008fcfc0_test.cpp'
+        Source = '00/8f/CAIStateGroupBase_GetWorld_008fcfc0.cpp'
+        TestSource = '00/8f/CAIStateGroupBase_GetWorld_008fcfc0_test.cpp'
         PassPattern = '008fcfc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -200274,9 +200274,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b59840'
-        Module = 'CEngineResourceManager'
-        Source = '00/b5/CEngineResourceManager_DestroyMapStrip00b59840_00b59840.cpp'
-        TestSource = '00/b5/CEngineResourceManager_DestroyMapStrip00b59840_00b59840_test.cpp'
+        Module = 'CEngineLocalDetailGenerator'
+        Source = '00/b5/CEngineLocalDetailGenerator_DeleteMap_00b59840.cpp'
+        TestSource = '00/b5/CEngineLocalDetailGenerator_DeleteMap_00b59840_test.cpp'
         PassPattern = '00b59840_TEST PASS'
     }
     [pscustomobject]@{

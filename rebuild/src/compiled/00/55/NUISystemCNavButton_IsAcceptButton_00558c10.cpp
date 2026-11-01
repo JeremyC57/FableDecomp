@@ -1,6 +1,8 @@
 // NUISystem::CNavButton::IsAcceptButton() -- walk up the parent chain (virtual slot 52, +0xd0) to the root component; true when that root is of type 10 (slot 65, +0x104) and names this button as its accept button (slot 142, +0x238)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00558C10, length 96 bytes.
-// Leaf: IsAcceptButton
+// Leaf: ?IsAcceptButton@CNavButton@NUISystem@@QBE_NXZ
+// Naming wave 16 (c668): Ego_r + FableWin both mangle it const (QBE); the landed non-const spelling is respelled, with
+//   CComponent::GetParent / GetType const as Ego_r spells them (UBE; virtual calls by slot: name-only, bytes unchanged).
 // Shape: `this` in edi, the walker in esi, two parent calls per step (test, then advance), `ret`.
 namespace NUISystem {
 class CComponent { public:
@@ -56,7 +58,7 @@ class CComponent { public:
     virtual void v049();
     virtual void v050();
     virtual void v051();
-    virtual CComponent* GetParent();               // slot 52 (+0xd0)
+    virtual CComponent* GetParent() const;         // slot 52 (+0xd0)
     virtual void v053();
     virtual void v054();
     virtual void v055();
@@ -69,7 +71,7 @@ class CComponent { public:
     virtual void v062();
     virtual void v063();
     virtual void v064();
-    virtual long GetType();                        // slot 65 (+0x104)
+    virtual long GetType() const;                  // slot 65 (+0x104)
     virtual void v066();
     virtual void v067();
     virtual void v068();
@@ -149,11 +151,11 @@ class CComponent { public:
     virtual CComponent* GetAcceptButton();         // slot 142 (+0x238)
 };
 class CNavButton : public CComponent { public:
-    bool IsAcceptButton();
+    bool IsAcceptButton() const;
 };
 }
 
-bool NUISystem::CNavButton::IsAcceptButton()
+bool NUISystem::CNavButton::IsAcceptButton() const
 {
     CComponent* component = GetParent();
     while (component) {

@@ -4,7 +4,7 @@
 // Callees (several through ILT thunks): the sound manager @ 0x013B8394 (virtual slots 16 +0x40 and 18 +0x48, then 0x00991750 and
 //   0x009918F0), the network session's (+0x24, a scoped_ptr with the safe-bool idiom: `neg ; sbb ; test edx,offset get` against
 //   scoped_ptr::get 0x00418F47) virtual slot 10 (+0x28), the global counted pointer @ 0x013B8790 (release 0x0041915A), the server
-//   @ 0x013B8390 CloseSocket 0x009BF5A0, 0x0049BA20 on +0x16178, CInitBaseClass IsInitialised 0x0099A330 / Uninitialise 0x004AE990 on
+//   @ 0x013B8390 CloseSocket 0x009BF5A0, 0x0049BA20 on +0x16178, CInitBaseClass IsValid 0x0099A330 / Uninitialise 0x004AE990 on
 //   +0x13AB8, UninitEventPackageLoading 0x004160A6 / UninitEventPackageSaving 0x00416122, the global Uninitialise 0x00AEBEA0,
 //   CConsole::Get 0x00414C90 + Initialise 0x009ED190, the counted-pointer releases 0x00403750 / 0x004190B6 / 0x004057A0 / 0x00419108,
 //   the scoped_ptr resets (virtual scalar deleting dtors), CGameDefinitionManager::Set(0) 0x0044C71F (`__fastcall`, the tail jmp).
@@ -70,9 +70,11 @@ public:
 class CASoundManager;
 extern CASoundManager* PSoundManager;               // 0x013B8394
 
+class CDeviceResetCallback;
+class CDisplayManager { public:
+    void RemoveDeviceResetCallback(CDeviceResetCallback*a0);   // 0x009BF5A0 (Ego_r.pdb ?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z)
+};
 class CLSocketServer {
-public:
-    void CloseSocket(void* socket);                  // 0x009BF5A0
 };
 class CDisplayManager;
 extern CDisplayManager* PDisplayManager;              // 0x013B8390
@@ -81,7 +83,7 @@ extern void* g_pGame;                                // 0x013B86A0
 
 class CInitBaseClass {
 public:
-    bool IsInitialised() const;                      // 0x0099A330
+    bool IsValid() const;                            // 0x0099A330
     void Uninitialise_004ae990();                             // 0x004AE990
 };
 class CEditWorld {
@@ -142,9 +144,9 @@ void CMainGameComponent::Shutdown()
     m_10 = 0;
     g_GlobalCountedPointer.Clear();
     g_pGame = 0;
-    ((CLSocketServer*)PDisplayManager)->CloseSocket(Socket);
+    ((CDisplayManager*)(((CLSocketServer*)PDisplayManager)))->RemoveDeviceResetCallback((CDeviceResetCallback*)Socket);
     EditWorld.Shutdown();
-    if (InputSystem.IsInitialised())
+    if (InputSystem.IsValid())
         InputSystem.Uninitialise_004ae990();
     UninitEventPackageLoading();
     UninitEventPackageSaving();
