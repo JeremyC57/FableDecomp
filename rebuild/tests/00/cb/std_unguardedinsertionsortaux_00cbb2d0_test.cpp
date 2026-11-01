@@ -16,7 +16,7 @@ class CCPPointerInfo { public:
     void  (*DeleteFunc)(void* data);
     void* Data;
 };
-struct CCountedObject { int id; };
+struct CEntityScriptBindingBase { int id; };
 static CCPPointerInfo g_infos[8];
 template <class T> class CCountedPointer { public:
     T*              Data;
@@ -42,13 +42,13 @@ template <class T1, class T2> struct pair {
     pair(const T1& a, const T2& b) : first(a), second(b) { }
     pair(const pair& o) : first(o.first), second(o.second) { }
 };
-typedef pair<CCharString, CCountedPointer<CCountedObject> > SNamedCountedEntry;
-struct SNamedCountedEntryLess {
-    bool operator()(const SNamedCountedEntry& a, const SNamedCountedEntry& b) const { return a.first.Key() < b.first.Key(); }
+typedef pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CScriptBindingPair;
+struct CScriptBindingLess {
+    bool operator()(const CScriptBindingPair& a, const CScriptBindingPair& b) const { return a.first.Key() < b.first.Key(); }
 };
 static bool RefsAreOne() { for (int i = 0; i < 8; ++i) if (g_infos[i].RefCount != 1) return false; return true; }
-typedef SNamedCountedEntry T;
-typedef SNamedCountedEntryLess C;
+typedef CScriptBindingPair T;
+typedef CScriptBindingLess C;
 static int KeyOf(const T& x) { return x.first.Key(); }
 static bool Consistent(const T& x) { return x.second.Info == &g_infos[x.first.Key()]; }
 void __unguarded_linear_insert(T* last, T val, C comp)          // the SGI algorithm (stands in for the retail callee)
@@ -74,7 +74,7 @@ int main()
     UStorage storage;
     T* items = reinterpret_cast<T*>(storage.bytes);
     for (int i = 0; i < 8; ++i)
-        new (&items[i]) T(CCharString(keys[i]), CCountedPointer<CCountedObject>(&g_infos[keys[i]]));
+        new (&items[i]) T(CCharString(keys[i]), CCountedPointer<CEntityScriptBindingBase>(&g_infos[keys[i]]));
     C comp = C();
     __unguarded_insertion_sort_aux(items + 1, items + 1, items, comp);
     for (int i = 0; i < 8; ++i)

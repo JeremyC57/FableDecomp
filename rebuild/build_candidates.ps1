@@ -170340,9 +170340,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cbdf70'
-        Module = '_global'
-        Source = '00/cb/global_SortSElement1200cbdf70_00cbdf70.cpp'
-        TestSource = '00/cb/global_SortSElement1200cbdf70_00cbdf70_test.cpp'
+        Module = 'std'
+        Source = '00/cb/std_sortstdpairCCharStringCCountedPointerCEntityScriptBindingBaseCCompareStringCCountedPointerCEntityScriptBindingBase_00cbdf70.cpp'
+        TestSource = '00/cb/std_sortstdpairCCharStringCCountedPointerCEntityScriptBindingBaseCCompareStringCCountedPointerCEntityScriptBindingBase_00cbdf70_test.cpp'
         PassPattern = '00cbdf70_TEST PASS'
     }
     [pscustomobject]@{
@@ -170585,9 +170585,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cbd420'
-        Module = '_global'
-        Source = '00/cb/global_FinalInsertionSortSElement1200cbd420_00cbd420.cpp'
-        TestSource = '00/cb/global_FinalInsertionSortSElement1200cbd420_00cbd420_test.cpp'
+        Module = 'std'
+        Source = '00/cb/std_finalinsertionsortstdpairCCharStringCCountedPointerCEntityScriptBindingBaseCCompareStringCCountedPointerCEntityScriptBindingBase_00cbd420.cpp'
+        TestSource = '00/cb/std_finalinsertionsortstdpairCCharStringCCountedPointerCEntityScriptBindingBaseCCompareStringCCountedPointerCEntityScriptBindingBase_00cbd420_test.cpp'
         PassPattern = '00cbd420_TEST PASS'
     }
     [pscustomobject]@{
@@ -209493,9 +209493,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb9c50'
-        Module = 'SScriptBindingPair'
-        Source = '00/cb/SScriptBindingPair_SScriptBindingPair_00cb9c50.cpp'
-        TestSource = '00/cb/SScriptBindingPair_SScriptBindingPair_00cb9c50_test.cpp'
+        Module = 'std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >'
+        Source = '00/cb/stdpairCCharStringCCountedPointerCEntityScriptBindingBase_pair_00cb9c50.cpp'
+        TestSource = '00/cb/stdpairCCharStringCCountedPointerCEntityScriptBindingBase_pair_00cb9c50_test.cpp'
         PassPattern = '00cb9c50_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,4 +1,4 @@
-// Behaviour test for 0x00CB9C50 (SScriptBindingPair copy constructor): the name is copied through the
+// Behaviour test for 0x00CB9C50 (CScriptBindingPair copy constructor): the name is copied through the
 // string copy constructor, the counted pointer copied and its shared count incremented.
 #include <cstdio>
 
@@ -27,14 +27,14 @@ struct CCountedPointer_CEntityScriptBindingBase {
     }
 };
 
-struct SScriptBindingPair {
+struct CScriptBindingPair {
     CCharString                              first;
     CCountedPointer_CEntityScriptBindingBase second;
-    SScriptBindingPair(const char* name) : first(name) { }
-    SScriptBindingPair(const SScriptBindingPair& other);
+    CScriptBindingPair(const char* name) : first(name) { }
+    CScriptBindingPair(const CScriptBindingPair& other);
 };
 
-SScriptBindingPair::SScriptBindingPair(const SScriptBindingPair& other)
+CScriptBindingPair::CScriptBindingPair(const CScriptBindingPair& other)
     : first(other.first), second(other.second)
 {
 }
@@ -44,16 +44,16 @@ int main()
     static const char kName[] = "Binding";
     CCPPointerInfo info;
     info.m_count = 3;
-    SScriptBindingPair a(kName);
+    CScriptBindingPair a(kName);
     a.second.Data = (CEntityScriptBindingBase*)&info;
     a.second.Info = &info;
-    SScriptBindingPair b(a);
+    CScriptBindingPair b(a);
     if (g_stringCopies != 1 || b.first.m_pData != kName || b.second.Data != a.second.Data || b.second.Info != &info || info.m_count != 4) {
         std::printf("00cb9c50_TEST FAIL\n");
         return 1;
     }
-    SScriptBindingPair c(kName);
-    SScriptBindingPair d(c);
+    CScriptBindingPair c(kName);
+    CScriptBindingPair d(c);
     if (g_stringCopies != 2 || d.second.Info != 0 || d.second.Data != 0 || info.m_count != 4) {
         std::printf("00cb9c50_TEST FAIL\n");
         return 1;
