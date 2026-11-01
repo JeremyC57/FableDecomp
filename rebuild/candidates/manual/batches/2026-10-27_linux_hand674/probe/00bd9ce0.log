@@ -1,0 +1,1 @@
+1	landed ~CEngineLandscapeMemoryManager model + same-TU FreeVirtual / DeleteTexture / DeleteVertexBuffer / DeleteIndexBuffer (p->~T(); FreeVirtual(p)), STLport size()/front()/pop_front()	RELOCATION_MATCH (src)

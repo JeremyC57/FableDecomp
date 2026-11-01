@@ -1,0 +1,94 @@
+0121a7ca _gapscan::sub_0121a7ca DIFFER(182v177) flags= []
+--- retail (177 bytes)
+0121a7ca  56                     push esi
+0121a7cb  83ceff                 or esi, 0xffffffff
+0121a7ce  56                     push esi
+0121a7cf  680ed72201             push 0x122d70e
+0121a7d4  b9108b3b01             mov ecx, 0x13b8b10
+0121a7d9  e8124478ff             call 0x99ebf0
+0121a7de  56                     push esi
+0121a7df  6868fe2401             push 0x124fe68
+0121a7e4  b9148b3b01             mov ecx, 0x13b8b14
+0121a7e9  e8024478ff             call 0x99ebf0
+0121a7ee  56                     push esi
+0121a7ef  6850fe2401             push 0x124fe50
+0121a7f4  b9188b3b01             mov ecx, 0x13b8b18
+0121a7f9  e8f24378ff             call 0x99ebf0
+0121a7fe  56                     push esi
+0121a7ff  6834fe2401             push 0x124fe34
+0121a804  b91c8b3b01             mov ecx, 0x13b8b1c
+0121a809  e8e24378ff             call 0x99ebf0
+0121a80e  56                     push esi
+0121a80f  6818fe2401             push 0x124fe18
+0121a814  b9208b3b01             mov ecx, 0x13b8b20
+0121a819  e8d24378ff             call 0x99ebf0
+0121a81e  56                     push esi
+0121a81f  68fcfd2401             push 0x124fdfc
+0121a824  b9248b3b01             mov ecx, 0x13b8b24
+0121a829  e8c24378ff             call 0x99ebf0
+0121a82e  56                     push esi
+0121a82f  68e4fd2401             push 0x124fde4
+0121a834  b9288b3b01             mov ecx, 0x13b8b28
+0121a839  e8b24378ff             call 0x99ebf0
+0121a83e  56                     push esi
+0121a83f  68ccfd2401             push 0x124fdcc
+0121a844  b92c8b3b01             mov ecx, 0x13b8b2c
+0121a849  e8a24378ff             call 0x99ebf0
+0121a84e  56                     push esi
+0121a84f  68b8fd2401             push 0x124fdb8
+0121a854  b9308b3b01             mov ecx, 0x13b8b30
+0121a859  e8924378ff             call 0x99ebf0
+0121a85e  56                     push esi
+0121a85f  68a0fd2401             push 0x124fda0
+0121a864  b9348b3b01             mov ecx, 0x13b8b34
+0121a869  e8824378ff             call 0x99ebf0
+0121a86e  68d88e2201             push 0x1228ed8
+0121a873  e8446a1eff             call 0x4012bc
+0121a878  59                     pop ecx
+0121a879  5e                     pop esi
+0121a87a  c3                     ret 
+--- built (182 bytes)
+0121a7ca  6aff                   push -1
+0121a7cc  6800000000             push 0
+0121a7d1  b900000000             mov ecx, 0
+0121a7d6  e800000000             call 0x121a7db
+0121a7db  6aff                   push -1
+0121a7dd  6800000000             push 0
+0121a7e2  b904000000             mov ecx, 4
+0121a7e7  e800000000             call 0x121a7ec
+0121a7ec  6aff                   push -1
+0121a7ee  6800000000             push 0
+0121a7f3  b908000000             mov ecx, 8
+0121a7f8  e800000000             call 0x121a7fd
+0121a7fd  6aff                   push -1
+0121a7ff  6800000000             push 0
+0121a804  b90c000000             mov ecx, 0xc
+0121a809  e800000000             call 0x121a80e
+0121a80e  6aff                   push -1
+0121a810  6800000000             push 0
+0121a815  b910000000             mov ecx, 0x10
+0121a81a  e800000000             call 0x121a81f
+0121a81f  6aff                   push -1
+0121a821  6800000000             push 0
+0121a826  b914000000             mov ecx, 0x14
+0121a82b  e800000000             call 0x121a830
+0121a830  6aff                   push -1
+0121a832  6800000000             push 0
+0121a837  b918000000             mov ecx, 0x18
+0121a83c  e800000000             call 0x121a841
+0121a841  6aff                   push -1
+0121a843  6800000000             push 0
+0121a848  b91c000000             mov ecx, 0x1c
+0121a84d  e800000000             call 0x121a852
+0121a852  6aff                   push -1
+0121a854  6800000000             push 0
+0121a859  b920000000             mov ecx, 0x20
+0121a85e  e800000000             call 0x121a863
+0121a863  6aff                   push -1
+0121a865  6800000000             push 0
+0121a86a  b924000000             mov ecx, 0x24
+0121a86f  e800000000             call 0x121a874
+0121a874  6800000000             push 0
+0121a879  e800000000             call 0x121a87e
+0121a87e  59                     pop ecx
+0121a87f  c3                     ret 

@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00cbf7fe	DIFFER	465v480	PASS	PlayCutsceneSound; 2-instruction prologue swap + row span holds GetScriptActiveStatus 0x00CBF9CF (15 bytes, matched in the same source); 16 probes

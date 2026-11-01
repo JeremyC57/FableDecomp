@@ -372840,6 +372840,70 @@ $catalog = @(
         TestSource = '01/21/CConversationAttitude_EGeneralAttitudeToAnimName_0121a460_test.cpp'
         PassPattern = '0121a460_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005fd410'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_GetRegionsToDisplay_005fd410.cpp'
+        TestSource = '00/5f/CTCInventoryMap_GetRegionsToDisplay_005fd410_test.cpp'
+        PassPattern = '005fd410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bd9ce0'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0_test.cpp'
+        PassPattern = '00bd9ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c057d0'
+        Module = '_global'
+        Source = '00/c0/global_trflushblock_00c057d0.cpp'
+        TestSource = '00/c0/global_trflushblock_00c057d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c057d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5200'
+        Module = 'CRendererInputPin'
+        Source = '00/ca/CRendererInputPin_CheckMediaType_00ca5200.cpp'
+        TestSource = '00/ca/CRendererInputPin_CheckMediaType_00ca5200_test.cpp'
+        PassPattern = '00ca5200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca62d0'
+        Module = 'CBaseFilter'
+        Source = '00/ca/CBaseFilter_QueryInterface_00ca62d0.cpp'
+        TestSource = '00/ca/CBaseFilter_QueryInterface_00ca62d0_test.cpp'
+        PassPattern = '00ca62d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f29dc0'
+        Module = 'CCutsceneDef'
+        Source = '00/f2/CCutsceneDef_CCutsceneDef_00f29dc0.cpp'
+        TestSource = '00/f2/CCutsceneDef_CCutsceneDef_00f29dc0_test.cpp'
+        PassPattern = '00f29dc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121a4f0'
+        Module = 'CConversationAttitude'
+        Source = '01/21/CConversationAttitude_EConversationAttitudeToAnimName_0121a4f0.cpp'
+        TestSource = '01/21/CConversationAttitude_EConversationAttitudeToAnimName_0121a4f0_test.cpp'
+        PassPattern = '0121a4f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121a580'
+        Module = 'CConversationAttitude'
+        Source = '01/21/CConversationAttitude_EConversationAttitudeToAnimGroupName_0121a580.cpp'
+        TestSource = '01/21/CConversationAttitude_EConversationAttitudeToAnimGroupName_0121a580_test.cpp'
+        PassPattern = '0121a580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121a7ca'
+        Module = '_global'
+        Source = '01/21/global_ECrimeText_0121a7ca.cpp'
+        TestSource = '01/21/global_ECrimeText_0121a7ca_test.cpp'
+        PassPattern = '0121a7ca_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

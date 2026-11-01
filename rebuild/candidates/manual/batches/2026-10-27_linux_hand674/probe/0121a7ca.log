@@ -1,0 +1,5 @@
+1	aggregate-initialised anonymous-namespace CCharString CrimeText[10] (implicit conversions), default /O2	DIFFER(182v177) -- push -1 per element, no esi
+2	same + #pragma optimize("s", on) (packed address = /Os TU)	RELOCATION_MATCH
+3	explicit CCharString("..", -1) elements, /O2	DIFFER(182v177)
+4	explicit elements + optimize("s")	RELOCATION_MATCH
+5	probe 2 without the probe-only reference helper (array kept by its dynamic initializer)	RELOCATION_MATCH (src)

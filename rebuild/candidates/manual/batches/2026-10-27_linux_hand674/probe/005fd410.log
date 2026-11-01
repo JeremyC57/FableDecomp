@@ -1,0 +1,11 @@
+1	first model: list copy ctor with out-of-line _M_insert_dispatch declaration, bool HasTC	DIFFER(482v451) -- list object homed on the stack, frame 0x24
+2	same-TU STLport _M_insert_dispatch/insert/_M_create_node bodies (VC7.1 then drops the list object: dead `this`)	DIFFER(457v451)
+3	list copy ctor insert(end(), ...)	DIFFER(451v451) -- prologue order, HasTC shr/test, GetTC end reload
+4	HasTC returns the masked unsigned long; GetTC reads end() before LowerBound	DIFFER(451v451) -- prologue / temp store order, pos copy register
+5	named `long currentRegion` local for the first insert	DIFFER(451v451) worse (frame 0x24)
+6	named `CThing* thing = ParentThing` local	DIFFER(451v451) -- only the list copy (pos via edx, dummy via esi) left
+7	explicit (long) cast of CurrentMapNumber	DIFFER (no change from 4)
+8	named `const CWorldMap& worldMap` local	DIFFER worse
+9	_List_base ctor with a `_Node* __n` local (STLport 4.6 text), insert(end())	DIFFER(451v451) -- same as 6
+10	__n form + insert(begin(), ...)	RELOCATION_MATCH (src)
+11	insert(begin()) without the __n form	DIFFER(451v451) -- re-reads [edi]

@@ -35559,3 +35559,12 @@ _static_l_desc	0139c8b0	00c051c0
 ?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x04003ab2@@3VCCharString@@A	013bb740	01221d00
 ?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xc174142e@@3VCCharString@@A	013bc3a0	01223c60
 ?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0x4d9647e8@@3VCCharString@@A	013bc3a8	01223c90
+?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@2V?$CCountedPointer@VCQuestManager@@@@A	013b89fc	005fd410
+__tr_stored_block	00c05530	00c057d0
+_build_bl_tree	00c054c0	00c057d0
+_compress_block	00c04b70	00c057d0
+_send_all_trees	00c04850	00c057d0
+_set_data_type	00c04f90	00c057d0
+_static_dtree	012af318	00c057d0
+_static_ltree	012aee98	00c057d0
+?CrimeText@?A0xbfacb866@@3PAVCCharString@@A	013b8b10	0121a7ca

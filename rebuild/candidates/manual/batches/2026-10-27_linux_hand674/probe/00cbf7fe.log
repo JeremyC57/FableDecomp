@@ -1,0 +1,16 @@
+1	first model: CSFindThing TU model (CCharString operator== forceinline, y-off/s-on), soundCommand before find, plain inline IsEmpty	DIFFER(484v480) -- IsEmpty called out of line, ctor/find order
+2	__forceinline GetLength/IsEmpty (size TU); find before the soundCommand ctor	DIFFER(463v480)
+3	named soundName / musicName locals for the ReadAsString results	DIFFER(465v480) -- frame 0x40 (key home unshared), + 15-byte tail = next function
+4	key passed through a (int)(long) cast temporary	DIFFER(465v480) -- frame right; only `mov edi,ecx` / key store swapped
+5	function-scope named copy of the key	DIFFER(465v480) frame 0x40
+6	direct `soundCommand = it->second` (no copy temporary)	DIFFER(448v480) worse
+7	functional cast int(key)	DIFFER frame 0x40 (no temp)
+8	key + 0 temporary	DIFFER(465v480) = 4
+9	const int key parameter	DIFFER frame 0x40
+10	inline helper with value out-parameter	DIFFER(467v480) worse
+11	block-scope copy of the key	DIFFER(465v480) = 4
+12	STLport two-level find (_Rb_tree::find inline)	DIFFER frame 0x40
+13	(not graded: iterator has no operator==)	-
+14	inline FindParameter(map&, int) helper (by-value key)	DIFFER(465v480) = 4
+15	named end() iterator local	DIFFER frame 0x40
+16	probe 11 + GetScriptActiveStatus (the next function in the span) defined after it -- its 15 bytes match the retail tail in the object	DIFFER(465v480) (differ/)

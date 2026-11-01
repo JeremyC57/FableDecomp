@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00ca5200	MATCH	14v14	PASS	CRendererInputPin::CheckMediaType (DirectShow renbase.cpp; CBasePin slot 8 of vtable 0x012BF408)
+00ca62d0	MATCH	15v15	PASS	CBaseFilter::QueryInterface (DECLARE_IUNKNOWN forwarder; slot 0 of CBaseRenderer IBaseFilter vtable 0x012BF458)
+0121a4f0	RELOCATION_MATCH	139v139	PASS	$E1 dynamic initializer of CConversationAttitude::ConversationAttitudeToAnimName = vector<CCharString>(12, "")
+0121a580	RELOCATION_MATCH	139v139	PASS	$E1 dynamic initializer of CConversationAttitude::ConversationAttitudeToAnimGroupName = vector<CCharString>(12, "")
+0121a7ca	RELOCATION_MATCH	177v177	PASS	$E1 dynamic initializer of anonymous-namespace CCharString CrimeText[10]; /Os TU (packed address)
+005fd410	RELOCATION_MATCH	451v451	PASS	CTCInventoryMap::GetRegionsToDisplay; STLport set/list with same-TU list bodies
+00f29dc0	RELOCATION_MATCH	382v382	PASS	CCutsceneDef::~CCutsceneDef (implicit); catalog name ResetPrimitiveHandles wrong
+00cbf7fe	DIFFER	465v480	PASS	PlayCutsceneSound; 2-instruction prologue swap + row span holds GetScriptActiveStatus 0x00CBF9CF (15 bytes, matched in the same source); 16 probes
+00c057d0	RELOCATION_MATCH	485v485	PASS	_tr_flush_block (zlib 1.2.1 trees.c, /GS); landed TU uses 1.2.2 strm->data_type
+00bd9ce0	RELOCATION_MATCH	488v488	PASS	CEngineLandscapeMemoryManager::FreeDisposalList; catalog name TexturePool_Clear wrong

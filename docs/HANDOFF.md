@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,969 of 57,611 known functions (91.9%), 45,562 of the original 49,568 (91.9%); 174 `retail_asm`,
+  never hand-edit): 52,978 of 57,612 known functions (92.0%), 45,566 of the original 49,568 (91.9%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -35,8 +35,9 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
 ## Done 2026-11-01 (details in FINDINGS_LOG)
-- Chunks 663-673 (NA008-NA018: the authorable band, 100-250 bytes, no twins) landed 10/10 each; 254 NAME_FIXES
-  (c663-c673), 284 labels (chunk 673: ~CEngine; gap-scan rows proven as CPosPassThru::QueryInterface and a `_$E1` static initializer, not library bytes) (chunk 672: 7 of 10 script-range dtor labels wrong; entity scripts named via the parent quest's Main) (chunk 671: three "OnDie" rows were three classes' implicit dtors; GetChecksum, ~CEngineLocalDetailGenerator mislabelled) (chunk 670: ten dtors, 6 of 10 catalog labels wrong, resolved by stored vtable + RTTI COL chain) (chunk 669: nine dtors, 4 of 9 catalog labels wrong; 0x00510D40 is _List_base<CIntelligentPointer<CThingAICreature>>::clear) (chunk 668: ~CEngineMap, ~CASoundManager, ~CRenderManager2D, CBaseVideoRenderer::QueryInterface is a DECLARE_IUNKNOWN forwarder; retail's FadeSnowToTarget copy-paste kept) (two int3-after-noreturn stubs landed on the N+1 span). Owner rule 2026-11-01: wrong catalog names are fixed at landing (`coordinator/apply_labels.py` + sync);
+- Naming wave 15 landed (566/566 rechecked, 13 MATCH + 553 RELOCATION_MATCH; 217 bindings retired, 45 added; `naming/2026-11-01_wave15/`, DECISIONS_W15_RESOLVED: friend access and `mutable NoEventScansRunning` accepted, libpk CHandleBasedMemoryPool::Free deferred until named); 208 deferred lines + the c667-c674 queue rows feed wave 16.
+- Chunks 663-673 (NA008-NA018: the authorable band, 100-250 bytes, no twins) landed 10/10 each, chunk 674 (NA019, first 257-512 band + 5 gap-scan rows) 9/10 (PlayCutsceneSound parked on a prologue tie; its manifest row split at GetScriptActiveStatus 0x00CBF9CF via boundary-starts.tsv); 273 NAME_FIXES
+  (c663-c674), 301 labels (chunk 673: ~CEngine; gap-scan rows proven as CPosPassThru::QueryInterface and a `_$E1` static initializer, not library bytes) (chunk 672: 7 of 10 script-range dtor labels wrong; entity scripts named via the parent quest's Main) (chunk 671: three "OnDie" rows were three classes' implicit dtors; GetChecksum, ~CEngineLocalDetailGenerator mislabelled) (chunk 670: ten dtors, 6 of 10 catalog labels wrong, resolved by stored vtable + RTTI COL chain) (chunk 669: nine dtors, 4 of 9 catalog labels wrong; 0x00510D40 is _List_base<CIntelligentPointer<CThingAICreature>>::clear) (chunk 668: ~CEngineMap, ~CASoundManager, ~CRenderManager2D, CBaseVideoRenderer::QueryInterface is a DECLARE_IUNKNOWN forwarder; retail's FadeSnowToTarget copy-paste kept) (two int3-after-noreturn stubs landed on the N+1 span). Owner rule 2026-11-01: wrong catalog names are fixed at landing (`coordinator/apply_labels.py` + sync);
   landed-source respells go to naming wave 15 (brief written) right after the chunk round. zlib is 1.2.1 (C, ordinary reconstruction). The pool's authorable band lands like the twins: identity first. 0x00CA4xxx-0x00CA7xxx is DirectShow strmbase.
 - Chunk 659 (the parked pairs) landed 0x006276F0 GetItemsListUI with the real same-file ConstructItemCategoryList body; that
   sibling (destructor-inlining gap, chunk 583) and the Minion pair 0x00935E40 / 0x009363D0 (one source) stay parked with 12-33 probes.
@@ -72,14 +73,12 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA018 = 662-673 landed 10/10; NA019/NA020 = chunks 674/675 (the 257-512 band: zlib trees.c, descriptive `_global` labels) and naming wave 15 running at this write
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA018 = 662-673 landed 10/10, NA019 = 674 9/10; NA020/NA021 = chunks 675/676 (the 257-512 band, descriptive `_global` labels) and naming wave 16 running at this write
    (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
    pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.
-2. **Naming wave 15** (`naming/2026-11-01_wave14/DECISIONS_W14_RESOLVED.tsv` + DEFERRED.tsv): the IS_THING_ALIVE per-caller
-   instantiation (0x0097A630), the CCreatureActionBase friend model (00692940, 00692c10), the c654 queue rows, the 10 vcs
-   byte-changers and LowerBound's shared CVectorMap model (244 + 103 rows); VIRTUAL_SCREEN_* / PMainGameComponent stay gated.
+2. **Naming wave 16** (`naming/briefs/BRIEF_W16.md`; wave 15 DEFERRED.tsv + the c667-c674 queue rows): the ~22 ??_G stand-in rows and ~40 STLport own rows (re-authoring), the byte-moving tcb/bip/cmb family rows, the mega families (ConstantFPS, bitset::test, CBasicString::Compare, GetPItem, ~CCharString), the libpk CHandleBasedMemoryPool::Free name; VIRTUAL_SCREEN_* / PMainGameComponent stay gated.
 3. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md` (+ engine/CParentDefClassBase.h and engine/CLevelScriptBase.h implicit destructors, chunks 661/664 decisions): the 76 local `enum ENullDef` models, the
    1,317 proven CCountedPointer rows, and the shared `engine/CDefPointer.h` Release() shape (mov/dec/mov vs retail
    `dec [ecx+4]; jne`, header debt found in chunk 649).

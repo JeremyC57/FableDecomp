@@ -1,0 +1,2 @@
+1	the landed trees.c TU (0x00C05530 source) as is, leaf __tr_flush_block, /GS	DIFFER(487v485) -- strm->data_type (zlib 1.2.2) instead of s->data_type
+2	real zlib 1.2.1 text: s->data_type in _tr_flush_block and set_data_type	RELOCATION_MATCH (src)

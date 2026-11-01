@@ -1,0 +1,49 @@
+addr       parity           behav  name
+005fd410   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+005fd410   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fd410   WARN SHARED_HEADER_AVAILABLE CWorld
+005fd410   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005fd410   RELOCATION_MATCH PASS   GetRegionsToDisplay
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CTexture
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00bd9ce0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bd9ce0   WARN RELOC_NAME: ?GFEnterAllocatorLock@@YAXXZ -> 009f2000 labelled 'std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>'
+00bd9ce0   WARN RELOC_NAME: ?GetAllocationCount@CMemoryAllocator@@QAEJXZ -> 009f1f10 labelled '_global::GetMember_dword0x40c_009f1f10'
+00bd9ce0   WARN RELOC_NAME: ?GFLeaveAllocatorLock@@YAXXZ -> 009f2010 labelled '_Dest_val_std::allocator_NCreatureHitNotification::CFlash_,NCreatureHitNotification::CFlash_'
+00bd9ce0   RELOCATION_MATCH PASS   FreeDisposalList
+00c057d0   RELOCATION_MATCH PASS   _tr_flush_block
+00ca5200   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca5200   MATCH            PASS   CheckMediaType
+00ca62d0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca62d0   MATCH            PASS   QueryInterface
+00f29dc0   RELOCATION_MATCH PASS   ~CCutsceneDef
+0121a4f0   WARN RELOC_CONFLICT: _$E2 -> 01228d40 here, 01228930 in landed 01219f00
+0121a4f0   RELOCATION_MATCH PASS   $E_ConversationAttitudeToAnimName
+0121a580   WARN RELOC_CONFLICT: _$E2 -> 01228d80 here, 01228930 in landed 01219f00
+0121a580   RELOCATION_MATCH PASS   $E_ConversationAttitudeToAnimGroupName
+0121a7ca   WARN RELOC_CONFLICT: _$E2 -> 01228ed8 here, 01228930 in landed 01219f00
+0121a7ca   WARN RELOC_NAME: _$E2 -> 01228ed8 labelled 'CDebugManager::ThrowException'
+0121a7ca   RELOCATION_MATCH PASS   $E_CrimeText
+
+WINS: 9
+  005fd410 RELOCATION_MATCH CTCInventoryMap::?GetRegionsToDisplay@CTCInventoryMap@@QAEXAAV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z
+  00bd9ce0 RELOCATION_MATCH CEngineLandscapeMemoryManager::?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+  00c057d0 RELOCATION_MATCH _global::__tr_flush_block
+  00ca5200 MATCH CRendererInputPin::?CheckMediaType@CRendererInputPin@@UAEJPBVCMediaType@@@Z
+  00ca62d0 MATCH CBaseFilter::?QueryInterface@CBaseFilter@@UAGJABU_GUID@@PAPAX@Z
+  00f29dc0 RELOCATION_MATCH CCutsceneDef::??1CCutsceneDef@@UAE@XZ
+  0121a4f0 RELOCATION_MATCH CConversationAttitude::_$E1
+  0121a580 RELOCATION_MATCH CConversationAttitude::_$E1
+  0121a7ca RELOCATION_MATCH _global::_$E1
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryMap_GetRegionsToDisplay_005fd410
+  CEngineLandscapeMemoryManager_FreeDisposalList_00bd9ce0
+  global_trflushblock_00c057d0
+  CRendererInputPin_CheckMediaType_00ca5200
+  CBaseFilter_QueryInterface_00ca62d0
+  CCutsceneDef_CCutsceneDef_00f29dc0
+  CConversationAttitude_EConversationAttitudeToAnimName_0121a4f0
+  CConversationAttitude_EConversationAttitudeToAnimGroupName_0121a580
+  global_ECrimeText_0121a7ca

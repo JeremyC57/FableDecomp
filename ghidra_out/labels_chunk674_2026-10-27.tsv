@@ -1,0 +1,18 @@
+address	name	evidence
+00ca5200	CRendererInputPin::CheckMediaType	chunk 674 MATCH: slot 8 of CRendererInputPin primary vtable 0x012BF408 (CBasePin::CheckMediaType slot); DirectShow strmbase from DX9 SDK source
+00ca62d0	CBaseFilter::QueryInterface	chunk 674 MATCH: slot 0 of CBaseRenderer's IBaseFilter vtable 0x012BF458; DECLARE_IUNKNOWN forwarder; -4 thunk 0x00CA6340
+0121a4f0	`dynamic initializer for 'CConversationAttitude::ConversationAttitudeToAnimName''	chunk 674 RELOCATION_MATCH: FableWin initializer order after GeneralAttitudeToAnimName (0x0121A460); global 0x013B8A38
+0121a580	`dynamic initializer for 'CConversationAttitude::ConversationAttitudeToAnimGroupName''	chunk 674 RELOCATION_MATCH: same FableWin order; global 0x013B8A44, .CRT$XCU 0x013742EC
+0121a7ca	`anonymous namespace'::`dynamic initializer for 'CrimeText''	chunk 674 RELOCATION_MATCH: .CRT$XCU 0x01374324; previous initializer ends at 0x0121A7C9; CCharString[10] at 0x013B8B10; /Os TU
+005fd410	CTCInventoryMap::GetRegionsToDisplay	chunk 674 RELOCATION_MATCH: catalog name right; reads CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass 0x013B89FC
+00f29dc0	CCutsceneDef::~CCutsceneDef	chunk 674 RELOCATION_MATCH: sole caller ??_G 0x00F29DA0 = slot 0 of vtable 0x012FB6E0 stored by the landed ctor 0x00F29D00 (catalog ResetPrimitiveHandles wrong)
+00c057d0	_tr_flush_block	chunk 674 RELOCATION_MATCH (/GS): zlib 1.2.1 trees.c (decorated __tr_flush_block)
+00bd9ce0	CEngineLandscapeMemoryManager::FreeDisposalList	chunk 674 RELOCATION_MATCH: Ego_r name set (TextureDisposalList / VertexBufferDisposalList / IndexBufferDisposalList members) (catalog TexturePool_Clear wrong)
+00f29da0	CCutsceneDef::`scalar deleting destructor'	chunk 674: slot 0 of CCutsceneDef vtable 0x012FB6E0; calls 0x00F29DC0
+00bd9cc0	CEngineLandscapeMemoryManager::DeleteTexture	chunk 674: the 0x00BD9CE0 TU emits this function byte-identical to retail 0x00BD9CC0; Ego_r
+00cbf9cf	GetScriptActiveStatus	chunk 674: the 15 bytes after PlayCutsceneSound inside catalog row 0x00CBF7FE (row split); Ego_r ?GetScriptActiveStatus@@YI?AW4EScriptActiveStatus@@ABVCCharString@@@Z
+00cbfab8	SetScriptActiveStatus	chunk 674: writes ScriptActiveStatuses[name] = status over map 0x0143E910; Ego_r ?SetScriptActiveStatus@@YIXABVCCharString@@W4EScriptActiveStatus@@@Z (catalog SetMiniMapRegionExitTextOffsetX wrong)
+01228ed8	`anonymous namespace'::`dynamic atexit destructor for 'CrimeText''	chunk 674: registered by the initializer 0x0121A7CA (`push 0x01228ED8; call atexit`) (catalog CDebugManager::ThrowException wrong)
+009f2000	GFEnterAllocatorLock	chunk 674 RELOC_NAME: propagated _Dest_val<...CFlash> label wrong; the spelling landed callers use
+009f2010	GFLeaveAllocatorLock	chunk 674 RELOC_NAME: propagated _Dest_val<...CFlash> label wrong; the spelling landed callers use
+009f1f10	CMemoryAllocator::GetAllocationCount	chunk 674 RELOC_NAME: catalog GetMember_dword0x40c; the spelling 18 landed sources use
