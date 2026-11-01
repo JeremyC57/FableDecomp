@@ -25945,3 +25945,15 @@ chunk	address	module	name	length
 693	00ef8d30	_gapscan	sub_00ef8d30	1013
 693	00bc9c30	CEngineSubPrimitiveSpriteTrail	CEngineSubPrimitiveSpriteTrail::CEngineSubPrimitiveSpriteTrail	34
 693	009cdf50	CBankFile	CBankFile::WriteRecoveryFile	246
+694	00ab5420	CMouseDX	ConvertMouseEventToInputEvent	740
+694	00c6e410	_gapscan	sub_00c6e410	533
+694	00c6f990	_gapscan	sub_00c6f990	533
+694	00cafa10	CEditControlCentre	CEditControlCentre::FindTrackNodeInTimeRange	395
+694	00a36f90	CClassFactory	?AddNewClassType@CClassFactory@@MAEXABVCClassTypeInit@@@Z	47
+694	00a371c0	CClassFactory	AllocateClass	42
+694	00859a20	CCombatActionBase	?FinishAction@CCombatActionBase@@MAEXXZ	72
+694	0052ccf0	CTCIdleScheduler	Clear	42
+694	005ed120	CTCIdleScheduler	Clear	34
+694	00854310	CTCIdleScheduler	Clear	34
+694	00ef87d0	NScript	NScript::CPersonalScript_EmptyScript::CUndeadFellow::Main	1003
+694	00ef5cb0	NScript	NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main	817
