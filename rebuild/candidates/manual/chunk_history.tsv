@@ -25792,3 +25792,13 @@ chunk	address	module	name	length
 676	006661b0	_global	CThingGameObject_Finalize	348
 676	006ad260	_global	CThingPlayerCreature_ComputeAcceleration	338
 676	00dbefc0	_global	CParticleEmitter_Dtor_7	450
+677	00ac8360	_global	QuadricOptimiser_VertexPairContraction_Initialize	471
+677	00b7fde0	_global	Vector_Insert_14Elements	469
+677	00d782e0	_global	CParticleEmitter_Dtor_5	491
+677	00735340	_global	CChunkedFileChunk_dtor	507
+677	00cae9b0	_global	Variant_CopyVariantArray	504
+677	00caf230	_global	COM_InitializeDispatchContainer	501
+677	00cf9350	_global	CHeroMorphDef_Ctor	505
+677	00c683c0	_global	CDrawGuildSeal_ApplyEffect	328
+677	00881210	_global	CScreenEffectPriorityStack_Rebuild	346
+677	00c5f7f0	_global	Audio_ExpandADPCM_Stereo	486
