@@ -25692,3 +25692,13 @@ chunk	address	module	name	length
 666	004df562	CWillResponseDef	?Transfer@CWillResponseDef@@UAEXAAVCPersistContext@@@Z	101
 666	0071c260	CTCHeroMorph	KillParticles	110
 666	007fc730	CTCKraken	SetMode	104
+667	008553c0	CCreatureAction_BlockRespond	?FrameUpdate@CCreatureAction_BlockRespond@@UAEXXZ	99
+667	008c3f20	CCreatureAction_WaspQueenDie	?FrameUpdate@CCreatureAction_WaspQueenDie@@UAEXXZ	111
+667	0091d8c0	CAIStateGroup_EnemyCreatureBase	?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ	101
+667	00a5afb0	CCachedFile	?Write@CCachedFile@@UAEXPBXJPAVCASuspendableProcess@@@Z	96
+667	00a5b190	CCachedFile	SetLength	96
+667	00a75b70	CNavNavigableLeafNode	SetUpNeighbours	112
+667	00b0a060	C3DMeshStripifier	~C3DMeshStripifier	111
+667	00a6b5b0	C3DMeshStripifier	~C3DMeshStripifier	107
+667	009ac7c0	C3DMeshStripifier	~C3DMeshStripifier	161
+667	00b3ab10	CEngineInternalAttachedPrimitiveInfo	~CEngineInternalAttachedPrimitiveInfo	105
