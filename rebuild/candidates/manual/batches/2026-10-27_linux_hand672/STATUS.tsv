@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00e477f0	RELOCATION_MATCH	171v171	PASS	NScript::CV_BanditCampPathScript implicit dtor (catalog CActionMoveTo wrong); 1 probe
+00e62780	RELOCATION_MATCH	163v163	PASS	NScript::CV_BodyGuardScript implicit dtor (catalog CParticleEmitter placeholder); 1 probe
+00eb6ab0	RELOCATION_MATCH	214v214	PASS	NScript::CV_MurderTwistFinalScript implicit dtor (catalog CParticleEmitter placeholder); 1 probe
+00d728f0	RELOCATION_MATCH	185v185	PASS	NScript::CQ_HangingTreeGoodScript::CHTG_Audience implicit dtor (label class right, nesting added); 1 probe
+00e1da40	RELOCATION_MATCH	185v185	PASS	NScript::CQ_WizardBattleScript implicit dtor (catalog CHTG_Audience wrong); 1 probe
+00e68eb0	RELOCATION_MATCH	191v191	PASS	NScript::CV_ChickenKickingScript implicit dtor (catalog CV_SickChildScript wrong); 1 probe
+00a4eec0	RELOCATION_MATCH	203v203	PASS	C3DAnimation2::~C3DAnimation2 (catalog CEditWorld wrong); 1 probe
+00b5c050	RELOCATION_MATCH	205v205	PASS	CEngineScreenEffectRadialBlurRenderer::~CEngineScreenEffectRadialBlurRenderer (label right); 1 probe
+00babe60	RELOCATION_MATCH	200v200	PASS	CEnginePrimitiveManagerRepeatedZSprites::~CEnginePrimitiveManagerRepeatedZSprites (label right); 2 probes
+00d9fed0	RELOCATION_MATCH	203v203	PASS	NScript::CQ_MinionCampScript::CBriarRose implicit dtor (label class right, nesting added); 1 probe

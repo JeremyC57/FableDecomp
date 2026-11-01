@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00a4eec0   RELOCATION_MATCH PASS   ~C3DAnimation2
+00b5c050   RELOCATION_MATCH PASS   ~CEngineScreenEffectRadialBlurRenderer
+00babe60   WARN RELOC_NAME: ?Uninitialise@CIndexBuffer@@QAEXXZ -> 00ac1ee0 labelled 'CVolume::ReleaseVolume'
+00babe60   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00babe60   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerRepeatedZSprites
+00d728f0   RELOCATION_MATCH PASS   ~CHTG_Audience
+00d9fed0   RELOCATION_MATCH PASS   ~CBriarRose
+00e1da40   RELOCATION_MATCH PASS   ~CQ_WizardBattleScript
+00e477f0   RELOCATION_MATCH PASS   ~CV_BanditCampPathScript
+00e62780   RELOCATION_MATCH PASS   ~CV_BodyGuardScript
+00e68eb0   RELOCATION_MATCH PASS   ~CV_ChickenKickingScript
+00eb6ab0   RELOCATION_MATCH PASS   ~CV_MurderTwistFinalScript
+
+WINS: 10
+  00a4eec0 RELOCATION_MATCH C3DAnimation2::??1C3DAnimation2@@UAE@XZ
+  00b5c050 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::??1CEngineScreenEffectRadialBlurRenderer@@UAE@XZ
+  00babe60 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::??1CEnginePrimitiveManagerRepeatedZSprites@@UAE@XZ
+  00d728f0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Audience::??1CHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAE@XZ
+  00d9fed0 RELOCATION_MATCH NScript::CQ_MinionCampScript::CBriarRose::??1CBriarRose@CQ_MinionCampScript@NScript@@UAE@XZ
+  00e1da40 RELOCATION_MATCH NScript::CQ_WizardBattleScript::??1CQ_WizardBattleScript@NScript@@UAE@XZ
+  00e477f0 RELOCATION_MATCH NScript::CV_BanditCampPathScript::??1CV_BanditCampPathScript@NScript@@UAE@XZ
+  00e62780 RELOCATION_MATCH NScript::CV_BodyGuardScript::??1CV_BodyGuardScript@NScript@@UAE@XZ
+  00e68eb0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::??1CV_ChickenKickingScript@NScript@@UAE@XZ
+  00eb6ab0 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::??1CV_MurderTwistFinalScript@NScript@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  C3DAnimation2_C3DAnimation2_00a4eec0
+  CEngineScreenEffectRadialBlurRenderer_CEngineScreenEffectRadialBlurRenderer_00b5c050
+  CEnginePrimitiveManagerRepeatedZSprites_CEnginePrimitiveManagerRepeatedZSprites_00babe60
+  NScriptCQHangingTreeGoodScriptCHTGAudience_CHTGAudience_00d728f0
+  NScriptCQMinionCampScriptCBriarRose_CBriarRose_00d9fed0
+  NScriptCQWizardBattleScript_CQWizardBattleScript_00e1da40
+  NScriptCVBanditCampPathScript_CVBanditCampPathScript_00e477f0
+  NScriptCVBodyGuardScript_CVBodyGuardScript_00e62780
+  NScriptCVChickenKickingScript_CVChickenKickingScript_00e68eb0
+  NScriptCVMurderTwistFinalScript_CVMurderTwistFinalScript_00eb6ab0

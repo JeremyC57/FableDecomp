@@ -35723,3 +35723,5 @@ _static_l_desc	0139c8b0	00c051c0
 ??_7CEngineShadowRenderer@@6B@	012a2374	00b4d210
 ?OnReleaseDefaultPoolResources@CEngineShadowRenderer@@UAEXXZ	00b4b830	00b4d210
 ??1CLocalDetailCacheMap@@QAE@XZ	00bded60	00b59be0
+??1C3DAnimationStats@@UAE@XZ	00a4eb50	00a4eec0
+?clear@?$_List_base@V?$CIntelligentPointer@VC3DAnimation2@@@@V?$allocator@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@@std@@QAEXXZ	00a53300	00a4eec0

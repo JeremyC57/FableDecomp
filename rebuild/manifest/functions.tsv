@@ -37139,10 +37139,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a4eac0	HasEvent	C3DAnimationStats	__thiscall	bool	2	CNavQuadTree *,C2DVector *	1	yes	accepted									
 00a4eae0	GetEventTime	C3DAnimationStats	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a4\CRegion_SetMiniMapRegionExitTextOffsetY_00a4eae0.cpp
 00a4eb00	CRegionDef	CRegionDef	__thiscall	undefined	1	CRegionDef *	0	yes	accepted									
-00a4eb50	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+00a4eb50	~C3DAnimationStats	C3DAnimationStats	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00a4ebb0	InitialiseStats	C3DAnimationStats	__thiscall	void	3	C3DAnimationStats *,C3DAnimFile *,EAnimationType	1	yes	accepted									
 00a4ee10	C3DAnimation2	C3DAnimation2	__thiscall	undefined	1	C3DAnimation2 *	0	yes	accepted									
-00a4eec0	~CEditWorld	CEditWorld	__thiscall	void	1	CEditWorld *	1	yes	accepted									
+00a4eec0	~C3DAnimation2	C3DAnimation2	__thiscall	void	1	CEditWorld *	1	yes	accepted									
 00a4ef90	GetAllEventNames	C3DAnimationStats	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
 00a4efc0	C3DKeyframe_InitialiseAsConstant	_global	unknown	undefined	0		0	yes	accepted									
 00a4fd70	InitialiseAsConstant	C3DAnimationSequenceData	__thiscall	void	5	C3DAnimationSequenceData *,CMatrix3x4 *,ulong,float,CSimpleMemoryPool *	1	yes	accepted									
@@ -37207,7 +37207,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a53040	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a53040.cpp
 00a53080	CIntelligentPointer<CThing_const_>	CIntelligentPointer<CThing_const_>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CThing *	0	yes	accepted									
 00a530b0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a530b0.cpp
-00a53300	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
+00a53300	clear	std::_List_base<CIntelligentPointer<C3DAnimation2>,std::allocator<CIntelligentPointer<C3DAnimation2> > >	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 00a533f0	New<C3DAnimationSequence>	CSimpleMemoryPool	__thiscall	C3DAnimationSequence *	2	CSimpleMemoryPool *,ulong	1	yes	accepted									
 00a53440	New<C3DAnimationSequenceData>	CSimpleMemoryPool	__thiscall	C3DAnimationSequenceData *	2	CSimpleMemoryPool *,ulong	1	yes	accepted									
 00a53520	_Cons_val<std::allocator<CIntelligentPointer<CThing_const_>_>,CIntelligentPointer<CThing_const_>,CIntelligentPointer<class_CThing_const_>_>	_Cons_val<std	__fastcall	void	3	allocator<CIntelligentPointer<CThing_const_>_> *,CIntelligentPointer<CThing_const_> *,CIntelligentPointer<class_CThing_const_> *	1	yes	accepted									
@@ -37245,8 +37245,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a55400	C3DAnimation2::vfunc_0	C3DAnimation2	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a55420	OnDie	CTCInventoryItem	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 00a55500	CDefendingCombatantInfo_CCombatWheel_Reallocate	_global	unknown	undefined	0		0	yes	accepted									
-00a555a0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CLandscapeBackgroundPatch_vectordeletingdestructor_00a555a0.cpp
-00a555c0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CLandscapeBackgroundPatch_vectordeletingdestructor_00a555c0.cpp
+00a555a0	`scalar deleting destructor'	C3DAnimationStats	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CLandscapeBackgroundPatch_vectordeletingdestructor_00a555a0.cpp
+00a555c0	`scalar deleting destructor'	C3DAnimation2	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CLandscapeBackgroundPatch_vectordeletingdestructor_00a555c0.cpp
 00a55670	resize	vector<CBrainBehaviour	__thiscall	void	3	vector<CBrainBehaviour,std::allocator<CBrainBehaviour>_> *,uint,CBrainBehaviour	1	yes	accepted									
 00a557e0	BinaryTreeTraversal_Insert	_global	unknown	undefined	0		0	yes	accepted									
 00a55880	BinaryTreeTraversal_InsertPair	_global	unknown	undefined	0		0	yes	accepted									
@@ -39446,7 +39446,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac1e70	?GetChunkDescription@C3DMeshFileMaterialChunk@@UBE?BVCCharString@@XZ	C3DMeshFileMaterialChunk	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\C3DMeshFileMaterialChunk_GetChunkDescriptionC3DMeshFileMaterialChunkUBEBV_00ac1e70.cpp
 00ac1e90	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CEngineSubPrimitiveText_scalardeletingdestructor_00ac1e90.cpp
 00ac1ec0	CIndexBuffer	CIndexBuffer	__thiscall	undefined	1	CIndexBuffer *	0	yes	accepted									
-00ac1ee0	ReleaseVolume	CVolume	__thiscall	void	1	CVolume *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CVolume_ReleaseVolume_00ac1ee0.cpp
+00ac1ee0	Uninitialise	CIndexBuffer	__thiscall	void	1	CVolume *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CVolume_ReleaseVolume_00ac1ee0.cpp
 00ac1f00	DoUnlock	CVertexBufferWin32	__thiscall	void	1	CVertexBufferWin32 *	1	yes	accepted									
 00ac1f10	GetSize	CIndexBuffer	__thiscall	long	1	CIndexBuffer *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CIndexBuffer_GetSize_00ac1f10.cpp
 00ac1f30	Sizeof	CIndexBuffer	__thiscall	ulong	1	CIndexBuffer *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ac\CIndexBuffer_Sizeof_00ac1f30.cpp
@@ -41643,7 +41643,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b5ea30	?Render@CEngineScreenEffectRadialBlurRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	CEngineScreenEffectRadialBlurRenderer	__thiscall	void	2	CEngineScreenEffectRadialBlurRenderer *,CEngineComponentRenderParams *	1	yes	accepted									
 00b5ead0	?GetConsoleEnableFunctionName@CEngineScreenEffectRadialBlurRenderer@@UAE?AVCCharString@@XZ	CEngineScreenEffectRadialBlurRenderer	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CEngineScreenEffectRadialBlurRenderer_GetConsoleEnableFunctionNameCEngineScreenEffectR_00b5ead0.cpp
 00b5eaf0	CEngineScreenEffectRadialBlurRenderer::PeekSceneFilterFlags	CEngineScreenEffectRadialBlurRenderer	__thiscall	ulong	1	CEngineScreenEffectRadialBlurRenderer *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CEngineScreenEffectRadialBlurRenderer_PeekSceneFilterFlags_00b5eaf0.cpp
-00b5eb00	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CLandscapeBackgroundPatch_vectordeletingdestructor_00b5eb00.cpp
+00b5eb00	`scalar deleting destructor'	CEngineScreenEffectRadialBlurRenderer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CLandscapeBackgroundPatch_vectordeletingdestructor_00b5eb00.cpp
 00b5ebf0	SetConfiguration	CEngineScreenEffectGlowRenderer	unknown	undefined	0		0			discovered	gapscan							
 00b5ec60	CEngineScreenEffectGlowRenderer::OnReleaseDefaultPoolResources	CEngineScreenEffectGlowRenderer	__thiscall	void	1	CEngineScreenEffectGlowRenderer *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CEngineScreenEffectGlowRenderer_OnReleaseDefaultPoolResources_00b5ec60.cpp
 00b5ec90	TransferBinaryOut	CCombatAbilityData	__thiscall	void	3	CCombatAbilityData *,CDataOutputStream *,CCombatAbilityData *	1	yes	accepted									
@@ -42404,7 +42404,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bac6e0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ba\CLandscapeBackgroundPatch_vectordeletingdestructor_00bac6e0.cpp
 00bac720	std_vector_insert_range_at	_global	unknown	undefined	0		0	yes	accepted									
 00bac800	_M_fill_insert	std::vector<CEngineInternalPrimitiveRepeatedZSprite *, std::allocator<CEngineInternalPrimitiveRepeatedZSprite *>>	unknown	undefined	0		0	yes	accepted									
-00bac970	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ba\CLandscapeBackgroundPatch_vectordeletingdestructor_00bac970.cpp
+00bac970	`scalar deleting destructor'	CEnginePrimitiveManagerRepeatedZSprites	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ba\CLandscapeBackgroundPatch_vectordeletingdestructor_00bac970.cpp
 00bac990	resize	vector<unsigned_int	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 00baca20	CEngineScenePrimitiveStatsEnumerator	CEngineScenePrimitiveStatsEnumerator	__thiscall	undefined	5	CEngineScenePrimitiveStatsEnumerator *,map<unsigned_long,unsigned_long,std::less<unsigned_long>,std::allocator<std::pair<unsigned_long_const_,unsigned_long>_>_> *,C2DBoxF *,EEnginePrimitiveStatIndex,ulong	0	yes	accepted									
 00baca70	?ProcessPrimitive@CEngineScenePrimitiveStatsEnumerator@@UAEXAAVCEngineInternalPrimitiveBase@@@Z	CEngineScenePrimitiveStatsEnumerator	__thiscall	void	2	CEngineScenePrimitiveStatsEnumerator *,CEngineInternalPrimitiveBase *	1	yes	accepted									
@@ -50341,7 +50341,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d71a30	Init	NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner	unknown	undefined	0		0			discovered	gapscan							
 00d71a70	OnPredicateFail	NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner	unknown	undefined	0		0			discovered	gapscan							
 00d71b30	Main	CHTG_Prisoner	__thiscall	void	1	CHTG_Prisoner *	1	yes	accepted									
-00d72160	CAIStateGroup_JackOfBladesBase	CAIStateGroup_JackOfBladesBase	__thiscall	undefined	1	CAIStateGroup_JackOfBladesBase *	0	yes	accepted									
+00d72160	CHTG_Audience	NScript::CQ_HangingTreeGoodScript::CHTG_Audience	__thiscall	undefined	1	CAIStateGroup_JackOfBladesBase *	0	yes	accepted									
 00d721e0	sub_00d721e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d721f0	sub_00d721f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d72200	Main	CHTG_Audience	__thiscall	void	1	CHTG_Audience *	1	yes	accepted									
@@ -50350,8 +50350,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d72580	sub_00d72580	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d72590	Main	CHTG_Boss	__thiscall	void	1	CHTG_Boss *	1	yes	accepted									
 00d728a0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CEngineSubPrimitiveText_scalardeletingdestructor_00d728a0.cpp
-00d728d0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CLandscapeBackgroundPatch_vectordeletingdestructor_00d728d0.cpp
-00d728f0	~CHTG_Audience	CHTG_Audience	__thiscall	void	1	CHTG_Audience *	1	yes	accepted									
+00d728d0	`scalar deleting destructor'	NScript::CQ_HangingTreeGoodScript::CHTG_Audience	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CLandscapeBackgroundPatch_vectordeletingdestructor_00d728d0.cpp
+00d728f0	~CHTG_Audience	NScript::CQ_HangingTreeGoodScript::CHTG_Audience	__thiscall	void	1	CHTG_Audience *	1	yes	accepted									
 00d729b0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CEngineSubPrimitiveText_scalardeletingdestructor_00d729b0.cpp
 00d729e0	CreateActiveEntityScript	CEntityScriptBinding<NScript::CQ_HangingTreeGoodScript>	unknown	undefined	0		0	yes	accepted									
 00d72af0	SuspendableProcess	CActiveEntityScript<NScript::CQ_HangingTreeGoodScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
@@ -50821,7 +50821,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d9daf0	sub_00d9daf0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d9e190	Alloc	NScript::CQ_HobbeToothContestScript	__fastcall	CScriptBase *	2	CScriptDataBase *,CGameScriptInterfaceBase *	1	yes	accepted									
 00d9e1e0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CEngineSubPrimitiveText_scalardeletingdestructor_00d9e1e0.cpp
-00d9e210	CV_FisticuffsClubScript	CV_FisticuffsClubScript	__thiscall	undefined	3	CV_FisticuffsClubScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
+00d9e210	CQ_MinionCampScript	NScript::CQ_MinionCampScript	__thiscall	undefined	3	CV_FisticuffsClubScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00d9e2e0	Init	CQ_MinionCampScript	__thiscall	void	1	CQ_MinionCampScript *	1	yes	accepted									
 00d9e520	RegisterMain	NScript::CQ_MinionCampScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00d9e5b0	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d9e5b0.cpp
@@ -50857,8 +50857,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d9f6c0	Main	CFadeinSummoner	__thiscall	void	1	CFadeinSummoner *	1	yes	accepted									
 00d9fd80	PhaseMe	CFadeinSummoner	__thiscall	void	1	CFadeinSummoner *	1	yes	accepted									
 00d9fe40	GetAlphaChange	CFadeinSummoner	__thiscall	float	1	CFadeinSummoner *	1	yes	accepted									
-00d9feb0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CLandscapeBackgroundPatch_vectordeletingdestructor_00d9feb0.cpp
-00d9fed0	~CBriarRose	CBriarRose	__thiscall	void	1	CBriarRose *	1	yes	accepted									
+00d9feb0	`scalar deleting destructor'	NScript::CQ_MinionCampScript::CBriarRose	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CLandscapeBackgroundPatch_vectordeletingdestructor_00d9feb0.cpp
+00d9fed0	~CBriarRose	NScript::CQ_MinionCampScript::CBriarRose	__thiscall	void	1	CBriarRose *	1	yes	accepted									
 00d9ffa0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d9\CEngineSubPrimitiveText_scalardeletingdestructor_00d9ffa0.cpp
 00d9ffd0	CActiveEntityScriptBase_Create_d9ffd0	_global	unknown	undefined	0		0	yes	accepted									
 00da00e0	SuspendableProcess	CActiveEntityScript<NScript::CQ_MinionCampScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
@@ -52154,8 +52154,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e1d640	EndMission	CQ_WizardBattleScript	__thiscall	void	1	CQ_WizardBattleScript *	1	yes	accepted									
 00e1d690	CleanUp	CQ_WizardBattleScript	__thiscall	void	1	CQ_WizardBattleScript *	1	yes	accepted									
 00e1d7b0	CutsceneMazeDeath	NScript::CQ_WizardBattleScript	unknown	undefined	0		0	yes	accepted									
-00e1da20	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CLandscapeBackgroundPatch_vectordeletingdestructor_00e1da20.cpp
-00e1da40	~CHTG_Audience	CHTG_Audience	__thiscall	void	1	CHTG_Audience *	1	yes	accepted									
+00e1da20	`scalar deleting destructor'	NScript::CQ_WizardBattleScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CLandscapeBackgroundPatch_vectordeletingdestructor_00e1da20.cpp
+00e1da40	~CQ_WizardBattleScript	NScript::CQ_WizardBattleScript	__thiscall	void	1	CHTG_Audience *	1	yes	accepted									
 00e1db00	CQR_EscortTraderScript	CQR_EscortTraderScript	__thiscall	undefined	3	CQR_EscortTraderScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00e1dc30	RegisterMain	NScript::CQR_EscortTraderScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00e1dcc0	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e1\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e1dcc0.cpp
@@ -52565,8 +52565,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e47720	SuspendableProcess	CActiveEntityScript<NScript::CV_BanditCampPathScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00e47770	`vector_deleting_destructor'	CThingSwitch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e4\CThingSwitch_vectordeletingdestructor_00e47770.cpp
 00e477a0	Alloc	NScript::CV_BanditCampPathScript	unknown	undefined	0		0			discovered	gapscan							
-00e477d0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e4\CLandscapeBackgroundPatch_vectordeletingdestructor_00e477d0.cpp
-00e477f0	~CActionMoveTo	CActionMoveTo	__thiscall	void	1	CActionMoveTo *	1	yes	accepted									
+00e477d0	`scalar deleting destructor'	NScript::CV_BanditCampPathScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e4\CLandscapeBackgroundPatch_vectordeletingdestructor_00e477d0.cpp
+00e477f0	~CV_BanditCampPathScript	NScript::CV_BanditCampPathScript	__thiscall	void	1	CActionMoveTo *	1	yes	accepted									
 00e478a0	CV_BanditTollScript	NScript::CV_BanditTollScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									
 00e478d0	Init	NScript::CV_BanditTollScript	unknown	undefined	0		0			discovered	gapscan							
 00e47910	RegisterMain	NScript::CV_BanditTollScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
@@ -52777,9 +52777,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e5fd10	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CEngineSubPrimitiveText_scalardeletingdestructor_00e5fd10.cpp
 00e5fd40	sub_00e5fd40	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00e621f0	SetHenchmanAsHired	CBodyGuard	__thiscall	void	2	CBodyGuard *,bool	1	yes	accepted									
-00e62760	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CLandscapeBackgroundPatch_vectordeletingdestructor_00e62760.cpp
-00e62780	CParticleEmitter::~CParticleEmitter_Minimal	CParticleEmitter	unknown	undefined	0		0	yes	accepted									
-00e62830	CV_BanditCampPathScript	CV_BanditCampPathScript	__thiscall	undefined	3	CV_BanditCampPathScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
+00e62760	`scalar deleting destructor'	NScript::CV_BodyGuardScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CLandscapeBackgroundPatch_vectordeletingdestructor_00e62760.cpp
+00e62780	~CV_BodyGuardScript	NScript::CV_BodyGuardScript	unknown	undefined	0		0	yes	accepted									
+00e62830	CV_ChickenKickingScript	NScript::CV_ChickenKickingScript	__thiscall	undefined	3	CV_BanditCampPathScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00e628b0	Init	NScript::CV_ChickenKickingScript	unknown	undefined	0		0			discovered	gapscan							
 00e628e0	RegisterMain	NScript::CV_ChickenKickingScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00e62970	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e62970.cpp
@@ -52815,8 +52815,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e68b20	PlayCutscene	NScript::CV_ChickenKickingScript	unknown	undefined	0		0	yes	accepted									
 00e68dc0	Init	NScript::CV_ChickenKickingScript::CChickenSign	unknown	undefined	0		0			discovered	gapscan							
 00e68e60	sub_00e68e60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00e68e90	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CLandscapeBackgroundPatch_vectordeletingdestructor_00e68e90.cpp
-00e68eb0	~CV_SickChildScript	CV_SickChildScript	__thiscall	void	1	CV_SickChildScript *	1	yes	accepted									
+00e68e90	`scalar deleting destructor'	NScript::CV_ChickenKickingScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e6\CLandscapeBackgroundPatch_vectordeletingdestructor_00e68e90.cpp
+00e68eb0	~CV_ChickenKickingScript	NScript::CV_ChickenKickingScript	__thiscall	void	1	CV_SickChildScript *	1	yes	accepted									
 00e68f70	CAIStateGroupBase	CAIStateGroupBase	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
 00e68fa0	Init	NScript::CV_ChapelOfEvilScript	unknown	undefined	0		0			discovered	gapscan							
 00e69030	RegisterMain	NScript::CV_ChapelOfEvilScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
@@ -53566,8 +53566,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00eb69d0	sub_00eb69d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00eb6a00	Init	CV_SwordInTheStoneScript	__thiscall	void	1	CV_SwordInTheStoneScript *	1	yes	accepted									
 00eb6a60	sub_00eb6a60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00eb6a90	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\eb\CLandscapeBackgroundPatch_vectordeletingdestructor_00eb6a90.cpp
-00eb6ab0	CParticleEmitter::~CParticleEmitter_0xb6ab0	CParticleEmitter	unknown	undefined	0		0	yes	accepted									
+00eb6a90	`scalar deleting destructor'	NScript::CV_MurderTwistFinalScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\eb\CLandscapeBackgroundPatch_vectordeletingdestructor_00eb6a90.cpp
+00eb6ab0	~CV_MurderTwistFinalScript	NScript::CV_MurderTwistFinalScript	unknown	undefined	0		0	yes	accepted									
 00eb6b90	CV_MayorsInvitationScript	NScript::CV_MayorsInvitationScript	__thiscall	undefined	1	CIcicleData *	0	yes	accepted									
 00eb6bd0	Init	CV_MayorsInvitationScript	__thiscall	void	1	CV_MayorsInvitationScript *	1	yes	accepted									
 00eb6cb0	RegisterMain	NScript::CV_MayorsInvitationScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									

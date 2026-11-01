@@ -1,0 +1,2 @@
+1	user dtor (unconditional FreeMemoryPage), inline ~CIndexBuffer/~CVertexBufferWin32/~CMovableResource, STLport CArray	RELOCATION_MATCH
+2	same with real RTTI intermediate bases + CCountedPointer UnitBox in the base model	RELOCATION_MATCH (tail ??1CEnginePrimitiveManagerOcclusionBase)

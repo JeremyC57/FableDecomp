@@ -1,0 +1,30 @@
+address	name	evidence
+00e477f0	NScript::CV_BanditCampPathScript::~CV_BanditCampPathScript	chunk 672 RELOCATION_MATCH: ??_G 0x00E477D0 slot 0 of vtable 0x012E4A9C <- ctor 0x00E46BD0 <- Alloc 0x00E477A0 registered after "S_VBCP"; conversion_queue.tsv (catalog CActionMoveTo wrong)
+00e62780	NScript::CV_BodyGuardScript::~CV_BodyGuardScript	chunk 672 RELOCATION_MATCH: ??_G 0x00E62760 slot 0 of 0x012E6E4C <- ctor 0x00E5D140 <- Alloc 0x00E62730 registered after "S_VBGu" (catalog CParticleEmitter placeholder wrong)
+00eb6ab0	NScript::CV_MurderTwistFinalScript::~CV_MurderTwistFinalScript	chunk 672 RELOCATION_MATCH: ??_G 0x00EB6A90 slot 0 of 0x012EF978 <- ctor 0x00EAE910 <- Alloc 0x00EB6A60 registered after "S_VMTF" (catalog CParticleEmitter placeholder wrong)
+00d728f0	NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience	chunk 672 RELOCATION_MATCH: ??_G 0x00D728D0 slot 0 of entity vtable 0x012D292C <- ctor 0x00D72160 <- factory 0x00D720E0 stored under "HTG_Audience" by CQ_HangingTreeGoodScript::Main
+00e1da40	NScript::CQ_WizardBattleScript::~CQ_WizardBattleScript	chunk 672 RELOCATION_MATCH: ??_G 0x00E1DA20 slot 0 of 0x012E0F54 <- ctor 0x00E1A800 <- Alloc 0x00E1D9F0 registered after "S_QWZB" (catalog CHTG_Audience wrong)
+00e68eb0	NScript::CV_ChickenKickingScript::~CV_ChickenKickingScript	chunk 672 RELOCATION_MATCH: ??_G 0x00E68E90 slot 0 of 0x012E7318 <- ctor 0x00E62830 <- Alloc 0x00E68E60 registered after "S_VCK" (catalog CV_SickChildScript wrong)
+00d9fed0	NScript::CQ_MinionCampScript::CBriarRose::~CBriarRose	chunk 672 RELOCATION_MATCH: ??_G 0x00D9FEB0 slot 0 of entity vtable 0x012D6D0C <- ctor 0x00D9E930 <- factory 0x00D9E8B0 (new 0x50 = the CQ_MinionCampScript nest) stored under "BriarRose"
+00a4eec0	C3DAnimation2::~C3DAnimation2	chunk 672 RELOCATION_MATCH: stores RTTI vtables 0x0129D548 (primary) / 0x0129D534 (CMovableResource +0x2C); sole caller ??_G 0x00A555C0 (catalog CEditWorld wrong)
+00b5c050	CEngineScreenEffectRadialBlurRenderer::~CEngineScreenEffectRadialBlurRenderer	chunk 672 RELOCATION_MATCH: RTTI vtable 0x012A2658; ??_G 0x00B5EB00 slot 0; Ego_r
+00babe60	CEnginePrimitiveManagerRepeatedZSprites::~CEnginePrimitiveManagerRepeatedZSprites	chunk 672 RELOCATION_MATCH: RTTI vtable 0x012A5314; ??_G 0x00BAC970 slot 0; Ego_r
+00e477d0	NScript::CV_BanditCampPathScript::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012E4A9C
+00e62760	NScript::CV_BodyGuardScript::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012E6E4C
+00eb6a90	NScript::CV_MurderTwistFinalScript::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012EF978
+00d728d0	NScript::CQ_HangingTreeGoodScript::CHTG_Audience::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012D292C; Ego_r + FableWin list the symbol
+00e1da20	NScript::CQ_WizardBattleScript::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012E0F54
+00e68e90	NScript::CV_ChickenKickingScript::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012E7318
+00d9feb0	NScript::CQ_MinionCampScript::CBriarRose::`scalar deleting destructor'	chunk 672: slot 0 of vtable 0x012D6D0C
+00a555c0	C3DAnimation2::`scalar deleting destructor'	chunk 672: slot 0 of RTTI vtable 0x0129D548
+00b5eb00	CEngineScreenEffectRadialBlurRenderer::`scalar deleting destructor'	chunk 672: slot 0 of RTTI vtable 0x012A2658
+00bac970	CEnginePrimitiveManagerRepeatedZSprites::`scalar deleting destructor'	chunk 672: slot 0 of RTTI vtable 0x012A5314; Ego_r
+00a4eb50	C3DAnimationStats::~C3DAnimationStats	chunk 672: stores RTTI vtable 0x0129D514; slot-0 ??_G 0x00A555A0 calls it; tail target of ~C3DAnimation2 (catalog CPatchTesselationEdgeStrip wrong)
+00a555a0	C3DAnimationStats::`scalar deleting destructor'	chunk 672: slot 0 of RTTI vtable 0x0129D514; Ego_r
+00a53300	std::_List_base<CIntelligentPointer<C3DAnimation2>,std::allocator<CIntelligentPointer<C3DAnimation2> > >::clear	chunk 672: called by ~C3DAnimation2 on its list member; STLport 4.6 _list.c body (catalog SortTreeRecursively wrong)
+00ac1ee0	CIndexBuffer::Uninitialise	chunk 672: called right after the CIndexBuffer RTTI vtable 0x0129EF2C store inside the inline ~CIndexBuffer (0x00BABE9A); Ego_r (catalog CVolume::ReleaseVolume wrong)
+00f37030	CGPUScratchBufferTextureManager::FreeMemoryPage	chunk 672: Ego_r only spelling (long handle); called with DynamicTexturePageHandle at 0x00B5C06E / 0x00BABE7C
+00f35b40	CEntityScriptBase::~CEntityScriptBase	chunk 672: tail target of the implicit entity-script dtors 0x00D728F0 / 0x00D9FED0; stores CEntityScriptBase vtable 0x012C3224
+00e62830	NScript::CV_ChickenKickingScript::CV_ChickenKickingScript	chunk 672: stores vtable 0x012E7318; only caller Alloc 0x00E68E60 (manifest CV_BanditCampPathScript ctor wrong)
+00d72160	NScript::CQ_HangingTreeGoodScript::CHTG_Audience::CHTG_Audience	chunk 672: stores vtable 0x012D292C; caller factory 0x00D720E0 (manifest CAIStateGroup_JackOfBladesBase wrong)
+00d9e210	NScript::CQ_MinionCampScript::CQ_MinionCampScript	chunk 672: registered as "Q_MinionCamp"; its Main stores the BriarRose factory (manifest CV_FisticuffsClubScript wrong)

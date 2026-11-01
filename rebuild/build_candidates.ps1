@@ -372700,6 +372700,76 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed7640_test.cpp'
         PassPattern = '00ed7640_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a4eec0'
+        Module = 'C3DAnimation2'
+        Source = '00/a4/C3DAnimation2_C3DAnimation2_00a4eec0.cpp'
+        TestSource = '00/a4/C3DAnimation2_C3DAnimation2_00a4eec0_test.cpp'
+        PassPattern = '00a4eec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b5c050'
+        Module = 'CEngineScreenEffectRadialBlurRenderer'
+        Source = '00/b5/CEngineScreenEffectRadialBlurRenderer_CEngineScreenEffectRadialBlurRenderer_00b5c050.cpp'
+        TestSource = '00/b5/CEngineScreenEffectRadialBlurRenderer_CEngineScreenEffectRadialBlurRenderer_00b5c050_test.cpp'
+        PassPattern = '00b5c050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00babe60'
+        Module = 'CEnginePrimitiveManagerRepeatedZSprites'
+        Source = '00/ba/CEnginePrimitiveManagerRepeatedZSprites_CEnginePrimitiveManagerRepeatedZSprites_00babe60.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerRepeatedZSprites_CEnginePrimitiveManagerRepeatedZSprites_00babe60_test.cpp'
+        PassPattern = '00babe60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d728f0'
+        Module = 'NScript::CQ_HangingTreeGoodScript::CHTG_Audience'
+        Source = '00/d7/NScriptCQHangingTreeGoodScriptCHTGAudience_CHTGAudience_00d728f0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScriptCHTGAudience_CHTGAudience_00d728f0_test.cpp'
+        PassPattern = '00d728f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9fed0'
+        Module = 'NScript::CQ_MinionCampScript::CBriarRose'
+        Source = '00/d9/NScriptCQMinionCampScriptCBriarRose_CBriarRose_00d9fed0.cpp'
+        TestSource = '00/d9/NScriptCQMinionCampScriptCBriarRose_CBriarRose_00d9fed0_test.cpp'
+        PassPattern = '00d9fed0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1da40'
+        Module = 'NScript::CQ_WizardBattleScript'
+        Source = '00/e1/NScriptCQWizardBattleScript_CQWizardBattleScript_00e1da40.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScript_CQWizardBattleScript_00e1da40_test.cpp'
+        PassPattern = '00e1da40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e477f0'
+        Module = 'NScript::CV_BanditCampPathScript'
+        Source = '00/e4/NScriptCVBanditCampPathScript_CVBanditCampPathScript_00e477f0.cpp'
+        TestSource = '00/e4/NScriptCVBanditCampPathScript_CVBanditCampPathScript_00e477f0_test.cpp'
+        PassPattern = '00e477f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e62780'
+        Module = 'NScript::CV_BodyGuardScript'
+        Source = '00/e6/NScriptCVBodyGuardScript_CVBodyGuardScript_00e62780.cpp'
+        TestSource = '00/e6/NScriptCVBodyGuardScript_CVBodyGuardScript_00e62780_test.cpp'
+        PassPattern = '00e62780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e68eb0'
+        Module = 'NScript::CV_ChickenKickingScript'
+        Source = '00/e6/NScriptCVChickenKickingScript_CVChickenKickingScript_00e68eb0.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScript_CVChickenKickingScript_00e68eb0_test.cpp'
+        PassPattern = '00e68eb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb6ab0'
+        Module = 'NScript::CV_MurderTwistFinalScript'
+        Source = '00/eb/NScriptCVMurderTwistFinalScript_CVMurderTwistFinalScript_00eb6ab0.cpp'
+        TestSource = '00/eb/NScriptCVMurderTwistFinalScript_CVMurderTwistFinalScript_00eb6ab0_test.cpp'
+        PassPattern = '00eb6ab0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
