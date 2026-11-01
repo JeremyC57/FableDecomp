@@ -25882,3 +25882,13 @@ chunk	address	module	name	length
 687	00c61d10	_global	CRegion_UpdateMouseCursorVisuals	581
 687	00c733d0	_global	Audio_ApplyEffectProperties	610
 687	00c73af0	_global	NHeroInformationScreens_CreateScreen	672
+688	00c76120	_global	SignalProcessing_InterpolateAndAccumulate	641
+688	00b6ce00	_global	Vector_InsertFill_Vertices	674
+688	00c88e60	_global	Audio_ProcessFilter4Channel	681
+688	00aa5460	_global	ReadFromFile	700
+688	00c75140	_global	FFT_RadixStride_Vectorized	700
+688	00761280	_global	DrawPrimitiveLineOverLandscape	733
+688	00ac9a60	_global	QuadricOptimiser_PreprocessAdjacencyAndNormals	745
+688	00501150	_global	LoadLevel_ParseObjects	756
+688	00678460	_global	CMemoryBlock_Destructor_Extended	758
+688	00ca0890	_global	CurveInterpolation_ResampleCurveData	776
