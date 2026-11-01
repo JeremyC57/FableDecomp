@@ -117,7 +117,9 @@ public:
             return alias->second;
         return name;
     }
-    void CreateRetailBank(const CWideString& path);         // 0x009A7720
+private:
+    void CreateRetailBank(const CWideString& path);         // 0x009A7720 (private: Ego_r.pdb / FableWin.pdb AAE; naming wave 27)
+public:
     CWideString GetRetailBankFilePath(const CCharString& bank);
 };
 

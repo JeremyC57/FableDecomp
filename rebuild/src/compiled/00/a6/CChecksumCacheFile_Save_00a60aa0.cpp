@@ -1,4 +1,7 @@
 // CChecksumCacheFile::Save() -- when the cache needs saving, rewrite its file: a placeholder header, then for every entry whose path still exists its name (as a char string), date and checksum, then the header patched with version 4 and the number of entries written; the file is closed and the cache marked saved
+// Leaf: ?Save@CChecksumCacheFile@@AAEXXZ
+// Naming wave 27 (family fdosw, DECISIONS_W26 D2): CFileDataOutputStream is the polymorphic retail class (engine/
+//   CFileDataOutputStream.h FABLE_RETAIL_FILE_DATA_OUTPUT_STREAM: vtable 0x0129A6F8, Write slot 4 UAE, ~ UAE). Was GetPosition / SetPosition / ~ / WriteDateAndTime on a CFileDataOutputStream stand-in; Save private (AAE) as both PDBs spell it.
 // Naming wave 26 (family fdos): ??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z 0x00994400 (Ego_r.pdb + FableWin.pdb; c693 queue) takes the
 //   file by reference; CDiskFileWin32 derives from CAFile (RTTI 0x0122D06C). Was CFileDataOutputStream(CDiskFileWin32*).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A60AA0, 388 bytes (400 with padding).
@@ -55,24 +58,22 @@ class CDiskFileWin32 : public CAFile { public:    // vtable 0x0122D06C
 class CDateAndTime { public:
     unsigned char _body[0x1c];
 };
-class CDataOutputStream
-{
-public:
-    void WriteULONG(unsigned long);   // 0x00993EA0
-    void WriteSLONG(long);   // 0x00993EB0
-    void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
+class CDataStream : public CBaseClassNonCopyable { public:      // RTTI .?AVCDataStream@@ (vtable 0x0129A69C)
+    virtual ~CDataStream();                                     // ??1CDataStream@@UAE@XZ
 };
-
-struct CFileDataOutputStream : public CDataOutputStream {                     // 0xc bytes
-    void* __vftable;
-    void* m_pFile;
-    long m_position;
-    CFileDataOutputStream(CAFile& file);           // 0x00994400
-    ~CFileDataOutputStream();                      // 0x00994430
-    unsigned long GetPosition() const;             // 0x00994460
-    void SetPosition(unsigned long position);      // 0x00994450
-    void WriteDateAndTime(const CDateAndTime& date);           // 0x00994180
+class CDataOutputStream : public CDataStream { public:          // vtable 0x0129A6E0 (slots 1-4 _purecall)
+    CCharString NewLine;                                        // +0x04
+    virtual void SetPosition(unsigned long position) = 0;      // slot 1
+    virtual unsigned long GetPosition() const = 0;              // slot 2
+    virtual void Close() = 0;                                   // slot 3
+    virtual void Write(const void* data, long length) = 0;      // slot 4
+    void WriteULONG(unsigned long);                             // 0x00993EA0
+    void WriteSLONG(long);                                      // 0x00993EB0
+    void WriteNullTerminatedString(const CCharString&);         // 0x00995AE0
+    void WriteDateAndTime(const CDateAndTime& date);            // 0x00994180
 };
+#define FABLE_RETAIL_FILE_DATA_OUTPUT_STREAM
+#include "engine/CFileDataOutputStream.h"                      // the retail layout (vtable 0x0129A6F8)
 struct CEntry {                                    // CChecksumCacheFile::CEntry
     CDateAndTime Date;                             // +0x00 (node +0x14)
     long         Checksum;                         // +0x1c (node +0x30)
@@ -121,7 +122,8 @@ struct CChecksumCacheFile {
     CEntryMap   Entries;                           // +0x04
     long        BufferSize;                        // +0x10
     bool        NeedsSaving;                       // +0x14
-    void Save();
+private:
+    void Save();                                   // private (Ego_r.pdb / FableWin.pdb AAE)
 };
 
 void CChecksumCacheFile::Save()

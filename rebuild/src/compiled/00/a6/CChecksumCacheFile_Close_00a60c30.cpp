@@ -45,8 +45,9 @@ public:
     long            BufferSize;                 // +0x10
     bool            NeedsSaving;                // +0x14
     bool IsOpen() const { return Filename.GetLength() != 0; }
-    void Save();                                // 0x00A60AA0
     void Close();
+private:
+    void Save();                                // 0x00A60AA0 (private: Ego_r.pdb / FableWin.pdb AAE; naming wave 27)
 };
 
 void CChecksumCacheFile::Close()
