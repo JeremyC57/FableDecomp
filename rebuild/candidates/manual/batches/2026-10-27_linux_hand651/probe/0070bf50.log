@@ -1,0 +1,18 @@
+p0	prior (Codex: `type==0 || type==1` arm, else-if transition, final return true)	DIFFER(104v104) arm 1 laid out at the end, index in ecx
+p1	`return IsLoaded();` in the || arm, `return a && b` transition	DIFFER(107v104) tail jmp to IsLoaded
+p2	prior shape, clean model	DIFFER(104v104) arm 1 at the end
+p3	inverted condition `type != 0 && type != 1` with the arm in the else	DIFFER(104v104) same layout
+p4	arm 1 ends with an explicit `return true`	DIFFER(105v104)
+p5	transition arm as one `||` test	DIFFER(104v104) same
+p6	named info pointer local in arm 1	DIFFER(104v104) same
+p7	`return IsLoaded() ? true : false`	DIFFER(113v104)
+p8	`return IsLoaded() == true`	DIFFER(115v104)
+p9	`if (IsLoaded()) return true; return false;`	DIFFER(113v104)
+p10	single `valid` result variable	DIFFER(111v104) ebx result
+p11	three separate type arms (FableWin GFDebugDynamicCast for C3DAnimationState, C3DAnimationStateAlpha, C3DAnimationTransitionState), named pointer casts	DIFFER(110v104) cross-jump partial (ecx v eax)
+p12	p11 with inline reference casts	DIFFER(110v104) same partial merge
+p13	p11 through a GFDebugDynamicCast template	DIFFER(110v104) same
+p14	p11 with a named info pointer	DIFFER(110v104) same
+p15	p11 with a named `const unsigned long index` local per arm	RELOCATION_MATCH
+p16	p11 with `return IsLoaded();` per arm	DIFFER(119v104)
+src	p15 tidied	RELOCATION_MATCH

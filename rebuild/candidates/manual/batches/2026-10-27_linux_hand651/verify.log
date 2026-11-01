@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00446330   WARN RELOC_NAME: ?SetAsNull@CInputEvent@@QAEXXZ -> 00a03be0 labelled 'CInputEvent::Clear'
+00446330   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+00446330   WARN RELOC_NAME: ?SetPlayer@CProcessedInput@@QAEXK@Z -> 00a0d3a0 labelled '_global::SetMember_dword0x0_00a0d3a0'
+00446330   WARN RELOC_NAME: ?GetPriority@CProcessedInput@@QAE?AW4EGameEventPriority@@XZ -> 00a0d3b0 labelled '_global::GetMember_dword0xac_00a0d3b0'
+00446330   RELOCATION_MATCH PASS   GetInputProcessEvent
+006817c0   MATCH            PASS   TransformOpinionFromHeroStats
+0070bf50   RELOCATION_MATCH PASS   IsAnimationStateBaseValid
+
+WINS: 3
+  00446330 RELOCATION_MATCH CGamePlayerInterface::?GetInputProcessEvent@CGamePlayerInterface
+  006817c0 MATCH CTCCreatureOpinionOfHero::?TransformOpinionFromHeroStats@CTCCreatureOpinionOfHero@@QBEMW4EOpinion@@M@Z
+  0070bf50 RELOCATION_MATCH `anonymous namespace'::?IsAnimationStateBaseValid@?A
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CGamePlayerInterface_GetInputProcessEvent_00446330
+  CTCCreatureOpinionOfHero_TransformOpinionFromHeroStats_006817c0
+  anonymousnamespace_IsAnimationStateBaseValid_0070bf50

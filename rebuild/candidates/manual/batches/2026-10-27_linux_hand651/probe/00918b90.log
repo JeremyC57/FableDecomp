@@ -1,0 +1,21 @@
+p0	prior (local model, local CDefPointer, function-scope has/moving bools)	DIFFER(806v802) frame 0x38 v 0x34, ebp unused, ebx/edi swapped, early path merged into the final Terminate+release
+p1	block-scope `has` (around the inline GetInterface) and `moving` (around the MoveTo loop) -- they share retail's [esp+0x13] slot	DIFFER(806v802) slots now shared; the extra dword is the jitter temporary
+p2	C3DVector without the user copy constructor (trivial copy)	DIFFER(865v802) worse (by-value vectors rebuilt)
+p3	jitter as `pos += C3DVector(jitter.X*0.25f, jitter.Y*0.25f, 0.0f)` with an inline operator+=	DIFFER(790v802) frame 0x34 reached; pos.Z self-copy as retail; Y product before X (ctor args right-to-left)
+p4	jitter as `pos = pos + C3DVector(...)`	DIFFER(830v802) worse (temporary)
+p5	named `C3DVector offset(...)` then `pos += offset`	DIFFER(790v802) same as p3
+p6	offset members assigned one by one (X, Y, Z=0)	DIFFER(790v802) X first now, but `fld pos.X; fadd st(2)` (offset kept live)
+p7	`offset = jitter * 0.25f; offset.Z = 0; pos += offset`	DIFFER(790v802) same as p3
+p8	operator+= written `X = o.X + X`	DIFFER(790v802) same as p6
+p9	`jitter *= 0.25f; jitter.Z = 0.0f; pos += jitter;` (in-place scale)	DIFFER(790v802) jitter block now byte-identical (fxch; fadd [pos.X]; fstp; fadd [pos.Y]; fstp)
+p10	`jitter.Z = 0` before `jitter *= 0.25f`	DIFFER(790v802) same as p9
+p11	tolerance literal 0.0027777f (retail 0x3B360A13; the prior's 0.00277778f is 0x3B360B6A) + `waitFrames` local	DIFFER(790v802) literal fixed; FPS still read after GetWorldFrame
+p12	`endFrame = (Random(6)+3)*g_FramesPerSecond + GetWorldFrame()`	DIFFER(790v802) GetWorldFrame evaluated first
+p13	`seconds = Random(6)+3; framesPerSecond = g_FramesPerSecond;` locals	DIFFER(799v802) FPS read before the call as retail, +3 before the call
+p14	`extraSeconds = Random(6); framesPerSecond = g_FramesPerSecond; endFrame = GetWorldFrame() + (extraSeconds + 3) * framesPerSecond`	DIFFER(799v802) end-frame block byte-identical (ebp = FPS, ebx = remainder, add/imul after the call); ebp now pushed
+p15	startFrame local as well	DIFFER(799v802) same as p13 for the block
+p16	engine/CDefPointer.h (FABLE_RETAIL_DEF_CLASS_BASE) + CDefClassBase::GetSubDef<CCreatureNavigationDef>(CDefPointer<const T>*) const on the creature's PBaseDef (+0x70), Ego_r CCreatureNavigationDef (AvoidDynamicObstacles +0x34)	DIFFER(802v802) size equal; 126 diff lines: ebx/edi swapped, navDef zero-init scheduled early, the early `Terminate; return` cross-jumped into the final Terminate+release
+p17	`__assume(Object != 0)` accessor for the navDef deref (does the normal-path release lose its null test?)	DIFFER(802v802) no change (hypothesis rejected)
+p18	local CDefPointer with a test-less dtor (landed 0x0094BB20 precedent)	DIFFER(795v802) worse; early path still merged
+p19	marker local declared at function top	DIFFER(802v802) 126 lines, same
+p20	navDef declared at function top	DIFFER(834v802) worse

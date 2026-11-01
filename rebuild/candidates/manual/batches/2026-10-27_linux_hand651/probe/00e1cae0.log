@@ -1,0 +1,15 @@
+p0	prior (local CCountedPointer/CBaseObject models, implicit handle dtor)	DIFFER(564v568) 3 of 9 exits inline
+p1	shared retail headers (CScriptThing, CBaseObject, CScriptGameResourceObjectBase/ScriptedThingBase, CGameScriptInterfaceBase via CLevelScriptBase<T>)	DIFFER(564v568) dtor inlined at the 3 do-loop exits, called at the other 6 (retail: inlined at 7, called at the 2 MazeDefeated-arm exits)
+p2	MazeDefeated test as nested ifs	DIFFER(564v568) same
+p3	body in an extra block scope after the handle	DIFFER(564v568) same
+p4	do-while as while(true)+break, const phase	DIFFER(564v568) same
+p5	outer loop as while(true){ if(!IsAlive) break; ...}	DIFFER(564v568) same
+p6	outer loop as for(;;) + break	DIFFER(564v568) same
+p7	outer loop as if + do/while	DIFFER(564v568) same
+d1	diagnostic: MazeDefeated arm removed	3 inline copies (structure probe)
+d2	diagnostic: final term check removed	3 inline copies
+d3	diagnostic: +6 NewScriptFrame calls	3 inline copies (not a caller-size budget)
+d4	diagnostic: whole body in do{}while(false)	every exit inlined (exits inside an extra loop always inline)
+d5	diagnostic: earlier same-TU user of the handle	same as p1
+d7	diagnostic: +60 calls	3 inline copies
+flag	/Ob1, /Ox, /Ot /Og /Oi on p1	DIFFER(564v568) same

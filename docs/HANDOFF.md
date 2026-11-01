@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-01 (naming wave 13 landed; chunk 651 agent in flight)
+# Resume here (one page) — updated 2026-11-01 (naming wave 13 + chunk 651 landed)
 
 **Next session: read `docs/journal/2026-10/2026-10-31_HANDOFF.md`** (lane rebuild incl. the downloads, resume steps, open
 decisions) and the 2026-10-31 lines at the end of `docs/journal/FINDINGS_LOG.md`. Fresh container:
@@ -9,11 +9,10 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), pushed. 2026-11-01: lane rebuilt in the surviving scratch
   `/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad` (game, both compilers, VS 2003 libs, LZO;
-  5/5 proof + lib_verify MATCH). Chunk 651 agent (Opus 5.5, increased-attempts brief `$S/w22/agent651/CHUNK_BRIEF.md`) was
-  running at this write; land it with `land_chunk.sh 651` + `records.py 651`. The owner gives the `Fable.exe` link in a new
+  5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,774 of 57,611 known functions (91.6%), 45,384 of the original 49,568 (91.6%); 174 `retail_asm`,
+  never hand-edit): 52,777 of 57,611 known functions (91.6%), 45,387 of the original 49,568 (91.6%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -38,6 +37,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 ## Done 2026-11-01 (details in FINDINGS_LOG)
 - Naming wave 13 landed: 314 rows, 11 family commits, coordinator recheck 314/314, bindings 156 RETIRE / 52 ADD, 8 renames,
   22 labels; 4 owner decisions scoped (`naming/2026-11-01_wave13/`). ESTABLISHED_SPELLINGS now applied across the tree.
+- Chunk 651 landed 3/10 (TransformOpinionFromHeroStats MATCH, IsAnimationStateBaseValid, GetInputProcessEvent; 7 parked with 12-20
+  probes each, residues now single-register/allocation ties); 14 NAME_FIXES (c651); review debts in `batches/2026-10-27_linux_hand651/LESSONS.md`.
 
 ## Done 2026-10-31 (details in FINDINGS_LOG)
 - Chunks 643-650 landed (2, 1, 0, 3, 0, 1, 2+bonus, 2 of 10; 650 stopped early at the owner's request); GFAXToVX
@@ -49,8 +50,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   `toolchain_library` from the vendor .asm.
 
 ## Next
-1. **Land chunk 651** when the agent reports (`$S/w22/agent651/`): `land_chunk.sh 651`, `records.py 651`, NAME_FIXES into the
-   queue (prefix c651), batch README + FINDINGS_LOG + GOTCHAS, dashboard trio, commit, push. Then the next chunk cycle (two agents):
+1. **Next chunk cycle** (two agents; keep the chunk 651 increased-attempts brief, it lifted the match rate to 3/10):
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
    pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.
 2. **Owner decisions from wave 13** (`naming/2026-11-01_wave13/DECISIONS_W13.tsv`): GetPWorld 0x008FCFC0 (= protected reference getter

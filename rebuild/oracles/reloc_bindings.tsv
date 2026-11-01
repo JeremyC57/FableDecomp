@@ -35648,3 +35648,12 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??$sort_heap@PAPAVCThing@@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xffab493a@@@std@@YIXPAPAVCThing@@0VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xffab493a@@@Z	00979370	00979650
 ??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xeaff0e08@@QBE_NPBVCThing@@0@Z	0097abf0	0097ad10
 ??$sort_heap@PAPAVCThing@@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xeaff0e08@@@std@@YIXPAPAVCThing@@0VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xeaff0e08@@@Z	0097b2c0	0097b320
+?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z	009f4ac0	00446330
+?EventScanNext@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	009f4f10	00446330
+?EventScanStart@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z	009f4ed0	00446330
+?FlagEventAsProcessed@CInputManager@@QAEXABVCInputEvent@@@Z	009f55c0	00446330
+?GetDeviceType@CInputEvent@@QBE?AW4EInputDeviceType@@XZ	00a03b50	00446330
+?GetPlayerNumberFromJoystickDeviceNumber@CPlayerManager@@QBEJJ@Z	00449990	00446330
+?GetPriority@CProcessedInput@@QAE?AW4EGameEventPriority@@XZ	00a0d3b0	00446330
+?IsEventProcessed@CInputManager@@QBE_NABVCInputEvent@@@Z	009f4b10	00446330
+?SetAsNull@CInputEvent@@QAEXXZ	00a03be0	00446330

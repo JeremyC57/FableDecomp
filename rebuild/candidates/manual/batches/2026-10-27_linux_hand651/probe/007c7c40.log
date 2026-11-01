@@ -1,0 +1,19 @@
+p0	prior (local model, ternary GetInterface, hoisted stage vector)	DIFFER(744v744) def ebp v esi, missing fxch, grow-loop base load
+p1	`(long)(numStages * fraction)` operand order	DIFFER(744v744) no change (VC normalises the product)
+p2	grow loop: `const long& effectType = PDef->TurncoatStageEffects[i];` before the call	DIFFER(741v744) element address lea'd before the call
+p3	grow loop: one-expression CreateParticleEffect(PDef->...[i], &parent->GetPosition())	DIFFER(741v744) same as p2
+p4	int stage count local, `(float)stageCount` at each use (one CSE'd fild)	DIFFER(746v744) fxch reproduced
+p5	`(long)(float)(numStages * fraction)`	DIFFER(741v744) no fxch
+p6	separate clamped float local	DIFFER(748v744)
+p7	p4 + grow loop `const long* stageEffects = PDef->TurncoatStageEffects._M_start;` before the call	DIFFER(744v744) only the def register (esi v ebp, 3 sites)
+p8	p7 with a named position reference	DIFFER(744v744) same as p7
+p9	named `const CTurncoatDef* def` for the early uses	DIFFER(744v744) same
+p10	the two early-return tests split	DIFFER(744v744) same
+p11	body inside `if (TurncoatOverride && Turncoatable) {...}`	DIFFER(744v744) same
+p12	`current` before `fraction`	DIFFER(744v744) same
+p13	stageCount declared before the recovery block	DIFFER(744v744) same
+p14	CDefPointer operator-> through Get()	DIFFER(744v744) same
+p15	`current` after the clamp	DIFFER(744v744) worse (this in ebp)
+p16	shrink count as a separate local, i++	DIFFER(744v744) same
+flag	QFE 13.10.4035 on p7	DIFFER(744v744) same
+p17	real engine/CDefPointer.h + CTurncoatDef : CDefClassBase	DIFFER(744v744) same

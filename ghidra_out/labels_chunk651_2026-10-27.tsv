@@ -1,0 +1,11 @@
+address	name	evidence
+006817c0	CTCCreatureOpinionOfHero::TransformOpinionFromHeroStats	chunk 651 MATCH: Ego_r donor order TransformForcedOpinion 0x58F830 < TransformOpinionFromHeroStats 0x58F870 = retail twins 0x00681790 < 0x006817C0; callers pass GetHeroStatsInOpinionFormat (catalog TransformForcedOpinion was the twin's name)
+0070bf50	`anonymous namespace'::IsAnimationStateBaseValid	chunk 651 RELOCATION_MATCH: Ego_r ?IsAnimationStateBaseValid@?A0x22a65229@@YI_NABVCMeshDataBank@@ABVC3DAnimationStateBase@@@Z
+00446330	CGamePlayerInterface::GetInputProcessEvent	chunk 651 RELOCATION_MATCH: Ego_r ?GetInputProcessEvent@CGamePlayerInterface@@QBE_NAAVCProcessedInput@@@Z (const, CProcessedInput&)
+00a03be0	CInputEvent::SetAsNull	chunk 651: the only void() member of CInputEvent in Ego_r/FableWin; body zeroes Type +0x28 and DeviceType +0x20; bound by the landed 0x00446330
+009f55c0	CInputManager::FlagEventAsProcessed	chunk 651: Ego_r ?FlagEventAsProcessed@CInputManager@@QAEXABVCInputEvent@@@Z, bound by the landed 0x00446330 (prior spelling RequeueEvent was invented)
+004197b0	CMainGameComponent::IsEditorActive	chunk 651: main-component vtable slot 9 (rtti-vtables) + FableWin.pdb; called by 0x00446330
+00d259a0	CQ_DragonBossFightScript::CDragon::OnPredicateFail	chunk 651 (DIFFER 64v64, label only): catalog `_gapscan::sub_00d259a0`; the body is the CDragon predicate-fail handler of the dragon boss fight script (NOTES.md)
+009e1e10	GFVXToAX	chunk 651 (label only): `__fastcall float(float)` -- the callee pops the float; sibling 0x009E1E40 GFVYToAY
+009e1e40	GFVYToAY	chunk 651 (label only): `__fastcall float(float)`; sibling 0x009E1E10 GFVXToAX
+006cd2f0	CDefClassBase::GetSubDef<CCreatureNavigationDef>	chunk 651 (label only, from the 0x00918B90 differ): the def flag at +0x34 is AvoidDynamicObstacles

@@ -371465,6 +371465,28 @@ $catalog = @(
         TestSource = '00/a6/CMemoryAllocatorVariableSize_RemoveFromTreeFixup_00a64910_test.cpp'
         PassPattern = '00a64910_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00446330'
+        Module = 'CGamePlayerInterface'
+        Source = '00/44/CGamePlayerInterface_GetInputProcessEvent_00446330.cpp'
+        TestSource = '00/44/CGamePlayerInterface_GetInputProcessEvent_00446330_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00446330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006817c0'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_TransformOpinionFromHeroStats_006817c0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_TransformOpinionFromHeroStats_006817c0_test.cpp'
+        PassPattern = '006817c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070bf50'
+        Module = '`anonymous namespace''
+        Source = '00/70/anonymousnamespace_IsAnimationStateBaseValid_0070bf50.cpp'
+        TestSource = '00/70/anonymousnamespace_IsAnimationStateBaseValid_0070bf50_test.cpp'
+        PassPattern = '0070bf50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

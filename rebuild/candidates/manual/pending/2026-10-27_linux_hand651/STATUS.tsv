@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+0x00D259A0	DIFFER	64v64	-	CQ_DragonBossFightScript::CDragon::OnPredicateFail; one register (retail reuses esi for ParentClass, ours eax); 17 shape probes + /Og- + QFE
+0x00E1CAE0	DIFFER	564v568	-	CQ_WizardBattleScript::MonitorMazePhases; handle dtor inlined at 3 exits vs retail 7 (calls only at the two MazeDefeated exits); 14 shape/diagnostic probes + flags
+0x007C7C40	DIFFER	744v744	-	CTCTurncoat::FrameUpdate; def pointer in esi vs retail ebp (3 sites); fxch and _M_start fixed; 17 shape probes + QFE
+0x00F39730	DIFFER	794v796	-	CSurfaceCompositor::StartComposition; retail keeps ColourWriteEnable 0xF in ebx (push ebx, frame +4); every setter form folds it; 13 probes
+0x00918B90	DIFFER	802v802	-	CAIStateGroup_Gaze::Update; retail's normal-path def release has no null test (early exit keeps one) so the early Terminate is not cross-jumped; jitter/end-frame/bools/literal fixed; 20 probes
+0x0078A690	DIFFER	1097v1097	-	CTCHeroRangedAttacks::FrameUpdate; frame 0x18 v 0x14 (retail shares one dword for every key/out/pressure) and ebp holds roots _M_start in retail (ours 0); 12 probes
+0x00490494	DIFFER	1073v1094	-	CSubtitleRenderer::DrawPreparePrimitivesForEngine; retail keeps `drawn` in memory [ebp-1] (no jump threading), chain laid out C,B,D; layout box/fastcall/goto/pos ctor/frame-time select fixed; 12 probes

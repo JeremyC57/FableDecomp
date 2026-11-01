@@ -1,0 +1,13 @@
+p0	prior (local model; `float pressure` local + const-ref-bound roots vector)	DIFFER(1097v1097) 111 diff lines: frame 0x1c v 0x14, 0 kept in ebp after the spline call (retail: roots _M_start in ebp to the final free)
+p1	by-value roots, argument `(float)ButtonPressure`	DIFFER(1100v1097) 196 lines: no temporary, &ButtonPressure passed (lea ebp)
+p2	const-ref roots, `(float)ButtonPressure`	DIFFER(1100v1097) same as p1
+p4	pressure as the by-value parameter of a same-file inline GetPullBackRoots(float) helper, const-ref roots	DIFFER(1097v1097) 93 lines: frame 0x18 (pressure slot now reusable); ebp still 0
+p5	same helper, by-value roots	DIFFER(1097v1097) 93 lines (best)
+p6	p5 + named `const float* rootsStart = roots._M_start` before the test	DIFFER(1097v1097) 93 lines, same
+p7	keys passed as the address of the inline's by-value interfaceType parameter	DIFFER(1110v1097) 217 lines, worse (key re-read from memory)
+p8	GetTC<T> with the out pointer in a sibling scope of the key (`if (present) {...return} T* none; return none;`)	DIFFER(1095v1097) 98 lines: out and key share in some sites only
+p9	`float pressure` local + by-value roots (no helper)	DIFFER(1097v1097) 111 lines (= prior)
+p10	STLport-style empty()/front() on the roots vector	DIFFER(1097v1097) 93 lines, same
+p11	begin()/end() iterator local	DIFFER(1097v1097) 93 lines, same
+p12	for-loop over the roots with break	DIFFER(1097v1097) 93 lines, same
+p13	sound out pointer zero-initialised (does an initialised out change the slot packing?)	DIFFER(1097v1097) 93 lines, same; parked (12 new shapes after the prior, last 5 no change)

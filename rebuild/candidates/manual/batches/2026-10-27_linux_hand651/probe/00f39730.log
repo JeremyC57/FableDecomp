@@ -1,0 +1,14 @@
+p0	prior (local render-manager model, __forceinline SetState by value, inline CreateCaptureBlock with load/shl/store mask)	DIFFER(794v796) retail holds the first state value 0xF in ebx (push ebx; every later frame offset +4) and the stack size in esi
+p1	value as `enable ? 0xf : 0` from a block-scope bool	DIFFER(794v796) same (folded to an immediate)
+p2	SetState value by const reference	DIFFER(806v796) worse
+p3	value as the four-channel OR of folded ternaries	DIFFER(794v796) same
+p4	inline SetColourWriteEnable(bool) helper (Ego_r.pdb overload) called with true	DIFFER(794v796) same
+p5	inline SetColourWriteEnable(bool,bool,bool,bool) helper (Ego_r.pdb overload)	DIFFER(794v796) same
+p6	SetState plain `inline` (auto-inliner decides)	DIFFER(363v796) not inlined at all
+p7	SetState non-inline static	DIFFER(363v796) not inlined
+p8	SetColourWriteEnable(r,g,b,a) building the mask with four if-statements into a local	DIFFER(794v796) same (folded)
+p9	SetColourWriteEnable(bool) with `value = 0; if (enable) value = 0xf;`	DIFFER(794v796) same
+p10	value from a static const two-entry mask table indexed by true	DIFFER(794v796) same
+p11	two-level inline: SetColourWriteEnable(bool) -> (bool,bool,bool,bool) -> SetState	DIFFER(794v796) same
+p12	value from a same-file non-inline ColourMaskFor(bool) (auto-inliner decides)	DIFFER(794v796) same (inlined and folded)
+p13	landed 0x00B677D0 member shape: core->SetRenderState(value, CStateInfo&) + AddStateToUpdateList members, core->SetColourWriteEnable(true), table values by value	DIFFER(794v796) same; parked (13 probes, last 6 no change)

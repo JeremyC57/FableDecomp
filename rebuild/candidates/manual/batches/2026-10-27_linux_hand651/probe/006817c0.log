@@ -1,0 +1,4 @@
+p0	prior (local model, raw pointer, inline TransformOpinion on the def)	DIFFER(40v43)
+p1	engine/CTCCreatureOpinionOfHero.h + real CDefPointer view; IsNull() then operator-> (early return on null)	DIFFER(43v43) block order only
+p2	p1 with the non-null path first (`if (!IsNull()) return ...; return value;`)	MATCH
+src	p2 with the accessor named after the member (PPersonalityDef()) and the PDB name TransformOpinionFromHeroStats	MATCH

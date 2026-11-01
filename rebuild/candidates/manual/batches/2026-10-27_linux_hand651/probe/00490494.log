@@ -1,0 +1,13 @@
+p0	prior (local model, CTextLayout 0x30, cdecl ScaleX/ScaleY, `All && (!InCutscene || flag)` single test)	DIFFER(1097v1094) 295 diff lines, frame 0x80 v 0x64
+p1	the CalcLayout (0x004900F5) result as a 16-byte box: retail's [ebp-64h]..[ebp-54h], extents at [ebp-44h]	DIFFER(1094v1094) frame 0x60 v 0x64
+p2	ScaleX/ScaleY __fastcall (reloc_bindings: ?GFVXToAX@@YIMM@Z / ?GFVYToAY@@YIMM@Z, callee pops the float)	DIFFER(1087v1094) 284 lines (no stray pop ecx)
+p3	setup (def, layout, resolution, height, pos) before the cutscene test: `if (All) { setup; if (InCutscene && !(flags & 0x20)) goto notShown; A; goto done; } notShown: B/C/D chain`	DIFFER(1075v1094) A's flow now retail-shaped
+p4	pos built with a C2DVector(x, y) constructor (args right-to-left: Y first, X stored first) in A, B and C	DIFFER(1075v1094) 286 lines, pos stores as retail
+p5	#pragma optimize("g", off) (flags probe)	DIFFER(1812v1094) far worse; /Og is on in retail
+p6	`drawn` declared before the fade Update	DIFFER(1075v1094) same as p4
+p7	drawn written through an inline `SetFlag(bool&, bool)`	DIFFER(1075v1094) same
+p8	frame time as a `const float&` bound to the lvalue ternary (address select `add eax,10h` as retail)	DIFFER(1073v1094) 283 lines (best)
+p9	`*(paused ? &info->PausedTime : &info->Time)`	DIFFER(1073v1094) same as p8
+p10	chain reordered C (not cutscene/paused, not game-paused, flag 2) / B / D	DIFFER(1091v1094) 289 lines, worse (retest kept)
+p11	withPanel at function scope	DIFFER(1073v1094) 283, same
+p12	drawn declared then assigned false	DIFFER(1073v1094) 283, same; parked (12 shapes, last 4 no change)

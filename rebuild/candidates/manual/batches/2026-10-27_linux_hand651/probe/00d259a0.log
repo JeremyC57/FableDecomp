@@ -1,0 +1,19 @@
+p0	prior (Codex: reference ParentClass + inline SetDragonState, CLevelScriptBase parent)	DIFFER(64v64) parent in eax
+p1	retail headers (CScriptThing/CEntityScriptBase/CScriptBase), pointer ParentClass, direct `ParentClass->DragonState = 4`	DIFFER(64v64) mov eax,[esi+14h]; mov [eax+48h],4 (retail esi)
+p2	block-scope named `parent` pointer local	DIFFER(64v64) same 2 lines
+p3	reference member ParentClass (Ego_r ctor takes AAV12@)	DIFFER(64v64) same
+p4	early return `if (!killed) return;`	DIFFER(70v64) neg/sbb bool
+p5	named `bool killed` local	DIFFER(64v64) same
+p6	named CCharString local for the "" argument	DIFFER(60v64) no bl hold, worse
+p7	real SetDragonState 0x00D258C0 body in the TU, call SetDragonState(4) (auto-inlined + folded)	DIFFER(64v64) same
+p8	reference local `CQ_DragonBossFightScript& parent = *ParentClass`	DIFFER(64v64) same
+p9	inline CDragon member doing the store	DIFFER(64v64) same
+p10	#pragma optimize("s")	DIFFER(63v64) ebp frame, worse
+p11	function-scope parent local assigned in the if	DIFFER(64v64) same
+p12	parent loaded before the if (sunk by the compiler)	DIFFER(64v64) same
+p13	static_cast of an inline non-virtual CDragon::GetParentScript()	DIFFER(64v64) same
+p14	store of (DragonState*0 + 4) (folded)	DIFFER(64v64) same
+p15	guarded store `if (parent->DragonState != 4)` -- gets esi but adds the compare	DIFFER(72v64) (esi reproduced; extra cmp)
+p16	p7 with the reference member	DIFFER(64v64) same
+p17	p7 with SetDragonState `inline`	DIFFER(64v64) same
+flag	/Og- ; QFE 13.10.4035 compiler on p1	DIFFER(79v64) / DIFFER(64v64) same

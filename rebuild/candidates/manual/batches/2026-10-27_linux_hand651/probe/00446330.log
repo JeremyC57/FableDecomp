@@ -1,0 +1,15 @@
+p0	prior (local model; SetFirst non-null first, Detach through it.List, switch with goto)	DIFFER(1005v1002) 60 masked diff lines
+p1	SetFirst written null-first (`if (node == 0) {zero} else {...}`), retail's fall-through order	DIFFER(1004v1002) 50 lines
+p2	Detach(CProcessList* list) parameter (List->Iterators through this)	DIFFER(995v1002) 113 lines alone
+p3	loop condition via an inline GetData() accessor	DIFFER(1012v1002) 62 lines, worse
+p4	for(;;) with explicit Node/Data breaks	DIFFER(1004v1002) 50 lines, same as p1
+p5	Set/SetFirst read the stored Node back (`Next = Node->Next`)	DIFFER(1002v1002) 25 lines (node copy gone)
+p6	Advance() member reading Next itself	DIFFER(1002v1002) 25 lines, same as p5
+p7	p5 + Detach(list) parameter	DIFFER(992v1002) 39 lines: Detach through this as retail, loop not rotated
+p8	switch replaced by if/else-if with break	DIFFER(982v1002) 76 lines, worse
+p9	p7 with the scan loop written rotated (first test, then do/while)	DIFFER(1002v1002) 2 lines: one byte-store order
+p10	CInputEventScanInfo declared after bestPriority/found	RELOCATION_MATCH
+p11	scan-info ctor as an assignment body	DIFFER(1002v1002) 2 lines (p10 kept)
+n1	p10 rebuilt on Ego_r.pdb names: CProcessedInput (engine/CProcessedInput.h + CGameEvent.h), CPlayerManager.h, CWorld.h, CGamePlayerInterface.h (InputProcessList accessor at +0x04), CInputManager const/reference signatures, FlagEventAsProcessed, PInputManager / g_pMainGameComponent, the landed 0x00A0D6B0 CLinkedListScanInfo + CAInputProcess model	RELOCATION_MATCH
+n2	scan-info resets folded into RemoveScanInfo (dead in 0x00A0D6B0, live here)	RELOCATION_MATCH
+n3	natural `for (process = StartScanAtHead(); process; process = ScanForward())` loop (VC7.1 rotates it itself once the helpers re-read Current)	RELOCATION_MATCH (landed as src/00446330.cpp)
