@@ -25742,3 +25742,13 @@ chunk	address	module	name	length
 671	00a9a7c0	CTCInventoryItem	OnDie	27
 671	00a895f0	C3DMesh2	~C3DMesh2	175
 671	00b4d210	CEngineShadowRenderer	~CEngineShadowRenderer	171
+672	00e477f0	CActionMoveTo	~CActionMoveTo	171
+672	00e62780	CParticleEmitter	~CParticleEmitter_Minimal	163
+672	00eb6ab0	CParticleEmitter	~CParticleEmitter_0xb6ab0	214
+672	00d728f0	CHTG_Audience	~CHTG_Audience	185
+672	00e1da40	CHTG_Audience	~CHTG_Audience	185
+672	00e68eb0	CV_SickChildScript	~CV_SickChildScript	191
+672	00a4eec0	CEditWorld	~CEditWorld	203
+672	00b5c050	CEngineScreenEffectRadialBlurRenderer	~CEngineScreenEffectRadialBlurRenderer	205
+672	00babe60	CEnginePrimitiveManagerRepeatedZSprites	~CEnginePrimitiveManagerRepeatedZSprites	200
+672	00d9fed0	CBriarRose	~CBriarRose	203
