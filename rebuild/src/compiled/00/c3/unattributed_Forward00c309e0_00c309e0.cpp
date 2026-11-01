@@ -1,23 +1,23 @@
-// CClass_00c309e0::Forward_00c309e0() -- sibling jump to CObject_00c0ba40::Method_00c0ba40 on the embedded member at +0x4
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C309E0, oracle length 8 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  add ecx, 4 ; jmp 0xc0ba40
-// Tiny-body shape `Forward` synthesised from the instruction pattern (the class comes from the
-// vtable-slot/manifest label when it is a plain class name, else the method is landed under a
-// descriptive placeholder); member names are descriptive. The forwarded call keeps the signature, so VC7.1 turns it into a tail jump; the return type is modelled as long (a void or pointer result gives the same bytes).
-struct CObject_00c0ba40 {
-    long Method_00c0ba40();     // 0x00C0BA40
+// CClass_00c309e0::~CClass_00c309e0() -- destroy the CString member at +4 (the record's only non-trivial member)
+// Leaf: ??1CClass_00c309e0@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C309E0, 8 bytes: `add ecx,4 ; jmp 0xc0ba40`.
+// Naming (naming wave 24, the 00c0dec0 CString views): 0x00C0BA40 is the libpk CString destructor ??1CString@@QAE@XZ (DECISIONS_W21; the
+//   landed own row), and the only caller is the scalar deleting destructor 0x00C30A90, so this is the destructor of a record holding a
+//   CString at +4 (its class is not identified: libpk has no PDB / RTTI; CClass_00c309e0 is descriptive). Was a tail-forward
+//   Forward_00c309e0 to a stand-in CObject_00c0ba40::Method_00c0ba40.
+class CString {
+public:
+    char* m_pchData;
+    ~CString();                     // 0x00C0BA40
 };
 
-struct CClass_00c309e0 {
+class CClass_00c309e0 {
+public:
     unsigned char _pad[0x4];
-    CObject_00c0ba40 m_member;
-    long Forward_00c309e0();
+    CString m_member;               // +0x04
+    ~CClass_00c309e0();
 };
 
-long CClass_00c309e0::Forward_00c309e0()
+CClass_00c309e0::~CClass_00c309e0()
 {
-    return m_member.Method_00c0ba40();
 }

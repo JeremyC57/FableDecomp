@@ -274565,9 +274565,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0c0c0'
-        Module = 'CCharString'
-        Source = '00/c0/CCharString_Assign_00c0c0c0.cpp'
-        TestSource = '00/c0/CCharString_Assign_00c0c0c0_test.cpp'
+        Module = 'CString'
+        Source = '00/c0/CString_operator_00c0c0c0.cpp'
+        TestSource = '00/c0/CString_operator_00c0c0c0_test.cpp'
         PassPattern = '00c0c0c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -368432,8 +368432,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c17260'
         Module = '_global'
-        Source = '00/c1/global_LoadRecordAndReport00c17260_00c17260.cpp'
-        TestSource = '00/c1/global_LoadRecordAndReport00c17260_00c17260_test.cpp'
+        Source = '00/c1/global_LoadBank_00c17260.cpp'
+        TestSource = '00/c1/global_LoadBank_00c17260_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c17260_TEST PASS'
     }
