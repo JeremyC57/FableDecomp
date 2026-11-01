@@ -25618,3 +25618,7 @@ chunk	address	module	name	length
 658	0071a570	_Dest_val<std	allocator<CMacro>,CMacro>	44
 658	007dfaf0	CCreatureAction_PerformExpressionExtended	~CCreatureAction_PerformExpressionExtended	43
 658	007e24d0	C3DAnimationBlendState	~C3DAnimationBlendState	35
+659	00626e40	CTCQuickAccessMenu	ConstructItemCategoryList	1471
+659	006276f0	CTCQuickAccessMenu	GetItemsListUI	1260
+659	00935e40	CAIStateGroup_MinionPutOutFires	PutOutFire	468
+659	009363d0	CAIStateGroup_MinionWatchFires	Update	448
