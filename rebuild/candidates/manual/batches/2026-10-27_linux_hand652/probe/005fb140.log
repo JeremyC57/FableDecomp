@@ -1,0 +1,8 @@
+p00	prior source unchanged (stand-in _Rb_tree_iterator / CRegionMap, bestIt = 0)	DIFFER(873v877) 32 masked diff lines -- retail keeps the iterator in edi and the best iterator / best distance in frame words; ours puts the best iterator in edi (+ loop alignment pad)
+p01	iterator declared before the flag/best locals, for(;;) over it	DIFFER(873v877) 32
+p02	best iterator copied to a fresh local before reading the key	DIFFER(873v877) 32
+p03	best locals declared in reverse order	DIFFER(863v877) 33
+p04	key read through operator* instead of operator->	DIFFER(873v877) 32
+p05	bestIt assigned before best / first	DIFFER(873v877) 32
+p06	real STLport 4.6 _Rb_tree + map (landed 0x00613630 text), default-constructed best iterator, free operator!=	RELOCATION_MATCH
+p07	p06 + NUISystem namespace for CZoomingComponent / CList	RELOCATION_MATCH -> src/005fb140.cpp

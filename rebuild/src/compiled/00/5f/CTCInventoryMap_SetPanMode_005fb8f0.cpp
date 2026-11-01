@@ -7,7 +7,7 @@
 //   0x013B86A0 +0x14), ~CWideString @ 0x0099B510, the list's selected value (slot 142, +0x238), map<long, CRegion>::find
 //   @ 0x00615870 (iterator by hidden pointer), the zooming component's slots 12 (+0x30) / 146 (+0x248) / 31 (+0x7C)
 //   (C2DVector getters by hidden pointer, MoveTo(const C2DVector&, float, bool); slot names descriptive),
-//   CRegion::GetNameGraphicOffset @ 0x006BBF40. Strings: UI_UNSELECT_TEXT, TEXT_GUI_MENU_MAP_SCROLL,
+//   CRegion::GetWorldMapOffset @ 0x006BBF40 (PDB; +0xAC is WorldMapOffset, GetNameGraphicOffset is the +0xB4 twin 0x006BBF70). Strings: UI_UNSELECT_TEXT, TEXT_GUI_MENU_MAP_SCROLL,
 //   TEXT_GUI_MENU_REGION_LIST_SCROLL. Float 0.4f.
 // Shape: VC hoists the common by-value "UI_UNSELECT_TEXT" argument setup above the branch; the text bank is read through an
 //   inline accessor (loaded before the argument pushes); the selected value is passed straight to find (homed in the dead
@@ -44,7 +44,7 @@ class C2DVector { public:
     C2DVector operator-(const C2DVector& o) const { return C2DVector(X - o.X, Y - o.Y); }
 };
 class CRegion { public:
-    C2DVector GetNameGraphicOffset() const;             // 0x006BBF40
+    const C2DVector GetWorldMapOffset() const;          // 0x006BBF40 ?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ
 };
 struct SRegionNode {                                    // STLport _Rb_tree_node<pair<const long, CRegion> >
     long _M_color; SRegionNode* _M_parent; SRegionNode* _M_left; SRegionNode* _M_right;
@@ -131,7 +131,7 @@ void CTCInventoryMap::SetPanMode(bool panMode)
                 C2DVector zoom = pmap_real->GetZoom();
                 C2DVector centre = pmap_real->GetCentre();
                 float scale = zoom.X;
-                pmap_real->MoveTo(centre - it->second.GetNameGraphicOffset() * scale, 0.4f, false);
+                pmap_real->MoveTo(centre - it->second.GetWorldMapOffset() * scale, 0.4f, false);
             }
         } else {
             NUISystem::CComponent* text = MapList->FindChild("UI_UNSELECT_TEXT");

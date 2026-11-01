@@ -371508,6 +371508,35 @@ $catalog = @(
         TestSource = '00/c4/CAudioBuffer_Create_00c4dc40_test.cpp'
         PassPattern = '00c4dc40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005fb140'
+        Module = 'CTCInventoryMap'
+        Source = '00/5f/CTCInventoryMap_PanMap_005fb140.cpp'
+        TestSource = '00/5f/CTCInventoryMap_PanMap_005fb140_test.cpp'
+        PassPattern = '005fb140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072a090'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_GlobalUpdate_0072a090.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_GlobalUpdate_0072a090_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0072a090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00761c00'
+        Module = 'NShape::CShape'
+        Source = '00/76/NShapeCShape_OnSerialise_00761c00.cpp'
+        TestSource = '00/76/NShapeCShape_OnSerialise_00761c00_test.cpp'
+        PassPattern = '00761c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00845040'
+        Module = 'CCreatureAction_GiveMoneyToThing'
+        Source = '00/84/CCreatureActionGiveMoneyToThing_PerformAction_00845040.cpp'
+        TestSource = '00/84/CCreatureActionGiveMoneyToThing_PerformAction_00845040_test.cpp'
+        PassPattern = '00845040_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

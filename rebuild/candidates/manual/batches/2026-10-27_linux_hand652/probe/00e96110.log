@@ -1,0 +1,18 @@
+p00	prior source unchanged (local CM_QuestControl not nested, public non-virtual Main, member IsActiveThreadTerminating, descriptive names)	DIFFER(1360v1356) 203 masked diff lines -- constant 0 not promoted to ebx; timer index takes ebx
+p01	real names and nesting: NScript::CV_HauntedHouseScript::CM_QuestControl : CEntityScriptBase (private virtual Main, IsActiveThreadTerminating const), UndeadBar / GuiCounter / CellarDoorOpen / InHouse, CScriptDef HH_* fields, pGlobalScriptDef	DIFFER(1360v1356) 203
+p02	engine CTimer with inline operator= / operator== / GetTime / ctor / dtor	DIFFER(1360v1356) 203 -- best
+p03	while (InHouse == false)	DIFFER(1360v1356) 203
+p04	UndeadBar = 0 (int literal)	DIFFER(1360v1356) 203
+p05	long nymph index	DIFFER(1360v1356) 210
+p06	no `game` local around PauseAllNonScriptedEntities	DIFFER(1360v1356) 208
+p07	timer = 1 after DisplayQuestInfo	DIFFER(1360v1356) 215
+p08	named colour locals	DIFFER(1360v1356) 217
+p09	CellarDoorOpen == false	DIFFER(1360v1356) 203
+p10	digging-spot thing as a temporary	DIFFER(1363v1356) 260
+p11	~CTimer declared only (out of line everywhere)	DIFFER(1315v1356) 121 -- zero now promoted to ebx as retail; timer index no longer kept (retail still inlines ~CTimer at two exits)
+p12	ctor / dtor defined out of class without `inline`	DIFFER(1360v1356) 203
+p13	diag: ctor and dtor both out of line	DIFFER(1308v1356) 78 -- fewer lines but the ctor call is wrong (retail inlines RegisterTimer)
+p14	dtor defined inline after Main	DIFFER(1360v1356) 203 -- VC7.1 still inlines it
+p15	p11 + operator== reading GetTimer directly	DIFFER(1315v1356) 121
+p16	p11 + member-init CRGBColour ctor	DIFFER(1315v1356) 125
+PARK: 17 probes; p14-p16 gave no structural progress (p13 is a diagnostic with the wrong ctor shape). Best = p02 -> differ/00e96110.cpp (p11 documents the inline-budget lever).

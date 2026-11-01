@@ -1,0 +1,25 @@
+p00	prior source unchanged (local list/counted-pointer models)	DIFFER(485v490) 58 diff lines
+p01	re-author: real STLport list/set templates, engine CCountedPointer.h, PDB member names, ProcessFileReadCompletion (0x009C42F0) as a same-TU non-inline member (auto-inlined), CWideString::ToCharString	DIFFER(485v490) 58
+diagV	DIAGNOSTIC ONLY: volatile PCompletedRead + NoTotalBytesWritten	DIFFER(490v490) 14
+p02	const& view of PCompletedRead for the null test (lever: may-alias reference)	DIFFER(490v490) 12 -- NoTotalBytesWritten load/add/store now matches
+p03	void* const* cast view in the test	DIFFER(485v490) 58
+p04	const CActiveRead* const& view, != 0	DIFFER(490v490) 12
+p05	view passed as the argument too	DIFFER(485v490) 58
+p06	non-const reference used for test, arg and clear	DIFFER(485v490) 58
+p07	view only in the call argument	DIFFER(490v490) 12
+p08	two views (test, argument)	DIFFER(485v490) 58
+p09	two views declared before the if	DIFFER(485v490) 58
+p10	view declared after the call	DIFFER(485v490) 58
+p11	CActiveFile* pointer local for the front element	DIFFER(490v490) 12
+p12	IsWriteFinished as a same-TU non-inline member	DIFFER(490v490) 12
+p13	loop condition `!empty() && front().IsWriteFinished()` (front recomputed in the body)	DIFFER(490v490) 6 -- front addressing fixed; only the PCompletedRead re-read left
+p14	named iterator for the front element	DIFFER(490v490) 12
+p15	may-alias pointer reference `CActiveRead* const* const& = &PCompletedRead` for the test	DIFFER(490v490) 6
+p16	may-alias pointer reference for the argument	DIFFER(490v490) 6
+p17	`CFileInstaller* const& self = this` argument read	DIFFER(490v490) 6
+p18	named `read` local inside the if	DIFFER(490v490) 6
+p19	reference declared in the if condition	DIFFER(490v490) 6
+p20	early-return form	DIFFER(485v490) 54
+p21	comma-expression test	DIFFER(485v490) 54
+p22	view used for test and argument, != 0	DIFFER(485v490) 54
+diagV2	DIAGNOSTIC ONLY (not landable): p13 with `CActiveRead* volatile PCompletedRead`	RELOCATION_MATCH

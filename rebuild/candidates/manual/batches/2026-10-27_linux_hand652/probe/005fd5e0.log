@@ -1,0 +1,15 @@
+p00	prior source unchanged (stand-in list with same-TU noinline dispatch, CRegion*, public, if (!IsCore()))	DIFFER(986v982) 403 masked diff lines -- frame 0x3C (one extra slot) and the non-core subtree in source order
+p01	prior with if (IsCore()) first	DIFFER(975v982) 402
+p02	full real-name rewrite: real STLport list (landed 0x00618DA0 / 0x00618100 text) with the dispatch declared only, CIntelligentPointer<CThing>, engine CCountedPointer, GetTC<CTCQuestCard>, CTCQuestCard::IsVignette inline, CRegion&, protected	DIFFER(999v982) 522 -- the list now lives in memory (this escapes to the out-of-line dispatch)
+p03	p02 + the real STLport _M_insert_dispatch / insert / _M_create_node bodies in the TU (not inlined by VC7.1)	DIFFER(970v982) 400 -- list header back in ebp, tag and `this` homed in the dead pc slot as retail
+p04	GetTC passing StatGetInterfaceType() as a temporary (no named key)	DIFFER(970v982) 254 -- frame 0x38 (out pointer shares the key word)
+p05	CCharString::operator== over FableWin CBasicString<char>::operator== (CCharStringData::Data)	DIFFER(975v982) 240 -- only block placement left
+p06	p05 with if (!IsCore()) nesting	DIFFER(986v982) 259
+p07	tail (SetText / AddChild) duplicated in every leaf	DIFFER(1545v982) 643 -- not cross-jumped
+p08	IsCore() result in a bool local	DIFFER(975v982) 240
+p09	region mismatch as `continue`	DIFFER(975v982) 240
+p10	diagnostic: non-core leaves goto a single core copy	DIFFER(866v982) 307 -- retail has two core copies
+p11	p05 under /Oy-	DIFFER(988v982) 518
+p12	diagnostic: tail in the core arm plus a re-tested !IsCore() tail	DIFFER(1083v982) 405
+p13	tail duplicated once per IsCore arm (core arm / end of else arm)	DIFFER(1070v982) 401 -- not merged; extra wide-string slot
+PARK: 14 probes; p10-p13 did not reduce the residue. Best = p05 -> differ/005fd5e0.cpp

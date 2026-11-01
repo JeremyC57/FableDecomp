@@ -1,0 +1,9 @@
+p00	prior source unchanged (local CThing/GetInterface model; IsPlayerControlled declared at slot 1)	DIFFER(552v547) 62 masked diff lines
+p01	re-author on the landed CCreatureAction shared model (0x00849E80): real CVectorMap + same-TU noinline LowerBound bodies, GetTC<T>(T**) if/assign form, CIntelligentPointer, IsPlayerCharacter slot 77, Ego_r spellings	DIFFER(561v547) 96
+p02	LowerBound declared only (no same-TU bodies)	DIFFER(561v547) 96
+p03	GetTC with the one-ternary store (EXTRA_RULES GetInterface form)	DIFFER(567v547) 56 -- HasTC calls no longer inlined (inline budget)
+p04	HasTC forced inline (the landed 501-row HasTC form)	RELOCATION_MATCH
+p05	HasTC plain inline expression form	DIFFER(574v547) 51
+p06	HasTC explicit `inline`	DIFFER(567v547) 56
+p07	GetTC/PeekTC and HasTC all plain inline	DIFFER(417v547) 176
+p08	GetTC plain, HasTC forced	DIFFER(404v547) 159

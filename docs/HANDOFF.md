@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,780 of 57,611 known functions (91.6%), 45,390 of the original 49,568 (91.6%); 174 `retail_asm`,
+  never hand-edit): 52,784 of 57,611 known functions (91.6%), 45,394 of the original 49,568 (91.6%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -37,6 +37,9 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 ## Done 2026-11-01 (details in FINDINGS_LOG)
 - Naming wave 13 landed: 314 rows, 11 family commits, coordinator recheck 314/314, bindings 156 RETIRE / 52 ADD, 8 renames,
   22 labels; 4 owner decisions scoped (`naming/2026-11-01_wave13/`). ESTABLISHED_SPELLINGS now applied across the tree.
+- Chunks 652 (4/10) and 653 (3/10) landed under the increased-attempts + retail-fidelity brief; owner decisions pending in their
+  READMEs: `volatile` on CFileInstaller::PCompletedRead (0x009C4F20; landed 0x009C42F0 already carries it), the 0x00626E40 /
+  0x006276F0 pair (reconstruct the 1.5 KB sibling first). `lane_tools/const_check.py` checks __real@ constants the reloc mask hides.
 - Chunk 651 landed 3/10 (TransformOpinionFromHeroStats MATCH, IsAnimationStateBaseValid, GetInputProcessEvent; 7 parked with 12-20
   probes each, residues now single-register/allocation ties); 14 NAME_FIXES (c651); review debts in `batches/2026-10-27_linux_hand651/LESSONS.md`.
 

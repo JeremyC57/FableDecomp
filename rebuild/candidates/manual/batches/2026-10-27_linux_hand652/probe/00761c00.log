@@ -1,0 +1,8 @@
+p00	prior source unchanged (local CPersistContext with non-template Transfer overloads, OnSerialise non-virtual)	DIFFER(816v821) 8 masked diff lines -- the three 0.0f default stores for Transfer(float) stay in the loop body; retail hoists them to the preheader
+p01	real CPersistContext layout from landed 0x00410620 (CMemoryDataInputStream / CDataOutputStream layout-rename) + PDB member templates Transfer<T>(name, T&, const T&) and the forwarding two-argument Transfer<T> with GetDefaultVal<T>()	DIFFER(816v821) 8 -- same hoisting residue
+p02	generic same-TU noinline Transfer<T> body that reads `name == 0`	DIFFER(652v821) -- the body was too thin and VC7.1 folded the defaults away
+p03	float specialisation with the same thin body	DIFFER(701v821)
+p04	noinline float Transfer stand-in taking the default by value	RELOCATION_MATCH -- but the stand-in is invented (TransferStandIn); rejected for retail fidelity
+p05	generic stand-in taking &default	DIFFER(816v821) 8
+p06	real Transfer<float> body (landed 0x00410620: switch on Mode, __assume(0) default) as a same-TU noinline explicit specialisation	RELOCATION_MATCH
+p07	p06 + real names: anonymous-namespace CLOSED_STRING_NAME 0x013BAD8C / LINE_STRING_NAME 0x013BAD90 (case 0 = CLOSED, retail je to push 0x13bad8c), virtual ~CShape / GetType (pure, slot 1, NShape::EShape) / OnSerialise (slot 2, UAE), STLport vector<C3DVector> Points	RELOCATION_MATCH -> src/00761c00.cpp

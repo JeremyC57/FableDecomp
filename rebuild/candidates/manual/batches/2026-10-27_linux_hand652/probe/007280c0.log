@@ -1,0 +1,18 @@
+p00	prior source unchanged	DIFFER(807v802) 236 masked diff lines
+p01	base temp release as `long count = --RefCount; if (count == 0)`; Resize value temporary's dtor declared out of line (retail calls 0x005BC0D3)	DIFFER(805v802) 236
+p02	release through a local `object` pointer	DIFFER(790v802) 172 (base in edi as retail, but inc/dec folded)
+p03	release via a Release() member returning --RefCount	DIFFER(790v802) 172
+p04	base temp in a named block-scope local	DIFFER(805v802) 236
+p05	`if (!count)`	DIFFER(805v802) 236
+p06	`if (count <= 0)`	DIFFER(805v802) 232
+p07	unsigned count	DIFFER(805v802) 236
+p08	local object + count	DIFFER(790v802) 172
+p09	object local, decrement through the member	DIFFER(805v802) 236
+p10	engine/CIVCountedPointeeBase shape: mutable count, AddRef() const / Release() const returning --count, CDefPointer::Release holding the pointee in a local, Object = 0	DIFFER(790v802) 162 -- the def temporary now matches retail byte for byte
+p11	def declared before flag	DIFFER(797v802) 173
+p12	def declared before the morph set	DIFFER(797v802) 173
+p13	CDefPointer<CCreatureDef> dtor through a local pointee (no null test)	DIFFER(795v802) 150
+p14	named CRandomMorphDef* for the morph call	DIFFER(790v802) 162
+p15	flag as one && condition	DIFFER(790v802) 162
+p16	p10 + texture-morph vector dtor as a same-file non-inline body	DIFFER(808v802) 164
+p17	p13 + same	DIFFER(813v802) 152

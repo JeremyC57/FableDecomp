@@ -1,0 +1,12 @@
+p00	prior source unchanged (stand-in vector, same-TU stand-in bodies for push_back / _M_insert_overflow / ConstructItemCategoryList, public struct)	leaf matched no symbol (public QAE + struct U mangling): graded the largest function, 233 masked lines
+p01	real STLport vector<pair<long,long> > (push_back inline, _M_insert_overflow declared), stand-in bodies removed, private members	leaf still unmatched (struct-key mangling) -- 504
+p02	engine classes as `class` (V mangling)	DIFFER(1248v1260) 504 -- VC7.1 itself inlines the default push_back and calls the other five (retail pattern); allocation differs (others finish not in edi, ebx pushed in the prologue)
+p03	+ the real STLport _M_insert_overflow body (landed 0x0059400C text) and range helpers	DIFFER(1248v1260) 504
+p04	+ inline GetGameTextBank() accessor (landed 0x005FB8F0 form)	DIFFER(1244v1260) 464 -- best landable
+p05	DIAGNOSTIC: p04 + an invented same-TU body for ConstructItemCategoryList that reads its inputs	RELOCATION_MATCH (not landable: invented body)
+p06	others vector declared first	DIFFER(1244v1260) 490
+p07	ConstructItemCategoryList taking const CItemVector& (diag)	DIFFER(1244v1260) 464
+p08	numItems = numItems + ... form	DIFFER(1244v1260) 464
+p09	item count through a local, stored after the loop	DIFFER(1248v1260) 464
+p10	_M_insert_overflow body removed again	DIFFER(1244v1260) 464
+PARK: 12 probes (p00-p10 + p05 diagnostic); p07-p10 did not reduce the residue. Best landable = p04 -> differ/006276f0.cpp; p05 shows the missing piece is the same-TU ConstructItemCategoryList 0x00626E40.

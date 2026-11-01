@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x009C4F20	DIFFER	490v490	-	CFileInstaller::ProcessAlways: PCompletedRead re-read (retail member is vo-latile; qualified diagnostic is RELOCATION_MATCH) -- owner decision; 24 probes
+0x00E36750	DIFFER	541v536	-	CV_ArcheryCompetitionScript::DoCountDown: block placement of the post-wait / wait-loop return blocks; 19 probes
+0x00845040	RELOCATION_MATCH	547v547	PASS	CCreatureAction_GiveMoneyToThing::PerformAction: shared model, GetTC ternary store + __forceinline HasTC; 9 probes
+0x007280C0	DIFFER	795v802	-	CTCRandomAppearanceMorph::UpdateMorphSet: def/flag slots, def in edi, morph loops (needs real CArray morph-set models); 18 probes
+0x00761C00	RELOCATION_MATCH	821v821	PASS	NShape::CShape::OnSerialise: real CPersistContext member templates + same-TU Transfer<float> body; anonymous-namespace type names; 8 probes
+0x0072A090	RELOCATION_MATCH	844v844	PASS	CTCActionUseScriptedHook::GlobalUpdate: engine CCountedPointer, GetTC ternary, FableWin inline CWorld accessors, CScriptModuleSpline / SetPCameraPoint; 10 probes
+0x005FB140	RELOCATION_MATCH	877v877	PASS	CTCInventoryMap::PanMap: real STLport 4.6 _Rb_tree/map (default-constructed best iterator); 8 probes
+0x005FD5E0	DIFFER	975v982	-	CTCInventoryMap::ConstructRegionDescriptionQuests: non-core subtree placement only (retail moves it after the ret); 14 probes
+0x006276F0	DIFFER	1244v1260	-	CTCQuickAccessMenu::GetItemsListUI: allocation from ConstructItemCategoryList 0x00626E40 not being in the TU (invented same-TU body = RELOCATION_MATCH, p05); 12 probes
+0x00E96110	DIFFER	1360v1356	-	CV_HauntedHouseScript::CM_QuestControl::Main: zero-in-ebx / timer-in-edi allocation tied to ~CTimer inlining at the main exit; 17 probes

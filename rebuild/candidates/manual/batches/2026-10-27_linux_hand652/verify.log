@@ -1,0 +1,38 @@
+addr       parity           behav  name
+005fb140   WARN SHARED_HEADER_AVAILABLE CRegion
+005fb140   WARN SHARED_HEADER_AVAILABLE CList
+005fb140   RELOCATION_MATCH PASS   PanMap
+0072a090   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0072a090   WARN SHARED_HEADER_AVAILABLE CBaseObject
+0072a090   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072a090   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0072a090   WARN SHARED_HEADER_AVAILABLE CGameEvent
+0072a090   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0072a090   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0072a090   WARN SHARED_HEADER_AVAILABLE CWorld
+0072a090   WARN SHARED_HEADER_AVAILABLE CTCBase
+0072a090   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0072a090   WARN RELOC_NAME: ?SetPCameraPoint@CScriptModuleBase@NCameraModes@@QAEXAAVCThing@@@Z -> 0072a4a0 labelled '_unattributed::AssignTarget_0072a4a0'
+0072a090   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAE@XZ -> 005ed2c0 labelled '_global::CCountedPointer_Release_005ed2c0'
+0072a090   RELOCATION_MATCH PASS   GlobalUpdate
+00761c00   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00761c00   RELOCATION_MATCH PASS   OnSerialise
+00845040   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00845040   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00845040   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00845040   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00845040   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+00845040   WARN SHARED_HEADER_AVAILABLE CTCWife
+00845040   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 4
+  005fb140 RELOCATION_MATCH CTCInventoryMap::?PanMap@CTCInventoryMap@@QAEXVC2DVector@@@Z
+  0072a090 RELOCATION_MATCH CTCActionUseScriptedHook::?GlobalUpdate@CTCActionUseScriptedHook@@UAEX_N@Z
+  00761c00 RELOCATION_MATCH NShape::CShape::?OnSerialise@CShape@NShape@@UAEXAAVCPersistContext@@JABVC2DCoordI@@@Z
+  00845040 RELOCATION_MATCH CCreatureAction_GiveMoneyToThing::?PerformAction@CCreatureAction_GiveMoneyToThing@@UAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryMap_PanMap_005fb140
+  CTCActionUseScriptedHook_GlobalUpdate_0072a090
+  NShapeCShape_OnSerialise_00761c00
+  CCreatureActionGiveMoneyToThing_PerformAction_00845040

@@ -25418,7 +25418,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXPBVCGameEvent@@@Z	0049eaf0	005fad40
 ?GetThingManager@CTCInventoryMap@@QAEPAVCThingManager@@XZ	00686af0	005fae90
 ?GetInventoryText@CTCInventoryBase_Retail@@QAE?AVCWideString@@J@Z	005bd273	005faf10
-?GetNameGraphicOffset@CRegion@@QBE?AVC2DVector@@XZ	006bbf40	005fb8f0
 ??1?$list@PAVCThing@@@@QAE@XZ	006153c0	005fbd90
 ?GetAllThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$list@PAVCThing@@@@@Z	00617860	005fbd90
 ?FindAllMessages@CMessageEventManager@@QAEJABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_OccuredBetween@@@@PAU?$list@PAVCMessageEvent@@@@@Z	006178f0	005fc0c0
@@ -35661,3 +35660,13 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?DeleteBuffers@CAudioContext@@QAEXJPBK@Z	00c4d8c0	00c4dc40
 ?Process@CAudioContext@@QAEXXZ	00c4d7d0	00c4dc40
 ?Suspend@CAudioContext@@QAEXXZ	00c4d790	00c4dc40
+??E?$_Rb_tree_iterator@U?$pair@$$CBJVCRegion@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCRegion@@@std@@@2@@std@@QAEAAU01@XZ	00613630	005fb140
+?GetWorldMapOffset@CRegion@@QBE?BVC2DVector@@XZ	006bbf40	005fb140
+??$FindMostRecentMessage@VCMessageEventFilter_IsOfType@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABVCMessageEventFilter_IsOfType@@@Z	004ab8b0	0072a090
+??0CScriptModuleSpline@NCameraModes@@QAE@JJ@Z	00852710	0072a090
+??1?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@QAE@XZ	005ed2c0	0072a090
+?SetPCameraPoint@CScriptModuleBase@NCameraModes@@QAEXAAVCThing@@@Z	0072a4a0	0072a090
+?CLOSED_STRING_NAME@?A0xd1d0d6e9@@3VCCharString@@A	013bad8c	00761c00
+?LINE_STRING_NAME@?A0xd1d0d6e9@@3VCCharString@@A	013bad90	00761c00
+??0CEventReceivedMoney@NEntityEvents@@QAE@AAVCThing@@J@Z	0084ae00	00845040
+?ReceivedNiceGiftIsOpinionReactionHappening@CTCWife@@QAE_NJ@Z	006d0630	00845040

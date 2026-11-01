@@ -1,4 +1,4 @@
-address	name	module	calling_convention	return_type	parameter_count	parameter_types	prototype_complete	clean_decompile	naming_quality	agent_verdict	agent_source	lift_grade	lift_source	agent_source_path	compiled_status	behavior_test	retail_parity	compiled_source
+﻿address	name	module	calling_convention	return_type	parameter_count	parameter_types	prototype_complete	clean_decompile	naming_quality	agent_verdict	agent_source	lift_grade	lift_source	agent_source_path	compiled_status	behavior_test	retail_parity	compiled_source
 00401011	_check_managed_app	msvcrt.lib(crtexew.obj)	unknown	undefined	0		0			discovered	boundary							
 00401067	entry	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00401067_global_entry.cpp				
 00401266	__c_exit	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							
@@ -16660,7 +16660,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006bbed0	CConsoleCommand::vfunc_5	CConsoleCommand	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 006bbee0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CLandscapeBackgroundPatch_vectordeletingdestructor_006bbee0.cpp
 006bbf20	GetDisplayName	CRegion	__thiscall	CCharString *	1	CRegion *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\CRegion_GetDisplayName_006bbf20.cpp
-006bbf40	GetNameGraphicOffset	CRegion	__thiscall	C2DVector	1	CRegion *	1	yes	accepted									
+006bbf40	GetWorldMapOffset	CRegion	__thiscall	C2DVector	1	CRegion *	1	yes	accepted									
 006bbf70	GetNameGraphicOffset	CRegion	__thiscall	C2DVector	1	CRegion *	1	yes	accepted									
 006bbfa0	IsMapIncluded	CRegion	__thiscall	bool	1	CHitParameters *	1	yes	accepted									
 006bbfd0	SaveBinary	CRegion	__thiscall	void	2	CRegion *,CDataOutputStream *	1	yes	accepted									

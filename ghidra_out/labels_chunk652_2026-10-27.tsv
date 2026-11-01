@@ -1,0 +1,13 @@
+address	name	evidence
+00845040	CCreatureAction_GiveMoneyToThing::PerformAction	chunk 652 RELOCATION_MATCH on the landed PerformAction shared model
+00761c00	NShape::CShape::OnSerialise	chunk 652 RELOCATION_MATCH: virtual slot 2; real CPersistContext::Transfer<T> members + the landed Transfer<float> body same-file
+0072a090	CTCActionUseScriptedHook::GlobalUpdate	chunk 652 RELOCATION_MATCH: Ego_r (bool); engine CCountedPointer.h, FableWin inline CWorld::GetGameCamera / GetMessageEventManager
+005fb140	CTCInventoryMap::PanMap	chunk 652 RELOCATION_MATCH: real STLport 4.6 map text
+006bbf40	CRegion::GetWorldMapOffset	chunk 652: reads CRegionDef +0xAC = Ego_r WorldMapOffset (+0xB8 less the 12-byte retail shift); catalog/manifest said GetNameGraphicOffset, which is the +0xB4 twin 0x006BBF70; landed caller 0x005FB8F0 respelled and rechecked
+006bbf70	CRegion::GetNameGraphicOffset	chunk 652: reads CRegionDef +0xB4 = Ego_r NameGraphicOffset (+0xC0 less 12)
+00487dc0	CPlayer::GetPControlledCreature	chunk 652: FableWin ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (65 bindings; catalog GetHeroCreature)
+0072a4a0	NCameraModes::CScriptModuleBase::SetPCameraPoint	chunk 652: Ego_r ?SetPCameraPoint@CScriptModuleBase@NCameraModes@@QAEXAAVCThing@@@Z (catalog AssignTarget_0072a4a0)
+005ed2c0	CCountedPointer<NCameraModes::CScriptModuleBase>::~CCountedPointer	chunk 652: the body is the destructor (zeroes Data), not ReleaseData (catalog CCountedPointer_Release_005ed2c0)
+00852710	NCameraModes::CScriptModuleSpline::CScriptModuleSpline	chunk 652: Ego_r ??0CScriptModuleSpline@NCameraModes@@QAE@JJ@Z (the prior's CScriptModuleCameraTrack was invented)
+0066bd00	CTCSoundPlayer::PlayAttachedCriteria	chunk 652: Ego_r ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z (bindings disagreed: CTCSound::PlaySound spellings are wrong)
+009c4120	CFileInstaller::PostFileReadCompletion	chunk 652: Ego_r IAE (CActiveRead*)

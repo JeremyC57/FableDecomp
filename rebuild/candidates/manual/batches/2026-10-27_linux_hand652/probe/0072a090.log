@@ -1,0 +1,10 @@
+p00	prior source unchanged (stand-in GetInterface, local CCountedPointer, non-virtual GlobalUpdate(long))	DIFFER(848v844) 37 masked diff lines -- three register residues
+p01	engine CCountedPointer.h + virtual GlobalUpdate(bool) (Ego_r UAEX_N)	DIFFER(846v844) 15 -- mode Data now kept in esi across the module call (residue 3 gone)
+p02	real camera classes: CTCCameraPointDefinitionBase + GetPointType<CTCCameraPointTrack> template, CCountedPointer<CScriptModuleBase>, CScriptModuleSpline(0,-1), SetPCameraPoint(CThing&)	DIFFER(846v844) 15
+p03	direct GetWorld()->PCurrentGameCamera->GetCameraManager vcall (no wrapper)	DIFFER(848v844) 16 -- object lands in eax
+p04	real CTCBase::GetWorld() const -> CWorld&, GetPlayerManager() -> CPlayerManager&, GetMainPlayer -> CPlayer&, GetPControlledCreature	DIFFER(848v844) 16
+p05	GetInterface with the one-ternary store	DIFFER(846v844) 9 -- camera-point vcall fixed
+p06	p05 + CWorld inline wrapper for the camera vcall	RELOCATION_MATCH (wrapper invented)
+p07	wrapper replaced by FableWin.pdb inline CWorld::GetGameCamera() + both CAIGameCameraBase::GetCameraManager overloads	RELOCATION_MATCH
+p08	full real-name rewrite: CThing UsingComponents/Components + GetTC<T> (StatGetInterfaceType), CTCSoundPlayer::PlayAttachedCriteria, GetPos, GetFacingAngleXY, CIntelligentPointer<CThing>, CGameEvent AddData/AddFloat/AddUBYTE/SetPlayer, FindMostRecentMessage template, CMessageEvent::ExtraData, PMessageEventManager as CCountedPointer read via .Get()	DIFFER(847v844) 1 -- a dead `add eax,60h`
+p09	FableWin.pdb inline CWorld::GetMessageEventManager() (reference)	RELOCATION_MATCH -> src/0072a090.cpp

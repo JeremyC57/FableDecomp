@@ -1,0 +1,24 @@
+# Chunk 652 -- lessons from the authoring agent (fold into GOTCHAS at landing)
+
+- **Real STLport text fixes "allocation" residues.** In map loops, use the real STLport 4.6 `_Rb_tree`/`map` with a default-constructed iterator (`_M_node = 0`) and the free `operator!=(const _Rb_tree_base_iterator&, ...)`. With them, VC7.1 keeps the loop iterator in edi and the best iterator in a frame word, as retail does. A stand-in iterator flips that choice and adds a loop alignment pad. Example: 0x005FB140, 873v877 → RELOCATION_MATCH with no other change.
+- **Pass a GetTC lookup key as a temporary.** Write `map->LowerBound(T::StatGetInterfaceType())`, not a named `key` local, when retail's out pointer shares the key's frame word (the absent path reads it). Example: 0x005FD5E0, frame 0x3C → 0x38.
+- **The GetTC one-ternary store loads the component straight into ecx** when the next use is a vcall on it; the if/assign form goes through eax. Example: 0x0072A090, the camera-point GetCameraPointType call.
+- **Look for FableWin.pdb inline accessors before writing a direct member chain.** `CWorld::GetGameCamera()` fixed the eax/edx order in a `->GetCameraManager(&m)` vcall. `CWorld::GetMessageEventManager()`, which returns a reference over the CCountedPointer member, removed a dead `add eax,60h` that `.Get()` left behind. Example: 0x0072A090.
+- **Use the engine CCountedPointer for a counted mode pointer passed by value.** It keeps the Data word cached in esi across the intervening call; a local copy-ctor model reloads it. Check the callee's PDB parameter type. Here `SetScriptedCameraMode` takes `CCountedPointer<CScriptModuleBase>`, so the local is that type holding a derived `new`. Example: 0x0072A090.
+- **A same-TU, not-inlined body tells VC7.1 a callee never touches `this` or captures an address.** Two effects:
+  - The real STLport `_M_insert_dispatch` body in the TU lets VC7.1 home the list object and the `__false_type` tag in a dead argument slot (0x005FD5E0).
+  - A callee compiled earlier in the same retail TU, and not captured, lets VC7.1 enregister vector words across calls (0x006276F0 needs ConstructItemCategoryList 0x00626E40). Declared-only callees force memory.
+- **CCharString equality goes through `CBasicString<char>::operator==` over `CCharStringData::Data`.** Write the length compare in that inner inline (FableWin names) to get retail's separate `xor al,al ; mov bl,al` length-mismatch block. Example: 0x005FD5E0.
+- **Persist defaults: give Transfer<float> its real body.** Hoisting the 0.0f default-temporary stores out of a Transfer loop needs the real `CPersistContext::Transfer<float>` body (0x00410620) in the TU as a noinline explicit specialisation. The declaration-only form leaves the stores in the loop. Example: 0x00761C00.
+- **VC7.1 inlines STLport push_back only up to its per-function budget.** Retail's "inline once, call the COMDAT five times" (0x006276F0, push_back 0x005947B6) comes out by itself from a plain inline `push_back`. No `__forceinline` / `auto_inline(off)` split is needed.
+- **ICF-folded COMDAT addresses.** The callee address of a template COMDAT (`_Rb_tree_iterator<pair<const long,CRegion>>::operator++` → 0x00613630; `push_back` → 0x005947B6) is one identical-code-folded copy shared by many instantiations. Name the instantiation the function actually uses.
+
+Review at landing:
+- Rows that needed more than 4 grades: all ten. Each row's probe log is probe/<addr>.log.
+- 0x009C4F20: the residue is the vo-latile qualifier, which retail has and purity forbids. The landed 0x009C42F0 already carries the same qualifier: check it against the purity rule.
+- 0x006276F0: probe p05 is RELOCATION_MATCH only with an invented same-TU ConstructItemCategoryList body. Decide whether to land it as a stand-in or wait for 0x00626E40.
+- Landed CTCInventoryMap_SetPanMode_005fb8f0.cpp and rebuild/manifest/functions.tsv name 0x006BBF40 GetNameGraphicOffset. It is GetWorldMapOffset (NAME_FIXES). Respell the landed caller.
+- Landed CMHeroInsideHouse_Main_00e96660.cpp (same TU as 0x00E96110) uses a member IsActiveThreadTerminating and descriptive layout. The engine CEntityScriptBase::IsActiveThreadTerminating() const is 0x00F35B30.
+- The landed CCreatureAction shared model (0x00849E80) keeps same-TU noinline LowerBound bodies and `#pragma pack(1)` C3DVector. 0x00845040 matches without either (both removed).
+- 0x00761C00's object also defines CPersistContext::Transfer<float> (a non-leaf function body from the landed 0x00410620). Check that the landing build accepts a second definition of that specialisation in this TU.
+- Local base models next to existing engine headers: see Header debt in NOTES.md. vland's SHARED_HEADER_AVAILABLE warnings: CRegion, CList, CTCPhysicsBase, CBaseObject, CPlayer, CPlayerManager, CGameEvent, CGameCameraManager, CAIGameCameraBase, CWorld, CTCBase, CIVCountedPointeeBase, CDefPointer, CCreatureActionBase, CTCHeroStats, CTCEntityEvents, CTCWife.

@@ -1,0 +1,23 @@
+p00	prior source unchanged (hand-destroyed handle views, local GameCalls)	DIFFER(530v536) 71 masked diff lines (exitA folded into the function end)
+p01	re-author on the retail headers: CScriptBase.h, CGameScriptInterface.h, CScriptGameResourceObjectScriptedThingBase.h (implicit dtor), CTimer.h with inline ctor/dtor/operator=/GetTime	DIFFER(541v536) 62 -- VC7.1 now picks retail's dtor sites by itself (inline only at the wait-loop return); residue is block placement only: both return blocks (post-wait exit, wait-loop return) sunk after the final epilogue, retail keeps them right after the post-wait test
+p02	timer-loop exit as if/else	DIFFER(541v536) 62
+p03	whole remainder in else after the post-wait return	DIFFER(541v536) 62
+p04	wait loop as for(;;) with break	DIFFER(541v536) 62
+p05	if + do/while wait loop	DIFFER(487v536) 110
+p06	post-wait test as if(!t){} else return	DIFFER(564v536) 83
+d1	DIAGNOSTIC: no return inside the wait loop	DIFFER(525v536) 40 (post-wait exit stays in place)
+d2	DIAGNOSTIC: no return inside the timer loop	DIFFER(515v536) 75
+d3	DIAGNOSTIC: CTimer dtor empty	DIFFER(500v536) 59 (all exits merge into one)
+p07	post-wait test moved inside the wait loop's success arm	DIFFER(541v536) 62
+p08	last block as if(!t){...}	DIFFER(530v536) 71
+p09	timer test through CTimer::operator>(long)	DIFFER(541v536) 62
+flags	/Ob1 541 62; /Og- 761; /Os 402; /GL objdump error; QFE 4035 541	no change
+p10	if/else at every guarded return	DIFFER(541v536) 62
+p11	remainder inside if(!t){...; return;}	DIFFER(564v536) 83
+p12	timer-loop exit as break	DIFFER(526v536) 71
+p13	handle in an inner block scope	DIFFER(541v536) 62
+p14	timer loop as for(long t = GetTime(); t > 0; t = GetTime())	DIFFER(561v536) 47 -- post-wait exit now stays in place (retail layout), but the dtor is then inlined at two more exits
+p15	CTimer::GetTime as a same-TU non-inline member	DIFFER(541v536) 62
+p16	timer loop as for(;;){if (GetTime() <= 0) break;}	DIFFER(541v536) 74
+p17	named remaining local in the timer loop	DIFFER(570v536) 75
+p18	p14 with a bool loop variable	DIFFER(561v536) 47
