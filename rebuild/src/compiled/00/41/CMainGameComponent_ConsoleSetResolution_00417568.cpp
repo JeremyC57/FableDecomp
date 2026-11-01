@@ -1,5 +1,6 @@
 // CMainGameComponent::ConsoleSetResolution(CMainGameComponent& component, const std::vector<CGenericVar>& args) -- console command: switch the display to the width, height and colour depth given as the three integer arguments
 // Leaf: ?ConsoleSetResolution@CMainGameComponent@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00417568, length 114 bytes, plain `ret` after `leave` (static
 // `__fastcall`: component in ecx, args in edx). Name: Ego_r.pdb / FableWin.pdb
 // ?ConsoleSetResolution@CMainGameComponent@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z.
@@ -59,7 +60,7 @@ class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,
                                         ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
 };
-extern CDisplayManager* PDisplayManager;               // 0x013B8390
+extern CDisplayManager* GPDisplayManager;               // 0x013B8390
 class CDisplayEngine {
 public:
     void PreChangeResolution();                          // 0x00434A10
@@ -83,6 +84,6 @@ void __fastcall CMainGameComponent::ConsoleSetResolution(CMainGameComponent& com
     unsigned long depth = args[2].ValSLONG;
     message.Format("Nearest supported resolution is (%d,%d,%d)", width, height, depth);
     component.PDisplayEngine->PreChangeResolution();
-    PDisplayManager->SetDisplayMode(C2DExtentsI(width, height), depth, SURFACE_MULTISAMPLE_NONE, 0);
+    GPDisplayManager->SetDisplayMode(C2DExtentsI(width, height), depth, SURFACE_MULTISAMPLE_NONE, 0);
     component.PostChangeResolution(width, height, depth);
 }

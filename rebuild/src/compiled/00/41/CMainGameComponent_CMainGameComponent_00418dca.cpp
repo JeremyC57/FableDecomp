@@ -1,5 +1,6 @@
 // CMainGameComponent::CMainGameComponent(CMainGameComponentParent*, const CMainGameComponentInit&) -- main game component ctor: game-component base, empty banks/scoped pointers, force-update tuning (3.0x at 30 fps), the event/network/file/frame-rate members, a copy of the init structure, then registration in the component list
 // Leaf: ??0CMainGameComponent
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00418DCA, 294 bytes (`ret 8`). Vtables 0x0122F180 (+0) / 0x0122F174 (+4).
 // Callees: CGameComponent::CGameComponent 0x0051D8E0 (labelled CAIStateGroup_GazeAtHome), CInterpolationInfo 0x00415A60,
 //   CGameEventPackageSet 0x009F1A80, CNetworkClient 0x00419323 (labelled CAIStateGroup_GoToBed), CDiskFileWin32 0x00415C30,
@@ -54,7 +55,7 @@ struct CComponentList {
     void AddComponent(CComponentListEntry* component);  // 0x009C0190
 };
 class CDisplayManager;
-extern CDisplayManager* PDisplayManager;           // 0x013B8390
+extern CDisplayManager* GPDisplayManager;           // 0x013B8390
 class CMainGameComponent : public CGameComponent {
 public:
     CASoundBank*                         PSampleBank;               // +0x10
@@ -115,6 +116,6 @@ CMainGameComponent::CMainGameComponent(CMainGameComponentParent* parent, const C
       InitStructure(init), Initialised(false), AllowRender(true), Rendered(false)
 {
     LastGameTurnForceRendered = 0;
-    ((CComponentList*)PDisplayManager)->AddComponent(this);
+    ((CComponentList*)GPDisplayManager)->AddComponent(this);
     DebugNoFramesUnableToRender = 0;
 }

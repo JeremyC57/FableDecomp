@@ -1,5 +1,6 @@
 // CMainGameComponent::Shutdown() -- tear the game component down: stop the sound system, shut the network session, drop the global game/server hooks, uninitialise the event-package machinery and console, then release every owned subsystem pointer and clear the definition manager
 // Leaf: Shutdown
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004175E5, length 354 bytes (unaligned TU), tail `jmp`.
 // Callees (several through ILT thunks): the sound manager @ 0x013B8394 (virtual slots 16 +0x40 and 18 +0x48, then 0x00991750 and
 //   0x009918F0), the network session's (+0x24, a scoped_ptr with the safe-bool idiom: `neg ; sbb ; test edx,offset get` against
@@ -77,7 +78,7 @@ class CDisplayManager { public:
 class CLSocketServer {
 };
 class CDisplayManager;
-extern CDisplayManager* PDisplayManager;              // 0x013B8390
+extern CDisplayManager* GPDisplayManager;              // 0x013B8390
 extern CCountedPointer41915a g_GlobalCountedPointer; // 0x013B8790
 extern void* g_pGame;                                // 0x013B86A0
 
@@ -144,7 +145,7 @@ void CMainGameComponent::Shutdown()
     m_10 = 0;
     g_GlobalCountedPointer.Clear();
     g_pGame = 0;
-    ((CDisplayManager*)(((CLSocketServer*)PDisplayManager)))->RemoveDeviceResetCallback((CDeviceResetCallback*)Socket);
+    ((CDisplayManager*)(((CLSocketServer*)GPDisplayManager)))->RemoveDeviceResetCallback((CDeviceResetCallback*)Socket);
     EditWorld.Shutdown();
     if (InputSystem.IsValid())
         InputSystem.Uninitialise_004ae990();

@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::Shutdown() -- tear the front end down: drop the front-end def, unregister the component, release the scene, hand the game state back unless a game is being created, unload the XMV code, empty the save-file lists and clear the screen to opaque black
 // Leaf: Shutdown
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042EBB6, 198 bytes (`ret`). Size-optimised TU with a frame pointer: `#pragma optimize("y",
 //   off)` + `#pragma optimize("s", on)` (as the landed CNewFrontendGameComponent rows of this module).
 // Callees: the __fastcall registration forwarder 0x004336B0 (pushes ecx and calls 0x00433D3A on the object at 0x013B8760; called
@@ -67,7 +68,7 @@ class CFontManager;
 extern CFontManager* PFontManager;    // 0x013B838C
 class CASoundManager;
 extern CASoundManager* PSoundManager;          // 0x013B8394
-extern CDisplayManager* PDisplayManager;                        // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                        // 0x013B8390
 class CNewFrontendGameComponent {
 public:
     void*                     __vftable;           // +0x00
@@ -99,8 +100,8 @@ void CNewFrontendGameComponent::Shutdown()
     ReleaseXMVCode();
     FileNames.clear();
     FileTimes.clear();
-    if (PDisplayManager) {
-        PDisplayManager->ClearRenderTarget(CRGBColour(0, 0, 0, 0xff), 7);
-        PDisplayManager->SwapScreens();
+    if (GPDisplayManager) {
+        GPDisplayManager->ClearRenderTarget(CRGBColour(0, 0, 0, 0xff), 7);
+        GPDisplayManager->SwapScreens();
     }
 }

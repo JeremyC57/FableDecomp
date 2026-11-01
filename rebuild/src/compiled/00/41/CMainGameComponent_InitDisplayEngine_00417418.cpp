@@ -1,4 +1,5 @@
 // CMainGameComponent::InitDisplayEngine() -- construct display engine from current graphics/world/surface settings.
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Native00417418 length217. Actual flattened headers retained; native CMainGameComponent header absent.
 // CMain late PMainGraphicBank native161c8 vs donor161d0. Native new size100 matches donor DisplayEngine.
 // Calls419270 init ctor;415bf0 height;9f2f90 dimensions;9f2f60 pixel;44c6b0 definition;
@@ -41,7 +42,7 @@ class CSurface : public CSurfaceDonor { public:
 };
 struct CDisplayDevice { unsigned char DisplayState[0x2c]; CSurface BackSurface; CSurface& GetBackSurface(){return BackSurface;} };
 class CDisplayManager;
-extern CDisplayManager* PDisplayManager; //013b8390
+extern CDisplayManager* GPDisplayManager; //013b8390
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); private: CBaseClassNonCopyable(const CBaseClassNonCopyable&); CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
 class CMainGameComponent; class CGamePlayerInterface;
@@ -80,9 +81,9 @@ FABLE_STATIC_ASSERT(sizeof(CDisplayEngineInit)==0x24);
 void CMainGameComponent::InitDisplayEngine(){
  CDisplayEngineInit init;
  init.World=PWorld;
- init.Height=((CDisplayDevice*)PDisplayManager)->BackSurface.GetHeight();
- init.Width=((CDisplayDevice*)PDisplayManager)->BackSurface.GetWidth();
- init.PixelFormat=((CDisplayDevice*)PDisplayManager)->BackSurface.GetPixelFormat();
+ init.Height=((CDisplayDevice*)GPDisplayManager)->BackSurface.GetHeight();
+ init.Width=((CDisplayDevice*)GPDisplayManager)->BackSurface.GetWidth();
+ init.PixelFormat=((CDisplayDevice*)GPDisplayManager)->BackSurface.GetPixelFormat();
  init.DefinitionManager=(&CGameDefinitionManager::Get());
  init.PlayerManager=PPlayerManager;
  init.MainGraphicBank=PMainGraphicBank;

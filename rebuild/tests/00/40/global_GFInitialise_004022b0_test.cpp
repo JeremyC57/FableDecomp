@@ -46,7 +46,7 @@ struct CXMVPlayer
 extern bool FABLE_FASTCALL GFInitialise();
 
 class CASoundManager; CASoundManager* PSoundManager;          // 0x013B8394 (naming wave 13)
-CDisplayManager* PDisplayManager;                               // 0x013B8390
+CDisplayManager* GPDisplayManager;                               // 0x013B8390
 FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 void* g_FableRenderState_013B8380;
 fable_u8 g_FableRenderStateStorage_013BC470;
@@ -152,7 +152,7 @@ static int VerifySuccessfulProgressSetup()
         (fable_u32)PGraphicBankManager != 0x6C6C6C6C)
         return 3;
     if (
-        PDisplayManager != &g_displayManager ||
+        GPDisplayManager != &g_displayManager ||
         g_FableDisplayPrimitive_013B8384 != &g_displayPrimitive ||
         g_FableRenderState_013B8380 != &g_FableRenderStateStorage_013BC470)
         return 4;

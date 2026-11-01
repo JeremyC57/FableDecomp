@@ -1,4 +1,5 @@
 // CMainGameComponent::GetGameTimeOfNextPresentCompletion() -- predict when the next present completes (the vsync timer's last vsync time plus the pending vsync count times the refresh period), never earlier than now (or exactly now when the immediate-present flag is set), as game time
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004166E2, length 104 bytes.
 // Callees: CVsyncCallbackTimer::GetInfo @ 0x009F7050 (0x30-byte CVsyncCallbackTimerInfo by hidden pointer),
 //          GFGetTime @ 0x009E1BC0 (`__fastcall`, double).
@@ -28,7 +29,7 @@ struct CDisplayDevice {
     CVsyncCallbackTimer* m_pVsyncTimer;            // +0x294
 };
 class CDisplayManager;
-extern CDisplayManager* PDisplayManager;           // 0x013B8390
+extern CDisplayManager* GPDisplayManager;           // 0x013B8390
 extern bool g_immediatePresent;                    // 0x013B86A4
 class CMainGameComponent { public:
     unsigned char _pad00[0x60];
@@ -38,8 +39,8 @@ class CMainGameComponent { public:
 
 double CMainGameComponent::GetGameTimeOfNextPresentCompletion()
 {
-    CVsyncCallbackTimerInfo info = ((CDisplayDevice*)PDisplayManager)->m_pVsyncTimer->GetInfo();
-    double t = (info.VsyncCount - info.PresentedVsyncCount + 1) * ((CDisplayDevice*)PDisplayManager)->m_refreshPeriod + info.LastVsyncTime;
+    CVsyncCallbackTimerInfo info = ((CDisplayDevice*)GPDisplayManager)->m_pVsyncTimer->GetInfo();
+    double t = (info.VsyncCount - info.PresentedVsyncCount + 1) * ((CDisplayDevice*)GPDisplayManager)->m_refreshPeriod + info.LastVsyncTime;
     double now = GFGetTime();
     if (t < now)
         t = now;

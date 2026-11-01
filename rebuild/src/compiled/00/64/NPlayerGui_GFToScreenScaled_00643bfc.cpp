@@ -1,5 +1,6 @@
 // NPlayerGui::GFToScreenScaled(const C2DBoxF& box) -- scale a 640x480 GUI box to the real render target
 // Leaf: ?GFToScreenScaled@NPlayerGui@
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00643BFC, 152 bytes, plain `ret` (__fastcall: hidden C2DBoxF result in ecx,
 // box in edx). Size-optimised NPlayerGui TU (`leave` epilogue).
 // Identity: Ego_r.pdb `?GFToScreenScaled@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z`.
@@ -32,16 +33,16 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();                 // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;                    // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                    // 0x013B8390
 
 namespace NPlayerGui {
 
 C2DBoxF __fastcall GFToScreenScaled(const C2DBoxF& box)
 {
-    return C2DBoxF((float)PDisplayManager->GetRenderTargetDimensions().Width * box.TLX * (1.0f / 640.0f),
-                   (float)PDisplayManager->GetRenderTargetDimensions().Height * box.TLY * (1.0f / 480.0f),
-                   (float)PDisplayManager->GetRenderTargetDimensions().Width * box.BRX * (1.0f / 640.0f),
-                   (float)PDisplayManager->GetRenderTargetDimensions().Height * box.BRY * (1.0f / 480.0f));
+    return C2DBoxF((float)GPDisplayManager->GetRenderTargetDimensions().Width * box.TLX * (1.0f / 640.0f),
+                   (float)GPDisplayManager->GetRenderTargetDimensions().Height * box.TLY * (1.0f / 480.0f),
+                   (float)GPDisplayManager->GetRenderTargetDimensions().Width * box.BRX * (1.0f / 640.0f),
+                   (float)GPDisplayManager->GetRenderTargetDimensions().Height * box.BRY * (1.0f / 480.0f));
 }
 
 }

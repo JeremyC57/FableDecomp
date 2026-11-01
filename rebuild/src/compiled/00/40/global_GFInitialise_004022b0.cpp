@@ -1,3 +1,4 @@
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 #include "fable_boot.h"
 
 // GFInitialise() -- cache the engine's core manager pointers, pick the texture bit depth and display size, and start the loading screen
@@ -73,7 +74,7 @@ extern void FABLE_CDECL GFGetBuildNumber2();
 // Game-side caches of the engine managers, filled in here.
 class CASoundManager;
 extern CASoundManager* PSoundManager;
-extern CDisplayManager* PDisplayManager;
+extern CDisplayManager* GPDisplayManager;
 extern FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 extern void* g_FableRenderState_013B8380;
 extern fable_u8 g_FableRenderStateStorage_013BC470;
@@ -101,10 +102,10 @@ bool FABLE_FASTCALL GFInitialise()
     // Copy the manager pointers out of the engine root.
     PSoundManager = (CASoundManager*)(AddChildPrimitive()->primitiveManager7C);
 
-    PDisplayManager =
+    GPDisplayManager =
         AddChildPrimitive()->displayManager60;
     g_FableDisplayPrimitive_013B8384 =
-        PDisplayManager->displayPrimitive08;
+        GPDisplayManager->displayPrimitive08;
     g_FableRenderState_013B8380 = &g_FableRenderStateStorage_013BC470;
 
     PInputManager = (CInputManager*)(AddChildPrimitive()->renderDevice58);
@@ -114,24 +115,24 @@ bool FABLE_FASTCALL GFInitialise()
     // Texture bit depth: the requested depth if the card can do it, else the first supported of 16/24/32.
     g_FableTextureBitDepth_013B7D68 =
         g_FableRequestedTextureBitDepth_01375470;
-    if (PDisplayManager->IsTextureBitDepthSupported(
+    if (GPDisplayManager->IsTextureBitDepthSupported(
             g_FableRequestedTextureBitDepth_01375470))
     {
         g_FableTextureBitDepth_013B7D68 =
             g_FableRequestedTextureBitDepth_01375470;
     }
     else if (
-        PDisplayManager->IsTextureBitDepthSupported(16))
+        GPDisplayManager->IsTextureBitDepthSupported(16))
     {
         g_FableTextureBitDepth_013B7D68 = 16;
     }
     else if (
-        PDisplayManager->IsTextureBitDepthSupported(24))
+        GPDisplayManager->IsTextureBitDepthSupported(24))
     {
         g_FableTextureBitDepth_013B7D68 = 24;
     }
     else if (
-        PDisplayManager->IsTextureBitDepthSupported(32))
+        GPDisplayManager->IsTextureBitDepthSupported(32))
     {
         g_FableTextureBitDepth_013B7D68 = 32;
     }
@@ -169,7 +170,7 @@ bool FABLE_FASTCALL GFInitialise()
             (GFInitialiseState*)&GGame) == 1)
     {
         g_FableHalfDisplayWidth_0137544C =
-            PDisplayManager->displayWidth1C8 / 2;
+            GPDisplayManager->displayWidth1C8 / 2;
         return true;
     }
 

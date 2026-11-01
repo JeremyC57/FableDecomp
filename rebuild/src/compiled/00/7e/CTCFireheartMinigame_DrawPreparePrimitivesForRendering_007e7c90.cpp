@@ -1,5 +1,6 @@
 // CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- drop last frame's primitives; while the delayed quit runs, cover the render target with a full-screen sprite
 // Leaf: DrawPreparePrimitivesForRendering
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E7C90, length 230 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         CTCFireheartMinigame vtable slot 11 (the catalog's "vfunc_11"); Ego_r.pdb
 //         `?DrawPreparePrimitivesForRendering@CTCFireheartMinigame@@UAEXABVCEnginePrimitivePrepareInfo@@@Z`.
@@ -40,7 +41,7 @@ class CDisplayManager {
 public:
     const C2DExtentsI GetRenderTargetDimensions();  // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;           // 0x013B8390
+extern CDisplayManager* GPDisplayManager;           // 0x013B8390
 
 class CEnginePrimitive2DSprite {
 public:
@@ -79,7 +80,7 @@ void CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimit
 {
     Handles.clear();
     if (QuitWithDelay) {
-        C2DExtentsI size = PDisplayManager->GetRenderTargetDimensions();
+        C2DExtentsI size = GPDisplayManager->GetRenderTargetDimensions();
         C2DBoxF box(0.0f, 0.0f, (float)size.X, (float)size.Y);
         CEnginePrimitive2DSprite sprite(0, box, 0x4a, 0, 0, 2, 0, 0.0f, 0.0f, 0xff, 0, 0, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         Handles.push_back_default();

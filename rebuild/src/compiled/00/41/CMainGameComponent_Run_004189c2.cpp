@@ -1,4 +1,5 @@
 // CMainGameComponent::Run(CGameComponent** next) -- run the main game: start the clocks and event-package I/O, set the presentation interval (or touch the current region), apply the user profile, then loop system update / world tick / frame-time bookkeeping until Quit; hand back the next component, shut down and remember this component
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail 0x004189C2, 438 bytes, `ret 4` after `leave`. PDB ?Run@CMainGameComponent@@UAE_NPAPAVCGameComponent@@@Z.
 // Callees: the client's empty 0x004AE9C0, __fastcall GFGetTime 0x009E1BC0, GetCurrentGameTime 0x00416231, the two
 //   event-package starters 0x00416268 / 0x0041627F (both labelled BeginInputLoading; the second is the saving one),
@@ -91,7 +92,7 @@ class CGameDefinitionManager : public CSingleton44C6B0 { public: static CGameDef
 struct CNetworkClient { void Start(); };           // 0x004AE9C0 (empty)
 struct CRoughFrameCounter { long _a, _b; void NewFrame(); };   // 0x009F8BA0
 class CGameComponent;
-extern CDisplayManager* PDisplayManager;         // 0x013B8390
+extern CDisplayManager* GPDisplayManager;         // 0x013B8390
 extern CMemoryAllocator* g_pMemoryAllocator;       // 0x013CAA90
 extern bool g_LoadEventPackages;                   // 0x013B85F6
 extern bool g_SaveEventPackages;                   // 0x013B85F5
@@ -143,7 +144,7 @@ bool CMainGameComponent::Run(CGameComponent** next)
     else if (g_SaveEventPackages)
         BeginOutputSaving(g_EventPackageFileName);
     if (g_PresentationInterval)
-        PDisplayManager->ChangePresentationInterval(g_PresentationInterval, 1, true);
+        GPDisplayManager->ChangePresentationInterval(g_PresentationInterval, 1, true);
     else {
         CWorld* world = PWorld;
         world->GetWorldMap()->GetRegion(world->GetWorldMap()->GetLoadedRegion()).GetPointer();

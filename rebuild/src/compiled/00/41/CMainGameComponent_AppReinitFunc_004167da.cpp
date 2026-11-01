@@ -1,5 +1,6 @@
 // CMainGameComponent::AppReinitFunc(void* component) -- system-manager re-init callback: tell the display engine a resolution change is coming, then pass the back buffer's width, height and colour depth to PostChangeResolution
 // Leaf: ?AppReinitFunc@CMainGameComponent@@KIXPAX@Z
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x004167DA, 88 bytes, plain `ret` (static __fastcall, the component in ecx); its address is
 // registered at 0x0041899B (CSystemManager::SetAppReinitFunc takes `void (__fastcall*)(void*)`); Ego_r.pdb
 // ?AppReinitFunc@CMainGameComponent@@KIXPAX@Z.
@@ -38,7 +39,7 @@ public:
     unsigned char    _pad00[0x2c];
     CSurface_Methods BackBufferSurface;                  // +0x2c
 };
-extern CDisplayManager* PDisplayManager;               // 0x013B8390
+extern CDisplayManager* GPDisplayManager;               // 0x013B8390
 class CDisplayEngine {
 public:
     void PreChangeResolution();                          // 0x00434A10
@@ -56,6 +57,6 @@ void __fastcall CMainGameComponent::AppReinitFunc(void* component)
 {
     CMainGameComponent* game = (CMainGameComponent*)component;
     game->PDisplayEngine->PreChangeResolution();
-    const CSurface_Methods& surface = PDisplayManager->BackBufferSurface;
-    game->PostChangeResolution(surface.GetWidth(), surface.GetHeight(), PDisplayManager->BackBufferSurface.GetPixelFormat().GetColourDepth());
+    const CSurface_Methods& surface = GPDisplayManager->BackBufferSurface;
+    game->PostChangeResolution(surface.GetWidth(), surface.GetHeight(), GPDisplayManager->BackBufferSurface.GetPixelFormat().GetColourDepth());
 }

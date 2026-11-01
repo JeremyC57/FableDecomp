@@ -1,5 +1,6 @@
 // CMainGameComponent::SetDisplayMode(unsigned long width, unsigned long height, unsigned char bitsPerPixel) -- switch the display manager to a new mode, then re-run the post-resolution-change setup with the back surface's real width, height and colour depth
 // Leaf: ?SetDisplayMode@CMainGameComponent@@QAEXKKE@Z
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041641F, length 125 bytes, `ret 0Ch` after `leave`.
 // Name: Ego_r.pdb / FableWin.pdb `?SetDisplayMode@CMainGameComponent@@QAEXKKE@Z` (width, height, an unsigned char
 // depth that is widened with `movzx` for the display manager); the catalog's "ChangeDisplayMode" is descriptive.
@@ -42,7 +43,7 @@ class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,
                                         ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
 };
-extern CDisplayManager* PDisplayManager;         // 0x013B8390
+extern CDisplayManager* GPDisplayManager;         // 0x013B8390
 class CDisplayEngine {
 public:
     void PreChangeResolution();                    // 0x00434A10
@@ -60,8 +61,8 @@ public:
 void CMainGameComponent::SetDisplayMode(unsigned long width, unsigned long height, unsigned char bitsPerPixel)
 {
     PDisplayEngine->PreChangeResolution();
-    PDisplayManager->SetDisplayMode(C2DExtentsI(width, height), bitsPerPixel, SURFACE_MULTISAMPLE_NONE, 0);
-    CSurface* surface = &PDisplayManager->m_backSurface;
+    GPDisplayManager->SetDisplayMode(C2DExtentsI(width, height), bitsPerPixel, SURFACE_MULTISAMPLE_NONE, 0);
+    CSurface* surface = &GPDisplayManager->m_backSurface;
     unsigned long newWidth = surface->GetDimensions().Width;
-    PostChangeResolution(newWidth, surface->GetHeight(), PDisplayManager->m_backSurface.GetPixelFormat().GetColourDepth());
+    PostChangeResolution(newWidth, surface->GetHeight(), GPDisplayManager->m_backSurface.GetPixelFormat().GetColourDepth());
 }

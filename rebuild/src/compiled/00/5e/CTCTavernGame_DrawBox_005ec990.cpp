@@ -1,5 +1,6 @@
 // CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo&) -- draws the main-game score box: nine box handles, the box placed and sized from the tavern-game def in render-target units, on layer 0x47
 // Leaf: ?DrawBox@CTCTavernGame
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC990, 177 bytes (`ret 4`). Ego_r.pdb
 // `?DrawBox@CTCTavernGame@@IAEXABVCEnginePrimitivePrepareInfo@@@Z`.
 // Callees: CDefClassBase::GetSubDef<CTavernGameDef> 0x005ED4A0 (landed as GetSubDef_005ed4a0) through the inline
@@ -36,7 +37,7 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;      // 0x013B8390
+extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 
 struct CRetailHandleVector {                    // STLport vector<CEnginePrimitiveHandle> (12 bytes)
     CEnginePrimitiveHandle* m_pFirst;
@@ -119,7 +120,7 @@ void CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo& info)
     CDefPointer def;
     GetDef(&def);
     BoxHandles.Resize(9);
-    C2DExtentsI size = PDisplayManager->GetRenderTargetDimensions();
+    C2DExtentsI size = GPDisplayManager->GetRenderTargetDimensions();
     ::DrawBox(const_cast<CEnginePrimitivePrepareInfo*>(&info), &BoxHandles,
               C2DBoxF(def->MainGameScoreBoxX * (float)size.Y, def->MainGameScoreBoxY * (float)size.Y,
                       (def->MainGameScoreBoxX + def->MainGameScoreBoxWidthPC) * size.X,

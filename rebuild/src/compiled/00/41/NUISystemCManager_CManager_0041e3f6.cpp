@@ -1,5 +1,6 @@
 // NUISystem::CManager::CManager() -- constructor of the front-end UI manager: base, empty counted banks, key/layer maps and action lists, cleared component pointers and flags; selects keyboard input, picks the best texture formats into the bank parameters and loads the graphics bank (GBANK_FRONT_END while the new front-end component is active, else GBANK_MAIN), then resets the meta layer
 // Leaf: ??0CManager@NUISystem
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041E3F6, length 508 bytes. Frame-pointer size TU: `#pragma optimize("y", off)` + `("s", on)`.
 // Callees: base ctor 0x0042BE7B; key map ctor 0x0042BF67; list ctors 0x0042AB58 / 0x0042AB01; layer map ctor 0x0042BF85; children map
 //   ctor 0x0042D28B; SetIsUsingRelativeCoords 0x004299A8 (`__fastcall bool`); SetInput 0x0041DF10; bank parameter ctor 0x00415B80;
@@ -66,7 +67,7 @@ class CNewFrontendGameComponent { public:
     unsigned char _pad00[9];
     bool          Active;                       // +0x09 (descriptive)
 };
-extern CDisplayManager* PDisplayManager;      // 0x013B8390
+extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 void __fastcall SetIsUsingRelativeCoords(bool relative);   // 0x004299A8
@@ -152,12 +153,12 @@ CManager::CManager()
     SetInput(EIT_KEYBOARD);
     PWeaponsInventory = 0;
     CGraphicBankParams params;
-    PDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
-    PDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
-    PDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
-    PDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
-    PDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
-    PDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
+    GPDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
+    GPDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
+    GPDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
     params.Value20 = -1;
     params.Value24 = -1;
     params.Flag1c = false;

@@ -1,6 +1,7 @@
 // CTCBetting::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- while betting input is on, draw the bet box and the player's money box at their def positions (screen fractions of the render target)
 // Retry 10b (getsw sweep, FIXES B-15): the base def is read through an inline getter `GetBaseDef()`; the plain member read gives the parked register/scheduling difference.
 // Leaf: DrawPreparePrimitivesForRendering
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E5680, 320 bytes, `ret 4`.
 // Callees: CDefClassBase::GetSubDef<CBettingDef> 0x007E5820, CDisplayManager::GetRenderTargetDimensions() 0x009BEDC0 on
 //   g_pDisplayDevice 0x013B8390 (C2DExtentsI by hidden pointer, twice per position), CTCBetting::GetBetText 0x007E50C0
@@ -31,7 +32,7 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;      // 0x013B8390
+extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 extern bool g_bBettingInputEnabled;             // 0x013BAE1D
 
 class CWideString { public:
@@ -122,12 +123,12 @@ void CTCBetting::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepare
         if (ParentThing->GetBaseDef()->GetSubDef(&def)) {
             CBettingDef* bettingDef = def.Object;
             DrawStatBoxWithText(info, BetHandles,
-                                C2DVector(bettingDef->BetBoxX * PDisplayManager->GetRenderTargetDimensions().X,
-                                          bettingDef->BetBoxY * PDisplayManager->GetRenderTargetDimensions().Y),
+                                C2DVector(bettingDef->BetBoxX * GPDisplayManager->GetRenderTargetDimensions().X,
+                                          bettingDef->BetBoxY * GPDisplayManager->GetRenderTargetDimensions().Y),
                                 CPlayerGui::PeekGuiDef().StatBoxWidth, GetBetText(), 0, 0xff, false);
             DrawStatBoxWithText(info, MoneyHandles,
-                                C2DVector(bettingDef->MoneyBoxX * PDisplayManager->GetRenderTargetDimensions().X,
-                                          bettingDef->MoneyBoxY * PDisplayManager->GetRenderTargetDimensions().Y),
+                                C2DVector(bettingDef->MoneyBoxX * GPDisplayManager->GetRenderTargetDimensions().X,
+                                          bettingDef->MoneyBoxY * GPDisplayManager->GetRenderTargetDimensions().Y),
                                 CPlayerGui::PeekGuiDef().StatBoxWidth, GetPlayersMoney(), 0, 0xff, true);
         }
     }

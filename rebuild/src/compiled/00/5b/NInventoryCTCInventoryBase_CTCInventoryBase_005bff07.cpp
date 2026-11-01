@@ -4,6 +4,7 @@
 // 0x009BE830/870/8B0/6C0/610/590, GFGetSystemManager 0x009A4EC0, CGraphicBankManager::CreateAndInitialize 0x009F83D0,
 // ~CCountedPointer<CGraphicDataBank> 0x00419108, CTCBase::AddToGlobalTCs 0x00686ED0. Vtable 0x01253DBC.
 // Leaf: ??0CTCInventoryBase
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Layout: local model -- retail CTCInventoryBase is the PDB layout minus 0x14 from the tail (no engine header;
 // offsets from this ctor's stores and from UpdateInventoryAnim 0x005BD699: angles +0xfc..+0x110, def index +0x128).
 // Names: manifest/PDB 0x00686800 "ClockSprite" is the CTCBase ctor (propagated label).
@@ -57,7 +58,7 @@ class CSystemManager { public:
     unsigned char        _pad00[0x6c];
     CGraphicBankManager* GraphicBankManager;    // +0x6c
 };
-extern CDisplayManager* PDisplayManager;      // 0x013B8390
+extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
 class CTCBase { public:
@@ -171,12 +172,12 @@ CTCInventoryBase::CTCInventoryBase(CThing& thing)
       ParentMapNumber(0)
 {
     CGraphicBankParams params;
-    PDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
-    PDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
-    PDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
-    PDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
-    PDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
-    PDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
+    GPDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
+    GPDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
+    GPDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
+    GPDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
     params.Value20 = -1;
     params.Value24 = -1;
     params.Flag1c = false;

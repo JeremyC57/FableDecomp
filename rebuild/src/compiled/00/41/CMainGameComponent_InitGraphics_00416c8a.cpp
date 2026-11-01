@@ -1,4 +1,5 @@
 // CMainGameComponent::InitGraphics() -- pick the texture formats (compressed when the display supports it and the option is on), create the main graphic bank "GBANK_MAIN" into PMainGraphicBank and make it the graphic appearances' bank, with three loading-progress ticks; returns true
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail 0x00416C8A, 494 bytes, plain `ret` after `leave`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, __fastcall DisplayProgress 0x009E9F40,
 //   CGraphicDataBankInit() 0x00415B80 (manifest label "CNavigationLayer::CNavigationLayer" is wrong), the display
@@ -67,7 +68,7 @@ class CTCGraphicAppearance { public:
     static void __fastcall SetGraphicBank(CGraphicDataBank& bank);   // 0x004BBFC0
 };
 }
-extern CDisplayManager* PDisplayManager;         // 0x013B8390
+extern CDisplayManager* GPDisplayManager;         // 0x013B8390
 class CGraphicBankManager;
 extern CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
 extern unsigned long g_TextureBitDepth;            // 0x013B7D68
@@ -89,19 +90,19 @@ bool CMainGameComponent::InitGraphics()
         NProgressDisplay::DisplayProgress(text, -1.0f, false, false);
     }
     CGraphicDataBankInit init;
-    if (PDisplayManager->IsSupportingCompressedTextures() && g_AllowCompressedTextures) {
-        PDisplayManager->GetBestCompressedNonAlphaTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat);
-        PDisplayManager->GetBestCompressedAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
-        PDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
+    if (GPDisplayManager->IsSupportingCompressedTextures() && g_AllowCompressedTextures) {
+        GPDisplayManager->GetBestCompressedNonAlphaTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat);
+        GPDisplayManager->GetBestCompressedAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
+        GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
         init.InterpolatedAlphaFormat.Initialise(0x35545844);   // D3DFMT_DXT5
     } else {
-        PDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat, false);
-        PDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
-        PDisplayManager->GetBestBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
+        GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat, false);
+        GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
+        GPDisplayManager->GetBestBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
     }
-    PDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.UncompressedAlphaFormat);
-    PDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.UncompressedNonAlphaFormat, false);
-    PDisplayManager->GetBestSignedTextureFormat(g_TextureBitDepth, &init.SignedFormat);
+    GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.UncompressedAlphaFormat);
+    GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.UncompressedNonAlphaFormat, false);
+    GPDisplayManager->GetBestSignedTextureFormat(g_TextureBitDepth, &init.SignedFormat);
     init.MaxGraphicWidth = g_MaxGraphicWidth;
     init.MaxGraphicHeight = g_MaxGraphicHeight;
     init.GenerateMipmaps = true;

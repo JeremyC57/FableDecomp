@@ -1,5 +1,6 @@
 // CTCTavernGame::DrawBetAndMoney(const CEnginePrimitivePrepareInfo&, float, float, float, float, float, float) -- draw the bet box, the money box (money flag set while the game state is 5) and, when both its coordinates are non-zero, a third box whose width comes from the tavern-game def
 // Leaf: DrawBetAndMoney
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA400, length 592 bytes, `ret 0x1c`.
 // Callees: CDefClassBase::GetSubDef<CTavernGameDef> @ 0x005ED4A0, CDisplayManager::GetRenderTargetDimensions @ 0x009BEDC0 on
 // g_pDisplayDevice 0x013B8390, PeekGuiDef @ 0x00438570, DrawStatBoxWithText @ 0x00646A46 (__fastcall), ~CWideString @ 0x0099B510,
@@ -21,7 +22,7 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;      // 0x013B8390
+extern CDisplayManager* GPDisplayManager;      // 0x013B8390
 
 class CWideString { public:
     void* PStringData;
@@ -116,22 +117,22 @@ void CTCTavernGame::DrawBetAndMoney(const CEnginePrimitivePrepareInfo& info, flo
     CDefPointer<CTavernGameDef> def;
     ParentThing->PBaseDef->GetSubDef(&def);
     DrawStatBoxWithText(info, BetHandles,
-                        C2DVector(betX * PDisplayManager->GetRenderTargetDimensions().X,
-                                  betY * PDisplayManager->GetRenderTargetDimensions().Y),
+                        C2DVector(betX * GPDisplayManager->GetRenderTargetDimensions().X,
+                                  betY * GPDisplayManager->GetRenderTargetDimensions().Y),
                         CPlayerGui::PeekGuiDef().StatBoxWidth, GetBetText(), 0, 0xff, false);
     if (State == 5)
         DrawStatBoxWithText(info, MoneyHandles,
-                            C2DVector(moneyX * PDisplayManager->GetRenderTargetDimensions().X,
-                                      moneyY * PDisplayManager->GetRenderTargetDimensions().Y),
+                            C2DVector(moneyX * GPDisplayManager->GetRenderTargetDimensions().X,
+                                      moneyY * GPDisplayManager->GetRenderTargetDimensions().Y),
                             CPlayerGui::PeekGuiDef().StatBoxWidth, GetMoneyText(), 0, 0xff, true);
     else
         DrawStatBoxWithText(info, MoneyHandles,
-                            C2DVector(moneyX * PDisplayManager->GetRenderTargetDimensions().X,
-                                      moneyY * PDisplayManager->GetRenderTargetDimensions().Y),
+                            C2DVector(moneyX * GPDisplayManager->GetRenderTargetDimensions().X,
+                                      moneyY * GPDisplayManager->GetRenderTargetDimensions().Y),
                             CPlayerGui::PeekGuiDef().StatBoxWidth, GetMoneyText(), 0, 0xff, false);
     if (thirdX != 0.0f && thirdY != 0.0f)
         DrawStatBoxWithText(info, ThirdHandles,
-                            C2DVector(thirdX * PDisplayManager->GetRenderTargetDimensions().X,
-                                      thirdY * PDisplayManager->GetRenderTargetDimensions().Y),
+                            C2DVector(thirdX * GPDisplayManager->GetRenderTargetDimensions().X,
+                                      thirdY * GPDisplayManager->GetRenderTargetDimensions().Y),
                             def->ThirdBoxWidth, GetThirdText(), 0, 0xff, false);
 }

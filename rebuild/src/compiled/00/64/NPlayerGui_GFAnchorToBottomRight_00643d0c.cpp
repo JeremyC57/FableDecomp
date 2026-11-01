@@ -1,5 +1,6 @@
 // NPlayerGui::GFAnchorToBottomRight(const C2DVector& pos) -- a 640x480 GUI position anchored to the bottom-right corner of the real render target
 // Leaf: ?GFAnchorToBottomRight@NPlayerGui@
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00643D0C, 81 bytes, plain `ret` (__fastcall: hidden C2DVector result in ecx,
 // pos in edx). Size-optimised NPlayerGui TU (`leave` epilogue).
 // Identity: Ego_r.pdb `?GFAnchorToBottomRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z`.
@@ -32,14 +33,14 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();                 // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;                    // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                    // 0x013B8390
 
 namespace NPlayerGui {
 
 C2DVector __fastcall GFAnchorToBottomRight(const C2DVector& pos)
 {
-    return C2DVector((float)PDisplayManager->GetRenderTargetDimensions().Width + pos.X - 640.0f,
-                     (float)PDisplayManager->GetRenderTargetDimensions().Height + pos.Y - 480.0f);
+    return C2DVector((float)GPDisplayManager->GetRenderTargetDimensions().Width + pos.X - 640.0f,
+                     (float)GPDisplayManager->GetRenderTargetDimensions().Height + pos.Y - 480.0f);
 }
 
 }

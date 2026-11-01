@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::Init2() -- second-stage front-end start-up: create the front-end manager, graphics/sounds/input, load the localised text bank, initialise the UI and set the 1024x768 display mode
 // Leaf: ?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x0042E98F, 256 bytes, plain `ret` after `leave`.
 // Body: m_pFrontEndManager = CFrontEndManager::GetInstance() (0x00595582, static fastcall, creates the 0xe0-byte
 // singleton); its PGameComponent (+0x1c) = this; its +0xc0 flag = !g_byte_01375448; InitialiseGraphics() (0x0042DDB3);
@@ -72,7 +73,7 @@ public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample,
                                         unsigned long refreshRate);   // 0x009BFF40
 };
-extern CDisplayManager* PDisplayManager;               // 0x013B8390
+extern CDisplayManager* GPDisplayManager;               // 0x013B8390
 extern bool g_bFrontEndFlag_01375448;                    // 0x01375448 (name not recovered)
 class CNewFrontendGameComponent;
 namespace NUISystem {
@@ -120,5 +121,5 @@ void CNewFrontendGameComponent::Init2()
     NUISystem::CManager::Clear();
     m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank, m_pInputManager, &CStartupDefinitionManager::Get());
     m_pFrontEndManager->BuildComponents(!WindowsMediaPlayerInstalled);
-    PDisplayManager->SetDisplayMode(C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
+    GPDisplayManager->SetDisplayMode(C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
 }

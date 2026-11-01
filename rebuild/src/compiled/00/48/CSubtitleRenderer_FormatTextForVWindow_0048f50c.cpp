@@ -1,4 +1,5 @@
 // Leaf: FormatTextForVWindow
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText, C2DBoxF& outBox) const -- word-wrap the text for the box with this font, then size the output box: as wide as the widest wrapped line (clamped to the GUI def's text-box min/max width), centred on the virtual screen, and tall enough for the line count (one extra line unless the display flags say otherwise) above the box bottom
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -54,7 +55,7 @@ struct CWStringParser : CBaseClass {
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();           // 0x009BEDC0
 };
-extern CDisplayManager* PDisplayManager;                   // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                   // 0x013B8390
 
 class CPlayerGuiDef { public:
     unsigned char _pad000[0x2ac];
@@ -113,7 +114,7 @@ void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank
         ++lines;
     if (lines == 0)
         lines = 1;
-    float scale = PDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
+    float scale = GPDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
     const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
     GFLimit(maxWidth, GFAXToVX(def->TextBoxMinWidth) * scale, GFAXToVX(def->TextBoxMaxWidth) * scale);
     outBox = box;

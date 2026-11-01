@@ -1,4 +1,5 @@
 // CMainGameComponent::SetExclusiveMode(bool exclusive) -- notify the display object (+0x28), switch the system manager's exclusive (full-screen) mode, then re-run the post-resolution-change setup with the back surface's width, height and colour depth
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004163B7, length 104 bytes.
 // Callees: 0x00434A10 on the object at +0x28 (no arguments; manifest "CScriptThing::operator==" is propagated),
 //          GFGetSystemManager @ 0x009A4EC0, CSystemManager::SetExclusiveMode(bool) @ 0x009A59A0,
@@ -31,7 +32,7 @@ struct CDisplayDevice {
     CSurface      m_backSurface;                   // +0x2c
 };
 class CDisplayManager;
-extern CDisplayManager* PDisplayManager;           // 0x013B8390 (naming wave 13)
+extern CDisplayManager* GPDisplayManager;           // 0x013B8390 (naming wave 13)
 struct CDisplayHolder {
     void OnExclusiveModeChange();                  // 0x00434A10
 };
@@ -46,7 +47,7 @@ void CMainGameComponent::SetExclusiveMode(bool exclusive)
 {
     m_pDisplay->OnExclusiveModeChange();
     GFGetSystemManager()->SetExclusiveMode(exclusive);
-    CSurface* surface = &((CDisplayDevice*)PDisplayManager)->m_backSurface;
+    CSurface* surface = &((CDisplayDevice*)GPDisplayManager)->m_backSurface;
     unsigned long width = surface->GetDimensions().Width;
-    PostChangeResolution(width, surface->GetHeight(), ((CDisplayDevice*)PDisplayManager)->m_backSurface.GetPixelFormat().GetColourDepth());
+    PostChangeResolution(width, surface->GetHeight(), ((CDisplayDevice*)GPDisplayManager)->m_backSurface.GetPixelFormat().GetColourDepth());
 }

@@ -1,5 +1,6 @@
 // NPlayerGui::CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, long graphic, long value, long effect, const CWideString& text, unsigned char alpha, bool withText, bool flag) -- draw the box through the static helper, place the change text (right-aligned under the box when shown) and keep the box's particle effect alive at the text position
 // Leaf: DrawStatBox@CStatBar
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00645CE9, 578 bytes, `ret 28h`, frame-pointer size TU (`leave`).
 // Callees: the static DrawStatBox 0x00645853 (__fastcall: info in ecx, handles in edx), PeekGuiDef 0x00438570 (__fastcall),
 //   CDisplayManager::GetRenderTargetDimensions 0x009BEDC0 (display @ 0x013B8390), CFontBank::GetStringWidth 0x0048DA62
@@ -32,7 +33,7 @@ class CEnginePrimitivePrepareInfo;
 class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 class C2DExtentsI { public: long Width, Height; };
 class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
-extern CDisplayManager* PDisplayManager;                    // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                    // 0x013B8390
 class CFontBank { public: float GetStringWidth(const CWideString& text); };    // 0x0048DA62
 struct CGameUI { unsigned char _pad[0x138]; CFontBank* Font; };        // +0x138
 extern CGameUI* g_pGameUI;                                              // 0x013B8790
@@ -118,7 +119,7 @@ void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraph
             const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
             CFontBank* font = g_pGameUI->Font;
             C2DVector corner = pos;
-            corner.X = (float)PDisplayManager->GetRenderTargetDimensions().Width - corner.X;
+            corner.X = (float)GPDisplayManager->GetRenderTargetDimensions().Width - corner.X;
             corner += def->StatBoxOffset;
             float boxWidth = (float)bank.GetGraphicWidth(graphic);
             float textWidth = def->StatBoxTextWidth;

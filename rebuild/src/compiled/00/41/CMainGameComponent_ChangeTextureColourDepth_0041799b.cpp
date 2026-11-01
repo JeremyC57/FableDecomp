@@ -1,5 +1,6 @@
 // CMainGameComponent::ChangeTextureColourDepth(long depth) -- switch the texture colour depth (16/24/32, when the display supports it and it changes), re-initialise the graphics, pass it to the display engine and the world
 // Leaf: ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+// Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x0041799B, 83 bytes, `ret 4`; virtual (vtable reference 0x0122F18C); Ego_r.pdb
 // ?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z.
 // Body: only for depth 16, 24 or 32; the global display manager (0x013B8390) ->IsTextureBitDepthSupported(depth)
@@ -14,7 +15,7 @@ class CDisplayManager {
 public:
     bool IsTextureBitDepthSupported(unsigned long depth);   // 0x009BE530
 };
-extern CDisplayManager* PDisplayManager;                  // 0x013B8390
+extern CDisplayManager* GPDisplayManager;                  // 0x013B8390
 extern long g_TextureColourDepth;                           // 0x013B7D68
 class CWorld {
 public:
@@ -37,7 +38,7 @@ void CMainGameComponent::ChangeTextureColourDepth(long depth)
 {
     if (depth == 16 || depth == 24 || depth == 32)
     {
-        if (PDisplayManager->IsTextureBitDepthSupported(depth) && depth != g_TextureColourDepth)
+        if (GPDisplayManager->IsTextureBitDepthSupported(depth) && depth != g_TextureColourDepth)
         {
             g_TextureColourDepth = depth;
             InitGraphics();
