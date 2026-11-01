@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x008AF780, 204 bytes, `__fastcall`, plain `ret` (Ego_r.pdb ?Update@CombatDialogueManager@@QAEXXZ).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x3), AttemptToSpeak 0x008AF500, CVectorMap::LowerBound(const long*)
 // 0x0040F020 (inline GetInterface, type 0xF = CTCTalk), CTCTalk::IsTalking 0x006E28A0, the intelligent-pointer ctor 0x00A01B10,
-// SetPItem 0x00A01B90, dtor 0x00A01C10, GetFrameNumber 0x004167C8 on g_pWorld 0x013B86A0.
+// SetPItem 0x00A01B90, dtor 0x00A01C10, CMainGameComponent::GetCurrentWorldFrame 0x004167C8 on g_pMainGameComponent 0x013B86A0.
 // Layout (retail): SpeechGroupInfoMap +0x00 (12-byte STLport map), PDialogueDef +0x0C, PCurrentTalker +0x10
 // (CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8), CurrentTalkerTextGroupIndex +0x18, LastSpeechFrame +0x1C,
 // LastBattleCryFrame +0x20. CThing interface bits at +0x20, the interface CVectorMap at +0x44, Dead = +0x91 bit 0.
@@ -35,10 +35,10 @@ struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeec
     CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
 };
 
-class CWorld { public:
-    long GetFrameNumber();                  // 0x004167C8 (manifest label "GFGetPreMainMemoryUsed" is propagated)
+class CMainGameComponent { public:
+    long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
-extern CWorld* g_pWorld;                    // 0x013B86A0
+extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CBaseObject;
 class CTCBase;
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
@@ -130,7 +130,7 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CWorldPlayers {                           // g_pWorld viewed for its player manager (+0x1C)
+class CWorldPlayers {                           // g_pMainGameComponent viewed for its player manager (+0x1C)
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1C
@@ -149,7 +149,7 @@ public:
     long                                    LastBattleCryFrame;          // +0x20
     bool IsSpeechGroupAllowed(unsigned long group) const
     {
-        const long frame = g_pWorld->GetFrameNumber();
+        const long frame = g_pMainGameComponent->GetCurrentWorldFrame();
         CSpeechGroupMapIterator it = SpeechGroupInfoMap.find(group);
         bool allowed = frame >= it->second.NextAllowedFrame;
         return allowed;
@@ -174,5 +174,5 @@ void CombatDialogueManager::Update()
     if (PCurrentTalker->GetInterface(&talk, 0xf) && talk->IsTalking())
         return;
     PCurrentTalker = CIntelligentPointer<CThingCreatureBase>(0);
-    LastSpeechFrame = g_pWorld->GetFrameNumber();
+    LastSpeechFrame = g_pMainGameComponent->GetCurrentWorldFrame();
 }

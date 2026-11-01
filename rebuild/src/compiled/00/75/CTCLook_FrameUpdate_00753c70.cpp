@@ -1,8 +1,8 @@
 // CTCLook::FrameUpdate() -- per-frame look update: refresh the head position, run the stop-looking countdown, react to the creature's interface-8 / interface-0xAA look overrides, drive the body turning, then the head state machine (centre, interested, look at a position), and finally apply the head settings
 // Leaf: FrameUpdate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00753C70, 544 bytes, plain `ret`. Vtable 0x01269744 (CTCLook) slot 9 (catalog "vfunc_9").
-// Callees: CTCLook::UpdateHeadPos @ 0x00752000, LowerBound @ 0x0040F020 (interfaces 8 and 0xAA, inlined GetTC), the CTCBase
-//   frame-source accessor @ 0x00686D60 and its GetFrameNumber @ 0x004167C8 (the inlined UpdateLookTimer),
+// Callees: CTCLook::UpdateHeadPos @ 0x00752000, LowerBound @ 0x0040F020 (interfaces 8 and 0xAA, inlined GetTC), CTCBase::PeekComponent
+//   @ 0x00686D60 and CMainGameComponent::GetCurrentWorldFrame @ 0x004167C8 (the inlined UpdateLookTimer),
 //   CThingCreatureBase::IsLookTurningOverridenByParent @ 0x0085F200, CTCLook::FrameUpdateOverriddenByParent @ 0x00753080,
 //   ImplementHeadSettings @ 0x00753BA0, IsAbleToTurnDaBody @ 0x00751DA0, IsCurrentlyTurningViaAnimation @ 0x00753B40,
 //   SetBodyMovingViaAnimation @ 0x00753930, UpdateLookTimer @ 0x00751AD0, SetBodyMoving @ 0x00752E00, CentreHead @ 0x007528A0,
@@ -63,13 +63,17 @@ struct CTCInterfaceAA {                                    // descriptive: the o
     unsigned char _pad00[0x78];
     bool ForceCentreHead;                                  // +0x78
 };
-struct CFrameSource {
-    long GetFrameNumber();                                 // 0x004167C8
+class CMainGameComponent { public:
+    long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
-
-class CTCLook { public:
+class CTCBase { public:
     void*         __vftable;                               // +0x00
     CThing*       ParentThing;                             // +0x04
+protected:
+    const CMainGameComponent& PeekComponent() const;   // 0x00686D60 (Ego_r.pdb ?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ)
+};
+
+class CTCLook : public CTCBase { public:
     unsigned char _pad08[0x3c - 0x08];
     long          LookTimer;                               // +0x3c
     unsigned char _pad40[0x48 - 0x40];
@@ -81,7 +85,6 @@ class CTCLook { public:
     unsigned char _pad74[0xb4 - 0x74];
     long          TimeToStopLooking;                       // +0xb4
     bool          OneFrameDelay;                           // +0xb8
-    CFrameSource* GetFrameSource();                        // 0x00686D60 (CTCBase accessor)
     void UpdateHeadPos();                                  // 0x00752000
     void FrameUpdateOverriddenByParent();                  // 0x00753080
     void ImplementHeadSettings();                          // 0x00753BA0
@@ -131,7 +134,7 @@ void CTCLook::FrameUpdate()
             OneFrameDelay = true;
         }
         TimeToStopLooking = -1;
-        LookTimer = GetFrameSource()->GetFrameNumber() + 90;
+        LookTimer = PeekComponent().GetCurrentWorldFrame() + 90;
     }
     CThing* parent = ParentThing;
     CTCInterfaceAA* centre;

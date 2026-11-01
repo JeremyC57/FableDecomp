@@ -1,6 +1,6 @@
 // CAIBrain::IsUpdateZoneActiveThisFrame() -- true on the frames the current update zone schedules this brain, or whenever the active state group is timing critical
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088B810, length 85 bytes.
-// Callees: CMainGameComponent::GetFrameNumber @ 0x004167C8 (an incremental-link thunk to the
+// Callees: CMainGameComponent::GetCurrentWorldFrame @ 0x004167C8 (an incremental-link thunk to the
 // global frame-counter read @ 0x0049D870; the manifest's "GFGetPreMainMemoryUsed" label is
 // propagated), the CRT 64-bit unsigned remainder __aullrem @ 0x00BFEBB0, and the active state
 // group's slot-7 virtual IsTimingCritical (+0x1c, rtti-vtables.tsv).
@@ -17,7 +17,7 @@ class CBrainUpdateZone { public:
 };
 
 class CMainGameComponent { public:
-    unsigned long GetFrameNumber();         // 0x004167C8 -> 0x0049D870
+    long GetCurrentWorldFrame() const;      // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ) -> 0x0049D870
 };
 
 struct CThingAICreatureCalls {
@@ -49,7 +49,7 @@ bool CAIBrain::IsUpdateZoneActiveThisFrame()
         return false;
     unsigned long    period = PCurrentUpdateZone->m_updatePeriod;   // read into locals BEFORE the call
     unsigned __int64 offset = Creature->m_updateOffset;              // (member reads only stay ahead of a call as locals)
-    if ((offset + Component->GetFrameNumber()) % period == 0)
+    if ((offset + (unsigned long)Component->GetCurrentWorldFrame()) % period == 0)
         return true;
     if (PActiveStateGroup != 0 && PActiveStateGroup->IsTimingCritical())
         return true;

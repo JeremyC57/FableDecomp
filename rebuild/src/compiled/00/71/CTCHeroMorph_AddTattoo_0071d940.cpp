@@ -83,7 +83,7 @@ struct CThingDefVector {                                    // STLport vector<CD
 };
 class CWorld {
 public:
-    static long GetFrame();                                 // 0x0049D870 (returns the global @ 0x013B89BC)
+    static long __fastcall GetFrame();                      // 0x0049D870 ?GetFrame@CWorld@@SIJXZ (returns the global @ 0x013B89BC)
 };
 class CTCBase {
 public:

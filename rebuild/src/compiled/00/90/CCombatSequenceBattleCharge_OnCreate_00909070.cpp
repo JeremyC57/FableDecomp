@@ -65,10 +65,10 @@ class CCombatSequenceBase { public:
     virtual void OnCreate();                // 0x008B0650
 };
 
-struct CWorld_Retail {
-    long GetCurrentFrame();                                     // 0x004167C8 -> GFGetCurrentFrame 0x0049D870
+class CMainGameComponent { public:
+    long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
-extern CWorld_Retail* g_pWorld;                                 // 0x013B86A0
+extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
 struct CDefBase {
     virtual void v00();
@@ -130,7 +130,7 @@ struct CCombatSequence_BattleCharge : CCombatSequenceBase {
 
 void CCombatSequence_BattleCharge::OnCreate()
 {
-    m_frameOfLastUse = g_pWorld->GetCurrentFrame();
+    m_frameOfLastUse = g_pMainGameComponent->GetCurrentWorldFrame();
     long value = 0;
     CDefPointer<CThunderBattleDef> def;
     CDefClassBase* ownerDef = GetCreature()->m_pDef;

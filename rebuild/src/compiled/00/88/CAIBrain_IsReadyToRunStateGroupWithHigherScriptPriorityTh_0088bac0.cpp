@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088BAC0, length 155 bytes.
 // Leaf: IsReadyToRunStateGroupWithHigherScriptPriorityThan
 // Callees: CAIBrain::GetUpdateZone @ 0x0088B910 (propagated label CEngineWorldMap::BuildAndSaveSea),
-// CMainGameComponent::GetFrameNumber @ 0x004167C8, __aullrem @ 0x00BFEBB0, CAIStateGroupBase::IsEnabledAndRunnable
+// CMainGameComponent::GetCurrentWorldFrame @ 0x004167C8, __aullrem @ 0x00BFEBB0, CAIStateGroupBase::IsEnabledAndRunnable
 // @ 0x008FCF10, CAIStateGroupBase::Activate @ 0x008FCF50, the new group's virtual slot 2 (+0x08).
 // Shape: the zone's period defaults to 1; the frame test is the landed IsUpdateZoneActiveThisFrame (0x0088B810)
 // arithmetic (`(offset + frame) % period`, 64-bit unsigned, the creature offset read into a local before the call);
@@ -40,7 +40,7 @@ class CBrainUpdateZone { public:
     unsigned long UpdatePeriod;                          // +0x08 frames between updates
 };
 class CMainGameComponent { public:
-    unsigned long GetFrameNumber();                      // 0x004167C8
+    long GetCurrentWorldFrame() const;                   // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
 struct CThingAICreatureCalls {
     unsigned char    _pad[0x18];
@@ -83,7 +83,7 @@ bool CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan(long priority,
     if (updateZone)
         period = updateZone->UpdatePeriod;
     unsigned __int64 offset = Creature->m_updateOffset;
-    if ((offset + Component->GetFrameNumber()) % period != 0)
+    if ((offset + (unsigned long)Component->GetCurrentWorldFrame()) % period != 0)
         return false;
     for (CStateGroupEntry* it = StateGroupBegin; it != StateGroupEnd; ++it) {
         CAIStateGroupBase* group = it->Group;

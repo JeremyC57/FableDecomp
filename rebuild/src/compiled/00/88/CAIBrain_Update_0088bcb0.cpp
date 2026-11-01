@@ -24,7 +24,7 @@ public:
     CBrainOutput& operator=(const CBrainOutput& other); // 0x0088C840 (the landed CBrainOutput::operator=)
 };
 class CMainGameComponent { public:
-    unsigned long GetWorldFrame() const;                // 0x004167C8
+    long GetCurrentWorldFrame() const;                  // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
 class CThingAICreature { public:
     unsigned char _pad00[0x18];
@@ -85,7 +85,7 @@ class CAIBrain { public:
     __forceinline bool IsFrameDue(unsigned long period) const
     {
         unsigned __int64 offset = Creature->UpdateOffset;
-        return (offset + Component->GetWorldFrame()) % period == 0;
+        return (offset + (unsigned long)Component->GetCurrentWorldFrame()) % period == 0;
     }
 };
 

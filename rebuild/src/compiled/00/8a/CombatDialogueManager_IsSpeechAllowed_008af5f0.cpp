@@ -6,7 +6,7 @@
 // CPlayer::GetPControlledCreature 0x00487DC0, the const CVectorMap::LowerBound(const long&) 0x004365B0 (inline GetInterface, type 0x36 =
 // bit 22 of CThing+0x24), the type-0x36 component's list membership test 0x00747450 (std::find over +0x38..+0x3C != end;
 // manifest label "CTCBuyableHouse::MovedInNotification" is propagated; component class named descriptively),
-// GetFrameNumber 0x004167C8 on g_pWorld 0x013B86A0; g_framesPerSecond 0x01375550.
+// CMainGameComponent::GetCurrentWorldFrame 0x004167C8 on g_pMainGameComponent 0x013B86A0; g_framesPerSecond 0x01375550.
 // Layout (retail): PDialogueDef +0x0C, PCurrentTalker +0x10, LastSpeechFrame +0x1C, LastBattleCryFrame +0x20;
 // CCombatDialogueDef MinTimeBetweenSpeech +0x3C, MinDelayAfterBattleCry +0x44 (PDB +0x40/+0x48).
 // Shape: `(float)g_framesPerSecond` written at each use keeps one fild and two `fdiv` (a float local turns them into a
@@ -38,10 +38,10 @@ struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeec
     CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
 };
 
-class CWorld { public:
-    long GetFrameNumber();                  // 0x004167C8 (manifest label "GFGetPreMainMemoryUsed" is propagated)
+class CMainGameComponent { public:
+    long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
-extern CWorld* g_pWorld;                    // 0x013B86A0
+extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CBaseObject;
 class CTCBase;
 struct CInterfaceMap {                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
@@ -125,7 +125,7 @@ public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CWorldPlayers {                           // g_pWorld viewed for its player manager (+0x1C)
+class CWorldPlayers {                           // g_pMainGameComponent viewed for its player manager (+0x1C)
 public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;              // +0x1C
@@ -150,7 +150,7 @@ bool CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) 
 {
     if (PCurrentTalker.Get() && !PCurrentTalker->Dead)
         return false;
-    CThingCreatureBase* hero = ((CWorldPlayers*)g_pWorld)->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThingCreatureBase* hero = ((CWorldPlayers*)g_pMainGameComponent)->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || hero->Dead)
         return false;
     CTCCombatSpeechTargets* targets;
@@ -158,7 +158,7 @@ bool CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) 
         return false;
     if (!targets->ContainsCreature(creature))
         return false;
-    long frame = g_pWorld->GetFrameNumber();
+    long frame = g_pMainGameComponent->GetCurrentWorldFrame();
     if (!((frame - LastSpeechFrame) / (float)g_framesPerSecond < PDialogueDef->MinTimeBetweenSpeech)
         && !((frame - LastBattleCryFrame) / (float)g_framesPerSecond < PDialogueDef->MinDelayAfterBattleCry))
         return true;

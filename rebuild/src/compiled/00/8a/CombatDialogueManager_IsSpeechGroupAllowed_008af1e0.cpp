@@ -1,7 +1,7 @@
 // CombatDialogueManager::IsSpeechGroupAllowed(unsigned long group) const -- whether the world frame has reached the group's NextAllowedFrame in the speech-group map
 // Leaf: IsSpeechGroupAllowed
 // Retail: Fable.exe @ 0x008AF1E0, 51 bytes, `__fastcall`, `ret 4` (Ego_r.pdb ?IsSpeechGroupAllowed@CombatDialogueManager@@QBE_NK@Z).
-// Callees: the world's GetFrameNumber 0x004167C8 on g_pWorld 0x013B86A0; map<unsigned long,TSpeechGroupInfo>::find(const
+// Callees: CMainGameComponent::GetCurrentWorldFrame 0x004167C8 on g_pMainGameComponent 0x013B86A0; map<unsigned long,TSpeechGroupInfo>::find(const
 // unsigned long&) const 0x008AEF20 (iterator returned through a hidden pointer; manifest label "BinaryTree_Search").
 // Layout: SpeechGroupInfoMap +0x00 (retail STLport map, 12 bytes); tree node value at +0x10, TSpeechGroupInfo::NextAllowedFrame
 // at node +0x14. The group must be present (the caller found it); find() is dereferenced unchecked.
@@ -33,10 +33,10 @@ struct CSpeechGroupInfoMap {                // STLport map<unsigned long, TSpeec
     CSpeechGroupMapIterator find(const unsigned long& key) const;   // 0x008AEF20
 };
 
-class CWorld { public:
-    long GetFrameNumber();                  // 0x004167C8 (manifest label "GFGetPreMainMemoryUsed" is propagated)
+class CMainGameComponent { public:
+    long GetCurrentWorldFrame() const;             // 0x004167C8 (Ego_r.pdb ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ)
 };
-extern CWorld* g_pWorld;                    // 0x013B86A0
+extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CombatDialogueManager {
 public:
     CSpeechGroupInfoMap SpeechGroupInfoMap;            // +0x00
@@ -45,7 +45,7 @@ public:
 
 bool CombatDialogueManager::IsSpeechGroupAllowed(unsigned long group) const
 {
-    const long frame = g_pWorld->GetFrameNumber();
+    const long frame = g_pMainGameComponent->GetCurrentWorldFrame();
     CSpeechGroupMapIterator it = SpeechGroupInfoMap.find(group);
     bool allowed = frame >= it->second.NextAllowedFrame;
     return allowed;
