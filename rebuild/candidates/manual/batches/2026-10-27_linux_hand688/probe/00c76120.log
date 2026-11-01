@@ -1,0 +1,13 @@
+probe 1: CCombFilter::Process model + scalar cross-fade loop (named a/b taps, values as single expressions, Forward wrap helper, t/w updated w then t) -> DIFFER(623v641): retail evaluates both history sums before the ring products and homes currentValue in the dead input slot (fstp/fld x2); ours keeps it on the x87 stack; register roles differ (retail: this in edi, line data in ecx, current in ebx)
+probe 2: named currentSum/targetSum/currentValue/targetValue locals in retail's order -> 626v641 (VC forward-substitutes the single-use sums into the products)
+probe 3: __forceinline by-value Crossfade(current,target,t,w) helper at the three mixes -> 626v641
+probe 4: block scopes {taps+sums} {values+mixes} -> 626v641
+probe 5: sums accumulated into the tap locals (a += ..., b += ...) -> 626v641
+probe 6: const-reference Crossfade helper -> 623v641
+probe 7: explicit (float) temporaries on every product/sum -> 624v641
+probe 8: inline member Feedback(read, settings, sum) helper -> 626v641
+probe 9: values built as sum then += ring*feedback -> 626v641
+probe 10: value[2] array -> 623v641 (VC scalar-replaces it)
+probe 11: const float feedback products as separate locals -> 626v641
+probe 12: per-side inline Step(settings, history, line, start, read, tap) helper -> 629v641
+parked: last four probes did not reduce the residue. Next: find what makes VC7.1 evaluate both sums before the first ring product (retail `fadd st(2)` onto the deeper sum, then `fstp [input slot]` for currentValue): a two-channel struct/loop form the compiler unrolls, or the retail CRingBuffer helpers as out-of-line members in the same TU.

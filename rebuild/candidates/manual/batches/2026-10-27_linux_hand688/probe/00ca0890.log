@@ -1,0 +1,2 @@
+probe 1: landed res2_class TU body (<math.h> fabs, static noinline stdcall + same-TU caller) -> DIFFER(724v776): maxima kept in x87/arg slot, direct fcom
+probe 2: C `extern "C" double fabs(double)` + #pragma intrinsic (landed _01class pattern) -> RELOCATION_MATCH 776v776

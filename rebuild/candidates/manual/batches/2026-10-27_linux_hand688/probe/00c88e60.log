@@ -1,0 +1,33 @@
+# 0x00C88E60 CDspOps::FilterGain4 -- probe log (leaf ?FilterGain4@CDspOps@@QAEXPAY0IA@M0PBQAMPBQBUSGainParams@@I@Z)
+p1  intrinsics (_mm_set_ps gather, shufps scatter, __m128 w[10], loop fill)            DIFFER 802v681  no ebp frame; VC7.1 builds _mm_set_ps through memory (no unpcklps/shufps 44h), never emits `subps x,x`
+p2  C fill (loop k) + __asm kernel (Retail-asm) + C write-back loop                    DIFFER 681v681  only residue: x87 operand order of the per-channel sums (w2 = 1-(c1+c2), w6 = -(t0+t1+t2)) in copies 1..3; everything else byte-equal
+p3  p2, sum written t0+(t1+t2)                                                           DIFFER 681v681  same residue
+p4  p2, -t0-t1-t2                                                                        DIFFER 681v681  fsub chain (wrong ops)
+p5  p2, 1-c1-c2 and t2+t1+t0                                                             DIFFER 681v681  fsub chain (wrong ops)
+p6  p2, (c2+c1), 0.0f-(..)                                                               DIFFER 681v681  identical to p2 (text order of commutative operands is ignored)
+p7  __forceinline Fill(w,k,g,s) x4                                                       DIFFER 681v681  per-copy orders now vary (c8|B, 8c|C, 8c|A, 8c|A) -- the pattern is p11's shifted by one copy
+p8  loop with float locals c1,c2,t0..t2                                                  DIFFER 753v681  locals stay in the FPU (reused), wrong shape
+p9  loop with *params++ / *states++                                                      DIFFER 684v681
+p10 do/while loop                                                                        DIFFER 481v681  not unrolled
+p11 four explicit copies                                                                 DIFFER 681v681  (8c|A, c8|B, 8c|C, 8c|A); retail (c8|A, 8c|A, c8|C, 8c|B)  [A=t0 t1 t2, B=t2 t0 t1, C=t1 t2 t0]
+p12-14 p11 with operand text permutations                                                DIFFER 681v681  identical to p11 (text order ignored)
+p15-17 p7 with operand text permutations / parens                                        DIFFER 681v681  p16 (a+(b+c)) makes all copies uniform c8|t2 t1 t0
+p18 p11, w6 before w3..w5                                                                DIFFER 681v681  stores move with the statement (store order is source order) -> worse
+p19 p11, w2 before w0,w1                                                                 DIFFER 681v681  copies 0 and 2 match retail, w2 store moves up -> worse
+p21 p11, master first                                                                    DIFFER 681v681  S = A,A,A,B
+p23 p2 with int k                                                                        DIFFER 681v681  = p2
+p26/p27/p32 integer statement moves (p, params[k]->, states first)                       DIFFER 681v681  = p11: integer temps do not influence the FP operand order
+p29 Fill(&w[0][k], g, s) column-pointer helper                                           DIFFER 681v681  new orders (18 14 10 / 10 18 14)
+p33 p2 loop with a+(b+c)                                                                 DIFFER 681v681  = p2 (loop clones are always uniform)
+p34 p11 with ((a+b)+c) explicit parens                                                   DIFFER 681v681  all copies uniform 8c|A
+p35 p11 with (a+(b+c))                                                                   DIFFER 681v681  all copies uniform 8c|C
+p36 p11 with `float sum = ...; w6 = -sum;`                                               DIFFER 681v681  = p11
+p40/p41 float* view of the params block (g[2], g[3], ...)                                DIFFER 681v681  = p11 / = p7
+p42-47 master copy after w2 / w6 / w5 / w1 / w3 / w4                                     DIFFER 681v681  pattern shifts (p42 copies 1..3 = retail copies 0,1,3) but the master store moves with it
+p48 master as a local loaded first, stored last                                          DIFFER 681v681  extra fld (the local lives in the FPU)
+p49-51 extra integer locals for the asm operands (n, s, d)                               DIFFER 687/663/693  pattern unchanged (integer temps irrelevant)
+p52/p53 k += 2 loop with two copies per iteration                                        DIFFER 818/819     not unrolled
+PARKED after 53 probes: best p2 (681v681). Residue: VC7.1's commutative-operand choice for the un-parenthesised `a+b+c` / `1-(a+b)`
+  sums differs per copy in retail (copy 0: c2+c1 / t0+t1+t2; copy 1: c1+c2 / t0+t1+t2; copy 2: c2+c1 / (t1+t2)+t0; copy 3: c1+c2 / (t2+t0)+t1)
+  while a loop gives uniform copies and explicit copies give a different (deterministic, text-order-independent) rotation.
+  The whole SSE kernel (0x00C88FEA..0x00C890BB) and the frame are byte-exact under the Retail-asm rule.

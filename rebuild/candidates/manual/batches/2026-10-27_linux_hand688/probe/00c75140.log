@@ -1,0 +1,3 @@
+# 0x00C75140 CStereoDelayLine::Process -- probe log (leaf ?Process@CStereoDelayLine@@QAEXPAMK@Z)
+p1  counted pointer loop, inline by-value CDelayLine::Allpass (delayed, value, write, wrap, return delayed - value*0.7f), chained line0 -> line1   RELOCATION_MATCH 700v700
+    constant 0x01255318 = 0.7f (landed 0x00713EE0 names it); the reloc mask hides only that constant.

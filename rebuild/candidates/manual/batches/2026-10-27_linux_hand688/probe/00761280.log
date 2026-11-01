@@ -1,0 +1,16 @@
+# 0x00761280 NShape::DrawPrimitiveLineOverLandscape -- probe log (leaf ?DrawPrimitiveLineOverLandscape@NShape@@YIXABVCEnginePrimitivePrepareInfo@@ABVCWorldMap@@ABVC3DVector@@22ABVCRGBColour@@@Z)
+p1  mid/distance/step/delta/length/count, previous = start lifted, if/else point, unsigned loop `i < count`      DIFFER 763v733  Length order X,Y,Z wrong (retail Z,Y,X); if/else copies; jbe entry; unsigned fild fix-up
+p2  Length Z*Z+Y*Y+X*X, ternary point, `i != count` unsigned                                                        DIFFER 743v733  unsigned (float)(i+1) fix-up remains (retail plain fild -> signed)
+p3  signed `long count`, `long i`, `i != count`                                                                     DIFFER 733v733  one residue: count spill store before the previous copy (retail after the ground-call push)
+p4  previous declared before delta/length                                                                            DIFFER 733v733  the copy moves up (worse)
+p6  previous copy between length and count                                                                           DIFFER 744v733  fst -> fstp/fld (register pressure)
+p13 `long i` declared before previous                                                                                DIFFER 733v733  = p3
+p14 count after the first ground call                                                                                DIFFER 740v733
+p15 static OverLandscape(worldMap, p) helper for the first point                                                     DIFFER 749v733  slots reshuffled
+p16 helper for both points                                                                                           DIFFER 774v733  bigger frame
+p17 `count = (long)(..); count++;`                                                                                   DIFFER 733v733  = p3
+p18 `segments` with `i != segments + 1` / `i == segments`                                                            DIFFER 733v733  inc/lea placement differs (worse shape)
+p19 `segments` + `count = segments + 1` locals                                                                       DIFFER 731v733
+p21 `C3DVector previous;` declared first, assigned later                                                             DIFFER 735v733  argument registers swap
+p25 `long count;` declared first, assigned later                                                                     DIFFER 733v733  = p3
+PARKED after 12 probes: best p3 (733v733, one instruction moved: the count spill is scheduled 9 instructions earlier than retail).

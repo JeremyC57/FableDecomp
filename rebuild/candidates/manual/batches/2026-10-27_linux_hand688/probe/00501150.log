@@ -1,0 +1,11 @@
+# 0x00501150 CWorldMap::LoadLevelFromFiles -- probe log (leaf ?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z)
+p1  object/files(1)/sections locals, three counted-pointer assignments, SetAsLoading, Add, `if (type==0) while (IsBusy()) Run();`   DIFFER 772v756  frame 0x40 (tag byte slot) + rotated busy loop
+p2  `struct __false_type { };` (no user ctor)                                                                                     DIFFER 683v756  the fill call shape breaks
+p3  `const long level`                                                                                                            DIFFER 772v756  = p1
+p4  `for (;;) { if (!IsBusy()) break; Run(); }`                                                                                   DIFFER 772v756  still rotated
+p7  named `__false_type __tag;` local in uninitialized_fill_n                                                                     DIFFER 772v756  tag still gets its own frame byte
+p8  p4 + p7                                                                                                                       DIFFER 772v756
+p9  `while (type == LOAD_TYPE_IMMEDIATE && PLevelLoader->IsBusy())`                                                               DIFFER 756v756  loop matches; only the tag home slot differs
+p11 `while (IsBusy()) { Run(); continue; }`                                                                                       DIFFER 772v756  rotated
+PARKED (p9): the remaining residue is the documented lane gap of GOTCHAS chunk 149 ("an empty tag temporary passed by const
+  reference sits at an existing, even live, argument slot in retail; our compiler always opens a frame word; park after one try").

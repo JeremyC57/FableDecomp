@@ -1,0 +1,3 @@
+# 0x00678460 COpinionReactionManagerDef::~COpinionReactionManagerDef -- probe log (leaf ??1COpinionReactionManagerDef@@UAE@XZ)
+p1  user body `for (it = begin; it != Matches.end(); ++it) delete *it; Matches.clear();` + implicit STLport/def-base members   DIFFER 759v758  only the loop end: retail keeps the list header in ebx (end() evaluated once)
+p2  p1 with `iterator end = Matches.end();` hoisted before the loop                                                              RELOCATION_MATCH 758v758

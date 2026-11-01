@@ -1,0 +1,11 @@
+address	grade	probes	residue
+00c76120	DIFFER(623v641)	12	CCombFilter::Blend: retail evaluates both history sums before the ring products (fadd st(2)) and homes currentValue in the dead input slot; register roles differ
+00b6ce00	RELOCATION_MATCH	1	-
+00c88e60	DIFFER(681v681) retail_asm	53	CDspOps::FilterGain4: x87 operand order of the per-channel coefficient sums in unrolled fill copies 1..3 (VC7.1 reassociation choice); the SSE kernel (Retail-asm), frame, fill stores and write-back are byte-equal
+00aa5460	RELOCATION_MATCH	1	-
+00c75140	RELOCATION_MATCH	1	-
+00761280	DIFFER(733v733)	12	NShape::DrawPrimitiveLineOverLandscape: the segment-count spill store is scheduled before the previous=start copy (retail: after the GetGroundSizeZAt argument push); one instruction moved
+00ac9a60	DIFFER(743v745)	16	COptimisedPrimitive::FindAdjacentFaces: ebx/edi role swap (zero+other vs pointer temps; set destructors then test/xor differently) and the X-term operand order of the normal dot product
+00501150	DIFFER(756v756)	8	CWorldMap::LoadLevelFromFiles: the empty __false_type tag is homed in the live `level` argument slot by retail, in a new frame byte by ours (GOTCHAS chunk 149 lane gap: park after one try); everything else matches
+00678460	RELOCATION_MATCH	2	-
+00ca0890	RELOCATION_MATCH	2	-

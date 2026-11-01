@@ -1,0 +1,20 @@
+# 0x00AC9A60 COptimisedPrimitive::FindAdjacentFaces -- probe log (leaf ?FindAdjacentFaces@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXXZ)
+p1  clear/size loop/copies/intersection/walk/normals/join, Dot X*X+Y*Y+Z*Z, `*it` used thrice                               DIFFER 743v745  this in ebx (retail ebp); vertexB index read after the first copy
+p2  vertexA/vertexB named before the copies                                                                                  DIFFER 743v745  copy order right; register roles differ
+p3  only vertexB named first                                                                                                 DIFFER 743v745  = p2
+p4  p3 + named `other = *it` + Dot Z*Z+Y*Y+X*X                                                                               DIFFER 743v745  this now ebp; zero/uvi pointer registers swapped (ebx<->edi); X term operand order
+p5  p4 with Dot v.X*X+v.Y*Y+v.Z*Z                                                                                            DIFFER 743v745  = p4 (text order ignored)
+p6  p3 + named other, Dot X*X+Y*Y+Z*Z                                                                                        DIFFER 743v745  = p4 (best; kept)
+p7  `unsigned long other;` declared before the walk loop                                                                     DIFFER 743v745  = p6
+p9  `const unsigned long other`                                                                                              DIFFER 743v745  = p6
+p10 while-loop walk with `other != f && dot > K`                                                                             DIFFER 743v745  = p6
+p11 GetFaceNormal(Faces[other]).Dot(GetFaceNormal(face)) (roles swapped)                                                     DIFFER 743v745  evaluation order wrong (315 diff lines)
+p12 free Dot(a, b) helper                                                                                                    DIFFER 743v745  worse (315)
+p13 `const set& indices = shared.Indices` reference                                                                          DIFFER 743v745  = p6
+p14 iterator declared before the for                                                                                         DIFFER 743v745  = p6
+p19 `unsigned long other = 0;` at function scope                                                                             DIFFER 743v745  = p6
+p20 `unsigned long other;` at function scope                                                                                 DIFFER 743v745  = p6
+p23 `unsigned long f = 0;` before Edges.clear()                                                                              DIFFER 743v745  zero materialised earlier (worse)
+p24 `other` declared inside the `*it != f` block                                                                             DIFFER 743v745  = p6
+PARKED after 16 probes: best p6 (743v745). Residue: callee-saved register roles ebx/edi (zero + other vs pointer temps) and the
+  X-term operand order of the inline dot product; the last 10 probes did not move either.

@@ -374091,6 +374091,41 @@ $catalog = @(
         TestSource = '00/cb/global_WaitDispatchingMessages_00cb09a0_test.cpp'
         PassPattern = '00cb09a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00678460'
+        Module = 'COpinionReactionManagerDef'
+        Source = '00/67/COpinionReactionManagerDef_COpinionReactionManagerDef_00678460.cpp'
+        TestSource = '00/67/COpinionReactionManagerDef_COpinionReactionManagerDef_00678460_test.cpp'
+        PassPattern = '00678460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa5460'
+        Module = '_global'
+        Source = '00/aa/global_ReadFromFile_00aa5460.cpp'
+        TestSource = '00/aa/global_ReadFromFile_00aa5460_test.cpp'
+        PassPattern = '00aa5460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6ce00'
+        Module = 'std::vector<CTVertexLandscapeBackground>'
+        Source = '00/b6/stdvectorCTVertexLandscapeBackground_Mfillinsert_00b6ce00.cpp'
+        TestSource = '00/b6/stdvectorCTVertexLandscapeBackground_Mfillinsert_00b6ce00_test.cpp'
+        PassPattern = '00b6ce00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c75140'
+        Module = 'CStereoDelayLine'
+        Source = '00/c7/CStereoDelayLine_Process_00c75140.cpp'
+        TestSource = '00/c7/CStereoDelayLine_Process_00c75140_test.cpp'
+        PassPattern = '00c75140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca0890'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_2class_00ca0890.cpp'
+        TestSource = '00/ca/libvorbis_2class_00ca0890_test.cpp'
+        PassPattern = '00ca0890_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

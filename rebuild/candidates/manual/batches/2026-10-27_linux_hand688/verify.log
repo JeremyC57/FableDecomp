@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00678460   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@2@@Z -> 004507fb labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00678460   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@2@@Z -> 004da360 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00678460   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@2@@Z -> 0067a840 labelled '_unattributed::FreeTree_CTreeOwner_0067a840'
+00678460   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@2@@Z -> 0067a800 labelled '_unattributed::FreeTree_CTreeOwner_0067a800'
+00678460   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@2@@Z -> 0067a7c0 labelled '_unattributed::FreeTree_CTreeOwner_0067a7c0'
+00678460   RELOCATION_MATCH PASS   ~COpinionReactionManagerDef
+00aa5460   RELOCATION_MATCH PASS   ReadFromFile
+00b6ce00   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCTVertexLandscapeBackground@@V?$allocator@VCTVertexLandscapeBackground@@@std@@@std@@IAEXPAVCTVertexLandscapeBackground@@ABV3@ABU__false_type@2@I_N@Z -> 00b6d0b0 labelled 'std::vector::InsertGrow'
+00b6ce00   RELOCATION_MATCH PASS   _M_fill_insert
+00c75140   RELOCATION_MATCH PASS   Process
+00ca0890   RELOCATION_MATCH PASS   _2class
+
+WINS: 5
+  00678460 RELOCATION_MATCH COpinionReactionManagerDef::??1COpinionReactionManagerDef@@UAE@XZ
+  00aa5460 RELOCATION_MATCH _global::?ReadFromFile@@YIXAAVCVertexCompressionParams@@AAVCDataInputStream@@@Z
+  00b6ce00 RELOCATION_MATCH std::vector<CTVertexLandscapeBackground>::?_M_fill_insert@?$vector@VCTVertexLandscapeBackground@@V?$allocator@VCTVertexLandscapeBackground@@@std@@@std@@QAEXPAVCTVertexLandscapeBackground@@IABV3@@Z
+  00c75140 RELOCATION_MATCH CStereoDelayLine::?Process@CStereoDelayLine@@QAEXPAMK@Z
+  00ca0890 RELOCATION_MATCH libvorbis::__2class@16
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  COpinionReactionManagerDef_COpinionReactionManagerDef_00678460
+  global_ReadFromFile_00aa5460
+  stdvectorCTVertexLandscapeBackground_Mfillinsert_00b6ce00
+  CStereoDelayLine_Process_00c75140
+  libvorbis_2class_00ca0890
