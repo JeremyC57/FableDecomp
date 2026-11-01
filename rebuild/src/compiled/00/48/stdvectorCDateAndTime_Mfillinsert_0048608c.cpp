@@ -17,6 +17,9 @@
 // empty tag lives in the high byte of the `position` slot (`lea [ebp+0Bh]`, which needs the same-TU helper
 // bodies below). Frame-pointer size TU (`optimize("y", off)` + `("s", on)`).
 // Leaf: _M_fill_insert
+// Naming wave 28 (family d3): the grow-insert 0x004125A0 is the protected STLport member (IAE; DECISIONS_W27 D3, the
+//   own row's spelling ?_M_insert_overflow@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@IAEXPAVCDateAndTime@@ABV3@ABU__false_type@2@I_N@Z).
+//   Was public (QAE).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 #include <new>
@@ -111,8 +114,10 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
 
+protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                             bool __atend = false);                                                           // 0x004125A0
+public:
     void _M_fill_insert(pointer __position, unsigned int __n, const _Tp& __x);
 };
 

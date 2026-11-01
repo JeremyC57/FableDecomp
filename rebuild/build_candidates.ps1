@@ -315020,9 +315020,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004125a0'
-        Module = 'std::vector<CDateAndTime>'
-        Source = '00/41/stdvectorCDateAndTime_Minsertoverflow_004125a0.cpp'
-        TestSource = '00/41/stdvectorCDateAndTime_Minsertoverflow_004125a0_test.cpp'
+        Module = 'std::vector<CDateAndTime,std::allocator<CDateAndTime> >'
+        Source = '00/41/stdvectorCDateAndTimestdallocatorCDateAndTime_Minsertoverflow_004125a0.cpp'
+        TestSource = '00/41/stdvectorCDateAndTimestdallocatorCDateAndTime_Minsertoverflow_004125a0_test.cpp'
         PassPattern = '004125a0_TEST PASS'
     }
     [pscustomobject]@{

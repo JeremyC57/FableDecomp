@@ -1,5 +1,8 @@
 // std::vector<CDateAndTime>::_M_insert_overflow(CDateAndTime* position, const CDateAndTime& x, const __false_type&, unsigned int fillLength, bool atEnd) -- STLport growth path of a date-and-time vector: allocate size + max(size, n), copy the head, construct n copies of x, copy the tail unless at the end, free the old block
-// Leaf: ?_M_insert_overflow@?$vector@VCDateAndTime@@
+// Leaf: ?_M_insert_overflow@?$vector@VCDateAndTime@@V?$allocator@VCDateAndTime@@@std@@@std@@IAEXPAVCDateAndTime@@ABV3@ABU__false_type@2@I_N@Z
+// Naming wave 28 (family d3): own row is the protected STLport member with the allocator (DECISIONS_W27 D3: the __false_type
+//   overload proven from the bytes -- null-checked placement copies, no __copy_trivial / memmove). Was the allocator-less public
+//   ?_M_insert_overflow@?$vector@VCDateAndTime@@@std@@QAEX..@Z.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004125A0, 310 bytes, thiscall `ret 14h` (position, x, the tag, fillLength, atEnd); /O2.
 // Identity: called by vector<CDateAndTime>::_M_fill_insert 0x0048608C (landed; it declares this callee), by
 //   CUserProfileManager::LoadFileList 0x00409372 and by the identical-folded 28-byte push_back 0x004129A7. The catalog
@@ -58,7 +61,8 @@ __forceinline _ForwardIter __uninitialized_fill_n(_ForwardIter __first, _Size __
     return __cur;
 }
 
-template <class _Tp> class vector {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     typedef _Tp* pointer;
     _Tp* _M_start;
@@ -69,12 +73,13 @@ public:
     _Tp* allocate(unsigned int __n) { return __n != 0 ? (_Tp*)malloc(__n * sizeof(_Tp)) : 0; }
     void _M_clear() { if (_M_start != 0) free(_M_start); }
     void _M_set(pointer __s, pointer __f, pointer __e) { _M_start = __s; _M_finish = __f; _M_end_of_storage = __e; }
+protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                             bool __atend = false);
 };
 
-template <class _Tp>
-void vector<_Tp>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
+template <class _Tp, class _Alloc>
+void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                                      bool __atend)
 {
     const unsigned int __old_size = size();
