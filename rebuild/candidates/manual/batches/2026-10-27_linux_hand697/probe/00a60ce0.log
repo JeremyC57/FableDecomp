@@ -1,0 +1,1 @@
+p1 user dtor '{ Close(); }'; STLport 4.6 map/_Rb_tree (clear() in ~_Rb_tree, header freed in ~_Rb_tree_base), CWideString Filename -- RELOCATION_MATCH

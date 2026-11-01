@@ -5099,7 +5099,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c3090	CEnginePrimitiveLine	CEnginePrimitiveLine	__thiscall	undefined	11	CEnginePrimitiveLine *,__uint64,C3DVector *,C3DVector *,CRGBColour *,float,EEnginePrimitiveBlendMode,ulong,bool,EEngineInterpolationSet,EEnginePrimitiveBlendOp	0	yes	accepted									
 004c3120	CEnginePrimitiveText	CEnginePrimitiveText	__thiscall	undefined	9	CEnginePrimitiveText *,__uint64,C3DVector *,float,CWideString *,CFontBank *,CRGBColour *,bool,EEngineInterpolationSet	0	yes	accepted									
 004c31e0	C3DMeshObject	C3DMeshObject	__thiscall	undefined	1	C3DMeshObject *	0	yes	accepted									
-004c3200	~C3DClothPrimitive	C3DClothPrimitive	__thiscall	void	1	C3DClothPrimitive *	1	yes	accepted									
+004c3200	~C3DMeshObject	C3DMeshObject	__thiscall	void	1	C3DClothPrimitive *	1	yes	accepted									
 004c3250	`scalar_deleting_destructor'	C3DMeshObject	__thiscall	void *	2	C3DMeshObject *,uint	1	yes	accepted									
 004c32f0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c32f0.cpp
 004c3360	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_004c3360.cpp
@@ -10279,7 +10279,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00569690	operator+<char, std::char_traits<char>, std::allocator<char>>	std	unknown	undefined	0		0	yes	accepted									
 005697c0	resize	vector<unsigned_int	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 005698a0	RBTree_SearchOrCreate	_global	unknown	undefined	0		0	yes	accepted									
-00569940	Std_Vector_Destroy_Elements	_global	unknown	undefined	0		0	yes	accepted									
+00569940	~vector	std::vector<std::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::basic_string<char, std::char_traits<char>, std::allocator<char>>>>	unknown	undefined	0		0	yes	accepted									
 005699e0	push_back	std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>	unknown	undefined	0		0	yes	accepted									
 00569a40	Vector_DeleteAllElements_Impl	_global	unknown	undefined	0		0	yes	accepted									
 00569a80	Erase	CRetailTree_erase00569a80	unknown	undefined	0		0	yes	accepted									
@@ -10287,9 +10287,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00569b10	_Umove<EWeaponClass*>	vector<EWeaponClass	__thiscall	EWeaponClass *	4	vector<EWeaponClass,std::allocator<EWeaponClass>_> *,EWeaponClass *,EWeaponClass *,EWeaponClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\global_UmoveEWeaponClass_00569b10.cpp
 00569b30	GFSerialiseVectorBinaryIn<CRGBColour>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CRGBColour,std::allocator<CRGBColour>_> *	1	yes	accepted									
 00569bc0	_M_create_node	std::_Rb_tree<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity, std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>>, std::_Select1st<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>>>, std::less<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity>, std::allocator<std::pair<CTCHeroOnlineScoreboard::EOnlineScoreboardActivity const, std::vector<std::pair<float, CWideString>, std::allocator<std::pair<float, CWideString>>>>>>	unknown	undefined	0		0			discovered	gapscan							
-00569c30	FinishMove	CTCAssassinRush	__thiscall	void	2	CTCAssassinRush *,CThingCreatureBase *	1	yes	accepted									
+00569c30	~LHHttpHeaders	LHNetworkLib::LHHttpHeaders	__thiscall	void	2	CTCAssassinRush *,CThingCreatureBase *	1	yes	accepted									
 00569c50	Transaction_InitializeVectors	_global	unknown	undefined	0		0	yes	accepted									
-00569d30	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+00569d30	~LHHttpHeaderStatus	LHNetworkLib::LHHttpHeaderStatus	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00569d90	resize	std::vector<CTCHeroOnlineScoreboard::CActivity, std::allocator<CTCHeroOnlineScoreboard::CActivity>>	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 00569df0	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\56\CTCCarryable_OnKill_00569df0.cpp
 00569e30	Vector_ReallocateStructArray	_global	unknown	undefined	0		0	yes	accepted									
@@ -18857,7 +18857,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00723c20	GetFacingVector	CTCPhysicsStandard	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									
 00723c80	GetRHSet	CTCPhysicsRigidBody	__thiscall	CRightHandedSet	2	CTCPhysicsRigidBody *,float	1	yes	accepted									
 00723e50	CCharacter_UpdateOrientation	_global	unknown	undefined	0		0	yes	accepted									
-00723f90	~CEngineInternalPrimitiveMeshBase	CEngineInternalPrimitiveMeshBase	__thiscall	void	1	CEngineInternalPrimitiveMeshBase *	1	yes	accepted									
+00723f90	~CTCPhysicsStandard	CTCPhysicsStandard	__thiscall	void	1	CEngineInternalPrimitiveMeshBase *	1	yes	accepted									
 00723fd0	CTCActivationTrigger	CTCActivationTrigger	__thiscall	undefined	2	CTCActivationTrigger *,CThing *	0	yes	accepted									
 00724010	OnCreate	CTCPhysicsStandard	__thiscall	void	1	CTCPhysicsStandard *	1	yes	accepted									
 00724240	Position_MoveElements	_global	unknown	undefined	0		0	yes	accepted									
@@ -23170,7 +23170,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007e7470	CScriptGameResourceObjectScriptedThingBase::WaitForEntityToFinishPerformingTasks	CScriptGameResourceObjectScriptedThingBase	__thiscall	void	2	CScriptGameResourceObjectScriptedThingBase *,CScriptGameResourceObjectScriptedThingBase const &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CScriptGameResourceObjectScriptedThingBase_WaitForEntityToFinishPerformingTasks_007e7470.cpp
 007e7480	CScriptGameResourceObjectScriptedThingBase::Wait	CScriptGameResourceObjectScriptedThingBase	__thiscall	void	2	CScriptGameResourceObjectScriptedThingBase *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CScriptGameResourceObjectScriptedThingBase_Wait_007e7480.cpp
 007e7490	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	CScriptGameResourceObjectScriptedThingBase	__thiscall	CScriptThing	1	CScriptGameResourceObjectScriptedThingBase *	1	yes	accepted									
-007e74d0	~CScriptGameResourceObjectMovieBase	CScriptGameResourceObjectMovieBase	__thiscall	void	1	CScriptGameResourceObjectMovieBase *	1	yes	accepted									
+007e74d0	~CScriptGameResourceObjectScriptedThingBase	CScriptGameResourceObjectScriptedThingBase	__thiscall	void	1	CScriptGameResourceObjectMovieBase *	1	yes	accepted									
 007e7520	`scalar_deleting_destructor'	CScriptGameResourceObjectMovieBase	__thiscall	void *	2	CScriptGameResourceObjectMovieBase *,uint	1	yes	accepted									
 007e7580	GetText	CTCFireheartMinigame	__thiscall	CWideString	2	CTCBetting *,ulong	1	yes	accepted									
 007e7640	CTCFireheartMinigame	CTCFireheartMinigame	__thiscall	undefined	2	CTCFireheartMinigame *,CThing *	0	yes	accepted									
@@ -37446,7 +37446,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a60aa0	Save	CChecksumCacheFile	__thiscall	void	1	CChecksumCacheFile *	1	yes	accepted									
 00a60c30	Close	CChecksumCacheFile	unknown	undefined	0		0	yes	accepted									
 00a60c90	CChecksumCacheFile	CChecksumCacheFile	unknown	undefined	0		0	yes	accepted									
-00a60ce0	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
+00a60ce0	~CChecksumCacheFile	CChecksumCacheFile	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00a60d40	Open	CChecksumCacheFile	__thiscall	void	2	CChecksumCacheFile *,CWideString *	1	yes	accepted									
 00a60fb0	GetChecksum	CChecksumCacheFile	__thiscall	ulong	2	CChecksumCacheFile *,CWideString *	1	yes	accepted									
 00a61150	CChecksumCacheFile	CChecksumCacheFile	__thiscall	undefined	3	CChecksumCacheFile *,CWideString *,long	0	yes	accepted									
@@ -41866,7 +41866,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b81cf0	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
 00b81d60	ClearParticleSims	CEngineClothSimulationMeshBase	__thiscall	void	1	CEngineClothSimulationMeshBase *	1	yes	accepted									
 00b81e00	CEnginePrimitiveSimulationInfo	CEnginePrimitiveSimulationInfo	__thiscall	undefined	1	CEnginePrimitiveSimulationInfo *	0	yes	accepted									
-00b81e20	ClearGroups	CParticleProgram	__thiscall	void	1	CParticleProgram *	1	yes	accepted									
+00b81e20	Clear	CEnginePrimitiveSimulationInfo	__thiscall	void	1	CParticleProgram *	1	yes	accepted									
 00b81e60	OnDie	CTCInventoryItem	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 00b81ea0	CEngineClothSimulationStaticMesh	CEngineClothSimulationStaticMesh	__thiscall	undefined	4	CEngineClothSimulation2DAnimatedMesh *,C3DMeshInfo *,ulong,CEngineInternalPrimitiveAnimatedMesh *	0	yes	accepted									
 00b81ed0	CEngineClothSimulationAnimatedMesh	CEngineClothSimulationAnimatedMesh	__thiscall	undefined	4	CEngineClothSimulation2DAnimatedMesh *,C3DMeshInfo *,ulong,CEngineInternalPrimitiveAnimatedMesh *	0	yes	accepted									
@@ -42951,7 +42951,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bdde80	~CObjectCacheGroupCollection	CObjectCacheGroupCollection	__thiscall	void	1	CObjectCacheGroupCollection *	1	yes	accepted									
 00bddee0	CLocalDetailCacheMap::CObjectCacheGroupCollection::vfunc_1	CLocalDetailCacheMap::CObjectCacheGroupCollection	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00bddf30	CQuadTreeElement	CQuadTreeElement	__thiscall	undefined	6	CQuadTreeElement *,CLocalDetailCacheMap *,long,long,long,long	0	yes	accepted									
-00bddfb0	~CQuadTreeElement	CQuadTreeElement	__thiscall	void	1	CQuadTreeElement *	1	yes	accepted									
+00bddfb0	~CQuadTreeElement	CLocalDetailCacheMap::CQuadTreeElement	__thiscall	void	1	CQuadTreeElement *	1	yes	accepted									
 00bde020	UnloadStaticContents	CQuadTreeElement	__thiscall	void	2	CQuadTreeElement *,CEngineStaticMapFileBlockManager *	1	yes	accepted									
 00bde080	ValidationTest	CLocalDetailCacheMap::CQuadTreeElement	__thiscall	void	1	CQuadTreeElement *	1	yes	accepted									
 00bde0c0	CLocalDetailCacheMap::CQuadTreeElement::vfunc_1	CLocalDetailCacheMap::CQuadTreeElement	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

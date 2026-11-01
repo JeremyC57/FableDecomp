@@ -35320,3 +35320,11 @@ _longest_match_fast	00c00fd0	00c013c0
 ?GetCutsceneName@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	00e8a1d0	00e8b020
 ?Update@CHoverable@NUISystem@@UAEXM@Z	0055b890	0055acb0
 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ	00cdd4f0	00cdd4c0
+??1?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ	00569940	00569d30
+?Reset@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ	0083fb60	00569d30
+?Reset@LHHttpHeaders@LHNetworkLib@@QAEXXZ	0083fbc0	00569d30
+?Close@CChecksumCacheFile@@QAEXXZ	00a60c30	00a60ce0
+??1CQuadTreeElement@CLocalDetailCacheMap@@UAE@XZ	00bddfb0	00bded60
+??1CEngineInternalPrimitiveOcclusionBase@@UAE@XZ	00b9c660	00bebc50
+??_7CEngineInternalPrimitiveMeshBase@@6B@	012a41d4	00bebc50
+?Clear@CEnginePrimitiveSimulationInfo@@QAEXXZ	00b81e20	00bebc50

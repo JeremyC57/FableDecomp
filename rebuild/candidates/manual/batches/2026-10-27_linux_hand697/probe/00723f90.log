@@ -1,0 +1,2 @@
+p1 user dtor 'if (PPhysicsMeshInfo) delete PPhysicsMeshInfo;', implicit CTCPhysicsBase with engine/CDefPointer.h PhysicsDef, local CTCBase : CBaseClassNonCopyable -- RELOCATION_MATCH
+p2 same with the sixteen Ego_r flag bitfields named -- RELOCATION_MATCH (kept)

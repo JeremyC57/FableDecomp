@@ -1,0 +1,35 @@
+addr       parity           behav  name
+004c2e90   RELOCATION_MATCH PASS   ~C3DAnimationInterpolator
+004c3200   RELOCATION_MATCH PASS   ~C3DMeshObject
+00569d30   RELOCATION_MATCH PASS   ~LHHttpHeaderStatus
+006e7b80   RELOCATION_MATCH PASS   ~CScriptGameResourceObjectMovieBase
+00723f90   RELOCATION_MATCH PASS   ~CTCPhysicsStandard
+007e74d0   RELOCATION_MATCH PASS   ~CScriptGameResourceObjectScriptedThingBase
+00a60ce0   RELOCATION_MATCH PASS   ~CChecksumCacheFile
+00ac3b80   RELOCATION_MATCH PASS   ~C3DClothPrimitive
+00bded60   RELOCATION_MATCH PASS   ~CLocalDetailCacheMap
+00bebc50   RELOCATION_MATCH PASS   ~CEngineInternalPrimitiveMeshBase
+
+WINS: 10
+  004c2e90 RELOCATION_MATCH C3DAnimationInterpolator::??1C3DAnimationInterpolator@@UAE@XZ
+  004c3200 RELOCATION_MATCH C3DMeshObject::??1C3DMeshObject@@UAE@XZ
+  00569d30 RELOCATION_MATCH LHNetworkLib::LHHttpHeaderStatus::??1LHHttpHeaderStatus@LHNetworkLib@@QAE@XZ
+  006e7b80 RELOCATION_MATCH CScriptGameResourceObjectMovieBase::??1CScriptGameResourceObjectMovieBase@@UAE@XZ
+  00723f90 RELOCATION_MATCH CTCPhysicsStandard::??1CTCPhysicsStandard@@UAE@XZ
+  007e74d0 RELOCATION_MATCH CScriptGameResourceObjectScriptedThingBase::??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ
+  00a60ce0 RELOCATION_MATCH CChecksumCacheFile::??1CChecksumCacheFile@@QAE@XZ
+  00ac3b80 RELOCATION_MATCH C3DClothPrimitive::??1C3DClothPrimitive@@UAE@XZ
+  00bded60 RELOCATION_MATCH CLocalDetailCacheMap::??1CLocalDetailCacheMap@@QAE@XZ
+  00bebc50 RELOCATION_MATCH CEngineInternalPrimitiveMeshBase::??1CEngineInternalPrimitiveMeshBase@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  C3DAnimationInterpolator_C3DAnimationInterpolator_004c2e90
+  C3DMeshObject_C3DMeshObject_004c3200
+  LHNetworkLibLHHttpHeaderStatus_LHHttpHeaderStatus_00569d30
+  CScriptGameResourceObjectMovieBase_CScriptGameResourceObjectMovieBase_006e7b80
+  CTCPhysicsStandard_CTCPhysicsStandard_00723f90
+  CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_007e74d0
+  CChecksumCacheFile_CChecksumCacheFile_00a60ce0
+  C3DClothPrimitive_C3DClothPrimitive_00ac3b80
+  CLocalDetailCacheMap_CLocalDetailCacheMap_00bded60
+  CEngineInternalPrimitiveMeshBase_CEngineInternalPrimitiveMeshBase_00bebc50

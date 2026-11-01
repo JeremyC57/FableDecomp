@@ -1,0 +1,2 @@
+p1 user dtor 'if (!SimulationInfo.IsNull()) SimulationInfo->Clear();' over local polymorphic primitive chain + CIVCountedPointer<T> (named-local Release) -- SRC_FAIL (engine/CIVCountedPointeeBase.h needs rebuild_abi.h first)
+p2 same with rebuild_abi.h included first -- RELOCATION_MATCH

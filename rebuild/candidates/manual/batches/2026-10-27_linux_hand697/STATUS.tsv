@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+00ac3b80	RELOCATION_MATCH	66v66	PASS	1	C3DClothPrimitive::~C3DClothPrimitive (vtable 0x0129DF74, ??_G 0x00A96000; catalog label right; twin of ~CScriptThing 0x004AA840)
+004c3200	RELOCATION_MATCH	66v66	PASS	2	C3DMeshObject::~C3DMeshObject (vtable 0x01239860; label ~C3DClothPrimitive wrong; bound ??1C3DMeshObject by landed 0x004BC670)
+006e7b80	RELOCATION_MATCH	66v66	PASS	1	CScriptGameResourceObjectMovieBase::~... implicit (ctor 0x006E7B60 vtable 0x01260EF4, ??_G 0x006E7BD0; label right; 4 wrong bound spellings)
+007e74d0	RELOCATION_MATCH	66v66	PASS	1	CScriptGameResourceObjectScriptedThingBase::~... implicit (ctor 0x007E72A0 vtable 0x0127094C, ??_G 0x007E7520; label MovieBase wrong)
+00bebc50	RELOCATION_MATCH	77v77	PASS	2	CEngineInternalPrimitiveMeshBase::~... (vtable 0x012A41D4, ??_G 0x00BA7FF0; label right; callee Clear 0x00B81E20 named)
+00723f90	RELOCATION_MATCH	57v57	PASS	2	CTCPhysicsStandard::~CTCPhysicsStandard (vtable 0x01265F84; callers Controlled/Navigator ??_G; label ~CEngineInternalPrimitiveMeshBase wrong)
+004c2e90	RELOCATION_MATCH	81v81	PASS	1	C3DAnimationInterpolator::~... implicit (??_G 0x004C3D10 of vtable 0x01239840; label right; QAE + 2 invented bound spellings)
+00569d30	RELOCATION_MATCH	90v90	PASS	1	LHNetworkLib::LHHttpHeaderStatus::~LHHttpHeaderStatus (Ego_r/FableWin; label ~CPatchTesselationEdgeStrip wrong)
+00bded60	RELOCATION_MATCH	44v44	PASS	1	CLocalDetailCacheMap::~CLocalDetailCacheMap (Ego_r/FableWin; landed callers bind it; label ~CPatchTesselationEdgeStrip wrong)
+00a60ce0	RELOCATION_MATCH	82v82	PASS	1	CChecksumCacheFile::~CChecksumCacheFile (Ego_r donor order after Close; label ~CPatchTesselationEdgeStrip wrong)

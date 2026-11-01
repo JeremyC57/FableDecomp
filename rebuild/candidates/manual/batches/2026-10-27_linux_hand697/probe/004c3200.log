@@ -1,0 +1,2 @@
+p1 empty user dtor over engine/CCountedPointer.h + engine/CBaseClass.h, local C3DMeshObject (Ego_r members, float[12] matrices) -- RELOCATION_MATCH
+p2 same with a local CMatrix3x4 (E11..E43) for the two matrices -- RELOCATION_MATCH (kept)

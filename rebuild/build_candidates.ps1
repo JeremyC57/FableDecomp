@@ -374588,6 +374588,76 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBard_CTBBard_00ed7dd0_test.cpp'
         PassPattern = '00ed7dd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004c2e90'
+        Module = 'C3DAnimationInterpolator'
+        Source = '00/4c/C3DAnimationInterpolator_C3DAnimationInterpolator_004c2e90.cpp'
+        TestSource = '00/4c/C3DAnimationInterpolator_C3DAnimationInterpolator_004c2e90_test.cpp'
+        PassPattern = '004c2e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c3200'
+        Module = 'C3DMeshObject'
+        Source = '00/4c/C3DMeshObject_C3DMeshObject_004c3200.cpp'
+        TestSource = '00/4c/C3DMeshObject_C3DMeshObject_004c3200_test.cpp'
+        PassPattern = '004c3200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00569d30'
+        Module = 'LHNetworkLib::LHHttpHeaderStatus'
+        Source = '00/56/LHNetworkLibLHHttpHeaderStatus_LHHttpHeaderStatus_00569d30.cpp'
+        TestSource = '00/56/LHNetworkLibLHHttpHeaderStatus_LHHttpHeaderStatus_00569d30_test.cpp'
+        PassPattern = '00569d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006e7b80'
+        Module = 'CScriptGameResourceObjectMovieBase'
+        Source = '00/6e/CScriptGameResourceObjectMovieBase_CScriptGameResourceObjectMovieBase_006e7b80.cpp'
+        TestSource = '00/6e/CScriptGameResourceObjectMovieBase_CScriptGameResourceObjectMovieBase_006e7b80_test.cpp'
+        PassPattern = '006e7b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00723f90'
+        Module = 'CTCPhysicsStandard'
+        Source = '00/72/CTCPhysicsStandard_CTCPhysicsStandard_00723f90.cpp'
+        TestSource = '00/72/CTCPhysicsStandard_CTCPhysicsStandard_00723f90_test.cpp'
+        PassPattern = '00723f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e74d0'
+        Module = 'CScriptGameResourceObjectScriptedThingBase'
+        Source = '00/7e/CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_007e74d0.cpp'
+        TestSource = '00/7e/CScriptGameResourceObjectScriptedThingBase_CScriptGameResourceObjectScriptedThingBase_007e74d0_test.cpp'
+        PassPattern = '007e74d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a60ce0'
+        Module = 'CChecksumCacheFile'
+        Source = '00/a6/CChecksumCacheFile_CChecksumCacheFile_00a60ce0.cpp'
+        TestSource = '00/a6/CChecksumCacheFile_CChecksumCacheFile_00a60ce0_test.cpp'
+        PassPattern = '00a60ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac3b80'
+        Module = 'C3DClothPrimitive'
+        Source = '00/ac/C3DClothPrimitive_C3DClothPrimitive_00ac3b80.cpp'
+        TestSource = '00/ac/C3DClothPrimitive_C3DClothPrimitive_00ac3b80_test.cpp'
+        PassPattern = '00ac3b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bded60'
+        Module = 'CLocalDetailCacheMap'
+        Source = '00/bd/CLocalDetailCacheMap_CLocalDetailCacheMap_00bded60.cpp'
+        TestSource = '00/bd/CLocalDetailCacheMap_CLocalDetailCacheMap_00bded60_test.cpp'
+        PassPattern = '00bded60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bebc50'
+        Module = 'CEngineInternalPrimitiveMeshBase'
+        Source = '00/be/CEngineInternalPrimitiveMeshBase_CEngineInternalPrimitiveMeshBase_00bebc50.cpp'
+        TestSource = '00/be/CEngineInternalPrimitiveMeshBase_CEngineInternalPrimitiveMeshBase_00bebc50_test.cpp'
+        PassPattern = '00bebc50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
