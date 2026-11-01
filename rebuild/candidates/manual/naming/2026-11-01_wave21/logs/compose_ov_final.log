@@ -1,0 +1,9 @@
+csound h21_csound.py ok 32 already 7 other 0 
+voice h21_voice.py ok 99 already 42 other 0 
+dbg h21_dbg.py ok 47 already 2 other 0 
+alloc h21_alloc.py ok 11 already 8 other 0 
+misc h21_misc.py ok 4 already 3 other 0 
+gdst fam_gdst21.py {'edited': 105, 'skip': 8, 'already': 0} 
+gdst h21_gdst.py ok 14 already 0 other 0 
+c689 h21_c689.py ok 12 already 0 other 0 
+{'csound': 12, 'voice': 17, 'dbg': 11, 'alloc': 7, 'misc': 2, 'gdst': 110, 'c689': 6}

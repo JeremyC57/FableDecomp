@@ -1,0 +1,43 @@
+Counter({'RETIRE': 102, 'ADD': 47, 'KEEP': 1}) removed lines 102 added 47
+NEWDEF 00415d70 ??BCDefString@@QBE?AVCCharString@@XZ
+NEWDEF 0054ed90 ?GetString@CDefString@NUISystem@@QBE?AVCCharString@@XZ
+NEWDEF 00613ae0 ??$_Destroy@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@@std@@YAXPAU?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@0@@Z ?_M_erase@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4ECategory@CHeroLogBookE
+NEWDEF 006196d0 ??$_Destroy@U?$pair@$$CBJVCRegion@@@std@@@std@@YAXPAU?$pair@$$CBJVCRegion@@@0@@Z ??1?$pair@$$CBJVCRegion@@@std@@QAE@XZ ??_G?$pair@$$CBJVCRegion@@@std@@QAEPAXI@Z ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCRegion@@@std@@U?$_Select1st@U?$pair@$$CBJVCRegion@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCRegion@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCRegion@@@std@@@2@@Z ?_S_left@?$_Rb_tree@J
+NEWDEF 00619f50 ??0CTCInventoryMap@@QAE@XZ ??_7CTCInventoryMap@@6B@ ??_GCTCInventoryMap@@UAEPAXI@Z ?MakeOne_00619f50@@YAPAXXZ
+NEWDEF 009d5060 ?SetString@CDefString@@QAEXABVCCharString@@@Z
+NEWDEF 00ad30c0 ??$UninitializedFillN@VC3DVector@@@std@@YAPAVC3DVector@@PAV1@IABV1@@Z ??0?$_STLP_alloc_proxy@PAVC3DVector@@V1@V?$allocator@VC3DVector@@@std@@@std@@QAE@ABV?$allocator@VC3DVector@@@1@PAVC3DVector@@@Z ??0?$_Vector_base@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@IABV?$allocator@VC3DVector@@@1@@Z ??0?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@IABVC3DVector@@ABV?$allocator@VC
+NEWDEF 00c08ae0 ?WaitForSprite@CSoundSystem@@QAEXXZ
+NEWDEF 00c091f0 ?Update@CSoundSystem@@QAEXXZ
+NEWDEF 00c09380 ??1CSoundSystem@@UAE@XZ ??_7CSoundSystem@@6B@ ??_GCSoundSystem@@UAEPAXI@Z
+NEWDEF 00c094a0 ??0CSoundSystem@@QAE@PAUCSoundSystemSetup@@PAUCSteeringWorldEntry@@@Z ??0CSoundSystemBase@@QAE@XZ ??1CSoundSystemBase@@UAE@XZ ??_7CSoundSystem@@6B@ ??_7CSoundSystemBase@@6B@ ??_GCSoundSystem@@UAEPAXI@Z ??_GCSoundSystemBase@@UAEPAXI@Z
+NEWDEF 00c096e0 ?CreateSoundSystem_00c096e0@@YGPAUCSoundSystem@@PAUCSoundSystemSetup@@@Z
+NEWDEF 00c0a6b0 ??0CSoundSystem@@QAE@XZ ??_7CSoundSystem@@6B@ ??_GCSoundSystem@@UAEPAXI@Z ?NewSoundSystem_00c0a6b0@@YAPAUCSoundSystem@@XZ
+NEWDEF 00c0b200 ??0CAudioParamBlock@@QAE@PAUCSoundSystem@@@Z
+NEWDEF 00c10a30 ??0CPKVoiceParams@@QAE@XZ
+NEWDEF 00c11d00 ??0CSoundEventManager@@QAE@PAUCSoundSystem@@MMMMMPAUCSteeringWorldEntry@@@Z
+NEWDEF 00c13140 ?Play@CSoundEventManager@@QAEJJJPBUCPKVoiceParams@@@Z
+NEWDEF 00c16690 ?StoreSoundAllocator_00c16690@@YIXPAVCAllocator@LHA@@@Z
+NEWDEF 00c166b0 ?StoreSoundPhysicalAllocator_00c166b0@@YIXPAVCAllocator@LHA@@@Z
+NEWDEF 00c166d0 ?StoreSoundTempAllocator_00c166d0@@YIXPAVCAllocator@LHA@@@Z
+NEWDEF 00c166f0 ??0CDefaultAllocator_00c166f0@@QAE@XZ ??_7CDefaultAllocator_00c166f0@@6B@
+NEWDEF 00c16700 ?Allocate@CDefaultAllocator_00c166f0@@UAEPAXI@Z
+NEWDEF 00c16720 ?Free@CDefaultAllocator_00c166f0@@UAEXPAX@Z
+NEWDEF 00c20420 ?SetScale@CPKVoiceParams@@QAEXM@Z
+NEWDEF 00c20480 ?SetMinDistance@CPKVoiceParams@@QAEXM@Z
+NEWDEF 00c204a0 ?SetMaxDistance@CPKVoiceParams@@QAEXM@Z
+NEWDEF 00c26c10 ??0CChainNode_00c26c10@@QAE@PAXPAVPKCSemaphore@@PAUCPredicateChain_00c26c10@@PAUCSlotList_00c26c10@@@Z
+NEWDEF 00c27070 ??0CChainNode_00c27070@@QAE@PAXPAVPKCSemaphore@@PAUCPredicateChain_00c27070@@PAUCSlotList_00c27070@@@Z
+NEWDEF 00c27c10 ?Load@CPKVoiceParams@@QAEXPBUInput@@@Z
+NEWDEF 00c355e0 ??0CString@@QAE@XZ
+NEWDEF 00c377e0 ?GetEventManager@CSoundLoop_00c377f0@@QAEPAUCSoundEventManager@@XZ
+NEWDEF 00c37840 ??0CPKVoiceParams@@QAE@XZ ?Update@CSoundLoop_00c377f0@@QAEXXZ
+NEWDEF 00c37930 ??1CSoundLoop_00c377f0@@QAE@XZ
+NEWDEF 00c44d30 ?ClearEvents@CAmbientEmitter@@QAEXXZ
+NEWDEF 00c61cf0 ?GetEventManager@CPKVoiceHandle@@QAEPAUCSoundEventManager@@PAVCAmbientEmitter@@@Z
+NEWDEF 00c61fb0 ?Release@CPKVoiceHandle@@QAEXPAVCAmbientEmitter@@@Z
+NEWDEF 00c621b0 ??0CPKVoiceParams@@QAE@XZ
+NEWDEF 00c62530 ??0CPKVoiceParams@@QAE@XZ
+NEWDEF 00c62920 ??0CAudioStreamOwner_00c62920@@QAE@PAVIStreamOpener_00c62920@@PBGABUSStreamSegment@@@Z
+NEWDEF 00d3aff0 ??0CQ_FireHeartScript@NScript@@QAE@XZ ??_7CQ_FireHeartScript@NScript@@6B@ ??_GCQ_FireHeartScript@NScript@@UAEPAXI@Z ?MakeOne_00d3aff0@@YAPAXXZ
+NEWDEF 012240a0 ?GDefStringTable@@3VCDefStringTable@@A
+NEWDEF 01224b40 ?g_DefaultAllocator_0143bb34@@3VCDefaultAllocator_00c166f0@@A
