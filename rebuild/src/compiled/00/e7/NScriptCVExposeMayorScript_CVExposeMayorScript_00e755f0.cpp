@@ -1,5 +1,7 @@
-// CV_ExposeMayorScript::CV_ExposeMayorScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012E96CC, four entity handles (Suspicious, LadyGrey, Sheriff, Rhodri) and the empty Evidence string
-// Leaf: ??0CV_ExposeMayorScript
+// NScript::CV_ExposeMayorScript::CV_ExposeMayorScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, vtable 0x012E96CC, four entity handles (Suspicious, LadyGrey, Sheriff, Rhodri) and the empty Evidence string
+// Leaf: ??0CV_ExposeMayorScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair; respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E755F0, length 142 bytes (padded to 144), `ret 8`.
 // Factory 0x00E7B290 (`push 0A0h`, this ctor) is registered at 0x00CD866B under "S_VEM" / "V_ExposeMayor".
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x0099A380 (x4),
@@ -23,10 +25,11 @@ inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
+class CScriptDataBase;
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
-    void*                 Data;                    // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                    // +0x40 (second argument)
+    CScriptDataBase*                 Data;                    // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 #include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
@@ -70,11 +73,11 @@ public:   // vtable 0x012E96CC
     CCharString Evidence;                          // +0x98
     float MaxFlashDistFromStables;                 // +0x9c
     virtual void v00();
-    CV_ExposeMayorScript(void* data, CGameScriptInterface* game);
+    CV_ExposeMayorScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CV_ExposeMayorScript;
-NScript::CV_ExposeMayorScript::CV_ExposeMayorScript(void* data, CGameScriptInterface* game)
+NScript::CV_ExposeMayorScript::CV_ExposeMayorScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

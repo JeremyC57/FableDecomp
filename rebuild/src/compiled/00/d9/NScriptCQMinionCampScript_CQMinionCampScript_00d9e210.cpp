@@ -1,5 +1,9 @@
-// CQ_MinionCampScript::CQ_MinionCampScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012D6C60, ChantTimer and MinionSpawnTimer, the two hero-attacker script things, the empty Left/RightSpawnPoints lists and SpawnPointToSpawn
-// Leaf: ??0CQ_MinionCampScript
+// NScript::CQ_MinionCampScript::CQ_MinionCampScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, vtable 0x012D6C60, ChantTimer and MinionSpawnTimer, the two hero-attacker script things, the empty Left/RightSpawnPoints lists and SpawnPointToSpawn
+// Leaf: ??0CQ_MinionCampScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair; respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D9E210, 197 bytes (padded to 208), `ret 8`.
 // Identity: the manifest label "CV_FisticuffsClubScript" is propagated and wrong. The factory 0x00DA2F40 (`push 0ACh`,
 //   this ctor) is registered at 0x00CD6D27 under "S_QMC"; size 0xac = Ego_r.pdb CQ_MinionCampScript 208 - 0x14 (script
@@ -22,18 +26,19 @@ extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
+class CScriptDataBase;
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
-    void*                 Data;                    // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                    // +0x40 (second argument)
+    CScriptDataBase*                 Data;                    // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/CCountedPointer.h"
@@ -74,11 +79,11 @@ public:
     CScriptThing SpawnPointToSpawn;                // +0x9c
     long BriarState;                               // +0xa8 (BriarRoseState)
     virtual ~CQ_MinionCampScript();
-    CQ_MinionCampScript(void* data, CGameScriptInterface* game);
+    CQ_MinionCampScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CQ_MinionCampScript;
-NScript::CQ_MinionCampScript::CQ_MinionCampScript(void* data, CGameScriptInterface* game)
+NScript::CQ_MinionCampScript::CQ_MinionCampScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

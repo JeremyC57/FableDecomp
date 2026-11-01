@@ -1,9 +1,13 @@
-// CQ_RansomVictimScript::CQ_RansomVictimScript(CScriptDataBase*, CGameScriptInterface&) -- quest-script ctor: script base, interface/data pair, own vtable, the enemy-name string, the NPC comment timer and five empty scripted-thing handles
-// Leaf: ??0CQ_RansomVictimScript
+// NScript::CQ_RansomVictimScript::CQ_RansomVictimScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, own vtable, the enemy-name string, the NPC comment timer and five empty scripted-thing handles
+// Leaf: ??0CQ_RansomVictimScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair as (CScriptDataBase*, CGameScriptInterface&); respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DE0320, length 182 bytes, `ret 8`; vtable 0x012DCE70; built by the factory
 // 0x00DEBC60 (registered as "S_QRV", `push 0BCh` = Ego_r.pdb 0xd0 - 0x14).
 // Callees: CScriptBase() 0x00CB8110, CCharString() 0x0099E4B0, CBaseObject() 0x0099A380 (each handle's root), and
-// g_pGameScriptInterface (0x0143E8F8) RegisterTimer (slot 87) for the inline CTimer ctor.
+// pDSTGame (0x0143E8F8) RegisterTimer (slot 87) for the inline CTimer ctor.
 // Layout (Ego_r.pdb - 0x14): ActiveEnemyName +0x64, NPCCommentTimer +0x68, seh_Guard +0x6c, seh_Father +0x7c, seh_Victim
 // +0x8c, seh_Brother +0x9c, seh_Ransommer +0xac (CScriptGameResourceObjectScriptedThingBase, vtable 0x0127094C, 16 bytes).
 // Shape: the two argument words come from the inline `__declspec(novtable)` intermediate base and are stored before the
@@ -50,17 +54,17 @@ class CScriptDataBase;
 #include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CQuestScriptBase : CScriptBase {   // the argument pair stored before the derived vtable
-    CGameScriptInterface* GSI;                           // +0x40
+    CGameScriptInterfaceBase* GSI;                           // +0x40
     CScriptDataBase*      Data;                          // +0x44
-    CQuestScriptBase(CScriptDataBase* data, CGameScriptInterface* gsi) : CScriptBase(), GSI(gsi), Data(data) {}
+    CQuestScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), GSI(&game), Data(data) {}
 };
 
-extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) {}
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) {}
 
 namespace NScript {
 class CQ_RansomVictimScript : public CQuestScriptBase {
@@ -89,12 +93,12 @@ public:        // vtable 0x012DCE70
     CScriptGameResourceObjectScriptedThingBase seh_Brother;    // +0x9c
     CScriptGameResourceObjectScriptedThingBase seh_Ransommer;  // +0xac
     virtual void v00();
-    CQ_RansomVictimScript(CScriptDataBase* data, CGameScriptInterface& gsi);
+    CQ_RansomVictimScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CQ_RansomVictimScript;
 
-NScript::CQ_RansomVictimScript::CQ_RansomVictimScript(CScriptDataBase* data, CGameScriptInterface& gsi)
-    : CQuestScriptBase(data, &gsi)
+NScript::CQ_RansomVictimScript::CQ_RansomVictimScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CQuestScriptBase(data, game)
 {
 }

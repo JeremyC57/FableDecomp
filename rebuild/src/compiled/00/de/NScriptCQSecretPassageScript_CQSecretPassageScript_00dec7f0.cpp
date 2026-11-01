@@ -1,5 +1,7 @@
-// CQ_SecretPassageScript::CQ_SecretPassageScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012DDC30, the two empty string-keyed maps (GlobalMymap, FlagMap), the eleven minion handles and the Mother handle
-// Leaf: ??0CQ_SecretPassageScript
+// NScript::CQ_SecretPassageScript::CQ_SecretPassageScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, vtable 0x012DDC30, the two empty string-keyed maps (GlobalMymap, FlagMap), the eleven minion handles and the Mother handle
+// Leaf: ??0CQ_SecretPassageScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair (chunk c678); respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DEC7F0, 175 bytes, `ret 8`. The catalog label "CHeroMorphDef::CHeroMorphDef" is
 //   propagated: the only caller is the factory 0x00DF1080 (`push 12Ch`, operator new 0x00BFEA1A, then this ctor), which
 //   0x00CD74E8 registers under "S_QSP" / "Q_SecretPassage" (string 0x012DDC44).
@@ -19,16 +21,18 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 class CGameScriptInterface;
+class CGameScriptInterfaceBase;
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptBase.h"
 
+class CScriptDataBase;
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
-    void*                 Data;                    // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                    // +0x40 (second argument)
+    CScriptDataBase*                 Data;                    // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 
 #include "engine/CCountedPointer.h"
@@ -82,12 +86,12 @@ public:   // vtable 0x012DDC30
     CScriptGameResourceObjectScriptedThingBase minions[11];   // +0x6c
     CScriptGameResourceObjectScriptedThingBase seh_Mother;   // +0x11c
     virtual void v00();
-    CQ_SecretPassageScript(void* data, CGameScriptInterface* game);
+    CQ_SecretPassageScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CQ_SecretPassageScript;
 
-NScript::CQ_SecretPassageScript::CQ_SecretPassageScript(void* data, CGameScriptInterface* game)
+NScript::CQ_SecretPassageScript::CQ_SecretPassageScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

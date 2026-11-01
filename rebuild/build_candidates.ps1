@@ -172965,9 +172965,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf91c0'
-        Module = '_global'
-        Source = '00/cf/global_CreateCLadyGreyWifeManagerScript00cf91c0_00cf91c0.cpp'
-        TestSource = '00/cf/global_CreateCLadyGreyWifeManagerScript00cf91c0_00cf91c0_test.cpp'
+        Module = 'NScript::CLadyGreyWifeManagerScript'
+        Source = '00/cf/NScriptCLadyGreyWifeManagerScript_Alloc_00cf91c0.cpp'
+        TestSource = '00/cf/NScriptCLadyGreyWifeManagerScript_Alloc_00cf91c0_test.cpp'
         PassPattern = '00cf91c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -172986,9 +172986,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00df1080'
-        Module = '_global'
-        Source = '00/df/global_CreateCHeroMorphDef00df1080_00df1080.cpp'
-        TestSource = '00/df/global_CreateCHeroMorphDef00df1080_00df1080_test.cpp'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/df/NScriptCQSecretPassageScript_Alloc_00df1080.cpp'
+        TestSource = '00/df/NScriptCQSecretPassageScript_Alloc_00df1080_test.cpp'
         PassPattern = '00df1080_TEST PASS'
     }
     [pscustomobject]@{
@@ -241209,9 +241209,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e7ef70'
-        Module = 'CFishCompOrganiser'
-        Source = '00/e7/CFishCompOrganiser_CFishCompOrganiser_00e7ef70.cpp'
-        TestSource = '00/e7/CFishCompOrganiser_CFishCompOrganiser_00e7ef70_test.cpp'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
+        Source = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_CFishCompOrganiser_00e7ef70.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_CFishCompOrganiser_00e7ef70_test.cpp'
         PassPattern = '00e7ef70_TEST PASS'
     }
     [pscustomobject]@{
@@ -241391,9 +241391,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf88c0'
-        Module = 'CLadyGreyWifeManagerScript'
-        Source = '00/cf/CLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf88c0.cpp'
-        TestSource = '00/cf/CLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf88c0_test.cpp'
+        Module = 'NScript::CLadyGreyWifeManagerScript'
+        Source = '00/cf/NScriptCLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf88c0.cpp'
+        TestSource = '00/cf/NScriptCLadyGreyWifeManagerScript_CLadyGreyWifeManagerScript_00cf88c0_test.cpp'
         PassPattern = '00cf88c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -248109,9 +248109,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1db00'
-        Module = 'CQR_EscortTraderScript'
-        Source = '00/e1/CQREscortTraderScript_CQREscortTraderScript_00e1db00.cpp'
-        TestSource = '00/e1/CQREscortTraderScript_CQREscortTraderScript_00e1db00_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e1/NScriptCQREscortTraderScript_CQREscortTraderScript_00e1db00.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScript_CQREscortTraderScript_00e1db00_test.cpp'
         PassPattern = '00e1db00_TEST PASS'
     }
     [pscustomobject]@{

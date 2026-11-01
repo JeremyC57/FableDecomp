@@ -1,5 +1,8 @@
-// CFishCompOrganiser::CFishCompOrganiser(CScriptOwner* parent, void* masterData, const CScriptThing& me) -- the fishing-competition organiser's entity script: entity-script base over the quest's interface and Me, the hero and organiser handles, the empty cut-scene argument map, the competition-entry string and the two empty def-name vectors, the master data last
-// Leaf: ??0CFishCompOrganiser
+// NScript::CV_FishingCompetitionScript::CFishCompOrganiser::CFishCompOrganiser(CV_FishingCompetitionScript& parent, CScriptDataBase* masterData, const CScriptThing& me) -- the fishing-competition organiser's entity script: entity-script base over the quest's interface and Me, the hero and organiser handles, the empty cut-scene argument map, the competition-entry string and the two empty def-name vectors, the master data last
+// Leaf: ??0CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Naming wave 18: landed unnested as CFishCompOrganiser(CScriptOwner*, void*, const CScriptThing&); respelled on the PDB constructor of the
+//   nested class (Ego_r / FableWin ??0CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z:
+//   the owning CV_FishingCompetitionScript by reference, the master data a CScriptDataBase*) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7EF70, 169 bytes, `ret 0Ch`. The catalog label "CGameScriptThing" is propagated:
 //   the only caller is the factory 0x00E7EEF0 (`push 78h`, operator new, this ctor), registered at 0x00E7E516 under
 //   "FishCompOrganiser"; vtable 0x012EA620 over the entity-script base vtable 0x012C3224.
@@ -77,21 +80,27 @@ template <class T> struct CRetailVector : _Vector_base<T> {   // STLport vector<
     CRetailVector() : _Vector_base<T>(allocator<T>()) { }
 };
 
-struct CScriptOwner {                         // the quest script that owns this entity script
-    unsigned char _pad00[0x40];
-    void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*
-};
+class CGameScriptInterfaceBase;
+class CScriptDataBase;
 class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes
     virtual void v00();
-    void*        Game;                        // +0x04 (a plain initialiser: stored before the vtable)
+    CGameScriptInterfaceBase* Game;           // +0x04 (a plain initialiser: stored before the vtable)
     CScriptThing Me;                          // +0x08
-    CEntityScriptBase(const CScriptThing& thing, void* game) : Game(game), Me(thing) { }
+    CEntityScriptBase(const CScriptThing& thing, CGameScriptInterfaceBase* game) : Game(game), Me(thing) { }
 };
 
-class CFishCompOrganiser : public CEntityScriptBase {   // vtable 0x012EA620
+namespace NScript {
+class CQ_SunnyvaleMasterData;
+class CV_FishingCompetitionScript {           // the owning quest script (CLevelScriptBase<CQ_SunnyvaleMasterData>: Game at +0x40)
 public:
-    CScriptOwner* ParentClass;                // +0x14 CV_FishingCompetitionScript*
-    void*         PMasterData;                // +0x18 CQ_SunnyvaleMasterData*
+    unsigned char _pad00[0x40];
+    CGameScriptInterfaceBase* Game;           // +0x40
+    class CFishCompOrganiser;
+};
+class CV_FishingCompetitionScript::CFishCompOrganiser : public CEntityScriptBase {   // vtable 0x012EA620
+public:
+    CV_FishingCompetitionScript* ParentClass; // +0x14
+    CQ_SunnyvaleMasterData* PMasterData;      // +0x18
     CScriptGameResourceObjectScriptedThingBase seh_Hero;        // +0x1c
     CScriptGameResourceObjectScriptedThingBase seh_Organiser;   // +0x2c
     CRetailMap<0x18> csargs;                  // +0x3c map<CCharString, CCharString>
@@ -104,11 +113,12 @@ public:
     CRetailVector<CCharString> RodDef;        // +0x60
     CRetailVector<CCharString> FishDef;       // +0x6c
     virtual void v00();
-    CFishCompOrganiser(CScriptOwner* parent, void* masterData, const CScriptThing& me);
+    CFishCompOrganiser(CV_FishingCompetitionScript& parent, CScriptDataBase* masterData, const CScriptThing& me);
 };
+} // namespace NScript
 
-CFishCompOrganiser::CFishCompOrganiser(CScriptOwner* parent, void* masterData, const CScriptThing& me)
-    : CEntityScriptBase(me, parent->m_pInterface), ParentClass(parent), seh_Hero(), seh_Organiser()
+NScript::CV_FishingCompetitionScript::CFishCompOrganiser::CFishCompOrganiser(CV_FishingCompetitionScript& parent, CScriptDataBase* masterData, const CScriptThing& me)
+    : CEntityScriptBase(me, parent.Game), ParentClass(&parent), seh_Hero(), seh_Organiser()
 {
-    PMasterData = masterData;
+    PMasterData = (CQ_SunnyvaleMasterData*)masterData;
 }

@@ -1,5 +1,9 @@
-// CQR_EscortTraderScript::CQR_EscortTraderScript(void* owner, CGameScriptInterface* game) -- quest-script constructor: script base, owner/interface pair, vtable 0x012E12E0, empty bonus-object string, four registered timers, fifteen empty speech strings, two arrays of three empty route vectors and two empty region strings
-// Leaf: ??0CQR_EscortTraderScript
+// NScript::CQR_EscortTraderScript::CQR_EscortTraderScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, owner/interface pair, vtable 0x012E12E0, empty bonus-object string, four registered timers, fifteen empty speech strings, two arrays of three empty route vectors and two empty region strings
+// Leaf: ??0CQR_EscortTraderScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair (unnested; the members m_pGame / m_pOwner); respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E1DB00, length 291 bytes, `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CCharString::CCharString() @ 0x0099E4B0 (BonusObject, the two
 // counted array loops of 10 and 5, the two region strings), CGameScriptInterface::RegisterTimer (slot 87, +0x15c)
@@ -19,21 +23,22 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
 
+class CScriptDataBase;
 struct __declspec(novtable) CScriptObject : CScriptBase {
-    CGameScriptInterface* m_pGame;                   // +0x40
-    void* m_pOwner;                                  // +0x44
-    CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
+    CGameScriptInterfaceBase* m_pGame;                   // +0x40
+    CScriptDataBase* m_pOwner;                                  // +0x44
+    CScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), m_pGame(&game), m_pOwner(data) { }
 };
 
 template <class T>
@@ -60,7 +65,8 @@ struct CRetailVector : _Vector_base<T> {             // STLport vector<T>: three
     CRetailVector() : _Vector_base<T>(allocator<T>()) { }
 };
 
-struct CQR_EscortTraderScript : CScriptObject {      // vtable 0x012E12E0
+namespace NScript {
+class CQR_EscortTraderScript : public CScriptObject { public:      // vtable 0x012E12E0
     bool MissionSucceeded;                           // +0x48
     bool MissionFailed;                              // +0x49
     bool HiredByTrader;                              // +0x4a
@@ -102,10 +108,12 @@ struct CQR_EscortTraderScript : CScriptObject {      // vtable 0x012E12E0
     bool RegionChangeDetected;                       // +0x118
     long QuestStage;                                 // +0x11c (EscortTraderQuestStage)
     virtual void v00();
-    CQR_EscortTraderScript(void* owner, CGameScriptInterface* game);
+    CQR_EscortTraderScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
+}
+using NScript::CQR_EscortTraderScript;
 
-CQR_EscortTraderScript::CQR_EscortTraderScript(void* owner, CGameScriptInterface* game)
-    : CScriptObject(owner, game)
+NScript::CQR_EscortTraderScript::CQR_EscortTraderScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CScriptObject(data, game)
 {
 }

@@ -1,5 +1,7 @@
-// CLadyGreyWifeManagerScript::CLadyGreyWifeManagerScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012C6C10, five CScriptThing handles and the two region names
-// Leaf: ??0CLadyGreyWifeManagerScript
+// NScript::CLadyGreyWifeManagerScript::CLadyGreyWifeManagerScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, vtable 0x012C6C10, five CScriptThing handles and the two region names
+// Leaf: ??0CLadyGreyWifeManagerScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair (unnested); respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CF88C0, length 172 bytes (`ret 8`).
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBaseClass::CBaseClass @ 0x0099A2D0 (each CScriptThing), CCharString::CCharString() @ 0x0099E4B0.
 // Layout: Ego_r.pdb CLadyGreyWifeManagerScript (0xA8) with retail = PDB - 0x14 (the 0x40-byte retail script base): LadyGrey +0x48,
@@ -8,14 +10,16 @@
 // (CQ_HangingTreeEvilScript 0x00D68F00): the two argument stores before the vtable store are the inlined `__declspec(novtable)`
 // argument-carrying intermediate base; each CScriptThing is CBaseClass + vtable 0x01238C8C + an embedded zeroed CCountedPointer.
 class CGameScriptInterface;
+class CGameScriptInterfaceBase;
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptBase.h"
+class CScriptDataBase;
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
-    CGameScriptInterface* Game;                         // +0x40 (second argument)
-    void*                 Data;                         // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                         // +0x40 (second argument)
+    CScriptDataBase*                 Data;                         // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -24,7 +28,8 @@ template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedP
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
-struct CLadyGreyWifeManagerScript : CQuestScriptObject {
+namespace NScript {
+class CLadyGreyWifeManagerScript : public CQuestScriptObject { public:
     CScriptThing LadyGrey;                              // +0x48
     CScriptThing BowerstoneNorthVillage;                // +0x54
     CScriptThing MayorsBedroomVillage;                  // +0x60
@@ -35,9 +40,11 @@ struct CLadyGreyWifeManagerScript : CQuestScriptObject {
     CCharString InteriorRegion;                         // +0x8c
     CCharString ExteriorRegion;                         // +0x90
     virtual ~CLadyGreyWifeManagerScript();
-    CLadyGreyWifeManagerScript(void* data, CGameScriptInterface* game);
+    CLadyGreyWifeManagerScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CLadyGreyWifeManagerScript::CLadyGreyWifeManagerScript(void* data, CGameScriptInterface* game)
+}
+using NScript::CLadyGreyWifeManagerScript;
+NScript::CLadyGreyWifeManagerScript::CLadyGreyWifeManagerScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

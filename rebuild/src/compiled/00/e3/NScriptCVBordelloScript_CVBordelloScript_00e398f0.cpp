@@ -1,5 +1,5 @@
-// Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test checks an unrelated local struct; header comment describes another function; names CBaseObject ctor 0x99a380 as CBaseIntelligentPointer and vtable 0x127094c (CScriptGameResourceObjectScriptedThingBase) as CIntelligentThing)
-// NScript::CV_BordelloScript::CV_BordelloScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base and
+// NScript::Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: test checks an unrelated local struct; header comment describes another function; names CBaseObject ctor 0x99a380 as CBaseIntelligentPointer and vtable 0x127094c (CScriptGameResourceObjectScriptedThingBase) as CIntelligentThing)
+// NScript::CV_BordelloScript::CV_BordelloScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base and
 //   interface/data pair, vtable 0x012E38B0, the BordelloVillage handle, the four seh_ entity handles and the empty
 //   cut-scene argument map
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E398F0, `ret 8`. Identity: its factory 0x00E46A00 (`push 0C0h`) is registered at
@@ -8,7 +8,9 @@
 // Callees: CScriptBase::CScriptBase 0x00CB8110, CBaseClass::CBaseClass 0x0099A2D0 (CScriptThing base; vtable 0x01238C8C =
 //   CScriptThing), CBaseObject::CBaseObject 0x0099A380 (CScriptGameResourceObjectScriptedThingBase base; vtable 0x0127094C
 //   = CScriptGameResourceObjectScriptedThingBase), CRT malloc 0x00BFEA0E (the map's 0x18-byte header).
-// Leaf: ??0CV_BordelloScript
+// Leaf: ??0CV_BordelloScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: landed with the (void*, CGameScriptInterface*) parameter pair; respelled on the PDB constructor
+//   (CScriptDataBase*, CGameScriptInterfaceBase&) -- name-only (one pushed pointer each, Game = Ego_r CLevelScriptBase<T>::Game).
 // Layout: PDB (Ego_r) names; retail = PDB - 0x14 (script base): flags/counters +0x48..+0x5b, BordelloVillage +0x5c,
 //   WearingWhoreWig..BeerSetToDPad +0x68..+0x73, seh_Boss +0x74, seh_Guard +0x84, seh_Madam +0x94, seh_Whore +0xa4,
 //   csargs (12-byte STLport map) +0xb4; size 0xc0. Model shared with the landed CV_ChickenKickingScript 0x00E62830.
@@ -26,10 +28,11 @@ extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
+class CScriptDataBase;
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base (landed model)
-    CGameScriptInterface* Game;                         // +0x40 (second argument)
-    void*                 Data;                         // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                         // +0x40 (second argument)
+    CScriptDataBase*                 Data;                         // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
@@ -77,9 +80,9 @@ class CV_BordelloScript : public CQuestScriptObject { public:
     CScriptGameResourceObjectScriptedThingBase seh_Whore;  // +0xa4
     CRetailMap<0x18> csargs;                            // +0xb4 map<CCharString,CCharString>
     virtual ~CV_BordelloScript();
-    CV_BordelloScript(void* data, CGameScriptInterface* game);
+    CV_BordelloScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CV_BordelloScript::CV_BordelloScript(void* data, CGameScriptInterface* game)
+CV_BordelloScript::CV_BordelloScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }
