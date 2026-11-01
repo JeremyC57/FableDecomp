@@ -1,5 +1,6 @@
 // CEngineInternalPrimitive2DSprite::Update(const CEnginePrimitive& primitive, unsigned long flags) -- copy a 2D sprite descriptor (clip box, layer, bank/frame, angles, blend mode, colour, interpolation set, texture, filter bit, UV offsets), derive WrapTexture and the render layer mask from the flags, start loading the bank graphic and grow the clip box by the frame / texture size when the box is a position
 // Leaf: Update
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BAD8A0, length 671 bytes (`ret 8`, virtual `?Update@CEngineInternalPrimitive2DSprite@@UAEXABVCEnginePrimitive@@K@Z`).
 // Callees: CGraphicInfoFrame::BeginLoading(unsigned long, unsigned long) @ 0x009FE620, CTexture::GetDimensions(unsigned long)
 // @ 0x009F9DB0 (C2DExtentsI by hidden pointer). Globals: the engine @ 0x01436E98 (graphic bank at +0x954, its 0x2c-byte
@@ -18,11 +19,11 @@
 // and an inline GetTexture() accessor (a plain member read loads the second call's `this` after its pushes).
 #include "engine/CEngineInternalPrimitiveBase.h"
 
-extern const float EPSILON;           // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (0.0001f)
 class C2DVector { public:
     float X, Y;
     float GetLengthSquared() const { return X * X + Y * Y; }
-    bool IsNonZero() const { return GetLengthSquared() > EPSILON * EPSILON; }
+    bool IsNonZero() const { return GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO; }
 };
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 class CRGBColour { public: unsigned char B, G, R, A; };

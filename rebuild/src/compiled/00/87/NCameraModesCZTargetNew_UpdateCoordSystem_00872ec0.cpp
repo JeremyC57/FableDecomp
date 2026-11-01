@@ -1,5 +1,6 @@
 // NCameraModes::CZTargetNew::UpdateCoordSystem() -- when the observed thing targets a live thing, point the X axis from the target to the observed thing (flattened, normalised) with the Y axis perpendicular, restart the transition on a target change, and remember the targeted thing
 // Leaf: UpdateCoordSystem
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872EC0, 365 bytes (+ int3 padding), plain `ret`; virtual slot 24 of
 //   NCameraModes::CZTargetNew (called through +0x60 by the landed OnInit 0x00872A20).
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0 (twice), the const CVectorMap::LowerBound 0x004365B0
@@ -23,7 +24,7 @@ class C3DVector { public:
     float GetLengthSquaredXY() const { return X * X + Y * Y; }
     C3DVector GetPerpendicularXY() const { return C3DVector(Y, -X, 0.0f); }
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class CThing;
 class CTCBase { public:
@@ -136,7 +137,7 @@ void NCameraModes::CZTargetNew::UpdateCoordSystem()
             const C3DVector& targetPos = target->GetPos();
             const C3DVector& pos = GetObservedThing()->GetPos();
             C3DVector axis(pos.X - targetPos.X, pos.Y - targetPos.Y, 0.0f);
-            if (axis.GetLengthSquaredXY() > EPSILON * EPSILON) {
+            if (axis.GetLengthSquaredXY() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
                 axis.AccurateNormalise();
                 XAxis = axis;
                 YAxis = XAxis.GetPerpendicularXY();

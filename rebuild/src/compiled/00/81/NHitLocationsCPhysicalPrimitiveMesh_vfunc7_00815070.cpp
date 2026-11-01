@@ -1,6 +1,7 @@
 // NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithFiniteLine,
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // retail 0x00815070. Isolated main-review fidelity source; author009 remains frozen. PDB identity: egor 19838 / debug 0x0080DF40.
-extern const float EPSILON;                    // retail 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;                    // retail 0x0129BA3C
 extern const float g_NegativeOne_0122dee0;                  // retail 0x0122DEE0
 class C3DVector { public:
     float X, Y, Z;
@@ -162,8 +163,8 @@ bool NHitLocations::CPhysicalPrimitiveMesh::GetFirstIntersectionWithFiniteLine(
 {
     C3DVector line = to - from;
     if (!(line.SquaredLength() >
-          EPSILON *
-          EPSILON))
+          DELTA_NOTIONAL_ZERO *
+          DELTA_NOTIONAL_ZERO))
         return false;
 
     CTCPhysicsBase* physics = thing.Physics;

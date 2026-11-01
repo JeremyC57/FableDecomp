@@ -1,6 +1,7 @@
 // CTCLook::ImplementBodySettings() -- turn the body towards BodyAngleXY: the step per frame is the def's max turn speed (the combat one while the parent creature is in combat) in degrees, clamped difference added to the current facing and wrapped to [0, 1); skipped for a creature thing while the main player's live, flagged creature is moving, and for an incapacitated thing
 // Grade: RELOCATION_MATCH (retry wave 2 sec2b: the creature alive test through the inline IS_THING_ALIVE<CThingCreatureBase*>(const T&) template (eax load + mov ecx), CThingPlacement's two words before Position (+0x0C), and the squared length accumulated stepwise Z*Z, += Y*Y, += X*X; was 381v383)
 // Leaf: ImplementBodySettings
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752300, 383 bytes, plain `ret`. Speed TU (esp frame, no pragma).
 //   Ego_r.pdb: `?ImplementBodySettings@CTCLook@@AAEXXZ`.
 // Callees: the creature's combat test @ 0x00661E80 (label "NUISystem::CText::GetAlignment" is propagated: a two-bit test
@@ -19,7 +20,7 @@
 #include <math.h>
 #pragma intrinsic(fmod)
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 template <class T> inline const T& Clamp(const T& value, const T& low, const T& high)
 {
@@ -120,7 +121,7 @@ void CTCLook::ImplementBodySettings()
         CThing* character = player->PCharacter.GetPItem();
         if (character && !(character->Flags91 & 1) && (character->Flags178 & 1)) {
             CThingPlacement* placement = ParentThing->PPlacement;
-            if ((placement->PreviousPosition - placement->Position).GetSquaredLength() > EPSILON)
+            if ((placement->PreviousPosition - placement->Position).GetSquaredLength() > DELTA_NOTIONAL_ZERO)
                 return;
         }
     }

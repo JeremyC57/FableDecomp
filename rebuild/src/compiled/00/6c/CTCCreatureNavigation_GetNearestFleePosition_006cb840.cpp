@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result) -- ask the navigator for a flee position from the centre; true when it is on the world map and not at the centre
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the squared distance is accumulated in statements (`r = dx*dx; r += dz*dz; r += dy*dy;`), which fixes the x87 square order to dx, dz, dy as retail
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB840, length 153 bytes (+ int3 padding).
 // Callees: CNavigatorBase slot 7 (+0x1C, flee = true), CTCBase::GetWorldMap @ 0x00686D20, CWorldMap::IsPosInMap @ 0x004FC600.
@@ -32,7 +33,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     float dy = a.Y - b.Y;
     return dx * dx + dy * dy;
 }
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
@@ -68,7 +69,7 @@ bool CTCCreatureNavigation::GetNearestFleePosition(const C3DVector& centre, floa
 {
     *result = PNavigator->GetRandomPosition(centre, radius, true);
     if (PeekWorldMap().IsPosInMap(*result)) {
-        if (DistanceSquared(*result, centre) > EPSILON * EPSILON)
+        if (DistanceSquared(*result, centre) > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             return true;
     }
     return false;

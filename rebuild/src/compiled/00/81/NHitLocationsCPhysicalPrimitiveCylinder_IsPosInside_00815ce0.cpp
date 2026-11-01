@@ -1,8 +1,9 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::IsPosInside(const CThing& thing, const C3DVector& pos) -- true when the position lies within the thing's cylinder: its projection on the base-to-top axis is inside the length and its distance from the axis is below the radius (each widened by the epsilon)
 // Leaf: ?IsPosInside@CPhysicalPrimitiveCylinder@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #pragma intrinsic(sqrt)
 extern "C" double __cdecl sqrt(double);
-extern const float EPSILON; // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -40,7 +41,7 @@ struct CPhysicalPrimitiveCylinder {
     float GetCylinderRadius(const CThing& thing) const
     {
         float radius = Radius;
-        if (radius < EPSILON) {
+        if (radius < DELTA_NOTIONAL_ZERO) {
             radius = thing.Def->Radius;
             if (thing.Flags & 8)
                 radius = static_cast<const CThingCreatureBase&>(thing).GetCombatRadius();
@@ -57,13 +58,13 @@ bool CPhysicalPrimitiveCylinder::IsPosInside(const CThing& thing, const C3DVecto
     float radius = GetCylinderRadius(thing);
     C3DVector axis = top - base;
     float length = axis.Length();
-    if (length > EPSILON)
+    if (length > DELTA_NOTIONAL_ZERO)
         axis *= 1.0f / length;
     C3DVector offset = pos - base;
     float along = offset * axis;
-    if (-EPSILON < along && along < EPSILON + length) {
+    if (-DELTA_NOTIONAL_ZERO < along && along < DELTA_NOTIONAL_ZERO + length) {
         offset -= axis * along;
-        float limit = EPSILON + radius;
+        float limit = DELTA_NOTIONAL_ZERO + radius;
         if (offset.MagSquared() < limit * limit)
             return true;
     }

@@ -11,11 +11,12 @@
 // (`fld 1.0 ; fdiv length`) and multiplies X then Y (`fld st0 ; fmulp st2 ; fmulp st2`); a named `scale` local
 // multiplies Y first whatever the statement order. Returned through the memberwise user copy constructor.
 // Leaf: ?GetControlDirection@CInputTypeXboxPadLeftStickEvent
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 class C2DVector
 {
@@ -52,7 +53,7 @@ C2DVector CInputTypeXboxPadLeftStickEvent::GetControlDirection(const CInputEvent
     C2DVector direction = event.GetJoystickPosition();
     direction.Y *= -1.0f;
     float length = direction.GetLength();
-    if (length > EPSILON && length > 1.0f)
+    if (length > DELTA_NOTIONAL_ZERO && length > 1.0f)
     {
         direction.X /= length;
         direction.Y /= length;

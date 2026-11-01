@@ -1,9 +1,10 @@
 // CGameScriptInterface::IsHeroRenownLevelFull() const -- whether the hero has (all but) completed the current renown level; false when there is no live hero
 // Leaf: IsHeroRenownLevelFull@CGameScriptInterface
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe @ 0x008991A0, 125 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::PeekPControlledCreature 0x00487DD0,
 // then CThing::PeekTC<CTCHeroStats> (Ego_r.pdb bool/out-pointer form; const Components lower_bound 0x004365B0).
 // Shape: PeekTC's result is not tested -- without the TC bit retail reads through the uninitialised out pointer.
-// Shape: the threshold is `1.0f - EPSILON` with EPSILON an out-of-TU const (.rdata 0x0129BA3C, 0.0001f), so it is computed at run time.
+// Shape: the threshold is `1.0f - DELTA_NOTIONAL_ZERO` with DELTA_NOTIONAL_ZERO an out-of-TU const (.rdata 0x0129BA3C, 0.0001f), so it is computed at run time.
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
 // Components +0x44, Dead +0x91 bit 0).
 // CTCHeroStats retail = Ego_r.pdb minus 8 through +0x118 (12-byte STLport map and vector), minus 0x18 after the four vectors
@@ -123,7 +124,7 @@ public:
     bool  HasCurrentMarriage() const;                              // 0x0057AC4B
     float GetPercentageThroughRenownLevel() const;                 // 0x0057AAD9
 };
-extern const float EPSILON;                              // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;                              // 0x0129BA3C (0.0001f)
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -136,7 +137,7 @@ bool CGameScriptInterface::IsHeroRenownLevelFull() const
     {
         const CTCHeroStats* stats;
         hero->PeekTC(&stats);
-        return stats->GetPercentageThroughRenownLevel() > 1.0f - EPSILON;
+        return stats->GetPercentageThroughRenownLevel() > 1.0f - DELTA_NOTIONAL_ZERO;
     }
     return false;
 }

@@ -1,5 +1,6 @@
 // CWorldMap::FindLastUnblockedGroundPositionAndReportCollision(const C3DVector& from, const C3DVector& to, C3DVector& result) -- steps along the ground from `from` towards `to` one map cell at a time; where the ground rises above the segment's lower end it looks for a collision point inside the cell and, if found, reports it in `result`; succeeds only when the result lies inside the world area on a map
 // Leaf: FindLastUnblockedGroundPositionAndReportCollision
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063D960, 461 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: CWorldMap::CreateLineSegment 0x0063B3F0 (bool; start, end, next cell point, cell exit), CWorldMap::
 //   FindMaxGroundZ 0x0063B750 (float), CWorldMap::FindGroundCollisionPointWithinCell 0x0063D0A0 (bool), __ftol2
@@ -20,7 +21,7 @@ inline C3DVector operator-(const C3DVector& a, const C3DVector& b)
 {
     return C3DVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
 }
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class C2DCoordI
 { public:
@@ -90,7 +91,7 @@ bool CWorldMap::FindLastUnblockedGroundPositionAndReportCollision(const C3DVecto
     bool found = false;
     C3DVector direction;
     direction = to - from;
-    if (direction.GetLength() > EPSILON) {
+    if (direction.GetLength() > DELTA_NOTIONAL_ZERO) {
         bool more;
         do {
             C3DVector next;

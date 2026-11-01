@@ -1,4 +1,5 @@
 // CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) -- ask the active navigator whether the route is possible, telling it whether the start is the creature's own position
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the squared distance is accumulated in statements (`r = dz*dz; r += dx*dx; r += dy*dy;`), which fixes the x87 square order to dz, dx, dy as retail; a single-expression sum reorders it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB620, length 114 bytes (+ int3 padding).
 // Callees: CThing::GetPos @ 0x004C73D0, CNavigatorBase slot 9 (+0x24).
@@ -33,7 +34,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
     float dy = a.Y - b.Y;
     return dx * dx + dy * dy;
 }
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
@@ -62,7 +63,7 @@ class CTCCreatureNavigation { public:
 bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const
 {
     bool fromCurrentPos = true;
-    if (DistanceSquared(from, ParentThing->GetPos()) > EPSILON * EPSILON)
+    if (DistanceSquared(from, ParentThing->GetPos()) > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         fromCurrentPos = false;
     return PNavigator->IsAbleToNavigate(from, to, proximity, fromCurrentPos);
 }

@@ -1,5 +1,6 @@
 // CGetBestTargetInDirection::operator()(CTargetPoint* point) -- search functor: take the XY direction from the base position to the target point (normalised when not degenerate) and keep the point when it lies on the requested side of the test line and points more along it than the best so far
 // Leaf: ??RCGetBestTargetInDirection
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00805A90, length 263 bytes, `ret 4`.
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440. Globals: the length tolerance @ 0x0129BA3C (1e-4f, an extern float: squared
 //   from memory), float pool 0x0122DEDC = 0.0f.
@@ -14,7 +15,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 struct CTargetPoint {
     unsigned char _pad00[0xc];                          // PThing (CIntelligentPointer<CThing>), Index
     C3DVector TargetingPosition;                        // +0x0c
@@ -33,7 +34,7 @@ void CGetBestTargetInDirection::operator()(CTargetPoint* point)
     C3DVector delta(point->TargetingPosition.X - BasePos->X, point->TargetingPosition.Y - BasePos->Y, 0.0f);
     float lengthSquared = delta.X * delta.X;
     lengthSquared += delta.Y * delta.Y;
-    if (lengthSquared > EPSILON * EPSILON)
+    if (lengthSquared > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         delta.AccurateNormalise();
     float cosTheta = delta.Y * TestLine.Y;
     cosTheta += delta.Z * TestLine.Z;

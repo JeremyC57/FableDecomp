@@ -1,9 +1,10 @@
 // CAnimateThing::UpdateCombinationAnimList(list<CAnimSet>& anims, const CAnimSetUpdateInfo& info) -- two passes over the combination anim sets: first drop every finished set whose blend has faded out (or that has no fade), fading the others out by their ChangeAlphaBy; then update each set from the frame info and fade the unfinished fading ones in
 // Leaf: UpdateCombinationAnimList
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070D390, length 370 bytes (+ int3 padding), ret 8; `this` is unused.
 // Callees: CWorld::GetFrame @ 0x0049D870 (__fastcall; catalog "GFGetPreMainMemoryUsed" is propagated), CAnimSet::Update
 //          @ 0x0070D030 (landed), free @ 0x00BFEA14 (the inline CAnimSet destructor frees InternalAlphas then Anims, then
-//          the list node). EPSILON 0.0001f @ 0x0129BA3C, 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
+//          the list node). DELTA_NOTIONAL_ZERO 0.0001f @ 0x0129BA3C, 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
 // Layout: the landed CAnimSet model (0x0070C280 / 0x0070D030: Anims +4, InternalAlphas +0x10, FrameInternalAlphasUpdated
 //          +0x28, ChangeAlphaBy +0x38, flag bits +0x51: Finished = 2) in STLport list nodes {next, prev, value}; the list
 //          object is the header-node pointer.
@@ -16,7 +17,7 @@
 //          `if (a < 0) a = 0; else if (a > 1) a = 1;`.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
-extern const float EPSILON;                            // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;                            // 0x0129BA3C
 
 struct CAnimSetUpdateInfo {
     float TimePassed;
@@ -100,9 +101,9 @@ public:
 
 __forceinline bool FadeOutCombinationAnim(CAnimSet& set)
 {
-    if (set.ChangeAlphaBy > EPSILON) {
+    if (set.ChangeAlphaBy > DELTA_NOTIONAL_ZERO) {
         CTransitionBlendAlpha& alpha = set.InternalAlphas[0];
-        if (alpha.GetValue() > EPSILON) {
+        if (alpha.GetValue() > DELTA_NOTIONAL_ZERO) {
             float a = GFClamp01(alpha.GetValue() - set.ChangeAlphaBy);
             alpha.Last = alpha.Current;
             set.InternalAlphas[0].Current = a;
@@ -114,7 +115,7 @@ __forceinline bool FadeOutCombinationAnim(CAnimSet& set)
 }
 __forceinline void FadeInCombinationAnim(CAnimSet& set)
 {
-    if (!set.Finished && set.ChangeAlphaBy > EPSILON) {
+    if (!set.Finished && set.ChangeAlphaBy > DELTA_NOTIONAL_ZERO) {
         CTransitionBlendAlpha& alpha = set.InternalAlphas[0];
         float value = alpha.GetValue();
         float a = GFClamp01(value + set.ChangeAlphaBy);

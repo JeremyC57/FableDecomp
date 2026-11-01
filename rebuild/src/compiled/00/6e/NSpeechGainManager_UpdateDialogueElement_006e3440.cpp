@@ -1,5 +1,6 @@
 // NSpeechGainManager::UpdateDialogueElement(CActiveDialogueInfo& info, long elapsedFrames, const vector<CDialogueLayerDef>& layerDefs) -- move a speaking line's output gain toward its target gain by at most the layer's attack/release delta per elapsed frame and push it to the speaker's sound player; false once the speaker is gone, dead, soundless or the line has stopped playing
 // Leaf: ?UpdateDialogueElement@NSpeechGainManager@@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E3440, 316 bytes (+ int3 padding to 320), `__fastcall` (ecx = info, edx =
 //   elapsedFrames), `ret 4`, bool in al.
 // Identity: Ego_r.pdb / FableWin.pdb name set `?UpdateDialogueElement@NSpeechGainManager@@YI_NAAVCActiveDialogueInfo@1@J
@@ -82,7 +83,7 @@ inline float __fastcall GFFloatAbs(float f)
     return f;
 }
 
-extern const float EPSILON;  // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (1e-4f)
 
 namespace std {
 template <class T> class vector {
@@ -132,7 +133,7 @@ bool __fastcall UpdateDialogueElement(CActiveDialogueInfo& info, long elapsedFra
             if (player->IsAttachedSoundPlaying(info.SoundID)) {
                 float targetGain = GetTargetGain(info, layerDefs);
                 float diff = targetGain - info.OutputGain;
-                if (GFFloatAbs(diff) > EPSILON) {
+                if (GFFloatAbs(diff) > DELTA_NOTIONAL_ZERO) {
                     float step = elapsedFrames * (diff > 0.0f ? g_ResponseTimes[info.Layer].AttackMaxDeltaPerFrame
                                                               : g_ResponseTimes[info.Layer].ReleaseMaxDeltaPerFrame);
                     info.OutputGain = GFFloatAbs(diff) > GFFloatAbs(step) ? step + info.OutputGain : targetGain;

@@ -1,5 +1,6 @@
 // CTCStealth::UpdateHearability() -- unless sneaking (or without a stealth def), a moving owner can be heard from the def's base distance scaled by its pace (running / walking / creeping multiplier) and the hearability modifiers; a SIMPLE_NOISE of that radius is made at the owner and handed the owner
 // Leaf: UpdateHearability
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007479B0, 331 bytes (plain `ret`).
 // Callees: CThing::GetPos 0x004C73D0 (x3); the owner's virtual speed getters slot 80 (+0x140, running) and slot 79
 //          (+0x13c, walking), each taking the position; CTCStealth::GetHearabilityModifier 0x007475C0 (name descriptive; manifest
@@ -17,7 +18,7 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -97,14 +98,14 @@ void CTCStealth::UpdateHearability()
     float speedSquared = movement.Z * movement.Z;
     speedSquared += movement.Y * movement.Y;
     speedSquared += movement.X * movement.X;
-    if (speedSquared > EPSILON) {
+    if (speedSquared > DELTA_NOTIONAL_ZERO) {
         DistanceCanBeHeardFrom = PDef->BaseHearingDistance;
         float multiplier;
-        float runSpeed = owner->GetRunSpeed(owner->GetPos()) + EPSILON;
+        float runSpeed = owner->GetRunSpeed(owner->GetPos()) + DELTA_NOTIONAL_ZERO;
         if (speedSquared > runSpeed * runSpeed)
             multiplier = PDef->RunningMultiplier;
         else {
-            float walkSpeed = owner->GetWalkSpeed(owner->GetPos()) + EPSILON;
+            float walkSpeed = owner->GetWalkSpeed(owner->GetPos()) + DELTA_NOTIONAL_ZERO;
             if (speedSquared > walkSpeed * walkSpeed)
                 multiplier = PDef->WalkingMultiplier;
             else

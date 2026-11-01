@@ -1,5 +1,6 @@
 // CPersistTraits<CActionInputControl>::TransferOut(CPersistContext* context, CCharString* out, CActionInputControl* value) -- text persist write of a key binding as "CActionInputControl(action,controller,key[,(x,y)])": the key field chosen by the controller type, the direction only for the two analogue actions
 // Leaf: ?TransferOut@?$CPersistTraits@VCActionInputControl@@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040FA20, 287 bytes, `ret 0Ch` (traits `this` unused).
 // Identity: called by the landed CPersistContext_TransferableVector<CActionInputControl>::TransferOut 0x0040F9D0 (its
 //   model names this address); Ego_r.pdb CActionInputControl (0x1C bytes) = { EGameAction GameAction +0, EControllerType
@@ -20,7 +21,7 @@ public:
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class C2DVector {
 public:
@@ -77,7 +78,7 @@ void CPersistTraits<CActionInputControl>::TransferOut(CPersistContext* context, 
         longTraits.TransferOut(context, out, &value->MouseButton);
         break;
     }
-    if (value->ControlDirection.GetLengthSquared() > EPSILON * EPSILON &&
+    if (value->ControlDirection.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO &&
         (value->GameAction == 0x3C || value->GameAction == 0x72)) {
         *out += ",";
         CPersistTraits<C2DVector>().TransferOut(context, out, &value->ControlDirection);

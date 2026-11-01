@@ -1,4 +1,5 @@
 // CGameTimeManager::FastForwardTimeTo(float time, float seconds) -- clamps the target time of day to [0,1]; with a positive duration starts a fast-forward (target, flag, seconds), otherwise jumps straight there (a new day when the time wraps backwards)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BB720, length 99 bytes (padded to 112).
 // Globals: 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8, 0.0001f @ 0x0129BA3C.
 // Shape: the clamp is an `if / else if` on the parameter kept on the FPU (`fstp st(0) ; fld const`); the fast-forward
@@ -25,7 +26,7 @@ class CGameTimeManager { public:
 };
 extern const float g_zero_0122dedc;                // 0x0122DEDC (0.0f)
 extern const float g_one_0122ded8;                 // 0x0122DED8 (1.0f)
-extern const float EPSILON;                // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;                // 0x0129BA3C (0.0001f)
 
 void CGameTimeManager::FastForwardTimeTo(float time, float seconds)
 {
@@ -33,7 +34,7 @@ void CGameTimeManager::FastForwardTimeTo(float time, float seconds)
         time = g_zero_0122dedc;
     else if (time > g_one_0122ded8)
         time = g_one_0122ded8;
-    if (seconds > EPSILON) {
+    if (seconds > DELTA_NOTIONAL_ZERO) {
         TimeFastForwardingTo = time;
         FastForwardingToTime = true;
         SecondsLeftToFastForwardTime = seconds;

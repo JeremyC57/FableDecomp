@@ -1,4 +1,5 @@
 // CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVector& pos) -- snap the position onto the highest physics mesh under it among the nearby things (sweeping the body sphere down through each mesh) and onto the ground, then update OnMesh / OnGround, the thing stood on and the render Z offset
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00725290, length 481 bytes (+ int3 padding), esp frame, `ret 8`.
 // Callees: CTCPhysicsBase virtual slots 57 (+0xe4) / 58 (+0xe8) (two surface capability tests; names descriptive), 90 (+0x168,
 // the sphere-through-mesh sweep (other, from, to, response)) and 93 (+0x174, GetPhysicsMeshInfo); CTCPhysicsBase::
@@ -46,7 +47,7 @@ template <class T> struct vector {                      // STLport vector, 12 by
     T* begin() const { return _M_start; }
     T* end() const { return _M_finish; }
 };
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
     virtual void v##n##4(); virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); \
@@ -116,7 +117,7 @@ void CTCPhysicsControlled::UpdateOnSurface(const vector<CThing*>& things, C3DVec
                 C3DVector from = pos + C3DVector(0.0f, 0.0f, radius);
                 if (HasSphereMeshCollidedFromTo(*other, from, to, response)) {
                     ModifyResponseForNearVerticalSlopes(&response);
-                    if ((float)fabs(response.CollideNormal.Z) > EPSILON) {
+                    if ((float)fabs(response.CollideNormal.Z) > DELTA_NOTIONAL_ZERO) {
                         if (response.CollidePos.Z > pos.Z)
                             pos.Z = response.CollidePos.Z - 0.199f;
                         OnMesh = true;

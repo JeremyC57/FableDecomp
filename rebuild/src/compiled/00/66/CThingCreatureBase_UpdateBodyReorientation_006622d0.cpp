@@ -1,11 +1,12 @@
 // CThingCreatureBase::UpdateBodyReorientation() -- run the body reorienter when it wants an update (and stop it once no action holds it), then level a body-set YZ pitch back to 0 once the creature is alive, idle, upright and capable
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006622D0, length 186 bytes, `ret`.
 // Callees: CThingBodyReorienter::IsUpdateNeeded @ 0x00863250, CThingBodyReorienter::UpdateBodyReorienation @ 0x00863E10
 //   (PDB spelling), the reorienter's one-byte flag setter @ 0x00863260 (`[ecx+8] = arg`; manifest label
 //   "CTCPhysicsNavigator::EnableNavigator" is propagated, real name unproven), IsLyingDown @ 0x0085F2B0 and
 //   IsIncapacitated @ 0x0085F0C0 (free `__fastcall` thing predicates), CTCPhysicsBase::GetFacingAngleYZ (slot 64,
 //   +0x100) / SetFacingAngleYZ (slot 67, +0x10C).
-// Global: EPSILON (1e-4f).
+// Global: DELTA_NOTIONAL_ZERO (1e-4f).
 // Layout (retail offsets; the engine header carries the Ego_r.pdb ones, so the class is local): CThing PhysicsTC +0x60,
 //   Dead +0x91 bit 0; CThingCreatureBase PCurrentAction.Data +0x100 (PDB +0x11c), BodyReorienter +0x140 (PDB +0x164),
 //   the second creature flag byte +0x15d (PDB +0x185) with HadFacingAngleYZSetByBodyOrientation at bit 5;
@@ -57,7 +58,7 @@ class CThing { public:
     bool IsAlive() const { return Dead ? false : true; }
 };
 
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 bool __fastcall IsLyingDown(CThing* thing);             // 0x0085F2B0
 bool __fastcall IsIncapacitated(CThing* thing);         // 0x0085F0C0
 
@@ -96,7 +97,7 @@ void CThingCreatureBase::UpdateBodyReorientation()
             BodyReorienter->SetFlag_00863260(false);
     }
     if (IsAlive() && HadFacingAngleYZSetByBodyOrientation) {
-        if (fabs(PhysicsTC->GetFacingAngleYZ()) > EPSILON) {
+        if (fabs(PhysicsTC->GetFacingAngleYZ()) > DELTA_NOTIONAL_ZERO) {
             if (!IsPerformingAnyAction() && !IsLyingDown(this) && !IsIncapacitated(this)) {
                 PhysicsTC->SetFacingAngleYZ(0.0f);
                 HadFacingAngleYZSetByBodyOrientation = false;

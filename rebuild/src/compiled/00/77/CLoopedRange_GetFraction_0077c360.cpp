@@ -1,5 +1,6 @@
 // CLoopedRange::GetFraction(float t) const -- interpolate between a start and an end fraction (wrapping through 1 when the end lies below the start) and clamp the result to [0, 1 - epsilon]
 // Leaf: ?GetFraction@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C360, 108 bytes (+ int3 padding), thiscall `ret 4`, result in st(0).
 // Caller: NGraphicAppearance::CTCGraphicAppearanceSprite vtable slot 0 @ 0x0077C4D0 (`lea ecx,[esi-0Ch]`; the result
 //   times an integer frame count picks the sprite frame).
@@ -9,7 +10,7 @@
 //   class and member names are descriptive.
 // Shape: `if (End > Start) r = (End - Start) * t + Start; else { s = 1 - Start; r = s + (End - s) * t; }` then the
 //   clamp `if (r < 0) return 0; max = 1 - epsilon; if (r > max) return max; return r;`.
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 struct CLoopedRange {
     unsigned char _pad_0x00[0x1C];
@@ -29,7 +30,7 @@ float CLoopedRange::GetFraction(float t) const
     }
     if (r < 0.0f)
         return 0.0f;
-    const float maxFraction = 1.0f - EPSILON;
+    const float maxFraction = 1.0f - DELTA_NOTIONAL_ZERO;
     if (r > maxFraction)
         return maxFraction;
     return r;

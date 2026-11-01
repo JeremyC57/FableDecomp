@@ -1,11 +1,12 @@
 // CPhysicsMeshObject::IsRigidBodyBoundingPointsValid(vector<C3DVector>& points) const -- the bounding points of a rigid body are valid when they are centred on the body: their sum has (near) zero length
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A11610, 317 bytes, `ret 4` (`this` unused). PDB:
 //   ?IsRigidBodyBoundingPointsValid@CPhysicsMeshObject@@QBE_NAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z.
 // Constants: 0x0122DEDC = 0.0f; 0x0129BA3C is the 1e-4f epsilon VARIABLE (two memory operands).
 // Shape: a summing loop over size() (12-byte elements, reciprocal-multiply divide) that VC7.1 unrolls by four; the index is
 //   unsigned against a signed count (`jl` unroll guard, `jae` remainder loop); the length test is a file-static bool
 //   helper (`return lenSq > eps * eps;` gives `mov eax,1 / xor eax,eax`) negated in the return (`test al,al ; sete cl`).
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -24,7 +25,7 @@ template <class T> struct vector {
 
 static bool IsLongerThanEpsilon(const C3DVector& v)
 {
-    return v.GetLengthSquared() > EPSILON * EPSILON;
+    return v.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
 }
 
 class CPhysicsMeshObject {

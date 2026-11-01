@@ -1,5 +1,6 @@
 // CNewFrontendGameComponent::Input() -- drain the input manager's event queue into the front-end UI manager (keys, characters, mouse move/wheel, joystick buttons and stick), then turn the gathered direction/button flags into repeating UI commands
 // Leaf: ?Input@CNewFrontendGameComponent@@UAEXXZ
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042E3EE, 1441 bytes, frame pointer, `ret`.
 // Layout: Ego_r.pdb CNewFrontendGameComponent (336 bytes) with the two retail 12-byte STLport vectors (FileNames,
 //   FileTimes) => members after +0x6c sit 8 lower: m_RepeatTimer +0xd8 (running flag +0xf0), m_fRepeatDelay +0xf8,
@@ -89,7 +90,7 @@ public:
     float GetElapsedSeconds() const;               // 0x0062F900
     bool IsRunning() const { return m_bIsRunning; }
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f, the shared float epsilon)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f, the shared float epsilon)
 class CNewFrontendGameComponent {
 public:
     virtual void v00();
@@ -149,9 +150,9 @@ void CNewFrontendGameComponent::Input()
             break;
         }
         case 14:
-            if (event.GetMouseWheel() > EPSILON)
+            if (event.GetMouseWheel() > DELTA_NOTIONAL_ZERO)
                 NUISystem::CManager::GetInstance()->SendCommand(0x24);
-            else if (event.GetMouseWheel() < -EPSILON)
+            else if (event.GetMouseWheel() < -DELTA_NOTIONAL_ZERO)
                 NUISystem::CManager::GetInstance()->SendCommand(0x25);
             break;
         case 15:

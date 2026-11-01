@@ -1,5 +1,6 @@
 // CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing*) -- play a random WHATS_THAT animation; the
 // Leaf: SetWhatsThatAnimation
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // update finishes unless the animation completed, the perceived thing is still worth seeking and it has not moved
 // from the last known position (squared 3D distance within 1e-4 squared).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093C6D0, length 206 bytes (+ int3 padding), `ret 4`.
@@ -145,7 +146,7 @@ class CTCPerceiveThing { public:
     float PosX, PosY, PosZ;                     // +0x20
 };
 
-extern const float EPSILON; // 0x0129BA3C (1e-4)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4)
 
 struct CAIStateGroup_StealthSeekEnemy : CAIStateGroupBase {
     unsigned char _pad_0x14[0x8];               // +0x14 PEnemy
@@ -164,7 +165,7 @@ void CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation(CTCPerceiveThing* per
     if (result == 2 && IsStillRunnable(perceive)) {
         C3DVector diff(perceive->PosX - LastKnownEnemyPosX, perceive->PosY - LastKnownEnemyPosY,
             perceive->PosZ - LastKnownEnemyPosZ);
-        if (!(diff.GetMagnitudeSquared() > EPSILON * EPSILON))
+        if (!(diff.GetMagnitudeSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO))
             return;
     }
     Terminate();

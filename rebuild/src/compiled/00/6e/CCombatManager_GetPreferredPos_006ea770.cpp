@@ -1,4 +1,5 @@
 // CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) const -- where a registered attacker should stand: the
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the frame-slot gap (sub esp,60h v 5Ch: the first UID find key kept its own slot because VC7.1 treated the
 //   extern find's result as possibly derived from the key it was handed, so the spilled &info.AttackerInfo kept that slot alive) closes
 //   with a same-TU __declspec(noinline) body for CCombatantMap::find (the STLport _Rb_tree lower-bound walk): the key slot is then
@@ -13,9 +14,9 @@
 //   CThingFindNavigationLayerAt::operator() 0x0063EFB0, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620,
 //   CDefendingCombatantInfo::CCombatWheel::SetAttackerProngAsBlocked 0x006E9200 (Ego_r.pdb ?SetAttackerProngAsBlocked@
 //   CCombatWheel@CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@AAVCAttackingCombatantInfo@@@Z: non-const, so the const
-//   method casts the wheel and the info; the manifest label BlockAttackerProng is descriptive). Globals: 7.0f 0x01254D80, 1.0f 0x0122DED8, EPSILON 0x0129BA3C.
+//   method casts the wheel and the info; the manifest label BlockAttackerProng is descriptive). Globals: 7.0f 0x01254D80, 1.0f 0x0122DED8, DELTA_NOTIONAL_ZERO 0x0129BA3C.
 // Shape notes: the normalise goes through an inline GetLength() (keeps 1/len on the x87 stack to the end: `fld Z; fmul st(1);
-//   fstp Z; fstp st(0)`); extern const EPSILON stops the clamp-then-test fold; user C3DVector copy ctor gives the return copy;
+//   fstp Z; fstp st(0)`); extern const DELTA_NOTIONAL_ZERO stops the clamp-then-test fold; user C3DVector copy ctor gives the return copy;
 //   pack(4) keeps the __int64 UID at +0x18 in the polymorphic CThing.
 // Frame: the combatant map find has a same-TU noinline body (below) so VC7.1 knows its node result is not derived from the key
 //   it was handed; with the extern declaration alone the first key's slot stays alive while &info.AttackerInfo (spilled for
@@ -93,7 +94,7 @@ public:
     bool IsInMeleeAsAttacker() const;                 // 0x00662410
     long GetNavigationLevelAt(const C3DVector& pos) const;   // 0x00661D20 (Ego_r.pdb, landed under this name)
 };
-extern const float EPSILON;  // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (1e-4f)
 class CThingFindNavigationLayerAt { public:
     C3DVector Pos;                                    // +0x00
     long      Layer;                                  // +0x0c
@@ -189,7 +190,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
                 distance -= 0.25f;
                 if (distance < 0.0f)
                     distance = 0.0f;
-            } while (distance > EPSILON);
+            } while (distance > DELTA_NOTIONAL_ZERO);
             const_cast<CCombatWheel&>(wheel).SetAttackerProngAsBlocked(creature, const_cast<CAttackingCombatantInfo&>(info.AttackerInfo));
             return predicted;
         }

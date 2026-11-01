@@ -1,5 +1,6 @@
 // CTCInventoryMap::GetGuildSealRecallRegion() const -- the region number that holds the world's guild-seal recall position, or 0 while no recall position is set (a zero vector)
 // Leaf: ?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FA990, length 111 bytes, thiscall, plain `ret`.
 // Identity: FableWin.pdb ?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ (private const, returns long).
 // Callees: CTCBase::PeekWorld() const 0x00686A80 (twice; PDB ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ, the bound spelling; its
@@ -25,7 +26,7 @@ public:
     float GetSquaredMagnitude() const { return X * X + Y * Y + Z * Z; }
 };
 
-extern const float EPSILON;          // 0x0129BA3C (1e-4; descriptive, an existing bound spelling of this address)
+extern const float DELTA_NOTIONAL_ZERO;          // 0x0129BA3C (1e-4; descriptive, an existing bound spelling of this address)
 
 class CWorldMap {
 public:
@@ -78,7 +79,7 @@ private:
 long CTCInventoryMap::GetGuildSealRecallRegion() const
 {
     const C3DVector& recallPos = PeekWorld().GetGuildSealRecallPos();
-    if (recallPos.GetSquaredMagnitude() > EPSILON * EPSILON) {
+    if (recallPos.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         const CWorldMap& worldMap = PeekWorld().PeekWorldMap();
         return worldMap.GetRegionNumberMapIsIn(worldMap.GetMapNumberAt(recallPos));
     }

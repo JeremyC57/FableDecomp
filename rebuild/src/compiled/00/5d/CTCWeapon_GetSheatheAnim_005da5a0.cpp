@@ -1,4 +1,5 @@
 // CTCWeapon::GetSheatheAnim() const -- pick the sheathe animation name: the "normal" one while the owner is moving, the "combat" one when it stands still
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DA5A0, length 96 bytes.
 // Callees: CThing::GetPos() const @ 0x004C73D0 (`&[this+0x60]->+0xc`; manifest "CVertexBufferWin32::DoSizeof" is
 // propagated). Float 0x0129BA3C = 1e-4f (loaded and multiplied by itself: a global, not a folded constant).
@@ -40,7 +41,7 @@ class CWeaponDef : public CDefPointeeBase { public:
     CCharString   SheatheFromNormalAnim;                    // +0xe0
 };
 
-extern const float EPSILON;  // 0x0129BA3C (1e-4f, squared at run time)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (1e-4f, squared at run time)
 
 struct CTCWeapon_Anims : CTCWeapon {
     CThing* GetParentThing() const { return *(CThing* const*)&_pad_0x04; }   // CTCBase::ParentThing (+0x04, a pad in the flattened header)
@@ -52,7 +53,7 @@ const CCharString& CTCWeapon_Anims::GetSheatheAnim() const
 {
     CThing* thing = GetParentThing();
     const C3DVector& last = thing->m_pRHSet->m_lastPosition;
-    if ((thing->GetPos() - last).GetLengthSquared() > EPSILON * EPSILON)
+    if ((thing->GetPos() - last).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         return GetDef()->SheatheFromNormalAnim;
     return GetDef()->SheatheFromCombatAnim;
 }

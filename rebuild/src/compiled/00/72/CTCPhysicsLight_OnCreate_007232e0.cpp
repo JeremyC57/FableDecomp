@@ -6,9 +6,10 @@
 // Shape: a bool:1 assigned a float compare: the compare branches and each arm inserts its own constant through the
 //   x ^= (x ^ v) & 1 sequence (`mov al,1` / `xor al,al` not folded).
 // Leaf: OnCreate
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include "engine/CTCPhysicsBase.h"
 
-extern const float EPSILON; // 0x0129BA3C (0.0f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0f)
 
 struct CTCPhysicsBase_Calls {
     void  OnCreate();                       // CTCPhysicsBase::OnCreate 0x006B0780
@@ -24,5 +25,5 @@ struct CTCPhysicsLight : CTCPhysicsBase {
 void CTCPhysicsLight::OnCreate()
 {
     Base()->OnCreate();
-    AffectedByGravity = Base()->GetMass() > EPSILON;
+    AffectedByGravity = Base()->GetMass() > DELTA_NOTIONAL_ZERO;
 }

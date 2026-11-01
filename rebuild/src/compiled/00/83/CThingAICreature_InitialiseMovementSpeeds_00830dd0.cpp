@@ -1,5 +1,6 @@
 // CThingAICreature::InitialiseMovementSpeeds() -- the flying speed comes from the STANDARD_FLY animation when the creature has one in any group (else zero); when the creature def's speed variation is positive the walking, jogging, running and flying speeds are each randomised
 // Leaf: InitialiseMovementSpeeds
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00830DD0, 212 bytes (+12 int3). `ret`.
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 (x2, "STANDARD_FLY" @ 0x0125ABD4), CThingCreatureBase::HasAnim
 //          (const CCharString&, const CAnimFilterBase&) 0x00662C70, ~CCharString 0x0099EAE0 (x2), CThingCreatureBase::
@@ -22,7 +23,7 @@ class CAnimFilterBase { public:                             // vtable 0x0122FFCC
 };
 struct CAnimFilterAnyGroup : CAnimFilterBase {       // vtable 0x0127261C (implicit constructor: the vtable store sinks to the call)
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 struct CCreatureSpeedSource {                        // descriptive: the +0xE0 pointee
     unsigned char _pad00[0xb0];
     float         SpeedVariation;                    // +0xb0
@@ -59,7 +60,7 @@ void CThingAICreature::InitialiseMovementSpeeds()
     } else {
         MaxFlyingSpeed = 0.0f;
     }
-    if (m_pSpeedSource->SpeedVariation > EPSILON) {
+    if (m_pSpeedSource->SpeedVariation > DELTA_NOTIONAL_ZERO) {
         RandomiseMovementSpeed(&MaxWalkingSpeed);
         RandomiseMovementSpeed(&MaxJoggingSpeed);
         RandomiseMovementSpeed(&MaxRunningSpeed);

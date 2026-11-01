@@ -1,5 +1,6 @@
 // CNavQuadTree::IsAreaBlockedByLines(const C2DBoxF& area, const std::vector<const std::list<C2DLineF>*>& lineLists) const -- true when any navigation line of any list touches the area: a fuzzy bounding-range reject on X and Y, then either end point inside the box or the segment crossing it
 // Leaf: ?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe @ 0x00A76F30, 371 bytes, `ret 8`, 8-aligned frame for the double temporaries.
 // Body: for each list, for each line: skip when GetHighestX() - area.TLX <= -eps, GetLowestX() - area.BRX >= eps,
 // GetHighestY() - area.TLY <= -eps or GetLowestY() - area.BRY >= eps (eps = the float at 0x0129BA3C); else
@@ -44,7 +45,7 @@ class C2DLineF { public:
     float GetHighestY() const { return (float)Max<double>(Point1.Y, Point2.Y); }
     bool IntersectsWith(const C2DBoxF& box) const;            // 0x00A57BD0
 };
-extern const float EPSILON; // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C
 
 namespace std {
 template <class T> struct _List_node {
@@ -88,13 +89,13 @@ bool CNavQuadTree_Methods::IsAreaBlockedByLines(const C2DBoxF& area, const std::
         const std::list<C2DLineF>* lines = *it;
         for (std::list<C2DLineF>::const_iterator it2 = lines->begin(); it2 != lines->end(); ++it2) {
             const C2DLineF& line = *it2;
-            if (line.GetHighestX() - area.TLX <= -EPSILON)
+            if (line.GetHighestX() - area.TLX <= -DELTA_NOTIONAL_ZERO)
                 continue;
-            if (line.GetLowestX() - area.BRX >= EPSILON)
+            if (line.GetLowestX() - area.BRX >= DELTA_NOTIONAL_ZERO)
                 continue;
-            if (line.GetHighestY() - area.TLY <= -EPSILON)
+            if (line.GetHighestY() - area.TLY <= -DELTA_NOTIONAL_ZERO)
                 continue;
-            if (line.GetLowestY() - area.BRY >= EPSILON)
+            if (line.GetLowestY() - area.BRY >= DELTA_NOTIONAL_ZERO)
                 continue;
             if (area.ContainsPoint(line.Point1) || area.ContainsPoint(line.Point2) || line.IntersectsWith(area))
                 return true;

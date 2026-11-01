@@ -1,6 +1,7 @@
 // CParticleProgram::PrepareForRendering(C4DVector*, CParticleSimulation*, float, float) -- fill the render vertices: the fixed (non-simulated) positions first, then the simulated ones interpolated between the saved and current simulation states, blended towards the initial simulation when the blend is significant
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1600, length 181 bytes (`ret 10h`; the 4-argument overload).
 // Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MM@Z
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Callees: the 8-argument vector interpolation @ 0x00A5BBA0 and GFInterpolateVectors @ 0x00A5B870 (__cdecl, labels
 //          both "GFInterpolateVectors"; strides 16). Global: 1e-4f @ 0x0129BA3C (ordered greater-than test).
 // Layout: engine/CParticleProgram.h is the PDB layout with 16-byte CArrays and a 0x14-byte vector map; the retail
@@ -30,7 +31,7 @@ void __cdecl GFInterpolateVectors_00a5bba0(C4DVector* out, unsigned long outStri
 void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* to, unsigned long toStride,
                                  unsigned long count, float t);                                                      // 0x00A5B870
 
-extern const float EPSILON;            // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;            // 0x0129BA3C (1e-4f)
 
 class CParticleSimulation { public:                       // Ego_r.pdb, retail 0x80 bytes
     void*         __vftable;                       // +0x00
@@ -84,7 +85,7 @@ void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulat
     CopyVectors(NonSimPositions, NonSimPositions + NonSimCount, vertices);
     GFInterpolateVectors_00a5bba0(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
                                   simulation->Positions, sizeof(C4DVector), simulation->Size, simulationInterpolate);
-    if (initialBlend > EPSILON)
+    if (initialBlend > DELTA_NOTIONAL_ZERO)
         GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), InitialSimulation.Positions, sizeof(C4DVector),
                              simulation->Size, initialBlend);
 }

@@ -1,5 +1,6 @@
 // CEngineInternalPrimitiveSpriteTrail::Update(const CEnginePrimitive& primitive, unsigned long flags) -- copy a sprite-trail descriptor (length cap, graphic, skip, width, head / mid / tail colours, flags, blend op/mode, world matrix); when the descriptor only extends the trail, shift the stored points by the offset vector (if it is not negligible), grow the ring to the cap and write the new points at the ring cursor, otherwise resize the ring to the descriptor's points and copy them from slot 0; then apply the game-primitive fade defaults with the descriptor's fade start
 // Leaf: Update
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCBC00, `ret 8`, virtual `?Update@CEngineInternalPrimitiveSpriteTrail@@UAEXABVCEnginePrimitive@@K@Z`.
 // Callees: vector<CSpriteTrailEntry>::erase(first, last) @ 0x00BCBF20, ::_M_fill_insert(pos, n, x) @ 0x00BCC080,
 //   ::resize(n) @ 0x00BCC3B0, CEngineInternalPrimitiveBase::SetFadeDistanceWithGamePrimitiveDefaults(float) @ 0x00B8FD40.
@@ -19,7 +20,7 @@ class C3DVector { public:
     float LengthSquared() const { float z = Z, y = Y, x = X; return x * x + y * y + z * z; }
 };
 inline float Sqr(float x) { return x * x; }
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CMatrix3x4 { public: float m[12]; };
 
@@ -135,7 +136,7 @@ void CEngineInternalPrimitiveSpriteTrail::Update(const CEnginePrimitive& primiti
     BlendOp = trail.BlendOp;
     WorldMat = trail.WorldTransform;
     if (trail.UpdateExisting) {
-        if (trail.OffsetVector.LengthSquared() > Sqr(EPSILON)) {
+        if (trail.OffsetVector.LengthSquared() > Sqr(DELTA_NOTIONAL_ZERO)) {
             for (CSpriteTrailEntry* it = Trail.begin(); it != Trail.end(); ++it) {
                 it->Position.X += trail.OffsetVector.X;
                 it->Position.Y += trail.OffsetVector.Y;

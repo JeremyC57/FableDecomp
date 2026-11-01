@@ -1,5 +1,6 @@
 // NCreatureMode::IsValidRangedWeaponTargetForShooter(const CThing& shooter, const CThing& target, float angle) -- whether a ranged shot from the shooter can take the target: when the shooter's player is in lock-on mode its targeted thing must exist and be alive, and the direction to the target must lie within `angle` degrees of the shooter's facing
 // Leaf: ?IsValidRangedWeaponTargetForShooter@NCreatureMode@@YI_NABVCThing@@0M@Z
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085F8D0, 304 bytes, /Gr __fastcall (shooter in ecx, target in edx, angle on the
 //   stack), `ret 4`.
 // Identity: Ego_r.pdb ?IsValidRangedWeaponTargetForShooter@NCreatureMode@@YI_NABVCThing@@0M@Z; caller
@@ -7,7 +8,7 @@
 // Callees: CVectorMap::LowerBound const 0x004365B0 (the inline GetTC 8: CTCTargeting), CTCTargeting slot 36 (+0x90)
 //   GetTargetedThing, CThing::PeekPlayer 0x004C7A10 (Ego_r ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ; sweep3 RENAMES), CThing::GetPos 0x004C73D0 (x2), the physics TC's slot 70
 //   (+0x118) GetFacingVector (C3DVector by hidden pointer), C3DVector::AccurateNormalise @ 0x00A14440.
-// Data: EPSILON 0x0129BA3C (1e-4f), 1/360 0x01238E00 (`/ 360.0f` as a reciprocal multiply), 2pi (double) 0x0124F2B8.
+// Data: DELTA_NOTIONAL_ZERO 0x0129BA3C (1e-4f), 1/360 0x01238E00 (`/ 360.0f` as a reciprocal multiply), 2pi (double) 0x0124F2B8.
 // Layout: CThing interface bitset +0x20, interface map +0x44, physics TC +0x60, flags +0x91 (bit 0 dead); CPlayer +0x20a
 //   (the lock-on byte of the landed 0x0087C900 model; no PDB name, CPlayer is padding there).
 // Shape: the targeted thing starts null and is fetched only when the shooter has interface 8; the alive test runs only
@@ -29,7 +30,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 
-extern const float EPSILON;  // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (1e-4f)
 
 struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
     struct SEntry { long type; void* component; };
@@ -117,7 +118,7 @@ bool __fastcall IsValidRangedWeaponTargetForShooter(const CThing& shooter, const
     }
     C3DVector offset = target.GetPos() - shooter.GetPos();
     C3DVector facing = shooter.PTCPhysics->GetFacingVector();
-    if (offset.GetLengthSquared() > EPSILON * EPSILON)
+    if (offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         offset.AccurateNormalise();
     if (facing * offset < cos(angle / 360.0f * 6.2831854820251465))
         return false;

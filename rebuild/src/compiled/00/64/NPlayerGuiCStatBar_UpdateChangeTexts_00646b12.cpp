@@ -2,6 +2,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: UpdateChangeTexts
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00646B12, 306 bytes, `ret`.
 // Callees: _ftol 0x00BFEA70, std::list<CChangeText>::erase(iterator) 0x00655A52 (iterator by value, hidden result).
 // Globals: 1e-4f epsilon variable 0x0129BA3C (read as a variable, as the landed rows).
@@ -13,7 +14,7 @@
 // Layout: Ego_r.pdb NPlayerGui::CStatBar (retail list at +0x64, PDB +0x6C); the owner (+0x04) box TL +0x4CC, BR +0x4D4,
 //   frame step +0x4DC; state +0x28. CChangeText: OldOffset +0, Offset +8, Text +0x10, Value +0x14, Colour +0x18
 //   (alpha byte +0x1B), StartToEnd +0x1C, PercentageThrough +0x20.
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -87,7 +88,7 @@ void NPlayerGui::CStatBar::UpdateChangeTexts()
         }
         C2DVector delta;
         delta = end - start;
-        if (!((it->PercentageThrough += Owner->FrameStep) >= 1.0f - EPSILON) && it->Colour.A) {
+        if (!((it->PercentageThrough += Owner->FrameStep) >= 1.0f - DELTA_NOTIONAL_ZERO) && it->Colour.A) {
             it->OldOffset = it->Offset;
             it->Offset = start + delta * it->PercentageThrough;
             it->Colour.A = (unsigned char)((1.0f - it->PercentageThrough) * it->Colour.A);

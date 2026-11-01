@@ -1,4 +1,5 @@
 // NAnimationEvents::CManager::GetEmbeddedEventTime(ulong,const CCharString&)const -- normalized embedded event time, zero for tiny duration.
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail006F9130 length169. A242C0 animation lookup; A269C0 owning stats; A4EAE0 event-time; scalar deleteBFE9BC.
 #define CManager CManagerDonor
 #include "engine/CManager.h"
@@ -31,14 +32,14 @@ class CMeshDataBank { public:
 public:
     const C3DAnimationInfo* PeekAnimation(unsigned long) const;   // 0x00A242C0
 };
-extern const float EPSILON;                 //0129BA3C exactfloat0.0001
+extern const float DELTA_NOTIONAL_ZERO;                 //0129BA3C exactfloat0.0001
 namespace NAnimationEvents {class CManager { public:
  unsigned long NativeManagerPrefix;CMeshDataBank* MeshDataBank;
  float GetEmbeddedEventTime(unsigned long,const CCharString&)const;
 };}
 float NAnimationEvents::CManager::GetEmbeddedEventTime(unsigned long animation,const CCharString& event)const{
  CCountedPointer<const C3DAnimationStats> stats=MeshDataBank->PeekAnimation(animation)->GetAnimationStats();
- if(stats.Data->Duration>EPSILON){
+ if(stats.Data->Duration>DELTA_NOTIONAL_ZERO){
   float duration=stats.Data->Duration;
   return stats.Data->GetEventTime(event)/duration;
  }

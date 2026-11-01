@@ -1,4 +1,5 @@
 // CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndFacePos(EAIActionRepeat, const C3DVector&, float, const C3DVector&, bool&, EMovementType) -- steer the hovering creature along its navigation route to within `proximity` of a position while looking at a face position, one brain output per tick, until arrived (2), failed (3) or stopped (1)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D510, 724 bytes (ret 18h). Sibling of CAIStateGroupBase::AIAction_MoveToPosProximity 0x0097E890.
 // Callees: IsStopping 0x008FD010, CTCCreatureNavigation::GetNextNavPosOnRoute 0x006CBAC0 (CCreatureNavOutput by hidden
 //   pointer), CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CBrainOutput::CBrainOutput 0x00835620,
@@ -20,7 +21,7 @@ inline C3DVector operator+(const C3DVector& a, const C3DVector& b)
     r.Z = a.Z + b.Z;
     return r;
 }
-extern const float EPSILON;                     // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;                     // 0x0129BA3C (0.0001f)
 
 class CTCBase;
 struct CInterfaceMap {
@@ -219,7 +220,7 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndF
         input.MovementType = anim;
         input.Speed = 0.0f;
         CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, false, true, true, false, false);
-        moving = output.Status == 0 || output.Offset.GetLengthSquared() > EPSILON * EPSILON;
+        moving = output.Status == 0 || output.Offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
         if (!GetCreature()->IsPerformingAnyAction()) {
             switch (output.Status) {
             case 0:
@@ -229,7 +230,7 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndF
                 result = AI_ACTION_ABORTED;
                 break;
             case 2:
-                if (output.Offset.GetLengthSquared() > EPSILON * EPSILON) {
+                if (output.Offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
                     CBrainOutput brainOutput;
                     brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->PeekPos(), input);
                     brainOutput.SetAsLookAtPos(facePos, 0x11);

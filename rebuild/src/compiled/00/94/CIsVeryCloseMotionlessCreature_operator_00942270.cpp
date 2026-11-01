@@ -1,5 +1,6 @@
 // CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const -- a creature of category 2 whose kind-2 component shows no movement since the last frame (squared step <= 1e-4 squared) and whose ground distance from MyPos is under 1.4 times the sum of its physics radius and MyRadius
 // Leaf: ??RCIsVeryCloseMotionlessCreature
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00942270, 210 bytes, `ret 4`.
 // Callees: the creature category getter @ 0x00662000 (def +0xe0 -> +0xc4; landed callers name it), the const
 //   component-map LowerBound @ 0x004365B0, CThing::GetPosition @ 0x006A4D00 (GOTCHAS chunk 182). Globals: 0.0001f @
@@ -25,7 +26,7 @@ class C2DVector { public:
     C2DVector(float x, float y) : X(x), Y(y) {}
     float GetLength() const { return (float)sqrt(X * X + Y * Y); }
 };
-extern const float EPSILON;             // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C (0.0001f)
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -88,7 +89,7 @@ bool CIsVeryCloseMotionlessCreature::operator()(CThing* thing) const
 {
     if (thing->GetCreatureCategory() == 2) {
         CTCMotion* motion = GetMotionIfPresent(thing);
-        if (!((motion->Position - motion->LastPosition).GetLengthSquared() > EPSILON * EPSILON)) {
+        if (!((motion->Position - motion->LastPosition).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
             const C3DVector& pos = thing->PeekPos();
             if (C2DVector(pos.X - MyPos.X, pos.Y - MyPos.Y).GetLength() < (thing->m_pBody->Radius + MyRadius) * 1.4f)
                 return true;

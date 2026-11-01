@@ -1,16 +1,17 @@
 // CTCCarryable::UpdateCarriedPosition(bool forceUpdate) -- move a carried (live) thing to where its carrier holds it: face it along the carried orientation and, when the carried position is on the map and differs from the current one by more than the epsilon on any axis, set the physics position
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705B60, 197 bytes (`ret 4`, 0x24-byte frame: the position and the 24-byte CRightHandedSet).
 // Callees: CTCCarryable::GetCarriedPositionInfo(C3DVector*, CRightHandedSet*, bool, float) @ 0x007055D0 (time 1.0f),
 // CTCBase::PeekWorldMap() const @ 0x00686D20, CWorldMap::IsPosInMap(const C3DVector&) @ 0x004FC600, CThing::GetPos()
 // @ 0x004C73D0, the physics TC's virtual slots 75 SetFacingAnglesFromRHSet (+0x12c) and 30 SetPosition (+0x78);
-// EPSILON @ 0x0129BA3C (1e-4f).
+// DELTA_NOTIONAL_ZERO @ 0x0129BA3C (1e-4f).
 // Layout: CThing PhysicsTC +0x60 (retail; PDB +0x70), dead bit +0x91.
 // Shape: `||` of three `(float)fabs(cur - new) > eps` tests (fabs intrinsic over a double prototype; `test ah,41h ; je` into the
 // shared SetPosition block); the current position is a reference local kept in ecx; IsPosInMap's argument is pushed before
 // the world-map accessor runs.
 #pragma intrinsic(fabs)
 extern "C" double __cdecl fabs(double);
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up, Forward; };
 class CTCPhysicsBase { public:
@@ -61,8 +62,8 @@ void CTCCarryable::UpdateCarriedPosition(bool forceUpdate)
     if (!PeekWorldMap().IsPosInMap(position))
         return;
     const C3DVector& current = ParentThing->GetPos();
-    if ((float)fabs(current.X - position.X) > EPSILON
-     || (float)fabs(current.Y - position.Y) > EPSILON
-     || (float)fabs(current.Z - position.Z) > EPSILON)
+    if ((float)fabs(current.X - position.X) > DELTA_NOTIONAL_ZERO
+     || (float)fabs(current.Y - position.Y) > DELTA_NOTIONAL_ZERO
+     || (float)fabs(current.Z - position.Z) > DELTA_NOTIONAL_ZERO)
         ParentThing->PhysicsTC->SetPosition(position);
 }

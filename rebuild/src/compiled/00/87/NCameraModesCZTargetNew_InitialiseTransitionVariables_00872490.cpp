@@ -1,5 +1,6 @@
 // NCameraModes::CZTargetNew::InitialiseTransitionVariables() -- measure the camera's current offset from the observed thing (XY distance, height, signed angle to the X axis) and set up the per-frame deltas that move it to the def's Z-target offsets over the transition
 // Leaf: InitialiseTransitionVariables
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872490, 405 bytes (+ int3 padding), plain `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPos 0x004C73D0 (const C3DVector&),
 //   C3DVector::AccurateNormalise @ 0x00A14440, _CIacos 0x00BFEBA2 (acos intrinsic); constants 1e-4f @ 0x0129BA3C (squared at run
@@ -27,7 +28,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     C3DVector& AccurateNormalise();                                   // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
@@ -96,7 +97,7 @@ void NCameraModes::CZTargetNew::InitialiseTransitionVariables()
     StringLengthXY = PCameraModeDef->StringLengthXY;
     CageRadius = PCameraModeDef->CageRadius;
     offset.Z = 0.0f;
-    if (lengthSquaredXY > EPSILON * EPSILON)
+    if (lengthSquaredXY > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         offset.AccurateNormalise();
     float sign = 1.0f;
     if (!(offset.X * XAxis.Y - offset.Y * XAxis.X > 0.0f))

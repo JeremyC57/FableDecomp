@@ -1,4 +1,5 @@
 // CMatrix3x4::IsIdentity() const -- true when every row (and the translation) is within the squared tolerance of the identity matrix
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A560A0, length 209 bytes (`ret`).
 // Callees: none; constants: the tolerance extern float @ 0x0129BA3C (0.0001f), 1.0f @ 0x0122DED8.
 // Layout: four C3DVector rows (landed CMatrix3x4 0x00A56530 model): rows +0x00/+0x0C/+0x18, translation +0x24.
@@ -13,7 +14,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-extern const float EPSILON;            // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;            // 0x0129BA3C (0.0001f)
 class CMatrix3x4 { public:
     C3DVector m_row0;                           // +0x00
     C3DVector m_row1;                           // +0x0c
@@ -24,10 +25,10 @@ class CMatrix3x4 { public:
 
 bool CMatrix3x4::IsIdentity() const
 {
-    if (!((m_row0 - C3DVector(1.0f, 0.0f, 0.0f)).GetLengthSquared() > EPSILON * EPSILON) &&
-        !((m_row1 - C3DVector(0.0f, 1.0f, 0.0f)).GetLengthSquared() > EPSILON * EPSILON) &&
-        !((m_row2 - C3DVector(0.0f, 0.0f, 1.0f)).GetLengthSquared() > EPSILON * EPSILON) &&
-        !((m_translation - C3DVector(0.0f, 0.0f, 0.0f)).GetLengthSquared() > EPSILON * EPSILON))
+    if (!((m_row0 - C3DVector(1.0f, 0.0f, 0.0f)).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) &&
+        !((m_row1 - C3DVector(0.0f, 1.0f, 0.0f)).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) &&
+        !((m_row2 - C3DVector(0.0f, 0.0f, 1.0f)).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) &&
+        !((m_translation - C3DVector(0.0f, 0.0f, 0.0f)).GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO))
         return true;
     return false;
 }

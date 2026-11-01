@@ -1,4 +1,5 @@
 // CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& angleXY, float& angleYZ) const -- the XY / YZ angle differences from the body facing to the direction head->pos, or to the recovery angles when there is no live parent creature or pos is the head position
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751C70, length 297 bytes (+ int3 padding), `ret 10h`; the second argument
 // (a bool, FableWin.pdb ?GetAnglesFromBodyToPos@CTCLook@@ABEXABVC3DVector@@_NAAM2@Z) is never read (its slot homes the
 // XY angle across the second call).
@@ -54,7 +55,7 @@ float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& t
 float __fastcall AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00754E70
 float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 #pragma pack(push, 1)
 class CTCLook { public:
@@ -84,8 +85,8 @@ void CTCLook::GetAnglesFromBodyToPos(const C3DVector& pos, bool unused, float& a
     float bodyYZ = ParentThing->PhysicsTC->GetFacingAngleYZ();
     if (IS_THING_ALIVE(PParentCreature)) {
         C3DVector headPos = GetHeadPos();
-        if ((float)fabs(pos.X - headPos.X) > EPSILON || (float)fabs(pos.Y - headPos.Y) > EPSILON ||
-            (float)fabs(pos.Z - headPos.Z) > EPSILON) {
+        if ((float)fabs(pos.X - headPos.X) > DELTA_NOTIONAL_ZERO || (float)fabs(pos.Y - headPos.Y) > DELTA_NOTIONAL_ZERO ||
+            (float)fabs(pos.Z - headPos.Z) > DELTA_NOTIONAL_ZERO) {
             float xy = AngleBetweenPositions(headPos, pos);
             float yz = AngleYZBetweenPositions(headPos, pos);
             angleXY = AngleDifference(bodyXY, xy);

@@ -1,5 +1,6 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere(const CThing& thing, C3DVector& centre, float& radius) const -- the sphere around the hit cylinder: centred between its base and top, radius = sqrt(cylinderRadius^2 + (height / 2)^2), with the radius and height defaulting to the thing's values when they are not set
 // Leaf: GetBoundingSphere
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00815AA0, 256 bytes, `ret 0Ch`. PDB:
 //   ?GetBoundingSphere@CPhysicalPrimitiveCylinder@NHitLocations@@UBEXABVCThing@@AAVC3DVector@@AAM@Z.
 // Callees: CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop(const CThing&, C3DVector&, C3DVector&) const 0x008158D0 (PDB;
@@ -14,7 +15,7 @@
 #include <math.h>
 #pragma intrinsic(sqrt)
 
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -73,14 +74,14 @@ public:
     {
         CDefPointer def = thing.PDef;
         float height = Height;
-        if (height < EPSILON)
+        if (height < DELTA_NOTIONAL_ZERO)
             height = def->CylinderHeight;
         return height;
     }
     float GetCylinderRadius(const CThing& thing) const
     {
         float radius = Radius;
-        if (radius < EPSILON) {
+        if (radius < DELTA_NOTIONAL_ZERO) {
             radius = thing.PGraphic->Radius;
             if (thing.IsCreature)
                 radius = static_cast<const CThingCreatureBase&>(thing).GetCombatRadius();

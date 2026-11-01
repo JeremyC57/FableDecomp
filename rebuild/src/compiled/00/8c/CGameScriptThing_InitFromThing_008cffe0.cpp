@@ -1,4 +1,5 @@
 // CGameScriptThing::InitFromThing -- bind a thing and copy script identity and spatial state
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Actual headers retained; native CThing differs from quarantined donor (nine component words, twelve-byte containers).
 #include "engine/CGameScriptThing.h"
 #include "engine/CTCPhysicsBase.h"
@@ -24,9 +25,9 @@ FABLE_STATIC_ASSERT(sizeof(GameScriptThingNative)==sizeof(CGameScriptThing));
 FABLE_STATIC_ASSERT(offsetof(GameScriptThingNative,PThing)==offsetof(CGameScriptThing,PThing));
 FABLE_STATIC_ASSERT(offsetof(GameScriptThingNative,ThingUID)==offsetof(CGameScriptThing,ThingUID));
 FABLE_STATIC_ASSERT(offsetof(GameScriptThingNative,HomePos)==offsetof(CGameScriptThing,HomePos_X));
-extern const float EPSILON;          //0129BA3C actual float0.0001, not a folded square literal
+extern const float DELTA_NOTIONAL_ZERO;          //0129BA3C actual float0.0001, not a folded square literal
 void GameScriptThingNative::InitFromThing(const CBaseObject& thing){
  {IntelligentPointer temporary(const_cast<CBaseObject*>(&thing));CBaseObject* rebound=temporary.GetPItem();PThing.SetPItem(rebound);}Name=PThing.GetPItem()->Name;ThingUID=PThing.GetPItem()->UniqueID;DataString=PThing.GetPItem()->DataString;
- if(!(HomePos.LengthSquared()>EPSILON*EPSILON)&&PThing.GetPItem()->Category==1)HomePos=PThing.GetPItem()->Home;
+ if(!(HomePos.LengthSquared()>DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO)&&PThing.GetPItem()->Category==1)HomePos=PThing.GetPItem()->Home;
  if(PThing.GetPItem()->GetPhysicsTC()){const Vector3& position=PThing.GetPItem()->GetPhysicsTC()->GetPosition();Pos=position;AngleXY=PThing.GetPItem()->GetPhysicsTC()->GetAngleXY();}
 }

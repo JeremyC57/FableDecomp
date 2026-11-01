@@ -1,4 +1,5 @@
 // CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const -- when the body angle is off target, accelerate the velocity (clamped to +/- maxSpeed), compute the wrapped next angle, then snap the angle to the target and stop
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751970, length 254 bytes (+ int3 padding), `ret 14h`; `this` is not read.
 // The head twin GetHeadSettingsSlowInFastOut 0x00751820 keeps the overshoot test (sign of the old vs the new difference);
 // in this body copy the second AngleDifference result is unused and the angle is always snapped to the target (retail
@@ -12,7 +13,7 @@
 #include <math.h>
 #pragma intrinsic(fmod)
 float __stdcall AngleDifference(float a, float b);   // 0x00A441E0
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 inline int Sign(float x) { return x < 0.0f ? -1 : 1; }
 
@@ -23,7 +24,7 @@ class CTCLook { public:
 void CTCLook::GetBodySettingsSlowInFastOut(float& angle, float& velocity, float acceleration, float maxSpeed, float targetAngle) const
 {
     float difference = AngleDifference(angle, targetAngle);
-    if ((float)fabs(difference) > EPSILON) {
+    if ((float)fabs(difference) > DELTA_NOTIONAL_ZERO) {
         velocity += Sign(difference) * acceleration;
         if (velocity < -maxSpeed)
             velocity = -maxSpeed;

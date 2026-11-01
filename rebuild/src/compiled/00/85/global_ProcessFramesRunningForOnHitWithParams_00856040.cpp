@@ -1,15 +1,16 @@
 // ProcessFramesRunningForOnHitWithParams(float& runningTime, float lastRunningTime, const std::pair<C3DVector,C3DVector>& previous, const std::pair<C3DVector,C3DVector>& current, const C3DVector& hitPosition) -- when enabled, wind a strike's running time back to the moment its weapon tip passed the hit: the hit's projection fraction along this frame's tip movement interpolates between the last and the current running time
 // Leaf: ?ProcessFramesRunningForOnHitWithParams@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856040, 266 bytes, /Gr __fastcall (runningTime in ecx, previous in edx; the
 //   float, current and hitPosition on the stack), `ret 0Ch`.
 // Identity: Ego_r.pdb ?ProcessFramesRunningForOnHitWithParams@?A0xad05d24c@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1AB
 //   VC3DVector@@@Z (the combat TU's anonymous namespace); its call site is CCombatActionBase::
 //   ProcessPossibleCreatureStrikeEvent 0x00858130 (landed), `(RunningTimeSeconds, LastRunningTimeSeconds, previous,
 //   current, hitPosition)` where each pair is (weapon base, weapon tip).
-// Globals: the enabling flag 0x013B86CD (a .bss bool read only here; name not in the PDB dump), EPSILON 0x0129BA3C
+// Globals: the enabling flag 0x013B86CD (a .bss bool read only here; name not in the PDB dump), DELTA_NOTIONAL_ZERO 0x0129BA3C
 //   (0.0001f).
 // Shape: the tip movement and the tip-to-hit offset are C3DVector differences assigned into pre-declared locals (each
-//   built in the shared 12-byte temporary and copied out), `lenSq > EPSILON` (`test ah,41h ; jne`), the fraction
+//   built in the shared 12-byte temporary and copied out), `lenSq > DELTA_NOTIONAL_ZERO` (`test ah,41h ; jne`), the fraction
 //   |offset . movement| / lenSq (`fabs ; fdivrp`), and the inline Clamp(value, lo, hi) (`value < lo` first) of
 //   lastRunningTime + (runningTime - lastRunningTime) * fraction, stored back through runningTime.
 extern "C" double __cdecl fabs(double x);
@@ -40,7 +41,7 @@ template <class T> inline T Clamp(const T& value, const T& lo, const T& hi)
     return value;
 }
 
-extern const float EPSILON;  // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (0.0001f)
 extern bool g_ProcessFramesRunningForOnHit;            // 0x013B86CD
 
 namespace {
@@ -55,7 +56,7 @@ void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float
         C3DVector offset;
         offset = hitPosition - previous.second;
         float lengthSquared = movement * movement;
-        if (lengthSquared > EPSILON) {
+        if (lengthSquared > DELTA_NOTIONAL_ZERO) {
             float fraction = (float)fabs(offset * movement) / lengthSquared;
             runningTime = Clamp(lastRunningTime + (runningTime - lastRunningTime) * fraction, lastRunningTime, runningTime);
         }

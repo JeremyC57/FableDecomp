@@ -1,5 +1,6 @@
 // CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump(CThingCreatureBase*, CThing*, const C3DVector&, const C3DVector&) -- a strafe-jump combat action (code 150, no sounds) that keeps flattened copies of the required and the original facing: each is normalised, or replaced by the owner's current facing when it is (nearly) zero
 // Leaf: ??0CCombatAction_ControlledStrafeJump
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085C190, 337 bytes (352 with padding). `ret 10h`; vtable 0x01276974.
 // Callees: CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) 0x00857F30, C3DVector::Normalise
 //          0x00A14440 (catalogued C3DVector::GetScaled), the owner's physics body (+0x60) virtual slot 70 (+0x118,
@@ -13,7 +14,7 @@
 // 0x114 bytes (the landed CCombatAction ctors, e.g. 0x008C94D0), so the members sit 0x18 lower: RequiredFacing
 // +0x114, OriginalFacing +0x120, AddedRollMode +0x12c.
 class CThing;
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -58,11 +59,11 @@ CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump(CThingCre
     OriginalFacing = originalFacing;
     OriginalFacing.Z = 0.0f;
     RequiredFacing.Z = 0.0f;
-    if (RequiredFacing.GetLengthSquared() > EPSILON * EPSILON)
+    if (RequiredFacing.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         RequiredFacing.AccurateNormalise();
     else
         RequiredFacing = owner->PhysicsBody->GetFacing();
-    if (OriginalFacing.GetLengthSquared() > EPSILON * EPSILON)
+    if (OriginalFacing.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         OriginalFacing.AccurateNormalise();
     else
         OriginalFacing = owner->PhysicsBody->GetFacing();

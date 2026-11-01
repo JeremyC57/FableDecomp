@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionFollowCreature::Update() -- keep the follow target valid, ignore it for navigation, mirror its sneaking, then pick a speed from the gap to the target (stop, slow, match or run) and steer along the nav route, looking where it goes
 // Leaf: ?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713EE0, length 1153 bytes.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (interface 7 CTCCreatureNavigation) and its const twin @ 0x004365B0
 // (interface 0x36 CTCStealth, through the const lookup), CTCCreatureNavigation::SetThingToIgnore @ 0x006CBE30 /
@@ -131,7 +132,7 @@ class CTCLook { public:                                // interface 0x43
     void LookAtPos(const C3DVector* position, long priority);   // 0x00753E90
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
 };
-extern const float EPSILON; // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0001f)
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -242,7 +243,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     nav->SetNavigationTarget(input);
     nav->Active = true;
     if (!PTCScript->ParentThing->IsPerformingAnyAction() && output.Status == 2
-        && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > EPSILON * EPSILON) {
+        && output.Offset.Y * output.Offset.Y + output.Offset.Z * output.Offset.Z + output.Offset.X * output.Offset.X > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         C3DVector lookPos = output.Offset + PTCScript->ParentThing->PPhysics->Position;
         CTCLook* look;
         if (PTCScript->ParentThing->GetInterface(&look, 0x43)) {

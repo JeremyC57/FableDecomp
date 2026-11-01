@@ -1,4 +1,5 @@
 // CTCCoopSpirit::UpdateLocalJostling() -- for every other live player hero (not the main player, not the spirit's own player) closer than half a unit, push the spirit away from it with an acceleration of 0.4 times the offset
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066FB80, 261 bytes (+ int3 padding), plain `ret`.
 // Callees: CTCBase::GetPlayerManager @ 0x00686D40 (x2; manifest "CViewBase::GetDisplayEngine" is propagated),
 //   CPlayerManager::GetMainPlayerNumber @ 0x00449700, CPlayerManager::GetPlayer(long) @ 0x004498C0, CPlayer::GetPControlledCreature
@@ -11,7 +12,7 @@
 //   `len > eps` (`fcom ; test ah,41h ; jne` to a pop) then `len < 0.5` (`fcomp ; test ah,5 ; jp`); the push is a named
 //   `offset * 0.4f` vector; the spirit thing is a named local for the subtraction (held in ebp across the hero call;
 //   reading ParentThing inline gives up ebp and moves the loop counter into it), ParentThing is re-read for the physics TC.
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -67,7 +68,7 @@ void CTCCoopSpirit::UpdateLocalJostling()
         CThing* spirit = ParentThing;
         C3DVector offset = spirit->GetPos() - hero->GetPos();
         float length = offset.GetMagnitudeAndNormalise();
-        if (length > EPSILON && length < 0.5f) {
+        if (length > DELTA_NOTIONAL_ZERO && length < 0.5f) {
             C3DVector push = offset * 0.4f;
             ParentThing->PhysicsTC->ApplyAcceleration(push);
         }

@@ -1,5 +1,6 @@
 // CCombatManager::IsCreatureOnRotatingCombatRing(const CThingCreatureBase& creature) const -- whether a combat-eligible attacker stands on a ring of its victim's combat wheel that is currently turning (|DeltaRotation| above the tolerance)
 // Leaf: ?IsCreatureOnRotatingCombatRing@CCombatManager@@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E93C0, 139 bytes (144 with int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z`; same
 //   shape as the landed CCombatManager::SetAttackerRingAsRotating 0x006E9D90 (eligibility test, the attacker's combatant
@@ -18,7 +19,7 @@
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 
-extern const float EPSILON;  // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (1e-4f)
 
 class CThingCreatureBase {
 public:
@@ -39,7 +40,7 @@ struct CCombatRing {                                        // CDefendingCombata
     float RotationAngle;                                    // +0x00
     float DeltaRotation;                                    // +0x04
     unsigned char _rest[0x14];
-    bool IsRotating() const { return (float)fabs(DeltaRotation) > EPSILON; }
+    bool IsRotating() const { return (float)fabs(DeltaRotation) > DELTA_NOTIONAL_ZERO; }
 };
 
 struct CCombatWheel {                                       // CDefendingCombatantInfo::CCombatWheel

@@ -1,8 +1,9 @@
 // CFadeInFadeOutBase::GetFadeInOutAlpha() -- while fading out (+0xd): 1.0 when the duration (+4) is below the epsilon, else the elapsed (+0x10) over the duration; while fading in (+0xc): likewise with +8 / +0x14; otherwise 1.0 when active (+0) and 0.0 when inactive
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004348D0, length 79 bytes.
 // Callees: none. Constants: the epsilon @ 0x0129BA3C (1e-4f), 1.0f @ 0x0122DED8, 0.0f @ 0x0122DEDC. Shape: the flag bytes through al, each duration compared with
 // `fcomp ; fnstsw ; test ah,5 ; jnp` (below the epsilon: the 1.0 return), the quotient left in st0 by `fdiv`; the two constants are loaded with `fld`.
-extern const float EPSILON;               // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;               // 0x0129BA3C (1e-4f)
 
 class CFadeInFadeOutBase { public:
     bool  m_active;                                // +0x00
@@ -20,12 +21,12 @@ class CFadeInFadeOutBase { public:
 float CFadeInFadeOutBase::GetFadeInOutAlpha()
 {
     if (m_fadingOut) {
-        if (m_fadeOutDuration < EPSILON)
+        if (m_fadeOutDuration < DELTA_NOTIONAL_ZERO)
             return 1.0f;
         return m_fadeOutElapsed / m_fadeOutDuration;
     }
     if (m_fadingIn) {
-        if (m_fadeInDuration < EPSILON)
+        if (m_fadeInDuration < DELTA_NOTIONAL_ZERO)
             return 1.0f;
         return m_fadeInElapsed / m_fadeInDuration;
     }

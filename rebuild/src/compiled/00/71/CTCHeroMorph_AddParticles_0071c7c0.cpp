@@ -1,4 +1,5 @@
 // CTCHeroMorph::AddParticles(EHeroMorphType type, float value) -- for every particle morph of the type whose [Min, Max] range (with epsilon) covers the value, creates the emitter (interpolated between two particle types when asked), attaches it to the hero by attach mode and records it
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071C7C0, 548 bytes, `ret 8`.
 // Callees: CDefClassBase::GetSubDef<CHeroMorphDef> @ 0x0071F930 (folded label), CParticleMorphs::GetAllMorphsOfType @ 0x0081B160,
 //          CThing::GetPos @ 0x004C73D0, CTCDParticleEmitter::Create(long, long, float, const C3DVector&, bool) @ 0x006E11F0 /
@@ -123,7 +124,7 @@ public:
     static CThing* __fastcall Create(long type, long typeEnd, float t, const C3DVector& pos, bool flag);   // 0x006E11F0
     void AttachToThing(CThing& thing, long bone, const CCharString& helper, long index, float time);   // 0x006E0BE0
 };
-extern const float EPSILON;   // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C
 
 // Same-TU stand-in for the out-of-line GetSubDef (retail's link-time codegen saw that the out pointer does not escape).
 #pragma auto_inline(off)
@@ -148,11 +149,11 @@ void CTCHeroMorph::AddParticles(long type, float value)
     vector<CParticleMorphEntry> entries;
     if (def->ParticleMorphs.GetAllMorphsOfType(type, entries)) {
         for (CParticleMorphEntry* entry = entries._M_start; entry != entries._M_finish; ++entry) {
-            if (entry->Min - EPSILON <= value && EPSILON + entry->Max >= value) {
+            if (entry->Min - DELTA_NOTIONAL_ZERO <= value && DELTA_NOTIONAL_ZERO + entry->Max >= value) {
                 CThing* particle;
                 if (entry->Interpolate && entry->ParticleTypeEnd > 0) {
                     float t = 1.0f;
-                    if (fabs(entry->Max - entry->Min) > EPSILON)
+                    if (fabs(entry->Max - entry->Min) > DELTA_NOTIONAL_ZERO)
                         t = (value - entry->Min) / (entry->Max - entry->Min);
                     particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPos(), false);
                 } else {

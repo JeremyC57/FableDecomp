@@ -1,5 +1,6 @@
 // CTCFadeOutAndIn::FrameUpdate() -- step the fade one frame: move Alpha towards 1 (fading in) or 0 (fading out) and push the new alpha / drawable state to every fading thing
 // Leaf: FrameUpdate
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x006C3F40, 265 bytes (CTCFadeOutAndIn vtable 0x0125DA0C slot 9; the catalog calls it vfunc_9, the landed
 // FinalCleanup 0x006C3B50 calls the same slot as FrameUpdate). Callees: CThing::RemoveTC(long) @ 0x004C9840 (label
@@ -61,7 +62,7 @@ template <class T> struct CRetailVector {                   // STLport vector (1
     SRetailAllocProxy<T> _M_end_of_storage;
 };
 
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 class CTCBase_Retail {
 public:
@@ -128,7 +129,7 @@ void CTCFadeOutAndIn::FrameUpdate()
         CTCGraphicAppearance* appearance = it->GetPItem()->PGraphicAppearance;
         if (appearance) {
             appearance->SetAlpha((unsigned char)(Alpha * 255.0f));
-            it->GetPItem()->SetAsDrawable(Alpha > EPSILON ? true : false);
+            it->GetPItem()->SetAsDrawable(Alpha > DELTA_NOTIONAL_ZERO ? true : false);
         }
     }
 }

@@ -1,4 +1,5 @@
 // CActionInputControl::GetDirection() -- quantise the control direction of a movement action into 4 directions
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040ED10, length 144 bytes.
 // Globals: the shared float epsilon @ 0x0129BA3C (1e-4f) and the 0.0f constant @ 0x0122DEDC.
 //
@@ -8,7 +9,7 @@
 // component re-read per test: `> 0` is `test ah,41h ; jne`, `< 0` is `test ah,5 ; jp`), else 0. No engine
 // header exists; members carry the PDB names (GameAction +0x00 .. ControlDirection +0x14).
 
-extern const float EPSILON;       // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C (1e-4f)
 extern const float g_floatZero;                 // 0x0122DEDC (0.0f)
 
 class C2DVector { public:
@@ -28,7 +29,7 @@ class CActionInputControl { public:
 long CActionInputControl::GetDirection() const
 {
     if (ControlDirection.X * ControlDirection.X + ControlDirection.Y * ControlDirection.Y
-            > EPSILON * EPSILON
+            > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO
         && (GameAction == 0x3C || GameAction == 0x72)) {
         if (ControlDirection.X > g_floatZero)
             return 4;

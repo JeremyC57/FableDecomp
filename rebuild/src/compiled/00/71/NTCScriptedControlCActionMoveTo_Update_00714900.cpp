@@ -1,5 +1,6 @@
 // NTCScriptedControl::CActionMoveTo::Update() -- move the scripted creature towards its position or target thing: refresh both handles, stop ignoring anything for navigation, fail when a claimed action point's thing is dead or carried, then (when the creature is idle) step along the nav route, facing or looking where it goes; on a blocked route fall back to the backup proximity or cancel the script, and on arrival or failure make the hero stop looking and finish
 // Leaf: ?Update@CActionMoveTo@NTCScriptedControl@@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00714900, 960 bytes (+ int3 padding), plain `ret`. Ego_r.pdb
 //   ?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ (CActionBase slot 1).
 // Callees: the script thing's slots 71/76/77 Refresh/IsDead/IsValid (+0x11c/+0x130/+0x134) and 11 GetThing (+0x2c);
@@ -118,7 +119,7 @@ class CTCLook { public:                                // interface 0x43
     bool IsPosInViewRange(const C3DVector& pos, float angle, bool a, bool b);   // 0x007534B0
     void StopLooking(long timeToStop);          // 0x00751B80
 };
-extern const float EPSILON; // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0001f)
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -257,7 +258,7 @@ void CActionMoveTo::Update()
     long result = output.NavResult;
     nav->Active = true;
     if (result == 2) {
-        if (!(output.MovementVector.X * output.MovementVector.X + output.MovementVector.Y * output.MovementVector.Y + output.MovementVector.Z * output.MovementVector.Z > EPSILON * EPSILON))
+        if (!(output.MovementVector.X * output.MovementVector.X + output.MovementVector.Y * output.MovementVector.Y + output.MovementVector.Z * output.MovementVector.Z > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO))
             return;
         C3DVector target = output.MovementVector + PTCScript->ParentThing->PPhysics->Position;
         if (!FaceMovement) {

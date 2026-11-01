@@ -1,5 +1,6 @@
 // CTCDegradableBase::OnParentHealthChanged(bool fromHit) -- for a degradable def that is not yet fully degraded: move to the stage matching the parent's health when it is lower than the current one (new mesh, smash particles unless hit, the parent made unhittable at the last stage) and pass the stage's navigation blocking to the switchable-navigation component
 // Leaf: OnParentHealthChanged
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ECAC0, 287 bytes (+ int3 padding), `ret 4` (one exit is the tail `jmp` to
 //   SetAsBlockingNavigation with its argument rewritten in the `fromHit` slot).
 // Callees: the parent physical thing's health fraction getter @ 0x006A4E40 (manifest "CParticleSystem::GetNormalisedTime" is
@@ -17,7 +18,7 @@
 //   negation with `test ; sete bl`); IsFullyDegraded is inlined at its first use only (an inline copy of the landed body) and called
 //   out of line at the second; `cur - new > eps` gives `test ah,41h ; jne` to the shared return; the component comes from
 //   the out-parameter GetInterface; its call is the last statement, so VC7.1 tail-jumps.
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -119,7 +120,7 @@ void CTCDegradableBase::OnParentHealthChanged(bool fromHit)
         CDegradableInfo* info = (CDegradableInfo*)GetDegradableInfoForHealthPercentage(PParentThingPhysical->GetHealthPercentage());
         if (!info)
             return;
-        if (PCurrentDegradableInfo && !(PCurrentDegradableInfo->HealthPercentage - info->HealthPercentage > EPSILON))
+        if (PCurrentDegradableInfo && !(PCurrentDegradableInfo->HealthPercentage - info->HealthPercentage > DELTA_NOTIONAL_ZERO))
             return;
         PCurrentDegradableInfo = info;
         ChangeMesh(info->EngineGraphic);

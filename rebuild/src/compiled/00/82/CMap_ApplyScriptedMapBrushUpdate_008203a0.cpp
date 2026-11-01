@@ -1,5 +1,6 @@
 // CMap::ApplyScriptedMapBrushUpdate(float amount, CScriptedMapBrush* brush)
 // Leaf: ?ApplyScriptedMapBrushUpdate@CMap@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 extern "C" double __cdecl pow(double x, double y);
 extern "C" double __cdecl sqrt(double x);
 extern "C" double __cdecl fabs(double x);
@@ -7,7 +8,7 @@ extern "C" double __cdecl fabs(double x);
 inline float fabs(float x) { return (float)fabs((double)x); }
 extern const float g_zero_0122dedc;               // 0x0122DEDC (0.0f)
 extern const float g_maxSize_012724c0;            // 0x012724C0 (2048.0f)
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class C2DCoordI { public:
     long X, Y;
@@ -61,7 +62,7 @@ class CHeightMap { public:
         if (size < g_zero_0122dedc) {
             value = g_zero_0122dedc;
         } else {
-            float limit = g_maxSize_012724c0 - EPSILON;
+            float limit = g_maxSize_012724c0 - DELTA_NOTIONAL_ZERO;
             value = size > limit ? limit : size;
         }
         GetCellIncludingExtraCells(cell.X, cell.Y).Height = value;

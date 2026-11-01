@@ -5,12 +5,13 @@
 //   there, telling its driver to ignore the troll
 // Grade: RELOCATION_MATCH (1090v1090) (wave 2 sec4b: first reconstruction from the disassembly; was the empty skeleton)
 // Graded: g1 draft (member-wise operators, out of line) 1050v1090/194; g2 ctor-form operators + explicit copy ctor 126;
-//   g3 EPSILON*EPSILON from the global (not a folded literal) 123; g4 the target position copied into a local 111; g5 the
+//   g3 DELTA_NOTIONAL_ZERO*DELTA_NOTIONAL_ZERO from the global (not a folded literal) 123; g4 the target position copied into a local 111; g5 the
 //   snow-troll CDefPointer in its own block (shares the 0x10 slot) 73; g6 shared engine/CDefPointer.h + the same-TU
 //   CDefClassBase::GetSubDef<T> template body (the def stays in ebx across Create and its release loses the null test)
 //   54; g7 the dummy-name CCharString as a block-scoped local (constructed before the GetPItem) 24; g8 cross operand order
 //   22; g9 the dot's grouping X + (Y + Z) 12; g10 its operand order RELOCATION_MATCH.
 // Leaf: ?PerformAction@CCreatureAction_IceTrollIcicleAttack@@UAEXXZ
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C6DB0, 1090 bytes, virtual PerformAction, plain `ret`, frame 0x74.
 // Layout: retail CCombatActionBase 0x114 (PCreature +0x08, PAnimEntry CCountedPointer<CAnimationEntry> +0x74, PTarget
 //   +0xA8); CCreatureAction_IceTrollIcicleAttack adds nothing (Ego_r 0x12C less the 0x18 base shrink); CThing
@@ -22,7 +23,7 @@
 //   <CSnowTrollDef> 0x008C7A70, CTCDExplosiveTrail::Create 0x008100D0 (Ego_r ?Create@CTCDExplosiveTrail@@SIPAVCThing@@JABVC3DVector@@0PBV2@@Z),
 //   CTCDExplosiveTrail::AddThingToIgnore(CThing&) 0x00810970 (Ego_r 0x0080B430; landed as the descriptive
 //   CUnprovenDriverOwner_00810970::AppendTrackedThing -> NAME_FIXES.tsv), __ftol2.
-// Globals: g_framesPerSecond 0x01375550 (long), EPSILON 0x0129BA3C (1e-4f; no PDB name).
+// Globals: g_framesPerSecond 0x01375550 (long), DELTA_NOTIONAL_ZERO 0x0129BA3C (1e-4f; no PDB name).
 class CBaseObject { public: virtual void v00(); };
 #include "fable_string.h"
 #define FABLE_RETAIL_DEF_CLASS_BASE
@@ -45,7 +46,7 @@ class C3DVector { public:
 };
 inline float operator*(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
 class CRightHandedSet { public: C3DVector Up, Forward; };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f; no PDB name)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f; no PDB name)
 extern long g_framesPerSecond;                            // 0x01375550
 
 class CTCPhysicsBase { public:
@@ -205,7 +206,7 @@ void CCreatureAction_IceTrollIcicleAttack::PerformAction()
         }
     }
     direction.Z = 0.0f;
-    if (direction.GetSquaredMagnitude2D() > EPSILON * EPSILON) {
+    if (direction.GetSquaredMagnitude2D() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         direction.AccurateNormalise();
         if (forward.X * direction.X + (direction.Y * forward.Y + direction.Z * forward.Z) < cos(1.0471976f)) {
             direction = forward;

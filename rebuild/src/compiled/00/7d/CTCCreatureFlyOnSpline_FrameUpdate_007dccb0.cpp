@@ -1,5 +1,6 @@
 // CTCCreatureFlyOnSpline::FrameUpdate() -- advance along the flight spline: step the progress (wrapping to its fractional part when looping, then clamping to [0, 1]), move the creature to the new spline position and, when it moved noticeably, orient it along the normalised travel direction (up = (dir.Y, -dir.X, 0) x dir)
 // Leaf: FrameUpdate
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the CrossProduct is the landed 0x007A1870 shape ((float)(double) per component through component pointers), which puts retail's Up.X fstp before the Forward.Y copy
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DCCB0, 400 bytes (`ret`).
 // Callees: __ftol2 @ 0x00BFEA70, CCardinalSpline::GetSplinePosition(C3DVector*, float) @ 0x00A567A0 (twice), the physics
@@ -10,7 +11,7 @@
 // Shape: the spline pointer's object is tested and cached for the first position call; the previous progress is a named local
 // that the looping path overwrites with the wrapped progress (sharing the __ftol2 integer's slot); the physics component is a
 // local taken before the orientation is built (the CTCCreatureFlyInCircles::FrameUpdate 0x007DE030 orientation code).
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -89,7 +90,7 @@ void CTCCreatureFlyOnSpline::FrameUpdate()
     PSpline->GetSplinePosition(&pos, Progress);
     ParentThing->PhysicsTC->SetPosition(pos);
     C3DVector dir = pos - lastPos;
-    if (dir.GetLengthSquared() > EPSILON * EPSILON) {
+    if (dir.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         dir.Normalise();
         CTCPhysicsBase* physics = ParentThing->PhysicsTC;
         CRightHandedSet set(CrossProduct(C3DVector(dir.Y, -dir.X, 0.0f), dir), dir);

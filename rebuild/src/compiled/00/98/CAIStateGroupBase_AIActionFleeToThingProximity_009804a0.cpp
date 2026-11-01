@@ -1,15 +1,16 @@
 // CAIStateGroupBase::AIAction_FleeToThingProximity(CIntelligentPointer<const CThingCreatureBase>, float, CCreatureActionBase*, CAIFilterBase*) -- move to within `proximity` of a creature while the filter holds; once there and idle, step to a nearby position toward it (facing the best target) or perform the action
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009804A0, 720 bytes (ret 14h).
 // Callees: GetPBestTargetToFaceForCreature 0x0097E140 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem
 //   0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CAIStateGroupBase::AIAction_MoveToThingProximity 0x0097E380 /
 //   AIAction_LookAtThing 0x0097D6F0 / AIAction_MoveToPos 0x0097EC00 / AIAction_PerformAction 0x0097D8B0,
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0 / PeekPos 0x006A4D00, CVectorMap::LowerBound 0x0040F020
 //   (same-TU stand-in; inlined GetInterface 7 = CTCCreatureNavigation), CTCCreatureNavigation::GetNearbyDirectedPosition
-//   0x006CB780, EPSILON 0x0129BA3C.
+//   0x006CB780, DELTA_NOTIONAL_ZERO 0x0129BA3C.
 // Layout: the state group follows engine/CAIStateGroupBase.h (PBrain +4), modelled locally to declare the members; the
 // brain's creature at +0x18; dead bit at +0x91 (retail CThing).
 // Shape: the found flag of the inlined navigation lookup is written through the bool that MoveToPos later fills; the
-// PerformAction result is discarded (the loop re-tests the proximity move result); the creature is named before EPSILON.
+// PerformAction result is discarded (the loop re-tests the proximity move result); the creature is named before DELTA_NOTIONAL_ZERO.
 class CTCBase;
 class C3DVector { public:
     float X, Y, Z;
@@ -134,7 +135,7 @@ __forceinline bool IS_THING_ALIVE(const CThing* thing)
     return false;
 }
 const CThing* __fastcall GetPBestTargetToFaceForCreature(CThingCreatureBase* creature);   // 0x0097E140
-extern const float EPSILON;                     // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;                     // 0x0129BA3C
 struct CAIFilterBase {
     virtual bool Check() const;                 // slot 0
 };
@@ -192,7 +193,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_FleeToThingProximity(CIntelligentPoi
             C3DVector dest;
             if (nav->GetNearbyDirectedPosition(GetCreature()->PeekPos(), 5.0f, toward, 0.25277778f, &dest)) {
                 CThingCreatureBase* me = GetCreature();
-                float tolerance = EPSILON;
+                float tolerance = DELTA_NOTIONAL_ZERO;
                 const C3DVector& pos = me->PeekPos();
                 float dx = pos.X - dest.X;
                 float dy = pos.Y - dest.Y;

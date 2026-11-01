@@ -2,6 +2,7 @@
 // first, last, pred, const random_access_iterator_tag&) -- STLport random-access find_if (4-way unrolled, switch tail)
 // walking a vector<long> backwards for the first fallback multiplier the predicate accepts
 // Leaf: ??$__find_if@V?$reverse_iterator@PBJ@std@@VCPredIsFallbackMultiplierForMultiplier@?A
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006DABE0, length 488 bytes, `ret 0Ch`.
 // Identity (FINDINGS chunk 387 agent table; was the descriptive "FindReverseIntegerThreshold (owner uncertain)" with a
 //   private reverse-iterator struct): Ego_r.pdb / FableWin.pdb name find_if<reverse_iterator<vector<long>::
@@ -15,7 +16,7 @@
 //   difference of the bases `sar 4`), the remainder is the fall-through `switch` (3, 2, 1 via `dec eax`). The
 //   reverse_iterator dereference is `*--tmp` (base[-1]); the predicate is `fallback < 2.0f || fallback - Multiplier <
 //   -epsilon` (2.0f @ 0x0122DCDC, epsilon 1e-4f @ 0x0129BA3C).
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 namespace std {
 struct input_iterator_tag { };
@@ -62,7 +63,7 @@ public:
     CPredIsFallbackMultiplierForMultiplier(float multiplier) : Multiplier(multiplier) { }
     bool operator()(long fallback_multiplier) const
     {
-        return (float)fallback_multiplier < 2.0f || (float)fallback_multiplier - Multiplier < -EPSILON;
+        return (float)fallback_multiplier < 2.0f || (float)fallback_multiplier - Multiplier < -DELTA_NOTIONAL_ZERO;
     }
     float Multiplier;                                    // +0x00
 };

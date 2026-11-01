@@ -1,4 +1,5 @@
 // COpenCloseHelper::FrameUpdate(float frameTime) -- advance an opening/closing transition: remember last frame's amount, then step the amount up by frameTime/TotalTimeToOpen (snap to fully Opened at 1) or down by frameTime/TotalTimeToClose (snap to Closed at 0)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074FF60, length 115 bytes.
 // Globals: 1.0f @ 0x0122DED8, the transition epsilon 0.0001f @ 0x0129BA3C.
 // Layout: PDB COpenCloseHelper (0x14 bytes): Opened +0, Closed +1, Opening +2, Closing +3,
@@ -18,7 +19,7 @@ struct COpenCloseHelper {
     void FrameUpdate(float frameTime);
 };
 
-extern const float EPSILON;           // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (0.0001f)
 
 void COpenCloseHelper::FrameUpdate(float frameTime)
 {
@@ -26,7 +27,7 @@ void COpenCloseHelper::FrameUpdate(float frameTime)
     if (Opening)
     {
         OpenCloseTransitionAmount += frameTime / TotalTimeToOpen;
-        if (OpenCloseTransitionAmount - 1.0f > -EPSILON)
+        if (OpenCloseTransitionAmount - 1.0f > -DELTA_NOTIONAL_ZERO)
         {
             Opened = true;
             Opening = false;
@@ -36,7 +37,7 @@ void COpenCloseHelper::FrameUpdate(float frameTime)
     else if (Closing)
     {
         OpenCloseTransitionAmount -= frameTime / TotalTimeToClose;
-        if (OpenCloseTransitionAmount < EPSILON)
+        if (OpenCloseTransitionAmount < DELTA_NOTIONAL_ZERO)
         {
             Closed = true;
             Closing = false;

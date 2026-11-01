@@ -1,5 +1,6 @@
 // NUISystem::CZoomingComponent::Update(float time) -- the base update, then clears the Panning flag once the position has reached its pan target (both axes within 1e-4)
 // Leaf: ?Update@CZoomingComponent
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00546A50, 66 bytes (+ int3 padding), virtual (CZoomingComponent vtable slot 1), `ret 4`.
 // Ego_r.pdb: `virtual void CZoomingComponent::Update(float)`; Panning is the bool at PDB +0x1a8 (retail +0x178,
 //   the CComponent body is 0x30 smaller in retail, see the landed CZoomingComponent::ChangeState 0x005469E0).
@@ -8,7 +9,7 @@
 // Shape: `fld target; fsub position; fabs; fcomp eps; test ah,41h; jp` per axis is `fabs(TargetPosition - Position) <= eps`;
 //   the `(float)` cast keeps the compare in single precision. Base layout as in the landed CHoverable::Update.
 // Layout (retail CComponent): Position +0x34, TargetPosition +0x3c (Ego_r.pdb +0x64 / +0x6c).
-extern const float EPSILON;          // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;          // 0x0129BA3C (1e-4f)
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 namespace NUISystem {
@@ -42,8 +43,8 @@ class CZoomingComponent : public CChangingStateComponent { public:
 void CZoomingComponent::Update(float time)
 {
     CChangingStateComponent::Update(time);
-    if ((float)fabs(TargetPosition.X - Position.X) <= EPSILON &&
-        (float)fabs(TargetPosition.Y - Position.Y) <= EPSILON)
+    if ((float)fabs(TargetPosition.X - Position.X) <= DELTA_NOTIONAL_ZERO &&
+        (float)fabs(TargetPosition.Y - Position.Y) <= DELTA_NOTIONAL_ZERO)
         Panning = false;
 }
 }

@@ -1,4 +1,5 @@
 // CAIStateGroupBase::AIAction_MoveToPos(EAIActionRepeat, C3DVector, bool&, EMovementType, bool, bool, const CThing*, bool, float) -- steer the creature along its navigation route to a position, one brain output per tick (move, look at the best face target or look around), until arrived (2), failed (3) or stopped (1)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097EC00, 864 bytes (ret 2Ch).
 // Callees: SetNavigationIgnoreThing 0x0097E270 / SetNavigationSpeedScale 0x0097E2D0 (state-group helpers on the creature's
 //   navigation component; catalog "AssignCreatureToTask_Helper"/"SetTaskProperty_AtOffset" are propagated), IsStopping
@@ -27,7 +28,7 @@ inline C3DVector operator+(const C3DVector& a, const C3DVector& b)
     r.Z = a.Z + b.Z;
     return r;
 }
-extern const float EPSILON;                     // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;                     // 0x0129BA3C (0.0001f)
 
 class CTCBase;
 struct CInterfaceMap {
@@ -225,7 +226,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPos(EAIActionRepeat repeat, C3
         CTCCreatureNavigation* navigation;
         GetCreature()->GetInterface(&navigation, 7);
         CCreatureNavOutput output = navigation->GetNextNavPosOnRoute(input, false, b6, b8, true, false);
-        moving = output.Status == 0 || output.Offset.GetLengthSquared() > EPSILON * EPSILON;
+        moving = output.Status == 0 || output.Offset.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO;
         if (!GetCreature()->IsPerformingAnyAction() || !GetCreature()->CurrentAction->BlocksMovement()) {
             switch (output.Status) {
             case 0:

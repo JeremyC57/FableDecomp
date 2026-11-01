@@ -4,6 +4,7 @@
 // CManager native PDropped+BC vs donorEC. Native table124BA94 slot31=55A630 ChangePosition;slot153=55A7C0 UpdateMouseCursor.
 // 41E5F2 manager singleton;55ACB0 CClickable::Update. Float129BA3C=0.0001,122DEDC=0.
 // Leaf: Update
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
 #include <stddef.h>
@@ -11,9 +12,9 @@ extern "C" double __cdecl fabs(double);
 #include "engine/CHoverable.h"
 struct NativeUIManager {unsigned char Prefix[0xbc];void* PDropped;};
 NativeUIManager* __cdecl GetUIManager(); //0041E5F2
-extern const float EPSILON;   // 0x0129BA3C (established spelling, naming wave 13)
+extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C (established spelling, naming wave 13)
 namespace NUISystem {
-struct C2DVector {float X,Y;bool operator==(const C2DVector& p)const{return (float)fabs(p.X-X)<=EPSILON&&(float)fabs(p.Y-Y)<=EPSILON;}};
+struct C2DVector {float X,Y;bool operator==(const C2DVector& p)const{return (float)fabs(p.X-X)<=DELTA_NOTIONAL_ZERO&&(float)fabs(p.Y-Y)<=DELTA_NOTIONAL_ZERO;}};
 class CDraggable { public:
  void* VTable;unsigned char BeforeTime[0x30-4];float Time;C2DVector Position,TargetPosition;
  unsigned char BeforeLayer[0x12f-0x44];unsigned char Layer;unsigned char BeforeClick[0x170-0x130];bool WasLeftClicked;

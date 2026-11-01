@@ -1,5 +1,6 @@
 // CTCBed::UpdateAnimation() -- while the bed animates: once the get-in animation has (almost) finished switch to the looping sleep animation, once the get-out animation has finished mark the bed empty; stop animating when the player has run out of animations
 // Leaf: UpdateAnimation
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007468C0, 245 bytes (+11 int3 padding), `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined lookup of CTCAnimationComplex, type 0x5A),
 //   CTCAnimationComplex::GetAnimation 0x0070B460, CAnimInit::Set 0x0070C050, CAnimateThing::SetMainAnim(const CAnimInit&,
@@ -9,9 +10,9 @@
 //   (+0x04 == +0x08, or bit 1 of +0x51).
 // Shape: the landed sibling's model: the animation player comes from the inline accessor returning an unset local
 //   (the absent path reads the never-written word); the progress is a named float read before the GettingIn test (and
-//   popped on the path that never compares it); `progress > 1.0f - EPSILON` (`test ah,41h ; jne`); the sleep loop
+//   popped on the path that never compares it); `progress > 1.0f - DELTA_NOTIONAL_ZERO` (`test ah,41h ; jne`); the sleep loop
 //   is a CAnimInit local built by its inline constructor over Set.
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 struct CTCBaseInterface;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -116,13 +117,13 @@ void CTCBed::UpdateAnimation()
     if (Animating) {
         float progress = animate.Progress;
         if (GettingIn) {
-            if (progress > 1.0f - EPSILON) {
+            if (progress > 1.0f - DELTA_NOTIONAL_ZERO) {
                 GettingIn = false;
                 CAnimInit init(6, 0, BedSleepAnim, 1, true, 0, 100);
                 animate.SetMainAnim(init, 1, 0);
             }
         } else if (GettingOut) {
-            if (progress > 1.0f - EPSILON) {
+            if (progress > 1.0f - DELTA_NOTIONAL_ZERO) {
                 GettingOut = false;
                 Empty = true;
             }

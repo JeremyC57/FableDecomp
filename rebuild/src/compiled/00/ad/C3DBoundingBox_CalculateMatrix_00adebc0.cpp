@@ -7,6 +7,7 @@
 // is raised to it; the matrix gets the three scaled axes, zeros elsewhere (one `xor ecx,ecx` register) and the centre.
 // Layout: PDB C3DBoundingBox MinCoord +0, MaxCoord +0xc; CMatrix3x4 E11..E43 (rows of three floats).
 // Leaf: CalculateMatrix@C3DBoundingBox
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -23,7 +24,7 @@ class CMatrix3x4 { public:
     float E41, E42, E43;
 };
 
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 class C3DBoundingBox { public:
     C3DVector MinCoord;                            // +0
@@ -35,12 +36,12 @@ void C3DBoundingBox::CalculateMatrix(CMatrix3x4& matrix) const
 {
     C3DVector centre = (MaxCoord + MinCoord) * 0.5f;
     C3DVector half = (MaxCoord - MinCoord) * 0.5f;
-    if (half.X < EPSILON)
-        half.X = EPSILON;
-    if (half.Y < EPSILON)
-        half.Y = EPSILON;
-    if (half.Z < EPSILON)
-        half.Z = EPSILON;
+    if (half.X < DELTA_NOTIONAL_ZERO)
+        half.X = DELTA_NOTIONAL_ZERO;
+    if (half.Y < DELTA_NOTIONAL_ZERO)
+        half.Y = DELTA_NOTIONAL_ZERO;
+    if (half.Z < DELTA_NOTIONAL_ZERO)
+        half.Z = DELTA_NOTIONAL_ZERO;
     matrix.E11 = half.X;
     matrix.E12 = 0.0f;
     matrix.E13 = 0.0f;

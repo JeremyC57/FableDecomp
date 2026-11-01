@@ -1,5 +1,6 @@
 // CEngineSkyRenderer::BuildOuterSkyMesh(CTVertexColTex1**, unsigned short**, long, long) -- fill the outer sky dome: a top centre vertex and a 36-step ring of low/high vertex pairs (radius 6500, z -500 / 7000), then the cap fan and the band quads as an index list
 // Leaf: BuildOuterSkyMesh
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B61B30, length 416 bytes, `ret 0x10` (this unused).
 // Layout: PDB CTVertexColTex1Base (24 bytes): X +0, Y +4, Z +8, DiffuseColour +0xc, U1 +0x10, V1 +0x14.
 // Constants: 0.0001f @ 0x0129BA3C (cap texcoord), 0.0f @ 0x0122DEDC, 6500.0f @ 0x012A2930 (ring radius),
@@ -20,7 +21,7 @@ class CTVertexColTex1 { public:
     float         V1;                              // +0x14
 };
 
-extern const float EPSILON;       // 0x0129BA3C (0.0001f, a writable global: loaded and negated)
+extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C (0.0001f, a writable global: loaded and negated)
 
 class CEngineSkyRenderer { public:
     void BuildOuterSkyMesh(CTVertexColTex1** vertices, unsigned short** indices, long indexOffset, long vertexOffset);
@@ -33,8 +34,8 @@ void CEngineSkyRenderer::BuildOuterSkyMesh(CTVertexColTex1** vertices, unsigned 
     centre->X = 0.0f;
     centre->Y = 0.0f;
     centre->Z = 7000.0f;
-    centre->U1 = -EPSILON;
-    centre->V1 = -EPSILON;
+    centre->U1 = -DELTA_NOTIONAL_ZERO;
+    centre->V1 = -DELTA_NOTIONAL_ZERO;
     centre->DiffuseColour = 0;
     float angle = 0.0f;
     float u = 0.0f;

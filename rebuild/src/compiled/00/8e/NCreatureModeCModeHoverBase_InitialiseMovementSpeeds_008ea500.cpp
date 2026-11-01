@@ -3,6 +3,7 @@
 //   matching animation speed (1 when either is below 1e-4); a state's tier comes from its animation-name suffix (_SLOW, _MEDIUM,
 //   _FAST, else 0) and the scaled speed is written to both MovementSpeed and Area.RadHigh
 // Leaf: InitialiseMovementSpeeds
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008EA500, 923 bytes (`ret`).
 // Callees: CModeBase::GetWorld 0x0073A680 (world +0x3c passed through), own virtual slot 12 (+0x30, CCharString by value),
 //   operator+(const CCharString&, const char*) 0x0099F600 (__fastcall), the animation movement-speed helper 0x00861C90 (__fastcall
@@ -42,7 +43,7 @@ class CWorld { public:
     unsigned char _pad[0x3c];
     long          Value3c;                              // +0x3c
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 struct CModeBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -78,15 +79,15 @@ void CModeHoverBase::InitialiseMovementSpeeds()
     float mediumSpeed = creature->GetHoverSpeedMedium();
     float fastSpeed = creature->GetHoverSpeedFast();
     float slowScale, mediumScale, fastScale;
-    if (slowAnimSpeed < EPSILON || slowSpeed < EPSILON)
+    if (slowAnimSpeed < DELTA_NOTIONAL_ZERO || slowSpeed < DELTA_NOTIONAL_ZERO)
         slowScale = 1.0f;
     else
         slowScale = slowSpeed / slowAnimSpeed;
-    if (mediumAnimSpeed < EPSILON || mediumSpeed < EPSILON)
+    if (mediumAnimSpeed < DELTA_NOTIONAL_ZERO || mediumSpeed < DELTA_NOTIONAL_ZERO)
         mediumScale = 1.0f;
     else
         mediumScale = mediumSpeed / mediumAnimSpeed;
-    if (fastAnimSpeed < EPSILON || fastSpeed < EPSILON)
+    if (fastAnimSpeed < DELTA_NOTIONAL_ZERO || fastSpeed < DELTA_NOTIONAL_ZERO)
         fastScale = 1.0f;
     else
         fastScale = fastSpeed / fastAnimSpeed;

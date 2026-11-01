@@ -8,9 +8,10 @@
 //   copy or member references give other spills); the vector operators are __forceinline (left to the compiler they are
 //   emitted out of line here).
 // Leaf: GetViewPosInFocalPlane
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include <math.h>
 #pragma intrinsic(fabs)
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -69,12 +70,12 @@ C3DVector CScriptModuleBase::GetViewPosInFocalPlane(const C3DVector& pos, const 
         C3DVector forward = CoordAxis.Forward;
         C3DVector up = CoordAxis.Up;
         C3DVector normal = CrossProduct(forward, up);
-        if (normal.GetLengthSquared() > EPSILON * EPSILON) {
+        if (normal.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
             normal.AccurateNormalise();
             float denominator = DotProduct(normal, dir);
-            if (fabs(denominator) > EPSILON) {
+            if (fabs(denominator) > DELTA_NOTIONAL_ZERO) {
                 float t = DotProduct(origin - pos, normal) / denominator;
-                if (t > 1.0f - EPSILON)
+                if (t > 1.0f - DELTA_NOTIONAL_ZERO)
                     result = pos + dir * t;
             }
         }

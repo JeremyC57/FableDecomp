@@ -1,4 +1,5 @@
-// Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: EPSILON bound to two different float pools (0.3 at 0x1238170, 1e-4 at 0x129ba3c); PreferredMargin/EPSILON swapped)
+// Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: DELTA_NOTIONAL_ZERO bound to two different float pools (0.3 at 0x1238170, 1e-4 at 0x129ba3c); PreferredMargin/DELTA_NOTIONAL_ZERO swapped)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition() -- true when the creature already stands within reach
 //   of its preferred combat position, or, if that position is not taken, within reach of the enemy.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0096E700, 297 bytes.
@@ -8,8 +9,8 @@
 //   0x006E9700 (autoname label only), CThing::GetPos 0x004C73D0 (physics +0x60, position +0x0c),
 //   CBaseIntelligentPointer::GetPItem() const 0x00A01B50.
 // Constants: four const float globals in .rdata (separate operands: VC would fold literal 0.3f + 1e-4f into one):
-//   ReachScale 0.8333333 (0x012925CC), PreferredPosMargin 0.3 (0x01238170), EPSILON 1e-4 (0x0129BA3C),
-//   EnemyMargin 1.0 (0x0122DED8); reach = (r + r) * ReachScale + margin + EPSILON. Names are descriptive.
+//   ReachScale 0.8333333 (0x012925CC), PreferredPosMargin 0.3 (0x01238170), DELTA_NOTIONAL_ZERO 1e-4 (0x0129BA3C),
+//   EnemyMargin 1.0 (0x0122DED8); reach = (r + r) * ReachScale + margin + DELTA_NOTIONAL_ZERO. Names are descriptive.
 // Layout: engine/CAIStateGroupBase.h (PBrain +0x04), CAIBrain.h (Creature +0x18), CWorld.h (PThingCombatManager_ptr
 //   +0x4c); the group's enemy pointer at +0x14 (PDB: unnamed base bytes) and the physics radius at +0x34 are retail
 //   offsets. The *_Methods structs are the lane's method carriers for generated data-only headers.
@@ -26,7 +27,7 @@ protected:
 class C3DVector { public: float X, Y, Z; };
 extern const float ReachScale;                          // 0x012925CC = 0.8333333
 extern const float PreferredPosMargin;                  // 0x01238170 = 0.3
-extern const float EPSILON;     // 0x0129BA3C = 1e-4
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C = 1e-4
 extern const float EnemyMargin;                         // 0x0122DED8 = 1.0
 class CBaseObject;
 struct CThingPhysics { char _prefix[0x34]; float Radius; };                  // +0x34
@@ -59,14 +60,14 @@ bool CAIStateGroup_MeleeCombatNearby_Methods::IsEnemyCreatureInCombatPosition() 
         C3DVector preferred = world->PThingCombatManager_ptr->GetPreferredPos(actor);
         const C3DVector& position = Creature()->GetPos();
         float dx = preferred.X - position.X, dy = preferred.Y - position.Y;
-        float reach = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + EPSILON + PreferredPosMargin;   // written e-first: VC7.1 (no /Op) emits these two adds swapped (retail order: 0.3 then 1e-4)
+        float reach = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + DELTA_NOTIONAL_ZERO + PreferredPosMargin;   // written e-first: VC7.1 (no /Op) emits these two adds swapped (retail order: 0.3 then 1e-4)
         if (dx * dx + dy * dy < reach * reach) return true;
         const C3DVector& target = ((CThingCreatureBase*)PEnemy()->GetPItem())->GetPos();
         const C3DVector& current = Creature()->GetPos();
         C3DVector delta; delta.X = target.X - current.X; delta.Y = target.Y - current.Y; delta.Z = 0;
         CThingCreatureBase* owner = Creature(); CCombatManager* manager = GetPWorld()->PThingCombatManager_ptr;
         if (!manager->IsPositionOccupied(owner)) {
-            float limit = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + EnemyMargin + EPSILON;
+            float limit = (Creature()->Physics->Radius + Creature()->Physics->Radius) * ReachScale + EnemyMargin + DELTA_NOTIONAL_ZERO;
             if (delta.X * delta.X + delta.Y * delta.Y < limit * limit) return true;
         }
     }

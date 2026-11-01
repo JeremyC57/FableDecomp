@@ -1,5 +1,6 @@
 // CTCPhysicsStandard::OnCreate() -- start with OldRHSet = RHSet and a zero offset, build the physics mesh info when the parent's graphic data names a (static or animated) mesh that has a physics mesh, run the base OnCreate, take the interaction flags, gravity / air-resistance and pushable flags from the physics def (defaults without one), work out whether the thing starts on the ground, and when it interacts with things settle it on the surface below
 // Leaf: OnCreate
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00724010, 556 bytes, plain `ret`. CTCPhysicsStandard vtable 0x01265F84 slot 4.
 // Callees: CTCBase::PeekWorld 0x00686A80, the graphic bank's GetMesh 0x00A24280 / GetAnimatedMesh 0x00A242B0,
 //   C3DMeshInfo::HasPhysicsMesh 0x00A23C40 (PhysicsMeshIndex +0x3c != -1), CTCPhysicsBase::CreatePPhysicsMeshInfo 0x006B05A0,
@@ -7,7 +8,7 @@
 //   CTCPhysicsBase::GetWorldMap 0x006AF620, CWorldMap::GetGroundSizeZAt 0x0063A300,
 //   CTCPhysicsStandard::GetPossibleInteractedWithList 0x008E57D0, free 0x00BFEA14; virtual slots 36 (+0x90),
 //   43 SetInteractionFlags (+0xac), 52 (+0xd0, interacts with things), 97 UpdateOnSurface (+0x184),
-//   98 GetPossibleCollidedWithArea (+0x188). EPSILON 0x0129BA3C; on-ground tolerance 0x0125A15C.
+//   98 GetPossibleCollidedWithArea (+0x188). DELTA_NOTIONAL_ZERO 0x0129BA3C; on-ground tolerance 0x0125A15C.
 // Layout: engine/CTCPhysicsStandard.h offsets (local model with real C3DVector/CRightHandedSet members, as the landed
 //   CTCPhysicsControlled::Move 0x00725C40 / CTCPhysicsRigidBody::OnCreate 0x0075B2D0); flag bytes +0x84/+0x85 per the PDB
 //   bitfield order. CThing +0x64 graphic appearance (graphic data +0x44: index +0, type byte +0xd; has-graphic byte +0x51).
@@ -29,7 +30,7 @@ struct CThingPtrVector {                            // retail STLport vector<CTh
     CThingPtrVector() : first(0), last(0), endOfStorage(0) { }
     ~CThingPtrVector() { if (first) free(first); }
 };
-extern const float EPSILON;       // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C
 extern const float g_OnGroundTolerance;             // 0x0125A15C
 
 class C3DMeshInfo { public:
@@ -160,8 +161,8 @@ void CTCPhysicsStandard::OnCreate()
     BaseOnCreate();
     if (PhysicsDef) {
         SetInteractionFlags(PhysicsDef->InteractionFlags);
-        FeelsGravity = GetMass() > EPSILON;
-        FeelsAirResistance = GetAirResistance() > EPSILON;
+        FeelsGravity = GetMass() > DELTA_NOTIONAL_ZERO;
+        FeelsAirResistance = GetAirResistance() > DELTA_NOTIONAL_ZERO;
         PushableByHero = PhysicsDef->PushableByHero;
     } else {
         SetInteractionFlags(0);

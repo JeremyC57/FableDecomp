@@ -1,5 +1,6 @@
 // NUISystem::CSlider::~CSlider() -- if the value moved, push the starting value back into every action's target and re-run the actions; delete the back/select action lists; destroy the action vector and the sprite base
 // Leaf: ??1CSlider@NUISystem
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail 0x0054B360, 328 bytes, ret. Callees: CManager::GetInstance 0x0041E5F2 and its ExecuteAction (slot 14,
 // +0x38), list<CCountedPointer<CAction> >::clear 0x005356A0, free 0x00BFEA14, operator delete 0x00BFE9BC, the action
 // range destroyer 0x0054A1C0 (__fastcall first/last + allocator reference), CSprite::~CSprite 0x0041AB40.
@@ -48,13 +49,13 @@ template <class T> struct CRetailList {          // STLport list: the header-nod
             free(_M_node);
     }
 };
-extern const float EPSILON;             // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C
 #pragma pack(push, 1)
 class C2DVector { public:
     float X, Y;
     bool operator==(const C2DVector& v) const
     {
-        return fabs(X - v.X) <= EPSILON && fabs(Y - v.Y) <= EPSILON;
+        return fabs(X - v.X) <= DELTA_NOTIONAL_ZERO && fabs(Y - v.Y) <= DELTA_NOTIONAL_ZERO;
     }
 };
 #pragma pack(pop)

@@ -3,6 +3,7 @@
 // while waiting to sleep or when a 3D emitter is out of spawn range of the engine camera, update every active,
 // unfinished particle system, and kill the emitter once none is left running
 // Leaf: Update
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEE9F0, 0x1A3 bytes (padded to 432), plain `ret`.
 // Callees: CParticleEmitter::Initialise(CIEngine*) 0x00AEE240, the engine getter 0x00AEAB10 (returns the global at
 //   0x013D2E2C), the engine's virtual slot 6 (camera position, returned by value), GFWorld3DDistanceSmallerThan
@@ -23,7 +24,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
-extern const float EPSILON;     // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C
 #pragma auto_inline(off)
 __declspec(noinline) bool __fastcall GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance)   // 0x006614F0
 {
@@ -88,8 +89,8 @@ void CParticleEmitter::Update()
     if ((bool)Sleeping)
         return;
     C3DVector position(Transform.Translation.X, Transform.Translation.Y, Transform.Translation.Z);
-    if (OldPos.GetLengthSquared() > EPSILON * EPSILON
-        || Velocity.GetLengthSquared() > EPSILON * EPSILON) {
+    if (OldPos.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO
+        || Velocity.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         Velocity = position - OldPos;
         OldPos = position;
     } else {

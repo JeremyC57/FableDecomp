@@ -1,5 +1,6 @@
 // CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase&, const CThing&, const C3DVector&) const -- true when the target lies outside the cone (the controlling thing's combat override angle, default 60 degrees) around the direction the creature tries to face
 // Leaf: IsTargetOverriddenByAttemptedFacingDirection
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA5F0, 383 bytes (384 with padding). `ret 0Ch`.
 // Callees: CThing::GetPos 0x004C73D0 (twice), C3DVector::AccurateNormalise @ 0x00A14440 (catalogued GetScaled),
 //          CVectorMap::LowerBound 0x004365B0 (inlined GetInterface, type 0x46 = CTCCarrying, bit 6 of the bitset byte
@@ -17,7 +18,7 @@
 // (landed 0x006E3780); the sub-def's override angle +0xcc (descriptive name).
 #include <math.h>
 #pragma intrinsic(cos)
-extern const float EPSILON; // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -131,7 +132,7 @@ bool CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCr
 {
     C3DVector targetPosition = target.GetPos();
     C3DVector direction = targetPosition - creature.GetPos();
-    if (direction.GetLengthSquared() > EPSILON * EPSILON) {
+    if (direction.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         direction.AccurateNormalise();
         const CThing* controller = &creature;
         CTCCarrying* carrying;

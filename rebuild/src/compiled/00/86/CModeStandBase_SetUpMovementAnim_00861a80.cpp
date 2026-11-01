@@ -1,5 +1,6 @@
 // CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStatus status, float speed, const CMovementSetup& from, const CMovementSetup& to) const -- blend between the two movement anims by where the speed falls between their maximum speeds: when the pair is already playing (and new anims are not forced) re-weight both layers; otherwise start `from` as the main anim (keeping the current frame unless the existing anim is the same pair on a non-finished state) and add `to` as the weighted blend
 // Leaf: SetUpMovementAnim
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00861A80, 0x1E6 bytes (padded to 496), `ret 14h`. PDB name
 //   ?SetUpMovementAnim@CModeStandBase@@ABEXAAVCAnimateThing@@W4EExistingAnimStatus@1@MABVCMovementSetup@1@2@Z (private; the
 //   enum and CMovementSetup are nested in CModeStandBase; public here so the behaviour test can call it).
@@ -22,7 +23,7 @@
 #undef CModeStandBase
 #include <math.h>
 class CThing;
-extern const float EPSILON;     // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C
 class CAnimationEntry { public:
     long BankIndex;                                 // +0x00
     long GetDelayTime() const;                      // 0x005DC1F0
@@ -101,7 +102,7 @@ void CModeStandBase::SetUpMovementAnim(CAnimateThing& animate, EExistingAnimStat
     long delay = Max(from.GetDelayTime(), to.GetDelayTime());
     float alpha = 1.0f;
     float range = to.MaxMovementSpeed - from.MaxMovementSpeed;
-    if (fabs(range) > EPSILON) {
+    if (fabs(range) > DELTA_NOTIONAL_ZERO) {
         alpha = (speed - from.MaxMovementSpeed) / range;
         if (alpha < 0.0f)
             alpha = 0.0f;

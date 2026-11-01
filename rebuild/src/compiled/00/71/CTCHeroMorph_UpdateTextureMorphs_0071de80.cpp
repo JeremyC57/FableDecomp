@@ -1,4 +1,5 @@
 // CTCHeroMorph::UpdateTextureMorphs() -- rebuilds the hero's texture morphs and composite textures from the current morph strengths, sorts them by priority and pushes them to the hero's texture-morph component
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include <stdlib.h>
 class CCharString {
 public:
@@ -186,7 +187,7 @@ struct CHeroMorphTarget {
     unsigned char _pad00[0x0c];
     CTextureMapSet Maps;                                // +0x0C
 };
-extern const float EPSILON;   // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C
 enum EHeroMorphType { };
 class CTCHeroMorph : public CTCBase {
 public:
@@ -228,7 +229,7 @@ void CTCHeroMorph::UpdateTextureMorphs()
     CCompositeTextureList composites;
     for (long type = 0; type < 0x13; ++type) {
         float strength = GetMorphStrength((EHeroMorphType)type);
-        if (strength > EPSILON) {
+        if (strength > DELTA_NOTIONAL_ZERO) {
             AddCompositeTexture(type, strength, &composites);
             AddMorph(&def->TextureMorphs, type, strength, &morphs);
             AddParticles(type, strength);

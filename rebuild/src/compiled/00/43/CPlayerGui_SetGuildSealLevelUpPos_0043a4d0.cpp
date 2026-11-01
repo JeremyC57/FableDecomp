@@ -1,4 +1,5 @@
 // CPlayerGui::SetGuildSealLevelUpPos(const C2DVector& pos) -- queue a screen position for the guild seal's level-up effect; a (near) zero position clears the queue instead
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0043A4D0, length 160 bytes, `ret 4`.
 // Callees: the STLport vector<C2DVector>::_M_insert_overflow @ 0x004416E0 (manifest
 // "VectorReallocateDouble"); the epsilon float variable @ 0x0129BA3C (read from memory, as in 0x00499C50).
@@ -7,7 +8,7 @@
 // Shape: `pos.x*pos.x + pos.y*pos.y > EPS*EPS` with both components loaded first; STLport push_back (null-checked
 // placement copy, else _M_insert_overflow with the __true_type tag homed in the dead argument slot) and clear() as
 // erase(begin(), end()) with the inlined POD copy loop of the empty tail.
-extern const float EPSILON; // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C
 
 class C2DVector { public:
     float X;
@@ -68,7 +69,7 @@ void CPlayerGui::SetGuildSealLevelUpPos(const C2DVector& pos)
 {
     float y = pos.Y;
     float x = pos.X;
-    if (x * x + y * y > EPSILON * EPSILON)
+    if (x * x + y * y > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         PDrawGuildSeal->LevelUpPositions.push_back(pos);
     else
         PDrawGuildSeal->LevelUpPositions.clear();

@@ -1,4 +1,5 @@
 // CNavigatorBase::GetNextNeighbour(const CANavQuadTreeNode*, const CANavQuadTreeNode*, const C2DVector&) -- walk clockwise round a node's border: from the previous neighbour (or the top-left corner) step to a point just outside the next stretch of edge and return the nav node there (a shared blocked node when none), or 0 once the walk is back at the start
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A472F0, 720 bytes (`ret 0Ch`).
 // Callees: CANavQuadTreeNode::GetSize 0x00A75B30, the smallest node size 0x00A76320 (cdecl, returns 0.5f),
 //   CNavigatorManager::GetNodeAt 0x00A14F70, SetBlockedNode 0x00A76340 (__fastcall: layer, level, position);
@@ -26,7 +27,7 @@ class CNavigatorManager { public:
 float GetSmallestNodeSize();                                                 // 0x00A76320
 void __fastcall SetBlockedNode(long layer, long level, C2DVector position);   // 0x00A76340
 extern CANavQuadTreeNode g_BlockedNode;                                      // 0x013D2D2C
-extern const float EPSILON;           // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C
 class CNavigatorBase : public CNavigatorBaseLayout { public:
     CANavQuadTreeNode* GetNextNeighbour(const CANavQuadTreeNode* node, const CANavQuadTreeNode* prev, const C2DVector& start);
 };
@@ -79,8 +80,8 @@ CANavQuadTreeNode* CNavigatorBase::GetNextNeighbour(const CANavQuadTreeNode* nod
         found = &g_BlockedNode;
         SetBlockedNode(node->NavLayer, 6, pos);
     }
-    if (prev != 0 && fabs(found->Position_X - start.X) <= EPSILON &&
-        fabs(found->Position_Y - start.Y) <= EPSILON)
+    if (prev != 0 && fabs(found->Position_X - start.X) <= DELTA_NOTIONAL_ZERO &&
+        fabs(found->Position_Y - start.Y) <= DELTA_NOTIONAL_ZERO)
         return 0;
     return found;
 }

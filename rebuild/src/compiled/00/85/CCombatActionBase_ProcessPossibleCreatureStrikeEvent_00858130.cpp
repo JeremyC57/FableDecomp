@@ -1,5 +1,6 @@
 // CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float, const std::pair<C3DVector,C3DVector>&, const std::pair<C3DVector,C3DVector>&, CThingGameObject&) -- a creature not yet struck this event is tested against the two triangles of the swept blade quad; on a hit it joins the strike event's struck list, may trigger the action-on-strike, gets melee hit parameters along the normalised sweep of the blade's second end and takes the hit, then the hit pause and on-hit frames run and both hit flags are set
 // Leaf: ?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00858130, 718 bytes (720 with padding); `ret 10h`.
 // Model: the landed sibling CCombatActionBase::ProcessPossibleProneThingsStrikeEvent 0x00858400 plus CHitParameters /
 //   GetMeleeHitParameters / OnHit from the landed CTCMultiStrike::FrameUpdate 0x007CCE20.
@@ -133,7 +134,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +4
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
-extern const float EPSILON;  // 0x0129BA3C (0.0001f, the engine's vector epsilon)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (0.0001f, the engine's vector epsilon)
 extern long g_StrikeHitPauseFrames;             // 0x013B86D0
 namespace {
 void __fastcall ProcessFramesRunningForOnHitWithParams(float& runningTime, float lastRunningTime,
@@ -280,7 +281,7 @@ void CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float time, const std
         direction.X = tip->X - previous.second.X;
         direction.Y = tip->Y - previous.second.Y;
         direction.Z = tip->Z - previous.second.Z;
-        if (direction.Z * direction.Z + direction.Y * direction.Y + direction.X * direction.X > EPSILON * EPSILON)
+        if (direction.Z * direction.Z + direction.Y * direction.Y + direction.X * direction.X > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             direction.AccurateNormalise();
         CThing* weapon = GetWeaponUsedInStrikeAction();
         CHitParameters params;

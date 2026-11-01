@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCLight::AddToBoundingSphere(C3DBoundingSphere& sphere, float timeOffset, CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params) -- grow the system's bounding sphere by the light: its current position (moved into system space unless the system is local) with the radius interpolated over the light's life
 // Leaf: AddToBoundingSphere
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B18AF0, length 356 bytes (padded to 368), `ret 10h`.
 // Ego_r.pdb: `?AddToBoundingSphere@CPSCLight@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z`.
 // Callees: CPSCBase::GetCurrentPosition(params, const unsigned long& param, float, bool, unsigned long) const @ 0x00AF2640
@@ -16,7 +17,7 @@
 //   and is written back into the dead timeOffset parameter (retail's [esp+4Ch] slot, shared with the clamp limit; a new local
 //   takes the params slot and also turns the flag test into `test byte ptr`); each transformed component is an accumulated
 //   chain in retail's term order (x and y rows z, x, y; the z row z, y, x).
-extern const float EPSILON;    // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;    // 0x0129BA3C
 
 class C3DVector { public:
     float X, Y, Z;
@@ -112,7 +113,7 @@ bool CPSCLight::AddToBoundingSphere(C3DBoundingSphere& sphere, float timeOffset,
             if (t < 0.0f)
                 t = 0.0f;
             else {
-                float limit = 1.0f - EPSILON;
+                float limit = 1.0f - DELTA_NOTIONAL_ZERO;
                 if (t > limit)
                     t = limit;
             }

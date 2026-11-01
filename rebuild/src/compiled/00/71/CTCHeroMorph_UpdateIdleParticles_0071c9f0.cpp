@@ -1,4 +1,5 @@
 // CTCHeroMorph::UpdateIdleParticles() -- prunes dead idle emitters; when the hero has stood still long enough spawns the idle particle morphs, otherwise kills them
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071C9F0, 832 bytes, `ret`.
 // Callees: CPlayerManager/GetMainPlayer folded getters @ 0x00686D50/0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0,
 //          GFGetCurrentFrame, CDefClassBase::GetSubDef<CHeroMorphDef> @ 0x0071F930 (folded label), CParticleMorphs::GetAllMorphsOfType
@@ -157,7 +158,7 @@ public:
     static CThing* __fastcall Create(long type, long typeEnd, float t, const C3DVector& pos, bool flag);   // 0x006E11F0
     void AttachToThing(CThing& thing, long bone, const CCharString& helper, long index, float time);   // 0x006E0BE0
 };
-extern const float EPSILON;   // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;   // 0x0129BA3C
 
 // Same-TU stand-in for the out-of-line GetSubDef (retail's link-time codegen saw that the out pointer does not escape).
 #pragma auto_inline(off)
@@ -192,7 +193,7 @@ void CTCHeroMorph::UpdateIdleParticles()
     long mode = PeekPlayerManager().GetMainPlayer().GetCurrentMode();
     const CMovement* movement = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (mode == 1 && !(movement->Velocity.X * movement->Velocity.X + movement->Velocity.Y * movement->Velocity.Y
-                       + movement->Velocity.Z * movement->Velocity.Z > EPSILON * EPSILON)) {
+                       + movement->Velocity.Z * movement->Velocity.Z > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)) {
         if (!FrameHeroBecameIdle) {
             FrameHeroBecameIdle = CWorld::GetFrame();
             IdleParticlesAdded = false;
@@ -205,11 +206,11 @@ void CTCHeroMorph::UpdateIdleParticles()
             if (def->IdleParticleMorphs.GetAllMorphsOfType(7, entries)) {
                 float value = GetMorphStrength((EHeroMorphType)7);
                 for (CParticleMorphEntry* entry = entries._M_start; entry != entries._M_finish; ++entry) {
-                    if (entry->Min - EPSILON <= value && EPSILON + entry->Max >= value) {
+                    if (entry->Min - DELTA_NOTIONAL_ZERO <= value && DELTA_NOTIONAL_ZERO + entry->Max >= value) {
                         const CThing* particle;
                         if (entry->Interpolate && entry->ParticleTypeEnd > 0) {
                             float t = 1.0f;
-                            if (fabs(entry->Max - entry->Min) > EPSILON)
+                            if (fabs(entry->Max - entry->Min) > DELTA_NOTIONAL_ZERO)
                                 t = (value - entry->Min) / (entry->Max - entry->Min);
                             particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPos(), false);
                         } else {

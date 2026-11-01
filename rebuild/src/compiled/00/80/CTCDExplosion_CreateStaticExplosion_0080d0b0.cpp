@@ -2,6 +2,7 @@
 // (one per damage radius, plus one) and remember each live one with its creation frame; then, when the def asks for it,
 // shake the camera at the middle of the line
 // Leaf: CreateStaticExplosion
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x0080D0B0, 580 bytes, plain `ret` (8-aligned frame).
 // Callees: CParticleEmitterManager::Get @ 0x00AEAAF0 (static), __ftol2 @ 0x00BFEA70, C3DVector::AccurateNormalise @ 0x00A14440, the
@@ -74,7 +75,7 @@ struct CParticleEmitterManager {
     static CThing* __fastcall CreateEmitter(long defIndex, long param, float spacing, const C3DVector& pos, long flags);   // 0x006E11F0
 };
 void __fastcall CreateCameraShake(const C3DVector* position, long strength, long duration, long flags);   // 0x007F1B70
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CTCBase
 {
@@ -112,7 +113,7 @@ void CTCDExplosion::CreateStaticExplosion()
     if (PExplosionDef->EmitterDefIndex >= 0) {
         long count = (long)((EndPos - StartPos).Magnitude() / radius + 1.0f);
         C3DVector direction = EndPos - StartPos;
-        if (direction.MagnitudeSquared() > EPSILON * EPSILON)
+        if (direction.MagnitudeSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             direction.AccurateNormalise();
         float spacing = PExplosionDef->GetEmitterSpacing(radius);
         for (long i = 0; i != count; ++i) {

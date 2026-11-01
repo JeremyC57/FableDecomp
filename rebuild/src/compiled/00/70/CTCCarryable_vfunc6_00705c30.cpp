@@ -1,4 +1,5 @@
 // CTCCarryable::vfunc_6() -- take the carry offset from the thing's carryable def and normalise it when it is not (nearly) zero
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x00705C30, 137 bytes (plain `ret`). Vtable 0x0123B35C (CTCCarryable) slot 6.
 // Callees: CDefClassBase::GetSubDef<CCarryableDef>(CDefPointer<const CCarryableDef>*) @ 0x005CC10E
@@ -19,7 +20,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
     C3DVector& AccurateNormalise();                        // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
-extern const float EPSILON;             // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;             // 0x0129BA3C (0.0001f)
 
 class CDefPointeeBase { public:
     virtual void Destroy();                     // slot 0
@@ -69,7 +70,7 @@ void CTCCarryable::vfunc_6()
     if (found)
     {
         OffsetCoordRelativeToAttachToDummy = def->OffsetCoordRelativeToAttachToDummy;
-        if (OffsetCoordRelativeToAttachToDummy.GetLengthSquared() > EPSILON * EPSILON)
+        if (OffsetCoordRelativeToAttachToDummy.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
             OffsetCoordRelativeToAttachToDummy.AccurateNormalise();
     }
     if (def && --def->m_refCount == 0)

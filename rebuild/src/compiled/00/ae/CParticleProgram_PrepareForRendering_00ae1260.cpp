@@ -1,6 +1,7 @@
 // CParticleProgram::PrepareForRendering(C4DVector*, CParticleSimulation*, float, float, ..., CMatrix4x4*, C3DMesh2*) -- the skinned variant: transform the fixed positions by the matrix into the render vertices, interpolate the simulated ones, and when the blend is significant blend them towards the transformed initial simulation (built in the group vector buffer)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1260, length 192 bytes (`ret 2Ch`; the 11-argument overload).
 // Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Callees: CParticleProgram::TransformVertices(C4DVector*, const C4DVector*, ulong, const CMatrix4x4*, const
 //          CArray<C3DGroup2>&) const @ 0x00AE0E60 (x2, the Ego_r.pdb spelling), GetGroupVectorBuffer(ulong) @ 0x00AE0540 (__fastcall), the 8-argument
 //          vector interpolation @ 0x00A5BBA0 and GFInterpolateVectors @ 0x00A5B870. Global: 1e-4f @ 0x0129BA3C.
@@ -29,7 +30,7 @@ void __cdecl GFInterpolateVectors_00a5bba0(C4DVector* out, unsigned long outStri
 void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* to, unsigned long toStride,
                                  unsigned long count, float t);                                                      // 0x00A5B870
 
-extern const float EPSILON;            // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;            // 0x0129BA3C (1e-4f)
 
 class CParticleSimulation { public:                       // Ego_r.pdb, retail 0x80 bytes
     void*         __vftable;                       // +0x00
@@ -91,7 +92,7 @@ void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulat
     TransformVertices(vertices, NonSimPositions, NonSimCount, matrix, NonSimGroups);
     GFInterpolateVectors_00a5bba0(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
                                   simulation->Positions, sizeof(C4DVector), simulation->Size, simulationInterpolate);
-    if (initialBlend > EPSILON) {
+    if (initialBlend > DELTA_NOTIONAL_ZERO) {
         C4DVector* initial = GetGroupVectorBuffer(simulation->Size);
         TransformVertices(initial, InitialSimulation.Positions, simulation->Size, matrix, SimGroups);
         GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), initial, sizeof(C4DVector), simulation->Size, initialBlend);

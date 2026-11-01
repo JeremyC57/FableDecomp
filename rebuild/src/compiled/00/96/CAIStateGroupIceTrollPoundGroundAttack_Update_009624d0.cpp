@@ -1,4 +1,5 @@
 // CAIStateGroup_IceTrollPoundGroundAttack::Update() -- with a live target: mark the target's stealth component in danger, rise up if knocked down, then with the target still alive play LOOK_BACKWARD when it is more than 60 degrees off the creature's XY facing (LOOK_FORWARD otherwise) and, still runnable, perform the pound attack; terminate at the end or on any failure
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009624D0, length 738 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, CTCStealth::SetAsInDanger
 // @ 0x00747B80, CTCCreatureModeManager::HasMode @ 0x0073A8A0, CCreatureAction_RiseUp ctor @ 0x008BD880, ~CCombatActionBase
@@ -21,7 +22,7 @@ class C3DVector { public:
     C3DVector& AccurateNormalise();                           // 0x00A14440 (Ego_r ?AccurateNormalise@C3DVector@@QAEAAV1@XZ)
 };
 inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.Y * b.Y + a.Z * b.Z; }
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 struct CPhysicsBody {                           // the thing's physics body at +0x60
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
@@ -218,11 +219,11 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             const C3DVector& myPos = GetCreature()->GetPos();
             C3DVector toTarget(targetPos.X - myPos.X, targetPos.Y - myPos.Y, targetPos.Z - myPos.Z);
             toTarget.Z = 0.0f;
-            if (toTarget.MagnitudeSquared() > EPSILON * EPSILON)
+            if (toTarget.MagnitudeSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
                 toTarget.AccurateNormalise();
             C3DVector facing = GetCreature()->PhysicsBody->GetFacing();
             facing.Z = 0.0f;
-            if (facing.MagnitudeSquared() > EPSILON * EPSILON)
+            if (facing.MagnitudeSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
                 facing.AccurateNormalise();
             if (Dot(facing, toTarget) < cos(1.0471976115464443)) {
                 long result = AIAction_PerformActionAndWait(

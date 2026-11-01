@@ -1,5 +1,6 @@
 // CCombatAction_KickThingOnGround::Initialise() -- play the stealth kick on a living type-13 target (aim 1.0 forward / 0.15 aside) or the hard low kick (0.0 / 0.1); against a living target suspend its animation (type 1), make it and the kicker not solid to each other and aim at its closest hit-location point (else its position); MoveToPos keeps the kicker's height and is pushed along and beside the kicker's back-facing direction, then the base Initialise runs
 // Leaf: ?Initialise@CCombatAction_KickThingOnGround
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087E860, 880 bytes, plain `ret` (virtual, vtable 0x01277D3C).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CCharString ctor/dtor 0x0099EBF0 /
 //   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0 and Initialise 0x00857520, CThing::GetPos 0x004C73D0,
@@ -16,7 +17,7 @@
 //   `position` copy drops its dead Z word; the suspend target is a named local (GetPItem before the argument pushes); the
 //   2D length test is `X*X + Y*Y > eps*eps` after `direction.Z = 0`; the aim is `direction * forward + position +
 //   C3DVector(direction.Y, -direction.X, 0.0f) * side` (the perpendicular term first, then the forward sum).
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 class C3DVector { public:
     float X, Y, Z;
@@ -185,7 +186,7 @@ void CCombatAction_KickThingOnGround::Initialise()
     position.Z = PCreature.GetPItem()->GetPos().Z;
     MoveToPos = position;
     direction.Z = 0.0f;
-    if (direction.X * direction.X + direction.Y * direction.Y > EPSILON * EPSILON) {
+    if (direction.X * direction.X + direction.Y * direction.Y > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
         direction.AccurateNormalise();
         MoveToPos = direction * forward + position + C3DVector(direction.Y, -direction.X, 0.0f) * side;
     }

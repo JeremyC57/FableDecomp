@@ -1,4 +1,5 @@
 // CTCLook::SetEyesLooking(const C3DVector& pos) -- point the eyes at pos: the eye angles are the differences from the head facing (body facing + head angle, wrapped) to the direction head->pos, or to the recovery angles when pos is the head position
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752930, length 462 bytes (+ int3 padding), `ret 4`, esp frame.
 // Callees: the physics TC's GetFacingAngleXY / GetFacingAngleYZ (slots 63 / 64, +0xFC / +0x100), _CIfmod @ 0x00BFEB28 (the
 // intrinsic fmod of WrapAngle), CThingCreatureBase::GetHeadPos(bool) @ 0x00661B40, AngleBetweenPositions @ 0x00661540 and
@@ -61,12 +62,12 @@ float __fastcall AngleBetweenPositions(const C3DVector& from, const C3DVector& t
 float __fastcall AngleYZBetweenPositions(const C3DVector& from, const C3DVector& to);   // 0x00754E70
 float __stdcall AngleDifference(float a, float b);                                      // 0x00A441E0
 extern bool g_bQueryCreatureHeadPos;                                                    // 0x013BAE1B
-extern const float EPSILON;     // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;     // 0x0129BA3C (1e-4f)
 
 __forceinline bool C3DVector::operator!=(const C3DVector& o) const
 {
-    return (float)fabs(X - o.X) > EPSILON || (float)fabs(Y - o.Y) > EPSILON ||
-           (float)fabs(Z - o.Z) > EPSILON;
+    return (float)fabs(X - o.X) > DELTA_NOTIONAL_ZERO || (float)fabs(Y - o.Y) > DELTA_NOTIONAL_ZERO ||
+           (float)fabs(Z - o.Z) > DELTA_NOTIONAL_ZERO;
 }
 #pragma pack(push, 1)
 class CTCLook { public:

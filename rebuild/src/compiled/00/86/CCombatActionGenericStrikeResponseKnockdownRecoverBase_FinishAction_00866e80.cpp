@@ -1,5 +1,6 @@
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction() -- end of a knock-down recovery: take the creature's mode manager out of mode 0x1f, level its facing (Z = 0, normalised; +X when degenerate) and hand the body an upright orientation along it, then the base FinishAction
 // Leaf: ?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00866E80, length 294 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface for type 0x31), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, the physics
@@ -86,7 +87,7 @@ public:
 class CTCCreatureModeManager { public:             // interface type 0x31
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
-extern const float EPSILON;           // 0x0129BA3C (1e-4)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4)
 
 class CCombatActionBase { public:                  protected: // retail sizeof 0x114
     virtual void FinishAction(); public:            // 0x00859A20
@@ -106,7 +107,7 @@ void CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction()
     modes->RemoveMode(0x1f);
     C3DVector forward = PCreature.GetPItem()->GetBody()->GetFacing();
     forward.Z = 0.0f;
-    if (forward.X * forward.X + forward.Y * forward.Y > EPSILON * EPSILON)
+    if (forward.X * forward.X + forward.Y * forward.Y > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO)
         forward.AccurateNormalise();
     else
         forward = C3DVector(1.0f, 0.0f, 0.0f);

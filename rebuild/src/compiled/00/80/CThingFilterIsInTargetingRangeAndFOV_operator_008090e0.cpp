@@ -1,11 +1,12 @@
 // CThingFilter_IsInTargetingRangeAndFOV::operator()(CThing* thing) const -- a thing passes when it is (almost) at the targeting position, or within the targeting range for it and either inside the targeting cone or the targeter's live lock target
 // Leaf: ??RCThingFilter_IsInTargetingRangeAndFOV
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Grade: RELOCATION_MATCH -- the lock-target test is IS_THING_ALIVE as `template<class T> bool IS_THING_ALIVE(T* const&)` (retail's own IS_THING_ALIVE<T*> signature, 0x0040DCE0), which tests the member in eax; the radius argument goes through an inline Targeter->GetPhysicsTC() accessor so all IsInFOV ctor arguments load before the pushes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008090E0, length 190 bytes, `ret 4`, bool in al.
 // Callees: CThing::GetPos @ 0x004C73D0, GetTargetingRangeForTarget(CThing*, CThing*, CThing*) @ 0x00802B60
 //   (`__fastcall`, float), CThingFilter_IsInFOV::CThingFilter_IsInFOV(const C3DVector&, const C3DVector&, float, float, bool)
 //   @ 0x006A7150 and CThingFilter_IsInFOV::operator()(CThing*) @ 0x006A7390 (engine_api.tsv).
-// Global: EPSILON (1e-4f).
+// Global: DELTA_NOTIONAL_ZERO (1e-4f).
 // Layout: CThingFilter_IsInTargetingRangeAndFOV (48 bytes, see the constructor 0x00809030): Position +0, FacingVector
 //   +0xc, Targeter +0x18, PTargetLockThing +0x1c, PCarriedThing +0x24, TargetingFOV +0x28, AngleTest3D +0x2c; retail
 //   CThing PhysicsTC +0x60, Dead +0x91 bit 0; CTCPhysicsBase Radius +0x34; CThingFilter_IsInFOV is 36 bytes (the frame).
@@ -34,7 +35,7 @@ public:
 };
 template<class T> inline bool IS_THING_ALIVE(T* const& thing) { return thing && !thing->Dead; }
 
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 float __fastcall GetTargetingRangeForTarget(CThing* target, CThing* targeter, CThing* carried);   // 0x00802B60
 
 class CThingFilter_IsInFOV { public:
@@ -63,7 +64,7 @@ struct CThingFilter_IsInTargetingRangeAndFOV {
 bool CThingFilter_IsInTargetingRangeAndFOV::operator()(CThing* thing) const
 {
     float distanceSquared = (thing->GetPos() - Position).GetLengthSquared();
-    if (distanceSquared < EPSILON)
+    if (distanceSquared < DELTA_NOTIONAL_ZERO)
         return true;
     float range = GetTargetingRangeForTarget(thing, Targeter, PCarriedThing);
     if (distanceSquared < range * range) {

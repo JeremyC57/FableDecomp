@@ -1,4 +1,5 @@
 // CInputTypeXboxPadRightStickEvent::GetControlDirection(const CInputEvent& event) const -- right stick as a direction, clamped to unit length
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe @ 0x0066F840, 106 bytes, vtable 0x012317F0 slot 4, __thiscall `ret 8` (hidden C2DVector result,
 // then the event). The stick position comes from the event's 2D accessor (0x00A043A0, hidden result in the frame);
 // Y is flipped (`* -1.0f`), the length sqrt(X*X + Y*Y) is a named float local (homed in the dead `event` slot), and
@@ -21,7 +22,7 @@ public:
 public:
     C2DVector GetJoystickPosition() const;   // 0x00A043A0
 };
-extern const float EPSILON;        // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;        // 0x0129BA3C (0.0001f)
 struct CInputTypeXboxPadRightStickEvent_Methods : CInputTypeXboxPadRightStickEvent {
     C2DVector GetControlDirection(const CInputEvent& event) const;
 };
@@ -31,7 +32,7 @@ C2DVector CInputTypeXboxPadRightStickEvent_Methods::GetControlDirection(const CI
     double y = position.Y * -1.0f;
     double x = position.X;
     float length = (float)sqrt(x * x + y * y);
-    if (length > EPSILON && length > 1.0f) {
+    if (length > DELTA_NOTIONAL_ZERO && length > 1.0f) {
         float scale = 1.0f / length;
         x *= scale;
         y *= scale;

@@ -1,7 +1,8 @@
 // NUISystem::CHoverable::Update(float dt) -- the base update (0x0052C7E0), then virtual slot 145 when the hover position (+0x3c/+0x40) moved more than 1e-4 from the stored one (+0x34/+0x38) or the hover timer (+0x30) minus `dt` is exactly zero
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055B890, length 96 bytes.
 // Floats 0x0129BA3C (1e-4f), 0x0122DEDC (0.0f). Shape: `fabs ; fcomp ; test ah,41h ; jp` twice, `fucompp ; test ah,44h ; jp`, `ret 4`.
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 extern const float g_zero_0122dedc;               // 0x0122DEDC (0.0f)
 extern "C" double __cdecl fabs(double);
 #pragma intrinsic(fabs)
@@ -48,7 +49,7 @@ class CHoverable : public CChangingStateComponent { public:
 void CHoverable::Update(float dt)
 {
     CChangingStateComponent::Update(dt);
-    if (!((float)fabs(m_hoverX - m_storedX) <= EPSILON) || !((float)fabs(m_hoverY - m_storedY) <= EPSILON) || m_hoverTimer - dt == g_zero_0122dedc)
+    if (!((float)fabs(m_hoverX - m_storedX) <= DELTA_NOTIONAL_ZERO) || !((float)fabs(m_hoverY - m_storedY) <= DELTA_NOTIONAL_ZERO) || m_hoverTimer - dt == g_zero_0122dedc)
         OnHoverMoved();
 }
 }

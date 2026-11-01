@@ -1,4 +1,5 @@
 // CTCHeroRangedAttacks::SetButtonPressure(float)
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007899E0, oracle length 43 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
@@ -14,7 +15,7 @@
 
 // Shared float epsilon in .rdata; declared extern so the compiler cannot fold `1.0f - epsilon`
 // (retail computes it at run time: `fld 1.0 ; fsub [0129BA3Ch]`).
-extern const float EPSILON;       // 0x0129BA3C
+extern const float DELTA_NOTIONAL_ZERO;       // 0x0129BA3C
 
 struct CTCHeroRangedAttacks_Methods : CTCHeroRangedAttacks {
     void SetButtonPressure(float pressure);
@@ -24,7 +25,7 @@ void CTCHeroRangedAttacks_Methods::SetButtonPressure(float pressure)
 {
     // Store the pressure, then cap it just below full so a held trigger never reads exactly 1.0.
     this->ButtonPressure = pressure;
-    float maximum = 1.0f - EPSILON;
+    float maximum = 1.0f - DELTA_NOTIONAL_ZERO;
     if (pressure > maximum)
         this->ButtonPressure = maximum;
 }

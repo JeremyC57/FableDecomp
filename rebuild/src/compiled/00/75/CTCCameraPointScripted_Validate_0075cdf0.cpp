@@ -1,4 +1,5 @@
 // CTCCameraPointScripted::vfunc_17(CCharString& error) -- validity check: start position set, a look direction or thing set, and an end position whenever there is a transition time; writes the reason into `error` and returns false on the first failure
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 //
 // Retail 0x0075CDF0, 116 bytes (`ret 4`). Vtable 0x01269C84 (CTCCameraPointScripted) slot 17.
 // Callee: CCharString::operator=(const char*) @ 0x0099EFE0. Strings 0x01269D6C "start pos not set",
@@ -13,7 +14,7 @@ class CCharString { public:
     const CCharString& operator=(const char* s);          // 0x0099EFE0
 };
 
-extern const float EPSILON;                 // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;                 // 0x0129BA3C (0.0001f)
 
 #pragma pack(push, 1)
 class C3DVector { public: float X, Y, Z; };
@@ -49,7 +50,7 @@ bool CTCCameraPointScripted::vfunc_17(CCharString& error) const
         error = "look at direction or thing not set";
         return false;
     }
-    if (!EndPosSet && TransitionTime > EPSILON)
+    if (!EndPosSet && TransitionTime > DELTA_NOTIONAL_ZERO)
     {
         error = "I'm transitioning but there's no end pos to go to";
         return false;

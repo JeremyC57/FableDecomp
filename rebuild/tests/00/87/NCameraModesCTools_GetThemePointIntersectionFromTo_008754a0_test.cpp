@@ -4,7 +4,7 @@
 #include <cstdio>
 class C3DVector { public: float x, y, z; };
 class CWorldMap { public: int Dummy; };
-extern const float EPSILON = 0.0001f;   // 0x0129BA3C (naming wave 13)
+extern const float DELTA_NOTIONAL_ZERO = 0.0001f;   // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB (naming wave 18; was EPSILON)
 namespace NCameraModes {
 typedef bool (__fastcall* TBlockTest)(const CWorldMap& map, const C3DVector& from, const C3DVector& to, bool flag);
 bool __fastcall IsThemeToBlockCameraBetween(const CWorldMap&, const C3DVector&, const C3DVector&, bool) { return true; }

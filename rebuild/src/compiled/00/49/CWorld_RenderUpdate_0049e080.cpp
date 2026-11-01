@@ -1,5 +1,6 @@
 // CWorld::RenderUpdate(const CInterpolationInfo* info) -- per-render-frame world update: make the world's thing manager current, render-update its things and the environment, then point the sound listener along the current sound camera when both camera axes are non-degenerate
 // Leaf: ?RenderUpdate@CWorld@@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E080, 284 bytes, thiscall `ret 4`. Catalog "CWorld_RenderUpdate" (name only).
 // Callees: SetCurrentThingManager @ 0x004C74F0 (__fastcall), CThingManager::RenderUpdateThings @ 0x0051EBD0,
 //   CEnvironment::RenderUpdate(float) @ 0x006B42F0, CWorld::GetCurrentSoundCamera @ 0x0049DAA0 (CCamera by hidden pointer),
@@ -68,7 +69,7 @@ public:
 };
 class CASoundManager;
 extern CASoundManager* PSoundManager;                 // 0x013B8394
-extern const float EPSILON;  // 0x0129BA3C (0.0001f)
+extern const float DELTA_NOTIONAL_ZERO;  // 0x0129BA3C (0.0001f)
 void __fastcall SetCurrentThingManager(CThingManager* manager);   // 0x004C74F0
 
 class CWorld {
@@ -90,8 +91,8 @@ void CWorld::RenderUpdate(const CInterpolationInfo* info)
         CCamera camera = GetCurrentSoundCamera(info);
         C3DVector forward = camera.RHSet.Forward;
         C3DVector up = camera.RHSet.Up;
-        if (camera.RHSet.Forward.GetLengthSquared() > EPSILON * EPSILON &&
-            camera.RHSet.Up.GetLengthSquared() > EPSILON * EPSILON) {
+        if (camera.RHSet.Forward.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO &&
+            camera.RHSet.Up.GetLengthSquared() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
             CSoundListener* listener = ((CSoundSystem*)PSoundManager)->GetListener();
             listener->SetPosition(camera.WorldPosition);
             listener->SetOrientation(forward, up);

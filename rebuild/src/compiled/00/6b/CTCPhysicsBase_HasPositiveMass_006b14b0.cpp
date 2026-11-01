@@ -4,6 +4,7 @@
 //   0x0129BA3C is the 0.0f pool constant (also compared in CTCPhysicsLight::OnCreate against GetAirResistance()).
 // Shape: `fcomp [zero] ; test ah,41h ; jne` = `value > zero`; a long 0/1 result (`mov eax,1` / `xor eax,eax`).
 // Leaf: HasPositiveMass
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 #include "engine/CTCPhysicsBase.h"
 
 class CPhysicsDef { public:
@@ -11,7 +12,7 @@ class CPhysicsDef { public:
     float         Mass;                     // +0x38
 };
 
-extern const float EPSILON; // 0x0129BA3C (0.0f)
+extern const float DELTA_NOTIONAL_ZERO; // 0x0129BA3C (0.0f)
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {
     const CPhysicsDef* GetDef() const { return reinterpret_cast<const CPhysicsDef*>(PhysicsDef_Object); }
@@ -20,5 +21,5 @@ struct CTCPhysicsBase_Methods : CTCPhysicsBase {
 
 long CTCPhysicsBase_Methods::HasPositiveMass() const
 {
-    return GetDef()->Mass > EPSILON;
+    return GetDef()->Mass > DELTA_NOTIONAL_ZERO;
 }

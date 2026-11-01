@@ -1,5 +1,7 @@
 // CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown(EHeroAbility) -- the ability's maximum level, one lower when the hero's morality is on the wrong side for the ability's morality cost
 // Leaf: GetAbilityMaximumLevelWithRenown
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EE6BF, 189 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`.
 // Callees: CTCInventoryAbilities::GetAbilityMaximumLevel(EHeroAbility) @ 0x005EDEA3 (landed), std::bitset::test
@@ -17,9 +19,12 @@
 
 class CTCBase;
 
-struct CPresenceBits {
-    bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -35,7 +40,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThing { public:
     unsigned char _pad_0x00[0x20];
-    CPresenceBits m_present;                         // +0x20
+    std::bitset<274> m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
@@ -63,7 +68,7 @@ class CTCHeroStats { public:                                // interface type 4
     float GetMoralityPercentage() const;             // 0x0057A690
 };
 
-extern const float EPSILON;           // 0x0129BA3C (1e-4f)
+extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C (1e-4f)
 
 enum EHeroAbility { HERO_ABILITY_NULL };
 
@@ -83,9 +88,9 @@ long CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown(EHeroAbility abilit
     long maxLevel = GetAbilityMaximumLevel(ability);
     morality = ParentThing->GetTC<CTCHeroStats>(4)->GetMoralityPercentage();
     float costFactor = GetAbilityMoralityCostFactor(ability);
-    if (morality > 0.33 && costFactor < -EPSILON)
+    if (morality > 0.33 && costFactor < -DELTA_NOTIONAL_ZERO)
         return maxLevel - 1;
-    if (morality < 0.66 && costFactor > EPSILON)
+    if (morality < 0.66 && costFactor > DELTA_NOTIONAL_ZERO)
         return maxLevel - 1;
     return maxLevel;
 }

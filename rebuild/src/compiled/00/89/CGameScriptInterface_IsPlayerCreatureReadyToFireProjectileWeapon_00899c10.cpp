@@ -1,3 +1,4 @@
+// Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 /* CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon @ 0x00899c10
  * VC7.1 / __fastcall member modelled as free __fastcall(this in ecx).
  * Signed bool return in al; single out-parameter (float*) => ret 4.
@@ -49,7 +50,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float  __fastcall IsPCReady_GetReadiness(void* weapon);               /* call ffeefe50 */
-extern const float EPSILON;
+extern const float DELTA_NOTIONAL_ZERO;
 
 bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon(
     void* thisptr, unsigned long /*edx*/, float* out)
@@ -84,7 +85,7 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon
     float readiness = IsPCReady_GetReadiness(((void*)node->second));
 
     /* fcom threshold; taken (return false) when readiness <= threshold */
-    if (readiness > EPSILON)
+    if (readiness > DELTA_NOTIONAL_ZERO)
     {
         *out = readiness;
         return true;
