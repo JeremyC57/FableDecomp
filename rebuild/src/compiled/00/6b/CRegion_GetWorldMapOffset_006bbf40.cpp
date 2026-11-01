@@ -24,10 +24,10 @@ class CRegionDef { public:
 class CRegion { public:
     unsigned char     _pad00[0x24];                     // Maps, VisMaps (retail vectors), Name, DisplayName, RegionDefName
     const CRegionDef* PDef;                             // +0x24 CDefPointer<const CRegionDef>::Object
-    C2DVector GetWorldMapOffset() const;
+    const C2DVector GetWorldMapOffset() const;
 };
 
-C2DVector CRegion::GetWorldMapOffset() const
+const C2DVector CRegion::GetWorldMapOffset() const
 {
     if (PDef)
         return PDef->WorldMapOffset;

@@ -1,5 +1,5 @@
 // CFileInstaller::PostFileReadCompletion(CFileInstaller::CActiveRead* read) -- under the installer's critical section, account a finished read against its active file, copy the read buffer into the read's chunk, then queue it for decompression (signal the decompression event, keep the read) or as a pending write (delete the read), and signal the worker event
-// Leaf: ?PostFileReadCompletion@
+// Leaf: ?PostFileReadCompletion@CFileInstaller@@IAEXPAVCActiveRead@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C4120, 258 bytes, thiscall `ret 4`. Callers: ProcessFileReadCompletion
 //   0x009C4312 and two more (0x009C4F42, 0x009C5753). Name: Ego_r.pdb
 //   ?PostFileReadCompletion@CFileInstaller@@IAEXPAVCActiveRead@1@@Z. The chunk label "FileReadCompletion_ProcessData" is
@@ -143,7 +143,9 @@ public:
         CFileInstaller* PFileInstaller;             // +0x24
     };
 
+protected:
     void PostFileReadCompletion(CActiveRead* read);
+public:
 
     void* __vftable;                                // +0x00
     SCriticalSection CriticalSection;               // +0x04

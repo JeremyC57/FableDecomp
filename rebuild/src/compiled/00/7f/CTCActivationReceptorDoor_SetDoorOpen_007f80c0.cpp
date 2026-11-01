@@ -1,5 +1,5 @@
-// CTCActivationReceptorDoor::SetDoorOpen(bool) -- forward an open/close request to the parent thing's door component (interface 0x26)
-// Leaf: SetDoorOpen
+// CTCActivationReceptorDoor::SetDoorState(bool) -- forward an open/close request to the parent thing's door component (interface 0x26)
+// Leaf: ?SetDoorState@CTCActivationReceptorDoor@@AAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F80C0, length 86 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the inlined interface lookup,
 // type 0x26 = bit 6 of the bitset dword at +0x24, tested with `test byte ptr [eax+24h],40h`), then
@@ -55,10 +55,12 @@ public:
 struct CTCActivationReceptorDoor {
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
-    void SetDoorOpen(bool open);
+private:
+    void SetDoorState(bool open);
+public:
 };
 
-void CTCActivationReceptorDoor::SetDoorOpen(bool open)
+void CTCActivationReceptorDoor::SetDoorState(bool open)
 {
     CTCDoor* door;
     ParentThing->GetInterface(&door, 0x26);

@@ -7,7 +7,7 @@ class CThing {
 public:
     unsigned char   _pad[0x60];
     CTCPhysicsBase* PhysicsTC;
-    const C3DVector& GetPosition() const;
+    const C3DVector& GetPos() const;
 };
 int main()
 {
@@ -15,12 +15,12 @@ int main()
     a.Position.X = 1.0f; a.Position.Y = 2.0f; a.Position.Z = 3.0f;
     b.Position.X = -4.0f; b.Position.Y = 0.5f; b.Position.Z = 8.0f;
     t.PhysicsTC = &a;
-    const C3DVector& p = t.GetPosition();
+    const C3DVector& p = t.GetPos();
     bool ok = &p == &a.Position && (const char*)&p == (const char*)&a + 0x0c && p.Y == 2.0f;
     a.Position.Y = 7.0f;
-    ok = ok && t.GetPosition().Y == 7.0f;
+    ok = ok && t.GetPos().Y == 7.0f;
     t.PhysicsTC = &b;
-    ok = ok && &t.GetPosition() == &b.Position && t.GetPosition().Z == 8.0f;
+    ok = ok && &t.GetPos() == &b.Position && t.GetPos().Z == 8.0f;
     if (!ok) { puts("004c73d0 FAIL"); return 1; }
     puts("OK_0x004c73d0");
     return 0;

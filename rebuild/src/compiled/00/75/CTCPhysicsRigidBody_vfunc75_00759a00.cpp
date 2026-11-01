@@ -1,6 +1,6 @@
-// CTCPhysicsRigidBody::vfunc_75(const CRightHandedSet& set) -- store the rigid body's right-handed set and mark it as moving (SetFacingAnglesFromRHSet slot, no old-set snapshot)
+// CTCPhysicsRigidBody::SetRHSet(const CRightHandedSet& set) -- store the rigid body's right-handed set and mark it as moving (SetFacingAnglesFromRHSet slot, no old-set snapshot)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00759A00, length 56 bytes (vtable 0x0126996C slot 75, rtti-vtables.tsv; slot 75
-// of CTCPhysicsStandard is SetFacingAnglesFromRHSet 0x007239C0, which also calls UpdateOldRHSet first).
+// of CTCPhysicsStandard is SetRHSet 0x007239C0, which also calls UpdateOldRHSet first).
 // Callees: CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130, tail-jumped.
 // Shape: the 24-byte set is copied through a `lea eax,[ecx+68h]` base with esi as the carrier (implicit assignment of a POD
 // CRightHandedSet); the last call is a void thiscall, so VC7.1 tail-jumps it and rewrites the dead argument slot
@@ -25,10 +25,10 @@ struct CTCPhysicsRigidBody : CTCPhysicsBase {
     void*           PPhysicsMeshInfo;          // +0x64
     CRightHandedSet RHSet;                     // +0x68
     CRightHandedSet OldRHSet;                  // +0x80
-    void vfunc_75(const CRightHandedSet& set);
+    virtual void SetRHSet(const CRightHandedSet& set);   // slot 75 (Ego_r.pdb CTCPhysicsRigidBody::SetRHSet)
 };
 
-void CTCPhysicsRigidBody::vfunc_75(const CRightHandedSet& set)
+void CTCPhysicsRigidBody::SetRHSet(const CRightHandedSet& set)
 {
     RHSet = set;
     SetAsMoving(true);

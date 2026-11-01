@@ -1,4 +1,4 @@
-// CTCTurncoatSpell::FinalCleanup() -- fades out the out-of-range turncoating effect thing if it is still alive, then stops the remaining turncoating effects
+// CTCTurncoatSpell::OnRemove() -- fades out the out-of-range turncoating effect thing if it is still alive, then stops the remaining turncoating effects
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C75E0, length 60 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times: null, dead bit +0x91 & 1, the target), the
 // effect thing's fade-out @ 0x0072AC40 (called with the thing in ecx and no argument; the manifest's
@@ -34,14 +34,13 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 class CTCTurncoatSpell { public:
-    void*                   __vftable;      // +0x00
+    virtual void OnRemove();                // slot 2 (CTCBase::OnRemove; Ego_r.pdb CTCTurncoatSpell::OnRemove)
     unsigned char           _pad_0x04[0x80];
     CBaseIntelligentPointer TurncoatingEffectOnMeOutOfRange;   // +0x84
     void StopTurncoatingEffects();          // 0x007C6DA0
-    void FinalCleanup();
 };
 
-void CTCTurncoatSpell::FinalCleanup()
+void CTCTurncoatSpell::OnRemove()
 {
     if (IS_THING_ALIVE(TurncoatingEffectOnMeOutOfRange))
         ((CThing*)TurncoatingEffectOnMeOutOfRange.GetPItem())->FadeOutEffect();

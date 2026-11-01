@@ -1,4 +1,4 @@
-// CResourceList::RemoveResource(CResource* resource) -- release a resource from this list: detach it from the list, unlink it from its neighbours, uncount it and take its size off the allocated total
+// CResourceList::RemoveResource(CResource& resource) -- release a resource from this list: detach it from the list, unlink it from its neighbours, uncount it and take its size off the allocated total
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FC020, length 80 bytes.
 // Retail bytes:  mov eax,[esp+4] ; mov edx,[eax+10h] ; test edx,edx ; push esi ; mov dword ptr [eax+8],0 ; je S ; mov esi,[eax+0Ch] ;
 //                cmp [esi+10h],eax ; jne Z ; cmp [edx+0Ch],eax ; jne Z ; mov [esi+10h],edx ; mov edx,[eax+10h] ; mov esi,[eax+0Ch] ;
@@ -11,7 +11,9 @@
 // Shape: the landed CResource::ListRemove (0x009FBFB0) inlined after the ResourceList clear (the clear is scheduled
 // between the NextResource test and its branch); the two counters are updated in the speed form (both loaded first).
 #include "engine/CResource.h"
+#define CResourceList CResourceListFields
 #include "engine/CResourceList.h"
+#undef CResourceList
 
 struct CResource_Methods : CResource {
     void ListRemove()
@@ -27,14 +29,14 @@ struct CResource_Methods : CResource {
     }
 };
 
-struct CResourceList_Methods : CResourceList {
-    void RemoveResource(CResource* resource);
+class CResourceList : public CResourceListFields { public:
+    void RemoveResource(CResource& resource);
 };
 
-void CResourceList_Methods::RemoveResource(CResource* resource)
+void CResourceList::RemoveResource(CResource& resource)
 {
-    resource->ResourceList = 0;
-    static_cast<CResource_Methods*>(resource)->ListRemove();
+    resource.ResourceList = 0;
+    static_cast<CResource_Methods*>(&resource)->ListRemove();
     this->ResourceCount--;
-    this->AllocatedMemory -= resource->ResourceSize;
+    this->AllocatedMemory -= resource.ResourceSize;
 }

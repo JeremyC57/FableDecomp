@@ -1,4 +1,4 @@
-// CGraphicFrame::UnInitialise_00a00b90() -- drop this frame's reference to its shared frame data (+0): when the count reaches zero, delete the data (its inline destructor: Uninitialise when the initialised bit is set, the counted texture released) and clear the pointer
+// CGraphicFrame::UnInitialise() -- drop this frame's reference to its shared frame data (+0): when the count reaches zero, delete the data (its inline destructor: Uninitialise when the initialised bit is set, the counted texture released) and clear the pointer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A00B90, length 94 bytes.
 // Callees: CGraphicFrameData::Uninitialise @ 0x009FCBA0, the count block's destroy (slot +4 with the object at +8 in ecx), operator delete @ 0x00BFE9BC twice (the block,
 // then the data). Shape: `dec dword ptr [esi] ; jne` on the shared count, the inlined destructor chain, the pointer cleared on both arms. One of three byte-identical copies (0x0041C150, 0x00A00B90, 0x00B2EEC0).
@@ -41,10 +41,10 @@ public:
 
 class CGraphicFrame { public:
     CGraphicFrameData* m_pData;                // +0x00
-    void UnInitialise_00a00b90();
+    void UnInitialise();
 };
 
-void CGraphicFrame::UnInitialise_00a00b90()
+void CGraphicFrame::UnInitialise()
 {
     CGraphicFrameData* data = m_pData;
     if (data) {

@@ -1,5 +1,5 @@
-// CWorld::HandleMoveHeroToRegionGameEvent(const CGameEvent*) -- unpack a region-move request (start position, start angle, three flags) from the game event and queue the region load
-// Leaf: HandleMoveHeroToRegionGameEvent
+// CWorld::HandleMoveHeroToRegionGameEvent(const CGameEvent&) -- unpack a region-move request (start position, start angle, three flags) from the game event and queue the region load
+// Leaf: ?HandleMoveHeroToRegionGameEvent@CWorld@@QAEXABVCGameEvent@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049EAF0, 252 bytes (256 with padding), `ret 4`, /GS (cookie 0x0139C8A8).
 //   PDB ?HandleMoveHeroToRegionGameEvent@CWorld@@IAEXPBVCGameEvent@@@Z.
@@ -33,12 +33,12 @@ class C3DVector { public:
 };
 class CWorld { public:
     void SetAsLoadingRegion(const C3DVector& pos, float angleXY, bool viaTeleporter, bool force, bool viaDoor);   // 0x0049E2C0
-    void HandleMoveHeroToRegionGameEvent(const CGameEvent* event);
+    void HandleMoveHeroToRegionGameEvent(const CGameEvent& event);
 };
-void CWorld::HandleMoveHeroToRegionGameEvent(const CGameEvent* event)
+void CWorld::HandleMoveHeroToRegionGameEvent(const CGameEvent& event)
 {
     CMemoryBuffer buffer;
-    event->GetData(buffer);
+    event.GetData(buffer);
     float x;
     buffer.Read(4, &x);
     float y;

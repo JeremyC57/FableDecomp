@@ -1,4 +1,4 @@
-// CTCPhysicsStandard::SetFacingAnglesFromRHSet(const CRightHandedSet& set) -- snapshot the old set (virtual UpdateOldRHSet), store the new right-handed set, mark as moving
+// CTCPhysicsStandard::SetRHSet(const CRightHandedSet& set) -- snapshot the old set (virtual UpdateOldRHSet), store the new right-handed set, mark as moving
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007239C0, length 65 bytes (vtable 0x01265F84 slot 75, rtti-vtables.tsv; slot 74
 // 0x007238E0 is a byte-identical body; ResetRHSet 0x00723980 calls this slot).
 // Callees: virtual slot 95 UpdateOldRHSet (`call [eax+17Ch]`, 0x00723930), CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130.
@@ -27,8 +27,9 @@ class CTCPhysicsBase { public:                        // 0x40 bytes
     virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
     virtual void v60(); virtual void v61(); virtual void v62(); virtual void v63(); virtual void v64();
     virtual void v65(); virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
-    virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void v74();
-    virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& set);   // slot 75, +0x12c
+    virtual void v70(); virtual void v71(); virtual void v72(); virtual void v73(); virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& set);   // slot 74 (0x007238E0)
+   
+    virtual void SetRHSet(const CRightHandedSet& set);   // slot 75, +0x12c
     virtual void v76(); virtual void v77(); virtual void v78(); virtual void v79(); virtual void v80();
     virtual void v81(); virtual void v82(); virtual void v83(); virtual void v84(); virtual void v85();
     virtual void v86(); virtual void v87(); virtual void v88(); virtual void v89(); virtual void v90();
@@ -61,10 +62,10 @@ struct CTCPhysicsStandard : CTCPhysicsBase {   // 0x88 bytes
     bool InteractsWithThings : 1;
     bool CollidesWithThings : 1;
     unsigned char m_flags85;                   // +0x85 CollidesWithThingsOneWay .. Impassable
-    void SetFacingAnglesFromRHSet(const CRightHandedSet& set);
+    virtual void SetRHSet(const CRightHandedSet& set);   // slot 75 (Ego_r.pdb CTCPhysicsStandard::SetRHSet)
 };
 
-void CTCPhysicsStandard::SetFacingAnglesFromRHSet(const CRightHandedSet& set)
+void CTCPhysicsStandard::SetRHSet(const CRightHandedSet& set)
 {
     UpdateOldRHSet();
     RHSet = set;

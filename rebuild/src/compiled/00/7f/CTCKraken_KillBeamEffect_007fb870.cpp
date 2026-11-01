@@ -156,7 +156,9 @@ class CTCKraken { public:
     CIntelligentPointer<CThing> PBeamWeaponEffect;            // +0x34
     unsigned char       _pad3c[0x58 - 0x3c];
     long                KillBeamCounter;              // +0x58
+private:
     void KillBeamEffect();
+public:
 };
 
 void CTCKraken::KillBeamEffect()
