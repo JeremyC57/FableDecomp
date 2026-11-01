@@ -56403,9 +56403,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cf91f0'
-        Module = 'CVtable_012c6c10'
-        Source = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf91f0.cpp'
-        TestSource = '00/cf/CLandscapeBackgroundPatch_vectordeletingdestructor_00cf91f0_test.cpp'
+        Module = 'NScript::CLadyGreyWifeManagerScript'
+        Source = '00/cf/NScriptCLadyGreyWifeManagerScript_scalardeletingdestructor_00cf91f0.cpp'
+        TestSource = '00/cf/NScriptCLadyGreyWifeManagerScript_scalardeletingdestructor_00cf91f0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00cf91f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -57278,9 +57278,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d782c0'
-        Module = 'CVtable_012d260c'
-        Source = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d782c0.cpp'
-        TestSource = '00/d7/CLandscapeBackgroundPatch_vectordeletingdestructor_00d782c0_test.cpp'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d7/NScriptCQHangingTreeGoodScript_scalardeletingdestructor_00d782c0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_scalardeletingdestructor_00d782c0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00d782c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -57684,9 +57684,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da2f70'
-        Module = 'CVtable_012d6c60'
-        Source = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00da2f70.cpp'
-        TestSource = '00/da/CLandscapeBackgroundPatch_vectordeletingdestructor_00da2f70_test.cpp'
+        Module = 'NScript::CQ_MinionCampScript'
+        Source = '00/da/NScriptCQMinionCampScript_scalardeletingdestructor_00da2f70.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScript_scalardeletingdestructor_00da2f70_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00da2f70_TEST PASS'
     }
     [pscustomobject]@{
@@ -57908,9 +57908,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00dbefa0'
-        Module = 'CVtable_012d7a28'
-        Source = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00dbefa0.cpp'
-        TestSource = '00/db/CLandscapeBackgroundPatch_vectordeletingdestructor_00dbefa0_test.cpp'
+        Module = 'NScript::CQ_NewOakValeIntroScript'
+        Source = '00/db/NScriptCQNewOakValeIntroScript_scalardeletingdestructor_00dbefa0.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScript_scalardeletingdestructor_00dbefa0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00dbefa0_TEST PASS'
     }
     [pscustomobject]@{
@@ -58279,9 +58279,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00debc90'
-        Module = 'CVtable_012dce70'
-        Source = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00debc90.cpp'
-        TestSource = '00/de/CLandscapeBackgroundPatch_vectordeletingdestructor_00debc90_test.cpp'
+        Module = 'NScript::CQ_RansomVictimScript'
+        Source = '00/de/NScriptCQRansomVictimScript_scalardeletingdestructor_00debc90.cpp'
+        TestSource = '00/de/NScriptCQRansomVictimScript_scalardeletingdestructor_00debc90_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00debc90_TEST PASS'
     }
     [pscustomobject]@{
@@ -58846,9 +58846,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e24c60'
-        Module = 'CVtable_012e12e0'
-        Source = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e24c60.cpp'
-        TestSource = '00/e2/CLandscapeBackgroundPatch_vectordeletingdestructor_00e24c60_test.cpp'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e2/NScriptCQREscortTraderScript_scalardeletingdestructor_00e24c60.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderScript_scalardeletingdestructor_00e24c60_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e24c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -59105,9 +59105,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e46a30'
-        Module = 'CVtable_012e38b0'
-        Source = '00/e4/CLandscapeBackgroundPatch_vectordeletingdestructor_00e46a30.cpp'
-        TestSource = '00/e4/CLandscapeBackgroundPatch_vectordeletingdestructor_00e46a30_test.cpp'
+        Module = 'NScript::CV_BordelloScript'
+        Source = '00/e4/NScriptCVBordelloScript_scalardeletingdestructor_00e46a30.cpp'
+        TestSource = '00/e4/NScriptCVBordelloScript_scalardeletingdestructor_00e46a30_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e46a30_TEST PASS'
     }
     [pscustomobject]@{
@@ -59427,9 +59427,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e7b2c0'
-        Module = 'CVtable_012e96cc'
-        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e7b2c0.cpp'
-        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e7b2c0_test.cpp'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_scalardeletingdestructor_00e7b2c0.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_scalardeletingdestructor_00e7b2c0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e7b2c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -59483,9 +59483,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e7f1f0'
-        Module = 'CVtable_012ea620'
-        Source = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e7f1f0.cpp'
-        TestSource = '00/e7/CLandscapeBackgroundPatch_vectordeletingdestructor_00e7f1f0_test.cpp'
+        Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
+        Source = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_scalardeletingdestructor_00e7f1f0.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_scalardeletingdestructor_00e7f1f0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00e7f1f0_TEST PASS'
     }
     [pscustomobject]@{
