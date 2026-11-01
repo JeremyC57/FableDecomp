@@ -25578,3 +25578,13 @@ chunk	address	module	name	length
 654	007b8b10	CTCTavernTable	GetEatingPoint	417
 654	00d38d20	CQ_FireHeartScript	RunVillagerComments	526
 654	00bc7660	CEnginePrimitiveManagerText	Render2DPrimitive	692
+655	004b9e20	vector<EWeaponClass	_Umove<EWeaponClass*>	18
+655	00a95890	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CA	pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	46
+655	00e1df60	CPersistContext	Transfer<signed_char>	216
+655	00e38dd0	CPersistContext	Transfer<signed_char>	216
+655	00cdcf80	CPersistContext	Transfer<signed_char>	188
+655	009d8250	_global	$E2	1
+655	00adca30	_global	Vector_Reserve_Copy	347
+655	00ca9710	_global	Thunk_VirtualMethod_2	16
+655	00b96150	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CA	pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	46
+655	00771f30	CTCInventoryItem	OnDie	27
