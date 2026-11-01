@@ -1,11 +1,13 @@
 // CAnimFilterOfGroup::Accepts(const CAnimInfo&) -- virtual slot 0: the anim is accepted when the CRC of its
+// Naming wave 28 (family peek): CDefStringTable::GetStringCRC 0x009D4A20 is the Ego_r.pdb / FableWin.pdb const
+//   ?GetStringCRC@CDefStringTable@@QBEKJ@Z (its own row's Leaf this wave). Was the non-const QAE spelling.
 // group-name string (global def string table) equals the stored group CRC.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073E940, length 33 bytes.
 // Callees: CDefStringTable::GetStringCRC 0x009D4A20 (on the global table @ 0x013CA828).
 // Layout (PDB CAnimFilterOfGroup, 0xc bytes): vptr +0, Group +4, GroupCRC +8.
 // The equality comes back as a long through `sub ; neg ; sbb ; inc` (an int result, not a bool `sete al`).
 class CDefStringTable { public:
-    unsigned long GetStringCRC(long stringIndex);      // 0x009D4A20
+    unsigned long GetStringCRC(long stringIndex) const;   // 0x009D4A20
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
