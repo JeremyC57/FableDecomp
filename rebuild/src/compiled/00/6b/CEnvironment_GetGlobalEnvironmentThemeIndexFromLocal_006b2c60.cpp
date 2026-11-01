@@ -5,10 +5,13 @@
 // CCharString::~CCharString @ 0x0099EAE0. Shape: `push ecx` reserves the 4-byte string local; a NAMED local (its address re-derived with
 // `lea ecx,[esp+8]` after the argument load) rather than a temporary; the result is parked in esi across the destructor. DefinitionManager
 // is +4 as in engine/CEnvironment.h.
+class CCharString;
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 #include "fable_string.h"
 
 struct CGameDefinitionManager_006b2c60 {
-    long GetGlobalIndexFromLocal(const CCharString& className, long localIndex);   // 0x009AD390
 };
 
 class CEnvironment { public:
@@ -20,5 +23,5 @@ class CEnvironment { public:
 long CEnvironment::GetGlobalEnvironmentThemeIndexFromLocal(long localIndex)
 {
     CCharString className("ENVIRONMENT_THEME_DAY", -1);
-    return DefinitionManager->GetGlobalIndexFromLocal(className, localIndex);
+    return ((CDefinitionManager*)DefinitionManager)->GetGlobalIndexFromClassIndex(className, localIndex);
 }

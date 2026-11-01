@@ -22,12 +22,12 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
-    CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 class CThing { public:

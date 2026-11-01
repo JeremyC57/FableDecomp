@@ -6,16 +6,18 @@ class CEnginePrimitiveRenderer2D { public:
 };
 
 // helper at 0xb8fdf0 is a thiscall member on the primitive taking one pointer arg.
-class CEngineInternalPrimitiveBase { public:
+class CEngineInternalPrimitiveBase {
+public:
+    void AddToList(CEngineInternalPrimitiveBase**a0);   // 0x00B8FDF0 (Ego_r.pdb ?AddToList@CEngineInternalPrimitiveBase@@QAEXPAPAV1@@Z)
+private: public:
     char pad0[0x0c];
     unsigned int flags;   // +0x0c
-    void Add(void* p);    // thiscall member -> this in ecx, p on stack
 };
 
 void __fastcall AddPrimitive(CEnginePrimitiveRenderer2D* self, int edx_dummy, CEngineInternalPrimitiveBase* prim)
 {
     if (prim->flags & 0x400)
-        prim->Add((char*)self + 0x44);
+        ((CEngineInternalPrimitiveBase*)prim)->AddToList((CEngineInternalPrimitiveBase**)((char*)self + 0x44));
     else
-        prim->Add((char*)self + 0x40);
+        ((CEngineInternalPrimitiveBase*)prim)->AddToList((CEngineInternalPrimitiveBase**)((char*)self + 0x40));
 }

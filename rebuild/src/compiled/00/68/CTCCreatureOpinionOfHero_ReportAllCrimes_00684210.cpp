@@ -80,8 +80,7 @@ class COpinionDeed { public:
     bool          IsCrime;                                   // +0x23
     long          LinkedHandle;                              // +0x24
 };
-class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);            // 0x006C58F0
+class CTCHeroOpinionDeedLog { public: COpinionDeed const* GetDeedFromHandle(long a0) const; private:            // 0x006C58F0
 };
 struct SListNode {
     SListNode* _M_next;
@@ -125,7 +124,7 @@ __forceinline void ReportList(CTCHeroOpinionDeedLog* log, CTCVillage* village, C
     while (it != end) {
         long handle = it->_M_data;
         it = it->_M_next;
-        COpinionDeed* deed = log->GetDeedFromHandle(handle);
+        COpinionDeed* deed = ((COpinionDeed*)log->GetDeedFromHandle(handle));
         if (deed && IsCrime(deed)) {
             if (deed->Type == 0x35 && deed->LinkedHandle != -1)
                 handle = deed->LinkedHandle;

@@ -55,7 +55,7 @@ class CThing { public:
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
     const C3DVector& GetPos() const;             // 0x004C73D0
-    CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -118,7 +118,7 @@ void CCreatureAction_LeapLong::Initialise()
     if (nav->IsPosNavLineOfSightTo(target)) {
         SetCombatAnimation("MOVEMENT_LONG_FORWARD");
         NoRoom = false;
-        CTCSolidToThing* solid = GetCreature()->AddTC("CTCSolidToThing", false, 0);
+        CTCSolidToThing* solid = ((CTCSolidToThing*)GetCreature()->AddTC("CTCSolidToThing", false, 0));
         solid->AddThingNotSolidTo(PTarget.GetPItem());
         CCombatActionBase::Initialise();
         return;

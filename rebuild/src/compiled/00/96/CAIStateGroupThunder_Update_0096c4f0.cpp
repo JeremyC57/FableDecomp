@@ -92,9 +92,11 @@ struct CDefPointer {
     ~CDefPointer() { if (--m_p->m_refs == 0) m_p->Destroy(); }
     CSpecialAbilityDef* operator->() const { return m_p; }
 };
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();       // 0x0044C6B0
-    long GetDefGlobalIndex(const CCharString& name, bool b);   // 0x009AD390
     bool GetDef(long index, CDefPointer* out);  // 0x008E31D0
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -175,7 +177,7 @@ void CAIStateGroup_Thunder::Update()
     switch (combat->GetState()) {
     case 0:
         if (IS_THING_ALIVE(PTargetThing)) {
-            long index = CGameDefinitionManager::Get().GetDefGlobalIndex("SPECIAL_ABILITIES_THUNDER_LIGHTNING_STORM_DEF", true);
+            long index = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex("SPECIAL_ABILITIES_THUNDER_LIGHTNING_STORM_DEF", true);
             CDefPointer def;
             CGameDefinitionManager::Get().GetDef(index, &def);
             float dist = Distance2D(((CThing*)PTargetThing.GetPItem()), PBrain->PCreature);

@@ -34,7 +34,7 @@ class CThing { public:
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
     const C3DVector& GetPos() const;   // 0x004C73D0
-    CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -132,7 +132,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
     if (hero->HasTC(0x4d))
         pSolid = hero->GetTC<CTCSolidToThing>(0x4d);
     else
-        pSolid = hero->AddTC("CTCSolidToThing", false, 0);
+        pSolid = ((CTCSolidToThing*)hero->AddTC("CTCSolidToThing", false, 0));
     if (pSolid)
         pSolid->AddThingNotSolidTo(PCreature.GetPItem());
     const C3DVector& pos = PCreature.GetPItem()->GetPos();

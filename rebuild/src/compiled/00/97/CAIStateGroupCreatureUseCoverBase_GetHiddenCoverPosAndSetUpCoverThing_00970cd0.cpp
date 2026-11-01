@@ -7,10 +7,13 @@
 class C3DVector { public:float X,Y,Z;};
 struct CThingRetail;
 class CBaseObject;
-class CBaseIntelligentPointer { public:
+class CBaseIntelligentPointer {
+public:
+    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
+private: public:
     CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
 };
-struct CIntelligentPointerRetail { virtual void v00(); void* PData;  void SetPItem(CThingRetail*); }; //00A01B50/00A01B90
+struct CIntelligentPointerRetail { virtual void v00(); void* PData;   }; //00A01B50/00A01B90
 struct CIntelligentVector { CIntelligentPointerRetail* first; CIntelligentPointerRetail* last; CIntelligentPointerRetail* capacity; unsigned char allocators[4];
  struct iterator { CIntelligentPointerRetail* p; explicit iterator(CIntelligentPointerRetail* q):p(q){} CIntelligentPointerRetail& operator*()const{return *p;} iterator operator++(int){iterator old(p);++p;return old;} bool operator!=(const iterator& other)const{return p!=other.p;} };
  iterator begin(){return iterator(first);} iterator end(){return iterator(last);} bool empty()const{return first==last;}
@@ -55,7 +58,7 @@ bool UseCoverMethods::GetHiddenCoverPosAndSetUpCoverThing(C3DVector& result)
     CTCOccupiableMethods* occupiable;
     if(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())->GetOccupiable(&occupiable) && !occupiable->IsOccupied()) {
      ClearCover();
-     Cover().SetPItem(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem()));
+     ((CBaseIntelligentPointer*)&(Cover()))->SetPItem((CBaseObject*)(((CThingRetail*)((CBaseIntelligentPointer*)&candidate)->GetPItem())));
      occupiable->SetOccupier((CThingRetail*)((CAIStateGroupBase*)this)->PBrain->Creature);
      return true;
     }

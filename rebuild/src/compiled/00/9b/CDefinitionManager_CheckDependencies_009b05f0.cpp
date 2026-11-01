@@ -37,6 +37,9 @@ public:
 struct CFileScanState { long _body[2]; };
 bool __fastcall ScanFirstFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);   // 0x00999C50
 bool __fastcall ScanNextFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);    // 0x00999CB0
+class CChecksumCacheFile { public:
+    unsigned long GetChecksum(CWideString const&a0);   // 0x00A60FB0 (Ego_r.pdb ?GetChecksum@CChecksumCacheFile@@QAEKABVCWideString@@@Z)
+};
 class CChecksumFile {
 public:
     __int64       Stamp;
@@ -44,7 +47,6 @@ public:
     CChecksumFile(long bufferSize);                     // 0x00A60C90
     ~CChecksumFile();                                   // 0x00A60CE0
     void Open(const CWideString& path);                 // 0x00A60D40
-    unsigned long GetChecksum(const CWideString& fileName);   // 0x00A60FB0
 };
 extern const unsigned long g_CRCTable[256];             // 0x0129A168
 struct SScalarTag { SScalarTag() { } };
@@ -157,7 +159,7 @@ void CDefinitionManager::CheckDependencies(const CWideStringVector& paths)
         CFileScanState scan;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
-                files.Add(((CWideString*)&fileName)->ToCharString().ToLower(), checksums.GetChecksum(fileName));
+                files.Add(((CWideString*)&fileName)->ToCharString().ToLower(), ((CChecksumCacheFile*)&checksums)->GetChecksum(fileName));
             } while (ScanNextFile(*path, scan, fileName));
         }
     }

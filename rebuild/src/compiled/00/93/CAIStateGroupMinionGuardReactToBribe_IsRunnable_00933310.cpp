@@ -85,12 +85,12 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerHero : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
-    __forceinline CIntelligentPointerHero(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerHero& operator=(const CIntelligentPointerHero& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerHero(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    __forceinline CIntelligentPointerHero& operator=(const CIntelligentPointerHero& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

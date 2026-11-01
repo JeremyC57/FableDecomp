@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //0x00A01C10
  void* PData;
  CBaseIntelligentPointer(); //0x00A01B10
- void SetPItem(CThingCreatureBase*); //0x00A01B90
+ void SetPItem(CBaseObject*a0); //0x00A01B90
 };
 // Actual typed-pointer native single-slot vtables: Thing1238C6C->4A9710;Creature123E7D8->4D6915.
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
@@ -25,7 +25,7 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
 };
 struct CIntelligentPointer_CThingCreatureBase : CBaseIntelligentPointer {
  CIntelligentPointer_CThingCreatureBase() {}
- CIntelligentPointer_CThingCreatureBase(CThingCreatureBase* p) {SetPItem(p);}
+ CIntelligentPointer_CThingCreatureBase(CThingCreatureBase* p) {SetPItem((CBaseObject*)p);}
 };
 class CAnimationEntry { public:
  long BankIndex; unsigned long AnimName,GroupName; void* Components;

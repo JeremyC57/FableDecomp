@@ -61,7 +61,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858
     virtual void v00();
@@ -103,7 +103,7 @@ void CCreatureAction_ReloadMissileWeapon::FinishAction()
         {
             CIntelligentPointer none;
             none.SetPItem(0);
-            PAmmo.SetPItem(((CThing*)none.GetPItem()));
+            PAmmo.SetPItem((CBaseObject*)(((CThing*)none.GetPItem())));
         }
         CThing* weaponThing = carrying->GetThingInPrimarySlot();
         if (weaponThing && !(weaponThing->m_flags91 & 1) && weaponThing->HasTC(0x48))

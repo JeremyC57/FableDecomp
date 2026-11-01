@@ -76,10 +76,14 @@ class CPlayerGuiDef { public:
     float         ThrobTime;                        // +0x168
     float         MaxThrobScale;                    // +0x16c
 };
-class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };      // 0x00438570
+class CPlayerGui {
+public:
+    unsigned char GetMiniMapRingAlpha() const;   // 0x00437880 (Ego_r.pdb ?GetMiniMapRingAlpha@CPlayerGui@@QBEEXZ)
+private:
+public:
+    bool IsMiniMapActive() const;   // 0x00437860 (Ego_r.pdb ?IsMiniMapActive@CPlayerGui@@QBE_NXZ)
+private: public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };      // 0x00438570
 struct CGameUI {
-    bool IsShowingPerceivers();                     // 0x00437860
-    unsigned char GetPerceiverAlpha();              // 0x00437880
     void Draw2DText(const C2DVector& pos, const CWideString& text, CFontBank* font, const CRGBColour& colour,
                     float scale, EEngine2DLayer layer, bool flag);   // 0x00438010
 };
@@ -91,6 +95,9 @@ struct CHandleVector {
     CEnginePrimitiveHandle *Start, *Finish, *End;
 };
 
+namespace NPlayerGui { class CDrawBase { public:
+    unsigned char ScaleAlpha(unsigned char a0) const;   // 0x00643D5D (Ego_r.pdb ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z)
+}; }
 namespace NPlayerGui {
 class CDrawPerceivers { public:
     virtual void v00();
@@ -106,16 +113,15 @@ class CDrawPerceivers { public:
     float          FrameInterp;                     // +0x30
     float          ThrobScale;                      // +0x34
     long           ThingCount;                      // +0x38
-    unsigned char GetFadedAlpha(unsigned char alpha);   // 0x00643D5D
     CFontBank* GetFont() { return Resources->DefaultFont; }
     void Draw(CEnginePrimitivePrepareInfo* info);
 };
 
 void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
 {
-    if (!PlayerGui->IsShowingPerceivers())
+    if (!((CPlayerGui*)PlayerGui)->IsMiniMapActive())
         return;
-    unsigned char alpha = PlayerGui->GetPerceiverAlpha();
+    unsigned char alpha = ((CPlayerGui*)PlayerGui)->GetMiniMapRingAlpha();
     if (alpha <= 0)
         return;
     Drawing = true;
@@ -148,10 +154,10 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
         back = def->FriendlyBackGraphic;
     else if (Allegiance == 2)
         back = def->EnemyBackGraphic;
-    CEnginePrimitive2DSprite backSprite(0, pos, 0x45, back, 0, 2, 0, 0.0f, 0.0f, GetFadedAlpha(alpha), 0xff, 0xff, 0xff, 2,
+    CEnginePrimitive2DSprite backSprite(0, pos, 0x45, back, 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(alpha), 0xff, 0xff, 0xff, 2,
                                         C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
     info->Renderer->AddPrimitive(&Handles.Start[0], backSprite, 0xc0);
-    CEnginePrimitive2DSprite eyeSprite(0, pos, 0x44, def->PerceiverFrames.Start[frame], 0, 2, 0, 0.0f, 0.0f, GetFadedAlpha(alpha), 0xff,
+    CEnginePrimitive2DSprite eyeSprite(0, pos, 0x44, def->PerceiverFrames.Start[frame], 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(alpha), 0xff,
                                        0xff, 0xff, 2, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
     info->Renderer->AddPrimitive(&Handles.Start[1], eyeSprite, 0xc0);
     if (ThingCount > 0) {
@@ -160,7 +166,7 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
         textPos.X -= GetFont()->GetStringWidth(text) * 0.5f;
         C2DVector screen;
         GFACoordToVCoord(&textPos, &screen);
-        PlayerGui->Draw2DText(C2DVector(screen.X, screen.Y), text, GetFont(), CRGBColour(0xff, 0xff, 0xff, GetFadedAlpha(0xff)), 1.0f,
+        PlayerGui->Draw2DText(C2DVector(screen.X, screen.Y), text, GetFont(), CRGBColour(0xff, 0xff, 0xff, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(0xff)), 1.0f,
                               ENGINE_2D_LAYER_TEXT, true);
     }
 }

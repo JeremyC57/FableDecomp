@@ -116,7 +116,6 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CAugmentationDef>
 #pragma auto_inline(on)
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name, bool b);   // 0x009AD390
     bool GetDef(long index, CDefPointer<CMiscThingsDef>& out);         // 0x0042B312
 };
 #pragma auto_inline(off)
@@ -129,7 +128,10 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
     return true;
 }
 #pragma auto_inline(on)
-class CDefinitionManager { public:
+class CDefinitionManager {
+public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+private: public:
     CDefBasePointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0
 };
 bool __fastcall IsMeleeWeaponClass(long weaponClass);    // 0x005DA510
@@ -150,7 +152,7 @@ void CTCInventoryWeapons::ConstructWeaponDescriptionWeight(CWideString& descript
 {
     RefreshActiveWeaponData();
     CDefPointer<CMiscThingsDef> misc;
-    long miscIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("UI_MISC_THINGS_DEF", true);
+    long miscIndex = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", true);
     CGameDefinitionManager::Get().GetDef(miscIndex, misc);
     CDefBasePointer def = GetDefinitionManager()->GetPDefFromGlobalIndex(defIndex);
     CWeaponDef* weaponDef;

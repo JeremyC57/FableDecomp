@@ -12,11 +12,11 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +4
     CBaseIntelligentPointer();              // 0x00A01B10
     CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);            // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 class C3DVector { public:                          // floats in the engine; copied as dwords
     long X, Y, Z;

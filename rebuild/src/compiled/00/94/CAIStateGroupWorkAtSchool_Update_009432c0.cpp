@@ -70,11 +70,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01244344
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
 };
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad91[0x170 - 0x68];

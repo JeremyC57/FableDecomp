@@ -20,15 +20,19 @@ class CResource { public:
  virtual bool CanAbortResourceLoad(long)const;virtual void OnResourceLoadAborted();
  virtual unsigned long GetDebugMemoryInUse()const;virtual void ResetDebugMemoryInUse();
  unsigned long IVRefCount;class CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;
+private:
  void ListRemove(); //009FBFB0
- void ListInsert(CResource*,CResource*); //009FBF90
+public:
+private:
+ void ListInsert(CResource*a0, CResource*a1); //009FBF90
+public:
  void Touch();
 };
 class CResourceList { public:
  void* VTable;CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;
  bool MakeFreeSpace(unsigned long); //009FC4F0
 };
-__forceinline void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource,&ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
+__forceinline void CResource::Touch(){if(ResourceList&&LastUsedFrame!=ResourceList->CurrentFrame){ListRemove();ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);LastUsedFrame=ResourceList->CurrentFrame;}}
 template<class T>struct CArrayNative {T* First;T* Last;T* End;T& operator[](unsigned long n)const{return First[n];}};
 
 #include "fable_string.h"

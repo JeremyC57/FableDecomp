@@ -20,11 +20,11 @@ struct CBaseIntelligentPointer {
     CThing* PItem;                          // +0x04
     CBaseIntelligentPointer();              // 0x00A01B10
     CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);            // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 namespace {
 struct CDoNotUseBinaryPredicate { };        // empty comparator (random order)

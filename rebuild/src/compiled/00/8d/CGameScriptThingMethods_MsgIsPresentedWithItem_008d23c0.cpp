@@ -38,6 +38,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
+class CThing { public:
+    CDefString GetDefName() const;   // 0x004C7CC0 (Ego_r.pdb ?GetDefName@CThing@@QBE?AVCDefString@@XZ)
+};
 struct CThingNative {
     void*          VTable;
     unsigned char  Base[0x1c];
@@ -45,7 +48,6 @@ struct CThingNative {
     ComponentMap   Components;                          // +0x44
     unsigned char  Metadata[0x45];
     unsigned char  LifeFlags;                           // +0x91 (bit 0 = dead)
-    CDefString GetDefName() const;                      // 0x004C7CC0
 };
 class CBaseObject;
 class CBaseIntelligentPointer { public:
@@ -97,10 +99,10 @@ bool CGameScriptThingMethods::MsgIsPresentedWithItem(CCharString& itemDefName) c
                 if (event->WorldFrame > last && event->WorldFrame <= current) {
                     switch (event->GetType()) {
                     case 10:
-                        itemDefName = ((CThingNative*)((CBaseIntelligentPointer*)&(((ItemPresentedEvent*)event)->Item))->GetPItem())->GetDefName();
+                        itemDefName = ((CThing*)(((CThingNative*)((CBaseIntelligentPointer*)&(((ItemPresentedEvent*)event)->Item))->GetPItem())))->GetDefName();
                         return true;
                     case 11:
-                        itemDefName = ((CThingNative*)((CBaseIntelligentPointer*)&(((ItemPresentedEvent*)event)->Item))->GetPItem())->GetDefName();
+                        itemDefName = ((CThing*)(((CThingNative*)((CBaseIntelligentPointer*)&(((ItemPresentedEvent*)event)->Item))->GetPItem())))->GetDefName();
                         return true;
                     }
                 }

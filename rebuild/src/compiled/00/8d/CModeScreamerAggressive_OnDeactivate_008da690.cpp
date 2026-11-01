@@ -53,19 +53,21 @@ FABLE_STATIC_ASSERT(sizeof(ModeStandNative)==sizeof(CModeStandBase));
 
 struct IntelligentInfo {ThingNative*Object;unsigned long RefCount;}; //CBaseObjectPointer native object0/count4; differs from counted-block ABI
 class CBaseObject;
-class CBaseIntelligentPointer { public:
+class CBaseIntelligentPointer {
+public:
+    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
+private: public:
     CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
 };
 struct BaseIntelligentPointer {
  IntelligentInfo*PData;
  BaseIntelligentPointer(); //A01B10, native baseVT129C95C
  virtual ~BaseIntelligentPointer(); //A01C10
- void SetPItem(ThingNative*); //A01B90
 };
 struct IntelligentThingPointer:BaseIntelligentPointer {
- IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){SetPItem(p);}
+ IntelligentThingPointer(ThingNative*p=0):BaseIntelligentPointer(){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}
  //implicit virtual destructor: VT1238C6C scalar-deleting4A9710 directly calls baseA01C10
- IntelligentThingPointer&operator=(const IntelligentThingPointer&p){SetPItem(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem()));return*this;}
+ IntelligentThingPointer&operator=(const IntelligentThingPointer&p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((ThingNative*)((CBaseIntelligentPointer*)&p)->GetPItem())));return*this;}
 };
 FABLE_STATIC_ASSERT(sizeof(IntelligentThingPointer)==8);
 

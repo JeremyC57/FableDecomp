@@ -20,13 +20,13 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                      // +0x04
     CBaseObject* GetPItem() const;                             // 0x00A01B50
-    void SetPItem(CThing* item);                          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                          // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        SetPItem(((CThing*)other.GetPItem()));
+        SetPItem((CBaseObject*)(((CThing*)other.GetPItem())));
         return *this;
     }
 };

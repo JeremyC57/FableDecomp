@@ -74,7 +74,7 @@ class CThing { public:
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
     CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -165,12 +165,12 @@ void CCombatAction_KickThingOnGround::Initialise()
         CTCSolidToThing* targetSolid;
         {
             CCharString name("CTCSolidToThing");
-            targetSolid = PTarget.GetPItem()->AddTC(name, true, 0);
+            targetSolid = ((CTCSolidToThing*)PTarget.GetPItem()->AddTC(name, true, 0));
         }
         CTCSolidToThing* creatureSolid;
         {
             CCharString name("CTCSolidToThing");
-            creatureSolid = PCreature.GetPItem()->AddTC(name, true, 0);
+            creatureSolid = ((CTCSolidToThing*)PCreature.GetPItem()->AddTC(name, true, 0));
         }
         targetSolid->AddThingNotSolidTo(PCreature.GetPItem());
         creatureSolid->AddThingNotSolidTo(PTarget.GetPItem());

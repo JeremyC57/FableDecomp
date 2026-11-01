@@ -50,8 +50,10 @@ template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
 };
-class CTCCarryable { public:
-    CThing* GetCarrier() const;                  // 0x00705170
+class CTCCarryable {
+public:
+    CThing const* GetPCarriedByThing() const;   // 0x00705170 (Ego_r.pdb ?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ)
+private:                   // 0x00705170
 };
 class CTCWeapon { public:
     virtual void v00();
@@ -65,7 +67,7 @@ const CCharString& CTCWeapon::GetAnimationGroupName() const
 {
     CTCCarryable* carryable;
     if (ParentThing->GetInterface(&carryable, 0x47)) {
-        CThing* carrier = carryable->GetCarrier();
+        CThing* carrier = ((CThing*)((CTCCarryable*)carryable)->GetPCarriedByThing());
         if (carrier && !(carrier->Flags91 & 1) && !IsUsableBy(carrier))
             return g_emptyCharString;
     }

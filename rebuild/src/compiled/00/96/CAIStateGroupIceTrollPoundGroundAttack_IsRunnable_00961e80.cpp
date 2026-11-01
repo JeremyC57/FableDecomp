@@ -76,13 +76,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
@@ -206,7 +206,7 @@ bool __fastcall IsThingInRangeOfPound(CThing* creature, CThing* target);        
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
     CIntelligentPointerConstThing(CThing* item);                    // 0x004A96F0
-    __forceinline CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    __forceinline CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 struct CAIStateGroup_IceTrollPoundGroundAttack : CAIStateGroupBase {

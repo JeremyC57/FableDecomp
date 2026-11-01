@@ -20,11 +20,11 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     void* m_pItem;                                  // +0x04
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 
 __forceinline CIntelligentPointerThing* CopyRange(CIntelligentPointerThing* first, CIntelligentPointerThing* last, CIntelligentPointerThing* result)

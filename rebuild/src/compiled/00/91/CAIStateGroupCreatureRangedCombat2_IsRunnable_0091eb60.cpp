@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 template <class T>
@@ -27,7 +27,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stor
 { public:
     virtual void v00();
     CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -160,7 +160,7 @@ bool CAIStateGroup_CreatureRangedCombat2::IsRunnable()
         {
             {
                 CIntelligentPointerConstThing item(target);
-                PTargetThing.SetPItem(((CThing*)item.GetPItem()));
+                PTargetThing.SetPItem((CBaseObject*)(((CThing*)item.GetPItem())));
             }
             if (IsAbleToFire())
                 return true;

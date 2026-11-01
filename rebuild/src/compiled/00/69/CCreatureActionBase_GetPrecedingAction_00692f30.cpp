@@ -45,12 +45,12 @@ struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //0x00A01C10
  void* PData;
  CBaseIntelligentPointer(); //0x00A01B10
- void SetPItem(CThing*); //0x00A01B90
+ void SetPItem(CBaseObject*a0); //0x00A01B90
  CBaseObject* GetPItem() const; //0x00A01B50
 };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
  CIntelligentPointer_CThing() {}
- CIntelligentPointer_CThing(CThing* p){SetPItem(p);}
+ CIntelligentPointer_CThing(CThing* p){SetPItem((CBaseObject*)p);}
 };
 struct CIntelligentPointer_CThingCreatureBase : CBaseIntelligentPointer {
  CIntelligentPointer_CThingCreatureBase() {}
@@ -197,7 +197,7 @@ void CCreatureActionBase::GetPrecedingAction(CCreatureActionBase*& result) const
   {
    CThing* heldThing=carrying->GetThingInPrimarySlot();
    CIntelligentPointer_CThing held(heldThing);
-   PItemRemoved.SetPItem(((CThing*)held.GetPItem()));
+   PItemRemoved.SetPItem((CBaseObject*)(((CThing*)held.GetPItem())));
   }
   void* storage=::operator new(sizeof(CCreatureAction_SheatheItemToInventory));
   CCreatureAction_SheatheItemToInventory* next;

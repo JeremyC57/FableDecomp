@@ -51,8 +51,8 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
+    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 class CCharString { public:
@@ -156,7 +156,7 @@ struct CTCBarPoint {                            // interface 0xb9 on the bar
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vtable 0x0123E7E0
     virtual void v00();
-    CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0

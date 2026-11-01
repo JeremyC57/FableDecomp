@@ -33,16 +33,16 @@ public:
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer() {}
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         CThing* item = ((CThing*)other.GetPItem());
-        SetPItem(item);
+        SetPItem((CBaseObject*)item);
         return *this;
     }
     T* Get() const { return (T*)GetPItem(); }

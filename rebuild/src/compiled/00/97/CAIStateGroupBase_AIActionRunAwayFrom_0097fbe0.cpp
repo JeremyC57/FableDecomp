@@ -98,7 +98,7 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
@@ -114,7 +114,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 
 struct CIntelligentPointerConstCreature : CBaseIntelligentPointer {   // CIntelligentPointer<const CThingCreatureBase>, vtable 0x0125AAEC
     virtual void v00();
-    CIntelligentPointerConstCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerConstCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 bool __fastcall IsAwareOfThingImplementation(CThingCreatureBase* creature, CThing* thing, bool flag);   // 0x00864700
 

@@ -19,9 +19,7 @@ public:
     ~CWideString();                                     // 0x0099B510
 };
 class CFontBank;
-class CSubtitleRenderer { public:
-    void SetText(CFontBank* font, const CWideString& text, const CWideString& a, const CWideString& b, const CWideString& c, const CWideString& d,
-                 unsigned long colour, float time, bool b1, bool b2);   // 0x00492973
+class CSubtitleRenderer { public: void SetText(CFontBank const&a0, CWideString const&a1, CWideString const&a2, CWideString const&a3, CWideString const&a4, CWideString const&a5, unsigned long a6, float a7, bool a8, bool a9); private:   // 0x00492973
 };
 struct CMainGameComponentFontView { unsigned char _prefix[0x1614c]; CFontBank* Font; };   // +0x1614C
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
@@ -35,6 +33,5 @@ void CGameScriptInterface_Methods::DisplayGameInfoText(const CWideString& text) 
     CWideString c(L"");
     CWideString b(L"");
     CWideString a(L"");
-    reinterpret_cast<CSubtitleRenderer*>(g_pPlayerGui->SubtitleRenderer)->SetText(
-        reinterpret_cast<CMainGameComponentFontView*>(Component)->Font, text, a, b, c, d, 0x2a, 0.0f, true, true);
+    reinterpret_cast<CSubtitleRenderer*>(g_pPlayerGui->SubtitleRenderer)->SetText(*(reinterpret_cast<CMainGameComponentFontView*>(Component)->Font), text, a, b, c, d, 0x2a, 0.0f, true, true);
 }

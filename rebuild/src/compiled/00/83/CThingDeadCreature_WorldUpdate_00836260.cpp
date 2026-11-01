@@ -167,7 +167,9 @@ public:
     unsigned char _padb8[0xe4 - 0xb8];
     scoped_ptr<CThingBodyReorienter> BodyReorienter;    // +0xe4
     bool StartedDecay;                                  // +0xe8
-    const CThingCreatureDef& PeekDefinition() const;    // 0x00835B90
+protected:
+    CThingCreatureDef const& PeekDefinition() const;    // 0x00835B90
+public:
     const CThingCreatureDef& PeekDefinitionInline() const
     {
         CDefPointer<CThingCreatureDef> def;

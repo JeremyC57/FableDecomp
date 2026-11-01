@@ -92,13 +92,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
@@ -160,7 +160,7 @@ extern "C" double __cdecl sqrt(double);
 class CThingCreatureBase;
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
     virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 class CCharString { public:
     void* m_pData;

@@ -72,13 +72,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
@@ -186,8 +186,8 @@ struct CTCCombatTarget {                        // interface type 8
 
 struct CIntelligentPointerTarget : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerTarget(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerTarget& operator=(const CIntelligentPointerTarget& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerTarget(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerTarget& operator=(const CIntelligentPointerTarget& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 struct CAIStateGroup_MazeShieldedChase : CAIStateGroupBase {

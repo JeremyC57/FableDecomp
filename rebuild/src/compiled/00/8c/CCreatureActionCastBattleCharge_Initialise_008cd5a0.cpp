@@ -26,12 +26,12 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
-    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
+    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
 class CRightHandedSet { public: C3DVector Up, Forward; };
@@ -60,7 +60,7 @@ class CThing { public:
     __forceinline CPhysics* GetPhysics() const { return PPhysics; }
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    CTCBattleCharge* AddTC(const CCharString& name, bool a2, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
 };
 class CCombatActionBase { public:
     virtual void v00();
@@ -94,7 +94,7 @@ void CCreatureAction_CastBattleCharge::Initialise()
         SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
-    CTCBattleCharge* tc = ((CThing*)PCreature.GetPItem())->AddTC("CTCBattleCharge", true, 0);
+    CTCBattleCharge* tc = ((CTCBattleCharge*)((CThing*)PCreature.GetPItem())->AddTC("CTCBattleCharge", true, 0));
     CThing* aim = ((CThing*)PTarget.GetPItem());
     tc->SetPTarget(aim, IsZTargetting);
     if (Override) {

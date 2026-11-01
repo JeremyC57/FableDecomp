@@ -29,7 +29,9 @@ struct CSharedData {                                // C3DAnimationBlendState::C
 class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                              // +0x04 CIVCountedPointer<CSharedData>
+private:
     void MakeOwnCopyOfData();                       // 0x00A3C1A0
+public:
     void ClearCombinationBlends();
 };
 

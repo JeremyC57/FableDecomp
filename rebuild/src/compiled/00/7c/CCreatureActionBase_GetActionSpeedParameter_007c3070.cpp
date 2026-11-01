@@ -14,11 +14,13 @@ class CCharString { public:                        // one pointer (PStringData)
     ~CCharString();                         // 0x0099EAE0
 };
 
+class CSpecialEffectsDef { public:
+    bool GetEffectFromString(CCharString const&a0, long&a1) const;   // 0x00669D30 (Ego_r.pdb ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z)
+};
 struct CSubDef {                            // CDefBase: vptr, then the reference count at +4
     virtual void v00();
     virtual void Destroy();                 // slot 1 (+4)
     long m_count;                           // +4
-    void GetParameter(const CCharString& name, long* pValue);   // 0x00669D30
 };
 
 struct CDefPointer {                        // CDefPointer<T>: one word, zero-initialised; released by hand below
@@ -68,7 +70,7 @@ long CCreatureActionBase::GetActionSpeedParameter()
         bool found = PCreature->GetSubDef(def);
         p = def.m_p;                        // the pointer local, loaded right after the lookup
         if (found) {
-            p->GetParameter(name, &value);
+            ((CSpecialEffectsDef*)p)->GetEffectFromString(name, *(&value));
             result = value;                 // read into edi before the string destructor and the release
         }
     }

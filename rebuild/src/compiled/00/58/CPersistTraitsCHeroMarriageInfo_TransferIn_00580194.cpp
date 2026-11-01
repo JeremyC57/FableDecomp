@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00580194, 440 bytes, `ret 0Ch` (traits `this` unused).
 // Ego_r.pdb: CHeroMarriageInfo (0x18) = { unsigned __int64 WifeUID +0, unsigned __int64 MaritalHomeUID +8, EMarriageState
 //   State +0x10, bool GayMarriage +0x14 }; the binary twin is 0x0057F9E9.
-// Callees: CStringParser::ReadAsSymbol @ 0x009BA790 (hidden CCharString result), CStringParser::ReadInt64 @ 0x009BA5B0
+// Callees: CStringParser::ReadAsSymbol @ 0x009BA790 (hidden CCharString result), CStringParser::ReadAsUHUGE @ 0x009BA5B0
 //   (edx:eax), CBasicString<char>::Compare @ 0x00411570 (`__fastcall` (a, b), long), ~CCharString @ 0x0099EAE0,
 //   TransferIn(CPersistContext*, CStringParser*, long*) @ 0x009E2590 (`__fastcall`), CPersistTraits<bool>::TransferIn
 //   @ 0x00403FF0 (real body in the TU as a noinline stand-in). Strings: "(" 0x0122E028, "," 0x0122E024, "" 0x0122D70E.
@@ -39,10 +39,12 @@ class CCharString { public:
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 extern "C" int __cdecl _stricmp(const char* a, const char* b);                 // 0x00BFEBA8
 __forceinline bool EqualsNoCase(const CCharString& a, const CCharString& b) { return _stricmp(a.GetString(), b.GetString()) == 0; }
-class CStringParser { public:
+class CStringParser {
+public:
+    unsigned __int64 ReadAsUHUGE();   // 0x009BA5B0 (Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ)
+private: public:
     CCharString ReadAsString();                        // 0x009BA6F0
     CCharString ReadAsSymbol();                        // 0x009BA790
-    __int64 ReadInt64();                               // 0x009BA5B0
 };
 class CPersistContext { public:
     void PersistError(const CStringParser& parser, const CCharString& message) const; // 0x009BAA90
@@ -92,9 +94,9 @@ void CPersistTraits<CHeroMarriageInfo>::TransferIn(CPersistContext* context, CSt
 {
     *value = CHeroMarriageInfo();
     if (parser->ReadAsSymbol() == "(") {
-        value->WifeUID = parser->ReadInt64();
+        value->WifeUID = ((CStringParser*)parser)->ReadAsUHUGE();
         if (parser->ReadAsSymbol() == ",") {
-            value->MaritalHomeUID = parser->ReadInt64();
+            value->MaritalHomeUID = ((CStringParser*)parser)->ReadAsUHUGE();
             if (parser->ReadAsSymbol() == ",") {
                 value->State = (EMarriageState)TransferInLong(context, parser);
                 if (parser->ReadAsSymbol() == ",") {

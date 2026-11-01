@@ -82,10 +82,12 @@ struct CWorldOpinion {
     unsigned char            _pad00[0x74];
     COpinionReactionManager* ReactionManager;       // +0x74
 };
-class CWorld { public:
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private: public:
     unsigned char  _pad00[0x24];
     CWorldOpinion* Opinion;                         // +0x24
-    CPlayer* GetCurrentPlayer() const;              // 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer 0x00449970)
 };
 extern CWorld* g_pWorld;                            // 0x013B86A0
 
@@ -103,8 +105,8 @@ CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction(CAIStateGroup_Opinion
     : PStateGroup(group), PTCOpinion(0), ReactionManager(g_pWorld->Opinion->ReactionManager)
 {
     CThing* hero;
-    if (group->GetWorld().GetCurrentPlayer())
-        hero = group->GetWorld().GetCurrentPlayer()->GetPControlledCreature();
+    if (((CPlayer*)((CWorld*)&(group->GetWorld()))->PeekMyPlayer()))
+        hero = ((CPlayer*)((CWorld*)&(group->GetWorld()))->PeekMyPlayer())->GetPControlledCreature();
     else
         hero = 0;
     CTCFollowed* followed;

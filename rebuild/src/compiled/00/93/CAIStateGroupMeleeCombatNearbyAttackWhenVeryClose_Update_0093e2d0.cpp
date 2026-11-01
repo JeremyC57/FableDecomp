@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
@@ -125,8 +125,8 @@ class CBrainOutput { public:
         Types |= 4;
         {
             CIntelligentPointer pointer;
-            pointer.SetPItem(thing);
-            LookAtThing.SetPItem(((CThing*)pointer.GetPItem()));
+            pointer.SetPItem((CBaseObject*)thing);
+            LookAtThing.SetPItem((CBaseObject*)(((CThing*)pointer.GetPItem())));
         }
         LookFlags = lookFlags;
     }

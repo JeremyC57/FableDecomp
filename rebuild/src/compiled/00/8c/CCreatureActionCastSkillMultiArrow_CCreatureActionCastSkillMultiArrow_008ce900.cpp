@@ -70,9 +70,11 @@ class CSpecialAbilitiesMultiArrowDef : public CDefClassBase { public:
     unsigned char _pad08[0x60 - 0x08];
     CDefString    CastSound;                          // +0x60
 };
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                      // 0x0044C6B0
-    long GetDefIndexFromName(const CCharString& name, long column);       // 0x009AD390
     bool GetDef(long index, CDefPointer<CSpecialAbilitiesMultiArrowDef>* out);   // 0x007CC8E0
 };
 void* FindDef_CGameDefinitionManager_GetDef(long index);
@@ -181,7 +183,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
     long index;
     {
         CCharString name("SPECIAL_ABILITIES_MULTI_ARROW_DEF");
-        index = CGameDefinitionManager::Get().GetDefIndexFromName(name, 1);
+        index = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex(name, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSound* sound;

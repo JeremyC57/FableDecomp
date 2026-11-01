@@ -87,7 +87,8 @@ public:
 
 class CManager {
 public:
-    CComponent* CreateComponent(const CCharString& name, long parent);   // 0x0041DB1D
+NUISystem::CComponent* CreateComponent(CCharString const&a0, bool a1);   // 0x0041DB1D
+private:
     CComponent* CreateStaticSlider(const CWideString& text, float value, const C2DCoordI& position);
 };
 

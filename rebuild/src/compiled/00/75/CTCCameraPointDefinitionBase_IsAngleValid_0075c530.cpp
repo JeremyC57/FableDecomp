@@ -3,7 +3,7 @@
 // Leaf: IsAngleValid
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C530, length 192 bytes
 // (?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ).
-// Callees: CTCBase::PeekWorld() const @ 0x00686A80, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature
 // @ 0x00487DD0, the camera manager's (world +0x34) virtual slot 11 (+0x2C, C3DVector by hidden pointer), CThing::GetPos
 // @ 0x004C73D0, the point's own virtual GetActiveCameraPosition (slot 35, +0x8C, C3DVector by hidden pointer); 0.0f @ 0x0122DEDC.
 // Layout = Ego_r.pdb CTCCameraPointDefinitionBase: TestAngleBeforeActivation +0x0E.
@@ -33,11 +33,13 @@ class CGameCameraManager { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual C3DVector PeekCurrentPos() const;      // slot 11 (+0x2C) 0x0069E1F0
 };
-class CWorld { public:
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private: public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     CGameCameraManager* GetCameraManager() const { return PCameraManager; }
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
 };
 inline C2DVector DeltaXY(const C3DVector& a, const C3DVector& b)
 {
@@ -71,7 +73,7 @@ public:
 bool CTCCameraPointDefinitionBase::IsAngleValid() const
 {
     if (TestAngleBeforeActivation) {
-        const CThing* hero = PeekWorld().GetCurrentPlayer()->PeekPControlledCreature();
+        const CThing* hero = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->PeekPControlledCreature();
         if (hero && !hero->IsDead()) {
             C3DVector camera = PeekWorld().GetCameraManager()->PeekCurrentPos();
             const C3DVector& heroPosition = hero->GetPos();

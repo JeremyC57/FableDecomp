@@ -31,8 +31,12 @@ class CResource { public:
     CResourceList* List;                           // +0x08
     unsigned char  _pad0C[0x18 - 0x0c];
     unsigned long  Stamp;                          // +0x18
+private:
     void ListRemove();                             // 0x009FBFB0
-    void ListInsert(CResource* before, CResource* after);   // 0x009FBF90
+public:
+private:
+    void ListInsert(CResource*a0, CResource*a1);   // 0x009FBF90
+public:
     __forceinline void Touch()
     {
         if (List && Stamp != List->Stamp) {
@@ -104,7 +108,7 @@ public:
     signed char    SmallMipmapLevel;               // +0x06
     CFrameData*    Data;                           // +0x08
     CGraphicInfo*  GraphicInfo;                    // +0x0c
-    void BeginLoading(unsigned long mipLevel, unsigned long flags);   // 0x009FE620
+    void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
     bool GetVolumeTexture(CVolumeTexture** out, unsigned long mipLevel);
 };
 

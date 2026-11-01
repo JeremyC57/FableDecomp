@@ -73,8 +73,12 @@ class CResource { public:
     unsigned long  LastUsedFrame;                  // +0x18
     CResource();                                   // 0x009FBEC0
     void SetResourceSize(unsigned long size);      // 0x009FBF20
+private:
     void ListRemove();                             // 0x009FBFB0
-    void ListInsert(CResource* prev, CResource* next);   // 0x009FBF90
+public:
+private:
+    void ListInsert(CResource*a0, CResource*a1);   // 0x009FBF90
+public:
     void Touch();
 };
 class CResourceList { public:

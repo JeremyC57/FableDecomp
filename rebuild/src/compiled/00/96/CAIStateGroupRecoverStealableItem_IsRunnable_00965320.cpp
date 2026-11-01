@@ -52,18 +52,18 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
     virtual void v00();
-    CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

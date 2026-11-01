@@ -5,7 +5,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, CVectorMap::LowerBound @ 0x0040F020
 // (inlined GetInterface for CTCCarrying = type 0x46, bit 6 of +0x28) and the const instantiation @ 0x004365B0 (const GetTC for
 // CTCCarriedObject = type 0x47, bit 7 of +0x28: `test cl,cl ; jns`), CTCCarrying::RemoveThingFromPrimarySlot(bool) @ 0x006A1E00,
-// CTCCarriedObject::GetCarrier @ 0x00705170 (manifest "CGuiControlListBox::GetCurrentSelectedEntryData" is propagated),
+// CTCCarryable::GetPCarriedByThing @ 0x00705170 (manifest "CGuiControlListBox::GetCurrentSelectedEntryData" is propagated),
 // CTCCarrying::RemoveThing(CThing*) @ 0x006A19B0, CTCCarriedObject::GetCarrySlot() @ 0x00705CC0 (manifest "CTCTavernGame::GetBanter"
 // is propagated), CTCCarrying::PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80, CCreatureActionBase::FinishAction @ 0x00694430.
 // Shape: IS_THING_ALIVE on the two intelligent pointers at +0xa8 and +0xb0 (null test, then bit 0 of +0x91); the first lookup is an
@@ -59,10 +59,12 @@ class CTCCarrying { public:
     void RemoveThing(CThing* thing);                   // 0x006A19B0
     void PutThingInCarrySlot(CThing* thing, long slot, bool immediately);   // 0x006A1F80
 };
+class CTCCarryable { public:
+    CThing const* GetPCarriedByThing() const;   // 0x00705170 (Ego_r.pdb ?GetPCarriedByThing@CTCCarryable@@QBEPBVCThing@@XZ)
+};
 struct CTCCarriedObject {
     unsigned char _pad[0x10];
     CThing* m_pCarrier;                     // +0x10
-    CThing* GetCarrier() const;             // 0x00705170
     long GetCarrySlot() const;              // 0x00705CC0
 };
 struct CBaseIntelligentPointer {            // CIntelligentPointer<CThing>: vptr + item
@@ -105,7 +107,7 @@ void CCreatureAction_Drink::FinishAction()
             if (jugThing->HasTC(0x47))
                 carried = jugThing->GetTC<CTCCarriedObject>(0x47);
             if (carried->m_pCarrier) {
-                CThing* carrier = carried->GetCarrier();
+                CThing* carrier = ((CThing*)((CTCCarryable*)carried)->GetPCarriedByThing());
                 if (carrier == PCreature.GetPItem())
                     carrying->RemoveThing(PJug.GetPItem());
                 else

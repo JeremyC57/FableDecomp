@@ -127,8 +127,10 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;                      // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:                       // 0x0049D9D0
 };
 class CHeroMarriageDef { public:
     unsigned char _pad00[0x28];
@@ -166,7 +168,7 @@ void CTCWife::HaveSex()
     g_pMainGameComponent->GetDisplayEngine()->StartScreenFadeOut(PHeroMarriageDef->WeddingTimeForScreenToFadeOut,
         PHeroMarriageDef->WeddingTimeForScreenToFadeIn, CRGBColour(0, 0, 0, 255), -1.0f);
     CGameEvent gameEvent(9);                                // SendPauseEvent(true) written out
-    gameEvent.Player = PeekWorld().GetCurrentPlayer()->m_playerNumber;
+    gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;
     gameEvent.AddBool(true);
     g_pMainGameComponent->AddGameEvent(gameEvent);
     WaitingForFadeOut = true;

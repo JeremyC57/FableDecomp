@@ -101,8 +101,10 @@ struct CTCFadeOutAndIn_Retail {
     void Fade(float time, bool fadeIn);            // 0x006C3B70
     __forceinline void FadeOut(float time) { Fade(time, false); }
 };
+class CThing { public:
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60 (Ego_r.pdb ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z)
+};
 struct CThingWithAddTC_Retail : CThing_Retail {
-    CTCBase_Retail* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -120,7 +122,7 @@ void CGameScriptInterface::EntityFadeOut(const CScriptThing& thing, float time) 
             CTCBase_Retail* added;
             {                                      // the name dies before the null test
                 CCharString name("CTCFadeOutAndIn", -1);
-                added = t->AddTC(name, false, 0);
+                added = ((CTCBase_Retail*)((CThing*)t)->AddTC(name, false, 0));
             }
             if (!added)
                 return;

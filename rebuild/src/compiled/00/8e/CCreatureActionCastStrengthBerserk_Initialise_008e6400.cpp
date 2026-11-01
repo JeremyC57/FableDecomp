@@ -30,7 +30,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    CTCBerserk* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -86,7 +86,7 @@ void CCreatureAction_CastStrengthBerserk::Initialise()
     CTCBerserk* pBerserk;
     {
         CCharString name("CTCBerserk", -1);
-        pBerserk = PCreature.GetPItem()->AddTC(name, true, 0);
+        pBerserk = ((CTCBerserk*)PCreature.GetPItem()->AddTC(name, true, 0));
     }
     pBerserk->CreateStartingEffect();
     CTCStrengthBoost* pBoost;

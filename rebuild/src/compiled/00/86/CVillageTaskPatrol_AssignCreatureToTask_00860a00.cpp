@@ -14,15 +14,15 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                        // +0x04
     CBaseIntelligentPointer();              // 0x00A01B10
     CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);            // 0x00A01B90
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00();
     CIntelligentPointer() {}
-    CIntelligentPointer(CThing* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 class CVillageTaskPatrol { public:
     virtual void v00();

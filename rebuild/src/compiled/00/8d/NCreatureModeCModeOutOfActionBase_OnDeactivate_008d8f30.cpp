@@ -66,14 +66,16 @@ class CThing : public CThingAnimatable { public:
     }
 };
 
+class CTCTargeted { public:
+    void SetTargetingFlags(unsigned long a0);   // 0x007EA270 (Ego_r.pdb ?SetTargetingFlags@CTCTargeted@@QAEXK@Z)
+};
 struct CTCTargetedFlags {                  // the type-9 component: a flags word at +0xc with an out-of-line setter
     unsigned char _pad00[0x0c];
     unsigned long m_flags;                 // +0x0c
-    void SetFlags(unsigned long flags);    // 0x007EA270
     void ClearFlag(unsigned long flag)
     {
         if (m_flags & flag)
-            SetFlags(m_flags ^ flag);
+            ((CTCTargeted*)this)->SetTargetingFlags(m_flags ^ flag);
     }
 };
 

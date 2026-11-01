@@ -19,11 +19,13 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
-class CSpecialEffectsDef { public:
+class CSpecialEffectsDef {
+public:
+    bool GetEffectFromString(CCharString const&a0, long&a1) const;   // 0x00669D30 (Ego_r.pdb ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z)
+private: public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30 (CCRC, at the def)
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -155,7 +157,7 @@ void CCreatureAction_OnGenerate::Initialise()
         SEffectsOut effectsOut;
         effectsOut.Object = 0;
         effect = 0;
-        found = GetSubDefRaw(PCreature.GetPItem()->GetDef().operator->(), &effectsOut, effects) && effects->CalcAndLookup("GENERATE", &effect);
+        found = GetSubDefRaw(PCreature.GetPItem()->GetDef().operator->(), &effectsOut, effects) && ((CSpecialEffectsDef*)effects)->GetEffectFromString("GENERATE", *(&effect));
     }
     CSpecialEffectsDef* const effectsCopy = effects;
     if (found)

@@ -47,13 +47,13 @@ struct CBaseIntelligentPointer {           // 8 bytes: vptr + the pointed-to ite
     virtual void v00();
     CBaseObject* PItem;                    // +4
     CBaseIntelligentPointer();             // 0x00A01B10
-    void SetPItem(void* item);             // 0x00A01B90
+    void SetPItem(CBaseObject*a0);             // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing() { }
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
 };
 
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8

@@ -144,7 +144,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
@@ -205,7 +205,7 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
 {
     CCombatActionBase::FinishAction();
     CIntelligentPointer item;
-    item.SetPItem(((CThing*)PItemRemoved.GetPItem()));
+    item.SetPItem((CBaseObject*)(((CThing*)PItemRemoved.GetPItem())));
     if (IS_THING_ALIVE(item)) {
         CTCCarrying* carrying;
         ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46);

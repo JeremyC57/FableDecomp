@@ -30,13 +30,13 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligentPointer<..>, vtable 0x01231C4C
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 class CAIStateGroupBase { public:

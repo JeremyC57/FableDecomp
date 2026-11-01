@@ -26,7 +26,7 @@ extern const char g_EmptyString[];
 #pragma pack(push,1)
 template<class T>class CBasicString{public:T* PData;unsigned long StringLength;unsigned long DataLength:31;bool UseFastExtend:1;};class CCharStringData{public:CBasicString<char> Data;long NoRefs;};
 #pragma pack(pop)
-class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);CCharString(const char*,long=-1);~CCharString();CCharString& operator=(const CCharString&);operator const char*()const{if(!PStringData)return g_EmptyString;return PStringData->Data.PData;}};
+class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);CCharString(const char*,long=-1);~CCharString();CCharString const& operator=(CCharString const&a0);operator const char*()const{if(!PStringData)return g_EmptyString;return PStringData->Data.PData;}};
 
 CCharString __fastcall operator+(const CCharString&,const CCharString&);
 CCharString __fastcall operator+(const CCharString&,const char*);

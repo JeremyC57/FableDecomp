@@ -22,7 +22,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {          // CIntelligentPointer<CThing>
@@ -31,7 +31,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {          // CIntelli
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointerConstThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointerConstThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 
 enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_ONCE };

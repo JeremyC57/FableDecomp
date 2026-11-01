@@ -2,7 +2,9 @@
 class CCharString;
 struct CRegions;
 
-extern int __fastcall CRegions_GetCount(CRegions* r);
+class CWorldMap { public:
+    long GetLoadedRegion() const;   // 0x004FB150 (Ego_r.pdb ?GetLoadedRegion@CWorldMap@@QBEJXZ)
+};
 extern void* __fastcall CRegions_GetEntry(CRegions* r);
 
 // The accessor lives at vtable slot 13 (byte offset 0x34). It is used in two
@@ -29,7 +31,7 @@ const CCharString& __fastcall CGameScriptInterface_GetRegionName(CGameScriptInte
 {
     CMidNoArg* m = (CMidNoArg*)interface->World;
     CRegions* col = m->GetRegions();
-    int n = CRegions_GetCount(col);
+    int n = ((CWorldMap*)col)->GetLoadedRegion();
     if (n > 0) {
         CMidArg* m2 = (CMidArg*)interface->World;
         CRegions* e = m2->GetRegions(n);

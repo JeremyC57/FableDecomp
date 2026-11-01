@@ -65,11 +65,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 struct CIntelligentPointerVector {                    // STLport vector<CIntelligentPointer<CThing>>, 12 bytes in retail
     void* _M_start; void* _M_finish; void* _M_end_of_storage;

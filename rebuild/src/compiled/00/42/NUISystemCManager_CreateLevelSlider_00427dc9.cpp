@@ -89,7 +89,8 @@ public:
 
 class CManager {
 public:
-    CComponent* CreateComponent(const CCharString& name, long parent);   // 0x0041DB1D
+NUISystem::CComponent* CreateComponent(CCharString const&a0, bool a1);   // 0x0041DB1D
+private:
     CComponent* CreateLevelSlider(const CWideString& text, const C2DCoordI& position, long level, long maxLevel, const CRGBColour& colour);
 };
 

@@ -53,8 +53,7 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
-class CWorld { public:
-    CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
+class CWorld { public: CPlayer const* PeekMyPlayer() const; private:                      // 0x0049D9D0
 };
 class CMainGameComponent { public:
     unsigned char _pad00[0x24];
@@ -197,7 +196,7 @@ public:
 void CTCGuard::ReportAllPendingCrimes(CTCVillage* village)
 {
     if (village) {
-        CThing* hero = g_pMainGameComponent->World->PeekMyPlayer()->GetPControlledCreature();
+        CThing* hero = ((CPlayer*)g_pMainGameComponent->World->PeekMyPlayer())->GetPControlledCreature();
         CTCHeroOpinionDeedLog* log = 0;
         if (hero)
             hero->GetInterface(&log, 0x51);

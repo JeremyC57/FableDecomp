@@ -62,7 +62,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                     // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
     CBaseObject* GetPItem() const;                      // 0x00A01B50
-    void SetPItem(CThing* item);                   // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                   // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
@@ -116,8 +116,8 @@ void CInputProcessZTarget::ProcessInput(const CInputEvent& event, CProcessedInpu
             target = targeting->GetTargetThing();
         {
             CIntelligentPointer pointer;
-            pointer.SetPItem(target);
-            PTarget.SetPItem(((CThing*)pointer.GetPItem()));
+            pointer.SetPItem((CBaseObject*)target);
+            PTarget.SetPItem((CBaseObject*)(((CThing*)pointer.GetPItem())));
         }
         DeactivateHoldTimer = 15;
         processed.SetHandled();

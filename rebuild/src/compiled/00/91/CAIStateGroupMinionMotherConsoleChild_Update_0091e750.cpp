@@ -69,11 +69,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // <const CThing>: vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem(item); }
+    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
 };
 
 namespace NEntityEvents {

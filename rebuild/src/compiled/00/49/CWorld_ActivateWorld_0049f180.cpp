@@ -11,7 +11,7 @@
 //   InitPlayerCharacter(bool) 0x00449D90, the spell-effect interpolator's screen-effect refresh 0x006B8410 (its
 //   ScreenEffectPriorityStack at +0x90), CPlayerGui::InitialActivate 0x0043A380 on g_pPlayerGui 0x013B8790,
 //   CQuestManager::ActivateMultipleQuests(CArray<CCharString>*, bool, bool) 0x004B4260 and PostBoastTransfer 0x004B2890
-//   on g_pQuestManager 0x013B89FC, CGameEvent::AddData(long, const void*) 0x009F1760, CPlayerManager::GetMainPlayerID
+//   on g_pQuestManager 0x013B89FC, CGameEvent::AddData(long, const void*) 0x009F1760, CPlayerManager::GetMainPlayerNumber
 //   0x00449700, CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C on g_pMainGameComponent 0x013B86A0;
 //   the world frame global 0x013B89BC.
 // Layout: rebuild/include/engine/CWorld.h (PlayerManager +0x0c, PEnvironment +0x18, FrameStarted3DRendering +0x8c,
@@ -37,9 +37,11 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                           // 0x00487DC0
 };
-class CPlayerManager { public:
+class CPlayerManager {
+public:
+    long GetMainPlayerNumber() const;   // 0x00449700 (Ego_r.pdb ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ)
+private: public:
     void InitPlayerCharacter(bool loadedGame);           // 0x00449D90
-    long GetMainPlayerID();                              // 0x00449700
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
@@ -94,7 +96,7 @@ void CWorld::ActivateWorld(bool loadedGame)
     LoadingStageDone(0);
     CGameEvent event(GAME_EVENT_WORLD_ACTIVATED);
     event.Add(false);
-    event.Player = (signed char)PlayerManager->GetMainPlayerID();
+    event.Player = (signed char)((CPlayerManager*)PlayerManager)->GetMainPlayerNumber();
     g_pMainGameComponent->AddGameEvent(event);
     FrameStarted3DRendering = g_WorldFrame;
 }

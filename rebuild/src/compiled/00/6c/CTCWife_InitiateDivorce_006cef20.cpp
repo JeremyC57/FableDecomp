@@ -4,7 +4,7 @@
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (manifest "CWorld::DrawGetEnvironment", propagated);
 //          CSubtitleRenderer::SetText(CFontBank*, const CCharString&, unsigned long, float, bool, bool) 0x00492ED1 on the
 //          renderer embedded at CPlayerGui+0x18; CTCBase::AddToGlobalTCs() 0x00686ED0; CTCBase::PeekWorld() const
-//          0x00686A80; CWorld::GetCurrentPlayer() 0x0049D9D0 (player number byte +0x28); CMemoryBuffer::Copy 0x009F1760;
+//          0x00686A80; CWorld::PeekMyPlayer() 0x0049D9D0 (player number byte +0x28); CMemoryBuffer::Copy 0x009F1760;
 //          CMainGameComponent::AddGameEvent(const CGameEvent&) 0x0041649C; __security_check_cookie 0x00BFE9F9.
 //          Globals: g_pPlayerGui 0x013B8790, g_pMainGameComponent 0x013B86A0 (font bank at +0x1614c).
 // Shape: the screens manager's +0x34 flag byte (descriptive: a screen is active) is the only guard. SetText takes the
@@ -54,8 +54,10 @@ class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                  // +0x28
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:              // 0x0049D9D0
 };
 class CHeroMarriageDef { public:
     unsigned char _pad00[0xa4];
@@ -88,7 +90,7 @@ void CTCWife::InitiateDivorce()
     WaitingForDivorce = true;
     AddToGlobalTCs();
     CGameEvent gameEvent(9);                       // SendPauseEvent(true) written out: the constant flag folds to one store
-    gameEvent.Player = PeekWorld().GetCurrentPlayer()->m_playerNumber;
+    gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;
     gameEvent.AddBool(true);
     g_pMainGameComponent->AddGameEvent(gameEvent);
 }

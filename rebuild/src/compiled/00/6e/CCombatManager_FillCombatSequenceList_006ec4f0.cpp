@@ -64,10 +64,12 @@ class CCombatTypeDef { public:
     CRetailVector<CCharString> CombatSequence;      // +0x50
     CRetailVector<long> CombatSequenceDef;          // +0x5c
 };
+class CThing { public:
+    CDefString GetDefName() const;   // 0x004C7CC0 (Ego_r.pdb ?GetDefName@CThing@@QBE?AVCDefString@@XZ)
+};
 class CThingCreatureBase { public:
     unsigned char _pad[0x10];
     unsigned char ThingClass;                       // +0x10
-    CDefString GetDefName() const;                  // 0x004C7CC0
     const CCombatTypeDef* GetCombatTypeDef();       // 0x00666D10
 };
 class CCombatSequenceDef { public:
@@ -205,7 +207,7 @@ void CCombatManager::FillCombatSequenceList(CThingCreatureBase& attacker, CThing
         return;
     const CCombatTypeDef* def = attacker.GetCombatTypeDef();
     if (def->CombatSequence.first == def->CombatSequence.last && def->CombatSequenceDef.first == def->CombatSequenceDef.last) {
-        CCharString name = g_DefStringTable.GetString(attacker.GetDefName());
+        CCharString name = g_DefStringTable.GetString(((CThing*)&attacker)->GetDefName());
         CCharString message = "WARNING : No combat sequences registered for this combat type - in creature " + name;
         CombatTrace(message);
     }

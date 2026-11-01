@@ -48,10 +48,10 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     CThing* m_pItem;                            // +0x04
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
-    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

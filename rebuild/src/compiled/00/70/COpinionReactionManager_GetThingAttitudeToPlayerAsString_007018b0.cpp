@@ -1,7 +1,7 @@
 // COpinionReactionManager::GetThingAttitudeToPlayerAsString(const CThing* thing) const -- the name of the thing's attitude to the player: from GetAttitudeOrReactionType with the player creature's opinion source when it has one, else from GetThingAttitudeToPlayer; indexes the static attitude-name string table
 // Leaf: GetThingAttitudeToPlayerAsString
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007018B0, length 136 bytes (padded to 144).
-// Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature @ 0x00487DD0,
+// Callees: CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature @ 0x00487DD0,
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0,
 //          COpinionReactionManager::GetAttitudeOrReactionType @ 0x00701010, GetThingAttitudeToPlayer @ 0x00701840.
 // Globals: the attitude-name table (CCharString[], 4 bytes each) @ 0x013BABD0.
@@ -41,8 +41,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer();            // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:             // 0x0049D9D0
 };
 
 enum { TC_OPINION_SOURCE = 0x50 };
@@ -64,7 +66,7 @@ public:
 
 const CCharString& COpinionReactionManager::GetThingAttitudeToPlayerAsString(const CThing* thing)
 {
-    const CThing* creature = World->GetCurrentPlayer()->PeekPControlledCreature();
+    const CThing* creature = ((CPlayer*)((CWorld*)World)->PeekMyPlayer())->PeekPControlledCreature();
     if (creature && creature->HasTC(TC_OPINION_SOURCE))
     {
         CTCOpinionSource* source = (CTCOpinionSource*)creature->GetTC(TC_OPINION_SOURCE);

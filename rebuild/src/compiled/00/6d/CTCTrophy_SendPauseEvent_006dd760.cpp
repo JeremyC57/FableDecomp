@@ -3,7 +3,7 @@
 // Flags: /GS
 // Retail: Fable.exe @ 0x006DD760, 117 bytes (`ret 4`, /GS cookie 0x0139C8A8). Caller: CTCTrophy vtable slot 26 0x006DF460.
 //         Byte-identical body: CTCWife::SendPauseEvent 0x006CEBF0.
-// Callees: CTCBase::PeekWorld() const 0x00686A80; CWorld::GetCurrentPlayer() 0x0049D9D0 (player number byte at +0x28);
+// Callees: CTCBase::PeekWorld() const 0x00686A80; CWorld::PeekMyPlayer() 0x0049D9D0 (player number byte at +0x28);
 //          CMemoryBuffer::Copy(unsigned long, const void*) 0x009F1760; CMainGameComponent::AddGameEvent(const CGameEvent&)
 //          0x0041649C on g_pMainGameComponent 0x013B86A0; __security_check_cookie 0x00BFE9F9.
 // Model: CGameEvent as the landed CInputProcessQuickAccessItems::CancelQuickAccessCharge 0x0068E3C0 (Ego_r.pdb, 40 bytes
@@ -33,8 +33,10 @@ class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                  // +0x28
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:              // 0x0049D9D0
 };
 
 class CTCBase
@@ -52,7 +54,7 @@ class CTCTrophy : public CTCBase { public:
 void CTCTrophy::SendPauseEvent(bool pause)
 {
     CGameEvent gameEvent(9);
-    gameEvent.Player = PeekWorld().GetCurrentPlayer()->m_playerNumber;
+    gameEvent.Player = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->m_playerNumber;
     gameEvent.AddBool(pause);
     g_pMainGameComponent->AddGameEvent(gameEvent);
 }

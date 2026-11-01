@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00490927, 251 bytes, `ret 4`; `this` is never read.
 // Callees: a CWorld mode predicate 0x0048DB13 (`mode != 0 && mode != 9` on +0x104; emitted in this TU; manifest label
 //   CPersistContext::IsBinary is propagated), CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0,
-//   CWorld::GetCurrentPlayer() const 0x0049D9D0, CPlayer::PeekPControlledCreature 0x00487DD0,
+//   CWorld::PeekMyPlayer() const 0x0049D9D0, CPlayer::PeekPControlledCreature 0x00487DD0,
 //   IS_THING_ALIVE<CThing*> 0x0043DBF0 (__fastcall), std::bitset::test 0x00410DE0,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0.
 // Globals: g_pMainGameComponent 0x013B86A0 (+0x24 PWorld, +0x28 a front-end object with a blocking byte at +0xBC, a
@@ -74,9 +74,11 @@ class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
-class CWorld { public:
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private: public:
     bool IsInSpecialMode();                        // 0x0048DB13
-    CPlayer* GetCurrentPlayer() const;             // 0x0049D9D0
 };
 struct CFrontEnd {
     unsigned char _pad[0xbc];
@@ -117,7 +119,7 @@ bool CSubtitleRenderer::IsAllowedToSetText(bool force)
             break;
         if (g_pPlayerGui->GetPHeroInfoScreensManager()->m_open != 0)
             break;
-        const CThingPlayerCreature* hero = world->GetCurrentPlayer()->PeekPControlledCreature();
+        const CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)world)->PeekMyPlayer())->PeekPControlledCreature();
         if (!IS_THING_ALIVE(hero))
             break;
         if (IsComponentActive<CTCActiveStateA>(hero, 0xfc) || IsComponentActive<CTCActiveStateB>(hero, 0xc6))

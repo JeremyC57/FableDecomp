@@ -55,7 +55,7 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
     CWideString Pathname;                               // +0x18
     CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099AD80
     ~CDiskFileWin32() { Close(); }
-    void Read(void* data, long size, CASuspendableProcess* process);          // 0x0099A960
+    virtual void Read(void*a0, long a1, CASuspendableProcess*a2);          // 0x0099A960
     void Write(const void* data, long size, CASuspendableProcess* process);   // 0x0099AA90
     long GetLength() const { return Length; }
 };

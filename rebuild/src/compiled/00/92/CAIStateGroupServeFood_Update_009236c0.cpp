@@ -155,12 +155,12 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject> (vtable 0x0125A858)
     virtual void v00();
-    __forceinline CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentPointerThingObject(CThingObject* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThingObject& pointer);   // 0x0078B2A0
 class CTCCarrying { public:                            // interface 0x46

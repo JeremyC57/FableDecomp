@@ -37,10 +37,12 @@ class CMessageEventManager { public:
                               float value1, float value2, long data);   // 0x00687540
     void RemoveMessage(const CMessageEvent* message);   // 0x00493B5B
 };
-class CWorld { public:
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private: public:
     unsigned char         _pad00[0x60];
     CMessageEventManager* PMessageEventManager;      // +0x60
-    CPlayer* GetCurrentPlayer();                     // 0x0049D9D0
 };
 
 struct CLongVector {                                 // retail std::vector<long> (12 bytes)
@@ -70,7 +72,7 @@ void CTCHeroPodium::FrameUpdate()
 {
     CThing* podium = ParentThing;
     const C3DVector& podiumPos = podium->GetPos();
-    const CThing* hero = GetWorld().GetCurrentPlayer()->PeekPControlledCreature();
+    const CThing* hero = ((CPlayer*)((CWorld*)&(GetWorld()))->PeekMyPlayer())->PeekPControlledCreature();
     if (hero) {
         const C3DVector& heroPos = hero->GetPos();
         float dx = podiumPos.X - heroPos.X;

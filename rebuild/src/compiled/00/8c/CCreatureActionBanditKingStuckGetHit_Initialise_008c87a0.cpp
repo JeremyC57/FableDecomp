@@ -20,11 +20,13 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 
-class CSpecialEffectsDef { public:
+class CSpecialEffectsDef {
+public:
+    bool GetEffectFromString(CCharString const&a0, long&a1) const;   // 0x00669D30 (Ego_r.pdb ?GetEffectFromString@CSpecialEffectsDef@@QBE_NABVCCharString@@AAJ@Z)
+private: public:
     virtual void v00();
     virtual void Destroy();                           // slot 1
     long RefCount;                                    // +0x04
-    bool CalcAndLookup(const CCharString& name, long* value);   // 0x00669D30
 };
 template<class T> class CDefPointer { public:
     T* Object;
@@ -93,12 +95,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 
 class CTCDParticleEmitter { public:
@@ -128,7 +130,7 @@ void CCreatureAction_BanditKingStuckGetHit::Initialise()
     bool found;
     {
         long effect = 0;
-        found = ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("STUCKLOOP", &effect);
+        found = ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effects) && ((CSpecialEffectsDef*)(effects.Object))->GetEffectFromString("STUCKLOOP", *(&effect));
         if (found) {
             CThing* created = CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
             PStuckEffect = CIntelligentPointerThing(created);

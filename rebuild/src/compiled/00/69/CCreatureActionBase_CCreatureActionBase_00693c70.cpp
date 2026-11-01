@@ -31,11 +31,11 @@ struct CBaseIntelligentPointer {
     CThing* PItem;                          // +0x04
     CBaseIntelligentPointer();              // 0x00A01B10
     CThing* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);            // 0x00A01B90
 };
 struct CCreaturePointer : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
-    CCreaturePointer(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
+    CCreaturePointer(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
 };
 struct CThingPointer : CBaseIntelligentPointer {        // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();

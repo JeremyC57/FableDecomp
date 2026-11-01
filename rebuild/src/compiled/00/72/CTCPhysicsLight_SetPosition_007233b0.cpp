@@ -21,8 +21,7 @@ class CWorldMap { public:
     virtual long GetMapNumberAt(const C3DVector& pos);   // slot 16 (+0x40)
 };
 
-class CThing { public:
-    void SetCurrentMapNumber(unsigned short mapNumber);   // 0x004C7580
+class CThing { public: void SetCurrentMapNumber(long a0); private:   // 0x004C7580
 };
 
 struct CTCPhysicsBase_Calls {

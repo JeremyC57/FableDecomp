@@ -82,7 +82,7 @@ class CEnvironment { public:
 class CWorld { public:
     unsigned char _pad00[0x18];
     CEnvironment* Environment;                             // +0x18
-    CPlayer* PeekMyPlayer() const;                         // 0x0049D9D0
+    CPlayer const* PeekMyPlayer() const;                         // 0x0049D9D0
 };
 
 enum EFlyMode { FLY_MODE_STRAFE, FLY_MODE_LOOP, FLY_MODE_BREATHE_FIRE };
@@ -114,7 +114,7 @@ void CTCCreatureFlyInCircles::PlayLoopAnim()
     CCharString animation;
     float windSpeed = 0.0f;
     C3DVector direction;
-    CThing* hero = PeekWorld().PeekMyPlayer()->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)PeekWorld().PeekMyPlayer())->GetPControlledCreature();
     if (hero && !hero->IsDead())
         direction = hero->GetPos() - Creature->GetPos();
     else

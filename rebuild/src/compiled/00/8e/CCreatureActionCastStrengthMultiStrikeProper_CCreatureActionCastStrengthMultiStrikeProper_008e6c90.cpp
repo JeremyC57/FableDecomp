@@ -43,9 +43,11 @@ struct CDefPointerMultiStrike {                 // CDefPointer<const CSpecialAbi
     CSpecialAbilitiesMultiStrikeDef* operator->() const { return Object; }
 };
 
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                      // 0x0044C6B0
-    long GetDefIndexFromName(const CCharString& name, long column);       // 0x009AD390
     bool GetDef(long index, CDefPointerMultiStrike* out);                 // 0x007CD760
 };
 void* FindDef_CGameDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
@@ -93,7 +95,7 @@ CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMulti
     long index;
     {
         CCharString name("SPECIAL_ABILITIES_MULTI_STRIKE_DEF");
-        index = CGameDefinitionManager::Get().GetDefIndexFromName(name, 1);
+        index = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex(name, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &def);
     {

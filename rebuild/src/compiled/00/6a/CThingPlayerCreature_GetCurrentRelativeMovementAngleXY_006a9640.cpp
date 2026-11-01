@@ -23,13 +23,16 @@ class CCamera { public:
     virtual float GetAngleXY();                          // slot 7 (+0x1c)
 };
 
+class CPlayer;
+class CWorld { public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+};
 class CDisplayEngine { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005();
     virtual CTransform GetCameraTransform();             // slot 6 (+0x18)
     unsigned char _pad04[0x30];
     CCamera*      m_pCamera;                             // +0x34
-    CEngineState* GetState();                            // 0x0049D9D0
 };
 
 class CThingPlayerCreature { public:
@@ -40,7 +43,7 @@ class CThingPlayerCreature { public:
 float CThingPlayerCreature::GetCurrentRelativeMovementAngleXY()
 {
     CDisplayEngine* engine = GetDisplayEngine();
-    if (engine->GetState()->m_useTransform)
+    if (((CEngineState*)((CWorld*)engine)->PeekMyPlayer())->m_useTransform)
         return engine->GetCameraTransform().GetAngleXY();
     return engine->m_pCamera->GetAngleXY();
 }

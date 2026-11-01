@@ -104,15 +104,15 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
     {
         CThing* item = ((CThing*)other.GetPItem());
-        SetPItem(item);
+        SetPItem((CBaseObject*)item);
         return *this;
     }
 };
@@ -184,7 +184,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                     float dz = myPos.Z - bedPos.Z;
                     float distanceSquared = dz * dz + dy * dy + dx * dx;
                     if (!((CThing*)PBed.GetPItem()) || bestDistanceSquared > distanceSquared) {
-                        PBed.SetPItem(bed);
+                        PBed.SetPItem((CBaseObject*)bed);
                         bestDistanceSquared = distanceSquared;
                         BedPos = bed->GetPos();
                         Rhset = *bed->PGraphic->GetRHSet();

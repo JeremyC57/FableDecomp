@@ -99,8 +99,11 @@ struct CHomeOccupant {
     unsigned char _pad00[4];
     CThing* Thing;                              // +0x04
 };
+class CTCVillage;
+class CTCVillageMember { public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540 (Ego_r.pdb ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ)
+};
 struct CTCHome {
-    CHomeOccupant* GetOccupant();               // 0x007EE540
 };
 class CPlayerGui { public:
     void UpdateMiniMapMarkers(bool a);          // 0x004378C0
@@ -166,7 +169,7 @@ void CTCWife::Divorce()
     }
     CTCHome* home;
     if (ParentThing->GetInterface(&home, 0x23)) {
-        CHomeOccupant* occupant = home->GetOccupant();
+        CHomeOccupant* occupant = ((CHomeOccupant*)((CTCVillageMember*)home)->GetPVillage());
         if (occupant) {
             CTCCreatureOpinionOfHero* other;
             if (occupant->Thing->GetInterface(&other, 0x4f)) {

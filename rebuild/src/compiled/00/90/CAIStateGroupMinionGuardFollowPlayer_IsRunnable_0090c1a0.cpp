@@ -184,7 +184,10 @@ struct CVillage {
     CBaseIntelligentPointer PGuardFollower;     // +0xbd (packed)
 };
 #pragma pack(pop)
-CVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
+class CTCVillage;
+class CTCVillageMember { public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540 (Ego_r.pdb ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ)
+};
 class CThingFilter_HasTC { public:
     long m_type;
     CThingFilter_HasTC(long type) : m_type(type) { }
@@ -244,8 +247,8 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
     CThing* hero = g_pMainGameComponent->m_pWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1) && PBrain->PCreature->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)PBrain->PCreature->FindEntry(0x23)->second;
-        if (GFGetPVillageInterface(villager)) {
-            CVillage* village = GFGetPVillageInterface(villager);
+        if (((CVillage*)((CTCVillageMember*)villager)->GetPVillage())) {
+            CVillage* village = ((CVillage*)((CTCVillageMember*)villager)->GetPVillage());
             CThing* follower = ((CThing*)village->PGuardFollower.GetPItem());
             if (!follower || (follower->m_flags91 & 1)) {
                 CThingAICreature* nearest;

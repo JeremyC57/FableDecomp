@@ -60,8 +60,8 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
-    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
+    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 class CCharString { public:
@@ -120,8 +120,11 @@ class CTCShop { public:
 class CTCShopKeeper { public:                          // interface 0x90
     CTCShop* GetShopTC();                       // 0x00798F50
 };
+class CTCVillage;
+class CTCVillageMember { public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540 (Ego_r.pdb ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ)
+};
 struct CTCScratch23 {                           // interface 0x23
-    bool Reset();                               // 0x007EE540 (manifest IS_THING_ALIVE<...> label is propagated)
 };
 struct CThingPhysicsBody {
     unsigned char _pad[0x34];
@@ -166,7 +169,7 @@ void CAIStateGroup_TavernKeeper::Update()
         shopKeeper->GetShopTC()->SetStockState(0);
     CTCScratch23* scratch;
     GetCreature()->GetInterface(&scratch, 0x23);
-    scratch->Reset();
+    ((CTCVillageMember*)scratch)->GetPVillage();
     CThingPos* creature = (CThingPos*)GetCreature();
     CThingBuildingModel* pub = (CThingBuildingModel*)PPub.GetPItem();
     if (!pub->IsPointInside(creature->GetPos())) {

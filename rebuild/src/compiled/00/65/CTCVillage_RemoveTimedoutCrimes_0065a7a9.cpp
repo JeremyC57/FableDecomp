@@ -2,7 +2,7 @@
 // Leaf: RemoveTimedoutCrimes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065A7A9, 169 bytes (plain `ret`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?RemoveTimedoutCrimes@CTCVillage@@QAEXXZ`.
-// Callees: CWorld::GetCurrentPlayer() const 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
+// Callees: CWorld::PeekMyPlayer() const 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
 //          0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51); CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound 0x0040F020; the STLport tree increment Successor 0x004292C0 (`__cdecl`);
 //          CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0; set<long>::erase(iterator) 0x00638D70 (the iterator
@@ -62,8 +62,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:           // 0x0049D9D0
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];
@@ -75,8 +77,7 @@ extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class COpinionDeed { public:
     long DeedType;                              // +0x00 EOpinionDeedType
 };
-class CTCHeroOpinionDeedLog { public:
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+class CTCHeroOpinionDeedLog { public: COpinionDeed const* GetDeedFromHandle(long a0) const; private:   // 0x006C58F0
 };
 
 struct SNode {                                  // STLport _Rb_tree_node<long>
@@ -116,7 +117,7 @@ class CTCVillage { public:
 
 void CTCVillage::RemoveTimedoutCrimes()
 {
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);
@@ -126,7 +127,7 @@ void CTCVillage::RemoveTimedoutCrimes()
         SCrimeIterator next = it;
         while (it != end) {
             ++next;
-            if (!log->GetDeedFromHandle(*it))
+            if (!((COpinionDeed*)log->GetDeedFromHandle(*it)))
                 crimes->erase(it);
             it = next;
         }

@@ -46,7 +46,7 @@ struct CGraphicInfoFrameInfo {
 class CGraphicInfoFrame { public:                         // 16 bytes
     unsigned char          _pad[0xc];
     CGraphicInfoFrameInfo* m_pInfo;                // +0x0c
-    void BeginLoading(unsigned long priority, unsigned long flags);   // 0x009FE620
+    void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
 };
 
 struct SBankGraphic {

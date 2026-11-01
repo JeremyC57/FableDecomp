@@ -40,7 +40,11 @@ struct CVillage_Retail {
     unsigned char _pad00[0x2c];
     CResidentList Residents;                            // +0x2C
 };
-struct CTCVillageMember_Retail { CVillage_Retail* GetVillage(); };   // 0x007EE540
+class CTCVillage;
+class CTCVillageMember { public:
+    CTCVillage* GetPVillage() const;   // 0x007EE540 (Ego_r.pdb ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ)
+};
+struct CTCVillageMember_Retail {  };   // 0x007EE540
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -116,7 +120,7 @@ CScriptThing CGameScriptInterface::SetResidency(const CScriptThing& building, bo
             OverrideAutomaticHouseLocking(building, !resident);
             house->SetIsAvailableForResidency(resident);
             if (!resident && house->HasInterface(0x23)) {
-                CResidentList& residents = ((CTCVillageMember_Retail*)house->GetInterface(0x23))->GetVillage()->Residents;
+                CResidentList& residents = ((CVillage_Retail*)((CTCVillageMember*)(((CTCVillageMember_Retail*)house->GetInterface(0x23))))->GetPVillage())->Residents;
                 SResidentNode* it = residents._M_node->_M_next;
                 while (it != residents._M_node) {
                     CIntelligentPointer<CThing>& resident = it->_M_data;

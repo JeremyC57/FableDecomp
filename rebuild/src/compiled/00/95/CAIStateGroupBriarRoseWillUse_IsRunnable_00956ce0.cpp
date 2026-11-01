@@ -16,7 +16,7 @@ struct CBaseIntelligentPointer
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 template <class T>
@@ -24,7 +24,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stor
 { public:
     virtual void v00();
     __forceinline CIntelligentPointer() { }
-    __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
+    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -134,7 +134,7 @@ bool CAIStateGroup_BriarRoseWillUse::IsRunnable()
         CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->second)->GetTarget();
         if (target && !(target->m_flags91 & 1))
         {
-            PTargetThing.SetPItem(((CThing*)CIntelligentPointer<CThing>(target).GetPItem()));
+            PTargetThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<CThing>(target).GetPItem())));
             return true;
         }
     }

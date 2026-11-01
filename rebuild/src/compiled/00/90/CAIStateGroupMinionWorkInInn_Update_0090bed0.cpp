@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the creature's workplace pointer at +0x170),
 //          CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CleanBench @ 0x0090BD40, CThing::GetPos
 //          @ 0x004C73D0, GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall: the seed in ecx),
-//          C3DVector::RotateAboutZ @ 0x00A14260, CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 (C3DVector by
+//          C3DVector::Rotate @ 0x00A14260, CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 (C3DVector by
 //          value), AIAction_MinionIdle @ 0x0097FA00, Terminate @ 0x008FCF40.
 // Globals: 0.0001f @ 0x0129BA3C.
 // Shape: the *seed-form Random; the workplace position is a user-copy-ctor copy, the offset a (r + 0.0001, 0, 0) vector
@@ -11,13 +11,15 @@
 //          the workplace before each try (the sibling of CAIStateGroup_IdleAtHome::Update 0x00917380).
 // Layout: no engine header for this class; modelled locally on the PDB CAIStateGroupBase (PBrain +0x04); the creature's
 //          workplace intelligent pointer at +0x170 as in the landed TavernServer rows.
-class C3DVector { public:
+class C3DVector {
+public:
+    void Rotate(float a0, float a1);   // 0x00A14260 (Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z)
+private: public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) { X = x; Y = y; Z = z; }
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
     C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
-    void RotateAboutZ(float angle, bool flag);  // 0x00A14260
 };
 class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0
@@ -95,7 +97,7 @@ void CAIStateGroup_MinionWorkInInn::Update()
     }
     C3DVector workplace = GetCreature()->GetPWorkplace()->GetPos();
     C3DVector offset(GFFloatRandom(6.0f, GetPWorldSeed()) + 0.0001f, 0.0f, 0.0f);
-    offset.RotateAboutZ(GFFloatRandom(1.0f, GetPWorldSeed()), false);
+    ((C3DVector*)&offset)->Rotate(GFFloatRandom(1.0f, GetPWorldSeed()), false);
     C3DVector target = offset + workplace;
     long result;
     do {

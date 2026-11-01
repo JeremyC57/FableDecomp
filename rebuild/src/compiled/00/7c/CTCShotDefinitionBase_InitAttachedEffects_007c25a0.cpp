@@ -177,10 +177,10 @@ struct CBaseIntelligentPointer {                        // Ego_r.pdb: 8 bytes (v
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CBaseObject* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                        // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
@@ -221,7 +221,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
         return;
     {
         CIntelligentPointerThing effectPointer(effect);
-        PEffect.SetPItem(((CThing*)effectPointer.GetPItem()));
+        PEffect.SetPItem((CBaseObject*)(((CThing*)effectPointer.GetPItem())));
     }
     CTCDParticleEmitter* emitter;
     if (effect->HasTC(0x4b))

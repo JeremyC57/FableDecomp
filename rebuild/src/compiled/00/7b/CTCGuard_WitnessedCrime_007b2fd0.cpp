@@ -52,8 +52,7 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
-class CWorld { public:
-    CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
+class CWorld { public: CPlayer const* PeekMyPlayer() const; private:                      // 0x0049D9D0
 public:
     static long __fastcall GetFrame();   // 0x0049D870
 };
@@ -145,7 +144,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
         return;
     CThing* parent = ParentThing;
     bool self = deed.Perpetrator.GetPItem() == parent;
-    CThing* hero = g_pMainGameComponent->World->PeekMyPlayer()->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)g_pMainGameComponent->World->PeekMyPlayer())->GetPControlledCreature();
     bool severe = false;
     if (hero) {
         CTCHeroOpinionDeedLog* log;

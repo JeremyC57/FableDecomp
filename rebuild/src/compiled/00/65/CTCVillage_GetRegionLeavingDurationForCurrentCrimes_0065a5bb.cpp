@@ -2,7 +2,7 @@
 // Leaf: GetRegionLeavingDurationForCurrentCrimes
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065A5BB, 203 bytes (plain `ret`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (`and [ebp-4],0`, `push 51h ; pop edi`).
-// Callees: CWorld::GetCurrentPlayer() const 0x0049D9D0 (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
+// Callees: CWorld::PeekMyPlayer() const 0x0049D9D0 (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
 //          0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51, the deed log); CVectorMap<
 //          ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetTC); CTCHeroOpinionDeedLog::GetDeedFromHandle(
 //          long) 0x006C58F0; the deed log's effects-def getter 0x006C5630 (CDefPointer by hidden pointer; landed spelling
@@ -54,8 +54,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:           // 0x0049D9D0
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];
@@ -119,7 +121,7 @@ class CTCVillage { public:
 long CTCVillage::GetRegionLeavingDurationForCurrentCrimes()
 {
     long longest = 0;
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         if (hero->HasTC(0x51))

@@ -42,7 +42,7 @@ class CThing { public:
  unsigned char _nativeBeforeUsingComponents[0x20];
  unsigned long UsingComponents[9];
  CInterfaceMap Components;
- CTCSolidToThing* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
+ CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2); //004C9D60
 };
 class CThingPlayerCreature : public CThing { };
 class CBaseObject;
@@ -82,7 +82,7 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
   solid=static_cast<CTCSolidToThing*>(((void*)p->second));
  } else {
   CCharString name("CTCSolidToThing",-1);
-  solid=((CThing*)PCreature.GetPItem())->AddTC(name,false,0);
+  solid=((CTCSolidToThing*)((CThing*)PCreature.GetPItem())->AddTC(name, false, 0));
  }
  if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetMainPlayer().PeekPControlledCreature());
 }

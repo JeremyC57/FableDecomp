@@ -1,7 +1,7 @@
 // CTCCreatureFlyInCircles::CheckForHits() -- until it has been hit, look for a hit-by event on the flying creature caused by the hero's shot and remember it in HasBeenHit
 //
 // Retail 0x007DD990, 154 bytes (plain `ret`). Callees: CTCBase::PeekWorld() const @ 0x00686A80
-// (`[0x013B8A1C]+0x24`; manifest "CViewBase::GetDisplayEngine", propagated), CWorld::GetCurrentPlayer
+// (`[0x013B8A1C]+0x24`; manifest "CViewBase::GetDisplayEngine", propagated), CWorld::PeekMyPlayer
 // @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0 (labels propagated), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x004365B0, CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBy,
 // CFilter_Bind2<CIsHitEventHitBy, CIsHitEventHitByShot>>(CEventHitBy**, const filter&) @ 0x007DE2E0.
@@ -84,8 +84,10 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;                      // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:                       // 0x0049D9D0
 };
 
 class CTCBase { public:
@@ -106,7 +108,7 @@ void CTCCreatureFlyInCircles::CheckForHits()
 {
     if (!HasBeenHit)
     {
-        CThing* hero = PeekWorld().GetCurrentPlayer()->GetPControlledCreature();
+        CThing* hero = ((CPlayer*)((CWorld*)&(PeekWorld()))->PeekMyPlayer())->GetPControlledCreature();
         CTCEntityEvents* events;
         if (IsThingAlive(hero) && Creature->GetInterface(&events, 0x42))
         {

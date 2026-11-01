@@ -2,6 +2,10 @@
 // Leaf: ??4?$CIntelligentPointer@
 class CThingCreatureBase;
 
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
+};
 class CIntelligentPointer_CThingCreatureBase
 {
 public:
@@ -9,7 +13,6 @@ public:
     //   GetRaw() -> raw pointer/handle (retail 0x00a01b50)
     //   SetRaw(x)                       (retail 0x00a01b90)
     CThingCreatureBase* GetRaw();
-    void SetRaw(CThingCreatureBase* p);
 
     CIntelligentPointer_CThingCreatureBase* operator=(
         CIntelligentPointer_CThingCreatureBase* rhs);
@@ -19,6 +22,6 @@ CIntelligentPointer_CThingCreatureBase*
 CIntelligentPointer_CThingCreatureBase::operator=(
     CIntelligentPointer_CThingCreatureBase* rhs)
 {
-    this->SetRaw(rhs->GetRaw());
+    ((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(rhs->GetRaw()));
     return this;
 }

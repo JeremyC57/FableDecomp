@@ -28,12 +28,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
-    CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
-    CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
+    CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;              // +0x00

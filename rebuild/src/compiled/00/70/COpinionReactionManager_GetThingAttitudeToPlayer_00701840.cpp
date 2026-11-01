@@ -1,7 +1,7 @@
 // COpinionReactionManager::GetThingAttitudeToPlayer(const CThing* thing) const -- the thing's attitude towards the player: GetAttitudeOrReactionType in attitude mode, with the player creature's opinion-source component (if any) and the manager's attitude mask
 // Leaf: GetThingAttitudeToPlayer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00701840, length 103 bytes (padded to 112).
-// Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature @ 0x00487DD0,
+// Callees: CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature @ 0x00487DD0,
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0,
 //          COpinionReactionManager::GetAttitudeOrReactionType(const CThing*, bool, bool*, CTCOpinionSource*) @ 0x00701010.
 // Layout: PDef +0, World +4; AttitudeMask (bool[79]) retail +0x554 (PDB +0x55C, the retail manager is 8 bytes smaller
@@ -41,8 +41,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer();            // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:             // 0x0049D9D0
 };
 
 enum { TC_OPINION_SOURCE = 0x50 };
@@ -59,7 +61,7 @@ public:
 
 long COpinionReactionManager::GetThingAttitudeToPlayer(const CThing* thing)
 {
-    const CThing* creature = World->GetCurrentPlayer()->PeekPControlledCreature();
+    const CThing* creature = ((CPlayer*)((CWorld*)World)->PeekMyPlayer())->PeekPControlledCreature();
     CTCOpinionSource* source = 0;
     if (creature && creature->HasTC(TC_OPINION_SOURCE))
         source = (CTCOpinionSource*)creature->GetTC(TC_OPINION_SOURCE);

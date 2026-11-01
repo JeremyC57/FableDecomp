@@ -6,7 +6,7 @@
 //          CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef
 //          <CSummonerDef> @ 0x008CBFF0 (same TU) / <CSpecialEffectsDef> @ 0x00669580, CThing::GetPos @ 0x004C73D0,
 //          CreateThing(long, const C3DVector&) @ 0x0080C460 (__fastcall), CCreatureActionBase::GetWorld @ 0x00692950,
-//          CWorld::GetMainPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, the driver's SetOwner @ 0x0080CBF0,
+//          CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, the driver's SetOwner @ 0x0080CBF0,
 //          CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CreateEffectThing @ 0x006E0880 (__fastcall).
 // Layout: thing interface bitset +0x20, map +0x44, PTCDriver +0x5c, def +0x70, flags +0x91; CSummonerDef death object
 //   +0x4c; the world's loading flag +0xe1 (name descriptive). Models: the landed CCreatureAction_JackFloatUp::PerformAction
@@ -133,10 +133,12 @@ class CTCCreatureModeManager { public:
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                                  // 0x00487DC0
 };
-class CWorld { public:
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private: public:
     unsigned char _pad00[0xe1];
     bool          Loading;                                   // +0xe1 (name descriptive)
-    CPlayer* GetMainPlayer();                                // 0x0049D9D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -183,9 +185,9 @@ void CCreatureAction_SummonerDead::Initialise()
             CTCDriver41* driver;
             if (deathObject->HasTC(0x41))
                 driver = (CTCDriver41*)deathObject->PTCDriver;
-            CThing* hero = GetWorld()->GetMainPlayer()->GetPControlledCreature();
+            CThing* hero = ((CPlayer*)((CWorld*)(GetWorld()))->PeekMyPlayer())->GetPControlledCreature();
             if (hero && !(hero->m_flags91 & 1))
-                driver->SetOwner(GetWorld()->GetMainPlayer()->GetPControlledCreature());
+                driver->SetOwner(((CPlayer*)((CWorld*)(GetWorld()))->PeekMyPlayer())->GetPControlledCreature());
         }
     }
     CDefPointer<CSpecialEffectsDef> effects;

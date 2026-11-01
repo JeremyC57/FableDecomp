@@ -19,14 +19,14 @@ struct CBaseIntelligentPointer
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer
 { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
+    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); }
 };
 
 class CCharStringData

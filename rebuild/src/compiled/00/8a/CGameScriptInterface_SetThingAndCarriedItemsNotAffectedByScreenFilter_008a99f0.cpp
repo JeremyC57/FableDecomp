@@ -126,10 +126,14 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 #include <stdlib.h>
 #include "engine/CTCBase.h"
 struct IntelligentInfo{CThingNative* Object;long References;};
-struct BaseIntelligentPointer{IntelligentInfo* Info;BaseIntelligentPointer();virtual ~BaseIntelligentPointer();CThingNative* GetPItem();void SetPItem(CThingNative*);}; //A01B10,A01C10,A01B50,A01B90
+class CBaseObject;
+class CBaseIntelligentPointer { public:
+    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
+};
+struct BaseIntelligentPointer{IntelligentInfo* Info;BaseIntelligentPointer();virtual ~BaseIntelligentPointer();CThingNative* GetPItem();}; //A01B10,A01C10,A01B50,A01B90
 // Native PDB CIntelligentPointer holds base8 plus bool1; retail vector stride9 confirms packed layout.
 #pragma pack(push,1)
-struct IntelligentPointer:BaseIntelligentPointer{bool Persistent;IntelligentPointer(CThingNative* p):BaseIntelligentPointer(){SetPItem(p);Persistent=true;}};
+struct IntelligentPointer:BaseIntelligentPointer{bool Persistent;IntelligentPointer(CThingNative* p):BaseIntelligentPointer(){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);Persistent=true;}};
 #pragma pack(pop)
 struct PointerVector{IntelligentPointer *Start,*Finish,*End;PointerVector():Start(0),Finish(0),End(0){}~PointerVector(){IntelligentPointer* end=Finish;for(IntelligentPointer*p=Start;p!=end;++p)p->IntelligentPointer::~IntelligentPointer();if(Start)free(Start);}void PushBack(const IntelligentPointer&);}; //006A3C70
 struct CEnvironmentSpellEffectInterfaceMethods{void SetBypassScreenFilter(const PointerVector&,void*);}; //006B83E0

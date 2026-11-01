@@ -32,8 +32,10 @@ struct SubObj {
 };
 
 // Obj returned by slot34 — has thiscall methods 0x4fb150 / 0x4fc180.
+class CWorldMap { public:
+    long GetLoadedRegion() const;   // 0x004FB150 (Ego_r.pdb ?GetLoadedRegion@CWorldMap@@QBEJXZ)
+};
 struct Obj {
-    void *m4fb150();            // this-call, no stack args
     void *m4fc180(void *a);     // this-call, one stack arg
 };
 
@@ -50,7 +52,7 @@ void __fastcall InitialiseOnRegionLoad(Self *self, void *edx, CCharString *cs)
         return;
     SubObj *sub = (SubObj *)((void **)g_singleton)[9]; // g_singleton->member_0x24
     Obj *obj = (Obj *)sub->vtbl->slot34(sub);
-    void *a = obj->m4fb150();
+    void *a = ((void*)((CWorldMap*)obj)->GetLoadedRegion());
     void *b = obj->m4fc180(a);
     self->m829d90(b, cs, 1);
 }

@@ -65,7 +65,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                       // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(const CBaseObject* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
 };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {        // vtable 0x01238C6C
     virtual void v00();
@@ -73,11 +73,11 @@ struct CIntelligentPointer_CThing : CBaseIntelligentPointer {        // vtable 0
 struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointer_CThingConst() {}
-    CIntelligentPointer_CThingConst(const CThing* thing) { SetPItem((const CBaseObject*)thing); }
+    CIntelligentPointer_CThingConst(const CThing* thing) { SetPItem((CBaseObject*)((const CBaseObject*)thing)); }
     CIntelligentPointer_CThingConst& operator=(const CIntelligentPointer_CThingConst& other)
     {
         const CBaseObject* item = other.GetPItem();
-        SetPItem(item);
+        SetPItem((CBaseObject*)item);
         return *this;
     }
     const CThing* operator->() const { return (const CThing*)GetPItem(); }

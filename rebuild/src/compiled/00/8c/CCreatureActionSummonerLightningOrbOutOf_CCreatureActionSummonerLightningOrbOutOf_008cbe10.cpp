@@ -25,11 +25,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
     CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);            // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
@@ -49,6 +49,6 @@ CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbO
 {
     if (orb != 0 && !(orb->m_flags91 & 1)) {
         CIntelligentPointer target(orb);
-        PTarget.SetPItem(((CThing*)target.GetPItem()));
+        PTarget.SetPItem((CBaseObject*)(((CThing*)target.GetPItem())));
     }
 }

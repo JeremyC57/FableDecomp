@@ -29,7 +29,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 class CThing { public:
@@ -58,13 +58,13 @@ class CThingAICreature { public:
 };
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer {     // CIntelligentPointer<CThingBuilding> (vtable 0x01244344)
     virtual void v00();
-    CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntelligentPointer<CThingAICreature> (vtable 0x0123E7E0)
     virtual void v00();
-    CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {

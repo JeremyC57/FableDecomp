@@ -26,8 +26,12 @@ class CResource { public:
     long Release() const { return --References; }
     void AddRef() const { ++References; }
     virtual void Delete() const { delete const_cast<CResource*>(this); }
+private:
     void ListRemove();                        // 0x009FBFB0
-    void ListInsert(CResource*, CResource*);  // 0x009FBF90
+public:
+private:
+    void ListInsert(CResource*a0, CResource*a1);  // 0x009FBF90
+public:
     __forceinline void SetAsMRU();
 };
 class CResourceList { public:
@@ -54,7 +58,7 @@ __forceinline void CResource::SetAsMRU()
 {
     if (ResourceList && LastUsedFrame != ResourceList->CurrentFrame) {
         ListRemove();
-        ListInsert(ResourceList->Head.PrevResource,&ResourceList->Head);
+        ListInsert(ResourceList->Head.PrevResource, &ResourceList->Head);
         LastUsedFrame=ResourceList->CurrentFrame;
     }
 }

@@ -28,7 +28,7 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:        // vtable 0
     bool        Opened;                // +0x14
     CWideString Pathname;              // +0x18
     CDiskFileWin32(const CDiskFileWin32& other) : Opened(false) { Open(other.Pathname, FILE_ACCESS_READ, 2); }
-    void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
+    virtual void Open(CWideString const&a0, FileAccessType a1, unsigned long a2);   // 0x0099A6A0
 };
 
 CAFile* CDiskFileWin32::Clone() const

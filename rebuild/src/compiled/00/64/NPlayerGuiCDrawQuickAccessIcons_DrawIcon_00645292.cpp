@@ -62,6 +62,9 @@ struct CHandleVector {
     CEnginePrimitiveHandle& operator[](long i) { return _M_start[i]; }
 };
 
+namespace NPlayerGui { class CDrawBase { public:
+    unsigned char ScaleAlpha(unsigned char a0) const;   // 0x00643D5D (Ego_r.pdb ?ScaleAlpha@CDrawBase@NPlayerGui@@QBEEE@Z)
+}; }
 namespace NPlayerGui {
 class CDrawQuickAccessIcons { public:
     virtual void v00();
@@ -70,7 +73,6 @@ class CDrawQuickAccessIcons { public:
     CHandleVector Handles;                          // +0x1c
     unsigned char _pad28[0x64 - 0x28];
     CHandleVector IconHandles;                      // +0x64
-    unsigned char GetFadedAlpha(unsigned char alpha);   // 0x00643D5D
     void DrawIcon(const CEnginePrimitivePrepareInfo& info, const C2DVector& pos, float fade, long index, long backGraphic,
                   long iconGraphic, bool selected);
 };
@@ -87,7 +89,7 @@ void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, co
         unsigned char backAlpha = alpha;
         if (backGraphic == def->QuickAccessEmptyBackGraphic)
             backAlpha = (unsigned char)(backAlpha * 0.5f);
-        CEnginePrimitive2DSprite back(0, pos, 0x45, backGraphic, 0, 2, 0, 0.0f, 0.0f, GetFadedAlpha(backAlpha), 0xff, 0xff, 0xff, 0,
+        CEnginePrimitive2DSprite back(0, pos, 0x45, backGraphic, 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha(backAlpha), 0xff, 0xff, 0xff, 0,
                                       C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Renderer->AddPrimitive(&Handles[7], back, 0xc0);
     }
@@ -95,7 +97,7 @@ void CDrawQuickAccessIcons::DrawIcon(const CEnginePrimitivePrepareInfo& info, co
         float iconAlpha = alpha * fade;
         if (PGameUI->ForceOpaque && alpha < 0xff)
             iconAlpha = selected ? 255.0f : 0.0f;
-        CEnginePrimitive2DSprite icon(0, pos, 0x44, iconGraphic, 0, 2, 0, 0.0f, 0.0f, GetFadedAlpha((unsigned char)iconAlpha), 0xff, 0xff,
+        CEnginePrimitive2DSprite icon(0, pos, 0x44, iconGraphic, 0, 2, 0, 0.0f, 0.0f, ((NPlayerGui::CDrawBase*)this)->ScaleAlpha((unsigned char)iconAlpha), 0xff, 0xff,
                                       0xff, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         info.Renderer->AddPrimitive(&handles[index], icon, 0xc0);
     }

@@ -12,7 +12,7 @@ class CEngineSceneGridCell;
 class CEngineInternalPrimitiveBase { public:
     unsigned char          _pad[0x20];
     CEngineSceneGridCell*  m_pCell;                // +0x20
-    void AddToList(void* list);                    // 0x00B8FDF0
+    void AddToList(CEngineInternalPrimitiveBase**a0);                    // 0x00B8FDF0
 };
 
 class CEngineSceneGridCell { public:
@@ -27,7 +27,7 @@ class CEngineSceneGridCell { public:
 void CEngineSceneGridCell::AddPrimitive(CEngineInternalPrimitiveBase* primitive)
 {
     primitive->m_pCell = this;
-    primitive->AddToList(m_list);
+    primitive->AddToList((CEngineInternalPrimitiveBase**)m_list);
     ++m_count;
     if (m_dirtyFlags & 7) {
         m_dirtyFlags &= ~7;

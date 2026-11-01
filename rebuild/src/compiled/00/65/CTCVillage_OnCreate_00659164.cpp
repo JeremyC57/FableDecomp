@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659164, 305 bytes (plain `ret`, `leave`).
 // Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) 0x0042AF3C;
 //          CDefClassBase::GetSubDef<CVillageDef>(CDefPointer<const CVillageDef>*) 0x0065F440 (into PDef);
-//          CWorld::GetCurrentPlayer() const 0x0049D9D0; CPlayer::GetPControlledCreature() 0x00487DC0;
+//          CWorld::PeekMyPlayer() const 0x0049D9D0; CPlayer::GetPControlledCreature() 0x00487DC0;
 //          CDefClassBase::GetSubDef<CVillagePeopleDef> 0x00512FE0; IS_THING_ALIVE<const CThing*>(const CThing* const&) 0x0043DBD0
 //          (`__fastcall`); std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x14); CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound 0x0040F020; the interface-0x14 component's ratio getter 0x005CDBBE (manifest
@@ -133,10 +133,12 @@ struct CTCRenownRatio {                         // the interface-0x14 component
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
-class CWorld { public:
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private: public:
     unsigned char _pad_0x00[0x1c];
     class CGameTimeManager* PGameTimeManager;  // +0x1c
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
 };
 class CGameTimeManager { public:
     bool IsDay() const;                         // 0x006BB2C0
@@ -184,7 +186,7 @@ void CTCVillage::OnCreate()
     StanceToHero = PDef->DefaultStanceToHero;
     NextGuardRespawn = 0;
     InCurfew = false;
-    CThingPlayerCreature* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
     CDefPointer<CVillagePeopleDef> peopleDef;
     if (thingDef->GetSubDef(&peopleDef) && IS_THING_ALIVE(hero) && hero->HasTC(0x14))
         NextGuardRespawn = (long)(((CTCRenownRatio*)hero->GetTC(0x14))->CalculateRatio()

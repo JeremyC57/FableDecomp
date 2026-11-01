@@ -117,7 +117,7 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item);                     // out of line (CThingObject: 0x0065E133)
@@ -125,7 +125,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     {
         CIntelligentPointer pointer(item);
         CThing* p = ((CThing*)pointer.GetPItem());
-        SetPItem(p);
+        SetPItem((CBaseObject*)p);
         return *this;
     }
 };

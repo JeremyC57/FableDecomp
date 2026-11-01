@@ -30,15 +30,17 @@ struct CDefStringTable {
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
+class CThing { public:
+    CDefString GetDefName() const;   // 0x004C7CC0 (Ego_r.pdb ?GetDefName@CThing@@QBE?AVCDefString@@XZ)
+};
 class CThingCreatureBase { public:
     unsigned char _pad[0x18];
     unsigned __int64 UniqueID;                     // +0x18
-    CDefString GetDefName() const;                 // 0x004C7CC0 (CThing::GetDefName)
     unsigned __int64 GetUID() const { return UniqueID; }
 };
 inline CCharString GetDefNameString(const CThingCreatureBase& thing)
 {
-    CCharString name = g_DefStringTable.GetString(thing.GetDefName());
+    CCharString name = g_DefStringTable.GetString(((CThing*)&thing)->GetDefName());
     return name;
 }
 struct CCombatantInfo {

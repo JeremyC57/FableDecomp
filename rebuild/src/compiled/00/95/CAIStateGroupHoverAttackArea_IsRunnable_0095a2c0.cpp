@@ -42,16 +42,16 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(void* item);                  // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                  // 0x00A01B90
 };
 
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();                         // one vtable per instantiation
-    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         CThing* item = ((CThing*)other.GetPItem());
-        SetPItem(item);
+        SetPItem((CBaseObject*)item);
         return *this;
     }
 };

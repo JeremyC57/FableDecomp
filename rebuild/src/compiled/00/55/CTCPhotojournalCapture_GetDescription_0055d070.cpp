@@ -49,8 +49,8 @@ public:
     CWideString    Pathname;                                // +0x18
     CDiskFileWin32() { Opened = false; }
     ~CDiskFileWin32() { Close(); }
-    void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
-    void Close();                                           // 0x0099A920
+    virtual void Open(CWideString const&a0, FileAccessType a1, unsigned long a2);   // 0x0099A6A0
+    virtual void Close();                                           // 0x0099A920
     void Read(void* data, long size, CASuspendableProcess* process = 0);   // 0x0099A960
     long GetLength() const { return Length; }
 public:

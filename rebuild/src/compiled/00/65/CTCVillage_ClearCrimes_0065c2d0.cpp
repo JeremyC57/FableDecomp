@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065C2D0, 158 bytes, thiscall `leave ; ret`. Name: Ego_r.pdb `?ClearCrimes@CTCVillage@@QAEXXZ`
 // (name set); the landed callers EnableGuards 0x0065C45A ("most likely ClearCrimes") and PayFines 0x0065C760 call it,
 // plus 0x004A547E, 0x0065C54F, 0x006A95CB, 0x007B36FE, 0x007E2BEF.
-// Callees: CWorld::GetCurrentPlayer 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24), CPlayer::GetPControlledCreature 0x00487DC0,
+// Callees: CWorld::PeekMyPlayer 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24), CPlayer::GetPControlledCreature 0x00487DC0,
 // std::bitset::test 0x00410DE0 (interface 0x51 = CTCHeroOpinionDeedLog), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // 0x0040F020, _Rb_global<bool>::_M_increment 0x004292C0 (cdecl), CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0,
 // CTCVillage::RemoveCrime 0x0065C146 (landed).
@@ -63,8 +63,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:           // 0x0049D9D0
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];
@@ -116,7 +118,7 @@ class CTCVillage { public:
 
 void CTCVillage::ClearCrimes()
 {
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
+    CThing* hero = ((CPlayer*)((CWorld*)(g_pMainGameComponent->World))->PeekMyPlayer())->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

@@ -62,7 +62,7 @@ struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
     void* m_pData;
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CBaseObject* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                        // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item);                  // 0x004A96F0
@@ -141,7 +141,7 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
             if (effect) {
                 {
                     CIntelligentPointer created(CreateParticleEffect(effect, &ParentThing->GetPos()));
-                    TurncoatedEffect.SetPItem(((CThing*)created.GetPItem()));
+                    TurncoatedEffect.SetPItem((CBaseObject*)(((CThing*)created.GetPItem())));
                 }
                 if (IS_THING_ALIVE(&TurncoatedEffect)) {
                     CTCDParticleEmitter* emitter;

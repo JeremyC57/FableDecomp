@@ -6,7 +6,7 @@
 //   CIntelligentPointer<CThing> vtable 0x01238C6C), SetPItem 0x00A01B90, ~CBaseIntelligentPointer 0x00A01C10;
 //   CVectorMap LowerBound 0x0040F020 (inlined GetTC: interfaces 0xDB, 9, 4); CTCWallMountEffects::OnTakenOffMount
 //   0x007DF440 (landed); CTCBase::GetWorld() 0x00686A70 (manifest "CViewBase::GetDisplayEngine" propagated);
-//   CWorld::GetCurrentPlayer 0x0049D9D0 (manifest "_Cons_val<...>" propagated); CThing::SetAsGameStatePersisted(bool)
+//   CWorld::PeekMyPlayer 0x0049D9D0 (manifest "_Cons_val<...>" propagated); CThing::SetAsGameStatePersisted(bool)
 //   0x004C7880.
 // Layout (Ego_r.pdb, offsets hold, as the landed OnInitialActivate 0x007DE5D0): CTCBase ParentThing +0x04;
 //   CTCWallMount BoughtForAmount +0x0c, Trophy +0x10; CThing bitset +0x20 (0xDB = bit 27 of word +0x38, 9 = bit 9 of
@@ -85,15 +85,15 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
     virtual void v00();
-    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         CThing* item = ((CThing*)other.GetPItem());
-        SetPItem(item);
+        SetPItem((CBaseObject*)item);
         return *this;
     }
 };
@@ -131,8 +131,10 @@ class CPlayer { public:
     CIntelligentPointer<CThing>         PlayerCharacter;    // +0x34 CIntelligentPointer<CThingPlayerCreature>
     CThing* GetPlayerCharacter() const { return ((CThing*)PlayerCharacter.GetPItem()); }
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer();                // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:                 // 0x0049D9D0
 };
 
 class CTCBase { public:
@@ -162,7 +164,7 @@ CThing* CTCWallMount::UnattachObject(long* boughtForAmount)
         CTCTargeted* targeted;
         if (((CThing*)Trophy.GetPItem())->GetInterface(&targeted, 9))
             targeted->Targetable = true;
-        CThing* hero = GetWorld().GetCurrentPlayer()->GetPlayerCharacter();
+        CThing* hero = ((CPlayer*)((CWorld*)&(GetWorld()))->PeekMyPlayer())->GetPlayerCharacter();
         if (IS_THING_ALIVE(hero) && hero->HasTC(4))
             --((CTCHeroTrophies*)hero->GetTC(4))->MountedTrophies;
     }

@@ -94,18 +94,18 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vptr 0x01238C6C
     virtual void v00();
-    explicit __forceinline CIntelligentPointerCreature(CThing* thing) { SetPItem(thing); }
+    explicit __forceinline CIntelligentPointerCreature(CThing* thing) { SetPItem((CBaseObject*)thing); }
 };
 template <class T> class CIntelligentPointer;
 template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
     CIntelligentPointer(CThing* thing);    // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
-    CIntelligentPointer& operator=(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointerCreature& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 class CSummonerDef { public:
     unsigned char _pad[0x28];

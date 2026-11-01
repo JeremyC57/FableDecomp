@@ -32,13 +32,13 @@ struct CBaseIntelligentPointer
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer    // CIntelligentPointer<CThingCreatureBase>, vtable 0x01231C4C
 {
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
 };
 
 class CAIBrain
@@ -73,7 +73,7 @@ bool CAIStateGroup_BanditKingLunge::IsRunnable()
     if (CanLungeAtPlayer(hero)
         && GetDistanceSquaredXY(hero->GetPos(), PBrain->Creature->GetPos()) < 16.0f)
     {
-        PTargetThing.SetPItem(((CThing*)CIntelligentPointerThing(hero).GetPItem()));
+        PTargetThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointerThing(hero).GetPItem())));
         return true;
     }
     return false;

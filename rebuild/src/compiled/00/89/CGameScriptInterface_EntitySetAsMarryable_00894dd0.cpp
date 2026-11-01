@@ -62,6 +62,11 @@ struct CInterfaceMap_Retail {                       // CVectorMap<ETCInterfaceTy
     SEntry* last;
     SEntry* LowerBound(const long* type);           // 0x004365B0 / 0x0040F020 (two copies of the same body)
 };
+class CTCParamsBase;
+class CTCBase;
+class CThing { public:
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60 (Ego_r.pdb ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z)
+};
 struct CThing_Retail {
     virtual void t000(); virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007();
     virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015();
@@ -94,7 +99,6 @@ struct CThing_Retail {
     unsigned char         m_marryableToHero : 1;    //        bit 4
     unsigned char         m_1c9_5 : 3;
     CScriptThing GetScriptThing();                  // 0x004C7E50 (by value through the hidden result pointer)
-    CTCBase_Retail* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     void RemoveTC(long interfaceType);              // 0x004C9840 (the label "CBaseObject::OnPropertyChanged" is propagated)
     void FinishCurrentAction();                     // 0x00662650 (CThingCreatureBase)
     void SheatheAllWeapons();                       // 0x006647F0 (CThingCreatureBase)
@@ -140,7 +144,7 @@ void CGameScriptInterface::EntitySetAsMarryable(const CScriptThing& thing, bool 
         entity->m_marryableToHero = marryable;
         if (marryable && !entity->HasInterface(0xd7)) {
             CCharString name("CTCWife", -1);
-            entity->AddTC(name, 0, 0);
+            ((CTCBase_Retail*)((CThing*)entity)->AddTC(name, 0, 0));
         }
     }
 }

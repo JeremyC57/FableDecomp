@@ -30,7 +30,10 @@ public:
     ~list();                   // 0x004046B0
 };
 } // namespace std
-class CStringParser : public CBaseClass { public:                // retail 0x28 bytes
+class CStringParser : public CBaseClass {
+public:
+    unsigned __int64 ReadAsUHUGE();   // 0x009BA5B0 (Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ)
+private: public:                // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c
@@ -45,7 +48,6 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     long SkipUntilWhitespace();                            // 0x009B9CE0
     bool SkipPastNextItemIfIs(const CCharString& item);    // 0x009B9E00
     CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330
-    unsigned __int64 ReadInt64();                          // 0x009BA5B0
     void SkipToText(const char* text)
     {
         CCharString end(text, -1);
@@ -133,7 +135,7 @@ void NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript(const CChar
     while (parser.SkipPastText(g_startNewEntityScript)) {
         parser.SkipUntilWhitespace();
         CPersistInfo info;
-        info.UID = parser.ReadInt64();
+        info.UID = ((CStringParser*)&parser)->ReadAsUHUGE();
         parser.SkipWhitespace();
         {
             CCharString end(g_endNewEntityScript, -1);

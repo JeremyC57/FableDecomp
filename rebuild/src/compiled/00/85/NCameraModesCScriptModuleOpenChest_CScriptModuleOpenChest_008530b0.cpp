@@ -20,12 +20,12 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
     CBaseIntelligentPointer();                       // 0x00A01B10
-    void SetPItem(const CBaseObject* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
 };
 
 struct CIntelligentPointer_CThingConst : CBaseIntelligentPointer {   // vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointer_CThingConst(const CThing* thing) : CBaseIntelligentPointer() { SetPItem((const CBaseObject*)thing); }
+    CIntelligentPointer_CThingConst(const CThing* thing) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((const CBaseObject*)thing)); }
 };
 
 class C3DVector { public: float X, Y, Z; };

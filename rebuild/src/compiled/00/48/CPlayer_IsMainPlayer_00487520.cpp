@@ -11,11 +11,13 @@
 //
 // Lane feedback: Number must be read into a local before the call (retail keeps it in esi across the call),
 // and the bool result needs the `?:` form for a direct `sete al`. RELOCATION_MATCH.
+class CPlayerManager { public:
+    long GetMainPlayerNumber() const;   // 0x00449700 (Ego_r.pdb ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ)
+};
 #include "engine/CPlayer.h"
 
 // Call-surface view of CPlayerManager (engine/CPlayerManager.h carries the layout only).
 struct CPlayerManagerCalls {
-    long GetMainPlayerNumber();           // 0x00449700
 };
 
 struct CPlayer_Methods : CPlayer {
@@ -28,5 +30,5 @@ bool CPlayer_Methods::IsMainPlayer()
     // local first (a bare `call() == this->Number` lets the compiler load it after the call).
     long number = this->Number;
     CPlayerManagerCalls* manager = reinterpret_cast<CPlayerManagerCalls*>(this->PlayerManager);
-    return (number == manager->GetMainPlayerNumber()) ? true : false;
+    return (number == ((CPlayerManager*)manager)->GetMainPlayerNumber()) ? true : false;
 }

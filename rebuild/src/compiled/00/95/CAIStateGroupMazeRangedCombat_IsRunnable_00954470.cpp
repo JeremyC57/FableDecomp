@@ -69,7 +69,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 template <class T> class CIntelligentPointer;
@@ -78,7 +78,7 @@ template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer {
     CIntelligentPointer(CThing* thing);         // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other)   // 0x004A9760
     {
-        SetPItem(((CThing*)other.GetPItem()));
+        SetPItem((CBaseObject*)(((CThing*)other.GetPItem())));
         return *this;
     }
 };

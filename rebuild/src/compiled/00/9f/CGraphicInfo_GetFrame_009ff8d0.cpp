@@ -18,8 +18,12 @@ class CResource { public:                                     // Ego_r.pdb, 0x1C
     CResource*     NextResource;                       // +0x10
     unsigned long  ResourceSize;                       // +0x14
     unsigned long  LastUsedFrame;                      // +0x18
+private:
     void ListRemove();                                 // 0x009FBFB0
-    void ListInsert(CResource* prev, CResource* next); // 0x009FBF90
+public:
+private:
+    void ListInsert(CResource*a0, CResource*a1); // 0x009FBF90
+public:
     __forceinline void Touch();
 };
 class CResourceList { public:                                 // Ego_r.pdb, 0x3C bytes
@@ -144,7 +148,9 @@ class CGraphicInfoFrame { public:                             // Ego_r.pdb, 16 b
     signed char       SmallMipmapLevel;                // +0x06
     CFrameDataPointer Data;                            // +0x08
     CGraphicInfo*     GraphicInfo;                     // +0x0c
-    bool InternalGetFrameForcedLoading(unsigned long flags);   // 0x009FF6B0
+private:
+    bool InternalGetFrameForcedLoading(unsigned long a0) const;   // 0x009FF6B0
+public:
     bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
 };
 

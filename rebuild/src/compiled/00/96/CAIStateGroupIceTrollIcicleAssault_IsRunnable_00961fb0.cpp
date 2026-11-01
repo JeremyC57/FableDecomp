@@ -95,13 +95,13 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(CThing* thing);         // 0x004A96F0
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 #pragma auto_inline(off)

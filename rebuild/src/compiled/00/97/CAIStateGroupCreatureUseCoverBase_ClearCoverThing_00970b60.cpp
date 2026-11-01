@@ -17,7 +17,7 @@ struct CBaseIntelligentPointer
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 template <class T>
@@ -25,7 +25,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stor
 { public:
     virtual void v00();
     CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -141,6 +141,6 @@ void CAIStateGroup_CreatureUseCoverBase::ClearCoverThing()
         CTCCoverPoint* cover;
         if (((CThing*)PCoverThing.GetPItem())->GetInterface(0xac, &cover))
             cover->SetUser(0);
-        PCoverThing.SetPItem(((CThing*)CIntelligentPointer<CThing>(0).GetPItem()));
+        PCoverThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<CThing>(0).GetPItem())));
     }
 }

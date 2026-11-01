@@ -1,7 +1,7 @@
 // CFileInstaller::Pause() -- under the installer's critical section (+4): bump the pause count (+0x7c); when the installer thread is waiting (+0x7b), this is the first pause and no dirty-disc error is pending, drop the lock, signal the event at +0x84 and block (alertable, INFINITE) on the handle at +0x8c until the installer thread acknowledges
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C31E0, length 103 bytes (+ int3 padding).
 // Leaf: ?Pause@CFileInstaller@@QAEXXZ
-// Callees: CCriticalSectionLock::CCriticalSectionLock @ 0x00A62920 (the section, false), CCriticalSectionLock::Unlock @ 0x00A62960,
+// Callees: CCriticalSectionLock::CCriticalSectionLock @ 0x00A62920 (the section, false), CCriticalSectionLock::Release @ 0x00A62960,
 // ~CCriticalSectionLock @ 0x00A629A0 (an 8-byte stack local), KERNEL32 SetEvent (IAT 0x0143FDE0), KERNEL32 WaitForSingleObjectEx (IAT 0x0143FE08).
 // Global: the static bool CFileInstaller::DirtyDiscError @ 0x013CA814 (tested `mov al,[g] ; test al,al ; jne`): the only
 // writer is the static CFileInstaller::SetDirtyDiscError(bool) 0x009C3530 (Ego_r.pdb ?SetDirtyDiscError@CFileInstaller@@
@@ -15,12 +15,14 @@ extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObjectEx(v
 
 struct _RTL_CRITICAL_SECTION { unsigned char _body[0x18]; };
 
-struct CCriticalSectionLock {              // 8 bytes on the stack
+struct CCriticalSectionLock {
+public:
+    void Release();   // 0x00A62960 (Ego_r.pdb ?Release@CCriticalSectionLock@@QAEXXZ)
+public:              // 8 bytes on the stack
     _RTL_CRITICAL_SECTION* CriticalSection;       // +0x00
     bool                    Locked;                // +0x04
     CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly);   // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
     ~CCriticalSectionLock();                                               // 0x00A629A0
-    void Unlock();                                                                // 0x00A62960
 };
 
 class CFileInstaller { public:
@@ -42,7 +44,7 @@ void CFileInstaller::Pause()
     CCriticalSectionLock lock(CriticalSection, false);
     ++Paused;
     if (Running && !(Paused > 1) && !DirtyDiscError) {
-        lock.Unlock();
+        ((CCriticalSectionLock*)&lock)->Release();
         SetEvent(Event);
         WaitForSingleObjectEx(PauseStartEvent, 0xFFFFFFFF, 1);
     }

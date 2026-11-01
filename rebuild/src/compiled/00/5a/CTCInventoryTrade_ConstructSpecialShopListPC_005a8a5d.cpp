@@ -38,9 +38,11 @@ template <class T> class CDefPointer { public:
 };
 struct CMiscThingsDef : CDefBase { };
 void* FindDef_c();
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
-    long GetDefGlobalIndexFromName(const CCharString& name, bool b);   // 0x009AD390
     bool GetDef(long index, CDefPointer<CMiscThingsDef>& out);         // 0x0042B312
 };
 #pragma auto_inline(off)
@@ -157,7 +159,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
     NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     NUISystem::CComponent* list = frontEnd->CreateComponent(name, false);
     CDefPointer<CMiscThingsDef> misc;
-    long miscIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("UI_MISC_THINGS_DEF", true);
+    long miscIndex = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", true);
     CGameDefinitionManager::Get().GetDef(miscIndex, misc);
     NUISystem::CComponent* entry = list->FindChild("PC_SPECIALSHOP_MENU_BUY_ENTRY");
     TotSpecialItemsToBuy = 0;

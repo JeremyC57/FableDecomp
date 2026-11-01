@@ -12,13 +12,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
-    CIntelligentPointerThing(CThing* item=0) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(CThing* item=0) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 
@@ -44,7 +44,7 @@ bool CGameMasterMethods::InitCreaturePosition() {
  {
  CIntelligentPointerThing work(((CThing*)creature->GetWorkBuilding().GetPItem()));
  CThing* item=((CThing*)work.GetPItem());
- Building.SetPItem(item);
+ Building.SetPItem((CBaseObject*)item);
  }
  if(((CThing*)Building.GetPItem()) && !((CThing*)Building.GetPItem())->Dead && ((CSeatVirtualView*)this)->GetSeat()) {
   CAIBrain* brain = PBrain;

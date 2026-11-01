@@ -56,8 +56,7 @@ class CTCVillageMember { public:                       // interface 0x23
 class COpinionDeed { public:
     long Type;                                  // +0x00 EOpinionDeedType
 };
-class CTCHeroOpinionDeedLog { public:                  // interface 0x51
-    COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
+class CTCHeroOpinionDeedLog { public: COpinionDeed const* GetDeedFromHandle(long a0) const; private:   // 0x006C58F0
 };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0 (the manifest's "_Cons_val<...>" is propagated)
@@ -99,7 +98,7 @@ bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedHandle, bool includePending)
 {
     CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero) {
-        COpinionDeed* deed = GetDeedLog(hero)->GetDeedFromHandle(deedHandle);
+        COpinionDeed* deed = ((COpinionDeed*)GetDeedLog(hero)->GetDeedFromHandle(deedHandle));
         if (deed)
             return KnowsOfDeed(deedHandle, deed->Type, includePending);
     }

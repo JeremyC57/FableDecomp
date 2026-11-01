@@ -55,18 +55,18 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointerPlayer : CBaseIntelligentPointer {    // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
-    CIntelligentPointerPlayer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerPlayer& operator=(const CIntelligentPointerPlayer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerPlayer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerPlayer& operator=(const CIntelligentPointerPlayer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer {  // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
-    CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }   // 0x0050F380 out of line
-    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }   // 0x0050F380 out of line
+    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 
 class CThingAICreature : public CThing { public:

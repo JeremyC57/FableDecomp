@@ -119,8 +119,11 @@ struct CTCMoneyReceiver_Retail {
     unsigned char _pad[0xc];
     long m_amountWanted;                           // +0x0c
 };
+class CTCBase;
+class CThing { public:
+    CTCBase* AddTC(CCharString const&a0, bool a1, CTCParamsBase const*a2);   // 0x004C9D60 (Ego_r.pdb ?AddTC@CThing@@QAEPAVCTCBase@@ABVCCharString@@_NPBVCTCParamsBase@@@Z)
+};
 struct CThingWithAddTC_Retail : CThing_Retail {
-    CTCBase_Retail* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -136,7 +139,7 @@ void CGameScriptInterface::EntitySetThingAsWantingMoney(const CScriptThing& thin
             receiver = (CTCMoneyReceiver_Retail*)GetTC(t, 0x80);
         else {
             CCharString name("CTCMoneyReceiver", -1);
-            receiver = (CTCMoneyReceiver_Retail*)t->AddTC(name, false, 0);
+            receiver = (CTCMoneyReceiver_Retail*)((CTCBase_Retail*)((CThing*)t)->AddTC(name, false, 0));
         }
         receiver->m_amountWanted = amount;
     }

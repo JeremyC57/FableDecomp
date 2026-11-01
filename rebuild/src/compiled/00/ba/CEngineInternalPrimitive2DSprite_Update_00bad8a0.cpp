@@ -62,7 +62,7 @@ class CGraphicInfo;
 class CGraphicInfoFrame { public:          // 16 bytes
     unsigned char _pad[0xc];
     CGraphicInfo* GraphicInfo;      // +0x0c
-    void BeginLoading(unsigned long priority, unsigned long flags);   // 0x009FE620
+    void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
 };
 class CGraphicInfo { public:               // 0x2c bytes
     CGraphicHeader     Header;

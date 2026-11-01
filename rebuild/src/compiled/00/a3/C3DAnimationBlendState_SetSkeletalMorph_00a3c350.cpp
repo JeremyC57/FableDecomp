@@ -51,7 +51,9 @@ struct CSharedData {
 class C3DAnimationBlendState { public:
     virtual void v00();
     CSharedData* Data;                     // +4
+private:
     void MakeOwnCopyOfData();              // 0x00A3C1A0
+public:
     void SetSkeletalMorph(const CCountedPointer& morph);
 };
 

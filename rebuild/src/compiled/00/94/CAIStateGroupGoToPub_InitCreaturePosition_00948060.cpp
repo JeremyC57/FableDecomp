@@ -51,12 +51,12 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(const CThing* item);          // 0x00A01B90
+    void SetPItem(CBaseObject*a0);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(T* item) { SetPItem((const CThing*)item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((const CThing*)item)); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
     T* Get() const { return (T*)GetPItem(); }
 };
 class CCharString { public:

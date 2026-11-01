@@ -23,14 +23,14 @@ struct CBaseIntelligentPointer {
     void* m_pItem;                          // +4
     CBaseIntelligentPointer();              // 0x00A01B10
     CBaseObject* GetPItem() const;               // 0x00A01B50
-    void SetPItem(CThing* item);            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);            // 0x00A01B90
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01231C4C
     // __forceinline: under optimize("s") VC7.1 otherwise calls these small inline members out of line
-    __forceinline CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    __forceinline CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 class CAIStateGroupBase { public:

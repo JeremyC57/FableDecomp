@@ -18,7 +18,7 @@ struct CBaseIntelligentPointer
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
     CBaseObject* GetPItem() const;                       // 0x00A01B50
-    void SetPItem(CThing* item);                    // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                    // 0x00A01B90
 };
 
 template <class T>
@@ -26,7 +26,7 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stor
 { public:
     virtual void v00();
     CIntelligentPointer() { }
-    CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)((CThing*)item)); }
     T* Get() const { return (T*)GetPItem(); }
 };
 
@@ -154,7 +154,7 @@ bool CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable()
         CTCTargetHolder* holder = (CTCTargetHolder*)PBrain->Creature->FindEntry(8)->second;
         if (holder->PSpecificTarget.GetPItem())
         {
-            PTargetThing.SetPItem(((CThing*)CIntelligentPointer<const CThing>(((CThing*)holder->PSpecificTarget.GetPItem())).GetPItem()));
+            PTargetThing.SetPItem((CBaseObject*)(((CThing*)CIntelligentPointer<const CThing>(((CThing*)holder->PSpecificTarget.GetPItem())).GetPItem())));
             return true;
         }
     }

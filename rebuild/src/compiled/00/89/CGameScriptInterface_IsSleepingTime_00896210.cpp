@@ -24,7 +24,9 @@ struct Env {
 
 struct KeyArg { int* p; };
 extern "C" MapNode* __fastcall Map_LowerBound(Map* self, KeyArg k);
-extern "C" bool __fastcall Node_Eval(void* val);
+class CTCVillage { public:
+    bool IsNightTime() const;   // 0x00658D07 (Ego_r.pdb ?IsNightTime@CTCVillage@@QBE_NXZ)
+};
 
 typedef Env* (__fastcall *GetEnvFn)(CScriptThing*);
 
@@ -41,7 +43,7 @@ bool __stdcall CGameScriptInterface_IsSleepingTime(CScriptThing* scriptThing)
         MapNode* end = m->head;
         if (it == end) it = end;
         else if (it->key > 0x22) it = end;
-        return Node_Eval(it->value);
+        return ((CTCVillage*)(it->value))->IsNightTime();
     }
     return false;
 }

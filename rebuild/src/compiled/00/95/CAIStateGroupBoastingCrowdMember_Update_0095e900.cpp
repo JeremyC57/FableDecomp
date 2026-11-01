@@ -43,10 +43,10 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    CIntelligentPointer(CThing* item) { SetPItem(item); }
+    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
     virtual void v01();
 };
 class CThing { public:

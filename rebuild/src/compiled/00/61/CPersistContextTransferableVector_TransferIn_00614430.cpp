@@ -1,7 +1,7 @@
-// CPersistContext_TransferableVector::TransferIn(CPersistContext*, CStringParser*, long) -- reads a 64-bit integer with CStringParser::ReadInt64 into element `index` of the vector
+// CPersistContext_TransferableVector::TransferIn(CPersistContext*, CStringParser*, long) -- reads a 64-bit integer with CStringParser::ReadAsUHUGE into element `index` of the vector
 // Leaf: TransferIn
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00614430, 30 bytes (+2 int3 padding).
-// Callee: 0x009BA5B0 CStringParser::ReadInt64 (__fastcall, result in edx:eax).
+// Callee: 0x009BA5B0 CStringParser::ReadAsUHUGE (__fastcall, result in edx:eax).
 //
 // Persist READ hook (vtable slot 3) of CPersistContext_TransferableVector<__int64> (PDB layout of the
 // family: { vptr; vector<T>* TransVector; }). The vector's first pointer is read before the call
@@ -10,8 +10,10 @@
 class CPersistContext;
 class CCharString;
 
-class CStringParser { public:
-    __int64 ReadInt64();                   // 0x009BA5B0
+class CStringParser {
+public:
+    unsigned __int64 ReadAsUHUGE();   // 0x009BA5B0 (Ego_r.pdb ?ReadAsUHUGE@CStringParser@@QAE_KXZ)
+private:                    // 0x009BA5B0
 };
 
 template <class T> struct CRetailVector {
@@ -31,5 +33,5 @@ struct CPersistContext_TransferableVector {
 void CPersistContext_TransferableVector::TransferIn(CPersistContext* context, CStringParser* parser, long index)
 {
     __int64* first = TransVector->m_pFirst;
-    first[index] = parser->ReadInt64();
+    first[index] = ((CStringParser*)parser)->ReadAsUHUGE();
 }

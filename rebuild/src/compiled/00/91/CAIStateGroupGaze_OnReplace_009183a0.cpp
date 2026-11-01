@@ -60,13 +60,13 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
-    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
@@ -164,14 +164,14 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 struct CIntelligentPointerUser : CBaseIntelligentPointer {          // vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerUser(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerUser& operator=(const CIntelligentPointerUser& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerUser(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerUser& operator=(const CIntelligentPointerUser& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 struct CIntelligentPointerGameObject : CBaseIntelligentPointer {    // CIntelligentPointer<CThingGameObject>, vtable 0x0127B4D8
     virtual void v00();
-    CIntelligentPointerGameObject(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerGameObject& operator=(const CIntelligentPointerGameObject& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerGameObject(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentPointerGameObject& operator=(const CIntelligentPointerGameObject& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 struct CTCMarker {                              // interface 0x2f

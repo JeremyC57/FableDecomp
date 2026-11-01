@@ -116,11 +116,11 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
     CBaseObject* GetPItem() const;                         // 0x00A01B50
-    void SetPItem(CThing* item);                      // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
+    __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
 };
 class CTCSoundPlayer { public:
     unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
@@ -135,7 +135,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    __forceinline void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem(((CThing*)target.GetPItem())); }
+    __forceinline void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem((CBaseObject*)(((CThing*)target.GetPItem()))); }
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };

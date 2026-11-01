@@ -35,8 +35,12 @@ class CResource { public:
     CResource*     NextResource;                             // +0x10
     unsigned long  ResourceSize;                             // +0x14
     unsigned long  LastUsedFrame;                            // +0x18
+private:
     void ListRemove();                                       // 0x009FBFB0
-    void ListInsert(CResource* prev, CResource* next);       // 0x009FBF90
+public:
+private:
+    void ListInsert(CResource*a0, CResource*a1);       // 0x009FBF90
+public:
     void SetResourceSize(unsigned long size);                // 0x009FBF20
     void Touch();
 };

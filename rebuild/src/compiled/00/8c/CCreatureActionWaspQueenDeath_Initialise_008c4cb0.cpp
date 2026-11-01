@@ -111,13 +111,13 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;                   // 0x00A01B50
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentThingPointer() : CBaseIntelligentPointer() { }
-    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
+    CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();

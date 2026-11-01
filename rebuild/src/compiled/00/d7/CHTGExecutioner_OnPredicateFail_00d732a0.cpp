@@ -7,8 +7,11 @@ extern char g_PredMsg;
 
 // Helper subobject living at obj+0x9c; its method takes a void* stack arg.
 // Native member => VC7.1 __fastcall (ecx=this, msg on stack, no edx).
+class CCharString;
+class CCharString { public:
+    CCharString const& operator=(char const*a0);   // 0x0099EFE0 (Ego_r.pdb ??4CCharString@@QAEABV0@PBD@Z)
+};
 struct SubObj {
-    void Report(void* msg);
 };
 
 struct Obj {
@@ -24,6 +27,6 @@ struct CHTG_Executioner {
 void __fastcall OnPredicateFail(CHTG_Executioner* self)
 {
     SubObj* s = (SubObj*)((char*)self->obj + 0x9c);
-    s->Report(&g_PredMsg);
+    ((CCharString*)s)->operator=((char const*)(&g_PredMsg));
     ((char*)self->obj)[0x4b] = 1;
 }

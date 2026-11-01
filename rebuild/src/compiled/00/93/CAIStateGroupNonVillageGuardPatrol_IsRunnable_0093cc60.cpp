@@ -61,12 +61,12 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    void SetPItem(CThing* item);                // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                // 0x00A01B90
 };
 struct CIntelligentPointerTrackNode : CBaseIntelligentPointer {   // CIntelligentPointer<CThingTrackNode>, vtable 0x0125A894
     virtual void v00();
-    __forceinline CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
-    __forceinline CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerTrackNode(CThingTrackNode* const& item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)((CThing*)item)); }
+    __forceinline CIntelligentPointerTrackNode& operator=(const CIntelligentPointerTrackNode& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

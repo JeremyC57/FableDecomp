@@ -15,11 +15,14 @@ struct CAIStateGroup_MazeShieldedChase:CAIStateGroupBase{void* _pad_0x14[2];char
 #endif
 struct MazeThing;
 class CBaseObject;
-class CBaseIntelligentPointer { public:
+class CBaseIntelligentPointer {
+public:
+    void SetPItem(CBaseObject*a0);   // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
+private: public:
     CBaseObject* GetPItem() const;   // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
 };
-struct MazeCreaturePointerBase{virtual ~MazeCreaturePointerBase();MazeThing* item;MazeCreaturePointerBase();void SetPItem(MazeThing*);}; //00a01c10,00a01b10,00a01b50,00a01b90
-struct MazeCreaturePointer:MazeCreaturePointerBase{__forceinline MazeCreaturePointer(MazeThing* p){SetPItem(p);}__forceinline MazeCreaturePointer& operator=(const MazeCreaturePointer& p){SetPItem(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem()));return *this;}}; //derived scalar destructor004d6915,vtable0123e7d8
+struct MazeCreaturePointerBase{virtual ~MazeCreaturePointerBase();MazeThing* item;MazeCreaturePointerBase();}; //00a01c10,00a01b10,00a01b50,00a01b90
+struct MazeCreaturePointer:MazeCreaturePointerBase{__forceinline MazeCreaturePointer(MazeThing* p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)p);}__forceinline MazeCreaturePointer& operator=(const MazeCreaturePointer& p){((CBaseIntelligentPointer*)this)->SetPItem((CBaseObject*)(((MazeThing*)((CBaseIntelligentPointer*)&p)->GetPItem())));return *this;}}; //derived scalar destructor004d6915,vtable0123e7d8
 class C3DVector{ public:float X,Y,Z;};
 #pragma pack(push,1)
 struct MazeBoss{char beforeHome[0x22];C3DVector Home;long GetPhase();};

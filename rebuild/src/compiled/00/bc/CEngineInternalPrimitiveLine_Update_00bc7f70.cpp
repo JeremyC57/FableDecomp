@@ -35,8 +35,7 @@ public:
     bool          UseZBuffer;                      // +0x38
 };
 
-class CGraphicInfoFrame { public:
-    void BeginLoading(unsigned long priority, unsigned long flags);   // 0x009FE620
+class CGraphicInfoFrame { public: void BeginLoading(unsigned long a0, unsigned long a1) const; private:   // 0x009FE620
 };
 
 struct SBankGraphic {

@@ -18,11 +18,13 @@ struct CRITICAL_SECTION_Fable {                    // Win32 RTL_CRITICAL_SECTION
 };
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);                         // 0x0143FE1C
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(CRITICAL_SECTION_Fable* section);    // 0x0143FDE4
-struct CCriticalSectionLock {                      // 8 bytes on the stack
+struct CCriticalSectionLock {
+public:
+    void Release();   // 0x00A62960 (Ego_r.pdb ?Release@CCriticalSectionLock@@QAEXXZ)
+public:                      // 8 bytes on the stack
     CRITICAL_SECTION_Fable* m_pSection;            // +0x00
     bool                    m_locked;              // +0x04
     CCriticalSectionLock(CRITICAL_SECTION_Fable* section, bool tryOnly);   // 0x00A62920
-    void Unlock();                                 // 0x00A62960
     void Lock();                                   // 0x00A62980
     ~CCriticalSectionLock();                       // 0x00A629A0
 };
@@ -134,12 +136,12 @@ CBankFileAsync::~CBankFileAsync()
         if (((CBankFileAsyncData*)first->m_value)->Abort()) {
             AsyncDataInstances.erase(first);
         } else {
-            lock.Unlock();
+            ((CCriticalSectionLock*)&lock)->Release();
             Sleep(10);
             lock.Lock();
         }
     }
-    lock.Unlock();
+    ((CCriticalSectionLock*)&lock)->Release();
     if (MemoryFailureHandler.Data)
         MemoryFailureHandler.Data->RemoveBank(this);
     DeleteCriticalSection(&CriticalSection);

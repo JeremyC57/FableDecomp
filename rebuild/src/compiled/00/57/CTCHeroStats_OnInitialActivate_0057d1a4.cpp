@@ -31,9 +31,11 @@ struct CDefPointerDrunkenness {                      // CDefPointer<const CSpeci
     const CSpecialAbilitiesDrunkennessDef* Object;
 };
 
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get(); // 0x0044C6B0
-    long GetDefIndexFromName(const CCharString& name, long column);                   // 0x009AD390
     bool GetDef(long index, CDefPointerDrunkenness* out);                             // 0x0057FF30
 };
 
@@ -80,7 +82,7 @@ void CTCHeroStats::OnInitialActivate()
     long index;
     {
         CCharString name("SPECIAL_ABILITIES_DRUNKENNESS_DEF", -1);
-        index = CGameDefinitionManager::Get().GetDefIndexFromName(name, 1);
+        index = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex(name, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &PDrunkennessDef);
     ResetTrainingStatus();

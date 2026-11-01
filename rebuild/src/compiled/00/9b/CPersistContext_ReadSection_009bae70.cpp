@@ -33,7 +33,7 @@ public:
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    CCharString const& operator=(CCharString const&a0);  // 0x0099EFB0
     bool operator!=(const CCharString& other) const;   // 0x0099E900
     char* GetData() const
     {

@@ -1,6 +1,6 @@
 // CTCShapeManager::FrameUpdate() -- find the persistent closed shape the hero stands in (inside the closed-shape bounds first) and select it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00760990, 219 bytes (plain `ret`).
-// Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::GetCurrentPlayer @ 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer),
+// Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::PeekMyPlayer @ 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer),
 // CPlayer::PeekPControlledCreature @ 0x00487DD0, CThing::GetPos() const @ 0x004C73D0 (returns const C3DVector&);
 // NShape::CShape virtual slot 1 GetShapeType (+0x4: 0 for CClosedShapeBase 0x00765040, 1 for CTrack 0x007650C0; the name
 // of the landed EditUpdateDelete 0x00762D80) and slot 4 IsPosInShape(const C3DVector&) (+0x10, CBasicShape 0x007611C0).
@@ -21,8 +21,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
-class CWorld { public:
-    CPlayer* GetCurrentPlayer();                        // 0x0049D9D0
+class CWorld {
+public:
+    CPlayer const* PeekMyPlayer() const;   // 0x0049D9D0 (Ego_r.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ)
+private:                         // 0x0049D9D0
 };
 namespace NShape {
 class CShape { public:
@@ -64,7 +66,7 @@ void CTCShapeManager::FrameUpdate()
 {
     NewShapeActivated = false;
     LeavingShape = false;
-    const CThing* hero = GetWorld().GetCurrentPlayer()->PeekPControlledCreature();
+    const CThing* hero = ((CPlayer*)((CWorld*)&(GetWorld()))->PeekMyPlayer())->PeekPControlledCreature();
     if (hero && !(hero->Flags91 & 1)) {
         C3DVector pos = hero->GetPos();
         if (pos.X >= ClosedShapeBounds.TopLeft.X && pos.X < ClosedShapeBounds.BottomRight.X &&
