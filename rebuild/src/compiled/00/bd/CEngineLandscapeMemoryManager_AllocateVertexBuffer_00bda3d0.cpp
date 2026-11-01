@@ -62,14 +62,16 @@ struct CVertexBufferWin32_Retail : CVertexBufferBase {   // vtable 0x0129BA20
 };
 FABLE_STATIC_ASSERT(sizeof(CVertexBufferWin32_Retail) == sizeof(CVertexBufferWin32));
 
-class CEngineLandscapeMemoryManager { public:
-    void ProcessDisposalLists();                   // 0x00BDA150 (manifest "CDrawResourcePool_FlushCycle")
+class CEngineLandscapeMemoryManager {
+private:
+    void ProcessDisposalList();                    // 0x00BDA150 (Ego_r.pdb / FableWin.pdb ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ, private; manifest "CDrawResourcePool_FlushCycle")
+public:
     CVertexBufferWin32_Retail* AllocateVertexBuffer(long owner, long type, long count, long stride, unsigned long usage);
 };
 
 CVertexBufferWin32_Retail* CEngineLandscapeMemoryManager::AllocateVertexBuffer(long owner, long type, long count, long stride, unsigned long usage)
 {
-    ProcessDisposalLists();
+    ProcessDisposalList();
     CVertexBufferWin32_Retail* buffer = new CVertexBufferWin32_Retail;
     buffer->Initialise(type, count, stride, usage, 1);
     return buffer;

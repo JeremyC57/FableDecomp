@@ -1,6 +1,6 @@
 // CEngineLandscapeMemoryManager::AllocateTexture(unsigned long id, const C2DExtentsI& size, long levels, const CPixelFormat& format, unsigned long usage, bool dynamic) -- flushes the disposal cycle, allocates a CTexture from the global allocator and initialises it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDA470, length 120 bytes.
-// Callees: CEngineLandscapeMemoryManager::FlushCycle @ 0x00BDA150 (thiscall on `this`, manifest
+// Callees: CEngineLandscapeMemoryManager::ProcessDisposalList @ 0x00BDA150 (thiscall on `this`, manifest
 // "CDrawResourcePool_FlushCycle"), GFCreateGlobalAllocator @ 0x009F2870 (when the global allocator
 // @ 0x013CAA90 is null), GFEnterAllocatorLock @ 0x009F2000 / GFLeaveAllocatorLock @ 0x009F2010
 // (manifest "_Dest_val<...CFlash>" labels are propagated, the landed AllocVirtual @ 0x00BD9AF0 names
@@ -45,8 +45,10 @@ public:
                     ESurfacePool pool, bool dynamic, bool renderTarget);   // 0x009FA280
 };
 
-class CEngineLandscapeMemoryManager { public:
-    void FlushCycle();                             // 0x00BDA150
+class CEngineLandscapeMemoryManager {
+private:
+    void ProcessDisposalList();                    // 0x00BDA150 (Ego_r.pdb / FableWin.pdb ?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ, private; manifest "CDrawResourcePool_FlushCycle")
+public:
     CTexture* AllocateTexture(unsigned long id, const C2DExtentsI& size, long levels, const CPixelFormat& format,
                               unsigned long usage, bool dynamic);
 };
@@ -54,7 +56,7 @@ class CEngineLandscapeMemoryManager { public:
 CTexture* CEngineLandscapeMemoryManager::AllocateTexture(unsigned long id, const C2DExtentsI& size, long levels,
                                                          const CPixelFormat& format, unsigned long usage, bool dynamic)
 {
-    FlushCycle();
+    ProcessDisposalList();
     CTexture* texture = new CTexture;
     if (!texture)
         return 0;

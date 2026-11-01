@@ -1,4 +1,4 @@
-// CDspGain::Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, int mode, unsigned int count, unsigned int remaining) -- cross-fade a gain change over 512 samples: run the new settings' ramps into an aligned scratch block and the old settings' ramps into the output block, fade the old master out and the new master in (each by master/512 per sample from the remaining fraction), mix the scratch block in, and adopt the new settings once the fade ends in this block
+// CDspGain::Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, bool mode, unsigned int count, unsigned int remaining) -- cross-fade a gain change over 512 samples: run the new settings' ramps into an aligned scratch block and the old settings' ramps into the output block, fade the old master out and the new master in (each by master/512 per sample from the remaining fraction), mix the scratch block in, and adopt the new settings once the fade ends in this block
 // Leaf: ?Crossfade@CDspGain@@QAEXPAUSGainParams@@PBU2@PBMPAMHII@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C74D30, 297 bytes, thiscall `ret 1Ch`, `and esp,-16` frame (the 128-float scratch
 //   block is 16-byte aligned for the SIMD ops table).
@@ -54,12 +54,12 @@ struct CDspGain : CDspObject {             // vtable 0x012B9578
     SRampState m_new;                      // +0x0C ramp state of the settings faded in
     void Reset();                          // 0x00C744E0
     void ApplyRamps(const float* current, const float* target, float* state, const float* source, float* block,
-        int mode, unsigned int count);     // 0x00C74510
-    void Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, int mode,
+        bool mode, unsigned int count);     // 0x00C74510 (?ApplyRamps@CDspGain@@QAEXPBM0PAM01_NI@Z: the sixth argument is a byte tested at 0x00C74573 / 0x00C74784, chunk 684)
+    void Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, bool mode,
         unsigned int count, unsigned int remaining);
 };
 
-void CDspGain::Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, int mode,
+void CDspGain::Crossfade(SGainParams* oldParams, const SGainParams* newParams, const float* source, float* block, bool mode,
     unsigned int count, unsigned int remaining)
 {
     __declspec(align(16)) float scratch[128];

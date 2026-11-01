@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE1600, length 181 bytes (`ret 10h`; the 4-argument overload).
 // Leaf: ?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MM@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
-// Callees: the 8-argument vector interpolation @ 0x00A5BBA0 and GFInterpolateVectors @ 0x00A5B870 (__cdecl, labels
+// Callees: the 8-argument vector interpolation @ 0x00A5BBA0 and NVectorMath::GFInterpolateVectors @ 0x00A5B870 (__cdecl, labels
 //          both "GFInterpolateVectors"; strides 16). Global: 1e-4f @ 0x0129BA3C (ordered greater-than test).
 // Layout: engine/CParticleProgram.h is the PDB layout with 16-byte CArrays and a 0x14-byte vector map; the retail
 // containers are 12 / 0x10 bytes, so NonSimCount/NonSimPositions sit at +0xbc/+0xc0 and SimGroups/NonSimGroups at
@@ -24,12 +24,14 @@ template<class T> class CArray { public:                  // retail CArray<T>: t
     T* m_pEnd;
 };
 
+namespace NVectorMath {                         // Ego_r.pdb / FableWin.pdb: both overloads live in NVectorMath (donor order 0x00BD5D90 / 0x00BD60F0 = retail 0x00A5B870 / 0x00A5BBA0)
 // Interpolate `count` vectors from `from` towards `to` by `t` into `out` (strides in bytes).
-void __cdecl GFInterpolateVectors_00a5bba0(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
-                                          const C4DVector* to, unsigned long toStride, unsigned long count, float t);   // 0x00A5BBA0
+void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
+                                          const C4DVector* to, unsigned long toStride, unsigned long count, float t);   // 0x00A5BBA0 (Ego_r.pdb ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KKM@Z)
 // Blend `count` vectors of `out` towards `to` by `t` in place.
 void __cdecl GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* to, unsigned long toStride,
-                                 unsigned long count, float t);                                                      // 0x00A5B870
+                                 unsigned long count, float t);                                                      // 0x00A5B870 (Ego_r.pdb ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z)
+}
 
 extern const float DELTA_NOTIONAL_ZERO;            // 0x0129BA3C (1e-4f)
 
@@ -83,9 +85,9 @@ public:
 void CParticleProgram::PrepareForRendering(C4DVector* vertices, CParticleSimulation* simulation, float simulationInterpolate, float initialBlend)
 {
     CopyVectors(NonSimPositions, NonSimPositions + NonSimCount, vertices);
-    GFInterpolateVectors_00a5bba0(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
+    NVectorMath::GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), simulation->SavedPositions, sizeof(C4DVector),
                                   simulation->Positions, sizeof(C4DVector), simulation->Size, simulationInterpolate);
     if (initialBlend > DELTA_NOTIONAL_ZERO)
-        GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), InitialSimulation.Positions, sizeof(C4DVector),
+        NVectorMath::GFInterpolateVectors(vertices + NonSimCount, sizeof(C4DVector), InitialSimulation.Positions, sizeof(C4DVector),
                              simulation->Size, initialBlend);
 }

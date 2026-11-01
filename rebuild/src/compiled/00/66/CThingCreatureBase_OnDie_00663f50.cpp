@@ -233,7 +233,9 @@ public:
     static CThingDeadCreature* __fastcall Create(long def, const C3DVector* position, long playerNumber, const CCharString* scriptName, CAnimFilterBase* filter);   // 0x00835C80
     void SetKiller(CThing* killer);                     // 0x00669230
 };
-void __fastcall CreateExperienceOrbs(CThing* victim);   // 0x0077A890
+class CTCDExperienceOrb { public:
+    static void __fastcall Create(CThing& victim);     // 0x0077A890 (Ego_r.pdb / FableWin.pdb ?Create@CTCDExperienceOrb@@SIXAAVCThing@@@Z: the CThing& overload beside 0x00779E90)
+};
 
 void CThingCreatureBase::OnDie()
 {
@@ -293,7 +295,7 @@ void CThingCreatureBase::OnDie()
             events->AddEvent((CEventBase*)new CEventKilledCreature(killer, this));
         }
         if (LeaveExperienceOrbsOverride && killer->HasTC(0xc9) && m_type == 1)
-            CreateExperienceOrbs(this);
+            CTCDExperienceOrb::Create(*this);
     }
     if (HasTC(0x42)) {
         CTCEntityEvents* events = (CTCEntityEvents*)GetTC(0x42);

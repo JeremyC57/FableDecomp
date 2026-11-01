@@ -1,4 +1,4 @@
-// CDspGain::Apply(const SGainParams* params, const float* source, float* block, int mode, unsigned int count) -- run the gain's per-channel ramps over one block (ApplyRamps), then scale the block by the master gain unless it is exactly 1.0
+// CDspGain::Apply(const SGainParams* params, const float* source, float* block, bool mode, unsigned int count) -- run the gain's per-channel ramps over one block (ApplyRamps), then scale the block by the master gain unless it is exactly 1.0
 // Leaf: ?Apply@CDspGain
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C74CE0, length 73 bytes, ret 14h. Callees: CDspGain::ApplyRamps
 //   0x00C74510 (a thiscall that never reads `this`, ret 1Ch: params+4, params+0x10, the gain's own ramp state +4,
@@ -50,11 +50,11 @@ struct CDspGain : CDspObject {             // vtable 0x012B9578
     float m_gain[4];                       // +0x04
     void Reset();                          // 0x00C744E0
     void ApplyRamps(const float* current, const float* target, float* state, const float* source, float* block,
-        int mode, unsigned int count);     // 0x00C74510
-    void Apply(const SGainParams* params, const float* source, float* block, int mode, unsigned int count);
+        bool mode, unsigned int count);     // 0x00C74510 (?ApplyRamps@CDspGain@@QAEXPBM0PAM01_NI@Z: the sixth argument is a byte tested at 0x00C74573 / 0x00C74784, chunk 684)
+    void Apply(const SGainParams* params, const float* source, float* block, bool mode, unsigned int count);
 };
 
-void CDspGain::Apply(const SGainParams* params, const float* source, float* block, int mode, unsigned int count)
+void CDspGain::Apply(const SGainParams* params, const float* source, float* block, bool mode, unsigned int count)
 {
     ApplyRamps(params->m_current, params->m_target, m_gain, source, block, mode, count);
     if (params->m_master != 1.0f)
