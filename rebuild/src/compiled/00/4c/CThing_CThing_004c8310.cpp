@@ -1,5 +1,7 @@
 // CThing::~CThing() -- thing destructor: drop the thing count, purge this thing's pending component removals, delete every component (clearing its presence bit), empty the component map, unregister from the thing manager's class factory, then the member and base destructors
 // Leaf: ??1CThing@@MAE@XZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8310, 412 bytes (the bitset range-error block at 0x004C849A ends it); Ego_r.pdb
 //   `??1CThing@@MAE@XZ` (protected virtual); vtable store 0x01239ABC (CThing, as the landed CThing::CThing 0x004C9030).
 // Callees: CBaseIntelligentPointer::GetPItem() const 0x00A01B50 and ~CBaseIntelligentPointer 0x00A01C10 (the pending-removal
@@ -236,11 +238,15 @@ class CClass : public CBaseObject { public:
 };
 
 class CThingManager;
-extern CThingManager* g_pThingManager;                      // 0x013B8A1C
 extern long g_thingCount;                                   // 0x013B8A20
 
 class CTCDriverBase; class CTCPhysicsBase; class CTCGraphicAppearance;
-class CThing : public CClass {                              // vtable 0x01239ABC
+class CThing : public CClass {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:                              // vtable 0x01239ABC
 public:
     unsigned __int64       UniqueID;                        // +0x18
     std::bitset<274>       UsingComponents;                 // +0x20
@@ -309,5 +315,5 @@ CThing::~CThing()
     }
     AddingTCsPermitted = true;
     Components.Data.clear();
-    Unregister(*(CClassFactory*)g_pThingManager);
+    Unregister(*(CClassFactory*)CThing::GetPCurrentThingManager());
 }

@@ -1,12 +1,14 @@
 // CThing::GetSubTypeFromScript(const char* script) -- parse a thing's script block up to "EndThing", load its serialise record and return the global index of its definition type (0 for "NULL")
 // Leaf: ?GetSubTypeFromScript@CThing@@
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8A30, 368 bytes, static __fastcall (script in ecx), plain `ret`. Ego_r.pdb
 //   `?GetSubTypeFromScript@CThing@@SIJPBD@Z`.
 // Callees: CCharString(const char*, long) 0x0099EBF0, CCharString() 0x0099E4B0, ~CCharString 0x0099EAE0, CBaseClass ctor
 //   0x0099A2D0 / dtor 0x0099A2E0, malloc 0x00BFEA0E, CStringParser::Init 0x009B9530, ReadAsStringUntilString 0x009BA330,
 //   CThing::SerialiseThingInfo(bool, CCharString&, CSerialiseInfo&) 0x004C88E0 (this chunk), CBasicString<char>::
 //   operator==(const char*) 0x004115A0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, the comment list
-//   destructor 0x004046B0. Globals: g_pThingManager 0x013B8A1C (+0x20 the definition manager), "EndThing" 0x01239B8C,
+//   destructor 0x004046B0. Globals: CThing::GetPCurrentThingManager() 0x013B8A1C (+0x20 the definition manager), "EndThing" 0x01239B8C,
 //   "NULL" 0x012393E4, "" 0x0122D70E.
 // Layout: the 0x004C88E0 parser; CThingManager DefinitionManager +0x20 (retail).
 // Shape: the parser is built by an inline CStringParser(const char*, filename = "") constructor (the default-argument
@@ -97,10 +99,14 @@ public:
     unsigned char       _pad00[0x20];
     CDefinitionManager* DefinitionManager;             // +0x20 (retail; PDB +0x2C)
 };
-extern CThingManager* g_pThingManager;                 // 0x013B8A1C
 
 class CPersistContext;
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     class CSerialiseInfo {                             // Ego_r.pdb, 0x10 bytes
     public:
@@ -120,6 +126,6 @@ long __fastcall CThing::GetSubTypeFromScript(const char* script)
     SerialiseThingInfo(false, body, info);
     if (info.DefinitionType == "NULL")
         return 0;
-    const CDefinitionManager* defs = g_pThingManager->DefinitionManager;
+    const CDefinitionManager* defs = CThing::GetPCurrentThingManager()->DefinitionManager;
     return defs->GetDefGlobalIndexFromName(info.DefinitionType);
 }

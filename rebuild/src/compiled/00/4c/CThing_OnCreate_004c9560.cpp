@@ -1,11 +1,13 @@
 // CThing::OnCreate() -- advance the initialisation stage; unless dead, resolve the def (marking globally loaded / persisted things), notify the thing manager and the driver, run each live component's create hook over a copy of the component map, register, and honour the cutscene pause mode
 // Leaf: ?OnCreate@CThing
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9560, 293 bytes (+11 int3), virtual, `ret`, bool in al.
 // Callees: CDefinitionManager::GetDef<CThingDef>(long, CDefPointer*) @ 0x0042AF3C, the thing manager's member @ 0x0051E2E0
 //   (manifest "CTCInventoryBase::GetCanItemBeQuickAssigned" is propagated; name not recovered), the driver's virtual slot 29
 //   (+0x74), the component map's (CVectorMap) copy constructor @ 0x004CC290, each component's virtual slot 4 (+0x10), the member
 //   @ 0x00A36F80 taking the thing manager (manifest "CThingFilter_IsValid::operator()" is propagated), free @ 0x00BFEA14.
-// Globals: g_pThingManager 0x013B8A1C (DefinitionManager +0x20, NonScriptedEntitesPauseMode +0x54,
+// Globals: CThing::GetPCurrentThingManager() 0x013B8A1C (DefinitionManager +0x20, NonScriptedEntitesPauseMode +0x54,
 //   GlobalThingLoadingBehaviour +0x80).
 // Layout: the landed CThing ctor 0x004C9030 (components map +0x44, PTCDriver +0x5C, PBaseDef +0x70, DefGlobalIndex +0x8C,
 //   flag bytes +0x91..+0x94); CThingBaseDef IsLoadableGlobal / GameStatePersisted are bits 0/1 of +0x42 (PDB +0x46).
@@ -36,7 +38,6 @@ class CThingManager { public:
     long GlobalThingLoadingBehaviour;            // +0x80
     void OnThingCreated();                       // 0x0051E2E0 (name not recovered)
 };
-extern CThingManager* g_pThingManager;           // 0x013B8A1C
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void OnCreate();                     // slot 4 (+0x10)
@@ -74,7 +75,12 @@ class CTCDriverBase { public:
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual void OnThingCreated();               // slot 29 (+0x74)
 };
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     virtual void v00();
     unsigned char  _pad04[0x44 - 0x04];
     CComponentVector Components;                 // +0x44 CVectorMap (0x10 with padding)
@@ -110,7 +116,7 @@ class CThing { public:
     unsigned char  AddingTCsPermitted : 1;
     unsigned char  InitialisationStage : 3;             // +0x94
     void RegisterWithManager(CThingManager* manager);   // 0x00A36F80 (name not recovered)
-    CDefinitionManager* GetDefinitionManager() const { return g_pThingManager->DefinitionManager; }   // inline copy of 0x004C7990
+    CDefinitionManager* GetDefinitionManager() const { return CThing::GetPCurrentThingManager()->DefinitionManager; }   // inline copy of 0x004C7990
     bool OnCreate();
 };
 
@@ -120,14 +126,14 @@ bool CThing::OnCreate()
     if (Dead)
         return false;
     if (!DefGlobalIndex || GetDefinitionManager()->GetDef(DefGlobalIndex, &PBaseDef)) {
-        if ((!PBaseDef.Object || PBaseDef.Object->IsLoadableGlobal) && g_pThingManager->GlobalThingLoadingBehaviour == 1)
+        if ((!PBaseDef.Object || PBaseDef.Object->IsLoadableGlobal) && CThing::GetPCurrentThingManager()->GlobalThingLoadingBehaviour == 1)
             GloballyLoaded = true;
     }
     if (PBaseDef.Object && PBaseDef.Object->GameStatePersisted) {
         LevelPersistent = true;
         GameStatePersisted = true;
     }
-    g_pThingManager->OnThingCreated();
+    CThing::GetPCurrentThingManager()->OnThingCreated();
     if (PTCDriver)
         PTCDriver->OnThingCreated();
     CComponentVector components(Components);
@@ -137,8 +143,8 @@ bool CThing::OnCreate()
         if (!component->ToBeRemoved)
             component->OnCreate();
     }
-    RegisterWithManager(g_pThingManager);
-    if (g_pThingManager->NonScriptedEntitesPauseMode) {
+    RegisterWithManager(CThing::GetPCurrentThingManager());
+    if (CThing::GetPCurrentThingManager()->NonScriptedEntitesPauseMode) {
         PausedDuringCutscenes = false;
         NotPausedDuringCutscenes = true;
     }

@@ -1,5 +1,7 @@
 // CTCBase::PeekSampleBank() const -- the main game component's sample bank
 // Leaf: ?PeekSampleBank@CTCBase@@IBEABVCASoundBank@@XZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00686D70: mov eax,[0x013B8A1C] ; mov ecx,[eax+1Ch] ; mov eax,[ecx+10h] ; ret
 //   (`this` unused; the global 0x013B8A1C is the thing manager).
 // Identity (sweep3; was CAnimateThing::GetMeshBank (a real Ego_r name, but that one returns a CMeshDataBank; this
@@ -40,7 +42,12 @@ public:
     CPlayerManager*         PlayerManager;      // +0x30
 };
 
-extern CThingManager* g_pThingManager;          // 0x013B8A1C
+class CThingManager;
+class CThing {
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+};
 
 class CTCBase {
 protected:
@@ -49,5 +56,5 @@ protected:
 
 const CASoundBank& CTCBase::PeekSampleBank() const
 {
-    return *g_pThingManager->Component->PSampleBank;
+    return *CThing::GetPCurrentThingManager()->Component->PSampleBank;
 }

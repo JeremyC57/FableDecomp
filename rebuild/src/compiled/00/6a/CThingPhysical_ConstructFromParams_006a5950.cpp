@@ -1,7 +1,9 @@
 // CThingPhysical::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4, CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool a7) -- construct the CThing on the map under the position, then reset scale, health (from the def), creators and the hit flags
 // Leaf: ConstructFromParams
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A5950, length 289 bytes, `ret 1Ch`.
-// Callees: the world map's GetMapNumberAt(const C3DVector&) (virtual slot 16, +0x40) on g_pThingManager @ 0x013B8A1C
+// Callees: the world map's GetMapNumberAt(const C3DVector&) (virtual slot 16, +0x40) on CThing::GetPCurrentThingManager() @ 0x013B8A1C
 // (WorldMap +0x28), CThing::ConstructFromParams(long, long, long, bool) @ 0x004CA010, CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (the temporaries' vtable 0x01244DCC is
 // CIntelligentPointer<CThingPhysical>, as the landed CThingPhysical ctor 0x005296B0).
@@ -29,7 +31,6 @@ public:
     unsigned char _pad00[0x28];
     CWorldMap*    WorldMap;                                    // +0x28
 };
-extern CThingManager* g_pThingManager;                         // 0x013B8A1C
 
 class CThingBaseDef { public:
     unsigned char _pad00[0x42];
@@ -68,6 +69,11 @@ public:
 };
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     virtual void v00();
     unsigned char  _pad04[0x70 - 0x04];
@@ -102,7 +108,7 @@ public:
 bool CThingPhysical::ConstructFromParams(long defIndex, const C3DVector* pos, long a3, unsigned long a4,
                                          CThingPhysical* originalCreator, CThingPhysical* lastCreator, bool a7)
 {
-    long mapNumber = g_pThingManager->WorldMap->GetMapNumberAt(*pos);
+    long mapNumber = CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(*pos);
     if (CThing::ConstructFromParams(defIndex, a3, mapNumber, a7)) {
         Scale = 1.0f;
         Health = MaxHealth = PBaseDef->Health;

@@ -1,10 +1,12 @@
 // CThing::OnCollision(long phase, long, long, CThing* other) -- on the first collision phase, hands the colliding thing (fourth argument) to the assassin-rush component (type 0xA9) and to the type-0xA8 component when the thing carries them; a live thing is then put back on the manager's update list
 // Leaf: OnCollision
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8DA0, 161 bytes (+15 int3). `ret 10h`.
 // Callees: CVectorMap::LowerBound(const long*) 0x0040F020 (x2, the key in a frame word), CTCAssassinRush::SetThingCollisionPtr
 //          (CThing*) 0x004CBFB0, the type-0xA8 component's handler 0x004CC000 (manifest "CVillageTaskCarryCrate::
 //          AssignCreatureToTask" is propagated; named by its use here), CThingManager::AddToUpdateList(CThing*) 0x0051EC50
-//          on g_pThingManager (0x013B8A1C).
+//          on CThing::GetPCurrentThingManager() (0x013B8A1C).
 // Shape: the phase compare before the prologue; the presence bits for 0xA9/0xA8 both live in bitset word 5 (+0x34,
 //        tested through ah: bits 9 and 8); each lookup is the inlined GetInterface (lower bound on the key word, end
 //        when absent); Dead is bit 0 of the +0x91 flag byte; the other thing is kept in ebp for both calls.
@@ -30,8 +32,12 @@ struct CTCCollisionHandler_0xA8 {                    // interface type 0xA8 (des
 class CThingManager { public:
     void AddToUpdateList(CThing* thing);             // 0x0051EC50
 };
-extern CThingManager* g_pThingManager;               // 0x013B8A1C
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                  // +0x20 UsingComponents (bitset<274>)
     CInterfaceMap m_interfaces;                      // +0x44
@@ -63,5 +69,5 @@ void CThing::OnCollision(long phase, long, long, CThing* other)
             handler->OnThingCollision(other);
     }
     if (!Dead)
-        g_pThingManager->AddToUpdateList(this);
+        CThing::GetPCurrentThingManager()->AddToUpdateList(this);
 }

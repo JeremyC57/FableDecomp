@@ -1,10 +1,12 @@
 // CTCDExplosion::Create(long defIndex, const C3DVector& startPos, const C3DVector& endPos) -- create a swept explosion thing for player 4 running from startPos to endPos: set the blast ends, construct it at the start and activate it; a thing without the explosion driver is killed; null on any failure
 // Leaf: ?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@0@Z
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0080C500, 141 bytes (+ int3 padding), static `__fastcall` (defIndex in ecx, startPos in edx,
 //   endPos on the stack), `ret 4`.
 // Name: FableWin.pdb `?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@0@Z` (the two-vector overload; the one-vector one
 //   is 0x0080C460). Callers 0x007FC09F, 0x0089FCA8, 0x008F51F0, 0x008F5403.
-// Callees: CWorldMap::GetMapNumberAt (virtual slot 16, +0x40) on g_pThingManager (0x013B8A1C) +0x28; CThing::Create
+// Callees: CWorldMap::GetMapNumberAt (virtual slot 16, +0x40) on CThing::GetPCurrentThingManager() (0x013B8A1C) +0x28; CThing::Create
 //   0x004CA1D0; CTCDExplosion::Construct(const C3DVector&) 0x0080C250; CThing::DoActivationSequence() 0x004C9CA0;
 //   CThing::Kill(bool) 0x004C9B80.
 // Layout (retail CThing): UsingComponents +0x20 (word 2 bit 1 = the explosion driver), PTCDriver +0x5c; CTCDExplosion
@@ -28,11 +30,15 @@ public:
     unsigned char _pad_0x00[0x28];
     CWorldMap* WorldMap;                                          // +0x28 (retail; PDB +0x34)
 };
-extern CThingManager* g_pThingManager;                            // 0x013B8A1C
 
 class CTCDExplosion;
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                             // +0x20 bitset
@@ -63,7 +69,7 @@ private:
 
 CThing* __fastcall CTCDExplosion::Create(long defIndex, const C3DVector& startPos, const C3DVector& endPos)
 {
-    CThing* thing = CThing::Create(defIndex, 4, g_pThingManager->WorldMap->GetMapNumberAt(startPos), true);
+    CThing* thing = CThing::Create(defIndex, 4, CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(startPos), true);
     CThing* result = 0;
     if (thing) {
         CTCDExplosion* explosion;

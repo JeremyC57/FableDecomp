@@ -1,11 +1,13 @@
 // CThing::InitFromThingInfo(const CThingInfo& info) -- copies the unique id and player number from the info record, resolves the def name through the definition manager (a "NULL" name means no def; an unknown name kills the thing and fails) and binds the base def pointer when an index was found
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the inline CCharString::operator==("NULL") hand-split: null-block strcmp and block compare as two tests that `goto` one out-of-line arm (DefGlobalIndex = 0), the lookup arm in line with its own early return
 // Leaf: InitFromThingInfo
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7F40, 167 bytes (+9 int3). `ret 4`, bool in al.
 // Callees: CBasicString<char>::operator==(const char*) 0x004115A0 on the name's data block (the null-data case is the
 //          inline `repe cmpsb` of "" @ 0x0122D70E against "NULL" @ 0x012393E4), CDefinitionManager::GetDefGlobalIndexFromName
 //          0x009AD410 and GetDef(long, CDefPointer<const CThingBaseDef>*) 0x0042AF3C (manifest template label propagated)
-//          on g_pThingManager->DefinitionManager (+0x20, global 0x013B8A1C).
+//          on CThing::GetPCurrentThingManager()->DefinitionManager (+0x20, global 0x013B8A1C).
 // Shape: the two id words copied first, the player byte next, the name's address kept in ebp; the found index is
 //        stored as a 16-bit word and tested through ax (`jne` for the dead/fail exit, unsigned `jbe` for the GetDef guard);
 //        Dead is bit 0 of the +0x91 flag byte (`or ..,1`).
@@ -41,13 +43,17 @@ class CThingManager { public:
     unsigned char _pad00[0x20];
     CDefinitionManager* DefinitionManager;            // +0x20 (PDB +0x2c)
 };
-extern CThingManager* g_pThingManager;                // 0x013B8A1C
 class CThingInfo { public:
     unsigned __int64 UniqueID;                        // +0x00
     CCharString      DefName;                         // +0x08
     signed char      Player;                          // +0x0c
 };
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                        // +0x18
     unsigned char    _pad20[0x70 - 0x20];
@@ -76,7 +82,7 @@ bool CThing::InitFromThingInfo(const CThingInfo& info)
     } else if (info.DefName.PStringData->Data == "NULL") {
         goto null_name;
     }
-    DefGlobalIndex = (unsigned short)g_pThingManager->DefinitionManager->GetDefGlobalIndexFromName(info.DefName);
+    DefGlobalIndex = (unsigned short)CThing::GetPCurrentThingManager()->DefinitionManager->GetDefGlobalIndexFromName(info.DefName);
     if (DefGlobalIndex == 0) {
         Dead = true;
         return false;
@@ -86,6 +92,6 @@ null_name:
     DefGlobalIndex = 0;
 lookup:
     if (DefGlobalIndex > 0)
-        g_pThingManager->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);
+        CThing::GetPCurrentThingManager()->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);
     return true;
 }

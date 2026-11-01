@@ -1,4 +1,6 @@
 // CThing::SetToKillOnLevelUnload(bool kill) -- change the kill-on-level-unload flag; when it becomes set on a thing in limbo whose map is no longer loaded, kill the thing now
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9C40, 89 bytes. Callees: the map manager's virtual slot 10 (+0x28,
 // is-map-loaded query taking the map number) reached through the thing manager @ 0x013B8A1C (+0x28), and
 // CThing::Kill(bool) @ 0x004C9B80.
@@ -17,9 +19,13 @@ class CThingManager { public:
     CMapManager*  m_pMapManager;                     // +0x28
 };
 
-extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x8e - 0x04];
     short         CurrentMapNumber;                  // +0x8e (PDB +0x9e)
@@ -44,7 +50,7 @@ void CThing::SetToKillOnLevelUnload(bool kill)
 {
     if (KillOnLevelUnload != kill) {
         KillOnLevelUnload = kill;
-        if (KillOnLevelUnload && InLimbo && !g_pThingManager->m_pMapManager->IsMapLoaded(CurrentMapNumber))
+        if (KillOnLevelUnload && InLimbo && !CThing::GetPCurrentThingManager()->m_pMapManager->IsMapLoaded(CurrentMapNumber))
             Kill(false);
     }
 }

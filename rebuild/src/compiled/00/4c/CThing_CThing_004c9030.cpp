@@ -1,7 +1,9 @@
 // CThing::CThing(unsigned long classType) -- registers the thing with the thing manager's class factory, then starts it blank: no unique id, no components in the presence bits, map or update list, empty section/script names, no def, no driver/physics/appearance, off both linked lists, and the default flag set (in thing scans, drawable, deleted with its owner level, killed on level unload, bullet-time affected, adding components permitted); bumps the global thing count
 // Leaf: ??0CThing
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9030, 237 bytes (+3 int3). `ret 4`, returns this. CThing vtable 0x01239ABC.
-// Callees: CClass::CClass(CClassFactory&, unsigned long, bool) 0x00A372D0 (the factory is g_pThingManager 0x013B8A1C),
+// Callees: CClass::CClass(CClassFactory&, unsigned long, bool) 0x00A372D0 (the factory is CThing::GetPCurrentThingManager() 0x013B8A1C),
 //          malloc 0x00BFEA0E (the update list's 12-byte header node), CCharString::CCharString() 0x0099E4B0 (x3).
 // Shape: members in declaration order through one zero register (ebx) except the bitset words, which the inlined
 //        bitset constructor (a memset of the nine words) clears through a fresh zero (edx) off the member's address; the list header node is
@@ -22,7 +24,6 @@ class CClass { public:
     CClass(CClassFactory& factory, unsigned long type, bool registerNow);   // 0x00A372D0
 };
 class CThingManager;
-extern CThingManager* g_pThingManager;                // 0x013B8A1C
 extern long g_thingCount;                             // 0x013B8A20
 class CCharString {
 public:
@@ -61,7 +62,12 @@ struct CDefPointer {                                  // CDefPointer<const CThin
     CDefPointer() : Object(0) { }
 };
 class CTCDriverBase; class CTCPhysicsBase; struct CTCGraphicAppearance;
-class CThing : public CClass {                        // vtable 0x01239ABC
+class CThing : public CClass {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:                        // vtable 0x01239ABC
 public:
     unsigned char          _pad04[0x18 - 0x04];
     unsigned __int64       UniqueID;                  // +0x18
@@ -111,7 +117,7 @@ public:
     CThing(unsigned long classType);
 };
 CThing::CThing(unsigned long classType)
-    : CClass(*(CClassFactory*)g_pThingManager, classType, false),
+    : CClass(*(CClassFactory*)CThing::GetPCurrentThingManager(), classType, false),
       UniqueID(0), UsingComponents(), Components(), UpdateComponentsList(), SerialisationSectionName(),
       PTCDriver(0), PhysicsTC(0), PTCGraphicAppearance(0), PBaseDef(), ScriptName(), ScriptData(),
       RenderListPrev(0), RenderListNext(0), UpdateListPrev(0), UpdateListNext(0), CurrentMapNumber(0),

@@ -1,5 +1,7 @@
 // CThing::CreateFromDef(const CThingDef* def) -- reserves room for the def's component list, adds each named component (its creation flag forced on while a saved game is being loaded), then takes the kill-lock bit from the def
 // Leaf: CreateFromDef
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CA930, 204 bytes (+4 int3). `ret 4`.
 // Callees: CVectorMap (vector) reserve 0x004CC9B0 on Components (+0x44), CDefStringTable::GetString(long) 0x009D49B0 on
 //          g_DefStringTable (0x013CA828, CCharString by hidden pointer), CThing::AddTC(const CCharString&, bool,
@@ -38,7 +40,6 @@ class CThingManager { public:
     unsigned char _pad00[0x24];
     CWorld*       World;                             // +0x24
 };
-extern CThingManager* g_pThingManager;               // 0x013B8A1C
 #pragma pack(push, 1)
 struct STCDefEntry {                                 // 9 bytes
     long          NameId;                            // +0x00
@@ -55,7 +56,12 @@ struct CThingDef {
     unsigned char KillLocked : 1;
 };
 #pragma pack(pop)
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     unsigned char _pad00[0x44];
     CComponentMap Components;                        // +0x44
     unsigned char _pad50[0x6c - 0x50];
@@ -76,7 +82,7 @@ public:
 void CThing::CreateFromDef(const CThingDef* def)
 {
     bool force = false;
-    if ((ThingTypeFlags & 2) && g_pThingManager->World->m_loadingSavedGame)
+    if ((ThingTypeFlags & 2) && CThing::GetPCurrentThingManager()->World->m_loadingSavedGame)
         force = true;
     Components.reserve(Components.size() + def->NoTCs);
     for (long i = 0; i < def->NoTCs; ++i) {

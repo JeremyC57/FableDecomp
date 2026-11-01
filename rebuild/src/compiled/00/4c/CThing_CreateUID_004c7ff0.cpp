@@ -1,4 +1,6 @@
 // CThing::CreateUID() -- allocate the thing's unique id from the thing manager for its current map, passing the thing-class "global" flag and whether its def is game-state persisted
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7FF0, 87 bytes. Callees: CThingManager::AllocateNewThingUID(long, bool, bool)
 // @ 0x0051E100 (returns the 64-bit id in edx:eax) on the thing manager @ 0x013B8A1C.
 // Shape: PBaseDef retail +0x70, def +0x41 bit 3 (LevelLess); the per-class table at manager +4 holds 20-byte
@@ -16,7 +18,6 @@ class CThingManager { public:
     unsigned __int64 AllocateNewThingUID(long mapNumber, bool classFlag, bool levelLess); // 0x0051E100
 };
 
-extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
 class CThingBaseDef { public:
     unsigned char _pad00[0x41];
@@ -26,7 +27,12 @@ class CThingBaseDef { public:
     unsigned char LevelLess : 1;                     // bit 3
 };
 
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     void*            __vftable;                      // +0x00
     unsigned char    _pad04[0x10 - 0x04];
     unsigned char    m_thingClass;                   // +0x10
@@ -44,6 +50,6 @@ void CThing::CreateUID()
     bool levelLess = false;
     if (PBaseDef && PBaseDef->LevelLess)
         levelLess = true;
-    bool classFlag = g_pThingManager->m_pClassInfo[m_thingClass].m_flag;
-    UniqueID = g_pThingManager->AllocateNewThingUID(CurrentMapNumber, classFlag, levelLess);
+    bool classFlag = CThing::GetPCurrentThingManager()->m_pClassInfo[m_thingClass].m_flag;
+    UniqueID = CThing::GetPCurrentThingManager()->AllocateNewThingUID(CurrentMapNumber, classFlag, levelLess);
 }

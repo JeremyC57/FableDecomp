@@ -1,5 +1,7 @@
 // CThing::GetInfo(CThingInfo*) const -- fill the thing's info: "None" names for a def-less thing, else the def name as SubTypeName
 // Leaf: ?GetInfo@CThing
+// Naming wave 18: the global stand-in g_pGlobalSystems (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7B00, 123 bytes (+5 int3). __fastcall virtual, `ret 4`.
 // Class: catalog "CThing::vfunc_24" -- slot 24 of CThing's vtable 0x01239ABC; the PDB virtual
 //        ?GetInfo@CThing@@UBEXPAVCThingInfo@@@Z (CThingInfo: TypeName +0, SubTypeName +4, ScriptName +8, Player +0xC).
@@ -26,11 +28,10 @@ struct CDefStringTable {
     CCharString GetString(CDefString name) const;            // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;                    // 0x013CA828
-struct CGlobalSystems {
+class CThingManager { public:
     unsigned char _pad00[0x20];
     CDefinitionManager* DefinitionManager;                   // +0x20
 };
-extern CGlobalSystems* g_pGlobalSystems;                    // 0x013B8A1C
 class CThingInfo { public:
     CCharString TypeName;                        // +0x00
     CCharString SubTypeName;                     // +0x04
@@ -38,6 +39,11 @@ class CThingInfo { public:
     long Player;                                 // +0x0c
 };
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     virtual void v00();
     unsigned char _pad04[0x8c - 0x04];
@@ -51,7 +57,7 @@ void CThing::GetInfo(CThingInfo* info) const
         info->SubTypeName = "None";
         return;
     }
-    CDefinitionManager* definitions = g_pGlobalSystems->DefinitionManager;
+    CDefinitionManager* definitions = CThing::GetPCurrentThingManager()->DefinitionManager;
     CCharString name = g_DefStringTable.GetString(definitions->GetDefNameFromGlobalIndex(DefGlobalIndex));
     info->SubTypeName = name;
 }

@@ -1,5 +1,7 @@
 // CTCBase::PeekWorld() const -- the world through the global thing manager (CThingManager::World, retail +0x24)
 // Leaf: ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00686A80, 9 bytes: mov eax,[0x013B8A1C] ; mov eax,[eax+0x24] ; ret (this unused).
 // 0x013B8A1C is the CThingManager pointer: the CTCBase::GetThingManager pair 0x00686AE0 / 0x00686AF0 return it bare,
 //   and its retail members sit 0xC below Ego_r (Component +0x1C, DefinitionManager +0x20, World +0x24, WorldMap +0x28,
@@ -17,7 +19,12 @@ public:
     CWorld* World;                                    // +0x24
 };
 
-extern CThingManager* g_pThingManager;                // 0x013B8A1C (descriptive: no PDB name)
+class CThingManager;
+class CThing {
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+};
 
 class CTCBase {
 protected:
@@ -26,5 +33,5 @@ protected:
 
 const CWorld& CTCBase::PeekWorld() const
 {
-    return *g_pThingManager->World;
+    return *CThing::GetPCurrentThingManager()->World;
 }

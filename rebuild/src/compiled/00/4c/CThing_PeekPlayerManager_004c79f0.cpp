@@ -1,5 +1,7 @@
 // CThing::PeekPlayerManager() const -- the player manager held by the global thing manager
 // Leaf: ?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C79F0, 9 bytes: mov eax,[0x013B8A1C] ; mov eax,[eax+30h] ; ret (this unused).
 // Identity (sweep3; was the descriptive _global::GetGlobal_013b8a1c_deref0x30_004c79f0 (before that CThing::GetPlayerManager)): Ego_r.pdb / FableWin.pdb
 //   `?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ`.
@@ -23,14 +25,18 @@ public:
     CPlayerManager*         PlayerManager;      // +0x30
 };
 
-extern CThingManager* g_pThingManager;          // 0x013B8A1C
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 protected:
     const CPlayerManager& PeekPlayerManager() const;
 };
 
 const CPlayerManager& CThing::PeekPlayerManager() const
 {
-    return *g_pThingManager->PlayerManager;
+    return *CThing::GetPCurrentThingManager()->PlayerManager;
 }

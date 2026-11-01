@@ -1,10 +1,12 @@
 // CTCDInternalMarker::Create(long, const C3DVector&) -- create an internal-marker thing for player 4 on the map under the position, construct its driver there and activate it; null on failure
 // Leaf: ?Create@CTCDInternalMarker@@SIPAVCThing@@JABVC3DVector@@@Z
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail 0x00870BB0, 0x4E bytes (+ int3 padding), static __fastcall (def index in ecx, position in edx, plain `ret`).
 // Catalog label `Create` (_global); Ego_r names ?Create@CTCDInternalMarker@@SIPAVCThing@@JABVC3DVector@@@Z and the driver test
 // is interface type 0xA2 = CTCDInternalMarker (GetInterfaceType, vtable slot 21: presence word 5 bit 2, `test byte ptr
 // [esi+34h],4`). Callers 0x006834E0, 0x00783B1E, 0x00934B2A.
-// Callees: CWorldMap::GetMapNumberAt (slot 16, +0x40) on g_pThingManager (0x013B8A1C) +0x28, CThing::Create(long, long, long,
+// Callees: CWorldMap::GetMapNumberAt (slot 16, +0x40) on CThing::GetPCurrentThingManager() (0x013B8A1C) +0x28, CThing::Create(long, long, long,
 // bool) @ 0x004CA1D0, CTCDInternalMarker::Construct(const C3DVector&) @ 0x00870B30 (manifest "CTCDCameraPoint::Construct" is
 // a propagation; Ego_r ?Construct@CTCDInternalMarker@@AAEXABVC3DVector@@@Z), CThing::DoActivationSequence @ 0x004C9CA0.
 // Shape: the landed CTCDExperienceOrb::Create 0x00779E90 without the Kill branch: `push 1` (the last Create argument) goes
@@ -25,11 +27,15 @@ public:
     unsigned char _pad_0x00[0x28];
     CWorldMap* WorldMap;                                          // +0x28
 };
-extern CThingManager* g_pThingManager;                            // 0x013B8A1C
 
 class CTCDInternalMarker;
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                             // +0x20 bitset
@@ -56,7 +62,7 @@ private:
 
 CThing* __fastcall CTCDInternalMarker::Create(long defIndex, const C3DVector& position)
 {
-    CThing* thing = CThing::Create(defIndex, 4, g_pThingManager->WorldMap->GetMapNumberAt(position), true);
+    CThing* thing = CThing::Create(defIndex, 4, CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(position), true);
     CThing* result = 0;
     if (thing) {
         CTCDInternalMarker* marker;

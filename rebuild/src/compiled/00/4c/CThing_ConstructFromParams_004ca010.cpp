@@ -1,5 +1,7 @@
 // CThing::ConstructFromParams(long, long, long, bool) -- base thing construction: re-register with the class factory, store def index / player / map, reset the lists, fetch the base def, allocate the UID, apply the def's default script name/data and add the editor and map-who components
 // Leaf: ConstructFromParams
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CA010, 437 bytes, `ret 10h`. Called by CThingPhysical::ConstructFromParams 0x006A5950.
 // Callees: CClassFactory::ReregisterAllocatedClass(CClass*, unsigned long, bool) 0x00A37300 and the thing-type flags
 // getter 0x0051E580 on the thing manager 0x013B8A1C (a CClassFactory), GFGetCurrentFrame 0x0049D870, CCharString copy
@@ -65,7 +67,6 @@ class CThingManager { public:                               // a CClassFactory
     void ReregisterAllocatedClass(CThing* thing, unsigned long type, bool local);   // 0x00A37300
     unsigned long GetThingTypeFlags(long thingClass);                              // 0x0051E580
 };
-extern CThingManager* g_pThingManager;               // 0x013B8A1C
 
 class CWorld {
 public:
@@ -73,6 +74,11 @@ public:
 };                 // 0x0049D870
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -112,7 +118,7 @@ public:
 bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long mapNumber, bool reregister)
 {
     if (reregister)
-        g_pThingManager->ReregisterAllocatedClass(this, ThingClass, reregister);
+        CThing::GetPCurrentThingManager()->ReregisterAllocatedClass(this, ThingClass, reregister);
     DefGlobalIndex = (unsigned short)defGlobalIndex;
     PlayerNumber = (signed char)playerNumber;
     CurrentMapNumber = (short)mapNumber;
@@ -124,9 +130,9 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
     SerialisationSectionName = GetDefaultSerialisationSectionName();
     LevelPersistent = false;
     if (DefGlobalIndex > 0)
-        g_pThingManager->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);
+        CThing::GetPCurrentThingManager()->DefinitionManager->GetDef(DefGlobalIndex, &PBaseDef);
     CreateUID();
-    ThingTypeFlags = g_pThingManager->GetThingTypeFlags(ThingClass);
+    ThingTypeFlags = CThing::GetPCurrentThingManager()->GetThingTypeFlags(ThingClass);
     if (PlayerNumber == 5 || PlayerNumber < 0 || PlayerNumber >= 4)
         PlayerNumber = 4;
     if (PBaseDef.m_p) {
@@ -140,7 +146,7 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
             ScriptData = data;
         }
     }
-    if (g_pThingManager->Component->IsEditorRunning()) {
+    if (CThing::GetPCurrentThingManager()->Component->IsEditorRunning()) {
         CCharString editor("CTCEditor", -1);
         AddTC(editor, false, 0);
     }

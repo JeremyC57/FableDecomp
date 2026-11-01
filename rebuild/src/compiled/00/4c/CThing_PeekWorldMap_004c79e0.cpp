@@ -1,5 +1,7 @@
 // CThing::PeekWorldMap() const -- the world map held by the global thing manager
 // Leaf: ?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C79E0, 9 bytes: mov eax,[0x013B8A1C] ; mov eax,[eax+28h] ; ret (this unused).
 // Identity (sweep3; was the descriptive _global::GetGlobal_013b8a1c_deref0x28_004c79e0 (before that CViewBase::GetDisplayEngine)): Ego_r.pdb / FableWin.pdb
 //   `?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ`.
@@ -23,14 +25,18 @@ public:
     CPlayerManager*         PlayerManager;      // +0x30
 };
 
-extern CThingManager* g_pThingManager;          // 0x013B8A1C
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 protected:
     const CWorldMap& PeekWorldMap() const;
 };
 
 const CWorldMap& CThing::PeekWorldMap() const
 {
-    return *g_pThingManager->WorldMap;
+    return *CThing::GetPCurrentThingManager()->WorldMap;
 }

@@ -1,12 +1,14 @@
 // CTCDExperienceOrb::Create(long defIndex, const C3DVector& position) -- create a level-persistent experience-orb thing for player 4 on the map under the position, construct its orb driver there and activate it; a thing without the orb driver is killed; null on any failure
 // Leaf: ?Create@CTCDExperienceOrb
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779E90, 93 bytes (+3 int3), static `__fastcall` (defIndex in ecx,
 //   position in edx), plain `ret`.
 // Name: FableWin.pdb `?Create@CTCDExperienceOrb@@SIPAVCThing@@JABVC3DVector@@@Z`; callers CTCDExperienceOrb::Create
 //   0x0077A890 (the other, CThing&-taking overload) and CGameScriptInterface::CreateExperienceOrb 0x0089FBB0 (landed, which
 //   declares this address as `CThing* __fastcall (long, const C3DVector&)`). Label correction: catalog "Create" ->
 //   CTCDExperienceOrb::Create(long, const C3DVector&).
-// Callees: CWorldMap::GetMapNumberAt (virtual slot 16, +0x40) on the thing manager's world map (g_pThingManager
+// Callees: CWorldMap::GetMapNumberAt (virtual slot 16, +0x40) on the thing manager's world map (CThing::GetPCurrentThingManager()
 //   0x013B8A1C, +0x28); CThing::Create(long, long, long, bool) 0x004CA1D0 (landed); CTCDExperienceOrb::Construct(const
 //   C3DVector&) 0x00779D20; CThing::DoActivationSequence() 0x004C9CA0; CThing::Kill(bool) 0x004C9B80.
 // Layout (retail CThing): UsingComponents +0x20 (word 3 bit 9 = the experience-orb driver), PTCDriver +0x5c (the landed
@@ -30,11 +32,15 @@ public:
     unsigned char _pad_0x00[0x28];
     CWorldMap* WorldMap;                                          // +0x28 (retail; PDB +0x34)
 };
-extern CThingManager* g_pThingManager;                            // 0x013B8A1C
 
 class CTCDExperienceOrb;
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                             // +0x20 bitset
@@ -61,7 +67,7 @@ public:
 
 CThing* __fastcall CTCDExperienceOrb::Create(long defIndex, const C3DVector& position)
 {
-    CThing* thing = CThing::Create(defIndex, 4, g_pThingManager->WorldMap->GetMapNumberAt(position), true);
+    CThing* thing = CThing::Create(defIndex, 4, CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(position), true);
     CThing* result = 0;
     if (thing) {
         CTCDExperienceOrb* orb;

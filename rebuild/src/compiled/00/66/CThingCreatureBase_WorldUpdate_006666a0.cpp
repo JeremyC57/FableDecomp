@@ -1,5 +1,7 @@
 // CThingCreatureBase::WorldUpdate() -- per-frame world update of a creature: refresh the turn speed from the physics component, run the game-object update (stop when it asks to), update the body reorientation, forget the last attacker after 300 seconds, update components 0x77 and 0xCD, and once no pause mode is active start unsheathing the item queued for after the cutscene (then clear it)
 // Leaf: ?WorldUpdate@CThingCreatureBase
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006666A0, length 383 bytes, plain `ret`, bool in al.
 //   Name from Ego_r.pdb `?WorldUpdate@CThingCreatureBase@@UAE_NXZ`.
 // Callees: the physics component's float query @ 0x006AFF40 (two fpatan; name unproven), CThingGameObject::WorldUpdate
@@ -12,7 +14,7 @@
 //   (component 0xCD: GetInterfaceType 0x004E7FC2 returns 0xCD; Ego_r.pdb ?UpdateHitNotification@CTCCreatureHitNotification@@QAEXXZ),
 //   CCreatureAction_UnsheatheItemFromInventory(CThingCreatureBase*, CThing*, CCreatureActionBase*, long) @ 0x006A0150 and
 //   its folded destructor @ 0x005CC091, CThingCreatureBase::SetCurrentAction(const CCreatureActionBase&) @ 0x006644F0.
-// Globals: g_framesPerSecond @ 0x01375550, g_pThingManager @ 0x013B8A1C (NonScriptedEntitesPauseMode +0x54,
+// Globals: g_framesPerSecond @ 0x01375550, CThing::GetPCurrentThingManager() @ 0x013B8A1C (NonScriptedEntitesPauseMode +0x54,
 //   AllEntitesPauseMode +0x55).
 // Layout (retail): CThing bitset +0x20 (0x77 = bit 23 of +0x2c, 0xCD = bit 13 of +0x38), map +0x44, PhysicsTC +0x60
 //   (PDB +0x70), Dead bit 0 of +0x91; CThingCreatureBase PLastAttackedByCreature +0xf4, WFLastAttackedByCreature +0xfc,
@@ -59,7 +61,6 @@ class CThingManager { public:
     bool          NonScriptedEntitesPauseMode;          // +0x54
     bool          AllEntitesPauseMode;                  // +0x55
 };
-extern CThingManager* g_pThingManager;                  // 0x013B8A1C
 extern long g_framesPerSecond;                          // 0x01375550
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -74,7 +75,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
@@ -146,7 +152,7 @@ bool CThingCreatureBase::WorldUpdate()
     if (HasTC(0xcd))
         ((CTCCreatureHitNotification*)GetTC(0xcd))->UpdateHitNotification();
     if (PItemToUnsheatheAfterCutscene.GetPItem() && !PItemToUnsheatheAfterCutscene.GetPItem()->Dead
-        && !g_pThingManager->NonScriptedEntitesPauseMode && !g_pThingManager->AllEntitesPauseMode) {
+        && !CThing::GetPCurrentThingManager()->NonScriptedEntitesPauseMode && !CThing::GetPCurrentThingManager()->AllEntitesPauseMode) {
         SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(this, PItemToUnsheatheAfterCutscene.GetPItem(), 0, 150));
         PItemToUnsheatheAfterCutscene = CIntelligentPointer<CThing>(0);
     }

@@ -12,17 +12,19 @@ public:
     unsigned long*          WorldSeed;          // +0x2C
     CPlayerManager*         PlayerManager;      // +0x30
 };
-CThingManager* g_pThingManager;
 class CThing {
+    static CThingManager* PCurrentThingManager;      // ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static; the source reads it)
 public:
+    static void SetPCurrentThingManager(CThingManager* p) { PCurrentThingManager = p; }   // test-only setter
     const CGameDefinitionManager& PeekDefinitionManager() const;
     int Dummy;
 };
+CThingManager* CThing::PCurrentThingManager;
 int main()
 {
     CGameDefinitionManager dm; CWorldMap wm; CPlayerManager pm;
     CThingManager tm; tm.DefinitionManager = &dm; tm.World = 0; tm.WorldMap = &wm; tm.WorldSeed = 0; tm.PlayerManager = &pm;
-    g_pThingManager = &tm;
+    CThing::SetPCurrentThingManager(&tm);
     if ((char*)&tm.DefinitionManager - (char*)&tm != 0x20) { printf("004c7990_TEST FAIL offset\n"); return 1; }
     CThing t; t.Dummy = 0;
     const CThing& rt = t;

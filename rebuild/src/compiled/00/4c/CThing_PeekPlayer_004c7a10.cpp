@@ -1,6 +1,8 @@
 // CThing::PeekPlayer() -- the player this thing belongs to: the thing manager's player manager, the const overload of
 //   CPlayerManager::GetPlayer(long) (0x00449910), indexed by PlayerNumber
 // Leaf: ?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7A10, 25 bytes: mov eax,ecx ; movsx edx,byte [eax+90h] ; mov ecx,[0x013B8A1C] ;
 //   mov ecx,[ecx+30h] ; push edx ; call 0x00449910 ; ret.
 // Identity (sweep3; catalog had both 0x004C7A10 and 0x004C7A30 as CThing::GetPlayer, the sources were free __fastcall
@@ -22,9 +24,13 @@ public:
     CPlayerManager* PlayerManager;                   // +0x30
 };
 
-extern CThingManager* g_pThingManager;               // 0x013B8A1C
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     unsigned char _pad00[0x90];
     signed char   PlayerNumber;                      // +0x90 (Ego_r CThing::PlayerNumber, schar)
@@ -32,8 +38,8 @@ public:
     CPlayer&       GetPlayer();
 protected:
     // 0x004C79F0 / 0x004C7A00; in this TU (thing.cpp) their bodies are visible and inlined
-    const CPlayerManager& PeekPlayerManager() const { return *g_pThingManager->PlayerManager; }
-    CPlayerManager&       GetPlayerManager() { return *g_pThingManager->PlayerManager; }
+    const CPlayerManager& PeekPlayerManager() const { return *CThing::GetPCurrentThingManager()->PlayerManager; }
+    CPlayerManager&       GetPlayerManager() { return *CThing::GetPCurrentThingManager()->PlayerManager; }
 };
 
 const CPlayer& CThing::PeekPlayer() const

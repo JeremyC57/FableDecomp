@@ -1,11 +1,13 @@
 // CTCDPhysicalObstruction::Create(const C3DVector& startPos, const C3DVector& endPos, float radius) -- create a THING_PHYSICAL_OBSTRUCTION thing for player 4 on the map under the start, give its obstruction driver the line and radius, construct it there and activate it; a thing without the driver is killed; null on any failure
 // Leaf: ?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FD4B0, 205 bytes (`ret 4` + int3 padding), static `__fastcall` (startPos in ecx,
 //   endPos in edx, radius on the stack). Ego_r.pdb `?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z`
 //   (0xd0 bytes there too); 17 callers (CTCKrakenTentacle::PerformStrikeDamage 0x007F11D0, CTCTrapBase::Trigger, ...).
 //   Catalog label `Create` (_global).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CGameDefinitionManager::Get 0x0044C6B0,
-//   CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CWorldMap::GetMapNumberAt (slot 16) on g_pThingManager
+//   CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CWorldMap::GetMapNumberAt (slot 16) on CThing::GetPCurrentThingManager()
 //   (0x013B8A1C) +0x28, CThing::Create(long, long, long, bool) 0x004CA1D0, CTCDPhysicalObstruction::Construct
 //   (const C3DVector&) 0x007FD430 (manifest "CTCDCameraPoint::Construct" is propagated), CThing::DoActivationSequence
 //   0x004C9CA0, CThing::Kill(bool) 0x004C9B80.
@@ -49,11 +51,15 @@ public:
     unsigned char _pad_0x00[0x28];
     CWorldMap* WorldMap;                                        // +0x28
 };
-extern CThingManager* g_pThingManager;                          // 0x013B8A1C
 
 class CTCDPhysicalObstruction;
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     unsigned char _pad_0x00[0x20];
     unsigned long UsingComponents[9];                           // +0x20 bitset
@@ -98,7 +104,7 @@ CThing* __fastcall CTCDPhysicalObstruction::Create(const C3DVector& startPos, co
         CCharString name("THING_PHYSICAL_OBSTRUCTION");
         defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
-    CThing* thing = CThing::Create(defIndex, 4, g_pThingManager->WorldMap->GetMapNumberAt(startPos), true);
+    CThing* thing = CThing::Create(defIndex, 4, CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(startPos), true);
     CThing* result = 0;
     if (thing) {
         CTCDPhysicalObstruction* obstruction;

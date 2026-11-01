@@ -1,4 +1,6 @@
 // CThing::SetForceFrameUpdate(bool force) -- set the force-frame-update flag; when it ends up set on a live thing, put the thing on the thing manager's update list
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7C60, 58 bytes. Callees: CThingManager::AddToUpdateList(CThing*)
 // @ 0x0051EC50 on the global thing manager @ 0x013B8A1C (tail jump, `this` stored over the argument slot).
 // Shape: ForceFrameUpdate is bit 3 of +0x92 (merge store, then the stored byte re-tested: `mov al,dl ; test al,8`);
@@ -9,9 +11,13 @@ class CThingManager { public:
     void AddToUpdateList(CThing* thing);             // 0x0051EC50
 };
 
-extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     void*         __vftable;                         // +0x00
     unsigned char _pad04[0x91 - 0x04];
     unsigned char Dead : 1;                          // +0x91 bit 0 (PDB +0xa1)
@@ -33,5 +39,5 @@ void CThing::SetForceFrameUpdate(bool force)
 {
     ForceFrameUpdate = force;
     if (ForceFrameUpdate && !Dead)
-        g_pThingManager->AddToUpdateList(this);
+        CThing::GetPCurrentThingManager()->AddToUpdateList(this);
 }

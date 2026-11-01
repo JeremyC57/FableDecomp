@@ -1,10 +1,12 @@
 // CThingSoundEmitter::ConstructFromParams(const C3DVector&, const CThing*, bool) -- base thing construction (def 0, player 4, the map under the position), then the attached thing (intelligent pointer + flag), the keep-playing flag and the position
 // Leaf: ?ConstructFromParams@CThingSoundEmitter
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836910, 219 bytes, `ret 0Ch`, bool in al.
 // Identity: ?ConstructFromParams@CThingSoundEmitter@@IAE_NABVC3DVector@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb); its
 //   only caller is CThingSoundEmitter::Create 0x008369F0. The manifest label "Sound_SoundEmitter_Constructor" is descriptive.
 // Callees: CThing::ConstructFromParams(long, long, long, bool) 0x004CA010 (landed); CWorldMap::GetMapNumberAt(const
-//   C3DVector&) const = slot 16 (+0x40) of the thing manager's world map (g_pThingManager 0x013B8A1C, +0x28 = PDB
+//   C3DVector&) const = slot 16 (+0x40) of the thing manager's world map (CThing::GetPCurrentThingManager() 0x013B8A1C, +0x28 = PDB
 //   WorldMap +0x34 less the 0xC smaller retail CClassFactory base); CBaseIntelligentPointer ctor 0x00A01B10 /
 //   SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01237F1C).
 // Layout: retail CThingSoundEmitter (landed constructor 0x008367B0, `#pragma pack(1)`): sound object +0x98,
@@ -27,7 +29,6 @@ class CThingManager { public:
     unsigned char _pad00[0x28];
     CWorldMap*    WorldMap;                              // +0x28 (PDB +0x34)
 };
-extern CThingManager* g_pThingManager;                   // 0x013B8A1C
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -51,6 +52,11 @@ public:
 };
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     virtual void v000();
     unsigned char _pad04[0x94];
@@ -73,7 +79,7 @@ protected:
 
 bool CThingSoundEmitter::ConstructFromParams(const C3DVector& pos, const CThing* attachedThing, bool continuePlaying)
 {
-    if (CThing::ConstructFromParams(0, 4, g_pThingManager->WorldMap->GetMapNumberAt(pos), false)) {
+    if (CThing::ConstructFromParams(0, 4, CThing::GetPCurrentThingManager()->WorldMap->GetMapNumberAt(pos), false)) {
         if (attachedThing) {
             PAttachedThing = (CThing*)attachedThing;
             AttachedToThing = true;

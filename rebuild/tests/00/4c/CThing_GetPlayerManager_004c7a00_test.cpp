@@ -12,19 +12,22 @@ public:
     unsigned long*          WorldSeed;          // +0x2C
     CPlayerManager*         PlayerManager;      // +0x30
 };
-CThingManager* g_pThingManager;
 class CThing {
+    static CThingManager* PCurrentThingManager;      // ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static; the source reads it)
+public:
+    static void SetPCurrentThingManager(CThingManager* p) { PCurrentThingManager = p; }   // test-only setter
     friend int main();
 protected:
     CPlayerManager& GetPlayerManager();   // protected, as in retail (the mangled name carries it)
 public:
     int Dummy;
 };
+CThingManager* CThing::PCurrentThingManager;
 int main()
 {
     CGameDefinitionManager dm; CWorldMap wm; CPlayerManager pm;
     CThingManager tm; tm.DefinitionManager = &dm; tm.World = 0; tm.WorldMap = &wm; tm.WorldSeed = 0; tm.PlayerManager = &pm;
-    g_pThingManager = &tm;
+    CThing::SetPCurrentThingManager(&tm);
     if ((char*)&tm.PlayerManager - (char*)&tm != 0x30) { printf("004c7a00_TEST FAIL offset\n"); return 1; }
     CThing t; t.Dummy = 0;
     CThing& rt = t;

@@ -1,5 +1,7 @@
 // CThing::DoActivationSequence() -- create and activate the thing, or kill it (not immediately) when OnCreate fails
 // Leaf: ?DoActivationSequence@CThing
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9CA0, 121 bytes (+7 int3). __fastcall, returns bool.
 // Callees: CThing virtual slots 8 OnCreate (+0x20), 9 InitialActivate (+0x24), 10 OnInitialActivate (+0x28); the inlined
 //          CThing::Kill(false) 0x004C9B80 body: slot 12 OnKill (+0x30), UpdateThingScanInclusion() 0x004C8C00, thing manager
@@ -13,8 +15,12 @@ class CThingManager { public:
                                                  //   is a byte-twin label; descriptive name)
     void RemoveFromRenderList(CThing* thing);    // 0x0051E000
 };
-extern CThingManager* g_pThingManager;           // 0x013B8A1C
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07();
@@ -60,8 +66,8 @@ public:
         OnKill();
         Dead = true;
         UpdateThingScanInclusion();
-        g_pThingManager->OnThingKilled(this);
-        g_pThingManager->RemoveFromRenderList(this);
+        CThing::GetPCurrentThingManager()->OnThingKilled(this);
+        CThing::GetPCurrentThingManager()->RemoveFromRenderList(this);
     }
     bool DoActivationSequence();
 };

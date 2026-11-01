@@ -1,5 +1,7 @@
 // CTCBase::GetPLocalSeed() const -- the main game component's local random seed
 // Leaf: ?GetPLocalSeed@CTCBase@@IBEPAKXZ
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00686DB0: mov eax,[0x013B8A1C] ; mov eax,[eax+1Ch] ; add eax,16140h ; ret
 //   (`this` unused; the global 0x013B8A1C is the thing manager).
 // Identity: Ego_r.pdb / FableWin.pdb `?GetPLocalSeed@CTCBase@@IBEPAKXZ` (protected const; the landed model was a free
@@ -39,7 +41,12 @@ public:
     CPlayerManager*         PlayerManager;      // +0x30
 };
 
-extern CThingManager* g_pThingManager;          // 0x013B8A1C
+class CThingManager;
+class CThing {
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+};
 
 class CTCBase {
 protected:
@@ -48,5 +55,5 @@ protected:
 
 unsigned long* CTCBase::GetPLocalSeed() const
 {
-    return g_pThingManager->Component->GetLocalSeed();
+    return CThing::GetPCurrentThingManager()->Component->GetLocalSeed();
 }

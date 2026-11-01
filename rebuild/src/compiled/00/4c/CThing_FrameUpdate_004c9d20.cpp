@@ -1,4 +1,6 @@
 // CThing::FrameUpdate() -- run the thing's bullet-time update while bullet time is active, this is not a full-update frame and the thing is affected by bullet time; otherwise its normal world update
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9D20, 64 bytes. Callees: CBulletTimeManager::IsTimeForFullUpdate
 // @ 0x004C6060, CThing::IsAffectedByBulletTime @ 0x004C9920, CThing virtual slots 20 (+0x50,
 // WorldUpdateBulletTime 0x004C8BA0) and 19 (+0x4c, the world update 0x004C8050), both tail jumps.
@@ -24,9 +26,13 @@ class CThingManager { public:
     CWorldTime*   m_pWorldTime;                      // +0x24
 };
 
-extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -40,7 +46,7 @@ class CThing { public:
 
 void CThing::FrameUpdate()
 {
-    CBulletTimeManager* bulletTime = g_pThingManager->m_pWorldTime->m_pBulletTimeManager;
+    CBulletTimeManager* bulletTime = CThing::GetPCurrentThingManager()->m_pWorldTime->m_pBulletTimeManager;
     if (bulletTime->IsActive() && !bulletTime->IsTimeForFullUpdate() && IsAffectedByBulletTime())
         WorldUpdateBulletTime();
     else

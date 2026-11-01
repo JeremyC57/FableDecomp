@@ -1,8 +1,10 @@
 // CThing::Create(long defIndex, long player, long map, bool levelPersistent) -- allocate and construct a bare CThing (class type 15) and initialise it from the parameters; null when the allocation is refused or the initialisation fails
 // Leaf: ?Create@CThing@@SIPAV1@JJJ_N@Z
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004CA1D0, length 96 bytes (95 + int3 padding), __fastcall (ecx = defIndex, edx = player), `ret 8`.
 // Identity: Ego_r.pdb `?Create@CThing@@SIPAV1@JJJ_N@Z` (static __fastcall); 16 callers (0x006E08FE .. 0x00870BCF).
-// Callees: the thing manager's bool(bool) query @ 0x00A36F70 (g_pThingManager 0x013B8A1C; the body of
+// Callees: the thing manager's bool(bool) query @ 0x00A36F70 (CThing::GetPCurrentThingManager() 0x013B8A1C; the body of
 // CThing::operator new(size, bool) 0x004C7380, chunk 372, inlined here with flag false), the global operator new
 // @ 0x00BFEB22 (0x98 bytes = sizeof retail CThing), CThing::CThing(unsigned long) @ 0x004C9030 (landed),
 // CThing::ConstructFromParams(long, long, long, bool) @ 0x004CA010 (landed, protected).
@@ -14,9 +16,13 @@ class CThingManager {
 public:
     bool CanAllocateThing(bool flag);           // 0x00A36F70 (folded `return true` body; named by effect)
 };
-extern CThingManager* g_pThingManager;          // 0x013B8A1C
 
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     static CThing* __fastcall Create(long defIndex, long player, long map, bool levelPersistent);
 protected:
@@ -24,7 +30,7 @@ protected:
     bool ConstructFromParams(long defIndex, long player, long map, bool levelPersistent);   // 0x004CA010
     static void* __fastcall operator new(unsigned int size, bool flag)                      // 0x004C7380
     {
-        if (g_pThingManager->CanAllocateThing(flag))
+        if (CThing::GetPCurrentThingManager()->CanAllocateThing(flag))
             return ::operator new[](size);
         return 0;
     }

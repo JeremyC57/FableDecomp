@@ -15,17 +15,20 @@ public:
     unsigned char   _pad00[0x30];
     CPlayerManager* PlayerManager;
 };
-CThingManager* g_pThingManager;
 class CThing {
+    static CThingManager* PCurrentThingManager;      // ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static; the source reads it)
+public:
+    static void SetPCurrentThingManager(CThingManager* p) { PCurrentThingManager = p; }   // test-only setter
 public:
     unsigned char _pad00[0x90];
     signed char   PlayerNumber;
     const CPlayer& PeekPlayer() const;
     CPlayer&       GetPlayer();
 };
+CThingManager* CThing::PCurrentThingManager;
 int main()
 {
-    CPlayerManager pm; CThingManager tm; tm.PlayerManager = &pm; g_pThingManager = &tm;
+    CPlayerManager pm; CThingManager tm; tm.PlayerManager = &pm; CThing::SetPCurrentThingManager(&tm);
     if ((char*)&tm.PlayerManager - (char*)&tm != 0x30) { printf("004c7a30_TEST FAIL layout\n"); return 1; }
     CThing t; t.PlayerNumber = 2;
     if ((char*)&t.PlayerNumber - (char*)&t != 0x90) { printf("004c7a30_TEST FAIL thing layout\n"); return 1; }

@@ -1,5 +1,7 @@
 // CTCCreatureModeManager::CModeBase::GetNoFramesBeforePlayingWaveAnims(NCreatureMode::EMode mode) -- Select the idle delay and apply active bullet-time scaling.
 // Leaf: ?GetNoFramesBeforePlayingWaveAnims@CModeBase@CTCCreatureModeManager@@IAEJW4EMode@NCreatureMode@@@Z
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Identity: original PDB protected method and own stand/sit callers; default013bafec, Berserk0078c000, IsAffected004c9920, multiplier004c5fa0.
 #define CBulletTimeManager CBulletTimeManager_HeaderLayout
 #include "engine/CBulletTimeManager.h"
@@ -14,8 +16,12 @@ class CBulletTimeManager:public CBulletTimeManager_HeaderLayout {public:
 };
 // Layout: no active CThingManager header; own global getter chains prove World+0x24. No other manager field is accessed.
 class CThingManager {public:unsigned char Prefix[0x24];CWorld* World;};
-extern CThingManager* g_pThingManager;
-class CThing {public:bool IsAffectedByBulletTime()const;};
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:public:bool IsAffectedByBulletTime()const;};
 // Layout: CTCBerserk supplies only a static method name; no object instance is accessed.
 class CTCBerserk {public:static long __fastcall GetNumFramesBeforeCrazyIdle();};
 namespace NCreatureMode {enum EMode {DescriptiveModeZero=0};}
@@ -29,7 +35,7 @@ extern long g_DefaultFrames_013bafec;
 long CTCCreatureModeManager::CModeBase::GetNoFramesBeforePlayingWaveAnims(NCreatureMode::EMode mode){
  long frames=g_DefaultFrames_013bafec;
  if(mode==(NCreatureMode::EMode)0x24)frames=CTCBerserk::GetNumFramesBeforeCrazyIdle();
- if(g_pThingManager->World->PBulletTimeManager_ptr->IsBulletTimeActive() && GetParentThing().IsAffectedByBulletTime())
-  return (long)(g_pThingManager->World->PBulletTimeManager_ptr->GetBulletTimeSlowdownMultiplier()*frames);
+ if(CThing::GetPCurrentThingManager()->World->PBulletTimeManager_ptr->IsBulletTimeActive() && GetParentThing().IsAffectedByBulletTime())
+  return (long)(CThing::GetPCurrentThingManager()->World->PBulletTimeManager_ptr->GetBulletTimeSlowdownMultiplier()*frames);
  return frames;
 }
