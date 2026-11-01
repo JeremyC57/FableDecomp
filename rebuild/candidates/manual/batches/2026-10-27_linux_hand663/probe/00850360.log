@@ -1,0 +1,1 @@
+1	compiler-generated non-virtual dtor; STLport 4.6 _List_base/list text (out-of-class clear(), ~list() {}); boost::checked_delete<CPhysicsForceModelBase> (__fastcall) explicit instantiation emits the ??1; VC7.1's own inliner picks ~_List_base calls for pair<float,long>/C3DVector and an inline ~_List_base around clear() for pair<float,list>	RELOCATION_MATCH

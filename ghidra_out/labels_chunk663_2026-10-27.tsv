@@ -1,0 +1,37 @@
+address	name	evidence
+006ba6d0	CFaction::~CFaction	chunk 663 RELOCATION_MATCH: implicit dtor; Ego_r ??1 + tail/member chain (catalog ~CPatchTesselationEdgeStrip was propagated)
+00850360	NCameraModes::CPhysicsForceModelBase::~CPhysicsForceModelBase	chunk 663 RELOCATION_MATCH: implicit (virtual functions, non-virtual dtor); boost::checked_delete 0x00850510 instantiates it
+0082e780	CScriptedMapBrush::~CScriptedMapBrush	chunk 663 RELOCATION_MATCH: vtable store; virtual via CBaseObject (Ego_r, FableWin)
+0051a0a0	NThingMap::CThingMapManager::~CThingMapManager	chunk 663 RELOCATION_MATCH: implicit; Ego_r ??1
+00550d50	NUISystem::CTable::~CTable	chunk 663 RELOCATION_MATCH: vtable store; Ego_r ??1
+00b47b50	CEngineLightingManager::~CEngineLightingManager	chunk 663 RELOCATION_MATCH: DeallocateAligned(SIMDVarBlock); SIMDVarBlock = 0
+006ed480	CCombatManager::~CCombatManager	chunk 663 RELOCATION_MATCH: erases RegisteredCombatSequences (+4) through 0x006F0DD0
+007b9d30	CTCTavernTable::~CTCTavernTable	chunk 663 RELOCATION_MATCH: implicit; Ego_r ??1
+007783f0	CTCShop::~CTCShop	chunk 663 RELOCATION_MATCH: implicit; Ego_r ??1
+00b94b50	CEngineScene::~CEngineScene	chunk 663 RELOCATION_MATCH: two calls to the static CEngineInternalPrimitiveBase::ClearPrimitiveList 0x00B8FEE0
+00b8fee0	CEngineInternalPrimitiveBase::ClearPrimitiveList	chunk 663: static SIXPAV1 (both PDBs; landed as a free function)
+009f2b20	CMemoryAllocator::DeallocateAligned	chunk 663: static (landed as DeallocateAligned_009f2b20)
+0048ca60	std::_List_base<C3DVector>::~_List_base	chunk 663: 0x0048CF80 is the `jmp` ~list thunk (catalog SortTreeRecursively/StdList_Clear were wrong)
+0048cf80	std::list<C3DVector>::~list	chunk 663: jmp thunk to 0x0048CA60
+008501e0	std::_List_base<std::pair<float,long> >::~_List_base	chunk 663: same pattern (0x00850220 is the ~list thunk)
+00850220	std::list<std::pair<float,long> >::~list	chunk 663
+00850280	std::_List_base<std::pair<float,std::list<C3DVector> > >::clear	chunk 663 (catalog CNavigatorQueueManager::FrameUpdate was wrong)
+008fb170	NCameraModes::CPhysicsCollisionPointsObject::CPhysicsCollisionPointsObject	chunk 663: both PDBs (landed as ??0CPhysicsForceSubmodel; catalog PhysicsForceModel_Initialize)
+0052ccf0	NUISystem::CChangingStateComponent::~CChangingStateComponent	chunk 663: stores that class's vtables (bound as ~CDraggableInto by 0x00549A00; catalog CTCIdleScheduler::Clear)
+0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	chunk 663: PDB order mirrored at 0x0099A2D0..300; ~CTCBase stores its vtable then jumps here (catalog CBaseClass::~CBaseClass)
+0099a430	CBaseObject::~CBaseObject	chunk 663: MAE
+00686830	CTCBase::~CTCBase	chunk 663: UAE
+00a01c10	CBaseIntelligentPointer::~CBaseIntelligentPointer	chunk 663: UAE (the ~27 stand-in bindings from chunk 656 respell to it)
+0099eae0	CCharString::~CCharString	chunk 663: catalog said _Cons_val
+00850510	boost::checked_delete<NCameraModes::CPhysicsForceModelBase>	chunk 663: __fastcall (catalog CTCMapwho::OnDie was propagated)
+00850530	boost::scoped_ptr<NCameraModes::CPhysicsForceModelBase>::~scoped_ptr	chunk 663
+00850550	boost::scoped_ptr<NCameraModes::CPhysicsForceModelBase>::reset	chunk 663
+006baa50	std::_Destroy<CFaction>	chunk 663
+006f0dd0	std::_Rb_tree<CCharString,pair<const CCharString,CCombatSequenceBase*(__fastcall*)(CThingCreatureBase&,CThingCreatureBase&)>,...>::_M_erase	chunk 663: CCombatManager::RegisteredCombatSequences (Ego_r) erased through it (landed with a CUnproven leaf)
+004a9cb0	std::_Rb_tree<long,long,_Identity<long>,...>::_M_erase	chunk 663: set<long> owner member (Ego_r)
+004aba70	std::_Rb_tree<CCharString,CCharString,_Identity<CCharString>,...>::_M_erase	chunk 663: set<CCharString> owner member
+00776aa0	std::_Rb_tree<long,pair<const long,CShopItem>,...>::_M_erase	chunk 663: map<long,CShopItem> (CTCShop)
+00824830	std::_Rb_tree<unsigned __int64,unsigned __int64,_Identity<unsigned __int64>,...>::_M_erase	chunk 663: set<unsigned __int64> (CScriptedMapBrush)
+00824870	std::_Rb_tree<unsigned __int64,pair<const unsigned __int64,CScriptedMapBrush::CThingPosAndOrientation>,...>::_M_erase	chunk 663
+00b95ee0	std::_Rb_tree<EEngineRenderLayer,pair<const EEngineRenderLayer,CEngineSceneRenderStats>,...>::_M_erase	chunk 663 (CEngineScene)
+00b98350	std::_Rb_tree<long,pair<const long,map<long,CCountedPointer<CEngineSceneMap> > >,...>::_M_erase	chunk 663 (CEngineScene)

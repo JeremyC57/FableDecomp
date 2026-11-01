@@ -1,0 +1,1 @@
+1	user ~CEngineLightingManager (DeallocateAligned + zero) over CEnginePrimitiveManager (implicit dtor chain to CBaseClassNonCopyable) + CEngineComponent (out-of-line virtual dtor); three CArrays	RELOCATION_MATCH

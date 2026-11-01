@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006ba6d0	RELOCATION_MATCH	129v129	PASS	??1CFaction@@QAE@XZ (implicit; FableWin PDB); 1 probe
+00850360	RELOCATION_MATCH	137v137	PASS	??1CPhysicsForceModelBase@NCameraModes@@QAE@XZ (implicit, non-virtual; FableWin PDB); 1 probe
+0082e780	RELOCATION_MATCH	215v215	PASS	??1CScriptedMapBrush@@UAE@XZ (user; vtable 0x01272518); 1 probe
+0051a0a0	RELOCATION_MATCH	109v109	PASS	??1CThingMapManager@NThingMap@@UAE@XZ (implicit; vtable 0x01244678 slot 0); 2 probes
+00550d50	RELOCATION_MATCH	100v100	PASS	??1CTable@NUISystem@@UAE@XZ (user; vtable 0x0124A224 slot 0); 2 probes
+00b47b50	RELOCATION_MATCH	110v110	PASS	??1CEngineLightingManager@@UAE@XZ (user; vtable 0x012A2274 slot 0); 1 probe
+006ed480	RELOCATION_MATCH	143v143	PASS	??1CCombatManager@@UAE@XZ (user; vtable 0x01261EB4 slot 0); 3 probes
+007b9d30	RELOCATION_MATCH	137v137	PASS	??1CTCTavernTable@@UAE@XZ (implicit; vtable 0x0126DBB4 slot 0); 1 probe
+007783f0	RELOCATION_MATCH	145v145	PASS	??1CTCShop@@UAE@XZ (implicit; vtable 0x0126A94C slot 0); 2 probes
+00b94b50	RELOCATION_MATCH	159v159	PASS	??1CEngineScene@@UAE@XZ (user; vtable 0x012A3E68 slot 0); 2 probes

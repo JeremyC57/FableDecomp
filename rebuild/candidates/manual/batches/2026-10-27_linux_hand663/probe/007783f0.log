@@ -1,0 +1,2 @@
+1	compiler-generated dtor over local CTCBase : CBaseClassNonCopyable; vector<CIntelligentPointer<CThingCreatureBase>> with STLport _Destroy traits; map<long,CShopItem> (CShopItem forward-declared)	SRC_FAIL (pair needs a complete CShopItem)
+2	CShopItem with its Ego_r members	RELOCATION_MATCH

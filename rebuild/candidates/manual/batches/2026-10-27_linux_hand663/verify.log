@@ -1,0 +1,46 @@
+addr       parity           behav  name
+0051a0a0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@AAEXPAU?$_Rb_tree_node@J@2@@Z -> 004a9cb0 labelled '_unattributed::FreeTree_CTreeOwner_004a9cb0'
+0051a0a0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+0051a0a0   RELOCATION_MATCH PASS   ~CThingMapManager
+00550d50   RELOCATION_MATCH PASS   ~CTable
+006ba6d0   RELOCATION_MATCH PASS   ~CFaction
+006ed480   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+006ed480   RELOCATION_MATCH PASS   ~CCombatManager
+007783f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCShopItem@@@std@@@2@@Z -> 00776aa0 labelled '_unattributed::FreeTree_CTreeOwner_00776aa0'
+007783f0   RELOCATION_MATCH PASS   ~CTCShop
+007b9d30   RELOCATION_MATCH PASS   ~CTCTavernTable
+0082e780   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@_K_KU?$_Identity@_K@std@@U?$less@_K@2@V?$allocator@_K@2@@std@@AAEXPAU?$_Rb_tree_node@_K@2@@Z -> 00824830 labelled '_unattributed::FreeTree_CTreeOwner_00824830'
+0082e780   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@Z -> 00824870 labelled '_unattributed::FreeTree_CTreeOwner_00824870'
+0082e780   RELOCATION_MATCH PASS   ~CScriptedMapBrush
+00850360   WARN RELOC_NAME: ??1?$_List_base@U?$pair@MJ@std@@V?$allocator@U?$pair@MJ@std@@@2@@std@@QAE@XZ -> 008501e0 labelled '_global::StdList_Clear_008501e0'
+00850360   WARN RELOC_NAME: ??1?$_List_base@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAE@XZ -> 0048ca60 labelled '_global::StdList_Clear_0048ca60'
+00850360   RELOCATION_MATCH PASS   ~CPhysicsForceModelBase
+00b47b50   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b47b50   RELOCATION_MATCH PASS   ~CEngineLightingManager
+00b94b50   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EEngineRenderLayer@@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@U?$_Select1st@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@@3@U?$less@W4EEngineRenderLayer@@@3@V?$allocator@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@@2@@Z -> 00b95ee0 labelled '_unattributed::FreeTree_CTreeOwner_00b95ee0'
+00b94b50   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b94b50   RELOCATION_MATCH PASS   ~CEngineScene
+
+WINS: 10
+  0051a0a0 RELOCATION_MATCH NThingMap::CThingMapManager::??1CThingMapManager@NThingMap@@UAE@XZ
+  00550d50 RELOCATION_MATCH NUISystem::CTable::??1CTable@NUISystem@@UAE@XZ
+  006ba6d0 RELOCATION_MATCH CFaction::??1CFaction@@QAE@XZ
+  006ed480 RELOCATION_MATCH CCombatManager::??1CCombatManager@@UAE@XZ
+  007783f0 RELOCATION_MATCH CTCShop::??1CTCShop@@UAE@XZ
+  007b9d30 RELOCATION_MATCH CTCTavernTable::??1CTCTavernTable@@UAE@XZ
+  0082e780 RELOCATION_MATCH CScriptedMapBrush::??1CScriptedMapBrush@@UAE@XZ
+  00850360 RELOCATION_MATCH NCameraModes::CPhysicsForceModelBase::??1CPhysicsForceModelBase@NCameraModes@@QAE@XZ
+  00b47b50 RELOCATION_MATCH CEngineLightingManager::??1CEngineLightingManager@@UAE@XZ
+  00b94b50 RELOCATION_MATCH CEngineScene::??1CEngineScene@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NThingMapCThingMapManager_CThingMapManager_0051a0a0
+  NUISystemCTable_CTable_00550d50
+  CFaction_CFaction_006ba6d0
+  CCombatManager_CCombatManager_006ed480
+  CTCShop_CTCShop_007783f0
+  CTCTavernTable_CTCTavernTable_007b9d30
+  CScriptedMapBrush_CScriptedMapBrush_0082e780
+  NCameraModesCPhysicsForceModelBase_CPhysicsForceModelBase_00850360
+  CEngineLightingManager_CEngineLightingManager_00b47b50
+  CEngineScene_CEngineScene_00b94b50

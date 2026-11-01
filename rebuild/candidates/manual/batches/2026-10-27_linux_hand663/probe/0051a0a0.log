@@ -1,0 +1,2 @@
+1	compiler-generated dtor (no user ~), engine/CBaseClassNonCopyable.h base, CArray over STLport vector x2 + set<long>, TU harness destroying a local	RELOCATION_MATCH
+2	same, CThingMapInfo given its Ego_r members (PThingMap, RefCount)	RELOCATION_MATCH

@@ -1,0 +1,2 @@
+1	user ~CEngineScene with two static __fastcall CEngineInternalPrimitiveBase::ClearPrimitiveList calls; maps + CCharString members	RELOCATION_MATCH
+2	shared engine/CCountedPointer.h instead of the local model	RELOCATION_MATCH

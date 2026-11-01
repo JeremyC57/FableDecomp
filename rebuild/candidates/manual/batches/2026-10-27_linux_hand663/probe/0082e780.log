@@ -1,0 +1,1 @@
+1	user-declared empty ~CScriptedMapBrush over engine/CBaseObject.h (FABLE_RETAIL_BASE_OBJECT); vector<CScriptedMapCell>, set<unsigned __int64> x2, map<unsigned __int64,CThingPosAndOrientation>, CCharString	RELOCATION_MATCH

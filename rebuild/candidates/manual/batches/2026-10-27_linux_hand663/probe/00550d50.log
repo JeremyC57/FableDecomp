@@ -1,0 +1,2 @@
+1	user-declared empty ~CTable over local CComponent/CChangingStateComponent MI chain + STLport map<ETableSprites,CCountedPointer<CComponent>> (_Rb_tree_base/_Rb_tree text)	RELOCATION_MATCH
+2	shared engine/CCountedPointer.h instead of the local model	RELOCATION_MATCH

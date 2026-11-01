@@ -1,0 +1,3 @@
+1	user-declared empty ~CCombatManager; CombatDialogueManager as an opaque unsigned char[0x24] body	DIFFER(143v143): DialogueManager at +0x35 (byte alignment)
+2	CombatDialogueManager with its Ego_r members (map, CDefPointer, CIntelligentPointer, three longs) -> +0x38	RELOCATION_MATCH
+3	shared engine/CCountedPointer.h and engine/CDefPointer.h (FABLE_RETAIL_DEF_CLASS_BASE) instead of local models	RELOCATION_MATCH
