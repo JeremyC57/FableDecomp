@@ -144865,8 +144865,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01223ff0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCStatic009a7440013ca618_01223ff0.cpp'
-        TestSource = '01/22/staticinit_gCStatic009a7440013ca618_01223ff0_test.cpp'
+        Source = '01/22/staticinit_GSystemManager_01223ff0.cpp'
+        TestSource = '01/22/staticinit_GSystemManager_01223ff0_test.cpp'
         PassPattern = '01223ff0_TEST PASS'
     }
     [pscustomobject]@{

@@ -71,14 +71,18 @@ extern FableEngineRoot* FABLE_FASTCALL AddChildPrimitive();
 extern void FABLE_CDECL GFGetBuildNumber2();
 
 // Game-side caches of the engine managers, filled in here.
-extern fable_u32 g_FablePrimitiveManager_013B8394;
-extern CDisplayManager* g_FableDisplayManager_013B8390;
+class CASoundManager;
+extern CASoundManager* PSoundManager;
+extern CDisplayManager* PDisplayManager;
 extern FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 extern void* g_FableRenderState_013B8380;
 extern fable_u8 g_FableRenderStateStorage_013BC470;
-extern fable_u32 g_FableRenderDevice_013B8388;
-extern fable_u32 g_FableResourceManager_013B838C;
-extern fable_u32 g_FableTextureManager_013B837C;
+class CInputManager;
+extern CInputManager* PInputManager;
+class CFontManager;
+extern CFontManager* PFontManager;
+class CGraphicBankManager;
+extern CGraphicBankManager* PGraphicBankManager;
 // Chosen texture bit depth, and the depth the configuration asked for.
 extern fable_u32 g_FableTextureBitDepth_013B7D68;
 extern fable_u32 g_FableRequestedTextureBitDepth_01375470;
@@ -87,49 +91,47 @@ extern fable_u32 g_FableMaximumDisplayDimension_0137546C;
 extern fable_u32 g_FableDisplayWidth_013B7D64;
 extern fable_u32 g_FableDisplayHeight_013B7D60;
 extern fable_i32 g_FableHalfDisplayWidth_0137544C;
-// Start-up state object that owns the progress display.
-extern GFInitialiseState g_GFInitialiseState_013B83D0;
+// The CGame object (Ego_r / FableWin dynamic initializer 'GGame'); the fable_boot.h callee view of 0x00413120 takes it as
+// GFInitialiseState (its identity, probably CGame::Initialise, is not settled: naming wave 13 DEFERRED).
+class CGame;
+extern CGame GGame;                                     // 0x013B83D0
 
 bool FABLE_FASTCALL GFInitialise()
 {
     // Copy the manager pointers out of the engine root.
-    g_FablePrimitiveManager_013B8394 =
-        AddChildPrimitive()->primitiveManager7C;
+    PSoundManager = (CASoundManager*)(AddChildPrimitive()->primitiveManager7C);
 
-    g_FableDisplayManager_013B8390 =
+    PDisplayManager =
         AddChildPrimitive()->displayManager60;
     g_FableDisplayPrimitive_013B8384 =
-        g_FableDisplayManager_013B8390->displayPrimitive08;
+        PDisplayManager->displayPrimitive08;
     g_FableRenderState_013B8380 = &g_FableRenderStateStorage_013BC470;
 
-    g_FableRenderDevice_013B8388 =
-        AddChildPrimitive()->renderDevice58;
-    g_FableResourceManager_013B838C =
-        AddChildPrimitive()->resourceManager84;
-    g_FableTextureManager_013B837C =
-        AddChildPrimitive()->textureManager6C;
+    PInputManager = (CInputManager*)(AddChildPrimitive()->renderDevice58);
+    PFontManager = (CFontManager*)(AddChildPrimitive()->resourceManager84);
+    PGraphicBankManager = (CGraphicBankManager*)(AddChildPrimitive()->textureManager6C);
 
     // Texture bit depth: the requested depth if the card can do it, else the first supported of 16/24/32.
     g_FableTextureBitDepth_013B7D68 =
         g_FableRequestedTextureBitDepth_01375470;
-    if (g_FableDisplayManager_013B8390->IsTextureBitDepthSupported(
+    if (PDisplayManager->IsTextureBitDepthSupported(
             g_FableRequestedTextureBitDepth_01375470))
     {
         g_FableTextureBitDepth_013B7D68 =
             g_FableRequestedTextureBitDepth_01375470;
     }
     else if (
-        g_FableDisplayManager_013B8390->IsTextureBitDepthSupported(16))
+        PDisplayManager->IsTextureBitDepthSupported(16))
     {
         g_FableTextureBitDepth_013B7D68 = 16;
     }
     else if (
-        g_FableDisplayManager_013B8390->IsTextureBitDepthSupported(24))
+        PDisplayManager->IsTextureBitDepthSupported(24))
     {
         g_FableTextureBitDepth_013B7D68 = 24;
     }
     else if (
-        g_FableDisplayManager_013B8390->IsTextureBitDepthSupported(32))
+        PDisplayManager->IsTextureBitDepthSupported(32))
     {
         g_FableTextureBitDepth_013B7D68 = 32;
     }
@@ -164,10 +166,10 @@ bool FABLE_FASTCALL GFInitialise()
     GFGetBuildNumber2();
 
     if (GFInitialise_SetupProgressDisplay(
-            &g_GFInitialiseState_013B83D0) == 1)
+            (GFInitialiseState*)&GGame) == 1)
     {
         g_FableHalfDisplayWidth_0137544C =
-            g_FableDisplayManager_013B8390->displayWidth1C8 / 2;
+            PDisplayManager->displayWidth1C8 / 2;
         return true;
     }
 

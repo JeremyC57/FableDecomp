@@ -1,7 +1,7 @@
 // _global::GFUninitialise() -- engine shutdown: tear the global services down in reverse start-up order, ending with a tail call into the engine-side manager's Uninitialise
 // Leaf: GFUninitialise
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00401B80, 64 bytes. Callees: CInitBaseClass::Uninitialise
-// 0x00412F60 (on global 0x013B83D0), file-installer singleton Release 0x00406DF0,
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00401B80, 64 bytes. Callees: CGame::Uninitialise
+// 0x00412F60 (on GGame 0x013B83D0; tail-jumps to CInitBaseClass::Uninitialise 0x0099A360), file-installer singleton Release 0x00406DF0,
 // CBankFileManager::Close 0x009A7990 (global 0x013CA79C), GFGetSystemManager 0x009A4EC0 ->
 // CSystemManager::Uninitialise 0x009A60D0, CThreadedFileManager::Uninitialise 0x0098E0D0 (global
 // 0x013BC870), UninitializeStreamingFontTextureCache 0x009A1660, the static-instance accessor
@@ -14,8 +14,8 @@
 // call is sibling-call optimised to `jmp`. 0x00404A80 = Ego_r ?Get@CIME@NUISystem@@SIAAV12@XZ (the manifest's
 // CEngineInternalPrimitiveBase::AddChildPrimitive label was propagated). An earlier lane landed this body as
 // Global_GFUninitialise_00401b80.cpp (fable_gfuninitialise.h); this TU is self-contained.
-class CInitBaseClass { public:
-    void Uninitialise();                          // 0x00412F60
+class CGame { public:
+    void Uninitialise();                          // 0x00412F60 (Ego_r / FableWin ?Uninitialise@CGame@@QAEXXZ)
 };
 
 struct CBankFileManager {
@@ -37,7 +37,7 @@ class CIME { public:
 };
 }
 
-extern CInitBaseClass g_InitBase;                 // 0x013B83D0
+extern CGame GGame;                               // 0x013B83D0 (Ego_r / FableWin dynamic initializer 'GGame')
 extern CBankFileManager g_BankFileManager;        // 0x013CA79C
 extern CThreadedFileManager g_ThreadedFileManager;   // 0x013BC870
 
@@ -47,7 +47,7 @@ void __fastcall UninitializeStreamingFontTextureCache();     // 0x009A1660
 
 void __cdecl GFUninitialise()
 {
-    g_InitBase.Uninitialise();
+    GGame.Uninitialise();
     FileInstallerSingletonRelease();
     g_BankFileManager.Close();
     GFGetSystemManager()->Uninitialise();

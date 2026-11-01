@@ -12,7 +12,7 @@
 //   ??0CNewFrontendGameComponent@@QAE@AAVCGame@@ABVCNewFrontendGameComponentInit@@@Z 0x0042EA8F (0x148 bytes) -- both PDBs
 //   (Ego_r + FableWin) give `CGame&`; CGameComponent slot 1 ?Init@CGameComponent@@UAEXXZ and slot 4 SetQuit
 //   (?SetQuit@CGameComponent@@MAEXXZ, public override ?SetQuit@CMainGameComponent@@UAEXXZ).
-// Globals: the CGame object 0x013B83D0 (RTTI: CGame : CInitBaseClass; no PDB data symbol -- descriptive g_Game) and
+// Globals: the CGame object 0x013B83D0 (RTTI: CGame : CInitBaseClass; Ego_r / FableWin dynamic initializer 'GGame') and
 //   g_bUseLegacyFrontend 0x013B8642 (as the landed CGame::Play 0x00412F90).
 // Layout: engine/CWorld.h (Component +0x08, CMainGameComponent*); CMainGameComponent NextComponentToRun at retail +0x161C4
 //   (PDB +0x161CC: the retail class is 8 bytes smaller ahead of it, as noted by the earlier attempts).
@@ -27,13 +27,14 @@
 #undef CWorld
 
 class CGame;
-extern CGame g_Game;                         // 0x013B83D0 (descriptive)
+extern CGame GGame;                          // 0x013B83D0
 extern bool  g_bUseLegacyFrontend;           // 0x013B8642
 
 struct CGameScriptInterface_SoundProvider {  // 0x013B8394's object, as the landed 0x0088F610 models it
     void** vtable;
 };
-extern CGameScriptInterface_SoundProvider* DAT_013B8394;   // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;   // 0x013B8394
 struct CFlaggedObject_Retail {               // the landed 0x00991620's `this` model
     void func_00991620(bool enabled);        // 0x00991620
 };
@@ -71,18 +72,18 @@ class CWorld : public CWorld_PDB { public:
 
 void CWorld::ResetToFrontEnd()
 {
-    if (DAT_013B8394)
-        reinterpret_cast<CFlaggedObject_Retail*>(DAT_013B8394)->func_00991620(false);
+    if (((CGameScriptInterface_SoundProvider*)PSoundManager))
+        reinterpret_cast<CFlaggedObject_Retail*>(((CGameScriptInterface_SoundProvider*)PSoundManager))->func_00991620(false);
     CGameComponent* frontEnd;
     if (g_bUseLegacyFrontend) {
         CFrontendGameComponentInit init;
         init.Nowt = 0;
-        frontEnd = new CFrontendGameComponent(g_Game, init);
+        frontEnd = new CFrontendGameComponent(GGame, init);
         frontEnd->Init();
     } else {
         CNewFrontendGameComponentInit init;
         init.Nothing = 0;
-        frontEnd = new CNewFrontendGameComponent(g_Game, init);
+        frontEnd = new CNewFrontendGameComponent(GGame, init);
         frontEnd->Init();
     }
     CMainGameComponent* component = Component;

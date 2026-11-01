@@ -45,21 +45,22 @@ struct CXMVPlayer
 
 extern bool FABLE_FASTCALL GFInitialise();
 
-fable_u32 g_FablePrimitiveManager_013B8394;
-CDisplayManager* g_FableDisplayManager_013B8390;
+class CASoundManager; CASoundManager* PSoundManager;          // 0x013B8394 (naming wave 13)
+CDisplayManager* PDisplayManager;                               // 0x013B8390
 FableDisplayPrimitive* g_FableDisplayPrimitive_013B8384;
 void* g_FableRenderState_013B8380;
 fable_u8 g_FableRenderStateStorage_013BC470;
-fable_u32 g_FableRenderDevice_013B8388;
-fable_u32 g_FableResourceManager_013B838C;
-fable_u32 g_FableTextureManager_013B837C;
+class CInputManager; CInputManager* PInputManager;              // 0x013B8388
+class CFontManager; CFontManager* PFontManager;                 // 0x013B838C
+class CGraphicBankManager; CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
 fable_u32 g_FableTextureBitDepth_013B7D68;
 fable_u32 g_FableRequestedTextureBitDepth_01375470;
 fable_u32 g_FableMaximumDisplayDimension_0137546C;
 fable_u32 g_FableDisplayWidth_013B7D64;
 fable_u32 g_FableDisplayHeight_013B7D60;
 fable_i32 g_FableHalfDisplayWidth_0137544C;
-GFInitialiseState g_GFInitialiseState_013B83D0;
+class CGame { public: GFInitialiseState State; };   // GGame 0x013B83D0 (naming wave 13)
+CGame GGame;
 
 namespace
 {
@@ -145,13 +146,13 @@ static int VerifySuccessfulProgressSetup()
     if (g_rootCalls != 5)
         return 2;
     if (
-        g_FablePrimitiveManager_013B8394 != 0x7C7C7C7C ||
-        g_FableRenderDevice_013B8388 != 0x58585858 ||
-        g_FableResourceManager_013B838C != 0x84848484 ||
-        g_FableTextureManager_013B837C != 0x6C6C6C6C)
+        (fable_u32)PSoundManager != 0x7C7C7C7C ||
+        (fable_u32)PInputManager != 0x58585858 ||
+        (fable_u32)PFontManager != 0x84848484 ||
+        (fable_u32)PGraphicBankManager != 0x6C6C6C6C)
         return 3;
     if (
-        g_FableDisplayManager_013B8390 != &g_displayManager ||
+        PDisplayManager != &g_displayManager ||
         g_FableDisplayPrimitive_013B8384 != &g_displayPrimitive ||
         g_FableRenderState_013B8380 != &g_FableRenderStateStorage_013BC470)
         return 4;
@@ -170,7 +171,7 @@ static int VerifySuccessfulProgressSetup()
         g_xmvCalls != 1 ||
         g_buildNumberCalls != 1 ||
         g_progressSetupCalls != 1 ||
-        g_progressState != &g_GFInitialiseState_013B83D0)
+        g_progressState != (GFInitialiseState*)&GGame)
         return 7;
     if (g_FableHalfDisplayWidth_0137544C != 682)
         return 8;
