@@ -71,12 +71,12 @@ a worklist, not the intended end state.
 |---|---:|
 | Catalogued retail functions | **49,568** |
 | Landed byte-matching C++ (genuine) | **45,750 · 92.30%** |
-| Retail function bytes reproduced | **5,376,260 · 52.49%** |
+| Retail function bytes reproduced | **5,382,294 · 52.55%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Landed byte-matching C++ covers **92.30%** of the 49,564-function catalog by count
-and **52.49%** of retail function bytes: the functions still to do are the large ones.
+and **52.55%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,11 +93,11 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **53,190** |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **53,197** |
 | Reconstruction | Landed byte-matching genuine C++, original catalog | **45,750** (92.30%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 53,177 (92.31%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,376,260 (52.49%) |
-| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 178 |
+| Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 53,184 (92.32%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,382,294 (52.55%) |
+| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 179 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 13 |

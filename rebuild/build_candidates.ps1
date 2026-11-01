@@ -238678,15 +238678,6 @@ $catalog = @(
         PassPattern = '009cd740_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '009cdf50'
-        Module = 'CBankFile'
-        Source = '00/9c/CBankFile_WriteRecoveryFile_009cdf50.cpp'
-        TestSource = '00/9c/CBankFile_WriteRecoveryFile_009cdf50_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /GS'
-        Compiler = 'qfe4035'
-        PassPattern = '009cdf50_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '009d52d0'
         Module = 'CBankFileAsyncData'
         Source = '00/9d/CBankFileAsyncData_SetupBuffer_009d52d0.cpp'
@@ -239470,13 +239461,6 @@ $catalog = @(
         Source = '00/bc/CEnginePrimitiveManagerLines_CEnginePrimitiveManagerLines_00bc7e90.cpp'
         TestSource = '00/bc/CEnginePrimitiveManagerLines_CEnginePrimitiveManagerLines_00bc7e90_test.cpp'
         PassPattern = '00bc7e90_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00bc9c30'
-        Module = 'CEngineSubPrimitiveSpriteTrail'
-        Source = '00/bc/CEngineSubPrimitiveSpriteTrail_CEngineSubPrimitive2DClockSprite_00bc9c30.cpp'
-        TestSource = '00/bc/CEngineSubPrimitiveSpriteTrail_CEngineSubPrimitive2DClockSprite_00bc9c30_test.cpp'
-        PassPattern = '00bc9c30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00bca770'
@@ -374324,6 +374308,72 @@ $catalog = @(
         Source = '00/ee/NScriptCCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8c30.cpp'
         TestSource = '00/ee/NScriptCCSOakValeRevisitedScript_CCSOakValeRevisitedScript_00ee8c30_test.cpp'
         PassPattern = '00ee8c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c013c0'
+        Module = '_global'
+        Source = '00/c0/global_deflatefast_00c013c0.cpp'
+        TestSource = '00/c0/global_deflatefast_00c013c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC'
+        PassPattern = '00c013c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6cc60'
+        Module = 'CVtable_012bed7c'
+        Source = '00/c6/CVtable012bed7c_Process_00c6cc60.cpp'
+        TestSource = '00/c6/CVtable012bed7c_Process_00c6cc60_test.cpp'
+        PassPattern = '00c6cc60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6fe10'
+        Module = 'CVtable_012b8ac8'
+        Source = '00/c6/CVtable012b8ac8_Process_00c6fe10.cpp'
+        TestSource = '00/c6/CVtable012b8ac8_Process_00c6fe10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c6fe10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf0790'
+        Module = 'NScript::CQ_ArenaHoldingScriptScript'
+        Source = '00/cf/NScriptCQArenaHoldingScriptScript_Main_00cf0790.cpp'
+        TestSource = '00/cf/NScriptCQArenaHoldingScriptScript_Main_00cf0790_test.cpp'
+        PassPattern = '00cf0790_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d89e60'
+        Module = 'NScript::CQ_HerosOldHouseScript'
+        Source = '00/d8/NScriptCQHerosOldHouseScript_Main_00d89e60.cpp'
+        TestSource = '00/d8/NScriptCQHerosOldHouseScript_Main_00d89e60_test.cpp'
+        PassPattern = '00d89e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ddde20'
+        Module = 'NScript::CQ_PrisonWardenGameScript'
+        Source = '00/dd/NScriptCQPrisonWardenGameScript_Main_00ddde20.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScript_Main_00ddde20_test.cpp'
+        PassPattern = '00ddde20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef8d30'
+        Module = 'NScript::CPersonalScript_EmptyScript::CVillager'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Main_00ef8d30.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCVillager_Main_00ef8d30_test.cpp'
+        PassPattern = '00ef8d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cdf50'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_WriteRecoveryFile_009cdf50.cpp'
+        TestSource = '00/9c/CBankFile_WriteRecoveryFile_009cdf50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '009cdf50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc9c30'
+        Module = 'CEngineSubPrimitiveSpriteTrail'
+        Source = '00/bc/CEngineSubPrimitiveSpriteTrail_CEngineSubPrimitiveSpriteTrail_00bc9c30.cpp'
+        TestSource = '00/bc/CEngineSubPrimitiveSpriteTrail_CEngineSubPrimitiveSpriteTrail_00bc9c30_test.cpp'
+        PassPattern = '00bc9c30_TEST PASS'
     }
 )
 

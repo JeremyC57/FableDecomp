@@ -1,0 +1,9 @@
+1	CUndeadFellow model, header CScriptThing plain inline dtor, `if (!Over && !Carried(""))` (wrong polarity)	DIFFER 1008v1013 (85 lines: register swap edi/ebp, materialised bool inverted)
+2	p1 with `!(Over || Carried(""))`	DIFFER 1008v1013 (87 lines, = p1)
+3	correct polarity `if (Over && !Carried(""))`	DIFFER 1008v1013 (85 lines: bl = test value, je vs jne; zero in ebp)
+4	`if (!Over || Carried("")) {} else {...}`	DIFFER 1008v1013 (79 lines)
+5	`if (!Over || Carried("")) { NewScriptFrame(); continue; }` then the body in a block	RELOCATION_MATCH
+6	`Carried("") == false` spelling	DIFFER 1008v1013 (85 lines)
+7	both tests as early `continue`	DIFFER 1024v1013 (30 lines: second test must stay a nested if)
+8	p5 tidied (no extra block; nested if for Carried(Me.GetName()))	RELOCATION_MATCH
+9	p8 over engine/CIsThingAlive.h + CPredicateBase.h + CEntityScriptBase.h (vland SHARED_HEADER warnings), IsDistanceBetweenThingsOver moved to the global namespace (PDB ?IsDistanceBetweenThingsOver@@YI...)	RELOCATION_MATCH

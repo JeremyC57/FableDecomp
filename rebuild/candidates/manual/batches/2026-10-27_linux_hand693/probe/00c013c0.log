@@ -1,0 +1,2 @@
+1	zlib 1.2.1 deflate_fast verbatim as C++ (extern "C"), same-TU statics longest_match / longest_match_fast / flush_pending	DIFFER 922v909 (d_code arms merged before the byte load; dead lea after .Freq++)
+2	same text compiled as C (/TC)	RELOCATION_MATCH 909v909

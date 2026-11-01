@@ -1,90 +1,83 @@
-// CBankFile::WriteRecoveryFile(unsigned long, unsigned long, unsigned long) -- write a recovery header and entry list to the bank's recovery path
-// Retail: Fable.exe (TLC, VC7.1) @ 0x009CDF50, 246 matched bytes; __fastcall, ret 0x0c.
-// Callees: CBankFile::GetRecoveryFilePath 0x009CBFE0; CDiskFileWin32::Open 0x0099A6A0;
-// CFileDataOutputStream ctor/dtor 0x00994400/0x00994430; Write 0x00994480; WriteULong 0x00993EA0;
-// CBankFile::InternalWriteEntryList 0x009CDA70; security cookie check 0x00BFE9F9.
-// Uses the actual string and donor layout headers. The local file runtime view has the audited
-// CBaseClassNonCopyable base and all sixteen named CDiskFileWin32 virtual slots. The stream method
-// adapter uses the actual flat donor storage and does not synthesize a vtable.
-// The recovery signature is the four-byte word plus terminator at 0x0129B59C.
+// CBankFile::WriteRecoveryFile(unsigned long, unsigned long, unsigned long) -- write the "BREC" recovery header and the entry list to the bank's recovery file
+// Leaf: ?WriteRecoveryFile@CBankFile@@AAEXKKK@Z
 // Flags: /GS
-#include "engine/CBankFile.h"
-#include "engine/CDiskFileWin32.h"
-#include "engine/CDataOutputStream.h"
-#include "engine/CFileDataOutputStream.h"
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009CDF50, 246 bytes, thiscall, `ret 0xc`, /GS (cookie 0x0139C8A8, check 0x00BFE9F9).
+// Identity: Ego_r.pdb / FableWin.pdb ?WriteRecoveryFile@CBankFile@@AAEXKKK@Z (private); its callees carry the PDB spellings
+//   ?GetRecoveryFilePath@CBankFile@@AAE?AVCWideString@@XZ 0x009CBFE0 and ?InternalWriteEntryList@CBankFile@@QAEKAAVCDataOutputStream@@@Z
+//   0x009CDA70 (the landed source spelled them on an invented CBankFileRuntime).
+// Callees: CWideString() 0x0099AED0 / ~CWideString 0x0099B510; CBaseClassNonCopyable() 0x0099A2F0 / ~ 0x0099A300;
+//   CDiskFileWin32::Open 0x0099A6A0 / Close 0x0099A920 (vtable 0x0122D06C); CFileDataOutputStream(CAFile&) 0x00994400 /
+//   ~CFileDataOutputStream 0x00994430 / Write 0x00994480; CDataOutputStream::WriteULONG 0x00993EA0.
+// Shape: CDiskFileWin32's default constructor (PDB ??0CDiskFileWin32@@QAE@XZ) and its virtual destructor are inline (CAFile's
+//   inline ctor and implicit dtor leave no vptr stores); the five-byte signature is a `char[5] = "BREC"` initialised from the
+//   string literal 0x0129B59C (`mov eax,[lit] ; mov cl,[lit+4]`), so /GS places it as the buffer directly under the cookie
+//   (+0x30) -- the earlier landed memcpy-from-a-global form put it below the file object and shifted the frame by 8.
+//   Virtual Write / dtor on the local stream are direct calls (static type known).
+// Layout: CDiskFileWin32 0x1C (vptr, AccessType, Position, Length, WinFileHandle, Opened, Pathname: Ego_r.pdb, retail ctor
+//   0x0099ADC0); CFileDataOutputStream 0xC (CDataOutputStream vptr + NewLine CCharString, File). engine/CDiskFileWin32.h,
+//   CDataOutputStream.h, CFileDataOutputStream.h and CBankFile.h are flat pack(1) layouts with a __vftable data member
+//   (no virtuals, no member functions), so the classes are modelled locally (header debt, NOTES.md).
 #include "fable_string.h"
-#include <string.h>
+#include "engine/CBaseClassNonCopyable.h"
 
+enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CAFile;
-class CFileInformation;
-enum FileAccessType { FILE_ACCESS_READ = 1 };
 
-struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                 // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();        // 0x0099A300; restores base vtable
+class CAFile : public CBaseClassNonCopyable {
+public:
+    CAFile() { }
+    virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags) = 0;
+    virtual void Close() = 0;
 };
 
-struct CDiskFileWin32Runtime : CBaseClassNonCopyable {
-    FileAccessType AccessType;               // donor +0x04
-    long Position;                           // donor +0x08
-    long Length;                             // donor +0x0c
-    void* WinFileHandle;                     // donor +0x10
-    bool Opened;                             // donor +0x14
-    unsigned char _pad_15[3];                // donor +0x15
-    CWideString Pathname;                    // donor +0x18
-
-    CDiskFileWin32Runtime() : CBaseClassNonCopyable(), Pathname() { Opened = false; }
-    virtual ~CDiskFileWin32Runtime() { Close(); }
-    virtual void Open(const CWideString&, FileAccessType, unsigned long); // slot 1, 0x0099A6A0
-    virtual void Close();                   // slot 2, 0x0099A920
-    virtual void Read(void*, long, CASuspendableProcess*); // slot 3, 0x0099A960
-    virtual void Write(const void*, long, CASuspendableProcess*); // slot 4, 0x0099AA90
-    virtual void SetPosition(long);         // slot 5, 0x0099ABF0
-    virtual void MovePosition(long);        // slot 6, 0x0099AC90
-    virtual long GetPosition() const;        // slot 7, 0x0099ABD0
-    virtual void SetLength(long);           // slot 8, 0x0099A560
-    virtual long GetLength() const;          // slot 9, 0x00401670
-    virtual bool IsOpen() const;             // slot 10, 0x00401680
-    virtual CWideString GetPathname() const; // slot 11, 0x00401690
-    virtual bool IsIOFinished() const;       // slot 12, 0x00401650
-    virtual long GetAlignment() const;       // slot 13, 0x00401660
-    virtual CAFile* Clone() const;           // slot 14, 0x0099AE00
-    virtual CFileInformation GetFileInformation(); // slot 15, 0x0099A5A0
+class CDiskFileWin32 : public CAFile {
+public:
+    CDiskFileWin32() { Opened = false; }
+    virtual ~CDiskFileWin32() { Close(); }
+    virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0
+    virtual void Close();                                                                       // 0x0099A920
+    FileAccessType AccessType;          // +0x04
+    long           Position;            // +0x08
+    long           Length;              // +0x0c
+    void*          WinFileHandle;       // +0x10
+    bool           Opened;              // +0x14
+    CWideString    Pathname;            // +0x18
 };
 
-struct CFileDataOutputStreamRuntime : CFileDataOutputStream {
-    explicit CFileDataOutputStreamRuntime(CAFile*); // 0x00994400
-    ~CFileDataOutputStreamRuntime();                 // 0x00994430
-    void Write(const void*, long);                   // 0x00994480
-    void WriteULong(unsigned long);                  // 0x00993EA0
+class CDataOutputStream {
+public:
+    virtual ~CDataOutputStream();
+    void WriteULONG(unsigned long value);                       // 0x00993EA0
+    CCharString NewLine;                                        // +0x04
 };
 
-struct RecoveryFileSignature {
-    fable_u32 Word;
-    fable_u8 Terminator;
-};
-extern const RecoveryFileSignature gBankRecoverySignature; // 0x0129B59C, bytes "BREC\0"
-
-struct CBankFileRuntime : CBankFile {
-    CWideString GetRecoveryFilePath();              // 0x009CBFE0
-    unsigned long InternalWriteEntryList(CDataOutputStream&); // 0x009CDA70
-    void WriteRecoveryFile(unsigned long, unsigned long, unsigned long);
+class CFileDataOutputStream : public CDataOutputStream {
+public:
+    CFileDataOutputStream(CAFile& file);                        // 0x00994400
+    virtual ~CFileDataOutputStream();                           // 0x00994430
+    virtual void Write(const void* data, long length);          // 0x00994480
+    CAFile* File;                                               // +0x08
 };
 
-void CBankFileRuntime::WriteRecoveryFile(unsigned long version, unsigned long state,
-                                         unsigned long checksum)
+class CBankFile {
+public:
+    virtual ~CBankFile();
+    unsigned long InternalWriteEntryList(CDataOutputStream& stream);   // 0x009CDA70
+private:
+    CWideString GetRecoveryFilePath();                                  // 0x009CBFE0
+    void WriteRecoveryFile(unsigned long a, unsigned long b, unsigned long c);
+};
+
+void CBankFile::WriteRecoveryFile(unsigned long a, unsigned long b, unsigned long c)
 {
     CWideString path = GetRecoveryFilePath();
-    CDiskFileWin32Runtime file;
-    file.Open(path, (FileAccessType)4, 4);
-    CFileDataOutputStreamRuntime stream((CAFile*)&file);
-    char signature[5];
-    memcpy(signature, &gBankRecoverySignature.Word, 4);
-    signature[4] = (char)gBankRecoverySignature.Terminator;
-    stream.Write(signature, 4);
-    stream.WriteULong(version);
-    stream.WriteULong(state);
-    stream.WriteULong(checksum);
-    InternalWriteEntryList((CDataOutputStream&)stream);
+    CDiskFileWin32 file;
+    file.Open(path, FILE_ACCESS_WRITE, 4);
+    CFileDataOutputStream stream(file);
+    char id[5] = "BREC";
+    stream.Write(id, 4);
+    stream.WriteULONG(a);
+    stream.WriteULONG(b);
+    stream.WriteULONG(c);
+    InternalWriteEntryList(stream);
 }

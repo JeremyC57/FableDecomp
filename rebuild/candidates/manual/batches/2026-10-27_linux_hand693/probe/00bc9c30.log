@@ -1,0 +1,2 @@
+1	landed source + Leaf (CBaseClassNonCopyable local public dtor)	RELOCATION_MATCH 34v34
+2	engine/CBaseClassNonCopyable.h, PDB param CEngineInternalPrimitiveSpriteTrail*, class keys	RELOCATION_MATCH 34v34

@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+0x00C6E8F0	DIFFER	673v673	-	CVtable_012bedb8::Process (libpk gain mixer C path); register allocation only (Leave arg reg, record ptr reg); 12 probes; differ/
+0x00C6DBA0	DIFFER	689v689	-	CVtable_012bed90::Process (libpk 4-ch gain mixer C path); register allocation only (Leave arg reg, record ptr reg, retail dead adds); 14 probes; differ/
+0x0099D8C0	DIFFER	685v689	-	ErrorDialogProc (Ego_r ?ErrorDialogProc@@YGHPAUHWND__@@IIJ@Z); centring arithmetic order only after the RECT[2] frame fix; 19 probes; differ/

@@ -33288,7 +33288,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00994450	?SetPosition@CFileDataOutputStream@@UAEXK@Z	CFileDataOutputStream	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
 00994460	?GetPosition@CFileDataOutputStream@@UBEKXZ	CFileDataOutputStream	__thiscall	bool	2	CScriptThing *,CScriptThing *	1	yes	accepted									
 00994470	CFileDataOutputStream::Close	CFileDataOutputStream	__thiscall	void	1	CFileDataOutputStream *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CFileDataOutputStream_Close_00994470.cpp
-00994480	?Write@CFileDataOutputStream@@UAEXPBXJ@Z	CFileDataOutputStream	__thiscall	void	3	CFileDataOutputStream *,void *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CFileDataOutputStream_WriteCFileDataOutputStreamUAEXPBXJZ_00994480.cpp
+00994480	Write	CFileDataOutputStream	__thiscall	void	3	CFileDataOutputStream *,void *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CFileDataOutputStream_WriteCFileDataOutputStreamUAEXPBXJZ_00994480.cpp
 009944a0	CBufferedFileDataOutputStream	CBufferedFileDataOutputStream	__thiscall	undefined	3	CBufferedFileDataOutputStream *,CAFile *,long	0	yes	accepted									
 00994500	CBufferedFileDataOutputStream::SetPosition	CBufferedFileDataOutputStream	__thiscall	void	2	CBufferedFileDataOutputStream *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBufferedFileDataOutputStream_SetPosition_00994500.cpp
 00994510	CBufferedFileDataOutputStream::GetPosition	CBufferedFileDataOutputStream	__thiscall	ulong	1	CBufferedFileDataOutputStream *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CBufferedFileDataOutputStream_GetPosition_00994510.cpp
@@ -33510,7 +33510,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099d520	LocalizedDialogBox	_global	__fastcall	undefined	0		0	yes	accepted									
 0099d660	_HyperlinkProc	_global	__stdcall	long	4	HWND__ *,uint,uint,long	1	yes	accepted									
 0099d7d0	ConvertStaticToHyperlink	_global	__fastcall	int	1	HWND__ *	1	yes	accepted									
-0099d8c0	sub_0099d8c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0099d8c0	ErrorDialogProc	_global	unknown	undefined	0		0			discovered	gapscan							
 0099dbe0	SetDirtyExitFlag	_global	__fastcall	undefined	0		0	yes	accepted									
 0099dc50	ClearDirtyExitFlag	_global	__fastcall	undefined	0		0	yes	accepted									
 0099dcb0	_DisplayErrorDialog@8	_global	unknown	undefined	0		0	yes	accepted									
@@ -42683,7 +42683,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bc9a00	`vector_deleting_destructor'	CEnginePrimitiveManagerLines	__thiscall	void *	2	CEnginePrimitiveManagerLines *,uint	1	yes	accepted									
 00bc9b30	FindNode	CEngineTreeFilerBase	__thiscall	CNodeHeader *	3	CEngineTreeFilerBase *,CNodeHeader *,ulong *	1	yes	accepted									
 00bc9b80	FindID	CEngineTreeFilerBase	unknown	undefined	0		0	yes	accepted									
-00bc9c30	CEngineSubPrimitive2DClockSprite	CEngineSubPrimitive2DClockSprite	__thiscall	undefined	2	CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *	0	yes	accepted									
+00bc9c30	CEngineSubPrimitiveSpriteTrail	CEngineSubPrimitiveSpriteTrail	__thiscall	undefined	2	CEngineSubPrimitive2DClockSprite *,CEngineInternalPrimitive2DClockSprite *	0	yes	accepted									
 00bc9d60	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	list<CMessageEvent_const*,std	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
 00bc9e10	fill<C3DClothQuad*,C3DClothQuad>	_global	__fastcall	void	3	C3DClothQuad *,C3DClothQuad *,C3DClothQuad *	1	yes	accepted									
 00bc9eb0	__uninitialized_fill_n<CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry *, unsigned int, CEngineInternalPrimitiveSpriteTrail::CSpriteTrailEntry>	std	__fastcall	void	3	C3DClothQuad *,C3DClothQuad *,C3DClothQuad *	1	yes	accepted									
@@ -43537,7 +43537,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c00fd0	longest_match_fast	_global	unknown	undefined	0		0	yes	accepted									
 00c01090	fill_window	_global	unknown	undefined	0		0	yes	accepted									
 00c011a0	deflate_stored	_global	unknown	undefined	0		0			discovered	gapscan							
-00c013c0	sub_00c013c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c013c0	deflate_fast	_global	unknown	undefined	0		0			discovered	gapscan							
 00c01750	deflate_slow	_global	unknown	undefined	0		0	yes	accepted									
 00c01b60	z_deflateReset	_global	__cdecl	undefined	0		0	yes	accepted									
 00c01f90	z_deflateInit2_	_global	__cdecl	undefined	0		0	yes	accepted									
@@ -47305,7 +47305,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6caf0	Audio_ResampleAndAccumulate	_global	unknown	undefined	0		0	yes	accepted									
 00c6cb80	Audio_ResampleDecayAndAccumulate	_global	unknown	undefined	0		0	yes	accepted									
 00c6cc10	Audio_ApplyGain	_global	unknown	undefined	0		0	yes	accepted									
-00c6cc60	sub_00c6cc60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6cc60	Process	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
 00c6cef0	Audio_SetFilterCoefficients	_global	unknown	undefined	0		0	yes	accepted									
 00c6cf40	Audio_SetFilterCoefficients	_global	unknown	undefined	0		0	yes	accepted									
 00c6d120	SetVolume	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
@@ -47319,7 +47319,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6da30	~CChunkedFileChunk	CChunkedFileChunk	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
 00c6da40	FixedPoint_AccumulateShort	_global	unknown	undefined	0		0	yes	accepted									
 00c6dad0	FixedPoint_AccumulateUshortDelta	_global	unknown	undefined	0		0	yes	accepted									
-00c6dba0	sub_00c6dba0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6dba0	Process	CVtable_012bed90	unknown	undefined	0		0			discovered	gapscan							
 00c6de60	Audio_ConvertFloatToS15	_global	unknown	undefined	0		0	yes	accepted									
 00c6dea0	RebuildGain	CVtable_012bed90	unknown	undefined	0		0	yes	accepted									
 00c6e020	SetVolume	CVtable_012bed90	unknown	undefined	0		0			discovered	gapscan							
@@ -47337,7 +47337,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6e780	~CChunkedFileChunk	CChunkedFileChunk	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
 00c6e790	DSP_AccumulateModulatedWaveform	_global	unknown	undefined	0		0	yes	accepted									
 00c6e820	DSP_AccumulateUnsignedModulatedWaveform	_global	unknown	undefined	0		0	yes	accepted									
-00c6e8f0	sub_00c6e8f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6e8f0	Process	CVtable_012bedb8	unknown	undefined	0		0			discovered	gapscan							
 00c6eba0	AudioGainLookup_GetValues	_global	unknown	undefined	0		0	yes	accepted									
 00c6ebe0	Audio_SetVolume_Channel	_global	unknown	undefined	0		0	yes	accepted									
 00c6ec50	SetVolume	CVtable_012bedb8	unknown	undefined	0		0			discovered	gapscan							
@@ -47355,7 +47355,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6f990	sub_00c6f990	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c6fbb0	ScaleAccumulate16MMX_00c6fbb0	_global	unknown	undefined	0		0	yes	accepted									
 00c6fc80	SSE_MatrixMultiplyLonglong	_global	unknown	undefined	0		0	yes	accepted									
-00c6fe10	sub_00c6fe10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6fe10	Process	CVtable_012b8ac8	unknown	undefined	0		0			discovered	gapscan							
 00c70040	Set	CPreTransposedBoneMatrix	__thiscall	void	2	CPreTransposedBoneMatrix *,CMatrix3x4 *	1	yes	accepted									
 00c700d0	ZeroBlock128MMX_00c700d0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c70120	CVtable_012bedcc	CVtable_012bedcc	__thiscall	void	2	CPersistContext_TransferableVector<CReverbEnvironmentEntry> *,long	1	yes	accepted									
@@ -49253,7 +49253,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cf06d0	Init	NScript::CQ_ArenaHoldingScriptScript	unknown	undefined	0		0			discovered	gapscan							
 00cf06f0	RegisterMain	NScript::CQ_ArenaHoldingScriptScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00cf0780	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf0780.cpp
-00cf0790	sub_00cf0790	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00cf0790	Main	NScript::CQ_ArenaHoldingScriptScript	unknown	undefined	0		0			discovered	gapscan							
 00cf0b50	sub_00cf0b50	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00cf0b60	Alloc	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00cf0c00	sub_00cf0c00	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -50633,7 +50633,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d89da0	Init	NScript::CQ_HerosOldHouseScript	unknown	undefined	0		0			discovered	gapscan							
 00d89dc0	RegisterMain	NScript::CQ_HerosOldHouseScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00d89e50	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d8\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d89e50.cpp
-00d89e60	sub_00d89e60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00d89e60	Main	NScript::CQ_HerosOldHouseScript	unknown	undefined	0		0			discovered	gapscan							
 00d8a230	sub_00d8a230	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d8a240	WatchForBooty	CQ_HerosOldHouseScript	__thiscall	void	1	CQ_HerosOldHouseScript *	1	yes	accepted									
 00d8a4b0	Alloc	NScript::CQ_HerosOldHouseScript::CGhostFisherman	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
@@ -51436,9 +51436,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00dddce0	~CChunkedFile	CChunkedFile	__thiscall	void	1	CChunkedFile *	1	yes	accepted									
 00dddd80	RegisterMain	NScript::CQ_PrisonWardenGameScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00ddde10	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\dd\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00ddde10.cpp
-00ddde20	sub_00ddde20	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00ddde20	Main	NScript::CQ_PrisonWardenGameScript	unknown	undefined	0		0			discovered	gapscan							
 00dde220	sub_00dde220	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00dde230	WardenKeyMiniGame	CQ_PrisonWardenGameScript	__thiscall	void	1	CQ_PrisonWardenGameScript *	1	yes	accepted									
+00dde230	WardenKeyMiniGame	NScript::CQ_PrisonWardenGameScript	__thiscall	void	1	CQ_PrisonWardenGameScript *	1	yes	accepted									
 00dde630	Alloc	NScript::CQ_PrisonWardenGameScript::CPrisonWarden	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00dde6d0	sub_00dde6d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00dde6e0	sub_00dde6e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -54525,7 +54525,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ef8bc0	ChangeAlpha	CPersonalScript_EmptyScript	__thiscall	void	2	CPersonalScript_EmptyScript *,CScriptThing	1	yes	accepted									
 00ef8cc0	sub_00ef8cc0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ef8d00	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ef\CEngineSubPrimitiveText_scalardeletingdestructor_00ef8d00.cpp
-00ef8d30	sub_00ef8d30	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00ef8d30	Main	NScript::CPersonalScript_EmptyScript::CVillager	unknown	undefined	0		0			discovered	gapscan							
 00ef9130	Alloc	CActionEventShot	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00ef9170	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ef\CLandscapeBackgroundPatch_vectordeletingdestructor_00ef9170.cpp
 00ef9190	Cjoss_test_scriptsScript	NScript::Cjoss_test_scriptsScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									

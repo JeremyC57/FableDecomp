@@ -1,0 +1,2 @@
+1	landed source + Leaf ?WriteRecoveryFile@ (memcpy from global into char[5])	DIFFER 246v246 (frame +8: signature below the file)
+2	PDB class CBankFile, CDiskFileWin32 inline ctor/dtor over CAFile, char id[5] = "BREC" literal	RELOCATION_MATCH 246v246

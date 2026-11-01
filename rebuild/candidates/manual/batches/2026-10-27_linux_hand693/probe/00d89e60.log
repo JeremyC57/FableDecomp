@@ -1,0 +1,3 @@
+1	HeroSoulsNostro/OakValeBanditRaid model, CLevelScriptBase base, explicit CWideString(L"") reason	DIFFER 976v976 (80 lines: constant 1 kept in ebx; Game loaded before the wide temporary)
+2	implicit L"" -> const CWideString& conversion	RELOCATION_MATCH 976v976
+3	p2 over engine/CScriptThing.h (out-of-line dtor) instead of a local CScriptThing (vland SHARED_HEADER warning)	RELOCATION_MATCH
