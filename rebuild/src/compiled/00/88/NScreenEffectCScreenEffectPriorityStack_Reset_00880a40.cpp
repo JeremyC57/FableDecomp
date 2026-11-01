@@ -46,9 +46,8 @@ struct CScreenFilterParams {
 namespace NScreenEffect {
 
 class CScreenEffectPriorityStack {
-public:
+private:                                    // Ego_r / FableWin ?Reset@CScreenEffectPriorityStack@NScreenEffect@@AAEXXZ (naming wave 17, c677)
     void Reset();
-private:
     void*                     __vftable;                     // +0x00
     unsigned char             RadialParamStack[0x0C];        // +0x04 list<CRadialBlurEntry>[3]
     unsigned char             RadialBlurKeys[0x0C];          // +0x10 set<CStackEntry*>

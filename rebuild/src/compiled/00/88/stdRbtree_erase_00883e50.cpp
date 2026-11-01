@@ -69,7 +69,9 @@ public:
     _Base_ptr& _M_root() const { return _M_header._M_data->_M_parent; }
     _Base_ptr& _M_leftmost() const { return _M_header._M_data->_M_left; }
     _Base_ptr& _M_rightmost() const { return _M_header._M_data->_M_right; }
-    void _M_erase(_Link_type __x);                        // 0x00882BC0
+private:
+    void _M_erase(_Link_type __x);                        // 0x00882BC0 (STLport: private, AAE -- naming wave 17, c677)
+public:
     void clear()
     {
         if (_M_node_count != 0) {

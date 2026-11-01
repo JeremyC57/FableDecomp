@@ -1,4 +1,4 @@
-// CClass_006b8410::GetTarget_006b8410() -- returns m_pointer.Method_00881210() for the smart pointer at +0x90 (sibling jump)
+// CClass_006b8410::GetTarget_006b8410() -- forwards to NScreenEffect::CScreenEffectPriorityStack::Clear() on the member at +0x90 (sibling jump)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B8410, oracle length 11 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,20 +9,21 @@
 // signature, no locals). The class comes from the vtable-slot label. One of 15 bodies.
 class CBaseObject;
 
-struct CBaseIntelligentPointer {
-    virtual void v00();
-    CBaseObject* m_pItem;
-    CBaseObject* Method_00881210();               // 0x00881210
+namespace NScreenEffect {
+class CScreenEffectPriorityStack {                // Ego_r/FableWin (naming wave 17, c677: was CBaseIntelligentPointer::Method_00881210)
+public:
+    void Clear();                                 // 0x00881210 (?Clear@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ)
 };
+}
 
 struct CClass_006b8410 {
     virtual void v00();
     unsigned char _pad[0x8c];
-    CBaseIntelligentPointer m_pointer;     // +0x90
-    virtual CBaseObject* GetTarget_006b8410();
+    NScreenEffect::CScreenEffectPriorityStack m_screenEffectStack;   // +0x90
+    virtual void GetTarget_006b8410();
 };
 
-CBaseObject* CClass_006b8410::GetTarget_006b8410()
+void CClass_006b8410::GetTarget_006b8410()
 {
-    return m_pointer.Method_00881210();
+    m_screenEffectStack.Clear();
 }

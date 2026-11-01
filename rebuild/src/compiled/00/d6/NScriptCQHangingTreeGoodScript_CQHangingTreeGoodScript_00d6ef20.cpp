@@ -1,5 +1,7 @@
-// CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript(void* owner, CGameScriptInterface* game) -- quest-script constructor: script base, owner/interface pair, vtable 0x012D260C, four empty CScriptThing handles, two empty strings and five empty vectors
-// Leaf: ??0CQ_HangingTreeGoodScript
+// NScript::CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, data/interface pair, vtable 0x012D260C, four empty CScriptThing handles, two empty strings and five empty vectors
+// Leaf: ??0CQ_HangingTreeGoodScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 17 (c677): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*,
+//   CGameScriptInterface*); name-only (both are one pushed pointer: the bytes are unchanged). Only caller Alloc 0x00D78290.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6EF20, length 246 bytes, `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, x4; CScriptThing
 // vtable 0x01238C8C), CCharString::CCharString() @ 0x0099E4B0 (x2).
@@ -13,7 +15,8 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CGameScriptInterface;
+class CGameScriptInterfaceBase;
+class CScriptDataBase;
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -21,9 +24,9 @@ class CGameScriptInterface;
 #include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CScriptObject : CScriptBase {
-    CGameScriptInterface* m_pGame;                   // +0x40
-    void* m_pOwner;                                  // +0x44
-    CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
+    CGameScriptInterfaceBase* m_pGame;               // +0x40 (Ego_r CLevelScriptBase<T>::Game)
+    CScriptDataBase* m_pOwner;                       // +0x44 (the script data)
+    CScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), m_pGame(&game), m_pOwner(data) { }
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -109,12 +112,12 @@ public:    // vtable 0x012D260C
     CRetailVector<CCharString>  AreasSpawnedIn;      // +0xc4
     CRetailVector<float>        GuardsHealthVector;  // +0xd0
     virtual void v00();
-    CQ_HangingTreeGoodScript(void* owner, CGameScriptInterface* game);
+    CQ_HangingTreeGoodScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CQ_HangingTreeGoodScript;
 
-NScript::CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript(void* owner, CGameScriptInterface* game)
-    : CScriptObject(owner, game)
+NScript::CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CScriptObject(data, game)
 {
 }

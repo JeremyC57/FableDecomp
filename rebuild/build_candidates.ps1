@@ -172972,9 +172972,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cfa2f0'
-        Module = '_global'
-        Source = '00/cf/global_CreateCClass00cf935000cfa2f0_00cfa2f0.cpp'
-        TestSource = '00/cf/global_CreateCClass00cf935000cfa2f0_00cfa2f0_test.cpp'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/cf/NScriptCQAmbushTradersScript_Alloc_00cfa2f0.cpp'
+        TestSource = '00/cf/NScriptCQAmbushTradersScript_Alloc_00cfa2f0_test.cpp'
         PassPattern = '00cfa2f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -275632,8 +275632,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00881370'
         Module = 'NScreenEffect::CScreenEffectPriorityStack'
-        Source = '00/88/global_CScreenEffectPriorityStackConstructor_00881370.cpp'
-        TestSource = '00/88/global_CScreenEffectPriorityStackConstructor_00881370_test.cpp'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStack_CScreenEffectPriorityStack_00881370.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStack_CScreenEffectPriorityStack_00881370_test.cpp'
         PassPattern = '00881370_TEST PASS'
     }
     [pscustomobject]@{
