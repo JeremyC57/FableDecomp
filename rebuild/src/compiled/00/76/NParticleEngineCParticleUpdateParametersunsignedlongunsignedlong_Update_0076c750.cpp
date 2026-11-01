@@ -47,8 +47,8 @@ template <class A, class B> class CParticleUpdateParamDesc { public:
 };
 
 template <class A, class B> class CParticleUpdateParameters { public:        // vtable 0x0125FFDC (CBase-derived)
-    template <class K> struct CParticleUpdateCCompareVector { };
-    template <class K> struct CParticleUpdateCCompareParamDesc { };
+    template <class K> class CParticleUpdateCCompareVector { };      // class key V (FableWin.pdb)
+    template <class K> class CParticleUpdateCCompareParamDesc { };   // class key V (FableWin.pdb)
     void* __vftable;                                                                         // +0x00
     CVectorMap<A, C3DVector, CParticleUpdateCCompareVector<A> >                       VectorParams;   // +0x04
     CVectorMap<A, CParticleUpdateParamDesc<A, B>, CParticleUpdateCCompareParamDesc<A> > UpdateParams;   // +0x14
