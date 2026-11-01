@@ -120943,8 +120943,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00aa7540'
         Module = 'CChunkedFileLoader'
-        Source = '00/aa/CBase_CBase_00aa7540.cpp'
-        TestSource = '00/aa/CBase_CBase_00aa7540_test.cpp'
+        Source = '00/aa/CChunkedFileLoader_CChunkedFileLoader_00aa7540.cpp'
+        TestSource = '00/aa/CChunkedFileLoader_CChunkedFileLoader_00aa7540_test.cpp'
         PassPattern = 'PASS_00aa7540'
     }
     [pscustomobject]@{
