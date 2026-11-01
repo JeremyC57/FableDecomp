@@ -16,12 +16,12 @@
 // Shape: SDecoderMessage's implicit copy constructor inlined: +0 long, the +4 sub-record out of line, +0x20 long, the 16-byte
 //   record at +0x24 through `lea` addresses (an embedded struct's implicit copy), +0x34..+0x3C longs; the count is decremented
 //   before the record pointer (`index << 6` plus the block) is formed.
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -93,7 +93,7 @@ template<class T> T PKCStaticQueue<T>::Pop()
 {
     if (m_count == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCStaticQueue.h" << "(" << 67 << ") : "
               << "Nothing in this queue - you should have checked first!" << "\n";
             if (g_pfnErrorReport)

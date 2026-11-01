@@ -7,16 +7,16 @@
 //   (through the array-record registration 0x00C3BCB0) next to the landed CWaveDataReader::OnRecord 0x00C31230
 //   (vtable 0x012B4D3C, "LHAudioWaveData"). Same find-or-create shape; the first argument is never read. The catalog's
 //   gapscan name is a placeholder.
-// Callees: the libpk string's CDebugStream(const char*) 0x00C0BFE0 / ~CDebugStream 0x00C0BA40 (the chunk's trace rows'
+// Callees: the libpk string's CString(const char*) 0x00C0BFE0 / ~CString 0x00C0BA40 (the chunk's trace rows'
 //   spelling of 0x00C0BA40, one name per address; the catalog says CString); the map's slot-17 Find and the
 //   landed CAutoMapOwner_00c31710::CreateEntry 0x00C31710 (12-byte entry: key +0, word array +4); the entry array's
 //   Resize 0x00C31810 and operator[] 0x00C2EBC0 (bound as CAutoDeleteArray_00c3b7a0).
 // Shape: the key string is homed in the dead `name` argument slot and destroyed before the resize; the find-or-create
 //   is the inline early-return member the landed 0x00C31230 uses (both results meet in eax).
-struct CDebugStream {                             // the libpk string (catalog: CString)
+class CString { public:                             // the libpk string (catalog: CString)
     char* m_pBuffer;
-    CDebugStream(const char* text);               // 0x00C0BFE0
-    ~CDebugStream();                              // 0x00C0BA40
+    CString(const char* text);               // 0x00C0BFE0
+    ~CString();                              // 0x00C0BA40
 };
 
 struct CAutoDeleteArray_00c3b7a0 {                // owned word array: block, count
@@ -60,7 +60,7 @@ void CSampleTableReader_012b4d40::OnRecord(void* context, const char* name, unsi
 {
     CEntry_00c31710* entry;
     {
-        CDebugStream key(name);
+        CString key(name);
         entry = m_pBank->m_samples.Get(&key);
     }
     entry->m_values.Resize(count);

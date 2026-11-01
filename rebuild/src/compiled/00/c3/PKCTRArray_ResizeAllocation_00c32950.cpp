@@ -6,7 +6,7 @@
 //   0x00C32E26 in the PKCTRArray code.
 // Callees: scalar operator new 0x00BFEA1A / operator delete 0x00BFE9BC; the libpk assertion line as the landed
 //   CResourceArray destructor 0x00C32BF0 (CString @ 0x0139C900 / Append 0x00C0DEC0 / AppendNumber 0x00C0DF00 /
-//   ~CString 0x00C0BA40, sink 0x0143BB2C, CTrace 0x00C16750). Literals ".\PKCTRArray.cpp" lines 29 / 31 / 34 with
+//   ~CString 0x00C0BA40, sink 0x0143BB2C, CDebugBreak 0x00C16750). Literals ".\PKCTRArray.cpp" lines 29 / 31 / 34 with
 //   "Error: PK", "EMEM" and "NULL" (retail .rdata 0x012B4E74 / 0x012B1B58 / 0x012393E4).
 // Layout (descriptive, libpk has no PDB; as the landed 0x00C32BF0): vtable +0, entry block +0x04, capacity +0x08
 //   (the item count at +0x0C is untouched here).
@@ -21,27 +21,27 @@ extern char* g_pchNil_0139c900;                         // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink_0143bb2c;                // 0x0143BB2C
 
-struct CString {                                        // MFC-style string: one word
+class CString { public:                                        // MFC-style string: one word
     char* m_pchData;
     CString() : m_pchData(g_pchNil_0139c900) { }
     ~CString();                                         // 0x00C0BA40
-    CString* __fastcall Append(const char* text);       // 0x00C0DEC0
-    CString* __fastcall AppendNumber(long value);       // 0x00C0DF00
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
 };
 
-struct CTrace {                                         // empty debug-break temporary
-    CTrace();                                           // 0x00C16750
+struct CDebugBreak {                                         // empty debug-break temporary
+    CDebugBreak();                                           // 0x00C16750
 };
 
 #define PK_ASSERT_MSG(cond, line_no, message)                                                                  \
     if (!(cond)) {                                                                                               \
         {                                                                                                        \
             CString line;                                                                                        \
-            line.Append(".\\PKCTRArray.cpp")->Append("(")->AppendNumber(line_no)->Append(") : ")->Append(message)->Append("\n"); \
+            line << ".\\PKCTRArray.cpp" << "(" << line_no << ") : " << message << "\n"; \
             if (g_pfnLogSink_0143bb2c)                                                                           \
                 g_pfnLogSink_0143bb2c(line.m_pchData);                                                           \
         }                                                                                                        \
-        CTrace();                                                                                                \
+        CDebugBreak();                                                                                                \
     }
 
 class PKCTRArray {

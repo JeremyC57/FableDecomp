@@ -12,14 +12,14 @@
 //   buffer (the second Read reuses eax = 0x104 as its size push); the count is zeroed after its address push; the
 //   result `read ? count : 0` compiles to neg/sbb/and.
 // Label correction: the catalog's `LHFileSegment_ReadMurderTwistData` is propagated; descriptive name.
-struct CString_00c16e10 {                  // MFC-style string: one word
+class CString { public:                  // MFC-style string: one word
     char* m_pchData;
-    CString_00c16e10(const char* text);    // 0x00C0BFE0
-    ~CString_00c16e10();                   // 0x00C0BA40
+    CString(const char* text);    // 0x00C0BFE0
+    ~CString();                   // 0x00C0BA40
 };
 
 struct CSegmentFile_00c16e10 {
-    int OpenSegment(const CString_00c16e10& name);   // 0x00C2D9C0: 0 found and positioned, -1 missing
+    int OpenSegment(const CString& name);   // 0x00C2D9C0: 0 found and positioned, -1 missing
     int Read(void* buffer, int size);                // 0x00C2DA00: bytes read, negative on error
 };
 
@@ -28,7 +28,7 @@ long __fastcall ReadBankInfoCount(CSegmentFile_00c16e10* file)
     char name[0x104 + 1];
     long count;
     int read;
-    bool missing = file->OpenSegment(CString_00c16e10("LHFileSegmentBankInfo")) < 0;
+    bool missing = file->OpenSegment(CString("LHFileSegmentBankInfo")) < 0;
     if (missing)
         return -1;
     if (file->Read(name, 0x104) != 0x104)

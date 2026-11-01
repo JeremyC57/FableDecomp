@@ -9,7 +9,7 @@
 //   reference count +4). Caller: the async read thread 0x00C1A9C0, after a request's completion callback. The manifest
 //   label "FileManager_CloseHandle" is descriptive.
 // Callees: PKCTRRedblackMap::Find 0x00C1AE50 (bound) and the map's remove-by-key 0x00C1B7D0 (unbound: descriptive
-//   `Remove`), the libpk trace stream (CDebugStream 0x00C0DEC0 / 0x00C0DF00 / ~0x00C0BA40, buffer g_pDebugBuffer 0x0139C900,
+//   `Remove`), the libpk trace stream (CString 0x00C0DEC0 / 0x00C0DF00 / ~0x00C0BA40, buffer g_pDebugBuffer 0x0139C900,
 //   hook g_pfnErrorReport 0x0143BB2C, CDebugBreak 0x00C16750: the dominant landed spellings), KERNEL32 CloseHandle (import
 //   0x0143FE30), operator delete 0x00BFE9BC.
 // Shape: the map's Find and remove-by-key have same-TU bodies (`#pragma auto_inline(off)`; Find is the landed GetFileSize
@@ -26,12 +26,12 @@ class PKCProtectionInstance { public:              // 8-byte scoped lock
     PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
     ~PKCProtectionInstance();                              // 0x00C0FFE0
 };
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -101,7 +101,7 @@ void PKCDefaultFileManager::CloseFile(unsigned long key)
     SOpenFile_00c1a370* file;
     PKCProtectionInstance lock((PKCCriticalSection*)m_section);
     if (m_files.Find(&key, (void**)&file) != 0) {
-        CDebugStream s(g_pDebugBuffer);
+        CString s(g_pDebugBuffer);
         s << ".\\PKCDefaultFileManager.cpp" << "(" << 65 << ") : " << "something has gone wrong here" << "\n";
         if (g_pfnErrorReport)
             g_pfnErrorReport(s.m_pBuffer);
@@ -109,7 +109,7 @@ void PKCDefaultFileManager::CloseFile(unsigned long key)
     }
     if (file->m_refCount <= 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << ".\\PKCDefaultFileManager.cpp" << "(" << 68 << ") : " << "Reference count for file out of sync" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

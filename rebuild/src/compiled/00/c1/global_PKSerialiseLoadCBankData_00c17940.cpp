@@ -18,12 +18,12 @@
 //   bodies of GetChecked / Release must be in the TU (`#pragma auto_inline(off)`): with declarations only VC7.1 assumes
 //   GetChecked may change m_pObject, tests the owner through eax and reloads it (395v393, no esi). The CDebugBreak
 //   temporary lands in a byte of a dead slot ([esp+7]) by itself.
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -75,7 +75,7 @@ template <class T> T* PKCAutoDelete<T>::GetChecked()
 {
     if (m_pObject == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDelete.h" << "(" << 32 << ") : " << "Should have checked first..." << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -88,7 +88,7 @@ template <class T> T* PKCAutoDelete<T>::Release()
 {
     if (m_pObject == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDelete.h" << "(" << 42 << ") : " << "Shouls have checked first..." << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -107,7 +107,7 @@ template <class T> T* __fastcall PKSerialiseLoad(IRemoteSource* source)
     PKCAutoDelete<T> object(new T);
     if (object.m_pObject == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKSerialiseLoad.h" << "(" << 34 << ") : " << "EMEM" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

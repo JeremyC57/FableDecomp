@@ -6,17 +6,17 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c1d0)(const char* text);
 extern PFNLOGSINK_00c4c1d0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c4c1d0 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c4c1d0() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c4c1d0();                       // 0x00C0BA40
-    CString_00c4c1d0* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c4c1d0* __fastcall AppendNumber(long value);   // 0x00C0DF00
-    CString_00c4c1d0* __fastcall AppendNumber(unsigned long value);   // 0x00C0DF10
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
+    CString& __fastcall operator<<(unsigned long value);   // 0x00C0DF10
 };
 
-struct CTrace_00c4c1d0 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c4c1d0();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct CBuffer_00c4c1d0 {
@@ -32,12 +32,12 @@ unsigned long CBuffer_00c4c1d0::CheckAlignmentOffset(unsigned long bytes)
     unsigned long alignment = m_alignment;
     if (bytes % alignment != 0) {
         {
-            CString_00c4c1d0 line;
-            line.Append(".\\PKRACBuffer.cpp")->Append("(")->AppendNumber(81L)->Append(") : ")->Append("your byte request (")->AppendNumber(bytes)->Append(") was not aligned to ")->AppendNumber(alignment)->Append("\n");
+            CString line;
+            line << ".\\PKRACBuffer.cpp" << "(" << 81L << ") : " << "your byte request (" << bytes << ") was not aligned to " << alignment << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c4c1d0();
+        CDebugBreak();
     }
     return bytes / m_alignment;
 }

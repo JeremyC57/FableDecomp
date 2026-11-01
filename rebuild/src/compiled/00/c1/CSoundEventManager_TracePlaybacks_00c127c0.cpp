@@ -31,25 +31,25 @@ class PKCProtectionInstance { public:                  // 8 bytes: section + ent
     ~PKCProtectionInstance();                    // 0x00C0FFE0
 };
 
-struct CString_00c127c0 {                      // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                      // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c127c0() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c127c0();                        // 0x00C0BA40
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                        // 0x00C0BA40
 };
 
-inline void TraceOutput(const CString_00c127c0&, const CString_00c127c0&) { }   // the release build's trace sink: compiled out, its argument still built
+inline void TraceOutput(const CString&, const CString&) { }   // the release build's trace sink: compiled out, its argument still built
 
 struct CSoundEventManager;
 
 struct CSoundEvent {                  // 0xb4 bytes
-    CString_00c127c0 Describe(CSoundEventManager* manager);   // 0x00C21040
+    CString Describe(CSoundEventManager* manager);   // 0x00C21040
 };
 
 struct CPlaybackSlot_00c127c0 {                // 0x2c bytes
     long m_0;
     CSoundEvent* m_pEvent;             // +0x04
     unsigned char _body[0x24];
-    CString_00c127c0 GetStatus();               // 0x00C27760
+    CString GetStatus();               // 0x00C27760
 };
 
 struct CPlaybackPool_00c127c0 {                // +0x224: PKCFrallocStatic<CPlaybackSlot>

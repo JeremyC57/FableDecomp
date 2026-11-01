@@ -14,16 +14,16 @@
 //   item comparator, kept `void*` as in the landed MoveAllItems spelling.
 // Callees: MoveAllItems 0x00C17B70 (landed leaf, its PKCContainer_00c17b70 interface spelling), operator new 0x00BFEA1A,
 //   PKCTRRedblackTree::PKCTRRedblackTree 0x00C194F0, the implementation's virtual destructor (slot 14, `push 1 ; call [edx+38h]`), the libpk
-//   trace stream (CDebugStream 0x00C0DEC0 / 0x00C0DF00 / ~0x00C0BA40, g_pDebugBuffer 0x0139C900, g_pfnErrorReport 0x0143BB2C,
+//   trace stream (CString 0x00C0DEC0 / 0x00C0DF00 / ~0x00C0BA40, g_pDebugBuffer 0x0139C900, g_pfnErrorReport 0x0143BB2C,
 //   CDebugBreak 0x00C16750; the PKCTRArray::RemoveValue spellings).
 // Layout: local model (no engine header; libpk is not in the PDB type set).
 void* __cdecl operator new(unsigned int size);             // 0x00BFEA1A
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -79,7 +79,7 @@ void PKCTRMorphable::MorphToTree(void* comparator)
     if (m_pImplementation == 0)
     {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << ".\\PKCTRMorphable.cpp" << "(" << 62 << ") : " << "Error: NULL implimentation" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -92,7 +92,7 @@ void PKCTRMorphable::MorphToTree(void* comparator)
         if (implementation == 0)
         {
             {
-                CDebugStream s(g_pDebugBuffer);
+                CString s(g_pDebugBuffer);
                 s << ".\\PKCTRMorphable.cpp" << "(" << 66 << ") : " << "Error: EMEM" << "\n";
                 if (g_pfnErrorReport)
                     g_pfnErrorReport(s.m_pBuffer);

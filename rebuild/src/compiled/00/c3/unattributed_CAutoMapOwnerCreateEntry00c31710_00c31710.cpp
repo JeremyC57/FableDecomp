@@ -7,16 +7,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c31710)(const char* text);
 extern PFNLOGSINK_00c31710 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c31710 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c31710() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c31710();                       // 0x00C0BA40
-    CString_00c31710* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c31710* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c31710 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c31710();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct CEntry_00c31710 {                   // 12 bytes
@@ -36,12 +36,12 @@ CEntry_00c31710* CAutoMapOwner_00c31710::CreateEntry(void* key)
     CEntry_00c31710* entry = new CEntry_00c31710(key);
     if (!entry) {
         {
-            CString_00c31710 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoMap.h")->Append("(")->AppendNumber(40)->Append(") : ")->Append("EMEM")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoMap.h" << "(" << 40L << ") : " << "EMEM" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c31710();
+        CDebugBreak();
     }
     Register(entry);
     return entry;

@@ -7,12 +7,12 @@
 //   Retail sets no result register, so Push returns void. Catalog gapscan name is a placeholder.
 // Callees: the trace string's `__fastcall` appenders 0x00C0DEC0 / 0x00C0DF00, its destructor 0x00C0BA40, the debugger
 //   break temporary 0x00C16750; globals 0x0139C900 (empty buffer) and 0x0143BB2C (report hook).
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -48,7 +48,7 @@ template<class T> void PKCOneShotQueue<T>::Push(const T* item)
 {
     if (m_bFilled != 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCOneShotQueue.h" << "(" << 35 << ") : " << "Already filled this queue!" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

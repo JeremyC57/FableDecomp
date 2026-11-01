@@ -13,16 +13,16 @@ class PKCProtectionInstance { public:                       // 8-byte scoped loc
     ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
-struct CCharString_00c0aa40 {                 // one word: the shared string data
+class CString { public:                 // one word: the shared string data
     void* m_pData;
-    CCharString_00c0aa40(const char* text);   // 0x00C0BFE0
-    CCharString_00c0aa40& operator=(const CCharString_00c0aa40& other);   // 0x00C0C0C0
-    ~CCharString_00c0aa40();                  // 0x00C0BA40
+    CString(const char* text);   // 0x00C0BFE0
+    const CString& operator=(const CString& other);   // 0x00C0C0C0
+    ~CString();                  // 0x00C0BA40
 };
 
 struct CNameTable_00c0aa40 {
     unsigned char _pad[0x364];
-    CCharString_00c0aa40 m_names[16];         // 0x364
+    CString m_names[16];         // 0x364
     void SetName(unsigned long index, const char* text);
 };
 
@@ -30,5 +30,5 @@ void CNameTable_00c0aa40::SetName(unsigned long index, const char* text)
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
     if (index < 16)
-        m_names[index] = CCharString_00c0aa40(text);
+        m_names[index] = CString(text);
 }

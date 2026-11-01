@@ -8,12 +8,12 @@
 //   twin CAutoDeletePointer::GetChecked 0x00C09920 / PKCAutoFile::GetChecked 0x00C31DB0).
 // Shape (family L121): the twin's log block (state 0 -> -1, the trace temporary on a dead frame byte), then the
 //   implementation's virtual called with the two arguments.
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -44,7 +44,7 @@ void CMorphableNode_00c185b0::Slot06(long a, long b)
 {
     if (m_pNode == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << ".\\PKCTRMorphable.cpp" << "(" << 86 << ") : " << "Error: NULL implimentation" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);

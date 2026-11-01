@@ -9,12 +9,12 @@
 //   the message is "Null slave object" at line 0x1c (28). No PDB covers libpk: member and slot names are descriptive.
 // Shape: chunk 436's PK_REPORT_ERROR macro (stream in the push-ecx slot, the CDebugBreak temporary homed in the dead
 //   `slave` argument slot); execution continues into the virtual call after the report.
-struct CDebugStream {                        // 4 bytes: the message text (the library CString over the shared nil buffer)
+class CString { public:                        // 4 bytes: the message text (the library CString over the shared nil buffer)
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text);   // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);         // 0x00C0DF00
-    ~CDebugStream();                        // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);         // 0x00C0DF00
+    ~CString();                        // 0x00C0BA40
 };
 
 struct CDebugBreak {                        // empty class whose constructor breaks into the debugger
@@ -28,7 +28,7 @@ extern void (__fastcall* g_pfnErrorReport)(const char* text);   // 0x0143BB2C
 #define PK_REPORT_ERROR(line, text)                                                         \
     {                                                                                       \
         {                                                                                   \
-            CDebugStream s(g_pDebugBuffer);                                                 \
+            CString s(g_pDebugBuffer);                                                 \
             s << ".\\PKRASlaveObject.cpp" << "(" << (long)(line) << ") : " << text << "\n"; \
             if (g_pfnErrorReport)                                                           \
                 g_pfnErrorReport(s.m_pBuffer);                                              \

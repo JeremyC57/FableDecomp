@@ -7,12 +7,12 @@ static int g_traces = 0;
 typedef void (*PFNLOGSINK)(const char* text);
 static void LogSink(const char* text) { g_logged += text; }
 PFNLOGSINK g_pfnLogSink = 0;
-struct CAssertString {
+struct CString {
     std::string m_text;
-    CAssertString* Append(const char* text) { m_text += text; return this; }
-    CAssertString* AppendNumber(long value) { char b[16]; std::sprintf(b, "%ld", value); m_text += b; return this; }
+    CString* Append(const char* text) { m_text += text; return this; }
+    CString* AppendNumber(long value) { char b[16]; std::sprintf(b, "%ld", value); m_text += b; return this; }
 };
-struct CAssertTrace { CAssertTrace() { ++g_traces; } };
+struct CDebugBreak { CDebugBreak() { ++g_traces; } };
 class PKSerialiseCWriter { public: int id; };
 class PKSerialiseCParser {
 public:
@@ -24,12 +24,12 @@ PKSerialiseCWriter* PKSerialiseCParser::ValidateWriter()
 {
     if (!m_pWriter) {
         {
-            CAssertString line;
+            CString line;
             line.Append(".\\PKSerialiseCParser.cpp")->Append("(")->AppendNumber(17)->Append(") : ")->Append("Null writer")->Append("\n");
             if (g_pfnLogSink)
                 g_pfnLogSink(line.m_text.c_str());
         }
-        CAssertTrace();
+        CDebugBreak();
     }
     return m_pWriter;
 }

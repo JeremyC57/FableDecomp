@@ -12,16 +12,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4cc90)(const char* text);
 extern PFNLOGSINK_00c4cc90 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c4cc90 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c4cc90() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c4cc90();                       // 0x00C0BA40
-    CString_00c4cc90* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c4cc90* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c4cc90 {                   // empty temporary (a debug-break helper): lands on a dead frame byte
-    CTrace_00c4cc90();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
+    CDebugBreak();                         // 0x00C16750
 };
 
 CConsoleVariable_00c4cc90* __fastcall CreateConsoleVariable_00c4cc90(void* name, void* value)
@@ -29,12 +29,12 @@ CConsoleVariable_00c4cc90* __fastcall CreateConsoleVariable_00c4cc90(void* name,
     CConsoleVariable_00c4cc90* variable = new CConsoleVariable_00c4cc90(name, value);
     if (!variable) {
         {
-            CString_00c4cc90 line;
-            line.Append(".\\PKRACMasterObject.cpp")->Append("(")->AppendNumber(146)->Append(") : ")->Append("EMEM")->Append("\n");
+            CString line;
+            line << ".\\PKRACMasterObject.cpp" << "(" << 146L << ") : " << "EMEM" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c4cc90();
+        CDebugBreak();
     }
     return variable;
 }

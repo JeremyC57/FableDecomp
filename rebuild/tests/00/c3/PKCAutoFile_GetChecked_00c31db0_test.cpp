@@ -7,11 +7,11 @@ static int g_reports = 0, g_breaks = 0;
 static void (*g_pfnErrorReport)(const char*) = 0;
 static void Report(const char* text) { ++g_reports; std::strcpy(g_text, text); }
 
-struct CDebugStream {
+struct CString {
     char m_buffer[256];
-    CDebugStream() { m_buffer[0] = 0; }
-    CDebugStream& operator<<(const char* text) { std::strcat(m_buffer, text); return *this; }
-    CDebugStream& operator<<(long value) { char n[16]; std::sprintf(n, "%ld", value); std::strcat(m_buffer, n); return *this; }
+    CString() { m_buffer[0] = 0; }
+    CString& operator<<(const char* text) { std::strcat(m_buffer, text); return *this; }
+    CString& operator<<(long value) { char n[16]; std::sprintf(n, "%ld", value); std::strcat(m_buffer, n); return *this; }
 };
 struct CDebugBreak { CDebugBreak() { ++g_breaks; } };
 
@@ -21,7 +21,7 @@ struct PKCAutoFile {
     {
         if (m_pFile == 0) {
             {
-                CDebugStream s;
+                CString s;
                 s << ".\\PKCAutoFile.cpp" << "(" << 26L << ") : " << "Should have checked first..." << "\n";
                 if (g_pfnErrorReport)
                     g_pfnErrorReport(s.m_buffer);

@@ -8,16 +8,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c169d0)(const char* text);
 extern PFNLOGSINK_00c169d0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c169d0 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c169d0() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c169d0();                       // 0x00C0BA40
-    CString_00c169d0* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c169d0* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c169d0 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c169d0();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 
@@ -43,12 +43,12 @@ void CAutoDeleteArray_00c169d0::Resize(unsigned long count)
     unsigned short* block = new unsigned short[count];
     if (!block) {
         {
-            CString_00c169d0 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDeleteArray.h")->Append("(")->AppendNumber(57)->Append(") : ")->Append("EMEM")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDeleteArray.h" << "(" << 57L << ") : " << "EMEM" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c169d0();
+        CDebugBreak();
     }
     unsigned long keep = count; if (m_count < count) keep = m_count;
     if (keep != 0) {

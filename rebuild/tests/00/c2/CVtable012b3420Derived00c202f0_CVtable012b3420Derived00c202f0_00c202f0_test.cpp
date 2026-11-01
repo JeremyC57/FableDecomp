@@ -20,9 +20,9 @@ static int fails = 0;
 // the body; named after its base's primary vtable, as the landed family 0x00C20000 / 0x00C1FF90.
 // Tried before: one base holding both vptrs (+0,+8 order); two bases (the second base's inlined destructor null-checks
 // the this-adjust, 88/90 bytes); the 0x012B3444 object as a direct member of the derived class (a second EH state).
-struct CStringMember_00c0ba40 {
+struct CString {
     void* m_pData;
-    ~CStringMember_00c0ba40();                     // 0x00C0BA40
+    ~CString();                     // 0x00C0BA40
 };
 
 struct CVtable_012b3420 {                          // vtable 0x012B3420 (the landed ??_G 0x00C1ED90 family)
@@ -40,7 +40,7 @@ struct CBase_00c202f0 : CVtable_012b3420 {
 };
 
 struct __declspec(novtable) CVtable_012b3420_Derived_00c202f0 : CBase_00c202f0 {
-    CStringMember_00c0ba40 m_member;               // +0x10
+    CString m_member;               // +0x10
     ~CVtable_012b3420_Derived_00c202f0();
 };
 
@@ -49,7 +49,7 @@ CVtable_012b3420_Derived_00c202f0::~CVtable_012b3420_Derived_00c202f0()
 }
 // ---- end source ----
 static int g_memberDtors = 0; static void* g_memberThis = 0;
-CStringMember_00c0ba40::~CStringMember_00c0ba40() { ++g_memberDtors; g_memberThis = this; }
+CString::~CString() { ++g_memberDtors; g_memberThis = this; }
 int main()
 {
     CVtable_012b3420 a; CVtable_012b3444 b;

@@ -7,7 +7,7 @@
 // Callees: the request mailbox at +0x48: the landed GetCount 0x00C4BE10 (queue count under the mailbox lock) and
 //   GetResult 0x00C4BC80 (waits, then pops the finished request id); the libpk assertion line as the landed
 //   GetAvailableReadSize / Seek 0x00C4AA40 (CString @ 0x0139C900 / Append 0x00C0DEC0 / AppendNumber 0x00C0DF00 /
-//   ~CString 0x00C0BA40, sink 0x0143BB2C, CTrace 0x00C16750). Literals ".\PKCBufferedReader.cpp" lines 56 / 62 / 63:
+//   ~CString 0x00C0BA40, sink 0x0143BB2C, CDebugBreak 0x00C16750). Literals ".\PKCBufferedReader.cpp" lines 56 / 62 / 63:
 //   "Error: There are no requests pending!", "Error: returned buffer out of scope", "Error: Request ID out of sync".
 // Layout (descriptive, libpk has no PDB): slot-owner map (one byte per buffer slot, 0xFF = free) +0x04, slot count
 //   +0x14, request mailbox +0x48, outstanding request count +0x68.
@@ -17,27 +17,27 @@ extern char* g_pchNil_0139c900;                         // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink_0143bb2c;                // 0x0143BB2C
 
-struct CString {                                        // MFC-style string: one word
+class CString { public:                                        // MFC-style string: one word
     char* m_pchData;
     CString() : m_pchData(g_pchNil_0139c900) { }
     ~CString();                                         // 0x00C0BA40
-    CString* __fastcall Append(const char* text);       // 0x00C0DEC0
-    CString* __fastcall AppendNumber(long value);       // 0x00C0DF00
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
 };
 
-struct CTrace {                                         // empty debug-break temporary
-    CTrace();                                           // 0x00C16750
+struct CDebugBreak {                                         // empty debug-break temporary
+    CDebugBreak();                                           // 0x00C16750
 };
 
 #define PK_ASSERT_MSG(cond, line_no, message)                                                                  \
     if (!(cond)) {                                                                                               \
         {                                                                                                        \
             CString line;                                                                                        \
-            line.Append(".\\PKCBufferedReader.cpp")->Append("(")->AppendNumber(line_no)->Append(") : ")->Append(message)->Append("\n"); \
+            line << ".\\PKCBufferedReader.cpp" << "(" << line_no << ") : " << message << "\n"; \
             if (g_pfnLogSink_0143bb2c)                                                                           \
                 g_pfnLogSink_0143bb2c(line.m_pchData);                                                           \
         }                                                                                                        \
-        CTrace();                                                                                                \
+        CDebugBreak();                                                                                                \
     }
 
 class PKCMailbox {

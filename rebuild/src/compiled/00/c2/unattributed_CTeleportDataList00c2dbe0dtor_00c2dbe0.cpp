@@ -15,15 +15,15 @@ struct CMarker_00c2dbe0 {                  // +0x7c: empty but non-trivial destr
     ~CMarker_00c2dbe0() { }
 };
 
-struct CString_00c2dbe0 {
+class CString { public:
     void* m_pData;
-    ~CString_00c2dbe0();                   // 0x00C0BA40
+    ~CString();                   // 0x00C0BA40
 };
 
 struct CItem_00c2dbe0 {
     long m_key;
     long m_4;
-    CString_00c2dbe0 m_name;               // +8
+    CString m_name;               // +8
 };
 
 struct CNode_00c2dbe0 {

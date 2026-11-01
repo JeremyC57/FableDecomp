@@ -4,12 +4,12 @@
 
 static int g_reports = 0, g_breaks = 0, g_deleted = 0;
 static char g_last[256];
-struct CDebugStream {
+struct CString {
     char m_buf[256];
     char* m_pBuffer;
-    CDebugStream(char*) : m_pBuffer(m_buf) { m_buf[0] = 0; }
-    CDebugStream& operator<<(const char* text) { std::strcat(m_buf, text); return *this; }
-    CDebugStream& operator<<(long value) { char n[16]; std::sprintf(n, "%ld", value); std::strcat(m_buf, n); return *this; }
+    CString(char*) : m_pBuffer(m_buf) { m_buf[0] = 0; }
+    CString& operator<<(const char* text) { std::strcat(m_buf, text); return *this; }
+    CString& operator<<(long value) { char n[16]; std::sprintf(n, "%ld", value); std::strcat(m_buf, n); return *this; }
 };
 struct CDebugBreak { CDebugBreak() { g_breaks++; } };
 static char* g_pDebugBuffer = 0;
@@ -52,7 +52,7 @@ struct PKCTRMorphable {
         if (m_pImplementation == 0)
         {
             {
-                CDebugStream s(g_pDebugBuffer);
+                CString s(g_pDebugBuffer);
                 s << ".\\PKCTRMorphable.cpp" << "(" << 62 << ") : " << "Error: NULL implimentation" << "\n";
                 if (g_pfnErrorReport)
                     g_pfnErrorReport(s.m_pBuffer);
@@ -65,7 +65,7 @@ struct PKCTRMorphable {
             PKCContainer* implementation = new PKCTRRedblackTree(0);
             if (implementation == 0)
             {
-                CDebugStream s(g_pDebugBuffer);
+                CString s(g_pDebugBuffer);
                 s << ".\\PKCTRMorphable.cpp" << "(" << 66 << ") : " << "Error: EMEM" << "\n";
             }
             MoveAllItems(comparator, m_pImplementation, implementation);

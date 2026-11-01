@@ -16,15 +16,15 @@ extern char* g_pchNil_0139c900;                            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c388a0)(const char* text);
 extern PFNLOGSINK_00c388a0 g_pfnLogSink_0143bb2c;          // 0x0143BB2C
 
-struct CString_00c388a0 {
+class CString { public:
     char* m_pchData;
-    CString_00c388a0() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c388a0();                                   // 0x00C0BA40
-    CString_00c388a0* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c388a0* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                                   // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
-struct CTrace_00c388a0 {
-    CTrace_00c388a0();                                     // 0x00C16750
+struct CDebugBreak {
+    CDebugBreak();                                     // 0x00C16750
 };
 struct CFrameStreamer_00c388a0 {
     virtual void v0();
@@ -44,21 +44,21 @@ long CInstance_00c388a0::CheckFrameStreamer()
 {
     if (!m_pFrameStreamer) {
         {
-            CString_00c388a0 line;
-            line.Append(".\\CInstance.cpp")->Append("(")->AppendNumber(8)->Append(") : ")->Append("Null frame streamer")->Append("\n");
+            CString line;
+            line << ".\\CInstance.cpp" << "(" << 8L << ") : " << "Null frame streamer" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c388a0();
+        CDebugBreak();
     }
     if (m_state != 2) {
         {
-            CString_00c388a0 line;
-            line.Append(".\\CInstance.cpp")->Append("(")->AppendNumber(9)->Append(") : ")->Append("ESTATE")->Append("\n");
+            CString line;
+            line << ".\\CInstance.cpp" << "(" << 9L << ") : " << "ESTATE" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c388a0();
+        CDebugBreak();
     }
     long ready = m_pFrameStreamer->IsReady();
     if (!ready)

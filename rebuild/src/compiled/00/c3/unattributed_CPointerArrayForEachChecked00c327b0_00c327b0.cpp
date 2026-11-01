@@ -6,16 +6,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c327b0)(const char* text);
 extern PFNLOGSINK_00c327b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c327b0 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c327b0() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c327b0();                       // 0x00C0BA40
-    CString_00c327b0* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c327b0* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c327b0 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c327b0();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct IVisitor_00c327b0 {
@@ -35,12 +35,12 @@ void CPointerArray_00c327b0::ForEachChecked(IVisitor_00c327b0* visitor)
     for (unsigned long i = 0; i < m_count; ++i) {
         if (m_pData[i] == 0) {
             {
-                CString_00c327b0 line;
-                line.Append(".\\PKCTRArray.cpp")->Append("(")->AppendNumber(220)->Append(") : ")->Append("Error: Null item")->Append("\n");
+                CString line;
+                line << ".\\PKCTRArray.cpp" << "(" << 220L << ") : " << "Error: Null item" << "\n";
                 if (g_pfnLogSink_0143bb2c)
                     g_pfnLogSink_0143bb2c(line.m_pchData);
             }
-            CTrace_00c327b0();
+            CDebugBreak();
         }
         visitor->Visit(&m_pData[i]);
     }

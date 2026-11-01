@@ -8,15 +8,15 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 extern "C" long __stdcall CODA_IsSourcePlaying(void* source);             // 0x00C35CA0: +0x10 flags & 0x217
 extern "C" unsigned long __stdcall CODA_GetSourcePosition(void* source);   // 0x00C35CC0
 
-struct CString_00c27760 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c27760() : m_pchData(g_pchNil_0139c900) { }
-    CString_00c27760(const char* text);    // 0x00C0BFE0
-    CString_00c27760(const CString_00c27760& other);   // 0x00C0DAB0
-    ~CString_00c27760();                       // 0x00C0BA40
-    const CString_00c27760& operator=(const char* text);   // 0x00C0C200
-    CString_00c27760* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c27760* __fastcall AppendNumber(unsigned long value);   // 0x00C0DF10
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    CString(const char* text);    // 0x00C0BFE0
+    CString(const CString& other);   // 0x00C0DAB0
+    ~CString();                       // 0x00C0BA40
+    const CString& operator=(const char* text);   // 0x00C0C200
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(unsigned long value);   // 0x00C0DF10
 };
 
 class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
@@ -33,18 +33,18 @@ struct CPlayback_00c27760 {
     void* m_pSource;                       // +0xc
     unsigned char _pad[0x10];
     unsigned long m_length;                // +0x20
-    CString_00c27760 LogStatus();
+    CString LogStatus();
 };
 
-CString_00c27760 CPlayback_00c27760::LogStatus()
+CString CPlayback_00c27760::LogStatus()
 {
     PKCProtectionInstance lock(&g_soundLock);
     if (CODA_IsSourcePlaying(m_pSource)) {
-        CString_00c27760 line;
+        CString line;
         line = "CODA reports source IS playing";
         unsigned long position = CODA_GetSourcePosition(m_pSource);
-        line.Append("(")->AppendNumber(position)->Append("/")->AppendNumber(m_length)->Append(")");
+        line << "(" << position << "/" << m_length << ")";
         return line;
     }
-    return CString_00c27760("CODA reports source is NOT playing");
+    return CString("CODA reports source is NOT playing");
 }

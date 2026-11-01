@@ -7,12 +7,12 @@
 #define __declspec(x)
 typedef long long __int64;
 #endif
-struct CDebugStream {                        // 4 bytes: the message text (the library CString over the shared nil buffer)
+struct CString {                        // 4 bytes: the message text (the library CString over the shared nil buffer)
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text);   // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);         // 0x00C0DF00
-    ~CDebugStream();                        // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);         // 0x00C0DF00
+    ~CString();                        // 0x00C0BA40
 };
 
 struct CDebugBreak {                        // empty class whose constructor breaks into the debugger
@@ -25,7 +25,7 @@ extern void (__fastcall* g_pfnErrorReport)(const char* text);   // 0x0143BB2C
 #define PK_REPORT_ERROR(line, text)                                                                 \
     {                                                                                               \
         {                                                                                           \
-            CDebugStream s(g_pDebugBuffer);                                                         \
+            CString s(g_pDebugBuffer);                                                         \
             s << ".\\CDecompressorInterface.cpp" << "(" << (long)(line) << ") : " << text << "\n";  \
             if (g_pfnErrorReport)                                                                   \
                 g_pfnErrorReport(s.m_pBuffer);                                                      \
@@ -52,9 +52,9 @@ char* g_pDebugBuffer = g_text;
 static char g_reported[256]; static int g_reports = 0, g_breaks = 0, g_streams = 0;
 static void __fastcall Report(const char* text) { std::strcpy(g_reported, text); ++g_reports; }
 void (__fastcall* g_pfnErrorReport)(const char* text) = Report;
-CDebugStream& __fastcall CDebugStream::operator<<(const char* text) { std::strcat(m_pBuffer, text); return *this; }
-CDebugStream& __fastcall CDebugStream::operator<<(long value) { std::sprintf(m_pBuffer + std::strlen(m_pBuffer), "%ld", value); return *this; }
-CDebugStream::~CDebugStream() { ++g_streams; m_pBuffer[0] = 0; }
+CString& __fastcall CString::operator<<(const char* text) { std::strcat(m_pBuffer, text); return *this; }
+CString& __fastcall CString::operator<<(long value) { std::sprintf(m_pBuffer + std::strlen(m_pBuffer), "%ld", value); return *this; }
+CString::~CString() { ++g_streams; m_pBuffer[0] = 0; }
 CDebugBreak::CDebugBreak() { ++g_breaks; }
 CDecompressor::~CDecompressor() { }
 static int g_destroyed = 0;

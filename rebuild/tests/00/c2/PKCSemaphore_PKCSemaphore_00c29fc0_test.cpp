@@ -3,11 +3,11 @@
 #include <cstring>
 
 // The libpk message stream: appends text and signed numbers to one buffer; the report hook and the debugger break are counted.
-struct CDebugStream {
+struct CString {
     char m_text[256];
-    CDebugStream() { m_text[0] = 0; }
-    CDebugStream& operator<<(const char* text) { std::strcat(m_text, text); return *this; }
-    CDebugStream& operator<<(long value) { char b[32]; std::sprintf(b, "%ld", value); std::strcat(m_text, b); return *this; }
+    CString() { m_text[0] = 0; }
+    CString& operator<<(const char* text) { std::strcat(m_text, text); return *this; }
+    CString& operator<<(long value) { char b[32]; std::sprintf(b, "%ld", value); std::strcat(m_text, b); return *this; }
 };
 static char g_lastReport[256];
 static int g_reports = 0, g_breaks = 0;
@@ -18,7 +18,7 @@ struct CDebugBreak { CDebugBreak() { ++g_breaks; } };
 #define PK_REPORT_ERROR(line, text)                                                         \
     {                                                                                       \
         {                                                                                   \
-            CDebugStream s;                                                                 \
+            CString s;                                                                 \
             s << ".\\PKCSemaphore.cpp" << "(" << (long)(line) << ") : " << text << "\n";  \
             if (g_pfnErrorReport)                                                           \
                 g_pfnErrorReport(s.m_text);                                                 \

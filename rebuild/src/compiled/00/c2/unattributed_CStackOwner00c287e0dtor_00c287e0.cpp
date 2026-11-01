@@ -26,9 +26,9 @@ struct CVector_00c287e0 {                  // +0x440: {begin, end, capacity}
     }
 };
 
-struct CMember_00c287e0 {                  // +0x450
+class CString { public:                  // +0x450
     unsigned char _body[4];
-    ~CMember_00c287e0();                   // 0x00C0BA40
+    ~CString();                   // 0x00C0BA40
 };
 
 struct CStackOwner_00c287e0 {              // vtable 0x012B4098
@@ -38,7 +38,7 @@ struct CStackOwner_00c287e0 {              // vtable 0x012B4098
     unsigned char _pad2[0x408];
     CVector_00c287e0 m_vector;             // +0x440
     long m_44c;
-    CMember_00c287e0 m_member;             // +0x450
+    CString m_member;             // +0x450
     void Cleanup();                        // 0x00C27E60
     ~CStackOwner_00c287e0();
 };

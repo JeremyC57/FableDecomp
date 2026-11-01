@@ -12,16 +12,16 @@ extern char* g_pchNil;                              // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink;                     // 0x0143BB2C
 
-struct CAssertString {                              // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                              // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CAssertString() : m_pchData(g_pchNil) { }
-    ~CAssertString();                               // 0x00C0BA40
-    CAssertString* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CAssertString* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil) { }
+    ~CString();                               // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CAssertTrace {                               // empty temporary (a debug-break helper)
-    CAssertTrace();                                 // 0x00C16750
+struct CDebugBreak {                               // empty temporary (a debug-break helper)
+    CDebugBreak();                                 // 0x00C16750
 };
 
 class PKSerialiseCWriter;
@@ -37,12 +37,12 @@ PKSerialiseCWriter* PKSerialiseCParser::ValidateWriter()
 {
     if (!m_pWriter) {
         {
-            CAssertString line;
-            line.Append(".\\PKSerialiseCParser.cpp")->Append("(")->AppendNumber(17)->Append(") : ")->Append("Null writer")->Append("\n");
+            CString line;
+            line << ".\\PKSerialiseCParser.cpp" << "(" << 17L << ") : " << "Null writer" << "\n";
             if (g_pfnLogSink)
                 g_pfnLogSink(line.m_pchData);
         }
-        CAssertTrace();
+        CDebugBreak();
     }
     return m_pWriter;
 }

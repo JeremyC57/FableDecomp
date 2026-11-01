@@ -5,7 +5,7 @@
 //   per assertion's log line: 0, 1, 2).
 // Callees: the libpk log-line string (as the landed PKCBufferedReader Seek 0x00C4AA40: default constructed from the
 //   shared empty data @ 0x0139C900, Append(const char*) @ 0x00C0DEC0 / AppendNumber(long) @ 0x00C0DF00 (`__fastcall`
-//   members), ~CString @ 0x00C0BA40), the optional log sink @ 0x0143BB2C and the CTrace debug-break temporary
+//   members), ~CString @ 0x00C0BA40), the optional log sink @ 0x0143BB2C and the CDebugBreak debug-break temporary
 //   @ 0x00C16750. Literals: ".\PKCBufferedReader.cpp" lines 97 / 101 / 102 with "Error: should be aligned to
 //   granularity", "Error: Should not have primed this buffer...", "Error: Cannot return a negative size!!".
 // Layout: the landed reader model: granularity (block size) +0x08, stream size +0x20.
@@ -16,27 +16,27 @@ extern char* g_pchNil_0139c900;                         // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK)(const char* text);
 extern PFNLOGSINK g_pfnLogSink_0143bb2c;                // 0x0143BB2C
 
-struct CString {                                        // MFC-style string: one word
+class CString { public:                                        // MFC-style string: one word
     char* m_pchData;
     CString() : m_pchData(g_pchNil_0139c900) { }
     ~CString();                                         // 0x00C0BA40
-    CString* __fastcall Append(const char* text);       // 0x00C0DEC0
-    CString* __fastcall AppendNumber(long value);       // 0x00C0DF00
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
 };
 
-struct CTrace {                                         // empty debug-break temporary
-    CTrace();                                           // 0x00C16750
+struct CDebugBreak {                                         // empty debug-break temporary
+    CDebugBreak();                                           // 0x00C16750
 };
 
 #define PK_ASSERT_MSG(cond, line_no, message)                                                                  \
     if (!(cond)) {                                                                                               \
         {                                                                                                        \
             CString line;                                                                                        \
-            line.Append(".\\PKCBufferedReader.cpp")->Append("(")->AppendNumber(line_no)->Append(") : ")->Append(message)->Append("\n"); \
+            line << ".\\PKCBufferedReader.cpp" << "(" << line_no << ") : " << message << "\n"; \
             if (g_pfnLogSink_0143bb2c)                                                                           \
                 g_pfnLogSink_0143bb2c(line.m_pchData);                                                           \
         }                                                                                                        \
-        CTrace();                                                                                                \
+        CDebugBreak();                                                                                                \
     }
 
 class PKCBufferedReader {

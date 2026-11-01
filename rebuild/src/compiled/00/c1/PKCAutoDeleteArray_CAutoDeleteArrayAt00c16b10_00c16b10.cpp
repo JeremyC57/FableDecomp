@@ -6,17 +6,17 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c16b10)(const char* text);
 extern PFNLOGSINK_00c16b10 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c16b10 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c16b10() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c16b10();                       // 0x00C0BA40
-    CString_00c16b10* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c16b10* __fastcall AppendNumber(long value);   // 0x00C0DF00
-    CString_00c16b10* __fastcall AppendNumber(unsigned long value);   // 0x00C0DF10
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
+    CString& __fastcall operator<<(unsigned long value);   // 0x00C0DF10
 };
 
-struct CTrace_00c16b10 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c16b10();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct CAutoDeleteArray_00c16b10 {
@@ -29,12 +29,12 @@ unsigned short* CAutoDeleteArray_00c16b10::At(unsigned long index)
 {
     if (!(index < m_count)) {
         {
-            CString_00c16b10 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDeleteArray.h")->Append("(")->AppendNumber(77L)->Append(") : ")->Append("Index ")->AppendNumber(index)->Append(" is out of range (")->AppendNumber(m_count)->Append(")")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDeleteArray.h" << "(" << 77L << ") : " << "Index " << index << " is out of range (" << m_count << ")" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c16b10();
+        CDebugBreak();
     }
     return &m_pData[index];
 }

@@ -12,16 +12,16 @@
 //   first and lays it out last, sharing the final epilogue with the default; GetScope's body sits above (the retail TU
 //   holds it right before this function).
 // Label correction: the catalog's `TemplateConstruct_AndFindAnimation` is propagated; descriptive names.
-struct CString_00c196a0 {                  // MFC-style string: one word
+class CString { public:                  // MFC-style string: one word
     char* m_pchData;
-    CString_00c196a0(const char* text);    // 0x00C0BFE0
-    ~CString_00c196a0();                   // 0x00C0BA40
+    CString(const char* text);    // 0x00C0BFE0
+    ~CString();                   // 0x00C0BA40
 };
 
 struct CObject_00c196a0;
 
 struct CScope_00c196a0 {
-    CObject_00c196a0* FindByName(const CString_00c196a0& name, long flags);   // 0x00C101D0
+    CObject_00c196a0* FindByName(const CString& name, long flags);   // 0x00C101D0
     CObject_00c196a0* FindById(long id);           // 0x00C10140
     CObject_00c196a0* FindByAltId(long id);        // 0x00C10120
 };

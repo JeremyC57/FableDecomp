@@ -4,14 +4,14 @@
 // The sibling of the drain-loop destructors landed at 0x00C3AC40 / 0x00C3B1D0 with an item type
 // whose implicit destructor is non-trivial (so `delete item` is null-checked and inlines the
 // member destructor). The manifest label is propagated; the classes are named by address.
-struct CMember_00c30940 {
+class CString { public:
     unsigned char _body[4];
-    ~CMember_00c30940();                   // 0x00C0BA40
+    ~CString();                   // 0x00C0BA40
 };
 
 struct CItem_00c30940 {
     long m_key;                            // +0
-    CMember_00c30940 m_member;             // +4
+    CString m_member;             // +4
 };
 
 struct CContainerBase_00c30940 {           // vtable 0x012B1AB0

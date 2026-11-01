@@ -15,16 +15,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4bc80)(const char* text);
 extern PFNLOGSINK_00c4bc80 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c4bc80 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c4bc80() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c4bc80();                       // 0x00C0BA40
-    CString_00c4bc80* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c4bc80* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c4bc80 {                   // empty temporary (a debug-break helper): lands on a dead frame byte
-    CTrace_00c4bc80();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct CResultQueue_00c4bc80 {
@@ -51,12 +51,12 @@ void* CMailbox_00c4bc80::GetResult()
     PKCProtectionInstance lock(this);
     if (!(m_pQueue->GetCount() > 0)) {
         {
-            CString_00c4bc80 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCMailbox.h")->Append("(")->AppendNumber(63)->Append(") : ")->Append("the queue is out of step with the mailbox handler")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCMailbox.h" << "(" << 63L << ") : " << "the queue is out of step with the mailbox handler" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c4bc80();
+        CDebugBreak();
     }
     return m_pQueue->Pop();
 }

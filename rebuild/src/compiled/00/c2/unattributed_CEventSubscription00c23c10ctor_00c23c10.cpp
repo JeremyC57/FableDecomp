@@ -9,15 +9,15 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c23c10)(const char* text);
 extern PFNLOGSINK_00c23c10 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c23c10 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c23c10() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c23c10();                       // 0x00C0BA40
-    CString_00c23c10* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c23c10* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
-struct CTrace_00c23c10 {                   // empty temporary (a debug-break helper): lands on a dead frame byte
-    CTrace_00c23c10();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct SEntry_00c23c10 { unsigned char _body[0x14]; };   // 20 bytes per subscription entry
@@ -44,22 +44,22 @@ CEventSubscription_00c23c10::CEventSubscription_00c23c10(unsigned long count)
     m_pEntries = new SEntry_00c23c10[count];
     if (!m_pEntries) {
         {
-            CString_00c23c10 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h")->Append("(")->AppendNumber(63)->Append(") : ")->Append("Memory allocation failure")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h" << "(" << 63L << ") : " << "Memory allocation failure" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c23c10();
+        CDebugBreak();
     }
     m_pSlots = new long[m_count];
     if (!m_pSlots) {
         {
-            CString_00c23c10 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h")->Append("(")->AppendNumber(65)->Append(") : ")->Append("Memory allocation failure")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h" << "(" << 65L << ") : " << "Memory allocation failure" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c23c10();
+        CDebugBreak();
     }
     for (unsigned long i = 0; i < m_count; ++i)
         InitEntry(&m_pEntries[i]);

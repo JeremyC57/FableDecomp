@@ -2,16 +2,16 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C35510, oracle length 197 bytes. Built under /EHsc.
 // Retail bytes:  ... mov esi,[esp+18h] ; test esi,esi ; jne go ; (log line as in 0x00C62E60 with line 6) ; go: lea ecx,[esp+18h] ; call CTrace::CTrace ; mov ecx,[esi] ; mov edx,[ecx] ; call [edx] ; lea ecx,[esi+8] ; call CSemaphore::Release ; ... xor eax,eax ; ... ret 4
 // The sibling of 0x00C62E60. The manifest label is a description; named by the shape.
-struct CLogLine_00c35510 {                 // one word: the shared buffer
+class CString { public:                 // one word: the shared buffer
     void* m_pBuffer;
-    CLogLine_00c35510(void* buffer) : m_pBuffer(buffer) { }
-    ~CLogLine_00c35510();                      // 0x00C0BA40
-    CLogLine_00c35510* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CLogLine_00c35510* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString(void* buffer) : m_pBuffer(buffer) { }
+    ~CString();                      // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c35510 {                       // empty temporary (a debug-break helper): homed in a dead byte (here the argument slot), so the log line keeps a frame local
-    CTrace_00c35510();                         // 0x00C16750: calls an import and returns `this`
+struct CDebugBreak {                       // empty temporary (a debug-break helper): homed in a dead byte (here the argument slot), so the log line keeps a frame local
+    CDebugBreak();                         // 0x00C16750: calls an import and returns `this`
 };
 
 typedef void (__fastcall* PFNLOGSINK_00c35510)(void* buffer);
@@ -42,12 +42,12 @@ long CThreadHost_00c35510::ProcessThreadManager(CThreadManager_00c35510* manager
 {
     if (!manager) {
         {
-            CLogLine_00c35510 line(g_logBuffer_0139c900);
-            line.Append(".\\PKCThreadManager.cpp")->Append("(")->AppendNumber(6)->Append(") : ")->Append("Null thread manager")->Append("\n");
+            CString line(g_logBuffer_0139c900);
+            line << ".\\PKCThreadManager.cpp" << "(" << 6L << ") : " << "Null thread manager" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pBuffer);
         }
-        CTrace_00c35510();
+        CDebugBreak();
     }
     manager->m_pOwner->Run();
     manager->m_semaphore.Release();

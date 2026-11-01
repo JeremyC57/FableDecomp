@@ -7,12 +7,12 @@
 static char g_last[256];
 static int g_reports = 0, g_breaks = 0;
 
-struct CDebugStream {
+struct CString {
     char m_text[256];
     char* m_pBuffer;
-    CDebugStream(const char* init) : m_pBuffer(m_text) { std::strcpy(m_text, init); }
-    CDebugStream& operator<<(const char* t) { std::strcat(m_text, t); return *this; }
-    CDebugStream& operator<<(long v) { char b[16]; std::sprintf(b, "%ld", v); std::strcat(m_text, b); return *this; }
+    CString(const char* init) : m_pBuffer(m_text) { std::strcpy(m_text, init); }
+    CString& operator<<(const char* t) { std::strcat(m_text, t); return *this; }
+    CString& operator<<(long v) { char b[16]; std::sprintf(b, "%ld", v); std::strcat(m_text, b); return *this; }
 };
 struct CDebugBreak { CDebugBreak() { ++g_breaks; } };
 static void Report(const char* t) { ++g_reports; std::strcpy(g_last, t); }
@@ -25,12 +25,12 @@ public:
     C16BitSamplePtr(short* pSamples, long channels) : m_pSamples(pSamples), m_channels(channels)
     {
         if (m_pSamples == 0) {
-            { CDebugStream s(""); s << ".\\C16BitSamplePtr.cpp" << "(" << 8L << ") : " << "Null buffer" << "\n";
+            { CString s(""); s << ".\\C16BitSamplePtr.cpp" << "(" << 8L << ") : " << "Null buffer" << "\n";
               if (g_pfnErrorReport) g_pfnErrorReport(s.m_pBuffer); }
             CDebugBreak();
         }
         if (m_channels == 0) {
-            { CDebugStream s(""); s << ".\\C16BitSamplePtr.cpp" << "(" << 9L << ") : " << "Expecting at least 1 channel!" << "\n";
+            { CString s(""); s << ".\\C16BitSamplePtr.cpp" << "(" << 9L << ") : " << "Expecting at least 1 channel!" << "\n";
               if (g_pfnErrorReport) g_pfnErrorReport(s.m_pBuffer); }
             CDebugBreak();
         }

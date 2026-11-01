@@ -4,12 +4,12 @@
 // Each builder returns the line so the calls chain through eax/ecx; the log sink is a
 // `__fastcall` function pointer taking the buffer. The argument is unused (a callback shape).
 // The manifest label is a description; named by the shape.
-struct CLogLine_00c328b0 {                 // one word: the shared buffer
+class CString { public:                 // one word: the shared buffer
     void* m_pBuffer;
-    CLogLine_00c328b0(void* buffer) : m_pBuffer(buffer) { }
-    ~CLogLine_00c328b0();                  // 0x00C0BA40
-    CLogLine_00c328b0* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CLogLine_00c328b0* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString(void* buffer) : m_pBuffer(buffer) { }
+    ~CString();                  // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
 typedef void (__fastcall* PFNLOGSINK_00c328b0)(void* buffer);
@@ -18,8 +18,8 @@ extern PFNLOGSINK_00c328b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
 void __stdcall WarnNotMorphable_00c328b0(void* unused)
 {
-    CLogLine_00c328b0 line(g_logBuffer_0139c900);
-    line.Append(".\\PKCTRArray.cpp")->Append("(")->AppendNumber(24)->Append(") : ")->Append("Warning: This object is not morphable")->Append("\n");
+    CString line(g_logBuffer_0139c900);
+    line << ".\\PKCTRArray.cpp" << "(" << 24L << ") : " << "Warning: This object is not morphable" << "\n";
     if (g_pfnLogSink_0143bb2c)
         g_pfnLogSink_0143bb2c(line.m_pBuffer);
 }

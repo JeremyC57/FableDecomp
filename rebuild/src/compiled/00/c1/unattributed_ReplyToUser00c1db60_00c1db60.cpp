@@ -6,16 +6,16 @@
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c1db60)(const char* text);
 extern PFNLOGSINK_00c1db60 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
-struct CString_00c1db60 {                  // MFC-style string: one word, the shared empty data @ 0x0139C900 for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data @ 0x0139C900 for the default constructor
     char* m_pchData;
-    CString_00c1db60() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c1db60();                       // 0x00C0BA40
-    CString_00c1db60* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c1db60* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c1db60 {                   // empty temporary (a debug-break helper)
-    CTrace_00c1db60();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper)
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct SReply_00c1db60 {
@@ -40,11 +40,11 @@ void CMailbox_00c1db60::ReplyToUser(char flag, void* message)
     reply.m_pMessage = message;
     if (m_pQueue->Post(&reply)) {
         {
-            CString_00c1db60 line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCASyncFileReader.h")->Append("(")->AppendNumber(41)->Append(") : ")->Append("Cannot reply to the user mailbox")->Append("\n");
+            CString line;
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCASyncFileReader.h" << "(" << 41L << ") : " << "Cannot reply to the user mailbox" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c1db60();
+        CDebugBreak();
     }
 }

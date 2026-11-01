@@ -22,8 +22,8 @@ public:
     char* m_pchData;
     CString() : m_pchData(g_pchEmptyString) {}
     ~CString();                                 // 0x00C0BA40
-    CString* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
 struct CDebugBreak {                            // empty temporary whose constructor breaks into the debugger
@@ -45,7 +45,7 @@ void PKCTimerManager::InitiateShutdown()
     if (m_bShutdown) {
         {
             CString line;
-            line.Append(".\\PKCTimerManager.cpp")->Append("(")->AppendNumber(33)->Append(") : ")->Append("Shutdown already initiated...")->Append("\n");
+            line << ".\\PKCTimerManager.cpp" << "(" << 33L << ") : " << "Shutdown already initiated..." << "\n";
             if (g_pfnLogSink)
                 g_pfnLogSink(line.m_pchData);
         }

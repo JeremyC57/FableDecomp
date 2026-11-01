@@ -12,13 +12,13 @@
 //   1.0 / 1.0 / zeros / 1.0 / zeros are the CRampedParam rows of that model (value, target, ..., constant term),
 //   named "G<i>" (gains) beside eight "P<j>" pitch factors. The local CString keeps its address name (its default
 //   constructor 0x00C08880 is not landed).
-struct CString_00c0b200 {                  // MFC-style string: one word
+class CString { public:                  // MFC-style string: one word
     char* m_pchData;
-    CString_00c0b200();                    // 0x00C08880
-    CString_00c0b200(const char* text);    // 0x00C0BFE0
-    ~CString_00c0b200();                   // 0x00C0BA40
-    const CString_00c0b200& operator=(const CString_00c0b200& other);   // 0x00C0C0C0
-    CString_00c0b200* __fastcall AppendNumber(unsigned long value);   // 0x00C0DF10
+    CString();                    // 0x00C08880
+    CString(const char* text);    // 0x00C0BFE0
+    ~CString();                   // 0x00C0BA40
+    const CString& operator=(const CString& other);   // 0x00C0C0C0
+    CString& __fastcall operator<<(unsigned long value);   // 0x00C0DF10
 };
 
 struct CRampedParam {                      // 0x34 bytes (the landed CAudioParamBlock::Update model)
@@ -45,8 +45,8 @@ struct CAudioParamBlock {
     virtual void v00();                    // slot 0: SetSlot 0x00C0B380
     CRampedParam m_gains[16];              // +4
     float m_pitchFactors[8];               // +0x344
-    CString_00c0b200 m_gainNames[16];      // +0x364
-    CString_00c0b200 m_pitchNames[8];      // +0x3a4
+    CString m_gainNames[16];      // +0x364
+    CString m_pitchNames[8];      // +0x3a4
     CSoundSystem* m_pOwner;                 // +0x3c4
     CAudioParamBlock(CSoundSystem* owner);
     void Update();                         // 0x00C0AF20
@@ -57,11 +57,11 @@ CAudioParamBlock::CAudioParamBlock(CSoundSystem* owner)
 {
     for (unsigned long i = 0; i < 16; ++i) {
         m_gains[i].Reset();
-        m_gainNames[i] = *CString_00c0b200("G").AppendNumber(i);
+        m_gainNames[i] = (CString("G") << i);
     }
     for (unsigned long j = 0; j < 8; ++j) {
         m_pitchFactors[j] = 1.0f;
-        m_pitchNames[j] = *CString_00c0b200("P").AppendNumber(j);
+        m_pitchNames[j] = (CString("P") << j);
     }
     Update();
 }

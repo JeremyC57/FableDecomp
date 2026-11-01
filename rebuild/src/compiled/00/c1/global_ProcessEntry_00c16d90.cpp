@@ -11,7 +11,7 @@
 //   `ret 8`; caller 0x00C17572 in the bank loader 0x00C174A0 (stood in below by LoadLugBank, not graded). Callees: Fill @ 0x00C30F60,
 //   CBankData::CBankData @ 0x00C2EED0, CLoadLog::IsOk @ 0x00C307C0.
 // Callees: LookupSelectedWaypoint @ 0x00C17940 (`__fastcall`, context in ecx, log in edx), 0x00C30840 (landed as
-//   CInstanceOwner_00c30840::CreateNewInstance -- the same CLoadLog: see NAME_FIXES), CDebugStream::operator<< @ 0x00C0DEC0 (the spelling the landed GetChecked uses; the entry the log hands back is the stream: {buffer, id}; message
+//   CInstanceOwner_00c30840::CreateNewInstance -- the same CLoadLog: see NAME_FIXES), CString::operator<< @ 0x00C0DEC0 (the spelling the landed GetChecked uses; the entry the log hands back is the stream: {buffer, id}; message
 //   @ 0x012B2D44 "Could not load from file"), CAutoDeletePointer::GetChecked @ 0x00C17740, CBankData::~CBankData @ 0x00C2EF30,
 //   operator delete @ 0x00BFE9BC; in RunProcessor: CBankProcessor::CBankProcessor @ 0x00C2E0C0, Load @ 0x00C2EB00, ~CBankProcessor @ 0x00C2E140.
 // Identity: libpk sound-bank code -- the callees are the landed CBankProcessor/CBankData/CLoadLog rows; the catalog's track-node labels
@@ -31,12 +31,12 @@ public:
 };
 extern const char g_szCouldNotLoadFromFile[];             // 0x012B2D44
 
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -53,7 +53,7 @@ void* CAutoDeletePointer::GetChecked()
 {
     if (m_pObject == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCAutoDelete.h" << "(" << 32 << ") : " << "Should have checked first..." << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -105,7 +105,7 @@ void __fastcall DeleteTrackNodeCommand(CScriptContext* context, CLoadLog* log, C
 {
     CAutoDeletePointer holder(LookupSelectedWaypoint(context, log));
     if (holder.m_pObject == 0) {
-        *(struct CDebugStream*)log->CreateNewInstance() << g_szCouldNotLoadFromFile;
+        *(class CString*)log->CreateNewInstance() << g_szCouldNotLoadFromFile;
         return;
     }
     CBankData* data = (CBankData*)holder.GetChecked();

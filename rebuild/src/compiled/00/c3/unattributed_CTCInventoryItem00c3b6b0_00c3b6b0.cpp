@@ -6,9 +6,9 @@
 // garbage; the class is named by address.
 
 void __cdecl operator delete[](void* p);   // 0x00BFEB1C (MSVCR71)
-struct CMember_00c3b6b0 {                  // +0
+class CString { public:                  // +0
     unsigned char _body[4];
-    ~CMember_00c3b6b0();                   // 0x00C0BA40
+    ~CString();                   // 0x00C0BA40
 };
 
 struct CBlockHolder_00c3b6b0 {             // +4
@@ -17,7 +17,7 @@ struct CBlockHolder_00c3b6b0 {             // +4
 };
 
 struct CTCInventoryItem_00c3b6b0 {
-    CMember_00c3b6b0 m_member;             // +0
+    CString m_member;             // +0
     CBlockHolder_00c3b6b0 m_holder;        // +4
     ~CTCInventoryItem_00c3b6b0();
 };

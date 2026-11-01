@@ -13,14 +13,14 @@
 //   returned stream pointer; `new` + constructor is null-checked and the result (or 0) goes straight to Insert.
 void* __cdecl operator new(unsigned int size);                 // 0x00BFEA1A
 
-struct CDebugStream_00c3ab50 {                         // the library's MFC-style string, one word
+class CString { public:                         // the library's MFC-style string, one word
     char* m_pchData;
-    CDebugStream_00c3ab50& __fastcall operator<<(const char* text);       // 0x00C0DEC0
-    CDebugStream_00c3ab50& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
 };
 
 struct CMessageLog_00c3ab50 {
-    CDebugStream_00c3ab50* NewMessage();                    // 0x00C307E0
+    CString* NewMessage();                    // 0x00C307E0
 };
 
 struct SIndexNode_00c3ab50 {                           // 8 bytes

@@ -1,12 +1,12 @@
-// SPair_00c201d0::~SPair_00c201d0() -- EH-framed pair destructor: the CDebugStream second at +0x18 (@ 0x00C0BA40, state 0), then the first's 0x10-byte member at +8 (@ 0x00C34E60, state 1) and the first's polymorphic base (vtable 0x012B3420) with its empty inline destructor
+// SPair_00c201d0::~SPair_00c201d0() -- EH-framed pair destructor: the CString second at +0x18 (@ 0x00C0BA40, state 0), then the first's 0x10-byte member at +8 (@ 0x00C34E60, state 1) and the first's polymorphic base (vtable 0x012B3420) with its empty inline destructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C201D0, oracle length 83 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+18h] ; mov dword ptr [esp+10h],0 ; call ~CDebugStream ; lea ecx,[esi+8] ; mov dword ptr [esp+10h],1 ; call ~CMember8 ; mov ecx,[esp+8] ; mov dword ptr [esi],offset CBase::`vftable' ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; push ecx ; push esi ; mov esi,ecx ; mov [esp+4],esi ; lea ecx,[esi+18h] ; mov dword ptr [esp+10h],0 ; call ~CString ; lea ecx,[esi+8] ; mov dword ptr [esp+10h],1 ; call ~CMember8 ; mov ecx,[esp+8] ; mov dword ptr [esi],offset CBase::`vftable' ; pop esi ; mov fs:[0],ecx ; add esp,10h ; ret
 // Destructor of a map value pair whose first member is a polymorphic 0x18-byte class (vptr, a
 // pointer, a 0x10-byte member destroyed out of line @ 0x00C34E60) and whose second is the
-// shared-buffer CDebugStream (@ 0x00C0BA40): members go in reverse order under EH states 0
+// shared-buffer CString (@ 0x00C0BA40): members go in reverse order under EH states 0
 // and 1, and the first's empty inline base destructor restores the base vtable last; `this` is
 // kept in the frame for the unwind funclets. Built under /EHsc (the `__ehhandler` is not
 // compared; the funclets land through the funclet pass). The manifest label
@@ -17,9 +17,9 @@ namespace N_00c34e60 { struct CMember8 {                          // +8, 0x10 by
     ~CMember8();                           // 0x00C34E60
 }; } using N_00c34e60::CMember8;
 
-struct CDebugStream {                      // the shared-buffer stream
+class CString { public:                      // the shared-buffer stream
     char* m_pBuffer;
-    ~CDebugStream();                       // 0x00C0BA40
+    ~CString();                       // 0x00C0BA40
 };
 
 struct CBase {                             // vtable 0x012B3420
@@ -33,7 +33,7 @@ struct CFirst : CBase {                    // 0x18 bytes: vptr, a pointer, the m
 
 struct SPair_00c201d0 {
     CFirst first;                          // +0
-    CDebugStream second;                   // +0x18
+    CString second;                   // +0x18
     ~SPair_00c201d0();
 };
 

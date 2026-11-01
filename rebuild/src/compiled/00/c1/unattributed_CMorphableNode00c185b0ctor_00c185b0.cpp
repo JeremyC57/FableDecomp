@@ -7,16 +7,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c185b0)(const char* text);
 extern PFNLOGSINK_00c185b0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c185b0 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c185b0() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c185b0();                       // 0x00C0BA40
-    CString_00c185b0* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c185b0* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c185b0 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c185b0();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 struct CNodeBase_00c185b0 { };             // the common type of both node kinds
@@ -48,11 +48,11 @@ CMorphableNode_00c185b0::CMorphableNode_00c185b0(long mode)
     m_pNode = mode ? (CNodeBase_00c185b0*)new CTreeNode_00c185b0(0) : (CNodeBase_00c185b0*)new CFlatNode_00c185b0(0);
     if (m_pNode == 0) {
         {
-            CString_00c185b0 line;
-            line.Append(".\\PKCTRMorphable.cpp")->Append("(")->AppendNumber(12)->Append(") : ")->Append("Error: EMEM")->Append("\n");
+            CString line;
+            line << ".\\PKCTRMorphable.cpp" << "(" << 12L << ") : " << "Error: EMEM" << "\n";
             if (g_pfnLogSink_0143bb2c)
                 g_pfnLogSink_0143bb2c(line.m_pchData);
         }
-        CTrace_00c185b0();
+        CDebugBreak();
     }
 }

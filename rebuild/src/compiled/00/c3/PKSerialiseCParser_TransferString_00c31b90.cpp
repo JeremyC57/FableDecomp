@@ -13,7 +13,7 @@
 // 0x00C31A70 (the writer at +4, null-asserted), CString::operator=(const char*) 0x00C0C200, CString::SafeStrlen
 // 0x00C0BCC0 (static `__stdcall`), operator new 0x00BFEA1A / operator delete 0x00BFE9BC, and the EMEM logging of the
 // landed PKCAutoDeleteArray::Resize 0x00C31810 (CString::operator<<(const char*) 0x00C0DEC0 / operator<<(long) 0x00C0DF00
-// / ~CString 0x00C0BA40, log sink 0x0143BB2C, empty-string global 0x0139C900, the CTrace temporary 0x00C16750).
+// / ~CString 0x00C0BA40, log sink 0x0143BB2C, empty-string global 0x0139C900, the CDebugBreak temporary 0x00C16750).
 // Callee names (sweep1, 2026-10-25): the CString library members as renamed this pass (FINDINGS chunk 437: 0x00C0C200 =
 //   CString::operator=(const char*); chunk 438: 0x00C0DEC0/0x00C0DF00 are libpk CString stream operators; the landed
 //   CString::SafeStrlen 0x00C0BCC0 -- FINDINGS line 565: it was `StringLength` here, `SafeStrlen` in its own source);
@@ -37,8 +37,8 @@ public:
     const CString& operator=(const char* lpsz);    // 0x00C0C200
     static int __stdcall SafeStrlen(const char* lpsz);   // 0x00C0BCC0
 };
-struct CTrace {                                    // empty debug-break temporary
-    CTrace();                                      // 0x00C16750
+struct CDebugBreak {                                    // empty debug-break temporary
+    CDebugBreak();                                      // 0x00C16750
 };
 struct CReader {
     virtual bool Transfer(void* buffer, unsigned long size);   // slot 0
@@ -74,7 +74,7 @@ bool PKSerialiseCParser::TransferString(CString& data)
                 if (g_pfnLogSink)
                     g_pfnLogSink(line.m_pchData);
             }
-            CTrace();
+            CDebugBreak();
         }
         if (!m_pReader->Transfer(buffer, size)) {
             operator delete(buffer);

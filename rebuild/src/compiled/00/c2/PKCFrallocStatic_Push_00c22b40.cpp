@@ -24,8 +24,8 @@ public:
     char* m_pchData;
     CString() : m_pchData(g_pchEmptyString) {}
     ~CString();                                 // 0x00C0BA40
-    CString* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
 struct CDebugBreak {                            // empty temporary whose constructor breaks into the debugger
@@ -48,7 +48,7 @@ void PKCFrallocStatic::Push(void* block)
     if (m_count >= m_capacity) {
         {
             CString line;
-            line.Append("d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h")->Append("(")->AppendNumber(85)->Append(") : ")->Append("Overflow")->Append("\n");
+            line << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCFrallocStatic.h" << "(" << 85L << ") : " << "Overflow" << "\n";
             if (g_pfnLogSink)
                 g_pfnLogSink(line.m_pchData);
         }

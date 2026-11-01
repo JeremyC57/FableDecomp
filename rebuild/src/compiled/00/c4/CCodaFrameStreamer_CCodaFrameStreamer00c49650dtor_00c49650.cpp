@@ -13,15 +13,15 @@ extern "C" void __stdcall StopSource_00c49650(void* source, long a, long b);   /
 extern "C" void __stdcall ReleaseSource_00c49650(void* source);             // 0x00C35D50
 extern "C" void __stdcall DestroySource_00c49650(void* source);             // 0x00C35980
 
-struct CString_00c49650 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c49650() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c49650();                       // 0x00C0BA40
-    CString_00c49650* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c49650* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
-struct CTrace_00c49650 {                   // empty temporary (a debug-break helper): lands on a free frame byte
-    CTrace_00c49650();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a free frame byte
+    CDebugBreak();                         // 0x00C16750
 };
 class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
@@ -71,12 +71,12 @@ CCodaFrameStreamer_00c49650::~CCodaFrameStreamer_00c49650()
         CFrame_00c49650* frame = m_queue.Pop();
         if (!frame) {
             {
-                CString_00c49650 line;
-                line.Append(".\\CCodaFrameStreamer.cpp")->Append("(")->AppendNumber(84)->Append(") : ")->Append("Null frame")->Append("\n");
+                CString line;
+                line << ".\\CCodaFrameStreamer.cpp" << "(" << 84L << ") : " << "Null frame" << "\n";
                 if (g_pfnLogSink_0143bb2c)
                     g_pfnLogSink_0143bb2c(line.m_pchData);
             }
-            CTrace_00c49650();
+            CDebugBreak();
         } else {
             delete frame;
         }

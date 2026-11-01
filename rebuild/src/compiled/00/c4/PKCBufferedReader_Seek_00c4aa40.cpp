@@ -13,16 +13,16 @@ extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4aa40)(const char* text);
 extern PFNLOGSINK_00c4aa40 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
 
-struct CString_00c4aa40 {                  // MFC-style string: one word, the shared empty data for the default constructor
+class CString { public:                  // MFC-style string: one word, the shared empty data for the default constructor
     char* m_pchData;
-    CString_00c4aa40() : m_pchData(g_pchNil_0139c900) { }
-    ~CString_00c4aa40();                       // 0x00C0BA40
-    CString_00c4aa40* __fastcall Append(const char* text);   // 0x00C0DEC0
-    CString_00c4aa40* __fastcall AppendNumber(long value);   // 0x00C0DF00
+    CString() : m_pchData(g_pchNil_0139c900) { }
+    ~CString();                       // 0x00C0BA40
+    CString& __fastcall operator<<(const char* text);   // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);   // 0x00C0DF00
 };
 
-struct CTrace_00c4aa40 {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
-    CTrace_00c4aa40();                         // 0x00C16750
+struct CDebugBreak {                   // empty temporary (a debug-break helper): lands on a dead frame byte (here the argument slot)
+    CDebugBreak();                         // 0x00C16750
 };
 
 class PKCBufferedReader {                  // vtable 0x012B8458, 0x70 bytes
@@ -51,12 +51,12 @@ bool PKCBufferedReader::Seek(unsigned long offset)
     if (block >= m_firstBlock && block < m_firstBlock + m_blockCount) {
         if (!(offset >= m_firstBlock * m_blockSize)) {
             {
-                CString_00c4aa40 line;
-                line.Append(".\\PKCBufferedReader.cpp")->Append("(")->AppendNumber(414)->Append(") : ")->Append("Error: Byte offset out of scope???|!!???")->Append("\n");
+                CString line;
+                line << ".\\PKCBufferedReader.cpp" << "(" << 414L << ") : " << "Error: Byte offset out of scope???|!!???" << "\n";
                 if (g_pfnLogSink_0143bb2c)
                     g_pfnLogSink_0143bb2c(line.m_pchData);
             }
-            CTrace_00c4aa40();
+            CDebugBreak();
         }
         m_position = offset - m_firstBlock * m_blockSize;
     } else {

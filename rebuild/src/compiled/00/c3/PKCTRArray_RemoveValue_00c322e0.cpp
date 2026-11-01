@@ -16,12 +16,12 @@
 //   0x00C32470 form, `#pragma auto_inline(off)`): VC7.1 then sees that &found does not escape and homes it in the
 //   argument slot; with a declaration only it reserves a `push ecx` slot (386v385) and the EH prologue order changes.
 //   Land the leaf only: FindValueIndex is landed separately (0x00C32160).
-struct CDebugStream {
+class CString { public:
     char* m_pBuffer;
-    CDebugStream(char* buffer) : m_pBuffer(buffer) { }
-    CDebugStream& __fastcall operator<<(const char* text); // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(long value);       // 0x00C0DF00
-    ~CDebugStream();                                       // 0x00C0BA40
+    CString(char* buffer) : m_pBuffer(buffer) { }
+    CString& __fastcall operator<<(const char* text); // 0x00C0DEC0
+    CString& __fastcall operator<<(long value);       // 0x00C0DF00
+    ~CString();                                       // 0x00C0BA40
 };
 struct CDebugBreak { CDebugBreak(); };                     // 0x00C16750
 extern char* g_pDebugBuffer;                               // 0x0139C900
@@ -68,7 +68,7 @@ void PKCTRArray::RemoveValue(CUnprovenArrayComparator* comparator, const void* v
 {
     if (value == 0) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << ".\\PKCTRArray.cpp" << "(" << 154 << ") : " << "Error: NULL object" << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
@@ -79,7 +79,7 @@ void PKCTRArray::RemoveValue(CUnprovenArrayComparator* comparator, const void* v
     int index = FindValueIndex(comparator, value, &found);
     if (!found) {
         {
-            CDebugStream s(g_pDebugBuffer);
+            CString s(g_pDebugBuffer);
             s << ".\\PKCTRArray.cpp" << "(" << 157 << ") : " << "Error: Could not find this object..." << "\n";
             if (g_pfnErrorReport)
                 g_pfnErrorReport(s.m_pBuffer);
