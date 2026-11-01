@@ -25892,3 +25892,13 @@ chunk	address	module	name	length
 688	00501150	_global	LoadLevel_ParseObjects	756
 688	00678460	_global	CMemoryBlock_Destructor_Extended	758
 688	00ca0890	_global	CurveInterpolation_ResampleCurveData	776
+689	00c04850	_global	send_all_trees	621
+689	00cfa340	_global	CParticleEmitter_Dtor	792
+689	00a73e50	_global	Mesh_FindIntersectionPoints	811
+689	00ab1990	_global	BuildEntityScriptBindings_FromNameArray	812
+689	00c67c00	_global	ScriptCommand_SetCharacterAttributes	854
+689	00ac9d50	_global	QuadricOptimiser_ComputeVertexBounds	874
+689	00ca02b0	_global	Audio_ComputeTimeFrequencyMap	879
+689	00d3b010	_global	CParticleEmitter_Dtor_4	883
+689	00cb0370	_global	Math_Divide64bit	779
+689	00606f80	_global	CTCActionUseBuyOrSteal_dtor	937
