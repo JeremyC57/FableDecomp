@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+004b9e20	RELOCATION_MATCH	18v18	PASS	probes 1; std::find<CCharString*,CCharString> (label vector<EWeaponClass>::_Umove wrong)
+00a95890	MATCH	46v46	PASS	probes 2; std::uninitialized_fill_n<CCountedPointer<C3DGroup2>*,unsigned int,CCountedPointer<C3DGroup2>>
+00e1df60	RELOCATION_MATCH	216v216	PASS	probes 2; CPersistContext::Transfer<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>
+00e38dd0	RELOCATION_MATCH	216v216	PASS	probes 1; CPersistContext::Transfer<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>
+00cdcf80	RELOCATION_MATCH	188v188	PASS	probes 1; CPersistContext::TransferVector<bool>
+009d8250	MATCH	1v1	PASS	probes 1; NProfileTimer::EndProfile(long) (label $E2 wrong)
+00adca30	RELOCATION_MATCH	347v347	PASS	probes 1; /Gr; std::vector<CVertexGroupBlock>::operator=
+00ca9710	MATCH	16v16	PASS	probes 1; CDynamicOutputPin::Release (DirectShow DECLARE_IUNKNOWN)
+00b96150	MATCH	46v46	PASS	probes 1; std::uninitialized_fill_n<CCountedPointer<CEngineSceneGrid>*,unsigned int,CCountedPointer<CEngineSceneGrid>>
+00771f30	RELOCATION_MATCH	27v27	PASS	probes 1; implicit CTCHeroPodium::~CTCHeroPodium (label CTCInventoryItem::OnDie wrong)

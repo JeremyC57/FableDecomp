@@ -1,0 +1,2 @@
+1	twin shape, element CCountedPointer<C3DGroup2> from engine/CCountedPointer.h, local placement new	MATCH
+2	same with <new> placement new (STLport's include; kept)	MATCH

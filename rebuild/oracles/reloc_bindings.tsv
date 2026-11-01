@@ -35670,3 +35670,13 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?LINE_STRING_NAME@?A0xd1d0d6e9@@3VCCharString@@A	013bad90	00761c00
 ??0CEventReceivedMoney@NEntityEvents@@QAE@AAVCThing@@J@Z	0084ae00	00845040
 ?ReceivedNiceGiftIsOpinionReactionHappening@CTCWife@@QAE_NJ@Z	006d0630	00845040
+??$__find@PAVCCharString@@V1@@std@@YIPAVCCharString@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z	004b8e40	004b9e20
+??$__copy@PBVCVertexGroupBlock@@PAV1@H@std@@YIPAVCVertexGroupBlock@@PBV1@0PAV1@ABUrandom_access_iterator_tag@0@PAH@Z	00adc120	00adca30
+??$GFSerialiseVectorBinaryIn@_N@@YIXAAVCMemoryDataInputStream@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z	004675f6	00cdcf80
+??$GFSerialiseVectorBinaryOut@_N@@YIXAAVCDataOutputStream@@AAV?$vector@_NV?$allocator@_N@std@@@std@@@Z	004675c5	00cdcf80
+??_7?$CPersistContext_TransferableVector@_N@@6B@	012c2edc	00cdcf80
+?erase@?$vector@_NV?$allocator@_N@std@@@std@@QAEPA_NPA_N0@Z	004676bb	00cdcf80
+??_7?$CPersistContext_TransferableComponent@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@6B@	012e149c	00e1df60
+?TransferBinaryIn@?$CPersistTraits@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@Z	00e1e040	00e1df60
+??_7?$CPersistContext_TransferableComponent@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@6B@	012e37b4	00e38dd0
+?TransferBinaryIn@?$CPersistTraits@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@@QAEXAAVCMemoryDataInputStream@@AAW4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@Z	00e38eb0	00e38dd0

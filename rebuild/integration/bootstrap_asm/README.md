@@ -95,3 +95,5 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - CWideString_NotEqualWide_0099b150_test.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
 - CCharString_LoadFromFile_0099f2e0_test.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
 - CCharString_LoadFromFile_0099f2e0.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
+- NProfileTimer_EndProfile_009d8250.cpp moved here 2026-10-24 when the address landed as genuine C++.
+- NProfileTimer_EndProfile_009d8250_test.cpp moved here 2026-10-24 when the address landed as genuine C++.

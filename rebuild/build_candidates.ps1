@@ -371537,6 +371537,77 @@ $catalog = @(
         TestSource = '00/84/CCreatureActionGiveMoneyToThing_PerformAction_00845040_test.cpp'
         PassPattern = '00845040_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004b9e20'
+        Module = 'std'
+        Source = '00/4b/std_find_004b9e20.cpp'
+        TestSource = '00/4b/std_find_004b9e20_test.cpp'
+        PassPattern = '004b9e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00771f30'
+        Module = 'CTCHeroPodium'
+        Source = '00/77/CTCHeroPodium_CTCHeroPodium_00771f30.cpp'
+        TestSource = '00/77/CTCHeroPodium_CTCHeroPodium_00771f30_test.cpp'
+        PassPattern = '00771f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d8250'
+        Module = 'NProfileTimer'
+        Source = '00/9d/NProfileTimer_EndProfile_009d8250.cpp'
+        TestSource = '00/9d/NProfileTimer_EndProfile_009d8250_test.cpp'
+        PassPattern = '009d8250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a95890'
+        Module = 'std'
+        Source = '00/a9/std_uninitializedfilln_00a95890.cpp'
+        TestSource = '00/a9/std_uninitializedfilln_00a95890_test.cpp'
+        PassPattern = '00a95890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00adca30'
+        Module = 'std::vector<CVertexGroupBlock>'
+        Source = '00/ad/stdvectorCVertexGroupBlock_operator_00adca30.cpp'
+        TestSource = '00/ad/stdvectorCVertexGroupBlock_operator_00adca30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00adca30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b96150'
+        Module = 'std'
+        Source = '00/b9/std_uninitializedfilln_00b96150.cpp'
+        TestSource = '00/b9/std_uninitializedfilln_00b96150_test.cpp'
+        PassPattern = '00b96150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9710'
+        Module = 'CDynamicOutputPin'
+        Source = '00/ca/CDynamicOutputPin_Release_00ca9710.cpp'
+        TestSource = '00/ca/CDynamicOutputPin_Release_00ca9710_test.cpp'
+        PassPattern = '00ca9710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdcf80'
+        Module = 'CPersistContext'
+        Source = '00/cd/CPersistContext_TransferVectorbool_00cdcf80.cpp'
+        TestSource = '00/cd/CPersistContext_TransferVectorbool_00cdcf80_test.cpp'
+        PassPattern = '00cdcf80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1df60'
+        Module = 'CPersistContext'
+        Source = '00/e1/CPersistContext_TransferEscortTraderQuestStage_00e1df60.cpp'
+        TestSource = '00/e1/CPersistContext_TransferEscortTraderQuestStage_00e1df60_test.cpp'
+        PassPattern = '00e1df60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e38dd0'
+        Module = 'CPersistContext'
+        Source = '00/e3/CPersistContext_TransferAALocationIdentifier_00e38dd0.cpp'
+        TestSource = '00/e3/CPersistContext_TransferAALocationIdentifier_00e38dd0_test.cpp'
+        PassPattern = '00e38dd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

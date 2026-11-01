@@ -1,0 +1,2 @@
+1	twin shape respelled with PDB names/signatures (TransferBinaryIn refs, inline TransferBinaryOut, class keys), DefaultVal()	SRC_FAIL (VC7.1 C2064 on nested-enum DefaultVal())
+2	DefaultVal((T)0) init	RELOCATION_MATCH

@@ -1,0 +1,13 @@
+address	name	evidence
+004b9e20	std::find<CCharString*,CCharString>	chunk 655 RELOCATION_MATCH: sole caller IsTutorialPlayed 0x0057598A on the PDB member vector<CCharString> TutorialsPlayed; callee __find 0x004B8E40 (label _Umove<EWeaponClass*> was propagated)
+00a95890	std::uninitialized_fill_n<CCountedPointer<C3DGroup2>*,unsigned int,CCountedPointer<C3DGroup2> >	chunk 655 MATCH: caller chain _M_fill_insert 0x00A97F70 -> resize 0x00A985A0 -> PDB CDeviceIndependent::Groups
+00b96150	std::uninitialized_fill_n<CCountedPointer<CEngineSceneGrid>*,unsigned int,CCountedPointer<CEngineSceneGrid> >	chunk 655 MATCH: caller chain 0x00B97E90 -> resize 0x00B98170 -> CEngineSceneMap::Initialise -> PDB GridLevels
+00e1df60	CPersistContext::Transfer<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>	chunk 655 RELOCATION_MATCH: both PDBs (label Transfer<signed_char> was propagated)
+00e38dd0	CPersistContext::Transfer<NScript::CV_AssassinAttacksScript::AA_LocationIdentifier>	chunk 655 RELOCATION_MATCH: both PDBs
+00cdcf80	CPersistContext::TransferVector<bool>	chunk 655 RELOCATION_MATCH: Ego_r; bound from CFireHeartPatternDef::Transfer
+009d8250	NProfileTimer::EndProfile	chunk 655 MATCH: Ego_r pair with the landed StartProfile 0x009D8240 (label $E2)
+00adca30	std::vector<CVertexGroupBlock>::operator=	chunk 655 RELOCATION_MATCH (/Gr): Ego_r; 24-byte element; callees 0x00ADC440 / 0x00ADC190 / 0x00ADC120 (label Vector_Reserve_Copy)
+00ca9710	CDynamicOutputPin::Release	chunk 655 MATCH: DirectShow IPin table 0x012BF760 slot 2; target of the landed adjustor thunk 0x00CAA770 (label Thunk_VirtualMethod_2)
+00771f30	CTCHeroPodium::~CTCHeroPodium	chunk 655 RELOCATION_MATCH: compiler-generated; only caller is the deleting dtor in slot 0 of vtable 0x0126A89C; no vtable store, PDB lists no dtor (label CTCInventoryItem::OnDie was propagated)
+0049b8d0	CPersistContext::TransferVector<CCharString>	chunk 655: TransferVector, not Transfer (NAME_FIXES)
+00adc120	std::__copy<CVertexGroupBlock> (const)	chunk 655: STLport __copy, replaces the Copy_SArrayTreePair18 stand-in

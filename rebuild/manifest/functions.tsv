@@ -1,4 +1,4 @@
-﻿address	name	module	calling_convention	return_type	parameter_count	parameter_types	prototype_complete	clean_decompile	naming_quality	agent_verdict	agent_source	lift_grade	lift_source	agent_source_path	compiled_status	behavior_test	retail_parity	compiled_source
+address	name	module	calling_convention	return_type	parameter_count	parameter_types	prototype_complete	clean_decompile	naming_quality	agent_verdict	agent_source	lift_grade	lift_source	agent_source_path	compiled_status	behavior_test	retail_parity	compiled_source
 00401011	_check_managed_app	msvcrt.lib(crtexew.obj)	unknown	undefined	0		0			discovered	boundary							
 00401067	entry	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\40\0x00401067_global_entry.cpp				
 00401266	__c_exit	MSVCR71.dll	unknown	undefined	0		0			discovered	boundary							

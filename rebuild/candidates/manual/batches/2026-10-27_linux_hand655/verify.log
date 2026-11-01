@@ -1,0 +1,36 @@
+addr       parity           behav  name
+004b9e20   RELOCATION_MATCH PASS   find
+00771f30   RELOCATION_MATCH PASS   ~CTCHeroPodium
+009d8250   MATCH            PASS   EndProfile
+00a95890   MATCH            PASS   uninitialized_fill_n
+00adca30   RELOCATION_MATCH PASS   operator=
+00b96150   MATCH            PASS   uninitialized_fill_n
+00ca9710   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9710   MATCH            PASS   Release
+00cdcf80   RELOCATION_MATCH PASS   TransferVector<bool>
+00e1df60   RELOCATION_MATCH PASS   Transfer<EscortTraderQuestStage>
+00e38dd0   RELOCATION_MATCH PASS   Transfer<AA_LocationIdentifier>
+
+WINS: 10
+  004b9e20 RELOCATION_MATCH std::??$find@PAVCCharString@@V1@@std@@
+  00771f30 RELOCATION_MATCH CTCHeroPodium::??1CTCHeroPodium@@UAE@XZ
+  009d8250 MATCH NProfileTimer::?EndProfile@NProfileTimer@@YIXJ@Z
+  00a95890 MATCH std::??$uninitialized_fill_n@PAV?$CCountedPointer@VC3DGroup2@@@@IV1@@std@@YIPAV?$CCountedPointer@VC3DGroup2@@@@PAV1@IABV1@@Z
+  00adca30 RELOCATION_MATCH std::vector<CVertexGroupBlock>::??4?$vector@VCVertexGroupBlock@@V?$allocator@VCVertexGroupBlock@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00b96150 MATCH std::??$uninitialized_fill_n@PAV?$CCountedPointer@VCEngineSceneGrid@@@@IV1@@std@@YIPAV?$CCountedPointer@VCEngineSceneGrid@@@@PAV1@IABV1@@Z
+  00ca9710 MATCH CDynamicOutputPin::?Release@CDynamicOutputPin@@UAGKXZ
+  00cdcf80 RELOCATION_MATCH CPersistContext::??$TransferVector@_N@CPersistContext@@QAEXPBDAAV?$vector@_NV?$allocator@_N@std@@@std@@@Z
+  00e1df60 RELOCATION_MATCH CPersistContext::??$Transfer@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@CPersistContext@@QAEXPBDAAW4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@ABW4123@@Z
+  00e38dd0 RELOCATION_MATCH CPersistContext::??$Transfer@W4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@@CPersistContext@@QAEXPBDAAW4AA_LocationIdentifier@CV_AssassinAttacksScript@NScript@@ABW4123@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  std_find_004b9e20
+  CTCHeroPodium_CTCHeroPodium_00771f30
+  NProfileTimer_EndProfile_009d8250
+  std_uninitializedfilln_00a95890
+  stdvectorCVertexGroupBlock_operator_00adca30
+  std_uninitializedfilln_00b96150
+  CDynamicOutputPin_Release_00ca9710
+  CPersistContext_TransferVectorbool_00cdcf80
+  CPersistContext_TransferEscortTraderQuestStage_00e1df60
+  CPersistContext_TransferAALocationIdentifier_00e38dd0
