@@ -1,5 +1,7 @@
 // CShaderResource::GetPixelShader(unsigned long index) -- the pixel shader of the bank entry: the cached one when present, else create it from the bank's shader data and entry name, cache a heap copy and return it
 // Leaf: GetPixelShader
+// Naming wave 27 (family pxs, DECISIONS_W26 D4): CShaderRenderManager::CreatePixelShader 0x0098A9A0 is private (Ego_r.pdb /
+//   FableWin.pdb AAE); CShaderResource, which calls it, is its friend. Was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5D620, length 251 bytes (`ret 8`: CPixelShader by hidden pointer + index).
 // Callees: CShaderDataBank shader-data lookup @ 0x00A61FB0 (manifest "CTCInventoryAbilities::GetAbilityLevel" is propagated),
 // CBankFile::GetEntrySymbol(unsigned long) @ 0x009CC1D0 (CCharString by hidden pointer, built in the dead `index` slot),
@@ -71,9 +73,10 @@ public:
 class CShaderDataBank : public CBankFile { public:
     CPixelShaderData* GetShaderData(unsigned long index);   // 0x00A61FB0
 };
-class CShaderRenderManager { public:
+class CShaderRenderManager {
     CPixelShader CreatePixelShader(const CArray<unsigned long>& code, const CArray<CCharString>& constants,
-                                   const CCharString& name);   // 0x0098A9A0
+                                   const CCharString& name);   // 0x0098A9A0 (private: Ego_r.pdb / FableWin.pdb AAE)
+    friend class CShaderResource;                     // retail's GetPixelShader calls the private CreatePixelShader
 };
 
 class CShaderResource { public:

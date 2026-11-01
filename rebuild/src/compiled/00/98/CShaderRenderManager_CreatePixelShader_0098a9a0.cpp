@@ -1,5 +1,7 @@
 // CShaderRenderManager::CreatePixelShader(const CArray<unsigned long>& code, const CArray<CCharString>& constNames, const CCharString& name) -- create the D3D pixel shader and wrap it with the PSConstNames indices of its named constants
-// Leaf: CreatePixelShader
+// Leaf: ?CreatePixelShader@CShaderRenderManager@@AAE?AVCPixelShader@@ABV?$CArray@K@@ABV?$CArray@VCCharString@@@@ABVCCharString@@@Z
+// Naming wave 27 (family pxs, DECISIONS_W26 D4): CreatePixelShader and the CPixelShader ctor 0x00A5ECB0 are
+//   private (Ego_r.pdb / FableWin.pdb AAE); CPixelShader declares CShaderRenderManager a friend. Was public (QAE).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
 //   own row's spelling, c689 queue). Was CLongArray::InsertGrow(..., const SScalarTag&, unsigned long, bool). The local is CArray<long>
@@ -131,7 +133,10 @@ class CShaderBase { public:                            // vtable 0x0129A030
 
 class CPixelShader : public CShaderBase { public:             // vtable 0x0129A054
     CPixelShaderData* Data;
-    CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);   // 0x00A5ECB0
+private:
+    CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);   // 0x00A5ECB0 (private, AAE)
+    friend class CShaderRenderManager;
+public:
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
     virtual ~CPixelShader()
     {
@@ -145,6 +150,7 @@ class CShaderRenderManager { public:
     IDirect3DDevice9* D3DDevice;                // +0x1d4
     unsigned char     _pad1d8[0x1e8];
     CNameIndexMap     PSConstIndexMap;          // +0x3c0 (PSConstNames +0x3b4, its map at +0xc)
+private:                                        // private (Ego_r.pdb / FableWin.pdb AAE)
     CPixelShader CreatePixelShader(const CArray<unsigned long>& code, const CArray<CCharString>& constNames, const CCharString& name);
 };
 

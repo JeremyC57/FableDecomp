@@ -1,5 +1,7 @@
 // CPixelShader::CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name) -- allocate the shared CPixelShaderData (0x14 bytes) from the arguments and keep it at +4
-// Leaf: ??0CPixelShader
+// Leaf: ??0CPixelShader@@AAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z
+// Naming wave 27 (family pxs, DECISIONS_W26 D4): the ctor is private (Ego_r.pdb / FableWin.pdb AAE) with
+//   CShaderRenderManager a friend (its CreatePixelShader 0x0098A9A0 constructs the shader). Was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5ECB0, length 65 bytes.
 // Vtables: CPixelShader 0x0129A054 (the CShaderBase base's own store is dead and dropped).
 // Callees: operator new @ 0x00BFEA1A (`add esp,4`), CPixelShaderData::CPixelShaderData(
@@ -27,10 +29,13 @@ class CShaderBase { public:                               // vtable 0x0129A030
     CShaderBase() { }
 };
 
+class CShaderRenderManager;
 class CPixelShader : public CShaderBase { public:                // vtable 0x0129A054
     CPixelShaderData* Data;                        // +0x04
     virtual void v00();
-    CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);
+private:
+    CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);   // private (Ego_r / FableWin AAE)
+    friend class CShaderRenderManager;             // retail's CreatePixelShader 0x0098A9A0 builds it
 };
 
 CPixelShader::CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name)
