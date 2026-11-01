@@ -15,9 +15,10 @@ struct CCompressorZlib_Calls {                                  // engine/CCompr
 };
 
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     CBaseClassNonCopyable();                                    // 0x0099A2F0
-    ~CBaseClassNonCopyable();                                   // 0x0099A300
 };
 
 struct CDataStream : CBaseClassNonCopyable {                    // vtable 0x0129A69C

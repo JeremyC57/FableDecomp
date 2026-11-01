@@ -55,11 +55,13 @@ struct CDisplayOwnerControl {
 };
 
 // ---- base class: supplies the vptr and the tail-called destructor ----
-struct CDisplayEngineBase {
-    virtual ~CDisplayEngineBase();   // out-of-line -> masked base-dtor tail jmp
+class CBaseClassNonCopyable { public:   // CBaseClassNonCopyable (Ego_r.pdb ??1CBaseClassNonCopyable@@MAE@XZ; was stand-in CDisplayEngineBase, naming wave 15)
+protected:
+    virtual ~CBaseClassNonCopyable();   // out-of-line -> masked base-dtor tail jmp
+public:
 };
 
-class CDisplayEngine : public CDisplayEngineBase { public:
+class CDisplayEngine : public CBaseClassNonCopyable { public:
     char                 pad_04[0x2C - 0x04]; // reach offset 0x2C
     CDisplayRenderTarget* m_renderTarget;      // +0x2C
     char                 pad_30[0xE0 - 0x30]; // reach offset 0xE0

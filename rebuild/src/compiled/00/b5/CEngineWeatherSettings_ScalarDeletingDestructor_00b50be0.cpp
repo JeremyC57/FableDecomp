@@ -9,12 +9,13 @@
 // manifest label is kept only when unique) and frees the object when bit 0 of the flag is set
 // (operator delete @ 0x00BFE9BC, landed-trusted). Re-emitted per translation unit; this file is the
 // copy at this address. One of 9 bodies of this shape.
-struct CBase_0099a300 {
-    virtual void v00();
-    ~CBase_0099a300();                          // 0x0099A300
+class CBaseClassNonCopyable { public:   // CBaseClassNonCopyable (Ego_r.pdb ??1CBaseClassNonCopyable@@MAE@XZ; was stand-in CBase_0099a300, naming wave 15)
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 
-struct CEngineWeatherSettings : CBase_0099a300 {
+struct CEngineWeatherSettings : CBaseClassNonCopyable {
     virtual ~CEngineWeatherSettings() { }
 };
 

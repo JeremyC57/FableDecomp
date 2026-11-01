@@ -18,9 +18,10 @@
 #include "engine/CDataOutputStream.h"
 extern "C" double __fastcall GFGetTime();                // 0x009E1BC0
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     CBaseClassNonCopyable();                             // 0x0099A2F0
-    ~CBaseClassNonCopyable();                            // 0x0099A300
 };
 class CWideString { public:
     void* PStringData;

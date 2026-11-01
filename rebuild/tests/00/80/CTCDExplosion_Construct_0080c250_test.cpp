@@ -10,10 +10,9 @@ public:
 };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 static int g_ctor, g_dtor, g_calls;
-struct CBaseClassNonCopyable { virtual void v00(); CBaseClassNonCopyable(); ~CBaseClassNonCopyable(); };
+class CBaseClassNonCopyable { protected: virtual ~CBaseClassNonCopyable(); public: CBaseClassNonCopyable(); };
 CBaseClassNonCopyable::CBaseClassNonCopyable() { ++g_ctor; }
 CBaseClassNonCopyable::~CBaseClassNonCopyable() { ++g_dtor; }
-void CBaseClassNonCopyable::v00() { }
 class CTCParamsBase : public CBaseClassNonCopyable { public: };
 class CTCParamsPhysicsBase : public CTCParamsBase { public:
     C3DVector Position;

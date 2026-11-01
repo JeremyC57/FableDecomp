@@ -24,9 +24,10 @@ class CRightHandedSet { public:
     CRightHandedSet() : Up(0.0f, 0.0f, 1.0f), Forward(0.0f, 1.0f, 0.0f) { }
 };
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     CBaseClassNonCopyable();                            // 0x0099A2F0
-    ~CBaseClassNonCopyable();                           // 0x0099A300
 };
 class CTCParamsBase : public CBaseClassNonCopyable { public: };
 class CTCParamsPhysicsBase : public CTCParamsBase { public:           // vtable 0x0125C818

@@ -23,8 +23,9 @@ class CShaderLightAttenuation { public:
 };
 
 struct CBaseClassNonCopyable {
-    virtual void v00();
-    ~CBaseClassNonCopyable();                          // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 class CShaderLight : public CBaseClassNonCopyable { public:
 };

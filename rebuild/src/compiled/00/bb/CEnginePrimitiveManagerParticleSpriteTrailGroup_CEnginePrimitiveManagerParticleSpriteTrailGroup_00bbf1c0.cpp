@@ -9,7 +9,7 @@
 #define __fastcall
 #endif
 #include <stdlib.h>
-struct CBaseNativeView { virtual ~CBaseNativeView(); }; //0099a300
+class CBaseClassNonCopyable { public: protected: virtual ~CBaseClassNonCopyable(); public: }; // CBaseClassNonCopyable (Ego_r.pdb ??1CBaseClassNonCopyable@@MAE@XZ; was stand-in CBaseNativeView, naming wave 15)
 struct CShaderBaseNativeView { virtual ~CShaderBaseNativeView(){} };
 struct CPixelShaderDataNativeView { virtual ~CPixelShaderDataNativeView(); void* PixelShader;long ReferenceCount; };
 struct CVertexShaderData { virtual ~CVertexShaderData();void* VertexDeclaration;void* VertexShader;const void* FormatDecl;long ReferenceCount; };
@@ -18,7 +18,7 @@ struct CVertexShaderNativeView:CShaderBaseNativeView { CVertexShaderData* Data; 
 struct CShaderArrayNativeView { CVertexShaderNativeView* Start;CVertexShaderNativeView* Finish;CVertexShaderNativeView* End; __forceinline ~CShaderArrayNativeView(){CVertexShaderNativeView* last=Finish;for(CVertexShaderNativeView* p=Start;p!=last;++p)p->~CVertexShaderNativeView();if(Start)free(Start);} };
 struct CTrailManagerCountInfo {long ReferenceCount;void (__fastcall* Destroy)(void*);void* Object;};
 struct CTrailManagerPointer { void* Data;CTrailManagerCountInfo* Info;__forceinline ~CTrailManagerPointer(){if(Info){--Info->ReferenceCount;if(Info->ReferenceCount==0){Info->Destroy(Info->Object);delete Info;}}Data=0;Info=0;} };
-struct __declspec(novtable) CEnginePrimitiveManagerParticleSpriteTrailGroupNativeView:CBaseNativeView {
+struct __declspec(novtable) CEnginePrimitiveManagerParticleSpriteTrailGroupNativeView:CBaseClassNonCopyable {
  unsigned long Type;bool Enabled;
  CShaderArrayNativeView VertexShadersSpriteTrailPointLights;
  CVertexShaderNativeView VertexShaderDisplacement;

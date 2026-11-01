@@ -36,10 +36,11 @@ struct SParticleSimArray {
 };
 
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     void* m_04;                                    // +0x04
     void* m_08;                                    // +0x08
-    ~CBaseClassNonCopyable();                                      // 0x0099A300
 };
 
 struct CEngineClothSimulationMeshBase : CBaseClassNonCopyable {    // vtable 0x012A3924

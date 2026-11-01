@@ -12,9 +12,10 @@ struct CBoundingBox { C3DVector Min, Max; };
 
 class CBaseClassNonCopyable {
 public:
-    virtual void v000();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v000); 0x0099A300
+public:
     CBaseClassNonCopyable();                         // 0x0099A2F0
-    ~CBaseClassNonCopyable();                        // 0x0099A300
 };
 class CPhysicsSnapshot : public CBaseClassNonCopyable {   // vtable 0x0125C818
 public:
@@ -50,7 +51,10 @@ class CTCPhysicsBase { public:
     virtual CCharString GetName() const;   // slot 22 (+0x58)
 };
 
-struct CTCUserActionPointBase { void FreeActionPoint(long index); };   // 0x007FEF40
+struct CTCUserActionPointBase {
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:  };   // 0x007FEF40
 struct CTCNavigator { void ResetNavigation(); };                         // 0x006CB6B0
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -131,7 +135,7 @@ void CActionMoveTo::OnCleanup()
     if (GotActionPointIndex && PTargetThing.IsAlive()) {
         CTCUserActionPointBase* user;
         PTargetThing.GetThing()->GetInterface(&user, 0x2d);
-        user->FreeActionPoint(ActionPointIndex);
+        ((CTCUserActionPointBase*)user)->SetActionPointAsFree(ActionPointIndex);
     }
     if (PTCOldPhysics) {
         CPhysicsObject* physics = PControl->PThing->PPhysics;

@@ -8,8 +8,9 @@ struct CMember_00ad83a0 {
     ~CMember_00ad83a0();                           // 0x00AD83A0
 };
 struct CBaseClassNonCopyable {
-    virtual void v00();
-    ~CBaseClassNonCopyable();                      // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 class C3DOptimisedMeshBase : public CBaseClassNonCopyable { public:   // vtable 0x0129F048
     virtual void v00();

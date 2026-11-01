@@ -6,8 +6,9 @@ void __cdecl operator delete(void* block);         // 0x00BFE9BC
 class CRenderStateManager;
 extern CRenderStateManager* g_pRenderStateManager_013cb508;   // 0x013CB508
 struct CBaseClassNonCopyable {
-    virtual void v00();
-    ~CBaseClassNonCopyable();                      // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 class CRenderStateManager : public CBaseClassNonCopyable { public:              // vtable 0x0129C978
     void* m_4;                                     // +0x04

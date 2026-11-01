@@ -18,8 +18,9 @@ extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 struct CBaseClassNonCopyable {
-    virtual void v00();
-    ~CBaseClassNonCopyable();                               // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 class CWideString { public:
     void* PStringData;

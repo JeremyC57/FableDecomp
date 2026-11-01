@@ -12,9 +12,10 @@
 // CBankFile::GetLastModifiedTime (0x009CBC50) family: Opened is cleared in the ctor body, the dtor calls Close().
 // Shape: two flag stores scheduled before the stream's destructor; Open's arguments push right to left.
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     CBaseClassNonCopyable();                       // 0x0099A2F0
-    ~CBaseClassNonCopyable();                      // 0x0099A300
 };
 class CWideString { public:
     void* PStringData;

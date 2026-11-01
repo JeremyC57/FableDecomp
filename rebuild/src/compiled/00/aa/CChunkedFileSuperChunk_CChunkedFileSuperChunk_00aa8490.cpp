@@ -15,8 +15,9 @@
 extern "C" void __cdecl free(void* block);                      // 0x00BFEA14
 
 struct CBaseClassNonCopyable {
-    virtual void v00();
-    ~CBaseClassNonCopyable();                                   // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 
 struct CChunkedFileChunk_Retail : CBaseClassNonCopyable {       // vtable 0x0129E474

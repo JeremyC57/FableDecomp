@@ -15,9 +15,10 @@
 // root = 0; rightmost = header; count = 0; }`, the header re-read after each store) and then the Locked store, all
 // before the stream's and the file's inline destructors.
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     CBaseClassNonCopyable();                       // 0x0099A2F0
-    ~CBaseClassNonCopyable();                      // 0x0099A300
 };
 class CWideString { public:
     void* PStringData;

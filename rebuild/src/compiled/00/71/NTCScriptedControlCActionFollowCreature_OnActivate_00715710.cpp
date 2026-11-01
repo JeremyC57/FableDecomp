@@ -19,9 +19,10 @@ struct CBoundingBox { C3DVector Min, Max; };
 
 class CBaseClassNonCopyable {
 public:
-    virtual void v000();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v000); 0x0099A300
+public:
     CBaseClassNonCopyable();                         // 0x0099A2F0
-    ~CBaseClassNonCopyable();                        // 0x0099A300
 };
 class CPhysicsSnapshot : public CBaseClassNonCopyable {   // vtable 0x0125C818
 public:

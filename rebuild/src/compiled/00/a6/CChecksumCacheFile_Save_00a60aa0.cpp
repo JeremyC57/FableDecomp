@@ -1,7 +1,7 @@
 // CChecksumCacheFile::Save() -- when the cache needs saving, rewrite its file: a placeholder header, then for every entry whose path still exists its name (as a char string), date and checksum, then the header patched with version 4 and the number of entries written; the file is closed and the cache marked saved
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A60AA0, 388 bytes (400 with padding).
 // Callees: CBaseClassNonCopyable ctor 0x0099A2F0 / dtor 0x0099A300, CWideString() 0x0099AED0, CWideString(const
-//          CWideString&) 0x0099B720, ~CWideString 0x0099B510, CWideString::ConvertToCharString 0x0099B2C0 (by value),
+//          CWideString&) 0x0099B720, ~CWideString 0x0099B510, CWideString::ToCharString 0x0099B2C0 (by value),
 //          ~CCharString 0x0099EAE0; CDiskFileWin32::Open 0x0099A6A0 / Close 0x0099A920 (called directly on the
 //          local); CFileDataOutputStream(CAFile*) 0x00994400, its dtor 0x00994430 (catalog "~CFileDataInputStream"),
 //          GetPosition 0x00994460, SetPosition 0x00994450, WriteULONG 0x00993EB0, WriteSLONG 0x00993EA0 (both
@@ -15,20 +15,23 @@
 // Layout: retail CChecksumCacheFile of the landed ctor 0x00A61150: Filename +0, Entries {header +4, count +8},
 // BufferSize +0x10, NeedsSaving +0x14; node value {CWideString name +0x10, CDateAndTime +0x14, checksum +0x30}.
 struct CBaseClassNonCopyable {
-    virtual void v00();
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
     CBaseClassNonCopyable();                       // 0x0099A2F0
-    ~CBaseClassNonCopyable();                      // 0x0099A300
 };
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                // 0x0099EAE0
 };
-class CWideString { public:
+class CWideString {
+public:
+    CCharString ToCharString() const;   // 0x0099B2C0 (Ego_r.pdb ?ToCharString@CWideString@@QBE?AVCCharString@@XZ)
+private: public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
-    CCharString ConvertToCharString();             // 0x0099B2C0
 };
 class CAFile {
 public:
@@ -132,7 +135,7 @@ void CChecksumCacheFile::Save()
         for (CEntryIterator it = Entries.begin(); it != Entries.end(); ++it) {
             if (CAFile::PathExists(it->first)) {
                 CWideString name(it->first);
-                stream.WriteNullTerminatedString(name.ConvertToCharString());
+                stream.WriteNullTerminatedString(((CWideString*)&name)->ToCharString());
                 stream.WriteDateAndTime(it->second.Date);
                 stream.WriteULONG(it->second.Checksum);
                 ++count;

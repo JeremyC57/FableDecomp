@@ -11,8 +11,9 @@
 void __cdecl operator delete[](void* p);           // 0x00BFEB1C
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 struct CBaseClassNonCopyable {                     // vtable 0x0129A7C4
-    virtual void v00();
-    ~CBaseClassNonCopyable();                      // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x0099A300
+public:
 };
 class CANavQuadTreeNode;
 template <class T, int N> class CSmallVector { public:
