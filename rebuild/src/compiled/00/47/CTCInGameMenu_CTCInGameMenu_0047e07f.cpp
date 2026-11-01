@@ -40,10 +40,15 @@ struct CWideStringVector {                         // vector<CWideString>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     ~CWideStringVector();                          // 0x00412130
 };
-struct CCharStringVector {                         // vector<CCharString>
+class CCharString;
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                         // vector<CCharString>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    ~CCharStringVector();                          // 0x00414EA0
+    ~vector();                          // 0x00414EA0
 };
+}
 struct CPrimitiveHandleVector {                    // vector<CEnginePrimitiveHandle>
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
     ~CPrimitiveHandleVector();                     // 0x00440C40
@@ -153,8 +158,8 @@ public:
     long LoadGameIndex;                            // +0x64
     double CurStartPauseTime;                      // +0x68
     double AccumulativePausedTime;                 // +0x70
-    CCharStringVector FileRegionNames;             // +0x78
-    CCharStringVector FileRegionMiniMapNames;      // +0x84
+    std::vector<CCharString> FileRegionNames;             // +0x78
+    std::vector<CCharString> FileRegionMiniMapNames;      // +0x84
     CPODVector<long> FilePlayTimes;                // +0x90
     double LastRenderTime;                         // +0xa0
     bool OpenInventory;                            // +0xa8

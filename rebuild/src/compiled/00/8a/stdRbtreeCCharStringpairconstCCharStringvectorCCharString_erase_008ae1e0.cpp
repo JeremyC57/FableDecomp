@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::erase(iterator position) -- STLport map node erase: unlink and rebalance, destroy the (key, string vector) value, free the node, drop the count
-// Leaf: ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@2@@2@@Z
+// Leaf: ?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AE1E0, 120 bytes, thiscall, `ret 4` (the iterator by value).
 // Identity: the manifest's "std::map::_Erase_node" is descriptive. The only caller is this tree's erase(first, last)
 //   0x008AE380 (this chunk), used by the CTCAIScratchpad gossip maps (map<CCharString, vector<CCharString> >, the
@@ -53,7 +53,7 @@ public:
     }
 };
 
-template <class _Tp> class vector : public _Vector_base<_Tp> {
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp> {
 public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 };

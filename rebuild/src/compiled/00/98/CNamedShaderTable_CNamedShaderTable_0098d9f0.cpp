@@ -45,7 +45,10 @@ struct CRbTree_0098d9f0 {
     }
 };
 
-struct CCharStringVector {
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport 4.6 vector<CCharString> (row-local members)
     CCharString* m_pFirst;
     CCharString* m_pLast;
     CCharString* m_pEnd;
@@ -54,16 +57,17 @@ struct CCharStringVector {
         for (; first != last; ++first)
             first->~CCharString();
     }
-    ~CCharStringVector()
+    ~vector()
     {
         Destroy(m_pFirst, m_pLast);
         if (m_pFirst)
             free(m_pFirst);
     }
 };
+}
 
 struct CNamedShaderTable {
-    CCharStringVector m_names;                     // +0x00
+    std::vector<CCharString> m_names;                     // +0x00
     CRbTree_0098d9f0  m_index;                     // +0x0c
     ~CNamedShaderTable();
 };

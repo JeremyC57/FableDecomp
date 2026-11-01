@@ -9,25 +9,30 @@ struct CRecordSet_00cbd510 {                // catalog/landed name for the class
     void* _vptr;                            // (layout beyond the first word not modelled)
     ~CRecordSet_00cbd510();                 // 0x00CBD510
 };
-struct CCharStringVector {                  // std::vector<CCharString>: {first, last, end of storage}
+class CCharString;
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                  // std::vector<CCharString>: {first, last, end of storage}
     void* _M_start; void* _M_finish; void* _M_end_of_storage;
-    ~CCharStringVector();                   // 0x00414EA0 (std::vector<CCharString>::~vector, as landed rows name it)
+    ~vector();                   // 0x00414EA0 (std::vector<CCharString>::~vector, as landed rows name it)
 };
+}
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
 #pragma pack(push, 1)
 struct CObject_00cef9a0 : CRecordSet_00cbd510 {
     unsigned char _pad4c[0x48];
-    CCharStringVector Member4c;                 // +0x4c
-    CCharStringVector Member58;                 // +0x58
+    std::vector<CCharString> Member4c;                 // +0x4c
+    std::vector<CCharString> Member58;                 // +0x58
 };
 #pragma pack(pop)
 
 void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     CObject_00cef9a0* object = static_cast<CObject_00cef9a0*>(self);
-    object->Member58.~CCharStringVector();
-    object->Member4c.~CCharStringVector();
+    object->Member58.~vector();
+    object->Member4c.~vector();
     object->CRecordSet_00cbd510::~CRecordSet_00cbd510();
     if (flags & 1)
         operator delete(object);

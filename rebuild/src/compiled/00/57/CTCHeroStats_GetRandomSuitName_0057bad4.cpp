@@ -20,14 +20,18 @@ class CCharString { public:
     const CCharString& operator=(const char* text);        // 0x0099EFE0
 };
 
-struct CCharStringVector {                           // std::vector<CCharString> {first, last, end} (12 bytes in retail)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                           // std::vector<CCharString> {first, last, end} (12 bytes in retail)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    explicit CCharStringVector(unsigned long count); // 0x0057FCDD
-    ~CCharStringVector();                            // 0x00414EA0
+    explicit vector(unsigned int count); // 0x0057FCDD
+    ~vector();                            // 0x00414EA0
     CCharString* begin() { return _M_start; }
 };
+}
 
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);  // 0x004CDAE0
 
@@ -46,7 +50,7 @@ class CTCHeroStats : public CTCBase { public:
 
 CCharString CTCHeroStats::GetRandomSuitName() const
 {
-    CCharStringVector nameList(9);
+    std::vector<CCharString> nameList(9);
     CCharString* names = nameList.begin();
     names[0] = "HERO_SUIT_NAKED";
     names[1] = "HERO_SUIT_OAK_VALE";

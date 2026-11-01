@@ -27,13 +27,16 @@ inline void DestroyRange(CCharString* first, CCharString* last)
     for (; first != last; ++first)
         first->~CCharString();
 }
-struct CCharStringVector {                              // STLport vector<CCharString>
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                              // STLport vector<CCharString>
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    explicit CCharStringVector(unsigned long count);    // 0x0057FCDD
-    ~CCharStringVector()
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    explicit vector(unsigned int count);    // 0x0057FCDD
+    ~vector()
     {
         DestroyRange(_M_start, _M_finish);
         if (_M_start)
@@ -43,6 +46,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
     CCharString* begin() { return _M_start; }
     CCharString& operator[](unsigned long n) { return *(begin() + n); }
 };
+}
 class CDefString { public:
     long ID;
     CDefString() { }
@@ -57,7 +61,7 @@ class CPersistContext { public:
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: bool 0x004045C0
-    template <class T> void Transfer(const char* name, T& value);   // CPersistContext::Transfer<T> (member template, PDB)
+    template <class T> void TransferVector(const char* name, std::vector<T>& value);   // <CCharString> 0x0049B8D0 (Ego_r/FableWin CPersistContext::TransferVector)
     //   instances here: CCharStringVector 0x0049B8D0
 };
 struct CDefBase {
@@ -106,7 +110,7 @@ void CTCObjectAugmentations::OnSerialise(CPersistContext& context, bool savedInG
 {
     if (context.IsSaving()) {
         context.Transfer("SavedInGame", savedInGame, false);
-        CCharStringVector names(Augmentations.size());
+        std::vector<CCharString> names(Augmentations.size());
         if (savedInGame) {
             for (unsigned long i = 0; i < Augmentations.size(); ++i) {
                 if (Augmentations[i].Object) {
@@ -115,11 +119,11 @@ void CTCObjectAugmentations::OnSerialise(CPersistContext& context, bool savedInG
                 }
             }
         }
-        context.Transfer("AugmentationDefNames", names);
+        context.TransferVector("AugmentationDefNames", names);
     } else {
         context.Transfer("SavedInGame", LoadedFromSaveGame, false);
-        CCharStringVector names;
-        context.Transfer("AugmentationDefNames", names);
+        std::vector<CCharString> names;
+        context.TransferVector("AugmentationDefNames", names);
         if (LoadedFromSaveGame) {
             long count = names.size();
             long n = Min(count, PDef->MaximumNumberOfSlots);

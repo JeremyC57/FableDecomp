@@ -16,12 +16,16 @@ class CCharString { public:
     void* m_pStringData;
 };
 
-struct SCharStringVector {
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport 4.6 vector<CCharString> (row-local members)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    ~SCharStringVector();                          // 0x00414EA0
+    ~vector();                          // 0x00414EA0
 };
+}
 
 class CAppearanceModifierGraphics { public:
     struct CEntry;
@@ -42,7 +46,7 @@ class CDefPointeeBase : public CResource { public:          // vtable 0x01230BA0
 
 struct __declspec(novtable) CAppearanceModifierDef : CDefPointeeBase {
     unsigned char _pad_04[0x24];
-    SCharStringVector HideMaterials;               // +0x28
+    std::vector<CCharString> HideMaterials;               // +0x28
     CAppearanceModifierGraphics MorphGraphics;     // +0x34
     virtual void v00();
     ~CAppearanceModifierDef();

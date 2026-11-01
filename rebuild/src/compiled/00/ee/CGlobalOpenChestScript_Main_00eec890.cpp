@@ -82,14 +82,18 @@ class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260
     CScriptGameResourceObjectMovieBase();               // 0x006E7B60
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
-struct CCharStringVector {                              // std::vector<CCharString> (STLport, 12 bytes)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                              // std::vector<CCharString> (STLport, 12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CCharStringVector();                               // 0x00414EA0
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~vector();                               // 0x00414EA0
     bool empty() const { return _M_start == _M_finish; }
 };
+}
 class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const;
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410
@@ -195,7 +199,7 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v569() const; virtual void v570() const; virtual void v571() const; virtual void v572() const; virtual void v573() const; virtual void v574() const; virtual void v575() const; virtual void v576() const;
     virtual void v577() const; virtual void v578() const; virtual void v579() const; virtual void v580() const; virtual void v581() const; virtual void v582() const; virtual void v583() const; virtual void v584() const;
     virtual void v585() const; virtual void v586() const; virtual void v587() const;
-    virtual void GetItemDefNamesFromContainer(const CScriptThing& container, CCharStringVector& names);   // slot 588 (+0x930)
+    virtual void GetItemDefNamesFromContainer(const CScriptThing& container, std::vector<CCharString>& names);   // slot 588 (+0x930)
     virtual void v589() const; virtual void v590() const; virtual void v591() const; virtual void v592() const; virtual void v593() const; virtual void v594() const; virtual void v595() const; virtual void v596() const;
     virtual void v597() const; virtual void v598() const; virtual void v599() const; virtual void v600() const; virtual void v601() const; virtual void v602() const; virtual void v603() const; virtual void v604() const;
     virtual void v605() const; virtual void v606() const; virtual void v607() const; virtual void v608() const; virtual void v609() const; virtual void v610() const; virtual void v611() const; virtual void v612() const;
@@ -276,7 +280,7 @@ void CGlobal_OpenChestScript::Main()
                 GSI->SetCutsceneMode(true, false);
                 GSI->EntitySetCutsceneBehaviour(chest, (ECutsceneBehaviour)2);
                 GSI->PauseAllEntities(true);
-                CCharStringVector items;
+                std::vector<CCharString> items;
                 GSI->GetItemDefNamesFromContainer(chest, items);
                 bool hadItems = !items.empty();
                 bool cancelled = true;

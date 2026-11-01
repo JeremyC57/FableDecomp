@@ -17,7 +17,8 @@ public:
     void* PStringData;
 };
 namespace std {
-template <class T> class vector {
+template <class T> class allocator;
+template <class T, class _Alloc = allocator<T> > class vector {
 public:
     T* _M_start;
     T* _M_finish;

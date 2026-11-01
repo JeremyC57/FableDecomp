@@ -56,10 +56,14 @@ struct CAbilityButtonGuiDefVector {                // retail vector<CAbilityButt
     void* m_words[3];
     ~CAbilityButtonGuiDefVector();                 // 0x004532E6
 };
-struct CCharStringVector {                         // retail vector<CCharString,std::allocator<CCharString>> (12 bytes)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                         // retail vector<CCharString,std::allocator<CCharString>> (12 bytes)
     void* m_words[3];
-    ~CCharStringVector();                          // 0x00414EA0
+    ~vector();                          // 0x00414EA0
 };
+}
 struct CStringLongMap {                         // retail map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString (12 bytes)
     void* m_words[3];
     ~CStringLongMap();                          // 0x004302CD
@@ -469,8 +473,8 @@ class __declspec(novtable) CPlayerGuiDef : public CParentDefClassBase { public:
     long                               MaximumNumberOfScreenMessages;                   // +0x904
     float                              NumberOfSecondsScreenMessageStaysOnScreen;       // +0x908
     long                               NumberOfCharactersScreenMessageAddsPerFrame;     // +0x90c
-    CCharStringVector                  TutorialText;                                    // +0x910
-    CCharStringVector                  TutorialLogBookText;                             // +0x91c
+    std::vector<CCharString>                  TutorialText;                                    // +0x910
+    std::vector<CCharString>                  TutorialLogBookText;                             // +0x91c
     CLongVector                        TutorialGuildSealGraphics;                       // +0x928
     CStringLongMap                  ScriptSprites;                                   // +0x934
     CStringGameActionMap            GameActionValues;                                // +0x940

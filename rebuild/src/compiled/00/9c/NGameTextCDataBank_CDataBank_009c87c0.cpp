@@ -86,8 +86,8 @@ namespace std
         _Tp* _M_end_of_storage;
     };
 
-    template <class _Tp>
-    class vector : public _Vector_base<_Tp>
+    template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp>
     {
     public:
         ~vector() { _Destroy(this->_M_start, this->_M_finish); }

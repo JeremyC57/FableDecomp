@@ -32,23 +32,27 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);  /
 CCharString __fastcall operator+(const CCharString& left, const char* right);  // 0x0099F600
 void __fastcall DisplayProgress(const CCharString& text, bool flag, float fraction, bool flag2);   // 0x009E9F40
 
-struct CCharStringVector {                             // STLport vector<CCharString>
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:                             // STLport vector<CCharString>
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     static __forceinline void _Destroy(CCharString* first, CCharString* last)
     {
         for (; first != last; ++first)
             first->~CCharString();
     }
-    ~CCharStringVector()
+    ~vector()
     {
         _Destroy(_M_start, _M_finish);
         if (_M_start)
             free(_M_start);
     }
 };
+}
 struct SListNode { SListNode* _M_next; SListNode* _M_prev; void* _M_data; };
 struct CThingList {                                    // STLport list<> (12-byte nodes)
     SListNode* _M_node;
@@ -84,7 +88,7 @@ class CDiskFileWin32 : public CBaseClassNonCopyable { public:                   
 class CThingManager { public:
     unsigned char _pad[0x80];
     long SavingFlag;                                   // +0x80
-    void SaveToScript(CCharString& script, long map, CCharStringVector& names);   // 0x00522600
+    void SaveToScript(CCharString& script, long map, std::vector<CCharString>& names);   // 0x00522600
     void DeleteAllThings();                            // 0x0051FBA0
 };
 class CWorld { public:
@@ -143,7 +147,7 @@ void CWorldMap::CompileLoadableGlobalThingsToSingleFile(const CWideString& filen
             CThingList things;
             LoadLoadableGlobalThingsForLevel(i);
             script += "NEWMAP " + GFIntToCharString(i) + "\r\n";
-            CCharStringVector names;
+            std::vector<CCharString> names;
             World->GetThingManager()->SaveToScript(script, i, names);
             script += "\r\nENDMAP\r\n";
             World->GetThingManager()->DeleteAllThings();
