@@ -25598,3 +25598,13 @@ chunk	address	module	name	length
 656	00487550	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegi	CRegisteredMusicEntry>_>	22
 656	007f8140	CTCActivationReceptorDoor	vfunc_29	18
 656	008d69a0	CModeDragonRearUp	OnDeactivate	28
+657	00628ee0	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	33
+657	0066a530	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	33
+657	006dd690	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	33
+657	007ed750	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	33
+657	008c9580	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	33
+657	007710a0	C3DAnimationBlendState	~C3DAnimationBlendState	35
+657	00529ad0	C3DAnimationBlendState	~C3DAnimationBlendState	41
+657	007599c0	CTCPhysicsRigidBody	vfunc_74	56
+657	007c75a0	CTCTurncoatSpell	FinalCleanup	60
+657	007c7560	CTCTurncoatSpell	FinalCleanup	60
