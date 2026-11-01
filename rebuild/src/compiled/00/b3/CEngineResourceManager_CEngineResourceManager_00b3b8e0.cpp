@@ -83,8 +83,9 @@ class CSimpleMemoryPool : public CBaseClassNonCopyable { public:
     unsigned long Capacity;                             // +0x08
     unsigned long GrowthGranularity;                    // +0x0c
     CArea         Root;                                 // +0x10
-    void ClearMemoryBlocks();                           // 0x00A5C600
     virtual ~CSimpleMemoryPool() { ClearMemoryBlocks(); }
+private:
+    void ClearMemoryBlocks();                           // 0x00A5C600 (Ego_r.pdb private: ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ; naming wave 25)
 };
 class C3DAnimationManager : public CBaseClassNonCopyable { public:
     CMeshDataBank*         MeshBank;                    // +0x04

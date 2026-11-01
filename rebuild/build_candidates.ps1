@@ -16794,22 +16794,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0122ab10'
         Module = '_global'
-        Source = '01/22/global_ClearCachedDefs_0122ab10.cpp'
-        TestSource = '01/22/global_ClearCachedDefs_0122ab10_test.cpp'
+        Source = '01/22/global_dynamicatexitdestructorforMatrixBufferPool_0122ab10.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforMatrixBufferPool_0122ab10_test.cpp'
         PassPattern = 'AUTO_TINY_0122ab10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0122ab30'
         Module = '_global'
-        Source = '01/22/global_ClearCachedDefs_0122ab30.cpp'
-        TestSource = '01/22/global_ClearCachedDefs_0122ab30_test.cpp'
+        Source = '01/22/global_dynamicatexitdestructorforVectorBufferPool_0122ab30.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforVectorBufferPool_0122ab30_test.cpp'
         PassPattern = 'AUTO_TINY_0122ab30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0122ab50'
         Module = '_global'
-        Source = '01/22/global_ClearCachedDefs_0122ab50.cpp'
-        TestSource = '01/22/global_ClearCachedDefs_0122ab50_test.cpp'
+        Source = '01/22/global_dynamicatexitdestructorforGroupVectorBufferPool_0122ab50.cpp'
+        TestSource = '01/22/global_dynamicatexitdestructorforGroupVectorBufferPool_0122ab50_test.cpp'
         PassPattern = 'AUTO_TINY_0122ab50_TEST PASS'
     }
     [pscustomobject]@{
@@ -42414,9 +42414,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00987f10'
-        Module = '_global'
-        Source = '00/98/CInputProcessManager_CInputProcessManager_00987f10.cpp'
-        TestSource = '00/98/CInputProcessManager_CInputProcessManager_00987f10_test.cpp'
+        Module = 'CSimpleMemoryPool'
+        Source = '00/98/CSimpleMemoryPool_CSimpleMemoryPool_00987f10.cpp'
+        TestSource = '00/98/CSimpleMemoryPool_CSimpleMemoryPool_00987f10_test.cpp'
         PassPattern = 'OK_00987f10'
     }
     [pscustomobject]@{
