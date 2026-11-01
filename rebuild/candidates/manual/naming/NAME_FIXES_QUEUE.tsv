@@ -3573,3 +3573,6 @@ c691	0x00A39900	?DeallocateMemory@?$CVectorMap@KJV?$CKeyPairCompareLess@KJ@@@@QA
 c691	0x013D27E8	?CurrentFilename@CCRCSymbolMap@@2VCWideString@@A	Ego_r dynamic initializer CCRCSymbolMap::CurrentFilename; written by LoadFromFile	g_CRCSymbolFileName; g_CCharString_013d27e8
 c691	0x0049D870	?GetFrame@CWorld@@SIJXZ	Ego_r static __fastcall; called by CTCBob::FrameUpdate	-
 c691	0x0099B800	??4CWideString@@QAEABV0@PBG@Z	the symbol landed 0x00A39010 binds (vland RELOC_NAME)	CCharString::AssignFromWide (label)
+w23	0x006156E0 0x006D3FB0 0x00777000 0x007EE660 0x009223A0 0x0093F930	re-identify the filter each row calls, then respell	DECISIONS_W23_RESOLVED item 5	the wrong filter class
+w23	00c17260	LoadBank vs LoadRecordAndReport_00c17260 -- decide from evidence	DECISIONS_W23_RESOLVED item 8	LoadRecordAndReport_00c17260 / ?LoadBank@@YGXPAVCLoadLog@@...
+w23	00c0c0c0	??4CString@@QAEABV0@ABV0@@Z	DECISIONS_W23_RESOLVED item 9: re-author the own row as CString::operator=	CCharString::Assign
