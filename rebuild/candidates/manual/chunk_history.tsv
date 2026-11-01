@@ -25652,3 +25652,13 @@ chunk	address	module	name	length
 662	00cba6c0	_Dest_val<std::allocator<std::pair<CCharString_const_,CCount	pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	60
 662	009f81c0	_Dest_val<std::allocator<std::pair<CCharString_const_,CCount	pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	61
 662	004d1db0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	98
+663	006ba6d0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	129
+663	00850360	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	137
+663	0082e780	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	215
+663	0051a0a0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	109
+663	00550d50	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	100
+663	00b47b50	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	110
+663	006ed480	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	143
+663	007b9d30	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	137
+663	007783f0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	145
+663	00b94b50	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	159
