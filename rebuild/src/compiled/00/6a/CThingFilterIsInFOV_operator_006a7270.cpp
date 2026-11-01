@@ -1,5 +1,6 @@
 // CThingFilter_IsInFOV::operator()(const C3DVector& pos) const -- true when the point is (almost) at the eye or within the cone: the normalised offset dotted with Direction beats CosFOV (Z ignored unless AngleTest3D)
 // Leaf: ??RCThingFilter_IsInFOV@@QBE_NABVC3DVector
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006A7270, 260 bytes (+12 int3), `ret 4`, no calls (the landed thing overload
 //   0x006A7390 forwards here).
 // Globals: 0.01f 0x01230A5C (the "at the eye" squared distance), the 128-entry reciprocal-square-root mantissa table
@@ -12,7 +13,7 @@
 //   while the Y square is loaded first) and which scales the offset IN PLACE with `*=` (a by-value `offset * r` temporary
 //   schedules the Z product before the Y one). The reciprocal length is the table-driven fast 1/sqrt with one Newton step
 //   (its bit pattern built in the dead argument slot).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X;    // +0x00
@@ -29,7 +30,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

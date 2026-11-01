@@ -1,4 +1,5 @@
 // CAIStateGroup_NymphFloatAround::Update() -- reset the nymph's attack flags and target, start flying around (or, back from limbo, play the teleport action first), poll CheckIfCanAttack every frame until ready, then stop flying and, if a target lies more than 1 unit away in the plane, face it; always Terminate()
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091C3D0, length 624 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (GetInterface 0xF5 = CTCNymph, bit 21 of +0x3c, unchecked), CBaseIntelligentPointer
 // ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CCreatureAction_NymphTeleportIntoLimbo
@@ -12,7 +13,7 @@
 // FlyingAround +0x40, CanAttack +0x58, ReadyToAttack +0x59, HasBeenInLimbo +0x5b, PTarget +0x68. Retail CThing physics body +0x60.
 // Shape: the shared `push 0` serves both the StartFlyingAround argument and the action's wait flag; a planar direction with Z = 0
 // normalised by the landed 0x007A6E20 inline Normalise, then a CRightHandedSet (Up 0,0,1; Forward) by reference.
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X, Y, Z;
@@ -28,7 +29,7 @@ class C3DVector { public:
         float lengthSquared = x * x + y * y + z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

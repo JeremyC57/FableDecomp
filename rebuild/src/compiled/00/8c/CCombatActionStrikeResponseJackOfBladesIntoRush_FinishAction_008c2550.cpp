@@ -3,6 +3,7 @@
 //   and the normalised direction to it, run the base strike-response FinishAction and make Jack cast an assassin rush along
 //   that direction with a "RUSH_OUTOF" combat animation as its final action; otherwise just the base FinishAction.
 // Leaf: FinishAction
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C2550, 607 bytes (+ int3 padding), virtual, no EH frame.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in),
 //   CDefClassBase::GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU stand-in), GetValidRushPosition 0x008C1600 (same-TU
@@ -21,12 +22,12 @@
 //   calls. GetSubDef goes through an inline CThing wrapper so the creature is fetched before &def is pushed; the incremented
 //   count is a named local (without it esi/edi swap); Normalise(delta) before delta.Get2DLength() with `const float&` scaling
 //   gives retail's x87 order (cached dx2/dy2, sqrt last). The CDefPointer null test is dropped by the GetSubDef stand-in.
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

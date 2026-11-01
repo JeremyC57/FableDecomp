@@ -1,5 +1,6 @@
 // CThingCreatureBase::IsThingInFrontCone(const CThing* thing) const -- true when the direction to the other thing lies within 20 degrees of this thing's physics facing (normalised dot product against cos 20 degrees)
 // Leaf: ?IsThingInFrontCone@
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661D70, 256 bytes (248 without padding), thiscall `ret 4`, bool in al. No code or data
 //   reference to it was found in Fable.exe (an unreferenced member of the CThingCreatureBase TU 0x0066xxxx).
 // Callees: the physics TC's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on PhysicsTC +0x60), the out-of-line
@@ -14,12 +15,12 @@
 //   `if (...) return true; return false;` gives the `mov al,1` / `xor al,al` exits.
 extern "C" double __cdecl cos(double);
 #pragma intrinsic(cos)
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

@@ -1,4 +1,5 @@
 // CTCPhysicsRigidBody::GetRHSet(float) -- the right-handed set interpolated between the old and the current frame by t, both axes fast-normalised
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00759b40, length 494 bytes, `ret 8` (hidden CRightHandedSet result + t).
 // Vtable slot 71 of CTCPhysicsRigidBody (0x0126996C); same body as CTCPhysicsStandard::GetRHSet 0x00723C80 with the members 0x18 higher.
 // Callees: none. Globals: the reciprocal-square-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C.
@@ -8,7 +9,7 @@
 //   (0x17C - e) / 2, table mantissa, one Newton step). The Newton step written `r = (3 - r*r*l) * r; r *= 0.5f;` is
 //   what places `mov edx,0x17c` between `fld st(2)` and `fmul st(3)` in the second normalise (a single expression
 //   schedules it one instruction later). The result is built by value from the two locals (user C3DVector copy ctor).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X;
@@ -27,7 +28,7 @@ class C3DVector { public:
         lengthSquared += X * X;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r;
         r *= 0.5f;

@@ -4,6 +4,7 @@
 // after the Y store up to retail's fld Y. Emitted bytes are identical for every spelling; only the edge moves.
 // CPlayer::GetFreeCamera(float t) const -- the free camera interpolated between last frame's and this frame's: position lerped, the right-handed set's forward and up vectors lerped and renormalised, with the current camera's horizontal FOV
 // Leaf: ?GetFreeCamera@
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00487180, length 612 bytes, `ret 8` (hidden CCamera result + t).
 // Callees: CCamera::GetHorizontalFOV() const 0x00A0BEB0 (manifest label CMap::DrawGetSeaLevel is a byte-identical
 // getter), CCamera::CCamera(const C3DVector&, const C3DVector&, const C3DVector&, float, float) 0x00A0C130.
@@ -13,7 +14,7 @@
 // Shape: C3DVector inline operators `(cur - old) * t + old`, the landed inline fast Normalise (as the landed
 // CTCAssassinRush::SetupFacingDirection 0x007A6E20), the camera built straight into the hidden result.
 #include "engine/CPlayer.h"
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X, Y, Z;
@@ -27,7 +28,7 @@ class C3DVector { public:
         float lengthSquared = X * X + (Y * Y + Z * Z);
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = 0.5f * (r * (3.0f - lengthSquared * (r * r)));
         X *= r;

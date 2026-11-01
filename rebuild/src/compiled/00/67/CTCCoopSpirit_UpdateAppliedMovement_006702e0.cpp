@@ -1,5 +1,6 @@
 // CTCCoopSpirit::UpdateAppliedMovement() -- unless the spirit's creature is busy with an action, take (and clear) the accumulated movement vector, turn it by the creature's relative movement angle, normalise it and, when it is not degenerate, reset the no-movement timer and push the creature's physics along it at half its length
 // Leaf: UpdateAppliedMovement
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006702E0, 400 bytes (`ret`).
 // Callees: CThingCreatureBase::IsPerformingAnyAction() @ 0x006622A0, CThingPlayerCreature::GetCurrentRelativeMovementAngleXY()
 // @ 0x006A9640, C3DVector::RotateXY(float) @ 0x00A14040, C3DVector::AccurateNormalise @ 0x00A14440, CVectorMap<ETCInterfaceType,
@@ -13,7 +14,7 @@
 // landed SetupFacingDirection 0x007A6E20 fast Normalise; the scale is `*= length * 0.5f`.
 #include <math.h>
 #pragma intrinsic(sqrt)
-extern unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -29,7 +30,7 @@ class C3DVector { public:
         float lengthSquared = (x * x + y * y) + z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

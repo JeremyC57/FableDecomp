@@ -1,5 +1,6 @@
 // NCreatureMode::CModeDragonLanded::FrameUpdate() -- while the target lives and the dragon has a look component (0x43): unless the target is within 12.5 units on the ground plane and almost straight down -Y from it (normalised direction . (0,-1,0) > 0.96), turn the head at the target when head turning is on; otherwise look 50 units ahead of the body
 // Leaf: ?FrameUpdate@CModeDragonLanded
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DB240, 543 bytes (`ret`).
 // Callees: CModeBase::FrameUpdate 0x0073AC50, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
 //   (inline TC lookup 0x43), CThing::GetPos 0x004C73D0, CTCLook::LookAtPos(const C3DVector*, long) 0x00753E90; the driver
@@ -12,12 +13,12 @@
 //   through a `const float&` helper, so it is stored and re-read from memory (fstp/fxch/fmul [m]); VC7.1 folds the constant dot
 //   product X*0 + Y*-1 + Z*0 into (X+Z)*0 - Y*1.
 #include <math.h>
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

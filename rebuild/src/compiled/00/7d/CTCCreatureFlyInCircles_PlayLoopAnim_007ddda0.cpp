@@ -1,5 +1,6 @@
 // CTCCreatureFlyInCircles::PlayLoopAnim() -- point the wind along the creature's flat heading (towards the living hero, else its facing) and start the dragon-flight loop animation for the current fly mode (strafe at half wind, fly loop, or fire-breathing at 1.5 wind early in a swoop), clearing the transition flag once the action is taken
 // Leaf: ?PlayLoopAnim@CTCCreatureFlyInCircles@@IAEXXZ
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DDDA0, 496 bytes, plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / operator=(const char*) 0x0099EFE0 ("STRAFE_RIGHT" 0x0126FAC8, "FLY_LOOP" 0x0126FAD8,
 //   "BREATHE_FIRE_STRAIGHT_LOOP" 0x0126FAE4) / ~CCharString 0x0099EAE0, CTCBase::PeekWorld 0x00686A80 (catalog
@@ -12,7 +13,7 @@
 // Shape: inline Normalise over local copies (the Z = 0 term folds away, Z = r * 0); the SetCurrentAction result is a named
 //   bool so it is kept in bl across the temporary's destructor; the world is a named local so GetWorld is called before
 //   the OverrideWindDirection argument pushes.
-extern unsigned long g_InvSqrtMantissaTable[128];       // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];       // 0x013CE558
 
 class C3DVector { public:
     float X;    // +0x00
@@ -28,7 +29,7 @@ class C3DVector { public:
         float lengthSquared = x * x + y * y + z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

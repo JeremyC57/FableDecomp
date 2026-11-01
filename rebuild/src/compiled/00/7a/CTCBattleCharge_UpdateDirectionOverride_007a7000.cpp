@@ -1,5 +1,6 @@
 // CTCBattleCharge::UpdateDirectionOverride() -- while the player pushes the analogue stick (input event 0x11) past 0.05, take the stick as the charge's override direction (Y flipped), normalised and rotated by the hero's relative movement angle
 // Leaf: UpdateDirectionOverride
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail 0x007A7000, 336 bytes, `ret`. Label: catalogued as CTCAssassinRush::UpdateDirectionOverride; it writes the Ego_r.pdb
 // CTCBattleCharge fields (DirectionOverride +0x2E, DirectionOverrideVector +0x2F) and is called only from CTCBattleCharge's
 // vtable slot 6 (0x007A7370, call at 0x007A73D9): CTCBattleCharge::UpdateDirectionOverride (twin of 0x007A9960).
@@ -15,7 +16,7 @@
 // (landed CTCAssassinRush::SetupFacingDirection 0x007A6E20 model); the angle is a named float local (`fstp ; mov ; push`).
 #include <math.h>
 #pragma intrinsic(sqrt)
-extern unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
 
 class C2DVector { public:
     float X, Y;
@@ -34,7 +35,7 @@ class C3DVector { public:
         float lengthSquared = x * x + y * y + z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

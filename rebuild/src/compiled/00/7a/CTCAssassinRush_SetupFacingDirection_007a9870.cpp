@@ -1,4 +1,5 @@
 // CTCAssassinRush::SetupFacingDirection(C3DVector& direction) -- normalise the rush direction; when it points within 60 degrees of straight up, use the thing's facing instead
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A9870, length 222 bytes, `ret 4`. Called once, from
 // 0x007AAD0A; 0x007A6E20 is a byte-identical copy in another TU.
 // Callees: the physics body's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on ParentThing+0x60).
@@ -9,7 +10,7 @@
 // folds the two zero terms into `(x + y) * 0`), and `cos` stays an intrinsic on the constant.
 #include <math.h>
 #pragma intrinsic(cos)
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X;    // +0x00
@@ -25,7 +26,7 @@ class C3DVector { public:
         float lengthSquared = x * x + y * y + z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

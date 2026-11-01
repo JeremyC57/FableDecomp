@@ -4,6 +4,7 @@
 //   animation has finished (empty queue or flag bit 1) Recover(); between the two frames slide the dust trail emitter one
 //   frame-step from the tail towards the target
 // Leaf: ?FrameUpdate@CModeScorpionKingTailPlunge
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E0D20, 953 bytes (`ret`).
 // Callees: CModeBase::FrameUpdate 0x0073AC50, CVectorMap::LowerBound 0x0040F020 (inline GetTC 0x5a, unchecked miss path),
 //   CTCAnimationComplex::GetAnimation 0x0070B460, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0,
@@ -15,12 +16,12 @@
 //   the dust step is `delta / (float)frames` through an inline operator/ that multiplies by 1/s (fst + fmul st(2)); the dust
 //   emitter's driver is read through a forceinline accessor so it lands in ecx before the push.
 #include <math.h>
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

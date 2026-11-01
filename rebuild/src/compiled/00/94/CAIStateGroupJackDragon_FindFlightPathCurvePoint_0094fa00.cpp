@@ -1,4 +1,5 @@
 // CAIStateGroup_JackDragon::FindFlightPathCurvePoint(const C3DVector&, const C3DVector&, const C3DVector&, C3DVector&) -- the curve point for a flight from start to end around a centre: the centre plus the normalised mean of the two centre-relative offsets, scaled by half the start-end distance plus the normalised vector's length
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 //   left-operand folded forms, `lengthSquared = x * x + (y * y + z * z)` and `r = 0.5f * (r * (3.0f - lengthSquared * (r * r)))`.
 //   Same x87 code, more IR before the tail, so VC7.1 hoists the `out` load and `pop esi` above the deferred Z*r as retail.
 //   Either form alone moves it 1-2 slots; GetLength's sum must stay left-associated.
@@ -9,7 +10,7 @@
 // Shape: three differences built as member operators (x, y, z order), the mean scaled by 0.5f, the landed fast Normalise,
 // then centre + dir * (|end - start| * 0.5f + |dir|) in one expression (a separate scale statement reorders the two lengths).
 #include <math.h>
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X;    // +0x00
@@ -29,7 +30,7 @@ class C3DVector { public:
         float lengthSquared = x * x + (y * y + z * z);
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = 0.5f * (r * (3.0f - lengthSquared * (r * r)));
         X *= r;

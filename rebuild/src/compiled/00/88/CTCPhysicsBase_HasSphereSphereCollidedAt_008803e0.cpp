@@ -1,4 +1,5 @@
 // CTCPhysicsBase::HasSphereSphereCollidedAt(const CTCPhysicsBase* other, const C3DVector& pos, CPhysicsCollideResponse* response) const -- sphere/sphere test of this body placed at pos against other; on contact fill the response with the unit normal and the contact position
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008803E0, length 301 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: none (C3DVector's inline fast Normalise: exponent (380 - e) / 2 with the 128-entry mantissa table 0x013CE558,
 // one Newton step with 3.0f 0x0122DED4 and 0.5f 0x0122F59C).
@@ -10,7 +11,7 @@
 // Layout: Ego_r.pdb CTCPhysicsBase (Position +0x0c, Radius +0x34) and CPhysicsCollideResponse (CollidePos +0x00,
 // CollideNormal +0x0c, Friction +0x18); engine/CTCPhysicsBase.h flattens the vectors into floats, so the class is modelled
 // locally with C3DVector members (as in the landed sibling 0x008802B0).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector { public:
     float X;
@@ -28,7 +29,7 @@ class C3DVector { public:
         lengthSquared += z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

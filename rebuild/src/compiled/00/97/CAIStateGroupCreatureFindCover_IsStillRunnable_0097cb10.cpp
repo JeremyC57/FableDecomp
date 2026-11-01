@@ -1,4 +1,5 @@
 // `operator*=(const float&)` (chunk 278 / 00880510 lever) spills the Newton-step reciprocal and multiplies from memory as
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // retail; (2) the facing call's object through an inline accessor (`GetPItem()->GetPhysicsBody()->GetFacing()`, chunk 271
 // lever) loads the physics body straight into ecx (`mov ecx,[eax+60h] ; mov edx,[ecx]`) instead of eax + `mov ecx,eax`.
 // CAIStateGroup_CreatureFindCover::IsStillRunnable() -- the enemy is alive, holds a projectile weapon and faces us (dot of its facing with the normalised enemy->creature vector > 0)
@@ -7,7 +8,7 @@
 //          @ 0x006A1440, CTCWeapon::IsProjectileWeapon @ 0x005DAA40, CThing::GetPosition @ 0x004C73D0, the physics body's
 //          GetFacing (slot 70, +0x118); globals 0x013CE558 (rsqrt mantissa table), 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC.
 // Layout: PEnemy +0x14 (CIntelligentPointer<const CThing>), as the landed CreatureTakeCover::IsStillRunnable 0x00979E90 model.
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 class CThing;
 
 class CBaseObject;
@@ -48,7 +49,7 @@ __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

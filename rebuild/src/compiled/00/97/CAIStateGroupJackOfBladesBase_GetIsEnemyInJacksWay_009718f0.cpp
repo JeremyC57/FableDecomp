@@ -1,5 +1,6 @@
 // CAIStateGroup_JackOfBladesBase::GetIsEnemyInJacksWay(const C3DVector& from, const C3DVector& to) -- true when the live target thing is nearer (in XY) to the destination than the start is, and lies within 15 degrees of the start-to-destination direction as seen from the destination
 // Leaf: ?GetIsEnemyInJacksWay@CAIStateGroup_JackOfBladesBase@@IAE_NABVC3DVector@@0@Z
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009718F0, length 510 bytes (+ int3 padding), `ret 8`.
 // Prototype: FableWin.pdb ?GetIsEnemyInJacksWay@CAIStateGroup_JackOfBladesBase@@IAE_NABVC3DVector@@0@Z (protected).
 // Callees (PDB spellings): CBaseIntelligentPointer::GetPItem 0x00A01B50 (?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ,
@@ -15,7 +16,7 @@
 //   order, which spill slot each lands in and the x87 add order follow two compound forms: GetSquaredMagnitude2D as
 //   `squared = Y * Y; squared += X * X;` and the Normalise sum as `z * z; += x * x; += y * y`. Each alone fixed one half
 //   (the path squares / the enemy spill slots); the earlier `y, z, x` Normalise and `X * X + Y * Y` forms swapped them.
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 class C3DVector {
 public:
@@ -40,7 +41,7 @@ public:
         lengthSquared += x * x;
         lengthSquared += y * y;
         unsigned long bits = *(unsigned long*)&lengthSquared;
-        unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) | (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+        unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) | (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r;
         r *= 0.5f;

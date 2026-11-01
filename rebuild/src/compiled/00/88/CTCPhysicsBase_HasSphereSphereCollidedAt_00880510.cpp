@@ -1,15 +1,16 @@
 // CTCPhysicsBase::HasSphereSphereCollidedAt(const CTCPhysicsBase& other, const C3DVector& from, const C3DVector& to, CPhysicsCollideResponse& response) const -- the sphere test at 'to' (0x008803E0); on contact move the contact point back along the from->to direction by both radii and drop it by this radius
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // `operator*=(const float&)` (chunk 278 lever) makes VC7.1 pop the Newton-step reciprocal to the frame and multiply
 // X/Y/Z from memory (`fstp [r] ; fxch ; fmul [r]`), which is retail's x87 shape; the plain `X *= r` form keeps r on
 // the stack (`fst ; fmul st(2) ; fstp st(1)`).
 #include <math.h>
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

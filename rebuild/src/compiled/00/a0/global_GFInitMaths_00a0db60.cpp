@@ -1,5 +1,6 @@
 // GFInitMaths() -- build the fast-maths lookup tables: the 128-entry reciprocal-square-root mantissa table (entry 64 forced to 0xFF), 1024 cosines over a full turn (entry 1024 repeats entry 0), and 1025 acos / asin samples over [-1, 1] (each with a zero guard entry)
 // Leaf: ?GFInitMaths@@
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Grade: RELOCATION_MATCH -- union in/out for the bit-pattern float round trip gives retail's two slots (in [esp], out
 //   and the fild temporaries [esp+4])
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0DB60, 290 bytes, __fastcall with no arguments, plain `ret`. Callers: the
@@ -19,7 +20,7 @@ extern "C" double __cdecl acos(double x);
 extern "C" double __cdecl asin(double x);
 #pragma intrinsic(sqrt, cos, acos, asin)
 
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 extern float g_CosTable[1026];                      // 0x013CD550
 extern float g_ACosTable[1028];                     // 0x013CB530
 extern float g_ASinTable[1028];                     // 0x013CC540
@@ -28,13 +29,13 @@ void __fastcall GFInitMaths()
 {
     unsigned long i;
     union { unsigned long I; float F; } in, out;
-    unsigned long* entry = g_InvSqrtMantissaTable;
+    unsigned long* entry = GFastOneOverSqrtTable;
     for (i = 0; i < 128; ++i) {
         in.I = (i | 0x1F80) << 17;
         out.F = (float)(1.0 / sqrt(in.F));
         *entry++ = ((out.I + 0x2000) >> 15) & 0xFF;
     }
-    g_InvSqrtMantissaTable[64] = 0xFF;
+    GFastOneOverSqrtTable[64] = 0xFF;
 
     for (i = 0; i < 1024; ++i)
         g_CosTable[i] = (float)cos((float)(i * 2) * 0.0030679617f);

@@ -1,5 +1,6 @@
 // CAIStateGroup_VersusScorpionKing::GetChargeDodgePos(C3DVector& pos) -- start from the creature's position; while the scorpion is alive, step 10 units sideways (a quarter turn left or right of the scorpion's normalised facing, whichever side the creature is facing towards)
 // Leaf: GetChargeDodgePos
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009633E0, length 469 bytes (`ret 4`, the position by reference).
 // Callees: CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3 on PEnemy), the physics
 //          body's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on thing+0x60; twice),
@@ -13,7 +14,7 @@
 // Shape: C3DVector needs a DECLARED memberwise copy ctor (the two rotated copies of the facing then take x straight from
 //          the x87 stack and the estimate's integer ops schedule like retail; with the implicit copy every word goes
 //          through memory); the side choice is an if/else of `pos += side * 10.0f` (VC merges the z tail).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 class C3DVector { public:
     float X;    // +0x00
     float Y;    // +0x04
@@ -33,7 +34,7 @@ class C3DVector { public:
         float lengthSquared = x * x + y * y + z * z;
         unsigned long bits = *(unsigned long*)&lengthSquared;
         unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                                 (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                                 (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
         float r = *(float*)&estimate;
         r = (3.0f - r * r * lengthSquared) * r * 0.5f;
         X *= r;

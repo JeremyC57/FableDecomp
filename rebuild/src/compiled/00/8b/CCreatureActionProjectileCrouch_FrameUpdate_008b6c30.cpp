@@ -1,4 +1,5 @@
 // CCreatureAction_ProjectileCrouch::FrameUpdate() -- the base frame update; then, when turning to face the target, turn the creature's facing towards FacePos (snap when within ~5 degrees, otherwise step 1/72 turn towards the side the target is on) and set the wrapped facing angle
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B6C30, length 546 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 //          CThing::GetPos @ 0x004C73D0, C3DVector::RotateXY(float turns) @ 0x00A14040, _CIfmod @ 0x00BFEB28;
@@ -13,13 +14,13 @@
 //   products sum Z first; the facing angle is atan2(X, Y) in turns wrapped by the landed WrapAngle.
 #include <math.h>
 #pragma intrinsic(fmod, atan2)
-extern unsigned long g_InvSqrtMantissaTable[128];          // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];          // 0x013CE558
 
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

@@ -2,6 +2,7 @@
 //   position: sample the four corner heights of the cell, pick the triangle by the cell's diagonal parity and the
 //   fractional position, cross the two edge vectors (1,0,a) x (0,1,b) and normalise with the fast inverse square root
 // Leaf: ?GetGroundFaceNormalAt@CMap
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x0081F6C0, 550 bytes, `ret 8` (hidden result + localPos). Caller CWorldMap::GetGroundFaceNormalAt
 //   0x0063AB10 (landed) forwards the hidden result.
 // Callees: _ftol 0x00BFEA70. 1.0f 0x0122DED8, 0.0f 0x0122DEDC, 3.0f 0x0122DED4, 0.5f 0x0122F59C, inverse-sqrt mantissa
@@ -12,12 +13,12 @@
 //   test is written dy > dx so both arms start with the same (long)localPos.Y, which VC7.1 hoists above the parity
 //   compare; the cross product is a named local normalised in place (member Normalise) and returned by copy (user copy
 //   ctor), as retail keeps it in the frame.
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

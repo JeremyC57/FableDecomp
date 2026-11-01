@@ -1,5 +1,6 @@
 // CCreatureAction_BlockRespond::Initialise() -- pick the block-response animation from where the blow came from (hit position or the living target) relative to the creature's facing (front/back within 50 degrees, else left/right by the cross product), push the creature away from it, fall back to BLOCK_FRONT_RESPONSE facing the target, then run the block base Initialise and mark the final position preferred
 // Leaf: ?Initialise@CCreatureAction_BlockRespond
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Shape: the first normalise is `direction *= FastInvSqrt(direction.GetLengthSquared())` with a plain-inline length method
 //   (right-nested X*X + (Y*Y + Z*Z)): operator*=(const float&) then spills the reciprocal and consumes the cached x/y
 //   (`fstp [r]; fxch st(1); fmul [r]`) as retail, where the __forceinline Normalise() keeps it on the stack (`fst [r]; fmul st(2)`);
@@ -11,14 +12,14 @@
 #include <math.h>
 #include <stdlib.h>
 #pragma intrinsic(cos)
-extern unsigned long g_InvSqrtMantissaTable[128];       // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];       // 0x013CE558
 
 class CTCBase;
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

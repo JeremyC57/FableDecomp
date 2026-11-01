@@ -8,6 +8,7 @@
 // TCName) and Init it toward position + flat facing * 10 with the dragon's accuracy, exclude the dragon from its hits, then
 // spawn the GROUND_SLAM_EXPLOSION effect at the dragon and release the defs.
 // Leaf: ?PerformAction@CCreatureAction_DragonRearUpFull
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F3630, 880 bytes, plain `ret`.
 // Callees: CGameDefinitionManager::Get 0x0044C6B0, GetDefGlobalIndexFromName 0x009AD410, CCreatureActionBase::GetPWorld
 //   0x00692940, CDefinitionManager::GetDef<CThingShotDef> 0x0078B230, CWorldMap::GetGroundSizeZAt 0x0063A300, CThing::Create
@@ -23,12 +24,12 @@
 //   The FastInvSqrt Newton step must keep its explicit grouping (see the grade line): the plain left-to-right form emits
 //   the same instructions but stores X*r right after its fmul, ahead of the Init pushes.
 // Layout: local model -- retail CCombatActionBase is 0x114 bytes (PShot at +0x114, PDB +0x12c).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return 0.5f * (r * (3.0f - lengthSquared * (r * r)));
 }
@@ -198,7 +199,9 @@ __forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& p
 {
     return Create(defIndex, &position, creature->PlayerNumber, 0, 0, name);
 }
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 struct CTCShotDefinitionBase {
     void Init(CDefPointerByValue<CThingShotDef> def, CThing* shooter, CThing* origin, const C3DVector* target, float accuracy,
@@ -276,7 +279,7 @@ void CCreatureAction_DragonRearUpFull::PerformAction()
     creature->GetDef()->GetSubDef(&effects);
     if (effects) {
         if (effects->GetEffectFromString("GROUND_SLAM_EXPLOSION", effectType))
-            CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
+            CTCDParticleEmitter::Create(effectType, *(&PCreature.GetPItem()->GetPos()), false);
         effects->Release();
     }
     shotDef->Release();

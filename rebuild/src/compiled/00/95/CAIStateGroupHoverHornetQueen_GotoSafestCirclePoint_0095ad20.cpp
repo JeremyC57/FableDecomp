@@ -1,17 +1,18 @@
 // CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(long movementType) -- with no circle markers return 3; otherwise compare the direction to the target with the directions to the next and previous circle markers and fly to the one facing away from the target
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095AD20, 754 bytes, `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, GotoCirclePoint @ 0x0095A6C0;
-//          g_InvSqrtMantissaTable @ 0x013CE558 (the inline fast inverse square root's mantissa table).
+//          GFastOneOverSqrtTable @ 0x013CE558 (the inline fast inverse square root's mantissa table).
 // Layout: retail STLport vectors are 12 bytes, so CurrentCirclePoint is +0x4c and CircleMarkers +0x50 (the PDB header says +0x50/+0x54).
 // Shape: three inline fast normalises (`*this *= FastInvSqrt(len)` through a const float& operator*=); the circle-marker
 //        element is read through the vector's inline `*(begin() + i)` accessor (a plain `_M_start[i]` colours the begin
 //        reload and the next normalise's bit temporaries edx/ecx and hoists the index load above the creature load).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }

@@ -1,16 +1,17 @@
 // CWorldMap::ClipLinePointsToMapBox(const C2DBoxI& box, C3DVector& point, const C3DVector& towards) const -- when `point` lies outside the box, slide it along the line towards `towards` onto each box side plane it is beyond (x = 0, y = 0, x = width, y = height)
 // Leaf: ?ClipLinePointsToMapBox@CWorldMap@
+// Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0063BBC0, `ret 0xc`, esp frame; `this` unused.
 // Callees: _ftol 0x00BFEA70, CPlane::Initialise(const C3DVector&, const C3DVector&, const C3DVector&) 0x00A42170,
 //   CPlane::GetIntersectionWithLine(const C3DVector&, const C3DVector&, C3DVector*) const 0x00A422C0; fast inverse-sqrt
 //   table 0x013CE558 (3.0f 0x0122DED4, 0.5f 0x0122F59C).
 // Layout: C2DBoxI {TLX, TLY, BRX, BRY}; CPlane {Normal, Distance} (landed 0x00A422C0).
-extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
+extern unsigned long GFastOneOverSqrtTable[128];   // 0x013CE558
 __forceinline float FastInvSqrt(float lengthSquared)
 {
     unsigned long bits = *(unsigned long*)&lengthSquared;
     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
-                             (g_InvSqrtMantissaTable[(bits >> 17) & 0x7f] << 15);
+                             (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
     float r = *(float*)&estimate;
     return (3.0f - r * r * lengthSquared) * r * 0.5f;
 }
