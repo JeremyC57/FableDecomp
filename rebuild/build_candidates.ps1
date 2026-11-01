@@ -213002,8 +213002,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00681940'
         Module = 'CTCCreatureOpinionOfHero'
-        Source = '00/68/CTCCreatureOpinionOfHero_GetToleranceToBeingHitRemaining_00681940.cpp'
-        TestSource = '00/68/CTCCreatureOpinionOfHero_GetToleranceToBeingHitRemaining_00681940_test.cpp'
+        Source = '00/68/CTCCreatureOpinionOfHero_GetToleranceToBeingHit_00681940.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_GetToleranceToBeingHit_00681940_test.cpp'
         PassPattern = '00681940_TEST PASS'
     }
     [pscustomobject]@{
@@ -220478,9 +220478,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00681980'
-        Module = 'CViewBase'
-        Source = '00/68/CViewBase_CalculateDisplayDistance_00681980.cpp'
-        TestSource = '00/68/CViewBase_CalculateDisplayDistance_00681980_test.cpp'
+        Module = 'CTCCreatureOpinionOfHero'
+        Source = '00/68/CTCCreatureOpinionOfHero_GetToleranceToBeingHitRemaining_00681980.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_GetToleranceToBeingHitRemaining_00681980_test.cpp'
         PassPattern = '00681980_TEST PASS'
     }
     [pscustomobject]@{
@@ -234298,8 +234298,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006819d0'
         Module = 'CTCCreatureOpinionOfHero'
-        Source = '00/68/CTCCreatureOpinionOfHero_UpdateHitTolerance_006819d0.cpp'
-        TestSource = '00/68/CTCCreatureOpinionOfHero_UpdateHitTolerance_006819d0_test.cpp'
+        Source = '00/68/CTCCreatureOpinionOfHero_OnHit_006819d0.cpp'
+        TestSource = '00/68/CTCCreatureOpinionOfHero_OnHit_006819d0_test.cpp'
         PassPattern = '006819d0_TEST PASS'
     }
     [pscustomobject]@{

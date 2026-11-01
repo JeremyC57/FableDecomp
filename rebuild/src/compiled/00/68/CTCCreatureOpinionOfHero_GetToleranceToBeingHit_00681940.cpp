@@ -1,5 +1,8 @@
-// CTCCreatureOpinionOfHero::GetToleranceToBeingHitRemaining() const -- the override when set (>= 0), else the reaction manager's
+// CTCCreatureOpinionOfHero::GetToleranceToBeingHit() const -- the override when set (>= 0), else the reaction manager's
 // tolerance for this thing plus the personality's ToleranceToBeingHit
+// Leaf: ?GetToleranceToBeingHit@CTCCreatureOpinionOfHero@@QBEMXZ
+// Naming wave 25: Ego_r.pdb / FableWin.pdb order GetToleranceToBeingHit before GetToleranceToBeingHitRemaining (the latter subtracts
+//   NumberOfTimesHit: retail 0x00681980) and OnHit (0x006819D0); this body is the former (was GetToleranceToBeingHitRemaining).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00681940, length 59 bytes (+5 int3).
 // Callees: the world accessor @ 0x00686A80 (called with this in ecx), COpinionReactionManager::GetToleranceToBeingHit
 // (const CThing*) @ 0x00701940 (float). Constant 0.0f @ 0x0122DEDC.
@@ -90,10 +93,10 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    float GetToleranceToBeingHitRemaining() const;
+    float GetToleranceToBeingHit() const;
 };
 
-float CTCCreatureOpinionOfHero::GetToleranceToBeingHitRemaining() const
+float CTCCreatureOpinionOfHero::GetToleranceToBeingHit() const
 {
     if (ToleranceToBeingHitOverride >= 0.0f)
         return ToleranceToBeingHitOverride;
