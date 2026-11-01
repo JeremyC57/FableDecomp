@@ -1,25 +1,41 @@
-#include "engine/CAIStateGroup_JackOfBladesStage2.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CObjB;
-
-// 0x6b3950 : thiscall member, two stack args, cleans own stack
-struct CObjC {
-    void Sub_6B3950(int a, unsigned int b);
+// CAIStateGroup_JackOfBladesStage2::Cleanup() -- run the shared Jack of Blades cleanup, then transition every environment
+// channel back to its default theme
+// Leaf: ?Cleanup@CAIStateGroup_JackOfBladesStage2@@UAEXXZ
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00972590; vtable slot 9 of CAIStateGroup_JackOfBladesStage2 (Ego_r.pdb +
+// FableWin.pdb ?Cleanup@CAIStateGroup_JackOfBladesStage2@@UAEXXZ).
+// Callees: CAIStateGroup_JackOfBladesBase::Cleanup @ 0x00972110 (qualified base call), CAIStateGroupBase::GetWorld @ 0x008FCFC0
+// (Ego_r ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ, protected const), CEnvironment::TransitionToDefaultThemeAllChannels
+// @ 0x006B3950 (Ego_r ?TransitionToDefaultThemeAllChannels@CEnvironment@@QAEXJM@Z, bound by 0x0078F6E0) on the world's
+// PEnvironment (scoped_ptr<CEnvironment>, CWorld +0x18), arguments 3 and 2.0f (`push 40000000h`).
+// Re-modelled as the member in naming wave 15 (was the free __fastcall stand-in `Cleanup(CAIStateGroup_JackOfBladesStage2*)`
+// calling Sub_972110 / Sub_8FCFC0 / CObjC::Sub_6B3950). The engine header flattens the state-group base chain (no vptr model),
+// so the chain is modelled locally, as in the landed sibling 0x00972110. Shape: the world is a named local (the unnamed
+// `GetWorld().PEnvironment->...` hoists both pushes above the GetWorld call).
+class CEnvironment { public:
+    void TransitionToDefaultThemeAllChannels(long channels, float time);   // 0x006B3950
+};
+class CWorld { public:
+    unsigned char _pad[0x18];
+    CEnvironment* PEnvironment;                 // +0x18 scoped_ptr<CEnvironment> (its pointer; operator-> leaves a dead `add eax,18h`)
+};
+class CAIStateGroupBase { public:
+    virtual ~CAIStateGroupBase();               // slot 0
+    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
+    virtual void v06(); virtual void v07(); virtual void v08();
+    virtual void Cleanup();                     // slot 9 (+0x24)
+protected:
+    CWorld& GetWorld() const;                   // 0x008FCFC0
+};
+class CAIStateGroup_JackOfBladesBase : public CAIStateGroupBase { public:
+    virtual void Cleanup();                     // 0x00972110
+};
+class CAIStateGroup_JackOfBladesStage2 : public CAIStateGroup_JackOfBladesBase { public:
+    virtual void Cleanup();
 };
 
-struct CObjB {
-    char pad[0x18];
-    CObjC* field18; // +0x18
-};
-
-
-// 0x972110 : member on self, result discarded
-extern void __fastcall Sub_972110(CAIStateGroup_JackOfBladesStage2* self);
-// 0x8fcfc0 : member on self, returns object pointer
-extern CObjB* __fastcall Sub_8FCFC0(CAIStateGroup_JackOfBladesStage2* self);
-
-void __fastcall Cleanup(CAIStateGroup_JackOfBladesStage2* self)
+void CAIStateGroup_JackOfBladesStage2::Cleanup()
 {
-    Sub_972110(self);
-    CObjB* b = Sub_8FCFC0(self);
-    b->field18->Sub_6B3950(3, 0x40000000u);
+    CAIStateGroup_JackOfBladesBase::Cleanup();
+    CWorld& world = GetWorld();
+    world.PEnvironment->TransitionToDefaultThemeAllChannels(3, 2.0f);
 }
