@@ -1,6 +1,6 @@
 address	status	bytes	test	note
 00936210	RELOCATION_MATCH	448v448	PASS	same-TU noinline search stand-in; named IS_THING_ALIVE item
-009363d0	DIFFER	442v438	-	inlined lower_bound loads first via eax->esi; tail-loop this reload/Terminate entry order (best e)
+009363d0	DIFFER	442v438	-	inlined lower_bound loads first via eax->esi; tail-loop this reload/Terminate entry order (best e) | re-parked 2026-11-01 in chunk 659 (pending/2026-10-27_linux_hand659/differ/, 12 probes) with its sibling 0x00935E40
 009162f0	RELOCATION_MATCH	498v498	PASS	GetTC<T> returning 0 on miss + out-param GetInterface
 0091c220	DIFFER	416v419	-	IsNot filter targets homed in the dead arg slot the other way round (best f)
 00984d90	DIFFER	455v455	-	one pair: retail add esi,44h vs ours mov+lea; rest matches (best b)

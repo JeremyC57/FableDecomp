@@ -3,7 +3,7 @@ address	status	bytes	test	note
 0065a8ee	RELOCATION_MATCH	385	PASS	CTCVillage::IsTimeToGoToSchool; PDB GetTC<T>(T**), block-scope start/end, if/else CCharString arms, `>` return (30 probes)
 00670d50	RELOCATION_MATCH	533	PASS	CThingCreatureDef::Validate; implicit "DEFAULT" -> CCharString conversion, retail def headers + landed GetSubDef stand-in (13 probes)
 007b8b10	DIFFER(408v417)	417	-	CTCTavernTable::GetEatingPoint; register tie (&pointIndex ebp v ebx, mov eax/mov esi copy) (25 probes)
-00935e40	DIFFER(476v468)	468	-	CAIStateGroup_MinionPutOutFires::PutOutFire; search start via eax copy, xor ecx/push ecx zero register (16 probes)
+00935e40	DIFFER(476v468)	468	-	CAIStateGroup_MinionPutOutFires::PutOutFire; search start via eax copy, xor ecx/push ecx zero register (16 probes) | re-parked 2026-11-01 in chunk 659 (pending/2026-10-27_linux_hand659/differ/, +15 probes) with its sibling 0x009363D0
 0078f8f0	DIFFER(506v505)	505	-	CTCDivineWrath::CancelForCutscene; caster spill before FinishCurrentAction (19 probes)
 00d38d20	DIFFER(529v526)	526	-	CQ_FireHeartScript::RunVillagerComments; natural-end exit copy placement + lea/add (24 probes)
 00bc7660	DIFFER(695v692)	692	-	CEnginePrimitiveManagerText::Render2DPrimitive; frame-data pointer register in inline GetTexture (16 probes; residue 86->39)

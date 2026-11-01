@@ -25662,3 +25662,13 @@ chunk	address	module	name	length
 663	007b9d30	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	137
 663	007783f0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	145
 663	00b94b50	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	159
+664	0075a480	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	162
+664	00a1cb40	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	164
+664	00d005e0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	185
+664	00523440	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	250
+664	009fc690	CDynamicList	~CDynamicList	103
+664	00b33ae0	_global	CEnginePrimitiveTypeInfo_Manager_List_Insert	103
+664	0055b760	_global	CHoverable_destructor	197
+664	00ca5570	_global	Audio_SleepUntilFrameTime	100
+664	00442610	_global	RenderState_Destructor	201
+664	00f37570	_global	CGPUScratchBufferTextureManager_Destructor	225
