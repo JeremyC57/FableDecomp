@@ -1,13 +1,16 @@
 #pragma optimize("t", on)
 // Leaf: `scalar_deleting_destructor'
+// Naming wave 28 (family sfb): the base destructor is ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0 (chunk 696: the ctor 0x00CDD450 stores vtable
+//   0x012C2F9C, whose ??_G 0x00CDD4A0 calls it; Ego_r.pdb + FableWin.pdb), called qualified. Was the free
+//   __fastcall ?AutoTinyCompositeDestructor@@YIXPAX@Z stand-in.
 class CCharString { public:
     ~CCharString();   // 0x0099EAE0 (Ego_r.pdb ??1CCharString@@QAE@XZ)
 };
-extern void __fastcall AutoTinyCompositeDestructor(void* self);
+class CSpawnedFuncBase { public: virtual ~CSpawnedFuncBase(); };   // 0x00CDD4C0 (vtable 0x012C2F9C)
 void* __fastcall CEngineSubPrimitiveText_CompositeScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
     ((CCharString*)(static_cast<unsigned char*>(self) + 64))->~CCharString();
-    AutoTinyCompositeDestructor(self);
+    ((CSpawnedFuncBase*)(self))->CSpawnedFuncBase::~CSpawnedFuncBase();
     if (flags & 1)
         operator delete(self);
     return self;
