@@ -113,8 +113,10 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCNymph { public:
@@ -157,7 +159,7 @@ void CCreatureAction_NymphGetHit::PerformAction()
     CDefClassBase* def = PCreature.GetPItem()->m_pDef;
     bool found = def->GetSubDef(effectsSlot);
     if (found && effectsSlot.m_p->GetEffectFromString("TELEPORT_POS", effectType)) {
-        CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
+        CThing* effect = CTCDParticleEmitter::Create(effectType, *(&PCreature.GetPItem()->GetPos()), false);
         if (effect && !(effect->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))

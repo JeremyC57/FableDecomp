@@ -89,8 +89,10 @@ class CPlayer { public:
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, CRightHandedSet* orientation,
-    unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 class CTCCreatedEntity { public:                       // interface 0x32
     unsigned char _pad[0x0c];
     CIntelligentPointer<const CThing> PCreator;     // +0x0c
@@ -124,7 +126,7 @@ CThing* CAIStateGroup_ServeFood::MakeFood(const C3DVector* position, CThing* own
         def = defs->GetDefGlobalIndexFromName(name);
     }
     long player = GetPPlayerManager()->GetMainPlayer().Number;
-    CThing* food = CreateThingObject(def, position, player, 0, 0, "");
+    CThing* food = ((CThing*)CThingObject::Create(def, *position, player, 0, 0, ""));
     food->m_flags91 |= 2;
     food->AddTC("CTCCreatedEntity", false, 0);
     CTCCreatedEntity* created;

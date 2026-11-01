@@ -4,8 +4,10 @@
 // Global error sink referenced by mov ecx, 0x143bb58; call 0xc3d090 is a thiscall
 // member taking one stack int arg. Model as a real (thiscall) member so codegen emits
 // push <arg>; mov ecx, self; call  -- with NO edx setup.
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 struct ErrSink {
-    void report(int code); // thiscall: ecx=this, stack arg
 };
 
 extern ErrSink g_errSink;
@@ -22,6 +24,6 @@ bool __fastcall FrameUpdate(CCreatureAction_FireMissileWeapon* self)
         self->counter = v + 1;
         return true;
     }
-    g_errSink.report(-6);
+    ((CCodaContext*)&g_errSink)->SetError(-6);
     return false;
 }

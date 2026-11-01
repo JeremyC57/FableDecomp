@@ -4,7 +4,9 @@
 // Shape: the owned byte tested before the vtable store, the flag tested before the base vtable store, `ret 4`.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 void* __fastcall AllocateAligned_009f2be0(unsigned long size, unsigned long alignment);   // 0x009F2BE0
-void __fastcall DeallocateAligned_009f2b20(void* block);   // 0x009F2B20
+class CMemoryAllocator { public:
+    static void __fastcall DeallocateAligned(void*a0);   // 0x009F2B20 (Ego_r.pdb ?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z)
+};
 
 class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual void Destroy(int flags);
@@ -21,7 +23,7 @@ struct CMemoryBlock : CIVCountedPointeeBase {      // vtable 0x0129D568
     unsigned long m_size;                          // +0x10
     long          m_used;                          // +0x14
     CMemoryBlock(unsigned long size) : CIVCountedPointeeBase(), m_size(size), m_used(0) { m_pData = AllocateAligned_009f2be0(size, 16); m_owned = true; }   // inline here so `new` pulls the vtable (and the ??_G) into this object
-    __forceinline virtual ~CMemoryBlock() { if (m_owned) DeallocateAligned_009f2b20(m_pData); }
+    __forceinline virtual ~CMemoryBlock() { if (m_owned) CMemoryAllocator::DeallocateAligned(m_pData); }
 };
 }
 

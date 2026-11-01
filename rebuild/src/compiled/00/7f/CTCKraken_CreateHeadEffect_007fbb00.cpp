@@ -102,7 +102,6 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -138,7 +137,10 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     }
     return false;
 }
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
@@ -163,7 +165,7 @@ void CTCKraken::CreateHeadEffect(const CCharString& name)
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (found)
         effects->GetEffectFromString(name, effectType);
-    PHeadEffect = CIntelligentPointer<CThing>(CreateEffectThing(effectType, &ParentThing->GetPos(), false));
+    PHeadEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effectType, *(&ParentThing->GetPos()), false));
     if (IS_THING_ALIVE(PHeadEffect)) {
         CTCDParticleEmitter* emitter = 0;
         CThing* effect = PHeadEffect.GetPItem();

@@ -140,7 +140,9 @@ class CDefinitionManager { public:
 };
 class CGameDefinitionManager : public CDefinitionManager { };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);              // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 extern long g_LastBeamExplosionFrame;                 // 0x013BAF10
 
 class CBaseObject;
@@ -239,6 +241,6 @@ void CTCKraken::UpdateBeamExplosion()
         const CThing* hitThing;
         if (!cameras->CamTools.IsLineOfSightFiltered(&start, &(start + dir * length), &hitPos, &hitNormal, &hitIndex,
                                                      hitThing, 15, false))
-            CreateEffectThing(effectType, &hitPos, false);
+            CTCDParticleEmitter::Create(effectType, *(&hitPos), false);
     }
 }

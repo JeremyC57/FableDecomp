@@ -12,7 +12,10 @@ struct CResourceLink {
 };
 struct CResourceManager {void Release(CResourceLink*);}; //00c4d070
 extern CResourceManager* gResourceManager; //0143bb5c
-struct CErrorState {void Report(long);};extern CErrorState gErrorState;//0143bb58;Report00c3d090
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
+struct CErrorState {};extern CErrorState gErrorState;//0143bb58;Report00c3d090
 struct CReferenceLease {void Release();}; //00c3c5f0: decrement +c when nonzero
 struct CMarkedBuffer {void* Block;void* Cursor;long Count;long Used;void* Marks;long MarkCount;
  bool Allocate(long); //00c44360, allocates12 bytes per item
@@ -46,6 +49,6 @@ bool CMarkedBufferOwner::AllocateMarks(long count,PFNMARK callback,void* context
   if(Resource&&Resource->DetachOwner(this)){gResourceManager->Release(Resource);Resource=0;}
  }
  if(!Buffer.Allocate(count))return false;
- if(Resource){long error=Resource->DetachOwner(this);if(error){Buffer.Release();gErrorState.Report(error);return false;}}
+ if(Resource){long error=Resource->DetachOwner(this);if(error){Buffer.Release();((CCodaContext*)&gErrorState)->SetError(error);return false;}}
  MarkCallback=callback;MarkContext=context;return true;
 }

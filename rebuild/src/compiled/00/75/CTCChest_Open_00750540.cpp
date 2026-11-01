@@ -105,11 +105,13 @@ public:
 };
 class CTCDParticleEmitter {
 public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private:
+public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
     void SetEmitterOrientation(CRightHandedSet* orientation);   // 0x006E0480
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -174,7 +176,7 @@ void CTCChest::Open()
             ParentThing->SetAsGameStatePersisted(true);
         }
         if (def->OpenParticleEffect > 0) {
-            POpenParticle = CIntelligentPointer<CThing>(CreateEffectThing(def->OpenParticleEffect, &ParentThing->GetPos(), false));
+            POpenParticle = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(def->OpenParticleEffect, *(&ParentThing->GetPos()), false));
             if (IS_THING_ALIVE(POpenParticle)) {
                 CTCDParticleEmitter* emitter = 0;
                 CThing* effect = ((CThing*)POpenParticle.GetPItem());

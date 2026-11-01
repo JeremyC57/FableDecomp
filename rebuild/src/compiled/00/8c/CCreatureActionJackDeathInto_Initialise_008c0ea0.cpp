@@ -146,7 +146,9 @@ class CTCCreatureModeManager { public:
 public:
     bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };
-void __fastcall CreateSpecialEffect(long effect, const C3DVector* position, bool attached);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
@@ -178,7 +180,7 @@ void CCreatureAction_JackDeathInto::Initialise()
             found = effects->CalcAndLookup(name, &effect);
         }
         if (found)
-            CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPos(), false);
+            CTCDParticleEmitter::Create(effect, *(&PCreature.GetPItem()->GetPos()), false);
     }
     }
 }

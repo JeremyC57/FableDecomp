@@ -86,7 +86,10 @@ struct CTCGraphicAppearance {
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
 class CThing;
-class CTCDParticleEmitter { public:                          // interface 0x4B
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:                          // interface 0x4B
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
@@ -115,7 +118,6 @@ public:
         return false;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -169,7 +171,7 @@ void CTCKraken::StartBeamEffect()
     ParentThing->PGraphicAppearance->GetDummyObject("MOUTH_DUMMY", 0, 0, &mouthPosition, &orientation, 1.0f);
     if (CDefClassReference(ParentThing->m_pDef)->GetSubDef(effects) &&
         effects->GetEffectFromString("BEAM_ATTACK", effectType)) {
-        PBeamWeaponEffect = CIntelligentPointer<CThing>(CreateEffectThing(effectType, &mouthPosition, false));
+        PBeamWeaponEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effectType, *(&mouthPosition), false));
         if (IS_THING_ALIVE(PBeamWeaponEffect)) {
             CTCDParticleEmitter* emitter;
             if (PBeamWeaponEffect.GetPItem()->GetInterface(&emitter, 0x4b))

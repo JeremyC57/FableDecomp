@@ -21,9 +21,9 @@ class CThing { public:
 };
 
 class CThingObject;
-CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long createFlags,
-                                const CRightHandedSet* orientation, unsigned long uid,
-                                const CCharString& scriptName);   // 0x00703210
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 
 struct SContainerItem {                             // pair<long, CCharString>
     long        first;                              // def index (count-like, > 0 when pending)
@@ -62,7 +62,7 @@ bool CTCContainer::AddItemsToInventory()
             SContainerItem& item = ContainerItems[i];
             if (item.first > 0)
             {
-                CThing* created = (CThing*)Create(item.first, GetParentThing()->GetPos(), 5, 0, 0, item.second);
+                CThing* created = (CThing*)CThingObject::Create(item.first, GetParentThing()->GetPos(), 5, 0, 0, item.second);
                 if (created)
                     AddItemToInventory(created);
             }

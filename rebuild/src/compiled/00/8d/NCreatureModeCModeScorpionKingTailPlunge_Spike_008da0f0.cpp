@@ -167,7 +167,9 @@ class CThingObject : public CThing { public:
                                            const CRightHandedSet* orientation, unsigned long uid,
                                            const CCharString& scriptName);   // 0x00703210
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 struct SCreationRecord {                        // 0x1c bytes
     long        A;
@@ -216,7 +218,7 @@ void CModeScorpionKingTailPlunge::Spike()
     if (effects) {
         bool found = effects->GetEffectFromString("SCORPION_KING_SPIKE", effectType);
         if (found)
-            CreateEffectThing(effectType, &position, false);
+            CTCDParticleEmitter::Create(effectType, *(&position), false);
         if (--effects->m_refCount == 0)
             effects->Destroy();
     }

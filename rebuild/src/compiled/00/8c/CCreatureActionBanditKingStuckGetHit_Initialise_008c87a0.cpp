@@ -86,7 +86,6 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -103,7 +102,10 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem((CBaseObject*)item); return *this; }
 };
 
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
@@ -132,7 +134,7 @@ void CCreatureAction_BanditKingStuckGetHit::Initialise()
         long effect = 0;
         found = ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effects) && ((CSpecialEffectsDef*)(effects.Object))->GetEffectFromString("STUCKLOOP", *(&effect));
         if (found) {
-            CThing* created = CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
+            CThing* created = CTCDParticleEmitter::Create(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
             PStuckEffect = CIntelligentPointerThing(created);
         }
     }

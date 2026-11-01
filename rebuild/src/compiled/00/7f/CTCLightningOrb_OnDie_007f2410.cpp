@@ -79,7 +79,9 @@ class CThing { public:
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }
     const C3DVector& GetPos() const;        // 0x004C73D0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CTCLightningOrb { public:
     unsigned char _pad00[0x04];
@@ -92,6 +94,6 @@ void CTCLightningOrb::OnDie()
     long effectType = 0;
     bool found = ParentThing->GetPDef()->GetSubDef(effectsSlot) && effectsSlot.m_p->GetEffectFromString("LIGHTNING_ORB_HIT", effectType);
     if (found)
-        CreateEffectThing(effectType, &ParentThing->GetPos(), false);
+        CTCDParticleEmitter::Create(effectType, *(&ParentThing->GetPos()), false);
     ReleaseDef(effectsSlot.m_p);
 }

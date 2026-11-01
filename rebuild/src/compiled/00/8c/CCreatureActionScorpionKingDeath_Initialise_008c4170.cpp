@@ -87,7 +87,9 @@ class CThing { public:
     const C3DVector& GetPos() const;              // 0x004C73D0
 };
 
-CThing* __fastcall Create(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CCombatActionBase { public:                             // retail sizeof 0x114
     virtual void v00();
@@ -128,6 +130,6 @@ void CCreatureAction_ScorpionKingDeath::Initialise()
             found = effects->CalcAndLookup(name, &effectIndex);
         }
         if (found)
-            Create(effectIndex, GetOwner()->GetPos(), 0);
+            CTCDParticleEmitter::Create(effectIndex, GetOwner()->GetPos(), 0);
     }
 }

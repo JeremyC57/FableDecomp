@@ -59,9 +59,10 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CVectorMapLong;
 
-CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long playerID,
-                                      float* orientation, unsigned long flags,
-                                      const CCharString& name); // 0x00703210
+class CRightHandedSet;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 
 void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharString* itemName)
 {
@@ -86,7 +87,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
             CThingObject* thing;
             {
                 CCharString createName("", -1);
-            thing = CreateObject(definition, &position, playerID, orientation, 0, createName);
+            thing = CThingObject::Create(definition, *(&position), playerID, (CRightHandedSet const*)orientation, 0, createName);
             }
             long item = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(itemName);
             carry->PutThingInCarrySlot(thing, item, true);

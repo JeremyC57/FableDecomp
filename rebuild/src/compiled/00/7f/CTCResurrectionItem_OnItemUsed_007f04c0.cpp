@@ -40,9 +40,11 @@ public:
 };
 class CTCDParticleEmitter {
 public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private:
+public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CCombatActionBase { public:                             // retail sizeof 0x114
     virtual void v00();
     unsigned char _pad04[0x114 - 0x04];
@@ -83,7 +85,7 @@ void CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature)
     creature.SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(&creature));
     const CResurrectionItemDef* def = PDef;
     if (def && def->OnUseParticleEffect > 0) {
-        CThing* effect = CreateEffectThing(def->OnUseParticleEffect, &creature.GetPos(), false);
+        CThing* effect = CTCDParticleEmitter::Create(def->OnUseParticleEffect, *(&creature.GetPos()), false);
         if (effect && !(effect->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))

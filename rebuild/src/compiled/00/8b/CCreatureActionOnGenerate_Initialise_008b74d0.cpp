@@ -122,7 +122,9 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-void __fastcall CreateSpecialEffect(long effect, const C3DVector* position, bool attached);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
@@ -161,7 +163,7 @@ void CCreatureAction_OnGenerate::Initialise()
     }
     CSpecialEffectsDef* const effectsCopy = effects;
     if (found)
-        CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPos(), false);
+        CTCDParticleEmitter::Create(effect, *(&PCreature.GetPItem()->GetPos()), false);
     if (effectsCopy && DecRefToZero(effectsCopy->RefCount))
         effectsCopy->Destroy();
 }

@@ -123,7 +123,9 @@ public:
 };
 class CThingPlayerCreature : public CThing { };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);              // 0x0080C460
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 struct CTCDriver41 {
     void SetOwner(CThing* owner);                            // 0x0080CBF0
 };
@@ -193,5 +195,5 @@ void CCreatureAction_SummonerDead::Initialise()
     CDefPointer<CSpecialEffectsDef> effects;
     long effectType = 0;
     if (CDefClassReference(GetCreature()->m_pDef)->GetSubDef(&effects) && effects->GetEffectFromString("MESH_EXPLODE", effectType))
-        CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
+        CTCDParticleEmitter::Create(effectType, *(&GetCreature()->GetPos()), false);
 }

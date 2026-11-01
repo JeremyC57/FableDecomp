@@ -53,14 +53,15 @@ __declspec(noinline) CPoolSizeArray::CPoolSizeArray(unsigned int count)
     _M_end_of_storage = _M_finish;
 }
 #pragma auto_inline(on)
-unsigned long __fastcall CalculateTextureSize(unsigned long width, unsigned long height, bool mipMapped,
-                                              const CPixelFormat* format);   // 0x00A698F0
 void __fastcall SortPoolSizes(SPoolSize* first, SPoolSize* last);           // 0x00A6C080
 struct CPreallocTexturePool {                    // 0x54 bytes
     unsigned char _body[0x54];
     void Initialise(unsigned long index, unsigned long textureSize, unsigned long count);   // 0x00A6A540
 };
-class CTextureManager { public:
+class CTextureManager {
+public:
+    static unsigned long __fastcall CalculateTextureSize(unsigned long a0, unsigned long a1, bool a2, CPixelFormat const&a3);   // 0x00A698F0 (Ego_r.pdb ?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z)
+private: public:
     void*         __vftable;                     // +0x00
     bool          Initialised;                   // +0x04
     unsigned long PoolCount;                     // +0x08
@@ -79,7 +80,7 @@ void CTextureManager::Initialise(const vector<CTexturePoolSpec>& specs)
     CPoolSizeArray sizes(PoolCount);
     for (unsigned long i = 0; i < PoolCount; ++i) {
         const CTexturePoolSpec& spec = specs[i];
-        sizes[i].Size = CalculateTextureSize(spec.Width, spec.Height, spec.MipMapped, &spec.Format);
+        sizes[i].Size = CTextureManager::CalculateTextureSize(spec.Width, spec.Height, spec.MipMapped, *(&spec.Format));
         sizes[i].Count = spec.Count;
     }
     SortPoolSizes(sizes._M_start, sizes._M_finish);

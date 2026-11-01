@@ -78,11 +78,13 @@ class CThing;
 
 class CTCDParticleEmitter {
 public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private:
+public:
     void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, long flags);   // 0x006E0BE0
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
 };
 
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CThing {
 public:
@@ -103,7 +105,7 @@ void __fastcall CreateEffect(const CThingCreatureBase& creature, long effectType
 {
     if (!effectType)
         return;
-    CThing* effect = CreateEffectThing(effectType, &position, false);
+    CThing* effect = CTCDParticleEmitter::Create(effectType, *(&position), false);
     if (!effect)
         return;
     CTCDParticleEmitter* emitter = 0;

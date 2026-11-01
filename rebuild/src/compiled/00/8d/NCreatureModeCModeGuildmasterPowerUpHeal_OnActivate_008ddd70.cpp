@@ -114,9 +114,11 @@ class CThing { public:
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
 };
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
@@ -243,7 +245,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
                     found = effects->CalcAndLookup(name, &effect);
                 }
                 if (found) {
-                    CThing* healEffect = CreateSpecialEffect(effect, m_pThing->GetPos(), false);
+                    CThing* healEffect = CTCDParticleEmitter::Create(effect, m_pThing->GetPos(), false);
                     if (healEffect && !(healEffect->m_flags91 & 1) && healEffect->HasTC(0x4b)) {
                         CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)healEffect->PTCDriver;
                         emitter->AttachToThing(*m_pThing, 10, "", 0, 0.0f);

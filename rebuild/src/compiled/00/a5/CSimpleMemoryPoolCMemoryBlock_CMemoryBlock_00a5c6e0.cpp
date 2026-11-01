@@ -3,7 +3,9 @@
 // Leaf: ??1CMemoryBlock@CSimpleMemoryPool@@QAE@XZ
 // Shape: a non-virtual destructor in a polymorphic class, the owned byte tested before the vtable store, `ret`.
 void* __fastcall AllocateAligned_009f2be0(unsigned long size, unsigned long alignment);   // 0x009F2BE0
-void __fastcall DeallocateAligned_009f2b20(void* block);   // 0x009F2B20
+class CMemoryAllocator { public:
+    static void __fastcall DeallocateAligned(void*a0);   // 0x009F2B20 (Ego_r.pdb ?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z)
+};
 
 class CIVCountedPointeeBase { public:                     // vtable 0x012354D0
     virtual void Destroy(int flags);
@@ -27,5 +29,5 @@ struct CMemoryBlock : CIVCountedPointeeBase {      // vtable 0x0129D568
 CSimpleMemoryPool::CMemoryBlock::~CMemoryBlock()
 {
     if (m_owned)
-        DeallocateAligned_009f2b20(m_pData);
+        CMemoryAllocator::DeallocateAligned(m_pData);
 }

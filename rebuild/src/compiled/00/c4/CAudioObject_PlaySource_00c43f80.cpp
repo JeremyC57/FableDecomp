@@ -7,16 +7,17 @@
 //   forwarder 0x00C35A10, catalogued _global::AudioObject_PlaySource. Descriptive names (no PDB covers libpk).
 // Label correction: the landed row was a `__fastcall` with a dummy edx argument, _global::Weapon_ProcessAnimFrameIfReady (a
 //   propagated forge auto-name), over invented CWeapon/CObj/CSub/CLogger types; the same callees and global, typed here.
-// Callees: CanUseBuffer 0x00C43D30, CSoundBuffer::CreateHardwareBuffer 0x00C3C750 (returns an HRESULT), CAudioSystem::SetError
+// Callees: CanUseBuffer 0x00C43D30, CSoundBuffer::CreateHardwareBuffer 0x00C3C750 (returns an HRESULT), CCodaContext::SetError
 //   0x00C3D090 on g_audioSystem 0x0143BB58, CircularQueue::Enqueue 0x00C44460 (stores the buffer at m_items[m_head] and the 64-bit
 //   start time at m_times[m_head], `ret 0Ch`).
 struct CSoundBuffer {
     long CreateHardwareBuffer();                // 0x00C3C750
 };
 
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 class CAudioSystem {
-public:
-    void SetError(long code);                   // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;              // 0x0143BB58
 
@@ -52,7 +53,7 @@ bool CAudioObject::PlaySource(CSoundBuffer* buffer, unsigned __int64 startTime)
     if (CanUseBuffer(buffer)) {
         long hr = buffer->CreateHardwareBuffer();
         if (hr < 0) {
-            g_audioSystem.SetError(hr);
+            ((CCodaContext*)&g_audioSystem)->SetError(hr);
             return false;
         }
         return m_queue.Enqueue(buffer, startTime);

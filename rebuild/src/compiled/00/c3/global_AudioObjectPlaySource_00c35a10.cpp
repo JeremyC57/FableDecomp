@@ -7,8 +7,10 @@
 //   1-bit fields give `test al,4`); `r ? 1 : 0` gives the `neg al ; sbb ; neg` tail.
 // Callees: the global audio system (0x0143BB58)'s SetError @ 0x00C3D090 and the object's member @ 0x00C43F80
 //   (__fastcall, three words, returns a bool).
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 struct CAudioSystem {
-    void SetError(long code);                // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;           // 0x0143BB58
 
@@ -27,7 +29,7 @@ struct CAudioObject {
 int __stdcall AudioObject_PlaySource(CAudioObject* object, CAudioSource* source, long a, long b)
 {
     if (source->IsStreamed() && source->IsLocked() && source->m_pending) {
-        g_audioSystem.SetError(-6);
+        ((CCodaContext*)&g_audioSystem)->SetError(-6);
         return 0;
     }
     return object->PlaySource(source, a, b) ? 1 : 0;

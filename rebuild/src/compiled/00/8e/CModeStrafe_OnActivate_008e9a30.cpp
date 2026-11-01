@@ -38,14 +38,16 @@ struct WeaponMethods:CTCWeapon {const CCharString& GetAnimationGroupName()const;
 struct MeshBankMethods:CMeshDataBank {const C3DAnimationInfo& GetAnimationInfo(long)const;}; //00A242C0, bank pointer array+380 indexed by entry BankIndex
 extern long GameFramesPerSecond; //01375550 native15
 extern char EmptyNarrowString[]; //0129AAF4
-unsigned long __fastcall CalculateCRC(unsigned long,const void*,unsigned long); //004014A0
+class CCRC { public:
+    static unsigned long __fastcall Calc(unsigned long a0, void const*a1, unsigned long a2);   // 0x004014A0 (Ego_r.pdb ?Calc@CCRC@@SIKKPBXK@Z)
+};
 struct StringAccess {
  static __forceinline CCharStringData* Data(const CCharString&s){CCharStringData*p;memcpy(&p,&s,sizeof p);return p;}
 }; //read actual string representation using memcpy, preserving host alias rules
 struct AnimationGroupFilter {
  void*VTable;CCharString Group;unsigned long CRC;
  void SetAndHash(const CCharString&); //0073DFF0
- __forceinline void SetLiteral(const char*name){CCharString text(name,-1);Group=text;CCharStringData*p=StringAccess::Data(text);unsigned long length;const char*data;if(!p){length=0;data=EmptyNarrowString;}else{length=p->unknown04;data=p->text;}CRC=CalculateCRC(0,data,length);}
+ __forceinline void SetLiteral(const char*name){CCharString text(name,-1);Group=text;CCharStringData*p=StringAccess::Data(text);unsigned long length;const char*data;if(!p){length=0;data=EmptyNarrowString;}else{length=p->unknown04;data=p->text;}CRC=CCRC::Calc(0, data, length);}
 };
 struct AnimEntryLite{long BankIndex,DelayTime,TransitionTime,AnimFlags;}; //PDB native16
 struct CountedAnimEntry{AnimEntryLite*Data;void*Info;};

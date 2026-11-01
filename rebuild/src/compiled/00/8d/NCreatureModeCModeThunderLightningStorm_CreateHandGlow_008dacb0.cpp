@@ -106,10 +106,12 @@ class CThing { public:
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:
@@ -152,7 +154,7 @@ void CModeThunderLightningStorm::CreateHandGlow()
     CDefHolder<CSpecialEffectsDef> effects(out.Object);
     if (effects->GetEffectFromString("LIGHTNING_HAND_EFFECT", &effectType)) {
         C3DVector position = ParentThing->GetPos();
-        CThing* glow = CreateEffectThing(effectType, &position, false);
+        CThing* glow = CTCDParticleEmitter::Create(effectType, *(&position), false);
         if (glow && !glow->IsDead()) {
             PHandGlow = CIntelligentPointer<CThing>(glow);
             CTCDParticleEmitter* emitter;

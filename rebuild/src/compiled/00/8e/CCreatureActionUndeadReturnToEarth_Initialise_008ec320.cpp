@@ -53,7 +53,9 @@ class CThing : public CThingAICreature { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -93,7 +95,7 @@ void CCreatureAction_UndeadReturnToEarth::Initialise()
     bool found = def->GetSubDef(effectsSlot);
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (found && effects->GetEffectFromString("SINK", effectType))
-        CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
+        CTCDParticleEmitter::Create(effectType, *(&PCreature.GetPItem()->GetPos()), false);
     CThing* sinking = PCreature.GetPItem();
     sinking->SuspendAI(true, 0);
     CCombatActionBase::Initialise();

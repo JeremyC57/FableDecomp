@@ -20,13 +20,15 @@ class CWideString { public:
     ~CWideString();                                          // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
-bool __fastcall PathExists(const CWideString& path);          // 0x00999230
 namespace NResourceDirectoryNames {
     CWideString __fastcall GetMiscDir();                     // 0x0041A0A0
 }
 
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CAFile { public:
+class CAFile {
+public:
+    static bool __fastcall PathExists(CWideString const&a0);   // 0x00999230 (Ego_r.pdb ?PathExists@CAFile@@SI_NABVCWideString@@@Z)
+private: public:
     virtual ~CAFile();                                       // 0x0099A300
 };
 class CDiskFileWin32 : public CAFile { public:                             // vtable 0x0122D06C
@@ -82,7 +84,7 @@ class CWorldMap { public:
 void CWorldMap::LoadRegionGraph(const CWideString& name)
 {
     CWideString path = NResourceDirectoryNames::GetMiscDir() + name;
-    if (PathExists(path))
+    if (CAFile::PathExists(path))
     {
         CDiskFileWin32 file(path, FILE_ACCESS_READ, 2);
         if (!PRegionGraph.Data)

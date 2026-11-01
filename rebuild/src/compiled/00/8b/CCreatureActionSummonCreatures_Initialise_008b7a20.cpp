@@ -53,7 +53,9 @@ class CThing { public:
     }
 };
 
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CSummonDef { public:
     unsigned char _pad0[0x44];
@@ -111,7 +113,7 @@ void CCreatureAction_SummonCreatures::Initialise()
     PCreature.GetPItem()->GetInterface(&summon, 0xfa);
     long effect = summon->PSummonDef->SummoneeEffect;
     if (effect > 0)
-        CreateEffectThing(effect, &PCreature.GetPItem()->GetPos(), false);
+        CTCDParticleEmitter::Create(effect, *(&PCreature.GetPItem()->GetPos()), false);
     if (SpawnOnTarget && PTarget.GetPItem() && !(PTarget.GetPItem()->m_deleteFlags & 1))
         summon->SummonCreatures(&PTarget.GetPItem()->GetPos());
     else

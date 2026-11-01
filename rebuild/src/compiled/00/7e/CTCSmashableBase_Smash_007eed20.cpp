@@ -77,9 +77,10 @@ public:
         return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
 };
-class CThingObject : public CThing {};
-CThingObject* __fastcall Create(long defIndex, const C3DVector* position, long mapLevel, const CRightHandedSet* orientation,
-                                unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject : public CThing {
+public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+private:};
 class CSmashableDef { public:
     virtual void v00();
     virtual void Destroy();                             // slot 1
@@ -121,7 +122,7 @@ void CTCSmashableBase::Smash()
             CCharString scriptName("", -1);
             CThing* thing = ParentThing;
             long objectDef = GetDef()->ReplacementObject;
-            object = Create(objectDef, &thing->GetPos(), thing->MapLevel, &orientation, 0, scriptName);
+            object = CThingObject::Create(objectDef, *(&thing->GetPos()), thing->MapLevel, &orientation, 0, scriptName);
         }
         CTCSmashableComponent* smashable;
         if (object && !(object->m_flags91 & 1) && object->GetInterface(&smashable, 0x4e))

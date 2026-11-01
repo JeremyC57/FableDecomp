@@ -14,9 +14,10 @@ struct CSoundBuffer {
     void Release();                         // 0x00C3C5F0
 };
 
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 class CAudioSystem {
-public:
-    void SetError(long code);               // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;          // 0x0143BB58
 
@@ -73,7 +74,7 @@ bool CAudioObject::SetBuffer(CSoundBuffer* buffer)
         if (buffer) {
             long result = buffer->CreateHardwareBuffer();
             if (result < 0) {
-                g_audioSystem.SetError(result);
+                ((CCodaContext*)&g_audioSystem)->SetError(result);
                 return false;
             }
             if (!buffer->AddRef())

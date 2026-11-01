@@ -12,14 +12,16 @@ struct CInterfaceList {                                      // STLport list<IUn
     ~CInterfaceList();                                       // 0x00A61D20
 };
 
+class CBusyResourceManager { public:
+    void ClearAllQueries();   // 0x00A61A80 (Ego_r.pdb ?ClearAllQueries@CBusyResourceManager@@QAEXXZ)
+};
 struct CDirectInputDeviceLists_00a61b10 {
     CInterfaceList m_devices;                                // +0x00
     CInterfaceList m_effects;                                // +0x04
-    void ReleaseAll();                                       // 0x00A61A80
     ~CDirectInputDeviceLists_00a61b10();
 };
 
 CDirectInputDeviceLists_00a61b10::~CDirectInputDeviceLists_00a61b10()
 {
-    ReleaseAll();
+    ((CBusyResourceManager*)this)->ClearAllQueries();
 }

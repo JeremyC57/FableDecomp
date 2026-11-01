@@ -29,9 +29,11 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-CThing* __fastcall Create(long defIndex, const C3DVector& position, bool flag);   // 0x006E0880
 
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
@@ -46,7 +48,7 @@ void CTCDegradableBase::ShowParticleEffects(long particleDefIndex)
 {
     if (particleDefIndex > 0)
     {
-        CThing* particle = Create(particleDefIndex, GetParentThing()->GetPos(), false);
+        CThing* particle = CTCDParticleEmitter::Create(particleDefIndex, GetParentThing()->GetPos(), false);
         if (particle)
         {
             CTCDParticleEmitter* emitter = 0;

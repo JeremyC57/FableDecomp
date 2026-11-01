@@ -9,8 +9,10 @@
 // Shape: `size = count * 12` (`lea ebx,[ebp+ebp*2] ; shl ebx,2`) is computed once and reused for the memset
 // (`rep stosd` + `rep stosb`); the data pointer is stored before its null test; the second pointer is
 // `data + count` longs; the zero register from the null test feeds the three cursor stores.
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 struct CErrorState {
-    void SetError(long code);                        // 0x00C3D090
 };
 
 extern CErrorState g_ErrorState;                     // 0x0143BB58
@@ -36,7 +38,7 @@ bool CEventDataBuffer::Allocate(long count)
     unsigned long size = count * 12;
     m_data = (long*)EventAlloc(size);
     if (m_data == 0) {
-        g_ErrorState.SetError(-5);
+        ((CCodaContext*)&g_ErrorState)->SetError(-5);
         return false;
     }
     m_secondary = m_data + count;

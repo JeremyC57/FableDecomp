@@ -21,9 +21,10 @@ public:
     long m_format;
     void Initialise(D3DFORMAT format);                   // 0x009E3830
 };
-long __fastcall CalculateTextureSize(unsigned long width, unsigned long height, bool mipmaps,
-                                     const CPixelFormat& format);   // 0x00A698F0
 class CTextureManager {
+public:
+    static unsigned long __fastcall CalculateTextureSize(unsigned long a0, unsigned long a1, bool a2, CPixelFormat const&a3);   // 0x00A698F0 (Ego_r.pdb ?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z)
+private:
 public:
     bool ResizePoolByFormat(long textureSize, long textureCount);   // 0x00A6ABE0
 };
@@ -56,7 +57,7 @@ bool CEngineResourceManager::ResizeHiresTextureMemory(long sizeKB)
     g_pSurfaceComposition_01436eac->FlushCache();
     CPixelFormat format;
     format.Initialise(D3DFMT_DXT1);
-    long textureSize = CalculateTextureSize(0x200, 0x200, true, format);
+    long textureSize = CTextureManager::CalculateTextureSize(0x200, 0x200, true, format);
     long level = m_pMainGraphicBank->m_level;
     m_pMainGraphicBank->SetLevel(0);
     bool result = m_pMainGraphicBank->m_pTextureManager->ResizePoolByFormat(textureSize, (sizeKB << 10) / textureSize);

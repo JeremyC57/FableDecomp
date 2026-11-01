@@ -39,7 +39,7 @@ class CDataInputStream { public:
     virtual void v00();
     unsigned char _pad04[0x14];
     CDataInputStream();                            // 0x00993B20
-    void SetPosition(unsigned long position);      // 0x00993BC0
+    virtual void SetPosition(unsigned long a0);      // 0x00993BC0
 };
 struct SZeroed {
     long m_00;

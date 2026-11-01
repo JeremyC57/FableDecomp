@@ -80,7 +80,10 @@ struct CDefPointer {                            // CDefPointer<const CDefClassBa
     CDefClassBase* operator->() const { return Object; }
 };
 class CThing;
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing { public:
@@ -103,7 +106,6 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -147,7 +149,7 @@ void CCreatureAction_WaspQueenDeath::Initialise()
             found = effects->GetEffectFromString(name, effectType);
         }
         if (found) {
-            CThing* effect = CreateEffectThing(effectType, &((CThing*)PCreature.GetPItem())->GetPos(), false);
+            CThing* effect = CTCDParticleEmitter::Create(effectType, *(&((CThing*)PCreature.GetPItem())->GetPos()), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 PDeathEffect = CIntelligentThingPointer(effect);
                 CTCDParticleEmitter* emitter;

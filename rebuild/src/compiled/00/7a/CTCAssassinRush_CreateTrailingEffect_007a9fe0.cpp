@@ -113,7 +113,6 @@ class CThing { public:
     }
 };
 CThing* __fastcall CreateScaledEffect(long lowEffect, long effect, float scale, const C3DVector& pos, bool attached);   // 0x006E11F0
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -144,7 +143,10 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     return false;
 }
 class CTCInventoryAbilities { public: long GetAbilityMaximumLevel(long ability); };   // 0x005EDEA3 (interface 0x6F)
-class CTCDParticleEmitter { public:                            // interface 0x4B
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:                            // interface 0x4B
     void SetAlwaysUpdate(bool on);                      // 0x006E0590
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
@@ -206,7 +208,7 @@ void CTCAssassinRush::CreateTrailingEffect()
         }
         long displacement = 0;
         if (effects->CalcAndLookup("DISPLACEMENT_EFFECT", &displacement)) {
-            AssassinDisplacementTrail = CIntelligentPointer<CThing>(CreateSpecialEffect(displacement, ParentThing->GetPos(), false));
+            AssassinDisplacementTrail = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(displacement, ParentThing->GetPos(), false));
             if (IS_THING_ALIVE(AssassinDisplacementTrail)) {
                 CTCDParticleEmitter* emitter = 0;
                 AssassinDisplacementTrail.GetPItem()->GetInterface(&emitter, 0x4b);

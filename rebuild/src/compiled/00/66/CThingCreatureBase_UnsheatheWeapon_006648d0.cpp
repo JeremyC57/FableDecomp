@@ -104,9 +104,10 @@ public:
     }
 };
 
-CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long playerID,
-                                      float* orientation, unsigned long flags,
-                                      const CCharString& name);  // 0x00703210
+class CRightHandedSet;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 
 class CThingCreatureBase : public CThing {
 public:
@@ -124,7 +125,7 @@ void CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot
         weapon = carrying->GetCarriedThing(weaponDefIndex);
         carrying->RemoveThing(weapon);
     } else {
-        weapon = (CThing*)CreateObject(weaponDefIndex, const_cast<C3DVector*>(&GetPos()), PlayerNumber, 0, 0, "");
+        weapon = (CThing*)CThingObject::Create(weaponDefIndex, *(const_cast<C3DVector*>(&GetPos())), PlayerNumber, 0, 0, "");
     }
     CDefPointer<const CCarryableDef> out;
     weapon->PBaseDef->GetSubDef(&out);

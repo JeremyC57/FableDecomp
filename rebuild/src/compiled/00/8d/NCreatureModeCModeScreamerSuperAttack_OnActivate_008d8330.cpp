@@ -91,7 +91,9 @@ class CThing : public CThingAnimatable { public:
     }
 };
 
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -137,7 +139,7 @@ void CModeScreamerSuperAttack::OnActivate()
     CDefPointer<CSpecialEffectsDef> slot;
     ParentThing->GetSpecialEffectsDef(slot);
     slot.m_p->GetEffectFromString("SUPER_ATTACK_BEAM", effectType);
-    CThing* beam = CreateEffectThing(effectType, &ParentThing->GetPos(), false);
+    CThing* beam = CTCDParticleEmitter::Create(effectType, *(&ParentThing->GetPos()), false);
     if (beam && !beam->Dead)
         PLightningBeamParticleEmitter = CIntelligentPointerThing(beam);
 }

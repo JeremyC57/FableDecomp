@@ -5,8 +5,10 @@
 // Callees: the global audio system (0x0143BB58)'s SetError @ 0x00C3D090 (__fastcall, records the first error code
 //   and calls the +0x7C error hook) and its flag setter @ 0x00C3DA60 (__fastcall, one word).
 // Shape: `flags & 0x2000` is computed once into esi and reused by the third test; bit 7 is tested as `test bl,bl ; jns`.
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 struct CAudioSystem {
-    void SetError(long code);              // 0x00C3D090
     void SetOutputFlags(unsigned long flags); // 0x00C3DA60
 };
 extern CAudioSystem g_audioSystem;          // 0x0143BB58
@@ -14,10 +16,10 @@ extern CAudioSystem g_audioSystem;          // 0x0143BB58
 void __stdcall AudioSystem_SetOutputFlags(unsigned long flags)
 {
     if (flags & 0xFFF8C000)
-        g_audioSystem.SetError(-3);
+        ((CCodaContext*)&g_audioSystem)->SetError(-3);
     if ((flags & 0x2000) && (flags & 0x80))
-        g_audioSystem.SetError(-3);
+        ((CCodaContext*)&g_audioSystem)->SetError(-3);
     if ((flags & 0x2000) && (flags & 0x1000))
-        g_audioSystem.SetError(-3);
+        ((CCodaContext*)&g_audioSystem)->SetError(-3);
     g_audioSystem.SetOutputFlags(flags);
 }

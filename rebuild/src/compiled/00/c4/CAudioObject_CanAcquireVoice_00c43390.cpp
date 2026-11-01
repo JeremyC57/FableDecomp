@@ -33,9 +33,10 @@ struct SVoiceCaps {
     unsigned long m_words[2];               // +0x10
 };
 
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 class CAudioSystem {
-public:
-    void SetError(long code);               // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;          // 0x0143BB58
 
@@ -54,7 +55,7 @@ bool CAudioObject::CanAcquireVoice(CSoundBuffer* buffer, unsigned long flags, co
     if (buffer && buffer->IsStreamed()) {
         streamed = true;
         if (missing) {
-            g_audioSystem.SetError(-14);
+            ((CCodaContext*)&g_audioSystem)->SetError(-14);
             return false;
         }
     } else

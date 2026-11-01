@@ -119,7 +119,9 @@ bool CDefClassBase::GetSubDef(CDefPointer<CDebrisDef>* out)
 }
 #pragma auto_inline(on)
 
-CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CThing {
 public:
@@ -200,5 +202,5 @@ void CThingObject::OnCollision(ECollideType type, const C3DVector& position, con
         return;
     CDefPointer<CDebrisDef> def;
     if (PBaseDef->GetSubDef(&def) && def->DebrisThingDef)
-        CreateThing(def->DebrisThingDef, &GetPos(), false);
+        CTCDParticleEmitter::Create(def->DebrisThingDef, *(&GetPos()), false);
 }

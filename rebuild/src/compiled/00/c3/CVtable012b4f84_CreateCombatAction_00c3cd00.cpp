@@ -40,8 +40,10 @@ struct CObjectPool_0143bc00 {
 };
 extern CObjectPool_0143bc00 g_objectPool_0143bc00;   // 0x0143BC00
 
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 struct CResultLog_0143bb58 {
-    void Report(long result);                        // 0x00C3D090
 };
 extern CResultLog_0143bb58 g_resultLog_0143bb58;     // 0x0143BB58
 
@@ -61,7 +63,7 @@ CVtable_012b4f84* CVtable_012b4f84::CreateCombatAction(void* params)
     }
     result = object->Initialise(params);
     if (result)
-        g_resultLog_0143bb58.Report(result);
+        ((CCodaContext*)&g_resultLog_0143bb58)->SetError(result);
     if (result >= 0) {
         if (g_objectPool_0143bc00.Mode >= 0)
             g_objectPool_0143bc00.RemoveHead();

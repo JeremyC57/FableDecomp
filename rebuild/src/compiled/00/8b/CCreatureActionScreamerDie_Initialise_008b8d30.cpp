@@ -87,7 +87,6 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -108,7 +107,10 @@ struct CTCInterface9 {                                // interface 9 component
     unsigned char _pad[0x10];
     bool          m_flag10;                            // +0x10
 };
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
@@ -140,7 +142,7 @@ void CCreatureAction_ScreamerDie::Initialise()
         long effect = 0;
         found = ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effects) && ((CSpecialEffectsDef*)(effects.Object))->GetEffectFromString("SCREAMER_DEATH", *(&effect));
         if (found) {
-            CThing* created = CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
+            CThing* created = CTCDParticleEmitter::Create(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
             PDieEffect = CIntelligentPointerThing(created);
         }
     }

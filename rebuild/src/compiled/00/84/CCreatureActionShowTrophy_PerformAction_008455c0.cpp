@@ -77,7 +77,10 @@ class CTCBase;
 class CTCTrophy { public:
     void OnShownByCreature_006de8c0(CThing* creature);   // 0x006DE8C0
 };
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CTCGraphicAppearance {
@@ -126,7 +129,6 @@ class CThing { public:
         return false;
     }
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 #pragma pack(push, 1)
 class CBaseObject;
@@ -180,7 +182,7 @@ void CCreatureAction_ShowTrophy::PerformAction()
             C3DVector position = GetCreature()->GetPos();
             CRightHandedSet orientation;
             GetCreature()->GetDummyObject("WEAPON_FOCUS_01", &position, &orientation);
-            CThing* effect = CreateEffectThing(effectType, &position, false);
+            CThing* effect = CTCDParticleEmitter::Create(effectType, *(&position), false);
             if (effect) {
                 PEmitter = CIntelligentThingPointer(effect);
                 CTCDParticleEmitter* emitter;

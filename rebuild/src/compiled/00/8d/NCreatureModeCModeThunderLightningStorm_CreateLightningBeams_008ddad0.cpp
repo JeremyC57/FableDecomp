@@ -115,7 +115,9 @@ class CThing { public:
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector& position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -179,7 +181,7 @@ void CModeThunderLightningStorm::CreateLightningBeams()
         MainBeamsCreated = true;
         C3DVector position = ParentThing->GetPos();
         for (long i = 0; i < PLightningStormDef->NumberOfBeams; ++i) {
-            CThing* beam = CreateEffectThing(effectType, position, false);
+            CThing* beam = CTCDParticleEmitter::Create(effectType, position, false);
             if (beam && !(beam->m_flags91 & 1))
                 LightningBeamParticleEmitters.push_back(CIntelligentPointerThing(beam));
         }
@@ -187,7 +189,7 @@ void CModeThunderLightningStorm::CreateLightningBeams()
     if (effects->GetEffectFromStringInline("LIGHTNING_BEAM_END_EFFECT", effectType)) {
         C3DVector position = ParentThing->GetPos();
         for (long i = 0; i < PLightningStormDef->NumberOfBeams; ++i) {
-            CThing* beam = CreateEffectThing(effectType, position, false);
+            CThing* beam = CTCDParticleEmitter::Create(effectType, position, false);
             if (beam && !(beam->m_flags91 & 1))
                 LightningBeamEndParticleEmitters.push_back_inline(CIntelligentPointerThing(beam));
         }

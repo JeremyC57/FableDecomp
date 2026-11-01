@@ -78,7 +78,9 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 struct CGameSubsystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -118,7 +120,7 @@ void CTCHighlightItem::DoStopRunning()
         thingDef->GetSubDef(&pdef);
         const CHighlightItemDef* def = pdef.Object;
         if (def->EndEffectDef)
-            CreateThing(def->EndEffectDef, ParentThing->GetPos(), 0);
+            CTCDParticleEmitter::Create(def->EndEffectDef, ParentThing->GetPos(), 0);
         Running = false;
         if (--((CHighlightItemDef*)def)->RefCount == 0)
             ((CHighlightItemDef*)def)->Destroy();

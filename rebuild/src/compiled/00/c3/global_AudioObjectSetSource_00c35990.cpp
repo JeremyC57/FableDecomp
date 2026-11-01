@@ -9,8 +9,10 @@
 //   `set ? 1 : 0` gives the `neg al ; sbb ; neg` tail. Retry pass 3: the checked local assigned in both arms of an
 //   if/else (`if (source == 0) checked = 0; else { checked = source; ...checks... }`) gives retail's fall-through
 //   null arm with the checks moved to the end (a `checked = 0` initialiser hoists `xor esi,esi` above the test).
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 struct CAudioSystem {
-    void SetError(long code);                // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;           // 0x0143BB58
 
@@ -34,7 +36,7 @@ int __stdcall AudioObject_SetSource(CAudioObject* object, CAudioSource* source)
     } else {
         checked = source;
         if (checked->IsStreamed() && checked->IsLocked() && checked->m_pending) {
-            g_audioSystem.SetError(-6);
+            ((CCodaContext*)&g_audioSystem)->SetError(-6);
             return 0;
         }
     }

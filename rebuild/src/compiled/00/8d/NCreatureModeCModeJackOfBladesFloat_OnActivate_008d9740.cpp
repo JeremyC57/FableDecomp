@@ -70,7 +70,10 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<T
 }
 #pragma auto_inline(on)
 class CThing;
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
 };
 class CThing { public:
@@ -88,7 +91,6 @@ class CThing { public:
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -128,7 +130,7 @@ void CModeJackOfBladesFloat::OnActivate()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("FLOAT_POWER", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &PCreature->GetPos(), false);
+            CThing* effect = CTCDParticleEmitter::Create(effectType, *(&PCreature->GetPos()), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 PEmitter2 = effect;
                 if (effect->HasTC(0x4b)) {

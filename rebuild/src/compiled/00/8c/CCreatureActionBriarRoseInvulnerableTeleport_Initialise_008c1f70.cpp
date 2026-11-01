@@ -136,7 +136,9 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public: };
-CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -190,7 +192,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
     if (CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&effects) && effects->CalcAndLookup("TELEPORT_POP", &effect))
-        CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
+        CTCDParticleEmitter::Create(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
     CDefPointer<CEntitySoundDef> sounds;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&soundPlayer, 0x10) && CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&sounds)) {
         const long* sound = sounds->SoundMap.GetPSound("TELEPORT_AWAY_WANK");

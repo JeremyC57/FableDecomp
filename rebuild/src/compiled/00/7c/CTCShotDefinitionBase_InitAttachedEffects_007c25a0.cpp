@@ -69,11 +69,13 @@ class CCharString { public:
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 extern CCharString g_CCharString_013bacb4;              // 0x013BACB4 "SHOT_CREATION_DUMMY"
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float flags);   // 0x006E0BE0
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 struct CThingAppearance {
     bool HasHelperPoint(const CCharString& name);       // 0x004BE170
     bool HasDummyObject(const CCharString& name);       // 0x004BE2C0
@@ -216,7 +218,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
     long effectType = PShotDef->AttachedContinuousEffect;
     if (!effectType)
         return;
-    CThing* effect = CreateEffectThing(effectType, &ParentThing->GetPos(), false);
+    CThing* effect = CTCDParticleEmitter::Create(effectType, *(&ParentThing->GetPos()), false);
     if (!effect || (effect->m_flags91 & 1))
         return;
     {

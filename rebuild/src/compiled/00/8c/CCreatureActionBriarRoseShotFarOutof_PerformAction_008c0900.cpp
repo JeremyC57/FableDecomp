@@ -147,11 +147,13 @@ __forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, 
 class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                  // 0x00663B10
 };
-CThing* __fastcall Create(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
-                          unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 __forceinline CThing* CreateThingObject(const long& defIndex, const C3DVector& position, const CThing* creature, const CCharString& name)
 {
-    return Create(defIndex, &position, creature->PlayerNumber, 0, 0, name);
+    return ((CThing*)CThingObject::Create(defIndex, *(&position), creature->PlayerNumber, 0, 0, name));
 }
 
 struct CTCShotDefinitionBase {

@@ -84,8 +84,10 @@ class CTCCarrying { public:
 };
 
 void __fastcall CreateWeaponForThingFromDef(CThing* thing, long def);   // 0x00663990
-CThing* __fastcall CreateThingObject(long defIndex, const C3DVector& position, long player, CRightHandedSet* orientation,
-    unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 
 class CThingCreatureDef { public:
     unsigned char _pad00[0xd4];
@@ -123,7 +125,7 @@ void CThingCreatureBase::CreateDefaultWeapons()
     CreateWeaponForThingFromDef(this, weapon);
     CreateWeaponForThingFromDef(this, secondWeapon);
     if (GetDef()->InitialSheathedWeapon > 0) {
-        CThing* item = CreateThingObject(GetDef()->InitialSheathedWeapon, GetPos(), PlayerNumber, 0, 0, "");
+        CThing* item = ((CThing*)CThingObject::Create(GetDef()->InitialSheathedWeapon, GetPos(), PlayerNumber, 0, 0, ""));
         if (item && !item->Dead) {
             item->SetAsGameStatePersisted(false);
             item->LevelPersistent = false;

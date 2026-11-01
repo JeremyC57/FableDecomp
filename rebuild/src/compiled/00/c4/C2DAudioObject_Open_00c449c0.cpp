@@ -21,9 +21,10 @@ struct SVoiceCaps {
 };
 extern SVoiceCaps g_voiceCaps[4];           // 0x0139C988: 2D/3D hardware, 2D/3D software
 
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 class CAudioSystem {
-public:
-    void SetError(long code);               // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;          // 0x0143BB58
 
@@ -79,7 +80,7 @@ bool C2DAudioObject::Open(unsigned long caps)
     if ((!g_voiceCaps[0].m_available || (caps & ~g_voiceCaps[0].m_objectCaps)) && g_voiceCaps[2].m_available == -1) {
         long result = g_pVoiceManager->Allocate(this, &m_pVoice);
         if (result) {
-            g_audioSystem.SetError(result);
+            ((CCodaContext*)&g_audioSystem)->SetError(result);
             Close();
             return false;
         }

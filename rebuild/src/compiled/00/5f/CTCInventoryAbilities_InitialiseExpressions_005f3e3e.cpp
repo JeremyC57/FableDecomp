@@ -3,7 +3,7 @@
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F3E3E, length 63 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CTCBase::GetDefinitions() @ 0x006869D0,
-//          CDefinitionManager::GetNumberOfDefsOfType(const CCharString&) @ 0x009AD3B0 (manifest label
+//          CDefinitionManager::GetNoInstantiatedDefsOfType(const CCharString&) @ 0x009AD3B0 (manifest label
 //          "LTextSystem::GetIDFromSymbol" is propagated; the body counts the type's def list),
 //          std::vector<long>::resize(unsigned long) @ 0x004433F0, CCharString::~CCharString @ 0x0099EAE0.
 //          The literal "EXPRESSION" sits at 0x01235D94.
@@ -19,8 +19,10 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-class CDefinitionManager { public:
-    long GetNumberOfDefsOfType(const CCharString& typeName);   // 0x009AD3B0
+class CDefinitionManager {
+public:
+    long GetNoInstantiatedDefsOfType(CCharString const&a0) const;   // 0x009AD3B0 (Ego_r.pdb ?GetNoInstantiatedDefsOfType@CDefinitionManager@@QBEJABVCCharString@@@Z)
+private:    // 0x009AD3B0
 };
 
 struct CLongVector {                              // std::vector<long>
@@ -40,5 +42,5 @@ struct CTCInventoryAbilities_Retail {
 
 void CTCInventoryAbilities_Retail::InitialiseExpressions()
 {
-    ReceivedExpressionOrder.resize(GetDefinitions()->GetNumberOfDefsOfType("EXPRESSION"));
+    ReceivedExpressionOrder.resize(((CDefinitionManager*)(GetDefinitions()))->GetNoInstantiatedDefsOfType("EXPRESSION"));
 }

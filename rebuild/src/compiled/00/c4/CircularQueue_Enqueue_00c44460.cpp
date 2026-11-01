@@ -5,7 +5,7 @@
 //   CircularQueue::Enqueue (bool, CSoundBuffer*, unsigned __int64) on its +0x54 queue; the landed DequeueNext 0x00C44320 /
 //   DequeueItem 0x00C44270 share the layout. The catalog label "CCreatureAction_FireMissileWeapon::ProcessAnimFrame" is wrong.
 // Callees: CSoundBuffer::GetDesc 0x00C3C4A0 (landed spelling, as declared by CAudioObject::CanAcquireVoice 0x00C43390; returns buffer + 0x10; 28-byte block copied whole), the buffer add-ref
-//   0x00C3C5D0 (bool; ++refcount with an overflow error), CAudioSystem::SetError 0x00C3D090 on g_audioSystem 0x0143BB58.
+//   0x00C3C5D0 (bool; ++refcount with an overflow error), CCodaContext::SetError 0x00C3D090 on g_audioSystem 0x0143BB58.
 // Layout: +0x00 item slots, +0x04 64-bit stamps, +0x08 capacity, +0x0C head, +0x10 tail, +0x14 last item, +0x18 the queue's
 //   12-byte format (words 0 and 1 compared).
 // Shape: the format test is an inline `matches` flag (retail's hoisted `mov al,1`, `xor al,al` on the first mismatch).
@@ -31,9 +31,10 @@ struct CSoundBuffer {
     const SBufferDesc* GetDesc() const;        // 0x00C3C4A0 (returns this + 0x10)
     bool AddRef();                              // 0x00C3C5D0
 };
+class CCodaContext { public:
+    void SetError(int a0);   // 0x00C3D090 (Ego_r.pdb ?SetError@CCodaContext@@QAEXH@Z)
+};
 class CAudioSystem {
-public:
-    void SetError(long code);                   // 0x00C3D090
 };
 extern CAudioSystem g_audioSystem;              // 0x0143BB58
 
@@ -61,12 +62,12 @@ bool CircularQueue::Enqueue(CSoundBuffer* buffer, unsigned __int64 startTime)
         if (m_format.Word1 != format.Wave.Word1)
             matches = false;
         if (!matches) {
-            g_audioSystem.SetError(-14);
+            ((CCodaContext*)&g_audioSystem)->SetError(-14);
             return false;
         }
     }
     if (m_items[m_head] != 0) {
-        g_audioSystem.SetError(-15);
+        ((CCodaContext*)&g_audioSystem)->SetError(-15);
         return false;
     }
     if (!buffer->AddRef())

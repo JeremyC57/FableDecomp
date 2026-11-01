@@ -16,7 +16,6 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
     bool operator!=(const wchar16* text) const;             // 0x0099B150
 };
-bool __fastcall PathExists(const CWideString& path);       // 0x00999230
 bool __fastcall VerifySignature(const CWideString& path);  // 0x00409730
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
@@ -24,7 +23,10 @@ class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
 };
-class CAFile : public CBaseClassNonCopyable { public:
+class CAFile : public CBaseClassNonCopyable {
+public:
+    static bool __fastcall PathExists(CWideString const&a0);   // 0x00999230 (Ego_r.pdb ?PathExists@CAFile@@SI_NABVCWideString@@@Z)
+private: public:
     long AccessType;                                        // +0x04 FileAccessType
     long Position;                                          // +0x08
     long Length;                                            // +0x0c
@@ -51,7 +53,7 @@ class CUserProfileManager { public:
 void CUserProfileManager::Load()
 {
     CWideString path = GetProfilePathname(ProfileName, false);
-    if (path != (const wchar16*)L"" && PathExists(path) && VerifySignature(path)) {
+    if (path != (const wchar16*)L"" && CAFile::PathExists(path) && VerifySignature(path)) {
         CDiskFileWin32 file(path, FILE_ACCESS_READ, 2);
         if (file.Opened) {
             LoadGameState(&file);

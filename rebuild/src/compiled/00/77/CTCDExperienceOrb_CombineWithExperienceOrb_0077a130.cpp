@@ -25,7 +25,9 @@ class CThing { public:
     }
 };
 
-CThing* __fastcall CreateThing(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CExperienceDef { public:
     unsigned char _pad00[0x28];
@@ -56,6 +58,6 @@ class CTCDExperienceOrb { public:
 void CTCDExperienceOrb::CombineWithExperienceOrb(CThing* otherOrb)
 {
     SetExperiencePoints(otherOrb->GetTCDriverExperienceOrb()->ExperiencePoints + ExperiencePoints);
-    CreateThing(PDef->OrbCombiningParticleEffect, GetParent()->GetPos(), 0);
+    CTCDParticleEmitter::Create(PDef->OrbCombiningParticleEffect, GetParent()->GetPos(), 0);
     otherOrb->Kill(true);
 }

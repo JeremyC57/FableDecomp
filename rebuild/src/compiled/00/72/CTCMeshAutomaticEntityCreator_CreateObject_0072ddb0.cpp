@@ -68,8 +68,10 @@ public:
         return false;
     }
 };
-CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, long player, const CRightHandedSet* orientation,
-                               unsigned long flags, const CCharString& scriptName);   // 0x00703210
+class CThingObject;
+class CThingObject { public:
+    static CThingObject* __fastcall Create(long a0, C3DVector const&a1, long a2, CRightHandedSet const*a3, unsigned long a4, CCharString const&a5);   // 0x00703210 (Ego_r.pdb ?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z)
+};
 class CTCCreatedEntity { public:                             // interface 0x32
     void SetPCreator(CThing* creator);                // 0x005ED440
 };
@@ -107,7 +109,7 @@ void CTCMeshAutomaticEntityCreator::CreateObject(const CCharString& dummyName, c
                 CThing* object;
                 {
                     CCharString scriptName("");
-                    object = CreateThing(defIndex, &position, -1, &orientation, 0, scriptName);
+                    object = ((CThing*)CThingObject::Create(defIndex, *(&position), -1, &orientation, 0, scriptName));
                 }
                 if (object) {
                     float scale = ParentThing->PGraphicAppearance->GetScale();

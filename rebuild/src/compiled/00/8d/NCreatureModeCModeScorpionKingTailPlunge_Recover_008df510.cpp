@@ -124,7 +124,9 @@ class CCombatActionBase;
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCombatActionBase& action);   // 0x006644F0
 };
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CTCDParticleEmitter { public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+};
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -188,7 +190,7 @@ void CModeScorpionKingTailPlunge::Recover()
     ParentThing->PDef->GetSubDef(effects);
     if (effects.m_p) {
         if (effects.m_p->GetEffectFromString("TAIL_DUST_EFFECT", effectType))
-            CreateEffectThing(effectType, &TailPos, false);
+            CTCDParticleEmitter::Create(effectType, *(&TailPos), false);
     }
     PCreature->GetTCIfPresent<CTCBoss>(0xad)->ClearEffects();
     PCreature->SetCurrentAction(CCreatureAction_ScorpionTailWithdraw(PCreature, PTarget.GetPItem()));

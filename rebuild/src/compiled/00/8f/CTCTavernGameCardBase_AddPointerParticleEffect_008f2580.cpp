@@ -59,9 +59,11 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
-class CTCDParticleEmitter { public:
+class CTCDParticleEmitter {
+public:
+    static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
+private: public:
     void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
@@ -107,7 +109,7 @@ struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294
 
 void CTCTavernGameCardBase::AddPointerParticleEffect(long particleDef)
 {
-    CThing* effect = CreateEffectThing(particleDef, &Pointer->GetPos(), false);
+    CThing* effect = CTCDParticleEmitter::Create(particleDef, *(&Pointer->GetPos()), false);
     if (effect && !effect->IsDead()) {
         ParticleEffects.push_back(CIntelligentPointer<CThing>(effect));
         CTCDParticleEmitter* emitter = GetParticleEmitter(effect);
