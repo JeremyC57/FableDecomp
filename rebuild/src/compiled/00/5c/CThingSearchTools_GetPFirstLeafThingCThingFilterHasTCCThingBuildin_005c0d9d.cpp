@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPFirstLeafThing<CThingFilter_HasTC,CThingBuilding>(const CThingFilter_HasTC&, CThingBuilding**) -- first scan-visible building (type list 3) that has the filter's thing component
 // Leaf: GetPFirstLeafThing
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe 0x005C0D9D, 72 bytes.
 // Callees: CThingSearchTools::PeekTypeList(long) 0x0049C780 (`this` passed through in ecx, returns the
 // per-type thing list), CThing::IsIncludedInThingScans 0x0048BC40, CThingFilter_HasTC::operator() 0x006A80A0
@@ -36,7 +37,7 @@ class CThingBuilding { public: enum { ThingListType = 3 }; };
 
 class CThingFilter_HasTC { public:
     long m_type;
-    bool operator()(CThing* thing) const;                // 0x006A80A0
+    bool operator()(const CThing& thing) const;                // 0x006A80A0
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -51,7 +52,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter(thing))
+        if (thing->IsIncludedInThingScans() && filter(*thing))
         {
             *out = (TThing*)thing;
             return true;

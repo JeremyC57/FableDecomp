@@ -1,5 +1,6 @@
 // CThingSearchTools::GetAllLeafThings(const TFilter& filter, TContainer& things) [TThing = CThingMarker, TContainer = vector<CThingMarker*>, TFilter = CThingFilter_MarkerHasProperty] -- append every scan-visible marker (type list 0x0b) that has the filter's property
 // Leaf: GetAllLeafThings
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00964EF0, length 136 bytes (`ret 8`).
 // Callees: PeekTypeList(long) 0x0049C780, CThingFilter_MarkerHasProperty::operator() 0x006A75B0, vector::_M_insert_overflow 0x0062E190.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (only passed through to the list getter); CThing, the thing list and
@@ -72,7 +73,7 @@ template <> void std::vector<CThingMarker*>::_M_insert_overflow(CThingMarker** p
 
 class CThingFilter_MarkerHasProperty { public:
     void* Property;
-    bool operator()(CThingMarker* marker) const;      // 0x006A75B0
+    bool operator()(const CThingMarker& marker) const;      // 0x006A75B0
 };
 struct CThingSearchToolsMethods : CThingSearchTools {
     CThingList* PeekTypeList(long type);              // 0x0049C780
@@ -85,7 +86,7 @@ void CThingSearchToolsMethods::GetAllLeafThings(const TFilter& filter, TContaine
     for (CThingList::iterator it = list->begin(); it != list->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             things.push_back((TThing*)thing);
     }
 }

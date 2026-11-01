@@ -1,5 +1,6 @@
 // CThingSearchTools::GetAllLeafThings(const TFilter& filter, TContainer& things) [TThing = CThingAICreature, TContainer = vector<CThingAICreature*>, TFilter = CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>] -- append every scan-visible AI creature of its type list that passes both filters
 // Leaf: GetAllLeafThings
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006186F0, length 155 bytes (`ret 8`).
 // Callees: PeekTypeList(long) 0x0049C780, CThingFilter_HasTC::operator() 0x006A80A0 (the component bitset test), CThingFilter_InMap::operator() 0x006A7930, vector::_M_insert_overflow 0x00515CC0.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (only passed through to the list getter); CThing, the thing list and
@@ -71,16 +72,16 @@ template <> void std::vector<CThingAICreature*>::_M_insert_overflow(CThingAICrea
 
 class CThingFilter_HasTC { public:
     unsigned long TCType;
-    bool operator()(CThing* thing) const;             // 0x006A80A0
+    bool operator()(const CThing& thing) const;             // 0x006A80A0
 };
 class CThingFilter_InMap { public:
     void* Map;
-    bool operator()(CThing* thing) const;             // 0x006A7930
+    bool operator()(const CThing& thing) const;             // 0x006A7930
 };
 template <class A, class B> class CFilter_Bind2 { public:
     const A* Filter1;
     const B* Filter2;
-    template <class T> bool operator()(T* thing) const { return (*Filter1)(thing) && (*Filter2)(thing); }
+    template <class T> bool operator()(const T& thing) const { return (*Filter1)(thing) && (*Filter2)(thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -94,7 +95,7 @@ void CThingSearchToolsMethods::GetAllLeafThings(const TFilter& filter, TContaine
     for (CThingList::iterator it = list->begin(); it != list->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             things.push_back((TThing*)thing);
     }
 }

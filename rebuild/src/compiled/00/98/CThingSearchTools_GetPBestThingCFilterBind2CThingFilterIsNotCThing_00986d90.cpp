@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPBestThing<CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsAlliedWithFaction >, CThingCompare_Nearest, const CThingAICreature>(const CFilter_Bind2<CThingFilter_IsNot, CThingFilter_IsAlliedWithFaction >&, const CThingCompare_Nearest&, const CThingAICreature**) -- nearest scan-visible AI creature that is not the excluded thing and is allied with the faction
 // Leaf: GetPBestThing
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00986D90, length 160 bytes (`ret 0Ch`).
 // Callees: PeekAllThings() 0x0049C770, CThingFilter_IsNot::operator() 0x006A76A0, CThingFilter_IsAlliedWithFaction::operator() 0x006C8C50, CThingCompare_Nearest::operator()<CThingAICreature> 0x00986C30.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
@@ -66,24 +67,24 @@ class CThingAICreature : public CThingCreatureBase { public:
 
 class CThingFilter_IsNot { public:
     const CThing* Excluded;
-    bool operator()(const CThing* thing) const;      // 0x006A76A0
+    bool operator()(const CThing& thing) const;      // 0x006A76A0
 };
 class CThingFilter_IsAlliedWithFaction { public:
     long Faction;
-    bool operator()(const CThing* thing) const;      // 0x006C8C50
+    bool operator()(const CThing& thing) const;      // 0x006C8C50
 };
-template <class A, class B> class CFilter_Bind2 { public:     // both filters, held by reference
-    const A& First;
-    const B& Second;
-    CFilter_Bind2(const A& a, const B& b) : First(a), Second(b) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing); }
+template <class A, class B> class CFilter_Bind2 { public:     // Ego_r.pdb: both filters held by pointer
+    const A* F1;
+    const B* F2;
+    CFilter_Bind2(const A& f1, const B& f2) : F1(&f1), F2(&f2) {}
+    template <class T> bool operator()(const T& thing) const { return (*F1)(thing) && (*F2)(thing); }
 };
-template <class A, class B, class C> class CFilter_Bind3 { public:
-    const A& First;
-    const B& Second;
-    const C& Third;
-    CFilter_Bind3(const A& a, const B& b, const C& c) : First(a), Second(b), Third(c) {}
-    template <class T> bool operator()(T* thing) const { return First(thing) && Second(thing) && Third(thing); }
+template <class A, class B, class C> class CFilter_Bind3 { public:     // Ego_r.pdb: the filters held by pointer
+    const A* F1;
+    const B* F2;
+    const C* F3;
+    CFilter_Bind3(const A& f1, const B& f2, const C& f3) : F1(&f1), F2(&f2), F3(&f3) {}
+    template <class T> bool operator()(const T& thing) const { return (*F1)(thing) && (*F2)(thing) && (*F3)(thing); }
 };
 class CThingCompare_Nearest { public:                       // out-of-line member template per thing type
     float X, Y, Z;
@@ -107,7 +108,7 @@ bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** ou
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -124,7 +125,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -146,7 +147,7 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
         if ((*it)->IsIncludedInThingScans() && IsThingOfType<TThing>(*it))
         {
             TThing* candidate = (TThing*)*it;
-            if (candidate && filter(candidate))
+            if (candidate && filter(*candidate))
                 best = compare(best, candidate);
         }
     }
@@ -163,7 +164,7 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             best = compare(best, (TThing*)thing);
     }
     *out = best;

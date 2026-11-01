@@ -1,4 +1,5 @@
 // CQuestManager::AttachExistingScriptedEntitiesToScript(CScriptBase&) -- collect every thing that has a script name and hand each one the script binds to it as an activated entity (UID, CScriptThing)
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004B26B0, length 232 bytes, `ret 4`
 // (PDB ?AttachExistingScriptedEntitiesToScript@CQuestManager@@QAEXAAVCScriptBase@@@Z).
 // Called when a quest script starts, so that entities already in the world get the same OnActivateEntity treatment
@@ -110,7 +111,7 @@ struct CThingList {                                      // STLport list<CThing*
 
 class CThingFilter_HasAnyScriptName { public:                   // empty predicate
     CThingFilter_HasAnyScriptName() {}
-    bool operator()(const CThing* thing) const;          // 0x006A74F0
+    bool operator()(const CThing& thing) const;          // 0x006A74F0
 };
 class CThingSearchTools { public:
     unsigned char _pad00[0x0c];
@@ -126,7 +127,7 @@ void CThingSearchTools::GetAllThings(const CThingFilter_HasAnyScriptName& filter
     CThingList& all = GetThingList_0049c770();
     for (SThingNode* node = all._M_node->_M_next; node != all._M_node; node = node->_M_next) {
         CThing* thing = node->_M_data;
-        if (thing->IncludeInThingScans && thing->Activated && !thing->Dead && !thing->InLimbo && filter(thing))
+        if (thing->IncludeInThingScans && thing->Activated && !thing->Dead && !thing->InLimbo && filter(*thing))
             things.push_back(thing);
     }
 }

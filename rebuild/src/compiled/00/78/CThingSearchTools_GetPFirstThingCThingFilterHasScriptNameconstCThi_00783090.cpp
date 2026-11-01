@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, const CThingMarker>(const CThingFilter_HasScriptName&, const CThingMarker**) -- first scan-visible marker with the script name
 // Leaf: GetPFirstThing
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00783090, length 128 bytes (`ret 8`).
 // Callees: PeekAllThings() 0x0049C770, CThingFilter_HasScriptName::operator() 0x006A7E30.
 // Model: CThingSearchTools from engine/CThingSearchTools.h (this is only passed through to the list
@@ -62,7 +63,7 @@ class CThingMarker : public CThingGameObject { public:
 
 class CThingFilter_HasScriptName { public:
     const char* ScriptName;
-    bool operator()(const CThing* thing) const;      // 0x006A7E30
+    bool operator()(const CThing& thing) const;      // 0x006A7E30
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -82,7 +83,7 @@ bool CThingSearchToolsMethods::GetPFirstThing(const TFilter& filter, TThing** ou
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (IsThingOfType<TThing>(thing) && thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -99,7 +100,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
         {
             *out = (TThing*)thing;
             return true;
@@ -121,7 +122,7 @@ bool CThingSearchToolsMethods::GetPBestThing(const TFilter& filter, const TCompa
         if ((*it)->IsIncludedInThingScans() && IsThingOfType<TThing>(*it))
         {
             TThing* candidate = (TThing*)*it;
-            if (candidate && filter(candidate))
+            if (candidate && filter(*candidate))
                 best = compare(best, candidate);
         }
     }
@@ -138,7 +139,7 @@ bool CThingSearchToolsMethods::GetPBestLeafThing(const TFilter& filter, const TC
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter((TThing*)thing))
+        if (thing->IsIncludedInThingScans() && filter(*(TThing*)thing))
             best = compare(best, (TThing*)thing);
     }
     *out = best;

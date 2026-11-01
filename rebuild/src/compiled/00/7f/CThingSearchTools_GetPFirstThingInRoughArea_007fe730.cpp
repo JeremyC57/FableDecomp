@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPFirstThingInRoughArea(const C2DBoxI& area, const F& filter, T** out) -- return the first thing of type T in the mapwho cells under the area that passes the filter (the scratch map list is left uncleared on a hit); instance <CFilter_Bind3<CThingFilter_IsNot, CThingFilter_IsNot, CThingFilter_In2DRange >, CThingCreatureBase>
 // Leaf: GetPFirstThingInRoughArea
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FE730, length 605 bytes (`ret 0xc`).
 // Callees: GetMapsInArea 0x0049C6F0 (forwarder), GetCellExtents 0x0049C700 (C2DBoxI by value), memmove 0x00BFEAE6 (scratch-list clear); filter/compare: CThingFilter_IsNot 0x006A76A0, CThingFilter_In2DRange 0x006A76B0.
 // Globals: search stamps 0x013B89A8 (+0 searches, +4 found, +8 stamp), mapwho level count 0x013BA848, level shift table 0x0137DADC (16-byte stride).
@@ -36,17 +37,17 @@ inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
 class CThingCreatureBase : public CThing { public: enum { TypeMask = 0xf }; };
 class CThingFilter_IsNot { public:
-    bool operator()(const CThing* thing) const;   // 0x006A76A0
+    bool operator()(const CThing& thing) const;   // 0x006A76A0
 };
 class CThingFilter_In2DRange { public:
-    bool operator()(const CThing* thing) const;   // 0x006A76B0
+    bool operator()(const CThing& thing) const;   // 0x006A76B0
 };
 // CFilter_Bind3: holds references to its sub-filters (+0, +4, ...) and ANDs them in order.
 template <class F1, class F2, class F3> class CFilter_Bind3 { public:
     const F1& Filter1;
     const F2& Filter2;
     const F3& Filter3;
-    bool operator()(const CThing* thing) const { return Filter1(thing) && Filter2(thing) && Filter3(thing); }
+    template <class T> bool operator()(const T& thing) const { return Filter1(thing) && Filter2(thing) && Filter3(thing); }
 };
 // One mapwho cell list node: {entry, next}; the entry holds the thing (+4) and its search stamp (+0x4c).
 struct CThingMapEntry {
@@ -135,7 +136,7 @@ template<class F, class T> bool CThingSearchTools::GetPFirstThingInRoughArea(con
                             if (entry->SearchStamp < g_SearchStamps.Stamp) {
                                 entry->SearchStamp = g_SearchStamps.Stamp;
                                 CThing* thing = entry->Thing;
-                                if (IsThingOfType<T>(thing) && filter(thing)) {
+                                if (IsThingOfType<T>(thing) && filter(*static_cast<T*>(thing))) {
                                 *out = static_cast<T*>(thing);
                                 return true;
                             }

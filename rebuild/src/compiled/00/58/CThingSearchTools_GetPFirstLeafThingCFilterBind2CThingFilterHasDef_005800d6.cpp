@@ -1,5 +1,6 @@
 // CThingSearchTools::GetPFirstLeafThing<CFilter_Bind2<CThingFilter_HasDefName,CThingFilter_HasScriptData>,CThingMarker>(const CFilter_Bind2<..>&, CThingMarker**) -- first scan-visible marker (type list 0x0b) passing both bound filters
 // Leaf: GetPFirstLeafThing
+// Naming (naming wave 23): the search templates call the filter on a reference (`filter(*p)`); CFilter_Bind2/3 hold their filters by pointer (Ego_r.pdb F1/F2/F3) and forward the reference; each CThingFilter_X::operator() takes its PDB `const T&` (DECISIONS_W22_RESOLVED item 2).
 // Retail: Fable.exe 0x005800D6, 91 bytes.
 // Callees: CThingSearchTools::PeekTypeList(long) 0x0049C780 (`this` passed through in ecx, returns the
 // per-type thing list), CThing::IsIncludedInThingScans 0x0048BC40, CThingFilter_HasDefName::operator()
@@ -35,16 +36,16 @@ struct CThingList {                                      // std::list<CThing*> (
 };
 
 class CThingFilter_HasDefName { public:
-    bool operator()(CThing* thing) const;                // 0x006A7BE0
+    bool operator()(const CThing& thing) const;                // 0x006A7BE0
 };
 class CThingFilter_HasScriptData { public:
-    bool operator()(CThing* thing) const;                // 0x006A7E70
+    bool operator()(const CThing& thing) const;                // 0x006A7E70
 };
 
 template <class A, class B> class CFilter_Bind2 { public:
     const A& m_first;
     const B& m_second;
-    __forceinline bool operator()(CThing* thing) const { return m_first(thing) && m_second(thing); }
+    template <class T> __forceinline bool operator()(const T& thing) const { return m_first(thing) && m_second(thing); }
 };
 
 struct CThingSearchToolsMethods : CThingSearchTools {
@@ -59,7 +60,7 @@ bool CThingSearchToolsMethods::GetPFirstLeafThing(const TFilter& filter, TThing*
     for (CThingList::iterator it = things->begin(); it != things->end(); ++it)
     {
         CThing* thing = *it;
-        if (thing->IsIncludedInThingScans() && filter(thing))
+        if (thing->IsIncludedInThingScans() && filter(*thing))
         {
             *out = (TThing*)thing;
             return true;
