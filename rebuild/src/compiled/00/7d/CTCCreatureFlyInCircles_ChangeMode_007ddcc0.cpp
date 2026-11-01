@@ -4,7 +4,7 @@
 // Callees: CCharString() @ 0x0099E4B0, CCharString::operator=(const char*) @ 0x0099EFE0, ~CCharString @ 0x0099EAE0,
 // CCreatureAction_DragonFlight(CThingCreatureBase*, const CCharString&) @ 0x008F4CB0 (vtable 0x01288544; manifest
 // "CCreatureAction_CastTimeSpell" is propagated), CThingCreatureBase::SetCurrentAction @ 0x006644F0, the action's TotalTime
-// getter CCreatureActionBase::GetTotalTime @ 0x006925B0 (`mov eax,[ecx+10h]`; manifest "CWorld::DrawGetEnvironment" is propagated), ~CCombatActionBase
+// getter CCreatureActionBase::GetTotalTimeWorldFrames @ 0x006925B0 (`mov eax,[ecx+10h]`; manifest "CWorld::DrawGetEnvironment" is propagated), ~CCombatActionBase
 // @ 0x0062E900. Literals "HOVER_INTO_FLY" @ 0x0126FAA8, "FLY_INTO_HOVER" @ 0x0126FAB8.
 // Layout: CTCCreatureFlyInCircles (Ego_r.pdb, no containers before these): Creature +0x0c, Speed +0x1c, DeltaSpeed +0x20,
 // SpeedChangeTicks +0x24, Mode +0x34, Transitioning +0x38, ModeChangeQueued +0x39.
@@ -19,12 +19,14 @@ class CCharString { public:
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CThingCreatureBase;
-class CCreatureActionBase { public:                            // retail sizeof 0xa8
+class CCreatureActionBase {
+public:
+    long GetTotalTimeWorldFrames() const;   // 0x006925B0 (Ego_r.pdb ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ)
+private: public:                            // retail sizeof 0xa8
     virtual void v00();
     unsigned char _body04[0x10 - 0x04];
     long TotalTime;                                     // +0x10
     unsigned char _body14[0xa8 - 0x14];
-    long GetTotalTime() const;                          // 0x006925B0
 };
 class CCombatActionBase : public CCreatureActionBase { public:        // retail sizeof 0x114
     unsigned char _bodyA8[0x114 - 0xa8];
@@ -79,7 +81,7 @@ void CTCCreatureFlyInCircles::ChangeMode()
         Transitioning = true;
         ModeChangeQueued = false;
         Mode = newMode;
-        long time = action.GetTotalTime();
+        long time = ((CCreatureActionBase*)&action)->GetTotalTimeWorldFrames();
         DeltaSpeed = (targetSpeed - Speed) / time;
         SpeedChangeTicks = time;
     }

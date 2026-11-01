@@ -1,9 +1,11 @@
 // CEngineLandscapeMemoryManager::EnablePoolAllocation
 // void __fastcall (self, bool enable)
-class CEngineLandscapeMemoryManager { public:
+class CEngineLandscapeMemoryManager {
+public:
+    void FreeDisposalList();   // 0x00BD9CE0 (Ego_r.pdb ?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ)
+private: public:
     char pad[0x39];
     bool m_poolEnabled; // +0x39
-    void Reconfigure();
     void EnablePoolAllocation(bool enable);
 };
 
@@ -13,7 +15,7 @@ class CEngineLandscapeMemoryManager { public:
 void CEngineLandscapeMemoryManager::EnablePoolAllocation(bool enable)
 {
     if (enable != m_poolEnabled) {
-        Reconfigure();
+        ((CEngineLandscapeMemoryManager*)this)->FreeDisposalList();
         m_poolEnabled = enable;
     }
 }

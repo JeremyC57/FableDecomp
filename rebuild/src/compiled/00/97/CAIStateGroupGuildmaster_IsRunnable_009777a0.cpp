@@ -55,8 +55,7 @@ class CPlayer { public:
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
 
-class CCombatManager { public:
-    void RegisterCombatant(CThingCreatureBase* creature, CThingCreatureBase* enemy, bool fight);   // 0x006EDC50
+class CCombatManager { public: void RegisterCombatant(CThingCreatureBase&a0, CThingCreatureBase&a1, bool a2); private:   // 0x006EDC50
 };
 
 class CWorld { public:
@@ -98,6 +97,6 @@ bool CAIStateGroup_Guildmaster::IsRunnable()
     PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
     CThingCreatureBase* creature = PBrain->PCreature;
     CCombatManager* combat = GetPWorld()->m_pCombatManager;
-    combat->RegisterCombatant(creature, PEnemy.GetPItem(), true);
+    combat->RegisterCombatant(*creature, *(PEnemy.GetPItem()), true);
     return true;
 }

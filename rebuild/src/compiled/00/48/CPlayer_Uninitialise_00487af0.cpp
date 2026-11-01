@@ -1,7 +1,7 @@
 // CPlayer::Uninitialise() -- when initialised and a player character exists, kill it and drop the pointer (assign a null intelligent pointer), then the CInitBaseClass uninitialise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00487AF0, length 113 bytes (+ int3 padding).
 // Leaf: ?Uninitialise@CPlayer@@QAEXXZ
-// Callees: CInitBaseClass::IsInitialised @ 0x0099A330 (catalogued as the propagated "CTCInventoryBase::
+// Callees: CInitBaseClass::IsValid @ 0x0099A330 (catalogued as the propagated "CTCInventoryBase::
 // GetCanItemBeQuickAssigned"), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::Kill(bool) @ 0x004C9B80,
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, ::SetPItem @ 0x00A01B90 (x2), ::~CBaseIntelligentPointer
 // @ 0x00A01C10, CInitBaseClass::Uninitialise @ 0x0099A360; CIntelligentPointer<CThingPlayerCreature> vtable 0x01231C4C.
@@ -37,9 +37,11 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CInitBaseClass { public:
+class CInitBaseClass {
+public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+private: public:
     virtual void v00();
-    bool IsInitialised() const;                    // 0x0099A330
     void Uninitialise();                           // 0x0099A360
 };
 
@@ -51,7 +53,7 @@ class CPlayer : public CInitBaseClass { public:                  // engine/CPlay
 
 void CPlayer::Uninitialise()
 {
-    if (IsInitialised() == true) {
+    if (((CInitBaseClass*)this)->IsValid() == true) {
         if (PlayerCharacter.GetPItem()) {
             ((CThing*)(PlayerCharacter.GetPItem()))->Kill(false);
             PlayerCharacter = CIntelligentPointer<CThingPlayerCreature>(0);

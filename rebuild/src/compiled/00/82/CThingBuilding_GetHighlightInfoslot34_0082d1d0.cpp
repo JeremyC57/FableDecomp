@@ -32,10 +32,12 @@ class CPlayerDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     CRGBColour    Colour;                            // +0x40
 };
+class CInitBaseClass { public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+};
 class CPlayer { public:
     unsigned char          _pad00[0x21c];
     CDefPointer<CPlayerDef> PlayerDef;               // +0x21c
-    bool IsLocal();                                  // 0x0099A330 (manifest label propagated; landed twin names it CInitBaseClass::IsInitialised)
 };
 class CPlayerManager { public:
     CPlayer* GetPlayer_00449910(long playerNumber);           // 0x00449910
@@ -58,7 +60,7 @@ bool CThingBuilding::GetHighlightInfo_slot34(SThingHighlightInfo* info)
 {
     CRGBColour colour;
     CPlayer* player = GetPlayerManager()->GetPlayer_00449910(PlayerNumber);
-    if (player->IsLocal() == true) {
+    if (((CInitBaseClass*)player)->IsValid() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);
         colour = def->Colour;
     } else {

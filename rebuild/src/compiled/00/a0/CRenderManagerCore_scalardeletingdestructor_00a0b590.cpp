@@ -24,9 +24,11 @@ class CRenderStateManager { public:                         // 0x3A3C bytes, vta
     unsigned char _state[0x3a38];                    // +0x04 .. +0x3A3B (device pointer, state stacks, device state)
 };
 
-class CInitBaseClass { public:                              // vptr + one word
+class CInitBaseClass {
+public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+private: public:                              // vptr + one word
     virtual void v00();
-    bool IsInitialised();                            // 0x0099A330
     void Uninitialise_00a6c120();                             // 0x00A6C120
     virtual ~CInitBaseClass();                               // 0x0099A410
     void* m_pInitData;                               // +0x04
@@ -49,7 +51,7 @@ struct CRenderManagerCore : CRenderStateManager {    // vtable 0x0129C9A4
 
     void Uninit()
     {
-        if (SystemFont.IsInitialised())
+        if (((CInitBaseClass*)&SystemFont)->IsValid())
             SystemFont.Uninitialise_00a6c120();
     }
 

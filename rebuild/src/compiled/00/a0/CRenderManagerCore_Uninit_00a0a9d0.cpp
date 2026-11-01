@@ -7,11 +7,13 @@
 // engine/CRenderManagerCore.h (PDB): +0x3A4C CSystemFont SystemFont (a CInitBaseClass). Tears the
 // system font down if it was initialised: 0x0099A330 is the CInitBaseClass initialised query and
 // 0x00A6C120 its Uninitialise (manifest: CInitBaseClass::Uninitialise), reached by tail jump.
+class CInitBaseClass { public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+};
 #include "engine/CRenderManagerCore.h"
 
 // Call surface of the CInitBaseClass subobject (the engine header holds only the bytes).
 struct CInitBaseClassCalls {
-    bool IsInitialised();      // 0x0099A330
     void Uninitialise();       // 0x00A6C120
 };
 
@@ -22,6 +24,6 @@ struct CRenderManagerCore_Methods : CRenderManagerCore {
 void CRenderManagerCore_Methods::Uninit()
 {
     CInitBaseClassCalls* font = reinterpret_cast<CInitBaseClassCalls*>(&this->SystemFont[0]);
-    if (font->IsInitialised())
+    if (((CInitBaseClass*)font)->IsValid())
         font->Uninitialise();
 }

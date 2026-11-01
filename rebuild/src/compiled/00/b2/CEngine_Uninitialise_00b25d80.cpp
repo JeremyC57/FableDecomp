@@ -66,9 +66,10 @@ class CDeviceResetCallback { public:
     virtual void OnPreDeviceReset() = 0;
     virtual bool OnPostDeviceReset() = 0;
 };
+class CDisplayManager { public:
+    void RemoveDeviceResetCallback(CDeviceResetCallback*a0);   // 0x009BF5A0 (Ego_r.pdb ?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z)
+};
 class CRenderManager {
-public:
-    void RemoveDeviceResetCallback(CDeviceResetCallback* callback);   // 0x009BF5A0
 };
 extern CRenderManager* g_pRenderManager;            // 0x01436E1C
 extern void* g_pEngineComponentGlobal;              // 0x01436E78
@@ -132,7 +133,7 @@ void CEngine::Uninitialise()
 {
     if (!IsInitialised)
         return;
-    g_pRenderManager->RemoveDeviceResetCallback(this);
+    ((CDisplayManager*)g_pRenderManager)->RemoveDeviceResetCallback(this);
     g_pRenderManagerCore->PD3DDevice->SetStreamSource(0, 0, 0, 0);
     g_pRenderManagerCore->SetIndices(0);
     g_pRenderManagerCore->SetTexture(0, 0);

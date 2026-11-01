@@ -20,9 +20,11 @@ class CPlane { public:                                // C3DVector Normal + floa
     float Distance;
 };
 
+class CMovableResourceMemoryPool { public:
+    void FreeResource(long a0);   // 0x00A62ED0 (Ego_r.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
+};
 struct CMovableResourceMemoryPool_Calls {
     long GetHandle(void* block);               // 0x00A01D40
-    void Free(long handle);                    // 0x00A62ED0 (CHandleBasedMemoryPool::Free)
 };
 
 class CMovableResource { public:                      // vtable 0x0129B860; engine/CMovableResource.h: vptr only
@@ -42,7 +44,7 @@ CContainmentVolume::~CContainmentVolume()
 {
     if (ContainmentPlanes) {
         if (MemoryPool) {
-            MemoryPool->Free(MemoryPool->GetHandle(ContainmentPlanes));
+            ((CMovableResourceMemoryPool*)MemoryPool)->FreeResource(MemoryPool->GetHandle(ContainmentPlanes));
             MemoryPool = 0;
         } else {
             delete[] ContainmentPlanes;

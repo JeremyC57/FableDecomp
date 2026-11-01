@@ -62,7 +62,9 @@ public:
     unsigned long  Capacity;                            // +0x08
     unsigned long  GrowthGranularity;                   // +0x0c
     unsigned char  Root[0xc];                           // +0x10 CArea
+private:
     void ClearMemoryBlocks();                           // 0x00A5C600
+public:
     ~CSimpleMemoryPool() { ClearMemoryBlocks(); }
 };
 

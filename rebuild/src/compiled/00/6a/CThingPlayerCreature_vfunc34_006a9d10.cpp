@@ -34,8 +34,10 @@ class CPlayerDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x40 - 0x08];
     CRGBColour Colour;                          // +0x40
 };
-class CInitBaseClass { public:
-    bool IsInitialised();                       // 0x0099A330
+class CInitBaseClass {
+public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+private:                        // 0x0099A330
 };
 class CPlayer : public CInitBaseClass { public:
     unsigned char _pad00[0x21c];
@@ -65,7 +67,7 @@ bool CThingPlayerCreature::vfunc_34(CThingHighlightInfo* info)
 {
     CPlayer* player = GetPlayerManager_004c79f0()->GetPlayer_00449910(PlayerNumber);
     CRGBColour colour;
-    if (player->IsInitialised() == true) {
+    if (((CInitBaseClass*)player)->IsValid() == true) {
         CDefPointer<CPlayerDef> def(player->PlayerDef);
         colour = def->Colour;
     } else {

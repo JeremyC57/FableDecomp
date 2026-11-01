@@ -44,6 +44,9 @@ public:
 public:
     bool SwapScreens();   // 0x009BEEB0
 };
+class CASoundManager { public:
+    void ClearBanks_009918f0();   // 0x009918F0 (Ego_r.pdb ?ClearBanks_009918f0@CASoundManager@@QAEXXZ)
+};
 class CGameStateOwner_013b8394 {                   // the object held at 0x013B8394
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
@@ -52,7 +55,6 @@ public:
     virtual void v17();
     virtual void SetPaused_slot18(bool paused);    // slot 18 (+0x48)
     void Restore_00991750();                       // 0x00991750
-    void Restore_009918f0();                       // 0x009918F0
 };
 struct CFrontendGlobal_013b838c {
     unsigned char _pad0[0x38];
@@ -92,7 +94,7 @@ void CNewFrontendGameComponent::Shutdown()
         ((CGameStateOwner_013b8394*)PSoundManager)->ResumeGame_slot16();
         ((CGameStateOwner_013b8394*)PSoundManager)->SetPaused_slot18(false);
         ((CGameStateOwner_013b8394*)PSoundManager)->Restore_00991750();
-        ((CGameStateOwner_013b8394*)PSoundManager)->Restore_009918f0();
+        ((CASoundManager*)(((CGameStateOwner_013b8394*)PSoundManager)))->ClearBanks_009918f0();
     }
     ReleaseXMVCode();
     FileNames.clear();

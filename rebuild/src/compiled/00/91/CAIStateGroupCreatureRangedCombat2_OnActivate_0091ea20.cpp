@@ -8,8 +8,7 @@
 // expression. The target's byte at +0x91 bit 0 is its "dead" flag (`test byte ptr [eax+91h],1`),
 // a one-bit bitfield. PTargetThing's address lives in edi across the calls.
 class CThingCreatureBase;
-class CCombatManager { public:
-    void RegisterCombatant(CThingCreatureBase* combatant, CThingCreatureBase* target, bool hostile);   // 0x006EDC50
+class CCombatManager { public: void RegisterCombatant(CThingCreatureBase&a0, CThingCreatureBase&a1, bool a2); private:   // 0x006EDC50
 };
 
 class CThingCreatureBase { public:
@@ -61,6 +60,6 @@ void CAIStateGroup_CreatureRangedCombat2::OnActivate()
 {
     if (PTargetThing.GetPItem() != 0 && !PTargetThing.GetPItem()->IsDead) {
         CThingCreatureBase* creature = PBrain->Creature;
-        creature->GetCombatManager().RegisterCombatant(creature, PTargetThing.GetPItem(), false);
+        creature->GetCombatManager().RegisterCombatant(*creature, *(PTargetThing.GetPItem()), false);
     }
 }

@@ -9,8 +9,10 @@
 
 struct CGlowPixelFormat:CPixelFormat {CGlowPixelFormat(){FormatIndex=-1;}void Initialise(unsigned format);}; //009e3830
 struct CGlowExtents {int Width,Height;CGlowExtents(int w,int h):Width(w),Height(h){}};
+class CGPUScratchBufferTextureManager { public:
+    void FreeMemoryPage(long a0);   // 0x00F37030 (Ego_r.pdb ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z)
+};
 struct CGlowScratchManager {
- void ReleaseMemoryPage(long); //00f37030
  long AllocateMemoryPage(long,bool); //00f37660
  long AllocateTexture(long,const CGlowExtents&,long,const CPixelFormat&,unsigned,bool); //00f37440
 };
@@ -18,7 +20,7 @@ struct CGlowResourceManager {unsigned char UnrelatedResources[0x3190];CGlowScrat
 extern CGlowResourceManager* gGlowResources; //01436e98
 struct CGlowRendererMethods:CEngineScreenEffectGlowRenderer {int InitialiseTextures();};
 int CGlowRendererMethods::InitialiseTextures(){
- if(DynamicTexturePageHandle>=0)gGlowResources->Scratch.ReleaseMemoryPage(DynamicTexturePageHandle);
+ if(DynamicTexturePageHandle>=0)((CGPUScratchBufferTextureManager*)&(gGlowResources->Scratch))->FreeMemoryPage(DynamicTexturePageHandle);
  CGlowPixelFormat format;format.Initialise(21);
  CGlowScratchManager* manager=&gGlowResources->Scratch;
  DynamicTexturePageHandle=manager->AllocateMemoryPage(0,false);

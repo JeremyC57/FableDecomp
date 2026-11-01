@@ -86,8 +86,9 @@ class CEngineWeatherRenderer { public:
     bool          SnowOverriden;                   // +0x12f4
     void StartRaining(float strength);             // 0x00B51EA0
     void StartSnowing(float strength);             // 0x00B51F00
-    void FadeRainToTarget(float strength);         // 0x00B52870
-    void FadeSnowToTarget(float strength);         // 0x00B52900
+private:
+    void FadeRainToTarget(float a0);         // 0x00B52870
+void FadeSnowToTarget(float a0);         // 0x00B52900
     virtual void WorldFrameUpdate(bool full);
 };
 

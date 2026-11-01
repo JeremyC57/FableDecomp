@@ -44,12 +44,14 @@ struct CBaseIntelligentPointer {
  void* PData;
  CBaseObject* GetPItem() const; //00A01B50
 };
+class CCreatureActionBase { public:
+    long GetTotalTimeWorldFrames() const;   // 0x006925B0 (Ego_r.pdb ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ)
+};
 class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;
  long TotalTime;
  unsigned char _nativeBeforeDerived[0x100];
- long GetTotalTime() const; //006925B0 loads action+10; propagated CWorld label is unrelated
  void FrameUpdate(); //00859D80
 };
 class CCreatureAction_DragonFlight : public CCombatActionBase { public:
@@ -60,7 +62,7 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureAction_DragonFlight,TurnRate)==0x118);
 void CCreatureAction_DragonFlight::FrameUpdate()
 {
  if(TurnRate!=0.0f){
-  long frames=GetTotalTime();
+  long frames=((CCreatureActionBase*)this)->GetTotalTimeWorldFrames();
   C3DVector facing;
   ((CThing*)PCreature.GetPItem())->GetPhysics()->GetFacingVectorInto(facing);
   facing.RotateXY(TurnRate/frames);

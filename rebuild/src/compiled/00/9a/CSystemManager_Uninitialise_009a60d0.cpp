@@ -1,7 +1,7 @@
 // CSystemManager::Uninitialise() -- tears the system layer down: releases the manager counted pointers, the global
 // drive manager and the global registered-entry table, unhooks the mesh bank from the display's reset callbacks,
 // shuts the scratch buffer, destroys the owned window, deletes the critical section and drops the init count.
-// Retail 0x009A60D0, 0x29B bytes. Callees: CInitBaseClass::IsInitialised 0x0099A330 (`return Valid;`, the
+// Retail 0x009A60D0, 0x29B bytes. Callees: CInitBaseClass::IsValid 0x0099A330 (`return Valid;`, the
 // manifest label CTCInventoryBase::GetCanItemBeQuickAssigned is propagated), CInitBaseClass::Uninitialise 0x0099A360
 // (tail jump), CDisplayManager::RemoveDeviceResetCallback 0x009BF5A0 (label LSocketServer::CloseSocket is
 // propagated; the landed 0x00B25D80 names it), CScratchBuffer::Uninitialise 0x009F4950, operator delete 0x00BFE9BC,
@@ -40,10 +40,12 @@ class CProfileManager; struct CSystemObject;
 class CMeshBankManager { public: void* Base0; CDeviceResetCallback ResetCallback; };   // the reset-callback base sits at +4
 class CDisplayManager { public: void RemoveDeviceResetCallback(CDeviceResetCallback* callback); };   // 0x009BF5A0
 
-class CInitBaseClass { public:
+class CInitBaseClass {
+public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+private: public:
     virtual void v00();
     bool Valid;                                 // +0x04
-    bool IsInitialised() const;                 // 0x0099A330
     void Uninitialise();                        // 0x0099A360
 };
 
@@ -103,7 +105,7 @@ public:
 
 void CSystemManager::Uninitialise()
 {
-    if (IsInitialised() == true)
+    if (((CInitBaseClass*)this)->IsValid() == true)
     {
         PInputManager.Release();
         PFontManager.Release();
@@ -121,7 +123,7 @@ void CSystemManager::Uninitialise()
         if (PDisplayManager.Data)
             PDisplayManager.Data->RemoveDeviceResetCallback(PMeshBankManager.Data ? &PMeshBankManager.Data->ResetCallback : 0);
         PMeshBankManager.Release();
-        if (g_ScratchBuffer.IsInitialised())
+        if (((CInitBaseClass*)&g_ScratchBuffer)->IsValid())
             g_ScratchBuffer.Uninitialise();
         LibDebugManager.Release();
         PDisplayManager.Release();

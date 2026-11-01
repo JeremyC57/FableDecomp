@@ -14,9 +14,11 @@ class CGameDefinitionManager { public: static CGameDefinitionManager& __fastcall
 struct CPlayerManager_Methods : CPlayerManager {
     void CreatePlayers();                                // 0x0044A530
 };
+class CInitBaseClass { public:
+    bool IsValid() const;   // 0x0099A330 (Ego_r.pdb ?IsValid@CInitBaseClass@@QBE_NXZ)
+};
 struct CNetworkClient_Methods : CNetworkClient {
     bool InitialiseAsLocal(CMainGameComponent* component);  // 0x004AE940
-    bool IsValid() const;                                // 0x0099A330 (CInitBaseClass)
     void Uninitialise();                                 // 0x004AE990
 };
 class CMainGameComponent { public:
@@ -32,6 +34,6 @@ void CMainGameComponent::CreatePlayers()
 {
     const CGameDefinitionManager& definitions = CGameDefinitionManager::Get();
     PPlayerManager->CreatePlayers();
-    if (!Client.InitialiseAsLocal(this) && Client.IsValid())
+    if (!Client.InitialiseAsLocal(this) && ((CInitBaseClass*)&Client)->IsValid())
         Client.Uninitialise();
 }

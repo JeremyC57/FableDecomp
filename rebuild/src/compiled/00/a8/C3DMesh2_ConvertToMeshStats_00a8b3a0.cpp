@@ -1,10 +1,12 @@
 #include <string.h>
 // C3DMesh2::ConvertToMeshStats() -- destroy mesh arrays and migrate the retained bone block into stats memory. Retail Fable.exe @ 0x00A8B3A0, 276 bytes; calls AllocateResource @ 0x00A62E40, GetPointerFromHandle @ 0x00A026B0, Free @ 0x00A62ED0, and virtual RelocateData slot +4. No C3DMesh2 header exists: layout follows landed C3DMesh2::Sizeof/InitialisePointers and RelocateData. The lock assignment uses an ordinary bool pointer to the named member; this preserves the actual field access while matching retail ordering without volatile.
 class C3DMesh2;
-class CMovableResourceMemoryPool { public:
+class CMovableResourceMemoryPool {
+public:
+    void FreeResource(long a0);   // 0x00A62ED0 (Ego_r.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
+private: public:
     bool AllocateResource(long* handle, C3DMesh2* owner, unsigned long size, unsigned long flags); // 0x00A62E40
     void* GetPointerFromHandle(long handle); // 0x00A026B0
-    void Free(long handle);                 // 0x00A62ED0
 };
 class C3DMeshStats { public:
     virtual ~C3DMeshStats();
@@ -65,11 +67,11 @@ void C3DMesh2::ConvertToMeshStats()
         char* newBuffer=(char*)MemoryPool->GetPointerFromHandle(newHandle);
         memcpy(newBuffer,oldBuffer,bytes);
         RelocateData(MemoryHandle,oldBuffer,newBuffer,bytes);
-        MemoryPool->Free(MemoryHandle);
+        ((CMovableResourceMemoryPool*)MemoryPool)->FreeResource(MemoryHandle);
         MemoryHandle=newHandle;
     }
     if (PrimMemoryHandle!=-1) {
-        MemoryPool->Free(PrimMemoryHandle);
+        ((CMovableResourceMemoryPool*)MemoryPool)->FreeResource(PrimMemoryHandle);
         PrimMemoryHandle=-1;
     }
     *relocationLock=false;

@@ -53,10 +53,12 @@ class CNavQuadTreeNode : public CANavQuadTreeNode {
 public:
     virtual bool RemoveRegionZero();
 
-    void SetTLNode(CANavQuadTreeNode* node);                       // 0x00A75CA0
-    void SetTRNode(CANavQuadTreeNode* node);                       // 0x00A75CE0
-    void SetBLNode(CANavQuadTreeNode* node);                       // 0x00A75D20
-    void SetBRNode(CANavQuadTreeNode* node);                       // 0x00A75D60
+protected:
+    void SetTLNode(CANavQuadTreeNode*a0);                       // 0x00A75CA0
+void SetTRNode(CANavQuadTreeNode*a0);                       // 0x00A75CE0
+protected:
+    void SetBLNode(CANavQuadTreeNode*a0);                       // 0x00A75D20
+void SetBRNode(CANavQuadTreeNode*a0);                       // 0x00A75D60
 
     CANavQuadTreeNode* TLNode;                                     // +0x10
     CANavQuadTreeNode* TRNode;                                     // +0x14

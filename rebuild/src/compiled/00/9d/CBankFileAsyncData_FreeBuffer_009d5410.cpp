@@ -17,9 +17,11 @@ struct CCriticalSectionLock_Retail {            // 8 bytes on the stack
     ~CCriticalSectionLock_Retail();                                               // 0x00A629A0
 };
 
+class CMovableResourceMemoryPool { public:
+    void FreeResource(long a0);   // 0x00A62ED0 (Ego_r.pdb ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
+};
 struct CHandleBasedMemoryPool_Calls {
     void Lock(long handle);              // 0x00A026F0
-    void Free(long handle);              // 0x00A62ED0
 };
 
 class CBankFileAsync { public:                  // the owning bank (+0x28); its critical section sits at +0x14c
@@ -56,7 +58,7 @@ class CBankFileAsyncData { public:
 void CBankFileAsyncData::FreeBuffer()
 {
     if (m_pPool != 0 && m_handle != -1) {
-        m_pPool->Free(m_handle);
+        ((CMovableResourceMemoryPool*)m_pPool)->FreeResource(m_handle);
         m_handle = -1;
         m_pReadBuffer = 0;
         m_pData = 0;
