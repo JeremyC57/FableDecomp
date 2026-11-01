@@ -25732,3 +25732,13 @@ chunk	address	module	name	length
 670	00b8c7c0	CEngineBillboardGenerator	~CEngineBillboardGenerator	102
 670	00b93e40	CLocalDetailGeneratorTheme	~CLocalDetailGeneratorTheme	98
 670	00a5f3a0	CChunkedFile	~CChunkedFile	126
+671	007c8560	CTCInventoryItem	OnDie	27
+671	00ab7a70	CStaticFontBank	~CStaticFontBank	143
+671	00b59be0	CEngineLocalDetailGenerator	AddLocalDetailDynamic	129
+671	00b5a0d0	CEngineScreenEffectColourFilter	~CEngineScreenEffectColourFilter	139
+671	00a04160	_Dest_val<std	allocator<CMacro>,CMacro>	145
+671	00ed7640	CV_SwordInTheStoneScript	~CV_SwordInTheStoneScript	147
+671	00a84f00	CTCInventoryItem	OnDie	27
+671	00a9a7c0	CTCInventoryItem	OnDie	27
+671	00a895f0	C3DMesh2	~C3DMesh2	175
+671	00b4d210	CEngineShadowRenderer	~CEngineShadowRenderer	171
