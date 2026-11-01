@@ -1,0 +1,86 @@
+addr       parity           behav  name
+0042b467   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::_Select1st<std::pair<CCharString const, long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, long>>>::_M_find
+00751e80   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00751e80   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00751e80   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00751e80   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00751e80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00751e80   WARN RELOC_NAME: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z -> 00661540 labelled '_global::GFGetAngleXYTo'
+00751e80   RELOCATION_MATCH PASS   CTCLook::GetTurningAngles
+00788617   WARN SHARED_HEADER_AVAILABLE CTCBase
+00788617   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00788617   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00788617   WARN SHARED_HEADER_AVAILABLE CWorld
+00788617   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00788617   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00788617   WARN RELOC_NAME: ?g_framesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+00788617   WARN RELOC_NAME: ??$?0V?$CIntelligentPointer@VCThing@@@@M@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@M@1@@Z -> 00788d68 labelled 'pair<CIntelligentPointer<const CThing>,long>::pair'
+00788617   RELOCATION_MATCH PASS   CTCMeleeTrap::ProcessPossibleStrike
+007e6ec0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchTools@@QBEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+007e6ec0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasDefGlobalIndex, CThing>
+009d4f10   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d4f10   RELOCATION_MATCH PASS   CDefStringTable::Unlock
+00ac97d0   RELOCATION_MATCH PASS   QuadricOptimiserInternals::COptimisedVertex::RemapGroups
+00ad14e0   RELOCATION_MATCH PASS   std::_Rb_tree<unsigned long,std::pair<unsigned long const,float>,...>::_M_erase
+00b218b0   RELOCATION_MATCH PASS   NParticleEngine::CSplinePosParamData::TransformFromIndex
+00b219a0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b219a0   RELOCATION_MATCH PASS   CPSCSplineBase::GetPointAtIndex
+00cb9c50   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cb9c50   RELOCATION_MATCH PASS   std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >::pair
+00cbd420   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbd420   RELOCATION_MATCH PASS   _global::FinalInsertionSort_SElement12_00cbd420
+
+WINS: 11
+  0042b467 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, CUnprovenValue_0042b467>, ...>::?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@
+  00751e80 RELOCATION_MATCH CTCLook::GetTurningAngles
+  00788617 RELOCATION_MATCH CTCMeleeTrap::?ProcessPossibleStrike@CTCMeleeTrap@@AAEXMMABU?$pair@VC3DVector@@V1@@std@@0AAVCThing@@@Z
+  007e6ec0 RELOCATION_MATCH CThingSearchTools::??$GetPFirstThing@VCThingFilter_HasDefName@@VCThing@@@CThingSearchTools@@QBE_NABVCThingFilter_HasDefName@@PAPAVCThing@@@Z
+  009d4f10 RELOCATION_MATCH CDefStringTable::Unlock
+  00ac97d0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedVertex::?RemapGroups@COptimisedVertex@QuadricOptimiserInternals@@QAEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
+  00ad14e0 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@KU?$pair@$$CBKM@std@@U?$_Select1st@U?$pair@$$CBKM@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKM@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKM@std@@@2@@Z
+  00b218b0 RELOCATION_MATCH NParticleEngine::CSplinePosParamData::?TransformFromIndex@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@3@AAVC3DVector@@J@Z
+  00b219a0 RELOCATION_MATCH CPSCSplineBase::?GetPointAtIndex@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@JM@Z
+  00cb9c50 RELOCATION_MATCH SScriptBindingPair::??0?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@QAE@ABU01@@Z
+  00cbd420 RELOCATION_MATCH _global::??$__final_insertion_sort@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@0V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z
+addr       parity           behav  name
+0043020a   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@@Z -> 0043020a labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+0043020a   RELOCATION_MATCH["s"] PASS   LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+00781670   MATCH            PASS   std::_Rb_tree<CUnprovenKey_00781670,CUnprovenValue_00781670,CUnprovenKeyOfValue_00781670,std::less<CUnprovenKey_00781670>,std::allocator<CUnprovenValue_00781670> >::find
+007e5d20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e5d20   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5d20   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+007e5d20   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e5d20   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007e5d20   RELOCATION_MATCH PASS   CTCOracleMinigame::PlayGame
+009d4a50   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009d4a50   WARN SHARED_HEADER_AVAILABLE CMemoryDataOutputStream
+009d4a50   RELOCATION_MATCH PASS   CDefStringTable::WriteTable
+009e6530   MATCH            PASS   CCharString::operator<
+00ac99f0   WARN SHARED_HEADER_AVAILABLE COptimisedPrimitive
+00ac99f0   RELOCATION_MATCH PASS   COptimisedPrimitive::RemapGroups
+00b21850   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromPosition
+00b21940   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b21940   RELOCATION_MATCH PASS   CPSCSplineBase::GetPointAtPos
+00badb40   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00badb40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00badb40   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DClockSprite::Update
+00cbb2d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+  WARN leaf '??$__unguarded_insertion_sort_aux@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@0PAU10@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z' matches no symbol in 00cbb2d0.obj; graded the largest function
+  WARN leaf '??$__unguarded_insertion_sort_aux@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@0PAU10@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z' matches no symbol in 00cbb2d0.obj; graded the largest function
+00cbb2d0   RELOCATION_MATCH PASS   std::__unguarded_insertion_sort_aux
+00cbdf70   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbdf70   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@00HV?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z -> 00cbdad0 labelled 'std::__introsort_loop<std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase>> *, std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase>>, int, CCompareString<CCountedPointer<CEntityScriptBindingBase>>>'
+00cbdf70   RELOCATION_MATCH PASS   _global::Sort_SElement12_00cbdf70
+
+WINS: 11
+  0043020a RELOCATION_MATCH["s"] LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@@Z
+  00781670 MATCH std::_Rb_tree<CUnprovenKey_00781670,CUnprovenValue_00781670,CUnprovenKeyOfValue_00781670,std::less<CUnprovenKey_00781670>,std::allocator<CUnprovenValue_00781670> >::?find@?$_Rb_tree@VCDefString@@U?$pair@$$CBVCDefString@@J@std@@
+  007e5d20 RELOCATION_MATCH CTCOracleMinigame::PlayGame
+  009d4a50 RELOCATION_MATCH CDefStringTable::WriteTable
+  009e6530 MATCH CCharString::??MCCharString@@QBE_NABV0@@Z
+  00ac99f0 RELOCATION_MATCH COptimisedPrimitive::?RemapGroups@COptimisedPrimitive@QuadricOptimiserInternals@@QAEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z
+  00b21850 RELOCATION_MATCH CEngineScreenEffectColourFilter::?TransformFromPosition@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@3@AAVC3DVector@@M@Z
+  00b21940 RELOCATION_MATCH CPSCSplineBase::?GetPointAtPos@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@MM@Z
+  00badb40 RELOCATION_MATCH CEngineInternalPrimitive2DClockSprite::?Update@CEngineInternalPrimitive2DClockSprite@@UAEXABVCEnginePrimitive@@K@Z
+  00cbb2d0 RELOCATION_MATCH std::??$__unguarded_insertion_sort_aux@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@U12@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@0PAU10@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z
+  00cbdf70 RELOCATION_MATCH _global::??$sort@PAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@0V?$CCompareString@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@@@Z

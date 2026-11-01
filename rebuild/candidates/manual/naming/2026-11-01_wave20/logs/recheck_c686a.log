@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00502170   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00502170   WARN RELOC_NAME: ?GetDefaultBankBlockSize@@YAKXZ -> 00997b30 labelled '_global::ReturnConst_2048_00997b30'
+00502170   RELOCATION_MATCH PASS   CWorldMap::CreateWorldLevelWad
+00780c80   WARN SHARED_HEADER_AVAILABLE CWorld
+00780c80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00780c80   WARN RELOC_NAME: ??$for_each@PAVCFirePoint@NFire@@U?$mem_fun_ref_t@XVCFirePoint@NFire@@@@@@YI?AU?$mem_fun_ref_t@XVCFirePoint@NFire@@@@PAVCFirePoint@NFire@@0U0@@Z -> 00781370 labelled 'std::for_each<NFire::CFirePoint *, std::mem_fun_ref_t<void, NFire::CFirePoint>>'
+00780c80   WARN RELOC_NAME: ?InitFirePoints@CTCFlammable@@AAEXXZ -> 007808b0 labelled 'CTCFlammable::InitialiseFirePoints'
+00780c80   RELOCATION_MATCH PASS   CTCFlammable::ExtinguishFire
+00780d20   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00780d20   WARN RELOC_NAME: ?InitFirePoints@CTCFlammable@@AAEXXZ -> 007808b0 labelled 'CTCFlammable::InitialiseFirePoints'
+00780d20   RELOCATION_MATCH PASS   CTCFlammable::OnInitialActivate
+007817f0   RELOCATION_MATCH PASS   CFlammableDef::GetEffectAtHelperPoint
+00781b90   RELOCATION_MATCH PASS   CFlammableDef::GetAllFireHelpers
+00a13c60   RELOCATION_MATCH PASS   C3DVector::Rotate
+00c632e0   MATCH            PASS   CEaxContext::SetRoomHF
+00c63350   MATCH            PASS   CEaxContext::SetRoomLF
+
+WINS: 8
+  00502170 RELOCATION_MATCH CWorldMap::CreateWorldLevelWad
+  00780c80 RELOCATION_MATCH CTCFlammable::ExtinguishFire
+  00780d20 RELOCATION_MATCH CTCFlammable::OnInitialActivate
+  007817f0 RELOCATION_MATCH CNamedValueTreeOwner::?GetEffectAtHelperPoint@CFlammableDef@@QBE_NABVCCharString@@AAJ@Z
+  00781b90 RELOCATION_MATCH _global::?GetAllFireHelpers@CFlammableDef@@QBEXAAV?$vector@VCDefString@@V?$allocator@VCDefString@@@std@@@std@@@Z
+  00a13c60 RELOCATION_MATCH C3DVector::Rotate
+  00c632e0 MATCH CLight::?SetRoomHF@CEaxContext@@QAEJKJ@Z
+  00c63350 MATCH CLight::?SetRoomLF@CEaxContext@@QAEJKJ@Z

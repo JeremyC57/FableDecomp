@@ -1,0 +1,66 @@
+addr       parity           behav  name
+004507fb   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@2@@Z -> 004507fb labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004507fb   RELOCATION_MATCH PASS   LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+0050f980   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+0050f980   RELOCATION_MATCH PASS   CLevelLoader::CObject::CLevelFiles::~CLevelFiles
+00518b80   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+00518b80   RELOCATION_MATCH PASS   _global::_Destroy_CLevelFiles
+0051af00   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+0051af00   RELOCATION_MATCH PASS   CCountedPointer<CLevelLoader::CObject>::DeleteData
+0067a7c0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@2@@Z -> 0067a7c0 labelled '_unattributed::FreeTree_CTreeOwner_0067a7c0'
+0067a7c0   RELOCATION_MATCH PASS   _unattributed::FreeTree_CTreeOwner_0067a7c0
+0067a840   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@2@@Z -> 0067a840 labelled '_unattributed::FreeTree_CTreeOwner_0067a840'
+0067a840   RELOCATION_MATCH PASS   _unattributed::FreeTree_CTreeOwner_0067a840
+006c2d40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006c2d40   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+006c2d40   WARN RELOC_NAME: ??$copy@U__false_type@std@@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@00ABU__false_type@0@H@Z -> 006c2b10 labelled 'std::__copy<CLevelLoader::CObject::CLevelFiles *, CLevelLoader::CObject::CLevelFiles *, int>'
+006c2d40   RELOCATION_MATCH PASS   std::vector<CLevelLoader::CObject::CLevelFiles>::operator=
+00b6d0b0   RELOCATION_MATCH PASS   std::vector<CTVertexLandscapeBackground>::_M_insert_overflow
+00be4380   RELOCATION_MATCH PASS   CRetailVector_SRecord24::PushBack_SRecord24_00be4380
+  WARN leaf 'TransformGeometry' matches no symbol in 00c6a080.obj; graded the largest function
+  WARN leaf 'TransformGeometry' matches no symbol in 00c6a080.obj; graded the largest function
+00c6a080   WARN RELOC_NAME: ?Blend@StageOne@@QAEXPAX0PBMPAMKK@Z -> 00c770b0 labelled 'FFT_ComputeComplexTransform'
+00c6a080   WARN RELOC_NAME: ?Process@StageOne@@QAEXPAXPBMPAMK@Z -> 00c76e90 labelled 'FFT_ComputeRealTransform'
+00c6a080   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingSkillScript::TransformGeometry
+
+WINS: 10
+  004507fb RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@_N@std@@@2@@Z
+  0050f980 RELOCATION_MATCH CLevelFiles::??1CLevelFiles@CObject@CLevelLoader@@QAE@XZ
+  00518b80 RELOCATION_MATCH _global::_Destroy_CLevelFiles
+  0051af00 RELOCATION_MATCH _global::?DeleteData@?$CCountedPointer@VCObject@CLevelLoader@@@@SIXPAX@Z
+  0067a7c0 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionAttitudeType@@@std@@@2@@Z
+  0067a840 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@M@std@@@2@@Z
+  006c2d40 RELOCATION_MATCH std::??4?$vector@VCLevelFiles@CObject@CLevelLoader@@V?$allocator@VCLevelFiles@CObject@CLevelLoader@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00b6d0b0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCTVertexLandscapeBackground@@V?$allocator@VCTVertexLandscapeBackground@@@std@@@std@@IAEXPAVCTVertexLandscapeBackground@@ABV3@ABU__false_type@2@I_N@Z
+  00be4380 RELOCATION_MATCH CRetailVector_SRecord24::?push_back@?$vector@VCTVertexLandscapeBackground@@V?$allocator@VCTVertexLandscapeBackground@@@std@@@std@@QAEXABVCTVertexLandscapeBackground@@@Z
+  00c6a080 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::TransformGeometry
+addr       parity           behav  name
+004da360   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@2@@Z -> 004da360 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+004da360   RELOCATION_MATCH PASS   LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+00513570   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00513570   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+00513570   MATCH            PASS   std::__uninitialized_fill_n<CLevelLoader::CObject::CLevelFiles*,unsigned int,CLevelLoader::CObject::CLevelFiles>
+005195b0   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+005195b0   RELOCATION_MATCH PASS   CLevelLoader::CObject::~CObject
+0051b620   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0051b620   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+0051b620   RELOCATION_MATCH PASS   CLevelFilesVector::PushBackEmpty
+0067a800   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@2@@Z -> 0067a800 labelled '_unattributed::FreeTree_CTreeOwner_0067a800'
+0067a800   RELOCATION_MATCH PASS   _unattributed::FreeTree_CTreeOwner_0067a800
+006c27a0   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+006c27a0   RELOCATION_MATCH PASS   CLevelLoader::CObject::SetAsLoading
+009fc550   WARN SHARED_HEADER_AVAILABLE CResourceList
+009fc550   RELOCATION_MATCH PASS   CResource::~CResource
+00b6d250   RELOCATION_MATCH PASS   std::vector<CTVertexLandscapeBackground>::_M_clear
+00c69fb0   RELOCATION_MATCH PASS   CReverbProcessor::ProcessCombs
+
+WINS: 9
+  004da360 RELOCATION_MATCH LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@W4EOpinionAttitudeType@@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@U?$less@W4EOpinionAttitudeType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionAttitudeType@@M@std@@@2@@Z
+  00513570 MATCH _global::??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@IABV123@ABU__false_type@0@@Z
+  005195b0 RELOCATION_MATCH CLevelLoader::CObject::??1CObject@CLevelLoader
+  0051b620 RELOCATION_MATCH CLevelFilesVector::PushBackEmpty
+  0067a800 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@W4EOpinionReactionType@@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@U?$_Select1st@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@3@U?$less@W4EOpinionReactionType@@@3@V?$allocator@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOpinionReactionType@@W4EOpinionTargetingConditionType@@@std@@@2@@Z
+  006c27a0 RELOCATION_MATCH SMappedRecords_006c27a0::?SetAsLoading@CObject@CLevelLoader@@QAEXABV?$vector@VCLevelFiles@CObject@CLevelLoader@@V?$allocator@VCLevelFiles@CObject@CLevelLoader@@@std@@@std@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@4@J@Z
+  009fc550 RELOCATION_MATCH CResource::??1CResource@@UAE@XZ
+  00b6d250 RELOCATION_MATCH _unattributed::?_M_clear@?$vector@VCTVertexLandscapeBackground@@V?$allocator@VCTVertexLandscapeBackground@@@std@@@std@@IAEXXZ
+  00c69fb0 RELOCATION_MATCH CReverbProcessor::?ProcessCombs@CReverbProcessor@@QAEXPBQBMKPAM@Z

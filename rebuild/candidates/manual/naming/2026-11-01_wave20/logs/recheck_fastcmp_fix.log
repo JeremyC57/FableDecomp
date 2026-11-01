@@ -1,0 +1,9 @@
+addr       parity           behav  name
+009e5120   RELOCATION_MATCH PASS   CSymbolMap::GetSymbolSLONG
+009e51c0   RELOCATION_MATCH PASS   CSymbolMap::SymbolExists
+00a6f290   RELOCATION_MATCH PASS   CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >::LowerBound
+
+WINS: 3
+  009e5120 RELOCATION_MATCH CSymbolMap::?GetSymbolSLONG@CSymbolMap@@QBEJABVCCharString@@@Z
+  009e51c0 RELOCATION_MATCH CSymbolMap::?SymbolExists@CSymbolMap@@QBE_NABVCCharString@@@Z
+  00a6f290 RELOCATION_MATCH CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >::?LowerBound@?$CVectorMap@VCCharString@@VC3DHelperPoint@@V?$CCompareString@VC3DHelperPoint@@@@@@QBEPBU?$pair@VCCharString@@VC3DHelperPoint@@@std@@ABVCCharString@@@Z

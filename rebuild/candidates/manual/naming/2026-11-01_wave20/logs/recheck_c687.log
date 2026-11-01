@@ -1,0 +1,58 @@
+addr       parity           behav  name
+00a3ef00   RELOCATION_MATCH PASS   CSoundManagerLH::CSoundManagerLH
+00aac580   WARN RELOC_NAME: ?TakeNextEmitterNumber@CSoundManagerLH@@QAEJXZ -> 00a3e420 labelled 'CSoundManagerLH::GetNextEmitterID_00a3e420'
+00aac580   RELOCATION_MATCH PASS   CSoundEmitterLH::CSoundEmitterLH
+00ad7550   RELOCATION_MATCH PASS   std::sort<QuadricOptimiserInternals::CGroup*,CompareWeight>
+00c08800   MATCH            PASS   CSoundSystemConfig::CSoundSystemConfig
+00c08d00   WARN RELOC_NAME: ?StoreSoundTempAllocator_00c166d0@@YIXPAVCAllocator@LHA@@@Z -> 00c166d0 labelled 'NUISystem::CHoverable::ProcessEvent'
+00c08d00   RELOCATION_MATCH PASS   SetSoundTempAllocator
+00c36c70   WARN RELOC_NAME: ?GetItem@CSequenceList@@QBEPAUCSequenceItem@@K@Z -> 00c463c0 labelled 'CWorldMap::GetLevelScriptName'
+00c36c70   RELOCATION_MATCH PASS   CAmbientScene::Lookup
+00c44ab0   WARN RELOC_NAME: ??0CSnapshotPartA@@QAE@XZ -> 00c203a0 labelled 'CMessageListOwner_00c203a0::CMessageListOwner_00c203a0'
+00c44ab0   WARN RELOC_NAME: ??0CSnapshotPartB@@QAE@XZ -> 00c20390 labelled 'SEventRecord::SEventRecord'
+00c44ab0   WARN RELOC_NAME: ?GetSnapshot@CInputSource@@QAEAAUSInputSnapshot@@AAU2@JJ@Z -> 00c383d0 labelled 'CRegistryLayer_00c383d0::Add'
+00c44ab0   WARN RELOC_NAME: ?GetPressed@SInputSnapshot@@QAEGJ@Z -> 00c27bc0 labelled 'CMaskedChickenSign::GetWordC'
+00c44ab0   WARN RELOC_NAME: ?Render@CCursorRenderer@@QAEXMG@Z -> 00c0b420 labelled 'CAudioParamBlock::GetGain'
+00c44ab0   RELOCATION_MATCH PASS   CMouseCursor::Initialize
+00c46da0   MATCH            PASS   SPosition2D::Add
+00c61c60   MATCH            PASS   CPKArray::GetCount
+00c73a00   WARN RELOC_NAME: ?Right@CString@@QBE?AV1@H@Z -> 00c0e0f0 labelled '_global::CShaderResource_Assign_Range'
+00c73a00   RELOCATION_MATCH PASS   ClassifyAudioExtension
+
+WINS: 10
+  00a3ef00 RELOCATION_MATCH CSoundManagerLH::??0CSoundManagerLH@@QAE@ABUCSoundManagerInit@@_N@Z
+  00aac580 RELOCATION_MATCH CSoundEmitterLH::CSoundEmitterLH
+  00ad7550 RELOCATION_MATCH _global::??$sort@PAVCGroup@COptimisedVertex@QuadricOptimiserInternals@@P6I_NABV123@0@Z@std@@YIXPAVCGroup@COptimisedVertex@QuadricOptimiserInternals@@0P6I_NABV123@1@Z@Z
+  00c08800 MATCH Init::??0CSoundSystemConfig@@QAE@XZ
+  00c08d00 RELOCATION_MATCH _global::?SetSoundTempAllocator_00c08d00@@YGXPAVCAllocator@LHA@@@Z
+  00c36c70 RELOCATION_MATCH _global::?Lookup@CAmbientScene@@QAEPAUCSequenceItem@@K@Z
+  00c44ab0 RELOCATION_MATCH CMouseCursor::Initialize
+  00c46da0 MATCH CQuadric::?Add@SPosition2D@@QAEXABUCIndexedValue@@@Z
+  00c61c60 MATCH _global::?GetCount@CPKArray@@QBEKXZ
+  00c73a00 RELOCATION_MATCH CString_00c73a00::?ClassifyAudioExtension@CString_00c73a00@@
+addr       parity           behav  name
+00aac530   RELOCATION_MATCH PASS   CSoundEmitterLH::CSoundEmitterLH
+00ad4e20   RELOCATION_MATCH PASS   std::vector<QuadricOptimiserInternals::CGroup>::_M_insert_overflow
+00c087c0   RELOCATION_MATCH PASS   CSoundSystemConfig::SetChannel
+00c08cf0   WARN RELOC_NAME: ?StoreSoundAllocator_00c16690@@YIXPAVCAllocator@LHA@@@Z -> 00c16690 labelled 'NUISystem::CHoverable::ProcessEvent'
+00c08cf0   RELOCATION_MATCH PASS   SetSoundAllocator
+00c08d10   WARN RELOC_NAME: ?StoreSoundPhysicalAllocator_00c166b0@@YIXPAVCAllocator@LHA@@@Z -> 00c166b0 labelled 'NUISystem::CHoverable::ProcessEvent'
+00c08d10   RELOCATION_MATCH PASS   SetSoundPhysicalAllocator
+00c44a90   RELOCATION_MATCH PASS   CAmbientEmitter::GetVolume
+00c44b50   RELOCATION_MATCH PASS   InputEvent_CheckKeyAndGetFrames
+00c61bc0   MATCH            PASS   CPKArray::GetCapacity
+00c61f60   WARN RELOC_NAME: ?GetScale@CPKScaleSource@@QAEMXZ -> 00c45940 labelled 'CAmbientCube::GetLevel'
+00c61f60   RELOCATION_MATCH PASS   CPKVoiceHandle::UpdateScaledParameter
+00ca6620   RELOCATION_MATCH PASS   CBaseRenderer::GetState
+
+WINS: 10
+  00aac530 RELOCATION_MATCH CSoundEmitterLH::??0CSoundEmitterLH
+  00ad4e20 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCGroup@COptimisedVertex@QuadricOptimiserInternals@@V?$allocator@
+  00c087c0 RELOCATION_MATCH CMainGameComponent::?SetChannel@CSoundSystemConfig@@QAEXK_N@Z
+  00c08cf0 RELOCATION_MATCH _global::?SetSoundAllocator_00c08cf0@@YGXPAVCAllocator@LHA@@@Z
+  00c08d10 RELOCATION_MATCH _global::?SetSoundPhysicalAllocator_00c08d10@@YGXPAVCAllocator@LHA@@@Z
+  00c44a90 RELOCATION_MATCH CMouseCursor::?GetVolume@CAmbientEmitter@@QBEMXZ
+  00c44b50 RELOCATION_MATCH _global::InputEvent_CheckKeyAndGetFrames
+  00c61bc0 MATCH _global::?GetCapacity@CPKArray@@QBEKXZ
+  00c61f60 RELOCATION_MATCH CPKVoiceHandle::?UpdateScaledParameter@CPKVoiceHandle@@
+  00ca6620 RELOCATION_MATCH CBaseRenderer::?GetState@CBaseRenderer@@

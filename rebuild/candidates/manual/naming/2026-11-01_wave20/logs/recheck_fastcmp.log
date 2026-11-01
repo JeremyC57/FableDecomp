@@ -1,0 +1,87 @@
+addr       parity           behav  name
+009e5120   RELOCATION_MATCH LINK_FAIL CSymbolMap::GetSymbolSLONG
+009e51c0   RELOCATION_MATCH LINK_FAIL CSymbolMap::SymbolExists
+009e67c0   RELOCATION_MATCH PASS   _global::_Push_heap
+009e6c80   RELOCATION_MATCH PASS   std::__unguarded_partition
+009e7b40   RELOCATION_MATCH PASS   std::__partial_sort
+00a6efd0   RELOCATION_MATCH PASS   std::__unguarded_linear_insert
+00a6f0f0   RELOCATION_MATCH PASS   _global::_Push_heap
+00a6f290   RELOCATION_MATCH LINK_FAIL CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >::LowerBound
+00a6f610   RELOCATION_MATCH PASS   std::__unguarded_partition
+00a6fa20   RELOCATION_MATCH PASS   SGI::AdjustHeap_string20_00a6fa20
+00a70f40   RELOCATION_MATCH PASS   std::__linear_insert
+00a72380   RELOCATION_MATCH PASS   std::__partial_sort
+00a730e0   RELOCATION_MATCH PASS   std::__introsort_loop
+00a747b0   RELOCATION_MATCH PASS   CVectorMap<CCharString,CNavLineMapValue,CCompareString<CNavLineMapValue> >::LowerBound
+00cb8960   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00cb8960   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cb8960   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase
+00cb8960   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cb8960   WARN SHARED_HEADER_AVAILABLE CEntityScriptBindingBase
+00cb8960   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb8960   WARN RELOC_NAME: ?SetKillRequested@CActiveEntityScriptBase@@QAEX_N@Z -> 00f359f0 labelled '_global::SetMember_byte0x28_00f359f0'
+00cb8960   RELOCATION_MATCH PASS   CScriptBase::OnScriptedEntityActivated
+00cba1f0   RELOCATION_MATCH PASS   CVectorMap<CCharString,CScriptBindingPtr,CCompareString<CScriptBindingPtr> >::LowerBound
+00cbac70   RELOCATION_MATCH PASS   _Push_heap<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>*,int,std::_Push_heap<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>*,int,std::pair<class_CCharString,class_CCountedPointer<class_CEntityScriptBindingBase>_>,CCompareString<CCountedPointer<CEntityScriptBindingBase>_>_>
+00cbc3c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbc3c0   RELOCATION_MATCH PASS   std::__linear_insert
+
+WINS: 15
+  009e67c0 RELOCATION_MATCH _global::_Push_heap
+  009e6c80 RELOCATION_MATCH std::??$__unguarded_partition@
+  009e7b40 RELOCATION_MATCH std::??$__partial_sort@
+  00a6efd0 RELOCATION_MATCH std::??$__unguarded_linear_insert@
+  00a6f0f0 RELOCATION_MATCH _global::_Push_heap
+  00a6f610 RELOCATION_MATCH std::??$__unguarded_partition@
+  00a6fa20 RELOCATION_MATCH SGI::AdjustHeap
+  00a70f40 RELOCATION_MATCH std::??$__linear_insert@
+  00a72380 RELOCATION_MATCH std::??$__partial_sort@
+  00a730e0 RELOCATION_MATCH std::??$__introsort_loop@
+  00a747b0 RELOCATION_MATCH CVectorMap<CCharString,CNavLineMapValue,CCompareString<CNavLineMapValue> >::LowerBound
+  00cb8960 RELOCATION_MATCH CScriptBase::OnScriptedEntityActivated
+  00cba1f0 RELOCATION_MATCH CVectorMap<CCharString,CScriptBindingPtr,CCompareString<CScriptBindingPtr> >::LowerBound
+  00cbac70 RELOCATION_MATCH _Push_heap<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>*,int,std::__push_heap
+  00cbc3c0 RELOCATION_MATCH std::??$__linear_insert@
+addr       parity           behav  name
+009e5170   RELOCATION_MATCH PASS   CSymbolMap::FindSymbol
+009e66f0   RELOCATION_MATCH PASS   std::__unguarded_linear_insert
+009e6910   RELOCATION_MATCH PASS   CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> >::LowerBound
+009e6db0   RELOCATION_MATCH PASS   std::__adjust_heap
+009e7d30   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@U12@JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@std@@YIXPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@00JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@Z -> 009e7d30 labelled 'std::__introsort_loop<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, std::pair<CCharString, CSymbolMap::CSymbolInfo>, long, CCompareString<CSymbolMap::CSymbolInfo>>'
+009e7d30   RELOCATION_MATCH PASS   std::__introsort_loop<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, std::pair<CCharString, CSymbolMap::CSymbolInfo>, long, CCompareString<CSymbolMap::CSymbolInfo>>
+00a6f070   RELOCATION_MATCH PASS   std::__unguarded_linear_insert
+00a6f1d0   RELOCATION_MATCH PASS   _global::_Push_heap
+00a6f2f0   RELOCATION_MATCH PASS   CVectorMap<CCharString, C3DDummyObject, CCompareString<C3DDummyObject>>::LowerBound
+00a6f6f0   RELOCATION_MATCH PASS   std::__unguarded_partition
+00a6fb40   RELOCATION_MATCH PASS   _global::_Adjust_heap
+00a72300   RELOCATION_MATCH PASS   std::__partial_sort
+00a72fa0   RELOCATION_MATCH PASS   std::__introsort_loop
+00a73db0   RELOCATION_MATCH PASS   CPhysicsMesh::CalculateNumberOfNavigationLineLevels
+00cb7d60   RELOCATION_MATCH PASS   CScriptManager::FindScriptBinding
+00cba190   RELOCATION_MATCH PASS   CVectorMap<CCharString,CScriptBindingPtr,CCompareString<CScriptBindingPtr> >::LowerBound
+00cba9b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cba9b0   RELOCATION_MATCH PASS   std::__unguarded_linear_insert
+00cbb860   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbb860   RELOCATION_MATCH PASS   std::__unguarded_partition<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >*,...,CCompareString>
+00cbd0f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbd0f0   RELOCATION_MATCH PASS   std::__partial_sort
+
+WINS: 18
+  009e5170 RELOCATION_MATCH CSymbolMap::?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
+  009e66f0 RELOCATION_MATCH std::??$__unguarded_linear_insert@
+  009e6910 RELOCATION_MATCH CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> >::LowerBound
+  009e6db0 RELOCATION_MATCH std::??$__adjust_heap@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@
+  009e7d30 RELOCATION_MATCH std::??$__introsort_loop@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@U12@JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@std@@YIXPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@00JV?$CCompareString@VCSymbolInfo@CSymbolMap@@@@@Z
+  00a6f070 RELOCATION_MATCH std::??$__unguarded_linear_insert@
+  00a6f1d0 RELOCATION_MATCH _global::_Push_heap
+  00a6f2f0 RELOCATION_MATCH CVectorMap::?LowerBound@?$CVectorMap@VCCharString@@VC3DDummyObject@@V?$CCompareString@VC3DDummyObject@@@@@@QBEPBU?$pair@VCCharString@@VC3DDummyObject@@@std@@ABVCCharString@@@Z
+  00a6f6f0 RELOCATION_MATCH std::??$__unguarded_partition@
+  00a6fb40 RELOCATION_MATCH _global::_Adjust_heap
+  00a72300 RELOCATION_MATCH std::??$__partial_sort@
+  00a72fa0 RELOCATION_MATCH std::??$__introsort_loop@
+  00a73db0 RELOCATION_MATCH CPhysicsMesh::CalculateNumberOfNavigationLineLevels
+  00cb7d60 RELOCATION_MATCH CScriptManager::FindScriptBinding
+  00cba190 RELOCATION_MATCH CVectorMap<CCharString,CScriptBindingPtr,CCompareString<CScriptBindingPtr> >::LowerBound
+  00cba9b0 RELOCATION_MATCH std::??$__unguarded_linear_insert@
+  00cbb860 RELOCATION_MATCH std::??$__unguarded_partition@
+  00cbd0f0 RELOCATION_MATCH std::??$__partial_sort@

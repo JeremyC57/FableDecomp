@@ -1,0 +1,10 @@
+item	address	spelling	evidence	decision (coordinator under the owner delegation 2026-11-01, "do what retail did")
+GDefStringTable family	013ca828	?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED)	94+ TUs spell ?g_DefStringTable@@3UCDefStringTable@@A and variants	KEEP the established spelling; a mechanical name-only family over those TUs is wave 21 scope 1
+vtable 0x012B1E24 class name	012b1e24	CSoundSystem	the ctor that stores it and the libpk CreateSoundSystem / CSoundSystemConfig family	ACCEPTED: CSoundSystem (CAudioOwner rows respelled in wave 21)
+CPKVoiceParams vs CSoundPlayParams_00c37840	00c10a30 00c62530 00c621b0	CPKVoiceParams	libpk voice-table family (CPKVoiceTable::Play 0x00C13140); 6 rows move together	ACCEPTED: CPKVoiceParams (wave 21)
+CDebugStream vs CString	00c29fc0	CDebugStream	the libpk error-macro stream	ACCEPTED: CDebugStream (wave 21)
+0x00AD3A10 two COMDAT spellings	00ad3a10	??0?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE@ABV01@@Z (the PDB set<unsigned long> copy ctor)	FableWin names only the set form; no _Rb_tree copy ctor in either PDB; the own TU emits both COMDATs with the same bytes	ACCEPTED: the PDB set form; the six callers binding the _Rb_tree form respelled name-only in wave 21
+0x0051B620 PushBackEmpty	0051b620	PushBackEmpty on the real vector model	the body is STLport's no-argument push_back(), unproven in the PDB	KEPT until proven
+?GetFramesRemaining@CPKArray@@QAEXK@Z	00c44b50	descriptive member moved with its class	libpk, no PDB	ACCEPTED (descriptive)
+queue spellings proven wrong	007808b0 00b21850 004bda30	?InitFirePoints@CTCFlammable@@AAEXXZ (private); TransformFromPosition has three parameters; GetAllHelperPointNames carries the NGraphicAppearance namespace	the PDB / the compiler Leaf	ACCEPTED: the chunk 686 queue rows are superseded (labels corrected by LABELS.tsv)
+libpk CHandleBasedMemoryPool copy	00c28690	-	wave 15 decision	DEFERRED (stands); 0x00440730 HOLD
