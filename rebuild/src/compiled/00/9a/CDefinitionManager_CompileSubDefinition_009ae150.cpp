@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
 };
-typedef void (*TErrorCallback)(CCharString*);
+typedef void (__fastcall* TErrorCallback)(const CCharString&);   // naming wave 17: the PDB callback type (was void (*)(CCharString*))
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CStringParserCommentBoundaries;
@@ -45,8 +45,8 @@ class CSymbolMap;
 class CDefinitionManager;
 class CPersistContext { public:
     unsigned char _body[0x2c];
-    CPersistContext(CStringParser* parser, TErrorCallback callback, bool isNew, CDefinitionManager* manager,
-                    CSymbolMap* symbols, CCharString* text);  // 0x009BADD0
+    CPersistContext(CStringParser& parser, TErrorCallback callback, bool isNew, const CDefinitionManager* manager,
+                    const CSymbolMap* symbols, CCharString* text);  // 0x009BADD0 (Ego_r signature; naming wave 17)
     ~CPersistContext();                                       // 0x009BBBF0
 };
 
@@ -173,7 +173,7 @@ void CDefinitionManager::CompileSubDefinition(CCharString text, const CCharStrin
     }
     if (subDef.Object) {
         CStringParser parser(text, ErrorCallback, "", 0);
-        CPersistContext context(&parser, ErrorCallback, isNew, this, PSymbolMap, &text);
+        CPersistContext context(parser, ErrorCallback, isNew, this, PSymbolMap, &text);
         subDef->Persist(context);
         subDef->Flags |= 5;
     }

@@ -5,6 +5,8 @@
 // Callees: CTCBase ctor 0x00686800, CWillButtonHelperTimer ctor 0x008EDFF0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90,
 //   LowerBound 0x0040F020 / 0x004365B0 (const), CCharString ctor/dtor 0x0099EBF0/0x0099EAE0, definition manager 0x0044C6B0 (__fastcall),
 //   GetDefIndex 0x009AD390, GetDef<CTurncoatSpellDef> 0x007C7720, CTCInventoryAbilities::GetAbilityLevel 0x005EDE93, __ftol2
+// Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
+//   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
 class CTCBase;
 class CThing;
 class CCharString { public:
@@ -70,9 +72,10 @@ struct CTCBaseModel {
     unsigned char _pad08[0x0c - 0x08];
     CTCBaseModel(CThing* owner);                        // 0x00686800
 };
+enum EHeroAbility { };                                   // Ego_r enum (enumerators: no ordinal source)
 struct CWillButtonHelperTimer {
     unsigned char _pad[0x34];
-    CWillButtonHelperTimer(long ability, CThing* owner);   // 0x008EDFF0
+    CWillButtonHelperTimer(EHeroAbility ability, CThing& owner);   // 0x008EDFF0
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -131,7 +134,7 @@ class CTCTurncoatSpell : public CTCBaseModel { public:
 };
 
 CTCTurncoatSpell::CTCTurncoatSpell(CThing* owner)
-    : CTCBaseModel(owner), Timer(5, ParentThing), Level(0), State(0), Caster(0), Counter(0), Counter2(0),
+    : CTCBaseModel(owner), Timer((EHeroAbility)5, *ParentThing), Level(0), State(0), Caster(0), Counter(0), Counter2(0),
       Creature3(0), Active(false), CooldownLeft(0), Cooldown(0)
 {
     if (ParentThing->HasTC(0xa7)) {

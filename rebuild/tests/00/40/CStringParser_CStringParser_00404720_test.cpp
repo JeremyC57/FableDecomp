@@ -36,5 +36,6 @@ int main()
           && p.Comments.Node != 0 && p.Comments.Node->Next == p.Comments.Node && p.Comments.Node->Prev == p.Comments.Node && p.Filename.PStringData == 0;
     CCharString empty; CStringParser q(empty, OnError, file, 0);
     if (g_initText != g_emptyLiteral_0129aaf4) ok = 0;
-    std::printf(ok ? "00404720_TEST PASS\n" : "00404720_TEST FAIL\n"); return ok ? 0 : 1;
+    // the row's PassPattern is STRINGPARSER_CTOR_OK (naming wave 17: the test printed only the generic line)
+    std::printf(ok ? "STRINGPARSER_CTOR_OK\n00404720_TEST PASS\n" : "00404720_TEST FAIL\n"); return ok ? 0 : 1;
 }

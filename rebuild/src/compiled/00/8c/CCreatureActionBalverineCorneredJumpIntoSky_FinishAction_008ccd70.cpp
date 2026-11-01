@@ -22,6 +22,9 @@
 //   out-only stand-in so VC7.1 keeps the def in ebp after the call (and the mode manager in its frame word). The lunge
 //   action takes PCreature through an inline `operator CThingCreatureBase*()` -- the creature is fetched BEFORE the
 //   target's GetPItem, which also gives retail's register map (direct GetPItem arguments put the mode manager in ebp).
+// Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+namespace NGraphicAppearance { class CTCGraphicAppearance; }
+using NGraphicAppearance::CTCGraphicAppearance;
 class CTCBase;
 class C3DVector { public:
     float X, Y, Z;
@@ -57,9 +60,13 @@ class CTCPhysicsBase { public:
     VF(76) VF(77) VF(78) VF(79) VF(80) VF(81) VF(82) VF(83)
     virtual void SetFlying(bool flying);                    // slot 84 (+0x150)
 };
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance {
+public:
     void SetAlpha(unsigned char alpha);                     // 0x004BFAC0
 };
+} // namespace NGraphicAppearance
+
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                                 // slot 1

@@ -13,6 +13,9 @@
 //   GetWorldSeed 0x0049D810, GFROR13 0x00497890 (__fastcall), CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout: action +0x08 PCreature, +0x74 combat TC pointer, +0x114 PProjectile, +0x12c long flag (retail bytes);
 //   creature +0x70 def, +0x90 player (signed char), +0x64 graphic appearance TC.
+// Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+namespace NGraphicAppearance { class CTCGraphicAppearance; }
+using NGraphicAppearance::CTCGraphicAppearance;
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
@@ -106,9 +109,13 @@ class CThing;
 class CTCCarrying { public:
     void AddThing(CThing* thing, long slot, bool now);       // 0x006A1F80
 };
-struct CTCGraphicAppearance {
-    void SetVisibleFlag(unsigned char flag);                 // 0x004BFAC0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance {
+public:
+    void SetAlpha(unsigned char alpha);                      // 0x004BFAC0 (was the stand-in SetVisibleFlag)
 };
+} // namespace NGraphicAppearance
+
 struct CTCWillPower {
     unsigned char _pad00[0x7c];
     long          Value;                                     // +0x7c
@@ -148,13 +155,13 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                               // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
     CBaseObject* GetPItem() const;                                // 0x00A01B50
-    void SetPItem(CThing* item);                             // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                             // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
-    CIntelligentPointerThing(CThing* item) { SetPItem(item); }
+    CIntelligentPointerThing(CThing* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
     {
-        SetPItem(((CThing*)other.GetPItem()));
+        SetPItem((CBaseObject*)(((CThing*)other.GetPItem())));
         return *this;
     }
 };
@@ -228,7 +235,7 @@ void CCreatureAction_TrollThrowProjectile::Initialise()
             carrying->AddThing(thing, slot, true);
         }
         ProjectileVisible = 0;
-        thing->PGraphicAppearance->SetVisibleFlag((unsigned char)ProjectileVisible);
+        thing->PGraphicAppearance->SetAlpha((unsigned char)ProjectileVisible);
     }
     CDefPointer<CWillPowerIndicatorDef> willPower;
     CDefClassBase* creatureDef = GetCreature()->PDef;

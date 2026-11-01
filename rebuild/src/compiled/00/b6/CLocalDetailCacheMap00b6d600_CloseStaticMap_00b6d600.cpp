@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B6D600, length 48 bytes.
 // Callees: CGPUScratchBufferTextureManager::FreeMemoryPage @ 0x00F37030. The chunk label is propagated; named by address. Shape: `this` in esi, the page loaded before the global, `ret`.
 class CGPUScratchBufferTextureManager { public:
-    void FreeMemoryPage(void* page);               // 0x00F37030
+    void FreeMemoryPage(long page);                // 0x00F37030 (?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z; naming wave 17: was void*)
 };
 struct SEngine_01436e98 {
     unsigned char                   _pad[0x3190];
@@ -12,7 +12,7 @@ extern SEngine_01436e98* g_pEngine_01436e98;      // 0x01436E98
 
 struct CLocalDetailCacheMap_00b6d600 {
     unsigned char _pad00[0x1d8];
-    void*         m_pMemoryPage;                   // +0x1d8
+    long          m_pMemoryPage;                   // +0x1d8 (the page index FreeMemoryPage takes)
     void CloseStaticMap();
 };
 

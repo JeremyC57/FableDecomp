@@ -1,5 +1,7 @@
-// CStringParser::CStringParser(const CCharString& text, void (*errorCallback)(CCharString*), const CCharString& filename, long baseLineOffset) -- build a parser over a CCharString
-// Leaf: ??0CStringParser
+// CStringParser::CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename, long baseLineOffset) -- build a parser over a CCharString
+// Leaf: ??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z
+// Naming wave 17: the callback is the __fastcall (const CCharString&) one its 33 callers name (wave 16 sp) and Init is Ego_r's
+//   ?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z (const char*); was void (*)(CCharString*) / char* -- name-only.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00404720, 117 bytes (`ret 10h`). Callees: CBase::CBase 0x0099A2D0, CCharString::CCharString
 // 0x0099E4B0 (Filename, TempCharString), malloc 0x00BFEA0E (the comment list's 16-byte head node), CCharString::operator=
 // 0x0099EFB0, CStringParser::Init(char*, callback, const CCharString&, long) 0x009B9530.
@@ -33,7 +35,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;                  // null means empty
     CCharString();                                 // 0x0099E4B0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0: share the other string's block
+    CCharString const& operator=(CCharString const&a0);   // 0x0099EFB0: share the other string's block
     char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->PData; }
 };
 
@@ -55,7 +57,7 @@ struct CCommentList {                              // STLport list<CStringParser
     }
 };
 
-typedef void (*StringParserErrorCallback)(CCharString*);
+typedef void (__fastcall* StringParserErrorCallback)(const CCharString&);
 
 class CStringParser : public CBase {               // vtable 0x0122D874
 public:
@@ -68,7 +70,7 @@ public:
     long                      CursorPos[3];        // +0x1c InQuotes, StringPos, Line
 
     CStringParser(const CCharString& text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);
-    void Init(char* text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
+    void Init(const char* text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
 };
 
 CStringParser::CStringParser(const CCharString& text, StringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset)

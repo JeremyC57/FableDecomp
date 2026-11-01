@@ -6,6 +6,9 @@
 // ecx thing, dl flag, `xor dl,dl`), CCombatActionBase::FinishAction @ 0x00859A20 (direct base call, last).
 // Shape: `this` rides in ebx and the PCreature address in edi; esi is pushed only inside the lookup block. Retail CCombatActionBase is
 // 0x114 bytes (the engine header is the PDB's 0x12c-byte layout), so `this` is modelled locally.
+// Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+namespace NGraphicAppearance { class CTCGraphicAppearance; }
+using NGraphicAppearance::CTCGraphicAppearance;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -19,7 +22,6 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCPhysicsBase;
-struct CTCGraphicAppearance;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
@@ -59,9 +61,13 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance {
+public:
     void SetAlpha(unsigned char alpha);     // 0x004BFAC0
 };
+} // namespace NGraphicAppearance
+
 struct CTCCreatureFlags9 {                  // the interface-9 component: one byte at +0x10 toggled by this action
     unsigned char _pad[0x10];
     unsigned char m_canBeTargeted;          // +0x10

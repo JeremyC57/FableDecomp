@@ -11,6 +11,8 @@
 // Layout: retail CTCWillLightning as the landed ~CTCWillLightning 0x007A07F0 (pack(1), PItemRemoved +0x11, m_lspDef +0x28,
 //   m_tTimer +0x2c, m_lbBeams +0x68); InitSound +0x90, StartCostingStamina +0x94, BeamsInitialised +0x95, LoopingSound
 //   +0x98, m_bPlayedSound +0xd8, m_OnhitEveryFrame +0xdc, m_CombatMultiplierTimer +0xe0.
+// Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
+//   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 class CTCBase;
 class CCharString { public:
@@ -103,18 +105,18 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CBaseObject* GetPItem() const;                           // 0x00A01B50
-    void SetPItem(CThing* item);                        // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                        // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() { }
-    CIntelligentPointer(CThing* item) { SetPItem(item); }
+    CIntelligentPointer(CThing* item) { SetPItem((CBaseObject*)item); }
 };
 struct CCreaturePointer : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
     CCreaturePointer() { }
-    CCreaturePointer(CThing* item) { SetPItem(item); }
-    CCreaturePointer& operator=(const CCreaturePointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CCreaturePointer(CThing* item) { SetPItem((CBaseObject*)item); }
+    CCreaturePointer& operator=(const CCreaturePointer& other) { SetPItem((CBaseObject*)(((CThing*)other.GetPItem()))); return *this; }
 };
 
 struct CDefNative {
@@ -156,18 +158,21 @@ bool CLightningSpellDef::GetSubDef(CEffectsDefPointer* out)
     }
     return false;
 }
+class CDefinitionManager { public:
+    long GetGlobalIndexFromClassIndex(CCharString const&a0, long a1) const;   // 0x009AD390 (Ego_r.pdb ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z)
+};
 #pragma auto_inline(on)
 class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-    long GetGlobalIndexFromClassIndex(const CCharString& className, long classIndex) const;   // 0x009AD390
     bool GetDef(long index, CLightningSpellDefPointer* out) const;   // 0x007A35D0
 };
 
+enum EHeroAbility { };                                   // Ego_r enum (enumerators: no ordinal source)
 struct CWillButtonHelperTimer {                         // retail 0x34 bytes
     unsigned char _pad00[0x2e];
     bool IsPlayer;                                      // +0x2e (descriptive)
     unsigned char _pad2f[0x34 - 0x2f];
-    CWillButtonHelperTimer(long ability, CThing* thing);   // 0x008EDFF0
+    CWillButtonHelperTimer(EHeroAbility ability, CThing& thing);   // 0x008EDFF0
 };
 struct CBeamList {
     struct node { node* next; node* prev; void* data; void* info; };
@@ -230,7 +235,7 @@ CTCWillLightning::CTCWillLightning(CThing* parent)
     , PItemRemoved(0)
     , PrimaryHandEffect(0)
     , SecondaryHandEffect(0)
-    , m_tTimer(11, ParentThing)
+    , m_tTimer((EHeroAbility)11, *ParentThing)
     , StartCostingStamina(false)
     , LoopingSound(g_InvalidSoundHandle)
     , m_OnhitEveryFrame(0)
@@ -245,7 +250,7 @@ CTCWillLightning::CTCWillLightning(CThing* parent)
     long index;
     {
         CCharString defName("SPECIAL_ABILITIES_LIGHTNING_SPELL_DEF");
-        index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(defName, 1);
+        index = ((CDefinitionManager*)&(CGameDefinitionManager::Get()))->GetGlobalIndexFromClassIndex(defName, 1);
     }
     CGameDefinitionManager::Get().GetDef(index, &m_lspDef);
     if (ParentThing->HasTC(0x10)) {

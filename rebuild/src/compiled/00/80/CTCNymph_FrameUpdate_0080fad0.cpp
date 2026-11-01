@@ -11,6 +11,9 @@
 // Layout: PTarget +0x68 (retail; Ego_r.pdb CTCNymph is 0x74, retail 0x70 with the narrower spline vector).
 // Shape: both CIntelligentPointer temporaries are named block locals -- the targeting one so operator= gets the local's
 //   address (a temporary passes the ctor's eax), the POldEffect reset one so the two destructor calls tail-merge as retail.
+// Naming wave 17: CTCGraphicAppearance is NGraphicAppearance::CTCGraphicAppearance (Ego_r ?SetAlpha@CTCGraphicAppearance@NGraphicAppearance@@QAEXE@Z; a class) -- the local model moved into the namespace (name-only).
+namespace NGraphicAppearance { class CTCGraphicAppearance; }
+using NGraphicAppearance::CTCGraphicAppearance;
 #define CTCBase CTCBaseLayout
 #include "engine/CTCBase.h"
 #undef CTCBase
@@ -108,7 +111,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                             // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     struct CPhysicsBody* PhysicsBody;                       // +0x60
-    struct CTCGraphicAppearance* GraphicAppearance;         // +0x64
+    CTCGraphicAppearance* GraphicAppearance;         // +0x64
     unsigned char _pad68[0x70 - 0x68];
     CDefClassBase* PDef;                                    // +0x70
     unsigned char _pad74[0x91 - 0x74];
@@ -147,11 +150,15 @@ bool CDefClassBase::GetSubDef(CDefPointer<const CSpecialEffectsDef>* out) const
 
 
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance {
+public:
     void SetAlpha(unsigned char alpha);                     // 0x004BFAC0
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
                         CRightHandedSet* orientation, float scale);   // 0x004C08C0
 };
+} // namespace NGraphicAppearance
+
 inline bool CThing::GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
 {
     return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -169,15 +176,15 @@ struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
     CBaseObject* GetPItem() const;                               // 0x00A01B50
-    void SetPItem(CThing* item);                            // 0x00A01B90
+    void SetPItem(CBaseObject*a0);                            // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointer(T* item) { SetPItem(item); }
+    CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
         CThing* item = ((CThing*)other.GetPItem());
-        SetPItem(item);
+        SetPItem((CBaseObject*)item);
         return *this;
     }
     __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }

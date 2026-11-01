@@ -16,6 +16,8 @@
 // pads). Def +0x3c / +0x44 and CTCHeroStats +0x58 names inferred. No engine header.
 // Layout (supersedes any local-model note above): engine/CTCHeroStats.h now has the retail STLport 4.6 offsets, so the data
 //   members come from the shared header; the class below keeps only the declarations this body needs.
+// Naming wave 17: the CWillButtonHelperTimer ctor is c672's (EHeroAbility, CThing&) one (??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z);
+//   the ability is a cast of the landed value (no enumerator ordinal source) -- name-only.
 #define CTCHeroStats CTCHeroStatsDonor
 #include "engine/CTCHeroStats.h"
 #undef CTCHeroStats
@@ -115,8 +117,9 @@ class CTCHeroStats : public CTCHeroStatsDonor {
  public:                               // interface 4
 };
 
+enum EHeroAbility { };                                   // Ego_r enum (enumerators: no ordinal source)
 struct CWillButtonHelperTimer {                     // retail 0x34 bytes
-    CWillButtonHelperTimer(long ability, CThing* creature);   // 0x008EDFF0
+    CWillButtonHelperTimer(EHeroAbility ability, CThing& creature);   // 0x008EDFF0
     unsigned char _data[0x34];
 };
 
@@ -157,7 +160,7 @@ public:
 #pragma pack(pop)
 
 CTCFireballSpell::CTCFireballSpell(CThing& parent)
-    : CTCBase(&parent), Timer(0x10, ParentThing), InitLoopingSound(0), ImmediateCastMode(false), OneAnimCastMode(false),
+    : CTCBase(&parent), Timer((EHeroAbility)0x10, *ParentThing), InitLoopingSound(0), ImmediateCastMode(false), OneAnimCastMode(false),
       PTarget(0), PItemRemoved(0), WeaponState(0), LeftHandAnim(true), FireballAttachmentName(""), StartEffect(true),
       MaxLevelAllowableByStamina(0), ReleaseDelayFrameCount(0), SpellFinished(false)
 {
