@@ -1,5 +1,6 @@
 // NParticleEngine::CPSCUpdateNormal::CPSCUpdateNormal() -- the particle "normal update" component: CPSCBase base, packed update flags (fade-out at 1000, particle life / system alpha fade / all attractors on), decal emitter name, the default lifetimes, unit scales, a Z rotation axis and the empty decal-emitter list
 // Leaf: ??0CPSCUpdateNormal
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0C9C0, 195 bytes. The catalog label "CHeroStatsDef" is propagated: the body stores
 //   vtable 0x0129FC1C, which rtti-vtables.tsv names NParticleEngine::CPSCUpdateNormal, over the CPSCBase ctor.
 // Callees: NParticleEngine::CPSCBase::CPSCBase @ 0x00AF2620, CCharString::CCharString() @ 0x0099E4B0, malloc @ 0x00BFEA0E
@@ -14,7 +15,9 @@
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
     CBaseClassNonCopyable();                       // 0x0099A2F0
 };
 

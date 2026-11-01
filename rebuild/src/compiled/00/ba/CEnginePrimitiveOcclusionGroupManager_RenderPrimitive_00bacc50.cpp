@@ -1,4 +1,5 @@
 // CEnginePrimitiveOcclusionGroupManager::RenderPrimitive -- first render lazily creates current-layer occlusion info unless disabled, advances frame count, queues a bounding-box subprimitive. Retail00bacc50 body184bytes ret12,8int3 padding. Calls globalnew00bfea1a,infoctor00b2fa90,poolnew00beb540,subbasector0099a2f0,sortedqueue00b84720. RTTI sub012a3e84=CEngineSubPrimitiveBoundingBox. CurrentOcclusionLayer is shareddata+78, not renderer sceneindex. Native base OcclusionInfo[2]+48,FramesRendered+60; PDB donor queryInfo36 versus retail32 from CArray16/12. Shared flattened headers used with narrow methods/accessors for hiddenbase slots.
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 #ifndef _MSC_VER
 #define __declspec(x)
 #define __forceinline inline
@@ -33,7 +34,7 @@ static unsigned long PrimitiveFlags(CEngineInternalPrimitiveBase& p){return p.En
 // PDB CEnginePrimitiveRendererSharedData CurrentOcclusionLayer+78; no shared header exists.
 struct CEnginePrimitiveRendererSharedData {unsigned char InterpolationAndLoadState[0x78];long CurrentOcclusionLayer;};
 extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData; //01436e78
-struct CBaseClassNonCopyable {virtual ~CBaseClassNonCopyable();protected:CBaseClassNonCopyable();}; //0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
+struct CBaseClassNonCopyable {protected: virtual ~CBaseClassNonCopyable(); public:protected:CBaseClassNonCopyable();}; //0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
 struct CEngineSubPrimitiveBoundingBox;
 struct __declspec(novtable) CSubPrimitiveBase:CBaseClassNonCopyable {
  unsigned long RenderFlags;unsigned char Alpha;CEngineInternalPrimitiveBase* Parent;CSubPrimitiveBase* NextSubPrimitive;CEnginePrimitiveOcclusionGroupManager* Manager;

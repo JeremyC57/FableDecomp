@@ -5,13 +5,16 @@
 // Shape: the CShaderDataBank::NotifyEntryAdded twin (0x00A623D0) with the 0x18-byte entry constructor inlined (base ctor,
 //   vtable 0x0129D5B4, zeroed CCountedPointer<CFontBank>, then bank/index/type). Retail Fonts +0x178 (base 0x164 + StateBlock).
 // Leaf: ?NotifyEntryAdded@CStreamingFontDataBank
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 template <class T> class CArray;
 class CStreamingFontDataBank;
 struct __true_type { __true_type() { } };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
+    protected:
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300
+    public:
 };
 class CCPPointerInfo;
 class CFontBank;

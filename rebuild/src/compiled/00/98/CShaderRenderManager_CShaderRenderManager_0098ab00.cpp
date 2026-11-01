@@ -1,6 +1,7 @@
 // CShaderRenderManager::CShaderRenderManager() -- construct the shader render manager: empty constant-layout list, null layout, light pool, empty light/resource/constant arrays and an empty constant-name index
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0098AB00, 232 bytes (+ int3 padding), vtable 0x0129A080 (RTTI CShaderRenderManager).
 // Leaf: ??0CShaderRenderManager
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0, CVertexShaderConstantLayout::CVertexShaderConstantLayout()
 //   @ 0x0098D490, CSimpleMemoryPool::CSimpleMemoryPool(unsigned long, unsigned long) @ 0x00A5C570,
 //   CPixelShader::CPixelShader() @ 0x00A5EC00 (stores vtable 0x0129A054 = RTTI CPixelShader; the manifest label
@@ -22,7 +23,9 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                                 // 0x0099A2F0
+    protected:
     virtual ~CBaseClassNonCopyable();                        // 0x0099A300
+    public:
 };
 
 template <class T> struct CAllocator {                      // STLport allocator<T>: empty

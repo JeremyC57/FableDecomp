@@ -2,6 +2,7 @@
 // Copy constructor: the C2DBoxI model DECLARES its memberwise copy constructor (retail's header class has one); with the
 // implicit copy VC7.1 schedules the copies differently (found by the retry-10 copy-constructor sweep).
 // Leaf: ??0CHeightMap
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F63C0, 229 bytes, `ret 0Ch`; built by 0x0081ED90 (`push 214h`) from the owning
 //   CMap's size words (+0x1d14/+0x1d18) and its world-seed pointer (+0x24), passed by address.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, _allmul @ 0x00BFEB50 (the 64-bit cell count),
@@ -17,7 +18,9 @@ class CWorld;
 class CMap;
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
     CBaseClassNonCopyable();                       // 0x0099A2F0
 };
 

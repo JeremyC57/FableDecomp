@@ -1,4 +1,5 @@
 // CANavQuadTreeNode::CANavQuadTreeNode(const C2DVector&, unsigned char, unsigned char) -- base, vtable, position, level, layer, leaf, not blocked
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A76370, length 55 bytes (+ int3 padding).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0.
 // Vtable 0x0129CBBC CANavQuadTreeNode (rtti-vtables.tsv). Members from engine/CANavQuadTreeNode.h:
@@ -12,7 +13,9 @@ class C2DVector { public:
 };
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
     CBaseClassNonCopyable();                    // 0x0099A2F0
 };
 

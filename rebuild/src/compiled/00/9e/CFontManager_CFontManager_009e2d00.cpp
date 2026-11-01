@@ -1,4 +1,5 @@
 // CFontManager::~CFontManager() -- close bank, delete vertex buffers, and release four counted owners.
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail009e2d00 length296. No manager header; PDB four counted pointers at4/C/14/1C,
 // native vector24 descriptor12 vs donor16. Actual bank/buffer headers retained.
 // Counted record is refs0/free-fastcall4/data8, NOT intelligent Object0/refs4.
@@ -22,7 +23,7 @@ struct CFontBufferArray {
 };
 // Native RTTI129BA38: CFontManager -> CBaseClassNonCopyable -> CBaseClass.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CBaseClassNonCopyable:CBaseClass {virtual ~CBaseClassNonCopyable();}; //0099A300
+struct CBaseClassNonCopyable:CBaseClass {protected: virtual ~CBaseClassNonCopyable(); public:}; //0099A300
 class CFontManager:public CBaseClassNonCopyable { public:
  CFontManager(const CCharString&,const CCharString&); //fablewin124255,030A2F20
  CFontCountedPointer<CFontDataBank> PFontDataBank;

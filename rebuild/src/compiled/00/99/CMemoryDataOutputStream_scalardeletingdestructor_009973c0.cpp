@@ -1,5 +1,6 @@
 // CMemoryDataOutputStream::`scalar deleting destructor'(unsigned int) -- free the data buffer, destroy the inherited NewLine string, the inlined CDataStream destructor stores its vtable and calls the root base destructor, flag-tested delete
 // Leaf: ??_GCMemoryDataOutputStream@@UAEPAXI@Z
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009973C0, 68 bytes, thiscall, `ret 4`.
 // Identity: slot 0 of the CMemoryDataOutputStream vtable 0x0129A788 (rtti-vtables.tsv); the second vptr store 0x0129A69C is
 //   CDataStream's (its own deleting destructor 0x00996EA0 stores it before the same base call). The catalog label
@@ -27,7 +28,9 @@ public:
 };
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();                    // 0x0099A300
+    public:
 };
 class CDataStream : public CBaseClassNonCopyable {      // vtable 0x0129A69C
 public:

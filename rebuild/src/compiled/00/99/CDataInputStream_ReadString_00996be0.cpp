@@ -1,5 +1,6 @@
 // CDataInputStream::ReadString(long length) -- read `length` bytes into a temporary memory output stream, NUL-terminate it, and return its contents as a CCharString
 // Leaf: ReadString
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00996BE0, length 219 bytes (+ int3 padding), `ret 8` (hidden result,
 // length).
 // Callees: CBaseClassNonCopyable ctor @ 0x0099A2F0 and dtor @ 0x0099A300, CCharString::CCharString(const char*, long)
@@ -31,7 +32,9 @@ class CCharString { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
     CBaseClassNonCopyable();                      // 0x0099A2F0
+    protected:
     virtual ~CBaseClassNonCopyable();             // 0x0099A300
+    public:
 };
 struct CDataStream : CBaseClassNonCopyable {      // vtable 0x0129A69C
     virtual ~CDataStream() { }

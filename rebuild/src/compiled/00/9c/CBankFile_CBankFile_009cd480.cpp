@@ -17,10 +17,13 @@
 //        node malloc'd, count zeroed, then _M_empty_initialize re-reading the header), the vector map and block order;
 //        the remaining scalars are body assignments.
 // Leaf: ??0CBankFile
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
     CBaseClassNonCopyable();                         // 0x0099A2F0
 };
 

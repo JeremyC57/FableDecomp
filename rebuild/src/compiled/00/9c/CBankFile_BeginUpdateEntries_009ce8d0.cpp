@@ -1,4 +1,5 @@
 // CBankFile::BeginUpdateEntries() -- start an update pass: a retail-mode bank reopens its file for writing at the end, pads it to the bank alignment and marks it solid; otherwise open the side-by-side ".cks" checksum cache (once) and write the file information block
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CE8D0, 407 bytes, no arguments.
 // Callees: operator new @ 0x00BFEA1A, CBaseClassNonCopyable ctor @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0,
 //          CCountedPointer<CDiskFileWin32>::Reset @ 0x009D1EE0, the file's virtual slots 1 (+0x04 Open(name, access, flags)),
@@ -18,7 +19,9 @@ typedef unsigned short wchar16;
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
     CBaseClassNonCopyable();                       // 0x0099A2F0
 };
 

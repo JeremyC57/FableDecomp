@@ -1,5 +1,6 @@
 // CEngineSkyRenderer::BuildStarFieldVB() -- loads the star-field vertex buffer from its cache file (star count, then StarCount 24-byte vertices)
 // Leaf: BuildStarFieldVB
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B61FF0, 165 bytes. Label correction: the catalog calls this row
 // "CTCHeroRangedAttacks::ContinueAimingRangedWeapon" (propagated; that member is 0x00789FD0) and the landed
 // CEngineSkyRenderer::BuildBuffers (0x00B620A0, its only caller) names it "BuildSolidBaseBand"; the body reads
@@ -32,7 +33,9 @@ class CASuspendableProcess;
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();                // 0x0099A300
+    public:
 };
 
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:      // vtable 0x0122D06C

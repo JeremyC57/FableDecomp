@@ -1,4 +1,5 @@
 // CAInputProcess::`scalar deleting destructor'(unsigned int) -- unregister from the manager, ~CBaseClass, optional delete
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0D410, length 65 bytes (+ int3 padding).
 // Callees: this class's virtual slot 3 through the vtable constant (`call [0129CA1Ch]`: a virtual
 // call on `this` from an inline helper, bound to the vtable the destructor just stored),
@@ -17,7 +18,9 @@ class CInputProcessManager { public:
 };
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();           // slot 0; 0x0099A300 (called directly from the derived dtor)
+    public:
 };
 
 class CAInputProcess : public CBaseClassNonCopyable { public:

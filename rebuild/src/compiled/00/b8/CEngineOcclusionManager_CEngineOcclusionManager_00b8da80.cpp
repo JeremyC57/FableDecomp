@@ -1,5 +1,6 @@
 // CEngineOcclusionManager::~CEngineOcclusionManager() -- release the flare-test vertex shader's data, then destroy the members in reverse: the occlusion-box pixel/vertex shaders, the unit-box index and vertex buffers, the flare-test shader, the flare vertex-buffer map (range destroy + free), the four handle/flare arrays (free only), then the CEngineComponent base
 // Leaf: ??1CEngineOcclusionManager
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8DA80, length 352 bytes (with int3 padding; body 0x158).
 // Label correction: catalogued "~CEnginePrimitiveManagerParticleLineGroup" (propagated); the vtable store 0x012A3CD0 is
 //   CEngineOcclusionManager (rtti-vtables.tsv, slot 1 0x00B8DBE0) and the single caller is its deleting destructor @ 0x00B8F933.
@@ -18,7 +19,9 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();                   // 0x0099A300
+    public:
 };
 
 struct CPixelShaderData {

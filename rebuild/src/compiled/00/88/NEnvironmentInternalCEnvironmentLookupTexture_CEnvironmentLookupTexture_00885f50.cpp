@@ -1,5 +1,6 @@
 // NEnvironmentInternal::CEnvironmentLookupTexture::CEnvironmentLookupTexture(CWideString filename) -- load the environment colour lookup texture: read the TGA header for the width and height, load the bitmap into an A8R8G8B8 image surface and copy its pixels into a freshly allocated 32-bit buffer
 // Leaf: ??0CEnvironmentLookupTexture
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00885F50, length 384 bytes (body 0x178), `ret 4`, /GS (cookie 0x0139C8A8, check
 //   0x00BFE9F9).
@@ -24,7 +25,9 @@ public:
 class CBaseClassNonCopyable {
 public:
     CBaseClassNonCopyable();                        // 0x0099A2F0
+    protected:
     virtual ~CBaseClassNonCopyable();               // 0x0099A300
+    public:
 };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 class CASuspendableProcess;

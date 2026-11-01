@@ -1,4 +1,5 @@
 // CAInputProcess::CAInputProcess() -- base, null manager, this vtable, empty list position
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0D290, length 31 bytes (+ int3 padding).
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0 (vtable 0x0129A7C4).
 // Vtable 0x0129CA10 CAInputProcess (rtti-vtables.tsv). Members from engine/CAInputProcess.h:
@@ -10,7 +11,9 @@ class CInputProcessManager;
 class CBaseClass;
 
 struct CBaseClassNonCopyable {
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
     CBaseClassNonCopyable();                    // 0x0099A2F0
 };
 

@@ -13,6 +13,7 @@
 // Model: engine/CFileDataInputStream.h is a data-only struct (File +0x18, Buffer +0x1C, BufferSize +0x20 --
 // the same offsets as here); a constructor needs the class hierarchy itself, hence the local model.
 // Leaf: ??0CFileDataInputStream
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 
 void* __cdecl operator new[](unsigned int size);         // 0x00BFEB22 (MSVCR71 import thunk)
 void __cdecl operator delete[](void* block);              // 0x00BFEB1C
@@ -31,7 +32,9 @@ class CBaseClassNonCopyable
 {
 public:
     CBaseClassNonCopyable();                              // 0x0099A2F0
+    protected:
     virtual ~CBaseClassNonCopyable();
+    public:
 };
 
 class __declspec(novtable) CDataInputStream : public CBaseClassNonCopyable

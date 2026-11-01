@@ -1,5 +1,6 @@
 // CShaderRenderManager::~CShaderRenderManager() -- uninitialise, then destroy the members in reverse: bone matrices, pixel-shader constant table and names, the shader resource managers, the current pixel shader (releasing its data), the light attenuation / global arrays, the light pool, the null constant layout and the constant-layout list, then the CBaseClassNonCopyable base
 // Leaf: ??1CShaderRenderManager
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0098ABF0, 246 bytes, `ret`. Called from the deleting destructor 0x0098DE90 (CShaderRenderManager
 //   vtable 0x0129A080 slot 0, rtti-vtables.tsv).
 // Label correction: catalogued as ~CPatchTesselationEdgeStrip (propagated); the vtable store and the deleting destructor pin it.
@@ -21,7 +22,9 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();                   // 0x0099A300
+    public:
 };
 
 template <class T> struct CPODArray {                   // CArray<T> of a trivial T, 12 bytes

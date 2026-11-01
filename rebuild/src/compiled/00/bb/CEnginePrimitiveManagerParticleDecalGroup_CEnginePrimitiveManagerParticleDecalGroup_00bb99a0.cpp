@@ -1,5 +1,6 @@
 // CEnginePrimitiveManagerParticleDecalGroup::~CEnginePrimitiveManagerParticleDecalGroup() -- compiler-generated destructor: the mesh and landscape index/vertex buffers released, the five pixel shaders, the three stencil vertex shaders and the two CVertexShader[3] tables released (reverse order), then the CBaseClassNonCopyable root
 // Leaf: ??1CEnginePrimitiveManagerParticleDecalGroup
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB99A0, length 427 bytes (tail `jmp` to the base destructor).
 // Callees: CIndexBuffer::Uninitialise @ 0x00AC1EE0, CVertexBufferWin32::Uninitialise @ 0x00A63200, ~CBaseClassNonCopyable
 //   @ 0x0099A300 (vertex buffer base and the class root). Vtables: 0x0129EF2C CIndexBuffer, 0x0129B860 CMovableResource,
@@ -13,7 +14,9 @@ extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();                   // 0x0099A300
+    public:
 };
 
 struct CPixelShaderData {

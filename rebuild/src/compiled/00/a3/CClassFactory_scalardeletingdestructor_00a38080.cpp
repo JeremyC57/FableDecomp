@@ -1,5 +1,6 @@
 // CClassFactory::`scalar deleting destructor'(unsigned int flags) -- destroy the class list and the class-type table, run the CBaseClassNonCopyable destructor, free when flags & 1
 // Leaf: ??_GCClassFactory@@
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe @ 0x00A38080, 78 bytes (+ int3 padding), thiscall `ret 4`. Slot 0 of the CClassFactory vtable
 //   0x0129CF70 (rtti-vtables.tsv; the only reference to the function).
 // Callees: list<CClass*>::~list 0x00A376A0, __destroy_aux<CClassTypeInfo*> 0x00A37AF0 (landed separately; given its real
@@ -99,7 +100,9 @@ void __cdecl operator delete(void* block);                   // MSVCR71 import t
 class CBaseClassNonCopyable : public CBaseClass {
 public:
     CBaseClassNonCopyable();                                // 0x0099A2F0
+    protected:
     virtual ~CBaseClassNonCopyable();                       // 0x0099A300
+    public:
 };
 
 namespace std {

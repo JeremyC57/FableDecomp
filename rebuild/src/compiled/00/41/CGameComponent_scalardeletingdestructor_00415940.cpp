@@ -1,5 +1,6 @@
 // CGameComponent::`scalar deleting destructor'(unsigned int) -- reset both vptrs, run ~CBaseClassNonCopyable, free when bit 0 is set
 // Leaf: ??_GCGameComponent@@UAEPAXI@Z
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe @ 0x00415940, 43 bytes, `ret 4`; slot 0 of vtable 0x0122ECB0, whose COL (0x0132CFC8) names
 // .?AVCGameComponent@@ with bases CBaseClassNonCopyable : CBaseClass at +0 and CDeviceResetCallback at +4. Catalog label
 // CLandscapeBackgroundPatch::`vector_deleting_destructor' is wrong (no array path). Body: the inline user destructor
@@ -13,7 +14,9 @@
 class CGame;
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();                    // 0x0099A300
+    public:
 };
 class CDeviceResetCallback {
 public:

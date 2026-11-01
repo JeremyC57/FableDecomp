@@ -1,5 +1,6 @@
 // CNavQuadTree::~CNavQuadTree() -- free the quad-tree nodes, then tear down the navigation containers in reverse declaration order and the CBaseClassNonCopyable base
 // Leaf: ??1CNavQuadTree
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7A7F0, 212 bytes (+ int3 padding). Vtable 0x0129DE64 (CNavQuadTree, RTTI); called
 //   only from the scalar deleting destructor 0x00A85E20 (slot 0). The catalogued name "~CPatchTesselationEdgeStrip" is a
 //   propagated label.
@@ -20,7 +21,9 @@ struct __false_type { __false_type() {} };
 
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();               // 0x0099A300
+    public:
 };
 
 struct CNavigationLayer;                            // CNavQuadTree::CNavigationLayer (non-trivial destructor)

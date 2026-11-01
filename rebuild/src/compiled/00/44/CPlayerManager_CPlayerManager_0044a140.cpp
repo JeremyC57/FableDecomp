@@ -1,5 +1,6 @@
 // CPlayerManager::~CPlayerManager() -- destroy the players, then the hero-swap script names and the player list, then the non-copyable base
 // Leaf: ??1CPlayerManager@@UAE@XZ
+// Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe @ 0x0044A140, 88 bytes, plain `ret` via a tail `jmp` to ~CBaseClassNonCopyable (0x0099A300); one
 // caller 0x0044C033 (the deleting destructor). Catalog label CPatchTesselationEdgeStrip::~CPatchTesselationEdgeStrip is
 // wrong: the vptr stored first is 0x01231CD0, whose COL names .?AVCPlayerManager@@ (: CBaseClassNonCopyable : CBaseClass).
@@ -42,7 +43,9 @@ public:
 };
 class CBaseClassNonCopyable {
 public:
+    protected:
     virtual ~CBaseClassNonCopyable();                    // 0x0099A300
+    public:
 };
 class CMainGameComponent;
 class CGameDefinitionManager;
