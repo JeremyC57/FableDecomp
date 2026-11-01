@@ -59994,9 +59994,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed7db0'
-        Module = 'CVtable_012f3494'
-        Source = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7db0.cpp'
-        TestSource = '00/ed/CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7db0_test.cpp'
+        Module = 'NScript::CV_TalentlessBardScript::CTB_Bard'
+        Source = '00/ed/NScriptCVTalentlessBardScriptCTBBard_scalardeletingdestructor_00ed7db0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBard_scalardeletingdestructor_00ed7db0_test.cpp'
         PassPattern = 'CLandscapeBackgroundPatch_00ed7db0_TEST PASS'
     }
     [pscustomobject]@{
