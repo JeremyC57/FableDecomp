@@ -1,0 +1,64 @@
+addr       parity           behav  name
+008e8a90   WARN RELOC_NAME: ??RCIsImposterHit@?A0x7bbe917f@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z -> 008e8a10 labelled 'CAIStateGroup_VersusScorpionKing::FindChargeEvent'
+008e8a90   RELOCATION_MATCH PASS   std::count_if
+009789b0   RELOCATION_MATCH PASS   _global::std_sort_SiftUp_HeuristicBitch
+00978a80   RELOCATION_MATCH PASS   std::__unguarded_partition
+00978c50   WARN RELOC_NAME: ??$__unguarded_linear_insert@PAPAVCThing@@PAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x9bd405d0@@@std@@YIXPAPAVCThing@@PAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x9bd405d0@@@Z -> 009789b0 labelled '_global::std_sort_SiftUp_HeuristicBitch'
+00978c50   RELOCATION_MATCH PASS   std::__linear_insert
+00978da0   RELOCATION_MATCH PASS   std::__insertion_sort
+00979370   RELOCATION_MATCH PASS   std::sort_heap
+00979760   RELOCATION_MATCH PASS   std::__introsort_loop
+0097ada0   RELOCATION_MATCH PASS   _global::std_sort_SiftUp_HeuristicBitch_Variant
+0097ae60   RELOCATION_MATCH PASS   std::__unguarded_partition
+0097af70   RELOCATION_MATCH PASS   std::__adjust_heap
+0097b0e0   RELOCATION_MATCH PASS   std::__make_heap
+0097b240   RELOCATION_MATCH PASS   std::__final_insertion_sort
+0097b320   RELOCATION_MATCH PASS   std::__partial_sort
+0097b660   RELOCATION_MATCH PASS   std::sort
+
+WINS: 14
+  008e8a90 RELOCATION_MATCH std::count_if
+  009789b0 RELOCATION_MATCH std::??$__unguarded_linear_insert@PAPAVCThing@@PAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@
+  00978a80 RELOCATION_MATCH std::??$__unguarded_partition@
+  00978c50 RELOCATION_MATCH std::??$__linear_insert@
+  00978da0 RELOCATION_MATCH std::??$__insertion_sort@
+  00979370 RELOCATION_MATCH std::??$sort_heap@
+  00979760 RELOCATION_MATCH std::??$__introsort_loop@
+  0097ada0 RELOCATION_MATCH std::??$__unguarded_linear_insert@PAPAVCThing@@PAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@
+  0097ae60 RELOCATION_MATCH std::??$__unguarded_partition@
+  0097af70 RELOCATION_MATCH std::??$__adjust_heap@
+  0097b0e0 RELOCATION_MATCH std::??$__make_heap@
+  0097b240 RELOCATION_MATCH std::??$__final_insertion_sort@
+  0097b320 RELOCATION_MATCH std::??$__partial_sort@
+  0097b660 RELOCATION_MATCH std::??$sort@
+addr       parity           behav  name
+008e8b80   WARN RELOC_NAME: ??RCIsImposterHit@?A0x16cf345d@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z -> 008e8a10 labelled 'CAIStateGroup_VersusScorpionKing::FindChargeEvent'
+008e8b80   RELOCATION_MATCH PASS   std::count_if
+00978a00   RELOCATION_MATCH PASS   _Push_heap<float*,int,float,std::_Push_heap<float*,int,float,std::less<float>_>
+00978b00   RELOCATION_MATCH PASS   std::__unguarded_insertion_sort_aux
+00978d00   RELOCATION_MATCH PASS   std::__make_heap
+009792f0   RELOCATION_MATCH PASS   std::__final_insertion_sort
+00979650   RELOCATION_MATCH PASS   std::__partial_sort
+00979870   RELOCATION_MATCH PASS   std::sort
+0097adf0   RELOCATION_MATCH PASS   _global::_Push_heap
+0097aee0   RELOCATION_MATCH PASS   std::__unguarded_insertion_sort_aux
+0097b030   WARN RELOC_NAME: ??$__unguarded_linear_insert@PAPAVCThing@@PAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xb01d4b59@@@std@@YIXPAPAVCThing@@PAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xb01d4b59@@@Z -> 0097ada0 labelled '_global::std_sort_SiftUp_HeuristicBitch_Variant'
+0097b030   RELOCATION_MATCH PASS   std::__linear_insert
+0097b180   RELOCATION_MATCH PASS   std::__insertion_sort
+0097b2c0   RELOCATION_MATCH PASS   std::sort_heap
+0097b4e0   RELOCATION_MATCH PASS   std::__introsort_loop
+
+WINS: 13
+  008e8b80 RELOCATION_MATCH std::count_if
+  00978a00 RELOCATION_MATCH std::??$__push_heap@
+  00978b00 RELOCATION_MATCH std::??$__unguarded_insertion_sort_aux@
+  00978d00 RELOCATION_MATCH std::??$__make_heap@
+  009792f0 RELOCATION_MATCH std::??$__final_insertion_sort@
+  00979650 RELOCATION_MATCH std::??$__partial_sort@
+  00979870 RELOCATION_MATCH std::??$sort@
+  0097adf0 RELOCATION_MATCH _global::_Push_heap
+  0097aee0 RELOCATION_MATCH std::??$__unguarded_insertion_sort_aux@
+  0097b030 RELOCATION_MATCH std::??$__linear_insert@
+  0097b180 RELOCATION_MATCH std::??$__insertion_sort@
+  0097b2c0 RELOCATION_MATCH std::??$sort_heap@
+  0097b4e0 RELOCATION_MATCH std::??$__introsort_loop@

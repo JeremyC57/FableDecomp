@@ -1,0 +1,144 @@
+addr       parity           behav  name
+0090ca60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0090ca60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0090ca60   WARN SHARED_HEADER_AVAILABLE CWorld
+0090ca60   WARN RELOC_NAME: ?FindMostRecentMessage_0090dee0@CMessageEventManager@@QAEPAVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@UCMessageEventFilter_IsOriginatedByThing@N_006af2b0@@@@@Z -> 0090dee0 labelled 'CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing>>'
+0090ca60   RELOCATION_MATCH PASS   CAIStateGroup_MinionGossip::OnReplace
+0091e4b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091e4b0   WARN RELOC_NAME: ?GetAllRegionNodes@CThingSearchToolsMethods@@QAEXABUCThingFilter_IsRegionNode@@PAUThingVector@@@Z -> 0091e660 labelled 'CThingSearchTools::GetAllThings'
+0091e4b0   RELOCATION_MATCH PASS   CAIStateGroup_MinionLeaveRegion::Update
+0092e950   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092e950   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0092e950   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0092e950   WARN SHARED_HEADER_AVAILABLE CWorld
+0092e950   WARN RELOC_NAME: ?GetThingsInRoughArea@CThingSearchTools@@QAE_NABVC2DBoxI@@ABVCThingFilter_IsNot@@AAUCCreatureVector@@@Z -> 00725f10 labelled 'CThingSearchTools::GetAllThingsInRoughArea'
+0092e950   RELOCATION_MATCH PASS   CAIStateGroup_MinionFindPersonalSpace::IsRunnable
+0094dac0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094dac0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094dac0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0094dac0   RELOCATION_MATCH PASS   CAIStateGroup_RockTroll::IsRunnable
+00950950   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00950950   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00950950   WARN SHARED_HEADER_AVAILABLE CWorld
+00950950   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00950950   WARN RELOC_NAME: ?GetPCurrentAnim@CTCAnim@@QAEPAUCAnimInstance@@XZ -> 0070b460 labelled 'CTCAnimationComplex::GetAnimation'
+00950950   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::WaitForAnimLoop
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+00957f20   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00957f20   WARN SHARED_HEADER_AVAILABLE CWorld
+00957f20   WARN RELOC_NAME: ?GetPlayerManager@CWorld@@QAEPAVCPlayerManager@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+00957f20   WARN RELOC_NAME: ?GetPlayerCharacter@CPlayerManager@@QAEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00957f20   WARN RELOC_NAME: ?CanCreatureSeeCreature@@YI_NPBVCThing@@0_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+00957f20   WARN RELOC_NAME: ??0CIntelligentPointerOut@@QAE@PAVCThing@@@Z -> 0056c860 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00957f20   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00957f20   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToBurglary::IsRunnable
+0095d200   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095d200   WARN SHARED_HEADER_AVAILABLE CWorld
+0095d200   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095d200   RELOCATION_MATCH PASS   CAIStateGroup_RangedCombatUsePreferredFirePoint::Update
+00960760   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00960760   WARN SHARED_HEADER_AVAILABLE CWorld
+00960760   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00960760   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00960760   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCDeedEffects@@QBE?AV?$CDefPointer@UCDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+00960760   WARN RELOC_NAME: ?IsActive@CTCTutorial@@QBE_NXZ -> 006cfe80 labelled 'CTCWife::IsAttractedToHero'
+00960760   WARN RELOC_NAME: ?OnDeedReactionDone@CTCTutorial@@QAEXXZ -> 006cef20 labelled 'CTCWife::InitiateDivorce'
+00960760   WARN RELOC_NAME: ?ReleaseDeedSpeech@CSpeechManager@@QAEXJJ@Z -> 006feae0 labelled 'COpinionReactionManager::LogDeedReactionPlayingSpeech'
+00960760   RELOCATION_MATCH PASS   CAIStateGroup_DeedReactionRoot::OnReplace
+0096af60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0096af60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096af60   WARN SHARED_HEADER_AVAILABLE CWorld
+0096af60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096af60   WARN RELOC_NAME: ??0CCreatureAction_WhisperLand@@QAE@PAVCThingCreatureBase@@@Z -> 008ccbd0 labelled 'CCreatureAction_BalverineDropInFromSky::CCreatureAction_BalverineDropInFromSky'
+0096af60   RELOCATION_MATCH PASS   CAIStateGroup_WhisperPotionCombat::DisappearJump
+0097b780   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097b780   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097b780   WARN SHARED_HEADER_AVAILABLE CWorld
+0097b780   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0097b780   WARN RELOC_NAME: ?Reset@CTCTrap@@QAEXXZ -> 00787c07 labelled 'CTCTrapBase::ManualActivate'
+0097b780   RELOCATION_MATCH PASS   CAIStateGroup_ScorpionKing::Cleanup
+
+WINS: 10
+  0090ca60 RELOCATION_MATCH CAIStateGroup_MinionGossip::OnReplace
+  0091e4b0 RELOCATION_MATCH CAIStateGroup_MinionLeaveRegion::Update
+  0092e950 RELOCATION_MATCH CAIStateGroup_MinionFindPersonalSpace::?IsRunnable@CAIStateGroup_MinionFindPersonalSpace@@
+  0094dac0 RELOCATION_MATCH CAIStateGroup_RockTroll::IsRunnable
+  00950950 RELOCATION_MATCH CAIStateGroup_JackDragon::WaitForAnimLoop
+  00957f20 RELOCATION_MATCH CAIStateGroup_MinionReactToBurglary::IsRunnable
+  0095d200 RELOCATION_MATCH CAIStateGroup_RangedCombatUsePreferredFirePoint::Update
+  00960760 RELOCATION_MATCH CAIStateGroup_DeedReactionRoot::OnReplace
+  0096af60 RELOCATION_MATCH CAIStateGroup_WhisperPotionCombat::DisappearJump
+  0097b780 RELOCATION_MATCH CAIStateGroup_ScorpionKing::Cleanup
+addr       parity           behav  name
+00911c20   WARN SHARED_HEADER_AVAILABLE CWorld
+00911c20   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+00911c20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00911c20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00911c20   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+00911c20   WARN RELOC_NAME: ?GetEvent_008af0a0@CTCEntityEvents@@QAE_NPAPBVCEventHitBy@NEntityEvents@@ABVCEventFilter_None@3@@Z -> 008af0a0 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventExpressionPerformedTo, NEntityEvents::CEventFilter_None>'
+00911c20   RELOCATION_MATCH PASS   CAIStateGroup_ChickenPanic::IsRunnable
+00923510   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00923510   WARN SHARED_HEADER_AVAILABLE CWorld
+00923510   WARN SHARED_HEADER_AVAILABLE CPlayer
+00923510   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00923510   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroupBase@@QBEPBVCPlayerManager@@XZ -> 008fcf80 labelled 'CAIStateGroupBase::PeekPlayerManager'
+00923510   RELOCATION_MATCH PASS   CAIStateGroup_ServeFood::MakeFood
+00938f70   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00938f70   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00938f70   WARN SHARED_HEADER_AVAILABLE CWorld
+00938f70   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00938f70   WARN RELOC_NAME: ?IsSitOutsideTime@CTCVillage@@QAE_NXZ -> 00658d5d labelled 'CTCVillage::IsSociableTime'
+00938f70   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOutside::IsRunnable
+0094e6b0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0094e6b0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094e6b0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0094e6b0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094e6b0   WARN RELOC_NAME: ??0CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+0094e6b0   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+0094e6b0   RELOCATION_MATCH PASS   CAIStateGroup_EarthTroll::IsRunnable
+00956b00   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00956b00   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00956b00   WARN SHARED_HEADER_AVAILABLE CWorld
+00956b00   WARN RELOC_NAME: ??0CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00956b00   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00956b00   RELOCATION_MATCH PASS   CAIStateGroup_BriarRose::IsRunnable
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095b280   WARN SHARED_HEADER_AVAILABLE CWorld
+0095b280   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095b280   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0095b280   WARN RELOC_NAME: ?IsCombatant@CThing@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0095b280   WARN RELOC_NAME: ??0CCreatureAction_DragonRoar@@QAE@PAVCThing@@0@Z -> 0095cac0 labelled 'CCreatureAction_WaspQueenLashOutAttack::CCreatureAction_WaspQueenLashOutAttack'
+0095b280   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueenTakeDamage::Update
+0095f580   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095f580   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095f580   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0095f580   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0095f580   WARN SHARED_HEADER_AVAILABLE CWorld
+0095f580   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::OnActivate
+00962c10   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00962c10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00962c10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00962c10   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00962c10   WARN RELOC_NAME: ?GetSubDef_00485815@CDefClassBase@@QAE_NPAV?$CDefPointer@VCAbilityDef@@@@@Z -> 00485815 labelled 'CDefClassBase::GetSubDef<CCreatureDef>'
+00962c10   WARN RELOC_NAME: ?GetPRandomSeed@CWorldR@@QAEPAKXZ -> 0049d810 labelled 'CWorld::GetWorldSeed'
+00962c10   RELOCATION_MATCH PASS   CAIStateGroup_VersusRockTroll::IsRunnable
+0096f180   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096f180   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096f180   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0096f180   WARN SHARED_HEADER_AVAILABLE CWorld
+0096f180   WARN RELOC_NAME: ??0CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+0096f180   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+0096f180   RELOCATION_MATCH PASS   CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse
+
+WINS: 9
+  00911c20 RELOCATION_MATCH CAIStateGroup_ChickenPanic::IsRunnable
+  00923510 RELOCATION_MATCH CAIStateGroup_ServeFood::MakeFood
+  00938f70 RELOCATION_MATCH CAIStateGroup_MinionSitOutside::IsRunnable
+  0094e6b0 RELOCATION_MATCH CAIStateGroup_EarthTroll::IsRunnable@CAIStateGroup_EarthTroll
+  00956b00 RELOCATION_MATCH CAIStateGroup_BriarRose::IsRunnable@CAIStateGroup_BriarRose
+  0095b280 RELOCATION_MATCH CAIStateGroup_HoverHornetQueenTakeDamage::Update
+  0095f580 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::OnActivate
+  00962c10 RELOCATION_MATCH CAIStateGroup_VersusRockTroll::IsRunnable
+  0096f180 RELOCATION_MATCH CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse

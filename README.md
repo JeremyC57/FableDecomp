@@ -70,8 +70,8 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **45,407 · 91.61%** |
-| Retail function bytes reproduced | **5,268,094 · 51.40%** |
+| Landed byte-matching C++ (genuine) | **45,408 · 91.61%** |
+| Retail function bytes reproduced | **5,268,584 · 51.40%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
@@ -93,10 +93,10 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **52,810** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **45,407** (91.61%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,611 known functions | 52,797 (91.64%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,268,094 (51.40%) |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **52,811** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **45,408** (91.61%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,611 known functions | 52,798 (91.65%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,268,584 (51.40%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 174 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |

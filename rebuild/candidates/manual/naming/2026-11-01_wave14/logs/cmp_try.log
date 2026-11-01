@@ -1,0 +1,25 @@
+edited 009789b0 cmp const CThing* + ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x29dfc0de@@QBE_NPBVCThing@@0@Z'] - ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x29dfc0de@@QBE_NPAVCThing@@0@Z']
+skip 00978a00 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00978a80 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+edited 00978b00 cmp const CThing* + ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x6abe1b15@@QBE_NPBVCThing@@0@Z'] - ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x6abe1b15@@QBE_NPAVCThing@@0@Z']
+skip 00978c50 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00978d00 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00978da0 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 009792f0 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00979370 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00979650 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00979760 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 00979870 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+edited 0097ada0 cmp const CThing* + ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x08e5cb79@@QBE_NPBVCThing@@0@Z'] - ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0x08e5cb79@@QBE_NPAVCThing@@0@Z']
+skip 0097ae60 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+edited 0097aee0 cmp const CThing* + ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xcf672331@@QBE_NPBVCThing@@0@Z'] - ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@?A0xcf672331@@QBE_NPAVCThing@@0@Z']
+skip 0097af70 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b030 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b0e0 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b180 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b240 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b2c0 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b320 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b4e0 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+skip 0097b660 compile: isticBitch::operator ()(CThing *,CThing *) const' : overloaded member function not found in '`anonymous-namespace'::CThingCompare_InDirectionOfAndNearestToHeuristicBitch'
+edited 0097adf0 cmp const CThing* + ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@@QBE_NPBVCThing@@0@Z'] - ['??RCThingCompare_InDirectionOfAndNearestToHeuristicBitch@@QBE_NPAVCThing@@0@Z']

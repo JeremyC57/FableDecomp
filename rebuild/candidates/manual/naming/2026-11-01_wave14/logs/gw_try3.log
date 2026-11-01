@@ -1,0 +1,29 @@
+edited 0091cdc0 gw CAIStateGroupMinionReactToNoiseMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupMinionReactToNoiseMethods@@QAEPAVCWorld@@XZ']
+edited 0091eb60 gw CAIStateGroup_CreatureRangedCombat2 GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_CreatureRangedCombat2@@QAEPAVCWorld@@XZ']
+skip 00938ed0 non-discarded use of Val_938ed0_A
+edited 0093dcd0 gw CCombatStateMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CCombatStateMethods@@QAEPAVCWorld@@XZ']
+edited 0094f090 gw CBalverineLandMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CBalverineLandMethods@@QAEPAUCWorldHeightView@@XZ']
+edited 0094f9e0 gw CAIStateGroup_JackDragon_Methods ResetHelper -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?ResetHelper@@YAXXZ']
+edited 0094feb0 gw DragonMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@DragonMethods@@QAEPAVCWorld@@XZ']
+edited 009547d0 gw ShieldMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@ShieldMethods@@QAEPAVCWorld@@XZ']
+edited 00954b50 gw TeleportMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@TeleportMethods@@QAEPAVCWorld@@XZ']
+edited 00954cd0 gw CAIStateGroupMazeTutorialBattleUseShieldMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupMazeTutorialBattleUseShieldMethods@@QAEPAVCWorld@@XZ']
+edited 00954e30 gw LightningMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@LightningMethods@@QAEPAVCWorld@@XZ']
+edited 00956ce0 gw CAIStateGroup_BriarRoseWillUse GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_BriarRoseWillUse@@QAEPAVCWorld@@XZ']
+edited 00956fe0 gw CAIStateGroupBriarRoseWillUseMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupBriarRoseWillUseMethods@@QAEPAVCWorld@@XZ']
+edited 00957a20 gw CAIStateGroupBehaviourBaseMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupBehaviourBaseMethods@@QAEPAVCWorld@@XZ']
+edited 0095e260 gw CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets@@QAEPAVCWorld@@XZ']
+edited 0095f9a0 gw friend filter keeps group->GetWorld() + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetWorld@CAIStateGroup_OpinionReactionRoot@@IBEAAVCWorld@@XZ']
+skip 00961880 non-discarded use of GetWorld
+edited 00962b80 gw CAIStateGroup_VersusEnemyBase_Methods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_VersusEnemyBase_Methods@@QAEPAVCWorld@@XZ']
+edited 00970610 gw CAIStateGroupCreatureUseCoverBaseMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupCreatureUseCoverBaseMethods@@QBEPAVCWorld@@XZ']
+edited 00970f30 gw UseCoverMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@UseCoverMethods@@QAEPAVCWorld@@XZ']
+edited 00972490 gw JackMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@JackMethods@@QAEPAVCWorld@@XZ']
+skip 00972590 not a member getter: ?Sub_8FCFC0@@YIPAUCObjB@@PAUCAIStateGroup_JackOfBladesStage2@@@Z
+edited 00972830 gw CAIStateGroupJackOfBladesBaseMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupJackOfBladesBaseMethods@@QAEPAVCWorld@@XZ']
+edited 00979d80 gw CAIStateGroup_CreatureTakeCover GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_CreatureTakeCover@@QAEPAVCWorld@@XZ']
+edited 0097a630 gw CAIStateGroup_CreatureTakeCover GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_CreatureTakeCover@@QAEPAVCWorld@@XZ']
+skip 00982eb0 compile: cratchpad\naming\w14\ov_gwtry\rebuild\src\compiled\00\98\CAIStateGroupOpinionReactionRoot_WifeFeelingUpdate_00982eb0.cpp(41) : error C2027: use of undefined type 'CWorld'
+skip 00982f10 compile: cratchpad\naming\w14\ov_gwtry\rebuild\src\compiled\00\98\CAIStateGroupOpinionReactionRoot_WifeGeneralUpdate_00982f10.cpp(41) : error C2027: use of undefined type 'CWorld'
+skip 00982f70 compile: atchpad\naming\w14\ov_gwtry\rebuild\src\compiled\00\98\CAIStateGroupOpinionReactionRoot_WifeToHerselfUpdate_00982f70.cpp(43) : error C2027: use of undefined type 'CWorld'
+edited 00985f40 gw CAIStateGroup_OpinionReactionRoot GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_OpinionReactionRoot@@QAEPAVCWorld@@XZ']

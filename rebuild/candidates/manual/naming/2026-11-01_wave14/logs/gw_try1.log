@@ -1,0 +1,48 @@
+edited 0090ca60 gw CAIStateGroup_MinionGossip GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_MinionGossip@@QAEPAVCWorld@@XZ']
+edited 00911c20 gw CAIStateGroupBase GetPFrameWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPFrameWorld@CAIStateGroupBase@@QAEPAUCThingWorld@@XZ']
+skip 0091cdc0 no local CAIStateGroupBase
+skip 0091e4b0 0 declarations of GetPWorld
+skip 0091eb60 no local CAIStateGroupBase
+edited 00923510 gw CAIStateGroupBase GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupBase@@QBEPAVCWorld@@XZ']
+edited 0092e950 gw CAIStateGroup_MinionFindPersonalSpace GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_MinionFindPersonalSpace@@QAEPAVCWorld@@XZ']
+skip 00938ed0 not a member getter: @Val_938ed0_A@4
+edited 00938f70 gw CAIStateGroup_MinionSitOnSeatBase GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_MinionSitOnSeatBase@@QAEPAVCWorld@@XZ']
+skip 0093dcd0 no local CAIStateGroupBase
+edited 0094dac0 gw CAIStateGroup_TrollBase GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_TrollBase@@QAEPAVCWorld@@XZ']
+edited 0094e6b0 gw CAIStateGroup_EarthTroll GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_EarthTroll@@QAEPAVCWorld@@XZ']
+skip 0094f090 no local CAIStateGroupBase
+skip 0094f9e0 not a member getter: ?ResetHelper@@YAXXZ
+skip 0094feb0 compile: 4\ov_gwtry\rebuild\src\compiled\00\94\CAIStateGroupJackDragon_StayIdleAndTurnToFace_0094feb0.cpp(106) : error C2228: left of '.GetFrame' must have class/struct/union type | ld\src\compiled\00\94\CAIStateGroupJackDragon_StayIdleAndTurnToFace_0094feb0.cpp(106) : error C3861: 'GetWorld': identifier not found, even with argument-dependent lookup | 4\ov_gwtry\rebuild\src\compiled\00\94\CAIStateGroupJackDragon_StayIdleAndTurnToFace_0094feb0.cpp(113) : error C2228: left of '.GetFrame' must have class/struct/union type
+edited 00950950 gw CAIStateGroup_JackDragon GetPFrameWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPFrameWorld@CAIStateGroup_JackDragon@@QAEPAUCWorldFrame@@XZ']
+skip 009547d0 compile: rebuild\src\compiled\00\95\CAIStateGroupMazeShieldedChase_OnActivate_009547d0.cpp(51) : error C3861: 'GetWorld': identifier not found, even with argument-dependent lookup
+skip 00954b50 compile: gwtry\rebuild\src\compiled\00\95\CAIStateGroupMazeTutorialBattleTeleport_IsRunnable_00954b50.cpp(190) : error C2228: left of '.GetFrame' must have class/struct/union type | c\compiled\00\95\CAIStateGroupMazeTutorialBattleTeleport_IsRunnable_00954b50.cpp(190) : error C3861: 'GetWorld': identifier not found, even with argument-dependent lookup
+skip 00954cd0 no local CAIStateGroupBase
+skip 00954e30 compile: uild\src\compiled\00\95\CAIStateGroupMazeTutorialBattleRespondToLightning_IsRunnable_00954e30.cpp(70) : error C2228: left of '.GetFrame' must have class/struct/union type | d\00\95\CAIStateGroupMazeTutorialBattleRespondToLightning_IsRunnable_00954e30.cpp(70) : error C3861: 'GetWorld': identifier not found, even with argument-dependent lookup
+edited 00956b00 gw CAIStateGroup_BriarRose GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_BriarRose@@QAEPAVCWorld@@XZ']
+skip 00956ce0 no local CAIStateGroupBase
+skip 00956fe0 no local CAIStateGroupBase
+skip 00957a20 no local CAIStateGroupBase
+edited 00957f20 gw CAIStateGroup_MinionReactToBurglary GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_MinionReactToBurglary@@QAEPAVCWorld@@XZ']
+edited 0095b280 gw CAIStateGroupHoverHornetQueenTakeDamageMethods GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupHoverHornetQueenTakeDamageMethods@@QAEPAVCWorld@@XZ']
+edited 0095d200 gw CAIStateGroup_RangedCombatUsePreferredFirePoint GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_RangedCombatUsePreferredFirePoint@@QAEPAVCWorld@@XZ']
+skip 0095e260 no local CAIStateGroupBase
+edited 0095f580 gw CAIStateGroup_OpinionReactionRoot GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_OpinionReactionRoot@@QAEPAVCWorld@@XZ']
+skip 0095f9a0 qualified call of GetWorld
+edited 00960760 gw CAIStateGroupBase GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupBase@@QBEPAUCWorldObject@@XZ']
+skip 00961880 no local CAIStateGroupBase
+skip 00962b80 no local CAIStateGroupBase
+edited 00962c10 gw CAIStateGroup_VersusRockTroll GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_VersusRockTroll@@QAEPAUCWorldR@@XZ']
+edited 0096af60 gw CAIStateGroupBase GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroupBase@@QBEPAVCWorld@@XZ']
+edited 0096f180 gw CAIStateGroup_MinionBehaviourSad GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_MinionBehaviourSad@@QAEPAVCWorld@@XZ']
+skip 00970610 no local CAIStateGroupBase
+skip 00970f30 no local CAIStateGroupBase
+skip 00972490 compile: rebuild\src\compiled\00\97\CAIStateGroupJackOfBladesStage2_OnActivate_00972490.cpp(37) : error C2228: left of '.PThingCombatManager_ptr' must have class/struct/union type | ebuild\src\compiled\00\97\CAIStateGroupJackOfBladesStage2_OnActivate_00972490.cpp(37) : error C3861: 'GetWorld': identifier not found, even with argument-dependent lookup
+skip 00972590 not a member getter: ?Sub_8FCFC0@@YIPAUCObjB@@PAUCAIStateGroup_JackOfBladesStage2@@@Z
+skip 00972830 no local CAIStateGroupBase
+skip 00979d80 no local CAIStateGroupBase
+skip 0097a630 no local CAIStateGroupBase
+edited 0097b780 gw CAIStateGroup_ScorpionKing GetPWorld -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetPWorld@CAIStateGroup_ScorpionKing@@QAEPAVCWorld@@XZ']
+skip 00982eb0 no local CAIStateGroupBase
+skip 00982f10 no local CAIStateGroupBase
+skip 00982f70 no local CAIStateGroupBase
+skip 00985f40 compile: atchpad\naming\w14\ov_gwtry\rebuild\src\compiled\00\98\CAIStateGroupOpinionReactionRoot_WifeClothingUpdate_00985f40.cpp(140) : error C2027: use of undefined type 'CWorld'

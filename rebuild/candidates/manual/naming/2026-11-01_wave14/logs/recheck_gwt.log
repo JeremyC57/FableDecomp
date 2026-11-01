@@ -1,0 +1,40 @@
+addr       parity           behav  name
+00663f50   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00663f50   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00663f50   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+00663f50   WARN SHARED_HEADER_AVAILABLE CWorld
+00663f50   WARN RELOC_NAME: ?OnDie@CThingPhysical@@QAEXXZ -> 006a4cf0 labelled 'CThingPhysical::Kill'
+00663f50   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+00663f50   RELOCATION_MATCH PASS   CThingCreatureBase::OnDie
+00832840   WARN SHARED_HEADER_AVAILABLE CWorld
+00832840   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00832840   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+00832840   RELOCATION_MATCH PASS   CThingAICreature::OnCollision
+0083be90   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0083be90   WARN SHARED_HEADER_AVAILABLE CWorld
+0083be90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0083be90   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0083be90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0083be90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0083be90   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+0083be90   RELOCATION_MATCH PASS   CThingSwitch::TriggerSetEnvironment
+
+WINS: 3
+  00663f50 RELOCATION_MATCH CThingCreatureBase::?OnDie@CThingCreatureBase
+  00832840 RELOCATION_MATCH CThingAICreature::OnCollision
+  0083be90 RELOCATION_MATCH CThingSwitch::TriggerSetEnvironment
+addr       parity           behav  name
+0082fd90   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0082fd90   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+0082fd90   RELOCATION_MATCH PASS   CThingAICreature::WorldUpdateBulletTime
+00832e60   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00832e60   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00832e60   WARN SHARED_HEADER_AVAILABLE CWorld
+00832e60   WARN SHARED_HEADER_AVAILABLE CTCWife
+00832e60   WARN RELOC_NAME: ?GetDefinitionManager@CThing@@QAEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+00832e60   WARN RELOC_NAME: ?GetWorld@CThing@@IAEAAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+00832e60   RELOCATION_MATCH PASS   CThingAICreature::OnDie
+
+WINS: 2
+  0082fd90 RELOCATION_MATCH CThingAICreature::WorldUpdateBulletTime
+  00832e60 RELOCATION_MATCH CThingAICreature::OnDie

@@ -1,0 +1,6 @@
+addr       parity           behav  name
+008e7e10   WARN RELOC_NAME: ??RCIsImposterHit@?A0x749ec092@@QBE_NABV?$CIntelligentPointer@VCThing@@@@@Z -> 008e8a10 labelled 'CAIStateGroup_VersusScorpionKing::FindChargeEvent'
+008e7e10   RELOCATION_MATCH PASS   CIconText::HasEnoughIcons
+
+WINS: 1
+  008e7e10 RELOCATION_MATCH CIconText::HasEnoughIcons

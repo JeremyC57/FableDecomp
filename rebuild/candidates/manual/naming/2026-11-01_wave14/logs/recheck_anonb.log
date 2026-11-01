@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0097adf0   RELOCATION_MATCH PASS   _global::_Push_heap
+
+WINS: 1
+  0097adf0 RELOCATION_MATCH _global::??$__push_heap@PAPAVCThing@@HPAV1@VCThingCompare_InDirectionOfAndNearestToHeuristicBitch@

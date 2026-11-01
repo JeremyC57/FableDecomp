@@ -1,0 +1,58 @@
+addr       parity           behav  name
+00431e40   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00431e40   RELOCATION_MATCH PASS   CFrontEndDef::`scalar deleting destructor'
+00459e46   WARN RELOC_NAME: ??1CStringLongMap@@QAE@XZ -> 004302cd labelled 'std::list<T_004302cd>::~list'
+00459e46   WARN RELOC_NAME: ??1CStringGameActionMap@@QAE@XZ -> 004543c6 labelled 'std::list<T_004543c6>::~list'
+00459e46   WARN RELOC_NAME: ??1CAbilityButtonGuiDefVector@@QAE@XZ -> 004532e6 labelled '_global::StdList_Dtor_004532e6'
+00459e46   WARN RELOC_NAME: ??1CQuickAccessItemButtonGuiDefVector@@QAE@XZ -> 004532c3 labelled '_global::StdList_Dtor_004532c3'
+00459e46   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00459e46   RELOCATION_MATCH PASS   CPlayerGuiDef::~CPlayerGuiDef
+0057b9d7   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057b9d7   RELOCATION_MATCH PASS   CTCHeroStats::GetRandomBeardName
+0057bad4   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057bad4   RELOCATION_MATCH PASS   CTCHeroStats::GetRandomSuitName
+007ae0e0   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::_M_erase
+0098d9f0   WARN RELOC_NAME: ?Erase@CRbTree_0098d9f0@@QAEXPAUSRbNodeBase@@@Z -> 0043020a labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+0098d9f0   RELOCATION_MATCH PASS   CNamedShaderTable::~CNamedShaderTable
+00eec890   WARN SHARED_HEADER_AVAILABLE CIsThingConscious
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase
+00eec890   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00eec890   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00eec890   RELOCATION_MATCH PASS   CGlobal_OpenChestScript::Main
+
+WINS: 7
+  00431e40 RELOCATION_MATCH CFrontEndDef::??_GCFrontEndDef@@UAEPAXI@Z
+  00459e46 RELOCATION_MATCH CPlayerGuiDef::??1CPlayerGuiDef
+  0057b9d7 RELOCATION_MATCH CTCHeroStats::GetRandomBeardName
+  0057bad4 RELOCATION_MATCH CTCHeroStats::GetRandomSuitName
+  007ae0e0 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::?_M_erase@
+  0098d9f0 RELOCATION_MATCH CNamedShaderTable::??1CNamedShaderTable
+  00eec890 RELOCATION_MATCH CGlobal_OpenChestScript::Main
+addr       parity           behav  name
+0045641a   WARN SHARED_HEADER_AVAILABLE CResource
+0045641a   RELOCATION_MATCH PASS   CAppearanceModifierDef::~CAppearanceModifierDef
+004fe030   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+004fe030   WARN SHARED_HEADER_AVAILABLE CWorld
+004fe030   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fe030   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+004fe030   RELOCATION_MATCH PASS   CWorldMap::CompileLoadableGlobalThingsToSingleFile
+0057ba5c   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057ba5c   RELOCATION_MATCH PASS   CTCHeroStats::GetRandomHairName
+00767200   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00767200   RELOCATION_MATCH PASS   CTCObjectAugmentations::OnSerialise
+  WARN leaf '?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@2@@2@@Z' matches no symbol in 008ae1e0.obj; graded the largest function
+  WARN leaf '?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@2@@2@@Z' matches no symbol in 008ae1e0.obj; graded the largest function
+008ae1e0   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<CCharString>>, std::_Select1st<std::pair<CCharString const, std::vector<CCharString>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString>>>>::erase
+009c87c0   WARN RELOC_NAME: ??$__destroy_aux@PAVCDataBankGroupEntry@NGameText@@@std@@YIXPAVCDataBankGroupEntry@NGameText@@0ABU__false_type@0@@Z -> 009cac00 labelled '_global::Destroy_009cac00'
+009c87c0   WARN RELOC_NAME: ??$__destroy_aux@PAVCDataBankTextEntry@NGameText@@@std@@YIXPAVCDataBankTextEntry@NGameText@@0ABU__false_type@0@@Z -> 009cabc0 labelled 'std::__destroy_aux<NGameText::CDataBankTextEntry *>'
+009c87c0   WARN RELOC_NAME: ??1CBankSecondaryBase@@UAE@XZ -> 009fc690 labelled 'CResourceBank::~CResourceBank'
+009c87c0   RELOCATION_MATCH PASS   NGameText::CDataBank::~CDataBank
+
+WINS: 6
+  0045641a RELOCATION_MATCH CAppearanceModifierDef::??1CAppearanceModifierDef
+  004fe030 RELOCATION_MATCH CWorldMap::?CompileLoadableGlobalThingsToSingleFile@CWorldMap@
+  0057ba5c RELOCATION_MATCH CTCHeroStats::GetRandomHairName
+  00767200 RELOCATION_MATCH CTCObjectAugmentations::OnSerialise
+  008ae1e0 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@@std@@@std@@@2@@2@@Z
+  009c87c0 RELOCATION_MATCH NGameText::CDataBank::??1CDataBank@NGameText@@

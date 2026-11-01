@@ -1,0 +1,2 @@
+edited 00cef9a0 vcs CCharStringVector -> std::vector<CCharString> + ['??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '??_G?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAXI@Z'] - ['??1CCharStringVector@@QAE@XZ', '??_GCCharStringVector@@QAEPAXI@Z']
+report 00cef9a0 pdb ??_G?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAXI@Z

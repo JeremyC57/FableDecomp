@@ -1,0 +1,20 @@
+addr       parity           behav  name
+008b94a0   RELOCATION_MATCH PASS   CCreatureAction_CastWillForceSpell::Initialise
+008cd470   RELOCATION_MATCH PASS   CCreatureAction_CastAssassinRush::Initialise
+008f40b0   WARN RELOC_NAME: ?SetThingIsAbleToBeLifted@@YIXPAVCThing@@_N@Z -> 007e4330 labelled 'CTCWillResponse::SetThingIsEpicSpellable'
+008f40b0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008f40b0   RELOCATION_MATCH PASS   CCreatureAction_DragonHoverOutOf::Initialise
+
+WINS: 3
+  008b94a0 RELOCATION_MATCH CCreatureAction_CastWillForceSpell::Initialise
+  008cd470 RELOCATION_MATCH CCreatureAction_CastAssassinRush::Initialise
+  008f40b0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::Initialise
+addr       parity           behav  name
+008b9c90   WARN RELOC_NAME: ?SetTargetOverride@CTCWillLightning@@QAEXPAVCThing@@@Z -> 0079f910 labelled '_unattributed::AssignTarget_0079f910'
+008b9c90   RELOCATION_MATCH PASS   CCreatureAction_CastWillLightningSpell::Initialise
+008f3ad0   WARN RELOC_NAME: ?SetSuspendAnimation@CThing@@QAEX_NPBX@Z -> 00833a10 labelled 'CThingAICreature::SuspendAI'
+008f3ad0   RELOCATION_MATCH PASS   CCreatureAction_DragonLand::Initialise
+
+WINS: 2
+  008b9c90 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::Initialise
+  008f3ad0 RELOCATION_MATCH CCreatureAction_DragonLand::Initialise

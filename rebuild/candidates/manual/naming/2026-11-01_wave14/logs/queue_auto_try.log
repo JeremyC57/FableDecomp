@@ -1,0 +1,7 @@
+edited 0042e3ee EventScanStart @QA->@QB EventScanNext @QA->@QB EventScanEnd @QA->@QB + ['?EventScanEnd@CInputManager@@QBEXAAVCInputEventScanInfo@@@Z', '?EventScanNext@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z', '?EventScanStart@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z'] - ['?EventScanEnd@CInputManager@@QAEXAAVCInputEventScanInfo@@@Z', '?EventScanNext@CInputManager@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z', '?EventScanStart@CInputManager@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z']
+skip 006621c0 IsPerformingAnyAction: 0 declarations in CThingCreatureBase
+skip 006622d0 IsPerformingAnyAction: 0 declarations in CThingCreatureBase
+skip 006643c0 IsPerformingAnyAction: 0 declarations in CThingCreatureBase
+skip 00692c10 compile: \rebuild\src\compiled\00\69\CCreatureActionBase_GetWorldMap_00692c10.cpp(40) : error C2248: 'CThing::GetWorld' : cannot access protected member declared in class 'CThing'
+skip 009f4ed0 compile: 75f-8649-a32d96bb1c2d\scratchpad\naming\w14\ov_qtry\rebuild\src\compiled\00\9f\CInputManager_EventScanStart_009f4ed0.cpp(31) : error C2166: l-value specifies const object | nputManager_EventScanStart_009f4ed0.cpp(34) : error C2662: 'CRetailVector<T>::begin' : cannot convert 'this' pointer from 'const CRetailVector<T>' to 'CRetailVector<T> &'
+edited 009f4f10 EventScanNext @QA->@QB + ['?EventScanNext@CInputManager@@QBE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z'] - ['?EventScanNext@CInputManager@@QAE_NAAVCInputEventScanInfo@@AAVCInputEvent@@@Z']

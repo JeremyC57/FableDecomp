@@ -1,0 +1,30 @@
+addr       parity           behav  name
+00431e40   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled 'CDefWithBuffer::~CDefWithBuffer'
+00431e40   RELOCATION_MATCH PASS   CFrontEndDef::`scalar deleting destructor'
+007ae0e0   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::_M_erase
+009c87c0   WARN RELOC_NAME: ??$__destroy_aux@PAVCDataBankGroupEntry@NGameText@@@std@@YIXPAVCDataBankGroupEntry@NGameText@@0ABU__false_type@0@@Z -> 009cac00 labelled '_global::Destroy_009cac00'
+009c87c0   WARN RELOC_NAME: ??$__destroy_aux@PAVCDataBankTextEntry@NGameText@@@std@@YIXPAVCDataBankTextEntry@NGameText@@0ABU__false_type@0@@Z -> 009cabc0 labelled 'std::__destroy_aux<NGameText::CDataBankTextEntry *>'
+009c87c0   WARN RELOC_NAME: ??1CBankSecondaryBase@@UAE@XZ -> 009fc690 labelled 'CResourceBank::~CResourceBank'
+009c87c0   RELOCATION_MATCH PASS   NGameText::CDataBank::~CDataBank
+
+WINS: 3
+  00431e40 RELOCATION_MATCH CFrontEndDef::??_GCFrontEndDef@@UAEPAXI@Z
+  007ae0e0 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::?_M_erase@
+  009c87c0 RELOCATION_MATCH NGameText::CDataBank::??1CDataBank@NGameText@@
+addr       parity           behav  name
+0047e07f   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0047e07f   WARN SHARED_HEADER_AVAILABLE CManager
+  WARN leaf '~CTCInGameMenu' matches no symbol in 0047e07f.obj; graded the largest function
+  WARN leaf '~CTCInGameMenu' matches no symbol in 0047e07f.obj; graded the largest function
+0047e07f   WARN RELOC_NAME: ??1CSignatureMap@@QAE@XZ -> 00485e45 labelled '_global::StdList_Dtor_00485e45'
+0047e07f   WARN RELOC_NAME: ??1CPrimitiveHandleVector@@QAE@XZ -> 00440c40 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+0047e07f   RELOCATION_MATCH PASS   CTCInGameMenu::~CTCInGameMenu
+008ae1e0   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<CCharString>>, std::_Select1st<std::pair<CCharString const, std::vector<CCharString>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString>>>>::erase
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cef9a0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cef9a0.obj; graded the largest function
+00cef9a0   RELOCATION_MATCH PASS   CVtable_012c3fa4::`scalar deleting destructor'
+
+WINS: 3
+  0047e07f RELOCATION_MATCH CTCInGameMenu::~CTCInGameMenu
+  008ae1e0 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, vector<CCharString> >, ...>::?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@2@@2@@Z
+  00cef9a0 RELOCATION_MATCH CVtable_012c3fa4::`vector_deleting_destructor'

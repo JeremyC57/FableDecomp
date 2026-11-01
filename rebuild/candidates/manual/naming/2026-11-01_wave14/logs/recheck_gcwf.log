@@ -1,0 +1,82 @@
+addr       parity           behav  name
+00657240   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00657240   RELOCATION_MATCH PASS   NPlayerGui::CDrawNPCName::IsShowingScreenshotMessage
+00699560   WARN RELOC_NAME: ?GetRandom@CQuakeWorld@@QAEAAUCQuakeRandom@@XZ -> 0049d810 labelled 'CWorld::GetWorldSeed'
+00699560   RELOCATION_MATCH PASS   SetEarthquakeAt
+00751ad0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00751ad0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00751ad0   RELOCATION_MATCH PASS   CTCLook::UpdateLookTimer
+00753c70   WARN SHARED_HEADER_AVAILABLE CTCBase
+00753c70   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00753c70   RELOCATION_MATCH PASS   CTCLook::FrameUpdate
+0088bac0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0088bac0   WARN RELOC_NAME: ?GetUpdateZone@CAIBrain@@QAEPAVCBrainUpdateZone@@J@Z -> 0088b910 labelled 'CKeyedRecordOwner0088b910::FindLastRecordBelow'
+0088bac0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+0088bac0   WARN RELOC_NAME: ?IsEnabledAndRunnable@CAIStateGroupBase@@QAE_NXZ -> 008fcf10 labelled 'CAIStateGroupBase::IsRunnableMain'
+0088bac0   WARN RELOC_NAME: ?Activate@CAIStateGroupBase@@QAEXXZ -> 008fcf50 labelled '_global::SetMemberConst_008fcf50'
+0088bac0   RELOCATION_MATCH PASS   CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan
+008af1e0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+008af1e0   RELOCATION_MATCH PASS   CombatDialogueManager::IsSpeechGroupAllowed
+008af780   WARN SHARED_HEADER_AVAILABLE CPlayer
+008af780   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+008af780   RELOCATION_MATCH PASS   CombatDialogueManager::Update
+00908de0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00908de0   RELOCATION_MATCH PASS   CCombatSequence_BattleCharge::OnStart
+
+WINS: 8
+  00657240 RELOCATION_MATCH NPlayerGui::CDrawNPCName::IsShowingScreenshotMessage
+  00699560 RELOCATION_MATCH CGameCameraManager::SetEarthquakeAt
+  00751ad0 RELOCATION_MATCH CTCLook::UpdateLookTimer
+  00753c70 RELOCATION_MATCH CTCLook::FrameUpdate
+  0088bac0 RELOCATION_MATCH CAIBrain::IsReadyToRunStateGroupWithHigherScriptPriorityThan
+  008af1e0 RELOCATION_MATCH CombatDialogueManager::IsSpeechGroupAllowed
+  008af780 RELOCATION_MATCH CombatDialogueManager::Update
+  00908de0 RELOCATION_MATCH CCombatSequence_BattleCharge::OnStart
+addr       parity           behav  name
+  WARN leaf 'BoughtSomething' matches no symbol in 00657280.obj; graded the largest function
+  WARN leaf 'BoughtSomething' matches no symbol in 00657280.obj; graded the largest function
+00657280   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00657280   RELOCATION_MATCH PASS   CAIStateGroup_BuyFromSeller::BoughtSomething
+0071d940   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0071d940   WARN SHARED_HEADER_AVAILABLE CWorld
+0071d940   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071d940   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@std@@YIXPAV?$CDefPointer@$$CBVCThingBaseDef@@@@0ABU__false_type@0@@Z -> 005b26e9 labelled '_global::ForEachElem0x4__scalar_deleting_destruct_005b26e9'
+0071d940   RELOCATION_MATCH PASS   CTCHeroMorph::AddTattoo
+00753ad0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00753ad0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00753ad0   RELOCATION_MATCH PASS   CTCLook::IsLookTimeOver
+0088b810   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+0088b810   RELOCATION_MATCH PASS   CAIBrain::IsUpdateZoneActiveThisFrame
+0088bcb0   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+0088bcb0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0088bcb0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0088bcb0   WARN RELOC_NAME: ?GetUpdateZone@CAIBrain@@QBEPBVCBrainUpdateZone@@J@Z -> 0088b910 labelled 'CKeyedRecordOwner0088b910::FindLastRecordBelow'
+0088bcb0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+0088bcb0   WARN RELOC_NAME: ?Reset@CAIStateGroupBase@@QAEXXZ -> 008fcf50 labelled '_global::SetMemberConst_008fcf50'
+0088bcb0   RELOCATION_MATCH PASS   CAIBrain::Update
+008af5f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008af5f0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008af5f0   WARN RELOC_CONFLICT: ?LowerBound@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z -> 004365b0 here, 0040f020 in landed 0051f0e0
+008af5f0   WARN RELOC_NAME: ?ContainsCreature@CTCCombatSpeechTargets@@QAE_NABVCThingCreatureBase@@@Z -> 00747450 labelled 'CTCBuyableHouse::MovedInNotification'
+008af5f0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+008af5f0   RELOCATION_MATCH PASS   CombatDialogueManager::IsSpeechAllowed
+00908da0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00908da0   RELOCATION_MATCH PASS   CCombatSequence_BattleCharge::IsValid
+00909070   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00909070   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00909070   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00909070   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00909070   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+00909070   WARN RELOC_NAME: ?AddAction@CCombatSequenceBase@@QAEXABUCCountedPointer@@@Z -> 008b0b10 labelled 'CCombatSequenceBase::PushAction'
+00909070   WARN RELOC_NAME: ?OnCreate@CCombatSequenceBase@@UAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+00909070   RELOCATION_MATCH PASS   CCombatSequence_BattleCharge::OnCreate
+
+WINS: 8
+  00657280 RELOCATION_MATCH CAIStateGroup_BuyFromSeller::BoughtSomething
+  0071d940 RELOCATION_MATCH CTCHeroMorph::?AddTattoo@CTCHeroMorph@@QAEXAAV?$CDefPointer
+  00753ad0 RELOCATION_MATCH CTCLook::IsLookTimeOver
+  0088b810 RELOCATION_MATCH CAIBrain::IsUpdateZoneActiveThisFrame
+  0088bcb0 RELOCATION_MATCH CAIBrain::Update
+  008af5f0 RELOCATION_MATCH CombatDialogueManager::IsSpeechAllowed
+  00908da0 RELOCATION_MATCH CCombatSequence_BattleCharge::IsValid
+  00909070 RELOCATION_MATCH CCombatSequence_BattleCharge::OnCreate

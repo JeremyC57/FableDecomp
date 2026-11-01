@@ -1,0 +1,76 @@
+addr       parity           behav  name
+0087ecb0   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+0087ecb0   WARN RELOC_NAME: ??0CEventFiredShot@@QAE@PAVCThing@@@Z -> 0087fed0 labelled 'NEntityEvents::CEventKillLocked::CEventKillLocked'
+0087ecb0   RELOCATION_MATCH PASS   CCombatAction_StabThing::Initialise
+008b74d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008b74d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008b74d0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008b74d0   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008b74d0   RELOCATION_MATCH PASS   CCreatureAction_OnGenerate::Initialise
+008b94a0   DIFFER(254v254)  PASS   CCreatureAction_CastWillForceSpell::Initialise
+008bae10   RELOCATION_MATCH PASS   CCreatureAction_CastDivineWrathSpell::Initialise
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c0ea0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c0ea0   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c0ea0   RELOCATION_MATCH PASS   CCreatureAction_JackDeathInto::Initialise
+008c4170   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+008c4170   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c4170   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c4170   RELOCATION_MATCH PASS   CCreatureAction_ScorpionKingDeath::Initialise
+008c8380   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c8380   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8380   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c8380   RELOCATION_MATCH PASS   CCreatureAction_BanditKingStuck::Initialise
+008c87a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c87a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c87a0   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c87a0   RELOCATION_MATCH PASS   CCreatureAction_BanditKingStuckGetHit::Initialise
+008f3ad0   DIFFER(300v300)  PASS   CCreatureAction_DragonLand::Initialise
+008f4b00   WARN RELOC_NAME: ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z -> 00718a00 labelled 'CCountedPointer_007180b0::CCountedPointer_007180b0'
+008f4b00   RELOCATION_MATCH PASS   CCreatureAction_DragonFlyInto::Initialise
+
+WINS: 8
+  0087ecb0 RELOCATION_MATCH CCombatAction_StabThing::Initialise
+  008b74d0 RELOCATION_MATCH CCreatureAction_OnGenerate::Initialise
+  008bae10 RELOCATION_MATCH CCreatureAction_CastDivineWrathSpell::?Initialise@CCreatureAction_CastDivineWrathSpell
+  008c0ea0 RELOCATION_MATCH CCreatureAction_JackDeathInto::?Initialise@CCreatureAction_JackDeathInto
+  008c4170 RELOCATION_MATCH CCreatureAction_ScorpionKingDeath::Initialise
+  008c8380 RELOCATION_MATCH CCreatureAction_BanditKingStuck::?Initialise@CCreatureAction_BanditKingStuck
+  008c87a0 RELOCATION_MATCH CCreatureAction_BanditKingStuckGetHit::?Initialise@CCreatureAction_BanditKingStuckGetHit
+  008f4b00 RELOCATION_MATCH CCreatureAction_DragonFlyInto::?Initialise@CCreatureAction_DragonFlyInto
+addr       parity           behav  name
+008b7350   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008b7350   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008b7350   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008b7350   RELOCATION_MATCH PASS   CCreatureAction_FodderPrimaryAttack::Initialise
+008b8d30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008b8d30   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008b8d30   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008b8d30   RELOCATION_MATCH PASS   CCreatureAction_ScreamerDie::Initialise
+008b9c90   DIFFER(316v316)  PASS   CCreatureAction_CastWillLightningSpell::Initialise
+008baf20   RELOCATION_MATCH PASS   CCreatureAction_CastUnholyPowerSpell::Initialise
+008c1c30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c1c30   WARN RELOC_NAME: ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z -> 00718a00 labelled 'CCountedPointer_007180b0::CCountedPointer_007180b0'
+008c1c30   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseConcentrateInto::Initialise
+008c44b0   WARN SHARED_HEADER_AVAILABLE CAICreatureWillPowerIndicatorDef
+008c44b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c44b0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c44b0   WARN RELOC_NAME: ?SetDirection@CTC93@@QAEXPAVCThing@@_N@Z -> 0079e580 labelled 'CTCPhysicalShieldSpell::AllowReactionsOnHitFromAttacker'
+008c44b0   RELOCATION_MATCH PASS   CCreatureAction_ScorpionChargeInto::Initialise
+008c8550   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008c8550   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8550   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c8550   RELOCATION_MATCH PASS   CCreatureAction_BanditKingUnstuck::Initialise
+008ca4a0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008ca4a0   RELOCATION_MATCH PASS   CCreatureAction_NymphGetHitDie::Initialise
+008f40b0   DIFFER(277v277)  PASS   CCreatureAction_DragonHoverOutOf::Initialise
+
+WINS: 7
+  008b7350 RELOCATION_MATCH CCreatureAction_FodderPrimaryAttack::Initialise
+  008b8d30 RELOCATION_MATCH CCreatureAction_ScreamerDie::?Initialise@CCreatureAction_ScreamerDie
+  008baf20 RELOCATION_MATCH CCreatureAction_CastUnholyPowerSpell::?Initialise@CCreatureAction_CastUnholyPowerSpell
+  008c1c30 RELOCATION_MATCH CCreatureAction_BriarRoseConcentrateInto::?Initialise@CCreatureAction_BriarRoseConcentrateInto
+  008c44b0 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::?Initialise@CCreatureAction_ScorpionChargeInto
+  008c8550 RELOCATION_MATCH CCreatureAction_BanditKingUnstuck::?Initialise@CCreatureAction_BanditKingUnstuck
+  008ca4a0 RELOCATION_MATCH CCreatureAction_NymphGetHitDie::?Initialise@CCreatureAction_NymphGetHitDie

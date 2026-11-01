@@ -1,0 +1,159 @@
+addr       parity           behav  name
+0091cdc0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0091cdc0   WARN SHARED_HEADER_AVAILABLE CWorld
+0091cdc0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091cdc0   WARN RELOC_NAME: ??0CMessageEventFilter_IsOriginatedByThing@@QAE@PBVCThing@@@Z -> 006af290 labelled 'CMessageEventFilter_IsTargettedAtThing::CMessageEventFilter_IsTargettedAtThing'
+0091cdc0   RELOCATION_MATCH PASS   CAIStateGroupMinionReactToNoiseMethods::IsRunnable
+00938ed0   WARN SHARED_HEADER_AVAILABLE CWorld
+  WARN leaf 'IsStateGroupStillValid' matches no symbol in 00938ed0.obj; graded the largest function
+  WARN leaf 'IsStateGroupStillValid' matches no symbol in 00938ed0.obj; graded the largest function
+00938ed0   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtHome::IsStateGroupStillValid
+0094f090   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0094f090   RELOCATION_MATCH PASS   CAIStateGroup_BalverineCornered::GetLandPos
+0094feb0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094feb0   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+00954b50   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00954b50   WARN SHARED_HEADER_AVAILABLE CWorld
+00954b50   WARN RELOC_NAME: ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 004365b0 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954b50   WARN RELOC_NAME: ??0MazePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00954b50   WARN RELOC_NAME: ??1MazePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00954b50   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+00954e30   WARN SHARED_HEADER_AVAILABLE CWorld
+00954e30   WARN RELOC_NAME: ?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954e30   WARN RELOC_NAME: ?GetPhase@MazeBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+00954e30   WARN RELOC_NAME: ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 004365b0 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954e30   WARN RELOC_NAME: ?HasBeenHitByLightning@LightningMethods@@QAE_NXZ -> 00954c60 labelled 'CAIStateGroup_MazeTutorialBattleRespondToLightning::FindHitEvent'
+00954e30   WARN RELOC_NAME: ??0MazePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00954e30   WARN RELOC_NAME: ??1MazePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00954e30   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+00956fe0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00956fe0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00956fe0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00956fe0   WARN SHARED_HEADER_AVAILABLE CWorld
+00956fe0   WARN RELOC_NAME: ??1CCreatureActionBase@N_0062e900@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+00956fe0   RELOCATION_MATCH PASS   CAIStateGroup_BriarRoseWillUse::Update
+0095e260   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0095e260   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0095e260   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable
+00961880   WARN SHARED_HEADER_AVAILABLE CWorld
+00961880   WARN RELOC_NAME: ??0CRetailBanditKingLungeAction@@QAE@PAUCThingRetail@@0@Z -> 009619c0 labelled 'CCreatureAction_BanditKingLunge::CCreatureAction_BanditKingLunge'
+00961880   WARN RELOC_NAME: ??1CRetailBanditKingLungeAction@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+00961880   WARN RELOC_NAME: ?GetPhase@CTCBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+00961880   WARN RELOC_NAME: ?ClearPhaseCounter@CTCBoss@@QAEXXZ -> 007aed50 labelled '_global::SetMemberConst_007aed50'
+00961880   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingLunge::Update
+00970610   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00970610   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00970610   WARN SHARED_HEADER_AVAILABLE CWorld
+00970610   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00970610   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase::OnActivate
+00972490   WARN RELOC_NAME: ?FindEntry@JackTable@@QAEPAUJackEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00972490   WARN RELOC_NAME: ?GetHitLocation@HitLocations@@QAEPAUHitLocation@@ABVCCharString@@@Z -> 00815820 labelled 'CTCHitLocations::GetPHitLocationFromName'
+00972490   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesStage2::OnActivate
+00979d80   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00979d80   WARN RELOC_NAME: ?IsCoverBaseRunnable@CAIStateGroup_CreatureTakeCover@@QAE_NXZ -> 00970f30 labelled 'CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf'
+00979d80   RELOCATION_MATCH PASS   CAIStateGroup_CreatureTakeCover::IsRunnableLeaf
+00982eb0   WARN SHARED_HEADER_AVAILABLE CWorld
+00982eb0   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::WifeFeelingUpdate
+00982f70   WARN SHARED_HEADER_AVAILABLE CWorld
+00982f70   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate
+
+WINS: 14
+  0091cdc0 RELOCATION_MATCH CAIStateGroupMinionReactToNoiseMethods::IsRunnable
+  00938ed0 RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::IsStateGroupStillValid
+  0094f090 RELOCATION_MATCH CAIStateGroup_BalverineCornered::GetLandPos
+  0094feb0 RELOCATION_MATCH CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+  00954b50 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+  00954e30 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+  00956fe0 RELOCATION_MATCH CAIStateGroup_BriarRoseWillUse::Update
+  0095e260 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable@CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
+  00961880 RELOCATION_MATCH CAIStateGroup_BanditKingLunge::Update
+  00970610 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::OnActivate
+  00972490 RELOCATION_MATCH CAIStateGroup_JackOfBladesStage2::OnActivate
+  00979d80 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::IsRunnableLeaf
+  00982eb0 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::WifeFeelingUpdate
+  00982f70 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::WifeToHerselfUpdate
+addr       parity           behav  name
+0091eb60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091eb60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091eb60   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@@QAE@PBVCThing@@@Z -> 00668b60 labelled 'CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer'
+0091eb60   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombat2::IsRunnable
+0093dcd0   WARN RELOC_NAME: ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0093dcd0   WARN RELOC_NAME: ?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0093dcd0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition
+0094f9e0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094f9e0   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::ResetTimers
+009547d0   WARN RELOC_NAME: ?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+009547d0   WARN RELOC_NAME: ?GetPhase@MazeBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+009547d0   WARN RELOC_NAME: ??0MazeCreaturePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+009547d0   WARN RELOC_NAME: ??1MazeCreaturePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+009547d0   RELOCATION_MATCH PASS   CAIStateGroup_MazeShieldedChase::OnActivate
+00954cd0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00954cd0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00954cd0   WARN SHARED_HEADER_AVAILABLE CWorld
+00954cd0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00954cd0   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleUseShield::IsRunnable
+00956ce0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00956ce0   WARN SHARED_HEADER_AVAILABLE CWorld
+00956ce0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00956ce0   RELOCATION_MATCH PASS   CAIStateGroup_BriarRoseWillUse::IsRunnable
+00957a20   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00957a20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00957a20   WARN SHARED_HEADER_AVAILABLE CWorld
+00957a20   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00957a20   RELOCATION_MATCH PASS   CAIStateGroupBehaviourBase::UpdateEmote
+0095f9a0   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+0095f9a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0095f9a0   WARN SHARED_HEADER_AVAILABLE CWorld
+0095f9a0   WARN RELOC_NAME: ?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+0095f9a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0095f9a0   WARN RELOC_NAME: ?GetTargetThing@CTCCreatureOpinionOfHero@@QAEPAVCThing@@XZ -> 007446a0 labelled 'CTCPerceiveThing::GetPerceivedThing'
+0095f9a0   RELOCATION_MATCH PASS   CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction
+00962b80   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00962b80   WARN SHARED_HEADER_AVAILABLE CWorld
+00962b80   RELOCATION_MATCH PASS   CAIStateGroup_VersusEnemyBase::OnReplace
+00970f30   WARN SHARED_HEADER_AVAILABLE CWorld
+  WARN leaf 'IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase' matches no symbol in 00970f30.obj; graded the largest function
+  WARN leaf 'IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase' matches no symbol in 00970f30.obj; graded the largest function
+00970f30   WARN RELOC_NAME: ??0CIntelligentPointerBaseRetail@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00970f30   WARN RELOC_NAME: ?InsertOverflow@CHandleVector@@QAEXPAUCIntelligentPointerRetail@@ABU2@ABUCAllocatorTag@@K_N@Z -> 004ac940 labelled '_global::Std_Vector_Insert_Range_SmartPtr'
+00970f30   WARN RELOC_NAME: ??1CIntelligentPointerBaseRetail@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00970f30   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf
+00972830   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00972830   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00972830   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00972830   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00972830   WARN SHARED_HEADER_AVAILABLE CWorld
+00972830   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00972830   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesBase::SetupArena
+0097a630   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0097a630   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097a630   WARN SHARED_HEADER_AVAILABLE CWorld
+0097a630   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097a630   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0097a630   WARN RELOC_NAME: ?GetPRandomSeed@CWorld@@QAEPAKXZ -> 0049d810 labelled 'CWorld::GetWorldSeed'
+0097a630   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@N_0056c860@@QAE@PAVCThing@@@Z -> 0056c860 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   WARN RELOC_NAME: ??0CIntelligentPointerConstThing@N_0056c860@@QAE@ABU01@@Z -> 0091f990 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+0097a630   RELOCATION_MATCH PASS   CAIStateGroup_CreatureTakeCover::Update
+00982f10   WARN SHARED_HEADER_AVAILABLE CWorld
+00982f10   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::WifeGeneralUpdate
+00985f40   WARN SHARED_HEADER_AVAILABLE CWorld
+00985f40   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00985f40   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00985f40   WARN SHARED_HEADER_AVAILABLE CTCWife
+00985f40   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate
+
+WINS: 14
+  0091eb60 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::IsRunnable
+  0093dcd0 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition
+  0094f9e0 RELOCATION_MATCH CAIStateGroup_JackDragon::ResetTimers
+  009547d0 RELOCATION_MATCH CAIStateGroup_MazeShieldedChase::OnActivate
+  00954cd0 RELOCATION_MATCH CAIStateGroup_MazeTutorialBattleUseShield::IsRunnable
+  00956ce0 RELOCATION_MATCH CAIStateGroup_BriarRoseWillUse::IsRunnable
+  00957a20 RELOCATION_MATCH CAIStateGroupBehaviourBase::UpdateEmote
+  0095f9a0 RELOCATION_MATCH CIsOpinionSourceWithReaction::??0CIsOpinionSourceWithReaction
+  00962b80 RELOCATION_MATCH CAIStateGroup_VersusEnemyBase::OnReplace
+  00970f30 RELOCATION_MATCH CAIStateGroup_CreatureUseCoverBase::IsRunnableLeaf@CAIStateGroup_CreatureUseCoverBase
+  00972830 RELOCATION_MATCH CAIStateGroup_JackOfBladesBase::SetupArena
+  0097a630 RELOCATION_MATCH CAIStateGroup_CreatureTakeCover::Update
+  00982f10 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::WifeGeneralUpdate
+  00985f40 RELOCATION_MATCH CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate

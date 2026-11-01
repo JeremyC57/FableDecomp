@@ -1,0 +1,13 @@
+gw fam_gw.py {'edited': 47, 'skip': 1, 'already': 0} 
+gcwf h14_gcwf.py ok 48 already 0 other 0 
+vcs fam_vcs.py {'edited': 15, 'skip': 19, 'already': 0} 
+vcs h14_vcs.py ok 2 already 0 other 0 
+cvc h14_cvc.py ok 3 already 0 other 0 
+queue fam_auto.py {'edited': 2, 'skip': 5, 'already': 0} 
+queue fam_ret.py {'edited': 23, 'skip': 0, 'already': 0} 
+queue h14_queue.py ok 7 already 0 other 0 
+queue fam_gwt.py {'edited': 5, 'skip': 5, 'already': 0} 
+queue fam_init.py {'edited': 20, 'skip': 3, 'already': 0} 
+anon fam_cmp.py {'edited': 25, 'skip': 0, 'already': 0} 
+anon h14_anon.py ok 14 already 0 other 0 
+{'gw': 47, 'gcwf': 16, 'vcs': 15, 'cvc': 1, 'queue': 53, 'anon': 28}

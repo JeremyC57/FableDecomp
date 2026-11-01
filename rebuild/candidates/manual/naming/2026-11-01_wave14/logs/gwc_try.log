@@ -1,0 +1,12 @@
+skip 006585ee not a member getter: _helper_prep
+skip 00658604 not a member getter: ?CTCVillage_GetIsHeroEnemyOfGuards_Prep@@YAHXZ
+skip 006a23e0 not a member getter: ?GetWorld@CTCCarrying@NRemap006a23e0@@QAEPAUCWorld@2@XZ
+skip 006af620 not a member getter: ?GetDisplayEngine@@YIPAVCDisplayEngine@@PAUCViewBase@@@Z
+skip 006cb8f0 not a member getter: _helperA
+skip 006ceae0 not a member getter: ?First_Helper@@YAXXZ
+skip 006d0180 qualified call of GetWorld
+skip 007236e0 not a member getter: ?CTCPhysicsStandard_helper@@YIXPAUCTCPhysicsStandard@@@Z
+skip 007be0f9 not a member getter: ?GetWorld@CTCShotDefinitionBase@NThingShot@@QAEPAVCWorld@@XZ
+skip 007e2790 no local CTCBase
+skip 00811450 qualified call of baseUpdate
+skip 00960760 qualified call of GetWorld

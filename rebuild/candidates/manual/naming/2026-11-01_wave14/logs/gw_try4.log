@@ -1,0 +1,5 @@
+edited 00938ed0 gw C Val_938ed0_A -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['@Val_938ed0_A@4']
+skip 00961880 lost ['?Base@BanditKingLungeMethods@@QAEPAVCAIStateGroupBase@@XZ', '?GetWorld@BanditKingLungeMethods@@QAEPAXXZ']
+edited 00982eb0 gw CAIStateGroup_OpinionReactionRoot GetReactionContext -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetReactionContext@CAIStateGroup_OpinionReactionRoot@@QAEJXZ']
+edited 00982f10 gw CAIStateGroup_OpinionReactionRoot GetReactionContext -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetReactionContext@CAIStateGroup_OpinionReactionRoot@@QAEJXZ']
+edited 00982f70 gw CAIStateGroup_OpinionReactionRoot GetReactionContext -> GetWorld + ['?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?GetReactionContext@CAIStateGroup_OpinionReactionRoot@@QAEJXZ']

@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,797 of 57,611 known functions (91.6%), 45,407 of the original 49,568 (91.6%); 174 `retail_asm`,
+  never hand-edit): 52,798 of 57,611 known functions (91.6%), 45,408 of the original 49,568 (91.6%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -35,6 +35,12 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
 ## Done 2026-11-01 (details in FINDINGS_LOG)
+- Naming wave 14 landed: 160 rows, 6 family commits, recheck 160/160, bindings 73 RETIRE / 4 ADD, 1 rename, 7 labels; its three
+  decisions resolved by the coordinator under the owner delegation (`naming/2026-11-01_wave14/DECISIONS_W14_RESOLVED.tsv`).
+- Owner delegated the five open decisions (2026-11-01, "do what retail did"): recorded in EXTRA_RULES "Owner decisions, 2026-11-01";
+  0x009C4F20 ProcessAlways landed with retail's `volatile` PCompletedRead (`// Retail-volatile:` evidence line; land_chunk.sh
+  accepts the qualifier only with that line); `__forceinline` header helpers are retail (debt closed); libpk is plain C++;
+  data symbols stay gated; the parked pairs (0x00626E40+0x006276F0, 0x00935E40+0x009363D0) go out as one chunk.
 - Naming wave 13 landed: 314 rows, 11 family commits, coordinator recheck 314/314, bindings 156 RETIRE / 52 ADD, 8 renames,
   22 labels; 4 owner decisions scoped (`naming/2026-11-01_wave13/`). ESTABLISHED_SPELLINGS now applied across the tree.
 - Chunk 655 = NA001 of the never-attempted pool (ten landed-twin rows) landed 10/10 in 1-2 probes each: settle the row's own
@@ -58,16 +64,14 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002 = chunk 656 and NA003 = chunk 657 running
-   with naming wave 14 at this write (owner allowed three agents). The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA004 = chunks 656-658 running at this write
+   (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
    pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.
-2. **Naming wave 14** (brief `naming/briefs/BRIEF_W14.md`, decisions resolved 2026-11-01 under the owner rule "recreate retail
-   faithfully" in `naming/2026-11-01_wave13/DECISIONS_W13_RESOLVED.tsv`): GetWorld@CAIStateGroupBase (48 callers), VIRTUAL_SCREEN_*
-   (37), GetCurrentWorldFrame (15), the std::vector<CCharString> header family (54), 0x0070C770 slot 1 = Delete, IS_THING_ALIVE
-   <const CThingPhysical> per-caller layout proof, the per-row DEFERRED items, c651 queue rows, then the anonymous-namespace comparator
-   re-authoring. Launch after the chunk pair 652/653 (two-agent cap).
+2. **Naming wave 15** (`naming/2026-11-01_wave14/DECISIONS_W14_RESOLVED.tsv` + DEFERRED.tsv): the IS_THING_ALIVE per-caller
+   instantiation (0x0097A630), the CCreatureActionBase friend model (00692940, 00692c10), the c654 queue rows, the 10 vcs
+   byte-changers and LowerBound's shared CVectorMap model (244 + 103 rows); VIRTUAL_SCREEN_* / PMainGameComponent stay gated.
 3. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md`: the 76 local `enum ENullDef` models, the
    1,317 proven CCountedPointer rows, and the shared `engine/CDefPointer.h` Release() shape (mov/dec/mov vs retail
    `dec [ecx+4]; jne`, header debt found in chunk 649).

@@ -1,0 +1,129 @@
+addr       parity           behav  name
+0041e10d   WARN SHARED_HEADER_AVAILABLE CManager
+0041e10d   RELOCATION_MATCH PASS   NUISystem::CManager::IsKeyHeld
+00633bf0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+00633bf0   WARN RELOC_NAME: ?SetPlayer@CProcessedInput@@QAEXK@Z -> 00a0d3a0 labelled '_global::SetMember_dword0x0_00a0d3a0'
+00633bf0   RELOCATION_MATCH PASS   CPlayer::UnInitActiveMode
+006621c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006621c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006621c0   MATCH            PASS   CThingCreatureBase::IsFreeToFinishAction
+006643c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006643c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006643c0   RELOCATION_MATCH PASS   CThingCreatureBase::UpdateAction
+0066f5c0   WARN RELOC_NAME: ?GetValue@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0066f5c0   RELOCATION_MATCH PASS   CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType
+00687b30   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00687b30   RELOCATION_MATCH PASS   CInputProcessGameBase::IsEventButtonReleased
+00687fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00687fd0   WARN SHARED_HEADER_AVAILABLE CInputProcessMain
+00687fd0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00687fd0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00687fd0   WARN RELOC_NAME: ?ProcessInput@CConsole@@QAE_NABVCInputEvent@@@Z -> 009ea540 labelled '_global::ReturnFalse_ret4_009ea540'
+00687fd0   WARN RELOC_NAME: ?GetMouseMovement@CInputProcessMain@@QAE?AVC2DVector@@ABVCInputEvent@@@Z -> 00687d20 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00687fd0   RELOCATION_MATCH PASS   CInputProcessMain::ProcessInput
+006894c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006894c0   WARN RELOC_NAME: ?GetAnaloguePosition@CInputEvent@@QBE?AUC2DVector@1@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+006894c0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+006894c0   RELOCATION_MATCH PASS   CInputProcessInventoryBase::ProcessInput
+0068d890   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068d890   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0068d890   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0068d890   WARN SHARED_HEADER_AVAILABLE CWorld
+0068d890   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068d890   WARN RELOC_CONFLICT: ?PushLookAround@CGameCameraManager@@QAEXXZ -> 00699970 here, 00699a50 in landed 007d34a0
+0068d890   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068d890   RELOCATION_MATCH PASS   CInputProcessControlCreatureRightStick::ProcessInput
+00759d30   WARN SHARED_HEADER_AVAILABLE CWorld
+00759d30   WARN SHARED_HEADER_AVAILABLE CTCBase
+00759d30   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::ComputeForces
+009f4c60   RELOCATION_MATCH PASS   CInputManager::IsJoystickEventInQueue
+009f4f10   RELOCATION_MATCH PASS   CInputManager::EventScanNext
+00a66880   WARN SHARED_HEADER_AVAILABLE CKeyboard
+00a66880   RELOCATION_MATCH PASS   CKeyboard::UpdateMaintainedEvents
+00a66c20   WARN SHARED_HEADER_AVAILABLE CMouse
+00a66c20   WARN RELOC_NAME: ?SetAsRightMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03dc0 labelled 'CInputEvent::SetAsMiddleMouseButtonHeld'
+00a66c20   WARN RELOC_NAME: ?SetAsMiddleMouseButtonHeld@CInputEvent@@QAEXABVC2DVector@@ABVC3DVector@@NN@Z -> 00a03e70 labelled 'CInputEvent::SetAsRightMouseButtonHeld'
+00a66c20   RELOCATION_MATCH PASS   CMouse::UpdateMaintainedEvents
+
+WINS: 14
+  0041e10d RELOCATION_MATCH NUISystem::CManager::IsKeyHeld
+  00633bf0 RELOCATION_MATCH CPlayer::UnInitActiveMode
+  006621c0 MATCH CThingCreatureBase::IsFreeToFinishAction
+  006643c0 RELOCATION_MATCH CThingCreatureBase::UpdateAction
+  0066f5c0 RELOCATION_MATCH CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType
+  00687b30 RELOCATION_MATCH CInputProcessGameBase::IsEventButtonReleased
+  00687fd0 RELOCATION_MATCH CInputProcessMain::ProcessInput
+  006894c0 RELOCATION_MATCH CInputProcessInventoryBase::ProcessInput
+  0068d890 RELOCATION_MATCH CInputProcessControlCreatureRightStick::ProcessInput
+  00759d30 RELOCATION_MATCH CTCPhysicsRigidBody::ComputeForces
+  009f4c60 RELOCATION_MATCH CInputManager::IsJoystickEventInQueue
+  009f4f10 RELOCATION_MATCH CInputManager::EventScanNext
+  00a66880 RELOCATION_MATCH CKeyboard::UpdateMaintainedEvents
+  00a66c20 RELOCATION_MATCH CMouse::UpdateMaintainedEvents
+addr       parity           behav  name
+0042e3ee   WARN SHARED_HEADER_AVAILABLE CManager
+0042e3ee   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+0042e3ee   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Input
+00633cb0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+00633cb0   WARN RELOC_NAME: ?SetPlayer@CProcessedInput@@QAEXK@Z -> 00a0d3a0 labelled '_global::SetMember_dword0x0_00a0d3a0'
+00633cb0   RELOCATION_MATCH PASS   CPlayer::InitActiveMode
+006622d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006622d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006622d0   WARN RELOC_NAME: ?SetFlag_00863260@CThingBodyReorienter@@QAEX_N@Z -> 00863260 labelled '_global::SetMember_byte0x8_00863260'
+006622d0   RELOCATION_MATCH PASS   CThingCreatureBase::UpdateBodyReorientation
+0066eee0   WARN SHARED_HEADER_AVAILABLE CInputTypeMouseButtonEvent
+0066eee0   RELOCATION_MATCH PASS   CInputTypeMouseButtonEvent::IsEventOfThisType
+00687a90   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00687a90   RELOCATION_MATCH PASS   CInputProcessGameBase::IsEventButtonPressed
+00687bd0   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00687bd0   RELOCATION_MATCH PASS   CInputProcessGameBase::IsEventButtonHeld
+00688a80   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00688a80   WARN SHARED_HEADER_AVAILABLE CPlayer
+00688a80   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00688a80   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+00688a80   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00688a80   RELOCATION_MATCH PASS   CInputProcessStrafe::ProcessInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c880   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+0068c880   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068c880   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068c880   WARN RELOC_NAME: ?CanCancel@CPlayerGuiQuestion@@QAE_NXZ -> 0048db98 labelled '_global::Forward_operator___member0x6c_0048db98'
+0068c880   RELOCATION_MATCH PASS   CInputProcessYesNoQuestion::ProcessInput
+006909a0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+006909a0   WARN SHARED_HEADER_AVAILABLE CWorld
+006909a0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006909a0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+006909a0   RELOCATION_MATCH PASS   CInputProcessCutScene::ProcessInput
+009f4b10   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+009f4b10   RELOCATION_MATCH PASS   CInputManager::IsEventProcessed
+009f4d40   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+009f4d40   RELOCATION_MATCH PASS   CInputManager::IsEventInQueue
+009f4f70   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+009f4f70   RELOCATION_MATCH PASS   CInputManager::RemoveEventFromQueue
+00a669e0   WARN SHARED_HEADER_AVAILABLE CKeyboard
+00a669e0   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+00a669e0   WARN RELOC_NAME: ?SetAsKeyboardKeyHeld@CInputEvent@@QAEXJNN@Z -> 00a03c20 labelled 'CInputEvent::SetAsKeyboardKeyPressed'
+00a669e0   RELOCATION_MATCH PASS   CKeyboard::ProcessMaintainedEventsFromEvent
+00ab6240   WARN RELOC_NAME: ?EmptyEventStore@CKeyboardDX@@QAEXXZ -> 00a66760 labelled '_global::SetMemberConst_00a66760'
+00ab6240   WARN RELOC_NAME: ?HasInputFocus@CSystemManager@@QAE_NXZ -> 009a4fb0 labelled 'CSystemManager::IsApplicationInputFocus'
+00ab6240   WARN RELOC_NAME: ?SetAsKeyboardKeyPressed@CInputEvent@@QAEXW4EInputKey@@N@Z -> 00a03bf0 labelled 'CInputEvent::SetAsKeyboardKeyHeld'
+00ab6240   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+00ab6240   RELOCATION_MATCH PASS   CKeyboardDX::UpdateKeyEvents
+
+WINS: 14
+  0042e3ee RELOCATION_MATCH CNewFrontendGameComponent::?Input@CNewFrontendGameComponent@@UAEXXZ
+  00633cb0 RELOCATION_MATCH CPlayer::InitActiveMode
+  006622d0 RELOCATION_MATCH CThingCreatureBase::UpdateBodyReorientation
+  0066eee0 RELOCATION_MATCH CInputTypeMouseButtonEvent::?IsEventOfThisType@
+  00687a90 RELOCATION_MATCH CInputProcessGameBase::IsEventButtonPressed
+  00687bd0 RELOCATION_MATCH CInputProcessGameBase::IsEventButtonHeld
+  00688a80 RELOCATION_MATCH CInputProcessStrafe::?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  0068c880 RELOCATION_MATCH CInputProcessYesNoQuestion::ProcessInput
+  006909a0 RELOCATION_MATCH CInputProcessCutScene::?ProcessInput@CInputProcessCutScene@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
+  009f4b10 RELOCATION_MATCH CInputManager::IsEventProcessed
+  009f4d40 RELOCATION_MATCH CInputManager::IsEventInQueue
+  009f4f70 RELOCATION_MATCH CInputManager::RemoveEventFromQueue
+  00a669e0 RELOCATION_MATCH CKeyboard::ProcessMaintainedEventsFromEvent
+  00ab6240 RELOCATION_MATCH CKeyboardDX::UpdateKeyEvents

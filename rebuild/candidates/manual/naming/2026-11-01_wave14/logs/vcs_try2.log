@@ -1,0 +1,31 @@
+skip 0047e07f CCharString not a class
+skip 004b4a10 0 definitions of CCharStringVector
+skip 004fe030 bound callee respelled: ['bound ?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAUCCharStringVector@@@Z']
+skip 0057b9d7 bound callee respelled: ['bound ??0CCharStringVector@@QAE@K@Z']
+skip 0057ba5c bound callee respelled: ['bound ??0CCharStringVector@@QAE@K@Z']
+skip 0057bad4 bound callee respelled: ['bound ??0CCharStringVector@@QAE@K@Z']
+skip 00591a66 bound callee respelled: ['bound ?Transfer@CPersistContext@@QAEXPBDPAUCCharStringVector@@@Z', 'bound ?push_back@CCharStringVector@@QAEXABVCCharString@@@Z', 'bound ?reserve@CCharStringVector@@QAEXK@Z']
+skip 005f05e5 bound callee respelled: ['bound ?AddAbilityToCorrectList@CTCInventoryAbilities@@QAEXJPAUCCharStringVector@@0@Z']
+skip 00706f40 bound callee respelled: ['bound ??0CCharStringVector@@QAE@K@Z', 'bound ?Transfer@CPersistContext@@QAEXPBDAAUCCharStringVector@@@Z']
+skip 0072e290 bound callee respelled: ['bound ?GetAllDummyObjectNames@CTCGraphicAppearance@@QAEXAAUCCharStringVector@@@Z']
+skip 00767200 bound callee respelled: ['bound ??0CCharStringVector@@QAE@K@Z']
+skip 007aebe0 compile: \7a\STLmap_operator_007aebe0.cpp(88) : error C3860: template argument list following class template name must list parameters in the order used in template parameter list | 5f-8649-a32d96bb1c2d\scratchpad\naming\w14\ov_vcstry\rebuild\src\compiled\00\7a\STLmap_operator_007aebe0.cpp(88) : error C2976: 'std::vector' : too few template arguments
+skip 00859a70 bound callee respelled: ['bound ?GetHelperPointNamesFromStrikeEventName@@YIXABVCCharString@@AAUCCharStringVector@@_N22@Z']
+edited 0098d9f0 vcs CCharStringVector -> std::vector<CCharString> + ['??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '?Destroy@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@SAXPAVCCharString@@0@Z'] - ['??1CCharStringVector@@QAE@XZ', '?Destroy@CCharStringVector@@SAXPAVCCharString@@0@Z']
+edited 009c87c0 vcs vector<T> -> vector<T, allocator<T> > + ['??1?$vector@PAVCDataBankEntry@NGameText@@V?$allocator@PAVCDataBankEntry@NGameText@@@std@@@std@@QAE@XZ', '??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '??1?$vector@VCDataBankGroupEntry@NGameText@@V?$allocator@VCDataBankGroupEntry@NGameText@@@std@@@std@@QAE@XZ', '??1?$vector@VCDataBankTextEntry@NGameText@@V?$allocator@VCDataBankTextEntry@NGameText@@@std@@@std@@QAE@XZ'] - ['??1?$vector@PAVCDataBankEntry@NGameText@@@std@@QAE@XZ', '??1?$vector@VCCharString@@@std@@QAE@XZ', '??1?$vector@VCDataBankGroupEntry@NGameText@@@std@@QAE@XZ', '??1?$vector@VCDataBankTextEntry@NGameText@@@std@@QAE@XZ']
+skip 00cef9a0 CCharString not a class
+edited 00eec890 vcs CCharStringVector -> std::vector<CCharString> + ['??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '?empty@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QBE_NXZ'] - ['??0CCharStringVector@@QAE@XZ', '??1CCharStringVector@@QAE@XZ', '?empty@CCharStringVector@@QBE_NXZ']
+report 004fe030 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 004fe030 pdb ?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+report 00591a66 pdb ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+report 005f05e5 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00706f40 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 0072e290 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00767200 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00859a70 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00859a70 pdb ?front@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAVCCharString@@XZ
+report 009c87c0 pdb ??1?$vector@PAVCDataBankEntry@NGameText@@V?$allocator@PAVCDataBankEntry@NGameText@@@std@@@std@@QAE@XZ
+report 009c87c0 pdb ??1?$vector@VCDataBankGroupEntry@NGameText@@V?$allocator@VCDataBankGroupEntry@NGameText@@@std@@@std@@QAE@XZ
+report 009c87c0 pdb ??1?$vector@VCDataBankTextEntry@NGameText@@V?$allocator@VCDataBankTextEntry@NGameText@@@std@@@std@@QAE@XZ
+report 00eec890 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00eec890 pdb ?empty@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QBE_NXZ

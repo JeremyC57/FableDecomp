@@ -1,0 +1,21 @@
+edited 004fe030 vcs CCharStringVector -> std::vector<CCharString> + ['??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ', '?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z', '?_Destroy@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@SAXPAVCCharString@@0@Z'] - ['??0CCharStringVector@@QAE@XZ', '??1CCharStringVector@@QAE@XZ', '?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAUCCharStringVector@@@Z', '?_Destroy@CCharStringVector@@SAXPAVCCharString@@0@Z']
+skip 0057b9d7 bound callee respelled off-PDB: ['bound ??0CCharStringVector@@QAE@K@Z -> ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@K@Z']
+skip 0057ba5c bound callee respelled off-PDB: ['bound ??0CCharStringVector@@QAE@K@Z -> ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@K@Z']
+skip 0057bad4 bound callee respelled off-PDB: ['bound ??0CCharStringVector@@QAE@K@Z -> ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@K@Z']
+skip 00591a66 bound callee respelled off-PDB: ['bound ?Transfer@CPersistContext@@QAEXPBDPAUCCharStringVector@@@Z -> ?Transfer@CPersistContext@@QAEXPBDPAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z', 'bound ?reserve@CCharStringVector@@QAEXK@Z -> ?reserve@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXK@Z']
+skip 005f05e5 bound callee respelled off-PDB: ['bound ?AddAbilityToCorrectList@CTCInventoryAbilities@@QAEXJPAUCCharStringVector@@0@Z -> ?AddAbilityToCorrectList@CTCInventoryAbilities@@QAEXJPAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@0@Z']
+skip 00706f40 bound callee respelled off-PDB: ['bound ??0CCharStringVector@@QAE@K@Z -> ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@K@Z', 'bound ?Transfer@CPersistContext@@QAEXPBDAAUCCharStringVector@@@Z -> ?Transfer@CPersistContext@@QAEXPBDAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z']
+skip 0072e290 bound callee respelled off-PDB: ['bound ?GetAllDummyObjectNames@CTCGraphicAppearance@@QAEXAAUCCharStringVector@@@Z -> ?GetAllDummyObjectNames@CTCGraphicAppearance@@QAEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z']
+skip 00767200 bound callee respelled off-PDB: ['bound ??0CCharStringVector@@QAE@K@Z -> ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@K@Z']
+skip 00859a70 bound callee respelled off-PDB: ['bound ?GetHelperPointNamesFromStrikeEventName@@YIXABVCCharString@@AAUCCharStringVector@@_N22@Z -> ?GetHelperPointNamesFromStrikeEventName@@YIXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@_N22@Z']
+report 004fe030 bound-respelled ?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAUCCharStringVector@@@Z ?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+report 004fe030 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 004fe030 pdb ?SaveToScript@CThingManager@@QAEXAAVCCharString@@JAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+report 00591a66 bound-respelled ?push_back@CCharStringVector@@QAEXABVCCharString@@@Z ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+report 00591a66 pdb ?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z
+report 005f05e5 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00706f40 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 0072e290 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00767200 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00859a70 pdb ??0?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ
+report 00859a70 pdb ?front@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAVCCharString@@XZ

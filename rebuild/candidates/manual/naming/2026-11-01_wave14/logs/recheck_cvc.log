@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0070c770   RELOCATION_MATCH PASS   `anonymous namespace'::IsAnimStateBlendValid
+
+WINS: 1
+  0070c770 RELOCATION_MATCH `anonymous namespace::?IsAnimStateBlendValid@

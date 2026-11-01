@@ -1,0 +1,10 @@
+skip 00661ed0 not a member getter: ?CThingCreatureBase_GetCombatBase@@YIPAXPAVCThingCreatureBase@@@Z
+edited 00663f50 gw CThing PeekWorld -> GetWorld + ['?GetWorld@CThing@@IAEAAVCWorld@@XZ'] - ['?PeekWorld@CThing@@QAEPAVCWorld@@XZ']
+skip 00692940 qualified call of GetWorld
+skip 00692c10 qualified call of GetWorld
+edited 0082fd90 gw CThing GetCamera -> GetWorld + ['?GetWorld@CThing@@IAEAAVCWorld@@XZ'] - ['?GetCamera@CThing@@QBEPAVCCamera@@XZ']
+skip 00832840 compile: f-8649-a32d96bb1c2d\scratchpad\naming\w14\ov_gwttry\rebuild\src\compiled\00\83\CThingAICreature_OnCollision_00832840.cpp(78) : error C2027: use of undefined type 'CWorld'
+edited 00832e60 gw CThing PeekWorld -> GetWorld + ['?GetWorld@CThing@@IAEAAVCWorld@@XZ'] - ['?PeekWorld@CThing@@QAEPAVCWorld@@XZ']
+skip 00833010 no local CThing
+skip 00834760 no local CThing
+edited 0083be90 gw CThingSwitch PeekWorld -> GetWorld + ['?GetWorld@CThing@@IAEAAVCWorld@@XZ'] - ['?PeekWorld@CThingSwitch@@QAEPAVCWorld@@XZ']

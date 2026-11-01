@@ -1,0 +1,1 @@
+edited 00961880 gw BanditKingLungeMethods GetWorld -> GetWorld + ['?Base@BanditKingLungeMethods@@QAEPAVCAIStateGroupBaseLayout@@XZ', '?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] - ['?Base@BanditKingLungeMethods@@QAEPAVCAIStateGroupBase@@XZ', '?GetWorld@BanditKingLungeMethods@@QAEPAXXZ']
