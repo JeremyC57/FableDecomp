@@ -1,4 +1,7 @@
-// CVolumeTexture::GetByteLength(unsigned long level) -- size in bytes of one mip level of the volume texture: the level's description (IDirect3DVolumeTexture9::GetLevelDesc, COM slot 17) for the dimensions, the texture's pixel format (an inline GetPixelFormat on level 0) for the bytes per voxel, then bytes * Width * Height * Depth
+// CVolumeTexture::GetLevelByteLength(long level) -- size in bytes of one mip level of the volume texture: the level's description (IDirect3DVolumeTexture9::GetLevelDesc, COM slot 17) for the dimensions, the texture's pixel format (an inline GetPixelFormat on level 0) for the bytes per voxel, then bytes * Width * Height * Depth
+// Leaf: ?GetLevelByteLength@CVolumeTexture@@QBEJJ@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A681F0, length 86 bytes.
 // Callees: IDirect3DVolumeTexture9::GetLevelDesc (`call [ecx+44h]`, `this` pushed) twice,
 // CPixelFormat::CPixelFormat(D3DFORMAT) @ 0x009E3830, CPixelFormat::GetByteColourDepth @ 0x009E3800.
@@ -6,8 +9,9 @@
 // CPixelFormat temporary is built in the DEAD slot of the `level` argument (`lea ecx,[esp+44h]` / `[esp+40h]`),
 // then `imul` from the frame by Depth, Height, Width; `ret 4`. The manifest's "CSurface::GetByteLength" label
 // is propagated; the neighbours 0x00A68060 (Uninitialise) .. 0x00A682E0 are CVolumeTexture's.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct D3DVOLUME_DESC_Local {                      // D3DVOLUME_DESC, 0x1c bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
+    _D3DFORMAT Format;                          // +0x00 D3DFORMAT
     unsigned long Type;                            // +0x04
     unsigned long Usage;                           // +0x08
     unsigned long Pool;                            // +0x0c
@@ -40,7 +44,8 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
 // CPixelFormat with its D3DFORMAT constructor (engine/CPixelFormat.h holds only the layout).
 class CPixelFormat { public:
     long FormatIndex;                              // +0x00 (PDB CPixelFormat::FormatIndex)
-    CPixelFormat(unsigned long d3dFormat);  // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);  // 0x009E3830
 public:
     unsigned long GetByteColourDepth() const;   // 0x009E3800
 };
@@ -58,10 +63,10 @@ class CVolumeTexture { public:
         PD3DVolumeTexture->GetLevelDesc(0, &desc);
         return CPixelFormat(desc.Format);
     }
-    unsigned long GetByteLength(unsigned long level) const;
+    long GetLevelByteLength(long level) const;
 };
 
-unsigned long CVolumeTexture::GetByteLength(unsigned long level) const
+long CVolumeTexture::GetLevelByteLength(long level) const
 {
     D3DVOLUME_DESC_Local desc;
     PD3DVolumeTexture->GetLevelDesc(level, &desc);

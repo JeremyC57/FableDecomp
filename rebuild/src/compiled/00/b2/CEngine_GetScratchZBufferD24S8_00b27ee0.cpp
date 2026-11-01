@@ -1,4 +1,7 @@
 // CEngine::GetScratchZBufferD24S8(unsigned long size) -- the shared D24S8 depth surface for a power-of-two size class: index = floor(log2(size)); grow the cache array when needed and create the size x size depth buffer on first use
+// Leaf: ?GetScratchZBufferD24S8@CEngine@@QAEPAUCSurfaceNative@@K@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B27EE0, length 289 bytes (`ret 4`).
 // Callees: CArray<CSurface*>::resize(unsigned int, const value&) @ 0x00B2AAB0, operator new @ 0x00BFEA1A, CPixelFormat::CPixelFormat
 // (D3DFORMAT) @ 0x009E3830 (catalogued as CPixelFormat::Initialise), CSurface::InitialiseAsDepthBuffer(const C2DExtentsI&,
@@ -8,8 +11,11 @@
 // Shape: the landed HighestSetBit 0x0099FDB0 inlined (full form: `or esi,-1` for 0, 31 for the top bit); the resize fill value
 // and the pixel format both live in the dead `size` argument slot (size itself stays in ebx); the format is a named local
 // built before the call, the extents a call temporary (built after the pushes); every element access re-reads the array.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include "engine/CSurface.h"
+#define CPixelFormat CPixelFormatLayout
 #include "engine/CPixelFormat.h"
+#undef CPixelFormat
 #include "rebuild_abi.h"
 
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
@@ -35,8 +41,9 @@ class C2DExtentsI { public:
     C2DExtentsI(long w, long h) : Width(w), Height(h) { }
 };
 
-struct CPixelFormatNative : CPixelFormat {
-    CPixelFormatNative(long d3dFormat);            // 0x009E3830
+class CPixelFormat : public CPixelFormatLayout { public:   // was a CPixelFormatNative stand-in
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);   // 0x009E3830
 };
 
 struct CSurfaceNative : CSurface {
@@ -64,7 +71,7 @@ CSurfaceNative* CEngine::GetScratchZBufferD24S8(unsigned long size)
         ScratchZBuffersD24S8.resize(level + 1, 0);
     if (ScratchZBuffersD24S8[level] == 0) {
         ScratchZBuffersD24S8[level] = new CSurfaceNative;
-        CPixelFormatNative format(0x4b);           // D3DFMT_D24S8
+        CPixelFormat format(D3DFMT_D24S8);           // D3DFMT_D24S8
         ScratchZBuffersD24S8[level]->InitialiseAsDepthBuffer(C2DExtentsI(size, size), format, 0, false);
     }
     return ScratchZBuffersD24S8[level];

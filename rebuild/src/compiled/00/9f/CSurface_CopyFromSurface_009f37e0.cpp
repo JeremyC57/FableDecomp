@@ -1,5 +1,7 @@
 // CSurface::CopyFromSurface(const C2DBoxI* dstBox, const CSurface& source, const C2DBoxI* srcBox, unsigned long filter) -- copy a (sub)rectangle of another surface into this one; a signed destination fed from an unsigned source goes through a temporary A8R8G8B8 image (recursive copy, lock, signed conversion), everything else through D3DXLoadSurfaceFromSurface
 // Leaf: CopyFromSurface
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F37E0, 446 bytes, `ret 0x10`. Replaces the landed asm_bake of this address.
 // Callees: CPixelFormat::Initialise(D3DFORMAT) 0x009E3830, CPixelFormat::IsSigned() const 0x009E3970,
 //   CSurface::CanDoProperSignedConversion 0x009F35D0, CSurface::InitialiseAsImage 0x009F3230, CSurface::Lock 0x009F33E0
@@ -14,8 +16,9 @@
 //   pointers as named locals zeroed up front, members copied top, bottom, left, right (retail store order).
 // Layout: engine/CSurface.h models the vptr as a `__vftable` data member, which cannot express the temporary's vtable
 //   stores, so the class is modelled locally with the PDB member names (as the landed ctor 0x009F2D60 does).
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct D3DSURFACE_DESC_Local {
-    unsigned long Format; unsigned long Type; unsigned long Usage; unsigned long Pool;
+    _D3DFORMAT Format; unsigned long Type; unsigned long Usage; unsigned long Pool;
     unsigned long MultiSampleType; unsigned long MultiSampleQuality; unsigned long Width; unsigned long Height;
 };
 struct IDirect3DSurface9 {
@@ -45,8 +48,8 @@ class CPixelFormat {
 public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) {}
-    CPixelFormat(unsigned long d3dFormat) { Initialise(d3dFormat); }
-    void Initialise(unsigned long d3dFormat);      // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);      // 0x009E3830
     bool IsSigned() const;                         // 0x009E3970
 };
 class CSurface {
@@ -87,9 +90,9 @@ public:
 void CSurface::CopyFromSurface(const C2DBoxI* dstBox, const CSurface& source, const C2DBoxI* srcBox, unsigned long filter)
 {
     if (GetPixelFormat().IsSigned() && !source.GetPixelFormat().IsSigned()
-        && CanDoProperSignedConversion(0, 0, &CPixelFormat(0x15))) {
+        && CanDoProperSignedConversion(0, 0, &CPixelFormat(D3DFMT_A8R8G8B8))) {
         CPixelFormat argb;
-        argb.Initialise(0x15);
+        argb.Initialise(D3DFMT_A8R8G8B8);
         CSurface temp;
         temp.InitialiseAsImage(GetDimensions(), argb, false);
         temp.CopyFromSurface(dstBox, source, srcBox, 0xffffffff);

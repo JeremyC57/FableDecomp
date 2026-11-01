@@ -1,5 +1,7 @@
 // CTexture::LoadFromBitmapFile(const CWideString& filename, const C2DExtentsI* size, const CPixelFormat* format, unsigned long mipLevels, unsigned long usage, long pool, unsigned long filter, unsigned long mipFilter, CTextureFileInfo* info, long) -- release the old texture and load the file through D3DXCreateTextureFromFileExW (default size/format unless given), report the loaded size, mip count and format, and recompute the byte length
 // Leaf: ?LoadFromBitmapFile@CTexture
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FA340, 256 bytes (+16 int3), `ret 28h` (ten arguments, the last unused).
 // Callees: ConvertPathToFullPath(const CWideString&) @ 0x00999110 (`__fastcall`, CWideString by value through ecx),
 //   IDirect3DTexture9::Release (COM slot 2), GFGetSystemManager @ 0x009A4EC0 (device = system +0x60 -> +0x58),
@@ -12,6 +14,7 @@
 //   AllocationSource = 0); width/height default to D3DX_DEFAULT (-1) and the format to D3DFMT_UNKNOWN unless given; the
 //   device is a named local fetched after them (kept in esi, `this` spilled); the result is tested by two separate
 //   `return false` statements (`jl ; je`), each destroying the path; the reported size is a C2DExtentsI temporary copy.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 namespace N_0099af00 { struct CWideString {
     void* PData;
     ~CWideString();                                         // 0x0099B510
@@ -38,7 +41,7 @@ struct D3DXIMAGE_INFO {
     unsigned long Height;                   // +0x04
     unsigned long Depth;                    // +0x08
     unsigned long MipLevels;                // +0x0c
-    long          Format;                   // +0x10 D3DFORMAT
+    _D3DFORMAT          Format;                   // +0x10 D3DFORMAT
     long          ResourceType;             // +0x14
     long          ImageFileFormat;          // +0x18
 };
@@ -55,7 +58,7 @@ class C2DExtentsI { public:
 };
 class CPixelFormat { public:
     long FormatIndex;
-    void Initialise(long d3dFormat);                         // 0x009E3830
+    void Initialise(_D3DFORMAT d3dFormat);                         // 0x009E3830
 };
 struct CTextureFileInfo {
     C2DExtentsI  Size;                      // +0x00

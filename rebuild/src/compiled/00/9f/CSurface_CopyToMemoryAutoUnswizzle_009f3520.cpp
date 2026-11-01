@@ -3,6 +3,8 @@
 // Identity: the catalog label "CopyFromMemoryAutoSwizzle" is copied from the sibling 0x009F3470; this body copies the
 //   locked surface INTO the buffer (source = PMem), which is the PDB's CopyToMemoryAutoUnswizzle.
 // Leaf: CopyToMemoryAutoUnswizzle
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Callees: CSurface::Lock(unsigned long) @ 0x009F33E0 (the 16-byte CSurfaceLockedRect by hidden pointer), IDirect3DSurface9::GetDesc
 //   (COM slot 12, +0x30) and UnlockRect (slot 14, +0x38, through the inline Unlock), CPixelFormat::Initialise(D3DFORMAT) @ 0x009E3830,
 //   CPixelFormat::GetByteColourDepth() const @ 0x009E3800.
@@ -11,6 +13,7 @@
 //   intrinsic memcpy is `rep movsd ; rep movsb`, the row counter lives in the dead `data` argument slot (the pointer itself
 //   rides in eax), and both cursors step by their own pitch.
 // Model: engine/CSurface.h (+4 PD3DSurface) and engine/CPixelFormat.h with methods structs; PDB CSurfaceLockedRect.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include "engine/CSurface.h"
 #define CPixelFormat CPixelFormatLayout
 #include "engine/CPixelFormat.h"
@@ -20,11 +23,12 @@ class CPixelFormat : public CPixelFormatLayout
 {
 public:
     unsigned long GetByteColourDepth() const;   // 0x009E3800
+    void Initialise(_D3DFORMAT d3dFormat);      // 0x009E3830 (naming wave 25: was on a CPixelFormat_Methods stand-in)
 };
 #include <string.h>
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
+    _D3DFORMAT Format;                          // +0x00 D3DFORMAT
     unsigned long Type;                            // +0x04
     unsigned long Usage;                           // +0x08
     unsigned long Pool;                            // +0x0c
@@ -64,9 +68,6 @@ class CSurfaceLockedRect { public:                        // PDB CSurfaceLockedR
     unsigned char* PMem;                           // +0x0c
 };
 
-struct CPixelFormat_Methods : CPixelFormat {
-    void Initialise(unsigned long d3dFormat);      // 0x009E3830 (D3DFORMAT)
-};
 
 struct CSurface_Methods : CSurface {
     CSurfaceLockedRect Lock(unsigned long lockFlags);   // 0x009F33E0
@@ -101,7 +102,7 @@ void CSurface_Methods::CopyToMemoryAutoUnswizzle(void* data, long pitch)
     CSurfaceLockedRect locked = Lock(0);
     D3DSURFACE_DESC_Local desc;
     PD3DSurface->GetDesc(&desc);
-    CPixelFormat_Methods format;
+    CPixelFormat format;
     format.Initialise(desc.Format);
     unsigned long depth = format.GetByteColourDepth();
     for (long y = 0; y < locked.Dimensions.Y; ++y) {

@@ -1,4 +1,7 @@
 // CMainGameComponent::InitGraphics() -- pick the texture formats (compressed when the display supports it and the option is on), create the main graphic bank "GBANK_MAIN" into PMainGraphicBank and make it the graphic appearances' bank, with three loading-progress ticks; returns true
+// Leaf: ?InitGraphics@CMainGameComponent@@QAE_NXZ
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail 0x00416C8A, 494 bytes, plain `ret` after `leave`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, __fastcall DisplayProgress 0x009E9F40,
@@ -13,6 +16,7 @@
 // Layout: CGraphicDataBankInit (PDB, 0x2c) as the landed CNewFrontendGameComponent::InitialiseGraphics 0x0042DDB3;
 //   CMainGameComponent PMainGraphicBank at +0x161C8 (PDB +0x161D0 less 8 bytes of narrower retail members).
 // Shape: the frame-pointer size TU of the landed twin; the progress texts share one frame slot in their own blocks.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 class CCharString { public:
@@ -22,8 +26,8 @@ class CCharString { public:
 };
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&, float, bool, bool); }   // 0x009E9F40   // 0x009E9F40
 class CPixelFormat { public:
-    long Format;
-    void Initialise(long d3dFormat);               // 0x009E3830
+    _D3DFORMAT Format;
+    void Initialise(_D3DFORMAT d3dFormat);               // 0x009E3830
 };
 class CGraphicDataBankInit { public:                      // 0x2c bytes
     CPixelFormat  NonAlphaFormat;                  // +0x00
@@ -94,7 +98,7 @@ bool CMainGameComponent::InitGraphics()
         GPDisplayManager->GetBestCompressedNonAlphaTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat);
         GPDisplayManager->GetBestCompressedAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);
         GPDisplayManager->GetBestCompressedBooleanAlphaTextureFormat(g_TextureBitDepth, &init.BooleanAlphaFormat);
-        init.InterpolatedAlphaFormat.Initialise(0x35545844);   // D3DFMT_DXT5
+        init.InterpolatedAlphaFormat.Initialise(D3DFMT_DXT5);   // D3DFMT_DXT5
     } else {
         GPDisplayManager->GetBestOpaqueTextureFormat(g_TextureBitDepth, &init.NonAlphaFormat, false);
         GPDisplayManager->GetBestAlphaTextureFormat(g_TextureBitDepth, &init.AlphaFormat);

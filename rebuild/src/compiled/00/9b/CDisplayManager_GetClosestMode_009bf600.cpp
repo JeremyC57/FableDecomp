@@ -3,6 +3,8 @@
 //   exists, else the adapter); full screen walks every back-buffer format's adapter modes and keeps the one with the smallest
 //   colour-depth error, ties broken by the smallest |dY|+|dX| resolution error (later modes win ties).
 // Leaf: GetClosestMode
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BF600, 467 bytes (+int3 padding), __fastcall with a hidden _D3DDISPLAYMODE result, `ret 0x10`.
 // Callees: IDirect3DDevice9::GetDisplayMode (slot 8), IDirect3D9::GetAdapterModeCount / EnumAdapterModes / GetAdapterDisplayMode
 //   (slots 6/7/8), CPixelFormat::Initialise 0x009E3830, CPixelFormat::GetColourDepth 0x009E3820; the pixel-format table 0x0129BA40.
@@ -11,12 +13,13 @@
 //   STLport vectors put it at +0x298 -- hence a local model (engine/ has no CDisplayManager.h).
 // Shape: the mode count is re-queried in the inner loop condition; only best.Format is initialised (D3DFMT_UNKNOWN); abs() is the
 //   cdq/xor/sub intrinsic; the windowed result is the queried mode with Width/Height overwritten, returned by value.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include <stdlib.h>
 struct _D3DDISPLAYMODE {
     unsigned long Width;
     unsigned long Height;
     unsigned long RefreshRate;
-    unsigned long Format;                          // D3DFORMAT
+    _D3DFORMAT Format;                          // D3DFORMAT
 };
 
 struct IDirect3D9 {
@@ -52,7 +55,7 @@ extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 
 class CPixelFormat { public:
     long FormatIndex;
-    void Initialise(unsigned long format);         // 0x009E3830
+    void Initialise(_D3DFORMAT format);         // 0x009E3830
     unsigned long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].m_d3dFormat; }
 public:
     unsigned long GetColourDepth() const;   // 0x009E3820
@@ -92,7 +95,7 @@ _D3DDISPLAYMODE CDisplayManager::GetClosestMode(const C2DExtentsI& resolution, u
     int bestResolutionError = 0x7fffffff;
     int bestDepthError = 0x7fffffff;
     _D3DDISPLAYMODE best;
-    best.Format = 0;
+    best.Format = D3DFMT_UNKNOWN;
     for (unsigned int i = 0; i < BackBufferFormats.size(); ++i) {
         for (unsigned int j = 0; j < D3D->GetAdapterModeCount(AdapterOrdinal, BackBufferFormats[i].GetD3DFormat()); ++j) {
             _D3DDISPLAYMODE mode;

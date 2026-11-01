@@ -1,4 +1,7 @@
 // CTexture::GetLevelByteLength(unsigned long level) -- size in bytes of one mip level: the level's surface description (IDirect3DTexture9::GetLevelDesc, COM slot 17) for Width/Height, the texture's pixel format (an inline GetPixelFormat on level 0) for the bits per pixel, then bits * Width * Height / 8
+// Leaf: ?GetLevelByteLength@CTexture@@QBEKK@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe @ 0x009F9E80, 82 bytes (+ int3 padding).
 // Callees: IDirect3DTexture9::GetLevelDesc (`call [ecx+44h]`, `this` pushed) twice, CPixelFormat::CPixelFormat(D3DFORMAT)
 // @ 0x009E3830 (labelled CPixelFormat::Initialise), CPixelFormat::GetColourDepth @ 0x009E3820 (bits per pixel).
@@ -7,8 +10,9 @@
 // `level` argument (`lea ecx,[esp+4Ch]`), `imul` by Height then Width (the source multiplies Width * Height), `shr 3`.
 // Layout: PDB CTexture (PD3DTexture +0, the ByteLength/AllocationSource bitfield word +4); engine/CTexture.h flattens
 // the bitfields into byte arrays, so the class is modelled locally with the PDB names.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
+    _D3DFORMAT Format;                          // +0x00 D3DFORMAT
     unsigned long Type;                            // +0x04
     unsigned long Usage;                           // +0x08
     unsigned long Pool;                            // +0x0c
@@ -42,7 +46,8 @@ struct IDirect3DTexture9 {                         // IUnknown + IDirect3DResour
 // CPixelFormat with its D3DFORMAT constructor (engine/CPixelFormat.h holds only the layout).
 class CPixelFormat { public:
     long FormatIndex;                              // +0x00 (PDB CPixelFormat::FormatIndex)
-    CPixelFormat(unsigned long d3dFormat);  // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);  // 0x009E3830
 public:
     unsigned long GetColourDepth() const;   // 0x009E3820
 };

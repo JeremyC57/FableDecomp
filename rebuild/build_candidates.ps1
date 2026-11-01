@@ -210656,8 +210656,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00a681f0'
         Module = 'CVolumeTexture'
-        Source = '00/a6/CVolumeTexture_GetByteLength_00a681f0.cpp'
-        TestSource = '00/a6/CVolumeTexture_GetByteLength_00a681f0_test.cpp'
+        Source = '00/a6/CVolumeTexture_GetLevelByteLength_00a681f0.cpp'
+        TestSource = '00/a6/CVolumeTexture_GetLevelByteLength_00a681f0_test.cpp'
         PassPattern = '00a681f0_TEST PASS'
     }
     [pscustomobject]@{

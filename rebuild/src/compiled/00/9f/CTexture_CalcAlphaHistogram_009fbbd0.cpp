@@ -1,5 +1,7 @@
 // CTexture::CalcAlphaHistogram(vector<unsigned long>& histogram) const -- lock mip level 0 and count, for each of the 256 alpha values, how many texels carry it
 // Leaf: ?CalcAlphaHistogram@CTexture
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FBBD0, 250 bytes (+2 int3), `ret 4`.
 // Callees: IDirect3DTexture9::GetLevelDesc (COM slot 17, +0x44; twice), LockRect (slot 19, +0x4c) and UnlockRect (slot 20,
 //   +0x50); CPixelFormat::Initialise(D3DFORMAT) @ 0x009E3830 (through a converting constructor), CPixelFormat::
@@ -12,9 +14,10 @@
 //   {0, 0, width, height} (written top, left, right, bottom: retail's store order); the histogram is resized to 256 zeroes through a by-reference temporary that shares its frame
 //   word with the per-texel colour; the inner loop counts the width down; the row pointer is re-based as
 //   `pBits + Pitch * y` with the row just finished (retail's arithmetic, kept as is).
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 class CRGBColour { public: unsigned char B, G, R, A; };
 struct D3DSURFACE_DESC {
-    long          Format;                        // +0x00 D3DFORMAT
+    _D3DFORMAT          Format;                        // +0x00 D3DFORMAT
     long          Type;                          // +0x04
     unsigned long Usage;                         // +0x08
     long          Pool;                          // +0x0c
@@ -57,8 +60,8 @@ class C2DExtentsI { public:
 };
 class CPixelFormat { public:
     long FormatIndex;
-    CPixelFormat(long d3dFormat) { Initialise(d3dFormat); }
-    void Initialise(long d3dFormat);                                         // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);                                         // 0x009E3830
     void ConvertPFDDataToRGB(unsigned char* data, CRGBColour* colour) const; // 0x009E3DF0
     unsigned long GetByteColourDepth() const;                                // 0x009E3800
 };

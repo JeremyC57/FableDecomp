@@ -1,4 +1,7 @@
 // CEngineResourceManager::ResizeHiresTextureMemory(long sizeKB) -- flushes the graphic bank and the surface-composition cache, then resizes the main bank's texture pool to as many 512x512 DXT1 textures as fit in the given kilobytes (bank level forced to 0 meanwhile); returns the pool's result
+// Leaf: ?ResizeHiresTextureMemory@CEngineResourceManager@@QAE_NJ@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3B4F0, length 136 bytes.
 // Signature from Ego_r.pdb: ?ResizeHiresTextureMemory@CEngineResourceManager@@QAE_NJ@Z.
 // Callees: 0x009FD0C0 CGraphicDataBank::ChangeScene() (bank at +0x954), 0x00B2AD80 the surface-composition manager's
@@ -15,7 +18,8 @@
 // before the level is forced to 0; the count is a signed division of the byte size by the texture size; the
 // bool result rides in bl across the final setter call.
 
-enum D3DFORMAT { D3DFMT_DXT1 = 0x31545844 };
+enum _D3DFORMAT { D3DFMT_DXT1 = 0x31545844 };
+typedef _D3DFORMAT D3DFORMAT;
 class CPixelFormat {
 public:
     long m_format;

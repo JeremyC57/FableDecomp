@@ -1,12 +1,16 @@
 // CSurface::SetPixel(long x, long y, const CRGBColour& colour) -- lock the surface and write one pixel at PMem + x * bytes-per-pixel + y * Pitch in the surface's pixel format, unlock
+// Leaf: ?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F4120, length 110 bytes (+2 int3 padding). `ret 0Ch`.
 // Callees: CSurface::Lock @ 0x009F33E0, IDirect3DSurface9::GetDesc (vtable +0x30), CPixelFormat::Initialise @ 0x009E3830,
 // CPixelFormat::GetByteColourDepth @ 0x009E3800, the pixel-format colour writer @ 0x009E3F60 (thiscall on the format, args
 // colour then destination; catalog "Graphics_CopyPixelsToBuffer"), IDirect3DSurface9::UnlockRect (vtable +0x38).
 // Shape: same inline accessors as CSurface::Clear (0x009F40A0): GetPixelFormat built as CPixelFormat(desc.Format) in place.
 // Model: engine/CSurface.h member names; polymorphic local model as in the landed CRenderTarget rows.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct D3DSURFACE_DESC {
-    long Format, Type;
+    _D3DFORMAT Format; long Type;
     unsigned long Usage;
     long Pool, MultiSampleType;
     unsigned long MultiSampleQuality, Width, Height;
@@ -31,10 +35,10 @@ class C2DExtentsI { public:
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CPixelFormat { public:
     long FormatIndex;
-    CPixelFormat(long d3dFormat) { Initialise(d3dFormat); }
-    void Initialise(long d3dFormat);            // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);            // 0x009E3830
     unsigned long GetByteColourDepth() const;   // 0x009E3800
-    void WritePixel(const CRGBColour& colour, void* dest) const;   // 0x009E3F60
+    void ConvertRGBToPFDData(const CRGBColour& colour, unsigned char* data) const;   // 0x009E3F60 (Ego_r.pdb; naming wave 25, was WritePixel)
 };
 class CSurfaceLockedRect { public:
     C2DExtentsI Dimensions;     // +0x00
@@ -69,6 +73,6 @@ void CSurface::SetPixel(long x, long y, const CRGBColour& colour)
     CSurfaceLockedRect locked = Lock(0);
     CPixelFormat format = GetPixelFormat();
     unsigned char* dest = locked.PMem + format.GetByteColourDepth() * x + locked.Pitch * y;
-    format.WritePixel(colour, dest);
+    format.ConvertRGBToPFDData(colour, dest);
     Unlock();
 }

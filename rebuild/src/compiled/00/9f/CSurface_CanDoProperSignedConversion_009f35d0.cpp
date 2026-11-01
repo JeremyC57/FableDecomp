@@ -1,5 +1,7 @@
 // CSurface::CanDoProperSignedConversion(const C2DBoxI* destinationBox, const C2DBoxI* sourceBox, const CPixelFormat& sourceFormat) -- the signed-surface fast copy applies only when one side is signed, both boxes (when given) cover the whole surface, the source is an unsigned 4-byte format and this surface a signed 2-byte one
 // Leaf: CanDoProperSignedConversion
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F35D0, 271 bytes (+1 int3 padding), `ret 0Ch`. Called from CopyFromSurface
 //   0x009F37E0 (landed; its extern declaration gives the argument order).
 // Callees: IDirect3DSurface9::GetDesc (COM slot 12, `call [ecx+30h]`, `this` pushed), CPixelFormat::CPixelFormat
@@ -15,6 +17,7 @@
 //   { ... return true; } return false;`): it keeps the callee-saved pushes at entry and puts the `mov al,1` epilogue
 //   before the shared `xor al,al` one (flat early returns shrink-wrap the first test; a do/while(0) + break form puts
 //   the false exit first).
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #define CSurface CSurfaceLayout
 #include "engine/CSurface.h"
 #undef CSurface
@@ -28,7 +31,7 @@ public:
 };
 
 struct D3DSURFACE_DESC_Local {                     // D3DSURFACE_DESC, 0x20 bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
+    _D3DFORMAT Format;                          // +0x00 D3DFORMAT
     unsigned long Type;                            // +0x04
     unsigned long Usage;                           // +0x08
     unsigned long Pool;                            // +0x0c
@@ -54,7 +57,8 @@ class C2DExtentsI { public:
 
 class CPixelFormat { public:
     long FormatIndex;                              // +0x00
-    CPixelFormat(unsigned long d3dFormat);         // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);         // 0x009E3830
     bool IsSigned() const;                         // 0x009E3970
     unsigned long GetByteColourDepth() const;      // 0x009E3800
 };

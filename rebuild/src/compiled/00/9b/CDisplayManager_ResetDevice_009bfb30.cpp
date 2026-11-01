@@ -1,16 +1,19 @@
 // CDisplayManager::ResetDevice(const CCreateDeviceParameters&) -- remember the parameters, release the device-dependent surfaces and the back-buffer copy texture, re-pick the display mode, refill the present parameters (multisample validated against the device, interval only when exclusive), reset the device (device-lost reports 1 and sets the lost flag), re-read the adapter refresh rate and re-wrap the back / depth buffers, then rebuild the copy textures and run the post-reset callbacks
 // Leaf: ResetDevice
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include <string.h>
 struct _D3DDISPLAYMODE {
     unsigned long Width;
     unsigned long Height;
     unsigned long RefreshRate;
-    unsigned long Format;                          // D3DFORMAT
+    _D3DFORMAT Format;                          // D3DFORMAT
 };
 struct _D3DPRESENT_PARAMETERS_ {
     unsigned int  BackBufferWidth;
     unsigned int  BackBufferHeight;
-    unsigned long BackBufferFormat;
+    _D3DFORMAT BackBufferFormat;
     unsigned int  BackBufferCount;
     unsigned long MultiSampleType;
     unsigned long MultiSampleQuality;
@@ -78,7 +81,7 @@ extern SPixelFormatInfo g_PixelFormatTable[];   // 0x0129BA40
 class CPixelFormat { public:
     long FormatIndex;
     CPixelFormat() {}
-    void Initialise(unsigned long format);         // 0x009E3830
+    void Initialise(_D3DFORMAT format);         // 0x009E3830
     unsigned long GetD3DFormat() const { return g_PixelFormatTable[FormatIndex].m_d3dFormat; }
 };
 struct CPresentationIntervalDesc {

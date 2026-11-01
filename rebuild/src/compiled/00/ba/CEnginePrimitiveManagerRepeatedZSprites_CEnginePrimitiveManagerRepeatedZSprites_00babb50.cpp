@@ -1,5 +1,7 @@
 // CEnginePrimitiveManagerRepeatedZSprites::CEnginePrimitiveManagerRepeatedZSprites(CArray<CEngineScene*>* scenes) -- constructs the repeated z-sprite manager: looks up its vertex shader and its two pixel shaders by name, registers the EnableZSprites switch, builds the quad buffers, then allocates the dynamic texture page, the 256x256 billboard texture and z-buffer surface and sets the stipple / control-point defaults
 // Leaf: ??0CEnginePrimitiveManagerRepeatedZSprites
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BABB50, length 770 bytes (`ret 4`, no EH frame).
 // Label correction: catalogued "CEnginePrimitiveManager2DSprites" (propagated); the vtable store 0x012A5314 is
 //   CEnginePrimitiveManagerRepeatedZSprites (rtti-vtables.tsv: slot 1 CreateInternalPrimitive 0x00BAA820) and it calls BuildBuffers 0x00BAA6A0.
@@ -18,6 +20,7 @@
 //   STLport vector (_Vector_base + _STLP_alloc_proxy over an allocator temporary) so its three zero stores interleave with the first
 //   CCharString pushes; the two 256x256 sizes are C2DCoordI TEMPORARIES passed by const reference (they share the shader-temporary
 //   frame slot: sub esp,10h; named locals grow the frame to 0x18/0x20).
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
@@ -77,7 +80,8 @@ class CShaderResource { public:
 };
 class CPixelFormat { public:
     long FormatIndex;
-    CPixelFormat(unsigned long d3dFormat);         // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);         // 0x009E3830
     void Initialise(long r, long g, long b, long a, bool alpha);   // 0x009E3790
     CPixelFormat() { }
 };
@@ -202,7 +206,7 @@ CEnginePrimitiveManagerRepeatedZSprites::CEnginePrimitiveManagerRepeatedZSprites
     BillboardTextureHandle = textures->AllocateTexture(DynamicTexturePageHandle, C2DCoordI(256, 256), 1, &format, 1, 0);
     BillboardTexture.Texture = 0;
     BillboardTexture.Surface = 0;
-    CPixelFormat depthFormat(0x4b);
+    CPixelFormat depthFormat(D3DFMT_D24S8);
     ZBufferTextureHandle = textures->AllocateDepthBufferSurface(DynamicTexturePageHandle, C2DCoordI(256, 256), &depthFormat, 0);
     CurrentRenderedMesh = 0;
     NonStippleAlphaFactor = 1.2f;

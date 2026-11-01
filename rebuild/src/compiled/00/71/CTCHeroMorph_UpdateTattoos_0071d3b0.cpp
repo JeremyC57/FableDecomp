@@ -2,6 +2,8 @@
 // Grade: RELOCATION_MATCH (header ctor landed 2026-10-31; was PENDING HEADER) (retry wave 2 sec2c): the -1 custom-tattoo test re-reads the member (`if (tattoo->BankIndex == -1)`) instead of the textureID local, so textureID lives in eax/a spill slot and tattoo keeps ebx (was 1017v1027); on engine/CDefPointer.h + fable_string.h + engine/CSubDefClassBase.h with the real GetSubDef<CTattooDef> body (0x005B1EFC, as the sibling hdr 0071d940). Compiles once the header declares CDefPointer(ENullDef); hdr/0071d3b0.verify.cpp (header text inlined + that ctor) grades RELOCATION_MATCH. The _M_insert_overflow stand-in body (invented GrowVectorStorage callee) is the landed AddCompositeTexture 0x0071DBD0 model; dropping it gives 1027v1027/51.
 // Was: DIFFER(1017v1027) -- register assignment: retail keeps the tattoo def in ebx and the texture id in eax / the dead tattoo-slot word (ours: id in ebx, def in esi), so the frame packs differently; structure, callees, temporaries and the release paths as retail
 // Leaf: ?UpdateTattoos@CTCHeroMorph
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071D3B0, 1027 bytes, `ret 4`, aligned (and esp,-8) frame.
@@ -13,6 +15,7 @@
 //   _M_insert_overflow 0x00721060 (landed AddCompositeTexture 0x0071DBD0 model).
 // Layout: CTCHeroMorph Tattoos +0x1c, CustomToBankIndex +0x28 (landed AddTattoo 0x0071DA70); CTattooDef (engine/CTattooDef.h)
 //   TextureLayer +0x2c, ReplacingTextureIndex +0x30, BankIndex +0x34, Blend +0x38, CustomFileName +0x4c, CustomFileNameBase +0x50.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include <stddef.h>
 #include <new>
 #include "fable_string.h"
@@ -41,8 +44,8 @@ class CAFile { public:
 
 class CPixelFormat { public:
     long FormatIndex;
-    void Initialise(long d3dFormat);                        // 0x009E3830
-    CPixelFormat(long d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);                        // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
 };
 class C2DExtentsI;
 struct CTextureFileInfo;
@@ -243,7 +246,7 @@ void CTCHeroMorph::UpdateTattoos(CTextureLayerMap& layers)
                     textureID = found->Value.first;
                 } else {
                     CTexture texture;
-                    CPixelFormat format(0x15);
+                    CPixelFormat format(D3DFMT_A8R8G8B8);
                     if (!texture.LoadFromBitmapFile(path, 0, &format, 1, 0, 2, 1, 1, 0, 0))
                         continue;
                     CTexture alpha;

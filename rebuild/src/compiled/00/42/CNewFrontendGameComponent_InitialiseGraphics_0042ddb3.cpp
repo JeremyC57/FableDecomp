@@ -1,4 +1,8 @@
 // CNewFrontendGameComponent::InitialiseGraphics() -- fetch the front-end menu font, then pick the best texture formats from the display manager and create the "GBANK_FRONT_END" graphic bank (mipmaps, 2048x2048 limit, dither) into m_pFrontEndGraphicBank; returns true
+// Leaf: ?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042DDB3, 274 bytes, plain `ret` after `leave`.
@@ -18,8 +22,8 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 class CPixelFormat { public:
-    long Format;
-    void Initialise(long d3dFormat);               // 0x009E3830
+    _D3DFORMAT Format;
+    void Initialise(_D3DFORMAT d3dFormat);               // 0x009E3830
 };
 class CGraphicDataBankInit { public:                      // 0x2c bytes
     CPixelFormat  NonAlphaFormat;                  // +0x00
@@ -97,7 +101,7 @@ bool CNewFrontendGameComponent::InitialiseGraphics()
     system->DisplayManager->GetBestOpaqueTextureFormat(0x20, &init.UncompressedNonAlphaFormat, false);
     system = GFGetSystemManager();
     system->DisplayManager->GetBestSignedTextureFormat(0x10, &init.SignedFormat);
-    init.InterpolatedAlphaFormat.Initialise(0x35545844);   // D3DFMT_DXT5
+    init.InterpolatedAlphaFormat.Initialise(D3DFMT_DXT5);   // D3DFMT_DXT5
     init.GenerateMipmaps = true;
     init.MaxGraphicWidth = 0x800;
     init.MaxGraphicHeight = 0x800;

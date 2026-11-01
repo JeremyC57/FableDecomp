@@ -1,5 +1,7 @@
 // CDisplayManager::GetClosestDepthBufferFormat(const D3DDISPLAYMODE& mode, long bitDepth) const -- among the depth formats with at least 8 stencil bits that the device supports as a depth-stencil surface matching the mode, pick the one whose depth is closest to the request (ties go to the deeper format)
 // Leaf: ?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BEBB0, 253 bytes, `ret 0Ch` (hidden CPixelFormat result, mode, bitDepth). Called from
 //   0x009BF8CC and 0x009BFC92. PDB: ?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z.
 // Label correction: catalogued as CPixelFormat::FindBestMatch; `this` is the CDisplayManager (D3D +0x54, caps +0x5C/+0x60).
@@ -12,6 +14,7 @@
 //   (&BitDepth in ebx beside the entry in edi, so i, bestDifference and best live in the frame); the two device checks use
 //   usage 2 = D3DUSAGE_DEPTHSTENCIL, type 1 = D3DRTYPE_SURFACE; the distance is `abs()` (cdq/xor/sub); the result is
 //   constructed straight into the hidden return slot.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 #include <stdlib.h>
 #pragma intrinsic(abs)
 
@@ -40,11 +43,11 @@ struct _D3DDISPLAYMODE {
     unsigned long Width;
     unsigned long Height;
     unsigned long RefreshRate;
-    long          Format;                          // +0x0c
+    _D3DFORMAT          Format;                          // +0x0c
 };
 
 struct CD3DFormatInfo {                            // 36-byte entry of the format table
-    long D3DFormat;                                // +0x00 _D3DFORMAT
+    _D3DFORMAT D3DFormat;                                // +0x00 _D3DFORMAT
     long PFType;                                   // +0x04 EPixelFormatType (3 depth)
     long BitDepth;                                 // +0x08 (-1 terminates the table)
     long AlphaBits;                                // +0x0c
@@ -59,7 +62,8 @@ extern const CD3DFormatInfo g_D3DFormatInfo[];     // 0x0129BA40
 
 class CPixelFormat { public:
     long FormatIndex;                              // +0
-    CPixelFormat(long d3dFormat);                  // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);                  // 0x009E3830
 };
 
 class CDisplayManager { public:

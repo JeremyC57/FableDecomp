@@ -1,13 +1,17 @@
 // CGraphicBankStateBlock::GetDefault(CBankStateBlock&) -- PDB00B56490 virtual void, not Boolean return
 // Leaf: GetDefault
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 #include "engine/CGraphicBankStateBlock.h"
+#define CPixelFormat CPixelFormatLayout
 #include "engine/CPixelFormat.h"
+#undef CPixelFormat
 #include <string.h>
 // Native D3DFORMAT values, SDK enum parameter at009E3830/PDB00B356E0.
 enum _D3DFORMAT {D3DFMT_V8U8=60,D3DFMT_DXT1=0x31545844,D3DFMT_DXT3=0x33545844,D3DFMT_DXT5=0x35545844};
 // Explicit native scalar storage keeps donor long32 fields representable on host long64.
-struct PixelFormat {fable_i32 FormatIndex;void Initialise(long,long,long,long,bool);void Initialise(_D3DFORMAT);}; //009E3790 void four long channel widths,bool;009E3830 void enum
-struct PixelFormats {PixelFormat NonAlpha,Alpha,BooleanAlpha,InterpolatedAlpha,BumpMap,BumpMapAlpha,Signed;};
+class CPixelFormat { public: fable_i32 FormatIndex;void Initialise(long,long,long,long,bool);void Initialise(_D3DFORMAT);}; //009E3790 void four long channel widths,bool;009E3830 void enum
+struct PixelFormats {CPixelFormat NonAlpha,Alpha,BooleanAlpha,InterpolatedAlpha,BumpMap,BumpMapAlpha,Signed;};
 struct GraphicState {PixelFormats BankFormats,CompressedBankFormats;fable_i32 CompressionType,CompressionQuality,MinTextureWidth,MinTextureHeight,MaxTextureWidth,MaxTextureHeight,ResourceSelectionIndex,BumpmapFactor;bool ResourceIsSprite,ResourceIsMultiFile,ResourceIsBumpMapWithAlpha,EnableDXT1Format,EnableSizeReduction,EnableCompression,EnableSurfaceSection,EnableSignedFormats;};
 struct GraphicStateBlock {void*VTable;GraphicState State;};
 class CBankStateBlock;

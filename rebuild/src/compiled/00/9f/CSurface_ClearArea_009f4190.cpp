@@ -1,5 +1,7 @@
 // CSurface::ClearArea(const C2DBoxI& area, const CRGBColour& colour) -- fill a rectangle of the surface with one colour: lock, clamp the box to the surface extents, then write the colour pixel by pixel in the surface's own pixel format
 // Leaf: ClearArea
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F4190, 416 bytes (407 + int3 padding), `ret 8`.
 // Callees: CSurface::Lock(unsigned long) 0x009F33E0 (16-byte CSurfaceLockedRect by hidden pointer), CPixelFormat::Initialise 0x009E3830,
 //   CPixelFormat::GetByteColourDepth() const 0x009E3800 (re-read every pixel), CPixelFormat::WritePixel(const CRGBColour&, void*) const
@@ -8,8 +10,9 @@
 //   box is a local C2DBoxI filled member by member (the copy constructor loads it in a different register order) and VC7.1 keeps
 //   left/right in its frame words over the dead GetPixelFormat desc, top/bottom in esi/edi; the row counter lives in the dead `area` slot.
 // Layout: as the matched sibling CopyFromSurface (engine/CSurface.h cannot express the vptr; class modelled locally with PDB names).
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct D3DSURFACE_DESC_Local {
-    unsigned long Format; unsigned long Type; unsigned long Usage; unsigned long Pool;
+    _D3DFORMAT Format; unsigned long Type; unsigned long Usage; unsigned long Pool;
     unsigned long MultiSampleType; unsigned long MultiSampleQuality; unsigned long Width; unsigned long Height;
 };
 struct IDirect3DSurface9 {
@@ -37,11 +40,11 @@ class CPixelFormat {
 public:
     long FormatIndex;
     CPixelFormat() : FormatIndex(-1) {}
-    CPixelFormat(unsigned long d3dFormat) { Initialise(d3dFormat); }
-    void Initialise(unsigned long d3dFormat);      // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);      // 0x009E3830
     bool IsSigned() const;                         // 0x009E3970
     unsigned long GetByteColourDepth() const;      // 0x009E3800
-    void WritePixel(const CRGBColour& colour, void* dest) const;   // 0x009E3F60
+    void ConvertRGBToPFDData(const CRGBColour& colour, unsigned char* data) const;   // 0x009E3F60 (Ego_r.pdb; naming wave 25, was WritePixel)
 };
 class CSurface {
 public:
@@ -116,7 +119,7 @@ void CSurface::ClearArea(const C2DBoxI& area, const CRGBColour& colour)
     for (long y = box.top; y < box.bottom; ++y) {
         unsigned char* p = row;
         for (long x = box.left; x < box.right; ++x) {
-            format.WritePixel(colour, p);
+            format.ConvertRGBToPFDData(colour, p);
             p += format.GetByteColourDepth();
         }
         row += locked.Pitch;

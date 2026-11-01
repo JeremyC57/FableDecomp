@@ -1,11 +1,15 @@
 // CVolume::GetPixelFormat() -- ask Direct3D for the volume description (IDirect3DVolume9::GetDesc, COM slot 8) and convert its D3DFORMAT into a CPixelFormat built in the caller's hidden result slot
+// Leaf: ?GetPixelFormat@CVolume@@QBE?AVCPixelFormat@@XZ
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A67480, length 43 bytes.
 // Callees: IDirect3DVolume9::GetDesc (`call [ecx+20h]`, `this` pushed), CPixelFormat::CPixelFormat(D3DFORMAT) @ 0x009E3830.
 // Shape: identical to CSurface::GetPixelFormat (0x009F2F60) with the 0x1c-byte D3DVOLUME_DESC frame and
 // vtable slot 8. The manifest's "CSurface::GetPixelFormat" label is propagated: the neighbours 0x00A67420
 // (ReleaseVolume), 0x00A674B0 (GetDimensions) and 0x00A674E0 (GetByteLength) are CVolume's.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct D3DVOLUME_DESC_Local {                      // D3DVOLUME_DESC, 0x1c bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
+    _D3DFORMAT Format;                          // +0x00 D3DFORMAT
     unsigned long Type;                            // +0x04
     unsigned long Usage;                           // +0x08
     unsigned long Pool;                            // +0x0c
@@ -27,9 +31,10 @@ struct IDirect3DVolume9 {                          // IUnknown + IDirect3DVolume
 };
 
 // CPixelFormat with its D3DFORMAT constructor (engine/CPixelFormat.h holds only the layout).
-struct CPixelFormatFromD3D {
+class CPixelFormat { public:
     long FormatIndex;                              // +0x00 (PDB CPixelFormat::FormatIndex)
-    CPixelFormatFromD3D(unsigned long d3dFormat);  // 0x009E3830
+    CPixelFormat(_D3DFORMAT d3dFormat) { Initialise(d3dFormat); }
+    void Initialise(_D3DFORMAT d3dFormat);  // 0x009E3830
     unsigned long GetByteColourDepth() const;      // 0x009E3800 (bytes per pixel)
 };
 
@@ -38,12 +43,12 @@ struct CPixelFormatFromD3D {
 class CVolume { public:
     void*             __vftable;                   // +0x00
     IDirect3DVolume9* PD3DVolume;                  // +0x04
-    CPixelFormatFromD3D GetPixelFormat() const;
+    CPixelFormat GetPixelFormat() const;
 };
 
-CPixelFormatFromD3D CVolume::GetPixelFormat() const
+CPixelFormat CVolume::GetPixelFormat() const
 {
     D3DVOLUME_DESC_Local desc;
     PD3DVolume->GetDesc(&desc);
-    return CPixelFormatFromD3D(desc.Format);
+    return CPixelFormat(desc.Format);
 }

@@ -1,4 +1,7 @@
 // CDisplayManager::GetCurrentWindowedSettings(HWND__*, C2DExtentsI&, unsigned long&) -- report the window's outer size and the colour depth of the adapter's current display mode
+// Leaf: ?GetCurrentWindowedSettings@CDisplayManager@@QAEXPAUHWND__@@AAVC2DExtentsI@@AAK@Z
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BED10, length 103 bytes.
 // Callees: IDirect3D9::GetAdapterDisplayMode (COM slot 8, `call [edx+20h]`, `this` pushed), user32 GetWindowRect (import
 // @ 0x01440308), CPixelFormat::Initialise(D3DFORMAT) @ 0x009E3830, CPixelFormat::GetColourDepth() @ 0x009E3820.
@@ -6,6 +9,7 @@
 // Shape: the D3D object, the adapter ordinal and the vtable are loaded before the 0x24-byte frame is opened (pixel format at
 // +0, RECT at +4, D3DDISPLAYMODE at +0x14); `this` is dead after the first call; the size is right-left / bottom-top stored
 // through the reference; the colour depth comes from a local CPixelFormat initialised with the mode's format.
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 struct HWND__;
 
 struct RECT {
@@ -21,7 +25,7 @@ struct D3DDISPLAYMODE {
     unsigned long Width;
     unsigned long Height;
     unsigned long RefreshRate;
-    unsigned long Format;                          // D3DFORMAT
+    _D3DFORMAT Format;                          // D3DFORMAT
 };
 
 struct IDirect3D9 {                                // COM: IUnknown + IDirect3D9 slots up to GetAdapterDisplayMode
@@ -43,7 +47,7 @@ class C2DExtentsI { public:
 
 class CPixelFormat { public:
     unsigned long m_format;
-    void Initialise(unsigned long format);         // 0x009E3830
+    void Initialise(_D3DFORMAT format);         // 0x009E3830
 public:
     unsigned long GetColourDepth() const;   // 0x009E3820
 };

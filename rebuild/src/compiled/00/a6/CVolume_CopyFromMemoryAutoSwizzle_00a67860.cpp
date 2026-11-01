@@ -1,5 +1,7 @@
 // CVolume::CopyFromMemoryAutoSwizzle(void* data, long rowPitch, long slicePitch) -- locks the volume and copies a linear source image into it row by row (width * bytes-per-pixel per row, the source and destination pitches stepped separately); no swizzle on PC
 // Leaf: CopyFromMemoryAutoSwizzle
+// Naming wave 25: CPixelFormat::Initialise 0x009E3830 is ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z (Ego_r.pdb; no constructor:
+//   the body returns nothing), the format a _D3DFORMAT; a CPixelFormat built from a format is the inline constructor calling it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A67860, 237 bytes (padded to 240), `ret 0Ch`.
 //   PDB name ?CopyFromMemoryAutoSwizzle@CVolume@@QAEXPAXJJ@Z.
 // Callees: CVolume::Lock(unsigned long) 0x00A677D0 (CVolumeLockedBox by value), IDirect3DVolume9 GetDesc (slot 8) and
@@ -8,10 +10,11 @@
 // Shape: two slice pointers stepped by the two slice pitches, two row pointers by the row pitches; the loop counts
 //   are strength-reduced into count-down frame words (the row count homed in the dead `data` argument slot).
 // Layout: CVolume (Ego_r.pdb, 8 bytes) vptr +0, PD3DVolume +4 (landed CVolume siblings 0x00A674E0 / 0x00A67480).
+enum _D3DFORMAT { D3DFMT_UNKNOWN = 0, D3DFMT_A8R8G8B8 = 21, D3DFMT_D24S8 = 75, D3DFMT_DXT1 = 0x31545844, D3DFMT_DXT3 = 0x33545844, D3DFMT_DXT5 = 0x35545844, D3DFMT_FORCE_DWORD = 0x7fffffff };   // naming wave 25: the D3D format enum (Initialise takes it)
 extern "C" void* __cdecl memcpy(void* dst, const void* src, unsigned int size);
 #pragma intrinsic(memcpy)
 struct D3DVOLUME_DESC {                            // 0x1c bytes
-    unsigned long Format;                          // +0x00 D3DFORMAT
+    _D3DFORMAT Format;                          // +0x00 D3DFORMAT
     unsigned long Type;
     unsigned long Usage;
     unsigned long Pool;
@@ -35,7 +38,7 @@ struct IDirect3DVolume9 {                          // IUnknown + IDirect3DVolume
 class CRGBColour { public: unsigned char B, G, R, A; };
 class CPixelFormat { public:
     long FormatIndex;                              // +0x00
-    void Initialise(unsigned long d3dFormat);      // 0x009E3830
+    void Initialise(_D3DFORMAT d3dFormat);      // 0x009E3830
     unsigned long GetByteColourDepth() const;      // 0x009E3800 (bytes per pixel)
     void ConvertRGBToPFDData(const CRGBColour& colour, unsigned char* data) const;   // 0x009E3F60
 };
