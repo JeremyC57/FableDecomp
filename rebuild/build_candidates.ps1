@@ -87802,9 +87802,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a3ff60'
-        Module = '_global'
-        Source = '00/a3/CGuiControlTreePane_SortTreeRecursively_00a3ff60.cpp'
-        TestSource = '00/a3/CGuiControlTreePane_SortTreeRecursively_00a3ff60_test.cpp'
+        Module = 'std::_List_base<CSoundObjectLH*>'
+        Source = '00/a3/stdListbaseCSoundObjectLH_Listbase_00a3ff60.cpp'
+        TestSource = '00/a3/stdListbaseCSoundObjectLH_Listbase_00a3ff60_test.cpp'
         PassPattern = 'PASS_00a3ff60'
     }
     [pscustomobject]@{
@@ -166925,9 +166925,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009aa780'
-        Module = 'std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >'
-        Source = '00/9a/stdRbtreeCUnprovenKey009aa780CUnprovenValue009aa780CUnprovenKeyOfValue009aa780st_Merase_009aa780.cpp'
-        TestSource = '00/9a/stdRbtreeCUnprovenKey009aa780CUnprovenValue009aa780CUnprovenKeyOfValue009aa780st_Merase_009aa780_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,NBankFileManager::CContainedBank>,std::_Select1st<std::pair<const CCharString,NBankFileManager::CContainedBank> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,NBankFileManager::CContainedBank> > >'
+        Source = '00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_Merase_009aa780.cpp'
+        TestSource = '00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_Merase_009aa780_test.cpp'
         PassPattern = '009aa780_TEST PASS'
     }
     [pscustomobject]@{
@@ -172797,9 +172797,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a40bd0'
-        Module = 'CRetailVector_SPairCMember_0099eae012'
-        Source = '00/a4/CRetailVectorSPairCMember0099eae012_CRetailVectorSPairCMember0099eae012_00a40bd0.cpp'
-        TestSource = '00/a4/CRetailVectorSPairCMember0099eae012_CRetailVectorSPairCMember0099eae012_00a40bd0_test.cpp'
+        Module = 'std::vector<std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*> >'
+        Source = '00/a4/stdvectorstdpairstdpairCCharStringCCharStringCSoundBankLH_vector_00a40bd0.cpp'
+        TestSource = '00/a4/stdvectorstdpairstdpairCCharStringCCharStringCSoundBankLH_vector_00a40bd0_test.cpp'
         PassPattern = '00a40bd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -174729,9 +174729,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00510d40'
-        Module = '_unattributed'
-        Source = '00/51/unattributed_clearCRetailList00510d40_00510d40.cpp'
-        TestSource = '00/51/unattributed_clearCRetailList00510d40_00510d40_test.cpp'
+        Module = 'std::_List_base<CIntelligentPointer<CThingAICreature> >'
+        Source = '00/51/stdListbaseCIntelligentPointerCThingAICreature_clear_00510d40.cpp'
+        TestSource = '00/51/stdListbaseCIntelligentPointerCThingAICreature_clear_00510d40_test.cpp'
         PassPattern = '00510d40_TEST PASS'
     }
     [pscustomobject]@{
@@ -174771,9 +174771,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a53300'
-        Module = '_unattributed'
-        Source = '00/a5/unattributed_clearCRetailList00a53300_00a53300.cpp'
-        TestSource = '00/a5/unattributed_clearCRetailList00a53300_00a53300_test.cpp'
+        Module = 'std::_List_base<CIntelligentPointer<C3DAnimation2> >'
+        Source = '00/a5/stdListbaseCIntelligentPointerC3DAnimation2_clear_00a53300.cpp'
+        TestSource = '00/a5/stdListbaseCIntelligentPointerC3DAnimation2_clear_00a53300_test.cpp'
         PassPattern = '00a53300_TEST PASS'
     }
     [pscustomobject]@{
@@ -194442,9 +194442,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009c2f50'
-        Module = 'CRetailVector_SOcclusionEntry_009c2f50'
-        Source = '00/9c/CRetailVectorSOcclusionEntry009c2f50_CRetailVectorSOcclusionEntry009c2f50_009c2f50.cpp'
-        TestSource = '00/9c/CRetailVectorSOcclusionEntry009c2f50_CRetailVectorSOcclusionEntry009c2f50_009c2f50_test.cpp'
+        Module = 'std::vector<CQuickDrawTriInfo>'
+        Source = '00/9c/stdvectorCQuickDrawTriInfo_vector_009c2f50.cpp'
+        TestSource = '00/9c/stdvectorCQuickDrawTriInfo_vector_009c2f50_test.cpp'
         PassPattern = '009c2f50_TEST PASS'
     }
     [pscustomobject]@{
