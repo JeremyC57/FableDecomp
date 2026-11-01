@@ -1,9 +1,10 @@
 // CAggregate_00629060::~CAggregate_00629060() -- implicit destructor: members at +0xad, +0xa8 destroyed out of line, the +0 member by tail call
+// Naming (naming wave 22, ccs): the string type is the PDB CCharString (was CMember_0099eae0); name-only.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00629060, oracle length 33 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+0xad] ; call CMember_00a01c10::~CMember_00a01c10 ; lea ecx,[esi+0xa8] ; call CMember_0099eae0::~CMember_0099eae0 ; mov ecx,esi ; pop esi ; jmp CPhysicsMeshInfo::~CPhysicsMeshInfo
+// Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+0xad] ; call CMember_00a01c10::~CMember_00a01c10 ; lea ecx,[esi+0xa8] ; call CCharString::~CCharString ; mov ecx,esi ; pop esi ; jmp CPhysicsMeshInfo::~CPhysicsMeshInfo
 // Implicit (compiler-generated) destructor of a non-polymorphic aggregate: members are destroyed
 // in reverse declaration order through their out-of-line destructors and the first member's
 // destructor (@ 0x00693EF0) is reached by tail call. Member types are named from the destructor
@@ -13,9 +14,9 @@ class CCreatureActionBase { public:   // CCreatureActionBase (Ego_r.pdb ??1CCrea
     virtual ~CCreatureActionBase();                            // 0x00693EF0
 };
 
-struct CMember_0099eae0 {
+class CCharString { public:
     unsigned char _body[0x5];
-    ~CMember_0099eae0();                            // 0x0099EAE0
+    ~CCharString();                            // 0x0099EAE0
 };
 
 struct CMember_00a01c10 {
@@ -26,7 +27,7 @@ struct CMember_00a01c10 {
 struct CAggregate_00629060 {
     CCreatureActionBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0xa4];
-    CMember_0099eae0 m_a8;            // +0xa8
+    CCharString m_a8;            // +0xa8
     CMember_00a01c10 m_ad;            // +0xad
     ~CAggregate_00629060();
 };

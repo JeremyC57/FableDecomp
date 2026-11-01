@@ -1,4 +1,5 @@
 // CCombatAction_WillEnflameInto::CCombatAction_WillEnflameInto(CThingCreatureBase*, long) -- base CCombatActionBase(owner, 150, GetSoundPair(owner, "SWORD_SWING")), long member at +0x114
+// Naming (naming wave 22, ccs): the string type is the PDB CCharString (was CCharString_Retail); name-only.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009567F0, length 90 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("SWORD_SWING" @ 0x0127AC80, -1),
 // GetSoundPair(CThingCreatureBase*, const CCharString&) @ 0x008561A0 (__fastcall: CSoundPair returned through the
@@ -14,10 +15,10 @@
 // an explicitly written CCharString("...", -1) temporary reuses the constructor's returned eax as the reference and
 // stores the member before the vtable, which is 4 bytes shorter than retail. fable_string.h declares the constructor
 // without the default, so the string is modelled locally (same ctor/dtor addresses).
-struct CCharString_Retail {
+class CCharString { public:
     void* m_pData;
-    CCharString_Retail(const char* text, long length = -1);   // 0x0099EBF0
-    ~CCharString_Retail();                                   // 0x0099EAE0
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                   // 0x0099EAE0
 };
 
 class CThingCreatureBase;
@@ -28,7 +29,7 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
-CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString_Retail& name);   // 0x008561A0
+CSoundPair __fastcall GetSoundPair(CThingCreatureBase* owner, const CCharString& name);   // 0x008561A0
 
 class CCombatActionBase { public:
     virtual void v00();
