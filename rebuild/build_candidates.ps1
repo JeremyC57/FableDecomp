@@ -203725,9 +203725,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e241b0'
-        Module = 'CScriptThingFunctor_00e241b0'
-        Source = '00/e2/CScriptThingFunctor00e241b0_CScriptThingFunctor00e241b0_00e241b0.cpp'
-        TestSource = '00/e2/CScriptThingFunctor00e241b0_CScriptThingFunctor00e241b0_00e241b0_test.cpp'
+        Module = 'NScript::CIsThingAlive'
+        Source = '00/e2/NScriptCIsThingAlive_CIsThingAlive_00e241b0.cpp'
+        TestSource = '00/e2/NScriptCIsThingAlive_CIsThingAlive_00e241b0_test.cpp'
         PassPattern = '00e241b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -274971,9 +274971,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009cda70'
-        Module = 'CBankFile_Retail'
-        Source = '00/9c/CBankFileRetail_InternalWriteEntryList_009cda70.cpp'
-        TestSource = '00/9c/CBankFileRetail_InternalWriteEntryList_009cda70_test.cpp'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_InternalWriteEntryList_009cda70.cpp'
+        TestSource = '00/9c/CBankFile_InternalWriteEntryList_009cda70_test.cpp'
         PassPattern = '009cda70_TEST PASS'
     }
     [pscustomobject]@{

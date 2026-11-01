@@ -1,5 +1,7 @@
 // CBankFile::GetRecoveryFilePath() -- the bank file's path with its extension replaced by ".rec": split the open file's pathname and rebuild drive + directory + name + L".rec"
-// Leaf: GetRecoveryFilePath
+// Leaf: ?GetRecoveryFilePath@CBankFile@@AAE?AVCWideString@@XZ
+// Naming wave 26 (c693 queue): private, as Ego_r.pdb / FableWin.pdb spell it (sole caller CBankFile::WriteRecoveryFile 0x009CDF50, landed by
+//   chunk 693 on that spelling); was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CBFE0, length 205 bytes (+3 int3), ret 4 (hidden CWideString result).
 // Callees: CWideString::CWideString() @ 0x0099AED0 (x3), the bank's disk file (+0x7c) virtual slot 11 (+0x2c, GetPathname,
 // by value), SplitPath @ 0x00997620 (__fastcall: path in ecx, drive in edx, directory/name/extension on the stack),
@@ -34,8 +36,8 @@ class CDiskFileWin32 { public:
 };
 
 class CBankFile : public CBankFileDonor {
-public:
-    CWideString GetRecoveryFilePath();
+private:
+    CWideString GetRecoveryFilePath();                 // Ego_r.pdb / FableWin.pdb ?GetRecoveryFilePath@CBankFile@@AAE?AVCWideString@@XZ (private)
 };
 
 CWideString CBankFile::GetRecoveryFilePath()

@@ -1,5 +1,7 @@
 // CBankFile::InternalWriteEntryList(CDataOutputStream& stream) -- write the entry list: count the written entries per data type (and the furthest data end), write the per-type counts, then one record per written entry (index, type, size, offset, state CRC, symbol, checksum, filenames, info bytes); record the information size and file size, return the entry count
-// Leaf: InternalWriteEntryList
+// Leaf: ?InternalWriteEntryList@CBankFile@@QAEKAAVCDataOutputStream@@@Z
+// Naming wave 26 (c693 queue): Ego_r.pdb + FableWin.pdb ?InternalWriteEntryList@CBankFile@@QAEKAAVCDataOutputStream@@@Z (the spelling chunk
+//   693's CBankFile::WriteRecoveryFile 0x009CDF50 binds); the local layout model was named CBankFile_Retail.
 // Retail 0x009CDA70, 1248 bytes, `ret 4`.
 // Callees: CDataOutputStream::WriteULONG 0x00993EA0, WritePresizedString 0x00995A80, the stream's virtual slots 2 (+0x08,
 //   GetPosition) and 4 (+0x10, Write(data, size)); CPackedUIntArray::operator[] 0x00A629F0; map<unsigned long, unsigned
@@ -152,7 +154,7 @@ struct CULongMap {                                     // STLport map<unsigned l
     }
 };
 template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
-struct CBankFile_Retail {
+class CBankFile { public:          // the landed retail CBankFile model (local: engine/CBankFile.h migration pending)
     unsigned long             Size;                 // +0x04
     CArray<CCharString>       Symbols;              // +0x08
     CArray<unsigned long>     Checksums;            // +0x14
@@ -200,7 +202,7 @@ unsigned long& CULongMap::operator[](const unsigned long& key)
     return _M_header->value.second;
 }
 #pragma auto_inline(on)
-unsigned long CBankFile_Retail::InternalWriteEntryList(CDataOutputStream& stream)
+unsigned long CBankFile::InternalWriteEntryList(CDataOutputStream& stream)
 {
     unsigned long dataEnd = stream.GetPosition();
     unsigned long count = 0;
