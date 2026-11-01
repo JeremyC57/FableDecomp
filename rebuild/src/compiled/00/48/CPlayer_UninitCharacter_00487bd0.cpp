@@ -11,9 +11,13 @@
 // falls through; `this` is advanced to the PlayerCharacter intelligent pointer (`add esi,34h`)
 // once `this` is dead. Members (PlayerManager +0x10, Number +0x28, PlayerCharacter +0x34) from
 // engine/CPlayer.h (its offsets agree with retail below +0x210).
+// Naming wave 16: the CPlayer_Methods stand-in respelled to CPlayer on the layout header (#define-Layout precedent 0x00830150);
+//   AddMode takes the Ego_r EPlayerMode (name-only: the bytes are unchanged).
+#define CPlayer CPlayer_Layout
 #include "engine/CPlayer.h"
+#undef CPlayer
 
-typedef long EPlayerMode;
+enum EPlayerMode { PLAYER_MODE_NULL = 0 };    // enumerator name is ours; mode 3 has no recorded enumerator name
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
@@ -39,7 +43,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-struct CPlayer_Methods : CPlayer {
+class CPlayer : public CPlayer_Layout { public:
     bool IsMainPlayer() const                      // out of line @ 0x00487520
     {
         long number = this->Number;
@@ -50,12 +54,12 @@ struct CPlayer_Methods : CPlayer {
     void UninitCharacter();
 };
 
-void CPlayer_Methods::UninitCharacter()
+void CPlayer::UninitCharacter()
 {
     if (!IsMainPlayer())
         ResetModes();
     else
-        AddMode(3, true);
+        AddMode((EPlayerMode)3, true);
     CIntelligentPointer<CThing>* character = reinterpret_cast<CIntelligentPointer<CThing>*>(this->PlayerCharacter);
     if (character->GetPItem())
         character->GetPItem()->Kill(false);

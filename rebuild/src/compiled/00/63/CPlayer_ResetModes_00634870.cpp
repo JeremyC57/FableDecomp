@@ -6,15 +6,20 @@
 // Retail bytes:  mov al,[ecx+208h] ; test al,al ; je R ; push 1 ; push 0 ; call CPlayer::AddMode ; R: ret
 // engine/CPlayer.h (PDB): +0x208 bool Local. Only a local (non-remote) player gets its mode
 // stack reset to mode 0 via CPlayer::AddMode(EPlayerMode, bool) @ 0x006345C0 with the flag set.
+// Naming wave 16: the CPlayer_Methods stand-in respelled to CPlayer on the layout header (#define-Layout precedent 0x00830150);
+//   AddMode takes the Ego_r EPlayerMode (name-only: the bytes are unchanged).
+#define CPlayer CPlayer_Layout
 #include "engine/CPlayer.h"
+#undef CPlayer
 
-struct CPlayer_Methods : CPlayer {
-    void AddMode(long mode, bool exclusive);   // 0x006345C0 (EPlayerMode, bool)
+enum EPlayerMode { PLAYER_MODE_NULL = 0 };    // enumerator name is ours
+class CPlayer : public CPlayer_Layout { public:
+    void AddMode(EPlayerMode mode, bool exclusive);   // 0x006345C0
     void ResetModes();
 };
 
-void CPlayer_Methods::ResetModes()
+void CPlayer::ResetModes()
 {
     if (this->Local)
-        AddMode(0, true);                      // EPlayerMode 0 == default/no mode
+        AddMode(PLAYER_MODE_NULL, true);       // EPlayerMode 0 == default/no mode
 }
