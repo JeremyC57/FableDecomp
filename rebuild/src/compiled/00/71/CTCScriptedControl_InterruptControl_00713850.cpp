@@ -1,5 +1,9 @@
 // CTCScriptedControl::InterruptControl() -- end the running front action (virtual slot 5) when it has started, drop every queued action, tell the quest manager the thing was interrupted, clear the script handle and unlock
 // Leaf: InterruptControl
+// Naming wave 28 (family d5): CActionBase is the nested CTCScriptedControl::CActionBase (Ego_r.pdb / FableWin.pdb;
+//   DECISIONS_W27 D5) and PActionList the STLport list<CCountedPointer<CTCScriptedControl::CActionBase> >, whose clear 0x00719280
+//   is ?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@..@std@@@std@@QAEXXZ (c695). Was a global struct CActionBase
+//   with the CActionList / SActionNode stand-ins (?clear@CActionList@@QAEXXZ).
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe 0x00713850, 125 bytes (plain `ret`).
@@ -38,34 +42,43 @@ class CQuestManager { public:
     void OnEntityInterrupted(CThing* thing);        // 0x004AFBB0
 };
 
-struct CActionBase {                                // CTCScriptedControl::CActionBase, vtable 0x01265504
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void Exit();                            // slot 5 (+0x14)
-    void* PTCScript;                                // +0x04
-    bool  Activated;                                // +0x08
-    bool  Terminated;                               // +0x09
+namespace std {
+template <class _Tp> class allocator { public: };
+template <class _Value, class _Tp, class _MaybeReboundAlloc>
+class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
+struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
+template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
+template <class _Tp, class _Alloc> class _List_base {
+protected:
+    _STLP_alloc_proxy<_List_node<_Tp>*, _List_node<_Tp>, allocator<_List_node<_Tp> > > _M_node;   // the 4-byte sentinel pointer
+public:
+    void clear();                                  // 0x00719280 (_list.c, out of line)
 };
-class CCPPointerInfo;
-struct SActionNode {
-    SActionNode*    _M_next;                        // +0x00
-    SActionNode*    _M_prev;                        // +0x04
-    CActionBase*    Data;                           // +0x08
-    CCPPointerInfo* Info;                           // +0x0c
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : protected _List_base<_Tp, _Alloc> {
+    typedef _List_base<_Tp, _Alloc> _Base;
+public:
+    bool empty() const { return this->_M_node._M_data->_M_next == this->_M_node._M_data; }
+    _Tp& front() { return ((_List_node<_Tp>*)this->_M_node._M_data->_M_next)->_M_data; }
+    void clear() { _Base::clear(); }
 };
-struct CActionList {                                // STLport list<CCountedPointer<CActionBase>>
-    SActionNode* _M_node;
-    bool empty() const { return _M_node->_M_next == _M_node; }
-    void clear();                                   // 0x00719280
-};
+}
 class CTCScriptedControl { public:
+    class CActionBase {                             // vtable 0x01265504 (Ego_r.pdb / FableWin.pdb CTCScriptedControl::CActionBase)
+    public:
+        virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+        virtual void Exit();                        // slot 5 (+0x14)
+        void* PTCScript;                            // +0x04
+        bool  Activated;                            // +0x08
+        bool  Terminated;                           // +0x09
+    };
     virtual void v00();
     CThing*             ParentThing;                // +0x04 (CTCBase)
     bool                ToBeRemoved;                // +0x08
     bool                IsInGlobalUpdateTCs;        // +0x09
     CIntelligentPointer PScriptHandleImp;           // +0x0c
-    CActionList         PActionList;                // +0x14
+    std::list<CCountedPointer<CActionBase> > PActionList;   // +0x14
     bool                Locked;                     // +0x18
-    CActionBase* GetCurrentAction() { if (PActionList.empty()) return 0; return PActionList._M_node->_M_next->Data; }
+    CActionBase* GetCurrentAction() { if (PActionList.empty()) return 0; return PActionList.front().Data; }
     void InterruptControl();
 };
 

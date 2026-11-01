@@ -1,5 +1,9 @@
 // NTCScriptedControl::CActionMoveTo::Update() -- move the scripted creature towards its position or target thing: refresh both handles, stop ignoring anything for navigation, fail when a claimed action point's thing is dead or carried, then (when the creature is idle) step along the nav route, facing or looking where it goes; on a blocked route fall back to the backup proximity or cancel the script, and on arrival or failure make the hero stop looking and finish
 // Leaf: ?Update@CActionMoveTo@NTCScriptedControl@@
+// Naming wave 28 (family d5): CActionBase is the nested CTCScriptedControl::CActionBase (Ego_r.pdb / FableWin.pdb;
+//   DECISIONS_W27 D5) and PActionList the STLport list<CCountedPointer<CTCScriptedControl::CActionBase> >, whose clear 0x00719280
+//   is ?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@..@std@@@std@@QAEXXZ (c695). Was NTCScriptedControl::CActionBase (an invented namespace)
+//   with the CActionList / SActionNode stand-ins (?clear@CActionList@@QAEXXZ).
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00714900, 960 bytes (+ int3 padding), plain `ret`. Ego_r.pdb
 //   ?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ (CActionBase slot 1).
@@ -139,31 +143,39 @@ class CScriptThing { public:
     long _a, _b;
 };
 
-class CCPPointerInfo;
-namespace NTCScriptedControl { class CActionBase; }
-struct SActionNode {
-    SActionNode*                     _M_next;      // +0x00
-    SActionNode*                     _M_prev;      // +0x04
-    NTCScriptedControl::CActionBase* Data;         // +0x08
-    CCPPointerInfo*                  Info;         // +0x0c
+#include "engine/CCountedPointer.h"
+namespace std {
+template <class _Tp> class allocator { public: };
+template <class _Value, class _Tp, class _MaybeReboundAlloc>
+class _STLP_alloc_proxy : public _MaybeReboundAlloc { public: _Value _M_data; };
+struct _List_node_base { _List_node_base* _M_next; _List_node_base* _M_prev; };
+template <class _Tp> struct _List_node : public _List_node_base { _Tp _M_data; };
+template <class _Tp, class _Alloc> class _List_base {
+protected:
+    _STLP_alloc_proxy<_List_node<_Tp>*, _List_node<_Tp>, allocator<_List_node<_Tp> > > _M_node;   // the 4-byte sentinel pointer
+public:
+    void clear();                                  // 0x00719280 (_list.c, out of line)
 };
-struct CActionList {                               // STLport list<CCountedPointer<CActionBase>>
-    SActionNode* _M_node;
-    bool empty() const { return _M_node->_M_next == _M_node; }
-    void clear();                                  // 0x00719280
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : protected _List_base<_Tp, _Alloc> {
+    typedef _List_base<_Tp, _Alloc> _Base;
+public:
+    bool empty() const { return this->_M_node._M_data->_M_next == this->_M_node._M_data; }
+    _Tp& front() { return ((_List_node<_Tp>*)this->_M_node._M_data->_M_next)->_M_data; }
+    void clear() { _Base::clear(); }
 };
+}
 class CTCScriptedControl { public:
+    class CActionBase;                             // nested (Ego_r.pdb / FableWin.pdb CTCScriptedControl::CActionBase)
     void*        __vftable;
     CThing*      ParentThing;                      // +0x04
     unsigned char _pad08[0x14 - 0x08];
-    CActionList  PActionList;                      // +0x14
-    NTCScriptedControl::CActionBase* GetCurrentAction();
+    std::list<CCountedPointer<CActionBase> > PActionList;   // +0x14
+    CActionBase* GetCurrentAction();
     void ClearActions();
     void CleanupAllActions();                      // 0x00713630 (PDB name ?CleanupAllActions@CTCScriptedControl@@QAEXXZ)
 };
 
-namespace NTCScriptedControl {
-class CActionBase {
+class CTCScriptedControl::CActionBase {           // vtable 0x01265504
 public:
     virtual ~CActionBase();
     virtual void Update();                         // slot 1
@@ -174,7 +186,8 @@ public:
     bool                Terminated;                // +0x09
 };
 
-class CActionMoveTo : public CActionBase {
+namespace NTCScriptedControl {
+class CActionMoveTo : public CTCScriptedControl::CActionBase {
 public:
     virtual void Update();
     C3DVector    Pos;                              // +0x0C
@@ -197,16 +210,16 @@ public:
 };
 }
 
-inline NTCScriptedControl::CActionBase* CTCScriptedControl::GetCurrentAction()
+inline CTCScriptedControl::CActionBase* CTCScriptedControl::GetCurrentAction()
 {
     if (PActionList.empty())
         return 0;
-    return PActionList._M_node->_M_next->Data;
+    return PActionList.front().Data;
 }
 
 inline void CTCScriptedControl::ClearActions()
 {
-    NTCScriptedControl::CActionBase* action = GetCurrentAction();
+    CActionBase* action = GetCurrentAction();
     if (action && action->Activated)
         action->OnCleanup();
     PActionList.clear();
