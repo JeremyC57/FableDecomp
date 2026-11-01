@@ -1,5 +1,8 @@
 // CTriangleStripifier2::ReorderTriangleListInPlace(unsigned short* indices, long numTriangles) -- copy the triangle list into an array, generate the cache-optimised strips from it and write the reordered list back over the input
 // Leaf: ReorderTriangleListInPlace
+// Naming wave 27 (family vl2, DECISIONS_W26 D6): CArray<T> derives from STLport std::vector<T, allocator<T> >, whose protected
+//   _M_insert_overflow(.., const __true_type&, size_type unsigned int, bool) names the vector<unsigned short> 0x005135D0 instantiation as
+//   its own row defines it. Was CArray<T>::InsertGrow(.., const SScalarTag&, unsigned long, bool).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F3F5A0, length 245 bytes, `ret 8`.
 // Callees: the CArray<unsigned short> reallocating insert @ 0x005135D0 (catalog "Vector_InsertN_uint16"),
 // CTriangleStripifier2::GenerateStrips @ 0x00F3EA50 (input list, reordered list, strip list), free @ 0x00BFEA14 (the three
@@ -12,33 +15,40 @@
 #include <new>
 extern "C" void __cdecl free(void* block);                     // 0x00BFEA14
 
-struct SScalarTag { SScalarTag() { } };
-template<class T> class CArray { public:                              // retail STLport vector: first, last, end_of_storage
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    CArray() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CArray() { if (_M_start) free(_M_start); }
-    T* begin() const { return _M_start; }
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport 4.6 vector: first, last, end_of_storage
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~vector() { if (_M_start) free(_M_start); }
+    _Tp* begin() const { return _M_start; }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
-    T& operator[](unsigned long n) const { return *(begin() + n); }
-    void InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool atEnd);   // 0x005135D0
-    void push_back(const T& value)
+    _Tp& operator[](unsigned long n) const { return *(begin() + n); }
+protected:
+    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool atEnd);   // 0x005135D0
+public:
+    void push_back(const _Tp& value)
     {
         if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(value);
+            new (_M_finish) _Tp(value);
             ++_M_finish;
         }
         else
-            InsertGrow(_M_finish, value, SScalarTag(), 1, true);
+            _M_insert_overflow(_M_finish, value, __true_type(), 1, true);
     }
 };
+}
+template<class T> class CArray : public std::vector<T, std::allocator<T> > { public: };   // Fable's CArray over the STLport vector
 void* GrowArrayStorage_005135d0(unsigned long bytes);          // allocation for the growth stand-in
 #pragma auto_inline(off)
 // Same-TU body of the CArray<unsigned short> growth template 0x005135D0 (retail's TU instantiated it): reads the value
 // only through its const reference, never touches the empty tag, keeps the array to itself.
-template<class T>
-__declspec(noinline) void CArray<T>::InsertGrow(T* where, const T& value, const SScalarTag& tag, unsigned long count, bool atEnd)
+template <class T, class _Alloc>
+__declspec(noinline) void std::vector<T, _Alloc>::_M_insert_overflow(T* where, const T& value, const __true_type& tag, unsigned int count, bool atEnd)
 {
     unsigned long oldSize = size();
     unsigned long newCapacity = oldSize + (oldSize > count ? oldSize : count);

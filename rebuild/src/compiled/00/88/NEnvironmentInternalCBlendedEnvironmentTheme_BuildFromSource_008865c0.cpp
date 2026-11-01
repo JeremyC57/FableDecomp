@@ -1,5 +1,8 @@
 // NEnvironmentInternal::CBlendedEnvironmentTheme::BuildFromSource(const CEnvironmentDef& environment, const CEnvironmentLookupTexture& lookup, const CEnvironmentThemeDaySetDef& daySet, const CEnvironmentThemeDef& theme, long column) -- fill a blended theme from one theme def: the 19 colours from the lookup texture (column, the environment def's lookup rows), the 30 scalers from the theme and day-set defs, and the sky / upper-cloud / lower-cloud texture sets (two textures, blends 1 - b and b)
 // Leaf: BuildFromSource
+// Naming wave 27 (family vl2, DECISIONS_W26 D6): CArray<T> derives from STLport std::vector<T, allocator<T> >, whose protected
+//   _M_insert_overflow(.., const __true_type&, size_type unsigned int, bool) names the vector<long> 0x00440990 and vector<float>
+//   0x004408A0 instantiations as their own rows define them. Was a CArray<T> member template (?$CArray@J / @M ..K_N).
 // Retail 0x008865C0, 1962 bytes, `ret 0x14`.
 // Callees: CEnvironmentLookupTexture::GetColour(column, row) 0x008860D0 (returns CRGBFloatColour); STLport
 //   vector<long>::_M_insert_overflow 0x00440990 / vector<float>::_M_insert_overflow 0x004408A0 (push_back's out-of-line
@@ -15,13 +18,18 @@ void StandInSink(void* p, unsigned long n);
 class CRGBFloatColour { public:
     float R, G, B, A;
 };
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
 struct __true_type {};
-template <class T> class CArray { public:             // retail STLport vector, 12 bytes
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    template <class Tag> __declspec(noinline) void _M_insert_overflow(T* position, const T& x, const Tag&, unsigned long fill_len, bool atend) { StandInSink((void*)position, (unsigned long)fill_len + *(const unsigned char*)&x); }   // 0x00440990 / 0x004408A0
-    void push_back(const T& x)
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport 4.6 vector, 12 bytes
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+protected:
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __true_type&, unsigned int fill_len, bool atend);   // 0x00440990 / 0x004408A0
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
@@ -29,10 +37,15 @@ template <class T> class CArray { public:             // retail STLport vector, 
             ++_M_finish;
         } else {
             __true_type tag;
-            _M_insert_overflow(_M_finish, x, tag, 1UL, true);
+            _M_insert_overflow(_M_finish, x, tag, 1, true);
         }
     }
 };
+// same-TU stand-in body (the instantiations 0x00440990 / 0x004408A0 are graded on their own rows)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* position, const _Tp& x, const __true_type&, unsigned int fill_len, bool atend) { StandInSink((void*)position, (unsigned long)fill_len + *(const unsigned char*)&x); }
+}
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { public: };   // Fable's CArray over the STLport vector
 struct CIDrawEnvironmentTextureSet {
     CArray<long>  Textures;                    // +0x00
     CArray<float> Blends;                      // +0x0c

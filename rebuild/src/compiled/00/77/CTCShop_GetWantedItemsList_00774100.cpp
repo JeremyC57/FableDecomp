@@ -1,4 +1,9 @@
 // CTCShop::GetWantedItemsList() const -- the def indices of every stocked item whose price multiplier is above the shop def's wanted threshold (an empty list when the thing has no shop def)
+// Leaf: ?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ
+// Naming wave 27 (family vl2, DECISIONS_W26 D6): the vector is STLport 4.6 std::vector<long, allocator<long> > (: _Vector_base, the
+//   _STLP_alloc_proxy end pointer): the copy ctor 0x00514160 ??0?$vector@JV?$allocator@J@std@@@std@@QAE@ABV01@@Z and the protected
+//   grow-insert 0x00440990 take their own rows' spellings, and the row its Ego_r / FableWin Leaf. Was CLongVector (CLongVectorBase /
+//   CLongAllocProxy, InsertGrow(.., const SScalarTag&, unsigned long, bool)).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00774100, 432 bytes (+ int3 padding), `ret 4` (vector<long> by hidden pointer).
 // Callees: CDefClassBase::GetSubDef<CShopDef> 0x005130A0 (landed spelling, CTCShop::GetName 0x00772610); vector<long>
 //   copy ctor 0x00514160 (the by-value return: no NRVO in VC7.1); vector<long>::_M_insert_overflow 0x00440990 (push_back
@@ -50,35 +55,39 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CShopDef>* out)
 }
 #pragma auto_inline(on)
 
-struct CLongAllocator {                             // STLport allocator<long>: empty
-    CLongAllocator() { }
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };   // STLport allocator<long>: empty
+struct __true_type { __true_type() { } };
+template <class _Value, class _Tp, class _MaybeReboundAlloc>
+class _STLP_alloc_proxy : public _MaybeReboundAlloc { public:      // _STLP_alloc_proxy<long*, long, allocator<long> >
+    _Value _M_data;
+    _STLP_alloc_proxy(const _MaybeReboundAlloc& __a, _Value __p) : _MaybeReboundAlloc(__a), _M_data(__p) { }
 };
-struct CLongAllocProxy : CLongAllocator {           // _STLP_alloc_proxy<long*, long, allocator<long> >
-    long* m_data;
-    CLongAllocProxy(const CLongAllocator& alloc, long* p) : CLongAllocator(alloc), m_data(p) { }
+template <class _Tp, class _Alloc> class _Vector_base { public:    // _Vector_base<long, allocator<long> >
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;
+    _Vector_base(const _Alloc& __a) : _M_start(0), _M_finish(0), _M_end_of_storage(__a, 0) { }
 };
-struct CLongVectorBase {                            // _Vector_base<long, allocator<long> >
-    long* first;
-    long* last;
-    CLongAllocProxy end;
-    CLongVectorBase(const CLongAllocator& alloc) : first(0), last(0), end(alloc, 0) { }
-};
-struct SScalarTag { SScalarTag() { } };
-struct CLongVector : CLongVectorBase {              // retail STLport vector<long> (12 bytes)
-    CLongVector() : CLongVectorBase(CLongAllocator()) { }
-    CLongVector(const CLongVector& other);          // 0x00514160
-    ~CLongVector() { if (first) free(first); }
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool atEnd);   // 0x00440990
-    void push_back(const long& value)
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {   // 12 bytes
+public:
+    vector() : _Vector_base<_Tp, _Alloc>(_Alloc()) { }
+    vector(const vector<_Tp, _Alloc>& __x);         // 0x00514160
+    ~vector() { if (this->_M_start) free(this->_M_start); }
+protected:
+    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __true_type&, unsigned int __fill_len, bool __atend);   // 0x00440990
+public:
+    void push_back(const _Tp& __x)
     {
-        if (last != end.m_data) {
-            new (last) long(value);
-            ++last;
+        if (this->_M_finish != this->_M_end_of_storage._M_data) {
+            new (this->_M_finish) _Tp(__x);
+            ++this->_M_finish;
         }
         else
-            InsertGrow(last, value, SScalarTag(), 1, true);
+            _M_insert_overflow(this->_M_finish, __x, __true_type(), 1, true);
     }
 };
+}
 #pragma auto_inline(off)
 static long* CopyTrivial(const long* first, const long* last, long* result)
 {
@@ -88,29 +97,31 @@ static long* CopyTrivial(const long* first, const long* last, long* result)
     return (long*)((char*)memmove(result, first, n) + n);
 }
 // Same-TU bodies of the out-of-line vector<long> members (growth insert 0x00440990, copy ctor 0x00514160).
-void CLongVector::InsertGrow(long* position, const long& x, const SScalarTag&, unsigned long n, bool atEnd)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* position, const _Tp& x, const __true_type&, unsigned int n, bool atEnd)
 {
-    unsigned long oldSize = last - first;
+    unsigned long oldSize = this->_M_finish - this->_M_start;
     unsigned long len = oldSize + (oldSize < n ? n : oldSize);
-    long* newStart = len ? (long*)malloc(len * sizeof(long)) : 0;
-    long* newFinish = CopyTrivial(first, position, newStart);
+    _Tp* newStart = len ? (_Tp*)malloc(len * sizeof(_Tp)) : 0;
+    _Tp* newFinish = CopyTrivial(this->_M_start, position, newStart);
     for (unsigned long i = n; i != 0; --i)
         *newFinish++ = x;
     if (!atEnd)
-        newFinish = CopyTrivial(position, last, newFinish);
-    if (first)
-        free(first);
-    first = newStart;
-    last = newFinish;
-    end.m_data = newStart + len;
+        newFinish = CopyTrivial(position, this->_M_finish, newFinish);
+    if (this->_M_start)
+        free(this->_M_start);
+    this->_M_start = newStart;
+    this->_M_finish = newFinish;
+    this->_M_end_of_storage._M_data = newStart + len;
 }
-CLongVector::CLongVector(const CLongVector& other) : CLongVectorBase(CLongAllocator())
+template <class _Tp, class _Alloc>
+__declspec(noinline) std::vector<_Tp, _Alloc>::vector(const vector<_Tp, _Alloc>& other) : _Vector_base<_Tp, _Alloc>(_Alloc())
 {
-    unsigned long length = other.last - other.first;
-    first = length ? (long*)malloc(length * sizeof(long)) : 0;
-    last = first;
-    end.m_data = first + length;
-    last = CopyTrivial(other.first, other.last, first);
+    unsigned long length = other._M_finish - other._M_start;
+    this->_M_start = length ? (_Tp*)malloc(length * sizeof(_Tp)) : 0;
+    this->_M_finish = this->_M_start;
+    this->_M_end_of_storage._M_data = this->_M_start + length;
+    this->_M_finish = CopyTrivial(other._M_start, other._M_finish, this->_M_start);
 }
 #pragma auto_inline(on)
 
@@ -157,12 +168,12 @@ class CTCShop { public:
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x34 - 0x08];
     CStockMap Stock;                                // +0x34
-    CLongVector GetWantedItemsList() const;
+    std::vector<long> GetWantedItemsList() const;
 };
 
-CLongVector CTCShop::GetWantedItemsList() const
+std::vector<long> CTCShop::GetWantedItemsList() const
 {
-    CLongVector wanted;
+    std::vector<long> wanted;
     CDefPointer<CShopDef> shopDef;
     bool noShopDef = !ParentThing->GetPDef().IsValid() || !ParentThing->GetPDef()->GetSubDef(&shopDef);
     if (noShopDef)

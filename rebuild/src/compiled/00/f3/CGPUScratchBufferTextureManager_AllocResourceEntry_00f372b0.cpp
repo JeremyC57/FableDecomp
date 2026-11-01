@@ -1,6 +1,9 @@
 // CGPUScratchBufferTextureManager::AllocResourceEntry(long page) -- take a free resource slot (or append a default
 // entry), bind it to the memory page and list it on that page; returns the resource index
 // Leaf: AllocResourceEntry
+// Naming wave 27 (family vl2, DECISIONS_W26 D6): the members are CArray<T> (Ego_r.pdb) over STLport std::vector<T, allocator<T> >:
+//   vector<CResourceEntry>::resize(size_type unsigned int, const T&) 0x00F385A0 and the protected vector<long>::_M_insert_overflow
+//   0x00440990 take their own rows' spellings. Was a row-local CRetailVector<T> (?resize@?$CRetailVector@.. / ?_M_insert_overflow@?$CRetailVector@J..K_N).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F372B0, length 224 bytes, `ret 4`.
 // Callees: vector<CResourceEntry>::resize(size_type, const CResourceEntry&) @ 0x00F385A0, the STLport
 // vector<long>::_M_insert_overflow @ 0x00440990 (an ICF-shared body). Graphics layer.
@@ -18,34 +21,41 @@ class CTexture;
 class CSurface;
 class C2DExtentsI { public: long Width; long Height; };
 
-struct __true_type { __true_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
 
-template <class T> struct CRetailVector {
-    T* _M_start;
-    T* _M_finish;
-    T* _M_end_of_storage;
-    T* begin() const { return _M_start; }
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() {} };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport 4.6 vector, 12 bytes
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    _Tp* begin() const { return _M_start; }
     unsigned long size() const { return _M_finish - _M_start; }
-    T& operator[](unsigned long n) { return *(begin() + n); }
+    _Tp& operator[](unsigned long n) { return *(begin() + n); }
     void pop_back() { --_M_finish; }
-    void resize(unsigned long newSize, const T& value);     // 0x00F385A0 (vector<CResourceEntry>)
-    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned long fillLength, bool atEnd);   // 0x00440990 (vector<long>)
-    void push_back(const T& x)
+    void resize(unsigned int newSize, const _Tp& value);    // 0x00F385A0 (vector<CResourceEntry>)
+protected:
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __true_type&, unsigned int fillLength, bool atEnd);   // 0x00440990 (vector<long>)
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) T(x);
+            new (_M_finish) _Tp(x);
             ++_M_finish;
         } else
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
+}
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { public: };   // Fable's CArray (Ego_r.pdb member type)
 void* GrowVectorStorage_s7(void* vector, unsigned long count);
 #pragma auto_inline(off)
 // Same-TU body of the vector growth template (_M_insert_overflow, instantiated in retail's TU): reads the value through its const
 // reference into the new storage and never touches the empty tag (the landed push_back idiom).
-template <class T>
-__declspec(noinline) void CRetailVector<T>::_M_insert_overflow(T* position, const T& x, const __true_type& p2, unsigned long fillLength, bool atEnd)
+template <class T, class _Alloc>
+__declspec(noinline) void std::vector<T, _Alloc>::_M_insert_overflow(T* position, const T& x, const __true_type& p2, unsigned int fillLength, bool atEnd)
 {
     T* p = (T*)GrowVectorStorage_s7(this, fillLength);
     if (p)
@@ -75,17 +85,17 @@ public:
     };
     struct CResourcePage {
         long ScratchPool;                           // +0x00
-        CRetailVector<long> ResourceList;           // +0x04
+        CArray<long> ResourceList;           // +0x04
         unsigned char* NextFreeBufferAddress;       // +0x10
         long FreeSpaceSize;                         // +0x14
         bool EnableAutoRestore;                     // +0x18
     };
 
     virtual ~CGPUScratchBufferTextureManager();
-    CRetailVector<CResourceEntry> Resources;        // +0x04
-    CRetailVector<CResourcePage> MemoryPages;       // +0x10
+    CArray<CResourceEntry> Resources;        // +0x04
+    CArray<CResourcePage> MemoryPages;       // +0x10
     unsigned char _pad1c[0x18];
-    CRetailVector<long> FreeTextureSlots;           // +0x34
+    CArray<long> FreeTextureSlots;           // +0x34
     long AllocResourceEntry(long page);
 };
 

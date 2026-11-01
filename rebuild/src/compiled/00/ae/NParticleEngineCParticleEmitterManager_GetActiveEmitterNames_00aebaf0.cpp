@@ -1,5 +1,8 @@
 // NParticleEngine::CParticleEmitterManager::GetActiveEmitterNames(vector<CCharString>& names) -- collect the distinct names of the live emitters with a count each, append " (n)"-style counts to the names, and return the total number of live emitters
-// Leaf: GetActiveEmitterNames
+// Leaf: ?GetActiveEmitterNames@CParticleEmitterManager@NParticleEngine@@QBEJAAV?$CArray@VCCharString@@@@@Z
+// Naming wave 27 (family vl2, DECISIONS_W26 D6): GetActiveEmitterNames is const and takes a CArray<CCharString>& (Ego_r.pdb /
+//   FableWin.pdb), CArray<T> over the STLport vector template whose __false_type grow-insert 0x00433530 takes the established
+//   spelling. Was a non-const member over a CCharStringVector stand-in (?_M_insert_overflow@CCharStringVector@@..K_N).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
 //   own row's spelling, c689 queue). Was CLongVector::InsertGrow(..., const SScalarTag&, unsigned long, bool).
@@ -38,29 +41,14 @@ __declspec(noinline) CCharString* __fastcall FindString_004b8e40(CCharString* fi
     return last;
 }
 #pragma auto_inline(on)
-struct __false_type { __false_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCharStringVector {                              // STLport vector<CCharString> (12 bytes in retail)
-    CCharString* _M_start;
-    CCharString* _M_finish;
-    CCharString* _M_end_of_storage;
-    void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x00433530
-    void push_back(const CCharString& x)
-    {
-        if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CCharString(x);
-            ++_M_finish;
-        } else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
-    }
-    unsigned long size() const { return _M_finish - _M_start; }
-    CCharString* begin() { return _M_start; }
-    CCharString& operator[](unsigned long i) { return *(begin() + i); }
-};
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };
 struct __true_type { __true_type() { } };
-template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport vector<long>
+struct __false_type { __false_type() { } };
+template <class _Tp> struct __type_traits { typedef __false_type is_POD_type; };   // STLport type_traits.h
+template <> struct __type_traits<long> { typedef __true_type is_POD_type; };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport 4.6 vector (vector<long>, vector<CCharString>)
 public:
     _Tp* _M_start;
     _Tp* _M_finish;
@@ -68,7 +56,8 @@ public:
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
     ~vector() { if (_M_start) free(_M_start); }
 protected:
-    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool noTail);   // 0x00440990
+    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool noTail);   // 0x00440990 (long)
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __false_type&, unsigned int fill_len, bool atend);     // 0x00433530 (CCharString)
 public:
     void push_back(const _Tp& value)
     {
@@ -76,11 +65,14 @@ public:
             new (_M_finish) _Tp(value);
             ++_M_finish;
         } else
-            _M_insert_overflow(_M_finish, value, __true_type(), 1, true);
+            _M_insert_overflow(_M_finish, value, typename __type_traits<_Tp>::is_POD_type(), 1, true);
     }
-    _Tp& operator[](unsigned long i) { return _M_start[i]; }
+    unsigned long size() const { return _M_finish - _M_start; }
+    _Tp* begin() { return _M_start; }
+    _Tp& operator[](unsigned long i) { return *(begin() + i); }
 };
 }
+template <class T> class CArray : public std::vector<T, std::allocator<T> > { public: };   // Fable's CArray over the STLport vector
 
 extern "C" void* __cdecl malloc(unsigned int size);
 // Same-TU instantiations of the two STLport grow paths (out of line in retail).
@@ -107,21 +99,22 @@ __declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* wher
 }
 #pragma auto_inline(on)
 #pragma auto_inline(off)
-__declspec(noinline) void CCharStringVector::_M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&, unsigned long fill_len, bool atend)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* position, const _Tp& x, const std::__false_type&, unsigned int fill_len, bool atend)
 {
     unsigned long oldSize = _M_finish - _M_start;
     unsigned long len = oldSize + (oldSize > fill_len ? oldSize : fill_len);
-    CCharString* start = (CCharString*)malloc(len * sizeof(CCharString));
-    CCharString* finish = start;
-    for (CCharString* p = _M_start; p != position; ++p, ++finish)
-        new (finish) CCharString(*p);
+    _Tp* start = (_Tp*)malloc(len * sizeof(_Tp));
+    _Tp* finish = start;
+    for (_Tp* p = _M_start; p != position; ++p, ++finish)
+        new (finish) _Tp(*p);
     for (unsigned long i = 0; i < fill_len; ++i, ++finish)
-        new (finish) CCharString(x);
+        new (finish) _Tp(x);
     if (!atend)
-        for (CCharString* p = position; p != _M_finish; ++p, ++finish)
-            new (finish) CCharString(*p);
-    for (CCharString* p = _M_start; p != _M_finish; ++p)
-        p->~CCharString();
+        for (_Tp* p = position; p != _M_finish; ++p, ++finish)
+            new (finish) _Tp(*p);
+    for (_Tp* p = _M_start; p != _M_finish; ++p)
+        p->~_Tp();
     if (_M_start)
         free(_M_start);
     _M_start = start;
@@ -147,9 +140,9 @@ struct SEmitterNode {
 };
 class CParticleEmitterManager { public:
     SEmitterNode* Emitters;                             // +0x00 list<CParticleEmitter*> node
-    long GetActiveEmitterNames(CCharStringVector& names);
+    long GetActiveEmitterNames(CArray<CCharString>& names) const;   // const, CArray<CCharString> (Ego_r.pdb / FableWin.pdb)
 };
-long CParticleEmitterManager::GetActiveEmitterNames(CCharStringVector& names)
+long CParticleEmitterManager::GetActiveEmitterNames(CArray<CCharString>& names) const
 {
     std::vector<long> counts;
     for (SEmitterNode* it = Emitters->_M_next; it != Emitters; it = it->_M_next) {
