@@ -5,9 +5,9 @@
 // index buffer, poly count, flag; the vertex-count zero is scheduled between the index buffer's `lea` and its call. The engine header
 // (CEngineWaterRenderer.h) carries the Ego PDB layout whose HaveBackgroundSea sits at +0x2aa; retail keeps it at +0x276 (the retail
 // CArray is 12 bytes, so everything after the render lists is 0x34 lower), so the retail layout is modelled locally.
-struct CIndexBuffer_00b6d480 {
+class CIndexBuffer { public:                       // naming wave 25: the PDB class (was a CIndexBuffer_00b6d480 stand-in)
     unsigned char _body[0x14];
-    void Uninitialise();                           // 0x00AC1EE0
+    void Uninitialise();                           // 0x00AC1EE0 (Ego_r.pdb ?Uninitialise@CIndexBuffer@@QAEXXZ)
 };
 
 class CVertexBufferWin32 { public:
@@ -18,7 +18,7 @@ public:
 
 class CEngineWaterRenderer { public:
     unsigned char               _pad0[0x68];
-    CIndexBuffer_00b6d480       SeaBackgroundIndexBuffer;     // +0x68
+    CIndexBuffer                SeaBackgroundIndexBuffer;     // +0x68
     CVertexBufferWin32 SeaBackgroundVertexBuffer;    // +0x7c
     long                        SeaBackgroundVertexCount;     // +0xb0
     long                        SeaBackgroundPolyCount;       // +0xb4

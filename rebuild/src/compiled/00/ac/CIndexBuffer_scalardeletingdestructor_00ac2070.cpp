@@ -8,10 +8,10 @@ class CMovableResource { public:                          // vtable 0x0129B860
     ~CMovableResource() { }                        // inline: the vtable store
 };
 class CIndexBuffer : public CMovableResource { public:              // vtable 0x0129EF2C
-    void Release();                                // 0x00AC1EE0 (labelled "CVolume::ReleaseVolume")
+    void Uninitialise();                           // 0x00AC1EE0 (Ego_r.pdb ?Uninitialise@CIndexBuffer@@QAEXXZ; naming wave 25, was Release)
     __forceinline virtual ~CIndexBuffer()
     {
-        Release();
+        Uninitialise();
     }
 };
 
