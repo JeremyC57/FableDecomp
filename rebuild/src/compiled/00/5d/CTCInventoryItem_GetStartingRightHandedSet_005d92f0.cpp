@@ -12,7 +12,7 @@ class CRightHandedSet { public:
     float m_v[6];
     CRightHandedSet(const CRightHandedSet& other);
 };
-CRightHandedSet __fastcall GetRHSetFromOrientation(long orientation);    // 0x005D8EF0
+enum EInventoryObjectOrientation { };
 
 class CInventoryItemDef { public:
     virtual void v00();
@@ -45,10 +45,12 @@ class CTCInventoryItem : public CTCBase { public:
     CInventoryItemDefPointer PDef;                 // +0x0C
     CTCInventoryBase* PInventory;                  // +0x10
     CRightHandedSet GetStartingRightHandedSet();
+private:
+    static CRightHandedSet __fastcall GetRHSetFromOrientation(EInventoryObjectOrientation orientation);   // 0x005D8EF0 (Ego_r CI; naming wave 17, was a free __fastcall stand-in)
 };
 
 CRightHandedSet CTCInventoryItem::GetStartingRightHandedSet()
 {
     CInventoryItemDefPointer def(PDef);
-    return GetRHSetFromOrientation(def->Orientation);
+    return GetRHSetFromOrientation((EInventoryObjectOrientation)def->Orientation);
 }

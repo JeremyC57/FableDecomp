@@ -1,34 +1,36 @@
 // CAudioSource::InitializeProperties(CAudioSound* sound, const CAudioSourceProperties* props, __int64 now) -- derive the playback flags of a source from its sound and property block: pick the mix path, schedule the gain fade-in and pitch fade end times from `now`, hand the pitch block to the pitch setup, clear the OpenAL source's buffer state and return the flags
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C72AF0, length 336 bytes, ret 10h (the 64-bit time is passed by value).
 // Callees: __ftol2 @ 0x00BFEA70 (twice), CAudioSource::SetPitchProperties @ 0x00C71F10 (catalog "Audio_InitSource_Properties"),
-//          CAudioContext::GetProcAddress @ 0x00C4D740 / GetProcAddress (IAT 0x0143FE44) through the inline alSourcei resolver of the
-//          global audio context @ 0x0143BDB0 (entry slot +0x50 = 0x0143BE00, flag +0x104 = 0x0143BEB4, "alSourcei" @ 0x012BEE14),
+//          CAudioContext::GetProcAddress @ 0x00C4D740 / GetProcAddress (IAT 0x0143FE44) through the inline alSourcef resolver of the
+//          global audio context @ 0x0143BDB0 (entry slot +0x50 = 0x0143BE00, flag +0x104 = 0x0143BEB4, "alSourcef" @ 0x012BEE14),
 //          the sound's virtual slot 1 (bool). Global: the audio clock rate (__int64) @ 0x0139CA20; 0.0f @ 0x0122DEDC.
 // Layout (descriptive; no PDB class for the audio layer): CAudioSource Flags +0x28, FadeGain +0x30, SourceId +0x58,
 //          FadeEndTime +0x68, PitchEndTime +0x78; the sound's flag word at +0xc; the property block: Flags +0, FadeTime +0x18
 //          (float*), PitchTime +0x20 (float*).
 // Shape: the result word lives in the dead property-block argument slot; the fade time and pitch time pointers are named
 //          locals (the pitch pointer survives the SetPitchProperties call in edi); the masked Flags go through a local that
-//          is stored before the fade branch and again inside it (`flags |= 5` written before the mask); the alSourcei
+//          is stored before the fade branch and again inside it (`flags |= 5` written before the mask); the alSourcef
 //          resolver is the landed CAudioContext::Listener3f shape inlined on the global context object.
+// Naming wave 17: the +0x50 slot is alSourcef (0x012BEE14 is "alSourcef"; landed CAudioContext::Sourcef 0x00C72510 agrees;
+//          alSourcei is +0x5C / 0x012B8E58), c675 -- was pfnSourcei / Sourcei (name-only).
 // Leaf: InitializeProperties
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
-typedef void (__cdecl* PFN_alSourcei)(unsigned long source, long param, long value);
+typedef void (__cdecl* PFN_alSourcef)(unsigned long source, long param, float value);
 
 struct CAudioContext {
     void*          __vftable;
     void*          Module;                               // +0x04
     unsigned char  _pad08[0x48];
-    PFN_alSourcei  pfnSourcei;                           // +0x50 (0x0143BE00)
+    PFN_alSourcef  pfnSourcef;                           // +0x50 (0x0143BE00)
     unsigned char  _pad54[0xb0];
     bool           UseALGetProcAddress;                  // +0x104 (0x0143BEB4)
     void* GetProcAddress(const char* name);              // 0x00C4D740
-    void Sourcei(unsigned long source, long param, long value)
+    void Sourcef(unsigned long source, long param, float value)
     {
-        if (!pfnSourcei)
-            pfnSourcei = (PFN_alSourcei)(UseALGetProcAddress ? GetProcAddress("alSourcei")
-                                                             : ::GetProcAddress(Module, "alSourcei"));
-        pfnSourcei(source, param, value);
+        if (!pfnSourcef)
+            pfnSourcef = (PFN_alSourcef)(UseALGetProcAddress ? GetProcAddress("alSourcef")
+                                                             : ::GetProcAddress(Module, "alSourcef"));
+        pfnSourcef(source, param, value);
     }
 };
 extern CAudioContext g_AudioContext;                     // 0x0143BDB0
@@ -98,6 +100,6 @@ unsigned long CAudioSource::InitializeProperties(CAudioObject* sound, const CAud
         else
             flags |= 0x4000;
     }
-    g_AudioContext.Sourcei(SourceId, 0x1021, 0);
+    g_AudioContext.Sourcef(SourceId, 0x1021, 0.0f);
     return flags;
 }

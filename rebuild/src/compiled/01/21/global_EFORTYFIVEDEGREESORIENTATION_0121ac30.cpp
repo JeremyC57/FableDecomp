@@ -1,10 +1,11 @@
-// _global::$E_InventoryOrientationRHSet1() -- dynamic initializer of CRightHandedSet g_InventoryOrientationRHSet1 @ 0x013B8BCC: Up = (sqrt(0.5), -sqrt(0.5), 0), Forward = (-sqrt(0.5), -sqrt(0.5), 0)
+// _global::$E_InventoryOrientationRHSet1() -- dynamic initializer of the anonymous-namespace const CRightHandedSet FORTY_FIVE_DEGREES_ORIENTATION @ 0x013B8BCC: Up = (sqrt(0.5), -sqrt(0.5), 0), Forward = (-sqrt(0.5), -sqrt(0.5), 0)
 // Leaf: _$E1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121AC30, 64 bytes (+ padding), plain `ret`, reached from the .CRT$XCU table; catalog "$E2" is the compiler's generic name.
 // Identity: CTCInventoryItem::GetRHSetFromOrientation(EInventoryObjectOrientation) @ 0x005D8EF0 (Ego_r.pdb, private
 //   static __fastcall, returns CRightHandedSet by value) switches over 12 orientations and copies one of twelve 24-byte
 //   CRightHandedSet globals through the copy constructor 0x0049CF80; case 1 is this object. The object's real
-//   identifier is not in the PDB name set: the name is descriptive.
+//   identifier is the FableWin.pdb anonymous-namespace constant FORTY_FIVE_DEGREES_ORIENTATION of the CTCInventoryItem TU (chunk c675:
+//   dynamic-initializer order); naming wave 17 respelled the descriptive g_InventoryOrientationRHSet1 (name-only).
 // Shape: VC7.1 folds every constant store of the inlined constructors into the object's static image (the zero Z words, so the object lives in .bss)
 //   and keeps only the sqrt-derived words dynamic; C3DVector needs its memberwise user copy constructor for that (with
 //   the implicit bitwise copy the constants go through the temporaries and nothing is folded). sqrt is the float
@@ -30,4 +31,6 @@ public:
     CRightHandedSet(const CRightHandedSet& other);                                                  // 0x0049CF80
 };
 
-CRightHandedSet g_InventoryOrientationRHSet1(C3DVector(sqrt(0.5f), -sqrt(0.5f), 0.0f), C3DVector(-sqrt(0.5f), -sqrt(0.5f), 0.0f));
+namespace {
+const CRightHandedSet FORTY_FIVE_DEGREES_ORIENTATION(C3DVector(sqrt(0.5f), -sqrt(0.5f), 0.0f), C3DVector(-sqrt(0.5f), -sqrt(0.5f), 0.0f));
+}

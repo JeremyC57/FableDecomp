@@ -1,10 +1,11 @@
-// _global::$E_InventoryOrientationRHSet6() -- dynamic initializer of CRightHandedSet g_InventoryOrientationRHSet6 @ 0x0137CFD4: Up = (-sqrt(0.5), sqrt(0.5), 0), Forward = (0, 0, -1)
+// _global::$E_InventoryOrientationRHSet6() -- dynamic initializer of the anonymous-namespace const CRightHandedSet UPSIDE_DOWN_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION @ 0x0137CFD4: Up = (-sqrt(0.5), sqrt(0.5), 0), Forward = (0, 0, -1)
 // Leaf: _$E1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0121AD20, 40 bytes (+ padding), plain `ret`, reached from the .CRT$XCU table; catalog "ResetButtonCounts" is a wrong label.
 // Identity: CTCInventoryItem::GetRHSetFromOrientation(EInventoryObjectOrientation) @ 0x005D8EF0 (Ego_r.pdb, private
 //   static __fastcall, returns CRightHandedSet by value) switches over 12 orientations and copies one of twelve 24-byte
 //   CRightHandedSet globals through the copy constructor 0x0049CF80; case 6 is this object. The object's real
-//   identifier is not in the PDB name set: the name is descriptive.
+//   identifier is the FableWin.pdb anonymous-namespace constant UPSIDE_DOWN_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION of the CTCInventoryItem TU (chunk c675:
+//   dynamic-initializer order); naming wave 17 respelled the descriptive g_InventoryOrientationRHSet6 (name-only).
 // Shape: VC7.1 folds every constant store of the inlined constructors into the object's static image (the zero Z words and the whole Forward (0, 0, -1))
 //   and keeps only the sqrt-derived words dynamic; C3DVector needs its memberwise user copy constructor for that (with
 //   the implicit bitwise copy the constants go through the temporaries and nothing is folded). sqrt is the x87
@@ -28,4 +29,6 @@ public:
     CRightHandedSet(const CRightHandedSet& other);                                                  // 0x0049CF80
 };
 
-CRightHandedSet g_InventoryOrientationRHSet6(C3DVector(-sqrt(0.5), sqrt(0.5), 0.0f), C3DVector(0.0f, 0.0f, -1.0f));
+namespace {
+const CRightHandedSet UPSIDE_DOWN_RIGHT_FORTY_FIVE_DEGREES_ORIENTATION(C3DVector(-sqrt(0.5), sqrt(0.5), 0.0f), C3DVector(0.0f, 0.0f, -1.0f));
+}

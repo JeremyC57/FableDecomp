@@ -8,26 +8,28 @@
 // object would be devirtualised). A
 // negative result clears the pointer and returns false (`xor al,al`); otherwise the pointer is re-read for
 // the second virtual call and the function returns true (`mov al,1`).
-struct CAnimationDevice {
+// Naming wave 17: the audio context object @ 0x0143BDB0 is the landed descriptive g_AudioContext (struct CAudioContext), unified across
+//   the libpk rows (c675); was CAnimationDevice g_animationDevice (name-only).
+struct CAudioContext {
     virtual void v0();
     virtual long Initialise(long a, long b);    // slot 1 (+0x04)
     virtual void v2();
     virtual void Reset();                       // slot 3 (+0x0c)
 };
 
-extern CAnimationDevice g_animationDevice;      // 0x0143BDB0
+extern CAudioContext g_AudioContext;      // 0x0143BDB0
 
 struct CAnimationEnvironment {
     unsigned char _pad[0x1d0];
     long m_value1d0;                            // +0x1d0 zeroed here
-    CAnimationDevice* m_pDevice;                // +0x1d4
+    CAudioContext* m_pDevice;                // +0x1d4
     bool InitializeWithDefaults(long a, long b);
 };
 
 bool CAnimationEnvironment::InitializeWithDefaults(long a, long b)
 {
     m_value1d0 = 0;
-    m_pDevice = &g_animationDevice;
+    m_pDevice = &g_AudioContext;
     if (m_pDevice->Initialise(a, b) < 0) {
         m_pDevice = 0;
         return false;

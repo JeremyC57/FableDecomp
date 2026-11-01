@@ -144949,8 +144949,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01224bc0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCStatic00c55cd00143bdb0_01224bc0.cpp'
-        TestSource = '01/22/staticinit_gCStatic00c55cd00143bdb0_01224bc0_test.cpp'
+        Source = '01/22/staticinit_gAudioContext_01224bc0.cpp'
+        TestSource = '01/22/staticinit_gAudioContext_01224bc0_test.cpp'
         PassPattern = '01224bc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -310364,15 +310364,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121ad20'
         Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet6_0121ad20.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet6_0121ad20_test.cpp'
+        Source = '01/21/global_EUPSIDEDOWNRIGHTFORTYFIVEDEGREESORIENTATION_0121ad20.cpp'
+        TestSource = '01/21/global_EUPSIDEDOWNRIGHTFORTYFIVEDEGREESORIENTATION_0121ad20_test.cpp'
         PassPattern = '0121ad20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121ad50'
         Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet7_0121ad50.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet7_0121ad50_test.cpp'
+        Source = '01/21/global_EUPSIDEDOWNLEFTFORTYFIVEDEGREESORIENTATION_0121ad50.cpp'
+        TestSource = '01/21/global_EUPSIDEDOWNLEFTFORTYFIVEDEGREESORIENTATION_0121ad50_test.cpp'
         PassPattern = '0121ad50_TEST PASS'
     }
     [pscustomobject]@{
@@ -314511,15 +314511,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0121ac30'
         Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet1_0121ac30.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet1_0121ac30_test.cpp'
+        Source = '01/21/global_EFORTYFIVEDEGREESORIENTATION_0121ac30.cpp'
+        TestSource = '01/21/global_EFORTYFIVEDEGREESORIENTATION_0121ac30_test.cpp'
         PassPattern = '0121ac30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0121acd0'
         Module = '_global'
-        Source = '01/21/global_EInventoryOrientationRHSet5_0121acd0.cpp'
-        TestSource = '01/21/global_EInventoryOrientationRHSet5_0121acd0_test.cpp'
+        Source = '01/21/global_EUPSIDEDOWNFORTYFIVEDEGREESORIENTATION_0121acd0.cpp'
+        TestSource = '01/21/global_EUPSIDEDOWNFORTYFIVEDEGREESORIENTATION_0121acd0_test.cpp'
         PassPattern = '0121acd0_TEST PASS'
     }
     [pscustomobject]@{

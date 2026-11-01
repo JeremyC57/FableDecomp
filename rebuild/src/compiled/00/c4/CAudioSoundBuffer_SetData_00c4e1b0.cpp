@@ -11,12 +11,14 @@
 // by value; locals give the same bytes), so the channel count is loaded once inside the `dec eax` chain; the ternaries
 // are `setne al ; lea eax,[eax+eax+base]`.
 
+// Naming wave 17: the audio context object @ 0x0143BDB0 is the landed descriptive g_AudioContext (struct CAudioContext), unified across
+//   the libpk rows (c675); was g_audioContext (name-only).
 struct CAudioContext {
     long GetError();                                                                                 // 0x00C4D960
     void BufferData(unsigned long buffer, long format, const void* data, long size, long frequency); // 0x00C4D910
     long CheckError();                                                                               // 0x00C4DBE0
 };
-extern CAudioContext g_audioContext;                // 0x0143BDB0
+extern CAudioContext g_AudioContext;                // 0x0143BDB0
 
 struct SWaveData {
     long          m_sampleFormat;                   // +0x00 (1: 16-bit, 2: 8-bit)
@@ -54,10 +56,10 @@ long CAudioSoundBuffer::SetData(const SWaveData* wave)
         return -14;
     if (!(m_flags & 1))
         return Create(wave);
-    g_audioContext.GetError();
+    g_AudioContext.GetError();
     long format = ToALFormat(wave->m_sampleFormat, wave->m_channels);
-    g_audioContext.BufferData(m_buffer, format, wave->m_pData, wave->m_size, wave->m_frequency);
-    long result = g_audioContext.CheckError();
+    g_AudioContext.BufferData(m_buffer, format, wave->m_pData, wave->m_size, wave->m_frequency);
+    long result = g_AudioContext.CheckError();
     if (result >= 0 && (m_flags & 2))
         result = KeepShadowCopy();
     return result;

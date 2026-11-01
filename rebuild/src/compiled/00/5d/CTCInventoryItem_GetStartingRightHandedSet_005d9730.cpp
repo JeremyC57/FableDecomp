@@ -25,7 +25,9 @@ public:
     C3DVector Forward;                                  // +0x0C
     CRightHandedSet(const C3DVector& up, const C3DVector& forward);   // Ego_r ??0CRightHandedSet@@QAE@ABVC3DVector@@0@Z
 };
-extern const CRightHandedSet g_DefaultRHSet;            // 0x0137CF74
+namespace {
+extern const CRightHandedSet DEFAULT_ORIENTATION;      // 0x0137CF74 (FableWin anonymous-namespace constant of the TU; naming wave 17, was g_DefaultRHSet)
+}
 template <class T> class CDefPointer { public:
     T* Object;
     T* operator->() const { return Object; }
@@ -42,5 +44,5 @@ CRightHandedSet __fastcall CTCInventoryItem::GetStartingRightHandedSet(long defI
 {
     if (CacheDef(defIndex))
         return GetRHSetFromOrientation(reinterpret_cast<const EInventoryObjectOrientation&>(s_CachedItemDef->Orientation));
-    return g_DefaultRHSet;
+    return DEFAULT_ORIENTATION;
 }
