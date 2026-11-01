@@ -32,3 +32,15 @@ then `tools/write_decomp_dashboard.py` and `tools/update_readme_progress.py`, co
    `vland.py <out>_payload.json <out>_oracle.tsv --recheck-landed`: every row MATCH/RELOCATION_MATCH + PASS before commit.
 5. Records to `rebuild/candidates/manual/naming/<date>_wave<k>/` (README, DECISIONS, BINDINGS, LABELS, DEFERRED, RENAMES,
    scripts/, recheck.log). Naming briefs used so far: `rebuild/candidates/manual/naming/briefs/`.
+
+## Cut a chunk from the never-attempted pool (2026-11-01)
+`python3 tools/decomp_pipeline/linux_lane/lane_tools/chunk_pool/analyze_never.py` re-analyses every known row with no landed
+source and no parked attempt (extent scan from `lane_tools/bounds/extent.py`, references, retail-asm signatures, vendor regions,
+masked-body twins) and writes `rebuild/candidates/manual/pending/never_attempted/{ANALYSIS,CHUNKS}.tsv` + SUMMARY.md (no bytes).
+CHUNKS.tsv is the proposed cut order NA001.. (twins of landed rows first, then 97-256 / 257-512 / 513-1024 / 17-96 / 1025-4096 /
+>4096, retry_skipped last; class siblings and pool twins together). To cut NAxxx as chunk N:
+`awk -F'\t' -v c=NAxxx 'NR==1||$1==c{print $2"\t"$3"\t"$4"\t"$5}' .../CHUNKS.tsv | sed '1s/.*/address\tmodule\tname\tlength/' > $S/w22/c<N>rows.tsv`,
+then steps 2-5 of "Cut a chunk" above (oracle_from_exe.py, chunk<N>.tsv with bytes, mkprompt25.py, CHUNK_BRIEF.md from the
+chunk 651 brief incl. its "Increased attempts" and retail-fidelity sections, chunk_history.tsv). Rows whose reason says
+"length uncertain" need the extent checked by hand before the oracle (a cold arm after a noreturn call). twin_landed rows: start
+from the landed twin's source (the masked bodies are equal; only names / relocations differ). Re-run the analyser after landings.

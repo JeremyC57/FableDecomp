@@ -50,7 +50,10 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   `toolchain_library` from the vendor .asm.
 
 ## Next
-1. **Next chunk cycle** (two agents; keep the chunk 651 increased-attempts brief, it lifted the match rate to 3/10):
+1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
+   coordinator README "Cut a chunk from the never-attempted pool"): cut NA001.. as chunks 655+ once 652-654 land (three agents
+   were running at this write). The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
+   increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
    pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.
 2. **Naming wave 14** (brief `naming/briefs/BRIEF_W14.md`, decisions resolved 2026-11-01 under the owner rule "recreate retail
