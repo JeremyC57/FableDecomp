@@ -11,11 +11,13 @@
 // by-value argument's strings are destroyed in reverse order at the end.
 // /Gr: first=ecx, hole=edx; `ret 20h` = top + 24-byte pair + the empty comparator.
 namespace N006be9d0 {
-struct CWideString {
+} // (hoisted to global scope: naming wave 22, the PDB CWideString)
+class CWideString { public:
     void* Data;
     CWideString& operator=(const CWideString& other);     // 0x0099B7D0
     ~CWideString();                                       // 0x0099B510
 };
+namespace N006be9d0 {
 namespace CMusicManager {
 struct CRegisteredMusicEntry {
     CWideString SrcFileName;                              // +0x00

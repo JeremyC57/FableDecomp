@@ -8,7 +8,9 @@ inline void* operator new(unsigned int,void* p){return p;}
 namespace FableVector_00569450 {
 struct __false_type {__false_type(){}};
 // Layout: CWideString header absent; retail ctor0099ec30, dtor0099eae0, single pointer.
-struct CWideString {void* data;CWideString():data(0){} CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
+} // (hoisted to global scope: naming wave 22, the PDB CWideString)
+class CWideString { public:void* data;CWideString():data(0){} CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
+namespace FableVector_00569450 {
 template<class K,class V> struct pair {K first;V second;pair(){} __forceinline pair(const pair& o):first(o.first),second(o.second){}};
 typedef pair<int,CWideString> CKeyStringPair;
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
