@@ -25588,3 +25588,13 @@ chunk	address	module	name	length
 655	00ca9710	_global	Thunk_VirtualMethod_2	16
 655	00b96150	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CA	pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	46
 655	00771f30	CTCInventoryItem	OnDie	27
+656	00cd4550	_Dest_val<std	allocator<CMacro>,CMacro>	35
+656	00cd4fa0	_Dest_val<std	allocator<CMacro>,CMacro>	35
+656	0078adf0	CCreatureAction_FireMissileWeapon	~CCreatureAction_FireMissileWeapon	52
+656	0086d530	_Uninit_copy<CFeatDef*,CFeatDef*,std	allocator<CFeatDef>_>	52
+656	004c2df0	C3DAnimationBlendState	~C3DAnimationBlendState	35
+656	005e0a80	C3DAnimationBlendState	~C3DAnimationBlendState	35
+656	00f270d0	CAIStateGroup_HoverHornetQueen	~CAIStateGroup_HoverHornetQueen	33
+656	00487550	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegi	CRegisteredMusicEntry>_>	22
+656	007f8140	CTCActivationReceptorDoor	vfunc_29	18
+656	008d69a0	CModeDragonRearUp	OnDeactivate	28
