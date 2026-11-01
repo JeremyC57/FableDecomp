@@ -2,6 +2,10 @@
 //   every frame, retarget the hero whenever the hero hits Me (directly, or with any special ability other than 14) and is
 //   not already the target
 // Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: NScript::CEntityScriptBase (non-PDB scope) with SetPredicate on the local CIsThingConscious.
 // Retail: Fable.exe @ 0x00D9F270, 823 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingConscious predicate (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing
 //   0x004AA840), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseClass ctor 0x0099A2D0 / dtor 0x0099A2E0,
@@ -75,30 +79,37 @@ class CScriptThing : public CBaseClass { public:                           // vt
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+#include "engine/CPredicateBase.h"
 namespace NScript {
 #pragma inline_depth(0)
-class CIsThingConscious { public:                              // vtable 0x012C2FE8: a filter holding a script thing
-    virtual void f00();
-    CScriptThing m_thing;                               // +0x04
-    CIsThingConscious(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingConscious() { }
+class CIsThingConscious : public CPredicateBase { public:      // vtable 0x012C2FE8 (engine/CIsThingConscious.h; the destructor inline here)
+    virtual bool operator()() const;                    // slot 0  0x00CDDAB0
+    virtual CPredicateBase* Clone() const;              // slot 1  0x00CDDAE0
+    CScriptThing Thing;                                 // +0x04
+    CIsThingConscious(const CScriptThing& thing);
+    virtual ~CIsThingConscious() { }                    // slot 2; out of line 0x00EF7AB0
 };
 #pragma inline_depth()
-struct CEntityScriptBase {                              // retail 0x14 bytes
-    virtual void e00();
+// the constructor outside the inline_depth(0) region: retail expands the CPredicateBase constructor inside it
+inline CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
+}
+class CEntityScriptBase { public:                       // global PDB class, retail 0x14 bytes
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void SetPredicate(const CIsThingConscious& predicate);   // 0x00F35B10
+    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
     bool IsActiveThreadTerminating() const;             // 0x00F35B30
 };
-class CQ_MinionCampScript;
-struct CMC_Minion : CEntityScriptBase {
+namespace NScript {
+class CQ_MinionCampScript { public:
+struct CMC_Minion : CEntityScriptBase {                 // Ego_r.pdb: nested in CQ_MinionCampScript
     CQ_MinionCampScript* ParentClass;                   // +0x14
     void*                PMasterData;                   // +0x18 CQ_SunnyvaleMasterData*
     void Main();
 };
+};
 
-void CMC_Minion::Main()
+void CQ_MinionCampScript::CMC_Minion::Main()
 {
     SetPredicate(CIsThingConscious(Me));
     Game->NewScriptFrame();

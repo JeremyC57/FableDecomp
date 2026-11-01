@@ -1,5 +1,9 @@
 // CRingFighter::Main() -- punch-club ring fighter: filter on Me alive while the crowd is not all attacking; wait for the round to start and target the hero; each frame let the crowd cheer when the hero lands a hit and boo when the ring fighter hits the hero, stop on a time-out; once Me's health falls to the def's losing threshold, take scripted control of Me and the hero, play the ROUNDWON cutscene, walk Me to the loser marker, flag the ring cleared and wait for the next round, then walk Me out to the marker and remove Me
 // Leaf: ?Main@CRingFighter@@
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: SetPredicate(const CScriptPredicate&) over a global CScriptPredicate { Evaluate } stand-in of the predicate base.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E8B020, 1748 bytes (int3 padded to 1760).
 // Callees: CScriptThing copy 0x004ABE90 / ~ 0x004AA840, CIsThingAlive (vtable 0x012C32F0, ~ 0x00E241B0), flag predicate
 //   (vtable 0x012EA43C), and-predicate (vtable 0x012EA430, ctor 0x00E7E020), predicate base vtable 0x012C2FF4,
@@ -35,34 +39,30 @@ extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 __forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
-struct CScriptPredicate {                               // vtable 0x012C2FF4
-    virtual bool Evaluate() const = 0;
-    virtual CScriptPredicate* Clone() const = 0;
-    virtual ~CScriptPredicate() {}
-};
+#include "engine/CPredicateBase.h"                    // NScript::CPredicateBase, vtable 0x012C2FF4
 namespace NScript {
-class CIsThingAlive : public CScriptPredicate { public:               // vtable 0x012C32F0
+class CIsThingAlive : public CPredicateBase { public:               // vtable 0x012C32F0
     CScriptThing Thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
     virtual ~CIsThingAlive();                                   // 0x00E241B0
-    virtual bool Evaluate() const;
-    virtual CScriptPredicate* Clone() const;
+    virtual bool operator()() const;
+    virtual NScript::CPredicateBase* Clone() const;
 };
 }
 using NScript::CIsThingAlive;
-struct CIsFlagFalse : CScriptPredicate {                // vtable 0x012EA43C
+struct CIsFlagFalse : NScript::CPredicateBase {                // vtable 0x012EA43C
     const bool* Flag;                                   // +0x04
     CIsFlagFalse(const bool* flag) : Flag(flag) {}
-    virtual bool Evaluate() const;
-    virtual CScriptPredicate* Clone() const;
+    virtual bool operator()() const;
+    virtual NScript::CPredicateBase* Clone() const;
 };
-struct CAndPredicate : CScriptPredicate {               // vtable 0x012EA430
+struct CAndPredicate : NScript::CPredicateBase {               // vtable 0x012EA430
     CIsThingAlive First;                                // +0x04
     CIsFlagFalse  Second;                               // +0x14
     CAndPredicate(const CIsThingAlive& first, const CIsFlagFalse& second);   // 0x00E7E020
     ~CAndPredicate() {}
-    virtual bool Evaluate() const;
-    virtual CScriptPredicate* Clone() const;
+    virtual bool operator()() const;
+    virtual NScript::CPredicateBase* Clone() const;
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -111,7 +111,7 @@ private: public:
     virtual void Main() = 0;
     CGameScriptInterface* Game;                         // +0x04
     CScriptThing          Me;                           // +0x08
-    void SetPredicate(const CScriptPredicate& predicate);   // 0x00F35B10
+    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
 };
 struct CRingFighter : CEntityScriptBase {
     CV_FisticuffsClubScript* ParentClass;               // +0x14
@@ -129,38 +129,38 @@ void CRingFighter::Main()
         SetPredicate(both);
     }
     Game->NewScriptFrame();
-    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+    if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase fighter;
     while (!ParentClass->RoundStarted) {
         Game->NewScriptFrame();
-        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+    if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    while (!((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
+    while (!IsActiveThreadTerminating()) {
         bool hit = Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"));
         if (hit) {
-            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+            if (IsActiveThreadTerminating())
                 return;
             ParentClass->CheerNumber += 0.25f;
         }
         if (Game->GetHero().MsgIsHitBy("KHGRingFighter")) {
-            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+            if (IsActiveThreadTerminating())
                 return;
             ParentClass->BooNumber += 4.0f;
         }
         if (ParentClass->TimeOut) {
-            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+            if (IsActiveThreadTerminating())
                 return;
             Game->ClearThingBestEnemyTarget(Me);
             return;
         }
         const CScriptDef* def = pGlobalScriptDef;
         if (Game->GetHealth(Me) <= def->FisticuffsLosingHealth) {
-            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+            if (IsActiveThreadTerminating())
                 return;
             CScriptThing loserPos = Game->GetThingWithScriptName("LoserFighterPos");
             ParentClass->RoundStarted = false;
@@ -172,10 +172,10 @@ void CRingFighter::Main()
                     fighter.Release();
                 while (!Game->StartScriptingEntity(Me, fighter, (EScriptAIPriority)4)) {
                     Game->NewScriptFrame();
-                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+                    if (IsActiveThreadTerminating())
                         return;
                 }
-                if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+                if (IsActiveThreadTerminating())
                     return;
                 Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
                 CCutsceneCastMap cast;
@@ -190,12 +190,12 @@ void CRingFighter::Main()
                 RunCutsceneMacro(ParentClass->GetCutsceneName("ROUNDWON"), cast, 0, 0, false, true);
                 while (fighter.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
-                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
+                    if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         return;
                     }
                 }
-                if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
+                if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
                     return;
                 }
@@ -203,12 +203,12 @@ void CRingFighter::Main()
                 ParentClass->RingCleared = true;
                 while (!ParentClass->RoundStarted && !ParentClass->TylerInFight) {
                     Game->NewScriptFrame();
-                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
+                    if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         return;
                     }
                 }
-                if (((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
+                if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
                     return;
                 }
@@ -219,19 +219,19 @@ void CRingFighter::Main()
                 C3DVector pos = loserPos.GetPos();
                 while (IsDistanceFromThingToPositionOver(fighter.GetScriptThing(), pos, 2.0f)) {
                     Game->NewScriptFrame();
-                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+                    if (IsActiveThreadTerminating())
                         return;
                     fighter.MoveToPosition(pos, 0.0f, MOVE_TYPE_WALK, false, true);
                     while (fighter.IsPerformingScriptTask()) {
                         Game->NewScriptFrame();
-                        if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+                        if (IsActiveThreadTerminating())
                             return;
                     }
-                    if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+                    if (IsActiveThreadTerminating())
                         return;
                 }
             }
-            if (((CEntityScriptBase*)this)->IsActiveThreadTerminating())
+            if (IsActiveThreadTerminating())
                 return;
             Game->RemoveThing(Me, false, true);
             return;

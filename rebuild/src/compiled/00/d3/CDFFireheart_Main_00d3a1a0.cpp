@@ -3,8 +3,12 @@
 //   make the door and the speaker immune and persistent, drop the placeholder and set the flag; then mark the door on
 //   the minimap, wait until the hero uses the door speaker, play CS_FIREHEART_DEMONDOOR and remove the speaker
 // Leaf: Main
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: CDF_Fireheart::SetupThing(const CScriptThingHolder&) over a 16-byte holder stand-in of the CIsThingAlive filter.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D3A1A0, length 768 bytes, plain `ret`.
-// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840, entity thing setup 0x00F35B10, IsInterrupted
+// Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840, CEntityScriptBase::SetPredicate 0x00F35B10, IsActiveThreadTerminating
 //   0x00F35B30 (CEntityScriptBase), the game script interface (+4) slots 7/72/98/108/350/469/473/477/516
 //   (ghidra_out/cgsi_slots_aligned.tsv), CScriptThing slot 27 (+0x6c) message test, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   CQ_FireHeartScript cutscene player 0x00D39330 (by-value name, as landed 0x00D3AF50); zero vector 0x0143E8E0.
@@ -38,11 +42,17 @@ class CScriptThing { public:
     const C3DVector& GetPosition() const { return PThing == 0 ? g_ZeroVector : *PThing->GetPosition(); }
     float GetAngleXY() const { return PThing == 0 ? 0.0f : PThing->GetAngleXY(); }
 };
-struct CScriptThingHolder {                            // 16 bytes: its own vptr (0x012C32F0) then the thing
-    CScriptThing Thing;
-    CScriptThingHolder(const CScriptThing& thing) : Thing(thing) { }
-    virtual ~CScriptThingHolder() { }
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CPredicateBase.h"
+namespace NScript {
+class CIsThingAlive : public CPredicateBase { public:   // vtable 0x012C32F0 (engine/CIsThingAlive.h; the destructor inline here)
+    virtual bool operator()() const;                    // slot 0  0x00CDF120
+    virtual CPredicateBase* Clone() const;              // slot 1  0x00CDF130
+    CScriptThing Thing;                                 // +0x04
+    CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
+    virtual ~CIsThingAlive() { }                        // slot 2; out of line 0x00E241B0
 };
+}
 struct CGameScriptInterface_Calls {               // slots: ghidra_out/cgsi_slots_aligned.tsv
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -129,19 +139,19 @@ struct CQ_FireHeartScript {
 };
 class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
 struct CDF_Fireheart : public CEntityScriptBase {
     void*                       __vftable;             // +0x00
     CGameScriptInterface_Calls* Game;                  // +0x04
     CScriptThing                Me;                    // +0x08
     CQ_FireHeartScript*         ParentClass;           // +0x14
-    void SetupThing(const CScriptThingHolder& thing);  // 0x00F35B10
     void Main();
 };
 
 void CDF_Fireheart::Main()
 {
-    SetupThing(CScriptThingHolder(Me));
+    SetPredicate(NScript::CIsThingAlive(Me));
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;

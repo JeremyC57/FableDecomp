@@ -1,4 +1,9 @@
 // CGoalChest::Main -- watch the chest until hero use ends or script termination, then flag the parent
+// Leaf: ?Main@CGoalChest@@QAEXXZ
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: SetPredicate declared on CGoalChest (?SetPredicate@CGoalChest@@...), which cast `this` to CEntityScriptBase for the accessor.
 // Retail 00EF29E0 length221. Predicate VT012C32F0; copy4ABE90, SetPredicateF35B10, predicate dtorE241B0, terminatingF35B30.
 // Actual CScriptThing and CGameScriptInterface headers retained; native field-free method projections.
 // String125D1C8 is SCRIPT_NAME_HERO. Slot20 CScriptThing::MsgIsUsedBy=004AAB10; game slot7 NewScriptFrame=006E7410.
@@ -32,20 +37,20 @@ struct ThingCalls:CScriptThing {
 struct CPersonalScript_EmptyScript { unsigned char Unknown[0x48]; bool GoalChestFinished; };
 class CEntityScriptBase { public:
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
-struct CGoalChest {
+struct CGoalChest : CEntityScriptBase {                 // the PDB base (empty here: offset 0)
  void* VTable; GameCalls* Game; ThingCalls Me; CPersonalScript_EmptyScript* ParentClass; void* PMasterData;
- void SetPredicate(const NScript::CPredicateBase&); 
  void Main();
 };
 void CGoalChest::Main() {
  { NScript::CIsThingAlive filter(Me); SetPredicate(filter); }
  Game->NewScriptFrame();
- if(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
+ if(!IsActiveThreadTerminating()) {
   while(Me.NotUsedByHero()) {
    Game->NewScriptFrame();
-   if(((CEntityScriptBase*)this)->IsActiveThreadTerminating()) return;
+   if(IsActiveThreadTerminating()) return;
   }
-  if(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()) ParentClass->GoalChestFinished=true;
+  if(!IsActiveThreadTerminating()) ParentClass->GoalChestFinished=true;
  }
 }

@@ -3,6 +3,10 @@
 // installs nativeVT012E04FC. PDB corroborates QueenHornet registration and native factory.
 // Actual Thing, Game, Resource and BaseObject headers; named full-width PMFs for verified slots7/8.
 // Leaf: Main
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: SetPredicate declared on the entity class (?SetPredicate@CVtable012E04FC@@...).
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();};
@@ -50,9 +54,9 @@ struct GameCalls:CGameScriptInterface {
 struct NativeParent {unsigned char UnrecoveredPrefix[0x4c];bool ScriptFlag;};
 class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
 struct CVtable012E04FC : public CEntityScriptBase {void* VTable;GameCalls* Game;CScriptThing Me;NativeParent* Parent;void* Master;
- void SetPredicate(const NScript::CPredicateBase&); //00F35B10
  void Main();
 };
 #ifdef _MSC_VER

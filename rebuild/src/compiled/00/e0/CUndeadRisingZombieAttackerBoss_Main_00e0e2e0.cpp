@@ -1,4 +1,10 @@
 // CUndeadRisingZombieAttackerBoss::Main() -- Undead Rising boss zombie: conscious filter on Me; once the quest flags the boss cutscene, spawn the quest's LookAfterHealth thread on Me, take scripting control, retreat to the start position whenever health drops below half until it recovers, then attack the hero and idle
+// Leaf: ?Main@CUndeadRisingZombieAttackerBoss@@QAEXXZ
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: SetPredicate on the entity over a global CPredicateBase { IsTrue } stand-in
+//   (?SetPredicate@CUndeadRisingZombieAttackerBoss@@QAEXABUCPredicateBase@@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0E2E0, length 698 bytes, plain `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840; the CIsThingConscious filter (vtable
 //   0x012C2FE8, inline destructor) and SetPredicate 0x00F35B10; IsActiveThreadTerminating 0x00F35B30; operator new
@@ -26,15 +32,17 @@ class CCPPointerInfo;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-struct CPredicateBase {
-    virtual bool IsTrue() = 0;
-};
-struct CIsThingConscious : CPredicateBase {             // vtable 0x012C2FE8
+#include "engine/CPredicateBase.h"
+namespace NScript {
+class CIsThingConscious : public CPredicateBase { public:      // vtable 0x012C2FE8 (engine/CIsThingConscious.h; the destructor inline here)
+    virtual bool operator()() const;                    // slot 0  0x00CDDAB0
+    virtual CPredicateBase* Clone() const;              // slot 1  0x00CDDAE0
     CScriptThing Thing;                                 // +0x04
     CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
-    ~CIsThingConscious() { }
-    virtual bool IsTrue();
+    virtual ~CIsThingConscious() { }                    // slot 2; out of line 0x00EF7AB0
 };
+}
+using NScript::CIsThingConscious;
 struct CCountedPointerWords {
     void* Data;
     void* Info;
@@ -140,6 +148,7 @@ struct CSpawnedFunc1 : CSpawnedFuncBase {               // CSpawnedFunc1<CQ_Unde
 void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A
 class CEntityScriptBase { public:   // the PDB base the accessor belongs to (empty here: offset 0)
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb CEntityScriptBase, const)
+    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
 struct CUndeadRisingZombieAttackerBoss : public CEntityScriptBase {
     void*                  VTable;
@@ -149,7 +158,6 @@ struct CUndeadRisingZombieAttackerBoss : public CEntityScriptBase {
     void*                  PMasterData;                 // +0x18
     C3DVector              StartPos;                    // +0x1c
     float                  MaxHealth;                   // +0x28
-    void SetPredicate(const CPredicateBase& predicate); // 0x00F35B10
     void Main();
 };
 

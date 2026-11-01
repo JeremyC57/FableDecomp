@@ -1,5 +1,10 @@
 // CTrophyDealerInCave::Main() -- entity script: holds an alive filter on the trophy dealer, makes it unkillable and undamageable, takes the hero and the dealer under scripted control and plays CS_TROPHY_DEALER in a paused movie sequence, then re-enables the Witchwood2 creature generators and completes and retires the active quest
 // Leaf: Main
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: NScript::CEntityScriptBase with SetPredicate on the local CIsThingAlive and a non-const
+//   IsActiveThreadTerminating.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -75,21 +80,18 @@ void __fastcall RunCutsceneMacro(const CCharString& name, CCutsceneCastMap& cast
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-namespace NScript {
-class CIsThingAlive { public:                                  // vtable 0x012C32F0: a filter holding a script thing
-    virtual void f00();
-    CScriptThing Thing;
-    CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
-    virtual ~CIsThingAlive();                                   // 0x00E241B0
+#include "engine/CIsThingAlive.h"                     // NScript::CIsThingAlive : CPredicateBase, vtable 0x012C32F0, ~ 0x00E241B0
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}   // FableWin-only: retail expands it inline
+
+class CEntityScriptBase { public:                       // global PDB class, retail 0x14 bytes
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    CGameScriptInterface* Game;                         // +0x04
+    CScriptThing          Me;                           // +0x08
+    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
 };
 
-struct CEntityScriptBase {
-    virtual void e00();
-    CGameScriptInterface* GSI;                          // +0x04
-    CScriptThing          Me;                           // +0x08
-    void SetPredicate(const CIsThingAlive& predicate);  // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
-};
+namespace NScript {
 
 class CV_TrophyDealerScript;
 class CQ_SunnyvaleMasterData;
@@ -103,18 +105,18 @@ void CTrophyDealerInCave::Main()
 {
     CScriptGameResourceObjectScriptedThingBase trophy;
     SetPredicate(CIsThingAlive(Me));
-    GSI->NewScriptFrame();
+    Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    GSI->EntitySetAsKillable(Me, false, true);
-    GSI->EntitySetAsDamageable(Me, false);
+    Game->EntitySetAsKillable(Me, false, true);
+    Game->EntitySetAsDamageable(Me, false);
     {
         CScriptGameResourceObjectScriptedThingBase hero;
-        GSI->StartScriptingEntity(GSI->GetHero(), hero, (EScriptAIPriority)4);
+        Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
         if (trophy.IsValid())
             trophy.Release();
-        while (!GSI->StartScriptingEntity(Me, trophy, (EScriptAIPriority)4)) {
-            GSI->NewScriptFrame();
+        while (!Game->StartScriptingEntity(Me, trophy, (EScriptAIPriority)4)) {
+            Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 return;
         }
@@ -125,16 +127,16 @@ void CTrophyDealerInCave::Main()
         cast["Trophy"] = trophy;
         {
             CScriptGameResourceObjectMovieBase movie;
-            GSI->StartMovieSequence("", movie);
-            CGameScriptInterface* game = GSI;
+            Game->StartMovieSequence("", movie);
+            CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
             RunCutsceneMacro("CS_TROPHY_DEALER", cast, 0, 0, false, true);
             game->PauseAllNonScriptedEntities(false);
         }
     }
-    GSI->SetCreatureGeneratorsEnabled("Witchwood2", true);
-    GSI->SetQuestAsCompleted(GSI->GetActiveQuestName(), true, false, false);
-    GSI->FadeScreenIn();
-    GSI->DeactivateQuestLater(GSI->GetActiveQuestName(), 0);
+    Game->SetCreatureGeneratorsEnabled("Witchwood2", true);
+    Game->SetQuestAsCompleted(Game->GetActiveQuestName(), true, false, false);
+    Game->FadeScreenIn();
+    Game->DeactivateQuestLater(Game->GetActiveQuestName(), 0);
 }
 }

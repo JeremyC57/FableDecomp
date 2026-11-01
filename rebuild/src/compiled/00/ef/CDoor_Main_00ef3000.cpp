@@ -3,6 +3,10 @@
 // Game native slots confirmed in cgsi_slots_aligned.tsv and retail dispatch:7 NewScriptFrame,185 IsHeroHandLampLit,425 OpenDoor,426 CloseDoor.
 // SetPredicateF35B10; IsActiveThreadTerminatingF35B30. Native278 bytes.
 // Leaf: Main
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: SetPredicate declared on CDoor (?SetPredicate@CDoor@@...), which cast `this` to CEntityScriptBase for the accessor.
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();};
@@ -29,19 +33,20 @@ struct GameCalls:CGameScriptInterface {
 };
 class CEntityScriptBase { public:
     bool IsActiveThreadTerminating() const;   // 0x00F35B30 (Ego_r.pdb ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ)
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10 (Ego_r.pdb CEntityScriptBase)
 };
-struct CDoor {void* VTable;GameCalls* Game;CScriptThing Me;
- void SetPredicate(const NScript::CPredicateBase&);void Main();
+struct CDoor : CEntityScriptBase {void* VTable;GameCalls* Game;CScriptThing Me;   // the PDB base (empty here: offset 0)
+ void Main();
 };
 void CDoor::Main(){
  {NScript::CIsThingAlive p(Me);SetPredicate(p);}
- Game->NewScriptFrame();if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
- while(!((CEntityScriptBase*)this)->IsActiveThreadTerminating()){
-  while(!Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;}
-  if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
+ Game->NewScriptFrame();if(IsActiveThreadTerminating())return;
+ while(!IsActiveThreadTerminating()){
+  while(!Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
+  if(IsActiveThreadTerminating())return;
   Game->OpenDoor(Me);
-  while(Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;}
-  if(((CEntityScriptBase*)this)->IsActiveThreadTerminating())return;
+  while(Game->IsHeroHandLampLit()){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
+  if(IsActiveThreadTerminating())return;
   Game->CloseDoor(Me);Game->NewScriptFrame();
  }
 }
