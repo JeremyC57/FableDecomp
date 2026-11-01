@@ -1,0 +1,2 @@
+1 local model: implicit dtor via PDB ctor; CVertexShader/CPixelShader inline virtual dtors (chunk 668 model); MeshBase implicit; inline MeshBase ctor RELOCATION_MATCH
+2 MeshBase ctor declared out of line (PDB ??0CEnginePrimitiveManagerMeshBase is out of line) RELOCATION_MATCH (kept)

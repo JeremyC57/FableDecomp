@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00408990	RELOCATION_MATCH	215v215	PASS	CUserProfileManager::~CUserProfileManager (label LTextSymbol wrong); 2 probes
+00bc3c20	RELOCATION_MATCH	217v217	PASS	CEnginePrimitiveManagerParticleMeshGroup implicit dtor (label right); 2 probes
+00edad10	RELOCATION_MATCH	219v219	PASS	NScript::CV_TalentlessBardScript implicit dtor (label right); 1 probe
+00ee6c50	RELOCATION_MATCH	215v215	PASS	NScript::CV_TourGuideScript implicit dtor (label CActionTalkedTo wrong); 1 probe
+00b261d0	RELOCATION_MATCH	238v238	PASS	CEngine::~CEngine user dtor (label right); 1 probe
+00cfac40	RELOCATION_MATCH	232v232	PASS	NScript::CQ_ArenaScript implicit dtor (label right); 1 probe
+00e8b750	RELOCATION_MATCH	248v248	PASS	NScript::CV_FisticuffsClubScript implicit dtor (label right); 1 probe
+00ee40f0	RELOCATION_MATCH	247v247	PASS	NScript::CV_TravellingHeroesScript implicit dtor (label CTCTavernGame wrong); 1 probe
+00cafc40	MATCH	15v15	PASS	CPosPassThru::QueryInterface (DirectShow DECLARE_IUNKNOWN; compiled from SDK source, not toolchain_library); 1 probe
+0121a460	RELOCATION_MATCH	139v139	PASS	_$E1 dynamic initializer of CConversationAttitude::GeneralAttitudeToAnimName (CRT-table entry, not a library object); 2 probes

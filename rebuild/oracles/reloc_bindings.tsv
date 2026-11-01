@@ -35725,3 +35725,9 @@ _static_l_desc	0139c8b0	00c051c0
 ??1CLocalDetailCacheMap@@QAE@XZ	00bded60	00b59be0
 ??1C3DAnimationStats@@UAE@XZ	00a4eb50	00a4eec0
 ?clear@?$_List_base@V?$CIntelligentPointer@VC3DAnimation2@@@@V?$allocator@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@@std@@QAEXXZ	00a53300	00a4eec0
+??1?$deque@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@QAE@XZ	00412210	00408990
+??_7CUserProfileManager@@6BCBaseClassNonCopyable@@@	0122e23c	00408990
+??_7CUserProfileManager@@6BCDeviceResetCallback@@@	0122e230	00408990
+??_7CEngine@@6BCDeviceResetCallback@@@	012a0f30	00b261d0
+??_7CEngine@@6BCIEngine@@@	012a0f3c	00b261d0
+?Uninitialise@CEngine@@UAEXXZ	00b25d80	00b261d0

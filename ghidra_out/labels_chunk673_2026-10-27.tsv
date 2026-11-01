@@ -1,0 +1,29 @@
+address	name	evidence
+00408990	CUserProfileManager::~CUserProfileManager	chunk 673 RELOCATION_MATCH: stores vtable 0x0122E23C (RTTI COL CUserProfileManager, CDeviceResetCallback +4); sole caller slot-0 ??_G 0x00412B00 (catalog LTextSymbol wrong)
+00bc3c20	CEnginePrimitiveManagerParticleMeshGroup::~CEnginePrimitiveManagerParticleMeshGroup	chunk 673 RELOCATION_MATCH: compiler-generated; sole caller ??_G 0x00BC3C00 slot 0 of vtable 0x012A63B8 (COL)
+00edad10	NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript	chunk 673 RELOCATION_MATCH: ??_G 0x00EDACF0 slot 0 of RTTI-less vtable 0x012F3428 <- ctor 0x00ED76E0 <- Alloc registered as "V_TalentlessBard"
+00ee6c50	NScript::CV_TourGuideScript::~CV_TourGuideScript	chunk 673 RELOCATION_MATCH: ??_G 0x00EE6C30 slot 0 of vtable 0x012F46B8 <- ctor 0x00EE41F0 <- Alloc 0x00EE6C00 registered as "V_TourGuide" (catalog CActionTalkedTo wrong)
+00b261d0	CEngine::~CEngine	chunk 673 RELOCATION_MATCH: stores vtable 0x012A0F3C (COL CEngine : CIEngine : CInitBaseClass, CDeviceResetCallback +0xC); sole caller ??_G 0x00B2AB10; body Uninitialise()
+00cfac40	NScript::CQ_ArenaScript::~CQ_ArenaScript	chunk 673 RELOCATION_MATCH: ??_G 0x00CFAC20 slot 0 of vtable 0x012C7798 <- ctor 0x00CFA660 <- Alloc 0x00CFABF0 registered as "Q_Arena"
+00e8b750	NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript	chunk 673 RELOCATION_MATCH: ??_G 0x00E8B730 slot 0 of vtable 0x012EAF14 <- ctor 0x00E81F60 <- Alloc 0x00E8B700 registered as "V_FisticuffsClub"
+00ee40f0	NScript::CV_TravellingHeroesScript::~CV_TravellingHeroesScript	chunk 673 RELOCATION_MATCH: ??_G 0x00EE40D0 slot 0 of vtable 0x012F407C <- ctor 0x00EDEBA0 <- Alloc registered as "V_TravellingHeroes" (catalog CTCTavernGame wrong)
+00cafc40	CPosPassThru::QueryInterface	chunk 673 MATCH: slot 0 of the CPosPassThru / CRendererPosPassThru IMediaSeeking vtables 0x012BF940 / 0x012BF9F0; DirectShow strmbase forwarder (DX9 SDK source, not a vendor lib)
+0121a460	`dynamic initializer for 'CConversationAttitude::GeneralAttitudeToAnimName''	chunk 673 RELOCATION_MATCH: .CRT$XCU entry 0x013742E4; builds vector<CCharString>(18, "") at 0x013B8A2C; PDB order of the three CConversationAttitude initializers + landed atexit dtor 0x01228D00
+00412b00	CUserProfileManager::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x0122E23C; Ego_r
+00bc3c00	CEnginePrimitiveManagerParticleMeshGroup::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012A63B8; FableWin
+00b2ab10	CEngine::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012A0F3C; FableWin
+00edacf0	NScript::CV_TalentlessBardScript::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012F3428; FableWin
+00ee6c30	NScript::CV_TourGuideScript::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012F46B8; Ego_r
+00cfac20	NScript::CQ_ArenaScript::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012C7798; Ego_r
+00e8b730	NScript::CV_FisticuffsClubScript::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012EAF14; FableWin
+00ee40d0	NScript::CV_TravellingHeroesScript::`scalar deleting destructor'	chunk 673: slot 0 of vtable 0x012F407C; Ego_r + FableWin
+00ed76e0	NScript::CV_TalentlessBardScript::CV_TalentlessBardScript	chunk 673: stores vtable 0x012F3428; only caller its Alloc; PDB (CScriptDataBase*, CGameScriptInterfaceBase&)
+00ee41f0	NScript::CV_TourGuideScript::CV_TourGuideScript	chunk 673: stores vtable 0x012F46B8; only caller Alloc 0x00EE6C00
+00cfa660	NScript::CQ_ArenaScript::CQ_ArenaScript	chunk 673: stores vtable 0x012C7798; only caller Alloc 0x00CFABF0
+00e81f60	NScript::CV_FisticuffsClubScript::CV_FisticuffsClubScript	chunk 673: stores vtable 0x012EAF14; only caller Alloc 0x00E8B700
+00edeba0	NScript::CV_TravellingHeroesScript::CV_TravellingHeroesScript	chunk 673: stores vtable 0x012F407C; only caller its Alloc
+00ee6c00	NScript::CV_TourGuideScript::Alloc	chunk 673: `push 178h; call new; call ctor 0x00EE41F0`; __fastcall static (catalog Create_CClass_* wrong)
+00e8b700	NScript::CV_FisticuffsClubScript::Alloc	chunk 673: `push 0C8h; call new; call ctor 0x00E81F60`; __fastcall static (catalog Create_CClass_* wrong)
+00a5c600	CSimpleMemoryPool::ClearMemoryBlocks	chunk 673: called by the CSimpleMemoryPool ??_G 0x00987F30; private (AAE) in both PDBs
+009bf5a0	CDisplayManager::RemoveDeviceResetCallback	chunk 673: ~CUserProfileManager calls it on GFGetSystemManager()->PDisplayManager; Ego_r + FableWin
+0099a410	CInitBaseClass::~CInitBaseClass	chunk 673: stores vtable 0x0129A7CC (COL CInitBaseClass : CBaseClass) then CBaseClass's; tail target of ~CEngine (catalog Dtor_SharedBaseOf5 wrong)

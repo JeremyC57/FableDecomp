@@ -1,0 +1,1 @@
+1 local polymorphic model (CIEngine inline user dtor, CSimpleMemoryPool inline user dtor, engine CDefPointer, CArray=STLport vector), user dtor body Uninitialise() RELOCATION_MATCH

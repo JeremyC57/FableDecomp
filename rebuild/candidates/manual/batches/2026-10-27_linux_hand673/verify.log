@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00408990   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00408990   RELOCATION_MATCH PASS   ~CUserProfileManager
+00b261d0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b261d0   WARN RELOC_NAME: ??1CInitBaseClass@@UAE@XZ -> 0099a410 labelled '_global::Dtor_SharedBaseOf5_0099a410'
+00b261d0   RELOCATION_MATCH PASS   ~CEngine
+00bc3c20   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerParticleMeshGroup
+00cafc40   MATCH            PASS   QueryInterface
+00cfac40   RELOCATION_MATCH PASS   ~CQ_ArenaScript
+00e8b750   RELOCATION_MATCH PASS   ~CV_FisticuffsClubScript
+00edad10   RELOCATION_MATCH PASS   ~CV_TalentlessBardScript
+00ee40f0   RELOCATION_MATCH PASS   ~CV_TravellingHeroesScript
+00ee6c50   RELOCATION_MATCH PASS   ~CV_TourGuideScript
+0121a460   WARN RELOC_CONFLICT: _$E2 -> 01228d00 here, 01228930 in landed 01219f00
+0121a460   RELOCATION_MATCH PASS   $E_GeneralAttitudeToAnimName
+
+WINS: 10
+  00408990 RELOCATION_MATCH CUserProfileManager::??1CUserProfileManager@@UAE@XZ
+  00b261d0 RELOCATION_MATCH CEngine::??1CEngine@@UAE@XZ
+  00bc3c20 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::??1CEnginePrimitiveManagerParticleMeshGroup@@UAE@XZ
+  00cafc40 MATCH CPosPassThru::?QueryInterface@CPosPassThru@@UAGJABU_GUID@@PAPAX@Z
+  00cfac40 RELOCATION_MATCH NScript::CQ_ArenaScript::??1CQ_ArenaScript@NScript@@UAE@XZ
+  00e8b750 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::??1CV_FisticuffsClubScript@NScript@@UAE@XZ
+  00edad10 RELOCATION_MATCH NScript::CV_TalentlessBardScript::??1CV_TalentlessBardScript@NScript@@UAE@XZ
+  00ee40f0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::??1CV_TravellingHeroesScript@NScript@@UAE@XZ
+  00ee6c50 RELOCATION_MATCH NScript::CV_TourGuideScript::??1CV_TourGuideScript@NScript@@UAE@XZ
+  0121a460 RELOCATION_MATCH CConversationAttitude::_$E1
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CUserProfileManager_CUserProfileManager_00408990
+  CEngine_CEngine_00b261d0
+  CEnginePrimitiveManagerParticleMeshGroup_CEnginePrimitiveManagerParticleMeshGroup_00bc3c20
+  CPosPassThru_QueryInterface_00cafc40
+  NScriptCQArenaScript_CQArenaScript_00cfac40
+  NScriptCVFisticuffsClubScript_CVFisticuffsClubScript_00e8b750
+  NScriptCVTalentlessBardScript_CVTalentlessBardScript_00edad10
+  NScriptCVTravellingHeroesScript_CVTravellingHeroesScript_00ee40f0
+  NScriptCVTourGuideScript_CVTourGuideScript_00ee6c50
+  CConversationAttitude_EGeneralAttitudeToAnimName_0121a460

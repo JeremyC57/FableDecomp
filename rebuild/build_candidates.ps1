@@ -372770,6 +372770,76 @@ $catalog = @(
         TestSource = '00/eb/NScriptCVMurderTwistFinalScript_CVMurderTwistFinalScript_00eb6ab0_test.cpp'
         PassPattern = '00eb6ab0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00408990'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_CUserProfileManager_00408990.cpp'
+        TestSource = '00/40/CUserProfileManager_CUserProfileManager_00408990_test.cpp'
+        PassPattern = '00408990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b261d0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_CEngine_00b261d0.cpp'
+        TestSource = '00/b2/CEngine_CEngine_00b261d0_test.cpp'
+        PassPattern = '00b261d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bc3c20'
+        Module = 'CEnginePrimitiveManagerParticleMeshGroup'
+        Source = '00/bc/CEnginePrimitiveManagerParticleMeshGroup_CEnginePrimitiveManagerParticleMeshGroup_00bc3c20.cpp'
+        TestSource = '00/bc/CEnginePrimitiveManagerParticleMeshGroup_CEnginePrimitiveManagerParticleMeshGroup_00bc3c20_test.cpp'
+        PassPattern = '00bc3c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cafc40'
+        Module = 'CPosPassThru'
+        Source = '00/ca/CPosPassThru_QueryInterface_00cafc40.cpp'
+        TestSource = '00/ca/CPosPassThru_QueryInterface_00cafc40_test.cpp'
+        PassPattern = '00cafc40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfac40'
+        Module = 'NScript::CQ_ArenaScript'
+        Source = '00/cf/NScriptCQArenaScript_CQArenaScript_00cfac40.cpp'
+        TestSource = '00/cf/NScriptCQArenaScript_CQArenaScript_00cfac40_test.cpp'
+        PassPattern = '00cfac40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8b750'
+        Module = 'NScript::CV_FisticuffsClubScript'
+        Source = '00/e8/NScriptCVFisticuffsClubScript_CVFisticuffsClubScript_00e8b750.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScript_CVFisticuffsClubScript_00e8b750_test.cpp'
+        PassPattern = '00e8b750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edad10'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_CVTalentlessBardScript_00edad10.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_CVTalentlessBardScript_00edad10_test.cpp'
+        PassPattern = '00edad10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee40f0'
+        Module = 'NScript::CV_TravellingHeroesScript'
+        Source = '00/ee/NScriptCVTravellingHeroesScript_CVTravellingHeroesScript_00ee40f0.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScript_CVTravellingHeroesScript_00ee40f0_test.cpp'
+        PassPattern = '00ee40f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6c50'
+        Module = 'NScript::CV_TourGuideScript'
+        Source = '00/ee/NScriptCVTourGuideScript_CVTourGuideScript_00ee6c50.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScript_CVTourGuideScript_00ee6c50_test.cpp'
+        PassPattern = '00ee6c50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121a460'
+        Module = 'CConversationAttitude'
+        Source = '01/21/CConversationAttitude_EGeneralAttitudeToAnimName_0121a460.cpp'
+        TestSource = '01/21/CConversationAttitude_EGeneralAttitudeToAnimName_0121a460_test.cpp'
+        PassPattern = '0121a460_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

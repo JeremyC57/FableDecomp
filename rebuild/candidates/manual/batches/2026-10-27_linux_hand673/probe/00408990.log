@@ -1,0 +1,2 @@
+1 local model: user dtor GFGetSystemManager()->GetDisplayManager()->RemoveDeviceResetCallback(this); STLport vectors; queue<deque> with the landed ~deque text (__destroy_aux declared out of line) RELOCATION_MATCH (kept)
+2 STLport 4.6 generic inline _Destroy->__destroy->__destroy_aux chain for both vector and deque SRC_FAIL (the deque iterator model lacks ++/*/!=; not pursued, p1 holds)
