@@ -1,5 +1,7 @@
 // NScript::CV_BodyGuardScript::CBodyGuard::Init() -- set a henchman up: no health bar, brain state 1, health states and freak-out cleared, weapons out, bodyguard faction, follows the hero through teleporters, has information, persistent, may follow the hero, wants no money, ignores follow/wait expressions, wanders 0..10 around its home position, and the anger timer reset
 // Leaf: ?Init@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5DE80, 364 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 2).
 // Identity (proven): the row is referenced once, from slot 2 (Init) of the RTTI-less entity vtable 0x012E701C (0x012E7024),
 //   which the landed NScript::CV_BodyGuardScript::CBodyGuard::CBodyGuard 0x00E5DDE0 stores and whose slots 4 / 5 are the
@@ -41,11 +43,11 @@ inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other)
 //   (FABLE_RETAIL_NSCRIPT opt-in: CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface; no PDB data symbol)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CScriptBase;
 class CPersistContext;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).

@@ -1,5 +1,7 @@
 // CV_BeardyBaldyScript::CV_BeardyBaldyScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012E5790, the three required-hair strings, the registered random-speech timer and ten empty speech strings
 // Leaf: ??0CV_BeardyBaldyScript
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4F5B0, length 101 bytes (padded to 112), `ret 8`.
 // Factory 0x00E54260 (`push 0A4h`, this ctor) is registered at 0x00CD82D1 under "S_VBB" / "V_BeardyBaldy".
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CCharString::CCharString() @ 0x0099E4B0 (3 + an inline counted
@@ -15,11 +17,11 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

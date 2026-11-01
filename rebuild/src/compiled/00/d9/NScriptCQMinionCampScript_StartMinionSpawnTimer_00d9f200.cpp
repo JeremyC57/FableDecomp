@@ -1,5 +1,7 @@
 // CQ_MinionCampScript::StartMinionSpawnTimer() -- set the camp's minion spawn timer to a random wait between the min and max spawn periods (whole seconds), so the next summoning comes at an unpredictable moment
 // Leaf: StartMinionSpawnTimer
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9F200, length 69 bytes (second piece of catalogue row 00d9f1b0,
 // split via the skipped-row ledger, chunk 908). Called only as the tail jump of OnMinionKilled @ 0x00D9F1B0.
 // Callees: rand @ 0x00BFEB16, __ftol2 @ 0x00BFEA70 (the `(long)` cast), the game-script interface global
@@ -19,7 +21,7 @@
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptBase {                                // the quest script base: vptr first; the thread-state query is a
 public:                                            // non-virtual member @ 0x00CB7940 (`this` in ecx)
     void* __vftable;                               // +0x00
@@ -44,6 +46,6 @@ using NScript::CQ_MinionCampScript;
 void NScript::CQ_MinionCampScript::StartMinionSpawnTimer()
 {
     float r = rand() * (1.0f / RAND_MAX);                 // 0..1, kept on the FPU stack until the call is made
-    g_pGameScriptInterface->SetTimer(MinionSpawnTimer.TimerIndex,
+    pDSTGame->SetTimer(MinionSpawnTimer.TimerIndex,
         (long)((MaxMinionSpawnPeriod - MinMinionSpawnPeriod) * r + MinMinionSpawnPeriod));
 }

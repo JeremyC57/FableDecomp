@@ -1,10 +1,12 @@
 // CArenaSpawn::Main() -- arena spawn point: its data string is the spawn-slot index; while the script runs, wait for the parent script to flag that slot, play the SUMMON_ARENA effect at the spawn (unless the arena is in state 3), clear the flag and wait a frame
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F1B690, length 361 bytes (plain `ret`; vtable slot 1 = Main of the entity
 //          script contract).
 // Callees: CScriptThing slot 3 GetDataString (CCharString by hidden pointer) and slot 6 GetPos, GFCharStringToInt
 //          @ 0x0099E7F0 (__fastcall), ~CCharString @ 0x0099EAE0, CCharString(const char*, long = -1) @ 0x0099EBF0,
 //          ~CScriptThing @ 0x004AA840, CEntityScriptBase::IsDone @ 0x00F35B30, the game interface's slots 7 NewScriptFrame,
-//          87 RegisterTimer, 88 DeregisterTimer, 100 CreateEffect (cgsi_slots_aligned.tsv); data g_pGameScriptInterface
+//          87 RegisterTimer, 88 DeregisterTimer, 100 CreateEffect (cgsi_slots_aligned.tsv); data pDSTGame
 //          @ 0x0143E8F8; literals "SUMMON_ARENA" 0x012F9D00 and "" 0x0122D70E.
 // Shape: the timer handle is registered on the global interface; the inner wait loop's IsDone exit and the ArenaState
 //          branch's IsDone exit both `goto stop` (one shared DeregisterTimer tail, retail copy 2 with eax), while the
@@ -41,7 +43,7 @@ long __fastcall GFCharStringToInt(const CCharString& text);                     
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 struct CQ_ArenaScript {
     unsigned char _pad[0xa8];
@@ -64,14 +66,14 @@ struct CArenaSpawn {
 void CArenaSpawn::Main()
 {
     long slot = GFCharStringToInt(Me.GetDataString());
-    long timer = g_pGameScriptInterface->RegisterTimer();
+    long timer = pDSTGame->RegisterTimer();
     while (!((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
         while (!ParentClass->SpawnFlags[slot]) {
             Game->NewScriptFrame();
             if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) goto stop;
         }
         if (((const CEntityScriptBase*)this)->IsActiveThreadTerminating()) {
-            g_pGameScriptInterface->DeregisterTimer(timer);
+            pDSTGame->DeregisterTimer(timer);
             return;
         }
         if (ParentClass->ArenaState != 3) {
@@ -81,8 +83,8 @@ void CArenaSpawn::Main()
         ParentClass->SpawnFlags[slot] = false;
         Game->NewScriptFrame();
     }
-    g_pGameScriptInterface->DeregisterTimer(timer);
+    pDSTGame->DeregisterTimer(timer);
     return;
 stop:
-    g_pGameScriptInterface->DeregisterTimer(timer);
+    pDSTGame->DeregisterTimer(timer);
 }

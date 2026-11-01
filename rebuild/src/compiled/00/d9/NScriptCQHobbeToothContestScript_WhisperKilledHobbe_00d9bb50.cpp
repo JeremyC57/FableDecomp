@@ -1,4 +1,6 @@
 // CQ_HobbeToothContestScript::WhisperKilledHobbe() -- count a tooth for Whisper and, unless she commented within the last five seconds, have her comment to the hero on the score (enemy ahead / equal / behind, or one of two random lines)
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9BB50, length 621 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, rand 0x00BFEB16, ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC; through the interface (+0x40): GetHero (70), GetThingWithScriptName (72),
@@ -32,12 +34,12 @@ inline CScriptThing::~CScriptThing() {}
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; g_pGameScriptInterface->SetTimer(index, time); return *this; }
-inline long CTimer::GetTime() const { const long& index = TimerIndex; return g_pGameScriptInterface->GetTimer(index); }
+inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; pDSTGame->SetTimer(index, time); return *this; }
+inline long CTimer::GetTime() const { const long& index = TimerIndex; return pDSTGame->GetTimer(index); }
 extern "C" int __cdecl rand();                                     // 0x00BFEB16
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).

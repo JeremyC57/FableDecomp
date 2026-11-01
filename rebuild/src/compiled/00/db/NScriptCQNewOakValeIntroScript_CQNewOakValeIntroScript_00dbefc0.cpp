@@ -1,5 +1,7 @@
 // NScript::CQ_NewOakValeIntroScript::~CQ_NewOakValeIntroScript() -- implicit quest-script destructor: deregister WatchTimer and TalkIntermittentTimer, destroy the eight villager-speech CCharString vectors in reverse order, then ~CScriptBase
 // Leaf: ??1CQ_NewOakValeIntroScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBEFC0, 450 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510.
 // Identity (proven): the sole caller 0x00DBEFA3 is the scalar deleting destructor 0x00DBEFA0, slot 0 of the RTTI-less vtable
 //   0x012D7A28; that vtable is stored only by the ctor 0x00DAAC00 (landed as ??0CQ_NewOakValeIntroScript), whose only caller is
@@ -12,7 +14,7 @@
 //   WhichBadDeedsPerformed[5] +0xFC, TalkIntermittentTimer +0x104, WatchTimer +0x108; retail size 0x10C (Alloc). The PDB places
 //   BarrelBrokenPos / WarehouseMeetPoint at the odd offsets Ego_r +0x8A / +0x99: the script headers' C3DVector is byte-aligned, so
 //   the local C3DVector carries pack(1) (the true layout, as GOTCHAS 0xDB5260); without it every later member shifts by 4.
-// Callees: ~CTimer inline (g_pGameScriptInterface 0x0143E8F8 slot 88 DeregisterTimer, engine/CTimer.h), ~CCharString 0x0099EAE0
+// Callees: ~CTimer inline (pDSTGame 0x0143E8F8 slot 88 DeregisterTimer, engine/CTimer.h), ~CCharString 0x0099EAE0
 //   per element and free 0x00BFEA14 (STLport ~vector: _Destroy range + _Vector_base storage free), ~CScriptBase 0x00CBD510.
 // TU: the PDB ctor is defined with an empty body (retail's TU defines it) to emit the vtable, ??_G and this implicit dtor; only
 //   the dtor is graded. CLevelScriptBase<T> is a local copy without the dtor declaration (engine/CLevelScriptBase.h header debt,
@@ -20,10 +22,10 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CScriptBase.h"
 
 class CCharStringData;

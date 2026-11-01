@@ -1,4 +1,6 @@
 // CQ_BountyHuntScript::AddBoastQuestInfo() -- start the boast timer from the quest globals, show it as a quest-info timer and display the quest info
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D17EA0, length 119 bytes.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, SetTimer (slot 89,
 // +0x164) through the game script interface global @ 0x0143E8F8, and through the quest's interface (+0x40):
@@ -24,7 +26,7 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;       // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CScriptDef { public:
     unsigned char _pad[0xb60];
@@ -55,7 +57,7 @@ using NScript::CQ_BountyHuntScript;
 
 void NScript::CQ_BountyHuntScript::AddBoastQuestInfo()
 {
-    g_pGameScriptInterface->SetTimer(BoastTime.TimerIndex, pGlobalScriptDef->BountyHuntBoastTimeLimit);
+    pDSTGame->SetTimer(BoastTime.TimerIndex, pGlobalScriptDef->BountyHuntBoastTimeLimit);
     {
         CCharString text("HUD_CLOCK_ICON", -1);
         BoastTimerID = GSI->AddQuestInfoTimer(BoastTime, text, 1.0f);

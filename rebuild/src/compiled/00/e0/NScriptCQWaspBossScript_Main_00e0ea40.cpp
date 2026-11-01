@@ -1,4 +1,6 @@
 // CQ_WaspBossScript::Main() -- the wasp menace quest's main: start the reached-wasp-helper timer (120), wait for LookoutPoint, show the tutorial, bind the nine wasp-quest entity scripts, set the objective, send the guild seal map message, wait for PicnicArea, override the music and spawn the WatchForTermination, DoMission (region PicnicArea) and WatchForCutscene threads
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0EA40, length 1919 bytes. Catalog label "CQ_GuildTrainingScript::Main" is
 //   propagated: the body sits in CQ_WaspBossScript's vtable (0x012E00EC) next to the landed Init 0x00E0E820 and spawns
 //   0x00E0F1D0 (landed as CQ_WaspBossScript::EndMission; spawned here under the name "WatchForTermination"),
@@ -7,7 +9,7 @@
 //   ~CCharString 0x0099EAE0, CScriptBase::IsActiveThreadTerminating 0x00CB7940 / AddEntityScriptBinding 0x00CB8230 /
 //   PostAddScriptedEntities 0x00CB8930 / AddSpawnedFunction 0x00CB7E50, CSpawnedFuncBase ctor 0x00CDD450 (CSpawnedFunc
 //   vtable 0x012E0104); binding allocators 0x00E109D0 .. 0x00E11CD0 (binding vtable 0x012E01F8);
-//   g_pGameScriptInterface 0x0143E8F8 (CTimer::SetTime, slot 89); the game script interface (+0x40) slots 7, 11, 12, 64,
+//   pDSTGame 0x0143E8F8 (CTimer::SetTime, slot 89); the game script interface (+0x40) slots 7, 11, 12, 64,
 //   141, 274, 296, 376, 655, 696.
 // Layout (retail = Ego_r.pdb - 0x14, as the landed Init 0x00E0E820): ReachedWaspHelper (CTimer) +0x58.
 // Shape: bindings / spawned functions as the landed CQ_GuildTrainingWoodsDepartureScript::Main 0x00D61D20; the DoMission
@@ -60,11 +62,11 @@ enum EMusicSetType { MUSIC_SET_NONE };
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

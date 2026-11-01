@@ -1,5 +1,7 @@
 // NScript::CQ_HobbeCaveScript::CJames::Init() -- set up James: unpushable and not force-pushable, ignores hits, cannot be damaged or killed, no combo multiplier, narrated as JAMES; the shout-for-help timer is reset to 0 and he has not reached granny's house
 // Leaf: ?Init@CJames@CQ_HobbeCaveScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D900E0, 198 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Init) of the RTTI-less vtable 0x012D5A1C, which the entity Alloc 0x00D8FFA0 (`NScript::CQ_HobbeCaveScript::CJames::Alloc`) stores; ?Init@CJames@CQ_HobbeCaveScript@NScript@@EAEXXZ is in Ego_r.pdb and FableWin.pdb.
 // Label: the manifest's "sub_00d900e0" is a gap-scan placeholder.
@@ -26,11 +28,11 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   (FABLE_RETAIL_NSCRIPT opt-in: CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface, bound name)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 namespace NScript {

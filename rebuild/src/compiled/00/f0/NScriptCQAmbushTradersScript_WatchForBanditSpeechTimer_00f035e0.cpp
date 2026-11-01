@@ -1,10 +1,12 @@
 // NScript::CQ_AmbushTradersScript::WatchForBanditSpeechTimer() -- speech thread: until the bandit contact has switched allegiance, wait while bandit speech is enabled, then wait for the bandit speech timer to run out and re-enable the speech
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F035E0, length 219 bytes, plain `ret` / tail `jmp`.
 // Identity: catalog CQ_AmbushTradersScript::WatchForBanditSpeechTimer, next to the landed WatchForQuestFailure
 // 0x00F03270 and WatchForBoastSuccess 0x00F03560 of the same class; the members it reads are the class's own
 // (Ego_r.pdb layout).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CGameScriptInterface slot 7 NewScriptFrame (+0x1C) through
-// the script's GSI (+0x40), slot 90 GetTimer(long) (+0x168) through the global g_pGameScriptInterface @ 0x0143E8F8
+// the script's GSI (+0x40), slot 90 GetTimer(long) (+0x168) through the global pDSTGame @ 0x0143E8F8
 // (the inline CTimer::GetTime()).
 // Layout: retail quest base 0x48 bytes; EnableSpeechBandit +0x6A, BanditSwitchAllegienceComplete +0x98,
 // SpeechBanditTimer +0x9C (Ego_r.pdb +0x7E/+0xAC/+0xB0 less the 0x14 debug-container shift).
@@ -17,12 +19,12 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 namespace NScript {
 struct CTimer {
     long TimerIndex;
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+    long GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 };
 
 }   // namespace NScript (CScriptBase is global in retail)

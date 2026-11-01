@@ -1,5 +1,7 @@
 // NScript::CQ_HeroSoulsNostroScript::CNostro::Main() -- Nostro entity script: while the thread runs, make Nostro invulnerable and faded, play his sound, wait for the vulnerability timer, then make him vulnerable and visible until the timer runs out again
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D89380, 0x1F8 bytes (padded to 512), `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840 (CIsThingAlive predicate, vtable
 //   0x012C32F0), CEntityScriptBase::SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, FadeOutThing
@@ -24,11 +26,11 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 void __fastcall FadeOutThing(const CScriptThing& thing, float time, float alpha);   // 0x00CBE814
 void __fastcall FadeInThing(const CScriptThing& thing, float time);                 // 0x00CBE7AA
 // NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).

@@ -1,5 +1,7 @@
 // NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::Init() -- restart the spawner's WaitForTimer at 0
 // Leaf: ?Init@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D154A0, 23 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 2).
 // Identity (proven): slot 2 (Init) of the RTTI-less entity vtable 0x012CA4F4, which the landed
 //   NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::Alloc 0x00D153F0 stores (site 0x00D15425); Ego_r.pdb has
@@ -27,11 +29,11 @@ inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other)
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface, bound name)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CGameScriptInterfaceBase;
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).

@@ -1,5 +1,7 @@
 // CDarkwoodTrader::CDarkwoodTrader(CQ_TraderEscortScript* parent, CQ_SunnyvaleMasterData* masterData, const CScriptThing& me) -- the trader's entity script in the Darkwood escort quest: entity-script base over the quest's interface and Me, the parent pointer, three script timers, and the master data last
 // Leaf: ??0CDarkwoodTrader
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E01670, length 107 bytes (ret 0Ch; vtable 0x012DF424).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, the timer service's virtual slot 87 (+0x15c) through
 // the global 0x0143E8F8 (three times, one per CTimer).
@@ -21,7 +23,7 @@ template <class T> class CCountedPointer { public:
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-class CGameScriptInterface { public:                        // the game-script timer service behind the global at 0x0143E8F8
+class CGameScriptInterfaceBase { public:                        // the game-script timer service behind the global at 0x0143E8F8
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -111,11 +113,11 @@ class CGameScriptInterface { public:                        // the game-script t
     virtual void v086();
     virtual long NewTimer();                  // slot 87 (+0x15c)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->NewTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->NewTimer()) { }
 struct CScriptOwner {                         // the quest script that owns this entity script
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*

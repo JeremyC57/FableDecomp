@@ -1,5 +1,7 @@
 // NScript::CQ_NewOakValeIntroScript::StartBarrelTimer() -- Oakvale intro barrel-watch thread: wait for the watch timer to start, put up the HUD clock bar, then each frame colour it green while the hero stands within 2 units of the warehouse guard point (red otherwise) and feed it the remaining watch time, until the barrel man has spoken to the returning hero; then remove the bar
 // Leaf: ?StartBarrelTimer@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB4F70, 562 bytes, thiscall, plain `ret`.
 // Identity (proven): the landed NScript::CQ_NewOakValeIntroScript::Main 0x00DABAC0 spawns this address (site 0x00DAC255, the row's
 //   only reference) as the member function of its CSpawnedFunc<CQ_NewOakValeIntroScript> (vtable 0x012D7A3C) right after the
@@ -7,7 +9,7 @@
 //   Catalog label "Script_Guard_Duty" is propagated.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0,
 //   ~CScriptThing 0x004AA840, IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float) 0x00CBE2FF
-//   (__fastcall); g_pGameScriptInterface 0x0143E8F8 slot 90 GetTimer (the inline CTimer::GetTime); Game (+0x40) slots
+//   (__fastcall); pDSTGame 0x0143E8F8 slot 90 GetTimer (the inline CTimer::GetTime); Game (+0x40) slots
 //   7 NewScriptFrame, 70 GetHero, 72 GetThingWithScriptName, 324 AddQuestInfoBar, 332 UpdateQuestInfoBar,
 //   333 ChangeQuestInfoBarColour, 338 RemoveQuestInfoElement.
 // Literals: "" 0x0122D70E, "HUD_CLOCK_ICON" 0x012CA7C8, "M_WHouse_GuardPoint" 0x012D9000; floats 45.0f, 0.0f, 1.0f, 2.0f,
@@ -42,8 +44,8 @@ public:
 #include "engine/CTimer.h"
 #include "engine/CLevelScriptBase.h"
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 namespace std {
 template <class _Tp> class allocator { };

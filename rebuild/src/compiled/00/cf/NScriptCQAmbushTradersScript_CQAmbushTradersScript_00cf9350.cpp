@@ -1,5 +1,7 @@
 // NScript::CQ_AmbushTradersScript::CQ_AmbushTradersScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: level-script base, two speech timers, six empty script-thing vectors, ten CCharString[5] speech tables, the empty CSFlagMap and the empty TeleportInfo vector
 // Leaf: ??0CQ_AmbushTradersScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CF9350, 505 bytes, thiscall, `ret 8`.
 // Identity (proven): sole caller 0x00CFA30B is the Alloc 0x00CFA2F0 (`push 1D0h ; call new ; ... call 0x00CF9350`), stored at
 //   0x00CD5838 by the script-registration routine; refs/script_recovery/conversion_queue.tsv maps S_QAT -> Q_AmbushTraders ->
@@ -14,9 +16,9 @@
 // Shape: STLport 4.6 _Rb_tree_base/_Rb_tree/_M_empty_initialize and _Vector_base text; engine/CLevelScriptBase.h inline ctor.
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }   // retail expands 0x00CD4450 here
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }   // retail expands 0x00CD4450 here
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 #include "engine/CScriptBase.h"

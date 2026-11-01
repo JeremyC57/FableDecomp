@@ -1,5 +1,7 @@
 // CQ_HeroSoulsMotherScript::CreateScreamers() -- start the super-screamer timer, gather the ScreamerHere points, show the quest bar and, until the bar is full, keep creating screamers at random points while fewer than the allowed number are alive; then remove the bar and record the mother's soul as collected
 // Leaf: ?CreateScreamers@CQ_HeroSoulsMotherScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D84630, length 662 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, rand 0x00BFEB16, ~vector<CScriptThing>
 //   0x008AC970 (out of line), ~CBaseClass 0x0099A2E0 / operator delete 0x00BFE9BC (inline ~CScriptThing),
@@ -52,11 +54,11 @@ extern "C" int __cdecl rand();                                         // 0x00BF
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;        // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CScriptDef { public:
     unsigned char _pad0[0xc70];
     float HS_ScreamerCount;                                 // +0xc70

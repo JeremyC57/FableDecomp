@@ -1,11 +1,13 @@
 // CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull(CScriptThing puller) -- with an is-alive predicate on the crowd member pulling the sword, wait until he is killed or hit by the hero, then take scripting control of him, clear his commands, end the crowd pull, make the sword usable again and restart the crowd timer at 10..15
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED7320, 0x258 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's copy), CScriptBase::SetPredicate 0x00CB7920,
 //   ~CIsThingAlive 0x00E241B0, IsActiveThreadTerminating 0x00CB7940, CCharString 0x0099EBF0 / ~ 0x0099EAE0, ~CBaseClass
 //   0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840 (out of line at the late exits), the scripted-thing
 //   handle (CBaseIntelligentPointer ctor 0x0099A380, ClearCommands 0x007E7360, dtor 0x007E74D0), rand 0x00BFEB16;
 //   Game slots 7 NewScriptFrame, 8 StartScriptingEntity, 72 GetThingWithScriptName, 447 SetThingAsUsable; the timer
-//   through g_pGameScriptInterface 0x0143E8F8 slot 89 SetTimer; the thing's implementation slots 18 MsgIsKilledBy,
+//   through pDSTGame 0x0143E8F8 slot 89 SetTimer; the thing's implementation slots 18 MsgIsKilledBy,
 //   21 MsgIsHitBy, 43 MsgIsHitByAnyAggressiveSpecialAbilityFrom behind the null-safe wrappers.
 // Shape: the landed CV_TalentlessBardScript::WatchForAttack 0x00ED9790 predicate/by-value-thing model (b18 recipe:
 //   __forceinline ~CScriptThing, in-body inline_depth(0) around the exits retail calls out of line); handle model from
@@ -54,11 +56,11 @@ using NScript::CIsThingAlive;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).

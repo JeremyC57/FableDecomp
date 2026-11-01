@@ -1,12 +1,14 @@
 // CSpectator::Main() -- hero-duel spectator: put Me in limbo until the duel is set up, take Me under scripted control, wait for the duel start, then until the duel ends: play a random cheer animation whenever Me is idle, shout a random cheering line (from the last five once the hero has been jeered) whenever the cheer timer runs out, alternately facing the hero and Thunder, and count the hero's hits on Me -- the third hit turns the crowd to jeering
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E998F0, 2019 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "Thunder" 0x012ED164, "SCRIPT_CHEER_1/2/3" 0x01292930 / 0x01292910 / 0x01292920, "TEXT_QST_044_HERO_DUEL_CHEERING_10..100"
 //   0x012ED34C..0x012ED208, "TEXT_QST_044_HERO_DUEL_JEERING_10" 0x012ED1E4, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, ~CIsThingAlive 0x00E241B0, RegisterFilter 0x00F35B10, IsActiveThreadTerminating
 //   0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 /
 //   IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0, CTimer ctor 0x00CD4450 / dtor 0x00CD4470, rand 0x00BFEB16, the eh vector
-//   destructor iterator 0x00401400 (the ten cheering lines); GameCalls slots 7, 8, 70, 72, 87-90 timers (g_pGameScriptInterface
+//   destructor iterator 0x00401400 (the ten cheering lines); GameCalls slots 7, 8, 70, 72, 87-90 timers (pDSTGame
 //   0x0143E8F8), 364 AddNewConversation, 366 AddLineToConversation, 453 EntitySetInLimbo, 475 EntitySetFacingAngleTowardsThing.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (duel quest: set-up +0x4b, started +0x4c, cheer due +0x50,
 //   jeering +0x51, duel over +0x52, spectators released +0x53, hero hit count +0x54), PMasterData +0x18, facing-hero toggle +0x1c.
@@ -69,12 +71,12 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 extern bool g_bScriptAnimationFlag;                    // 0x01375748
 struct CQ_HeroDuelScript {
     unsigned char _pad00[0x4b];

@@ -1,8 +1,10 @@
 // NScript::CV_FisticuffsClubScript::CFisticuffsMember::CFisticuffsMember(CV_FisticuffsClubScript& parent, CScriptDataBase* data, const CScriptThing& me) -- a fisticuffs-club member's entity script: entity-script base over the quest's interface and Me, the parent, the ShoutTimer, the cheer/boo strings, and the master data last
 // Leaf: ??0CFisticuffsMember@CV_FisticuffsClubScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E83920, 89 bytes (+ int3 padding), `ret 0Ch`; its only caller is the
 //   factory 0x00E838A0 (`push 30h`, CFisticuffsMember::Alloc), bound as "FisticuffsMember" at 0x00E822D4.
-// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, g_pGameScriptInterface (0x0143E8F8)->RegisterTimer
+// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, pDSTGame (0x0143E8F8)->RegisterTimer
 //   (slot 87, +0x15C) for ShoutTimer, CCharString::CCharString() @ 0x0099E4B0 (x2).
 // Layout = Ego_r.pdb CFisticuffsMember (48 bytes, entity scripts keep their PDB offsets): CEntityScriptBase {vptr
 //   0x012C3224, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18, PerformingCheerOrBoo +0x1c, FC_Status +0x20 (both
@@ -14,7 +16,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template <class T> class CCountedPointer { public:
@@ -36,7 +38,7 @@ class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 class CCharString { public:
     void* PStringData;
     CCharString();                            // 0x0099E4B0

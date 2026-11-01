@@ -4,8 +4,10 @@
 //   timer, CurrentLevel and three empty vectors
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D68F00, `ret 8`. Identity: its factory 0x00D6ED10 (`push 0D0h`) is registered at
 //   0x00CD6694 under "S_QHTE" / "Q_HangingTreeEvil". Callees: CScriptBase::CScriptBase 0x00CB8110, CCharString() 0x0099E4B0,
-//   CBaseClass::CBaseClass 0x0099A2D0, g_pGameScriptInterface->RegisterTimer (slot 87).
+//   CBaseClass::CBaseClass 0x0099A2D0, pDSTGame->RegisterTimer (slot 87).
 // Leaf: ??0CQ_HangingTreeEvilScript
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Layout: PDB (Ego_r) names; retail = PDB - 0x14 (script base), and the three STLport vectors are 12 bytes (PDB 16):
 //   bools +0x48..+0x58, ReasonForFailing +0x5c, HTE_State..CarryOverGuards +0x60..+0x70, Executioner +0x74, Prisoner +0x80,
 //   PartySpawnPoint +0x8c, BanditExitPoint +0x98, MissionTimer +0xa4, CurrentLevel +0xa8, vectors +0xac/+0xb8/+0xc4;
@@ -21,7 +23,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -33,7 +35,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/CCountedPointer.h"

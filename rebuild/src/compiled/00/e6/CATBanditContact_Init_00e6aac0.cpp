@@ -1,5 +1,7 @@
 // CAT_BanditContact::Init() -- (really an Acolyte entity script's Init) register the parent script's WatchForAcolyteHit and WatchForAcolyteDeath callbacks, start the script timer from the quest globals, then set the thing's flags and hand it over by value
 // Leaf: Init
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6AAC0, length 586 bytes (vtable 0x012E8470; the manifest
 //         "CAT_BanditContact::Init" label is propagated -- the callback strings are "WatchForAcolyteHit" 0x012E84F0 and
 //         "WatchForAcolyteDeath" 0x012E84BC, spawned-func vtable 0x012E84D4, callbacks 0x00E6AF20 / 0x00E6AD20).
@@ -978,7 +980,7 @@ struct CGameScriptInterfaceCalls {
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDef { public:
     unsigned char _pad[0x50c];
     long          AcolyteTimerTime;           // +0x50c
@@ -1026,7 +1028,7 @@ void CAT_BanditContact::Init()
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteDeath", -1),
             0, &CQ_AcolyteParentScript::WatchForAcolyteDeath, ParentClass, Thing),
         CCharString("", -1));
-    g_pGameScriptInterface->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
+    pDSTGame->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
     GSI->SetThingFlags(Thing, 0, 0, 0);
     GSI->SetThingAsTarget(Thing, 0);
 }

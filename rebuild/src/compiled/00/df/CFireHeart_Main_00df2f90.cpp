@@ -1,9 +1,11 @@
 // CFireHeart::Main() -- the summoning-the-ship fire heart: fade Me in once the quest is ready, show its health bar, then while its health stays above 1 play a heartbeat whose speed follows the health, and when the summoner's attackers hit it let the quest comment (every 20 ticks); finally flag the heart destroyed
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF2F90, 1220 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: IsActiveThreadTerminating 0x00F35B30, CTimer dtor 0x00CD4470, CScriptThing dtor 0x004AA840,
 //   CCharString 0x0099EBF0 / 0x0099EAE0, CQ_SummoningTheShipScript::MakeBriarRoseComment 0x00DF20F0; GameCalls slots 7, 72,
-//   87/89/90 timers (through g_pGameScriptInterface 0x0143E8F8), 264 GetHealth, 321, 325, 352, 510, 516, 692 Play2DSound;
+//   87/89/90 timers (through pDSTGame 0x0143E8F8), 264 GetHealth, 321, 325, 352, 510, 516, 692 Play2DSound;
 //   CScriptThing slots 21/41/42 (hit-by messages).
 // Layout: Ego_r.pdb CFireHeart: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_SummoningTheShipScript; retail
 //   bools at +0x50/+0x51/+0x52 = PDB - 0x14), PMasterData +0x18.
@@ -56,15 +58,15 @@ class CRGBColour { public:                                     // B,G,R,A bytes
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
-CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #pragma auto_inline(on)
 struct CQ_SummoningTheShipScript {
     char pad00[0x50];

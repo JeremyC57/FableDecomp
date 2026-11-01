@@ -1,5 +1,7 @@
 // NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::OnPredicateFail() -- a summoned undead died: one fewer alive for the Nostro script, and if Nostro's vulnerability timer is below the def threshold it gets the def bonus time added
 // Leaf: ?OnPredicateFail@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D89160, length 107 bytes (+5 int3 padding).
 // Which CSUMMONED_CREATURE: the PDB has two (CQ_ArenaScript's and CQ_HeroSoulsNostroScript's); the counter at
 // ParentClass+0x50 and the CTimer at +0x54 are CQ_HeroSoulsNostroScript::UndeadAlive / NostroVulnerableTimer
@@ -14,7 +16,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CScriptDef { public:
     unsigned char _pad[0xC88];
@@ -27,8 +29,8 @@ inline CScriptDef* GetScriptDef() { return pGlobalScriptDef; }
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 
 class CScriptThing { public:                                  // 12 bytes (vtable 0x01238C8C)
     void* __vftable;

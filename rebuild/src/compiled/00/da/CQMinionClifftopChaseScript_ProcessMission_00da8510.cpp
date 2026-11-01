@@ -1,10 +1,12 @@
 // CQ_MinionClifftopChaseScript::ProcessMission() -- walk the chase objectives: wait for Deserted Farm, set objective 3, wait for Gibbet Woods, set objective 4, wait for the troll flag and let a guard comment on it, wait for the prison path, start the escape timer (HUD clock) with objective 5, wait for the map keeper, a failure or the timer to run out, and fail the mission on time-out
 // Leaf: ?ProcessMission@CQ_MinionClifftopChaseScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA8510, 1110 bytes (int3 padded to 1120).
 // Label: the thread named "ProcessMission" (0x012D7194) is spawned at 0x00DA3E62 with this body; the landed 0x00DA3F40
 //   catalogued as ProcessMission is a different thread body.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, GuardComment 0x00DA8970 (by-value
-//   comment); g_pGameScriptInterface 0x0143E8F8 timer slots 89 SetTimer / 90 GetTimer; CGameScriptInterface slots 7, 12,
+//   comment); pDSTGame 0x0143E8F8 timer slots 89 SetTimer / 90 GetTimer; CGameScriptInterface slots 7, 12,
 //   296 SetQuestCardObjective, 321 DisplayQuestInfo, 326 AddQuestInfoTimer, 655 GetActiveQuestName, 697 StopOverrideMusic;
 //   pGlobalScriptDef 0x0143E90C (+0xd54 escape time).
 // Layout (retail = Ego_r.pdb - 0x14, as the landed CQ_MinionClifftopChaseScript sources): MapKeeperSaidDialog +0x48,
@@ -61,11 +63,11 @@ class CTimer;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:                                         // a script timer: the interface's timer index
     long Index;
-    __forceinline void Set(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    __forceinline long Get() const { return g_pGameScriptInterface->GetTimer(Index); }
+    __forceinline void Set(long time) { pDSTGame->SetTimer(Index, time); }
+    __forceinline long Get() const { return pDSTGame->GetTimer(Index); }
 };
 class CScriptDef { public:
     unsigned char _pad[0xd54];

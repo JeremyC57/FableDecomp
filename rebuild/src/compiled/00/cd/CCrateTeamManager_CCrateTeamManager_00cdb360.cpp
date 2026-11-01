@@ -1,4 +1,6 @@
 // CCrateTeamManager::CCrateTeamManager() -- a crate-team manager: timer from the thing manager,
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // two null script things, then the six state counters and the member count cleared in the body
 // (MaxTeamMembers and EnemyTeam are left uninitialised)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDB360, length 94 bytes (+ int3 padding).
@@ -15,7 +17,7 @@
 // address kept in a register.
 #include "engine/CScriptThing.h"   // PDB layout cited: CScriptThing = {vptr, PImp_Data, PImp_Info}, 12 bytes (modelled below with its constructor)
 
-class CGameScriptInterface { public:
+class CGameScriptInterfaceBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -40,7 +42,7 @@ class CGameScriptInterface { public:
     virtual void v084(); virtual void v085(); virtual void v086();
     virtual long CreateTimer();                // slot 87 (+0x15c)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
@@ -60,7 +62,7 @@ struct CScriptThing_Retail : CBaseClass {           // vtable 0x01238C8C; layout
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->CreateTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->CreateTimer()) { }
 
 struct CCrateTeamManager {
     long               StateCounter[6];        // +0x00

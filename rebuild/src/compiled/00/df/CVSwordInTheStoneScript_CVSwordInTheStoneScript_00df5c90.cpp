@@ -1,5 +1,7 @@
 // CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(CScriptDataBase* data, CGameScriptInterfaceBase* iface) -- quest-script constructor: CScriptBase(), the data/interface pair at +0x44/+0x40, own vtable, three cleared words and a timer registered with the game script interface
 // Leaf: ??0CV_SwordInTheStoneScript@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF5C90, length 62 bytes.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110 (the manifest's "CHeroMorphDef" label is propagated),
 // CGameScriptInterface::RegisterTimer (slot 87, +0x15c) through the interface global @ 0x0143E8F8 (the landed
@@ -24,7 +26,7 @@ struct __declspec(novtable) CScriptObject : CScriptBase {   // the argument-carr
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 struct SSwordState {                               // +0x48..+0x53: a member object so the zero register is set after the vtable store
     long m_swordState;                             // +0x48
@@ -44,5 +46,5 @@ struct CV_SwordInTheStoneScript : CScriptObject {  // vtable 0x012DE6A4
 CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(void* data, void* iface)
     : CScriptObject(data, iface), m_state()
 {
-    m_crowdTimer = g_pGameScriptInterface->RegisterTimer();
+    m_crowdTimer = pDSTGame->RegisterTimer();
 }

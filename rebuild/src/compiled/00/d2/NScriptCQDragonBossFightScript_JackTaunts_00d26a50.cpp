@@ -1,4 +1,6 @@
 // CQ_DragonBossFightScript::JackTaunts() -- script thread: every 20 seconds of script timer, Jack taunts the hero with the next of the TEXT_QST_B05_JACK_TAUNT_10 .. _50 lines (a one-line conversation spoken by and to the hero), five taunts in all
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D26A50, length 325 bytes, plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; the global game script interface 0x0143E8F8 (the CTimer
 // local): RegisterTimer (slot 87), DeregisterTimer (88), SetTimer (89), GetTimer (90); IntToCharString(long)
@@ -26,15 +28,15 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long seconds) { g_pGameScriptInterface->SetTimer(TimerIndex, seconds); return *this; }
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long seconds) { pDSTGame->SetTimer(TimerIndex, seconds); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)

@@ -1,4 +1,6 @@
 // CCounter::operator>(float seconds) const -- has more than `seconds` elapsed since RelevantWorldFrame?
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D90670, length 96 bytes.
 // Callees: the thing manager global @ 0x0143E8F8 (the pointer the landed SetCurrentThingManager
 // stores), its vtable slot 653 (+0xa34, long: the current world frame) and slot 654 (+0xa38, long:
@@ -9,7 +11,7 @@
 // jp`; writing it as `rate * seconds < elapsed` defers the conversion and gives `fcompp`); the
 // result is a long 1/0 (`mov eax,1` / `xor eax,eax`), not a bool. The sibling CCounter::GetCounter
 // @ 0x00EFD630 divides the same two values instead.
-class CGameScriptInterface { public:             // retail vtable: slots 653/654 are the two frame getters
+class CGameScriptInterfaceBase { public:             // retail vtable: slots 653/654 are the two frame getters
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -666,7 +668,7 @@ class CGameScriptInterface { public:             // retail vtable: slots 653/654
     virtual long GetWorldFrame();              // slot 653 (+0xa34)
     virtual long GetWorldFramesPerSecond();    // slot 654 (+0xa38)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CCounter { public:
     long RelevantWorldFrame;                   // +0x00
@@ -675,11 +677,11 @@ class CCounter { public:
 
 long CCounter::operator>(float seconds) const
 {
-    long elapsedFrames = g_pGameScriptInterface->GetWorldFrame() - RelevantWorldFrame;
+    long elapsedFrames = pDSTGame->GetWorldFrame() - RelevantWorldFrame;
     if (elapsedFrames < 0)
         elapsedFrames = 0;
     float elapsed = (float)elapsedFrames;
-    long rate = g_pGameScriptInterface->GetWorldFramesPerSecond();
+    long rate = pDSTGame->GetWorldFramesPerSecond();
     if (elapsed > (float)rate * seconds)
         return 1;
     return 0;

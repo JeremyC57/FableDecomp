@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?IsPlayerThreateningEntity@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBEED2, 94 bytes, `__fastcall` global (thing in ecx), plain `ret`,
 //   returns int (PDB ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z).
 // Callees: CGameScriptInterface (global @ 0x0143E8F8) slot 195 IsPlayerWieldingWeapon (+0x30c, 0x00897480) and slot 71
@@ -23,9 +25,9 @@ class CScriptThing { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 int __fastcall IsPlayerThreateningEntity(const CScriptThing& thing)
 {
-    return g_pGameScriptInterface->IsPlayerWieldingWeapon() && g_pGameScriptInterface->GetHeroTargetedThing() == thing;
+    return pDSTGame->IsPlayerWieldingWeapon() && pDSTGame->GetHeroTargetedThing() == thing;
 }

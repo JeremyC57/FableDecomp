@@ -6,13 +6,15 @@
 // after the first two exits. With a bare `GetTimer(ParentClass->GlobalCrowdTimer.Handle)` the flags take ebx from entry
 // (DIFFER 921v907).
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F1B220, length 907 bytes, plain `ret`.
 // Callees: CIsThingConscious filter (vtable 0x012C2FE8) over the CScriptThing copy ctor 0x004ABE90, its out-of-line dtor
 // 0x00EF7AB0, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30; CCharString 0x0099EBF0 / 0x0099EAE0;
 // ~CScriptThing 0x004AA840; CScriptThing slots 21 MsgIsHitBy, 22 MsgIsHitByWithFlourish, 23 MsgIsHitByWithDecapitate,
 // 41 MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom; CGameScriptInterface slots 7 NewScriptFrame,
 // 70 GetHero, 77 GetNearestWithScriptName, 89 SetTimer, 90 GetTimer, 689 PlayCriteriaSoundOnThing (the timer pair through
-// g_pGameScriptInterface 0x0143E8F8). Literals "SCRIPT_NAME_HERO" 0x0125D1C8, "ArenaSpawn" 0x01259BC4.
+// pDSTGame 0x0143E8F8). Literals "SCRIPT_NAME_HERO" 0x0125D1C8, "ArenaSpawn" 0x01259BC4.
 // Layout: Ego_r.pdb CSUMMONED_CREATURE (28 bytes, the CQ_ArenaScript one): CEntityScriptBase {vptr, Game +4, Me +8},
 // ParentClass +0x14, PMasterData +0x18. CQ_ArenaScript is retail = PDB - 0x14 before Rounds (12-byte STLport vector) and
 // - 0x18 after it: CrowdLoopTags +0x48, TotalCreatures +0xd0, ExtraCreatures +0xdc, NewCrowdPoints +0xf4,
@@ -78,12 +80,12 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { const long& handle = TimerIndex; return g_pGameScriptInterface->GetTimer(handle); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { const long& handle = TimerIndex; return pDSTGame->GetTimer(handle); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 struct CQ_ArenaScript {                                // retail = Ego_r.pdb - 0x14 up to Rounds, - 0x18 after it
     unsigned char _pad00[0x48];
     CCharString   CrowdLoopTags[4][5];                 // +0x48

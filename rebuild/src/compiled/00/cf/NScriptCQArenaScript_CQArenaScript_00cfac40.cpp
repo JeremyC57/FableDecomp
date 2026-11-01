@@ -1,5 +1,7 @@
 // NScript::CQ_ArenaScript::~CQ_ArenaScript() -- implicit quest-script destructor: destroy Whisper, deregister GlobalCrowdTimer, destroy CellsVillage, the Rounds vector of CArenaRoundDef and CrowdLoopTags[4][5] in reverse order, then ~CScriptBase
 // Leaf: ??1CQ_ArenaScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFAC40, 232 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510.
 // Identity (proven): the sole caller 0x00CFAC23 is the scalar deleting destructor 0x00CFAC20, slot 0 of the RTTI-less vtable
 //   0x012C7798; that vtable is stored only by the ctor 0x00CFA660, whose only caller is the Alloc 0x00CFABF0 (`push 11Ch ;
@@ -14,7 +16,7 @@
 //   (0x00F34D70, 0x00F1A8F0: no-RTTI def vtables, implicit inline dtors); the element dtor is the virtual `push 0 ; call [vt]`
 //   that STLport's `__pointer->~_Tp()` gives on a polymorphic element (stride 0x38).
 // Callees: ~CScriptThing inline (vtable 0x01238C8C store, engine/CCountedPointer.h PImp release: DeleteFunc, operator delete
-//   0x00BFE9BC), CBaseClass::~CBaseClass 0x0099A2E0, CTimer::~CTimer inline (engine/CTimer.h: g_pGameScriptInterface 0x0143E8F8
+//   0x00BFE9BC), CBaseClass::~CBaseClass 0x0099A2E0, CTimer::~CTimer inline (engine/CTimer.h: pDSTGame 0x0143E8F8
 //   slot 88 DeregisterTimer), free 0x00BFEA14 (STLport allocator<T>::deallocate), ~CCharString 0x0099EAE0, ~CScriptBase 0x00CBD510.
 // Layout: engine/CLevelScriptBase.h declares `virtual ~CLevelScriptBase();` out of line; retail's is implicit (chunks 664/665),
 //   so CLevelScriptBase<T> is a local copy of the header without the dtor declaration (NOTES.md "Header debt"). No
@@ -23,10 +25,10 @@
 //   (retail's TU defines it), which emits the vtable, the scalar deleting dtor and this implicit dtor; only the dtor is graded.
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 inline CScriptThing::~CScriptThing() { }

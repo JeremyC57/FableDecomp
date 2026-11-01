@@ -1,4 +1,6 @@
 // CDBMinion::OnPredicateFail() -- one of the parent script's minion counters is decremented, the minion thing record is fetched from the thing manager and its timer word (+0x14) reset
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D25EF0, length 64 bytes.
 // Callees: the thing manager global @ 0x0143E8F8, vtable slot 90 (+0x168: a record for the thing id, one argument) and
 // slot 89 (+0x164: two arguments, the thing id and the address of the record's +0x14 word).
@@ -12,7 +14,7 @@ struct CMinionRecord {
     long m_timer;                              // +0x14
 };
 
-class CGameScriptInterface { public:             // retail vtable of the thing manager global @ 0x0143E8F8
+class CGameScriptInterfaceBase { public:             // retail vtable of the thing manager global @ 0x0143E8F8
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -105,7 +107,7 @@ class CGameScriptInterface { public:             // retail vtable of the thing m
     virtual void  ResetMinionTimer(long thingId, long* timerSlot);   // slot 89 (+0x164)
     virtual CMinionRecord* GetMinionRecord(long thingId);         // slot 90 (+0x168)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CScriptThing { public:                          // 4 bytes: the thing id/handle
     long m_thingId;
@@ -129,6 +131,6 @@ void CDBMinion::OnPredicateFail()
 {
     --ParentClass->m_minionCount;
     const CScriptThing& minion = ParentClass->m_minion;
-    CMinionRecord* record = g_pGameScriptInterface->GetMinionRecord(minion.GetThingId());
-    g_pGameScriptInterface->ResetMinionTimer(ParentClass->m_minion.m_thingId, &record->m_timer);
+    CMinionRecord* record = pDSTGame->GetMinionRecord(minion.GetThingId());
+    pDSTGame->ResetMinionTimer(ParentClass->m_minion.m_thingId, &record->m_timer);
 }

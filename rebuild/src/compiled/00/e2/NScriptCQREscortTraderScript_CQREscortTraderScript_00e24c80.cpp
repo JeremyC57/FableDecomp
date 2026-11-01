@@ -1,5 +1,7 @@
 // NScript::CQR_EscortTraderScript::~CQR_EscortTraderScript() -- implicit repeatable-quest destructor: destroy CurrentLoadedRegion / PreviousLoadedRegion, the RouteStatic[3] / RouteDynamic[3] vector<CCharString> arrays, RandomSpeechWait[5] / RandomSpeechFollow[10], deregister the four trader timers, destroy BonusObject, then ~CScriptBase
 // Leaf: ??1CQR_EscortTraderScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E24C80, 321 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510; sole caller the
 //   scalar deleting dtor 0x00E24C60 (slot 0 of the RTTI-less quest vtable 0x012E12E0).
 // Identity (proven): vtable 0x012E12E0 is stored only by the ctor 0x00E1DB00, whose only caller is the Alloc 0x00E24C30
@@ -21,7 +23,7 @@
 //   is nested in the class (PDB Transfer<W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@>); ETradeRoutes' scope is
 //   not fixed by any PDB mangling (declared in the class, descriptive placement).
 // Callees: ~CCharString 0x0099EAE0, STLport ~vector<CCharString> inline (element loop + free 0x00BFEA14, the arrays as inline
-//   countdown loops, no EH vector iterator), CTimer::~CTimer inline (engine/CTimer.h: g_pGameScriptInterface 0x0143E8F8 slot 88
+//   countdown loops, no EH vector iterator), CTimer::~CTimer inline (engine/CTimer.h: pDSTGame 0x0143E8F8 slot 88
 //   DeregisterTimer), ~CScriptBase 0x00CBD510.
 // TU: the PDB ctor is defined (retail keeps it out of line at 0x00E1DB00), which emits the vtable, ??_G and this implicit dtor.
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
@@ -67,9 +69,9 @@ public:
 }
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CScriptBase.h"
 class CCharStringData;
 class CCharString { public:

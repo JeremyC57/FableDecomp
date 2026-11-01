@@ -1,5 +1,7 @@
 // NScript::CQ_MinionCampScript::~CQ_MinionCampScript() -- implicit quest-script destructor: destroy SpawnPointToSpawn, the RightSpawnPoints / LeftSpawnPoints lists, HeroAttackerTwo / HeroAttackerOne, deregister MinionSpawnTimer / ChantTimer, then ~CScriptBase
 // Leaf: ??1CQ_MinionCampScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA2F90, 283 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510; sole caller the
 //   scalar deleting dtor 0x00DA2F70 (slot 0 of the RTTI-less quest vtable 0x012D6C60).
 // Identity (proven): vtable 0x012D6C60 is stored only by the ctor 0x00D9E210, whose only caller is the Alloc 0x00DA2F40
@@ -21,15 +23,15 @@
 // Callees: ~CScriptThing inline (vtable 0x01238C8C store, engine/CCountedPointer.h PImp release: DeleteFunc slot, operator
 //   delete 0x00BFE9BC), CBaseClass::~CBaseClass 0x0099A2E0, STLport ~_List_base inline: the out-of-line
 //   _List_base<CScriptThing>::clear 0x00CD4DF0 (_list.c) then the sentinel free 0x00BFEA14, CTimer::~CTimer inline
-//   (engine/CTimer.h: g_pGameScriptInterface 0x0143E8F8 slot 88 DeregisterTimer), ~CScriptBase 0x00CBD510.
+//   (engine/CTimer.h: pDSTGame 0x0143E8F8 slot 88 DeregisterTimer), ~CScriptBase 0x00CBD510.
 // TU: the PDB ctor is defined (retail keeps it out of line at 0x00D9E210), which emits the vtable, ??_G and this implicit dtor.
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 void operator delete(void* p);                          // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 inline CScriptThing::~CScriptThing() { }

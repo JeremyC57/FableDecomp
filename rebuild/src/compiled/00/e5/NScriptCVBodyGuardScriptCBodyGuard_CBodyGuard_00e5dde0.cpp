@@ -1,11 +1,13 @@
 // NScript::CV_BodyGuardScript::CBodyGuard::CBodyGuard(CV_BodyGuardScript& parent, CScriptDataBase* data, const CScriptThing& me) -- a henchman's entity script: entity-script base over the quest's interface and Me, the parent, the anger and attacked-by-summoners timers, and the master data last
 // Leaf: ??0CBodyGuard@CV_BodyGuardScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5DDE0, 90 bytes, thiscall, `ret 0Ch`, returns this.
 // Identity (proven): stores the CBodyGuard entity vtable 0x012E701C (site 0x00E5DE01), whose slot 5 is the landed
 //   CBodyGuard::OnPredicateFail 0x00E5FB80 (hand508); only caller the "BodyGuard" binding's Alloc 0x00E5DD60
 //   (call 0x00E5DD81). FableWin.pdb ??0CBodyGuard@CV_BodyGuardScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z.
 //   Label correction: the manifest row "CDarkwoodTrader::CDarkwoodTrader" is propagated.
-// Callees: CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90, g_pGameScriptInterface (0x0143E8F8)->RegisterTimer
+// Callees: CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90, pDSTGame (0x0143E8F8)->RegisterTimer
 //   (slot 87, +0x15C) for each CTimer.
 // Layout: Ego_r.pdb CBodyGuard (60 bytes, entity scripts keep their PDB offsets): CEntityScriptBase {vptr 0x012C3224,
 //   Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18, HenchManType +0x1c, BrainState +0x20, CurrentHealthState +0x24,
@@ -17,7 +19,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template <class T> class CCountedPointer { public:
@@ -39,7 +41,7 @@ class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_BodyGuardScript {                              // the owning level script: only Game is read

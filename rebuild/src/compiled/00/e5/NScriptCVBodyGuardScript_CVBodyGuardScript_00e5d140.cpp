@@ -1,5 +1,7 @@
 // CV_BodyGuardScript::CV_BodyGuardScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012E6E4C, the stood-still counter, four chat/commentary timers, the empty henchman list and the four respawn timers
 // Leaf: ??0CV_BodyGuardScript
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5D140, length 174 bytes (`ret 8`; 176 with padding).
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, and through the global game script interface @ 0x0143E8F8:
 // GetWorldFrame (slot 653, +0xa34) for the counter, RegisterTimer (slot 87, +0x15c) for every timer.
@@ -19,15 +21,15 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;       // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 class CCounter { public:                                           // a frame counter: the world frame it started at
     long StartFrame;
-    CCounter() : StartFrame(g_pGameScriptInterface->GetWorldFrame()) { }
+    CCounter() : StartFrame(pDSTGame->GetWorldFrame()) { }
 };
 class CScriptThing;
 

@@ -1,5 +1,7 @@
 // CCounter::CCounter() -- a frame counter: records the thing manager's current world frame as its reference frame
 // Leaf: ??0CCounter
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD4490, length 23 bytes.
 // Callees: the thing manager global @ 0x0143E8F8, vtable slot 653 (+0xa34, long: the current world frame;
 // the slot the landed CCounter::operator> 0x00D90670 and CCounter::GetCounter 0x00EFD630 read).
@@ -10,7 +12,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CCounter { public:
     long RelevantWorldFrame;                       // +0x00
@@ -18,6 +20,6 @@ class CCounter { public:
 };
 
 CCounter::CCounter()
-    : RelevantWorldFrame(g_pGameScriptInterface->GetWorldFrame())
+    : RelevantWorldFrame(pDSTGame->GetWorldFrame())
 {
 }

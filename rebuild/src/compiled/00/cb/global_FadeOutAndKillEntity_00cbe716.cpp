@@ -1,10 +1,12 @@
 // FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool killAfterFade, bool killPersistent) -- fade the thing's alpha from 1 to 0 over the given seconds (one step per script frame at 15 frames a second), then optionally remove it
 // Leaf: ?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBE716, 148 bytes (`ret 8`).
 // TU: the global quest-script helper functions (__fastcall, size-optimised: `#pragma optimize("s", on)`).
 // Model: CScriptThing is polymorphic (vtable 0x01238C8C); the engine header models the vptr as data, so a local
 //   virtual model with the retail slot order is used (slots named from Ego_r.pdb / the FSE manifest).
-// Model: CGameScriptInterface through g_pGameScriptInterface (0x0143E8F8): slot 7 NewScriptFrame (+0x1C), 108
+// Model: CGameScriptInterface through pDSTGame (0x0143E8F8): slot 7 NewScriptFrame (+0x1C), 108
 //   RemoveThing (+0x1B0), 510 EntitySetAlpha (+0x7F8). Constants: 15.0f 0x0124E640, 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
 // Identity: Ego_r.pdb `?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z`.
 // Callees: CScriptThing slot 75 IsAlive (+0x12C); the interface slots above.
@@ -28,7 +30,7 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, bool killAfterFade, bool killPersistent)
 {
@@ -37,10 +39,10 @@ void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float seconds, b
     do {
         if (!thing.IsAlive())
             break;
-        g_pGameScriptInterface->EntitySetAlpha(thing, alpha, true);
-        g_pGameScriptInterface->NewScriptFrame();
+        pDSTGame->EntitySetAlpha(thing, alpha, true);
+        pDSTGame->NewScriptFrame();
         alpha -= step;
     } while (alpha > 0.0f);
     if (killAfterFade && thing.IsAlive())
-        g_pGameScriptInterface->RemoveThing(thing, false, killPersistent);
+        pDSTGame->RemoveThing(thing, false, killPersistent);
 }

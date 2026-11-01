@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?CreateAndFadeInObject@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBEFC1, 143 bytes, `__fastcall` global returning CScriptThing by value
 //   (hidden result pointer in ecx, defName in edx, four stack arguments: `ret 10h`)
 //   (PDB ?CreateAndFadeInObject@@YI?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0MM@Z).
@@ -32,16 +34,16 @@ class CScriptThing { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 CScriptThing __fastcall CreateAndFadeInObject(const CCharString& defName, const C3DVector& position, const CCharString& scriptName, float unused, float fadeTime)
 {
-    CScriptThing thing = g_pGameScriptInterface->CreateObject(defName, position, scriptName);
+    CScriptThing thing = pDSTGame->CreateObject(defName, position, scriptName);
     float step = 1.0f / (15.0f * fadeTime);
     float alpha = 0.0f;
     while (alpha < 1.0f) {
-        g_pGameScriptInterface->EntitySetAlpha(thing, alpha, true);
-        g_pGameScriptInterface->NewScriptFrame();
+        pDSTGame->EntitySetAlpha(thing, alpha, true);
+        pDSTGame->NewScriptFrame();
         alpha += step;
     }
     return thing;

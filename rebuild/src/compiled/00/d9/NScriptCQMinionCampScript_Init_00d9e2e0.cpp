@@ -1,5 +1,7 @@
 // CQ_MinionCampScript::Init() -- reset the mission state and both timers, copy the minion spawn periods from the script def, register the quest region and the quest's four boasts
 // Leaf: ?Init@CQ_MinionCampScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9E2E0, length 571 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; through the interface at +0x40:
 //   AddQuestRegion (slot 271, +0x43c), AddBoast (slot 303, +0x4bc); the timer service (global 0x0143E8F8) SetTimer
@@ -22,11 +24,11 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; g_pGameScriptInterface->SetTimer(index, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; pDSTGame->SetTimer(index, time); return *this; }
 class CScriptDef { public:
     unsigned char _pad0[0x150];
     long MinionCampNakedBoastCost;                      // +0x150

@@ -1,5 +1,7 @@
 // NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Init() -- the ambush-traders bandit ally: make Me an ally of the hero, allowed to follow him and carrying information, apply the parent's bandit allegiances, reset the invalid-region timer and the hire/follow/teleport flags, disable the SG_MINION_SIT_OUTSIDE state group and spawn the parent's WatchForHeroAttackOnBandit thread on Me
 // Leaf: ?Init@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F05F30, 409 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Init) of the entity-script vtable 0x012F7D88 that the landed CAT_BanditAlly::Alloc 0x00F037A0
 //   stores [dtor 0x00F03870, Main 0x00F063B0, Init 0x00F05F30, 0x00F03840, OnPersist 0x00F0A8E0 (BanditHired /
@@ -10,7 +12,7 @@
 //   long) 0x0099EBF0 / ~CCharString 0x0099EAE0, operator+ 0x0099F570, operator new 0x00BFEA1A, CSpawnedFuncBase ctor 0x00CDD450,
 //   CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CScriptBase::AddSpawnedFunction 0x00CB7E50; CSpawnedFunc1<
 //   CQ_AmbushTradersScript, CScriptThing> vtable 0x012F7EBC, CQ_AmbushTradersScript::WatchForHeroAttackOnBandit 0x00F061E0
-//   (landed); CTimer::operator=(long) inline: g_pGameScriptInterface 0x0143E8F8 slot 89 SetTimer; Game slots 70 GetHero,
+//   (landed); CTimer::operator=(long) inline: pDSTGame 0x0143E8F8 slot 89 SetTimer; Game slots 70 GetHero,
 //   235 EntitySetAsAllowedToFollowHero, 360 SetThingHasInformation, 590 EntitySetStategroupEnabled, 599
 //   EntitySetThingAsAllyOfThing (ghidra_out/cgsi_slots_aligned.tsv).
 // Literals: "SG_MINION_SIT_OUTSIDE" 0x012891B8, "WatchForHeroAttackOnBandit" 0x012F7ED8, "ParentClass." 0x012C9934, "" 0x0122D70E.
@@ -48,9 +50,9 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"               // CGameScriptInterfaceBase (917 slots) + vtable 0x01260F0C
 #include "engine/CTimer.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // Retail expands CTimer::operator=(long) inline (Ego_r ??4CTimer@@QAEAAV0@J@Z): slot 89 SetTimer through 0x0143E8F8.
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 // Layout: the retail polymorphic suspendable-process chain from the shared headers (FABLE_RETAIL_SUSPENDABLE_PROCESS
 //   opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass,
 //   0x34 bytes, vtable 0x012C2F9C).

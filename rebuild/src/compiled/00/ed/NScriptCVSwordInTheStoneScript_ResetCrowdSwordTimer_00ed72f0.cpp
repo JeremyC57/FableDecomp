@@ -1,4 +1,6 @@
 // CV_SwordInTheStoneScript::ResetCrowdSwordTimer() -- restart the crowd timer (+0x7c) with a random 10..15 second period through the game script interface
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED72F0, length 40 bytes.
 // Callees: rand @ 0x00BFEB16 (CRT), CGameScriptInterface slot 89 (+0x164: (timer, seconds)) through the
 // interface global @ 0x0143E8F8 (RegisterTimer is its slot 87 in the landed naming).
@@ -9,7 +11,7 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 extern "C" int __cdecl rand(void);                 // 0x00BFEB16
 
-class CGameScriptInterface { public:
+class CGameScriptInterfaceBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -21,7 +23,7 @@ class CGameScriptInterface { public:
     virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088();
     virtual void ResetTimer(long timer, long seconds);   // slot 89 (+0x164)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 namespace NScript {
 class CV_SwordInTheStoneScript {
@@ -37,5 +39,5 @@ using NScript::CV_SwordInTheStoneScript;
 void NScript::CV_SwordInTheStoneScript::ResetCrowdSwordTimer()
 {
     long seconds = rand() % 6 + 10;               // a local: the lane otherwise hoists the global's vtable fetch above rand()
-    g_pGameScriptInterface->ResetTimer(m_crowdSwordTimer, seconds);
+    pDSTGame->ResetTimer(m_crowdSwordTimer, seconds);
 }

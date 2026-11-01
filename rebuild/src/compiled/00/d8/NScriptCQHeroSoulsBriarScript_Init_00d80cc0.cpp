@@ -1,4 +1,6 @@
 // CQ_HeroSoulsBriarScript::Init() -- reset the quest flags and both imposter timers, then register the quest region ("Q_HeroSoulsBriar", "NorthernWastes3")
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Shape note: CTimer::Set reads the index through a const reference (`const long& index = Index;`): VC7.1 then keeps
 // the index load after the PlayedBriarCS byte store and the interface load (retail order); the plain member read is hoisted.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D80CC0, length 130 bytes (padded to 144).
@@ -24,11 +26,11 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; g_pGameScriptInterface->SetTimer(index, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; pDSTGame->SetTimer(index, time); return *this; }
 namespace NScript {
 class CQ_HeroSoulsBriarScript {
 public:

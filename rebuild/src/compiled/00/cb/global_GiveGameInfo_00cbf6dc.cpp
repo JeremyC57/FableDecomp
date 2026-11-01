@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?GiveGameInfo@@YIXABV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBF6DC, 290 bytes, `__fastcall` global (the vector in ecx), plain `ret`; frame-pointer
 //   size TU like its script-library neighbours (0x00CBF679 MoveAllThingsInVectorToPosition, 0x00CBEB7E IsCutsceneSkipped).
 //   The next function starts at once (no padding). No callers in the retail image (like 0x00CBF679).
@@ -11,7 +13,7 @@
 //   skip answer. The chunk label "UI_PlayMovieWithSkipOption" is a descriptive guess.
 // Callees: CScriptGameResourceObjectMovieBase ctor 0x006E7B60 / dtor 0x006E7B80 (the out-of-line COMDAT copies), CCharString
 //   ctor 0x0099EBF0 / dtor 0x0099EAE0, CWideScreenMagicPauseEntities ctor 0x00CBE09A (out of line; its destructor, slot 379
-//   with false, is inline here); CGameScriptInterface (g_pGameScriptInterface 0x0143E8F8) slots 7 NewScriptFrame, 39
+//   with false, is inline here); CGameScriptInterface (pDSTGame 0x0143E8F8) slots 7 NewScriptFrame, 39
 //   MsgIsQuestionAnsweredYesOrNo, 114 GiveHeroYesNoQuestion, 370 StartMovieSequence; the running process 0x013D2838
 //   (StopRunning +5). Literals "" 0x0122D70E (kept in esi), "TEXT_GUI_SKIP" 0x012C18E8.
 // Shape: the wait loop is `while (Msg...() < 0) { if (runner && runner->StopRunning) break; NewScriptFrame(); }` (its test
@@ -53,7 +55,7 @@ template <class T> class CCountedPointer { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 #include "engine/CSuspendableProcessMicrothread.h"     // retail CASuspendableProcess: Running +4, StopRunning +5
 extern CSuspendableProcessMicrothread* g_pScriptRunner; // 0x013D2838
@@ -87,21 +89,21 @@ void __fastcall GiveGameInfo(const std::vector<CCharString>& info)
     CScriptGameResourceObjectMovieBase movie;
     {
         CCharString name("");
-        g_pGameScriptInterface->StartMovieSequence(name, movie);
+        pDSTGame->StartMovieSequence(name, movie);
     }
-    CWideScreenMagicPauseEntities pause(g_pGameScriptInterface);
+    CWideScreenMagicPauseEntities pause(pDSTGame);
     for (unsigned int i = 0; i < info.size(); ++i) {
-        g_pGameScriptInterface->NewScriptFrame();
+        pDSTGame->NewScriptFrame();
         {
             CCharString answer3("");
             CCharString answer2("");
             CCharString answer1("TEXT_GUI_SKIP");
-            g_pGameScriptInterface->GiveHeroYesNoQuestion(info[i], answer1, answer2, answer3, true);
+            pDSTGame->GiveHeroYesNoQuestion(info[i], answer1, answer2, answer3, true);
         }
-        while (g_pGameScriptInterface->MsgIsQuestionAnsweredYesOrNo() < 0) {
+        while (pDSTGame->MsgIsQuestionAnsweredYesOrNo() < 0) {
             if (g_pScriptRunner && g_pScriptRunner->StopRunning)
                 break;
-            g_pGameScriptInterface->NewScriptFrame();
+            pDSTGame->NewScriptFrame();
         }
     }
 }

@@ -1,9 +1,11 @@
 // CQ_HobbeToothContestScript::DisplayTimer() -- run the contest clock: show the timer and the hero / Whisper tooth counters, and while the clock runs keep the counters current and, whenever the hero is away from Orchard Farm East, credit Whisper a tooth every 5 seconds; then wait for the hero to return and take the HUD elements down
 // Leaf: ?DisplayTimer@CQ_HobbeToothContestScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9B420, length 913 bytes; called from 0x00D9AC69.
 // Callees: __ftol2 0x00BFEA70, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940, ~CTimer 0x00CD4470 (the out-of-line copy); the timer service
-//   g_pGameScriptInterface 0x0143E8F8: RegisterTimer (87), DeregisterTimer (88, the inline ~CTimer copies), SetTimer (89),
+//   pDSTGame 0x0143E8F8: RegisterTimer (87), DeregisterTimer (88, the inline ~CTimer copies), SetTimer (89),
 //   GetTimer (90); through the interface (+0x40): NewScriptFrame (7), IsLevelLoaded (11), DisplayQuestInfo (321),
 //   AddQuestInfoTimer (326), AddQuestInfoCounter (327), UpdateQuestInfoCounter (335), RemoveQuestInfoElement (338).
 // Data: pGlobalScriptDef 0x0143E90C HOB_TotalTime (+0xF20, float).
@@ -24,14 +26,14 @@ class CTimer;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 class CScriptDef { public:
     unsigned char _pad[0xf20];
     float HOB_TotalTime;                                // +0xF20

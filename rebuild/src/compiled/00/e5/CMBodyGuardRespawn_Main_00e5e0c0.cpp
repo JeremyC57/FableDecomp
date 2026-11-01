@@ -1,5 +1,7 @@
 // CM_BodyGuardRespawn::Main() -- bodyguard respawn marker: find which of the four bodyguards this marker stands for (from its data string); if that bodyguard is dead (status 1) and its respawn timer has run out, respawn the matching CREATURE_BODY_GUARD* creature here as "BodyGuard", tag it with its _EVIL1/_EVIL2/_GOOD1/_GOOD2 suffix and mark it alive
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5E0C0, length 360 bytes + a 4-entry jump table (0x00E5E228).
 // Callees: CScriptThing slots 3 GetDataString, 4 SetDataString (0x004AA930, inlined on the local), 6 GetPos;
 //   CV_BodyGuardScript's index-from-data-string helper @ 0x00E5E240 (manifest "GetAlignmentFromCode"), CCharString()
@@ -44,11 +46,11 @@ class CScriptThing { public:                              // vtable 0x01238C8C, 
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 struct CV_BodyGuardScript {
     unsigned char _pad[0x74];
     CTimer        HenchmanDeadRespawnTimer[4];     // +0x74

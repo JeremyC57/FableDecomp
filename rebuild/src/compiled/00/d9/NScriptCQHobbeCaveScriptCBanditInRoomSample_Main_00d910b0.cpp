@@ -1,5 +1,7 @@
 // NScript::CQ_HobbeCaveScript::CBanditInRoomSample::Main() -- trapped bandit sample: while the script runs, remove itself once the parent script reports the side-room hobbes killed; otherwise whenever its timer has run out and the hero is within 5m, restart the timer (HC_BanditCallsForHelpDelay) and say TEXT_QST_036_BANDIT_HEAR_HIM_TRAPPED to the hero in a fresh conversation
 // Leaf: ?Main@CBanditInRoomSample@CQ_HobbeCaveScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D910B0, 369 bytes, plain `ret` (entity-script vtable slot 1).
 // Name: Ego_r.pdb ?Main@CBanditInRoomSample@CQ_HobbeCaveScript@NScript@@EAEXXZ (private virtual; the PDB also has ??0, ??1,
 //   ?Alloc@ (landed 0x00D90FF0), ?Init@ and ?GetParentScript@ of CBanditInRoomSample).
@@ -7,8 +9,8 @@
 //   0x00CBE2FF (Ego_r ?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z); CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0; CGameScriptInterface slots 7 NewScriptFrame, 70 GetHero, 108 RemoveThing, 364
 //   AddNewConversation, 365 AddPersonToConversation, 366 AddLineToConversation on Game, and 87 RegisterTimer / 88
-//   DeregisterTimer / 89 SetTimer / 90 GetTimer on g_pGameScriptInterface 0x0143E8F8 (the CTimer bodies, engine/CTimer.h).
-// Globals: g_pGameScriptInterface 0x0143E8F8, pGlobalScriptDef 0x0143E90C (the established bound spellings); 5.0f; the
+//   DeregisterTimer / 89 SetTimer / 90 GetTimer on pDSTGame 0x0143E8F8 (the CTimer bodies, engine/CTimer.h).
+// Globals: pDSTGame 0x0143E8F8, pGlobalScriptDef 0x0143E90C (the established bound spellings); 5.0f; the
 //   string 0x012D5AD4.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8} (engine/CEntityScriptBase.h); Ego_r.pdb CBanditInRoomSample ParentClass
 //   +0x14, PMasterData +0x18; CQ_HobbeCaveScript KilledSideRoomHobbes retail +0x4E (Ego_r.pdb +0x62: the quest-script base
@@ -31,12 +33,12 @@ class CCharString { public:
 };
 #include "engine/CGameScriptInterface.h"
 #include "engine/CEntityScriptBase.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CScriptDef { public:
     unsigned char _pad[0xcb0];

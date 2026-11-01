@@ -1,5 +1,7 @@
 // CBH_GangGruntSpawn::Main() -- bounty-hunt gang grunt spawn point: register the alive filter; if Me's data string holds a number, start the wait timer with it; wait until the hero hits Me (plainly or with a special ability other than 14), sees Me, or the timer runs out; set Me on the hero, wait for the quest to end, then walk Me to the nearest REGION_EXIT_POINT and fade it out once there (or once the region is loaded)
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D15510, length 1072 bytes, plain `ret`.
 // Callees: CBaseObject ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle (vtable 0x0127094C) IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / dtor 0x007E74D0 (the generated dtor is expanded at the
@@ -7,7 +9,7 @@
 //   IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099E4B0 / ~ 0x0099EAE0 / operator!= 0x0099E960,
 //   GFCharStringToInt 0x0099E7F0, IsDistanceBetweenThingsUnder 0x00CBE2FF, FadeOutAndKillEntity 0x00CBE716 (`__fastcall`),
 //   operator delete 0x00BFE9BC. CGameScriptInterface slots 7, 8, 22 MsgOnRegionLoaded, 70, 81 GetNearestWithDefName,
-//   89 SetTimer / 90 GetTimer (through g_pGameScriptInterface 0x0143E8F8), 451, 632 CanThingBeSeenByOtherThing.
+//   89 SetTimer / 90 GetTimer (through pDSTGame 0x0143E8F8), 451, 632 CanThingBeSeenByOtherThing.
 // Literals: "" 0x0122D70E, "NULL" 0x012393E4, "SCRIPT_NAME_HERO" 0x0125D1C8, "REGION_EXIT_POINT" 0x012CA510.
 // Layout: Ego_r.pdb CBH_GangGruntSpawn (32 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, CTimer WaitForTimer +0x1c; CQ_BountyHuntScript retail = PDB - 0x14 (QuestFailed +0x48,
@@ -107,7 +109,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-class CGameScriptInterface { public:
+class CGameScriptInterfaceBase { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& handle, EScriptAIPriority priority);   // slot 8 (+0x20)
@@ -131,13 +133,13 @@ struct CQ_BountyHuntScript {
     bool QuestFailed;                                  // +0x48
     bool QuestSucceeded;                               // +0x49
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #define FABLE_RETAIL_NSCRIPT
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 struct CQ_SunnyvaleMasterData;
 class CEntityScriptBase
 {
@@ -149,7 +151,7 @@ public:
 class CBH_GangGruntSpawn : public CEntityScriptBase {
 public:
     void*                   __vftable;                 // +0x00
-    CGameScriptInterface*   Game;                      // +0x04
+    CGameScriptInterfaceBase*   Game;                      // +0x04
     CScriptThing            Me;                        // +0x08
     CQ_BountyHuntScript*    ParentClass;               // +0x14
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18

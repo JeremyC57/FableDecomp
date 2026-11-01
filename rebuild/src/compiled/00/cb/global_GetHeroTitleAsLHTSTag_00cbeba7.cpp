@@ -7,7 +7,7 @@
 //   its functions without alignment padding, as Ego_r does for the same file (0x00C9F9E2 IsCutsceneSkipped, 0x00C9FA0B this).
 // Identity: Ego_r.pdb ?GetHeroTitleAsLHTSTag@@YI?AVCCharString@@XZ, the next Ego_r entry after ?IsCutsceneSkipped@@YI_NXZ
 //   (retail 0x00CBEB7E, landed), the same neighbour order as retail. Callers 0x00DD414A / 0x00EAFA59 (quest scripts).
-// Callees: CGameScriptInterface::GetHeroTitle() const (slot 205, +0x334, 0x00897880) through g_pGameScriptInterface
+// Callees: CGameScriptInterface::GetHeroTitle() const (slot 205, +0x334, 0x00897880) through pDSTGame
 //   0x0143E8F8; CCharString::CCharString(const char*, long = -1) 0x0099EBF0 (the shared tail every case jumps to).
 // Strings: "_NONE" 0x012C1858 .. "_ARSE" 0x012C1794 (cases 0..20 in jump-table order, read from the image), default "" 0x0122D70E.
 //   EHeroTitle's enumerator names are not in the PDB dumps, so the cases are numbers.
@@ -15,6 +15,8 @@
 //   its literal and jumps to one shared constructor call (cross-jumping); without the pragmas VC7.1 duplicates the call
 //   per case (516v345).
 // Leaf: ?GetHeroTitleAsLHTSTag@@YI?AVCCharString@@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 class CCharString {
 public:
     void* m_pStringData;
@@ -24,11 +26,11 @@ public:
 };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 CCharString __fastcall GetHeroTitleAsLHTSTag()
 {
-    switch (g_pGameScriptInterface->GetHeroTitle()) {
+    switch (pDSTGame->GetHeroTitle()) {
     case 0:  return "_NONE";
     case 1:  return "_REAPER";
     case 2:  return "_SHADOWHUNTER";

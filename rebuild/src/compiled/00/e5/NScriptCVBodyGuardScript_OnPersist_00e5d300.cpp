@@ -1,5 +1,7 @@
 // CV_BodyGuardScript::OnPersist(CPersistContext&) -- save/load the four henchmen's global status and the four respawn timers (each timer's remaining time goes through the context as a float and is written back)
 // Leaf: ?OnPersist@CV_BodyGuardScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5D300, 483 bytes (496 with padding), `ret 4`.
 // Callees: CPersistContext::Transfer(const char*, long&, const long&) 0x00410BE0 and (const char*, float&, const float&)
 //   0x00410620, __ftol2 0x00BFEA70; the global script interface 0x0143E8F8 slots SetTimer (89) and GetTimer (90) behind
@@ -20,12 +22,12 @@ class CPersistContext { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-extern CGameScriptInterface* g_pGameScriptInterface;        // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 struct CScriptThingVector {                                 // std::vector<CScriptThing> (STLport, 12 bytes)
     void* _M_start;
     void* _M_finish;

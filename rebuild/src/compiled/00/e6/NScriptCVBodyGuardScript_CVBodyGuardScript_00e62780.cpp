@@ -1,5 +1,7 @@
 // NScript::CV_BodyGuardScript::~CV_BodyGuardScript() -- implicit quest-script destructor: deregister the four HenchmanDeadRespawnTimer, destroy the HenchmanList vector<CScriptThing>, deregister the four chat/commentary timers, then ~CScriptBase
 // Leaf: ??1CV_BodyGuardScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E62780, 163 bytes, tail jump to ~CScriptBase 0x00CBD510; sole caller the scalar
 //   deleting dtor 0x00E62760 (slot 0 of the RTTI-less quest vtable 0x012E6E4C).
 // Identity (proven): vtable 0x012E6E4C is stored only by the ctor 0x00E5D140, whose only caller is the Alloc 0x00E62730
@@ -13,7 +15,7 @@
 //   ConversationIndex +0x70, HenchmanDeadRespawnTimer[4] +0x74, HenchmanGlobalStatus[4] +0x84 (0x94 = the Alloc size).
 // Layout: engine/CLevelScriptBase.h declares `virtual ~CLevelScriptBase();` out of line; retail's is implicit (chunk 665),
 //   so CLevelScriptBase<T> is a local copy of the header without the dtor declaration (NOTES.md "Header debt").
-// Callees: CTimer::~CTimer inline (engine/CTimer.h: interface slot 88 DeregisterTimer through g_pGameScriptInterface 0x0143E8F8;
+// Callees: CTimer::~CTimer inline (engine/CTimer.h: interface slot 88 DeregisterTimer through pDSTGame 0x0143E8F8;
 //   the array is the inline countdown loop, no EH vector iterator), the vector's element dtors through the virtual slot 0
 //   (flag 0) + free 0x00BFEA14, ~CScriptBase 0x00CBD510.
 // TU: the PDB ctor is defined (retail keeps it out of line at 0x00E5D140), which emits the vtable, ??_G and this implicit dtor.
@@ -60,9 +62,9 @@ public:
 }
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"
 #include "engine/CScriptThing.h"

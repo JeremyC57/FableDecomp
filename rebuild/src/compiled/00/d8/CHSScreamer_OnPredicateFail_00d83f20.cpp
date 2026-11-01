@@ -1,5 +1,7 @@
 // CHS_Screamer::OnPredicateFail() -- Hero Souls screamer died: one screamer fewer for the mother script and its bar grows by the script-def amount; a super screamer also clears the parent's super-screamer flag, restarts the parent's super-screamer timer, removes its effect thing and ends the super attack on itself
 // Leaf: ?OnPredicateFail@CHS_Screamer@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D83F20, length 114 bytes.
 // Callees: CGameScriptInterface (global @ 0x0143E8F8, and the script's own Game at +4) slots 89 SetTimer(long, long),
 // 108 RemoveThing(const CScriptThing&, bool, bool) with (false, true), 543 EntityEndScreamerSuperAttackThing.
@@ -37,7 +39,7 @@ struct CQ_HeroSoulsMotherScript {
     CTimer        NewSuperScreamerTimer;           // +0x68
 };
 struct CQ_SunnyvaleMasterData;
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 extern CScriptDef*           pGlobalScriptDef;             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
 class CHS_Screamer {
@@ -58,7 +60,7 @@ void CHS_Screamer::OnPredicateFail()
     ParentClass->BarToFill += pGlobalScriptDef->ScreamerBarIncrease;
     if (SuperScreamer) {
         ParentClass->GotSuperScreamer = false;
-        g_pGameScriptInterface->SetTimer(ParentClass->NewSuperScreamerTimer.TimerIndex, pGlobalScriptDef->SuperScreamerTimerTime);
+        pDSTGame->SetTimer(ParentClass->NewSuperScreamerTimer.TimerIndex, pGlobalScriptDef->SuperScreamerTimerTime);
         Game->RemoveThing(SuperScreamerEffect, false, true);
         Game->EntityEndScreamerSuperAttackThing(Me);
     }

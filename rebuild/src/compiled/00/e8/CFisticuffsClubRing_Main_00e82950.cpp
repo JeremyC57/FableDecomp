@@ -1,11 +1,13 @@
 // CFisticuffsClubRing::Main() -- the Fisticuffs Club ring trigger: every frame track whether the hero is inside the ring radius; inside, cancel the "step outside" warning and, while an active club fight is idle, have a club member tell the hero to stop interrupting (rate-limited); stepping out while in the club triggers Tyler's "step outside" warning with a HUD clock; while in the club, leaving the ring during a fight raises the boo meter and times the hero out, otherwise fights raise the cheer meter; both meters are clamped to 0..12
 // Leaf: ?Main@CFisticuffsClubRing@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E82950, 1574 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, RegisterFilter 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CFisticuffsClubRing helper 0x00E83230 (manifest label "HandleVillageSelection" is a
 //   propagated one), CV_FisticuffsClubScript::InitialiseVariables 0x00E82650 / GetQuestText 0x00E82F80, CTimer dtor 0x00CD4470,
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF / Over 0x00CBE3EA, __ftol2 0x00BFEA70, CCharString 0x0099EBF0 / 0x0099EAE0;
-//   GameCalls slots 7, 70, 72, 77, 87-90 (timers through g_pGameScriptInterface 0x0143E8F8), 326 AddQuestInfoTimer,
+//   GameCalls slots 7, 70, 72, 77, 87-90 (timers through pDSTGame 0x0143E8F8), 326 AddQuestInfoTimer,
 //   338 RemoveQuestInfoElement, 364-366.
 // Layout: Ego_r.pdb CFisticuffsClubRing: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_FisticuffsClubScript,
 //   retail = PDB - 0x14), PMasterData +0x18. CScriptDef (pGlobalScriptDef 0x0143E90C, retail = PDB - 0x5c here): FC_OutsideRingRange
@@ -68,14 +70,14 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 };
 }
 using NScript::CIsThingAlive;
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 class CScriptDef { public:
     unsigned char _pad0[0x5e4];
     float FC_OutsideRingRange;                          // +0x5e4

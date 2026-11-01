@@ -1,6 +1,8 @@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 #include "rebuild_abi.h"
 // CTimer::~CTimer @ 0x00cd4470
-class CGameScriptInterface { public:                // view of the script interface vtable (slot 88 at +0x160)
+class CGameScriptInterfaceBase { public:                // view of the script interface vtable (slot 88 at +0x160)
     virtual void s00();
     virtual void s01();
     virtual void s02();
@@ -91,6 +93,6 @@ class CGameScriptInterface { public:                // view of the script interf
     virtual void s87();
     virtual void Release(void *p); // slot 88 = 0x160
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8 (wave-10 decision)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public: void *m_first; void Dtor(); };
-void CTimer::Dtor(){ g_pGameScriptInterface->Release(m_first); }
+void CTimer::Dtor(){ pDSTGame->Release(m_first); }

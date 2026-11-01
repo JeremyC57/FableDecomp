@@ -1,12 +1,14 @@
 // CQ_HangingTreeEvilScript::DoMission() -- start the mission-end and region watchers, wait for BowerstoneJail, then run the stage machine: stage 1 spawns the party at the spawn point and plays the introduction, then starts the mission timer and moves to stage 2, which waits for the HeroDualArea level (stage 6); finally play the conclusion and, unless failed, flag success
 // Leaf: ?DoMission@CQ_HangingTreeEvilScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6BFA0, length 1023 bytes.
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CSpawnedFuncBase::CSpawnedFuncBase 0x00CDD450 (CSpawnedFunc vtable 0x012D1FE8), CScriptBase::AddSpawnedFunction
 //   0x00CB7E50, CScriptBase::IsActiveThreadTerminating 0x00CB7940, WatchForMissionEnd 0x00D6C3A0, MonitorRegionPresence
 //   0x00D6CDC0, SpawnParty 0x00D6C4A0, Introduction 0x00D6D080, Conclusion 0x00D6D670 (by retail order against the
 //   Ego_r.pdb method order), operator delete 0x00BFE9BC / ~CBaseClass 0x0099A2E0 (inline ~CScriptThing); the timer service
-//   g_pGameScriptInterface 0x0143E8F8 SetTimer (89); through the interface (+0x40): NewScriptFrame (7), IsLevelLoaded (11),
+//   pDSTGame 0x0143E8F8 SetTimer (89); through the interface (+0x40): NewScriptFrame (7), IsLevelLoaded (11),
 //   GetThingWithScriptName (72), DisplayQuestInfo (321), AddQuestInfoTimer (326).
 // Data: pGlobalScriptDef 0x0143E90C HangingTreeEvilMissionTimer (+0xF58).
 // Strings: "WatchForMissionEnd" 0x012D2328, "MonitorRegionPresence" 0x012D2310, "" 0x0122D70E, "BowerstoneJail" 0x012C7788,
@@ -50,11 +52,11 @@ class CTimer;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CScriptDef { public:
     unsigned char _pad[0xf58];
     long HangingTreeEvilMissionTimer;                   // +0xF58

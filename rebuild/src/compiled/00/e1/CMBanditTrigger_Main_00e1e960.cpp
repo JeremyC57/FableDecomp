@@ -3,6 +3,8 @@
 //   (a 3-tick timer re-checks it), spawn a random escort bandit type there as "AttackingBandit", give it the item named by
 //   the spawn point's data string (unless "" or "NULL"), mark the trigger fired and remove the trigger.
 // Leaf: ?Main@CM_BanditTrigger@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe @ 0x00E1E960, 1004 bytes, plain `ret`.
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0; CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseClass ctor 0x0099A2D0, CScriptThing::operator= 0x008AB980,
@@ -59,7 +61,7 @@ class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
 #include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
-class CGameScriptInterface { public:virtual ~CGameScriptInterface();
+class CGameScriptInterfaceBase { public:virtual ~CGameScriptInterfaceBase();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
 virtual void Validate(void) const; //slot3 0x006e72a0
@@ -905,14 +907,14 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-extern CGameScriptInterface* g_pGameScriptInterface;              // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 struct CCharStringVector { CCharString* _M_start; CCharString* _M_finish; CCharString* _M_end_of_storage; };
 class CScriptDef { public:
     unsigned char _pad[0x9ac];
@@ -931,7 +933,7 @@ public:
 };
 
 struct CM_BanditTrigger : public CEntityScriptBase {
-    void* VTable; CGameScriptInterface* Game; CScriptThing Me;     // +0x00 / +0x04 / +0x08
+    void* VTable; CGameScriptInterfaceBase* Game; CScriptThing Me;     // +0x00 / +0x04 / +0x08
     CQR_EscortTraderScript* ParentClass;                // +0x14
     void* PMasterData;                                  // +0x18
     bool BanditTriggered;                               // +0x1c

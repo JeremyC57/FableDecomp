@@ -1,12 +1,14 @@
 // CTimer::CTimer() -- a script timer: its index is a new timer allocated by the thing manager
 // Leaf: ??0CTimer
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD4450, length 23 bytes (+ int3 padding). 67 callers.
 // Callees: the thing manager global @ 0x0143E8F8, vtable slot 87 (+0x15c, long: a new timer index; the
 // same slot as the landed CCrateTeamManager constructor 0x00CDB360). The sibling 0x00CD4470 frees it
 // through slot 88.
 // PDB CTimer = { long TimerIndex } (4 bytes).
 // Shape: `this` kept in esi across the virtual call, the index stored from eax, `this` returned.
-class CGameScriptInterface { public:
+class CGameScriptInterfaceBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -31,7 +33,7 @@ class CGameScriptInterface { public:
     virtual void v084(); virtual void v085(); virtual void v086();
     virtual long CreateTimer();                    // slot 87 (+0x15c)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 #define FABLE_RETAIL_NSCRIPT
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
@@ -39,6 +41,6 @@ extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 #include "engine/CTimer.h"
 
 CTimer::CTimer()
-    : TimerIndex(g_pGameScriptInterface->CreateTimer())
+    : TimerIndex(pDSTGame->CreateTimer())
 {
 }

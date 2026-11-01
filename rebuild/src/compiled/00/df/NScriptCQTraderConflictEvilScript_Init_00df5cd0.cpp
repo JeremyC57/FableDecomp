@@ -1,5 +1,7 @@
 // CQ_TraderConflictEvilScript::Init() -- reset the evil trader-conflict quest state, start the scream-out timer, register the BarrowFields quest region and the five boasts, then arm the bandit-follower boast flags in the master data
 // Leaf: ?Init@CQ_TraderConflictEvilScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF5CD0, 625 bytes (640 with int3 padding).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; the global game interface 0x0143E8F8
 //   SetTimer (slot 89, +0x164) through the inline CTimer; through the script's interface (+0x40): AddQuestRegion
@@ -27,11 +29,11 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long seconds) { const CTimer* const& self = this; g_pGameScriptInterface->SetTimer(self->TimerIndex, seconds); return *this; }
+inline CTimer& CTimer::operator=(long seconds) { const CTimer* const& self = this; pDSTGame->SetTimer(self->TimerIndex, seconds); return *this; }
 class CScriptDef { public:
     unsigned char _pad0[0x1c8];
     long TraderConflictEvilNakedBoastCost;              // +0x1C8

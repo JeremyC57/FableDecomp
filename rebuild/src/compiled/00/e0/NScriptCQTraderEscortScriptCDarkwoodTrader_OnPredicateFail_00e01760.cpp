@@ -2,7 +2,7 @@
 // one trader fewer, stop the escort timer, then have the nearest "DarkwoodTrader" comment HERO_KILLED_TRADER (killed by
 // the hero), TRADER_DIED (two left) or LAST_TRADER (one left); finally clear the byte at +0x10b of the state at +0x18.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E01760, length 416 bytes (0x195 code + int3 pad).
-// Callees: g_pGameScriptInterface (0x0143E8F8) GetTimer slot 90 / SetTimer slot 89; 0x0099EBF0 CCharString(const char*,
+// Callees: pDSTGame (0x0143E8F8) GetTimer slot 90 / SetTimer slot 89; 0x0099EBF0 CCharString(const char*,
 // long); CScriptThing slot 18 MsgIsKilledBy; CGameScriptInterface (+4) slot 77 GetNearestWithScriptName (by value);
 // 0x00E01900 CQ_TraderEscortScript::MakeTraderComment(const CCharString&, const CScriptThing&, ETraderComment)
 // (mangled name from the label TSVs); 0x004AA840 ~CScriptThing; 0x0099EAE0 ~CCharString. Slots: ghidra_out/cgsi_slots_aligned.tsv.
@@ -11,6 +11,8 @@
 // Shape: implicit-literal CCharString arguments; the nested by-value GetNearestWithScriptName temporary is destroyed after
 // the call. Matched first try.
 // Leaf: OnPredicateFail
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 class CCharString { public:
     char* m_pString;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
@@ -25,7 +27,7 @@ class CCPPointerInfo;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 namespace NScript {
 class CQ_TraderEscortScript { public:
@@ -54,9 +56,9 @@ struct CQ_TraderEscortScript::CDarkwoodTrader {
 
 void CQ_TraderEscortScript::CDarkwoodTrader::OnPredicateFail()
 {
-    if (g_pGameScriptInterface->GetTimer(m_Timer) > 0) {
+    if (pDSTGame->GetTimer(m_Timer) > 0) {
         --m_pScript->m_TradersLeft;
-        g_pGameScriptInterface->SetTimer(m_pScript->m_TraderTimer, 0);
+        pDSTGame->SetTimer(m_pScript->m_TraderTimer, 0);
         if (m_Thing.MsgIsKilledBy("SCRIPT_NAME_HERO"))
             m_pScript->MakeTraderComment("HERO_KILLED_TRADER", m_pGame->GetNearestWithScriptName(m_Thing, "DarkwoodTrader"), TRADER_COMMENT_0);
         else if (m_pScript->m_TradersLeft == 2)

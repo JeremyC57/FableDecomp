@@ -1,5 +1,7 @@
 // CV_AmbushScamScript::ResetRandomSpeechTime() -- restart the random-speech timer (+0x84) with the def's maximum minus a random amount below the def's range
 // Leaf: ?ResetRandomSpeechTime@CV_AmbushScamScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe @ 0x00E1FEB0, 60 bytes (+ int3 padding). Called from eleven places in its script (0x00E1FD9C..).
 // Callees: rand @ 0x00BFEB16, CGameScriptInterface::SetTimer (slot 89, +0x164) through the interface global @ 0x0143E8F8.
 // Data: the script def pointer @ 0x0143E90C (CDefPointer<CScriptDef>): +0x9c8 the timer maximum, +0x9cc the random range
@@ -13,7 +15,7 @@ extern "C" int __cdecl rand();                           // 0x00BFEB16
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CScriptDef { public:
     unsigned char _pad[0x9c8];
@@ -36,5 +38,5 @@ void CV_AmbushScamScript::ResetRandomSpeechTime()
 {
     CScriptDef* def = pGlobalScriptDef;
     long time = pGlobalScriptDef->RandomSpeechTimeMax - rand() % def->RandomSpeechTimeRange;
-    g_pGameScriptInterface->SetTimer(RandomSpeechTimer.TimerIndex, time);
+    pDSTGame->SetTimer(RandomSpeechTimer.TimerIndex, time);
 }

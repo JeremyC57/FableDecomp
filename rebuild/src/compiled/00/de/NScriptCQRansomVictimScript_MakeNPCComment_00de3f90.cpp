@@ -1,10 +1,12 @@
 // CQ_RansomVictimScript::MakeNPCComment(name, npc, comment) -- if the NPC is alive and the comment timer has run out, start a conversation between the NPC and the hero with the NPC's pre- or post-rescue line for this comment; for the father's-guard comment also let the other NPC (the victim when the guard is speaking, else the guard) answer with its response line when it is alive, different from the speaker and the line exists; restart the comment timer and report that a comment was made
 // Leaf: ?MakeNPCComment@CQ_RansomVictimScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DE3F90, 1263 bytes (int3 padded to 1264); `ret 0Ch`.
 // Callees: ~CScriptThing 0x004AA840, CScriptThing copy 0x004ABE90 (and inline), CScriptThing::IsAlive 0x004AB130 (slot 75),
 //   CScriptThing::GetDataString 0x004AA900, IsActiveThreadTerminating 0x00CB7940, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   operator+ 0x0099F690 (const char*, CCharString) / 0x0099F600 (CCharString, const char*) / 0x0099F570 (CCharString,
-//   CCharString) (all __fastcall); impl slot 78 (+0x138) equality; g_pGameScriptInterface 0x0143E8F8 timer slots 89, 90;
+//   CCharString) (all __fastcall); impl slot 78 (+0x138) equality; pDSTGame 0x0143E8F8 timer slots 89, 90;
 //   pGlobalScriptDef 0x0143E90C (+0x50 comment interval); Game slots 70, 72, 358, 364, 365, 366.
 // Layout (retail = Ego_r.pdb - 0x14): RescuedVictim +0x4b, NPCCommentTimer +0x68.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
@@ -106,12 +108,12 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:
     long Index;
-    __forceinline ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }   // 0x00CD4470
-    void Set(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    long Get() const { return g_pGameScriptInterface->GetTimer(Index); }
+    __forceinline ~CTimer() { pDSTGame->DeregisterTimer(Index); }   // 0x00CD4470
+    void Set(long time) { pDSTGame->SetTimer(Index, time); }
+    long Get() const { return pDSTGame->GetTimer(Index); }
 };
 class CScriptDef { public:
     unsigned char _pad[0x50];

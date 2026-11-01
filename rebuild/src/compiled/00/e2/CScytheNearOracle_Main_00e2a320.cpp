@@ -1,5 +1,7 @@
 // CScytheNearOracle::Main() -- Scythe waiting by the Oracle: take Me under scripted control, add the quest-core minimap marker and face the MK_OW_SCYTHE3 marker; then every frame: when the hero comes within 20 units and the 2-second timer has run out, face the hero; within 12 units, play CS_ORACLE_AWAKENS inside a paused movie sequence (Me cast as "SCYTHE"), flag the parent and remove Me; when the hero hits Me, speak the on-hit line and make Me and the hero allies
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E2A320, 1503 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "HUD_ORB_QUEST_CORE" 0x01258AB0, "MK_OW_SCYTHE3" 0x012C7D28, "" 0x0122D70E, "SCYTHE" 0x012CC544,
 //   "CS_ORACLE_AWAKENS" 0x012E2414, "SCRIPT_NAME_HERO" 0x0125D1C8, "TEXT_QST_B03_SCYTHE_ON_HIT_RETURNED" 0x012E23F0.
@@ -8,7 +10,7 @@
 //   Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / operator=
 //   0x008ABD10 / dtor 0x007E74D0, movie handle dtor 0x006E7B80 (counted-pointer member dtor 0x006E7AB0), CTimer dtor 0x00CD4470,
 //   cast map operator[] 0x00CD3D2E, CQS_ScytheInfoScript::PlayCutscene 0x00E2A900, IsDistanceBetweenThingsUnder 0x00CBE2FF;
-//   GameCalls slots 7, 8, 70, 72, 87-90 timers (through g_pGameScriptInterface 0x0143E8F8), 108, 264, 350, 352, 370, 379, 475, 599.
+//   GameCalls slots 7, 8, 70, 72, 87-90 timers (through pDSTGame 0x0143E8F8), 108, 264, 350, 352, 370, 379, 475, 599.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQS_ScytheInfoScript: oracle-awakened flag +0x48,
 //   cutscene cast map +0x58).
 // Shape: the CEndScythe (0x00D79D50) handle model; __forceinline CTimer ctor/dtor/accessors keep the timer index in ebp (home
@@ -91,14 +93,14 @@ class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase 
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-__forceinline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+__forceinline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+__forceinline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern const float g_fZero;                            // 0x0122DEDC (0.0f)
 struct CCutsceneCastMap {

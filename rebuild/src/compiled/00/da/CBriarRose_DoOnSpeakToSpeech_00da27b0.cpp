@@ -1,5 +1,7 @@
 // CBriarRose::DoOnSpeakToSpeech() -- Briar Rose's reply when spoken to: picks one of three lines by the minion-camp script's timer (more than 48: _START, more than 24: _MIDDLE, else _END) and says it through DoSpeech unless the script is done
 // Leaf: DoOnSpeakToSpeech
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA27B0, 176 bytes incl. padding (plain `ret`).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (line prefix 0x012D7138), the timer service (global
 //          0x0143E8F8) slot 90 (+0x168, GetTimer), IsDone @ 0x00F35B30 (manifest label propagated), CCharString::operator+=
@@ -19,11 +21,11 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long GetTime(const CTimer& timer) { return g_pGameScriptInterface->GetTimer(timer.TimerIndex); }
+inline long GetTime(const CTimer& timer) { return pDSTGame->GetTimer(timer.TimerIndex); }
 
 struct CQ_MinionCampScript {
     unsigned char _pad[0x60];

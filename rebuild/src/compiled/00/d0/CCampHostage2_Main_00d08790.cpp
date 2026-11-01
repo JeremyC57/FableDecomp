@@ -3,6 +3,8 @@
 //   out and the hero is within 8 units, turn to the hero, play CS_DISAPPOINTED and cry out (alternating the FIRST/SECOND
 //   lines in a new conversation with the hero), then rearm the timer for 8 seconds; finally release Me if not terminating
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D08790, 730 bytes (736 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor here),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380,
@@ -66,14 +68,14 @@ public:
     void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 extern bool g_PlayAnimationDefaultFlag;                // 0x01375748
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 struct CQ_BanditCampBossBattleScript {
     char _pad[0x4e];
     bool HostagesRescued;                              // +0x4e

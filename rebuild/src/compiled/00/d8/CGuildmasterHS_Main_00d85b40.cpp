@@ -1,11 +1,13 @@
 // CGuildmaster_HS::Main() -- the Hero Souls guildmaster: after the guildmaster cutscene, target the hero, become unpushable, and while guards remain in the woods speak one of six comments/taunts (one every 18 timer ticks, at most six) whenever the hero comes within 15 units; then heal back to full health and idle
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D85B40, 1085 bytes (+ jump table and int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle dtor 0x007E74D0, CScriptThing copy 0x004ABE90 / dtor
 //   0x004AA840 (and the inline copy built in the SetIsPushableByHero argument slot), RegisterFilter 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CTimer dtor 0x00CD4470 (inline copies elsewhere), IsDistanceBetweenThingsUnder
 //   0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 70 GetHero, 87-90 timers (through
-//   g_pGameScriptInterface 0x0143E8F8), 264 GetHealth, 265 ModifyThingHealth, 364 AddNewConversation, 365 AddPersonToConversation,
+//   pDSTGame 0x0143E8F8), 264 GetHealth, 265 ModifyThingHealth, 364 AddNewConversation, 365 AddPersonToConversation,
 //   366 AddLineToConversation, 451 GiveThingBestEnemyTarget, 745 SetIsThingForcePushable, 844 SetIsPushableByHero.
 // Layout: Ego_r.pdb CGuildmaster_HS (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQ_HeroSoulsGuildmasterScript: PlayedGuildMasterCS PDB +0x5d = retail +0x49, GuardInWoodsCount PDB +0x64 = retail +0x50),
@@ -88,14 +90,14 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CQ_HeroSoulsGuildmasterScript {
     unsigned char _pad[0x49];

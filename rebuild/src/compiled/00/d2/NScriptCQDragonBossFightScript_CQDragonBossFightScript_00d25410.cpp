@@ -1,5 +1,7 @@
 // NScript::CQ_DragonBossFightScript::CQ_DragonBossFightScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, own vtable, six zeroed counters, the empty map and two timers
 // Leaf: ??0CQ_DragonBossFightScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Identity (proven, chunk c676): the only caller is Alloc 0x00D27240 (push 98h; registered at 0x00CD5D9D with "S_QDBF",
 //   conversion_queue Q_DragonBossFight); vtable 0x012CB70C is ??_7CQ_DragonBossFightScript@NScript@@6B@. The real
 //   ??0CQ_NewOakValeIntroScript is 0x00DAAC00 (vtable 0x012D7A28, Alloc push 10Ch).
@@ -20,11 +22,11 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

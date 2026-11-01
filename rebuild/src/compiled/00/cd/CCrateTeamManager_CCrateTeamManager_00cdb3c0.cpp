@@ -1,5 +1,7 @@
 // CCrateTeamManager::~CCrateTeamManager() -- destroy the two CScriptThing members (release their counted PImp, CBaseClass::~CBaseClass) and give the reinforcements timer back to the thing manager
 // Leaf: ??1CCrateTeamManager
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDB3C0, 141 bytes.
 // Callees: CBaseClass::~CBaseClass 0x0099A2E0 (twice), operator delete 0x00BFE9BC, the thing manager global
 //          @ 0x0143E8F8 vtable slot 88 (+0x160, release a timer index).
@@ -44,7 +46,7 @@ inline CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
-class CGameScriptInterface { public:
+class CGameScriptInterfaceBase { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -135,12 +137,12 @@ class CGameScriptInterface { public:
     virtual void v087();
     virtual void ReleaseTimer(long timerIndex);   // slot 88 (+0x160)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::~CTimer() { g_pGameScriptInterface->ReleaseTimer(TimerIndex); }
+inline CTimer::~CTimer() { pDSTGame->ReleaseTimer(TimerIndex); }
 
 struct CCrateTeamManager {
     long               StateCounter[6];        // +0x00

@@ -1,5 +1,7 @@
 // CCounter::operator=(float seconds) -- restart the counter so that `seconds` (clamped at zero) have already elapsed: RelevantWorldFrame = now - seconds * frames-per-second
 // Leaf: ??4CCounter
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D90550, 110 bytes (112 with padding).
 // Callees: the thing manager global @ 0x0143E8F8, vtable slot 653 (+0xa34, GetWorldFrame) and slot 654
 //          (+0xa38, GetWorldFramesPerSecond); __ftol 0x00BFEA70. 0x0122DEDC is the 0.0f pool constant.
@@ -9,7 +11,7 @@
 // the clamp stores 0 into the local (`test ah,5 ; jp` = `seconds < 0`); the current frame is converted
 // into a second float local (`fild ; fstp`) before the second virtual call, then `fild rate ; fmul
 // [clamped] ; fsubr [now]` and the truncating conversion.
-class CGameScriptInterface { public:             // retail vtable: slots 653/654 are the two frame getters
+class CGameScriptInterfaceBase { public:             // retail vtable: slots 653/654 are the two frame getters
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -666,7 +668,7 @@ class CGameScriptInterface { public:             // retail vtable: slots 653/654
     virtual long GetWorldFrame();              // slot 653 (+0xa34)
     virtual long GetWorldFramesPerSecond();    // slot 654 (+0xa38)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CCounter { public:
     long RelevantWorldFrame;                   // +0x00
@@ -678,7 +680,7 @@ CCounter& CCounter::operator=(float seconds)
     float clamped = seconds;
     if (seconds < 0.0f)
         clamped = 0.0f;
-    float now = (float)g_pGameScriptInterface->GetWorldFrame();
-    RelevantWorldFrame = (long)(now - (float)g_pGameScriptInterface->GetWorldFramesPerSecond() * clamped);
+    float now = (float)pDSTGame->GetWorldFrame();
+    RelevantWorldFrame = (long)(now - (float)pDSTGame->GetWorldFramesPerSecond() * clamped);
     return *this;
 }

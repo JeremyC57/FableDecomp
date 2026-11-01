@@ -2,9 +2,11 @@
 // told to wait nor in limbo, charge the hero the total wages each pay period; when he cannot pay, flag it until the
 // henchmen leave; whenever the list is empty re-arm the freaked-out timer for 180; one script frame per pass
 // Leaf: ?HenchmanDeductWages@CV_BodyGuardScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5D9A0, 385 bytes (padded to 400).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940; CGameScriptInterface slots 7 NewScriptFrame (+0x1c),
-//          89 SetTimer (+0x164, through g_pGameScriptInterface 0x0143E8F8), 126 GiveHeroGold (+0x1f8), 127 GetHeroGold
+//          89 SetTimer (+0x164, through pDSTGame 0x0143E8F8), 126 GiveHeroGold (+0x1f8), 127 GetHeroGold
 //          (+0x1fc), 376 Pause (+0x5e0).
 // Layout (retail = Ego_r.pdb CV_BodyGuardScript - 0x14, as the landed CheckForHenchmanFiredOverride 0x00E5D900): Game
 //          +0x40, Data +0x44 (CQ_SunnyvaleMasterData: HenchmanOverrideState +0xc, BodyGuardsMustStandAndWait +0xe3,
@@ -29,11 +31,11 @@ class CScriptDef { public:
     long          HenchmanPayTimeDelayInSeconds;   // +0x4a4 (Ego_r.pdb +0x4d8)
 };
 extern CScriptDef*           pGlobalScriptDef;             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CScriptThing { public:                              // 12 bytes (vtable 0x01238C8C)
     void* __vftable;
     long  m_data[2];

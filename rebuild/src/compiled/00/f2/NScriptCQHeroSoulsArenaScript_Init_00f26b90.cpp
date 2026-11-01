@@ -1,5 +1,7 @@
 // NScript::CQ_HeroSoulsArenaScript::Init() -- set up the Hero Souls arena quest: copy the script def's HeroSoulsRounds, clear the creature count, the seven state flags and the level reached, reset the guard-chat timer and add the "Arena" quest region
 // Leaf: ?Init@CQ_HeroSoulsArenaScript@NScript@@UAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F26B90, 149 bytes, thiscall, plain `ret` (public virtual, quest vtable slot 3).
 // Identity (proven): the row is referenced once, from slot 3 (Init) of the RTTI-less quest vtable 0x012D3994 (0x012D39A0),
 //   which the landed CQ_HeroSoulsArenaScript ctor 0x00D7C700 and Alloc 0x00D80BA0 store (slot 1 the landed RegisterMain
@@ -62,9 +64,9 @@ extern CScriptDef* pGlobalScriptDef;                    // 0x0143E90C (Ego_r.pdb
 #include "engine/CGameScriptInterface.h"
 #include "engine/CTimer.h"
 #include "engine/CLevelScriptBase.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface; no PDB data symbol)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // Retail expands CTimer::operator=(long) inline (Ego_r ??4CTimer@@QAEAAV0@J@Z): slot 89 SetTimer through 0x0143E8F8.
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

@@ -1,5 +1,7 @@
 // CPrisonRacer::Main() -- a prisoner in the prison race: wait for the race start, take scripted control and set its running speed (slower for each racer), then every frame: every fourth frame find the nearest WaypointSpeedCheck marker and remember its index; sprint ("SPRINT" comment, faster speed) while behind the hero's nearest race marker, slow down again ("SLOW") when the sprint timer runs out; when idle follow the route to the nearest RaceMarker; stop when the hero won, and flag RaceEnded on reaching the warden
 // Leaf: ?Main@CPrisonRacer@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DDC980, length 1477 bytes (+ int3 padding), plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / FollowPreCalculatedRoute 0x007E7310 / ClearCommands 0x007E7360 / IsPerformingScriptTask
@@ -7,7 +9,7 @@
 //   ~vector<CScriptThing> 0x008AC970, ~CTimer 0x00CD4470, GetDistanceBetweenThings 0x00CBE512 /
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF / GFCharStringToInt 0x0099E7F0 (all __fastcall), MakePrisonerComment 0x00DDCF50
 //   (catalog class CQ_PrisonEscapeRescueMotherScript; called on the racer's CQ_PrisonRaceScript), CCharString 0x0099EBF0 /
-//   0x0099EAE0; g_pGameScriptInterface 0x0143E8F8 slots 87-90 (two inline CTimers); GameCalls (+0x04) slots 7, 8, 72, 75, 77,
+//   0x0099EAE0; pDSTGame 0x0143E8F8 slots 87-90 (two inline CTimers); GameCalls (+0x04) slots 7, 8, 72, 75, 77,
 //   488, 653. Data: pGlobalScriptDef 0x0143E90C (+0xDC8 racer speed, +0xDCC sprint speed, +0xDD0 sprint time, +0xDD4 rest time).
 // Strings: "PrisonRaceWarden" 0x012DC920, "RaceMarker" 0x012CD708, "WaypointSpeedCheck" 0x012DC8E8, "SPRINT" 0x012DCAA4,
 //   "SLOW" 0x012DCA9C; 0.02f 0x012C26F8.
@@ -107,7 +109,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDef { public:
     unsigned char _pad000[0xdc8];
     float PrisonRacerSpeed;                             // +0xdc8
@@ -121,10 +123,10 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 struct CQ_PrisonRaceScript {
     unsigned char _pad[0x48];
     bool HeroWonRace;                                   // +0x48 (PDB +0x5c)

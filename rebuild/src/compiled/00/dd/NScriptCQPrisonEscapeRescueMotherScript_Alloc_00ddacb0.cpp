@@ -1,8 +1,10 @@
 // NScript::CQ_PrisonEscapeRescueMotherScript::Alloc(CScriptDataBase* data, CGameScriptInterface& game) -- script factory: `new CQ_PrisonEscapeRescueMotherScript(data, game)` with the constructor inlined (registered at 0x00CD71EB as "S_QPERM" / "Q_PrisonEscapeRescueMother")
 // Leaf: ?Alloc@CQ_PrisonEscapeRescueMotherScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DDACB0, 74 bytes, static __fastcall (data in ecx, game in edx). PDB:
 //   ?Alloc@CQ_PrisonEscapeRescueMotherScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
-// Callees: operator new 0x00BFEA1A (0x80 bytes), CScriptBase::CScriptBase 0x00CB8110, g_pGameScriptInterface (0x0143E8F8)->RegisterTimer for RunningTimer. Vtable 0x012DB86C.
+// Callees: operator new 0x00BFEA1A (0x80 bytes), CScriptBase::CScriptBase 0x00CB8110, pDSTGame (0x0143E8F8)->RegisterTimer for RunningTimer. Vtable 0x012DB86C.
 // Inline constructor: only RunningTimer (+0x7C) has a constructor; the longs and bools stay uninitialised.
 // Layout: PDB (Ego_r) offsets minus 0x14 (the retail script base is 0x14 bytes smaller), STLport vectors 12 bytes (PDB 16).
 // Model: the landed quest-script Alloc (NScript::CQ_HeroSoulsArenaScript::Alloc 0x00D80BA0): CLevelScriptBase<T> is the
@@ -12,7 +14,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDataBase;
 class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
@@ -28,7 +30,7 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CQ_PrisonEscapeRescueMotherScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {

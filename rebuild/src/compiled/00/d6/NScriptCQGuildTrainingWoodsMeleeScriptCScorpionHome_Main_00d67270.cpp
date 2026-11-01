@@ -1,11 +1,13 @@
 // CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::Main() -- show the beetle counter and start a 5-second nag timer; while the parent's scorpions are alive: if the hero is not carrying the training stick when the timer runs out, have him say the stick reminder and re-arm the timer for 8 seconds; count the live guild scorpions, update the counter, and whenever fewer than three are about either finish (none alive and none left to spawn: scorpions gone, master data flag set) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
 // Leaf: ?Main@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D67270, 1224 bytes (int3 padded to 1232).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is
 //   propagated), CCharString 0x0099EBF0 / ~ 0x0099EAE0, __ftol2 0x00BFEA70, CCountedPointer<CScriptThingImpl>::operator=
 //   0x00704580, ~vector<CScriptThing> 0x008AC970 (IsDone exit; inline copy with free 0x00BFEA14 at the loop end);
 //   CScriptThing::GetPos / SetToKillOnLevelUnload inlined (imp slots 6, 70); pGlobalScriptDef 0x0143E90C
-//   (GUI_MeleeBeetles +0xF10); g_pGameScriptInterface 0x0143E8F8 timer slots 87..90, zero vector 0x0143E8E0; Game slots 7, 70, 75, 78, 91, 194, 321, 327, 335, 338, 364, 366, 465.
+//   (GUI_MeleeBeetles +0xF10); pDSTGame 0x0143E8F8 timer slots 87..90, zero vector 0x0143E8E0; Game slots 7, 70, 75, 78, 91, 194, 321, 327, 335, 338, 364, 366, 465.
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; Ego_r.pdb CScorpionHome ParentClass +0x14,
 //   PMasterData +0x18, ScorpionsLeft +0x1c; parent CQ_GuildTrainingWoodsMeleeScript (PDB - 0x14) ScorpionsAlive +0x4b;
 //   CQ_SunnyvaleMasterData ScorpionsDestroyed +0x9c.
@@ -124,13 +126,13 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:
     long Index;
-    CTimer(long time) { Index = g_pGameScriptInterface->RegisterTimer(); g_pGameScriptInterface->SetTimer(Index, time); }
-    __forceinline ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }   // 0x00CD4470
-    void Set(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    long Get() const { return g_pGameScriptInterface->GetTimer(Index); }
+    CTimer(long time) { Index = pDSTGame->RegisterTimer(); pDSTGame->SetTimer(Index, time); }
+    __forceinline ~CTimer() { pDSTGame->DeregisterTimer(Index); }   // 0x00CD4470
+    void Set(long time) { pDSTGame->SetTimer(Index, time); }
+    long Get() const { return pDSTGame->GetTimer(Index); }
 };
 class CScriptDef { public:
     unsigned char _pad[0xf0c];

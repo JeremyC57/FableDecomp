@@ -1,11 +1,13 @@
 // CHS_Screamer::Main() -- a Hero Souls (Abbey mother) screamer: target the hero; until the mother's soul is collected, whenever no super screamer exists, the new-super-screamer timer has run out and the hero is over 5 units away, become the super screamer (mini-map marker, wait for the hero within 15 units), take scripted control, cast the unholy-power effect and drain the hero's health every timer period while lowering the mother's bar, starting the super attack once; finally play the death effect and remove Me
 // Leaf: ?Main@CHS_Screamer@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D83FA0, 1230 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: scripted-thing handle ctor 0x007E72A0 / IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CTimer ctor
 //   0x00CD4450 / dtor 0x00CD4470, CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF / IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8,
-//   70 GetHero, 89/90 SetTimer/GetTimer (through g_pGameScriptInterface 0x0143E8F8), 100 CreateEffect, 108 RemoveThing,
+//   70 GetHero, 89/90 SetTimer/GetTimer (through pDSTGame 0x0143E8F8), 100 CreateEffect, 108 RemoveThing,
 //   263 ChangeHeroHealthBy, 350 MiniMapAddMarker, 451 GiveThingBestEnemyTarget, 542 EntityStartScreamerSuperAttackThing,
 //   745 SetIsThingForcePushable, 844 SetIsPushableByHero; CScriptThing slot 6 GetPos.
 // Layout: Ego_r.pdb CHS_Screamer (44 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_HeroSoulsMotherScript,
@@ -100,15 +102,15 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
-CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #pragma auto_inline(on)
 class CScriptDef { public:
     unsigned char _pad[0xc78];

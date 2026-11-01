@@ -1,4 +1,6 @@
 // CQ_MinionCampScript::PauseChantTimer() -- record the chant timer's time into PausedTime and raise ChantTimerPaused, then wait (one script frame at a time) while Briar Rose is in state 1; if the script thread is not being terminated afterwards, clear ChantTimerPaused
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA2490, length 92 bytes.
 // Callees: the thing manager global @ 0x0143E8F8 vtable slot 90 (+0x168, one long argument: the value of the
 // CTimer index), CGameScriptInterface::NewScriptFrame (slot 7, +0x1c) through the interface at +0x40,
@@ -14,7 +16,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-class CGameScriptInterface { public:             // retail vtable of the global @ 0x0143E8F8
+class CGameScriptInterfaceBase { public:             // retail vtable of the global @ 0x0143E8F8
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
     virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
@@ -26,7 +28,7 @@ class CGameScriptInterface { public:             // retail vtable of the global 
     virtual void v080(); virtual void v081(); virtual void v082(); virtual void v083(); virtual void v084(); virtual void v085(); virtual void v086(); virtual void v087(); virtual void v088(); virtual void v089();
     virtual long GetTimerValue(long timer);                         // slot 90 (+0x168)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 struct CGameScriptInterface_Calls {      // retail vtable @ 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -53,7 +55,7 @@ using NScript::CQ_MinionCampScript;
 
 void NScript::CQ_MinionCampScript::PauseChantTimer()
 {
-    PausedTime = g_pGameScriptInterface->GetTimerValue(ChantTimer);
+    PausedTime = pDSTGame->GetTimerValue(ChantTimer);
     ChantTimerPaused = true;
     while (BriarState == 1) {
         Game->NewScriptFrame();

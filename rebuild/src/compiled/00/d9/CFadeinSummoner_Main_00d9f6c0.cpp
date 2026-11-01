@@ -1,11 +1,13 @@
 // CFadeinSummoner::Main() -- a Minion Camp summoner that fades in: take scripted control, make Me an inert neutral prop with an altar effect, wait for mission stage 2, then while the stage is 2 or 3: become the hero's ally when he hits Me, keep fading (PhaseMe), re-create the altar effect when it died, and every 20-25 seconds play one of two special idles before going back to breathing; afterwards remove the effect and idle unscripted until the thread ends
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D9F6C0, 1720 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, RegisterFilter 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / PlayAnimation 0x007E73D0 / PlayLoopingAnimation 0x007E73F0 / ClearAllActionsIncludingLoopingAnimations
 //   0x007E7410 / dtor 0x007E74D0, CTimer ctor 0x00CD4450 / dtor 0x00CD4470, CFadeinSummoner::PhaseMe 0x00D9FD80, rand 0x00BFEB16,
-//   CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70, 87-90 (timers through g_pGameScriptInterface 0x0143E8F8),
+//   CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70, 87-90 (timers through pDSTGame 0x0143E8F8),
 //   100 CreateEffect, 108 RemoveThing, 352, 469, 515-517, 526, 599, 601, 745, 844; CScriptThing slots 6, 21, 41, 42, 75 (IsAlive).
 //   Global bool 0x01375748 (animation default).
 // Layout: Ego_r.pdb CFadeinSummoner (40 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CQ_MinionCampScript:
@@ -80,15 +82,15 @@ inline CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : m_thing(thing) 
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
-CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #pragma auto_inline(on)
 extern "C" int __cdecl rand(void);                    // 0x00BFEB16
 extern bool g_bScriptAnimationFlag;                     // 0x01375748

@@ -1,9 +1,11 @@
 // CV_ArcheryCompetitionScript::WatchForOwnerKilled() -- once a contest is running, fetch the AC_Owner and wait for him to be alive; then, until the contest reaches state 2, watch his health: when he dies, stop the game timer, finish the quest, reset the contest, enable teleporting, sheathe the hero's weapons and make his will usable
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E331F0, length 714 bytes, plain `ret`.
 // Callees: CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840 (out of
 //   line at the later returns), CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long)
 //   0x0099EBF0 / ~CCharString 0x0099EAE0; the thing implementation's slot 75 IsAlive (+0x12c) behind the inlined null-safe
-//   wrapper; SetTimer slot 89 through g_pGameScriptInterface 0x0143E8F8; CGameScriptInterface slots 7 NewScriptFrame, 70 GetHero, 72
+//   wrapper; SetTimer slot 89 through pDSTGame 0x0143E8F8; CGameScriptInterface slots 7 NewScriptFrame, 70 GetHero, 72
 //   GetThingWithScriptName (by value), 131 SetHeroWillAsUsable, 264 GetHealth, 506 EntitySheatheWeapons, 565
 //   SetTeleportingAsActive. String "AC_Owner"; 0.0001f 0x0129BA3C.
 // Layout: Ego_r.pdb CV_ArcheryCompetitionScript minus 0x14 (retail CScriptBase): QuestFinished +0x51, GameTimeLeft (CTimer)
@@ -39,11 +41,11 @@ inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharS
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

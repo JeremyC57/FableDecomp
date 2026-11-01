@@ -1,8 +1,10 @@
 // CV_MurderTwistScript::MagicRuneProcess() -- once the quest passes state 1, every time the timer has run out while no region has unloaded, restart it and rumble each magic rune within 15 units (squared distance) of the hero
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA8C20, 0x221 bytes, plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00CB7940, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0,
 //   GetDistanceBetweenThings 0x00CBE512 (__fastcall, as in the landed CGuardInWoods / NecropolisGate code),
-//   ~CScriptThing 0x004AA840; the timer runs through the global interface g_pGameScriptInterface 0x0143E8F8 (slots 87
+//   ~CScriptThing 0x004AA840; the timer runs through the global interface pDSTGame 0x0143E8F8 (slots 87
 //   RegisterTimer / 88 DeregisterTimer / 89 SetTimer / 90 GetTimer); Game slots 7 NewScriptFrame, 23 MsgOnRegionUnloaded,
 //   70 GetHero, 106 CreateRumble; CScriptThing virtual slot 6 (+0x18) the position accessor. 15.0f is 0x0124E640.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, MurderTwistState +0x4c, MagicRuneRumbleList +0x54 (vector<CScriptThing>).
@@ -38,14 +40,14 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) {}
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) {}
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

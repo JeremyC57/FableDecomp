@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?CSFindThing@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBF9DE, 218 bytes, `__fastcall` global returning CScriptThing by value
 //   (hidden result pointer in ecx, name in edx, the map on the stack: `ret 4`) (PDB ?CSFindThing@@YI?AVCScriptThing@@
 //   ABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@...@@@Z). 26 callers in the
@@ -130,7 +132,7 @@ typedef std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> CActor
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 static inline bool IsScriptingActor(const CScriptGameResourceObjectScriptedThingBase* actor)
 {
@@ -141,13 +143,13 @@ CScriptThing __fastcall CSFindThing(const CCharString& name, CActorMap& actors)
 {
     CScriptThing thing;
     if (name == "HERO") {
-        thing = g_pGameScriptInterface->GetHero();
+        thing = pDSTGame->GetHero();
     } else {
         CActorMap::iterator it = actors.find(name);
         if (it != actors.end() && it->second.IsValid() && IsScriptingActor(&it->second))
             thing = it->second.GetScriptThing();
         else
-            thing = g_pGameScriptInterface->GetThingWithScriptName(name);
+            thing = pDSTGame->GetThingWithScriptName(name);
     }
     return thing;
 }

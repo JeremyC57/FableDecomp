@@ -1,10 +1,12 @@
 // CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy) -- while the spy lives, each time EnableSpeechSpy is raised pick the spy's next line (sentry-seen, hero-proximity or, near the M_AT_EntitySpeech marker, the normal lines; the first five in order, then random ones without repeating the last) and play it as a conversation with the hero, restarting SpeechSpyTimer
 // Leaf: ?WatchForSpySpeechMarkers@CQ_AmbushTradersScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0EF60, length 1824 bytes (ret 0xc: the CScriptThing argument by value).
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=
 //   0x0099EFB0, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, rand 0x00BFEB16, CScriptThing::IsAlive 0x004AB130 /
 //   ~CScriptThing 0x004AA840, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CScriptBase::IsActiveThreadTerminating
-//   0x00CB7940; g_pGameScriptInterface 0x0143E8F8 slot 89 SetTimer (the inline CTimer::SetTime); the game script interface
+//   0x00CB7940; pDSTGame 0x0143E8F8 slot 89 SetTimer (the inline CTimer::SetTime); the game script interface
 //   (+0x40) slots 7, 70, 77, 364, 365, 366. Data: pGlobalScriptDef 0x0143E90C (+0xA40 .. +0xA58 spy speech distances/delays).
 // Strings: "M_AT_EntitySpeech" 0x012F8080.
 // Layout (retail = Ego_r.pdb - 0x14, -4 per preceding vector): SpySeenBySentry +0x5a, SpyHeroProximity +0x5d, SpyContactMade
@@ -85,13 +87,13 @@ class CScriptDef { public:
     long  AmbushTradersSpyNoSpeechDelay;                // +0xa54
     long  AmbushTradersSpySentrySpeechDelay;            // +0xa58
 };
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 namespace NScript {
 struct CTimer {
     long TimerIndex;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
+    void SetTime(long time) { pDSTGame->SetTimer(TimerIndex, time); }
 };
 }   // namespace NScript (CScriptBase is global in retail)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

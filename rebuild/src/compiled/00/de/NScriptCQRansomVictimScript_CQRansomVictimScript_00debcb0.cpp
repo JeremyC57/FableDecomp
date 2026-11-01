@@ -1,5 +1,7 @@
 // NScript::CQ_RansomVictimScript::~CQ_RansomVictimScript() -- implicit quest-script destructor: destroy seh_Ransommer, seh_Brother, seh_Victim, seh_Father and seh_Guard, deregister NPCCommentTimer, destroy ActiveEnemyName, then ~CScriptBase
 // Leaf: ??1CQ_RansomVictimScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DEBCB0, 344 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510; sole caller the
 //   scalar deleting dtor 0x00DEBC90 (slot 0 of the RTTI-less quest vtable 0x012DCE70).
 // Identity (proven): vtable 0x012DCE70 is stored only by the ctor 0x00DE0320, whose only caller is the Alloc 0x00DEBC60
@@ -14,15 +16,15 @@
 //   so CLevelScriptBase<T> is a local copy of the header without the dtor declaration (NOTES.md "Header debt"). No
 //   engine/CCharString.h exists: CCharString is the one-pointer local model the landed quest rows use.
 // Callees: the seh_* implicit dtors inline (PImp release: DeleteFunc slot, operator delete 0x00BFE9BC; vtable 0x0126008C store,
-//   ~CBaseObject 0x0099A430), CTimer::~CTimer inline (engine/CTimer.h: g_pGameScriptInterface 0x0143E8F8 slot 88
+//   ~CBaseObject 0x0099A430), CTimer::~CTimer inline (engine/CTimer.h: pDSTGame 0x0143E8F8 slot 88
 //   DeregisterTimer), ~CCharString 0x0099EAE0, ~CScriptBase 0x00CBD510.
 // TU: the PDB ctor is defined (retail keeps it out of line at 0x00DE0320), which emits the vtable, ??_G and this implicit dtor.
 void operator delete(void* p);                          // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 #define FABLE_RETAIL_BASE_OBJECT

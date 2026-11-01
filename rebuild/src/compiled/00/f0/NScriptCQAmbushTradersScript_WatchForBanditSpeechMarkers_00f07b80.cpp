@@ -1,5 +1,7 @@
 // NScript::CQ_AmbushTradersScript::WatchForBanditSpeechMarkers(CScriptThing) -- whenever bandit speech is enabled, find the bandit's nearest speech marker; if he is close, have him say the next scripted line (the first five in order, then random ones; "back" lines once the spy made contact), and re-arm the speech timer
 // Leaf: WatchForBanditSpeechMarkers
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Grade: RELOCATION_MATCH -- the outer loop is `for (;;) { if (IsActiveThreadTerminating()) break; ... }` (the `while
 //   (!IsActiveThreadTerminating())` form kept the loop-exit ~CScriptThing copy as the tail-merge survivor; the break
 //   form gives retail's merge into the last copy)
@@ -8,7 +10,7 @@
 // operator=(const CCharString&) 0x0099EFB0, ~CCharString 0x0099EAE0; rand 0x00BFEB16; IsDistanceBetweenThingsUnder
 // 0x00CBE2FF (__fastcall); ~CScriptThing 0x004AA840 (out of line inside the marker scope), ~CBaseClass 0x0099A2E0,
 // operator delete 0x00BFE9BC; CGameScriptInterface slots 7, 70, 77 GetNearestWithScriptName, 364, 365, 366; the timer
-// service g_pGameScriptInterface (0x0143E8F8) slot 89 SetTimer through CTimer.
+// service pDSTGame (0x0143E8F8) slot 89 SetTimer through CTimer.
 // Layout: Ego_r.pdb - 0x14 up to the six debug vectors, then 4 less per vector: SpyContactMade +0x5f, EnableSpeechBandit
 // +0x6a, SpeechBanditCount +0x74, SpeechBanditTimer +0x9c, BanditSpeechNormalThere +0xf0, BanditSpeechRandomThere +0x104,
 // BanditSpeechNormalBack +0x118, BanditSpeechRandomBack +0x12c; g_pScriptDef (0x0143E90C) is PDB - 0xa0
@@ -36,7 +38,7 @@ class CScriptThing : public CBaseClass { public:                     // vtable 0
     __forceinline ~CScriptThing() { }                  // out-of-line copy 0x004AA840
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
+class CGameScriptInterfaceBase { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c) 0x006E7410 public: virtual void __fastcall CGameScriptInterface::NewScriptFrame(void) const
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -85,10 +87,10 @@ class CGameScriptInterface { public:                      // retail vtable 0x012
     virtual void AddLineToConversation(long conversation, const CCharString& line, bool a, const CScriptThing& speaker, const CScriptThing& listener) const;   // slot 366 (+0x5b8) 0x00890750 public: virtual void __fastcall CGameScriptInterface::AddLineToConversation(long, class CCharString const &, bool, class CScriptThing const &, class CScriptThing const &) const
 };
 
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:                                        // 4 bytes: an index into the global script timers
     long TimerIndex;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
+    void SetTime(long time) { pDSTGame->SetTimer(TimerIndex, time); }
 };
 class CScriptDef { public:
     unsigned char _pad[0xa3c];
@@ -104,7 +106,7 @@ class CScriptBase { public:                                   // retail 0x40 byt
 };
 namespace NScript {
 class CQ_AmbushTradersScript : public CScriptBase { public:
-    CGameScriptInterface* Game;                        // +0x40
+    CGameScriptInterfaceBase* Game;                        // +0x40
     void*                 Data;                        // +0x44
     unsigned char _pad_0x48[0x5f - 0x48];
     bool SpyContactMade;                               // +0x5f

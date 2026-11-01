@@ -1,5 +1,7 @@
 // CArenaEnemy::Main() -- an Arena enemy: conscious filter on Me; find its index in the current round/wave enemy list; join the monster faction and give the trolls / scorpion king a health bar; then each frame score the hero's flourishes (+5) and decapitations (+7) with a crowd sound (10-tick cooldown), turn on the hero when he hits it (+1), or on Whisper when she does
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F1A990, 1888 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingConscious dtor 0x00EF7AB0, SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0, Compare 0x00411570; CScriptThing slots
@@ -7,7 +9,7 @@
 //   GameCalls slots 7, 70 GetHero, 72 GetThingWithScriptName, 77 GetNearestWithScriptName, 89 SetTimer, 90 GetTimer,
 //   325 AddQuestInfoBarHealth, 451 GiveThingBestEnemyTarget, 601 EntitySetInFaction, 689 PlayCriteriaSoundOnThing.
 // Data: "FACTION_MONSTERS" 0x012CB1CC, the troll / scorpion king def names and HUD icons, "SCRIPT_NAME_HERO" 0x0125D1C8,
-//   "ArenaSpawn" 0x01259BC4, "WhisperAlly" 0x012F8EC4, "" 0x0122D70E; g_pGameScriptInterface 0x0143E8F8.
+//   "ArenaSpawn" 0x01259BC4, "WhisperAlly" 0x012F8EC4, "" 0x0122D70E; pDSTGame 0x0143E8F8.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18, HealthBar +0x1c,
 //   HasHealthBar +0x20, EnemyIndex +0x24. Parent (arena script): crowd-sound criteria +0x54 (0x14-byte entries), rounds
 //   +0x98 (0x38-byte entries, waves at +0x2c, 0x3c-byte entries {count +0x28, enemies +0x2c (0x38-byte, name +0x28)}),
@@ -81,7 +83,7 @@ class CIsThingConscious : public CPredicateBase { public:            // vtable 0
     ~CIsThingConscious();                              // 0x00EF7AB0
 };
 }
-class CGameScriptInterface { public:
+class CGameScriptInterfaceBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -182,10 +184,10 @@ class CGameScriptInterface { public:
     virtual void v682(); virtual void v683(); virtual void v684(); virtual void v685(); virtual void v686(); virtual void v687(); virtual void v688();
     virtual unsigned long PlayCriteriaSoundOnThing(const CScriptThing& thing, const CCharString& criteria) const;   // slot 689 (+0xac4)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 struct CScriptTimer {
     long ID;
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(ID); }
+    long GetTime() const { return pDSTGame->GetTimer(ID); }
 };
 struct SArenaEnemyEntry { unsigned char _pad[0x28]; CCharString Name; unsigned char _pad2c[0x0c]; };   // 0x38 bytes
 struct SArenaWave { unsigned char _pad[0x28]; long Count; SArenaEnemyEntry* Enemies; unsigned char _pad30[0x0c]; };   // 0x3c bytes
@@ -214,7 +216,7 @@ public:
 
 struct CArenaEnemy : public CEntityScriptBase {
     void* VTable;
-    CGameScriptInterface* Game;                        // +0x04
+    CGameScriptInterfaceBase* Game;                        // +0x04
     CScriptThing Me;                                   // +0x08
     CArenaScript* ParentClass;                         // +0x14
     void* PMasterData;                                 // +0x18
@@ -269,7 +271,7 @@ void CArenaEnemy::Main()
             if (ParentClass->CrowdTimer.GetTime() <= 0) {
                 if (IsActiveThreadTerminating()) return;
                 Game->PlayCriteriaSoundOnThing(Game->GetNearestWithScriptName(Game->GetHero(), "ArenaSpawn"), ParentClass->CrowdSounds[ParentClass->CrowdSoundIndex].Criteria);
-                g_pGameScriptInterface->SetTimer(ParentClass->CrowdTimer.ID, 10);
+                pDSTGame->SetTimer(ParentClass->CrowdTimer.ID, 10);
                 ParentClass->Score += 5;
             }
         } else if (Me.MsgIsHitByWithDecapitate("SCRIPT_NAME_HERO")) {
@@ -277,7 +279,7 @@ void CArenaEnemy::Main()
             if (ParentClass->CrowdTimer.GetTime() <= 8) {
                 if (IsActiveThreadTerminating()) return;
                 Game->PlayCriteriaSoundOnThing(Game->GetNearestWithScriptName(Game->GetHero(), "ArenaSpawn"), ParentClass->CrowdSounds[ParentClass->CrowdSoundIndex].Criteria);
-                g_pGameScriptInterface->SetTimer(ParentClass->CrowdTimer.ID, 10);
+                pDSTGame->SetTimer(ParentClass->CrowdTimer.ID, 10);
                 ParentClass->Score += 7;
             }
         } else {

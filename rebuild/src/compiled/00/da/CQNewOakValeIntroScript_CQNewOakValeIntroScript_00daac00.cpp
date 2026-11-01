@@ -3,8 +3,10 @@
 //   script base and interface/data pair, vtable 0x012D7A28, eight empty villager-speech vectors and the two timers
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DAAC00, `ret 8`. Identity: its factory 0x00DBEF70 (`push 10Ch`) is registered at
 //   0x00CD6E59 under "S_QNOVI" / "Q_NewOakValeIntro". Callees: CScriptBase::CScriptBase 0x00CB8110,
-//   g_pGameScriptInterface->RegisterTimer (slot 87) twice.
+//   pDSTGame->RegisterTimer (slot 87) twice.
 // Leaf: ??0CQ_NewOakValeIntroScript
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Layout: PDB (Ego_r) names; retail = PDB - 0x14 (script base), STLport vectors 12 bytes (PDB 16): the flag/counter block
 //   +0x48..+0x9b (VictimShake .. lastVillagerSpeechIdx; opaque here -- the PDB places two C3DVectors at odd offsets,
 //   which this ctor does not touch), VillagerSpeech* vectors +0x9c..+0xfb, WhichBadDeedsPerformed +0xfc,
@@ -17,7 +19,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -29,7 +31,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 class CCharString { public: void* PStringData; };
 template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector() : m_first(0), m_last(0), m_end(0) { } };   // STLport vector (12 bytes)
 namespace NScript {

@@ -1,8 +1,10 @@
 // NScript::CQ_HeroSoulsArenaScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script factory: `new CQ_HeroSoulsArenaScript(data, game)` with the constructor inlined
 // Leaf: ?Alloc@CQ_HeroSoulsArenaScript
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D80BA0, 92 bytes, static __fastcall (data in ecx, game in edx). PDB:
 // ?Alloc@CQ_HeroSoulsArenaScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
-// Callees: operator new 0x00BFEA1A (0x68 bytes), CScriptBase::CScriptBase 0x00CB8110, g_pGameScriptInterface (0x0143E8F8)
+// Callees: operator new 0x00BFEA1A (0x68 bytes), CScriptBase::CScriptBase 0x00CB8110, pDSTGame (0x0143E8F8)
 // ->RegisterTimer (slot 87, +0x15C) for the GuardChatTimer member. Vtable 0x012D3994.
 // Inline constructor: CLevelScriptBase<T> (PDB: CScriptBase + { CGameScriptInterfaceBase* Game; T* MasterScriptData; })
 // stores Game +0x40 and the data +0x44 before the class's own vtable store (a novtable intermediate base, as in the
@@ -18,7 +20,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDataBase;
 class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
@@ -34,7 +36,7 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 class CHeroSoulsRoundDef;
 template <class T> struct allocator {                  // STLport allocator<T>: empty
     allocator() { }

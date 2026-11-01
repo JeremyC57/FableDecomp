@@ -1,8 +1,10 @@
 // CQ_WaspBossScript::Init() -- register the Wasp Boss quest region and map offset, clear the quest state and reset the wasp-helper timer
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0E820, length 192 bytes; vtable 0x012E00E4 slot 3 (factory 0x00E0E9F0,
 // `push 5Ch` = Ego_r.pdb 0x70 - 0x14).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; the quest's interface (+0x40) AddQuestRegion
-// (slot 271) and SetQuestWorldMapOffset (slot 272); g_pGameScriptInterface (0x0143E8F8) SetTimer (slot 89) via CTimer.
+// (slot 271) and SetQuestWorldMapOffset (slot 272); pDSTGame (0x0143E8F8) SetTimer (slot 89) via CTimer.
 // Layout (Ego_r.pdb - 0x14): the eight flags +0x48..+0x4f, SavedVillagerCount +0x50, QuestStartScreened +0x54,
 // ReachedWaspHelper (CTimer) +0x58.
 // Shape: the quest-name temporary is built before the C2DCoordI(10, 10) temporary (an implicit conversion goes first),
@@ -47,12 +49,12 @@ struct CQuestScriptBase : CScriptBase {                  // retail 0x48 bytes
     void*                 Owner;                         // +0x44
 };
 
-extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 
 namespace NScript {
 class CQ_WaspBossScript : public CQuestScriptBase {

@@ -3,6 +3,8 @@
 //   the value alone is 991v1007; dropping the loop's inline_depth(0) pragma regresses to 1048 bytes.
 // CQ_TraderEscortScript::WatchForSurprisingBalverines() -- thread: while balverine ambushes are still needed, every two seconds finds an M_BalverineSurprise marker the camera cannot see, spawns a CREATURE_BALVERINE_EASY there facing the hero, has a trader comment, sets it on the nearest Darkwood trader (one time in five) or the hero, and waits for it to die
 // Leaf: WatchForSurprisingBalverines
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
@@ -50,7 +52,7 @@ struct CScriptThingView {
     void* vptr; void* Data; void* Info;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
 };
-class CGameScriptInterface { public:                          // vtable 0x01260F0C
+class CGameScriptInterfaceBase { public:                          // vtable 0x01260F0C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -131,12 +133,12 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v508(); virtual void v509(); virtual void v510(); virtual void v511();
     virtual void EntitySetCutsceneBehaviour(const CScriptThing& thing, ECutsceneBehaviour behaviour) const;   // slot 512 (+0x800)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
@@ -148,7 +150,7 @@ namespace NScript {
 
 class CQ_TraderEscortScript : public CScriptBase {
 public:
-    CGameScriptInterface* GSI;                          // +0x40
+    CGameScriptInterfaceBase* GSI;                          // +0x40
     void*                 PMasterData;                  // +0x44
     CTimer                CommentTimer;                 // +0x48
     long                  BalverinesToSurpriseHeroNeeded;   // +0x4c

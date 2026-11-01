@@ -1,5 +1,7 @@
 // NScript::CV_BodyGuardScript::CBodyGuard::OnPredicateFail() -- a henchman is gone: drop him from the henchman list and his health bar, stop his wages if hired; when he was killed (or sacrificed) mark his type dead and start its 240-second respawn timer
 // Leaf: ?OnPredicateFail@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5FB80, 232 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 5).
 // Identity (proven): slot 5 (OnPredicateFail) of the RTTI-less entity vtable 0x012E701C, which the landed
 //   constructor 0x00E5DDE0 (manifest label CDarkwoodTrader::CDarkwoodTrader is propagated) of the "BodyGuard"
@@ -12,7 +14,7 @@
 //   IsEqualTo; std::vector<CScriptThing>::erase(iterator) 0x00CD3152; interface slot 338 RemoveQuestInfoElement;
 //   CBodyGuard::GetGoldCost 0x00E5FC70 (Ego_r.pdb ?GetGoldCost@CBodyGuard@CV_BodyGuardScript@NScript@@AAEJXZ, the only
 //   long() member of the class; landed under the descriptive name GetHenchmanGoldCost); CScriptThing slot 18 MsgIsKilledBy
-//   ("" 0x0122D70E temporary); CTimer::operator=(long) inline: g_pGameScriptInterface 0x0143E8F8 slot 89 SetTimer.
+//   ("" 0x0122D70E temporary); CTimer::operator=(long) inline: pDSTGame 0x0143E8F8 slot 89 SetTimer.
 // Parent members: Ego_r.pdb CV_BodyGuardScript - 0x14 (HenchmanList is the one vector before the arrays).
 class CCharString {
 public:
@@ -72,11 +74,11 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface, bound name)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer {                                          // Ego_r.pdb: one long TimerIndex
 public:
     long TimerIndex;
-    CTimer& operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+    CTimer& operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 };
 class CScriptBase;
 class CPersistContext;

@@ -1,4 +1,6 @@
 // CV_BodyGuardScript::Init() -- reset the bodyguard script state: wages, flags, conversation index, the owner's word at +8, the commentary timer (to 0) and the four henchman status words
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe @ 0x00E5D1F0, 70 bytes (+ int3 padding). Reached only through a vtable word (0x012E6E58).
 // Callees: CGameScriptInterface::SetTimer (slot 89, +0x164) through the interface global @ 0x0143E8F8.
 // Layout: Ego_r.pdb CV_BodyGuardScript - 0x14 (and - 4 more after the 12-byte retail HenchmanList vector): TotalWages
@@ -14,7 +16,7 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 struct CScriptOwner {
     unsigned char _pad[8];
@@ -54,7 +56,7 @@ void NScript::CV_BodyGuardScript::Init()
     TotalWages = 0;
     HeroCannotAffordHelp = false;
     Owner->m_value08 = 0;
-    g_pGameScriptInterface->SetTimer(CommentaryTimer.TimerIndex, 0);
+    pDSTGame->SetTimer(CommentaryTimer.TimerIndex, 0);
     HeroWieldingWeapon = false;
     HenchmanGlobalStatus[0] = 0;
     HenchmanGlobalStatus[1] = 0;

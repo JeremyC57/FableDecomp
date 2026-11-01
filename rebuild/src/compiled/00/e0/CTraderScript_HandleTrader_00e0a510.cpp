@@ -4,6 +4,8 @@
 //   (INFECTED: plain trader icon and start the infection timer, longer when the parent's flag +0x5a is set; SCARED:
 //   hat 01 icon and set scared; FRIENDLY: hat 02 icon)
 // Leaf: ?HandleTrader@CTraderScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0A510, length 784 bytes, `ret 4`.
 // Callees: IsInterrupted 0x00F35B30 (CEntityScriptBase), the game script interface (+4) slots 70/229/321/325/480/496
 //   (ghidra_out/cgsi_slots_aligned.tsv), CScriptThing slot 3 GetDataString, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
@@ -115,7 +117,7 @@ struct CGameScriptInterface_Calls {               // slots: ghidra_out/cgsi_slot
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;              // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptDef { public:
     unsigned char _pad000[0xdf4];
     long          TraderInfectionTime;                       // +0xdf4
@@ -164,11 +166,11 @@ void CTraderScript::HandleTrader(long state)
         if (ParentClass->LongInfection) {
             if (IsActiveThreadTerminating())
                 return;
-            g_pGameScriptInterface->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
+            pDSTGame->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
         } else {
             if (IsActiveThreadTerminating())
                 return;
-            g_pGameScriptInterface->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
+            pDSTGame->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
         }
     } else if (Me.GetDataString() == "SCARED") {
         if (IsActiveThreadTerminating())

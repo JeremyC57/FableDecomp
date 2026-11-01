@@ -1,4 +1,6 @@
 // CQR_EscortTraderScript::ForceDisableFollow(const CScriptThing& trader) -- stop the trader following the hero: clear the follow expression, restart the expression-detect timer, drop the trader's minimap marker, stop it following, hide its emote icon and make it region-follow the hero no more
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E24090, length 112 bytes.
 // Callees: SetTimer (slot 89, +0x164) through the game script interface global @ 0x0143E8F8, and through the quest's
 // interface (+0x40): slot 352 MiniMapRemoveMarker (+0x580), slot 230 EntityStopFollowing (+0x398), slot 530
@@ -16,7 +18,7 @@ class CScriptThing;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;       // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CScriptDef { public:
     unsigned char _pad[0x9a4];
@@ -47,7 +49,7 @@ struct CQR_EscortTraderScript : CQuestScriptBase {
 void CQR_EscortTraderScript::ForceDisableFollow(const CScriptThing& trader)
 {
     ExpressionDetectedFollow = false;
-    g_pGameScriptInterface->SetTimer(TraderExpressionDetectTimer.TimerIndex, pGlobalScriptDef->EscortTraderExpressionDetectPeriod);
+    pDSTGame->SetTimer(TraderExpressionDetectTimer.TimerIndex, pGlobalScriptDef->EscortTraderExpressionDetectPeriod);
     GSI->MiniMapRemoveMarker(trader);
     GSI->EntityStopFollowing(trader);
     GSI->EntitySetAsDisplayingEmoteIcon(trader, false);

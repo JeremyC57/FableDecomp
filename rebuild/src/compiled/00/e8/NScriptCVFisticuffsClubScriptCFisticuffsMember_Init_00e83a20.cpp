@@ -1,5 +1,7 @@
 // NScript::CV_FisticuffsClubScript::CFisticuffsMember::Init() -- a fisticuffs-club spectator: clear the status and cheer flag, reset the shout timer, make Me unpushable with only the seek-enemy / seek-target / nearby-melee state groups and opinion and deed reactions on, in the neutral faction, then pick one of three cheer/boo line pairs at random
 // Leaf: ?Init@CFisticuffsMember@CV_FisticuffsClubScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E83A20, 411 bytes, thiscall, three plain `ret` exits (one per switch arm).
 // Identity (proven): slot 2 (Init) of the entity-script vtable 0x012EB0F8 that the landed CFisticuffsMember constructor
 //   0x00E83920 stores [dtor 0x00E839D0, Main 0x00E84B80, Init 0x00E83A20, 0x00E83980, OnPersist 0x00CDEBC0, OnPredicateFail
@@ -7,7 +9,7 @@
 //   the members written are the Ego_r.pdb CFisticuffsMember ones (PerformingCheerOrBoo, FC_Status, ShoutTimer, CheerName,
 //   BooName) at their PDB offsets, and the strings are the punch-club cheerer / booer lines. Catalog label: sub_00e83a20.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=(const char*) 0x0099EFE0, rand
-//   0x00BFEB16 (MSVCR71 thunk); CTimer::operator=(long) inline: g_pGameScriptInterface 0x0143E8F8 slot 89 SetTimer; Game slots
+//   0x00BFEB16 (MSVCR71 thunk); CTimer::operator=(long) inline: pDSTGame 0x0143E8F8 slot 89 SetTimer; Game slots
 //   590 EntitySetStategroupEnabled, 591 EntitySetAllStategroupsEnabled, 594 EntitySetOpinionReactionsEnabled, 595
 //   EntitySetDeedReactionsEnabled, 601 EntitySetInFaction, 844 SetIsPushableByHero (CScriptThing by value: the inline copy
 //   stores the CBaseClass then the CScriptThing vtable into the argument area and add-refs PImp).
@@ -139,12 +141,12 @@ class CGameScriptInterfaceBase { public:              // the interface CGameScri
     virtual void SetIsPushableByHero(CScriptThing thing, bool pushable);   // slot 844 (+0xd30)
 };
 class CGameScriptInterface : public CGameScriptInterfaceBase { public: };
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #define FABLE_RETAIL_NSCRIPT
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 class CEntityScriptBase { public:                     // retail 0x14 bytes
     virtual ~CEntityScriptBase();                      // slot 0
     CGameScriptInterfaceBase* Game;                    // +0x04

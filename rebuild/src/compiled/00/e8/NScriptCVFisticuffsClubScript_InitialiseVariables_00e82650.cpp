@@ -2,11 +2,13 @@
 // script-def fighter delay, recount the fights, mark the club active unless only-at-night applies, and name the four
 // club regions
 // Leaf: ?InitialiseVariables@CV_FisticuffsClubScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E82650, 333 bytes (padded to 336).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0 / operator=(const char*) @ 0x0099EFE0,
 //          CScriptBase::IsActiveThreadTerminating @ 0x00CB7940, SetFightCount @ 0x00E82800, the second set-up
 //          member @ 0x00E827A0 (name unknown; labelled CScriptBase_InitialiseVariables_Check); CGameScriptInterface
-//          slots 89 SetTimer (+0x164, through g_pGameScriptInterface 0x0143E8F8), 284 IsQuestActive (+0x470).
+//          slots 89 SetTimer (+0x164, through pDSTGame 0x0143E8F8), 284 IsQuestActive (+0x470).
 // Layout (retail = Ego_r.pdb CV_FisticuffsClubScript - 0x14): flags +0x4c..+0x58, Fighter1Timer +0x5c, Fighter2Timer
 //          +0x60, HitID +0x7c, HitCount +0x80, AttackWarnings +0x84, EverybodyAttack +0x8c, LostWhileOutside +0x8d,
 //          FisticuffsActive +0x8e, AllowedHits +0x90, PlayerLost +0xa8, CheerNumber +0xac, BooNumber +0xb0,
@@ -49,11 +51,11 @@ class CScriptDef { public:
     long          FC_FighterDelay;                       // +0x5dc
 };
 extern CScriptDef*           pGlobalScriptDef;               // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 namespace NScript {
 class CV_FisticuffsClubScript : public CQuestScriptBase {
 public:

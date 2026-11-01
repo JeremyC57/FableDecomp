@@ -1,8 +1,10 @@
 // CQ_OrchardFarmRaidScript::Init() -- register the farm as a quest region of whichever side's quest is active, reset the master-data flags, the crate count, timers and mission state, pair the two crate teams as enemies with no carriers, set the fail reasons, then pick the hero's team, text prefix, objective and the minimap routes for the evil or the good quest
 // Leaf: Init
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DCC140, 1298 bytes (int3 padded to 1312).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0 / operator=(const char*) 0x0099EFE0, CWideString::operator=(const wchar_t*)
-//   0x0099B800, CBaseClass 0x0099A2D0 / ~ 0x0099A2E0, operator delete 0x00BFE9BC; g_pGameScriptInterface 0x0143E8F8
+//   0x0099B800, CBaseClass 0x0099A2D0 / ~ 0x0099A2E0, operator delete 0x00BFE9BC; pDSTGame 0x0143E8F8
 //   SetTimer (slot 89); Game slots 271 AddQuestRegion, 284 IsQuestActive, 296 SetQuestCardObjective, 354
 //   MiniMapAllowRouteBetweenRegions.
 // Layout (retail = Ego_r.pdb - 0x14, and -4 more after the 12-byte STLport CrateList): CrateCount +0x48, CommentTimer +0x4c,
@@ -71,11 +73,11 @@ class CScriptThing : public CBaseClass { public:                           // vt
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x109];
     bool OFBRCratesStolen;                              // +0x109

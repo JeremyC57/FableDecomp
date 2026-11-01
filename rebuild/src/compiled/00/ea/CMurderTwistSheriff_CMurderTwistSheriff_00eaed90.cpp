@@ -1,5 +1,7 @@
 // CMurderTwistSheriff::CMurderTwistSheriff(CScriptOwner* parent, void* masterData, const CScriptThing& me) -- the sheriff's entity script in the murder-twist quest: entity-script base over the quest's interface and Me, then the scripted-thing handle, the attract timer, and the master data last
 // Leaf: ??0CMurderTwistSheriff
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EAED90, length 97 bytes (ret 0Ch; factory 0x00EAED10 registered as
 // "MurderTwistSheriff", vtable 0x012EFA0C).
 // Label correction: the manifest's "CBriarRose::CBriarRose" is propagated; the factory name and Ego_r.pdb's
@@ -32,7 +34,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
 };
-class CGameScriptInterface { public:                        // the game-script timer service behind the global at 0x0143E8F8
+class CGameScriptInterfaceBase { public:                        // the game-script timer service behind the global at 0x0143E8F8
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -122,11 +124,11 @@ class CGameScriptInterface { public:                        // the game-script t
     virtual void v086();
     virtual long NewTimer();                  // slot 87 (+0x15c)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->NewTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->NewTimer()) { }
 struct CScriptOwner {                         // the quest script that owns this entity script
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*

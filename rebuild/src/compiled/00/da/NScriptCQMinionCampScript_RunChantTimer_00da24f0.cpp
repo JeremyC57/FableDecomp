@@ -1,5 +1,7 @@
 // NScript::CQ_MinionCampScript::RunChantTimer() -- run Briar Rose's 72-second chant timer: while time is left (or the timer is paused) advance a frame, hold the timer at PausedTime while ChantTimerPaused (and once more when the pause ends), and show the elapsed time on the chant timer bar
 // Leaf: ?RunChantTimer@CQ_MinionCampScript@NScript@@QAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA24F0, 276 bytes, thiscall; the trailing termination test is a tail `jmp`.
 // Identity (proven): the row is referenced once, from 0x00DA1AD1 inside the landed CQ_MinionCampScript code, as the
 //   CSpawnedFunc member pointer (+0x34) of a spawned thread (vtable 0x012D6CAC). Ego_r.pdb
@@ -18,12 +20,12 @@
 //   (FABLE_RETAIL_NSCRIPT opt-in: CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface; no PDB data symbol)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer {                                          // Ego_r.pdb: one long TimerIndex
 public:
     long TimerIndex;
-    CTimer& operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+    CTimer& operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+    long GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
     bool operator>=(long time) const { return GetTime() >= time; }
 };
 class CPersistContext;

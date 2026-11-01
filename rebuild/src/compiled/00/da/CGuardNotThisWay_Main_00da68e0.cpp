@@ -1,11 +1,13 @@
 // CGuardNotThisWay::Main() -- the minion clifftop-chase guard who blocks the wrong way: take scripted control, attach Me to the active quest, face the hero, then every frame -- when the 15-tick timer has run out and the hero is within 12 units -- point aggressively at the summoner's run-off point, tell the hero "not this way" (two lines), point again and restart the timer
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA68E0, 1125 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
 //   0x007E73D0 / IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CTimer dtor 0x00CD4470 (inline copies elsewhere), IsDistanceBetweenThingsUnder
 //   0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70 GetHero, 72 GetThingWithScriptName,
-//   87-90 timers (through g_pGameScriptInterface 0x0143E8F8), 364-366 conversations, 465 EntityAttachToScript,
+//   87-90 timers (through pDSTGame 0x0143E8F8), 364-366 conversations, 465 EntityAttachToScript,
 //   475 EntitySetFacingAngleTowardsThing, 655 GetActiveQuestName. Global bool 0x01375748 (animation default).
 // Layout: Ego_r.pdb CGuardNotThisWay (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQ_MinionClifftopChaseScript), PMasterData +0x18. CTimer as the matched CGuildmaster_HS::Main 0x00D85B40.
@@ -58,14 +60,14 @@ using NScript::CIsThingAlive;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-__forceinline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer::CTimer() { TimerIndex = pDSTGame->RegisterTimer(); }
+__forceinline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern bool g_bScriptAnimationFlag;                     // 0x01375748
 class CEntityScriptBase { public:

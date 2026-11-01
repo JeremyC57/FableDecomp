@@ -1,4 +1,6 @@
 // CQ_SummoningTheShipScript::MakeBriarRoseComment(const CCharString& line) -- unless a conversation is running: restart the commentary timer, and if Briar Rose is alive start a new conversation of her line "TEXT_QST_B02_BRIARROSE_<line>" to the hero
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF20F0, length 254 bytes, `ret 4`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, operator+(const char*, const
 // CCharString&) 0x0099F690 (`__fastcall`, hidden result in ecx), ~CScriptThing 0x004AA840 (out of line), CScriptThing's
@@ -47,7 +49,7 @@ class CScriptThing : public CBaseClass { public:                     // 12 bytes
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
@@ -74,7 +76,7 @@ bool NScript::CQ_SummoningTheShipScript::MakeBriarRoseComment(const CCharString&
 {
     if (m_pInterface->IsConversationActive(ConversationIndex))
         return false;
-    g_pGameScriptInterface->SetTimer(CommentaryTimer.TimerIndex, 15);
+    pDSTGame->SetTimer(CommentaryTimer.TimerIndex, 15);
     CScriptThing briar = m_pInterface->GetThingWithScriptName("STS_BriarRose");
     if (!briar.IsAlive())
         return false;

@@ -1,5 +1,7 @@
 // NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript() -- implicit quest-script destructor: deregister the crowd sword timer, destroy the two crowd-member CScriptThing members in reverse order, then ~CScriptBase
 // Leaf: ??1CV_SwordInTheStoneScript@NScript@@UAE@XZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED7640, 147 bytes, thiscall, tail jump to ~CScriptBase 0x00CBD510.
 // Identity (proven): the sole caller 0x00ED7623 is the scalar deleting destructor 0x00ED7620, slot 0 of the RTTI-less vtable
 //   0x012F301C; that vtable is stored only by the ctor 0x00ED4AA0 (the landed CV_SwordInTheStoneScript ctor), whose only caller
@@ -16,17 +18,17 @@
 //   vtable 0x01238C8C), CrowdSwordTimer +0x7C (CTimer); retail size 0x80 (the Alloc's `push 80h`).
 // Layout: engine/CLevelScriptBase.h declares `virtual ~CLevelScriptBase();` out of line; retail's is implicit (chunks 664/665),
 //   so CLevelScriptBase<T> is a local copy of the header without the dtor declaration (NOTES.md "Header debt").
-// Callees: CTimer::~CTimer inline (engine/CTimer.h: g_pGameScriptInterface 0x0143E8F8 slot 88 DeregisterTimer), ~CScriptThing
+// Callees: CTimer::~CTimer inline (engine/CTimer.h: pDSTGame 0x0143E8F8 slot 88 DeregisterTimer), ~CScriptThing
 //   inline (vtable store, engine/CCountedPointer.h PImp release: the info block's DeleteFunc, operator delete 0x00BFE9BC),
 //   CBaseClass::~CBaseClass 0x0099A2E0, ~CScriptBase 0x00CBD510.
 // TU: the PDB ctor ??0CV_SwordInTheStoneScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z is defined (as
 //   retail's TU defines it), which emits the vtable, the scalar deleting dtor and this implicit dtor.
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
+inline CTimer::~CTimer() { pDSTGame->DeregisterTimer(TimerIndex); }
 #include "engine/CCountedPointer.h"
 #include "engine/CScriptThing.h"
 inline CScriptThing::~CScriptThing() { }

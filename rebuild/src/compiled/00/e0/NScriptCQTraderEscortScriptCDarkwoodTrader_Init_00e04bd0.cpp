@@ -1,5 +1,7 @@
 // NScript::CQ_TraderEscortScript::CDarkwoodTrader::Init() -- the Darkwood escort trader's entity-script Init: reset the brain/AI states (brain state 1 when Me's data string is "INFECTED"), the infection count, the incubation and comment timers (banter 60) and the three flags; put a green orb on the mini map, make Me persistent and not following the hero through teleporters, pick the INFECTED_TRADER / SCARED_TRADER / FRIENDLY_TRADER narrator from the data string, and spawn the parent's WatchForPickpocketing thread on Me
 // Leaf: ?Init@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E04BD0, 826 bytes, plain `ret`; slot 2 (Init) of the entity-script vtable
 //   0x012DF424 that the landed CDarkwoodTrader ctor 0x00E01670 stores (slot 1 Main 0x00E07640, slot 4 the landed
 //   OnPredicateFail 0x00E01760); Ego_r.pdb / FableWin.pdb ?Init@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@EAEXXZ.
@@ -8,7 +10,7 @@
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, operator+ 0x0099F570, operator new 0x00BFEA1A,
 //   CSpawnedFuncBase(name, id) 0x00CDD450, CScriptThing copy 0x004ABE90 / ~CScriptThing 0x004AA840,
 //   CScriptBase::AddSpawnedFunction 0x00CB7E50; CSpawnedFunc1<CQ_TraderEscortScript, CScriptThing> vtable 0x012DF764,
-//   CQ_TraderEscortScript::WatchForPickpocketing 0x00E04F10; CTimer::operator=(long) inline: g_pGameScriptInterface
+//   CQ_TraderEscortScript::WatchForPickpocketing 0x00E04F10; CTimer::operator=(long) inline: pDSTGame
 //   0x0143E8F8 slot 89 SetTimer; Game slots 350 MiniMapAddMarker, 362 EntitySetWillBeUsingNarrator, 477
 //   SetThingPersistent, 481 SetEntityAsFollowingHeroThroughTeleporters.
 // Strings: "INFECTED" 0x012DF7C8, "SCARED" 0x012676D4, "FRIENDLY" 0x01264C18, "INFECTED_TRADER" 0x012DF7B8, "SCARED_TRADER"
@@ -131,12 +133,12 @@ class CGameScriptInterfaceBase { public:          // slots: ghidra_out/cgsi_slot
     virtual void SetEntityAsFollowingHeroThroughTeleporters(const CScriptThing& thing, bool following) const;   // slot 481 (+0x784)
 };
 class CGameScriptInterface : public CGameScriptInterfaceBase { public: };
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 #define FABLE_RETAIL_NSCRIPT
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 namespace NScript { class CPredicateBase; }
 class CSpawnedFuncBase { public:                        // 0x34 bytes
     unsigned char _base[0x10];                          // CScriptProcessBase +0x04 .. +0x13 (vptr +0x00)

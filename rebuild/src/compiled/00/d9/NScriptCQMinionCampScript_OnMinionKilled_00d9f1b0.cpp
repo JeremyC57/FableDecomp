@@ -1,5 +1,7 @@
 // CQ_MinionCampScript::OnMinionKilled() -- a minion in the camp has just died (reached through CMC_Minion::OnPredicateFail's thunk @ 0x00D9F1A0, `mov ecx,[ecx+14h] ; jmp`): drop the live count, never below zero, and if the camp is below its maximum and the spawn timer has already run out, wind the timer up again so the next minion rises; every step bails out if the script thread is being torn down
 // Leaf: OnMinionKilled
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9F1B0, length 75 bytes (the catalogue row 00d9f1b0 also held
 // 0x00D9F200, split via the skipped-row ledger, chunk 908). The manifest label CMC_Minion::OnPredicateFail is the
 // thunk's name propagated onto this body; `this` is the CQ_MinionCampScript the thunk fetches from ParentClass (+0x14).
@@ -20,7 +22,7 @@
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CScriptBase {                                // the quest script base: vptr first; the thread-state query is a
 public:                                            // non-virtual member @ 0x00CB7940 (`this` in ecx)
     void* __vftable;                               // +0x00
@@ -50,7 +52,7 @@ void NScript::CQ_MinionCampScript::OnMinionKilled()
         NumberOfMinions = 0;
     }
     if (NumberOfMinions < MaxNumberOfMinions) {
-        if (g_pGameScriptInterface->GetTimer(MinionSpawnTimer.TimerIndex) <= 0) {
+        if (pDSTGame->GetTimer(MinionSpawnTimer.TimerIndex) <= 0) {
             if (IsActiveThreadTerminating())
                 return;
             StartMinionSpawnTimer();

@@ -1,11 +1,13 @@
 // NScript::CV_IntroductionToTrophiesScript::WatchForCrowdVolume() -- each frame, when Briar Rose's opinion has caught up with the required stage, advance it: stages 0 and 1 run the inside-tavern timer (restarted on entering the tavern, held while outside) and move the requirement to 1 / 2 when it expires; stage 2 waits for a region load and resets the requirement to 0
 // Leaf: ?WatchForCrowdVolume@CV_IntroductionToTrophiesScript@NScript@@QAEXXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9C8D0, 582 bytes, thiscall, plain `ret`.
 // Identity (proven): spawned as "WatchForCrowdVolume" (0x012ED588) by the landed CV_IntroductionToTrophiesScript::Main 0x00E9C4B0:
 //   the CSpawnedFunc Func store at 0x00E9C711 writes this row right after that literal; the row has no other reference.
 //   Ego_r.pdb ?WatchForCrowdVolume@CV_IntroductionToTrophiesScript@NScript@@QAEXXZ. Catalog label sub_00e9c8d0.
 // Callees: CCharString() 0x0099E4B0 / ~CCharString 0x0099EAE0, CScriptBase::IsActiveThreadTerminating 0x00CB7940; Game (+0x40)
-//   slots 7 NewScriptFrame, 22 MsgOnRegionLoaded; g_pGameScriptInterface 0x0143E8F8 slots 89 SetTimer (inline CTimer::operator=)
+//   slots 7 NewScriptFrame, 22 MsgOnRegionLoaded; pDSTGame 0x0143E8F8 slots 89 SetTimer (inline CTimer::operator=)
 //   and 90 GetTimer (inline CTimer::GetTime); pGlobalScriptDef 0x0143E90C.
 // Layout: retail NScript headers (CLevelScriptBase 0x48); CV_IntroductionToTrophiesScript members at Ego_r.pdb - 0x14:
 //   InsideTavern +0x55, OpinionCurrent +0x58, OpinionRequired +0x5c (BriarRoseOpinion), OpinionTimerReset +0x61,
@@ -26,9 +28,9 @@ public:
 #include "engine/CLevelScriptBase.h"
 #include "engine/CGameScriptInterface.h"
 
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
+__forceinline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
 
 class CScriptDef {
 public:

@@ -1,4 +1,6 @@
 // CQ_HeroSoulsNostroScript::Init() -- reset the summoner/undead counters and flags and the vulnerable timer, then register the quest region ("Q_HeroSoulsNostro", "GraveyardCircle")
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D87B20, length 115 bytes (padded to 128).
 // Callees: CGameScriptInterface::SetTimer (slot 89, +0x164) through the global @ 0x0143E8F8,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0 (x2: "GraveyardCircle" @ 0x012D49A8, "Q_HeroSoulsNostro"
@@ -21,11 +23,11 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 namespace NScript {
 class CQ_HeroSoulsNostroScript {
 public:

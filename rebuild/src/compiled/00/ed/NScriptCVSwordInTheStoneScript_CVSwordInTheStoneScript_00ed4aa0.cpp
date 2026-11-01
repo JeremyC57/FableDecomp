@@ -1,10 +1,12 @@
 // NScript::CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, data/interface pair, own vtable, two empty CScriptThing members (CrowdMemberPullingCurrent/Null) and the CrowdSwordTimer registered with the global script interface
 // Leaf: ??0CV_SwordInTheStoneScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Naming wave 16 (c671): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*, CGameScriptInterface*) and global-namespace class;
 //   name-only (both are one pushed pointer: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED4AA0, length 101 bytes (padded to 112), `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBase::CBase @ 0x0099A2D0 (each CScriptThing's base, x2),
-// g_pGameScriptInterface (0x0143E8F8) slot 87 (+0x15c, RegisterTimer) for the CTimer member.
+// pDSTGame (0x0143E8F8) slot 87 (+0x15c, RegisterTimer) for the CTimer member.
 // Vtable 0x012F301C. Layout (retail = PDB - 0x14): SwordRemovalAttemptCount +0x48, the bools +0x4c..+0x53,
 // HeroStrength* +0x54..+0x5c, StatsInitialised +0x60, AttackedByHero +0x61, CrowdMemberPullingCurrent +0x64,
 // CrowdMemberPullingNull +0x70 (CScriptThing, vtable 0x01238C8C, 12 bytes), CrowdSwordTimer +0x7c.
@@ -15,11 +17,11 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

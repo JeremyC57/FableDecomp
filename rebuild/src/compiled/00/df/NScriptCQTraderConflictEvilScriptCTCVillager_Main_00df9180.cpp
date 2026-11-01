@@ -1,5 +1,7 @@
 // NScript::CQ_TraderConflictEvilScript::CTC_Villager::Main() -- a Barrowfields villager in the trader-conflict (evil) quest: alive filter on Me, quit unless BarrowFields is loaded, wait for the quest start screen, make Me a scared, non-combatant non-ally of the hero, then until the player engages heal Me when hit by anyone but the hero and flag the engagement when the hero hits Me; afterwards panic at the hero (a sex-specific scream line) whenever the scream-out timer has run out and the hero is within 15 units
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF9180, 1215 bytes (+ int3 padding); entity-script vtable slot 1 (Main);
 //   PDB ?Main@CTC_Villager@CQ_TraderConflictEvilScript@NScript@@EAEXXZ.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 (the CIsThingAlive predicate, vtable 0x012C32F0), SetPredicate
@@ -29,7 +31,7 @@ class CCPPointerInfo;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-class CGameScriptInterface { public:                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
+class CGameScriptInterfaceBase { public:                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void g008(); virtual void g009(); virtual void g010(); virtual void g011();
@@ -123,11 +125,11 @@ class CGameScriptInterface { public:                                     // CGam
     virtual void g593(); virtual void g594(); virtual void g595(); virtual void g596(); virtual void g597(); virtual void g598(); virtual void g599();
     virtual void EntityUnsetThingAsAllyOfThing(const CScriptThing& thing, const CScriptThing& ally) const;   // slot 600 (+0x960)
 };
-extern CGameScriptInterface* g_pGameScriptInterface;              // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 class CTimer { public:                                        // a script timer: the interface's timer index
     long TimerIndex;
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
+    __forceinline long GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+    __forceinline void SetTime(long time) { pDSTGame->SetTimer(TimerIndex, time); }
 };
 namespace NScript {
 class __declspec(novtable) CPredicateBase
@@ -149,7 +151,7 @@ extern "C" int __cdecl rand();                         // 0x00BFEB16
 
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void v00();
-    CGameScriptInterface*   Game;                                 // +0x04
+    CGameScriptInterfaceBase*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
 public:
     bool IsActiveThreadTerminating() const;   // 0x00F35B30

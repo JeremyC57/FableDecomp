@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?IsCutsceneSkipped@@YI_NXZ
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBEB7E, 41 bytes, `__fastcall` global with no arguments, plain `ret`
 //   (PDB ?IsCutsceneSkipped@@YI_NXZ).
 // Data: the skip-with-action-button flag byte @ 0x0143E8F4 (descriptive name), the game script interface @ 0x0143E8F8.
@@ -15,15 +17,15 @@
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern bool g_bSkipCutsceneWithActionButton;                  // 0x0143E8F4
-extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 bool __fastcall IsCutsceneSkipped()
 {
     if (g_bSkipCutsceneWithActionButton) {
-        if (g_pGameScriptInterface->MsgIsActionModeButtonPressed())
+        if (pDSTGame->MsgIsActionModeButtonPressed())
             return true;
     } else {
-        if (g_pGameScriptInterface->MsgIsCutSceneSkipped())
+        if (pDSTGame->MsgIsCutSceneSkipped())
             return true;
     }
     return false;

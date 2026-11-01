@@ -1,5 +1,7 @@
 // CBRIAR_ROSE_IMPOSTER::Main() -- a Briar Rose imposter in the Hero Souls quest: alive filter on Me, reset the two taunt timers, then every frame: when the hero hits it (or hits it with any special ability but number 14) and the taunt timer has run out, run a one-line taunt conversation and restart the timers; when the "here" timer has run out, the taunt timer is above 7 and the hero is over 13 units away, say "here" and restart that timer
 // Leaf: Main
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D81820, length 822 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy @ 0x004ABE90 / dtor @ 0x004AA840, SetPredicate @ 0x00F35B10, IsDone @ 0x00F35B30,
 //          CScriptThing slots 21 MsgIsHitBy (+0x54), 41 MsgIsHitBySpecialAbilityFrom (+0xa4), 42
@@ -166,12 +168,12 @@ public:
 
 
 
-extern CGameScriptInterface* g_pGameScriptInterface;          // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 struct CQ_HeroSoulsBriarScript {
     unsigned char _pad[0x68];
     CTimer BriarRoseImposterTauntTimer;                // +0x68

@@ -1,4 +1,6 @@
 // CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, const CScriptThing& speaker, bool unused) -- if the comment timer has run out, start a conversation in which the speaker says "<TextSystemScriptCode><speaker data>_<line>" to the hero, then restart the timer
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCDA80, length 251 bytes, `ret 0xc` (the third argument is unused).
 // Callees: the interface global 0x0143E8F8 GetTimer(long) (slot 90, +0x168, 0x006E7710) and SetTimer(long, long) (slot 89,
 // +0x164, 0x006E76E0); CScriptBase::IsActiveThreadTerminating 0x00CB7940 (result unused); through the game script
@@ -32,7 +34,7 @@ class CCPPointerInfo;
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
@@ -58,13 +60,13 @@ using NScript::CQ_OrchardFarmRaidScript;
 
 bool NScript::CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, const CScriptThing& speaker, bool unused)
 {
-    if (g_pGameScriptInterface->GetTimer(CommentTimer.TimerIndex) > 0) {
+    if (pDSTGame->GetTimer(CommentTimer.TimerIndex) > 0) {
         IsActiveThreadTerminating();
         return false;
     }
     long conversation = m_pInterface->AddNewConversation(speaker, false, false);
     m_pInterface->AddPersonToConversation(conversation, m_pInterface->GetHero());
     m_pInterface->AddLineToConversation(conversation, TextSystemScriptCode + speaker.GetDataString() + "_" + line, false, speaker, m_pInterface->GetHero());
-    g_pGameScriptInterface->SetTimer(CommentTimer.TimerIndex, 5);
+    pDSTGame->SetTimer(CommentTimer.TimerIndex, 5);
     return true;
 }

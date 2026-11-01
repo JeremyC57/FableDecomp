@@ -1,9 +1,11 @@
 // CQ_HobbeCaveScript::MakeBanditComment(const CCharString&, const CScriptThing&) -- unless the comment timer is still running, restart it and play one conversation line from the bandit to the hero; returns whether a comment was made
 // Leaf: ?MakeBanditComment@CQ_HobbeCaveScript@NScript@@
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D905C0, length 163 bytes, `ret 8` (PDB:
 // ?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z); 11 callers in the Hobbe Cave
 // bandit scripts.
-// Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; the global script interface g_pGameScriptInterface
+// Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; the global script interface pDSTGame
 // (0x0143E8F8) SetTimer (slot 89) / GetTimer (slot 90) through the inline CTimer; the quest's interface (+0x40) GetHero
 // (slot 70), AddNewConversation (slot 364), AddPersonToConversation (slot 365), AddLineToConversation (slot 366).
 // Data: the script def pGlobalScriptDef (0x0143E90C) HC_BanditCommentTime at +0xcc0 (Ego_r.pdb +0xd70, less four 16-to-12
@@ -46,7 +48,7 @@ struct CQuestScriptBase : CScriptBase {                  // retail 0x48 bytes
     void*                 Owner;                         // +0x44
 };
 
-extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 
 class CScriptDef { public:
     unsigned char _pad[0xcc0];
@@ -57,8 +59,8 @@ extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return pDSTGame->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { pDSTGame->SetTimer(TimerIndex, time); return *this; }
 
 namespace NScript {
 class CQ_HobbeCaveScript : public CQuestScriptBase {

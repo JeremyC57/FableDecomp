@@ -1,5 +1,7 @@
 // NScript::CQ_OrchardFarmRaidScript::CQ_OrchardFarmRaidScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: the CScriptBase root, the interface and master-data pair, vtable 0x012DAF78, then the members' constructors: the comment timer, an empty crate list, four fail-reason wide strings, the objectives-reminder timer, the text-system script code string and the two crate teams (timer, two empty script things, state counters and member count zeroed)
 // Leaf: ??0CQ_OrchardFarmRaidScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
+//   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCC040, 242 bytes, thiscall `ret 8`, returns this.
 // Identity (proven): it stores the quest vtable 0x012DAF78 whose slot 2 is the landed CQ_OrchardFarmRaidScript::Main 0x00DCC770
 //   (and slot 1 the landed RegisterMain 0x00DCC660); its only caller 0x00DD1F0B is the quest's factory. Ego_r.pdb and
@@ -20,11 +22,11 @@ class CScriptDataBase;
 //   (FABLE_RETAIL_NSCRIPT opt-in: CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface, bound name)
+extern CGameScriptInterfaceBase* pDSTGame;   // 0x0143E8F8 ?pDSTGame@@3PAVCGameScriptInterfaceBase@@A (ESTABLISHED_SPELLINGS: the SetDSTGame writer)
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
 //   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
 #include "engine/CTimer.h"
-inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::CTimer() : TimerIndex(pDSTGame->RegisterTimer()) { }
 class CCharString {                                     // 4 bytes
 public:
     void* PStringData;
