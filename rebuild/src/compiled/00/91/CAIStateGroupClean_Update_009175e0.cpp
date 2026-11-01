@@ -1,19 +1,21 @@
 // CAIStateGroup_Clean::Update() -- wash the building's floor: 5..8 times pick a point a random distance (up to min(radius, 1.4)) and direction away from the last one, starting from a random point (up to min(radius, 4)) around the building's bounding centre at floor height; while the point is inside the building walk to it and play the wash-floor into / 1..2 loops / out-of animations; any failure terminates the group (a point outside idles first)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009175E0, 1064 bytes, plain ret, 8-aligned ebp frame.
 // Callees: GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890, own virtual slot 14 (+0x38, the building), CTCPhysicsBase::
-//   GetBoundingInfo 0x006AF640, GFFloatRandom 0x004978A0 (__fastcall), C3DVector::RotateAboutZ 0x00A14260,
+//   GetBoundingInfo 0x006AF640, GFFloatRandom 0x004978A0 (__fastcall), C3DVector::Rotate 0x00A14260,
 //   CThingBuilding::IsPointInside 0x0082D000, AIAction_MoveToPosProximity 0x0097E890, CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   CCreatureAction_PlayAnimation 0x008424F0, ~CCreatureActionBase 0x00693EF0, the action id getter 0x00692620,
 //   AIAction_PerformActionAndWait 0x0097DB70, AIAction_DoNothing 0x0097E200, Terminate 0x008FCF40.
 // Constants: 4.0f @ 0x0128FD88, 1.4f @ 0x0128FD90, 0.0001f @ 0x0129BA3C.
-class C3DVector { public:
+class C3DVector {
+public:
+    void Rotate(float a0, float a1);   // 0x00A14260 (Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z)
+private: public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     __forceinline C3DVector operator+(const C3DVector& v) const { return C3DVector(X + v.X, Y + v.Y, Z + v.Z); }
     __forceinline C3DVector& operator+=(const C3DVector& v) { X += v.X; Y += v.Y; Z += v.Z; return *this; }
-    void RotateAboutZ(float angle, bool flag);  // 0x00A14260
 };
 class CTCPhysicsBase { public:
     void GetBoundingInfo(C3DVector* centre, float* radius);    // 0x006AF640
@@ -56,6 +58,9 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 
 class CAIStateGroupBase
 {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+private:
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -80,7 +85,6 @@ struct CAIStateGroup_Clean : public CAIStateGroupBase {
     float FloorHeight;                          // +0x20
     bool Activated;                             // +0x24
     CThing* GetCreature() const { return PBrain->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
         bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
@@ -111,14 +115,14 @@ void CAIStateGroup_Clean::Update()
     centre.Z = FloorHeight;
     float range = 4.0f < radius ? 4.0f : radius;
     C3DVector offset(GFFloatRandom(range, GetPWorldSeed()) + 0.0001f, 0.0f, 0.0f);
-    offset.RotateAboutZ(GFFloatRandom(1.0f, GetPWorldSeed()), false);
+    ((C3DVector*)&offset)->Rotate(GFFloatRandom(1.0f, GetPWorldSeed()), false);
     C3DVector position = centre + offset;
     for (long i = 0; i < passes; ++i) {
         if (!GetBuilding())
             break;
         float step = 1.4f < radius ? 1.4f : radius;
         offset = C3DVector(GFFloatRandom(step, GetPWorldSeed()) + 0.0001f, 0.0f, 0.0f);
-        offset.RotateAboutZ(GFFloatRandom(1.0f, GetPWorldSeed()), false);
+        ((C3DVector*)&offset)->Rotate(GFFloatRandom(1.0f, GetPWorldSeed()), false);
         position += offset;
         if (!GetBuilding()->IsPointInside(position)) {
             AIAction_DoNothing();

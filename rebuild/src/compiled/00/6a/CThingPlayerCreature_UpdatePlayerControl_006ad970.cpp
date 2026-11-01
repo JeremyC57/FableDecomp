@@ -47,8 +47,7 @@ class CTCScriptedControl { public:                              // interface typ
     void Update();                                       // 0x00713910
 };
 
-class CThingPlayerCreature : public CThing { public:
-    void ControlledMove();                               // 0x006AD700
+class CThingPlayerCreature : public CThing { protected: void ControlledMove(); private:                               // 0x006AD700
     void UpdatePlayerControl();
 };
 

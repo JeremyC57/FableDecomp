@@ -69,18 +69,20 @@ class CAIStateGroupBase { public:
     }
 };
 struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
+private:
+    CThing* FindASimplyDelightfulShop();   // 0x00946F90 (Ego_r.pdb ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ)
+public:
     CIntelligentPointerThing Shop;              // +0x14
     CIntelligentPointerThing PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
     bool IsInWorkHours();                       // 0x0091A6F0
-    CThing* SelectRandomShop();                 // 0x00946F90
     bool InitCreaturePosition();
 };
 
 bool CAIStateGroup_WanderAroundShops::InitCreaturePosition()
 {
     bool ok = IsInWorkHours() && Random(100) < g_WanderAroundShopsChance
-              && (Shop = SelectRandomShop()).GetPItem() != 0;
+              && (Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop()).GetPItem() != 0;
     if (ok) {
         if (Shop.GetPItem()->m_flags6c & 0x40) {
             CThingCreatureBase* creature = PBrain->PCreature;

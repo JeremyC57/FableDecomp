@@ -89,7 +89,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CAIStateGroupBase {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -130,7 +133,6 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 
 struct CAIStateGroup_Drunk : CAIStateGroupBase {
     long FrameToNextTalkToSelf;                     // +0x14
-    unsigned long* GetPWorldSeed();                 // 0x008FCFD0
     long AIAction_DoNothing();                      // 0x0097E200 (EAIActionReturn)
     void TalkToSelfUpdate();
 };

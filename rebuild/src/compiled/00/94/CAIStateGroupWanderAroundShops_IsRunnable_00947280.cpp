@@ -103,11 +103,13 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
 };
 struct CAIStateGroup_WanderAroundShops : CAIStateGroupBase {
+private:
+    CThing* FindASimplyDelightfulShop();   // 0x00946F90 (Ego_r.pdb ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ)
+public:
     CIntelligentPointer<CThing> Shop;              // +0x14
     CIntelligentPointer<CThing> PrettyThing;       // +0x1c
     long NextFrameBuy;                          // +0x24
     bool IsInWorkHours();                       // 0x0091A6F0
-    CThing* SelectRandomShop();                 // 0x00946F90
     CThing* SelectPrettyThing(CThing* shop);    // 0x00947110
     virtual bool IsRunnable();
 };
@@ -120,7 +122,7 @@ bool CAIStateGroup_WanderAroundShops::IsRunnable()
             return false;
     }
     if (IsInWorkHours()) {
-        Shop = SelectRandomShop();
+        Shop = ((CAIStateGroup_WanderAroundShops*)this)->FindASimplyDelightfulShop();
         if (IS_THING_ALIVE(Shop)) {
             if (Shop.GetPItem()->HasTC(144))
                 PrettyThing = Shop;

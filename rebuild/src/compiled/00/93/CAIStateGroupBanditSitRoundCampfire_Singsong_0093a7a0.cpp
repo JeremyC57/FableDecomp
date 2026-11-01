@@ -50,12 +50,16 @@ class CAIBrain
     CThingCreatureBase* Creature;                   // +0x18
 };
 
-struct CAIStateGroup_BanditSitRoundCampfire
-{
+class CAIStateGroupBase {                         // Ego_r / RTTI base of CAIStateGroup_BanditSitRoundCampfire (offset 0)
+public:
+    virtual void v00();
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+};
+struct CAIStateGroup_BanditSitRoundCampfire : public CAIStateGroupBase {
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    unsigned long* GetPWorldSeed();                 // 0x008FCFD0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     long Singsong();
 };

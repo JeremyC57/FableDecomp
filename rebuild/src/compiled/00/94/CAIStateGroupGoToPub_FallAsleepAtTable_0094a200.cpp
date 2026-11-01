@@ -75,7 +75,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CAIStateGroupBase {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+private: public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
@@ -172,7 +175,6 @@ class CCharString { public:
 };
 
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, float loopTime);   // 0x00948EF0
     bool FallAsleepAtTable();
 };

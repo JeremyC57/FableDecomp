@@ -175,7 +175,9 @@ public:
     unsigned long Iterations;                                  // +0x54
 
     void CalcCurrentBlockSegments();                           // 0x00AD9B20
+private:
     unsigned long CountRemainingGroups() const;                // 0x00AD8ED0
+public:
     void AddBlocks(unsigned long block);                       // 0x00AD9F10
     void Process(CVertexGroupBlockList& output, bool exhaustive);
 };

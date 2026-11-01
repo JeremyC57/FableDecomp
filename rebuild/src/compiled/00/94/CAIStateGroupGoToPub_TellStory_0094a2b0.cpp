@@ -98,7 +98,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CAIStateGroupBase {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+private: public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
@@ -202,7 +205,6 @@ struct CTCStoryTeller {                         // the interface-0xb8 component
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     unsigned char _pad14[0x10];
     CIntelligentPointer<CThing> PStoryListener;     // +0x24
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
     bool PlayAnims(const CCharString& into, const CCharString& loop, const CCharString& outOf, float loopTime);   // 0x00948EF0
     bool TellStory();
 };

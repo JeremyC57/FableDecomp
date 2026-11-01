@@ -69,7 +69,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CAIStateGroupBase {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -133,7 +136,6 @@ struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase {
     bool StandModeAddedToCreature;              // +0x28
     unsigned char _pad29[3];
     long FrameLastPlayedIn;                     // +0x2c
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0 (CAIStateGroupBase)
     unsigned long RandomFramesWithin(long seconds)
     {
         long framesPerSecond = g_framesPerSecond;

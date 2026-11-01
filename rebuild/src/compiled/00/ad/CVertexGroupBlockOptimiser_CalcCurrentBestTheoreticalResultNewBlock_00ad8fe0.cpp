@@ -41,7 +41,9 @@ public:
     unsigned long      MaxGroupIndex;                          // +0x40
     unsigned long      MaxN;                                   // +0x44
 
+private:
     unsigned long CountRemainingGroups() const;                // 0x00AD8ED0
+public:
     unsigned long CalcCurrentBestTheoreticalResultNewBlock();
 };
 

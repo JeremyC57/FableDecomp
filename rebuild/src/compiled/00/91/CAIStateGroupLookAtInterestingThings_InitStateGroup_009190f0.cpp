@@ -75,7 +75,10 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CAIStateGroupBase {
+protected:
+    unsigned long* GetPWorldSeed() const;   // 0x008FCFD0 (Ego_r.pdb ?GetPWorldSeed@CAIStateGroupBase@@IBEPAKXZ)
+private: public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
@@ -176,7 +179,6 @@ class CTCIdleScheduler { public:                       // interface 0xd3
 
 struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     long FrameToLook;                           // +0x14 (engine header)
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
     virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);
     bool InitCreaturePosition();
     virtual bool IsRunnable();
