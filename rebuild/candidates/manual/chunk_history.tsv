@@ -25722,3 +25722,13 @@ chunk	address	module	name	length
 669	007ce730	CTCActionUseBuyHouse	~CTCActionUseBuyHouse	105
 669	00887b00	CEnvironmentThemePriorityStack	ProcessTransitions	99
 669	009947a0	CBufferedFileDataOutputStream	~CBufferedFileDataOutputStream	105
+670	00a24470	C3DMeshLODInfo	~C3DMeshLODInfo	101
+670	00a0b9a0	C3DMeshLODInfo	~C3DMeshLODInfo	115
+670	00a3ede0	CIconText	ClearIcons	104
+670	00a5f150	CFontDataBankEntry	~CFontDataBankEntry	100
+670	00a63480	CFontDataBankEntry	~CFontDataBankEntry	100
+670	00ab5320	CMouseDX	~CMouseDX	109
+670	00b84390	CEngineWaterBackgroundSubPatch	~CEngineWaterBackgroundSubPatch	104
+670	00b8c7c0	CEngineBillboardGenerator	~CEngineBillboardGenerator	102
+670	00b93e40	CLocalDetailGeneratorTheme	~CLocalDetailGeneratorTheme	98
+670	00a5f3a0	CChunkedFile	~CChunkedFile	126
