@@ -41892,23 +41892,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c16690'
-        Module = 'CHoverable'
-        Source = '00/c1/CHoverable_ProcessEvent_00c16690.cpp'
-        TestSource = '00/c1/CHoverable_ProcessEvent_00c16690_test.cpp'
+        Module = '_global'
+        Source = '00/c1/global_StoreSoundAllocator00c16690_00c16690.cpp'
+        TestSource = '00/c1/global_StoreSoundAllocator00c16690_00c16690_test.cpp'
         PassPattern = 'OK_00c16690'
     }
     [pscustomobject]@{
         Address = '00c166b0'
-        Module = 'CHoverable'
-        Source = '00/c1/CHoverable_ProcessEvent_00c166b0.cpp'
-        TestSource = '00/c1/CHoverable_ProcessEvent_00c166b0_test.cpp'
+        Module = '_global'
+        Source = '00/c1/global_StoreSoundPhysicalAllocator00c166b0_00c166b0.cpp'
+        TestSource = '00/c1/global_StoreSoundPhysicalAllocator00c166b0_00c166b0_test.cpp'
         PassPattern = 'OK_00c166b0'
     }
     [pscustomobject]@{
         Address = '00c166d0'
-        Module = 'CHoverable'
-        Source = '00/c1/CHoverable_ProcessEvent_00c166d0.cpp'
-        TestSource = '00/c1/CHoverable_ProcessEvent_00c166d0_test.cpp'
+        Module = '_global'
+        Source = '00/c1/global_StoreSoundTempAllocator00c166d0_00c166d0.cpp'
+        TestSource = '00/c1/global_StoreSoundTempAllocator00c166d0_00c166d0_test.cpp'
         PassPattern = 'OK_00c166d0'
     }
     [pscustomobject]@{
@@ -144928,8 +144928,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01224b40'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCStatic00c166f00143bb34_01224b40.cpp'
-        TestSource = '01/22/staticinit_gCStatic00c166f00143bb34_01224b40_test.cpp'
+        Source = '01/22/staticinit_gDefaultAllocator0143bb34_01224b40.cpp'
+        TestSource = '01/22/staticinit_gDefaultAllocator0143bb34_01224b40_test.cpp'
         PassPattern = '01224b40_TEST PASS'
     }
     [pscustomobject]@{
@@ -159096,9 +159096,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c166f0'
-        Module = 'CVtable_012b2ab8'
-        Source = '00/c1/CVtable012b2ab8_CVtable012b2ab8_00c166f0.cpp'
-        TestSource = '00/c1/CVtable012b2ab8_CVtable012b2ab8_00c166f0_test.cpp'
+        Module = 'CDefaultAllocator_00c166f0'
+        Source = '00/c1/CDefaultAllocator00c166f0_CDefaultAllocator00c166f0_00c166f0.cpp'
+        TestSource = '00/c1/CDefaultAllocator00c166f0_CDefaultAllocator00c166f0_00c166f0_test.cpp'
         PassPattern = '00c166f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -348495,16 +348495,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c16700'
-        Module = 'CVtable_012b2ab8'
-        Source = '00/c1/CVtable012b2ab8_Allocate_00c16700.cpp'
-        TestSource = '00/c1/CVtable012b2ab8_Allocate_00c16700_test.cpp'
+        Module = 'CDefaultAllocator_00c166f0'
+        Source = '00/c1/CDefaultAllocator00c166f0_Allocate_00c16700.cpp'
+        TestSource = '00/c1/CDefaultAllocator00c166f0_Allocate_00c16700_test.cpp'
         PassPattern = '00c16700_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c16720'
-        Module = 'CVtable_012b2ab8'
-        Source = '00/c1/CVtable012b2ab8_Free_00c16720.cpp'
-        TestSource = '00/c1/CVtable012b2ab8_Free_00c16720_test.cpp'
+        Module = 'CDefaultAllocator_00c166f0'
+        Source = '00/c1/CDefaultAllocator00c166f0_Free_00c16720.cpp'
+        TestSource = '00/c1/CDefaultAllocator00c166f0_Free_00c16720_test.cpp'
         PassPattern = '00c16720_TEST PASS'
     }
     [pscustomobject]@{

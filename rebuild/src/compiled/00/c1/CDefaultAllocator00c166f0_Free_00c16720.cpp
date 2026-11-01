@@ -1,8 +1,8 @@
-// CVtable_012b2ab8::Allocate(unsigned int size) -- heap allocator slot 1: a CRT malloc of size bytes
-// Leaf: ?Allocate@CVtable_012b2ab8@@UAEPAXI@Z
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00C16700, 17 bytes, thiscall, `ret 4`: `push size ; call [malloc] ; add esp,4` (the live result makes VC clean the slot with `add esp,4`).
+// CDefaultAllocator_00c166f0::Free(void* block) -- heap allocator slot 2: a CRT free of block
+// Leaf: ?Free@CDefaultAllocator_00c166f0@@UAEXPAX@Z
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00C16720, 15 bytes, thiscall, `ret 4`: `push block ; call [free] ; pop ecx` (no live result, so VC cleans the slot with `pop ecx`).
 // Identity (descriptive): slots 1 and 2 of vtable 0x012B2AB8 (slot 0 is the deleting destructor 0x00C16730 that ends in
-//   LHA::CAllocator::~CAllocator 0x00C16620; the landed CVtable_012b2ab8 constructor 0x00C166F0 installs it). libpk has no
+//   LHA::CAllocator::~CAllocator 0x00C16620; the landed CDefaultAllocator_00c166f0 constructor 0x00C166F0 installs it). libpk has no
 //   RTTI or PDB, so the class keeps its vtable name; the base is the RTTI class LHA::CAllocator (vtable 0x0129D264, slots
 //   1 and 2 are _purecall), whose CBBBSoundAllocator sibling (0x00A3F960 / 0x00A3F970) has the same two slots.
 // Callees: MSVCR71 malloc / free through the import table (0x01440158 / 0x01440154).
@@ -19,13 +19,13 @@ public:
 };
 }
 
-class CVtable_012b2ab8 : public LHA::CAllocator {   // vtable 0x012B2AB8: malloc / free heap allocator
+class CDefaultAllocator_00c166f0 : public LHA::CAllocator {   // vtable 0x012B2AB8: malloc / free heap allocator
 public:
     virtual void* Allocate(unsigned int size);
     virtual void Free(void* block);
 };
 
-void* CVtable_012b2ab8::Allocate(unsigned int size)
+void CDefaultAllocator_00c166f0::Free(void* block)
 {
-    return malloc(size);
+    free(block);
 }
