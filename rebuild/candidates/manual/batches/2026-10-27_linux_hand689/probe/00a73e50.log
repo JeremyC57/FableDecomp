@@ -1,0 +1,12 @@
+1 C3DVector/C2DVector/C2DLineF/CPlane models, OR-chain of the six mixed sign patterns, __uninitialized_copy declared only DIFFER
+2 user copy ctors on C3DVector/C2DVector (plane built from a temp) DIFFER
+3 vertex indices re-read inside the loop body instead of a triangle reference DIFFER(782v811)
+4 CPlane temporary called directly DIFFER(782v811)
+5 straddles flag with nested if/else per side0 group DIFFER
+6 nested `if (side0 == 1) {...continue} else if (side0 == -1) {...continue} else continue` DIFFER(797v811)
+7 -1 group tested first DIFFER
+8 `side0 != 1` inverted outer tests with continue DIFFER
+9 goto-based skip DIFFER(797v811)
+10 function-scope `long i` shared by both loops DIFFER(820v811)
+11 positive OR condition wrapping the cut body (A-group falls into the body) DIFFER(782v811)
+12 flag selection with the triangle re-read in the cut block DIFFER(787v811)

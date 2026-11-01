@@ -1,0 +1,2 @@
+1 implicit dtor from the PDB layout, map<CCharString,CCharString> model lacking a default ctor SRC_FAIL (C2512)
+2 maps with default ctor, vector<bool> as the plain 12-byte vector, handles with virtual dtor slot 0 RELOCATION_MATCH(883v883)

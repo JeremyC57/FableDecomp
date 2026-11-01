@@ -1,0 +1,9 @@
+1 inline MeasureVertex(vertex, segment, mins, maxs) helper, STLport vector fill ctor declared only DIFFER (helper not inlined)
+2 __forceinline helper DIFFER (X on x87, Y/Z in slots missing)
+3 helper takes const COptimisedFace& + vertex index DIFFER
+4 C3DVector user copy ctor DIFFER (three p slots)
+5 one shared `C3DVector p` local passed by reference, user operator= DIFFER (mins/maxs slot order and reloads)
+6 fill ctor body as a same-TU plain definition DIFFER (inlined)
+7 fill ctor body under #pragma auto_inline(off) with __declspec(noinline) DIFFER (frame slot order)
+8 __uninitialized_fill_n __forceinline inside the fill ctor body DIFFER
+9 _Vector_base(n, alloc) allocating base + noinline same-TU fill ctor body RELOCATION_MATCH(874v874)

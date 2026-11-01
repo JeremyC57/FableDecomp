@@ -1,0 +1,2 @@
+1 landed ~CQ_HangingTreeGoodScript recipe with map<CCharString,bool> modelled from a std model lacking a default ctor SRC_FAIL (C2512)
+2 _Rb_tree_base/_Rb_tree model with default ctor, CTimer::~CTimer from engine/CTimer.h, clear()/~_Rb_tree_base inline RELOCATION_MATCH(792v792)

@@ -1,0 +1,2 @@
+1 res0.c local_book_besterror cut from the landed res0.c TU (static noinline stdcall, codebook layouts) DIFFER(879v879)
+2 same TU with the brute-force loop's `e += dim` placement and the trailing residue loop as published DIFFER resolved RELOCATION_MATCH(879v879)

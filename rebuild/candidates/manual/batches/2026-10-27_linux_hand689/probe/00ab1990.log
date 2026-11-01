@@ -1,0 +1,20 @@
+1 CCountedPointer/CCharString models, ternary of two CCharString temporaries assigned to bone->Name DIFFER (ternary elided)
+2 ternary wrapped in an explicit CCharString temporary DIFFER
+3 by-value `const CCharString GetBoneName() const` accessor on the sequence (arm temps destroyed before operator=) DIFFER (overflow inlining)
+4 real STLport allocator/_STLP_alloc_proxy with (max) DIFFER
+5 noinline fastcall __uninitialized_copy / __uninitialized_fill_n DIFFER (2-3 overflow expansions)
+6 inline __uninitialized_copy, noinline fill DIFFER (0 expansions)
+7 plain (non-inline) __uninitialized_copy DIFFER
+8 _M_insert_overflow bodies moved after the row DIFFER
+9 _M_insert_overflow defined in-class DIFFER
+10 CArray push_back wrapper over std::vector for bones DIFFER
+11 both helpers inline DIFFER
+12 inline copy, noinline fastcall fill DIFFER
+13 __forceinline PushBackExpanded free function at the bones site DIFFER (expanded but wrong (max) temp order)
+14 GetBoneName moved onto C3DAnimationSequenceData (Data->GetBoneName()) DIFFER
+15 __forceinline push_back_expanded / _M_insert_overflow_expanded members using the __fill_len parameter form DIFFER(812v812) (operand order only)
+16 copy loop increments swapped (++__cur, ++__first) DIFFER(812v812)
+17 copy loop as while with separate increments DIFFER(812v812)
+18 open-coded copy loop inside _M_insert_overflow_expanded DIFFER(822v812)
+19 back to the for-loop form with explicit this-> DIFFER(812v812)
+20 copy loop advancing __result directly (no __cur) DIFFER(812v812)

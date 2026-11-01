@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00606f80   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCRegion@@@std@@U?$_Select1st@U?$pair@$$CBJVCRegion@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCRegion@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCRegion@@@std@@@2@@Z -> 006196d0 labelled '_unattributed::FreeTree_CTreeOwner_006196d0'
+00606f80   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@@5@U?$less@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@5@V?$allocator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@@5@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAVCComponent@NUISystem@@@std@@@2@@Z -> 00613ae0 labelled '_unattributed::FreeTree_CTreeOwner_00613ae0'
+00606f80   RELOCATION_MATCH PASS   ~CTCInventoryMap
+00ac9d50   RELOCATION_MATCH PASS   MeasureSegments
+00c04850   RELOCATION_MATCH PASS   send_all_trees
+00c67c00   RELOCATION_MATCH PASS   SetAllParameters
+00ca02b0   RELOCATION_MATCH PASS   local_book_besterror
+00cb0370   RELOCATION_MATCH PASS   llMulDiv
+00cfa340   RELOCATION_MATCH PASS   ~CQ_AmbushTradersScript
+00d3b010   RELOCATION_MATCH PASS   ~CQ_FireHeartScript
+
+WINS: 8
+  00606f80 RELOCATION_MATCH CTCInventoryMap::??1CTCInventoryMap@@UAE@XZ
+  00ac9d50 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedPrimitive::?MeasureSegments@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXXZ
+  00c04850 RELOCATION_MATCH _global::_send_all_trees
+  00c67c00 RELOCATION_MATCH CEaxSource::?SetAllParameters@CEaxSource@@QAEJPBUEAXSOURCEPROPERTIES@@@Z
+  00ca02b0 RELOCATION_MATCH libvorbis::_local_book_besterror@8
+  00cb0370 RELOCATION_MATCH _global::?llMulDiv@@YG_J_J000@Z
+  00cfa340 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::??1CQ_AmbushTradersScript@NScript@@UAE@XZ
+  00d3b010 RELOCATION_MATCH NScript::CQ_FireHeartScript::??1CQ_FireHeartScript@NScript@@UAE@XZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryMap_CTCInventoryMap_00606f80
+  QuadricOptimiserInternalsCOptimisedPrimitive_MeasureSegments_00ac9d50
+  global_sendalltrees_00c04850
+  CEaxSource_SetAllParameters_00c67c00
+  libvorbis_localbookbesterror_00ca02b0
+  global_llMulDiv_00cb0370
+  NScriptCQAmbushTradersScript_CQAmbushTradersScript_00cfa340
+  NScriptCQFireHeartScript_CQFireHeartScript_00d3b010

@@ -1,0 +1,3 @@
+1 PDB layout shifted for the 0x130 CTCInventoryBase, engine CBaseClass.h, local STLport models SRC_FAIL (C2079 pair<>::second needs CRegion)
+2 + #include "engine/CRegion.h", NHeroInformationScreens::CBase inline empty virtual dtor RELOCATION_MATCH(937v937)
+3 local CCPPointerInfo/CCountedPointer model replaced by #include "engine/CCountedPointer.h" (vland SHARED_HEADER_AVAILABLE) RELOCATION_MATCH(937v937)

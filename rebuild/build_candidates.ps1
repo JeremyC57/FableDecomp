@@ -374126,6 +374126,63 @@ $catalog = @(
         TestSource = '00/ca/libvorbis_2class_00ca0890_test.cpp'
         PassPattern = '00ca0890_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00606f80'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_CTCInventoryMap_00606f80.cpp'
+        TestSource = '00/60/CTCInventoryMap_CTCInventoryMap_00606f80_test.cpp'
+        PassPattern = '00606f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ac9d50'
+        Module = 'QuadricOptimiserInternals::COptimisedPrimitive'
+        Source = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_MeasureSegments_00ac9d50.cpp'
+        TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_MeasureSegments_00ac9d50_test.cpp'
+        PassPattern = '00ac9d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c04850'
+        Module = '_global'
+        Source = '00/c0/global_sendalltrees_00c04850.cpp'
+        TestSource = '00/c0/global_sendalltrees_00c04850_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c04850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c67c00'
+        Module = 'CEaxSource'
+        Source = '00/c6/CEaxSource_SetAllParameters_00c67c00.cpp'
+        TestSource = '00/c6/CEaxSource_SetAllParameters_00c67c00_test.cpp'
+        PassPattern = '00c67c00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca02b0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_localbookbesterror_00ca02b0.cpp'
+        TestSource = '00/ca/libvorbis_localbookbesterror_00ca02b0_test.cpp'
+        PassPattern = '00ca02b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb0370'
+        Module = '_global'
+        Source = '00/cb/global_llMulDiv_00cb0370.cpp'
+        TestSource = '00/cb/global_llMulDiv_00cb0370_test.cpp'
+        PassPattern = '00cb0370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfa340'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/cf/NScriptCQAmbushTradersScript_CQAmbushTradersScript_00cfa340.cpp'
+        TestSource = '00/cf/NScriptCQAmbushTradersScript_CQAmbushTradersScript_00cfa340_test.cpp'
+        PassPattern = '00cfa340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d3b010'
+        Module = 'NScript::CQ_FireHeartScript'
+        Source = '00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d3b010.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScript_CQFireHeartScript_00d3b010_test.cpp'
+        PassPattern = '00d3b010_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

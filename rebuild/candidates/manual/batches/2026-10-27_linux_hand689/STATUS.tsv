@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x00C04850	RELOCATION_MATCH	621	PASS	zlib 1.2.1 trees.c send_all_trees (landed trees.c TU, /GS)
+0x00CA02B0	RELOCATION_MATCH	879	PASS	libvorbis res0.c local_book_besterror (static noinline stdcall)
+0x00CB0370	RELOCATION_MATCH	779	PASS	DirectShow wxutil.cpp llMulDiv
+0x00C67C00	RELOCATION_MATCH	854	PASS	CEaxSource::SetAllParameters(const EAXSOURCEPROPERTIES*)
+0x00CFA340	RELOCATION_MATCH	792	PASS	NScript::CQ_AmbushTradersScript::~CQ_AmbushTradersScript (implicit)
+0x00D3B010	RELOCATION_MATCH	883	PASS	NScript::CQ_FireHeartScript::~CQ_FireHeartScript (implicit)
+0x00AC9D50	RELOCATION_MATCH	874	PASS	QuadricOptimiserInternals::COptimisedPrimitive::MeasureSegments
+0x00606F80	RELOCATION_MATCH	937	PASS	CTCInventoryMap::~CTCInventoryMap
+0x00AB1990	DIFFER	812v812	-	C3DAnimationBuilder::BuildBoneInfoTree: [edx+eax] vs [eax+edx] in the inlined copy loop, 20 probes, differ/
+0x00A73E50	DIFFER	782v811	-	CPhysicsMesh::GenerateLineListFromBaseline: frame slot of loop-2 i, CSE of index loads, deferred-block layout, 12 probes, differ/
