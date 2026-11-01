@@ -25822,3 +25822,13 @@ chunk	address	module	name	length
 681	00debcb0	CQ_RansomVictimScript	~CQ_RansomVictimScript	344
 681	00b2d1b0	CEngineSurfaceCompositionManager	~CEngineSurfaceCompositionManager	374
 681	00e46a50	CSystemManager	~CSystemManager	380
+682	00f26250	CPersistContext	Transfer<signed_char>	380
+682	00f34330	CPersistContext	Transfer<signed_char>	400
+682	00788617	CTCMeleeTrap	ProcessPossibleStrike	423
+682	0078891d	CTCMeleeTrap	PerformPossibleTrapDamage	466
+682	00783850	CTCBoastingCrowdControl	Startup	443
+682	00b513b0	CEngineWeatherRenderer	~CEngineWeatherRenderer	443
+682	00d6ed60	CQ_HangingTreeEvilScript	~CQ_HangingTreeEvilScript	446
+682	00670820	CTCCoopSpirit	UpdateMovement	483
+682	00bbbbc0	CEnginePrimitiveManagerDecal	~CEnginePrimitiveManagerDecal	488
+682	0121e260	_gapscan	sub_0121e260	284
