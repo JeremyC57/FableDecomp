@@ -13,7 +13,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 class C3DVector { public: float X, Y, Z; };
 
 struct CSoundManagerLH {
-    long TakeNextEmitterNumber();                  // 0x00A3E420 (descriptive): return EmitterCounter++ (+0x50)
+    long GetNextEmitterID();                       // 0x00A3E420 (chunk 687: CSoundManagerLH::GetNextEmitterID; return EmitterCounter++ (+0x50); naming wave 20)
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
@@ -52,6 +52,6 @@ CSoundEmitterLH::CSoundEmitterLH(CSoundManagerLH* manager, const C3DVector& posi
     , m_positionX(position.X), m_positionY(position.Y), m_positionZ(position.Z)
     , m_sounds()
     , m_active(true), m_paused(false), m_finished(false)
-    , m_number(m_pManager->TakeNextEmitterNumber())
+    , m_number(m_pManager->GetNextEmitterID())
 {
 }

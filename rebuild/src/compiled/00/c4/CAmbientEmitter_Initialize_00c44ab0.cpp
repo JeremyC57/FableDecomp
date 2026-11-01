@@ -1,15 +1,15 @@
-// CMouseCursor::Initialize() -- take an input snapshot from the cursor's input source, then hand the pointer turn (TurnToPointer) and the snapshot's pressed state for 0 to the renderer object at the end of the cursor's owner chain
+// CAmbientEmitter::Initialize() -- take an input snapshot from the cursor's input source, then hand the pointer turn (GetVolume) and the snapshot's pressed state for 0 to the renderer object at the end of the cursor's owner chain
 // Leaf: Initialize
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C44AB0, 134 bytes (`ret`).
 // Callees: the snapshot's two out-of-line part ctors @ 0x00C203A0 (0x1c bytes) / 0x00C20390 (0x10 bytes) (catalog labels
 // "CAtmosProcess" / "CNavigationLayer" are propagated), the input source's GetSnapshot(out, 0, 0) @ 0x00C383D0
-// (returns `out`, `ret 0Ch`), the snapshot's GetPressed(long) @ 0x00C27BC0, CMouseCursor::TurnToPointer @ 0x00C44A90
+// (returns `out`, `ret 0Ch`), the snapshot's GetPressed(long) @ 0x00C27BC0, CAmbientEmitter::GetVolume @ 0x00C44A90
 // (float), the renderer call (float, long) @ 0x00C0B420.
-// Names are descriptive (no PDB layout for this CMouseCursor). GetPressed returns a 16-bit mask (`or ax,word ptr [esi+4]`):
+// Names are descriptive (no PDB layout for this CAmbientEmitter). GetPressed returns a 16-bit mask (`or ax,word ptr [esi+4]`):
 // declared `long` the pushed result let `mov ecx,esi` sink below the push.
 // Shape: one 0x50-byte frame record with an inline ctor (the two part ctors plus integer zero stores sharing edi and
 // two 1.0f immediates; the stores after the second part ctor sink below the next call's pushes); the renderer call's
-// arguments evaluate right to left (GetPressed, then TurnToPointer) and the owner chain is fetched last.
+// arguments evaluate right to left (GetPressed, then GetVolume) and the owner chain is fetched last.
 struct CSnapshotPartA {                     // 0x1c bytes
     unsigned char _body[0x1c];
     CSnapshotPartA();                       // 0x00C203A0
@@ -52,16 +52,16 @@ struct CChain1 { CChain2* m_p; };
 struct CChain0 { CChain1* m_p; };
 struct COwner  { CChain0* m_p; };
 
-struct CMouseCursor {
+struct CAmbientEmitter {
     COwner*       m_pOwner;                 // +0x00
     CInputSource* m_pInput;                 // +0x04
-    float TurnToPointer();                  // 0x00C44A90
+    float GetVolume() const;                // 0x00C44A90 ?GetVolume@CAmbientEmitter@@QBEMXZ (chunk 687, descriptive; naming wave 20: `this` is the libpk ambient emitter, the member name Initialize stays descriptive)
     void Initialize();
 };
 
-void CMouseCursor::Initialize()
+void CAmbientEmitter::Initialize()
 {
     SInputSnapshot snapshot;
     m_pInput->GetSnapshot(snapshot, 0, 0);
-    m_pOwner->m_p->m_p->m_p->m_p->m_pRenderer->Render(TurnToPointer(), snapshot.GetPressed(0));
+    m_pOwner->m_p->m_p->m_p->m_p->m_pRenderer->Render(GetVolume(), snapshot.GetPressed(0));
 }

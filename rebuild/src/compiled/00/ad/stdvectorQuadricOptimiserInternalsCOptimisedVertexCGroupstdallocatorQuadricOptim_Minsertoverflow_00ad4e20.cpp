@@ -1,7 +1,7 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<CUnprovenElement_00ad4e20>) STLport growth insert for an 8-byte element STLport does not know to be POD: allocate size + max(size, fill_len) elements, copy-construct the head, x (once, or fill_len times) and the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@VCUnprovenElement_00ad4e20@@V?$allocator@
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __false_type&, size_type fill_len, bool atend) -- (vector<QuadricOptimiserInternals::COptimisedVertex::CGroup>) STLport growth insert for an 8-byte element STLport does not know to be POD: allocate size + max(size, fill_len) elements, copy-construct the head, x (once, or fill_len times) and the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@VCGroup@COptimisedVertex@QuadricOptimiserInternals@@V?$allocator@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD4E20, 259 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CUnprovenElement_00ad4e20` -- DESCRIPTIVE element type: `CUnprovenElement_00ad4e20` is a placeholder for an unidentified 8-byte element; evidence: its callers are mesh-optimiser helpers (QuadricOptimiser label, propagated); the element is not named.
+// Identity (naming wave 20, chunk 687): the element is QuadricOptimiserInternals::COptimisedVertex::CGroup, the 8-byte {BoneIndex, BoneWeight} record of the landed LimitGroupCount 0x00ACA5F0 (which binds this instantiation) and CompareWeight 0x00AC6B40; was the CUnprovenElement_00ad4e20 placeholder. Old note: its callers are mesh-optimiser helpers (QuadricOptimiser label, propagated); the element is not named.
 //   Family F008 (25 byte-identical bodies, each its own COMDAT next to the TU that first instantiated it): the manifest
 //   label "std::vector_Realloc_And_Copy" is propagated and behavioural. STLport 4.6 vector.c `_M_insert_overflow(pos, x,
 //   const __false_type&, fill_len, atend)` (no EH: _STLP_TRY/_STLP_UNWIND are empty) with every callee inlined.
@@ -14,7 +14,10 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CUnprovenElement_00ad4e20 { public: unsigned long Word0, Word1; };   // descriptive 8-byte element
+namespace QuadricOptimiserInternals { class COptimisedVertex { public:
+    class CGroup { public: unsigned long BoneIndex; float BoneWeight; };   // the 8-byte {BoneIndex, BoneWeight} record (Ego_r.pdb nested class; chunk 687 LimitGroupCount 0x00ACA5F0, naming wave 20)
+}; }
+typedef QuadricOptimiserInternals::COptimisedVertex::CGroup CUnprovenElement_00ad4e20;   // (the typedef keeps the row text; the symbol is the CGroup instantiation)
 
 namespace std {
 

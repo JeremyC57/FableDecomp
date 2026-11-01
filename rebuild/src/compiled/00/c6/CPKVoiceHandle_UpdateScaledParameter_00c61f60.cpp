@@ -1,4 +1,4 @@
-// CPKVoiceHandle::UpdateScaledParameter(CPKEmitter* emitter) -- push the emitter's ramped value (times the owner's scale unless unscaled) to the live voice
+// CPKVoiceHandle::UpdateScaledParameter(CAmbientEmitter* emitter) -- push the emitter's ramped value (times the owner's scale unless unscaled) to the live voice
 // Leaf: ?UpdateScaledParameter@CPKVoiceHandle@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C61F60, 80 bytes (thiscall, `ret 4`).
 // Callees: the emitter getter 0x00C44A90 (a ramped value 0x00C38510 times the owner's +0x160 float), the owner's +0x4c
@@ -28,25 +28,25 @@ public:
     unsigned char  _pad000[0x4c];
     CPKScaleSource m_scale;                            // +0x4c
 };
-class CPKEmitter {
+class CAmbientEmitter {
 public:
     CPKEmitterOwner* m_pOwner;                         // +0
-    float GetValue();                                  // 0x00C44A90
+    float GetVolume() const;                           // 0x00C44A90 ?GetVolume@CAmbientEmitter@@QBEMXZ (chunk 687, descriptive; naming wave 20)
 };
 class CPKVoiceHandle {
 public:
     unsigned char _pad000[8];
     bool          m_bUnscaled;                         // +8
     long          m_handle;                            // +0xc
-    CPKVoiceTable* GetTable(CPKEmitter* emitter);      // 0x00C61CF0
-    void UpdateScaledParameter(CPKEmitter* emitter);
+    CPKVoiceTable* GetTable(CAmbientEmitter* emitter);      // 0x00C61CF0
+    void UpdateScaledParameter(CAmbientEmitter* emitter);
 };
 
-void CPKVoiceHandle::UpdateScaledParameter(CPKEmitter* emitter)
+void CPKVoiceHandle::UpdateScaledParameter(CAmbientEmitter* emitter)
 {
     if (m_handle >= 0)
     {
-        float value = emitter->GetValue();
+        float value = emitter->GetVolume();
         if (!m_bUnscaled)
             value *= emitter->m_pOwner->m_scale.GetScale();
         GetTable(emitter)->SetValue(m_handle, value);

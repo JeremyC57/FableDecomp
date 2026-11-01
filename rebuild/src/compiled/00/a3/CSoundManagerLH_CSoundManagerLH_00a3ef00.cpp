@@ -186,7 +186,7 @@ struct CSoundSystemConfig {                     // 0x1c bytes, the voice configu
     long           Long14;                      // +0x14 default 3
     long           Long18;                      // +0x18 default 1
     CSoundSystemConfig();                                       // 0x00C08800
-    void SetChannel_00c087c0(unsigned long channel, bool enable);   // 0x00C087C0 (SetMaskBit16 0x00C0AEE0 on the two words)
+    void SetChannel(unsigned long channel, bool enable);   // 0x00C087C0 (SetMaskBit16 0x00C0AEE0 on the two words)
 };
 struct CSoundPlayer {                           // the landed CSoundManagerLH rows' player model
     virtual void Play(long sound);              // slot 0
@@ -271,7 +271,7 @@ CSoundManagerLH::CSoundManagerLH(const CSoundManagerInit& init, bool exclusive)
         while (mask != 0)
         {
             long bit = LowestSetBit(mask);
-            config.SetChannel_00c087c0(bit, true);
+            config.SetChannel(bit, true);
             mask ^= 1 << bit;
         }
         m_pSoundSystem->Initialise(&config);

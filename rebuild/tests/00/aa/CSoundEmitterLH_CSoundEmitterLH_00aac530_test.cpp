@@ -1,10 +1,10 @@
-// Behaviour test for CSoundEmitterLH::CSoundEmitterLH(CGameScriptThing*) @ 0x00AAC530
+// Behaviour test for CSoundEmitterLH::CSoundEmitterLH(CSoundManagerLH*) @ 0x00AAC530
 #include <cstdio>
 #include <cstdlib>
 
-class CGameScriptThing { public:
+class CSoundManagerLH { public:
     long m_counter;
-    long DecrementScriptCounter() { return m_counter++; }
+    long GetNextEmitterID() { return m_counter++; }
 };
 
 struct SNode { SNode* m_pNext; SNode* m_pPrev; long m_a; long m_b; };
@@ -22,21 +22,21 @@ struct CList {
 };
 
 struct CSoundEmitterLH {
-    CGameScriptThing* m_pThing;
+    CSoundManagerLH* m_pThing;
     float m_positionX, m_positionY, m_positionZ;
     CList m_sounds;
     bool m_active, m_paused, m_finished;
     long m_scriptCounter;
-    CSoundEmitterLH(CGameScriptThing* thing)
+    CSoundEmitterLH(CSoundManagerLH* thing)
         : m_pThing(thing), m_sounds(), m_active(false), m_paused(false), m_finished(false),
-          m_scriptCounter(m_pThing->DecrementScriptCounter())
+          m_scriptCounter(m_pThing->GetNextEmitterID())
     {
     }
 };
 
 int main()
 {
-    CGameScriptThing thing;
+    CSoundManagerLH thing;
     thing.m_counter = 41;
     CSoundEmitterLH a(&thing);
     CSoundEmitterLH b(&thing);

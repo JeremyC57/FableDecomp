@@ -205,8 +205,9 @@ public:
     long __stdcall GetState(unsigned long dwMSecs, long* State);
 };
 
-unsigned long __stdcall WaitDispatchingMessages(void* hObject, unsigned long dwWait, void* hwnd = 0,
-                                                unsigned int uMsg = 0, void* hEvent = 0);   // 0x00CB09A0 (wxutil.cpp)
+struct HWND__;
+unsigned long __stdcall WaitDispatchingMessages(void* hObject, unsigned long dwWait, HWND__* hwnd = 0,
+                                                unsigned int uMsg = 0, void* hEvent = 0);   // 0x00CB09A0 (wxutil.cpp: ?WaitDispatchingMessages@@YGKPAXKPAUHWND__@@I0@Z, the landed chunk-687 leaf; naming wave 20)
 #define WAIT_TIMEOUT 258L
 #define VFW_S_STATE_INTERMEDIATE ((long)0x00040237L)
 

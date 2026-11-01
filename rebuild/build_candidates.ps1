@@ -14574,9 +14574,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c61c60'
-        Module = '_global'
-        Source = '00/c6/global_DrawGetEnvironment_00c61c60.cpp'
-        TestSource = '00/c6/global_DrawGetEnvironment_00c61c60_test.cpp'
+        Module = 'CPKArray'
+        Source = '00/c6/CPKArray_GetCount_00c61c60.cpp'
+        TestSource = '00/c6/CPKArray_GetCount_00c61c60_test.cpp'
         PassPattern = 'AUTO_TINY_00c61c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -32658,22 +32658,22 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c08cf0'
         Module = '_global'
-        Source = '00/c0/std_Consvalpairmorphf_00c08cf0.cpp'
-        TestSource = '00/c0/std_Consvalpairmorphf_00c08cf0_test.cpp'
+        Source = '00/c0/global_SetSoundAllocator00c08cf0_00c08cf0.cpp'
+        TestSource = '00/c0/global_SetSoundAllocator00c08cf0_00c08cf0_test.cpp'
         PassPattern = 'PAIRMORPH_CONS_OK'
     }
     [pscustomobject]@{
         Address = '00c08d00'
         Module = '_global'
-        Source = '00/c0/std_Consvalpairmorphg_00c08d00.cpp'
-        TestSource = '00/c0/std_Consvalpairmorphg_00c08d00_test.cpp'
+        Source = '00/c0/global_SetSoundTempAllocator00c08d00_00c08d00.cpp'
+        TestSource = '00/c0/global_SetSoundTempAllocator00c08d00_00c08d00_test.cpp'
         PassPattern = 'CONS_VAL_PAIR_MORPH_G_OK'
     }
     [pscustomobject]@{
         Address = '00c08d10'
         Module = '_global'
-        Source = '00/c0/std_Consvalpairmorphh_00c08d10.cpp'
-        TestSource = '00/c0/std_Consvalpairmorphh_00c08d10_test.cpp'
+        Source = '00/c0/global_SetSoundPhysicalAllocator00c08d10_00c08d10.cpp'
+        TestSource = '00/c0/global_SetSoundPhysicalAllocator00c08d10_00c08d10_test.cpp'
         PassPattern = 'PASS_00c08d10_cons_val_pair_morph'
     }
     [pscustomobject]@{
@@ -42117,9 +42117,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44a90'
-        Module = 'CMouseCursor'
-        Source = '00/c4/CMouseCursor_TurnToPointer_00c44a90.cpp'
-        TestSource = '00/c4/CMouseCursor_TurnToPointer_00c44a90_test.cpp'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_GetVolume_00c44a90.cpp'
+        TestSource = '00/c4/CAmbientEmitter_GetVolume_00c44a90_test.cpp'
         PassPattern = 'OK_00c44a90'
     }
     [pscustomobject]@{
@@ -42666,9 +42666,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c46da0'
-        Module = 'CQuadric'
-        Source = '00/c4/CQuadric_operator_00c46da0.cpp'
-        TestSource = '00/c4/CQuadric_operator_00c46da0_test.cpp'
+        Module = 'SPosition2D'
+        Source = '00/c4/SPosition2D_Add_00c46da0.cpp'
+        TestSource = '00/c4/SPosition2D_Add_00c46da0_test.cpp'
         PassPattern = 'OK_00c46da0'
     }
     [pscustomobject]@{
@@ -67544,9 +67544,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c08800'
-        Module = 'Init'
-        Source = '00/c0/Init_Init_00c08800.cpp'
-        TestSource = '00/c0/Init_Init_00c08800_test.cpp'
+        Module = 'CSoundSystemConfig'
+        Source = '00/c0/CSoundSystemConfig_CSoundSystemConfig_00c08800.cpp'
+        TestSource = '00/c0/CSoundSystemConfig_CSoundSystemConfig_00c08800_test.cpp'
         PassPattern = 'OK_00c08800'
     }
     [pscustomobject]@{
@@ -77638,9 +77638,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c36c70'
-        Module = '_global'
-        Source = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c36c70.cpp'
-        TestSource = '00/c3/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00c36c70_test.cpp'
+        Module = 'CAmbientScene'
+        Source = '00/c3/CAmbientScene_Lookup_00c36c70.cpp'
+        TestSource = '00/c3/CAmbientScene_Lookup_00c36c70_test.cpp'
         PassPattern = 'PASS_00c36c70'
     }
     [pscustomobject]@{
@@ -116546,9 +116546,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c61bc0'
-        Module = '_global'
-        Source = '00/c6/CInputEvent_GetKey_00c61bc0.cpp'
-        TestSource = '00/c6/CInputEvent_GetKey_00c61bc0_test.cpp'
+        Module = 'CPKArray'
+        Source = '00/c6/CPKArray_GetCapacity_00c61bc0.cpp'
+        TestSource = '00/c6/CPKArray_GetCapacity_00c61bc0_test.cpp'
         PassPattern = 'PASS_00c61bc0'
     }
     [pscustomobject]@{
@@ -170130,9 +170130,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad7550'
-        Module = '_global'
-        Source = '00/ad/global_SortSElement800ad7550_00ad7550.cpp'
-        TestSource = '00/ad/global_SortSElement800ad7550_00ad7550_test.cpp'
+        Module = 'std'
+        Source = '00/ad/std_sortQuadricOptimiserInternalsCOptimisedVertexCGroupboolfastcallconstQuadricOptimiserInternalsCOptimisedVertexCGroupconstQuadricOptimiserInternalsCOptimisedVertexCGroup_00ad7550.cpp'
+        TestSource = '00/ad/std_sortQuadricOptimiserInternalsCOptimisedVertexCGroupboolfastcallconstQuadricOptimiserInternalsCOptimisedVertexCGroupconstQuadricOptimiserInternalsCOptimisedVertexCGroup_00ad7550_test.cpp'
         PassPattern = '00ad7550_TEST PASS'
     }
     [pscustomobject]@{
@@ -193677,8 +193677,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c73a00'
         Module = 'CString_00c73a00'
-        Source = '00/c7/CString00c73a00_ClassifyShaderExtension00c73a00_00c73a00.cpp'
-        TestSource = '00/c7/CString00c73a00_ClassifyShaderExtension00c73a00_00c73a00_test.cpp'
+        Source = '00/c7/CString00c73a00_ClassifyAudioExtension_00c73a00.cpp'
+        TestSource = '00/c7/CString00c73a00_ClassifyAudioExtension_00c73a00_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c73a00_TEST PASS'
     }
@@ -205237,9 +205237,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c087c0'
-        Module = 'CMainGameComponent'
-        Source = '00/c0/CMainGameComponent_BeginInputLoading_00c087c0.cpp'
-        TestSource = '00/c0/CMainGameComponent_BeginInputLoading_00c087c0_test.cpp'
+        Module = 'CSoundSystemConfig'
+        Source = '00/c0/CSoundSystemConfig_SetChannel_00c087c0.cpp'
+        TestSource = '00/c0/CSoundSystemConfig_SetChannel_00c087c0_test.cpp'
         PassPattern = '00c087c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -253199,9 +253199,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44ab0'
-        Module = 'CMouseCursor'
-        Source = '00/c4/CMouseCursor_Initialize_00c44ab0.cpp'
-        TestSource = '00/c4/CMouseCursor_Initialize_00c44ab0_test.cpp'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_Initialize_00c44ab0.cpp'
+        TestSource = '00/c4/CAmbientEmitter_Initialize_00c44ab0_test.cpp'
         PassPattern = '00c44ab0_TEST PASS'
     }
     [pscustomobject]@{
@@ -317825,9 +317825,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad4e20'
-        Module = 'std::vector'
-        Source = '00/ad/stdvector_Minsertoverflow_00ad4e20.cpp'
-        TestSource = '00/ad/stdvector_Minsertoverflow_00ad4e20_test.cpp'
+        Module = 'std::vector<QuadricOptimiserInternals::COptimisedVertex::CGroup,std::allocator<QuadricOptimiserInternals::COptimisedVertex::CGroup> >'
+        Source = '00/ad/stdvectorQuadricOptimiserInternalsCOptimisedVertexCGroupstdallocatorQuadricOptim_Minsertoverflow_00ad4e20.cpp'
+        TestSource = '00/ad/stdvectorQuadricOptimiserInternalsCOptimisedVertexCGroupstdallocatorQuadricOptim_Minsertoverflow_00ad4e20_test.cpp'
         PassPattern = '00ad4e20_TEST PASS'
     }
     [pscustomobject]@{

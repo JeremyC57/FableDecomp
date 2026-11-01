@@ -7,17 +7,17 @@ struct CPKVoiceTable {
 };
 struct CPKScaleSource { float m_scale; float GetScale() { return m_scale; } };
 struct CPKEmitterOwner { CPKScaleSource m_scale; };
-struct CPKEmitter {
+struct CAmbientEmitter {
     CPKEmitterOwner* m_pOwner; float m_value; CPKVoiceTable* m_pTable;
-    float GetValue() { return m_value; }
+    float GetVolume() { return m_value; }
 };
 struct CPKVoiceHandle {
     bool m_bUnscaled; int m_handle;
-    CPKVoiceTable* GetTable(CPKEmitter* e) { return e->m_pTable; }
-    void UpdateScaledParameter(CPKEmitter* emitter)
+    CPKVoiceTable* GetTable(CAmbientEmitter* e) { return e->m_pTable; }
+    void UpdateScaledParameter(CAmbientEmitter* emitter)
     {
         if (m_handle >= 0) {
-            float value = emitter->GetValue();
+            float value = emitter->GetVolume();
             if (!m_bUnscaled) value *= emitter->m_pOwner->m_scale.GetScale();
             GetTable(emitter)->SetValue(m_handle, value);
         }
@@ -27,7 +27,7 @@ int main()
 {
     CPKVoiceTable table = { 0, 0, 0.0f };
     CPKEmitterOwner owner = { { 0.5f } };
-    CPKEmitter e = { &owner, 0.8f, &table };
+    CAmbientEmitter e = { &owner, 0.8f, &table };
     CPKVoiceHandle h = { false, -1 };
     h.UpdateScaledParameter(&e);
     if (table.m_calls != 0) { std::printf("00c61f60_TEST FAIL\n"); return 1; }
