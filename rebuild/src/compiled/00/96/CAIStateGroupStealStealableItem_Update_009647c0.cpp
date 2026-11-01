@@ -39,14 +39,16 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return f;
 }
 #pragma auto_inline(on)
-class CThing { public:
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private: public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91
     bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    const C3DVector& GetPosition() const;       // 0x004C73D0
     void Kill(bool instant);                    // 0x004C9B80
     __forceinline bool HasTC(long interfaceType)
     {
@@ -87,9 +89,8 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
 };
 struct CBaseIntelligentPointer {
-    virtual void v00();
+    virtual ~CBaseIntelligentPointer();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00A01C10
     CThing* m_pItem;                            // +0x04
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
     CThing* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
@@ -198,12 +199,12 @@ void CAIStateGroup_StealStealableItem::Update()
             }
             CThing* item = PStealableItem.GetPItem();
             bool reached;
-            result = AIAction_MoveToPosProximity(2, item->GetPosition(), 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
+            result = AIAction_MoveToPosProximity(2, ((CThing*)item)->GetPos(), 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
         } while (result == 4);
         if (IS_THING_ALIVE(PStealableItem)) {
             CThingCreatureBase* creature = GetCreature();
             CThing* item = PStealableItem.GetPItem();
-            facing = item->GetPosition() - creature->GetPosition();
+            facing = ((CThing*)item)->GetPos() - ((CThing*)creature)->GetPos();
         }
     }
     if (!IS_THING_ALIVE(PStealableItem)) {
@@ -218,7 +219,7 @@ void CAIStateGroup_StealStealableItem::Update()
         Terminate();
         return;
     }
-    result = AIAction_LookAtPos(1, GetCreature()->GetPosition() + facing, 0x21, 0.0027777f);
+    result = AIAction_LookAtPos(1, ((CThing*)(GetCreature()))->GetPos() + facing, 0x21, 0.0027777f);
     if (!IS_THING_ALIVE(PStealableItem)) {
         Terminate();
         return;
@@ -245,7 +246,7 @@ void CAIStateGroup_StealStealableItem::Update()
     long done = AIAction_PerformActionAndWait(&action, false);
     if (IS_THING_ALIVE(PEscapePoint) && IS_THING_ALIVE(PStealableItem) && done == 2
         && carrying->IsCarryingThing(PStealableItem.GetPItem())) {
-        C3DVector escapePos = PEscapePoint.GetPItem()->GetPosition();
+        C3DVector escapePos = ((CThing*)(PEscapePoint.GetPItem()))->GetPos();
         if (AIAction_MoveToPosProximity(1, escapePos, 1.0f, &arrived, 5, true, false, true, 0, true, 0.0f) == 2) {
             ReachedDestination = true;
             const CTCEscapeFlags* flags;

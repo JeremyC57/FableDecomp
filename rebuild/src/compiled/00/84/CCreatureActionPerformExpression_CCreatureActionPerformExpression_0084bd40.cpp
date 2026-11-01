@@ -18,7 +18,6 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    virtual ~CIntelligentPointer();
 };
 class CDefPointeeBase { public: virtual void VFunc00(); long RefCount; };
 template<class T> class CDefPointer { public:

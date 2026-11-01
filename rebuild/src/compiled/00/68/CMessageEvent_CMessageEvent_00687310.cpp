@@ -28,7 +28,6 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    virtual ~CIntelligentPointer();
 };
 class CMessageEvent : public CBaseObject { public:
     EMessageEventType Type;                             // +0x08

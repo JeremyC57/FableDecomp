@@ -16,9 +16,8 @@ struct CMember_0099eae0 {
     ~CMember_0099eae0();                            // 0x0099EAE0
 };
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x4];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CBase_0062e900 {
@@ -28,7 +27,7 @@ struct CBase_0062e900 {
 
 struct CBase_0062e900_Derived_00868350 : CBase_0062e900 {
     CMember_0099eae0 m_114;            // +0x114
-    CMember_00a01c10 m_118;            // +0x118
+    CBaseIntelligentPointer m_118;            // +0x118
 };
 
 // The delete-expression that makes the compiler emit CBase_0062e900_Derived_00868350::`scalar deleting destructor'.

@@ -66,7 +66,6 @@ template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
-    virtual ~CIntelligentPointer();
 };
 
 class CCreatureActionBase {

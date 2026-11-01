@@ -33,9 +33,8 @@ inline CThingCreatureBase* CastToCreature(CThing* thing) { return (CThingCreatur
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {                    // unaligned inside the action (+0xad)
-    void* __vftable;
     void* m_pItem;
-    ~CBaseIntelligentPointer();                     // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 #pragma pack(pop)
 class CCreatureActionBase {                         // retail 0xA8 bytes

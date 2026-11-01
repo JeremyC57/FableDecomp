@@ -31,7 +31,6 @@ struct CBaseIntelligentPointer {
  void SetPItem(CBaseObject*);
 };
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { public:
- virtual ~CIntelligentPointer();
  CIntelligentPointer():CBaseIntelligentPointer(){}
  explicit CIntelligentPointer(T* p):CBaseIntelligentPointer(){SetPItem(p);}
  T* operator->()const{return static_cast<T*>(GetPItem());}

@@ -266,7 +266,6 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     CIntelligentPointer() { }
     explicit CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    virtual ~CIntelligentPointer();
     T* Get() const { return (T*)GetPItem(); }
     T* operator->() const { return (T*)GetPItem(); }
     T& operator*() const { return *(T*)GetPItem(); }

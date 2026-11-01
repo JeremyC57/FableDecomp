@@ -14,16 +14,16 @@ struct CMember_00903046 {
     ~CMember_00903046();                            // 0x00903046
 };
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x8];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    unsigned char _body[0x4];   // +0x04 (vptr at +0x00)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CAggregate_00903265 {
     CMember_00903046 m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x50];
-    CMember_00a01c10 m_54;            // +0x54
-    CMember_00a01c10 m_5c;            // +0x5c
+    CBaseIntelligentPointer m_54;            // +0x54
+    CBaseIntelligentPointer m_5c;            // +0x5c
     ~CAggregate_00903265();
 };
 

@@ -71,9 +71,8 @@ class CThingCreatureBase : public CThing { public:
 class CBaseObject;
 class CBaseIntelligentPointer {
 public:
-    virtual void v00();
+    virtual ~CBaseIntelligentPointer();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00A01C10
     CThing* m_pItem;
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;              // 0x00A01B50 ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
@@ -139,7 +138,7 @@ class CSoundPair { public:
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    ~CCombatActionBase();                       // 0x0062E900
+    virtual ~CCombatActionBase();                       // 0x0062E900
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 struct CCreatureAction_StandUp : CCombatActionBase {   // vtable 0x01276C2C
@@ -158,7 +157,9 @@ class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long type);        // 0x0073ABA0 (Ego_r.pdb: unsigned long)
 };
 struct CTCUserActionPointBase {
-    void FreeActionPoint(long index);           // 0x007FEF40
+public:
+    void SetActionPointAsFree(long a0);   // 0x007FEF40 (Ego_r.pdb ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z)
+public:
 };
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CAIBrain { public:
@@ -203,7 +204,7 @@ void CAIStateGroup_BanditSitRoundCampfire::OnReplace()
         CThing* campfire = PCampfire.GetPItem();
         if (campfire->HasTC(0x2d))
             point = (CTCUserActionPointBase*)campfire->GetTC(0x2d);
-        point->FreeActionPoint(SeatPosIndex);
+        ((CTCUserActionPointBase*)point)->SetActionPointAsFree(SeatPosIndex);
     }
     CTCCreatureModeManager* modes;
     CThingCreatureBase* creature = GetCreature();

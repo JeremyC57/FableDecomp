@@ -15,20 +15,19 @@ struct CMember_0048afb0 {
     ~CMember_0048afb0();                            // 0x0048AFB0
 };
 
-class CPhysicsMeshInfo { public:
-    unsigned char _body[0x4];
-    ~CPhysicsMeshInfo();                            // 0x00693EF0
+class CCreatureActionBase { public:   // CCreatureActionBase (Ego_r.pdb ??1CCreatureActionBase@@UAE@XZ; was stand-in CPhysicsMeshInfo, naming wave 15)
+    virtual ~CCreatureActionBase();                            // 0x00693EF0
 };
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x8];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    unsigned char _body[0x4];   // +0x04 (vptr at +0x00)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CAggregate_005cc091 {
-    CPhysicsMeshInfo m_first;            // +0 (its destructor is the tail call)
+    CCreatureActionBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0xa4];
-    CMember_00a01c10 m_a8;            // +0xa8
+    CBaseIntelligentPointer m_a8;            // +0xa8
     CMember_0048afb0 m_b0;            // +0xb0
     ~CAggregate_005cc091();
 };

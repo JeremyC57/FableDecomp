@@ -104,7 +104,6 @@ private:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
 public:
     CIntelligentPointer(T* item) { SetPItem(item); }
-    virtual ~CIntelligentPointer();
 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }

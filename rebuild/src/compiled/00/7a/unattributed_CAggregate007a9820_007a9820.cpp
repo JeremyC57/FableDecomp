@@ -13,16 +13,16 @@ class CCombatActionBase { public:
     virtual ~CCombatActionBase();                            // 0x0062E900
 };
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x8];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    unsigned char _body[0x4];   // +0x04 (vptr at +0x00)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CAggregate_007a9820 {
     CCombatActionBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x110];
-    CMember_00a01c10 m_114;            // +0x114
-    CMember_00a01c10 m_11c;            // +0x11c
+    CBaseIntelligentPointer m_114;            // +0x114
+    CBaseIntelligentPointer m_11c;            // +0x11c
     ~CAggregate_007a9820();
 };
 

@@ -59,10 +59,9 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 #pragma auto_inline(on)
 
 struct CBaseIntelligentPointer {
-    virtual void v00();
+    virtual ~CBaseIntelligentPointer();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00A01C10
     CThing* PItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseObject* GetPItem() const;              // 0x00A01B50 (Ego_r.pdb ?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ)
     void SetPItem(CBaseObject* item);           // 0x00A01B90 (Ego_r.pdb ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z)
 };

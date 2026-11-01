@@ -11,9 +11,9 @@
 // argument selects the flag-tested operator delete @ 0x00BFE9BC. The manifest label (`vector
 // deleting destructor`) is propagated; names come from the destructor labels when unique.
 // One of 15 bodies of this shape.
-struct CMember_00a01c10 {
-    unsigned char _body[0x8];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    unsigned char _body[0x4];   // +0x04 (vptr at +0x00)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CBase_0062e900 {
@@ -22,8 +22,8 @@ struct CBase_0062e900 {
 };
 
 struct CBase_0062e900_Derived_008cedd0 : CBase_0062e900 {
-    CMember_00a01c10 m_114;            // +0x114
-    CMember_00a01c10 m_11c;            // +0x11c
+    CBaseIntelligentPointer m_114;            // +0x114
+    CBaseIntelligentPointer m_11c;            // +0x11c
 };
 
 // The delete-expression that makes the compiler emit CBase_0062e900_Derived_008cedd0::`scalar deleting destructor'.

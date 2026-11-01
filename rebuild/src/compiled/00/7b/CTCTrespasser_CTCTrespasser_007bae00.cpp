@@ -23,7 +23,6 @@ public:
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {   // vtable 0x01238C6C
 public:
     CIntelligentPointer() {}
-    virtual ~CIntelligentPointer();
 };
 template <class T> struct SListNode {
     SListNode* _M_next;

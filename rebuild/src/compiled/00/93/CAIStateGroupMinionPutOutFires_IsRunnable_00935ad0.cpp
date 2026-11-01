@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00935AD0, length 368 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24),
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary CIntelligentPointer<CThing>, vtable 0x01244344),
-//          CTCPerceiveThing::GetExtendedSightRadius @ 0x007448F0, CThing::GetPosition @ 0x004C73D0,
+//          CTCPerceiveThing::GetExtendedSightRadius @ 0x007448F0, CThing::GetPos @ 0x004C73D0,
 //          CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::GetPBestLeafThing<CFilter_Bind2<
 //          burning, CThingFilter_In2DRange>, CThingCompare_Nearest, CThing> @ 0x00936070 (the manifest instance name is
 //          propagated from an identical body).
@@ -24,14 +24,16 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
-class CThing { public:
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private: public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }   // Ego_r.pdb ?IsDead@CThing@@QBE_NXZ
-    const C3DVector& GetPosition();             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -88,11 +90,10 @@ __declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CFilter_Bin
 #pragma auto_inline(on)
 
 struct CBaseIntelligentPointer {
-    virtual void v00();
+    virtual ~CBaseIntelligentPointer();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00A01C10
     CThing* m_pItem;                            // +0x04
     CThing* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
-    ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
@@ -139,8 +140,8 @@ bool CAIStateGroup_MinionPutOutFires::IsRunnable()
         PFire = CIntelligentPointerThing(0);
         float radius = perceive->GetExtendedSightRadius();
         if (PeekThingSearchTools()->GetPBestLeafThing(
-                CThingFilter_IsBurning() && CThingFilter_In2DRange(GetCreature()->GetPosition(), radius),
-                CThingCompare_Nearest(GetCreature()->GetPosition()), &fire)) {
+                CThingFilter_IsBurning() && CThingFilter_In2DRange(((CThing*)(GetCreature()))->GetPos(), radius),
+                CThingCompare_Nearest(((CThing*)(GetCreature()))->GetPos()), &fire)) {
             PFire = CIntelligentPointerThing(fire);
             if (IS_THING_ALIVE(PFire))
                 return true;

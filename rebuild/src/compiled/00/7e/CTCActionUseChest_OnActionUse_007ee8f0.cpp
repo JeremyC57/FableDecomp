@@ -7,7 +7,7 @@
 // lookup) and 0x0040F020, CTCChest::GetOpenAnimationForCreature 0x00750240 (CCharString result),
 // CCreatureAction_OpenChest ctor 0x007EE7E0, CThingCreatureBase::SetCurrentAction 0x006644F0, ~CBaseIntelligentPointer
 // 0x00A01C10, ~CCreatureActionBase 0x00693EF0, ~CCharString 0x0099EAE0, CTCActionUseBase::IsThisTheft 0x007EACB0,
-// CThing::GetPosition 0x004C73D0, CTCHeroOpinionDeedLog::PostDeed 0x006C6990, CTCBase::GetDefinitionManager 0x006869D0,
+// CThing::GetPos 0x004C73D0, CTCHeroOpinionDeedLog::PostDeed 0x006C6990, CTCBase::GetDefinitionManager 0x006869D0,
 // CTCHeroStats::SetMorality 0x0057C2E6.
 // Layout: CTCBase ParentThing +4; CThing interface bitset +0x20, map +0x44; CTCChest Opening +0x1C / Closing +0x1E
 // (descriptive); retail CCreatureAction_OpenChest 0xB0 bytes (base 0xA8 + PChest); the definition manager's hero
@@ -31,11 +31,13 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);                  // 0x0040F020
     SEntry* LowerBound(const long* type) const;            // 0x004365B0
 };
-class CThing { public:
+class CThing {
+public:
+    C3DVector const& GetPos() const;   // 0x004C73D0 (Ego_r.pdb ?GetPos@CThing@@QBEABVC3DVector@@XZ)
+private: public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                        // +0x20
     CInterfaceMap m_interfaces;                            // +0x44
-    const C3DVector& GetPosition() const;                  // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -57,14 +59,12 @@ class CThing { public:
     }
 };
 class CCreatureActionBase { public:
-    virtual void v00();
+    virtual ~CCreatureActionBase();   // slot 0 (retail scalar deleting dtor; was placeholder v00); 0x00693EF0
     unsigned char _body[0xa8 - 4];
-    ~CCreatureActionBase();                                // 0x00693EF0
 };
 struct CBaseIntelligentPointer {
-    void*   __vftable;
     void*   PData;
-    ~CBaseIntelligentPointer();                            // 0x00A01C10
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 class CCreatureAction_OpenChest : public CCreatureActionBase { public:
     CBaseIntelligentPointer PChest;                        // +0xa8
@@ -119,7 +119,7 @@ void CTCActionUseChest::OnActionUse(CThingCreatureBase* user)
         user->SetCurrentAction(CCreatureAction_OpenChest(user, thing, chest->GetOpenAnimationForCreature()));
     if (IsThisTheft() && user->HasTC(0x51)) {
         CTCHeroOpinionDeedLog* log = user->GetTC<CTCHeroOpinionDeedLog>(0x51);
-        log->PostDeed(6, user->GetPosition(), &GetParentThing(), 0, 2, true, false, 0, false, 0);
+        log->PostDeed(6, ((CThing*)user)->GetPos(), &GetParentThing(), 0, 2, true, false, 0, false, 0);
         if (user->HasTC(4)) {
             CTCHeroStats* stats = user->GetTC<CTCHeroStats>(4);
             stats->SetMorality(GetDefinitionManager()->HeroDef->TheftMoralityChange + stats->Morality);

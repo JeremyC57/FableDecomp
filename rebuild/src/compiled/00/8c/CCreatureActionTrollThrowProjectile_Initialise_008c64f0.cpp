@@ -152,7 +152,6 @@ struct CBaseIntelligentPointer {
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    ~CIntelligentPointerThing();                             // 0x00A01C10
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
     {
         SetPItem(((CThing*)other.GetPItem()));

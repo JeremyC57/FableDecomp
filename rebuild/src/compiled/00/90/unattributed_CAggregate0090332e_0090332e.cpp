@@ -18,16 +18,16 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();                            // 0x008FD288
 };
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x8];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    unsigned char _body[0x4];   // +0x04 (vptr at +0x00)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CAggregate_0090332e {
     CAIStateGroupBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0x14];
-    CMember_00a01c10 m_18;            // +0x18
-    CMember_00a01c10 m_20;            // +0x20
+    CBaseIntelligentPointer m_18;            // +0x18
+    CBaseIntelligentPointer m_20;            // +0x20
     CMember_004406d0 m_28;            // +0x28
     ~CAggregate_0090332e();
 };

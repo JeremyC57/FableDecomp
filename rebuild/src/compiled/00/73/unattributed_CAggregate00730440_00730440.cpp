@@ -13,17 +13,17 @@ class CTCBase { public:
     virtual ~CTCBase();                            // 0x00686830
 };
 
-struct CMember_00a01c10 {
-    unsigned char _body[0x10];
-    ~CMember_00a01c10();                            // 0x00A01C10
+class CBaseIntelligentPointer { public:   // CBaseIntelligentPointer (Ego_r.pdb ??1CBaseIntelligentPointer@@UAE@XZ; was stand-in CMember_00a01c10, naming wave 15)
+    unsigned char _body[0xc];   // +0x04 (vptr at +0x00)
+    virtual ~CBaseIntelligentPointer();                            // 0x00A01C10
 };
 
 struct CAggregate_00730440 {
     CTCBase m_first;            // +0 (its destructor is the tail call)
     unsigned char _gap0[0xc];
-    CMember_00a01c10 m_10;            // +0x10
-    CMember_00a01c10 m_20;            // +0x20
-    CMember_00a01c10 m_30;            // +0x30
+    CBaseIntelligentPointer m_10;            // +0x10
+    CBaseIntelligentPointer m_20;            // +0x20
+    CBaseIntelligentPointer m_30;            // +0x30
     ~CAggregate_00730440();
 };
 

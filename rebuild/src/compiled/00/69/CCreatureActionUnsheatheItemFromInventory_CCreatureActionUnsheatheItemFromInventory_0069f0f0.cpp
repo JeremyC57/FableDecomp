@@ -101,7 +101,6 @@ struct CBaseIntelligentPointer {
     void SetPItem(CBaseObject* item);
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
-    virtual ~CIntelligentPointer(); // CIntelligentPointer<CThing> vtable 0x01238C6C, slot 0 @0x004A9710
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(reinterpret_cast<CBaseObject*>(item)); } // native initializer used by overload @0x0069F230
     CIntelligentPointer(const CIntelligentPointer& other)
         : CBaseIntelligentPointer()

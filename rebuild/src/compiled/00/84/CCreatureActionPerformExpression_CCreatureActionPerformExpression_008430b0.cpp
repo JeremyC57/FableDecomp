@@ -48,7 +48,6 @@ struct CBaseIntelligentPointer {
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer(T* item) { SetPItem((CBaseObject*)item); }
-    virtual ~CIntelligentPointer();
 };
 
 class CDefPointeeBase { public: virtual void VFunc00(); long RefCount; };

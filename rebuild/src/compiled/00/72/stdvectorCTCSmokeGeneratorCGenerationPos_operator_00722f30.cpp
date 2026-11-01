@@ -119,7 +119,6 @@ public:
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    virtual ~CIntelligentPointer();
 };
 class CThing;
 class CTCSmokeGenerator {
