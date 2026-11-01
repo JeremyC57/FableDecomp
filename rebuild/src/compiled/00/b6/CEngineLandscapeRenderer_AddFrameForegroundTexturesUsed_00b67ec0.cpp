@@ -7,6 +7,7 @@
 // Layout: local model. engine/CEngineLandscapeRenderer.h (Ego_r.pdb) has MeshBuilder over +0x1c..+0xcf4; the TLC build keeps three
 //   STLport vectors at +0x68c (used list), +0x698 (priorities), +0x6a4 (flags) -- names descriptive.
 // Earlier tries (texture types, tag ctor forms, push_back by value) are in the pending differ header.
+// Naming (naming wave 22, DECISIONS_W21_RESOLVED): the three vectors are STLport std::vector<unsigned long> / <float> / <unsigned char> (were one hand CVector<T>); the callees carry their STLport spellings.
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
@@ -18,9 +19,13 @@ inline void* CopyTrivial(const void* first, const void* last, void* result)
         : (char*)memmove(result, first, (const char*)last - (const char*)first) + ((const char*)last - (const char*)first);
 }
 
+namespace std {
 struct __true_type { __true_type() {} };
+template <class _Tp> class allocator { };
 
-template <class T> struct CVector {                // STLport vector<T> (12 bytes)
+template <class T, class _Alloc = allocator<T> >
+class vector {                                     // STLport 4.6 vector<T> (12 bytes; the base's three pointers)
+public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
@@ -34,8 +39,10 @@ template <class T> struct CVector {                // STLport vector<T> (12 byte
         _M_finish = i;
         return first;
     }
-    void _M_fill_insert(T* position, unsigned int n, const T& x);
-    template <class Tag> void _M_insert_overflow(T* position, const T& x, const Tag&, unsigned int n, bool atend);   // 0x00464ACE
+    void _M_fill_insert(T* position, unsigned int n, const T& x);   // 0x00441020 (float) / 0x00485F3A (unsigned char)
+protected:
+    void _M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int n, bool atend);   // 0x00464ACE (unsigned long)
+public:
     void insert(T* position, unsigned int n, const T& x) { _M_fill_insert(position, n, x); }
     void resize(unsigned int newSize, const T& x)
     {
@@ -55,8 +62,8 @@ template <class T> struct CVector {                // STLport vector<T> (12 byte
 };
 
 // Same-TU body of vector<unsigned long>::_M_insert_overflow 0x00464ACE (empty tag unnamed, never stored through).
-template <class T> template <class Tag>
-__declspec(noinline) void CVector<T>::_M_insert_overflow(T* position, const T& x, const Tag&, unsigned int n, bool atend)
+template <class T, class _Alloc>
+__declspec(noinline) void vector<T, _Alloc>::_M_insert_overflow(T* position, const T& x, const __true_type&, unsigned int n, bool atend)
 {
     unsigned int oldSize = size();
     unsigned int len = oldSize + (oldSize > n ? oldSize : n);
@@ -71,13 +78,14 @@ __declspec(noinline) void CVector<T>::_M_insert_overflow(T* position, const T& x
     _M_finish = newFinish;
     _M_end_of_storage = newStart + len;
 }
+}   // namespace std
 
 class CEngineLandscapeRenderer {
 public:
     unsigned char                 _pad000[0x68c];
-    CVector<unsigned long>        FrameForegroundTexturesUsed;        // +0x68c
-    CVector<float>                FrameForegroundTexturePriorities;   // +0x698
-    CVector<unsigned char>        FrameForegroundTextureFlags;        // +0x6a4
+    std::vector<unsigned long>    FrameForegroundTexturesUsed;        // +0x68c
+    std::vector<float>            FrameForegroundTexturePriorities;   // +0x698
+    std::vector<unsigned char>    FrameForegroundTextureFlags;        // +0x6a4
     void AddFrameForegroundTexturesUsed(const unsigned short* textures, long count, float priority);
 };
 
