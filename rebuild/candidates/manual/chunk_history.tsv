@@ -25977,3 +25977,13 @@ chunk	address	module	name	length
 696	00a69e20	CEnginePrimitiveHandle	Clear	61
 696	005ede37	CTCInventoryAbilities	GetCategory	72
 696	004aa840	C3DClothPrimitive	~C3DClothPrimitive	66
+697	00ac3b80	C3DClothPrimitive	~C3DClothPrimitive	66
+697	004c3200	C3DClothPrimitive	~C3DClothPrimitive	66
+697	006e7b80	CScriptGameResourceObjectMovieBase	~CScriptGameResourceObjectMovieBase	66
+697	007e74d0	CScriptGameResourceObjectMovieBase	~CScriptGameResourceObjectMovieBase	66
+697	00bebc50	CEngineInternalPrimitiveMeshBase	~CEngineInternalPrimitiveMeshBase	77
+697	00723f90	CEngineInternalPrimitiveMeshBase	~CEngineInternalPrimitiveMeshBase	57
+697	004c2e90	C3DAnimationInterpolator	~C3DAnimationInterpolator	81
+697	00569d30	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	90
+697	00bded60	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	44
+697	00a60ce0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	82
